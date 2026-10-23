@@ -7,6 +7,7 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -14,6 +15,7 @@ import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_roles_event_widget.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_summary_widget.dart';
+import 'package:fluffychat/routes/chat/bot_notice_widget.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/custom_room_display_extension.dart';
@@ -170,6 +172,7 @@ class Message extends StatelessWidget {
               isParticipantSelected: (id) =>
                   controller.room.ownRoleState?.id == id,
               usedVocab: controller.activityController.usedVocab,
+              mediaVisibility: controller.activityController.mediaVisibility,
             );
           },
         );
@@ -181,6 +184,10 @@ class Message extends StatelessWidget {
 
       if (event.type == PangeaEventTypes.call) {
         return CallTimelineEvent(event, timeline: timeline);
+      }
+
+      if (event.isShownBotNotice) {
+        return BotNoticeWidget(event);
       }
 
       // return StateMessage(event, onExpand: onExpand, isCollapsed: isCollapsed);

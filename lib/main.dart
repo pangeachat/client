@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:isolate';
 import 'dart:ui';
 
@@ -14,6 +15,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_rating_store.dart';
+import 'package:fluffychat/features/connection_status/network_help_repo.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/workspace_screen_tracker.dart';
@@ -58,6 +60,9 @@ Future<void> _main() async {
   } catch (e) {
     Logs().e('Failed to load .env file', e);
   }
+  // The environment switcher's choice decides Sentry's environment and
+  // analytics below, so it must be loaded before they start.
+  await Environment.appConfigurationStorage.initStorage;
 
   // Force the accessibility semantics tree on when ENABLE_SEMANTICS=true, so
   // automation / assistive tech can drive the canvas-rendered UI by role+name
@@ -102,6 +107,7 @@ Future<void> _main() async {
   }
 
   final store = await AppSettings.init();
+  unawaited(NetworkHelpRepo.initialize());
   Logs().i('Welcome to ${AppSettings.applicationName.value} <3');
 
   // #Pangea

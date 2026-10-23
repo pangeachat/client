@@ -13,45 +13,109 @@ import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_init_error_indicator.dart';
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
+import 'package:fluffychat/routes/analytics/activities/mission_tile.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../../config/themes.dart';
 import '../../../widgets/avatar.dart';
 
-class ActivityArchive extends StatelessWidget {
+/// One joined course's plan, for the Learning Objectives page: its room and
+/// its Missions in quest order, each with the activities that satisfy it in
+/// this course (pins applied, activity-less Missions dropped — the same view
+/// the course page shows).
+class CourseMissions {
+  final Room room;
+  final List<QuestObjectiveGroup> groups;
+
+  const CourseMissions({required this.room, required this.groups});
+
+  /// Every joined course whose outline resolves, in the client's order.
+  static Future<List<CourseMissions>> load(Client client) async {
+    final courses = <CourseMissions>[];
+    for (final room in client.joinedCourseRooms) {
+      final questId = room.coursePlan?.uuid;
+      if (questId == null) continue;
+      final outline = (await QuestRepo.outline(
+        questId,
+        courseRoomId: room.id,
+      )).result;
+      // silent-ok: a course whose outline fails is reported where it loads
+      // (reportCourseOutlineFailure, once per room per session); this page
+      // lists what resolved and leaves that course's sessions to the tail.
+      if (outline == null) continue;
+      courses.add(
+        CourseMissions(
+          room: room,
+          groups: objectiveGroupsWithActivities(outline.forCourse(room).groups),
+        ),
+      );
+    }
+    return courses;
+  }
+}
+
+/// The Learning Objectives page (#9436, formerly Stars): the learner's
+/// Missions across their joined courses, each a tile with its XP ring and a
+/// Practice button that opens its detail page. Sessions outside
+/// every joined course's plan close the list under "Other activities", so a
+/// learner in no course still sees their record. Design:
+/// activities.instructions.md, "The Learning Objectives list".
+class ActivityArchive extends StatefulWidget {
   final Widget closeButton;
   const ActivityArchive({super.key, required this.closeButton});
 
   @override
+  State<ActivityArchive> createState() => _ActivityArchiveState();
+}
+
+class _ActivityArchiveState extends State<ActivityArchive> {
+  /// Loaded once per page: the outline reads are cached, and a new future per
+  /// build would flicker the list on every analytics update.
+  late final Future<List<CourseMissions>> _courses = CourseMissions.load(
+    Matrix.of(context).client,
+  );
+
+  @override
   Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
     return StreamBuilder(
       stream: Matrix.of(
         context,
       ).analyticsDataService.updateDispatcher.activityAnalyticsStream.stream,
       builder: (context, _) {
         final analyticsService = Matrix.of(context).analyticsDataService;
-        final Room? analyticsRoom = Matrix.of(
-          context,
-        ).client.ownAnalyticsRoomLocalByL2;
+        final client = Matrix.of(context).client;
+        final Room? analyticsRoom = client.ownAnalyticsRoomLocalByL2;
         final archive = analyticsRoom?.archivedActivities ?? [];
         final selectedRoomId = GoRouterState.of(
           context,
         ).pathParameters['roomid'];
+        final hasCourses = client.joinedCourseRooms.isNotEmpty;
         return Scaffold(
           appBar: AppBar(
-            leading: Center(child: closeButton),
+            leading: Center(child: widget.closeButton),
             title: Text(
-              L10n.of(context).stars,
+              l10n.learningObjectives,
               style: FluffyThemes.isColumnMode(context)
                   ? Theme.of(context).textTheme.titleLarge
                   : Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -73,7 +137,7 @@ class ActivityArchive extends StatelessWidget {
                     padding: .only(top: 48),
                     addVerticalPadding: false,
                     child: InstructionsInlineTooltip(
-                      instructionsEnum: archive.isEmpty
+                      instructionsEnum: archive.isEmpty && !hasCourses
                           ? InstructionsEnum.noSavedActivitiesYet
                           : InstructionsEnum.activityAnalyticsList,
                       padding: const EdgeInsets.all(8.0),
@@ -89,29 +153,20 @@ class ActivityArchive extends StatelessWidget {
                           withScrolling: false,
                           padding: .fromLTRB(32, 0, 32, 48),
                           addVerticalPadding: false,
-                          child: Semantics(
-                            label: L10n.of(context).starListLabel,
-                            container: true,
-                            // One Tab stop for the session list, arrow keys
-                            // inside; Tab lands on the open session (#8935).
-                            child: RovingFocusGroup(
-                              ids: [for (final room in archive) room.id],
-                              selectedId: selectedRoomId,
-                              child: ListView.builder(
-                                key: const PageStorageKey<String>(
-                                  'activity-archive',
+                          child: FutureBuilder(
+                            future: _courses,
+                            builder: (context, snapshot) =>
+                                ValueListenableBuilder(
+                                  valueListenable:
+                                      QuestObjectivesLoader.sharedProgression,
+                                  builder: (context, progression, _) =>
+                                      _ObjectiveList(
+                                        courses: snapshot.data ?? const [],
+                                        progression: progression,
+                                        archive: archive,
+                                        selectedRoomId: selectedRoomId,
+                                      ),
                                 ),
-                                physics: const ClampingScrollPhysics(),
-                                itemCount: archive.length,
-                                itemBuilder: (BuildContext context, int i) {
-                                  return AnalyticsActivityItem(
-                                    room: archive[i],
-                                    rovingId: archive[i].id,
-                                    selected: archive[i].id == selectedRoomId,
-                                  );
-                                },
-                              ),
-                            ),
                           ),
                         ),
                 ),
@@ -122,6 +177,112 @@ class ActivityArchive extends StatelessWidget {
       },
     );
   }
+}
+
+/// The page's list: one item per can-do across the learner's joined courses
+/// in their current language,
+/// in course order — a Mission two courses share is one item, read from the
+/// first — each collapsed to its statement and XP with the saved sessions that
+/// fed it behind a tap; then the sessions no joined course's plan accounts
+/// for, under "Other activities".
+class _ObjectiveList extends StatelessWidget {
+  final List<CourseMissions> courses;
+  final ProgressionResolution progression;
+  final List<Room> archive;
+  final String? selectedRoomId;
+
+  const _ObjectiveList({
+    required this.courses,
+    required this.progression,
+    required this.archive,
+    required this.selectedRoomId,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    final selectedMissionId = activeObjectiveDetailFor(
+      GoRouterState.of(context).uri,
+    );
+    final client = Matrix.of(context).client;
+    final xpByActivity = client.cachedXpBreakdownByActivity;
+    final placed = <String>{};
+    final seen = <String>{};
+    final children = <Widget>[];
+    for (final course in courses) {
+      // Only courses in the learner's current language: their XP is kept
+      // per language, so another language's Missions have nothing to show
+      // here (#9559). Re-read on every resolution, which a language switch
+      // triggers.
+      if (!CourseLanguageScope.courseInTargetLanguage(course.room)) continue;
+      final quest = progression.forCourse(course.room.id);
+      for (final group in course.groups) {
+        final missionId = group.objective.id;
+        if (!seen.add(missionId)) continue;
+        // A session whose activity serves a Mission is that Mission's, not
+        // one of the "other activities" below.
+        final ids = {for (final a in group.activities) a.activityId};
+        placed.addAll([
+          for (final room in archive)
+            if (ids.contains(room.activityId)) room.id,
+        ]);
+        children.add(
+          MissionTile(
+            group: group,
+            progress: quest?.rollup[missionId],
+            breakdown: client.missionXpBreakdown(
+              group,
+              byActivity: xpByActivity,
+            ),
+            courseId: course.room.id,
+            selected: missionId == selectedMissionId,
+          ),
+        );
+      }
+    }
+    final other = [
+      for (final room in archive)
+        if (!placed.contains(room.id)) room,
+    ];
+    if (other.isNotEmpty) {
+      if (children.isNotEmpty) children.add(_Heading(l10n.otherActivities));
+      children.addAll(
+        other.map(
+          (room) => AnalyticsActivityItem(
+            room: room,
+            rovingId: room.id,
+            selected: room.id == selectedRoomId,
+          ),
+        ),
+      );
+    }
+    return Semantics(
+      label: l10n.starListLabel,
+      container: true,
+      // One Tab stop for the session list, arrow keys inside; Tab lands on
+      // the open session (#8935).
+      child: RovingFocusGroup(
+        ids: [for (final room in other) room.id],
+        selectedId: selectedRoomId,
+        child: ListView(
+          key: const PageStorageKey<String>('activity-archive'),
+          physics: const ClampingScrollPhysics(),
+          children: children,
+        ),
+      ),
+    );
+  }
+}
+
+class _Heading extends StatelessWidget {
+  final String text;
+  const _Heading(this.text);
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 4.0),
+    child: Text(text, style: Theme.of(context).textTheme.titleSmall),
+  );
 }
 
 class AnalyticsActivityItem extends StatelessWidget {
@@ -160,8 +321,7 @@ class AnalyticsActivityItem extends StatelessWidget {
     final goals = room.ownRole?.allGoals;
 
     final userId = room.client.userID;
-    final summaryModel = room.activitySummaryByL1;
-    final summary = summaryModel?.summary;
+    final summary = room.activitySummary?.summary;
     final cefrLevel = summary?.participants
         .firstWhereOrNull((p) => p.participantId == userId)
         ?.cefrLevel;
@@ -169,7 +329,7 @@ class AnalyticsActivityItem extends StatelessWidget {
     // The level and the stats come and go together: a session with no
     // generated summary keeps its title and stars and shows neither, rather
     // than a half-filled row (activities.instructions.md, "The Stars list").
-    final analytics = summaryModel?.analytics;
+    final analytics = room.activitySummaryAnalytics;
     final stats = summary == null || analytics == null || userId == null
         ? null
         : _ActivitySessionStats(

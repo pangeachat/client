@@ -85,6 +85,7 @@ class ChatEventList extends StatelessWidget {
               final scrollable =
                   controller.scrollController.position.maxScrollExtent > 0;
               controller.scrollableNotifier.value = scrollable;
+              controller.activityController.mediaVisibility.markLayoutChanged();
             } catch (e, s) {
               ErrorHandler.logError(e: e, s: s, data: {});
             }

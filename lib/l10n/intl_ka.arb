@@ -961,8 +961,6 @@
     "status": "სტატუსი",
     "statusExampleMessage": "როგორ ხარ დღეს?",
     "submit": "გაგზავნა",
-    "synchronizingPleaseWait": "სინქრონიზაცია… გთხოვთ დაელოდოთ.",
-    "synchronizingPleaseWaitCounter": "სინქრონიზაცია… ({percentage}%)",
     "systemTheme": "სისტემა",
     "theyDontMatch": "მათ შორის არ არის შესაბამისობა",
     "theyMatch": "მათ ემთხვევა",
@@ -1187,7 +1185,6 @@
     "previous": "წინა",
     "otherPartyNotLoggedIn": "მეორე მხარე ამჟამად არ არის შესული და შესაბამისად ვერ მიიღებს შეტყობინებებს!",
     "open": "გახსნა",
-    "waitingForServer": "მოსალოდნელია სერვერის პასუხი...",
     "newChatRequest": "📩 ახალი საუბრის მოთხოვნა",
     "contentNotificationSettings": "შინაარსის შეტყობინებების პარამეტრები",
     "generalNotificationSettings": "საერთო შეტყობინებების პარამეტრები",
@@ -1293,7 +1290,6 @@
     "errorDisableIGCClassDesc": "გრამატიკის დახმარება გამორთულია ამ კურსისთვის, სადაც ეს ჩატი მდებარეობს.",
     "error405Desc": "გთხოვთ, დააყენოთ თქვენი ენები მთავარი მენიუდან > სწავლების პარამეტრებიდან.",
     "termsAndConditions": "წესებს და პირობებს",
-    "andCertifyIAmAtLeast13YearsOfAge": "და ვადასტურებ, რომ მე მინიმუმ 16 წლის ვარ.",
     "error502504Desc": "თარგმნის და გრამატიკის ხელსაწყოები შეიძლება იყოს ნელი ან მიუწვდომელი, სანამ პანგეა ბოტები არ დაეწევიან.",
     "error404Desc": "Pangea Bot-ი ვერ გარჩევს, როგორ უნდა თარგმნოს ეს...",
     "errorPleaseRefresh": "ჩვენ ამას ვისწრაფვით! გთხოვთ, განაახლოთ გვერდი და სცადოთ თავიდან.",
@@ -1601,9 +1597,6 @@
     "why": "რატომ?",
     "definition": "განმარტება",
     "reportToTeacher": "ვის გსურთ ამ შეტყობინების შეტყობინება?",
-    "reportMessageTitle": "{reportingUserId} შეტყობინება გაასაჯაროვა {reportedUserId}-ისგან ჩატში {roomName}",
-    "reportMessageBody": "შეტყობინება: {reportedMessage}\nმიზეზი: {reason}",
-    "noTeachersFound": "მასწავლებელი ვერ მოიძებნა შეტყობინებისთვის",
     "trialExpiration": "თქვენს უფასო ცდას ვადა ამოიწურება {expiration}",
     "freeTrialDesc": "ახალი მომხმარებლები იღებენ ერთკვირიან უფასო ცდას Pangea Chat-ის",
     "activateTrial": "უფასო 7-დღიანი საცდელი პერიოდი",
@@ -1937,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-05 12:30:39.933333",
+    "@@last_modified": "2026-10-22 09:50:17.011323",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -2898,18 +2891,6 @@
     "@submit": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@systemTheme": {
         "type": "String",
@@ -3978,10 +3959,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@newChatRequest": {
         "type": "String",
         "placeholders": {}
@@ -4421,10 +4398,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5671,35 +5644,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8657,11 +8601,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "გამოიყენეთ აქტივობის სურათი ჩეთის ფონად",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "ჩატი მხარდაჭერასთან",
     "@chatWithSupport": {
         "type": "String",
@@ -8682,8 +8621,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "წერის დახმარების ჩართვა",
-    "autoIGCToolDescription": "ავტომატურად გაწვდეთ Pangea Chat ინსტრუმენტები გაგზავნილი შეტყობინებების მიზნობრივი ენაზე გასასწორებლად.",
+    "autoIGCToolName": "ავტომატური შემოწმება გაგზავნისას",
+    "autoIGCToolDescription": "შეამოწმეთ თქვენი შეტყობინება შეცდომებზე გაგზავნის ღილაკზე დაჭერისას. როდესაც ეს გამორთულია, შეტყობინების შესამოწმებლად დააჭირეთ წერის დამხმარე ღილაკს.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10320,7 +10259,6 @@
     "activityLoadFailed": "აქტივობის დატვირთვა ვერ მოხერხდა. შეამოწმეთ თქვენი კავშირი და სცადეთ კიდევ ერთხელ.",
     "levelUpChip": "დონის {level}!",
     "missingCourseOutline": "ეს კურსი აღარ არის ხელმისაწვდომი",
-    "missingCourseOutlineCta": "ეს კურსი აღარ არის ხელმისაწვდომი. აირჩიეთ ახალი კურსის გეგმა.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10345,10 +10283,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10744,7 +10678,6 @@
     "constructLevelFlowers": "ყვავილები, ათვისებული სიტყვები",
     "filterAndSearch": "გაფილტვრა და ძიება",
     "participantsOfTotal": "{filled} / {total} მოთამაშე",
-    "mapAttributionLabel": "OpenStreetMap-ის კონტრიბუტორები, საავტორო უფლებები და ლიცენზია",
     "seeAll": "ყველას ნახვა",
     "seeAllSection": "ყველა {section}-ის ნახვა",
     "showMoreOptionsHint": "მეტი ვარიანტის ჩვენება",
@@ -10862,25 +10795,126 @@
     "summaryFeedbackReceived": "გმადლობთ! თქვენი გამოხმაურება მიღებულია.",
     "summaryFeedbackFailed": "თქვენი გამოხმაურების გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა.",
     "summaryFeedbackProcessing": "თქვენი გამოხმაურების გაგზავნა და შეჯამების განახლება…",
-    "ssoNetworkBlockedTitle": "შესვლის საიტი მიუწვდომელია",
-    "ssoNetworkBlockedDesc": "ეს ქსელი ხელს გვიშლის {provider}-თან დაკავშირებაში თქვენი შესასვლელად. სკოლისა და ოფისის Wi-Fi ხშირად ბლოკავს მას. შეგიძლიათ დარეგისტრირდეთ ელფოსტით, ან გადახვიდეთ სხვა ქსელზე და სცადოთ ხელახლა.",
-    "ssoTryAnyway": "მაინც სცადე",
-    "callTranscriptNotSubscribed": "{name}-ს ამ ზარის განმავლობაში არ ჰქონდა გამოწერა, ამიტომ ნათქვამი არ ჩაიწერა.",
     "callTranscriptTranscribing": "ჩანაწერი {name}-დან ჯერ კიდევ ტრანსკრიბირდება…",
     "callTranscriptSeekTo": "დაკვრა {time}-დან",
     "callTranscriptRecordings": "ჩანაწერები",
     "callTranscriptFullCall": "მთლიანი ზარი",
     "callTranscriptPreparingRecording": "მთლიანი ჩანაწერის მომზადება…",
     "callTranscriptNoRecording": "მთლიანი ზარის ჩანაწერი არ არის.",
-    "callTranscriptTranscribeButton": "ტრანსკრიფცია",
-    "callTranscriptAudioUnavailable": "{name}-ის შენახული ჩანაწერი ვერ ჩამოიტვირთა, ამიტომ მისი ტრანსკრიფცია ვერ მოხერხდა.",
-    "callTranscriptChooseLanguage": "რა ენაზე საუბრობდით?",
-    "callTranscriptSubscribeForTranscription": "გამოიწერეთ ტრანსკრიფციისთვის",
-    "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა",
+    "callTranscriptNotSubscribed": "{name}-ს ამ ზარის განმავლობაში არ ჰქონდა გამოწერა, ამიტომ ნათქვამი არ ჩაიწერა.",
     "joinYourCourse": "შეუერთდი შენს კურსს",
     "courseCodeJoinExplanation": "შედი ან დარეგისტრირდი და ჩვენ გამოვიყენებთ შენს კურსის კოდს, რათა ავტომატურად დაგამატოთ კურსზე.",
     "courseCodeLabel": "კურსის კოდი",
     "courseCodeSaved": "კურსის კოდი {code} შენახულია",
     "courseCodeSavedExplanation": "დარეგისტრირდი ან შედით სისტემაში და ჩვენ დაგამატებთ თქვენს კურსზე.",
-    "missionDueDate": "ვადა {date}, {time}"
+    "moderationRefusedContactDetails": "თქვენი შეტყობინება არ გაიგზავნა. ავტომატურმა ფილტრმა აღმოაჩინა საკონტაქტო მონაცემები, მაგალითად, ტელეფონის ნომერი. გთხოვთ, წაშალოთ ისინი და სცადოთ ხელახლა.",
+    "moderationRefusedProfanity": "თქვენი შეტყობინება არ გაიგზავნა. ავტომატურმა ფილტრმა აღმოაჩინა სიტყვა, რომლის გამოყენებაც ჩატში დაუშვებელია. გთხოვთ, შეცვალოთ ის და სცადოთ ხელახლა.",
+    "callTranscriptTranscribeButton": "ტრანსკრიფცია",
+    "callTranscriptAudioUnavailable": "{name}-ის შენახული ჩანაწერი ვერ ჩამოიტვირთა, ამიტომ მისი ტრანსკრიფცია ვერ მოხერხდა.",
+    "callTranscriptChooseLanguage": "რა ენაზე საუბრობდით?",
+    "callTranscriptSubscribeForTranscription": "გამოიწერეთ ტრანსკრიფციისთვის",
+    "unlockCallTranscript": "ზარის ტრანსკრიფციის განბლოკვა",
+    "activitySummaryUpdateFailed": "ამ შეჯამების განახლება ვერ მოხერხდა.",
+    "courseNotFound": "კურსი ვერ მოიძებნა",
+    "askTeacherForNewCourse": "სთხოვეთ თქვენს მასწავლებელს, აირჩიოს ახალი კურსი.",
+    "pickNewCoursePlan": "აირჩიეთ კურსის ახალი გეგმა.",
+    "ssoNetworkBlockedTitle": "შესვლის საიტი მიუწვდომელია",
+    "ssoNetworkBlockedDesc": "ეს ქსელი ხელს გვიშლის {provider}-თან დაკავშირებაში თქვენი შესასვლელად. სკოლისა და ოფისის Wi-Fi ხშირად ბლოკავს მას. შეგიძლიათ დარეგისტრირდეთ ელფოსტით, ან გადახვიდეთ სხვა ქსელზე და სცადოთ ხელახლა.",
+    "ssoTryAnyway": "მაინც სცადე",
+    "publicCoursesFilterTooltip": "აჩვენე მხოლოდ კურსები, რომლებზეც ნებისმიერს შეუძლია გაწევრიანება",
+    "restrictedCoursesFilterTooltip": "აჩვენე მხოლოდ კურსები, რომლებზეც გაწევრიანების მოთხოვნაა საჭირო",
+    "viewImageLabel": "სურათის ნახვა",
+    "reportSent": "მოხსენება გაგზავნილია",
+    "reportNotSent": "თქვენი მოხსენების გაგზავნა ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა.",
+    "reportPointerMessage": "შეტყობინება მოხსენებულია {courseName}-ში — იხილეთ უსაფრთხოება",
+    "learningObjective": "სწავლის მიზანი",
+    "learningObjectives": "სწავლის მიზნები",
+    "missionNofM": "მისია {index} / {count}",
+    "xpTowardObjective": "{xp} / {threshold} XP ამ მიზნისკენ",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "კურსი დასრულებულია!",
+    "courseCompleteDesc": "თქვენ დაასრულეთ ყველა {count} მიზანი ამ კურსში. განაგრძეთ ვარჯიში, რათა შეინარჩუნოთ ნასწავლი.",
+    "practiceObjective": "ივარჯიშეთ ამ მიზანზე",
+    "otherActivities": "სხვა აქტივობები",
+    "objectiveCircleComplete": "მისია {index}: დასრულებულია",
+    "objectiveCircleUpNext": "მისია {index}: შემდეგი",
+    "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად",
+    "andCertifyIMeetTheMinimumAge": " და ვადასტურებ, რომ ვარ მინიმუმ 13 წლის, ან ჩემს ქვეყანაში მოთხოვნილი მინიმალური ასაკის, თუ ის უფრო მაღალია.",
+    "filteredNetworkBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ს",
+    "filteredNetworkPartlyBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ის ნაწილს",
+    "filteredNetworkWhatCanIDo": "რა შემიძლია გავაკეთო?",
+    "filteredNetworkPhoneAdvice": "გამორთეთ Wi-Fi და ამის ნაცვლად გამოიყენეთ მობილური ინტერნეტი.",
+    "filteredNetworkComputerAdvice": "ამ Wi-Fi-ის ნაცვლად დაუკავშირდით თქვენი ტელეფონის ცხელ წერტილს.",
+    "filteredNetworkItHeading": "მასწავლებლებისა და IT პერსონალისთვის",
+    "filteredNetworkItBody": "სთხოვეთ თქვენს IT გუნდს, დაუშვას ეს დომენები:",
+    "filteredNetworkAskForHelp": "სთხოვეთ Pangea-ს დახმარება",
+    "filteredNetworkHelpExplanation": "ჩვენ გამოგიგზავნით ელფოსტას, რათა დაგეხმაროთ Pangea Chat-ის ამ ქსელში მუშაობაში.",
+    "filteredNetworkHelpWaiting": "თქვენი მოთხოვნა გაიგზავნება, როგორც კი დაუკავშირდებით.",
+    "filteredNetworkHelpSent": "გაგზავნილია. ჩვენ დაგიკავშირდებით ელფოსტით.",
+    "filteredNetworkHelpRefused": "თქვენი მოთხოვნის გაგზავნა ვერ მოხერხდა. გთხოვთ, გამოაგზავნოთ ელფოსტა support@pangea.chat-ზე.",
+    "filteredNetworkVideoBlocked": "ეს ქსელი ბლოკავს ვიდეოებს.",
+    "filteredNetworkImagesBlocked": "ეს ქსელი ბლოკავს სურათებს.",
+    "filteredNetworkMapBlocked": "ეს ქსელი ბლოკავს რუკას.",
+    "callFullScreenTitle": "ზარები მთელ ეკრანზე",
+    "callFullScreenMessage": "ზარი შემოვიდა, როცა Pangea Chat დახურული იყო, მაგრამ თქვენს ტელეფონს შეეძლო მხოლოდ მცირე შეტყობინების ჩვენება. დაუშვით სრულეკრანიანი ზარები, რათა შემდეგი ზარი მთელ ეკრანზე გამოჩნდეს, მაშინაც კი, როცა თქვენი ტელეფონი დაბლოკილია.",
+    "callMicrophoneTitle": "გამოიყენეთ მიკროფონი ზარებისთვის",
+    "callMicrophoneMessage": "Pangea Chat-ს სჭირდება თქვენი მიკროფონი ზარებისთვის, მათ შორის ზარებისთვის, რომლებსაც უპასუხებთ დაბლოკილი ეკრანიდან.",
+    "callMicrophoneOffTitle": "თქვენი ზარი არ დაკავშირდა",
+    "callMicrophoneOffMessage": "Pangea Chat-ს არ შეუძლია თქვენი მიკროფონის გამოყენება. შეეხეთ, რომ ჩართოთ პარამეტრებში.",
+    "goalsCompletedOfTotal": "{earned} of {total} მიზანი შესრულებულია",
+    "goalsCompletedInLanguage": "{language} ენაზე შესრულებული მიზნები",
+    "sessionXpTowardObjective": "{xp} XP ამ სესიაზე; {remaining} მეტი და მიზანი შესრულდება",
+    "mapCreditsLabel": "რუკის კრედიტები: Stadia Maps, OpenMapTiles და OpenStreetMap",
+    "activityLaunchFindingCourses": "თქვენი კურსების მოძიება…",
+    "activityLaunchCreatingRoom": "თქვენი აქტივობის შექმნა…",
+    "activityLaunchOpeningRoom": "თქვენი აქტივობის გახსნა…",
+    "playWithOthers": "ითამაშეთ სხვებთან ერთად",
+    "openRole": "ღია: {role}",
+    "waitingFor": "ლოდინი {duration}",
+    "onlineInCourse": "{count} ონლაინ {course}-ში",
+    "newCourseChat": "ახალი კურსის ჩეთი",
+    "customCourseStepDesc": "კურსი არის სასაუბრო აქტივობების ნაკრები, რომელიც მიჰყვება თქვენს სახელმძღვანელოს, რათა თქვენმა სტუდენტებმა ერთად შეასრულონ საშინაო დავალების სახით.",
+    "reopenAppToFinishSwitching": "გთხოვთ, მთლიანად დახუროთ აპლიკაცია და ხელახლა გახსნათ, რომ გადართვა დასრულდეს.",
+    "teamCode": "გუნდის კოდი",
+    "connectionOffline": "თქვენ ხართ ხაზგარეშე. Pangea Chat ხელახლა დაუკავშირდება, როდესაც თქვენი კავშირი აღდგება.",
+    "connectionUnreachable": "Pangea Chat-თან დაკავშირება შეუძლებელია. ხელახლა ვცდილობ…",
+    "connectionBackOnline": "ხაზზე დაბრუნდა",
+    "missionDueDate": "ვადა {date}, {time}",
+    "callNotificationsTitle": "ზარები დარეკავს",
+    "callNotificationsMessage": "ზარები დარეკავს შეტყობინებების სახით. დაუშვით შეტყობინებები, რათა თქვენი ტელეფონი დარეკოს ზარის დროს, მაშინაც კი, როდესაც Pangea Chat დახურულია ან თქვენი ტელეფონი დაბლოკილია.",
+    "callNotificationsMissedMessage": "ზარი შემოვიდა, როდესაც Pangea Chat დახურული იყო, მაგრამ თქვენს ტელეფონს არ შეეძლო დარეკვა, რადგან შეტყობინებები გამორთულია. დაუშვით შეტყობინებები, რათა შემდეგი ზარი დარეკოს.",
+    "connectionPracticeVocab": "ივარჯიშე ლექსიკაში, სანამ ელოდები",
+    "offlinePracticeNote": "ხაზგარეშე რეჟიმში ხარ. შენი პასუხები აიტვირთება, როცა დაბრუნდები.",
+    "offlinePracticeSavedNote": "შენახულია ამ მოწყობილობაზე. შენი XP აიტვირთება, როცა ონლაინ რეჟიმში დაბრუნდები.",
+    "offlinePracticeNothingSaved": "ამ მოწყობილობაზე საკმარისი არ არის შენახული ოფლაინ პრაქტიკისთვის. სცადეთ ხელახლა, როცა ონლაინ იქნებით.",
+    "missionNumber": "მისია {index}",
+    "xpToYourStar": "{xp} XP თქვენს ვარსკვლავამდე",
+    "missionStarEarned": "ვარსკვლავი მოპოვებულია!",
+    "xpFromChats": "ჩეთები {xp}",
+    "xpFromGoals": "მიზნები {xp}",
+    "xpFromPractice": "პრაქტიკა {xp}",
+    "playMission": "თამაში",
+    "wordCount": "{count, plural, =1{1 სიტყვა} other{{count} სიტყვა}}",
+    "continueActivity": "გაგრძელება",
+    "noObjectiveActivitiesYet": "ამ მიზნისთვის აქტივობა ჯერ არ დაგისრულებიათ. დაიწყეთ თქვენი კურსიდან.",
+    "objectiveNotInYourCourses": "ეს მიზანი არ არის თქვენს არცერთ კურსში.",
+    "objectiveActivityCount": "{count, plural, =0{აქტივობები ჯერ არ არის} =1{1 აქტივობა შესრულებულია} other{{count} აქტივობა შესრულებულია}}",
+    "activityCompleted": "დასრულებულია",
+    "completedTimes": "დასრულებულია {count} ჯერ",
+    "classLocation": "კლასის მდებარეობა",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "საუბარი {xp}",
+    "xpIncludingGoals": "მათ შორის {xp} მიზნებიდან",
+    "missionOtherLanguageNotice": "ეს მისია {language} კურსიდანაა. მასზე თქვენი პროგრესი მხოლოდ მაშინ ჩაითვლება, თუ {language}-ს სწავლობთ.",
+    "missionLanguageMismatchDesc": "ეს მისია {language} კურსიდანაა. გსურთ, სამიზნე ენა {language}-ზე შეცვალოთ?",
+    "xpBySkillTitle": "უნარების მიხედვით",
+    "missionNextActivity": "შემდეგი აქტივობა",
+    "missionContinueActivity": "აქტივობის გაგრძელება",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "დასრულებულია ამ კურსში ({num})",
+    "otherCoursesSessions": "სხვა კურსები ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, მიღებულია {xp} XP",
+    "currentMission": "მიმდინარე მისია"
 }

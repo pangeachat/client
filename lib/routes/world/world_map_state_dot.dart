@@ -13,6 +13,7 @@ import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/routes/world/world_map_star_dot.dart';
+import 'package:fluffychat/widgets/completed_stamp.dart';
 
 class WorldMapDot extends StatefulWidget {
   final QuestActivityCard card;
@@ -21,9 +22,9 @@ class WorldMapDot extends StatefulWidget {
   final VoidCallback onTap;
   final bool pinged;
 
-  /// The learner's completion tier, used only by the `inProgress` (trail) state
-  /// to draw a plain star vs a super star (world-map.instructions.md, "Goal
-  /// Progress"). `none` for every other state.
+  /// Whether the learner has a saved session of this activity — the completed
+  /// stamp that rides behind a live pin (world-map.instructions.md, "Goal
+  /// Progress").
   final ActivityStarLevel starLevel;
 
   /// The learner's own live room for this activity, when it has unread
@@ -200,31 +201,34 @@ class _WorldMapDotState extends State<WorldMapDot>
   }
 
   /// A completed activity keeps its star visible even when a NEW session turns
-  /// the pin joinable/ongoing: the live pin sits on top and the gold star (or
-  /// super star) rides BEHIND it, so the learner still sees they've done this one
+  /// the pin joinable/ongoing: the live pin sits on top and the completed stamp
+  /// rides BEHIND it, so the learner still sees they've done this one
   /// before (world-map.instructions.md, "Goal Progress"). Non-interactive — the
   /// live pin owns the tap. Pass-through when there's nothing to show behind:
   /// `inProgress` already renders AS the star, and `available` never carries
-  /// completion (it becomes `inProgress` the moment a role is done).
+  /// completion (it becomes `inProgress` once a session is saved).
   Widget _withCompletionStar(Widget pin) {
+    // Under the activity-card map a live pin never carries the played mark:
+    // its card shows the stamp on its photo, and a mid pin doesn't mark it
+    // (#9559).
+    if (kMapActivityCards) return pin;
     final state = widget.state;
     if (widget.starLevel == ActivityStarLevel.none ||
         state == ActivityPinState.inProgress ||
         state == ActivityPinState.available) {
       return pin;
     }
-    final superStar = widget.starLevel == ActivityStarLevel.superStar;
     // Mid teardrop: the star peeks out from beneath the tip (shared with the
     // large card via [CompletionStarBelowTip], so both read identically). A small
     // dot (8) is smaller than the star, so the dot just sits centred on top of it.
     if (widget.tier == PinTier.mid) {
-      return CompletionStarBelowTip(superStar: superStar, child: pin);
+      return CompletionStarBelowTip(child: pin);
     }
     return Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.center,
       children: [
-        IgnorePointer(child: WorldMapStarDot(superStar: superStar)),
+        const IgnorePointer(child: WorldMapStarDot()),
         pin,
       ],
     );
@@ -297,12 +301,12 @@ class _MediumDotContent extends StatelessWidget {
       participantsTotal,
     );
 
-    // The glyph takes the state's own ink (ActivityPinState.onBodyColor):
-    // white on the joinable green, onPrimaryContainer on the ongoing purple
-    // (white sat at 3.17:1 on the lighter dark-mode purple, under the 4.5:1 the
-    // "num/num" count needs), and on `available` white in dark but the
-    // dark-purple label colour in light, where the pale fill is too pale for
-    // white (#8243, #8968; world-map.instructions.md, "Pin state").
+    // The glyph takes the state's own ink (ActivityPinState.onBodyColor),
+    // each a PangeaColors activity role pair (#9559): white on the open
+    // green and on the ongoing purple, which is toned to carry white at the
+    // 4.5:1 the "num/num" count needs, and on `available` white in dark but a
+    // dark purple in light, where the pale fill is too pale for white
+    // (#8243, #8968; world-map.instructions.md, "Pin state").
     final glyphColor = state.onBodyColor(context);
 
     // The icon and (for joinable/ongoing-pending) the "num/num" count stack
@@ -353,7 +357,10 @@ class _MediumDotContent extends StatelessWidget {
           Positioned(
             top: -2,
             right: -2,
-            child: UnreadBubble(room: unreadRoom!, borderColor: Colors.white),
+            child: UnreadBubble(
+              room: unreadRoom!,
+              borderColor: PinSize.markRing,
+            ),
           ),
       ],
     );
@@ -363,11 +370,9 @@ class _MediumDotContent extends StatelessWidget {
 /// The pin body, keyed off the colour [state]:
 ///
 ///  - **inProgress** renders as a completed-activity **star dot** (the state
-///    _is_ the progress): a gold star (one role done) or a shine super star
-///    (all roles — [starLevel]) in a base-colour circle, in place of the
-///    coloured body. Binary, never a partial fraction — a pin shows no progress
-///    until a full role is complete (world-map.instructions.md, "Goal
-///    Progress");
+///    _is_ the progress): the completed stamp in place of the coloured body.
+///    Binary, never a partial fraction — a pin shows no progress until a
+///    session is saved (world-map.instructions.md, "Goal Progress");
 ///  - every other state renders as a [state]-coloured body with a white border
 ///    and an optional [glyph] centered on its circular head. When
 ///    [pointHeight] is 0 the body is a plain circle (small tier); otherwise a
@@ -404,14 +409,31 @@ class _WorldMapStateDot extends StatelessWidget {
     final bodyColor = _bodyColor(context);
 
     if (state == ActivityPinState.inProgress) {
-      // Progress is the state: a fixed-size star dot replaces the coloured body
-      // — a super star (all roles) or a plain star (one role). No shape/point.
-      final superStar = starLevel == ActivityStarLevel.superStar;
-      final star = WorldMapStarDot(superStar: superStar);
+      // Progress is the state: the completed stamp replaces the coloured
+      // body. At the small tier it is a single gold ring round a check, the
+      // size of the other dots (#9559) — the stamp's second ring would leave
+      // no room for the check at that size.
+      if (pointHeight <= 0) {
+        final size = diameter + 2 * borderWidth;
+        return _withSelectedGlow(
+          context,
+          CustomPaint(
+            size: Size.square(size),
+            painter: _SmallPlayedDotPainter(
+              ink: CompletedStamp.inkOf(Theme.of(context)),
+              paper: CompletedStamp.paperOf(Theme.of(context)),
+              shadow: Theme.of(
+                context,
+              ).colorScheme.shadow.withValues(alpha: 0.38),
+            ),
+          ),
+          size,
+        );
+      }
       return _withSelectedGlow(
         context,
-        star,
-        WorldMapStarDot.diameterFor(superStar),
+        const WorldMapStarDot(),
+        PinSize.starDotDiameter,
       );
     }
 
@@ -423,7 +445,7 @@ class _WorldMapStateDot extends StatelessWidget {
         decoration: BoxDecoration(
           color: bodyColor,
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white, width: borderWidth),
+          border: Border.all(color: PinSize.markRing, width: borderWidth),
           boxShadow: const [BoxShadow(blurRadius: 3, color: Colors.black38)],
         ),
         child: glyph == null ? null : Center(child: glyph),
@@ -512,4 +534,58 @@ class _WorldMapStateDot extends StatelessWidget {
       ],
     );
   }
+}
+
+/// The small-tier played dot (#9559): the completed stamp's coin reduced to
+/// one ring round a check, at a small dot's size.
+class _SmallPlayedDotPainter extends CustomPainter {
+  final Color ink;
+  final Color paper;
+  final Color shadow;
+
+  _SmallPlayedDotPainter({
+    required this.ink,
+    required this.paper,
+    required this.shadow,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final c = size.center(Offset.zero);
+    final r = size.shortestSide / 2;
+    canvas.drawCircle(
+      c.translate(0, 0.6),
+      r,
+      Paint()
+        ..color = shadow
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1.2),
+    );
+    canvas.drawCircle(c, r, Paint()..color = paper);
+    final stroke = (r * 0.28).clamp(1.0, 2.0);
+    canvas.drawCircle(
+      c,
+      r - stroke / 2,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = stroke
+        ..color = ink,
+    );
+    final check = Path()
+      ..moveTo(c.dx - r * 0.42, c.dy + r * 0.02)
+      ..lineTo(c.dx - r * 0.12, c.dy + r * 0.32)
+      ..lineTo(c.dx + r * 0.44, c.dy - r * 0.28);
+    canvas.drawPath(
+      check,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = stroke
+        ..strokeCap = StrokeCap.round
+        ..strokeJoin = StrokeJoin.round
+        ..color = ink,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _SmallPlayedDotPainter old) =>
+      old.ink != ink || old.paper != paper || old.shadow != shadow;
 }

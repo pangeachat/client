@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-05 12:30:49.865281",
+    "@@last_modified": "2026-10-22 09:50:29.495674",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -1510,11 +1510,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Синхронізація… Будь ласка, зачекайте.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "noMatrixServer": "{server1} не є сервером matrix, використовувати {server2} натомість?",
     "@noMatrixServer": {
         "type": "String",
@@ -2608,15 +2603,6 @@
     "@otherPartyNotLoggedIn": {},
     "previous": "Попередній",
     "@previous": {},
-    "synchronizingPleaseWaitCounter": " Синхронізація… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "newChatRequest": "📩 Новий запит на спілкування",
     "@newChatRequest": {},
     "allDevices": "Усім пристроям",
@@ -2627,8 +2613,6 @@
     "@crossVerifiedDevices": {},
     "open": "Відкрити",
     "@open": {},
-    "waitingForServer": "Очікування сервера...",
-    "@waitingForServer": {},
     "shareKeysWithDescription": "Яким пристроям довіряти, щоб вони могли читати ваші повідомлення в зашифрованих бесідах?",
     "@shareKeysWithDescription": {},
     "verifiedDevicesOnly": "Лише верифіковані пристрої",
@@ -2914,7 +2898,6 @@
     "errorDisableIGCClassDesc": "Допомога з граматикою вимкнена для курсу, у якому ведеться цей чат.",
     "error405Desc": "Будь ласка, налаштуйте свої мови у Головному меню > Налаштування навчання.",
     "termsAndConditions": "Умовами та положеннями",
-    "andCertifyIAmAtLeast13YearsOfAge": " і підтверджую, що мені щонайменше 16 років.",
     "error502504Desc": "Інструменти перекладу та граматики можуть працювати повільно або бути недоступними, поки боти Pangea наздоганяють.",
     "error404Desc": "Бот Pangea не впевнений, як це перекласти...",
     "errorPleaseRefresh": "Ми цим займаємося! Будь ласка, перезавантажте сторінку та спробуйте ще раз.",
@@ -3222,9 +3205,6 @@
     "why": "Чому?",
     "definition": "Визначення",
     "reportToTeacher": "Кому ви хочете повідомити це повідомлення?",
-    "reportMessageTitle": "{reportingUserId} повідомив повідомлення від {reportedUserId} у чаті {roomName}",
-    "reportMessageBody": "Повідомлення: {reportedMessage}\nПричина: {reason}",
-    "noTeachersFound": "Вчителі не знайдені для повідомлення",
     "trialExpiration": "Ваша безкоштовна пробна версія закінчується {expiration}",
     "freeTrialDesc": "Нові користувачі отримують тижневу безкоштовну пробну версію Pangea Chat",
     "activateTrial": "Безкоштовна 7-денна пробна версія",
@@ -3701,10 +3681,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4951,35 +4927,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7937,11 +7884,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Чат з підтримкою",
     "@chatWithSupport": {
         "type": "String",
@@ -7962,8 +7904,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Увімкнути допомогу в написанні",
-    "autoIGCToolDescription": "Автоматично запускати інструменти Pangea Chat для виправлення надісланих повідомлень на цільову мову.",
+    "autoIGCToolName": "Автоматична перевірка при надсиланні",
+    "autoIGCToolDescription": "Перевіряйте повідомлення на наявність помилок, коли надсилаєте його. Якщо цю функцію вимкнено, натисніть кнопку помічника з написання, щоб перевірити повідомлення самостійно.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9420,7 +9362,6 @@
     "activityLoadFailed": "Не вдалося завантажити активність. Перевірте своє з'єднання та спробуйте ще раз.",
     "levelUpChip": "Рівень {level}!",
     "missingCourseOutline": "Цей курс більше недоступний",
-    "missingCourseOutlineCta": "Цей курс більше недоступний. Виберіть новий план курсу.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9445,10 +9386,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9844,7 +9781,6 @@
     "constructLevelFlowers": "Квіти, опановані слова",
     "filterAndSearch": "Фільтрувати та шукати",
     "participantsOfTotal": "{filled} з {total} гравців",
-    "mapAttributionLabel": "Учасники OpenStreetMap, авторські права та ліцензія",
     "seeAll": "Переглянути всі",
     "seeAllSection": "Переглянути всі {section}",
     "showMoreOptionsHint": "показати більше опцій",
@@ -9962,25 +9898,126 @@
     "summaryFeedbackReceived": "Дякуємо! Ми отримали ваш відгук.",
     "summaryFeedbackFailed": "Не вдалося надіслати ваш відгук. Будь ласка, спробуйте ще раз.",
     "summaryFeedbackProcessing": "Надсилаємо ваш відгук та оновлюємо підсумок…",
-    "ssoNetworkBlockedTitle": "Сайт входу недоступний",
-    "ssoNetworkBlockedDesc": "Ця мережа не дозволяє нам зв’язатися з {provider} для входу. Шкільний та офісний Wi-Fi часто блокують його. Ви можете зареєструватися за допомогою електронної пошти або переключитися на іншу мережу та спробувати ще раз.",
-    "ssoTryAnyway": "Все одно спробувати",
-    "callTranscriptNotSubscribed": "Під час цього дзвінка {name} не мав підписки, тому розмова не була розшифрована.",
     "callTranscriptTranscribing": "Все ще розшифровую запис від {name}…",
     "callTranscriptSeekTo": "Відтворити з {time}",
     "callTranscriptRecordings": "Записи",
     "callTranscriptFullCall": "Повний дзвінок",
     "callTranscriptPreparingRecording": "Підготовка повного запису…",
     "callTranscriptNoRecording": "Немає запису повного дзвінка.",
-    "callTranscriptTranscribeButton": "Транскрибувати",
-    "callTranscriptAudioUnavailable": "Збережений запис від {name} не вдалося завантажити, тому його неможливо транскрибувати.",
-    "callTranscriptChooseLanguage": "Якою мовою розмовляли?",
-    "callTranscriptSubscribeForTranscription": "Підписатися на транскрипцію",
-    "unlockCallTranscript": "Розблокувати стенограму дзвінка",
+    "callTranscriptNotSubscribed": "Під час цього дзвінка {name} не мав підписки, тому розмова не була розшифрована.",
     "joinYourCourse": "Приєднатися до курсу",
     "courseCodeJoinExplanation": "Увійдіть або зареєструйтеся, і ми використаємо ваш код курсу, щоб автоматично додати вас до нього.",
     "courseCodeLabel": "Код курсу",
     "courseCodeSaved": "Код курсу {code} збережено",
     "courseCodeSavedExplanation": "Зареєструйтеся або увійдіть, і ми додамо вас до вашого курсу.",
-    "missionDueDate": "Термін: {date}, {time}"
+    "moderationRefusedContactDetails": "Ваше повідомлення не було надіслано. Автоматичний фільтр виявив контактні дані, наприклад номер телефону. Видаліть їх і спробуйте ще раз.",
+    "moderationRefusedProfanity": "Ваше повідомлення не було надіслано. Автоматичний фільтр виявив слово, яке ми не дозволяємо в чаті. Змініть його і спробуйте ще раз.",
+    "callTranscriptTranscribeButton": "Транскрибувати",
+    "callTranscriptAudioUnavailable": "Збережений запис від {name} не вдалося завантажити, тому його неможливо транскрибувати.",
+    "callTranscriptChooseLanguage": "Якою мовою розмовляли?",
+    "callTranscriptSubscribeForTranscription": "Підписатися на транскрипцію",
+    "unlockCallTranscript": "Розблокувати стенограму дзвінка",
+    "activitySummaryUpdateFailed": "Не вдалося оновити зведення.",
+    "courseNotFound": "Курс не знайдено",
+    "askTeacherForNewCourse": "Попросіть свого вчителя обрати новий курс.",
+    "pickNewCoursePlan": "Виберіть новий план курсу.",
+    "ssoNetworkBlockedTitle": "Сайт входу недоступний",
+    "ssoNetworkBlockedDesc": "Ця мережа не дозволяє нам зв’язатися з {provider} для входу. Шкільний та офісний Wi-Fi часто блокують його. Ви можете зареєструватися за допомогою електронної пошти або переключитися на іншу мережу та спробувати ще раз.",
+    "ssoTryAnyway": "Все одно спробувати",
+    "publicCoursesFilterTooltip": "Показувати лише курси, до яких може приєднатися будь-хто",
+    "restrictedCoursesFilterTooltip": "Показувати лише курси, до яких потрібно запитувати дозвіл на приєднання",
+    "viewImageLabel": "Переглянути зображення",
+    "reportSent": "Звіт надіслано",
+    "reportNotSent": "Ваш звіт не вдалося надіслати. Перевірте з’єднання та спробуйте ще раз.",
+    "reportPointerMessage": "Повідомлення було надіслано в {courseName} — дивіться Безпека",
+    "learningObjective": "Ціль навчання",
+    "learningObjectives": "Цілі навчання",
+    "missionNofM": "Місія {index} із {count}",
+    "xpTowardObjective": "{xp} із {threshold} XP до цієї цілі",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Курс завершено!",
+    "courseCompleteDesc": "Ви виконали всі {count} цілі в цьому курсі. Продовжуйте практикуватися, щоб зберегти те, що ви вивчили.",
+    "practiceObjective": "Практикувати цю ціль",
+    "otherActivities": "Інші активності",
+    "objectiveCircleComplete": "Місія {index}: виконано",
+    "objectiveCircleUpNext": "Місія {index}: наступна",
+    "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
+    "andCertifyIMeetTheMinimumAge": " і підтверджую, що мені виповнилося 13 років, або мінімальний вік, встановлений у моїй країні, якщо він вищий.",
+    "filteredNetworkBlockedTitle": "Ця мережа блокує Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ця мережа частково блокує Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Що я можу зробити?",
+    "filteredNetworkPhoneAdvice": "Вимкніть Wi-Fi і використовуйте мобільний інтернет.",
+    "filteredNetworkComputerAdvice": "Підключіться до точки доступу свого телефону замість цього Wi-Fi.",
+    "filteredNetworkItHeading": "Для вчителів та ІТ-персоналу",
+    "filteredNetworkItBody": "Попросіть свою ІТ-команду дозволити ці домени:",
+    "filteredNetworkAskForHelp": "Звернутися по допомогу до Pangea",
+    "filteredNetworkHelpExplanation": "Ми надішлемо вам електронний лист, щоб допомогти налаштувати Pangea Chat у цій мережі.",
+    "filteredNetworkHelpWaiting": "Ваш запит буде надіслано, щойно ви підключитеся.",
+    "filteredNetworkHelpSent": "Надіслано. Ми зв'яжемося з вами електронною поштою.",
+    "filteredNetworkHelpRefused": "Не вдалося надіслати ваш запит. Будь ласка, напишіть на support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ця мережа блокує відео.",
+    "filteredNetworkImagesBlocked": "Ця мережа блокує зображення.",
+    "filteredNetworkMapBlocked": "Ця мережа блокує карту.",
+    "callFullScreenTitle": "Дозволити дзвінкам дзвонити на весь екран",
+    "callFullScreenMessage": "Надійшов дзвінок, коли Pangea Chat було закрито, але ваш телефон міг показати лише невелике сповіщення про нього. Дозвольте дзвінки на весь екран, щоб наступний дзвінок відображався на всьому екрані, навіть коли ваш телефон заблоковано.",
+    "callMicrophoneTitle": "Використовуйте мікрофон для дзвінків",
+    "callMicrophoneMessage": "Pangea Chat потрібен ваш мікрофон для дзвінків, включно з тими, на які ви відповідаєте з екрана блокування.",
+    "callMicrophoneOffTitle": "Ваш дзвінок не з’єднався",
+    "callMicrophoneOffMessage": "Pangea Chat не може використовувати ваш мікрофон. Натисніть, щоб увімкнути його в Налаштуваннях.",
+    "goalsCompletedOfTotal": "{earned} з {total} цілей виконано",
+    "goalsCompletedInLanguage": "Цілі, виконані в {language}",
+    "sessionXpTowardObjective": "{xp} XP за цю сесію; ще {remaining} — і ціль буде досягнуто",
+    "mapCreditsLabel": "Авторство карти: Stadia Maps, OpenMapTiles та OpenStreetMap",
+    "activityLaunchFindingCourses": "Пошук ваших курсів…",
+    "activityLaunchCreatingRoom": "Створення вашої активності…",
+    "activityLaunchOpeningRoom": "Відкриття вашої активності…",
+    "playWithOthers": "Грати з іншими",
+    "openRole": "Відкрито: {role}",
+    "waitingFor": "Очікування {duration}",
+    "onlineInCourse": "{count} онлайн у {course}",
+    "newCourseChat": "Новий чат курсу",
+    "customCourseStepDesc": "Курс — це набір розмовних вправ, які відповідають вашому підручнику, для ваших учнів, щоб вони виконували їх разом як домашнє завдання.",
+    "reopenAppToFinishSwitching": "Повністю закрийте програму та відкрийте її знову, щоб завершити перемикання.",
+    "teamCode": "Код команди",
+    "connectionOffline": "Ви офлайн. Pangea Chat відновить з'єднання, коли ваше підключення відновиться.",
+    "connectionUnreachable": "Не вдається зв'язатися з Pangea Chat. Повторна спроба…",
+    "connectionBackOnline": "Знову онлайн",
+    "missionDueDate": "Термін: {date}, {time}",
+    "callNotificationsTitle": "Дозволити дзвінкам дзвонити",
+    "callNotificationsMessage": "Дзвінки дзвонять як сповіщення. Дозвольте сповіщення, щоб ваш телефон дзвонив під час дзвінка, навіть коли Pangea Chat закритий або ваш телефон заблокований.",
+    "callNotificationsMissedMessage": "Надійшов дзвінок, коли Pangea Chat був закритий, але ваш телефон не міг дзвонити, оскільки сповіщення вимкнені. Дозвольте сповіщення, щоб наступний дзвінок дзвонив.",
+    "connectionPracticeVocab": "Практикуйте словниковий запас, поки чекаєте",
+    "offlinePracticeNote": "Офлайн. Ваші відповіді завантажаться, коли ви повернетеся.",
+    "offlinePracticeSavedNote": "Збережено на цьому пристрої. Ваш XP завантажиться, коли ви знову будете онлайн.",
+    "offlinePracticeNothingSaved": "На цьому пристрої недостатньо збережених даних для офлайн-практики. Спробуйте ще раз, коли будете онлайн.",
+    "missionNumber": "Місія {index}",
+    "xpToYourStar": "{xp} XP до вашої зірки",
+    "missionStarEarned": "Зірку здобуто!",
+    "xpFromChats": "Чати {xp}",
+    "xpFromGoals": "Цілі {xp}",
+    "xpFromPractice": "Практика {xp}",
+    "playMission": "Грати",
+    "wordCount": "{count, plural, =1{1 слово} other{{count} слів}}",
+    "continueActivity": "Продовжити",
+    "noObjectiveActivitiesYet": "Ви ще не виконали жодної вправи для цієї цілі. Розпочніть її зі свого курсу.",
+    "objectiveNotInYourCourses": "Цієї цілі немає в жодному з ваших курсів.",
+    "objectiveActivityCount": "{count, plural, =0{Ще немає вправ} =1{Виконано 1 вправу} other{Виконано {count} вправ}}",
+    "activityCompleted": "Завершено",
+    "completedTimes": "Завершено {count} разів",
+    "classLocation": "Місце проведення заняття",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Розмова {xp}",
+    "xpIncludingGoals": "включно з {xp} за цілі",
+    "missionOtherLanguageNotice": "Ця місія з курсу {language}. Ваш прогрес зараховується лише під час вивчення {language}.",
+    "missionLanguageMismatchDesc": "Ця місія з курсу {language}. Змінити цільову мову на {language}?",
+    "xpBySkillTitle": "За навичками",
+    "missionNextActivity": "Наступна вправа",
+    "missionContinueActivity": "Продовжити вправу",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Завершено в цьому курсі ({num})",
+    "otherCoursesSessions": "Інші курси ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, зароблено {xp} XP",
+    "currentMission": "Поточна місія"
 }

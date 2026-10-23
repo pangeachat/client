@@ -55,6 +55,14 @@ class CallTranscriptContent {
   /// already exist.
   final String? deviceId;
 
+  /// The device this half's stretch of the call CONTINUED FROM, and the one
+  /// it was HANDED OVER TO, when the learner moved the call between their
+  /// devices (client#9173). Device ids of the same sender, so a reader can
+  /// chain one person's halves in order. Optional and validated exactly as
+  /// [deviceId] is; absent means no move on that side of this half.
+  final String? continuedFrom;
+  final String? handedOverTo;
+
   /// Whose speech this half is, WHEN THE WRITER IS NOT THE SPEAKER.
   ///
   /// OPTIONAL on the wire, in both directions, and the whole reason it exists
@@ -155,6 +163,8 @@ class CallTranscriptContent {
     required this.accounting,
     this.langCode,
     this.deviceId,
+    this.continuedFrom,
+    this.handedOverTo,
     this.spokenBy,
     this.sourceAudioEventId,
     this.clockAnchor,
@@ -336,6 +346,8 @@ class CallTranscriptContent {
     ...accounting.toJson(),
     if (langCode != null) 'lang_code': langCode,
     'device_id': ?usableDeviceId(deviceId),
+    'continued_from': ?usableDeviceId(continuedFrom),
+    'handed_over_to': ?usableDeviceId(handedOverTo),
     // Written through the same guard [fromJson] reads through, so a malformed
     // claim is never emitted. Omitted entirely when absent — a legacy half and
     // a peer half are distinguished by the PRESENCE of these keys, so an empty
@@ -538,6 +550,8 @@ class CallTranscriptContent {
       // grouping. What it costs instead is stated where [deviceId] is declared
       // -- such a half keys alike with every other half that did not say.
       deviceId: usableDeviceId(content['device_id']),
+      continuedFrom: usableDeviceId(content['continued_from']),
+      handedOverTo: usableDeviceId(content['handed_over_to']),
       // A malformed `spokenBy` is ABSENT, on the same terms as a malformed
       // device id: it reads as the legacy "the writer is the speaker", which
       // costs nothing but the peer-attribution the value could never have

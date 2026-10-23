@@ -11,8 +11,11 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -20,6 +23,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/tutorials/tutorial_constants.dart';
@@ -316,6 +320,9 @@ class WorldMapController extends State<WorldMap>
     // sessions are open to join (#8895).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
     DiscoveredSessionsCache.instance.addListener(_onDiscoveredPreviewsChanged);
+    // Practice outside a session moves Mission XP with no sync behind it, so
+    // the ranking re-resolves from the shared XP cache directly.
+    MissionXpCache.instance.addListener(_recomputeProgress);
 
     final user = MatrixState.pangeaController.userController;
 
@@ -475,12 +482,14 @@ class WorldMapController extends State<WorldMap>
     DiscoveredSessionsCache.instance.removeListener(
       _onDiscoveredPreviewsChanged,
     );
+    MissionXpCache.instance.removeListener(_recomputeProgress);
     _routeProvider?.removeListener(_scheduleOrientationCheck);
     _unregisterTutorialLaunchers();
     // Reset the process-global so a pin selected at teardown (e.g. logging out
     // with a pin sheet up) can't strand a stale `true` that would hide the bottom
     // nav at the bare map on the next mount. See `routing.instructions.md`.
     WorldMapPinsManager.set(false);
+    _pinsManager.dispose();
     super.dispose();
   }
 
@@ -565,13 +574,68 @@ class WorldMapController extends State<WorldMap>
   /// whether the learner can refine them (world-map.instructions.md). The one
   /// scope-dependent term is the settings-fixed language, applied on the world
   /// map only; see [WorldMapFilterState.include].
-  List<QuestActivityCard> get visiblePins => _pinsManager.filteredPins(
-    (c) => _filterState.include(
-      c,
-      _pinsManager.displayStateOf(c),
-      applyLanguage: isWorld,
-    ),
-  );
+  List<QuestActivityCard> get visiblePins {
+    final filtered = _pinsManager.filteredPins(
+      (c) => _filterState.include(
+        c,
+        _pinsManager.displayStateOf(c),
+        applyLanguage: isWorld,
+      ),
+    );
+    final mission = selectedMissionId;
+    if (mission == null) return filtered;
+    // The Mission scope: a joined course's map shows only the Mission on
+    // show — the one picked in the circles, else the current
+    // one. Nothing from another Mission, live sessions and the learner's own
+    // included; a coursemate's ping elsewhere shows as a bell on that
+    // Mission's circle instead.
+    return [
+      for (final c in filtered)
+        if (c.learningObjectiveRefs.contains(mission)) c,
+    ];
+  }
+
+  /// The Mission a joined course's map is narrowed to: the one picked in the
+  /// URL, else the course's current Mission. Null on the world map, in a
+  /// preview, and before the course's progression resolves.
+  String? get selectedMissionId {
+    final mapContext = MapContextController.notifier.value;
+    if (mapContext is! CourseMapContext ||
+        mapContext is CoursePreviewMapContext) {
+      return null;
+    }
+    return mapContext.selectedMissionIn(
+      _pinsManager.progression.forCourse(mapContext.spaceId),
+    );
+  }
+
+  /// The activities the learner has a saved session of — where the map draws
+  /// its completed stamps.
+  Set<String> get savedActivityIds => _pinsManager.savedActivityIds;
+
+  /// The words the learner used most across their saved sessions of
+  /// [activityId], up to [limit] — what a completed stamp on the map webs out
+  /// under [kStampWordWeb]. Read from the summaries saved with the sessions.
+  List<String> stampWordsFor(String activityId, {int limit = 5}) {
+    final client = _client;
+    final userId = client?.userID;
+    if (client == null || userId == null) return const [];
+    final archive = client.ownAnalyticsRoomLocalByL2?.archivedActivities ?? [];
+    final xpByLemma = <String, int>{};
+    for (final room in archive) {
+      if (room.activityId != activityId) continue;
+      final usages = room.activitySummaryAnalytics?.constructs[userId]?.usages;
+      if (usages == null) continue;
+      for (final usage in usages.values) {
+        if (usage.identifier.type != ConstructTypeEnum.vocab) continue;
+        final lemma = usage.identifier.lemma;
+        xpByLemma[lemma] = (xpByLemma[lemma] ?? 0) + usage.totalXP;
+      }
+    }
+    final ranked = xpByLemma.entries.toList()
+      ..sort((a, b) => b.value.compareTo(a.value));
+    return [for (final e in ranked.take(limit)) e.key];
+  }
 
   /// Why the view shows no matches — the empty-view card's diagnosis
   /// ([MapEmptyVerdict]), shared by the wide overlay and the narrow bar so the
@@ -609,8 +673,8 @@ class WorldMapController extends State<WorldMap>
         : MapEmptyVerdict.noActivities;
   }
 
-  int? activityStarsEarned(String activityId) =>
-      _pinsManager.activityStarsEarned(activityId);
+  int? activityXpEarned(String activityId) =>
+      _pinsManager.activityXpEarned(activityId);
 
   /// The activity's resolved display state / star tier — delegated to the pins
   /// manager so the view and the Status filter read one source (reuse).

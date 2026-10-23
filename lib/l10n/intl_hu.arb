@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-05 12:30:40.544357",
+    "@@last_modified": "2026-10-22 09:50:14.497900",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -1930,11 +1930,6 @@
     "@sender": {},
     "makeAdminDescription": "Miután a felhasználót aminisztrátorrá lépteti elő, nem fogja tudni visszavonni döntését, mivel azonos jogosultsági szinttel fognak rendelkezni.",
     "@makeAdminDescription": {},
-    "synchronizingPleaseWait": "Szinkronizálás... Kérem, várjon.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "pushRules": "Push szabályok",
     "@pushRules": {
         "type": "String",
@@ -2564,15 +2559,6 @@
     },
     "oneOfYourDevicesIsNotVerified": "Egyik készüléke nem hitelesített",
     "@oneOfYourDevicesIsNotVerified": {},
-    "synchronizingPleaseWaitCounter": " Szinkronizálás… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "calculatingFileSize": "Fájl méret kalkulálása...",
     "@calculatingFileSize": {},
     "prepareSendingAttachment": "Felkészülés csatolmány küldésére...",
@@ -2634,8 +2620,6 @@
     "@strikeThrough": {},
     "otherPartyNotLoggedIn": "A másik fél jelenleg nincs bejelentkezve, emiatt nem fogadhat üzeneteket!",
     "@otherPartyNotLoggedIn": {},
-    "waitingForServer": "Várakozás a szerverre...",
-    "@waitingForServer": {},
     "open": "Megnyitás",
     "@open": {},
     "notificationRuleSuppressNotices": "Minden automata üzenetet némít",
@@ -2817,7 +2801,6 @@
     "errorDisableIGCClassDesc": "A nyelvtani segítség kikapcsolva van az adott kurzushoz tartozó csevegésben.",
     "error405Desc": "Kérjük, állítsa be nyelveit a Főmenü > Tanulási Beállítások menüpontban.",
     "termsAndConditions": "Felhasználási feltételeket",
-    "andCertifyIAmAtLeast13YearsOfAge": " és igazolom, hogy legalább 16 éves vagyok.",
     "error502504Desc": "A fordítási és nyelvtani eszközök lehetnek lassúak vagy nem elérhetők, amíg a Pangea botok utolérik magukat.",
     "error404Desc": "A Pangea Bot nem biztos benne, hogyan fordítsa ezt...",
     "errorPleaseRefresh": "Ellenőrizzük a problémát! Kérjük, frissítse az oldalt és próbálja újra.",
@@ -3125,9 +3108,6 @@
     "why": "Miért?",
     "definition": "Definíció",
     "reportToTeacher": "Kinek szeretnéd jelenteni az üzenetet?",
-    "reportMessageTitle": "{reportingUserId} jelentett egy üzenetet a(z) {reportedUserId} felhasználótól a(z) {roomName} csoportban",
-    "reportMessageBody": "Üzenet: {reportedMessage}\nOk: {reason}",
-    "noTeachersFound": "Nincs tanár, akinek jelenthetnél",
     "trialExpiration": "Az ingyenes próbálkozásod lejár {expiration}",
     "freeTrialDesc": "Új felhasználók egy hetes ingyenes próbát kapnak a Pangea Chat alkalmazáshoz",
     "activateTrial": "Ingyenes 7 napos próba",
@@ -3624,10 +3604,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4874,35 +4850,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7860,11 +7807,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Használja az aktivitás képet csevegési háttérként",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Csevegés a Támogatással",
     "@chatWithSupport": {
         "type": "String",
@@ -7885,8 +7827,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Írássegítő engedélyezése",
-    "autoIGCToolDescription": "Automatikusan futtassa a Pangea Chat eszközöket a küldött üzenetek célnyelvre történő javításához.",
+    "autoIGCToolName": "Automatikus ellenőrzés küldéskor",
+    "autoIGCToolDescription": "Ellenőrizze üzenetét hibákra, amikor megérinti a küldés gombot. Ha ez ki van kapcsolva, érintse meg az írássegítő gombot az üzenet saját ellenőrzéséhez.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9523,7 +9465,6 @@
     "activityLoadFailed": "Nem sikerült betölteni a tevékenységet. Ellenőrizze a kapcsolatát, és próbálja újra.",
     "levelUpChip": "Szint {level}!",
     "missingCourseOutline": "Ez a kurzus már nem elérhető",
-    "missingCourseOutlineCta": "Ez a kurzus már nem elérhető. Válasszon egy új kurzustervet.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9548,10 +9489,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9947,7 +9884,6 @@
     "constructLevelFlowers": "Virágok, elsajátított szavak",
     "filterAndSearch": "Szűrés és keresés",
     "participantsOfTotal": "{filled}/{total} játékos",
-    "mapAttributionLabel": "OpenStreetMap közreműködők, szerzői jogok és licenc",
     "seeAll": "Összes megtekintése",
     "seeAllSection": "Összes {section} megtekintése",
     "showMoreOptionsHint": "további lehetőségek megjelenítése",
@@ -10065,25 +10001,126 @@
     "summaryFeedbackReceived": "Köszönjük! Megkaptuk visszajelzését.",
     "summaryFeedbackFailed": "Nem sikerült elküldeni visszajelzését. Kérjük, próbálja újra.",
     "summaryFeedbackProcessing": "Visszajelzés küldése és az összefoglaló frissítése…",
-    "ssoNetworkBlockedTitle": "Bejelentkezési oldal nem elérhető",
-    "ssoNetworkBlockedDesc": "Ez a hálózat nem engedi, hogy elérjük a(z) {provider} szolgáltatót a bejelentkezéshez. Az iskolai és irodai Wi-Fi gyakran blokkolja. E-mail címmel is regisztrálhat, vagy válthat másik hálózatra, és újra megpróbálhatja.",
-    "ssoTryAnyway": "Mégis megpróbálom",
-    "callTranscriptNotSubscribed": "{name} nem rendelkezett előfizetéssel a hívás során, így a beszélgetés nem került átírásra.",
     "callTranscriptTranscribing": "Még mindig átírjuk a felvételt {name} felhasználótól…",
     "callTranscriptSeekTo": "Lejátszás {time} időponttól",
     "callTranscriptRecordings": "Felvételek",
     "callTranscriptFullCall": "Teljes hívás",
     "callTranscriptPreparingRecording": "A teljes felvétel előkészítése…",
     "callTranscriptNoRecording": "Nincs felvétel a teljes hívásról.",
-    "callTranscriptTranscribeButton": "Átírás",
-    "callTranscriptAudioUnavailable": "A {name} felvételét nem sikerült letölteni, ezért nem lehetett átírni.",
-    "callTranscriptChooseLanguage": "Milyen nyelven beszéltek?",
-    "callTranscriptSubscribeForTranscription": "Feliratkozás az átírásra",
-    "unlockCallTranscript": "Hívás átirat feloldása",
+    "callTranscriptNotSubscribed": "{name} nem rendelkezett előfizetéssel a hívás során, így a beszélgetés nem került átírásra.",
     "joinYourCourse": "Csatlakozás a kurzushoz",
     "courseCodeJoinExplanation": "Jelentkezz be vagy regisztrálj, és a kurzuskódod segítségével automatikusan hozzáadunk a kurzushoz.",
     "courseCodeLabel": "Kurzuskód",
     "courseCodeSaved": "A(z) {code} kurzuskód elmentve",
     "courseCodeSavedExplanation": "Regisztrálj vagy jelentkezz be, és hozzáadunk a kurzusodhoz.",
-    "missionDueDate": "Esedékes: {date}, {time}"
+    "moderationRefusedContactDetails": "Az üzenet nem került elküldésre. Az automatikus szűrő elérhetőségi adatokat, például telefonszámot talált. Kérjük, távolítsa el ezeket, és próbálja újra.",
+    "moderationRefusedProfanity": "Az üzenet nem került elküldésre. Az automatikus szűrő olyan szót talált, amelyet nem engedélyezünk a csevegésben. Kérjük, módosítsa, és próbálja újra.",
+    "callTranscriptTranscribeButton": "Átírás",
+    "callTranscriptAudioUnavailable": "A {name} felvételét nem sikerült letölteni, ezért nem lehetett átírni.",
+    "callTranscriptChooseLanguage": "Milyen nyelven beszéltek?",
+    "callTranscriptSubscribeForTranscription": "Feliratkozás az átírásra",
+    "unlockCallTranscript": "Hívás átirat feloldása",
+    "activitySummaryUpdateFailed": "Ezt az összefoglalót nem sikerült frissíteni.",
+    "courseNotFound": "A kurzus nem található",
+    "askTeacherForNewCourse": "Kérd meg a tanárodat, hogy válasszon egy új kurzust.",
+    "pickNewCoursePlan": "Válassz új tanfolyamtervet.",
+    "ssoNetworkBlockedTitle": "Bejelentkezési oldal nem elérhető",
+    "ssoNetworkBlockedDesc": "Ez a hálózat nem engedi, hogy elérjük a(z) {provider} szolgáltatót a bejelentkezéshez. Az iskolai és irodai Wi-Fi gyakran blokkolja. E-mail címmel is regisztrálhat, vagy válthat másik hálózatra, és újra megpróbálhatja.",
+    "ssoTryAnyway": "Mégis megpróbálom",
+    "publicCoursesFilterTooltip": "Csak olyan kurzusok megjelenítése, amelyekhez bárki csatlakozhat",
+    "restrictedCoursesFilterTooltip": "Csak olyan kurzusok megjelenítése, amelyekhez engedélyt kell kérni",
+    "viewImageLabel": "Kép megtekintése",
+    "reportSent": "Jelentés elküldve",
+    "reportNotSent": "A jelentés nem küldhető el. Ellenőrizze az internetkapcsolatát, és próbálja újra.",
+    "reportPointerMessage": "Üzenet jelentve a {courseName} kurzusban – lásd a Biztonság menüpontot",
+    "learningObjective": "Tanulási cél",
+    "learningObjectives": "Tanulási célok",
+    "missionNofM": "{index}/{count} küldetés",
+    "xpTowardObjective": "{xp}/{threshold} XP a cél felé",
+    "xpOfThreshold": "{xp}/{threshold} XP",
+    "courseComplete": "A kurzus kész!",
+    "courseCompleteDesc": "Teljesítetted mind a(z) {count} célt ebben a kurzusban. Gyakorolj tovább, hogy megőrizd a tanultakat.",
+    "practiceObjective": "Gyakorold ezt a célt",
+    "otherActivities": "Egyéb tevékenységek",
+    "objectiveCircleComplete": "Küldetés {index}: kész",
+    "objectiveCircleUpNext": "Küldetés {index}: következik",
+    "useActivityImageAsChatBackground": "Tevékenység képének használata chat háttérként",
+    "andCertifyIMeetTheMinimumAge": " és igazolom, hogy betöltöttem a 13. életévemet, vagy az országomban előírt magasabb minimális életkort.",
+    "filteredNetworkBlockedTitle": "Ez a hálózat blokkolja a Pangea Chatet",
+    "filteredNetworkPartlyBlockedTitle": "Ez a hálózat részben blokkolja a Pangea Chatet",
+    "filteredNetworkWhatCanIDo": "Mit tehetek?",
+    "filteredNetworkPhoneAdvice": "Kapcsolja ki a Wi-Fi-t, és használjon mobiladatot helyette.",
+    "filteredNetworkComputerAdvice": "Csatlakozzon a telefonja hotspotjához a Wi-Fi helyett.",
+    "filteredNetworkItHeading": "Tanároknak és informatikai személyzetnek",
+    "filteredNetworkItBody": "Kérje meg az informatikai csapatot, hogy engedélyezze ezeket a domaineket:",
+    "filteredNetworkAskForHelp": "Kérjen segítséget a Pangeától",
+    "filteredNetworkHelpExplanation": "E-mailben felvesszük Önnel a kapcsolatot, hogy segítsünk a Pangea Chat működésében ezen a hálózaton.",
+    "filteredNetworkHelpWaiting": "Kérését elküldjük, amint csatlakozik.",
+    "filteredNetworkHelpSent": "Elküldve. E-mailben felvesszük Önnel a kapcsolatot.",
+    "filteredNetworkHelpRefused": "Nem tudtuk elküldeni kérését. Kérjük, írjon e-mailt a support@pangea.chat címre.",
+    "filteredNetworkVideoBlocked": "Ez a hálózat blokkolja a videókat.",
+    "filteredNetworkImagesBlocked": "Ez a hálózat blokkolja a képeket.",
+    "filteredNetworkMapBlocked": "Ez a hálózat blokkolja a térképet.",
+    "callFullScreenTitle": "Hívások teljes képernyőn",
+    "callFullScreenMessage": "Hívás érkezett, miközben a Pangea Chat zárva volt, de a telefon csak egy kis értesítést tudott megjeleníteni róla. Engedélyezze a teljes képernyős hívásokat, hogy a következő hívás a teljes képernyőn jelenjen meg, még akkor is, ha a telefon zárolva van.",
+    "callMicrophoneTitle": "Használja a mikrofonját hívásokhoz",
+    "callMicrophoneMessage": "A Pangea Chatnek szüksége van a mikrofonjára a hívásokhoz, beleértve a zárolási képernyőről fogadott hívásokat is.",
+    "callMicrophoneOffTitle": "A hívás nem jött létre",
+    "callMicrophoneOffMessage": "A Pangea Chat nem tudja használni a mikrofonját. Koppintson ide a beállításokban való bekapcsoláshoz.",
+    "goalsCompletedOfTotal": "{earned}/{total} cél teljesítve",
+    "goalsCompletedInLanguage": "Teljesített célok – {language}",
+    "sessionXpTowardObjective": "{xp} XP ezen a foglalkozáson; még {remaining} a cél teljesítéséhez",
+    "mapCreditsLabel": "Térkép forrása: Stadia Maps, OpenMapTiles és OpenStreetMap",
+    "activityLaunchFindingCourses": "Keresem a kurzusaidat…",
+    "activityLaunchCreatingRoom": "Létrehozom a tevékenységedet…",
+    "activityLaunchOpeningRoom": "Megnyitom a tevékenységedet…",
+    "playWithOthers": "Játssz másokkal",
+    "openRole": "Nyitott: {role}",
+    "waitingFor": "Várakozás: {duration}",
+    "onlineInCourse": "{count} online a {course} kurzuson",
+    "newCourseChat": "Új tanfolyami csevegés",
+    "customCourseStepDesc": "A kurzus beszélgetési tevékenységek gyűjteménye, amelyek a tankönyvedet követik, és amelyeket a diákjaid együtt végezhetnek el házi feladatként.",
+    "reopenAppToFinishSwitching": "A váltás befejezéséhez zárd be teljesen az alkalmazást, majd nyisd meg újra.",
+    "teamCode": "Csapatkód",
+    "connectionOffline": "Offline vagy. A Pangea Chat újra csatlakozik, amint visszatér a kapcsolatod.",
+    "connectionUnreachable": "Nem érhető el a Pangea Chat. Újrapróbálkozás…",
+    "connectionBackOnline": "Újra online",
+    "missionDueDate": "Esedékes: {date}, {time}",
+    "callNotificationsTitle": "Hívások csörgetése",
+    "callNotificationsMessage": "A hívások értesítésként csörögnek. Engedélyezze az értesítéseket, hogy a telefonja csörögjön hívás esetén, még akkor is, ha a Pangea Chat zárva van, vagy a telefonja le van zárva.",
+    "callNotificationsMissedMessage": "Hívás érkezett, miközben a Pangea Chat zárva volt, de a telefonja nem tudott csörögni, mert az értesítések ki vannak kapcsolva. Engedélyezze az értesítéseket, hogy a következő hívás csörögjön.",
+    "connectionPracticeVocab": "Gyakorold a szókincset, amíg vársz",
+    "offlinePracticeNote": "Offline. A válaszaid feltöltődnek, ha visszatérsz.",
+    "offlinePracticeSavedNote": "Mentve ezen az eszközön. Az XP-d feltöltődik, ha újra online leszel.",
+    "offlinePracticeNothingSaved": "Nincs elég tartalom mentve ezen az eszközön az offline gyakorláshoz. Próbáld újra, ha online leszel.",
+    "missionNumber": "Küldetés: {index}",
+    "xpToYourStar": "{xp} XP a csillagodhoz",
+    "missionStarEarned": "Csillag szerezve!",
+    "xpFromChats": "Csevegések {xp}",
+    "xpFromGoals": "Célok {xp}",
+    "xpFromPractice": "Gyakorlás {xp}",
+    "playMission": "Játék",
+    "wordCount": "{count, plural, =1{1 szó} other{{count} szó}}",
+    "continueActivity": "Folytatás",
+    "noObjectiveActivitiesYet": "Még nem végeztél el tevékenységet ehhez a célhoz. Kezdj egyet a kurzusaid közül.",
+    "objectiveNotInYourCourses": "Ez a cél nincs benne egyik kurzusodban sem.",
+    "objectiveActivityCount": "{count, plural, =0{Még nincs tevékenység} =1{1 tevékenység elvégezve} other{{count} tevékenység elvégezve}}",
+    "activityCompleted": "Elkészült",
+    "completedTimes": "{count} alkalommal elvégezve",
+    "classLocation": "Az óra helye",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Beszélgetés {xp}",
+    "xpIncludingGoals": "beleértve {xp} a célokból",
+    "missionOtherLanguageNotice": "Ez a küldetés egy {language} nyelvű kurzusból származik. Az ezen elért haladásod csak akkor számít, ha {language} nyelvet tanulsz.",
+    "missionLanguageMismatchDesc": "Ez a küldetés egy {language} nyelvű kurzusból származik. Átváltod a célnyelvedet {language} nyelvre?",
+    "xpBySkillTitle": "Készség szerint",
+    "missionNextActivity": "Következő tevékenység",
+    "missionContinueActivity": "Tevékenység folytatása",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Befejezve ebben a kurzusban ({num})",
+    "otherCoursesSessions": "Egyéb kurzusok ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP szerezve",
+    "currentMission": "Jelenlegi küldetés"
 }

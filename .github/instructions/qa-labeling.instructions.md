@@ -1,11 +1,11 @@
 ---
 applyTo: ""
-description: "How a client issue's testing platforms are chosen — the platform checklist, who fills it in, and how it becomes needs-testing labels at close."
+description: "How a client issue's testing platforms are chosen — the platform checklist, who fills it in, and how it becomes needs-testing labels at close — plus the standing responsiveness item injected beside it."
 ---
 
 # QA Platform Labeling (Client)
 
-Extends the org-wide [qa-testing-process](../../../.github/.github/instructions/qa-testing-process.instructions.md), which owns the label vocabulary, the tested-on-staging flip, and the QA-complete definition that gates a release. This doc covers one client-specific thing: **which** of the four platform labels an issue gets, rather than always getting all four.
+Extends the org-wide [qa-testing-process](../../../.github/.github/instructions/qa-testing-process.instructions.md), which owns the label vocabulary, the tested-on-staging flip, and the QA-complete definition that gates a release. This doc covers the two sections injected into every client issue: mainly **which** of the four platform labels an issue gets, rather than always getting all four, and the standing responsiveness item.
 
 Client issues carried all four since the auto-labeling workflow was introduced. Only 47 of 1,235 files under `lib/` contain platform-conditional code, so most changes were being verified four times against identical code paths, and the queue grew faster than it could drain. This narrows the set to what a change can actually break.
 
@@ -30,6 +30,10 @@ A workflow appends it on `issues: opened` and re-appends it on `issues: edited` 
 The `<!-- pangea-qa-platforms -->` marker is what both workflows key on. **NEVER remove or repurpose it** — the close-time rule finds the section by that marker, and an issue without it falls back to all four labels.
 
 The section deliberately does **not** live in `.github/ISSUE_TEMPLATE/`. Those three templates are canonically owned by `pangeachat/workflows` and re-synced weekly, so a local edit would reopen a drift PR every Monday.
+
+## The responsiveness item
+
+The same workflow adds a second marked block, `<!-- pangea-qa-responsiveness -->`, with one standing checkbox for the QA tester. What it covers, and who checks what, is owned by [interaction-latency](interaction-latency.instructions.md). It is skipped on issues that opt out with `No client testing needed`, because those never reach a tester. It never affects labels, because the close-time rule reads only the platform lines.
 
 ## Who fills it in, and when
 
@@ -86,7 +90,7 @@ Absence of `kIsWeb` does not prove a change renders identically everywhere: Flut
 
 | Piece | File |
 |---|---|
-| Injects and re-injects the section | [`qa_platforms_section.yml`](../workflows/qa_platforms_section.yml) — `issues: [opened, edited]`, no-ops when the marker is present so the bot's own edit terminates the loop |
+| Injects and re-injects both sections | [`qa_platforms_section.yml`](../workflows/qa_platforms_section.yml) — `issues: [opened, edited]`, no-ops when the marker is present so the bot's own edit terminates the loop |
 | Merge-time warning | [`qa_scope.yml`](../workflows/qa_scope.yml) — `pull_request: [opened, edited, reopened, synchronize]` |
 | Close-time mapping | [`issue_to_test_check.yaml`](../workflows/issue_to_test_check.yaml) — a `compute` job parses the section and passes the result to the reusable workflow's `needs_testing_labels` input |
 

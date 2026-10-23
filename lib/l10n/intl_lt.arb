@@ -859,11 +859,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sinchronizuojama… Prašome palaukti.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "verify": "Patvirtinti",
     "@verify": {
         "type": "String",
@@ -2084,7 +2079,6 @@
     "sendImages": "Siųsti {count} nuotrauką",
     "setChatDescription": "Nustatyti pokalbio aprašymą",
     "presencesToggle": "Rodyti būsenos žinutes iš kitų vartotojų",
-    "synchronizingPleaseWaitCounter": "Sinchronizuojama… ({percentage}%)",
     "invitedBy": "📩 Pakvietė {user}",
     "hasKnocked": "🚪 {user} pasibeldė",
     "knock": "Klausyti",
@@ -2219,7 +2213,6 @@
     "previous": "Ankstesnis",
     "otherPartyNotLoggedIn": "Kita šalis šiuo metu neprisijungusi ir todėl negali gauti žinučių!",
     "open": "Atidaryti",
-    "waitingForServer": "Laukiama serverio...",
     "newChatRequest": "📩 Naujas pokalbio užklausimas",
     "contentNotificationSettings": "Turinio pranešimų nustatymai",
     "generalNotificationSettings": "Bendrieji pranešimų nustatymai",
@@ -2323,7 +2316,6 @@
     "errorDisableIGCClassDesc": "Gramatikos pagalba išjungta kursui, kuriame yra šis pokalbis.",
     "error405Desc": "Prašome nustatyti savo kalbas pagrindiniame meniu > Mokymosi nustatymai.",
     "termsAndConditions": " Paslaugų teikimo sąlygomis",
-    "andCertifyIAmAtLeast13YearsOfAge": " ir patvirtinu, kad man yra bent 16 metų.",
     "error502504Desc": "Vertimo ir gramatikos įrankiai gali būti lėti arba neprieinami, kol Pangea robotai pasivys.",
     "error404Desc": "Pangea robotas nėra tikras, kaip tai išversti...",
     "errorPleaseRefresh": "Mes tai tikriname! Prašome įkelti dar kartą ir bandyti iš naujo.",
@@ -2631,9 +2623,6 @@
     "why": "Kodėl?",
     "definition": "Apibrėžimas",
     "reportToTeacher": "Kam norite pranešti apie šį pranešimą?",
-    "reportMessageTitle": "{reportingUserId} pranešė apie žinutę iš {reportedUserId} pokalbyje {roomName}",
-    "reportMessageBody": "Žinutė: {reportedMessage}\nPriežastis: {reason}",
-    "noTeachersFound": "Nerasta mokytojų pranešti",
     "trialExpiration": "Jūsų nemokamas bandomasis laikotarpis baigsis {expiration}",
     "freeTrialDesc": "Nauji vartotojai gauna vienos savaitės nemokamą Pangea Chat bandomąjį laikotarpį",
     "activateTrial": "Aktyvuoti 7 dienų nemokamą bandomąjį laikotarpį",
@@ -2967,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-05 12:30:42.164915",
+    "@@last_modified": "2026-10-22 09:50:19.036392",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3230,14 +3219,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@invitedBy": {
         "type": "String",
@@ -3867,10 +3848,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@newChatRequest": {
         "type": "String",
         "placeholders": {}
@@ -4302,10 +4279,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5552,35 +5525,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8538,11 +8482,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Naudoti veiklos vaizdą kaip pokalbio foną",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Pokalbis su palaikymu",
     "@chatWithSupport": {
         "type": "String",
@@ -8563,8 +8502,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Įgalinti rašymo pagalbą",
-    "autoIGCToolDescription": "Automatiškai paleisti Pangea Chat įrankius, kad ištaisytumėte išsiųstas žinutes į tikslinę kalbą.",
+    "autoIGCToolName": "Automatinis tikrinimas išsiunčiant",
+    "autoIGCToolDescription": "Patikrinkite, ar jūsų žinutėje nėra klaidų, kai paspausite siuntimo mygtuką. Kai ši funkcija išjungta, patys paspauskite rašymo pagalbos mygtuką, kad patikrintumėte žinutę.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10201,7 +10140,6 @@
     "activityLoadFailed": "Nepavyko įkelti veiklos. Patikrinkite savo ryšį ir bandykite dar kartą.",
     "levelUpChip": "Lygis {level}!",
     "missingCourseOutline": "Šis kursas nebėra prieinamas",
-    "missingCourseOutlineCta": "Šis kursas nebėra prieinamas. Pasirinkite naują kurso planą.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10226,10 +10164,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10625,7 +10559,6 @@
     "constructLevelFlowers": "Gėlės, įvaldyti žodžiai",
     "filterAndSearch": "Filtruoti ir ieškoti",
     "participantsOfTotal": "{filled} iš {total} žaidėjų",
-    "mapAttributionLabel": "„OpenStreetMap“ bendradarbiai, autorių teisės ir licencija",
     "seeAll": "Žr. visus",
     "seeAllSection": "Žr. visus {section}",
     "showMoreOptionsHint": "rodyti daugiau parinkčių",
@@ -10743,25 +10676,126 @@
     "summaryFeedbackReceived": "Ačiū! Gavome jūsų atsiliepimą.",
     "summaryFeedbackFailed": "Nepavyko išsiųsti jūsų atsiliepimo. Bandykite dar kartą.",
     "summaryFeedbackProcessing": "Siunčiamas jūsų atsiliepimas ir atnaujinama santrauka…",
-    "ssoNetworkBlockedTitle": "Prisijungimo svetainė nepasiekiama",
-    "ssoNetworkBlockedDesc": "Šis tinklas neleidžia mums pasiekti {provider}, kad galėtumėte prisijungti. Mokyklos ir biuro „Wi-Fi“ dažnai blokuoja prieigą. Galite prisiregistruoti el. paštu arba prisijungti prie kito tinklo ir bandyti dar kartą.",
-    "ssoTryAnyway": "Vis tiek bandyti",
-    "callTranscriptNotSubscribed": "{name} neturėjo prenumeratos šio skambučio metu, todėl tai, kas buvo pasakyta, nebuvo transkribuota.",
     "callTranscriptTranscribing": "Vis dar transkribuojamas įrašas iš {name}…",
     "callTranscriptSeekTo": "Leisti nuo {time}",
     "callTranscriptRecordings": "Įrašai",
     "callTranscriptFullCall": "Visas pokalbis",
     "callTranscriptPreparingRecording": "Ruošiamas visas įrašas…",
     "callTranscriptNoRecording": "Nėra viso pokalbio įrašo.",
-    "callTranscriptTranscribeButton": "Transkribuoti",
-    "callTranscriptAudioUnavailable": "Įrašas iš {name} nebuvo atsisiųstas, todėl jo nebuvo galima transkribuoti.",
-    "callTranscriptChooseLanguage": "Kokia kalba buvo kalbama?",
-    "callTranscriptSubscribeForTranscription": "Prenumeruoti transkripciją",
-    "unlockCallTranscript": "Atrakinti pokalbio transkripciją",
+    "callTranscriptNotSubscribed": "{name} neturėjo prenumeratos šio skambučio metu, todėl tai, kas buvo pasakyta, nebuvo transkribuota.",
     "joinYourCourse": "Prisijunkite prie savo kurso",
     "courseCodeJoinExplanation": "Prisijunkite arba užsiregistruokite, ir mes naudosime jūsų kurso kodą, kad automatiškai jus pridėtume prie jūsų kurso.",
     "courseCodeLabel": "Kurso kodas",
     "courseCodeSaved": "Kurso kodas {code} išsaugotas",
     "courseCodeSavedExplanation": "Užsiregistruokite arba prisijunkite ir mes jus pridėsime prie jūsų kurso.",
-    "missionDueDate": "Terminas {date}, {time}"
+    "moderationRefusedContactDetails": "Jūsų žinutė nebuvo išsiųsta. Automatinis filtras aptiko kontaktinius duomenis, pvz., telefono numerį. Pašalinkite juos ir bandykite dar kartą.",
+    "moderationRefusedProfanity": "Jūsų žinutė nebuvo išsiųsta. Automatinis filtras aptiko žodį, kurio neleidžiame naudoti pokalbyje. Pakeiskite jį ir bandykite dar kartą.",
+    "callTranscriptTranscribeButton": "Transkribuoti",
+    "callTranscriptAudioUnavailable": "Įrašas iš {name} nebuvo atsisiųstas, todėl jo nebuvo galima transkribuoti.",
+    "callTranscriptChooseLanguage": "Kokia kalba buvo kalbama?",
+    "callTranscriptSubscribeForTranscription": "Prenumeruoti transkripciją",
+    "unlockCallTranscript": "Atrakinti pokalbio transkripciją",
+    "activitySummaryUpdateFailed": "Šio suvestinės nepavyko atnaujinti.",
+    "courseNotFound": "Kursas nerastas",
+    "askTeacherForNewCourse": "Paprašykite mokytojo parinkti naują kursą.",
+    "pickNewCoursePlan": "Pasirinkite naują kurso planą.",
+    "ssoNetworkBlockedTitle": "Prisijungimo svetainė nepasiekiama",
+    "ssoNetworkBlockedDesc": "Šis tinklas neleidžia mums pasiekti {provider}, kad galėtumėte prisijungti. Mokyklos ir biuro „Wi-Fi“ dažnai blokuoja prieigą. Galite prisiregistruoti el. paštu arba prisijungti prie kito tinklo ir bandyti dar kartą.",
+    "ssoTryAnyway": "Vis tiek bandyti",
+    "publicCoursesFilterTooltip": "Rodyti tik kursus, prie kurių gali prisijungti bet kas",
+    "restrictedCoursesFilterTooltip": "Rodyti tik kursus, prie kurių norint prisijungti reikia prašyti leidimo",
+    "viewImageLabel": "Peržiūrėti nuotrauką",
+    "reportSent": "Pranešimas išsiųstas",
+    "reportNotSent": "Nepavyko išsiųsti jūsų pranešimo. Patikrinkite ryšį ir bandykite dar kartą.",
+    "reportPointerMessage": "Pranešta apie žinutę {courseName} – žr. Sauga",
+    "learningObjective": "Mokymosi tikslas",
+    "learningObjectives": "Mokymosi tikslai",
+    "missionNofM": "Misija {index} iš {count}",
+    "xpTowardObjective": "{xp} iš {threshold} XP link šio tikslo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Kursas baigtas!",
+    "courseCompleteDesc": "Įvykdėte visus {count} šio kurso tikslus. Toliau praktikuokitės, kad išlaikytumėte tai, ką išmokote.",
+    "practiceObjective": "Praktikuoti šį tikslą",
+    "otherActivities": "Kita veikla",
+    "objectiveCircleComplete": "Misija {index}: atlikta",
+    "objectiveCircleUpNext": "Misija {index}: toliau",
+    "useActivityImageAsChatBackground": "Naudoti veiklos paveikslėlį kaip pokalbio foną",
+    "andCertifyIMeetTheMinimumAge": " ir patvirtinu, kad man yra bent 13 metų arba mano šalyje reikalaujamas minimalus amžius, jei jis yra didesnis.",
+    "filteredNetworkBlockedTitle": "Šis tinklas blokuoja „Pangea Chat“",
+    "filteredNetworkPartlyBlockedTitle": "Šis tinklas blokuoja dalį „Pangea Chat“",
+    "filteredNetworkWhatCanIDo": "Ką galiu daryti?",
+    "filteredNetworkPhoneAdvice": "Išjunkite „Wi-Fi“ ir naudokite mobiliojo ryšio duomenis.",
+    "filteredNetworkComputerAdvice": "Vietoj šio „Wi-Fi“ prisijunkite prie savo telefono viešosios interneto prieigos taško.",
+    "filteredNetworkItHeading": "Mokytojams ir IT personalui",
+    "filteredNetworkItBody": "Paprašykite savo IT komandos leisti šiuos domenus:",
+    "filteredNetworkAskForHelp": "Paprašykite „Pangea“ pagalbos",
+    "filteredNetworkHelpExplanation": "Atsiųsime jums el. laišką, kad padėtume „Pangea Chat“ veikti šiame tinkle.",
+    "filteredNetworkHelpWaiting": "Jūsų užklausa bus išsiųsta, kai tik prisijungsite.",
+    "filteredNetworkHelpSent": "Išsiųsta. Susisieksime el. paštu.",
+    "filteredNetworkHelpRefused": "Nepavyko išsiųsti jūsų užklausos. Prašome rašyti el. paštu support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Šis tinklas blokuoja vaizdo įrašus.",
+    "filteredNetworkImagesBlocked": "Šis tinklas blokuoja paveikslėlius.",
+    "filteredNetworkMapBlocked": "Šis tinklas blokuoja žemėlapį.",
+    "callFullScreenTitle": "Leisti skambučiams skambėti per visą ekraną",
+    "callFullScreenMessage": "Skambutis atėjo, kai „Pangea Chat“ buvo uždaryta, tačiau jūsų telefonas galėjo rodyti tik nedidelį pranešimą apie jį. Leiskite skambučiams skambėti per visą ekraną, kad kitas skambutis skambėtų per visą ekraną, net kai jūsų telefonas yra užrakintas.",
+    "callMicrophoneTitle": "Naudokite mikrofoną skambučiams",
+    "callMicrophoneMessage": "„Pangea Chat“ reikalingas jūsų mikrofonas skambučiams, įskaitant tuos, kuriuos atsiliepiate iš užrakinimo ekrano.",
+    "callMicrophoneOffTitle": "Nepavyko prisijungti prie skambučio",
+    "callMicrophoneOffMessage": "„Pangea Chat“ negali naudoti jūsų mikrofono. Bakstelėkite, kad įjungtumėte jį nustatymuose.",
+    "goalsCompletedOfTotal": "Įvykdyta {earned} iš {total} tikslų",
+    "goalsCompletedInLanguage": "Įvykdyti tikslai {language} kalba",
+    "sessionXpTowardObjective": "{xp} XP šioje sesijoje; dar {remaining} ir tikslas bus pasiektas",
+    "mapCreditsLabel": "Žemėlapio autoriai: Stadia Maps, OpenMapTiles ir OpenStreetMap",
+    "activityLaunchFindingCourses": "Ieškoma jūsų kursų…",
+    "activityLaunchCreatingRoom": "Kuriama jūsų veikla…",
+    "activityLaunchOpeningRoom": "Atidaroma jūsų veikla…",
+    "playWithOthers": "Žaisti su kitais",
+    "openRole": "Atvira: {role}",
+    "waitingFor": "Laukiama {duration}",
+    "onlineInCourse": "{count} prisijungę {course}",
+    "newCourseChat": "Naujas kurso pokalbis",
+    "customCourseStepDesc": "Kursas – tai pokalbių užduočių rinkinys, atitinkantis jūsų vadovėlį, skirtas jūsų studentams atlikti kartu kaip namų darbus.",
+    "reopenAppToFinishSwitching": "Visiškai uždarykite programėlę ir atidarykite ją iš naujo, kad užbaigtumėte perjungimą.",
+    "teamCode": "Komandos kodas",
+    "connectionOffline": "Esate neprisijungę. „Pangea Chat“ vėl prisijungs, kai atsiras ryšys.",
+    "connectionUnreachable": "Nepasiekiama „Pangea Chat“. Bandoma dar kartą…",
+    "connectionBackOnline": "Vėl prisijungę",
+    "missionDueDate": "Terminas {date}, {time}",
+    "callNotificationsTitle": "Leisti skambučiams skambėti",
+    "callNotificationsMessage": "Skambučiai skamba kaip pranešimai. Leiskite pranešimus, kad telefonas skambėtų, net kai „Pangea Chat“ yra uždaryta arba telefonas užrakintas.",
+    "callNotificationsMissedMessage": "Skambutis atėjo, kai „Pangea Chat“ buvo uždaryta, bet jūsų telefonas negalėjo skambėti, nes pranešimai yra išjungti. Leiskite pranešimus, kad kitas skambutis skambėtų.",
+    "connectionPracticeVocab": "Praktikuokite žodyną laukdami",
+    "offlinePracticeNote": "Neprisijungus. Jūsų atsakymai bus įkelti, kai vėl prisijungsite.",
+    "offlinePracticeSavedNote": "Išsaugota šiame įrenginyje. Jūsų XP bus įkelta, kai vėl prisijungsite.",
+    "offlinePracticeNothingSaved": "Šiame įrenginyje nepakanka išsaugotų duomenų, kad galėtumėte praktikuotis neprisijungę. Bandykite dar kartą, kai vėl prisijungsite prie interneto.",
+    "missionNumber": "Misija {index}",
+    "xpToYourStar": "{xp} XP iki tavo žvaigždės",
+    "missionStarEarned": "Žvaigždė gauta!",
+    "xpFromChats": "Pokalbiai {xp}",
+    "xpFromGoals": "Tikslai {xp}",
+    "xpFromPractice": "Praktika {xp}",
+    "playMission": "Žaisti",
+    "wordCount": "{count, plural, =1{1 žodis} other{{count} žodžiai}}",
+    "continueActivity": "Tęsti",
+    "noObjectiveActivitiesYet": "Dar neatlikai šio tikslo veiklos. Pradėk ją iš savo kurso.",
+    "objectiveNotInYourCourses": "Šio tikslo nėra nė viename iš tavo kursų.",
+    "objectiveActivityCount": "{count, plural, =0{Dar nėra veiklų} =1{Atlikta 1 veikla} other{Atliktos {count} veiklos}}",
+    "activityCompleted": "Atlikta",
+    "completedTimes": "Atlikta {count} kartus",
+    "classLocation": "Pamokos vieta",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Pokalbis {xp}",
+    "xpIncludingGoals": "įskaitant {xp} iš tikslų",
+    "missionOtherLanguageNotice": "Ši misija yra iš {language} kurso. Jūsų pažanga bus skaičiuojama tik tada, kai mokysitės {language}.",
+    "missionLanguageMismatchDesc": "Ši misija yra iš {language} kurso. Perjungti tikslinę kalbą į {language}?",
+    "xpBySkillTitle": "Pagal įgūdžius",
+    "missionNextActivity": "Kita veikla",
+    "missionContinueActivity": "Tęsti veiklą",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Baigta šiame kurse ({num})",
+    "otherCoursesSessions": "Kiti kursai ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP uždirbta",
+    "currentMission": "Dabartinė misija"
 }

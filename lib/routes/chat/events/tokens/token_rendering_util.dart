@@ -56,14 +56,6 @@ class TokenRenderingUtil {
     return Colors.white.withAlpha(0);
   }
 
-  /// Whether a token whose lemma is [lemmaText] is one of the activity's
-  /// target vocab words. [vocabLemmas] must already be lower-cased; pass
-  /// null when the room has no activity plan. Shared by the typed-message
-  /// renderer and the STT transcript renderer so spoken and typed target
-  /// vocab highlight identically (issue #7659).
-  static bool isVocabHighlight(String lemmaText, Set<String>? vocabLemmas) =>
-      vocabLemmas != null && vocabLemmas.contains(lemmaText.toLowerCase());
-
   /// Wraps [child] in the target-vocab backfill highlight when [highlight] is
   /// true, otherwise returns [child] unchanged. [color] defaults to the theme's
   /// bright gold, the vocab tint (issue #7659), resolved where the box renders;

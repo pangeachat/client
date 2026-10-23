@@ -6,15 +6,14 @@ import 'package:badges/badges.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_background.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_finished_status_message.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_card.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -117,6 +116,7 @@ class ChatView extends StatelessWidget {
     final scrollUpBannerEventId = controller.scrollUpBannerEventId;
 
     final accountConfig = Matrix.of(context).client.applicationAccountConfig;
+    final activityBackgroundUrl = controller.room.activityPlan?.ownImageURL;
 
     return PopScope(
       canPop:
@@ -293,63 +293,7 @@ class ChatView extends StatelessWidget {
               body: Stack(
                 // Pangea#
                 children: <Widget>[
-                  // #Pangea
-                  // if (accountConfig.wallpaperUrl != null)
-                  // Only use activity image as chat background if enabled in AppConfig
-                  if (controller.room.activityPlan != null &&
-                      controller.room.activityPlan!.imageURL != null &&
-                      AppConfig.useActivityImageAsChatBackground &&
-                      !controller.room.activityPlan!.hasPlayableMedia)
-                    ExcludeSemantics(
-                      // #Pangea: decorative blurred chat background, not content. // Pangea#
-                      child: Opacity(
-                        opacity: 0.25,
-                        child: ImageFiltered(
-                          imageFilter: ui.ImageFilter.blur(
-                            sigmaX: accountConfig.wallpaperBlur ?? 0.0,
-                            sigmaY: accountConfig.wallpaperBlur ?? 0.0,
-                          ),
-                          child:
-                              controller.room.activityPlan!.imageURL!
-                                  .toString()
-                                  .startsWith('mxc')
-                              ? MxcImage(
-                                  uri: controller.room.activityPlan!.imageURL!,
-                                  fit: BoxFit.cover,
-                                  height: MediaQuery.sizeOf(context).height,
-                                  width: MediaQuery.sizeOf(context).width,
-                                  cacheKey: controller
-                                      .room
-                                      .activityPlan!
-                                      .imageURL
-                                      .toString(),
-                                  isThumbnail: false,
-                                )
-                              : Image.network(
-                                  controller.room.activityPlan!.imageURL
-                                      .toString(),
-                                  excludeFromSemantics: true,
-                                  fit: BoxFit.cover,
-                                  height: MediaQuery.sizeOf(context).height,
-                                  width: MediaQuery.sizeOf(context).width,
-                                  headers:
-                                      controller.room.activityPlan!.imageURL
-                                          .toString()
-                                          .contains(Environment.cmsApi)
-                                      ? {
-                                          'Authorization':
-                                              'Bearer ${MatrixState.pangeaController.userController.accessToken}',
-                                        }
-                                      : null,
-                                  errorBuilder: (context, error, stackTrace) =>
-                                      Container(),
-                                ),
-                        ),
-                      ),
-                    )
-                  // If not enabled, fall through to default wallpaper logic
-                  else if (accountConfig.wallpaperUrl != null)
-                    // Pangea#
+                  if (accountConfig.wallpaperUrl != null)
                     ExcludeSemantics(
                       // #Pangea: decorative blurred wallpaper, not content. // Pangea#
                       child: Opacity(
@@ -369,6 +313,16 @@ class ChatView extends StatelessWidget {
                             placeholder: (_) => Container(),
                           ),
                         ),
+                      ),
+                    ),
+                  if (activityBackgroundUrl != null)
+                    Positioned.fill(
+                      child: ActivityChatBackground(
+                        imageUrl: activityBackgroundUrl,
+                        blur: accountConfig.wallpaperBlur ?? 0.0,
+                        mediaVisibility:
+                            controller.activityController.mediaVisibility,
+                        scrollController: controller.scrollController,
                       ),
                     ),
                   Column(

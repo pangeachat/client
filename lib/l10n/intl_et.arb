@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-05 12:30:36.134090",
+    "@@last_modified": "2026-10-22 09:50:10.833588",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -1547,11 +1547,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sünkroniseerin andmeid… Palun oota.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Süsteem",
     "@systemTheme": {
         "type": "String",
@@ -2610,17 +2605,6 @@
     "@otherPartyNotLoggedIn": {},
     "open": "Ava",
     "@open": {},
-    "waitingForServer": "Ootame serveri vastust...",
-    "@waitingForServer": {},
-    "synchronizingPleaseWaitCounter": " Sünkroniseerime… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "newChatRequest": "📩 Uus vestluskutse",
     "@newChatRequest": {},
     "notificationRuleCallDescription": "Teavita kasutajat saabuvast video- või häälkõnest.",
@@ -2925,7 +2909,6 @@
     "errorDisableIGCClassDesc": "Grammatikaabi on välja lülitatud selle vestluse ruumi jaoks.",
     "error405Desc": "Palun seadistage oma keeled peamenüüs > Õpeseadistused.",
     "termsAndConditions": "Tingimuste ja nõuetega",
-    "andCertifyIAmAtLeast13YearsOfAge": " ning kinnitan, et olen vähemalt 16 aastat vana.",
     "error502504Desc": "Tõlke- ja grammatikatööriistad võivad olla aeglased või kättesaamatud, kuni Pangea botid jõuavad järele.",
     "error404Desc": "Pangea bot ei ole kindel, kuidas seda tõlkida...",
     "errorPleaseRefresh": "Uurime seda välja! Palun laadin uuesti ja proovi uuesti.",
@@ -3232,9 +3215,6 @@
     "why": "Miks?",
     "definition": "Määratlus",
     "reportToTeacher": "Kellele soovite seda sõnumit teatada?",
-    "reportMessageTitle": "{reportingUserId} on teatanud sõnumist {reportedUserId} vestluses {roomName}",
-    "reportMessageBody": "Sõnum: {reportedMessage}\nPõhjus: {reason}",
-    "noTeachersFound": "Õpetajaid ei leitud teatamiseks",
     "trialExpiration": "Teie tasuta prooviperiood lõpeb {expiration}",
     "freeTrialDesc": "Uued kasutajad saavad ühe nädala tasuta Pangea Chat-i prooviperioodi",
     "activateTrial": "Tasuta 7-päevane proov",
@@ -3618,10 +3598,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4864,35 +4840,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7948,11 +7895,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Vestle Toega",
     "@chatWithSupport": {
         "type": "String",
@@ -7973,8 +7915,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Luba kirjutamise abi",
-    "autoIGCToolDescription": "Käivita automaatselt Pangea Chat tööriistad, et parandada saadetud sõnumid sihtkeelde.",
+    "autoIGCToolName": "Automaatne kontroll saatmisel",
+    "autoIGCToolDescription": "Kontrolli oma sõnumit vigade suhtes, kui vajutad saatmisnuppu. Kui see on välja lülitatud, puuduta kirjutamisabi nuppu, et sõnumit ise kontrollida.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9417,7 +9359,6 @@
     "activityLoadFailed": "Tegevust ei õnnestunud laadida. Kontrollige oma ühendust ja proovige uuesti.",
     "levelUpChip": "Tase {level}!",
     "missingCourseOutline": "See kursus ei ole enam saadaval",
-    "missingCourseOutlineCta": "See kursus ei ole enam saadaval. Valige uus kursuse plaan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9442,10 +9383,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9841,7 +9778,6 @@
     "constructLevelFlowers": "Lilled, omandatud sõnad",
     "filterAndSearch": "Filtreeri ja otsi",
     "participantsOfTotal": "{filled}/{total} mängijat",
-    "mapAttributionLabel": "OpenStreetMapi kaastöölised, autoriõigus ja litsents",
     "seeAll": "Vaata kõiki",
     "seeAllSection": "Vaata kõiki {section}",
     "showMoreOptionsHint": "näita rohkem valikuid",
@@ -9959,25 +9895,126 @@
     "summaryFeedbackReceived": "Aitäh! Saime teie tagasiside kätte.",
     "summaryFeedbackFailed": "Tagasisidet ei saanud saata. Palun proovige uuesti.",
     "summaryFeedbackProcessing": "Teie tagasiside saatmine ja kokkuvõtte värskendamine…",
-    "ssoNetworkBlockedTitle": "Sisselogimisleht pole kättesaadav",
-    "ssoNetworkBlockedDesc": "See võrk ei lase meil teid sisse logimiseks {provider} lehele suunata. Kooli ja kontori Wi-Fi blokeerivad seda sageli. Saate selle asemel registreeruda e-posti teel või minna üle teisele võrgule ja uuesti proovida.",
-    "ssoTryAnyway": "Proovi ikkagi",
-    "callTranscriptNotSubscribed": "{name} ei olnud selle kõne ajal tellimust, seega öeldut ei transkribeeritud.",
     "callTranscriptTranscribing": "Salvestise transkribeerimine kasutajalt {name} veel käib…",
     "callTranscriptSeekTo": "Mängi alates {time}",
     "callTranscriptRecordings": "Salvestised",
     "callTranscriptFullCall": "Kogu kõne",
     "callTranscriptPreparingRecording": "Kogu salvestise ettevalmistamine…",
     "callTranscriptNoRecording": "Kogu kõnest puudub salvestis.",
-    "callTranscriptTranscribeButton": "Transkribeeri",
-    "callTranscriptAudioUnavailable": "Salvestatud heli {name} kasutajalt ei saanud alla laadida, seega ei saanud seda transkribeerida.",
-    "callTranscriptChooseLanguage": "Mis keeles räägiti?",
-    "callTranscriptSubscribeForTranscription": "Telli transkriptsioon",
-    "unlockCallTranscript": "Ava kõne transkriptsioon",
+    "callTranscriptNotSubscribed": "{name} ei olnud selle kõne ajal tellimust, seega öeldut ei transkribeeritud.",
     "joinYourCourse": "Liitu oma kursusega",
     "courseCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu kursuse koodi, et sind automaatselt kursusele lisada.",
     "courseCodeLabel": "Kursuse kood",
     "courseCodeSaved": "Kursuse kood {code} salvestatud",
     "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele.",
-    "missionDueDate": "Tähtaeg {date}, {time}"
+    "moderationRefusedContactDetails": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas kontaktandmed, näiteks telefoninumbri. Palun eemalda need ja proovi uuesti.",
+    "moderationRefusedProfanity": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas sõna, mida me vestluses ei luba. Palun muuda seda ja proovi uuesti.",
+    "callTranscriptTranscribeButton": "Transkribeeri",
+    "callTranscriptAudioUnavailable": "Salvestatud heli {name} kasutajalt ei saanud alla laadida, seega ei saanud seda transkribeerida.",
+    "callTranscriptChooseLanguage": "Mis keeles räägiti?",
+    "callTranscriptSubscribeForTranscription": "Telli transkriptsioon",
+    "unlockCallTranscript": "Ava kõne transkriptsioon",
+    "activitySummaryUpdateFailed": "Seda kokkuvõtet ei saanud värskendada.",
+    "courseNotFound": "Kursust ei leitud",
+    "askTeacherForNewCourse": "Paluge õpetajal valida uus kursus.",
+    "pickNewCoursePlan": "Vali uus kursuseplaan.",
+    "ssoNetworkBlockedTitle": "Sisselogimisleht pole kättesaadav",
+    "ssoNetworkBlockedDesc": "See võrk ei lase meil teid sisse logimiseks {provider} lehele suunata. Kooli ja kontori Wi-Fi blokeerivad seda sageli. Saate selle asemel registreeruda e-posti teel või minna üle teisele võrgule ja uuesti proovida.",
+    "ssoTryAnyway": "Proovi ikkagi",
+    "publicCoursesFilterTooltip": "Näita ainult kursuseid, millega igaüks saab liituda",
+    "restrictedCoursesFilterTooltip": "Näita ainult kursuseid, millega liitumiseks pead luba küsima",
+    "viewImageLabel": "Vaata pilti",
+    "reportSent": "Aruanne saadetud",
+    "reportNotSent": "Teie aruannet ei saanud saata. Kontrollige oma ühendust ja proovige uuesti.",
+    "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“",
+    "learningObjective": "Õpieesmärk",
+    "learningObjectives": "Õpieesmärgid",
+    "missionNofM": "Missioon {index} / {count}",
+    "xpTowardObjective": "{xp} / {threshold} XP selle eesmärgi suunas",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Kursus läbitud!",
+    "courseCompleteDesc": "Olete läbinud kõik {count} selle kursuse eesmärgid. Jätkake harjutamist, et õpitut meeles pidada.",
+    "practiceObjective": "Harjuta seda eesmärki",
+    "otherActivities": "Muud tegevused",
+    "objectiveCircleComplete": "Missioon {index}: täidetud",
+    "objectiveCircleUpNext": "Missioon {index}: järgmine",
+    "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
+    "andCertifyIMeetTheMinimumAge": " ja kinnitan, et olen vähemalt 13-aastane või minu riigis nõutavast vanusest vanem, kui see on kõrgem.",
+    "filteredNetworkBlockedTitle": "See võrk blokeerib Pangea Chati",
+    "filteredNetworkPartlyBlockedTitle": "See võrk blokeerib osa Pangea Chatist",
+    "filteredNetworkWhatCanIDo": "Mida ma teha saan?",
+    "filteredNetworkPhoneAdvice": "Lülita Wi-Fi välja ja kasuta mobiilset andmesidet.",
+    "filteredNetworkComputerAdvice": "Ühenda selle Wi-Fi asemel oma telefoni levialaga.",
+    "filteredNetworkItHeading": "Õpetajatele ja IT-personalile",
+    "filteredNetworkItBody": "Paluge oma IT-meeskonnal lubada järgmised domeenid:",
+    "filteredNetworkAskForHelp": "Küsi Pangealt abi",
+    "filteredNetworkHelpExplanation": "Saadame teile e-kirja, et aidata Pangea Chat selle võrguga tööle saada.",
+    "filteredNetworkHelpWaiting": "Teie taotlus saadetakse kohe, kui olete ühendatud.",
+    "filteredNetworkHelpSent": "Saadetud. Võtame teiega e-posti teel ühendust.",
+    "filteredNetworkHelpRefused": "Me ei saanud teie taotlust saata. Palun saatke e-kiri aadressile support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "See võrk blokeerib videod.",
+    "filteredNetworkImagesBlocked": "See võrk blokeerib pildid.",
+    "filteredNetworkMapBlocked": "See võrk blokeerib kaardi.",
+    "callFullScreenTitle": "Luba kõnedele täisekraan",
+    "callFullScreenMessage": "Kõne tuli sisse, kui Pangea Chat oli suletud, kuid teie telefon sai selle kohta näidata ainult väikest teavitust. Lubage täisekraankõned, et järgmine kõne heliseks kogu ekraanil, isegi kui teie telefon on lukus.",
+    "callMicrophoneTitle": "Kasuta kõnede jaoks mikrofoni",
+    "callMicrophoneMessage": "Pangea Chat vajab kõnede jaoks teie mikrofoni, sealhulgas kõnede jaoks, millele vastate lukustuskuvalt.",
+    "callMicrophoneOffTitle": "Teie kõne ei ühendunud",
+    "callMicrophoneOffMessage": "Pangea Chat ei saa teie mikrofoni kasutada. Puudutage, et see seadetes sisse lülitada.",
+    "goalsCompletedOfTotal": "{earned} {total}-st eesmärgist täidetud",
+    "goalsCompletedInLanguage": "Keele {language} eesmärgid täidetud",
+    "sessionXpTowardObjective": "{xp} XP sellel sessioonil; {remaining} veel täidab eesmärgi",
+    "mapCreditsLabel": "Kaardi autorid: Stadia Maps, OpenMapTiles ja OpenStreetMap",
+    "activityLaunchFindingCourses": "Kursuste otsimine…",
+    "activityLaunchCreatingRoom": "Tegevuse loomine…",
+    "activityLaunchOpeningRoom": "Tegevuse avamine…",
+    "playWithOthers": "Mängi teistega",
+    "openRole": "Avatud: {role}",
+    "waitingFor": "Ootab {duration}",
+    "onlineInCourse": "{count} võrgus kursusel {course}",
+    "newCourseChat": "Uus kursusevestlus",
+    "customCourseStepDesc": "Kursus on vestlustegevuste kogum, mis järgib teie õpikut ja mida teie õpilased saavad kodutööna koos teha.",
+    "reopenAppToFinishSwitching": "Sulgege rakendus täielikult ja avage see uuesti, et vahetus lõpule viia.",
+    "teamCode": "Meeskonna kood",
+    "connectionOffline": "Olete võrguühenduseta. Pangea Chat loob uuesti ühenduse, kui teie ühendus taastub.",
+    "connectionUnreachable": "Pangea Chatiga ei saa ühendust. Proovin uuesti…",
+    "connectionBackOnline": "Ühendus taastatud",
+    "missionDueDate": "Tähtaeg {date}, {time}",
+    "callNotificationsTitle": "Lase kõnedel heliseda",
+    "callNotificationsMessage": "Kõned helisevad märguannetena. Luba märguanded, et telefon heliseks kõne puhul ka siis, kui Pangea Chat on suletud või telefon lukus.",
+    "callNotificationsMissedMessage": "Kõne tuli sisse, kui Pangea Chat oli suletud, kuid telefon ei saanud heliseda, sest märguanded on välja lülitatud. Luba märguanded, et järgmine kõne heliseks.",
+    "connectionPracticeVocab": "Harjuta sõnavara oodates",
+    "offlinePracticeNote": "Ühenduseta. Sinu vastused laaditakse üles, kui oled tagasi.",
+    "offlinePracticeSavedNote": "Salvestatud sellesse seadmesse. Sinu XP laaditakse üles, kui oled jälle võrgus.",
+    "offlinePracticeNothingSaved": "Sellesse seadmesse pole võrguühenduseta harjutamiseks piisavalt salvestatud. Proovi uuesti, kui oled võrgus tagasi.",
+    "missionNumber": "Missioon {index}",
+    "xpToYourStar": "{xp} XP sinu täheni",
+    "missionStarEarned": "Täht teenitud!",
+    "xpFromChats": "Vestlused {xp}",
+    "xpFromGoals": "Eesmärgid {xp}",
+    "xpFromPractice": "Praktika {xp}",
+    "playMission": "Mängi",
+    "wordCount": "{count, plural, =1{1 sõna} other{{count} sõna}}",
+    "continueActivity": "Jätka",
+    "noObjectiveActivitiesYet": "Sa pole selle eesmärgi jaoks veel ühtegi tegevust lõpetanud. Alusta ühte oma kursuselt.",
+    "objectiveNotInYourCourses": "Seda eesmärki pole üheski sinu kursuses.",
+    "objectiveActivityCount": "{count, plural, =0{Tegevusi veel pole} =1{1 tegevus mängitud} other{{count} tegevust mängitud}}",
+    "activityCompleted": "Lõpetatud",
+    "completedTimes": "Lõpetatud {count} korda",
+    "classLocation": "Klassi asukoht",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Vestlus {xp}",
+    "xpIncludingGoals": "sh {xp} eesmärkidest",
+    "missionOtherLanguageNotice": "See missioon on kursuselt keeles {language}. Sinu edusammud loevad ainult siis, kui õpid keelt {language}.",
+    "missionLanguageMismatchDesc": "See missioon on kursuselt keeles {language}. Kas soovid sihtkeeleks vahetada keele {language}?",
+    "xpBySkillTitle": "Oskuste kaupa",
+    "missionNextActivity": "Järgmine tegevus",
+    "missionContinueActivity": "Jätka tegevust",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Lõpetatud sellel kursusel ({num})",
+    "otherCoursesSessions": "Muud kursused ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, teenitud {xp} XP",
+    "currentMission": "Praegune missioon"
 }

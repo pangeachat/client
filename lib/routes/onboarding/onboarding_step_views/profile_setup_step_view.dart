@@ -23,6 +23,7 @@ import 'package:fluffychat/widgets/url_image_widget.dart';
 class ProfileSetupStepView extends StatefulWidget {
   final ProfileSetupOnboardingStep step;
   final bool loading;
+  final Object? error;
   final bool hasNextStep;
   final VoidCallback forward;
 
@@ -30,6 +31,7 @@ class ProfileSetupStepView extends StatefulWidget {
     super.key,
     required this.step,
     required this.loading,
+    required this.error,
     required this.hasNextStep,
     required this.forward,
   });
@@ -258,6 +260,7 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
         OnboardingForwardButton(
           onPressed: _step.enableGoForward ? widget.forward : null,
           loading: widget.loading,
+          error: widget.error,
           label: widget.hasNextStep
               ? _step.nextStepText(L10n.of(context))
               : _step.lastStepText(L10n.of(context)),

@@ -94,24 +94,55 @@ class JoinedObjectiveCache {
   Set<String> get ids => _ids;
 
   /// Resolve the shared [ProgressionResolution] for the world map's relevance
-  /// band from the cached [outlines] and the learner's [starsByActivity]
-  /// (per-activity star totals from session room state, supplied by the
-  /// controller). [extraOutlines] adds in-scope outlines the learner hasn't
-  /// joined — e.g. a course-scoped map ranks toward the viewed course's next
-  /// Mission even before it's joined. Pure and cheap; the controller calls it
-  /// where the inputs change (course join/leave, star award), not per frame.
+  /// band from the cached [outlines] and the learner's activity XP per
+  /// activity ([xpByActivity], `Client.userXpByActivity`). [extraOutlines]
+  /// adds in-scope outlines the learner hasn't joined — e.g. a course-scoped
+  /// map ranks toward the viewed course's next Mission even before it's
+  /// joined. Pure and cheap; the controller calls it where the inputs change
+  /// (course join/leave, an XP update), not per frame.
+  ///
+  /// [inScope] keeps only the courses whose progress counts — the app passes
+  /// [CourseLanguageScope.courseInTargetLanguage], so a course in another
+  /// language resolves no progress at all rather than its goals without its XP
+  /// (#9559). Null resolves every outline.
   ProgressionResolution resolution(
+    Map<String, int> xpByActivity, {
+    Iterable<CourseLoOutline> extraOutlines = const [],
+    Map<String, int> practiceXpByLemma = const {},
+    bool Function(String courseId)? inScope,
+  }) => resolveProgression(
+    outlines: [
+      for (final outline in [..._outlines, ...extraOutlines])
+        if (inScope?.call(outline.courseId) ?? true) outline,
+    ],
+    xpByActivity: xpByActivity,
+    practiceXpByLemma: practiceXpByLemma,
+  );
+
+  /// [starsByActivity] with each course's shown activities credited across
+  /// their copies, for the pins the map draws by activity id. Raw stars are
+  /// kept for every other activity; a credited one takes the larger of its own
+  /// and the credited sum, across the in-scope courses.
+  Map<String, int> creditedStars(
     Map<String, int> starsByActivity, {
     Iterable<CourseLoOutline> extraOutlines = const [],
-  }) => resolveProgression(
-    outlines: [..._outlines, ...extraOutlines],
-    starsByActivity: starsByActivity,
-  );
+  }) {
+    var out = starsByActivity;
+    for (final outline in [..._outlines, ...extraOutlines]) {
+      if (outline.credit.isEmpty) continue;
+      final overlaid = outline.credit.overlayOn(starsByActivity);
+      if (identical(out, starsByActivity)) out = {...starsByActivity};
+      for (final entry in overlaid.entries) {
+        if (entry.value > (out[entry.key] ?? 0)) out[entry.key] = entry.value;
+      }
+    }
+    return out;
+  }
 
   /// Rebuild from the joined courses' quest outlines. [outlineOf] resolves a
   /// course key to its outline (defaults to the v3 quest read layer, which
   /// treats the key as a quest uuid; [rebuildFromJoinedCourses] keys by course
-  /// room id instead — see #8087); [starsToUnlockOf] supplies the per-course
+  /// room id instead — see #8087); [xpToCompleteOf] supplies the per-course
   /// teacher override (defaults to the standard threshold). A course that fails
   /// to resolve is skipped (rather than failing the whole set) and reported to
   /// [onError] — it must NOT be swallowed silently: a dropped course
@@ -122,7 +153,7 @@ class JoinedObjectiveCache {
   Future<void> rebuild(
     List<String> courseKeys, {
     Future<CourseLoOutline> Function(String key)? outlineOf,
-    int Function(String key)? starsToUnlockOf,
+    int Function(String key)? xpToCompleteOf,
     void Function(String key, Object error, StackTrace stack)? onError,
   }) async {
     final resolve = outlineOf ?? _outlineFromQuest;
@@ -141,9 +172,10 @@ class JoinedObjectiveCache {
               questId: o.questId,
               orderedLoIds: o.orderedLoIds,
               activityIdsByLo: o.activityIdsByLo,
-              starsToUnlock:
-                  starsToUnlockOf?.call(key) ?? kDefaultStarsToUnlockObjective,
-              earnableByActivity: o.earnableByActivity,
+              lemmasByLo: o.lemmasByLo,
+              xpToComplete:
+                  xpToCompleteOf?.call(key) ?? kDefaultXpToCompleteObjective,
+              credit: o.credit,
             ),
           );
         } catch (e, s) {
@@ -159,7 +191,7 @@ class JoinedObjectiveCache {
   }
 
   /// [rebuild] from the client's joined courses — each course room with its
-  /// quest uuid and teacher config (stars-to-unlock override + per-Mission
+  /// quest uuid and teacher config (XP-per-Mission override + per-Mission
   /// activity pins). The single home for that mapping: the world map's pins
   /// manager and the course panel's star display both rebuild through here, so
   /// every surface resolves identical outlines. Pins are applied as a pure copy
@@ -201,9 +233,8 @@ class JoinedObjectiveCache {
         rules: rules[roomId] ?? CourseListRules.none,
         courseRoomId: roomId,
       ),
-      starsToUnlockOf: (roomId) =>
-          modes[roomId]?.starsToUnlockObjective ??
-          kDefaultStarsToUnlockObjective,
+      xpToCompleteOf: (roomId) =>
+          modes[roomId]?.xpToCompleteObjective ?? kDefaultXpToCompleteObjective,
       onError: onError == null
           ? null
           : (roomId, e, s) => onError(roomId, questIdByRoom[roomId]!, e, s),
@@ -218,6 +249,8 @@ class JoinedObjectiveCache {
     final outlineResult = await QuestRepo.outline(
       uuid,
       courseRoomId: courseRoomId,
+      courseLoIds: rules.missions?.allLoIds ?? const {},
+      copyRevision: rules.revision,
     );
     final outline = outlineResult.result;
     if (outline == null) {

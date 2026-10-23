@@ -11,5 +11,13 @@ extension RoomInformationRoomExtension on Room {
   String? get roomType =>
       getState(EventTypes.RoomCreate)?.content.tryGet<String>('type');
 
-  bool get isHiddenRoom => isAnalyticsRoom || hasArchivedActivity;
+  /// Kept out of every chat list: analytics rooms, review-only rooms, and
+  /// activity sessions that are over — saved by the learner, or finished for
+  /// everyone. A finished activity lives on the Learning Objectives page and
+  /// the map, not in Chats.
+  bool get isHiddenRoom =>
+      isAnalyticsRoom ||
+      hasArchivedActivity ||
+      isAdminReviewOnly ||
+      (isActivitySession && isActivityFinished);
 }

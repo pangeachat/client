@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import 'package:material_color_utilities/material_color_utilities.dart';
@@ -33,8 +35,12 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     required this.onSuccessFixed,
     required this.successContainer,
     required this.onSuccessContainer,
-    required this.joinable,
-    required this.onJoinable,
+    required this.activityAvailable,
+    required this.onActivityAvailable,
+    required this.activityOpen,
+    required this.onActivityOpen,
+    required this.activityOngoing,
+    required this.onActivityOngoing,
     required this.errorGraphic,
   });
 
@@ -61,8 +67,10 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
 
   /// The unfilled length of a gold ring that paints over map tiles rather
   /// than a surface: dark in light so the bright arc rides on it, a mid gold
-  /// in dark so it still reads over near-black cartography (#8763). Not for
-  /// a bar on a surface, which takes the neutral track.
+  /// in dark so it still reads over the dark map tiles (#8763). The dark tone
+  /// sits in the narrow band that keeps 3:1 against both the tiles' land and
+  /// the arc (#8603). Not for a bar on a surface, which takes the neutral
+  /// track.
   final Color goldTrack;
 
   /// A tinted gold surface for washes and backfills. Always pair with
@@ -124,13 +132,38 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// Ink on [successContainer].
   final Color onSuccessContainer;
 
-  /// The joinable-session green: the world map's "you can join this" pin
-  /// and the badges that echo it. The same value in both themes, at the
-  /// brightest tone of its ramp that still carries white text at 4.5:1.
-  final Color joinable;
+  // The activity states (#9559): the fill an activity's pin, card frame and
+  // state pill wear for what is happening on it, and the ink on that fill.
+  // Their own keys rather than the scheme, so a state looks the same
+  // whatever app colour the learner picks; still a tone per brightness.
 
-  /// Ink on [joinable].
-  final Color onJoinable;
+  /// An activity with nothing live on it, ready to start: a light purple in
+  /// light, and in dark a muted purple darker than [activityOngoing], so the
+  /// map's least urgent state is also its quietest over the dark tiles.
+  /// Always pair with [onActivityAvailable].
+  final Color activityAvailable;
+
+  /// Ink on [activityAvailable]: a deep purple on the light fill (6.3:1),
+  /// white on the dark one (9.3:1).
+  final Color onActivityAvailable;
+
+  /// An activity with an open session the learner can join: the "Open" pin,
+  /// tab and frame, and the ping badges that echo it. The same green in both
+  /// themes, at the brightest tone of its ramp that still carries white text
+  /// at 4.5:1. Always pair with [onActivityOpen].
+  final Color activityOpen;
+
+  /// Ink on [activityOpen].
+  final Color onActivityOpen;
+
+  /// An activity the learner is in a session of: the "Ongoing" and "Waiting"
+  /// pin, tab and frame. The brand purple at the same tone in both themes,
+  /// the brightest that still carries white text at 4.5:1 (4.81:1). Always
+  /// pair with [onActivityOngoing].
+  final Color activityOngoing;
+
+  /// Ink on [activityOngoing]: white in both themes.
+  final Color onActivityOngoing;
 
   /// An error as a mark with a 3:1 floor: the composer's correction
   /// underline and highlight, a ring segment, a wrong-answer tint. A tone of
@@ -148,9 +181,13 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   factory PangeaColors.of(Brightness brightness) =>
       brightness == Brightness.light ? _light : _dark;
 
-  /// T49 is the brightest tone of the joinable ramp that clears 4.5:1 under
-  /// white ink; T50 measures 4.47:1.
-  static const int _joinableTone = 49;
+  /// T49 is the brightest tone of the open-session ramp that clears 4.5:1
+  /// under white ink; T50 measures 4.47:1.
+  static const int _activityOpenTone = 49;
+
+  /// T48 is the brightest tone of the brand purple that clears 4.5:1 under
+  /// white ink (4.81:1); T50 measures 4.48:1.
+  static const int _activityOngoingTone = 48;
 
   /// The brand gold, the key colour the gold family is tones of. Read
   /// nowhere else; widgets take a gold role from the theme.
@@ -165,10 +202,16 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
   /// tones. Read nowhere else.
   static const Color warningKey = Color(0xFFD27C0C);
 
-  /// The joinable-session green, the key colour [joinable] is a tone of. Read
-  /// nowhere else; the world map reaches the state colour through
+  /// The open-session green, the key colour [activityOpen] is a tone of.
+  /// Read nowhere else; the world map reaches the state colours through
   /// ActivityPinState.bodyColor.
-  static const Color joinableKey = Color(0xFF34A853);
+  static const Color activityOpenKey = Color(0xFF34A853);
+
+  /// The brand purple, the key colour [activityOngoing] and
+  /// [activityAvailable] are tones of — the app's default seed, fixed here
+  /// so the states don't move when the learner picks another app colour.
+  /// Read nowhere else.
+  static const Color activityKey = Color(0xFF8560E0);
 
   static PangeaColors _fromKey(Brightness brightness) {
     // The keys above are the key colours; every role below is a tone of one
@@ -176,7 +219,15 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     final gold = TonalPalette.fromHct(Hct.fromInt(goldKey.toARGB32()));
     final warning = TonalPalette.fromHct(Hct.fromInt(warningKey.toARGB32()));
     final success = TonalPalette.fromHct(Hct.fromInt(successKey.toARGB32()));
-    final joinable = TonalPalette.fromHct(Hct.fromInt(joinableKey.toARGB32()));
+    final open = TonalPalette.fromHct(Hct.fromInt(activityOpenKey.toARGB32()));
+    final activityHct = Hct.fromInt(activityKey.toARGB32());
+    final activity = TonalPalette.fromHct(activityHct);
+    // The muted twin for the dark available fill, at the chroma the fidelity
+    // scheme gives its secondary roles — today's dark available colour.
+    final activityMuted = TonalPalette.of(
+      activityHct.hue,
+      math.max(activityHct.chroma - 32.0, activityHct.chroma * 0.5),
+    );
     // Material's error palette (DynamicScheme.errorPalette): hue 25, chroma
     // 84, the one every ColorScheme.fromSeed shares whatever the seed.
     final error = TonalPalette.of(25.0, 84.0);
@@ -187,7 +238,7 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       goldFixed: Color(gold.get(90)),
       goldFixedDim: Color(gold.get(80)),
       onGoldFixed: Color(gold.get(10)),
-      goldTrack: Color(gold.get(light ? 20 : 50)),
+      goldTrack: Color(gold.get(light ? 20 : 53)),
       goldContainer: Color(gold.get(light ? 90 : 30)),
       onGoldContainer: Color(gold.get(light ? 10 : 90)),
       goldHighlight: Color.lerp(Color(gold.get(80)), Colors.black, 0.2)!,
@@ -203,8 +254,16 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
       onSuccessFixed: Color(success.get(10)),
       successContainer: Color(success.get(light ? 90 : 30)),
       onSuccessContainer: Color(success.get(light ? 10 : 90)),
-      joinable: Color(joinable.get(_joinableTone)),
-      onJoinable: Color(joinable.get(100)),
+      activityAvailable: Color(
+        light ? activity.get(85) : activityMuted.get(30),
+      ),
+      onActivityAvailable: Color(
+        light ? activity.get(30) : activityMuted.get(100),
+      ),
+      activityOpen: Color(open.get(_activityOpenTone)),
+      onActivityOpen: Color(open.get(100)),
+      activityOngoing: Color(activity.get(_activityOngoingTone)),
+      onActivityOngoing: Color(activity.get(100)),
       errorGraphic: Color(error.get(light ? 50 : 60)),
     );
   }
@@ -232,8 +291,12 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     Color? onSuccessFixed,
     Color? successContainer,
     Color? onSuccessContainer,
-    Color? joinable,
-    Color? onJoinable,
+    Color? activityAvailable,
+    Color? onActivityAvailable,
+    Color? activityOpen,
+    Color? onActivityOpen,
+    Color? activityOngoing,
+    Color? onActivityOngoing,
     Color? errorGraphic,
   }) => PangeaColors(
     gold: gold ?? this.gold,
@@ -257,8 +320,12 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
     onSuccessFixed: onSuccessFixed ?? this.onSuccessFixed,
     successContainer: successContainer ?? this.successContainer,
     onSuccessContainer: onSuccessContainer ?? this.onSuccessContainer,
-    joinable: joinable ?? this.joinable,
-    onJoinable: onJoinable ?? this.onJoinable,
+    activityAvailable: activityAvailable ?? this.activityAvailable,
+    onActivityAvailable: onActivityAvailable ?? this.onActivityAvailable,
+    activityOpen: activityOpen ?? this.activityOpen,
+    onActivityOpen: onActivityOpen ?? this.onActivityOpen,
+    activityOngoing: activityOngoing ?? this.activityOngoing,
+    onActivityOngoing: onActivityOngoing ?? this.onActivityOngoing,
     errorGraphic: errorGraphic ?? this.errorGraphic,
   );
 
@@ -303,8 +370,24 @@ class PangeaColors extends ThemeExtension<PangeaColors> {
         other.onSuccessContainer,
         t,
       )!,
-      joinable: Color.lerp(joinable, other.joinable, t)!,
-      onJoinable: Color.lerp(onJoinable, other.onJoinable, t)!,
+      activityAvailable: Color.lerp(
+        activityAvailable,
+        other.activityAvailable,
+        t,
+      )!,
+      onActivityAvailable: Color.lerp(
+        onActivityAvailable,
+        other.onActivityAvailable,
+        t,
+      )!,
+      activityOpen: Color.lerp(activityOpen, other.activityOpen, t)!,
+      onActivityOpen: Color.lerp(onActivityOpen, other.onActivityOpen, t)!,
+      activityOngoing: Color.lerp(activityOngoing, other.activityOngoing, t)!,
+      onActivityOngoing: Color.lerp(
+        onActivityOngoing,
+        other.onActivityOngoing,
+        t,
+      )!,
       errorGraphic: Color.lerp(errorGraphic, other.errorGraphic, t)!,
     );
   }

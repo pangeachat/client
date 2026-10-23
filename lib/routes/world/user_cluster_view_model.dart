@@ -18,9 +18,11 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
+import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
-import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -43,6 +45,11 @@ abstract class UserClusterViewModel {
   LanguageModel? get userL2;
 
   int get starsEarned;
+
+  /// The star count is still on its way — the shared progression hasn't
+  /// resolved from loaded outlines, or the XP it counts is being read — so
+  /// the tracker shows a loading state rather than zero (#9559).
+  bool get starsLoading;
 
   int get numVocabConstructs;
 
@@ -96,6 +103,11 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
               .showSubscriptionGatedContent,
         );
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
+    // A star is a completed Mission (#9436), read from the shared progression
+    // the map and the course panel resolve; recount when it changes.
+    QuestObjectivesLoader.sharedProgression.addListener(_onProgression);
+    // The star count shows a loading state while the XP it counts is read.
+    MissionXpCache.instance.addListener(_onProgression);
     // The cluster outlives the profile page that changes the avatar, so it
     // relies on the change being announced: by the page's own write
     // (OwnProfileClientExtension) and by the member events sync raises (#8330).
@@ -109,6 +121,11 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
 
   void _onPlanHydrate() => _planHydrationStream.add(null);
 
+  final StreamController<void> _progressionStream =
+      StreamController.broadcast();
+
+  void _onProgression() => _progressionStream.add(null);
+
   bool _profileLoaded = false;
   bool _disposed = false;
 
@@ -116,9 +133,12 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   void dispose() {
     _disposed = true;
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
+    QuestObjectivesLoader.sharedProgression.removeListener(_onProgression);
+    MissionXpCache.instance.removeListener(_onProgression);
     _ownProfileUpdates.cancel();
     _profileRefreshQuietTimer?.cancel();
     _planHydrationStream.close();
+    _progressionStream.close();
     _avatarUrl.dispose();
     _displayName.dispose();
   }
@@ -152,10 +172,10 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
           e.state.type == PangeaEventTypes.orchestratorAwardedGoals ||
           e.state.type == PangeaEventTypes.activityRole,
     ),
-    // totalStarsEarned matches sessions by their plan's target language, and
-    // reading it kicks off hydration for thin v3 refs — recount when a plan
-    // lands, or a fresh session shows 0 until the next role-state event.
+    // Course language is read off the course room's plan state; a plan
+    // landing may change which courses count.
     _planHydrationStream.stream,
+    _progressionStream.stream,
   ]);
 
   @override
@@ -165,11 +185,30 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   LanguageModel? get userL2 =>
       MatrixState.pangeaController.userController.userL2;
 
+  /// Stars are completed Missions (#9436), counted once per Mission across
+  /// the JOINED courses in the learner's target language — never a course
+  /// the map is only previewing (#9559). A course with no language recorded
+  /// counts, the same fallback the leaderboard uses.
   @override
   int get starsEarned {
     final userL2 = this.userL2;
-    return userL2 != null ? client.totalStarsEarned(userL2) : 0;
+    if (userL2 == null) return 0;
+    return QuestObjectivesLoader.sharedProgression.value
+        .completedMissionIds(inScope: _joinedInTargetLanguage)
+        .length;
   }
+
+  bool _joinedInTargetLanguage(String courseId) {
+    final course = client.getRoomById(courseId);
+    return course != null &&
+        course.membership == Membership.join &&
+        CourseLanguageScope.courseInTargetLanguage(course);
+  }
+
+  @override
+  bool get starsLoading =>
+      !QuestObjectivesLoader.sharedProgressionReady ||
+      MissionXpCache.instance.loading;
 
   @override
   int get numVocabConstructs =>

@@ -589,10 +589,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@passwordHasBeenChanged": {
         "type": "String",
         "placeholders": {}
@@ -2117,8 +2113,6 @@
     "status": "स्थिति",
     "statusExampleMessage": "आज आप कैसे हैं?",
     "submit": "प्रस्तुत करें",
-    "synchronizingPleaseWait": "सिंक्रोनाइज़िंग… कृपया प्रतीक्षा करें।",
-    "synchronizingPleaseWaitCounter": "सिंक्रोनाइज़िंग… ({percentage}%)",
     "systemTheme": "सिस्टम",
     "theyDontMatch": "वे मेल नहीं खाते",
     "theyMatch": "वे मेल खाते हैं",
@@ -2343,7 +2337,6 @@
     "previous": "पिछला",
     "otherPartyNotLoggedIn": "दूसरी पार्टी वर्तमान में लॉग इन नहीं है और इसलिए संदेश प्राप्त नहीं कर सकती!",
     "open": "खुला",
-    "waitingForServer": "सर्वर का इंतजार कर रहा है...",
     "newChatRequest": "📩 नई चैट अनुरोध",
     "contentNotificationSettings": "सामग्री सूचनाएँ सेटिंग्स",
     "generalNotificationSettings": "सामान्य सूचनाएँ सेटिंग्स",
@@ -2449,7 +2442,6 @@
     "errorDisableIGCClassDesc": "इस चैट के कक्षा के लिए व्याकरण सहायता बंद कर दी गई है।",
     "error405Desc": "कृपया अपने भाषाओं को मेनू > सीखने की सेटिंग्स में सेट करें।",
     "termsAndConditions": "शर्तें और नियम",
-    "andCertifyIAmAtLeast13YearsOfAge": " और प्रमाणित करता हूँ कि मेरी उम्र कम से कम 16 वर्ष है।",
     "error502504Desc": "जब तक पांगेआ बॉट्स अपडेट नहीं हो जाते, तब तक अनुवाद और व्याकरण उपकरण धीमे या अनुपलब्ध हो सकते हैं।",
     "error404Desc": "पांगेआ बॉट को यह अनुवाद करने का तरीका नहीं पता...",
     "errorPleaseRefresh": "हम इसे देख रहे हैं! कृपया पुनः लोड करें और फिर से प्रयास करें।",
@@ -2757,9 +2749,6 @@
     "why": "क्यों?",
     "definition": "परिभाषा",
     "reportToTeacher": "आप इस संदेश की रिपोर्ट किससे करना चाहते हैं?",
-    "reportMessageTitle": "{reportingUserId} ने {reportedUserId} से एक संदेश रिपोर्ट किया है, जो {roomName} में है",
-    "reportMessageBody": "संदेश: {reportedMessage}\nकारण: {reason}",
-    "noTeachersFound": "रिपोर्ट करने के लिए कोई शिक्षक नहीं मिले",
     "trialExpiration": "आपका मुफ्त ट्रायल {expiration} को समाप्त हो जाएगा",
     "freeTrialDesc": "नए उपयोगकर्ताओं को पैंजिया चैट का एक सप्ताह का मुफ्त ट्रायल मिलता है",
     "activateTrial": "मुफ्त 7-दिन का ट्रायल",
@@ -3093,7 +3082,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-05 12:30:37.843848",
+    "@@last_modified": "2026-10-22 09:50:12.676544",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3221,14 +3210,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@invitedBy": {
         "type": "String",
@@ -3718,10 +3699,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@newChatRequest": {
         "type": "String",
         "placeholders": {}
@@ -4153,10 +4130,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5403,35 +5376,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8389,11 +8333,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "चैट पृष्ठभूमि के रूप में गतिविधि छवि का उपयोग करें",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "सहायता से चैट करें",
     "@chatWithSupport": {
         "type": "String",
@@ -8414,8 +8353,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "लेखन सहायता सक्षम करें",
-    "autoIGCToolDescription": "लक्षित भाषा में भेजे गए संदेशों को सही करने के लिए स्वचालित रूप से Pangea चैट उपकरण चलाएँ।",
+    "autoIGCToolName": "भेजने पर स्वतः जांच करें",
+    "autoIGCToolDescription": "जब आप भेजें पर टैप करें तो अपने संदेश में गलतियों की जांच करें। जब यह बंद हो, तो किसी संदेश की स्वयं जांच करने के लिए लेखन सहायता बटन पर टैप करें।",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10052,7 +9991,6 @@
     "activityLoadFailed": "गतिविधि लोड नहीं हो सकी। अपने कनेक्शन की जांच करें और फिर से प्रयास करें।",
     "levelUpChip": "स्तर {level}!",
     "missingCourseOutline": "यह पाठ्यक्रम अब उपलब्ध नहीं है",
-    "missingCourseOutlineCta": "यह पाठ्यक्रम अब उपलब्ध नहीं है। एक नया पाठ्यक्रम योजना चुनें।",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10077,10 +10015,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10476,7 +10410,6 @@
     "constructLevelFlowers": "फ्लावर्स, सीखे हुए शब्द",
     "filterAndSearch": "फ़िल्टर करें और खोजें",
     "participantsOfTotal": "{total} खिलाड़ियों में से {filled}",
-    "mapAttributionLabel": "OpenStreetMap योगदानकर्ता, कॉपीराइट और लाइसेंस",
     "seeAll": "सभी देखें",
     "seeAllSection": "सभी {section} देखें",
     "showMoreOptionsHint": "और विकल्प दिखाएँ",
@@ -10594,25 +10527,126 @@
     "summaryFeedbackReceived": "धन्यवाद! हमें आपकी प्रतिक्रिया मिल गई है।",
     "summaryFeedbackFailed": "आपकी प्रतिक्रिया नहीं भेजी जा सकी। कृपया फिर से प्रयास करें।",
     "summaryFeedbackProcessing": "आपकी प्रतिक्रिया भेजी जा रही है और सारांश अपडेट किया जा रहा है…",
-    "ssoNetworkBlockedTitle": "साइन-इन साइट तक नहीं पहुँचा जा सकता",
-    "ssoNetworkBlockedDesc": "यह नेटवर्क आपको साइन इन करने के लिए {provider} तक पहुँचने नहीं दे रहा है। स्कूल और ऑफिस का वाई-फाई अक्सर इसे ब्लॉक कर देता है। आप इसके बजाय ईमेल से साइन अप कर सकते हैं, या किसी दूसरे नेटवर्क पर स्विच करके फिर से कोशिश कर सकते हैं।",
-    "ssoTryAnyway": "फिर भी कोशिश करें",
-    "callTranscriptNotSubscribed": "{name} के पास इस कॉल के दौरान सदस्यता नहीं थी, इसलिए जो कहा गया उसे ट्रांसक्रिप्ट नहीं किया गया।",
     "callTranscriptTranscribing": "{name} से रिकॉर्डिंग अभी भी ट्रांसक्राइब की जा रही है…",
     "callTranscriptSeekTo": "{time} से चलाएँ",
     "callTranscriptRecordings": "रिकॉर्डिंग",
     "callTranscriptFullCall": "पूरी कॉल",
     "callTranscriptPreparingRecording": "पूरी रिकॉर्डिंग तैयार की जा रही है…",
     "callTranscriptNoRecording": "पूरी कॉल की कोई रिकॉर्डिंग नहीं है।",
-    "callTranscriptTranscribeButton": "लिप्यंतरित करें",
-    "callTranscriptAudioUnavailable": "{name} से सहेजी गई रिकॉर्डिंग डाउनलोड नहीं की जा सकी, इसलिए इसे लिप्यंतरित नहीं किया जा सका।",
-    "callTranscriptChooseLanguage": "कौन सी भाषा बोली गई थी?",
-    "callTranscriptSubscribeForTranscription": "लिप्यंतरण के लिए सदस्यता लें",
-    "unlockCallTranscript": "कॉल ट्रांसक्रिप्ट अनलॉक करें",
+    "callTranscriptNotSubscribed": "{name} के पास इस कॉल के दौरान सदस्यता नहीं थी, इसलिए जो कहा गया उसे ट्रांसक्रिप्ट नहीं किया गया।",
     "joinYourCourse": "अपने कोर्स में शामिल हों",
     "courseCodeJoinExplanation": "लॉग इन करें या साइन अप करें, और हम आपको आपके कोर्स में स्वचालित रूप से जोड़ने के लिए आपके कोर्स कोड का उपयोग करेंगे।",
     "courseCodeLabel": "कोर्स कोड",
     "courseCodeSaved": "कोर्स कोड {code} सहेजा गया",
     "courseCodeSavedExplanation": "साइन अप करें या लॉग इन करें और हम आपको आपके कोर्स में जोड़ देंगे।",
-    "missionDueDate": "{date}, {time} को देय"
+    "moderationRefusedContactDetails": "आपका संदेश नहीं भेजा गया। एक स्वचालित फ़िल्टर को संपर्क विवरण, जैसे फ़ोन नंबर मिला। कृपया उन्हें हटा दें और पुनः प्रयास करें।",
+    "moderationRefusedProfanity": "आपका संदेश नहीं भेजा गया। एक स्वचालित फ़िल्टर को एक ऐसा शब्द मिला जिसकी हम चैट में अनुमति नहीं देते हैं। कृपया इसे बदलें और पुनः प्रयास करें।",
+    "callTranscriptTranscribeButton": "लिप्यंतरित करें",
+    "callTranscriptAudioUnavailable": "{name} से सहेजी गई रिकॉर्डिंग डाउनलोड नहीं की जा सकी, इसलिए इसे लिप्यंतरित नहीं किया जा सका।",
+    "callTranscriptChooseLanguage": "कौन सी भाषा बोली गई थी?",
+    "callTranscriptSubscribeForTranscription": "लिप्यंतरण के लिए सदस्यता लें",
+    "unlockCallTranscript": "कॉल ट्रांसक्रिप्ट अनलॉक करें",
+    "activitySummaryUpdateFailed": "यह सारांश अपडेट नहीं किया जा सका।",
+    "courseNotFound": "कोर्स नहीं मिला",
+    "askTeacherForNewCourse": "अपने शिक्षक से नया कोर्स चुनने के लिए कहें।",
+    "pickNewCoursePlan": "एक नई कोर्स योजना चुनें।",
+    "ssoNetworkBlockedTitle": "साइन-इन साइट तक नहीं पहुँचा जा सकता",
+    "ssoNetworkBlockedDesc": "यह नेटवर्क आपको साइन इन करने के लिए {provider} तक पहुँचने नहीं दे रहा है। स्कूल और ऑफिस का वाई-फाई अक्सर इसे ब्लॉक कर देता है। आप इसके बजाय ईमेल से साइन अप कर सकते हैं, या किसी दूसरे नेटवर्क पर स्विच करके फिर से कोशिश कर सकते हैं।",
+    "ssoTryAnyway": "फिर भी कोशिश करें",
+    "publicCoursesFilterTooltip": "केवल वे कोर्स दिखाएं जिनमें कोई भी शामिल हो सकता है",
+    "restrictedCoursesFilterTooltip": "केवल वे कोर्स दिखाएं जिनमें शामिल होने के लिए आपको पूछना होगा",
+    "viewImageLabel": "छवि देखें",
+    "reportSent": "रिपोर्ट भेज दी गई",
+    "reportNotSent": "आपकी रिपोर्ट भेजी नहीं जा सकी। अपना कनेक्शन जाँचें और फिर से कोशिश करें।",
+    "reportPointerMessage": "{courseName} में एक मैसेज रिपोर्ट किया गया था — सुरक्षा देखें",
+    "learningObjective": "सीखने का उद्देश्य",
+    "learningObjectives": "सीखने के उद्देश्य",
+    "missionNofM": "मिशन {index} / {count}",
+    "xpTowardObjective": "इस उद्देश्य के लिए {threshold} XP में से {xp}",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "कोर्स पूरा हुआ!",
+    "courseCompleteDesc": "आपने इस कोर्स के सभी {count} उद्देश्य पूरे कर लिए हैं। जो सीखा है उसे बनाए रखने के लिए अभ्यास करते रहें।",
+    "practiceObjective": "इस उद्देश्य का अभ्यास करें",
+    "otherActivities": "अन्य गतिविधियाँ",
+    "objectiveCircleComplete": "मिशन {index}: पूरा हुआ",
+    "objectiveCircleUpNext": "मिशन {index}: आगे",
+    "useActivityImageAsChatBackground": "गतिविधि छवि को चैट पृष्ठभूमि के रूप में उपयोग करें",
+    "andCertifyIMeetTheMinimumAge": " और प्रमाणित करता हूँ कि मैं कम से कम 13 वर्ष का हूँ, या मेरे देश में आवश्यक न्यूनतम आयु का हूँ यदि वह अधिक है।",
+    "filteredNetworkBlockedTitle": "यह नेटवर्क पांगिया चैट को ब्लॉक कर रहा है",
+    "filteredNetworkPartlyBlockedTitle": "यह नेटवर्क पांगिया चैट के कुछ हिस्सों को ब्लॉक कर रहा है",
+    "filteredNetworkWhatCanIDo": "मैं क्या कर सकता हूँ?",
+    "filteredNetworkPhoneAdvice": "वाई-फ़ाई बंद करें और इसके बजाय मोबाइल डेटा का उपयोग करें।",
+    "filteredNetworkComputerAdvice": "इस वाई-फ़ाई के बजाय अपने फ़ोन के हॉटस्पॉट से कनेक्ट करें।",
+    "filteredNetworkItHeading": "शिक्षकों और आईटी कर्मचारियों के लिए",
+    "filteredNetworkItBody": "अपनी आईटी टीम से इन डोमेन को अनुमति देने के लिए कहें:",
+    "filteredNetworkAskForHelp": "पांगिया से मदद माँगें",
+    "filteredNetworkHelpExplanation": "इस नेटवर्क पर पांगिया चैट को काम करने में मदद करने के लिए हम आपको ईमेल करेंगे।",
+    "filteredNetworkHelpWaiting": "कनेक्ट होते ही आपका अनुरोध भेज दिया जाएगा।",
+    "filteredNetworkHelpSent": "भेज दिया गया। हम ईमेल द्वारा संपर्क करेंगे।",
+    "filteredNetworkHelpRefused": "हम आपका अनुरोध नहीं भेज सके। कृपया support@pangea.chat पर ईमेल करें।",
+    "filteredNetworkVideoBlocked": "यह नेटवर्क वीडियो को ब्लॉक करता है।",
+    "filteredNetworkImagesBlocked": "यह नेटवर्क छवियों को ब्लॉक करता है।",
+    "filteredNetworkMapBlocked": "यह नेटवर्क मानचित्र को ब्लॉक करता है।",
+    "callFullScreenTitle": "कॉल को पूरी स्क्रीन पर बजने दें",
+    "callFullScreenMessage": "जब पैंगिया चैट बंद था तब एक कॉल आया, लेकिन आपका फ़ोन उसके लिए केवल एक छोटी सूचना दिखा सका। पूरी स्क्रीन पर कॉल की अनुमति दें ताकि अगली कॉल आपकी पूरी स्क्रीन पर बजे, तब भी जब आपका फ़ोन लॉक हो।",
+    "callMicrophoneTitle": "कॉल के लिए अपने माइक्रोफ़ोन का उपयोग करें",
+    "callMicrophoneMessage": "Pangea Chat को कॉल के लिए आपके माइक्रोफ़ोन की आवश्यकता है, जिसमें लॉक स्क्रीन से आपके द्वारा उत्तर दिए गए कॉल भी शामिल हैं।",
+    "callMicrophoneOffTitle": "आपकी कॉल कनेक्ट नहीं हुई",
+    "callMicrophoneOffMessage": "Pangea Chat आपके माइक्रोफ़ोन का उपयोग नहीं कर सकता है। सेटिंग्स में इसे चालू करने के लिए टैप करें।",
+    "goalsCompletedOfTotal": "{total} में से {earned} लक्ष्य पूरे हुए",
+    "goalsCompletedInLanguage": "{language} में पूरे हुए लक्ष्य",
+    "sessionXpTowardObjective": "इस सत्र में {xp} XP; उद्देश्य पूरा करने के लिए {remaining} और",
+    "mapCreditsLabel": "मैप क्रेडिट: स्टेडिया मैप्स, ओपनमैपटाइल्स और ओपनस्ट्रीटमैप",
+    "activityLaunchFindingCourses": "आपके पाठ्यक्रम ढूँढे जा रहे हैं…",
+    "activityLaunchCreatingRoom": "आपकी गतिविधि बनाई जा रही है…",
+    "activityLaunchOpeningRoom": "आपकी गतिविधि खोली जा रही है…",
+    "playWithOthers": "दूसरों के साथ खेलें",
+    "openRole": "खुला: {role}",
+    "waitingFor": "{duration} प्रतीक्षा कर रहा है",
+    "onlineInCourse": "{course} में {count} ऑनलाइन",
+    "newCourseChat": "नई कोर्स चैट",
+    "customCourseStepDesc": "एक कोर्स बातचीत की गतिविधियों का एक सेट है जो आपकी पाठ्यपुस्तक का अनुसरण करता है, जिसे आपके छात्र होमवर्क के रूप में एक साथ करते हैं।",
+    "reopenAppToFinishSwitching": "स्विचिंग पूरी करने के लिए ऐप को पूरी तरह से बंद करें और फिर से खोलें।",
+    "teamCode": "टीम कोड",
+    "connectionOffline": "आप ऑफ़लाइन हैं। आपका कनेक्शन वापस आने पर पेंजिया चैट फिर से कनेक्ट हो जाएगा।",
+    "connectionUnreachable": "पेंजिया चैट तक नहीं पहुँच सकते। फिर से कोशिश कर रहा है…",
+    "connectionBackOnline": "वापस ऑनलाइन",
+    "missionDueDate": "{date}, {time} को देय",
+    "callNotificationsTitle": "कॉल को बजने दें",
+    "callNotificationsMessage": "कॉल सूचनाओं के रूप में बजती हैं। सूचनाओं की अनुमति दें ताकि आपका फ़ोन कॉल के लिए बजे, तब भी जब पेंजिया चैट बंद हो या आपका फ़ोन लॉक हो।",
+    "callNotificationsMissedMessage": "पेंजिया चैट बंद होने पर एक कॉल आई थी, लेकिन आपका फ़ोन बज नहीं सका क्योंकि सूचनाएँ बंद हैं। सूचनाओं की अनुमति दें ताकि अगली कॉल बजे।",
+    "connectionPracticeVocab": "इंतज़ार करते समय शब्दावली का अभ्यास करें",
+    "offlinePracticeNote": "ऑफ़लाइन। आपके वापस आने पर आपके उत्तर अपलोड हो जाएँगे।",
+    "offlinePracticeSavedNote": "इस डिवाइस पर सहेजा गया। आपके ऑनलाइन वापस आने पर आपका XP अपलोड हो जाएगा।",
+    "offlinePracticeNothingSaved": "ऑफ़लाइन अभ्यास के लिए इस डिवाइस पर पर्याप्त सेव नहीं किया गया है। जब आप वापस ऑनलाइन हों तो फिर से प्रयास करें।",
+    "missionNumber": "मिशन {index}",
+    "xpToYourStar": "आपके स्टार के लिए {xp} XP",
+    "missionStarEarned": "स्टार अर्जित किया!",
+    "xpFromChats": "चैट {xp}",
+    "xpFromGoals": "लक्ष्य {xp}",
+    "xpFromPractice": "अभ्यास {xp}",
+    "playMission": "खेलें",
+    "wordCount": "{count, plural, =1{1 शब्द} other{{count} शब्द}}",
+    "continueActivity": "जारी रखें",
+    "noObjectiveActivitiesYet": "आपने अभी तक इस उद्देश्य के लिए कोई गतिविधि पूरी नहीं की है। अपने कोर्स से एक शुरू करें।",
+    "objectiveNotInYourCourses": "यह उद्देश्य आपके किसी भी कोर्स में नहीं है।",
+    "objectiveActivityCount": "{count, plural, =0{अभी तक कोई गतिविधि नहीं} =1{1 गतिविधि खेली गई} other{{count} गतिविधियाँ खेली गईं}}",
+    "activityCompleted": "पूरा हुआ",
+    "completedTimes": "{count} बार पूरा किया गया",
+    "classLocation": "कक्षा का स्थान",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "बातचीत से {xp}",
+    "xpIncludingGoals": "लक्ष्यों से {xp} सहित",
+    "missionOtherLanguageNotice": "यह मिशन {language} के कोर्स से है। इस पर आपकी प्रगति तभी गिनी जाएगी जब आप {language} सीख रहे होंगे।",
+    "missionLanguageMismatchDesc": "यह मिशन {language} के कोर्स से है। क्या आप अपनी लक्ष्य भाषा को {language} में बदलना चाहेंगे?",
+    "xpBySkillTitle": "कौशल के अनुसार",
+    "missionNextActivity": "अगली गतिविधि",
+    "missionContinueActivity": "गतिविधि जारी रखें",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "इस कोर्स में पूरा हुआ ({num})",
+    "otherCoursesSessions": "अन्य कोर्स ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP अर्जित किए",
+    "currentMission": "वर्तमान मिशन"
 }

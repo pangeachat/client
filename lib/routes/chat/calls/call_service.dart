@@ -284,6 +284,14 @@ class CallService {
         final room = client.getRoomById(roomId);
         return room == null ? null : room.directChatMatrixID != null;
       },
+      // The two people a merge may cover: this account and the direct
+      // chat's other member. Fewer while the room is unknown, which the
+      // decision reads as "not yet", never as a verdict.
+      participants: (roomId) {
+        final peer = client.getRoomById(roomId)?.directChatMatrixID;
+        final me = client.userID;
+        return {?me, ?peer};
+      },
       index: index,
       myUserId: () => client.userID ?? '',
       myDeviceId: () => client.deviceID,
@@ -1528,21 +1536,31 @@ class CallService {
   static const declineReasonField = 'reason';
   static const declineBusy = 'busy';
 
+  /// What a decline says, for every sender of one: the app, and the
+  /// closed-app ring watcher, which has no room to send it through.
+  static Map<String, Object?> declineContent(
+    String notificationEventId, {
+    String? reason,
+  }) => {
+    'msgtype': PangeaEventTypes.callDecline,
+    'body': '',
+    declineReasonField: ?reason,
+    'm.relates_to': {
+      'rel_type': 'm.reference',
+      'event_id': notificationEventId,
+    },
+  };
+
   Future<void> decline(
     Room room, {
     required String notificationEventId,
     String? reason,
   }) async {
     try {
-      await room.sendEvent({
-        'msgtype': PangeaEventTypes.callDecline,
-        'body': '',
-        declineReasonField: ?reason,
-        'm.relates_to': {
-          'rel_type': 'm.reference',
-          'event_id': notificationEventId,
-        },
-      }, type: PangeaEventTypes.callDecline);
+      await room.sendEvent(
+        declineContent(notificationEventId, reason: reason),
+        type: PangeaEventTypes.callDecline,
+      );
     } catch (e, s) {
       Logs().w('Could not tell the caller the call was declined', e, s);
     }
@@ -1626,13 +1644,24 @@ class CallService {
   /// seen. Anywhere a decision turns on the caller NOT being there, use this:
   /// room state lags a join by seconds, and "their state has not arrived yet"
   /// is not "they are not calling".
-  PeerPresence callerPresence(Room room, String callerId, {String? deviceId}) {
-    final memberStates = room.states[EventTypes.GroupCallMember];
-    if (memberStates == null || memberStates.isEmpty) {
-      return PeerPresence.unknown;
-    }
+  PeerPresence callerPresence(Room room, String callerId, {String? deviceId}) =>
+      presenceIn(
+        room.states[EventTypes.GroupCallMember]?.values ?? const [],
+        callerId,
+        deviceId: deviceId,
+      );
+
+  /// [callerPresence], read from member state however it was fetched. The
+  /// closed-app ring watcher has no room to read, only the server's answer,
+  /// and it has to reach the same verdict the banner does.
+  static PeerPresence presenceIn(
+    Iterable<StrippedStateEvent> memberStates,
+    String callerId, {
+    String? deviceId,
+  }) {
     var sawTheirs = false;
-    for (final state in memberStates.values) {
+    for (final state in memberStates) {
+      if (state.type != EventTypes.GroupCallMember) continue;
       if (state.senderId != callerId) continue;
       final memberships = state.content['memberships'];
       if (memberships is! List) continue;
@@ -1659,12 +1688,101 @@ class CallService {
     return sawTheirs ? PeerPresence.gone : PeerPresence.unknown;
   }
 
+  /// Whether the call [ring] was sent from is still standing, for deciding
+  /// whether it is glare.
+  ///
+  /// Narrower than [callerPresence], which asks whether the device that rang
+  /// holds ANY membership. Glare asks about one membership: the one the ring
+  /// names. Only that membership standing says the ring is live, and only
+  /// what that device wrote AFTER the ring can say it is over -- a
+  /// retraction, or a fresh membership because they are now answering a call
+  /// of ours. Anything it wrote before the ring predates the membership the
+  /// ring was sent for, so it says nothing about that ring: a retraction left
+  /// from an earlier call read as "gone" and had genuine simultaneous calling
+  /// written twice, and a membership left from one read as "live".
+  /// Everything else -- including state this device simply has not synced --
+  /// is [PeerPresence.unknown] (pangeachat/.github#410).
+  ///
+  /// Ordered by the server's stamps on both sides, one clock.
+  PeerPresence ringCallPresence(Room room, IncomingCallNotification ring) {
+    // A ring that names no membership has nothing narrower to ask about; the
+    // device's own standing is the answer.
+    if (ring.membershipEventId == null) {
+      return callerPresence(
+        room,
+        ring.event.senderId,
+        deviceId: ring.senderDeviceId,
+      );
+    }
+    final memberStates = room.states[EventTypes.GroupCallMember];
+    if (memberStates == null || memberStates.isEmpty) {
+      return PeerPresence.unknown;
+    }
+    var superseded = false;
+    for (final state in memberStates.values) {
+      switch (ringEvidenceIn(state, ring)) {
+        case PeerPresence.live:
+          return PeerPresence.live;
+        case PeerPresence.gone:
+          superseded = true;
+        case PeerPresence.unknown:
+          break;
+      }
+    }
+    return superseded ? PeerPresence.gone : PeerPresence.unknown;
+  }
+
+  /// What ONE member state event says about the call [ring] was sent from,
+  /// by the rules of [ringCallPresence].
+  ///
+  /// Its own question because evidence that arrives AFTER a ring has to be
+  /// judged one event at a time, in the order it arrived. Room state keeps
+  /// only the newest event per key, so a sync that carries their membership
+  /// and then their retraction leaves only the retraction to re-read -- and a
+  /// genuine simultaneous call read back from that collapsed state looked
+  /// like a call that had already ended.
+  PeerPresence ringEvidenceIn(
+    StrippedStateEvent state,
+    IncomingCallNotification ring,
+  ) {
+    final callerId = ring.event.senderId;
+    final deviceId = ring.senderDeviceId;
+    final named = ring.membershipEventId;
+    if (state.type != EventTypes.GroupCallMember) return PeerPresence.unknown;
+    if (state.senderId != callerId) return PeerPresence.unknown;
+    final memberships = state.content['memberships'];
+    if (memberships is! List) return PeerPresence.unknown;
+    if (named != null) {
+      // Undated state cannot be put in order against the ring.
+      if (state is! Event) return PeerPresence.unknown;
+      if (state.eventId == named) {
+        return memberships.isNotEmpty
+            ? PeerPresence.live
+            : PeerPresence.unknown;
+      }
+    }
+    // Attributed to a device the way [callerPresence] attributes it.
+    final speaksForEveryDevice =
+        memberships.isEmpty && state.stateKey == callerId;
+    if (!speaksForEveryDevice &&
+        deviceId != null &&
+        !_belongsToDevice(state, memberships, deviceId)) {
+      return PeerPresence.unknown;
+    }
+    if (named == null) {
+      return memberships.isNotEmpty ? PeerPresence.live : PeerPresence.gone;
+    }
+    return (state as Event).originServerTs.isAfter(ring.orderedAt)
+        ? PeerPresence.gone
+        : PeerPresence.unknown;
+  }
+
   /// Whether a member state event is the work of one particular device.
   ///
   /// The membership's own `device_id` first; the state key only as a fallback,
   /// because the key has three shapes across MSC3757 and the per-device
   /// variants and matching it is guesswork where the field is not.
-  bool _belongsToDevice(
+  static bool _belongsToDevice(
     StrippedStateEvent state,
     List<Object?> memberships,
     String deviceId,
@@ -1705,6 +1823,11 @@ class CallService {
   void adoptCallIdForTest(String callId) => _callIdForTest = callId;
 
   String? _callIdForTest;
+
+  /// The call id this device's live call is under, or null when none is up.
+  /// Read by the call clock reader to check that a writer's membership was
+  /// for this call.
+  String? get currentCallId => _current?.groupCallId ?? _callIdForTest;
 
   /// Whether a ring in this room could be a 1:1 call for us.
   ///
@@ -1979,11 +2102,27 @@ class CallService {
     final me = client.userID;
     final myDevice = client.deviceID;
     if (me == null || myDevice == null) return false;
-    final states = room.states[EventTypes.GroupCallMember];
-    if (states == null) return false;
-    final now = DateTime.now().millisecondsSinceEpoch;
-    for (final state in states.values) {
-      if (state is! Event) continue;
+    return answeredElsewhereIn(
+      room.states[EventTypes.GroupCallMember]?.values ?? const [],
+      me: me,
+      myDevice: myDevice,
+      ringSentAt: ringSentAt,
+      now: DateTime.now(),
+    );
+  }
+
+  /// [answeredOnAnotherDevice], read from member state however it was
+  /// fetched, for the closed-app ring watcher.
+  static bool answeredElsewhereIn(
+    Iterable<StrippedStateEvent> memberStates, {
+    required String me,
+    required String myDevice,
+    required DateTime ringSentAt,
+    required DateTime now,
+  }) {
+    for (final state in memberStates) {
+      if (state is! MatrixEvent) continue;
+      if (state.type != EventTypes.GroupCallMember) continue;
       if (state.senderId != me) continue;
       // WRITTEN AFTER THE RING. The call id cannot answer this question: it
       // is the ROOM id by design -- one direct message holds one live call --
@@ -1999,7 +2138,9 @@ class CallService {
         if (m is! Map) continue;
         if (m['device_id'] == myDevice) continue;
         final expires = m['expires_ts'];
-        if (expires is! int || expires > now) return true;
+        if (expires is! int || expires > now.millisecondsSinceEpoch) {
+          return true;
+        }
       }
     }
     return false;
@@ -2014,16 +2155,20 @@ class CallService {
         update.state.senderId == client.userID,
   );
 
-  /// Fires whenever [callerId]'s call membership in [room] is rewritten.
-  ///
-  /// The signal a ringing device watches to notice the caller has given up.
-  Stream<void> callerPresenceChanges(Room room, String callerId) =>
-      client.onRoomState.stream.where(
-        (update) =>
-            update.roomId == room.id &&
-            update.state.type == EventTypes.GroupCallMember &&
-            update.state.senderId == callerId,
-      );
+  /// Every member state event [callerId] writes in [room], as it is applied
+  /// and in order -- the payload, not just the fact of a change. Room state
+  /// keeps only the newest event per key, so anything that must judge each
+  /// write (a membership that was live for a moment before its retraction in
+  /// the same sync) has to read it from here rather than from `room.states`.
+  Stream<StrippedStateEvent> callerStateUpdates(Room room, String callerId) =>
+      client.onRoomState.stream
+          .where(
+            (update) =>
+                update.roomId == room.id &&
+                update.state.type == EventTypes.GroupCallMember &&
+                update.state.senderId == callerId,
+          )
+          .map((update) => update.state);
 
   /// Rings that arrived while this device was not listening.
   ///
@@ -2097,7 +2242,7 @@ class CallService {
           if (event.originServerTs.isBefore(cutoff)) break;
           if (event.type == PangeaEventTypes.callDecline &&
               event.senderId == client.userID) {
-            final target = _declineRefersTo(event);
+            final target = declineTargetOf(event);
             if (target != null) declined.add(target);
             continue;
           }
@@ -2243,9 +2388,10 @@ class CallService {
   }
 
   /// The notification a decline points back at, or null if it points at nothing.
-  String? declineTarget(Event event) => _declineRefersTo(event);
+  String? declineTarget(Event event) => declineTargetOf(event);
 
-  String? _declineRefersTo(Event event) {
+  /// [declineTarget] for a bare event, for the closed-app ring watcher.
+  static String? declineTargetOf(MatrixEvent event) {
     final relation = event.content['m.relates_to'];
     if (relation is! Map || relation['rel_type'] != 'm.reference') return null;
     final id = relation['event_id'];

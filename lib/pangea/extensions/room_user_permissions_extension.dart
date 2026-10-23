@@ -11,6 +11,11 @@ extension UserPermissionsRoomExtension on Room {
       client.userID != null &&
       ownPowerLevel >= SpaceConstants.powerLevelOfAdmin;
 
+  /// False for a signed-out account: the SDK's [canInvite] reads
+  /// `client.userID!`, and the course page's leaderboard can still build
+  /// through logout (CLIENT-F1F).
+  bool get canInviteMembers => client.userID != null && canInvite;
+
   /// Whether the user may redact an event sent by [senderId].
   ///
   /// Direct chats are created with the `trusted_private_chat` preset, so both
@@ -21,8 +26,8 @@ extension UserPermissionsRoomExtension on Room {
   bool canRedactEventFrom(String senderId) =>
       senderId == client.userID || (!isDirectChat && canRedact);
 
-  /// Whether the room's power levels let the user react. A read-only room such
-  /// as announcements rejects a learner's reaction (#9167).
+  /// Whether the room's power levels let the user react. A read-only room
+  /// rejects a learner's reaction (#9167).
   bool get canSendReactions => canSendEvent(EventTypes.Reaction);
 
   /// The users currently knocking on this room, from the locally loaded member

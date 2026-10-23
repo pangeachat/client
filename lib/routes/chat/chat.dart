@@ -39,6 +39,7 @@ import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/language_service.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/moderation/moderation_refusal.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
@@ -87,7 +88,6 @@ import 'package:fluffychat/routes/chat/choreographer/text_editing/edit_type_enum
 import 'package:fluffychat/routes/chat/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/writing_assistance_room_extension.dart';
 import 'package:fluffychat/routes/chat/event_info_dialog.dart';
-import 'package:fluffychat/routes/chat/event_too_large_dialog.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
@@ -109,6 +109,7 @@ import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 import 'package:fluffychat/routes/chat/growth_animation.dart';
 import 'package:fluffychat/routes/chat/message_analytics_feedback.dart';
 import 'package:fluffychat/routes/chat/recording_view_model.dart';
+import 'package:fluffychat/routes/chat/send_refused_dialog.dart';
 import 'package:fluffychat/routes/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
@@ -1129,6 +1130,9 @@ class ChatController extends State<ChatPageWithRoom>
     loadTimelineFuture = _getTimeline();
     try {
       await loadTimelineFuture;
+      // The load stops early when the chat closed or [timeline] was cleared
+      // under it (see _getTimelineInner); the positioning below needs both.
+      if (!mounted || timeline == null) return;
       // We launched the chat with a given initial event ID:
       if (initialEventId != null) {
         scrollToEventId(initialEventId);
@@ -1148,6 +1152,7 @@ class ChatController extends State<ChatPageWithRoom>
       // requestHistory call before opening timeline on event context:
       if (readMarkerEventId.isNotEmpty && readMarkerEventIndex == -1) {
         await timeline?.requestHistory(historyCount: _loadHistoryCount);
+        if (!mounted || timeline == null) return;
         readMarkerEventIndex = timeline!.events
             .filterByVisibleInGui(
               exceptionEventId: readMarkerEventId,
@@ -1169,7 +1174,12 @@ class ChatController extends State<ChatPageWithRoom>
 
       if (!mounted) return;
     } catch (e, s) {
-      ErrorReporter(context, 'Unable to load timeline').onErrorCallback(e, s);
+      // The learner may have left the chat while it loaded, and a disposed
+      // State has no context: reading it here threw and hid [e] (CLIENT-ETX).
+      ErrorReporter(
+        mounted ? context : null,
+        'Unable to load timeline',
+      ).onErrorCallback(e, s);
       rethrow;
     }
   }
@@ -1183,6 +1193,17 @@ class ChatController extends State<ChatPageWithRoom>
   void _showScrollUpMaterialBanner(String eventId) => setState(() {
     scrollUpBannerEventId = eventId;
   });
+
+  /// The event the scroll-up banner offers after a timeline load failed with
+  /// [error], or null for no banner. Only a network failure while opening on
+  /// [eventContextId] leaves somewhere to go back to; a plain open has no event
+  /// to offer, and its fallback timeline has already loaded (CLIENT-CYX).
+  @visibleForTesting
+  static String? scrollUpBannerEventIdAfterLoadError(
+    Object error,
+    String? eventContextId,
+  ) =>
+      error is TimeoutException || error is IOException ? eventContextId : null;
 
   void updateView() {
     if (!mounted) return;
@@ -1270,10 +1291,17 @@ class ChatController extends State<ChatPageWithRoom>
         onInsert: onInsert,
       );
       if (!mounted) return;
-      if (e is TimeoutException || e is IOException) {
-        _showScrollUpMaterialBanner(eventContextId!);
-      }
+      final bannerEventId = scrollUpBannerEventIdAfterLoadError(
+        e,
+        eventContextId,
+      );
+      if (bannerEventId != null) _showScrollUpMaterialBanner(bannerEventId);
     }
+    // [timeline] can be gone by now: the history requests above take a while,
+    // and meanwhile the chat can close (dispose clears it) or a jump to
+    // another event can clear it and queue a fresh load behind this one. This
+    // load then has nothing left to finish (CLIENT-EXJ).
+    if (!mounted || timeline == null) return;
     timeline!.requestKeys(onlineKeyBackupOnly: false);
     if (room.markedUnread) room.markUnread(false);
 
@@ -1627,6 +1655,14 @@ class ChatController extends State<ChatPageWithRoom>
       hideEmojiPicker();
     }
 
+    // The length, never the text: learner content stays out of Sentry.
+    final sendFailureData = {
+      'roomId': roomId,
+      'textLength': message.length,
+      'inReplyTo': reply?.eventId,
+      'editEventId': edit?.eventId,
+    };
+
     room
         .pangeaSendTextEvent(
           message,
@@ -1688,12 +1724,7 @@ class ChatController extends State<ChatPageWithRoom>
             ErrorHandler.logError(
               e: Exception('msgEventId is null'),
               s: StackTrace.current,
-              data: {
-                'roomId': roomId,
-                'text': message,
-                'inReplyTo': reply?.eventId,
-                'editEventId': edit?.eventId,
-              },
+              data: sendFailureData,
             );
             return;
           }
@@ -1703,21 +1734,30 @@ class ChatController extends State<ChatPageWithRoom>
             if (mounted) {
               showAdaptiveDialog(
                 context: context,
-                builder: (context) => const EventTooLargeDialog(),
+                builder: (context) =>
+                    SendRefusedDialog(message: L10n.of(context).tooLargeToSend),
               );
             }
             return;
           }
+          final refusal = ModerationRefusal.fromError(err);
           ErrorHandler.logError(
             e: err,
             s: s,
-            data: {
-              'roomId': roomId,
-              'text': message,
-              'inReplyTo': reply?.eventId,
-              'editEventId': edit?.eventId,
-            },
+            data: sendFailureData,
+            level: refusal != null ? SentryLevel.info : null,
           );
+          if (refusal != null) {
+            unawaited(
+              _returnRefusedMessage(
+                refusal,
+                txid: tempEventId,
+                message: message,
+                reply: reply,
+                edit: edit,
+              ),
+            );
+          }
         });
     // sendController.value = TextEditingValue(
     //   text: pendingText,
@@ -1732,6 +1772,35 @@ class ChatController extends State<ChatPageWithRoom>
     //   pendingText = '';
     // });
     // Pangea#
+  }
+
+  /// Moderation refused [message]: drop its failed bubble, give the text back
+  /// to the composer (unless the learner has started another message) and say
+  /// why, so they can edit it. Sending it unchanged would be refused again.
+  Future<void> _returnRefusedMessage(
+    ModerationRefusal refusal, {
+    required String? txid,
+    required String message,
+    required Event? reply,
+    required Event? edit,
+  }) async {
+    if (txid != null) {
+      final failedEcho = await room.client.database.getEventById(txid, room);
+      await failedEcho?.cancelSend();
+    }
+    if (!mounted) return;
+    if (sendController.text.isEmpty &&
+        replyEvent.value == null &&
+        editEvent.value == null) {
+      replyEvent.value = reply;
+      editEvent.value = edit;
+      sendController.setSystemText(message, EditTypeEnum.other);
+    }
+    await showAdaptiveDialog(
+      context: context,
+      builder: (context) =>
+          SendRefusedDialog(message: refusal.message(L10n.of(context))),
+    );
   }
 
   void sendFileAction({FileType type = FileType.any}) async {
@@ -2904,6 +2973,7 @@ class ChatController extends State<ChatPageWithRoom>
       .firstWhereOrNull(
         (event) =>
             event.isVisibleInGui &&
+            !event.isBotNotice &&
             event.senderId != room.client.userID &&
             !event.redacted,
       )
@@ -2913,6 +2983,7 @@ class ChatController extends State<ChatPageWithRoom>
     final candidate = timeline!.events.firstWhereOrNull(
       (event) =>
           event.isVisibleInGui &&
+          !event.isBotNotice &&
           event.senderId != room.client.userID &&
           event.senderId == BotName.byEnvironment,
     );

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
@@ -14,6 +15,7 @@ import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -44,6 +46,11 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
   RoomSummaryResponse? roomSummary;
   Object? roomSummaryError;
   bool loadingRoomSummary = false;
+
+  /// The summary loaded but names no course — no room behind the link, or a
+  /// room with no course plan. A known state ("Course not found"), unlike a
+  /// summary request that failed outright (#380).
+  bool courseNotFound = false;
 
   /// The preview modules list's outline loader (#7826). Created lazily — the
   /// quest id arrives with the room summary.
@@ -138,6 +145,7 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       setState(() {
         loadingRoomSummary = true;
         roomSummaryError = null;
+        courseNotFound = false;
       });
 
       final roomIds = [fullRoomId(roomID)];
@@ -149,6 +157,7 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
 
       final roomSummary = roomSummariesResponse[fullRoomId(roomID)];
       if (roomSummary == null) {
+        courseNotFound = true;
         throw Exception("Room summary not found");
       }
 
@@ -159,6 +168,8 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
         e: e,
         s: s,
         data: {'roomID': widget.roomID, 'roomSummary': roomSummary?.toJson()},
+        // A link to no course is a known state; a failed request is breakage.
+        level: courseNotFound ? SentryLevel.warning : null,
       );
     } finally {
       if (mounted) {
@@ -182,9 +193,16 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       ErrorHandler.logError(
         e: Exception("No course plan found in room summary"),
         data: {'roomID': widget.roomID, 'roomSummary': roomSummary?.toJson()},
+        level: roomSummaryError == null ? SentryLevel.warning : null,
       );
       if (mounted) {
         setState(() {
+          // A summary that loaded but carries no plan is a link to no course;
+          // a failed summary request stays the generic error.
+          if (roomSummaryError == null) courseNotFound = true;
+          // loadCourse never runs on this path, so its loading flag would
+          // otherwise hold the page on an endless spinner (#380).
+          loadingCourse = false;
           roomSummaryError = Exception("No course plan found in room summary");
         });
       }
@@ -283,6 +301,11 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     content: content,
     loading: loading,
     hasError: hasError,
+    unavailableMessage: courseNotFound
+        ? L10n.of(context).courseNotFound
+        : courseError is MissingQuestException
+        ? L10n.of(context).missingCourseOutline
+        : null,
     onTapCta: joinCourse,
     ctaButtonText: roomSummary?.joinRule == JoinRules.knock
         ? L10n.of(context).knock

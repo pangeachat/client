@@ -21,6 +21,7 @@ enum PanelTypesEnum {
   analytics,
   vocab,
   grammar,
+  objective,
   review,
   practice;
 
@@ -34,6 +35,7 @@ enum PanelTypesEnum {
     PanelTypesEnum.analytics,
     PanelTypesEnum.vocab,
     PanelTypesEnum.grammar,
+    PanelTypesEnum.objective,
     PanelTypesEnum.practice,
     PanelTypesEnum.review,
   };
@@ -42,6 +44,7 @@ enum PanelTypesEnum {
     PanelTypesEnum.analytics,
     PanelTypesEnum.vocab,
     PanelTypesEnum.grammar,
+    PanelTypesEnum.objective,
   };
 
   static const Set<PanelTypesEnum> _settingsPanels = {
@@ -162,6 +165,7 @@ enum PanelTypesEnum {
     PanelTypesEnum.analytics,
     PanelTypesEnum.vocab,
     PanelTypesEnum.grammar,
+    PanelTypesEnum.objective,
     PanelTypesEnum.practice,
     PanelTypesEnum.addcoursepage,
   }.contains(this);
@@ -180,6 +184,7 @@ enum PanelTypesEnum {
     PanelTypesEnum.analytics => AnalyticsPanelDef(),
     PanelTypesEnum.vocab => VocabPanelDef(),
     PanelTypesEnum.grammar => GrammarPanelDef(),
+    PanelTypesEnum.objective => ObjectivePanelDef(),
     PanelTypesEnum.review => ReviewPanelDef(),
     PanelTypesEnum.practice => PracticePanelDef(),
     PanelTypesEnum.newprivatechat => NewPrivateChatPanelDef(),
@@ -227,6 +232,8 @@ enum PanelTypesEnum {
         return l10n.vocab;
       case PanelTypesEnum.grammar:
         return l10n.grammar;
+      case PanelTypesEnum.objective:
+        return l10n.learningObjective;
       case PanelTypesEnum.practice:
         return l10n.practice;
     }

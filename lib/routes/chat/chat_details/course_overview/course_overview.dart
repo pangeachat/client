@@ -7,10 +7,9 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
@@ -23,8 +22,9 @@ import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_complete_card.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_objective_circles.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
-import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
 import 'package:fluffychat/widgets/expandable_text.dart';
 
 /// The single scrollable course page (#8357, replacing the tab row): Course
@@ -61,6 +61,19 @@ class CourseOverview extends StatefulWidget {
 }
 
 class _CourseOverviewState extends State<CourseOverview> {
+  /// The Mission the Learning Objective section shows, picked from the
+  /// circles; null shows the resolver's current Mission. It rides the URL
+  /// (`?mission=`) so the collapsed header and the course map show the same
+  /// Mission.
+  String? get _selectedMissionId =>
+      selectedMissionIdFor(GoRouterState.of(context).uri);
+
+  void _selectMission(String missionId) {
+    context.go(
+      WorkspaceNav.selectMission(GoRouterState.of(context).uri, missionId),
+    );
+  }
+
   final ScrollController _scrollController = ScrollController();
 
   final Map<SpaceSettingsTabs, GlobalKey> _sectionKeys = {
@@ -139,7 +152,6 @@ class _CourseOverviewState extends State<CourseOverview> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = L10n.of(context);
     final room = widget.room;
     return Listener(
       behavior: HitTestBehavior.opaque,
@@ -158,8 +170,10 @@ class _CourseOverviewState extends State<CourseOverview> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   // The course description leads the page (#8357 review
-                  // feedback), with the language/level/module chips directly
-                  // below it.
+                  // feedback), with the language and level chips directly
+                  // below it. No activity count here (#9390): beside the star
+                  // total below it read as a completion requirement, and the
+                  // star total alone is the course goal.
                   if (room.topic.isNotEmpty)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 12.0),
@@ -174,6 +188,7 @@ class _CourseOverviewState extends State<CourseOverview> {
                       child: CourseInfoChips(
                         room.coursePlan!.uuid,
                         courseRoomId: room.id,
+                        showActivityCount: false,
                         fontSize: Theme.of(
                           context,
                         ).textTheme.bodySmall?.fontSize,
@@ -184,18 +199,6 @@ class _CourseOverviewState extends State<CourseOverview> {
                   // the admin, above anything they can merely catch up on.
                   CourseKnockRequests(room: room),
                   CourseCatchUp(room: room),
-                  // The course-wide progress bar rides the intro block, under
-                  // the attention cards; the Course plan section below starts
-                  // straight at its header, with no divider between them.
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
-                    child: CourseProgressBar(
-                      objectivesProvider: widget.controller.objectivesProvider,
-                      // The course tutorial runs on this page, so this is the
-                      // instance it points at.
-                      tutorialTargetId: TutorialTargetIds.courseProgressBar,
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -215,59 +218,53 @@ class _CourseOverviewState extends State<CourseOverview> {
                     ]),
                     builder: (context, _) {
                       final provider = widget.controller.objectivesProvider;
-                      // "See full course plan" only leads somewhere when a
-                      // plan can render: hidden when the course has none or
-                      // it failed to load (the list shows the error state
-                      // alone).
-                      final hasPlan = switch (provider.questLoader.value) {
-                        AsyncLoaded() =>
-                          provider.filteredObjectiveGroups.isNotEmpty,
-                        AsyncLoading() => true,
-                        AsyncError() || AsyncIdle() => false,
-                      };
+                      // The Mission on show: the one picked from the circles
+                      // (while the plan still has it), else the current one.
+                      final group =
+                          provider.objectiveGroup(_selectedMissionId) ??
+                          provider.currentObjectiveGroup;
+                      final complete =
+                          group == null && provider.isCourseComplete;
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          // The header names the section, not the shortlist
-                          // it happens to show — "Suggested" is implicit in a
-                          // ranked row and only added words (#8744). The
-                          // plan the row is drawn from keeps its own name on
-                          // the subpage this section links to.
-                          CourseSectionHeader(
-                            title: l10n.activities,
-                            // Already this app's glyph for a course's
-                            // syllabus (the More section's "Change course
-                            // plan"), which is where these activities come
-                            // from.
-                            icon: Icons.assignment_outlined,
-                            actions: [
-                              if (hasPlan)
-                                CourseSectionButton(
-                                  section: l10n.activities,
-                                  onPressed: () =>
-                                      _openSubpage(SpaceSettingsTabs.course),
-                                ),
-                            ],
+                          // The section is the learner's CURRENT Mission
+                          // (#9437): the Mission circles, then the Mission
+                          // card and the activities that satisfy it, with no
+                          // section header (#9420).
+                          CourseObjectiveCircles(
+                            objectivesProvider: provider,
+                            onSelectMission: _selectMission,
+                            selectedMissionId: _selectedMissionId,
                           ),
-                          const SizedBox(height: 8.0),
-                          // The shortlist draws from every Mission and ranks a
-                          // pinged activity near the front, so it carries the
-                          // ping badge on the card itself — the header's link
-                          // needs none (it did while this was one Mission's
-                          // row, #8454).
-                          CourseObjectivesList(
-                            room: room,
-                            shrinkWrap: true,
-                            suggestedOnly: true,
-                            hasCompletedActivity: (activityId) => widget
-                                .controller
-                                .roomSummariesModel
-                                .hasCompletedActivity(
-                                  room.client.userID,
-                                  activityId,
-                                ),
-                            objectivesProvider:
-                                widget.controller.objectivesProvider,
+                          const SizedBox(height: 4.0),
+                          if (complete)
+                            CourseCompleteCard(
+                              objectiveCount: provider.objectiveCount,
+                            )
+                          else ...[
+                            // The Mission card (statement, XP ring, Play,
+                            // Practice and the Mission's activities), with a
+                            // pinged activity's badge on its card.
+                            CourseObjectivesList(
+                              room: room,
+                              shrinkWrap: true,
+                              suggestedOnly: true,
+                              missionId: group?.objective.id,
+                              objectivesProvider: provider,
+                            ),
+                          ],
+                          // The full plan, for reading the course's shape —
+                          // educators asked for it — rather than choosing
+                          // what to do next, so a plain link under the card,
+                          // never competing with Play (#9420).
+                          Align(
+                            alignment: AlignmentDirectional.centerEnd,
+                            child: TextButton(
+                              onPressed: () =>
+                                  _openSubpage(SpaceSettingsTabs.course),
+                              child: Text(L10n.of(context).seeFullCoursePlan),
+                            ),
                           ),
                         ],
                       );

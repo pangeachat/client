@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:fake_async/fake_async.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' show Level, Logs;
 
@@ -64,6 +65,9 @@ class _FakeRingAudio implements RingAudio {
 
   final List<String> log = [];
 
+  /// Every context this player was configured with, in order.
+  final List<AudioContext> contexts = [];
+
   /// Extra work configure performs (e.g. throw once), on top of logging.
   final Future<void> Function()? configureBehavior;
 
@@ -80,7 +84,7 @@ class _FakeRingAudio implements RingAudio {
   final bool throwOnStop;
 
   int _playCount = 0;
-  Completer<void>? _complete;
+  Completer<AudioEvent>? _complete;
 
   @override
   Future<void> configure({
@@ -88,6 +92,7 @@ class _FakeRingAudio implements RingAudio {
     required AudioContext context,
   }) async {
     log.add('configure');
+    contexts.add(context);
     final behavior = configureBehavior;
     if (behavior != null) await behavior();
   }
@@ -110,15 +115,20 @@ class _FakeRingAudio implements RingAudio {
   @override
   Future<void> pause() async => log.add('pause');
 
+  /// Typed the way audioplayers delivers it: `onPlayerComplete` is declared
+  /// `Stream<void>` but is a `Stream<AudioEvent>` underneath, so the real
+  /// completion is a `Future<AudioEvent>` behind a `Future<void>`. A fake that
+  /// returned a true `Future<void>` hid a cue cut off the moment it started.
   @override
   Future<void> get complete {
-    final completer = Completer<void>();
+    final completer = Completer<AudioEvent>();
     _complete = completer;
     return completer.future;
   }
 
   /// Fire the completion event for the play currently being awaited.
-  void completeCurrentPlay() => _complete?.complete();
+  void completeCurrentPlay() =>
+      _complete?.complete(const AudioEvent(eventType: AudioEventType.complete));
 
   @override
   Future<void> dispose() async {
@@ -285,6 +295,46 @@ void main() {
     );
   });
 
+  group('the iOS audio session each sound plays under (#9166)', () {
+    // On iOS audioplayers applies a player's context to the app's one shared
+    // AVAudioSession, so a call cue configured as `playback` took recording
+    // away from a live call.
+    test('a call cue keeps the call recording-capable', () async {
+      final loop = _FakeRingAudio();
+      final oneShot = _FakeRingAudio();
+      final players = [loop, oneShot];
+      final sound = AssetRingSound.callSignalling(
+        audioFactory: () => players.removeAt(0),
+      );
+
+      await sound.start('sounds/ringback.mp3');
+      final once = sound.playOnce('sounds/call_ended.mp3');
+      await pumpEventQueue();
+      oneShot.completeCurrentPlay();
+      await once;
+
+      for (final player in [loop, oneShot]) {
+        final ios = player.contexts.single.iOS;
+        expect(ios.category, AVAudioSessionCategory.playAndRecord);
+        expect(ios.options, contains(AVAudioSessionOptions.defaultToSpeaker));
+        expect(ios.options, contains(AVAudioSessionOptions.allowBluetooth));
+      }
+    });
+
+    test('the incoming ring keeps the default session', () async {
+      final loop = _FakeRingAudio();
+      final sound = AssetRingSound(audioFactory: () => loop);
+
+      await sound.start('sounds/phone.ogg');
+
+      expect(
+        loop.contexts.single.iOS.category,
+        AVAudioSessionCategory.playback,
+        reason: 'it rings before any call exists, so it has no call to match',
+      );
+    });
+  });
+
   test('an unsuperseded start reaches the play', () async {
     final sound = AssetRingSound(audioFactory: () => _FakeRingAudio());
 
@@ -436,6 +486,7 @@ void main() {
     () async {
       final handle = _FakeRingAudio();
       final sound = AssetRingSound(audioFactory: () => handle);
+      Logs().outputEvents.clear();
 
       final playing = sound.playOnce('sounds/call_ended.mp3');
       await pumpEventQueue();
@@ -443,6 +494,11 @@ void main() {
         'configure',
         'play:sounds/call_ended.mp3',
       ], reason: 'the cue is playing and not yet torn down');
+      expect(
+        Logs().outputEvents.where((e) => e.title.contains('Call cue not')),
+        isEmpty,
+        reason: 'waiting on the completion must not itself fail the cue',
+      );
 
       // Draining the queue is not enough: without a completion event the cue is
       // held open, so a longer asset is never cut off.
@@ -459,6 +515,35 @@ void main() {
       await playing;
     },
   );
+
+  test('a one-shot whose completion never comes is torn down at the bound, '
+      'and says so', () {
+    fakeAsync((async) {
+      final handle = _FakeRingAudio();
+      final sound = AssetRingSound(audioFactory: () => handle);
+      Logs().outputEvents.clear();
+
+      var done = false;
+      sound.playOnce('sounds/call_ended.mp3').then((_) => done = true);
+      async.elapse(const Duration(seconds: 7));
+      expect(
+        handle.log,
+        isNot(contains('dispose')),
+        reason: 'inside the bound the cue keeps playing',
+      );
+
+      async.elapse(const Duration(seconds: 1));
+      expect(handle.log.last, 'dispose');
+      expect(done, isTrue);
+      expect(
+        Logs().outputEvents.any(
+          (e) => e.title.contains('completion not signalled'),
+        ),
+        isTrue,
+        reason: 'the bound is surfaced, not swallowed',
+      );
+    });
+  });
 
   test(
     'a failed stop is surfaced and recovers, not silently swallowed',

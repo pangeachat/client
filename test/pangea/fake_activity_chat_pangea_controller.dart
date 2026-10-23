@@ -10,12 +10,19 @@ import 'fake_pangea_controller.dart';
 
 /// [FakePangeaController] plus what the activity chat controller reads back
 /// through the static: the subscription gate, and the analytics dispatcher it
-/// subscribes to on construction.
+/// subscribes to on construction. Pass [accessToken] to let a repo's request
+/// reach the network.
 class ActivityChatTestPangeaController implements PangeaController {
-  ActivityChatTestPangeaController({bool subscribed = true})
-    : subscriptionController = _FakeSubscriptionController(subscribed);
+  ActivityChatTestPangeaController({
+    bool subscribed = true,
+    String? accessToken,
+  }) : subscriptionController = _FakeSubscriptionController(subscribed),
+       _delegate = FakePangeaController(
+         userL1Code: 'en',
+         accessToken: accessToken,
+       );
 
-  final PangeaController _delegate = FakePangeaController(userL1Code: 'en');
+  final PangeaController _delegate;
 
   @override
   UserController get userController => _delegate.userController;

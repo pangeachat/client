@@ -17,39 +17,30 @@ import '../courses/course_missions_fixtures.dart';
 /// pin filters a Mission's activities to the pinned set; every fail-open rule
 /// exists so a pin can never make a Mission unsatisfiable (org quests doc).
 void main() {
-  ActivityPlanModel plan(String id, {int goals = 3}) => ActivityPlanModel(
-    req: ActivityPlanRequest(
-      topic: '',
-      mode: '',
-      objective: '',
-      media: MediaEnum.nan,
-      cefrLevel: LanguageLevelTypeEnum.a2,
-      languageOfInstructions: 'en',
-      targetLanguage: 'es',
-      numberOfParticipants: 2,
-    ),
-    title: '',
-    learningObjective: '',
-    instructions: '',
-    vocab: const [],
-    activityId: id,
-    roles: {
-      'r1': ActivityRole(
-        id: 'r1',
-        name: 'r1',
-        goal: null,
-        goals: [
-          for (var i = 0; i < goals; i++)
-            ActivityRoleGoal(id: '$id-g$i', description: 'g$i'),
-        ],
-      ),
-    },
-  );
+  ActivityPlanModel plan(String id, {List<String> vocab = const []}) =>
+      ActivityPlanModel(
+        req: ActivityPlanRequest(
+          topic: '',
+          mode: '',
+          objective: '',
+          media: MediaEnum.nan,
+          cefrLevel: LanguageLevelTypeEnum.a2,
+          languageOfInstructions: 'en',
+          targetLanguage: 'es',
+          numberOfParticipants: 2,
+        ),
+        title: '',
+        learningObjective: '',
+        instructions: '',
+        vocab: [for (final lemma in vocab) Vocab(lemma: lemma, pos: 'NOUN')],
+        activityId: id,
+      );
 
-  QuestActivity activity(String id, {int goals = 3}) => QuestActivity(
-    activityId: id,
-    plan: plan(id, goals: goals),
-  );
+  QuestActivity activity(String id, {List<String> vocab = const []}) =>
+      QuestActivity(
+        activityId: id,
+        plan: plan(id, vocab: vocab),
+      );
 
   QuestOutline outline(Map<String, List<QuestActivity>> activitiesByLo) =>
       QuestOutline(
@@ -141,21 +132,28 @@ void main() {
       expect(idsOf(o, 'lo-1'), {'a1', 'a2'});
     });
 
-    test('projection derives filtered activity and earnable maps', () {
+    test('projection derives filtered activity and vocab maps', () {
       final o = outline({
-        'lo-1': [activity('a1', goals: 4), activity('a2', goals: 5)],
+        'lo-1': [
+          activity('a1', vocab: ['Hola']),
+          activity('a2', vocab: ['adiós']),
+        ],
       });
-      final projected = o.restrictedTo({
-        'lo-1': ['a1'],
-      }).toCourseLoOutline();
+      final projected = o
+          .restrictedTo({
+            'lo-1': ['a1'],
+          })
+          .toCourseLoOutline(xpToComplete: 500);
       expect(projected.activityIdsByLo['lo-1'], {'a1'});
-      expect(projected.earnableByActivity.containsKey('a2'), isFalse);
-      expect(projected.earnableByActivity['a1'], 4);
+      // The word list practice credits the Mission by follows the same
+      // restriction, case-folded (#9420).
+      expect(projected.lemmasByLo['lo-1'], {'hola'});
+      expect(projected.xpToComplete, 500);
     });
   });
 
   group('restricted outline through resolveProgression', () {
-    test('stars on an off-pin activity do not count toward the Mission', () {
+    test('XP on an off-pin activity does not count toward the Mission', () {
       final o = outline({
         'lo-1': [activity('a1'), activity('a2')],
       });
@@ -165,27 +163,9 @@ void main() {
             'lo-1': ['a1'],
           }).toCourseLoOutline(),
         ],
-        starsByActivity: {'a1': 2, 'a2': 5},
+        xpByActivity: {'a1': 80, 'a2': 500},
       );
-      expect(resolution.forCourse('q1')!.rollup['lo-1']!.stars, 2);
-    });
-
-    test('the effective threshold clamps to the pinned set', () {
-      final o = outline({
-        'lo-1': [activity('a1', goals: 4), activity('a2', goals: 6)],
-      });
-      final resolution = resolveProgression(
-        outlines: [
-          o
-              .restrictedTo({
-                'lo-1': ['a1'],
-              })
-              .toCourseLoOutline(starsToUnlock: 10),
-        ],
-        starsByActivity: const {},
-      );
-      // Unrestricted the ceiling would be 10 (4+6 = 10); pinned it is 4.
-      expect(resolution.forCourse('q1')!.rollup['lo-1']!.threshold, 4);
+      expect(resolution.forCourse('q1')!.rollup['lo-1']!.xp, 80);
     });
   });
 
@@ -244,22 +224,48 @@ void main() {
       expect(idsOf(shown, 'lo-3'), isEmpty);
     });
 
-    test('a Can-Do\'s activities keep the library order, whatever order '
-        'the copy lists them in', () {
-      // Writers snapshot from different listings (the app's creation copy,
-      // the dashboard's publish and the backfill), so the copy's activity
-      // order is not a teacher choice in v1. Reading it as a set keeps what a
-      // student sees unchanged when a copy is written.
-      final shown = threeMissions().forRules(
-        withCopy({
-          'lo-1': ['a2', 'a1'],
-        }),
+    test(
+      'a Can-Do\'s activities follow the order the record lists them in',
+      () {
+        // A teacher can reorder a Can-Do's activities (Content Studio v2).
+        final shown = threeMissions().forRules(
+          withCopy({
+            'lo-1': ['a2', 'a1'],
+          }),
+        );
+        expect(
+          shown.groups.single.activities.map((a) => a.activityId).toList(),
+          ['a2', 'a1'],
+        );
+      },
+    );
+
+    test('a record written in listing order reads as the listing does', () {
+      final source = threeMissions();
+      final listing = source.groups.first.activities
+          .map((a) => a.activityId)
+          .toList();
+      final shown = source.forRules(withCopy({'lo-1': listing}));
+      expect(
+        shown.groups.single.activities.map((a) => a.activityId).toList(),
+        listing,
       );
-      expect(shown.groups.single.activities.map((a) => a.activityId).toList(), [
-        'a1',
-        'a2',
-      ]);
     });
+
+    test(
+      'a listed id the library no longer returns is dropped, order kept',
+      () {
+        final shown = threeMissions().forRules(
+          withCopy({
+            'lo-1': ['a2', 'gone', 'a1'],
+          }),
+        );
+        expect(
+          shown.groups.single.activities.map((a) => a.activityId).toList(),
+          ['a2', 'a1'],
+        );
+      },
+    );
 
     test('ignores the pins when a copy exists', () {
       final shown = threeMissions().forRules(
@@ -322,7 +328,7 @@ void main() {
           .toCourseLoOutline();
       expect(shown.orderedLoIds, today.orderedLoIds);
       expect(shown.activityIdsByLo, today.activityIdsByLo);
-      expect(shown.earnableByActivity, today.earnableByActivity);
+      expect(shown.lemmasByLo, today.lemmasByLo);
       expect(identical(source.forRules(CourseListRules.none), source), isTrue);
     });
 
@@ -338,7 +344,7 @@ void main() {
               )
               .toCourseLoOutline(),
         ],
-        starsByActivity: const {},
+        xpByActivity: const {},
       );
       expect(resolution.forCourse('q1')!.anchorMissionId, 'lo-3');
       expect(resolution.forCourse('q1')!.rollup.keys, {'lo-3', 'lo-1'});

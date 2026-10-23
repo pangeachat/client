@@ -10,6 +10,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:matrix/encryption.dart';
 import 'package:matrix/matrix.dart';
+import 'package:pangea_call_capture/pangea_call_capture.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,12 +21,15 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_state_repair.dart';
+import 'package:fluffychat/features/activity_sessions/play_with_bot_intent.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/notifications/nse_session.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
@@ -36,12 +41,17 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
+import 'package:fluffychat/routes/chat/calls/call_ringing_ask.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
+import 'package:fluffychat/routes/chat/calls/ios_call_screen.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
+import 'package:fluffychat/routes/chat/events/utils/pending_reports.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/utils/push_helper.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/screen_size_warning_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -125,6 +135,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   final Map<String, AnalyticsDataService> _analyticsServices = {};
   final Map<String, ActivityAutoSaveService> _activityAutoSaveServices = {};
   final Map<String, ActivityRolesStateRepair> _activityRolesStateRepairs = {};
+  final Map<String, PendingReportReplay> _pendingReportReplays = {};
   final Map<String, CallService> _callServices = {};
 
   /// Accounts whose services are being torn down, mapped to the in-flight
@@ -222,6 +233,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// account's, and never resurrecting a service for a closing one.
   AnalyticsDataService? analyticsServiceFor(String clientName) =>
       _analyticsServices[clientName];
+
+  /// The active account's EXISTING analytics service, or null before it is
+  /// created — never the create-on-miss of [analyticsDataService], whose
+  /// constructor starts the service's init.
+  AnalyticsDataService? get analyticsServiceIfExists =>
+      _analyticsServices[client.clientName];
 
   /// This account's calling service.
   ///
@@ -465,6 +482,236 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
   // Pangea#
 
+  /// Answers [ring]: joins its call and, on the account the learner is in,
+  /// opens its chat.
+  ///
+  /// The one way a ring is answered, from the in-app banner and from the
+  /// notification that rang while the app was closed, so the two cannot come
+  /// to treat the same call differently.
+  ///
+  /// Deliberately NOT gated on the caller still being visible in Matrix room
+  /// state. That read lags a join by seconds, so it was routinely empty at the
+  /// moment someone tapped answer -- and answering did nothing at all. The SFU
+  /// is the rendezvous point: join it, and let presence decide from there
+  /// whether anyone is actually on the other end.
+  void answerRing(IncomingCallNotification ring) {
+    final room = ring.event.room;
+    // The account this ring reached must still be signed in. Between the
+    // ring and the tap it can have logged out, and starting a call then would
+    // run it through whichever account is foregrounded now.
+    if (!widget.clients.contains(room.client) || isSigningOut(room.client)) {
+      Logs().w('Cannot answer: that account is no longer signed in');
+      return;
+    }
+    // A call for ANOTHER account has no chat pane it could be shown in:
+    // `ChatPage` resolves its room through the ACTIVE client, so navigating
+    // there would land on RoomUnavailablePanel with a connected call playing
+    // behind it. It is presented as an app-level overlay instead -- fullscreen
+    // from its first frame, because the alternative overlay is CallMiniTile,
+    // which has neither hangup nor mute.
+    final onActiveAccount = identical(room.client, client);
+    try {
+      startCall(
+        room,
+        video: ring.isVideo,
+        // Anchors this side's speaking analytics: the answering device does
+        // not write the call to the timeline, the caller does.
+        notificationEventId: ring.event.eventId,
+        // The caller's own membership, named by their ring: the call's SHARED
+        // identity, which every card for this call is stamped with.
+        callerMembershipEventId: ring.membershipEventId,
+        fullscreen: !onActiveAccount,
+      );
+    } on AlreadyInACall {
+      // A call is live somewhere else -- another account, or another room on
+      // this one. The answer cannot happen, so TELL the caller rather than
+      // leaving them ringing into nothing until they time out and write a
+      // missed call.
+      Logs().w('Answering while already on a call elsewhere');
+      unawaited(
+        callServiceForClient(room.client).decline(
+          room,
+          notificationEventId: ring.event.eventId,
+          reason: CallService.declineBusy,
+        ),
+      );
+      return;
+    }
+    // The call lives in its own chat's pane, so answering also goes there.
+    //
+    // ONLY for the active account. Answering a call on another account leaves
+    // the learner exactly where they were, with the call over the top: their
+    // room list, their open chat and a half-typed message are all untouched.
+    // They asked to talk to somebody, not to be moved to another account --
+    // and with no in-app account switcher, moving them would strand them.
+    if (!onActiveAccount) return;
+    final router = FluffyChatApp.router;
+    final uri = router.routeInformationProvider.value.uri;
+    router.go(WorkspaceNav.openRoomById(uri, room.id));
+  }
+
+  bool _askingForCallRinging = false;
+
+  /// Asks, on Android, for what a call needs to ring this phone while the app
+  /// is closed: notifications first, since the ring is one, and full screen
+  /// only once they are on. Only with an account signed in, and never over a
+  /// call: the call is what the learner is there for, and the question can
+  /// wait for the next time they open the app. Called once the pusher is in
+  /// place, and again at startup and on each return to the app.
+  Future<void> askForCallRingingOnce() async {
+    if (!PlatformInfos.isAndroid || _askingForCallRinging) return;
+    if (activeCall.value != null || !widget.clients.any((c) => c.isLogged())) {
+      return;
+    }
+    _askingForCallRinging = true;
+    const ringer = IncomingCallRinger();
+    try {
+      final notificationsOn = await notificationsEnabled;
+      final ask = CallRingingAsk.next(
+        notificationsOn: notificationsOn,
+        askedForNotifications: AppSettings.callNotificationsAsked.value,
+        missedRingForNotifications:
+            !notificationsOn && await ringer.notificationsWanted(),
+        fullScreenWanted: notificationsOn && await ringer.fullScreenWanted(),
+      );
+      if (ask == CallRingingAsk.none) return;
+      final dialogContext =
+          FluffyChatApp.router.routerDelegate.navigatorKey.currentContext;
+      if (!mounted || dialogContext == null) return;
+      // Recorded before the question, so a second resume cannot ask it twice.
+      switch (ask) {
+        case CallRingingAsk.fullScreen:
+          await ringer.fullScreenAsked();
+        case CallRingingAsk.notificationsAfterMissedRing:
+          await ringer.notificationsAsked();
+          await AppSettings.callNotificationsAsked.setItem(true);
+        case CallRingingAsk.notifications:
+          await AppSettings.callNotificationsAsked.setItem(true);
+        case CallRingingAsk.none:
+          return;
+      }
+      if (!dialogContext.mounted) return;
+      final l10n = L10n.of(dialogContext);
+      final result = await showOkCancelAlertDialog(
+        context: dialogContext,
+        title: ask == CallRingingAsk.fullScreen
+            ? l10n.callFullScreenTitle
+            : l10n.callNotificationsTitle,
+        message: switch (ask) {
+          CallRingingAsk.fullScreen => l10n.callFullScreenMessage,
+          CallRingingAsk.notificationsAfterMissedRing =>
+            l10n.callNotificationsMissedMessage,
+          _ => l10n.callNotificationsMessage,
+        },
+        okLabel: l10n.allow,
+        cancelLabel: l10n.cancel,
+      );
+      if (result != OkCancelResult.ok) return;
+      if (ask == CallRingingAsk.fullScreen) {
+        await ringer.openFullScreenSettings();
+      } else {
+        await requestNotificationPermission();
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    } finally {
+      _askingForCallRinging = false;
+    }
+  }
+
+  bool _askingForMicrophone = false;
+
+  /// Asks once, on iOS, for the microphone before a call can ring to this
+  /// phone: the first call is often answered from the lock screen, the wrong
+  /// moment to ask, and a microphone that will not open is no call. Only with
+  /// the app in front, never over a call, and only if iOS has never asked.
+  /// Called once the VoIP pusher is in place, and again on each return to the
+  /// app in case it was not in front then.
+  Future<void> askForMicrophoneOnce() async {
+    if (!PlatformInfos.isIOS || _askingForMicrophone) return;
+    if (AppSettings.callMicrophoneAsked.value || activeCall.value != null) {
+      return;
+    }
+    // Calls can ring here: PushKit has given this phone a VoIP token, and an
+    // account is signed in to register it.
+    if (IosCallScreen.instance.voipToken.value == null ||
+        !widget.clients.any((c) => c.isLogged()) ||
+        WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed) {
+      return;
+    }
+    _askingForMicrophone = true;
+    try {
+      // On iOS "denied" is the status before iOS has ever asked. Once the
+      // learner has answered, it is granted or permanently denied.
+      if (!(await Permission.microphone.status).isDenied) return;
+      final dialogContext =
+          FluffyChatApp.router.routerDelegate.navigatorKey.currentContext;
+      if (!mounted || dialogContext == null || !dialogContext.mounted) return;
+      // Recorded before the question, so it is asked once even if the learner
+      // puts it off.
+      await AppSettings.callMicrophoneAsked.setItem(true);
+      if (!dialogContext.mounted) return;
+      final l10n = L10n.of(dialogContext);
+      final result = await showOkCancelAlertDialog(
+        context: dialogContext,
+        title: l10n.callMicrophoneTitle,
+        message: l10n.callMicrophoneMessage,
+        okLabel: l10n.continueText,
+        cancelLabel: l10n.cancel,
+      );
+      if (result == OkCancelResult.ok) await Permission.microphone.request();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    } finally {
+      _askingForMicrophone = false;
+    }
+  }
+
+  /// Answers a ring the learner answered on the notification that rang while
+  /// the app was closed, handed over as the payload it was rung with.
+  Future<void> _answerFromNotification(String payload) async {
+    final push = FluffyChatPushPayload.fromString(payload);
+    final roomId = push.roomId;
+    final eventId = push.eventId;
+    // By EXACT account name, as a notification tap is: answering as another
+    // account that happens to share the room would be answering as somebody
+    // else.
+    final account = widget.clients.firstWhereOrNull(
+      (c) => c.clientName == push.clientName,
+    );
+    if (account == null || roomId == null || eventId == null) {
+      ErrorHandler.logError(
+        e: StateError('An answered ring names no account or call this app has'),
+        s: StackTrace.current,
+        data: {'hasAccount': account != null, 'hasRoom': roomId != null},
+      );
+      return;
+    }
+    try {
+      await account.roomsLoading;
+      final room = account.getRoomById(roomId);
+      final event = await room?.getEventById(eventId);
+      if (room == null || event == null) {
+        ErrorHandler.logError(
+          e: StateError('Could not find the call an answered ring was for'),
+          s: StackTrace.current,
+          data: {'roomFound': room != null},
+        );
+        return;
+      }
+      if (!mounted) return;
+      answerRing(
+        IncomingCallNotification(
+          event: event,
+          myUserId: account.userID ?? '',
+          alreadyJoined: false,
+        ),
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }
+  }
+
   bool get isMultiAccount => widget.clients.length > 1;
 
   int getClientIndexByMatrixId(String matrixId) =>
@@ -664,6 +911,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   final onNotification = <String, StreamSubscription>{};
   final onLoginStateChanged = <String, StreamSubscription<LoginState>>{};
   final onUiaRequest = <String, StreamSubscription<UiaRequest>>{};
+  final onSyncStatusSub = <String, StreamSubscription<SyncStatusUpdate>>{};
 
   String? _cachedPassword;
   Timer? _cachedPasswordClearTimer;
@@ -864,6 +1112,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 context,
           );
         });
+    // Only the active account's sync drives the connection banner.
+    onSyncStatusSub[name] ??= c.onSyncStatus.stream.listen((update) {
+      if (identical(c, client)) {
+        ConnectionStatusController.instance.onSyncStatus(update);
+      }
+    });
     final renewalFilter = TokenRenewalFilter(c.onLoginStateChanged.value);
     onLoginStateChanged[name] ??= c.onLoginStateChanged.stream.listen((
       state,
@@ -943,6 +1197,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           // Best-effort like the store write, and it never throws. The iOS
           // notification extension must not keep a signed-out session's token.
           unawaited(NseSession.clear());
+          PlayWithBotIntent.clear();
           _accountsChanged();
           // Pangea#
         }
@@ -966,6 +1221,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         //   state == LoginState.loggedIn ? '/backup' : '/home',
         // );
         if (state == LoginState.loggedIn) {
+          // Push, and the VoIP pusher that lets a call ring this phone, is
+          // set up as soon as the account is signed in. The chat list also
+          // sets it up, but a sign-in lands on the map, so a phone could
+          // otherwise not ring until the learner opened their chats.
+          if (identical(backgroundPush?.client, c)) {
+            unawaited(backgroundPush?.setupPush());
+          }
           final isL2Set = await pangeaController.userController.isUserL2Set;
           // Not unconditionally the world map. This state also means "the
           // session finished restoring", which on a cold start lands AFTER the
@@ -1004,6 +1266,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
     _activityRolesStateRepairs[name] ??= ActivityRolesStateRepair(client: c)
       ..start();
+    // Reports the app was killed before the module confirmed, resent with
+    // their original report ids.
+    _pendingReportReplays[name] ??= PendingReportReplay(client: c)..start();
     // Pangea#
   }
 
@@ -1019,6 +1284,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     onUiaRequest[name]?.cancel();
     onUiaRequest.remove(name);
+    onSyncStatusSub[name]?.cancel();
+    onSyncStatusSub.remove(name);
+    // A stopped sync loop would never clear a lost connection.
+    ConnectionStatusController.instance.reset();
     await disposeAccountServices(name);
     // Pangea#
   }
@@ -1076,6 +1345,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       try {
         _activityAutoSaveServices[clientName]?.dispose();
         _activityRolesStateRepairs[clientName]?.dispose();
+        _pendingReportReplays[clientName]?.dispose();
         // The CALL first, and not just the service. Disposing the service
         // retracts this account's MatrixRTC membership, which is bookkeeping;
         // the LiveKit connection, the microphone, the recorder and Android's
@@ -1096,6 +1366,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       } finally {
         _activityAutoSaveServices.remove(clientName);
         _activityRolesStateRepairs.remove(clientName);
+        _pendingReportReplays.remove(clientName);
         // #Pangea
         // Only if it is still the service this teardown disposed. Disposal
         // awaits network work, and a new account can claim the same name in
@@ -1120,6 +1391,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   void initMatrix() {
     for (final c in widget.clients) {
       _registerSubs(c.clientName);
+    }
+
+    // A ring answered on the notification that rang while the app was
+    // closed. Claimed here, at startup, because the answer is usually what
+    // opened the app.
+    if (PlatformInfos.isAndroid) {
+      const IncomingCallRinger().onAnswered(
+        (payload) => unawaited(_answerFromNotification(payload)),
+      );
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) unawaited(askForCallRingingOnce());
+      });
     }
 
     if (PlatformInfos.isMobile) {
@@ -1172,6 +1455,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
 
     if (state == AppLifecycleState.resumed) {
+      unawaited(askForCallRingingOnce());
+      unawaited(askForMicrophoneOnce());
       pangeaController.subscriptionController.refreshOnAppResume(client.userID);
       // A call transcript half whose publish was dropped when the app
       // backgrounded at hangup is replayed now that it is back. Each service
@@ -1198,6 +1483,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     onKeyVerificationRequestSub.values.map((s) => s.cancel());
     onLoginStateChanged.values.map((s) => s.cancel());
     onNotification.values.map((s) => s.cancel());
+    for (final sub in onSyncStatusSub.values) {
+      sub.cancel();
+    }
     client.httpClient.close();
 
     linuxNotifications?.close();

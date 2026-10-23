@@ -8,7 +8,6 @@ on:
 
 env:
   WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
-  ENV_OVERRIDES: ${{ vars.ENV_OVERRIDES }}
 
 permissions:
   contents: read
@@ -30,6 +29,8 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
+        with:
+          cache: false
       - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
       # prepare-web spends ~4m cloning dart-vodozemac, compiling
       # flutter_rust_bridge_codegen, and building wasm — to produce two files.
@@ -174,8 +175,6 @@ jobs:
           # Client falls back to batch on any relay/provider failure. NOT set on
           # production (release.yaml) until validated on staging.
           echo "LIVE_STREAMING_STT_ENABLED=true" >> build/web/.env
-          touch build/web/assets/envs.json
-          echo "$ENV_OVERRIDES" >> build/web/assets/envs.json
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
         with:

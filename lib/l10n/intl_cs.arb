@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-05 12:30:34.602482",
+    "@@last_modified": "2026-10-22 09:50:07.968771",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -1547,11 +1547,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Synchronizace ... Čekejte prosím.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Téma systému",
     "@systemTheme": {
         "type": "String",
@@ -2329,7 +2324,6 @@
     "setPermissionsLevelDescription": "Vyberte níže předdefinovanou roli nebo zadejte vlastní úroveň oprávnění mezi 0 a 100.",
     "commandHint_roomupgrade": "Upgradujte tento pokoj na danou verzi pokoje",
     "sendImages": "Odeslat {count} obrázek",
-    "synchronizingPleaseWaitCounter": "Synchronizuji… ({percentage}%)",
     "kickUserDescription": "Uživatel je vyhozen z chatu, ale není zablokován. Ve veřejných chatech se může kdykoli znovu připojit.",
     "noUsersFoundWithQuery": "Bohužel nebyl nalezen žádný uživatel s \"{query}\". Zkontrolujte, zda jste neudělali překlep.",
     "wrongRecoveryKey": "Omlouváme se... zdá se, že toto není správný klíč pro obnovení.",
@@ -2415,7 +2409,6 @@
     "previous": "Předchozí",
     "otherPartyNotLoggedIn": "Druhá strana momentálně není přihlášena a nemůže tak přijímat zprávy!",
     "open": "Otevřít",
-    "waitingForServer": "Čekání na server...",
     "newChatRequest": "📩 Nová žádost o chat",
     "contentNotificationSettings": "Nastavení oznámení obsahu",
     "generalNotificationSettings": "Obecná nastavení oznámení",
@@ -2519,7 +2512,6 @@
     "errorDisableIGCClassDesc": "Pomoc s gramatikou je vypnuta pro kurz, ve kterém je tento chat.",
     "error405Desc": "Prosím, nastavte své jazyky v Hlavním menu > Nastavení učení.",
     "termsAndConditions": "Obchodními podmínkami",
-    "andCertifyIAmAtLeast13YearsOfAge": "a potvrzuji, že mám alespoň 16 let.",
     "error502504Desc": "Nástroje pro překlad a gramatiku mohou být pomalé nebo nedostupné, zatímco se boty Pangea dožene.",
     "error404Desc": "Bot Pangea si není jistý, jak to přeložit...",
     "errorPleaseRefresh": "Řešíme to! Prosím, načtěte stránku znovu a zkuste to znovu.",
@@ -2827,9 +2819,6 @@
     "why": "Proč?",
     "definition": "Definice",
     "reportToTeacher": "Komu chcete nahlásit tuto zprávu?",
-    "reportMessageTitle": "{reportingUserId} nahlásil zprávu od {reportedUserId} v chatu {roomName}",
-    "reportMessageBody": "Zpráva: {reportedMessage}\nDůvod: {reason}",
-    "noTeachersFound": "Nebyli nalezeni žádní učitelé k nahlášení",
     "trialExpiration": "Váš bezplatný zkušební čas vyprší dne {expiration}",
     "freeTrialDesc": "Noví uživatelé získávají týdenní bezplatnou zkušební verzi Pangea Chat",
     "activateTrial": "Aktivovat bezplatnou 7denní zkušební verzi",
@@ -3175,14 +3164,6 @@
         "placeholders": {
             "count": {
                 "type": "int"
-            }
-        }
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
             }
         }
     },
@@ -3591,10 +3572,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -4029,10 +4006,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5279,35 +5252,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8265,11 +8209,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat s podporou",
     "@chatWithSupport": {
         "type": "String",
@@ -8290,8 +8229,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Povolit asistenci při psaní",
-    "autoIGCToolDescription": "Automaticky spouštět nástroje Pangea Chat pro opravu odeslaných zpráv do cílového jazyka.",
+    "autoIGCToolName": "Automatická kontrola při odeslání",
+    "autoIGCToolDescription": "Zkontrolovat zprávu, zda neobsahuje chyby, když klepnete na odeslat. Pokud je tato funkce vypnutá, klepněte na tlačítko asistenta psaní a zkontrolujte zprávu sami.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9914,7 +9853,6 @@
     "activityLoadFailed": "Nepodařilo se načíst aktivitu. Zkontrolujte své připojení a zkuste to znovu.",
     "levelUpChip": "Úroveň {level}!",
     "missingCourseOutline": "Tento kurz již není k dispozici",
-    "missingCourseOutlineCta": "Tento kurz již není k dispozici. Vyberte nový plán kurzu.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9939,10 +9877,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10338,7 +10272,6 @@
     "constructLevelFlowers": "Květy, zvládnutá slova",
     "filterAndSearch": "Filtrovat a hledat",
     "participantsOfTotal": "{filled} z {total} hráčů",
-    "mapAttributionLabel": "Přispěvatelé OpenStreetMap, autorská práva a licence",
     "seeAll": "Zobrazit vše",
     "seeAllSection": "Zobrazit vše {section}",
     "showMoreOptionsHint": "zobrazit další možnosti",
@@ -10456,25 +10389,126 @@
     "summaryFeedbackReceived": "Díky! Vaše zpětná vazba byla přijata.",
     "summaryFeedbackFailed": "Nepodařilo se odeslat vaši zpětnou vazbu. Zkuste to prosím znovu.",
     "summaryFeedbackProcessing": "Odesílání vaší zpětné vazby a aktualizace souhrnu…",
-    "ssoNetworkBlockedTitle": "Přihlašovací stránka je nedostupná",
-    "ssoNetworkBlockedDesc": "Tato síť nám neumožňuje spojit se s {provider} pro vaše přihlášení. Často to blokuje Wi-Fi ve škole nebo v kanceláři. Můžete se místo toho zaregistrovat e-mailem, nebo se přepnout na jinou síť a zkusit to znovu.",
-    "ssoTryAnyway": "Přesto zkusit",
-    "callTranscriptNotSubscribed": "{name} neměl/a během tohoto hovoru předplatné, takže to, co bylo řečeno, nebylo přepsáno.",
     "callTranscriptTranscribing": "Stále přepisuji nahrávku od {name}…",
     "callTranscriptSeekTo": "Přehrát od {time}",
     "callTranscriptRecordings": "Nahrávky",
     "callTranscriptFullCall": "Celý hovor",
     "callTranscriptPreparingRecording": "Připravuji celou nahrávku…",
     "callTranscriptNoRecording": "Žádná nahrávka celého hovoru.",
-    "callTranscriptTranscribeButton": "Přepsat",
-    "callTranscriptAudioUnavailable": "Uloženou nahrávku od {name} se nepodařilo stáhnout, takže ji nebylo možné přepsat.",
-    "callTranscriptChooseLanguage": "Jakým jazykem se mluvilo?",
-    "callTranscriptSubscribeForTranscription": "Předplatit si přepis",
-    "unlockCallTranscript": "Odemknout přepis hovoru",
+    "callTranscriptNotSubscribed": "{name} neměl/a během tohoto hovoru předplatné, takže to, co bylo řečeno, nebylo přepsáno.",
     "joinYourCourse": "Připojte se ke svému kurzu",
     "courseCodeJoinExplanation": "Přihlaste se nebo se zaregistrujte a my použijeme váš kód kurzu k automatickému přidání do kurzu.",
     "courseCodeLabel": "Kód kurzu",
     "courseCodeSaved": "Kód kurzu {code} uložen",
     "courseCodeSavedExplanation": "Zaregistrujte se nebo se přihlaste a my vás přidáme do vašeho kurzu.",
-    "missionDueDate": "Splatné {date}, {time}"
+    "moderationRefusedContactDetails": "Vaše zpráva nebyla odeslána. Automatický filtr nalezl kontaktní údaje, například telefonní číslo. Odstraňte je a zkuste to znovu.",
+    "moderationRefusedProfanity": "Vaše zpráva nebyla odeslána. Automatický filtr nalezl slovo, které v chatu nepovolujeme. Změňte jej a zkuste to znovu.",
+    "callTranscriptTranscribeButton": "Přepsat",
+    "callTranscriptAudioUnavailable": "Uloženou nahrávku od {name} se nepodařilo stáhnout, takže ji nebylo možné přepsat.",
+    "callTranscriptChooseLanguage": "Jakým jazykem se mluvilo?",
+    "callTranscriptSubscribeForTranscription": "Předplatit si přepis",
+    "unlockCallTranscript": "Odemknout přepis hovoru",
+    "activitySummaryUpdateFailed": "Tento souhrn nelze aktualizovat.",
+    "courseNotFound": "Kurz nenalezen",
+    "askTeacherForNewCourse": "Požádejte svého učitele, aby vybral nový kurz.",
+    "pickNewCoursePlan": "Vyberte si nový studijní plán.",
+    "ssoNetworkBlockedTitle": "Přihlašovací stránka je nedostupná",
+    "ssoNetworkBlockedDesc": "Tato síť nám neumožňuje spojit se s {provider} pro vaše přihlášení. Často to blokuje Wi-Fi ve škole nebo v kanceláři. Můžete se místo toho zaregistrovat e-mailem, nebo se přepnout na jinou síť a zkusit to znovu.",
+    "ssoTryAnyway": "Přesto zkusit",
+    "publicCoursesFilterTooltip": "Zobrazit pouze kurzy, ke kterým se může připojit kdokoli",
+    "restrictedCoursesFilterTooltip": "Zobrazit pouze kurzy, o které musíte požádat o připojení",
+    "viewImageLabel": "Zobrazit obrázek",
+    "reportSent": "Hlášení odesláno",
+    "reportNotSent": "Vaše hlášení se nepodařilo odeslat. Zkontrolujte připojení a zkuste to znovu.",
+    "reportPointerMessage": "Zpráva byla nahlášena v {courseName} – viz Bezpečnost",
+    "learningObjective": "Cíl učení",
+    "learningObjectives": "Cíle učení",
+    "missionNofM": "Mise {index} z {count}",
+    "xpTowardObjective": "{xp} z {threshold} XP k tomuto cíli",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Kurz dokončen!",
+    "courseCompleteDesc": "Dokončili jste všech {count} cílů v tomto kurzu. Pokračujte v procvičování, abyste si udrželi to, co jste se naučili.",
+    "practiceObjective": "Procvičit tento cíl",
+    "otherActivities": "Další aktivity",
+    "objectiveCircleComplete": "Mise {index}: dokončena",
+    "objectiveCircleUpNext": "Mise {index}: další v pořadí",
+    "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu",
+    "andCertifyIMeetTheMinimumAge": " a potvrzuji, že je mi alespoň 13 let, nebo minimální věk požadovaný v mé zemi, pokud je vyšší.",
+    "filteredNetworkBlockedTitle": "Tato síť blokuje Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Tato síť blokuje část Pangea Chatu",
+    "filteredNetworkWhatCanIDo": "Co mohu dělat?",
+    "filteredNetworkPhoneAdvice": "Vypněte Wi-Fi a místo toho použijte mobilní data.",
+    "filteredNetworkComputerAdvice": "Místo této Wi-Fi se připojte k hotspotu svého telefonu.",
+    "filteredNetworkItHeading": "Pro učitele a IT pracovníky",
+    "filteredNetworkItBody": "Požádejte svůj IT tým, aby povolil tyto domény:",
+    "filteredNetworkAskForHelp": "Požádejte Pangeu o pomoc",
+    "filteredNetworkHelpExplanation": "Pošleme vám e-mail, abychom vám pomohli zprovoznit Pangea Chat v této síti.",
+    "filteredNetworkHelpWaiting": "Váš požadavek bude odeslán, jakmile budete připojeni.",
+    "filteredNetworkHelpSent": "Odesláno. Budeme vás kontaktovat e-mailem.",
+    "filteredNetworkHelpRefused": "Váš požadavek se nepodařilo odeslat. Napište prosím na support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Tato síť blokuje videa.",
+    "filteredNetworkImagesBlocked": "Tato síť blokuje obrázky.",
+    "filteredNetworkMapBlocked": "Tato síť blokuje mapu.",
+    "callFullScreenTitle": "Povolit hovory na celou obrazovku",
+    "callFullScreenMessage": "Přišel vám hovor, když byl Pangea Chat zavřený, ale telefon mohl zobrazit jen malé oznámení. Povolte hovory na celou obrazovku, aby vám další hovor zvonil na celé obrazovce, i když je telefon zamčený.",
+    "callMicrophoneTitle": "Použít mikrofon pro hovory",
+    "callMicrophoneMessage": "Pangea Chat potřebuje váš mikrofon pro hovory, včetně hovorů, které přijmete z uzamčené obrazovky.",
+    "callMicrophoneOffTitle": "Váš hovor se nespojil",
+    "callMicrophoneOffMessage": "Pangea Chat nemůže použít váš mikrofon. Klepnutím jej zapnete v Nastavení.",
+    "goalsCompletedOfTotal": "Splněno {earned} z {total} cílů",
+    "goalsCompletedInLanguage": "Cílů splněno v jazyce {language}",
+    "sessionXpTowardObjective": "{xp} XP v této relaci; {remaining} zbývá ke splnění cíle",
+    "mapCreditsLabel": "Zásluhy mapy: Stadia Maps, OpenMapTiles a OpenStreetMap",
+    "activityLaunchFindingCourses": "Hledáme vaše kurzy…",
+    "activityLaunchCreatingRoom": "Vytváříme vaši aktivitu…",
+    "activityLaunchOpeningRoom": "Otevíráme vaši aktivitu…",
+    "playWithOthers": "Hrát s ostatními",
+    "openRole": "Otevřít: {role}",
+    "waitingFor": "Čekání {duration}",
+    "onlineInCourse": "{count} online v {course}",
+    "newCourseChat": "Nový chat kurzu",
+    "customCourseStepDesc": "Kurz je soubor konverzačních aktivit, které následují vaši učebnici, aby je vaši studenti dělali společně jako domácí úkol.",
+    "reopenAppToFinishSwitching": "Zavřete aplikaci úplně a znovu ji otevřete, abyste dokončili přepínání.",
+    "teamCode": "Kód týmu",
+    "connectionOffline": "Jste offline. Pangea Chat se znovu připojí, až budete mít opět připojení.",
+    "connectionUnreachable": "Nelze se připojit k Pangea Chatu. Zkouším to znovu…",
+    "connectionBackOnline": "Zpět online",
+    "missionDueDate": "Splatné {date}, {time}",
+    "callNotificationsTitle": "Nechat hovory zvonit",
+    "callNotificationsMessage": "Hovory zvoní jako oznámení. Povolte oznámení, aby vám telefon zvonil při hovoru, i když je Pangea Chat zavřený nebo je telefon zamčený.",
+    "callNotificationsMissedMessage": "Přišel hovor, když byl Pangea Chat zavřený, ale váš telefon nemohl zvonit, protože jsou vypnutá oznámení. Povolte oznámení, aby další hovor zvonil.",
+    "connectionPracticeVocab": "Procvičte si slovíčka, než se připojíte",
+    "offlinePracticeNote": "Offline. Vaše odpovědi se nahrají, až budete zpět.",
+    "offlinePracticeSavedNote": "Uloženo v tomto zařízení. Vaše XP se nahraje, až budete online.",
+    "offlinePracticeNothingSaved": "Na tomto zařízení není uloženo dostatek obsahu pro offline procvičování. Zkuste to znovu, až budete online.",
+    "missionNumber": "Mise {index}",
+    "xpToYourStar": "{xp} XP k vaší hvězdě",
+    "missionStarEarned": "Hvězda získána!",
+    "xpFromChats": "Chaty {xp}",
+    "xpFromGoals": "Cíle {xp}",
+    "xpFromPractice": "Cvičení {xp}",
+    "playMission": "Hrát",
+    "wordCount": "{count, plural, =1{1 slovo} other{{count} slov}}",
+    "continueActivity": "Pokračovat",
+    "noObjectiveActivitiesYet": "Pro tento cíl jste zatím nedokončili žádnou aktivitu. Spusťte ji ze svého kurzu.",
+    "objectiveNotInYourCourses": "Tento cíl není v žádném z vašich kurzů.",
+    "objectiveActivityCount": "{count, plural, =0{Zatím žádné aktivity} =1{1 aktivita odehrána} other{{count} aktivit odehráno}}",
+    "activityCompleted": "Dokončeno",
+    "completedTimes": "Dokončeno {count}krát",
+    "classLocation": "Místo konání kurzu",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Konverzace {xp}",
+    "xpIncludingGoals": "včetně {xp} z cílů",
+    "missionOtherLanguageNotice": "Tato mise je z kurzu v jazyce {language}. Váš pokrok se počítá pouze, když se učíte {language}.",
+    "missionLanguageMismatchDesc": "Tato mise je z kurzu v jazyce {language}. Změnit cílový jazyk na {language}?",
+    "xpBySkillTitle": "Podle dovednosti",
+    "missionNextActivity": "Další aktivita",
+    "missionContinueActivity": "Pokračovat v aktivitě",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Dokončeno v tomto kurzu ({num})",
+    "otherCoursesSessions": "Jiné kurzy ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, získáno {xp} XP",
+    "currentMission": "Aktuální mise"
 }

@@ -2456,6 +2456,235 @@ void main() {
     });
   });
 
+  // pangeachat/.github#410. Glare asks whether the call a ring was sent from
+  // is still standing, and only the membership the ring names -- or what the
+  // device that rang wrote AFTER the ring -- can answer that. Silence, other
+  // devices, and leftovers from earlier calls are no answer at all.
+  group('whether the call a ring was sent from is still standing', () {
+    const caller = '@caller:fakeServer.notExisting';
+    const me = '@test:fakeServer.notExisting';
+    const named = r'$ring-membership';
+    var seq = 0;
+    final ringAt = DateTime.now().subtract(const Duration(seconds: 20));
+
+    MatrixEvent member(
+      String eventId,
+      String device, {
+      required bool holding,
+      required DateTime at,
+    }) => MatrixEvent(
+      type: EventTypes.GroupCallMember,
+      content: {
+        'memberships': holding
+            ? [
+                {'call_id': 'x', 'device_id': device},
+              ]
+            : const <Object?>[],
+      },
+      senderId: caller,
+      eventId: eventId,
+      originServerTs: at,
+      stateKey: '_${caller}_$device',
+    );
+
+    Future<PeerPresence> read(
+      List<MatrixEvent> state, {
+      bool namesMembership = true,
+    }) async {
+      final roomId = '!glare${seq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch',
+          rooms: RoomsUpdate(join: {roomId: JoinedRoomUpdate(state: state)}),
+        ),
+      );
+      final room = client.getRoomById(roomId)!;
+      final ring = IncomingCallNotification(
+        event: Event(
+          type: PangeaEventTypes.callNotification,
+          content: {
+            'application': {
+              'type': 'm.call',
+              'notification_type': 'ring',
+              'device_id': 'PHONE',
+              'sender_ts': ringAt.millisecondsSinceEpoch,
+              'lifetime': 30000,
+            },
+            if (namesMembership)
+              'm.relates_to': {'rel_type': 'm.reference', 'event_id': named},
+          },
+          eventId: r'$ring',
+          senderId: caller,
+          originServerTs: ringAt,
+          room: room,
+        ),
+        myUserId: me,
+        alreadyJoined: false,
+      );
+      return CallService(client).ringCallPresence(room, ring);
+    }
+
+    final before = ringAt.subtract(const Duration(minutes: 5));
+    final after = ringAt.add(const Duration(seconds: 5));
+
+    test('nothing of theirs synced is no answer', () async {
+      expect(await read(const []), PeerPresence.unknown);
+    });
+
+    test('the membership the ring names, standing, is live', () async {
+      expect(
+        await read([member(named, 'PHONE', holding: true, at: before)]),
+        PeerPresence.live,
+      );
+    });
+
+    test(
+      'a retraction the device that rang wrote after the ring is gone',
+      () async {
+        expect(
+          await read([member(r'$left', 'PHONE', holding: false, at: after)]),
+          PeerPresence.gone,
+        );
+      },
+    );
+
+    test(
+      'a fresh membership written after the ring is gone, not live',
+      () async {
+        // They gave up, then ANSWERED our call back. They hold a membership,
+        // but not the one the ring was sent for; reading it as live made our
+        // call back glare.
+        expect(
+          await read([member(r'$answer', 'PHONE', holding: true, at: after)]),
+          PeerPresence.gone,
+        );
+      },
+    );
+
+    test('a retraction left from an earlier call is no answer', () async {
+      // Redialling at the same moment as each other: their previous
+      // hangup is still the newest state here, but it predates the
+      // membership this ring was sent for. Reading it as gone had both
+      // sides write the call.
+      expect(
+        await read([member(r'$old', 'PHONE', holding: false, at: before)]),
+        PeerPresence.unknown,
+      );
+    });
+
+    test('a membership left from an earlier call is no answer', () async {
+      expect(
+        await read([member(r'$old', 'PHONE', holding: true, at: before)]),
+        PeerPresence.unknown,
+      );
+    });
+
+    test(
+      "another device's state is no answer for the device that rang",
+      () async {
+        expect(
+          await read([member(r'$laptop', 'LAPTOP', holding: false, at: after)]),
+          PeerPresence.unknown,
+        );
+      },
+    );
+
+    test(
+      'a ring naming no membership falls back to the device reading',
+      () async {
+        expect(
+          await read([
+            member(r'$left', 'PHONE', holding: false, at: before),
+          ], namesMembership: false),
+          PeerPresence.gone,
+        );
+      },
+    );
+
+    // The SDK applies a sync's state one event at a time, announcing each
+    // on onRoomState, but listeners run after the whole batch. So re-reading
+    // room state from a listener sees only the newest event per key; the
+    // payloads still carry every event, in order. Glare settled on a ring
+    // that arrived undecided reads the payloads for exactly this reason.
+    test('a membership and its retraction in one sync arrive as two '
+        'payloads, in order, though state keeps only the retraction', () async {
+      final roomId = '!batch${seq++}:fakeServer.notExisting';
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(user: me),
+        deviceId: 'GHTYAJCE',
+      );
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'b0',
+          rooms: RoomsUpdate(join: {roomId: JoinedRoomUpdate()}),
+        ),
+      );
+      final room = client.getRoomById(roomId)!;
+      final service = CallService(client);
+      final ring = IncomingCallNotification(
+        event: Event(
+          type: PangeaEventTypes.callNotification,
+          content: {
+            'application': {
+              'type': 'm.call',
+              'notification_type': 'ring',
+              'device_id': 'PHONE',
+              'sender_ts': ringAt.millisecondsSinceEpoch,
+              'lifetime': 30000,
+            },
+            'm.relates_to': {'rel_type': 'm.reference', 'event_id': named},
+          },
+          eventId: r'$ring',
+          senderId: caller,
+          originServerTs: ringAt,
+          room: room,
+        ),
+        myUserId: me,
+        alreadyJoined: false,
+      );
+      final seen = <PeerPresence>[];
+      final sub = service
+          .callerStateUpdates(room, caller)
+          .listen((state) => seen.add(service.ringEvidenceIn(state, ring)));
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'b1',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                timeline: TimelineUpdate(
+                  events: [
+                    member(named, 'PHONE', holding: true, at: ringAt),
+                    member(r'$left', 'PHONE', holding: false, at: after),
+                  ],
+                ),
+              ),
+            },
+          ),
+        ),
+      );
+      await pumpEventQueue();
+      await sub.cancel();
+
+      expect(seen, [PeerPresence.live, PeerPresence.gone]);
+      expect(
+        service.ringCallPresence(room, ring),
+        PeerPresence.gone,
+        reason: 'room state re-read after the batch has only the retraction',
+      );
+    });
+  });
+
   group('whether a standing return offer still means anything', () {
     const me = '@test:fakeServer.notExisting';
     const peer = '@friend:fakeServer.notExisting';

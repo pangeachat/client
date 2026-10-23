@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
+import 'package:fluffychat/features/journey_checklist/journey_moments.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
@@ -29,6 +30,10 @@ import 'package:fluffychat/widgets/star_rain_widget.dart';
 class AnalyticsPractice extends StatefulWidget {
   final ConstructTypeEnum type;
 
+  /// Scope the session to this Mission's target vocabulary (#9438); null is
+  /// the learner's usual weak-word session.
+  final String? missionId;
+
   /// The panel's leading close control — leaving is silent and keeps the
   /// session alive in the [PracticeSessionHolder]; only the explicit End
   /// control discards it. See routing.instructions.md § Practice is a
@@ -40,6 +45,7 @@ class AnalyticsPractice extends StatefulWidget {
   const AnalyticsPractice({
     super.key,
     required this.type,
+    this.missionId,
     required this.closeIcon,
     required this.closeTooltip,
     required this.close,
@@ -72,7 +78,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       Matrix.of(context).analyticsDataService,
     );
 
-    _holderState = PracticeSessionHolder.instance.claim(widget.type);
+    _holderState = PracticeSessionHolder.instance.claim(
+      widget.type,
+      missionId: widget.missionId,
+    );
     PracticeSessionHolder.instance.attachPanel();
     PracticeSessionHolder.instance.addListener(_onHolderChanged);
 
@@ -135,6 +144,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
           exercise.practiceTarget,
           _l2!.langCodeShort,
         ),
+        savedOnly: session.session?.offline ?? false,
       ),
     };
 
@@ -259,7 +269,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       await _analyticsController.waitForAnalytics(
         Matrix.of(context).client.userID,
       );
-      await session.startSession(widget.type);
+      await session.startSession(widget.type, missionId: widget.missionId);
       if (mounted) setState(() {});
 
       if (session.sessionError != null) {
@@ -290,6 +300,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       session.updateElapsedTime(DateTime.now().difference(startedAt).inSeconds);
     }
     session.completeSession();
+    JourneyMoments.practiceCompleted(Matrix.of(context).client, widget.type);
     progress.value = session.progress;
     // Idle stops the timer and, via the notifier, flips the panel to the
     // completion view and clears the cluster badge.
@@ -330,9 +341,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _clearExerciseState(loadingExercise: true);
 
     try {
+      final offline = session.session?.offline ?? false;
       final resp = await session.getNextExercise(
         skipExercise,
-        data.prefetchExerciseInfo,
+        (exercise) => data.prefetchExerciseInfo(exercise, offline: offline),
       );
 
       if (resp != null) {

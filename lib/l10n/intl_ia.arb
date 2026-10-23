@@ -386,8 +386,6 @@
     "status": "Stato",
     "statusExampleMessage": "Como tu es hodie?",
     "submit": "Submitte",
-    "synchronizingPleaseWait": "Synchronisante… Per favor aspetta.",
-    "synchronizingPleaseWaitCounter": " Synchronisante… ({percentage}%)",
     "systemTheme": "Systema",
     "theyDontMatch": "Illes non coincide",
     "theyMatch": "Illes coincide",
@@ -612,7 +610,6 @@
     "previous": "Anterior",
     "otherPartyNotLoggedIn": "Le alter parte actualmente non es connectate e quindi non pote ricever messages!",
     "open": "Aperir",
-    "waitingForServer": "Expectante pro le servitor...",
     "newChatRequest": "📩 Requesta de nove chat",
     "contentNotificationSettings": "Configuration de notification de contento",
     "generalNotificationSettings": "Configuration general de notification",
@@ -718,7 +715,6 @@
     "errorDisableIGCClassDesc": "Le assistance de grammatica es disactivate pro le curso in le qual iste chat es.",
     "error405Desc": "Per favor, definite tuas linguas in le Menu Principal > Configuration de Aprendimento.",
     "termsAndConditions": "Terminos e Condiciones",
-    "andCertifyIAmAtLeast13YearsOfAge": " e certifica que io ha al minus 16 annos de etate.",
     "error502504Desc": "Le instrumentos de translation e grammatica pote esser lente o non disponibile durante que le bots Pangea se actualisa.",
     "error404Desc": "Le Bot Pangea non es secur de como traducer isto...",
     "errorPleaseRefresh": "Nos es in le processus de investigar! Per favor, re-intra e tenta ancora.",
@@ -1026,9 +1022,6 @@
     "why": "Proque?",
     "definition": "Definition",
     "reportToTeacher": "A qui vole tu reportar iste message?",
-    "reportMessageTitle": "{reportingUserId} ha reportate un message de {reportedUserId} in le chat {roomName}",
-    "reportMessageBody": "Message: {reportedMessage}\nRationale: {reason}",
-    "noTeachersFound": "Nulle professores trovate pro reportar",
     "trialExpiration": "Vostre prova gratuita expire le {expiration}",
     "freeTrialDesc": "Novos usatores recive un septimana de prova gratuita de Pangea Chat",
     "activateTrial": "Prova Gratuita de 7 Dies",
@@ -1362,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-05 12:30:38.917868",
+    "@@last_modified": "2026-10-22 09:50:14.447026",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -2939,18 +2932,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@systemTheme": {
         "type": "String",
         "placeholders": {}
@@ -4014,10 +3995,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@newChatRequest": {
         "type": "String",
         "placeholders": {}
@@ -4457,10 +4434,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5707,35 +5680,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8693,11 +8637,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Fala com o Suporte",
     "@chatWithSupport": {
         "type": "String",
@@ -8718,8 +8657,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Abilita l'assistenza alla scrittura",
-    "autoIGCToolDescription": "Esegui automaticamente gli strumenti di Pangea Chat per correggere i messaggi inviati nella lingua target.",
+    "autoIGCToolName": "Autoverification al inviar",
+    "autoIGCToolDescription": "Verifica tu message pro errores quando tu pulsa inviar. Quando isto es disactivate, pulsa le button de assistentia de scriptura pro verificar un message tu mesme.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10356,7 +10295,6 @@
     "activityLoadFailed": "Impossibile caricare l'attività. Controlla la tua connessione e riprova.",
     "levelUpChip": "Livello {level}!",
     "missingCourseOutline": "Questo corso non è più disponibile",
-    "missingCourseOutlineCta": "Questo corso non è più disponibile. Scegli un nuovo piano di corso.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10381,10 +10319,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10780,7 +10714,6 @@
     "constructLevelFlowers": "Flores, parolas maestrate",
     "filterAndSearch": "Filtrar e cercar",
     "participantsOfTotal": "{filled} de {total} jocatores",
-    "mapAttributionLabel": "Contribuentes de OpenStreetMap, derectos de autor e licentia",
     "seeAll": "Vider tote",
     "seeAllSection": "Vider tote {section}",
     "showMoreOptionsHint": "monstrar plus optiones",
@@ -10898,25 +10831,126 @@
     "summaryFeedbackReceived": "Gratias! Nos ha recipite tu feedback.",
     "summaryFeedbackFailed": "Non poteva inviar tu feedback. Per favor reprova.",
     "summaryFeedbackProcessing": "Inviante vostre commentos e actualisante le summario…",
-    "ssoNetworkBlockedTitle": "Sito de authentification inaccessibile",
-    "ssoNetworkBlockedDesc": "Iste rete non nos permitte attinger {provider} pro authentificar vos. Le Wi-Fi de scholas e officios sovente lo bloca. Vos pote registrar vos con e-mail in loco, o cambiar a un altere rete e reprovar.",
-    "ssoTryAnyway": "Provar de tote modos",
-    "callTranscriptNotSubscribed": "{name} non habeva un subscription durante iste appello, ergo lo que esseva dicite non esseva transcribite.",
     "callTranscriptTranscribing": "Ancora transcribente le registration de {name}…",
     "callTranscriptSeekTo": "Reproducer ab {time}",
     "callTranscriptRecordings": "Registrationes",
     "callTranscriptFullCall": "Appello complete",
     "callTranscriptPreparingRecording": "Preparante le registration complete…",
     "callTranscriptNoRecording": "Nulle registration del appello complete.",
-    "callTranscriptTranscribeButton": "Transcriber",
-    "callTranscriptAudioUnavailable": "Le registration salvate de {name} non poteva esser discargate, ergo illo non poteva esser transcribite.",
-    "callTranscriptChooseLanguage": "Qual lingua esseva parlate?",
-    "callTranscriptSubscribeForTranscription": "Subscriber pro transcription",
-    "unlockCallTranscript": "Disblocar transcripto de appellation",
+    "callTranscriptNotSubscribed": "{name} non habeva un subscription durante iste appello, ergo lo que esseva dicite non esseva transcribite.",
     "joinYourCourse": "Junger a tu curso",
     "courseCodeJoinExplanation": "Aperir session o registrar se, e nos usara tu codice de curso pro adder te a tu curso automaticamente.",
     "courseCodeLabel": "Codice de curso",
     "courseCodeSaved": "Codice de curso {code} salvate",
     "courseCodeSavedExplanation": "Registra te o aperi session e nos te addera a tu curso.",
-    "missionDueDate": "Debite {date}, {time}"
+    "moderationRefusedContactDetails": "Tu message non esseva inviate. Un filtro automatic trovava datos de contacto, como un numero de telephono. Per favor, remove los e reprova.",
+    "moderationRefusedProfanity": "Tu message non esseva inviate. Un filtro automatic trovava un parola que nos non permitte in le chat. Per favor, cambia lo e reprova.",
+    "callTranscriptTranscribeButton": "Transcriber",
+    "callTranscriptAudioUnavailable": "Le registration salvate de {name} non poteva esser discargate, ergo illo non poteva esser transcribite.",
+    "callTranscriptChooseLanguage": "Qual lingua esseva parlate?",
+    "callTranscriptSubscribeForTranscription": "Subscriber pro transcription",
+    "unlockCallTranscript": "Disblocar transcripto de appellation",
+    "activitySummaryUpdateFailed": "Iste summario non poteva esser actualisate.",
+    "courseNotFound": "Curso non trovate",
+    "askTeacherForNewCourse": "Demanda a tu maestro que selige un nove curso.",
+    "pickNewCoursePlan": "Selige un nove plano de curso.",
+    "ssoNetworkBlockedTitle": "Sito de authentification inaccessibile",
+    "ssoNetworkBlockedDesc": "Iste rete non nos permitte attinger {provider} pro authentificar vos. Le Wi-Fi de scholas e officios sovente lo bloca. Vos pote registrar vos con e-mail in loco, o cambiar a un altere rete e reprovar.",
+    "ssoTryAnyway": "Provar de tote modos",
+    "publicCoursesFilterTooltip": "Monstrar solmente cursos a los que tote le mundo pote unir se",
+    "restrictedCoursesFilterTooltip": "Monstrar solmente cursos a los que tu debe demandar de unir te",
+    "viewImageLabel": "Vider imagine",
+    "reportSent": "Reporto inviate",
+    "reportNotSent": "Tu reporto non poteva esser inviate. Verifica tu connexion e reprova.",
+    "reportPointerMessage": "Un message esseva reportate in {courseName} — vide Securitate",
+    "learningObjective": "Objectivo de Apprendimento",
+    "learningObjectives": "Objectivos de Apprendimento",
+    "missionNofM": "Mission {index} de {count}",
+    "xpTowardObjective": "{xp} de {threshold} XP verso iste objectivo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Curso complete!",
+    "courseCompleteDesc": "Tu ha complite tote le {count} objectivos in iste curso. Continua a practicar pro retener lo que tu ha apprendite.",
+    "practiceObjective": "Practicar iste objectivo",
+    "otherActivities": "Altere activitates",
+    "objectiveCircleComplete": "Mission {index}: complete",
+    "objectiveCircleUpNext": "Mission {index}: sequente",
+    "useActivityImageAsChatBackground": "Usar imagine de activitate como fundo de chat",
+    "andCertifyIMeetTheMinimumAge": " e certifica que io ha al minus 13 annos de etate, o le etate minimal requirite in mi pais si illo es plus alte.",
+    "filteredNetworkBlockedTitle": "Iste rete bloca Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Iste rete bloca un parte de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Que pote io facer?",
+    "filteredNetworkPhoneAdvice": "Disactiva le Wi-Fi e usa datos mobile in su loco.",
+    "filteredNetworkComputerAdvice": "Connecte te al hotspot de tu telephono in loco de iste Wi-Fi.",
+    "filteredNetworkItHeading": "Pro professores e personal de IT",
+    "filteredNetworkItBody": "Peti a tu equipa de IT de permitter iste dominios:",
+    "filteredNetworkAskForHelp": "Peti adjuta a Pangea",
+    "filteredNetworkHelpExplanation": "Nos te inviara un e-mail pro adjutar te a facer funcionar Pangea Chat in iste rete.",
+    "filteredNetworkHelpWaiting": "Tu requesta essera inviate assim tosto que tu es connectite.",
+    "filteredNetworkHelpSent": "Inviate. Nos te contactara per e-mail.",
+    "filteredNetworkHelpRefused": "Nos non poteva inviar tu requesta. Per favor, invia un e-mail a support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Iste rete bloca videos.",
+    "filteredNetworkImagesBlocked": "Iste rete bloca imagines.",
+    "filteredNetworkMapBlocked": "Iste rete bloca le mappa.",
+    "callFullScreenTitle": "Permitter le appellos sonar a schermo plen",
+    "callFullScreenMessage": "Un appello arrivava dum Pangea Chat esseva claudite, ma tu telephono poteva solmente monstrar un parve notification pro illo. Permitte appellos a schermo plen a fin que le proxime sona super tu integre schermo, mesmo quando tu telephono es blocate.",
+    "callMicrophoneTitle": "Usa tu microphono pro appellatas",
+    "callMicrophoneMessage": "Pangea Chat necessita tu microphono pro appellatas, includente appellatas que tu responde del schermo blocate.",
+    "callMicrophoneOffTitle": "Tu appellata non se connecteva",
+    "callMicrophoneOffMessage": "Pangea Chat non pote usar tu microphono. Pulsa pro activar lo in le Preferentias.",
+    "goalsCompletedOfTotal": "{earned} de {total} scopos complite",
+    "goalsCompletedInLanguage": "Scopos complite in {language}",
+    "sessionXpTowardObjective": "{xp} XP iste session; {remaining} plus completa le objectivo",
+    "mapCreditsLabel": "Creditos del mappa: Stadia Maps, OpenMapTiles e OpenStreetMap",
+    "activityLaunchFindingCourses": "Cercante tu cursos…",
+    "activityLaunchCreatingRoom": "Creante tu activitate…",
+    "activityLaunchOpeningRoom": "Aperiente tu activitate…",
+    "playWithOthers": "Jocar con alteres",
+    "openRole": "Aperte: {role}",
+    "waitingFor": "Attendente {duration}",
+    "onlineInCourse": "{count} in linea in {course}",
+    "newCourseChat": "Nove chat de curso",
+    "customCourseStepDesc": "Un curso es un insimul de activitates conversational que seque tu manual, pro que tu studentes los face insimul como deberes.",
+    "reopenAppToFinishSwitching": "Claude le app completemente e aperi lo de novo pro finir le commutation.",
+    "teamCode": "Codice de equipa",
+    "connectionOffline": "Tu es offline. Pangea Chat se reconnectara quando tu es de nove connectite.",
+    "connectionUnreachable": "Non pote attinger Pangea Chat. Tentante de nove…",
+    "connectionBackOnline": "De nove online",
+    "missionDueDate": "Debite {date}, {time}",
+    "callNotificationsTitle": "Permitter sonar le appellos",
+    "callNotificationsMessage": "Le appellos sona como notificationes. Permitte notificationes a fin que tu telephono sona pro un appello, mesmo quando Pangea Chat es claudite o tu telephono es blocate.",
+    "callNotificationsMissedMessage": "Un appello arrivava dum Pangea Chat esseva claudite, ma tu telephono non poteva sonar proque le notificationes es disactivate. Permitte notificationes a fin que le proxime appello sona.",
+    "connectionPracticeVocab": "Practica vocabulario durante que tu attende",
+    "offlinePracticeNote": "Offline. Tu responsas se cargara quando tu es de nove connectite.",
+    "offlinePracticeSavedNote": "Salvate in iste apparato. Tu XP se cargara quando tu es de nove connectite.",
+    "offlinePracticeNothingSaved": "Non satis es salvate in iste apparato pro practicar offline. Reprova quando tu es de nove in linea.",
+    "missionNumber": "Mission {index}",
+    "xpToYourStar": "{xp} XP a tu stella",
+    "missionStarEarned": "Stella ganiate!",
+    "xpFromChats": "Conversas {xp}",
+    "xpFromGoals": "Objectivos {xp}",
+    "xpFromPractice": "Practica {xp}",
+    "playMission": "Jocar",
+    "wordCount": "{count, plural, =1{1 parola} other{{count} parolas}}",
+    "continueActivity": "Continuar",
+    "noObjectiveActivitiesYet": "Tu non ha ancora completate un activitate pro iste objectivo. Comencia un de tu curso.",
+    "objectiveNotInYourCourses": "Iste objectivo non es in ulle de tu cursos.",
+    "objectiveActivityCount": "{count, plural, =0{Nulle activitates ancora} =1{1 activitate jocate} other{{count} activitates jocate}}",
+    "activityCompleted": "Completate",
+    "completedTimes": "Completate {count} vices",
+    "classLocation": "Loco del classe",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversation {xp}",
+    "xpIncludingGoals": "includente {xp} de objectivos",
+    "missionOtherLanguageNotice": "Iste mission es de un curso in {language}. Tu progresso in illo conta solmente durante que tu apprende {language}.",
+    "missionLanguageMismatchDesc": "Iste mission es de un curso in {language}. Cambiar tu lingua de apprender a {language}?",
+    "xpBySkillTitle": "Per habilitate",
+    "missionNextActivity": "Proxime activitate",
+    "missionContinueActivity": "Continuar activitate",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Finite in iste curso ({num})",
+    "otherCoursesSessions": "Altere cursos ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP ganiate",
+    "currentMission": "Mission actual"
 }

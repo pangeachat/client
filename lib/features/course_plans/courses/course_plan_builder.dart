@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// Loads a course for its detail/preview surfaces. world_v2: a course IS a v3
@@ -25,6 +26,12 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
     try {
       final quest = await QuestPlansRepo.get(courseId);
       if (quest == null) {
+        // A confirmed 404 is the known orphaned-course state, which surfaces
+        // render as "no longer available" rather than a generic error (#380).
+        // Any other null is a failed lookup and stays a plain exception.
+        if (await QuestRepo.removedQuests.contains(courseId)) {
+          throw MissingQuestException();
+        }
         throw Exception('No quest plan found for course id $courseId');
       }
       course = quest;
@@ -32,12 +39,14 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
       // Once per course (and error type) per session: the known
       // orphaned-content case (#7479 — a course space whose quest plan no
       // longer resolves) re-fails on every visit to the course, and each
-      // repeat carries no new signal (#8083).
+      // repeat carries no new signal (#8083). A missing quest is a handled
+      // state, so it reports at warning (courseOutlineErrorLevel, #8094).
       ErrorHandler.logErrorOnce(
         key: 'course-plan-load:$courseId:${e.runtimeType}',
         e: e,
         s: s,
         data: {'courseId': courseId},
+        level: courseOutlineErrorLevel(e),
       );
       courseError = e;
     } finally {

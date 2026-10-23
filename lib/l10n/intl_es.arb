@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-05 12:30:35.725951",
+    "@@last_modified": "2026-10-22 09:50:09.305585",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -1435,11 +1435,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sincronizando... por favor espere.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "iHaveClickedOnLink": "He hecho clic en el enlace",
     "@iHaveClickedOnLink": {
         "type": "String",
@@ -2684,17 +2679,6 @@
     "@addLink": {},
     "unableToJoinChat": "No se puede entrar al chat. Puede que la otra parte ya haya cerrado la conversación.",
     "@unableToJoinChat": {},
-    "waitingForServer": "Esperando al servidor...",
-    "@waitingForServer": {},
-    "synchronizingPleaseWaitCounter": " Sincronizando… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "reportErrorDescription": "😭 Oh, no. Algo ha salido mal. Si quieres, puedes informar de este fallo a los desarrolladores.",
     "@reportErrorDescription": {},
     "hasKnocked": "🚪 {user} ha avisado",
@@ -2909,7 +2893,6 @@
     "learningSettings": "Ajustes de aprendizaje",
     "updateNow": "Comenzar actualización en segundo plano.",
     "termsAndConditions": "Términos y condiciones",
-    "andCertifyIAmAtLeast13YearsOfAge": " y certifico que tengo al menos 16 años.",
     "error502504Desc": "Las herramientas de assistencia gramatical y de traducción pueden ser lentas o no estar disponibles mientras los bots de Pangea se ponen al día.",
     "error404Desc": "Pangea Bot no está seguro de cómo traducir eso.",
     "itToggleDescription": "Esta herramienta de aprendizaje identificará palabras en su idioma base y lo ayudará a traducirlas a su idioma a aprender. Aunque es raro, la AI puede cometer errores de traducción de vez en cuando.",
@@ -3191,32 +3174,6 @@
     "why": "¿Por qué?",
     "definition": "Definición",
     "reportToTeacher": "¿A quién desea informar de este mensaje?",
-    "reportMessageTitle": "{reportingUserId} ha informado de un mensaje de {reportedUserId} en el chat {roomName}.",
-    "@reportMessageTitle": {
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "reportMessageBody": "Mensaje: {reportedMessage}\nMotivo: {reason}",
-    "@reportMessageBody": {
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "noTeachersFound": "No se han encontrado profesores a los que informar",
     "trialExpiration": "Su prueba gratuita caduca el {expiration}.",
     "@trialExpiration": {
         "placeholders": {
@@ -6062,11 +6019,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Usar imagen de actividad como fondo de chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chatear con Soporte",
     "@chatWithSupport": {
         "type": "String",
@@ -6087,8 +6039,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Habilitar asistencia de escritura",
-    "autoIGCToolDescription": "Ejecutar automáticamente las herramientas de Pangea Chat para corregir los mensajes enviados al idioma de destino.",
+    "autoIGCToolName": "Revisión automática al enviar",
+    "autoIGCToolDescription": "Revisa tu mensaje en busca de errores al tocar enviar. Cuando esta opción está desactivada, toca el botón de asistencia de escritura para revisar un mensaje tú mismo.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -7643,7 +7595,6 @@
     "activityLoadFailed": "No se pudo cargar la actividad. Verifica tu conexión y vuelve a intentarlo.",
     "levelUpChip": "¡Nivel {level}!",
     "missingCourseOutline": "Este curso ya no está disponible",
-    "missingCourseOutlineCta": "Este curso ya no está disponible. Elige un nuevo plan de curso.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -7668,10 +7619,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -8067,7 +8014,6 @@
     "constructLevelFlowers": "Flores, palabras dominadas",
     "filterAndSearch": "Filtrar y buscar",
     "participantsOfTotal": "{filled} de {total} jugadores",
-    "mapAttributionLabel": "Colaboradores de OpenStreetMap, derechos de autor y licencia",
     "seeAll": "Ver todo",
     "seeAllSection": "Ver todo {section}",
     "showMoreOptionsHint": "mostrar más opciones",
@@ -8181,25 +8127,126 @@
     "summaryFeedbackReceived": "¡Gracias! Recibimos tus comentarios.",
     "summaryFeedbackFailed": "No se pudieron enviar tus comentarios. Inténtalo de nuevo.",
     "summaryFeedbackProcessing": "Enviando tus comentarios y actualizando el resumen…",
-    "ssoNetworkBlockedTitle": "Sitio de inicio de sesión inalcanzable",
-    "ssoNetworkBlockedDesc": "Esta red no nos permite acceder a {provider} para iniciar sesión. Las redes Wi-Fi de escuelas y oficinas a menudo lo bloquean. Puedes registrarte con tu correo electrónico o cambiar a otra red e intentarlo de nuevo.",
-    "ssoTryAnyway": "Intentar de todos modos",
-    "callTranscriptNotSubscribed": "{name} no tenía una suscripción durante esta llamada, por lo que no se transcribió lo que se dijo.",
     "callTranscriptTranscribing": "Todavía transcribiendo la grabación de {name}…",
     "callTranscriptSeekTo": "Reproducir desde {time}",
     "callTranscriptRecordings": "Grabaciones",
     "callTranscriptFullCall": "Llamada completa",
     "callTranscriptPreparingRecording": "Preparando la grabación completa…",
     "callTranscriptNoRecording": "No hay grabación de la llamada completa.",
-    "callTranscriptTranscribeButton": "Transcribir",
-    "callTranscriptAudioUnavailable": "La grabación guardada de {name} no se pudo descargar, por lo que no se pudo transcribir.",
-    "callTranscriptChooseLanguage": "¿Qué idioma se habló?",
-    "callTranscriptSubscribeForTranscription": "Suscribirse para transcribir",
-    "unlockCallTranscript": "Desbloquear transcripción de llamada",
+    "callTranscriptNotSubscribed": "{name} no tenía una suscripción durante esta llamada, por lo que no se transcribió lo que se dijo.",
     "joinYourCourse": "Únete a tu curso",
     "courseCodeJoinExplanation": "Inicia sesión o regístrate, y usaremos tu código de curso para añadirte automáticamente a tu curso.",
     "courseCodeLabel": "Código de curso",
     "courseCodeSaved": "Código de curso {code} guardado",
     "courseCodeSavedExplanation": "Regístrate o inicia sesión y te añadiremos a tu curso.",
-    "missionDueDate": "Vence el {date} a las {time}"
+    "moderationRefusedContactDetails": "Tu mensaje no fue enviado. Un filtro automático encontró datos de contacto, como un número de teléfono. Por favor, elimínalos e inténtalo de nuevo.",
+    "moderationRefusedProfanity": "Tu mensaje no fue enviado. Un filtro automático encontró una palabra que no permitimos en el chat. Por favor, cámbiala e inténtalo de nuevo.",
+    "callTranscriptTranscribeButton": "Transcribir",
+    "callTranscriptAudioUnavailable": "La grabación guardada de {name} no se pudo descargar, por lo que no se pudo transcribir.",
+    "callTranscriptChooseLanguage": "¿Qué idioma se habló?",
+    "callTranscriptSubscribeForTranscription": "Suscribirse para transcribir",
+    "unlockCallTranscript": "Desbloquear transcripción de llamada",
+    "activitySummaryUpdateFailed": "No se pudo actualizar este resumen.",
+    "courseNotFound": "Curso no encontrado",
+    "askTeacherForNewCourse": "Pide a tu profesor que elija un nuevo curso.",
+    "pickNewCoursePlan": "Elige un nuevo plan de curso.",
+    "ssoNetworkBlockedTitle": "Sitio de inicio de sesión inalcanzable",
+    "ssoNetworkBlockedDesc": "Esta red no nos permite acceder a {provider} para iniciar sesión. Las redes Wi-Fi de escuelas y oficinas a menudo lo bloquean. Puedes registrarte con tu correo electrónico o cambiar a otra red e intentarlo de nuevo.",
+    "ssoTryAnyway": "Intentar de todos modos",
+    "publicCoursesFilterTooltip": "Mostrar solo los cursos a los que cualquiera puede unirse",
+    "restrictedCoursesFilterTooltip": "Mostrar solo los cursos a los que debes solicitar unirte",
+    "viewImageLabel": "Ver imagen",
+    "reportSent": "Reporte enviado",
+    "reportNotSent": "No se pudo enviar tu reporte. Revisa tu conexión y vuelve a intentarlo.",
+    "reportPointerMessage": "Se reportó un mensaje en {courseName} — ver Seguridad",
+    "learningObjective": "Objetivo de aprendizaje",
+    "learningObjectives": "Objetivos de aprendizaje",
+    "missionNofM": "Misión {index} de {count}",
+    "xpTowardObjective": "{xp} de {threshold} XP para este objetivo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "¡Curso completado!",
+    "courseCompleteDesc": "Has completado los {count} objetivos de este curso. Sigue practicando para no olvidar lo que has aprendido.",
+    "practiceObjective": "Practicar este objetivo",
+    "otherActivities": "Otras actividades",
+    "objectiveCircleComplete": "Misión {index}: completada",
+    "objectiveCircleUpNext": "Misión {index}: siguiente",
+    "useActivityImageAsChatBackground": "Usar imagen de actividad como fondo de chat",
+    "andCertifyIMeetTheMinimumAge": " y certifico que tengo al menos 13 años de edad, o la edad mínima requerida en mi país si esta es mayor.",
+    "filteredNetworkBlockedTitle": "Esta red está bloqueando Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Esta red está bloqueando parte de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "¿Qué puedo hacer?",
+    "filteredNetworkPhoneAdvice": "Desactiva el Wi-Fi y usa los datos móviles en su lugar.",
+    "filteredNetworkComputerAdvice": "Conéctate al punto de acceso de tu teléfono en lugar de a esta red Wi-Fi.",
+    "filteredNetworkItHeading": "Para profesores y personal de TI",
+    "filteredNetworkItBody": "Pide a tu equipo de TI que permita estos dominios:",
+    "filteredNetworkAskForHelp": "Pedir ayuda a Pangea",
+    "filteredNetworkHelpExplanation": "Te enviaremos un correo electrónico para ayudarte a que Pangea Chat funcione en esta red.",
+    "filteredNetworkHelpWaiting": "Tu solicitud se enviará tan pronto como estés conectado.",
+    "filteredNetworkHelpSent": "Enviado. Nos pondremos en contacto contigo por correo electrónico.",
+    "filteredNetworkHelpRefused": "No pudimos enviar tu solicitud. Por favor, envía un correo electrónico a support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Esta red bloquea los videos.",
+    "filteredNetworkImagesBlocked": "Esta red bloquea las imágenes.",
+    "filteredNetworkMapBlocked": "Esta red bloquea el mapa.",
+    "callFullScreenTitle": "Permitir llamadas en pantalla completa",
+    "callFullScreenMessage": "Recibiste una llamada mientras Pangea Chat estaba cerrado, pero tu teléfono solo pudo mostrar una pequeña notificación. Permite las llamadas en pantalla completa para que la próxima suene en toda tu pantalla, incluso cuando tu teléfono esté bloqueado.",
+    "callMicrophoneTitle": "Usa tu micrófono para llamadas",
+    "callMicrophoneMessage": "Pangea Chat necesita tu micrófono para las llamadas, incluidas las que respondas desde la pantalla de bloqueo.",
+    "callMicrophoneOffTitle": "Tu llamada no se conectó",
+    "callMicrophoneOffMessage": "Pangea Chat no puede usar tu micrófono. Toca para activarlo en Ajustes.",
+    "goalsCompletedOfTotal": "{earned} de {total} metas completadas",
+    "goalsCompletedInLanguage": "Metas completadas en {language}",
+    "sessionXpTowardObjective": "{xp} XP esta sesión; {remaining} más completan el objetivo",
+    "mapCreditsLabel": "Créditos del mapa: Stadia Maps, OpenMapTiles y OpenStreetMap",
+    "activityLaunchFindingCourses": "Buscando tus cursos…",
+    "activityLaunchCreatingRoom": "Creando tu actividad…",
+    "activityLaunchOpeningRoom": "Abriendo tu actividad…",
+    "playWithOthers": "Jugar con otros",
+    "openRole": "Abierto: {role}",
+    "waitingFor": "Esperando {duration}",
+    "onlineInCourse": "{count} en línea en {course}",
+    "newCourseChat": "Nuevo chat del curso",
+    "customCourseStepDesc": "Un curso es un conjunto de actividades de conversación que siguen tu libro de texto, para que tus estudiantes las hagan juntos como tarea.",
+    "reopenAppToFinishSwitching": "Cierra la aplicación por completo y vuelve a abrirla para terminar de cambiar.",
+    "teamCode": "Código de equipo",
+    "connectionOffline": "Estás sin conexión. Pangea Chat se reconectará cuando recuperes la conexión.",
+    "connectionUnreachable": "No se puede conectar con Pangea Chat. Intentando de nuevo…",
+    "connectionBackOnline": "De nuevo en línea",
+    "missionDueDate": "Vence el {date} a las {time}",
+    "callNotificationsTitle": "Permitir que las llamadas suenen",
+    "callNotificationsMessage": "Las llamadas suenan como notificaciones. Permite las notificaciones para que tu teléfono suene cuando recibas una llamada, incluso cuando Pangea Chat esté cerrado o tu teléfono esté bloqueado.",
+    "callNotificationsMissedMessage": "Entró una llamada mientras Pangea Chat estaba cerrado, pero tu teléfono no pudo sonar porque las notificaciones están desactivadas. Permite las notificaciones para que la próxima llamada suene.",
+    "connectionPracticeVocab": "Practica vocabulario mientras esperas",
+    "offlinePracticeNote": "Sin conexión. Tus respuestas se subirán cuando vuelvas a tener conexión.",
+    "offlinePracticeSavedNote": "Guardado en este dispositivo. Tu XP se subirá cuando vuelvas a tener conexión.",
+    "offlinePracticeNothingSaved": "No hay suficiente guardado en este dispositivo para practicar sin conexión. Intenta de nuevo cuando tengas conexión.",
+    "missionNumber": "Misión {index}",
+    "xpToYourStar": "{xp} XP para tu estrella",
+    "missionStarEarned": "¡Estrella ganada!",
+    "xpFromChats": "Chats {xp}",
+    "xpFromGoals": "Metas {xp}",
+    "xpFromPractice": "Práctica {xp}",
+    "playMission": "Jugar",
+    "wordCount": "{count, plural, =1{1 palabra} other{{count} palabras}}",
+    "continueActivity": "Continuar",
+    "noObjectiveActivitiesYet": "Todavía no has completado una actividad para este objetivo. Comienza una desde tu curso.",
+    "objectiveNotInYourCourses": "Este objetivo no está en ninguno de tus cursos.",
+    "objectiveActivityCount": "{count, plural, =0{Ninguna actividad aún} =1{1 actividad jugada} other{{count} actividades jugadas}}",
+    "activityCompleted": "Completada",
+    "completedTimes": "Completada {count} veces",
+    "classLocation": "Ubicación de la clase",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversación {xp}",
+    "xpIncludingGoals": "incluyendo {xp} de objetivos",
+    "missionOtherLanguageNotice": "Esta misión es de un curso en {language}. Tu progreso en ella solo cuenta mientras aprendes {language}.",
+    "missionLanguageMismatchDesc": "Esta misión es de un curso en {language}. ¿Cambiar tu idioma de destino a {language}?",
+    "xpBySkillTitle": "Por habilidad",
+    "missionNextActivity": "Siguiente actividad",
+    "missionContinueActivity": "Continuar actividad",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Terminado en este curso ({num})",
+    "otherCoursesSessions": "Otros cursos ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP ganados",
+    "currentMission": "Misión actual"
 }

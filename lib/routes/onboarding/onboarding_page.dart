@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
 import 'package:fluffychat/routes/onboarding/course_provider.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_client_extension.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_header.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_button_state.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_controller.dart';
@@ -53,6 +54,7 @@ class OnboardingController extends State<Onboarding> {
         inTrialWindow: MatrixState.pangeaController.userController
             .inTrialWindow(),
       ),
+      userType: client.selfIdentifiedRole,
     );
 
     final initialStep = ProfileSetupOnboardingStep(

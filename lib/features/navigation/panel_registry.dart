@@ -347,6 +347,23 @@ class GrammarPanelDef extends PanelDef {
        );
 }
 
+/// A Learning Objective's detail (`objective:<missionId>`), opened from the
+/// Learning Objectives list exactly as a `vocab:` detail opens from the vocab
+/// list: a child of the analytics master, and one "zoom" detail at a time.
+class ObjectivePanelDef extends PanelDef {
+  const ObjectivePanelDef({
+    super.minWidth = PanelWidths.toolMin,
+    super.reasonableMinWidth = PanelWidths.toolComfort,
+    super.idealWidth = PanelWidths.toolIdeal,
+  }) : super(
+         type: PanelTypesEnum.objective,
+         column: PanelColumn.right,
+         parent: PanelTypesEnum.analytics,
+         priority: 50,
+         siblingGroups: const {'detail'},
+       );
+}
+
 class ReviewPanelDef extends PanelDef {
   const ReviewPanelDef({
     super.minWidth = PanelWidths.toolMin,

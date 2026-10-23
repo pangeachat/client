@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:50.202394",
+    "@@last_modified": "2026-10-22 09:50:30.397031",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -1224,16 +1224,6 @@
     "status": "Trạng thái",
     "statusExampleMessage": "Hôm nay bạn thế nào?",
     "submit": "Gửi",
-    "synchronizingPleaseWait": "Đang đồng bộ… Vui lòng chờ.",
-    "synchronizingPleaseWaitCounter": "Đang đồng bộ… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "systemTheme": "Hệ thống",
     "theyDontMatch": "Không khớp",
     "theyMatch": "Khớp nhau",
@@ -1495,7 +1485,6 @@
     "errorDisableIGCUserDesc": "Nhấn vào đây để cập nhật cài đặt hỗ trợ ngữ pháp",
     "error405Desc": "Vui lòng thiết lập ngôn ngữ của bạn trong Menu chính > Cài đặt Học tập.",
     "termsAndConditions": "Điều khoản và Điều kiện",
-    "andCertifyIAmAtLeast13YearsOfAge": " và xác nhận tôi ít nhất 16 tuổi.",
     "error502504Desc": "Công cụ dịch và ngữ pháp có thể chạy chậm hoặc ngừng hoạt động trong khi bot Pangea đang xử lý.",
     "error404Desc": "Pangea Bot chưa biết cách dịch điều này...",
     "errorPleaseRefresh": "Chúng tôi sẽ kiểm tra! Vui lòng tải lại và thử lại.",
@@ -1818,32 +1807,6 @@
     "why": "Tại sao?",
     "definition": "Định nghĩa",
     "reportToTeacher": "Bạn muốn báo cáo tin nhắn này cho giáo viên nào?",
-    "reportMessageTitle": "{reportingUserId} đã báo cáo tin nhắn của {reportedUserId} trong phòng {roomName}",
-    "@reportMessageTitle": {
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "reportMessageBody": "Tin nhắn: {reportedMessage}\nLý do: {reason}",
-    "@reportMessageBody": {
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "noTeachersFound": "Không tìm thấy giáo viên nào để báo cáo",
     "yourGlobalUserIdIs": "ID người dùng toàn cục của bạn là: ",
     "knocking": "Đang yêu cầu tham gia",
     "trialExpiration": "Bản dùng thử của bạn sẽ hết hạn vào {expiration}",
@@ -2229,7 +2192,6 @@
     "instructions": "Hướng dẫn",
     "constructUsePvmDesc": "Đã sử dụng trong tin nhắn thoại",
     "open": "Mở",
-    "waitingForServer": "Đang đợi phản hồi từ máy chủ...",
     "constructUseCorMmDesc": "Đúng trong ý nghĩa tin nhắn",
     "constructUseIncMmDesc": "Sai trong ý nghĩa tin nhắn",
     "constructUseIgnMmDesc": "Bỏ qua trong ý nghĩa tin nhắn",
@@ -5053,11 +5015,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Trò chuyện với Hỗ trợ",
     "@chatWithSupport": {
         "type": "String",
@@ -5078,8 +5035,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Bật trợ giúp viết",
-    "autoIGCToolDescription": "Tự động chạy các công cụ Pangea Chat để sửa các tin nhắn đã gửi sang ngôn ngữ mục tiêu.",
+    "autoIGCToolName": "Tự động kiểm tra khi gửi",
+    "autoIGCToolDescription": "Kiểm tra tin nhắn của bạn để tìm lỗi khi bạn nhấn gửi. Khi tắt tính năng này, hãy nhấn nút hỗ trợ viết để tự kiểm tra tin nhắn.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -6716,7 +6673,6 @@
     "activityLoadFailed": "Không thể tải hoạt động. Kiểm tra kết nối của bạn và thử lại.",
     "levelUpChip": "Cấp độ {level}!",
     "missingCourseOutline": "Khóa học này không còn khả dụng",
-    "missingCourseOutlineCta": "Khóa học này không còn khả dụng. Chọn một kế hoạch khóa học mới.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -6741,10 +6697,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -7140,7 +7092,6 @@
     "constructLevelFlowers": "Hoa, từ đã thành thạo",
     "filterAndSearch": "Lọc và tìm kiếm",
     "participantsOfTotal": "{filled} trên {total} người chơi",
-    "mapAttributionLabel": "Những người đóng góp OpenStreetMap, bản quyền và giấy phép",
     "seeAll": "Xem tất cả",
     "seeAllSection": "Xem tất cả {section}",
     "showMoreOptionsHint": "hiện thêm tùy chọn",
@@ -7254,25 +7205,126 @@
     "summaryFeedbackReceived": "Cảm ơn! Chúng tôi đã nhận được phản hồi của bạn.",
     "summaryFeedbackFailed": "Không thể gửi phản hồi của bạn. Vui lòng thử lại.",
     "summaryFeedbackProcessing": "Đang gửi phản hồi của bạn và cập nhật tóm tắt…",
-    "ssoNetworkBlockedTitle": "Không thể truy cập trang web đăng nhập",
-    "ssoNetworkBlockedDesc": "Mạng này không cho phép chúng tôi truy cập {provider} để đăng nhập cho bạn. Wi-Fi ở trường học và văn phòng thường chặn điều này. Bạn có thể đăng ký bằng email thay thế, hoặc chuyển sang mạng khác và thử lại.",
-    "ssoTryAnyway": "Vẫn thử",
-    "callTranscriptNotSubscribed": "{name} không có gói đăng ký trong cuộc gọi này, vì vậy những gì đã nói không được phiên âm.",
     "callTranscriptTranscribing": "Đang chép lại bản ghi âm từ {name}…",
     "callTranscriptSeekTo": "Phát từ {time}",
     "callTranscriptRecordings": "Bản ghi âm",
     "callTranscriptFullCall": "Toàn bộ cuộc gọi",
     "callTranscriptPreparingRecording": "Đang chuẩn bị bản ghi âm đầy đủ…",
     "callTranscriptNoRecording": "Không có bản ghi âm toàn bộ cuộc gọi.",
-    "callTranscriptTranscribeButton": "Chép lại",
-    "callTranscriptAudioUnavailable": "Không thể tải bản ghi đã lưu từ {name} xuống, nên không thể chép lại.",
-    "callTranscriptChooseLanguage": "Ngôn ngữ được nói là gì?",
-    "callTranscriptSubscribeForTranscription": "Đăng ký để chép lại",
-    "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi",
+    "callTranscriptNotSubscribed": "{name} không có gói đăng ký trong cuộc gọi này, vì vậy những gì đã nói không được phiên âm.",
     "joinYourCourse": "Tham gia khóa học của bạn",
     "courseCodeJoinExplanation": "Đăng nhập hoặc đăng ký, chúng tôi sẽ sử dụng mã khóa học của bạn để tự động thêm bạn vào khóa học.",
     "courseCodeLabel": "Mã khóa học",
     "courseCodeSaved": "Đã lưu mã khóa học {code}",
     "courseCodeSavedExplanation": "Đăng ký hoặc đăng nhập và chúng tôi sẽ thêm bạn vào khóa học.",
-    "missionDueDate": "Đến hạn {date}, {time}"
+    "moderationRefusedContactDetails": "Tin nhắn của bạn chưa được gửi. Bộ lọc tự động đã phát hiện thông tin liên hệ, như số điện thoại. Vui lòng xóa và thử lại.",
+    "moderationRefusedProfanity": "Tin nhắn của bạn chưa được gửi. Bộ lọc tự động đã phát hiện một từ mà chúng tôi không cho phép trong cuộc trò chuyện. Vui lòng thay đổi và thử lại.",
+    "callTranscriptTranscribeButton": "Chép lại",
+    "callTranscriptAudioUnavailable": "Không thể tải bản ghi đã lưu từ {name} xuống, nên không thể chép lại.",
+    "callTranscriptChooseLanguage": "Ngôn ngữ được nói là gì?",
+    "callTranscriptSubscribeForTranscription": "Đăng ký để chép lại",
+    "unlockCallTranscript": "Mở khóa bản chép lại cuộc gọi",
+    "activitySummaryUpdateFailed": "Không thể cập nhật bản tóm tắt này.",
+    "courseNotFound": "Không tìm thấy khóa học",
+    "askTeacherForNewCourse": "Yêu cầu giáo viên chọn một khóa học mới.",
+    "pickNewCoursePlan": "Chọn một giáo trình mới.",
+    "ssoNetworkBlockedTitle": "Không thể truy cập trang web đăng nhập",
+    "ssoNetworkBlockedDesc": "Mạng này không cho phép chúng tôi truy cập {provider} để đăng nhập cho bạn. Wi-Fi ở trường học và văn phòng thường chặn điều này. Bạn có thể đăng ký bằng email thay thế, hoặc chuyển sang mạng khác và thử lại.",
+    "ssoTryAnyway": "Vẫn thử",
+    "publicCoursesFilterTooltip": "Chỉ hiển thị các khóa học mà bất kỳ ai cũng có thể tham gia",
+    "restrictedCoursesFilterTooltip": "Chỉ hiển thị các khóa học bạn phải yêu cầu để tham gia",
+    "viewImageLabel": "Xem hình ảnh",
+    "reportSent": "Đã gửi báo cáo",
+    "reportNotSent": "Không thể gửi báo cáo của bạn. Vui lòng kiểm tra kết nối và thử lại.",
+    "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn",
+    "learningObjective": "Mục tiêu học tập",
+    "learningObjectives": "Các mục tiêu học tập",
+    "missionNofM": "Nhiệm vụ {index} trên {count}",
+    "xpTowardObjective": "{xp} trên {threshold} XP cho mục tiêu này",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Hoàn thành khóa học!",
+    "courseCompleteDesc": "Bạn đã hoàn thành tất cả {count} mục tiêu trong khóa học này. Hãy tiếp tục luyện tập để giữ vững những gì bạn đã học.",
+    "practiceObjective": "Luyện tập mục tiêu này",
+    "otherActivities": "Các hoạt động khác",
+    "objectiveCircleComplete": "Nhiệm vụ {index}: hoàn thành",
+    "objectiveCircleUpNext": "Nhiệm vụ {index}: tiếp theo",
+    "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
+    "andCertifyIMeetTheMinimumAge": " và xác nhận tôi ít nhất 13 tuổi, hoặc độ tuổi tối thiểu được yêu cầu ở quốc gia của tôi nếu cao hơn.",
+    "filteredNetworkBlockedTitle": "Mạng này đang chặn Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Mạng này đang chặn một phần Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Tôi có thể làm gì?",
+    "filteredNetworkPhoneAdvice": "Tắt Wi-Fi và dùng dữ liệu di động.",
+    "filteredNetworkComputerAdvice": "Kết nối với điểm phát sóng của điện thoại thay vì Wi-Fi này.",
+    "filteredNetworkItHeading": "Dành cho giáo viên và nhân viên IT",
+    "filteredNetworkItBody": "Yêu cầu đội ngũ IT của bạn cho phép các miền sau:",
+    "filteredNetworkAskForHelp": "Yêu cầu Pangea trợ giúp",
+    "filteredNetworkHelpExplanation": "Chúng tôi sẽ gửi email cho bạn để giúp Pangea Chat hoạt động trên mạng này.",
+    "filteredNetworkHelpWaiting": "Yêu cầu của bạn sẽ được gửi ngay khi bạn kết nối.",
+    "filteredNetworkHelpSent": "Đã gửi. Chúng tôi sẽ liên hệ với bạn qua email.",
+    "filteredNetworkHelpRefused": "Chúng tôi không thể gửi yêu cầu của bạn. Vui lòng gửi email tới support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Mạng này chặn video.",
+    "filteredNetworkImagesBlocked": "Mạng này chặn hình ảnh.",
+    "filteredNetworkMapBlocked": "Mạng này chặn bản đồ.",
+    "callFullScreenTitle": "Cho phép cuộc gọi đổ chuông toàn màn hình",
+    "callFullScreenMessage": "Một cuộc gọi đến khi Pangea Chat đã đóng, nhưng điện thoại của bạn chỉ có thể hiển thị một thông báo nhỏ. Cho phép cuộc gọi toàn màn hình để cuộc gọi tiếp theo đổ chuông trên toàn bộ màn hình của bạn, ngay cả khi điện thoại của bạn bị khóa.",
+    "callMicrophoneTitle": "Sử dụng micrô của bạn cho cuộc gọi",
+    "callMicrophoneMessage": "Pangea Chat cần micrô của bạn cho các cuộc gọi, bao gồm cả các cuộc gọi bạn trả lời từ màn hình khóa.",
+    "callMicrophoneOffTitle": "Cuộc gọi của bạn không kết nối được",
+    "callMicrophoneOffMessage": "Pangea Chat không thể sử dụng micrô của bạn. Nhấn để bật micrô trong Cài đặt.",
+    "goalsCompletedOfTotal": "{earned} trên {total} mục tiêu đã hoàn thành",
+    "goalsCompletedInLanguage": "Mục tiêu đã hoàn thành bằng tiếng {language}",
+    "sessionXpTowardObjective": "{xp} XP trong phiên này; cần thêm {remaining} để hoàn thành mục tiêu",
+    "mapCreditsLabel": "Bản quyền bản đồ: Stadia Maps, OpenMapTiles và OpenStreetMap",
+    "activityLaunchFindingCourses": "Đang tìm khóa học của bạn…",
+    "activityLaunchCreatingRoom": "Đang tạo hoạt động của bạn…",
+    "activityLaunchOpeningRoom": "Đang mở hoạt động của bạn…",
+    "playWithOthers": "Chơi với người khác",
+    "openRole": "Mở: {role}",
+    "waitingFor": "Đang chờ {duration}",
+    "onlineInCourse": "{count} người trực tuyến trong khóa {course}",
+    "newCourseChat": "Trò chuyện khóa học mới",
+    "customCourseStepDesc": "Một khóa học là một tập hợp các hoạt động hội thoại theo sách giáo khoa của bạn, để học sinh của bạn cùng nhau làm bài tập về nhà.",
+    "reopenAppToFinishSwitching": "Đóng hoàn toàn ứng dụng và mở lại để hoàn tất việc chuyển đổi.",
+    "teamCode": "Mã nhóm",
+    "connectionOffline": "Bạn đang ngoại tuyến. Pangea Chat sẽ kết nối lại khi có mạng.",
+    "connectionUnreachable": "Không thể kết nối với Pangea Chat. Đang thử lại…",
+    "connectionBackOnline": "Đã trực tuyến trở lại",
+    "missionDueDate": "Đến hạn {date}, {time}",
+    "callNotificationsTitle": "Cho phép cuộc gọi đổ chuông",
+    "callNotificationsMessage": "Cuộc gọi đổ chuông dưới dạng thông báo. Cho phép thông báo để điện thoại của bạn đổ chuông khi có cuộc gọi, ngay cả khi Pangea Chat đã đóng hoặc điện thoại của bạn bị khóa.",
+    "callNotificationsMissedMessage": "Có cuộc gọi đến khi Pangea Chat đã đóng, nhưng điện thoại của bạn không thể đổ chuông vì thông báo đã tắt. Cho phép thông báo để cuộc gọi tiếp theo đổ chuông.",
+    "connectionPracticeVocab": "Luyện từ vựng trong khi chờ",
+    "offlinePracticeNote": "Ngoại tuyến. Câu trả lời của bạn sẽ được tải lên khi bạn trực tuyến trở lại.",
+    "offlinePracticeSavedNote": "Đã lưu trên thiết bị này. XP của bạn sẽ được tải lên khi bạn trực tuyến trở lại.",
+    "offlinePracticeNothingSaved": "Không có đủ dữ liệu được lưu trên thiết bị này để luyện tập ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng.",
+    "missionNumber": "Nhiệm vụ {index}",
+    "xpToYourStar": "{xp} XP để đạt sao",
+    "missionStarEarned": "Đã đạt sao!",
+    "xpFromChats": "Trò chuyện {xp}",
+    "xpFromGoals": "Mục tiêu {xp}",
+    "xpFromPractice": "Luyện tập {xp}",
+    "playMission": "Chơi",
+    "wordCount": "{count, plural, =1{1 từ} other{{count} từ}}",
+    "continueActivity": "Tiếp tục",
+    "noObjectiveActivitiesYet": "Bạn chưa hoàn thành hoạt động nào cho mục tiêu này. Hãy bắt đầu một hoạt động từ khóa học của bạn.",
+    "objectiveNotInYourCourses": "Mục tiêu này không có trong bất kỳ khóa học nào của bạn.",
+    "objectiveActivityCount": "{count, plural, =0{Chưa có hoạt động nào} =1{Đã chơi 1 hoạt động} other{Đã chơi {count} hoạt động}}",
+    "activityCompleted": "Đã hoàn thành",
+    "completedTimes": "Đã hoàn thành {count} lần",
+    "classLocation": "Địa điểm lớp học",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Trò chuyện {xp}",
+    "xpIncludingGoals": "bao gồm {xp} từ mục tiêu",
+    "missionOtherLanguageNotice": "Nhiệm vụ này thuộc khóa học {language}. Tiến độ của bạn chỉ được tính khi bạn đang học {language}.",
+    "missionLanguageMismatchDesc": "Nhiệm vụ này thuộc khóa học {language}. Chuyển ngôn ngữ mục tiêu của bạn sang {language}?",
+    "xpBySkillTitle": "Theo kỹ năng",
+    "missionNextActivity": "Hoạt động tiếp theo",
+    "missionContinueActivity": "Tiếp tục hoạt động",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Đã hoàn thành trong khóa học này ({num})",
+    "otherCoursesSessions": "Các khóa học khác ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, kiếm được {xp} XP",
+    "currentMission": "Nhiệm vụ hiện tại"
 }

@@ -1018,10 +1018,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@passwordHasBeenChanged": {
         "type": "String",
         "placeholders": {}
@@ -2424,8 +2420,6 @@
     "status": "Κατάσταση",
     "statusExampleMessage": "Πώς είστε σήμερα;",
     "submit": "Υποβολή",
-    "synchronizingPleaseWait": "Συγχρονισμός… Παρακαλώ περιμένετε.",
-    "synchronizingPleaseWaitCounter": "Συγχρονισμός… ({percentage}%)",
     "systemTheme": "Σύστημα",
     "theyDontMatch": "Δεν ταιριάζουν",
     "theyMatch": "Ταιριάζουν",
@@ -2650,7 +2644,6 @@
     "previous": "Προηγούμενο",
     "otherPartyNotLoggedIn": "Το άλλο μέρος δεν είναι αυτήν τη στιγμή συνδεδεμένο και επομένως δεν μπορεί να λάβει μηνύματα!",
     "open": "Άνοιγμα",
-    "waitingForServer": "Αναμονή για διακομιστή...",
     "newChatRequest": "📩 Νέα αίτηση συνομιλίας",
     "contentNotificationSettings": "Ρυθμίσεις ειδοποιήσεων περιεχομένου",
     "generalNotificationSettings": "Γενικές ρυθμίσεις ειδοποιήσεων",
@@ -2756,7 +2749,6 @@
     "errorDisableIGCClassDesc": "Η βοήθεια γραμματικής είναι απενεργοποιημένη για το μάθημα στο οποίο βρίσκεται αυτή η συνομιλία.",
     "error405Desc": "Ορίστε τις γλώσσες σας στο Μενού > Ρυθμίσεις Μάθησης.",
     "termsAndConditions": "Όρους και Προϋποθέσεις",
-    "andCertifyIAmAtLeast13YearsOfAge": " και πιστοποιώ ότι είμαι τουλάχιστον 16 ετών.",
     "error502504Desc": "Τα εργαλεία μετάφρασης και γραμματικής ενδέχεται να είναι αργά ή μη διαθέσιμα ενώ οι bots της Pangea ενημερώνονται.",
     "error404Desc": "Ο Pangea Bot δεν είναι σίγουρος πώς να μεταφράσει αυτό...",
     "errorPleaseRefresh": "Το ερευνούμε! Παρακαλούμε ανανεώστε και δοκιμάστε ξανά.",
@@ -3064,9 +3056,6 @@
     "why": "Γιατί;",
     "definition": "Ορισμός",
     "reportToTeacher": "Σε ποιον θέλετε να αναφέρετε αυτό το μήνυμα;",
-    "reportMessageTitle": "{reportingUserId} ανέφερε ένα μήνυμα από τον {reportedUserId} στη συνομιλία {roomName}",
-    "reportMessageBody": "Μήνυμα: {reportedMessage}\nΑιτία: {reason}",
-    "noTeachersFound": "Δεν βρέθηκαν δάσκαλοι για αναφορά",
     "trialExpiration": "Η δωρεάν δοκιμή σας λήγει στις {expiration}",
     "freeTrialDesc": "Οι νέοι χρήστες λαμβάνουν μια εβδομάδα δωρεάν δοκιμής του Pangea Chat",
     "activateTrial": "Δωρεάν 7-ήμερη Δοκιμή",
@@ -3400,7 +3389,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-05 12:30:36.933667",
+    "@@last_modified": "2026-10-22 09:50:08.795936",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -3464,14 +3453,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@invitedBy": {
         "type": "String",
@@ -3961,10 +3942,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@newChatRequest": {
         "type": "String",
         "placeholders": {}
@@ -4396,10 +4373,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5646,35 +5619,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8632,11 +8576,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Χρησιμοποιήστε την εικόνα δραστηριότητας ως φόντο συνομιλίας",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Συνομιλία με Υποστήριξη",
     "@chatWithSupport": {
         "type": "String",
@@ -8657,8 +8596,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Ενεργοποίηση βοήθειας γραφής",
-    "autoIGCToolDescription": "Αυτόματα εκτελέστε τα εργαλεία Pangea Chat για να διορθώσετε τα αποσταλμένα μηνύματα στη γλώσσα στόχο.",
+    "autoIGCToolName": "Αυτόματος έλεγχος κατά την αποστολή",
+    "autoIGCToolDescription": "Ελέγξτε το μήνυμά σας για λάθη όταν πατάτε αποστολή. Όταν αυτή η επιλογή είναι απενεργοποιημένη, πατήστε το κουμπί βοήθειας γραφής για να ελέγξετε ένα μήνυμα μόνοι σας.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10295,7 +10234,6 @@
     "activityLoadFailed": "Δεν ήταν δυνατή η φόρτωση της δραστηριότητας. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
     "levelUpChip": "Επίπεδο {level}!",
     "missingCourseOutline": "Αυτό το μάθημα δεν είναι πλέον διαθέσιμο",
-    "missingCourseOutlineCta": "Αυτό το μάθημα δεν είναι πλέον διαθέσιμο. Επιλέξτε ένα νέο σχέδιο μαθήματος.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10320,10 +10258,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10719,7 +10653,6 @@
     "constructLevelFlowers": "Λουλούδια, λέξεις που έχετε κατακτήσει",
     "filterAndSearch": "Φιλτράρισμα και αναζήτηση",
     "participantsOfTotal": "{filled} από {total} παίκτες",
-    "mapAttributionLabel": "Συνεισφέροντες στο OpenStreetMap, πνευματικά δικαιώματα και άδεια",
     "seeAll": "Δείτε όλα",
     "seeAllSection": "Δείτε όλα τα {section}",
     "showMoreOptionsHint": "εμφάνιση περισσότερων επιλογών",
@@ -10837,25 +10770,126 @@
     "summaryFeedbackReceived": "Ευχαριστούμε! Λάβαμε τα σχόλιά σας.",
     "summaryFeedbackFailed": "Δεν ήταν δυνατή η αποστολή των σχολίων σας. Παρακαλώ δοκιμάστε ξανά.",
     "summaryFeedbackProcessing": "Αποστολή των σχολίων σας και ενημέρωση της σύνοψης…",
-    "ssoNetworkBlockedTitle": "Ο ιστότοπος σύνδεσης δεν είναι προσβάσιμος",
-    "ssoNetworkBlockedDesc": "Αυτό το δίκτυο δεν μας επιτρέπει να επικοινωνήσουμε με το {provider} για να συνδεθείτε. Τα δίκτυα Wi-Fi σχολείων και γραφείων συχνά το μπλοκάρουν. Μπορείτε να εγγραφείτε με email αντ' αυτού, ή να συνδεθείτε σε άλλο δίκτυο και να δοκιμάσετε ξανά.",
-    "ssoTryAnyway": "Δοκιμάστε ούτως ή άλλως",
-    "callTranscriptNotSubscribed": "Ο/Η {name} δεν είχε συνδρομή κατά τη διάρκεια αυτής της κλήσης, οπότε όσα ειπώθηκαν δεν μεταγράφηκαν.",
     "callTranscriptTranscribing": "Ακόμα μεταγράφεται η ηχογράφηση από τον/την {name}…",
     "callTranscriptSeekTo": "Αναπαραγωγή από {time}",
     "callTranscriptRecordings": "Ηχογραφήσεις",
     "callTranscriptFullCall": "Πλήρης κλήση",
     "callTranscriptPreparingRecording": "Προετοιμασία της πλήρους ηχογράφησης…",
     "callTranscriptNoRecording": "Δεν υπάρχει ηχογράφηση της πλήρους κλήσης.",
-    "callTranscriptTranscribeButton": "Μεταγραφή",
-    "callTranscriptAudioUnavailable": "Η αποθηκευμένη ηχογράφηση από τον/την {name} δεν ήταν δυνατή να ληφθεί, επομένως δεν ήταν δυνατή η μεταγραφή της.",
-    "callTranscriptChooseLanguage": "Ποια γλώσσα ομιλήθηκε;",
-    "callTranscriptSubscribeForTranscription": "Εγγραφείτε για μεταγραφή",
-    "unlockCallTranscript": "Ξεκλείδωμα μεταγραφής κλήσης",
+    "callTranscriptNotSubscribed": "Ο/Η {name} δεν είχε συνδρομή κατά τη διάρκεια αυτής της κλήσης, οπότε όσα ειπώθηκαν δεν μεταγράφηκαν.",
     "joinYourCourse": "Συμμετοχή στο μάθημά σας",
     "courseCodeJoinExplanation": "Συνδεθείτε ή εγγραφείτε και θα χρησιμοποιήσουμε τον κωδικό μαθήματός σας για να σας προσθέσουμε αυτόματα στο μάθημά σας.",
     "courseCodeLabel": "Κωδικός μαθήματος",
     "courseCodeSaved": "Ο κωδικός μαθήματος {code} αποθηκεύτηκε",
     "courseCodeSavedExplanation": "Εγγραφείτε ή συνδεθείτε και θα σας προσθέσουμε στο μάθημά σας.",
-    "missionDueDate": "Λήγει {date}, {time}"
+    "moderationRefusedContactDetails": "Το μήνυμά σας δεν στάλθηκε. Ένα αυτόματο φίλτρο εντόπισε στοιχεία επικοινωνίας, όπως έναν αριθμό τηλεφώνου. Παρακαλούμε αφαιρέστε τα και δοκιμάστε ξανά.",
+    "moderationRefusedProfanity": "Το μήνυμά σας δεν στάλθηκε. Ένα αυτόματο φίλτρο εντόπισε μια λέξη που δεν επιτρέπουμε στη συνομιλία. Παρακαλούμε αλλάξτε την και δοκιμάστε ξανά.",
+    "callTranscriptTranscribeButton": "Μεταγραφή",
+    "callTranscriptAudioUnavailable": "Η αποθηκευμένη ηχογράφηση από τον/την {name} δεν ήταν δυνατή να ληφθεί, επομένως δεν ήταν δυνατή η μεταγραφή της.",
+    "callTranscriptChooseLanguage": "Ποια γλώσσα ομιλήθηκε;",
+    "callTranscriptSubscribeForTranscription": "Εγγραφείτε για μεταγραφή",
+    "unlockCallTranscript": "Ξεκλείδωμα μεταγραφής κλήσης",
+    "activitySummaryUpdateFailed": "Αυτή η σύνοψη δεν ήταν δυνατό να ενημερωθεί.",
+    "courseNotFound": "Το μάθημα δεν βρέθηκε",
+    "askTeacherForNewCourse": "Ζητήστε από τον δάσκαλό σας να επιλέξει ένα νέο μάθημα.",
+    "pickNewCoursePlan": "Επιλέξτε ένα νέο πρόγραμμα μαθημάτων.",
+    "ssoNetworkBlockedTitle": "Ο ιστότοπος σύνδεσης δεν είναι προσβάσιμος",
+    "ssoNetworkBlockedDesc": "Αυτό το δίκτυο δεν μας επιτρέπει να επικοινωνήσουμε με το {provider} για να συνδεθείτε. Τα δίκτυα Wi-Fi σχολείων και γραφείων συχνά το μπλοκάρουν. Μπορείτε να εγγραφείτε με email αντ' αυτού, ή να συνδεθείτε σε άλλο δίκτυο και να δοκιμάσετε ξανά.",
+    "ssoTryAnyway": "Δοκιμάστε ούτως ή άλλως",
+    "publicCoursesFilterTooltip": "Εμφάνιση μόνο μαθημάτων στα οποία μπορεί να συμμετάσχει ο καθένας",
+    "restrictedCoursesFilterTooltip": "Εμφάνιση μόνο μαθημάτων στα οποία πρέπει να ζητήσετε να συμμετάσχετε",
+    "viewImageLabel": "Προβολή εικόνας",
+    "reportSent": "Η αναφορά στάλθηκε",
+    "reportNotSent": "Η αναφορά σας δεν μπόρεσε να σταλεί. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
+    "reportPointerMessage": "Αναφέρθηκε ένα μήνυμα στο {courseName} — δείτε την ενότητα Ασφάλεια",
+    "learningObjective": "Μαθησιακός Στόχος",
+    "learningObjectives": "Μαθησιακοί Στόχοι",
+    "missionNofM": "Αποστολή {index} από {count}",
+    "xpTowardObjective": "{xp} από {threshold} XP για αυτόν τον στόχο",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Το μάθημα ολοκληρώθηκε!",
+    "courseCompleteDesc": "Έχεις ολοκληρώσει και τους {count} στόχους σε αυτό το μάθημα. Συνέχισε να εξασκείσαι για να διατηρήσεις όσα έμαθες.",
+    "practiceObjective": "Εξάσκησε αυτόν τον στόχο",
+    "otherActivities": "Άλλες δραστηριότητες",
+    "objectiveCircleComplete": "Αποστολή {index}: ολοκληρώθηκε",
+    "objectiveCircleUpNext": "Αποστολή {index}: επόμενη",
+    "useActivityImageAsChatBackground": "Χρήση εικόνας δραστηριότητας ως φόντο συνομιλίας",
+    "andCertifyIMeetTheMinimumAge": " και βεβαιώνω ότι είμαι τουλάχιστον 13 ετών ή της ελάχιστης απαιτούμενης ηλικίας στη χώρα μου, εάν αυτή είναι μεγαλύτερη.",
+    "filteredNetworkBlockedTitle": "Αυτό το δίκτυο μπλοκάρει το Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Αυτό το δίκτυο μπλοκάρει μέρος του Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Τι μπορώ να κάνω;",
+    "filteredNetworkPhoneAdvice": "Απενεργοποιήστε το Wi-Fi και χρησιμοποιήστε δεδομένα κινητής τηλεφωνίας.",
+    "filteredNetworkComputerAdvice": "Συνδεθείτε στο hotspot του τηλεφώνου σας αντί για αυτό το Wi-Fi.",
+    "filteredNetworkItHeading": "Για εκπαιδευτικούς και προσωπικό IT",
+    "filteredNetworkItBody": "Ζητήστε από την ομάδα IT σας να επιτρέψει αυτούς τους τομείς:",
+    "filteredNetworkAskForHelp": "Ζητήστε βοήθεια από το Pangea",
+    "filteredNetworkHelpExplanation": "Θα σας στείλουμε email για να σας βοηθήσουμε να λειτουργήσει το Pangea Chat σε αυτό το δίκτυο.",
+    "filteredNetworkHelpWaiting": "Το αίτημά σας θα σταλεί μόλις συνδεθείτε.",
+    "filteredNetworkHelpSent": "Στάλθηκε. Θα επικοινωνήσουμε μαζί σας μέσω email.",
+    "filteredNetworkHelpRefused": "Δεν ήταν δυνατή η αποστολή του αιτήματός σας. Παρακαλούμε στείλτε email στο support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Αυτό το δίκτυο μπλοκάρει τα βίντεο.",
+    "filteredNetworkImagesBlocked": "Αυτό το δίκτυο μπλοκάρει τις εικόνες.",
+    "filteredNetworkMapBlocked": "Αυτό το δίκτυο μπλοκάρει τον χάρτη.",
+    "callFullScreenTitle": "Να κουδουνίζει η κλήση σε πλήρη οθόνη",
+    "callFullScreenMessage": "Έγινε μια κλήση ενώ το Pangea Chat ήταν κλειστό, αλλά το τηλέφωνό σας μπορούσε να εμφανίσει μόνο μια μικρή ειδοποίηση για αυτήν. Επιτρέψτε τις κλήσεις πλήρους οθόνης, ώστε η επόμενη να κουδουνίζει σε ολόκληρη την οθόνη σας, ακόμα και όταν το τηλέφωνό σας είναι κλειδωμένο.",
+    "callMicrophoneTitle": "Χρησιμοποιήστε το μικρόφωνό σας για κλήσεις",
+    "callMicrophoneMessage": "Το Pangea Chat χρειάζεται το μικρόφωνό σας για κλήσεις, συμπεριλαμβανομένων των κλήσεων που απαντάτε από την οθόνη κλειδώματος.",
+    "callMicrophoneOffTitle": "Η κλήση σας δεν συνδέθηκε",
+    "callMicrophoneOffMessage": "Το Pangea Chat δεν μπορεί να χρησιμοποιήσει το μικρόφωνό σας. Πατήστε για να το ενεργοποιήσετε στις Ρυθμίσεις.",
+    "goalsCompletedOfTotal": "{earned} από {total} στόχους ολοκληρώθηκαν",
+    "goalsCompletedInLanguage": "Στόχοι που ολοκληρώθηκαν στα {language}",
+    "sessionXpTowardObjective": "{xp} XP σε αυτήν τη συνεδρία. Απομένουν {remaining} για την ολοκλήρωση του στόχου",
+    "mapCreditsLabel": "Συντελεστές χάρτη: Stadia Maps, OpenMapTiles και OpenStreetMap",
+    "activityLaunchFindingCourses": "Εύρεση των μαθημάτων σας…",
+    "activityLaunchCreatingRoom": "Δημιουργία της δραστηριότητάς σας…",
+    "activityLaunchOpeningRoom": "Άνοιγμα της δραστηριότητάς σας…",
+    "playWithOthers": "Παίξτε με άλλους",
+    "openRole": "Ανοιχτό: {role}",
+    "waitingFor": "Αναμονή {duration}",
+    "onlineInCourse": "{count} συνδεδεμένοι στο {course}",
+    "newCourseChat": "Νέα συνομιλία μαθήματος",
+    "customCourseStepDesc": "Ένα μάθημα είναι ένα σύνολο δραστηριοτήτων συνομιλίας που ακολουθούν το βιβλίο σας, για να κάνουν οι μαθητές σας μαζί ως εργασία για το σπίτι.",
+    "reopenAppToFinishSwitching": "Κλείστε εντελώς την εφαρμογή και ανοίξτε την ξανά για να ολοκληρώσετε την αλλαγή.",
+    "teamCode": "Κωδικός ομάδας",
+    "connectionOffline": "Είστε εκτός σύνδεσης. Το Pangea Chat θα επανασυνδεθεί όταν αποκατασταθεί η σύνδεσή σας.",
+    "connectionUnreachable": "Δεν είναι δυνατή η πρόσβαση στο Pangea Chat. Προσπαθώ ξανά…",
+    "connectionBackOnline": "Πάλι συνδεδεμένοι",
+    "missionDueDate": "Λήγει {date}, {time}",
+    "callNotificationsTitle": "Να χτυπούν οι κλήσεις",
+    "callNotificationsMessage": "Οι κλήσεις χτυπούν ως ειδοποιήσεις. Επιτρέψτε τις ειδοποιήσεις για να χτυπάει το τηλέφωνό σας για μια κλήση, ακόμα και όταν το Pangea Chat είναι κλειστό ή το τηλέφωνό σας είναι κλειδωμένο.",
+    "callNotificationsMissedMessage": "Μια κλήση ήρθε ενώ το Pangea Chat ήταν κλειστό, αλλά το τηλέφωνό σας δεν μπορούσε να χτυπήσει επειδή οι ειδοποιήσεις είναι απενεργοποιημένες. Επιτρέψτε τις ειδοποιήσεις για να χτυπήσει η επόμενη κλήση.",
+    "connectionPracticeVocab": "Εξασκήσου στο λεξιλόγιο όσο περιμένεις",
+    "offlinePracticeNote": "Εκτός σύνδεσης. Οι απαντήσεις σου θα ανέβουν όταν συνδεθείς ξανά.",
+    "offlinePracticeSavedNote": "Αποθηκεύτηκε σε αυτήν τη συσκευή. Το XP σου θα ανέβει όταν συνδεθείς ξανά.",
+    "offlinePracticeNothingSaved": "Δεν έχουν αποθηκευτεί αρκετά σε αυτήν τη συσκευή για εξάσκηση εκτός σύνδεσης. Δοκιμάστε ξανά όταν συνδεθείτε στο διαδίκτυο.",
+    "missionNumber": "Αποστολή {index}",
+    "xpToYourStar": "{xp} XP για το αστέρι σου",
+    "missionStarEarned": "Κέρδισες αστέρι!",
+    "xpFromChats": "Συνομιλίες {xp}",
+    "xpFromGoals": "Στόχοι {xp}",
+    "xpFromPractice": "Πρακτική {xp}",
+    "playMission": "Παίξε",
+    "wordCount": "{count, plural, =1{1 λέξη} other{{count} λέξεις}}",
+    "continueActivity": "Συνέχεια",
+    "noObjectiveActivitiesYet": "Δεν έχεις ολοκληρώσει ακόμα κάποια δραστηριότητα για αυτόν τον στόχο. Ξεκίνα μία από το μάθημά σου.",
+    "objectiveNotInYourCourses": "Αυτός ο στόχος δεν περιλαμβάνεται σε κανένα από τα μαθήματά σου.",
+    "objectiveActivityCount": "{count, plural, =0{Καμία δραστηριότητα ακόμα} =1{1 δραστηριότητα ολοκληρώθηκε} other{{count} δραστηριότητες ολοκληρώθηκαν}}",
+    "activityCompleted": "Ολοκληρώθηκε",
+    "completedTimes": "Ολοκληρώθηκε {count} φορές",
+    "classLocation": "Τοποθεσία μαθήματος",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Συνομιλία {xp}",
+    "xpIncludingGoals": "συμπεριλαμβανομένων {xp} από στόχους",
+    "missionOtherLanguageNotice": "Αυτή η αποστολή είναι από ένα μάθημα στα {language}. Η πρόοδός σας σε αυτήν μετράει μόνο όσο μαθαίνετε {language}.",
+    "missionLanguageMismatchDesc": "Αυτή η αποστολή είναι από ένα μάθημα στα {language}. Να αλλάξετε τη γλώσσα-στόχο σας σε {language};",
+    "xpBySkillTitle": "Ανά δεξιότητα",
+    "missionNextActivity": "Επόμενη δραστηριότητα",
+    "missionContinueActivity": "Συνέχιση δραστηριότητας",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Ολοκληρώθηκε σε αυτό το μάθημα ({num})",
+    "otherCoursesSessions": "Άλλα μαθήματα ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, κερδισμένα {xp} XP",
+    "currentMission": "Τρέχουσα αποστολή"
 }

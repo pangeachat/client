@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-05 12:30:49.585292",
+    "@@last_modified": "2026-10-22 09:50:28.936997",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -1549,11 +1549,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Eşzamanlanıyor… Lütfen bekleyin.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Sistem",
     "@systemTheme": {
         "type": "String",
@@ -2616,19 +2611,9 @@
     "@commandHint_roomupgrade": {},
     "checkList": "Kontrol listesi",
     "@checkList": {},
-    "synchronizingPleaseWaitCounter": " Senkronize ediliyor… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "previous": "Önceki",
     "otherPartyNotLoggedIn": "Diğer taraf şu anda giriş yapmadı ve bu nedenle mesaj alamaz!",
     "open": "Aç",
-    "waitingForServer": "Sunucu bekleniyor...",
     "newChatRequest": "📩 Yeni sohbet isteği",
     "contentNotificationSettings": "İçerik bildirim ayarları",
     "generalNotificationSettings": "Genel bildirim ayarları",
@@ -2732,7 +2717,6 @@
     "errorDisableIGCClassDesc": "Bu sohbetin bulunduğu kursta dilbilgisi yardımı devre dışı bırakılmıştır.",
     "error405Desc": "Lütfen Ana Menü > Öğrenme Ayarları'ndan dillerinizi ayarlayın.",
     "termsAndConditions": "Şartlar ve Koşullar",
-    "andCertifyIAmAtLeast13YearsOfAge": " ve en az 16 yaşında olduğumu onaylıyorum.",
     "error502504Desc": "Çeviri ve dilbilgisi araçları, Pangea botları güncellenirken yavaş veya kullanılamayabilir.",
     "error404Desc": "Pangea Bot bunun nasıl çevrileceğinden emin değil...",
     "errorPleaseRefresh": "Bunu inceliyoruz! Lütfen sayfayı yeniden yükleyin ve tekrar deneyin.",
@@ -3040,9 +3024,6 @@
     "why": "Neden?",
     "definition": "Tanım",
     "reportToTeacher": "Bu mesajı kime bildirmek istiyorsunuz?",
-    "reportMessageTitle": "{reportingUserId} kullanıcısı, {roomName} sohbetinde {reportedUserId} kullanıcısının mesajını bildirdi",
-    "reportMessageBody": "Mesaj: {reportedMessage}\nNeden: {reason}",
-    "noTeachersFound": "Bildirilmek üzere öğretmen bulunamadı",
     "trialExpiration": "Ücretsiz deneme süreniz {expiration} tarihinde sona eriyor",
     "freeTrialDesc": "Yeni kullanıcılar Pangea Chat'te bir hafta ücretsiz deneme süresi kazanır",
     "activateTrial": "Ücretsiz 7 Günlük Deneme",
@@ -3384,10 +3365,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -3822,10 +3799,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5072,35 +5045,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8058,11 +8002,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Etkinlik resmini sohbet arka planı olarak kullan",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Destek ile Sohbet Et",
     "@chatWithSupport": {
         "type": "String",
@@ -8083,8 +8022,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Yazma yardımını etkinleştir",
-    "autoIGCToolDescription": "Gönderilen mesajları hedef dile düzeltmek için Pangea Chat araçlarını otomatik olarak çalıştır.",
+    "autoIGCToolName": "Gönderimde otomatik kontrol",
+    "autoIGCToolDescription": "Gönder'e dokunduğunuzda mesajınızı hatalara karşı kontrol edin. Bu kapalıyken, bir mesajı kendiniz kontrol etmek için yazma yardım düğmesine dokunun.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9721,7 +9660,6 @@
     "activityLoadFailed": "Etkinlik yüklenemedi. Bağlantınızı kontrol edin ve tekrar deneyin.",
     "levelUpChip": "Seviye {level}!",
     "missingCourseOutline": "Bu kurs artık mevcut değil",
-    "missingCourseOutlineCta": "Bu kurs artık mevcut değil. Yeni bir kurs planı seçin.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9746,10 +9684,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10145,7 +10079,6 @@
     "constructLevelFlowers": "Çiçekler, ustalaşmış kelimeler",
     "filterAndSearch": "Filtrele ve ara",
     "participantsOfTotal": "{total} oyuncudan {filled} tanesi",
-    "mapAttributionLabel": "OpenStreetMap katılımcıları, telif hakkı ve lisans",
     "seeAll": "Tümünü gör",
     "seeAllSection": "Tüm {section} bölümünü gör",
     "showMoreOptionsHint": "daha fazla seçenek göster",
@@ -10263,25 +10196,126 @@
     "summaryFeedbackReceived": "Teşekkürler! Geri bildiriminiz alındı.",
     "summaryFeedbackFailed": "Geri bildiriminiz gönderilemedi. Lütfen tekrar deneyin.",
     "summaryFeedbackProcessing": "Geri bildiriminiz gönderiliyor ve özet güncelleniyor…",
-    "ssoNetworkBlockedTitle": "Giriş sitesine ulaşılamıyor",
-    "ssoNetworkBlockedDesc": "Bu ağ, giriş yapmanız için {provider} adresine ulaşmamızı engelliyor. Okul ve ofis Wi-Fi'ları genellikle bunu engeller. Bunun yerine e-posta ile kaydolabilir veya başka bir ağa geçip tekrar deneyebilirsiniz.",
-    "ssoTryAnyway": "Yine de dene",
-    "callTranscriptNotSubscribed": "{name} bu arama sırasında bir aboneliğe sahip değildi, bu nedenle konuşulanlar yazıya dökülmedi.",
     "callTranscriptTranscribing": "{name} adlı kullanıcının kaydı hala yazıya dökülüyor…",
     "callTranscriptSeekTo": "{time} konumundan oynat",
     "callTranscriptRecordings": "Kayıtlar",
     "callTranscriptFullCall": "Tüm arama",
     "callTranscriptPreparingRecording": "Tüm kayıt hazırlanıyor…",
     "callTranscriptNoRecording": "Tüm aramanın kaydı yok.",
-    "callTranscriptTranscribeButton": "Metne Çevir",
-    "callTranscriptAudioUnavailable": "{name} adlı kaydın indirilmesi mümkün olmadığından metne çevrilemedi.",
-    "callTranscriptChooseLanguage": "Hangi dil konuşuldu?",
-    "callTranscriptSubscribeForTranscription": "Metne çevirme için abone ol",
-    "unlockCallTranscript": "Çağrı dökümünü aç",
+    "callTranscriptNotSubscribed": "{name} bu arama sırasında bir aboneliğe sahip değildi, bu nedenle konuşulanlar yazıya dökülmedi.",
     "joinYourCourse": "Kursunuza katılın",
     "courseCodeJoinExplanation": "Giriş yapın veya kaydolun, kurs kodunuzu kullanarak sizi otomatik olarak kursunuza ekleyeceğiz.",
     "courseCodeLabel": "Kurs kodu",
     "courseCodeSaved": "{code} kurs kodu kaydedildi",
     "courseCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi kursunuza ekleyeceğiz.",
-    "missionDueDate": "{date}, {time} tarihinde bitiyor"
+    "moderationRefusedContactDetails": "Mesajınız gönderilemedi. Otomatik bir filtre telefon numarası gibi iletişim bilgileri buldu. Lütfen bunları kaldırın ve tekrar deneyin.",
+    "moderationRefusedProfanity": "Mesajınız gönderilemedi. Otomatik bir filtre sohbette izin vermediğimiz bir kelime buldu. Lütfen bunu değiştirin ve tekrar deneyin.",
+    "callTranscriptTranscribeButton": "Metne Çevir",
+    "callTranscriptAudioUnavailable": "{name} adlı kaydın indirilmesi mümkün olmadığından metne çevrilemedi.",
+    "callTranscriptChooseLanguage": "Hangi dil konuşuldu?",
+    "callTranscriptSubscribeForTranscription": "Metne çevirme için abone ol",
+    "unlockCallTranscript": "Çağrı dökümünü aç",
+    "activitySummaryUpdateFailed": "Bu özet güncellenemedi.",
+    "courseNotFound": "Kurs bulunamadı",
+    "askTeacherForNewCourse": "Öğretmeninizden yeni bir kurs seçmesini isteyin.",
+    "pickNewCoursePlan": "Yeni bir kurs planı seçin.",
+    "ssoNetworkBlockedTitle": "Giriş sitesine ulaşılamıyor",
+    "ssoNetworkBlockedDesc": "Bu ağ, giriş yapmanız için {provider} adresine ulaşmamızı engelliyor. Okul ve ofis Wi-Fi'ları genellikle bunu engeller. Bunun yerine e-posta ile kaydolabilir veya başka bir ağa geçip tekrar deneyebilirsiniz.",
+    "ssoTryAnyway": "Yine de dene",
+    "publicCoursesFilterTooltip": "Yalnızca herkesin katılabileceği kursları göster",
+    "restrictedCoursesFilterTooltip": "Yalnızca katılmak için izin almanız gereken kursları göster",
+    "viewImageLabel": "Resmi görüntüle",
+    "reportSent": "Rapor gönderildi",
+    "reportNotSent": "Raporunuz gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.",
+    "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın",
+    "learningObjective": "Öğrenim Hedefi",
+    "learningObjectives": "Öğrenim Hedefleri",
+    "missionNofM": "{count} görevden {index}. görev",
+    "xpTowardObjective": "Bu hedefe yönelik {threshold} XP'den {xp} XP",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Kurs tamamlandı!",
+    "courseCompleteDesc": "Bu kurstaki {count} hedefin tümünü tamamladın. Öğrendiklerini pekiştirmek için pratik yapmaya devam et.",
+    "practiceObjective": "Bu hedefi pratik et",
+    "otherActivities": "Diğer aktiviteler",
+    "objectiveCircleComplete": "Görev {index}: tamamlandı",
+    "objectiveCircleUpNext": "Görev {index}: sırada",
+    "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan",
+    "andCertifyIMeetTheMinimumAge": " ve en az 13 yaşında olduğumu veya ülkemde daha yüksekse gereken minimum yaşta olduğumu onaylıyorum.",
+    "filteredNetworkBlockedTitle": "Bu ağ Pangea Chat'i engelliyor",
+    "filteredNetworkPartlyBlockedTitle": "Bu ağ Pangea Chat'in bir kısmını engelliyor",
+    "filteredNetworkWhatCanIDo": "Ne yapabilirim?",
+    "filteredNetworkPhoneAdvice": "Wi-Fi'ı kapatın ve mobil veri kullanın.",
+    "filteredNetworkComputerAdvice": "Bu Wi-Fi yerine telefonunuzun internet paylaşımına bağlanın.",
+    "filteredNetworkItHeading": "Öğretmenler ve BT personeli için",
+    "filteredNetworkItBody": "BT ekibinizden şu alan adlarına izin vermesini isteyin:",
+    "filteredNetworkAskForHelp": "Pangea'dan yardım isteyin",
+    "filteredNetworkHelpExplanation": "Pangea Chat'i bu ağda çalıştırmanıza yardımcı olmak için size e-posta göndereceğiz.",
+    "filteredNetworkHelpWaiting": "İsteğiniz bağlandığınız anda gönderilecektir.",
+    "filteredNetworkHelpSent": "Gönderildi. E-posta yoluyla sizinle iletişime geçeceğiz.",
+    "filteredNetworkHelpRefused": "İsteğiniz gönderilemedi. Lütfen support@pangea.chat adresine e-posta gönderin.",
+    "filteredNetworkVideoBlocked": "Bu ağ videoları engelliyor.",
+    "filteredNetworkImagesBlocked": "Bu ağ görselleri engelliyor.",
+    "filteredNetworkMapBlocked": "Bu ağ haritayı engelliyor.",
+    "callFullScreenTitle": "Çağrıların tam ekranda çalmasına izin ver",
+    "callFullScreenMessage": "Pangea Chat kapalıyken bir çağrı geldi, ancak telefonunuz bunun için yalnızca küçük bir bildirim gösterebildi. Tam ekran çağrılara izin verin, böylece bir sonraki çağrı telefonunuz kilitli olsa bile tüm ekranınızda çalar.",
+    "callMicrophoneTitle": "Aramalar için mikrofonunuzu kullanın",
+    "callMicrophoneMessage": "Pangea Chat'in, kilit ekranından yanıtladığınız aramalar da dahil olmak üzere aramalar için mikrofonunuza erişmesi gerekiyor.",
+    "callMicrophoneOffTitle": "Aramanız bağlanmadı",
+    "callMicrophoneOffMessage": "Pangea Chat mikrofonunuzu kullanamıyor. Ayarlar'dan açmak için dokunun.",
+    "goalsCompletedOfTotal": "{total} hedeften {earned} tanesi tamamlandı",
+    "goalsCompletedInLanguage": "{language} dilinde tamamlanan hedefler",
+    "sessionXpTowardObjective": "Bu oturumda {xp} XP; hedefin tamamlanmasına {remaining} kaldı",
+    "mapCreditsLabel": "Harita bilgileri: Stadia Maps, OpenMapTiles ve OpenStreetMap",
+    "activityLaunchFindingCourses": "Kurslarınız bulunuyor…",
+    "activityLaunchCreatingRoom": "Etkinliğiniz oluşturuluyor…",
+    "activityLaunchOpeningRoom": "Etkinliğiniz açılıyor…",
+    "playWithOthers": "Başkalarıyla oyna",
+    "openRole": "Açık: {role}",
+    "waitingFor": "{duration} bekleniyor",
+    "onlineInCourse": "{count} kişi {course} içinde çevrimiçi",
+    "newCourseChat": "Yeni kurs sohbeti",
+    "customCourseStepDesc": "Bir kurs, öğrencilerinizin ödev olarak birlikte yapmaları için ders kitabınızı takip eden bir dizi konuşma etkinliğidir.",
+    "reopenAppToFinishSwitching": "Geçişi tamamlamak için uygulamayı tamamen kapatın ve tekrar açın.",
+    "teamCode": "Takım kodu",
+    "connectionOffline": "Çevrimdışısınız. Bağlantınız geri geldiğinde Pangea Chat yeniden bağlanacaktır.",
+    "connectionUnreachable": "Pangea Chat'e ulaşılamıyor. Tekrar deneniyor…",
+    "connectionBackOnline": "Tekrar çevrimiçi",
+    "missionDueDate": "{date}, {time} tarihinde bitiyor",
+    "callNotificationsTitle": "Çağrıların çalmasına izin ver",
+    "callNotificationsMessage": "Çağrılar bildirim olarak çalar. Pangea Chat kapalıyken veya telefonunuz kilitliyken bile bir çağrı için telefonunuzun çalması için bildirimlere izin verin.",
+    "callNotificationsMissedMessage": "Pangea Chat kapalıyken bir çağrı geldi, ancak bildirimler kapalı olduğu için telefonunuz çalamadı. Bir sonraki çağrının çalması için bildirimlere izin verin.",
+    "connectionPracticeVocab": "Beklerken kelime pratiği yapın",
+    "offlinePracticeNote": "Çevrimdışı. Geri döndüğünüzde cevaplarınız yüklenecek.",
+    "offlinePracticeSavedNote": "Bu cihaza kaydedildi. Çevrimiçi olduğunuzda XP'niz yüklenecek.",
+    "offlinePracticeNothingSaved": "Çevrimdışı pratik yapmak için bu cihaza yeterli veri kaydedilmemiş. Tekrar çevrimiçi olduğunuzda deneyin.",
+    "missionNumber": "Görev {index}",
+    "xpToYourStar": "Yıldızına {xp} XP kaldı",
+    "missionStarEarned": "Yıldız kazanıldı!",
+    "xpFromChats": "Sohbetler {xp}",
+    "xpFromGoals": "Hedefler {xp}",
+    "xpFromPractice": "Alıştırma {xp}",
+    "playMission": "Oyna",
+    "wordCount": "{count, plural, =1{1 kelime} other{{count} kelime}}",
+    "continueActivity": "Devam Et",
+    "noObjectiveActivitiesYet": "Bu hedef için henüz bir aktivite tamamlamadın. Kursundan birine başla.",
+    "objectiveNotInYourCourses": "Bu hedef kurslarından hiçbirinde yok.",
+    "objectiveActivityCount": "{count, plural, =0{Henüz aktivite yok} =1{1 aktivite oynandı} other{{count} aktivite oynandı}}",
+    "activityCompleted": "Tamamlandı",
+    "completedTimes": "{count} kez tamamlandı",
+    "classLocation": "Sınıf konumu",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Sohbet {xp}",
+    "xpIncludingGoals": "hedeflerden gelen {xp} dahil",
+    "missionOtherLanguageNotice": "Bu Görev, {language} dilindeki bir kurstan. Bu görevdeki ilerlemeniz yalnızca {language} öğrenirken sayılır.",
+    "missionLanguageMismatchDesc": "Bu Görev, {language} dilindeki bir kurstan. Hedef dilinizi {language} olarak değiştireyim mi?",
+    "xpBySkillTitle": "Becerilere göre",
+    "missionNextActivity": "Sonraki etkinlik",
+    "missionContinueActivity": "Etkinliğe devam et",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Bu kursta tamamlandı ({num})",
+    "otherCoursesSessions": "Diğer kurslar ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP kazanıldı",
+    "currentMission": "Mevcut görev"
 }

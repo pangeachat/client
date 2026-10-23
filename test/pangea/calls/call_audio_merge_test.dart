@@ -543,4 +543,46 @@ void main() {
       expect(out.samples[90000], 1000);
     });
   });
+
+  group('a call the learner moved between devices (client#9173)', () {
+    test('the moved-from track is cut where its successor began, and one '
+        "speaker's chain counts once", () {
+      // @a talked on device 1 for 1s, moved to device 2 at +500ms (device 1
+      // kept capturing its held silence -- here a tone, so the cut shows);
+      // @b talked throughout.
+      final a1 = monoWav(constantTone(48000, 1000), 48000);
+      final a2 = monoWav(constantTone(24000, 3000), 48000);
+      final b = monoWav(constantTone(72000, 2000), 48000);
+
+      final result = merge([
+        CallAudioMergeSource(
+          wav: a1,
+          fileStartSfuMs: t0,
+          senderId: '@a',
+          trimEndSfuMs: t0 + 500,
+        ),
+        src(a2, t0 + 500, '@a'),
+        src(b, t0, '@b'),
+      ]);
+      final out = decodeWav(result.wav);
+
+      // Before the move: device 1 and @b, over two speakers.
+      expect(out.samples[100], 1500); // (1000 + 2000) / 2
+      // After the move: device 1 is CUT, so only device 2 and @b.
+      expect(out.samples[24000], 2500); // (3000 + 2000) / 2, never + 1000
+      expect(out.samples[47999], 2500);
+      expect(
+        result.complete,
+        isTrue,
+        reason: 'three sources, two speakers: the whole call',
+      );
+    });
+
+    test('a call missing a speaker is still incomplete', () {
+      final a1 = monoWav(constantTone(48000, 1000), 48000);
+      final a2 = monoWav(constantTone(24000, 3000), 48000);
+      final result = merge([src(a1, t0, '@a'), src(a2, t0 + 500, '@a')]);
+      expect(result.complete, isFalse);
+    });
+  });
 }

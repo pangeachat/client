@@ -1244,6 +1244,11 @@ class TranscriptHalf {
   /// actually said. The duplicate is kept and declared instead of guessed at.
   final int deviceCount;
 
+  /// Which devices this speaker's half was written from, by id: what lets a
+  /// reader ask whether ONE device's stretch of a moved call (client#9173) has
+  /// a half yet, not only whether the speaker does.
+  final Set<String> deviceIds;
+
   /// Whether every stretch this account's devices handed to a sibling is inside
   /// a stretch one of its OTHER halves states it kept.
   ///
@@ -1273,6 +1278,7 @@ class TranscriptHalf {
     this.langCode,
     this.positionsMarked = false,
     this.deviceCount = 1,
+    this.deviceIds = const {},
     this.discardWasCovered = false,
     required this.arrival,
   });
@@ -1808,6 +1814,9 @@ class _AssembledHalf {
 
   /// Whether every discarded stretch among these devices is held by one of the
   /// others. See [TranscriptHalf.discardWasCovered].
+  /// The devices this half was assembled from, by id.
+  final Set<String> deviceIds;
+
   final bool discardWasCovered;
 
   const _AssembledHalf({
@@ -1816,6 +1825,7 @@ class _AssembledHalf {
     required this.clockAnchor,
     required this.positionsMarked,
     required this.deviceCount,
+    required this.deviceIds,
     required this.discardWasCovered,
     this.langCode,
   });
@@ -2120,6 +2130,11 @@ int _byMostSpeech(TranscriptCandidate a, TranscriptCandidate b) {
 /// in the words, and the wrong guess deletes speech somebody actually said.
 /// A visible duplicate is a duplicate somebody can count;
 /// [TranscriptHalf.deviceCount] is what says it is there.
+/// The devices a speaker's assembled half was written from, by id.
+Set<String> _deviceIdsOf(List<TranscriptCandidate> perDevice) => {
+  for (final candidate in perDevice) ?candidate.deviceId,
+};
+
 _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
   final found = perDevice.length;
 
@@ -2191,6 +2206,7 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
           : kept.map((candidate) => candidate.langCode).nonNulls.firstOrNull,
       positionsMarked: only?.positionsMarked ?? false,
       deviceCount: found,
+      deviceIds: _deviceIdsOf(perDevice),
       discardWasCovered: discardWasCovered,
     );
   }
@@ -2248,6 +2264,7 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
           .firstOrNull,
       positionsMarked: false,
       deviceCount: found,
+      deviceIds: _deviceIdsOf(perDevice),
       discardWasCovered: discardWasCovered,
     );
   }
@@ -2277,6 +2294,7 @@ _AssembledHalf _assembleDevices(List<TranscriptCandidate> perDevice) {
     // one writer that never made it leaves segments here nobody vouched for.
     positionsMarked: speaking.every((candidate) => candidate.positionsMarked),
     deviceCount: found,
+    deviceIds: _deviceIdsOf(perDevice),
     discardWasCovered: discardWasCovered,
   );
 }
@@ -2602,6 +2620,7 @@ CallTranscript assembleTranscript({
         // shown, and only the copies that supplied them may make it.
         positionsMarked: candidate.positionsMarked,
         deviceCount: candidate.deviceCount,
+        deviceIds: candidate.deviceIds,
         // Established across this sender's devices while they were all in hand,
         // and carried rather than re-derived: the half no longer holds the
         // extents it was worked out from, and a second derivation from a

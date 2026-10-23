@@ -1,3 +1,4 @@
+import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -17,15 +18,18 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 /// separate because the same account on two devices is a different scenario
 /// from two accounts. [importantStateEvents] mirrors the app client's set
 /// (client_manager.dart): other state types are not kept for a room that
-/// arrives by sync until it is fully loaded.
+/// arrives by sync until it is fully loaded. [httpClient] replaces the
+/// [FakeMatrixApi] for a test that answers some requests itself; it must
+/// still answer login, so forward everything else to a [FakeMatrixApi].
 Future<Client> getTestClient({
   String name = 'testclient',
   String deviceId = 'GHTYAJCE',
   Set<String>? importantStateEvents,
+  http.BaseClient? httpClient,
 }) async {
   final client = Client(
     name,
-    httpClient: FakeMatrixApi(),
+    httpClient: httpClient ?? FakeMatrixApi(),
     importantStateEvents: importantStateEvents,
     database: await MatrixSdkDatabase.init(
       'test',

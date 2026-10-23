@@ -588,10 +588,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@passwordHasBeenChanged": {
         "type": "String",
         "placeholders": {}
@@ -2070,8 +2066,6 @@
     "status": "རང་བཞིན་སྟེང་",
     "statusExampleMessage": "ཁྱེད་རང་དེ་སྐད་ཆ་གི་ཡོད་པས།",
     "submit": "བཀོལ་ཡོད་",
-    "synchronizingPleaseWait": "རང་བཞིན་སྤྱོད་ལོག་བྱེད་ནས། སྐབས་འདི་ལོག་འགྱོ་གི་འགྱོ་བ་འདུག།",
-    "synchronizingPleaseWaitCounter": "རང་བཞིན་སྤྱོད་ལོག་བྱེད་ནས། ({percentage}%)",
     "systemTheme": "ཚོད་རིམ",
     "theyDontMatch": "ཁོང་ཚོ་མི་རེད།",
     "theyMatch": "ཁོང་ཚོ་རེད།",
@@ -2262,7 +2256,6 @@
     "previous": "རྒྱབ་ལོག",
     "otherPartyNotLoggedIn": "གནད་སྡེབ་གཅིག་ལས་མི་ལོག་པ་ཡོད་མི་རེད། དེ་ལས་ཁོང་ཚོ་གནད་སྡེབ་འདི་ལས་འགྱོ་མི་ཚུལ།",
     "open": "གནང་",
-    "waitingForServer": "ལས་འགན་འདི་ལུ་དུས་འདི་འགྱོ་བའི་དུས།",
     "newChatRequest": "📩 གནད་སྡེབ་གསར་པ།",
     "contentNotificationSettings": "རང་སྤྱོད་འདི་ལས་ཁོངས་སྤྱོད་འབད་དགོས།",
     "generalNotificationSettings": "ལུས་སྤྱོད་འདི་ལས་ཁོངས་སྤྱོད་འབད་དགོས།",
@@ -2348,7 +2341,6 @@
     "errorDisableIGCClassDesc": "འདི་ལས་སྤྱོད་ནས་རྒྱུན་ལས་འབད་མེད།",
     "error405Desc": "Խնդրում ենք սահմանել ձեր լեզուները Մենյու գլխավոր > Ուսուցման կարգավորումներ բաժնում։",
     "termsAndConditions": "Պայմաններն ու դրույթները",
-    "andCertifyIAmAtLeast13YearsOfAge": "և վկայում եմ, որ ինձ առնվազն 16 տարեկան եմ։",
     "error502504Desc": "Թարգմանության և գրականության գործիքները կարող են դանդաղել կամ անհասանելի լինել, մինչ Պանգեա բոտերը լրացնում են տվյալները։",
     "error404Desc": "Պանգեա Բոտը չգիտի, թե ինչպես թարգմանել դա...",
     "errorPleaseRefresh": "Մենք աշխատում ենք դրա վրա։ Խնդրում ենք թարմացնել և փորձել նորից։",
@@ -2639,9 +2631,6 @@
     "total": "کل: ",
     "noDataFound": "کوئی ڈیٹا نہیں ملا",
     "reportToTeacher": "ཁྱེད་ཀྱང་འདི་ལ་འགྱོ་སྤྱོད་འདི་ལ་གནང་བ་སྤྱོད་ཀྱི་རེད།",
-    "reportMessageTitle": "{reportingUserId} འདི་ལ་འབྲེལ་བའི་ཚེས་གྲངས {reportedUserId} འདི་ལ་འབྲེལ་བའི་ཚེས་གྲངས {roomName} ལ་འབྲེལ་བའི་ཚེས་གྲངས",
-    "reportMessageBody": "ཚེས་གྲངས: {reportedMessage}\nལེགས་སྤྱོད: {reason}",
-    "noTeachersFound": "འདི་ལ་འགྱོ་སྤྱོད་འདི་ལ་འབྲེལ་བའི་སློབ་དཔོན་མེད།",
     "trialExpiration": "ཁྱེད་ཀྱང་གནང་བའི་སྤྱི་ཚེས {expiration} ལ་སྟེང་འགྱོའི་ཡོད།",
     "freeTrialDesc": "གསར་བའི་རོགས་མིང་ཚོས་སྤྱི་ཚེས་དུས་སུ་གནང་བའི་སྤྱི་ཚེས་གཅིག་ལ་སྤྱོད་ཚུལ།",
     "activateTrial": "རོགས་མིང་ཚོས་སྤྱི་ཚེས 7 ཉིན་ལ་སྤྱོད་ཚུལ།",
@@ -2919,7 +2908,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-10-05 12:30:34.887923",
+    "@@last_modified": "2026-10-22 09:50:07.925921",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3019,14 +3008,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@invitedBy": {
         "type": "String",
@@ -3413,10 +3394,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@newChatRequest": {
         "type": "String",
         "placeholders": {}
@@ -3764,10 +3741,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4942,35 +4915,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7100,11 +7044,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat with Support",
     "@chatWithSupport": {
         "type": "String",
@@ -7125,8 +7064,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Buka bantuan nulis",
-    "autoIGCToolDescription": "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.",
+    "autoIGCToolName": "སྐད་ཆ་བསྐུར་སྐབས་རང་འགུལ་ཞིབ་བཤེར།",
+    "autoIGCToolDescription": "ཁྱེད་ཀྱིས་སྐད་ཆ་བསྐུར་སྐབས་ནོར་འཁྲུལ་ཡོད་མེད་ཞིབ་བཤེར་བྱེད་པ། འདི་མེད་པའི་སྐབས་སུ་ཁྱེད་རང་གིས་སྐད་ཆ་ཞིག་ཞིབ་བཤེར་བྱེད་པར་ཡིག་རོགས་ཀྱི་ බොར་མནོན།",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9031,7 +8970,6 @@
     "activityLoadFailed": "Couldn't load the activity. Check your connection and try again.",
     "levelUpChip": "Level {level}!",
     "missingCourseOutline": "Ita course is no longer available",
-    "missingCourseOutlineCta": "Ita course is no longer available. Pick a new course plan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9056,10 +8994,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9455,7 +9389,6 @@
     "constructLevelFlowers": "མེ་ཏོག བྱང་ཆུབ་པའི་ཚིག",
     "filterAndSearch": "ཚགས་འདེམས་དང་འཚོལ་བཤེར།",
     "participantsOfTotal": "རྩེད་མཁན་ {total} ནང་ནས་ {filled}",
-    "mapAttributionLabel": "OpenStreetMap ལ་མཉམ་ཞུགས་བྱེད་མཁན་ཚོ། བདག་དབང་དང་ཆོག་མཆན།",
     "seeAll": "ཚང་མ་གཟིགས།",
     "seeAllSection": "{section} ཚང་མ་གཟིགས།",
     "showMoreOptionsHint": "འདེམས་ངོ་མང་ཙམ་བསྟན་",
@@ -9573,25 +9506,126 @@
     "summaryFeedbackReceived": "ཐུགས་རྗེ་ཆེ། ཁྱེད་ཀྱི་བསམ་འཆར་འབྱོར་སོང་།",
     "summaryFeedbackFailed": "ཁྱེད་ཀྱི་བསམ་འཆར་གཏོང་མ་ཐུབ། བསྐྱར་དུ་ཚོད་ལྟ་གནང་རོགས།",
     "summaryFeedbackProcessing": "ཁྱེད་ཀྱི་ལན་འདེབས་བསྐུར་བ་དང་སྙིང་བསྡུས་གསར་སྒྱུར་བྱེད་བཞིན་པ།",
-    "ssoNetworkBlockedTitle": "ནང་འཛུལ་དྲ་རྒྱ་འབྲེལ་མཐུད་མེད།",
-    "ssoNetworkBlockedDesc": "དྲ་རྒྱ་འདིས་ཁྱེད་རང་ནང་འཛུལ་བྱེད་པར་ {provider} དང་འབྲེལ་མཐུད་བྱེད་དུ་འཇུག་གི་མེད། སློབ་གྲྭ་དང་ལས་ཁུངས་ཀྱི་ཝའེ་ཧྥའེ་ཡིས་དེ་བཀག་སྡོམ་བྱེད་པ་རྒྱུན་ལྡན་རེད། ཁྱེད་ཀྱིས་དེ་བརྗེས་ནས་གློག་འཕྲིན་བརྒྱུད་ནས་ཐོ་འགོད་བྱེད་ཆོག་གམ་ཡང་ན་དྲ་རྒྱ་གཞན་ཞིག་ལ་བརྗེ་ནས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་ཆོག",
-    "ssoTryAnyway": "གང་ལྟར་ཚོད་ལྟ་བྱོས།",
-    "callTranscriptNotSubscribed": "འདི་ཉིད་སྐད་ཆ་ཤོད་རེས་བྱེད་སྐབས་ {name} ལ་ཐོ་འགོད་བྱས་མེད་པས། བཤད་པའི་སྐད་ཆ་དེ་དག་ཡིག་ཐོག་ཏུ་ཕབ་མེད།",
     "callTranscriptTranscribing": "{name} ནས་བླངས་པའི་སྐད་སྒྲ་ད་དུང་ཡིག་ཐོག་ཏུ་བསྒྱུར་བཞིན་འདུག",
     "callTranscriptSeekTo": "{time} ནས་འཁྲབ་པ།",
     "callTranscriptRecordings": "སྐད་སྒྲ་བླངས་པ།",
     "callTranscriptFullCall": "བསྐྱར་ཟློས་ཆ་ཚང་།",
     "callTranscriptPreparingRecording": "བསྐྱར་ཟློས་ཆ་ཚང་གྲ་སྒྲིག་བྱེད་བཞིན་པ།",
     "callTranscriptNoRecording": "བསྐྱར་ཟློས་ཆ་ཚང་མེད།",
-    "callTranscriptTranscribeButton": "ถอดความ",
-    "callTranscriptAudioUnavailable": "{name} ནས་ཉར་ཚགས་བྱས་པའི་སྒྲ་ཕབ་ཕབ་ལེན་བྱེད་མ་ཐུབ་པས་དེ་ལ་ཡིག་སྒྱུར་བྱེད་མ་ཐུབ།",
-    "callTranscriptChooseLanguage": "སྐད་ཡིག་གང་ཞིག་བཤད་པ་ཡིན་ནམ།",
-    "callTranscriptSubscribeForTranscription": "ཡིག་སྒྱུར་བྱེད་པར་ཐོ་འགོད་བྱེད་དགོས།",
-    "unlockCallTranscript": "ཁ་པར་གྱི་ཡིག་སྒྱུར་འབྱེད་པ།",
+    "callTranscriptNotSubscribed": "འདི་ཉིད་སྐད་ཆ་ཤོད་རེས་བྱེད་སྐབས་ {name} ལ་ཐོ་འགོད་བྱས་མེད་པས། བཤད་པའི་སྐད་ཆ་དེ་དག་ཡིག་ཐོག་ཏུ་ཕབ་མེད།",
     "joinYourCourse": "သင်တန်းသို့ဝင်ရောက်ပါ",
     "courseCodeJoinExplanation": "အကောင့်ဝင်ပါ သို့မဟုတ် စာရင်းသွင်းပါ၊ သင်၏သင်တန်းကုဒ်ကို အသုံးပြု၍ သင့်ကို သင်တန်းသို့ အလိုအလျောက်ထည့်သွင်းပေးပါမည်။",
     "courseCodeLabel": "သင်တန်းကုဒ်",
     "courseCodeSaved": "သင်တန်းကုဒ် {code} သိမ်းဆည်းပြီးပါပြီ",
     "courseCodeSavedExplanation": "စာရင်းသွင်းပါ သို့မဟုတ် အကောင့်ဝင်ပါ၊ သင့်ကို သင်တန်းသို့ ထည့်သွင်းပေးပါမည်။",
-    "missionDueDate": "{date}, {time} ལ་ཚང་དགོས།"
+    "moderationRefusedContactDetails": "ཁྱེད་ཀྱི་འཕྲིན་ཐུང་བསྐུར་མེད། རང་འགུལ་ཚགས་འདོན་མ་ལག་གིས་ཁ་པར་ཨང་གྲངས་ལྟ་བུའི་འབྲེལ་གཏུག་གི་ཞིབ་ཕྲ་རྙེད་སོང་། དེ་དག་བསུབ་ནས་བསྐྱར་དུ་ཚོད་ལྟ་གནང་རོགས།",
+    "moderationRefusedProfanity": "ཁྱེད་ཀྱི་འཕྲིན་ཐུང་བསྐུར་མེད། རང་འགུལ་ཚགས་འདོན་མ་ལག་གིས་ང་ཚོས་ཁ་བརྡའི་ནང་དུ་བཀག་པའི་ཚིག་ཅིག་རྙེད་སོང་། དེ་བསྒྱུར་ནས་བསྐྱར་དུ་ཚོད་ལྟ་གནང་རོགས།",
+    "callTranscriptTranscribeButton": "ถอดความ",
+    "callTranscriptAudioUnavailable": "{name} ནས་ཉར་ཚགས་བྱས་པའི་སྒྲ་ཕབ་ཕབ་ལེན་བྱེད་མ་ཐུབ་པས་དེ་ལ་ཡིག་སྒྱུར་བྱེད་མ་ཐུབ།",
+    "callTranscriptChooseLanguage": "སྐད་ཡིག་གང་ཞིག་བཤད་པ་ཡིན་ནམ།",
+    "callTranscriptSubscribeForTranscription": "ཡིག་སྒྱུར་བྱེད་པར་ཐོ་འགོད་བྱེད་དགོས།",
+    "unlockCallTranscript": "ཁ་པར་གྱི་ཡིག་སྒྱུར་འབྱེད་པ།",
+    "activitySummaryUpdateFailed": "སྙན་ཐོ་འདི་གསར་སྒྱུར་བྱེད་མ་ཐུབ།",
+    "courseNotFound": "སློབ་ཚན་མ་རྙེད།",
+    "askTeacherForNewCourse": "དགེ་རྒན་ལ་སློབ་ཚན་གསར་པ་ཞིག་འདེམས་དགོས་པར་ཞུ་བསྐུལ་བྱེད་ပါ။",
+    "pickNewCoursePlan": "སློབ་ཚན་གསར་པ་ཞིག་འདེམས་རོགས།",
+    "ssoNetworkBlockedTitle": "ནང་འཛུལ་དྲ་རྒྱ་འབྲེལ་མཐུད་མེད།",
+    "ssoNetworkBlockedDesc": "དྲ་རྒྱ་འདིས་ཁྱེད་རང་ནང་འཛུལ་བྱེད་པར་ {provider} དང་འབྲེལ་མཐུད་བྱེད་དུ་འཇུག་གི་མེད། སློབ་གྲྭ་དང་ལས་ཁུངས་ཀྱི་ཝའེ་ཧྥའེ་ཡིས་དེ་བཀག་སྡོམ་བྱེད་པ་རྒྱུན་ལྡན་རེད། ཁྱེད་ཀྱིས་དེ་བརྗེས་ནས་གློག་འཕྲིན་བརྒྱུད་ནས་ཐོ་འགོད་བྱེད་ཆོག་གམ་ཡང་ན་དྲ་རྒྱ་གཞན་ཞིག་ལ་བརྗེ་ནས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱེད་ཆོག",
+    "ssoTryAnyway": "གང་ལྟར་ཚོད་ལྟ་བྱོས།",
+    "publicCoursesFilterTooltip": "སུ་ཡང་ཞུགས་ཆོག་པའི་སློབ་ཚན་ཁོ་ན་བསྟན་པ།",
+    "restrictedCoursesFilterTooltip": "ཁྱེད་ཀྱིས་ཞུགས་རྒྱུར་རེ་བ་བྱེད་དགོས་པའི་སློབ་ཚན་ཁོ་ན་བསྟན་པ།",
+    "viewImageLabel": "པར་ལ་ལྟ་བ།",
+    "reportSent": "སྙན་ཞུ་བསྐུར་ཚར།",
+    "reportNotSent": "ཁྱེད་ཀྱི་སྙན་ཞུ་བསྐུར་མ་ཐུབ། དྲ་རྒྱ་ཞིབ་བཤེར་བྱས་ནས་བསྐྱར་དུ་ཚོད་ལྟ་བྱེད་རོགས།",
+    "reportPointerMessage": "{courseName}ནང་དུ་འཕྲིན་ཡིག་ཅིག་སྙན་ཞུ་བྱས་འདུག བདེ་འཇགས་ལ་གཟིགས།",
+    "learningObjective": "སློབ་སྦྱོང་གི་དམིགས་ཡུལ།",
+    "learningObjectives": "སློབ་སྦྱོང་གི་དམིགས་ཡུལ།",
+    "missionNofM": "ལས་འགན་ {index} བསྡོམས་ {count}",
+    "xpTowardObjective": "དམིགས་ཡུལ་འདིའི་ཆེད་དུ་ {threshold} ནང་ནས་ {xp} ཉམས་མྱོང་།",
+    "xpOfThreshold": "{threshold} ནང་ནས་ {xp} ཉམས་མྱོང་།",
+    "courseComplete": "སློབ་ཚན་ལེགས་འགྲུབ་བྱུང་།",
+    "courseCompleteDesc": "ཁྱེད་ཀྱིས་སློབ་ཚན་འདིའི་ནང་དུ་དམིགས་ཡུལ་ {count} ཚང་མ་ལེགས་འགྲུབ་བྱུང་འདུག སྦྱངས་པ་བྱས་ནས་སྦྱངས་པ་རྣམས་བརྟན་པོར་གནས་པར་བྱེད་དགོས།",
+    "practiceObjective": "དམིགས་ཡུལ་འདིར་སྦྱོང་བརྡར་བྱེད་པ།",
+    "otherActivities": "བྱེད་སྒོ་གཞན་དག",
+    "objectiveCircleComplete": "དམིགས་ཡུལ་ {index} ལེགས་འགྲུབ།",
+    "objectiveCircleUpNext": "དམིགས་ཡུལ་ {index} རྗེས་མ།",
+    "useActivityImageAsChatBackground": "བྱ་བའི་པར་དེ་ཁ་བརྡའི་རྒྱབ་ལྗོངས་སུ་བེད་སྤྱོད་པ།",
+    "andCertifyIMeetTheMinimumAge": "དང་ང་རང་ལོ་ ༡༣ ལོན་པ་དང་། ཡང་ན་ངའི་རྒྱལ་ཁབ་ཀྱི་བླང་བྱ་ལྟར་ན་དེ་ལས་མཐོ་བ་ཡོད་ཚེ་དེ་ལོན་ཡོད་པའི་ངོས་ལེན་བྱེད་ཀྱི་ཡོད།",
+    "filteredNetworkBlockedTitle": "དྲ་རྒྱ་འདིས་Pangea Chatབཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "filteredNetworkPartlyBlockedTitle": "དྲ་རྒྱ་འདིས་Pangea Chatགྱི་ཆ་ཤས་བཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "filteredNetworkWhatCanIDo": "ངས་ཅི་བྱེད་ཐུབ།",
+    "filteredNetworkPhoneAdvice": "Wi-Fiབཀར་ནས་བརྒྱུད་འཕྲིན་གྱི་དྲ་རྒྱ་བེད་སྤྱོད་གནང་རོགས།",
+    "filteredNetworkComputerAdvice": "Wi-Fiའདིའི་ཚབ་ཏུ་ཁྱེད་ཀྱི་ཁ་པར་གྱི་Hotspotདང་སྦྲེལ་མཐུད་གནང་རོགས།",
+    "filteredNetworkItHeading": "དགེ་རྒན་དང་ITལས་མི་ཚོའི་ཆེད།",
+    "filteredNetworkItBody": "ཁྱེད་ཀྱི་ITཚོགས་ཆུང་ལ་Domainའདི་དག་བཀག་འགོག་མི་བྱེད་པར་བཅུག་རོགས་ཞུ་དགོས།",
+    "filteredNetworkAskForHelp": "Pangeaལ་རོགས་རམ་ཞུ་དགོས།",
+    "filteredNetworkHelpExplanation": "Pangea Chatདྲ་རྒྱ་འདིའི་ཐོག་བེད་སྤྱོད་ཐུབ་པ་བྱེད་ཆེད་ང་ཚོས་ཁྱེད་ལ་གློག་འཕྲིན་བསྐུར་ཆོག",
+    "filteredNetworkHelpWaiting": "ཁྱེད་ཀྱི་རེ་བ་སྦྲེལ་མཐུད་བྱས་མ་ཐག་བསྐུར་ངེས།",
+    "filteredNetworkHelpSent": "བསྐུར་ཚར། ང་ཚོས་གློག་འཕྲིན་བརྒྱུད་ནས་འབྲེལ་བ་བྱེད་ངེས།",
+    "filteredNetworkHelpRefused": "ང་ཚོས་ཁྱེད་ཀྱི་རེ་བ་བསྐུར་མ་ཐུབ། གློག་འཕྲིན་support@pangea.chatལ་བསྐུར་རོགས།",
+    "filteredNetworkVideoBlocked": "དྲ་རྒྱ་འདིས་བརྙན་རིས་བཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "filteredNetworkImagesBlocked": "དྲ་རྒྱ་འདིས་པར་རིས་བཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "filteredNetworkMapBlocked": "དྲ་རྒྱ་འདིས་ས་ཁྲ་བཀག་འགོག་བྱེད་བཞིན་ཡོད།",
+    "callFullScreenTitle": "འབོད་པ་ཡོངས་ངོས་སུ་སྒྲ་གྲགས་སུ་འཇུག",
+    "callFullScreenMessage": "Pangea Chat བཀག་ཡོད་པའི་སྐབས་སུ་འབོད་པ་ཞིག་འབྱོར་ཡང་། ཁྱེད་ཀྱི་ཁ་པར་གྱིས་དེའི་ཆེད་དུ་བརྡ་ཐོ་ཆུང་ངུ་ཞིག་མ་གཏོགས་མངོན་མི་ཐུབ། འབོད་པ་ཡོངས་ངོས་སུ་སྒྲ་གྲགས་སུ་འཇུག་པར་ཆོག་པ་སྤྲོད་དང་། དེ་ནས་འབོད་པ་རྗེས་མ་དེ་ཁྱེད་ཀྱི་ཁ་པར་བཀག་ཡོད་པའི་སྐབས་སུའང་ཡོངས་ངོས་སུ་སྒྲ་གྲགས་པར་འགྱུར།",
+    "callMicrophoneTitle": "ཁ་པར་བརྒྱབ་ཆེད་དུ་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་བེད་སྤྱོད་གནང་།",
+    "callMicrophoneMessage": "Pangea Chat ལ་ཁ་པར་བརྒྱབ་ཆེད་དུ་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་དགོས། དེའི་ནང་དུ་བཀག་པའི་བརྡ་འཕྲིན་གྱི་ངོས་ནས་ལན་བརྒྱབ་པའི་ཁ་པར་ཡང་ཚུད་ཡོད།",
+    "callMicrophoneOffTitle": "ཁྱེད་ཀྱི་ཁ་པར་འབྲེལ་མཐུད་བྱུང་མེད།",
+    "callMicrophoneOffMessage": "Pangea Chat གྱིས་ཁྱེད་ཀྱི་སྒྲ་སྡུད་འཕྲུལ་ཆས་བེད་སྤྱོད་གནང་ཐུབ་ཀྱི་མེད། སྒྲིག་སྦྱོར་ནང་དུ་སྒྲ་སྡུད་འཕྲུལ་ཆས་འབྱེད་པར་མནོན།",
+    "goalsCompletedOfTotal": "དམིགས་ཡུལ་ {total} ནང་ནས་ {earned} ལེགས་འགྲུབ་བྱུང་།",
+    "goalsCompletedInLanguage": "{language} ནང་དུ་དམིགས་ཡུལ་ལེགས་འགྲུབ་བྱུང་།",
+    "sessionXpTowardObjective": "ཐེངས་འདིའི་ནང་ {xp} XP ཐོབ། དམིགས་ཡུལ་ལེགས་འགྲུབ་ཆེད་ད་དུང་ {remaining} དགོས།",
+    "mapCreditsLabel": "ផែនទីཡི་ཡོན་ཏན་: Stadia Maps, OpenMapTiles དང་ OpenStreetMap",
+    "activityLaunchFindingCourses": "ཁྱེད་ཀྱི་སློབ་ཚན་འཚོལ་བཞིན་པ།",
+    "activityLaunchCreatingRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་བཟོ་བཞིན་པ།",
+    "activityLaunchOpeningRoom": "ཁྱེད་ཀྱི་བྱེད་སྒོ་འབྱེད་བཞིན་པ།",
+    "playWithOthers": "གཞན་དང་མཉམ་དུ་རྩེད།",
+    "openRole": "ཁ་ཕྱེ།: {role}",
+    "waitingFor": "{duration}སྒུག་བཞིན་པ།",
+    "onlineInCourse": "{course}ནང་མི་གྲངས་{count}དྲ་ཐོག་ཏུ་ཡོད།",
+    "newCourseChat": "སློབ་ཚན་གསར་པའི་ཁ་བརྡ།",
+    "customCourseStepDesc": "སློབ་ཚན་ནི་ཁྱེད་ཀྱི་སློབ་དེབ་དང་མཐུན་པའི་ཁ་བརྡའི་བྱེད་སྒོ་ཁག་ཅིག་ཡིན་པ་དང་། དེ་ནི་ཁྱེད་ཀྱི་སློབ་མ་ཚོས་ལས་བྱ་ཡི་ཚུལ་དུ་མཉམ་དུ་བྱེད་ཆོག",
+    "reopenAppToFinishSwitching": "བརྗེ་བསྒྱུར་མཇུག་སྒྲིལ་བར་མཉེན་ཆས་ཡོངས་སུ་བརྒྱབ་ནས་བསྐྱར་དུ་འབྱེད་དགོས།",
+    "teamCode": "ཚོགས་པའི་ཨང་གྲངས།",
+    "connectionOffline": "ཁྱེད་རང་དྲ་རྒྱ་ནས་ཕྱིར་ཐོན་འདུག ཁྱེད་ཀྱི་དྲ་རྒྱ་སླར་གསོ་བྱུང་སྐབས་Pangea Chat སླར་གསོ་བྱེད་ངེས།",
+    "connectionUnreachable": "Pangea Chat ལ་འབྲེལ་གཏུགས་བྱེད་མི་ཐུབ། སླར་ཡང་འབྲེལ་གཏུགས་བྱེད་བཞིན་ཡོད།",
+    "connectionBackOnline": "དྲ་རྒྱ་སླར་གསོ་བྱུང་།",
+    "missionDueDate": "{date}, {time} ལ་ཚང་དགོས།",
+    "callNotificationsTitle": "འབོད་པ་རྣམས་གྲགས་སུ་འཇུག",
+    "callNotificationsMessage": "འབོད་པ་རྣམས་བརྡ་ཐོ་བཞིན་གྲགས་ཀྱི་ཡོད། བརྡ་ཐོ་རྣམས་ཆོག་མཆན་སྤྲོད་དགོས་པ་དེས་ཁྱེད་ཀྱི་ཁ་པར་ལ་འབོད་པ་ཡོང་སྐབས་གྲགས་པ་དང་། དེ་ཡང་ Pangea Chat བརྒྱབ་ཡོད་མེད་དང་ཁྱེད་ཀྱི་ཁ་པར་བཀག་ཡོད་མེད་ལ་མ་ལྟོས་པར་གྲགས་ཀྱི་ཡོད།",
+    "callNotificationsMissedMessage": "Pangea Chat བརྒྱབ་ཡོད་པའི་སྐབས་སུ་འབོད་པ་ཞིག་ཡོང་ཡོད་ཀྱང་། བརྡ་ཐོ་རྣམས་བཀག་ཡོད་པས་ཁྱེད་ཀྱི་ཁ་པར་གྲགས་ཐུབ་མེད། བརྡ་ཐོ་རྣམས་ཆོག་མཆན་སྤྲོད་དགོས་པ་དེས་འབོད་པ་རྗེས་མ་གྲགས་ཐུབ།",
+    "connectionPracticeVocab": "སྒུག་བཞིན་པའི་སྐབས་སུ་ཐ་སྙད་སྦྱོང་བརྡར་བྱེད་པ།",
+    "offlinePracticeNote": "དྲ་རྒྱ་མེད། ཁྱེད་ཀྱི་ལན་དྲ་རྒྱ་སླར་གསོ་བྱེད་སྐབས་འགོད་ངེས།",
+    "offlinePracticeSavedNote": "འཕྲུལ་ཆས་འདིའི་ནང་ཉར་ཚགས་བྱས་ཡོད། ཁྱེད་དྲ་རྒྱ་སླར་གསོ་བྱེད་སྐབས་ཁྱེད་ཀྱི་ཉམས་མྱོང་འགོད་ངེས།",
+    "offlinePracticeNothingSaved": "འཕྲུལ་ཆས་འདིའི་ནང་དྲ་རྒྱ་མེད་པར་སྦྱོང་བརྡར་བྱེད་པར་ཉར་ཚགས་བྱས་པ་འདང་ངེས་མི་འདུག ཁྱེད་དྲ་རྒྱ་དང་སྦྲེལ་རྗེས་བསྐྱར་དུ་ཚོད་ལྟ་བྱེད་རོགས།",
+    "missionNumber": "ལས་འགན་ {index}",
+    "xpToYourStar": "སྐར་མའི་བར་དུ་ {xp} XP",
+    "missionStarEarned": "སྐར་མ་ཐོབ་སོང་།",
+    "xpFromChats": "སྐད་ཆ་ {xp}",
+    "xpFromGoals": "དམིགས་ཡུལ་ {xp}",
+    "xpFromPractice": "སྦྱོང་བརྡར་ {xp}",
+    "playMission": "རྩེད་མོ་རྩེད།",
+    "wordCount": "{count, plural, =1{ཚིག་ ༡} other{ཚིག་ {count}}}",
+    "continueActivity": "མུ་མཐུད་བྱེད་སྒོ།",
+    "noObjectiveActivitiesYet": "ཁྱེད་ཀྱིས་ད་དུང་དམིགས་ཡུལ་འདིའི་ཆེད་དུ་བྱེད་སྒོ་གང་ཡང་མ་བསྒྲུབས། ཁྱེད་ཀྱི་སློབ་ཚན་ནས་གཅིག་འགོ་འཛུགས་བྱོས།",
+    "objectiveNotInYourCourses": "དམིགས་ཡུལ་འདི་ཁྱེད་ཀྱི་སློབ་ཚན་གང་གི་ནང་དུའང་མེད།",
+    "objectiveActivityCount": "{count, plural, =0{ད་དུང་བྱེད་སྒོ་མེད།} =1{བྱེད་སྒོ་ ༡ རྩེས་ཟིན།} other{བྱེད་སྒོ་ {count} རྩེས་ཟིན།}}",
+    "activityCompleted": "བསྒྲུབས་ཟིན།",
+    "completedTimes": "ཐེངས་ {count} བསྒྲུབས་ཟིན།",
+    "classLocation": "སློབ་ཁང་གི་གནས་ཡུལ།",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "བགྲོ་གླེང་ {xp}",
+    "xpIncludingGoals": "དམིགས་ཡུལ་ནས་ {xp} ཚུད་པ།",
+    "missionOtherLanguageNotice": "འདིའི་དམིགས་འབེན་ནི་ {language} ནང་གི་སློབ་ཚན་ཞིག་ཡིན། ཁྱེད་ཀྱི་ཡར་རྒྱས་དེ་ {language} སྦྱོང་བཞིན་པའི་སྐབས་སུ་མ་གཏོགས་བརྩི་བཞིན་མེད།",
+    "missionLanguageMismatchDesc": "འདིའི་དམིགས་འབེན་ནི་ {language} ནང་གི་སློབ་ཚན་ཞིག་ཡིན། ཁྱེད་ཀྱི་དམིགས་འབེན་གྱི་སྐད་ཡིག་ {language} ལ་བསྒྱུར་རམ།",
+    "xpBySkillTitle": "ནུས་རྩལ་གྱིས་",
+    "missionNextActivity": "བྱེད་སྒོ་རྗེས་མ།",
+    "missionContinueActivity": "བྱེད་སྒོ་མུ་མཐུད་བྱེད་པ།",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "སློབ་ཚན་འདིའི་ནང་ཚར་བ། ({num})",
+    "otherCoursesSessions": "སློབ་ཚན་གཞན་དག ({num})",
+    "activityXpStamp": "{xp} ཉམས་མྱོང་།",
+    "activityCompletedWithXp": "{completed}, {xp} ཉམས་མྱོང་ཐོབ་པ།",
+    "currentMission": "དམིགས་འབེན་ད་ལྟ་བ།"
 }

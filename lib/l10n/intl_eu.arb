@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-05 12:30:36.910252",
+    "@@last_modified": "2026-10-22 09:50:10.862856",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -1858,11 +1858,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sinkronizatzen… itxaron.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "tooManyRequestsWarning": "Eskaera gehiegi. Saiatu berriro geroago!",
     "@tooManyRequestsWarning": {
         "type": "String",
@@ -2632,17 +2627,6 @@
     "@roomNotificationSettings": {},
     "otherNotificationSettings": "Beste jakinarazpenen ezarpenak",
     "@otherNotificationSettings": {},
-    "waitingForServer": "Zerbitzariaren zain…",
-    "@waitingForServer": {},
-    "synchronizingPleaseWaitCounter": " Sinkronizatzen… (%{percentage})",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "notificationRuleInviteForMe": "Gonbidapena niretzat",
     "@notificationRuleInviteForMe": {},
     "notificationRuleInviteForMeDescription": "Erabiltzailea gela batera gonbidatzen dutenean jakinarazten du.",
@@ -2914,7 +2898,6 @@
     "errorDisableIGCClassDesc": "Gramatika laguntza desgaituta dago ikastaro honetan dagoen chat-entzat.",
     "error405Desc": "Mesedez, ezarri zure hizkuntzak Nagusien Menuko > Ikaskuntza Ezarpenetan.",
     "termsAndConditions": " Baldintzak eta Baldintzak",
-    "andCertifyIAmAtLeast13YearsOfAge": " eta ziurtatzen dut gutxienez 16 urte ditudala.",
     "error502504Desc": "Itzulpen eta gramatika tresnak motel edo erabilgarri ez egon daitezke Pangea botak eguneratzen direnean.",
     "error404Desc": "Pangea Botak ez du ziur nola itzuli hori...",
     "errorPleaseRefresh": "Begiratzen ari gara! Mesedez, kargatu berriro eta saiatu berriro.",
@@ -3222,9 +3205,6 @@
     "why": "Zergatik?",
     "definition": "Definizioa",
     "reportToTeacher": "Nori jakinarazi nahi diozu mezua hau?",
-    "reportMessageTitle": "{reportingUserId} erabiltzaileak {roomName} txataren mezua salatu du {reportedUserId} erabiltzailearen izenean",
-    "reportMessageBody": "Mezua: {reportedMessage}\nArrazoia: {reason}",
-    "noTeachersFound": "Ez da irakaslerik aurkitu salatzeko",
     "trialExpiration": "Zure proba-aldia {expiration} data amaitzen da",
     "freeTrialDesc": "Erabiltzaile berriek Pangea Chat-en aste bateko proba-aldia doan jasotzen dute",
     "activateTrial": "Proba Doakoa 7 Egun",
@@ -3701,10 +3681,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4951,35 +4927,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7937,11 +7884,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Erabili jarduera irudia txat atzeko plano gisa",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Txatatu Laguntzarekin",
     "@chatWithSupport": {
         "type": "String",
@@ -7962,8 +7904,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Idazteko laguntza aktibatu",
-    "autoIGCToolDescription": "Automatikoki exekutatu Pangea Chat tresnak helburu hizkuntzara bidalitako mezuak zuzentzeko.",
+    "autoIGCToolName": "Automatikoki egiaztatu bidaltzean",
+    "autoIGCToolDescription": "Egiaztatu zure mezuan akatsik dagoen bidali sakatzean. Desaktibatuta dagoenean, sakatu idazketa-laguntzako botoia mezu bat zuk zeuk egiaztatzeko.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9420,7 +9362,6 @@
     "activityLoadFailed": "Jarduera kargatzea ezin izan da. Begiratu zure konexioa eta saiatu berriro.",
     "levelUpChip": "Maila {level}!",
     "missingCourseOutline": "Ikastaro hau ez dago eskuragarri",
-    "missingCourseOutlineCta": "Ikastaro hau ez dago eskuragarri. Aukeratu ikastaro berri bat.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9445,10 +9386,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9844,7 +9781,6 @@
     "constructLevelFlowers": "Loreak, menderatutako hitzak",
     "filterAndSearch": "Iragazi eta bilatu",
     "participantsOfTotal": "{total} jokalarietatik {filled}",
-    "mapAttributionLabel": "OpenStreetMap-eko kolaboratzaileak, copyright eta lizentzia",
     "seeAll": "Ikusi guztiak",
     "seeAllSection": "Ikusi {section} guztiak",
     "showMoreOptionsHint": "aukera gehiago erakutsi",
@@ -9962,25 +9898,126 @@
     "summaryFeedbackReceived": "Eskerrik asko! Zure iritzia jaso dugu.",
     "summaryFeedbackFailed": "Ezin izan da zure iritzia bidali. Saiatu berriro, mesedez.",
     "summaryFeedbackProcessing": "Zure iritzia bidaltzen eta laburpena eguneratzen…",
-    "ssoNetworkBlockedTitle": "Saioa hasteko gunea eskuraezina",
-    "ssoNetworkBlockedDesc": "Sare honek ez digu uzten {provider} atzitzen saioa hasteko. Eskolako eta bulegoko Wi-Fi sareek askotan blokeatzen dute. Horren ordez, posta elektronikoarekin erregistra zaitezke, edo beste sare batera aldatu eta berriro saiatu.",
-    "ssoTryAnyway": "Dena den, saiatu",
-    "callTranscriptNotSubscribed": "{name} erabiltzaileak ez zuen harpidetzarik dei honetan, beraz, esandakoa ez zen transkribatu.",
     "callTranscriptTranscribing": "{name} grabazioa transkribatzen ari da oraindik…",
     "callTranscriptSeekTo": "Erreproduzitu {time}tik aurrera",
     "callTranscriptRecordings": "Grabazioak",
     "callTranscriptFullCall": "Dei osoa",
     "callTranscriptPreparingRecording": "Grabazio osoa prestatzen…",
     "callTranscriptNoRecording": "Dei osoaren grabaziorik ez.",
-    "callTranscriptTranscribeButton": "Transkribatu",
-    "callTranscriptAudioUnavailable": "{name} grabatutako grabazioa ezin izan da deskargatu, beraz, ezin izan da transkribatu.",
-    "callTranscriptChooseLanguage": "Zein hizkuntzatan hitz egin zen?",
-    "callTranscriptSubscribeForTranscription": "Harpidetu transkripziorako",
-    "unlockCallTranscript": "Desblokeatu deiaren transkripzioa",
+    "callTranscriptNotSubscribed": "{name} erabiltzaileak ez zuen harpidetzarik dei honetan, beraz, esandakoa ez zen transkribatu.",
     "joinYourCourse": "Sartu zure ikastaroan",
     "courseCodeJoinExplanation": "Hasi saioa edo eman izena, eta zure ikastaro-kodea erabiliko dugu automatikoki zure ikastarora gehitzeko.",
     "courseCodeLabel": "Ikastaro-kodea",
     "courseCodeSaved": "{code} ikastaro-kodea gordeta",
     "courseCodeSavedExplanation": "Eman izena edo hasi saioa eta zure ikastarora gehituko zaitugu.",
-    "missionDueDate": "{date}, {time}rako"
+    "moderationRefusedContactDetails": "Zure mezua ez da bidali. Iragazki automatiko batek harremanetarako datuak aurkitu ditu, hala nola telefono-zenbaki bat. Mesedez, kendu itzazu eta saiatu berriro.",
+    "moderationRefusedProfanity": "Zure mezua ez da bidali. Iragazki automatiko batek txatean onartzen ez dugun hitz bat aurkitu du. Mesedez, aldatu eta saiatu berriro.",
+    "callTranscriptTranscribeButton": "Transkribatu",
+    "callTranscriptAudioUnavailable": "{name} grabatutako grabazioa ezin izan da deskargatu, beraz, ezin izan da transkribatu.",
+    "callTranscriptChooseLanguage": "Zein hizkuntzatan hitz egin zen?",
+    "callTranscriptSubscribeForTranscription": "Harpidetu transkripziorako",
+    "unlockCallTranscript": "Desblokeatu deiaren transkripzioa",
+    "activitySummaryUpdateFailed": "Laburpen hau ezin izan da eguneratu.",
+    "courseNotFound": "Ikastaroa ez da aurkitu",
+    "askTeacherForNewCourse": "Eskatu irakasleari ikastaro berri bat aukeratzeko.",
+    "pickNewCoursePlan": "Aukeratu ikastaro-plan berri bat.",
+    "ssoNetworkBlockedTitle": "Saioa hasteko gunea eskuraezina",
+    "ssoNetworkBlockedDesc": "Sare honek ez digu uzten {provider} atzitzen saioa hasteko. Eskolako eta bulegoko Wi-Fi sareek askotan blokeatzen dute. Horren ordez, posta elektronikoarekin erregistra zaitezke, edo beste sare batera aldatu eta berriro saiatu.",
+    "ssoTryAnyway": "Dena den, saiatu",
+    "publicCoursesFilterTooltip": "Edonork bat egin dezakeen ikastaroak bakarrik erakutsi",
+    "restrictedCoursesFilterTooltip": "Bat egiteko eskatu behar duzun ikastaroak bakarrik erakutsi",
+    "viewImageLabel": "Ikusi irudia",
+    "reportSent": "Txostena bidali da",
+    "reportNotSent": "Ezin izan da zure txostena bidali. Egiaztatu konexioa eta saiatu berriro.",
+    "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna",
+    "learningObjective": "Ikaskuntza-helburua",
+    "learningObjectives": "Ikaskuntza-helburuak",
+    "missionNofM": "{count} misiotik {index}. misioa",
+    "xpTowardObjective": "{threshold}eko helburu honetarako {xp} puntu",
+    "xpOfThreshold": "{xp} / {threshold} puntu",
+    "courseComplete": "Ikastaroa osatuta!",
+    "courseCompleteDesc": "Ikastaro honetako {count} helburu guztiak osatu dituzu. Jarraitu praktikatzen ikasitakoari eusteko.",
+    "practiceObjective": "Helburu hau praktikatu",
+    "otherActivities": "Beste jarduera batzuk",
+    "objectiveCircleComplete": "Misioa {index}: osatuta",
+    "objectiveCircleUpNext": "Misioa {index}: hurrengoa",
+    "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa",
+    "andCertifyIMeetTheMinimumAge": " eta ziurtatzen dut gutxienez 13 urte ditudala, edo nire herrialdean eskatzen den gutxieneko adina, hori handiagoa bada.",
+    "filteredNetworkBlockedTitle": "Sare honek Pangea Chat blokeatzen du",
+    "filteredNetworkPartlyBlockedTitle": "Sare honek Pangea Chaten zati bat blokeatzen du",
+    "filteredNetworkWhatCanIDo": "Zer egin dezaket?",
+    "filteredNetworkPhoneAdvice": "Desaktibatu Wi-Fi eta erabili datu mugikorrak horren ordez.",
+    "filteredNetworkComputerAdvice": "Konektatu zure telefonoaren hotspotera Wi-Fi honen ordez.",
+    "filteredNetworkItHeading": "Irakasle eta informatika-langileentzat",
+    "filteredNetworkItBody": "Eskatu zure informatika-taldeari domeinu hauek baimentzeko:",
+    "filteredNetworkAskForHelp": "Eskatu laguntza Pangea-ri",
+    "filteredNetworkHelpExplanation": "Mezu elektroniko bat bidaliko dizugu Pangea Chat sare honetan funtzionatzen laguntzeko.",
+    "filteredNetworkHelpWaiting": "Zure eskaera konektatu bezain laster bidaliko da.",
+    "filteredNetworkHelpSent": "Bidalita. Posta elektronikoz jarriko gara harremanetan.",
+    "filteredNetworkHelpRefused": "Ezin izan dugu zure eskaera bidali. Mesedez, bidali mezu elektroniko bat support@pangea.chat helbidera.",
+    "filteredNetworkVideoBlocked": "Sare honek bideoak blokeatzen ditu.",
+    "filteredNetworkImagesBlocked": "Sare honek irudiak blokeatzen ditu.",
+    "filteredNetworkMapBlocked": "Sare honek mapa blokeatzen du.",
+    "callFullScreenTitle": "Deiak pantaila osoan erakutsi",
+    "callFullScreenMessage": "Dei bat jaso duzu Pangea Chat itxita zegoen bitartean, baina telefonoak jakinarazpen txiki bat baino ezin izan du erakutsi. Baimendu pantaila osoko deiak, hurrengoa pantaila osoan ager dadin, telefonoa blokeatuta egon arren.",
+    "callMicrophoneTitle": "Erabili mikrofonoa deietarako",
+    "callMicrophoneMessage": "Pangea Chat-ek zure mikrofonoa behar du deietarako, blokeo-pantailatik erantzuten dituzun deiak barne.",
+    "callMicrophoneOffTitle": "Zure deia ez da konektatu",
+    "callMicrophoneOffMessage": "Pangea Chat-ek ezin du zure mikrofonoa erabili. Sakatu Ezarpenetan aktibatzeko.",
+    "goalsCompletedOfTotal": "{earned} helburu osatuta {total} guztiratik",
+    "goalsCompletedInLanguage": "{language} hizkuntzan osatutako helburuak",
+    "sessionXpTowardObjective": "{xp} XP saio honetan; {remaining} gehiagorekin helburua osatuko duzu",
+    "mapCreditsLabel": "Maparen kredituak: Stadia Maps, OpenMapTiles eta OpenStreetMap",
+    "activityLaunchFindingCourses": "Zure ikastaroak bilatzen…",
+    "activityLaunchCreatingRoom": "Zure jarduera sortzen…",
+    "activityLaunchOpeningRoom": "Zure jarduera irekitzen…",
+    "playWithOthers": "Besteekin jolastu",
+    "openRole": "Ireki: {role}",
+    "waitingFor": "Zain {duration}",
+    "onlineInCourse": "{count} linean {course} ikastaroan",
+    "newCourseChat": "Ikastaro-txat berria",
+    "customCourseStepDesc": "Ikastaro bat elkarrizketa-jardueren multzo bat da, zure testuliburua jarraitzen duena, zure ikasleek elkarrekin etxeko lan gisa egiteko.",
+    "reopenAppToFinishSwitching": "Itxi aplikazioa erabat eta ireki berriro aldatzen amaitzeko.",
+    "teamCode": "Talde-kodea",
+    "connectionOffline": "Lineaz kanpo zaude. Pangea Chat berriro konektatuko da konexioa berreskuratzean.",
+    "connectionUnreachable": "Ezin da Pangea Chat-era iritsi. Berriro saiatzen...",
+    "connectionBackOnline": "Berriro konektatuta",
+    "missionDueDate": "{date}, {time}rako",
+    "callNotificationsTitle": "Deiek jo dezatela",
+    "callNotificationsMessage": "Deiek jakinarazpen gisa jotzen dute. Baimendu jakinarazpenak, zure telefonoak dei bat jasotzean jo dezan, Pangea Chat itxita egon arren edo telefonoa blokeatuta egon arren.",
+    "callNotificationsMissedMessage": "Dei bat jaso da Pangea Chat itxita zegoen bitartean, baina zure telefonoak ezin izan du jo, jakinarazpenak desaktibatuta zeudelako. Baimendu jakinarazpenak hurrengo deiak jo dezan.",
+    "connectionPracticeVocab": "Praktikatu hiztegia itxaroten duzun bitartean",
+    "offlinePracticeNote": "Lineaz kanpo. Zure erantzunak igoko dira berriro konektatzen zarenean.",
+    "offlinePracticeSavedNote": "Gailu honetan gordeta. Zure XP igoko da berriro konektatzen zarenean.",
+    "offlinePracticeNothingSaved": "Ez dago nahikoa gordeta gailu honetan lineaz kanpo praktikatzeko. Saiatu berriro konektatuta zaudenean.",
+    "missionNumber": "Misioa {index}",
+    "xpToYourStar": "{xp} XP zure izarrerako",
+    "missionStarEarned": "Izarra irabazi da!",
+    "xpFromChats": "Txatak {xp}",
+    "xpFromGoals": "Helburuak {xp}",
+    "xpFromPractice": "Praktika {xp}",
+    "playMission": "Jolastu",
+    "wordCount": "{count, plural, =1{hitz 1} other{{count} hitz}}",
+    "continueActivity": "Jarraitu",
+    "noObjectiveActivitiesYet": "Oraindik ez duzu helburu honetarako jarduerarik osatu. Hasi bat zure ikastaroan.",
+    "objectiveNotInYourCourses": "Helburu hau ez dago zure ikastaroetako batean ere.",
+    "objectiveActivityCount": "{count, plural, =0{Oraindik jarduerarik ez} =1{jarduera 1 jokatu da} other{{count} jarduera jokatu dira}}",
+    "activityCompleted": "Osatuta",
+    "completedTimes": "{count} aldiz osatuta",
+    "classLocation": "Klasearen kokapena",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Elkarrizketa {xp}",
+    "xpIncludingGoals": "helburuetatik {xp} barne",
+    "missionOtherLanguageNotice": "Misio hau {language} ikastaro batekoa da. Bertan egindako aurrerapenak {language} ikasten ari zaren bitartean bakarrik zenbatuko dira.",
+    "missionLanguageMismatchDesc": "Misio hau {language} ikastaro batekoa da. Aldatu zure xede-hizkuntza {language} hizkuntzara?",
+    "xpBySkillTitle": "Trebetasunaren arabera",
+    "missionNextActivity": "Hurrengo jarduera",
+    "missionContinueActivity": "Jarraitu jarduerarekin",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Ikastaro honetan amaituta ({num})",
+    "otherCoursesSessions": "Beste ikastaro batzuk ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP irabazi dira",
+    "currentMission": "Uneko misioa"
 }

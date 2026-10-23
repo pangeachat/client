@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:48.122288",
+    "@@last_modified": "2026-10-22 09:50:27.530524",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -1750,11 +1750,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Synkroniserar… Var god vänta.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "showPassword": "Visa lösenord",
     "@showPassword": {
         "type": "String",
@@ -2380,7 +2375,6 @@
     "overview": "Översikt",
     "passwordRecoverySettings": "Inställningar för återställning av lösenord",
     "sendImages": "Skicka {count} bild",
-    "synchronizingPleaseWaitCounter": "Synkroniserar… ({percentage}%)",
     "invitedBy": "📩 Inbjuden av {user}",
     "knock": "Knacka",
     "knocking": "Knackar",
@@ -2444,7 +2438,6 @@
     "previous": "Föregående",
     "otherPartyNotLoggedIn": "Den andra parten är för närvarande inte inloggad och kan därför inte ta emot meddelanden!",
     "open": "Öppna",
-    "waitingForServer": "Väntar på server...",
     "newChatRequest": "📩 Ny chattförfrågan",
     "contentNotificationSettings": "Inställningar för innehållsaviseringar",
     "generalNotificationSettings": "Allmänna aviseringar",
@@ -2548,7 +2541,6 @@
     "errorDisableIGCClassDesc": "Grammatikhjälp är avstängd för kursen som denna chatt tillhör.",
     "error405Desc": "Vänligen ställ in dina språk i Huvudmeny > Inlärningsinställningar.",
     "termsAndConditions": "Villkor",
-    "andCertifyIAmAtLeast13YearsOfAge": " och intygar att jag är minst 16 år gammal.",
     "error502504Desc": "Översättnings- och grammatverktyg kan vara långsamma eller otillgängliga medan Pangea-botar hänger med.",
     "error404Desc": "Pangea-boten är inte säker på hur den ska översätta det...",
     "errorPleaseRefresh": "Vi undersöker det! Vänligen ladda om och prova igen.",
@@ -2856,9 +2848,6 @@
     "why": "Varför?",
     "definition": "Definition",
     "reportToTeacher": "Vem vill du rapportera detta meddelande till?",
-    "reportMessageTitle": "{reportingUserId} har rapporterat ett meddelande från {reportedUserId} i chatten {roomName}",
-    "reportMessageBody": "Meddelande: {reportedMessage}\nOrsak: {reason}",
-    "noTeachersFound": "Inga lärare hittades att rapportera till",
     "trialExpiration": "Din gratis provperiod löper ut den {expiration}",
     "freeTrialDesc": "Nya användare får en veckas gratis provperiod av Pangea Chat",
     "activateTrial": "Gratis 7-dagars provperiod",
@@ -3300,14 +3289,6 @@
             }
         }
     },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@invitedBy": {
         "type": "String",
         "placeholders": {
@@ -3601,10 +3582,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -4039,10 +4016,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5289,35 +5262,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8275,11 +8219,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chatta med support",
     "@chatWithSupport": {
         "type": "String",
@@ -8300,8 +8239,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Aktivera skrivhjälp",
-    "autoIGCToolDescription": "Kör automatiskt Pangea Chat-verktyg för att korrigera skickade meddelanden till målspråket.",
+    "autoIGCToolName": "Autokontroll vid sändning",
+    "autoIGCToolDescription": "Kontrollera ditt meddelande efter misstag när du trycker på skicka. När detta är avstängt, tryck på skrivhjälpsknappen för att själv kontrollera ett meddelande.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9938,7 +9877,6 @@
     "activityLoadFailed": "Kunde inte ladda aktiviteten. Kontrollera din anslutning och försök igen.",
     "levelUpChip": "Nivå {level}!",
     "missingCourseOutline": "Denna kurs är inte längre tillgänglig",
-    "missingCourseOutlineCta": "Denna kurs är inte längre tillgänglig. Välj en ny kursplan.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9963,10 +9901,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10362,7 +10296,6 @@
     "constructLevelFlowers": "Blommor, ord du kan",
     "filterAndSearch": "Filtrera och sök",
     "participantsOfTotal": "{filled} av {total} spelare",
-    "mapAttributionLabel": "OpenStreetMap-bidragsgivare, upphovsrätt och licens",
     "seeAll": "Visa alla",
     "seeAllSection": "Visa alla {section}",
     "showMoreOptionsHint": "visa fler alternativ",
@@ -10480,25 +10413,126 @@
     "summaryFeedbackReceived": "Tack! Vi har mottagit din feedback.",
     "summaryFeedbackFailed": "Kunde inte skicka din feedback. Försök igen.",
     "summaryFeedbackProcessing": "Skickar din feedback och uppdaterar sammanfattningen…",
-    "ssoNetworkBlockedTitle": "Inloggningssidan kan inte nås",
-    "ssoNetworkBlockedDesc": "Det här nätverket hindrar oss från att nå {provider} för att logga in dig. Skol- och kontors-Wi-Fi blockerar ofta det. Du kan registrera dig med e-post istället, eller byta till ett annat nätverk och försöka igen.",
-    "ssoTryAnyway": "Försök ändå",
-    "callTranscriptNotSubscribed": "{name} hade ingen prenumeration under det här samtalet, så det som sades transkriberades inte.",
     "callTranscriptTranscribing": "Transkriberar fortfarande inspelningen från {name}…",
     "callTranscriptSeekTo": "Spela från {time}",
     "callTranscriptRecordings": "Inspelningar",
     "callTranscriptFullCall": "Hela samtalet",
     "callTranscriptPreparingRecording": "Förbereder hela inspelningen…",
     "callTranscriptNoRecording": "Ingen inspelning av hela samtalet.",
-    "callTranscriptTranscribeButton": "Transkribera",
-    "callTranscriptAudioUnavailable": "Den sparade inspelningen från {name} kunde inte laddas ner, så den kunde inte transkriberas.",
-    "callTranscriptChooseLanguage": "Vilket språk talades?",
-    "callTranscriptSubscribeForTranscription": "Prenumerera för transkription",
-    "unlockCallTranscript": "Lås upp samtalstranskription",
+    "callTranscriptNotSubscribed": "{name} hade ingen prenumeration under det här samtalet, så det som sades transkriberades inte.",
     "joinYourCourse": "Gå med i din kurs",
     "courseCodeJoinExplanation": "Logga in eller registrera dig, så använder vi din kurskod för att automatiskt lägga till dig i din kurs.",
     "courseCodeLabel": "Kurskod",
     "courseCodeSaved": "Kurskod {code} sparad",
     "courseCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig i din kurs.",
-    "missionDueDate": "Förfaller {date}, {time}"
+    "moderationRefusedContactDetails": "Ditt meddelande skickades inte. Ett automatiskt filter hittade kontaktuppgifter, som ett telefonnummer. Ta bort dem och försök igen.",
+    "moderationRefusedProfanity": "Ditt meddelande skickades inte. Ett automatiskt filter hittade ett ord som vi inte tillåter i chatten. Ändra det och försök igen.",
+    "callTranscriptTranscribeButton": "Transkribera",
+    "callTranscriptAudioUnavailable": "Den sparade inspelningen från {name} kunde inte laddas ner, så den kunde inte transkriberas.",
+    "callTranscriptChooseLanguage": "Vilket språk talades?",
+    "callTranscriptSubscribeForTranscription": "Prenumerera för transkription",
+    "unlockCallTranscript": "Lås upp samtalstranskription",
+    "activitySummaryUpdateFailed": "Denna sammanfattning kunde inte uppdateras.",
+    "courseNotFound": "Kursen hittades inte",
+    "askTeacherForNewCourse": "Be din lärare att välja en ny kurs.",
+    "pickNewCoursePlan": "Välj en ny kursplan.",
+    "ssoNetworkBlockedTitle": "Inloggningssidan kan inte nås",
+    "ssoNetworkBlockedDesc": "Det här nätverket hindrar oss från att nå {provider} för att logga in dig. Skol- och kontors-Wi-Fi blockerar ofta det. Du kan registrera dig med e-post istället, eller byta till ett annat nätverk och försöka igen.",
+    "ssoTryAnyway": "Försök ändå",
+    "publicCoursesFilterTooltip": "Visa endast kurser som alla kan gå med i",
+    "restrictedCoursesFilterTooltip": "Visa endast kurser du måste be om att få gå med i",
+    "viewImageLabel": "Visa bild",
+    "reportSent": "Rapport skickad",
+    "reportNotSent": "Din rapport kunde inte skickas. Kontrollera din anslutning och försök igen.",
+    "reportPointerMessage": "Ett meddelande rapporterades i {courseName} – se Säkerhet",
+    "learningObjective": "Lärandemål",
+    "learningObjectives": "Lärandemål",
+    "missionNofM": "Uppdrag {index} av {count}",
+    "xpTowardObjective": "{xp} av {threshold} XP för detta mål",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Kursen är klar!",
+    "courseCompleteDesc": "Du har slutfört alla {count} mål i den här kursen. Fortsätt öva för att behålla det du har lärt dig.",
+    "practiceObjective": "Öva på detta mål",
+    "otherActivities": "Andra aktiviteter",
+    "objectiveCircleComplete": "Uppdrag {index}: slutfört",
+    "objectiveCircleUpNext": "Uppdrag {index}: nästa",
+    "useActivityImageAsChatBackground": "Använd aktivitetsbild som chattbakgrund",
+    "andCertifyIMeetTheMinimumAge": " och intygar att jag är minst 13 år gammal, eller den minimiålder som krävs i mitt land om den är högre.",
+    "filteredNetworkBlockedTitle": "Detta nätverk blockerar Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Detta nätverk blockerar delar av Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Vad kan jag göra?",
+    "filteredNetworkPhoneAdvice": "Stäng av Wi-Fi och använd mobildata istället.",
+    "filteredNetworkComputerAdvice": "Anslut till telefonens hotspot istället för detta Wi-Fi.",
+    "filteredNetworkItHeading": "För lärare och IT-personal",
+    "filteredNetworkItBody": "Be ditt IT-team att tillåta dessa domäner:",
+    "filteredNetworkAskForHelp": "Be Pangea om hjälp",
+    "filteredNetworkHelpExplanation": "Vi skickar ett e-postmeddelande till dig för att hjälpa dig att få Pangea Chat att fungera på detta nätverk.",
+    "filteredNetworkHelpWaiting": "Din förfrågan skickas så snart du är ansluten.",
+    "filteredNetworkHelpSent": "Skickat. Vi hör av oss via e-post.",
+    "filteredNetworkHelpRefused": "Vi kunde inte skicka din förfrågan. Vänligen mejla support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Detta nätverk blockerar videor.",
+    "filteredNetworkImagesBlocked": "Detta nätverk blockerar bilder.",
+    "filteredNetworkMapBlocked": "Detta nätverk blockerar kartan.",
+    "callFullScreenTitle": "Låt samtal ringa i helskärm",
+    "callFullScreenMessage": "Ett samtal kom in när Pangea Chat var stängt, men din telefon kunde bara visa en liten notis för det. Tillåt helskärmssamtal så att nästa samtal ringer på hela skärmen, även när din telefon är låst.",
+    "callMicrophoneTitle": "Använd din mikrofon för samtal",
+    "callMicrophoneMessage": "Pangea Chat behöver din mikrofon för samtal, inklusive samtal du svarar på från låsskärmen.",
+    "callMicrophoneOffTitle": "Ditt samtal kopplades inte upp",
+    "callMicrophoneOffMessage": "Pangea Chat kan inte använda din mikrofon. Tryck för att aktivera den i Inställningar.",
+    "goalsCompletedOfTotal": "{earned} av {total} mål slutförda",
+    "goalsCompletedInLanguage": "Mål slutförda på {language}",
+    "sessionXpTowardObjective": "{xp} XP denna session; {remaining} mer slutför målet",
+    "mapCreditsLabel": "Kartkrediter: Stadia Maps, OpenMapTiles och OpenStreetMap",
+    "activityLaunchFindingCourses": "Hittar dina kurser…",
+    "activityLaunchCreatingRoom": "Skapar din aktivitet…",
+    "activityLaunchOpeningRoom": "Öppnar din aktivitet…",
+    "playWithOthers": "Spela med andra",
+    "openRole": "Öppen: {role}",
+    "waitingFor": "Väntar {duration}",
+    "onlineInCourse": "{count} online i {course}",
+    "newCourseChat": "Ny kurschatt",
+    "customCourseStepDesc": "En kurs är en uppsättning konversationsaktiviteter som följer din lärobok, för dina elever att göra tillsammans som läxa.",
+    "reopenAppToFinishSwitching": "Stäng appen helt och öppna den igen för att slutföra bytet.",
+    "teamCode": "Teamkod",
+    "connectionOffline": "Du är offline. Pangea Chat återansluter när du har anslutning igen.",
+    "connectionUnreachable": "Kan inte nå Pangea Chat. Försöker igen…",
+    "connectionBackOnline": "Tillbaka online",
+    "missionDueDate": "Förfaller {date}, {time}",
+    "callNotificationsTitle": "Låt samtal ringa",
+    "callNotificationsMessage": "Samtal ringer som aviseringar. Tillåt aviseringar så att din telefon ringer för ett samtal, även när Pangea Chat är stängt eller din telefon är låst.",
+    "callNotificationsMissedMessage": "Ett samtal kom in medan Pangea Chat var stängt, men din telefon kunde inte ringa eftersom aviseringar är avstängda. Tillåt aviseringar så att nästa samtal ringer.",
+    "connectionPracticeVocab": "Öva glosor medan du väntar",
+    "offlinePracticeNote": "Offline. Dina svar laddas upp när du är tillbaka.",
+    "offlinePracticeSavedNote": "Sparat på den här enheten. Din XP laddas upp när du är online igen.",
+    "offlinePracticeNothingSaved": "Inte tillräckligt har sparats på den här enheten för att öva offline. Försök igen när du är online.",
+    "missionNumber": "Uppdrag {index}",
+    "xpToYourStar": "{xp} XP till din stjärna",
+    "missionStarEarned": "Stjärna intjänad!",
+    "xpFromChats": "Chattar {xp}",
+    "xpFromGoals": "Mål {xp}",
+    "xpFromPractice": "Övning {xp}",
+    "playMission": "Spela",
+    "wordCount": "{count, plural, =1{1 ord} other{{count} ord}}",
+    "continueActivity": "Fortsätt",
+    "noObjectiveActivitiesYet": "Du har inte slutfört någon aktivitet för det här målet än. Starta en från din kurs.",
+    "objectiveNotInYourCourses": "Det här målet finns inte i någon av dina kurser.",
+    "objectiveActivityCount": "{count, plural, =0{Inga aktiviteter än} =1{1 aktivitet spelad} other{{count} aktiviteter spelade}}",
+    "activityCompleted": "Slutförd",
+    "completedTimes": "Slutförd {count} gånger",
+    "classLocation": "Klassrumsplats",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Konversation {xp}",
+    "xpIncludingGoals": "inklusive {xp} från mål",
+    "missionOtherLanguageNotice": "Detta uppdrag är från en kurs i {language}. Dina framsteg räknas bara när du lär dig {language}.",
+    "missionLanguageMismatchDesc": "Detta uppdrag är från en kurs i {language}. Vill du byta målspråk till {language}?",
+    "xpBySkillTitle": "Per färdighet",
+    "missionNextActivity": "Nästa aktivitet",
+    "missionContinueActivity": "Fortsätt aktivitet",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Färdig i denna kurs ({num})",
+    "otherCoursesSessions": "Andra kurser ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP intjänade",
+    "currentMission": "Nuvarande uppdrag"
 }

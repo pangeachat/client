@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:36.041255",
+    "@@last_modified": "2026-10-22 09:50:09.977874",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -1935,11 +1935,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "در حال همگام‌سازی... لطفا صبر کنید.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "unknownEvent": "رویداد ناشناخته '{type}'",
     "@unknownEvent": {
         "type": "String",
@@ -2244,15 +2239,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "synchronizingPleaseWaitCounter": " در حال همگام‌سازی... ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "invitedBy": "📩 دعوت‌شده توسط {user}",
     "@invitedBy": {
@@ -2628,8 +2614,6 @@
     "@otherPartyNotLoggedIn": {},
     "open": "باز کردن",
     "@open": {},
-    "waitingForServer": "در انتظار سرور...",
-    "@waitingForServer": {},
     "newChatRequest": "📩 درخواست گپ جدید",
     "@newChatRequest": {},
     "contentNotificationSettings": "تنظیمات آگاه‌ساز محتوا",
@@ -2822,7 +2806,6 @@
     "errorDisableIGCClassDesc": "کمک گرامر برای دوره‌ای که این چت در آن است غیرفعال شده است.",
     "error405Desc": "لطفاً زبان‌های خود را در منوی اصلی > تنظیمات یادگیری تنظیم کنید.",
     "termsAndConditions": "شرایط و ضوابط",
-    "andCertifyIAmAtLeast13YearsOfAge": " و گواهی می‌دهم که حداقل ۱۳ سال سن دارم.",
     "error502504Desc": "ابزارهای ترجمه و گرامر ممکن است کند یا در دسترس نباشند در حالی که ربات‌های پنگئا جبران می‌کنند.",
     "error404Desc": "ربات پنگئا مطمئن نیست چگونه آن را ترجمه کند...",
     "errorPleaseRefresh": "در حال بررسی مشکل هستیم! لطفاً صفحه را مجدداً بارگذاری کنید و دوباره تلاش کنید.",
@@ -3130,9 +3113,6 @@
     "why": "چرا؟",
     "definition": "تعریف",
     "reportToTeacher": "می‌خواهید این پیام را به چه کسی گزارش دهید؟",
-    "reportMessageTitle": "{reportingUserId} یک پیام از {reportedUserId} در چت {roomName} گزارش کرده است",
-    "reportMessageBody": "پیام: {reportedMessage}\nدلیل: {reason}",
-    "noTeachersFound": "هیچ معلمی برای گزارش یافت نشد",
     "trialExpiration": "آزمایش رایگان شما در تاریخ {expiration} به پایان می‌رسد",
     "freeTrialDesc": "کاربران جدید یک هفته آزمایش رایگان پنگئا چت دریافت می‌کنند",
     "activateTrial": "آزمایش رایگان 7 روزه",
@@ -3614,10 +3594,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4864,35 +4840,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7850,11 +7797,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "از تصویر فعالیت به عنوان پس‌زمینه چت استفاده کنید",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "چت با پشتیبانی",
     "@chatWithSupport": {
         "type": "String",
@@ -7875,8 +7817,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "فعال‌سازی کمک‌نویس",
-    "autoIGCToolDescription": "به‌طور خودکار ابزارهای چت پانژیا را برای اصلاح پیام‌های ارسال‌شده به زبان هدف اجرا کنید.",
+    "autoIGCToolName": "بررسی خودکار هنگام ارسال",
+    "autoIGCToolDescription": "هنگام ارسال، پیام شما را از نظر اشتباهات بررسی می‌کند. وقتی این گزینه خاموش است، برای بررسی پیام خود روی دکمه کمک نوشتاری ضربه بزنید.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9508,7 +9450,6 @@
     "activityLoadFailed": "نتوانستم فعالیت را بارگذاری کنم. اتصال خود را بررسی کنید و دوباره تلاش کنید.",
     "levelUpChip": "سطح {level}!",
     "missingCourseOutline": "این دوره دیگر در دسترس نیست",
-    "missingCourseOutlineCta": "این دوره دیگر در دسترس نیست. یک برنامه دوره جدید انتخاب کنید.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9533,10 +9474,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9932,7 +9869,6 @@
     "constructLevelFlowers": "گل‌ها، کلمات تسلط یافته",
     "filterAndSearch": "فیلتر و جستجو",
     "participantsOfTotal": "{filled} از {total} بازیکن",
-    "mapAttributionLabel": "مشارکت‌کنندگان OpenStreetMap، حق تکثیر و مجوز",
     "seeAll": "مشاهده همه",
     "seeAllSection": "مشاهده همه {section}",
     "showMoreOptionsHint": "نمایش گزینه‌های بیشتر",
@@ -10050,25 +9986,126 @@
     "summaryFeedbackReceived": "متشکریم! بازخورد شما دریافت شد.",
     "summaryFeedbackFailed": "ارسال بازخورد شما ممکن نشد. لطفاً دوباره تلاش کنید.",
     "summaryFeedbackProcessing": "در حال ارسال بازخورد شما و به‌روزرسانی خلاصه...",
-    "ssoNetworkBlockedTitle": "سایت ورود به سیستم در دسترس نیست",
-    "ssoNetworkBlockedDesc": "این شبکه به ما اجازه نمی‌دهد برای ورود شما به {provider} دسترسی پیدا کنیم. وای‌فای مدرسه و اداره اغلب آن را مسدود می‌کنند. می‌توانید به جای آن با ایمیل ثبت‌نام کنید، یا به شبکه دیگری متصل شوید و دوباره امتحان کنید.",
-    "ssoTryAnyway": "به هر حال امتحان کن",
-    "callTranscriptNotSubscribed": "{name} در طول این تماس اشتراک نداشت، بنابراین آنچه گفته شد رونویسی نشد.",
     "callTranscriptTranscribing": "در حال رونویسی از ضبط {name}...",
     "callTranscriptSeekTo": "پخش از {time}",
     "callTranscriptRecordings": "ضبط‌ها",
     "callTranscriptFullCall": "مکالمه کامل",
     "callTranscriptPreparingRecording": "در حال آماده‌سازی ضبط کامل...",
     "callTranscriptNoRecording": "هیچ ضبطی از مکالمه کامل وجود ندارد.",
-    "callTranscriptTranscribeButton": "رونویسی",
-    "callTranscriptAudioUnavailable": "ضبط ذخیره‌شده از {name} قابل دانلود نبود، بنابراین رونویسی نشد.",
-    "callTranscriptChooseLanguage": "به چه زبانی صحبت شد؟",
-    "callTranscriptSubscribeForTranscription": "برای رونویسی مشترک شوید",
-    "unlockCallTranscript": "باز کردن قفل رونویسی تماس",
+    "callTranscriptNotSubscribed": "{name} در طول این تماس اشتراک نداشت، بنابراین آنچه گفته شد رونویسی نشد.",
     "joinYourCourse": "به دوره خود بپیوندید",
     "courseCodeJoinExplanation": "وارد شوید یا ثبت‌نام کنید، و ما از کد دوره شما برای افزودن خودکار شما به دوره استفاده خواهیم کرد.",
     "courseCodeLabel": "کد دوره",
     "courseCodeSaved": "کد دوره {code} ذخیره شد",
     "courseCodeSavedExplanation": "ثبت‌نام کنید یا وارد شوید و ما شما را به دوره شما اضافه خواهیم کرد.",
-    "missionDueDate": "موعد مقرر: {date}، ساعت {time}"
+    "moderationRefusedContactDetails": "پیام شما ارسال نشد. یک فیلتر خودکار جزئیات تماس، مانند شماره تلفن، را پیدا کرد. لطفاً آن‌ها را حذف کرده و دوباره تلاش کنید.",
+    "moderationRefusedProfanity": "پیام شما ارسال نشد. یک فیلتر خودکار کلمه‌ای را پیدا کرد که ما در چت مجاز نمی‌دانیم. لطفاً آن را تغییر داده و دوباره تلاش کنید.",
+    "callTranscriptTranscribeButton": "رونویسی",
+    "callTranscriptAudioUnavailable": "ضبط ذخیره‌شده از {name} قابل دانلود نبود، بنابراین رونویسی نشد.",
+    "callTranscriptChooseLanguage": "به چه زبانی صحبت شد؟",
+    "callTranscriptSubscribeForTranscription": "برای رونویسی مشترک شوید",
+    "unlockCallTranscript": "باز کردن قفل رونویسی تماس",
+    "activitySummaryUpdateFailed": "این خلاصه به‌روز نشد.",
+    "courseNotFound": "دوره پیدا نشد",
+    "askTeacherForNewCourse": "از معلم خود بخواهید یک دوره جدید انتخاب کند.",
+    "pickNewCoursePlan": "یک برنامه درسی جدید انتخاب کنید.",
+    "ssoNetworkBlockedTitle": "سایت ورود به سیستم در دسترس نیست",
+    "ssoNetworkBlockedDesc": "این شبکه به ما اجازه نمی‌دهد برای ورود شما به {provider} دسترسی پیدا کنیم. وای‌فای مدرسه و اداره اغلب آن را مسدود می‌کنند. می‌توانید به جای آن با ایمیل ثبت‌نام کنید، یا به شبکه دیگری متصل شوید و دوباره امتحان کنید.",
+    "ssoTryAnyway": "به هر حال امتحان کن",
+    "publicCoursesFilterTooltip": "فقط دوره‌هایی را نشان بده که همه می‌توانند به آن‌ها بپیوندند",
+    "restrictedCoursesFilterTooltip": "فقط دوره‌هایی را نشان بده که برای پیوستن به آن‌ها باید درخواست دهید",
+    "viewImageLabel": "مشاهده تصویر",
+    "reportSent": "گزارش ارسال شد",
+    "reportNotSent": "گزارش شما ارسال نشد. اتصال خود را بررسی کرده و دوباره امتحان کنید.",
+    "reportPointerMessage": "پیامی در {courseName} گزارش شد — به بخش ایمنی مراجعه کنید",
+    "learningObjective": "هدف یادگیری",
+    "learningObjectives": "اهداف یادگیری",
+    "missionNofM": "مأموریت {index} از {count}",
+    "xpTowardObjective": "{xp} از {threshold} امتیاز تجربه برای این هدف",
+    "xpOfThreshold": "{xp} / {threshold} امتیاز تجربه",
+    "courseComplete": "دوره کامل شد!",
+    "courseCompleteDesc": "شما تمام {count} هدف این دوره را تکمیل کرده‌اید. برای حفظ آموخته‌هایتان به تمرین ادامه دهید.",
+    "practiceObjective": "این هدف را تمرین کنید",
+    "otherActivities": "فعالیت‌های دیگر",
+    "objectiveCircleComplete": "مأموریت {index}: تکمیل شد",
+    "objectiveCircleUpNext": "مأموریت {index}: بعدی",
+    "useActivityImageAsChatBackground": "استفاده از تصویر فعالیت به عنوان پس‌زمینه چت",
+    "andCertifyIMeetTheMinimumAge": " و تأیید می‌کنم که حداقل ۱۳ سال سن دارم، یا اگر در کشورم سن قانونی بالاتری لازم است، آن سن را دارم.",
+    "filteredNetworkBlockedTitle": "این شبکه Pangea Chat را مسدود کرده است",
+    "filteredNetworkPartlyBlockedTitle": "این شبکه بخشی از Pangea Chat را مسدود کرده است",
+    "filteredNetworkWhatCanIDo": "چه کاری می‌توانم انجام دهم؟",
+    "filteredNetworkPhoneAdvice": "وای‌فای را خاموش کنید و به جای آن از داده تلفن همراه استفاده کنید.",
+    "filteredNetworkComputerAdvice": "به جای این وای‌فای، به هات‌اسپات تلفن خود متصل شوید.",
+    "filteredNetworkItHeading": "برای معلمان و کارکنان فناوری اطلاعات",
+    "filteredNetworkItBody": "از تیم فناوری اطلاعات خود بخواهید این دامنه‌ها را مجاز کند:",
+    "filteredNetworkAskForHelp": "از Pangea کمک بخواهید",
+    "filteredNetworkHelpExplanation": "ما به شما ایمیل می‌زنیم تا به شما کمک کنیم Pangea Chat در این شبکه کار کند.",
+    "filteredNetworkHelpWaiting": "درخواست شما به محض اتصال ارسال خواهد شد.",
+    "filteredNetworkHelpSent": "ارسال شد. از طریق ایمیل با شما در تماس خواهیم بود.",
+    "filteredNetworkHelpRefused": "نتوانستیم درخواست شما را ارسال کنیم. لطفاً به support@pangea.chat ایمیل بزنید.",
+    "filteredNetworkVideoBlocked": "این شبکه ویدیوها را مسدود می‌کند.",
+    "filteredNetworkImagesBlocked": "این شبکه تصاویر را مسدود می‌کند.",
+    "filteredNetworkMapBlocked": "این شبکه نقشه را مسدود می‌کند.",
+    "callFullScreenTitle": "اجازه دهید تماس‌ها تمام صفحه زنگ بخورند",
+    "callFullScreenMessage": "هنگامی که Pangea Chat بسته بود، تماسی دریافت شد، اما تلفن شما فقط می‌توانست یک اعلان کوچک برای آن نمایش دهد. تماس‌های تمام صفحه را فعال کنید تا تماس بعدی در کل صفحه شما زنگ بخورد، حتی زمانی که تلفن شما قفل است.",
+    "callMicrophoneTitle": "از میکروفون خود برای تماس‌ها استفاده کنید",
+    "callMicrophoneMessage": "پنگه‌آ چت برای تماس‌ها، از جمله تماس‌هایی که از صفحه قفل پاسخ می‌دهید، به میکروفون شما نیاز دارد.",
+    "callMicrophoneOffTitle": "تماس شما وصل نشد",
+    "callMicrophoneOffMessage": "پنگه‌آ چت نمی‌تواند از میکروفون شما استفاده کند. برای روشن کردن آن در تنظیمات ضربه بزنید.",
+    "goalsCompletedOfTotal": "{earned} از {total} هدف تکمیل شد",
+    "goalsCompletedInLanguage": "اهداف تکمیل شده در {language}",
+    "sessionXpTowardObjective": "{xp} امتیاز تجربه در این جلسه؛ {remaining} امتیاز دیگر برای تکمیل هدف",
+    "mapCreditsLabel": "اعتبار نقشه: Stadia Maps, OpenMapTiles و OpenStreetMap",
+    "activityLaunchFindingCourses": "در حال یافتن دوره‌های شما…",
+    "activityLaunchCreatingRoom": "در حال ایجاد فعالیت شما…",
+    "activityLaunchOpeningRoom": "در حال باز کردن فعالیت شما…",
+    "playWithOthers": "بازی با دیگران",
+    "openRole": "باز: {role}",
+    "waitingFor": "در انتظار {duration}",
+    "onlineInCourse": "{count} نفر آنلاین در {course}",
+    "newCourseChat": "چت دوره جدید",
+    "customCourseStepDesc": "یک دوره مجموعه‌ای از فعالیت‌های مکالمه است که از کتاب درسی شما پیروی می‌کند و دانش‌آموزان شما می‌توانند آن را به عنوان تکلیف با هم انجام دهند.",
+    "reopenAppToFinishSwitching": "برای اتمام جابجایی، برنامه را به طور کامل ببندید و دوباره باز کنید.",
+    "teamCode": "کد تیم",
+    "connectionOffline": "شما آفلاین هستید. پنگه‌آ چت با وصل شدن اینترنت دوباره وصل می‌شود.",
+    "connectionUnreachable": "پنگه‌آ چت در دسترس نیست. دوباره تلاش می‌شود…",
+    "connectionBackOnline": "دوباره آنلاین شد",
+    "missionDueDate": "موعد مقرر: {date}، ساعت {time}",
+    "callNotificationsTitle": "اجازه دهید تماس‌ها زنگ بخورند",
+    "callNotificationsMessage": "تماس‌ها به صورت اعلان زنگ می‌خورند. اعلان‌ها را مجاز کنید تا تلفن شما برای تماس زنگ بخورد، حتی زمانی که چت پانگه‌آ بسته است یا تلفن شما قفل است.",
+    "callNotificationsMissedMessage": "هنگامی که چت پانگه‌آ بسته بود، تماسی دریافت شد، اما تلفن شما نمی‌توانست زنگ بخورد زیرا اعلان‌ها خاموش هستند. اعلان‌ها را مجاز کنید تا تماس بعدی زنگ بخورد.",
+    "connectionPracticeVocab": "هنگام انتظار، واژگان را تمرین کنید",
+    "offlinePracticeNote": "آفلاین. پاسخ‌های شما پس از اتصال به اینترنت بارگذاری می‌شوند.",
+    "offlinePracticeSavedNote": "در این دستگاه ذخیره شد. امتیاز XP شما پس از اتصال به اینترنت بارگذاری می‌شود.",
+    "offlinePracticeNothingSaved": "به اندازه کافی در این دستگاه برای تمرین آفلاین ذخیره نشده است. وقتی آنلاین شدید دوباره امتحان کنید.",
+    "missionNumber": "مأموریت {index}",
+    "xpToYourStar": "{xp} امتیاز برای ستاره شما",
+    "missionStarEarned": "ستاره کسب شد!",
+    "xpFromChats": "چت‌ها {xp}",
+    "xpFromGoals": "اهداف {xp}",
+    "xpFromPractice": "تمرین {xp}",
+    "playMission": "بازی",
+    "wordCount": "{count, plural, =1{۱ کلمه} other{{count} کلمه}}",
+    "continueActivity": "ادامه",
+    "noObjectiveActivitiesYet": "هنوز فعالیتی برای این هدف تکمیل نکرده‌اید. یکی از دوره‌های خود را شروع کنید.",
+    "objectiveNotInYourCourses": "این هدف در هیچ یک از دوره‌های شما نیست.",
+    "objectiveActivityCount": "{count, plural, =0{هنوز فعالیتی نیست} =1{۱ فعالیت انجام شد} other{{count} فعالیت انجام شد}}",
+    "activityCompleted": "تکمیل شد",
+    "completedTimes": "{count} بار تکمیل شد",
+    "classLocation": "مکان کلاس",
+    "xpThresholdSuffix": "/ {threshold} امتیاز",
+    "xpFromConversation": "مکالمه {xp}",
+    "xpIncludingGoals": "شامل {xp} از اهداف",
+    "missionOtherLanguageNotice": "این مأموریت از یک دوره در {language} است. پیشرفت شما در آن فقط زمانی محاسبه می‌شود که در حال یادگیری {language} باشید.",
+    "missionLanguageMismatchDesc": "این مأموریت از یک دوره در {language} است. زبان هدف خود را به {language} تغییر دهید؟",
+    "xpBySkillTitle": "بر اساس مهارت",
+    "missionNextActivity": "فعالیت بعدی",
+    "missionContinueActivity": "ادامه فعالیت",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "در این دوره به پایان رسید ({num})",
+    "otherCoursesSessions": "دوره‌های دیگر ({num})",
+    "activityXpStamp": "{xp} امتیاز",
+    "activityCompletedWithXp": "{completed}, {xp} امتیاز کسب شد",
+    "currentMission": "مأموریت فعلی"
 }

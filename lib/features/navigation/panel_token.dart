@@ -5,6 +5,7 @@ import 'package:fluffychat/features/navigation/token_params/analytics_practice_t
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/objective_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
@@ -108,6 +109,9 @@ sealed class PanelToken<T extends TokenParam> {
         ),
         PanelTypesEnum.grammar => GrammarAnalyticsPanelToken(
           GrammarAnalyticsTokenParam.parse(param!),
+        ),
+        PanelTypesEnum.objective => ObjectivePanelToken(
+          ObjectiveTokenParam.parse(param!),
         ),
         PanelTypesEnum.review => ReviewPanelToken(),
         PanelTypesEnum.practice => AnalyticsPracticePanelToken(
@@ -225,6 +229,20 @@ class SettingsPagePanelToken extends PanelToken<SettingsTokenParam> {
   const SettingsPagePanelToken(SettingsTokenParam param)
     : super(PanelTypesEnum.settingspage, param);
 
+  /// The page and its plan id are navigational; a gift link's promo code
+  /// names one person's gift, so it stays out of the name like any identity
+  /// field (google-analytics.instructions.md).
+  @override
+  String get screenName {
+    final param = this.param;
+    if (param == null) return type.name;
+    final named = SettingsTokenParam(
+      subpage: param.subpage,
+      planId: param.planId,
+    ).build();
+    return '${type.name}:$named';
+  }
+
   @override
   SettingsPagePanelToken? get popped {
     final param = this.param;
@@ -261,6 +279,14 @@ class GrammarAnalyticsPanelToken
     extends PanelToken<GrammarAnalyticsTokenParam> {
   const GrammarAnalyticsPanelToken(GrammarAnalyticsTokenParam param)
     : super(PanelTypesEnum.grammar, param);
+
+  @override
+  String get screenName => type.name;
+}
+
+class ObjectivePanelToken extends PanelToken<ObjectiveTokenParam> {
+  const ObjectivePanelToken(ObjectiveTokenParam param)
+    : super(PanelTypesEnum.objective, param);
 
   @override
   String get screenName => type.name;

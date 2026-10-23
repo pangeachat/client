@@ -1,8 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -10,7 +7,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/dosage/dosage_message_event.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
-import 'package:fluffychat/pangea/common/config/env_loader.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// The single place the "a learner sent a chat message" dosage signals are
@@ -24,50 +20,6 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 /// event id; a null/blank id means the send didn't land, so nothing counts.
 class DosageMessageSignals {
   DosageMessageSignals._();
-
-  /// Loads the dosage env (`.env`) into THIS isolate. Overridable in tests.
-  @visibleForTesting
-  static Future<void> Function() envLoader = EnvLoader.load;
-
-  /// The single in-flight env load for this isolate, so concurrent first-emits
-  /// coalesce onto ONE load instead of racing N parallel `.env` reads. Cleared
-  /// once the load settles, so a failed load can be retried by a later emit.
-  static Future<void>? _envLoad;
-
-  /// Ensures the dosage env flags are loaded in this isolate before an emit.
-  /// dotenv is PER-ISOLATE, so the notification background isolate — which boots
-  /// a bare client without loading `.env` — would otherwise read the flags as
-  /// unloaded and no-op every emit. Idempotent (no-op once loaded, e.g. in the
-  /// main isolate), single-flight (coalesced), and best-effort: the load is
-  /// TIME-BOXED and swallowed so a slow or failing `.env` read can never hang or
-  /// throw into the caller (a notification reply) — it just leaves the emit a
-  /// no-op.
-  static Future<void> ensureDosageEnvLoaded() {
-    if (dotenv.isInitialized) return Future.value();
-    // Single-flight on the RAW loader: coalesce concurrent callers onto ONE
-    // underlying load and clear the latch only when that raw load actually
-    // SETTLES. The per-caller timeout is applied as a separate VIEW below, never
-    // to the latched future itself — otherwise a timed-out view would clear the
-    // latch while the real load is still running and let a second caller kick
-    // off a duplicate concurrent load.
-    final raw = _envLoad ??= () async {
-      try {
-        await envLoader();
-      } catch (_) {
-        // Best-effort: a failed load just leaves the flags unloaded.
-      } finally {
-        _envLoad = null;
-      }
-    }();
-    // Each caller awaits its OWN 5s-bounded view of the shared load, so a slow
-    // `.env` read never hangs a caller (e.g. a notification reply) while still
-    // running exactly one real load.
-    return raw.timeout(const Duration(seconds: 5), onTimeout: () {});
-  }
-
-  /// Clears the single-flight env latch (tests only).
-  @visibleForTesting
-  static void debugResetEnvLoad() => _envLoad = null;
 
   static void emitForSentMessage({
     required String roomId,
@@ -184,45 +136,6 @@ class DosageMessageSignals {
           data: {"roomId": roomId},
         ).catchError((_) {}),
       );
-    }
-  }
-
-  /// AWAITABLE, bounded, never-throw emit of JUST the message envelope for a
-  /// notification reply. The notification handler AWAITS this so a short-lived
-  /// background isolate — which tears down its client right after the reply —
-  /// doesn't finish before the POST lands (a fire-and-forget emit there is
-  /// silently dropped when the isolate ends).
-  ///
-  /// Envelope only, no engagement tick: the background isolate has its own
-  /// (isolate-local) tracker registry with no lifecycle to flush a span, and a
-  /// single reply's engagement is negligible against the message envelope. The
-  /// POST is bounded by the repo's per-request timeout and fully swallowed, so
-  /// this never blocks or breaks the reply.
-  static Future<void> emitReplyEnvelope({
-    required String roomId,
-    required String? accessToken,
-    required String? msgEventId,
-    required String body,
-    http.Client? client,
-  }) async {
-    try {
-      // A blank/placeholder id means the reply send didn't resolve; count
-      // nothing (mirrors [emitForSentMessage]'s id guard).
-      if (msgEventId == null || msgEventId.trim().isEmpty) return;
-      await DosageSignalsRepo.postMessageEvents(
-        events: [
-          DosageMessageEvent.fromSentMessage(
-            roomId: roomId,
-            msgId: msgEventId,
-            ts: DateTime.now(),
-            body: body,
-          ),
-        ],
-        accessToken: accessToken,
-        client: client,
-      );
-    } catch (_) {
-      // Best-effort — never block or break the notification reply.
     }
   }
 

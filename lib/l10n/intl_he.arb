@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:38.049612",
+    "@@last_modified": "2026-10-22 09:50:12.650411",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -1384,8 +1384,6 @@
     "status": "סטטוס",
     "statusExampleMessage": "איך אתה היום?",
     "submit": "שלח",
-    "synchronizingPleaseWait": "מסתנכרן… אנא המתן.",
-    "synchronizingPleaseWaitCounter": "מסתנכרן… ({percentage}%)",
     "systemTheme": "מערכת",
     "theyDontMatch": "הם לא תואמים",
     "theyMatch": "הם תואמים",
@@ -1610,7 +1608,6 @@
     "previous": "קודם",
     "otherPartyNotLoggedIn": "הצד השני כרגע לא מחובר ולכן לא יכול לקבל הודעות!",
     "open": "פתח",
-    "waitingForServer": "מחכה לשרת...",
     "newChatRequest": "📩 בקשת שיחה חדשה",
     "contentNotificationSettings": "הגדרות התראות תוכן",
     "generalNotificationSettings": "הגדרות התראות כלליות",
@@ -1714,7 +1711,6 @@
     "errorDisableIGCClassDesc": "עזרה בדקדוק מושבתת עבור הקורס שבו נמצא הצ'אט הזה.",
     "error405Desc": "אנא הגדר את שפותיך בתפריט הראשי > הגדרות למידה.",
     "termsAndConditions": "תנאים והגבלות",
-    "andCertifyIAmAtLeast13YearsOfAge": "ומאשר שאני בן לפחות 16 שנים.",
     "error502504Desc": "כלי תרגום ודקדוק עלולים להיות איטיים או לא זמינים בזמן שהבוטים של פנגיאה מעדכנים.",
     "error404Desc": "בוט פנגיאה לא בטוח איך לתרגם את זה...",
     "errorPleaseRefresh": "אנחנו בודקים את זה! אנא טען מחדש ונסה שוב.",
@@ -2022,9 +2018,6 @@
     "why": "למה?",
     "definition": "הגדרה",
     "reportToTeacher": "למי תרצה לדווח על ההודעה הזו?",
-    "reportMessageTitle": "{reportingUserId} דיווחה על הודעה מ-{reportedUserId} בשיחה {roomName}",
-    "reportMessageBody": "הודעה: {reportedMessage}\nסיבה: {reason}",
-    "noTeachersFound": "לא נמצאו מורים לדווח אליהם",
     "trialExpiration": "המבחן החינמי שלך יפוג ב-{expiration}",
     "freeTrialDesc": "משתמשים חדשים מקבלים ניסיון חינם של שבוע ב-Pangea Chat",
     "activateTrial": "ניסיון חינם ל-7 ימים",
@@ -2920,18 +2913,6 @@
     "@submit": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@systemTheme": {
         "type": "String",
@@ -4000,10 +3981,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@newChatRequest": {
         "type": "String",
         "placeholders": {}
@@ -4435,10 +4412,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5685,35 +5658,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8671,11 +8615,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "השתמש בתמונה של הפעילות כרקע לצ'אט",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "צ'אט עם תמיכה",
     "@chatWithSupport": {
         "type": "String",
@@ -8696,8 +8635,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "אפשר סיוע בכתיבה",
-    "autoIGCToolDescription": "הרץ אוטומטית את כלי Pangea Chat כדי לתקן הודעות שנשלחו לשפה היעד.",
+    "autoIGCToolName": "בדיקה אוטומטית בשליחה",
+    "autoIGCToolDescription": "בדוק את ההודעה שלך לשגיאות כשאתה מקיש על שלח. כשזה כבוי, הקש על כפתור עזרה בכתיבה כדי לבדוק הודעה בעצמך.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10334,7 +10273,6 @@
     "activityLoadFailed": "לא ניתן לטעון את הפעילות. בדוק את החיבור שלך ונסה שוב.",
     "levelUpChip": "רמה {level}!",
     "missingCourseOutline": "הקורס הזה אינו זמין יותר",
-    "missingCourseOutlineCta": "הקורס הזה אינו זמין יותר. בחר תוכנית קורס חדשה.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10359,10 +10297,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10758,7 +10692,6 @@
     "constructLevelFlowers": "פרחים, מילים שנלמדו",
     "filterAndSearch": "סינון וחיפוש",
     "participantsOfTotal": "{filled} מתוך {total} שחקנים",
-    "mapAttributionLabel": "תורמי OpenStreetMap, זכויות יוצרים ורישיון",
     "seeAll": "הצג הכל",
     "seeAllSection": "הצג הכל {section}",
     "showMoreOptionsHint": "הצג אפשרויות נוספות",
@@ -10876,25 +10809,126 @@
     "summaryFeedbackReceived": "תודה! קיבלנו את המשוב שלך.",
     "summaryFeedbackFailed": "לא ניתן היה לשלוח את המשוב שלך. אנא נסה שוב.",
     "summaryFeedbackProcessing": "שולח את המשוב שלך ומעדכן את הסיכום…",
-    "ssoNetworkBlockedTitle": "אתר ההתחברות אינו זמין",
-    "ssoNetworkBlockedDesc": "רשת זו אינה מאפשרת לנו להגיע אל {provider} כדי לחבר אותך. רשתות Wi-Fi בבתי ספר ובמשרדים חוסמות זאת לעיתים קרובות. באפשרותך להירשם באמצעות דוא\"ל במקום זאת, או לעבור לרשת אחרת ולנסות שוב.",
-    "ssoTryAnyway": "נסה בכל זאת",
-    "callTranscriptNotSubscribed": "{name} לא היה מנוי במהלך השיחה הזו, ולכן מה שנאמר לא תומלל.",
     "callTranscriptTranscribing": "עדיין מתמלל את ההקלטה מ{name}…",
     "callTranscriptSeekTo": "נגן מ{time}",
     "callTranscriptRecordings": "הקלטות",
     "callTranscriptFullCall": "שיחה מלאה",
     "callTranscriptPreparingRecording": "מכין את ההקלטה המלאה…",
     "callTranscriptNoRecording": "אין הקלטה של השיחה המלאה.",
-    "callTranscriptTranscribeButton": "תמלול",
-    "callTranscriptAudioUnavailable": "ההקלטה השמורה מ{name} לא ניתנת להורדה, ולכן לא ניתן לתמלל אותה.",
-    "callTranscriptChooseLanguage": "באיזו שפה דיברתם?",
-    "callTranscriptSubscribeForTranscription": "הירשם לתימלול",
-    "unlockCallTranscript": "פתח את תמלול השיחה",
+    "callTranscriptNotSubscribed": "{name} לא היה מנוי במהלך השיחה הזו, ולכן מה שנאמר לא תומלל.",
     "joinYourCourse": "הצטרף לקורס שלך",
     "courseCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד הקורס שלך כדי להוסיף אותך לקורס באופן אוטומטי.",
     "courseCodeLabel": "קוד קורס",
     "courseCodeSaved": "קוד קורס {code} נשמר",
     "courseCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך לקורס שלך.",
-    "missionDueDate": "תאריך יעד {date}, {time}"
+    "moderationRefusedContactDetails": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה פרטי התקשרות, כמו מספר טלפון. אנא הסר אותם ונסה שוב.",
+    "moderationRefusedProfanity": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה מילה שאנו לא מאפשרים בצ'אט. אנא שנה אותה ונסה שוב.",
+    "callTranscriptTranscribeButton": "תמלול",
+    "callTranscriptAudioUnavailable": "ההקלטה השמורה מ{name} לא ניתנת להורדה, ולכן לא ניתן לתמלל אותה.",
+    "callTranscriptChooseLanguage": "באיזו שפה דיברתם?",
+    "callTranscriptSubscribeForTranscription": "הירשם לתימלול",
+    "unlockCallTranscript": "פתח את תמלול השיחה",
+    "activitySummaryUpdateFailed": "לא ניתן היה לעדכן את הסיכום הזה.",
+    "courseNotFound": "הקורס לא נמצא",
+    "askTeacherForNewCourse": "בקש מהמורה שלך לבחור קורס חדש.",
+    "pickNewCoursePlan": "בחר תוכנית קורס חדשה.",
+    "ssoNetworkBlockedTitle": "אתר ההתחברות אינו זמין",
+    "ssoNetworkBlockedDesc": "רשת זו אינה מאפשרת לנו להגיע אל {provider} כדי לחבר אותך. רשתות Wi-Fi בבתי ספר ובמשרדים חוסמות זאת לעיתים קרובות. באפשרותך להירשם באמצעות דוא\"ל במקום זאת, או לעבור לרשת אחרת ולנסות שוב.",
+    "ssoTryAnyway": "נסה בכל זאת",
+    "publicCoursesFilterTooltip": "הצג רק קורסים שכל אחד יכול להצטרף אליהם",
+    "restrictedCoursesFilterTooltip": "הצג רק קורסים שאתה צריך לבקש להצטרף אליהם",
+    "viewImageLabel": "הצג תמונה",
+    "reportSent": "הדיווח נשלח",
+    "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
+    "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות",
+    "learningObjective": "מטרת למידה",
+    "learningObjectives": "מטרות למידה",
+    "missionNofM": "משימה {index} מתוך {count}",
+    "xpTowardObjective": "{xp} מתוך {threshold} נקודות ניסיון למטרה זו",
+    "xpOfThreshold": "{xp} / {threshold} נקודות ניסיון",
+    "courseComplete": "הקורס הושלם!",
+    "courseCompleteDesc": "השלמת את כל {count} המטרות בקורס זה. המשך לתרגל כדי לשמר את מה שלמדת.",
+    "practiceObjective": "תרגל מטרה זו",
+    "otherActivities": "פעילויות אחרות",
+    "objectiveCircleComplete": "משימה {index}: הושלמה",
+    "objectiveCircleUpNext": "משימה {index}: הבאה בתור",
+    "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
+    "andCertifyIMeetTheMinimumAge": "ומאשר/ת שאני בן/בת 13 לפחות, או בגיל המינימלי הנדרש במדינתי אם הוא גבוה יותר.",
+    "filteredNetworkBlockedTitle": "רשת זו חוסמת את Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "רשת זו חוסמת חלק מ-Pangea Chat",
+    "filteredNetworkWhatCanIDo": "מה אפשר לעשות?",
+    "filteredNetworkPhoneAdvice": "כבה/כבי את ה-Wi-Fi והשתמש/השתמשי במקום זאת בנתונים ניידים.",
+    "filteredNetworkComputerAdvice": "התחבר/התחברי לנקודה חמה של הטלפון שלך במקום ל-Wi-Fi הזה.",
+    "filteredNetworkItHeading": "למורים ולצוותי IT",
+    "filteredNetworkItBody": "בקש/בקשי מצוות ה-IT שלך לאפשר את הדומיינים הבאים:",
+    "filteredNetworkAskForHelp": "בקש/בקשי עזרה מ-Pangea",
+    "filteredNetworkHelpExplanation": "נשלח לך אימייל כדי לעזור לך להפעיל את Pangea Chat ברשת זו.",
+    "filteredNetworkHelpWaiting": "בקשתך תישלח ברגע שתתחבר/תתחברי.",
+    "filteredNetworkHelpSent": "נשלח. ניצור קשר באימייל.",
+    "filteredNetworkHelpRefused": "לא הצלחנו לשלוח את בקשתך. אנא שלח/שלחי אימייל ל-support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "רשת זו חוסמת סרטונים.",
+    "filteredNetworkImagesBlocked": "רשת זו חוסמת תמונות.",
+    "filteredNetworkMapBlocked": "רשת זו חוסמת את המפה.",
+    "callFullScreenTitle": "אפשר לשיחות לצלצל במסך מלא",
+    "callFullScreenMessage": "התקבלה שיחה כש־Pangea Chat הייתה סגורה, אבל הטלפון שלך הציג רק התראה קטנה עבורה. אפשר שיחות במסך מלא כדי שהשיחה הבאה תצלצל על כל המסך, גם כשהטלפון שלך נעול.",
+    "callMicrophoneTitle": "השתמש/י במיקרופון שלך לשיחות",
+    "callMicrophoneMessage": "Pangea Chat זקוק למיקרופון שלך לשיחות, כולל שיחות שאת/ה עונה להן ממסך הנעילה.",
+    "callMicrophoneOffTitle": "השיחה שלך לא התחברה",
+    "callMicrophoneOffMessage": "Pangea Chat לא יכול להשתמש במיקרופון שלך. הקש/י כדי להפעיל אותו בהגדרות.",
+    "goalsCompletedOfTotal": "{earned} מתוך {total} יעדים הושלמו",
+    "goalsCompletedInLanguage": "יעדים שהושלמו ב{language}",
+    "sessionXpTowardObjective": "{xp} נקודות ניסיון בשיעור זה; נותרו {remaining} להשלמת היעד",
+    "mapCreditsLabel": "קרדיטים למפה: Stadia Maps, OpenMapTiles ו-OpenStreetMap",
+    "activityLaunchFindingCourses": "מוצאים את הקורסים שלך…",
+    "activityLaunchCreatingRoom": "יוצרים את הפעילות שלך…",
+    "activityLaunchOpeningRoom": "פותחים את הפעילות שלך…",
+    "playWithOthers": "שחק עם אחרים",
+    "openRole": "פתוח: {role}",
+    "waitingFor": "ממתין {duration}",
+    "onlineInCourse": "{count} מחוברים ב{course}",
+    "newCourseChat": "צ'אט קורס חדש",
+    "customCourseStepDesc": "קורס הוא סדרה של פעילויות שיחה שעוקבות אחר ספר הלימוד שלך, כדי שהתלמידים שלך יוכלו לעשות יחד כשיעורי בית.",
+    "reopenAppToFinishSwitching": "סגור את האפליקציה לחלוטין ופתח אותה שוב כדי לסיים את המעבר.",
+    "teamCode": "קוד צוות",
+    "connectionOffline": "אתה במצב לא מקוון. Pangea Chat יתחבר מחדש כשהחיבור שלך יחזור.",
+    "connectionUnreachable": "לא ניתן להגיע ל-Pangea Chat. מנסה שוב…",
+    "connectionBackOnline": "חזר למצב מקוון",
+    "missionDueDate": "תאריך יעד {date}, {time}",
+    "callNotificationsTitle": "אפשר לשיחות לצלצל",
+    "callNotificationsMessage": "שיחות מצלצלות כהתראות. אפשר התראות כדי שהטלפון שלך יצלצל לשיחה, גם כש-Pangea Chat סגור או כשהטלפון שלך נעול.",
+    "callNotificationsMissedMessage": "שיחה נכנסה כש-Pangea Chat היה סגור, אך הטלפון שלך לא יכל לצלצל כי ההתראות כבויות. אפשר התראות כדי שהשיחה הבאה תצלצל.",
+    "connectionPracticeVocab": "תרגל אוצר מילים בזמן שאתה ממתין",
+    "offlinePracticeNote": "לא מקוון. התשובות שלך יעלו כשתחזור.",
+    "offlinePracticeSavedNote": "נשמר במכשיר זה. ה-XP שלך יעלה כשתחזור למצב מקוון.",
+    "offlinePracticeNothingSaved": "לא נשמר מספיק ביישום זה כדי לתרגל במצב לא מקוון. נסה שוב כשתהיה מחובר.",
+    "missionNumber": "משימה {index}",
+    "xpToYourStar": "{xp} נקודות ניסיון לכוכב שלך",
+    "missionStarEarned": "הכוכב הושג!",
+    "xpFromChats": "צ׳אטים {xp}",
+    "xpFromGoals": "יעדים {xp}",
+    "xpFromPractice": "תרגול {xp}",
+    "playMission": "שחק",
+    "wordCount": "{count, plural, =1{מילה אחת} other{{count} מילים}}",
+    "continueActivity": "המשך",
+    "noObjectiveActivitiesYet": "עוד לא השלמת פעילות עבור יעד זה. התחל אחת מהקורס שלך.",
+    "objectiveNotInYourCourses": "יעד זה אינו נמצא באף אחד מהקורסים שלך.",
+    "objectiveActivityCount": "{count, plural, =0{אין עדיין פעילויות} =1{פעילות אחת ששוחקה} other{{count} פעילויות ששוחקו}}",
+    "activityCompleted": "הושלם",
+    "completedTimes": "הושלם {count} פעמים",
+    "classLocation": "מיקום השיעור",
+    "xpThresholdSuffix": "/ {threshold} נקודות ניסיון",
+    "xpFromConversation": "שיחה {xp}",
+    "xpIncludingGoals": "כולל {xp} מיעדים",
+    "missionOtherLanguageNotice": "המשימה הזו היא מקורס ב{language}. ההתקדמות שלך בה נספרת רק כשאתה לומד {language}.",
+    "missionLanguageMismatchDesc": "המשימה הזו היא מקורס ב{language}. לשנות את שפת היעד שלך ל{language}?",
+    "xpBySkillTitle": "לפי מיומנות",
+    "missionNextActivity": "הפעילות הבאה",
+    "missionContinueActivity": "המשך פעילות",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "הושלם בקורס זה ({num})",
+    "otherCoursesSessions": "קורסים אחרים ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP נצברו",
+    "currentMission": "המשימה הנוכחית"
 }

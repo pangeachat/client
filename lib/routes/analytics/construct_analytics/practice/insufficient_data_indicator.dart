@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 class InsufficientDataIndicator extends StatelessWidget {
-  const InsufficientDataIndicator({super.key});
+  /// The session was to run offline, from what this device has saved.
+  final bool offline;
+
+  const InsufficientDataIndicator({this.offline = false, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,9 @@ class InsufficientDataIndicator extends StatelessWidget {
             ),
             TextSpan(text: '  '),
             TextSpan(
-              text: L10n.of(context).noAnalyticsActivitiesAvailable,
+              text: offline
+                  ? L10n.of(context).offlinePracticeNothingSaved
+                  : L10n.of(context).noAnalyticsActivitiesAvailable,
               style: DefaultTextStyle.of(context).style,
             ),
           ],

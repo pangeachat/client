@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:35.284639",
+    "@@last_modified": "2026-10-22 09:50:09.092898",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -1505,11 +1505,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Spegulante… Bonvolu atendi.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Sistema",
     "@systemTheme": {
         "type": "String",
@@ -1874,7 +1869,6 @@
     "separateChatTypes": "Apartigu Rektajn Babilejojn kaj Grupojn",
     "setChatDescription": "Agordu priskribon de la babilejo",
     "presencesToggle": "Montru statusajn mesaĝojn de aliaj uzantoj",
-    "synchronizingPleaseWaitCounter": "Sinkronigas… ({percentage}%)",
     "unverified": "Nekonfirmita",
     "messageInfo": "Informo pri mesaĝo",
     "time": "Tempo",
@@ -2057,7 +2051,6 @@
     "previous": "Antaŭa",
     "otherPartyNotLoggedIn": "La alia partio nun ne estas ensalutita kaj tial ne povas ricevi mesaĝojn!",
     "open": "Malfermi",
-    "waitingForServer": "Atendas la servilon...",
     "newChatRequest": "📩 Nova babilepeto",
     "contentNotificationSettings": "Agordoj por sciigo pri enhavo",
     "generalNotificationSettings": "Ĝeneralaj sciigaj agordoj",
@@ -2161,7 +2154,6 @@
     "errorDisableIGCClassDesc": "Gramatika helpo estas malŝaltita por la kurso en kiu ĉi tiu babilejo estas.",
     "error405Desc": "Bonvolu agordi viajn lingvojn en Ĉefa menuo > Lernagordoj.",
     "termsAndConditions": "Kondicxoj kaj Kondicxoj",
-    "andCertifyIAmAtLeast13YearsOfAge": " kaj atestigas ke mi estas almenaŭ 16 jarojn aĝa.",
     "error502504Desc": "Tradukiloj kaj gramatikaj iloj eble estos malrapidaj aŭ nehaveblaj dum la Pangea-botoj okupiĝas.",
     "error404Desc": "Pangea-boto ne certas kiel traduki tion...",
     "errorPleaseRefresh": "Ni esploras ĝin! Bonvolu reŝarĝi kaj provi denove.",
@@ -2469,9 +2461,6 @@
     "why": "Kial?",
     "definition": "Difino",
     "reportToTeacher": "Al kiu vi volas raporti ĉi tiun mesaĝon?",
-    "reportMessageTitle": "{reportingUserId} raportis mesaĝon de {reportedUserId} en la babilejo {roomName}",
-    "reportMessageBody": "Mesaĝo: {reportedMessage}\nKialo: {reason}",
-    "noTeachersFound": "Neniu instruisto trovita por raporti",
     "trialExpiration": "Via senpaga provtempo finiĝos je {expiration}",
     "freeTrialDesc": "Novaj uzantoj ricevas semajnan senpagan provon de Pangea Chat",
     "activateTrial": "Aktivigu Senpagan 7-tagan Provon",
@@ -3163,14 +3152,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@unverified": {
         "type": "String",
@@ -4031,10 +4012,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@newChatRequest": {
         "type": "String",
         "placeholders": {}
@@ -4466,10 +4443,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5716,35 +5689,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8702,11 +8646,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Uzu aktivan bildon kiel ĉatfondon",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Babili kun Subteno",
     "@chatWithSupport": {
         "type": "String",
@@ -8727,8 +8666,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Ebligi skriban asistadon",
-    "autoIGCToolDescription": "Aŭtomate funkciigi Pangea Chat-ilojn por korekti senditajn mesaĝojn al la cellingvo.",
+    "autoIGCToolName": "Aŭtomata kontrolo je sendo",
+    "autoIGCToolDescription": "Kontrolu vian mesaĝon pri eraroj kiam vi frapetas sendi. Kiam ĉi tio estas malŝaltita, frapetu la butonon de skribasistado por kontroli mesaĝon mem.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10365,7 +10304,6 @@
     "activityLoadFailed": "Ne povis ŝarĝi la aktivecon. Kontrolu vian konekton kaj provu denove.",
     "levelUpChip": "Nivelo {level}!",
     "missingCourseOutline": "Ĉi tiu kurso ne plu estas disponebla",
-    "missingCourseOutlineCta": "Ĉi tiu kurso ne plu estas disponebla. Elektu novan kurson.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10390,10 +10328,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10789,7 +10723,6 @@
     "constructLevelFlowers": "Floroj, regataj vortoj",
     "filterAndSearch": "Filtri kaj serĉi",
     "participantsOfTotal": "{filled} el {total} ludantoj",
-    "mapAttributionLabel": "OpenStreetMap-kontribuantoj, kopirajto kaj permesilo",
     "seeAll": "Vidi ĉion",
     "seeAllSection": "Vidi ĉion en {section}",
     "showMoreOptionsHint": "montri pliajn opciojn",
@@ -10907,25 +10840,126 @@
     "summaryFeedbackReceived": "Dankon! Ni ricevis vian retrokuplon.",
     "summaryFeedbackFailed": "Ne eblis sendi vian retrokuplon. Bonvolu reprovi.",
     "summaryFeedbackProcessing": "Sendante vian retrosciigon kaj ĝisdatigante la resumon…",
-    "ssoNetworkBlockedTitle": "Ensaluta retejo neatingebla",
-    "ssoNetworkBlockedDesc": "Ĉi tiu reto ne permesas al ni atingi {provider} por ensaluti vin. Lerneja kaj oficeja retkonekto ofte blokas ĝin. Vi povas registriĝi per retpoŝto anstataŭe, aŭ ŝanĝi al alia reto kaj reprovi.",
-    "ssoTryAnyway": "Provu ĉiukaze",
-    "callTranscriptNotSubscribed": "{name} ne havis abonon dum ĉi tiu voko, do tio, kio estis dirita, ne estis transskribita.",
     "callTranscriptTranscribing": "Ankoraŭ transskribante la registraĵon de {name}…",
     "callTranscriptSeekTo": "Ludi ekde {time}",
     "callTranscriptRecordings": "Registraĵoj",
     "callTranscriptFullCall": "Plena voko",
     "callTranscriptPreparingRecording": "Preparas la plenan registraĵon…",
     "callTranscriptNoRecording": "Neniu registraĵo de la plena voko.",
-    "callTranscriptTranscribeButton": "Transskribi",
-    "callTranscriptAudioUnavailable": "La konservita registraĵo de {name} ne povis esti elŝutita, do ĝi ne povis esti transskribita.",
-    "callTranscriptChooseLanguage": "Kiun lingvon oni parolis?",
-    "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
-    "unlockCallTranscript": "Malŝlosi alvokan transskribon",
+    "callTranscriptNotSubscribed": "{name} ne havis abonon dum ĉi tiu voko, do tio, kio estis dirita, ne estis transskribita.",
     "joinYourCourse": "Aliĝu al via kurso",
     "courseCodeJoinExplanation": "Ensalutu aŭ registriĝu, kaj ni uzos vian kurskodon por aŭtomate aldoni vin al via kurso.",
     "courseCodeLabel": "Kurskodo",
     "courseCodeSaved": "Kurskodo {code} konservita",
     "courseCodeSavedExplanation": "Registriĝu aŭ ensalutu kaj ni aldonos vin al via kurso.",
-    "missionDueDate": "Limdato {date}, {time}"
+    "moderationRefusedContactDetails": "Via mesaĝo ne estis sendita. Aŭtomata filtrilo trovis kontaktajn detalojn, kiel telefonnumeron. Bonvolu forigi ilin kaj reprovi.",
+    "moderationRefusedProfanity": "Via mesaĝo ne estis sendita. Aŭtomata filtrilo trovis vorton, kiun ni ne permesas en la babilejo. Bonvolu ŝanĝi ĝin kaj reprovi.",
+    "callTranscriptTranscribeButton": "Transskribi",
+    "callTranscriptAudioUnavailable": "La konservita registraĵo de {name} ne povis esti elŝutita, do ĝi ne povis esti transskribita.",
+    "callTranscriptChooseLanguage": "Kiun lingvon oni parolis?",
+    "callTranscriptSubscribeForTranscription": "Aboni por transskribo",
+    "unlockCallTranscript": "Malŝlosi alvokan transskribon",
+    "activitySummaryUpdateFailed": "Ĉi tiu resumo ne povis esti ĝisdatigita.",
+    "courseNotFound": "Kurso ne trovita",
+    "askTeacherForNewCourse": "Petu vian instruiston elekti novan kurson.",
+    "pickNewCoursePlan": "Elektu novan kursplanon.",
+    "ssoNetworkBlockedTitle": "Ensaluta retejo neatingebla",
+    "ssoNetworkBlockedDesc": "Ĉi tiu reto ne permesas al ni atingi {provider} por ensaluti vin. Lerneja kaj oficeja retkonekto ofte blokas ĝin. Vi povas registriĝi per retpoŝto anstataŭe, aŭ ŝanĝi al alia reto kaj reprovi.",
+    "ssoTryAnyway": "Provu ĉiukaze",
+    "publicCoursesFilterTooltip": "Montri nur kursojn al kiuj iu ajn povas aliĝi",
+    "restrictedCoursesFilterTooltip": "Montri nur kursojn al kiuj vi devas peti aliĝon",
+    "viewImageLabel": "Vidi bildon",
+    "reportSent": "Raporto sendita",
+    "reportNotSent": "Via raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
+    "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon",
+    "learningObjective": "Lernocelo",
+    "learningObjectives": "Lernoceloj",
+    "missionNofM": "Misio {index} el {count}",
+    "xpTowardObjective": "{xp} el {threshold} XP por ĉi tiu celo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Kurso finita!",
+    "courseCompleteDesc": "Vi plenumis ĉiujn {count} celojn en ĉi tiu kurso. Daŭre praktiku por konservi tion, kion vi lernis.",
+    "practiceObjective": "Praktiku ĉi tiun celon",
+    "otherActivities": "Aliaj agadoj",
+    "objectiveCircleComplete": "Misio {index}: finita",
+    "objectiveCircleUpNext": "Misio {index}: sekva",
+    "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon",
+    "andCertifyIMeetTheMinimumAge": " kaj mi certigas, ke mi aĝas almenaŭ 13 jarojn, aŭ la minimuman aĝon postulatan en mia lando se tio estas pli alta.",
+    "filteredNetworkBlockedTitle": "Ĉi tiu reto blokas Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ĉi tiu reto parte blokas Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Kion mi povas fari?",
+    "filteredNetworkPhoneAdvice": "Malŝaltu Wi-Fi kaj uzu poŝtelefonajn datumojn anstataŭe.",
+    "filteredNetworkComputerAdvice": "Konektiĝu al la retpunkto de via telefono anstataŭ ĉi tiu Wi-Fi.",
+    "filteredNetworkItHeading": "Por instruistoj kaj IT-personaro",
+    "filteredNetworkItBody": "Petu vian IT-teamon permesi ĉi tiujn domajnojn:",
+    "filteredNetworkAskForHelp": "Petu helpon de Pangea",
+    "filteredNetworkHelpExplanation": "Ni retpoŝtos al vi por helpi funkciigi Pangea Chat en ĉi tiu reto.",
+    "filteredNetworkHelpWaiting": "Via peto estos sendita tuj kiam vi estos konektita.",
+    "filteredNetworkHelpSent": "Sendite. Ni kontaktos vin per retpoŝto.",
+    "filteredNetworkHelpRefused": "Ni ne povis sendi vian peton. Bonvolu retpoŝti al support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ĉi tiu reto blokas filmetojn.",
+    "filteredNetworkImagesBlocked": "Ĉi tiu reto blokas bildojn.",
+    "filteredNetworkMapBlocked": "Ĉi tiu reto blokas la mapon.",
+    "callFullScreenTitle": "Permesu alvokojn sonori tutekrane",
+    "callFullScreenMessage": "Alvoko venis dum Pangea Chat estis fermita, sed via telefono povis montri nur malgrandan sciigon por ĝi. Permesu tutekranajn alvokojn tiel ke la sekva sonoros sur via tuta ekrano, eĉ kiam via telefono estas ŝlosita.",
+    "callMicrophoneTitle": "Uzu vian mikrofonon por vokoj",
+    "callMicrophoneMessage": "Pangea Chat bezonas vian mikrofonon por vokoj, inkluzive de vokoj, kiujn vi respondas de la ŝlosila ekrano.",
+    "callMicrophoneOffTitle": "Via voko ne konektiĝis",
+    "callMicrophoneOffMessage": "Pangea Chat ne povas uzi vian mikrofonon. Frapu por ŝalti ĝin en Agordoj.",
+    "goalsCompletedOfTotal": "{earned} el {total} celoj plenumitaj",
+    "goalsCompletedInLanguage": "Celoj plenumitaj en la lingvo {language}",
+    "sessionXpTowardObjective": "{xp} XP ĉi-sesie; {remaining} pli kompletigas la celon",
+    "mapCreditsLabel": "Mapaj atribuoj: Stadia Maps, OpenMapTiles kaj OpenStreetMap",
+    "activityLaunchFindingCourses": "Trovante viajn kursojn...",
+    "activityLaunchCreatingRoom": "Kreante vian agadon...",
+    "activityLaunchOpeningRoom": "Malfermante vian agadon...",
+    "playWithOthers": "Ludu kun aliaj",
+    "openRole": "Malferma: {role}",
+    "waitingFor": "Atendante {duration}",
+    "onlineInCourse": "{count} enrete en {course}",
+    "newCourseChat": "Nova kursa babilejo",
+    "customCourseStepDesc": "Kurso estas aro de konversaciaj agadoj, kiuj sekvas vian lernolibron, por ke viaj studentoj faru kune kiel hejmtasko.",
+    "reopenAppToFinishSwitching": "Fermu la apon tute kaj remalfermu ĝin por fini la ŝanĝon.",
+    "teamCode": "Teama kodo",
+    "connectionOffline": "Vi estas eksterrete. Pangea Chat rekonektos kiam via konekto revenos.",
+    "connectionUnreachable": "Ne eblas atingi Pangea Chat. Reprovas…",
+    "connectionBackOnline": "Reen enrete",
+    "missionDueDate": "Limdato {date}, {time}",
+    "callNotificationsTitle": "Lasu vokojn sonori",
+    "callNotificationsMessage": "Vokoj sonoras kiel sciigoj. Permesu sciigojn por ke via telefono sonoru por voko, eĉ kiam Pangea Chat estas fermita aŭ via telefono estas ŝlosita.",
+    "callNotificationsMissedMessage": "Voko envenis dum Pangea Chat estis fermita, sed via telefono ne povis sonori ĉar sciigoj estas malŝaltitaj. Permesu sciigojn por ke la sekva voko sonoru.",
+    "connectionPracticeVocab": "Ekzercu vortprovizon dum vi atendas",
+    "offlinePracticeNote": "Senkonekta. Viaj respondoj alŝutiĝos kiam vi revenos.",
+    "offlinePracticeSavedNote": "Konservita en ĉi tiu aparato. Viaj XP alŝutiĝos kiam vi revenos enretan.",
+    "offlinePracticeNothingSaved": "Ne sufiĉas konservite en ĉi tiu aparato por ekzerci eksterrete. Provu denove kiam vi estos konektita.",
+    "missionNumber": "Misio {index}",
+    "xpToYourStar": "{xp} SPertoj ĝis via stelo",
+    "missionStarEarned": "Stelo gajnita!",
+    "xpFromChats": "Babilejoj {xp}",
+    "xpFromGoals": "Celoj {xp}",
+    "xpFromPractice": "Ekzercado {xp}",
+    "playMission": "Ludi",
+    "wordCount": "{count, plural, =1{1 vorto} other{{count} vortoj}}",
+    "continueActivity": "Daŭrigi",
+    "noObjectiveActivitiesYet": "Vi ankoraŭ ne kompletigis agadon por ĉi tiu celo. Komencu unu el via kurso.",
+    "objectiveNotInYourCourses": "Ĉi tiu celo ne estas en iu ajn el viaj kursoj.",
+    "objectiveActivityCount": "{count, plural, =0{Ankoraŭ neniuj agadoj} =1{1 agado ludita} other{{count} agadoj luditaj}}",
+    "activityCompleted": "Kompletigita",
+    "completedTimes": "Kompletigita {count} fojojn",
+    "classLocation": "Klasloko",
+    "xpThresholdSuffix": "/ {threshold} SPertoj",
+    "xpFromConversation": "Konversacio {xp}",
+    "xpIncludingGoals": "inkluzive {xp} de celoj",
+    "missionOtherLanguageNotice": "Ĉi tiu Misio estas de kurso en {language}. Via progreso pri ĝi validas nur dum vi lernas {language}.",
+    "missionLanguageMismatchDesc": "Ĉi tiu Misio estas de kurso en {language}. Ĉu ŝanĝi vian cellingvon al {language}?",
+    "xpBySkillTitle": "Laŭ kapablo",
+    "missionNextActivity": "Sekva agado",
+    "missionContinueActivity": "Daŭrigi agadon",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Finita en ĉi tiu kurso ({num})",
+    "otherCoursesSessions": "Aliaj kursoj ({num})",
+    "activityXpStamp": "{xp} SPer",
+    "activityCompletedWithXp": "{completed}, {xp} SPer gajnitaj",
+    "currentMission": "Nuna misio"
 }

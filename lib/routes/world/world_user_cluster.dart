@@ -239,6 +239,7 @@ class _PowerupsPill extends StatelessWidget {
                                     return ClusterTrackerButton(
                                       indicator: ProgressIndicatorEnum.stars,
                                       count: stars,
+                                      loading: viewModel.starsLoading,
                                       selected:
                                           selectedTab ==
                                           ProgressIndicatorEnum.stars,
@@ -343,6 +344,10 @@ class ClusterTrackerButton extends StatefulWidget {
   /// mounted.
   final String? tutorialTargetId;
 
+  /// The count is still on its way: it shimmers in place of a number that
+  /// would read as zero (#9559).
+  final bool loading;
+
   const ClusterTrackerButton({
     required this.indicator,
     required this.count,
@@ -352,6 +357,7 @@ class ClusterTrackerButton extends StatefulWidget {
     this.iconSize = 24,
     this.fontSize = 16,
     this.tutorialTargetId,
+    this.loading = false,
     super.key,
   });
 
@@ -397,10 +403,13 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
               ? holder.current?.sessionController.session?.startedAt
               : null;
 
+          final countLabel = widget.loading
+              ? L10n.of(context).loadingPleaseWait
+              : '$count';
           final semanticsLabel = liveSessionStart != null
-              ? '${indicator.tooltip(context)}: $count — '
+              ? '${indicator.tooltip(context)}: $countLabel — '
                     '${L10n.of(context).practice}'
-              : '${indicator.tooltip(context)}: $count';
+              : '${indicator.tooltip(context)}: $countLabel';
 
           return Tooltip(
             message: liveSessionStart != null
@@ -462,13 +471,10 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
                         children: [
                           Icon(indicator.icon, size: iconSize),
                           const SizedBox(height: 3),
-                          Text(
-                            compactCount(count),
-                            style: TextStyle(
-                              fontSize: fontSize,
-                              height: 1.1,
-                              fontWeight: FontWeight.w600,
-                            ),
+                          _TrackerCount(
+                            text: compactCount(count),
+                            fontSize: fontSize,
+                            loading: widget.loading,
                           ),
                         ],
                       ),
@@ -611,6 +617,46 @@ class ClusterLanguageFlag extends StatelessWidget {
             fontSize: fontSize,
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// A tracker's number, or — while it is [loading] — a shimmering block the
+/// same size, so the pill neither shows a false zero nor shifts when the
+/// number lands.
+class _TrackerCount extends StatelessWidget {
+  final String text;
+  final double fontSize;
+  final bool loading;
+
+  const _TrackerCount({
+    required this.text,
+    required this.fontSize,
+    required this.loading,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final count = Text(
+      text,
+      style: TextStyle(
+        fontSize: fontSize,
+        height: 1.1,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+    if (!loading) return count;
+    final scheme = Theme.of(context).colorScheme;
+    return Shimmer.fromColors(
+      baseColor: scheme.surfaceContainerHighest,
+      highlightColor: scheme.surface,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: scheme.surfaceContainerHighest,
+          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+        ),
+        child: Opacity(opacity: 0.0, child: count),
       ),
     );
   }

@@ -10,7 +10,13 @@ class PersistentRepoCache<TResponse extends BaseResponse>
   final GetStorage _storage;
   final String boxName;
 
-  PersistentRepoCache(this.boxName) : _storage = GetStorage(boxName);
+  /// Keeps an expired entry until a new one replaces it, so [getAnyAge] can
+  /// still read it. Only for a box with few keys, because nothing else removes
+  /// an entry that is never fetched again.
+  final bool keepExpired;
+
+  PersistentRepoCache(this.boxName, {this.keepExpired = false})
+    : _storage = GetStorage(boxName);
 
   @override
   Future<void> init() async {
@@ -24,22 +30,39 @@ class PersistentRepoCache<TResponse extends BaseResponse>
     Duration cacheDuration,
     TResponse Function(Map<String, dynamic>) responseFromJson,
   ) {
+    final value = _read(key, responseFromJson);
+    if (value == null) return null;
+
+    if (value.isExpired(cacheDuration)) {
+      if (!keepExpired) _storage.remove(key);
+      return null;
+    }
+
+    return value.response;
+  }
+
+  /// The saved entry for [key] whatever its age, for a box that
+  /// [keepExpired].
+  TResponse? getAnyAge(
+    String key,
+    TResponse Function(Map<String, dynamic>) responseFromJson,
+  ) => _read(key, responseFromJson)?.response;
+
+  RepoCacheItem<TResponse>? _read(
+    String key,
+    TResponse Function(Map<String, dynamic>) responseFromJson,
+  ) {
     final entry = _storage.read(key);
     if (entry == null) return null;
 
     try {
-      final value = RepoCacheItem<TResponse>.fromJson(
+      return RepoCacheItem<TResponse>.fromJson(
         entry,
         responseFromJson: responseFromJson,
       );
-
-      if (value.isExpired(cacheDuration)) {
-        _storage.remove(key);
-        return null;
-      }
-
-      return value.response;
     } catch (_) {
+      // An entry that no longer parses is a cache miss: drop it, and the
+      // caller fetches a fresh one.
       _storage.remove(key);
       return null;
     }

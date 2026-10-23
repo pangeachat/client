@@ -252,13 +252,13 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   static const Key _cavityBoxKey = ValueKey('navCavityBox');
 
   /// The collapsed peek height for a course sheet (the only cavity that peeks).
-  /// Sized to the course card's compact header — the drag handle plus the
-  /// [X · title · share] row and the overall progress bar — so the collapsed
-  /// default shows exactly the course identity + progress. The card itself
-  /// drops its tabs/content below `_kCompactCardMaxHeight` (168px) so this short
-  /// box never overflows; the tabs slide in as the learner drags up (#7597, the
-  /// Figma mobile-default frame). Kept a touch under that threshold.
-  static const double _peekHeight = 128.0;
+  /// Sized to the course card's compact form — the drag handle, the card's
+  /// header and its labelled Mission circles — so the collapsed default shows
+  /// the course identity and its Missions. The body this leaves the card stays
+  /// just under the card's compact threshold (`_kCompactCardMaxHeight` in
+  /// space_details_content.dart), so the card renders only the circles and
+  /// never overflows; its sections slide in as the learner drags up (#7597).
+  static const double _peekHeight = 172.0;
   static const Duration _animationDuration = Duration(milliseconds: 240);
 
   /// The least the keyboard trim may leave of an OPEN cavity — the drag handle

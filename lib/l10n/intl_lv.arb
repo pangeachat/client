@@ -725,11 +725,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sinhronizē... Lūgums uzgaidīt.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "passwordHasBeenChanged": "Parole tikai nomainīta",
     "@passwordHasBeenChanged": {
         "type": "String",
@@ -2592,23 +2587,12 @@
     "@compress": {},
     "unableToJoinChat": "Nevarēja pievienoties tērzēšanai. Varbūt otra puse jau ir aizvērusi sarunu.",
     "@unableToJoinChat": {},
-    "synchronizingPleaseWaitCounter": " Sinhronizē... ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "previous": "Iepriekšējais",
     "@previous": {},
     "otherPartyNotLoggedIn": "Otra puse pašlaik nav pieteikusies un tādēļ nevar saņemt ziņas.",
     "@otherPartyNotLoggedIn": {},
     "open": "Atvērt",
     "@open": {},
-    "waitingForServer": "Gaida serveri...",
-    "@waitingForServer": {},
     "notificationRuleContainsDisplayNameDescription": "Paziņo lietotājam, kad ziņa satur viņa attēlojamo vārdu.",
     "@notificationRuleContainsDisplayNameDescription": {},
     "notificationRuleServerAcl": "Apspiest servera ACL notikumus",
@@ -2904,7 +2888,6 @@
     "errorDisableIGCClassDesc": "Gramatikas palīdzība ir izslēgta kursam, kurā atrodas šī tērzēšana.",
     "error405Desc": "Lūdzu, iestatiet savas valodas galvenajā izvēlnē > Mācību iestatījumi.",
     "termsAndConditions": "Noteikumiem un nosacījumiem",
-    "andCertifyIAmAtLeast13YearsOfAge": " un apliecinu, ka man ir vismaz 16 gadu.",
     "error502504Desc": "Tulkotāja un gramatikas rīki var būt lēni vai nepieejami, kamēr Pangea roboti seko līdzi.",
     "error404Desc": "Pangea bots nav pārliecināts, kā to tulkot...",
     "errorPleaseRefresh": "Mēs to izpētām! Lūdzu, ielādējiet lapu vēlreiz un mēģiniet vēlreiz.",
@@ -3212,9 +3195,6 @@
     "why": "Kāpēc?",
     "definition": "Definīcija",
     "reportToTeacher": "Kam vēlaties ziņot šo ziņojumu?",
-    "reportMessageTitle": "{reportingUserId} ir ziņojis par ziņojumu no {reportedUserId} čatā {roomName}",
-    "reportMessageBody": "Ziņojums: {reportedMessage}\nIemesls: {reason}",
-    "noTeachersFound": "Nav atrasts skolotājs ziņošanai",
     "trialExpiration": "Jūsu bezmaksas izmēģinājuma termiņš beidzas {expiration}",
     "freeTrialDesc": "Jauniem lietotājiem ir viena nedēļa bezmaksas Pangea Chat izmēģinājuma",
     "activateTrial": "Bezmaksas 7 dienu izmēģinājums",
@@ -3535,7 +3515,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-05 12:30:42.149204",
+    "@@last_modified": "2026-10-22 09:50:19.290094",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -3701,10 +3681,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -4951,35 +4927,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -7937,11 +7884,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Izmantojiet aktivitātes attēlu kā čata fona",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Sarunāties ar atbalstu",
     "@chatWithSupport": {
         "type": "String",
@@ -7962,8 +7904,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Iespējot rakstīšanas palīdzību",
-    "autoIGCToolDescription": "Automātiski palaist Pangea Chat rīkus, lai labotu nosūtītās ziņas mērķa valodā.",
+    "autoIGCToolName": "Automātiskā pārbaude nosūtot",
+    "autoIGCToolDescription": "Pārbaudīt ziņojumu, vai nav kļūdu, kad nospiežat sūtīšanas pogu. Ja šī opcija ir izslēgta, pieskarieties rakstīšanas palīdzības pogai, lai pats pārbaudītu ziņojumu.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9420,7 +9362,6 @@
     "activityLoadFailed": "Neizdevās ielādēt aktivitāti. Pārbaudiet savu savienojumu un mēģiniet vēlreiz.",
     "levelUpChip": "Līmenis {level}!",
     "missingCourseOutline": "Šis kurss vairs nav pieejams",
-    "missingCourseOutlineCta": "Šis kurss vairs nav pieejams. Izvēlieties jaunu kursa plānu.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9445,10 +9386,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -9844,7 +9781,6 @@
     "constructLevelFlowers": "Ziedi, apgūtie vārdi",
     "filterAndSearch": "Filtrēt un meklēt",
     "participantsOfTotal": "{filled} no {total} spēlētājiem",
-    "mapAttributionLabel": "OpenStreetMap līdzstrādnieki, autortiesības un licence",
     "seeAll": "Skatīt visu",
     "seeAllSection": "Skatīt visu sadaļu {section}",
     "showMoreOptionsHint": "rādīt vairāk opciju",
@@ -9962,25 +9898,126 @@
     "summaryFeedbackReceived": "Paldies! Mēs saņēmām jūsu atsauksmes.",
     "summaryFeedbackFailed": "Neizdevās nosūtīt jūsu atsauksmes. Lūdzu, mēģiniet vēlreiz.",
     "summaryFeedbackProcessing": "Sūta jūsu atsauksmes un atjaunina kopsavilkumu…",
-    "ssoNetworkBlockedTitle": "Pieteikšanās vietne nav sasniedzama",
-    "ssoNetworkBlockedDesc": "Šis tīkls neļauj mums sasniegt {provider}, lai jūs pieteiktu. Skolas un biroja Wi-Fi bieži to bloķē. Jūs varat reģistrēties ar e-pastu vai pārslēgties uz citu tīklu un mēģināt vēlreiz.",
-    "ssoTryAnyway": "Tomēr mēģināt",
-    "callTranscriptNotSubscribed": "{name} nebija abonementa šī zvana laikā, tāpēc teiktais netika pārrakstīts.",
     "callTranscriptTranscribing": "Joprojām tiek atšifrēts ieraksts no {name}…",
     "callTranscriptSeekTo": "Atskaņot no {time}",
     "callTranscriptRecordings": "Ieraksti",
     "callTranscriptFullCall": "Pilns zvans",
     "callTranscriptPreparingRecording": "Tiek sagatavots pilns ieraksts…",
     "callTranscriptNoRecording": "Nav pilna zvana ieraksta.",
-    "callTranscriptTranscribeButton": "Transkribēt",
-    "callTranscriptAudioUnavailable": "Saglabāto ierakstu no {name} nevarēja lejupielādēt, tāpēc to nevarēja transkribēt.",
-    "callTranscriptChooseLanguage": "Kādā valodā runājāt?",
-    "callTranscriptSubscribeForTranscription": "Abonēt transkripciju",
-    "unlockCallTranscript": "Atbloķēt zvanu transkriptu",
+    "callTranscriptNotSubscribed": "{name} nebija abonementa šī zvana laikā, tāpēc teiktais netika pārrakstīts.",
     "joinYourCourse": "Pievienojies savam kursam",
     "courseCodeJoinExplanation": "Piesakies vai reģistrējies, un mēs izmantosim tavu kursa kodu, lai automātiski tevi pievienotu kursam.",
     "courseCodeLabel": "Kursa kods",
     "courseCodeSaved": "Kursa kods {code} saglabāts",
     "courseCodeSavedExplanation": "Reģistrējies vai piesakies, un mēs tevi pievienosim tavam kursam.",
-    "missionDueDate": "Izpildes termiņš: {date}, {time}"
+    "moderationRefusedContactDetails": "Jūsu ziņojums netika nosūtīts. Automātiskais filtrs atrada kontaktinformāciju, piemēram, tālruņa numuru. Lūdzu, noņemiet to un mēģiniet vēlreiz.",
+    "moderationRefusedProfanity": "Jūsu ziņojums netika nosūtīts. Automātiskais filtrs atrada vārdu, ko neatļaujam tērzēšanā. Lūdzu, mainiet to un mēģiniet vēlreiz.",
+    "callTranscriptTranscribeButton": "Transkribēt",
+    "callTranscriptAudioUnavailable": "Saglabāto ierakstu no {name} nevarēja lejupielādēt, tāpēc to nevarēja transkribēt.",
+    "callTranscriptChooseLanguage": "Kādā valodā runājāt?",
+    "callTranscriptSubscribeForTranscription": "Abonēt transkripciju",
+    "unlockCallTranscript": "Atbloķēt zvanu transkriptu",
+    "activitySummaryUpdateFailed": "Šo kopsavilkumu nevarēja atjaunināt.",
+    "courseNotFound": "Kurss nav atrasts",
+    "askTeacherForNewCourse": "Palūdziet savam skolotājam izvēlēties jaunu kursu.",
+    "pickNewCoursePlan": "Izvēlieties jaunu kursa plānu.",
+    "ssoNetworkBlockedTitle": "Pieteikšanās vietne nav sasniedzama",
+    "ssoNetworkBlockedDesc": "Šis tīkls neļauj mums sasniegt {provider}, lai jūs pieteiktu. Skolas un biroja Wi-Fi bieži to bloķē. Jūs varat reģistrēties ar e-pastu vai pārslēgties uz citu tīklu un mēģināt vēlreiz.",
+    "ssoTryAnyway": "Tomēr mēģināt",
+    "publicCoursesFilterTooltip": "Rādīt tikai kursus, kuriem var pievienoties ikviens",
+    "restrictedCoursesFilterTooltip": "Rādīt tikai kursus, kuriem jāpieprasa pievienošanās",
+    "viewImageLabel": "Skatīt attēlu",
+    "reportSent": "Ziņojums nosūtīts",
+    "reportNotSent": "Jūsu ziņojumu nevarēja nosūtīt. Pārbaudiet savienojumu un mēģiniet vēlreiz.",
+    "reportPointerMessage": "Ziņojums tika ziņots kursā {courseName} — skatiet Drošība",
+    "learningObjective": "Mācību mērķis",
+    "learningObjectives": "Mācību mērķi",
+    "missionNofM": "Misija {index} no {count}",
+    "xpTowardObjective": "{xp} no {threshold} XP līdz šim mērķim",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Kurss pabeigts!",
+    "courseCompleteDesc": "Jūs esat pabeidzis visus {count} šī kursa mērķus. Turpiniet praktizēties, lai saglabātu apgūto.",
+    "practiceObjective": "Praktizēt šo mērķi",
+    "otherActivities": "Citas aktivitātes",
+    "objectiveCircleComplete": "Misija {index}: pabeigta",
+    "objectiveCircleUpNext": "Misija {index}: nākamā",
+    "useActivityImageAsChatBackground": "Izmantot aktivitātes attēlu kā tērzēšanas fonu",
+    "andCertifyIMeetTheMinimumAge": " un apliecinu, ka esmu vismaz 13 gadus vecs vai sasniedzis minimālo vecumu, kas noteikts manā valstī, ja tas ir augstāks.",
+    "filteredNetworkBlockedTitle": "Šis tīkls bloķē Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Šis tīkls daļēji bloķē Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ko es varu darīt?",
+    "filteredNetworkPhoneAdvice": "Izslēdziet Wi-Fi un izmantojiet mobilos datus.",
+    "filteredNetworkComputerAdvice": "Pievienojieties tālruņa tīklājam, nevis šim Wi-Fi.",
+    "filteredNetworkItHeading": "Skolotājiem un IT personālam",
+    "filteredNetworkItBody": "Palūdziet savai IT komandai atļaut šos domēnus:",
+    "filteredNetworkAskForHelp": "Lūgt Pangea palīdzību",
+    "filteredNetworkHelpExplanation": "Mēs jums nosūtīsim e-pastu, lai palīdzētu Pangea Chat darboties šajā tīklā.",
+    "filteredNetworkHelpWaiting": "Jūsu pieprasījums tiks nosūtīts, tiklīdz būsiet izveidojis savienojumu.",
+    "filteredNetworkHelpSent": "Nosūtīts. Mēs sazināsimies ar jums pa e-pastu.",
+    "filteredNetworkHelpRefused": "Mēs nevarējām nosūtīt jūsu pieprasījumu. Lūdzu, rakstiet uz support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Šis tīkls bloķē video.",
+    "filteredNetworkImagesBlocked": "Šis tīkls bloķē attēlus.",
+    "filteredNetworkMapBlocked": "Šis tīkls bloķē karti.",
+    "callFullScreenTitle": "Ļaut zvaniem zvanīt pilnekrāna režīmā",
+    "callFullScreenMessage": "Ienāca zvans, kamēr Pangea Chat bija aizvērts, taču jūsu tālrunis varēja parādīt tikai nelielu paziņojumu par to. Atļaujiet pilnekrāna zvanus, lai nākamais zvans zvanītu uz visu ekrānu, pat ja tālrunis ir bloķēts.",
+    "callMicrophoneTitle": "Izmantojiet mikrofonu zvaniem",
+    "callMicrophoneMessage": "Pangea Chat ir nepieciešams jūsu mikrofons zvaniem, tostarp zvaniem, ko atbildat no bloķēšanas ekrāna.",
+    "callMicrophoneOffTitle": "Jūsu zvans netika savienots",
+    "callMicrophoneOffMessage": "Pangea Chat nevar izmantot jūsu mikrofonu. Pieskarieties, lai to ieslēgtu iestatījumos.",
+    "goalsCompletedOfTotal": "{earned} no {total} mērķiem pabeigti",
+    "goalsCompletedInLanguage": "Pabeigtie mērķi valodā {language}",
+    "sessionXpTowardObjective": "{xp} XP šajā sesijā; vēl {remaining} un mērķis ir sasniegts",
+    "mapCreditsLabel": "Kartes atsauces: Stadia Maps, OpenMapTiles un OpenStreetMap",
+    "activityLaunchFindingCourses": "Meklējam jūsu kursus…",
+    "activityLaunchCreatingRoom": "Veidojam jūsu aktivitāti…",
+    "activityLaunchOpeningRoom": "Atveram jūsu aktivitāti…",
+    "playWithOthers": "Spēlē ar citiem",
+    "openRole": "Atvērts: {role}",
+    "waitingFor": "Gaida {duration}",
+    "onlineInCourse": "{count} tiešsaistē kursā {course}",
+    "newCourseChat": "Jauna kursa tērzēšana",
+    "customCourseStepDesc": "Kurss ir sarunu aktivitāšu kopums, kas seko jūsu mācību grāmatai, lai jūsu studenti to darītu kopā kā mājasdarbu.",
+    "reopenAppToFinishSwitching": "Pilnībā aizveriet lietotni un atveriet to vēlreiz, lai pabeigtu pārslēgšanos.",
+    "teamCode": "Komandas kods",
+    "connectionOffline": "Jūs esat bezsaistē. Pangea tērzēšana atjaunos savienojumu, kad jūsu savienojums būs atjaunots.",
+    "connectionUnreachable": "Nevar sasniegt Pangea tērzēšanu. Mēģina vēlreiz…",
+    "connectionBackOnline": "Atkal tiešsaistē",
+    "missionDueDate": "Izpildes termiņš: {date}, {time}",
+    "callNotificationsTitle": "Ļaut zvaniem zvanīt",
+    "callNotificationsMessage": "Zvani zvana kā paziņojumi. Atļaujiet paziņojumus, lai tālrunis zvanītu, kad ienāk zvans, pat ja Pangea Chat ir aizvērta vai tālrunis ir bloķēts.",
+    "callNotificationsMissedMessage": "Ienāca zvans, kamēr Pangea Chat bija aizvērta, taču tālrunis nevarēja zvanīt, jo paziņojumi ir izslēgti. Atļaujiet paziņojumus, lai nākamais zvans zvanītu.",
+    "connectionPracticeVocab": "Praktizē vārdu krājumu, kamēr gaidi",
+    "offlinePracticeNote": "Bezsaistē. Tavas atbildes tiks augšupielādētas, kad būsi atpakaļ.",
+    "offlinePracticeSavedNote": "Saglabāts šajā ierīcē. Tavs XP tiks augšupielādēts, kad būsi tiešsaistē.",
+    "offlinePracticeNothingSaved": "Šajā ierīcē nav saglabāts pietiekami daudz, lai praktizētu bezsaistē. Mēģiniet vēlreiz, kad būsiet tiešsaistē.",
+    "missionNumber": "Misija {index}",
+    "xpToYourStar": "{xp} XP līdz jūsu zvaigznei",
+    "missionStarEarned": "Zvaigzne iegūta!",
+    "xpFromChats": "Tērzēšanas {xp}",
+    "xpFromGoals": "Mērķi {xp}",
+    "xpFromPractice": "Praktizēšanās {xp}",
+    "playMission": "Spēlēt",
+    "wordCount": "{count, plural, =1{1 vārds} other{{count} vārdi}}",
+    "continueActivity": "Turpināt",
+    "noObjectiveActivitiesYet": "Jūs vēl neesat pabeidzis nevienu aktivitāti šim mērķim. Sāciet to no sava kursa.",
+    "objectiveNotInYourCourses": "Šis mērķis nav nevienā no jūsu kursiem.",
+    "objectiveActivityCount": "{count, plural, =0{Vēl nav aktivitāšu} =1{1 aktivitāte pabeigta} other{{count} aktivitātes pabeigtas}}",
+    "activityCompleted": "Pabeigts",
+    "completedTimes": "Pabeigts {count} reizes",
+    "classLocation": "Nodarbības vieta",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Saruna {xp}",
+    "xpIncludingGoals": "ieskaitot {xp} no mērķiem",
+    "missionOtherLanguageNotice": "Šī misija ir no kursa valodā {language}. Jūsu progress tajā tiks ieskaitīts tikai tad, ja mācīsities valodu {language}.",
+    "missionLanguageMismatchDesc": "Šī misija ir no kursa valodā {language}. Vai vēlaties mainīt mērķa valodu uz {language}?",
+    "xpBySkillTitle": "Pēc prasmēm",
+    "missionNextActivity": "Nākamā aktivitāte",
+    "missionContinueActivity": "Turpināt aktivitāti",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Pabeigts šajā kursā ({num})",
+    "otherCoursesSessions": "Citi kursi ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, iegūti {xp} XP",
+    "currentMission": "Pašreizējā misija"
 }

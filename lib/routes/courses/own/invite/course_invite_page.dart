@@ -56,6 +56,10 @@ class CourseInvitePageController extends State<CourseInvitePage>
   }
 
   Future<String> getSpaceId() async {
+    // Resolve the client before any await. The page is routed away from while
+    // the creation completer or the state sync is still pending, and reading
+    // `context` on a disposed State throws a null check (CLIENT-EYE / EYF).
+    final client = Matrix.of(context).client;
     final completer = widget.courseCreationCompleter;
     if (completer == null) {
       // No live creation completer (reload / back). The route param is the
@@ -64,16 +68,16 @@ class CourseInvitePageController extends State<CourseInvitePage>
       // room matched this way already has that state, so no sync wait is needed.
       // (initState redirects away when no such room exists; this throw is a
       // belt-and-suspenders for that race.)
-      final room = Matrix.of(context).client.getRoomByCourseId(widget.courseId);
+      final room = client.getRoomByCourseId(widget.courseId);
       if (room == null) {
         throw Exception("No course room for plan ${widget.courseId}");
       }
       return room.id;
     }
     final spaceId = await completer.future;
-    final room = Matrix.of(context).client.getRoomById(spaceId);
+    final room = client.getRoomById(spaceId);
 
-    final roomStateStream = Matrix.of(context).client.onRoomState.stream;
+    final roomStateStream = client.onRoomState.stream;
     final futures = [
       if (room == null) roomStateStream.firstWhere((e) => e.roomId == spaceId),
       if (room?.coursePlan == null)
@@ -106,6 +110,7 @@ class CourseInvitePageController extends State<CourseInvitePage>
   }
 
   Future<bool> get _isPublic async {
+    final client = Matrix.of(context).client;
     String spaceId;
     try {
       spaceId = await getSpaceId();
@@ -117,11 +122,12 @@ class CourseInvitePageController extends State<CourseInvitePage>
       );
       return true;
     }
+    // The page can be gone by the time the creation resolves; its switch will
+    // never render, so don't spend a directory read on it.
+    if (!mounted) return true;
 
     try {
-      final visibility = await Matrix.of(
-        context,
-      ).client.getRoomVisibilityOnDirectory(spaceId);
+      final visibility = await client.getRoomVisibilityOnDirectory(spaceId);
       return visibility == Visibility.public;
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {"space_id": spaceId});
@@ -130,6 +136,7 @@ class CourseInvitePageController extends State<CourseInvitePage>
   }
 
   Future<bool> get _requireAnalyticsAccess async {
+    final client = Matrix.of(context).client;
     String spaceId;
     try {
       spaceId = await getSpaceId();
@@ -142,15 +149,16 @@ class CourseInvitePageController extends State<CourseInvitePage>
       return true;
     }
 
-    final room = Matrix.of(context).client.getRoomById(spaceId);
+    final room = client.getRoomById(spaceId);
     if (room == null) return true;
     return room.requireAnalyticsAccess;
   }
 
   Future<void> _setVisibility(bool value) async {
+    final client = Matrix.of(context).client;
     try {
       final spaceId = await getSpaceId();
-      await Matrix.of(context).client.setRoomVisibilityOnDirectory(
+      await client.setRoomVisibilityOnDirectory(
         spaceId,
         visibility: value ? Visibility.public : Visibility.private,
       );
@@ -167,9 +175,10 @@ class CourseInvitePageController extends State<CourseInvitePage>
   }
 
   Future<void> _setRequireAnalyticsAccess(bool value) async {
+    final client = Matrix.of(context).client;
     try {
       final spaceId = await getSpaceId();
-      final room = Matrix.of(context).client.getRoomById(spaceId);
+      final room = client.getRoomById(spaceId);
       if (room == null) {
         throw Exception('Room not found');
       }

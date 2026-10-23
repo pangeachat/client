@@ -201,7 +201,7 @@ sealed class PracticeExerciseModel {
           errorOffset: json['error_offset'] as int,
           errorLength: json['error_length'] as int,
           eventID: json['event_id'] as String,
-          translation: json['translation'] as String,
+          translation: json['translation'] as String?,
         );
       default:
         throw ("Unsupported exercise type in PracticeExerciseModel.fromJson: $type");
@@ -435,7 +435,10 @@ class GrammarErrorPracticeExerciseModel
   final int errorOffset;
   final int errorLength;
   final String eventID;
-  final String translation;
+
+  /// The sentence in the learner's L1, shown as the hint. Null in an offline
+  /// session, because the translation needs the network.
+  final String? translation;
 
   GrammarErrorPracticeExerciseModel({
     required super.tokens,
@@ -445,7 +448,7 @@ class GrammarErrorPracticeExerciseModel
     required this.errorOffset,
     required this.errorLength,
     required this.eventID,
-    required this.translation,
+    this.translation,
   });
 
   /// Stamp the source message's [eventID] onto each recorded practice use so

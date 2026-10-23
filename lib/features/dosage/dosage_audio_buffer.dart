@@ -679,9 +679,7 @@ class DosageAudioBuffer {
   /// Each caller awaits its own [flushDeadline]-bounded VIEW. The timeout is
   /// deliberately applied to the view and never to the latch: a timed-out latch
   /// would clear while the real drain was still posting and let a second drain
-  /// start on the same batches, double-counting their attempts. Same shape, and
-  /// the same reason, as the env-load latch in
-  /// [DosageMessageSignals.ensureDosageEnvLoaded].
+  /// start on the same batches, double-counting their attempts.
   ///
   /// A caller that times out has not lost anything by timing out: the drain
   /// keeps running and the batches stay buffered either way.

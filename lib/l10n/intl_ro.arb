@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-05 12:30:46.587727",
+    "@@last_modified": "2026-10-22 09:50:24.685833",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -1246,11 +1246,6 @@
             }
         }
     },
-    "synchronizingPleaseWait": "Sincronizează... Vă rugăm să așteptați.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Sistem",
     "@systemTheme": {
         "type": "String",
@@ -2154,7 +2149,6 @@
     "sendImages": "Trimite {count} imagine",
     "setChatDescription": "Setează descrierea chat-ului",
     "presencesToggle": "Afișează mesajele de stare de la alți utilizatori",
-    "synchronizingPleaseWaitCounter": "Se sincronizează… ({percentage}%)",
     "invitedBy": "📩 Invitat de {user}",
     "hasKnocked": "🚪 {user} a bătut la ușă",
     "knock": "Bate la ușă",
@@ -2275,7 +2269,6 @@
     "previous": "Anterior",
     "otherPartyNotLoggedIn": "Cealaltă parte nu este conectată în prezent și, prin urmare, nu poate primi mesaje!",
     "open": "Deschide",
-    "waitingForServer": "Se așteaptă serverul...",
     "newChatRequest": "📩 Cerere de chat nou",
     "contentNotificationSettings": "Setări notificări conținut",
     "generalNotificationSettings": "Setări generale de notificare",
@@ -2379,7 +2372,6 @@
     "errorDisableIGCClassDesc": "Asistența de gramatică este dezactivată pentru cursul în care se află această conversație.",
     "error405Desc": "Vă rugăm să setați limbile în Meniu Principal > Setări de Învățare.",
     "termsAndConditions": "Termenii și Condițiile",
-    "andCertifyIAmAtLeast13YearsOfAge": " și certific că am cel puțin 16 ani.",
     "error502504Desc": "Instrumentele de traducere și gramatică pot fi lente sau indisponibile în timp ce roboții Pangea se actualizează.",
     "error404Desc": "Botul Pangea nu este sigur cum să traducă asta...",
     "errorPleaseRefresh": "Ne uităm la problemă! Vă rugăm să reîncărcați și să încercați din nou.",
@@ -2687,9 +2679,6 @@
     "why": "De ce?",
     "definition": "Definiție",
     "reportToTeacher": "Cui vrei să raportezi acest mesaj?",
-    "reportMessageTitle": "{reportingUserId} a raportat un mesaj de la {reportedUserId} în chat-ul {roomName}",
-    "reportMessageBody": "Mesaj: {reportedMessage}\nMotiv: {reason}",
-    "noTeachersFound": "Nu au fost găsiți profesori pentru raportare",
     "trialExpiration": "Perioada de probă gratuită expiră la {expiration}",
     "freeTrialDesc": "Utilizatorii noi primesc o perioadă de probă gratuită de o săptămână pentru Pangea Chat",
     "activateTrial": "Perioadă de probă gratuită de 7 zile",
@@ -3249,14 +3238,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@invitedBy": {
         "type": "String",
@@ -3818,10 +3799,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@newChatRequest": {
         "type": "String",
         "placeholders": {}
@@ -4253,10 +4230,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5503,35 +5476,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8489,11 +8433,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal pentru chat",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat cu Suportul",
     "@chatWithSupport": {
         "type": "String",
@@ -8514,8 +8453,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Activare asistență la scriere",
-    "autoIGCToolDescription": "Rulați automat instrumentele Pangea Chat pentru a corecta mesajele trimise în limba țintă.",
+    "autoIGCToolName": "Verificare automată la trimitere",
+    "autoIGCToolDescription": "Verifică-ți mesajul pentru greșeli când apeși trimite. Când această opțiune este dezactivată, apasă butonul de asistență la scriere pentru a verifica singur un mesaj.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10152,7 +10091,6 @@
     "activityLoadFailed": "Nu s-a putut încărca activitatea. Verifică-ți conexiunea și încearcă din nou.",
     "levelUpChip": "Nivel {level}!",
     "missingCourseOutline": "Acest curs nu mai este disponibil",
-    "missingCourseOutlineCta": "Acest curs nu mai este disponibil. Alege un nou plan de curs.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10177,10 +10115,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10576,7 +10510,6 @@
     "constructLevelFlowers": "Flori, cuvinte stăpânite",
     "filterAndSearch": "Filtrează și caută",
     "participantsOfTotal": "{filled} din {total} jucători",
-    "mapAttributionLabel": "Contribuitori OpenStreetMap, drepturi de autor și licență",
     "seeAll": "Vezi tot",
     "seeAllSection": "Vezi tot {section}",
     "showMoreOptionsHint": "afișează mai multe opțiuni",
@@ -10694,25 +10627,126 @@
     "summaryFeedbackReceived": "Mulțumim! Am primit feedback-ul tău.",
     "summaryFeedbackFailed": "Nu s-a putut trimite feedback-ul tău. Te rugăm să încerci din nou.",
     "summaryFeedbackProcessing": "Se trimite feedbackul și se actualizează rezumatul…",
-    "ssoNetworkBlockedTitle": "Site-ul de conectare este inaccesibil",
-    "ssoNetworkBlockedDesc": "Această rețea nu ne permite să ajungem la {provider} pentru a te conecta. Rețelele Wi-Fi de la școală și de la birou blochează adesea acest lucru. Te poți înscrie cu e-mail în schimb sau poți trece la o altă rețea și poți încerca din nou.",
-    "ssoTryAnyway": "Încearcă oricum",
-    "callTranscriptNotSubscribed": "{name} nu a avut un abonament în timpul acestui apel, așa că ceea ce s-a spus nu a fost transcris.",
     "callTranscriptTranscribing": "Încă se transcrie înregistrarea de la {name}…",
     "callTranscriptSeekTo": "Redă de la {time}",
     "callTranscriptRecordings": "Înregistrări",
     "callTranscriptFullCall": "Apel complet",
     "callTranscriptPreparingRecording": "Se pregătește înregistrarea completă…",
     "callTranscriptNoRecording": "Nu există nicio înregistrare a apelului complet.",
-    "callTranscriptTranscribeButton": "Transcrie",
-    "callTranscriptAudioUnavailable": "Înregistrarea salvată de la {name} nu a putut fi descărcată, prin urmare nu a putut fi transcrisă.",
-    "callTranscriptChooseLanguage": "Ce limbă a fost vorbită?",
-    "callTranscriptSubscribeForTranscription": "Abonează-te pentru transcriere",
-    "unlockCallTranscript": "Deblochează transcrierea apelului",
+    "callTranscriptNotSubscribed": "{name} nu a avut un abonament în timpul acestui apel, așa că ceea ce s-a spus nu a fost transcris.",
     "joinYourCourse": "Alătură-te cursului tău",
     "courseCodeJoinExplanation": "Conectează-te sau înregistrează-te, iar noi vom folosi codul tău de curs pentru a te adăuga automat la cursul tău.",
     "courseCodeLabel": "Codul cursului",
     "courseCodeSaved": "Codul cursului {code} a fost salvat",
     "courseCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga la cursul tău.",
-    "missionDueDate": "Scadența: {date}, {time}"
+    "moderationRefusedContactDetails": "Mesajul tău nu a fost trimis. Un filtru automat a detectat detalii de contact, cum ar fi un număr de telefon. Te rugăm să le elimini și să încerci din nou.",
+    "moderationRefusedProfanity": "Mesajul tău nu a fost trimis. Un filtru automat a detectat un cuvânt pe care nu-l permitem în chat. Te rugăm să-l modifici și să încerci din nou.",
+    "callTranscriptTranscribeButton": "Transcrie",
+    "callTranscriptAudioUnavailable": "Înregistrarea salvată de la {name} nu a putut fi descărcată, prin urmare nu a putut fi transcrisă.",
+    "callTranscriptChooseLanguage": "Ce limbă a fost vorbită?",
+    "callTranscriptSubscribeForTranscription": "Abonează-te pentru transcriere",
+    "unlockCallTranscript": "Deblochează transcrierea apelului",
+    "activitySummaryUpdateFailed": "Acest rezumat nu a putut fi actualizat.",
+    "courseNotFound": "Cursul nu a fost găsit",
+    "askTeacherForNewCourse": "Roagă-ți profesorul să aleagă un curs nou.",
+    "pickNewCoursePlan": "Alege un plan de curs nou.",
+    "ssoNetworkBlockedTitle": "Site-ul de conectare este inaccesibil",
+    "ssoNetworkBlockedDesc": "Această rețea nu ne permite să ajungem la {provider} pentru a te conecta. Rețelele Wi-Fi de la școală și de la birou blochează adesea acest lucru. Te poți înscrie cu e-mail în schimb sau poți trece la o altă rețea și poți încerca din nou.",
+    "ssoTryAnyway": "Încearcă oricum",
+    "publicCoursesFilterTooltip": "Afișează doar cursurile la care oricine se poate alătura",
+    "restrictedCoursesFilterTooltip": "Afișează doar cursurile la care trebuie să ceri să te alături",
+    "viewImageLabel": "Vizualizați imaginea",
+    "reportSent": "Raport trimis",
+    "reportNotSent": "Raportul tău nu a putut fi trimis. Verifică-ți conexiunea și încearcă din nou.",
+    "reportPointerMessage": "Un mesaj a fost raportat în {courseName} — vezi Siguranță",
+    "learningObjective": "Obiectiv de învățare",
+    "learningObjectives": "Obiective de învățare",
+    "missionNofM": "Misiunea {index} din {count}",
+    "xpTowardObjective": "{xp} din {threshold} XP pentru acest obiectiv",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Curs finalizat!",
+    "courseCompleteDesc": "Ai finalizat toate cele {count} obiective din acest curs. Continuă să exersezi pentru a-ți menține cunoștințele.",
+    "practiceObjective": "Exersează acest obiectiv",
+    "otherActivities": "Alte activități",
+    "objectiveCircleComplete": "Misiunea {index}: finalizată",
+    "objectiveCircleUpNext": "Misiunea {index}: urmează",
+    "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat",
+    "andCertifyIMeetTheMinimumAge": " și certific că am cel puțin 13 ani, sau vârsta minimă cerută în țara mea dacă aceasta este mai mare.",
+    "filteredNetworkBlockedTitle": "Această rețea blochează Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Această rețea blochează o parte din Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Ce pot face?",
+    "filteredNetworkPhoneAdvice": "Dezactivează Wi-Fi și folosește datele mobile.",
+    "filteredNetworkComputerAdvice": "Conectează-te la hotspot-ul telefonului în loc de acest Wi-Fi.",
+    "filteredNetworkItHeading": "Pentru profesori și personalul IT",
+    "filteredNetworkItBody": "Roagă echipa IT să permită aceste domenii:",
+    "filteredNetworkAskForHelp": "Cere ajutor de la Pangea",
+    "filteredNetworkHelpExplanation": "Îți vom trimite un e-mail pentru a te ajuta să faci Pangea Chat să funcționeze pe această rețea.",
+    "filteredNetworkHelpWaiting": "Solicitarea ta va fi trimisă imediat ce te vei conecta.",
+    "filteredNetworkHelpSent": "Trimis. Te vom contacta prin e-mail.",
+    "filteredNetworkHelpRefused": "Nu am putut trimite solicitarea ta. Te rugăm să trimiți un e-mail la support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Această rețea blochează videoclipurile.",
+    "filteredNetworkImagesBlocked": "Această rețea blochează imaginile.",
+    "filteredNetworkMapBlocked": "Această rețea blochează harta.",
+    "callFullScreenTitle": "Permite apelurilor să sune pe tot ecranul",
+    "callFullScreenMessage": "A intrat un apel în timp ce Pangea Chat era închis, dar telefonul tău a putut afișa doar o notificare mică pentru acesta. Permite apeluri pe tot ecranul, astfel încât următorul să sune pe întregul ecran, chiar și atunci când telefonul este blocat.",
+    "callMicrophoneTitle": "Folosește microfonul pentru apeluri",
+    "callMicrophoneMessage": "Pangea Chat are nevoie de microfonul tău pentru apeluri, inclusiv pentru apelurile la care răspunzi din ecranul de blocare.",
+    "callMicrophoneOffTitle": "Apelul tău nu s-a conectat",
+    "callMicrophoneOffMessage": "Pangea Chat nu poate folosi microfonul tău. Atinge pentru a-l activa din Setări.",
+    "goalsCompletedOfTotal": "{earned} din {total} obiective finalizate",
+    "goalsCompletedInLanguage": "Obiective finalizate în {language}",
+    "sessionXpTowardObjective": "{xp} XP în această sesiune; încă {remaining} pentru a finaliza obiectivul",
+    "mapCreditsLabel": "Credite hartă: Stadia Maps, OpenMapTiles și OpenStreetMap",
+    "activityLaunchFindingCourses": "Se caută cursurile tale…",
+    "activityLaunchCreatingRoom": "Se creează activitatea ta…",
+    "activityLaunchOpeningRoom": "Se deschide activitatea ta…",
+    "playWithOthers": "Joacă-te cu alții",
+    "openRole": "Deschis: {role}",
+    "waitingFor": "Se așteaptă {duration}",
+    "onlineInCourse": "{count} online în {course}",
+    "newCourseChat": "Chat nou de curs",
+    "customCourseStepDesc": "Un curs este un set de activități de conversație care urmează manualul tău, pentru ca studenții tăi să le facă împreună ca temă.",
+    "reopenAppToFinishSwitching": "Închide aplicația complet și redeschide-o pentru a finaliza schimbarea.",
+    "teamCode": "Codul echipei",
+    "connectionOffline": "Ești offline. Pangea Chat se va reconecta când vei avea din nou o conexiune.",
+    "connectionUnreachable": "Pangea Chat nu poate fi accesat. Se încearcă din nou…",
+    "connectionBackOnline": "Revenit online",
+    "missionDueDate": "Scadența: {date}, {time}",
+    "callNotificationsTitle": "Permite apelurilor să sune",
+    "callNotificationsMessage": "Apelurile sună ca notificări. Permite notificările pentru ca telefonul tău să sune la un apel, chiar și atunci când Pangea Chat este închis sau telefonul tău este blocat.",
+    "callNotificationsMissedMessage": "A intrat un apel în timp ce Pangea Chat era închis, dar telefonul tău nu a putut suna deoarece notificările sunt dezactivate. Permite notificările pentru ca următorul apel să sune.",
+    "connectionPracticeVocab": "Exersează vocabularul în timp ce aștepți",
+    "offlinePracticeNote": "Ești offline. Răspunsurile tale se vor încărca atunci când vei fi din nou online.",
+    "offlinePracticeSavedNote": "Salvat pe acest dispozitiv. XP-ul tău se va încărca atunci când vei fi din nou online.",
+    "offlinePracticeNothingSaved": "Nu s-au salvat suficiente date pe acest dispozitiv pentru a exersa offline. Încearcă din nou când ești online.",
+    "missionNumber": "Misiunea {index}",
+    "xpToYourStar": "{xp} XP până la steaua ta",
+    "missionStarEarned": "Stea câștigată!",
+    "xpFromChats": "Chaturi {xp}",
+    "xpFromGoals": "Obiective {xp}",
+    "xpFromPractice": "Exersare {xp}",
+    "playMission": "Joacă",
+    "wordCount": "{count, plural, =1{1 cuvânt} other{{count} cuvinte}}",
+    "continueActivity": "Continuă",
+    "noObjectiveActivitiesYet": "Nu ai finalizat încă o activitate pentru acest obiectiv. Începe una din cursul tău.",
+    "objectiveNotInYourCourses": "Acest obiectiv nu se află în niciunul dintre cursurile tale.",
+    "objectiveActivityCount": "{count, plural, =0{Nicio activitate încă} =1{1 activitate jucată} other{{count} activități jucate}}",
+    "activityCompleted": "Finalizat",
+    "completedTimes": "Finalizat de {count} ori",
+    "classLocation": "Locația cursului",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Conversație {xp}",
+    "xpIncludingGoals": "inclusiv {xp} din obiective",
+    "missionOtherLanguageNotice": "Această misiune este dintr-un curs în {language}. Progresul tău în ea contează doar în timp ce înveți {language}.",
+    "missionLanguageMismatchDesc": "Această misiune este dintr-un curs în {language}. Vrei să schimbi limba țintă în {language}?",
+    "xpBySkillTitle": "Pe abilitate",
+    "missionNextActivity": "Următoarea activitate",
+    "missionContinueActivity": "Continuă activitatea",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Finalizat în acest curs ({num})",
+    "otherCoursesSessions": "Alte cursuri ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP câștigate",
+    "currentMission": "Misiune curentă"
 }

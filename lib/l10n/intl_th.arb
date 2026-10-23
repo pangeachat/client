@@ -764,10 +764,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@passwordHasBeenChanged": {
         "type": "String",
         "placeholders": {}
@@ -2117,8 +2113,6 @@
     "status": "สถานะ",
     "statusExampleMessage": "คุณเป็นอย่างไรบ้างวันนี้?",
     "submit": "ส่ง",
-    "synchronizingPleaseWait": "กำลังซิงค์... กรุณารอ",
-    "synchronizingPleaseWaitCounter": "กำลังซิงค์... ({percentage}%)",
     "systemTheme": "ระบบ",
     "theyDontMatch": "ไม่ตรงกัน",
     "theyMatch": "ตรงกัน",
@@ -2343,7 +2337,6 @@
     "previous": "ก่อนหน้า",
     "otherPartyNotLoggedIn": "ฝ่ายอื่นยังไม่ได้เข้าสู่ระบบ จึงไม่สามารถรับข้อความได้!",
     "open": "เปิด",
-    "waitingForServer": "กำลังรอเซิร์ฟเวอร์...",
     "newChatRequest": "📩 คำขอแชทใหม่",
     "contentNotificationSettings": "การตั้งค่าการแจ้งเตือนเนื้อหา",
     "generalNotificationSettings": "การตั้งค่าการแจ้งเตือนทั่วไป",
@@ -2449,7 +2442,6 @@
     "errorDisableIGCClassDesc": "การช่วยเหลือด้านไวยากรณ์ถูกปิดใช้งานสำหรับหลักสูตรที่แชทนี้อยู่",
     "error405Desc": "กรุณาตั้งค่าภาษาของคุณในเมนหลัก > การตั้งค่าการเรียนรู้",
     "termsAndConditions": "ข้อกำหนดและเงื่อนไข",
-    "andCertifyIAmAtLeast13YearsOfAge": " และรับรองว่าฉันมีอายุอย่างน้อย 16 ปี",
     "error502504Desc": "เครื่องมือแปลและไวยากรณ์อาจช้าหรือไม่สามารถใช้งานได้ในขณะนี้ ขณะที่บอทพังเผา Pangea กำลังตามทัน",
     "error404Desc": "Pangea Bot ไม่แน่ใจว่าจะจะแปลอย่างไร...",
     "errorPleaseRefresh": "เรากำลังตรวจสอบอยู่! กรุณารีเฟรชหน้าและลองใหม่อีกครั้ง",
@@ -2757,9 +2749,6 @@
     "why": "ทำไม?",
     "definition": "คำจำกัดความ",
     "reportToTeacher": "คุณต้องการรายงานข้อความนี้ให้ใคร?",
-    "reportMessageTitle": "{reportingUserId} ได้รายงานข้อความจาก {reportedUserId} ในแชท {roomName}",
-    "reportMessageBody": "ข้อความ: {reportedMessage}\nเหตุผล: {reason}",
-    "noTeachersFound": "ไม่พบครูที่จะรายงาน",
     "trialExpiration": "การทดลองใช้งานฟรีของคุณจะหมดอายุใน {expiration}",
     "freeTrialDesc": "ผู้ใช้ใหม่จะได้รับการทดลองใช้งานฟรีหนึ่งสัปดาห์ของ Pangea Chat",
     "activateTrial": "ทดลองใช้งานฟรี 7 วัน",
@@ -3093,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-05 12:30:49.267153",
+    "@@last_modified": "2026-10-22 09:50:28.712927",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3221,14 +3210,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@invitedBy": {
         "type": "String",
@@ -3718,10 +3699,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@newChatRequest": {
         "type": "String",
         "placeholders": {}
@@ -4153,10 +4130,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5403,35 +5376,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8389,11 +8333,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "ใช้ภาพกิจกรรมเป็นพื้นหลังแชท",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "แชทกับฝ่ายสนับสนุน",
     "@chatWithSupport": {
         "type": "String",
@@ -8414,8 +8353,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "เปิดใช้งานความช่วยเหลือในการเขียน",
-    "autoIGCToolDescription": "เรียกใช้เครื่องมือ Pangea Chat โดยอัตโนมัติเพื่อแก้ไขข้อความที่ส่งไปยังภาษาที่ต้องการ.",
+    "autoIGCToolName": "ตรวจสอบอัตโนมัติเมื่อส่ง",
+    "autoIGCToolDescription": "ตรวจสอบข้อความของคุณเพื่อหาข้อผิดพลาดเมื่อคุณแตะส่ง หากปิดใช้งานอยู่ ให้แตะปุ่มช่วยเหลือการเขียนเพื่อตรวจสอบข้อความด้วยตนเอง",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10052,7 +9991,6 @@
     "activityLoadFailed": "ไม่สามารถโหลดกิจกรรมได้ ตรวจสอบการเชื่อมต่อของคุณและลองอีกครั้ง",
     "levelUpChip": "เลเวล {level}!",
     "missingCourseOutline": "หลักสูตรนี้ไม่สามารถใช้งานได้อีกต่อไป",
-    "missingCourseOutlineCta": "หลักสูตรนี้ไม่สามารถใช้งานได้อีกต่อไป กรุณาเลือกแผนหลักสูตรใหม่",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10077,10 +10015,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10476,7 +10410,6 @@
     "constructLevelFlowers": "ดอกไม้, คำศัพท์ที่เชี่ยวชาญแล้ว",
     "filterAndSearch": "กรองและค้นหา",
     "participantsOfTotal": "{filled} จากผู้เล่นทั้งหมด {total} คน",
-    "mapAttributionLabel": "ผู้ร่วมให้ข้อมูล OpenStreetMap, ลิขสิทธิ์และใบอนุญาต",
     "seeAll": "ดูทั้งหมด",
     "seeAllSection": "ดูทั้งหมด {section}",
     "showMoreOptionsHint": "แสดงตัวเลือกเพิ่มเติม",
@@ -10594,25 +10527,126 @@
     "summaryFeedbackReceived": "ขอบคุณ! เราได้รับความคิดเห็นของคุณแล้ว",
     "summaryFeedbackFailed": "ไม่สามารถส่งความคิดเห็นของคุณได้ โปรดลองอีกครั้ง",
     "summaryFeedbackProcessing": "กำลังส่งคำติชมและอัปเดตสรุปของคุณ…",
-    "ssoNetworkBlockedTitle": "เข้าสู่ระบบไม่ได้",
-    "ssoNetworkBlockedDesc": "เครือข่ายนี้ไม่อนุญาตให้เราเข้าถึง {provider} เพื่อลงชื่อเข้าใช้คุณ Wi-Fi ของโรงเรียนและที่ทำงานมักจะบล็อกไว้ คุณสามารถลงทะเบียนด้วยอีเมลแทน หรือเปลี่ยนไปใช้เครือข่ายอื่นแล้วลองอีกครั้ง",
-    "ssoTryAnyway": "ลองอีกครั้ง",
-    "callTranscriptNotSubscribed": "{name} ไม่มีสิทธิ์การเป็นสมาชิกในระหว่างการโทรนี้ ดังนั้นสิ่งที่พูดจึงไม่ถูกถอดเสียง",
     "callTranscriptTranscribing": "กำลังถอดเสียงบันทึกจาก {name}…",
     "callTranscriptSeekTo": "เล่นจาก {time}",
     "callTranscriptRecordings": "การบันทึก",
     "callTranscriptFullCall": "การโทรทั้งหมด",
     "callTranscriptPreparingRecording": "กำลังเตรียมการบันทึกทั้งหมด…",
     "callTranscriptNoRecording": "ไม่มีการบันทึกการโทรทั้งหมด",
-    "callTranscriptTranscribeButton": "ถอดเสียง",
-    "callTranscriptAudioUnavailable": "ไม่สามารถดาวน์โหลดไฟล์บันทึกที่บันทึกไว้จาก {name} ได้ จึงไม่สามารถถอดเสียงได้",
-    "callTranscriptChooseLanguage": "พูดภาษาอะไร",
-    "callTranscriptSubscribeForTranscription": "สมัครสมาชิกเพื่อถอดเสียง",
-    "unlockCallTranscript": "ปลดล็อกบทสนทนาการโทร",
+    "callTranscriptNotSubscribed": "{name} ไม่มีสิทธิ์การเป็นสมาชิกในระหว่างการโทรนี้ ดังนั้นสิ่งที่พูดจึงไม่ถูกถอดเสียง",
     "joinYourCourse": "เข้าร่วมคอร์สของคุณ",
     "courseCodeJoinExplanation": "เข้าสู่ระบบหรือลงทะเบียน แล้วเราจะใช้รหัสคอร์สของคุณเพื่อเพิ่มคุณเข้าสู่คอร์สโดยอัตโนมัติ",
     "courseCodeLabel": "รหัสคอร์ส",
     "courseCodeSaved": "บันทึกรหัสคอร์ส {code} แล้ว",
     "courseCodeSavedExplanation": "ลงทะเบียนหรือเข้าสู่ระบบ แล้วเราจะเพิ่มคุณเข้าสู่คอร์ส",
-    "missionDueDate": "ครบกำหนด {date}, {time}"
+    "moderationRefusedContactDetails": "ข้อความของคุณไม่ถูกส่ง ระบบคัดกรองอัตโนมัติพบรายละเอียดการติดต่อ เช่น หมายเลขโทรศัพท์ โปรดลบออกแล้วลองอีกครั้ง",
+    "moderationRefusedProfanity": "ข้อความของคุณไม่ถูกส่ง ระบบคัดกรองอัตโนมัติพบคำที่ไม่ได้รับอนุญาตในแชท โปรดแก้ไขแล้วลองอีกครั้ง",
+    "callTranscriptTranscribeButton": "ถอดเสียง",
+    "callTranscriptAudioUnavailable": "ไม่สามารถดาวน์โหลดไฟล์บันทึกที่บันทึกไว้จาก {name} ได้ จึงไม่สามารถถอดเสียงได้",
+    "callTranscriptChooseLanguage": "พูดภาษาอะไร",
+    "callTranscriptSubscribeForTranscription": "สมัครสมาชิกเพื่อถอดเสียง",
+    "unlockCallTranscript": "ปลดล็อกบทสนทนาการโทร",
+    "activitySummaryUpdateFailed": "ไม่สามารถอัปเดตสรุปนี้ได้",
+    "courseNotFound": "ไม่พบหลักสูตร",
+    "askTeacherForNewCourse": "ขอให้คุณครูเลือกคอร์สใหม่",
+    "pickNewCoursePlan": "เลือกแผนการเรียนใหม่",
+    "ssoNetworkBlockedTitle": "เข้าสู่ระบบไม่ได้",
+    "ssoNetworkBlockedDesc": "เครือข่ายนี้ไม่อนุญาตให้เราเข้าถึง {provider} เพื่อลงชื่อเข้าใช้คุณ Wi-Fi ของโรงเรียนและที่ทำงานมักจะบล็อกไว้ คุณสามารถลงทะเบียนด้วยอีเมลแทน หรือเปลี่ยนไปใช้เครือข่ายอื่นแล้วลองอีกครั้ง",
+    "ssoTryAnyway": "ลองอีกครั้ง",
+    "publicCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่ทุกคนเข้าร่วมได้",
+    "restrictedCoursesFilterTooltip": "แสดงเฉพาะคอร์สที่คุณต้องขอเข้าร่วม",
+    "viewImageLabel": "ดูรูปภาพ",
+    "reportSent": "ส่งรายงานแล้ว",
+    "reportNotSent": "ไม่สามารถส่งรายงานของคุณได้ โปรดตรวจสอบการเชื่อมต่อและลองอีกครั้ง",
+    "reportPointerMessage": "มีข้อความถูกรายงานใน {courseName} — ดูที่ความปลอดภัย",
+    "learningObjective": "เป้าหมายการเรียนรู้",
+    "learningObjectives": "เป้าหมายการเรียนรู้",
+    "missionNofM": "ภารกิจที่ {index} จาก {count}",
+    "xpTowardObjective": "{xp} จาก {threshold} XP สู่เป้าหมายนี้",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "เรียนจบคอร์สแล้ว!",
+    "courseCompleteDesc": "คุณทำเป้าหมายครบทั้ง {count} ข้อในคอร์สนี้แล้ว ฝึกฝนต่อไปเพื่อรักษาความรู้ที่ได้มา",
+    "practiceObjective": "ฝึกฝนเป้าหมายนี้",
+    "otherActivities": "กิจกรรมอื่นๆ",
+    "objectiveCircleComplete": "ภารกิจที่ {index}: สำเร็จ",
+    "objectiveCircleUpNext": "ภารกิจที่ {index}: ถัดไป",
+    "useActivityImageAsChatBackground": "ใช้รูปภาพกิจกรรมเป็นพื้นหลังแชท",
+    "andCertifyIMeetTheMinimumAge": " และรับรองว่าฉันมีอายุอย่างน้อย 13 ปี หรืออายุขั้นต่ำที่กำหนดในประเทศของฉัน หากอายุขั้นต่ำนั้นสูงกว่า",
+    "filteredNetworkBlockedTitle": "เครือข่ายนี้บล็อก Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "เครือข่ายนี้บล็อก Pangea Chat บางส่วน",
+    "filteredNetworkWhatCanIDo": "ฉันจะทำอย่างไรได้บ้าง",
+    "filteredNetworkPhoneAdvice": "ปิด Wi-Fi แล้วใช้ข้อมูลมือถือแทน",
+    "filteredNetworkComputerAdvice": "เชื่อมต่อกับฮอตสปอตของโทรศัพท์แทน Wi-Fi นี้",
+    "filteredNetworkItHeading": "สำหรับครูและเจ้าหน้าที่ IT",
+    "filteredNetworkItBody": "ขอให้ทีม IT ของคุณอนุญาตโดเมนเหล่านี้:",
+    "filteredNetworkAskForHelp": "ขอความช่วยเหลือจาก Pangea",
+    "filteredNetworkHelpExplanation": "เราจะส่งอีเมลถึงคุณเพื่อช่วยให้ Pangea Chat ใช้งานได้บนเครือข่ายนี้",
+    "filteredNetworkHelpWaiting": "คำขอของคุณจะถูกส่งทันทีที่คุณเชื่อมต่อ",
+    "filteredNetworkHelpSent": "ส่งแล้ว เราจะติดต่อกลับทางอีเมล",
+    "filteredNetworkHelpRefused": "เราไม่สามารถส่งคำขอของคุณได้ โปรดส่งอีเมลไปที่ support@pangea.chat",
+    "filteredNetworkVideoBlocked": "เครือข่ายนี้บล็อกวิดีโอ",
+    "filteredNetworkImagesBlocked": "เครือข่ายนี้บล็อกรูปภาพ",
+    "filteredNetworkMapBlocked": "เครือข่ายนี้บล็อกแผนที่",
+    "callFullScreenTitle": "ให้สายเรียกเข้าดังเต็มหน้าจอ",
+    "callFullScreenMessage": "มีสายเรียกเข้าในขณะที่ Pangea Chat ปิดอยู่ แต่โทรศัพท์ของคุณแสดงการแจ้งเตือนเล็กๆ เท่านั้น อนุญาตให้สายเรียกเข้าแสดงเต็มหน้าจอ เพื่อให้สายถัดไปดังขึ้นเต็มหน้าจอ แม้ในขณะที่โทรศัพท์ของคุณล็อกอยู่",
+    "callMicrophoneTitle": "ใช้ไมโครโฟนของคุณสำหรับการโทร",
+    "callMicrophoneMessage": "Pangea Chat ต้องใช้ไมโครโฟนของคุณสำหรับการโทร รวมถึงการโทรที่คุณรับจากหน้าจอล็อก",
+    "callMicrophoneOffTitle": "การโทรของคุณไม่สามารถเชื่อมต่อได้",
+    "callMicrophoneOffMessage": "Pangea Chat ไม่สามารถใช้ไมโครโฟนของคุณได้ แตะเพื่อเปิดใช้งานในการตั้งค่า",
+    "goalsCompletedOfTotal": "ทำเป้าหมายสำเร็จแล้ว {earned} จาก {total} รายการ",
+    "goalsCompletedInLanguage": "เป้าหมายที่ทำสำเร็จในภาษา{language}",
+    "sessionXpTowardObjective": "XP ที่ได้รับในเซสชันนี้ {xp}; อีก {remaining} จะทำให้เป้าหมายสำเร็จ",
+    "mapCreditsLabel": "เครดิตแผนที่: Stadia Maps, OpenMapTiles และ OpenStreetMap",
+    "activityLaunchFindingCourses": "กำลังค้นหาคอร์สของคุณ…",
+    "activityLaunchCreatingRoom": "กำลังสร้างกิจกรรมของคุณ…",
+    "activityLaunchOpeningRoom": "กำลังเปิดกิจกรรมของคุณ…",
+    "playWithOthers": "เล่นกับคนอื่น",
+    "openRole": "เปิด: {role}",
+    "waitingFor": "กำลังรอ {duration}",
+    "onlineInCourse": "{count} ออนไลน์ใน {course}",
+    "newCourseChat": "แชทคอร์สใหม่",
+    "customCourseStepDesc": "คอร์สคือชุดกิจกรรมการสนทนาที่อิงตามหนังสือเรียนของคุณ ให้นักเรียนทำร่วมกันเป็นการบ้าน",
+    "reopenAppToFinishSwitching": "ปิดแอปทั้งหมดแล้วเปิดใหม่อีกครั้งเพื่อสิ้นสุดการสลับ",
+    "teamCode": "รหัสทีม",
+    "connectionOffline": "คุณออฟไลน์อยู่ Pangea Chat จะเชื่อมต่อใหม่เมื่อคุณกลับมาออนไลน์",
+    "connectionUnreachable": "ไม่สามารถเข้าถึง Pangea Chat ได้ กำลังลองอีกครั้ง…",
+    "connectionBackOnline": "กลับมาออนไลน์แล้ว",
+    "missionDueDate": "ครบกำหนด {date}, {time}",
+    "callNotificationsTitle": "ให้สายเรียกเข้าดัง",
+    "callNotificationsMessage": "สายเรียกเข้าจะดังเป็นการแจ้งเตือน อนุญาตการแจ้งเตือนเพื่อให้โทรศัพท์ของคุณดังเมื่อมีสายเรียกเข้า แม้ว่า Pangea Chat จะปิดอยู่หรือโทรศัพท์ของคุณจะล็อกอยู่ก็ตาม",
+    "callNotificationsMissedMessage": "มีสายเรียกเข้าขณะที่ Pangea Chat ปิดอยู่ แต่โทรศัพท์ของคุณไม่สามารถดังได้เนื่องจากการแจ้งเตือนปิดอยู่ อนุญาตการแจ้งเตือนเพื่อให้สายเรียกเข้าครั้งต่อไปดังขึ้น",
+    "connectionPracticeVocab": "ฝึกคำศัพท์ระหว่างรอ",
+    "offlinePracticeNote": "ออฟไลน์ คำตอบของคุณจะถูกอัปโหลดเมื่อคุณกลับมาออนไลน์",
+    "offlinePracticeSavedNote": "บันทึกไว้ในอุปกรณ์นี้ XP ของคุณจะถูกอัปโหลดเมื่อคุณกลับมาออนไลน์",
+    "offlinePracticeNothingSaved": "บันทึกข้อมูลในอุปกรณ์นี้ไม่เพียงพอสำหรับการฝึกฝนแบบออฟไลน์ ลองอีกครั้งเมื่อคุณกลับมาออนไลน์",
+    "missionNumber": "ภารกิจที่ {index}",
+    "xpToYourStar": "{xp} XP สู่ดาวของคุณ",
+    "missionStarEarned": "ได้รับดาวแล้ว!",
+    "xpFromChats": "แชท {xp}",
+    "xpFromGoals": "เป้าหมาย {xp}",
+    "xpFromPractice": "ฝึกฝน {xp}",
+    "playMission": "เล่น",
+    "wordCount": "{count, plural, =1{1 คำ} other{{count} คำ}}",
+    "continueActivity": "ดำเนินการต่อ",
+    "noObjectiveActivitiesYet": "คุณยังไม่ได้ทำกิจกรรมสำหรับวัตถุประสงค์นี้เลย เริ่มต้นจากหลักสูตรของคุณ",
+    "objectiveNotInYourCourses": "วัตถุประสงค์นี้ไม่ได้อยู่ในหลักสูตรใดๆ ของคุณ",
+    "objectiveActivityCount": "{count, plural, =0{ยังไม่มีกิจกรรม} =1{เล่นไปแล้ว 1 กิจกรรม} other{เล่นไปแล้ว {count} กิจกรรม}}",
+    "activityCompleted": "เสร็จสมบูรณ์",
+    "completedTimes": "ทำเสร็จแล้ว {count} ครั้ง",
+    "classLocation": "สถานที่เรียน",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "บทสนทนา {xp}",
+    "xpIncludingGoals": "รวม {xp} จากเป้าหมาย",
+    "missionOtherLanguageNotice": "ภารกิจนี้มาจากคอร์สภาษา {language} ความคืบหน้าของคุณจะนับเฉพาะเมื่อคุณกำลังเรียนภาษา {language} เท่านั้น",
+    "missionLanguageMismatchDesc": "ภารกิจนี้มาจากคอร์สภาษา {language} ต้องการเปลี่ยนภาษาเป้าหมายเป็น {language} หรือไม่",
+    "xpBySkillTitle": "ตามทักษะ",
+    "missionNextActivity": "กิจกรรมถัดไป",
+    "missionContinueActivity": "ทำกิจกรรมต่อ",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "เสร็จสิ้นในคอร์สนี้ ({num})",
+    "otherCoursesSessions": "คอร์สอื่น ๆ ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, ได้รับ {xp} XP",
+    "currentMission": "ภารกิจปัจจุบัน"
 }

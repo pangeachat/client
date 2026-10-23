@@ -348,8 +348,6 @@
     "status": "స్థితి",
     "statusExampleMessage": "మీరు ఈ రోజు ఎలా ఉన్నారు?",
     "submit": "సమర్పించండి",
-    "synchronizingPleaseWait": "సమకాలీకరణ జరుగుతోంది… దయచేసి వేచిచూడండి.",
-    "synchronizingPleaseWaitCounter": "సమకాలీకరణ జరుగుతోంది… ({percentage}%)",
     "systemTheme": "సిస్టమ్",
     "theyDontMatch": "అవి సరిపోలడం లేదు",
     "theyMatch": "అవి సరిపోతున్నాయి",
@@ -574,7 +572,6 @@
     "previous": "మునుపటి",
     "otherPartyNotLoggedIn": "ఇతర పార్టీ ప్రస్తుతం లాగిన్ కాలేదు కాబట్టి సందేశాలు అందుకోలేరు!",
     "open": "తెరవండి",
-    "waitingForServer": "సర్వర్ కోసం వేచివున్నది...",
     "newChatRequest": "📩 కొత్త చాట్ అభ్యర్థన",
     "contentNotificationSettings": "విషయ సూచన నోటిఫికేషన్ సెట్టింగులు",
     "generalNotificationSettings": "సాధారణ నోటిఫికేషన్ సెట్టింగులు",
@@ -680,7 +677,6 @@
     "errorDisableIGCClassDesc": "ఈ చాట్ ఉన్న కోర్సుకు వ్యాకరణ సహాయం ఆఫ్ చేయబడింది.",
     "error405Desc": "దయచేసి మీ భాషలను ప్రధాన మెనూ > శిక్షణ సెట్టింగుల్లో సెట్ చేయండి.",
     "termsAndConditions": "నిబంధనలు మరియు షరతులు",
-    "andCertifyIAmAtLeast13YearsOfAge": "మరియు నేను కనీసం 16 సంవత్సరాల వయస్సు ఉన్నానని ధృవీకరిస్తున్నాను.",
     "error502504Desc": "పాంజియా బాట్స్ ట్రాన్స్‌లేషన్ మరియు వ్యాకరణ సాధనాలు ఆలస్యంగా ఉండవచ్చు లేదా అందుబాటులో ఉండకపోవచ్చు.",
     "error404Desc": "పాంజియా బాట్ దాన్ని ఎలా అనువదించాలో తెలియదు...",
     "errorPleaseRefresh": "మేము దీని గురించి చూస్తున్నాము! దయచేసి పేజీని రిఫ్రెష్ చేసి మళ్లీ ప్రయత్నించండి.",
@@ -988,9 +984,6 @@
     "why": "ఎందుకు?",
     "definition": "వ్యాఖ్యానం",
     "reportToTeacher": "ఈ సందేశాన్ని ఎవరికీ నివేదించాలనుకుంటున్నారు?",
-    "reportMessageTitle": "{reportingUserId} చాట్ {roomName}లో {reportedUserId} నుండి సందేశాన్ని నివేదించారు",
-    "reportMessageBody": "సందేశం: {reportedMessage}\nకారణం: {reason}",
-    "noTeachersFound": "నివేదించడానికి టీచర్లు కనుగొనబడలేదు",
     "trialExpiration": "మీ ఉచిత ట్రయల్ {expiration} నాటికి ముగుస్తుంది",
     "freeTrialDesc": "కొత్త వినియోగదారులు పాంజియా చాట్ యొక్క ఒక వారపు ఉచిత ట్రయల్ పొందుతారు",
     "activateTrial": "ఉచిత 7-రోజుల ట్రయల్",
@@ -1324,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-05 12:30:49.535916",
+    "@@last_modified": "2026-10-22 09:50:28.426326",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -2949,18 +2942,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@systemTheme": {
         "type": "String",
         "placeholders": {}
@@ -4028,10 +4009,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@newChatRequest": {
         "type": "String",
         "placeholders": {}
@@ -4471,10 +4448,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5721,35 +5694,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8707,11 +8651,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "చాట్ నేపథ్యంగా కార్యకలాప చిత్రాన్ని ఉపయోగించండి",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "సహాయంతో చాట్ చేయండి",
     "@chatWithSupport": {
         "type": "String",
@@ -8732,8 +8671,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "రాయడం సహాయాన్ని ప్రారంభించండి",
-    "autoIGCToolDescription": "సమర్పించిన సందేశాలను లక్ష్య భాషకు సరిదిద్దడానికి పాంజియా చాట్ సాధనాలను ఆటోమేటిక్‌గా నడపండి.",
+    "autoIGCToolName": "పంపినప్పుడు ఆటోచెక్ చేయండి",
+    "autoIGCToolDescription": "మీరు పంపినప్పుడు మీ సందేశంలో తప్పులు ఉన్నాయో లేదో తనిఖీ చేయండి. ఇది ఆఫ్ చేయబడితే, మీరే సందేశాన్ని తనిఖీ చేయడానికి రైటింగ్ అసిస్టెన్స్ బటన్‌ను నొక్కండి.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10370,7 +10309,6 @@
     "activityLoadFailed": "కార్యకలాపాన్ని లోడ్ చేయలేకపోయారు. మీ కనెక్షన్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి.",
     "levelUpChip": "స్థాయి {level}!",
     "missingCourseOutline": "ఈ కోర్సు ఇకపై అందుబాటులో లేదు",
-    "missingCourseOutlineCta": "ఈ కోర్సు ఇకపై అందుబాటులో లేదు. కొత్త కోర్సు ప్రణాళికను ఎంచుకోండి.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10395,10 +10333,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10794,7 +10728,6 @@
     "constructLevelFlowers": "ఫ్లవర్స్, నేర్చుకున్న పదాలు",
     "filterAndSearch": "ఫిల్టర్ చేసి వెతకండి",
     "participantsOfTotal": "{total} ఆటగాళ్ళలో {filled} మంది",
-    "mapAttributionLabel": "ఓపెన్‌స్ట్రీట్‌మ్యాప్ కంట్రిబ్యూటర్లు, కాపీరైట్ మరియు లైసెన్స్",
     "seeAll": "అన్నీ చూడండి",
     "seeAllSection": "అన్నీ చూడండి {section}",
     "showMoreOptionsHint": "మరిన్ని ఎంపికలను చూపించు",
@@ -10912,25 +10845,126 @@
     "summaryFeedbackReceived": "ధన్యవాదాలు! మీ అభిప్రాయం మాకు అందింది.",
     "summaryFeedbackFailed": "మీ అభిప్రాయాన్ని పంపలేకపోయాము. దయచేసి మళ్ళీ ప్రయత్నించండి.",
     "summaryFeedbackProcessing": "మీ అభిప్రాయాన్ని పంపుతోంది మరియు సారాంశాన్ని నవీకరిస్తోంది…",
-    "ssoNetworkBlockedTitle": "సైన్-ఇన్ సైట్ అందుబాటులో లేదు",
-    "ssoNetworkBlockedDesc": "మీరు సైన్ ఇన్ చేయడానికి {provider}ని చేరుకోవడానికి ఈ నెట్‌వర్క్ అనుమతించడం లేదు. పాఠశాల మరియు కార్యాలయ Wi-Fi తరచుగా దీన్ని బ్లాక్ చేస్తాయి. మీరు బదులుగా ఇమెయిల్‌తో సైన్ అప్ చేయవచ్చు లేదా మరొక నెట్‌వర్క్‌కి మారవచ్చు మరియు మళ్లీ ప్రయత్నించవచ్చు.",
-    "ssoTryAnyway": "ఏమైనా ప్రయత్నించండి",
-    "callTranscriptNotSubscribed": "ఈ కాల్ సమయంలో {name}కు సభ్యత్వం లేనందున, చెప్పినవి ట్రాన్స్‌క్రైబ్ చేయబడలేదు.",
     "callTranscriptTranscribing": "{name} నుండి రికార్డింగ్‌ను ఇంకా ట్రాన్స్‌క్రైబ్ చేస్తున్నారు…",
     "callTranscriptSeekTo": "{time} నుండి ప్లే చేయండి",
     "callTranscriptRecordings": "రికార్డింగ్‌లు",
     "callTranscriptFullCall": "పూర్తి కాల్",
     "callTranscriptPreparingRecording": "పూర్తి రికార్డింగ్‌ను సిద్ధం చేస్తున్నారు…",
     "callTranscriptNoRecording": "పూర్తి కాల్ రికార్డింగ్ లేదు.",
-    "callTranscriptTranscribeButton": "ట్రాన్స్‌క్రైబ్ చేయి",
-    "callTranscriptAudioUnavailable": "{name} నుండి సేవ్ చేసిన రికార్డింగ్ డౌన్‌లోడ్ చేయబడలేదు, కాబట్టి దానిని ట్రాన్స్‌క్రైబ్ చేయలేము.",
-    "callTranscriptChooseLanguage": "ఏ భాష మాట్లాడబడింది?",
-    "callTranscriptSubscribeForTranscription": "ట్రాన్స్‌క్రిప్షన్ కోసం సబ్‌స్క్రైబ్ చేయండి",
-    "unlockCallTranscript": "కాల్ ట్రాన్స్‌క్రిప్ట్‌ను అన్‌లాక్ చేయండి",
+    "callTranscriptNotSubscribed": "ఈ కాల్ సమయంలో {name}కు సభ్యత్వం లేనందున, చెప్పినవి ట్రాన్స్‌క్రైబ్ చేయబడలేదు.",
     "joinYourCourse": "మీ కోర్సులో చేరండి",
     "courseCodeJoinExplanation": "లాగిన్ అవ్వండి లేదా సైన్ అప్ చేయండి, మరియు మీ కోర్సు కోడ్‌ని ఉపయోగించి మిమ్మల్ని మీ కోర్సులో ఆటోమేటిక్‌గా చేరుస్తాము.",
     "courseCodeLabel": "కోర్సు కోడ్",
     "courseCodeSaved": "కోర్సు కోడ్ {code} సేవ్ చేయబడింది",
     "courseCodeSavedExplanation": "సైన్ అప్ చేయండి లేదా లాగిన్ అవ్వండి మరియు మిమ్మల్ని మీ కోర్సులో చేరుస్తాము.",
-    "missionDueDate": "{date}, {time} నాటికి"
+    "moderationRefusedContactDetails": "మీ సందేశం పంపబడలేదు. ఫోన్ నంబర్ వంటి సంప్రదింపు వివరాలను ఆటోమేటిక్ ఫిల్టర్ కనుగొంది. దయచేసి వాటిని తీసివేసి మళ్లీ ప్రయత్నించండి.",
+    "moderationRefusedProfanity": "మీ సందేశం పంపబడలేదు. చాట్‌లో మేము అనుమతించని పదాన్ని ఆటోమేటిక్ ఫిల్టర్ కనుగొంది. దయచేసి దానిని మార్చి మళ్లీ ప్రయత్నించండి.",
+    "callTranscriptTranscribeButton": "ట్రాన్స్‌క్రైబ్ చేయి",
+    "callTranscriptAudioUnavailable": "{name} నుండి సేవ్ చేసిన రికార్డింగ్ డౌన్‌లోడ్ చేయబడలేదు, కాబట్టి దానిని ట్రాన్స్‌క్రైబ్ చేయలేము.",
+    "callTranscriptChooseLanguage": "ఏ భాష మాట్లాడబడింది?",
+    "callTranscriptSubscribeForTranscription": "ట్రాన్స్‌క్రిప్షన్ కోసం సబ్‌స్క్రైబ్ చేయండి",
+    "unlockCallTranscript": "కాల్ ట్రాన్స్‌క్రిప్ట్‌ను అన్‌లాక్ చేయండి",
+    "activitySummaryUpdateFailed": "ఈ సారాంశాన్ని అప్‌డేట్ చేయలేకపోయాము.",
+    "courseNotFound": "కోర్సు కనుగొనబడలేదు",
+    "askTeacherForNewCourse": "కొత్త కోర్సును ఎంచుకోమని మీ టీచర్‌ని అడగండి.",
+    "pickNewCoursePlan": "కొత్త కోర్సు ప్లాన్‌ను ఎంచుకోండి.",
+    "ssoNetworkBlockedTitle": "సైన్-ఇన్ సైట్ అందుబాటులో లేదు",
+    "ssoNetworkBlockedDesc": "మీరు సైన్ ఇన్ చేయడానికి {provider}ని చేరుకోవడానికి ఈ నెట్‌వర్క్ అనుమతించడం లేదు. పాఠశాల మరియు కార్యాలయ Wi-Fi తరచుగా దీన్ని బ్లాక్ చేస్తాయి. మీరు బదులుగా ఇమెయిల్‌తో సైన్ అప్ చేయవచ్చు లేదా మరొక నెట్‌వర్క్‌కి మారవచ్చు మరియు మళ్లీ ప్రయత్నించవచ్చు.",
+    "ssoTryAnyway": "ఏమైనా ప్రయత్నించండి",
+    "publicCoursesFilterTooltip": "ఎవరైనా చేరగల కోర్సులను మాత్రమే చూపించు",
+    "restrictedCoursesFilterTooltip": "మీరు చేరమని అడగాల్సిన కోర్సులను మాత్రమే చూపించు",
+    "viewImageLabel": "చిత్రాన్ని వీక్షించండి",
+    "reportSent": "నివేదిక పంపబడింది",
+    "reportNotSent": "మీ నివేదికను పంపలేకపోయాము. మీ కనెక్షన్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.",
+    "reportPointerMessage": "{courseName}లో ఒక సందేశం నివేదించబడింది — భద్రతను చూడండి",
+    "learningObjective": "అభ్యాస లక్ష్యం",
+    "learningObjectives": "అభ్యాస లక్ష్యాలు",
+    "missionNofM": "మిషన్ {index} / {count}",
+    "xpTowardObjective": "ఈ లక్ష్యం వైపు {threshold} XPలో {xp}",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "కోర్సు పూర్తయింది!",
+    "courseCompleteDesc": "మీరు ఈ కోర్సులోని {count} లక్ష్యాలన్నింటినీ పూర్తి చేసారు. మీరు నేర్చుకున్న వాటిని గుర్తుంచుకోవడానికి సాధన చేస్తూ ఉండండి.",
+    "practiceObjective": "ఈ లక్ష్యాన్ని సాధన చేయండి",
+    "otherActivities": "ఇతర కార్యకలాపాలు",
+    "objectiveCircleComplete": "మిషన్ {index}: పూర్తయింది",
+    "objectiveCircleUpNext": "మిషన్ {index}: తర్వాత",
+    "useActivityImageAsChatBackground": "యాక్టివిటీ చిత్రాన్ని చాట్ బ్యాక్‌గ్రౌండ్‌గా ఉపయోగించండి",
+    "andCertifyIMeetTheMinimumAge": "మరియు నాకు కనీసం 13 సంవత్సరాలు లేదా నా దేశంలో అవసరమైన కనీస వయస్సు అంతకంటే ఎక్కువ ఉంటే, ఆ వయస్సు ఉందని నేను ధృవీకరిస్తున్నాను.",
+    "filteredNetworkBlockedTitle": "ఈ నెట్‌వర్క్ పాంగియా చాట్‌ను బ్లాక్ చేస్తోంది",
+    "filteredNetworkPartlyBlockedTitle": "ఈ నెట్‌వర్క్ పాంగియా చాట్‌లో కొంత భాగాన్ని బ్లాక్ చేస్తోంది",
+    "filteredNetworkWhatCanIDo": "నేను ఏమి చేయగలను?",
+    "filteredNetworkPhoneAdvice": "Wi-Fiని ఆఫ్ చేసి, మొబైల్ డేటాను ఉపయోగించండి.",
+    "filteredNetworkComputerAdvice": "ఈ Wi-Fiకి బదులుగా మీ ఫోన్ హాట్‌స్పాట్‌కు కనెక్ట్ చేయండి.",
+    "filteredNetworkItHeading": "ఉపాధ్యాయులు మరియు IT సిబ్బంది కోసం",
+    "filteredNetworkItBody": "ఈ డొమైన్‌లను అనుమతించమని మీ IT బృందాన్ని అడగండి:",
+    "filteredNetworkAskForHelp": "సహాయం కోసం పాంగియాను అడగండి",
+    "filteredNetworkHelpExplanation": "ఈ నెట్‌వర్క్‌లో పాంగియా చాట్ పని చేయడానికి మేము మీకు ఇమెయిల్ చేస్తాము.",
+    "filteredNetworkHelpWaiting": "మీరు కనెక్ట్ అయిన వెంటనే మీ అభ్యర్థన పంపబడుతుంది.",
+    "filteredNetworkHelpSent": "పంపబడింది. మేము ఇమెయిల్ ద్వారా సంప్రదిస్తాము.",
+    "filteredNetworkHelpRefused": "మేము మీ అభ్యర్థనను పంపలేకపోయాము. దయచేసి support@pangea.chatకు ఇమెయిల్ చేయండి.",
+    "filteredNetworkVideoBlocked": "ఈ నెట్‌వర్క్ వీడియోలను బ్లాక్ చేస్తుంది.",
+    "filteredNetworkImagesBlocked": "ఈ నెట్‌వర్క్ చిత్రాలను బ్లాక్ చేస్తుంది.",
+    "filteredNetworkMapBlocked": "ఈ నెట్‌వర్క్ మ్యాప్‌ను బ్లాక్ చేస్తుంది.",
+    "callFullScreenTitle": "కాల్‌లను పూర్తి స్క్రీన్‌లో రింగ్ చేయనివ్వండి",
+    "callFullScreenMessage": "పాంగియా చాట్ మూసివేయబడినప్పుడు ఒక కాల్ వచ్చింది, కానీ మీ ఫోన్ దాని కోసం చిన్న నోటిఫికేషన్‌ను మాత్రమే చూపగలదు. పూర్తి-స్క్రీన్ కాల్‌లను అనుమతించండి, తద్వారా తదుపరి కాల్ మీ ఫోన్ లాక్ చేయబడినప్పటికీ, మీ మొత్తం స్క్రీన్‌పై రింగ్ అవుతుంది.",
+    "callMicrophoneTitle": "కాల్స్ కోసం మీ మైక్రోఫోన్‌ను ఉపయోగించండి",
+    "callMicrophoneMessage": "లాక్ స్క్రీన్ నుండి మీరు సమాధానం ఇచ్చే కాల్‌లతో సహా, కాల్స్ కోసం పాంగియా చాట్‌కు మీ మైక్రోఫోన్ అవసరం.",
+    "callMicrophoneOffTitle": "మీ కాల్ కనెక్ట్ అవ్వలేదు",
+    "callMicrophoneOffMessage": "పాంగియా చాట్ మీ మైక్రోఫోన్‌ను ఉపయోగించదు. సెట్టింగ్‌లలో దాన్ని ఆన్ చేయడానికి నొక్కండి.",
+    "goalsCompletedOfTotal": "{total} లక్ష్యాలలో {earned} పూర్తయ్యాయి",
+    "goalsCompletedInLanguage": "{language}లో పూర్తయిన లక్ష్యాలు",
+    "sessionXpTowardObjective": "ఈ సెషన్‌లో {xp} XP; లక్ష్యాన్ని పూర్తి చేయడానికి ఇంకా {remaining} అవసరం",
+    "mapCreditsLabel": "మ్యాప్ క్రెడిట్‌లు: స్టాడియా మ్యాప్స్, ఓపెన్‌మ్యాప్‌టైల్స్ మరియు ఓపెన్‌స్ట్రీట్‌మ్యాప్",
+    "activityLaunchFindingCourses": "మీ కోర్సులను కనుగొంటున్నాము…",
+    "activityLaunchCreatingRoom": "మీ కార్యాచరణను సృష్టిస్తున్నాము…",
+    "activityLaunchOpeningRoom": "మీ కార్యాచరణను తెరుస్తున్నాము…",
+    "playWithOthers": "ఇతరులతో ఆడుకోండి",
+    "openRole": "తెరువు: {role}",
+    "waitingFor": "{duration} వేచి ఉంది",
+    "onlineInCourse": "{count} మంది {course}లో ఆన్‌లైన్‌లో ఉన్నారు",
+    "newCourseChat": "కొత్త కోర్సు చాట్",
+    "customCourseStepDesc": "ఒక కోర్సు అనేది మీ పాఠ్యపుస్తకాన్ని అనుసరించే సంభాషణ కార్యకలాపాల సమితి, మీ విద్యార్థులు హోంవర్క్‌గా కలిసి చేయడానికి.",
+    "reopenAppToFinishSwitching": "మారడాన్ని పూర్తి చేయడానికి యాప్‌ను పూర్తిగా మూసివేసి, మళ్లీ తెరవండి.",
+    "teamCode": "టీమ్ కోడ్",
+    "connectionOffline": "మీరు ఆఫ్‌లైన్‌లో ఉన్నారు. మీ కనెక్షన్ తిరిగి వచ్చినప్పుడు పాంగియా చాట్ మళ్లీ కనెక్ట్ అవుతుంది.",
+    "connectionUnreachable": "పాంగియా చాట్‌ను చేరుకోలేము. మళ్లీ ప్రయత్నిస్తోంది…",
+    "connectionBackOnline": "మళ్లీ ఆన్‌లైన్‌లోకి వచ్చారు",
+    "missionDueDate": "{date}, {time} నాటికి",
+    "callNotificationsTitle": "కాల్‌లు రింగ్ అవ్వనివ్వండి",
+    "callNotificationsMessage": "కాల్‌లు నోటిఫికేషన్‌లుగా రింగ్ అవుతాయి. పాంగియా చాట్ మూసివేయబడినప్పుడు లేదా మీ ఫోన్ లాక్ చేయబడినప్పుడు కూడా మీ ఫోన్ కాల్ కోసం రింగ్ అయ్యేలా నోటిఫికేషన్‌లను అనుమతించండి.",
+    "callNotificationsMissedMessage": "పాంగియా చాట్ మూసివేయబడినప్పుడు ఒక కాల్ వచ్చింది, కానీ నోటిఫికేషన్‌లు ఆఫ్ చేయబడినందున మీ ఫోన్ రింగ్ కాలేదు. తదుపరి కాల్ రింగ్ అయ్యేలా నోటిఫికేషన్‌లను అనుమతించండి.",
+    "connectionPracticeVocab": "వేచి ఉన్నప్పుడు పదజాలాన్ని సాధన చేయండి",
+    "offlinePracticeNote": "ఆఫ్‌లైన్. మీరు తిరిగి వచ్చినప్పుడు మీ సమాధానాలు అప్‌లోడ్ చేయబడతాయి.",
+    "offlinePracticeSavedNote": "ఈ పరికరంలో సేవ్ చేయబడింది. మీరు ఆన్‌లైన్‌కి తిరిగి వచ్చినప్పుడు మీ XP అప్‌లోడ్ చేయబడుతుంది.",
+    "offlinePracticeNothingSaved": "ఆఫ్‌లైన్‌లో ప్రాక్టీస్ చేయడానికి ఈ పరికరంలో తగినంత సేవ్ చేయబడలేదు. మీరు ఆన్‌లైన్‌లోకి వచ్చినప్పుడు మళ్లీ ప్రయత్నించండి.",
+    "missionNumber": "మిషన్ {index}",
+    "xpToYourStar": "మీ స్టార్‌కు {xp} XP",
+    "missionStarEarned": "స్టార్ సంపాదించారు!",
+    "xpFromChats": "చాట్‌లు {xp}",
+    "xpFromGoals": "లక్ష్యాలు {xp}",
+    "xpFromPractice": "ప్రాక్టీస్ {xp}",
+    "playMission": "ఆడండి",
+    "wordCount": "{count, plural, =1{1 పదం} other{{count} పదాలు}}",
+    "continueActivity": "కొనసాగించు",
+    "noObjectiveActivitiesYet": "మీరు ఇంకా ఈ లక్ష్యం కోసం ఒక కార్యాచరణను పూర్తి చేయలేదు. మీ కోర్సు నుండి ఒకదాన్ని ప్రారంభించండి.",
+    "objectiveNotInYourCourses": "ఈ లక్ష్యం మీ కోర్సులలో దేనిలోనూ లేదు.",
+    "objectiveActivityCount": "{count, plural, =0{ఇంకా కార్యకలాపాలు లేవు} =1{1 కార్యాచరణ ఆడబడింది} other{{count} కార్యకలాపాలు ఆడబడ్డాయి}}",
+    "activityCompleted": "పూర్తయింది",
+    "completedTimes": "{count} సార్లు పూర్తయింది",
+    "classLocation": "తరగతి స్థానం",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "సంభాషణ {xp}",
+    "xpIncludingGoals": "లక్ష్యాల నుండి {xp} సహా",
+    "missionOtherLanguageNotice": "ఈ మిషన్ {language}లోని కోర్సు నుండి వచ్చింది. మీరు {language} నేర్చుకుంటున్నప్పుడు మాత్రమే దీనిపై మీ పురోగతి లెక్కించబడుతుంది.",
+    "missionLanguageMismatchDesc": "ఈ మిషన్ {language}లోని కోర్సు నుండి వచ్చింది. మీ లక్ష్య భాషను {language}కి మార్చాలా?",
+    "xpBySkillTitle": "నైపుణ్యం ద్వారా",
+    "missionNextActivity": "తదుపరి కార్యాచరణ",
+    "missionContinueActivity": "కార్యాచరణను కొనసాగించు",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "ఈ కోర్సులో పూర్తయింది ({num})",
+    "otherCoursesSessions": "ఇతర కోర్సులు ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP సంపాదించారు",
+    "currentMission": "ప్రస్తుత మిషన్"
 }

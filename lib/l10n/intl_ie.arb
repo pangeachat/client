@@ -1312,10 +1312,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@passwordHasBeenChanged": {
         "type": "String",
         "placeholders": {}
@@ -2160,8 +2156,6 @@
     "presencesToggle": "Monstra message de stato de altere usatores",
     "startedACall": "{senderName} ha comenciat un appel",
     "statusExampleMessage": "Qual es tu hodie?",
-    "synchronizingPleaseWait": "Synchronisante… Per favor, aspetta.",
-    "synchronizingPleaseWaitCounter": " Synchronisante… ({percentage}%)",
     "theyDontMatch": "Il ne coincide pas",
     "tooManyRequestsWarning": "Tro má request. Per favor, tenta re-intrar pós tarde!",
     "tryToSendAgain": "Prova de mandar ancora",
@@ -2345,7 +2339,6 @@
     "previous": "Precedent",
     "otherPartyNotLoggedIn": "L'autra partia es actualmen ne connectet e per consequente ne pote acceptar messages!",
     "open": "Avertar",
-    "waitingForServer": "Spere pro server...",
     "newChatRequest": "📩 Nov request de chat",
     "contentNotificationSettings": "Configuraciones de notification de contento",
     "generalNotificationSettings": "Configuraciones general de notification",
@@ -2449,7 +2442,6 @@
     "errorDisableIGCClassDesc": "Le adjuta de grammatica es disactivate pro le curso in le qual iste chat es.",
     "error405Desc": "Per favor, configura tu linguas in le Menu Principal > Configuration de Aprendissage.",
     "termsAndConditions": "Termes e Condiciones",
-    "andCertifyIAmAtLeast13YearsOfAge": " e certifies que ha minimum 16 annos de etate.",
     "error502504Desc": "Instrumentes de translation e grammatica pote esser lente o unavailable durante que le bots Pangea se actualisa.",
     "error404Desc": "Le Bot Pangea non es secur de como traducer isto...",
     "errorPleaseRefresh": "Nos es in le processus de investigar! Per favor, re-iniciar e tentar ancora.",
@@ -2757,9 +2749,6 @@
     "why": "Proque?",
     "definition": "Definition",
     "reportToTeacher": "A qui vole tu reportar iste message?",
-    "reportMessageTitle": "{reportingUserId} ha reportate un message de {reportedUserId} in le chat {roomName}",
-    "reportMessageBody": "Message: {reportedMessage}\nRation: {reason}",
-    "noTeachersFound": "Nula maestri trovate por reportar",
     "trialExpiration": "Vostre perìo de prova gratuite expira en {expiration}",
     "freeTrialDesc": "Novos usatores recive un septimana de prova gratuita de Pangea Chat",
     "activateTrial": "Prova Gratuita de 7 Dies",
@@ -3093,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-05 12:30:40.030899",
+    "@@last_modified": "2026-10-22 09:50:16.381156",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3221,14 +3210,6 @@
     "@presencesToggle": {
         "type": "String",
         "placeholders": {}
-    },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
     },
     "@invitedBy": {
         "type": "String",
@@ -3718,10 +3699,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@newChatRequest": {
         "type": "String",
         "placeholders": {}
@@ -4153,10 +4130,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5403,35 +5376,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8389,11 +8333,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Chat le Tacaíocht",
     "@chatWithSupport": {
         "type": "String",
@@ -8414,8 +8353,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Aktivoi kirjoitusavustaja",
-    "autoIGCToolDescription": "Suorita automaattisesti Pangea Chat -työkaluja korjataksesi lähetetyt viestit kohdekielelle.",
+    "autoIGCToolName": "Seiceáil go huathoibríoch nuair a sheoltar",
+    "autoIGCToolDescription": "Seiceáil do theachtaireacht le haghaidh botún nuair a thapálann tú seol. Nuair a bhíonn sé seo múchta, tapáil an cnaipe cúnaimh scríbhneoireachta chun teachtaireacht a sheiceáil tú féin.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -10052,7 +9991,6 @@
     "activityLoadFailed": "Não foi possível carregar a atividade. Verifique sua conexão e tente novamente.",
     "levelUpChip": "Nível {level}!",
     "missingCourseOutline": "Este curso não está mais disponível",
-    "missingCourseOutlineCta": "Este curso não está mais disponível. Escolha um novo plano de curso.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -10077,10 +10015,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10476,7 +10410,6 @@
     "constructLevelFlowers": "Bláthanna, focail máistrithe",
     "filterAndSearch": "Scag agus cuardaigh",
     "participantsOfTotal": "{filled} de {total} imreoirí",
-    "mapAttributionLabel": "Ranníocóirí OpenStreetMap, cóipcheart agus ceadúnas",
     "seeAll": "Féach ar fad",
     "seeAllSection": "Féach ar {section} ar fad",
     "showMoreOptionsHint": "taispeáin tuilleadh roghanna",
@@ -10594,25 +10527,126 @@
     "summaryFeedbackReceived": "Go raibh maith agat! Fuaireamar d'aiseolas.",
     "summaryFeedbackFailed": "Níorbh fhéidir d'aiseolas a sheoladh. Bain triail eile as, le do thoil.",
     "summaryFeedbackProcessing": "Ag cur do chuid aiseolais agus ag nuashonrú an achoimre…",
-    "ssoNetworkBlockedTitle": "Ní féidir suíomh sínithe isteach a bhaint amach",
-    "ssoNetworkBlockedDesc": "Níl an líonra seo ag ligean dúinn {provider} a bhaint amach chun tú a shíniú isteach. Is minic a chuireann Wi-Fi scoile agus oifige bac air. Is féidir leat clárú le ríomhphost ina ionad, nó aistrigh go líonra eile agus bain triail eile as.",
-    "ssoTryAnyway": "Bain triail as ar aon nós",
-    "callTranscriptNotSubscribed": "Ní raibh síntiús ag {name} le linn an ghlao seo, mar sin níor tras-scríobhadh an méid a dúradh.",
     "callTranscriptTranscribing": "Fós ag tras-scríobh an taifeadta ó {name}…",
     "callTranscriptSeekTo": "Seinn ó {time}",
     "callTranscriptRecordings": "Taifeadtaí",
     "callTranscriptFullCall": "Glao iomlán",
     "callTranscriptPreparingRecording": "Ag ullmhú an taifeadta iomláin…",
     "callTranscriptNoRecording": "Níl aon taifeadadh den ghlao iomlán.",
-    "callTranscriptTranscribeButton": "Trascríobh",
-    "callTranscriptAudioUnavailable": "Níorbh fhéidir an taifeadadh sábháilte ó {name} a íoslódáil, mar sin níorbh fhéidir é a thrascríobh.",
-    "callTranscriptChooseLanguage": "Cén teanga a labhraíodh?",
-    "callTranscriptSubscribeForTranscription": "Liostáil le haghaidh trascríofa",
-    "unlockCallTranscript": "Díghlasáil trascríbhinn glaonna",
+    "callTranscriptNotSubscribed": "Ní raibh síntiús ag {name} le linn an ghlao seo, mar sin níor tras-scríobhadh an méid a dúradh.",
     "joinYourCourse": "Glac páirt i do chúrsa",
     "courseCodeJoinExplanation": "Logáil isteach nó cláraigh, agus úsáidfimid do chód cúrsa chun tú a chur le do chúrsa go huathoibríoch.",
     "courseCodeLabel": "Cód cúrsa",
     "courseCodeSaved": "Cód cúrsa {code} sábháilte",
     "courseCodeSavedExplanation": "Cláraigh nó logáil isteach agus cuirfimid le do chúrsa thú.",
-    "missionDueDate": "Le {date}, {time}"
+    "moderationRefusedContactDetails": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch sonraí teagmhála, cosúil le huimhir theileafóin. Bain iad le do thoil agus bain triail eile as.",
+    "moderationRefusedProfanity": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch focal nach gceadaímid sa chomhrá. Athraigh é le do thoil agus bain triail eile as.",
+    "callTranscriptTranscribeButton": "Trascríobh",
+    "callTranscriptAudioUnavailable": "Níorbh fhéidir an taifeadadh sábháilte ó {name} a íoslódáil, mar sin níorbh fhéidir é a thrascríobh.",
+    "callTranscriptChooseLanguage": "Cén teanga a labhraíodh?",
+    "callTranscriptSubscribeForTranscription": "Liostáil le haghaidh trascríofa",
+    "unlockCallTranscript": "Díghlasáil trascríbhinn glaonna",
+    "activitySummaryUpdateFailed": "Níorbh fhéidir an achoimre seo a nuashonrú.",
+    "courseNotFound": "Cúrsa gan aimsiú",
+    "askTeacherForNewCourse": "Iarr ar do mhúinteoir cúrsa nua a roghnú.",
+    "pickNewCoursePlan": "Roghnaigh plean cúrsa nua.",
+    "ssoNetworkBlockedTitle": "Ní féidir suíomh sínithe isteach a bhaint amach",
+    "ssoNetworkBlockedDesc": "Níl an líonra seo ag ligean dúinn {provider} a bhaint amach chun tú a shíniú isteach. Is minic a chuireann Wi-Fi scoile agus oifige bac air. Is féidir leat clárú le ríomhphost ina ionad, nó aistrigh go líonra eile agus bain triail eile as.",
+    "ssoTryAnyway": "Bain triail as ar aon nós",
+    "publicCoursesFilterTooltip": "Taispeáin cúrsaí ar féidir le duine ar bith a bheith páirteach iontu amháin",
+    "restrictedCoursesFilterTooltip": "Taispeáin cúrsaí nach mór duit a iarraidh a bheith páirteach iontu amháin",
+    "viewImageLabel": "Féach ar an íomhá",
+    "reportSent": "Tuarascáil seolta",
+    "reportNotSent": "Níorbh fhéidir do thuarascáil a sheoladh. Seiceáil do nasc agus bain triail eile as.",
+    "reportPointerMessage": "Tuairiscíodh teachtaireacht i {courseName} — féach Sábháilteacht",
+    "learningObjective": "Cuspóir Foghlama",
+    "learningObjectives": "Cuspóirí Foghlama",
+    "missionNofM": "Misean {index} de {count}",
+    "xpTowardObjective": "{xp} de {threshold} XP i dtreo an chuspóra seo",
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "courseComplete": "Cúrsa críochnaithe!",
+    "courseCompleteDesc": "Tá na {count} cuspóirí go léir sa chúrsa seo críochnaithe agat. Lean ort ag cleachtadh chun an méid atá foghlamtha agat a choinneáil.",
+    "practiceObjective": "Cleachtaigh an cuspóir seo",
+    "otherActivities": "Gníomhaíochtaí eile",
+    "objectiveCircleComplete": "Misean {index}: críochnaithe",
+    "objectiveCircleUpNext": "Misean {index}: an chéad cheann eile",
+    "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
+    "andCertifyIMeetTheMinimumAge": " e certifies que ha minimum 13 annos de etate, o li etate minimal requisit in mi land si it es plu alt.",
+    "filteredNetworkBlockedTitle": "Tá an líonra seo ag blocáil Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Tá an líonra seo ag blocáil cuid de Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Cad is féidir liom a dhéanamh?",
+    "filteredNetworkPhoneAdvice": "Múch an Wi-Fi agus bain úsáid as sonraí soghluaiste ina ionad.",
+    "filteredNetworkComputerAdvice": "Ceangail le hotspot do ghutháin in ionad an Wi-Fi seo.",
+    "filteredNetworkItHeading": "Do mhúinteoirí agus d'fhoireann TF",
+    "filteredNetworkItBody": "Iarr ar d'fhoireann TF na fearainn seo a cheadú:",
+    "filteredNetworkAskForHelp": "Iarr cabhair ar Pangea",
+    "filteredNetworkHelpExplanation": "Seolfaimid ríomhphost chugat chun cabhrú le Pangea Chat a chur ag obair ar an líonra seo.",
+    "filteredNetworkHelpWaiting": "Seolfar d'iarratas a luaithe a bheidh tú ceangailte.",
+    "filteredNetworkHelpSent": "Seolta. Beimid i dteagmháil leat trí ríomhphost.",
+    "filteredNetworkHelpRefused": "Níorbh fhéidir linn d'iarratas a sheoladh. Seol ríomhphost chuig support@pangea.chat le do thoil.",
+    "filteredNetworkVideoBlocked": "Blocálann an líonra seo físeáin.",
+    "filteredNetworkImagesBlocked": "Blocálann an líonra seo íomhánna.",
+    "filteredNetworkMapBlocked": "Blocálann an líonra seo an léarscáil.",
+    "callFullScreenTitle": "Lass Anrufe im Vollbildmodus klingeln",
+    "callFullScreenMessage": "Ein Anruf kam an, während Pangea Chat geschlossen war, aber dein Telefon konnte nur eine kleine Benachrichtigung dafür anzeigen. Erlaube Vollbildanrufe, damit der nächste Anruf auf deinem gesamten Bildschirm klingelt, auch wenn dein Telefon gesperrt ist.",
+    "callMicrophoneTitle": "Bain úsáid as do mhicreafón le haghaidh glaonna",
+    "callMicrophoneMessage": "Tá micreafón ag teastáil ó Pangea Chat le haghaidh glaonna, lena n-áirítear glaonna a fhreagraíonn tú ón scáileán glasála.",
+    "callMicrophoneOffTitle": "Níor nasc do ghlao",
+    "callMicrophoneOffMessage": "Ní féidir le Pangea Chat do mhicreafón a úsáid. Tapáil chun é a chur ar siúl i Socruithe.",
+    "goalsCompletedOfTotal": "{earned} of {total} goals completed",
+    "goalsCompletedInLanguage": "Goals completed in {language}",
+    "sessionXpTowardObjective": "{xp} XP this session; {remaining} more completes the objective",
+    "mapCreditsLabel": "Léarscáil creidmheasanna: Stadia Maps, OpenMapTiles agus OpenStreetMap",
+    "activityLaunchFindingCourses": "Ag aimsiú do chúrsaí…",
+    "activityLaunchCreatingRoom": "Ag cruthú do ghníomhaíochta…",
+    "activityLaunchOpeningRoom": "Ag oscailt do ghníomhaíochta…",
+    "playWithOthers": "Seinn le daoine eile",
+    "openRole": "Oscailte: {role}",
+    "waitingFor": "Ag fanacht {duration}",
+    "onlineInCourse": "{count} ar líne i {course}",
+    "newCourseChat": "Comhrá cúrsa nua",
+    "customCourseStepDesc": "Is sraith gníomhaíochtaí comhrá é cúrsa a leanann do théacsleabhar, le déanamh ag do mhic léinn le chéile mar obair bhaile.",
+    "reopenAppToFinishSwitching": "Dún an aip go hiomlán agus oscail arís í chun an t-athrú a chríochnú.",
+    "teamCode": "Cód foirne",
+    "connectionOffline": "Tá tú as líne. Déanfaidh Pangea Chat athcheangal nuair a bheidh do nasc ar ais.",
+    "connectionUnreachable": "Ní féidir Pangea Chat a bhaint amach. Ag iarraidh arís…",
+    "connectionBackOnline": "Ar ais ar líne",
+    "missionDueDate": "Le {date}, {time}",
+    "callNotificationsTitle": "Lig glaonna ar siúl",
+    "callNotificationsMessage": "Lig glaonna ar siúl mar fhógraí. Ceadaigh fógraí ionas go ligfidh do ghuthán ar siúl le haghaidh glaonna, fiú nuair a bhíonn Pangea Chat dúnta nó do ghuthán faoi ghlas.",
+    "callNotificationsMissedMessage": "Tháinig glao isteach nuair a bhí Pangea Chat dúnta, ach níor lig do ghuthán ar siúl mar go raibh fógraí múchta. Ceadaigh fógraí ionas go ligfidh an chéad ghlao eile ar siúl.",
+    "connectionPracticeVocab": "Cleachtaigh foclóir agus tú ag fanacht",
+    "offlinePracticeNote": "As líne. Uaslódálfar do chuid freagraí nuair a bheidh tú ar ais.",
+    "offlinePracticeSavedNote": "Sábháilte ar an ngléas seo. Uaslódálfar do XP nuair a bheidh tú ar ais ar líne.",
+    "offlinePracticeNothingSaved": "Níl go leor sábháilte ar an ngléas seo le cleachtadh as líne. Bain triail eile as nuair a bheidh tú ar líne arís.",
+    "missionNumber": "Misean {index}",
+    "xpToYourStar": "{xp} XP chuig do réalta",
+    "missionStarEarned": "Réalta tuillte!",
+    "xpFromChats": "Comhráite {xp}",
+    "xpFromGoals": "Spriocanna {xp}",
+    "xpFromPractice": "Cleachtadh {xp}",
+    "playMission": "Seinn",
+    "wordCount": "{count, plural, =1{1 fhocal} other{{count} focal}}",
+    "continueActivity": "Lean ar aghaidh",
+    "noObjectiveActivitiesYet": "Níl gníomhaíocht críochnaithe agat don chuspóir seo fós. Tosaigh ceann ó do chúrsa.",
+    "objectiveNotInYourCourses": "Níl an cuspóir seo in aon cheann de do chúrsaí.",
+    "objectiveActivityCount": "{count, plural, =0{Gan aon ghníomhaíocht fós} =1{1 ghníomhaíocht seinnte} other{{count} gníomhaíochtaí seinnte}}",
+    "activityCompleted": "Críochnaithe",
+    "completedTimes": "Críochnaithe {count} uair",
+    "classLocation": "Suíomh ranga",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Comhrá {xp}",
+    "xpIncludingGoals": "lena n-áirítear {xp} ó spriocanna",
+    "missionOtherLanguageNotice": "Tá an Misean seo ó chúrsa i {language}. Ní áirítear do dhul chun cinn air ach amháin nuair a bhíonn tú ag foghlaim {language}.",
+    "missionLanguageMismatchDesc": "Tá an Misean seo ó chúrsa i {language}. Athraigh do sprioc-theanga go {language}?",
+    "xpBySkillTitle": "De réir scile",
+    "missionNextActivity": "An chéad ghníomhaíocht eile",
+    "missionContinueActivity": "Lean ar aghaidh leis an ngníomhaíocht",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Críochnaithe sa chúrsa seo ({num})",
+    "otherCoursesSessions": "Cúrsaí eile ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, {xp} XP tuillte",
+    "currentMission": "Misean reatha"
 }

@@ -4,7 +4,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
@@ -12,21 +11,25 @@ import 'package:fluffychat/features/quests/models/learning_objective_model.dart'
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_circle.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
 /// The three Mission-header states of the full course plan (#8874): the
-/// Up-next Mission wears an "Up next" label and the primary accent, a
-/// satisfied Mission trades its star for a check and mutes its text, and every
-/// other Mission stays plain. Pinned because the state used to be a single
-/// colour swap nobody could see.
+/// current Mission wears a "Current mission" label and the primary accent
+/// (#9559), a complete Mission shows the gold star it earned and mutes its
+/// text, and every other Mission stays plain. The class location wears its
+/// own label beside it. Pinned because the state used to be a single colour
+/// swap nobody could see.
 void main() {
   setUp(() {
     dotenv.testLoad(mergeWith: {'CMS_API': 'https://cms.test.invalid'});
   });
 
   const objectiveText = 'Can ask for directions.';
-  const upNextLabel = 'Up next';
+  const upNextLabel = 'Current mission';
+  const classLabel = 'Class location';
 
   ActivityPlanModel plan() => ActivityPlanModel(
     req: ActivityPlanRequest(
@@ -49,6 +52,7 @@ void main() {
 
   Widget wrap({
     required bool isUpNext,
+    bool isClassLocation = false,
     MissionProgress? progress,
     bool collapsed = false,
     VoidCallback? onToggleCollapsed,
@@ -58,14 +62,15 @@ void main() {
     supportedLocales: L10n.supportedLocales,
     home: Scaffold(
       body: ObjectiveSection(
+        index: 1,
+        missionCount: 1,
         group: QuestObjectiveGroup(
           objective: LearningObjective(id: 'lo-1', objective: objectiveText),
           activities: [QuestActivity(activityId: 'a-0', plan: plan())],
           pacing: pacing,
         ),
         onTap: (_) {},
-        userStarsByActivity: (_) => 0,
-        hasCompletedActivity: (_) => false,
+        xpByActivity: (_) => 0,
         liveStateByActivity: (_) => (
           state: null,
           openSessions: 0,
@@ -77,6 +82,7 @@ void main() {
         collapsed: collapsed,
         onToggleCollapsed: onToggleCollapsed ?? () {},
         isUpNext: isUpNext,
+        isClassLocation: isClassLocation,
       ),
     ),
   );
@@ -87,6 +93,7 @@ void main() {
     WidgetTester tester,
     double width, {
     required bool isUpNext,
+    bool isClassLocation = false,
     MissionProgress? progress,
     MissionPacing? pacing,
   }) async {
@@ -95,24 +102,27 @@ void main() {
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
     await tester.pumpWidget(
-      wrap(isUpNext: isUpNext, progress: progress, pacing: pacing),
+      wrap(
+        isUpNext: isUpNext,
+        isClassLocation: isClassLocation,
+        progress: progress,
+        pacing: pacing,
+      ),
     );
     await tester.pumpAndSettle();
   }
 
   ColorScheme scheme(WidgetTester tester) =>
-      Theme.of(tester.element(find.text(objectiveText))).colorScheme;
+      Theme.of(tester.element(find.textContaining(objectiveText))).colorScheme;
 
+  // Contains, not equals: the statement carries its labels after its text.
   Color? colorOf(WidgetTester tester, String text) =>
-      tester.widget<Text>(find.text(text)).style?.color;
+      tester.widget<Text>(find.textContaining(text)).style?.color;
 
-  /// The star-or-check glyph in the header, found beside the fraction so the
-  /// activity card's own star row can't satisfy the lookup.
-  Finder headerIcon(WidgetTester tester, String fraction, IconData icon) =>
-      find.descendant(
-        of: find.ancestor(of: find.text(fraction), matching: find.byType(Row)),
-        matching: find.byIcon(icon),
-      );
+  /// The Mission's circle in the header (#9559): its number, or its star
+  /// once complete.
+  ObjectiveCircleState headerCircle(WidgetTester tester) =>
+      tester.widget<ObjectiveCircle>(find.byType(ObjectiveCircle)).item.state;
 
   group('Mission header states', () {
     testWidgets('the Up-next Mission says so in words and wears the accent', (
@@ -122,12 +132,13 @@ void main() {
         tester,
         1200,
         isUpNext: true,
-        progress: const MissionProgress(stars: 0, threshold: 4),
+        progress: const MissionProgress(xp: 0, threshold: 300),
       );
 
       expect(find.text(upNextLabel), findsOneWidget);
       expect(colorOf(tester, objectiveText), scheme(tester).primary);
-      expect(headerIcon(tester, '0/4', Icons.star), findsOneWidget);
+      // The current Mission's circle, not yet its star.
+      expect(headerCircle(tester), ObjectiveCircleState.current);
     });
 
     testWidgets('the label survives the narrow (phone) header layout', (
@@ -137,31 +148,38 @@ void main() {
         tester,
         400,
         isUpNext: true,
-        progress: const MissionProgress(stars: 0, threshold: 4),
+        progress: const MissionProgress(xp: 0, threshold: 300),
       );
 
       expect(find.text(upNextLabel), findsOneWidget);
     });
 
-    testWidgets('a satisfied Mission trades its star for a check and mutes '
-        'its text', (tester) async {
+    testWidgets('the class location sits beside the current Mission\'s '
+        'label', (tester) async {
+      await pumpAt(
+        tester,
+        1200,
+        isUpNext: true,
+        isClassLocation: true,
+        progress: const MissionProgress(xp: 0, threshold: 300),
+      );
+
+      expect(find.text(upNextLabel), findsOneWidget);
+      expect(find.text(classLabel), findsOneWidget);
+    });
+
+    testWidgets('a complete Mission earns its gold star and mutes its text', (
+      tester,
+    ) async {
       await pumpAt(
         tester,
         1200,
         isUpNext: false,
-        progress: const MissionProgress(stars: 4, threshold: 4),
+        progress: const MissionProgress(xp: 300, threshold: 300),
       );
 
-      expect(headerIcon(tester, '4/4', Icons.check_circle), findsOneWidget);
-      expect(headerIcon(tester, '4/4', Icons.star), findsNothing);
-      expect(
-        tester
-            .widget<Icon>(headerIcon(tester, '4/4', Icons.check_circle))
-            .color,
-        Theme.of(tester.element(find.text(objectiveText))).pangea.success,
-      );
+      expect(headerCircle(tester), ObjectiveCircleState.complete);
       expect(colorOf(tester, objectiveText), scheme(tester).onSurfaceVariant);
-      expect(colorOf(tester, '4/4'), scheme(tester).onSurfaceVariant);
       expect(find.text(upNextLabel), findsNothing);
     });
 
@@ -170,23 +188,17 @@ void main() {
         tester,
         1200,
         isUpNext: false,
-        progress: const MissionProgress(stars: 1, threshold: 4),
+        progress: const MissionProgress(xp: 100, threshold: 300),
       );
 
       expect(find.text(upNextLabel), findsNothing);
-      expect(headerIcon(tester, '1/4', Icons.star), findsOneWidget);
+      expect(headerCircle(tester), ObjectiveCircleState.later);
       // Plain bodyMedium — no accent, no muting.
       expect(
         colorOf(tester, objectiveText),
         Theme.of(
-          tester.element(find.text(objectiveText)),
+          tester.element(find.textContaining(objectiveText)),
         ).textTheme.bodyMedium?.color,
-      );
-      // The star's fill is what carries the fraction, so it wears the readable
-      // gold, not the decorative one (#8983).
-      expect(
-        tester.widget<Icon>(headerIcon(tester, '1/4', Icons.star)).color,
-        Theme.of(tester.element(find.text(objectiveText))).pangea.goldGraphic,
       );
     });
   });
@@ -205,7 +217,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      await tester.tap(find.text(objectiveText));
+      await tester.tap(find.textContaining(objectiveText));
       await tester.pumpAndSettle();
 
       expect(toggles, 1);
@@ -218,7 +230,7 @@ void main() {
       await tester.pumpWidget(wrap(isUpNext: false, collapsed: true));
       await tester.pumpAndSettle();
 
-      expect(find.text(objectiveText), findsOneWidget);
+      expect(find.textContaining(objectiveText), findsOneWidget);
       expect(find.text('Old Town Directions'), findsNothing);
     });
   });
@@ -247,7 +259,10 @@ void main() {
 
     /// The tappable Mission header: the nearest ink around the statement.
     Finder header() => find
-        .ancestor(of: find.text(objectiveText), matching: find.byType(InkWell))
+        .ancestor(
+          of: find.textContaining(objectiveText),
+          matching: find.byType(InkWell),
+        )
         .first;
 
     testWidgets('shows the note and the due date in the course zone', (
@@ -275,7 +290,7 @@ void main() {
           tester,
           width,
           isUpNext: true,
-          progress: const MissionProgress(stars: 0, threshold: 4),
+          progress: const MissionProgress(xp: 0, threshold: 4),
           pacing: MissionPacing(dueAt: dueAt, timeZone: 'America/New_York'),
         );
         final due = find.textContaining(dueLabel);
@@ -284,7 +299,7 @@ void main() {
         expect(
           tester.getTopLeft(due).dy,
           greaterThanOrEqualTo(
-            tester.getBottomLeft(find.text(objectiveText)).dy,
+            tester.getBottomLeft(find.textContaining(objectiveText)).dy,
           ),
         );
       });
@@ -397,13 +412,14 @@ void main() {
         supportedLocales: L10n.supportedLocales,
         home: Scaffold(
           body: ObjectiveSection(
+            index: 1,
+            missionCount: 1,
             group: QuestObjectiveGroup(
               objective: const LearningObjective(id: 'lo-1', objective: 'x'),
               activities: activities,
             ),
             onTap: (_) {},
-            userStarsByActivity: (_) => 0,
-            hasCompletedActivity: (_) => false,
+            xpByActivity: (_) => 0,
             liveStateByActivity: (_) => (
               state: null,
               openSessions: 0,

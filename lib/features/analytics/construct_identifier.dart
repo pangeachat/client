@@ -221,17 +221,29 @@ class ConstructIdentifier {
   /// The meanings this learner already has for this word on this device, read
   /// without fetching: the one saved from meaning practice, and the cached
   /// dictionary meaning under either key it is stored by.
-  Set<String> get knownMeanings {
+  Set<String> get knownMeanings => {
+    ?_userLemmaInfo.meaning,
+    for (final info in _cachedLemmaInfos) info.meaning,
+  };
+
+  /// The meaning practice shows for this word when it cannot fetch one: the
+  /// cached dictionary meaning practice itself would fetch, else the one saved
+  /// from meaning practice. Null when this device has neither.
+  String? get savedMeaning =>
+      _cachedLemmaInfos.firstOrNull?.meaning ?? _userLemmaInfo.meaning;
+
+  /// The emoji shown beside [savedMeaning].
+  String? get savedEmoji =>
+      _cachedLemmaInfos.firstOrNull?.emoji.firstOrNull ?? userSetEmoji;
+
+  /// The dictionary entries cached on this device for this word, read without
+  /// fetching. The key practice fetches by comes first, then the word card's.
+  Iterable<LemmaInfoResponse> get _cachedLemmaInfos {
     final l2Code = MatrixState.pangeaController.userController.userL2Code;
-    final cachedRequests = [
-      if (l2Code != null) wordCardLemmaInfoRequest(l2Code, const {}),
+    return [
       lemmaInfoRequest(const {}),
-    ];
-    return {
-      ?_userLemmaInfo.meaning,
-      for (final request in cachedRequests)
-        ?LemmaInfoRepo.instance.getCached(request)?.meaning,
-    };
+      if (l2Code != null) wordCardLemmaInfoRequest(l2Code, const {}),
+    ].map(LemmaInfoRepo.instance.getCached).nonNulls;
   }
 
   String? get userSetEmoji => _userLemmaInfo.emojis?.firstOrNull;

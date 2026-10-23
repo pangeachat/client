@@ -105,6 +105,12 @@ abstract class CourseSearchController<T> {
   void setTargetLanguageFilter(LanguageModel? language) {
     if (_targetLanguageFilter.value == language) return;
     _targetLanguageFilter.value = language;
+    reload();
+  }
+
+  /// Drops every loaded course and loads from the start, after a filter
+  /// change. The bumped [loadGeneration] tells an in-flight load it is stale.
+  void reload() {
     _loadGeneration++;
     if (_scrollController.hasClients) {
       _scrollController.jumpTo(0);
@@ -180,6 +186,7 @@ abstract class CourseSearchController<T> {
     }
 
     if (_loadGeneration == generation &&
+        emptyResultIsUnexpected &&
         _loadedCourses.isEmpty &&
         _filteredCoursesLoader.value is AsyncLoaded) {
       ErrorHandler.logError(
@@ -190,4 +197,8 @@ abstract class CourseSearchController<T> {
   }
 
   Future<void> fetchAndAppend(int generation);
+
+  /// Whether a load that finds no courses is reported. A filter that is
+  /// expected to match few or no courses turns this off.
+  bool get emptyResultIsUnexpected => true;
 }

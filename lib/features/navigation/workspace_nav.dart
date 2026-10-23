@@ -12,11 +12,13 @@ import 'package:fluffychat/features/navigation/token_params/analytics_practice_t
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/objective_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_query.dart';
+import 'package:fluffychat/pangea/spaces/course_access_filter.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -230,6 +232,50 @@ abstract class WorkspaceNav {
     );
   }
 
+  /// Pick the Mission the course card, its collapsed header and the course
+  /// map show: `?mission=<missionId>` beside `?c=`, every other part kept.
+  /// [selectedMissionIdFor] reads it back.
+  static String selectMission(Uri current, String missionId) {
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {'mission'});
+    parts.add('mission=${Uri.encodeComponent(missionId)}');
+    return WorkspaceQuery.location(current.path, parts);
+  }
+
+  /// Open a Learning Objective's detail beside the Learning Objectives list —
+  /// [openConstructDetail]'s twin: drops any other detail across columns,
+  /// seats the list (the analytics `activities` master) on a cold start, and
+  /// appends `objective:<missionId>` after it. [courseId] is the course it
+  /// was opened from, so the detail shows that course's numbers (#9559).
+  static String openObjectiveDetail(
+    Uri current,
+    String missionId, {
+    String? courseId,
+  }) {
+    final PanelToken detail = ObjectivePanelToken(
+      ObjectiveTokenParam(missionId: missionId, courseId: courseId),
+    );
+    return _mutateBoth(
+      current,
+      (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
+      (right) {
+        final next = right
+            .where((t) => t != detail && !_areSiblings(detail, t))
+            .toList();
+        if (!next.any((t) => t.type == PanelTypesEnum.analytics)) {
+          next.insert(
+            0,
+            const AnalyticsPanelToken(
+              AnalyticsTokenParam(subpage: ProgressIndicatorEnum.activities),
+            ),
+          );
+        }
+        next.add(detail);
+        return next;
+      },
+    );
+  }
+
   /// Open a practice session as a right-column panel that **takes over the
   /// analytics surface**: it clears the analytics master and any vocab/grammar
   /// detail on the right (and a left `session` review — practice shares the one
@@ -239,21 +285,29 @@ abstract class WorkspaceNav {
   /// cluster's analytics replaces the whole right column. Practice is a normal
   /// bounded panel, not a route or a fullscreen surface. See
   /// `routing.instructions.md`.
-  static String openPractice(Uri current, ConstructTypeEnum type) =>
-      _mutateBoth(
-        current,
-        (left) => left.where((t) => t.type != PanelTypesEnum.session).toList(),
-        (right) {
-          final next = right.where((t) => !t.type.isAnalyticsPanel).toList();
-          next.insert(
-            0,
-            AnalyticsPracticePanelToken(
-              AnalyticsPracticeTokenParam(constructType: type),
-            ),
-          );
-          return next;
-        },
+  /// [missionId] scopes the session to a Mission's target vocabulary (#9438);
+  /// the scope rides the token so it survives a panel swap and can be linked.
+  static String openPractice(
+    Uri current,
+    ConstructTypeEnum type, {
+    String? missionId,
+  }) => _mutateBoth(
+    current,
+    (left) => left.where((t) => t.type != PanelTypesEnum.session).toList(),
+    (right) {
+      final next = right.where((t) => !t.type.isAnalyticsPanel).toList();
+      next.insert(
+        0,
+        AnalyticsPracticePanelToken(
+          AnalyticsPracticeTokenParam(
+            constructType: type,
+            missionId: missionId,
+          ),
+        ),
       );
+      return next;
+    },
+  );
 
   /// Switch the workspace to course [spaceId]: set the `?c=<id>` scope
   /// filter AND a `course` left panel (at [tab] in its param if given),
@@ -286,7 +340,13 @@ abstract class WorkspaceNav {
       ),
     ];
     final parts = WorkspaceQuery.parts(current.query);
-    WorkspaceQuery.removeKeys(parts, {'c', 'left'});
+    WorkspaceQuery.removeKeys(parts, {
+      'c',
+      'left',
+      // The picked Mission belongs to the course it was picked in; another
+      // course opens on its own current Mission.
+      if (current.queryParameters['c'] != shortRoomId(spaceId)) 'mission',
+    });
     final query = <String>[
       'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
       'left=${left.map((t) => t.encode()).join(',')}',
@@ -420,8 +480,10 @@ abstract class WorkspaceNav {
   /// turn. The surviving context keeps the plan's close a back-arrow that
   /// reopens the card. [launch] skips the lobby straight to role selection;
   /// [roomId] reopens/rejoins a specific session room; [autoplay] autostarts
-  /// the plan's hero media (muted, block 0) — all three ride as fields of the
-  /// activity token's param ([ActivityTokenParam]), never as loose query params.
+  /// the plan's hero media (muted, block 0); [fromCoursePlan] marks an open
+  /// from the card's full course plan, so the back-arrow reopens that page —
+  /// all four ride as fields of the activity token's param
+  /// ([ActivityTokenParam]), never as loose query params.
   ///
   /// Inbound `/courses/:id?activity=` external links and the standalone
   /// `/<uuid>` link map to this same token form through `legacy_redirects`. The
@@ -433,6 +495,7 @@ abstract class WorkspaceNav {
     bool launch = false,
     String? roomId,
     bool autoplay = false,
+    bool fromCoursePlan = false,
   }) {
     final token = ActivityPanelToken(
       ActivityTokenParam(
@@ -440,6 +503,7 @@ abstract class WorkspaceNav {
         roomId: roomId,
         launch: launch,
         autoplay: autoplay ? 0 : null,
+        fromCoursePlan: fromCoursePlan,
       ),
     );
 
@@ -485,10 +549,51 @@ abstract class WorkspaceNav {
     );
   }
 
+  /// Open session [roomId] of [activityId] INSIDE the activity panel — the
+  /// token keeps the activity and binds the room — so a session viewed from
+  /// the join list closes with a back arrow to that list rather than an X.
+  /// The course context, if any, is kept, and so is an open from the full
+  /// course plan (#9367).
+  static String openActivitySession(
+    Uri current,
+    String activityId,
+    String roomId,
+  ) => _mutate(
+    current,
+    'left',
+    (_) => [
+      ActivityPanelToken(
+        ActivityTokenParam(
+          activityId: activityId,
+          roomId: roomId,
+          fromCoursePlan: activityInfoFor(current)?.fromCoursePlan ?? false,
+          fromJoinList: true,
+        ),
+      ),
+    ],
+  );
+
+  /// Back out of a session viewed inside [activityId]'s panel to the activity
+  /// itself, keeping the course context and an open from the full course plan
+  /// (#9367), so the activity's own back arrow still returns there.
+  static String closeActivitySession(Uri current, String activityId) => _mutate(
+    current,
+    'left',
+    (_) => [
+      ActivityPanelToken(
+        ActivityTokenParam(
+          activityId: activityId,
+          fromCoursePlan: activityInfoFor(current)?.fromCoursePlan ?? false,
+        ),
+      ),
+    ],
+  );
+
   /// Drop the open `activity` token, keeping the rest of the workspace —
   /// notably the course context, which a close never consumes
   /// (routing.instructions.md). [reopenCourseCard] additionally reseats the
-  /// `course` card over a surviving context (the plan's back-arrow target).
+  /// `course` card over a surviving context (the plan's back-arrow target) —
+  /// on its full course plan when the activity was opened from there (#9367).
   /// Emits the world path: activity overlays only ever ride over the map.
   static String dropActivityOverlay(
     Uri current, {
@@ -502,9 +607,17 @@ abstract class WorkspaceNav {
     if (reopenCourseCard &&
         activeSpaceIdFor(current) != null &&
         left.every((t) => t.type != PanelTypesEnum.course)) {
+      // Last, like every course open (#9037).
       left.add(
-        const CoursePanelToken(),
-      ); // last, like every course open (#9037)
+        CoursePanelToken(
+          activityInfoFor(current)?.fromCoursePlan == true
+              ? const CourseDetailsTokenParam(
+                  activeTab: SpaceSettingsTabs.course,
+                  expanded: true,
+                )
+              : null,
+        ),
+      );
     }
     if (left.isNotEmpty) {
       parts.add('left=${left.map((t) => t.encode()).join(',')}');
@@ -769,6 +882,7 @@ abstract class WorkspaceNav {
     String? initialLanguageFilter,
     bool? allLanguagesFilter,
     String? previewRoomId,
+    CourseAccessFilter? accessFilter,
     String? createCourseId,
     bool showNewCourseInvitePage = false,
     String? privateCourseJoinCode,
@@ -783,6 +897,9 @@ abstract class WorkspaceNav {
     final carriedAllLanguagesFilter =
         matchingTypePanel.firstOrNull?.param?.allLanguagesFilter;
 
+    final carriedAccessFilter =
+        matchingTypePanel.firstOrNull?.param?.accessFilter;
+
     return _mutate(
       current,
       'left',
@@ -796,6 +913,8 @@ abstract class WorkspaceNav {
             allLanguagesFilter:
                 allLanguagesFilter ?? carriedAllLanguagesFilter ?? false,
             previewRoomId: previewRoomId,
+            accessFilter:
+                accessFilter ?? carriedAccessFilter ?? CourseAccessFilter.all,
             createCourseId: createCourseId,
             showNewCourseInvitePage: showNewCourseInvitePage,
             privateCourseJoinCode: privateCourseJoinCode,

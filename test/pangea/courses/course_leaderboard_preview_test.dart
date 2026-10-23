@@ -20,8 +20,10 @@ import 'package:fluffychat/routes/chat/chat_details/leaderboard_row.dart';
 import 'package:fluffychat/routes/chat/chat_details/participant_card.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import '../audio_players_stub.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
+import '../settle_leaderboard.dart';
 
 /// Skips `initMatrix()` — the member-actions menu on each row only wants
 /// `Matrix.of(context)`.
@@ -50,6 +52,7 @@ class _TestMatrix extends Matrix {
 /// and #9154 — invite in the header whenever this user may invite, and one
 /// Tab stop with the arrow keys moving between cards and rows.
 void main() {
+  tearDownAll(AudioPlayersStub.uninstall);
   TestWidgetsFlutterBinding.ensureInitialized();
 
   late Client client;
@@ -63,6 +66,7 @@ void main() {
   const width = 360.0;
 
   setUpAll(() async {
+    AudioPlayersStub.install();
     // `Avatar` resolves the bot name from the environment at build time, which
     // reads GetStorage (path_provider-backed) and dotenv.
     final tempDir = await Directory.systemTemp.createTemp('course_leaderboard');
@@ -204,9 +208,7 @@ void main() {
         ),
       ),
     );
-    // L10n's delegate resolves from a deferred library, so nothing is in the
-    // tree until localizations finish loading — and the profiles load after.
-    await tester.pumpAndSettle();
+    await settle(tester, find.byType(CourseLeaderboardPreview));
   }
 
   /// The member cards start presence and avatar work that outlives the tree.
@@ -219,6 +221,11 @@ void main() {
       () => Future.delayed(const Duration(milliseconds: 300)),
     );
     await tester.pump(const Duration(seconds: 10));
+    // The timers that pump fired answer presence reads, whose writes need
+    // real time to reach the database before `tearDown` closes it.
+    await tester.runAsync(
+      () => Future.delayed(const Duration(milliseconds: 300)),
+    );
   }
 
   /// The invite control is icon-only, so it is found by its tooltip — which
@@ -261,7 +268,7 @@ void main() {
     await drain(tester);
   });
 
-  testWidgets('rows rank by stars, then level, and show both', (tester) async {
+  testWidgets('rows rank by goals, then level, and show both', (tester) async {
     MatrixState.pangeaController = FakePangeaController(
       analyticsProfiles: {
         // The admin has played the most, and still does not place (#9481).
@@ -282,7 +289,7 @@ void main() {
         .firstWhere((n) => n.getSemanticsData().label.contains('Member 3'))
         .getSemanticsData();
     expect(first.label, contains('Rank 1'));
-    expect(first.label, contains('Stars earned in'));
+    expect(first.label, contains('Goals completed in'));
     expect(first.label, contains(': 10'));
     expect(first.label, contains('Level 1'));
     handle.dispose();

@@ -168,12 +168,6 @@ class ActivityPlanModel {
     return b != null && (b.isVideo || b.isYoutube);
   }
 
-  /// Whether the activity has any video or YouTube block — media that plays.
-  /// The live session shows the inline carousel (so it can be played) only for
-  /// these, and suppresses the blurred background image in that case;
-  /// image-only activities keep the background. See activities.instructions.md.
-  bool get hasPlayableMedia => media.any((b) => b.isVideo || b.isYoutube);
-
   /// The hero image to render today (the carousel is a follow-up). Resolution
   /// order: the first resolved image block in the v2/v3 `media` list → the
   /// legacy single `image_url` (the choreo `/activity_plan/localize` path) →
@@ -183,10 +177,15 @@ class ActivityPlanModel {
   /// are absolute CDN urls used as-is; `resolveMediaUrl` prepends the CMS origin
   /// only for legacy relative paths. See media_url.dart and
   /// `.github/.github/instructions/activities.instructions.md`.
-  Uri? get imageURL {
+  Uri? get imageURL => ownImageURL ?? Uri.tryParse(randomPlaceholder);
+
+  /// The activity's own image — its first image block, else the legacy single
+  /// `image_url` — and never the placeholder. Null when it has none, which
+  /// keeps the opt-in activity chat background off (activities.instructions.md).
+  Uri? get ownImageURL {
     final heroUrl = heroImage?.displayUrl();
     if (heroUrl != null) return Uri.tryParse(heroUrl);
-    return resolveMediaUrl(_imageURL) ?? Uri.tryParse(randomPlaceholder);
+    return resolveMediaUrl(_imageURL);
   }
 
   /// Roles come from the CMS activity, the single source of truth for role ids.
@@ -195,20 +194,6 @@ class ActivityPlanModel {
   /// to match and no goals are ever awarded. A plan with no roles is a bug that
   /// must surface (the parse sites log it loudly) — return empty, not fakes.
   Map<String, ActivityRole> get roles => _roles ?? const {};
-
-  /// The stars ONE player can earn in this activity: their role's goal count.
-  /// Generation guarantees the count is uniform across roles; plans predating
-  /// that rule may differ, so this takes the min across roles — permissive
-  /// (org activities doc, goal-progression invariants). The single home for
-  /// the rule: card star rows, the map's large card, and the Mission threshold
-  /// ceiling (quest_progression_resolver.dart) all read this. 0 when the plan
-  /// has no roles (degraded data — surfaces elsewhere).
-  int get earnableStars {
-    if (roles.isEmpty) return 0;
-    return roles.values
-        .map((r) => r.allGoals.length)
-        .reduce((a, b) => b < a ? b : a);
-  }
 
   factory ActivityPlanModel.fromJson(Map<String, dynamic> json) {
     final req = ActivityPlanRequest.fromJson(

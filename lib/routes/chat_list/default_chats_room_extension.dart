@@ -14,7 +14,6 @@ import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_settings_model.dart';
 import 'package:fluffychat/routes/chat_list/course_default_chats_enum.dart';
-import 'package:fluffychat/routes/chat_list/course_hierarchy_extension.dart';
 
 extension DefaultChatsRoomExtension on Room {
   CourseChatsSettingsModel get courseChatsSettings {
@@ -44,48 +43,6 @@ extension DefaultChatsRoomExtension on Room {
 
   bool hasDefaultChat(CourseDefaultChatsEnum type) =>
       pangeaSpaceChildren.any((r) => r.isDefaultChatByType(type));
-
-  /// Joins the course's default chats (introductions, announcements) that
-  /// exist but this user has not joined yet. Runs when the course page opens,
-  /// so a member is in them without having to go looking for them (#9031).
-  ///
-  /// The space hierarchy is what this needs: an unjoined child is not in
-  /// `client.rooms`, and its canonical alias is the only thing marking it as
-  /// a default chat.
-  Future<void> joinDefaultChats() async {
-    final missing = CourseDefaultChatsEnum.values
-        .where((type) => !hasDefaultChat(type))
-        .toSet();
-    if (missing.isEmpty) return;
-
-    // The default chats are not guaranteed to be on the hierarchy's first
-    // page, so read on until both are found.
-    try {
-      await for (final chunk in hierarchyChildren()) {
-        final alias = chunk.canonicalAlias;
-        if (alias == null) continue;
-
-        final type = missing.firstWhereOrNull(
-          (type) => alias.localpart?.startsWith(type.alias) == true,
-        );
-        if (type == null) continue;
-        missing.remove(type);
-
-        try {
-          await client.joinRoom(alias);
-        } catch (e, s) {
-          ErrorHandler.logError(
-            e: e,
-            s: s,
-            data: {'alias': alias, 'spaceId': id},
-          );
-        }
-        if (missing.isEmpty) return;
-      }
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {'spaceId': id});
-    }
-  }
 
   bool dismissedDefaultChat(CourseDefaultChatsEnum type) {
     switch (type) {

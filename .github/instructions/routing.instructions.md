@@ -44,6 +44,7 @@ The whole grammar in one place. The path is always `/`; state rides in the query
   card, in the same slot. This is the one panel the token list does not spell
   out, and it is why collapsing the card moves nothing else in the column
   ([#9037](https://github.com/pangeachat/client/issues/9037)).
+- **`?mission=<missionId>`** — the **Mission on show** in the course context: the Mission circle the learner picked, read by the course page, the collapsed course bar and the course map alike, so all three show the same Mission ([quests.instructions.md](quests.instructions.md), "Progress display on the course page"). Absent means the course's current Mission; switching to another course drops it.
 - **`?left=` and `?right=`** — comma-separated ordered lists of **panel tokens**,
   one token per open panel, ordered from bottom to top.
 - A token is **`type:param`**. The type names the surface (`chats`, `room`,
@@ -98,7 +99,7 @@ The rules that keep the grammar legible:
   id in `?c=`; an activity's id (and, when resuming, its bound session room) ride
   in the activity token's own param.
 
-**Compatibility.** The parser normalizes a registry master/detail pair to master-first whatever order a link carries (the [panel registry](../../lib/features/navigation/panel_registry.dart) knows which type is whose master) and keeps the given order for pairs the registry does not relate. That is the whole compatibility story: **the client is the only producer of its URLs, so retired shapes and spellings are simply deleted, not redirected** — old bookmarks and stale tabs from earlier releases are not maintained (a deliberate call at current scale, #7467). Four inbound URL contracts arrive from outside the client. Two are bare single-segment links — the shareable standalone activity link (`/<uuid>`) and the course join link (`/<code>`, a seven-character join code) — which [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds into their `activity` / `addcourse:private/<code>` tokens before render. The third, the DM invite link (`/invite_user/<id>`), resolves through its own route rather than a fold — a redirect-only route that lands on the world map with the chat list open, from where the shell opens the DM and lands the user in it (#8436) — see [Ids in URLs](#ids-in-urls). The fourth is Synapse's notification/invite email link (`/room/<roomId>/<eventId>`, also `/#/room/…`), folded by `LegacyRedirects` into a room token with its jump-to-message event. Root fragments are handled at the router on web and unwrapped by `incomingUriToPath` on native. Unmatched routes recover through the world route so its auth guard and shell still run. These are app URLs the SPA serves directly; the older `/join_with_link` and `/join` join-link spellings are retired. A new inbound path shape also needs a line in the Android App Links intent filter, or Android opens it in the browser ([joining-courses](joining-courses.instructions.md#deep-linking--mobile--web)).
+**Compatibility.** The parser normalizes a registry master/detail pair to master-first whatever order a link carries (the [panel registry](../../lib/features/navigation/panel_registry.dart) knows which type is whose master) and keeps the given order for pairs the registry does not relate. That is the whole compatibility story: **the client is the only producer of its URLs, so retired shapes and spellings are simply deleted, not redirected** — old bookmarks and stale tabs from earlier releases are not maintained (a deliberate call at current scale, #7467). Four inbound URL contracts arrive from outside the client. Two are bare single-segment links — the shareable standalone activity link (`/<uuid>`) and the course join link (`/<code>`, a seven-character join code) — which [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds into their `activity` / `addcourse:private/<code>` tokens before render. The third, the DM invite link (`/invite_user/<id>`), resolves through its own route rather than a fold — a redirect-only route that lands on the world map with the chat list open, from where the shell opens the DM and lands the user in it (#8436) — see [Ids in URLs](#ids-in-urls). The fourth is Synapse's notification/invite email link (`/room/<roomId>/<eventId>`), folded by `LegacyRedirects` into a room token with its jump-to-message event. Synapse builds these links as `/#/room/…`; our email templates rewrite them to the path form, because the web app does not read the `#` part of a URL at startup. A course ping is posted in the course space, so its email links to the space, which has no chat to show. When a room token names a course space, the room panel replaces it, so Back does not return to it. An event that carries the course-ping keys opens its activity the same way tapping the ping's push notification does ([deep-linking](../../../.github/.github/instructions/deep-linking.instructions.md)); anything else opens the course. Root fragments are unwrapped by `incomingUriToPath` on native. Unmatched routes recover through the world route so its auth guard and shell still run. These are app URLs the SPA serves directly; the older `/join_with_link` and `/join` join-link spellings are retired. A new inbound path shape also needs a line in the Android App Links intent filter, or Android opens it in the browser ([joining-courses](joining-courses.instructions.md#deep-linking--mobile--web)).
 
 ## Ids in URLs
 
@@ -125,14 +126,7 @@ chrome (rail, bottom nav, cluster) all derive from the same tokens, so they
 cannot disagree about what is open. Closing a panel is just dropping its token:
 there is no second, path-driven copy to leave standing.
 
-External pointers never carry workspace paths either: a push notification
-resolves through its structured content keys and a `matrix.to` link through the
-in-app link handler — both emit token URLs in code
-([deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md)).
-The URLs that arrive from outside — the shareable standalone activity link
-(`/<uuid>`) and the course join link (`/<code>`) — are rewritten to their tokens
-at the router redirect before anything renders — so there is exactly one
-representation by the time the shell builds.
+External pointers rarely carry workspace paths: a push notification resolves through its structured content keys and a `matrix.to` link through the in-app link handler — both emit token URLs in code ([deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md)). The exception is a notice from the bot, which may also carry an app path for a destination the keys cannot name; the client follows it through the router like a URL typed in the address bar ([notices.instructions.md](notices.instructions.md)). The URLs that arrive from outside — the shareable standalone activity link (`/<uuid>`) and the course join link (`/<code>`) — are rewritten to their tokens at the router redirect before anything renders — so there is exactly one representation by the time the shell builds.
 
 ### The course context
 
@@ -316,9 +310,11 @@ user came from:
 - A **back arrow** means there is somewhere to go back to. It pops a page pushed
   within the panel, unfolds a folded master, or — for a panel whose contextual
   parent is present — returns to that parent: an activity plan under a course
-  context closes back to the course card.
+  context closes back to the course card, on the page of the card it was opened
+  from (see Activity plan below).
 - An **X** means closing simply reveals what is beneath: the other panels and
   the map.
+- A **session opened from an activity's join list** opens inside that activity's panel, and its link records that origin, so its close is a back arrow to the join list. Sessions opened any other way keep their usual close.
 - An **expand/collapse chevron** replaces both where a panel has a **floor
   instead of a close**. The only one is the course panel under `?c=`
   ([#8816](https://github.com/pangeachat/client/issues/8816)), and it has a
@@ -810,16 +806,17 @@ behaves the same on mobile and desktop.
 | Chat list | the rail | left | open panel (master) |
 | Live chat / session | a chat-list row, an activity launch, **a course room row** | left | open panel (detail); one live view at a time. A course room rides over the course context (`?c=` stays), so closing it reveals the course |
 | Chat members / settings (a regular chat) | the chat header's More menu | the chat panel | push (members/search live *within* the chat, not beside it) |
-| Analytics (vocab / grammar / sessions) | a top-right cluster tracker (the **Stars** tracker opens the sessions panel) | right | open panel (master) |
+| Analytics (vocab / grammar / sessions) | a top-right cluster tracker (the **Stars** tracker opens the Learning Objectives panel) | right | open panel (master) |
 | Level | the **level medal** on the powerups pill | right | open panel (an analytics tab) |
-| A construct detail | tapping a vocab/grammar item | right | open panel (detail) beside its summary; **one detail at a time, across both columns** — a vocab detail, a grammar detail, and a completed-activity `session` review share ONE slot (a live `room` chat is independent and stays open); folds under pressure |
+| A construct detail | tapping a vocab/grammar item | right | open panel (detail) beside its summary; **one detail at a time, across both columns** — a vocab detail, a grammar detail, a Learning Objective's `objective` page and a completed-activity `session` review share ONE slot (a live `room` chat is independent and stays open); folds under pressure |
+| A Learning Objective's page | a tile on the Learning Objectives page, or the Mission card's statement | right | an `objective:<missionId>[.c<courseRoomId>]` detail beside the list, in the same one-detail slot as a construct detail; the course field names the course it was opened from, so a Mission two courses share shows that course ([activities.instructions.md](activities.instructions.md), "A Learning Objective's page") |
 | Practice session | the **Practice** button on the vocab/grammar analytics panel; the live-session badge on that section's cluster tracker (resume) | right | a panel over a persistent background session — see [Practice](#practice-is-a-persistent-background-session) below |
 | Profile + settings menu | the top-right cluster avatar | right | open panel (master) |
 | A settings page (learning, style, security, …) | a settings-menu row | right | open panel (detail) beside the menu, folding only under width pressure — same fit test as a course management page |
 | Learning settings (shortcut) | the cluster's **language flag** | right | opens the learning-settings page directly — the flag doubles as a shortcut to it |
 | A settings leaf (password, blocked users, emotes, …) | within its settings page | the settings panel | push |
 | Courses (your courses + add a course) | the **Courses** rail icon | left | open panel (master) — joined-course tiles plus the add-course options (start-my-own / browse / enter-code); Teaching / Learning filter pills when the learner holds both roles, and a search bar past four joined courses ([rules](#single-column-bottom-nav)) |
-| Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (the nav widget's cavity at half height on narrow, pin visible above), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card; with no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
+| Activity plan | a course's activity list, a map pin (tap) | map content | a left-column `activity:<id>` panel over the map (the nav widget's cavity at half height on narrow, pin visible above), camera on its pin. It claims the single **live view** (a `liveView` sibling of `room`/`session`), so opening it drops any open chat and starting the session drops the plan; it sizes by the registry like a `room` (#7385). When the learner already holds an unfinished session, the bound session room rides in the token param so the plan offers resume instead of a fresh instance (#7257). Its close follows the [affordance rule](#closing-a-panel-x-or-back-arrow): with `?c=` set (opened from the course's activity list, or from a pin on the course-scoped map) a back arrow returns to the course card. When the activity was opened from the card's full course plan, the back arrow returns to that full plan, scrolled to the activity's Mission, so a learner working down a long plan picks up where they left off (#9367). The token records that the activity was opened from the full plan, so a refresh keeps it. The scroll is a one-time step on arrival and is never stored in the URL. With no context (a world-map pin, a standalone shared link) an X reveals the map. **Start** launches the session, which runs as a chat room (one live view) |
 
 ### A chat's header actions
 
@@ -903,39 +900,9 @@ context alone never out-highlights an open section.
 
 ### The cluster is the right column's entry point
 
-A persistent cluster pinned to the top-right of the map opens the right column.
-On a narrow screen the cluster becomes the
-[single-column analytics nav bar](#single-column-analytics-nav-bar) — same elements,
-same tokens, horizontal at the top.
-It has its own gold **"powerups" visual** (per Figma), top to bottom: the user's
-**avatar** wrapped in an XP ring (an opaque track that fills gold clockwise
-toward the next level, resetting on level-up — deep gray in light, deep gold in
-dark, stroked wider than the gold arc so the arc rides inside it and stays
-readable over map tiles: `AppConfig.xpTrackByTheme`, #8763); a gold **powerups
-pill** of three
-trackers — total **Stars** earned, **Grammar**, **Vocabulary** — with the
-**level medal** overhanging its base; and the active L2 **flag** below. The
-Stars count is the learner's stars summed across activities, best per activity
-(a replay doesn't multiply it), so it agrees with the per-pin fill on the map.
+A persistent cluster pinned to the top-right of the map opens the right column. On a narrow screen the cluster becomes the [single-column analytics nav bar](#single-column-analytics-nav-bar) — same elements, same tokens, horizontal at the top. It has its own gold **"powerups" visual** (per Figma), top to bottom: the user's **avatar** wrapped in an XP ring (an opaque track that fills gold clockwise toward the next level, resetting on level-up — deep gray in light, deep gold in dark, stroked wider than the gold arc so the arc rides inside it and stays readable over map tiles: `AppConfig.xpTrackByTheme`, #8763); a gold **powerups pill** of three trackers — total **Stars** earned, **Grammar**, **Vocabulary** — with the **level medal** overhanging its base; and the active L2 **flag** below. A star is a completed Mission, so the Stars count is the number of Missions the learner has completed across their joined courses in the active language ([quests.instructions.md](quests.instructions.md), "Stars and sparkles").
 
-Each element is a labeled control (tooltip + semantic button label, since the
-map is a canvas and gets no implicit labels): a **tracker** opens that metric as
-a right-column panel — except while that section has a live practice session,
-when it wears the practice badge and **resumes the session instead** (see
-[Practice](#practice-is-a-persistent-background-session)); the **avatar** opens
-the profile + settings master; the
-**level medal** opens the Level analytics tab; the **flag** is a shortcut to the
-learning-settings page. The flag shows the language's flag image, or its
-uppercased **language code** when the language has no single regional flag (bare
-`es` is ambiguous across regions; `es-ES` resolves to one). The cluster stays
-pinned above the panels, because it is the anchor the right column justifies
-against. Its live vocab/grammar counts and level/XP come from the analytics
-streams — see
-[analytics-system.instructions.md](analytics-system.instructions.md) for how a
-UI surface reads them without missing the load-time update. The **Stars** count
-comes instead from the learner's awarded-goal room state (the same source as the
-[quest LO gate](quests.instructions.md)), so the cluster also rebuilds on that
-room-state stream as goals are awarded.
+Each element is a labeled control (tooltip + semantic button label, since the map is a canvas and gets no implicit labels): a **tracker** opens that metric as a right-column panel — except while that section has a live practice session, when it wears the practice badge and **resumes the session instead** (see [Practice](#practice-is-a-persistent-background-session)); the **avatar** opens the profile + settings master; the **level medal** opens the Level analytics tab; the **flag** is a shortcut to the learning-settings page. The flag shows the language's flag image, or its uppercased **language code** when the language has no single regional flag (bare `es` is ambiguous across regions; `es-ES` resolves to one). The cluster stays pinned above the panels, because it is the anchor the right column justifies against. Its live vocab/grammar counts and level/XP come from the analytics streams — see [analytics-system.instructions.md](analytics-system.instructions.md) for how a UI surface reads them without missing the load-time update. The **Stars** count comes instead from the shared progression the map and the course panel resolve ([quests.instructions.md](quests.instructions.md)), so the cluster also rebuilds as that resolution changes.
 
 ## Cross-cutting
 
@@ -954,7 +921,7 @@ lists and only history-adding navigations emit — see
 
 A signed-out visitor who opens any workspace location is sent to the sign-in screen, and the location they opened is kept for them: the `/` route's auth guard ([`PAuthGaurd`](../../lib/pangea/common/utils/p_vguard.dart)) stores the resolved workspace URL (`SpaceCodeRepo.destination`, the **login-bounce ferry**) before it bounces, and the same guard sends the next signed-in landing there. It is the guard and not a login-state listener because the guard is the one place every signed-in arrival passes through, whatever the transport: an in-session password or SSO login, a session restored at startup, and a new account leaving onboarding all land on `/`. Living outside the URL is what lets the destination survive everything in between (switching between sign-up and sign-in, a cancelled or failed attempt, the SSO round trip, the registration and onboarding hops), none of which change it — the signed-out screens only read it, to show a visitor that their class code was kept ([signup-and-login.instructions.md](signup-and-login.instructions.md#arriving-with-a-class-code)). A signed-in user opening the same link never touches it: the URL simply renders.
 
-- **One destination, the last one.** There is no per-link cache. The course join link, the shareable activity link, a course room and a settings page are all workspace URLs by the time the guard runs, so they ride the same entry, and a visitor who opens several links before signing in gets the last. The DM invite link is the one exception: it resolves through its own route and keeps its own pending entry, because it has to act when tapped signed in too ([joining-courses.instructions.md](joining-courses.instructions.md#route-1--class-link)).
+- **One destination, the last one.** There is no per-link cache. The course join link, the shareable activity link, the gift link, a course room and a settings page are all workspace URLs by the time the guard runs, so they ride the same entry, and a visitor who opens several links before signing in gets the last. The DM invite link is the one exception: it resolves through its own route and keeps its own pending entry, because it has to act when tapped signed in too ([joining-courses.instructions.md](joining-courses.instructions.md#route-1--class-link)).
 - **Only a workspace location is kept**: the world root with a query. The bare root is never stored, so a plain app open or the native SSO callback cannot overwrite a real destination, and an absolute URL or any other path is refused on read, so the bounce can never send anyone off the app.
 - **Consumed on redirect.** The guard clears the entry in the same step that redirects to it, so a later sign-in never replays it and the shell may rewrite the landing URL (a width fold) without re-triggering it. The join code's earlier retry-until-consumed contract went with the boot-time navigation that required it: the login listener now leaves any non-entry location alone (`loggedInLanding`). Entries also expire (`SpaceCodeRepo.cacheTTL`), so a visitor who never signs in cannot leave a destination for a later account on a shared browser.
 - **Normal rules apply on arrival.** The destination renders like any other URL: unknown tokens degrade to a valid subset, an unmatched path recovers to the world map, and a surface the account cannot access shows that surface's own empty state. The destination is never logged or reported.

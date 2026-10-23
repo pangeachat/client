@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-05 12:30:38.233820",
+    "@@last_modified": "2026-10-22 09:50:15.518523",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -1491,11 +1491,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Sinkronizira se … Pričekaj.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
     "systemTheme": "Sustav",
     "@systemTheme": {
         "type": "String",
@@ -2469,7 +2464,6 @@
     "spaces": "Prostori",
     "checkList": "Popis za provjeru",
     "sendImages": "Pošalji {count} sliku",
-    "synchronizingPleaseWaitCounter": "Sinkronizacija… ({percentage}%)",
     "invitedBy": "📩 Pozvao {user}",
     "goToSpace": "Idi u prostor: {space}",
     "markAsUnread": "Označi kao nepročitano",
@@ -2517,7 +2511,6 @@
     "previous": "Prethodno",
     "otherPartyNotLoggedIn": "Druga strana trenutno nije prijavljena i stoga ne može primati poruke!",
     "open": "Otvoriti",
-    "waitingForServer": "Čekanje na poslužitelj...",
     "newChatRequest": "📩 Novi zahtjev za razgovor",
     "contentNotificationSettings": "Postavke obavijesti o sadržaju",
     "generalNotificationSettings": "Opće postavke obavijesti",
@@ -2621,7 +2614,6 @@
     "errorDisableIGCClassDesc": "Pomoć pri gramatici je isključena za tečaj u kojem se nalazi ovaj chat.",
     "error405Desc": "Molimo postavite svoje jezike u Glavnom izborniku > Postavke učenja.",
     "termsAndConditions": "Uvjetima i odredbama",
-    "andCertifyIAmAtLeast13YearsOfAge": " i potvrđujem da imam najmanje 16 godina.",
     "error502504Desc": "Alati za prijevod i gramatiku mogu biti spori ili nedostupni dok Pangea botovi ne uhvate korak.",
     "error404Desc": "Pangea Bot nije siguran kako to prevesti...",
     "errorPleaseRefresh": "Radimo na tome! Molimo osvježite i pokušajte ponovno.",
@@ -2929,9 +2921,6 @@
     "why": "Zašto?",
     "definition": "Definicija",
     "reportToTeacher": "Kome želite prijaviti ovu poruku?",
-    "reportMessageTitle": "{reportingUserId} je prijavio poruku od {reportedUserId} u chatu {roomName}",
-    "reportMessageBody": "Poruka: {reportedMessage}\nRazlog: {reason}",
-    "noTeachersFound": "Nema nastavnika za prijavu",
     "trialExpiration": "Vaš besplatni probni rok istječe {expiration}",
     "freeTrialDesc": "Novi korisnici dobivaju tjedan dana besplatnog probnog razdoblja Pangea Chata",
     "activateTrial": "Aktiviraj besplatno 7-dnevno probno razdoblje",
@@ -3300,14 +3289,6 @@
             }
         }
     },
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "@invitedBy": {
         "type": "String",
         "placeholders": {
@@ -3519,10 +3500,6 @@
         "placeholders": {}
     },
     "@open": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@waitingForServer": {
         "type": "String",
         "placeholders": {}
     },
@@ -3957,10 +3934,6 @@
         "placeholders": {}
     },
     "@termsAndConditions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@andCertifyIAmAtLeast13YearsOfAge": {
         "type": "String",
         "placeholders": {}
     },
@@ -5207,35 +5180,6 @@
         "placeholders": {}
     },
     "@reportToTeacher": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@reportMessageTitle": {
-        "type": "String",
-        "placeholders": {
-            "reportingUserId": {
-                "type": "String"
-            },
-            "reportedUserId": {
-                "type": "String"
-            },
-            "roomName": {
-                "type": "String"
-            }
-        }
-    },
-    "@reportMessageBody": {
-        "type": "String",
-        "placeholders": {
-            "reportedMessage": {
-                "type": "String"
-            },
-            "reason": {
-                "type": "String"
-            }
-        }
-    },
-    "@noTeachersFound": {
         "type": "String",
         "placeholders": {}
     },
@@ -8193,11 +8137,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
-    "@useActivityImageAsChatBackground": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatWithSupport": "Razgovarajte s podrškom",
     "@chatWithSupport": {
         "type": "String",
@@ -8218,8 +8157,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "autoIGCToolName": "Omogući pomoć pri pisanju",
-    "autoIGCToolDescription": "Automatski pokreni Pangea Chat alate za ispravljanje poslanih poruka na ciljni jezik.",
+    "autoIGCToolName": "Automatska provjera pri slanju",
+    "autoIGCToolDescription": "Provjerite poruku za pogreške kada dodirnete Pošalji. Kada je ovo isključeno, dodirnite gumb za pomoć pri pisanju kako biste sami provjerili poruku.",
     "@autoIGCToolName": {
         "type": "String",
         "placeholders": {}
@@ -9856,7 +9795,6 @@
     "activityLoadFailed": "Nije moguće učitati aktivnost. Provjerite svoju vezu i pokušajte ponovo.",
     "levelUpChip": "Nivo {level}!",
     "missingCourseOutline": "Ovaj kurs više nije dostupan",
-    "missingCourseOutlineCta": "Ovaj kurs više nije dostupan. Odaberite novi plan kursa.",
     "@starsEarnedOfTotal": {
         "type": "String",
         "placeholders": {
@@ -9881,10 +9819,6 @@
         }
     },
     "@missingCourseOutline": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@missingCourseOutlineCta": {
         "type": "String",
         "placeholders": {}
     },
@@ -10280,7 +10214,6 @@
     "constructLevelFlowers": "Cvijeće, usvojene riječi",
     "filterAndSearch": "Filtriraj i pretraži",
     "participantsOfTotal": "{filled} od {total} igrača",
-    "mapAttributionLabel": "Autori, autorska prava i licenca OpenStreetMap-a",
     "seeAll": "Vidi sve",
     "seeAllSection": "Vidi sve {section}",
     "showMoreOptionsHint": "prikaži više opcija",
@@ -10398,25 +10331,126 @@
     "summaryFeedbackReceived": "Hvala! Primili smo vaše povratne informacije.",
     "summaryFeedbackFailed": "Slanje povratnih informacija nije uspjelo. Pokušajte ponovno.",
     "summaryFeedbackProcessing": "Šaljem vaše povratne informacije i ažuriram sažetak…",
-    "ssoNetworkBlockedTitle": "Stranica za prijavu nedostupna",
-    "ssoNetworkBlockedDesc": "Ova mreža nam ne dopušta pristup {provider} za vašu prijavu. Školske i uredske Wi-Fi mreže često to blokiraju. Umjesto toga možete se prijaviti e-poštom ili se prebaciti na drugu mrežu i pokušati ponovno.",
-    "ssoTryAnyway": "Pokušaj svejedno",
-    "callTranscriptNotSubscribed": "{name} nije imao pretplatu tijekom ovog poziva, tako da izgovoreno nije transkribirano.",
     "callTranscriptTranscribing": "Snimka od {name} se još uvijek transkribira…",
     "callTranscriptSeekTo": "Reproduciraj od {time}",
     "callTranscriptRecordings": "Snimke",
     "callTranscriptFullCall": "Cijeli poziv",
     "callTranscriptPreparingRecording": "Priprema se cijela snimka…",
     "callTranscriptNoRecording": "Nema snimke cijelog poziva.",
-    "callTranscriptTranscribeButton": "Prepiši",
-    "callTranscriptAudioUnavailable": "Spremljena snimka od {name} nije se mogla preuzeti, stoga se nije mogla ni prepisati.",
-    "callTranscriptChooseLanguage": "Koji je jezik bio govoren?",
-    "callTranscriptSubscribeForTranscription": "Pretplatite se za prijepis",
-    "unlockCallTranscript": "Otključaj prijepis poziva",
+    "callTranscriptNotSubscribed": "{name} nije imao pretplatu tijekom ovog poziva, tako da izgovoreno nije transkribirano.",
     "joinYourCourse": "Pridružite se svom tečaju",
     "courseCodeJoinExplanation": "Prijavite se ili registrirajte, a mi ćemo upotrijebiti vaš kod tečaja kako bismo vas automatski dodali na vaš tečaj.",
     "courseCodeLabel": "Kod tečaja",
     "courseCodeSaved": "Kod tečaja {code} spremljen",
     "courseCodeSavedExplanation": "Registrirajte se ili prijavite i dodat ćemo vas na vaš tečaj.",
-    "missionDueDate": "Rok: {date}, {time}"
+    "moderationRefusedContactDetails": "Vaša poruka nije poslana. Automatski filtar pronašao je podatke za kontakt, poput telefonskog broja. Uklonite ih i pokušajte ponovno.",
+    "moderationRefusedProfanity": "Vaša poruka nije poslana. Automatski filtar pronašao je riječ koju ne dopuštamo u chatu. Promijenite je i pokušajte ponovno.",
+    "callTranscriptTranscribeButton": "Prepiši",
+    "callTranscriptAudioUnavailable": "Spremljena snimka od {name} nije se mogla preuzeti, stoga se nije mogla ni prepisati.",
+    "callTranscriptChooseLanguage": "Koji je jezik bio govoren?",
+    "callTranscriptSubscribeForTranscription": "Pretplatite se za prijepis",
+    "unlockCallTranscript": "Otključaj prijepis poziva",
+    "activitySummaryUpdateFailed": "Ovaj sažetak nije bilo moguće ažurirati.",
+    "courseNotFound": "Tečaj nije pronađen",
+    "askTeacherForNewCourse": "Zamolite svog učitelja da odabere novi tečaj.",
+    "pickNewCoursePlan": "Odaberite novi plan tečaja.",
+    "ssoNetworkBlockedTitle": "Stranica za prijavu nedostupna",
+    "ssoNetworkBlockedDesc": "Ova mreža nam ne dopušta pristup {provider} za vašu prijavu. Školske i uredske Wi-Fi mreže često to blokiraju. Umjesto toga možete se prijaviti e-poštom ili se prebaciti na drugu mrežu i pokušati ponovno.",
+    "ssoTryAnyway": "Pokušaj svejedno",
+    "publicCoursesFilterTooltip": "Prikaži samo tečajeve kojima se svatko može pridružiti",
+    "restrictedCoursesFilterTooltip": "Prikaži samo tečajeve za koje je potrebno zatražiti pridruživanje",
+    "viewImageLabel": "Prikaži sliku",
+    "reportSent": "Izvješće poslano",
+    "reportNotSent": "Vaše izvješće nije moglo biti poslano. Provjerite vezu i pokušajte ponovno.",
+    "reportPointerMessage": "Poruka je prijavljena u {courseName} — pogledajte Sigurnost",
+    "learningObjective": "Cilj učenja",
+    "learningObjectives": "Ciljevi učenja",
+    "missionNofM": "Misija {index} od {count}",
+    "xpTowardObjective": "{xp} od {threshold} XP-a za ovaj cilj",
+    "xpOfThreshold": "{xp} / {threshold} XP-a",
+    "courseComplete": "Tečaj završen!",
+    "courseCompleteDesc": "Dovršili ste svih {count} ciljeva u ovom tečaju. Nastavite vježbati kako biste zadržali naučeno.",
+    "practiceObjective": "Vježbajte ovaj cilj",
+    "otherActivities": "Ostale aktivnosti",
+    "objectiveCircleComplete": "Misija {index}: dovršeno",
+    "objectiveCircleUpNext": "Misija {index}: sljedeća",
+    "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
+    "andCertifyIMeetTheMinimumAge": " i potvrđujem da imam najmanje 13 godina ili minimalnu dob propisanu u mojoj zemlji ako je ona viša.",
+    "filteredNetworkBlockedTitle": "Ova mreža blokira Pangea Chat",
+    "filteredNetworkPartlyBlockedTitle": "Ova mreža djelomično blokira Pangea Chat",
+    "filteredNetworkWhatCanIDo": "Što mogu učiniti?",
+    "filteredNetworkPhoneAdvice": "Isključite Wi-Fi i umjesto toga koristite mobilne podatke.",
+    "filteredNetworkComputerAdvice": "Povežite se s pristupnom točkom svog telefona umjesto s ovim Wi-Fijem.",
+    "filteredNetworkItHeading": "Za nastavnike i IT osoblje",
+    "filteredNetworkItBody": "Zatražite od svog IT tima da dopusti ove domene:",
+    "filteredNetworkAskForHelp": "Zatražite pomoć od Pangee",
+    "filteredNetworkHelpExplanation": "Poslat ćemo vam e-poštu kako bismo vam pomogli da Pangea Chat radi na ovoj mreži.",
+    "filteredNetworkHelpWaiting": "Vaš će zahtjev biti poslan čim se povežete.",
+    "filteredNetworkHelpSent": "Poslano. Javit ćemo vam se e-poštom.",
+    "filteredNetworkHelpRefused": "Nismo mogli poslati vaš zahtjev. Pošaljite e-poštu na support@pangea.chat.",
+    "filteredNetworkVideoBlocked": "Ova mreža blokira videozapise.",
+    "filteredNetworkImagesBlocked": "Ova mreža blokira slike.",
+    "filteredNetworkMapBlocked": "Ova mreža blokira kartu.",
+    "callFullScreenTitle": "Neka pozivi zvone preko cijelog zaslona",
+    "callFullScreenMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon je mogao prikazati samo malu obavijest o njemu. Dopustite pozive preko cijelog zaslona kako bi sljedeći zvonio preko cijelog zaslona, čak i kada je vaš telefon zaključan.",
+    "callMicrophoneTitle": "Koristite mikrofon za pozive",
+    "callMicrophoneMessage": "Pangea Chat treba vaš mikrofon za pozive, uključujući pozive na koje odgovarate sa zaključanog zaslona.",
+    "callMicrophoneOffTitle": "Vaš poziv nije uspostavljen",
+    "callMicrophoneOffMessage": "Pangea Chat ne može koristiti vaš mikrofon. Dodirnite za uključivanje u Postavkama.",
+    "goalsCompletedOfTotal": "Dovršeno {earned} od {total} ciljeva",
+    "goalsCompletedInLanguage": "Dovršeni ciljevi na jeziku {language}",
+    "sessionXpTowardObjective": "{xp} XP-a u ovoj sesiji; još {remaining} dovršava cilj",
+    "mapCreditsLabel": "Zasluge za kartu: Stadia Maps, OpenMapTiles i OpenStreetMap",
+    "activityLaunchFindingCourses": "Tražim vaše tečajeve…",
+    "activityLaunchCreatingRoom": "Stvaram vašu aktivnost…",
+    "activityLaunchOpeningRoom": "Otvaram vašu aktivnost…",
+    "playWithOthers": "Igrajte se s drugima",
+    "openRole": "Otvoreno: {role}",
+    "waitingFor": "Čekanje {duration}",
+    "onlineInCourse": "{count} na mreži u {course}",
+    "newCourseChat": "Novi razgovor o tečaju",
+    "customCourseStepDesc": "Tečaj je skup konverzacijskih aktivnosti koje prate vaš udžbenik, a namijenjene su vašim učenicima za zajedničku izradu domaće zadaće.",
+    "reopenAppToFinishSwitching": "Potpuno zatvorite aplikaciju i ponovno je otvorite kako biste dovršili prebacivanje.",
+    "teamCode": "Kôd tima",
+    "connectionOffline": "Izvan mreže ste. Pangea Chat će se ponovno povezati kada se vaša veza vrati.",
+    "connectionUnreachable": "Pangea Chat je nedostupan. Pokušavam ponovno…",
+    "connectionBackOnline": "Ponovno online",
+    "missionDueDate": "Rok: {date}, {time}",
+    "callNotificationsTitle": "Dopusti zvonjenje poziva",
+    "callNotificationsMessage": "Pozivi zvone kao obavijesti. Dopustite obavijesti kako bi vaš telefon zvonio za poziv, čak i kada je Pangea Chat zatvoren ili je vaš telefon zaključan.",
+    "callNotificationsMissedMessage": "Poziv je stigao dok je Pangea Chat bio zatvoren, ali vaš telefon nije mogao zvoniti jer su obavijesti isključene. Dopustite obavijesti kako bi sljedeći poziv zvonio.",
+    "connectionPracticeVocab": "Vježbaj riječi dok čekaš",
+    "offlinePracticeNote": "Izvan mreže. Tvoji će se odgovori učitati kad se vratiš.",
+    "offlinePracticeSavedNote": "Spremljeno na ovom uređaju. Tvoj XP će se učitati kad se vratiš na mrežu.",
+    "offlinePracticeNothingSaved": "Nema dovoljno spremljenog sadržaja na ovom uređaju za vježbanje izvan mreže. Pokušajte ponovno kada budete na mreži.",
+    "missionNumber": "Misija {index}",
+    "xpToYourStar": "{xp} XP do vaše zvijezde",
+    "missionStarEarned": "Zvijezda osvojena!",
+    "xpFromChats": "Razgovori {xp}",
+    "xpFromGoals": "Ciljevi {xp}",
+    "xpFromPractice": "Vježba {xp}",
+    "playMission": "Igraj",
+    "wordCount": "{count, plural, =1{1 riječ} other{{count} riječi}}",
+    "continueActivity": "Nastavi",
+    "noObjectiveActivitiesYet": "Još niste dovršili aktivnost za ovaj cilj. Pokrenite je iz svog tečaja.",
+    "objectiveNotInYourCourses": "Ovaj cilj nije ni u jednom od vaših tečajeva.",
+    "objectiveActivityCount": "{count, plural, =0{Još nema aktivnosti} =1{1 aktivnost odigrana} other{{count} aktivnosti odigrano}}",
+    "activityCompleted": "Dovršeno",
+    "completedTimes": "Dovršeno {count} puta",
+    "classLocation": "Lokacija razreda",
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "xpFromConversation": "Razgovor {xp}",
+    "xpIncludingGoals": "uključujući {xp} iz ciljeva",
+    "missionOtherLanguageNotice": "Ova misija je iz tečaja na {language} jeziku. Vaš napredak na njoj računa se samo dok učite {language}.",
+    "missionLanguageMismatchDesc": "Ova misija je iz tečaja na {language} jeziku. Želite li promijeniti ciljni jezik na {language}?",
+    "xpBySkillTitle": "Po vještini",
+    "missionNextActivity": "Sljedeća aktivnost",
+    "missionContinueActivity": "Nastavi aktivnost",
+    "missionPlayTarget": "{action}: {activity}",
+    "goalXpGain": "+{xp}",
+    "finishedInThisCourse": "Završeno u ovom tečaju ({num})",
+    "otherCoursesSessions": "Ostali tečajevi ({num})",
+    "activityXpStamp": "{xp} XP",
+    "activityCompletedWithXp": "{completed}, osvojeno {xp} XP",
+    "currentMission": "Trenutna misija"
 }
