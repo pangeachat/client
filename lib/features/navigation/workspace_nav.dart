@@ -876,6 +876,20 @@ abstract class WorkspaceNav {
   static String openAddCourse(Uri current) =>
       setSection(current, AddCoursePanelToken());
 
+  /// The preview of course [spaceId] for a learner who is not in it: the
+  /// browse flow's preview page, with the course context (`?c=`, and the
+  /// Mission picked in it) cleared — a course the learner is not in cannot
+  /// scope the workspace (routing.instructions.md § The course context).
+  static String openCoursePreview(Uri current, String spaceId) {
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {'c', 'mission'});
+    return openAddCoursePage(
+      Uri.parse(WorkspaceQuery.location(PRoutes.world, parts)),
+      AddCourseSubpageEnum.browse,
+      previewRoomId: spaceId,
+    );
+  }
+
   static String openAddCoursePage(
     Uri current,
     AddCourseSubpageEnum page, {
