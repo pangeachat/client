@@ -2503,5 +2503,6 @@
     "readAloudTake": "Andao {number}",
     "videoWontPlayHere": "Tsy afaka milalao eto ity horonantsary ity.",
     "watchOnYoutube": "Jereo ao amin'ny YouTube",
-    "createMyOwnCourse": "Mamorona ny taranja manokana"
+    "createMyOwnCourse": "Mamorona ny taranja manokana",
+    "xpTowardMission": "{xp} XP mankany amin'ity iraka ity"
 }

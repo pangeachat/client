@@ -10670,5 +10670,6 @@
     "readAloudTake": "Glac {number}",
     "videoWontPlayHere": "Ní imreoidh an físeán seo anseo.",
     "watchOnYoutube": "Féach ar YouTube",
-    "createMyOwnCourse": "Cruthaigh mo chúrsa féin"
+    "createMyOwnCourse": "Cruthaigh mo chúrsa féin",
+    "xpTowardMission": "{xp} XP i dtreo an Mhisiúin seo"
 }

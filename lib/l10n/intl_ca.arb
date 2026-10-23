@@ -10168,5 +10168,6 @@
     "readAloudTake": "Presa {number}",
     "videoWontPlayHere": "Aquest vídeo no es pot reproduir aquí.",
     "watchOnYoutube": "Mira'l a YouTube",
-    "createMyOwnCourse": "Crear el meu propi curs"
+    "createMyOwnCourse": "Crear el meu propi curs",
+    "xpTowardMission": "{xp} XP per a aquesta missió"
 }

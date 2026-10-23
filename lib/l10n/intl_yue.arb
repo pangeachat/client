@@ -10995,5 +10995,6 @@
     "readAloudTake": "第 {number} 次錄音",
     "videoWontPlayHere": "此影片無法在此播放。",
     "watchOnYoutube": "在 YouTube 上觀看",
-    "createMyOwnCourse": "建立我嘅課程"
+    "createMyOwnCourse": "建立我嘅課程",
+    "xpTowardMission": "此任務可獲 {xp} 經驗值"
 }

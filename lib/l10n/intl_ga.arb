@@ -10052,5 +10052,6 @@
     "readAloudTake": "Tóg {number}",
     "videoWontPlayHere": "Ní sheinnfidh an físeán seo anseo.",
     "watchOnYoutube": "Féach ar YouTube",
-    "createMyOwnCourse": "Cruthaigh mo chúrsa féin"
+    "createMyOwnCourse": "Cruthaigh mo chúrsa féin",
+    "xpTowardMission": "{xp} XP i dtreo na Misean seo"
 }

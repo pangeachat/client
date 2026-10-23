@@ -2503,5 +2503,6 @@
     "readAloudTake": "Дубъл {number}",
     "videoWontPlayHere": "Това видео няма да се възпроизвежда тук.",
     "watchOnYoutube": "Гледайте в YouTube",
-    "createMyOwnCourse": "Създаване на собствен курс"
+    "createMyOwnCourse": "Създаване на собствен курс",
+    "xpTowardMission": "{xp} XP към тази мисия"
 }

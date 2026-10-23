@@ -10983,5 +10983,6 @@
     "readAloudTake": "Provo {number}",
     "videoWontPlayHere": "Ĉi tiu video ne ludos ĉi tie.",
     "watchOnYoutube": "Spektu en YouTube",
-    "createMyOwnCourse": "Krei mian propran kurson"
+    "createMyOwnCourse": "Krei mian propran kurson",
+    "xpTowardMission": "{xp} XP al ĉi tiu Misio"
 }

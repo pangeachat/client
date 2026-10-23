@@ -10938,5 +10938,6 @@
     "readAloudTake": "მიღება {number}",
     "videoWontPlayHere": "ეს ვიდეო აქ არ იმუშავებს.",
     "watchOnYoutube": "უყურეთ YouTube-ზე",
-    "createMyOwnCourse": "შექმენი ჩემი კურსი"
+    "createMyOwnCourse": "შექმენი ჩემი კურსი",
+    "xpTowardMission": "{xp} XP ამ მისიისთვის"
 }

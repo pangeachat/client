@@ -2503,5 +2503,6 @@
     "readAloudTake": "Marrja {number}",
     "videoWontPlayHere": "Kjo video nuk do të luhet këtu.",
     "watchOnYoutube": "Shiko në YouTube",
-    "createMyOwnCourse": "Krijo kursin tim"
+    "createMyOwnCourse": "Krijo kursin tim",
+    "xpTowardMission": "{xp} XP drejt këtij Misioni"
 }

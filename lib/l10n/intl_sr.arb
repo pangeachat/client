@@ -10987,5 +10987,6 @@
     "readAloudTake": "Uradi {number}",
     "videoWontPlayHere": "Ovaj video se ne može reprodukovati ovde.",
     "watchOnYoutube": "Gledaj na YouTube-u",
-    "createMyOwnCourse": "Kreiraj sopstveni kurs"
+    "createMyOwnCourse": "Kreiraj sopstveni kurs",
+    "xpTowardMission": "{xp} XP za ovu misiju"
 }

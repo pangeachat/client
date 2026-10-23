@@ -2503,5 +2503,6 @@
     "readAloudTake": "{number} लिनुहोस्",
     "videoWontPlayHere": "यो भिडियो यहाँ चल्दैन।",
     "watchOnYoutube": "YouTube मा हेर्नुहोस्",
-    "createMyOwnCourse": "मेरो आफ्नै कोर्स सिर्जना गर्नुहोस्"
+    "createMyOwnCourse": "मेरो आफ्नै कोर्स सिर्जना गर्नुहोस्",
+    "xpTowardMission": "यस मिसनका लागि {xp} XP"
 }

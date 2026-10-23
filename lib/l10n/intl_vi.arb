@@ -7348,5 +7348,6 @@
     "readAloudTake": "Lượt {number}",
     "videoWontPlayHere": "Video này sẽ không phát ở đây.",
     "watchOnYoutube": "Xem trên YouTube",
-    "createMyOwnCourse": "Tạo khóa học của riêng tôi"
+    "createMyOwnCourse": "Tạo khóa học của riêng tôi",
+    "xpTowardMission": "{xp} XP cho Nhiệm vụ này"
 }

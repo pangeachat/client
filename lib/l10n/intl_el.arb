@@ -10913,5 +10913,6 @@
     "readAloudTake": "Λήψη {number}",
     "videoWontPlayHere": "Αυτό το βίντεο δεν θα αναπαραχθεί εδώ.",
     "watchOnYoutube": "Παρακολουθήστε στο YouTube",
-    "createMyOwnCourse": "Δημιουργία δικού μου μαθήματος"
+    "createMyOwnCourse": "Δημιουργία δικού μου μαθήματος",
+    "xpTowardMission": "{xp} XP για αυτήν την αποστολή"
 }

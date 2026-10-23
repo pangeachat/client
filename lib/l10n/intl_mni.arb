@@ -2503,5 +2503,6 @@
     "readAloudTake": "লৌ {number}",
     "videoWontPlayHere": "ꯁꯤꯗ ꯚꯤꯗꯤꯑꯣ ꯑꯁꯤ ꯆꯠꯇꯦ꯫",
     "watchOnYoutube": "YouTube ꯗ ꯌꯦꯡꯕꯤꯌꯨ",
-    "createMyOwnCourse": "ꯑꯩꯒꯤ ꯑꯣꯟ ꯀꯣꯔꯁ ꯁꯦꯝꯃꯨ"
+    "createMyOwnCourse": "ꯑꯩꯒꯤ ꯑꯣꯟ ꯀꯣꯔꯁ ꯁꯦꯝꯃꯨ",
+    "xpTowardMission": "మిషన్ వైపు {xp} XP"
 }

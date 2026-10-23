@@ -10393,5 +10393,6 @@
     "readAloudTake": "Prendre {number}",
     "videoWontPlayHere": "Cette vidéo ne peut pas être lue ici.",
     "watchOnYoutube": "Regarder sur YouTube",
-    "createMyOwnCourse": "Créer mon propre cours"
+    "createMyOwnCourse": "Créer mon propre cours",
+    "xpTowardMission": "{xp} XP pour cette mission"
 }

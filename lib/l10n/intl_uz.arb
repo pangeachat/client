@@ -10045,5 +10045,6 @@
     "readAloudTake": "{number} qabul qiling",
     "videoWontPlayHere": "Bu video bu yerda ijro etilmaydi.",
     "watchOnYoutube": "YouTube'da tomosha qiling",
-    "createMyOwnCourse": "Oʻz kursimni yaratish"
+    "createMyOwnCourse": "Oʻz kursimni yaratish",
+    "xpTowardMission": "Ushbu missiya uchun {xp} XP"
 }

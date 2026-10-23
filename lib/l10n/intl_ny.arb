@@ -2503,5 +2503,6 @@
     "readAloudTake": "Tenga {number}",
     "videoWontPlayHere": "Vidiyo iyi siyingathe kuseweredwa pano.",
     "watchOnYoutube": "Onerani pa YouTube",
-    "createMyOwnCourse": "Panga maphunziro anga"
+    "createMyOwnCourse": "Panga maphunziro anga",
+    "xpTowardMission": "{xp} XP pa Mission iyi"
 }

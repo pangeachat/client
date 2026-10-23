@@ -2503,5 +2503,6 @@
     "readAloudTake": "Chukua {number}",
     "videoWontPlayHere": "Video hii haitachezwa hapa.",
     "watchOnYoutube": "Tazama kwenye YouTube",
-    "createMyOwnCourse": "Unda kozi yangu mwenyewe"
+    "createMyOwnCourse": "Unda kozi yangu mwenyewe",
+    "xpTowardMission": "{xp} XP kuelekea Misheni hii"
 }

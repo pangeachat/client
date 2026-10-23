@@ -2503,5 +2503,6 @@
     "readAloudTake": "Neem {number}",
     "videoWontPlayHere": "Hierdie video sal nie hier speel nie.",
     "watchOnYoutube": "Kyk op YouTube",
-    "createMyOwnCourse": "Skep my eie kursus"
+    "createMyOwnCourse": "Skep my eie kursus",
+    "xpTowardMission": "{xp} XP vir hierdie Missie"
 }

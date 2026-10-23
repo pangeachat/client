@@ -10041,5 +10041,6 @@
     "readAloudTake": "Tentativa {number}",
     "videoWontPlayHere": "Este vídeo não será reproduzido aqui.",
     "watchOnYoutube": "Assistir no YouTube",
-    "createMyOwnCourse": "Criar meu próprio curso"
+    "createMyOwnCourse": "Criar meu próprio curso",
+    "xpTowardMission": "{xp} XP para esta Missão"
 }

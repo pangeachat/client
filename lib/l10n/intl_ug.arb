@@ -2503,5 +2503,6 @@
     "readAloudTake": "{number}-قېتىملىق سۆزلەش",
     "videoWontPlayHere": "بۇ سىن بۇ يەردە قويۇلمايدۇ.",
     "watchOnYoutube": "YouTube دا كۆرۈڭ",
-    "createMyOwnCourse": "ئۆز كۇرسۇمنى قۇرۇش"
+    "createMyOwnCourse": "ئۆز كۇرسۇمنى قۇرۇش",
+    "xpTowardMission": "بۇ ۋەزىپە ئۈچۈن {xp} XP"
 }

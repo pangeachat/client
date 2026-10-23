@@ -6214,5 +6214,15 @@
     "readAloudStartOver": "Start over",
     "@readAloudStartOver": {
         "description": "Button under the mic while a read-aloud recording runs: discards the recording in progress and begins a fresh one, without spending a take."
+    },
+    "xpTowardMission": "{xp} XP toward this Mission",
+    "@xpTowardMission": {
+        "description": "Under the XP total when a Mission's practice session ends: the XP that Mission gained. xp is a signed number such as '+ 65' or '− 3'.",
+        "type": "String",
+        "placeholders": {
+            "xp": {
+                "type": "String"
+            }
+        }
     }
 }

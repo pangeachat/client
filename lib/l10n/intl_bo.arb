@@ -9649,5 +9649,6 @@
     "readAloudTake": "ལེན་ {number}",
     "videoWontPlayHere": "བརྙན་འདི་འདིར་འཁྲབ་མི་ཐུབ།",
     "watchOnYoutube": "YouTube ཐོག་ཏུ་ལྟ་བ།",
-    "createMyOwnCourse": "ངའི་སློབ་ཚན་བཟོ་བ།"
+    "createMyOwnCourse": "ངའི་སློབ་ཚན་བཟོ་བ།",
+    "xpTowardMission": "འདིའི་ལས་འགན་ལ་ {xp} ཉམས་མྱོང་"
 }

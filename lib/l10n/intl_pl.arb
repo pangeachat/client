@@ -10126,5 +10126,6 @@
     "readAloudTake": "Podejście {number}",
     "videoWontPlayHere": "Ten film nie będzie odtwarzany tutaj.",
     "watchOnYoutube": "Obejrzyj na YouTube",
-    "createMyOwnCourse": "Stwórz mój własny kurs"
+    "createMyOwnCourse": "Stwórz mój własny kurs",
+    "xpTowardMission": "{xp} PD do tej misji"
 }

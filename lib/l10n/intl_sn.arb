@@ -2503,5 +2503,6 @@
     "readAloudTake": "Tora {number}",
     "videoWontPlayHere": "Vhidhiyo iyi haitambe pano.",
     "watchOnYoutube": "Tarisa paYouTube",
-    "createMyOwnCourse": "Gadzira kosi yangu"
+    "createMyOwnCourse": "Gadzira kosi yangu",
+    "xpTowardMission": "{xp} XP kuMission iyi"
 }

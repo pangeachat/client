@@ -2503,5 +2503,6 @@
     "readAloudTake": "Jupuk {number}",
     "videoWontPlayHere": "Video iki ora bisa disetel ing kene.",
     "watchOnYoutube": "Tonton ing YouTube",
-    "createMyOwnCourse": "Gawe kursusku dhewe"
+    "createMyOwnCourse": "Gawe kursusku dhewe",
+    "xpTowardMission": "{xp} XP kanggo Misi iki"
 }

@@ -735,6 +735,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yiDisplayName",
   "yoDisplayName",
@@ -3155,6 +3156,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -5608,6 +5610,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -8061,6 +8064,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -10514,6 +10518,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -12967,6 +12972,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -15420,6 +15426,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -17873,6 +17880,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -20326,6 +20334,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -22779,6 +22788,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -25232,6 +25242,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -27685,6 +27696,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -30138,6 +30150,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -32591,6 +32604,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -35044,6 +35058,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -37497,6 +37512,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -39950,6 +39966,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -42403,6 +42420,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -44856,6 +44874,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -47309,6 +47328,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -49762,6 +49782,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -52215,6 +52236,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -54668,6 +54690,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -57121,6 +57144,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -59574,6 +59598,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -62027,6 +62052,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -64480,6 +64506,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -66933,6 +66960,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -69386,6 +69414,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -71839,6 +71868,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -74292,6 +74322,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -76745,6 +76776,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -79198,6 +79230,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -81651,6 +81684,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -84104,6 +84138,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -86557,6 +86592,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -89010,6 +89046,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -91463,6 +91500,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -93916,6 +93954,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -96369,6 +96408,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -98822,6 +98862,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -101275,6 +101316,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -103728,6 +103770,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -106181,6 +106224,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -108634,6 +108678,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -111087,6 +111132,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -113540,6 +113586,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -115993,6 +116040,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -118446,6 +118494,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -120899,6 +120948,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -123352,6 +123402,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -125805,6 +125856,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -128258,6 +128310,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -130711,6 +130764,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -133164,6 +133218,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -135617,6 +135672,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -138070,6 +138126,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -140523,6 +140580,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -142976,6 +143034,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -145429,6 +145488,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -147882,6 +147942,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -150335,6 +150396,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective",
   "yeCountryDisplayName",
   "yearlySubscription",
@@ -150861,6 +150923,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "bn": [
@@ -151344,6 +151407,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "be": [
@@ -151827,6 +151891,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "cs": [
@@ -152310,6 +152375,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "da": [
@@ -152793,6 +152859,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "eo": [
@@ -153276,6 +153343,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "es": [
@@ -153756,6 +153824,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "de": [
@@ -154239,6 +154308,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "et": [
@@ -154722,6 +154792,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "el": [
@@ -155205,6 +155276,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "fil": [
@@ -155688,6 +155760,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "fr": [
@@ -156171,6 +156244,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "ga": [
@@ -156654,6 +156728,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "he": [
@@ -157137,6 +157212,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "hr": [
@@ -157620,6 +157696,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "hi": [
@@ -158103,6 +158180,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "ia": [
@@ -158586,6 +158664,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "id": [
@@ -159069,6 +159148,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "it": [
@@ -159552,6 +159632,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "ie": [
@@ -160035,6 +160116,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "ja": [
@@ -160518,6 +160600,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "lt": [
@@ -161001,6 +161084,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "lv": [
@@ -161484,6 +161568,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "nb": [
@@ -161967,6 +162052,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "nl": [
@@ -162450,6 +162536,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "pt": [
@@ -162933,6 +163020,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "ro": [
@@ -163416,6 +163504,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "pt_PT": [
@@ -163899,6 +163988,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "ru": [
@@ -164382,6 +164472,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "sl": [
@@ -164865,6 +164956,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "sk": [
@@ -165348,6 +165440,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "sv": [
@@ -165831,6 +165924,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "th": [
@@ -166314,6 +166408,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "ta": [
@@ -166797,6 +166892,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "te": [
@@ -167280,6 +167376,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "uk": [
@@ -167763,6 +167860,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "uz": [
@@ -168246,6 +168344,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "yue": [
@@ -168729,6 +168828,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "zh_Hant": [
@@ -169211,6 +169311,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "ca": [
@@ -169694,6 +169795,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "eu": [
@@ -170177,6 +170279,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "fa": [
@@ -170660,6 +170763,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "fi": [
@@ -171143,6 +171247,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "gl": [
@@ -171626,6 +171731,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "hu": [
@@ -172109,6 +172215,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "ka": [
@@ -172592,6 +172699,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "ko": [
@@ -173075,6 +173183,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "pl": [
@@ -173558,6 +173667,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "pt_BR": [
@@ -174041,6 +174151,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "sr": [
@@ -174524,6 +174635,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "tr": [
@@ -175007,6 +175119,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "vi": [
@@ -175490,6 +175603,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ],
  "zh": [
@@ -175972,6 +176086,7 @@
   "xpOfThreshold",
   "xpThresholdSuffix",
   "xpToYourStar",
+  "xpTowardMission",
   "xpTowardObjective"
  ]
 }

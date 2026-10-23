@@ -10038,5 +10038,6 @@
     "readAloudTake": "Võte {number}",
     "videoWontPlayHere": "Seda videot ei saa siin esitada.",
     "watchOnYoutube": "Vaata YouTube'is",
-    "createMyOwnCourse": "Loo oma kursus"
+    "createMyOwnCourse": "Loo oma kursus",
+    "xpTowardMission": "{xp} XP selle missiooni suunas"
 }

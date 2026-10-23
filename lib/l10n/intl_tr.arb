@@ -10339,5 +10339,6 @@
     "readAloudTake": "Alıştırma {number}",
     "videoWontPlayHere": "Bu video burada oynatılamaz.",
     "watchOnYoutube": "YouTube'da İzle",
-    "createMyOwnCourse": "Kendi kursumu oluştur"
+    "createMyOwnCourse": "Kendi kursumu oluştur",
+    "xpTowardMission": "Bu Görev için {xp} XP"
 }

@@ -10952,5 +10952,6 @@
     "readAloudTake": "טייק {number}",
     "videoWontPlayHere": "הסרטון הזה לא יופעל כאן.",
     "watchOnYoutube": "צפה ב-YouTube",
-    "createMyOwnCourse": "צור קורס משלי"
+    "createMyOwnCourse": "צור קורס משלי",
+    "xpTowardMission": "{xp} XP בדרך למשימה זו"
 }

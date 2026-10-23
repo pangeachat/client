@@ -2503,5 +2503,6 @@
     "readAloudTake": "Tek {number}",
     "videoWontPlayHere": "Dis video nor go play ya.",
     "watchOnYoutube": "Go wach na YouTube",
-    "createMyOwnCourse": "Mek mi yon kos"
+    "createMyOwnCourse": "Mek mi yon kos",
+    "xpTowardMission": "{xp} XP fɔ dis Mishɔn"
 }

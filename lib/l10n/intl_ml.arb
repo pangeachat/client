@@ -2503,5 +2503,6 @@
     "readAloudTake": "എടുക്കുക {number}",
     "videoWontPlayHere": "ഈ വീഡിയോ ഇവിടെ പ്ലേ ചെയ്യില്ല.",
     "watchOnYoutube": "YouTube-ൽ കാണുക",
-    "createMyOwnCourse": "എൻ്റെ സ്വന്തം കോഴ്സ് ഉണ്ടാക്കുക"
+    "createMyOwnCourse": "എൻ്റെ സ്വന്തം കോഴ്സ് ഉണ്ടാക്കുക",
+    "xpTowardMission": "ഈ ദൗത്യത്തിലേക്ക് {xp} XP"
 }

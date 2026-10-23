@@ -2503,5 +2503,6 @@
     "readAloudTake": "ورتو {number}",
     "videoWontPlayHere": "هي وڊيو هتي نه هلندي.",
     "watchOnYoutube": "يوٽيوب تي ڏسو",
-    "createMyOwnCourse": "منهنجو پنهنجو ڪورس ٺاهيو"
+    "createMyOwnCourse": "منهنجو پنهنجو ڪورس ٺاهيو",
+    "xpTowardMission": "هن مشن ڏانهن {xp} XP"
 }

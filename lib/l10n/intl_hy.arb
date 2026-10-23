@@ -2503,5 +2503,6 @@
     "readAloudTake": "Կատարել {number}",
     "videoWontPlayHere": "Այս տեսանյութն այստեղ չի նվագարկվի։",
     "watchOnYoutube": "Դիտել YouTube-ում",
-    "createMyOwnCourse": "Ստեղծել իմ սեփական դասընթացը"
+    "createMyOwnCourse": "Ստեղծել իմ սեփական դասընթացը",
+    "xpTowardMission": "{xp} XP այս առաքելության համար"
 }
