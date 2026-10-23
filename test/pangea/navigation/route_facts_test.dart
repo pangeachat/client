@@ -52,8 +52,7 @@ void main() {
       expect(section('/?c=!s:x&left=course'), AppSection.courses);
     });
 
-    test('the global chat list wins over the course context (decision 5, '
-        '#7467)', () {
+    test('the global chat list wins over the course context (#7467)', () {
       // The "click a quest then click chats, but the quest stays selected" bug:
       // the global chat LIST over a course-scoped map reads as Chats, not
       // Courses, even though `?c=` persists.

@@ -8,7 +8,7 @@ class CourseDetailsTokenParam extends TokenParam {
 
   /// Whether the section's full subpage ("See all") is pushed within the card,
   /// riding the param as `<section>/all` per the token grammar
-  /// (routing.instructions.md: pushed subpages are slash-separated).
+  /// (pushed subpages are slash-separated within a token param).
   final bool expanded;
 
   const CourseDetailsTokenParam({
