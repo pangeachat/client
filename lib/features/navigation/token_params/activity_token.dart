@@ -11,6 +11,10 @@ import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 /// course card's full course plan, so the back arrow returns there — #9367),
 /// `j` (the bound session was opened from the activity's join list, so its
 /// back arrow returns to that list — #9333).
+/// `a` re-fires on refresh, as autoplay does anywhere on the web: the URL
+/// says how the panel opens, so a shared link opens the same way for its
+/// recipient. Internal navigation rebuilds the token from state, so a flag
+/// drops on the next in-panel navigation rather than lingering.
 /// These fields replaced
 /// the loose `?roomid=` / `?launch=` / `?autoplay=` query params — everything
 /// a panel needs rides in its token (routing.instructions.md); the loose
