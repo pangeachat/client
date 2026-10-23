@@ -17,6 +17,7 @@ import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_analytics_controller.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_data_service.dart';
@@ -27,6 +28,7 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/analyti
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/end_practice_session_dialog.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/example_message_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_skills_store.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_match.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_recorder.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_audio_practice_exercise_generator.dart';
@@ -91,6 +93,12 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   /// speed bonus when the session moves on.
   DateTime? _readAloudShownAt;
 
+  /// The start page chips the learner just set, shown while the session's
+  /// words are picked again for them; null otherwise.
+  final ValueNotifier<Set<LearningSkillsEnum>?> pendingSkills = ValueNotifier(
+    null,
+  );
+
   @override
   void initState() {
     super.initState();
@@ -120,6 +128,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     PracticeSessionHolder.instance.detachPanel();
     _languageStreamSubscription?.cancel();
     audioPlaybackSpeedController.dispose();
+    pendingSkills.dispose();
     // Session notifiers are holder-owned and intentionally NOT disposed here —
     // the session outlives this panel.
     super.dispose();
@@ -131,6 +140,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       _holderState.practiceExerciseState;
   AnalyticsPracticeNotifier get notifier => _holderState.notifier;
   ValueNotifier<double> get progress => _holderState.progress;
+  bool get isLive => _holderState.isLive;
+  bool get awaitingStart => _holderState.awaitingStart;
 
   LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
 
@@ -213,7 +224,12 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   /// notice and are deliberately ignored here.
   void _onHolderChanged() {
     if (!mounted) return;
-    if (identical(PracticeSessionHolder.instance.current, _holderState)) return;
+    if (identical(PracticeSessionHolder.instance.current, _holderState)) {
+      // A pick that a closed panel left in flight lands here, with nothing
+      // else to rebuild this one onto the start page.
+      setState(() {});
+      return;
+    }
     if (!PracticeSessionHolder.instance.hasTimeoutNotice) return;
     _showTimeoutNotice();
     widget.close();
@@ -272,13 +288,22 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         _l2!.langCodeShort,
       );
 
-  Future<void> startSession() async {
+  /// Pick the session's words and open the start page, generating the first
+  /// exercise behind it. [begin] goes straight to that exercise instead, for
+  /// Another round, where the learner has just chosen to go again; with
+  /// [keepCurrent] the start page stays up while its chips re-pick the words.
+  /// See practice-exercises.instructions.md, "Start page".
+  Future<void> startSession({
+    bool begin = false,
+    bool keepCurrent = false,
+  }) async {
     // A session starting over a state whose watchdog was already stood down —
     // the Retry after a failed load, a language-change restart — needs the idle
     // clock re-armed from now, or the new session would go unwatched until its
     // first answer.
     PracticeSessionHolder.instance.markInteraction();
     _clearState();
+    _holderState.firstExercise = null;
 
     // if starting one round after another, hide the confetti from the previous round
     MatrixState.pAnyState.closeOverlay(StarRainWidget.practiceCompleteKey);
@@ -293,7 +318,15 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       await _analyticsController.waitForAnalytics(
         Matrix.of(context).client.userID,
       );
-      await session.startSession(widget.type, missionId: widget.missionId);
+      final current = await session.startSession(
+        widget.type,
+        missionId: widget.missionId,
+        skills: widget.type == ConstructTypeEnum.vocab
+            ? await PracticeSkillsStore.load()
+            : PracticeSkillsStore.vocabSkills,
+        keepCurrent: keepCurrent,
+      );
+      if (!current) return;
       if (mounted) setState(() {});
 
       if (session.sessionError != null) {
@@ -305,7 +338,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       } else {
         PracticeSessionHolder.instance.bump();
         progress.value = session.progress;
-        await _continueSession();
+        begin ? await _continueSession() : _prefetchFirstExercise();
       }
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {});
@@ -314,6 +347,34 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       PracticeSessionHolder.instance.bump();
       if (mounted) setState(() {});
     }
+  }
+
+  void _prefetchFirstExercise() {
+    final offline = session.session?.offline ?? false;
+    final first = session.getNextExercise(
+      skipExercise,
+      (exercise) => data.prefetchExerciseInfo(exercise, offline: offline),
+    );
+    // Awaited on Start, which shows any error; until then it must not
+    // surface as unhandled.
+    first.ignore();
+    _holderState.firstExercise = first;
+  }
+
+  /// The start page's Start: the clock starts when the first exercise shows.
+  Future<void> beginSession() async {
+    PracticeSessionHolder.instance.markInteraction();
+    await _continueSession();
+  }
+
+  /// The start page's chips: keep the choice on this device and pick the
+  /// session's words again for it.
+  Future<void> setSkills(Set<LearningSkillsEnum> skills) async {
+    pendingSkills.value = skills;
+    await PracticeSkillsStore.save(skills);
+    await startSession(keepCurrent: true);
+    // A later tap may already be picking for its own choice.
+    if (identical(pendingSkills.value, skills)) pendingSkills.value = null;
   }
 
   Future<void> _completeSession() async {
@@ -375,10 +436,15 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     try {
       final offline = session.session?.offline ?? false;
-      final resp = await session.getNextExercise(
-        skipExercise,
-        (exercise) => data.prefetchExerciseInfo(exercise, offline: offline),
-      );
+      final prefetched = _holderState.firstExercise;
+      _holderState.firstExercise = null;
+      final resp =
+          await (prefetched ??
+              session.getNextExercise(
+                skipExercise,
+                (exercise) =>
+                    data.prefetchExerciseInfo(exercise, offline: offline),
+              ));
 
       if (resp != null) {
         var next = resp;

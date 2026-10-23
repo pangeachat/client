@@ -2508,5 +2508,8 @@
     "openCourse": "Bula thupelo",
     "centralCourseJoinedTitle": "O kene ho {course}",
     "centralCourseJoinedBody": "Ke thupelo ea Pangea bakeng sa baithuti ba {language}. Litho tsa eona li ka bona lebitso la hau le profileng ea hau.",
-    "centralCourseMembersSeeYou": "Litho tsa thupelo ena li ka bona lebitso la hau le profileng ea hau."
+    "centralCourseMembersSeeYou": "Litho tsa thupelo ena li ka bona lebitso la hau le profileng ea hau.",
+    "practiceStartWordCount": "{count, plural, =1{lentsoe la ho itloaetsa} other{mantsoe a ho itloaetsa}}",
+    "practiceStartGrammarCount": "{count, plural, =1{ntlha ea sebōpeho-puo ea ho itloaetsa} other{lintlha tsa sebōpeho-puo tsa ho itloaetsa}}",
+    "practiceStartExerciseTypes": "Mefuta ea boikoetliso"
 }

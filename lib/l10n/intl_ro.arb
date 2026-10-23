@@ -10775,5 +10775,8 @@
     "openCourse": "Deschide cursul",
     "centralCourseJoinedTitle": "Te-ai alăturat cursului {course}",
     "centralCourseJoinedBody": "Este cursul Pangea pentru cursanții de {language}. Membrii săi îți pot vedea numele și profilul.",
-    "centralCourseMembersSeeYou": "Membrii acestui curs îți pot vedea numele și profilul."
+    "centralCourseMembersSeeYou": "Membrii acestui curs îți pot vedea numele și profilul.",
+    "practiceStartWordCount": "{count, plural, =1{cuvânt de exersat} other{cuvinte de exersat}}",
+    "practiceStartGrammarCount": "{count, plural, =1{punct gramatical de exersat} other{puncte gramaticale de exersat}}",
+    "practiceStartExerciseTypes": "Tipuri de exerciții"
 }

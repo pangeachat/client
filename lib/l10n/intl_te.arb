@@ -10993,5 +10993,8 @@
     "openCourse": "కోర్సును తెరవండి",
     "centralCourseJoinedTitle": "మీరు {course}లో చేరారు",
     "centralCourseJoinedBody": "ఇది {language} నేర్చుకునే వారి కోసం పాంగేయా కోర్సు. దీని సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
-    "centralCourseMembersSeeYou": "ఈ కోర్సు సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు."
+    "centralCourseMembersSeeYou": "ఈ కోర్సు సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
+    "practiceStartWordCount": "{count, plural, =1{అభ్యాసం చేయడానికి పదం} other{అభ్యాసం చేయడానికి పదాలు}}",
+    "practiceStartGrammarCount": "{count, plural, =1{అభ్యాసం చేయడానికి వ్యాకరణ అంశం} other{అభ్యాసం చేయడానికి వ్యాకరణ అంశాలు}}",
+    "practiceStartExerciseTypes": "అభ్యాస రకాలు"
 }

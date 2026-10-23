@@ -2508,5 +2508,8 @@
     "openCourse": "কোর্স হাংদোক্কন",
     "centralCourseJoinedTitle": "নখোই {course} দা শরুক য়াখ্রে",
     "centralCourseJoinedBody": "অসি {language} তম্লিবাশিংগী পাংগিয়াগী কোর্সনি। মসিগী মেম্বরশিংনা নখোইগী মমিং অমসুং প্রোফাইল উবা ফংগনি।",
-    "centralCourseMembersSeeYou": "অসিগী কোর্সকী মেম্বরশিংনা নখোইগী মমিং অমসুং প্রোফাইল উবা ফংগনি।"
+    "centralCourseMembersSeeYou": "অসিগী কোর্সকী মেম্বরশিংনা নখোইগী মমিং অমসুং প্রোফাইল উবা ফংগনি।",
+    "practiceStartWordCount": "{count, plural, =1{চিনবা ৱাহৈ অম} other{চিনবা ৱাহৈশিং}}",
+    "practiceStartGrammarCount": "{count, plural, =1{চিনবা গ্রামার পোইন্ট অম} other{চিনবা গ্রামার পোইন্টশিং}}",
+    "practiceStartExerciseTypes": "চিনবগী মখলশিং"
 }

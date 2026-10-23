@@ -10675,5 +10675,8 @@
     "openCourse": "เปิดคอร์ส",
     "centralCourseJoinedTitle": "คุณได้เข้าร่วม {course} แล้ว",
     "centralCourseJoinedBody": "นี่คือคอร์สของ Pangea สำหรับผู้เรียนภาษา {language} สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
-    "centralCourseMembersSeeYou": "สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้"
+    "centralCourseMembersSeeYou": "สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
+    "practiceStartWordCount": "{count, plural, =1{คำศัพท์ที่จะฝึก} other{คำศัพท์ที่จะฝึก}}",
+    "practiceStartGrammarCount": "{count, plural, =1{หลักไวยากรณ์ที่จะฝึก} other{หลักไวยากรณ์ที่จะฝึก}}",
+    "practiceStartExerciseTypes": "ประเภทแบบฝึกหัด"
 }

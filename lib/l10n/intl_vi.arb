@@ -7353,5 +7353,8 @@
     "openCourse": "Mở khóa học",
     "centralCourseJoinedTitle": "Bạn đã tham gia {course}",
     "centralCourseJoinedBody": "Đây là khóa học của Pangea dành cho người học tiếng {language}. Các thành viên có thể xem tên và hồ sơ của bạn.",
-    "centralCourseMembersSeeYou": "Các thành viên của khóa học này có thể xem tên và hồ sơ của bạn."
+    "centralCourseMembersSeeYou": "Các thành viên của khóa học này có thể xem tên và hồ sơ của bạn.",
+    "practiceStartWordCount": "{count, plural, =1{từ để luyện tập} other{từ để luyện tập}}",
+    "practiceStartGrammarCount": "{count, plural, =1{điểm ngữ pháp để luyện tập} other{điểm ngữ pháp để luyện tập}}",
+    "practiceStartExerciseTypes": "Các dạng bài tập"
 }

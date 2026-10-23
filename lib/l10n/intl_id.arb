@@ -10119,5 +10119,8 @@
     "openCourse": "Buka kursus",
     "centralCourseJoinedTitle": "Anda telah bergabung dengan {course}",
     "centralCourseJoinedBody": "Ini adalah kursus Pangea untuk pembelajar {language}. Anggotanya dapat melihat nama dan profil Anda.",
-    "centralCourseMembersSeeYou": "Anggota kursus ini dapat melihat nama dan profil Anda."
+    "centralCourseMembersSeeYou": "Anggota kursus ini dapat melihat nama dan profil Anda.",
+    "practiceStartWordCount": "{count, plural, =1{kata untuk dilatih} other{kata untuk dilatih}}",
+    "practiceStartGrammarCount": "{count, plural, =1{poin tata bahasa untuk dilatih} other{poin tata bahasa untuk dilatih}}",
+    "practiceStartExerciseTypes": "Jenis latihan"
 }

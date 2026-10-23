@@ -856,6 +856,7 @@ until it is explicitly ended, finished, or times out.
   sections. Starting practice in the other section, or restarting the same
   one, **replaces** it — confirming first only if the current one is
   unfinished.
+- **A session goes live when its clock starts.** Practice opens on a [start page](practice-exercises.instructions.md#start-page); until Start, replacing the session asks nothing and its section's analytics stays open.
 - **Ending is explicit and confirms.** The panel carries an **End session**
   control (the same leave affordance as leaving a chat); ending discards
   in-progress work, so it asks first. The panel's **X is just "leave"** —

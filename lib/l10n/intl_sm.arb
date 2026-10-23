@@ -2508,5 +2508,8 @@
     "openCourse": "Tatala le kosi",
     "centralCourseJoinedTitle": "Ua e auai i le {course}",
     "centralCourseJoinedBody": "O le kosi a Pangea mo tagata aʻoga {language}. E mafai e ona sui ona vaʻai i lou igoa ma lau talaaga.",
-    "centralCourseMembersSeeYou": "E mafai e sui o lenei kosi ona vaʻai i lou igoa ma lau talaaga."
+    "centralCourseMembersSeeYou": "E mafai e sui o lenei kosi ona vaʻai i lou igoa ma lau talaaga.",
+    "practiceStartWordCount": "{count, plural, =1{upu e faataʻitaʻi} other{upu e faataʻitaʻi}}",
+    "practiceStartGrammarCount": "{count, plural, =1{manatu o le kalama e faataʻitaʻi} other{manatu o le kalama e faataʻitaʻi}}",
+    "practiceStartExerciseTypes": "Ituaiga o faamalositino"
 }

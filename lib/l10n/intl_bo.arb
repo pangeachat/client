@@ -9654,5 +9654,8 @@
     "openCourse": "སློབ་ཚན་ཁ་ཕྱེ།",
     "centralCourseJoinedTitle": "ཁྱེད་ཀྱིས་{course}ནང་ཞུགས་ཚར།",
     "centralCourseJoinedBody": "འདི་ནི་Pangeaཡི་{language}སློབ་གཉེར་བར་ཆེད་དུ་བཟོས་པའི་སློབ་ཚན་ཞིག་ཡིན། དེའི་ཁོངས་མི་ཚོས་ཁྱེད་ཀྱི་མིང་དང་མི་སྒེར་གྱི་ཆ་འཕྲིན་མཐོང་ཐུབ།",
-    "centralCourseMembersSeeYou": "སློབ་ཚན་འདིའི་ཁོངས་མི་ཚོས་ཁྱེད་ཀྱི་མིང་དང་མི་སྒེར་གྱི་ཆ་འཕྲིན་མཐོང་ཐུབ།"
+    "centralCourseMembersSeeYou": "སློབ་ཚན་འདིའི་ཁོངས་མི་ཚོས་ཁྱེད་ཀྱི་མིང་དང་མི་སྒེར་གྱི་ཆ་འཕྲིན་མཐོང་ཐུབ།",
+    "practiceStartWordCount": "{count, plural, =1{སྦྱོང་བརྡར་བྱེད་རྒྱུའི་ཚིག་} other{སྦྱོང་བརྡར་བྱེད་རྒྱུའི་ཚིག་}}",
+    "practiceStartGrammarCount": "{count, plural, =1{སྦྱོང་བརྡར་བྱེད་རྒྱུའི་བརྡ་སྤྲོད་} other{སྦྱོང་བརྡར་བྱེད་རྒྱུའི་བརྡ་སྤྲོད་}}",
+    "practiceStartExerciseTypes": "སྦྱོང་ཚན་གྱི་རྣམ་གྲངས་"
 }

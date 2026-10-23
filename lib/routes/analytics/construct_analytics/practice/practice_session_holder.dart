@@ -8,6 +8,7 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/analyti
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_data_service.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_notifier.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_controller.dart';
+import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The state bag for one standalone practice session. Owned by
@@ -49,15 +50,32 @@ class PracticeSessionState {
   /// (practice-exercises.instructions.md, "Microphone").
   bool micUnavailable = false;
 
+  /// The first exercise, generating while the start page shows so Start is
+  /// instant; taken by the first exercise load after Start.
+  Future<MultipleChoicePracticeExerciseModel?>? firstExercise;
+
   PracticeSessionState(this.type, {this.missionId});
 
-  /// Started, not completed, not errored — the session the cluster badge shows
-  /// and the same-section analytics block keys off.
+  /// Clock started, not completed, not errored — the session the cluster
+  /// badge shows, the replace confirmation guards, and the same-section
+  /// analytics block keys off. A session on its start page is not live yet
+  /// (practice-exercises.instructions.md, "Start page").
   bool get isLive {
     final session = sessionController.session;
     return session != null &&
+        session.startedAt != null &&
         !session.isComplete &&
         sessionController.sessionError == null;
+  }
+
+  /// Its words are picked and Start has not been tapped.
+  bool get awaitingStart {
+    final session = sessionController.session;
+    return session != null &&
+        session.startedAt == null &&
+        !session.isComplete &&
+        sessionController.sessionError == null &&
+        practiceExerciseState.value is AsyncIdle;
   }
 }
 
@@ -196,8 +214,9 @@ class PracticeSessionHolder extends ChangeNotifier with WidgetsBindingObserver {
       return;
     }
 
-    // Past the limit but not live — a completed session's review, or a load
-    // that errored. Nothing to end; just stop watching.
+    // Past the limit but not live — a session still on its start page, a
+    // completed session's review, or a load that errored. Nothing to end;
+    // just stop watching.
     if (!current.isLive) {
       _idleTimer?.cancel();
       _idleTimer = null;

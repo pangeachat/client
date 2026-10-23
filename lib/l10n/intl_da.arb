@@ -10963,5 +10963,8 @@
     "openCourse": "Åbn kursus",
     "centralCourseJoinedTitle": "Du er nu med i {course}",
     "centralCourseJoinedBody": "Det er Pangeas kursus for {language}-elever. Medlemmer kan se dit navn og din profil.",
-    "centralCourseMembersSeeYou": "Medlemmer af dette kursus kan se dit navn og din profil."
+    "centralCourseMembersSeeYou": "Medlemmer af dette kursus kan se dit navn og din profil.",
+    "practiceStartWordCount": "{count, plural, =1{ord at øve} other{ord at øve}}",
+    "practiceStartGrammarCount": "{count, plural, =1{grammatikpunkt at øve} other{grammatikpunkter at øve}}",
+    "practiceStartExerciseTypes": "Øvelsestyper"
 }

@@ -10812,5 +10812,8 @@
     "openCourse": "コースを開く",
     "centralCourseJoinedTitle": "{course}に参加しました",
     "centralCourseJoinedBody": "これは{language}学習者向けのPangeaのコースです。メンバーはあなたの名前とプロフィールを見ることができます。",
-    "centralCourseMembersSeeYou": "このコースのメンバーはあなたの名前とプロフィールを見ることができます。"
+    "centralCourseMembersSeeYou": "このコースのメンバーはあなたの名前とプロフィールを見ることができます。",
+    "practiceStartWordCount": "{count, plural, =1{単語を練習} other{単語を練習}}",
+    "practiceStartGrammarCount": "{count, plural, =1{文法項目を練習} other{文法項目を練習}}",
+    "practiceStartExerciseTypes": "練習タイプ"
 }

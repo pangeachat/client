@@ -2508,5 +2508,8 @@
     "openCourse": "Хичээл нээх",
     "centralCourseJoinedTitle": "Та {course} хичээлд нэгдлээ",
     "centralCourseJoinedBody": "Энэ бол {language} хэл суралцагчдад зориулсан Пангеагийн хичээл юм. Гишүүд таны нэр, профайлыг харах боломжтой.",
-    "centralCourseMembersSeeYou": "Энэ хичээлийн гишүүд таны нэр, профайлыг харах боломжтой."
+    "centralCourseMembersSeeYou": "Энэ хичээлийн гишүүд таны нэр, профайлыг харах боломжтой.",
+    "practiceStartWordCount": "{count, plural, =1{үг давтах} other{үг давтах}}",
+    "practiceStartGrammarCount": "{count, plural, =1{дүрмийн цэг давтах} other{дүрмийн цэг давтах}}",
+    "practiceStartExerciseTypes": "Дасгалын төрлүүд"
 }

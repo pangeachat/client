@@ -10083,5 +10083,8 @@
     "openCourse": "Avaa kurssi",
     "centralCourseJoinedTitle": "Olet liittynyt kurssille {course}",
     "centralCourseJoinedBody": "Tämä on Pangean kurssi {language}-kielen opiskelijoille. Kurssin jäsenet näkevät nimesi ja profiilisi.",
-    "centralCourseMembersSeeYou": "Tämän kurssin jäsenet näkevät nimesi ja profiilisi."
+    "centralCourseMembersSeeYou": "Tämän kurssin jäsenet näkevät nimesi ja profiilisi.",
+    "practiceStartWordCount": "{count, plural, =1{sana harjoiteltavana} other{sanaa harjoiteltavana}}",
+    "practiceStartGrammarCount": "{count, plural, =1{kielioppikohta harjoiteltavana} other{kielioppikohtaa harjoiteltavana}}",
+    "practiceStartExerciseTypes": "Harjoitustyypit"
 }

@@ -10050,5 +10050,8 @@
     "openCourse": "Kursni ochish",
     "centralCourseJoinedTitle": "Siz {course} kursiga qoʻshildingiz",
     "centralCourseJoinedBody": "Bu Pangeaning {language} oʻrganuvchilari uchun kursi. Uning aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
-    "centralCourseMembersSeeYou": "Ushbu kurs aʼzolari ismingiz va profilingizni koʻrishlari mumkin."
+    "centralCourseMembersSeeYou": "Ushbu kurs aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
+    "practiceStartWordCount": "{count, plural, =1{mashq qilish uchun soʻz} other{mashq qilish uchun soʻzlar}}",
+    "practiceStartGrammarCount": "{count, plural, =1{mashq qilish uchun grammatika qoidasi} other{mashq qilish uchun grammatika qoidalari}}",
+    "practiceStartExerciseTypes": "Mashq turlari"
 }
