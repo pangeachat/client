@@ -13,9 +13,9 @@ import 'package:fluffychat/widgets/url_image_widget.dart';
 /// (`AppSettings.activityImageAsChatBackground`, followed live so a change in
 /// settings reaches a chat that is already open). It fades in as the
 /// activity's media carousel scrolls out of view and back out as it returns,
-/// so the background and the tappable image never show at the same time. Its
-/// backdrop covers the learner's own wallpaper as it fades in, crossfading the
-/// two. See activities.instructions.md.
+/// so the background and the tappable image never show at the same time. While
+/// it is on, it replaces the learner's wallpaper ([replacesWallpaper]). See
+/// activities.instructions.md.
 class ActivityChatBackground extends StatefulWidget {
   final Uri imageUrl;
   final double blur;
@@ -32,6 +32,13 @@ class ActivityChatBackground extends StatefulWidget {
 
   /// How strongly the image shows through once fully faded in.
   static const double imageOpacity = 0.25;
+
+  /// Whether the activity image takes the wallpaper's place in this chat: the
+  /// setting is on and the activity has an image of its own. The chat then
+  /// draws no wallpaper, so the two never layer (#9514).
+  static bool replacesWallpaper(Uri? activityImageUrl) =>
+      activityImageUrl != null &&
+      AppSettings.activityImageAsChatBackground.value;
 
   @override
   State<ActivityChatBackground> createState() => _ActivityChatBackgroundState();
@@ -118,17 +125,14 @@ class _ActivityChatBackgroundState extends State<ActivityChatBackground> {
           curve: FluffyThemes.animationCurve,
           child: child,
         ),
-        child: ColoredBox(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          child: Opacity(
-            opacity: ActivityChatBackground.imageOpacity,
-            child: ImageFiltered(
-              imageFilter: ui.ImageFilter.blur(
-                sigmaX: widget.blur,
-                sigmaY: widget.blur,
-              ),
-              child: _ActivityBackgroundImage(widget.imageUrl),
+        child: Opacity(
+          opacity: ActivityChatBackground.imageOpacity,
+          child: ImageFiltered(
+            imageFilter: ui.ImageFilter.blur(
+              sigmaX: widget.blur,
+              sigmaY: widget.blur,
             ),
+            child: _ActivityBackgroundImage(widget.imageUrl),
           ),
         ),
       ),
