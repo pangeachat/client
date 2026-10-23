@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Cha chluich a’ bhidio seo an-seo.",
     "watchOnYoutube": "Coimhead air YouTube",
     "createMyOwnCourse": "Cruthaich mo chùrsa fhèin",
-    "xpTowardMission": "{xp} XP a dh'ionnsaigh an Rùin seo"
+    "xpTowardMission": "{xp} XP a dh'ionnsaigh an Rùin seo",
+    "openCourse": "Fosgail an cùrsa",
+    "centralCourseJoinedTitle": "Tha thu air a dhol a-steach do {course}",
+    "centralCourseJoinedBody": "Is e cùrsa Pangea a th' ann do luchd-ionnsachaidh {language}. Chì na buill d' ainm agus do phròifil.",
+    "centralCourseMembersSeeYou": "Chì buill a' chùrsa seo d' ainm agus do phròifil."
 }

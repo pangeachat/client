@@ -10899,5 +10899,9 @@
     "videoWontPlayHere": "Hindi puwedeng i-play ang video na ito dito.",
     "watchOnYoutube": "Panoorin sa YouTube",
     "createMyOwnCourse": "Gumawa ng sarili kong kurso",
-    "xpTowardMission": "{xp} XP para sa Misyon na ito"
+    "xpTowardMission": "{xp} XP para sa Misyon na ito",
+    "openCourse": "Buksan ang kurso",
+    "centralCourseJoinedTitle": "Sumali ka sa {course}",
+    "centralCourseJoinedBody": "Ito ang kurso ng Pangea para sa mga nag-aaral ng {language}. Makikita ng mga miyembro nito ang iyong pangalan at profile.",
+    "centralCourseMembersSeeYou": "Makikita ng mga miyembro ng kursong ito ang iyong pangalan at profile."
 }

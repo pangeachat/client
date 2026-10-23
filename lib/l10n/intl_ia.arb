@@ -10975,5 +10975,9 @@
     "videoWontPlayHere": "Iste video non va reproducer hic.",
     "watchOnYoutube": "Regardar in YouTube",
     "createMyOwnCourse": "Crear mi proprie curso",
-    "xpTowardMission": "{xp} XP verso iste Mission"
+    "xpTowardMission": "{xp} XP verso iste Mission",
+    "openCourse": "Aperi curso",
+    "centralCourseJoinedTitle": "Tu ha juncte {course}",
+    "centralCourseJoinedBody": "Illo es le curso de Pangea pro apprededores de {language}. Su membros pote vider tu nomine e profilo.",
+    "centralCourseMembersSeeYou": "Membros de iste curso pote vider tu nomine e profilo."
 }

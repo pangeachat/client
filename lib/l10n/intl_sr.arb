@@ -10988,5 +10988,9 @@
     "videoWontPlayHere": "Ovaj video se ne može reprodukovati ovde.",
     "watchOnYoutube": "Gledaj na YouTube-u",
     "createMyOwnCourse": "Kreiraj sopstveni kurs",
-    "xpTowardMission": "{xp} XP za ovu misiju"
+    "xpTowardMission": "{xp} XP za ovu misiju",
+    "openCourse": "Otvori kurs",
+    "centralCourseJoinedTitle": "Pridružili ste se kursu {course}",
+    "centralCourseJoinedBody": "Ovo je Pangea kurs za učenike {language} jezika. Njegovi članovi mogu da vide vaše ime i profil.",
+    "centralCourseMembersSeeYou": "Članovi ovog kursa mogu da vide vaše ime i profil."
 }

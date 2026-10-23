@@ -42,6 +42,7 @@ class OnboardingStateController {
   String? _courseCode;
   CoursePlanModel? _joinedCoursePlan;
   String? _joinedRoomId;
+  bool _joinedCentralCourse = false;
 
   AvatarInfo? get avatarInfo => _avatarInfo;
   String? get displayName => _displayName;
@@ -55,6 +56,10 @@ class OnboardingStateController {
   String? get courseCode => _courseCode;
   CoursePlanModel? get joinedCoursePlan => _joinedCoursePlan;
   String? get joinedRoomId => _joinedRoomId;
+
+  /// Whether [joinedRoomId] is the language's central course rather than a
+  /// course the user chose to join.
+  bool get joinedCentralCourse => _joinedCentralCourse;
 
   void setAvatarInfo(AvatarInfo info) => _avatarInfo = info;
   void setDisplayName(String displayName) => _displayName = displayName;
@@ -75,5 +80,8 @@ class OnboardingStateController {
   void setCourseCode(String courseCode) => _courseCode = courseCode;
   void setJoinedCoursePlan(CoursePlanModel coursePlan) =>
       _joinedCoursePlan = coursePlan;
-  void setJoinedRoomId(String roomId) => _joinedRoomId = roomId;
+  void setJoinedRoomId(String roomId, {bool central = false}) {
+    _joinedRoomId = roomId;
+    _joinedCentralCourse = central;
+  }
 }

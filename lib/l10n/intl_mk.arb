@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Ова видео нема да се репродуцира овде.",
     "watchOnYoutube": "Гледајте на YouTube",
     "createMyOwnCourse": "Креирај мој сопствен курс",
-    "xpTowardMission": "{xp} XP кон оваа мисија"
+    "xpTowardMission": "{xp} XP кон оваа мисија",
+    "openCourse": "Отвори курс",
+    "centralCourseJoinedTitle": "Се приклучивте на {course}",
+    "centralCourseJoinedBody": "Ова е курсот на Pangea за ученици по {language}. Неговите членови можат да го видат вашето име и профил.",
+    "centralCourseMembersSeeYou": "Членовите на овој курс можат да го видат вашето име и профил."
 }

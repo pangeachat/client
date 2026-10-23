@@ -10671,5 +10671,9 @@
     "videoWontPlayHere": "यह वीडियो यहां नहीं चलेगा।",
     "watchOnYoutube": "YouTube पर देखें",
     "createMyOwnCourse": "अपना कोर्स बनाएँ",
-    "xpTowardMission": "इस मिशन के लिए {xp} XP"
+    "xpTowardMission": "इस मिशन के लिए {xp} XP",
+    "openCourse": "कोर्स खोलें",
+    "centralCourseJoinedTitle": "आप {course} में शामिल हो गए हैं",
+    "centralCourseJoinedBody": "यह {language} सीखने वालों के लिए पैंगिया का कोर्स है। इसके सदस्य आपका नाम और प्रोफ़ाइल देख सकते हैं।",
+    "centralCourseMembersSeeYou": "इस कोर्स के सदस्य आपका नाम और प्रोफ़ाइल देख सकते हैं।"
 }

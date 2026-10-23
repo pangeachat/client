@@ -10914,5 +10914,9 @@
     "videoWontPlayHere": "Αυτό το βίντεο δεν θα αναπαραχθεί εδώ.",
     "watchOnYoutube": "Παρακολουθήστε στο YouTube",
     "createMyOwnCourse": "Δημιουργία δικού μου μαθήματος",
-    "xpTowardMission": "{xp} XP για αυτήν την αποστολή"
+    "xpTowardMission": "{xp} XP για αυτήν την αποστολή",
+    "openCourse": "Άνοιγμα μαθήματος",
+    "centralCourseJoinedTitle": "Έχετε εγγραφεί στο {course}",
+    "centralCourseJoinedBody": "Είναι το μάθημα της Pangea για μαθητές {language}. Τα μέλη του μπορούν να δουν το όνομα και το προφίλ σας.",
+    "centralCourseMembersSeeYou": "Τα μέλη αυτού του μαθήματος μπορούν να δουν το όνομα και το προφίλ σας."
 }

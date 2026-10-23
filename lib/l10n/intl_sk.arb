@@ -10984,5 +10984,9 @@
     "videoWontPlayHere": "Toto video sa tu neprehrá.",
     "watchOnYoutube": "Pozrieť na YouTube",
     "createMyOwnCourse": "Vytvoriť si vlastný kurz",
-    "xpTowardMission": "{xp} XP k tejto misii"
+    "xpTowardMission": "{xp} XP k tejto misii",
+    "openCourse": "Otvoriť kurz",
+    "centralCourseJoinedTitle": "Pripojili ste sa ku kurzu {course}",
+    "centralCourseJoinedBody": "Je to kurz Pangea pre študentov jazyka {language}. Jeho členovia môžu vidieť vaše meno a profil.",
+    "centralCourseMembersSeeYou": "Členovia tohto kurzu môžu vidieť vaše meno a profil."
 }

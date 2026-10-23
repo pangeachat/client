@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Dis video nor go play ya.",
     "watchOnYoutube": "Go wach na YouTube",
     "createMyOwnCourse": "Mek mi yon kos",
-    "xpTowardMission": "{xp} XP fɔ dis Mishɔn"
+    "xpTowardMission": "{xp} XP fɔ dis Mishɔn",
+    "openCourse": "Opén kõs",
+    "centralCourseJoinedTitle": "Yu dɔn jɔyn {course}",
+    "centralCourseJoinedBody": "Na Pangea in kõs fɔ {language} lɔna dɛn. In mɛmba dɛn go ebul si yu nem ɛn yu profil.",
+    "centralCourseMembersSeeYou": "Mɛmba dɛn fɔ dis kõs go ebul si yu nem ɛn yu profil."
 }

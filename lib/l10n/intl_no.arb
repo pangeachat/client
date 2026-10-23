@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Denne videoen kan ikke spilles av her.",
     "watchOnYoutube": "Se på YouTube",
     "createMyOwnCourse": "Lag mitt eget kurs",
-    "xpTowardMission": "{xp} XP mot dette oppdraget"
+    "xpTowardMission": "{xp} XP mot dette oppdraget",
+    "openCourse": "Åpne kurs",
+    "centralCourseJoinedTitle": "Du har blitt med i {course}",
+    "centralCourseJoinedBody": "Det er Pangeas kurs for {language}-elever. Medlemmene kan se navnet og profilen din.",
+    "centralCourseMembersSeeYou": "Medlemmer av dette kurset kan se navnet og profilen din."
 }

@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Þetta myndband spilast ekki hér.",
     "watchOnYoutube": "Horfa á YouTube",
     "createMyOwnCourse": "Búa til mitt eigið námskeið",
-    "xpTowardMission": "{xp} XP í átt að þessu verkefni"
+    "xpTowardMission": "{xp} XP í átt að þessu verkefni",
+    "openCourse": "Opna námskeið",
+    "centralCourseJoinedTitle": "Þú hefur gengið í {course}",
+    "centralCourseJoinedBody": "Þetta er námskeið Pangea fyrir {language} nemendur. Meðlimir þess geta séð nafn þitt og prófíl.",
+    "centralCourseMembersSeeYou": "Meðlimir þessa námskeiðs geta séð nafn þitt og prófíl."
 }

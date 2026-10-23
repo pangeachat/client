@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "بۇ سىن بۇ يەردە قويۇلمايدۇ.",
     "watchOnYoutube": "YouTube دا كۆرۈڭ",
     "createMyOwnCourse": "ئۆز كۇرسۇمنى قۇرۇش",
-    "xpTowardMission": "بۇ ۋەزىپە ئۈچۈن {xp} XP"
+    "xpTowardMission": "بۇ ۋەزىپە ئۈچۈن {xp} XP",
+    "openCourse": "دەرستىن ئاچ",
+    "centralCourseJoinedTitle": "سىز {course} غا قاتناشتىڭىز",
+    "centralCourseJoinedBody": "بۇ پانگېيانىڭ {language} ئۆگەنگۈچىلەر ئۈچۈن تەييارلىغان دەرسى. ئۇنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ.",
+    "centralCourseMembersSeeYou": "بۇ دەرسنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ."
 }

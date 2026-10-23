@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Le vidiyo ayizukudlala apha.",
     "watchOnYoutube": "Bukela kuYouTube",
     "createMyOwnCourse": "Yenza eyakho ikhosi",
-    "xpTowardMission": "{xp} XP kweli Phulo"
+    "xpTowardMission": "{xp} XP kweli Phulo",
+    "openCourse": "Vula ikhosi",
+    "centralCourseJoinedTitle": "Ujoyine {course}",
+    "centralCourseJoinedBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho neprofayile yakho.",
+    "centralCourseMembersSeeYou": "Amalungu ale khosi angabona igama lakho neprofayile yakho."
 }

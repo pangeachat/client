@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Tsy afaka milalao eto ity horonantsary ity.",
     "watchOnYoutube": "Jereo ao amin'ny YouTube",
     "createMyOwnCourse": "Mamorona ny taranja manokana",
-    "xpTowardMission": "{xp} XP mankany amin'ity iraka ity"
+    "xpTowardMission": "{xp} XP mankany amin'ity iraka ity",
+    "openCourse": "Sokafy ny taranja",
+    "centralCourseJoinedTitle": "Tafiditra ao amin'ny {course} ianao",
+    "centralCourseJoinedBody": "Ity no taranja Pangea ho an'ireo mpianatra {language}. Afaka mahita ny anaranao sy ny mombamomba anao ireo mpikambana ao.",
+    "centralCourseMembersSeeYou": "Afaka mahita ny anaranao sy ny mombamomba anao ireo mpikambana ao amin'ity taranja ity."
 }

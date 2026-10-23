@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Hic video non ludet.",
     "watchOnYoutube": "Specta in YouTube",
     "createMyOwnCourse": "Curriculum meum crea",
-    "xpTowardMission": "{xp} XP ad hanc Missionem"
+    "xpTowardMission": "{xp} XP ad hanc Missionem",
+    "openCourse": "Aperire cursum",
+    "centralCourseJoinedTitle": "Curriculum {course} coniunxisti",
+    "centralCourseJoinedBody": "Hic est cursus Pangeae pro discentibus {language}. Sodales eius nomen et imaginem tuam videre possunt.",
+    "centralCourseMembersSeeYou": "Sodales huius cursus nomen et imaginem tuam videre possunt."
 }

@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Video ena e ke ke ea bapala mona.",
     "watchOnYoutube": "Shebella ho YouTube",
     "createMyOwnCourse": "Etsa thupelo ya ka",
-    "xpTowardMission": "{xp} XP ho ea ho Morero ona"
+    "xpTowardMission": "{xp} XP ho ea ho Morero ona",
+    "openCourse": "Bula thupelo",
+    "centralCourseJoinedTitle": "O kene ho {course}",
+    "centralCourseJoinedBody": "Ke thupelo ea Pangea bakeng sa baithuti ba {language}. Litho tsa eona li ka bona lebitso la hau le profileng ea hau.",
+    "centralCourseMembersSeeYou": "Litho tsa thupelo ena li ka bona lebitso la hau le profileng ea hau."
 }

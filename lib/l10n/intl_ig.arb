@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Vidiyo a agaghị agba ebe a.",
     "watchOnYoutube": "Lelee na YouTube",
     "createMyOwnCourse": "Mepụta nkuzi nke m",
-    "xpTowardMission": "{xp} XP maka Misionu a"
+    "xpTowardMission": "{xp} XP maka Misionu a",
+    "openCourse": "Mepee ọmụmụ ihe",
+    "centralCourseJoinedTitle": "Ị sonyeere {course}",
+    "centralCourseJoinedBody": "Ọ bụ ọmụmụ ihe Pangea maka ndị na-amụ {language}. Ndị otu ya nwere ike ịhụ aha gị na profaịlụ gị.",
+    "centralCourseMembersSeeYou": "Ndị otu ọmụmụ ihe a nwere ike ịhụ aha gị na profaịlụ gị."
 }

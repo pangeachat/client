@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Muuqaalkan halkan kuma shaqaynayo.",
     "watchOnYoutube": "Ka daawo YouTube",
     "createMyOwnCourse": "Samee koorsadayda",
-    "xpTowardMission": "{xp} XP oo ku aaddan Hawshan"
+    "xpTowardMission": "{xp} XP oo ku aaddan Hawshan",
+    "openCourse": "Fur koorsada",
+    "centralCourseJoinedTitle": "Waxaad ku biirtay {course}",
+    "centralCourseJoinedBody": "Waa koorsada Pangea ee loogu talagalay barayaasha {language}. Xubnaheeda waxay arki karaan magacaaga iyo astaantaada.",
+    "centralCourseMembersSeeYou": "Xubnaha koorsadan waxay arki karaan magacaaga iyo astaantaada."
 }

@@ -10046,5 +10046,9 @@
     "videoWontPlayHere": "Bu video bu yerda ijro etilmaydi.",
     "watchOnYoutube": "YouTube'da tomosha qiling",
     "createMyOwnCourse": "Oʻz kursimni yaratish",
-    "xpTowardMission": "Ushbu missiya uchun {xp} XP"
+    "xpTowardMission": "Ushbu missiya uchun {xp} XP",
+    "openCourse": "Kursni ochish",
+    "centralCourseJoinedTitle": "Siz {course} kursiga qoʻshildingiz",
+    "centralCourseJoinedBody": "Bu Pangeaning {language} oʻrganuvchilari uchun kursi. Uning aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
+    "centralCourseMembersSeeYou": "Ushbu kurs aʼzolari ismingiz va profilingizni koʻrishlari mumkin."
 }

@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Dili modagan kini nga video dinhi.",
     "watchOnYoutube": "Tan-awa sa YouTube",
     "createMyOwnCourse": "Paghimo sa akong kaugalingong kurso",
-    "xpTowardMission": "{xp} XP padulong niini nga Misyon"
+    "xpTowardMission": "{xp} XP padulong niini nga Misyon",
+    "openCourse": "Ablihi ang kurso",
+    "centralCourseJoinedTitle": "Naapil ka sa {course}",
+    "centralCourseJoinedBody": "Kini ang kurso sa Pangea para sa mga nagkat-on og {language}. Makita sa mga miyembro niini ang imong ngalan ug profile.",
+    "centralCourseMembersSeeYou": "Makita sa mga miyembro niining kursuha ang imong ngalan ug profile."
 }

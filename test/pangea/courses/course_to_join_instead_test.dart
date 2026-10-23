@@ -78,4 +78,24 @@ void main() {
       expect(picked?.room.roomId, '!central-big');
     });
   });
+
+  group('PublicCoursesChunk.centralOf (#9591)', () {
+    test('the central course, the bigger one when there are two', () {
+      expect(
+        PublicCoursesChunk.centralOf([
+          course('!public', members: 50),
+          course('!central-small', central: true, members: 4),
+          course('!central-big', central: true, members: 12),
+        ])?.room.roomId,
+        '!central-big',
+      );
+    });
+
+    test('no central course is none, however big the rest', () {
+      expect(
+        PublicCoursesChunk.centralOf([course('!public', members: 50)]),
+        isNull,
+      );
+    });
+  });
 }

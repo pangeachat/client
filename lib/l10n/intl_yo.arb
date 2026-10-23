@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Fidio yii kò ní ṣiṣẹ́ níbí.",
     "watchOnYoutube": "Wò ó lórí YouTube",
     "createMyOwnCourse": "Ṣẹda iṣẹ ikẹkọ ti ara mi",
-    "xpTowardMission": "{xp} XP si Iṣẹ apinfunni yii"
+    "xpTowardMission": "{xp} XP si Iṣẹ apinfunni yii",
+    "openCourse": "Ṣí iṣẹ́-ẹ̀kọ́",
+    "centralCourseJoinedTitle": "O ti darapọ̀ mọ́ {course}",
+    "centralCourseJoinedBody": "Ó jẹ́ iṣẹ́-ẹ̀kọ́ Pangea fún àwọn akẹ́kọ̀ọ́ èdè {language}. Àwọn ọmọ ẹgbẹ́ rẹ̀ lè rí orúkọ àti àkọọ́lẹ̀ rẹ.",
+    "centralCourseMembersSeeYou": "Àwọn ọmọ ẹgbẹ́ iṣẹ́-ẹ̀kọ́ yìí lè rí orúkọ àti àkọọ́lẹ̀ rẹ."
 }

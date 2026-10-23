@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Vidiyo iyi siyingathe kuseweredwa pano.",
     "watchOnYoutube": "Onerani pa YouTube",
     "createMyOwnCourse": "Panga maphunziro anga",
-    "xpTowardMission": "{xp} XP pa Mission iyi"
+    "xpTowardMission": "{xp} XP pa Mission iyi",
+    "openCourse": "Tsegulani kosi",
+    "centralCourseJoinedTitle": "Mwalowa mu {course}",
+    "centralCourseJoinedBody": "Ndi kosi ya Pangea kwa ophunzira a {language}. Mamembala ake akhoza kuona dzina lanu ndi mbiri yanu.",
+    "centralCourseMembersSeeYou": "Mamembala a kosiyi akhoza kuona dzina lanu ndi mbiri yanu."
 }

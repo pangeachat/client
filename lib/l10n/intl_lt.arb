@@ -10820,5 +10820,9 @@
     "videoWontPlayHere": "Šis vaizdo įrašas čia nebus leidžiamas.",
     "watchOnYoutube": "Žiūrėti „YouTube“",
     "createMyOwnCourse": "Sukurti savo kursą",
-    "xpTowardMission": "{xp} XP šiai misijai"
+    "xpTowardMission": "{xp} XP šiai misijai",
+    "openCourse": "Atidaryti kursą",
+    "centralCourseJoinedTitle": "Prisijungėte prie {course}",
+    "centralCourseJoinedBody": "Tai „Pangea“ kursas, skirtas {language} besimokantiems. Jo nariai gali matyti jūsų vardą ir profilį.",
+    "centralCourseMembersSeeYou": "Šio kurso nariai gali matyti jūsų vardą ir profilį."
 }

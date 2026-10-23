@@ -6224,5 +6224,31 @@
                 "type": "String"
             }
         }
+    },
+    "openCourse": "Open course",
+    "@openCourse": {
+        "description": "Button in the dialog shown after the app joined the learner to their language's central course: opens that course."
+    },
+    "centralCourseJoinedTitle": "You've joined {course}",
+    "@centralCourseJoinedTitle": {
+        "description": "Title of the dialog shown once when the app joins an existing learner to the Pangea-run course for their target language.",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "centralCourseJoinedBody": "It's Pangea's course for {language} learners. Its members can see your name and profile.",
+    "@centralCourseJoinedBody": {
+        "description": "Body of the dialog shown once when the app joins an existing learner to the Pangea-run course for their target language. The learner can leave from the dialog.",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "centralCourseMembersSeeYou": "Members of this course can see your name and profile.",
+    "@centralCourseMembersSeeYou": {
+        "description": "Line on the onboarding page after a new learner was joined to the Pangea-run course for their target language."
     }
 }

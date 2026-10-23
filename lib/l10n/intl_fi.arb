@@ -10079,5 +10079,9 @@
     "videoWontPlayHere": "Tätä videota ei voi toistaa täällä.",
     "watchOnYoutube": "Katso YouTubessa",
     "createMyOwnCourse": "Luo oma kurssini",
-    "xpTowardMission": "{xp} XP tähän tehtävään"
+    "xpTowardMission": "{xp} XP tähän tehtävään",
+    "openCourse": "Avaa kurssi",
+    "centralCourseJoinedTitle": "Olet liittynyt kurssille {course}",
+    "centralCourseJoinedBody": "Tämä on Pangean kurssi {language}-kielen opiskelijoille. Kurssin jäsenet näkevät nimesi ja profiilisi.",
+    "centralCourseMembersSeeYou": "Tämän kurssin jäsenet näkevät nimesi ja profiilisi."
 }

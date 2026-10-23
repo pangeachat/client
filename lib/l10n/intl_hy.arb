@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Այս տեսանյութն այստեղ չի նվագարկվի։",
     "watchOnYoutube": "Դիտել YouTube-ում",
     "createMyOwnCourse": "Ստեղծել իմ սեփական դասընթացը",
-    "xpTowardMission": "{xp} XP այս առաքելության համար"
+    "xpTowardMission": "{xp} XP այս առաքելության համար",
+    "openCourse": "Բացել դասընթացը",
+    "centralCourseJoinedTitle": "Դուք միացել եք {course} դասընթացին",
+    "centralCourseJoinedBody": "Սա Pangea-ի դասընթացն է {language} սովորողների համար։ Նրա անդամները կարող են տեսնել ձեր անունը և պրոֆիլը։",
+    "centralCourseMembersSeeYou": "Այս դասընթացի անդամները կարող են տեսնել ձեր անունը և պրոֆիլը։"
 }

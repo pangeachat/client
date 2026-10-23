@@ -10042,5 +10042,9 @@
     "videoWontPlayHere": "Bideo hau ez da hemen erreproduzituko.",
     "watchOnYoutube": "Ikusi YouTuben",
     "createMyOwnCourse": "Nire ikastaroa sortu",
-    "xpTowardMission": "{xp} esperientzia puntu misio honetarako"
+    "xpTowardMission": "{xp} esperientzia puntu misio honetarako",
+    "openCourse": "Ikastaroa ireki",
+    "centralCourseJoinedTitle": "{course} ikastaroan sartu zara",
+    "centralCourseJoinedBody": "Pangearen ikastaroa da {language} ikasleentzat. Bertako kideek zure izena eta profila ikus ditzakete.",
+    "centralCourseMembersSeeYou": "Ikastaro honetako kideek zure izena eta profila ikus ditzakete."
 }

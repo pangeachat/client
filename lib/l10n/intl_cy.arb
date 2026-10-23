@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Ni fydd y fideo hwn yn chwarae yma.",
     "watchOnYoutube": "Gwylio ar YouTube",
     "createMyOwnCourse": "Creu fy nghwrs fy hun",
-    "xpTowardMission": "{xp} XP tuag at y Genhadaeth hon"
+    "xpTowardMission": "{xp} XP tuag at y Genhadaeth hon",
+    "openCourse": "Agor cwrs",
+    "centralCourseJoinedTitle": "Rydych chi wedi ymuno â {course}",
+    "centralCourseJoinedBody": "Dyma gwrs Pangea ar gyfer dysgwyr {language}. Gall ei aelodau weld eich enw a'ch proffil.",
+    "centralCourseMembersSeeYou": "Gall aelodau'r cwrs hwn weld eich enw a'ch proffil."
 }

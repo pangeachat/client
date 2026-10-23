@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "මෙම වීඩියෝව මෙහි වාදනය නොවේ.",
     "watchOnYoutube": "YouTube හි නරඹන්න",
     "createMyOwnCourse": "මගේම පාඨමාලාවක් සාදන්න",
-    "xpTowardMission": "මෙම මෙහෙයුම සඳහා {xp} XP"
+    "xpTowardMission": "මෙම මෙහෙයුම සඳහා {xp} XP",
+    "openCourse": "පාඨමාලාව විවෘත කරන්න",
+    "centralCourseJoinedTitle": "ඔබ {course} හා සම්බන්ධ වී ඇත",
+    "centralCourseJoinedBody": "එය {language} ඉගෙන ගන්නන් සඳහා වන Pangea පාඨමාලාවයි. එහි සාමාජිකයින්ට ඔබේ නම සහ පැතිකඩ දැකිය හැක.",
+    "centralCourseMembersSeeYou": "මෙම පාඨමාලාවේ සාමාජිකයින්ට ඔබේ නම සහ පැතිකඩ දැකිය හැක."
 }

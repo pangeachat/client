@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Stu video ùn pò micca ghjucà quì.",
     "watchOnYoutube": "Fighjà nant'à YouTube",
     "createMyOwnCourse": "Creà u mo corsu",
-    "xpTowardMission": "{xp} XP per sta Missione"
+    "xpTowardMission": "{xp} XP per sta Missione",
+    "openCourse": "Apri u corsu",
+    "centralCourseJoinedTitle": "Avete raghjuntu {course}",
+    "centralCourseJoinedBody": "Hè u corsu di Pangea per l'amparera di u {language}. I so membri ponu vede u vostru nome è u vostru prufilu.",
+    "centralCourseMembersSeeYou": "I membri di stu corsu ponu vede u vostru nome è u vostru prufilu."
 }

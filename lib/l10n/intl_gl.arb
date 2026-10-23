@@ -10042,5 +10042,9 @@
     "videoWontPlayHere": "Este vídeo non se pode reproducir aquí.",
     "watchOnYoutube": "Ver en YouTube",
     "createMyOwnCourse": "Crear o meu propio curso",
-    "xpTowardMission": "{xp} XP para esta Misión"
+    "xpTowardMission": "{xp} XP para esta Misión",
+    "openCourse": "Abrir curso",
+    "centralCourseJoinedTitle": "Unícheste a {course}",
+    "centralCourseJoinedBody": "É o curso de Pangea para estudantes de {language}. Os seus membros poden ver o teu nome e perfil.",
+    "centralCourseMembersSeeYou": "Os membros deste curso poden ver o teu nome e perfil."
 }

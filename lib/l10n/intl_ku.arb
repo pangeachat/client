@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "ئەم ڤیدیۆیە لێرە کارناکات.",
     "watchOnYoutube": "لە یوتیوب سەیری بکە",
     "createMyOwnCourse": "خولی تایبەت بە خۆم دروست بکە",
-    "xpTowardMission": "{xp} خاڵی ئەزموون بۆ ئەم ئەرکە"
+    "xpTowardMission": "{xp} خاڵی ئەزموون بۆ ئەم ئەرکە",
+    "openCourse": "کردنەوەی خول",
+    "centralCourseJoinedTitle": "تۆ بەشداریی {course}ت کرد",
+    "centralCourseJoinedBody": "ئەمە خولی پانگایە بۆ فێرخوازانی {language}. ئەندامەکانی دەتوانن ناوی تۆ و پڕۆفایلەکەت ببینن.",
+    "centralCourseMembersSeeYou": "ئەندامانی ئەم خولە دەتوانن ناوی تۆ و پڕۆفایلەکەت ببینن."
 }

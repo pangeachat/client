@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Video iki ora bisa disetel ing kene.",
     "watchOnYoutube": "Tonton ing YouTube",
     "createMyOwnCourse": "Gawe kursusku dhewe",
-    "xpTowardMission": "{xp} XP kanggo Misi iki"
+    "xpTowardMission": "{xp} XP kanggo Misi iki",
+    "openCourse": "Bukak kursus",
+    "centralCourseJoinedTitle": "Sampeyan wis gabung {course}",
+    "centralCourseJoinedBody": "Iki kursus Pangea kanggo para siswa {language}. Anggotane bisa ndeleng jeneng lan profil sampeyan.",
+    "centralCourseMembersSeeYou": "Anggota kursus iki bisa ndeleng jeneng lan profil sampeyan."
 }

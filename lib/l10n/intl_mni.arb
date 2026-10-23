@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "ꯁꯤꯗ ꯚꯤꯗꯤꯑꯣ ꯑꯁꯤ ꯆꯠꯇꯦ꯫",
     "watchOnYoutube": "YouTube ꯗ ꯌꯦꯡꯕꯤꯌꯨ",
     "createMyOwnCourse": "ꯑꯩꯒꯤ ꯑꯣꯟ ꯀꯣꯔꯁ ꯁꯦꯝꯃꯨ",
-    "xpTowardMission": "మిషన్ వైపు {xp} XP"
+    "xpTowardMission": "మిషన్ వైపు {xp} XP",
+    "openCourse": "কোর্স হাংদোক্কন",
+    "centralCourseJoinedTitle": "নখোই {course} দা শরুক য়াখ্রে",
+    "centralCourseJoinedBody": "অসি {language} তম্লিবাশিংগী পাংগিয়াগী কোর্সনি। মসিগী মেম্বরশিংনা নখোইগী মমিং অমসুং প্রোফাইল উবা ফংগনি।",
+    "centralCourseMembersSeeYou": "অসিগী কোর্সকী মেম্বরশিংনা নখোইগী মমিং অমসুং প্রোফাইল উবা ফংগনি।"
 }

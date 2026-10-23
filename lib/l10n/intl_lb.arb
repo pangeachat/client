@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Dëse Video spillt hei net.",
     "watchOnYoutube": "Op YouTube kucken",
     "createMyOwnCourse": "Mäin eegene Cours erstellen",
-    "xpTowardMission": "{xp} XP fir dës Missioun"
+    "xpTowardMission": "{xp} XP fir dës Missioun",
+    "openCourse": "Cours opmaachen",
+    "centralCourseJoinedTitle": "Dir sidd dem Cours „{course}“ bäigetrueden",
+    "centralCourseJoinedBody": "Et ass de Pangea-Cours fir {language}-Léierpersonal. D'Membere kënnen Ären Numm an Äre Profil gesinn.",
+    "centralCourseMembersSeeYou": "D'Membere vun dësem Cours kënnen Ären Numm an Äre Profil gesinn."
 }

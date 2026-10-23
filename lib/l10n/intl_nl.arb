@@ -10042,5 +10042,9 @@
     "videoWontPlayHere": "Deze video kan hier niet worden afgespeeld.",
     "watchOnYoutube": "Bekijk op YouTube",
     "createMyOwnCourse": "Mijn eigen cursus maken",
-    "xpTowardMission": "{xp} XP voor deze missie"
+    "xpTowardMission": "{xp} XP voor deze missie",
+    "openCourse": "Open cursus",
+    "centralCourseJoinedTitle": "Je hebt je aangemeld voor {course}",
+    "centralCourseJoinedBody": "Dit is de Pangea-cursus voor {language}-leerders. De leden kunnen je naam en profiel zien.",
+    "centralCourseMembersSeeYou": "Leden van deze cursus kunnen je naam en profiel zien."
 }

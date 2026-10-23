@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Kāore tēnei ataata e purei ki konei.",
     "watchOnYoutube": "Mātaki ki YouTube",
     "createMyOwnCourse": "Waihanga i taku ake akoranga",
-    "xpTowardMission": "{xp} XP ki tēnei Mihana"
+    "xpTowardMission": "{xp} XP ki tēnei Mihana",
+    "openCourse": "Whakatuwheratia te akoranga",
+    "centralCourseJoinedTitle": "Kua uru koe ki {course}",
+    "centralCourseJoinedBody": "Koia te akoranga a Pangea mō ngā ākonga {language}. Ka kite ngā mema i tō ingoa me tō kōtaha.",
+    "centralCourseMembersSeeYou": "Ka kite ngā mema o tēnei akoranga i tō ingoa me tō kōtaha."
 }

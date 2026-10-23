@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "هي وڊيو هتي نه هلندي.",
     "watchOnYoutube": "يوٽيوب تي ڏسو",
     "createMyOwnCourse": "منهنجو پنهنجو ڪورس ٺاهيو",
-    "xpTowardMission": "هن مشن ڏانهن {xp} XP"
+    "xpTowardMission": "هن مشن ڏانهن {xp} XP",
+    "openCourse": "ڪورس کوليو",
+    "centralCourseJoinedTitle": "توهان {course} ۾ شامل ٿي ويا آهيو",
+    "centralCourseJoinedBody": "هي {language} سکندڙن لاءِ پينگيا جو ڪورس آهي. ان جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا.",
+    "centralCourseMembersSeeYou": "هن ڪورس جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا."
 }

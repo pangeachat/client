@@ -10145,5 +10145,9 @@
     "videoWontPlayHere": "Ez a videó itt nem játszható le.",
     "watchOnYoutube": "Megtekintés YouTube-on",
     "createMyOwnCourse": "Saját tanfolyam létrehozása",
-    "xpTowardMission": "{xp} XP ehhez a küldetéshez"
+    "xpTowardMission": "{xp} XP ehhez a küldetéshez",
+    "openCourse": "Kurzus megnyitása",
+    "centralCourseJoinedTitle": "Csatlakoztál ehhez a kurzushoz: {course}",
+    "centralCourseJoinedBody": "Ez a Pangea kurzusa {language} nyelvtanulók számára. A tagok láthatják a nevedet és a profilodat.",
+    "centralCourseMembersSeeYou": "A kurzus tagjai láthatják a nevedet és a profilodat."
 }

@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Kjo video nuk do të luhet këtu.",
     "watchOnYoutube": "Shiko në YouTube",
     "createMyOwnCourse": "Krijo kursin tim",
-    "xpTowardMission": "{xp} XP drejt këtij Misioni"
+    "xpTowardMission": "{xp} XP drejt këtij Misioni",
+    "openCourse": "Hap kursin",
+    "centralCourseJoinedTitle": "Je bashkuar me {course}",
+    "centralCourseJoinedBody": "Është kursi i Pangeas për nxënësit e gjuhës {language}. Anëtarët e tij mund të shohin emrin dhe profilin tënd.",
+    "centralCourseMembersSeeYou": "Anëtarët e këtij kursi mund të shohin emrin dhe profilin tënd."
 }

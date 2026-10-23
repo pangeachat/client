@@ -9650,5 +9650,9 @@
     "videoWontPlayHere": "བརྙན་འདི་འདིར་འཁྲབ་མི་ཐུབ།",
     "watchOnYoutube": "YouTube ཐོག་ཏུ་ལྟ་བ།",
     "createMyOwnCourse": "ངའི་སློབ་ཚན་བཟོ་བ།",
-    "xpTowardMission": "འདིའི་ལས་འགན་ལ་ {xp} ཉམས་མྱོང་"
+    "xpTowardMission": "འདིའི་ལས་འགན་ལ་ {xp} ཉམས་མྱོང་",
+    "openCourse": "སློབ་ཚན་ཁ་ཕྱེ།",
+    "centralCourseJoinedTitle": "ཁྱེད་ཀྱིས་{course}ནང་ཞུགས་ཚར།",
+    "centralCourseJoinedBody": "འདི་ནི་Pangeaཡི་{language}སློབ་གཉེར་བར་ཆེད་དུ་བཟོས་པའི་སློབ་ཚན་ཞིག་ཡིན། དེའི་ཁོངས་མི་ཚོས་ཁྱེད་ཀྱི་མིང་དང་མི་སྒེར་གྱི་ཆ་འཕྲིན་མཐོང་ཐུབ།",
+    "centralCourseMembersSeeYou": "སློབ་ཚན་འདིའི་ཁོངས་མི་ཚོས་ཁྱེད་ཀྱི་མིང་དང་མི་སྒེར་གྱི་ཆ་འཕྲིན་མཐོང་ཐུབ།"
 }

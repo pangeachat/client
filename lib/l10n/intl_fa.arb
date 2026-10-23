@@ -10130,5 +10130,9 @@
     "videoWontPlayHere": "این ویدئو اینجا پخش نمی‌شود.",
     "watchOnYoutube": "در یوتیوب تماشا کنید",
     "createMyOwnCourse": "دوره خودم را بسازم",
-    "xpTowardMission": "{xp} امتیاز تجربه برای این مأموریت"
+    "xpTowardMission": "{xp} امتیاز تجربه برای این مأموریت",
+    "openCourse": "باز کردن دوره",
+    "centralCourseJoinedTitle": "شما به {course} پیوستید",
+    "centralCourseJoinedBody": "این دوره پانگه‌آ برای زبان‌آموزان {language} است. اعضای آن می‌توانند نام و نمایه شما را ببینند.",
+    "centralCourseMembersSeeYou": "اعضای این دوره می‌توانند نام و نمایه شما را ببینند."
 }

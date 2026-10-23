@@ -10671,5 +10671,9 @@
     "videoWontPlayHere": "วิดีโอนี้เล่นที่นี่ไม่ได้",
     "watchOnYoutube": "ดูบน YouTube",
     "createMyOwnCourse": "สร้างคอร์สของฉันเอง",
-    "xpTowardMission": "{xp} XP สำหรับภารกิจนี้"
+    "xpTowardMission": "{xp} XP สำหรับภารกิจนี้",
+    "openCourse": "เปิดคอร์ส",
+    "centralCourseJoinedTitle": "คุณได้เข้าร่วม {course} แล้ว",
+    "centralCourseJoinedBody": "นี่คือคอร์สของ Pangea สำหรับผู้เรียนภาษา {language} สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
+    "centralCourseMembersSeeYou": "สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้"
 }

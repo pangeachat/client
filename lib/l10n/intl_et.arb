@@ -10039,5 +10039,9 @@
     "videoWontPlayHere": "Seda videot ei saa siin esitada.",
     "watchOnYoutube": "Vaata YouTube'is",
     "createMyOwnCourse": "Loo oma kursus",
-    "xpTowardMission": "{xp} XP selle missiooni suunas"
+    "xpTowardMission": "{xp} XP selle missiooni suunas",
+    "openCourse": "Ava kursus",
+    "centralCourseJoinedTitle": "Oled liitunud kursusega {course}",
+    "centralCourseJoinedBody": "See on Pangea kursus {language} õppijatele. Selle liikmed näevad sinu nime ja profiili.",
+    "centralCourseMembersSeeYou": "Selle kursuse liikmed näevad sinu nime ja profiili."
 }

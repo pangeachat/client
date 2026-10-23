@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "ဤဗီဒီယိုကို ဤနေရာတွင် ဖွင့်၍မရပါ။",
     "watchOnYoutube": "YouTube တွင် ကြည့်ရန်",
     "createMyOwnCourse": "ကိုယ်ပိုင်သင်တန်းဖန်တီးမည်",
-    "xpTowardMission": "ဤမစ်ရှင်အတွက် {xp} XP"
+    "xpTowardMission": "ဤမစ်ရှင်အတွက် {xp} XP",
+    "openCourse": "သင်တန်းဖွင့်ပါ",
+    "centralCourseJoinedTitle": "{course} ကို သင်ဝင်ရောက်ပြီးပါပြီ",
+    "centralCourseJoinedBody": "၎င်းသည် {language} သင်ယူသူများအတွက် Pangea ၏ သင်တန်းဖြစ်သည်။ ၎င်း၏အဖွဲ့ဝင်များသည် သင့်အမည်နှင့် ပရိုဖိုင်ကို မြင်နိုင်ပါသည်။",
+    "centralCourseMembersSeeYou": "ဤသင်တန်းမှ အဖွဲ့ဝင်များသည် သင့်အမည်နှင့် ပရိုဖိုင်ကို မြင်နိုင်ပါသည်။"
 }

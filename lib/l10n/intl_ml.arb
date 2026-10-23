@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "ഈ വീഡിയോ ഇവിടെ പ്ലേ ചെയ്യില്ല.",
     "watchOnYoutube": "YouTube-ൽ കാണുക",
     "createMyOwnCourse": "എൻ്റെ സ്വന്തം കോഴ്സ് ഉണ്ടാക്കുക",
-    "xpTowardMission": "ഈ ദൗത്യത്തിലേക്ക് {xp} XP"
+    "xpTowardMission": "ഈ ദൗത്യത്തിലേക്ക് {xp} XP",
+    "openCourse": "കോഴ്സ് തുറക്കുക",
+    "centralCourseJoinedTitle": "നിങ്ങൾ {course} എന്നതിൽ ചേർന്നു",
+    "centralCourseJoinedBody": "ഇത് {language} പഠിതാക്കൾക്കായുള്ള പാഞ്ചിയയുടെ കോഴ്സാണ്. ഇതിലെ അംഗങ്ങൾക്ക് നിങ്ങളുടെ പേരും പ്രൊഫൈലും കാണാൻ കഴിയും.",
+    "centralCourseMembersSeeYou": "ഈ കോഴ്സിലെ അംഗങ്ങൾക്ക് നിങ്ങളുടെ പേരും പ്രൊഫൈലും കാണാൻ കഴിയും."
 }

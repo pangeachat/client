@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Ин видео дар ин ҷо намоиш дода намешавад.",
     "watchOnYoutube": "Дар YouTube тамошо кунед",
     "createMyOwnCourse": "Курси худро эҷод кунед",
-    "xpTowardMission": "{xp} XP ба сӯи ин рисолат"
+    "xpTowardMission": "{xp} XP ба сӯи ин рисолат",
+    "openCourse": "Курсро кушоед",
+    "centralCourseJoinedTitle": "Шумо ба {course} ҳамроҳ шудед",
+    "centralCourseJoinedBody": "Ин курси Pangea барои омӯзандагони забони {language} аст. Аъзоёни он метавонанд ном ва профили шуморо бубинанд.",
+    "centralCourseMembersSeeYou": "Аъзоёни ин курс метавонанд ном ва профили шуморо бубинанд."
 }

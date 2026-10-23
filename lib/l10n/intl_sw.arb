@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Video hii haitachezwa hapa.",
     "watchOnYoutube": "Tazama kwenye YouTube",
     "createMyOwnCourse": "Unda kozi yangu mwenyewe",
-    "xpTowardMission": "{xp} XP kuelekea Misheni hii"
+    "xpTowardMission": "{xp} XP kuelekea Misheni hii",
+    "openCourse": "Fungua kozi",
+    "centralCourseJoinedTitle": "Umejiunga na {course}",
+    "centralCourseJoinedBody": "Hii ni kozi ya Pangea kwa wanafunzi wa {language}. Wanachama wake wanaweza kuona jina na wasifu wako.",
+    "centralCourseMembersSeeYou": "Wanachama wa kozi hii wanaweza kuona jina na wasifu wako."
 }

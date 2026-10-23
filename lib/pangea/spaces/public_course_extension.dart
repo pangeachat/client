@@ -76,6 +76,25 @@ extension PublicCoursesRequest on Client {
     }
   }
 
+  /// [targetLanguage]'s central course (#9591), or null when it has none. A
+  /// failed lookup is reported and also returns null, so the learner carries
+  /// on without one and the next check tries again.
+  Future<String?> centralCourseFor(String targetLanguage) async {
+    try {
+      final courses = await _allPublicCourses(
+        targetLanguage,
+      ).timeout(const Duration(seconds: 10));
+      return PublicCoursesChunk.centralOf(courses)?.room.roomId;
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'target_language': targetLanguage},
+      );
+      return null;
+    }
+  }
+
   Future<List<PublicCoursesChunk>> _allPublicCourses(
     String targetLanguage,
   ) async {
@@ -164,14 +183,19 @@ class PublicCoursesChunk {
   static PublicCoursesChunk? toJoinInstead(
     List<PublicCoursesChunk> courses,
     String questId,
-  ) {
-    final biggestFirst = courses.sortedBy<num>((c) => -c.room.numJoinedMembers);
-    return biggestFirst.firstWhereOrNull((c) => c.central) ??
-        biggestFirst.firstWhereOrNull(
-          (c) =>
-              c.courseId == questId && c.room.joinRule == JoinRules.public.name,
-        );
-  }
+  ) =>
+      centralOf(courses) ??
+      _biggestFirst(courses).firstWhereOrNull(
+        (c) =>
+            c.courseId == questId && c.room.joinRule == JoinRules.public.name,
+      );
+
+  static PublicCoursesChunk? centralOf(List<PublicCoursesChunk> courses) =>
+      _biggestFirst(courses).firstWhereOrNull((c) => c.central);
+
+  static List<PublicCoursesChunk> _biggestFirst(
+    List<PublicCoursesChunk> courses,
+  ) => courses.sortedBy<num>((c) => -c.room.numJoinedMembers);
 
   /// Returns null when the entry carries no course id.
   static PublicCoursesChunk? tryParse(Map<String, dynamic> json) {

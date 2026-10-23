@@ -10671,5 +10671,9 @@
     "videoWontPlayHere": "Ní imreoidh an físeán seo anseo.",
     "watchOnYoutube": "Féach ar YouTube",
     "createMyOwnCourse": "Cruthaigh mo chúrsa féin",
-    "xpTowardMission": "{xp} XP i dtreo an Mhisiúin seo"
+    "xpTowardMission": "{xp} XP i dtreo an Mhisiúin seo",
+    "openCourse": "Oscail an cúrsa",
+    "centralCourseJoinedTitle": "Tá tú páirteach i {course}",
+    "centralCourseJoinedBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
+    "centralCourseMembersSeeYou": "Is féidir le baill an chúrsa seo d'ainm agus do phróifíl a fheiceáil."
 }

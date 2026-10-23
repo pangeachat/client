@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Daim vis dis aus no yuav tsis ua si ntawm no.",
     "watchOnYoutube": "Saib hauv YouTube",
     "createMyOwnCourse": "Tsim kuv tus kheej chav kawm",
-    "xpTowardMission": "{xp} XP rau lub Hom Phiaj no"
+    "xpTowardMission": "{xp} XP rau lub Hom Phiaj no",
+    "openCourse": "Qhib kawm",
+    "centralCourseJoinedTitle": "Koj tau koom nrog {course}",
+    "centralCourseJoinedBody": "Nws yog Pangea cov chav kawm rau cov neeg kawm lus {language}. Nws cov tswv cuab tuaj yeem pom koj lub npe thiab profile.",
+    "centralCourseMembersSeeYou": "Cov tswv cuab ntawm chav kawm no tuaj yeem pom koj lub npe thiab profile."
 }

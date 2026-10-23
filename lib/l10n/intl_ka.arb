@@ -10939,5 +10939,9 @@
     "videoWontPlayHere": "ეს ვიდეო აქ არ იმუშავებს.",
     "watchOnYoutube": "უყურეთ YouTube-ზე",
     "createMyOwnCourse": "შექმენი ჩემი კურსი",
-    "xpTowardMission": "{xp} XP ამ მისიისთვის"
+    "xpTowardMission": "{xp} XP ამ მისიისთვის",
+    "openCourse": "კურსის გახსნა",
+    "centralCourseJoinedTitle": "თქვენ შეუერთდით კურსს: {course}",
+    "centralCourseJoinedBody": "ეს არის Pangea-ს კურსი {language} ენის შემსწავლელებისთვის. მისი წევრები ხედავენ თქვენს სახელსა და პროფილს.",
+    "centralCourseMembersSeeYou": "ამ კურსის წევრებს შეუძლიათ ნახონ თქვენი სახელი და პროფილი."
 }

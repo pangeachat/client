@@ -10808,5 +10808,9 @@
     "videoWontPlayHere": "この動画はここでは再生できません。",
     "watchOnYoutube": "YouTubeで視聴",
     "createMyOwnCourse": "自分のコースを作成",
-    "xpTowardMission": "このミッションまであと {xp} XP"
+    "xpTowardMission": "このミッションまであと {xp} XP",
+    "openCourse": "コースを開く",
+    "centralCourseJoinedTitle": "{course}に参加しました",
+    "centralCourseJoinedBody": "これは{language}学習者向けのPangeaのコースです。メンバーはあなたの名前とプロフィールを見ることができます。",
+    "centralCourseMembersSeeYou": "このコースのメンバーはあなたの名前とプロフィールを見ることができます。"
 }

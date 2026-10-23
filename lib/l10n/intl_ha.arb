@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Wannan bidiyon ba zai yi aiki a nan ba.",
     "watchOnYoutube": "Kalla a YouTube",
     "createMyOwnCourse": "Ƙirƙiri kwas na da kaina",
-    "xpTowardMission": "{xp} XP zuwa wannan Ofishin Jakadancin"
+    "xpTowardMission": "{xp} XP zuwa wannan Ofishin Jakadancin",
+    "openCourse": "Buɗe darasi",
+    "centralCourseJoinedTitle": "Ka shiga {course}",
+    "centralCourseJoinedBody": "Darasi ne na Pangea ga masu koyon harshen {language}. Membobinta za su iya ganin sunanka da bayanan martabarka.",
+    "centralCourseMembersSeeYou": "Membobin wannan darasi za su iya ganin sunanka da bayanan martabarka."
 }

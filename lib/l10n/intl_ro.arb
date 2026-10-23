@@ -10771,5 +10771,9 @@
     "videoWontPlayHere": "Acest videoclip nu va fi redat aici.",
     "watchOnYoutube": "Vizionează pe YouTube",
     "createMyOwnCourse": "Creează-mi propriul curs",
-    "xpTowardMission": "{xp} XP pentru această misiune"
+    "xpTowardMission": "{xp} XP pentru această misiune",
+    "openCourse": "Deschide cursul",
+    "centralCourseJoinedTitle": "Te-ai alăturat cursului {course}",
+    "centralCourseJoinedBody": "Este cursul Pangea pentru cursanții de {language}. Membrii săi îți pot vedea numele și profilul.",
+    "centralCourseMembersSeeYou": "Membrii acestui curs îți pot vedea numele și profilul."
 }

@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Dan il-video mhux se jintlagħab hawn.",
     "watchOnYoutube": "Ara fuq YouTube",
     "createMyOwnCourse": "Oħloq il-kors tiegħi",
-    "xpTowardMission": "{xp} XP lejn din il-Missjoni"
+    "xpTowardMission": "{xp} XP lejn din il-Missjoni",
+    "openCourse": "Iftaħ il-kors",
+    "centralCourseJoinedTitle": "Ingħaqadt ma' {course}",
+    "centralCourseJoinedBody": "Huwa l-kors ta' Pangea għal dawk li qed jitgħallmu l-{language}. Il-membri tiegħu jistgħu jaraw ismek u l-profil tiegħek.",
+    "centralCourseMembersSeeYou": "Il-membri ta' dan il-kors jistgħu jaraw ismek u l-profil tiegħek."
 }

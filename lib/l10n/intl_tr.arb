@@ -10340,5 +10340,9 @@
     "videoWontPlayHere": "Bu video burada oynatılamaz.",
     "watchOnYoutube": "YouTube'da İzle",
     "createMyOwnCourse": "Kendi kursumu oluştur",
-    "xpTowardMission": "Bu Görev için {xp} XP"
+    "xpTowardMission": "Bu Görev için {xp} XP",
+    "openCourse": "Kursu aç",
+    "centralCourseJoinedTitle": "{course} kursuna katıldın",
+    "centralCourseJoinedBody": "Bu, Pangea'nın {language} öğrenenler için kursu. Üyeleri adını ve profilini görebilir.",
+    "centralCourseMembersSeeYou": "Bu kursun üyeleri adını ve profilini görebilir."
 }

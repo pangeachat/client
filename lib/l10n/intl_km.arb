@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "វីដេអូនេះមិនអាចចាក់នៅទីនេះបានទេ។",
     "watchOnYoutube": "មើលនៅលើ YouTube",
     "createMyOwnCourse": "បង្កើតវគ្គសិក្សាផ្ទាល់ខ្លួន",
-    "xpTowardMission": "{xp} XP សម្រាប់បេសកកម្មនេះ"
+    "xpTowardMission": "{xp} XP សម្រាប់បេសកកម្មនេះ",
+    "openCourse": "បើកវគ្គសិក្សា",
+    "centralCourseJoinedTitle": "អ្នកបានចូលរួម {course}",
+    "centralCourseJoinedBody": "នេះជាវគ្គសិក្សារបស់ Pangea សម្រាប់អ្នករៀន {language}។ សមាជិករបស់វគ្គសិក្សានេះអាចមើលឃើញឈ្មោះ និងប្រវត្តិរូបរបស់អ្នក។",
+    "centralCourseMembersSeeYou": "សមាជិកនៃវគ្គសិក្សានេះអាចមើលឃើញឈ្មោះ និងប្រវត្តិរូបរបស់អ្នក។"
 }

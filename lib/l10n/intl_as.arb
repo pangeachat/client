@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "এই ভিডিঅ’টো ইয়াত নচলে।",
     "watchOnYoutube": "ইউটিউবত চাওক",
     "createMyOwnCourse": "মোৰ নিজা পাঠ্যক্ৰম সৃষ্টি কৰক",
-    "xpTowardMission": "এই অভিযানৰ বাবে {xp} XP"
+    "xpTowardMission": "এই অভিযানৰ বাবে {xp} XP",
+    "openCourse": "কোর্স খোলক",
+    "centralCourseJoinedTitle": "আপুনি {course}ত যোগদান কৰিছে",
+    "centralCourseJoinedBody": "এইটো {language} শিকোৱা সকলৰ বাবে পেংগিয়াৰ এটা পাঠ্যক্ৰম। ইয়াৰ সদস্যসকলে আপোনাৰ নাম আৰু প্ৰফাইল চাব পাৰিব।",
+    "centralCourseMembersSeeYou": "এই পাঠ্যক্ৰমৰ সদস্যসকলে আপোনাৰ নাম আৰু প্ৰফাইল চাব পাৰিব।"
 }

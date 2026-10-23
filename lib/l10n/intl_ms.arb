@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Video ini tidak akan dimainkan di sini.",
     "watchOnYoutube": "Tonton di YouTube",
     "createMyOwnCourse": "Cipta kursus saya sendiri",
-    "xpTowardMission": "{xp} XP untuk Misi ini"
+    "xpTowardMission": "{xp} XP untuk Misi ini",
+    "openCourse": "Buka kursus",
+    "centralCourseJoinedTitle": "Anda telah menyertai {course}",
+    "centralCourseJoinedBody": "Ini ialah kursus Pangea untuk pelajar {language}. Ahli-ahlinya boleh melihat nama dan profil anda.",
+    "centralCourseMembersSeeYou": "Ahli kursus ini boleh melihat nama dan profil anda."
 }

@@ -10953,5 +10953,9 @@
     "videoWontPlayHere": "הסרטון הזה לא יופעל כאן.",
     "watchOnYoutube": "צפה ב-YouTube",
     "createMyOwnCourse": "צור קורס משלי",
-    "xpTowardMission": "{xp} XP בדרך למשימה זו"
+    "xpTowardMission": "{xp} XP בדרך למשימה זו",
+    "openCourse": "פתח קורס",
+    "centralCourseJoinedTitle": "הצטרפת לקורס {course}",
+    "centralCourseJoinedBody": "זהו הקורס של Pangea ללומדי {language}. חברי הקורס יכולים לראות את שמך ואת הפרופיל שלך.",
+    "centralCourseMembersSeeYou": "חברי הקורס הזה יכולים לראות את שמך ואת הפרופיל שלך."
 }

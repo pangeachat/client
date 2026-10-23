@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Энэ видео энд тоглогдохгүй.",
     "watchOnYoutube": "YouTube дээр үзэх",
     "createMyOwnCourse": "Өөрийн сургалтыг үүсгэх",
-    "xpTowardMission": "Энэхүү даалгаварт {xp} XP"
+    "xpTowardMission": "Энэхүү даалгаварт {xp} XP",
+    "openCourse": "Хичээл нээх",
+    "centralCourseJoinedTitle": "Та {course} хичээлд нэгдлээ",
+    "centralCourseJoinedBody": "Энэ бол {language} хэл суралцагчдад зориулсан Пангеагийн хичээл юм. Гишүүд таны нэр, профайлыг харах боломжтой.",
+    "centralCourseMembersSeeYou": "Энэ хичээлийн гишүүд таны нэр, профайлыг харах боломжтой."
 }

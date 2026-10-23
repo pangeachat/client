@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Бұл бейне ойнатылмайды.",
     "watchOnYoutube": "YouTube-тан қарау",
     "createMyOwnCourse": "Өз курсымды жасау",
-    "xpTowardMission": "Осы миссияға {xp} XP"
+    "xpTowardMission": "Осы миссияға {xp} XP",
+    "openCourse": "Курсты ашу",
+    "centralCourseJoinedTitle": "Сіз {course} курсына қосылдыңыз",
+    "centralCourseJoinedBody": "Бұл Pangea-ның {language} үйренушілеріне арналған курсы. Оның мүшелері сіздің атыңызды және профиліңізді көре алады.",
+    "centralCourseMembersSeeYou": "Бұл курстың мүшелері сіздің атыңызды және профиліңізді көре алады."
 }

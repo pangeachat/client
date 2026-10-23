@@ -10996,5 +10996,9 @@
     "videoWontPlayHere": "此影片無法在此播放。",
     "watchOnYoutube": "在 YouTube 上觀看",
     "createMyOwnCourse": "建立我嘅課程",
-    "xpTowardMission": "此任務可獲 {xp} 經驗值"
+    "xpTowardMission": "此任務可獲 {xp} 經驗值",
+    "openCourse": "打開課程",
+    "centralCourseJoinedTitle": "你已加入 {course}",
+    "centralCourseJoinedBody": "呢個係 Pangea 專為 {language} 學習者而設嘅課程。課程成員可以睇到你嘅姓名同個人檔案。",
+    "centralCourseMembersSeeYou": "呢個課程嘅成員可以睇到你嘅姓名同個人檔案。"
 }

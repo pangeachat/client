@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Videyo sa a pap jwe isit la.",
     "watchOnYoutube": "Gade sou YouTube",
     "createMyOwnCourse": "Kreye pwòp kou pa m",
-    "xpTowardMission": "{xp} XP pou Misyon sa a"
+    "xpTowardMission": "{xp} XP pou Misyon sa a",
+    "openCourse": "Louvri kou a",
+    "centralCourseJoinedTitle": "Ou rantre nan {course}",
+    "centralCourseJoinedBody": "Se kou Pangea a pou moun k ap aprann {language}. Manm li yo ka wè non w ak pwofil ou.",
+    "centralCourseMembersSeeYou": "Manm kou sa a ka wè non w ak pwofil ou."
 }

@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "Vhidhiyo iyi haitambe pano.",
     "watchOnYoutube": "Tarisa paYouTube",
     "createMyOwnCourse": "Gadzira kosi yangu",
-    "xpTowardMission": "{xp} XP kuMission iyi"
+    "xpTowardMission": "{xp} XP kuMission iyi",
+    "openCourse": "Vhura kosi",
+    "centralCourseJoinedTitle": "Wabatana ne {course}",
+    "centralCourseJoinedBody": "Iyi ikosi yePangea yevadzidzi ve {language}. Nhengo dzayo dzinogona kuona zita rako neprofile yako.",
+    "centralCourseMembersSeeYou": "Nhengo dzekosi iyi dzinogona kuona zita rako neprofile yako."
 }

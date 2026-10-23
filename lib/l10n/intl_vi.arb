@@ -7349,5 +7349,9 @@
     "videoWontPlayHere": "Video này sẽ không phát ở đây.",
     "watchOnYoutube": "Xem trên YouTube",
     "createMyOwnCourse": "Tạo khóa học của riêng tôi",
-    "xpTowardMission": "{xp} XP cho Nhiệm vụ này"
+    "xpTowardMission": "{xp} XP cho Nhiệm vụ này",
+    "openCourse": "Mở khóa học",
+    "centralCourseJoinedTitle": "Bạn đã tham gia {course}",
+    "centralCourseJoinedBody": "Đây là khóa học của Pangea dành cho người học tiếng {language}. Các thành viên có thể xem tên và hồ sơ của bạn.",
+    "centralCourseMembersSeeYou": "Các thành viên của khóa học này có thể xem tên và hồ sơ của bạn."
 }

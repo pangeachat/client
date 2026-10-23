@@ -10984,5 +10984,9 @@
     "videoWontPlayHere": "Tega videoposnetka ni mogoče predvajati tukaj.",
     "watchOnYoutube": "Glej na YouTubu",
     "createMyOwnCourse": "Ustvari svoj tečaj",
-    "xpTowardMission": "{xp} XP za to misijo"
+    "xpTowardMission": "{xp} XP za to misijo",
+    "openCourse": "Odpri tečaj",
+    "centralCourseJoinedTitle": "Pridružili ste se tečaju {course}",
+    "centralCourseJoinedBody": "To je Pangein tečaj za učence {language}. Njegovi člani lahko vidijo vaše ime in profil.",
+    "centralCourseMembersSeeYou": "Člani tega tečaja lahko vidijo vaše ime in profil."
 }

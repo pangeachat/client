@@ -2504,5 +2504,9 @@
     "videoWontPlayHere": "ວິດີໂອນີ້ບໍ່ສາມາດຫຼິ້ນໄດ້ຢູ່ບ່ອນນີ້.",
     "watchOnYoutube": "ເບິ່ງໃນ YouTube",
     "createMyOwnCourse": "ສ້າງຫຼັກສູດຂອງຂ້ອຍເອງ",
-    "xpTowardMission": "{xp} XP ສູ່ພາລະກິດນີ້"
+    "xpTowardMission": "{xp} XP ສູ່ພາລະກິດນີ້",
+    "openCourse": "ເປີດຫຼັກສູດ",
+    "centralCourseJoinedTitle": "ທ່ານໄດ້ເຂົ້າຮ່ວມ {course} ແລ້ວ",
+    "centralCourseJoinedBody": "ມັນແມ່ນຫຼັກສູດຂອງ Pangea ສຳລັບຜູ້ຮຽນພາສາ {language}. ສະມາຊິກສາມາດເຫັນຊື່ ແລະ ໂປຣໄຟລ໌ຂອງທ່ານໄດ້.",
+    "centralCourseMembersSeeYou": "ສະມາຊິກຂອງຫຼັກສູດນີ້ສາມາດເຫັນຊື່ ແລະ ໂປຣໄຟລ໌ຂອງທ່ານໄດ້."
 }
