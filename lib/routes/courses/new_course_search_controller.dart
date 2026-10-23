@@ -134,8 +134,7 @@ class NewCourseSearchController
     }
   }
 
-  /// Opens the picked quest, or the course to join instead of it
-  /// (course-preview.instructions.md § Start my own and central courses).
+  /// Opens the picked quest, or the course to join instead of it (#9590).
   Future<void> _openCreateCourse(
     CoursePlanModel course,
     BuildContext context,

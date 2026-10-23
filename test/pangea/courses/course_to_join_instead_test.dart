@@ -4,8 +4,7 @@ import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 
 /// Start my own sends a learner to a course they can join before letting them
 /// make their own (#9590): the language's central course, else the biggest
-/// public course already on the picked quest. See
-/// course-preview.instructions.md § Start my own and central courses.
+/// public course already on the picked quest.
 void main() {
   PublicCoursesChunk course(
     String id, {
