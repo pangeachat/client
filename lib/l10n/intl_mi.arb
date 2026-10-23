@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-21 10:12:55.173971",
+    "@@last_modified": "2026-10-23 13:25:42.772323",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Tīmata anō",
     "readAloudStarting": "E whakareri ana i te hopuoro…",
     "readAloudListening": "E whakarongo ana…",
-    "readAloudTake": "Tangohia te {number}"
+    "readAloudTake": "Tangohia te {number}",
+    "videoWontPlayHere": "Kāore tēnei ataata e purei ki konei.",
+    "watchOnYoutube": "Mātaki ki YouTube"
 }

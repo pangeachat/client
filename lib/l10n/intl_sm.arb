@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-21 10:13:01.936761",
+    "@@last_modified": "2026-10-23 13:25:45.157953",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Toe amata",
     "readAloudStarting": "Saunia le masini faaleotele leo…",
     "readAloudListening": "Faʻalogo…",
-    "readAloudTake": "Ave {number}"
+    "readAloudTake": "Ave {number}",
+    "videoWontPlayHere": "E lē ta'alo le vitiō i'i.",
+    "watchOnYoutube": "Maimoa i le YouTube"
 }

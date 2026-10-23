@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-21 10:13:04.202129",
+    "@@last_modified": "2026-10-23 13:25:46.630165",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10667,5 +10667,7 @@
     "readAloudStartOver": "เริ่มใหม่",
     "readAloudStarting": "กำลังเตรียมไมโครโฟน…",
     "readAloudListening": "กำลังฟัง…",
-    "readAloudTake": "ครั้งที่ {number}"
+    "readAloudTake": "ครั้งที่ {number}",
+    "videoWontPlayHere": "วิดีโอนี้เล่นที่นี่ไม่ได้",
+    "watchOnYoutube": "ดูบน YouTube"
 }

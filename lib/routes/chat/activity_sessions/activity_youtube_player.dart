@@ -9,9 +9,12 @@ import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
 import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/widgets/filtered_network_note.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/embed_click_to_engage.dart';
+import 'package:fluffychat/pangea/common/widgets/media_unavailable_note.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_keyboard_control.dart';
+import 'package:fluffychat/utils/url_launcher.dart';
 
 /// Inline YouTube embed for an activity media block. YouTube blocks are always
 /// embedded against their URL, never re-hosted (YouTube ToS), and this is the
@@ -45,6 +48,15 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_video_keyboard
 /// From the keyboard the player is one Tab stop that plays, mutes and switches
 /// captions itself ([ActivityVideoKeyboardControl], #9128): Tab cannot enter
 /// the frame, so YouTube's own controls are out of a keyboard's reach.
+///
+/// YouTube sometimes refuses to play a video in the app that it allows
+/// embedding elsewhere, e.g. behind its "confirm you're not a bot" check, and
+/// the embed then sits blank (#9244). When it refuses, or a native player is
+/// neither playing nor loading 10 s after opening, the embed gives way to a
+/// note with a button that opens the video on YouTube ([isUnplayable]). The
+/// note replaces the embed rather than covering it, so no Flutter layer sits
+/// over the platform view, and a network that blocks YouTube outright still
+/// shows its own note instead.
 class ActivityYoutubePlayer extends StatefulWidget {
   final String url;
   final bool muted;
@@ -80,6 +92,18 @@ class ActivityYoutubePlayer extends StatefulWidget {
     return code;
   }
 
+  /// Whether to stop waiting on the embed and offer the video on YouTube
+  /// instead: YouTube refused it, or, once [waitedOut], it has neither played
+  /// nor started loading. Still buffering is a slow network, not a refusal.
+  @visibleForTesting
+  static bool isUnplayable(
+    YoutubePlayerValue value, {
+    required bool everPlayed,
+    required bool waitedOut,
+  }) =>
+      value.error != YoutubeError.none ||
+      (waitedOut && !everPlayed && value.playerState != PlayerState.buffering);
+
   @override
   State<ActivityYoutubePlayer> createState() => _ActivityYoutubePlayerState();
 }
@@ -96,6 +120,11 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
   final _openedFor = Stopwatch()..start();
   bool _everPlayed = false;
   bool _stallChecked = false;
+  bool _waitedOut = false;
+
+  /// Set once the embed gives way to the "won't play here" note; the embed
+  /// never comes back.
+  bool _unplayable = false;
   StreamSubscription<YoutubePlayerValue>? _stateSub;
   Timer? _stallTimer;
 
@@ -132,15 +161,30 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
       ),
     );
 
+    _stateSub = _controller.stream.listen((value) {
+      if (value.playerState == PlayerState.playing) _everPlayed = true;
+      _offerYoutubeIfUnplayable(value);
+    });
     // Native only: every native player opens from the learner's tap and should
     // start at once. On web a browser that blocks sound autoplay leaves it
     // paused by design, so not starting there is no failure.
     if (!kIsWeb) {
-      _stateSub = _controller.stream.listen((value) {
-        if (value.playerState == PlayerState.playing) _everPlayed = true;
+      _stallTimer = Timer(const Duration(seconds: 10), () {
+        _waitedOut = true;
+        _reportIfNeverPlayed();
+        _offerYoutubeIfUnplayable(_controller.value);
       });
-      _stallTimer = Timer(const Duration(seconds: 10), _reportIfNeverPlayed);
     }
+  }
+
+  void _offerYoutubeIfUnplayable(YoutubePlayerValue value) {
+    if (_unplayable || !mounted) return;
+    final unplayable = ActivityYoutubePlayer.isUnplayable(
+      value,
+      everPlayed: _everPlayed,
+      waitedOut: _waitedOut,
+    );
+    if (unplayable) setState(() => _unplayable = true);
   }
 
   /// Reports a video that never started, which otherwise leaves a blank
@@ -220,6 +264,25 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
 
   @override
   Widget build(BuildContext context) {
+    // Outside the keyboard control, whose child is kept out of focus: the
+    // note's button has to be reachable by Tab.
+    if (_unplayable) {
+      return FilteredNetworkNote(
+        category: NetworkHostCategory.video,
+        child: AspectRatio(
+          aspectRatio: widget.aspectRatio,
+          child: MediaUnavailableNote(
+            icon: Icons.videocam_off_outlined,
+            message: L10n.of(context).videoWontPlayHere,
+            actionLabel: L10n.of(context).watchOnYoutube,
+            onAction: () => UrlLauncher(context, widget.url).launchUrl(),
+            fill: true,
+            // Takes the focus the replaced player held.
+            autofocusAction: true,
+          ),
+        ),
+      );
+    }
     return ActivityVideoKeyboardControl(
       autofocus: widget.autofocus,
       onTogglePlayback: _togglePlayback,

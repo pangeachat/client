@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-21 10:12:56.799880",
+    "@@last_modified": "2026-10-23 13:25:42.716828",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Atomboka indray",
     "readAloudStarting": "Manomana ny mikrô...",
     "readAloudListening": "Mihaino...",
-    "readAloudTake": "Andao {number}"
+    "readAloudTake": "Andao {number}",
+    "videoWontPlayHere": "Tsy afaka milalao eto ity horonantsary ity.",
+    "watchOnYoutube": "Jereo ao amin'ny YouTube"
 }

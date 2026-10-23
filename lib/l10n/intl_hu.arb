@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-21 10:12:50.037206",
+    "@@last_modified": "2026-10-23 13:25:40.773471",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10141,5 +10141,7 @@
     "readAloudStartOver": "Elölről",
     "readAloudStarting": "Készül a mikrofon…",
     "readAloudListening": "Hallgatok…",
-    "readAloudTake": "Felvétel {number}"
+    "readAloudTake": "Felvétel {number}",
+    "videoWontPlayHere": "Ez a videó itt nem játszható le.",
+    "watchOnYoutube": "Megtekintés YouTube-on"
 }

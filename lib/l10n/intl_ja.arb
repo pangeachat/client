@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-21 10:12:52.169659",
+    "@@last_modified": "2026-10-23 13:25:41.265465",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10804,5 +10804,7 @@
     "readAloudStartOver": "やり直す",
     "readAloudStarting": "マイクを準備中…",
     "readAloudListening": "聞き取り中…",
-    "readAloudTake": "{number}回目"
+    "readAloudTake": "{number}回目",
+    "videoWontPlayHere": "この動画はここでは再生できません。",
+    "watchOnYoutube": "YouTubeで視聴"
 }

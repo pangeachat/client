@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-21 10:12:44.259151",
+    "@@last_modified": "2026-10-23 13:25:36.940902",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10052,5 +10052,7 @@
     "readAloudStartOver": "Пачаць спачатку",
     "readAloudStarting": "Падрыхтоўка мікрафона…",
     "readAloudListening": "Слухаю…",
-    "readAloudTake": "Спроба {number}"
+    "readAloudTake": "Спроба {number}",
+    "videoWontPlayHere": "Гэта відэа тут не прайграецца.",
+    "watchOnYoutube": "Глядзець на YouTube"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-21 10:12:49.279198",
+    "@@last_modified": "2026-10-23 13:25:40.384958",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10471,5 +10471,7 @@
     "readAloudStartOver": "Počni ispočetka",
     "readAloudStarting": "Pripremam mikrofon…",
     "readAloudListening": "Slušam…",
-    "readAloudTake": "Pokušaj {number}"
+    "readAloudTake": "Pokušaj {number}",
+    "videoWontPlayHere": "Ovaj se videozapis ovdje neće reproducirati.",
+    "watchOnYoutube": "Gledaj na YouTubeu"
 }

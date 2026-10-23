@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-21 10:13:02.846939",
+    "@@last_modified": "2026-10-23 13:25:45.865265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Mimitian deui",
     "readAloudStarting": "Nyiapkeun mikropon…",
     "readAloudListening": "Ngaregepkeun…",
-    "readAloudTake": "Candak {number}"
+    "readAloudTake": "Candak {number}",
+    "videoWontPlayHere": "Video ieu moal bisa diputer di dieu.",
+    "watchOnYoutube": "Tonton di YouTube"
 }

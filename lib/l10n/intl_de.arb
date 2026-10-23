@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-21 10:12:45.023980",
+    "@@last_modified": "2026-10-23 13:25:38.419208",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10025,5 +10025,7 @@
     "readAloudStartOver": "Von vorne beginnen",
     "readAloudStarting": "Mikrofon wird vorbereitet…",
     "readAloudListening": "Höre zu…",
-    "readAloudTake": "Versuch {number}"
+    "readAloudTake": "Versuch {number}",
+    "videoWontPlayHere": "Dieses Video kann hier nicht abgespielt werden.",
+    "watchOnYoutube": "Auf YouTube ansehen"
 }

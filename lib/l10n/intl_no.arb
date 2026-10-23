@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-21 10:12:58.402721",
+    "@@last_modified": "2026-10-23 13:25:43.627140",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Start på nytt",
     "readAloudStarting": "Gjør mikrofonen klar …",
     "readAloudListening": "Lytter …",
-    "readAloudTake": "Opptak {number}"
+    "readAloudTake": "Opptak {number}",
+    "videoWontPlayHere": "Denne videoen kan ikke spilles av her.",
+    "watchOnYoutube": "Se på YouTube"
 }

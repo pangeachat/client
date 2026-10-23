@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-21 10:13:07.915468",
+    "@@last_modified": "2026-10-23 13:25:47.761718",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "Qala kabusha",
     "readAloudStarting": "Ilungiselela imakrofoni…",
     "readAloudListening": "Iyalalela…",
-    "readAloudTake": "Thatha {number}"
+    "readAloudTake": "Thatha {number}",
+    "videoWontPlayHere": "Le vidiyo ngeke idlale lapha.",
+    "watchOnYoutube": "Buka ku-YouTube"
 }

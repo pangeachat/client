@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-21 10:13:07.371078",
+    "@@last_modified": "2026-10-23 13:25:38.521851",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8267,5 +8267,7 @@
     "readAloudStartOver": "Empezar de nuevo",
     "readAloudStarting": "Preparando el micrófono…",
     "readAloudListening": "Escuchando…",
-    "readAloudTake": "Toma {number}"
+    "readAloudTake": "Toma {number}",
+    "videoWontPlayHere": "Este video no se puede reproducir aquí.",
+    "watchOnYoutube": "Ver en YouTube"
 }

@@ -5759,6 +5759,14 @@
     "@videoPlayer": {
         "description": "Accessible name of a playing activity video, which is one keyboard stop."
     },
+    "videoWontPlayHere": "This video won't play here.",
+    "@videoWontPlayHere": {
+        "description": "Note shown in place of an activity's YouTube video when YouTube refuses to play it inside the app, or it never starts."
+    },
+    "watchOnYoutube": "Watch on YouTube",
+    "@watchOnYoutube": {
+        "description": "Button beside the note that an activity video won't play here. It opens the video in the YouTube app or the browser. YouTube is a brand name; keep it as is."
+    },
     "joinYourCourse": "Join your course",
     "@joinYourCourse": {
         "description": "Title of the dialog a signed-out visitor sees on the welcome screen after opening a course join link."

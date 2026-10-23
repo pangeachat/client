@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-21 10:12:59.135127",
+    "@@last_modified": "2026-10-23 13:25:43.883527",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2500,5 +2500,7 @@
     "readAloudStartOver": "ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ",
     "readAloudStarting": "ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…",
     "readAloudListening": "ਸੁਣ ਰਿਹਾ ਹੈ…",
-    "readAloudTake": "ਲਓ {number}"
+    "readAloudTake": "ਲਓ {number}",
+    "videoWontPlayHere": "ਇਹ ਵੀਡੀਓ ਇੱਥੇ ਨਹੀਂ ਚੱਲੇਗੀ।",
+    "watchOnYoutube": "YouTube 'ਤੇ ਦੇਖੋ"
 }

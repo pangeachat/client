@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-21 10:12:59.978472",
+    "@@last_modified": "2026-10-23 13:25:44.638113",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11010,5 +11010,7 @@
     "readAloudStartOver": "Начать сначала",
     "readAloudStarting": "Подготовка микрофона…",
     "readAloudListening": "Слушаю…",
-    "readAloudTake": "Попытка {number}"
+    "readAloudTake": "Попытка {number}",
+    "videoWontPlayHere": "Это видео здесь не воспроизводится.",
+    "watchOnYoutube": "Смотреть на YouTube"
 }

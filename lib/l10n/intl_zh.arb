@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-21 10:13:07.239264",
+    "@@last_modified": "2026-10-23 13:25:47.318955",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10038,5 +10038,7 @@
     "readAloudStartOver": "重新开始",
     "readAloudStarting": "准备麦克风…",
     "readAloudListening": "正在听…",
-    "readAloudTake": "第 {number} 次录音"
+    "readAloudTake": "第 {number} 次录音",
+    "videoWontPlayHere": "此视频无法在此处播放。",
+    "watchOnYoutube": "在 YouTube 上观看"
 }
