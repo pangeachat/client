@@ -334,7 +334,15 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     if (mounted) setState(() {});
 
     final bonus = session.bonusUses;
-    await _analyticsController.addSessionAnalytics(bonus, _l2!.langCodeShort);
+    final language = _l2!.langCodeShort;
+    try {
+      await _analyticsController.addSessionAnalytics(bonus, language);
+    } finally {
+      // Measured even when the bonus write fails: the view then shows what
+      // did count rather than waiting on a number that never comes.
+      session.measureEarnedXp(_analyticsController.analyticsService, language);
+      if (mounted) setState(() {});
+    }
 
     if (mounted) {
       StarRainWidget.show(context, StarRainWidget.practiceCompleteKey);

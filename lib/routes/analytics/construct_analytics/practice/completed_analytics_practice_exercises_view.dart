@@ -8,17 +8,23 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/offline_practice_note.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/percent_marker_bar.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_xp.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/stat_card.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/text_loading_shimmer.dart';
 
 class CompletedAnalyticsPracticeExercisesView extends StatelessWidget {
   final AnalyticsPracticeSessionModel session;
+
+  /// Null until the session's last uses are recorded and measuring starts.
+  final Future<PracticeSessionXp>? earnedXp;
   final VoidCallback launchSession;
   final Future<double> levelProgress;
 
   const CompletedAnalyticsPracticeExercisesView({
     required this.session,
+    required this.earnedXp,
     required this.launchSession,
     required this.levelProgress,
     super.key,
@@ -67,13 +73,7 @@ class CompletedAnalyticsPracticeExercisesView extends StatelessWidget {
                 );
               },
             ),
-            Text(
-              "+ ${session.state.allXPGained} XP",
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: Theme.of(context).pangea.gold,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            _EarnedXp(earnedXp),
             StatCard(
               icon: Icons.my_location,
               text: "${L10n.of(context).accuracy}: $accuracy%",
@@ -158,6 +158,57 @@ class CompletedAnalyticsPracticeExercisesView extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// The XP the session counted and, in Objective practice, what its Mission
+/// gained (#9633).
+class _EarnedXp extends StatelessWidget {
+  final Future<PracticeSessionXp>? earnedXp;
+
+  const _EarnedXp(this.earnedXp);
+
+  static String _signed(int xp) => xp < 0 ? '− ${-xp}' : '+ $xp';
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final headline = theme.textTheme.titleLarge?.copyWith(
+      color: theme.pangea.gold,
+      fontWeight: FontWeight.bold,
+    );
+    return FutureBuilder<PracticeSessionXp>(
+      future: earnedXp,
+      builder: (context, snapshot) {
+        // The failure is reported where it is measured; a number that may be
+        // wrong is worse than none.
+        if (snapshot.hasError) return const SizedBox.shrink();
+        final xp = snapshot.data;
+        if (xp == null) {
+          return TextLoadingShimmer(
+            width: 96.0,
+            height: MediaQuery.textScalerOf(
+              context,
+            ).scale(headline?.fontSize ?? 22.0),
+          );
+        }
+        final missionGain = xp.missionGain;
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 4.0,
+          children: [
+            Text('${_signed(xp.counted)} XP', style: headline),
+            if (missionGain != null)
+              Text(
+                L10n.of(context).xpTowardMission(_signed(missionGain)),
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ),
+          ],
+        );
+      },
     );
   }
 }

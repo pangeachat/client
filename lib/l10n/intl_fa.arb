@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 14:59:16.323251",
+    "@@last_modified": "2026-10-23 13:25:38.723181",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10130,6 +10130,7 @@
     "videoWontPlayHere": "این ویدئو اینجا پخش نمی‌شود.",
     "watchOnYoutube": "در یوتیوب تماشا کنید",
     "createMyOwnCourse": "دوره خودم را بسازم",
+    "xpTowardMission": "{xp} امتیاز تجربه برای این مأموریت",
     "openCourse": "باز کردن دوره",
     "centralCourseJoinedTitle": "شما به {course} پیوستید",
     "centralCourseJoinedBody": "این دوره پانگه‌آ برای زبان‌آموزان {language} است. اعضای آن می‌توانند نام و نمایه شما را ببینند.",

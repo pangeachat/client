@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-23 14:59:19.677606",
+    "@@last_modified": "2026-10-23 13:25:40.542702",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Vidiyo a agaghị agba ebe a.",
     "watchOnYoutube": "Lelee na YouTube",
     "createMyOwnCourse": "Mepụta nkuzi nke m",
+    "xpTowardMission": "{xp} XP maka Misionu a",
     "openCourse": "Mepee ọmụmụ ihe",
     "centralCourseJoinedTitle": "Ị sonyeere {course}",
     "centralCourseJoinedBody": "Ọ bụ ọmụmụ ihe Pangea maka ndị na-amụ {language}. Ndị otu ya nwere ike ịhụ aha gị na profaịlụ gị.",

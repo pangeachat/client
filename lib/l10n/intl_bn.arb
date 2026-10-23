@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 14:59:13.776362",
+    "@@last_modified": "2026-10-23 13:25:36.897672",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10667,6 +10667,7 @@
     "videoWontPlayHere": "এই ভিডিওটি এখানে চলবে না।",
     "watchOnYoutube": "ইউটিউবে দেখুন",
     "createMyOwnCourse": "আমার নিজের কোর্স তৈরি করুন",
+    "xpTowardMission": "এই মিশনে {xp} XP",
     "openCourse": "কোর্স খুলুন",
     "centralCourseJoinedTitle": "আপনি {course}-এ যোগ দিয়েছেন",
     "centralCourseJoinedBody": "এটি {language} শিক্ষার্থীদের জন্য প্যানজিয়ার কোর্স। এর সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।",

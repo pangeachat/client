@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-23 14:59:17.778357",
+    "@@last_modified": "2026-10-23 13:25:39.748247",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Wannan bidiyon ba zai yi aiki a nan ba.",
     "watchOnYoutube": "Kalla a YouTube",
     "createMyOwnCourse": "Ƙirƙiri kwas na da kaina",
+    "xpTowardMission": "{xp} XP zuwa wannan Ofishin Jakadancin",
     "openCourse": "Buɗe darasi",
     "centralCourseJoinedTitle": "Ka shiga {course}",
     "centralCourseJoinedBody": "Darasi ne na Pangea ga masu koyon harshen {language}. Membobinta za su iya ganin sunanka da bayanan martabarka.",

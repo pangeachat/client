@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-23 14:59:21.712109",
+    "@@last_modified": "2026-10-23 13:25:42.566163",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10820,6 +10820,7 @@
     "videoWontPlayHere": "Šis vaizdo įrašas čia nebus leidžiamas.",
     "watchOnYoutube": "Žiūrėti „YouTube“",
     "createMyOwnCourse": "Sukurti savo kursą",
+    "xpTowardMission": "{xp} XP šiai misijai",
     "openCourse": "Atidaryti kursą",
     "centralCourseJoinedTitle": "Prisijungėte prie {course}",
     "centralCourseJoinedBody": "Tai „Pangea“ kursas, skirtas {language} besimokantiems. Jo nariai gali matyti jūsų vardą ir profilį.",

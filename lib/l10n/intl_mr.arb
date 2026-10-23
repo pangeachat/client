@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-23 14:59:23.799828",
+    "@@last_modified": "2026-10-23 13:25:43.051877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "हा व्हिडिओ येथे प्ले होणार नाही.",
     "watchOnYoutube": "YouTube वर पहा",
     "createMyOwnCourse": "माझा स्वतःचा कोर्स तयार करा",
+    "xpTowardMission": "या मिशनसाठी {xp} XP",
     "openCourse": "कोर्स उघडा",
     "centralCourseJoinedTitle": "तुम्ही {course} मध्ये सामील झाला आहात",
     "centralCourseJoinedBody": "हा {language} शिकणाऱ्यांसाठी पँजियाचा कोर्स आहे. त्याचे सदस्य तुमचे नाव आणि प्रोफाइल पाहू शकतात.",

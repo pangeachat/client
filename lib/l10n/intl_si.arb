@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-23 14:59:25.820630",
+    "@@last_modified": "2026-10-23 13:25:44.824111",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "මෙම වීඩියෝව මෙහි වාදනය නොවේ.",
     "watchOnYoutube": "YouTube හි නරඹන්න",
     "createMyOwnCourse": "මගේම පාඨමාලාවක් සාදන්න",
+    "xpTowardMission": "මෙම මෙහෙයුම සඳහා {xp} XP",
     "openCourse": "පාඨමාලාව විවෘත කරන්න",
     "centralCourseJoinedTitle": "ඔබ {course} හා සම්බන්ධ වී ඇත",
     "centralCourseJoinedBody": "එය {language} ඉගෙන ගන්නන් සඳහා වන Pangea පාඨමාලාවයි. එහි සාමාජිකයින්ට ඔබේ නම සහ පැතිකඩ දැකිය හැක.",

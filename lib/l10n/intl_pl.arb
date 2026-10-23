@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-23 14:59:24.247885",
+    "@@last_modified": "2026-10-23 13:25:44.189657",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10127,6 +10127,7 @@
     "videoWontPlayHere": "Ten film nie będzie odtwarzany tutaj.",
     "watchOnYoutube": "Obejrzyj na YouTube",
     "createMyOwnCourse": "Stwórz mój własny kurs",
+    "xpTowardMission": "{xp} PD do tej misji",
     "openCourse": "Otwórz kurs",
     "centralCourseJoinedTitle": "Dołączyłeś do kursu {course}",
     "centralCourseJoinedBody": "To kurs Pangea dla uczących się języka {language}. Członkowie kursu widzą Twoje imię i profil.",

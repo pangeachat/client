@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-23 14:59:19.639066",
+    "@@last_modified": "2026-10-23 13:25:41.593199",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Video iki ora bisa disetel ing kene.",
     "watchOnYoutube": "Tonton ing YouTube",
     "createMyOwnCourse": "Gawe kursusku dhewe",
+    "xpTowardMission": "{xp} XP kanggo Misi iki",
     "openCourse": "Bukak kursus",
     "centralCourseJoinedTitle": "Sampeyan wis gabung {course}",
     "centralCourseJoinedBody": "Iki kursus Pangea kanggo para siswa {language}. Anggotane bisa ndeleng jeneng lan profil sampeyan.",

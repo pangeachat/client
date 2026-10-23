@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-23 14:59:23.424533",
+    "@@last_modified": "2026-10-23 13:25:43.627140",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Denne videoen kan ikke spilles av her.",
     "watchOnYoutube": "Se på YouTube",
     "createMyOwnCourse": "Lag mitt eget kurs",
+    "xpTowardMission": "{xp} XP mot dette oppdraget",
     "openCourse": "Åpne kurs",
     "centralCourseJoinedTitle": "Du har blitt med i {course}",
     "centralCourseJoinedBody": "Det er Pangeas kurs for {language}-elever. Medlemmene kan se navnet og profilen din.",

@@ -1317,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-23 14:59:27.578893",
+    "@@last_modified": "2026-10-23 13:25:46.014065",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10989,6 +10989,7 @@
     "videoWontPlayHere": "ఈ వీడియో ఇక్కడ ప్లే అవదు.",
     "watchOnYoutube": "YouTubeలో చూడండి",
     "createMyOwnCourse": "నా స్వంత కోర్సును సృష్టించండి",
+    "xpTowardMission": "ఈ మిషన్ కోసం {xp} XP",
     "openCourse": "కోర్సును తెరవండి",
     "centralCourseJoinedTitle": "మీరు {course}లో చేరారు",
     "centralCourseJoinedBody": "ఇది {language} నేర్చుకునే వారి కోసం పాంగేయా కోర్సు. దీని సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",

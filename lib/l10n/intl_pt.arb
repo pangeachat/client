@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 14:59:24.144502",
+    "@@last_modified": "2026-10-23 13:25:44.184516",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10983,6 +10983,7 @@
     "videoWontPlayHere": "Este vídeo não será reproduzido aqui.",
     "watchOnYoutube": "Assistir no YouTube",
     "createMyOwnCourse": "Criar meu próprio curso",
+    "xpTowardMission": "{xp} XP para esta Missão",
     "openCourse": "Abrir curso",
     "centralCourseJoinedTitle": "Você entrou no curso {course}",
     "centralCourseJoinedBody": "É o curso de Pangea para alunos de {language}. Os membros podem ver seu nome e perfil.",

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-23 14:59:18.148413",
+    "@@last_modified": "2026-10-23 13:25:40.191541",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Daim vis dis aus no yuav tsis ua si ntawm no.",
     "watchOnYoutube": "Saib hauv YouTube",
     "createMyOwnCourse": "Tsim kuv tus kheej chav kawm",
+    "xpTowardMission": "{xp} XP rau lub Hom Phiaj no",
     "openCourse": "Qhib kawm",
     "centralCourseJoinedTitle": "Koj tau koom nrog {course}",
     "centralCourseJoinedBody": "Nws yog Pangea cov chav kawm rau cov neeg kawm lus {language}. Nws cov tswv cuab tuaj yeem pom koj lub npe thiab profile.",

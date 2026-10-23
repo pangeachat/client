@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-23 14:59:20.825104",
+    "@@last_modified": "2026-10-23 13:25:42.069851",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Бул видео бул жерде ойнобойт.",
     "watchOnYoutube": "YouTube'дан көрүү",
     "createMyOwnCourse": "Өзүмдүн курсумду түзүү",
+    "xpTowardMission": "Бул миссияга {xp} XP",
     "openCourse": "Курсту ачуу",
     "centralCourseJoinedTitle": "Сиз {course} курсуна кошулдуңуз",
     "centralCourseJoinedBody": "Бул {language} үйрөнүүчүлөр үчүн Pangea курсу. Анын мүчөлөрү сиздин атыңызды жана профилиңизди көрө алышат.",

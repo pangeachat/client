@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-23 14:59:29.071460",
+    "@@last_modified": "2026-10-23 13:25:47.283384",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10996,6 +10996,7 @@
     "videoWontPlayHere": "此影片無法在此播放。",
     "watchOnYoutube": "在 YouTube 上觀看",
     "createMyOwnCourse": "建立我嘅課程",
+    "xpTowardMission": "此任務可獲 {xp} 經驗值",
     "openCourse": "打開課程",
     "centralCourseJoinedTitle": "你已加入 {course}",
     "centralCourseJoinedBody": "呢個係 Pangea 專為 {language} 學習者而設嘅課程。課程成員可以睇到你嘅姓名同個人檔案。",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 14:59:26.901246",
+    "@@last_modified": "2026-10-23 13:25:45.609810",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10557,6 +10557,7 @@
     "videoWontPlayHere": "Den här videon kan inte spelas upp här.",
     "watchOnYoutube": "Titta på YouTube",
     "createMyOwnCourse": "Skapa min egen kurs",
+    "xpTowardMission": "{xp} XP mot detta uppdrag",
     "openCourse": "Öppna kurs",
     "centralCourseJoinedTitle": "Du har gått med i {course}",
     "centralCourseJoinedBody": "Det är Pangeas kurs för {language}-elever. Dess medlemmar kan se ditt namn och din profil.",

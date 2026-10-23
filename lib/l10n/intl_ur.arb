@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-23 14:59:27.779529",
+    "@@last_modified": "2026-10-23 13:25:46.537915",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "یہ ویڈیو یہاں نہیں چلے گی۔",
     "watchOnYoutube": "یوٹیوب پر دیکھیں",
     "createMyOwnCourse": "میرا اپنا کورس بنائیں",
+    "xpTowardMission": "اس مشن کے لیے {xp} XP",
     "openCourse": "کورس کھولیں",
     "centralCourseJoinedTitle": "آپ {course} میں شامل ہو گئے ہیں",
     "centralCourseJoinedBody": "یہ {language} سیکھنے والوں کے لیے Pangea کا کورس ہے۔ اس کے اراکین آپ کا نام اور پروفائل دیکھ سکتے ہیں۔",

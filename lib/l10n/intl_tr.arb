@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-23 14:59:27.845084",
+    "@@last_modified": "2026-10-23 13:25:46.262586",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10340,6 +10340,7 @@
     "videoWontPlayHere": "Bu video burada oynatılamaz.",
     "watchOnYoutube": "YouTube'da İzle",
     "createMyOwnCourse": "Kendi kursumu oluştur",
+    "xpTowardMission": "Bu Görev için {xp} XP",
     "openCourse": "Kursu aç",
     "centralCourseJoinedTitle": "{course} kursuna katıldın",
     "centralCourseJoinedBody": "Bu, Pangea'nın {language} öğrenenler için kursu. Üyeleri adını ve profilini görebilir.",

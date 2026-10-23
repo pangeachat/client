@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-23 14:59:14.864639",
+    "@@last_modified": "2026-10-23 13:25:38.211455",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10959,6 +10959,7 @@
     "videoWontPlayHere": "Denne video kan ikke afspilles her.",
     "watchOnYoutube": "Se på YouTube",
     "createMyOwnCourse": "Opret mit eget kursus",
+    "xpTowardMission": "{xp} XP til denne mission",
     "openCourse": "Åbn kursus",
     "centralCourseJoinedTitle": "Du er nu med i {course}",
     "centralCourseJoinedBody": "Det er Pangeas kursus for {language}-elever. Medlemmer kan se dit navn og din profil.",

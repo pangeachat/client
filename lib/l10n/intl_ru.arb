@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-23 14:59:25.177462",
+    "@@last_modified": "2026-10-23 13:25:44.638113",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11014,6 +11014,7 @@
     "videoWontPlayHere": "Это видео здесь не воспроизводится.",
     "watchOnYoutube": "Смотреть на YouTube",
     "createMyOwnCourse": "Создать свой курс",
+    "xpTowardMission": "{xp} XP для этой миссии",
     "openCourse": "Открыть курс",
     "centralCourseJoinedTitle": "Вы присоединились к курсу «{course}»",
     "centralCourseJoinedBody": "Это курс Pangea для изучающих {language}. Участники курса могут видеть ваше имя и профиль.",

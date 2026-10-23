@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-23 14:59:23.597612",
+    "@@last_modified": "2026-10-23 13:25:43.944566",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "ꯁꯤꯗ ꯚꯤꯗꯤꯑꯣ ꯑꯁꯤ ꯆꯠꯇꯦ꯫",
     "watchOnYoutube": "YouTube ꯗ ꯌꯦꯡꯕꯤꯌꯨ",
     "createMyOwnCourse": "ꯑꯩꯒꯤ ꯑꯣꯟ ꯀꯣꯔꯁ ꯁꯦꯝꯃꯨ",
+    "xpTowardMission": "మిషన్ వైపు {xp} XP",
     "openCourse": "কোর্স হাংদোক্কন",
     "centralCourseJoinedTitle": "নখোই {course} দা শরুক য়াখ্রে",
     "centralCourseJoinedBody": "অসি {language} তম্লিবাশিংগী পাংগিয়াগী কোর্সনি। মসিগী মেম্বরশিংনা নখোইগী মমিং অমসুং প্রোফাইল উবা ফংগনি।",

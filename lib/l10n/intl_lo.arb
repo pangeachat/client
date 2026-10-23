@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-23 14:59:22.255904",
+    "@@last_modified": "2026-10-23 13:25:42.769263",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "ວິດີໂອນີ້ບໍ່ສາມາດຫຼິ້ນໄດ້ຢູ່ບ່ອນນີ້.",
     "watchOnYoutube": "ເບິ່ງໃນ YouTube",
     "createMyOwnCourse": "ສ້າງຫຼັກສູດຂອງຂ້ອຍເອງ",
+    "xpTowardMission": "{xp} XP ສູ່ພາລະກິດນີ້",
     "openCourse": "ເປີດຫຼັກສູດ",
     "centralCourseJoinedTitle": "ທ່ານໄດ້ເຂົ້າຮ່ວມ {course} ແລ້ວ",
     "centralCourseJoinedBody": "ມັນແມ່ນຫຼັກສູດຂອງ Pangea ສຳລັບຜູ້ຮຽນພາສາ {language}. ສະມາຊິກສາມາດເຫັນຊື່ ແລະ ໂປຣໄຟລ໌ຂອງທ່ານໄດ້.",

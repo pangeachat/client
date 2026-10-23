@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-23 14:59:19.761746",
+    "@@last_modified": "2026-10-23 13:25:40.492279",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10671,6 +10671,7 @@
     "videoWontPlayHere": "Ní imreoidh an físeán seo anseo.",
     "watchOnYoutube": "Féach ar YouTube",
     "createMyOwnCourse": "Cruthaigh mo chúrsa féin",
+    "xpTowardMission": "{xp} XP i dtreo an Mhisiúin seo",
     "openCourse": "Oscail an cúrsa",
     "centralCourseJoinedTitle": "Tá tú páirteach i {course}",
     "centralCourseJoinedBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",

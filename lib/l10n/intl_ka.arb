@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-23 14:59:20.601030",
+    "@@last_modified": "2026-10-23 13:25:41.702244",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10939,6 +10939,7 @@
     "videoWontPlayHere": "ეს ვიდეო აქ არ იმუშავებს.",
     "watchOnYoutube": "უყურეთ YouTube-ზე",
     "createMyOwnCourse": "შექმენი ჩემი კურსი",
+    "xpTowardMission": "{xp} XP ამ მისიისთვის",
     "openCourse": "კურსის გახსნა",
     "centralCourseJoinedTitle": "თქვენ შეუერთდით კურსს: {course}",
     "centralCourseJoinedBody": "ეს არის Pangea-ს კურსი {language} ენის შემსწავლელებისთვის. მისი წევრები ხედავენ თქვენს სახელსა და პროფილს.",

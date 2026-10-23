@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-23 14:59:24.080566",
+    "@@last_modified": "2026-10-23 13:25:43.672960",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Dan il-video mhux se jintlagħab hawn.",
     "watchOnYoutube": "Ara fuq YouTube",
     "createMyOwnCourse": "Oħloq il-kors tiegħi",
+    "xpTowardMission": "{xp} XP lejn din il-Missjoni",
     "openCourse": "Iftaħ il-kors",
     "centralCourseJoinedTitle": "Ingħaqadt ma' {course}",
     "centralCourseJoinedBody": "Huwa l-kors ta' Pangea għal dawk li qed jitgħallmu l-{language}. Il-membri tiegħu jistgħu jaraw ismek u l-profil tiegħek.",

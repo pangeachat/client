@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-23 14:59:24.968813",
+    "@@last_modified": "2026-10-23 13:25:44.681038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "دا ویډیو دلته نه چلیږي.",
     "watchOnYoutube": "په یوټیوب کې وګورئ",
     "createMyOwnCourse": "زما خپل کورس جوړ کړئ",
+    "xpTowardMission": "د دې ماموریت په لور {xp} XP",
     "openCourse": "کورس خلاص کړئ",
     "centralCourseJoinedTitle": "تاسو په {course} کې شامل شوي یاست",
     "centralCourseJoinedBody": "دا د {language} زده کونکو لپاره د پانګیا کورس دی. د دې غړي کولی شي ستاسو نوم او پروفایل وګوري.",

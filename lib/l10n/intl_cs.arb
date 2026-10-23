@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-23 14:59:14.879391",
+    "@@last_modified": "2026-10-23 13:25:38.186528",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10533,6 +10533,7 @@
     "videoWontPlayHere": "Toto video zde nelze přehrát.",
     "watchOnYoutube": "Přehrát na YouTube",
     "createMyOwnCourse": "Vytvořit vlastní kurz",
+    "xpTowardMission": "{xp} XP k této misi",
     "openCourse": "Otevřít kurz",
     "centralCourseJoinedTitle": "Připojili jste se k {course}",
     "centralCourseJoinedBody": "Je to kurz Pangea pro studenty {language}. Jeho členové uvidí vaše jméno a profil.",

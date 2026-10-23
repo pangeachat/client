@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-23 14:59:26.448059",
+    "@@last_modified": "2026-10-23 13:25:45.338398",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Kjo video nuk do të luhet këtu.",
     "watchOnYoutube": "Shiko në YouTube",
     "createMyOwnCourse": "Krijo kursin tim",
+    "xpTowardMission": "{xp} XP drejt këtij Misioni",
     "openCourse": "Hap kursin",
     "centralCourseJoinedTitle": "Je bashkuar me {course}",
     "centralCourseJoinedBody": "Është kursi i Pangeas për nxënësit e gjuhës {language}. Anëtarët e tij mund të shohin emrin dhe profilin tënd.",

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-23 14:59:16.547500",
+    "@@last_modified": "2026-10-23 13:25:39.546160",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10394,6 +10394,7 @@
     "videoWontPlayHere": "Cette vidéo ne peut pas être lue ici.",
     "watchOnYoutube": "Regarder sur YouTube",
     "createMyOwnCourse": "Créer mon propre cours",
+    "xpTowardMission": "{xp} XP pour cette mission",
     "openCourse": "Ouvrir le cours",
     "centralCourseJoinedTitle": "Vous avez rejoint {course}",
     "centralCourseJoinedBody": "C'est le cours Pangea pour les apprenants de {language}. Ses membres peuvent voir votre nom et votre profil.",

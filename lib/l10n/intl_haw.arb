@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-23 14:59:17.956006",
+    "@@last_modified": "2026-10-23 13:25:40.156873",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "ʻAʻole e pāʻani kēia wikiō ma ʻaneʻi.",
     "watchOnYoutube": "E nānā ma YouTube",
     "createMyOwnCourse": "Hana i kaʻu papa ponoʻī",
+    "xpTowardMission": "{xp} XP i kēia mikiona",
     "openCourse": "E wehe i ka papa",
     "centralCourseJoinedTitle": "Ua hui pū ʻoe i ka papa {course}",
     "centralCourseJoinedBody": "ʻO ia ka papa a Pangea no ka poʻe aʻo {language}. Hiki i kona mau lālā ke ʻike i kou inoa a me kou ʻaoʻao.",

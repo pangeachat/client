@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-23 14:59:22.295355",
+    "@@last_modified": "2026-10-23 13:25:42.772323",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Kāore tēnei ataata e purei ki konei.",
     "watchOnYoutube": "Mātaki ki YouTube",
     "createMyOwnCourse": "Waihanga i taku ake akoranga",
+    "xpTowardMission": "{xp} XP ki tēnei Mihana",
     "openCourse": "Whakatuwheratia te akoranga",
     "centralCourseJoinedTitle": "Kua uru koe ki {course}",
     "centralCourseJoinedBody": "Koia te akoranga a Pangea mō ngā ākonga {language}. Ka kite ngā mema i tō ingoa me tō kōtaha.",

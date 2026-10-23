@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-23 14:59:13.459232",
+    "@@last_modified": "2026-10-23 13:25:37.203282",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10345,6 +10345,7 @@
     "videoWontPlayHere": "لا يمكن تشغيل هذا الفيديو هنا.",
     "watchOnYoutube": "المشاهدة على يوتيوب",
     "createMyOwnCourse": "إنشاء دورتي التدريبية الخاصة",
+    "xpTowardMission": "{xp} نقطة خبرة نحو هذه المهمة",
     "openCourse": "فتح الدورة",
     "centralCourseJoinedTitle": "لقد انضممت إلى {course}",
     "centralCourseJoinedBody": "إنها دورة بانجيا لمتعلمي {language}. يمكن لأعضائها رؤية اسمك وملفك الشخصي.",

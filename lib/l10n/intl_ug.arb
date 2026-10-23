@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-23 14:59:28.243028",
+    "@@last_modified": "2026-10-23 13:25:47.415080",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "بۇ سىن بۇ يەردە قويۇلمايدۇ.",
     "watchOnYoutube": "YouTube دا كۆرۈڭ",
     "createMyOwnCourse": "ئۆز كۇرسۇمنى قۇرۇش",
+    "xpTowardMission": "بۇ ۋەزىپە ئۈچۈن {xp} XP",
     "openCourse": "دەرستىن ئاچ",
     "centralCourseJoinedTitle": "سىز {course} غا قاتناشتىڭىز",
     "centralCourseJoinedBody": "بۇ پانگېيانىڭ {language} ئۆگەنگۈچىلەر ئۈچۈن تەييارلىغان دەرسى. ئۇنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ.",

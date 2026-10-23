@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 14:59:19.129902",
+    "@@last_modified": "2026-10-23 13:25:40.995467",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10115,6 +10115,7 @@
     "videoWontPlayHere": "Questo video non può essere riprodotto qui.",
     "watchOnYoutube": "Guarda su YouTube",
     "createMyOwnCourse": "Crea il mio corso",
+    "xpTowardMission": "{xp} XP per questa missione",
     "openCourse": "Apri corso",
     "centralCourseJoinedTitle": "Hai partecipato a {course}",
     "centralCourseJoinedBody": "È il corso di Pangea per chi impara il {language}. I suoi membri possono vedere il tuo nome e il tuo profilo.",

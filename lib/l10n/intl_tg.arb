@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-23 14:59:27.487292",
+    "@@last_modified": "2026-10-23 13:25:47.114027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Ин видео дар ин ҷо намоиш дода намешавад.",
     "watchOnYoutube": "Дар YouTube тамошо кунед",
     "createMyOwnCourse": "Курси худро эҷод кунед",
+    "xpTowardMission": "{xp} XP ба сӯи ин рисолат",
     "openCourse": "Курсро кушоед",
     "centralCourseJoinedTitle": "Шумо ба {course} ҳамроҳ шудед",
     "centralCourseJoinedBody": "Ин курси Pangea барои омӯзандагони забони {language} аст. Аъзоёни он метавонанд ном ва профили шуморо бубинанд.",

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-23 14:59:18.422086",
+    "@@last_modified": "2026-10-23 13:25:40.360643",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Videyo sa a pap jwe isit la.",
     "watchOnYoutube": "Gade sou YouTube",
     "createMyOwnCourse": "Kreye pwòp kou pa m",
+    "xpTowardMission": "{xp} XP pou Misyon sa a",
     "openCourse": "Louvri kou a",
     "centralCourseJoinedTitle": "Ou rantre nan {course}",
     "centralCourseJoinedBody": "Se kou Pangea a pou moun k ap aprann {language}. Manm li yo ka wè non w ak pwofil ou.",

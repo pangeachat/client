@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-23 14:59:16.526130",
+    "@@last_modified": "2026-10-23 13:25:38.863424",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10042,6 +10042,7 @@
     "videoWontPlayHere": "Bideo hau ez da hemen erreproduzituko.",
     "watchOnYoutube": "Ikusi YouTuben",
     "createMyOwnCourse": "Nire ikastaroa sortu",
+    "xpTowardMission": "{xp} esperientzia puntu misio honetarako",
     "openCourse": "Ikastaroa ireki",
     "centralCourseJoinedTitle": "{course} ikastaroan sartu zara",
     "centralCourseJoinedBody": "Pangearen ikastaroa da {language} ikasleentzat. Bertako kideek zure izena eta profila ikus ditzakete.",

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-23 14:59:26.053557",
+    "@@last_modified": "2026-10-23 13:25:45.752936",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Muuqaalkan halkan kuma shaqaynayo.",
     "watchOnYoutube": "Ka daawo YouTube",
     "createMyOwnCourse": "Samee koorsadayda",
+    "xpTowardMission": "{xp} XP oo ku aaddan Hawshan",
     "openCourse": "Fur koorsada",
     "centralCourseJoinedTitle": "Waxaad ku biirtay {course}",
     "centralCourseJoinedBody": "Waa koorsada Pangea ee loogu talagalay barayaasha {language}. Xubnaheeda waxay arki karaan magacaaga iyo astaantaada.",

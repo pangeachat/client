@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-23 14:59:18.827008",
+    "@@last_modified": "2026-10-23 13:25:40.773471",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10145,6 +10145,7 @@
     "videoWontPlayHere": "Ez a videó itt nem játszható le.",
     "watchOnYoutube": "Megtekintés YouTube-on",
     "createMyOwnCourse": "Saját tanfolyam létrehozása",
+    "xpTowardMission": "{xp} XP ehhez a küldetéshez",
     "openCourse": "Kurzus megnyitása",
     "centralCourseJoinedTitle": "Csatlakoztál ehhez a kurzushoz: {course}",
     "centralCourseJoinedBody": "Ez a Pangea kurzusa {language} nyelvtanulók számára. A tagok láthatják a nevedet és a profilodat.",

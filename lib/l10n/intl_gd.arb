@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-23 14:59:17.936600",
+    "@@last_modified": "2026-10-23 13:25:39.276600",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "Cha chluich a’ bhidio seo an-seo.",
     "watchOnYoutube": "Coimhead air YouTube",
     "createMyOwnCourse": "Cruthaich mo chùrsa fhèin",
+    "xpTowardMission": "{xp} XP a dh'ionnsaigh an Rùin seo",
     "openCourse": "Fosgail an cùrsa",
     "centralCourseJoinedTitle": "Tha thu air a dhol a-steach do {course}",
     "centralCourseJoinedBody": "Is e cùrsa Pangea a th' ann do luchd-ionnsachaidh {language}. Chì na buill d' ainm agus do phròifil.",

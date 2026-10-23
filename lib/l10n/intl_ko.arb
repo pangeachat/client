@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 14:59:20.730720",
+    "@@last_modified": "2026-10-23 13:25:41.824135",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10235,6 +10235,7 @@
     "videoWontPlayHere": "이 동영상은 여기에서 재생되지 않습니다.",
     "watchOnYoutube": "YouTube에서 시청",
     "createMyOwnCourse": "나만의 코스 만들기",
+    "xpTowardMission": "이번 미션으로 {xp} XP 획득",
     "openCourse": "코스 열기",
     "centralCourseJoinedTitle": "{course}에 참여했습니다",
     "centralCourseJoinedBody": "이 코스는 {language} 학습자를 위한 Pangea 코스입니다. 코스 멤버는 회원님의 이름과 프로필을 볼 수 있습니다.",

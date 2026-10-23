@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-23 14:59:26.557877",
+    "@@last_modified": "2026-10-23 13:25:45.157953",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "E lē ta'alo le vitiō i'i.",
     "watchOnYoutube": "Maimoa i le YouTube",
     "createMyOwnCourse": "Fausia la'u lava kosi",
+    "xpTowardMission": "{xp} XP agai i lenei Misiona",
     "openCourse": "Tatala le kosi",
     "centralCourseJoinedTitle": "Ua e auai i le {course}",
     "centralCourseJoinedBody": "O le kosi a Pangea mo tagata aʻoga {language}. E mafai e ona sui ona vaʻai i lou igoa ma lau talaaga.",

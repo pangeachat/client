@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-23 14:59:27.304208",
+    "@@last_modified": "2026-10-23 13:25:46.630165",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10671,6 +10671,7 @@
     "videoWontPlayHere": "วิดีโอนี้เล่นที่นี่ไม่ได้",
     "watchOnYoutube": "ดูบน YouTube",
     "createMyOwnCourse": "สร้างคอร์สของฉันเอง",
+    "xpTowardMission": "{xp} XP สำหรับภารกิจนี้",
     "openCourse": "เปิดคอร์ส",
     "centralCourseJoinedTitle": "คุณได้เข้าร่วม {course} แล้ว",
     "centralCourseJoinedBody": "นี่คือคอร์สของ Pangea สำหรับผู้เรียนภาษา {language} สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",

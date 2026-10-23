@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 14:59:18.264782",
+    "@@last_modified": "2026-10-23 13:25:39.931641",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10953,6 +10953,7 @@
     "videoWontPlayHere": "הסרטון הזה לא יופעל כאן.",
     "watchOnYoutube": "צפה ב-YouTube",
     "createMyOwnCourse": "צור קורס משלי",
+    "xpTowardMission": "{xp} XP בדרך למשימה זו",
     "openCourse": "פתח קורס",
     "centralCourseJoinedTitle": "הצטרפת לקורס {course}",
     "centralCourseJoinedBody": "זהו הקורס של Pangea ללומדי {language}. חברי הקורס יכולים לראות את שמך ואת הפרופיל שלך.",

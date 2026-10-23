@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 14:59:26.428627",
+    "@@last_modified": "2026-10-23 13:25:46.132886",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10988,6 +10988,7 @@
     "videoWontPlayHere": "Ovaj video se ne može reprodukovati ovde.",
     "watchOnYoutube": "Gledaj na YouTube-u",
     "createMyOwnCourse": "Kreiraj sopstveni kurs",
+    "xpTowardMission": "{xp} XP za ovu misiju",
     "openCourse": "Otvori kurs",
     "centralCourseJoinedTitle": "Pridružili ste se kursu {course}",
     "centralCourseJoinedBody": "Ovo je Pangea kurs za učenike {language} jezika. Njegovi članovi mogu da vide vaše ime i profil.",

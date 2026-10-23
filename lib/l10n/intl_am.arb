@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-23 14:59:13.668636",
+    "@@last_modified": "2026-10-23 13:25:37.066232",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2504,6 +2504,7 @@
     "videoWontPlayHere": "ይህ ቪዲዮ እዚህ አይጫወትም።",
     "watchOnYoutube": "በYouTube ላይ ይመልከቱ",
     "createMyOwnCourse": "የራሴን ኮርስ ልፍጠር",
+    "xpTowardMission": "ለዚህ ተልዕኮ {xp} XP",
     "openCourse": "ኮርስ ክፈት",
     "centralCourseJoinedTitle": "የ{course} አባል ሆነዋል",
     "centralCourseJoinedBody": "ይህ የፓንጋያ ኮርስ ለ{language} ተማሪዎች ነው። አባላቱ የእርስዎን ስም እና መገለጫ ማየት ይችላሉ።",

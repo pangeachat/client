@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-23 14:59:15.201465",
+    "@@last_modified": "2026-10-23 13:25:38.419208",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10029,6 +10029,7 @@
     "videoWontPlayHere": "Dieses Video kann hier nicht abgespielt werden.",
     "watchOnYoutube": "Auf YouTube ansehen",
     "createMyOwnCourse": "Meinen eigenen Kurs erstellen",
+    "xpTowardMission": "{xp} XP für diese Mission",
     "openCourse": "Kurs öffnen",
     "centralCourseJoinedTitle": "Du bist {course} beigetreten",
     "centralCourseJoinedBody": "Dies ist Pangeas Kurs für {language}-Lernende. Die Mitglieder können deinen Namen und dein Profil sehen.",

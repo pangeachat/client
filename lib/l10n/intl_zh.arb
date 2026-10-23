@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-23 14:59:28.999653",
+    "@@last_modified": "2026-10-23 13:25:47.318955",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10042,6 +10042,7 @@
     "videoWontPlayHere": "此视频无法在此处播放。",
     "watchOnYoutube": "在 YouTube 上观看",
     "createMyOwnCourse": "创建我的课程",
+    "xpTowardMission": "此任务的 {xp} 经验值",
     "openCourse": "打开课程",
     "centralCourseJoinedTitle": "您已加入{course}",
     "centralCourseJoinedBody": "这是 Pangea 为{language}学习者开设的课程。课程成员可以看到您的姓名和个人资料。",
