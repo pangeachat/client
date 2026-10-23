@@ -2502,5 +2502,6 @@
     "readAloudListening": "Lytter …",
     "readAloudTake": "Opptak {number}",
     "videoWontPlayHere": "Denne videoen kan ikke spilles av her.",
-    "watchOnYoutube": "Se på YouTube"
+    "watchOnYoutube": "Se på YouTube",
+    "createMyOwnCourse": "Lag mitt eget kurs"
 }

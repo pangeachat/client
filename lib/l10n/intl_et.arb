@@ -10037,5 +10037,6 @@
     "readAloudListening": "Kuulan…",
     "readAloudTake": "Võte {number}",
     "videoWontPlayHere": "Seda videot ei saa siin esitada.",
-    "watchOnYoutube": "Vaata YouTube'is"
+    "watchOnYoutube": "Vaata YouTube'is",
+    "createMyOwnCourse": "Loo oma kursus"
 }

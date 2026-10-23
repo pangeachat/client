@@ -10167,5 +10167,6 @@
     "readAloudListening": "Escolto…",
     "readAloudTake": "Presa {number}",
     "videoWontPlayHere": "Aquest vídeo no es pot reproduir aquí.",
-    "watchOnYoutube": "Mira'l a YouTube"
+    "watchOnYoutube": "Mira'l a YouTube",
+    "createMyOwnCourse": "Crear el meu propi curs"
 }

@@ -2502,5 +2502,6 @@
     "readAloudListening": "Mihaino...",
     "readAloudTake": "Andao {number}",
     "videoWontPlayHere": "Tsy afaka milalao eto ity horonantsary ity.",
-    "watchOnYoutube": "Jereo ao amin'ny YouTube"
+    "watchOnYoutube": "Jereo ao amin'ny YouTube",
+    "createMyOwnCourse": "Mamorona ny taranja manokana"
 }

@@ -2502,5 +2502,6 @@
     "readAloudListening": "Slušam…",
     "readAloudTake": "Uzmite {number}",
     "videoWontPlayHere": "Ovaj videozapis se ne može reproducirati ovdje.",
-    "watchOnYoutube": "Gledajte na YouTubeu"
+    "watchOnYoutube": "Gledajte na YouTubeu",
+    "createMyOwnCourse": "Kreiraj moj kurs"
 }

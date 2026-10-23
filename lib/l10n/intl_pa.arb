@@ -2502,5 +2502,6 @@
     "readAloudListening": "ਸੁਣ ਰਿਹਾ ਹੈ…",
     "readAloudTake": "ਲਓ {number}",
     "videoWontPlayHere": "ਇਹ ਵੀਡੀਓ ਇੱਥੇ ਨਹੀਂ ਚੱਲੇਗੀ।",
-    "watchOnYoutube": "YouTube 'ਤੇ ਦੇਖੋ"
+    "watchOnYoutube": "YouTube 'ਤੇ ਦੇਖੋ",
+    "createMyOwnCourse": "ਮੇਰਾ ਆਪਣਾ ਕੋਰਸ ਬਣਾਓ"
 }

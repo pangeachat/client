@@ -10806,5 +10806,6 @@
     "readAloudListening": "聞き取り中…",
     "readAloudTake": "{number}回目",
     "videoWontPlayHere": "この動画はここでは再生できません。",
-    "watchOnYoutube": "YouTubeで視聴"
+    "watchOnYoutube": "YouTubeで視聴",
+    "createMyOwnCourse": "自分のコースを作成"
 }

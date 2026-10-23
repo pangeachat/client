@@ -10233,5 +10233,6 @@
     "readAloudListening": "듣는 중…",
     "readAloudTake": "{number}번째 시도",
     "videoWontPlayHere": "이 동영상은 여기에서 재생되지 않습니다.",
-    "watchOnYoutube": "YouTube에서 시청"
+    "watchOnYoutube": "YouTube에서 시청",
+    "createMyOwnCourse": "나만의 코스 만들기"
 }

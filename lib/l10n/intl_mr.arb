@@ -2502,5 +2502,6 @@
     "readAloudListening": "ऐकत आहे…",
     "readAloudTake": "टेक {number}",
     "videoWontPlayHere": "हा व्हिडिओ येथे प्ले होणार नाही.",
-    "watchOnYoutube": "YouTube वर पहा"
+    "watchOnYoutube": "YouTube वर पहा",
+    "createMyOwnCourse": "माझा स्वतःचा कोर्स तयार करा"
 }

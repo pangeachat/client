@@ -2502,5 +2502,6 @@
     "readAloudListening": "Гӯш мекунад…",
     "readAloudTake": "Гирифтан {number}",
     "videoWontPlayHere": "Ин видео дар ин ҷо намоиш дода намешавад.",
-    "watchOnYoutube": "Дар YouTube тамошо кунед"
+    "watchOnYoutube": "Дар YouTube тамошо кунед",
+    "createMyOwnCourse": "Курси худро эҷод кунед"
 }

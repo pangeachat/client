@@ -4255,6 +4255,7 @@
     },
     "editCourseLater": "You can edit template title, descriptions, and course image later.",
     "createCourse": "Create course",
+    "createMyOwnCourse": "Create my own course",
     "stats": "Stats",
     "createGroupChat": "Create group chat",
     "editCourse": "Edit course",

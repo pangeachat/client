@@ -10128,5 +10128,6 @@
     "readAloudListening": "در حال گوش دادن…",
     "readAloudTake": "برداشت {number}",
     "videoWontPlayHere": "این ویدئو اینجا پخش نمی‌شود.",
-    "watchOnYoutube": "در یوتیوب تماشا کنید"
+    "watchOnYoutube": "در یوتیوب تماشا کنید",
+    "createMyOwnCourse": "دوره خودم را بسازم"
 }

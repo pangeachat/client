@@ -102,6 +102,15 @@ void main() {
         ).screenName,
         'addcoursepage:own/invite',
       );
+      // Start my own showing a course to join instead (#9590).
+      expect(
+        AddCoursePagePanelToken(
+          AddCoursePageTokenParam.parse(
+            'own/30dbdcfc-0f8c-4b7f-bdf8-f15d86c8cb24/!abc.les',
+          ),
+        ).screenName,
+        'addcoursepage:own/join',
+      );
       expect(
         AddCoursePagePanelToken(
           AddCoursePageTokenParam.parse('browse'),

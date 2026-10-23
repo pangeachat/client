@@ -2502,5 +2502,6 @@
     "readAloudListening": "اوریدل کیږي…",
     "readAloudTake": "واخلئ {number}",
     "videoWontPlayHere": "دا ویډیو دلته نه چلیږي.",
-    "watchOnYoutube": "په یوټیوب کې وګورئ"
+    "watchOnYoutube": "په یوټیوب کې وګورئ",
+    "createMyOwnCourse": "زما خپل کورس جوړ کړئ"
 }

@@ -10040,5 +10040,6 @@
     "readAloudListening": "Klausāmies…",
     "readAloudTake": "Paņemiet {number}",
     "videoWontPlayHere": "Šo video šeit nevar atskaņot.",
-    "watchOnYoutube": "Skatīties pakalpojumā YouTube"
+    "watchOnYoutube": "Skatīties pakalpojumā YouTube",
+    "createMyOwnCourse": "Izveidot savu kursu"
 }

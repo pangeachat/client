@@ -10040,5 +10040,6 @@
     "readAloudListening": "正在听…",
     "readAloudTake": "第 {number} 次录音",
     "videoWontPlayHere": "此视频无法在此处播放。",
-    "watchOnYoutube": "在 YouTube 上观看"
+    "watchOnYoutube": "在 YouTube 上观看",
+    "createMyOwnCourse": "创建我的课程"
 }

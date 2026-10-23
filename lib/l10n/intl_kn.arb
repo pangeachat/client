@@ -2502,5 +2502,6 @@
     "readAloudListening": "ಕೇಳಲಾಗುತ್ತಿದೆ…",
     "readAloudTake": "ಟೇಕ್ {number}",
     "videoWontPlayHere": "ಈ ವೀಡಿಯೊ ಇಲ್ಲಿ ಪ್ಲೇ ಆಗುವುದಿಲ್ಲ.",
-    "watchOnYoutube": "YouTube ನಲ್ಲಿ ವೀಕ್ಷಿಸಿ"
+    "watchOnYoutube": "YouTube ನಲ್ಲಿ ವೀಕ್ಷಿಸಿ",
+    "createMyOwnCourse": "ನನ್ನದೇ ಆದ ಕೋರ್ಸ್ ರಚಿಸಿ"
 }

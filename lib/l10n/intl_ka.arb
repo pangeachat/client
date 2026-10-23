@@ -10937,5 +10937,6 @@
     "readAloudListening": "ვუსმენ…",
     "readAloudTake": "მიღება {number}",
     "videoWontPlayHere": "ეს ვიდეო აქ არ იმუშავებს.",
-    "watchOnYoutube": "უყურეთ YouTube-ზე"
+    "watchOnYoutube": "უყურეთ YouTube-ზე",
+    "createMyOwnCourse": "შექმენი ჩემი კურსი"
 }

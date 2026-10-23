@@ -10143,5 +10143,6 @@
     "readAloudListening": "Hallgatok…",
     "readAloudTake": "Felvétel {number}",
     "videoWontPlayHere": "Ez a videó itt nem játszható le.",
-    "watchOnYoutube": "Megtekintés YouTube-on"
+    "watchOnYoutube": "Megtekintés YouTube-on",
+    "createMyOwnCourse": "Saját tanfolyam létrehozása"
 }

@@ -10473,5 +10473,6 @@
     "readAloudListening": "Slušam…",
     "readAloudTake": "Pokušaj {number}",
     "videoWontPlayHere": "Ovaj se videozapis ovdje neće reproducirati.",
-    "watchOnYoutube": "Gledaj na YouTubeu"
+    "watchOnYoutube": "Gledaj na YouTubeu",
+    "createMyOwnCourse": "Izradi moj tečaj"
 }

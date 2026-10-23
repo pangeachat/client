@@ -17,9 +17,14 @@ class CourseCtaRow extends StatelessWidget {
   final CourseCtaAction primary;
   final List<CourseCtaAction> secondary;
 
+  /// A full-width tonal pill under the row: another way forward that should
+  /// not compete with the primary (#9590).
+  final CourseCtaAction? below;
+
   const CourseCtaRow({
     required this.primary,
     this.secondary = const [],
+    this.below,
     super.key,
   });
 
@@ -29,6 +34,19 @@ class CourseCtaRow extends StatelessWidget {
       _CourseCtaChip(action: primary, filled: true),
       for (final action in secondary) _CourseCtaChip(action: action),
     ];
+
+    final below = this.below;
+    if (below != null) {
+      return Column(
+        spacing: 8.0,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          CourseCtaRow(primary: primary, secondary: secondary),
+          _CourseCtaChip(action: below),
+        ],
+      );
+    }
 
     return LayoutBuilder(
       builder: (context, constraints) => SingleChildScrollView(

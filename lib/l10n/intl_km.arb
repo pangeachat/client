@@ -2502,5 +2502,6 @@
     "readAloudListening": "កំពុងស្ដាប់…",
     "readAloudTake": "យក {number}",
     "videoWontPlayHere": "វីដេអូនេះមិនអាចចាក់នៅទីនេះបានទេ។",
-    "watchOnYoutube": "មើលនៅលើ YouTube"
+    "watchOnYoutube": "មើលនៅលើ YouTube",
+    "createMyOwnCourse": "បង្កើតវគ្គសិក្សាផ្ទាល់ខ្លួន"
 }

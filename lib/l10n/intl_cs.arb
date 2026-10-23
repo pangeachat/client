@@ -10531,5 +10531,6 @@
     "readAloudListening": "Poslouchám…",
     "readAloudTake": "Pokus {number}",
     "videoWontPlayHere": "Toto video zde nelze přehrát.",
-    "watchOnYoutube": "Přehrát na YouTube"
+    "watchOnYoutube": "Přehrát na YouTube",
+    "createMyOwnCourse": "Vytvořit vlastní kurz"
 }

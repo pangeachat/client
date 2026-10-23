@@ -10957,5 +10957,6 @@
     "readAloudListening": "Lytter…",
     "readAloudTake": "Tag {number}",
     "videoWontPlayHere": "Denne video kan ikke afspilles her.",
-    "watchOnYoutube": "Se på YouTube"
+    "watchOnYoutube": "Se på YouTube",
+    "createMyOwnCourse": "Opret mit eget kursus"
 }

@@ -2502,5 +2502,6 @@
     "readAloudListening": "በማዳመጥ ላይ…",
     "readAloudTake": "ይውሰዱ {number}",
     "videoWontPlayHere": "ይህ ቪዲዮ እዚህ አይጫወትም።",
-    "watchOnYoutube": "በYouTube ላይ ይመልከቱ"
+    "watchOnYoutube": "በYouTube ላይ ይመልከቱ",
+    "createMyOwnCourse": "የራሴን ኮርስ ልፍጠር"
 }

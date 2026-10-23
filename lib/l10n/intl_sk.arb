@@ -10982,5 +10982,6 @@
     "readAloudListening": "Počúvam…",
     "readAloudTake": "Zobrať {number}",
     "videoWontPlayHere": "Toto video sa tu neprehrá.",
-    "watchOnYoutube": "Pozrieť na YouTube"
+    "watchOnYoutube": "Pozrieť na YouTube",
+    "createMyOwnCourse": "Vytvoriť si vlastný kurz"
 }

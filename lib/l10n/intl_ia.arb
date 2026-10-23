@@ -10973,5 +10973,6 @@
     "readAloudListening": "Ascoltante…",
     "readAloudTake": "Prende {number}",
     "videoWontPlayHere": "Iste video non va reproducer hic.",
-    "watchOnYoutube": "Regardar in YouTube"
+    "watchOnYoutube": "Regardar in YouTube",
+    "createMyOwnCourse": "Crear mi proprie curso"
 }

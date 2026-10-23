@@ -10027,5 +10027,6 @@
     "readAloudListening": "Höre zu…",
     "readAloudTake": "Versuch {number}",
     "videoWontPlayHere": "Dieses Video kann hier nicht abgespielt werden.",
-    "watchOnYoutube": "Auf YouTube ansehen"
+    "watchOnYoutube": "Auf YouTube ansehen",
+    "createMyOwnCourse": "Meinen eigenen Kurs erstellen"
 }

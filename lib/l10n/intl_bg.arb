@@ -2502,5 +2502,6 @@
     "readAloudListening": "Слушам…",
     "readAloudTake": "Дубъл {number}",
     "videoWontPlayHere": "Това видео няма да се възпроизвежда тук.",
-    "watchOnYoutube": "Гледайте в YouTube"
+    "watchOnYoutube": "Гледайте в YouTube",
+    "createMyOwnCourse": "Създаване на собствен курс"
 }

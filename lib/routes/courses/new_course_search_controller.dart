@@ -15,10 +15,14 @@ import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_search_controller.dart';
+import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class NewCourseSearchController
     extends CourseSearchController<CoursePlanModel> {
@@ -62,7 +66,7 @@ class NewCourseSearchController
     }
 
     if (existingRoom == null) {
-      _openCreateCourse(course.uuid, context);
+      await _openCreateCourse(course, context);
       return;
     }
 
@@ -104,7 +108,7 @@ class NewCourseSearchController
     if (!context.mounted) return;
 
     if (action == 0) {
-      _openCreateCourse(course.uuid, context);
+      await _openCreateCourse(course, context);
     } else if (action == 1) {
       if (existingRoom.isSpace) {
         // world_v2: token nav to the existing course card (sets the map filter +
@@ -130,13 +134,34 @@ class NewCourseSearchController
     }
   }
 
-  void _openCreateCourse(String courseId, BuildContext context) {
+  /// Opens the picked quest, or the course to join instead of it (#9590).
+  Future<void> _openCreateCourse(
+    CoursePlanModel course,
+    BuildContext context,
+  ) async {
     final lang = targetLanguageFilter.value?.langCode;
+    final teacher =
+        MatrixState
+            .pangeaController
+            .userController
+            .profile
+            .userSettings
+            .selfIdentifiedRole ==
+        UserType.teacher;
+    final joinRoomId = teacher
+        ? null
+        : (await showFutureLoadingDialog(
+            context: context,
+            future: () =>
+                client.courseToJoinInstead(course.uuid, course.targetLanguage),
+          )).result;
+    if (!context.mounted) return;
     context.go(
       WorkspaceNav.openAddCoursePage(
         GoRouterState.of(context).uri,
         AddCourseSubpageEnum.own,
-        createCourseId: courseId,
+        createCourseId: course.uuid,
+        previewRoomId: joinRoomId,
         initialLanguageFilter: lang,
         allLanguagesFilter: lang == null,
       ),

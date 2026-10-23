@@ -2502,5 +2502,6 @@
     "readAloudListening": "Сонсож байна…",
     "readAloudTake": "{number} дахь оролдлого",
     "videoWontPlayHere": "Энэ видео энд тоглогдохгүй.",
-    "watchOnYoutube": "YouTube дээр үзэх"
+    "watchOnYoutube": "YouTube дээр үзэх",
+    "createMyOwnCourse": "Өөрийн сургалтыг үүсгэх"
 }

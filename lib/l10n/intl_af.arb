@@ -2502,5 +2502,6 @@
     "readAloudListening": "Luister …",
     "readAloudTake": "Neem {number}",
     "videoWontPlayHere": "Hierdie video sal nie hier speel nie.",
-    "watchOnYoutube": "Kyk op YouTube"
+    "watchOnYoutube": "Kyk op YouTube",
+    "createMyOwnCourse": "Skep my eie kursus"
 }

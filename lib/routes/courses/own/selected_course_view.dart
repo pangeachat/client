@@ -50,6 +50,9 @@ class SelectedCourseView extends StatelessWidget {
   final VoidCallback onTapCta;
   final String ctaButtonText;
 
+  /// Offered under the CTA, as Create my own course is under Join (#9590).
+  final CourseCtaAction? ctaAlternative;
+
   /// Renders the course's Missions + activities (read-only) in the scrollable
   /// middle when supplied — the restored course-preview modules list (#7826).
   final QuestObjectivesLoader? objectivesProvider;
@@ -66,6 +69,7 @@ class SelectedCourseView extends StatelessWidget {
     this.unavailableMessage,
     required this.onTapCta,
     required this.ctaButtonText,
+    this.ctaAlternative,
     this.objectivesProvider,
   });
 
@@ -153,6 +157,7 @@ class SelectedCourseView extends StatelessWidget {
                         label: ctaButtonText,
                         onPressed: onTapCta,
                       ),
+                      below: ctaAlternative,
                     );
 
                     // The minimized rest: nothing that scrolls, so an upward

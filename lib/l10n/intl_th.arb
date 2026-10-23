@@ -10669,5 +10669,6 @@
     "readAloudListening": "กำลังฟัง…",
     "readAloudTake": "ครั้งที่ {number}",
     "videoWontPlayHere": "วิดีโอนี้เล่นที่นี่ไม่ได้",
-    "watchOnYoutube": "ดูบน YouTube"
+    "watchOnYoutube": "ดูบน YouTube",
+    "createMyOwnCourse": "สร้างคอร์สของฉันเอง"
 }

@@ -2502,5 +2502,6 @@
     "readAloudListening": "Mendengar…",
     "readAloudTake": "Ambil {number}",
     "videoWontPlayHere": "Video ini tidak akan dimainkan di sini.",
-    "watchOnYoutube": "Tonton di YouTube"
+    "watchOnYoutube": "Tonton di YouTube",
+    "createMyOwnCourse": "Cipta kursus saya sendiri"
 }

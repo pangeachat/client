@@ -2502,5 +2502,6 @@
     "readAloudListening": "Լսում եմ…",
     "readAloudTake": "Կատարել {number}",
     "videoWontPlayHere": "Այս տեսանյութն այստեղ չի նվագարկվի։",
-    "watchOnYoutube": "Դիտել YouTube-ում"
+    "watchOnYoutube": "Դիտել YouTube-ում",
+    "createMyOwnCourse": "Ստեղծել իմ սեփական դասընթացը"
 }

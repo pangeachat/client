@@ -2502,5 +2502,6 @@
     "readAloudListening": "Dinləyirəm…",
     "readAloudTake": "Tapşırıq {number}",
     "videoWontPlayHere": "Bu video burada oxunmayacaq.",
-    "watchOnYoutube": "YouTube-da izləyin"
+    "watchOnYoutube": "YouTube-da izləyin",
+    "createMyOwnCourse": "Öz kursumu yarat"
 }

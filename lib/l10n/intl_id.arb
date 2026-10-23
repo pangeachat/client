@@ -10113,5 +10113,6 @@
     "readAloudListening": "Mendengarkan…",
     "readAloudTake": "Ambil {number}",
     "videoWontPlayHere": "Video ini tidak dapat diputar di sini.",
-    "watchOnYoutube": "Tonton di YouTube"
+    "watchOnYoutube": "Tonton di YouTube",
+    "createMyOwnCourse": "Buat kursus saya sendiri"
 }

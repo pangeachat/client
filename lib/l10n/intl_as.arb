@@ -2502,5 +2502,6 @@
     "readAloudListening": "শুনি আছোঁ…",
     "readAloudTake": "লওক {number}",
     "videoWontPlayHere": "এই ভিডিঅ’টো ইয়াত নচলে।",
-    "watchOnYoutube": "ইউটিউবত চাওক"
+    "watchOnYoutube": "ইউটিউবত চাওক",
+    "createMyOwnCourse": "মোৰ নিজা পাঠ্যক্ৰম সৃষ্টি কৰক"
 }

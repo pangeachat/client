@@ -10338,5 +10338,6 @@
     "readAloudListening": "Dinleniyor…",
     "readAloudTake": "Alıştırma {number}",
     "videoWontPlayHere": "Bu video burada oynatılamaz.",
-    "watchOnYoutube": "YouTube'da İzle"
+    "watchOnYoutube": "YouTube'da İzle",
+    "createMyOwnCourse": "Kendi kursumu oluştur"
 }

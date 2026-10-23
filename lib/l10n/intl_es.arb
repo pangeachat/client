@@ -8269,5 +8269,6 @@
     "readAloudListening": "Escuchando…",
     "readAloudTake": "Toma {number}",
     "videoWontPlayHere": "Este video no se puede reproducir aquí.",
-    "watchOnYoutube": "Ver en YouTube"
+    "watchOnYoutube": "Ver en YouTube",
+    "createMyOwnCourse": "Crear mi propio curso"
 }

@@ -10343,5 +10343,6 @@
     "readAloudListening": "جارٍ الاستماع…",
     "readAloudTake": "خذ {number}",
     "videoWontPlayHere": "لا يمكن تشغيل هذا الفيديو هنا.",
-    "watchOnYoutube": "المشاهدة على يوتيوب"
+    "watchOnYoutube": "المشاهدة على يوتيوب",
+    "createMyOwnCourse": "إنشاء دورتي التدريبية الخاصة"
 }

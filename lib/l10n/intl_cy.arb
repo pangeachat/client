@@ -2502,5 +2502,6 @@
     "readAloudListening": "Yn gwrando…",
     "readAloudTake": "Cymryd {number}",
     "videoWontPlayHere": "Ni fydd y fideo hwn yn chwarae yma.",
-    "watchOnYoutube": "Gwylio ar YouTube"
+    "watchOnYoutube": "Gwylio ar YouTube",
+    "createMyOwnCourse": "Creu fy nghwrs fy hun"
 }

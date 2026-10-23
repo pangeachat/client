@@ -2502,5 +2502,6 @@
     "readAloudListening": "Lauschteren…",
     "readAloudTake": "Huelt {number}",
     "videoWontPlayHere": "Dëse Video spillt hei net.",
-    "watchOnYoutube": "Op YouTube kucken"
+    "watchOnYoutube": "Op YouTube kucken",
+    "createMyOwnCourse": "Mäin eegene Cours erstellen"
 }

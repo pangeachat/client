@@ -10040,5 +10040,6 @@
     "readAloudListening": "Aan het luisteren…",
     "readAloudTake": "Poging {number}",
     "videoWontPlayHere": "Deze video kan hier niet worden afgespeeld.",
-    "watchOnYoutube": "Bekijk op YouTube"
+    "watchOnYoutube": "Bekijk op YouTube",
+    "createMyOwnCourse": "Mijn eigen cursus maken"
 }

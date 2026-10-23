@@ -2502,5 +2502,6 @@
     "readAloudListening": "Ag èisteachd…",
     "readAloudTake": "Gabh {number}",
     "videoWontPlayHere": "Cha chluich a’ bhidio seo an-seo.",
-    "watchOnYoutube": "Coimhead air YouTube"
+    "watchOnYoutube": "Coimhead air YouTube",
+    "createMyOwnCourse": "Cruthaich mo chùrsa fhèin"
 }

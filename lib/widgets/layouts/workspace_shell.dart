@@ -1171,21 +1171,22 @@ bool _tokenIsCoursePreview(PanelToken token) {
 }
 
 /// The plan uuid the map should PREVIEW-scope to, or null when no course
-/// preview is open (#7826) — own: from the token; browse: via
-/// [CoursePreviewPlans] once the room summary lands (null until then).
+/// preview is open (#7826) — a previewed course's plan via
+/// [CoursePreviewPlans] once its room summary lands (null until then);
+/// otherwise own's picked quest, from the token.
 String? _previewPlanIdFor(List<PanelToken> leftTokens) {
   for (final token in leftTokens) {
     if (!_tokenIsCoursePreview(token)) continue;
     final param = token.param;
     if (param is! AddCoursePageTokenParam) continue;
+    final roomId = param.previewRoomId;
+    if (roomId != null) {
+      return CoursePreviewPlans.planIdFor(shortRoomId(roomId));
+    }
     switch (param.subpage) {
       case AddCourseSubpageEnum.own:
         return param.createCourseId;
       case AddCourseSubpageEnum.browse:
-        final roomId = param.previewRoomId;
-        return roomId == null
-            ? null
-            : CoursePreviewPlans.planIdFor(shortRoomId(roomId));
       case AddCourseSubpageEnum.private:
         return null;
     }

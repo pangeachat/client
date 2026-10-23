@@ -10986,5 +10986,6 @@
     "readAloudListening": "Slušam…",
     "readAloudTake": "Uradi {number}",
     "videoWontPlayHere": "Ovaj video se ne može reprodukovati ovde.",
-    "watchOnYoutube": "Gledaj na YouTube-u"
+    "watchOnYoutube": "Gledaj na YouTube-u",
+    "createMyOwnCourse": "Kreiraj sopstveni kurs"
 }

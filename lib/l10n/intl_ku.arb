@@ -2502,5 +2502,6 @@
     "readAloudListening": "گوێ دەگیرێت…",
     "readAloudTake": "وەرگرتنی {number}",
     "videoWontPlayHere": "ئەم ڤیدیۆیە لێرە کارناکات.",
-    "watchOnYoutube": "لە یوتیوب سەیری بکە"
+    "watchOnYoutube": "لە یوتیوب سەیری بکە",
+    "createMyOwnCourse": "خولی تایبەت بە خۆم دروست بکە"
 }

@@ -2502,5 +2502,6 @@
     "readAloudListening": "Hlusta…",
     "readAloudTake": "Taka {number}",
     "videoWontPlayHere": "Þetta myndband spilast ekki hér.",
-    "watchOnYoutube": "Horfa á YouTube"
+    "watchOnYoutube": "Horfa á YouTube",
+    "createMyOwnCourse": "Búa til mitt eigið námskeið"
 }

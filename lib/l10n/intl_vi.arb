@@ -7347,5 +7347,6 @@
     "readAloudListening": "Đang nghe…",
     "readAloudTake": "Lượt {number}",
     "videoWontPlayHere": "Video này sẽ không phát ở đây.",
-    "watchOnYoutube": "Xem trên YouTube"
+    "watchOnYoutube": "Xem trên YouTube",
+    "createMyOwnCourse": "Tạo khóa học của riêng tôi"
 }

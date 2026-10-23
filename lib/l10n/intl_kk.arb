@@ -2502,5 +2502,6 @@
     "readAloudListening": "Тыңдаудамын…",
     "readAloudTake": "{number} алу",
     "videoWontPlayHere": "Бұл бейне ойнатылмайды.",
-    "watchOnYoutube": "YouTube-тан қарау"
+    "watchOnYoutube": "YouTube-тан қарау",
+    "createMyOwnCourse": "Өз курсымды жасау"
 }

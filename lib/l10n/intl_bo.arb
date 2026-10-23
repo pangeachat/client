@@ -9648,5 +9648,6 @@
     "readAloudListening": "ཉན་བཞིན་པ་…",
     "readAloudTake": "ལེན་ {number}",
     "videoWontPlayHere": "བརྙན་འདི་འདིར་འཁྲབ་མི་ཐུབ།",
-    "watchOnYoutube": "YouTube ཐོག་ཏུ་ལྟ་བ།"
+    "watchOnYoutube": "YouTube ཐོག་ཏུ་ལྟ་བ།",
+    "createMyOwnCourse": "ངའི་སློབ་ཚན་བཟོ་བ།"
 }

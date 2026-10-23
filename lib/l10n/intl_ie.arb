@@ -10669,5 +10669,6 @@
     "readAloudListening": "Ag éisteacht…",
     "readAloudTake": "Glac {number}",
     "videoWontPlayHere": "Ní imreoidh an físeán seo anseo.",
-    "watchOnYoutube": "Féach ar YouTube"
+    "watchOnYoutube": "Féach ar YouTube",
+    "createMyOwnCourse": "Cruthaigh mo chúrsa féin"
 }

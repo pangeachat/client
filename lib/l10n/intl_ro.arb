@@ -10769,5 +10769,6 @@
     "readAloudListening": "Se ascultă…",
     "readAloudTake": "Preluare {number}",
     "videoWontPlayHere": "Acest videoclip nu va fi redat aici.",
-    "watchOnYoutube": "Vizionează pe YouTube"
+    "watchOnYoutube": "Vizionează pe YouTube",
+    "createMyOwnCourse": "Creează-mi propriul curs"
 }

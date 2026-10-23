@@ -10665,5 +10665,6 @@
     "readAloudListening": "শুনছি…",
     "readAloudTake": "নিন {number}",
     "videoWontPlayHere": "এই ভিডিওটি এখানে চলবে না।",
-    "watchOnYoutube": "ইউটিউবে দেখুন"
+    "watchOnYoutube": "ইউটিউবে দেখুন",
+    "createMyOwnCourse": "আমার নিজের কোর্স তৈরি করুন"
 }

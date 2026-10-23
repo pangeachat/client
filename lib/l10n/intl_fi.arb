@@ -10077,5 +10077,6 @@
     "readAloudListening": "Kuunnellaan…",
     "readAloudTake": "Ota {number}",
     "videoWontPlayHere": "Tätä videota ei voi toistaa täällä.",
-    "watchOnYoutube": "Katso YouTubessa"
+    "watchOnYoutube": "Katso YouTubessa",
+    "createMyOwnCourse": "Luo oma kurssini"
 }

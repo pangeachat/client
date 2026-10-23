@@ -10555,5 +10555,6 @@
     "readAloudListening": "Lyssnar…",
     "readAloudTake": "Ta {number}",
     "videoWontPlayHere": "Den här videon kan inte spelas upp här.",
-    "watchOnYoutube": "Titta på YouTube"
+    "watchOnYoutube": "Titta på YouTube",
+    "createMyOwnCourse": "Skapa min egen kurs"
 }
