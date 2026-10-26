@@ -120,11 +120,10 @@ abstract class PRoutes {
   /// [uri]'s location with its `inv=` key removed (every other key kept as
   /// written), or null when [uri] carries no `inv=` key at all.
   static String? locationWithoutInvitation(Uri uri) {
-    if (WorkspaceQuery.valueOf(uri.query, invitationParam) == null) {
-      return null;
-    }
     final parts = WorkspaceQuery.parts(uri.query);
+    final before = parts.length;
     WorkspaceQuery.removeKeys(parts, {invitationParam});
+    if (parts.length == before) return null;
     return WorkspaceQuery.location(uri.path, parts);
   }
 
