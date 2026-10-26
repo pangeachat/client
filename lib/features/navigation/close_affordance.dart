@@ -2,9 +2,9 @@
 /// ONCE from its open-mode — never hardcoded per panel. This is the single
 /// authority the column hosts and the map sheets read.
 ///
-/// The rule (see `routing.instructions.md` → Centralized close affordance, and the
-/// Figma mobile sheets where a root shows `X` only and a pushed step shows
-/// `←` + `X`):
+/// The rule (see `routing.instructions.md` → Closing a panel: X or back
+/// arrow, and the Figma mobile sheets where a root shows `X` only and a pushed
+/// step shows `←` + `X`):
 ///
 /// - **`X` (dismiss)** drops this panel's token entirely → reveals the map / its
 ///   siblings. Shown unless it would be redundant with back (the fold case).
@@ -24,6 +24,10 @@
 ///   root / coexisting → X only       (back F, close T)
 ///   folded / narrow-behind → ← only  (back T, close F)
 ///   pushed page / wizard step → ←+X  (back T, close T)
+///
+/// Navigation never clears the course context or any other state to force one
+/// affordance or the other: a panel showing the wrong one has the wrong tree
+/// placement or context handling, and that is what gets fixed.
 class CloseAffordance {
   /// Show a back arrow (returns to the parent page / folded master / sibling).
   final bool showBack;
