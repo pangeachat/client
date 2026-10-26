@@ -47,7 +47,8 @@ class PangeaRepresentation {
   PangeaMessageTokens? tokens;
 
   // how do we know which representation was sent by author?
-  // RepresentationEvent.text == PangeaMessageEvent.event.body
+  // RepresentationEvent.text == PangeaMessageEvent.event.body, less a reply's
+  // quoted fallback (PangeaMessageEvent.bodyWithoutReplyFallback)
   // use: to know whether directUse
 
   // how do we know which representation was original L1 message that was translated (if it exists)?
