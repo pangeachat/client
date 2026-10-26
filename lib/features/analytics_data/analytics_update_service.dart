@@ -21,6 +21,7 @@ import 'package:fluffychat/features/connection_status/connection_status_controll
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/quests/course_progress_writer.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -102,6 +103,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
   Completer<void>? _updateCompleter;
   Timer? _periodicTimer;
+  final CourseProgressWriter _courseProgress = CourseProgressWriter();
 
   /// What the connection banner says. Uploads pause while it says the
   /// connection is lost, and run once when it returns.
@@ -235,6 +237,14 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
       return null;
     }
   }
+
+  /// Whether this service's account is the one the app shows. The Mission XP
+  /// a course check reads is held once for the app, for that account only, so
+  /// a background account checking would file another account's figures.
+  bool get _isActiveAccount =>
+      MatrixState.isPangeaControllerInitialized &&
+      MatrixState.pangeaController.userController.client.userID ==
+          dataService.accountUserId;
 
   Future<Room?> _getAnalyticsRoom({LanguageModel? l2Override}) async {
     final l2 = l2Override ?? _l2;
@@ -381,6 +391,11 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
           );
         }
       }
+      // Whether or not there were uses to send. Not for the language a switch
+      // is leaving: the Mission XP the check reads is the current language's.
+      if (lang.langCodeShort == _l2OrNull?.langCodeShort) {
+        await updateCourseProgress();
+      }
     } on AnalyticsDatabaseClosedException catch (err, s) {
       // The store is gone and this instance cannot revive it, so every later
       // tick would fail identically. Stop the timer rather than let a dead
@@ -405,6 +420,21 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
       _updateCompleter?.complete();
       _updateCompleter = null;
     }
+  }
+
+  /// Checks each joined course's Mission figures and stores the ones that
+  /// changed for the teacher dashboard ([CourseProgressWriter]): after every
+  /// upload, and when a saved session starts to count.
+  Future<void> updateCourseProgress() async {
+    final lang = _l2OrNull;
+    if (lang == null || !dataService.isLogged || !_isActiveAccount) return;
+    // The reconnect flush checks again.
+    if (_connectionStatus.value.isLost) return;
+    final analyticsRoom = dataService.getAnalyticsRoomLocal(lang);
+    // Nothing has been uploaded in this language yet; the upload that
+    // creates its room checks again.
+    if (analyticsRoom == null) return;
+    await _courseProgress.update(analyticsRoom, lang.langCodeShort);
   }
 
   /// Uploads the pending local batches and clears what the server accepted.
