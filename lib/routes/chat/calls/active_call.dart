@@ -1201,6 +1201,11 @@ class ActiveCall extends ChangeNotifier {
   /// gone. Matched to LiveKit's departureTimeout default: that is how long the
   /// SFU actually keeps their place, and a "reconnecting" shown past the point
   /// return is possible would be a lie.
+  ///
+  /// The grace is for a peer who VANISHED. Widening it, or this window's use,
+  /// to cover a peer who pressed end is a regression however reasonable it
+  /// sounds: offering to reconnect then is a promise nobody is coming to keep
+  /// (voice-video-calls.instructions.md, "Ending and coming back").
   static const peerGraceWindow = Duration(seconds: 20);
 
   /// How long the peer must STAY present before their return counts.

@@ -69,6 +69,11 @@ dependencies:
       # Pinned deliberately. The MatrixRTC/LiveKit call work depends on SDK VoIP
       # internals (LiveKitBackend, GroupCallSession, WebRTCDelegate); without a ref
       # this resolves to HEAD and can change under us on any `pub upgrade`.
+      # Advance the ref only for a named, merged fix -- never as routine
+      # dependency hygiene or to pick up the fork's HEAD -- and do not restore
+      # the commented-out semver range above: that reopens the drift this pin
+      # prevents. test/pangea/calls/sdk_voip_surface_test.dart locks the SDK
+      # surface the calls depend on.
       ref: bc206b23b5d9d42e4a57d6339bb140bd791e0632
   # Pangea#
   mime: ^2.0.0

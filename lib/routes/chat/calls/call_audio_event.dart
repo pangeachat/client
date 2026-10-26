@@ -54,6 +54,12 @@ class CallAudioContent {
   /// media repository, from a plain (unencrypted) upload. Never a decryption
   /// key or an IV: this app's rooms are not end-to-end encrypted, so nothing
   /// here needs one.
+  ///
+  /// A reference, not the bytes, exactly like a voice message: the audio sits
+  /// in the same media store voice-message audio uses, so the event stays small
+  /// enough to ride the timeline, the audio is fetched on demand rather than
+  /// pushed through every sync, and the recording falls under the retention
+  /// already disclosed for voice messages.
   final String url;
 
   final String mimetype;

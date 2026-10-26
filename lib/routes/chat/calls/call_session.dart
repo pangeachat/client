@@ -265,8 +265,9 @@ class CallSession extends ChangeNotifier {
     final audioDeviceId = room.client.deviceID;
 
     // The recording-based call transcript, read ONCE here and used to gate both
-    // the recorder's transcription below and CallRecord's preference for it. Off
-    // (the default) both stay unwired: the recorder never transcribes and its
+    // the recorder's transcription below and CallRecord's preference for it. On
+    // by default (see [Environment.callRecordingTranscript]); off, both stay
+    // unwired: the recorder never transcribes and its
     // audio path is byte-for-byte today's, and CallRecord publishes the live
     // 45-second transcript half exactly as before -- so the feature reverts by
     // flipping this one flag.
@@ -369,7 +370,7 @@ class CallSession extends ChangeNotifier {
     // deterministic transaction id makes the replay a no-op when it did. See
     // [CallService.flushPendingCallTranscripts] for the replay.
     //
-    // OFF (the default), this is the bare send -- byte-for-byte the behaviour
+    // OFF (the kill switch), this is the bare send -- byte-for-byte the behaviour
     // before the feature, the outbox never constructed or touched. The problem
     // it solves is specific to the recording-based path: the live-chunk half
     // publishes FIRST, before that STT, so it is not late.
@@ -383,7 +384,7 @@ class CallSession extends ChangeNotifier {
 
     // The whole-call transcriber (#8792), wired only when the recording-based
     // transcript feature is on AND the widget layer supplied the controller
-    // seams. Off (the default), or in a test that does not pass them, this stays
+    // seams. Off (the kill switch), or in a test that does not pass them, this stays
     // null and CallRecord's own-half flow is byte-for-byte unchanged. When wired,
     // the transcriber still gates itself on the flag and the invoker's LIVE
     // subscription at run time, so building it here commits to nothing.
