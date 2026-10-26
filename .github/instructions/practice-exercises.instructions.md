@@ -71,6 +71,8 @@ Each standable practice type has its own practice target generator.
 
 Each of these is passed a full list of the user's construct data for the relevant type (vocab or grammar) and uses [practiceSort](../../lib/routes/analytics/construct_analytics/practice/construct_practice_extension.dart) to order them by relevance for the given type.  
 
+Words with the same priority come in a random order, so sessions do not keep drawing the same ones when many words tie.
+
 [GrammarErrorTargetGenerator](../../lib/routes/analytics/construct_analytics/practice/grammar_error_target_generator.dart) acts differently. Because constructs from grammar error practice exercises have an eventID attached, these eventIDs are used to filter out constructs from events that happened in the last 24 hours to prevent users from [getting exercies for the same messages too many times in a row.](https://github.com/pangeachat/client/issues/7360)
 
 ### ⚠️ Divergence note
