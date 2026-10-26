@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
@@ -6,6 +8,10 @@ import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_completion_replay.dart';
+import 'package:fluffychat/features/quests/mission_room_xp.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/saved_session_xp.dart';
 
 /// When a Mission that was complete before its course's progress record
@@ -170,6 +176,117 @@ void main() {
       ],
     );
     expect(replay.firstReached(outline, 'lo1'), isNull);
+  });
+
+  group('agrees with the ring\'s own count at every moment', () {
+    const lemmas = ['casa', 'perro', 'viaje', 'gato'];
+    const activities = ['a1', 'a2', 'a1-copy', 'b1', 'c9'];
+    const types = [
+      ConstructUseTypeEnum.wa,
+      ConstructUseTypeEnum.incIGC,
+      ConstructUseTypeEnum.pvm,
+      ConstructUseTypeEnum.corLM,
+      ConstructUseTypeEnum.incLM,
+    ];
+
+    CourseLoOutline course(int xpToComplete, {required bool withCopy}) =>
+        CourseLoOutline(
+          courseId: 'course',
+          orderedLoIds: const ['lo1', 'lo2'],
+          activityIdsByLo: const {
+            'lo1': {'a1', 'a2'},
+            'lo2': {'b1'},
+          },
+          lemmasByLo: const {
+            'lo1': {'casa', 'perro'},
+            'lo2': {'viaje'},
+          },
+          xpToComplete: xpToComplete,
+          credit: withCopy
+              ? const CourseCredit(
+                  family: {'a1': 'a1', 'a1-copy': 'a1', 'a2': 'a2', 'b1': 'b1'},
+                  shownIds: {'a1', 'a2', 'b1'},
+                )
+              : CourseCredit.none,
+        );
+
+    /// The ring's count at [moment], by the resolver, over what existed then.
+    int ringXpAt(
+      DateTime moment,
+      CourseLoOutline outline,
+      List<OneConstructUse> uses,
+      List<SavedSessionXp> sessions,
+    ) {
+      final usesThen = [
+        for (final use in uses)
+          if (!use.timeStamp.isAfter(moment)) use,
+      ];
+      final credited = MissionRoomXp.of(usesThen).credited;
+      return resolveProgression(
+        outlines: [outline],
+        xpByActivity: sumXpByActivity([
+          for (final s in sessions)
+            if (!s.savedAt.isAfter(moment))
+              (
+                activityId: s.activityId,
+                xp: (credited[s.roomId] ?? 0) + s.goalXp,
+              ),
+        ]),
+        practiceXpByLemma: MissionXpCache.practiceXpByLemmaOf(usesThen),
+      ).quests.first.rollup['lo1']!.xp;
+    }
+
+    for (var seed = 0; seed < 200; seed++) {
+      test('history $seed', () {
+        final random = Random(seed);
+        DateTime at() => DateTime.utc(2026, 9, 1 + random.nextInt(20));
+        final sessionCount = 1 + random.nextInt(6);
+        final sessions = [
+          for (var i = 0; i < sessionCount; i++)
+            SavedSessionXp(
+              activityId: activities[random.nextInt(activities.length)],
+              roomId: 'r$i',
+              savedAt: at(),
+              goalXp: kGoalXp * random.nextInt(2),
+            ),
+        ];
+        final rooms = [for (final s in sessions) s.roomId, null, 'unsaved'];
+        // Scores around zero, so running sums often dip below it: where the
+        // floors decide the answer.
+        final useCount = random.nextInt(80);
+        final uses = [
+          for (var i = 0; i < useCount; i++)
+            use(
+              types[random.nextInt(types.length)],
+              random.nextInt(31) - 15,
+              at(),
+              roomId: rooms[random.nextInt(rooms.length)],
+              lemma: lemmas[random.nextInt(lemmas.length)],
+            ),
+        ];
+        final outline = course(
+          10 + random.nextInt(120),
+          withCopy: random.nextBool(),
+        );
+        final moments = {
+          for (final s in sessions) s.savedAt,
+          for (final u in uses) u.timeStamp,
+        }.toList()..sort();
+        final expected = moments
+            .where(
+              (m) =>
+                  ringXpAt(m, outline, uses, sessions) >= outline.xpToComplete,
+            )
+            .firstOrNull;
+        expect(
+          MissionCompletionReplay(
+            uses: uses,
+            sessions: sessions,
+          ).firstReached(outline, 'lo1'),
+          expected,
+        );
+      });
+    }
   });
 
   test('a Mission that never reached the threshold has no date', () {

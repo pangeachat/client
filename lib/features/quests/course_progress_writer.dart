@@ -44,12 +44,20 @@ class CourseProgressWriter {
   /// older record and date a completion a second time.
   final Map<String, CourseProgressEvent> _written = {};
 
-  /// The current check's replay, built on the first Mission that needs one.
-  MissionCompletionReplay? _replay;
-
   /// Course and Mission pairs whose replay found no date this run, so a
   /// failing replay isn't repeated after every upload.
   final Set<String> _unreplayable = {};
+
+  /// How long a course's outline read may take before the check skips the
+  /// course: the read goes over the network.
+  static const _outlineReadTimeout = Duration(seconds: 5);
+
+  /// How long a course whose outline read failed is skipped, so a failing
+  /// read is retried at this pace rather than on every check.
+  static const _outlineRetryAfter = Duration(minutes: 10);
+
+  /// When each course whose outline read last failed may be read again.
+  final Map<String, DateTime> _outlineRetryAt = {};
 
   /// Checks the courses in [language] and writes their records to
   /// [analyticsRoom], that language's analytics room. A check asked for while
@@ -95,10 +103,14 @@ class CourseProgressWriter {
         .where(CourseLanguageScope.courseInTargetLanguage)
         .toList();
     if (courses.isEmpty) return;
+    // The records aren't loaded with the room at startup, since only the
+    // learner's own app reads them; read the room's state in full first, or
+    // a stored completion date would be missed and overwritten.
+    if (analyticsRoom.partial) await analyticsRoom.postLoad();
     final xpByActivity = client.userXpByActivity(cache.creditedXpByRoom);
     final byActivity = client.cachedXpBreakdownByActivity;
     final appVersion = await _appVersion();
-    _replay = null;
+    MissionCompletionReplay? replay;
     for (final course in courses) {
       final outline = await _outlineOf(course);
       if (outline == null) continue;
@@ -123,13 +135,13 @@ class CourseProgressWriter {
           if (!_unreplayable.contains('${course.id}|$missionId')) missionId,
       ];
       if (awaiting.isNotEmpty) {
-        final replay = _replay ??= MissionCompletionReplay(
+        final history = replay ??= MissionCompletionReplay(
           uses: await _readUses(language),
           sessions: client.savedSessionXp,
         );
         next = next.withReplayedDates(
-          _replayedDates(
-            replay,
+          await _replayedDates(
+            history,
             outline.toCourseLoOutline(xpToComplete: xpToComplete),
             course.id,
             awaiting,
@@ -148,16 +160,18 @@ class CourseProgressWriter {
   }
 
   /// When each of [missionIds] first reached [course]'s threshold, replayed
-  /// from history. A Mission whose replay finds no such moment is reported
-  /// and left undated.
-  Map<String, DateTime> _replayedDates(
+  /// from history, one Mission at a time with a frame let through between
+  /// them. A Mission whose replay finds no such moment is reported and left
+  /// undated.
+  Future<Map<String, DateTime>> _replayedDates(
     MissionCompletionReplay replay,
     CourseLoOutline course,
     String courseRoomId,
     List<String> missionIds,
-  ) {
+  ) async {
     final dates = <String, DateTime>{};
     for (final missionId in missionIds) {
+      await Future<void>.delayed(Duration.zero);
       final at = replay.firstReached(course, missionId);
       if (at != null) {
         dates[missionId] = at;
@@ -177,30 +191,52 @@ class CourseProgressWriter {
   }
 
   /// [course]'s outline as the course shows it, read the way the course page
-  /// reads it. Null, and reported, when it can't be read.
+  /// reads it. Null when it can't be read in time, which is reported, or
+  /// while a failed read waits to be retried.
   Future<QuestOutline?> _outlineOf(Room course) async {
     final questId = course.coursePlan?.uuid;
     if (questId == null) return null;
+    final retryAt = _outlineRetryAt[course.id];
+    if (retryAt != null && DateTime.now().isBefore(retryAt)) return null;
     final rules = course.courseListRules;
-    final result = await QuestRepo.outline(
-      questId,
-      courseRoomId: course.id,
-      courseLoIds: rules.missions?.allLoIds ?? const {},
-      copyRevision: rules.revision,
-    );
-    final outline = result.result;
+    final QuestOutline? outline;
+    final Object? error;
+    try {
+      final result = await QuestRepo.outline(
+        questId,
+        courseRoomId: course.id,
+        courseLoIds: rules.missions?.allLoIds ?? const {},
+        copyRevision: rules.revision,
+      ).timeout(_outlineReadTimeout);
+      outline = result.result;
+      error = result.error;
+    } on TimeoutException catch (e, s) {
+      _outlineFailed(course.id, questId, e, s);
+      return null;
+    }
     if (outline == null) {
-      unawaited(
-        reportCourseOutlineFailure(
-          course.id,
-          questId,
-          result.error ?? MissingQuestException(),
-          StackTrace.current,
-        ),
+      _outlineFailed(
+        course.id,
+        questId,
+        error ?? MissingQuestException(),
+        StackTrace.current,
       );
       return null;
     }
+    _outlineRetryAt.remove(course.id);
     return outline.forRules(rules);
+  }
+
+  /// Reports [courseRoomId]'s failed outline read and skips the course until
+  /// [_outlineRetryAfter] has passed.
+  void _outlineFailed(
+    String courseRoomId,
+    String questId,
+    Object error,
+    StackTrace stack,
+  ) {
+    _outlineRetryAt[courseRoomId] = DateTime.now().add(_outlineRetryAfter);
+    unawaited(reportCourseOutlineFailure(courseRoomId, questId, error, stack));
   }
 
   /// The record stored for [courseId]: the room's, or what this run wrote
