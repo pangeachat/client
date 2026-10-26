@@ -32,6 +32,8 @@ class AnalyticsNavigationUtil {
     // construct details are off-limits (no peeking at definitions
     // mid-exercise) — the tap resumes the session instead. See
     // routing.instructions.md § Practice is a persistent background session.
+    // A word card tapped in a chat message still opens definitions: a known,
+    // accepted gap, not a guarded path.
     if (const {
       ProgressIndicatorEnum.wordsUsed,
       ProgressIndicatorEnum.morphsUsed,

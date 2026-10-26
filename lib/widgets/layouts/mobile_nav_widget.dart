@@ -20,6 +20,11 @@ enum NavCavityHeight { collapsed, half, full }
 /// it that hosts the active section or course card. Replaces the old
 /// `MobileBottomNav` + `MobileCourseSheet` pair with the single widget the
 /// design calls for. See "Single-column bottom nav" in `routing.instructions.md`.
+/// Figma: [component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-42905); the four
+/// rail items opened: [World](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13369-63515),
+/// [Chat list](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61038),
+/// [Courses list](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61048),
+/// [Active course](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13394-61069).
 ///
 /// This widget is purely presentational: it reports taps and drag-driven
 /// height changes upward, and the shell (via [onSectionTap]) is the one that
@@ -90,8 +95,8 @@ class MobileNavWidget extends StatefulWidget {
   /// a chat or an activity opened from a course keeps the same context (only the
   /// cavity — hence [cavityKey] — swaps), and even closing the course card keeps
   /// it; the context leaves a course only via World or choosing another course
-  /// (routing.instructions.md — "scope is reset only by the World control or by
-  /// choosing a different course, never by closing a panel"). A course's
+  /// (routing.instructions.md → The course context: closing a panel never
+  /// resets scope). A course's
   /// remembered height is forgotten exactly when the context leaves it, so
   /// sub-navigation preserves it (#7332) while a genuinely fresh course open
   /// starts at peek (#7609). See [didUpdateWidget].
@@ -114,8 +119,8 @@ class MobileNavWidget extends StatefulWidget {
 
   /// Content-fit height for the DEFAULT (half) rest state, in pixels: the
   /// cavity opens just tall enough to show all of its content, capped by
-  /// [maxHeightFraction] (routing.instructions.md — the chats sheet shows all
-  /// its chats by default). Null keeps the plain half-of-max default. The
+  /// [maxHeightFraction] (the chats sheet shows all its chats by default).
+  /// Null keeps the plain half-of-max default. The
   /// full state is unaffected — dragging up still grows to the cap.
   final double? preferredCavityHeightPx;
 
@@ -595,7 +600,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     }
     // A FLOOR cavity (the course panel) collapses to its peek, never to zero:
     // the peek is the course menu's floor on narrow, so no gesture may take it
-    // off screen (#8816; routing.instructions.md -> Single-column mode). Its
+    // off screen (#8816; routing.instructions.md -> Closing a panel). Its
     // collapsed fraction already resolves to the peek, so this is the same
     // rest stop a drag-down settles at.
     if (widget.cavityDefaultsToPeek) {
@@ -709,8 +714,8 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // The floating search bar rides here, above the rounded box,
-                // keeping its gap at every cavity height (the doc's "rides
-                // upward as the widget expands").
+                // keeping its gap at every cavity height, so it rides upward
+                // as the widget expands.
                 if (widget.topAttachment != null) ...[
                   widget.topAttachment!,
                   const SizedBox(height: 8.0),

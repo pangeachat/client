@@ -8,6 +8,7 @@ import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/dosage/dosage_message_event.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 
 /// The single place the "a learner sent a chat message" dosage signals are
 /// emitted: the message envelope (for EVERY sent message) plus a tick of
@@ -151,20 +152,8 @@ class DosageMessageSignals {
   /// RELATION (`m.relates_to.m.in_reply_to`), NOT on the body shape. So ordinary
   /// learner text that merely begins with a `> <@…>`-looking line is counted in
   /// full, and a forward (whose `m.relates_to` was removed) is never stripped.
-  static String learnerText(Map<String, dynamic> content) {
-    final body = content['body'];
-    final bodyStr = body is String ? body : '';
-    final relatesTo = content['m.relates_to'];
-    final isReply = relatesTo is Map && relatesTo['m.in_reply_to'] != null;
-    return isReply ? _stripReplyFallback(bodyStr) : bodyStr;
-  }
-
-  /// Crops the leading `> <@user> …` reply fallback block. Mirrors the SDK's
-  /// `hideReply` crop; only ever applied to a genuine reply (see [learnerText]).
-  static String _stripReplyFallback(String body) => body.replaceFirst(
-    RegExp(r'^>( \*)? <[^>]+>[^\n\r]+\r?\n(> [^\n]*\r?\n)*\r?\n'),
-    '',
-  );
+  static String learnerText(Map<String, dynamic> content) =>
+      PangeaMessageEvent.bodyWithoutReplyFallback(content);
 
   /// Emits the learner-message signals for a resend of a failed send
   /// ([Event.sendAgain], which resends then resolves the new event id).

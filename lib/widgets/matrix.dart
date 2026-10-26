@@ -299,6 +299,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   /// The one call this app is in, if any. Panels and tiles listen here; the
   /// session itself owns the call's lifecycle, so navigation never touches it.
+  ///
+  /// Held here, above the router, rather than by a page: a page that owned the
+  /// call hung it up when the page was disposed, which made leaving the chat
+  /// during a call impossible (voice-video-calls.instructions.md, "The call").
   final ValueNotifier<call_ui.CallSession?> activeCall = ValueNotifier(null);
 
   /// The standing offer to return to a call a reload interrupted.

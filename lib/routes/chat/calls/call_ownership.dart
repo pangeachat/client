@@ -97,16 +97,49 @@ class OwnershipDecision {
 
 /// How long a sibling must be continuously visible before its silence reads as
 /// an older build and before the choice prompt appears — one presence tick.
+///
+/// Why a tick and not the first reading: muting is undoable and interrupting
+/// the conversation is not, and the SFU re-reports participants it is still
+/// holding, so a prompt must not rest on one sighting. An echo shorter than
+/// the tick costs a dropout and no prompt. The tick is also the margin an
+/// updated sibling's first `pangea_chosen: no` has to land in; a slower write
+/// misreads it as an older build, which costs a wrong-cause message and the
+/// one-tap resolution, never a duplicate (doc: "Silence first, prompt a moment
+/// later").
+///
+/// Not yet measured (two-Chrome harness, one account): how quickly a joining
+/// device's first `pangea_chosen` write lands against this tick.
 const Duration kPromptTick = Duration(seconds: 2);
 
 /// How long a device that has NOT been chosen waits, from when it FIRST saw a
 /// sibling, before ending only itself. Matches the peer grace window.
+///
+/// Timed from detection rather than from the prompt so a device whose prompt
+/// never appeared still has an exit; hung on the prompt it could sit muted
+/// indefinitely. It ends only ITSELF, never the call, so a device whose
+/// network hiccuped cannot take down a call resolved on the other (doc: "A
+/// device that gives up ends only itself"). Everything here finishes far
+/// inside the delayed-leave cleanup window, so membership cleanup is never an
+/// actor in this decision.
+///
+/// Not yet measured: how long the SFU takes to show each device the other,
+/// which is the whole of the double capture between two updated devices.
 const Duration kGiveUpAfterSighting = Duration(seconds: 20);
 
 /// How long a device that HAS claimed waits, from when it claimed, before
 /// unmuting regardless — matched to the SFU's departure retention. A SEPARATE
 /// constant from [kGiveUpAfterSighting] that happens to share its value, so
 /// tuning one never silently moves the other.
+///
+/// It may only give up into a state it can vouch for: against a sibling that
+/// speaks this protocol, giving up is a bet on propagation; against one that
+/// cannot leave it is a guaranteed duplicate, which is why [update] never
+/// starts this wait against a silent sibling (doc: "An older-version device is
+/// never waited on").
+///
+/// Not yet measured: how quickly a claim reaches a sibling, and how quickly a
+/// clean departure reaches this device's roster — the silence the learner pays
+/// between tapping and being heard again.
 const Duration kChosenUnmuteAfterClaim = Duration(seconds: 20);
 
 /// Decides, on every roster recompute, whether this device holds its media,
@@ -241,7 +274,8 @@ class CallOwnership {
       // A claim is valid ONLY against participating siblings. If any sibling is
       // SILENT, drop the tap rather than claim: a silent sibling cannot leave,
       // so a claim would publish and seed a bounded wait that must never apply
-      // against it (doc:188). The silent-sibling exclusion below then stands
+      // against it (doc: "An older-version device is never waited on"). The
+      // silent-sibling exclusion below then stands
       // with its older-version prompt, and the learner leaves by hand.
       if (silentSiblingIds.isEmpty) _claimedAt ??= now;
     }
@@ -275,7 +309,8 @@ class CallOwnership {
         // A claim is only ever latched while NO silent sibling was present (the
         // reconcile above drops a tap made against silence), so any claim still
         // standing here was published validly against a participating sibling.
-        // No NEW claim is started against a silent one -- doc:188.
+        // No NEW claim is started against a silent one (doc: "An
+        // older-version device is never waited on").
         announceChosen: _claimedAt != null,
       );
     }

@@ -8,7 +8,8 @@
 /// reduces to "this participant's device uploaded this audio for this call".
 /// Everything here exists to check exactly that, against the call's merged-event
 /// audio MANIFEST, and to hand [assembleTranscript] a STATE it consumes — never
-/// a name it collapses to the sender.
+/// a name it collapses to the sender. Wherever the words are in doubt, the
+/// saved recording a half points at is the record that settles it.
 ///
 /// The read path is: [resolveTranscriptProvenance] selects one manifest,
 /// resolves each peer claim against it, and returns a state per transcript event

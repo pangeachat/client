@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
 
 void main() {
@@ -29,7 +30,8 @@ void main() {
 
   group('CallOwnership — the ordinary call', () {
     test('a device that sees no sibling carries on and resumes', () {
-      // doc:150 — no sibling remains is an ordinary call.
+      // doc "Act only on what was seen" — no sibling remains is an ordinary
+      // call.
       final d = noSibling(CallOwnership(), t0);
       expect(d.resume, isTrue);
       expect(d.carriedOn, isTrue);
@@ -41,8 +43,8 @@ void main() {
 
   group('CallOwnership — silence on first sighting', () {
     test('the first reading with a sibling holds media, before any tick', () {
-      // doc:146,215 — close and hold on the FIRST sighting, no confirmation
-      // delay. The prompt waits; the mute does not.
+      // doc "Silence first" — close and hold on the FIRST sighting, no
+      // confirmation delay. The prompt waits; the mute does not.
       final d = sighting(CallOwnership(), t0);
       expect(d.holdMedia, isTrue);
       expect(d.carriedOn, isFalse);
@@ -50,8 +52,8 @@ void main() {
     });
 
     test('an echo shorter than a tick shows no prompt and then resumes', () {
-      // doc:216,257 — a sibling gone inside the tick costs a dropout and no
-      // prompt.
+      // doc "Silence first" — a sibling gone inside the tick costs a dropout
+      // and no prompt.
       final o = CallOwnership();
       expect(sighting(o, t0).prompt, OwnershipPromptKind.none);
       final gone = noSibling(o, t0.add(const Duration(seconds: 1)));
@@ -62,7 +64,7 @@ void main() {
 
   group('CallOwnership — the choice prompt is tick-gated', () {
     test('the choice appears only after one continuous tick', () {
-      // doc:151,216.
+      // doc "Silence first".
       final o = CallOwnership();
       expect(sighting(o, t0).prompt, OwnershipPromptKind.none);
       expect(
@@ -76,8 +78,9 @@ void main() {
     'CallOwnership — the older-version prompt is tick-gated (defect 3)',
     () {
       test('a silent sibling within its tick shows no prompt yet', () {
-        // doc:191,216 — an updated sibling is briefly silent before its `no`
-        // lands; within the tick it must not be labelled an older build.
+        // doc "older-version device" — an updated sibling is briefly silent
+        // before its `no` lands; within the tick it must not be labelled an
+        // older build.
         final d = sighting(CallOwnership(), t0, silent: const {'B'});
         expect(d.holdMedia, isTrue);
         expect(d.prompt, OwnershipPromptKind.none);
@@ -86,7 +89,7 @@ void main() {
       test(
         'a silent sibling past its own tick shows the older-version prompt',
         () {
-          // doc:153.
+          // doc "older-version device".
           final o = CallOwnership();
           sighting(o, t0, silent: const {'B'});
           final d = sighting(o, t0.add(kPromptTick), silent: const {'B'});
@@ -99,8 +102,8 @@ void main() {
 
   group('CallOwnership — Use this device', () {
     test('a claim publishes, holds, then resumes when the sibling is gone', () {
-      // doc:146,170 — the chosen device resumes on the sibling's DEPARTURE, not
-      // on the tap.
+      // doc "Act only on what was seen" — the chosen device resumes on the
+      // sibling's DEPARTURE, not on the tap.
       final o = CallOwnership();
       sighting(o, t0);
       o.chooseThisDevice();
@@ -114,7 +117,7 @@ void main() {
     });
 
     test('a claimed device unmutes at the bounded wait regardless', () {
-      // doc:218.
+      // doc "Waits match".
       final o = CallOwnership();
       sighting(o, t0);
       o.chooseThisDevice();
@@ -130,10 +133,10 @@ void main() {
     test(
       'a claimed device does NOT unmute while a silent sibling is present',
       () {
-        // doc:182,188,254 — the bounded wait may never be applied against a
-        // sibling that cannot leave. Rule 4 (silent) must dominate rule 5
-        // (claimed): at the unmute instant the device gives up, it does not
-        // resume.
+        // doc "older-version device" — the bounded wait may never be applied
+        // against a sibling that cannot leave. Rule 4 (silent) must dominate
+        // rule 5 (claimed): at the unmute instant the device gives up, it does
+        // not resume.
         final withSilent = CallOwnership();
         sighting(withSilent, t0);
         withSilent.chooseThisDevice();
@@ -162,7 +165,7 @@ void main() {
     );
 
     test(
-      'a useThis reconciled with a silent sibling present is DROPPED (doc:188)',
+      'a useThis reconciled with a silent sibling present is DROPPED (older-version device)',
       () {
         // The stale/invalid tap: the learner tapped Use this device while the
         // choice was showing, but by reconcile time a silent sibling is present
@@ -205,8 +208,8 @@ void main() {
 
   group('CallOwnership — Leave the call here', () {
     test('ends this device immediately with CONTINUING, no wait', () {
-      // doc:164 — a deliberate leave needs no claim; the sibling is present, so
-      // the call continues there.
+      // doc "Act only on what was seen" — a deliberate leave needs no claim;
+      // the sibling is present, so the call continues there.
       final o = CallOwnership();
       sighting(o, t0);
       o.leaveHere();
@@ -217,9 +220,9 @@ void main() {
     });
   });
 
-  group('CallOwnership — glare, resolved with no clock (doc:248,249)', () {
+  group('CallOwnership — glare, resolved with no clock (both tap)', () {
     test('observing a sibling claim ends this device (CONTINUING)', () {
-      // doc:152.
+      // doc "The learner chooses".
       final d = sighting(CallOwnership(), t0, claim: true);
       expect(d.endSelf, isTrue);
       expect(d.endReason, LeaveReason.continuing);
@@ -227,8 +230,9 @@ void main() {
     });
 
     test('both claim and both read -> both end', () {
-      // doc:248 — this device tapped useThis AND observes the sibling's claim.
-      // Rule 2 dominates the pending tap, so it ends without publishing.
+      // doc "The learner chooses" — this device tapped useThis AND observes the
+      // sibling's claim. Rule 2 dominates the pending tap, so it ends without
+      // publishing.
       final o = CallOwnership();
       sighting(o, t0);
       o.chooseThisDevice();
@@ -242,7 +246,7 @@ void main() {
     });
 
     test(
-      'a tap that PUBLISHES first, then observes the rival, ends (doc:248)',
+      'a tap that PUBLISHES first, then observes the rival, ends (both tap)',
       () {
         // The genuinely simultaneous double-tap: this device publishes its own
         // claim before the sibling's is visible, then sees it. Both such devices
@@ -276,8 +280,9 @@ void main() {
     );
 
     test('one-way visibility -> the reader ends, the other survives', () {
-      // doc:249. The reader (sees the claim) ends; the other never reads a
-      // claim, holds as claimed, then resumes when the reader is gone.
+      // doc "The learner chooses". The reader (sees the claim) ends; the other
+      // never reads a claim, holds as claimed, then resumes when the reader is
+      // gone.
       final reader = sighting(CallOwnership(), t0, claim: true);
       expect(reader.endSelf, isTrue);
 
@@ -308,8 +313,9 @@ void main() {
     test(
       'a departure clears a pending tap so a stale leave never acts later',
       () {
-        // doc:158,163 — rule 1 forgets the pending tap. A leaveHere set before the
-        // sibling left must not end the device on a LATER, unrelated sighting.
+        // doc "Act only on what was seen" — rule 1 forgets the pending tap. A
+        // leaveHere set before the sibling left must not end the device on a
+        // LATER, unrelated sighting.
         final o = CallOwnership();
         sighting(o, t0);
         o.leaveHere();
@@ -325,7 +331,7 @@ void main() {
     );
   });
 
-  group('CallOwnership — the give-up timer (doc:217,222)', () {
+  group('CallOwnership — the give-up timer (gives up)', () {
     test(
       'a not-chosen device ends only itself at the window, reason ENDED',
       () {
@@ -339,8 +345,8 @@ void main() {
     );
 
     test('the give-up is cancelled the moment the sibling leaves', () {
-      // doc:156 — a departure resolves the ambiguity; the timer must not fire
-      // after the thing it waited for has happened.
+      // doc "Act only on what was seen" — a departure resolves the ambiguity;
+      // the timer must not fire after the thing it waited for has happened.
       final o = CallOwnership();
       sighting(o, t0);
       final d = noSibling(o, t0.add(kGiveUpAfterSighting));
@@ -349,13 +355,31 @@ void main() {
     });
 
     test('a give-up against a silent sibling is ENDED, not CONTINUING', () {
-      // doc:44,144,222 — no positive evidence, so the message must not claim the
-      // call continues.
+      // doc "gives up ends only itself" — no positive evidence, so the message
+      // must not claim the call continues.
       final o = CallOwnership();
       sighting(o, t0, silent: const {'B'});
       final d = sighting(o, t0.add(kGiveUpAfterSighting), silent: const {'B'});
       expect(d.endSelf, isTrue);
       expect(d.endReason, LeaveReason.ended);
+    });
+  });
+
+  group('CallOwnership — the waits match the call\'s own windows', () {
+    // doc "Waits match" and "Silence first": the prompt waits one presence
+    // tick, the give-up wait is the peer grace window, and the chosen
+    // device's wait is the SFU's departure retention, which the peer grace
+    // window is matched to. Separate constants that share a value.
+    test('the prompt waits exactly one presence tick', () {
+      expect(kPromptTick, ActiveCall.presenceRecheck);
+    });
+
+    test('the give-up wait is the peer grace window', () {
+      expect(kGiveUpAfterSighting, ActiveCall.peerGraceWindow);
+    });
+
+    test('the chosen device waits out the SFU departure retention', () {
+      expect(kChosenUnmuteAfterClaim, ActiveCall.peerGraceWindow);
     });
   });
 }

@@ -157,6 +157,10 @@ class _TimelineUpdateNotifier extends ChangeNotifier {
 /// same frame; running two `room.getTimeline` calls at once is unsafe because
 /// `getTimeline` overwrites the shared `room.timeline`. Each controller awaits
 /// any in-flight load before starting its own. See `routing.instructions.md`.
+///
+/// The shared timeline is also why only one live view of a room is open at a
+/// time. Folding the choreographer controller into the chat controller would
+/// give rooms their own session state and could lift that limit.
 Completer<void>? _getTimelineGate;
 // Pangea#
 

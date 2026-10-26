@@ -1041,7 +1041,7 @@ void main() {
       // Dragging fully down settles AT the peek rather than away: on narrow
       // the peek is the course menu's floor, and the whole point is that no
       // gesture can put it off screen (routing.instructions.md ->
-      // Single-column mode).
+      // Closing a panel).
       // Dragged by the CONTENT: at a peek the body takes a drag recogniser of
       // its own, so the handle predicate matches two (as the peek drag test
       // above does).
