@@ -1,10 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
@@ -174,6 +178,11 @@ class ExampleMessageUtil {
       return null;
     }
 
+    if (!tokensFitText(tokens, text)) {
+      _reportMisfit(messageEvent);
+      return null;
+    }
+
     final targetToken = tokens[targetTokenIndex];
 
     final targetStart = targetToken.text.offset;
@@ -282,4 +291,34 @@ class ExampleMessageUtil {
       roomId: messageEvent.room.id,
     );
   }
+
+  /// Whether every token reads back from [text] at its own offset. Tokens
+  /// computed for some other string put each word over the wrong characters,
+  /// and an example built from them stitches the words into garble.
+  @visibleForTesting
+  static bool tokensFitText(List<PangeaToken> tokens, String text) {
+    final chars = text.characters.toList();
+    return tokens.every((token) {
+      final start = token.text.offset;
+      final end = start + token.text.content.characters.length;
+      return start >= 0 &&
+          end <= chars.length &&
+          chars.sublist(start, end).join() == token.text.content;
+    });
+  }
+
+  /// A skipped example turns a listening or read-aloud item into a meaning
+  /// one, which the session hides, so it is reported rather than silent.
+  static void _reportMisfit(PangeaMessageEvent messageEvent) => unawaited(
+    ErrorHandler.logErrorOnce(
+      key: 'example_message_tokens_misfit',
+      e: 'example message skipped: its tokens do not fit its text',
+      data: {
+        'eventId': messageEvent.eventId,
+        'roomId': messageEvent.room.id,
+        'isAudio': messageEvent.isAudioMessage,
+      },
+      level: SentryLevel.warning,
+    ),
+  );
 }
