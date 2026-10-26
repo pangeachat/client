@@ -201,12 +201,13 @@ class AnalyticsPracticeView extends StatelessWidget {
           return PracticeStartPage(
             type: session.type,
             count: points.length,
-            emojis: session.type == ConstructTypeEnum.vocab
+            emojiWords: session.type == ConstructTypeEnum.vocab
                 ? [
                     for (final point in points)
-                      ?point.tokens.first.vocabConstructID.userSetEmoji,
+                      point.tokens.first.vocabConstructID,
                   ]
                 : const [],
+            offline: session.offline,
             skills: session.skills,
             availableSkills: session.availableSkills,
             onSkillsChanged: controller.setSkills,

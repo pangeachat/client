@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_skills_store.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_start_emojis.dart';
 
 /// What a fresh practice session shows before its clock starts: how many
-/// words or grammar points it practices, the emojis the learner gave those
-/// words, the exercise-type chips for vocab, and one big Start. See
+/// words or grammar points it practices, those words' emojis, the
+/// exercise-type chips for vocab, and one big Start. See
 /// practice-exercises.instructions.md, "Start page".
 class PracticeStartPage extends StatelessWidget {
   final ConstructTypeEnum type;
   final int count;
-  final List<String> emojis;
+
+  /// The words whose emojis the row shows; empty for grammar.
+  final List<ConstructIdentifier> emojiWords;
+  final bool offline;
 
   /// The exercise types on, and those the session has words for.
   final Set<LearningSkillsEnum> skills;
@@ -23,7 +28,8 @@ class PracticeStartPage extends StatelessWidget {
   const PracticeStartPage({
     required this.type,
     required this.count,
-    required this.emojis,
+    required this.emojiWords,
+    required this.offline,
     required this.skills,
     required this.availableSkills,
     required this.onSkillsChanged,
@@ -49,21 +55,8 @@ class PracticeStartPage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (emojis.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-                child: ExcludeSemantics(
-                  child: Wrap(
-                    alignment: WrapAlignment.center,
-                    spacing: 12.0,
-                    runSpacing: 12.0,
-                    children: [
-                      for (final emoji in emojis)
-                        Text(emoji, style: const TextStyle(fontSize: 40.0)),
-                    ],
-                  ),
-                ),
-              ),
+            if (emojiWords.isNotEmpty)
+              PracticeStartEmojis(words: emojiWords, offline: offline),
             MergeSemantics(
               child: Column(
                 spacing: 4.0,

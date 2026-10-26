@@ -33,7 +33,8 @@ void main() {
           body: PracticeStartPage(
             type: type,
             count: 8,
-            emojis: type == ConstructTypeEnum.vocab ? const ['🍎', '🚲'] : [],
+            emojiWords: const [],
+            offline: false,
             skills: skills,
             availableSkills: available,
             onSkillsChanged: changes.add,
@@ -47,13 +48,11 @@ void main() {
 
   Finder chip(String label) => find.widgetWithText(FilterChip, label);
 
-  testWidgets('vocab shows the count, emojis, chips and Start', (tester) async {
+  testWidgets('vocab shows the count, chips and Start', (tester) async {
     await pump(tester);
 
     expect(find.text('8'), findsOneWidget);
     expect(find.text('words to practice'), findsOneWidget);
-    expect(find.text('🍎'), findsOneWidget);
-    expect(find.text('🚲'), findsOneWidget);
     for (final label in ['Reading', 'Listening', 'Speaking']) {
       expect(tester.widget<FilterChip>(chip(label)).selected, isTrue);
     }
