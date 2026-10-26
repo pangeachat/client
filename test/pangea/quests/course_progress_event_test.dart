@@ -18,19 +18,99 @@ void main() {
     completed: completed,
   );
 
+  /// The record the writer stores after [stored], or null when it writes
+  /// nothing.
   CourseProgressEvent? write(
     CourseProgressEvent? stored,
     Map<String, CanDoProgress> canDos, {
     required DateTime now,
     int xpToComplete = 1000,
     String appVersion = '5.0.14+1',
-  }) => CourseProgressEvent.next(
-    stored: stored,
-    xpToComplete: xpToComplete,
-    canDos: canDos,
-    now: now,
-    appVersion: appVersion,
-  );
+    Map<String, DateTime> replayed = const {},
+  }) {
+    final next = CourseProgressEvent.after(
+      stored: stored,
+      xpToComplete: xpToComplete,
+      canDos: canDos,
+      now: now,
+      appVersion: appVersion,
+    ).withReplayedDates(replayed);
+    return next.changedSince(stored) ? next : null;
+  }
+
+  group('replayed dates', () {
+    test('fill a missing date and keep the before-tracking mark', () {
+      final first = write(null, {
+        'lo1': canDo(1200, completed: true),
+      }, now: t1)!;
+      expect(first.awaitingReplay, ['lo1']);
+      final replayed = write(
+        first,
+        {'lo1': canDo(1200, completed: true)},
+        now: t2,
+        replayed: {'lo1': t0},
+      )!;
+      expect(replayed.canDos['lo1']!.firstCompletedAt, t0);
+      expect(replayed.canDos['lo1']!.completedBeforeTracking, isTrue);
+      expect(replayed.awaitingReplay, isEmpty);
+    });
+
+    test('are written in the first record when the replay runs at once', () {
+      final first = write(
+        null,
+        {'lo1': canDo(1200, completed: true)},
+        now: t1,
+        replayed: {'lo1': t0},
+      )!;
+      expect(first.toJson()['can_dos'], {
+        'lo1': {
+          'xp': 1200,
+          'chat': 1200,
+          'speaking': 0,
+          'goals': 0,
+          'practice': 0,
+          'completed': true,
+          'first_completed_at': '2026-10-20T15:00:00.000Z',
+          'completed_before_tracking': true,
+        },
+      });
+    });
+
+    test('are kept by later writes, mark and all', () {
+      final first = write(
+        null,
+        {'lo1': canDo(1200, completed: true)},
+        now: t1,
+        replayed: {'lo1': t0},
+      )!;
+      final read = CourseProgressEvent.fromJson(first.toJson())!;
+      final later = write(read, {
+        'lo1': canDo(1300, completed: true),
+      }, now: t2)!;
+      expect(later.canDos['lo1']!.firstCompletedAt, t0);
+      expect(later.canDos['lo1']!.completedBeforeTracking, isTrue);
+      expect(later.awaitingReplay, isEmpty);
+    });
+
+    test('never replace a date the app saw', () {
+      final first = write(null, {'lo1': canDo(300)}, now: t0)!;
+      final done = write(first, {
+        'lo1': canDo(1100, completed: true),
+      }, now: t1)!;
+      expect(
+        done.withReplayedDates({'lo1': t0}).canDos['lo1']!.firstCompletedAt,
+        t1,
+      );
+    });
+
+    test('are not asked for a Mission that is not complete now', () {
+      final first = write(null, {
+        'lo1': canDo(1200, completed: true),
+      }, now: t0)!;
+      final raised = write(first, {'lo1': canDo(1200)}, now: t1)!;
+      expect(raised.awaitingReplay, isEmpty);
+    });
+  });
 
   group('completion dates', () {
     test('a Mission complete at the first write gets no date', () {

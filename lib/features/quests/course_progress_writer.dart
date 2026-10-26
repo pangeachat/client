@@ -4,11 +4,13 @@ import 'package:matrix/matrix.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/course_progress_event.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
+import 'package:fluffychat/features/quests/mission_completion_replay.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -21,8 +23,18 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 /// Keeps a progress record ([CourseProgressEvent]) for each joined course in
 /// the learner's analytics room, for the teacher dashboard (client#9643).
 /// Checked after every analytics upload and when a saved session starts to
-/// count; a course is written only when one of its figures changed.
+/// count; a course is written only when one of its figures changed. A Mission
+/// already complete when its course's record began gets its date replayed
+/// from the learner's history ([MissionCompletionReplay]).
 class CourseProgressWriter {
+  /// The learner's cap-filtered uses in a language, read only when a
+  /// completion date has to be replayed.
+  final Future<List<OneConstructUse>> Function(String language) _readUses;
+
+  CourseProgressWriter({
+    required Future<List<OneConstructUse>> Function(String language) readUses,
+  }) : _readUses = readUses;
+
   Future<void>? _inflight;
   Room? _queuedRoom;
   String? _queuedLanguage;
@@ -31,6 +43,13 @@ class CourseProgressWriter {
   /// a check that ran before a write synced back would otherwise read the
   /// older record and date a completion a second time.
   final Map<String, CourseProgressEvent> _written = {};
+
+  /// The current check's replay, built on the first Mission that needs one.
+  MissionCompletionReplay? _replay;
+
+  /// Course and Mission pairs whose replay found no date this run, so a
+  /// failing replay isn't repeated after every upload.
+  final Set<String> _unreplayable = {};
 
   /// Checks the courses in [language] and writes their records to
   /// [analyticsRoom], that language's analytics room. A check asked for while
@@ -79,14 +98,16 @@ class CourseProgressWriter {
     final xpByActivity = client.userXpByActivity(cache.creditedXpByRoom);
     final byActivity = client.cachedXpBreakdownByActivity;
     final appVersion = await _appVersion();
+    _replay = null;
     for (final course in courses) {
       final outline = await _outlineOf(course);
       if (outline == null) continue;
       final xpToComplete =
           course.teacherMode.xpToCompleteObjective ??
           kDefaultXpToCompleteObjective;
-      final next = CourseProgressEvent.next(
-        stored: _storedFor(analyticsRoom, course.id),
+      final stored = _storedFor(analyticsRoom, course.id);
+      var next = CourseProgressEvent.after(
+        stored: stored,
         xpToComplete: xpToComplete,
         canDos: client.canDoProgress(
           outline,
@@ -97,7 +118,25 @@ class CourseProgressWriter {
         now: DateTime.now().toUtc(),
         appVersion: appVersion,
       );
-      if (next == null) continue;
+      final awaiting = [
+        for (final missionId in next.awaitingReplay)
+          if (!_unreplayable.contains('${course.id}|$missionId')) missionId,
+      ];
+      if (awaiting.isNotEmpty) {
+        final replay = _replay ??= MissionCompletionReplay(
+          uses: await _readUses(language),
+          sessions: client.savedSessionXp,
+        );
+        next = next.withReplayedDates(
+          _replayedDates(
+            replay,
+            outline.toCourseLoOutline(xpToComplete: xpToComplete),
+            course.id,
+            awaiting,
+          ),
+        );
+      }
+      if (!next.changedSince(stored)) continue;
       await client.setRoomStateWithKey(
         analyticsRoom.id,
         PangeaEventTypes.courseProgress,
@@ -106,6 +145,35 @@ class CourseProgressWriter {
       );
       _written[course.id] = next;
     }
+  }
+
+  /// When each of [missionIds] first reached [course]'s threshold, replayed
+  /// from history. A Mission whose replay finds no such moment is reported
+  /// and left undated.
+  Map<String, DateTime> _replayedDates(
+    MissionCompletionReplay replay,
+    CourseLoOutline course,
+    String courseRoomId,
+    List<String> missionIds,
+  ) {
+    final dates = <String, DateTime>{};
+    for (final missionId in missionIds) {
+      final at = replay.firstReached(course, missionId);
+      if (at != null) {
+        dates[missionId] = at;
+        continue;
+      }
+      // It shows as complete, so some moment of its history reached the
+      // threshold; finding none means the replay and the ring disagree.
+      _unreplayable.add('$courseRoomId|$missionId');
+      ErrorHandler.logErrorOnce(
+        key: 'course-progress-replay:$courseRoomId:$missionId',
+        e: 'A complete Mission\'s replayed history never reaches its threshold',
+        data: {'courseRoomId': courseRoomId, 'missionId': missionId},
+        level: SentryLevel.warning,
+      );
+    }
+    return dates;
   }
 
   /// [course]'s outline as the course shows it, read the way the course page

@@ -13,8 +13,9 @@ class CanDoProgress {
   /// once set, even when its XP falls or the threshold rises.
   final DateTime? firstCompletedAt;
 
-  /// Already complete the first time it was written, so the date it was
-  /// completed is unknown.
+  /// Already complete the first time it was written, so the app never saw it
+  /// complete: [firstCompletedAt] is null until it is replayed from history
+  /// ([withReplayedDate]), and reconstructed rather than seen once it is set.
   final bool completedBeforeTracking;
 
   const CanDoProgress({
@@ -75,7 +76,12 @@ class CanDoProgress {
   /// unknown and a guessed one could never be corrected.
   CanDoProgress datedAfter(CanDoProgress? before, DateTime now) {
     final storedDate = before?.firstCompletedAt;
-    if (storedDate != null) return _dated(firstCompletedAt: storedDate);
+    if (storedDate != null) {
+      return _dated(
+        firstCompletedAt: storedDate,
+        completedBeforeTracking: before!.completedBeforeTracking,
+      );
+    }
     if (before?.completedBeforeTracking ?? false) {
       return _dated(completedBeforeTracking: true);
     }
@@ -84,6 +90,17 @@ class CanDoProgress {
         ? _dated(completedBeforeTracking: true)
         : _dated(firstCompletedAt: now);
   }
+
+  /// Complete, but completed before tracking with no date yet: its date is
+  /// to be replayed from history.
+  bool get awaitsReplay =>
+      completed && completedBeforeTracking && firstCompletedAt == null;
+
+  /// This entry dated [at], the moment a replay of the learner's history
+  /// found it first complete. Still [completedBeforeTracking], which tells a
+  /// reconstructed date from a seen one.
+  CanDoProgress withReplayedDate(DateTime at) =>
+      _dated(firstCompletedAt: at.toUtc(), completedBeforeTracking: true);
 
   CanDoProgress _dated({
     DateTime? firstCompletedAt,

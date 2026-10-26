@@ -13,6 +13,7 @@ import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/features/quests/saved_session_xp.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
@@ -101,6 +102,20 @@ extension QuestsClientExtension on Client {
           for (final room in entry.value)
             (activityId: entry.key, xp: sessionXp(room, creditedXpByRoom)),
       ]);
+
+  /// Every saved session [userXpByActivity] counts, with when it was saved,
+  /// for replaying Mission XP over time (`MissionCompletionReplay`).
+  List<SavedSessionXp> get savedSessionXp => [
+    for (final entry in savedSessionsByActivity.entries)
+      for (final room in entry.value)
+        if (room.ownRoleState?.archivedAt case final savedAt?)
+          SavedSessionXp(
+            activityId: entry.key,
+            roomId: room.id,
+            savedAt: savedAt,
+            goalXp: kGoalXp * room.ownCompletedGoals.length,
+          ),
+  ];
 
   /// [userXpByActivity] split by source: the same saved sessions, with each
   /// room's chat, speaking and practice XP kept apart and the goal checkmarks

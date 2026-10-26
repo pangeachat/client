@@ -249,10 +249,7 @@ class MissionXpCache extends ChangeNotifier {
     Map<String, Map<LearningSkillsEnum, int>> skillByRoom,
     Map<String, Map<LearningSkillsEnum, int>> skillByLemma,
   ) {
-    final credited = Map<String, int>.of(chat);
-    for (final part in [speaking, practice]) {
-      part.forEach((room, xp) => credited[room] = (credited[room] ?? 0) + xp);
-    }
+    final credited = MissionRoomXp.sumOf([chat, speaking, practice]);
     if (mapEquals(chat, _chatXpByRoom) &&
         mapEquals(speaking, _speakingXpByRoom) &&
         mapEquals(practice, _practiceXpByRoom) &&

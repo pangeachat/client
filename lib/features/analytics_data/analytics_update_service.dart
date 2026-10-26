@@ -103,7 +103,9 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
   Completer<void>? _updateCompleter;
   Timer? _periodicTimer;
-  final CourseProgressWriter _courseProgress = CourseProgressWriter();
+  late final CourseProgressWriter _courseProgress = CourseProgressWriter(
+    readUses: dataService.getUses,
+  );
 
   /// What the connection banner says. Uploads pause while it says the
   /// connection is lost, and run once when it returns.

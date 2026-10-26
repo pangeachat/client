@@ -34,6 +34,18 @@ class MissionRoomXp {
     }
   }
 
+  /// Each room's XP across its parts.
+  Map<String, int> get credited => sumOf([chat, speaking, practice]);
+
+  /// [parts] added up per room.
+  static Map<String, int> sumOf(List<Map<String, int>> parts) {
+    final sum = <String, int>{};
+    for (final part in parts) {
+      part.forEach((room, xp) => sum[room] = (sum[room] ?? 0) + xp);
+    }
+    return sum;
+  }
+
   /// The part [use] counts toward.
   Map<String, int> partOf(OneConstructUse use) => use.useType.isChatUse
       ? chat

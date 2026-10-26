@@ -67,29 +67,52 @@ class CourseProgressEvent {
     },
   };
 
-  /// The record to store after [stored], from [canDos] as the app shows them
-  /// now with no dates set, or null when no figure changed. Completion dates
-  /// carry over from [stored] ([CanDoProgress.datedAfter]).
-  static CourseProgressEvent? next({
+  /// The record that follows [stored], from [canDos] as the app shows them
+  /// now with no dates set. Completion dates carry over from [stored]
+  /// ([CanDoProgress.datedAfter]).
+  static CourseProgressEvent after({
     required CourseProgressEvent? stored,
     required int xpToComplete,
     required Map<String, CanDoProgress> canDos,
     required DateTime now,
     required String appVersion,
-  }) {
-    final next = CourseProgressEvent(
-      computedAt: now,
-      appVersion: appVersion,
-      xpToComplete: xpToComplete,
-      canDos: {
-        for (final entry in canDos.entries)
-          entry.key: entry.value.datedAfter(stored?.canDos[entry.key], now),
-      },
-    );
-    if (stored != null &&
-        const DeepCollectionEquality().equals(stored._figures, next._figures)) {
-      return null;
-    }
-    return next;
-  }
+  }) => CourseProgressEvent(
+    computedAt: now,
+    appVersion: appVersion,
+    xpToComplete: xpToComplete,
+    canDos: {
+      for (final entry in canDos.entries)
+        entry.key: entry.value.datedAfter(stored?.canDos[entry.key], now),
+    },
+  );
+
+  /// Whether any figure differs from [stored]'s, when and by which version
+  /// each was written aside — a record that doesn't is not written.
+  bool changedSince(CourseProgressEvent? stored) =>
+      stored == null ||
+      !const DeepCollectionEquality().equals(stored._figures, _figures);
+
+  /// The Missions whose date is to be replayed from history
+  /// ([CanDoProgress.awaitsReplay]).
+  List<String> get awaitingReplay => [
+    for (final entry in canDos.entries)
+      if (entry.value.awaitsReplay) entry.key,
+  ];
+
+  /// This record with the replayed [dates] filled in, by Mission id. Only a
+  /// missing date is filled; a date already set is never replaced.
+  CourseProgressEvent withReplayedDates(Map<String, DateTime> dates) =>
+      CourseProgressEvent(
+        computedAt: computedAt,
+        appVersion: appVersion,
+        xpToComplete: xpToComplete,
+        canDos: {
+          for (final entry in canDos.entries)
+            entry.key: switch (dates[entry.key]) {
+              final at? when entry.value.awaitsReplay =>
+                entry.value.withReplayedDate(at),
+              _ => entry.value,
+            },
+        },
+      );
 }
