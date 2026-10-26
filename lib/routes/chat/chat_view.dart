@@ -6,6 +6,7 @@ import 'package:badges/badges.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -13,6 +14,7 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_background.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_finished_status_message.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_card.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -96,8 +98,13 @@ class ChatView extends StatelessWidget {
     // In-session activity surfaces read room.activityPlan, which for a v3
     // reference room hydrates asynchronously (ActivityPlanRepo). Rebuild the
     // subtree when the plan lands so it isn't blank until an unrelated sync.
+    // Settings changes rebuild it too: the activity-image background setting
+    // decides whether the wallpaper shows (ChatController.showWallpaper).
     return ListenableBuilder(
-      listenable: ActivityPlanRepo.instance,
+      listenable: Listenable.merge([
+        ActivityPlanRepo.instance,
+        AppSettings.changes,
+      ]),
       builder: (context, _) => _buildContent(context),
     );
   }
@@ -115,6 +122,7 @@ class ChatView extends StatelessWidget {
     final scrollUpBannerEventId = controller.scrollUpBannerEventId;
 
     final accountConfig = Matrix.of(context).client.applicationAccountConfig;
+    final activityBackgroundUrl = controller.room.activityPlan?.ownImageURL;
 
     return PopScope(
       canPop:
@@ -291,7 +299,7 @@ class ChatView extends StatelessWidget {
               body: Stack(
                 // Pangea#
                 children: <Widget>[
-                  if (accountConfig.wallpaperUrl != null)
+                  if (controller.showWallpaper)
                     ExcludeSemantics(
                       // #Pangea: decorative blurred wallpaper, not content. // Pangea#
                       child: Opacity(
@@ -311,6 +319,16 @@ class ChatView extends StatelessWidget {
                             placeholder: (_) => Container(),
                           ),
                         ),
+                      ),
+                    ),
+                  if (activityBackgroundUrl != null)
+                    Positioned.fill(
+                      child: ActivityChatBackground(
+                        imageUrl: activityBackgroundUrl,
+                        blur: accountConfig.wallpaperBlur ?? 0.0,
+                        mediaVisibility:
+                            controller.activityController.mediaVisibility,
+                        scrollController: controller.scrollController,
                       ),
                     ),
                   Column(

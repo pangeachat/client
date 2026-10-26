@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/bold_tonal_button.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_button.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
 
@@ -64,8 +65,7 @@ void main() {
     expect(find.text('See all'), findsOneWidget);
     // The visible label stays short; the accessible name carries it plus the
     // section, so it still contains what a sighted user reads.
-    final semantics = tester.getSemantics(find.byType(FilledButton));
-    expect(semantics.label, contains('See all Chats'));
+    expect(find.bySemanticsLabel(RegExp('See all Chats')), findsOneWidget);
   });
 
   testWidgets('is a tonal pill, not a text link', (tester) async {
@@ -74,24 +74,23 @@ void main() {
       const CourseSectionButton(section: 'Chats', onPressed: _noop),
     );
 
-    // #8475 filled these so they wouldn't read as the Mission text right
-    // above them; #8744 moved them into the header as text links, which
-    // #8815 found too easy to miss. Tonal is the middle: a pill, but not the
-    // solid fill of a call to action.
+    // #8815 found text links too easy to miss; tonal is the middle: a pill,
+    // but not the solid fill of a call to action — in the bold pressable
+    // style the page's other secondary actions share (#9420).
     expect(find.byType(TextButton), findsNothing);
-    expect(find.byType(FilledButton), findsOneWidget);
-    final surface = tester.widget<Material>(
-      find
-          .descendant(
-            of: find.byType(FilledButton),
-            matching: find.byType(Material),
-          )
-          .first,
-    );
+    expect(find.byType(BoldTonalButton), findsOneWidget);
     final colors = Theme.of(
-      tester.element(find.byType(FilledButton)),
+      tester.element(find.byType(BoldTonalButton)),
     ).colorScheme;
-    expect(surface.color, colors.secondaryContainer);
+    final fills = tester
+        .widgetList<Container>(
+          find.descendant(
+            of: find.byType(BoldTonalButton),
+            matching: find.byType(Container),
+          ),
+        )
+        .map((c) => (c.decoration as BoxDecoration?)?.color);
+    expect(fills, contains(colors.secondaryContainer));
   });
 
   testWidgets('carries nothing beside its label, so its ends match', (
@@ -107,7 +106,7 @@ void main() {
     // wider than its left, whichever button pads it (#8898). Nothing trails
     // the label now, and the two ends measure alike.
     expect(find.byIcon(Icons.chevron_right), findsNothing);
-    final button = tester.getRect(find.byType(FilledButton));
+    final button = tester.getRect(find.byType(BoldTonalButton));
     final label = tester.getRect(find.text('See all'));
     expect(
       label.left - button.left,
@@ -118,6 +117,11 @@ void main() {
   testWidgets('sits at the end of its header, opposite the title', (
     tester,
   ) async {
+    // A wide screen; a narrow one puts every section's actions under the
+    // title (#9492).
+    tester.view.physicalSize = const Size(1200, 900);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
     var taps = 0;
     await pump(
       tester,
@@ -127,7 +131,7 @@ void main() {
     // Same row as the title — not stacked under the section's content — and
     // flush with the section's trailing edge.
     final title = tester.getRect(find.text('Chats'));
-    final button = tester.getRect(find.byType(FilledButton));
+    final button = tester.getRect(find.byType(BoldTonalButton));
     expect(button.left, greaterThan(title.right));
     expect(button.right, moreOrLessEquals(width, epsilon: 1.0));
 
@@ -135,7 +139,8 @@ void main() {
     // a button that stretched would sit exactly at that cap.
     expect(button.width, lessThan(width * 0.7));
 
-    await tester.tap(find.byType(FilledButton));
+    await tester.tap(find.byType(BoldTonalButton));
+    await tester.pumpAndSettle();
     expect(taps, 1);
   });
 

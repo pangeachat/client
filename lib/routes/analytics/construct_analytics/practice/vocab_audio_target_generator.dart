@@ -9,6 +9,9 @@ class VocabAudioTargetGenerator {
   static PracticeExerciseTypeEnum exerciseType =
       PracticeExerciseTypeEnum.lemmaAudio;
 
+  /// Picks words that have an example message to hear or read: the listening
+  /// targets, which the session repo also alternates into read-aloud targets
+  /// (practice-exercises.instructions.md, "Speaking practice").
   static Future<List<AnalyticsPracticeTarget>> get(
     List<ConstructUses> constructs,
   ) async {

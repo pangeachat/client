@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -247,7 +248,9 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
                       _course.canChangeStateEvent(EventTypes.SpaceChild))
                     CourseSectionShortcut(
                       icon: Symbols.chat_add_on,
-                      tooltip: l10n.createGroupChat,
+                      label: l10n.newCourseChat,
+                      // As a bare icon, pilot teachers never found it (#9492).
+                      showLabel: true,
                       onPressed: widget.onCreateChat,
                     ),
                   if (showAll)
@@ -282,6 +285,9 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
                   for (final chat in shownJoined)
                     ChatListItem(
                       chat,
+                      // An activity row stacks the course avatar on its
+                      // photo here as it does in the app-wide list.
+                      space: chat.isActivitySession ? _course : null,
                       titleFontSize: titleFontSize,
                       subtitleFontSize: subtitleFontSize,
                       onTap: () => context.go(

@@ -24,7 +24,8 @@ class AddCoursePageTokenParam extends TokenParam {
   final String? initialLanguageFilter;
   final bool allLanguagesFilter;
 
-  // public browsing options
+  // The course previewed: in browse, the tapped course; in own, the course
+  // to join instead of the picked quest (#9590).
   final String? previewRoomId;
 
   // Carried like the language filter, so the browse list's access pill
@@ -158,8 +159,12 @@ class AddCoursePageTokenParam extends TokenParam {
           if (showNewCourseInvitePage) {
             return '$encodedSubpage/$encodedCourseId/invite';
           }
+          final encodedJoinRoomId =
+              previewRoomId != null && previewRoomId.isNotEmpty
+              ? '/${TokenFields.encode(shortRoomId(previewRoomId))}'
+              : '';
           return TokenFields.join([
-            '$encodedSubpage/$encodedCourseId',
+            '$encodedSubpage/$encodedCourseId$encodedJoinRoomId',
             ?encodedLanguage,
             ?encodedAllLanguagesFilter,
           ]);
@@ -252,9 +257,13 @@ class AddCoursePageTokenParam extends TokenParam {
         if (parts.length > 1) {
           final courseIdChunks = TokenFields.split(parts[1]);
           final createCourseId = TokenFields.decode(courseIdChunks.first);
+          final previewRoomId = parts.length > 2
+              ? TokenFields.decode(TokenFields.split(parts[2]).first)
+              : null;
           return AddCoursePageTokenParam(
             subpage: subpage,
             createCourseId: createCourseId,
+            previewRoomId: previewRoomId,
             initialLanguageFilter: languageFilter,
             allLanguagesFilter: allLanguagesFilter,
           );

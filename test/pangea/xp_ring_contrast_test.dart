@@ -10,20 +10,21 @@ import 'contrast_ratio.dart';
 /// wider than the gold arc so the arc's adjacent color is the track, never raw
 /// cartography — these are the two checks that keep that geometry honest.
 void main() {
-  // Dominant tile fields the ring's outer edge meets: OSM light cartography
-  // and CARTO dark_all. CARTO's sparse #373737 detail linework is a known,
-  // documented residual (2.68:1 — no color of any hue clears both it and the
-  // gold arc; see the issue) and is deliberately not asserted here.
+  // Dominant tile fields the ring's outer edge meets: Stadia's Alidade Bright
+  // and Alidade Smooth Dark (#8603), sampled from the served tiles. Sparse
+  // label and border linework is deliberately not asserted here. Dark parks
+  // (#383E36, about 1% of dark tiles) are left out too: every track tone that
+  // clears them measures under 3:1 against the arc.
   const lightTiles = {
-    'land': Color(0xFFF2EFE9),
+    'land': Color(0xFFF4ECE1),
     'road': Color(0xFFFFFFFF),
-    'park': Color(0xFFC8FACC),
-    'water': Color(0xFFAAD3DF),
+    'grass': Color(0xFFD2D9C3),
+    'woods': Color(0xFFA6C09C),
+    'water': Color(0xFF74BCE2),
   };
   const darkTiles = {
-    'base': Color(0xFF121212),
-    'water': Color(0xFF0E1116),
-    'road': Color(0xFF242424),
+    'land': Color(0xFF333333),
+    'water and roads': Color(0xFF222222),
   };
 
   for (final brightness in [Brightness.light, Brightness.dark]) {

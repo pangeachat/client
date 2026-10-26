@@ -128,20 +128,9 @@ Returned by `CourseActivityRepo.get()`. Full activity plan with all fields (titl
 
 ---
 
-## 7. Topic Unlock Logic — `ActivitySummariesProvider`
+## 7. Unlocking
 
-[`ActivitySummariesProvider`](../../lib/pangea/course_plans/course_activities/activity_summaries_provider.dart) is a mixin that determines which topic is "active" for a user. Topics are sequential — a user must complete activities in topic N before topic N+1 unlocks.
-
-### `currentTopicId()` logic
-
-Iterates topics in order. For each topic:
-1. Checks `activityListComplete` — requires ALL activities for the topic to be loaded
-2. Calls `_hasCompletedTopic()` — checks if the user has archived enough activity sessions
-3. Returns the first incomplete topic
-
-### `_hasCompletedTopic()` dependency on activity data
-
-The unlock heuristic counts "two-person activities" via `topic.loadedActivities.values.where((a) => a.req.numberOfParticipants <= 2).length`. This is the only reason all activities need to be loaded for unlock computation. If `numberOfParticipants` were available without loading full activity objects, `loadAllActivities()` could be eliminated from the page load path.
+Topic unlocking is gone with the v1 course view. Nothing is locked now: progression only ranks — see [quests.instructions.md](quests.instructions.md).
 
 ---
 
@@ -164,7 +153,7 @@ A course room shows its own `m.room.avatar` when it has one. When it has none, i
 
 - **Why the client falls back.** The room avatar is copied from the quest cover once, when the course is created, and nothing reads the quest again. Courses made before quests had covers therefore have no avatar. Backfilling those rooms from the server would need an account with admin power in every course room, so the client reads the cover instead (#9264).
 - **One rule for every surface.** Every place that shows a course's image resolves it through [`CourseImageBuilder`](../../lib/pangea/common/widgets/course_image_builder.dart): the nav rail, the mobile course shortcut, the course lists and public browse, the course badge on chat-list rows, the "go to course" menu item, and the edit-course page. They cannot disagree about which image a course has.
-- **Loading.** [`QuestPlansRepo.cover`](../../lib/features/quests/repo/quest_plans_repo.dart) reads the cover once per quest per session, and any quest-plans read that already resolved the image fills the same cache. The letter shows while the cover loads. A failed read is reported and retried the next time the avatar appears.
+- **Loading.** [`QuestPlansRepo.cover`](../../lib/features/quests/repo/quest_plans_repo.dart) reads the cover once per quest per session, and any quest-plans read that already resolved the image fills the same cache. The letter shows while the cover loads. A failed read is reported and not retried for the rest of the session, because retrying it every time the avatar appeared sent a burst of reads at a CMS that was already slow (#9569). The letter shows instead until the app restarts (on the web, until the page is reloaded), or until another quest-plans read resolves the image, such as opening that course's page.
 
 ---
 

@@ -69,6 +69,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_background.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_extension.dart';
 import 'package:fluffychat/routes/chat/chat_view.dart';
@@ -118,6 +119,7 @@ import 'package:fluffychat/routes/chat/voice_analytics_feedback.dart';
 import 'package:fluffychat/routes/settings/settings_learning/disable_language_tools_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_repo.dart';
+import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -155,6 +157,10 @@ class _TimelineUpdateNotifier extends ChangeNotifier {
 /// same frame; running two `room.getTimeline` calls at once is unsafe because
 /// `getTimeline` overwrites the shared `room.timeline`. Each controller awaits
 /// any in-flight load before starting its own. See `routing.instructions.md`.
+///
+/// The shared timeline is also why only one live view of a room is open at a
+/// time. Folding the choreographer controller into the chat controller would
+/// give rooms their own session state and could lift that limit.
 Completer<void>? _getTimelineGate;
 // Pangea#
 
@@ -369,6 +375,12 @@ class ChatController extends State<ChatPageWithRoom>
       _scrolledUp || timeline?.allowNewEvent == false;
 
   bool get selectMode => selectedEvents.isNotEmpty;
+
+  /// Whether the learner's wallpaper is drawn behind this chat: they have one,
+  /// and the activity image isn't replacing it.
+  bool get showWallpaper =>
+      room.client.applicationAccountConfig.wallpaperUrl != null &&
+      !ActivityChatBackground.replacesWallpaper(room.activityPlan?.ownImageURL);
 
   final int _loadHistoryCount = 100;
 
@@ -1194,6 +1206,17 @@ class ChatController extends State<ChatPageWithRoom>
     scrollUpBannerEventId = eventId;
   });
 
+  /// The event the scroll-up banner offers after a timeline load failed with
+  /// [error], or null for no banner. Only a network failure while opening on
+  /// [eventContextId] leaves somewhere to go back to; a plain open has no event
+  /// to offer, and its fallback timeline has already loaded (CLIENT-CYX).
+  @visibleForTesting
+  static String? scrollUpBannerEventIdAfterLoadError(
+    Object error,
+    String? eventContextId,
+  ) =>
+      error is TimeoutException || error is IOException ? eventContextId : null;
+
   void updateView() {
     if (!mounted) return;
     setReadMarker();
@@ -1280,9 +1303,11 @@ class ChatController extends State<ChatPageWithRoom>
         onInsert: onInsert,
       );
       if (!mounted) return;
-      if (e is TimeoutException || e is IOException) {
-        _showScrollUpMaterialBanner(eventContextId!);
-      }
+      final bannerEventId = scrollUpBannerEventIdAfterLoadError(
+        e,
+        eventContextId,
+      );
+      if (bannerEventId != null) _showScrollUpMaterialBanner(bannerEventId);
     }
     // [timeline] can be gone by now: the history requests above take a while,
     // and meanwhile the chat can close (dispose clears it) or a jump to
@@ -2960,6 +2985,7 @@ class ChatController extends State<ChatPageWithRoom>
       .firstWhereOrNull(
         (event) =>
             event.isVisibleInGui &&
+            !event.isBotNotice &&
             event.senderId != room.client.userID &&
             !event.redacted,
       )
@@ -2969,6 +2995,7 @@ class ChatController extends State<ChatPageWithRoom>
     final candidate = timeline!.events.firstWhereOrNull(
       (event) =>
           event.isVisibleInGui &&
+          !event.isBotNotice &&
           event.senderId != room.client.userID &&
           event.senderId == BotName.byEnvironment,
     );

@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar_error_practice_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/morph_category_practice_exercise_generator.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_practice_exercise_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_audio_practice_exercise_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_meaning_practice_exercise_generator.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/emoji_practice_exercise_generator.dart';
@@ -94,6 +95,8 @@ class PracticeRepo {
         return VocabMeaningPracticeExerciseGenerator.get(req);
       case PracticeExerciseTypeEnum.lemmaAudio:
         return VocabAudioPracticeExerciseGenerator.get(req);
+      case PracticeExerciseTypeEnum.readAloud:
+        return ReadAloudPracticeExerciseGenerator.get(req);
       case PracticeExerciseTypeEnum.grammarCategory:
         return MorphCategoryPracticeExerciseGenerator.get(req);
       case PracticeExerciseTypeEnum.grammarError:

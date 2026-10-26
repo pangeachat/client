@@ -91,4 +91,30 @@ void main() {
       },
     );
   });
+
+  // #9440 — the opt-in chat background uses only the activity's own image.
+  group('ActivityPlanModel own image', () {
+    test('is the first image block, even after a video lead', () {
+      final p = plan([
+        youtube('https://youtu.be/dQw4w9WgXcQ'),
+        image('https://content.pangea.chat/scene.jpg'),
+      ]);
+      expect(p.ownImageURL.toString(), 'https://content.pangea.chat/scene.jpg');
+    });
+
+    test('falls back to the legacy image url', () {
+      final p = plan(
+        const [],
+        imageURL: 'https://content.pangea.chat/legacy.png',
+      );
+      expect(p.ownImageURL.toString(), contains('legacy.png'));
+    });
+
+    test('is null for a video-only activity, never the placeholder', () {
+      final p = plan([youtube('https://youtu.be/dQw4w9WgXcQ')]);
+      expect(p.ownImageURL, isNull);
+      // imageURL still falls back to the placeholder for the carousel.
+      expect(p.imageURL.toString(), contains('Space%20template'));
+    });
+  });
 }

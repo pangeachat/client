@@ -4,24 +4,35 @@ import 'dart:ui' show Tristate;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:async/async.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
+import 'package:matrix/matrix.dart' hide Result;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
+import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_header_actions.dart';
-import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/course_context_bar.dart';
 import 'package:fluffychat/routes/world/left_panel/floor_chevron.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import '../courses/course_missions_fixtures.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
 
@@ -160,56 +171,88 @@ void main() {
     if (settle) await tester.pumpAndSettle();
   }
 
+  /// A two-Mission course (lo-1 → a1, lo-2 → b1, three goals each) whose
+  /// outline the bar's loader reads.
+  Room stubTwoMissionCourse() {
+    ActivityPlanModel plan(String id) => ActivityPlanModel(
+      req: ActivityPlanRequest(
+        topic: '',
+        mode: '',
+        objective: '',
+        media: MediaEnum.nan,
+        cefrLevel: LanguageLevelTypeEnum.a1,
+        languageOfInstructions: 'en',
+        targetLanguage: 'es',
+        numberOfParticipants: 1,
+      ),
+      title: id,
+      learningObjective: '',
+      instructions: '',
+      vocab: const [],
+      activityId: id,
+      roles: {
+        'r1': ActivityRole(
+          id: 'r1',
+          name: 'r1',
+          goal: null,
+          goals: [
+            for (var i = 0; i < 3; i++)
+              ActivityRoleGoal(id: '$id-g$i', description: 'g$i'),
+          ],
+        ),
+      },
+    );
+    LearningObjective lo(String id) => LearningObjective(id: id, objective: id);
+    QuestRepo.resetOutlineCacheForTest();
+    QuestRepo.debugBuildOutline = (id, {courseRoomId}) async => Result.value(
+      QuestOutline(
+        quest: QuestPlan(
+          id: 'quest-1',
+          name: '',
+          description: '',
+          targetLanguage: 'es',
+          sequence: [
+            QuestObjectiveStep(objective: lo('lo-1'), wasMinted: false),
+            QuestObjectiveStep(objective: lo('lo-2'), wasMinted: false),
+          ],
+        ),
+        groups: [
+          QuestObjectiveGroup(
+            objective: lo('lo-1'),
+            activities: [QuestActivity(activityId: 'a1', plan: plan('a1'))],
+          ),
+          QuestObjectiveGroup(
+            objective: lo('lo-2'),
+            activities: [QuestActivity(activityId: 'b1', plan: plan('b1'))],
+          ),
+        ],
+      ),
+    );
+    addTearDown(() {
+      QuestRepo.debugBuildOutline = null;
+      QuestRepo.resetOutlineCacheForTest();
+      QuestObjectivesLoader(client: client)
+        ..progression.value = ProgressionResolution.empty
+        ..dispose();
+    });
+    final room = client.getRoomById(spaceId)!;
+    putState(room, EventTypes.RoomCreate, {'type': RoomCreationTypes.mSpace});
+    putPowerLevels(room);
+    putState(
+      room,
+      PangeaEventTypes.coursePlan,
+      CoursePlanEvent(uuid: 'quest-1', l2: 'es').toJson(),
+    );
+    return room;
+  }
+
   testWidgets('names the selected course and shows its progress', (
     tester,
   ) async {
     await pumpBar(tester);
 
     expect(find.text(courseName), findsOneWidget);
-    expect(find.byType(CourseProgressBar), findsOneWidget);
-  });
-
-  /// #8938 (reopened) — collapsing the card mounts this bar, and the bar loads
-  /// its outline post-frame (it loads from `build`). The loader learned which
-  /// course it was showing only inside that load, so for its first frames the
-  /// bar read no course at all and drew the empty track, although the card had
-  /// already resolved this course's progress into the shared resolution. The
-  /// first fix was checked against a loader that loads synchronously, which
-  /// the bar never does — so this one goes through the bar itself.
-  testWidgets('its first frame shows the progress the card already resolved', (
-    tester,
-  ) async {
-    final card = QuestObjectivesLoader(client: client);
-    addTearDown(() {
-      card.progression.value = ProgressionResolution.empty;
-      card.dispose();
-    });
-    card.progression.value = const ProgressionResolution(
-      quests: [
-        QuestProgress(
-          courseId: spaceId,
-          questId: 'quest-1',
-          orderedMissionIds: ['lo-1'],
-          anchorMissionId: 'lo-1',
-          indexByMission: {'lo-1': 0},
-          rollup: {'lo-1': MissionProgress(stars: 2, threshold: 3)},
-        ),
-      ],
-    );
-
-    await pumpBar(tester, settle: false);
-    // The L10n delegate resolves asynchronously, so the bar's first frame is
-    // a pump or two in. Stop ON it: settling would let a late rebuild pass.
-    final track = find.byType(ProgressBarRow);
-    for (var i = 0; i < 10 && track.evaluate().isEmpty; i++) {
-      await tester.pump(const Duration(milliseconds: 16));
-    }
-
-    expect(
-      tester.widget<ProgressBarRow>(track).summary?.earned,
-      2,
-      reason: 'the incoming bar must not draw the empty track',
-    );
+    expect(find.byType(ObjectiveProgressCircles), findsOneWidget);
   });
 
   testWidgets('tapping it reopens the course card over the same context', (
@@ -252,14 +295,14 @@ void main() {
     );
   });
 
-  testWidgets('title, track and glyphs share the header\'s content inset', (
+  testWidgets('title, circles and glyphs share the header\'s content inset', (
     tester,
   ) async {
     await pumpBar(tester);
 
     final bar = tester.getRect(find.byType(CourseContextBar));
     final title = tester.getRect(find.text(courseName));
-    final track = tester.getRect(find.byType(ProgressBarRow));
+    final circles = tester.getRect(find.byType(ObjectiveProgressCircles));
     final glyph = tester.getRect(
       find.descendant(
         of: find.byType(ChevronToggle),
@@ -267,9 +310,12 @@ void main() {
       ),
     );
     expect(title.left, bar.left + PanelHeader.contentInset);
-    expect(track.left, bar.left + PanelHeader.contentInset);
-    // The track ends where the buttons end, not past them.
-    expect(track.right, bar.right - PanelHeader.contentInset);
+    expect(circles.left, bar.left + PanelHeader.contentInset);
+    // The row never runs past the buttons' edge.
+    expect(
+      circles.right,
+      lessThanOrEqualTo(bar.right - PanelHeader.contentInset),
+    );
     expect(glyph.right, bar.right - PanelHeader.contentInset);
   });
 
@@ -332,5 +378,32 @@ void main() {
     expect(surface.excludeFromSemantics, isTrue);
     expect(surface.canRequestFocus, isFalse);
     semantics.dispose();
+  });
+
+  /// Content Studio — a teacher's publish reaches the bar while it is open:
+  /// the course's own copy drops a Mission, and the bar's star total follows
+  /// on the revision change, without a remount.
+  testWidgets('a published copy updates the progress total', (tester) async {
+    final room = stubTwoMissionCourse();
+    putCopy(room, {
+      'lo-1': ['a1'],
+      'lo-2': ['b1'],
+    });
+
+    await pumpBar(tester);
+    int total() => tester
+        .widget<ObjectiveProgressCircles>(find.byType(ObjectiveProgressCircles))
+        .items
+        .length;
+    expect(total(), 2, reason: 'one circle per Mission in the copy');
+
+    await tester.runAsync(() async {
+      putCopy(room, {
+        'lo-2': ['b1'],
+      }, revision: 2);
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+    });
+    await tester.pumpAndSettle();
+    expect(total(), 1, reason: 'the copy dropped lo-1');
   });
 }

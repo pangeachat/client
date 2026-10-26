@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/chat_details/leaderboard_row.dart';
 import 'package:fluffychat/routes/chat/chat_details/participant_card.dart';
@@ -55,7 +56,6 @@ class CourseLeaderboardPage extends StatelessWidget {
                       .floorToDouble();
               // Every member is one Tab stop, the arrow keys moving down the
               // page in reading order; the invite row after them is its own.
-              // An admin appears twice, so the ids carry which.
               return RovingFocusGroup(
                 ids: [
                   for (final user in board.admins) 'admin:${user.id}',
@@ -118,7 +118,7 @@ class CourseLeaderboardPage extends StatelessWidget {
                             ),
                         ],
                       ),
-                    if (room.canInvite)
+                    if (room.canInviteMembers)
                       LeaderboardInviteRow(
                         onTap: () => NavigationUtil.goToSpaceRoute(room.id, [
                           'details',

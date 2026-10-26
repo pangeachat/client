@@ -11,14 +11,20 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
+import 'package:fluffychat/features/central_courses/central_course_extension.dart';
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/tutorials/tutorial_constants.dart';
@@ -31,7 +37,9 @@ import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'package:fluffychat/routes/world/central_course_joined_dialog.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
@@ -221,6 +229,7 @@ class WorldMapController extends State<WorldMap>
   Client? _client;
 
   StreamSubscription<dynamic>? _syncSub;
+  StreamSubscription<dynamic>? _courseMissionsSub;
   StreamSubscription? _languageSubscription;
   StreamSubscription? _settingsSubscription;
 
@@ -307,12 +316,17 @@ class WorldMapController extends State<WorldMap>
       (_) => _scheduleOrientationCheck(),
     );
 
+    _joinCentralCourseIfDue();
+
     // Rebuild when a featured large card's full plan hydrates (image + goals),
     // and when the discovered-session previews change under the pins — the
     // start page's revalidate-on-view rewrites them (#8150); both re-gate which
     // sessions are open to join (#8895).
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
     DiscoveredSessionsCache.instance.addListener(_onDiscoveredPreviewsChanged);
+    // Practice outside a session moves Mission XP with no sync behind it, so
+    // the ranking re-resolves from the shared XP cache directly.
+    MissionXpCache.instance.addListener(_recomputeProgress);
 
     final user = MatrixState.pangeaController.userController;
 
@@ -320,6 +334,10 @@ class WorldMapController extends State<WorldMap>
     _languageSubscription = user.languageStream.stream.listen((update) {
       if (update.targetLang != _filterState.filter.l2) {
         _setL2(update.targetLang);
+      }
+      if (update.prevTargetLang?.langCodeShort !=
+          update.targetLang.langCodeShort) {
+        _joinCentralCourseIfDue();
       }
       // L1 (base-language) change → open the shimmer window (see [_warmingL1]).
       if (update.prevBaseLang != update.baseLang) {
@@ -375,6 +393,13 @@ class WorldMapController extends State<WorldMap>
       _recomputePinged(client);
       _discoverCoursemateSessions(client);
       _loadSessionParticipants(client);
+      // A teacher publishing a course's own copy (content-studio) changes that
+      // course's Missions: rebuild the outlines (the rebuild check compares
+      // copy revisions) and, when it is the course on screen, its markers.
+      _courseMissionsSub?.cancel();
+      _courseMissionsSub = client.onRoomState.stream
+          .where((u) => u.state.type == PangeaEventTypes.courseMissions)
+          .listen((u) => _onCourseMissionsChange(client, u.roomId));
       _syncSub?.cancel();
       _syncSub = client.onSync.stream
           .where((s) => s.hasRoomUpdate)
@@ -431,9 +456,22 @@ class WorldMapController extends State<WorldMap>
     }
   }
 
+  void _onCourseMissionsChange(Client client, String roomId) {
+    if (!mounted) return;
+    _maybeRebuildObjectiveCache(client);
+    final courseRoom = this.courseRoom;
+    if (courseRoom == null || courseRoom.id != roomId) return;
+    if (courseRoom.courseListRules.revision ==
+        _pinsManager.courseScopedCopyRevision) {
+      return;
+    }
+    _loadForContext();
+  }
+
   @override
   void dispose() {
     _syncSub?.cancel();
+    _courseMissionsSub?.cancel();
     _languageSubscription?.cancel();
     _settingsSubscription?.cancel();
     _refetchDebounce?.cancel();
@@ -452,12 +490,14 @@ class WorldMapController extends State<WorldMap>
     DiscoveredSessionsCache.instance.removeListener(
       _onDiscoveredPreviewsChanged,
     );
+    MissionXpCache.instance.removeListener(_recomputeProgress);
     _routeProvider?.removeListener(_scheduleOrientationCheck);
     _unregisterTutorialLaunchers();
     // Reset the process-global so a pin selected at teardown (e.g. logging out
     // with a pin sheet up) can't strand a stale `true` that would hide the bottom
     // nav at the bare map on the next mount. See `routing.instructions.md`.
     WorldMapPinsManager.set(false);
+    _pinsManager.dispose();
     super.dispose();
   }
 
@@ -542,13 +582,68 @@ class WorldMapController extends State<WorldMap>
   /// whether the learner can refine them (world-map.instructions.md). The one
   /// scope-dependent term is the settings-fixed language, applied on the world
   /// map only; see [WorldMapFilterState.include].
-  List<QuestActivityCard> get visiblePins => _pinsManager.filteredPins(
-    (c) => _filterState.include(
-      c,
-      _pinsManager.displayStateOf(c),
-      applyLanguage: isWorld,
-    ),
-  );
+  List<QuestActivityCard> get visiblePins {
+    final filtered = _pinsManager.filteredPins(
+      (c) => _filterState.include(
+        c,
+        _pinsManager.displayStateOf(c),
+        applyLanguage: isWorld,
+      ),
+    );
+    final mission = selectedMissionId;
+    if (mission == null) return filtered;
+    // The Mission scope: a joined course's map shows only the Mission on
+    // show — the one picked in the circles, else the current
+    // one. Nothing from another Mission, live sessions and the learner's own
+    // included; a coursemate's ping elsewhere shows as a bell on that
+    // Mission's circle instead.
+    return [
+      for (final c in filtered)
+        if (c.learningObjectiveRefs.contains(mission)) c,
+    ];
+  }
+
+  /// The Mission a joined course's map is narrowed to: the one picked in the
+  /// URL, else the course's current Mission. Null on the world map, in a
+  /// preview, and before the course's progression resolves.
+  String? get selectedMissionId {
+    final mapContext = MapContextController.notifier.value;
+    if (mapContext is! CourseMapContext ||
+        mapContext is CoursePreviewMapContext) {
+      return null;
+    }
+    return mapContext.selectedMissionIn(
+      _pinsManager.progression.forCourse(mapContext.spaceId),
+    );
+  }
+
+  /// The activities the learner has a saved session of — where the map draws
+  /// its completed stamps.
+  Set<String> get savedActivityIds => _pinsManager.savedActivityIds;
+
+  /// The words the learner used most across their saved sessions of
+  /// [activityId], up to [limit] — what a completed stamp on the map webs out
+  /// under [kStampWordWeb]. Read from the summaries saved with the sessions.
+  List<String> stampWordsFor(String activityId, {int limit = 5}) {
+    final client = _client;
+    final userId = client?.userID;
+    if (client == null || userId == null) return const [];
+    final archive = client.ownAnalyticsRoomLocalByL2?.archivedActivities ?? [];
+    final xpByLemma = <String, int>{};
+    for (final room in archive) {
+      if (room.activityId != activityId) continue;
+      final usages = room.activitySummaryAnalytics?.constructs[userId]?.usages;
+      if (usages == null) continue;
+      for (final usage in usages.values) {
+        if (usage.identifier.type != ConstructTypeEnum.vocab) continue;
+        final lemma = usage.identifier.lemma;
+        xpByLemma[lemma] = (xpByLemma[lemma] ?? 0) + usage.totalXP;
+      }
+    }
+    final ranked = xpByLemma.entries.toList()
+      ..sort((a, b) => b.value.compareTo(a.value));
+    return [for (final e in ranked.take(limit)) e.key];
+  }
 
   /// Why the view shows no matches — the empty-view card's diagnosis
   /// ([MapEmptyVerdict]), shared by the wide overlay and the narrow bar so the
@@ -586,8 +681,8 @@ class WorldMapController extends State<WorldMap>
         : MapEmptyVerdict.noActivities;
   }
 
-  int? activityStarsEarned(String activityId) =>
-      _pinsManager.activityStarsEarned(activityId);
+  int? activityXpEarned(String activityId) =>
+      _pinsManager.activityXpEarned(activityId);
 
   /// The activity's resolved display state / star tier — delegated to the pins
   /// manager so the view and the Status filter read one source (reuse).
@@ -739,14 +834,13 @@ class WorldMapController extends State<WorldMap>
       case CourseMapContext():
         _ensureScopedCourseOutline(mapContext.coursePlanId);
         try {
-          // The joined course's per-Mission activity pin scopes this view's
-          // markers (org quests doc, client#7748); not joined / unset → null →
-          // unrestricted.
+          // The joined course's own list scopes this view's markers: its copy
+          // (content-studio), else its per-Mission activity pins (client#7748);
+          // not joined → no rules → unrestricted.
           final courseRoom = this.courseRoom;
           await _pinsManager.loadCourseScopedPins(
             mapContext.coursePlanId,
-            pinnedActivitiesByObjective:
-                courseRoom?.teacherMode.pinnedActivitiesByObjective,
+            rules: courseRoom?.courseListRules ?? CourseListRules.none,
             // Joined-member reads may include the quest owner's private
             // activities (membership-verified server-side); not joined →
             // null → public rows only.
@@ -1337,6 +1431,16 @@ class WorldMapController extends State<WorldMap>
   /// Always post-frame, and at most one pending: this is published from the
   /// view's build and fired again on every route change, and the check itself
   /// can open an overlay — which must never happen mid-frame.
+  /// The map is mounted for every signed-in learner, so it runs the app-open
+  /// central-course join (joining-courses.instructions.md § The central
+  /// course).
+  Future<void> _joinCentralCourseIfDue() async {
+    final client = MatrixState.pangeaController.matrixState.client;
+    final roomId = await CentralCourseJoin.joinIfDue(client);
+    if (roomId == null || !mounted) return;
+    await CentralCourseJoinedDialog.show(context, client, roomId);
+  }
+
   void _scheduleOrientationCheck() {
     if (_orientationCheckScheduled) return;
     _orientationCheckScheduled = true;

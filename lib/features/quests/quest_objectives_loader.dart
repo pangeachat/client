@@ -4,11 +4,17 @@ import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -46,6 +52,14 @@ class QuestObjectivesLoader {
         .rateLimit(const Duration(seconds: 2))
         .listen((_) => _resolveProgression(_loadGeneration));
 
+    // A Mission's meter fills with XP, which lives in the local analytics
+    // database rather than in room state (#9420). The shared cache re-reads
+    // it on construct updates and tells every live loader to re-resolve, so
+    // the course page's bar moves as the learner chats or practises.
+    MissionXpCache.instance
+      ..ensureWired()
+      ..addListener(_onXpChanged);
+
     // Activity-card text is served in the resolved display language (#8577)
     // and [QuestRepo.outline] keys its cache on it — but nothing asked again
     // when that language changed, so a course surface went on showing the
@@ -60,12 +74,27 @@ class QuestObjectivesLoader {
     //
     // Guarded on the controller for the same reason [QuestRepo.displayL1]
     // guards its read: a loader can be constructed before (or without) one.
+    // A teacher publishing the course's own copy (content-studio) changes its
+    // order, activities, notes and due dates. Re-read when this course's copy
+    // revision moves, so the page, the context bar and the star totals follow
+    // without a reload. The outline itself is cached, so this is a pure
+    // re-transform plus a cache rebuild.
+    _courseMissionsSub = client.onRoomState.stream
+        .where((u) => u.state.type == PangeaEventTypes.courseMissions)
+        .listen((u) => _reloadOnCourseMissionsChange(u.roomId));
+
     if (MatrixState.isPangeaControllerInitialized) {
       final user = MatrixState.pangeaController.userController;
-      _displayLanguageSub = StreamGroup.merge([
-        user.languageStream.stream,
-        user.settingsUpdateStream.stream,
-      ]).listen((_) => _refetchOnDisplayLanguageChange());
+      _displayLanguageSub =
+          StreamGroup.merge([
+            user.languageStream.stream,
+            user.settingsUpdateStream.stream,
+          ]).listen((_) {
+            _refetchOnDisplayLanguageChange();
+            // Which courses' progress counts follows the target language
+            // (#9559), so a switch re-scopes even when no XP moved.
+            _resolveProgression(_loadGeneration);
+          });
     }
   }
 
@@ -94,6 +123,7 @@ class QuestObjectivesLoader {
   final JoinedObjectiveCache _objectiveCache = JoinedObjectiveCache();
   StreamSubscription? _starsSub;
   StreamSubscription? _displayLanguageSub;
+  StreamSubscription? _courseMissionsSub;
 
   /// The last [loadOutline] call, kept so a display-language change can re-run
   /// exactly the read that is now stale. Null until the first load.
@@ -114,6 +144,8 @@ class QuestObjectivesLoader {
   void dispose() {
     _starsSub?.cancel();
     _displayLanguageSub?.cancel();
+    MissionXpCache.instance.removeListener(_onXpChanged);
+    _courseMissionsSub?.cancel();
     _questLoader.dispose();
     // _progression is shared across loaders — never disposed with one of them.
     _disposed = true;
@@ -129,17 +161,42 @@ class QuestObjectivesLoader {
   /// Pure state — it notifies nothing, so it is safe to call mid-build.
   void scopeToCourse(String courseId) => _courseId = courseId;
 
+  /// The course room this loader is scoped to, when it is one.
+  String? get courseId => _courseId;
+
   QuestLoader get questLoader => _questLoader;
   ValueNotifier<ProgressionResolution> get progression => _progression;
 
-  /// The header's star summary, or null before this course's progress resolves
-  /// (the bar then renders its muted empty state).
+  /// The shared resolution for readers with no loader of their own — the
+  /// analytics bar's star count (#9436).
+  static ValueListenable<ProgressionResolution> get sharedProgression =>
+      _progression;
+
+  /// Publish a resolution computed elsewhere. The world map's pins manager
+  /// resolves the same inputs on every sync, and it is what resolves first
+  /// in a session, so publishing from there puts a star count on the
+  /// analytics bar before any course page has been opened.
   ///
-  /// Deliberately supplies no Mission list: the resolver owns which Missions
-  /// count. Passing `quest.learningObjectiveIds` here used to disagree with the
-  /// panel — which drops activity-less Missions (#7114) — so each hidden
-  /// Mission silently added a default threshold to the denominator (#7663).
-  QuestStarSummary? get questStars => progression.value.questStars(_courseId);
+  /// Deferred to a microtask: the map resolves from paths that can run
+  /// inside a build (a course-scoped outline set as a widget mounts), and a
+  /// notifier fired there marks every listening builder dirty mid-build,
+  /// which the framework rejects. A microtask runs once the build has
+  /// unwound, and the pins manager's own copy stays synchronous for the map.
+  static void publishProgression(ProgressionResolution value) =>
+      scheduleMicrotask(() => _setShared(value));
+
+  /// Whether [sharedProgression] holds a real resolution yet — one resolved
+  /// from loaded outlines. Until then its value is the empty placeholder, so
+  /// a reader shows a loading state rather than zero (#9559).
+  static bool get sharedProgressionReady => _sharedProgressionReady;
+  static bool _sharedProgressionReady = false;
+
+  static void _setShared(ProgressionResolution value) {
+    _sharedProgressionReady = true;
+    _progression.value = value;
+  }
+
+  void _onXpChanged() => _resolveProgression(_loadGeneration);
 
   /// This course's resolved quest, or null until the shared resolution lands
   /// (or when the course isn't joined) — the panel then shows no star display,
@@ -150,10 +207,72 @@ class QuestObjectivesLoader {
   /// the star display at all.
   bool get hasResolvedProgress => _scopedQuest != null;
 
+  /// This course's progress is on its way (#9559): a joined course in the
+  /// learner's language whose resolution hasn't landed, or whose language's
+  /// XP is still being read (start-up, a language switch). Its circles and
+  /// Mission header shimmer meanwhile rather than show a meter that is about
+  /// to jump. False for a preview or a course in another language, which
+  /// show no progress at all.
+  ///
+  /// Never stuck: once this course's rebuild has finished, a course the
+  /// resolution left out (its outline failed, it wasn't joined in time)
+  /// shows its empty meter rather than shimmering on.
+  bool get progressLoading {
+    final courseId = _courseId;
+    final room = courseId == null ? null : client.getRoomById(courseId);
+    if (room == null ||
+        room.membership != Membership.join ||
+        !CourseLanguageScope.courseInTargetLanguage(room)) {
+      return false;
+    }
+    if (MissionXpCache.instance.loading) return true;
+    return _scopedQuest == null && !_rebuildSettled;
+  }
+
+  /// This load's joined-course rebuild has finished, whatever it found.
+  bool _rebuildSettled = false;
+
   /// The "Up next" Mission — the shared resolver's anchor — or null when there
   /// is no next step: before the resolution lands, and once every Mission in
   /// the course is satisfied (#8997). No Mission wears the label then.
   String? get anchorMissionId => _scopedQuest?.anchorMissionId;
+
+  /// The Mission the course page opens on (#9437): the anchor's group — or,
+  /// before this course's progress resolves, the first Mission, so a cold open
+  /// still shows the plan's start rather than nothing. Null once the course is
+  /// complete ([isCourseComplete]) or when the plan has nothing to show.
+  QuestObjectiveGroup? get currentObjectiveGroup {
+    final groups = filteredObjectiveGroups;
+    if (groups.isEmpty) return null;
+    final anchor = anchorMissionId;
+    if (anchor == null) return hasResolvedProgress ? null : groups.first;
+    for (final group in groups) {
+      if (group.objective.id == anchor) return group;
+    }
+    return groups.first;
+  }
+
+  /// Every Mission with an activity is complete — the course page shows its
+  /// finished state instead of a current Mission (#9437).
+  bool get isCourseComplete =>
+      hasResolvedProgress &&
+      anchorMissionId == null &&
+      filteredObjectiveGroups.isNotEmpty;
+
+  /// The current Mission's XP meter, or null before it resolves.
+  MissionProgress? get currentObjectiveProgress => _scopedQuest?.anchorProgress;
+
+  int get objectiveCount => filteredObjectiveGroups.length;
+
+  /// The rendered group for [missionId], or null when it is null or the plan
+  /// no longer lists it — the course page then falls back to the current one.
+  QuestObjectiveGroup? objectiveGroup(String? missionId) {
+    if (missionId == null) return null;
+    for (final group in filteredObjectiveGroups) {
+      if (group.objective.id == missionId) return group;
+    }
+    return null;
+  }
 
   /// The next-Mission gradient (0..[kBandCeiling]) for an activity satisfying
   /// [missionRefs], scoped to THIS course — the relevance band the course
@@ -172,6 +291,22 @@ class QuestObjectivesLoader {
   MissionProgress? missionProgress(String missionId) =>
       _scopedQuest?.rollup[missionId];
 
+  /// Where this course's XP for [missionId] came from — chats, goals and
+  /// practice — summed over the same activities [missionProgress] counts.
+  /// Null when the rollup hasn't resolved.
+  /// Pass [byActivity] (`Client.cachedXpBreakdownByActivity`) when the
+  /// caller already holds it, so the rooms aren't walked twice in a build.
+  MissionXpBreakdown? missionXpBreakdown(
+    String missionId, {
+    Map<String, MissionXpBreakdown>? byActivity,
+  }) {
+    if (_scopedQuest == null) return null;
+    final group = objectiveGroup(missionId);
+    return group == null
+        ? null
+        : client.missionXpBreakdown(group, byActivity: byActivity);
+  }
+
   List<QuestObjectiveGroup> get filteredObjectiveGroups =>
       switch (_questLoader.value) {
         AsyncLoaded(value: final outline) => objectiveGroupsWithActivities(
@@ -181,10 +316,10 @@ class QuestObjectivesLoader {
       };
 
   /// Re-resolve the shared progression from the cached outlines and the
-  /// learner's current per-activity stars — the SAME inputs and resolver the
-  /// world map uses, so the star numbers can never disagree
-  /// (quests.instructions.md). Pure and cheap: no network, no reads beyond
-  /// room state the client already holds.
+  /// learner's current XP — the SAME inputs and resolver the world map uses,
+  /// so the numbers can never disagree (quests.instructions.md). Pure and
+  /// cheap: no network, no reads beyond room state the client already holds
+  /// and the XP maps the shared cache keeps current.
   ///
   /// Publishes nothing before the first rebuild lands, so a course whose
   /// outlines aren't in yet keeps its muted empty bar rather than briefly
@@ -192,15 +327,19 @@ class QuestObjectivesLoader {
   void _resolveProgression(int loadGen) {
     if (_disposed || _objectiveCache.outlines.isEmpty) return;
     _updateProgression(
-      _objectiveCache.resolution(client.userStarsByActivity),
+      _objectiveCache.resolution(
+        client.userXpByActivity(MissionXpCache.instance.creditedXpByRoom),
+        practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
+        inScope: (courseId) => CourseLanguageScope.courseInTargetLanguage(
+          client.getRoomById(courseId),
+        ),
+      ),
       loadGen,
     );
   }
 
   void _updateProgression(ProgressionResolution value, int loadGen) {
-    if (!_disposed && loadGen == _loadGeneration) {
-      _progression.value = value;
-    }
+    if (!_disposed && loadGen == _loadGeneration) _setShared(value);
   }
 
   /// Re-read the outline when the resolved display language no longer matches
@@ -223,11 +362,23 @@ class QuestObjectivesLoader {
         request.displayL1 == QuestRepo.displayL1) {
       return;
     }
-    loadOutline(
-      request.questId,
-      pinnedActivitiesByObjective: request.pinnedActivitiesByObjective,
-      courseRoomId: request.courseRoomId,
-    );
+    loadOutline(request.questId, courseRoomId: request.courseRoomId);
+  }
+
+  /// Re-read when [roomId] is this loader's course and its copy revision no
+  /// longer matches the one the shown outline was built with.
+  void _reloadOnCourseMissionsChange(String roomId) {
+    final request = _request;
+    if (_disposed ||
+        request == null ||
+        request.questId == null ||
+        request.courseRoomId != roomId) {
+      return;
+    }
+    final room = client.getRoomById(roomId);
+    if (room == null) return;
+    if (room.courseListRules.revision == request.copyRevision) return;
+    loadOutline(request.questId, courseRoomId: roomId);
   }
 
   void _updateQuest(AsyncState<QuestOutline> value, int loadGen) {
@@ -236,28 +387,30 @@ class QuestObjectivesLoader {
     }
   }
 
-  /// [pinnedActivitiesByObjective] is the course's per-Mission activity pin
-  /// (room.teacherMode) — passed by callers with a joined course room in hand;
-  /// null (previews, no room) means unrestricted, the fail-open default.
-  /// Applied as a pure copy so the shared quest-outline cache is untouched.
-  /// [courseRoomId] (same callers) lets the outline include the quest owner's
-  /// private activities — membership is verified server-side, so passing it
-  /// for a non-member is harmless.
-  Future<void> loadOutline(
-    String? questId, {
-    Map<String, List<String>>? pinnedActivitiesByObjective,
-    String? courseRoomId,
-  }) async {
+  /// [courseRoomId] is the joined course room, passed by callers that have
+  /// one: the outline is shown as that course shows it
+  /// ([QuestOutlineForCourse.forCourse] — its own copy, else today's
+  /// per-Mission pins), and it lets the read include the quest owner's
+  /// private activities (membership is verified server-side, so passing it
+  /// for a non-member is harmless). Null (previews) is the shared quest,
+  /// unrestricted. Applied as a pure copy so the shared quest-outline cache
+  /// is untouched.
+  Future<void> loadOutline(String? questId, {String? courseRoomId}) async {
     if (_disposed) return;
 
     _loadGeneration++;
     final loadGen = _loadGeneration;
     _courseId = courseRoomId ?? questId;
+    _rebuildSettled = false;
+    final rules = courseRoomId == null
+        ? CourseListRules.none
+        : client.getRoomById(courseRoomId)?.courseListRules ??
+              CourseListRules.none;
     _request = _OutlineRequest(
       questId: questId,
-      pinnedActivitiesByObjective: pinnedActivitiesByObjective,
       courseRoomId: courseRoomId,
       displayL1: QuestRepo.displayL1,
+      copyRevision: rules.revision,
     );
 
     // world_v2 → v3: the course space's coursePlan.uuid (or the previewed
@@ -275,14 +428,15 @@ class QuestObjectivesLoader {
     final outlineResult = await QuestRepo.outline(
       questId,
       courseRoomId: courseRoomId,
+      courseLoIds: rules.missions?.allLoIds ?? const {},
+      copyRevision: rules.revision,
     );
-    final outline = outlineResult.result?.restrictedTo(
-      pinnedActivitiesByObjective,
-    );
+    final outline = outlineResult.result?.forRules(rules);
 
     if (_disposed) return;
 
     if (outline == null) {
+      _rebuildSettled = true;
       _updateQuest(
         AsyncError(outlineResult.error ?? MissingQuestException()),
         loadGen,
@@ -292,13 +446,17 @@ class QuestObjectivesLoader {
 
     _updateQuest(AsyncLoaded(outline), loadGen);
 
-    await _objectiveCache.rebuildFromJoinedCourses(
-      client,
-      // The SAME reporter the world map's rebuild passes — one throttle key,
-      // one severity rule, so this path and the map's can't disagree about a
-      // failure only one of them will end up reporting (#8470).
-      onError: reportCourseOutlineFailure,
-    );
+    try {
+      await _objectiveCache.rebuildFromJoinedCourses(
+        client,
+        // The SAME reporter the world map's rebuild passes — one throttle
+        // key, one severity rule, so this path and the map's can't disagree
+        // about a failure only one of them will end up reporting (#8470).
+        onError: reportCourseOutlineFailure,
+      );
+    } finally {
+      if (loadGen == _loadGeneration) _rebuildSettled = true;
+    }
     _resolveProgression(loadGen);
   }
 }
@@ -309,13 +467,50 @@ class QuestObjectivesLoader {
 class _OutlineRequest {
   const _OutlineRequest({
     required this.questId,
-    required this.pinnedActivitiesByObjective,
     required this.courseRoomId,
     required this.displayL1,
+    required this.copyRevision,
   });
 
   final String? questId;
-  final Map<String, List<String>>? pinnedActivitiesByObjective;
   final String? courseRoomId;
   final String displayL1;
+
+  /// The course copy's revision the outline was built with (0 = no copy).
+  final int copyRevision;
+}
+
+/// [questId]'s outline as course [courseRoomId] shows it to its members, for
+/// snapshotting the course's own copy, waiting up to [cap]. Read through the
+/// course-scoped listing ([QuestRepo.outline] with [courseRoomId]), which also
+/// returns the quest owner's private activities to a joined member, so the
+/// copy lists exactly the activities the course page shows. Joins a read
+/// already in flight for the same course. Null on a failed read or the cap —
+/// the course then keeps no copy and reads the shared quest, as courses
+/// always did (the Studio's first publish saves one).
+Future<QuestOutline?> courseScopedOutline(
+  String questId,
+  String courseRoomId, {
+  Duration cap = const Duration(seconds: 5),
+}) async {
+  try {
+    final result = await QuestRepo.outline(
+      questId,
+      courseRoomId: courseRoomId,
+    ).timeout(cap);
+    return result.result;
+  } on TimeoutException {
+    return null;
+  } catch (e, s) {
+    // Any failed read is "no outline": the callers then keep the course
+    // reading the shared quest (and a plan replace still clears the old
+    // quest's copy) rather than stopping half way.
+    ErrorHandler.logError(
+      e: e,
+      s: s,
+      data: {'quest_id': questId, 'course_room_id': courseRoomId},
+      level: SentryLevel.warning,
+    );
+    return null;
+  }
 }

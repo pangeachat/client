@@ -14,8 +14,8 @@ import 'package:fluffychat/features/navigation/workspace_query.dart';
 /// **section-path** constants ([chats], [analytics], [courses], [settings],
 /// [profile], [rooms]) are NOT navigation targets — they are legacy redirect
 /// sources + `route_facts.sectionFor` identities that `LegacyRedirects` rewrites
-/// to tokens before render. Never `context.go` a section path; see the
-/// "Navigate by token, never by path" rule in `routing.instructions.md`.
+/// to tokens before render. Never `context.go` a section path; internal
+/// navigation goes through `WorkspaceNav` (see its class comment).
 /// Fork-owned Matrix rooms keep their upstream `/rooms/:roomid` shape so
 /// push-notification and matrix.to deep-link handling stay untouched.
 ///
@@ -76,7 +76,9 @@ abstract class PRoutes {
   /// A chat room — `/rooms/:roomid` (bare localpart).
   static String room(String roomId) => '$rooms/${shortRoomId(roomId)}';
 
-  /// First-class world object (activity for now) — `/<uuid>`.
+  /// First-class world object (activity for now) — `/<uuid>`. This is the
+  /// shareable link for the outside world: in-app code opens activities
+  /// through the `WorkspaceNav` token helpers and never emits this path.
   static String worldObject(String id) => '/$id';
 
   /// The join-with-code flow carrying an inbound course code — the add-course
@@ -175,6 +177,16 @@ abstract class PRoutes {
 
   /// Whether [segment] can be a promo code.
   static bool isPromoCode(String segment) => _promoCodeRegExp.hasMatch(segment);
+
+  /// Whether [location] is a path inside this app: relative, with no scheme
+  /// or host, so following it can never leave the app.
+  static bool isAppPath(String location) {
+    final uri = Uri.tryParse(location);
+    return uri != null &&
+        !uri.hasScheme &&
+        !uri.hasAuthority &&
+        location.startsWith('/');
+  }
 
   /// The gift link's rewrite target: the discount page alone over the world
   /// map with the code in its token, re-entered after the login bounce as the

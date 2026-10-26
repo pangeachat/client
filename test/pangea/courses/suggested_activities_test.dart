@@ -107,6 +107,38 @@ void main() {
       expect(idsOf(ranked), ['plain']);
     });
 
+    test('with includeOngoing, the learner\'s own sessions stay and lead '
+        '(#9420)', () {
+      final ranked = rankSuggestedActivities(
+        groups: [
+          objGroup('m1', ['plain', 'open', 'ongoingPending']),
+        ],
+        missionGradient: flatBand,
+        includeOngoing: true,
+        signalsFor: (id) => switch (id) {
+          'open' => const PinSignals(state: ActivityPinState.joinable),
+          'ongoingPending' => const PinSignals(
+            state: ActivityPinState.ongoingPending,
+          ),
+          _ => const PinSignals(),
+        },
+      );
+
+      expect(idsOf(ranked), ['ongoingPending', 'open', 'plain']);
+    });
+
+    test('with no cap, every eligible activity is kept', () {
+      final ids = [for (var i = 0; i < kSuggestedActivitiesCap + 3; i++) 'a$i'];
+      final ranked = rankSuggestedActivities(
+        groups: [objGroup('m1', ids)],
+        missionGradient: flatBand,
+        signalsFor: plain,
+        cap: null,
+      );
+
+      expect(ranked, hasLength(ids.length));
+    });
+
     test("with nothing live, the course's next Mission decides the order", () {
       // The band stands in for the resolver: the anchor Mission's activity
       // scores highest, one Mission further along less, a satisfied one zero.
@@ -219,6 +251,65 @@ void main() {
 
       expect(rank(['c', 'a', 'b']), ['a', 'b', 'c']);
       expect(rank(['b', 'c', 'a']), ['a', 'b', 'c']);
+    });
+
+    group("with includeCompleted, the Mission's whole queue (#9559)", () {
+      List<String> queue({
+        required List<String> ids,
+        required PinSignals Function(String) signals,
+        Set<String> blocked = const {},
+      }) => idsOf(
+        rankSuggestedActivities(
+          groups: [objGroup('m1', ids)],
+          missionGradient: flatBand,
+          signalsFor: signals,
+          cap: null,
+          includeOngoing: true,
+          includeCompleted: true,
+          canStart: (a) => !blocked.contains(a.activityId),
+        ),
+      );
+
+      test('runs ongoing, then playable, then finished, then blocked', () {
+        expect(
+          queue(
+            ids: ['blocked', 'finished', 'fresh', 'mine'],
+            blocked: {'blocked'},
+            signals: (id) => switch (id) {
+              'mine' => const PinSignals(state: ActivityPinState.ongoingActive),
+              'finished' => const PinSignals(completionFraction: 1.0),
+              _ => const PinSignals(),
+            },
+          ),
+          ['mine', 'fresh', 'finished', 'blocked'],
+        );
+      });
+
+      test('a finished activity leads when nothing unfinished is playable', () {
+        expect(
+          queue(
+            ids: ['blocked', 'finished'],
+            blocked: {'blocked'},
+            signals: (id) =>
+                PinSignals(completionFraction: id == 'finished' ? 1.0 : 0.0),
+          ),
+          ['finished', 'blocked'],
+        );
+      });
+
+      test('a live session is playable even when the course cannot fill '
+          'its roles', () {
+        expect(
+          queue(
+            ids: ['fresh', 'open'],
+            blocked: {'open'},
+            signals: (id) => id == 'open'
+                ? const PinSignals(state: ActivityPinState.joinable)
+                : const PinSignals(),
+          ),
+          ['open', 'fresh'],
+        );
+      });
     });
 
     test('an empty plan suggests nothing', () {

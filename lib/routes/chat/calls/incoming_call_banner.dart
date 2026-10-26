@@ -3,15 +3,21 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show SchedulerPhase;
 
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart' as matrix;
+import 'package:pangea_call_capture/pangea_call_capture.dart';
 
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_breadcrumb.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_quick_replies.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
+import 'package:fluffychat/routes/chat/calls/ios_call_screen.dart';
 import 'package:fluffychat/routes/chat/calls/ring_player.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -36,9 +42,14 @@ class IncomingCallBanner extends StatefulWidget {
   /// Tests hand in a player with a fake sound; the app builds the real one.
   final RingPlayer? ringPlayerOverride;
 
+  /// Tests hand in a stand-in for the iOS call screen, which is then heard on
+  /// any platform; the app uses the real one, on iOS only.
+  final IosCallScreen? callScreenOverride;
+
   const IncomingCallBanner({
     required this.child,
     this.ringPlayerOverride,
+    this.callScreenOverride,
     super.key,
   });
 
@@ -81,7 +92,8 @@ class _AccountRings {
   }
 }
 
-class _IncomingCallBannerState extends State<IncomingCallBanner> {
+class _IncomingCallBannerState extends State<IncomingCallBanner>
+    with WidgetsBindingObserver {
   /// The one hand that touches the ring sound. Injected in tests.
   late final RingPlayer _ringPlayer = widget.ringPlayerOverride ?? RingPlayer();
 
@@ -105,7 +117,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// at once.
   Future<void> _replays = Future.value();
 
-  StreamSubscription<void>? _callerGone;
+  StreamSubscription<matrix.StrippedStateEvent>? _callerGone;
   CallService? _service;
   Timer? _stillRinging;
   IncomingCallNotification? _ringing;
@@ -136,10 +148,308 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     final previous = _ringing;
     _ringing = ring;
     if (ring != null) {
-      _ringPlayer.play(ring.event.eventId, asset: 'sounds/phone.ogg');
+      // The iOS call screen rings for a ring it shows. Two rings for one call
+      // is what this avoids.
+      if (!_onCallScreen.containsKey(ring.event.eventId)) {
+        _ringPlayer.play(ring.event.eventId, asset: 'sounds/phone.ogg');
+      }
+      _takeOverRing(ring);
+      // A redial replaces the ring it redials, on the call screen too.
+      if (previous != null && previous.event.eventId != ring.event.eventId) {
+        _leaveCallScreen(previous);
+      }
     } else if (previous != null) {
       _ringPlayer.stop(previous.event.eventId);
+      _leaveCallScreen(previous);
     }
+  }
+
+  /// Rings the iOS call screen is showing, by ring event id, with the call
+  /// screen's id for each.
+  ///
+  /// On iOS the call screen is the ring, open app or not, so this prompt
+  /// stands aside for these: no card and no sound. It goes on deciding and
+  /// watching them exactly as it does any other ring, and ends the call screen
+  /// when it puts one away.
+  final Map<String, String> _onCallScreen = {};
+
+  /// The call screen's id for a ring answered there, held until the call it
+  /// became ends, and the call screen with it.
+  String? _answeredOnCallScreen;
+
+  /// The call a call-screen answer became, watched for failing: a failed call
+  /// stays up in the app until it is dismissed, but on a locked phone nobody
+  /// sees it, and the call screen would go on showing a call that is not
+  /// happening.
+  call_ui.CallSession? _callScreenCall;
+
+  void _watchCallScreenCall(call_ui.CallSession? call) {
+    _callScreenCall?.removeListener(_onCallScreenCallChanged);
+    _callScreenCall = call;
+    call?.addListener(_onCallScreenCallChanged);
+  }
+
+  void _onCallScreenCallChanged() {
+    final answered = _answeredOnCallScreen;
+    final call = _callScreenCall;
+    if (call == null || !call.isFailed || answered == null) return;
+    _answeredOnCallScreen = null;
+    _watchCallScreenCall(null);
+    _endCallScreen(answered, CallScreenEndReason.failed);
+    unawaited(_tellIfMicrophoneOff(call));
+  }
+
+  /// A call that failed because the microphone is off: iOS will not let the
+  /// app ask again, so the learner is told where to turn it on. Nothing is sent
+  /// to the caller: their ring runs out and becomes a missed call.
+  Future<void> _tellIfMicrophoneOff(call_ui.CallSession call) async {
+    if (!mounted) return;
+    final l10n = L10n.of(context);
+    final eventId = call.notificationEventId;
+    if (eventId == null) return;
+    try {
+      if (await _callScreen.microphoneAllowed()) return;
+      await _callScreen.tellMicrophoneOff(
+        l10n,
+        account: call.room.client.clientName,
+        roomId: call.room.id,
+        eventId: eventId,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }
+  }
+
+  /// What the learner chose on the call screen for a ring this prompt was
+  /// still reading -- the call screen goes up from the push alone, so a quick
+  /// tap can beat the read. True is answer, false is decline.
+  final Map<String, bool> _chosenOnCallScreen = {};
+
+  final List<StreamSubscription<Object>> _callScreenSubs = [];
+
+  /// Ends the call screen for [ring] as this prompt puts the ring away: its
+  /// lifetime ran out, the caller gave up, another device took it, or a redial
+  /// replaced it. Not when it was answered there -- that call goes on.
+  void _leaveCallScreen(IncomingCallNotification ring) {
+    final uuid = _onCallScreen.remove(ring.event.eventId);
+    if (uuid == null || uuid == _answeredOnCallScreen) return;
+    _endCallScreen(uuid, CallScreenEndReason.remoteEnded);
+  }
+
+  IosCallScreen get _callScreen =>
+      widget.callScreenOverride ?? IosCallScreen.instance;
+
+  void _endCallScreen(String uuid, CallScreenEndReason reason) {
+    unawaited(
+      _callScreen.end(uuid, reason).catchError((Object e, StackTrace s) {
+        matrix.Logs().w('Could not end the call on the call screen', e, s);
+      }),
+    );
+  }
+
+  /// Starts hearing the iOS call screen. Called once accounts are subscribed,
+  /// so a ring it hands over finds the account it is for.
+  ///
+  /// This prompt is the one to start it: the call screen hands over what it
+  /// held from before anyone listened as soon as listening starts, and a
+  /// stream with no listener drops it.
+  bool _hearingCallScreen = false;
+
+  void _listenToCallScreen() {
+    if (_hearingCallScreen) return;
+    if (widget.callScreenOverride == null && !PlatformInfos.isIOS) return;
+    _hearingCallScreen = true;
+    final screen = _callScreen;
+    _callScreenSubs
+      ..add(screen.rings.listen((ring) => unawaited(_onCallScreenRing(ring))))
+      ..add(screen.answers.listen(_onCallScreenAnswer))
+      ..add(screen.ends.listen(_onCallScreenEnd))
+      ..add(screen.mutes.listen(_onCallScreenMute));
+    unawaited(
+      screen.listen().catchError((Object e, StackTrace s) {
+        matrix.Logs().e('Could not start hearing the call screen', e, s);
+      }),
+    );
+  }
+
+  /// A ring the call screen put up from its push alone. It is read and
+  /// decided exactly as a ring arriving any other way, and taken off the call
+  /// screen when this prompt would not have rung for it.
+  Future<void> _onCallScreenRing(CallScreenRing screenRing) async {
+    if (!mounted) return;
+    final clients = Matrix.of(context).widget.clients;
+    final account =
+        clients.firstWhereOrNull((c) => c.clientName == screenRing.account) ??
+        clients.firstWhereOrNull(
+          (c) => c.getRoomById(screenRing.roomId) != null,
+        );
+    final ring = account == null ? null : await _readRing(account, screenRing);
+    if (!mounted) return;
+    final service = ring == null ? null : _serviceFor(ring.event.room);
+    if (account == null || ring == null || service == null) {
+      // The phone rang for a call nobody here can answer. Reported, because
+      // from the outside it looks like a ring that stopped by itself.
+      ErrorHandler.logError(
+        e: StateError('The call screen rang for a call this app cannot find'),
+        s: StackTrace.current,
+        data: {
+          'accountFound': account != null,
+          'ringRead': ring != null,
+          'accountTagged': screenRing.account.isNotEmpty,
+        },
+      );
+      _endCallScreen(screenRing.uuid, CallScreenEndReason.failed);
+      return;
+    }
+    _onCallScreen[screenRing.eventId] = screenRing.uuid;
+    unawaited(
+      _callScreen.setVideo(screenRing.uuid, ring.isVideo).catchError((
+        Object e,
+        StackTrace s,
+      ) {
+        matrix.Logs().w('Could not mark the call screen as video', e, s);
+      }),
+    );
+    // The checks the live ring stream makes before a ring reaches [_offer]:
+    // still live, a call, a direct chat. A call already live elsewhere is
+    // [_offer]'s, so the caller is told the line is busy.
+    //
+    // NOT whether the caller has gone. The push woke a closed app, whose copy
+    // of the room has not synced yet: it still holds the caller's LAST call,
+    // ended, and read now that says "gone" about a call that is ringing. The
+    // prompt's own watcher only counts a caller gone once it has seen them
+    // there, which is the reading that survives stale state.
+    final rings =
+        ring.shouldRing(DateTime.now()) &&
+        CallService.couldRingHere(ring.event.room);
+    if (rings) {
+      final showing = _ringing;
+      if (showing != null && showing.event.eventId == ring.event.eventId) {
+        // Already up from the room's own sync: the call screen takes it over.
+        _ringPlayer.stop(ring.event.eventId);
+        setState(() {});
+      } else {
+        _offer(ring, account);
+      }
+    }
+    final choice = _chosenOnCallScreen.remove(screenRing.eventId);
+    final up = _ringing?.event.eventId == ring.event.eventId;
+    if (!up) {
+      _onCallScreen.remove(screenRing.eventId);
+      _endCallScreen(screenRing.uuid, CallScreenEndReason.unanswered);
+      return;
+    }
+    if (choice == true) _answerOnCallScreen(screenRing, ring);
+    if (choice == false) _decline(ring);
+  }
+
+  /// The ring a call screen push names, from the account's own copy of the
+  /// room when it has one and from the server otherwise.
+  Future<IncomingCallNotification?> _readRing(
+    matrix.Client account,
+    CallScreenRing screenRing,
+  ) async {
+    try {
+      await account.roomsLoading;
+      var room = account.getRoomById(screenRing.roomId);
+      if (room == null) {
+        await account
+            .waitForRoomInSync(screenRing.roomId)
+            .timeout(const Duration(seconds: 10));
+        room = account.getRoomById(screenRing.roomId);
+      }
+      final event = await room?.getEventById(screenRing.eventId);
+      if (event == null) return null;
+      return IncomingCallNotification(
+        event: event,
+        myUserId: account.userID ?? '',
+        // A call live in this app is [_offer]'s to answer busy.
+        alreadyJoined: false,
+      );
+    } catch (e, s) {
+      matrix.Logs().w('Could not read the ring the call screen showed', e, s);
+      return null;
+    }
+  }
+
+  void _onCallScreenAnswer(CallScreenRing screenRing) {
+    final ring = _ringing;
+    if (ring == null || ring.event.eventId != screenRing.eventId) {
+      // Still being read, or the ring is gone. [_onCallScreenRing] acts on the
+      // choice once the read finishes, and ends the call screen if it cannot.
+      _chosenOnCallScreen[screenRing.eventId] = true;
+      return;
+    }
+    _answerOnCallScreen(screenRing, ring);
+  }
+
+  void _answerOnCallScreen(
+    CallScreenRing screenRing,
+    IncomingCallNotification ring,
+  ) {
+    _answeredOnCallScreen = screenRing.uuid;
+    // Before the call connects, so LiveKit never turns the session on itself.
+    unawaited(
+      _callScreen.takeAudioSession().catchError((Object e, StackTrace s) {
+        ErrorHandler.logError(e: e, s: s, data: {});
+      }),
+    );
+    _answer(ring);
+    if (!mounted) return;
+    final live = Matrix.of(context).activeCall.value;
+    if (live == null || live.notificationEventId != ring.event.eventId) {
+      // The answer could not start a call: the account signed out, or a call
+      // was live elsewhere and the caller was told the line is busy.
+      _answeredOnCallScreen = null;
+      _endCallScreen(screenRing.uuid, CallScreenEndReason.failed);
+      _returnAudioSession();
+      return;
+    }
+    _watchCallScreenCall(live);
+    _onCallScreenCallChanged();
+    // However the call ends. Not before its media is released: the app's own
+    // management would then start on a call that is still running.
+    unawaited(
+      live.mediaReleased.then((_) {
+        final watched = _callScreenCall;
+        if (watched == null || identical(watched, live)) _returnAudioSession();
+      }),
+    );
+  }
+
+  void _returnAudioSession() => unawaited(
+    _callScreen.returnAudioSession().catchError((Object e, StackTrace s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    }),
+  );
+
+  void _onCallScreenEnd(CallScreenEnd end) {
+    if (end.answered) {
+      // Hanging up the call the answer became.
+      if (_answeredOnCallScreen == end.ring.uuid) {
+        _answeredOnCallScreen = null;
+        _watchCallScreenCall(null);
+      }
+      if (!mounted) return;
+      final live = Matrix.of(context).activeCall.value;
+      if (live != null && live.notificationEventId == end.ring.eventId) {
+        live.endCall();
+      }
+      return;
+    }
+    _onCallScreen.remove(end.ring.eventId);
+    final ring = _ringing;
+    if (ring != null && ring.event.eventId == end.ring.eventId) {
+      _decline(ring);
+    } else {
+      _chosenOnCallScreen[end.ring.eventId] = false;
+    }
+  }
+
+  void _onCallScreenMute(bool muted) {
+    if (!mounted) return;
+    final live = Matrix.of(context).activeCall.value;
+    if (live != null && live.muted != muted) unawaited(live.toggleMute());
   }
 
   /// Notification event ids the learner has turned down, per account, with
@@ -180,9 +490,35 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     return seen.containsKey(notificationEventId);
   }
 
+  /// Stops the phone's own ring for [ring] once this prompt is on screen in
+  /// its place: the notification that rang while the app was closed hands
+  /// over to the prompt, and the learner should not hear two rings for one
+  /// call. Only while the app is in front -- in the background the prompt is
+  /// seen by nobody, and the phone's ring is the one that reaches them.
+  void _takeOverRing(IncomingCallNotification? ring) {
+    if (ring == null || !PlatformInfos.isAndroid) return;
+    if (WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed) {
+      return;
+    }
+    unawaited(
+      const IncomingCallRinger().stop(ring.event.eventId).catchError((
+        Object e,
+        StackTrace s,
+      ) {
+        matrix.Logs().w('Could not stop the phone ringing', e, s);
+      }),
+    );
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) _takeOverRing(_ringing);
+  }
+
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     // Deferred: Matrix.of needs a mounted context, and the call service is
     // per-account and resolved from it.
     WidgetsBinding.instance.addPostFrameCallback((_) => _listen());
@@ -277,6 +613,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     }
 
     _followActiveAccount(matrixState);
+    _listenToCallScreen();
 
     // The signal that an account arrived or left. Nothing else delivers it:
     // `Matrix.clients` is a plain list, and MatrixState hands back an
@@ -358,8 +695,30 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// has, so a standing rejoin offer is for a call that can no longer be
   /// rejoined first — it goes.
   void _onActiveCallChanged() {
-    if (_activeCall?.value == null || _rejoin == null) return;
-    _clearOffer();
+    final call = _activeCall?.value;
+    if (call == null) {
+      // The call a call-screen answer became has ended: so does the call
+      // screen.
+      final answered = _answeredOnCallScreen;
+      _answeredOnCallScreen = null;
+      _watchCallScreenCall(null);
+      if (answered != null) {
+        _endCallScreen(answered, CallScreenEndReason.remoteEnded);
+      }
+      return;
+    }
+    if (_rejoin != null) _clearOffer();
+    if (call is! call_ui.CallSession) return;
+    // The ring that call is answering. It can be answered somewhere other
+    // than this prompt -- on the notification that rang while the app was
+    // closed -- and a prompt left up would offer to answer a call already
+    // being joined.
+    final ringing = _ringing;
+    if (ringing != null &&
+        call.notificationEventId == ringing.event.eventId &&
+        identical(call.room.client, ringing.event.room.client)) {
+      _dismiss();
+    }
   }
 
   /// Offers a return to the call a reload interrupted.
@@ -856,6 +1215,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// arrives, and treating "not there yet" as "gone" would silence real calls —
   /// the failure that matters most here. Never seeing it present simply leaves
   /// the lifetime timer in charge, which is the behaviour this had before.
+  ///
+  /// And only a hang-up written AFTER the ring counts. An app the push woke
+  /// catches up on the caller's earlier calls, and the end of their last one,
+  /// arriving now, is not this one ending.
   void _watchCaller(IncomingCallNotification ring) {
     _callerGone?.cancel();
     final service = _serviceFor(ring.event.room);
@@ -868,7 +1231,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       callerId,
       deviceId: callerDevice,
     );
-    _callerGone = service.callerPresenceChanges(room, callerId).listen((_) {
+    _callerGone = service.callerStateUpdates(room, callerId).listen((state) {
       if (!mounted || _ringing?.event.eventId != ring.event.eventId) return;
       final present = service.callerStillInCall(
         room,
@@ -879,12 +1242,20 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
         wasPresent = true;
         return;
       }
+      if (state is matrix.Event &&
+          state.originServerTs.isBefore(ring.event.originServerTs)) {
+        return;
+      }
       if (wasPresent) _dismiss();
     });
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    for (final sub in _callScreenSubs) {
+      unawaited(sub.cancel());
+    }
     for (final account in _accounts.values) {
       unawaited(account.cancel());
     }
@@ -893,6 +1264,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _callerGone?.cancel();
     _stillRinging?.cancel();
     _activeCall?.removeListener(_onActiveCallChanged);
+    _callScreenCall?.removeListener(_onCallScreenCallChanged);
     _offerWatch?.cancel();
     _siblingAnswered?.cancel();
     // Release the ring player's native AudioPlayer (dispose stops it first),
@@ -965,83 +1337,35 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     );
   }
 
-  Future<void> _answer(IncomingCallNotification ring) async {
+  void _answer(IncomingCallNotification ring) {
     _dismiss();
     if (!mounted) return;
-    // Deliberately NOT gated on the caller still being visible in Matrix room
-    // state. That read lags a join by seconds, so it was routinely empty at the
-    // moment someone tapped answer — and answering did nothing at all. The SFU
-    // is the rendezvous point: join it, and let presence decide from there
-    // whether anyone is actually on the other end.
-    // The account this ring reached must still be signed in. Between the
-    // prompt going up and this tap it can have logged out, and starting a
-    // call then would run it through whichever account is foregrounded now.
+    // The account this ring reached must still be one this banner serves.
     if (_serviceFor(ring.event.room) == null) {
       matrix.Logs().w('Cannot answer: that account is no longer signed in');
       return;
     }
-    final matrixState = Matrix.of(context);
-    // Whether the call is for the account the learner is currently in.
-    //
-    // A call for ANOTHER account has no chat pane it could be shown in:
-    // `ChatPage` resolves its room through the ACTIVE client, so navigating
-    // there would land on RoomUnavailablePanel with a connected call playing
-    // behind it. It is presented as an app-level overlay instead -- fullscreen
-    // from its first frame, because the alternative overlay is CallMiniTile,
-    // which has neither hangup nor mute.
-    final onActiveAccount = identical(
-      ring.event.room.client,
-      matrixState.client,
-    );
-    try {
-      matrixState.startCall(
-        ring.event.room,
-        video: ring.isVideo,
-        // Anchors this side's speaking analytics: the answering device does
-        // not write the call to the timeline, the caller does.
-        notificationEventId: ring.event.eventId,
-        // The caller's own membership, named by their ring: the call's SHARED
-        // identity, which every card for this call is stamped with.
-        callerMembershipEventId: ring.membershipEventId,
-        fullscreen: !onActiveAccount,
-      );
-    } on AlreadyInACall {
-      // A call is live somewhere else -- another account, or another room on
-      // this one. The answer cannot happen, and the prompt is already down --
-      // so TELL the caller rather than leaving them ringing into nothing
-      // until they time out and write a missed call.
-      matrix.Logs().w('Answering while already on a call elsewhere');
-      _declineBusy(ring);
-      return;
-    }
-    // The call lives in its own chat's pane, so answering also goes there.
-    // Through the app's router directly: this banner is mounted above it.
-    //
-    // ONLY for the active account. Answering a call on another account leaves
-    // the learner exactly where they were, with the call over the top: their
-    // room list, their open chat and a half-typed message are all untouched.
-    // They asked to talk to somebody, not to be moved to another account --
-    // and with no in-app account switcher, moving them would strand them.
-    if (!onActiveAccount) return;
-    final router = FluffyChatApp.router;
-    final uri = router.routeInformationProvider.value.uri;
-    router.go(WorkspaceNav.openRoomById(uri, ring.event.room.id));
+    Matrix.of(context).answerRing(ring);
   }
 
   @override
   Widget build(BuildContext context) {
     final ringing = _ringing;
+    final onCallScreen =
+        ringing != null && _onCallScreen.containsKey(ringing.event.eventId);
     return ValueListenableBuilder<RejoinOffer?>(
       valueListenable: _rejoinStore ?? ValueNotifier<RejoinOffer?>(null),
-      builder: (context, rejoin, _) => _buildStack(context, ringing, rejoin),
+      builder: (context, rejoin, _) =>
+          _buildStack(context, ringing, rejoin, cardHidden: onCallScreen),
     );
   }
 
   Widget _buildStack(
     BuildContext context,
     IncomingCallNotification? ringing,
-    RejoinOffer? rejoin,
-  ) {
+    RejoinOffer? rejoin, {
+    required bool cardHidden,
+  }) {
     return Stack(
       children: [
         widget.child ?? const SizedBox.shrink(),
@@ -1065,7 +1389,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
               ),
             ),
           ),
-        if (ringing != null)
+        if (ringing != null && !cardHidden)
           Positioned(
             top: MediaQuery.of(context).padding.top + 12,
             left: 12,

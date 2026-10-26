@@ -4,6 +4,8 @@ import 'package:flutter/semantics.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/user/direct_chat_contacts_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -14,8 +16,11 @@ import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item_subtitle.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
+import 'package:fluffychat/routes/world/saved_activities_client_extension.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/room_status_extension.dart';
+import 'package:fluffychat/widgets/completed_stamp.dart';
 import '../../config/themes.dart';
 import '../../utils/date_time_extension.dart';
 import '../../widgets/avatar.dart';
@@ -151,11 +156,31 @@ class ChatListItem extends StatelessWidget {
             // archive page's delete button, renders in an overlay above the
             // tile — a semantic sibling of the row button — while an
             // invisible same-size copy holds its layout slot.
+            // An activity session's row wears the activity's photo the way
+            // its card and map pin do: a rounded square in the session's
+            // state frame, with the completed stamp on its corner when the
+            // learner is replaying an activity they've saved. Finished
+            // sessions never reach a list (isHiddenRoom), so every activity
+            // row here is a live one. A listed room is never saved itself,
+            // so a saved session of its activity is another room's.
+            final isActivity = room.isActivitySession;
+            final activityFrame = !isActivity
+                ? null
+                : (room.isActivityStarted
+                          ? ActivityPinState.ongoingActive
+                          : ActivityPinState.ongoingPending)
+                      .bodyColor(context);
+            final activityId = room.activityId;
+            final replaying =
+                isActivity &&
+                activityId != null &&
+                room.client.hasSavedSessionOf(activityId);
             final leadingAvatar = ExcludeSemantics(
               child: SizedBox(
                 width: Avatar.defaultSize,
                 height: Avatar.defaultSize,
                 child: Stack(
+                  clipBehavior: Clip.none,
                   children: [
                     if (space != null)
                       Positioned(
@@ -186,7 +211,9 @@ class ChatListItem extends StatelessWidget {
                       bottom: 0,
                       right: 0,
                       child: Avatar(
-                        border: space == null
+                        border: activityFrame != null
+                            ? BorderSide(width: 3, color: activityFrame)
+                            : space == null
                             ? room.isSpace
                                   ? BorderSide(
                                       width: 1,
@@ -207,6 +234,9 @@ class ChatListItem extends StatelessWidget {
                         //     : null,
                         borderRadius:
                             borderRadius ??
+                            (activityFrame != null
+                                ? BorderRadius.circular(10.0)
+                                : null) ??
                             (room.isSpace
                                 ? BorderRadius.circular(
                                     AppConfig.borderRadius / 4,
@@ -222,6 +252,12 @@ class ChatListItem extends StatelessWidget {
                         presenceBackgroundColor: backgroundColor,
                       ),
                     ),
+                    if (replaying)
+                      const Positioned(
+                        top: -2,
+                        right: -2,
+                        child: CompletedStamp(size: 18.0),
+                      ),
                   ],
                 ),
               ),

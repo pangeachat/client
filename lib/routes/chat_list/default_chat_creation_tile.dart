@@ -27,8 +27,9 @@ class DefaultChatCreationTile extends StatelessWidget {
   /// caller has them loaded: an existing unjoined default chat then also
   /// hides the tile. Callers that don't keep the children (the course page's
   /// Chats preview, which only asks whether one is joinable) pass null and
-  /// skip that check; `joinDefaultChats` joins an unjoined default chat when
-  /// that page opens.
+  /// skip that check; the server joins every course member to an existing
+  /// default chat (synapse-pangea-chat's `course_default_chats`), so an admin
+  /// is normally in it already and `hasDefaultChat` hides the tile.
   final List<SpaceRoomsChunk$2>? discoveredChildren;
 
   /// Optional text-size overrides so an embedding page can match its own

@@ -1,11 +1,14 @@
+import 'dart:async';
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
 import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 extension PublicCourseExtension on Api {
   Future<PublicCoursesResponse> getPublicCourses({
@@ -49,6 +52,65 @@ extension PublicCoursesRequest on Client {
     since: since,
     targetLanguage: targetLanguage,
   );
+
+  /// The course Start my own opens instead of the picked quest (#9590), or
+  /// null when the learner should create their own. A failed lookup is
+  /// reported and also returns null, so Start my own falls back to creating
+  /// rather than blocking the learner.
+  Future<String?> courseToJoinInstead(
+    String questId,
+    String targetLanguage,
+  ) async {
+    try {
+      final courses = await _allPublicCourses(
+        targetLanguage,
+      ).timeout(const Duration(seconds: 10));
+      return PublicCoursesChunk.toJoinInstead(courses, questId)?.room.roomId;
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'quest_id': questId, 'target_language': targetLanguage},
+      );
+      return null;
+    }
+  }
+
+  /// [targetLanguage]'s central course (#9591), or null when it has none. A
+  /// failed lookup is reported and also returns null, so the learner carries
+  /// on without one and the next check tries again.
+  Future<String?> centralCourseFor(String targetLanguage) async {
+    try {
+      final courses = await _allPublicCourses(
+        targetLanguage,
+      ).timeout(const Duration(seconds: 10));
+      return PublicCoursesChunk.centralOf(courses)?.room.roomId;
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'target_language': targetLanguage},
+      );
+      return null;
+    }
+  }
+
+  Future<List<PublicCoursesChunk>> _allPublicCourses(
+    String targetLanguage,
+  ) async {
+    final courses = <PublicCoursesChunk>[];
+    String? since;
+    do {
+      final page = await requestPublicCourses(
+        limit: 100,
+        since: since,
+        targetLanguage: targetLanguage,
+      );
+      courses.addAll(page.courses);
+      since = page.nextBatch;
+    } while (since != null);
+    return courses;
+  }
 }
 
 class PublicCoursesResponse extends GetPublicRoomsResponse {
@@ -105,11 +167,35 @@ class PublicCoursesChunk {
   final String courseId;
   final String? targetLanguage;
 
+  /// Whether the catalog marks this as its language's central course.
+  final bool central;
+
   PublicCoursesChunk({
     required this.room,
     required this.courseId,
     this.targetLanguage,
+    this.central = false,
   });
+
+  /// The central course, else the public course on [questId] with the most
+  /// members (#9590). Two central courses in one language is a setup mistake;
+  /// the bigger one still wins.
+  static PublicCoursesChunk? toJoinInstead(
+    List<PublicCoursesChunk> courses,
+    String questId,
+  ) =>
+      centralOf(courses) ??
+      _biggestFirst(courses).firstWhereOrNull(
+        (c) =>
+            c.courseId == questId && c.room.joinRule == JoinRules.public.name,
+      );
+
+  static PublicCoursesChunk? centralOf(List<PublicCoursesChunk> courses) =>
+      _biggestFirst(courses).firstWhereOrNull((c) => c.central);
+
+  static List<PublicCoursesChunk> _biggestFirst(
+    List<PublicCoursesChunk> courses,
+  ) => courses.sortedBy<num>((c) => -c.room.numJoinedMembers);
 
   /// Returns null when the entry carries no course id.
   static PublicCoursesChunk? tryParse(Map<String, dynamic> json) {
@@ -119,6 +205,7 @@ class PublicCoursesChunk {
       room: PublishedRoomsChunk.fromJson(json),
       courseId: courseId,
       targetLanguage: json[ModelKey.targetLanguage] as String?,
+      central: json['central'] == true,
     );
   }
 
@@ -127,6 +214,7 @@ class PublicCoursesChunk {
       'room': room.toJson(),
       'course_id': courseId,
       if (targetLanguage != null) ModelKey.targetLanguage: targetLanguage,
+      if (central) 'central': true,
     };
   }
 }

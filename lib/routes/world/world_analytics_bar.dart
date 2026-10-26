@@ -26,6 +26,10 @@ import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 /// state machine — collapsed rendering, ~3s timer, focus suspension — is
 /// gone: full-screen surfaces host [AnalyticsHeaderAvatar] in their own app
 /// bar instead of a floating collapsed bar.)
+///
+/// Figma: [default component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-94063),
+/// [analytics section](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13485-90933),
+/// [wider tablet analytics](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13377-63983).
 class WorldAnalyticsBar extends StatelessWidget {
   /// Builds the L2 flag chip at the requested size. Null uses the real
   /// [ClusterLanguageFlag]; tests inject a plain stand-in because the real
@@ -275,6 +279,7 @@ class _PowerupsRow extends StatelessWidget {
                                       return ClusterTrackerButton(
                                         indicator: ProgressIndicatorEnum.stars,
                                         count: stars,
+                                        loading: viewModel.starsLoading,
                                         selected:
                                             selectedTab ==
                                             ProgressIndicatorEnum.stars,

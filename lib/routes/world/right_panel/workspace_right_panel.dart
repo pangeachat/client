@@ -9,6 +9,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/analytics/activities/objective_details_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/panel_card_with_header.dart';
@@ -184,6 +185,20 @@ class WorkspaceRightPanel extends StatelessWidget {
           ),
         ),
       ),
+      ObjectivePanelToken(param: final param) =>
+        param == null
+            ? const SizedBox.shrink()
+            : PanelCard(
+                child: ObjectiveDetailsView(
+                  missionId: param.missionId,
+                  courseId: param.courseId,
+                  closeButton: IconButton(
+                    tooltip: leadingTooltip,
+                    icon: Icon(leadingIcon),
+                    onPressed: onLeading,
+                  ),
+                ),
+              ),
       AnalyticsPracticePanelToken(param: final param) =>
         param == null
             ? const SizedBox.shrink()

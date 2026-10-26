@@ -60,6 +60,12 @@ import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 /// architecture). The GlobalKey preserves the map's State — tiles, camera,
 /// pins — even if this shell page is rebuilt or remounted across navigation,
 /// so sections open *over* the map instead of refreshing it.
+///
+/// The map survives only while this shell stays mounted: routing through a
+/// non-shell top-level page (login, onboarding, logs) tears it down, so auth
+/// and error flows are the only legitimate exits. Every overlay sizes to what
+/// it draws; one stretched to the full shell paints over and hides the whole
+/// map (a bug we hit on web).
 final GlobalKey _persistentWorldMapKey = GlobalKey(debugLabel: 'worldMap');
 
 /// Preserves the top-right cluster's State (counts, level, stream subs) across
@@ -161,7 +167,7 @@ String _recencyKey(PanelToken token) {
 /// Whether the narrow rail's 4th slot — the course shortcut — is showing the
 /// surface the cavity currently hosts, which makes its tap the
 /// tap-the-active-item TOGGLE rather than a navigation
-/// (routing.instructions.md → "Collapsing is not closing").
+/// (routing.instructions.md → Single-column bottom nav).
 ///
 /// The slot resolves contextually, so "its own surface" does too:
 ///
@@ -560,8 +566,10 @@ class WorkspaceShell extends StatelessWidget {
                                 key: ValueKey(l.rightTokens[i].encode()),
                                 // Respect the top safe-area inset so the close/back control clears the
                                 // system top bar (#7143). On narrow the analytics bar heads the panel
-                                // ("the analytics bar itself remains visible at the top throughout" —
-                                // routing.instructions.md), so the panel starts below it.
+                                // and stays visible at the top throughout, so the panel starts below
+                                // it and covers the bottom nav completely (unlike the nav's own
+                                // cavity, whose rail icons stay visible). It fills the width with no
+                                // fixed cap; bound it if a large tablet ever stretches it awkwardly.
                                 top: l.isColumnMode
                                     ? 0
                                     : _ShellLayout.analyticsBarAllowance,
@@ -1177,21 +1185,22 @@ bool _tokenIsCoursePreview(PanelToken token) {
 }
 
 /// The plan uuid the map should PREVIEW-scope to, or null when no course
-/// preview is open (#7826) — own: from the token; browse: via
-/// [CoursePreviewPlans] once the room summary lands (null until then).
+/// preview is open (#7826) — a previewed course's plan via
+/// [CoursePreviewPlans] once its room summary lands (null until then);
+/// otherwise own's picked quest, from the token.
 String? _previewPlanIdFor(List<PanelToken> leftTokens) {
   for (final token in leftTokens) {
     if (!_tokenIsCoursePreview(token)) continue;
     final param = token.param;
     if (param is! AddCoursePageTokenParam) continue;
+    final roomId = param.previewRoomId;
+    if (roomId != null) {
+      return CoursePreviewPlans.planIdFor(shortRoomId(roomId));
+    }
     switch (param.subpage) {
       case AddCourseSubpageEnum.own:
         return param.createCourseId;
       case AddCourseSubpageEnum.browse:
-        final roomId = param.previewRoomId;
-        return roomId == null
-            ? null
-            : CoursePreviewPlans.planIdFor(shortRoomId(roomId));
       case AddCourseSubpageEnum.private:
         return null;
     }
@@ -1342,7 +1351,7 @@ class _ShellLayout {
   /// above its header or below its composer (#7554, #8879). Every other
   /// narrow ground (the map, a cavity, a right panel under the analytics
   /// bar) leaves the map visible there. See `routing.instructions.md` →
-  /// Full-screen surfaces.
+  /// Single-column (narrow and mobile) mode.
   final bool fullBleedFocus;
 
   /// Whether this layout resolved in two-column mode (chrome picks the web rail
@@ -1424,7 +1433,7 @@ class _ShellLayout {
     final parsedLeft = parseOpenPanels(state.uri).left;
 
     // A `?c=` context with no `course` token is the course panel COLLAPSED
-    // (routing.instructions.md → Reading a workspace URL), and its collapsed
+    // (routing.instructions.md → Closing a panel: X or back arrow), and its collapsed
     // state — the context bar — is a panel like any other, seated here rather
     // than drawn as chrome somewhere else (#9037).
     //
@@ -1663,7 +1672,11 @@ class _ShellLayout {
         ? CoursePreviewMapContext(previewPlanId)
         : coursePlanId == null
         ? const WorldMapContext()
-        : CourseMapContext(coursePlanId, spaceId: activeSpaceId);
+        : CourseMapContext(
+            coursePlanId,
+            spaceId: activeSpaceId,
+            missionId: selectedMissionIdFor(state.uri),
+          );
     // A full-screen surface on a narrow screen (a focused panel or a
     // center-detail page) covers the map, so dismiss any lingering map-pin
     // preview — otherwise its [MapPinController] flag would keep the nav

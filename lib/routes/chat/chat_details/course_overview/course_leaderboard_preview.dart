@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/course_leaderboard.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_button.dart';
@@ -16,8 +17,9 @@ import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 
 /// The course page's Leaderboard section (course-leaderboard.instructions.md):
 /// its header, the admin line cut to the cards that fit, and the podium — the
-/// top three as [LeaderboardRow]s, or a lone member over an invite row. The
-/// full ranking is the section's subpage — CourseLeaderboardPage.
+/// top three as [LeaderboardRow]s, then an invite row when one or no member
+/// is ranked. The full ranking is the section's subpage —
+/// CourseLeaderboardPage.
 ///
 /// This widget owns the whole section because the header's "See all" turns on
 /// what the subpage holds beyond the preview, and only the preview knows how
@@ -80,10 +82,11 @@ class CourseLeaderboardPreview extends StatelessWidget {
                   title: title,
                   icon: Icons.group_outlined,
                   actions: [
-                    if (room.canInvite)
+                    if (room.canInviteMembers)
                       CourseSectionShortcut(
                         icon: Icons.person_add_outlined,
-                        tooltip: l10n.invite,
+                        label: l10n.invite,
+                        showLabel: false,
                         onPressed: onInvite,
                       ),
                     if (subpageHasMore)
@@ -105,8 +108,6 @@ class CourseLeaderboardPreview extends StatelessWidget {
                     label: l10n.listLabel(l10n.leaderboard),
                     container: true,
                     // One Tab stop for the section, the arrow keys inside it.
-                    // An admin appears twice — in the line and on the podium —
-                    // so the ids carry which.
                     child: RovingFocusGroup(
                       ids: [
                         for (final user in admins) 'admin:${user.id}',
@@ -138,7 +139,7 @@ class CourseLeaderboardPreview extends StatelessWidget {
                               room: room,
                               rovingId: 'rank:${entry.user.id}',
                             ),
-                          if (board.ranked.length == 1 && room.canInvite)
+                          if (board.ranked.length <= 1 && room.canInvite)
                             LeaderboardInviteRow(onTap: onInvite),
                         ],
                       ),

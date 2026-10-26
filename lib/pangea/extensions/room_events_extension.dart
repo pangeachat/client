@@ -7,6 +7,8 @@ extension EventsRoomExtension on Room {
       return;
     }
 
+    await _rememberLeftCentralCourse();
+
     for (final child in spaceChildren) {
       if (child.roomId == null) continue;
       final Room? room = client.getRoomById(child.roomId!);
@@ -25,6 +27,33 @@ extension EventsRoomExtension on Room {
       await leave();
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'roomID': id});
+    }
+  }
+
+  /// Saved before the leave, so a leave that lands is never forgotten. See
+  /// joining-courses.instructions.md § The central course.
+  Future<void> _rememberLeftCentralCourse() async {
+    if (!isCentralCourse) return;
+    final language = coursePlan?.l2?.split('-').first;
+    if (language == null) {
+      ErrorHandler.logError(
+        e: 'Central course has no language to remember the leave by',
+        data: {'room_id': id},
+      );
+      return;
+    }
+    try {
+      await MatrixState.pangeaController.userController.updateProfile(
+        (profile) => profile.copyWith(
+          userSettings: profile.userSettings.withLeftCentralCourse(language),
+        ),
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'room_id': id, 'target_language': language},
+      );
     }
   }
 
@@ -290,6 +319,10 @@ extension EventsRoomExtension on Room {
   /// Get a list of events in the room that are of type [PangeaEventTypes.construct]
   /// and have the sender as [userID]. If [count] is provided, the function will
   /// return at most [count] events.
+  ///
+  /// Only the server's events count: a send that failed stays in the local
+  /// timeline with an error status, and reading it as analytics counts uses
+  /// that never reached the server (#9511).
   Future<List<Event>> getRoomAnalyticsEvents({
     String? userID,
     int? count,
@@ -329,7 +362,10 @@ extension EventsRoomExtension on Room {
 
     final events = timeline.chunk.events
         .where(
-          (e) => e.type == PangeaEventTypes.construct && e.senderId == userID,
+          (e) =>
+              e.type == PangeaEventTypes.construct &&
+              e.senderId == userID &&
+              e.status.isSynced,
         )
         .map((e) => Event.fromMatrixEvent(e, this));
 

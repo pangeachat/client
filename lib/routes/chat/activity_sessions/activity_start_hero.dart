@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goals_dropdown.dart';
@@ -13,7 +16,10 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_video_close_bu
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_player.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_video_screen.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_youtube_player.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/completed_stamp.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 
 /// The activity start page's hero: a full-bleed background over which the role
@@ -237,6 +243,19 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
                 ),
               ),
             ),
+          // The finished sessions' view: the learner's total XP from the
+          // activity, as the stamp its card wears, centred at the top of the
+          // image (#9559) — the activity's whole XP, every course's sessions.
+          if (_session case final NotStartedSessionController notStarted
+              when notStarted.subPage == NotStartedSubPage.view)
+            Positioned(
+              top: 12.0,
+              left: 0,
+              right: 0,
+              child: _overlay(
+                Center(child: _ActivityXpTotalBadge(_activity.activityId)),
+              ),
+            ),
           Positioned(
             top: 0,
             left: 0,
@@ -246,6 +265,12 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
                 goals: _session.selectedRoleGoals,
                 completedGoalIds: _session.selectedRoleCompletedGoalIds,
                 startCollapsed: _session.goalsStartCollapsed,
+                showGoalXp: switch (_controller.activityRoom) {
+                  final room? => CourseLanguageScope.sessionInTargetLanguage(
+                    room,
+                  ),
+                  null => true,
+                },
               ),
             ),
           ),
@@ -346,4 +371,27 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
       ),
     );
   }
+}
+
+/// The learner's total XP from an activity, as the completed stamp with its
+/// XP — the badge the activity's card wears, larger — or nothing while they
+/// have none. Follows their XP as it is read.
+class _ActivityXpTotalBadge extends StatelessWidget {
+  final String activityId;
+
+  const _ActivityXpTotalBadge(this.activityId);
+
+  @override
+  Widget build(BuildContext context) => ListenableBuilder(
+    listenable: MissionXpCache.instance,
+    builder: (context, _) {
+      final xp =
+          Matrix.of(
+            context,
+          ).client.cachedXpBreakdownByActivity[activityId]?.total ??
+          0;
+      if (xp <= 0) return const SizedBox.shrink();
+      return CompletedStamp(size: 28.0, xp: xp, labelSize: 16.0);
+    },
+  );
 }

@@ -186,7 +186,7 @@ The menu holds, in order:
 | Entry | Kind |
 | --- | --- |
 | **Listen first** | Mode, checked when on — present only when it has folded in from the header, and only on a match that has choices |
-| **Enable writing assistance** | Mode, checked when on — the same `autoIGC` toggle learning settings owns, so a learner handed a card they did not want can stop it from where they are |
+| **Autocheck on send** | Mode, checked when on — the same `autoIGC` toggle learning settings owns, so a learner handed a card they did not want can stop it from where they are |
 | **Report content issue** | Action — the feedback dialog |
 | **Learning settings** | Action — opens the learning settings page |
 

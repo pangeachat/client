@@ -12,6 +12,7 @@ import 'package:http/testing.dart';
 
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/course_image_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
@@ -30,6 +31,7 @@ void main() {
       );
 
   const coverUrl = 'https://cdn.test/cover-thumb.png';
+  const noResponse = 0;
 
   setUpAll(() async {
     MatrixState.pangeaController = FakePangeaController(
@@ -61,7 +63,8 @@ void main() {
 
   /// Serves quest-plans by id from [rows] and the `media` collection with one
   /// row, `upload-1`. [statusFor] overrides the status of a quest read, to
-  /// simulate a failure. Returns the list of quest ids read.
+  /// simulate a failure; [noResponse] is a status that means the request got
+  /// no answer at all. Returns the list of quest ids read.
   Future<List<String>> withCms(
     List<Map<String, dynamic>> rows,
     Future<void> Function() body, {
@@ -76,6 +79,9 @@ void main() {
           final id = byId.group(1)!;
           reads.add(id);
           final status = statusFor?.call(id) ?? 200;
+          if (status == noResponse) {
+            throw http.ClientException('Connection closed', request.url);
+          }
           final row = rows.where((r) => r['id'] == id).firstOrNull;
           if (status != 200 || row == null) {
             return http.Response('{"errors":[]}', row == null ? 404 : status);
@@ -133,18 +139,45 @@ void main() {
       expect(reads, ['bare', 'gone'], reason: 'both answers are cached');
     });
 
-    test('a failed read is not cached, so the next call retries', () async {
+    // #9569: retrying a failed read on every mount sent a burst of reads at
+    // a CMS that was already slow. A failure is read once per session.
+    test('a failed read is reported and read once per quest', () async {
+      final reads = await withCms(
+        [
+          questRow('q-500', uploadId: 'upload-1'),
+          questRow('q-silent', uploadId: 'upload-1'),
+        ],
+        () async {
+          for (var i = 0; i < 3; i++) {
+            expect(await QuestPlansRepo.cover('q-500'), isNull);
+            expect(await QuestPlansRepo.cover('q-silent'), isNull);
+          }
+        },
+        statusFor: (id) => id == 'q-500' ? 500 : noResponse,
+      );
+      expect(reads, ['q-500', 'q-silent']);
+      expect(QuestPlansRepo.cachedCover('q-500'), isNull);
+      expect(
+        ErrorHandler.reportedOnceKeysForTest,
+        containsAll(['quest-cover:q-500', 'quest-cover:q-silent']),
+      );
+    });
+
+    test('a quest-plans read after a failure brings the cover back', () async {
       var fail = true;
       final reads = await withCms(
         [questRow('q1', uploadId: 'upload-1')],
         () async {
           expect(await QuestPlansRepo.cover('q1'), isNull);
           fail = false;
+          // Opening the course's page reads its quest-plans row.
+          await QuestPlansRepo.get('q1');
           expect(await QuestPlansRepo.cover('q1'), Uri.parse(coverUrl));
         },
         statusFor: (_) => fail ? 500 : 200,
       );
-      expect(reads, ['q1', 'q1']);
+      expect(reads, ['q1', 'q1'], reason: 'the cover read, then the page read');
+      expect(QuestPlansRepo.cachedCover('q1'), Uri.parse(coverUrl));
     });
 
     test('a quest-plans read seeds the cover, so no second read', () async {
@@ -193,6 +226,25 @@ void main() {
       });
       await tester.pump();
       expect(find.text(coverUrl), findsOneWidget);
+    });
+
+    testWidgets('a failed cover is not read again when the avatar remounts', (
+      tester,
+    ) async {
+      late List<String> reads;
+      await tester.runAsync(() async {
+        reads = await withCms([questRow('q1', uploadId: 'upload-1')], () async {
+          for (var i = 0; i < 3; i++) {
+            await tester.pumpWidget(builder(courseId: 'q1'));
+            await QuestPlansRepo.cover('q1');
+            await tester.pumpWidget(const SizedBox());
+          }
+          await tester.pumpWidget(builder(courseId: 'q1'));
+        }, statusFor: (_) => 503);
+      });
+      await tester.pump();
+      expect(find.text('letter'), findsOneWidget);
+      expect(reads, ['q1']);
     });
 
     testWidgets('a known cover paints on the first frame', (tester) async {

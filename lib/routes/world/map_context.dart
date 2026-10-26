@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+
 /// What the persistent world map is currently scoped to (world_v2 "Map
 /// content, context & filtering"). World shows all content; a selected
 /// course scopes the map to that course's content. Set by the shell from
@@ -26,17 +28,36 @@ class WorldMapContext extends MapContext {
 class CourseMapContext extends MapContext {
   final String coursePlanId;
   final String? spaceId;
-  const CourseMapContext(this.coursePlanId, {this.spaceId});
+
+  /// The Mission picked in the URL (`?mission=`), or null for the course's
+  /// current Mission. The map shows only that Mission's activities.
+  final String? missionId;
+
+  const CourseMapContext(this.coursePlanId, {this.spaceId, this.missionId});
+
+  /// The Mission the map shows, given this course's resolved [progress]:
+  /// [missionId] when it is one of the course's Missions, else the course's
+  /// current (anchor) Mission — so a stale or filtered-out `?mission=` lands
+  /// on the same Mission the course page's circles fall back to. Null before
+  /// the course's progression resolves.
+  String? selectedMissionIn(QuestProgress? progress) {
+    if (progress == null) return null;
+    final picked = missionId;
+    if (picked != null && progress.rollup.containsKey(picked)) return picked;
+    return progress.anchorMissionId;
+  }
 
   @override
   bool operator ==(Object other) =>
       other.runtimeType == runtimeType &&
       other is CourseMapContext &&
       other.coursePlanId == coursePlanId &&
-      other.spaceId == spaceId;
+      other.spaceId == spaceId &&
+      other.missionId == missionId;
 
   @override
-  int get hashCode => Object.hash(runtimeType, coursePlanId, spaceId);
+  int get hashCode =>
+      Object.hash(runtimeType, coursePlanId, spaceId, missionId);
 }
 
 /// Scoped to a course plan the learner is PREVIEWING from the add-course flow
@@ -67,7 +88,11 @@ abstract class CoursePreviewPlans {
       _planIdByShortRoomId.remove(shortRoomId);
 }
 
-/// App-wide singleton the shell writes and the persistent map reads.
+/// App-wide singleton the shell writes and the persistent map reads. The
+/// scope is resolved once, from the URL, and published idempotently: a scope
+/// read from two places, or resolved in two asynchronous steps, makes the map
+/// flip between world and course or glide twice, and re-publishing an
+/// unchanged value must never re-fit the camera.
 abstract class MapContextController {
   static final ValueNotifier<MapContext> notifier = ValueNotifier<MapContext>(
     const WorldMapContext(),

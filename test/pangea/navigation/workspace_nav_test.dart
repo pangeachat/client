@@ -15,7 +15,6 @@ import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
-import 'package:fluffychat/features/navigation/workspace_query.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -1560,6 +1559,30 @@ void main() {
     );
   });
 
+  group('openCoursePreview (a course the learner is not in, #9586)', () {
+    test('seats the browse preview and clears the course context', () {
+      final uri = u(
+        WorkspaceNav.openCoursePreview(
+          u('/?c=!abc&left=chats,course&right=analytics:vocab&mission=m1'),
+          '!abc:server',
+        ),
+      );
+      expect(activeSpaceIdFor(uri), isNull);
+      expect(uri.queryParameters.containsKey('mission'), isFalse);
+      final panels = parseOpenPanels(uri);
+      expect(panels.left.map((t) => t.type), [
+        PanelTypesEnum.addcourse,
+        PanelTypesEnum.addcoursepage,
+      ]);
+      final param = (panels.left.last as AddCoursePagePanelToken).param!;
+      expect(param.subpage, AddCourseSubpageEnum.browse);
+      // No home domain is set in a unit test, so the id rides in full.
+      expect(param.previewRoomId, '!abc:server');
+      // The right column rides along untouched.
+      expect(uri.queryParameters['right'], 'analytics:vocab');
+    });
+  });
+
   group('openCourseActivity (token-native activity panel, #7385/#7267)', () {
     // Bare localpart ids (no `:domain`): shortRoomId only strips the home
     // server_name, which is unavailable in a unit test (no MatrixState), so a
@@ -1579,7 +1602,7 @@ void main() {
       expect(uri.queryParameters['activity'], isNull);
       // #7267: the activity REPLACES the panels, so no `left=course` card rides
       // beside it and no right panel survives.
-      expect(WorkspaceQuery.valueOf(uri.query, 'right'), isNull);
+      expect(uri.queryParameters['right'], isNull);
       expect(parseOpenPanels(uri).left.map((t) => t.type), [
         PanelTypesEnum.activity,
       ]);
@@ -1618,6 +1641,32 @@ void main() {
         final uri = u(loc);
         expect(activityInfoFor(uri)?.autoplay, 0);
         expect(uri.queryParameters['autoplay'], isNull);
+      },
+    );
+  });
+
+  group('the picked Mission (?mission=, #9420)', () {
+    test('selectMission replaces the pick and keeps the rest', () {
+      final once = u(WorkspaceNav.selectMission(u('/?c=a&left=course'), 'm1'));
+      final twice = u(WorkspaceNav.selectMission(once, 'm2'));
+      expect(selectedMissionIdFor(twice), 'm2');
+      expect(twice.queryParameters['c'], 'a');
+      expect(twice.queryParameters['left'], 'course');
+    });
+
+    test(
+      'reopening the same course keeps its pick; another course drops it',
+      () {
+        final course = u(WorkspaceNav.openCourse(u('/'), '!a:server'));
+        final picked = u(WorkspaceNav.selectMission(course, 'm1'));
+        expect(
+          selectedMissionIdFor(u(WorkspaceNav.openCourse(picked, '!a:server'))),
+          'm1',
+        );
+        expect(
+          selectedMissionIdFor(u(WorkspaceNav.openCourse(picked, '!b:server'))),
+          isNull,
+        );
       },
     );
   });

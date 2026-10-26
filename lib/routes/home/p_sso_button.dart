@@ -10,6 +10,8 @@ import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_verdict.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/home/login_loading_dialog.dart';
@@ -79,25 +81,17 @@ class _PangeaSsoButtonState extends State<PangeaSsoButton> {
   }
 
   /// A network filter (school or office Wi-Fi) that blocks the provider's
-  /// sign-in host fails the sign-in in a way the app cannot repair. Probe
-  /// the host first and say so, offering email instead; a slow or unknown
-  /// answer lets the sign-in proceed, so nobody is stopped by a slow network.
+  /// sign-in host fails the sign-in in a way the app cannot repair. Check
+  /// the host first and say so, offering email instead; a slow answer lets
+  /// the sign-in proceed, so nobody is stopped by a slow network. See
+  /// connection-status.instructions.md.
   Future<bool> _providerReachable() async {
     if (!kIsWeb) return true;
-    try {
-      await html.window
-          .fetch(ssoProviderProbeUrl(provider), {
-            'mode': 'no-cors',
-            'cache': 'no-store',
-            'redirect': 'follow',
-          })
-          .timeout(const Duration(seconds: 4));
-      return true;
-    } on TimeoutException {
-      return true;
-    } catch (_) {
-      return false;
-    }
+    final verdict = await FilteredNetworkController.instance.check(
+      provider.networkHostCategory,
+    );
+    // Only a filter earns the dialog: offline, the sign-in fails on its own.
+    return verdict != NetworkVerdict.filtered;
   }
 
   Future<void> _runSSOLogin(BuildContext context) async {
@@ -127,9 +121,14 @@ class _PangeaSsoButtonState extends State<PangeaSsoButton> {
       if (proceed != true || !context.mounted) return;
     }
 
-    if (kIsWeb && browserNeedsSameTabSso(html.window.navigator.userAgent)) {
-      // Phones and in-app browsers refuse the popup; navigate this tab to
-      // the provider and finish on the way back (completePendingWebLogin).
+    if (kIsWeb &&
+        browserNeedsSameTabSso(
+          html.window.navigator.userAgent,
+          maxTouchPoints: html.window.navigator.maxTouchPoints ?? 0,
+        )) {
+      // Phones, tablets and in-app browsers refuse the popup; navigate this
+      // tab to the provider and finish on the way back
+      // (completePendingWebLogin).
       final client = await Matrix.of(context).getLoginClient();
       final href = html.window.location.href;
       final url = client.homeserver!.replace(

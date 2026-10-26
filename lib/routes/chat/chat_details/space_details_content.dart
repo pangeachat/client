@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
-import 'package:fluffychat/features/quests/lo_progression.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -21,8 +22,9 @@ import 'package:fluffychat/routes/chat/chat_details/delete_space_dialog.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
+import 'package:fluffychat/routes/courses/course_objectives/course_objective_circles.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
-import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
 import 'package:fluffychat/routes/world/left_panel/course_card_reveal.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_close_button.dart';
 import 'package:fluffychat/routes/world/panel_header.dart';
@@ -79,16 +81,16 @@ class SpaceDetailsContent extends StatelessWidget {
   /// The gap between the card's header and its body. The wide context bar
   /// restates it above its progress bar, so the card's reveal starts
   /// pixel-for-pixel where the bar ends ([CourseContextBar.height], #8866).
-  static const double bodyTopInset = 16.0;
+  static const double bodyTopInset = 8.0;
 
   /// Below this incoming BODY height (the card minus its header) the course
-  /// card renders only the progress bar — the collapsed mobile peek (the nav
-  /// cavity clips there). The expanded sheet is always well above it, and the
-  /// wide card only dips under it mid-reveal, where the cross-fade below
-  /// decides instead. The old whole-card threshold was 168 with the ~56px
-  /// header row inside the body; the header now sits above the body, so the
-  /// same cavity heights trigger at 112. See [build].
-  static const double _kCompactCardMaxHeight = 112.0;
+  /// card renders only the Mission circles — the collapsed mobile peek (the
+  /// nav cavity clips there). It clears the labelled circles row
+  /// ([ObjectiveProgressCircles.labelledHeight]) with its insets, and the
+  /// peek's body stays just under it. The expanded sheet is always well above
+  /// it, and the wide card only dips under it mid-reveal, where the
+  /// cross-fade below decides instead. See [build].
+  static const double _kCompactCardMaxHeight = 186.0;
 
   @override
   Widget build(BuildContext context) {
@@ -217,12 +219,12 @@ class SpaceDetailsHeader extends StatelessWidget {
   }
 }
 
-/// The progress bar as the course's two collapsed states show it — the wide
-/// context bar and the narrow cavity peek — top-aligned under the header in
-/// whatever height the host gives it. On wide it insets to the header's
-/// content edge, so the track ends where the header's buttons end instead of
-/// running past them (#8866); on narrow it keeps the sections' edge, because
-/// the peek slides up into the page and the bar must not shift.
+/// The Mission circles as the course's two collapsed states show them — the
+/// wide context bar and the narrow cavity peek — with the picked Mission named
+/// under its pointer. A tap picks that Mission for the course card and the
+/// map (`?mission=`, #9420; it replaced the course star bar). On
+/// wide it insets to the header's content edge (#8866); on narrow it keeps the
+/// sections' edge, because the peek slides up into the page.
 class CoursePeekProgressBar extends StatelessWidget {
   final QuestObjectivesLoader objectivesProvider;
 
@@ -236,10 +238,28 @@ class CoursePeekProgressBar extends StatelessWidget {
     // The nav cavity hands the peek TIGHT height constraints, which would
     // inflate the bar's fixed-height box to fill the slot; Align restores
     // loose constraints so the peek bar renders at the same height as on the
-    // full page.
+    // full page. Top-start, like the open course page's circles: a short row
+    // hugs the left edge instead of centring. The row's height is fixed, so
+    // the bar never shrinks while the plan loads and jumps when the circles
+    // arrive.
     child: Align(
-      alignment: Alignment.topCenter,
-      child: CourseProgressBar(objectivesProvider: objectivesProvider),
+      alignment: AlignmentDirectional.topStart,
+      child: SizedBox(
+        height: ObjectiveProgressCircles.labelledHeight,
+        child: CourseObjectiveCircles(
+          objectivesProvider: objectivesProvider,
+          showSelectedLabel: true,
+          selectedMissionId: selectedMissionIdFor(
+            GoRouterState.of(context).uri,
+          ),
+          onSelectMission: (missionId) => context.go(
+            WorkspaceNav.selectMission(
+              GoRouterState.of(context).uri,
+              missionId,
+            ),
+          ),
+        ),
+      ),
     ),
   );
 }
@@ -292,20 +312,8 @@ List<ButtonDetails> _courseSettingsButtons(
       onPressed: () => controller.openCoursePage(RoomSubpageEnum.addcourse),
       enabled: room.isRoomAdmin,
     ),
-    ButtonDetails(
-      title: l10n.starsToUnlockObjectiveTitle,
-      description: l10n.starsToUnlockObjectiveDesc,
-      icon: const Icon(Icons.star_outline, size: 30.0),
-      onPressed: controller.setStarsToUnlockObjective,
-      enabled: room.isRoomAdmin,
-      trailing: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Text(
-          "${room.teacherMode.starsToUnlockObjective ?? kDefaultStarsToUnlockObjective}",
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-      ),
-    ),
+    // XP per objective is set in the admin dashboard, from presets; the
+    // client only reads the course's setting (org admin-dash doc).
     ButtonDetails(
       title: l10n.requireAnalyticsAccessTitle,
       description: l10n.requireAnalyticsAccessDesc,
@@ -377,12 +385,9 @@ class _CourseSectionSubpage extends StatelessWidget {
         SpaceSettingsTabs.course => Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Pinned above the plan so course totals stay visible while
-            // scrolling the Missions.
-            CourseProgressBar(
-              objectivesProvider: controller.objectivesProvider,
-            ),
-            const SizedBox(height: 8.0),
+            // No circle row above the plan (#9559): each Mission's own
+            // header carries its progress, the current Mission and the
+            // class location, and circles here only looked tappable.
             Expanded(
               child: ListenableBuilder(
                 listenable: Listenable.merge([
@@ -392,9 +397,6 @@ class _CourseSectionSubpage extends StatelessWidget {
                 builder: (context, _) => CourseObjectivesList(
                   room: room,
                   collapsibleMissions: true,
-                  hasCompletedActivity: (activityId) => controller
-                      .roomSummariesModel
-                      .hasCompletedActivity(room.client.userID, activityId),
                   objectivesProvider: controller.objectivesProvider,
                 ),
               ),

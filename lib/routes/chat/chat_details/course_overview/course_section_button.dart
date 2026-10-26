@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/bold_tonal_button.dart';
 
 /// A course-page section's "See all" button, opening the section's full
 /// subpage within the card.
@@ -36,21 +37,13 @@ class CourseSectionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
-    // The label alone, with no trailing chevron (#8898): a chevron glyph is
-    // drawn inside a 24px box with about 5px of its own space either side of
-    // it, so it cannot sit evenly against a button's padding — every Material
-    // button pads its two ends alike (24/24) or pads the icon's end wider
-    // (16/24, and it doesn't flip for a trailing icon), and both render the
-    // pill's right side wider than its left. Dropping it is what makes the
-    // two sides match at every text scale, and it shortens the pill, which
-    // is what the report asked for. The tonal fill is the affordance.
-    //
-    // A long localization can outrun a narrow course column; the label is a
-    // plain [Text], so it wraps inside the width the header allows it rather
-    // than overflowing the header's row.
-    return FilledButton.tonal(
+    // The label alone, with no trailing chevron (#8898), in the bold
+    // pressable style of the page's other secondary actions (#9420). A long
+    // localization ellipsizes inside the width the header allows it.
+    return BoldTonalButton(
+      label: l10n.seeAll,
+      semanticsLabel: l10n.seeAllSection(section),
       onPressed: onPressed,
-      child: Text(l10n.seeAll, semanticsLabel: l10n.seeAllSection(section)),
     );
   }
 }

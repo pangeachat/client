@@ -13,8 +13,24 @@ void main() {
       const safariOnIpad =
           'Mozilla/5.0 (iPad; CPU OS 17_5 like Mac OS X) AppleWebKit/605.1.15 Version/17.5 Safari/604.1';
       for (final ua in [gmailOnIphone, chromeOnAndroid, safariOnIpad]) {
-        expect(browserNeedsSameTabSso(ua), isTrue, reason: ua);
+        expect(
+          browserNeedsSameTabSso(ua, maxTouchPoints: 5),
+          isTrue,
+          reason: ua,
+        );
       }
+    });
+
+    // iPad Safari requests the desktop site by default and sends this
+    // Mac user agent; only the touch screen gives it away (#9552).
+    const safariOnMacOrIpad =
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3 Safari/605.1.15';
+
+    test('an iPad asking for the desktop site does', () {
+      expect(
+        browserNeedsSameTabSso(safariOnMacOrIpad, maxTouchPoints: 5),
+        isTrue,
+      );
     });
 
     test('desktop browsers keep the popup flow', () {
@@ -22,9 +38,22 @@ void main() {
           'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36';
       const firefoxOnWindows =
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0';
-      for (final ua in [chromeOnMac, firefoxOnWindows, '']) {
-        expect(browserNeedsSameTabSso(ua), isFalse, reason: ua);
+      for (final ua in [safariOnMacOrIpad, chromeOnMac, firefoxOnWindows, '']) {
+        expect(
+          browserNeedsSameTabSso(ua, maxTouchPoints: 0),
+          isFalse,
+          reason: ua,
+        );
       }
+    });
+
+    test('a touch-screen Windows laptop keeps the popup flow', () {
+      const edgeOnWindows =
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36 Edg/125.0';
+      expect(
+        browserNeedsSameTabSso(edgeOnWindows, maxTouchPoints: 10),
+        isFalse,
+      );
     });
   });
 
@@ -67,17 +96,6 @@ void main() {
   });
 
   group('provider helpers', () {
-    test('probe URLs are on the sign-in hosts', () {
-      expect(
-        ssoProviderProbeUrl(SSOProvider.google),
-        startsWith('https://accounts.google.com/'),
-      );
-      expect(
-        ssoProviderProbeUrl(SSOProvider.apple),
-        startsWith('https://appleid.apple.com/'),
-      );
-    });
-
     test('a stored provider name round-trips', () {
       expect(ssoProviderFromName('google'), SSOProvider.google);
       expect(ssoProviderFromName('apple'), SSOProvider.apple);

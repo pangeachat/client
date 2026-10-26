@@ -1,10 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
@@ -16,6 +20,9 @@ class _ExampleMessageResult {
   final List<PangeaToken> includedTokens;
   final String text;
   final int adjustedTargetIndex;
+
+  /// Message offset of [text]'s first character.
+  final int textOffset;
   final String? eventId;
   final String? roomId;
 
@@ -24,6 +31,7 @@ class _ExampleMessageResult {
     required this.includedTokens,
     required this.text,
     required this.adjustedTargetIndex,
+    required this.textOffset,
     this.eventId,
     this.roomId,
   });
@@ -33,33 +41,56 @@ class _ExampleMessageResult {
     tokens: includedTokens,
     eventId: eventId,
     roomId: roomId,
-    exampleMessage: ExampleMessageInfo(exampleMessage: displaySpans),
+    exampleMessage: ExampleMessageInfo(
+      exampleMessage: displaySpans,
+      textOffset: textOffset,
+    ),
   );
 }
 
 class ExampleMessageUtil {
+  /// The spans that stand for cut text on either side of an example, which
+  /// are not part of the message and are left out of any text that has to
+  /// line up with token offsets.
+  static const String ellipsisBefore = '… ';
+  static const String ellipsisAfter = '…';
+
+  static bool isEllipsisMarker(InlineSpan span) =>
+      span is TextSpan &&
+      span.style == null &&
+      (span.text == ellipsisBefore || span.text == ellipsisAfter);
+
+  /// [savedOnly] picks among the messages saved on this device without asking
+  /// the server, for an offline practice session.
   static Future<List<InlineSpan>?> getExampleMessage(
     ConstructUses construct, {
     String? form,
     bool noBold = false,
+    bool savedOnly = false,
   }) async {
     final result = await _getExampleMessageResult(
       construct,
       form: form,
       noBold: noBold,
+      savedOnly: savedOnly,
     );
     return result?.toSpans();
   }
 
+  /// [maxContextChars] is how much of the message around the target to keep;
+  /// the read-aloud exercise asks for more so the target's whole sentence is
+  /// there to cut to.
   static Future<AudioExampleMessage?> getAudioExampleMessage(
     ConstructUses construct, {
     String? form,
     bool noBold = false,
+    int maxContextChars = defaultMaxContextChars,
   }) async {
     final result = await _getExampleMessageResult(
       construct,
       form: form,
       noBold: noBold,
+      maxContextChars: maxContextChars,
     );
     return result?.toAudioExampleMessage();
   }
@@ -84,10 +115,14 @@ class ExampleMessageUtil {
     return allSpans;
   }
 
+  static const int defaultMaxContextChars = 100;
+
   static Future<_ExampleMessageResult?> _getExampleMessageResult(
     ConstructUses construct, {
     String? form,
     bool noBold = false,
+    bool savedOnly = false,
+    int maxContextChars = defaultMaxContextChars,
   }) async {
     final uses = List<OneConstructUse>.from(construct.cappedUses);
     uses.shuffle(); // Shuffle to get a random example message each time
@@ -95,10 +130,18 @@ class ExampleMessageUtil {
     for (final use in uses) {
       if (form != null && use.form != form) continue;
       final client = MatrixState.pangeaController.matrixState.client;
-      final event = await client.getEventByConstructUse(use);
+      final event = await client.getEventByConstructUse(
+        use,
+        savedOnly: savedOnly,
+      );
       if (event == null) continue;
 
-      final result = _buildExampleMessage(use.form, event, noBold: noBold);
+      final result = _buildExampleMessage(
+        use.form,
+        event,
+        noBold: noBold,
+        maxContextChars: maxContextChars,
+      );
       if (result != null) return result;
     }
     return null;
@@ -108,6 +151,7 @@ class ExampleMessageUtil {
     String? form,
     PangeaMessageEvent messageEvent, {
     bool noBold = false,
+    int maxContextChars = defaultMaxContextChars,
   }) {
     String? text;
     List<PangeaToken>? tokens;
@@ -134,9 +178,12 @@ class ExampleMessageUtil {
       return null;
     }
 
-    final targetToken = tokens[targetTokenIndex];
+    if (!tokensFitText(tokens, text)) {
+      _reportMisfit(messageEvent);
+      return null;
+    }
 
-    const maxContextChars = 100;
+    final targetToken = tokens[targetTokenIndex];
 
     final targetStart = targetToken.text.offset;
     final targetEnd = targetStart + targetToken.text.content.characters.length;
@@ -211,14 +258,15 @@ class ExampleMessageUtil {
         .trimRight();
 
     final displaySpans = [
-      if (trimmedBefore) const TextSpan(text: '… '),
+      if (trimmedBefore)
+        const TextSpan(text: ExampleMessageUtil.ellipsisBefore),
       TextSpan(text: before),
       TextSpan(
         text: targetToken.text.content,
         style: noBold ? null : const TextStyle(fontWeight: FontWeight.bold),
       ),
       TextSpan(text: after),
-      if (trimmedAfter) const TextSpan(text: '…'),
+      if (trimmedAfter) const TextSpan(text: ExampleMessageUtil.ellipsisAfter),
     ];
 
     // Extract only the tokens that are included in the displayed text
@@ -238,8 +286,39 @@ class ExampleMessageUtil {
           .take(afterEndOffset - beforeStartOffset)
           .toString(),
       adjustedTargetIndex: adjustedTargetIndex,
+      textOffset: beforeStartOffset,
       eventId: messageEvent.eventId,
       roomId: messageEvent.room.id,
     );
   }
+
+  /// Whether every token reads back from [text] at its own offset. Tokens
+  /// computed for some other string put each word over the wrong characters,
+  /// and an example built from them stitches the words into garble.
+  @visibleForTesting
+  static bool tokensFitText(List<PangeaToken> tokens, String text) {
+    final chars = text.characters.toList();
+    return tokens.every((token) {
+      final start = token.text.offset;
+      final end = start + token.text.content.characters.length;
+      return start >= 0 &&
+          end <= chars.length &&
+          chars.sublist(start, end).join() == token.text.content;
+    });
+  }
+
+  /// A skipped example turns a listening or read-aloud item into a meaning
+  /// one, which the session hides, so it is reported rather than silent.
+  static void _reportMisfit(PangeaMessageEvent messageEvent) => unawaited(
+    ErrorHandler.logErrorOnce(
+      key: 'example_message_tokens_misfit',
+      e: 'example message skipped: its tokens do not fit its text',
+      data: {
+        'eventId': messageEvent.eventId,
+        'roomId': messageEvent.room.id,
+        'isAudio': messageEvent.isAudioMessage,
+      },
+      level: SentryLevel.warning,
+    ),
+  );
 }

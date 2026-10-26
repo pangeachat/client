@@ -11,6 +11,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_tile_body.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
+import 'package:fluffychat/routes/world/world_map_card_dismiss_button.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
@@ -113,11 +114,11 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
 
 /// The large featured map card. Eligible for four colour-states
 /// (world-map.instructions.md, "Pin display"): only the completed trail star
-/// (`inProgress`) never renders here — it is a gold-star dot, excluded by the
-/// ranking/placement gate before this widget is ever built.
+/// (`inProgress`) never renders here — it is drawn as its played stamp,
+/// excluded by the ranking/placement gate before this widget is ever built.
 ///
-/// - **Available** (border maps the mid pin's body colour — the theme's
-///   `secondaryContainer`, pale in light mode and deep in dark;
+/// - **Available** (border maps the mid pin's body colour —
+///   `PangeaColors.activityAvailable`, pale in light mode and deep in dark;
 ///   dark-purple title) — title, then a row with the L2 language flag, CEFR
 ///   level, and designed party size (a people icon + the role count). No session
 ///   exists yet, so no participant avatars, rating, or stars. Dimmed to 50% when
@@ -165,17 +166,15 @@ class WorldMapLargeCard extends StatelessWidget {
   final bool pinged;
   final ActivityPlanModel? plan;
   final Room? liveRoom;
-  final int starsEarned;
   final List<String> participants;
   final int openSlots;
   final VoidCallback onTap;
 
   /// The learner's completion tier for this activity. When not `none`, the
-  /// completed-activity trail star (or super star) rides BEHIND the card,
+  /// completed stamp rides BEHIND the card,
   /// peeking below the caret tip exactly like a mid pin — a joinable/ongoing
   /// card stacked on a previously-completed activity keeps its star visible
-  /// (world-map.instructions.md, "Goal Progress"). Distinct from the in-session
-  /// star row, which shows only during an `ongoingActive` session.
+  /// (world-map.instructions.md, "Goal Progress").
   final ActivityStarLevel starLevel;
 
   /// When true, the activity is focused (its detail panel is open): the card
@@ -204,7 +203,6 @@ class WorldMapLargeCard extends StatelessWidget {
     required this.state,
     required this.pinged,
     required this.plan,
-    required this.starsEarned,
     required this.onTap,
     this.liveRoom,
     this.isFocused = false,
@@ -214,17 +212,6 @@ class WorldMapLargeCard extends StatelessWidget {
     this.starLevel = ActivityStarLevel.none,
     this.understaffed = false,
   });
-
-  /// The activity's star total, never hydration-gated (#7602): the learner's
-  /// own role in the live session (real-time, and the same source as the
-  /// ongoing row's numerator) → the pin's thin goals (uniform across roles by
-  /// generation, min when they disagree — [QuestActivityCard.thinStarsTotal])
-  /// → the hydrated plan, a last resort for legacy cards without thin goals.
-  int get _starsTotal =>
-      liveRoom?.ownRole?.allGoals.length ??
-      card.thinStarsTotal ??
-      plan?.earnableStars ??
-      0;
 
   /// Inset between the card's border and its content.
   static const double _cardPadding = 10.0;
@@ -241,14 +228,15 @@ class WorldMapLargeCard extends StatelessWidget {
   /// paints over the content rather than taking a slot in a row, clears the
   /// text. Constant whether or not the card has an X, so an exiting card
   /// (which drops its X) doesn't shift its text as it animates out.
-  double get _gutterWidth =>
-      _hasThumbnail ? _thumbnailSize + 8.0 : _DismissButton.size + 4.0;
+  double get _gutterWidth => _hasThumbnail
+      ? _thumbnailSize + 8.0
+      : WorldMapCardDismissButton.size + 4.0;
 
   @override
   Widget build(BuildContext context) {
     // The outer frame (border + caret) maps the mid pin's BODY colour, so the
     // card and its pin read as one state. That is theme-aware: for `available`
-    // it is the theme's `secondaryContainer`, deep in dark mode (matching the
+    // it is `PangeaColors.activityAvailable`, deep in dark mode (matching the
     // dark-mode available pin, #8174) and pale in light. `bodyColor` == the
     // state hue for every other state.
     final baseAccent = state.bodyColor(context);
@@ -351,8 +339,6 @@ class WorldMapLargeCard extends StatelessWidget {
                               liveRoom: liveRoom,
                               participants: participants,
                               openSlots: openSlots,
-                              starsTotal: _starsTotal,
-                              starsEarned: starsEarned,
                             ),
                           ],
                         ),
@@ -362,7 +348,7 @@ class WorldMapLargeCard extends StatelessWidget {
                       Positioned(
                         top: _cardPadding,
                         left: _cardPadding,
-                        child: _DismissButton(onPressed: onClose!),
+                        child: WorldMapCardDismissButton(onPressed: onClose!),
                       ),
                   ],
                 ),
@@ -401,7 +387,7 @@ class WorldMapLargeCard extends StatelessWidget {
     final Widget? topRightBadge = (pinged && !state.isOngoing)
         ? const WorldMapPingedBadge()
         : (state == ActivityPinState.ongoingActive && liveRoom != null)
-        ? UnreadBubble(room: liveRoom!, borderColor: Colors.white)
+        ? UnreadBubble(room: liveRoom!, borderColor: PinSize.markRing)
         : null;
 
     // The peek is reserved *inside* this Stack: the card is inset by
@@ -433,10 +419,7 @@ class WorldMapLargeCard extends StatelessWidget {
     // Progress"). Only when the learner has earned it — never on the caret alone.
     final Widget content = starLevel == ActivityStarLevel.none
         ? cardVisual
-        : CompletionStarBelowTip(
-            superStar: starLevel == ActivityStarLevel.superStar,
-            child: cardVisual,
-          );
+        : CompletionStarBelowTip(child: cardVisual);
 
     // An understaffed `available` card dims to 50%, matching its mid pin — purely
     // cosmetic, it still taps and opens the plan (world-map.instructions.md,
@@ -524,7 +507,7 @@ class _CardTitleRow extends StatelessWidget {
 
 /// Dispatches to the one content layout that's real for this card's state.
 /// `inProgress` never reaches here in production (the completed trail star is a
-/// gold-star dot, excluded by the ranking/placement gate before this widget is
+/// played stamp, excluded by the ranking/placement gate before this widget is
 /// ever built — world-map.instructions.md, "Pin display"), so it renders a
 /// defensive empty body if a test constructs it directly.
 class _CardBody extends StatelessWidget {
@@ -535,8 +518,6 @@ class _CardBody extends StatelessWidget {
   final Room? liveRoom;
   final List<String> participants;
   final int openSlots;
-  final int starsTotal;
-  final int starsEarned;
 
   const _CardBody({
     required this.card,
@@ -546,8 +527,6 @@ class _CardBody extends StatelessWidget {
     required this.liveRoom,
     required this.participants,
     required this.openSlots,
-    required this.starsTotal,
-    required this.starsEarned,
   });
 
   @override
@@ -572,11 +551,7 @@ class _CardBody extends StatelessWidget {
       // states and the two surfaces in step.
       avatarSize: 24,
     ),
-    ActivityPinState.ongoingActive => ActivityTileBody(
-      room: liveRoom,
-      starsTotal: starsTotal,
-      starsEarned: starsEarned,
-    ),
+    ActivityPinState.ongoingActive => ActivityTileBody(room: liveRoom),
     ActivityPinState.inProgress => const SizedBox.shrink(),
   };
 }
@@ -639,55 +614,6 @@ class _AvailableBody extends StatelessWidget {
           ),
         ],
       ],
-    );
-  }
-}
-
-/// The dismiss X, as a corner badge: a close glyph on a surface-coloured disc
-/// with the same white ring the top-right badges wear, so it reads against both
-/// the card's accent border and the map behind it. Sized to sit in the border's
-/// corner curve. Tapping it demotes the card
-/// ([WorldMapLargeCard.onClose]); it sits ABOVE the card's content in the
-/// stack, and the gesture arena routes its tap here rather than to the card's
-/// open-on-tap beneath.
-class _DismissButton extends StatelessWidget {
-  /// Diameter — small enough to nestle in the card's 12px corner radius, big
-  /// enough to be a real tap target on a touch screen.
-  static const double size = 30.0;
-
-  final VoidCallback onPressed;
-
-  const _DismissButton({required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    // Pointer-only: the card draws inside the ExcludeSemantics'd map subtree,
-    // which hides this button from assistive tech but NOT from Tab traversal —
-    // leaving it in makes an invisible dead Tab stop per visible card (2.4.7).
-    // The keyboard path to pins is the mirror layer's single roving stop
-    // (#8714, world-map.instructions.md → Keyboard access).
-    return ExcludeFocus(
-      child: IconButton(
-        onPressed: onPressed,
-        icon: const Icon(Icons.close),
-        iconSize: 18,
-        padding: EdgeInsets.zero,
-        visualDensity: VisualDensity.compact,
-        constraints: const BoxConstraints(minWidth: size, minHeight: size),
-        tooltip: L10n.of(context).close,
-        color: theme.colorScheme.onSurfaceVariant,
-        style: IconButton.styleFrom(
-          // Without this the button's box is the 48px padded tap target, not the
-          // disc — it would overhang the gutter and swallow taps on the content
-          // it paints over.
-          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          backgroundColor: theme.colorScheme.surface,
-          shape: const CircleBorder(
-            side: BorderSide(color: Colors.white, width: 1.5),
-          ),
-        ),
-      ),
     );
   }
 }

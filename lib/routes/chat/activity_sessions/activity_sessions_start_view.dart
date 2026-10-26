@@ -38,6 +38,7 @@ import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/goal_diamond.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 // The close-only-this-room-token location moved to the navigation layer
@@ -119,7 +120,19 @@ class ActivitySessionStartView extends StatelessWidget {
             leading: Padding(
               padding: const EdgeInsets.only(left: 4.0),
               child: Center(
-                child: (embedded && courseScoped)
+                child:
+                    (embedded &&
+                        controller.widget.roomId != null &&
+                        activityInfoFor(uri)?.fromJoinList == true)
+                    // A session viewed from the join list → back to the list.
+                    ? IconButton(
+                        tooltip: MaterialLocalizations.of(
+                          context,
+                        ).backButtonTooltip,
+                        icon: const Icon(Icons.arrow_back),
+                        onPressed: controller.backToJoinList,
+                      )
+                    : (embedded && courseScoped)
                     // Course still scoped → back-arrow reopens the course card.
                     ? IconButton(
                         tooltip: MaterialLocalizations.of(
@@ -558,11 +571,7 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
                   spacing: 4.0,
                   children: [
                     if (stars > 0) ...[
-                      Icon(
-                        Icons.star,
-                        size: 18.0,
-                        color: theme.pangea.goldGraphic,
-                      ),
+                      const GoalDiamond(earned: true, size: 18.0),
                       Text('$stars'),
                     ],
                     if (role.isFinished)

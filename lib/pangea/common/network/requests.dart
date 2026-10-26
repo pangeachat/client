@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
 import 'package:fluffychat/pangea/common/models/base_request_model.dart';
 import 'package:fluffychat/pangea/common/network/choreo_gate.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
@@ -34,13 +35,11 @@ class Requests {
     dynamic encoded;
     encoded = jsonEncode(enrichedBody);
 
-    inFlight = 'POST ${PangeaHttpException.normalizePath(Uri.parse(url))}';
-    await ChoreoGate.beforeRequest(Uri.parse(url));
-    final http.Response response = await http.post(
-      Uri.parse(url),
-      body: encoded,
-      headers: _headers,
-    );
+    final uri = Uri.parse(url);
+    inFlight = 'POST ${PangeaHttpException.normalizePath(uri)}';
+    await ChoreoGate.beforeRequest(uri);
+    final http.Response response = await FilteredNetworkController.instance
+        .observe(uri, http.post(uri, body: encoded, headers: _headers));
 
     _handleError(
       response,
@@ -54,12 +53,11 @@ class Requests {
     required String url,
     ErrorResponseParser? errorResponseParser,
   }) async {
-    inFlight = 'GET ${PangeaHttpException.normalizePath(Uri.parse(url))}';
-    await ChoreoGate.beforeRequest(Uri.parse(url));
-    final http.Response response = await http.get(
-      Uri.parse(url),
-      headers: _headers,
-    );
+    final uri = Uri.parse(url);
+    inFlight = 'GET ${PangeaHttpException.normalizePath(uri)}';
+    await ChoreoGate.beforeRequest(uri);
+    final http.Response response = await FilteredNetworkController.instance
+        .observe(uri, http.get(uri, headers: _headers));
 
     _handleError(response, errorResponseParser: errorResponseParser);
     return response;

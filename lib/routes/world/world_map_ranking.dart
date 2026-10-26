@@ -17,9 +17,9 @@ enum ActivityPinState {
   /// Playable, nothing live and no stars yet — the default. Light brand.
   available,
 
-  /// The learner has fully completed at least one role and has no live session
-  /// — their trail. Renders as a fixed-size gold star dot (a super star once
-  /// every role is done); partial progress is never shown. Gold.
+  /// The learner has a saved session of the activity and has no live session
+  /// — their trail. Renders as the fixed-size completed stamp; partial
+  /// progress is never shown. Gold.
   inProgress,
 
   /// An open, live session the learner can join (someone else's) — the map's
@@ -46,31 +46,32 @@ enum ActivityPinState {
   /// values.
   bool get isLive => isOngoing || this == ActivityPinState.joinable;
 
-  /// The pin body colour. See world-map.instructions.md ("Pin state").
-  Color bodyColor(BuildContext context) => switch (this) {
-    ActivityPinState.joinable => Theme.of(context).pangea.joinable,
-    ActivityPinState.ongoingPending || ActivityPinState.ongoingActive =>
-      Theme.of(context).colorScheme.primaryContainer,
-    ActivityPinState.inProgress => Theme.of(context).pangea.goldFixedDim,
-    ActivityPinState.available => Theme.of(
-      context,
-    ).colorScheme.secondaryContainer,
-  };
+  /// The pin body colour — also the card's frame and state pill. Each live
+  /// and resting state has its own role on [PangeaColors] (#9559), so it
+  /// doesn't follow the app colour the learner picks. See
+  /// world-map.instructions.md ("Pin state").
+  Color bodyColor(BuildContext context) {
+    final colors = Theme.of(context).pangea;
+    return switch (this) {
+      ActivityPinState.joinable => colors.activityOpen,
+      ActivityPinState.ongoingPending ||
+      ActivityPinState.ongoingActive => colors.activityOngoing,
+      ActivityPinState.inProgress => colors.goldFixedDim,
+      ActivityPinState.available => colors.activityAvailable,
+    };
+  }
 
   /// Ink for the icon and text drawn on [bodyColor].
-  Color onBodyColor(BuildContext context) => switch (this) {
-    ActivityPinState.joinable => Theme.of(context).pangea.onJoinable,
-    ActivityPinState.ongoingPending || ActivityPinState.ongoingActive =>
-      Theme.of(context).colorScheme.onPrimaryContainer,
-    ActivityPinState.inProgress => Theme.of(context).pangea.onGoldFixed,
-    // The pale light-mode available fill is too pale for white (1.57:1); it
-    // takes the dark-purple label colour there (#8243, #8968). The deep
-    // dark-mode fill carries white at 9.3:1.
-    ActivityPinState.available =>
-      Theme.of(context).brightness == Brightness.light
-          ? Theme.of(context).colorScheme.primary
-          : Colors.white,
-  };
+  Color onBodyColor(BuildContext context) {
+    final colors = Theme.of(context).pangea;
+    return switch (this) {
+      ActivityPinState.joinable => colors.onActivityOpen,
+      ActivityPinState.ongoingPending ||
+      ActivityPinState.ongoingActive => colors.onActivityOngoing,
+      ActivityPinState.inProgress => colors.onGoldFixed,
+      ActivityPinState.available => colors.onActivityAvailable,
+    };
+  }
 
   String label(L10n l10n) => switch (this) {
     ActivityPinState.ongoingPending => l10n.ongoingPendingLabel,
@@ -83,11 +84,12 @@ enum ActivityPinState {
   /// The glyph for this state — the single source of truth for the status
   /// iconography, shared by the map pin, the status filter, the activity
   /// suggestion card, and the start-page CTA row. `inProgress` (Completed) is a
-  /// star; the pin renders it as its gold body rather than a glyph, so the
-  /// pin's mid-glyph suppresses it (see `world_map_state_dot.dart`).
+  /// check, the played stamp's mark — a star is a Mission (#9559); the pin
+  /// renders it as its stamp rather than a glyph, so the pin's mid-glyph
+  /// suppresses it (see `world_map_state_dot.dart`).
   IconData get icon => switch (this) {
     ActivityPinState.available => Icons.add,
-    ActivityPinState.inProgress => Icons.star,
+    ActivityPinState.inProgress => Icons.check_circle_outline,
     ActivityPinState.joinable => Icons.meeting_room,
     ActivityPinState.ongoingPending => Icons.hourglass_bottom,
     ActivityPinState.ongoingActive => Icons.chat_bubble_outline,
@@ -132,17 +134,22 @@ enum PinTier {
   double dotHeight(ActivityPinState state) => switch (this) {
     PinTier.small => PinSize.smallDiameter,
     PinTier.mid => PinSize.midDiameter + PinSize.midPointHeight,
-    PinTier.large => switch (state) {
-      ActivityPinState.joinable ||
-      ActivityPinState.ongoingPending => PinSize.largeHeightJoinable,
-      _ => PinSize.largeHeight,
-    },
+    PinTier.large =>
+      // An activity card's box: the card, its tail and the focus gutter.
+      kMapActivityCards
+          ? PinSize.mapCardBox.height
+          : switch (state) {
+              ActivityPinState.joinable ||
+              ActivityPinState.ongoingPending => PinSize.largeHeightJoinable,
+              _ => PinSize.largeHeight,
+            },
   };
 
   double get dotWidth => switch (this) {
     PinTier.small => PinSize.smallDiameter,
     PinTier.mid => PinSize.midDiameter,
-    PinTier.large => PinSize.largeWidth,
+    PinTier.large =>
+      kMapActivityCards ? PinSize.mapCardBox.width : PinSize.largeWidth,
   };
 
   /// Whether a pin at this tier in [state] renders as a plain **dot** — the
@@ -667,8 +674,10 @@ Rect midPinRect(
 ///
 ///  * **mid** (a teardrop, except the inProgress star) hangs its box above the
 ///    point, tip on it — [midPinRect].
-///  * **large** anchors `topCenter`, so the card sits above the point with room
-///    reserved for the tail beneath and the badge overhang above and aside.
+///  * **large** anchors `topCenter`, so the card sits above the point. An
+///    activity card's box ([PinSize.mapCardBox]) already holds its tail; a
+///    classic card reserves [largeTailHeight] beneath and
+///    [largeBadgeOverhang] above and aside.
 ///  * everything else is a plain box centred on the point.
 Rect pinRectAt(
   Offset tip, {
@@ -681,9 +690,18 @@ Rect pinRectAt(
     return midPinRect(tip);
   }
   if (tier == PinTier.large) {
-    final width = tier.dotWidth + largeBadgeOverhang * 2;
-    final height = tier.dotHeight(state) + largeTailHeight + largeBadgeOverhang;
-    return Rect.fromLTWH(tip.dx - width / 2, tip.dy - height, width, height);
+    final box = kMapActivityCards
+        ? Size(tier.dotWidth, tier.dotHeight(state))
+        : Size(
+            tier.dotWidth + largeBadgeOverhang * 2,
+            tier.dotHeight(state) + largeTailHeight + largeBadgeOverhang,
+          );
+    return Rect.fromLTWH(
+      tip.dx - box.width / 2,
+      tip.dy - box.height,
+      box.width,
+      box.height,
+    );
   }
   final box = tier.markerBox(state);
   return Rect.fromCenter(center: tip, width: box.width, height: box.height);

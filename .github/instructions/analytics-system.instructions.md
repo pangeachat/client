@@ -134,6 +134,8 @@ Users should never see their level go down due to negative-XP construct uses. If
 
 All analytics computation happens against [`AnalyticsDatabase`](../../lib/features/analytics_data/analytics_database.dart) (SQLite on native, IndexedDB on web). The app never queries the server for analytics on a per-message basis. [`AnalyticsUpdateService`](../../lib/features/analytics_data/analytics_update_service.dart) syncs data to a dedicated Matrix room in the background — batched every 10 messages or 10 minutes, whichever comes first. [`AnalyticsDataService`](../../lib/features/analytics_data/analytics_data_service.dart) is the central orchestrator that wires everything together.
 
+A use stays on the device until the server has accepted the event that carries it. When a flush fails, in whole or in part, every batch the server did not accept stays on the device, and no batch the server accepted is sent again. Uploads pause while the [connection banner](connection-status.instructions.md#losing-the-connection) says the connection is lost, and run once when it returns.
+
 ### Per-Language Isolation
 
 Each target language has its own analytics room and its own local database partition. Switching languages reinitializes the analytics context cleanly.
@@ -141,6 +143,8 @@ Each target language has its own analytics room and its own local database parti
 Every construct use is filed under exactly one language, and that language comes from the **source of the use** — the text that was written, read or spoken. **NEVER record a use whose language you have not established**, and in particular never let it default to whatever L2 the learner happens to have set: a stored use carries no language of its own, so once it is written into the wrong language's room nothing downstream can tell it apart from a real one. Mislabeled data is worse than absent data, because absent data is visible as a gap.
 
 A new source of construct uses therefore has to answer *how do you know what language this is in* before it records anything, and the answer belongs in the code as a required argument rather than as a check each call site is trusted to remember — see [Adding a use type](#adding-a-use-type).
+
+A flush sends the pending uses of every language on the device, not only the current target language's, so uses recorded before a language switch still reach their own room. It creates an analytics room only for the current target language: uses in any other language that has no room yet stay on the device until the learner studies that language.
 
 ### Multi-Device Sync
 

@@ -152,6 +152,18 @@ class JoinedCourseStepView extends StatelessWidget {
                         ),
                       ),
                     ),
+                  // Joining a central course puts the learner in front of
+                  // strangers, so the page says so (joining-courses
+                  // .instructions.md § The central course).
+                  if (step.state.joinedCentralCourse)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        L10n.of(context).centralCourseMembersSeeYou,
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.bodyMedium,
+                      ),
+                    ),
                 ],
               ),
             ),

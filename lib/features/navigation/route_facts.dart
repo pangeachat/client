@@ -11,6 +11,7 @@ import 'package:fluffychat/features/navigation/token_params/activity_token.dart'
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/objective_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -68,8 +69,7 @@ bool isMapHole(String? fullPath) => fullPath == PRoutes.world;
 /// nav highlight); the canvas is decided by [canvasFor], not the section, so an
 /// unrecognized detail route never flips the shell to the world map.
 AppSection sectionFor(Uri uri) {
-  // The rail highlight shows what you're looking at (routing.instructions.md
-  // decision 5). Precedence:
+  // The rail highlight shows what you're looking at (#7467). Precedence:
   //  1. The global chat LIST wins — even with a live room beside it, and even
   //     under a lingering `?c=` context: switching to Chats un-highlights the
   //     course (the #7467 "quest stays selected" oddity).
@@ -98,9 +98,28 @@ AppSection sectionFor(Uri uri) {
 /// Within the courses section this is what disambiguates the rail highlight:
 /// the hub icon lights over the specific course's avatar/shortcut — even while
 /// `?c=` persists under it, since opening the hub from inside a course keeps
-/// the context (#8605; open panels win, routing.instructions.md decision 5).
+/// the context (#8605; open panels win, as in [sectionFor]).
 bool coursesHubIsOpen(Uri uri) =>
     parseOpenPanels(uri).left.any((t) => t.type.isAddCoursePanel);
+
+/// The Mission the learner picked to work on in the active course — the
+/// workspace's `?mission=<missionId>` beside `?c=` — else null, meaning the
+/// course's current Mission (the resolver's anchor). One value read by the
+/// course card's circles, the collapsed course header and the course-scoped
+/// map, so the three always agree (#9420).
+String? selectedMissionIdFor(Uri uri) {
+  final value = uri.queryParameters['mission'];
+  return value == null || value.isEmpty ? null : value;
+}
+
+/// Whether the standalone practice panel is open, in either column.
+bool practiceIsOpen(Uri uri) {
+  final panels = parseOpenPanels(uri);
+  return [
+    ...panels.left,
+    ...panels.right,
+  ].any((t) => t.type == PanelTypesEnum.practice);
+}
 
 /// The active course space id — the workspace's `?c=<spaceid>` course context
 /// (a bare localpart) — else null. One value read by the map (scope) and the
@@ -147,6 +166,18 @@ ConstructIdentifier? activeConstructDetailFor(Uri uri) {
   return null;
 }
 
+/// The Learning Objective whose detail panel is open (an `objective:` token),
+/// or null — the Learning Objectives list lights that item, as the vocab list
+/// lights its open construct ([activeConstructDetailFor]).
+String? activeObjectiveDetailFor(Uri uri) {
+  final panels = parseOpenPanels(uri);
+  for (final token in [...panels.right, ...panels.left]) {
+    final param = token.param;
+    if (param is ObjectiveTokenParam) return param.missionId;
+  }
+  return null;
+}
+
 /// The analytics metric whose panel is currently open — what the top-right
 /// cluster / analytics bar highlights as active (#7977). Returned in the
 /// cluster's own vocabulary: [ProgressIndicatorEnum.wordsUsed] / [morphsUsed]
@@ -170,6 +201,7 @@ ProgressIndicatorEnum? activeAnalyticsTabFor(Uri uri) {
     if (param is GrammarAnalyticsTokenParam) {
       return ProgressIndicatorEnum.morphsUsed;
     }
+    if (param is ObjectiveTokenParam) return ProgressIndicatorEnum.stars;
     if (param is AnalyticsTokenParam) {
       // The sessions summary rides `activities`, but the cluster's tracker for
       // it is `stars` — map it across so the right button lights.

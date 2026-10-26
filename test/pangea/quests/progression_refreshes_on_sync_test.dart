@@ -8,6 +8,8 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
+import 'package:fluffychat/features/quests/lo_progression.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
 import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
@@ -16,15 +18,17 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import '../courses/course_missions_fixtures.dart';
 import '../get_test_client.dart';
 
-/// #8915 — the course panel's star counts were resolved once, when the outline
-/// loaded, and never again. A star earned while the panel was open therefore
-/// showed the pre-award number (2/4 under an activity card already drawing
-/// three filled stars) until the learner left the page and came back. The
-/// rollup is read from session-room state the client already holds, so it
-/// re-resolves on the same rate-limited room-sync tick the world map and the
-/// objectives list recompute on.
+/// #8915 — the course panel's progress was resolved once, when the outline
+/// loaded, and never again, so a change while the panel was open showed the
+/// stale number until the learner left the page and came back. A Mission's
+/// XP (#9420) has two live inputs: the session's credited XP from the shared
+/// [MissionXpCache], and the goal checkmarks read from session-room state — a
+/// goal awarded as room state adds [kGoalXp] to the saved session's XP, so
+/// the rollup re-resolves on the same rate-limited room-sync tick the world
+/// map and the objectives list recompute on, and on every XP-cache change.
 void main() {
   late Client client;
 
@@ -39,12 +43,14 @@ void main() {
     client = await getTestClient();
     QuestRepo.resetOutlineCacheForTest();
     QuestRepo.debugDisplayL1 = 'en';
+    MissionXpCache.instance.seed();
   });
 
   tearDown(() async {
     QuestRepo.debugBuildOutline = null;
     QuestRepo.debugDisplayL1 = null;
     QuestRepo.resetOutlineCacheForTest();
+    MissionXpCache.instance.seed();
     await client.dispose();
   });
 
@@ -67,7 +73,7 @@ void main() {
       ActivityRoleGoal(id: 'g$n', goalSlug: 'slug-$n', description: 'goal $n');
 
   /// Two roles of three goals each — the uniform-per-role shape generation
-  /// produces, so the Mission's earnable ceiling is three.
+  /// produces; each goal awarded to the learner's role is one sparkle.
   ActivityPlanModel plan() => ActivityPlanModel(
     req: ActivityPlanRequest(
       topic: 'directions',
@@ -126,7 +132,7 @@ void main() {
   }
 
   /// The learner's session room for the course's one activity, seated in
-  /// role `r1`. Stars are that role's awarded goals.
+  /// role `r1`. Sparkles are that role's awarded goals.
   Room registerSession() {
     final room = Room(
       id: sessionId,
@@ -151,8 +157,15 @@ void main() {
       stateEvent(
         room,
         type: PangeaEventTypes.activityRole,
+        // Saved: only a saved session's XP counts toward its Mission.
         content: ActivityRolesModel({
-          'r1': ActivityRoleModel(id: 'r1', userId: userId, role: 'Local'),
+          'r1': ActivityRoleModel(
+            id: 'r1',
+            userId: userId,
+            role: 'Local',
+            finishedAt: DateTime.utc(2026, 1, 1, 12),
+            archivedAt: DateTime.utc(2026, 1, 1, 12),
+          ),
         }).toJson(),
       ),
     );
@@ -177,7 +190,7 @@ void main() {
   );
 
   /// The course's one quest outline: a single Mission over the single
-  /// activity, whose two roles of three goals cap the Mission at three stars.
+  /// activity, at the default threshold.
   void stubOutline() {
     QuestRepo.debugBuildOutline = (id, {courseRoomId}) async => Result.value(
       QuestOutline(
@@ -209,41 +222,71 @@ void main() {
     );
   }
 
-  test('a star awarded while the panel is open updates its Mission count '
+  test('a goal awarded while the panel is open updates its Mission XP '
       'without a reload', () async {
     stubOutline();
 
     registerCourseSpace();
     final session = registerSession();
-    awardGoals(session, ['g1', 'g2']);
+    // One goal short of the default threshold.
+    const seeded = kDefaultXpToCompleteObjective - kGoalXp;
+    MissionXpCache.instance.seed(xpByRoom: {sessionId: seeded});
 
     final loader = QuestObjectivesLoader(client: client);
     addTearDown(loader.dispose);
     await loader.loadOutline(questId, courseRoomId: courseRoomId);
 
-    // The load-time rollup: two of the three stars this Mission can offer.
-    expect(loader.missionProgress(missionId)?.stars, 2);
-    expect(loader.missionProgress(missionId)?.threshold, 3);
-    expect(loader.questStars?.earned, 2);
+    // The load-time rollup: the session's XP, no sparkles yet.
+    expect(loader.missionProgress(missionId)?.xp, seeded);
+    expect(
+      loader.missionProgress(missionId)?.threshold,
+      kDefaultXpToCompleteObjective,
+    );
+    expect(loader.missionProgress(missionId)?.satisfied, isFalse);
+    expect(loader.progression.value.questStars(courseRoomId)?.earned, 0);
 
-    // The third star lands as room state on the session room, and the panel
-    // stays mounted — this is the moment the count used to freeze.
-    awardGoals(session, ['g1', 'g2', 'g3']);
+    // Two goals land as room state on the session room, carrying it past the
+    // threshold, and the panel stays mounted — this is the moment the count
+    // used to freeze.
+    awardGoals(session, ['g1', 'g2']);
     emitRoomSync();
     // The rate limiter lets the first tick straight through; a microtask hop
     // is all the stream needs to deliver it.
     await Future<void>.delayed(Duration.zero);
 
-    expect(loader.missionProgress(missionId)?.stars, 3);
-    expect(loader.questStars?.earned, 3);
+    expect(loader.missionProgress(missionId)?.xp, seeded + 2 * kGoalXp);
     expect(loader.missionProgress(missionId)?.satisfied, isTrue);
+    expect(loader.progression.value.questStars(courseRoomId)?.earned, 1);
   });
+
+  test(
+    'XP landing in the shared cache moves the meter without a sync',
+    () async {
+      stubOutline();
+      registerCourseSpace();
+      registerSession();
+      MissionXpCache.instance.seed(xpByRoom: {sessionId: 100});
+
+      final loader = QuestObjectivesLoader(client: client);
+      addTearDown(loader.dispose);
+      await loader.loadOutline(questId, courseRoomId: courseRoomId);
+      expect(loader.missionProgress(missionId)?.xp, 100);
+
+      MissionXpCache.instance.seed(xpByRoom: {sessionId: 1700});
+      // The cache notifies on a microtask (publishing mid-build is rejected).
+      await Future<void>.delayed(Duration.zero);
+
+      expect(loader.missionProgress(missionId)?.xp, 1700);
+      expect(loader.missionProgress(missionId)?.satisfied, isTrue);
+    },
+  );
 
   test('a sync before any outline has loaded publishes nothing — no course '
       'shows a denominator it has not resolved', () async {
     registerCourseSpace();
     final session = registerSession();
     awardGoals(session, ['g1']);
+    MissionXpCache.instance.seed(xpByRoom: {sessionId: 100});
 
     final loader = QuestObjectivesLoader(client: client);
     addTearDown(loader.dispose);
@@ -252,7 +295,6 @@ void main() {
     await Future<void>.delayed(Duration.zero);
 
     expect(loader.hasResolvedProgress, isFalse);
-    expect(loader.questStars, isNull);
   });
 
   /// #8938 — collapsing the course card swaps it for the context bar (and
@@ -265,12 +307,12 @@ void main() {
       'the card/bar swap never blanks the bar', () async {
     stubOutline();
     registerCourseSpace();
-    final session = registerSession();
-    awardGoals(session, ['g1', 'g2']);
+    registerSession();
+    MissionXpCache.instance.seed(xpByRoom: {sessionId: 200});
 
     final open = QuestObjectivesLoader(client: client);
     await open.loadOutline(questId, courseRoomId: courseRoomId);
-    expect(open.questStars?.earned, 2);
+    expect(open.missionProgress(missionId)?.xp, 200);
 
     // The card's token drops and the bar mounts: a fresh loader for the same
     // course, its own outline read still in flight.
@@ -279,14 +321,137 @@ void main() {
     final loading = swapped.loadOutline(questId, courseRoomId: courseRoomId);
 
     expect(
-      swapped.questStars?.earned,
-      2,
+      swapped.missionProgress(missionId)?.xp,
+      200,
       reason: 'the incoming surface must not render the empty bar',
     );
     expect(swapped.hasResolvedProgress, isTrue);
 
     await loading;
     open.dispose();
-    expect(swapped.questStars?.earned, 2);
+    expect(swapped.missionProgress(missionId)?.xp, 200);
+  });
+
+  /// Content Studio — a teacher publishing the course's own copy changes its
+  /// Missions while the course page (or the context bar) is open. The loader
+  /// re-reads when the copy's revision moves, so the list and the star totals
+  /// follow without a reload.
+  group('course copy refresh', () {
+    void stubTwoMissions() {
+      LearningObjective lo(String id) =>
+          LearningObjective(id: id, objective: id);
+      QuestRepo.debugBuildOutline = (id, {courseRoomId}) async => Result.value(
+        QuestOutline(
+          quest: QuestPlan(
+            id: questId,
+            name: 'Quest',
+            description: '',
+            targetLanguage: 'de',
+            sequence: [
+              QuestObjectiveStep(objective: lo('lo-1'), wasMinted: false),
+              QuestObjectiveStep(objective: lo('lo-2'), wasMinted: false),
+            ],
+          ),
+          groups: [
+            QuestObjectiveGroup(
+              objective: lo('lo-1'),
+              activities: [QuestActivity(activityId: activityId, plan: plan())],
+            ),
+            QuestObjectiveGroup(
+              objective: lo('lo-2'),
+              activities: [QuestActivity(activityId: activityId, plan: plan())],
+            ),
+          ],
+        ),
+      );
+    }
+
+    List<String> shownMissions(QuestObjectivesLoader loader) =>
+        loader.filteredObjectiveGroups.map((g) => g.objective.id).toList();
+
+    Future<void> settle() async {
+      for (var i = 0; i < 5; i++) {
+        await Future<void>.delayed(Duration.zero);
+      }
+    }
+
+    test('a new revision re-reads the list and the totals', () async {
+      stubTwoMissions();
+      registerCourseSpace();
+      final space = client.getRoomById(courseRoomId)!;
+      putPowerLevels(space);
+      putCopy(space, {
+        'lo-1': [activityId],
+        'lo-2': [activityId],
+      });
+
+      final loader = QuestObjectivesLoader(client: client);
+      addTearDown(loader.dispose);
+      await loader.loadOutline(questId, courseRoomId: courseRoomId);
+      expect(shownMissions(loader), ['lo-1', 'lo-2']);
+      expect(loader.missionProgress('lo-1'), isNotNull);
+
+      putCopy(space, {
+        'lo-2': [activityId],
+      }, revision: 2);
+      await settle();
+
+      expect(shownMissions(loader), ['lo-2']);
+      expect(
+        loader.missionProgress('lo-1'),
+        isNull,
+        reason: 'the removed Mission leaves this course\'s totals',
+      );
+    });
+
+    test('the same revision does not re-read', () async {
+      stubTwoMissions();
+      registerCourseSpace();
+      final space = client.getRoomById(courseRoomId)!;
+      putPowerLevels(space);
+      putCopy(space, {
+        'lo-1': [activityId],
+        'lo-2': [activityId],
+      }, revision: 2);
+
+      final loader = QuestObjectivesLoader(client: client);
+      addTearDown(loader.dispose);
+      await loader.loadOutline(questId, courseRoomId: courseRoomId);
+      var notifications = 0;
+      loader.questLoader.addListener(() => notifications++);
+
+      putCopy(space, {
+        'lo-2': [activityId],
+      }, revision: 2);
+      await settle();
+
+      expect(notifications, 0);
+      expect(shownMissions(loader), ['lo-1', 'lo-2']);
+    });
+
+    test("another course's copy does not re-read this one", () async {
+      stubTwoMissions();
+      registerCourseSpace();
+      final other = Room(
+        id: '!other:fakeServer.notExisting',
+        client: client,
+        membership: Membership.join,
+      );
+      putPowerLevels(other);
+      client.rooms.add(other);
+
+      final loader = QuestObjectivesLoader(client: client);
+      addTearDown(loader.dispose);
+      await loader.loadOutline(questId, courseRoomId: courseRoomId);
+      var notifications = 0;
+      loader.questLoader.addListener(() => notifications++);
+
+      putCopy(other, {
+        'lo-2': [activityId],
+      }, revision: 5);
+      await settle();
+
+      expect(notifications, 0);
+    });
   });
 }

@@ -822,7 +822,7 @@
             }
         }
     },
-    "createGroup": "Create group",
+    "createGroup": "Create chat",
     "@createGroup": {},
     "currentlyActive": "Currently active",
     "@currentlyActive": {
@@ -1973,20 +1973,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "synchronizingPleaseWait": "Synchronizing… Please wait.",
-    "@synchronizingPleaseWait": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "synchronizingPleaseWaitCounter": " Synchronizing… ({percentage}%)",
-    "@synchronizingPleaseWaitCounter": {
-        "type": "String",
-        "placeholders": {
-            "percentage": {
-                "type": "String"
-            }
-        }
-    },
     "systemTheme": "System",
     "@systemTheme": {
         "type": "String",
@@ -2513,7 +2499,7 @@
     "@knocking": {},
     "nothingFound": "Nothing found...",
     "@nothingFound": {},
-    "groupName": "Group name",
+    "groupName": "Chat name",
     "@groupName": {},
     "wrongRecoveryKey": "Sorry... this does not seem to be the correct recovery key.",
     "@wrongRecoveryKey": {},
@@ -2819,8 +2805,6 @@
     "@open": {},
     "ongoing": "Ongoing",
     "@ongoing": {},
-    "waitingForServer": "Waiting for server...",
-    "@waitingForServer": {},
     "newChatRequest": "📩 New chat request",
     "@newChatRequest": {},
     "contentNotificationSettings": "Content notification settings",
@@ -3116,7 +3100,7 @@
     "errorDisableIGCClassDesc": "Grammar assistance is turned off for the course that this chat is in.",
     "error405Desc": "Please set your languages in Main Menu > Learning Settings.",
     "termsAndConditions": "Terms and Conditions",
-    "andCertifyIAmAtLeast13YearsOfAge": " and certify I am at least 16 years of age.",
+    "andCertifyIMeetTheMinimumAge": " and certify I am at least 13 years of age, or the minimum age required in my country if that is higher.",
     "error502504Desc": "Translation and grammar tools may be slow or unavailable while the Pangea bots catch up.",
     "error404Desc": "Pangea Bot isn't sure how to translate that...",
     "errorPleaseRefresh": "We're looking into it! Please reload and try again.",
@@ -3731,6 +3715,36 @@
     "callIncoming": "Incoming call",
     "callAnswer": "Answer",
     "callDecline": "Decline",
+    "callFullScreenTitle": "Let calls ring full screen",
+    "callFullScreenMessage": "A call came in while Pangea Chat was closed, but your phone could only show a small notification for it. Allow full-screen calls so the next one rings on your whole screen, even when your phone is locked.",
+    "callNotificationsTitle": "Let calls ring",
+    "@callNotificationsTitle": {
+        "description": "Android only. Title of the explanation shown before Android asks to allow notifications, which a call needs to ring the phone."
+    },
+    "callNotificationsMessage": "Calls ring as notifications. Allow notifications so your phone rings for a call, even when Pangea Chat is closed or your phone is locked.",
+    "@callNotificationsMessage": {
+        "description": "Android only. Body of the one-time explanation shown before Android's own notifications prompt."
+    },
+    "callNotificationsMissedMessage": "A call came in while Pangea Chat was closed, but your phone could not ring because notifications are off. Allow notifications so the next call rings.",
+    "@callNotificationsMissedMessage": {
+        "description": "Android only. Body of the explanation shown after a call could not ring because notifications were off, before Android's own notifications prompt."
+    },
+    "callMicrophoneTitle": "Use your microphone for calls",
+    "@callMicrophoneTitle": {
+        "description": "iPhone only. Title of the one-time explanation shown before iOS asks for the microphone, so calls answered later from the lock screen can connect."
+    },
+    "callMicrophoneMessage": "Pangea Chat needs your microphone for calls, including calls you answer from the lock screen.",
+    "@callMicrophoneMessage": {
+        "description": "iPhone only. Body of the one-time explanation shown before iOS's own microphone prompt."
+    },
+    "callMicrophoneOffTitle": "Your call didn't connect",
+    "@callMicrophoneOffTitle": {
+        "description": "iPhone only. Title of the notification shown when the learner answered a call but the microphone is turned off for Pangea Chat in iOS Settings."
+    },
+    "callMicrophoneOffMessage": "Pangea Chat can't use your microphone. Tap to turn it on in Settings.",
+    "@callMicrophoneOffMessage": {
+        "description": "iPhone only. Body of that notification. Tapping it opens Pangea Chat's page in iOS Settings, where the microphone can be turned on."
+    },
     "callDeclinedByPeer": "Call declined",
     "callRinging": "Ringing...",
     "callMinimize": "Minimize call",
@@ -4224,10 +4238,24 @@
     "coursePlan": "Course Plan",
     "upNext": "Up next",
     "@upNext": {
-        "description": "Label on the course plan's next Mission (learning objective) header — the one the learner should work on next."
+        "description": "Label on the course plan's next Mission (learning objective) header — the one the learner should work on next — and above the activity the Mission card's main button opens."
+    },
+    "missionDueDate": "Due {date}, {time}",
+    "@missionDueDate": {
+        "description": "Soft due date a teacher set on a Mission (learning objective), shown under its title on the course page, e.g. 'Due Oct 20, 5:00 PM'. Nothing is blocked after it.",
+        "type": "String",
+        "placeholders": {
+            "date": {
+                "type": "String"
+            },
+            "time": {
+                "type": "String"
+            }
+        }
     },
     "editCourseLater": "You can edit template title, descriptions, and course image later.",
     "createCourse": "Create course",
+    "createMyOwnCourse": "Create my own course",
     "stats": "Stats",
     "createGroupChat": "Create group chat",
     "editCourse": "Edit course",
@@ -4242,6 +4270,9 @@
     "letsGo": "Let's go",
     "chooseRole": "Choose a role!",
     "chooseRoleToParticipate": "Choose a role to participate!",
+    "activityLaunchFindingCourses": "Finding your courses…",
+    "activityLaunchCreatingRoom": "Creating your activity…",
+    "activityLaunchOpeningRoom": "Opening your activity…",
     "waitingToFillRole": "Waiting to fill {num} roles...",
     "@waitingToFillRole": {
         "type": "int",
@@ -4466,7 +4497,7 @@
     "addCourseEnterCode": "Enter code for private course",
     "addCourseBrowsePublic": "Browse public courses",
     "vocabLevelsDesc": "This is where vocab words will go once you’ve leveled them up!",
-    "activityAnalyticsTooltipBody": "These are your saved activities for review and practice.",
+    "activityAnalyticsTooltipBody": "Each objective fills with XP from its activities and practice. A full objective earns a star.",
     "numSavedActivities": "Number of saved activities",
     "saveActivityTitle": "Save activity",
     "saveActivityDesc": "Good job! Save this activity for later review and practice",
@@ -4752,22 +4783,17 @@
     "ssoDialogHelpText": "🤔 If you didn't see the new tab, please check your popup blocker.",
     "ssoNetworkBlockedTitle": "Sign-in site unreachable",
     "ssoNetworkBlockedDesc": "This network is not letting us reach {provider} to sign you in. School and office Wi-Fi often block it. You can sign up with email instead, or switch to another network and try again.",
-    "@ssoNetworkBlockedDesc": {"placeholders": {"provider": {"type": "String"}}},
+    "@ssoNetworkBlockedDesc": {
+        "placeholders": {
+            "provider": {
+                "type": "String"
+            }
+        }
+    },
     "ssoTryAnyway": "Try anyway",
     "disableLanguageToolsTitle": "Disable language tools",
     "disableLanguageToolsDesc": "Would you like to disable automatic language assistance?",
     "screenSizeWarning": "For the best experience using this application, please expand your screen size.",
-    "starsToUnlockObjectiveTitle": "Stars per Mission",
-    "starsToUnlockObjectiveDesc": "Set the number of stars needed to complete each mission",
-    "maxStarsPerMissionWarning": "This course has missions where only {maxValue} stars can be earned. Please enter a number less than or equal to {maxValue}.",
-    "@maxStarsPerMissionWarning": {
-        "type": "integer",
-        "placeholders": {
-            "maxValue": {
-                "type": "int"
-            }
-        }
-    },
     "activitySettingsOverrideWarning": "Language and language level determined by activity plan",
     "voice": "Voice",
     "youLeftTheChat": "🚪 You left the chat",
@@ -4800,8 +4826,8 @@
     "newCourseAccess": "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.",
     "onboardingLanguagesTitle": "What language are you learning?",
     "supportSubtitle": "Questions? We're here to help!",
-    "autoIGCToolName": "Enable writing assistance",
-    "autoIGCToolDescription": "Automatically run Pangea Chat tools to correct sent messages to target language.",
+    "autoIGCToolName": "Autocheck on send",
+    "autoIGCToolDescription": "Check your message for mistakes when you tap send. When this is off, tap the writing assistance button to check a message yourself.",
     "emptyAudioError": "Recording failed. Please check your audio permissions and try again.",
     "spanTypeSpelling": "Spelling",
     "spanTypePunctuation": "Punctuation",
@@ -5041,6 +5067,34 @@
     },
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
     "readingAssistanceTutorialCollectToken": "Select words to learn more about them",
+    "playWithOthers": "Play with others",
+    "openRole": "Open: {role}",
+    "@openRole": {
+        "placeholders": {
+            "role": {
+                "type": "String"
+            }
+        }
+    },
+    "waitingFor": "Waiting {duration}",
+    "@waitingFor": {
+        "placeholders": {
+            "duration": {
+                "type": "String"
+            }
+        }
+    },
+    "onlineInCourse": "{count} online in {course}",
+    "@onlineInCourse": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            },
+            "course": {
+                "type": "String"
+            }
+        }
+    },
     "requireAnalyticsAccessTitle": "Require analytics access to join",
     "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",
@@ -5208,7 +5262,7 @@
         }
     },
     "closeHint": "Close hint",
-    "starListLabel": "Saved activities and stars",
+    "starListLabel": "Learning objectives and saved activities",
     "customizePollLabel": "Customize poll",
     "navOptionsLabel": "Navigation options",
     "joinedCourseListLabel": "Joined course list",
@@ -5249,8 +5303,8 @@
             }
         }
     },
-    "mapAttributionLabel": "OpenStreetMap contributors, copyright and license",
-    "@mapAttributionLabel": {},
+    "mapCreditsLabel": "Map credits: Stadia Maps, OpenMapTiles and OpenStreetMap",
+    "@mapCreditsLabel": {},
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
     "abDisplayName": "Abkhazian",
     "elDisplayName": "Greek",
@@ -5443,6 +5497,7 @@
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
     "exitVocabPracticeSession": "Your current vocab practice session progress won't be saved.",
     "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved.",
+    "learnLanguageWhileTexting": "Learn a language while texting your friends!",
     "explorePlayAndLearn": "Explore, play and learn",
     "conversationFromDayOne": "Conversation from Day One",
     "builtForConnection": "Built for connection",
@@ -5646,9 +5701,6 @@
             }
         }
     },
-    "tutorialCoursePlanProgress": "As you do activities and gain stars, you'll make progress here.",
-    "tutorialCoursePlanPickActivity": "These are the activities to try next in your course. Tap one to open and start it!",
-    "tutorialCoursePlanNoActivities": "Tap any activity in your plan to open and start it!",
     "tutorialAppTourOffer": "Great job finishing your first activity! Would you like me to show you around the app?",
     "tutorialAppTourAccept": "Give me a tour",
     "tutorialAppTourDecline": "Skip",
@@ -5674,10 +5726,11 @@
     "analyticsSubscriptionWarningBody": "Without a subscription, your messages don't earn XP or add new words and grammar.",
     "xpAmount": "{count} XP",
     "@xpAmount": {
-        "description": "The XP a learner earned in one activity session, on its row in the Stars list.",
+        "description": "An amount of XP the learner earned: one activity session's on its row in the Stars list, or so far in a running session, at the left of its goal header.",
         "placeholders": {
             "count": {
-                "type": "int"
+                "type": "int",
+                "format": "decimalPattern"
             }
         }
     },
@@ -5707,6 +5760,14 @@
     "@videoPlayer": {
         "description": "Accessible name of a playing activity video, which is one keyboard stop."
     },
+    "videoWontPlayHere": "This video won't play here.",
+    "@videoWontPlayHere": {
+        "description": "Note shown in place of an activity's YouTube video when YouTube refuses to play it inside the app, or it never starts."
+    },
+    "watchOnYoutube": "Watch on YouTube",
+    "@watchOnYoutube": {
+        "description": "Button beside the note that an activity video won't play here. It opens the video in the YouTube app or the browser. YouTube is a brand name; keep it as is."
+    },
     "joinYourCourse": "Join your course",
     "@joinYourCourse": {
         "description": "Title of the dialog a signed-out visitor sees on the welcome screen after opening a course join link."
@@ -5731,6 +5792,464 @@
     "courseCodeSavedExplanation": "Sign up or log in and we'll add you to your course.",
     "@courseCodeSavedExplanation": {
         "description": "Line under the saved-course-code card on the sign-up and login pages."
+    },
+    "learningObjective": "Learning Objective",
+    "learningObjectives": "Learning Objectives",
+    "missionNofM": "Mission {index} of {count}",
+    "@missionNofM": {
+        "placeholders": {
+            "index": {},
+            "count": {}
+        }
+    },
+    "xpTowardObjective": "{xp} of {threshold} XP toward this objective",
+    "@xpTowardObjective": {
+        "placeholders": {
+            "xp": {
+                "type": "int",
+                "format": "decimalPattern"
+            },
+            "threshold": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+    "xpOfThreshold": "{xp} / {threshold} XP",
+    "@xpOfThreshold": {
+        "placeholders": {
+            "xp": {
+                "type": "int",
+                "format": "decimalPattern"
+            },
+            "threshold": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+    "courseComplete": "Course complete!",
+    "courseCompleteDesc": "You've completed all {count} objectives in this course. Keep practicing to hold on to what you've learned.",
+    "@courseCompleteDesc": {
+        "placeholders": {
+            "count": {}
+        }
+    },
+    "practiceObjective": "Practice this objective",
+    "otherActivities": "Other activities",
+    "goalsCompletedOfTotal": "{earned} of {total} goals completed",
+    "@goalsCompletedOfTotal": {
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "goalsCompletedInLanguage": "Goals completed in {language}",
+    "@goalsCompletedInLanguage": {
+        "placeholders": {
+            "language": {}
+        }
+    },
+    "objectiveCircleComplete": "Mission {index}: complete",
+    "@objectiveCircleComplete": {
+        "placeholders": {
+            "index": {}
+        }
+    },
+    "objectiveCircleUpNext": "Mission {index}: up next",
+    "@objectiveCircleUpNext": {
+        "placeholders": {
+            "index": {}
+        }
+    },
+    "useActivityImageAsChatBackground": "Use activity image as chat background",
+    "@useActivityImageAsChatBackground": {
+        "description": "Style-settings switch that shows a faint copy of the activity's image behind an activity chat once the learner scrolls past the image at the top."
+    },
+    "filteredNetworkBlockedTitle": "This network is blocking Pangea Chat",
+    "@filteredNetworkBlockedTitle": {
+        "description": "Banner and guidance title when the network blocks the chat server or the Pangea API."
+    },
+    "filteredNetworkPartlyBlockedTitle": "This network is blocking part of Pangea Chat",
+    "@filteredNetworkPartlyBlockedTitle": {
+        "description": "Guidance title when the network blocks only videos, images or the map."
+    },
+    "filteredNetworkWhatCanIDo": "What can I do?",
+    "@filteredNetworkWhatCanIDo": {
+        "description": "Button on the blocked-network banner and notes that opens the guidance."
+    },
+    "filteredNetworkPhoneAdvice": "Turn off Wi-Fi and use mobile data instead.",
+    "@filteredNetworkPhoneAdvice": {
+        "description": "Advice on a phone when the Wi-Fi network blocks Pangea Chat."
+    },
+    "filteredNetworkComputerAdvice": "Connect to your phone's hotspot instead of this Wi-Fi.",
+    "@filteredNetworkComputerAdvice": {
+        "description": "Advice on a laptop or desktop when the Wi-Fi network blocks Pangea Chat."
+    },
+    "filteredNetworkItHeading": "For teachers and IT staff",
+    "@filteredNetworkItHeading": {
+        "description": "Heading above the list of domains IT staff must allow."
+    },
+    "filteredNetworkItBody": "Ask your IT team to allow these domains:",
+    "@filteredNetworkItBody": {
+        "description": "Line above the list of domains IT staff must allow."
+    },
+    "filteredNetworkAskForHelp": "Ask Pangea for help",
+    "@filteredNetworkAskForHelp": {
+        "description": "Button that sends the Pangea team a request for help with a blocking network."
+    },
+    "filteredNetworkHelpExplanation": "We'll email you to help get Pangea Chat working on this network.",
+    "@filteredNetworkHelpExplanation": {
+        "description": "Line above the email field in the blocked-network guidance."
+    },
+    "filteredNetworkHelpWaiting": "Your request will be sent as soon as you're connected.",
+    "@filteredNetworkHelpWaiting": {
+        "description": "Shown after asking for help while Pangea's servers are still unreachable."
+    },
+    "filteredNetworkHelpSent": "Sent. We'll be in touch by email.",
+    "@filteredNetworkHelpSent": {
+        "description": "Shown after a help request about a blocking network was sent."
+    },
+    "filteredNetworkHelpRefused": "We couldn't send your request. Please email support@pangea.chat.",
+    "@filteredNetworkHelpRefused": {
+        "description": "Shown when the help request about a blocking network was rejected."
+    },
+    "filteredNetworkVideoBlocked": "This network blocks videos.",
+    "@filteredNetworkVideoBlocked": {
+        "description": "Note shown in place of an activity video the network blocks."
+    },
+    "filteredNetworkImagesBlocked": "This network blocks images.",
+    "@filteredNetworkImagesBlocked": {
+        "description": "Note shown in place of an activity image the network blocks."
+    },
+    "filteredNetworkMapBlocked": "This network blocks the map.",
+    "@filteredNetworkMapBlocked": {
+        "description": "Note shown over the world map when the network blocks the map."
+    },
+    "newCourseChat": "New course chat",
+    "@newCourseChat": {
+        "description": "Label of the button in the course page's Chats section header that creates a new group chat in the course. Shown to course admins."
+    },
+    "missionNumber": "Mission {index}",
+    "@missionNumber": {
+        "description": "Pill at the top of the course page's Mission card naming which Mission it shows.",
+        "placeholders": {
+            "index": {}
+        }
+    },
+    "xpToYourStar": "{xp} XP to your star",
+    "@xpToYourStar": {
+        "description": "Beside the Mission card's ring: how much more XP completes the Mission and earns its star.",
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "missionStarEarned": "Star earned!",
+    "@missionStarEarned": {
+        "description": "Beside the Mission card's ring once the Mission is complete."
+    },
+    "xpFromConversation": "Conversation {xp}",
+    "@xpFromConversation": {
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "xpIncludingGoals": "including {xp} from goals",
+    "@xpIncludingGoals": {
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "missionOtherLanguageNotice": "This Mission is from a course in {language}. Your progress on it only counts while you're learning {language}.",
+    "@missionOtherLanguageNotice": {
+        "placeholders": {
+            "language": {}
+        }
+    },
+    "missionLanguageMismatchDesc": "This Mission is from a course in {language}. Switch your target language to {language}?",
+    "@missionLanguageMismatchDesc": {
+        "placeholders": {
+            "language": {}
+        }
+    },
+    "xpBySkillTitle": "By skill",
+    "xpFromPractice": "Practice {xp}",
+    "@xpFromPractice": {
+        "description": "Legend on a Mission's XP bar or ring: XP earned from practice exercises toward this Mission.",
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "wordCount": "{count, plural, =1{1 word} other{{count} words}}",
+    "@wordCount": {
+        "description": "Count of a Mission's target words, shown on its Practice words button.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "missionNextActivity": "Next activity",
+    "missionContinueActivity": "Continue activity",
+    "missionPlayTarget": "{action}: {activity}",
+    "@missionPlayTarget": {
+        "placeholders": {
+            "action": {},
+            "activity": {}
+        }
+    },
+    "goalXpGain": "+{xp}",
+    "@goalXpGain": {
+        "placeholders": {
+            "xp": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+    "finishedInThisCourse": "Finished in this course ({num})",
+    "@finishedInThisCourse": {
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "otherCoursesSessions": "Other courses ({num})",
+    "@otherCoursesSessions": {
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "activityXpStamp": "{xp} XP",
+    "@activityXpStamp": {
+        "placeholders": {
+            "xp": {}
+        }
+    },
+    "activityCompletedWithXp": "{completed}, {xp} XP earned",
+    "@activityCompletedWithXp": {
+        "placeholders": {
+            "completed": {},
+            "xp": {}
+        }
+    },
+    "noObjectiveActivitiesYet": "You haven't completed an activity for this objective yet. Start one from your course.",
+    "@noObjectiveActivitiesYet": {
+        "description": "Shown on a Learning Objective's detail page when the learner has finished none of its activities."
+    },
+    "objectiveNotInYourCourses": "This objective isn't in any of your courses.",
+    "@objectiveNotInYourCourses": {
+        "description": "Shown when a Learning Objective's detail page opens for an objective none of the learner's joined courses carries (an old link, or a course they left)."
+    },
+    "activityCompleted": "Completed",
+    "@activityCompleted": {
+        "description": "Accessible name of the completed stamp on an activity card the learner has finished once."
+    },
+    "completedTimes": "Completed {count} times",
+    "@completedTimes": {
+        "description": "Accessible name of the completed stamp on an activity card the learner has finished more than once; the stamp shows ×{count}.",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "customCourseStepDesc": "A course is a set of conversation activities that follow your textbook, for your students to do together as homework.",
+    "teamCode": "Team code",
+    "@teamCode": {
+        "description": "Title of the prompt for the Pangea team's code, which opens the hidden environment switcher on the login page."
+    },
+    "reopenAppToFinishSwitching": "Close the app completely and open it again to finish switching.",
+    "@reopenAppToFinishSwitching": {
+        "description": "Shown after a Pangea team member switches the app between the production and staging servers; the switch applies on the next launch."
+    },
+    "connectionOffline": "You're offline. Pangea Chat will reconnect when your connection is back.",
+    "@connectionOffline": {
+        "description": "Banner at the top of the app when the device has no internet connection."
+    },
+    "connectionUnreachable": "Can't reach Pangea Chat. Trying again…",
+    "@connectionUnreachable": {
+        "description": "Banner at the top of the app when the device is online but the Pangea Chat server is not answering."
+    },
+    "connectionBackOnline": "Back online",
+    "@connectionBackOnline": {
+        "description": "Banner shown for a few seconds when the connection to Pangea Chat comes back after being lost."
+    },
+    "currentMission": "Current mission",
+    "classLocation": "Class location",
+    "@classLocation": {
+        "description": "Above the Mission circle the teacher's due dates say the class is on now."
+    },
+    "xpThresholdSuffix": "/ {threshold} XP",
+    "@xpThresholdSuffix": {
+        "description": "Under the XP count in the middle of a Mission's ring: the XP that completes it.",
+        "placeholders": {
+            "threshold": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+    "connectionPracticeVocab": "Practice vocab while you wait",
+    "@connectionPracticeVocab": {
+        "description": "Button on the offline / can't-reach-Pangea banner that starts a vocabulary practice session which works without a connection."
+    },
+    "offlinePracticeNote": "Offline. Your answers upload when you're back.",
+    "@offlinePracticeNote": {
+        "description": "Short note under the practice progress bar while the app has no connection to Pangea Chat. The learner's answers are saved on the device and sent when the connection returns."
+    },
+    "offlinePracticeSavedNote": "Saved on this device. Your XP uploads when you're back online.",
+    "@offlinePracticeSavedNote": {
+        "description": "Note on the practice completion screen while the app has no connection to Pangea Chat. The XP earned is stored on the device and sent when the connection returns."
+    },
+    "offlinePracticeNothingSaved": "Not enough is saved on this device to practice offline. Try again when you're back online.",
+    "@offlinePracticeNothingSaved": {
+        "description": "Shown instead of a practice session when the app has no connection to Pangea Chat and the device has not saved enough words or messages to build one offline."
+    },
+    "constructUseCorRADesc": "Read aloud and heard",
+    "@constructUseCorRADesc": {
+        "description": "Analytics label for a read-aloud practice exercise where the target word was heard."
+    },
+    "constructUseIncRADesc": "Read aloud, not heard",
+    "@constructUseIncRADesc": {
+        "description": "Analytics label for a read-aloud practice exercise where the target word was not heard after every try."
+    },
+    "hearItFirstToolName": "Hear it first",
+    "@hearItFirstToolName": {
+        "description": "Audio setting: in read-aloud practice, the example sentence plays before the learner records."
+    },
+    "hearItFirstDescription": "In read-aloud practice, play the sentence before you record.",
+    "@hearItFirstDescription": {
+        "description": "Description under the Hear it first audio setting."
+    },
+    "readAloudInstruction": "Tap the mic and read the sentence aloud",
+    "@readAloudInstruction": {
+        "description": "Instruction on a read-aloud practice exercise before the learner records."
+    },
+    "readAloudRecord": "Record",
+    "@readAloudRecord": {
+        "description": "Accessible name of the record button on a read-aloud exercise before anything has been heard."
+    },
+    "readAloudMicLabel": "{count, plural, =1{Record, 1 word not yet heard} other{Record, {count} words not yet heard}}",
+    "@readAloudMicLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        },
+        "description": "Accessible name of the record button on a read-aloud exercise; count is how many words of the sentence have not been heard yet (never zero)."
+    },
+    "readAloudStop": "Stop recording",
+    "@readAloudStop": {
+        "description": "Accessible name of the record button while a read-aloud recording is running."
+    },
+    "readAloudStarting": "Getting the microphone ready…",
+    "@readAloudStarting": {
+        "description": "Status on a read-aloud exercise between the record tap and the microphone being live: permission is being asked and the connection opened, nothing is recorded yet."
+    },
+    "readAloudListening": "Listening…",
+    "@readAloudListening": {
+        "description": "Status on a read-aloud exercise while the microphone is live and nothing has been heard yet."
+    },
+    "readAloudHeardAll": "Every word heard!",
+    "@readAloudHeardAll": {
+        "description": "Shown when the learner read the whole sentence and every word was heard."
+    },
+    "readAloudNotHeard": "{count, plural, =1{1 word not heard} other{{count} words not heard}}",
+    "@readAloudNotHeard": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        },
+        "description": "Shown after a read-aloud recording in which some words of the sentence were not heard."
+    },
+    "readAloudTriesLeft": "{count, plural, =1{1 try left} other{{count} tries left}}",
+    "@readAloudTriesLeft": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        },
+        "description": "How many more recordings the learner may make on this read-aloud exercise."
+    },
+    "readAloudHeardTranscript": "Heard: {transcript}",
+    "@readAloudHeardTranscript": {
+        "type": "String",
+        "placeholders": {
+            "transcript": {
+                "type": "String"
+            }
+        },
+        "description": "The words the recognizer heard in the learner's read-aloud recording."
+    },
+    "readAloudTranscribeFailed": "Couldn't transcribe your recording. Check your connection and try again.",
+    "@readAloudTranscribeFailed": {
+        "description": "Shown when a read-aloud recording could not be transcribed by any route."
+    },
+    "readAloudMicUnavailable": "No microphone is available, so this word is a meaning exercise instead.",
+    "@readAloudMicUnavailable": {
+        "description": "Shown when microphone permission is refused or no microphone exists and a read-aloud exercise is swapped for a meaning exercise."
+    },
+    "readAloudExample": "Example",
+    "@readAloudExample": {
+        "description": "Label of the player for the example sentence's audio on a read-aloud exercise."
+    },
+    "readAloudTake": "Take {number}",
+    "@readAloudTake": {
+        "type": "String",
+        "placeholders": {
+            "number": {
+                "type": "int"
+            }
+        },
+        "description": "Label of the player for one of the learner's read-aloud recordings, numbered from 1 in the order they were made."
+    },
+    "readAloudStartOver": "Start over",
+    "@readAloudStartOver": {
+        "description": "Button under the mic while a read-aloud recording runs: discards the recording in progress and begins a fresh one, without spending a take."
+    },
+    "xpTowardMission": "{xp} XP toward this Mission",
+    "@xpTowardMission": {
+        "description": "Under the XP total when a Mission's practice session ends: the XP that Mission gained. xp is a signed number such as '+ 65' or '− 3'.",
+        "type": "String",
+        "placeholders": {
+            "xp": {
+                "type": "String"
+            }
+        }
+    },
+    "openCourse": "Open course",
+    "@openCourse": {
+        "description": "Button in the dialog shown after the app joined the learner to their language's central course: opens that course."
+    },
+    "centralCourseJoinedTitle": "You've joined {course}",
+    "@centralCourseJoinedTitle": {
+        "description": "Title of the dialog shown once when the app joins an existing learner to the Pangea-run course for their target language.",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "centralCourseJoinedBody": "It's Pangea's course for {language} learners. Its members can see your name and profile.",
+    "@centralCourseJoinedBody": {
+        "description": "Body of the dialog shown once when the app joins an existing learner to the Pangea-run course for their target language. The learner can leave from the dialog.",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "centralCourseMembersSeeYou": "Members of this course can see your name and profile.",
+    "@centralCourseMembersSeeYou": {
+        "description": "Line on the onboarding page after a new learner was joined to the Pangea-run course for their target language."
     },
     "seatInviteTitle": "Join {course}",
     "@seatInviteTitle": {

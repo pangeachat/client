@@ -8,25 +8,14 @@
 /// home for that pattern; every redirect / panel / nav helper that edits the
 /// query routes through here instead of re-deriving (and re-explaining) it. See
 /// `routing.instructions.md`.
+///
+/// `m=` is reserved for future map filters (region, language, activity kind):
+/// display refinement, not workspace context. Nothing writes it today.
 abstract class WorkspaceQuery {
   /// The raw `key=value` segments of [query] (empty when there are none),
   /// each kept verbatim so an already-encoded param is not touched.
   static List<String> parts(String query) =>
       query.isEmpty ? <String>[] : query.split('&');
-
-  /// The value of the first `key=value` segment in [query] whose key is [key],
-  /// or null when [key] is absent; a bare `key` flag (no `=`) yields `''`. The
-  /// value is returned verbatim (still percent-encoded), like the segments
-  /// [parts] keeps. Read-only — pair with [removeKeys] when you also drop it.
-  static String? valueOf(String query, String key) {
-    for (final p in parts(query)) {
-      final eq = p.indexOf('=');
-      if ((eq < 0 ? p : p.substring(0, eq)) == key) {
-        return eq < 0 ? '' : p.substring(eq + 1);
-      }
-    }
-    return null;
-  }
 
   /// Drop in place every segment whose key is in [keys] — a bare `key` flag or a
   /// `key=value` pair. The key is the text before the first `=`, so `key=` never

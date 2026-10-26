@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/common/widgets/bold_tonal_button.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
 
 /// A course-page section's shortcut — the one-tap action a section offers
@@ -8,30 +9,35 @@ import 'package:fluffychat/routes/chat/chat_details/course_overview/course_secti
 ///
 /// A tonal circle rather than a bare glyph (#8815): as a plain icon it read as
 /// decoration, and in the Chats section it was the twin of the create-chat
-/// tile's leading glyph one row down — one a button, one not. The fill is the
-/// one the "See all" beside it wears, so the two read as one row of actions.
+/// tile's leading glyph one row down — one a button, one not. The bold
+/// pressable style the "See all" beside it and the Mission card's Practice
+/// wear (#9420), so the page's secondary actions read as one set.
 class CourseSectionShortcut extends StatelessWidget {
   final IconData icon;
 
-  /// The accessible name too — the control has no visible label.
-  final String tooltip;
+  /// The tooltip and accessible name, and the visible label when [showLabel].
+  final String label;
+
+  /// For a shortcut people miss as a bare icon (#9492).
+  final bool showLabel;
+
   final VoidCallback onPressed;
 
   const CourseSectionShortcut({
     required this.icon,
-    required this.tooltip,
+    required this.label,
+    required this.showLabel,
     required this.onPressed,
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
-    return IconButton.filledTonal(
-      icon: Icon(icon),
-      // The header's own section glyph, so the row's icons match.
-      iconSize: CourseSectionHeader.iconSize,
-      tooltip: tooltip,
-      onPressed: onPressed,
-    );
-  }
+  Widget build(BuildContext context) => BoldTonalButton(
+    icon: icon,
+    // The header's own section glyph size, so the row's icons match.
+    iconSize: CourseSectionHeader.iconSize,
+    label: showLabel ? label : null,
+    semanticsLabel: label,
+    onPressed: onPressed,
+  );
 }

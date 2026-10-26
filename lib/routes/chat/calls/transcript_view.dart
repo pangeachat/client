@@ -22,6 +22,7 @@ import 'package:fluffychat/routes/chat/calls/call_playback_controller.dart';
 import 'package:fluffychat/routes/chat/calls/call_recordings_load.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_provenance.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_tokens.dart';
@@ -162,6 +163,11 @@ class CallTranscriptView extends StatefulWidget {
   /// Injected only by tests, which have no homeserver to read from.
   final RelationsFetcher? fetcher;
 
+  /// Injected only by tests: resolves a peer-produced half's source recording
+  /// by id. Production reads it off [room].
+  @visibleForTesting
+  final AudioEventFetcher? audioFetcher;
+
   /// Injected only by tests, so a widget test can drive the "Full call" slot's
   /// [CallRecordingsLoadState] deterministically (its own grace clock and
   /// timer) rather than waiting out a real ~30s window. Production always
@@ -211,6 +217,7 @@ class CallTranscriptView extends StatefulWidget {
     required this.room,
     required this.callKey,
     this.fetcher,
+    this.audioFetcher,
     this.recordingsLoadController,
     this.audioPlayerFactory,
     this.mergedFileLoader,
@@ -565,6 +572,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       expectedSenders: participants.ids,
       participantsKnown: participants.known,
       encrypted: widget.room.encrypted,
+      resolveProvenance: _provenanceResolver(fetch, participants.ids),
     );
     _transcript = transcript;
     // Feeds the transcript's OWN live-refresh baseline the instant this
@@ -968,6 +976,20 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     }
   }
 
+  /// Judges the peer-produced halves this screen reads, by the same rule and
+  /// against the same manifest as the whole-call transcriber that wrote them.
+  /// Without it every such half stays pending and the reader keeps seeing the
+  /// speaker's own empty half (#8792).
+  Future<Map<String, ProvenanceState>> Function(List<TranscriptCandidate>)
+  _provenanceResolver(RelationsFetcher fetch, List<String> participants) =>
+      transcriptProvenanceResolver(
+        fetch: fetch,
+        audioFetch: widget.audioFetcher ?? audioEventFetcherFor(widget.room),
+        roomId: widget.room.id,
+        callKey: widget.callKey,
+        participants: participants.toSet(),
+      );
+
   /// Re-reads the transcript for [_refreshTranscript]'s live-refresh pass. A
   /// failure is turned into `null` -- "nothing new to show this pass" --
   /// rather than left to propagate, the same shape as
@@ -994,6 +1016,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         expectedSenders: participants.ids,
         participantsKnown: participants.known,
         encrypted: widget.room.encrypted,
+        resolveProvenance: _provenanceResolver(fetch, participants.ids),
       );
     } catch (e, s) {
       Logs().w(
@@ -1891,7 +1914,8 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // recordings/Full-call audio ABOVE this section is NOT gated: the paywall
     // audit (#8792) found only the transcript WORDS reachable outside
     // `transcript_view.dart`, never the raw audio, which already plays for
-    // anybody in the room today.
+    // anybody in the room today. The gate is the app's, not cryptographic:
+    // the words live in the room like the rest of the call.
     if (!MatrixState
         .pangeaController
         .subscriptionController
@@ -1936,12 +1960,14 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
           now.difference(recordedAt) < transcribingWindow;
     }
 
-    // Worked out here, where the recording set is in scope, so a half still
-    // being transcribed drops out of the notes and shows as loading instead.
-    final notes = transcript.halves
-        .map((half) => _noteFor(half, l10n, transcribing: transcribing(half)))
-        .nonNulls
-        .toList();
+    // Task 3 (#8792): the recordings the view already fetches name which
+    // speakers have a manifest recording -- `recordingTimes` is keyed by sender
+    // exactly for this (see its own doc above). Never on the VIEWER's OWN half:
+    // the on-demand path only produces a PEER's half (`_produceOnePeer` refuses
+    // `spokenBy == self`), so offering it on one's own half is a button that can
+    // only no-op. The viewer's own half is the ordinary call-end flow's job.
+    bool hasRecording(TranscriptHalf half) =>
+        half.senderId != me && recordingTimes.containsKey(half.senderId);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1992,16 +2018,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
               transcribing: transcribing(half),
               theme: theme,
               l10n: l10n,
-              // Task 3 (#8792): the recordings the view already fetches name
-              // which speakers have a manifest recording -- `recordingTimes`
-              // is keyed by sender exactly for this (see its own doc above).
-              // Never on the VIEWER's OWN half: the on-demand path only produces
-              // a PEER's half (`_produceOnePeer` refuses `spokenBy == self`), so
-              // offering it on one's own absent half is a button that can only
-              // no-op. The viewer's own half is the ordinary call-end flow's job.
-              hasRecording:
-                  half.senderId != me &&
-                  recordingTimes.containsKey(half.senderId),
+              hasRecording: hasRecording(half),
               onDemandInFlight: _onDemandInFlight.contains(half.senderId),
               onDemandUnavailable: _onDemandUnavailable.contains(half.senderId),
               onTranscribe: () => unawaited(_onTranscribeTapped(half.senderId)),
@@ -2013,7 +2030,27 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         // spoke. The per-speaker view says these itself, so they are added out
         // here only when the timeline is what is drawn.
         if (displayTurns.isNotEmpty) ...[
-          for (final note in notes) _Muted(text: note),
+          // Worked out here, where the recording set is in scope, so a half
+          // still being transcribed drops out of the notes and shows as loading
+          // instead. A half emptied only because its writer had no subscription
+          // carries the same on-demand offer the per-speaker view gives it
+          // (#8792); every other note is text alone, as before.
+          for (final half in transcript.halves)
+            if (_noteFor(half, l10n, transcribing: transcribing(half))
+                case final note?)
+              if (half.emptiedOnlyByNoSubscription)
+                ..._onDemandOffer(
+                  note: note,
+                  name: _nameFor(half.senderId, l10n),
+                  l10n: l10n,
+                  hasRecording: hasRecording(half),
+                  inFlight: _onDemandInFlight.contains(half.senderId),
+                  unavailable: _onDemandUnavailable.contains(half.senderId),
+                  onTranscribe: () =>
+                      unawaited(_onTranscribeTapped(half.senderId)),
+                )
+              else
+                _Muted(text: note),
           // A half still being transcribed is loading, not missing. The
           // per-speaker view says this in the half's own section; the timeline
           // says it here, below the conversation, beside the absent/silent
@@ -2884,31 +2921,30 @@ class _HalfSection extends StatelessWidget {
     // silent": a silent speaker still writes an empty half, and that case is
     // the one below.
     if (half.state == HalfState.absent) {
-      // Task 3 (#8792): a terminal note over the button, never a stuck one --
-      // see [onDemandUnavailable]'s own doc for why a plain false maps here.
-      if (onDemandUnavailable) {
-        return [_Muted(text: l10n.callTranscriptAudioUnavailable(name))];
-      }
-      if (onDemandInFlight) {
-        return [_Loading(text: l10n.callTranscriptTranscribing(name))];
-      }
-      return [
-        _Muted(text: l10n.callTranscriptNone(name)),
-        // A manifest recording exists for this speaker's unit but nobody has
-        // transcribed it yet -- offer to on demand, rather than only ever
-        // waiting for a subscriber to open this screen after the auto path
-        // already had its chance (spec section 4 bullet 2).
-        if (hasRecording) ...[
-          const SizedBox(height: 4),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: TextButton(
-              onPressed: onTranscribe,
-              child: Text(l10n.callTranscriptTranscribeButton),
-            ),
-          ),
-        ],
-      ];
+      return _onDemandOffer(
+        note: l10n.callTranscriptNone(name),
+        name: name,
+        l10n: l10n,
+        hasRecording: hasRecording,
+        inFlight: onDemandInFlight,
+        unavailable: onDemandUnavailable,
+        onTranscribe: onTranscribe,
+      );
+    }
+
+    // A half emptied only because its writer had no subscription was never
+    // produced from their audio, so it is offered exactly as an absent half is
+    // (#8792): a subscribed reader can have it transcribed from the recording.
+    if (half.emptiedOnlyByNoSubscription) {
+      return _onDemandOffer(
+        note: emptyHalfNote(half, name, l10n),
+        name: name,
+        l10n: l10n,
+        hasRecording: hasRecording,
+        inFlight: onDemandInFlight,
+        unavailable: onDemandUnavailable,
+        onTranscribe: onTranscribe,
+      );
     }
 
     // Shared with the notes drawn under the timeline, because it is the same
@@ -2938,6 +2974,48 @@ class _HalfSection extends StatelessWidget {
       ],
     ];
   }
+}
+
+/// Task 3's (#8792) on-demand offer for a half nobody has transcribed from its
+/// recording: [note], then the Transcribe button when [hasRecording].
+///
+/// Shared by an absent half and by one emptied only because its writer had no
+/// subscription, in both shapes of the screen, so the gating cannot drift
+/// between them. A terminal note replaces the button once the audio proved
+/// unusable ([unavailable]), and a loading row replaces it while a request
+/// runs ([inFlight]) -- never a stuck button.
+List<Widget> _onDemandOffer({
+  required String note,
+  required String name,
+  required L10n l10n,
+  required bool hasRecording,
+  required bool inFlight,
+  required bool unavailable,
+  required VoidCallback onTranscribe,
+}) {
+  if (unavailable) {
+    return [_Muted(text: l10n.callTranscriptAudioUnavailable(name))];
+  }
+  if (inFlight) {
+    return [_Loading(text: l10n.callTranscriptTranscribing(name))];
+  }
+  return [
+    _Muted(text: note),
+    // A manifest recording exists for this speaker's unit but nobody has
+    // transcribed it yet -- offer to on demand, rather than only ever waiting
+    // for a subscriber to open this screen after the auto path already had its
+    // chance (spec section 4 bullet 2).
+    if (hasRecording) ...[
+      const SizedBox(height: 4),
+      Align(
+        alignment: Alignment.centerLeft,
+        child: TextButton(
+          onPressed: onTranscribe,
+          child: Text(l10n.callTranscriptTranscribeButton),
+        ),
+      ),
+    ],
+  ];
 }
 
 /// Task 3's (#8792) language picker: a plain list, shown when the peer's

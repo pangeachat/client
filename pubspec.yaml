@@ -5,7 +5,7 @@ description: Learn a language while texting your friends.
 # Pangea#
 publish_to: none
 # On version bump also increase the build number for F-Droid
-version: 5.0.11+1
+version: 5.0.18+1
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -21,6 +21,7 @@ dependencies:
   collection: ^1.18.0
   cross_file: ^0.3.5
   confetti: ^0.8.0
+  connectivity_plus: ^7.3.1
   cupertino_icons: any
   # #Pangea
   # desktop_drop: ^0.7.0
@@ -68,6 +69,11 @@ dependencies:
       # Pinned deliberately. The MatrixRTC/LiveKit call work depends on SDK VoIP
       # internals (LiveKitBackend, GroupCallSession, WebRTCDelegate); without a ref
       # this resolves to HEAD and can change under us on any `pub upgrade`.
+      # Advance the ref only for a named, merged fix -- never as routine
+      # dependency hygiene or to pick up the fork's HEAD -- and do not restore
+      # the commented-out semver range above: that reopens the drift this pin
+      # prevents. test/pangea/calls/sdk_voip_surface_test.dart locks the SDK
+      # surface the calls depend on.
       ref: bc206b23b5d9d42e4a57d6339bb140bd791e0632
   # Pangea#
   mime: ^2.0.0
@@ -91,6 +97,10 @@ dependencies:
   sqflite_common_ffi: ^2.3.7+1
   sqlcipher_flutter_libs: ^0.6.8
   swipe_to_action: ^0.3.0
+  # #Pangea
+  # Course due dates show in the course's IANA time zone (content-studio).
+  timezone: ^0.10.1
+  # Pangea#
   unifiedpush: ^6.2.0
   unifiedpush_ui: ^0.2.0
   universal_html: ^2.3.0

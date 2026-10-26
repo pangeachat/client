@@ -47,6 +47,10 @@ class RoomDefaults {
     };
   }
 
+  /// Only moderators post, but anyone can react (#9515). Removing a reaction
+  /// redacts it, so redactions are open too; redacting someone else's event
+  /// still needs `redact`. Reactions are only distinguishable from messages
+  /// in an unencrypted room.
   static Map<String, dynamic> get restrictedPowerLevelsContent => {
     "ban": 50,
     "kick": 50,
@@ -58,6 +62,8 @@ class RoomDefaults {
       PangeaEventTypes.activitySummary: 0,
       "m.room.power_levels": 100,
       "m.room.pinned_events": 50,
+      "m.reaction": 0,
+      "m.room.redaction": 0,
     },
     "events_default": 50,
     "state_default": 50,
@@ -76,6 +82,9 @@ class RoomDefaults {
       "m.room.power_levels": 100,
       "m.room.join_rules": 100,
       "m.space.child": spaceChild,
+      // Only a course admin may send the course's own Can-Do copy; readers
+      // also ignore one whose sender is below 100.
+      PangeaEventTypes.courseMissions: 100,
     },
     "events_default": 0,
     "state_default": 50,

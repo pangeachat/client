@@ -6,7 +6,7 @@ applyTo: "lib/features/join_codes/**,lib/routes/chat_list/**,lib/routes/courses/
 
 > **Note:** "Course" here = a Matrix **course space** (group room), which survives the v1→v3 content migration. It is distinct from the retired CMS "course‑plan" content tree (now v3 Quests). The join/knock/code mechanics below are model-agnostic; only the course‑plans cross-link points at deprecated v1.
 
-How users join courses (Matrix spaces) through three routes: class link, class code, and knock-accept.
+How users join courses (Matrix spaces) through three routes (class link, class code, and knock-accept), and how a learner with no teacher's course is joined to their language's central course.
 
 - **Synapse module cleanup**: [synapse-pangea-chat PR #21](https://github.com/pangeachat/synapse-pangea-chat/pull/21)
 - **Course plans**: [course-plans.instructions.md](course-plans.instructions.md)
@@ -38,7 +38,7 @@ A course carries its own target language — the quest's, the same field its inf
 - A **course space**, or a **chat** inside a course (announcements, introductions): the course plan page. Joining a coded chat resolves to its joined parent course rather than dropping the learner into the chat; only a coded chat with no joined parent course opens directly.
 - An **activity session**: the activity page with that session bound (join/resume) — the invite means "come join my session", so it never lands on the parent course, and no course context is forced open alongside it (an invitee outside the course cannot load that course; forcing it open showed an endless spinner).
 
-**Pre-login**: a logged-out visitor is bounced to login, and the coded location survives the bounce the way every workspace location does ([routing.instructions.md § A signed-out visitor's destination](routing.instructions.md#a-signed-out-visitors-destination)): the `/` auth guard ([`PAuthGaurd`](../../lib/pangea/common/utils/p_vguard.dart)) stores the folded `left=addcourse:private/<code>` URL (`SpaceCodeRepo.destination`) before bouncing, and the same guard sends the next logged-in landing back to it, where the join page submits. While signed out, the login and signup screens tell the visitor the code was kept ([signup-and-login.instructions.md § Arriving with a class code](signup-and-login.instructions.md#arriving-with-a-class-code)). A brand-new user's onboarding reads the code out of the stored destination and joins with it instead (below). The shared activity link (`/<uuid>`) rides the same way. The DM invite link (`/invite_user/<id>`, [routing.instructions.md](routing.instructions.md#ids-in-urls)) is different: the invite route never renders — its redirect caches the invited user id in its own entry (on every landing, not only the bounce) and lands the user on the world map with the chat list open — and the shell itself opens the DM from there, consuming the entry once the DM has actually opened (or definitively failed). It waits while a coded join is in progress on screen and takes its turn on the next workspace navigation. The invite entry is time-stamped and expires (`SpaceCodeRepo.cacheTTL`) like the destination, so a visitor who never logs in can't leave one that surprises a much later login.
+**Pre-login**: a logged-out visitor is bounced to login, and the coded location survives the bounce the way every workspace location does ([routing.instructions.md § A signed-out visitor's destination](routing.instructions.md#a-signed-out-visitors-destination)): the `/` auth guard ([`PAuthGaurd`](../../lib/pangea/common/utils/p_vguard.dart)) stores the folded `left=addcourse:private/<code>` URL (`SpaceCodeRepo.destination`) before bouncing, and the same guard sends the next logged-in landing back to it, where the join page submits. While signed out, the login and signup screens tell the visitor the code was kept ([signup-and-login.instructions.md § Arriving with a class code](signup-and-login.instructions.md#arriving-with-a-class-code)). A brand-new user's onboarding reads the code out of the stored destination and joins with it instead (below). The shared activity link (`/<uuid>`) rides the same way. The DM invite link (`/invite_user/<id>`, [user_id_url.dart](../../lib/features/navigation/user_id_url.dart)) is different: the invite route never renders — its redirect caches the invited user id in its own entry (on every landing, not only the bounce) and lands the user on the world map with the chat list open — and the shell itself opens the DM from there, consuming the entry once the DM has actually opened (or definitively failed). It waits while a coded join is in progress on screen and takes its turn on the next workspace navigation. The invite entry is time-stamped and expires (`SpaceCodeRepo.cacheTTL`) like the destination, so a visitor who never logs in can't leave one that surprises a much later login.
 
 ### Onboarding with a link-joined course
 
@@ -104,6 +104,20 @@ Admin taps the knocking user → popup menu shows "Approve" (only visible for `M
 
 ---
 
+## The central course
+
+Every learner belongs to a course with a person responsible for it ([central courses](../../../.github/.github/instructions/central-courses.instructions.md#every-account-has-a-home-course)). A learner who isn't in a teacher's course is joined to the central course for their target language.
+
+- **Who is joined.** A learner is joined when none of their courses has an admin other than themselves, Pangea's support account or the bot. That includes a learner whose only course is one they made alone. An account that chose teacher in onboarding is never joined, because its home is the course it will request or build.
+- **A new learner, in onboarding.** A learner who didn't join with a class code is joined after the level step and sees the joined-course page, as after a class-code join. The page also says the course's members can see their name and profile. Onboarding ends on the central course.
+- **An existing learner, on opening the app.** The app joins them and shows a dialog once. It says they've joined Pangea's course for their language and that its members can see their name and profile. It has Open course and Leave buttons.
+- **Leaving is remembered.** When a learner leaves a language's central course, from the dialog or the course page, the app saves that for that language in their settings. After that, no device joins them to it again. Offering it again is the job of engagement's `join_course` notice.
+- **A new target language.** A learner who switches language is joined to the new language's central course, with the same dialog. They stay in the old language's course.
+- **A language with no central course** is skipped, and the app checks again each time it opens.
+- **No separate switch.** Joins for a language start when its course is marked central, so the team chooses when each language starts.
+
+---
+
 ## Invite Handling
 
 When an invite arrives via `/sync`, the sync listener routes it by room type:
@@ -142,7 +156,7 @@ Account data is used so the state survives reinstall, logout, and syncs across d
 
 ### All auto-join cases
 
-Every case where `room.join()` is called without explicit user confirmation:
+Every case where the user is joined to a room without confirming it. The client calls `room.join()` in every case except the course's default chats, which the server joins:
 
 | Condition                                                | Trigger                           |
 | -------------------------------------------------------- | --------------------------------- |
@@ -150,9 +164,10 @@ Every case where `room.join()` is called without explicit user confirmation:
 | Invited space is a child of a joined parent              | Space invite via sync             |
 | Tapping a left space in the list                         | User tap                          |
 | Analytics room invite                                    | Always auto-joined                |
-| Default chats in a course (announcements, introductions) | Viewing the course                |
+| Default chats in a course (announcements, introductions) | Server-side, when the user joins the course or the chat is linked to it ([course default chats](../../../synapse-pangea-chat/.github/instructions/course-default-chats.instructions.md)) |
 | knock_with_code succeeded                                | Code entry flow                   |
 | User previously knocked on the room                      | Invite received for a prior knock |
+| No teacher's course, and the target language has a central course (not for an account that chose teacher, or one that left that course) | Onboarding's level step, or app open |
 
 ---
 
@@ -160,17 +175,21 @@ Every case where `room.join()` is called without explicit user confirmation:
 
 A shared link (`/<code>` course join, `/<uuid>` activity) must reach the app on mobile. Three legs, in the order a tap resolves:
 
-1. **App installed, normal tap** — iOS Universal Links / Android App Links intercept `app.pangea.chat` at the OS level, before any web page loads. Both platforms claim the whole host (Android intent filters have no path restriction; the iOS AASA declares `paths: ["*"]`), so every link shape is covered. The OS hands the full URL to the running app's incoming-URI listener, which passes the path straight to the router (Route 1 — no per-shape rewrite; the mapping is unit-tested).
-2. **App not installed** — the tap opens the mobile browser; the webapp CloudFront serves the SPA for any path, and the web app processes the link exactly as on desktop, including the logged-out login-bounce ferry. There is no deferred deep-linking service (Branch.io, etc.), so a store install does not carry the link, and the web is the fallback. A teacher claiming a course still reaches it after a store install. Signing in with the address the course was requested for claims it ([synapse-pangea-chat create-course-space](../../../synapse-pangea-chat/.github/instructions/create-course-space.instructions.md), "Who the course is created for"). The course-code step also accepts the code printed in the claim email, or the pasted claim link.
+1. **App installed, normal tap** — iOS Universal Links / Android App Links intercept `app.pangea.chat` at the OS level, before any web page loads. The OS hands the full URL to the running app's incoming-URI listener, which passes the path straight to the router (Route 1 — no per-shape rewrite; the mapping is unit-tested). The two platforms claim different paths:
+   - **iOS** claims every path except the web sign-in callback `/auth.html`.
+   - **Android** claims only the inbound link shapes: the root `/` with any query (workspace, notice and payment-return links), a seven-character `/<code>`, a 36-character `/<uuid>`, and anything under `/invite_user/`, `/room/` or `/gift/`. Android path patterns cannot leave out a single path, so the course-code and activity shapes are matched by their length.
+   - **Why the sign-in pages stay in the browser.** An Apple or Google sign-in that started in the browser has to finish there, and the app has no such pages ([signup-and-login](signup-and-login.instructions.md)). Both platforms leave `/auth.html` to the browser. Android also has to leave the `/home` sign-in pages to it: Chrome treats the callback's redirect back to the sign-in page as part of the learner's tap on Synapse's Continue button, so a sign-in page the app claimed would open the app. Safari keeps a navigation within the same domain in the browser, so iOS does not need this.
+   - **Adding a link shape.** A new link that is the root `/` with a new query needs nothing on either platform, because Android matches only the path. A new path shape (as `/gift/<code>` was) opens the iOS app with no change, but **on Android it opens in the browser until the Android intent filter lists it**. The link still works there, and the "Open in app" bar opens the app at the same route. Add the shape to the intent filter, and a sample of it to [`app_links_manifest_test.dart`](../../test/pangea/navigation/app_links_manifest_test.dart), which checks the inbound shapes against the manifest, in the same PR as its route. The same test checks that `/auth.html` and the `/home` pages stay unclaimed.
+2. **App not installed** — the tap opens the mobile browser; the webapp CloudFront serves the SPA for any path, and the web app processes the link exactly as on desktop, including the logged-out login-bounce ferry. There is no deferred deep-linking service (Branch.io, etc.), so a store install does not carry the link, and the web is the fallback. A teacher claiming a course still reaches it after a store install: the claim email says the tap leads to sign-up or log-in, and says to tap the button again after signing in. Signing in with an account whose Synapse-verified email address equals the address a prepared invitation was sent to claims it without a second tap ([synapse-pangea-chat create-course-space](../../../synapse-pangea-chat/.github/instructions/create-course-space.instructions.md)); that match covers prepared invitations only, not room-backed courses created directly. No claim code is printed in the email (decided 2026-10-09); the course-code step takes the class code students share, not a claim.
 3. **In-app browsers** (Instagram, Gmail webview, …) — Universal/App Links often don't fire there; the user stays on the web fallback, which works.
 
-There is deliberately NO automatic store or `pangea://` bounce anywhere: modern mobile browsers block JS-initiated custom-scheme navigations without a user tap (and can swallow a queued store redirect with them), so the old auto-bounce failed silently — and on deep paths it dropped the link payload outright. Install prompts are tappable instead, and appear only where they don't cost a link: on iOS, the Smart App Banner (`apple-itunes-app`, `app-argument` = the live URL) renders natively on every page — "Open" hops an installed app in with the link intact, "View" goes to the App Store; on Android, [`web/index.html`](../../web/index.html) shows a small dismissible "Open in app" bar on every page (dismissal remembered for two weeks): its tap is an `intent://` URL that opens the installed app at the current route and otherwise falls through to the Play Store natively in Chromium browsers; non-Chromium browsers get a plain Play Store link. The bar may appear on deep paths because the tap carries the route — the payload loss that once restricted it to the bare root is gone.
+There is deliberately NO automatic store or `pangea://` bounce anywhere: modern mobile browsers block JS-initiated custom-scheme navigations without a user tap (and can swallow a queued store redirect with them), so the old auto-bounce failed silently — and on deep paths it dropped the link payload outright. Install prompts are tappable instead, and appear only where they don't cost a link: on iOS, the Smart App Banner (`apple-itunes-app`, `app-argument` = the live URL) renders natively on every page — "Open" hops an installed app in with the link intact, "View" goes to the App Store; on Android, [`web/index.html`](../../web/index.html) shows a small dismissible "Open in app" bar on every page (dismissal remembered for two weeks): its tap is an `intent://` URL for the `pangea://` scheme, which the app accepts on any path, so it opens the installed app at the current route, including pages App Links leave to the browser, and otherwise falls through to the Play Store natively in Chromium browsers; non-Chromium browsers get a plain Play Store link. The bar may appear on deep paths because the tap carries the route — the payload loss that once restricted it to the bare root is gone.
 
 ### Infrastructure touchpoints
 
 - **Web SPA fallback** — the webapp CloudFront distribution serves `index.html` for any path (a 403/404 → `/index.html` mapping), so a bare `/<code>` (or a `/<uuid>` activity link) loads the app instead of hitting an S3 not-found. This replaces the retired short-code 302; it lives in the `pangeachat/devops` `static-web` module.
-- **AASA & assetlinks.json** — served from `app.pangea.chat/.well-known/`, downloaded during CI/CD. Maps the domain to the app on each platform.
+- **AASA & assetlinks.json** — kept in the repo under `web/.well-known/` and uploaded uncached by every staging and production deploy, so both hosts serve the reviewed copy. Maps the domain to the app on each platform.
 - **Platform config** — [`ios/Runner/Runner.entitlements`](../../ios/Runner/Runner.entitlements), [`android/app/src/main/AndroidManifest.xml`](../../android/app/src/main/AndroidManifest.xml).
 - **Incoming-URI listener** — the listener in [`MatrixState`](../../lib/widgets/matrix.dart) receives inbound URLs via the `app_links` package and routes them into GoRouter.
-- **Custom scheme** — `pangea://` registered on both platforms as a store-install fallback.
+- **Custom scheme** — `pangea://` registered on both platforms as a store-install fallback; on Android it is also what the "Open in app" bar opens.
 

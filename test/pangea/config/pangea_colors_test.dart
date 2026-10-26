@@ -50,7 +50,7 @@ void main() {
     expect(dark.gold, tone(80));
     expect(dark.goldGraphic, tone(80));
     expect(dark.goldContainer, tone(30));
-    expect(dark.goldTrack, tone(50));
+    expect(dark.goldTrack, tone(53));
     expect(dark.onGoldContainer, tone(90));
     for (final colors in [light, dark]) {
       expect(colors.goldFixed, tone(90));
@@ -166,29 +166,79 @@ void main() {
     }
   });
 
-  test('joinable is the same green in both themes and carries white text', () {
-    final joinablePalette = TonalPalette.fromHct(
-      Hct.fromInt(PangeaColors.joinableKey.toARGB32()),
+  test(
+    'activityOpen is the same green in both themes and carries white text',
+    () {
+      final joinablePalette = TonalPalette.fromHct(
+        Hct.fromInt(PangeaColors.activityOpenKey.toARGB32()),
+      );
+      expect(light.activityOpen, dark.activityOpen);
+      expect(light.activityOpen, Color(joinablePalette.get(49)));
+      expect(light.onActivityOpen, Color(joinablePalette.get(100)));
+      expect(
+        contrast(light.onActivityOpen, light.activityOpen),
+        greaterThanOrEqualTo(4.5),
+      );
+      // One tone brighter would drop the ink under the floor.
+      expect(
+        contrast(light.onActivityOpen, Color(joinablePalette.get(50))),
+        lessThan(4.5),
+      );
+      expect(
+        contrast(light.activityOpen, lightScheme.surface),
+        greaterThanOrEqualTo(3.0),
+      );
+      expect(
+        contrast(dark.activityOpen, darkScheme.surface),
+        greaterThanOrEqualTo(3.0),
+      );
+    },
+  );
+
+  test('activityOngoing is the same purple in both themes and carries white '
+      'text', () {
+    final activityPalette = TonalPalette.fromHct(
+      Hct.fromInt(PangeaColors.activityKey.toARGB32()),
     );
-    expect(light.joinable, dark.joinable);
-    expect(light.joinable, Color(joinablePalette.get(49)));
-    expect(light.onJoinable, Color(joinablePalette.get(100)));
+    expect(light.activityOngoing, dark.activityOngoing);
+    expect(light.activityOngoing, Color(activityPalette.get(48)));
+    expect(light.onActivityOngoing, Colors.white);
     expect(
-      contrast(light.onJoinable, light.joinable),
+      contrast(light.onActivityOngoing, light.activityOngoing),
       greaterThanOrEqualTo(4.5),
     );
-    // One tone brighter would drop the ink under the floor.
+    // Two tones brighter would drop the ink under the floor.
     expect(
-      contrast(light.onJoinable, Color(joinablePalette.get(50))),
+      contrast(light.onActivityOngoing, Color(activityPalette.get(50))),
       lessThan(4.5),
     );
     expect(
-      contrast(light.joinable, lightScheme.surface),
+      contrast(light.activityOngoing, lightScheme.surface),
       greaterThanOrEqualTo(3.0),
     );
     expect(
-      contrast(dark.joinable, darkScheme.surface),
+      contrast(dark.activityOngoing, darkScheme.surface),
       greaterThanOrEqualTo(3.0),
+    );
+  });
+
+  test('activityAvailable carries its ink at 4.5:1 and stays quieter than '
+      'ongoing in dark', () {
+    for (final colors in [light, dark]) {
+      expect(
+        contrast(colors.onActivityAvailable, colors.activityAvailable),
+        greaterThanOrEqualTo(4.5),
+      );
+    }
+    // Pale in light, darker than the ongoing purple in dark, so the map's
+    // resting state never outshines a live one.
+    expect(
+      light.activityAvailable.computeLuminance(),
+      greaterThan(light.activityOngoing.computeLuminance()),
+    );
+    expect(
+      dark.activityAvailable.computeLuminance(),
+      lessThan(dark.activityOngoing.computeLuminance()),
     );
   });
 

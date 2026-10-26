@@ -88,12 +88,7 @@ class FakeCalls extends CallService {
       callerPresenceOverride ??
       (callerHoldsMembership ? PeerPresence.live : PeerPresence.gone);
 
-  final _callerStateChanges = StreamController<void>.broadcast();
   final _callerStateUpdates = StreamController<StrippedStateEvent>.broadcast();
-
-  @override
-  Stream<void> callerPresenceChanges(matrix.Room room, String callerId) =>
-      _callerStateChanges.stream;
 
   @override
   Stream<StrippedStateEvent> callerStateUpdates(
@@ -102,8 +97,7 @@ class FakeCalls extends CallService {
   ) => _callerStateUpdates.stream;
 
   /// Whether anything is still waiting on the caller's membership to arrive.
-  bool get watchingCallerState =>
-      _callerStateChanges.hasListener || _callerStateUpdates.hasListener;
+  bool get watchingCallerState => _callerStateUpdates.hasListener;
 
   /// A member state event from the peer's ringing device.
   Event peerMember(String eventId, {required bool holding, DateTime? at}) =>
@@ -135,7 +129,6 @@ class FakeCalls extends CallService {
     for (final event in events) {
       callerPresenceOverride = collapsed;
       _callerStateUpdates.add(event);
-      _callerStateChanges.add(null);
     }
     await pumpEventQueue();
   }
@@ -1026,6 +1019,27 @@ void main() {
       expect(call.talkStartedAt, isNotNull);
       expect(call.talkDuration, greaterThan(Duration.zero));
       expect(media, isNotNull);
+    });
+
+    test('says when it has let go of the media', () async {
+      final (call, calls, media, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      var released = false;
+      unawaited(call.mediaReleased.then((_) => released = true));
+      await pumpEventQueue();
+      expect(released, isFalse, reason: 'the call is still up');
+
+      await call.hangUp();
+      await pumpEventQueue();
+      expect(released, isTrue);
+    });
+
+    test('says so even when releasing the media failed', () async {
+      final (call, calls, media, _) = await build();
+      media.disposeError = StateError('dispose failed');
+      await call.start(roomStub(calls.client), video: false);
+      await call.hangUp();
+      await expectLater(call.mediaReleased, completes);
     });
 
     test('a call nobody answered lasted no time at all', () async {
@@ -4158,14 +4172,15 @@ void main() {
         // and stop-anyway would stop a recorder the latest election wants
         // running. This is the invariant this test owns.
         //
-        // Adapted for two-devices-one-call (doc:261-263): a sibling in the call
-        // now HOLDS this device -- the recorder is muted while the sibling is
-        // present -- so the sequence runs alone -> sibling appears (which both
-        // displaces the recorder AND holds it) -> sibling leaves (which both
-        // reinstates and RESOLVES ownership, making this device the survivor).
-        // Run CONTINUITY across the sibling's presence is deliberately gone (the
-        // hold muted this device meanwhile); the preserved invariant is that the
-        // parked reconcile obeyed the reversal and left the survivor RECORDING.
+        // Adapted for two-devices-one-call (doc "The learner's choice"): a
+        // sibling in the call now HOLDS this device -- the recorder is muted
+        // while the sibling is present -- so the sequence runs alone -> sibling
+        // appears (which both displaces the recorder AND holds it) -> sibling
+        // leaves (which both reinstates and RESOLVES ownership, making this
+        // device the survivor). Run CONTINUITY across the sibling's presence is
+        // deliberately gone (the hold muted this device meanwhile); the
+        // preserved invariant is that the parked reconcile obeyed the reversal
+        // and left the survivor RECORDING.
         final (call, calls, _, capture) = await buildElection();
         calls.roster!.myJoin = (true, joinedAt);
         calls.remotePresent = true;

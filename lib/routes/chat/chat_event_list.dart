@@ -14,7 +14,6 @@ import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/message.dart';
 import 'package:fluffychat/routes/chat/seen_by_row.dart';
 import 'package:fluffychat/routes/chat/typing_indicators.dart';
-import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
@@ -65,8 +64,7 @@ class ChatEventList extends StatelessWidget {
       thisEventsKeyMap[events[i].eventId] = i;
     }
 
-    final hasWallpaper =
-        controller.room.client.applicationAccountConfig.wallpaperUrl != null;
+    final hasWallpaper = controller.showWallpaper;
 
     return SelectionArea(
       // #Pangea
@@ -85,6 +83,7 @@ class ChatEventList extends StatelessWidget {
               final scrollable =
                   controller.scrollController.position.maxScrollExtent > 0;
               controller.scrollableNotifier.value = scrollable;
+              controller.activityController.mediaVisibility.markLayoutChanged();
             } catch (e, s) {
               ErrorHandler.logError(e: e, s: s, data: {});
             }

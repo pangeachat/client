@@ -14,4 +14,5 @@ class UserConstants {
   static const String cefrLevel = 'user_cefr';
   static const String autoIGC = 'auto_igc';
   static const String selfIdentifiedRole = 'self_identified_role';
+  static const String leftCentralCourses = 'left_central_courses';
 }

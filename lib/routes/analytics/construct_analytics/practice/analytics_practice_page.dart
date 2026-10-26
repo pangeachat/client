@@ -1,11 +1,19 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 
+import 'package:record/record.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
+import 'package:fluffychat/features/journey_checklist/journey_moments.dart';
+import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
@@ -19,15 +27,29 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/analyti
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/end_practice_session_dialog.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/example_message_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_match.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_recorder.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_audio_practice_exercise_generator.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_meaning_practice_exercise_generator.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/streaming_stt_session.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/stt_audio_capture.dart';
+import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/star_rain_widget.dart';
 
 class AnalyticsPractice extends StatefulWidget {
   final ConstructTypeEnum type;
+
+  /// Scope the session to this Mission's target vocabulary (#9438); null is
+  /// the learner's usual weak-word session.
+  final String? missionId;
 
   /// The panel's leading close control — leaving is silent and keeps the
   /// session alive in the [PracticeSessionHolder]; only the explicit End
@@ -40,6 +62,7 @@ class AnalyticsPractice extends StatefulWidget {
   const AnalyticsPractice({
     super.key,
     required this.type,
+    this.missionId,
     required this.closeIcon,
     required this.closeTooltip,
     required this.close,
@@ -64,6 +87,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   final AudioPlaybackSpeedController audioPlaybackSpeedController =
       AudioPlaybackSpeedController();
 
+  /// When the read-aloud item on screen appeared; its time is banked off the
+  /// speed bonus when the session moves on.
+  DateTime? _readAloudShownAt;
+
   @override
   void initState() {
     super.initState();
@@ -72,7 +99,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       Matrix.of(context).analyticsDataService,
     );
 
-    _holderState = PracticeSessionHolder.instance.claim(widget.type);
+    _holderState = PracticeSessionHolder.instance.claim(
+      widget.type,
+      missionId: widget.missionId,
+    );
     PracticeSessionHolder.instance.attachPanel();
     PracticeSessionHolder.instance.addListener(_onHolderChanged);
 
@@ -130,11 +160,14 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         exercise.exampleMessage.exampleMessage,
       MorphCategoryPracticeExerciseModel() =>
         exercise.exampleMessageInfo.exampleMessage,
+      ReadAloudPracticeExerciseModel() =>
+        exercise.exampleMessage.exampleMessage,
       _ => await ExampleMessageUtil.getExampleMessage(
         await _analyticsController.getTargetTokenConstruct(
           exercise.practiceTarget,
           _l2!.langCodeShort,
         ),
+        savedOnly: session.session?.offline ?? false,
       ),
     };
 
@@ -144,7 +177,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   bool _autoLaunchNextExercise(MultipleChoicePracticeExerciseModel exercise) =>
-      exercise is! VocabAudioPracticeExerciseModel;
+      exercise is! VocabAudioPracticeExerciseModel &&
+      exercise is! ReadAloudPracticeExerciseModel;
 
   /// Attach to the held session: start it fresh if it hasn't been started, or
   /// pick it up wherever it is — an exercise already on screen renders as-is,
@@ -259,7 +293,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       await _analyticsController.waitForAnalytics(
         Matrix.of(context).client.userID,
       );
-      await session.startSession(widget.type);
+      await session.startSession(widget.type, missionId: widget.missionId);
       if (mounted) setState(() {});
 
       if (session.sessionError != null) {
@@ -283,6 +317,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   Future<void> _completeSession() async {
+    _bankReadAloudTime();
     // Freeze elapsed at the authoritative wall-clock value (the per-second
     // ticker may not have fired since the panel was reopened).
     final startedAt = session.session?.startedAt;
@@ -290,6 +325,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       session.updateElapsedTime(DateTime.now().difference(startedAt).inSeconds);
     }
     session.completeSession();
+    JourneyMoments.practiceCompleted(Matrix.of(context).client, widget.type);
     progress.value = session.progress;
     // Idle stops the timer and, via the notifier, flips the panel to the
     // completion view and clears the cluster badge.
@@ -298,7 +334,15 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     if (mounted) setState(() {});
 
     final bonus = session.bonusUses;
-    await _analyticsController.addSessionAnalytics(bonus, _l2!.langCodeShort);
+    final language = _l2!.langCodeShort;
+    try {
+      await _analyticsController.addSessionAnalytics(bonus, language);
+    } finally {
+      // Measured even when the bonus write fails: the view then shows what
+      // did count rather than waiting on a number that never comes.
+      session.measureEarnedXp(_analyticsController.analyticsService, language);
+      if (mounted) setState(() {});
+    }
 
     if (mounted) {
       StarRainWidget.show(context, StarRainWidget.practiceCompleteKey);
@@ -330,20 +374,37 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _clearExerciseState(loadingExercise: true);
 
     try {
+      final offline = session.session?.offline ?? false;
       final resp = await session.getNextExercise(
         skipExercise,
-        data.prefetchExerciseInfo,
+        (exercise) => data.prefetchExerciseInfo(exercise, offline: offline),
       );
 
       if (resp != null) {
+        var next = resp;
+        // Once the microphone is known to be unavailable, every remaining
+        // read-aloud item is a meaning exercise for the same word.
+        if (next is ReadAloudPracticeExerciseModel &&
+            _holderState.micUnavailable) {
+          final meaning = await _meaningInsteadOf(next);
+          if (meaning == null) {
+            await skipExercise(next.practiceTarget);
+            _clearExerciseState();
+            return _continueSession();
+          }
+          next = meaning;
+        }
         // First exercise on screen = the clock's zero (#8966). Idempotent, so
         // every later exercise passing through here leaves it alone. The bump
         // is what puts the cluster badge up, since it now has a clock to show.
         session.session?.markStarted();
         PracticeSessionHolder.instance.bump();
 
-        _playExerciseAudio(resp);
-        practiceExerciseState.value = AsyncState.loaded(resp);
+        _playExerciseAudio(next);
+        if (next is ReadAloudPracticeExerciseModel) {
+          _readAloudShownAt = DateTime.now();
+        }
+        practiceExerciseState.value = AsyncState.loaded(next);
       } else {
         await _completeSession();
       }
@@ -403,6 +464,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     // Also the audio exercise's explicit Continue tap, which is the only
     // learner action on that screen once the answer is in.
     PracticeSessionHolder.instance.markInteraction();
+    _bankReadAloudTime();
     session.completeExercise();
     progress.value = session.progress;
     await _continueSession();
@@ -439,8 +501,180 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       data: {'exercise': exercise.toJson(), 'feedback': feedback},
     );
 
+    _bankReadAloudTime();
     await skipExercise(exercise.practiceTarget);
     await _continueSession();
+  }
+
+  /// Time a read-aloud item was on screen stays on the displayed clock but
+  /// comes off the speed bonus (practice-exercises.instructions.md, "Scoring").
+  void _bankReadAloudTime() {
+    final shownAt = _readAloudShownAt;
+    if (shownAt == null) return;
+    _readAloudShownAt = null;
+    session.session?.addReadAloudSeconds(
+      DateTime.now().difference(shownAt).inSeconds,
+    );
+  }
+
+  /// Record a read-aloud item's one answer: `corRA` when the target was heard,
+  /// `incRA` when the tries ran out. Marks the item answered either way — the
+  /// miss is the item's final state, not a wrong pick to try past.
+  /// [targetHeard] decides the item; [heard], per reference word of the
+  /// recorded take, says which other words earn a spoken-word use.
+  Future<void> submitReadAloud(
+    ReadAloudPracticeExerciseModel exercise, {
+    required bool targetHeard,
+    required List<bool> heard,
+  }) async {
+    PracticeSessionHolder.instance.markInteraction();
+    if (notifier.exerciseComplete(exercise)) return;
+    final uses = exercise.takeUses(targetHeard: targetHeard, heard: heard);
+    session.submitAnswer(uses);
+    notifier.selectChoice(exercise.heardAnswer);
+    await _analyticsController.addCompletedExerciseAnalytics(
+      uses,
+      AnalyticsPracticeUiController.getChoiceTargetId(
+        exercise.heardAnswer,
+        widget.type,
+      ),
+      _l2!.langCodeShort,
+    );
+  }
+
+  /// The microphone was refused or is absent: this item and the session's
+  /// remaining read-aloud items become meaning exercises for the same words.
+  Future<void> onMicUnavailable(ReadAloudPracticeExerciseModel exercise) async {
+    _holderState.micUnavailable = true;
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
+        SnackBar(content: Text(L10n.of(context).readAloudMicUnavailable)),
+      );
+    }
+    final meaning = await _meaningInsteadOf(exercise);
+    if (!identical(practiceExercise, exercise)) return;
+    if (meaning == null) {
+      await skipReadAloud(exercise);
+      return;
+    }
+    _bankReadAloudTime();
+    notifier.clearExerciseState();
+    _playExerciseAudio(meaning);
+    practiceExerciseState.value = AsyncState.loaded(meaning);
+  }
+
+  /// Leave a read-aloud item no route could transcribe, without recording it.
+  Future<void> skipReadAloud(ReadAloudPracticeExerciseModel exercise) async {
+    PracticeSessionHolder.instance.markInteraction();
+    _bankReadAloudTime();
+    await skipExercise(exercise.practiceTarget);
+    await _continueSession();
+  }
+
+  /// A meaning exercise standing in for [exercise], or null when one cannot
+  /// be built; the caller then skips the item.
+  Future<MultipleChoicePracticeExerciseModel?> _meaningInsteadOf(
+    ReadAloudPracticeExerciseModel exercise,
+  ) async {
+    final model = session.session;
+    if (model == null) return null;
+    try {
+      final response = await VocabMeaningPracticeExerciseGenerator.get(
+        VocabAudioPracticeExerciseGenerator.asMeaningRequest(
+          MessagePracticeExerciseRequest(
+            userL1: model.userL1,
+            userL2: model.userL2,
+            exerciseQualityFeedback: null,
+            target: exercise.practiceTarget,
+          ),
+        ),
+      );
+      final meaning = response.exercise;
+      if (meaning is! MultipleChoicePracticeExerciseModel) return null;
+      await data.prefetchExerciseInfo(meaning, offline: model.offline);
+      return meaning;
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'exercise': exercise.toJson()});
+      return null;
+    }
+  }
+
+  /// The microphone for one read-aloud item: live through the streaming relay
+  /// where the target language is routed for it, else the batch route. On
+  /// both, [sentence] goes along as the expected-text hint, so recognition is
+  /// biased toward what the learner was asked to read.
+  ReadAloudRecorder buildReadAloudRecorder(
+    List<String> reference, {
+    required String sentence,
+  }) {
+    final userController = MatrixState.pangeaController.userController;
+    final hint = _expectedTextHint(sentence);
+    return ReadAloudRecorder(
+      reference: reference,
+      hasMicPermission: () => AudioRecorder().hasPermission(),
+      streamingSessionFactory: buildStreamingSessionFactory(
+        flagEnabled: Environment.liveStreamingSttEnabled,
+        messageLangCodeShort: _l2?.langCodeShort,
+        accessToken: userController.accessToken,
+        wsUrl: readAloudRelayUrl(
+          PApiUrls.speechToTextStream,
+          expectedText: hint,
+        ),
+      ),
+      captureFactory: SttAudioCapture.new,
+      transcribe: (wav) => _transcribeTake(wav, expectedText: hint),
+    );
+  }
+
+  /// The sentence as the hint, or none when it is over the choreographer's
+  /// cap, which would refuse the whole request. An item is at most a
+  /// sentence of eight words, so a hint that long is a generator fault worth
+  /// hearing about once.
+  String? _expectedTextHint(String sentence) {
+    final text = sentence.trim();
+    if (text.isEmpty) return null;
+    if (text.length <= SpeechToTextRequestModel.maxExpectedTextChars) {
+      return text;
+    }
+    ErrorHandler.logErrorOnce(
+      key: 'read_aloud_expected_text_over_cap',
+      e: 'read-aloud sentence over the expected_text cap',
+      s: StackTrace.current,
+      data: {'length': text.length},
+      level: SentryLevel.warning,
+    );
+    return null;
+  }
+
+  /// The words heard in a take through the batch route: empty when the audio
+  /// held none, null when every provider failed and there is nothing to judge.
+  Future<List<String>?> _transcribeTake(
+    Uint8List wav, {
+    required String? expectedText,
+  }) async {
+    final userController = MatrixState.pangeaController.userController;
+    final result = await SpeechToTextRepo.instance.get(
+      buildVoiceSttRequest(
+        audioContent: wav,
+        mimeType: 'audio/wav',
+        userL1:
+            userController.userL1?.langCodeShort ??
+            LanguageKeys.unknownLanguage,
+        userL2: _l2?.langCodeShort ?? LanguageKeys.unknownLanguage,
+        expectedText: expectedText,
+      ),
+    );
+    if (result.isError) return null;
+    final response = result.result!;
+    if (response.results.isEmpty) return null;
+    if (!response.hasUsableTranscript) return const [];
+    if (response.hasUsableTokens) {
+      return [
+        for (final stt in response.transcript.sttTokens)
+          if (isSpokenWord(stt.token.text.content)) stt.token.text.content,
+      ];
+    }
+    return spokenWords(response.transcript.text);
   }
 
   @override

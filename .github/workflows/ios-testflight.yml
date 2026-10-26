@@ -38,6 +38,9 @@ jobs:
   build_ios_testflight:
     runs-on: macos-15
     environment: ${{ inputs.environment }}
+    permissions:
+      id-token: write # OIDC token for AWS Secrets Manager
+      contents: read
     outputs:
       version: ${{ steps.version.outputs.version }}
     env:
@@ -72,6 +75,19 @@ jobs:
         env:
           GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
         run: ./scripts/configure-firebase-messaging.sh
+      # Stadia Maps key for the map tiles (#8603). Native builds carry it in
+      # the bundled .env; web builds never do, since Stadia checks their
+      # domain. The OIDC role's grant is in devops terraform/<env>/iam/github-oidc.
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4
+        with:
+          role-to-assume: ${{ inputs.environment == 'production' && secrets.AWS_ROLE_ARN_PROD || secrets.AWS_ROLE_ARN_STAGING }}
+          aws-region: us-east-1
+      - name: Fetch the Stadia Maps key from AWS Secrets Manager
+        uses: aws-actions/aws-secretsmanager-get-secrets@8493673611c1b9db1ceb7c01340109b83eb5e7d4 # v2
+        with:
+          secret-ids: |
+            STADIA_MAPS_API_KEY, /${{ inputs.environment == 'production' && 'prod' || 'staging' }}/client/stadia-maps-api-key
       - name: Update env files to selected environment
         run: |
           rm -f .env
@@ -80,6 +96,7 @@ jobs:
           # Dark until the choreo backend is enabled: the session fails pre-`ready`
           # and the recorder falls back to batch (today's behavior).
           echo "LIVE_STREAMING_STT_ENABLED=true" >> .env
+          echo "STADIA_MAPS_API_KEY=$STADIA_MAPS_API_KEY" >> .env
       - name: Apply .env patch
         run: git apply ./scripts/enable_mobile_env.patch
       - name: Remove Emoji Font
@@ -94,7 +111,8 @@ jobs:
       # (rive-app/rive-flutter#566). Running it here, from the repo root, works
       # on a cold pub cache and is a no-op on a warm one.
       - name: Set up rive_native
-        run: dart run rive_native:setup --verbose --platform ios
+        # --clean: the cached marker trap integrate.yaml describes.
+        run: dart run rive_native:setup --verbose --clean --platform ios
       - name: Build iOS (unsigned)
         # BUILD_COMMIT_SHA is the only part of the version display that says
         # which code is in the build — fastlane derives the build number from
@@ -128,5 +146,22 @@ jobs:
       version: ${{ needs.build_ios_testflight.outputs.version }}
       headline: "(${{ inputs.environment }}) is on TestFlight"
       release_body: ${{ inputs.new_release_notes }}
+    secrets:
+      aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PROD }}
+
+  notify_failure:
+    needs: build_ios_testflight
+    if: failure()
+    permissions:
+      id-token: write
+      contents: read
+    # Same room as the success notice, so a failed run is noticed where the
+    # build was expected to show up instead of only in the Actions tab.
+    uses: ./.github/workflows/notify-matrix-build.yml
+    with:
+      service_name: "Pangea Chat iOS"
+      version: ${{ needs.build_ios_testflight.outputs.version || github.ref_name }}
+      headline: "(${{ inputs.environment }}) TestFlight build FAILED: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      failed: true
     secrets:
       aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PROD }}

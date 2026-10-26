@@ -345,21 +345,13 @@ class WholeCallTranscriber {
           callKey: callKey,
           expectedSenders: participants.toList(),
           selfId: self,
-          resolveProvenance: (candidates) async {
-            final merged = await fetchCallAudioMerged(
-              fetch: relations,
-              roomId: room.id,
-              callKey: callKey,
-            );
-            return resolveTranscriptProvenance(
-              candidates: candidates,
-              mergedRecordings: merged,
-              participants: participants,
-              callKey: callKey,
-              roomId: room.id,
-              fetch: audioFetch,
-            );
-          },
+          resolveProvenance: transcriptProvenanceResolver(
+            fetch: relations,
+            audioFetch: audioFetch,
+            roomId: room.id,
+            callKey: callKey,
+            participants: participants,
+          ),
         );
 
     Future<List<TranscriptSegment>> transcribeBytes(
@@ -619,7 +611,9 @@ class WholeCallTranscriber {
 
   /// Whether [speaker]'s recording from [device] already has a half in the
   /// assembled transcript. A half that resolved to words or an empty-but-
-  /// present authentic half both count; only an absent one is produced. Keyed
+  /// present authentic half both count; an absent one is produced, and so is
+  /// one emptied only because its writer had no subscription (#8792) -- that
+  /// half says nobody paid to transcribe it, not what was said. Keyed
   /// by speaker AND device (client#9173): a moved call leaves one speaker a
   /// recording per device. A half that names no devices -- an older writer --
   /// speaks for the speaker's whole side, as it always did.
@@ -628,6 +622,7 @@ class WholeCallTranscriber {
         (half) =>
             half.senderId == speaker &&
             half.state != HalfState.absent &&
+            !half.emptiedOnlyByNoSubscription &&
             (device == null ||
                 half.deviceIds.isEmpty ||
                 half.deviceIds.contains(device)),

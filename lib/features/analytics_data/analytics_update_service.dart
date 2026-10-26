@@ -9,12 +9,15 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics/constructs_upload_result.dart';
 import 'package:fluffychat/features/analytics/listening_exposure_buffer.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_database.dart';
 import 'package:fluffychat/features/analytics_data/analytics_settings_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
+import 'package:fluffychat/features/analytics_data/server_event_arrivals.dart';
+import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -27,6 +30,11 @@ import 'package:fluffychat/widgets/matrix.dart';
 class AnalyticsUpdateService with WidgetsBindingObserver {
   static const int _maxMessagesCached = 10;
 
+  /// How long a flush waits for the server's copy of what it sent before
+  /// clearing the sent batches anyway. A sync that carries new events returns
+  /// at once, so this only runs out on a stalled connection.
+  static const Duration _serverCopyTimeout = Duration(seconds: 30);
+
   final AnalyticsDataService dataService;
 
   /// Test-only injected tracker; when set, [dispose] flushes it directly instead
@@ -37,8 +45,11 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     this.dataService, {
     DosageEngagementTracker? tracker,
     DosageAudioBuffer? audioBuffer,
+    ValueListenable<ConnectionStatus>? connectionStatus,
   }) : _injectedTracker = tracker,
-       _injectedAudioBuffer = audioBuffer {
+       _injectedAudioBuffer = audioBuffer,
+       _connectionStatus =
+           connectionStatus ?? ConnectionStatusController.instance.status {
     // Pin the account mxid AT CONSTRUCTION when the client is already logged in.
     // The authoritative pin is [pinAccountId] called from
     // [AnalyticsDataService._initDatabase] the moment `loggedIn` is observed
@@ -92,6 +103,11 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   Completer<void>? _updateCompleter;
   Timer? _periodicTimer;
 
+  /// What the connection banner says. Uploads pause while it says the
+  /// connection is lost, and run once when it returns.
+  final ValueListenable<ConnectionStatus> _connectionStatus;
+  late ConnectionStatus _lastConnectionStatus;
+
   void start() {
     // Backstop pin (the authoritative pin is at the loggedIn observation in
     // _initDatabase): covers any path where that didn't run before start.
@@ -102,6 +118,10 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     WidgetsBinding.instance
       ..removeObserver(this)
       ..addObserver(this);
+    _lastConnectionStatus = _connectionStatus.value;
+    _connectionStatus
+      ..removeListener(_onConnectionStatusChanged)
+      ..addListener(_onConnectionStatusChanged);
     // Open the audio coverage period HERE, not at the first playback: a build
     // that instrumented listening and heard none has to say it was watching, or
     // its zero cannot be told apart from an unknown.
@@ -129,6 +149,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
   Future<void> dispose() async {
     WidgetsBinding.instance.removeObserver(this);
+    _connectionStatus.removeListener(_onConnectionStatusChanged);
     _periodicTimer?.cancel();
     // Await the final flush so the last open engagement span is actually sent —
     // callers dispose BEFORE invalidating the bearer, so the POST uses a valid
@@ -177,6 +198,24 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
       final lang = _l2OrNull;
       if (lang != null) unawaited(_drainListeningExposure(lang));
     }
+  }
+
+  /// Sends what built up while the connection was lost, as soon as it returns.
+  void _onConnectionStatusChanged() {
+    final wasLost = _lastConnectionStatus.isLost;
+    _lastConnectionStatus = _connectionStatus.value;
+    if (!wasLost || _lastConnectionStatus.isLost) return;
+    final lang = _l2OrNull;
+    if (lang == null || !dataService.isLogged) return;
+    unawaited(_flushAfterInFlightUpload(lang));
+  }
+
+  /// An upload already in flight may have started before the connection was
+  /// lost and still fail, so the reconnect flush runs after it rather than
+  /// joining it.
+  Future<void> _flushAfterInFlightUpload(LanguageModel lang) async {
+    await _updateCompleter?.future;
+    await sendLocalAnalyticsToAnalyticsRoom(l2Override: lang);
   }
 
   LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
@@ -299,6 +338,10 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     // exposure in a buffer that is about to be dropped.
     await _drainListeningExposure(lang);
 
+    // A send now would fail after the SDK's full send timeout. The uses stay
+    // on the device, and the reconnect flush sends them.
+    if (_connectionStatus.value.isLost) return;
+
     final inProgress =
         _updateCompleter != null && !_updateCompleter!.isCompleted;
 
@@ -309,12 +352,34 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
     _updateCompleter = Completer<void>();
     try {
-      final sentBatchKeys = await _updateAnalytics(lang);
-      if (sentBatchKeys.isNotEmpty) {
-        await dataService.clearLocalAnalytics(
-          lang.langCodeShort,
-          sentBatchKeys,
-        );
+      // A language switch made while offline leaves the old language's
+      // batches here, and nothing else sends them unless the learner switches
+      // back. Only the current language may create a room: other languages
+      // include uses filed under a language the learner never studied, such
+      // as speech from a call held in their L1.
+      final languages = [
+        lang,
+        for (final code in await dataService.getLocalUseLanguages())
+          if (code != lang.langCodeShort)
+            LanguageModel(langCode: code, displayName: code),
+      ];
+      for (final language in languages) {
+        try {
+          await _updateAnalytics(language, createRoom: language == lang);
+        } on AnalyticsDatabaseClosedException {
+          rethrow;
+        } catch (err, s) {
+          // One language's failure must not hold back the others; its batches
+          // stay on the device for the next flush.
+          ErrorHandler.logError(
+            e: err,
+            s: s,
+            data: {
+              "l2Override": l2Override,
+              "language": language.langCodeShort,
+            },
+          );
+        }
       }
     } on AnalyticsDatabaseClosedException catch (err, s) {
       // The store is gone and this instance cannot revive it, so every later
@@ -342,30 +407,103 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     }
   }
 
-  /// Uploads the pending local batches and returns the storage keys of the
-  /// batches that were sent — the only ones the caller may clear. Uses
-  /// recorded while the upload was in flight land in new batches with new
-  /// keys and stay pending for the next flush (#7720). Empty when there was
-  /// nothing to send or no room to send to, so nothing gets cleared.
-  Future<List<String>> _updateAnalytics(LanguageModel language) async {
-    final batches = await dataService.getLocalUseBatches(
+  /// Uploads the pending local batches and clears what the server accepted.
+  /// Uses recorded while the upload was in flight land in new batches with new
+  /// keys and stay pending for the next flush (#7720), and so does whatever
+  /// the server did not accept (#9511). Without [createRoom], a language that
+  /// has no analytics room keeps its batches.
+  Future<void> _updateAnalytics(
+    LanguageModel language, {
+    required bool createRoom,
+  }) async {
+    final batches = (await dataService.getLocalUseBatches(
       language.langCodeShort,
-    );
-    if (batches.isEmpty) return [];
-    final analyticsRoom = await _getAnalyticsRoom(l2Override: language);
+    )).entries.toList();
+    if (batches.isEmpty) return;
+    final analyticsRoom = createRoom
+        ? await _getAnalyticsRoom(l2Override: language)
+        : dataService.getAnalyticsRoomLocal(language);
     if (analyticsRoom == null) {
       debugPrint(
         "No analytics room found for L2 Override: ${language.langCodeShort}",
       );
-      return [];
+      return;
     }
 
-    // and send cached analytics data to the room
-    final localConstructs = batches.values.expand((uses) => uses).toList();
-    final future = dataService.waitForSync(analyticsRoom.id);
-    await analyticsRoom.sendConstructsEvent(localConstructs);
-    await future;
-    return batches.keys.toList();
+    final arrivals = ServerEventArrivals(analyticsRoom);
+    try {
+      final upload = await analyticsRoom.sendConstructsEvent(
+        batches.map((batch) => batch.value).toList(),
+      );
+      if (!upload.allAccepted) _reportRefusedUpload(upload);
+      await _waitForServerCopy(arrivals, upload);
+      await _clearAcceptedUses(language, batches, upload);
+    } finally {
+      await arrivals.cancel();
+    }
+  }
+
+  /// Clears the batches the server accepted, and cuts a batch it accepted
+  /// only the first part of down to the uses it did not, so that part is not
+  /// sent twice.
+  Future<void> _clearAcceptedUses(
+    LanguageModel language,
+    List<MapEntry<String, List<OneConstructUse>>> batches,
+    ConstructsUploadResult upload,
+  ) async {
+    final acceptedKeys = batches
+        .take(upload.acceptedBatchCount)
+        .map((batch) => batch.key)
+        .toList();
+    final trimmedBatches = <String, List<OneConstructUse>>{};
+    if (upload.partlyAcceptedUseCount > 0) {
+      final splitBatch = batches[upload.acceptedBatchCount];
+      trimmedBatches[splitBatch.key] = splitBatch.value.sublist(
+        upload.partlyAcceptedUseCount,
+      );
+    }
+    if (acceptedKeys.isEmpty && trimmedBatches.isEmpty) return;
+    await dataService.clearLocalAnalytics(
+      language.langCodeShort,
+      acceptedKeys,
+      trimmedBatches: trimmedBatches,
+    );
+  }
+
+  void _reportRefusedUpload(ConstructsUploadResult upload) {
+    // Expected when the connection dropped during the upload; the banner has
+    // usually caught up by the time the SDK gives up on the send.
+    if (_connectionStatus.value.isLost) return;
+    ErrorHandler.logErrorOnce(
+      key: "analytics-upload-refused",
+      e: "The server did not accept an analytics upload",
+      data: {
+        "batchCount": upload.batchCount,
+        "acceptedBatchCount": upload.acceptedBatchCount,
+      },
+      level: SentryLevel.warning,
+    );
+  }
+
+  /// Waits for the server's copy of the last accepted event to reach the
+  /// device. Clearing the batches before it arrives leaves their uses out of
+  /// the XP total until it does.
+  Future<void> _waitForServerCopy(
+    ServerEventArrivals arrivals,
+    ConstructsUploadResult upload,
+  ) async {
+    final lastEventId = upload.acceptedEventIds.lastOrNull;
+    if (lastEventId == null) return;
+    final arrived = await arrivals.waitFor(lastEventId, _serverCopyTimeout);
+    if (arrived) return;
+    // The server has the uses, so clearing is still right: holding the batches
+    // would send them a second time.
+    ErrorHandler.logErrorOnce(
+      key: "analytics-upload-server-copy-late",
+      e: "The server's copy of an analytics upload did not arrive in time",
+      data: {"timeoutSeconds": _serverCopyTimeout.inSeconds},
+      level: SentryLevel.warning,
+    );
   }
 
   Future<void> sendActivityAnalytics(String roomId, LanguageModel lang) async {

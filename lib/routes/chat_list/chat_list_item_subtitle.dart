@@ -11,7 +11,6 @@ import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_tile_body.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
-import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -124,13 +123,10 @@ class ChatListItemSubtitle extends StatelessWidget {
           ),
         );
       } else if (room.isOngoingActiveSession) {
-        // Both star numbers come from room state, the same pair the map reads.
-        // An unhydrated plan leaves no role and so a total of 0, which draws
-        // nothing rather than an empty band.
         return ActivityTileBody(
           room: room,
           // One line, like the card's: this tile already carries the most of
-          // any state, and a second wrapped line pushed the stars out of reach.
+          // any state.
           preview: _LastEventPreview(
             room: room,
             style: style,
@@ -139,9 +135,6 @@ class ChatListItemSubtitle extends StatelessWidget {
             withSenderName: false,
             maxLines: 1,
           ),
-          starsTotal: room.ownRole?.allGoals.length ?? 0,
-          starsEarned: room.ownCompletedGoals.length,
-          reserveStarSpace: false,
         );
       }
     }

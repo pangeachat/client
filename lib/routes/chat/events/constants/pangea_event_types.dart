@@ -54,6 +54,7 @@ class PangeaEventTypes {
   static const report = 'm.report';
   static const textToSpeechRule = "p.rule.text_to_speech";
   static const analyticsInviteRule = "p.rule.analytics_invite";
+  static const missedCallRule = "p.rule.missed_call";
   static const analyticsInviteContent = "p.analytics_request";
 
   /// A practice exercise that is related to a message
@@ -67,12 +68,20 @@ class PangeaEventTypes {
   // deprecated, no longer used in client, used to filter out of permissions list
   static const courseUser = "p.course_user";
   static const teacherMode = "pangea.teacher_mode";
+
+  /// A course's own copy of its Can-Do list, notes and due dates
+  /// (content-studio.instructions.md). Separate from [teacherMode] so an app
+  /// that rewrites teacher settings can never wipe it.
+  static const courseMissions = "pangea.course_missions";
   static const courseChatList = "pangea.course_chat_list";
   static const courseSettings = "pangea.course_settings";
 
   static const analyticsSettings = "pangea.analytics_settings";
 
   static const regenerationRequest = "pangea.regeneration_request";
+
+  /// A notice the engagement runner sends into a learner's bot DM.
+  static const botNotice = "p.room.notice";
   static const botNotificationOpened = "p.room.notice.opened";
 
   static const knockedRooms = 'org.pangea.knocked_rooms';
@@ -91,4 +100,10 @@ class PangeaEventTypes {
   static const firstBotDMMessage = "pangea_first_bot_dm_message";
 
   static const onboardingSettings = "org.pangea.onboarding_settings";
+
+  /// The learner's journey steps and app-ask history, read by the engagement
+  /// system (engagement analytics.instructions.md, Journey-checklist
+  /// state). Its own event so older clients, which rewrite the profile event
+  /// whole, never erase it.
+  static const journeyChecklist = 'pangea.journey_checklist';
 }

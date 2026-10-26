@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
+import 'package:fluffychat/routes/courses/course_objectives/mission_pacing.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_circle.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// One Mission of the full course plan: its can-do statement and star count
@@ -15,11 +17,10 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 class ObjectiveSection extends StatelessWidget {
   final QuestObjectiveGroup group;
   final void Function(QuestActivity) onTap;
-  final int Function(String) userStarsByActivity;
-  final bool Function(String activityId)? hasCompletedActivity;
+  final int Function(String) xpByActivity;
 
-  /// The activity's live map-pin state (colour fill + banner) and "Open (N)"
-  /// count, resolved by the parent which holds the course room. See
+  /// The activity's live map-pin state (frame + pill) and its open sessions,
+  /// resolved by the parent which holds the course room. See
   /// [CourseObjectivesList].
   final ({
     ActivityPinState? state,
@@ -56,9 +57,20 @@ class ObjectiveSection extends StatelessWidget {
   /// back expanded (#9248).
   final VoidCallback? onToggleCollapsed;
 
-  /// Accent the header as the learner's "Up next" Mission — the shared
-  /// resolver's anchor (#8357).
+  /// Accent the header as the learner's current Mission — the shared
+  /// resolver's anchor (#8357), labelled "Current mission" (#9559).
   final bool isUpNext;
+
+  /// The Mission the teacher's due dates say the class is on now — the same
+  /// "Class location" the circles mark (#9559). It can be the current
+  /// Mission too; then the two badges sit side by side.
+  final bool isClassLocation;
+
+  /// The Mission's 1-based place in the plan, for its circle's number.
+  final int index;
+
+  /// How many Missions the plan has, for the circle's "Mission N of M".
+  final int missionCount;
 
   /// Passed through to [ActivityCarousel.interactive].
   final bool interactive;
@@ -67,8 +79,7 @@ class ObjectiveSection extends StatelessWidget {
     super.key,
     required this.group,
     required this.onTap,
-    required this.userStarsByActivity,
-    required this.hasCompletedActivity,
+    required this.xpByActivity,
     required this.liveStateByActivity,
     required this.availableParticipants,
     required this.progress,
@@ -76,6 +87,9 @@ class ObjectiveSection extends StatelessWidget {
     this.collapsed = false,
     this.onToggleCollapsed,
     this.isUpNext = false,
+    this.isClassLocation = false,
+    required this.index,
+    required this.missionCount,
     this.spacing = 16.0,
     this.cardWidth,
     this.cardHeight,
@@ -88,11 +102,12 @@ class ObjectiveSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    // Three header states (#8874): the Up-next Mission wears an "Up next"
-    // label and the primary accent; a satisfied Mission trades its star for a
-    // check and mutes its text; the rest stay plain. The first two are mutually
-    // exclusive: the anchor is unsatisfied by definition, and a course whose
-    // every Mission is satisfied has no anchor at all (#8997).
+    // Three header states (#8874): the current Mission wears a "Current
+    // mission" label and the primary accent; a satisfied Mission's circle
+    // turns to its gold star and its text mutes; the rest stay plain. The
+    // first two are mutually exclusive: the anchor is unsatisfied by
+    // definition, and a course whose every Mission is satisfied has no anchor
+    // at all (#8997).
     final satisfied = progress?.satisfied ?? false;
     final headerColor = isUpNext
         ? theme.colorScheme.primary
@@ -100,60 +115,91 @@ class ObjectiveSection extends StatelessWidget {
         ? theme.colorScheme.onSurfaceVariant
         : null;
 
-    final statement = Text(
-      group.objective.objective,
+    // The Mission's circle from the course page's row (#9559): its number,
+    // or its star once complete, inside the gold ring of its XP — in place
+    // of the old star and XP count. The XP is in its accessible name.
+    final circle = Semantics(
+      label: progress == null
+          ? null
+          : L10n.of(
+              context,
+            ).xpTowardObjective(progress!.xp, progress!.threshold),
+      child: ExcludeSemantics(
+        child: ObjectiveCircle(
+          item: ObjectiveCircleData(
+            index: index,
+            statement: group.objective.objective,
+            state: satisfied
+                ? ObjectiveCircleState.complete
+                : isUpNext
+                ? ObjectiveCircleState.current
+                : ObjectiveCircleState.later,
+            progress: progress?.fraction ?? 0.0,
+            xp: progress,
+          ),
+          count: missionCount,
+          showSelectedLabel: false,
+          showClassStrip: false,
+          showPointer: false,
+          onTap: null,
+        ),
+      ),
+    );
+    // The can-do, then its labels after its text so they never push it
+    // over: the current Mission, and where the class is by the teacher's
+    // due dates — the emphasis in words, so it is never colour alone.
+    final statement = Text.rich(
+      TextSpan(
+        text: group.objective.objective,
+        children: [
+          if (isUpNext)
+            WidgetSpan(
+              alignment: PlaceholderAlignment.middle,
+              child: _SectionBadge(
+                label: L10n.of(context).currentMission,
+                fill: theme.colorScheme.primary,
+                ink: theme.colorScheme.onPrimary,
+              ),
+            ),
+          if (isClassLocation)
+            WidgetSpan(
+              alignment: PlaceholderAlignment.middle,
+              child: _SectionBadge(
+                label: L10n.of(context).classLocation,
+                fill: theme.colorScheme.outlineVariant,
+                ink: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+        ],
+      ),
       style: theme.textTheme.bodyMedium?.copyWith(
         color: headerColor,
         fontWeight: isUpNext ? FontWeight.w500 : null,
       ),
     );
-    final starFraction = progress == null
+    // The course's own soft due date (content-studio) as a chip under the
+    // title, so it reads at a glance down the plan and stays when the Mission
+    // is folded. The date stays after it passes; nothing is blocked or marked.
+    final pacing = group.pacing;
+    final dueAt = pacing?.dueAt;
+    final dueChip = dueAt == null
         ? null
-        : Semantics(
-            label: L10n.of(
-              context,
-            ).starsEarnedOfTotal(progress!.stars, progress!.threshold),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  satisfied ? Icons.check_circle : Icons.star,
-                  size: 18.0,
-                  color: satisfied
-                      ? Theme.of(context).pangea.success
-                      : Theme.of(context).pangea.goldGraphic,
-                ),
-                const SizedBox(width: 4.0),
-                ExcludeSemantics(
-                  child: Text(
-                    // Raw stars over the satisfaction threshold — surplus
-                    // shows (12/7); only the quest header caps.
-                    '${progress!.stars}/${progress!.threshold}',
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: headerColor,
-                    ),
-                  ),
-                ),
-              ],
+        : MissionDueChip(dueAt: dueAt, timeZone: pacing?.timeZone);
+    // The teacher's note under the date; folded away with the activities.
+    final note = pacing?.note;
+    final noteLine = collapsed || note == null || note.isEmpty
+        ? null
+        : MissionNoteLine(note: note);
+    final pacingLines = dueChip == null && noteLine == null
+        ? null
+        : Padding(
+            padding: const EdgeInsets.only(top: 6.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 4.0,
+              children: [?dueChip, ?noteLine],
             ),
           );
-    // The emphasis in words, so it is never colour alone.
-    final upNextLabel = isUpNext
-        ? Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.primary,
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Text(
-              L10n.of(context).upNext,
-              style: theme.textTheme.labelSmall?.copyWith(
-                color: theme.colorScheme.onPrimary,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          )
-        : null;
     final collapseChevron = _collapsible
         ? AnimatedRotation(
             turns: collapsed ? -0.25 : 0,
@@ -162,12 +208,13 @@ class ObjectiveSection extends StatelessWidget {
           )
         : null;
 
-    final activities = group.activities;
-    activities.sort(
-      (a, b) => a.plan.req.numberOfParticipants.compareTo(
-        b.plan.req.numberOfParticipants,
-      ),
-    );
+    // Sorted as a copy: the group's list can be the shared outline cache's.
+    final activities = [...group.activities]
+      ..sort(
+        (a, b) => a.plan.req.numberOfParticipants.compareTo(
+          b.plan.req.numberOfParticipants,
+        ),
+      );
 
     return Semantics(
       label: L10n.of(context).objective,
@@ -179,10 +226,9 @@ class ObjectiveSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Objective header, left to right: the Mission's earned/threshold
-          // stars when the shared rollup is in, the Up-next label when this is
-          // the anchor, the can-do statement, then the collapse chevron (full
-          // plan only).
+          // Objective header, left to right: the Mission's circle, the can-do
+          // statement with its labels after it, then the collapse chevron
+          // (full plan only).
           Semantics(
             // Without an explicit button container the toggle flattens into
             // the section's group semantics and is unreachable on web, where
@@ -193,64 +239,31 @@ class ObjectiveSection extends StatelessWidget {
             child: InkWell(
               onTap: onToggleCollapsed,
               borderRadius: BorderRadius.circular(8.0),
-              // The star fraction leads and the collapse chevron trails. In
-              // column mode the row has room for the statement between them;
-              // on narrow screens the statement drops to its own full-width
-              // row so a wrapped statement never shares lines with the icons.
-              child: FluffyThemes.isColumnMode(context)
-                  ? Row(
-                      children: [
-                        if (starFraction != null) ...[
-                          starFraction,
-                          const SizedBox(width: 8.0),
-                        ],
-                        if (upNextLabel != null) ...[
-                          upNextLabel,
-                          const SizedBox(width: 8.0),
-                        ],
-                        Expanded(child: statement),
-                        if (collapseChevron != null) ...[
-                          const SizedBox(width: 4.0),
-                          collapseChevron,
-                        ],
-                      ],
-                    )
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (collapseChevron != null ||
-                            starFraction != null ||
-                            upNextLabel != null)
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 4.0),
-                            child: Row(
-                              children: [
-                                ?starFraction,
-                                if (upNextLabel != null) ...[
-                                  if (starFraction != null)
-                                    const SizedBox(width: 8.0),
-                                  upNextLabel,
-                                ],
-                                const Spacer(),
-                                ?collapseChevron,
-                              ],
-                            ),
-                          ),
-                        statement,
-                      ],
-                    ),
+              // The circle leads, the statement (with its labels) fills the
+              // middle and wraps there, and the collapse chevron trails.
+              child: Row(
+                children: [
+                  circle,
+                  const SizedBox(width: 10.0),
+                  Expanded(child: statement),
+                  if (collapseChevron != null) ...[
+                    const SizedBox(width: 4.0),
+                    collapseChevron,
+                  ],
+                ],
+              ),
             ),
           ),
-          // No per-Mission progress bar — only the overall course has a bar (in
-          // the header). A Mission shows just its star count above (#7597).
+          ?pacingLines,
+          // No per-Mission progress bar: the circle's ring is the Mission's
+          // progress (#9559).
           if (!collapsed) const SizedBox(height: 12.0),
           // The activities that satisfy this objective.
           if (!collapsed)
             ActivityCarousel(
               activities: activities,
               onTap: onTap,
-              userStarsByActivity: userStarsByActivity,
-              hasCompletedActivity: hasCompletedActivity,
+              xpByActivity: xpByActivity,
               liveStateByActivity: liveStateByActivity,
               availableParticipants: availableParticipants,
               pingedActivityId: pingedActivityId,
@@ -263,4 +276,34 @@ class ObjectiveSection extends StatelessWidget {
       ),
     );
   }
+}
+
+/// One of a Mission header's labels in the full plan: "Current mission" or
+/// "Class location" (#9559).
+class _SectionBadge extends StatelessWidget {
+  final String label;
+  final Color fill;
+  final Color ink;
+
+  const _SectionBadge({
+    required this.label,
+    required this.fill,
+    required this.ink,
+  });
+
+  @override
+  Widget build(BuildContext context) => Container(
+    margin: const EdgeInsetsDirectional.only(start: 6.0),
+    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
+    decoration: BoxDecoration(
+      color: fill,
+      borderRadius: BorderRadius.circular(8.0),
+    ),
+    child: Text(
+      label,
+      style: Theme.of(
+        context,
+      ).textTheme.labelSmall?.copyWith(color: ink, fontWeight: FontWeight.w600),
+    ),
+  );
 }

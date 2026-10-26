@@ -10,6 +10,7 @@ import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
+import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
@@ -91,15 +92,73 @@ class QuestActivity {
   const QuestActivity({required this.activityId, required this.plan});
 }
 
+/// A course's own note and soft due date for one Mission, from its copy
+/// (`pangea.course_missions`, content-studio.instructions.md). [timeZone] is
+/// the course's IANA zone the due date is shown in; null shows it in the
+/// viewer's own zone. A due date never blocks, hides or locks anything.
+class MissionPacing {
+  final String? note;
+  final DateTime? dueAt;
+  final String? timeZone;
+  const MissionPacing({this.note, this.dueAt, this.timeZone});
+
+  bool get isEmpty => note == null && dueAt == null;
+}
+
 /// A Learning Objective (Mission) with the activities that satisfy it, in
 /// quest order. A learner advances by completing any activity in the bucket.
 class QuestObjectiveGroup {
   final LearningObjective objective;
   final List<QuestActivity> activities;
+
+  /// The course's note and due date for this Mission; null when the course
+  /// has no copy or set neither.
+  final MissionPacing? pacing;
+
+  /// What the course credits to this Mission beyond [activities]: family
+  /// copies and hidden activities. [CourseCredit.none] for the shared quest.
+  /// Mission XP readers sum through it (activity_family.dart).
+  final CourseCredit credit;
+
+  /// The Mission's hidden activities the listing still returns. Not shown, but
+  /// the words they taught still count toward practice XP ([creditedLemmas]),
+  /// so hiding or swapping an activity never lowers a Mission's XP.
+  final List<QuestActivity> hiddenActivities;
   const QuestObjectiveGroup({
     required this.objective,
     required this.activities,
+    this.pacing,
+    this.credit = CourseCredit.none,
+    this.hiddenActivities = const [],
   });
+
+  /// The Mission's target vocabulary: every suggested word across its
+  /// activities, once per lemma ([lemmaKey]). What its Practice drills.
+  List<Vocab> get vocab {
+    final byLemma = <String, Vocab>{};
+    for (final activity in activities) {
+      for (final word in activity.plan.vocab) {
+        byLemma.putIfAbsent(lemmaKey(word.lemma), () => word);
+      }
+    }
+    return byLemma.values.toList();
+  }
+
+  /// The Mission's word list as [lemmaKey]s — what practice outside a
+  /// session credits it by.
+  Set<String> get lemmas => {for (final word in vocab) lemmaKey(word.lemma)};
+
+  /// [lemmas] plus the words of the hidden activities: what practice outside
+  /// a session credits this Mission by.
+  Set<String> get creditedLemmas => {
+    ...lemmas,
+    for (final activity in hiddenActivities)
+      for (final word in activity.plan.vocab) lemmaKey(word.lemma),
+  };
+
+  /// The one normal form a lemma is matched in across plans, practice and
+  /// the learner's uses.
+  static String lemmaKey(String lemma) => lemma.toLowerCase();
 }
 
 /// A fully-resolved quest for the outline UI: the quest plus its objective
@@ -107,7 +166,42 @@ class QuestObjectiveGroup {
 class QuestOutline {
   final QuestPlan quest;
   final List<QuestObjectiveGroup> groups;
-  const QuestOutline({required this.quest, required this.groups});
+
+  /// Groups for Can-Dos the listing returned beyond the quest's own sequence
+  /// (a Can-Do a teacher added to one course). Held apart from [groups] so
+  /// every reader of the shared quest is unchanged; only a course copy that
+  /// lists such a Can-Do ([forRules]) shows it.
+  final List<QuestObjectiveGroup> addedGroups;
+
+  /// Each listed activity's family (`family_ids`: the root plus every copy,
+  /// any course). Absent for an activity with no copies.
+  final Map<String, List<String>> familyIdsByActivity;
+
+  /// What the course this outline was built for credits; [CourseCredit.none]
+  /// for the shared quest and for a course without a copy.
+  final CourseCredit credit;
+
+  const QuestOutline({
+    required this.quest,
+    required this.groups,
+    this.addedGroups = const [],
+    this.familyIdsByActivity = const {},
+    this.credit = CourseCredit.none,
+  });
+
+  /// This outline with [groups], [quest] and [credit] replaced and everything
+  /// else carried over — so a transform never silently drops listing data.
+  QuestOutline withCourse({
+    QuestPlan? quest,
+    List<QuestObjectiveGroup>? groups,
+    CourseCredit? credit,
+  }) => QuestOutline(
+    quest: quest ?? this.quest,
+    groups: groups ?? this.groups,
+    addedGroups: addedGroups,
+    familyIdsByActivity: familyIdsByActivity,
+    credit: credit ?? this.credit,
+  );
 
   /// A copy with each pinned Mission's activities filtered to its pinned set —
   /// per-course activity pinning (org quests doc; client#7748). A PURE COPY:
@@ -121,8 +215,7 @@ class QuestOutline {
   /// that comes up empty (all pins stale) falls back to unrestricted.
   QuestOutline restrictedTo(Map<String, List<String>>? pinnedByObjective) {
     if (pinnedByObjective == null || pinnedByObjective.isEmpty) return this;
-    return QuestOutline(
-      quest: quest,
+    return withCourse(
       groups: [
         for (final group in groups)
           _restrictGroup(group, pinnedByObjective[group.objective.id]),
@@ -142,16 +235,19 @@ class QuestOutline {
       activities: group.activities
           .where((a) => allowed.contains(a.activityId))
           .toList(),
+      pacing: group.pacing,
+      credit: group.credit,
+      hiddenActivities: group.hiddenActivities,
     );
   }
 
   /// Project this outline into the pure [CourseLoOutline] the progression gate
   /// consumes: the quest's ordered objective ids, and per objective the set of
-  /// activity ids that satisfy it. [starsToUnlock] carries the course's teacher
+  /// activity ids that satisfy it. [xpToComplete] carries the course's teacher
   /// override (defaults to the standard threshold). The single home for this
   /// mapping — the joined-course cache and the activity-session lock both use it.
   CourseLoOutline toCourseLoOutline({
-    int starsToUnlock = kDefaultStarsToUnlockObjective,
+    int xpToComplete = kDefaultXpToCompleteObjective,
   }) => CourseLoOutline(
     // The quest id serves as the scoping key here — right for scoped/preview
     // outlines that have no room. The joined-course cache re-keys courseId to
@@ -165,24 +261,27 @@ class QuestOutline {
       for (final group in groups)
         group.objective.id: group.activities.map((a) => a.activityId).toSet(),
     },
-    starsToUnlock: starsToUnlock,
-    earnableByActivity: {
-      for (final group in groups)
-        for (final a in group.activities) a.activityId: a.plan.earnableStars,
+    lemmasByLo: {
+      for (final group in groups) group.objective.id: group.creditedLemmas,
     },
+    xpToComplete: xpToComplete,
+    credit: credit,
   );
 }
 
 /// v3 read layer for quests / learning-objectives / activities-v2.
 ///
-/// Reads CMS directly (Matrix Bearer auth), canonical only — localization is
-/// choreo's concern, consumed later when these reads swap to choreo endpoints
-/// (this repo is the swap point; callers don't change).
+/// The quest row is read from the CMS directly (Matrix Bearer auth): it is
+/// per-L1 content, so a direct read is already in its own language. Mission
+/// text and activity cards come from choreo's course outline read in the
+/// resolved display language — localized text is a join, and a direct
+/// `learning-objectives` read could only ever return canonical English, which
+/// is what the course page showed every learner until #8577.
 ///
 /// Deliberately NOT modeled on the v1 course-plan fan-out (plan → localized
 /// courses → topics → locations → activities, five sequential round-trips):
-///  - an outline is **three flat reads** — the quest, then the LO-text batch
-///    and the `activities-v2` query (all the quest's LOs at once) in parallel;
+///  - an outline is **two flat reads** — the quest, then the choreo outline
+///    read (the quest's Missions and all its activities at once);
 ///  - map pins are **one** thin read off the activities' own coordinates (no
 ///    topic/location join, no ring-offset hack).
 class QuestRepo {
@@ -215,7 +314,87 @@ class QuestRepo {
     retention: const Duration(hours: 24),
     now: () => QuestRepo.now(),
   );
-  static const String _learningObjectivesKey = 'learning-objectives';
+
+  /// The most `extra_lo_ids` one listing read accepts.
+  static const int extraLoIdsPerRead = 30;
+
+  /// The Can-Dos of a course record that [questLoIds] does not carry, in a
+  /// stable order: what to ask for as `extra_lo_ids`. More than one read's
+  /// worth is asked for over several reads ([_questOutlineBodies]).
+  static List<String> extraLoIdsFor(
+    Set<String> courseLoIds,
+    Iterable<String> questLoIds,
+  ) {
+    final inQuest = questLoIds.toSet();
+    return courseLoIds.where((id) => !inQuest.contains(id)).toList()..sort();
+  }
+
+  /// The listing body for [questId], over as many reads as [extraLoIds]
+  /// needs ([extraLoIdsPerRead] each), merged: the Can-Dos of every read, and
+  /// every activity (a repeat across reads is dropped by id downstream). The
+  /// first failed read is the result.
+  static Future<Result<Map<String, dynamic>>> _questOutlineBodies(
+    String questId, {
+    String? courseRoomId,
+    List<String> extraLoIds = const [],
+  }) async {
+    final chunks = <List<String>>[
+      for (var i = 0; i < extraLoIds.length; i += extraLoIdsPerRead)
+        extraLoIds.sublist(
+          i,
+          i + extraLoIdsPerRead > extraLoIds.length
+              ? extraLoIds.length
+              : i + extraLoIdsPerRead,
+        ),
+    ];
+    if (chunks.isEmpty) chunks.add(const []);
+
+    Map<String, dynamic>? merged;
+    for (final chunk in chunks) {
+      final result = await _questOutlineBody(
+        questId,
+        courseRoomId: courseRoomId,
+        extraLoIds: chunk,
+      );
+      final body = result.result;
+      if (body == null) return result;
+      if (merged == null) {
+        merged = {...body};
+        continue;
+      }
+      for (final key in const ['missions', 'activities']) {
+        final more = body[key];
+        if (more is List) {
+          merged[key] = [
+            if (merged[key] is List) ...(merged[key] as List),
+            ...more,
+          ];
+        }
+      }
+    }
+    return Result.value(merged!);
+  }
+
+  /// Parse the choreo outline body's `missions` into Missions keyed by id —
+  /// each `{lo_id, objective, theme, cefr_level, ...}` with `objective` already
+  /// in the display language the read asked for (#8577). A Mission the server
+  /// could not resolve is simply absent; the caller falls back to the bare
+  /// step the quest row already holds.
+  @visibleForTesting
+  static Map<String, LearningObjective> questMissionsFromJson(dynamic decoded) {
+    if (decoded is! Map) return const {};
+    final list = decoded['missions'];
+    if (list is! List) return const {};
+    final out = <String, LearningObjective>{};
+    for (final e in list) {
+      if (e is! Map) continue;
+      final mission = LearningObjective.fromOutlineJson(
+        e.cast<String, dynamic>(),
+      );
+      if (mission != null) out[mission.id] = mission;
+    }
+    return out;
+  }
 
   /// Parse the choreo `GET /choreo/quests/{id}/activities` body into its raw
   /// activity entries (`{plan, version_id, learning_objective_refs}` maps).
@@ -282,18 +461,20 @@ class QuestRepo {
   /// earned their own.
   static RateLimitPause get activityReadPause => RateLimitPause.choreoReads;
 
-  /// The quest's activities from the choreo course listing — the
-  /// membership-aware read that may include the quest owner's private
-  /// activities when [courseRoomId] names a course the caller has joined.
+  /// The choreo course outline body — the quest's Missions in the display
+  /// language plus its activities, from the membership-aware read that may
+  /// include the quest owner's private activities when [courseRoomId] names a
+  /// course the caller has joined.
   ///
   /// Returns a [RateLimitedException] WITHOUT asking while
   /// [activityReadPause] is running. The 429 that started the pause was
   /// already captured once, so the suppression itself reports separately
   /// at `info` via [RateLimitPause.reportSuppressionOnce] — once per
   /// activation, not once per suppressed read (client#8507).
-  static Future<Result<List<Map<String, dynamic>>>> _questActivityEntries(
+  static Future<Result<Map<String, dynamic>>> _questOutlineBody(
     String questId, {
     String? courseRoomId,
+    List<String> extraLoIds = const [],
   }) async {
     if (activityReadPause.isPaused) {
       activityReadPause.reportSuppressionOnce({
@@ -303,15 +484,23 @@ class QuestRepo {
       return Result.error(RateLimitedException());
     }
     try {
+      final inCourse = courseRoomId != null && courseRoomId.isNotEmpty;
       final uri = Uri.parse(PApiUrls.questActivities(questId)).replace(
         queryParameters: {
-          if (courseRoomId != null && courseRoomId.isNotEmpty)
-            'course_room_id': courseRoomId,
-          // Overlays each plan's title/description/learning-objective from
-          // persisted translation rows, canonical fallback per activity —
-          // read-only server-side, never an LLM call (#8577). `version_id` is
-          // computed over canonical content, so it is identical across `l1`
-          // values and session pinning is unaffected.
+          if (inCourse) 'course_room_id': courseRoomId,
+          // A member also gets the course's own copies of activities and the
+          // listing's Can-Dos beyond the quest's (the ones its record names),
+          // so the course's progress can be credited across every copy of an
+          // activity. Honoured only for a member; ignored otherwise.
+          if (inCourse) 'include_course_copies': '1',
+          if (inCourse && extraLoIds.isNotEmpty) 'extra_lo_ids': extraLoIds,
+          // Each Mission's statement comes back in this language (the
+          // outline is a Mission's full tier, so the server translates on a
+          // miss), and each plan's title/description/learning-objective is
+          // overlaid from persisted translation rows only, canonical fallback
+          // per activity (#8577). `version_id` is computed over canonical
+          // content, so it is identical across `l1` values and session
+          // pinning is unaffected.
           'l1': displayL1,
         },
       );
@@ -323,8 +512,9 @@ class QuestRepo {
           'quest activities fetch failed (${response.statusCode})',
         );
       }
+      final decoded = jsonDecode(response.body);
       return Result.value(
-        questActivityEntriesFromJson(jsonDecode(response.body)),
+        decoded is Map ? decoded.cast<String, dynamic>() : const {},
       );
     } catch (e, s) {
       // Before the report, so the pause is armed even if reporting throws.
@@ -360,7 +550,7 @@ class QuestRepo {
 
   /// The quest with its ordered Learning Objective ids (one read). LO text is
   /// NOT populated by depth (Payload leaves the relationship-in-array a bare
-  /// id), so [_learningObjectives] resolves it in a separate batch read.
+  /// id); the outline read supplies it, in the display language.
   ///
   /// A confirmed 404 is answered from [removedQuests] without a request, and
   /// the repo owns its report — once per quest id per session, at warning,
@@ -399,33 +589,6 @@ class QuestRepo {
         e: e,
         s: s,
         data: {"quest_id": questId},
-        level: PangeaHttpException.severityOf(e),
-      );
-      return Result.error(e);
-    }
-  }
-
-  /// The full Learning Objectives for [ids], resolved in one batched read.
-  static Future<Result<Map<String, LearningObjective>>> _learningObjectives(
-    List<String> ids,
-  ) async {
-    try {
-      if (ids.isEmpty) return Result.value(const {});
-      final resp = await _client().find(
-        _learningObjectivesKey,
-        (json) => LearningObjective.fromJson(json),
-        where: {
-          'id': {'in': ids},
-        },
-        limit: ids.length,
-        depth: 0,
-      );
-      return Result.value({for (final lo in resp.docs) lo.id: lo});
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"lo_ids": ids},
         level: PangeaHttpException.severityOf(e),
       );
       return Result.error(e);
@@ -486,47 +649,70 @@ class QuestRepo {
   static Future<Result<List<QuestActivityCard>>> questActivityCards(
     String questId, {
     String? courseRoomId,
+    List<String> extraLoIds = const [],
   }) async {
-    final entriesResult = await _questActivityEntries(
+    final bodyResult = await _questOutlineBodies(
       questId,
       courseRoomId: courseRoomId,
+      extraLoIds: extraLoIds,
     );
-    final entries = entriesResult.result;
-    if (entries == null) {
+    final body = bodyResult.result;
+    if (body == null) {
       return Result.error(
-        entriesResult.error ?? "Failed to fetch quest activities",
+        bodyResult.error ?? "Failed to fetch quest activities",
       );
     }
-    final cards = entries
+    final cards = questActivityEntriesFromJson(body)
         .map((e) => QuestActivityCard.fromJson(cmsDocShapeFromEntry(e)))
         .where((card) => card.point != null)
         .toList();
     return Result.value(dedupeByActivityId(cards, (c) => c.activityId));
   }
 
-  /// Full activity plans for the quest (one choreo read), each paired with
-  /// the LO ids it satisfies (for grouping). [courseRoomId] admits the quest
-  /// owner's private activities when the caller is a joined member.
-  static Future<Result<List<({ActivityPlanModel plan, List<String> refs})>>>
-  _questActivityPlans(String questId, {String? courseRoomId}) async {
+  /// The course outline from one choreo read: the quest's Missions keyed by
+  /// id, text in the display language, and its full activity plans, each
+  /// paired with the LO ids it satisfies (for grouping). [courseRoomId]
+  /// admits the quest owner's private activities when the caller is a joined
+  /// member.
+  static Future<
+    Result<
+      ({
+        Map<String, LearningObjective> missions,
+        List<
+          ({ActivityPlanModel plan, List<String> refs, List<String> familyIds})
+        >
+        activities,
+      })
+    >
+  >
+  _questOutlineRead(
+    String questId, {
+    String? courseRoomId,
+    List<String> extraLoIds = const [],
+  }) async {
     try {
-      final entriesResult = await _questActivityEntries(
+      final bodyResult = await _questOutlineBodies(
         questId,
         courseRoomId: courseRoomId,
+        extraLoIds: extraLoIds,
       );
-      final rawEntries = entriesResult.result;
-      if (rawEntries == null) {
+      final body = bodyResult.result;
+      if (body == null) {
         return Result.error(
-          entriesResult.error ?? "Failed to fetch quest activities",
+          bodyResult.error ?? "Failed to fetch quest activities",
         );
       }
+      final missions = questMissionsFromJson(body);
       final entries = dedupeByActivityId(
-        rawEntries
+        questActivityEntriesFromJson(body)
             .map(
               (e) => (
                 plan: activityPlanFromV2(cmsDocShapeFromEntry(e)),
                 refs: ((e['learning_objective_refs'] as List? ?? const [])
                     .map((x) => x as String)
+                    .toList()),
+                familyIds: ((e['family_ids'] as List? ?? const [])
+                    .whereType<String>()
                     .toList()),
               ),
             )
@@ -539,10 +725,17 @@ class QuestRepo {
         entries.map((e) => e.plan).toList(),
       );
 
-      return Result.value([
-        for (var i = 0; i < entries.length; i++)
-          (plan: resolved[i], refs: entries[i].refs),
-      ]);
+      return Result.value((
+        missions: missions,
+        activities: [
+          for (var i = 0; i < entries.length; i++)
+            (
+              plan: resolved[i],
+              refs: entries[i].refs,
+              familyIds: entries[i].familyIds,
+            ),
+        ],
+      ));
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -639,12 +832,22 @@ class QuestRepo {
   /// calls for the same key share one in-flight read. [courseRoomId] admits
   /// the quest owner's private activities when the caller is a joined member
   /// of that course. Pass [forceRefresh] to bypass the cache.
+  ///
+  /// [courseLoIds] is every Can-Do the course's record names (its Can-Dos and
+  /// its removed ones): those the quest does not carry are asked for as
+  /// `extra_lo_ids`, so a Can-Do a teacher added still lists its activities.
+  /// [copyRevision] is the record's revision: a publish changes which copies
+  /// exist, so it is part of the cache key (0 = no record, today's key).
   static Future<Result<QuestOutline>> outline(
     String questId, {
     String? courseRoomId,
     bool forceRefresh = false,
+    Set<String> courseLoIds = const {},
+    int copyRevision = 0,
   }) async {
-    final cacheKey = '$questId|${courseRoomId ?? ''}|$displayL1';
+    final cacheKey =
+        '$questId|${courseRoomId ?? ''}|$displayL1'
+        '${copyRevision > 0 ? '|r$copyRevision' : ''}';
     if (!forceRefresh) {
       final cached = _outlineCache[cacheKey];
       if (cached != null) return Future.value(cached);
@@ -660,6 +863,7 @@ class QuestRepo {
             questId,
             courseRoomId: courseRoomId,
             forceRefresh: forceRefresh,
+            courseLoIds: courseLoIds,
           );
     _outlineInflight[cacheKey] = future;
 
@@ -673,12 +877,13 @@ class QuestRepo {
     return outline;
   }
 
-  /// Build a fresh outline — three reads (the quest, then the LO-text batch and
-  /// the activities query in parallel). Uncached; callers use [outline].
+  /// Build a fresh outline — two reads (the quest, then the choreo outline read
+  /// for its Missions and activities). Uncached; callers use [outline].
   static Future<Result<QuestOutline>> _buildOutline(
     String questId, {
     String? courseRoomId,
     bool forceRefresh = false,
+    Set<String> courseLoIds = const {},
   }) async {
     try {
       final result = await QuestRepo.quest(questId, forceRefresh: forceRefresh);
@@ -687,49 +892,61 @@ class QuestRepo {
         return Result.error(result.error ?? MissingQuestException());
       }
 
-      // LO text and activities both depend only on the quest — run in parallel.
-      final losFuture = _learningObjectives(quest.learningObjectiveIds);
-      final actsFuture = _questActivityPlans(
+      final outlineResult = await _questOutlineRead(
         questId,
         courseRoomId: courseRoomId,
+        extraLoIds: extraLoIdsFor(courseLoIds, quest.learningObjectiveIds),
       );
-
-      final learningObjectivesResult = await losFuture;
-      final learningObjectives = learningObjectivesResult.result;
-      if (learningObjectives == null) {
+      final read = outlineResult.result;
+      if (read == null) {
         return Result.error(
-          learningObjectivesResult.error ??
-              "Failed to fetch learning objectives",
-        );
-      }
-
-      final activitiesResult = await actsFuture;
-      final activities = activitiesResult.result;
-      if (activities == null) {
-        return Result.error(
-          activitiesResult.error ?? "Failed to fetch activities",
+          outlineResult.error ?? "Failed to fetch activities",
         );
       }
 
       final byLo = <String, List<QuestActivity>>{};
-      for (final a in activities) {
+      for (final a in read.activities) {
         final qa = QuestActivity(activityId: a.plan.activityId, plan: a.plan);
         for (final ref in a.refs) {
           (byLo[ref] ??= []).add(qa);
         }
       }
 
+      // Step order is the quest row's; the text is the outline read's. A
+      // Mission the server left out keeps the bare step (id, no text) so the
+      // group still exists and its activities still count.
       final groups = quest.sequence
           .map(
             (step) => QuestObjectiveGroup(
-              objective:
-                  learningObjectives[step.objective.id] ?? step.objective,
+              objective: read.missions[step.objective.id] ?? step.objective,
               activities: byLo[step.objective.id] ?? const [],
             ),
           )
           .toList();
 
-      return Result.value(QuestOutline(quest: quest, groups: groups));
+      // Can-Dos the listing returned beyond the quest's own (ones the course
+      // record added), in the listing's order.
+      final questLoIds = quest.learningObjectiveIds.toSet();
+      final addedGroups = [
+        for (final mission in read.missions.values)
+          if (!questLoIds.contains(mission.id))
+            QuestObjectiveGroup(
+              objective: mission,
+              activities: byLo[mission.id] ?? const [],
+            ),
+      ];
+
+      return Result.value(
+        QuestOutline(
+          quest: quest,
+          groups: groups,
+          addedGroups: addedGroups,
+          familyIdsByActivity: {
+            for (final a in read.activities)
+              if (a.familyIds.isNotEmpty) a.plan.activityId: a.familyIds,
+          },
+        ),
+      );
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

@@ -5,6 +5,7 @@ import 'package:fake_async/fake_async.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart';
 
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
@@ -71,6 +72,17 @@ class RecordingSink implements CallAudioSink {
   /// existing tests, which are about closing rather than completeness, read
   /// unchanged.
   bool drained = true;
+}
+
+/// A sink whose transcriber refuses every chunk for want of a subscription,
+/// the way choreo answers an unsubscribed account (401 "No active subscription
+/// found", which `Requests` turns into [UnsubscribedException]).
+class UnsubscribedSink extends RecordingSink {
+  @override
+  Future<void> deliver(PcmChunk chunk, {Duration? within}) async {
+    attempts.add(chunk.index);
+    throw UnsubscribedException();
+  }
 }
 
 /// Records what [CallCaptureService] fed its call-audio-recording fan-out,
@@ -934,6 +946,54 @@ void main() {
         reason: 'a tap that arrived after the stop must be released',
       );
       expect(s.isRecording, isFalse);
+    });
+  });
+
+  group('a chunk refused for no subscription (#8792)', () {
+    // Measured on the local stack: an unsubscribed callee retried its one
+    // refused chunk thirteen times over ninety seconds, and the end of the call
+    // waited for it, so its recording, its half and the merged manifest landed
+    // after the subscribed caller's backfill had stopped looking.
+    test('is not retried, and does not hold the end of the call', () async {
+      final refused = UnsubscribedSink();
+      final waits = <Duration>[];
+      final s = service(
+        withSink: refused,
+        timeout: const Duration(milliseconds: 100),
+        delay: (d) async {
+          waits.add(d);
+          clock.elapsed += d.inMilliseconds;
+        },
+      );
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await s.finish();
+
+      expect(refused.attempts, isNotEmpty, reason: 'chunks were handed over');
+      for (final index in refused.attempts.toSet()) {
+        expect(
+          refused.attempts.where((i) => i == index).length,
+          1,
+          reason: 'chunk $index was refused once and never retried',
+        );
+      }
+      expect(waits, isEmpty, reason: 'no backoff for a definitive refusal');
+    });
+
+    test('a transient failure is still retried', () async {
+      // Only the refusal is final; the retry that rides out a flaky backend
+      // stays exactly as it was.
+      final flaky = RecordingSink(failuresLeft: {0: 2});
+      final s = service(withSink: flaky);
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await s.finish();
+      expect(flaky.attempts.where((i) => i == 0).length, 3);
+      expect(flaky.delivered.map((c) => c.index), contains(0));
     });
   });
 

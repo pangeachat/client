@@ -80,7 +80,6 @@ void main() {
               state: state,
               pinged: false,
               plan: null,
-              starsEarned: 0,
               participants: const [],
               openSlots: 0,
               onTap: () {},

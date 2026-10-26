@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 import 'dart:ui' as ui show SemanticsHitTestBehavior;
 
@@ -7,6 +8,7 @@ import 'package:flutter/rendering.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:intl/intl.dart' show NumberFormat;
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -19,13 +21,17 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
+import 'package:fluffychat/features/connection_status/widgets/filtered_network_note.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/map_tiles.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
-import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/course_preview_banner.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
@@ -35,6 +41,7 @@ import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/map_exit_tracker.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/pin_semantics_layer.dart';
+import 'package:fluffychat/routes/world/stamp_word_web.dart';
 import 'package:fluffychat/routes/world/tile_http_client.dart';
 import 'package:fluffychat/routes/world/tile_retry_queue.dart';
 import 'package:fluffychat/routes/world/trackpad_pinch_zoom.dart';
@@ -107,8 +114,8 @@ class _PinRenderer {
     return tier == PinTier.mid || tier == PinTier.small;
   }).toList();
 
-  // The completion tier for the inProgress (trail) state — a plain star vs a
-  // super star, or none (world-map.instructions.md, "Goal Progress").
+  // Whether a rendered pin wears the completed stamp (world-map.instructions.md,
+  // "Goal Progress").
   ActivityStarLevel starLevelOf(String id) =>
       activityIdToStarLevel[id] ?? ActivityStarLevel.none;
 
@@ -150,9 +157,14 @@ class LargeCardSnapshot {
   final bool pinged;
   final ActivityPlanModel? plan;
   final Room? liveRoom;
-  final int starsEarned;
+
+  /// The learner's total XP from this activity, for a played card's coin.
+  final int xpEarned;
   final List<String> participants;
   final int openSlots;
+
+  /// How many open sessions a joinable card offers, for its "Open (N)".
+  final int openSessions;
   final ActivityStarLevel starLevel;
 
   /// True when this is an `available` card the course can't currently staff
@@ -168,9 +180,10 @@ class LargeCardSnapshot {
     required this.pinged,
     required this.plan,
     required this.liveRoom,
-    required this.starsEarned,
+    required this.xpEarned,
     required this.participants,
     required this.openSlots,
+    this.openSessions = 0,
     required this.starLevel,
     this.understaffed = false,
   });
@@ -210,11 +223,10 @@ class _WorldMapViewState extends State<WorldMapView>
     skipTraversal: true,
   );
 
-  /// OSM tile-policy hardening (#8603): the native User-Agent names the app
-  /// AND carries a contact URL, per the OSM tile usage policy. Web cannot set
-  /// the header at all (a Dart/browser limitation flutter_map documents on
-  /// `TileProvider.headers`), so this is best-effort — web traffic stays
-  /// identifiable only by Referer and IP.
+  /// Native requests carry the Stadia API key ([MapTiles.headers]) and a
+  /// User-Agent naming the app with a contact URL. Web can set neither (a
+  /// browser limitation flutter_map documents on `TileProvider.headers`);
+  /// Stadia authenticates web by the page's domain instead.
   ///
   /// One provider instance for the State's lifetime: `TileLayer` disposes its
   /// final widget's provider, but never intermediate ones, so constructing a
@@ -228,6 +240,7 @@ class _WorldMapViewState extends State<WorldMapView>
 
   late final NetworkTileProvider _tileProvider = NetworkTileProvider(
     headers: {
+      ...MapTiles.headers,
       if (!kIsWeb)
         'User-Agent':
             'flutter_map (com.talktolearn.chat; +${AppConfig.website})',
@@ -311,6 +324,11 @@ class _WorldMapViewState extends State<WorldMapView>
       return;
     }
     _tileRetries.schedule(tile);
+    // A connectivity failure is the learner's own network — offline, or a
+    // filter. The check tells which, and reports only a filter.
+    unawaited(
+      FilteredNetworkController.instance.checkIfStale(NetworkHostCategory.map),
+    );
   }
 
   /// Entry/exit animation bookkeeping for the small/mid dot tier: which pins
@@ -745,14 +763,12 @@ class _WorldMapViewState extends State<WorldMapView>
 
       pings[id] = signals[id]?.pinged ?? false;
 
-      // The learner's completion tier and the pin's resolved display state come
+      // The learner's completed stamp and the pin's resolved display state come
       // from the shared resolver in the pins manager (reuse), so the Status
       // filter and this renderer never drift: a live-session state wins the
-      // colour, else the completed star tier layers in (the star rides behind a
-      // live pin), else the plain `available` default. A gold star appears ONLY
-      // once a full role is done — a plain star (≥1 role) or super star (all
-      // roles); partial progress is never shown (world-map.instructions.md,
-      // "Goal Progress" / "Pin state").
+      // colour, else a saved session layers in `inProgress`, else the plain
+      // `available` default (world-map.instructions.md, "Goal Progress" / "Pin
+      // state").
       starLevels[id] = widget.controller.starLevelOf(c);
       states[id] = widget.controller.displayStateOf(c);
 
@@ -845,6 +861,23 @@ class _WorldMapViewState extends State<WorldMapView>
     }
   }
 
+  /// How many open sessions of [activityId] the learner can join, from the
+  /// same discovery cache — and course scope — the course page counts its
+  /// "Open (N)" from; at least one, since the pin is joinable.
+  int _openSessionCount(String activityId) {
+    final cached = DiscoveredSessionsCache.instance.forActivity(
+      activityId,
+      course: widget.controller.courseRoom,
+    );
+    final open = cached == null
+        ? 0
+        : ActivitySessionSummariesModel(
+            cached,
+            activityId: activityId,
+          ).openSessions.length;
+    return open > 0 ? open : 1;
+  }
+
   /// Resolves everything [WorldMapLargeCard] needs for [card] — hydrates the
   /// plan, and sources participants/seats from the right place per state (a
   /// joinable session's room-preview/room, or the learner's own live room for
@@ -886,16 +919,14 @@ class _WorldMapViewState extends State<WorldMapView>
       pinged: render.pingedOf(card.activityId),
       plan: plan,
       liveRoom: liveRoom,
-      // ongoingActive's star row is the CURRENT session's own progress, not
-      // the all-time/cross-session max (world-map.instructions.md, "Goal
-      // Progress") — every other state keeps the all-time value.
-      starsEarned: state == ActivityPinState.ongoingActive
-          ? (liveRoom?.ownCompletedGoals.length ?? 0)
-          : (widget.controller.activityStarsEarned(card.activityId) ?? 0),
+      xpEarned: widget.controller.activityXpEarned(card.activityId) ?? 0,
       participants: participants,
       openSlots: openSlots,
-      // The completed-activity trail tier (all-time), so a live large card on a
-      // previously-completed activity still shows its star below the caret.
+      openSessions: state == ActivityPinState.joinable
+          ? _openSessionCount(card.activityId)
+          : 0,
+      // Whether the learner has a saved session of it — a played card wears
+      // the coin on its photo.
       starLevel: render.starLevelOf(card.activityId),
       // Dim an available card the course can't yet staff (course-scoped; the
       // renderer only ever flags `available` pins here).
@@ -942,18 +973,7 @@ class _WorldMapViewState extends State<WorldMapView>
 
   @override
   Widget build(BuildContext context) {
-    // world-map-tiles Phase 1: free hosted OpenStreetMap tiles for both
-    // themes; dark theme is a client-side color filter over the same tiles
-    // (see the TileLayer below).
-    final dark = Theme.of(context).brightness == Brightness.dark;
-    // What shows through wherever tiles have not arrived yet. Matched to the
-    // basemap's paper — OSM's pale beige, or that beige passed through the
-    // dark filter's color matrix — so a gap during a zoom reads as
-    // unfilled map rather than the light grey flash flutter_map defaults
-    // to (#7937).
-    final mapBackground = dark
-        ? const Color(0xFF130F0A)
-        : const Color(0xFFF2EFE9);
+    final brightness = Theme.of(context).brightness;
 
     final warming = widget.controller.warmingPins;
 
@@ -1045,6 +1065,9 @@ class _WorldMapViewState extends State<WorldMapView>
               // State recreations MarkerLayer causes mid-gesture (#8136).
               animateInOf: _dotExits.markEntered,
             ).layer();
+            // No stamp layer (#9559): a played activity with nothing live is
+            // drawn AS its stamp by its own pin; a live card shows it on its
+            // photo, and a live mid pin doesn't mark it.
             final Widget largeLayer = LargeMarkersLayer(
               largeCards: render.largeCards,
               currentLarge: currentLarge,
@@ -1053,19 +1076,16 @@ class _WorldMapViewState extends State<WorldMapView>
               onClose: widget.controller.dismissLargeCard,
               animateInOf: _largeExits.markEntered,
             ).layer();
-            // Base tiles: OpenStreetMap for both themes, one provider — the
-            // previous dark provider (CARTO's keyless CDN) enforced per-IP
-            // usage by serving "API KEY REQUIRED" watermark tiles to some
-            // users (#8585), so one keyless provider is one failure mode and
-            // one usage budget. On-brand dark styling is a later-phase
-            // (vector tiles) goal — see world-map-tiles.instructions.md.
+            // Base tiles: Stadia's light or dark style by theme — see
+            // [MapTiles] and world-map-tiles.instructions.md. Changing the
+            // theme changes the URL, which makes flutter_map reload the tiles.
             //
             // Retina (@2x) is OFF (#7937): @2x is ~4x the pixels per tile,
             // so a slow tile is a visible gap. Labels are slightly softer on
             // HiDPI as a result; legible on-brand labels are a later-phase
             // goal anyway, where they cost nothing.
             final tileLayer = TileLayer(
-              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+              urlTemplate: MapTiles.urlTemplate(brightness),
               retinaMode: false,
               // How far outside the view a tile survives pruning. flutter_map
               // covers a still-loading level by scaling a neighbouring level it
@@ -1075,11 +1095,11 @@ class _WorldMapViewState extends State<WorldMapView>
               // and the background showing through in tile-shaped squares.
               // Retention only — the LOAD range is driven by `panBuffer`, which
               // stays at its default, so this costs memory and zero extra tile
-              // requests (which matters on Phase 1's free hosted tiers).
+              // requests (which matters when the provider bills per tile).
               keepBuffer: 5,
               userAgentPackageName: 'com.talktolearn.chat',
-              // #8603 hardening: contact-URL User-Agent on native, and
-              // non-2xx responses as hard errors — see [_tileProvider].
+              // The API key and contact-URL User-Agent on native, and non-2xx
+              // responses as hard errors — see [_tileProvider].
               tileProvider: _tileProvider,
               errorTileCallback: _onTileError,
               // A failed tile paints transparent, so the themed map
@@ -1125,7 +1145,7 @@ class _WorldMapViewState extends State<WorldMapView>
                   // tiles arrive — paints this. flutter_map's default is a
                   // light grey (#E0E0E0), which is what makes a zoom
                   // "flashbang" a dark-theme user (#7937).
-                  backgroundColor: mapBackground,
+                  backgroundColor: MapTiles.background(brightness),
                   // Scroll-wheel zoom stays flutter_map's: it applies each wheel
                   // event immediately, which is what direct manipulation should
                   // do. An eased, cursor-anchored version was tried for #7937
@@ -1145,22 +1165,24 @@ class _WorldMapViewState extends State<WorldMapView>
                       widget.controller.onMapPositionChanged(hasGesture),
                 ),
                 children: [
-                  // Dark theme is ONE ColorFiltered (invert + 180° hue-rotate)
-                  // over the whole tile layer, not a per-tile tileBuilder: the
-                  // matrix is identical either way (world_map_dark_tiles_test
-                  // pins it), but per-tile means a saveLayer per visible tile
-                  // and measured roughly double the filter's frame cost on
-                  // CPU-constrained machines — 82% vs 35% of pan frames over
-                  // 17ms at 6x throttle (#8623, measurements on #8603). Do not
-                  // move this back to `tileBuilder: darkModeTileBuilder`.
-                  if (dark)
-                    darkModeTilesContainerBuilder(context, tileLayer)
-                  else
-                    tileLayer,
+                  tileLayer,
                   // world_v2: activity pins by relevance tier + state, capped by the
                   // width-driven budget. Small/mid dots render individually (no
                   // clustering); the large featured cards render unclustered above so
                   // they're always visible.
+                  // A Mission's completed stamps web out the words the learner
+                  // used in them. Under the activity-card map a card keeps its
+                  // words to itself: only bare stamps web out.
+                  if (kStampWordWeb &&
+                      widget.controller.selectedMissionId != null)
+                    StampWordWebLayer(
+                      cards: [
+                        ...render.nonLargeCards,
+                        if (!kMapActivityCards) ...render.largeCards,
+                      ],
+                      savedActivityIds: widget.controller.savedActivityIds,
+                      wordsFor: widget.controller.stampWordsFor,
+                    ),
                   _ShimmerLayer(active: warming, child: dotLayer),
                   // Dying pins (a separate layer) so they don't disturb the live pins
                   // while animating out.
@@ -1217,16 +1239,14 @@ class _WorldMapViewState extends State<WorldMapView>
                               // sit under the bottom-right zoom/World controls (where it was
                               // covered and hard to read, especially in dark mode).
                               alignment: AttributionAlignment.bottomLeft,
+                              // Each credit needs its link (#8603); a dead
+                              // onTap renders the credit without its target.
                               attributions: [
-                                TextSourceAttribution(
-                                  'OpenStreetMap contributors',
-                                  // OSM's attribution requirement is credit +
-                                  // link (#8603); a dead onTap rendered the
-                                  // credit without its required target.
-                                  onTap: () => launchUrlString(
-                                    'https://www.openstreetmap.org/copyright',
+                                for (final credit in MapTiles.credits)
+                                  TextSourceAttribution(
+                                    credit.name,
+                                    onTap: () => launchUrlString(credit.url),
                                   ),
-                                ),
                               ],
                             ),
                           ),
@@ -1359,13 +1379,34 @@ class _WorldMapViewState extends State<WorldMapView>
                           context,
                         ).participantsOfTotal(participants.length, total);
                       },
+                      markDetailOf: (card) {
+                        final l10n = L10n.of(context);
+                        final xp =
+                            widget.controller.activityXpEarned(
+                              card.activityId,
+                            ) ??
+                            0;
+                        final marks = [
+                          if (render.pingedOf(card.activityId))
+                            l10n.pingedLabel,
+                          if (xp > 0)
+                            l10n.activityCompletedWithXp(
+                              l10n.activityCompleted,
+                              NumberFormat.decimalPattern(
+                                Localizations.localeOf(context).toLanguageTag(),
+                              ).format(xp),
+                            ),
+                        ];
+                        return marks.isEmpty ? null : marks.join(', ');
+                      },
                     ),
                   ),
                   // Screen-reader mirror of the map attribution (#8753): the visual
                   // control draws inside the ExcludeSemantics'd map subtree, so the
-                  // OSM credit-plus-link (#8603) was unreachable by AT. Same trick as
-                  // the pins — a semantics-only node at its position, pointer-
-                  // transparent, whose semantic tap opens the copyright page.
+                  // map credits (#8603) were unreachable by AT. Same trick as the
+                  // pins — a semantics-only node at its position, pointer-
+                  // transparent, whose semantic tap opens Stadia's attribution
+                  // page, which credits all three sources.
                   Positioned(
                     left: PlatformInfos.isMobile ? 12 : 8,
                     bottom: PlatformInfos.isMobile ? 12 : 8,
@@ -1373,11 +1414,9 @@ class _WorldMapViewState extends State<WorldMapView>
                     height: 32,
                     child: Semantics(
                       link: true,
-                      label: L10n.of(context).mapAttributionLabel,
+                      label: L10n.of(context).mapCreditsLabel,
                       hitTestBehavior: ui.SemanticsHitTestBehavior.transparent,
-                      onTap: () => launchUrlString(
-                        'https://www.openstreetmap.org/copyright',
-                      ),
+                      onTap: () => launchUrlString(MapTiles.credits.first.url),
                       child: const SizedBox.expand(),
                     ),
                   ),
@@ -1389,30 +1428,34 @@ class _WorldMapViewState extends State<WorldMapView>
           // The "Course preview" pill (#7826), centered over the exposed map
           // on both form factors — below the analytics bar band on narrow, in
           // the top margin on wide (where the search slot empties, below).
+          // A blocked-map note stacks under it in the same place.
           Positioned(
             top: 0,
             left: widget.controller.widget.leftOverlayWidth,
             right: widget.controller.widget.rightOverlayWidth,
-            child: ValueListenableBuilder<MapContext>(
-              valueListenable: MapContextController.notifier,
-              builder: (context, mapContext, _) {
-                if (mapContext is! CoursePreviewMapContext) {
-                  return const SizedBox.shrink();
-                }
-                return SafeArea(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      top: FluffyThemes.isColumnMode(context)
-                          ? 12.0
-                          : WorldAnalyticsBar.expandedHeight + 24.0,
+            child: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.only(
+                  top: FluffyThemes.isColumnMode(context)
+                      ? 12.0
+                      : WorldAnalyticsBar.expandedHeight + 24.0,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ValueListenableBuilder<MapContext>(
+                      valueListenable: MapContextController.notifier,
+                      builder: (context, mapContext, _) =>
+                          mapContext is CoursePreviewMapContext
+                          ? const CoursePreviewBanner()
+                          : const SizedBox.shrink(),
                     ),
-                    child: const Align(
-                      alignment: Alignment.topCenter,
-                      child: CoursePreviewBanner(),
+                    const FilteredNetworkNote(
+                      category: NetworkHostCategory.map,
                     ),
-                  ),
-                );
-              },
+                  ],
+                ),
+              ),
             ),
           ),
           // Column mode only: on a narrow screen the search rides the floating

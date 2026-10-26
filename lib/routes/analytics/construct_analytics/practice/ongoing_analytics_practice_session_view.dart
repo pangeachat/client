@@ -17,9 +17,12 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/analyti
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/audio_analytics_practice_continue_button_widget.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/insufficient_data_indicator.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/offline_practice_note.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_exercise_widget.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -48,6 +51,7 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                   // The feedback flag lives in the practice header
                   // (AnalyticsPracticeView), right-justified.
                   const SizedBox(height: 8.0),
+                  const Center(child: OfflinePracticeNote.session()),
                   //Hints counter bar for grammar activities only
                   if (controller.widget.type == ConstructTypeEnum.morph)
                     Padding(
@@ -75,6 +79,12 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                             PracticeExerciseTypeEnum.lemmaAudio;
                         final isVocabType =
                             controller.widget.type == ConstructTypeEnum.vocab;
+                        // The pronunciation needs the network, so an offline
+                        // session leaves it out.
+                        final showPronunciation =
+                            isVocabType &&
+                            !isAudioExercise &&
+                            controller.session.session?.offline != true;
 
                         final token = exercise.tokens.first;
 
@@ -90,7 +100,7 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            if (isVocabType && !isAudioExercise)
+                            if (showPronunciation)
                               PhoneticTranscriptionWidget(
                                 exposure: ListeningExposureDeclaration.ofTokens(
                                   [token],
@@ -152,7 +162,9 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                           switch (state) {
                             AsyncError(error: final error) =>
                               error is InsufficientDataException
-                                  ? InsufficientDataIndicator()
+                                  ? InsufficientDataIndicator(
+                                      offline: error.offline,
+                                    )
                                   : Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -175,6 +187,32 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                                     ),
                             AsyncLoaded(value: final exercise) => Builder(
                               builder: (context) {
+                                if (exercise
+                                    is ReadAloudPracticeExerciseModel) {
+                                  return ReadAloudExerciseWidget(
+                                    key: ValueKey(exercise.storageKey),
+                                    exercise: exercise,
+                                    referenceAudio: controller.data
+                                        .getAudioFile(exercise),
+                                    hearItFirst:
+                                        ToolSetting.hearItFirst.enabled,
+                                    playbackSpeedController:
+                                        controller.audioPlaybackSpeedController,
+                                    recorderFactory: (reference) =>
+                                        controller.buildReadAloudRecorder(
+                                          reference,
+                                          sentence: exercise.referenceText,
+                                        ),
+                                    onRecorded: (targetHeard, heard) =>
+                                        controller.submitReadAloud(
+                                          exercise,
+                                          targetHeard: targetHeard,
+                                          heard: heard,
+                                        ),
+                                    onMicUnavailable: () =>
+                                        controller.onMicUnavailable(exercise),
+                                  );
+                                }
                                 List<InlineSpan>? audioExampleMessage;
                                 String? audioTranslation;
 
@@ -240,6 +278,15 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                       exercise,
                     ),
                   ),
+                ),
+              ),
+            if (exercise is ReadAloudPracticeExerciseModel)
+              ListenableBuilder(
+                listenable: controller.notifier,
+                builder: (context, _) => ReadAloudContinueRow(
+                  complete: controller.notifier.exerciseComplete(exercise),
+                  onContinue: controller.startNextExercise,
+                  onSkip: () => controller.skipReadAloud(exercise),
                 ),
               ),
           ],
