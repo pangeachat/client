@@ -218,10 +218,15 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
     String analyticsLangCode,
   ) async {
     try {
-      final courses = rooms.where(
-        (r) =>
-            r.requireAnalyticsAccess && !r.isRoomAdmin && r.coursePlan != null,
-      );
+      // A snapshot: the loop awaits, and sync replaces rooms meanwhile.
+      final courses = rooms
+          .where(
+            (r) =>
+                r.requireAnalyticsAccess &&
+                !r.isRoomAdmin &&
+                r.coursePlan != null,
+          )
+          .toList();
 
       final grantFutures = <Future>[];
       for (final course in courses) {
