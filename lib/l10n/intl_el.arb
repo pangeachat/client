@@ -10918,5 +10918,8 @@
     "openCourse": "Άνοιγμα μαθήματος",
     "centralCourseJoinedTitle": "Έχετε εγγραφεί στο {course}",
     "centralCourseJoinedBody": "Είναι το μάθημα της Pangea για μαθητές {language}. Τα μέλη του μπορούν να δουν το όνομα και το προφίλ σας.",
-    "centralCourseMembersSeeYou": "Τα μέλη αυτού του μαθήματος μπορούν να δουν το όνομα και το προφίλ σας."
+    "centralCourseMembersSeeYou": "Τα μέλη αυτού του μαθήματος μπορούν να δουν το όνομα και το προφίλ σας.",
+    "practiceStartWordCount": "{count, plural, =1{λέξη για εξάσκηση} other{λέξεις για εξάσκηση}}",
+    "practiceStartGrammarCount": "{count, plural, =1{σημείο γραμματικής για εξάσκηση} other{σημεία γραμματικής για εξάσκηση}}",
+    "practiceStartExerciseTypes": "Τύποι ασκήσεων"
 }

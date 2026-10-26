@@ -10138,5 +10138,8 @@
     "openCourse": "பாடத்தைத் திற",
     "centralCourseJoinedTitle": "நீங்கள் {course} இல் சேர்ந்துவிட்டீர்கள்",
     "centralCourseJoinedBody": "இது {language} கற்பவர்களுக்கான பான்ஜியாவின் பாடமாகும். இதன் உறுப்பினர்கள் உங்கள் பெயரையும் சுயவிவரத்தையும் பார்க்கலாம்.",
-    "centralCourseMembersSeeYou": "இந்த பாடத்திட்டத்தின் உறுப்பினர்கள் உங்கள் பெயரையும் சுயவிவரத்தையும் பார்க்கலாம்."
+    "centralCourseMembersSeeYou": "இந்த பாடத்திட்டத்தின் உறுப்பினர்கள் உங்கள் பெயரையும் சுயவிவரத்தையும் பார்க்கலாம்.",
+    "practiceStartWordCount": "{count, plural, =1{பயிற்சி செய்ய ஒரு சொல்} other{பயிற்சி செய்ய சொற்கள்}}",
+    "practiceStartGrammarCount": "{count, plural, =1{பயிற்சி செய்ய ஒரு இலக்கணப் புள்ளி} other{பயிற்சி செய்ய இலக்கணப் புள்ளிகள்}}",
+    "practiceStartExerciseTypes": "பயிற்சி வகைகள்"
 }

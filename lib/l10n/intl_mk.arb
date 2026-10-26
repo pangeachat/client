@@ -2508,5 +2508,8 @@
     "openCourse": "Отвори курс",
     "centralCourseJoinedTitle": "Се приклучивте на {course}",
     "centralCourseJoinedBody": "Ова е курсот на Pangea за ученици по {language}. Неговите членови можат да го видат вашето име и профил.",
-    "centralCourseMembersSeeYou": "Членовите на овој курс можат да го видат вашето име и профил."
+    "centralCourseMembersSeeYou": "Членовите на овој курс можат да го видат вашето име и профил.",
+    "practiceStartWordCount": "{count, plural, =1{збор за вежбање} other{зборови за вежбање}}",
+    "practiceStartGrammarCount": "{count, plural, =1{граматичка точка за вежбање} other{граматички точки за вежбање}}",
+    "practiceStartExerciseTypes": "Видови вежби"
 }

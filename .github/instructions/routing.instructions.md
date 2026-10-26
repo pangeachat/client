@@ -49,6 +49,7 @@ Learners use panels that open over one world map, on any screen size. Outside li
 
 - Leaving practice keeps the session and its clock running, so looking up answers costs time; only ending asks to confirm. Gabby.
 - During vocab or grammar practice, that tracker shows the timer and resumes practice instead of opening analytics, so learners cannot look up answers. Gabby.
+- A session goes live when its clock starts. Practice opens on a [start page](practice-exercises.instructions.md#start-page); until Start, replacing the session asks nothing and its section's analytics stays open. Gabby.
 
 ### Single-column (narrow and mobile) mode
 

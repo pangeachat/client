@@ -10988,5 +10988,8 @@
     "openCourse": "Odpri tečaj",
     "centralCourseJoinedTitle": "Pridružili ste se tečaju {course}",
     "centralCourseJoinedBody": "To je Pangein tečaj za učence {language}. Njegovi člani lahko vidijo vaše ime in profil.",
-    "centralCourseMembersSeeYou": "Člani tega tečaja lahko vidijo vaše ime in profil."
+    "centralCourseMembersSeeYou": "Člani tega tečaja lahko vidijo vaše ime in profil.",
+    "practiceStartWordCount": "{count, plural, =1{beseda za vajo} other{besed za vajo}}",
+    "practiceStartGrammarCount": "{count, plural, =1{gramatična točka za vajo} other{gramatičnih točk za vajo}}",
+    "practiceStartExerciseTypes": "Vrste vaj"
 }

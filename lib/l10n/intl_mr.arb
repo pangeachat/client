@@ -2508,5 +2508,8 @@
     "openCourse": "कोर्स उघडा",
     "centralCourseJoinedTitle": "तुम्ही {course} मध्ये सामील झाला आहात",
     "centralCourseJoinedBody": "हा {language} शिकणाऱ्यांसाठी पँजियाचा कोर्स आहे. त्याचे सदस्य तुमचे नाव आणि प्रोफाइल पाहू शकतात.",
-    "centralCourseMembersSeeYou": "या कोर्सचे सदस्य तुमचे नाव आणि प्रोफाइल पाहू शकतात."
+    "centralCourseMembersSeeYou": "या कोर्सचे सदस्य तुमचे नाव आणि प्रोफाइल पाहू शकतात.",
+    "practiceStartWordCount": "{count, plural, =1{सराव करण्यासाठी शब्द} other{सराव करण्यासाठी शब्द}}",
+    "practiceStartGrammarCount": "{count, plural, =1{सराव करण्यासाठी व्याकरण मुद्दा} other{सराव करण्यासाठी व्याकरण मुद्दे}}",
+    "practiceStartExerciseTypes": "व्यायामाचे प्रकार"
 }

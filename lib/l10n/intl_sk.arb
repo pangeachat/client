@@ -10988,5 +10988,8 @@
     "openCourse": "Otvoriť kurz",
     "centralCourseJoinedTitle": "Pripojili ste sa ku kurzu {course}",
     "centralCourseJoinedBody": "Je to kurz Pangea pre študentov jazyka {language}. Jeho členovia môžu vidieť vaše meno a profil.",
-    "centralCourseMembersSeeYou": "Členovia tohto kurzu môžu vidieť vaše meno a profil."
+    "centralCourseMembersSeeYou": "Členovia tohto kurzu môžu vidieť vaše meno a profil.",
+    "practiceStartWordCount": "{count, plural, =1{slovo na precvičenie} other{slov na precvičenie}}",
+    "practiceStartGrammarCount": "{count, plural, =1{gramatický bod na precvičenie} other{gramatické body na precvičenie}}",
+    "practiceStartExerciseTypes": "Typy cvičení"
 }

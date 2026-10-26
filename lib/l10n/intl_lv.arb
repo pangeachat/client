@@ -10046,5 +10046,8 @@
     "openCourse": "Atvērt kursu",
     "centralCourseJoinedTitle": "Esat pievienojies kursam {course}",
     "centralCourseJoinedBody": "Tas ir Pangea kurss valodu apguvējiem {language}. Tā dalībnieki var redzēt jūsu vārdu un profilu.",
-    "centralCourseMembersSeeYou": "Šī kursa dalībnieki var redzēt jūsu vārdu un profilu."
+    "centralCourseMembersSeeYou": "Šī kursa dalībnieki var redzēt jūsu vārdu un profilu.",
+    "practiceStartWordCount": "{count, plural, =1{vārds, ko praktizēt} other{vārdi, ko praktizēt}}",
+    "practiceStartGrammarCount": "{count, plural, =1{gramatikas punkts, ko praktizēt} other{gramatikas punkti, ko praktizēt}}",
+    "practiceStartExerciseTypes": "Vingrinājumu veidi"
 }

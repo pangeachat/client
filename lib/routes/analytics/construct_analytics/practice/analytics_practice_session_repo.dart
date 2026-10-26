@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/foundation.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
@@ -10,10 +8,12 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar_error_target_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar_match_target_generator.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_skills_store.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_audio_target_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_meaning_target_generator.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
@@ -35,11 +35,16 @@ class AnalyticsPracticeSessionRepo {
   /// from the plan for each word they have never used, so a Mission's words
   /// can be practised before they have come up in a conversation. Grammar
   /// practice has no vocabulary to scope by and ignores the Mission.
+  ///
+  /// A vocab session practices only the [skills] the learner has on at the
+  /// start page, among those this device has words for; when none of them
+  /// has words, it falls back to every skill that does.
   static Future<AnalyticsPracticeSessionModel> get(
     ConstructTypeEnum type,
     LanguageModel userL1,
     LanguageModel userL2, {
     String? missionId,
+    Set<LearningSkillsEnum> skills = PracticeSkillsStore.vocabSkills,
   }) async {
     if (!MatrixState
         .pangeaController
@@ -76,39 +81,49 @@ class AnalyticsPracticeSessionRepo {
     // Decided once, at the start: the session keeps this mode if the
     // connection comes or goes while it runs.
     final offline = ConnectionStatusController.instance.cannotReachPangea;
+    var sessionSkills = <LearningSkillsEnum>{};
+    var availableSkills = <LearningSkillsEnum>{};
 
     if (offline && type == ConstructTypeEnum.vocab) {
       await LemmaInfoRepo.instance.cacheReady;
       targets.addAll(
         await VocabMeaningTargetGenerator.get(vocabConstructs, offline: true),
       );
+      // Offline a session has meaning exercises only
+      // (practice-exercises.instructions.md, "Offline Practice").
+      sessionSkills = availableSkills = {LearningSkillsEnum.reading};
     } else if (type == ConstructTypeEnum.vocab) {
-      // About a third each of listening, read-aloud and meaning, by count:
-      // speaking is in every session without an item that needs a microphone
-      // and the network dominating it (practice-exercises.instructions.md,
-      // "Speaking practice"). Listening and read-aloud share the one pool of
-      // example-bearing words; meaning fills whatever is left.
       final totalNeeded = AnalyticsPracticeConstants.targetsToGenerate;
-      final thirdNeeded = (totalNeeded / 3).ceil();
-
       final exampleTargets = await VocabAudioTargetGenerator.get(
         vocabConstructs,
       );
-      final spokenTargets = alternateListeningAndReadAloud(
-        exampleTargets,
-        each: thirdNeeded,
-      );
-
-      final vocabNeeded = totalNeeded - spokenTargets.length;
-      final vocabTargets = await VocabMeaningTargetGenerator.get(
+      final meaningTargets = await VocabMeaningTargetGenerator.get(
         vocabConstructs,
       );
-      final vocabCount = min(vocabTargets.length, vocabNeeded);
 
-      targets.addAll(spokenTargets);
-      targets.addAll(vocabTargets.take(vocabCount));
+      availableSkills = {
+        // A Mission's words the learner has never used still get meaning
+        // exercises from the plan, below.
+        if (meaningTargets.isNotEmpty || scope != null)
+          LearningSkillsEnum.reading,
+        if (exampleTargets.isNotEmpty) ...{
+          LearningSkillsEnum.hearing,
+          LearningSkillsEnum.speaking,
+        },
+      };
+      sessionSkills = skills.intersection(availableSkills);
+      if (sessionSkills.isEmpty) sessionSkills = availableSkills;
 
-      if (scope != null) {
+      targets.addAll(
+        splitVocabTargets(
+          exampleTargets: exampleTargets,
+          meaningTargets: meaningTargets,
+          skills: sessionSkills,
+          total: totalNeeded,
+        ),
+      );
+
+      if (scope != null && sessionSkills.contains(LearningSkillsEnum.reading)) {
         // The Mission's words the learner has never used — no construct, so
         // no example message — as meaning exercises from the plan's own
         // lemma and part of speech. Phrases are skipped: the meaning
@@ -185,30 +200,58 @@ class AnalyticsPracticeSessionRepo {
       missionId: scope?.objective.id,
       missionLabel: scope?.objective.objective,
       offline: offline,
+      skills: sessionSkills,
+      availableSkills: availableSkills,
     );
     return session;
   }
 
+  /// An even share of [total] for each of [skills], by count: speaking is in
+  /// every session that has it on without an item that needs a microphone
+  /// and the network dominating it (practice-exercises.instructions.md,
+  /// "Speaking practice"). Listening and read-aloud share the one pool of
+  /// example-bearing words; meaning fills whatever is left when it is on.
+  @visibleForTesting
+  static List<AnalyticsPracticeTarget> splitVocabTargets({
+    required List<AnalyticsPracticeTarget> exampleTargets,
+    required List<AnalyticsPracticeTarget> meaningTargets,
+    required Set<LearningSkillsEnum> skills,
+    required int total,
+  }) {
+    if (skills.isEmpty) return [];
+    final share = (total / skills.length).ceil();
+    final spoken = alternateListeningAndReadAloud(
+      exampleTargets,
+      listening: skills.contains(LearningSkillsEnum.hearing) ? share : 0,
+      readAloud: skills.contains(LearningSkillsEnum.speaking) ? share : 0,
+    ).take(total).toList();
+    if (!skills.contains(LearningSkillsEnum.reading)) return spoken;
+    return [...spoken, ...meaningTargets.take(total - spoken.length)];
+  }
+
   /// Listening and read-aloud both need an example-bearing word and the pool
   /// can be small, so the two take turns down the one priority order,
-  /// listening first, up to [each] apiece. Giving listening its whole share
-  /// first starved read-aloud whenever the pool held [each] words or fewer.
+  /// listening first, up to [listening] and [readAloud] items. Giving
+  /// listening its whole share first starved read-aloud whenever the pool
+  /// held no more words than that share.
   @visibleForTesting
   static List<AnalyticsPracticeTarget> alternateListeningAndReadAloud(
     List<AnalyticsPracticeTarget> exampleTargets, {
-    required int each,
+    required int listening,
+    required int readAloud,
   }) {
-    final listening = <AnalyticsPracticeTarget>[];
-    final readAloud = <AnalyticsPracticeTarget>[];
+    final listeningTargets = <AnalyticsPracticeTarget>[];
+    final readAloudTargets = <AnalyticsPracticeTarget>[];
     for (final target in exampleTargets) {
-      final listeningFull = listening.length >= each;
-      final readAloudFull = readAloud.length >= each;
+      final listeningFull = listeningTargets.length >= listening;
+      final readAloudFull = readAloudTargets.length >= readAloud;
       if (listeningFull && readAloudFull) break;
       if (readAloudFull ||
-          (!listeningFull && listening.length <= readAloud.length)) {
-        listening.add(target);
+          (!listeningFull &&
+              listeningTargets.length <= readAloudTargets.length)) {
+        listeningTargets.add(target);
       } else {
-        readAloud.add(
+        readAloudTargets.add(
           AnalyticsPracticeTarget(
             target: PracticeTarget(
               tokens: target.target.tokens,
@@ -218,7 +261,7 @@ class AnalyticsPracticeSessionRepo {
         );
       }
     }
-    return [...listening, ...readAloud];
+    return [...listeningTargets, ...readAloudTargets];
   }
 
   /// Whether the connection banner may offer an offline vocab session: the app

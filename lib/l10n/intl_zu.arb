@@ -2508,5 +2508,8 @@
     "openCourse": "Vula ikhosi",
     "centralCourseJoinedTitle": "Ujoyine {course}",
     "centralCourseJoinedBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho nephrofayili yakho.",
-    "centralCourseMembersSeeYou": "Amalungu ale khosi angabona igama lakho nephrofayili yakho."
+    "centralCourseMembersSeeYou": "Amalungu ale khosi angabona igama lakho nephrofayili yakho.",
+    "practiceStartWordCount": "{count, plural, =1{igama lokuzijwayeza} other{amagama okuzijwayeza}}",
+    "practiceStartGrammarCount": "{count, plural, =1{iphuzu lohlelo lolimi lokuzijwayeza} other{amaphuzu ohlelo lolimi okuzijwayeza}}",
+    "practiceStartExerciseTypes": "Izinhlobo zokuzivocavoca"
 }

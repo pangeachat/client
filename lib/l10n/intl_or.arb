@@ -2508,5 +2508,8 @@
     "openCourse": "କୋର୍ସ ଖୋଲନ୍ତୁ",
     "centralCourseJoinedTitle": "ଆପଣ {course} ରେ ଯୋଗ ଦେଇଛନ୍ତି",
     "centralCourseJoinedBody": "ଏହା {language} ଶିକ୍ଷାର୍ଥୀଙ୍କ ପାଇଁ Pangea ର କୋର୍ସ। ଏହାର ସଦସ୍ୟମାନେ ଆପଣଙ୍କ ନାମ ଏବଂ ପ୍ରୋଫାଇଲ୍ ଦେଖିପାରିବେ।",
-    "centralCourseMembersSeeYou": "ଏହି କୋର୍ସର ସଦସ୍ୟମାନେ ଆପଣଙ୍କ ନାମ ଏବଂ ପ୍ରୋଫାଇଲ୍ ଦେଖିପାରିବେ।"
+    "centralCourseMembersSeeYou": "ଏହି କୋର୍ସର ସଦସ୍ୟମାନେ ଆପଣଙ୍କ ନାମ ଏବଂ ପ୍ରୋଫାଇଲ୍ ଦେଖିପାରିବେ।",
+    "practiceStartWordCount": "{count, plural, =1{ଅଭ୍ୟାସ କରିବାକୁ ଶବ୍ଦ} other{ଅଭ୍ୟାସ କରିବାକୁ ଶବ୍ଦ}}",
+    "practiceStartGrammarCount": "{count, plural, =1{ଅଭ୍ୟାସ କରିବାକୁ ବ୍ୟାକରଣ ବିନ୍ଦୁ} other{ଅଭ୍ୟାସ କରିବାକୁ ବ୍ୟାକରଣ ବିନ୍ଦୁ}}",
+    "practiceStartExerciseTypes": "ଅଭ୍ୟାସ ପ୍ରକାର"
 }

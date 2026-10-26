@@ -10957,5 +10957,8 @@
     "openCourse": "פתח קורס",
     "centralCourseJoinedTitle": "הצטרפת לקורס {course}",
     "centralCourseJoinedBody": "זהו הקורס של Pangea ללומדי {language}. חברי הקורס יכולים לראות את שמך ואת הפרופיל שלך.",
-    "centralCourseMembersSeeYou": "חברי הקורס הזה יכולים לראות את שמך ואת הפרופיל שלך."
+    "centralCourseMembersSeeYou": "חברי הקורס הזה יכולים לראות את שמך ואת הפרופיל שלך.",
+    "practiceStartWordCount": "{count, plural, =1{מילה לתרגול} other{מילים לתרגול}}",
+    "practiceStartGrammarCount": "{count, plural, =1{נקודת דקדוק לתרגול} other{נקודות דקדוק לתרגול}}",
+    "practiceStartExerciseTypes": "סוגי תרגילים"
 }

@@ -2508,5 +2508,8 @@
     "openCourse": "Vhura kosi",
     "centralCourseJoinedTitle": "Wabatana ne {course}",
     "centralCourseJoinedBody": "Iyi ikosi yePangea yevadzidzi ve {language}. Nhengo dzayo dzinogona kuona zita rako neprofile yako.",
-    "centralCourseMembersSeeYou": "Nhengo dzekosi iyi dzinogona kuona zita rako neprofile yako."
+    "centralCourseMembersSeeYou": "Nhengo dzekosi iyi dzinogona kuona zita rako neprofile yako.",
+    "practiceStartWordCount": "{count, plural, =1{izwi rekudzidzira} other{mazwi ekudzidzira}}",
+    "practiceStartGrammarCount": "{count, plural, =1{poindi yegirama yekudzidzira} other{mapoindi egirama ekudzidzira}}",
+    "practiceStartExerciseTypes": "Mhando dzekudzidzira"
 }

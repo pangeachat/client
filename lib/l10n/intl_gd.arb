@@ -2508,5 +2508,8 @@
     "openCourse": "Fosgail an cùrsa",
     "centralCourseJoinedTitle": "Tha thu air a dhol a-steach do {course}",
     "centralCourseJoinedBody": "Is e cùrsa Pangea a th' ann do luchd-ionnsachaidh {language}. Chì na buill d' ainm agus do phròifil.",
-    "centralCourseMembersSeeYou": "Chì buill a' chùrsa seo d' ainm agus do phròifil."
+    "centralCourseMembersSeeYou": "Chì buill a' chùrsa seo d' ainm agus do phròifil.",
+    "practiceStartWordCount": "{count, plural, =1{facal ri chleachdadh} other{faclan ri chleachdadh}}",
+    "practiceStartGrammarCount": "{count, plural, =1{puing gràmair ri chleachdadh} other{puingean gràmair ri chleachdadh}}",
+    "practiceStartExerciseTypes": "Seòrsaichean eacarsaich"
 }

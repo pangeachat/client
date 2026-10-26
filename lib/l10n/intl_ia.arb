@@ -10979,5 +10979,8 @@
     "openCourse": "Aperi curso",
     "centralCourseJoinedTitle": "Tu ha juncte {course}",
     "centralCourseJoinedBody": "Illo es le curso de Pangea pro apprededores de {language}. Su membros pote vider tu nomine e profilo.",
-    "centralCourseMembersSeeYou": "Membros de iste curso pote vider tu nomine e profilo."
+    "centralCourseMembersSeeYou": "Membros de iste curso pote vider tu nomine e profilo.",
+    "practiceStartWordCount": "{count, plural, =1{parola a practicar} other{parolas a practicar}}",
+    "practiceStartGrammarCount": "{count, plural, =1{puncto grammatical a practicar} other{punctos grammatical a practicar}}",
+    "practiceStartExerciseTypes": "Typos de exercitios"
 }

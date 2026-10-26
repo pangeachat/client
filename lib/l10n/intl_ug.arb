@@ -2508,5 +2508,8 @@
     "openCourse": "دەرستىن ئاچ",
     "centralCourseJoinedTitle": "سىز {course} غا قاتناشتىڭىز",
     "centralCourseJoinedBody": "بۇ پانگېيانىڭ {language} ئۆگەنگۈچىلەر ئۈچۈن تەييارلىغان دەرسى. ئۇنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ.",
-    "centralCourseMembersSeeYou": "بۇ دەرسنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ."
+    "centralCourseMembersSeeYou": "بۇ دەرسنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ.",
+    "practiceStartWordCount": "{count, plural, =1{مەشقى قىلىدىغان سۆز} other{مەشقى قىلىدىغان سۆزلەر}}",
+    "practiceStartGrammarCount": "{count, plural, =1{مەشقى قىلىدىغان گرامماتىكا نۇقتىسى} other{مەشقى قىلىدىغان گرامماتىكا نۇقتىلىرى}}",
+    "practiceStartExerciseTypes": "مەشقى تۈرلىرى"
 }

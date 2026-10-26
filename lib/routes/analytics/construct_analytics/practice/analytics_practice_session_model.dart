@@ -4,6 +4,7 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
@@ -146,6 +147,12 @@ class AnalyticsPracticeSessionModel {
   /// practice-exercises.instructions.md, "Offline Practice".
   final bool offline;
 
+  /// The exercise types this vocab session practices, and those this device
+  /// had words for when it was picked, for the start page's chips; both
+  /// empty for grammar. See practice-exercises.instructions.md, "Start page".
+  final Set<LearningSkillsEnum> skills;
+  final Set<LearningSkillsEnum> availableSkills;
+
   AnalyticsPracticeSessionState state;
 
   AnalyticsPracticeSessionModel({
@@ -157,6 +164,8 @@ class AnalyticsPracticeSessionModel {
     this.missionId,
     this.missionLabel,
     this.offline = false,
+    this.skills = const {},
+    this.availableSkills = const {},
     AnalyticsPracticeSessionState? state,
   }) : state = state ?? const AnalyticsPracticeSessionState();
 
@@ -182,6 +191,22 @@ class AnalyticsPracticeSessionModel {
   }
 
   bool get loadFailed => isComplete && state.currentIndex == 0;
+
+  /// The distinct words (vocab) or grammar points among the exercises the
+  /// session plans to show, which the start page counts. A spare standing in
+  /// for a failed or skipped exercise can change them a little.
+  List<PracticeTarget> get plannedPoints {
+    final seen = <Object>{};
+    return [
+      for (final planned in practiceTargets.take(_completionGoal))
+        if (seen.add(
+          type == ConstructTypeEnum.vocab
+              ? planned.target.tokens.first.vocabConstructID
+              : planned.target,
+        ))
+          planned.target,
+    ];
+  }
 
   double get progress {
     final possibleCompletions =
