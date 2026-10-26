@@ -242,4 +242,82 @@ void main() {
       },
     );
   });
+
+  group('grantAnalyticsAccessByAnalyticsRoom', () {
+    // The new-student sequence: the student joins a required course before
+    // they have an analytics room (the join-time grant has nothing to grant
+    // into), and their first practice creates the room, which fires this. The
+    // course room's own `pangea.course_plan` carries the target language, so
+    // the grant must not hinge on the course-plan read from the CMS, which
+    // the test environment (like a failing or malformed read) cannot serve.
+    test(
+      'grants every required course whose own l2 matches the new room',
+      () async {
+        client.rooms = [courseRoom(), analyticsRoom(analyticsRoomId)];
+
+        await client.grantAnalyticsAccessByAnalyticsRoom(analyticsRoomId, 'de');
+
+        expect(grants, [
+          {
+            'mx_course_id': courseRoomId,
+            'mx_analytics_room_id': analyticsRoomId,
+          },
+        ]);
+      },
+    );
+
+    test('does not grant a required course in another language', () async {
+      client.rooms = [courseRoom(), analyticsRoom(analyticsRoomId)];
+
+      await client.grantAnalyticsAccessByAnalyticsRoom(analyticsRoomId, 'es');
+
+      expect(grants, isEmpty);
+    });
+
+    test('does not grant a course that does not require access', () async {
+      client.rooms = [
+        courseRoom(requireAnalyticsAccess: false),
+        analyticsRoom(analyticsRoomId),
+      ];
+
+      await client.grantAnalyticsAccessByAnalyticsRoom(analyticsRoomId, 'de');
+
+      expect(grants, isEmpty);
+    });
+
+    test('logs when a required course language cannot be resolved', () async {
+      final printed = <String>[];
+      final original = debugPrint;
+      debugPrint = (String? message, {int? wrapWidth}) {
+        if (message != null) printed.add(message);
+      };
+      addTearDown(() => debugPrint = original);
+
+      final room = courseRoom();
+      // A course plan event with no `l2`, and a course-plan read that does
+      // not resolve: nothing says which language the course is in.
+      room.setState(
+        Event(
+          type: PangeaEventTypes.coursePlan,
+          content: CoursePlanEvent(uuid: 'quest-1').toJson(),
+          senderId: userId,
+          eventId: '\$coursePlanNoL2',
+          originServerTs: DateTime.utc(2026, 1, 2),
+          stateKey: '',
+          room: room,
+        ),
+      );
+      client.rooms = [room, analyticsRoom(analyticsRoomId)];
+
+      await client.grantAnalyticsAccessByAnalyticsRoom(analyticsRoomId, 'de');
+
+      expect(grants, isEmpty);
+      expect(
+        printed,
+        contains(
+          contains('Course language unresolved; analytics grant skipped'),
+        ),
+      );
+    });
+  });
 }
