@@ -138,17 +138,17 @@ class AnalyticsPracticeSessionRepo {
 
       if (words.isEmpty) throw InsufficientDataException(offline: offline);
 
-      // The words the session plans to show, and its spares, each in an
-      // order fixed for the session: the chips re-deal their exercises, but
+      // Shuffled once, so the ten the session plans to show are a random ten
+      // of those picked rather than always the top-ranked, which seldom
+      // include the words a learner has given an emoji to. The order is then
+      // fixed for the session: the chips re-deal the words' exercises, but
       // never reorder or replace them.
-      final groupSize = AnalyticsPracticeConstants.practiceGroupSize;
-      final planned = words.take(groupSize).toList()..shuffle();
-      final spares = words.skip(groupSize).toList()..shuffle();
+      words.shuffle();
       // startedAt is deliberately left unset here — selection is not the
       // start of practice. The clock is stamped when the first exercise
       // paints.
       return AnalyticsPracticeSessionModel.vocab(
-        words: [...planned, ...spares],
+        words: words,
         skills: skills,
         userL1: userL1Code,
         userL2: userL2Code,
