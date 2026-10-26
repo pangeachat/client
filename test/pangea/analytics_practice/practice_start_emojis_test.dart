@@ -97,6 +97,31 @@ void main() {
     expect(placeholders, findsNothing);
   });
 
+  testWidgets('an emoji already shown is not repeated', (tester) async {
+    saved = {'a': '⌛', 'b': '⏰', 'c': '⌛'};
+    await pump(tester, ['a', 'b', 'c']);
+
+    expect(find.text('⌛'), findsOneWidget);
+    expect(find.text('⏰'), findsOneWidget);
+    expect(placeholders, findsNothing);
+  });
+
+  testWidgets('a repeat holds a slot only while fetches run', (tester) async {
+    saved = {'a': '⌛'};
+    await pump(tester, ['a', 'b', 'c']);
+
+    fetches['b']!.complete('⌛');
+    await tester.pumpAndSettle();
+    expect(find.text('⌛'), findsOneWidget);
+    expect(placeholders, findsNWidgets(2));
+
+    fetches['c']!.complete('⏰');
+    await tester.pumpAndSettle();
+    expect(find.text('⌛'), findsOneWidget);
+    expect(find.text('⏰'), findsOneWidget);
+    expect(placeholders, findsNothing);
+  });
+
   testWidgets('offline only saved emojis are used', (tester) async {
     saved = {'a': '🍎'};
     await pump(tester, ['a', 'b'], offline: true);

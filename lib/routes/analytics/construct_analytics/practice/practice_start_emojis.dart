@@ -8,7 +8,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 /// else the first in its dictionary entry, fetching the entries this device
 /// has not saved (practice-exercises.instructions.md, "Start page"). Until
 /// every fetch settles each word holds a slot, so the page does not jump;
-/// then the words with no emoji drop out.
+/// then the words with no emoji, or one already shown, drop out.
 class PracticeStartEmojis extends StatefulWidget {
   final List<ConstructIdentifier> words;
 
@@ -94,9 +94,14 @@ class _PracticeStartEmojisState extends State<PracticeStartEmojis> {
   @override
   Widget build(BuildContext context) {
     final settled = _pending == 0;
-    if (settled && _emojis.every((emoji) => emoji == null)) {
-      return const SizedBox.shrink();
-    }
+    // Each emoji shows once. Until every fetch settles, a word with no emoji
+    // yet, or one already shown, keeps a placeholder slot.
+    final shown = <String>{};
+    final slots = <String?>[
+      for (final emoji in _emojis)
+        if (emoji != null && shown.add(emoji)) emoji else if (!settled) null,
+    ];
+    if (slots.isEmpty) return const SizedBox.shrink();
     final placeholderColor = Theme.of(
       context,
     ).colorScheme.surfaceContainerHighest;
@@ -108,23 +113,22 @@ class _PracticeStartEmojisState extends State<PracticeStartEmojis> {
           spacing: 12.0,
           runSpacing: 12.0,
           children: [
-            for (final emoji in _emojis)
-              if (emoji != null || !settled)
-                SizedBox.square(
-                  dimension: _slotSize,
-                  child: Center(
-                    child: emoji != null
-                        ? Text(emoji, style: const TextStyle(fontSize: 40.0))
-                        : Container(
-                            width: 24.0,
-                            height: 24.0,
-                            decoration: BoxDecoration(
-                              color: placeholderColor,
-                              shape: BoxShape.circle,
-                            ),
+            for (final emoji in slots)
+              SizedBox.square(
+                dimension: _slotSize,
+                child: Center(
+                  child: emoji != null
+                      ? Text(emoji, style: const TextStyle(fontSize: 40.0))
+                      : Container(
+                          width: 24.0,
+                          height: 24.0,
+                          decoration: BoxDecoration(
+                            color: placeholderColor,
+                            shape: BoxShape.circle,
                           ),
-                  ),
+                        ),
                 ),
+              ),
           ],
         ),
       ),
