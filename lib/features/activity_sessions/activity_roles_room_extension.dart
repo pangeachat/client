@@ -155,6 +155,12 @@ extension ActivityRolesRoomExtension on Room {
     assignedRoleCount: assignedRoles?.length ?? 0,
   );
 
+  /// The session has ended: every non-bot role has finished or its occupant
+  /// has left the room. There is no stored "ended" field; this is computed
+  /// from role state and membership. Waiting for every human is deliberate,
+  /// so one learner cannot end the activity for the room. It gates the
+  /// summary request and the automatic save (pangeachat/.github
+  /// activities.instructions.md, "Saving and stars").
   bool get isActivityFinished {
     final roles = activityRoles?.roles.values.where(
       (r) => r.userId != BotName.byEnvironment,
