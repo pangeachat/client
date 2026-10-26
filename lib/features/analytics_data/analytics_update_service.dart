@@ -21,6 +21,7 @@ import 'package:fluffychat/features/connection_status/connection_status_controll
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/quests/course_progress_writer.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -102,6 +103,9 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
 
   Completer<void>? _updateCompleter;
   Timer? _periodicTimer;
+  late final CourseProgressWriter _courseProgress = CourseProgressWriter(
+    readUses: dataService.getUses,
+  );
 
   /// What the connection banner says. Uploads pause while it says the
   /// connection is lost, and run once when it returns.
@@ -236,6 +240,14 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     }
   }
 
+  /// Whether this service's account is the one the app shows. The Mission XP
+  /// a course check reads is held once for the app, for that account only, so
+  /// a background account checking would file another account's figures.
+  bool get _isActiveAccount =>
+      MatrixState.isPangeaControllerInitialized &&
+      MatrixState.pangeaController.userController.client.userID ==
+          dataService.accountUserId;
+
   Future<Room?> _getAnalyticsRoom({LanguageModel? l2Override}) async {
     final l2 = l2Override ?? _l2;
     if (l2 == null) return null;
@@ -320,8 +332,12 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     }
   }
 
+  /// Uploads every language's pending uses, then checks the course progress
+  /// records ([updateCourseProgress]) unless [checkCourseProgress] is false,
+  /// as it is for the save before logout.
   Future<void> sendLocalAnalyticsToAnalyticsRoom({
     LanguageModel? l2Override,
+    bool checkCourseProgress = true,
   }) async {
     final lang = l2Override ?? _l2;
     if (lang == null) {
@@ -351,6 +367,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     }
 
     _updateCompleter = Completer<void>();
+    var uploaded = false;
     try {
       // A language switch made while offline leaves the old language's
       // batches here, and nothing else sends them unless the learner switches
@@ -381,6 +398,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
           );
         }
       }
+      uploaded = true;
     } on AnalyticsDatabaseClosedException catch (err, s) {
       // The store is gone and this instance cannot revive it, so every later
       // tick would fail identically. Stop the timer rather than let a dead
@@ -404,6 +422,36 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     } finally {
       _updateCompleter?.complete();
       _updateCompleter = null;
+    }
+    // Whether or not there were uses to send, but only once the upload is
+    // done: the check reads outlines over the network, and an upload that
+    // waited on it would stall behind a slow server. Not for the language a
+    // switch is leaving, since the Mission XP the check reads is the current
+    // language's.
+    if (checkCourseProgress &&
+        uploaded &&
+        lang.langCodeShort == _l2OrNull?.langCodeShort) {
+      unawaited(updateCourseProgress());
+    }
+  }
+
+  /// Checks each joined course's Mission figures and stores the ones that
+  /// changed for the teacher dashboard ([CourseProgressWriter]): after every
+  /// upload, and when a saved session starts to count. Reports its own
+  /// failures: both callers start it without waiting for it.
+  Future<void> updateCourseProgress() async {
+    try {
+      final lang = _l2OrNull;
+      if (lang == null || !dataService.isLogged || !_isActiveAccount) return;
+      // The reconnect flush checks again.
+      if (_connectionStatus.value.isLost) return;
+      final analyticsRoom = dataService.getAnalyticsRoomLocal(lang);
+      // Nothing has been uploaded in this language yet; the upload that
+      // creates its room checks again.
+      if (analyticsRoom == null) return;
+      await _courseProgress.update(analyticsRoom, lang.langCodeShort);
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
     }
   }
 
