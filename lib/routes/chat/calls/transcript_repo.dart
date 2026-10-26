@@ -298,6 +298,11 @@ Future<CallTranscript> fetchCallTranscript({
       // A COUNT and never the device ids. Every log in this feature keeps
       // participant identity out, and the call key already distinguishes the
       // halves of one call, which is all the diagnosis needs.
+      //
+      // It UNDERCOUNTS, in the direction that matters: it sees only halves
+      // that name a device, so it catches two updated devices that both
+      // carried on and is blind to two older builds. Zero is not evidence of
+      // no duplicates (call-device-ownership doc: "No credit backstop").
       'devices ${half.deviceCount})',
     );
   }
