@@ -189,26 +189,30 @@ void main() {
       ConstructUseTypeEnum.incLM,
     ];
 
-    CourseLoOutline course(int xpToComplete, {required bool withCopy}) =>
-        CourseLoOutline(
-          courseId: 'course',
-          orderedLoIds: const ['lo1', 'lo2'],
-          activityIdsByLo: const {
-            'lo1': {'a1', 'a2'},
-            'lo2': {'b1'},
-          },
-          lemmasByLo: const {
-            'lo1': {'casa', 'perro'},
-            'lo2': {'viaje'},
-          },
-          xpToComplete: xpToComplete,
-          credit: withCopy
-              ? const CourseCredit(
-                  family: {'a1': 'a1', 'a1-copy': 'a1', 'a2': 'a2', 'b1': 'b1'},
-                  shownIds: {'a1', 'a2', 'b1'},
-                )
-              : CourseCredit.none,
-        );
+    CourseLoOutline course(
+      int xpToComplete, {
+      required bool withCopy,
+      required bool sharedWord,
+    }) => CourseLoOutline(
+      courseId: 'course',
+      orderedLoIds: const ['lo1', 'lo2'],
+      activityIdsByLo: const {
+        'lo1': {'a1', 'a2'},
+        'lo2': {'b1'},
+      },
+      // A word two Missions share counts toward both.
+      lemmasByLo: {
+        'lo1': const {'casa', 'perro'},
+        'lo2': {'viaje', if (sharedWord) 'casa'},
+      },
+      xpToComplete: xpToComplete,
+      credit: withCopy
+          ? const CourseCredit(
+              family: {'a1': 'a1', 'a1-copy': 'a1', 'a2': 'a2', 'b1': 'b1'},
+              shownIds: {'a1', 'a2', 'b1'},
+            )
+          : CourseCredit.none,
+    );
 
     /// The ring's count at [moment], by the resolver, over what existed then.
     int ringXpAt(
@@ -216,6 +220,7 @@ void main() {
       CourseLoOutline outline,
       List<OneConstructUse> uses,
       List<SavedSessionXp> sessions,
+      String missionId,
     ) {
       final usesThen = [
         for (final use in uses)
@@ -233,7 +238,7 @@ void main() {
               ),
         ]),
         practiceXpByLemma: MissionXpCache.practiceXpByLemmaOf(usesThen),
-      ).quests.first.rollup['lo1']!.xp;
+      ).quests.first.rollup[missionId]!.xp;
     }
 
     for (var seed = 0; seed < 200; seed++) {
@@ -267,24 +272,27 @@ void main() {
         final outline = course(
           10 + random.nextInt(120),
           withCopy: random.nextBool(),
+          sharedWord: random.nextBool(),
         );
         final moments = {
           for (final s in sessions) s.savedAt,
           for (final u in uses) u.timeStamp,
         }.toList()..sort();
-        final expected = moments
-            .where(
-              (m) =>
-                  ringXpAt(m, outline, uses, sessions) >= outline.xpToComplete,
-            )
-            .firstOrNull;
-        expect(
-          MissionCompletionReplay(
-            uses: uses,
-            sessions: sessions,
-          ).firstReached(outline, 'lo1'),
-          expected,
-        );
+        final replay = MissionCompletionReplay(uses: uses, sessions: sessions);
+        for (final missionId in outline.orderedLoIds) {
+          final expected = moments
+              .where(
+                (m) =>
+                    ringXpAt(m, outline, uses, sessions, missionId) >=
+                    outline.xpToComplete,
+              )
+              .firstOrNull;
+          expect(
+            replay.firstReached(outline, missionId),
+            expected,
+            reason: missionId,
+          );
+        }
       });
     }
   });

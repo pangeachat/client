@@ -9,13 +9,13 @@ import 'package:fluffychat/features/course_plans/courses/course_missions_event.d
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/course_progress_event.dart';
+import 'package:fluffychat/features/quests/course_progress_room_extension.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_completion_replay.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -149,12 +149,7 @@ class CourseProgressWriter {
         );
       }
       if (!next.changedSince(stored)) continue;
-      await client.setRoomStateWithKey(
-        analyticsRoom.id,
-        PangeaEventTypes.courseProgress,
-        course.id,
-        next.toJson(),
-      );
+      await analyticsRoom.setCourseProgress(course.id, next);
       _written[course.id] = next;
     }
   }
@@ -242,23 +237,7 @@ class CourseProgressWriter {
   /// The record stored for [courseId]: the room's, or what this run wrote
   /// after it when that write hasn't synced back yet.
   CourseProgressEvent? _storedFor(Room analyticsRoom, String courseId) {
-    final state = analyticsRoom.getState(
-      PangeaEventTypes.courseProgress,
-      courseId,
-    );
-    final synced = state == null
-        ? null
-        : CourseProgressEvent.fromJson(state.content);
-    if (state != null && synced == null) {
-      // Its dates can't be read, so they can't be kept; the next write
-      // replaces the record.
-      ErrorHandler.logErrorOnce(
-        key: 'course-progress-unreadable:$courseId',
-        e: 'Stored course progress record could not be read',
-        data: {'analyticsRoomId': analyticsRoom.id, 'courseRoomId': courseId},
-        level: SentryLevel.warning,
-      );
-    }
+    final synced = analyticsRoom.courseProgress(courseId);
     final written = _written[courseId];
     if (written == null) return synced;
     if (synced != null && !synced.computedAt.isBefore(written.computedAt)) {
