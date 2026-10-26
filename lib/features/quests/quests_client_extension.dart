@@ -1,16 +1,20 @@
 import 'dart:math';
 
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/quests/can_do_progress.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/features/quests/saved_session_xp.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
@@ -99,6 +103,20 @@ extension QuestsClientExtension on Client {
             (activityId: entry.key, xp: sessionXp(room, creditedXpByRoom)),
       ]);
 
+  /// Every saved session [userXpByActivity] counts, with when it was saved,
+  /// for replaying Mission XP over time (`MissionCompletionReplay`).
+  List<SavedSessionXp> get savedSessionXp => [
+    for (final entry in savedSessionsByActivity.entries)
+      for (final room in entry.value)
+        if (room.ownRoleState?.archivedAt case final savedAt?)
+          SavedSessionXp(
+            activityId: entry.key,
+            roomId: room.id,
+            savedAt: savedAt,
+            goalXp: kGoalXp * room.ownCompletedGoals.length,
+          ),
+  ];
+
   /// [userXpByActivity] split by source: the same saved sessions, with each
   /// room's chat, speaking and practice XP kept apart and the goal checkmarks
   /// on their own. Feeds the Mission meters' split by source.
@@ -177,6 +195,64 @@ extension QuestsClientExtension on Client {
       sum = sum + (byCanonical[id] ?? MissionXpBreakdown.zero);
     }
     return sum;
+  }
+
+  /// [outline]'s Missions for the course's progress record (client#9643):
+  /// each one's XP as its ring shows it, the split its meter shows, and
+  /// whether it shows as complete. A Mission the course shows no activity for
+  /// is included and never complete, since the course page gives it no star.
+  /// [outline] is the course's own ([QuestOutlineForCourse.forCourse]);
+  /// [xpByActivity] ([userXpByActivity]) and [byActivity]
+  /// ([cachedXpBreakdownByActivity]) are passed so several courses walk the
+  /// rooms once.
+  Map<String, CanDoProgress> canDoProgress(
+    QuestOutline outline, {
+    required int xpToComplete,
+    required Map<String, int> xpByActivity,
+    required Map<String, MissionXpBreakdown> byActivity,
+  }) {
+    final rollup =
+        resolveProgression(
+          outlines: [outline.toCourseLoOutline(xpToComplete: xpToComplete)],
+          xpByActivity: xpByActivity,
+          practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
+        ).quests.firstOrNull?.rollup ??
+        const {};
+    return {
+      for (final group in outline.groups)
+        group.objective.id: _canDoProgress(
+          group,
+          rollup[group.objective.id],
+          byActivity,
+        ),
+    };
+  }
+
+  CanDoProgress _canDoProgress(
+    QuestObjectiveGroup group,
+    MissionProgress? progress,
+    Map<String, MissionXpBreakdown> byActivity,
+  ) {
+    final breakdown = missionXpBreakdown(group, byActivity: byActivity);
+    // The split reads the resolver's inputs, so they only part on a bug; the
+    // record keeps the ring's figure, which is what the learner sees.
+    if (progress != null && progress.xp != breakdown.total) {
+      ErrorHandler.logErrorOnce(
+        key: 'mission-split-mismatch:${group.objective.id}',
+        e: 'A Mission\'s ring and its split disagree',
+        data: {
+          'missionId': group.objective.id,
+          'ringXp': progress.xp,
+          'splitXp': breakdown.total,
+        },
+        level: SentryLevel.warning,
+      );
+    }
+    return CanDoProgress(
+      xp: progress?.xp ?? breakdown.total,
+      breakdown: breakdown,
+      completed: progress?.satisfied ?? false,
+    );
   }
 
   /// [group]'s XP by the skill it exercised — writing, speaking, listening,

@@ -7,6 +7,7 @@ import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/quests/mission_room_xp.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
@@ -51,7 +52,8 @@ class MissionXpCache extends ChangeNotifier {
 
   /// The practice part of [creditedXpByRoom]: every other use in the room
   /// (message practice and the like). With [chatXpByRoom] and
-  /// [speakingXpByRoom] it sums to [creditedXpByRoom].
+  /// [speakingXpByRoom] it sums to [creditedXpByRoom]. Each part is floored at
+  /// zero per room ([MissionRoomXp.of]).
   Map<String, int> get practiceXpByRoom => _practiceXpByRoom;
 
   /// Room-less practice XP by lowercased lemma — what a Mission's word list
@@ -82,6 +84,15 @@ class MissionXpCache extends ChangeNotifier {
   /// re-reads as XP lands don't set it, so nothing flickers during play.
   /// Only once wired: an unwired cache has no read coming to clear it.
   bool get loading => _loading && _wired;
+
+  /// The language the maps were last read for.
+  String? _readLanguage;
+
+  /// The maps hold [language]'s XP, read in full. False before the first
+  /// read, while a re-read for a new language is pending, and for a cache
+  /// that was never wired — whose empty maps would read as zero XP.
+  bool hasReadFor(String language) =>
+      _wired && !_loading && _readLanguage == language;
 
   void _setLoading(bool value) {
     if (_loading == value) return;
@@ -159,6 +170,7 @@ class MissionXpCache extends ChangeNotifier {
     final controller = MatrixState.pangeaController;
     final language = controller.userController.userL2?.langCodeShort;
     if (language == null) {
+      _readLanguage = null;
       _publish(const {}, const {}, const {}, const {}, const {}, const {});
       return true;
     }
@@ -191,36 +203,25 @@ class MissionXpCache extends ChangeNotifier {
       _dirty = true;
       return false;
     }
-    final chatByRoom = <String, int>{};
-    final speakingByRoom = <String, int>{};
-    final practiceByRoom = <String, int>{};
+    final byRoom = MissionRoomXp.of(uses);
     final byLemma = practiceXpByLemmaOf(uses);
-    final skillByRoom = <String, Map<LearningSkillsEnum, int>>{};
     final skillByLemma = <String, Map<LearningSkillsEnum, int>>{};
     for (final use in uses) {
-      if (use.xp == 0) continue;
-      final roomId = use.metadata.roomId;
-      if (roomId == null) {
-        final lemma = QuestObjectiveGroup.lemmaKey(use.lemma);
-        // A word that credits nothing has no skills to show either, so the
-        // detail page's tiles still sum to its Practice share.
-        if (byLemma.containsKey(lemma)) _addSkill(skillByLemma, lemma, use);
-        continue;
+      if (use.xp == 0 || use.metadata.roomId != null) continue;
+      final lemma = QuestObjectiveGroup.lemmaKey(use.lemma);
+      // A word that credits nothing has no skills to show either, so the
+      // detail page's tiles still sum to its Practice share.
+      if (byLemma.containsKey(lemma)) {
+        MissionRoomXp.addSkill(skillByLemma, lemma, use);
       }
-      _addSkill(skillByRoom, roomId, use);
-      final bucket = use.useType.isChatUse
-          ? chatByRoom
-          : use.useType.skillsEnumType == LearningSkillsEnum.speaking
-          ? speakingByRoom
-          : practiceByRoom;
-      bucket[roomId] = (bucket[roomId] ?? 0) + use.xp;
     }
+    _readLanguage = language;
     _publish(
-      chatByRoom,
-      speakingByRoom,
-      practiceByRoom,
+      byRoom.chat,
+      byRoom.speaking,
+      byRoom.practice,
       byLemma,
-      skillByRoom,
+      byRoom.skills,
       skillByLemma,
     );
     return true;
@@ -240,17 +241,6 @@ class MissionXpCache extends ChangeNotifier {
     return byLemma..removeWhere((_, xp) => xp <= 0);
   }
 
-  /// Adds [use]'s XP to its skill under [key] in [into].
-  static void _addSkill(
-    Map<String, Map<LearningSkillsEnum, int>> into,
-    String key,
-    OneConstructUse use,
-  ) {
-    final skills = into[key] ??= {};
-    final skill = use.useType.skillsEnumType;
-    skills[skill] = (skills[skill] ?? 0) + use.xp;
-  }
-
   void _publish(
     Map<String, int> chat,
     Map<String, int> speaking,
@@ -259,10 +249,7 @@ class MissionXpCache extends ChangeNotifier {
     Map<String, Map<LearningSkillsEnum, int>> skillByRoom,
     Map<String, Map<LearningSkillsEnum, int>> skillByLemma,
   ) {
-    final credited = Map<String, int>.of(chat);
-    for (final part in [speaking, practice]) {
-      part.forEach((room, xp) => credited[room] = (credited[room] ?? 0) + xp);
-    }
+    final credited = MissionRoomXp.sumOf([chat, speaking, practice]);
     if (mapEquals(chat, _chatXpByRoom) &&
         mapEquals(speaking, _speakingXpByRoom) &&
         mapEquals(practice, _practiceXpByRoom) &&
