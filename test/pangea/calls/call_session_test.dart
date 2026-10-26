@@ -2557,7 +2557,7 @@ void main() {
           reason: 'a device that did not carry on leaves no card',
         );
         expect(room.sent, isEmpty, reason: 'nor a transcript half');
-        expect(analytics(), 0, reason: 'nor any analytics (doc:236)');
+        expect(analytics(), 0, reason: 'nor any analytics (keeps nothing)');
       });
 
       // The bug this pins: `_onCallChanged` correctly routes a non-carrying
@@ -2585,24 +2585,25 @@ void main() {
           expect(
             room.sent,
             isEmpty,
-            reason: 'nor a transcript half, even from dispose() (doc:236)',
+            reason:
+                'nor a transcript half, even from dispose() (keeps nothing)',
           );
           expect(
             analytics(),
             0,
-            reason: 'nor any analytics, even from dispose() (doc:236)',
+            reason: 'nor any analytics, even from dispose() (keeps nothing)',
           );
         },
       );
 
-      // The second way of not carrying on (doc:236): nobody has chosen yet.
-      // Reaching the ACTUAL 20s give-up timer needs real wall-clock time this
-      // suite has no seam to fake, but the defect lives entirely downstream
-      // of `carriedOn` being false -- how it got there does not matter to
-      // `_finishRecording`. A device the ownership arbiter is holding, torn
-      // down (logout, app teardown) before the ambiguity ever resolves, is
-      // the same "ended while held, nobody chose" shape the timer itself
-      // would eventually produce, reached without waiting for it.
+      // The second way of not carrying on (doc "keeps nothing"): nobody has
+      // chosen yet. Reaching the ACTUAL 20s give-up timer needs real wall-clock
+      // time this suite has no seam to fake, but the defect lives entirely
+      // downstream of `carriedOn` being false -- how it got there does not
+      // matter to `_finishRecording`. A device the ownership arbiter is
+      // holding, torn down (logout, app teardown) before the ambiguity ever
+      // resolves, is the same "ended while held, nobody chose" shape the timer
+      // itself would eventually produce, reached without waiting for it.
       test('a device still held -- nobody has chosen -- writes nothing if torn '
           'down before it resolves', () async {
         final client = await _bareClient();
@@ -2660,7 +2661,7 @@ void main() {
         expect(
           analyticsCalls,
           0,
-          reason: 'nor any analytics -- it never carried on (doc:236)',
+          reason: 'nor any analytics -- it never carried on (keeps nothing)',
         );
       });
     },

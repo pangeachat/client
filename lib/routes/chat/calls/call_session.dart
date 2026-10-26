@@ -1067,9 +1067,16 @@ class CallSession extends ChangeNotifier {
     if (outcome != null) {
       // A device that did NOT carry on -- held then never resumed, walked away
       // from, or given up because nobody chose it -- leaves no trace: no card,
-      // no transcript half, no analytics, no summary (doc:236). Keyed on the
+      // no transcript half, no analytics, no summary (call-device-ownership
+      // doc: "A device that does not carry on keeps nothing"). Keyed on the
       // FACT (carriedOn), not on which outcome fired, so an ordinary `ended`
-      // reached while held is caught alongside `movedToOtherDevice`.
+      // reached while held is caught alongside `movedToOtherDevice`. It needs
+      // no proof: the question is not "did a sibling hold this stretch", which
+      // whole-second join stamps cannot answer, but "did this device carry
+      // on", which it knows. The cost is the sliver of opening audio this
+      // device had and the chosen one did not, bounded by the difference in
+      // media bring-up between two devices answering one ring (not measured);
+      // publishing it would double-count the stretch both captured.
       //
       // A PREDECESSOR is the exception (client#9173): the learner moved the
       // call on from it, so the stretch it captured is nobody else's. It
@@ -1376,14 +1383,14 @@ class CallSession extends ChangeNotifier {
             } catch (_) {}
             // A device that did not carry on with the call -- chosen against,
             // or given up on because nobody chose it -- writes no transcript
-            // half and no analytics (doc:236). `_onCallChanged` already keeps
-            // a non-carrying device from reaching here on the path it drives
-            // (:669), but teardown does not only run from there: `endCall`,
-            // `dismissFailed` and `dispose` all call this function directly,
-            // and `dispose` in particular runs unconditionally (a summary
-            // still on screen, a logout, an app teardown). The rule belongs
-            // at the WRITE itself, not at any one caller, so every path here
-            // is covered by the same check rather than by remembering to
+            // half and no analytics (doc "keeps nothing"). `_onCallChanged`
+            // already keeps a non-carrying device from reaching here on the
+            // path it drives (:669), but teardown does not only run from there:
+            // `endCall`, `dismissFailed` and `dispose` all call this function
+            // directly, and `dispose` in particular runs unconditionally (a
+            // summary still on screen, a logout, an app teardown). The rule
+            // belongs at the WRITE itself, not at any one caller, so every path
+            // here is covered by the same check rather than by remembering to
             // guard each one.
             if (!call.carriedOn && !call.isPredecessor) return;
             // The card is normally already in the timeline by now (written the
