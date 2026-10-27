@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/analytics_access/analytics_access_notice_dialog.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
@@ -146,7 +148,6 @@ void main() {
       expect(result, courseRoomId);
       expect(FakeMatrixApi.calledEndpoints.toString(), before);
       expect(grants, isEmpty);
-      expect(JoinRoomAnalyticsConsentHandler.currentRoomId, isNull);
     });
 
     test('course admin skips the learner notice and analytics grant', () async {
@@ -241,5 +242,73 @@ void main() {
         expect(grants, isEmpty);
       },
     );
+  });
+
+  group('JoinRoomAnalyticsConsentHandler', () {
+    // CLIENT-EFF: a class-link join and a second caller each ran the handler
+    // for the same course, stacking two notices. The learner chose Go back on
+    // one (leaving the course) and Share and join on the other, which granted
+    // for a course they had just left.
+    testWidgets('concurrent calls for one course share a single notice', (
+      tester,
+    ) async {
+      profileWithAnalyticsRoom(analyticsRoomId);
+      api.api['PUT']!['/client/v3/user/${Uri.encodeComponent(userId)}'
+          '/account_data/${PangeaEventTypes.accessNoticeShown}'] = (_) =>
+          {};
+      var leaves = 0;
+      api.api['POST']!['/client/v3/rooms/${Uri.encodeComponent(courseRoomId)}'
+          '/leave'] = (_) {
+        leaves++;
+        return {};
+      };
+      final room = courseRoom();
+      client.rooms = [room];
+      late BuildContext context;
+      await tester.pumpWidget(
+        MaterialApp(
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+          home: Builder(
+            builder: (value) {
+              context = value;
+              return const SizedBox();
+            },
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      const joinResp = JoinResponse(
+        roomId: courseRoomId,
+        shouldShowNotice: true,
+      );
+      final results = <String?>[];
+      for (var i = 0; i < 2; i++) {
+        JoinRoomAnalyticsConsentHandler(
+          joinResp,
+          room,
+        ).handle(context).then(results.add);
+      }
+      // The notice and the leave wait on real I/O; let it land, then build.
+      Future<void> settle() async {
+        await tester.runAsync(
+          () => Future<void>.delayed(const Duration(milliseconds: 200)),
+        );
+        await tester.pumpAndSettle();
+      }
+
+      await settle();
+      expect(find.byType(AnalyticsAccessNoticeDialog), findsOneWidget);
+
+      await tester.tap(find.text(L10n.of(context).goBack));
+      for (var i = 0; i < 5 && results.length < 2; i++) {
+        await settle();
+      }
+
+      expect(results, [null, null]);
+      expect(leaves, 1);
+      expect(grants, isEmpty);
+    });
   });
 }

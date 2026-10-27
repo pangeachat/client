@@ -14,40 +14,45 @@ class JoinRoomAnalyticsConsentHandler {
 
   const JoinRoomAnalyticsConsentHandler(this.joinResponse, this.room);
 
-  static String? _currentRoomId;
-
-  static String? get currentRoomId => _currentRoomId;
+  /// The run in progress for each course. More than one caller can reach the
+  /// same course at once — a class-link join alongside the chat list's
+  /// pending-notice check, or the link page submitting twice — and each used
+  /// to stack its own notice. Answering Go back on one and Share and join on
+  /// the other granted for a course the learner had just left (CLIENT-EFF), so
+  /// later callers share the first run's notice and answer instead.
+  static final Map<String, Future<String?>> _inFlight = {};
 
   /// Show the user access consent dialog (if not already shown for this course),
   /// leaves room and return null if rejected, grants access and return roomId if accepted
   Future<String?> handle(BuildContext context) async {
+    // A teacher claiming their course is not joining as a learner. Do not
+    // record learner consent or grant access to their personal analytics.
+    if (room.isRoomAdmin) return room.id;
+
+    final roomId = room.id;
+    // A block body: `remove` returns this very future, and whenComplete
+    // waits on a returned future, so an arrow body would never complete.
+    return _inFlight[roomId] ??= _handle(context).whenComplete(() {
+      _inFlight.remove(roomId);
+    });
+  }
+
+  Future<String?> _handle(BuildContext context) async {
     final roomId = room.id;
     final client = room.client;
 
-    // A teacher claiming their course is not joining as a learner. Do not
-    // record learner consent or grant access to their personal analytics.
-    if (room.isRoomAdmin) return roomId;
-
-    _currentRoomId = roomId;
-
-    try {
-      if (!client.acceptedAccessNotice(roomId)) {
-        await client.setAccessNoticePending(roomId);
-      }
-
-      final acceptedAccessRequest = await _showNotice(context);
-      if (!acceptedAccessRequest) {
-        return null;
-      }
-
-      await client.setAccessNoticeAccepted(roomId);
-      await _grantAccess();
-      return roomId;
-    } catch (e) {
-      rethrow;
-    } finally {
-      _currentRoomId = null;
+    if (!client.acceptedAccessNotice(roomId)) {
+      await client.setAccessNoticePending(roomId);
     }
+
+    final acceptedAccessRequest = await _showNotice(context);
+    if (!acceptedAccessRequest) {
+      return null;
+    }
+
+    await client.setAccessNoticeAccepted(roomId);
+    await _grantAccess();
+    return roomId;
   }
 
   /// Returns false if user was shown the dialog and rejected it, meaning they left the room
