@@ -115,6 +115,12 @@ List<ActivitySessionFacts> discoveredSessionFacts(
         ),
 ];
 
+/// The map's item set: the loaded pins, their live signals and the learner's
+/// progression. Every item today is a located activity, but the pipeline
+/// (default → search → filter → display) is meant to generalize: a map item
+/// is a located thing with facets, so places, opt-in users-as-content and
+/// curated world-feed items can join it without a redesign
+/// (world-map.instructions.md).
 class WorldMapPinsManager {
   static final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
 

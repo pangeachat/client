@@ -170,7 +170,7 @@ class LargeCardSnapshot {
   /// True when this is an `available` card the course can't currently staff
   /// (its role count outruns the available members) — the card renders at 50%
   /// opacity, the large-tier mirror of an understaffed mid pin
-  /// (world-map.instructions.md, "Understaffed pins"). Course-scoped only; never
+  /// (world-map.instructions.md, "Pin state"). Course-scoped only; never
   /// set on the world map or for a live/completed card.
   final bool understaffed;
 
@@ -528,7 +528,7 @@ class _WorldMapViewState extends State<WorldMapView>
     // Large cards exist only where the width affords them (budget.large > 0). The
     // placement pass fits the candidates' footprints to the screen (no overlap, no
     // edge spill, not under a panel), focused-first — see world-map.instructions.md
-    // (pipeline step 4). When the large cap is zero the pass yields nothing.
+    // ("Priority matrix"). When the large cap is zero the pass yields nothing.
     // This whole render model only runs while the camera is settled (the
     // isActivelyMoving guard above), so there is no live-gesture case to
     // special-case here any more (#7245).
@@ -548,7 +548,7 @@ class _WorldMapViewState extends State<WorldMapView>
     // Mid placement mirrors the large pass: a mid pin that would sit UNDER a
     // placed large card, or ON a higher-scored mid pin, is demoted to a small
     // dot — so mid pins never stack and never hide beneath a card
-    // (world-map.instructions.md, pipeline step 4).
+    // (world-map.instructions.md, "Priority matrix").
     final midPlacement = _placeMid(
       visible: visible,
       candidates: rest,
@@ -642,7 +642,7 @@ class _WorldMapViewState extends State<WorldMapView>
   /// already placed — otherwise it is demoted to a small dot. Falls back to the
   /// static top-[midBudget] on the rare frame the camera isn't laid out yet (the
   /// next settle re-places geometrically). See world-map.instructions.md
-  /// (pipeline step 4).
+  /// ("Priority matrix").
   MidPlacementResult _placeMid({
     required List<QuestActivityCard> visible,
     required List<String> candidates,
@@ -773,7 +773,13 @@ class _WorldMapViewState extends State<WorldMapView>
       states[id] = widget.controller.displayStateOf(c);
 
       // Dim only plain `available` pins whose role count outruns the course's
-      // members
+      // members (world-map.instructions.md, "Pin state"): a live pin already
+      // has humans in it, and a played one shows its stamp whatever the
+      // headcount. Distinct from the `multi_person_first_map` score term, and
+      // it outlasts it: that term only demotes a new learner's ranking and
+      // clears after their first finished activity, while a small course can
+      // stay short-handed indefinitely, and the dimming says so for as long as
+      // it is true.
       if (available != null &&
           states[id] == ActivityPinState.available &&
           (c.roleCount ?? 0) > available) {

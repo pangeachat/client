@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 /// converging to a tip at the pin's geographic anchor. Used for mid-tier pins
 /// (world-map.instructions.md, "Pin display" — the Figma `Activity pin v3`
 /// reference); small-tier pins stay a plain circle.
+///
+/// Figma: [Activity pin v3 frames](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13673-111364).
 class TeardropPainter extends CustomPainter {
   final Color color;
   final double headDiameter;

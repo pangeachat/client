@@ -40,6 +40,15 @@ class WorldMapFilterBar extends StatelessWidget {
 
   /// The CEFR levels offered — Pre-A1 through C2. Picking one filters to exactly
   /// that level (not a band).
+  ///
+  /// Every level stays offered even where the catalog has nothing at it
+  /// (#8401; world-map.instructions.md, "Filters"). Dropping an empty level
+  /// would be the smaller change, but it strands the learner it is meant to
+  /// help: one whose settings level is Pre-A1 could not find that level here,
+  /// and the map would stay empty for reasons nothing on screen explains. This
+  /// list is the one place the levels are enumerated, so it is where the gap
+  /// is admitted rather than erased. The real fix is content: a learner who
+  /// picks Pre-A1 is telling us something the catalog cannot answer yet.
   static const _levelOptions = [
     LanguageLevelTypeEnum.preA1,
     LanguageLevelTypeEnum.a1,

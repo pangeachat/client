@@ -187,8 +187,8 @@ class WorldMapLargeCard extends StatelessWidget {
 
   /// When true, this `available` card's activity can't currently be staffed by
   /// the course — the whole card renders at 50% opacity, the large-tier mirror
-  /// of an understaffed mid pin (world-map.instructions.md, "Understaffed
-  /// pins"). Course-scoped only; never set for a live/completed card.
+  /// of an understaffed mid pin (world-map.instructions.md, "Pin state").
+  /// Course-scoped only; never set for a live/completed card.
   final bool understaffed;
 
   /// When non-null, the card shows an explicit dismiss (X) that **demotes** the
@@ -423,7 +423,7 @@ class WorldMapLargeCard extends StatelessWidget {
 
     // An understaffed `available` card dims to 50%, matching its mid pin — purely
     // cosmetic, it still taps and opens the plan (world-map.instructions.md,
-    // "Understaffed pins").
+    // "Pin state").
     return understaffed ? Opacity(opacity: 0.5, child: content) : content;
   }
 }

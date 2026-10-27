@@ -953,8 +953,8 @@ class WorldMapController extends State<WorldMap>
   /// filter mutation AND after every pin load, the two things that can change
   /// whether the chosen level has content. Candidates are the renderable pins
   /// passing everything except the level term, so a fallback only ever names a
-  /// level the learner can actually see (world-map.instructions.md, "Empty
-  /// levels fall back to the nearest one with content").
+  /// level the learner can actually see (world-map.instructions.md,
+  /// "Filters").
   void _resolveCefrFallback() {
     _filterState.resolveCefrFallback(
       _pinsManager.filteredPins(

@@ -16,6 +16,14 @@ enum MapEmptyVerdict {
 
   /// Matches pass the filters/query but every one sits OUTSIDE the current
   /// viewport — zooming out reveals them.
+  ///
+  /// Search runs over everything loaded, not just the viewport, and this
+  /// verdict can exist only because the bbox read returns the whole placed
+  /// catalog per L2: the server accepts the camera bounds but does not narrow
+  /// by them yet (scaling-watchlist.instructions.md). Once it does, an
+  /// off-view match is no longer loaded and this silently degrades to
+  /// [noSearchMatches]; off-view search then needs a query-driven global text
+  /// path rather than the bbox read.
   matchesOffscreen,
 
   /// Nothing passes anywhere loaded, but clearing the pills would surface
@@ -34,11 +42,21 @@ enum MapEmptyVerdict {
 /// cleared to null (passing the sentinel means "leave unchanged").
 const Object _unset = Object();
 
+/// The candidate set the map ranks within (world-map.instructions.md,
+/// "Filters"). Design intent: a change to WHICH items exist widens or narrows
+/// the loaded set (a re-query); a change that only hides loaded items refines
+/// in place. Keep the cheap, indexed dimensions as set-changers and the rest
+/// as in-view refinements, so the map stays responsive.
+///
+/// Quests and Missions belong to this set too, but are not pills today: a
+/// quest enters through the `?c=` course context. Theme and interests come
+/// later, once the content model carries them and interests are captured; an
+/// interest is a deliberate captured preference, never proxied from free text.
 class WorldMapFilter {
   final String query;
 
   /// The learner's target language, driven by their **settings** (not a map
-  /// pill):
+  /// pill). One target language today; more than one L1 or L2 is future work.
   final LanguageModel? l2;
 
   /// The CEFR level filter, or empty for "All levels" (the default). No pill
@@ -65,8 +83,7 @@ class WorldMapFilter {
   /// resolved over the loaded set by [WorldMapFilterState.resolveCefrFallback].
   /// Null whenever the chosen level is being honoured exactly, which is the
   /// normal case; non-null is the map's cue to SAY it is showing a neighbouring
-  /// level (world-map.instructions.md, "Empty levels fall back to the nearest
-  /// one with content").
+  /// level (world-map.instructions.md, "Filters").
   final LanguageLevelTypeEnum? cefrFallback;
 
   final bool filterDefaultsApplied;

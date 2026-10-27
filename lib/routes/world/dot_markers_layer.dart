@@ -74,8 +74,8 @@ class DotMarkersLayer {
   /// The rendered small/mid pins, each an individual marker (no clustering).
   /// Tapping any pin opens/focuses the activity in one step (no tap-to-peek).
   /// Small dots are emitted before mid pins so mid always paints on top —
-  /// markers later in the list draw over earlier ones, and "small pins should
-  /// never show on top of mid pins" (world-map.instructions.md, "Pin display").
+  /// markers later in the list draw over earlier ones, and a lighter pin never
+  /// covers a heavier one (world-map.instructions.md, "Pin display").
   MarkerLayer layer() {
     // Small dots first, then mid pins, each tier keeping its score order — a
     // stable partition (Dart's List.sort is not guaranteed stable) so mid

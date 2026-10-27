@@ -126,6 +126,8 @@ enum ActivityPinState {
 /// The visual weight a pin renders at, filled from the top of the score. The
 /// pixel sizes live in [PinSize] (world_map_pin_budget.dart) so every pin-density
 /// knob sits in one tunable file.
+///
+/// Figma: [pin-tier frame](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=12912-348899).
 enum PinTier {
   small,
   mid,
@@ -389,6 +391,16 @@ bool isMultiPersonFirstMap({
 /// demotes the same way while its TTL runs (#7207/#7245). The multi-person term
 /// deprioritizes a 3+ role activity on a new learner's first map (#7435). See
 /// world-map.instructions.md.
+///
+/// Every weight is a hand-set starting point tuned by observation: at our
+/// scale there is not the engagement data to learn them, and hand-set weights
+/// stay predictable. Raising `joinable` / `ongoing` or `pinged` pushes the map
+/// toward live, social practice, the `joinable` − `ongoing` gap sets how far
+/// the map favours joining others over resuming your own session, and a
+/// steeper band decay ([kBandFalloffMissions]) sharpens the pull toward the
+/// next Mission. A learned value model (predicting join / complete / return)
+/// is the upgrade once the data exists; interests become a term once they are
+/// captured (they are not tracked today).
 double pinScore({
   required double band,
   required PinSignals s,
@@ -559,15 +571,15 @@ List<String> _applyTrailReservation({
 /// The outcome of the geometric placement pass: which pins render as large cards
 /// this view ([largeIds] — the focused pin first, if it is a candidate, then the
 /// score-ranked candidates whose card footprint fits). See
-/// world-map.instructions.md ("Place" step of the pipeline).
+/// world-map.instructions.md ("Priority matrix").
 class PlacementResult {
   final List<String> largeIds;
   const PlacementResult({required this.largeIds});
 }
 
 /// Lay the score-ordered large candidates onto real screen positions, since a
-/// large card is a *box*, not a point (world-map.instructions.md, pipeline step
-/// 4). Walks [orderedCandidates] top-down and admits one as large only if its
+/// large card is a *box*, not a point (world-map.instructions.md, "Priority
+/// matrix"). Walks [orderedCandidates] top-down and admits one as large only if its
 /// card footprint fits the unclaimed [safeArea] (on-screen, not under a panel)
 /// and overlaps neither an [obstacleRects] chrome footprint inside it (the
 /// course context bar, #9291) nor a card already placed this pass. The [focusedId] (its
@@ -711,7 +723,7 @@ Rect pinRectAt(
 /// render as `mid`. A candidate absent from [midIds] was demoted to a small dot
 /// — either its footprint overlapped a placed large card (large draws above, so
 /// the mid would sit under it) or it overlapped a higher-scored mid pin already
-/// placed this pass (world-map.instructions.md, pipeline step 4).
+/// placed this pass (world-map.instructions.md, "Priority matrix").
 class MidPlacementResult {
   final Set<String> midIds;
   const MidPlacementResult({this.midIds = const {}});

@@ -66,7 +66,10 @@ class DiscoveredSessionsCache extends ChangeNotifier {
   /// joined course's sessions, and a session of the same activity started in
   /// another course is not this course's (#9026). Null [course] is the world
   /// map: every joined course. An empty result under a course is a known
-  /// "none here", not a miss.
+  /// "none here", not a miss. The listing is the whole test: no one's
+  /// membership is checked against the roster, so a session whose launcher
+  /// has since left the course stays listed, and its teacher and coursemates
+  /// can still reach it.
   Map<String, RoomSummaryResponse>? forActivity(
     String activityId, {
     Room? course,

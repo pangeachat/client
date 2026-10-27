@@ -11,8 +11,7 @@ import 'package:fluffychat/routes/world/world_map_level_fallback_notice.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// Empty levels fall back to the nearest level that has content, and the map
-/// SAYS so (#8401, world-map.instructions.md "Empty levels fall back to the
-/// nearest one with content"). The catalog carries no Pre-A1 (nor C1/C2)
+/// SAYS so (#8401, world-map.instructions.md "Filters"). The catalog carries no Pre-A1 (nor C1/C2)
 /// activity in any language, so picking one of those levels used to empty the
 /// map and dead-end on "widen the search" — which drops every other pill too.
 QuestActivityCard _card(

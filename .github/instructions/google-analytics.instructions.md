@@ -128,15 +128,7 @@ reporting:
 
 ## User properties
 
-A handful of **user-scoped** properties ride the learner rather than an event —
-`target_language`, `source_language`, `user_type`, `subscribed`,
-`client_version`, and `user_cefr` (the learner's self-declared CEFR level, the
-same key the request layer sends as `UserConstants.cefrLevel`). They answer
-"who is this cohort", which the event stream cannot: `user_cefr` exists so the
-size of each level's cohort — Pre-A1 above all, whose activity-content gap
-drove it ([world-map.instructions.md](world-map.instructions.md), "Empty levels
-fall back to the nearest one with content") — is measurable before content is
-commissioned for it.
+A handful of **user-scoped** properties ride the learner rather than an event — `target_language`, `source_language`, `user_type`, `subscribed`, `client_version`, and `user_cefr` (the learner's self-declared CEFR level, the same key the request layer sends as `UserConstants.cefrLevel`). They answer "who is this cohort", which the event stream cannot: `user_cefr` exists so the size of each level's cohort — Pre-A1 above all, whose activity-content gap drove it ([world-map.instructions.md](world-map.instructions.md), "Filters") — is measurable before content is commissioned for it.
 
 - **A property whose value is chosen DURING onboarding must be re-emitted on
   change, not only at session start.** CEFR is picked in onboarding, after the

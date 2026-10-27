@@ -11,8 +11,8 @@ import 'package:fluffychat/features/quests/lo_progression.dart';
 /// How far along a quest the next-Mission gradient reaches before decaying to
 /// zero. The anchor Mission scores 1.0; each Mission further along loses
 /// 1/[kBandFalloffMissions], hitting 0 this many Missions past the anchor. A
-/// hand-set lever, tuned by observation (world-map.instructions.md: "weights are
-/// levers, learned later").
+/// hand-set lever, tuned by observation (world-map.instructions.md, "Priority
+/// matrix").
 const int kBandFalloffMissions = 3;
 
 /// The relevance-band ceiling: the next-Mission gradient is summed across the

@@ -9,6 +9,11 @@ void main() {
   DateTime plus(Duration d) => t0.add(d);
 
   group('WorldMapDismissals — TTL', () {
+    // world-map.instructions.md, "Pin display": the X lapses after ten minutes.
+    test('an X lapses after ten minutes', () {
+      expect(WorldMapDismissals.ttl, const Duration(minutes: 10));
+    });
+
     test('a fresh dismissal is active', () {
       final d = WorldMapDismissals()..dismiss('a', t0);
       expect(d.activeIds(t0), {'a'});

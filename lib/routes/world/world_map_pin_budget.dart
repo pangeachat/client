@@ -12,8 +12,7 @@
 ///
 /// Everything here is a **tunable starting point** — adjust the breakpoints,
 /// counts, and sizes freely; this file is the single source of truth. See
-/// `world-map.instructions.md` ("Pin display" / "Priority matrix" / "Scale
-/// boundary").
+/// `world-map.instructions.md` ("Pin display" / "Priority matrix").
 library;
 
 import 'package:flutter/material.dart'
@@ -103,7 +102,7 @@ const bool kMapActivityCards = true;
 
 /// Whether a completed stamp webs out the words the learner used in that
 /// activity, as gold chips around it. Off: none of the word web is computed
-/// or drawn.
+/// or drawn. It stays off until its design is revisited.
 const bool kStampWordWeb = false;
 
 /// Tier pixel sizes — also tuned here so all pin-density knobs live in one file.
@@ -143,12 +142,12 @@ abstract class PinSize {
 
   /// The tappable box around a **dot-shaped** marker — a small-tier dot, or the
   /// completed trail star at any tier (`PinTier.isDot`). The dot itself stays
-  /// [smallDiameter] / [starDotDiameter] (world-map.instructions.md: "a
-  /// deliberately small dot"); only its flutter_map marker box — and so its hit
-  /// target and semantics rect — is padded out, centred on the same anchor, to
-  /// Material's minimum interactive dimension (48 logical px, above WCAG
-  /// 2.5.5's 44) so a dot is tappable on a phone without zooming in until it
-  /// earns a mid pin (#7688). Overlapping dots overlap their targets too — a
+  /// [smallDiameter] / [starDotDiameter], deliberately small
+  /// (world-map.instructions.md, "Pin display"); only its flutter_map marker
+  /// box — and so its hit target and semantics rect — is padded out, centred
+  /// on the same anchor, to Material's minimum interactive dimension (48
+  /// logical px, above WCAG 2.5.5's 44) so a dot is tappable on a phone
+  /// without zooming in until it earns a mid pin (#7688). Overlapping dots overlap their targets too — a
   /// tap between two dots lands on the one drawn on top, which the issue
   /// accepted over dots that take several tries to hit.
   static const double dotTouchTarget = kMinInteractiveDimension;

@@ -5,8 +5,8 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 
 /// The map's "you asked for a level we have nothing at" notice: the Level pill
 /// still reads the level the learner chose, so the substitution has to be said
-/// out loud rather than silently performed (world-map.instructions.md, "Empty
-/// levels fall back to the nearest one with content").
+/// out loud rather than silently performed (world-map.instructions.md,
+/// "Filters").
 ///
 /// Purely informational — no lever. The substitution has already put content on
 /// the map, and the pill row's own reset is the way back out; a second button

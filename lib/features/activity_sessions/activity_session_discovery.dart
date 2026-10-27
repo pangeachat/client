@@ -9,8 +9,16 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 /// (loadActivitySessionPreviews), which replaced the client-side hierarchy
 /// walk that missed sessions in courses with more rooms than one hierarchy
 /// page (#7982). What stays client-side is knowing WHICH spaces to ask about,
-/// and which invited rooms need their own preview. See
-/// world-map.instructions.md ("Discovering joinable sessions").
+/// and which invited rooms need their own preview.
+///
+/// The module only answers for spaces the learner has joined, so a stranger's
+/// session in a course the learner is not in stays off the map. Reaching those
+/// map-wide is deferred: it needs that gate relaxed, a supply-side source for
+/// which spaces to ask about, and a liveness signal (the room's last activity)
+/// so a session someone joined and then abandoned stops reading as joinable.
+/// Such a false joinable scores as heavily as a real one, so it takes a scarce
+/// large or mid slot from something useful. See world-map.instructions.md
+/// ("Discovering joinable sessions").
 extension ActivitySessionDiscovery on Client {
   /// The learner's joined course spaces (a joined space carrying a course plan)
   /// — the spaces input to the activity_session_previews read.
