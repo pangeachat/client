@@ -104,7 +104,10 @@ class ObjectiveSection extends StatelessWidget {
 
     // Three header states (#8874): the current Mission wears a "Current
     // mission" label and the primary accent; a satisfied Mission's circle
-    // turns to its gold star and its text mutes; the rest stay plain. The
+    // turns to its gold star and its text mutes, so finished work reads as
+    // done without disappearing — its activities stay in view and playable,
+    // since a learner can still raise its XP (quests.instructions.md,
+    // "Progress display on the course page"); the rest stay plain. The
     // first two are mutually exclusive: the anchor is unsatisfied by
     // definition, and a course whose every Mission is satisfied has no anchor
     // at all (#8997).

@@ -49,8 +49,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 /// The Activities / Course-plan tab of a selected course (world_v2): the
 /// course's learning objectives, each with the activities that satisfy it.
-/// Objectives are the unlockable unit; activities are interchangeable
-/// options. Objectives have no icons yet — a placeholder stands in.
+/// Objectives are the unit of progress, never locked; activities are
+/// interchangeable options. Objectives have no icons yet — a placeholder
+/// stands in.
 /// Tapping an activity opens it as a first-class world object (`/<uuid>`).
 class CourseObjectivesList extends StatefulWidget {
   /// The course room, when shown inside a JOINED course (the card's Course Plan
@@ -483,7 +484,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   /// Whether the learner has finished [activityId]: any XP from a saved
   /// session of it in their current language (#9559) — the one rule every
-  /// completed stamp reads.
+  /// completed stamp reads, rather than whether a role was marked complete,
+  /// so a stamp always has an XP to show (quests.instructions.md, "Activity
+  /// cards").
   static bool _finished(
     Map<String, MissionXpBreakdown> xpByActivity,
     String activityId,
@@ -598,8 +601,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
               );
             case AsyncLoaded():
               // Per-Mission stars still show once the shared rollup resolves; a
-              // preview has no learner progress. (The overall quest-star bar
-              // rides above this list on the course page.)
+              // preview has no learner progress. (The Mission circles ride
+              // above this list on the course page.)
               final groups = widget.objectivesProvider.filteredObjectiveGroups;
               final anchorId = widget.objectivesProvider.anchorMissionId;
               if (groups.isEmpty) {

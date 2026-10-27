@@ -4,9 +4,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/goal_diamond.dart';
 
 /// An activity's goal row: one [GoalDiamond] per goal, filled as the learner
-/// earns it. Checkmarks, not stars — a star marks a Learning Objective, and an
-/// activity's goals are the checkmarks that pay XP into it
-/// (quests.instructions.md, "Stars and checkmarks").
+/// earns it. Diamonds, not stars — a star marks a Mission, and an activity's
+/// goals are the diamonds that pay XP into it (quests.instructions.md, "Stars
+/// and goal diamonds").
 class ActivityStarRow extends StatelessWidget {
   final int total;
   final int earned;

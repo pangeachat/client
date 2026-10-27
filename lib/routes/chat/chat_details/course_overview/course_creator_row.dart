@@ -19,7 +19,9 @@ import 'package:fluffychat/pangea/common/widgets/content_creator_chip.dart';
 /// The credit is the **quest's** owner — who built the course plan — which is
 /// what the create-course page credited when this course was made. Who
 /// administers the room is a different fact with its own surface (the
-/// Participants section).
+/// Leaderboard's admin line): a teacher who starts a class from a catalog
+/// quest administers a course Pangea wrote, and the credit says so
+/// (quests.instructions.md, "Who made the course").
 ///
 /// It reads the quest the page is already loading rather than fetching
 /// anything of its own, so the credit costs no extra round trip. Renders

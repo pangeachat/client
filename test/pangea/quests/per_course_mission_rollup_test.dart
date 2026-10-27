@@ -7,7 +7,7 @@ import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 /// routinely carry the SAME Mission with DIFFERENT activities. The rollup is
 /// resolved per course outline for exactly that reason: a global union would
 /// credit one course's XP to another course's content. See
-/// quests.instructions.md ("Star display on the course panel").
+/// quests.instructions.md ("One shared resolver").
 void main() {
   CourseLoOutline outline(
     String courseId,

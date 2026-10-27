@@ -2,8 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 
-/// Star display math (quests.instructions.md, "Star display on the course
-/// panel"): a star is a completed Mission, so the quest header counts
+/// Star display math (quests.instructions.md, "Stars and goal diamonds"): a
+/// star is a completed Mission, so the quest header counts
 /// completed Missions over the Missions that can be completed. Per-Mission
 /// display shows raw XP over the threshold (surplus shows, e.g. 340/300); a
 /// Mission over-practised past its threshold is still one star (#9420).

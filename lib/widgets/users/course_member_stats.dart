@@ -156,7 +156,8 @@ class MemberStatsRow extends StatelessWidget {
                     children: [
                       // The banked goal total is drawn as a goal diamond:
                       // the member's activity goals, not completed Missions
-                      // (quests.instructions.md, "Stars and checkmarks").
+                      // (course-leaderboard.instructions.md;
+                      // quests.instructions.md, "Stars and goal diamonds").
                       GoalDiamond(earned: true, size: iconSize),
                       Text('$stars', style: textStyle),
                     ],

@@ -6,6 +6,11 @@
 /// quests-and-learning-objectives doc § Content access and localization,
 /// #8577). [fromJson] parses a raw CMS `learning-objectives` row — canonical
 /// text — for the places a quest row still embeds one at depth ≥ 1.
+///
+/// No owner, and no surface credits one: Missions are generic and reused
+/// across courses and languages by design, so crediting one to whoever first
+/// minted it would misrepresent shared content as authored (org
+/// quests-and-learning-objectives doc, "Who owns a quest").
 class LearningObjective {
   final String id;
   final String objective;

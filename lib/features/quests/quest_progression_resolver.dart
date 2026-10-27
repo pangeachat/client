@@ -88,7 +88,7 @@ class MissionXpBreakdown {
 /// A quest's star summary: [earned] is the number of its Missions the learner
 /// has completed (a star is a completed Mission), [total] the number of
 /// Missions that can be — so earned/total is the full plan's progress
-/// fraction. See quests.instructions.md ("Star display on the course panel").
+/// fraction. See quests.instructions.md ("Stars and goal diamonds").
 class QuestStarSummary {
   final int earned;
   final int total;

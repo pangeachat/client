@@ -1,159 +1,76 @@
 ---
 applyTo: "lib/features/quests/**,lib/features/course_plans/**,lib/routes/courses/course_objectives/**"
-description: "Client-side next-Mission resolver — the one shared answer to 'which Mission should this learner work on next, per quest?', what fills a Mission (activity XP from saved sessions, goals, and practice on its words), the star and goal-diamond vocabulary, and the course page's Mission circles and Mission card."
+description: "How progress through a course's Missions is measured, which Mission is next, and how stars, goal diamonds, the course page and activity cards show it."
 ---
 
 # Quests & Learning-Objective Progression (Client)
 
-A **Quest** is the learner's ordered journey through **Learning Objectives** (learner-facing label: **Missions**). The cross-repo model — what a Mission is, and the rule that progression is **soft** (an ordered suggestion that only *ranks* content, never locks it) — lives in the org doc [`quests-and-learning-objectives`](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md). This doc owns the **client-side resolver**: how the app computes, from data it already holds, each quest's **next Mission** — the single ranking input the world map and other surfaces preference toward — and what the learner sees of it on the course page.
+## Purpose
 
-## Stars and goal diamonds
+A quest is a course's ordered list of **Missions**, and progression only suggests, never locks ([org doc](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md)). This doc decides how the app measures progress through each Mission, names the next one, and shows both.
 
-Two marks, and they never share a glyph ([client#9420](https://github.com/pangeachat/client/issues/9420)):
+## The experience
 
-- A **star** marks a **Mission**. It is there from the moment the Mission appears — outlined while the Mission is in progress, filled gold once it is complete — so completion changes the star's state, never whether it is there ([`MissionStar`](../../lib/routes/courses/course_objectives/mission_star.dart)). The analytics bar's star count is the number of Missions the learner has completed in their joined courses in their current language (a Mission two courses share is one star), never a course they are only previewing; until that answer has resolved from loaded outlines and the learner's XP has been read, the count shimmers rather than show a zero ([client#9559](https://github.com/pangeachat/client/issues/9559)). Its page lists them ([activities.instructions.md](activities.instructions.md), "The Learning Objectives page"). There is no per-activity star.
-- A **goal diamond** marks one **orchestrator-awarded activity goal**, worth a flat `kGoalXp` (50 XP) of activity XP ([`GoalDiamond`](../../lib/widgets/goal_diamond.dart)): gold and filled once earned, an outline while open. The in-session goal header and the start page's role cards count goals in diamonds; activity cards and chat rows do not — an activity shows the **XP** it has paid the learner instead ("Activity cards", below), since goals pay XP every session and a best-session diamond count undersold a replayed activity ([client#9559](https://github.com/pangeachat/client/issues/9559)). A diamond is neither a star (a Mission), the double-ring stamp (a finished activity, "Activity cards" below) nor a sparkle (XP).
+1. A course page opens on numbered **Mission circles**, each ringed in gold by its XP: complete Missions are stars, the current one is tinted, and "Class location" marks where the teacher's due dates put the class.
+2. Below, the **Mission card** for the Mission on show: its can-do statement, XP toward its star, Practice, and **Play** on its first activity.
+3. A saved session banks its XP, goals included, into its Mission; practising the Mission's words anywhere fills it too.
+4. At the course's threshold the star fills and the analytics bar's star count rises.
+5. Once every Mission is complete, a course-complete card replaces the Mission card.
 
-Teachers asked for this split: a count of activity goals said little about what a student can *do*, while a Mission is a can-do statement. The one place the old quantity survives is a member's **banked total** on the course Leaderboard ([course-leaderboard.instructions.md](course-leaderboard.instructions.md)): it is still the goals they have banked across everything they have played, published on their profile ([profile.instructions.md](profile.instructions.md)), and it is drawn as a goal diamond so it cannot be read as Missions.
+## Decisions
 
-## What fills a Mission
+Re-decider for every line: unassigned.
 
-A Mission is complete — its star fills — when the **XP earned under it** reaches the course's **threshold** (org [quests-and-learning-objectives](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md), "Progression is soft"). XP under a Mission is the **activity XP** of each of its activities, summed, plus the practice done on its words:
+### Stars and goal diamonds
 
-- **Activity XP** counts the learner's **saved** sessions of the activity. Each session contributes the chat XP earned in its room — the construct-use XP the client already mints per message ([analytics-system.instructions.md](analytics-system.instructions.md)) — plus a flat `kGoalXp` per goal the learner was awarded there, plus the practice done in that room (below). Repeat sessions accumulate: XP is effort, and the per-construct XP cap is the only farming guard. **Every saved session of the activity counts, in whichever course — or none — it was played** ([client#9559](https://github.com/pangeachat/client/issues/9559), a deliberate choice): activity XP belongs to the learner's work on the activity, not to a course, so a course that lists an activity the learner has already played starts the Mission that carries it with that XP, and the activity's card, its Mission's meter and its start page's total all show the same per-activity sum. Totals stay per course (below): each course sums its own activities, each of which carries the learner's whole XP from it. **A session counts only once it is saved** — finishing the activity banks it, so the course page's meter moves when a session ends; while it runs, the goal header shows the session's XP so far ([activities.instructions.md](activities.instructions.md), "The goal header"). **Only sessions in the learner's current target language count** ("Language scope", below).
-- **Practice credit.** A practice use that names a session room — the toolbar practice on a message, a practice session launched from a completed session — credits that room. Practice outside any session — the Mission card's Practice, the Learning Objectives page's, the analytics page's — names no room and counts toward **every Mission whose word list holds the practised word**, whether or not the learner ever used the word in a session. A Mission's **word list** is every suggested-vocab entry across its activities in this course, once per lemma (`QuestObjectiveGroup.lemmas`), matched case-folded. So a correct answer on a word the learner has never used adds it to their vocabulary, earns its practice XP, and counts toward the Mission in the same stroke. A word two Missions share counts toward both. [`MissionXpCache`](../../lib/features/quests/mission_xp_cache.dart) keeps the learner's in-room XP by room and their room-less practice XP by lemma, read from the local analytics database and re-read on construct updates and language changes; the resolver adds the word-list practice to the Mission's activity XP. A read before the first refresh lands sees no XP and every Mission as unstarted — the same fail-soft as a missing outline.
-- **Where it came from.** Every surface that shows a Mission's XP splits it two ways ([client#9559](https://github.com/pangeachat/client/issues/9559)) — **Conversation** (everything earned by talking in its saved sessions: typed and voice messages, calls, and `kGoalXp` per goal) and **Practice** (practice in its sessions plus practice on its words) — drawn in two golds, deep for conversation and pale for practice, apart by lightness, with a legend of the two numbers ([`MissionRingPalette`](../../lib/routes/courses/course_objectives/mission_xp_ring.dart)). Every meter shares one track, the Mission circles' `outlineVariant`; the circles alone draw their ring in a single deeper gold (`goldGraphic`), because a circle's ring is the Mission's whole progress rather than its split. The split (`Client.missionXpBreakdown`) reads the same inputs as the resolver's total, so the meter and its count agree. The Mission's detail page further splits it **by skill** — speaking, listening, writing, reading, and **Other** for XP no skill claims (practice bonuses), shown only when there is some — over the same inputs less goals, which are no skill; a line under Conversation says how much of it came from goals, so the tiles and the legend reconcile. Listening counts listening exercises only: hearing a message read aloud earns no XP.
-- **The threshold** is the course's **XP per objective**, which the instructor sets in the admin dashboard from presets that describe what a student does to reach each, or as a custom value (org doc, "XP per objective"). It travels in course-space room state as `xpToCompleteObjective`; the client only reads it, and defaults to the Standard preset, `kDefaultXpToCompleteObjective` (1,000 XP), when a course has none. It and `kGoalXp` were lowered together ([client#9601](https://github.com/pangeachat/client/issues/9601)) to stay generally balanced. The earlier stars-per-Mission value is still parsed and ignored, so a stored "10 stars" is never read as "10 XP". There is no content ceiling: XP is unbounded, so every Mission with an activity is completable at any threshold.
+- A star marks a Mission, outlined until complete; activities have none. Teachers asked for it: goal counts said little about what a student can do.
+- A goal diamond is one activity goal, shown in a session's goal header and the start page's role cards; activity cards show XP, since goals pay every session and a best-session count undersold replays.
+- The star count counts each Mission completed in a joined course in the current language once.
 
-## Language scope
+### What fills a Mission
 
-A learner's XP is kept per target language, so progress is shown only for content in the language they are learning now ([`CourseLanguageScope`](../../lib/features/quests/course_language_scope.dart), [client#9559](https://github.com/pangeachat/client/issues/9559)). A course or session in another language would otherwise show its goals, read from room state, with none of its XP. A course with no language recorded counts.
+- A Mission is complete when its XP reaches the course's threshold: its activities' XP plus practice on its words. XP has no ceiling, so any Mission with an activity can be completed.
+- Only saved sessions count. Repeats add up: XP is effort, and the per-construct cap is the only farming guard.
+- An activity's XP counts in every course listing it, wherever it was played: it is the learner's work, so card, Mission and start page agree.
+- Practice outside a session counts toward every Mission listing the word, used before or not.
 
-- **What counts.** A saved session counts when the save filed it under the learner's current language (its analytics room lists it), or — for a session saved before that filing existed — when its loaded plan is in that language. Mission meters, the circles, the Learning Objectives page and the star count read only courses in the current language; the goal header's session XP and its "+50" labels show only in a session in it.
-- **A course in another language.** Its Mission card shows a quiet "Switch to {language}" line where its legend and bar would be; the Mission's details and its Practice first offer the same switch the language chip does ([profile.instructions.md](profile.instructions.md), "Switching from context"), and once switched carry on to where the learner was going. The Mission's detail page, reached for such a Mission, says which language it is in and offers the switch.
-- **A course in the learner's base language**, which can't be switched to, says so in a plain note instead, links to nothing and shows no Practice: there is no language they are learning whose words it could drill.
+### Language scope
 
-## One shared resolver
+- Progress shows only for content in the current language, since XP is kept per language; another language's course offers a switch, and the learner's base language a plain note without Practice.
 
-Nothing is locked, so the question is not "is this allowed?" but "where should the learner go next?" — and that is asked by many surfaces, so it is resolved **once** into a single shared answer, never re-derived per surface (re-deriving invites two surfaces drifting on the same question). It is built from inputs the client already holds:
+### One shared resolver
 
-- **The ordered Mission sequences** of the learner's in-scope quests — their joined courses by default, or whatever the world map's quest filter selects — each quest's outline (ordered Mission ids and the activities under each), cached and rebuilt on course join/leave. The order comes from the quest row, read from the CMS directly; each Mission's statement and the activity cards come from choreo's course outline read in the learner's resolved display language (L2 when "App in target language" is on, else L1), and the outline is re-read when that language changes ([client#8577](https://github.com/pangeachat/client/issues/8577), [#9151](https://github.com/pangeachat/client/issues/9151)). The client never reads `learning-objectives` from the CMS: a direct read returns canonical text only (org doc § Content access and localization).
-- **The per-Mission XP rollup** above, read from the course's own list of Missions and activities — its copy, else its pins — the same view the course page shows.
+- The next Mission is computed once and shared by every surface that ranks by progression, so no two drift.
+- A finished quest has no next Mission, rather than point back at done work.
+- Totals are per course: Missions recur across courses with different activities, so blending would credit one course's work to another and undo its pins.
+- Until the answer exists, surfaces rank on plain relevance; nothing is ever blocked.
 
-From those, the resolver finds each quest's **anchor (next) Mission**: the **first Mission in quest order whose XP is below the threshold**. A quest whose every Mission is complete has **no anchor at all** ([client#8997](https://github.com/pangeachat/client/issues/8997)): there is no next step to name, and naming the weakest Mission anyway pointed a finished learner back at work they had already completed. When several quests are in scope it yields, **per quest**, an anchor and that quest's own per-Mission XP; consumers preference still-incomplete Missions and **accumulate** across quests (so an activity advancing several quests' unfinished Missions ranks higher) — the resolver just supplies the anchors and totals, the weighting lives in the consumer (see the [world map](world-map.instructions.md) Priority matrix).
+### Progress display on the course page
 
-**Progression totals are per course, never blended across them** ([client#7771](https://github.com/pangeachat/client/issues/7771)). Missions are a shared catalog reused across quests, so two joined courses routinely carry the same Mission with *different* activities. A Mission's XP only means something against the activity set it was summed over: rolling several courses together would credit one course's XP to another's content and silently undo that course's activity pins. Accumulation across quests is the *consumer's* job (the map's band), not a property of the totals. Where two courses genuinely list the **same** activity, each counts it once on its own — that needs no merging, since both outlines carry it. The star *count*, by contrast, is the learner's: a Mission complete in two courses is one star.
+- A preview shows no progress, and no activity count sits beside it: it read as a second requirement.
+- The Mission on show rides the URL, so course page, collapsed bar and course map agree; a bell flags pings elsewhere, since the map shows only that Mission.
+- A due date never blocks, hides or locks anything.
+- The full plan is a quiet link, for the course's shape rather than what to do next; a complete Mission mutes but stays playable.
 
-**Fail soft.** A surface that asks before the resolver is built simply has no anchor yet and ranks on plain relevance — a cold open (e.g. an activity link opened without visiting the map first) is never blocked, because nothing is ever blocked. The resolver only sharpens ordering; its absence degrades to neutral ranking, not to a wall.
+### The Mission card
 
-## Consumed by
+- Play continues the learner's session before starting another, so started activities get finished.
+- The activity row is the Mission's whole queue: the learner's sessions, playable, finished, then what the course can't fill. Each tier uses the map's ranking, so they can't drift, minus its big-group penalty (an author picked these) and time decay (it would reorder under a reader).
 
-Every surface that preferences by progression reads the *same* shared resolver, so the answer is consistent and computed once:
+### Activity cards
 
-- the [world map](world-map.instructions.md) — the Priority matrix raises activities carrying the anchor Mission to the top of the relevance band, decaying for Missions further along; a finished activity's pin wears the completed stamp (see its pin-display section). The map's pins manager resolves first in a session and publishes to the shared answer — once its outlines have loaded, since an earlier, empty resolution would read as zero stars — which is what puts a star count on the analytics bar before any course page has been opened;
-- the **activity start page** — opens directly into play for every activity (nothing is gated); its finished view totals the activity's XP ([activity-start-page.instructions.md](activity-start-page.instructions.md));
-- the **course page's Mission circles and Mission card**, and the collapsed course bar's circles (below);
-- the **analytics bar's star count** and the Learning Objectives page;
-- the course/quest list, as it is built for v3.
+- One card everywhere; a live state is a frame plus a named pill, never colour alone. A card the course can't fill dims but stays tappable.
+- Finished means XP from a saved session in the current language. The stamp shows that XP, so every surface shows one number.
 
-## Progress display on the course page
+### Who made the course
 
-The course page tells the learner how far along they are, read from the same shared resolver the map uses — one answer, never re-derived per surface — **scoped to the course being viewed** (above). A course it can't resolve (a preview, or before the resolution lands) shows empty rings rather than another course's numbers.
+- The credit comes from the owner's profile, so a teacher controls it.
+- It is prominent while choosing a plan, then sits in More, not as a banner over the teacher's description.
 
-**The Mission circles** ([`ObjectiveProgressCircles`](../../lib/routes/courses/course_objectives/objective_progress_circles.dart)) — one numbered circle per Mission in plan order, under the course page's language and level chips. Each sits inside a gold ring of its XP toward its star. A complete Mission is its star, gold; the current Mission (the anchor) is tinted; the rest are plain numbers, drawn a little lighter. A pointer under one circle marks the **Mission on show**. A tap shows that Mission — the circles are a switcher. The row never wraps: it scrolls, with the Activities row's arrows over whichever end it can still move toward, and opens scrolled so the Mission on show is in view. Each circle carries its statement as a tooltip and its state and XP toward its star in its accessible name, so neither the colour, the ring nor the number is the only carrier. A Mission with no activities is not a circle ([client#7114](https://github.com/pangeachat/client/issues/7114)). While a joined course's progress is on its way — its resolution, or the XP it counts — the circles shimmer under their numbers rather than draw rings that then jump, and no circle is pointed at unless the learner picked one, since the current Mission isn't known yet ([client#9559](https://github.com/pangeachat/client/issues/9559)).
+## Open questions
 
-Two more marks ride the circles:
-
-- **Class location** — where the teacher's due dates put the class: the first Mission in plan order still due, else, every dated Mission past, the last dated one. A muted grey bubble reading "Class location" sits above that circle, its pointer turned down onto it — quieter than the learner's own pointer, so it reads as the class's mark rather than theirs. A course with no due dates shows none. The due dates are the teacher's, set from the admin dashboard and carried in the course's own copy of its Mission list (`pangea.course_missions`); a due date never blocks, hides or locks anything.
-- **A ping bell** — on a Mission other than the one on show, when a coursemate has pinged one of its sessions and the session is still open to join. The course map shows only the Mission on show ([world-map.instructions.md](world-map.instructions.md), "The Mission on show"), so the bell is how a learner hears about a session elsewhere in the course.
-
-**The Mission on show** is the circle the learner picked, else the anchor, else — before progress resolves — the plan's first Mission. It rides the URL (`?mission=`), so the course page, the collapsed course bar and the course map always show the same Mission. Picking another course drops it; a picked id the course no longer carries falls back to the anchor.
-
-**At the course panel's floor** — the wide context bar ([world-map.instructions.md](world-map.instructions.md), "The course context bar") and the narrow peek — the same circles show with the Mission on show named under its pointer ("Mission 3"), since no Mission card is in view to say it. The row keeps a fixed height whether or not its circles have loaded, so the bar never jumps when the plan arrives, and it keeps the class location's space whether or not the course has one. The bar is kept tight around it ([client#9559](https://github.com/pangeachat/client/issues/9559)): a small gap under the title, a small one at the foot, and the narrow peek sized to the circles rather than leaving a band under them.
-
-A course **preview** (not joined) shows no progress — there is no learner progress to show. The course page shows no activity count beside its progress ([client#9390](https://github.com/pangeachat/client/issues/9390)): a count beside a goal read as a second requirement.
-
-## Who made the course
-
-The course page credits its quest's **owner** — whoever built the course plan. That is a different fact from who administers the room, and the room has its own surface for that (the Leaderboard's admin line): a teacher who starts a class from a catalog quest administers a course Pangea wrote, and the credit says so.
-
-The owner is stored on the quest row as `owner_mxid`, a plain-text Matrix id the client reads verbatim. Nothing resolves it on the client's behalf. The `owner` field beside it is a per-environment `matrix-users` row id, and that collection is service- and admin-read only, so a learner's token can read the quest and never resolve the person behind it — which is why the Matrix id is stored where the consumer reads it rather than joined on by a service at read time. Name and avatar then come from that owner's own Matrix profile, so a teacher controls their own credit by editing their profile and we keep no second copy of their name.
-
-Same ladder as an activity's credit, which [activity-start-page.instructions.md](activity-start-page.instructions.md) owns: profile, else the stored Matrix id beside a placeholder contact icon, and the PangeaChat name and avatar reserved for content owned by `@system:pangea.chat`. **A quest with no owner recorded is not evidence Pangea made it.** Content that is genuinely Pangea's says so with the system Matrix id, exactly as an activity does; an unrecorded owner is an unanswered question, and the surface shows no credit at all rather than a guessed one. The failure that ordering prevents — a teacher's course carrying Pangea's name — is worse than an uncredited one.
-
-**Where the credit shows turns on whether the course exists yet.**
-
-- **While the course is being made** — the client's create-course page and the dashboard's setup wizard — it is **prominent**. Someone choosing a plan to build their class on is deciding partly on who made it, so the credit belongs in the decision.
-- **Once the course exists** — the course page's **More** section, among the course's other details. It is deliberately not at the top of the panel the way an activity's credit leads its start page. That page *is* the one activity's header; a course page opens on the teacher's own description of their class, and a credit directly under it reads as a banner over their words — the more so on the common catalog path, where the quest is Pangea's and the class is theirs.
-
-Missions are **not** attributed. They are generic and reused across courses and languages by design, carry no owner, and crediting one to whoever first minted it would misrepresent shared content as authored.
-
-## The Mission card
-
-Under the circles, the course page opens on the **Mission card** for the Mission on show ([`MissionCard`](../../lib/routes/courses/course_objectives/mission_card.dart), [client#9437](https://github.com/pangeachat/client/issues/9437), [client#9559](https://github.com/pangeachat/client/issues/9559)). It is the course's main content, on the panel's own surface with a brand-purple edge and a hard lip below it, and it reads top to bottom:
-
-1. **Which Mission** — "MISSION N" in the brand colour (text, not a pill, so it doesn't read as a button) and the teacher's due date beside it, which drops to its own line when the two don't fit; **Practice** at the end of the same line, the page's tonal pill with the Mission's word count — vocabulary practice on this Mission's word list ([practice-exercises.instructions.md](practice-exercises.instructions.md), "Objective practice"), which counts toward the Mission through its words ("Practice credit", above). The teacher's note for the Mission sits under the line.
-2. **What it asks** — the Mission's star and can-do statement, never larger than the course title above the card, as a quiet link (a trailing chevron) to the Mission's detail page.
-3. **How far along** — the Conversation and Practice legend, then a full-width bar of the XP toward the star in the same golds, its "XP / threshold" count at the end; its tooltip says the XP left to the star ("931 XP to your star") or "Star earned!".
-4. **What to do next** — **Play**, the one solid button, pulsing gently while the Mission is unfinished (still under reduced motion). It is the width of the card it opens and sits directly on it: the activity row's first card, marked **"Up next"** in Play's colour. Its label says what that is — **"Continue activity"** for a session the learner already holds a role in among this Mission's activities (it reopens the session's chat, so a started activity gets finished before a new one starts), **"Play again"** for a finished activity with nothing live, else **"Next activity"** — and its tooltip and accessible name add the activity's name. Each Mission keeps to its own activities: a session from another Mission is resumed from that Mission's card or from Chats.
-5. **The activity row**, inside the card, because those activities are what fill it.
-
-While a joined course's progress is on its way, the header from the label to the bar is one shimmering block the size of the real header, which is laid out under it invisibly — so the card keeps its height, nothing reads as zero, and nothing jumps when the numbers land. A course in another language or the learner's base language changes the card as "Language scope" (above) says. Every button on the course page is one height: Play, Practice and the section buttons.
-
-**The activity row** is the Mission's **whole queue** ([client#9559](https://github.com/pangeachat/client/issues/9559)): nothing is dropped, and it runs in tiers before the score —
-
-1. a session the learner is in;
-2. what they can play now: an unfinished activity they can start, or any activity with a live session;
-3. what they have finished, for another round;
-4. what they can't start yet — more roles than the course can fill, and no live session to join — dimmed.
-
-So a finished activity still leads when nothing unfinished is playable. Whether an activity can start is one rule ([`ActivityCarousel.canStart`](../../lib/routes/courses/course_objectives/activity_carousel.dart)) that both dims a card and ranks it, so a card ranks where it looks; a finished activity is never dimmed, since its replay isn't blocked. Within a tier the row is ranked by the **same [Priority matrix](world-map.instructions.md#priority-matrix) the world map ranks pins by** — an open session a coursemate can be joined in, a recruiting ping raising one further — so the course page and the map cannot drift apart as its weights are tuned. The map's first-map penalty, its dismissal penalty and its recency term do not apply: a course's activities were hand-picked by its author, so a 3+ role one is part of the syllabus rather than a newcomer's dead end; there is no large card here to dismiss; and the row has no per-session start time to decay, so a learner reading the page does not watch it reorder itself. Equal scores break on a stable key, so a rebuild never reshuffles the row under a reader. A tap on a card whose session the learner is in reopens that chat; any other card opens the activity's start page. The row's scroll arrows sit over the cards only, never over the "Up next" line above them, so they don't cut off the foot of Play's glow.
-
-**The full course plan** — every Mission with its circle, statement and activities ("Mission header states on the course plan", below) — sits behind a quiet **"See full course plan"** link under the Mission card. It is for reading the course's shape, which educators asked to see, rather than for choosing what to do next, so it is a plain text link rather than a button and never competes with Play. It carries no circle row of its own: each Mission's header has its circle, and a row above them only looked tappable.
-
-**When every Mission is complete** there is no current Mission to show; unless a circle is tapped, the page shows a **course complete** card instead of the Mission card — the count of objectives done and a Practice button for the learner's usual session. The circles above it show every Mission's star.
-
-## Activity cards
-
-Every surface that lists a course's activities draws the same card ([`ActivitySuggestionCard`](../../lib/routes/chat/chat_details/activity_suggestion_card.dart)): the activity image, its name, and the activity type next to the role count. The body stays calm; what the card says about the activity rides its photo as one family of pills — what is live top-left, what the learner earned bottom-right — with a video tag bottom-left for a video activity ([client#9559](https://github.com/pangeachat/client/issues/9559)). There is no goal row. The map's large pins are a squashed version of the same card ([world-map.instructions.md](world-map.instructions.md)).
-
-**Card states** — so a learner can scan a course listing and tell what each activity is doing right now. A live state is a thin **frame** round the card and a **pill** on its photo — its state's glyph and its name — so the card's own content stays the same in every state; the colours are the map pins' activity roles ([design-tokens.instructions.md](design-tokens.instructions.md)):
-
-1. **Normal (not started)** — the plain card. On the map, where a card floats over the tiles, it keeps a frame in the not-started pin's colour ([world-map.instructions.md](world-map.instructions.md)).
-2. **Joinable/Open** — a green frame and an "Open (N)" pill, where N is the number of open sessions to choose from — the sessions this course lists, not every joined course's ([world-map.instructions.md](world-map.instructions.md), Discovering joinable sessions). The pill states the meaning in text, so the state is never colour alone.
-3. **Ongoing** — a purple frame and pill ("Ongoing", or "Waiting" for a session still filling its seats, which shows its participant row under the pill).
-4. **Needs more participants to start** — the plain card at 50% opacity: still clickable but de-emphasized. Tapping it explains why ("Uh oh, you need to invite N people…").
-
-A coursemate's **ping** on a live card swaps the pill's glyph for a bell, and the pill's accessible name says "Pinged"; a ping on a card with no live state shows the bell badge on its own.
-
-**A finished activity** wears the gold double-ring **completed stamp** with the learner's XP from it in a pill — "450 XP" — at its photo's bottom-right, beside a live state, never instead of it ([`CompletedStamp`](../../lib/widgets/completed_stamp.dart)). **Finished means XP from a saved session in the learner's current language** ([client#9559](https://github.com/pangeachat/client/issues/9559)): the one rule every stamp reads — course cards, the full plan, the map's cards and pins, the Mission page's Finished row ([`Client.savedSessionsByActivity`](../../lib/features/quests/quests_client_extension.dart)) — rather than whether a role was marked complete, so a stamp always has an XP to show and every surface shows the same number. The number is the activity's whole XP across every course ("What fills a Mission", above), written out in full and shortened only from five digits ("12K XP"). The stamp is the bright fixed gold under its own dark ink in both themes, on a scrim — the surface in light, the scrim in dark — so its gold text reads over any photo. It fades in, since the XP behind it is read after the card first draws. A course preview shows the stamps too, for XP the learner earned in those activities elsewhere. Chat rows keep their own mark of a replayed activity ([activities.instructions.md](activities.instructions.md)).
-
-## Mission header states on the course plan
-
-Each Mission's header on the full course plan tells the learner at a glance whether it is done, current, or later ([client#8874](https://github.com/pangeachat/client/issues/8874) — before this, the only mark was the statement's text colour, which nobody could see). The header leads with the Mission's **circle** from the course page's row — its number, or its star once complete, inside the gold ring of its XP, which is in its accessible name — then its can-do statement, with its labels flowing after the text so they never push it over ([client#9559](https://github.com/pangeachat/client/issues/9559)). Three states:
-
-- **Current** — the shared resolver's anchor for this course. Its circle is tinted, a **"Current mission"** label follows its statement, and the statement takes the `primary` accent; the label says the state in words, so it is never colour alone. Nothing wraps the section: a band or an outline around header and cards was tried and dropped, because a tint shows the carousel's surface-coloured scroll-arrow strip as a notch and any inset throws the section's margins off against its neighbours. At most one Mission per course wears it, and a complete Mission never does — once the whole course is complete there is no anchor, so no Mission carries the label ([client#8997](https://github.com/pangeachat/client/issues/8997)).
-- **Complete** — XP at or past the threshold. The circle turns to its gold star and the header text drops to `onSurfaceVariant`, so finished work reads as done without disappearing: its activities stay in view and playable, since a learner can still raise its XP.
-- **Later** — everything else, plain.
-
-The Mission the teacher's due dates put the class on also carries a **"Class location"** label after its statement, beside "Current mission" when they are the same Mission. The emphasis lives on the Mission header alone, never on the section or its activity cards: the card states above keep their meaning under a current Mission's header.
-
-## Per-course activity pinning
-
-The design — what a pin means, why it lives in course state and never the quest plan, attribution-level semantics — is the org doc's [Per-course activity pinning](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md#per-course-activity-pinning). This doc records the client mechanics ([client#7748](https://github.com/pangeachat/client/issues/7748)):
-
-- The pin travels on the course space's teacher-mode state (`TeacherModeModel.pinnedActivitiesByObjective`: Mission id → pinned `activity_id` content ids). Null, a missing Mission key, or an empty list all mean unrestricted.
-- Restriction is a **pure copy** at the outline boundary (`QuestOutline.restrictedTo`) — never a mutation of the quest-outline cache, which is shared across courses referencing the same quest; that copy is what lets the same quest run restricted in one course and open in another.
-- **One rule, one home**: `effectivePinnedActivityIds` carries the fail-open rule (no pin, empty pin, or an all-stale pin → unrestricted, so a pin can never make a Mission uncompletable). Both the outline restriction and the course-scoped map's marker filter call it. The world-scoped map is deliberately never filtered — everything stays playable everywhere.
-- The resolver is **pin-unaware by construction**: XP attribution and a Mission's vocabulary both derive from the outline's per-Mission activity sets, so a filtered outline scopes both with no resolver changes. This holds only because totals are per course (above) — a cross-course rollup would re-admit the very activities the pin excluded ([client#7771](https://github.com/pangeachat/client/issues/7771)).
-- Previews and non-joined contexts pass no pins — there is no learner progress to scope, and fail-open is the default everywhere.
-- The teacher editing surface is deferred to the admin panel ([admin-dash#30](https://github.com/pangeachat/admin-dash/issues/30)); until it ships, pins are written to course room state directly.
-
-## Future Work
-
-File GitHub issues for these and link them here.
-
-- A persisted per-Mission XP total (server-side rollup) once reading every session room and the local analytics database client-side becomes too costly at catalog scale.
-- Teacher-set **hard** restrictions (an opt-in gate on top of the soft default), if classroom demand appears — deliberately not built today (see the org doc). Distinct from per-course activity pinning (above), which is built and restricts *which activities count*, not *when Missions are reachable*.
-- Implement the joinable/open activity card design — [pangeachat/client#7669](https://github.com/pangeachat/client/issues/7669).
-- Design hint indicating an activity needs more people to start — [pangeachat/client#6810](https://github.com/pangeachat/client/issues/6810).
+- Does the activity start page read the shared answer? Its code doesn't.
+- [world-map.instructions.md](world-map.instructions.md) says the row drops finished and ongoing activities; the code keeps them.
+- Should a course's hidden activities' words credit its Missions? The code does.
+- Should this doc describe the per-course progress record ([client#9643](https://github.com/pangeachat/client/issues/9643))?
+- Before a joined course's progress resolves: empty rings or shimmer?

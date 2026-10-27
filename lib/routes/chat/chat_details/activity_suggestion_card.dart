@@ -32,7 +32,9 @@ class ActivitySuggestionCard extends StatelessWidget {
 
   /// The activity's live map-pin state, or null for a plain card. Drawn as a
   /// thin frame in the pin's state hue with a pill on the photo naming it, so
-  /// the card matches the map's pins: Ongoing (purple) or Open (green).
+  /// the card matches the map's pins: Ongoing (purple) or Open (green). It is
+  /// what lets a learner scan a course's activities and tell what each is
+  /// doing right now (quests.instructions.md, "Activity cards").
   /// See [ActivityPinState].
   final ActivityPinState? pinState;
 
