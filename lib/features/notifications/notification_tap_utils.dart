@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
@@ -225,11 +225,10 @@ class NotificationTapUtil {
       // here means the invite was accepted without asking.
       final joinResp = await SpaceTapUtil.onInviteTap(context, room);
       if (joinResp == null || !context.mounted) return;
-      final joinedRoomId = await JoinRoomAnalyticsConsentHandler(
+      final joinedRoomId = await JoinRoomAnalyticsAccessHandler(
         joinResp,
         room,
       ).handle(context);
-      if (joinedRoomId == null) return;
       router.go(
         WorkspaceNav.openCourse(
           router.routeInformationProvider.value.uri,

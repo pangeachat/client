@@ -7,6 +7,14 @@ extension EventsRoomExtension on Room {
       return;
     }
 
+    // Leaving stops the sharing (course-analytics-access.instructions.md);
+    // a failure is reported and the leave still goes ahead.
+    try {
+      await client.removeCourseTeachersFromAnalytics(this);
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'roomID': id});
+    }
+
     for (final child in spaceChildren) {
       if (child.roomId == null) continue;
       final Room? room = client.getRoomById(child.roomId!);

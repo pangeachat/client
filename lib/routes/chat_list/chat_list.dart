@@ -13,9 +13,7 @@ import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_client_extension.dart';
-import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
@@ -415,7 +413,6 @@ class ChatListController extends State<ChatList>
         .addListener(_onSubscribe);
 
     final client = Matrix.of(context).client;
-    _handlePendingCourseAnalyticsAccessRequests(client);
 
     // listen for room join events and leave room if over capacity
     // _roomCapacitySubscription?.cancel();
@@ -490,7 +487,7 @@ class ChatListController extends State<ChatList>
       if (joinResp == null) continue;
 
       if (!mounted) return;
-      final handler = JoinRoomAnalyticsConsentHandler(joinResp, space);
+      final handler = JoinRoomAnalyticsAccessHandler(joinResp, space);
       await handler.handle(context);
     }
   }
@@ -516,7 +513,7 @@ class ChatListController extends State<ChatList>
           final joinResp = await room.joinKnockedRoom();
           if (joinResp == null) continue;
 
-          final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+          final handler = JoinRoomAnalyticsAccessHandler(joinResp, room);
           await handler.handle(context);
         } catch (err, s) {
           ErrorHandler.logError(e: err, s: s, data: {"roomId": room.id});
@@ -533,9 +530,8 @@ class ChatListController extends State<ChatList>
         final joinResp = await SpaceTapUtil.onInviteTap(context, room);
         if (joinResp == null) continue;
 
-        final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+        final handler = JoinRoomAnalyticsAccessHandler(joinResp, room);
         final joinedRoomId = await handler.handle(context);
-        if (joinedRoomId == null) continue;
 
         context.go(
           WorkspaceNav.openCourse(GoRouterState.of(context).uri, joinedRoomId),
@@ -941,28 +937,6 @@ class ChatListController extends State<ChatList>
     // }
     // Pangea#
   }
-
-  // #Pangea
-  Future<void> _handlePendingCourseAnalyticsAccessRequests(
-    Client client,
-  ) async {
-    final pending = client.pendingAccessNoticeCourseIds;
-    for (final courseId in pending) {
-      final course = client.getRoomById(courseId);
-      if (course == null || !course.isSpace) continue;
-      if (JoinRoomAnalyticsConsentHandler.currentRoomId == courseId) continue;
-
-      final handler = JoinRoomAnalyticsConsentHandler(
-        JoinResponse(
-          roomId: course.id,
-          shouldShowNotice: course.shouldShowAnalyticsAccessNotice,
-        ),
-        course,
-      );
-      await handler.handle(context);
-    }
-  }
-  // Pangea#
 
   void setActiveFilter(ActiveFilter filter) {
     setState(() {
