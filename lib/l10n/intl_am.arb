@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-23 13:25:37.066232",
+    "@@last_modified": "2026-10-27 14:47:55.726744",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "የተፈጠረው በ",
     "coursePreview": "የኮርስ ቅድመ እይታ",
     "numActivities": "{count, plural, =1{1 እንቅስቃሴ} other{{count} እንቅስቃሴዎች}}",
-    "teacherAnalyticsRequestTitle": "መምህሩ የመማር ሂደትዎን ይጠይቃል",
-    "teacherAnalyticsRequestDesc": "በ{targetLang} የተጠቀሟቸውን ቃላት እና ሰዋሰው፣ ደረጃዎ እና የልምድ ነጥብዎ፣ እና በኮርስ እንቅስቃሴዎች የተላኩ መልዕክቶችን ያያሉ። የእርስዎ 1-ለ-1 መልዕክቶች አይጋሩም። ኮርሱን ለመቀላቀል ትንታኔዎችን ማጋራት ያስፈልጋል።",
-    "shareAndJoin": "ያጋሩ እና ይቀላቀሉ",
-    "goBack": "ተመለስ",
     "emptyGroupsSearch": "ምንም ቡድኖች አልተገኙም። የፍለጋ ቃልዎ በትክክል መጻፉን ያረጋግጡ።",
     "emptyActivitiesSearch": "ምንም እንቅስቃሴዎች አልተገኙም። የፍለጋ ቃልዎ በትክክል መጻፉን ያረጋግጡ።",
     "chatListFiltersLabel": "የውይይት ማጣሪያዎች",
@@ -2508,5 +2504,15 @@
     "openCourse": "ኮርስ ክፈት",
     "centralCourseJoinedTitle": "የ{course} አባል ሆነዋል",
     "centralCourseJoinedBody": "ይህ የፓንጋያ ኮርስ ለ{language} ተማሪዎች ነው። አባላቱ የእርስዎን ስም እና መገለጫ ማየት ይችላሉ።",
-    "centralCourseMembersSeeYou": "የዚህ ኮርስ አባላት የእርስዎን ስም እና መገለጫ ማየት ይችላሉ።"
+    "centralCourseMembersSeeYou": "የዚህ ኮርስ አባላት የእርስዎን ስም እና መገለጫ ማየት ይችላሉ።",
+    "practiceStartWordCount": "{count, plural, =1{የሚለማመድ ቃል} other{የሚለማመዱ ቃላት}}",
+    "practiceStartGrammarCount": "{count, plural, =1{የሚለማመድ ሰዋስው ነጥብ} other{የሚለማመዱ ሰዋስው ነጥቦች}}",
+    "practiceStartExerciseTypes": "የልምምድ ዓይነቶች",
+    "analyticsSharedOnJoin": "በ{course} ውስጥ ያሉ አስተማሪዎችዎ አሁን የመማር ሂደትዎን ማየት ይችላሉ።",
+    "sharedAnalyticsTitle": "የተጋራ የመማር ሂደት",
+    "sharedAnalyticsDesc": "በእነዚህ ኮርሶች ውስጥ ያሉ አስተማሪዎች የመማር ሂደትዎን ማየት ይችላሉ። ማጋራቱን ለማቆም ከኮርስ ይውጡ።",
+    "sharedAnalyticsNone": "የመማር ሂደትዎን ከማንኛውም ኮርስ ጋር እያጋሩ አይደሉም።",
+    "sharedAnalyticsOthersTitle": "ሂደትዎን ማየት የሚችሉ ሌሎች",
+    "removeAnalyticsAccess": "መዳረሻን አስወግድ",
+    "removeAnalyticsAccessDesc": "{name} ከእንግዲህ የመማር ሂደትዎን ማየት አይችልም።"
 }

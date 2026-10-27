@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-23 13:25:41.283192",
+    "@@last_modified": "2026-10-27 14:48:00.704424",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "ರಚಿಸಿದವರು",
     "coursePreview": "ಕೋರ್ಸ್ ಪೂರ್ವವೀಕ್ಷಣೆ",
     "numActivities": "{count, plural, =1{1 ಚಟುವಟಿಕೆ} other{{count} ಚಟುವಟಿಕೆಗಳು}}",
-    "teacherAnalyticsRequestTitle": "ಶಿಕ್ಷಕರು ನಿಮ್ಮ ಕಲಿಕೆಯ ಪ್ರಗತಿಯನ್ನು ವಿನಂತಿಸುತ್ತಾರೆ",
-    "teacherAnalyticsRequestDesc": "ಅವರು ನೀವು {targetLang} ನಲ್ಲಿ ಬಳಸಿದ ಎಲ್ಲಾ ಪದಗಳು ಮತ್ತು ವ್ಯಾಕರಣ, ನಿಮ್ಮ ಮಟ್ಟ ಮತ್ತು XP, ಮತ್ತು ಕೋರ್ಸ್ ಚಟುವಟಿಕೆಗಳಲ್ಲಿ ಕಳುಹಿಸಿದ ಸಂದೇಶಗಳನ್ನು ನೋಡುತ್ತಾರೆ. ನಿಮ್ಮ 1-ಆನ್-1 ಸಂದೇಶಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಲಾಗುವುದಿಲ್ಲ. ಕೋರ್ಸ್‌ಗೆ ಸೇರಲು ವಿಶ್ಲೇಷಣೆಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳುವುದು ಕಡ್ಡಾಯವಾಗಿದೆ.",
-    "shareAndJoin": "ಹಂಚಿಕೊಳ್ಳಿ ಮತ್ತು ಸೇರಿಕೊಳ್ಳಿ",
-    "goBack": "ಹಿಂದೆ ಹೋಗಿ",
     "emptyGroupsSearch": "ಯಾವುದೇ ಗುಂಪುಗಳು ಕಂಡುಬಂದಿಲ್ಲ. ನಿಮ್ಮ ಹುಡುಕಾಟವನ್ನು ಸರಿಯಾಗಿ ಬರೆಯಲಾಗಿದೆಯೇ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.",
     "emptyActivitiesSearch": "ಯಾವುದೇ ಚಟುವಟಿಕೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ. ನಿಮ್ಮ ಹುಡುಕಾಟವನ್ನು ಸರಿಯಾಗಿ ಬರೆಯಲಾಗಿದೆಯೇ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.",
     "chatListFiltersLabel": "ಚಾಟ್ ಫಿಲ್ಟರ್‌ಗಳು",
@@ -2508,5 +2504,15 @@
     "openCourse": "ಕೋರ್ಸ್ ತೆರೆಯಿರಿ",
     "centralCourseJoinedTitle": "ನೀವು {course} ಸೇರಿಕೊಂಡಿದ್ದೀರಿ",
     "centralCourseJoinedBody": "ಇದು {language} ಕಲಿಯುವವರಿಗಾಗಿ ಇರುವ ಪ್ಯಾಂಗಿಯಾದ ಕೋರ್ಸ್ ಆಗಿದೆ. ಇದರ ಸದಸ್ಯರು ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಪ್ರೊಫೈಲ್ ಅನ್ನು ನೋಡಬಹುದು.",
-    "centralCourseMembersSeeYou": "ಈ ಕೋರ್ಸ್‌ನ ಸದಸ್ಯರು ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಪ್ರೊಫೈಲ್ ಅನ್ನು ನೋಡಬಹುದು."
+    "centralCourseMembersSeeYou": "ಈ ಕೋರ್ಸ್‌ನ ಸದಸ್ಯರು ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಪ್ರೊಫೈಲ್ ಅನ್ನು ನೋಡಬಹುದು.",
+    "practiceStartWordCount": "{count, plural, =1{ಅಭ್ಯಾಸ ಮಾಡಲು ಪದ} other{ಅಭ್ಯಾಸ ಮಾಡಲು ಪದಗಳು}}",
+    "practiceStartGrammarCount": "{count, plural, =1{ಅಭ್ಯಾಸ ಮಾಡಲು ವ್ಯಾಕರಣ ಅಂಶ} other{ಅಭ್ಯಾಸ ಮಾಡಲು ವ್ಯಾಕರಣ ಅಂಶಗಳು}}",
+    "practiceStartExerciseTypes": "ವ್ಯಾಯಾಮದ ವಿಧಗಳು",
+    "analyticsSharedOnJoin": "{course} ನಲ್ಲಿರುವ ನಿಮ್ಮ ಶಿಕ್ಷಕರು ಈಗ ನಿಮ್ಮ ಕಲಿಕೆಯ ಪ್ರಗತಿಯನ್ನು ನೋಡಬಹುದು.",
+    "sharedAnalyticsTitle": "ಹಂಚಿದ ಕಲಿಕೆಯ ಪ್ರಗತಿ",
+    "sharedAnalyticsDesc": "ಈ ಕೋರ್ಸ್‌ಗಳಲ್ಲಿರುವ ಶಿಕ್ಷಕರು ನಿಮ್ಮ ಕಲಿಕೆಯ ಪ್ರಗತಿಯನ್ನು ನೋಡಬಹುದು. ಹಂಚಿಕೊಳ್ಳುವುದನ್ನು ನಿಲ್ಲಿಸಲು ಕೋರ್ಸ್‌ನಿಂದ ಹೊರಬನ್ನಿ.",
+    "sharedAnalyticsNone": "ನೀವು ಯಾವುದೇ ಕೋರ್ಸ್‌ನೊಂದಿಗೆ ನಿಮ್ಮ ಕಲಿಕೆಯ ಪ್ರಗತಿಯನ್ನು ಹಂಚಿಕೊಳ್ಳುತ್ತಿಲ್ಲ.",
+    "sharedAnalyticsOthersTitle": "ನಿಮ್ಮ ಪ್ರಗತಿಯನ್ನು ನೋಡಬಹುದಾದ ಇತರರು",
+    "removeAnalyticsAccess": "ಪ್ರವೇಶವನ್ನು ತೆಗೆದುಹಾಕಿ",
+    "removeAnalyticsAccessDesc": "{name} ಇನ್ನು ಮುಂದೆ ನಿಮ್ಮ ಕಲಿಕೆಯ ಪ್ರಗತಿಯನ್ನು ನೋಡಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ."
 }

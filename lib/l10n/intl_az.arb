@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-23 13:25:37.113419",
+    "@@last_modified": "2026-10-27 14:47:55.699791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Yaradılıb",
     "coursePreview": "Kurs önizləməsi",
     "numActivities": "{count, plural, =1{1 fəaliyyət} other{{count} fəaliyyət}}",
-    "teacherAnalyticsRequestTitle": "Müəllim öyrənmə tərəqqinizi tələb edir",
-    "teacherAnalyticsRequestDesc": "Onlar {targetLang} dilində istifadə etdiyiniz bütün sözləri və qrammatikanı, səviyyənizi və XP-nizi, həmçinin kurs fəaliyyətlərində göndərilən mesajları görəcəklər. Tək-tək mesajlarınız paylaşılmayacaq. Kursa qoşulmaq üçün analitikanın paylaşılması tələb olunur.",
-    "shareAndJoin": "Paylaş və qoşul",
-    "goBack": "Geri qayıt",
     "emptyGroupsSearch": "Heç bir qrup tapılmadı. Axtarışınızın düzgün yazıldığından əmin olun.",
     "emptyActivitiesSearch": "Heç bir fəaliyyət tapılmadı. Axtarışınızın düzgün yazıldığından əmin olun.",
     "chatListFiltersLabel": "Çat filtrləri",
@@ -2508,5 +2504,15 @@
     "openCourse": "Kursu aç",
     "centralCourseJoinedTitle": "{course} kursuna qoşuldunuz",
     "centralCourseJoinedBody": "Bu, Pangea-nın {language} öyrənənlər üçün kursudur. Üzvləri adınızı və profilinizi görə bilər.",
-    "centralCourseMembersSeeYou": "Bu kursun üzvləri adınızı və profilinizi görə bilər."
+    "centralCourseMembersSeeYou": "Bu kursun üzvləri adınızı və profilinizi görə bilər.",
+    "practiceStartWordCount": "{count, plural, =1{təcrübə üçün söz} other{təcrübə üçün sözlər}}",
+    "practiceStartGrammarCount": "{count, plural, =1{təcrübə üçün qrammatika qaydası} other{təcrübə üçün qrammatika qaydaları}}",
+    "practiceStartExerciseTypes": "Məşq növləri",
+    "analyticsSharedOnJoin": "{course} kursundakı müəllimləriniz artıq öyrənmə tərəqqinizi görə bilərlər.",
+    "sharedAnalyticsTitle": "Paylaşılan öyrənmə tərəqqisi",
+    "sharedAnalyticsDesc": "Bu kurslardakı müəllimlər öyrənmə tərəqqinizi görə bilərlər. Paylaşımı dayandırmaq üçün kursdan çıxın.",
+    "sharedAnalyticsNone": "Heç bir kursla öyrənmə tərəqqinizi paylaşmırsınız.",
+    "sharedAnalyticsOthersTitle": "Tərəqqinizi görə bilən digərləri",
+    "removeAnalyticsAccess": "Girişi sil",
+    "removeAnalyticsAccessDesc": "{name} artıq öyrənmə tərəqqinizi görə bilməyəcək."
 }

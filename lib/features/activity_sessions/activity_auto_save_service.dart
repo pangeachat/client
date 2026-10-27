@@ -115,10 +115,15 @@ class ActivityAutoSaveService {
     _roleStateSub = client.onRoomState.stream
         .where((event) => event.state.type == PangeaEventTypes.activityRole)
         .listen((event) {
-          _maybeSave(client.getRoomById(event.roomId));
+          final room = client.getRoomById(event.roomId);
+          _maybeSave(room);
           // Stars bank when the role archives, so the published total is
           // recounted on the same signal that banks them.
           _publishStarTotal();
+          // So does a saved session's XP, toward its Missions.
+          if (room?.hasArchivedActivity ?? false) {
+            unawaited(analyticsService.updateService.updateCourseProgress());
+          }
         });
 
     // Reference plans hydrate asynchronously; a room skipped because its plan

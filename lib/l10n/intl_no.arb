@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-23 13:25:43.627140",
+    "@@last_modified": "2026-10-27 14:48:03.330055",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Opprettet av",
     "coursePreview": "Forhåndsvisning av kurs",
     "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktiviteter}}",
-    "teacherAnalyticsRequestTitle": "Lærer ber om din læringsfremgang",
-    "teacherAnalyticsRequestDesc": "De vil se alle ordene og grammatikken du har brukt i {targetLang}, ditt nivå og XP, og meldingene sendt i kursaktiviteter. Dine 1-til-1-meldinger vil ikke bli delt. Deling av analyser er påkrevd for å bli med på kurset.",
-    "shareAndJoin": "Del og bli med",
-    "goBack": "Gå tilbake",
     "emptyGroupsSearch": "Ingen grupper funnet. Sjekk at søket er stavet riktig.",
     "emptyActivitiesSearch": "Ingen aktiviteter funnet. Sjekk at søket er stavet riktig.",
     "chatListFiltersLabel": "Chatfiltre",
@@ -2508,5 +2504,15 @@
     "openCourse": "Åpne kurs",
     "centralCourseJoinedTitle": "Du har blitt med i {course}",
     "centralCourseJoinedBody": "Det er Pangeas kurs for {language}-elever. Medlemmene kan se navnet og profilen din.",
-    "centralCourseMembersSeeYou": "Medlemmer av dette kurset kan se navnet og profilen din."
+    "centralCourseMembersSeeYou": "Medlemmer av dette kurset kan se navnet og profilen din.",
+    "practiceStartWordCount": "{count, plural, =1{ord å øve på} other{ord å øve på}}",
+    "practiceStartGrammarCount": "{count, plural, =1{grammatikkpunkt å øve på} other{grammatikkpunkter å øve på}}",
+    "practiceStartExerciseTypes": "Øvelsestyper",
+    "analyticsSharedOnJoin": "Lærerne dine i {course} kan nå se læringsfremgangen din.",
+    "sharedAnalyticsTitle": "Delt læringsfremgang",
+    "sharedAnalyticsDesc": "Lærere i disse kursene kan se læringsfremgangen din. Forlat et kurs for å slutte å dele.",
+    "sharedAnalyticsNone": "Du deler ikke læringsfremgangen din med noe kurs.",
+    "sharedAnalyticsOthersTitle": "Andre som kan se fremgangen din",
+    "removeAnalyticsAccess": "Fjern tilgang",
+    "removeAnalyticsAccessDesc": "{name} vil ikke lenger kunne se læringsfremgangen din."
 }

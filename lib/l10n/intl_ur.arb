@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-23 13:25:46.537915",
+    "@@last_modified": "2026-10-27 14:48:07.788752",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "تخلیق کردہ",
     "coursePreview": "کورس کا جائزہ",
     "numActivities": "{count, plural, =1{1 سرگرمی} other{{count} سرگرمیاں}}",
-    "teacherAnalyticsRequestTitle": "استاد آپ کی سیکھنے کی پیشرفت کی درخواست کرتا ہے",
-    "teacherAnalyticsRequestDesc": "وہ تمام الفاظ اور گرامر دیکھیں گے جو آپ نے {targetLang} میں استعمال کیے ہیں، آپ کی سطح اور XP، اور کورس کی سرگرمیوں میں بھیجے گئے پیغامات۔ آپ کے 1-on-1 پیغامات شیئر نہیں کیے جائیں گے۔ کورس میں شامل ہونے کے لیے تجزیات کا اشتراک کرنا ضروری ہے۔",
-    "shareAndJoin": "شیئر کریں اور شامل ہوں",
-    "goBack": "واپس جائیں",
     "emptyGroupsSearch": "کوئی گروپس نہیں ملے۔ یقینی بنائیں کہ آپ کی تلاش کی ہجے درست ہے۔",
     "emptyActivitiesSearch": "کوئی سرگرمیاں نہیں ملیں۔ یقینی بنائیں کہ آپ کی تلاش کی ہجے درست ہے۔",
     "chatListFiltersLabel": "چیٹ فلٹرز",
@@ -2508,5 +2504,15 @@
     "openCourse": "کورس کھولیں",
     "centralCourseJoinedTitle": "آپ {course} میں شامل ہو گئے ہیں",
     "centralCourseJoinedBody": "یہ {language} سیکھنے والوں کے لیے Pangea کا کورس ہے۔ اس کے اراکین آپ کا نام اور پروفائل دیکھ سکتے ہیں۔",
-    "centralCourseMembersSeeYou": "اس کورس کے اراکین آپ کا نام اور پروفائل دیکھ سکتے ہیں۔"
+    "centralCourseMembersSeeYou": "اس کورس کے اراکین آپ کا نام اور پروفائل دیکھ سکتے ہیں۔",
+    "practiceStartWordCount": "{count, plural, =1{مشق کرنے کے لیے لفظ} other{مشق کرنے کے لیے الفاظ}}",
+    "practiceStartGrammarCount": "{count, plural, =1{مشق کرنے کے لیے گرامر کا نقطہ} other{مشق کرنے کے لیے گرامر کے نکات}}",
+    "practiceStartExerciseTypes": "ورزش کی اقسام",
+    "analyticsSharedOnJoin": "{course} میں آپ کے اساتذہ اب آپ کی سیکھنے کی پیشرفت دیکھ سکتے ہیں۔",
+    "sharedAnalyticsTitle": "سیکھنے کی پیشرفت کا اشتراک کیا گیا",
+    "sharedAnalyticsDesc": "ان کورسز میں اساتذہ آپ کی سیکھنے کی پیشرفت دیکھ سکتے ہیں۔ اشتراک بند کرنے کے لیے کورس چھوڑ دیں۔",
+    "sharedAnalyticsNone": "آپ کسی بھی کورس کے ساتھ اپنی سیکھنے کی پیشرفت کا اشتراک نہیں کر رہے ہیں۔",
+    "sharedAnalyticsOthersTitle": "دوسرے جو آپ کی پیشرفت دیکھ سکتے ہیں",
+    "removeAnalyticsAccess": "رسائی ہٹائیں",
+    "removeAnalyticsAccessDesc": "{name} اب آپ کی سیکھنے کی پیشرفت نہیں دیکھ پائے گا۔"
 }

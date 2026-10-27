@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-23 13:25:43.110855",
+    "@@last_modified": "2026-10-27 14:48:02.635375",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Dicipta oleh",
     "coursePreview": "Pratonton kursus",
     "numActivities": "{count, plural, =1{1 aktiviti} other{{count} aktiviti}}",
-    "teacherAnalyticsRequestTitle": "Guru meminta kemajuan pembelajaran anda",
-    "teacherAnalyticsRequestDesc": "Mereka akan melihat semua perkataan dan tatabahasa yang anda gunakan dalam {targetLang}, tahap dan XP anda, serta mesej yang dihantar dalam aktiviti kursus. Mesej 1-dengan-1 anda tidak akan dikongsi. Perkongsian analitik diperlukan untuk menyertai kursus.",
-    "shareAndJoin": "Kongsi dan sertai",
-    "goBack": "Kembali",
     "emptyGroupsSearch": "Tiada kumpulan ditemui. Pastikan carian anda dieja dengan betul.",
     "emptyActivitiesSearch": "Tiada aktiviti ditemui. Pastikan carian anda dieja dengan betul.",
     "chatListFiltersLabel": "Penapis sembang",
@@ -2508,5 +2504,15 @@
     "openCourse": "Buka kursus",
     "centralCourseJoinedTitle": "Anda telah menyertai {course}",
     "centralCourseJoinedBody": "Ini ialah kursus Pangea untuk pelajar {language}. Ahli-ahlinya boleh melihat nama dan profil anda.",
-    "centralCourseMembersSeeYou": "Ahli kursus ini boleh melihat nama dan profil anda."
+    "centralCourseMembersSeeYou": "Ahli kursus ini boleh melihat nama dan profil anda.",
+    "practiceStartWordCount": "{count, plural, =1{perkataan untuk berlatih} other{perkataan untuk berlatih}}",
+    "practiceStartGrammarCount": "{count, plural, =1{poin tatabahasa untuk berlatih} other{poin tatabahasa untuk berlatih}}",
+    "practiceStartExerciseTypes": "Jenis latihan",
+    "analyticsSharedOnJoin": "Guru anda dalam {course} kini boleh melihat kemajuan pembelajaran anda.",
+    "sharedAnalyticsTitle": "Kemajuan pembelajaran yang dikongsi",
+    "sharedAnalyticsDesc": "Guru dalam kursus ini boleh melihat kemajuan pembelajaran anda. Tinggalkan kursus untuk berhenti berkongsi.",
+    "sharedAnalyticsNone": "Anda tidak berkongsi kemajuan pembelajaran anda dengan mana-mana kursus.",
+    "sharedAnalyticsOthersTitle": "Orang lain yang boleh melihat kemajuan anda",
+    "removeAnalyticsAccess": "Alih keluar akses",
+    "removeAnalyticsAccessDesc": "{name} tidak lagi dapat melihat kemajuan pembelajaran anda."
 }

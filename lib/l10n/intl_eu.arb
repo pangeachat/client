@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-23 13:25:38.863424",
+    "@@last_modified": "2026-10-27 14:47:57.736072",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9837,10 +9837,6 @@
     "contentCreatedBy": "Nork sortua",
     "coursePreview": "Ikastaroaren aurrebista",
     "numActivities": "{count, plural, =1{jarduera 1} other{{count} jarduera}}",
-    "teacherAnalyticsRequestTitle": "Irakasleak zure ikaskuntza-aurrerapena eskatzen du",
-    "teacherAnalyticsRequestDesc": "Erabili dituzun hitz eta gramatika guztiak ikusiko dituzte {targetLang} hizkuntzan, zure maila eta XP, eta ikastaro-jardueretan bidalitako mezuak. Zure banakako mezuak ez dira partekatuko. Analitika partekatzea derrigorrezkoa da ikastaroan sartzeko.",
-    "shareAndJoin": "Partekatu eta sartu",
-    "goBack": "Atzera",
     "emptyGroupsSearch": "Ez da talderik aurkitu. Ziurtatu bilaketa zuzen idatzita dagoela.",
     "emptyActivitiesSearch": "Ez da jarduerarik aurkitu. Ziurtatu bilaketa zuzen idatzita dagoela.",
     "chatListFiltersLabel": "Txat-iragazkiak",
@@ -10046,5 +10042,15 @@
     "openCourse": "Ikastaroa ireki",
     "centralCourseJoinedTitle": "{course} ikastaroan sartu zara",
     "centralCourseJoinedBody": "Pangearen ikastaroa da {language} ikasleentzat. Bertako kideek zure izena eta profila ikus ditzakete.",
-    "centralCourseMembersSeeYou": "Ikastaro honetako kideek zure izena eta profila ikus ditzakete."
+    "centralCourseMembersSeeYou": "Ikastaro honetako kideek zure izena eta profila ikus ditzakete.",
+    "practiceStartWordCount": "{count, plural, =1{praktikatzeko hitza} other{praktikatzeko hitzak}}",
+    "practiceStartGrammarCount": "{count, plural, =1{praktikatzeko gramatika-puntua} other{praktikatzeko gramatika-puntuak}}",
+    "practiceStartExerciseTypes": "Ariketa motak",
+    "analyticsSharedOnJoin": "{course} ikastaroan dituzun irakasleek zure ikaskuntza-aurrerapena ikus dezakete orain.",
+    "sharedAnalyticsTitle": "Ikaskuntza-aurrerapen partekatua",
+    "sharedAnalyticsDesc": "Ikastaro hauetako irakasleek zure ikaskuntza-aurrerapena ikus dezakete. Ikastaro batetik irteten bazara, partekatzeari utziko diozu.",
+    "sharedAnalyticsNone": "Ez duzu zure ikaskuntza-aurrerapena inongo ikastarorekin partekatzen.",
+    "sharedAnalyticsOthersTitle": "Zure aurrerapena ikus dezaketen beste batzuk",
+    "removeAnalyticsAccess": "Kendu sarbidea",
+    "removeAnalyticsAccessDesc": "{name}ek ezingo du zure ikaskuntza-aurrerapena ikusi gehiago."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-23 13:25:44.740904",
+    "@@last_modified": "2026-10-27 14:48:05.179550",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "ٺاهيندڙ",
     "coursePreview": "ڪورس جو ڏيک",
     "numActivities": "{count, plural, =1{1 سرگرمي} other{{count} سرگرميون}}",
-    "teacherAnalyticsRequestTitle": "استاد توهان جي سکڻ جي ترقي جي درخواست ڪري ٿو",
-    "teacherAnalyticsRequestDesc": "اهي سڀ لفظ ۽ گرامر ڏسندا جيڪي توهان {targetLang} ۾ استعمال ڪيا آهن، توهان جو ليول ۽ XP، ۽ ڪورس جي سرگرمين ۾ موڪليل پيغام. توهان جا 1-on-1 پيغام شيئر نه ڪيا ويندا. ڪورس ۾ شامل ٿيڻ لاءِ اينالائيٽڪس شيئر ڪرڻ لازمي آهي.",
-    "shareAndJoin": "شيئر ڪريو ۽ شامل ٿيو",
-    "goBack": "واپس وڃو",
     "emptyGroupsSearch": "ڪو به گروپ نه مليو. پڪ ڪريو ته توهان جي ڳولا صحيح نموني لکيل آهي.",
     "emptyActivitiesSearch": "ڪا به سرگرمي نه ملي. پڪ ڪريو ته توهان جي ڳولا صحيح نموني لکيل آهي.",
     "chatListFiltersLabel": "چيٽ فلٽر",
@@ -2508,5 +2504,15 @@
     "openCourse": "ڪورس کوليو",
     "centralCourseJoinedTitle": "توهان {course} ۾ شامل ٿي ويا آهيو",
     "centralCourseJoinedBody": "هي {language} سکندڙن لاءِ پينگيا جو ڪورس آهي. ان جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا.",
-    "centralCourseMembersSeeYou": "هن ڪورس جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا."
+    "centralCourseMembersSeeYou": "هن ڪورس جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا.",
+    "practiceStartWordCount": "{count, plural, =1{ورڊ جي مشق ڪرڻ} other{ورڊن جي مشق ڪرڻ}}",
+    "practiceStartGrammarCount": "{count, plural, =1{گرامر پوائنٽ جي مشق ڪرڻ} other{گرامر پوائنٽن جي مشق ڪرڻ}}",
+    "practiceStartExerciseTypes": "مشق جا قسم",
+    "analyticsSharedOnJoin": "توھان جا استاد {course} ۾ ھاڻي توھان جي سکيا جي ترقي ڏسي سگھن ٿا.",
+    "sharedAnalyticsTitle": "گڏيل سکيا جي ترقي",
+    "sharedAnalyticsDesc": "ھنن ڪورسن ۾ استاد توھان جي سکيا جي ترقي ڏسي سگھن ٿا. شيئرنگ بند ڪرڻ لاءِ ڪورس ڇڏي ڏيو.",
+    "sharedAnalyticsNone": "توھان ڪنھن به ڪورس سان پنھنجي سکيا جي ترقي شيئر نٿا ڪريو.",
+    "sharedAnalyticsOthersTitle": "ٻيا جيڪي توهان جي ترقي ڏسي سگهن ٿا",
+    "removeAnalyticsAccess": "رسائي ختم ڪريو",
+    "removeAnalyticsAccessDesc": "{name} هاڻي توهان جي سکيا جي ترقي ڏسي نه سگهندو."
 }

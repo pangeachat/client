@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:38.723181",
+    "@@last_modified": "2026-10-27 14:47:57.574429",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9925,10 +9925,6 @@
     "contentCreatedBy": "ایجاد شده توسط",
     "coursePreview": "پیش‌نمایش دوره",
     "numActivities": "{count, plural, =1{۱ فعالیت} other{{count} فعالیت}}",
-    "teacherAnalyticsRequestTitle": "معلم درخواست پیشرفت یادگیری شما را دارد",
-    "teacherAnalyticsRequestDesc": "آنها تمام کلمات و گرامری را که در {targetLang} استفاده کرده‌اید، سطح و XP شما، و پیام‌های ارسال شده در فعالیت‌های دوره را خواهند دید. پیام‌های ۱ به ۱ شما به اشتراک گذاشته نخواهند شد. به اشتراک گذاشتن تحلیل‌ها برای پیوستن به دوره الزامی است.",
-    "shareAndJoin": "اشتراک‌گذاری و پیوستن",
-    "goBack": "بازگشت",
     "emptyGroupsSearch": "هیچ گروهی یافت نشد. مطمئن شوید که جستجوی شما به درستی نوشته شده است.",
     "emptyActivitiesSearch": "هیچ فعالیتی یافت نشد. مطمئن شوید که جستجوی شما به درستی نوشته شده است.",
     "chatListFiltersLabel": "فیلترهای چت",
@@ -10134,5 +10130,15 @@
     "openCourse": "باز کردن دوره",
     "centralCourseJoinedTitle": "شما به {course} پیوستید",
     "centralCourseJoinedBody": "این دوره پانگه‌آ برای زبان‌آموزان {language} است. اعضای آن می‌توانند نام و نمایه شما را ببینند.",
-    "centralCourseMembersSeeYou": "اعضای این دوره می‌توانند نام و نمایه شما را ببینند."
+    "centralCourseMembersSeeYou": "اعضای این دوره می‌توانند نام و نمایه شما را ببینند.",
+    "practiceStartWordCount": "{count, plural, =1{کلمه برای تمرین} other{کلمه برای تمرین}}",
+    "practiceStartGrammarCount": "{count, plural, =1{نکته گرامری برای تمرین} other{نکته گرامری برای تمرین}}",
+    "practiceStartExerciseTypes": "انواع تمرین",
+    "analyticsSharedOnJoin": "معلمان شما در {course} اکنون می‌توانند پیشرفت یادگیری شما را ببینند.",
+    "sharedAnalyticsTitle": "پیشرفت یادگیری به اشتراک گذاشته شده",
+    "sharedAnalyticsDesc": "معلمان در این دوره‌ها می‌توانند پیشرفت یادگیری شما را ببینند. برای توقف اشتراک‌گذاری، از دوره خارج شوید.",
+    "sharedAnalyticsNone": "شما پیشرفت یادگیری خود را با هیچ دوره‌ای به اشتراک نمی‌گذارید.",
+    "sharedAnalyticsOthersTitle": "دیگران که می‌توانند پیشرفت شما را ببینند",
+    "removeAnalyticsAccess": "حذف دسترسی",
+    "removeAnalyticsAccessDesc": "{name} دیگر قادر به دیدن پیشرفت یادگیری شما نخواهد بود."
 }

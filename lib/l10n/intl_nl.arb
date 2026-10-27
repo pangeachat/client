@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:43.493229",
+    "@@last_modified": "2026-10-27 14:48:03.778853",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9837,10 +9837,6 @@
     "contentCreatedBy": "Gemaakt door",
     "coursePreview": "Cursusvoorbeeld",
     "numActivities": "{count, plural, =1{1 activiteit} other{{count} activiteiten}}",
-    "teacherAnalyticsRequestTitle": "Docent vraagt om je leerprogressie",
-    "teacherAnalyticsRequestDesc": "Ze zien alle woorden en grammatica die je hebt gebruikt in {targetLang}, je niveau en XP, en de berichten die zijn verzonden in cursusactiviteiten. Je 1-op-1-berichten worden niet gedeeld. Het delen van analyses is vereist om deel te nemen aan de cursus.",
-    "shareAndJoin": "Delen en deelnemen",
-    "goBack": "Terug",
     "emptyGroupsSearch": "Geen groepen gevonden. Controleer de spelling van je zoekopdracht.",
     "emptyActivitiesSearch": "Geen activiteiten gevonden. Controleer de spelling van je zoekopdracht.",
     "chatListFiltersLabel": "Chatfilters",
@@ -10046,5 +10042,15 @@
     "openCourse": "Open cursus",
     "centralCourseJoinedTitle": "Je hebt je aangemeld voor {course}",
     "centralCourseJoinedBody": "Dit is de Pangea-cursus voor {language}-leerders. De leden kunnen je naam en profiel zien.",
-    "centralCourseMembersSeeYou": "Leden van deze cursus kunnen je naam en profiel zien."
+    "centralCourseMembersSeeYou": "Leden van deze cursus kunnen je naam en profiel zien.",
+    "practiceStartWordCount": "{count, plural, =1{woord om te oefenen} other{woorden om te oefenen}}",
+    "practiceStartGrammarCount": "{count, plural, =1{grammaticapunt om te oefenen} other{grammaticapunten om te oefenen}}",
+    "practiceStartExerciseTypes": "Oefeningstypes",
+    "analyticsSharedOnJoin": "Je docenten in {course} kunnen nu je leerprogressie zien.",
+    "sharedAnalyticsTitle": "Gedeelde leerprogressie",
+    "sharedAnalyticsDesc": "Docenten in deze cursussen kunnen je leerprogressie zien. Verlaat een cursus om het delen te stoppen.",
+    "sharedAnalyticsNone": "Je deelt je leerprogressie met geen enkele cursus.",
+    "sharedAnalyticsOthersTitle": "Anderen die je voortgang kunnen zien",
+    "removeAnalyticsAccess": "Toegang verwijderen",
+    "removeAnalyticsAccessDesc": "{name} kan je leervoortgang niet langer zien."
 }

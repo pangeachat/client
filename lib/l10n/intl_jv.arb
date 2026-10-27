@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-23 13:25:41.593199",
+    "@@last_modified": "2026-10-27 14:48:01.887658",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Digawe dening",
     "coursePreview": "Pratinjau kursus",
     "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}",
-    "teacherAnalyticsRequestTitle": "Guru njaluk kemajuan sinau sampeyan",
-    "teacherAnalyticsRequestDesc": "Dheweke bakal weruh kabeh tembung lan tata basa sing wis sampeyan gunakake ing {targetLang}, level lan XP sampeyan, lan pesen sing dikirim ing kegiatan kursus. Pesen 1-lawan-1 sampeyan ora bakal dituduhake. Nuduhake analitik dibutuhake kanggo melu kursus.",
-    "shareAndJoin": "Nuduhake lan gabung",
-    "goBack": "Bali",
     "emptyGroupsSearch": "Ora ana grup sing ditemokake. Priksa manawa panlusuran sampeyan wis bener.",
     "emptyActivitiesSearch": "Ora ana aktivitas sing ditemokake. Priksa manawa panlusuran sampeyan wis bener.",
     "chatListFiltersLabel": "Filter obrolan",
@@ -2508,5 +2504,15 @@
     "openCourse": "Bukak kursus",
     "centralCourseJoinedTitle": "Sampeyan wis gabung {course}",
     "centralCourseJoinedBody": "Iki kursus Pangea kanggo para siswa {language}. Anggotane bisa ndeleng jeneng lan profil sampeyan.",
-    "centralCourseMembersSeeYou": "Anggota kursus iki bisa ndeleng jeneng lan profil sampeyan."
+    "centralCourseMembersSeeYou": "Anggota kursus iki bisa ndeleng jeneng lan profil sampeyan.",
+    "practiceStartWordCount": "{count, plural, =1{tembung kanggo gladhen} other{tembung kanggo gladhen}}",
+    "practiceStartGrammarCount": "{count, plural, =1{babagan tata basa kanggo gladhen} other{babagan tata basa kanggo gladhen}}",
+    "practiceStartExerciseTypes": "Jinis gladhen",
+    "analyticsSharedOnJoin": "Guru sampeyan ing {course} saiki bisa ndeleng kemajuan sinau sampeyan.",
+    "sharedAnalyticsTitle": "Kemajuan sinau sing dienggo bareng",
+    "sharedAnalyticsDesc": "Guru ing kursus iki bisa ndeleng kemajuan sinau sampeyan. Metu saka kursus kanggo mandheg nuduhake.",
+    "sharedAnalyticsNone": "Sampeyan ora nuduhake kemajuan sinau sampeyan karo kursus apa wae.",
+    "sharedAnalyticsOthersTitle": "Liyane sing bisa ndeleng kemajuanmu",
+    "removeAnalyticsAccess": "Busak akses",
+    "removeAnalyticsAccessDesc": "{name} ora bakal bisa ndeleng kemajuan sinau sampeyan maneh."
 }

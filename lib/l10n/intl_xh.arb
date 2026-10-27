@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-23 13:25:47.467791",
+    "@@last_modified": "2026-10-27 14:48:09.296167",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Yenziwe ngu",
     "coursePreview": "Ujongo lwekhosi",
     "numActivities": "{count, plural, =1{1 umsebenzi} other{{count} imisebenzi}}",
-    "teacherAnalyticsRequestTitle": "Utitshala ucela inkqubela yakho yokufunda",
-    "teacherAnalyticsRequestDesc": "Baza kubona onke amagama kunye negrama oyisebenzisileyo kwi-{targetLang}, inqanaba lakho kunye ne-XP, kunye nemiyalezo ethunyelwe kwimisebenzi yekhosi. Imiyalezo yakho yobuqu ayizukwabelwana ngayo. Ukwabelana nge-analytics kuyafuneka ukuze ujoyine ikhosi.",
-    "shareAndJoin": "Yabelana kwaye ujoyine",
-    "goBack": "Buyela umva",
     "emptyGroupsSearch": "Akukho maqela afunyenweyo. Qinisekisa ukuba upelo lwakho luchanekile.",
     "emptyActivitiesSearch": "Akukho misebenzi ifunyenweyo. Qinisekisa ukuba upelo lwakho luchanekile.",
     "chatListFiltersLabel": "Izihluzi zencoko",
@@ -2508,5 +2504,15 @@
     "openCourse": "Vula ikhosi",
     "centralCourseJoinedTitle": "Ujoyine {course}",
     "centralCourseJoinedBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho neprofayile yakho.",
-    "centralCourseMembersSeeYou": "Amalungu ale khosi angabona igama lakho neprofayile yakho."
+    "centralCourseMembersSeeYou": "Amalungu ale khosi angabona igama lakho neprofayile yakho.",
+    "practiceStartWordCount": "{count, plural, =1{igama lokuziqhelanisa} other{amagama okuziqhelanisa}}",
+    "practiceStartGrammarCount": "{count, plural, =1{indawo yegrama yokuziqhelanisa} other{iindawo zegrama zokuziqhelanisa}}",
+    "practiceStartExerciseTypes": "Iintlobo zokuzilolonga",
+    "analyticsSharedOnJoin": "Ootitshala bakho kwi-{course} ngoku bangabona inkqubela yakho yokufunda.",
+    "sharedAnalyticsTitle": "Inkqubela yokufunda ekwabelwana ngayo",
+    "sharedAnalyticsDesc": "Ootitshala abakwezi khosi bangabona inkqubela yakho yokufunda. Shiya ikhosi ukuze uyeke ukwabelana.",
+    "sharedAnalyticsNone": "Awabelani ngenkqubela yakho yokufunda nakweyiphi na ikhosi.",
+    "sharedAnalyticsOthersTitle": "Abanye abanokubona inkqubela yakho",
+    "removeAnalyticsAccess": "Susa ukufikelela",
+    "removeAnalyticsAccessDesc": "U-{name} akasayi kuphinda akwazi ukubona inkqubela yakho yokufunda."
 }

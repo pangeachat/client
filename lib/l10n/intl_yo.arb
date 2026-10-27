@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-23 13:25:47.689939",
+    "@@last_modified": "2026-10-27 14:48:08.482684",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Ẹlẹ́dàá",
     "coursePreview": "Aworan iṣaaju ti ikẹkọọ",
     "numActivities": "{count, plural, =1{iṣẹ́ kan} other{{count} àwọn iṣẹ́}}",
-    "teacherAnalyticsRequestTitle": "Olùkọ́ rẹ ń béèrè ìtẹ̀síwájú ẹ̀kọ́ rẹ",
-    "teacherAnalyticsRequestDesc": "Wọn yóò rí gbogbo àwọn ọ̀rọ̀ àti gírámà tí o ti lò nínú {targetLang}, ìpele rẹ àti XP, àti àwọn ìhìn iṣẹ́ tí a fi ránṣẹ́ nínú àwọn iṣẹ́ ìkẹ́kọ̀ọ́. A kì yóò pín àwọn ìhìn iṣẹ́ 1-sí-1 rẹ. Pípin àwọn àtúpalẹ̀ jẹ́ dandan láti darapọ̀ mọ́ ìkẹ́kọ̀ọ́ náà.",
-    "shareAndJoin": "Pín àti darapọ̀",
-    "goBack": "Padà sí ẹ̀yìn",
     "emptyGroupsSearch": "Ko si ẹgbẹ kankan ti a ri. Rii daju pe o kọ ọrọ wiwa rẹ ni deede.",
     "emptyActivitiesSearch": "Ko si iṣẹ kankan ti a ri. Rii daju pe o kọ ọrọ wiwa rẹ ni deede.",
     "chatListFiltersLabel": "Àwọn àlẹ̀mọ̀ ìjíròrò",
@@ -2508,5 +2504,15 @@
     "openCourse": "Ṣí iṣẹ́-ẹ̀kọ́",
     "centralCourseJoinedTitle": "O ti darapọ̀ mọ́ {course}",
     "centralCourseJoinedBody": "Ó jẹ́ iṣẹ́-ẹ̀kọ́ Pangea fún àwọn akẹ́kọ̀ọ́ èdè {language}. Àwọn ọmọ ẹgbẹ́ rẹ̀ lè rí orúkọ àti àkọọ́lẹ̀ rẹ.",
-    "centralCourseMembersSeeYou": "Àwọn ọmọ ẹgbẹ́ iṣẹ́-ẹ̀kọ́ yìí lè rí orúkọ àti àkọọ́lẹ̀ rẹ."
+    "centralCourseMembersSeeYou": "Àwọn ọmọ ẹgbẹ́ iṣẹ́-ẹ̀kọ́ yìí lè rí orúkọ àti àkọọ́lẹ̀ rẹ.",
+    "practiceStartWordCount": "{count, plural, =1{ọrọ lati ṣe adaṣe} other{awọn ọrọ lati ṣe adaṣe}}",
+    "practiceStartGrammarCount": "{count, plural, =1{ọrọ-ọrọ lati ṣe adaṣe} other{awọn ọrọ-ọrọ lati ṣe adaṣe}}",
+    "practiceStartExerciseTypes": "Awọn iru adaṣe",
+    "analyticsSharedOnJoin": "Àwọn olùkọ́ rẹ ní {course} lè rí ìtẹ̀síwájú ẹ̀kọ́ rẹ nísinsìnyí.",
+    "sharedAnalyticsTitle": "Ìtẹ̀síwájú ẹ̀kọ́ tí a pín",
+    "sharedAnalyticsDesc": "Àwọn olùkọ́ nínú àwọn ìkẹ́kọ̀ọ́ wọ̀nyí lè rí ìtẹ̀síwájú ẹ̀kọ́ rẹ. Fi ìkẹ́kọ̀ọ́ sílẹ̀ láti dáwọ́ pínpín dúró.",
+    "sharedAnalyticsNone": "O kò pín ìtẹ̀síwájú ẹ̀kọ́ rẹ pẹ̀lú ìkẹ́kọ̀ọ́ kankan.",
+    "sharedAnalyticsOthersTitle": "Àwọn mìíràn tó lè rí ìtẹ̀síwájú rẹ",
+    "removeAnalyticsAccess": "Yọ ìwọlé kúrò",
+    "removeAnalyticsAccessDesc": "{name} kò ní lè rí ìtẹ̀síwájú ẹ̀kọ́ rẹ mọ́."
 }

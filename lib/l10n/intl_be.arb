@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-23 13:25:36.940902",
+    "@@last_modified": "2026-10-27 14:47:55.650323",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9851,10 +9851,6 @@
     "contentCreatedBy": "Створана",
     "coursePreview": "Папярэдні прагляд курса",
     "numActivities": "{count, plural, =1{1 занятак} other{{count} заняткаў}}",
-    "teacherAnalyticsRequestTitle": "Настаўнік запытвае ваш прагрэс у навучанні",
-    "teacherAnalyticsRequestDesc": "Яны ўбачаць усе словы і граматыку, якія вы выкарыстоўвалі ў {targetLang}, ваш узровень і XP, а таксама паведамленні, адпраўленыя ў рамках курсавых заняткаў. Вашы паведамленні 1-на-1 не будуць абагулены. Абагульванне аналітыкі патрабуецца для далучэння да курса.",
-    "shareAndJoin": "Падзяліцца і далучыцца",
-    "goBack": "Вярнуцца",
     "emptyGroupsSearch": "Групы не знойдзены. Пераканайцеся, што ваш пошук напісаны правільна.",
     "emptyActivitiesSearch": "Дзейнасці не знойдзены. Пераканайцеся, што ваш пошук напісаны правільна.",
     "chatListFiltersLabel": "Фільтры чатаў",
@@ -10060,5 +10056,15 @@
     "openCourse": "Адкрыць курс",
     "centralCourseJoinedTitle": "Вы далучыліся да {course}",
     "centralCourseJoinedBody": "Гэта курс Pangea для тых, хто вывучае {language}. Яго ўдзельнікі могуць бачыць ваша імя і профіль.",
-    "centralCourseMembersSeeYou": "Удзельнікі гэтага курса могуць бачыць ваша імя і профіль."
+    "centralCourseMembersSeeYou": "Удзельнікі гэтага курса могуць бачыць ваша імя і профіль.",
+    "practiceStartWordCount": "{count, plural, =1{слова для практыкі} other{слоў для практыкі}}",
+    "practiceStartGrammarCount": "{count, plural, =1{граматычны пункт для практыкі} other{граматычных пунктаў для практыкі}}",
+    "practiceStartExerciseTypes": "Тыпы практыкаванняў",
+    "analyticsSharedOnJoin": "Вашы выкладчыкі ў курсе «{course}» цяпер могуць бачыць ваш прагрэс у навучанні.",
+    "sharedAnalyticsTitle": "Агульны прагрэс у навучанні",
+    "sharedAnalyticsDesc": "Выкладчыкі на гэтых курсах могуць бачыць ваш прагрэс у навучанні. Пакіньце курс, каб спыніць абмен.",
+    "sharedAnalyticsNone": "Вы не дзеліцеся сваім прагрэсам у навучанні ні з адным курсам.",
+    "sharedAnalyticsOthersTitle": "Іншыя, хто бачыць ваш прагрэс",
+    "removeAnalyticsAccess": "Выдаліць доступ",
+    "removeAnalyticsAccessDesc": "{name} больш не зможа бачыць ваш прагрэс у навучанні."
 }

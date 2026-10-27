@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-23 13:25:43.062915",
+    "@@last_modified": "2026-10-27 14:48:02.383688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "സൃഷ്ടിച്ചത്",
     "coursePreview": "കോഴ്സ് പ്രിവ്യൂ",
     "numActivities": "{count, plural, =1{1 പ്രവർത്തനം} other{{count} പ്രവർത്തനങ്ങൾ}}",
-    "teacherAnalyticsRequestTitle": "അധ്യാപകൻ നിങ്ങളുടെ പഠന പുരോഗതി അഭ്യർത്ഥിക്കുന്നു",
-    "teacherAnalyticsRequestDesc": "നിങ്ങൾ {targetLang} ഉപയോഗിച്ച എല്ലാ വാക്കുകളും വ്യാകരണവും, നിങ്ങളുടെ നിലവാരവും XP-യും, കോഴ്‌സ് പ്രവർത്തനങ്ങളിൽ അയച്ച സന്ദേശങ്ങളും അവർക്ക് കാണാൻ കഴിയും. നിങ്ങളുടെ 1-ഓൺ-1 സന്ദേശങ്ങൾ പങ്കിടില്ല. കോഴ്‌സിൽ ചേരുന്നതിന് അനലിറ്റിക്‌സ് പങ്കിടേണ്ടത് ആവശ്യമാണ്.",
-    "shareAndJoin": "പങ്കിടുക, ചേരുക",
-    "goBack": "തിരികെ പോകുക",
     "emptyGroupsSearch": "ഗ്രൂപ്പുകളൊന്നും കണ്ടെത്തിയില്ല. നിങ്ങളുടെ തിരയൽ ശരിയാണെന്ന് ഉറപ്പാക്കുക.",
     "emptyActivitiesSearch": "പ്രവർത്തനങ്ങളൊന്നും കണ്ടെത്തിയില്ല. നിങ്ങളുടെ തിരയൽ ശരിയാണെന്ന് ഉറപ്പാക്കുക.",
     "chatListFiltersLabel": "ചാറ്റ് ഫിൽട്ടറുകൾ",
@@ -2508,5 +2504,15 @@
     "openCourse": "കോഴ്സ് തുറക്കുക",
     "centralCourseJoinedTitle": "നിങ്ങൾ {course} എന്നതിൽ ചേർന്നു",
     "centralCourseJoinedBody": "ഇത് {language} പഠിതാക്കൾക്കായുള്ള പാഞ്ചിയയുടെ കോഴ്സാണ്. ഇതിലെ അംഗങ്ങൾക്ക് നിങ്ങളുടെ പേരും പ്രൊഫൈലും കാണാൻ കഴിയും.",
-    "centralCourseMembersSeeYou": "ഈ കോഴ്സിലെ അംഗങ്ങൾക്ക് നിങ്ങളുടെ പേരും പ്രൊഫൈലും കാണാൻ കഴിയും."
+    "centralCourseMembersSeeYou": "ഈ കോഴ്സിലെ അംഗങ്ങൾക്ക് നിങ്ങളുടെ പേരും പ്രൊഫൈലും കാണാൻ കഴിയും.",
+    "practiceStartWordCount": "{count, plural, =1{പരിശീലിക്കാൻ ഒരു വാക്ക്} other{പരിശീലിക്കാൻ വാക്കുകൾ}}",
+    "practiceStartGrammarCount": "{count, plural, =1{പരിശീലിക്കാൻ ഒരു വ്യാകരണ പോയിന്റ്} other{പരിശീലിക്കാൻ വ്യാകരണ പോയിന്റുകൾ}}",
+    "practiceStartExerciseTypes": "വ്യായാമ രീതികൾ",
+    "analyticsSharedOnJoin": "{course} എന്നതിലെ നിങ്ങളുടെ അധ്യാപകർക്ക് ഇപ്പോൾ നിങ്ങളുടെ പഠന പുരോഗതി കാണാൻ കഴിയും.",
+    "sharedAnalyticsTitle": "പങ്കിട്ട പഠന പുരോഗതി",
+    "sharedAnalyticsDesc": "ഈ കോഴ്സുകളിലെ അധ്യാപകർക്ക് നിങ്ങളുടെ പഠന പുരോഗതി കാണാൻ കഴിയും. പങ്കിടുന്നത് നിർത്താൻ ഒരു കോഴ്സിൽ നിന്ന് പുറത്തുകടക്കുക.",
+    "sharedAnalyticsNone": "നിങ്ങൾ ഒരു കോഴ്സുമായും നിങ്ങളുടെ പഠന പുരോഗതി പങ്കിടുന്നില്ല.",
+    "sharedAnalyticsOthersTitle": "നിങ്ങളുടെ പുരോഗതി കാണാൻ കഴിയുന്ന മറ്റുള്ളവർ",
+    "removeAnalyticsAccess": "ആക്സസ് നീക്കം ചെയ്യുക",
+    "removeAnalyticsAccessDesc": "{name} നിങ്ങളുടെ പഠന പുരോഗതി ഇനി കാണില്ല."
 }

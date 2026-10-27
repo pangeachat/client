@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:44.520422",
+    "@@last_modified": "2026-10-27 14:48:04.819391",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10566,10 +10566,6 @@
     "contentCreatedBy": "Creat de",
     "coursePreview": "Previzualizare curs",
     "numActivities": "{count, plural, =1{1 activitate} other{{count} activități}}",
-    "teacherAnalyticsRequestTitle": "Profesorul solicită progresul tău de învățare",
-    "teacherAnalyticsRequestDesc": "Vor vedea toate cuvintele și gramatica pe care le-ai folosit în {targetLang}, nivelul și XP-ul tău, precum și mesajele trimise în activitățile cursului. Mesajele tale 1-la-1 nu vor fi partajate. Partajarea analizelor este necesară pentru a te alătura cursului.",
-    "shareAndJoin": "Partajează și alătură-te",
-    "goBack": "Înapoi",
     "emptyGroupsSearch": "Nu s-au găsit grupuri. Asigură-te că ai scris corect căutarea.",
     "emptyActivitiesSearch": "Nu s-au găsit activități. Asigură-te că ai scris corect căutarea.",
     "chatListFiltersLabel": "Filtre chat",
@@ -10775,5 +10771,15 @@
     "openCourse": "Deschide cursul",
     "centralCourseJoinedTitle": "Te-ai alăturat cursului {course}",
     "centralCourseJoinedBody": "Este cursul Pangea pentru cursanții de {language}. Membrii săi îți pot vedea numele și profilul.",
-    "centralCourseMembersSeeYou": "Membrii acestui curs îți pot vedea numele și profilul."
+    "centralCourseMembersSeeYou": "Membrii acestui curs îți pot vedea numele și profilul.",
+    "practiceStartWordCount": "{count, plural, =1{cuvânt de exersat} other{cuvinte de exersat}}",
+    "practiceStartGrammarCount": "{count, plural, =1{punct gramatical de exersat} other{puncte gramaticale de exersat}}",
+    "practiceStartExerciseTypes": "Tipuri de exerciții",
+    "analyticsSharedOnJoin": "Profesorii tăi din {course} pot vedea acum progresul tău de învățare.",
+    "sharedAnalyticsTitle": "Progres de învățare partajat",
+    "sharedAnalyticsDesc": "Profesorii din aceste cursuri pot vedea progresul tău de învățare. Părăsește un curs pentru a opri partajarea.",
+    "sharedAnalyticsNone": "Nu partajezi progresul tău de învățare cu niciun curs.",
+    "sharedAnalyticsOthersTitle": "Alții care îți pot vedea progresul",
+    "removeAnalyticsAccess": "Revocă accesul",
+    "removeAnalyticsAccessDesc": "{name} nu va mai putea să-ți vadă progresul de învățare."
 }

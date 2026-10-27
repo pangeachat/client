@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-23 13:25:40.542702",
+    "@@last_modified": "2026-10-27 14:47:59.907099",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Onye kere ya",
     "coursePreview": "Nlele mmalite ọmụmụ ihe",
     "numActivities": "{count, plural, =1{1 ọrụ} other{{count} ọrụ}}",
-    "teacherAnalyticsRequestTitle": "Onye nkuzi gị na-arịọ maka ọganihu mmụta gị",
-    "teacherAnalyticsRequestDesc": "Ha ga-ahụ okwu na ụtọasụsụ niile ị jiri na {targetLang}, ọkwa gị na XP, yana ozi ezigara n'ime ihe omume ọmụmụ. Agaghị ekekọrịta ozi 1-na-1 gị. Achọrọ ịkekọrịta nyocha iji sonye na ọmụmụ ihe ahụ.",
-    "shareAndJoin": "Kekọrịta ma sonye",
-    "goBack": "Gaa azụ",
     "emptyGroupsSearch": "Achọtaghị otu ọ bụla. Gbaa mbọ hụ na edere nchọta gị nke ọma.",
     "emptyActivitiesSearch": "Achọtaghị ihe omume ọ bụla. Gbaa mbọ hụ na edere nchọta gị nke ọma.",
     "chatListFiltersLabel": "Nyocha nkata",
@@ -2508,5 +2504,15 @@
     "openCourse": "Mepee ọmụmụ ihe",
     "centralCourseJoinedTitle": "Ị sonyeere {course}",
     "centralCourseJoinedBody": "Ọ bụ ọmụmụ ihe Pangea maka ndị na-amụ {language}. Ndị otu ya nwere ike ịhụ aha gị na profaịlụ gị.",
-    "centralCourseMembersSeeYou": "Ndị otu ọmụmụ ihe a nwere ike ịhụ aha gị na profaịlụ gị."
+    "centralCourseMembersSeeYou": "Ndị otu ọmụmụ ihe a nwere ike ịhụ aha gị na profaịlụ gị.",
+    "practiceStartWordCount": "{count, plural, =1{okwu ị ga-eme} other{okwu ị ga-eme}}",
+    "practiceStartGrammarCount": "{count, plural, =1{isiokwu ụtọasụsụ ị ga-eme} other{isiokwu ụtọasụsụ ị ga-eme}}",
+    "practiceStartExerciseTypes": "Ụdị mmega ahụ",
+    "analyticsSharedOnJoin": "Ndị nkuzi gị na {course} nwere ike ịhụ ọganihu mmụta gị ugbu a.",
+    "sharedAnalyticsTitle": "Ekesara ọganihu mmụta",
+    "sharedAnalyticsDesc": "Ndị nkuzi n'ime nkuzi ndị a nwere ike ịhụ ọganihu mmụta gị. Hapụ nkuzi iji kwụsị ikesa.",
+    "sharedAnalyticsNone": "Ị naghị ekesa ọganihu mmụta gị na nkuzi ọ bụla.",
+    "sharedAnalyticsOthersTitle": "Ndị ọzọ nwere ike ịhụ ọganihu gị",
+    "removeAnalyticsAccess": "Wepụ ohere",
+    "removeAnalyticsAccessDesc": "{name} agaghịzi enwe ike ịhụ ọganihu mmụta gị."
 }

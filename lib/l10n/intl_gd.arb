@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-23 13:25:39.276600",
+    "@@last_modified": "2026-10-27 14:47:58.802746",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Air a chruthachadh le",
     "coursePreview": "Ro-shealladh cùrsa",
     "numActivities": "{count, plural, =1{1 ghnìomhachd} other{{count} gnìomhachdan}}",
-    "teacherAnalyticsRequestTitle": "Tha tidsear ag iarraidh d’fhiosrachadh adhartais ionnsachaidh",
-    "teacherAnalyticsRequestDesc": "Chì iad na faclan is gràmar a chleachd thu ann an {targetLang}, d’ìre is XP, agus na teachdaireachdan a chaidh a chur ann an gnìomhachdan cùrsa. Cha tèid na teachdaireachdan 1-air-1 agad a cho-roinn. Feumar anailisean a cho-roinn gus a dhol a-steach don chùrsa.",
-    "shareAndJoin": "Co-roinn is gabh a-steach",
-    "goBack": "Rach air ais",
     "emptyGroupsSearch": "Cha deach buidheann sam bith a lorg. Dèan cinnteach gu bheil an rannsachadh agad air a litreachadh gu ceart.",
     "emptyActivitiesSearch": "Cha deach gnìomhachd sam bith a lorg. Dèan cinnteach gu bheil an rannsachadh agad air a litreachadh gu ceart.",
     "chatListFiltersLabel": "Criathragan cabadaich",
@@ -2508,5 +2504,15 @@
     "openCourse": "Fosgail an cùrsa",
     "centralCourseJoinedTitle": "Tha thu air a dhol a-steach do {course}",
     "centralCourseJoinedBody": "Is e cùrsa Pangea a th' ann do luchd-ionnsachaidh {language}. Chì na buill d' ainm agus do phròifil.",
-    "centralCourseMembersSeeYou": "Chì buill a' chùrsa seo d' ainm agus do phròifil."
+    "centralCourseMembersSeeYou": "Chì buill a' chùrsa seo d' ainm agus do phròifil.",
+    "practiceStartWordCount": "{count, plural, =1{facal ri chleachdadh} other{faclan ri chleachdadh}}",
+    "practiceStartGrammarCount": "{count, plural, =1{puing gràmair ri chleachdadh} other{puingean gràmair ri chleachdadh}}",
+    "practiceStartExerciseTypes": "Seòrsaichean eacarsaich",
+    "analyticsSharedOnJoin": "Chì na tidsearan agad ann an {course} a-nis an adhartas ionnsachaidh agad.",
+    "sharedAnalyticsTitle": "Adhartas ionnsachaidh co-roinnte",
+    "sharedAnalyticsDesc": "Chì tidsearan anns na cùrsaichean seo an adhartas ionnsachaidh agad. Fàg cùrsa gus stad a chur air co-roinn.",
+    "sharedAnalyticsNone": "Chan eil thu a' co-roinn an adhartais ionnsachaidh agad le cùrsa sam bith.",
+    "sharedAnalyticsOthersTitle": "Daoine eile a chì an adhartas agad",
+    "removeAnalyticsAccess": "Thoir air falbh cothrom",
+    "removeAnalyticsAccessDesc": "Cha bhith {name} comasach air an adhartas ionnsachaidh agad fhaicinn tuilleadh."
 }

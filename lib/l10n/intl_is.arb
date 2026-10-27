@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-23 13:25:41.393165",
+    "@@last_modified": "2026-10-27 14:47:59.707751",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Búið til af",
     "coursePreview": "Forskoðun námskeiðs",
     "numActivities": "{count, plural, =1{1 virkni} other{{count} virknir}}",
-    "teacherAnalyticsRequestTitle": "Kennari biður um framvindu náms þíns",
-    "teacherAnalyticsRequestDesc": "Þeir munu sjá öll orð og málfræði sem þú hefur notað í {targetLang}, stig þitt og XP, og skilaboð send í námskeiðsverkefnum. 1-á-1 skilaboðin þín verða ekki deilt. Deiling greiningargagna er nauðsynleg til að taka þátt í námskeiðinu.",
-    "shareAndJoin": "Deila og taka þátt",
-    "goBack": "Fara til baka",
     "emptyGroupsSearch": "Engir hópar fundust. Gakktu úr skugga um að leitin þín sé rétt stafsett.",
     "emptyActivitiesSearch": "Engin verkefni fundust. Gakktu úr skugga um að leitin þín sé rétt stafsett.",
     "chatListFiltersLabel": "Síur fyrir spjall",
@@ -2508,5 +2504,15 @@
     "openCourse": "Opna námskeið",
     "centralCourseJoinedTitle": "Þú hefur gengið í {course}",
     "centralCourseJoinedBody": "Þetta er námskeið Pangea fyrir {language} nemendur. Meðlimir þess geta séð nafn þitt og prófíl.",
-    "centralCourseMembersSeeYou": "Meðlimir þessa námskeiðs geta séð nafn þitt og prófíl."
+    "centralCourseMembersSeeYou": "Meðlimir þessa námskeiðs geta séð nafn þitt og prófíl.",
+    "practiceStartWordCount": "{count, plural, =1{orð til að æfa} other{orð til að æfa}}",
+    "practiceStartGrammarCount": "{count, plural, =1{málfræðiatriði til að æfa} other{málfræðiatriði til að æfa}}",
+    "practiceStartExerciseTypes": "Tegundir æfinga",
+    "analyticsSharedOnJoin": "Kennararnir þínir í {course} geta nú séð námsframvindu þína.",
+    "sharedAnalyticsTitle": "Deild námsframvinda",
+    "sharedAnalyticsDesc": "Kennarar í þessum námskeiðum geta séð námsframvindu þína. Farðu úr námskeiði til að hætta að deila.",
+    "sharedAnalyticsNone": "Þú ert ekki að deila námsframvindu þinni með neinu námskeiði.",
+    "sharedAnalyticsOthersTitle": "Aðrir sem sjá framfarir þínar",
+    "removeAnalyticsAccess": "Fjarlægja aðgang",
+    "removeAnalyticsAccessDesc": "{name} mun ekki lengur geta séð námsframfarir þínar."
 }

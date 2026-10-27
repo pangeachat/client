@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-23 13:25:44.860061",
+    "@@last_modified": "2026-10-27 14:48:06.014355",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10779,10 +10779,6 @@
     "contentCreatedBy": "Vytvoril",
     "coursePreview": "Ukážka kurzu",
     "numActivities": "{count, plural, =1{1 aktivita} other{{count} aktivít}}",
-    "teacherAnalyticsRequestTitle": "Učiteľ žiada o váš pokrok v učení",
-    "teacherAnalyticsRequestDesc": "Uvidia všetky slová a gramatiku, ktoré ste použili v jazyku {targetLang}, vašu úroveň a XP, a správy odoslané v aktivitách kurzu. Vaše správy 1 na 1 nebudú zdieľané. Zdieľanie analýz je potrebné na pripojenie sa ku kurzu.",
-    "shareAndJoin": "Zdieľať a pripojiť sa",
-    "goBack": "Späť",
     "emptyGroupsSearch": "Nenašli sa žiadne skupiny. Uistite sa, že je váš vyhľadávací výraz napísaný správne.",
     "emptyActivitiesSearch": "Nenašli sa žiadne aktivity. Uistite sa, že je váš vyhľadávací výraz napísaný správne.",
     "chatListFiltersLabel": "Filtre chatu",
@@ -10988,5 +10984,15 @@
     "openCourse": "Otvoriť kurz",
     "centralCourseJoinedTitle": "Pripojili ste sa ku kurzu {course}",
     "centralCourseJoinedBody": "Je to kurz Pangea pre študentov jazyka {language}. Jeho členovia môžu vidieť vaše meno a profil.",
-    "centralCourseMembersSeeYou": "Členovia tohto kurzu môžu vidieť vaše meno a profil."
+    "centralCourseMembersSeeYou": "Členovia tohto kurzu môžu vidieť vaše meno a profil.",
+    "practiceStartWordCount": "{count, plural, =1{slovo na precvičenie} other{slov na precvičenie}}",
+    "practiceStartGrammarCount": "{count, plural, =1{gramatický bod na precvičenie} other{gramatické body na precvičenie}}",
+    "practiceStartExerciseTypes": "Typy cvičení",
+    "analyticsSharedOnJoin": "Vaši učitelia v kurze {course} teraz vidia váš pokrok v učení.",
+    "sharedAnalyticsTitle": "Zdieľaný pokrok v učení",
+    "sharedAnalyticsDesc": "Učitelia v týchto kurzoch vidia váš pokrok v učení. Opustite kurz, ak chcete prestať zdieľať.",
+    "sharedAnalyticsNone": "Nezdieľate svoj pokrok v učení so žiadnym kurzom.",
+    "sharedAnalyticsOthersTitle": "Ostatní, ktorí vidia váš pokrok",
+    "removeAnalyticsAccess": "Odstrániť prístup",
+    "removeAnalyticsAccessDesc": "{name} už nebude môcť vidieť váš pokrok v učení."
 }

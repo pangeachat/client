@@ -78,6 +78,11 @@ class PangeaEventTypes {
 
   static const analyticsSettings = "pangea.analytics_settings";
 
+  /// One course's Mission figures as the learner's app shows them, in their
+  /// analytics room and keyed by the course room id, for the teacher
+  /// dashboard (client#9643).
+  static const courseProgress = "pangea.course_progress";
+
   static const regenerationRequest = "pangea.regeneration_request";
 
   /// A notice the engagement runner sends into a learner's bot DM.
@@ -97,8 +102,6 @@ class PangeaEventTypes {
   /// would erase a mark kept there (activities.instructions.md, "Sessions in
   /// Chats").
   static const adminReviewRooms = 'pangea.admin_review';
-
-  static const accessNoticeShown = 'org.pangea.analytics_access_notice_shown';
 
   static const firstBotDMMessage = "pangea_first_bot_dm_message";
 

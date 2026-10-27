@@ -3543,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-23 13:25:39.637105",
+    "@@last_modified": "2026-10-27 14:47:58.587755",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9848,10 +9848,6 @@
     "contentCreatedBy": "Cruthaithe ag",
     "coursePreview": "Réamhamharc ar an gcúrsa",
     "numActivities": "{count, plural, =1{1 ghníomhaíocht} other{{count} ghníomhaíocht}}",
-    "teacherAnalyticsRequestTitle": "Iarrann an múinteoir do dhul chun cinn foghlama",
-    "teacherAnalyticsRequestDesc": "Feicfidh siad na focail agus an ghramadach go léir a d'úsáid tú i {targetLang}, do leibhéal agus do XP, agus na teachtaireachtaí a seoladh i ngníomhaíochtaí an chúrsa. Ní roinnfear do theachtaireachtaí 1-ar-1. Ní mór an anailísíocht a roinnt chun dul isteach sa chúrsa.",
-    "shareAndJoin": "Roinn agus bí páirteach",
-    "goBack": "Téigh ar ais",
     "emptyGroupsSearch": "Níor aimsíodh aon ghrúpaí. Cinntigh go bhfuil do chuardach litrithe i gceart.",
     "emptyActivitiesSearch": "Níor aimsíodh aon ghníomhaíochtaí. Cinntigh go bhfuil do chuardach litrithe i gceart.",
     "chatListFiltersLabel": "Scagairí comhrá",
@@ -10057,5 +10053,15 @@
     "openCourse": "Oscail an cúrsa",
     "centralCourseJoinedTitle": "Tá tú páirteach i {course}",
     "centralCourseJoinedBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
-    "centralCourseMembersSeeYou": "Is féidir le baill an chúrsa seo d'ainm agus do phróifíl a fheiceáil."
+    "centralCourseMembersSeeYou": "Is féidir le baill an chúrsa seo d'ainm agus do phróifíl a fheiceáil.",
+    "practiceStartWordCount": "{count, plural, =1{focal le cleachtadh} other{focail le cleachtadh}}",
+    "practiceStartGrammarCount": "{count, plural, =1{pointe gramadaí le cleachtadh} other{pointí gramadaí le cleachtadh}}",
+    "practiceStartExerciseTypes": "Cineálacha cleachtaí",
+    "analyticsSharedOnJoin": "Is féidir le do mhúinteoirí i {course} do dhul chun cinn foghlama a fheiceáil anois.",
+    "sharedAnalyticsTitle": "Dul chun cinn foghlama roinnte",
+    "sharedAnalyticsDesc": "Is féidir le múinteoirí sna cúrsaí seo do dhul chun cinn foghlama a fheiceáil. Fág cúrsa chun stop a chur leis an roinnt.",
+    "sharedAnalyticsNone": "Níl tú ag roinnt do dhul chun cinn foghlama le haon chúrsa.",
+    "sharedAnalyticsOthersTitle": "Daoine eile atá in ann do dhul chun cinn a fheiceáil",
+    "removeAnalyticsAccess": "Bain rochtain",
+    "removeAnalyticsAccessDesc": "Ní bheidh {name} in ann do dhul chun cinn foghlama a fheiceáil a thuilleadh."
 }

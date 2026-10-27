@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:38.200755",
+    "@@last_modified": "2026-10-27 14:47:57.003778",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10779,10 +10779,6 @@
     "contentCreatedBy": "Kreita de",
     "coursePreview": "Antaŭrigardo de la kurso",
     "numActivities": "{count, plural, =1{1 agado} other{{count} agadoj}}",
-    "teacherAnalyticsRequestTitle": "Instruisto petas vian lernan progreson",
-    "teacherAnalyticsRequestDesc": "Ili vidos ĉiujn vortojn kaj gramatikon, kiujn vi uzis en {targetLang}, vian nivelon kaj spertopunktojn, kaj la mesaĝojn senditajn en kursaj agadoj. Viaj unu-al-unu mesaĝoj ne estos kundividitaj. Kundivido de analizoj estas postulata por aliĝi al la kurso.",
-    "shareAndJoin": "Kunhavigi kaj aliĝi",
-    "goBack": "Reen",
     "emptyGroupsSearch": "Neniuj grupoj trovitaj. Certigu, ke via serĉo estas ĝuste literumita.",
     "emptyActivitiesSearch": "Neniuj agadoj trovitaj. Certigu, ke via serĉo estas ĝuste literumita.",
     "chatListFiltersLabel": "Babilfiltriloj",
@@ -10988,5 +10984,15 @@
     "openCourse": "Malfermi kurson",
     "centralCourseJoinedTitle": "Vi aliĝis al {course}",
     "centralCourseJoinedBody": "Ĝi estas la kurso de Pangea por lernantoj de la {language} lingvo. Ĝiaj membroj povas vidi vian nomon kaj profilon.",
-    "centralCourseMembersSeeYou": "Membroj de ĉi tiu kurso povas vidi vian nomon kaj profilon."
+    "centralCourseMembersSeeYou": "Membroj de ĉi tiu kurso povas vidi vian nomon kaj profilon.",
+    "practiceStartWordCount": "{count, plural, =1{vorto por ekzerci} other{vortoj por ekzerci}}",
+    "practiceStartGrammarCount": "{count, plural, =1{gramatikpunkto por ekzerci} other{gramatikpunktoj por ekzerci}}",
+    "practiceStartExerciseTypes": "Ekzercotipoj",
+    "analyticsSharedOnJoin": "Viaj instruistoj en {course} nun povas vidi vian lernan progreson.",
+    "sharedAnalyticsTitle": "Kunhavigata lerna progreso",
+    "sharedAnalyticsDesc": "Instruistoj en ĉi tiuj kursoj povas vidi vian lernan progreson. Forlasu kurson por ĉesi kunhavigi.",
+    "sharedAnalyticsNone": "Vi ne kunhavigas vian lernan progreson kun iu ajn kurso.",
+    "sharedAnalyticsOthersTitle": "Aliaj, kiuj povas vidi vian progreson",
+    "removeAnalyticsAccess": "Forigi aliron",
+    "removeAnalyticsAccessDesc": "{name} ne plu povos vidi vian lernan progreson."
 }
