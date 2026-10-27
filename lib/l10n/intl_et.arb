@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-23 13:25:38.433229",
+    "@@last_modified": "2026-10-27 12:27:52.305961",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9834,10 +9834,6 @@
     "contentCreatedBy": "Looja",
     "coursePreview": "Kursuse eelvaade",
     "numActivities": "{count, plural, =1{1 tegevus} other{{count} tegevust}}",
-    "teacherAnalyticsRequestTitle": "Õpetaja soovib näha sinu õppimise edenemist",
-    "teacherAnalyticsRequestDesc": "Nad näevad kõiki sõnu ja grammatikat, mida oled kasutanud keeles {targetLang}, sinu taset ja XP-d ning kursuse tegevustes saadetud sõnumeid. Sinu 1-ühele sõnumeid ei jagata. Kursusega liitumiseks on analüütika jagamine kohustuslik.",
-    "shareAndJoin": "Jaga ja liitu",
-    "goBack": "Mine tagasi",
     "emptyGroupsSearch": "Ühtegi gruppi ei leitud. Veenduge, et otsing on õigesti kirjutatud.",
     "emptyActivitiesSearch": "Ühtegi tegevust ei leitud. Veenduge, et otsing on õigesti kirjutatud.",
     "chatListFiltersLabel": "Vestluse filtrid",
@@ -10046,5 +10042,9 @@
     "centralCourseMembersSeeYou": "Selle kursuse liikmed näevad sinu nime ja profiili.",
     "practiceStartWordCount": "{count, plural, =1{sõna harjutamiseks} other{sõna harjutamiseks}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatikapunkt harjutamiseks} other{grammatikapunkti harjutamiseks}}",
-    "practiceStartExerciseTypes": "Harjutuste tüübid"
+    "practiceStartExerciseTypes": "Harjutuste tüübid",
+    "analyticsSharedOnJoin": "Sinu õpetajad kursusel {course} näevad nüüd sinu õppimise edenemist.",
+    "sharedAnalyticsTitle": "Jagatud õppimise edenemine",
+    "sharedAnalyticsDesc": "Nende kursuste õpetajad näevad sinu õppimise edenemist. Jagamise lõpetamiseks lahku kursuselt.",
+    "sharedAnalyticsNone": "Sa ei jaga oma õppimise edenemist ühegi kursusega."
 }

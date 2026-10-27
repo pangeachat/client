@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-23 13:25:46.420212",
+    "@@last_modified": "2026-10-27 12:28:05.509366",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9837,10 +9837,6 @@
     "contentCreatedBy": "Створено",
     "coursePreview": "Попередній перегляд курсу",
     "numActivities": "{count, plural, =1{1 активність} other{{count} активності}}",
-    "teacherAnalyticsRequestTitle": "Викладач запитує ваш прогрес у навчанні",
-    "teacherAnalyticsRequestDesc": "Він/вона бачитиме всі слова та граматику, які ви використовували в {targetLang}, ваш рівень та XP, а також повідомлення, надіслані в рамках курсових завдань. Ваші особисті повідомлення не будуть поширені. Надання аналітики є обов'язковим для приєднання до курсу.",
-    "shareAndJoin": "Поділитися та приєднатися",
-    "goBack": "Повернутися",
     "emptyGroupsSearch": "Груп не знайдено. Перевірте правильність написання пошукового запиту.",
     "emptyActivitiesSearch": "Активностей не знайдено. Перевірте правильність написання пошукового запиту.",
     "chatListFiltersLabel": "Фільтри чатів",
@@ -10049,5 +10045,9 @@
     "centralCourseMembersSeeYou": "Учасники цього курсу бачитимуть ваше ім’я та профіль.",
     "practiceStartWordCount": "{count, plural, =1{слово для практики} other{слів для практики}}",
     "practiceStartGrammarCount": "{count, plural, =1{граматична тема для практики} other{граматичних тем для практики}}",
-    "practiceStartExerciseTypes": "Типи вправ"
+    "practiceStartExerciseTypes": "Типи вправ",
+    "analyticsSharedOnJoin": "Ваші викладачі в {course} тепер можуть бачити ваш прогрес у навчанні.",
+    "sharedAnalyticsTitle": "Спільний прогрес у навчанні",
+    "sharedAnalyticsDesc": "Викладачі цих курсів можуть бачити ваш прогрес у навчанні. Залиште курс, щоб припинити спільний доступ.",
+    "sharedAnalyticsNone": "Ви не ділитеся своїм прогресом у навчанні з жодним курсом."
 }

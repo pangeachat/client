@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-23 13:25:44.189657",
+    "@@last_modified": "2026-10-27 12:28:00.821492",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9922,10 +9922,6 @@
     "contentCreatedBy": "Utworzone przez",
     "coursePreview": "Podgląd kursu",
     "numActivities": "{count, plural, =1{1 aktywność} other{{count} aktywności}}",
-    "teacherAnalyticsRequestTitle": "Nauczyciel prosi o Twój postęp w nauce",
-    "teacherAnalyticsRequestDesc": "Nauczyciel zobaczy wszystkie słowa i gramatykę, których użyłeś w {targetLang}, Twój poziom i XP, oraz wiadomości wysłane w ramach zajęć. Twoje wiadomości 1-na-1 nie będą udostępniane. Udostępnianie danych analitycznych jest wymagane, aby dołączyć do kursu.",
-    "shareAndJoin": "Udostępnij i dołącz",
-    "goBack": "Wróć",
     "emptyGroupsSearch": "Nie znaleziono grup. Upewnij się, że wyszukiwanie jest poprawnie napisane.",
     "emptyActivitiesSearch": "Nie znaleziono aktywności. Upewnij się, że wyszukiwanie jest poprawnie napisane.",
     "chatListFiltersLabel": "Filtry czatu",
@@ -10134,5 +10130,9 @@
     "centralCourseMembersSeeYou": "Członkowie tego kursu widzą Twoje imię i profil.",
     "practiceStartWordCount": "{count, plural, =1{słowo do ćwiczenia} other{słów do ćwiczenia}}",
     "practiceStartGrammarCount": "{count, plural, =1{zagadnienie gramatyczne do ćwiczenia} other{zagadnienia gramatyczne do ćwiczenia}}",
-    "practiceStartExerciseTypes": "Typy ćwiczeń"
+    "practiceStartExerciseTypes": "Typy ćwiczeń",
+    "analyticsSharedOnJoin": "Twoi nauczyciele w {course} mogą teraz zobaczyć Twoje postępy w nauce.",
+    "sharedAnalyticsTitle": "Udostępnione postępy w nauce",
+    "sharedAnalyticsDesc": "Nauczyciele na tych kursach mogą zobaczyć Twoje postępy w nauce. Opuść kurs, aby przestać udostępniać.",
+    "sharedAnalyticsNone": "Nie udostępniasz swoich postępów w nauce żadnemu kursowi."
 }

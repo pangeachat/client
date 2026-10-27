@@ -5126,18 +5126,6 @@
     "@showMoreOptionsHint": {
         "description": "Semantics hint fragment: TalkBack reads it as 'double tap and hold to <this>' on controls whose long-press opens the options menu."
     },
-    "teacherAnalyticsRequestTitle": "Teacher requests your learning progress",
-    "teacherAnalyticsRequestDesc": "They'll see all the words and grammar you've used in {targetLang}, your level and XP, and the messages sent in course activities. Your 1-on-1 messages will not be shared. Sharing analytics is required to join the course.",
-    "@teacherAnalyticsRequestDesc": {
-        "type": "String",
-        "placeholders": {
-            "targetLang": {
-                "type": "String"
-            }
-        }
-    },
-    "shareAndJoin": "Share and join",
-    "goBack": "Go back",
     "setPermissionsLevelDesc": "Please choose a predefined role below or enter a custom permission level. Pick a whole number between 0 and 100.",
     "reportContentIssue": "Report content issue",
     "userTypeTitle": "I use Pangea Chat to",
@@ -6274,5 +6262,27 @@
     "centralCourseMembersSeeYou": "Members of this course can see your name and profile.",
     "@centralCourseMembersSeeYou": {
         "description": "Line on the onboarding page after a new learner was joined to the Pangea-run course for their target language."
+    },
+    "analyticsSharedOnJoin": "Your teachers in {course} can now see your learning progress.",
+    "@analyticsSharedOnJoin": {
+        "description": "Snackbar after a learner joins a course that requires sharing analytics; its action opens Learning settings.",
+        "type": "String",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "sharedAnalyticsTitle": "Shared learning progress",
+    "@sharedAnalyticsTitle": {
+        "description": "Heading of the Learning settings section listing the courses whose teachers can see the learner's progress."
+    },
+    "sharedAnalyticsDesc": "Teachers in these courses can see your learning progress. Leave a course to stop sharing.",
+    "@sharedAnalyticsDesc": {
+        "description": "Explanation under the shared learning progress heading in Learning settings."
+    },
+    "sharedAnalyticsNone": "You aren't sharing your learning progress with any course.",
+    "@sharedAnalyticsNone": {
+        "description": "Shown in Learning settings when no course's teachers can see the learner's progress."
     }
 }

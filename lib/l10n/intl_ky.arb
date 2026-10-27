@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-23 13:25:42.069851",
+    "@@last_modified": "2026-10-27 12:27:57.371564",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Түзгөн",
     "coursePreview": "Курсту алдын ала көрүү",
     "numActivities": "{count, plural, =1{1 иш-аракет} other{{count} иш-аракеттер}}",
-    "teacherAnalyticsRequestTitle": "Мугалим сиздин окуу прогрессиңизди сурайт",
-    "teacherAnalyticsRequestDesc": "Алар сиздин {targetLang} тилинде колдонгон бардык сөздөрүңүздү жана грамматикаңызды, деңгээлиңизди жана XP'ңизди, ошондой эле курс иш-чараларында жөнөтүлгөн билдирүүлөрдү көрүшөт. Сиздин жеке билдирүүлөрүңүз бөлүшүлбөйт. Курска кошулуу үчүн аналитиканы бөлүшүү талап кылынат.",
-    "shareAndJoin": "Бөлүшүү жана кошулуу",
-    "goBack": "Артка кайтуу",
     "emptyGroupsSearch": "Топтор табылган жок. Издөөңүздүн туура жазылганын текшериңиз.",
     "emptyActivitiesSearch": "Иш-чаралар табылган жок. Издөөңүздүн туура жазылганын текшериңиз.",
     "chatListFiltersLabel": "Чат чыпкалары",
@@ -2511,5 +2507,9 @@
     "centralCourseMembersSeeYou": "Бул курстун мүчөлөрү сиздин атыңызды жана профилиңизди көрө алышат.",
     "practiceStartWordCount": "{count, plural, =1{кайталоо үчүн сөз} other{кайталоо үчүн сөздөр}}",
     "practiceStartGrammarCount": "{count, plural, =1{кайталоо үчүн грамматикалык тема} other{кайталоо үчүн грамматикалык темалар}}",
-    "practiceStartExerciseTypes": "Көнүгүү түрлөрү"
+    "practiceStartExerciseTypes": "Көнүгүү түрлөрү",
+    "analyticsSharedOnJoin": "{course} курсундагы мугалимдериңиз эми сиздин окуу прогрессиңизди көрө алышат.",
+    "sharedAnalyticsTitle": "Бөлүшүлгөн окуу прогресси",
+    "sharedAnalyticsDesc": "Бул курстардагы мугалимдер сиздин окуу прогрессиңизди көрө алышат. Бөлүшүүнү токтотуу үчүн курстан чыгыңыз.",
+    "sharedAnalyticsNone": "Сиз эч бир курс менен окуу прогрессиңизди бөлүшпөй жатасыз."
 }

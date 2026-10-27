@@ -4,9 +4,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
-import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/analytics_access/grant_analytics_access_extension.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
@@ -18,9 +18,8 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 
 class JoinResponse {
   final String roomId;
-  final bool shouldShowNotice;
 
-  const JoinResponse({required this.roomId, required this.shouldShowNotice});
+  const JoinResponse({required this.roomId});
 }
 
 extension JoinRoomAnalyticsAccessClientExtension on Client {
@@ -39,12 +38,8 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
       thirdPartySigned: thirdPartySigned,
     );
 
-    final room = await _loadRoom(resp);
-    final joinResp = JoinResponse(
-      roomId: resp,
-      shouldShowNotice: room?.shouldShowAnalyticsAccessNotice ?? false,
-    );
-    return joinResp;
+    await _loadRoom(resp);
+    return JoinResponse(roomId: resp);
   }
 
   Future<JoinResponse> joinRoomByIdWithAccessCheck(
@@ -57,12 +52,8 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
       reason: reason,
       thirdPartySigned: thirdPartySigned,
     );
-    final room = await _loadRoom(resp);
-    final joinResp = JoinResponse(
-      roomId: roomId,
-      shouldShowNotice: room?.shouldShowAnalyticsAccessNotice ?? false,
-    );
-    return joinResp;
+    await _loadRoom(resp);
+    return JoinResponse(roomId: roomId);
   }
 
   /// The joined room from local state, waiting briefly for sync to surface it.
@@ -81,7 +72,11 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
           join: true,
         ).timeout(const Duration(seconds: 10));
       } on TimeoutException {
-        // Sync lag, not a failed join — proceed without the local room.
+        // Sync lag, not a failed join — proceed without the local room. The
+        // callers' post-join step needs that room, so it runs once it lands.
+        unawaited(
+          JoinRoomAnalyticsAccessHandler.handleOnceSynced(this, roomId),
+        );
       }
     }
     return getRoomById(roomId);
@@ -270,18 +265,9 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
 }
 
 extension JoinRoomAnalyticsAccessRoomExtension on Room {
-  bool get shouldShowAnalyticsAccessNotice =>
-      requireAnalyticsAccess &&
-      !isRoomAdmin &&
-      !client.acceptedAccessNotice(id);
-
   Future<JoinResponse?> joinWithAccessCheck() async {
     await join();
-    final room = await client._loadRoom(id);
-    final joinResp = JoinResponse(
-      roomId: id,
-      shouldShowNotice: room?.shouldShowAnalyticsAccessNotice ?? false,
-    );
-    return joinResp;
+    await client._loadRoom(id);
+    return JoinResponse(roomId: id);
   }
 }

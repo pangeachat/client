@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-23 13:25:46.262586",
+    "@@last_modified": "2026-10-27 12:28:03.974160",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10135,10 +10135,6 @@
     "contentCreatedBy": "Oluşturan",
     "coursePreview": "Kurs önizlemesi",
     "numActivities": "{count, plural, =1{1 aktivite} other{{count} aktivite}}",
-    "teacherAnalyticsRequestTitle": "Öğretmen öğrenme ilerlemenizi istiyor",
-    "teacherAnalyticsRequestDesc": "{targetLang} dilinde kullandığınız tüm kelimeleri ve dil bilgisini, seviyenizi ve DP'nizi ve kurs etkinliklerinde gönderilen mesajları görecekler. Bire bir mesajlarınız paylaşılmayacaktır. Kursa katılmak için analizleri paylaşmak gereklidir.",
-    "shareAndJoin": "Paylaş ve katıl",
-    "goBack": "Geri dön",
     "emptyGroupsSearch": "Grup bulunamadı. Aramanızın doğru yazıldığından emin olun.",
     "emptyActivitiesSearch": "Etkinlik bulunamadı. Aramanızın doğru yazıldığından emin olun.",
     "chatListFiltersLabel": "Sohbet filtreleri",
@@ -10347,5 +10343,9 @@
     "centralCourseMembersSeeYou": "Bu kursun üyeleri adını ve profilini görebilir.",
     "practiceStartWordCount": "{count, plural, =1{pratik yapılacak kelime} other{pratik yapılacak kelime}}",
     "practiceStartGrammarCount": "{count, plural, =1{pratik yapılacak dil bilgisi konusu} other{pratik yapılacak dil bilgisi konusu}}",
-    "practiceStartExerciseTypes": "Alıştırma türleri"
+    "practiceStartExerciseTypes": "Alıştırma türleri",
+    "analyticsSharedOnJoin": "{course} içindeki öğretmenleriniz artık öğrenme ilerlemenizi görebilir.",
+    "sharedAnalyticsTitle": "Paylaşılan öğrenme ilerlemesi",
+    "sharedAnalyticsDesc": "Bu kurslardaki öğretmenler öğrenme ilerlemenizi görebilir. Paylaşımı durdurmak için bir kurstan ayrılın.",
+    "sharedAnalyticsNone": "Öğrenme ilerlemenizi hiçbir kursla paylaşmıyorsunuz."
 }

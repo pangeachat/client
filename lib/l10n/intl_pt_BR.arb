@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:44.538440",
+    "@@last_modified": "2026-10-27 12:28:00.561667",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9837,10 +9837,6 @@
     "contentCreatedBy": "Criado por",
     "coursePreview": "Prévia do curso",
     "numActivities": "{count, plural, =1{1 atividade} other{{count} atividades}}",
-    "teacherAnalyticsRequestTitle": "Professor solicita seu progresso de aprendizado",
-    "teacherAnalyticsRequestDesc": "Eles verão todas as palavras e gramática que você usou em {targetLang}, seu nível e XP, e as mensagens enviadas nas atividades do curso. Suas mensagens individuais não serão compartilhadas. Compartilhar análises é necessário para participar do curso.",
-    "shareAndJoin": "Compartilhar e participar",
-    "goBack": "Voltar",
     "emptyGroupsSearch": "Nenhum grupo encontrado. Verifique se sua pesquisa foi digitada corretamente.",
     "emptyActivitiesSearch": "Nenhuma atividade encontrada. Verifique se sua pesquisa foi digitada corretamente.",
     "chatListFiltersLabel": "Filtros de chat",
@@ -10049,5 +10045,9 @@
     "centralCourseMembersSeeYou": "Os membros deste curso podem ver seu nome e perfil.",
     "practiceStartWordCount": "{count, plural, =1{palavra para praticar} other{palavras para praticar}}",
     "practiceStartGrammarCount": "{count, plural, =1{ponto gramatical para praticar} other{pontos gramaticais para praticar}}",
-    "practiceStartExerciseTypes": "Tipos de exercício"
+    "practiceStartExerciseTypes": "Tipos de exercício",
+    "analyticsSharedOnJoin": "Seus professores em {course} agora podem ver seu progresso de aprendizado.",
+    "sharedAnalyticsTitle": "Progresso de aprendizado compartilhado",
+    "sharedAnalyticsDesc": "Os professores nestes cursos podem ver seu progresso de aprendizado. Saia de um curso para parar de compartilhar.",
+    "sharedAnalyticsNone": "Você não está compartilhando seu progresso de aprendizado com nenhum curso."
 }

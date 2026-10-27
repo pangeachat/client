@@ -100,8 +100,6 @@ class PangeaEventTypes {
   /// user to so they could review them.
   static const adminReviewRooms = 'pangea.admin_review';
 
-  static const accessNoticeShown = 'org.pangea.analytics_access_notice_shown';
-
   static const firstBotDMMessage = "pangea_first_bot_dm_message";
 
   static const onboardingSettings = "org.pangea.onboarding_settings";

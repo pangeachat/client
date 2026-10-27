@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-23 13:25:43.675232",
+    "@@last_modified": "2026-10-27 12:27:59.713987",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "द्वारा सिर्जना गरिएको",
     "coursePreview": "कोर्स पूर्वावलोकन",
     "numActivities": "{count, plural, =1{१ गतिविधि} other{{count} गतिविधिहरू}}",
-    "teacherAnalyticsRequestTitle": "शिक्षकले तपाईंको सिकाइ प्रगतिको अनुरोध गर्छन्",
-    "teacherAnalyticsRequestDesc": "उनीहरूले तपाईंले {targetLang} मा प्रयोग गर्नुभएका सबै शब्द र व्याकरण, तपाईंको स्तर र XP, र पाठ्यक्रम गतिविधिहरूमा पठाइएका सन्देशहरू देख्नेछन्। तपाईंका १-मा-१ सन्देशहरू साझेदारी गरिने छैनन्। पाठ्यक्रममा सामेल हुन विश्लेषणहरू साझेदारी गर्न आवश्यक छ।",
-    "shareAndJoin": "साझेदारी गर्नुहोस् र सामेल हुनुहोस्",
-    "goBack": "पछाडि जानुहोस्",
     "emptyGroupsSearch": "कुनै समूह फेला परेन। तपाईंको खोज सही हिज्जे गरिएको छ भनी सुनिश्चित गर्नुहोस्।",
     "emptyActivitiesSearch": "कुनै गतिविधिहरू फेला परेनन्। तपाईंको खोज सही हिज्जे गरिएको छ भनी सुनिश्चित गर्नुहोस्।",
     "chatListFiltersLabel": "च्याट फिल्टरहरू",
@@ -2511,5 +2507,9 @@
     "centralCourseMembersSeeYou": "यस कोर्सका सदस्यहरूले तपाईंको नाम र प्रोफाइल हेर्न सक्छन्।",
     "practiceStartWordCount": "{count, plural, =1{अभ्यास गर्न शब्द} other{अभ्यास गर्न शब्दहरू}}",
     "practiceStartGrammarCount": "{count, plural, =1{अभ्यास गर्न व्याकरण बिन्दु} other{अभ्यास गर्न व्याकरण बिन्दुहरू}}",
-    "practiceStartExerciseTypes": "अभ्यासका प्रकारहरू"
+    "practiceStartExerciseTypes": "अभ्यासका प्रकारहरू",
+    "analyticsSharedOnJoin": "{course} मा तपाईंका शिक्षकहरूले अब तपाईंको सिकाइ प्रगति हेर्न सक्छन्।",
+    "sharedAnalyticsTitle": "साझेदारी गरिएको सिकाइ प्रगति",
+    "sharedAnalyticsDesc": "यी पाठ्यक्रमका शिक्षकहरूले तपाईंको सिकाइ प्रगति हेर्न सक्छन्। साझेदारी रोक्नका लागि पाठ्यक्रम छोड्नुहोस्।",
+    "sharedAnalyticsNone": "तपाईंले कुनै पनि पाठ्यक्रमसँग आफ्नो सिकाइ प्रगति साझेदारी गरिरहनुभएको छैन।"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-23 13:25:39.624818",
+    "@@last_modified": "2026-10-27 12:27:53.440209",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Makke troch",
     "coursePreview": "Foarbyld fan de kursus",
     "numActivities": "{count, plural, =1{1 aktiviteit} other{{count} aktiviteiten}}",
-    "teacherAnalyticsRequestTitle": "Learkrêft freget dyn learfoarútgong op",
-    "teacherAnalyticsRequestDesc": "Se sille alle wurden en grammatika sjen dy'tsto brûkt hast yn it {targetLang}, dyn nivo en XP, en de berjochten dy't ferstjoerd binne yn kursusaktiviteiten. Dyn 1-op-1-berjochten wurde net dield. It dielen fan analyzes is ferplichte om mei te dwaan oan de kursus.",
-    "shareAndJoin": "Diele en meidwaan",
-    "goBack": "Werom",
     "emptyGroupsSearch": "Gjin groepen fûn. Soargje derfoar dat jo sykopdracht goed stavere is.",
     "emptyActivitiesSearch": "Gjin aktiviteiten fûn. Soargje derfoar dat jo sykopdracht goed stavere is.",
     "chatListFiltersLabel": "Petearfilters",
@@ -2511,5 +2507,9 @@
     "centralCourseMembersSeeYou": "Leden fan dizze kursus kinne jo namme en profyl sjen.",
     "practiceStartWordCount": "{count, plural, =1{wurd om te oefenjen} other{wurden om te oefenjen}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatikapunt om te oefenjen} other{grammatikapunten om te oefenjen}}",
-    "practiceStartExerciseTypes": "Soarten oefeningen"
+    "practiceStartExerciseTypes": "Soarten oefeningen",
+    "analyticsSharedOnJoin": "Jo dosinten yn {course} kinne no jo learfoarútgong sjen.",
+    "sharedAnalyticsTitle": "Dielde learfoarútgong",
+    "sharedAnalyticsDesc": "Dosinten yn dizze kursussen kinne jo learfoarútgong sjen. Ferlit in kursus om it dielen te stopjen.",
+    "sharedAnalyticsNone": "Jo diele jo learfoarútgong net mei in kursus."
 }

@@ -1355,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-23 13:25:40.471424",
+    "@@last_modified": "2026-10-27 12:27:54.858875",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10770,10 +10770,6 @@
     "contentCreatedBy": "Create per",
     "coursePreview": "Previsualisation del curso",
     "numActivities": "{count, plural, =1{1 activitate} other{{count} activitates}}",
-    "teacherAnalyticsRequestTitle": "Le inseniator requesta tu progresso de apprender",
-    "teacherAnalyticsRequestDesc": "Illes videra tote le parolas e grammatica que tu ha usate in {targetLang}, tu nivello e XP, e le messages inviate in activitates de curso. Tu messages 1-a-1 non essera compartite. Compartir le analyse es requirite pro unir se al curso.",
-    "shareAndJoin": "Compartir e unir se",
-    "goBack": "Retornar",
     "emptyGroupsSearch": "Nulle gruppos trovate. Assecura te que tu cerca es orthographiate correctemente.",
     "emptyActivitiesSearch": "Nulle activitates trovate. Assecura te que tu cerca es orthographiate correctemente.",
     "chatListFiltersLabel": "Filtros de chat",
@@ -10982,5 +10978,9 @@
     "centralCourseMembersSeeYou": "Membros de iste curso pote vider tu nomine e profilo.",
     "practiceStartWordCount": "{count, plural, =1{parola a practicar} other{parolas a practicar}}",
     "practiceStartGrammarCount": "{count, plural, =1{puncto grammatical a practicar} other{punctos grammatical a practicar}}",
-    "practiceStartExerciseTypes": "Typos de exercitios"
+    "practiceStartExerciseTypes": "Typos de exercitios",
+    "analyticsSharedOnJoin": "Tuos instructores in {course} pote vider tu progresso de apprendimento.",
+    "sharedAnalyticsTitle": "Progresso de apprendimento compartite",
+    "sharedAnalyticsDesc": "Instructores in iste cursos pote vider tu progresso de apprendimento. Quitta un curso pro cessar de compartir.",
+    "sharedAnalyticsNone": "Tu non es compartiente tu progresso de apprendimento con ulle curso."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-23 13:25:47.129426",
+    "@@last_modified": "2026-10-27 12:28:05.351339",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "געשאַפֿן פֿון",
     "coursePreview": "קורס פֿאָרויסיקע ווייַזונג",
     "numActivities": "{count, plural, =1{1 טעטיקייט} other{{count} טעטיקייטן}}",
-    "teacherAnalyticsRequestTitle": "לערער בעט דיין לערנען פּראָגרעס",
-    "teacherAnalyticsRequestDesc": "זיי וועלן זען אַלע די ווערטער און גראַמאַטיק וואָס איר האָט געניצט אין {targetLang}, דיין מדרגה און עקס-פּי, און די אַרטיקלען געשיקט אין קורס אַקטיוויטעטן. דיין 1-אויף-1 אַרטיקלען וועלן נישט זיין געטיילט. טיילן אַנאַליטיקס איז פארלאנגט צו פאַרבינדן דעם קורס.",
-    "shareAndJoin": "טיילן און פאַרבינדן",
-    "goBack": "גיי צוריק",
     "emptyGroupsSearch": "קיין גרופּעס ניט געפֿונען. זייט זיכער אַז איר האָט ריכטיק געשריבן אייער זוך.",
     "emptyActivitiesSearch": "קיין אַקטיוויטעטן ניט געפֿונען. זייט זיכער אַז איר האָט ריכטיק געשריבן אייער זוך.",
     "chatListFiltersLabel": "טשאַט פילטערס",
@@ -2511,5 +2507,9 @@
     "centralCourseMembersSeeYou": "מיטגלידער פֿון דעם קורס קענען זען אײַער נאָמען און פּראָפֿיל.",
     "practiceStartWordCount": "{count, plural, =1{וואָרט צו פּראַקטיצירן} other{ווערטער צו פּראַקטיצירן}}",
     "practiceStartGrammarCount": "{count, plural, =1{גראַמאַטיק פּונקט צו פּראַקטיצירן} other{גראַמאַטיק פּונקטן צו פּראַקטיצירן}}",
-    "practiceStartExerciseTypes": "טיפן פון איבונגען"
+    "practiceStartExerciseTypes": "טיפן פון איבונגען",
+    "analyticsSharedOnJoin": "אײַערע לערער אין {course} קענען איצט זען אײַער לערן־פֿאָרשריט.",
+    "sharedAnalyticsTitle": "געטיילטער לערן־פֿאָרשריט",
+    "sharedAnalyticsDesc": "לערער אין די קורסן קענען זען אײַער לערן־פֿאָרשריט. פֿאַרלאָזט אַ קורס כּדי אויפֿצוהערן טיילן.",
+    "sharedAnalyticsNone": "איר טיילט נישט אײַער לערן־פֿאָרשריט מיט קיין שום קורס."
 }

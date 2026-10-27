@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-23 13:25:40.360643",
+    "@@last_modified": "2026-10-27 12:27:54.756787",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Kreye pa",
     "coursePreview": "Apèsi sou kou a",
     "numActivities": "{count, plural, =1{1 aktivite} other{{count} aktivite}}",
-    "teacherAnalyticsRequestTitle": "Pwofesè a mande pwogrè aprantisaj ou",
-    "teacherAnalyticsRequestDesc": "Y ap wè tout mo ak gramè ou te itilize nan {targetLang}, nivo ou ak XP ou, ak mesaj yo voye nan aktivite kou yo. Mesaj 1-a-1 ou yo p ap pataje. Pataje analiz yo obligatwa pou w antre nan kou a.",
-    "shareAndJoin": "Pataje epi antre",
-    "goBack": "Retounen",
     "emptyGroupsSearch": "Pa gen gwoup yo jwenn. Asire w ke rechèch ou an byen ekri.",
     "emptyActivitiesSearch": "Pa gen aktivite yo jwenn. Asire w ke rechèch ou an byen ekri.",
     "chatListFiltersLabel": "Filtè chat",
@@ -2511,5 +2507,9 @@
     "centralCourseMembersSeeYou": "Manm kou sa a ka wè non w ak pwofil ou.",
     "practiceStartWordCount": "{count, plural, =1{mo pou pratike} other{mo pou pratike}}",
     "practiceStartGrammarCount": "{count, plural, =1{pwen gramè pou pratike} other{pwen gramè pou pratike}}",
-    "practiceStartExerciseTypes": "Tip egzèsis"
+    "practiceStartExerciseTypes": "Tip egzèsis",
+    "analyticsSharedOnJoin": "Pwofesè w yo nan {course} kapab kounye a wè pwogrè w nan aprantisaj.",
+    "sharedAnalyticsTitle": "Pwogrè aprantisaj pataje",
+    "sharedAnalyticsDesc": "Pwofesè nan kou sa yo kapab wè pwogrè w nan aprantisaj. Kite yon kou pou sispann pataje.",
+    "sharedAnalyticsNone": "Ou pa pataje pwogrè w nan aprantisaj ak okenn kou."
 }

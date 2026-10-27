@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-23 13:25:40.156873",
+    "@@last_modified": "2026-10-27 12:27:54.135215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Hana ʻia e",
     "coursePreview": "Nānā mua papa",
     "numActivities": "{count, plural, =1{1 hana} other{{count} mau hana}}",
-    "teacherAnalyticsRequestTitle": "Ke noi mai nei ke kumu i kou holomua aʻo",
-    "teacherAnalyticsRequestDesc": "E ʻike ana lākou i nā huaʻōlelo a me nā lula pili ʻōlelo a pau āu i hoʻohana ai ma ka ʻōlelo {targetLang}, kou pae a me kou XP, a me nā leka i hoʻouna ʻia i nā hana papa. ʻAʻole e kaʻana like ʻia kāu mau leka 1-a-1. Pono ke kaʻana like ʻana i nā ʻikepili e komo i ka papa.",
-    "shareAndJoin": "Kaʻana like a komo",
-    "goBack": "Hoʻi hope",
     "emptyGroupsSearch": "ʻAʻohe pūʻulu i loaʻa. E hōʻoia i ka pololei o kāu huli ʻana.",
     "emptyActivitiesSearch": "ʻAʻohe hana i loaʻa. E hōʻoia i ka pololei o kāu huli ʻana.",
     "chatListFiltersLabel": "Nā kānana kamaʻilio",
@@ -2511,5 +2507,9 @@
     "centralCourseMembersSeeYou": "Hiki i nā lālā o kēia papa ke ʻike i kou inoa a me kou ʻaoʻao.",
     "practiceStartWordCount": "{count, plural, =1{huaʻōlelo e hoʻomaʻamaʻa} other{mau huaʻōlelo e hoʻomaʻamaʻa}}",
     "practiceStartGrammarCount": "{count, plural, =1{kiko kikoʻī e hoʻomaʻamaʻa} other{mau kiko kikoʻī e hoʻomaʻamaʻa}}",
-    "practiceStartExerciseTypes": "Nā ʻano hoʻomaʻamaʻa"
+    "practiceStartExerciseTypes": "Nā ʻano hoʻomaʻamaʻa",
+    "analyticsSharedOnJoin": "Hiki i kou mau kumu ma {course} ke ʻike i kou holomua aʻo ʻana.",
+    "sharedAnalyticsTitle": "Kaʻana like ʻana i ka holomua aʻo",
+    "sharedAnalyticsDesc": "Hiki i nā kumu ma kēia mau papa ke ʻike i kou holomua aʻo ʻana. E haʻalele i kahi papa e hoʻōki ai i ke kaʻana like ʻana.",
+    "sharedAnalyticsNone": "ʻAʻole ʻoe e kaʻana like ana i kou holomua aʻo ʻana me kekahi papa."
 }

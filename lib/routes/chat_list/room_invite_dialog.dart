@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -68,9 +68,8 @@ class RoomInviteDialog {
         final joinResp = result.result;
         if (joinResp == null) return;
 
-        final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+        final handler = JoinRoomAnalyticsAccessHandler(joinResp, room);
         final joinedRoomId = await handler.handle(appContext);
-        if (joinedRoomId == null) return;
 
         room.isSpace
             ? router.go(WorkspaceNav.openCourse(uri, joinedRoomId))

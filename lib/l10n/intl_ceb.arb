@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-23 13:25:37.724875",
+    "@@last_modified": "2026-10-27 12:27:53.856025",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Gibuhat ni",
     "coursePreview": "Preview sa kurso",
     "numActivities": "{count, plural, =1{1 kalihokan} other{{count} ka kalihokan}}",
-    "teacherAnalyticsRequestTitle": "Gihangyo sa magtutudlo ang imong pag-uswag sa pagkat-on",
-    "teacherAnalyticsRequestDesc": "Makita nila ang tanang pulong ug gramatika nga imong gigamit sa {targetLang}, ang imong lebel ug XP, ug ang mga mensahe nga gipadala sa mga kalihokan sa kurso. Ang imong 1-on-1 nga mga mensahe dili ipaambit. Ang pagpaambit sa analytics gikinahanglan aron makaapil sa kurso.",
-    "shareAndJoin": "Ipaambit ug apil",
-    "goBack": "Balik",
     "emptyGroupsSearch": "Walay nakit-ang grupo. Siguraduhang husto ang spelling sa imong gipangita.",
     "emptyActivitiesSearch": "Walay nakit-ang kalihokan. Siguraduhang husto ang spelling sa imong gipangita.",
     "chatListFiltersLabel": "Mga filter sa chat",
@@ -2511,5 +2507,9 @@
     "centralCourseMembersSeeYou": "Makita sa mga miyembro niining kursuha ang imong ngalan ug profile.",
     "practiceStartWordCount": "{count, plural, =1{pulong nga praktison} other{mga pulong nga praktison}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammar point nga praktison} other{mga grammar point nga praktison}}",
-    "practiceStartExerciseTypes": "Mga tipo sa ehersisyo"
+    "practiceStartExerciseTypes": "Mga tipo sa ehersisyo",
+    "analyticsSharedOnJoin": "Ang imong mga magtutudlo sa {course} makakita na sa imong pag-uswag sa pagkat-on.",
+    "sharedAnalyticsTitle": "Gipaambit nga pag-uswag sa pagkat-on",
+    "sharedAnalyticsDesc": "Ang mga magtutudlo niining mga kurso makakita sa imong pag-uswag sa pagkat-on. Biya sa usa ka kurso aron mohunong sa pagpaambit.",
+    "sharedAnalyticsNone": "Wala ka nagpaambit sa imong pag-uswag sa pagkat-on sa bisan unsang kurso."
 }

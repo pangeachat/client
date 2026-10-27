@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-23 13:25:45.865265",
+    "@@last_modified": "2026-10-27 12:28:03.053098",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Dijieun ku",
     "coursePreview": "Sawangan kursus",
     "numActivities": "{count, plural, =1{1 kagiatan} other{{count} kagiatan}}",
-    "teacherAnalyticsRequestTitle": "Guru nyuhunkeun kamajuan diajar anjeun",
-    "teacherAnalyticsRequestDesc": "Aranjeunna bakal ningali sadaya kecap sareng tata basa anu anjeun anggo dina {targetLang}, tingkat anjeun sareng XP, sareng pesen anu dikirim dina kagiatan kursus. Pesen 1-on-1 anjeun moal dibagikeun. Ngabagikeun analitik diperyogikeun pikeun ngiringan kursus.",
-    "shareAndJoin": "Bagikeun sareng gabung",
-    "goBack": "Balik deui",
     "emptyGroupsSearch": "Teu aya grup anu kapanggih. Pastikeun pamilarian anjeun leres.",
     "emptyActivitiesSearch": "Teu aya kagiatan anu kapanggih. Pastikeun pamilarian anjeun leres.",
     "chatListFiltersLabel": "Saringan obrolan",
@@ -2511,5 +2507,9 @@
     "centralCourseMembersSeeYou": "Anggota kursus ieu bisa ningali ngaran jeung profil anjeun.",
     "practiceStartWordCount": "{count, plural, =1{kecap pikeun latihan} other{kecap pikeun latihan}}",
     "practiceStartGrammarCount": "{count, plural, =1{titik tata basa pikeun latihan} other{titik tata basa pikeun latihan}}",
-    "practiceStartExerciseTypes": "Jinis latihan"
+    "practiceStartExerciseTypes": "Jinis latihan",
+    "analyticsSharedOnJoin": "Guru anjeun di {course} ayeuna tiasa ningali kamajuan diajar anjeun.",
+    "sharedAnalyticsTitle": "Kamajuan diajar dibagikeun",
+    "sharedAnalyticsDesc": "Guru dina kursus ieu tiasa ningali kamajuan diajar anjeun. Kaluar tina kursus pikeun ngeureunkeun ngabagikeun.",
+    "sharedAnalyticsNone": "Anjeun henteu ngabagikeun kamajuan diajar anjeun sareng kursus mana waé."
 }

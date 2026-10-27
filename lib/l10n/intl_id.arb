@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:41.009002",
+    "@@last_modified": "2026-10-27 12:27:54.851806",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9910,10 +9910,6 @@
     "contentCreatedBy": "Dibuat oleh",
     "coursePreview": "Pratinjau kursus",
     "numActivities": "{count, plural, =1{1 aktivitas} other{{count} aktivitas}}",
-    "teacherAnalyticsRequestTitle": "Guru meminta progres belajar Anda",
-    "teacherAnalyticsRequestDesc": "Mereka akan melihat semua kata dan tata bahasa yang Anda gunakan dalam {targetLang}, level dan XP Anda, serta pesan yang dikirim dalam aktivitas kursus. Pesan 1 lawan 1 Anda tidak akan dibagikan. Berbagi analitik diperlukan untuk bergabung dengan kursus.",
-    "shareAndJoin": "Bagikan dan bergabung",
-    "goBack": "Kembali",
     "emptyGroupsSearch": "Tidak ada grup yang ditemukan. Pastikan ejaan pencarian Anda sudah benar.",
     "emptyActivitiesSearch": "Tidak ada aktivitas yang ditemukan. Pastikan ejaan pencarian Anda sudah benar.",
     "chatListFiltersLabel": "Filter obrolan",
@@ -10122,5 +10118,9 @@
     "centralCourseMembersSeeYou": "Anggota kursus ini dapat melihat nama dan profil Anda.",
     "practiceStartWordCount": "{count, plural, =1{kata untuk dilatih} other{kata untuk dilatih}}",
     "practiceStartGrammarCount": "{count, plural, =1{poin tata bahasa untuk dilatih} other{poin tata bahasa untuk dilatih}}",
-    "practiceStartExerciseTypes": "Jenis latihan"
+    "practiceStartExerciseTypes": "Jenis latihan",
+    "analyticsSharedOnJoin": "Pengajar Anda di {course} kini dapat melihat progres belajar Anda.",
+    "sharedAnalyticsTitle": "Progres belajar yang dibagikan",
+    "sharedAnalyticsDesc": "Pengajar di kursus ini dapat melihat progres belajar Anda. Keluar dari kursus untuk berhenti berbagi.",
+    "sharedAnalyticsNone": "Anda tidak membagikan progres belajar Anda dengan kursus mana pun."
 }

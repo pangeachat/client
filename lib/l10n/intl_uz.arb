@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-23 13:25:46.542567",
+    "@@last_modified": "2026-10-27 12:28:04.539135",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9841,10 +9841,6 @@
     "contentCreatedBy": "Yaratdi",
     "coursePreview": "Kursni ko'rib chiqish",
     "numActivities": "{count, plural, =1{1 faoliyat} other{{count} faoliyat}}",
-    "teacherAnalyticsRequestTitle": "Oʻqituvchi sizning oʻquv jarayoningizni soʻrayapti",
-    "teacherAnalyticsRequestDesc": "Ular sizning {targetLang} tilida ishlatgan barcha soʻzlaringiz va grammatikangizni, darajangiz va XP’ingizni, shuningdek, kurs faoliyatida yuborilgan xabarlarni koʻrishadi. Sizning shaxsiy xabarlaringiz boʻlishilmaydi. Kursga qoʻshilish uchun tahlillarni boʻlishish talab qilinadi.",
-    "shareAndJoin": "Boʻlishish va qoʻshilish",
-    "goBack": "Ortga qaytish",
     "emptyGroupsSearch": "Guruhlar topilmadi. Qidiruvingiz toʻgʻri yozilganligiga ishonch hosil qiling.",
     "emptyActivitiesSearch": "Faoliyatlar topilmadi. Qidiruvingiz toʻgʻri yozilganligiga ishonch hosil qiling.",
     "chatListFiltersLabel": "Chat filtrlari",
@@ -10053,5 +10049,9 @@
     "centralCourseMembersSeeYou": "Ushbu kurs aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
     "practiceStartWordCount": "{count, plural, =1{mashq qilish uchun soʻz} other{mashq qilish uchun soʻzlar}}",
     "practiceStartGrammarCount": "{count, plural, =1{mashq qilish uchun grammatika qoidasi} other{mashq qilish uchun grammatika qoidalari}}",
-    "practiceStartExerciseTypes": "Mashq turlari"
+    "practiceStartExerciseTypes": "Mashq turlari",
+    "analyticsSharedOnJoin": "{course} dagi oʻqituvchilaringiz endi sizning oʻquv jarayoningizni koʻrishlari mumkin.",
+    "sharedAnalyticsTitle": "Umumiy oʻquv jarayoni",
+    "sharedAnalyticsDesc": "Ushbu kurslardagi oʻqituvchilar sizning oʻquv jarayoningizni koʻrishlari mumkin. Ulashishni toʻxtatish uchun kursni tark eting.",
+    "sharedAnalyticsNone": "Siz oʻquv jarayoningizni hech qaysi kurs bilan baham koʻrmayapsiz."
 }

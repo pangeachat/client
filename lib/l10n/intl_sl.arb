@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-23 13:25:45.285594",
+    "@@last_modified": "2026-10-27 12:28:01.531638",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10779,10 +10779,6 @@
     "contentCreatedBy": "Ustvaril",
     "coursePreview": "Predogled tečaja",
     "numActivities": "{count, plural, =1{1 dejavnost} other{{count} dejavnosti}}",
-    "teacherAnalyticsRequestTitle": "Učitelj zahteva vaš napredek pri učenju",
-    "teacherAnalyticsRequestDesc": "Videli bodo vse besede in slovnico, ki ste jih uporabili v {targetLang}, vašo raven in XP ter sporočila, poslana v dejavnostih tečaja. Vaša sporočila 1-na-1 ne bodo deljena. Deljenje analitike je obvezno za pridružitev tečaju.",
-    "shareAndJoin": "Deli in se pridruži",
-    "goBack": "Nazaj",
     "emptyGroupsSearch": "Ni najdenih skupin. Prepričajte se, da je iskanje pravilno črkovano.",
     "emptyActivitiesSearch": "Ni najdenih dejavnosti. Prepričajte se, da je iskanje pravilno črkovano.",
     "chatListFiltersLabel": "Filtri klepeta",
@@ -10991,5 +10987,9 @@
     "centralCourseMembersSeeYou": "Člani tega tečaja lahko vidijo vaše ime in profil.",
     "practiceStartWordCount": "{count, plural, =1{beseda za vajo} other{besed za vajo}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatična točka za vajo} other{gramatičnih točk za vajo}}",
-    "practiceStartExerciseTypes": "Vrste vaj"
+    "practiceStartExerciseTypes": "Vrste vaj",
+    "analyticsSharedOnJoin": "Vaši učitelji v {course} lahko zdaj vidijo vaš napredek pri učenju.",
+    "sharedAnalyticsTitle": "Deljen napredek pri učenju",
+    "sharedAnalyticsDesc": "Učitelji v teh tečajih lahko vidijo vaš napredek pri učenju. Zapustite tečaj, da prekinete deljenje.",
+    "sharedAnalyticsNone": "S svojim napredkom pri učenju ne delite nobenega tečaja."
 }

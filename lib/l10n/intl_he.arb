@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:39.931641",
+    "@@last_modified": "2026-10-27 12:27:54.411718",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10748,10 +10748,6 @@
     "contentCreatedBy": "נוצר על ידי",
     "coursePreview": "תצוגה מקדימה של הקורס",
     "numActivities": "{count, plural, =1{פעילות 1} other{{count} פעילויות}}",
-    "teacherAnalyticsRequestTitle": "המורה מבקש את התקדמות הלמידה שלך",
-    "teacherAnalyticsRequestDesc": "הם יראו את כל המילים והדקדוק שהשתמשת בהם ב-{targetLang}, את הרמה ונקודות הניסיון שלך, ואת ההודעות שנשלחו בפעילויות הקורס. ההודעות האישיות שלך לא ישותפו. שיתוף נתונים אנליטיים נדרש כדי להצטרף לקורס.",
-    "shareAndJoin": "שתף והצטרף",
-    "goBack": "חזור",
     "emptyGroupsSearch": "לא נמצאו קבוצות. ודא/י שהחיפוש שלך מאוית נכון.",
     "emptyActivitiesSearch": "לא נמצאו פעילויות. ודא/י שהחיפוש שלך מאוית נכון.",
     "chatListFiltersLabel": "מסנני צ'אט",
@@ -10960,5 +10956,9 @@
     "centralCourseMembersSeeYou": "חברי הקורס הזה יכולים לראות את שמך ואת הפרופיל שלך.",
     "practiceStartWordCount": "{count, plural, =1{מילה לתרגול} other{מילים לתרגול}}",
     "practiceStartGrammarCount": "{count, plural, =1{נקודת דקדוק לתרגול} other{נקודות דקדוק לתרגול}}",
-    "practiceStartExerciseTypes": "סוגי תרגילים"
+    "practiceStartExerciseTypes": "סוגי תרגילים",
+    "analyticsSharedOnJoin": "המורים שלך בקורס {course} יכולים כעת לראות את התקדמות הלמידה שלך.",
+    "sharedAnalyticsTitle": "התקדמות למידה משותפת",
+    "sharedAnalyticsDesc": "מורים בקורסים אלה יכולים לראות את התקדמות הלמידה שלך. עזוב קורס כדי להפסיק לשתף.",
+    "sharedAnalyticsNone": "אינך משתף את התקדמות הלמידה שלך עם אף קורס."
 }

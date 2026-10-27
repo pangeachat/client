@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-23 13:25:42.706058",
+    "@@last_modified": "2026-10-27 12:27:58.235016",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Создадено од",
     "coursePreview": "Преглед на курс",
     "numActivities": "{count, plural, =1{1 активност} other{{count} активности}}",
-    "teacherAnalyticsRequestTitle": "Наставникот бара увид во вашиот напредок во учењето",
-    "teacherAnalyticsRequestDesc": "Ќе ги видат сите зборови и граматика што сте ги користеле на {targetLang}, вашето ниво и XP, и пораките испратени во активностите на курсот. Вашите 1-на-1 пораки нема да бидат споделени. Споделувањето аналитика е задолжително за да се приклучите на курсот.",
-    "shareAndJoin": "Сподели и приклучи се",
-    "goBack": "Врати се назад",
     "emptyGroupsSearch": "Не се пронајдени групи. Проверете дали пребарувањето е правилно напишано.",
     "emptyActivitiesSearch": "Не се пронајдени активности. Проверете дали пребарувањето е правилно напишано.",
     "chatListFiltersLabel": "Филтри за разговор",
@@ -2511,5 +2507,9 @@
     "centralCourseMembersSeeYou": "Членовите на овој курс можат да го видат вашето име и профил.",
     "practiceStartWordCount": "{count, plural, =1{збор за вежбање} other{зборови за вежбање}}",
     "practiceStartGrammarCount": "{count, plural, =1{граматичка точка за вежбање} other{граматички точки за вежбање}}",
-    "practiceStartExerciseTypes": "Видови вежби"
+    "practiceStartExerciseTypes": "Видови вежби",
+    "analyticsSharedOnJoin": "Вашите наставници во {course} сега можат да го видат вашиот напредок во учењето.",
+    "sharedAnalyticsTitle": "Споделен напредок во учењето",
+    "sharedAnalyticsDesc": "Наставниците на овие курсеви можат да го видат вашиот напредок во учењето. Напуштете го курсот за да престанете со споделување.",
+    "sharedAnalyticsNone": "Не го споделувате вашиот напредок во учењето со ниту еден курс."
 }

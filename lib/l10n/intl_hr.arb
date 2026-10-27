@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-23 13:25:40.384958",
+    "@@last_modified": "2026-10-27 12:27:54.524452",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10270,10 +10270,6 @@
     "contentCreatedBy": "Izradio",
     "coursePreview": "Pregled tečaja",
     "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}",
-    "teacherAnalyticsRequestTitle": "Profesor traži vaš napredak u učenju",
-    "teacherAnalyticsRequestDesc": "Vidjet će sve riječi i gramatiku koje ste koristili u {targetLang}, vašu razinu i XP, te poruke poslane u aktivnostima tečaja. Vaše 1-na-1 poruke neće biti podijeljene. Dijeljenje analitike je obavezno za pridruživanje tečaju.",
-    "shareAndJoin": "Podijeli i pridruži se",
-    "goBack": "Natrag",
     "emptyGroupsSearch": "Nema pronađenih grupa. Provjerite jeste li ispravno napisali pretragu.",
     "emptyActivitiesSearch": "Nema pronađenih aktivnosti. Provjerite jeste li ispravno napisali pretragu.",
     "chatListFiltersLabel": "Filtri chata",
@@ -10482,5 +10478,9 @@
     "centralCourseMembersSeeYou": "Članovi ovog tečaja mogu vidjeti vaše ime i profil.",
     "practiceStartWordCount": "{count, plural, =1{riječ za vježbanje} other{riječi za vježbanje}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatička točka za vježbanje} other{gramatičke točke za vježbanje}}",
-    "practiceStartExerciseTypes": "Vrste vježbi"
+    "practiceStartExerciseTypes": "Vrste vježbi",
+    "analyticsSharedOnJoin": "Vaši nastavnici u {course} sada mogu vidjeti vaš napredak u učenju.",
+    "sharedAnalyticsTitle": "Podijeljeni napredak u učenju",
+    "sharedAnalyticsDesc": "Nastavnici u ovim tečajevima mogu vidjeti vaš napredak u učenju. Napustite tečaj kako biste prestali dijeliti.",
+    "sharedAnalyticsNone": "Ne dijelite svoj napredak u učenju ni s jednim tečajem."
 }

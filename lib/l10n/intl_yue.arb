@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-23 13:25:47.283384",
+    "@@last_modified": "2026-10-27 12:28:05.400640",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10791,10 +10791,6 @@
     "contentCreatedBy": "創建者",
     "coursePreview": "課程預覽",
     "numActivities": "{count, plural, =1{1 個活動} other{{count} 個活動}}",
-    "teacherAnalyticsRequestTitle": "老師要求你的學習進度",
-    "teacherAnalyticsRequestDesc": "他們會看到你在{targetLang}中使用的所有單字和文法、你的等級和經驗值，以及在課程活動中發送的訊息。你的1對1訊息將不會被分享。分享分析是加入課程的必要條件。",
-    "shareAndJoin": "分享並加入",
-    "goBack": "返回",
     "emptyGroupsSearch": "搵唔到群組。請確保你嘅搜尋拼寫正確。",
     "emptyActivitiesSearch": "搵唔到活動。請確保你嘅搜尋拼寫正確。",
     "chatListFiltersLabel": "聊天篩選器",
@@ -11003,5 +10999,9 @@
     "centralCourseMembersSeeYou": "呢個課程嘅成員可以睇到你嘅姓名同個人檔案。",
     "practiceStartWordCount": "{count, plural, =1{個練習詞彙} other{個練習詞彙}}",
     "practiceStartGrammarCount": "{count, plural, =1{個練習文法點} other{個練習文法點}}",
-    "practiceStartExerciseTypes": "練習類型"
+    "practiceStartExerciseTypes": "練習類型",
+    "analyticsSharedOnJoin": "你喺 {course} 嘅老師而家可以睇到你嘅學習進度。",
+    "sharedAnalyticsTitle": "已分享嘅學習進度",
+    "sharedAnalyticsDesc": "呢啲課程嘅老師可以睇到你嘅學習進度。離開課程就可以停止分享。",
+    "sharedAnalyticsNone": "你冇同任何課程分享你嘅學習進度。"
 }

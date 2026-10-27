@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-23 13:25:42.716828",
+    "@@last_modified": "2026-10-27 12:27:58.036063",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Noforonin'i",
     "coursePreview": "Topi-maso amin'ny taranja",
     "numActivities": "{count, plural, =1{Hetsika 1} other{Hetsika {count}}}",
-    "teacherAnalyticsRequestTitle": "Mangataka ny fandrosoanao amin'ny fianarana ny mpampianatra anao",
-    "teacherAnalyticsRequestDesc": "Ho hitan'izy ireo avokoa ny teny sy fitsipika rehetra nampiasainao tamin'ny teny {targetLang}, ny haavonao sy ny XP-nao, ary ny hafatra nalefa tamin'ny hetsika fianarana. Tsy hozaraina ny hafatrao manokana. Ilaina ny fizarana ny angon-drakitra momba ny fandrosoanao mba hidirana amin'ny fianarana.",
-    "shareAndJoin": "Zarao ary midira",
-    "goBack": "Miverina",
     "emptyGroupsSearch": "Tsy misy vondrona hita. Ataovy izay hahazoana antoka fa voasoratra tsara ny fikarohanao.",
     "emptyActivitiesSearch": "Tsy misy hetsika hita. Ataovy izay hahazoana antoka fa voasoratra tsara ny fikarohanao.",
     "chatListFiltersLabel": "Sivana resaka",
@@ -2511,5 +2507,9 @@
     "centralCourseMembersSeeYou": "Afaka mahita ny anaranao sy ny mombamomba anao ireo mpikambana ao amin'ity taranja ity.",
     "practiceStartWordCount": "{count, plural, =1{teny hianarana} other{teny hianarana}}",
     "practiceStartGrammarCount": "{count, plural, =1{fitsipika ara-pitsipiteny hianarana} other{fitsipika ara-pitsipiteny hianarana}}",
-    "practiceStartExerciseTypes": "Karazana fanazaran-tena"
+    "practiceStartExerciseTypes": "Karazana fanazaran-tena",
+    "analyticsSharedOnJoin": "Afaka mahita ny fivoaran'ny fianaranao izao ny mpampianatra anao ao amin'ny {course}.",
+    "sharedAnalyticsTitle": "Fizarana ny fivoaran'ny fianarana",
+    "sharedAnalyticsDesc": "Afaka mahita ny fivoaran'ny fianaranao ny mpampianatra amin'ireo taranja ireo. Mialà amin'ny taranja iray mba hampitsaharana ny fizarana.",
+    "sharedAnalyticsNone": "Tsy mizara ny fivoaran'ny fianaranao amin'ny taranja rehetra ianao."
 }

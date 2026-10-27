@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-23 13:25:38.430342",
+    "@@last_modified": "2026-10-27 12:27:52.334468",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Crëwyd gan",
     "coursePreview": "Rhagolwg cwrs",
     "numActivities": "{count, plural, =1{1 gweithgaredd} other{{count} gweithgaredd}}",
-    "teacherAnalyticsRequestTitle": "Mae athro yn gofyn am eich cynnydd dysgu",
-    "teacherAnalyticsRequestDesc": "Byddant yn gweld yr holl eiriau a gramadeg rydych chi wedi'u defnyddio yn {targetLang}, eich lefel ac XP, a'r negeseuon a anfonwyd mewn gweithgareddau cwrs. Ni fydd eich negeseuon 1-ar-1 yn cael eu rhannu. Mae rhannu dadansoddiadau yn ofynnol i ymuno â'r cwrs.",
-    "shareAndJoin": "Rhannu ac ymuno",
-    "goBack": "Mynd yn ôl",
     "emptyGroupsSearch": "Ni ddarganfuwyd unrhyw grwpiau. Gwnewch yn siŵr bod eich chwiliad wedi'i sillafu'n gywir.",
     "emptyActivitiesSearch": "Ni ddarganfuwyd unrhyw weithgareddau. Gwnewch yn siŵr bod eich chwiliad wedi'i sillafu'n gywir.",
     "chatListFiltersLabel": "Hidlwyr sgwrsio",
@@ -2511,5 +2507,9 @@
     "centralCourseMembersSeeYou": "Gall aelodau'r cwrs hwn weld eich enw a'ch proffil.",
     "practiceStartWordCount": "{count, plural, =1{gair i ymarfer} other{eiriau i ymarfer}}",
     "practiceStartGrammarCount": "{count, plural, =1{pwynt gramadeg i ymarfer} other{bwyntiau gramadeg i ymarfer}}",
-    "practiceStartExerciseTypes": "Mathau o ymarferion"
+    "practiceStartExerciseTypes": "Mathau o ymarferion",
+    "analyticsSharedOnJoin": "Gall eich athrawon yn {course} weld eich cynnydd dysgu nawr.",
+    "sharedAnalyticsTitle": "Cynnydd dysgu a rennir",
+    "sharedAnalyticsDesc": "Gall athrawon yn y cyrsiau hyn weld eich cynnydd dysgu. Gadewch gwrs i roi'r gorau i rannu.",
+    "sharedAnalyticsNone": "Nid ydych chi'n rhannu eich cynnydd dysgu gydag unrhyw gwrs."
 }
