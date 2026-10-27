@@ -2508,5 +2508,8 @@
     "openCourse": "Opén kõs",
     "centralCourseJoinedTitle": "Yu dɔn jɔyn {course}",
     "centralCourseJoinedBody": "Na Pangea in kõs fɔ {language} lɔna dɛn. In mɛmba dɛn go ebul si yu nem ɛn yu profil.",
-    "centralCourseMembersSeeYou": "Mɛmba dɛn fɔ dis kõs go ebul si yu nem ɛn yu profil."
+    "centralCourseMembersSeeYou": "Mɛmba dɛn fɔ dis kõs go ebul si yu nem ɛn yu profil.",
+    "practiceStartWordCount": "{count, plural, =1{wɔd fɔ praktis} other{wɔd dɛn fɔ praktis}}",
+    "practiceStartGrammarCount": "{count, plural, =1{grama pɔynt fɔ praktis} other{grama pɔynt dɛn fɔ praktis}}",
+    "practiceStartExerciseTypes": "Kayn dɛn fɔ ɛksasayz"
 }

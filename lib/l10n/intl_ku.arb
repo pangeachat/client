@@ -2508,5 +2508,8 @@
     "openCourse": "کردنەوەی خول",
     "centralCourseJoinedTitle": "تۆ بەشداریی {course}ت کرد",
     "centralCourseJoinedBody": "ئەمە خولی پانگایە بۆ فێرخوازانی {language}. ئەندامەکانی دەتوانن ناوی تۆ و پڕۆفایلەکەت ببینن.",
-    "centralCourseMembersSeeYou": "ئەندامانی ئەم خولە دەتوانن ناوی تۆ و پڕۆفایلەکەت ببینن."
+    "centralCourseMembersSeeYou": "ئەندامانی ئەم خولە دەتوانن ناوی تۆ و پڕۆفایلەکەت ببینن.",
+    "practiceStartWordCount": "{count, plural, =1{وشە بۆ ڕاهێنان} other{وشە بۆ ڕاهێنان}}",
+    "practiceStartGrammarCount": "{count, plural, =1{خاڵی ڕێزمان بۆ ڕاهێنان} other{خاڵەکانی ڕێزمان بۆ ڕاهێنان}}",
+    "practiceStartExerciseTypes": "جۆرەکانی ڕاهێنان"
 }

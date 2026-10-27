@@ -2508,5 +2508,8 @@
     "openCourse": "Ablihi ang kurso",
     "centralCourseJoinedTitle": "Naapil ka sa {course}",
     "centralCourseJoinedBody": "Kini ang kurso sa Pangea para sa mga nagkat-on og {language}. Makita sa mga miyembro niini ang imong ngalan ug profile.",
-    "centralCourseMembersSeeYou": "Makita sa mga miyembro niining kursuha ang imong ngalan ug profile."
+    "centralCourseMembersSeeYou": "Makita sa mga miyembro niining kursuha ang imong ngalan ug profile.",
+    "practiceStartWordCount": "{count, plural, =1{pulong nga praktison} other{mga pulong nga praktison}}",
+    "practiceStartGrammarCount": "{count, plural, =1{grammar point nga praktison} other{mga grammar point nga praktison}}",
+    "practiceStartExerciseTypes": "Mga tipo sa ehersisyo"
 }

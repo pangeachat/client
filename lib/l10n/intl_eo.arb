@@ -10988,5 +10988,8 @@
     "openCourse": "Malfermi kurson",
     "centralCourseJoinedTitle": "Vi aliĝis al {course}",
     "centralCourseJoinedBody": "Ĝi estas la kurso de Pangea por lernantoj de la {language} lingvo. Ĝiaj membroj povas vidi vian nomon kaj profilon.",
-    "centralCourseMembersSeeYou": "Membroj de ĉi tiu kurso povas vidi vian nomon kaj profilon."
+    "centralCourseMembersSeeYou": "Membroj de ĉi tiu kurso povas vidi vian nomon kaj profilon.",
+    "practiceStartWordCount": "{count, plural, =1{vorto por ekzerci} other{vortoj por ekzerci}}",
+    "practiceStartGrammarCount": "{count, plural, =1{gramatikpunkto por ekzerci} other{gramatikpunktoj por ekzerci}}",
+    "practiceStartExerciseTypes": "Ekzercotipoj"
 }

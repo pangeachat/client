@@ -10149,5 +10149,8 @@
     "openCourse": "Kurzus megnyitása",
     "centralCourseJoinedTitle": "Csatlakoztál ehhez a kurzushoz: {course}",
     "centralCourseJoinedBody": "Ez a Pangea kurzusa {language} nyelvtanulók számára. A tagok láthatják a nevedet és a profilodat.",
-    "centralCourseMembersSeeYou": "A kurzus tagjai láthatják a nevedet és a profilodat."
+    "centralCourseMembersSeeYou": "A kurzus tagjai láthatják a nevedet és a profilodat.",
+    "practiceStartWordCount": "{count, plural, =1{gyakorlandó szó} other{gyakorlandó szó}}",
+    "practiceStartGrammarCount": "{count, plural, =1{gyakorlandó nyelvtani pont} other{gyakorlandó nyelvtani pont}}",
+    "practiceStartExerciseTypes": "Gyakorlattípusok"
 }

@@ -10046,5 +10046,8 @@
     "openCourse": "打开课程",
     "centralCourseJoinedTitle": "您已加入{course}",
     "centralCourseJoinedBody": "这是 Pangea 为{language}学习者开设的课程。课程成员可以看到您的姓名和个人资料。",
-    "centralCourseMembersSeeYou": "本课程的成员可以看到您的姓名和个人资料。"
+    "centralCourseMembersSeeYou": "本课程的成员可以看到您的姓名和个人资料。",
+    "practiceStartWordCount": "{count, plural, =1{要练习的单词} other{要练习的单词}}",
+    "practiceStartGrammarCount": "{count, plural, =1{要练习的语法点} other{要练习的语法点}}",
+    "practiceStartExerciseTypes": "练习类型"
 }

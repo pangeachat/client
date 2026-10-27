@@ -2508,5 +2508,8 @@
     "openCourse": "Buɗe darasi",
     "centralCourseJoinedTitle": "Ka shiga {course}",
     "centralCourseJoinedBody": "Darasi ne na Pangea ga masu koyon harshen {language}. Membobinta za su iya ganin sunanka da bayanan martabarka.",
-    "centralCourseMembersSeeYou": "Membobin wannan darasi za su iya ganin sunanka da bayanan martabarka."
+    "centralCourseMembersSeeYou": "Membobin wannan darasi za su iya ganin sunanka da bayanan martabarka.",
+    "practiceStartWordCount": "{count, plural, =1{kalma don yin aiki} other{kalmomi don yin aiki}}",
+    "practiceStartGrammarCount": "{count, plural, =1{matsayin nahawu don yin aiki} other{matsayin nahawu don yin aiki}}",
+    "practiceStartExerciseTypes": "Nau'ikan motsa jiki"
 }

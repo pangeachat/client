@@ -286,5 +286,6 @@ class PangeaController {
     'notifications_request_storage',
     'subscription_app_ids_storage',
     'all_products_storage',
+    'practice_skills_storage',
   ];
 }

@@ -2508,5 +2508,8 @@
     "openCourse": "Opna námskeið",
     "centralCourseJoinedTitle": "Þú hefur gengið í {course}",
     "centralCourseJoinedBody": "Þetta er námskeið Pangea fyrir {language} nemendur. Meðlimir þess geta séð nafn þitt og prófíl.",
-    "centralCourseMembersSeeYou": "Meðlimir þessa námskeiðs geta séð nafn þitt og prófíl."
+    "centralCourseMembersSeeYou": "Meðlimir þessa námskeiðs geta séð nafn þitt og prófíl.",
+    "practiceStartWordCount": "{count, plural, =1{orð til að æfa} other{orð til að æfa}}",
+    "practiceStartGrammarCount": "{count, plural, =1{málfræðiatriði til að æfa} other{málfræðiatriði til að æfa}}",
+    "practiceStartExerciseTypes": "Tegundir æfinga"
 }

@@ -2508,5 +2508,8 @@
     "openCourse": "Whakatuwheratia te akoranga",
     "centralCourseJoinedTitle": "Kua uru koe ki {course}",
     "centralCourseJoinedBody": "Koia te akoranga a Pangea mō ngā ākonga {language}. Ka kite ngā mema i tō ingoa me tō kōtaha.",
-    "centralCourseMembersSeeYou": "Ka kite ngā mema o tēnei akoranga i tō ingoa me tō kōtaha."
+    "centralCourseMembersSeeYou": "Ka kite ngā mema o tēnei akoranga i tō ingoa me tō kōtaha.",
+    "practiceStartWordCount": "{count, plural, =1{kupu hei whakaharatau} other{kupu hei whakaharatau}}",
+    "practiceStartGrammarCount": "{count, plural, =1{kaupapa wetereo hei whakaharatau} other{kaupapa wetereo hei whakaharatau}}",
+    "practiceStartExerciseTypes": "Ngā momo mahi"
 }

@@ -233,8 +233,12 @@ class ConstructIdentifier {
       _cachedLemmaInfos.firstOrNull?.meaning ?? _userLemmaInfo.meaning;
 
   /// The emoji shown beside [savedMeaning].
-  String? get savedEmoji =>
-      _cachedLemmaInfos.firstOrNull?.emoji.firstOrNull ?? userSetEmoji;
+  String? get savedEmoji => dictionaryEmoji ?? userSetEmoji;
+
+  /// The first emoji in this word's dictionary entry cached on this device,
+  /// read without fetching; [getLemmaInfo] fetches and caches the entry.
+  String? get dictionaryEmoji =>
+      _cachedLemmaInfos.firstOrNull?.emoji.firstOrNull;
 
   /// The dictionary entries cached on this device for this word, read without
   /// fetching. The key practice fetches by comes first, then the word card's.

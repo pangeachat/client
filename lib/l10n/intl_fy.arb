@@ -2508,5 +2508,8 @@
     "openCourse": "Kursus iepenje",
     "centralCourseJoinedTitle": "Jo hawwe meidien oan {course}",
     "centralCourseJoinedBody": "It is de kursus fan Pangea foar {language}-learders. De leden kinne jo namme en profyl sjen.",
-    "centralCourseMembersSeeYou": "Leden fan dizze kursus kinne jo namme en profyl sjen."
+    "centralCourseMembersSeeYou": "Leden fan dizze kursus kinne jo namme en profyl sjen.",
+    "practiceStartWordCount": "{count, plural, =1{wurd om te oefenjen} other{wurden om te oefenjen}}",
+    "practiceStartGrammarCount": "{count, plural, =1{grammatikapunt om te oefenjen} other{grammatikapunten om te oefenjen}}",
+    "practiceStartExerciseTypes": "Soarten oefeningen"
 }

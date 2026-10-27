@@ -2508,5 +2508,8 @@
     "openCourse": "Buka kursus",
     "centralCourseJoinedTitle": "Anjeun geus gabung {course}",
     "centralCourseJoinedBody": "Ieu kursus Pangea pikeun nu diajar basa {language}. Anggotana bisa ningali ngaran jeung profil anjeun.",
-    "centralCourseMembersSeeYou": "Anggota kursus ieu bisa ningali ngaran jeung profil anjeun."
+    "centralCourseMembersSeeYou": "Anggota kursus ieu bisa ningali ngaran jeung profil anjeun.",
+    "practiceStartWordCount": "{count, plural, =1{kecap pikeun latihan} other{kecap pikeun latihan}}",
+    "practiceStartGrammarCount": "{count, plural, =1{titik tata basa pikeun latihan} other{titik tata basa pikeun latihan}}",
+    "practiceStartExerciseTypes": "Jinis latihan"
 }

@@ -10043,5 +10043,8 @@
     "openCourse": "Ava kursus",
     "centralCourseJoinedTitle": "Oled liitunud kursusega {course}",
     "centralCourseJoinedBody": "See on Pangea kursus {language} õppijatele. Selle liikmed näevad sinu nime ja profiili.",
-    "centralCourseMembersSeeYou": "Selle kursuse liikmed näevad sinu nime ja profiili."
+    "centralCourseMembersSeeYou": "Selle kursuse liikmed näevad sinu nime ja profiili.",
+    "practiceStartWordCount": "{count, plural, =1{sõna harjutamiseks} other{sõna harjutamiseks}}",
+    "practiceStartGrammarCount": "{count, plural, =1{grammatikapunkt harjutamiseks} other{grammatikapunkti harjutamiseks}}",
+    "practiceStartExerciseTypes": "Harjutuste tüübid"
 }

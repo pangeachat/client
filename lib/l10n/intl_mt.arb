@@ -2508,5 +2508,8 @@
     "openCourse": "Iftaħ il-kors",
     "centralCourseJoinedTitle": "Ingħaqadt ma' {course}",
     "centralCourseJoinedBody": "Huwa l-kors ta' Pangea għal dawk li qed jitgħallmu l-{language}. Il-membri tiegħu jistgħu jaraw ismek u l-profil tiegħek.",
-    "centralCourseMembersSeeYou": "Il-membri ta' dan il-kors jistgħu jaraw ismek u l-profil tiegħek."
+    "centralCourseMembersSeeYou": "Il-membri ta' dan il-kors jistgħu jaraw ismek u l-profil tiegħek.",
+    "practiceStartWordCount": "{count, plural, =1{kelma biex tipprattika} other{kliem biex tipprattika}}",
+    "practiceStartGrammarCount": "{count, plural, =1{punt grammatikali biex tipprattika} other{punti grammatikali biex tipprattika}}",
+    "practiceStartExerciseTypes": "Tipi ta' eżerċizzji"
 }
