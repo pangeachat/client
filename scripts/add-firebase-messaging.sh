@@ -4,7 +4,7 @@ set -euo pipefail
 # CI installs the pinned Flutter via subosito/flutter-action (integrate.yaml checks it
 # against .fvmrc) and has no fvm. Locally, bare `flutter` is whatever is on PATH, so
 # require fvm there.
-if [ -n "${CI:-}" ]; then
+if [ "${CI:-}" = "true" ]; then
   flutter_cmd=(flutter)
 else
   source "$(dirname "$0")/lib/fvm.sh"
