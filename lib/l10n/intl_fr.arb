@@ -10405,5 +10405,12 @@
     "centralCourseOfferBody": "C'est le cours Pangea pour les apprenants de {language}. Ses membres peuvent voir votre nom et votre profil.",
     "centralCourseOfferTitle": "Rejoindre {course} ?",
     "makeMyOwnCourseInstead": "Créer mon propre cours à la place",
-    "suggestMobileSignInSameAccount": "Connectez-vous ensuite à l'application avec ce compte."
+    "suggestMobileSignInSameAccount": "Connectez-vous ensuite à l'application avec ce compte.",
+    "botJoinsIn": "Le bot Pangea se joint dans {duration}",
+    "botIsJoining": "Le bot Pangea se joint…",
+    "playWithBotNowTitle": "Jouer avec le bot Pangea maintenant ?",
+    "playWithBotNowMessage": "Personne n'a encore rejoint. Le bot Pangea peut prendre la place libre maintenant, ou vous pouvez continuer à attendre.",
+    "keepWaiting": "Continuer à attendre",
+    "botTookSeatAfterAnHour": "Cette session est restée ouverte pendant une heure, alors le bot Pangea a pris la place libre.",
+    "botTookSeatAfterADay": "Cette session est restée ouverte pendant plus d'une journée, alors le bot Pangea a pris la place libre. Envoyez un message pour commencer."
 }

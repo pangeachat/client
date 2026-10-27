@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "Iki kursus Pangea kanggo para siswa {language}. Anggotane bisa ndeleng jeneng lan profil sampeyan.",
     "centralCourseOfferTitle": "Gabung {course}?",
     "makeMyOwnCourseInstead": "Gawe kursusku dhewe wae",
-    "suggestMobileSignInSameAccount": "Banjur mlebu menyang aplikasi nganggo akun iki."
+    "suggestMobileSignInSameAccount": "Banjur mlebu menyang aplikasi nganggo akun iki.",
+    "botJoinsIn": "Pangea Bot gabung ing {duration}",
+    "botIsJoining": "Pangea Bot lagi gabung…",
+    "playWithBotNowTitle": "Dolanan karo Pangea Bot saiki?",
+    "playWithBotNowMessage": "Durung ana sing gabung. Pangea Bot bisa njupuk kursi sing kosong saiki, utawa sampeyan bisa terus ngenteni.",
+    "keepWaiting": "Terus ngenteni",
+    "botTookSeatAfterAnHour": "Sesi iki wis mbukak sakjam, dadi Pangea Bot njupuk kursi sing kosong.",
+    "botTookSeatAfterADay": "Sesi iki wis mbukak luwih saka sedina, dadi Pangea Bot njupuk kursi sing kosong. Kirim pesen kanggo miwiti."
 }

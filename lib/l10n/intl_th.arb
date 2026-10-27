@@ -10682,5 +10682,12 @@
     "centralCourseOfferBody": "นี่คือคอร์สของ Pangea สำหรับผู้เรียนภาษา {language} สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
     "centralCourseOfferTitle": "เข้าร่วม {course} ไหม",
     "makeMyOwnCourseInstead": "สร้างคอร์สของฉันเองดีกว่า",
-    "suggestMobileSignInSameAccount": "จากนั้นลงชื่อเข้าใช้แอปด้วยบัญชีนี้"
+    "suggestMobileSignInSameAccount": "จากนั้นลงชื่อเข้าใช้แอปด้วยบัญชีนี้",
+    "botJoinsIn": "Pangea Bot จะเข้าร่วมใน {duration}",
+    "botIsJoining": "Pangea Bot กำลังเข้าร่วม…",
+    "playWithBotNowTitle": "เล่นกับ Pangea Bot ตอนนี้เลยไหม?",
+    "playWithBotNowMessage": "ยังไม่มีใครเข้าร่วม Pangea Bot สามารถเข้าร่วมตอนนี้ได้เลย หรือคุณจะรอต่อไปก็ได้",
+    "keepWaiting": "รอต่อไป",
+    "botTookSeatAfterAnHour": "เซสชันนี้เปิดมาหนึ่งชั่วโมงแล้ว Pangea Bot จึงเข้าร่วม",
+    "botTookSeatAfterADay": "เซสชันนี้เปิดมานานกว่าหนึ่งวันแล้ว Pangea Bot จึงเข้าร่วม ส่งข้อความเพื่อเริ่มต้น"
 }

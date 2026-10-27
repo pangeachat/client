@@ -10995,5 +10995,12 @@
     "centralCourseOfferBody": "Je to kurz Pangea pre študentov jazyka {language}. Jeho členovia môžu vidieť vaše meno a profil.",
     "centralCourseOfferTitle": "Pridať sa do kurzu {course}?",
     "makeMyOwnCourseInstead": "Namiesto toho si vytvoriť vlastný kurz",
-    "suggestMobileSignInSameAccount": "Potom sa prihláste do aplikácie pomocou tohto účtu."
+    "suggestMobileSignInSameAccount": "Potom sa prihláste do aplikácie pomocou tohto účtu.",
+    "botJoinsIn": "Pangea Bot sa pripojí o {duration}",
+    "botIsJoining": "Pangea Bot sa pripája…",
+    "playWithBotNowTitle": "Hrať s Pangea Botom teraz?",
+    "playWithBotNowMessage": "Zatiaľ sa nikto nepripojil. Pangea Bot si môže teraz sadnúť na voľné miesto, alebo môžete naďalej čakať.",
+    "keepWaiting": "Pokračovať v čakaní",
+    "botTookSeatAfterAnHour": "Táto relácia bola otvorená hodinu, takže Pangea Bot si sadol na voľné miesto.",
+    "botTookSeatAfterADay": "Táto relácia bola otvorená viac ako deň, takže Pangea Bot si sadol na voľné miesto. Pošlite správu pre začatie."
 }

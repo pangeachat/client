@@ -10682,5 +10682,12 @@
     "centralCourseOfferBody": "यह {language} सीखने वालों के लिए पैंगिया का कोर्स है। इसके सदस्य आपका नाम और प्रोफ़ाइल देख सकते हैं।",
     "centralCourseOfferTitle": "{course} में शामिल हों?",
     "makeMyOwnCourseInstead": "इसके बजाय अपना कोर्स बनाएं",
-    "suggestMobileSignInSameAccount": "फिर इसी अकाउंट से ऐप में साइन इन करें।"
+    "suggestMobileSignInSameAccount": "फिर इसी अकाउंट से ऐप में साइन इन करें।",
+    "botJoinsIn": "पंगिया बॉट {duration} में शामिल होता है",
+    "botIsJoining": "पंगिया बॉट शामिल हो रहा है…",
+    "playWithBotNowTitle": "अभी पंगिया बॉट के साथ खेलें?",
+    "playWithBotNowMessage": "अभी तक कोई शामिल नहीं हुआ है। पंगिया बॉट अब खाली सीट ले सकता है, या आप इंतज़ार कर सकते हैं।",
+    "keepWaiting": "इंतज़ार करते रहें",
+    "botTookSeatAfterAnHour": "यह सत्र एक घंटे के लिए खुला था, इसलिए पंगिया बॉट ने खाली सीट ले ली।",
+    "botTookSeatAfterADay": "यह सत्र एक दिन से अधिक समय से खुला था, इसलिए पंगिया बॉट ने खाली सीट ले ली। शुरू करने के लिए एक संदेश भेजें।"
 }

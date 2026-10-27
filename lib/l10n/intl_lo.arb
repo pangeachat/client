@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "ມັນແມ່ນຫຼັກສູດຂອງ Pangea ສຳລັບຜູ້ຮຽນພາສາ {language}. ສະມາຊິກສາມາດເຫັນຊື່ ແລະ ໂປຣໄຟລ໌ຂອງທ່ານໄດ້.",
     "centralCourseOfferTitle": "ເຂົ້າຮ່ວມ {course}?",
     "makeMyOwnCourseInstead": "ສ້າງຫຼັກສູດຂອງຂ້ອຍເອງແທນ",
-    "suggestMobileSignInSameAccount": "ຈາກນັ້ນເຂົ້າສູ່ລະບົບແອັບດ້ວຍບັນຊີນີ້."
+    "suggestMobileSignInSameAccount": "ຈາກນັ້ນເຂົ້າສູ່ລະບົບແອັບດ້ວຍບັນຊີນີ້.",
+    "botJoinsIn": "Pangea Bot ເຂົ້າຮ່ວມໃນ {duration}",
+    "botIsJoining": "Pangea Bot ກໍາລັງເຂົ້າຮ່ວມ…",
+    "playWithBotNowTitle": "ຫຼິ້ນກັບ Pangea Bot ດຽວນີ້ບໍ?",
+    "playWithBotNowMessage": "ຍັງບໍ່ມີໃຜເຂົ້າຮ່ວມເທື່ອ. Pangea Bot ສາມາດເຂົ້າຮ່ວມໄດ້ດຽວນີ້, ຫຼືທ່ານສາມາດລໍຖ້າຕໍ່ໄປ.",
+    "keepWaiting": "ລໍຖ້າຕໍ່ໄປ",
+    "botTookSeatAfterAnHour": "ເຊສຊັນນີ້ເປີດມາໄດ້ໜຶ່ງຊົ່ວໂມງແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ.",
+    "botTookSeatAfterADay": "ເຊສຊັນນີ້ເປີດມາໄດ້ຫຼາຍກວ່າໜຶ່ງມື້ແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ. ສົ່ງຂໍ້ຄວາມເພື່ອເລີ່ມຕົ້ນ."
 }

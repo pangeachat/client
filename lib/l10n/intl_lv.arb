@@ -10053,5 +10053,12 @@
     "centralCourseOfferBody": "Tas ir Pangea kurss valodu apguvējiem {language}. Tā dalībnieki var redzēt jūsu vārdu un profilu.",
     "centralCourseOfferTitle": "Pievienoties kursam {course}?",
     "makeMyOwnCourseInstead": "Tā vietā izveidot savu kursu",
-    "suggestMobileSignInSameAccount": "Pēc tam pierakstieties lietotnē ar šo kontu."
+    "suggestMobileSignInSameAccount": "Pēc tam pierakstieties lietotnē ar šo kontu.",
+    "botJoinsIn": "Pangea Bots pievienosies pēc {duration}",
+    "botIsJoining": "Pangea Bots pievienojas…",
+    "playWithBotNowTitle": "Spēlēt ar Pangea Botu tagad?",
+    "playWithBotNowMessage": "Neviens vēl nav pievienojies. Pangea Bots var ieņemt brīvo vietu tagad, vai arī jūs varat turpināt gaidīt.",
+    "keepWaiting": "Turpināt gaidīt",
+    "botTookSeatAfterAnHour": "Šī sesija bija atvērta stundu, tāpēc Pangea Bots ieņēma brīvo vietu.",
+    "botTookSeatAfterADay": "Šī sesija bija atvērta vairāk nekā dienu, tāpēc Pangea Bots ieņēma brīvo vietu. Nosūtiet ziņu, lai sāktu."
 }

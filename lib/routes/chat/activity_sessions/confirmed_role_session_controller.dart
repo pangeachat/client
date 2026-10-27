@@ -10,6 +10,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/notifications/open_session_notice.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -21,6 +22,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.d
 import 'package:fluffychat/routes/chat/activity_sessions/session_presence_tracker.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -70,6 +72,10 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
       (_) => clock.value = DateTime.now(),
     );
     _loadCoursemates();
+    OpenSessionNotice.offerBotIn.addListener(_offerBotIfOpenedFromNotice);
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _offerBotIfOpenedFromNotice(),
+    );
   }
 
   @override
@@ -80,6 +86,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
 
   @override
   void dispose() {
+    OpenSessionNotice.offerBotIn.removeListener(_offerBotIfOpenedFromNotice);
     _pingCooldown?.cancel();
     _clockTimer?.cancel();
     clock.dispose();
@@ -95,6 +102,10 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
     final create = widget.room.getState(EventTypes.RoomCreate);
     return create is Event ? create.originServerTs : null;
   }
+
+  /// When Pangea Bot takes the open seat on its own, which the waiting timer
+  /// then counts down to; null when it won't.
+  DateTime? get botJoinsAt => widget.room.botFillsOpenSeatAt;
 
   /// Coursemates online right now — the avatar presence dot's rule.
   int get onlineCoursemateCount =>
@@ -279,6 +290,25 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
         ),
       );
     }
+  }
+
+  /// Opened from the open-session notice: offer the bot once, while it can
+  /// still be added.
+  Future<void> _offerBotIfOpenedFromNotice() async {
+    if (!mounted || OpenSessionNotice.offerBotIn.value != widget.room.id) {
+      return;
+    }
+    OpenSessionNotice.offerBotIn.value = null;
+    if (sessionStarted || !enablePlayWithBot) return;
+    final l10n = L10n.of(context);
+    final result = await showOkCancelAlertDialog(
+      context: context,
+      title: l10n.playWithBotNowTitle,
+      message: l10n.playWithBotNowMessage,
+      okLabel: l10n.playWithBot,
+      cancelLabel: l10n.keepWaiting,
+    );
+    if (result == OkCancelResult.ok && mounted) await playWithBot();
   }
 
   Future<void> playWithBot() async {

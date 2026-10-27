@@ -10910,5 +10910,12 @@
     "centralCourseOfferBody": "Ito ang kurso ng Pangea para sa mga nag-aaral ng {language}. Makikita ng mga miyembro nito ang iyong pangalan at profile.",
     "centralCourseOfferTitle": "Sumali sa {course}?",
     "makeMyOwnCourseInstead": "Gumawa na lang ng sarili kong kurso",
-    "suggestMobileSignInSameAccount": "Pagkatapos, mag-sign in sa app gamit ang account na ito."
+    "suggestMobileSignInSameAccount": "Pagkatapos, mag-sign in sa app gamit ang account na ito.",
+    "botJoinsIn": "Sasali si Pangea Bot sa loob ng {duration}",
+    "botIsJoining": "Sumasali si Pangea Bot…",
+    "playWithBotNowTitle": "Makipaglaro kay Pangea Bot ngayon?",
+    "playWithBotNowMessage": "Wala pang sumasali. Puwedeng umupo si Pangea Bot sa bakanteng upuan ngayon, o puwede kang maghintay pa.",
+    "keepWaiting": "Maghintay pa",
+    "botTookSeatAfterAnHour": "Isang oras nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan.",
+    "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula."
 }

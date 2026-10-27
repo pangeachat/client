@@ -5108,6 +5108,39 @@
             }
         }
     },
+    "botJoinsIn": "Pangea Bot joins in {duration}",
+    "@botJoinsIn": {
+        "description": "Waiting-room status line counting down to when Pangea Bot takes the session's last open seat on its own. duration is m:ss.",
+        "placeholders": {
+            "duration": {
+                "type": "String"
+            }
+        }
+    },
+    "botIsJoining": "Pangea Bot is joining…",
+    "@botIsJoining": {
+        "description": "Waiting-room status line once the countdown to Pangea Bot taking the open seat has reached zero, until it has joined."
+    },
+    "playWithBotNowTitle": "Play with Pangea Bot now?",
+    "@playWithBotNowTitle": {
+        "description": "Title of the dialog offered when a learner opens their waiting activity session from the notice saying the bot joins soon."
+    },
+    "playWithBotNowMessage": "Nobody has joined yet. Pangea Bot can take the open seat now, or you can keep waiting.",
+    "@playWithBotNowMessage": {
+        "description": "Body of the dialog offering to play an activity session with Pangea Bot instead of waiting for a person."
+    },
+    "keepWaiting": "Keep waiting",
+    "@keepWaiting": {
+        "description": "Dialog button that closes the offer to play with Pangea Bot and keeps waiting for a person to join."
+    },
+    "botTookSeatAfterAnHour": "This session was open for an hour, so Pangea Bot took the open seat.",
+    "@botTookSeatAfterAnHour": {
+        "description": "Note in an activity chat where Pangea Bot joined on its own because nobody took the last seat within an hour."
+    },
+    "botTookSeatAfterADay": "This session was open for over a day, so Pangea Bot took the open seat. Send a message to start.",
+    "@botTookSeatAfterADay": {
+        "description": "Note in an activity chat where Pangea Bot joined on its own, without a message, because the last seat was open for over a day."
+    },
     "onlineInCourse": "{count} online in {course}",
     "@onlineInCourse": {
         "placeholders": {

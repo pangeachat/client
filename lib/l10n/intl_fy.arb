@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "It is de kursus fan Pangea foar {language}-learders. De leden kinne jo namme en profyl sjen.",
     "centralCourseOfferTitle": "Meidwaan oan {course}?",
     "makeMyOwnCourseInstead": "Myn eigen kursus meitsje",
-    "suggestMobileSignInSameAccount": "Meld dy dan oan by de app mei dit akkount."
+    "suggestMobileSignInSameAccount": "Meld dy dan oan by de app mei dit akkount.",
+    "botJoinsIn": "Pangea Bot docht mei oer {duration}",
+    "botIsJoining": "Pangea Bot docht mei…",
+    "playWithBotNowTitle": "No mei Pangea Bot boartsje?",
+    "playWithBotNowMessage": "Der hat noch nimmen meidien. Pangea Bot kin no de iepen plak ynnimme, of jo kinne wachtsje bliuwe.",
+    "keepWaiting": "Wachtsje bliuwe",
+    "botTookSeatAfterAnHour": "Dizze sesje wie in oere iepen, dus Pangea Bot hat de iepen plak ynnommen.",
+    "botTookSeatAfterADay": "Dizze sesje wie mear as in dei iepen, dus Pangea Bot hat de iepen plak ynnommen. Stjoer in berjocht om te begjinnen."
 }
