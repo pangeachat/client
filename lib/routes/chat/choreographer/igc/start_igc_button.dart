@@ -211,6 +211,9 @@ class _StartIGCButtonState extends State<StartIGCButton>
     return [];
   }
 
+  /// Segments animate between states rather than jumping: in when matches
+  /// arrive, out when the message is cleared, and between brightnesses as a
+  /// match changes status. See writing-assistance.instructions.md.
   List<Segment> _getAnimatedSegments(double t) {
     final maxLength = max(_prevSegments.length, _currentSegments.length);
 

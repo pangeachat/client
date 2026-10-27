@@ -28,6 +28,11 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
 import 'choreographer_error_controller.dart';
 
+/// Writing assistance for one composer. Holds the text controller (which
+/// records how each edit was made), the match controller, the activity
+/// orchestrator's suggestions and the error backoff; the ring's state is
+/// derived from them in `ChoreographerStateExtension`. See
+/// writing-assistance.instructions.md.
 class Choreographer extends ChangeNotifier {
   final FocusNode inputFocus;
   final Room room;
@@ -189,6 +194,8 @@ class Choreographer extends ChangeNotifier {
       notifyListeners();
     }
 
+    // Editing an accepted suggestion's text withdraws it like any other edit,
+    // so the ring goes back to its check states.
     if (textController.editType != EditTypeEnum.suggestion &&
         orchestratorController.hasAcceptedSuggestion) {
       orchestratorController.resetSuggestionState();
@@ -294,6 +301,10 @@ class Choreographer extends ChangeNotifier {
     _stopLoading();
   }
 
+  /// What a sent message carries: its tokens, and the choreo record of which
+  /// matches were viewed, accepted or left open, beside whatever writing
+  /// assistance put in the composer. See writing-assistance.instructions.md
+  /// § Decisions.
   Future<PangeaMessageContentModel> getMessageContent(String message) async {
     TokensResponseModel? tokensResp;
     final l2LangCode =

@@ -10,6 +10,13 @@ import 'package:fluffychat/routes/chat/events/tokens/grapheme_offset_index.dart'
 /// choreo record it saves, in grapheme clusters. This model is where the two
 /// meet: [IGCResponseModel.fromJson] converts in, [toJson] converts back out
 /// for feedback reruns.
+///
+/// The server owns its unit (`compute_edit_spans.py` in
+/// 2-step-choreographer). The saved record keeps grapheme clusters because
+/// everything that reads it back already counts in them. The one other
+/// conversion is a tap on the input field, which reports UTF-16 units
+/// (`IgcController.getMatchAtFieldOffset`). See
+/// writing-assistance.instructions.md.
 class IGCResponseModel extends BaseResponse {
   final String originalInput;
   final String? fullTextCorrection;
@@ -82,7 +89,8 @@ class IGCResponseModel extends BaseResponse {
   /// (#9256). Keeps the span that starts first (the longer one on a tie) and
   /// reports the rest, so a server that breaks the contract degrades to fewer
   /// suggestions rather than a broken composer. The kept spans stay in the
-  /// server's order.
+  /// server's order. Non-overlapping spans are also what let any match be
+  /// undone on its own, not only the latest.
   static List<PangeaMatch> _withoutOverlaps(List<PangeaMatch> matches) {
     final byPosition = List.of(matches)
       ..sort((a, b) {

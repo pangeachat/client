@@ -9,7 +9,7 @@ import 'package:fluffychat/routes/chat/choreographer/igc/span_card.dart';
 /// with a place in the header itself; everything else lives behind the overflow
 /// menu. The category name is what the learner opened the card to read, so when
 /// it cannot sit beside both, Listen First folds into the menu too.
-/// See writing-assistance.instructions.md § Header actions and width.
+/// See writing-assistance.instructions.md § Decisions.
 void main() {
   late List<String> listenToggles;
   late int autoIGCToggles;
@@ -154,6 +154,21 @@ void main() {
       expect(find.text('Autocheck on send'), findsOneWidget);
       expect(find.text('Report content issue'), findsOneWidget);
       expect(find.text('Learning settings'), findsOneWidget);
+    });
+
+    testWidgets('lists folded Listen First, auto-run, report, then settings', (
+      tester,
+    ) async {
+      await pumpHeader(tester, title: longTitle, width: 400);
+      await openMenu(tester);
+
+      final tops = [
+        'Listen first',
+        'Autocheck on send',
+        'Report content issue',
+        'Learning settings',
+      ].map((label) => tester.getTopLeft(find.text(label)).dy).toList();
+      expect(tops, [...tops]..sort());
     });
 
     testWidgets('checks the modes that are on, and not the trips', (

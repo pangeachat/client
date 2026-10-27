@@ -32,7 +32,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// the spacing below the choices — and the next Listen First toggle rebuilt it
 /// away, changing the card's height.
 ///
-/// See writing-assistance.instructions.md § Hearing a choice.
+/// See writing-assistance.instructions.md § Decisions.
 void main() {
   late IgcController igc;
   late _FakeUserController user;

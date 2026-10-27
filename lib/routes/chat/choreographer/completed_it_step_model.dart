@@ -1,3 +1,7 @@
+/// One step of the retired interactive-translation flow. Nothing produces
+/// these any more: they are read from messages sent before the cutover, and
+/// stay until those events stop mattering. See
+/// writing-assistance.instructions.md § Decisions.
 class CompletedITStepModel {
   final List<ContinuanceModel> continuances;
   final int chosen;

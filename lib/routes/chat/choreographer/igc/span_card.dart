@@ -55,8 +55,9 @@ class SpanCardState extends State<SpanCard> {
   ///
   /// Seeded from the learner's stored preference and written back on every
   /// toggle, so it survives the card advancing and the app restarting — being
-  /// an ear-first learner is not a property of one correction. See
-  /// writing-assistance.instructions.md.
+  /// an ear-first learner is not a property of one correction. The toggle on
+  /// the card is what keeps a remembered mode from being an invisible one.
+  /// See writing-assistance.instructions.md § Decisions.
   late bool _listenFirst;
 
   /// Whether writing assistance runs itself on every sent message — the same
@@ -486,8 +487,12 @@ class _MatchContent extends StatelessWidget {
                         ),
                       ],
                     ),
-              // The explainer owns the gap above it, so dismissing it collapses
-              // the gap at once — the card only rebuilds when the write syncs.
+              // Shown once, until dismissed, rather than taking the card's
+              // height from every learner who already knows the one-tap,
+              // two-tap split (writing-assistance.instructions.md
+              // § Decisions). The explainer owns the gap above it, so
+              // dismissing it collapses the gap at once — the card only
+              // rebuilds when the write syncs.
               if (isOpen &&
                   listenFirst &&
                   !InstructionsEnum.listenFirst.isToggledOff)

@@ -5,6 +5,9 @@ enum PangeaMatchStatusEnum {
   viewed,
   undo;
 
+  /// Whether the match is still unresolved, so the card shows its choices
+  /// rather than the diff. An undone match is open again: undo restores the
+  /// choices. See writing-assistance.instructions.md.
   bool get isOpen => switch (this) {
     open => true,
     viewed => true,

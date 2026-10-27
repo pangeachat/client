@@ -33,7 +33,10 @@ enum ConstructUseTypeEnum {
   /// produced in a voice or video call
   pvc,
 
-  /// interactive translation activity
+  /// Translation uses: minted from writing-assistance translation matches,
+  /// and read from interactive-translation steps on older events. Live, not
+  /// dead interactive-translation code. See
+  /// writing-assistance.instructions.md § Decisions.
   corIt,
   ignIt,
   incIt,

@@ -3366,6 +3366,8 @@ class ChatController extends State<ChatPageWithRoom>
       }
     }
 
+    // A tap on the ring of an accepted suggestion does nothing; send still
+    // sends (writing-assistance.instructions.md).
     if (assistanceState == AssistanceStateEnum.suggestionComplete) {
       if (autosend) {
         await send();
@@ -3395,6 +3397,7 @@ class ChatController extends State<ChatPageWithRoom>
       showNextMatch();
     } else if (choreographer.assistanceState ==
         AssistanceStateEnum.suggesting) {
+      // The lightbulb opens the suggestion card, or closes it if it is open.
       _spanCardOverlayController.isOpen
           ? _spanCardOverlayController.close()
           : showSuggestion();

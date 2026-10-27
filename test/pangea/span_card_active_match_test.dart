@@ -33,7 +33,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// learner while the card went on showing the previous match, and its buttons
 /// went on editing that match's span.
 ///
-/// See writing-assistance.instructions.md § Interaction Model.
+/// See writing-assistance.instructions.md § The experience.
 void main() {
   late IgcController igc;
 

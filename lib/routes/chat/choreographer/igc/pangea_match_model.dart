@@ -71,6 +71,12 @@ class PangeaMatch {
   /// legacy signals alone: widening that predicate would also change the
   /// researcher export, the L1-translation source language and grammar-error
   /// practice selection, which is tracked in pangeachat/.github#479.
+  ///
+  /// Grammar correction and translation used to be separate flows behind
+  /// separate endpoints; one writing-assistance flow now returns both, so the
+  /// match's type is the only thing left that tells them apart, and anything
+  /// that needs the distinction reads it here. See
+  /// writing-assistance.instructions.md § Decisions.
   bool get isTranslationMatch =>
       _needsTranslation || match.type == ReplacementTypeEnum.translation;
 
