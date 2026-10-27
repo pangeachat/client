@@ -147,9 +147,9 @@ abstract class PinSize {
   /// box — and so its hit target and semantics rect — is padded out, centred
   /// on the same anchor, to Material's minimum interactive dimension (48
   /// logical px, above WCAG 2.5.5's 44) so a dot is tappable on a phone
-  /// without zooming in until it earns a mid pin (#7688). Overlapping dots overlap their targets too — a
-  /// tap between two dots lands on the one drawn on top, which the issue
-  /// accepted over dots that take several tries to hit.
+  /// without zooming in until it earns a mid pin (#7688). Overlapping dots
+  /// overlap their targets too — a tap between two dots lands on the one drawn
+  /// on top, which the issue accepted over dots that take several tries to hit.
   static const double dotTouchTarget = kMinInteractiveDimension;
 
   /// Mid pin (activity-type glyph) diameter — the circular "head" of the

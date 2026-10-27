@@ -387,8 +387,8 @@ class WorldMapController extends State<WorldMap>
       // resolved nothing), so banding + the gate recover within the session
       // instead of staying blank until a remount (which never happens for this
       // persistent map). The pinged scan runs here and on sync (below) — it
-      // surfaces recruit pings on the map and clears each course space's stuck
-      // ping badge once consumed (#7366).
+      // surfaces recruit pings on the map. It no longer clears the course
+      // space's ping badge (#7366); since #7842 opening the course page does.
       _rebuildObjectiveCache(client);
       _recomputePinged(client);
       _discoverCoursemateSessions(client);

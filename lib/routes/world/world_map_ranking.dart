@@ -579,11 +579,12 @@ class PlacementResult {
 
 /// Lay the score-ordered large candidates onto real screen positions, since a
 /// large card is a *box*, not a point (world-map.instructions.md, "Priority
-/// matrix"). Walks [orderedCandidates] top-down and admits one as large only if its
-/// card footprint fits the unclaimed [safeArea] (on-screen, not under a panel)
-/// and overlaps neither an [obstacleRects] chrome footprint inside it (the
-/// course context bar, #9291) nor a card already placed this pass. The [focusedId] (its
-/// detail panel is open) is placed **first** when it is itself a candidate, so
+/// matrix"). Walks [orderedCandidates] top-down and admits one as large only if
+/// its card footprint fits the unclaimed [safeArea] (on-screen, not under a
+/// panel) and overlaps neither an [obstacleRects] chrome footprint inside it
+/// (the course context bar, #9291) nor a card already placed this pass. The
+/// [focusedId] (its detail panel is open) is placed **first** when it is itself
+/// a candidate, so
 /// its footprint is claimed before the rest and the others yield around it —
 /// priority Focused → by score. Focus does not *force* a card: a focused pin that
 /// isn't a large candidate stays a dot (with its focus ring), its content shown
