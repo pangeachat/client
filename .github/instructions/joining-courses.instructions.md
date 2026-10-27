@@ -70,9 +70,10 @@ None of this repairs the quest: the space still points at an id the content serv
 Three UI entry points (onboarding, in-app code page, public room bottom sheet) all converge on `SpaceCodeController.joinSpaceWithCode()`:
 
 1. Save code as `recentCode` (used for invite dedup in Route 3)
-2. `POST /_synapse/client/pangea/v1/knock_with_code` — Pangea-custom Synapse endpoint that validates the access code and invites the user
-3. Response contains `{ roomIds, alreadyJoined, rateLimited }`
-4. `joinRoomById(spaceId)` → wait for sync → navigate to space
+2. `POST /_synapse/client/pangea/v1/preview_with_code` — read-only; when a course the code opens requires sharing analytics the student is asked first, and Go back stops here ([course-analytics-access](../../../.github/.github/instructions/course-analytics-access.instructions.md))
+3. `POST /_synapse/client/pangea/v1/knock_with_code` — Pangea-custom Synapse endpoint that validates the access code and invites the user
+4. Response contains `{ roomIds, alreadyJoined, rateLimited }`
+5. `joinRoomById(spaceId)` → wait for sync → navigate to space
 
 This is NOT a standard Matrix knock — the Synapse module handles the invite directly.
 
@@ -168,6 +169,8 @@ Every case where the user is joined to a room without confirming it. The client 
 | knock_with_code succeeded                                | Code entry flow                   |
 | User previously knocked on the room                      | Invite received for a prior knock |
 | No teacher's course, and the target language has a central course (not for an account that chose teacher, or one that left that course) | Onboarding's level step, or app open |
+
+An invite, an approved knock or a code join to a course that requires sharing analytics asks the student first; going back turns the invite down ([course-analytics-access](../../../.github/.github/instructions/course-analytics-access.instructions.md)).
 
 ---
 
