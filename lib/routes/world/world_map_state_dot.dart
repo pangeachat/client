@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pass_through_tooltip.dart';
@@ -14,6 +15,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/routes/world/world_map_star_dot.dart';
 import 'package:fluffychat/widgets/completed_stamp.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class WorldMapDot extends StatefulWidget {
   final QuestActivityCard card;
@@ -141,6 +143,8 @@ class _WorldMapDotState extends State<WorldMapDot>
             button: !widget.dying,
             label: widget.dying
                 ? ''
+                : widget.card.isDiscussion
+                ? L10n.of(context).discussionCardSemantics(widget.card.title)
                 : "${L10n.of(context).activityLabel(widget.card.title)}, ${widget.state.label(L10n.of(context))}",
             // excludeSemantics drops the DESCENDANT tree — including the
             // GestureDetector's implicit tap action — so this node must carry
@@ -178,7 +182,19 @@ class _WorldMapDotState extends State<WorldMapDot>
                           ? _MediumDotContent(
                               state: widget.state,
                               pinged: widget.pinged,
-                              unreadRoom: widget.unreadRoom,
+                              // A discussion's chat carries its own unread
+                              // bubble, and its glyph is the question bubble
+                              // (#9647).
+                              unreadRoom: widget.card.isDiscussion
+                                  ? Matrix.of(context).client
+                                        .discussionRoomsFor(
+                                          widget.card.activityId,
+                                        )
+                                        .firstOrNull
+                                  : widget.unreadRoom,
+                              glyphIcon: widget.card.isDiscussion
+                                  ? Icons.live_help_outlined
+                                  : null,
                               participantsFilled: widget.participantsFilled,
                               participantsTotal: widget.participantsTotal,
                               starLevel: widget.starLevel,
@@ -276,6 +292,9 @@ String? _participantLabel(ActivityPinState state, int? filled, int? total) {
 
 class _MediumDotContent extends StatelessWidget {
   final ActivityPinState state;
+
+  /// Draws in place of the state's glyph: a discussion's question bubble.
+  final IconData? glyphIcon;
   final bool pinged;
   final Room? unreadRoom;
   final int? participantsFilled;
@@ -285,6 +304,7 @@ class _MediumDotContent extends StatelessWidget {
 
   const _MediumDotContent({
     required this.state,
+    this.glyphIcon,
     required this.pinged,
     this.unreadRoom,
     this.participantsFilled,
@@ -313,7 +333,7 @@ class _MediumDotContent extends StatelessWidget {
     // together as a single glyph inside the circular head, rather than the
     // count sitting in its own reserved row below the pin — so the pin reads
     // as one compact marker (world-map Figma).
-    final glyph = switch (_mediumGlyph(state)) {
+    final glyph = switch (glyphIcon ?? _mediumGlyph(state)) {
       null => null,
       final icon => Column(
         mainAxisSize: MainAxisSize.min,

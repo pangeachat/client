@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_xp_label.dart';
 import 'package:fluffychat/widgets/goal_diamond.dart';
+import 'package:fluffychat/widgets/goal_question_mark.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class GoalStatusWidget extends StatelessWidget {
@@ -41,7 +42,10 @@ class GoalStatusWidget extends StatelessWidget {
 
     // A goal is a diamond, never a star: the star marks the Learning
     // Objective this goal pays into (quests.instructions.md).
-    Widget icon = GoalDiamond(earned: complete, size: 28.0);
+    // A discussion's question reads as a question mark (#9647).
+    Widget icon = GoalMarkScope.of(context) == GoalMarkStyle.question
+        ? GoalQuestionMark(earned: complete, size: 28.0)
+        : GoalDiamond(earned: complete, size: 28.0);
 
     // Every star sits in the same padded box so active and inactive stars line
     // up with each other; only the active one fills its box with a highlight.

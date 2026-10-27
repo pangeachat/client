@@ -6250,5 +6250,26 @@
     "centralCourseMembersSeeYou": "Members of this course can see your name and profile.",
     "@centralCourseMembersSeeYou": {
         "description": "Line on the onboarding page after a new learner was joined to the Pangea-run course for their target language."
+    },
+    "discussionLabel": "Discussion",
+    "@discussionLabel": {
+        "description": "Label on a discussion question's card and map pin: an open-ended question a course's learners talk about together in a group chat."
+    },
+    "discussionCardSemantics": "Discussion: {question}",
+    "@discussionCardSemantics": {
+        "description": "Screen-reader name of a discussion question's card or map pin.",
+        "placeholders": {
+            "question": {
+                "type": "String"
+            }
+        }
+    },
+    "discussionJoined": "Joined",
+    "@discussionJoined": {
+        "description": "State of a discussion the learner has joined the chat for: the pill on its card and its screen-reader state."
+    },
+    "roleplayLabel": "Roleplay",
+    "@roleplayLabel": {
+        "description": "Mode tag on an activity card for a roleplay: learners take roles and work toward goals in a structured conversation."
     }
 }

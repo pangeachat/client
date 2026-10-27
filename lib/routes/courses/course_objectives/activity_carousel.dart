@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
+import 'package:fluffychat/routes/courses/course_objectives/discussion_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section_scroll_arrow.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
@@ -242,44 +244,56 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                   );
                   final highlighted =
                       ref.activityId == widget.highlightedActivityId;
-                  final framed = Stack(
-                    // The card's state banner peeks past its top-left
-                    // corner, so this wrapping Stack must not clip it.
-                    clipBehavior: Clip.hardEdge,
-                    children: [
-                      Opacity(
-                        opacity: canStart ? 1.0 : 0.5,
-                        child: ActivitySuggestionCard(
-                          activity: ref.plan,
+                  // A discussion question has its own card (#9647): it is
+                  // never dimmed, stamped or pinged like an activity.
+                  final framed = ref.plan.isDiscussion
+                      ? DiscussionCard(
+                          plan: ref.plan,
                           width: _cardWidth,
                           height: _cardHeight,
                           fontSize: _isColumnMode ? 16.0 : 12.0,
                           fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
                           iconSize: _isColumnMode ? 12.0 : 8.0,
-                          pinState: pinState,
-                          openSessions: liveState.openSessions,
-                          participants: liveState.participants,
-                          openSlots: liveState.openSlots,
-                          timesCompleted: timesCompleted,
                           xpEarned: xpEarned,
-                          // The course-ping bell rides in the live state's
-                          // tab (#9559).
-                          pinged:
-                              pinState != null &&
-                              ref.activityId == widget.pingedActivityId,
-                        ),
-                      ),
-                      // A ping on a card with no live state to carry it
-                      // (#8319): the bell alone, top-left.
-                      if (pinState == null &&
-                          ref.activityId == widget.pingedActivityId)
-                        Positioned(
-                          top: 8.0,
-                          left: 6.0,
-                          child: CoursePingBadge(pinState: pinState),
-                        ),
-                    ],
-                  );
+                        )
+                      : Stack(
+                          // The card's state banner peeks past its top-left
+                          // corner, so this wrapping Stack must not clip it.
+                          clipBehavior: Clip.hardEdge,
+                          children: [
+                            Opacity(
+                              opacity: canStart ? 1.0 : 0.5,
+                              child: ActivitySuggestionCard(
+                                activity: ref.plan,
+                                width: _cardWidth,
+                                height: _cardHeight,
+                                fontSize: _isColumnMode ? 16.0 : 12.0,
+                                fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
+                                iconSize: _isColumnMode ? 12.0 : 8.0,
+                                pinState: pinState,
+                                openSessions: liveState.openSessions,
+                                participants: liveState.participants,
+                                openSlots: liveState.openSlots,
+                                timesCompleted: timesCompleted,
+                                xpEarned: xpEarned,
+                                // The course-ping bell rides in the live state's
+                                // tab (#9559).
+                                pinged:
+                                    pinState != null &&
+                                    ref.activityId == widget.pingedActivityId,
+                              ),
+                            ),
+                            // A ping on a card with no live state to carry it
+                            // (#8319): the bell alone, top-left.
+                            if (pinState == null &&
+                                ref.activityId == widget.pingedActivityId)
+                              Positioned(
+                                top: 8.0,
+                                left: 6.0,
+                                child: CoursePingBadge(pinState: pinState),
+                              ),
+                          ],
+                        );
                   final card = !highlighted
                       ? framed
                       : Stack(

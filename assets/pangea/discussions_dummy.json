@@ -1,0 +1,192 @@
+{
+  "_readme": "Prototype dummy discussions (client#9647). Read only on staging builds, never production. Each entry needs an id, a short umbrella-question title in the target language (the card's and room's title) and 3 to 4 questions about its one photo. An entry with no lo_id and no mission_number is a pool entry: every Mission of a course in its l2 that has no discussion gets the next pool entry, in this file's order, cycling when the course has more Missions than the pool. Name a Mission with lo_id (its id) or mission_number (1 = the plan's first Mission) to place an entry there instead. Optional: course_room_id limits an entry to one course; l2 limits it to courses in that language; image_url and coordinates ([lng, lat]) default to an activity of the same Mission's image and a spot just beside its location.",
+  "discussions": [
+    {
+      "id": "es-1a",
+      "l2": "es",
+      "title": "¿Qué pasa aquí?",
+      "questions": [
+        "¿Qué ves en esta foto?",
+        "¿Te gustaría estar en este lugar? ¿Por qué?",
+        "¿Hay un lugar parecido donde vives?",
+        "¿Qué le preguntarías a una persona de aquí?"
+      ]
+    },
+    {
+      "id": "es-1b",
+      "l2": "es",
+      "title": "¿Quién vive aquí?",
+      "questions": [
+        "¿Cómo crees que es la vida de la gente de este lugar?",
+        "¿Qué hacen en un día normal?",
+        "¿En qué se parece tu vida a la suya?"
+      ]
+    },
+    {
+      "id": "es-2a",
+      "l2": "es",
+      "title": "¿Qué se compra aquí?",
+      "questions": [
+        "¿Qué comprarías en un lugar como este?",
+        "¿Cuánto crees que cuestan las cosas aquí?",
+        "¿Dónde compras tú la comida normalmente?"
+      ]
+    },
+    {
+      "id": "es-2b",
+      "l2": "es",
+      "title": "¿Qué se come aquí?",
+      "questions": [
+        "¿Qué comida esperas encontrar en este lugar?",
+        "¿Cuál es tu comida favorita? ¿Por qué?",
+        "¿Qué plato típico de tu país le recomendarías a alguien de aquí?",
+        "¿Prefieres cocinar en casa o comer fuera?"
+      ]
+    },
+    {
+      "id": "es-3a",
+      "l2": "es",
+      "title": "¿Cómo es este lugar?",
+      "questions": [
+        "¿Qué hace la gente en este lugar?",
+        "¿A qué hora del día irías tú? ¿Por qué?",
+        "¿Cómo es la plaza principal de tu ciudad?",
+        "¿Qué cambiarías de este lugar?"
+      ]
+    },
+    {
+      "id": "es-3b",
+      "l2": "es",
+      "title": "¿Cómo llegamos aquí?",
+      "questions": [
+        "¿Cómo llegarías a este lugar desde tu casa?",
+        "¿Qué transporte usas cada día?",
+        "¿Prefieres caminar, ir en bici o en autobús? ¿Por qué?"
+      ]
+    },
+    {
+      "id": "es-4a",
+      "l2": "es",
+      "title": "¿Qué tiempo hace?",
+      "questions": [
+        "¿Qué tiempo crees que hace en esta foto?",
+        "¿Qué ropa llevarías para ir aquí?",
+        "¿Cuál es tu estación del año favorita? ¿Por qué?"
+      ]
+    },
+    {
+      "id": "es-4b",
+      "l2": "es",
+      "title": "¿Qué harías un fin de semana aquí?",
+      "questions": [
+        "¿Qué planes harías para un fin de semana en este lugar?",
+        "¿Con quién vendrías?",
+        "¿Qué hiciste el fin de semana pasado?",
+        "¿Qué te gusta hacer cuando tienes tiempo libre?"
+      ]
+    },
+    {
+      "id": "es-5a",
+      "l2": "es",
+      "title": "¿Qué se celebra aquí?",
+      "questions": [
+        "¿Qué fiesta o celebración imaginas en este lugar?",
+        "¿Cuál es tu fiesta favorita del año?",
+        "¿Cómo la celebras con tu familia o tus amigos?"
+      ]
+    },
+    {
+      "id": "es-5b",
+      "l2": "es",
+      "title": "¿Qué música suena aquí?",
+      "questions": [
+        "¿Qué música crees que escucha la gente aquí?",
+        "¿Qué música escuchas tú?",
+        "¿Sabes bailar o tocar algún instrumento?"
+      ]
+    },
+    {
+      "id": "es-6a",
+      "l2": "es",
+      "title": "¿Dónde trabaja la gente aquí?",
+      "questions": [
+        "¿Qué trabajos ves o imaginas en esta foto?",
+        "¿Te gustaría trabajar en un lugar así? ¿Por qué?",
+        "¿Qué trabajo tienes o te gustaría tener?",
+        "¿Cómo es un buen día de trabajo o de clase para ti?"
+      ]
+    },
+    {
+      "id": "es-6b",
+      "l2": "es",
+      "title": "¿Cómo es un día aquí?",
+      "questions": [
+        "¿A qué hora crees que empieza el día en este lugar?",
+        "¿Cómo es tu rutina por la mañana?",
+        "¿Qué es lo mejor de tu día?"
+      ]
+    },
+    {
+      "id": "es-7a",
+      "l2": "es",
+      "title": "¿Vale la pena el viaje?",
+      "questions": [
+        "¿Viajarías a este lugar? ¿Por qué sí o por qué no?",
+        "¿Cuál es el mejor viaje que has hecho?",
+        "¿Adónde te gustaría viajar el próximo año?"
+      ]
+    },
+    {
+      "id": "es-7b",
+      "l2": "es",
+      "title": "¿Qué recuerdo te llevas?",
+      "questions": [
+        "¿Qué foto sacarías aquí para tu familia?",
+        "¿Qué recuerdo comprarías en este lugar?",
+        "¿Qué recuerdo tienes de un viaje especial?"
+      ]
+    },
+    {
+      "id": "es-8a",
+      "l2": "es",
+      "title": "¿Qué deporte se juega aquí?",
+      "questions": [
+        "¿Qué deporte o actividad se podría hacer aquí?",
+        "¿Practicas algún deporte? ¿Cuál?",
+        "¿Prefieres ver deportes o hacerlos?"
+      ]
+    },
+    {
+      "id": "es-8b",
+      "l2": "es",
+      "title": "¿Cómo era este lugar antes?",
+      "questions": [
+        "¿Cómo crees que era este lugar hace cincuenta años?",
+        "¿Cómo era tu ciudad cuando eras pequeño o pequeña?",
+        "¿Qué te gustaría que no cambiara nunca?",
+        "¿Qué cambiará en el futuro?"
+      ]
+    },
+    {
+      "id": "en-1a",
+      "l2": "en",
+      "title": "What's happening here?",
+      "questions": [
+        "What do you see in this photo?",
+        "Would you like to be in this place? Why?",
+        "Is there a place like this where you live?",
+        "What would you ask someone who lives here?"
+      ]
+    },
+    {
+      "id": "en-2a",
+      "l2": "en",
+      "title": "What do people buy here?",
+      "questions": [
+        "What would you buy at a place like this?",
+        "How much do you think things cost here?",
+        "Where do you usually buy your food?"
+      ]
+    }
+  ]
+}

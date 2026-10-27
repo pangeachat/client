@@ -107,7 +107,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
   List<SpaceRoomsChunk$2> get discoveredGroupChats =>
       (_discoveredChildren ?? [])
-          .where((chunk) => !chunk.isActivitySession)
+          .where((chunk) => !chunk.isActivitySession && !chunk.isDiscussion)
           .toList();
 
   Map<String, List<ExtendedSpaceRoomsChunk>> get discoveredActivities {

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_video_tag.dart';
@@ -11,6 +12,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/widgets/completed_stamp.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
+import 'package:fluffychat/widgets/xp_badge.dart';
 
 class ActivitySuggestionCard extends StatelessWidget {
   final ActivityPlanModel activity;
@@ -66,6 +68,11 @@ class ActivitySuggestionCard extends StatelessWidget {
   /// activity cards squash it so the card reads squarer.
   final double? imageHeight;
 
+  /// Names the live state in place of [pinState]'s own label and glyph — a
+  /// discussion's "Joined" (#9647), which wears the Ongoing colours.
+  final String? stateLabel;
+  final IconData? stateIcon;
+
   static const double _frameWidth = 2.0;
 
   const ActivitySuggestionCard({
@@ -86,6 +93,8 @@ class ActivitySuggestionCard extends StatelessWidget {
     this.frameWhenResting = false,
     this.selected = false,
     this.imageHeight,
+    this.stateLabel,
+    this.stateIcon,
   });
 
   @override
@@ -186,7 +195,15 @@ class ActivitySuggestionCard extends StatelessWidget {
                         bottom: 6.0,
                         child: AnimatedSwitcher(
                           duration: FluffyThemes.animationDuration,
-                          child: timesCompleted > 0
+                          child: activity.isDiscussion
+                              ? (xpEarned > 0
+                                    ? XpBadge(
+                                        key: const ValueKey('xp'),
+                                        xp: xpEarned,
+                                        width: width,
+                                      )
+                                    : const SizedBox.shrink())
+                              : timesCompleted > 0
                               ? CompletedStamp(
                                   key: const ValueKey('stamp'),
                                   size: (width / 8).clamp(14.0, 18.0),
@@ -209,7 +226,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // Fixed-height card: cap the title and let it yield space
-                          // (Flexible) so the participant/mode row below
+                          // (Flexible) so the participant row below
                           // can't be pushed past the card's bottom edge and clipped by
                           // the ClipRRect when a long title wraps (#7675).
                           Flexible(
@@ -224,40 +241,59 @@ class ActivitySuggestionCard extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             spacing: 8.0,
                             children: [
-                              if (activity.req.mode.isNotEmpty)
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Text(
-                                      activity.req.mode,
-                                      style: labelStyle,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ),
-                              Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  spacing: 4.0,
-                                  children: [
-                                    Icon(
-                                      Icons.group_outlined,
-                                      size: iconSize ?? 12.0,
-                                    ),
-                                    Semantics(
-                                      label:
-                                          "${L10n.of(context).participants}: ${activity.req.numberOfParticipants}",
-                                      child: ExcludeSemantics(
+                              // The activity's mode (#9647, prototype): every
+                              // mode but Discussion reads as Roleplay until
+                              // the others get their own flow.
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Row(
+                                    spacing: 4.0,
+                                    children: [
+                                      Icon(
+                                        activity.isDiscussion
+                                            ? Icons.live_help_outlined
+                                            : Icons.theater_comedy_outlined,
+                                        size: iconSize ?? 12.0,
+                                      ),
+                                      Flexible(
                                         child: Text(
-                                          "${activity.req.numberOfParticipants}",
+                                          activity.isDiscussion
+                                              ? L10n.of(context).discussionLabel
+                                              : L10n.of(context).roleplayLabel,
                                           style: labelStyle,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
+                              if (!activity.isDiscussion)
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    spacing: 4.0,
+                                    children: [
+                                      Icon(
+                                        Icons.group_outlined,
+                                        size: iconSize ?? 12.0,
+                                      ),
+                                      Semantics(
+                                        label:
+                                            "${L10n.of(context).participants}: ${activity.req.numberOfParticipants}",
+                                        child: ExcludeSemantics(
+                                          child: Text(
+                                            "${activity.req.numberOfParticipants}",
+                                            style: labelStyle,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                             ],
                           ),
                         ],
@@ -323,7 +359,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                             Icon(
                               pinged
                                   ? Icons.notifications_outlined
-                                  : pinState!.icon,
+                                  : stateIcon ?? pinState!.icon,
                               size: (fontSizeSmall ?? 11.0) + 3.0,
                               color: onState,
                             ),
@@ -365,7 +401,10 @@ class ActivitySuggestionCard extends StatelessWidget {
     );
   }
 
-  String _stateLabel(BuildContext context) => switch (pinState!) {
+  String _stateLabel(BuildContext context) =>
+      stateLabel ?? _pinStateLabel(context);
+
+  String _pinStateLabel(BuildContext context) => switch (pinState!) {
     ActivityPinState.ongoingActive => L10n.of(context).ongoing,
     ActivityPinState.ongoingPending => L10n.of(context).mapStatusWaiting,
     // The count of open sessions to choose from, on the course page and the

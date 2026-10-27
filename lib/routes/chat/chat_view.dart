@@ -11,6 +11,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
@@ -28,6 +29,7 @@ import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dar
 import 'package:fluffychat/routes/chat/chat_event_list.dart';
 import 'package:fluffychat/routes/chat/chat_floating_action_button.dart';
 import 'package:fluffychat/routes/chat/chat_input_bar.dart';
+import 'package:fluffychat/routes/chat/discussions/discussion_question_header.dart';
 import 'package:fluffychat/routes/chat/pinned_events.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/world/analytics_header_avatar.dart';
@@ -478,6 +480,10 @@ class ChatView extends StatelessWidget {
                         controller.activityController.setShowDropdown,
                     activeGoalNotifier: controller.activeGoalNotifier,
                   ),
+                  // A discussion's question stays at the top of its chat
+                  // (#9647).
+                  if (controller.room.discussionActivityId != null)
+                    DiscussionQuestionHeader(room: controller.room),
                   // if (controller.dragging)
                   //   Container(
                   //     color: theme.scaffoldBackgroundColor.withAlpha(230),

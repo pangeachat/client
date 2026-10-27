@@ -12,6 +12,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_indicator.dart';
@@ -41,6 +42,17 @@ class ActivityUserSummaries extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // A discussion (#9647, prototype): once the learner ends, the summary's
+    // placeholder shows where their summary will land. Its progress is room
+    // account data, so it is re-read on sync.
+    if (room.discussionActivityId != null) {
+      return StreamBuilder(
+        stream: room.client.onSync.stream,
+        builder: (context, _) => room.discussionProgress.ended
+            ? const _SummaryLoading()
+            : const SizedBox.shrink(),
+      );
+    }
     // The subscription gate stands HERE, in the summary's own place, rather
     // than as a line in the finished-status bar — a gate that fills the space
     // the feature would have filled is the pattern every other one follows

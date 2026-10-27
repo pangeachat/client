@@ -10,6 +10,8 @@ import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
+import 'package:fluffychat/features/discussions/discussion_fixtures.dart';
 import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
@@ -232,8 +234,10 @@ class QuestOutline {
     if (allowed.length == available.length) return group;
     return QuestObjectiveGroup(
       objective: group.objective,
+      // A discussion belongs to its course, so the course's pins never
+      // filter it out (#9647).
       activities: group.activities
-          .where((a) => allowed.contains(a.activityId))
+          .where((a) => allowed.contains(a.activityId) || a.plan.isDiscussion)
           .toList(),
       pacing: group.pacing,
       credit: group.credit,
@@ -666,7 +670,15 @@ class QuestRepo {
         .map((e) => QuestActivityCard.fromJson(cmsDocShapeFromEntry(e)))
         .where((card) => card.point != null)
         .toList();
-    return Result.value(dedupeByActivityId(cards, (c) => c.activityId));
+    // Prototype (#9647): the course's dummy discussions get pins too.
+    final withDiscussions = await DiscussionFixtures.addPins(
+      cards,
+      questId: questId,
+      courseRoomId: courseRoomId,
+    );
+    return Result.value(
+      dedupeByActivityId(withDiscussions, (c) => c.activityId),
+    );
   }
 
   /// The course outline from one choreo read: the quest's Missions keyed by
@@ -936,16 +948,19 @@ class QuestRepo {
             ),
       ];
 
+      final outline = QuestOutline(
+        quest: quest,
+        groups: groups,
+        addedGroups: addedGroups,
+        familyIdsByActivity: {
+          for (final a in read.activities)
+            if (a.familyIds.isNotEmpty) a.plan.activityId: a.familyIds,
+        },
+      );
+      // Prototype (#9647): the course's dummy discussions join its Missions
+      // as if the listing had returned them.
       return Result.value(
-        QuestOutline(
-          quest: quest,
-          groups: groups,
-          addedGroups: addedGroups,
-          familyIdsByActivity: {
-            for (final a in read.activities)
-              if (a.familyIds.isNotEmpty) a.plan.activityId: a.familyIds,
-          },
-        ),
+        await DiscussionFixtures.addTo(outline, courseRoomId: courseRoomId),
       );
     } catch (e, s) {
       ErrorHandler.logError(

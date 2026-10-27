@@ -6,6 +6,11 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 extension SpaceRoomsChunkTypeExtension on SpaceRoomsChunk$2 {
   bool get isActivitySession =>
       roomType?.startsWith(PangeaRoomTypes.activitySession) == true;
+
+  /// A discussion question's room (#9647): opened from its card, never from
+  /// the course's chat list.
+  bool get isDiscussion =>
+      roomType?.startsWith(PangeaRoomTypes.discussion) == true;
 }
 
 /// A course space's hierarchy children — the rooms in the course that the
@@ -51,7 +56,12 @@ extension CourseHierarchyExtension on Room {
   /// not, in hierarchy order. Paging stops once [limit] are found.
   Future<List<SpaceRoomsChunk$2>> joinableGroupChats({required int limit}) =>
       hierarchyChildren()
-          .where((child) => isJoinableChild(child) && !child.isActivitySession)
+          .where(
+            (child) =>
+                isJoinableChild(child) &&
+                !child.isActivitySession &&
+                !child.isDiscussion,
+          )
           .take(limit)
           .toList();
 }

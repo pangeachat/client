@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
+import 'package:fluffychat/routes/courses/course_objectives/discussion_card.dart';
 import 'package:fluffychat/routes/world/world_map_card_dismiss_button.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 /// A large map pin drawn as the activity's own card (under
 /// [kMapActivityCards]): the course plan's [ActivitySuggestionCard] with a
@@ -74,7 +77,20 @@ class WorldMapActivityCard extends StatelessWidget {
     // The pointer continues the card's frame (#9559): the live state's hue,
     // else the not-started pin's colour a resting map card is outlined in —
     // the same colour as the mid pin or dot it stands for.
-    final frameColor = _live
+    final discussion = card.isDiscussion;
+    // A discussion wears the Ongoing colours once the learner is in its chat
+    // (#9647).
+    final discussionJoined =
+        discussion &&
+        Matrix.of(
+          context,
+        ).client.discussionRoomsFor(card.activityId).isNotEmpty;
+    final frameColor = discussion
+        ? (discussionJoined
+                  ? ActivityPinState.ongoingActive
+                  : ActivityPinState.available)
+              .bodyColor(context)
+        : _live
         ? state.bodyColor(context)
         : ActivityPinState.available.bodyColor(context);
     // Focused, the card takes the selected look it shares with the pins
@@ -86,7 +102,20 @@ class WorldMapActivityCard extends StatelessWidget {
     final plan = this.plan;
     final title = plan?.title ?? card.title;
 
-    final body = plan == null
+    final body = discussion && plan != null
+        ? DiscussionCard(
+            plan: plan,
+            width: PinSize.mapCardWidth,
+            height: PinSize.mapCardHeight,
+            imageHeight: PinSize.mapCardImageHeight,
+            fontSize: 12.0,
+            fontSizeSmall: 9.0,
+            iconSize: 9.0,
+            xpEarned: xpEarned,
+            frameWhenResting: true,
+            selected: isFocused,
+          )
+        : plan == null
         ? _PlainCard(title: title, live: _live, selected: isFocused)
         : ActivitySuggestionCard(
             activity: plan,

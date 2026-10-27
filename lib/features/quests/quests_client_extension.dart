@@ -6,6 +6,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
@@ -70,6 +71,14 @@ extension QuestsClientExtension on Client {
     );
     final sessions = <String, List<Room>>{};
     for (final room in rooms) {
+      // A discussion has no end to save at, so its room counts from the
+      // first message (#9647). Its XP is read in the current language only
+      // (MissionXpCache), so it needs no language check of its own.
+      final discussionId = room.discussionActivityId;
+      if (discussionId != null && room.membership == Membership.join) {
+        (sessions[discussionId] ??= []).add(room);
+        continue;
+      }
       final activityId = room.activityId;
       if (activityId == null ||
           !room.hasArchivedActivity ||
@@ -116,7 +125,7 @@ extension QuestsClientExtension on Client {
             MissionXpBreakdown(
               chat: chatXpByRoom[room.id] ?? 0,
               speaking: speakingXpByRoom[room.id] ?? 0,
-              goals: kGoalXp * room.ownCompletedGoals.length,
+              goals: kGoalXp * _ownGoalCount(room),
               practice: practiceXpByRoom[room.id] ?? 0,
             );
       }
@@ -236,10 +245,15 @@ extension QuestsClientExtension on Client {
     return null;
   }
 
+  /// The goals the learner holds in [room]: their awarded activity goals, or
+  /// in a discussion the questions they have answered (#9647).
+  static int _ownGoalCount(Room room) => room.discussionActivityId != null
+      ? room.discussionProgress.answered.length
+      : room.ownCompletedGoals.length;
+
   /// One session's XP: the XP credited to its room plus its goal checkmarks.
   /// What [userXpByActivity] banks once the session is saved, and what the
   /// goal header's ring shows while it runs.
   int sessionXp(Room room, Map<String, int> creditedXpByRoom) =>
-      (creditedXpByRoom[room.id] ?? 0) +
-      kGoalXp * room.ownCompletedGoals.length;
+      (creditedXpByRoom[room.id] ?? 0) + kGoalXp * _ownGoalCount(room);
 }

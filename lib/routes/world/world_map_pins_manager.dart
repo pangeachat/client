@@ -10,6 +10,7 @@ import 'package:fluffychat/features/activity_sessions/activity_session_discovery
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
@@ -290,7 +291,9 @@ class WorldMapPinsManager {
   /// Whether [card] wears the completed stamp: the learner has finished it
   /// ([savedActivityIds]). A set lookup, never a rooms rescan.
   ActivityStarLevel starLevelOf(QuestActivityCard card) =>
-      _savedActivityIds.contains(card.activityId)
+      // A discussion never wears the played stamp: its chat stays open
+      // (#9647).
+      !card.isDiscussion && _savedActivityIds.contains(card.activityId)
       ? ActivityStarLevel.star
       : ActivityStarLevel.none;
 
@@ -589,7 +592,19 @@ class WorldMapPinsManager {
     // current, and the map re-resolves when it changes.
     MissionXpCache.instance.ensureWired();
 
-    _signals = signals;
+    // A discussion the learner is in ranks as an ongoing session; until they
+    // join, it ranks as available like any activity (#9647).
+    final withDiscussions = {...signals};
+    for (final room in client.rooms) {
+      final id = room.discussionActivityId;
+      if (id == null || room.membership != Membership.join) continue;
+      withDiscussions[id] = PinSignals(
+        state: ActivityPinState.ongoingActive,
+        completionFraction: signals[id]?.completionFraction ?? 0,
+        pinged: signals[id]?.pinged ?? false,
+      );
+    }
+    _signals = withDiscussions;
     _userStars = userStars;
     _client = client;
     _xpByActivity = client.userXpByActivity(

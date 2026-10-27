@@ -13,6 +13,8 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_batch.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
+import 'package:fluffychat/features/discussions/discussion_fixtures.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -442,6 +444,12 @@ class ActivityPlanRepo
     String? version,
     bool forceRefresh = false,
   }) async {
+    // Prototype (#9647): a dummy discussion's plan lives in the local file,
+    // never on the backend.
+    final discussion = DiscussionFixtures.planFor(activityId);
+    if (discussion != null) {
+      return ActivityPlanLookup(ActivityPlanLookupStatus.found, discussion);
+    }
     // Answered from memory, before any request is built: this is the same
     // answer the backend already gave for this id, so re-asking can only cost a
     // round trip and another 404. Checked ahead of [_request] so the gate does
@@ -612,6 +620,8 @@ class ActivityPlanRepo
     String? l1,
     String? version,
   }) {
+    final discussion = DiscussionFixtures.planFor(activityId);
+    if (discussion != null) return discussion;
     final request = _request(activityId, l1, version: version);
     // Same answer as a cache miss, and the caller's next move is the same:
     // [ensure], which will also decline until the controller lands.
@@ -656,6 +666,8 @@ class ActivityPlanRepo
     // Synchronous, so on a cold start it cannot see not-yet-loaded persisted
     // verdicts; [lookup] awaits the load and catches those.
     if (_confirmedRemoved.containsSync(activityId)) return false;
+    // A dummy discussion (#9647) has nothing to fetch.
+    if (activityId.startsWith(DiscussionIds.prefix)) return false;
     final request = _request(activityId, l1, version: version);
     // Declines WITHOUT parking the key: the controller lands within a frame or
     // two of startup, so the next rebuild must be free to fetch. Parking here
