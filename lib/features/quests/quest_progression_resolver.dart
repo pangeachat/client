@@ -2,8 +2,9 @@
 // question is not "is this allowed?" but "where should the learner go next?" —
 // resolved ONCE from data the client already holds and shared by every surface
 // that preferences by progression (the world map's Priority matrix, the
-// activity start page). Pure logic — no Matrix or network — so it stays
-// unit-testable. Design: quests.instructions.md, world-map.instructions.md.
+// course page's Mission circles and card, the analytics bar's star count).
+// Pure logic — no Matrix or network — so it stays unit-testable. Design:
+// quests.instructions.md, world-map.instructions.md.
 
 import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';

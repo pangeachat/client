@@ -33,6 +33,7 @@ Re-decider for every line: unassigned.
 - Only saved sessions count. Repeats add up: XP is effort, and the per-construct cap is the only farming guard.
 - An activity's XP counts in every course listing it, wherever it was played: it is the learner's work, so card, Mission and start page agree.
 - Practice outside a session counts toward every Mission listing the word, used before or not.
+- Hiding or swapping a course's activity never lowers a Mission's XP: the hidden activity's XP and words still count.
 
 ### Language scope
 
@@ -44,10 +45,12 @@ Re-decider for every line: unassigned.
 - A finished quest has no next Mission, rather than point back at done work.
 - Totals are per course: Missions recur across courses with different activities, so blending would credit one course's work to another and undo its pins.
 - Until the answer exists, surfaces rank on plain relevance; nothing is ever blocked.
+- The app stores each student's Mission numbers per course for the teacher dashboard to read, so the two never disagree ([client#9643](https://github.com/pangeachat/client/issues/9643)).
 
 ### Progress display on the course page
 
 - A preview shows no progress, and no activity count sits beside it: it read as a second requirement.
+- While a joined course's progress loads, its circles and Mission card shimmer rather than show a zero.
 - The Mission on show rides the URL, so course page, collapsed bar and course map agree; a bell flags pings elsewhere, since the map shows only that Mission.
 - A due date never blocks, hides or locks anything.
 - The full plan is a quiet link, for the course's shape rather than what to do next; a complete Mission mutes but stays playable.
@@ -66,11 +69,3 @@ Re-decider for every line: unassigned.
 
 - The credit comes from the owner's profile, so a teacher controls it.
 - It is prominent while choosing a plan, then sits in More, not as a banner over the teacher's description.
-
-## Open questions
-
-- Does the activity start page read the shared answer? Its code doesn't.
-- [world-map.instructions.md](world-map.instructions.md) says the row drops finished and ongoing activities; the code keeps them.
-- Should a course's hidden activities' words credit its Missions? The code does.
-- Should this doc describe the per-course progress record ([client#9643](https://github.com/pangeachat/client/issues/9643))?
-- Before a joined course's progress resolves: empty rings or shimmer?
