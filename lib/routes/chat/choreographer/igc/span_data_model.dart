@@ -168,7 +168,7 @@ class SpanData {
 
   /// Whether this span is a minor correction that should be auto-applied.
   /// Returns true if:
-  /// 1. The type is explicitly marked as auto-apply (e.g., punct, spell, cap, diacritics), OR
+  /// 1. The type is explicitly marked as auto-apply (punct, cap, diacritics), OR
   /// 2. For backwards compatibility with old data that lacks new types:
   ///    the type is NOT auto-apply AND the normalized strings match.
   bool isNormalizationError({String? errorSpanOverride}) {

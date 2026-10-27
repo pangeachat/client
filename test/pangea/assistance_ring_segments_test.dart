@@ -29,10 +29,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 /// The writing assistance ring's segments in each state: five while there is
 /// nothing to report, one per match, one solid green ring when a check finds
-/// nothing or a suggestion is taken, and two while a suggestion waits.
-/// Colour and brightness per match are left out on purpose: the doc and the
-/// app disagree on them, and that is an open question, not a fact to pin.
-/// See writing-assistance.instructions.md § The experience.
+/// nothing or a suggestion is taken, and two while a suggestion waits. Then
+/// each match's colour and brightness, on the ring and in the composer.
+/// See writing-assistance.instructions.md § The experience and § Decisions.
 void main() {
   late _FakeChoreographer choreographer;
   late BuildContext context;
@@ -73,22 +72,31 @@ void main() {
       .widget<SegmentedCircularProgress>(find.byType(SegmentedCircularProgress))
       .segments;
 
-  SpanData span(int offset) => SpanData(
+  const text = 'gehe gehe gehe gehe gehe';
+
+  /// A correction offers a wrong choice to avoid; without one, every choice
+  /// is right and the match is only a suggestion.
+  SpanData span(int offset, {bool withWrongChoice = true}) => SpanData(
     message: null,
     shortMessage: null,
-    choices: [SpanChoice(value: 'geht', type: SpanChoiceTypeEnum.suggestion)],
+    choices: [
+      SpanChoice(value: 'geht', type: SpanChoiceTypeEnum.suggestion),
+      withWrongChoice
+          ? SpanChoice(value: 'gehst', type: SpanChoiceTypeEnum.distractor)
+          : SpanChoice(value: 'ging', type: SpanChoiceTypeEnum.alt),
+    ],
     offset: offset,
     length: 4,
-    fullText: 'gehe gehe',
+    fullText: text,
     type: ReplacementTypeEnum.verbConjugation,
     rule: null,
   );
 
   void loadMatches(List<SpanData> spans) {
-    choreographer.currentText = 'gehe gehe';
+    choreographer.currentText = text;
     choreographer.igcController.loadResponse(
       IGCResponseModel(
-        originalInput: 'gehe gehe',
+        originalInput: text,
         fullTextCorrection: null,
         matches: [
           for (final s in spans)
@@ -198,6 +206,49 @@ void main() {
     final ring = segments(tester);
     expect(ring, hasLength(1));
     expect(ring.single.color, Theme.of(context).pangea.successGraphic);
+  });
+
+  testWidgets('a segment is red for a correction and green once it is in, '
+      'and fades only once viewed', (tester) async {
+    loadMatches([
+      span(0),
+      span(5, withWrongChoice: false),
+      span(10),
+      span(15),
+      span(20),
+    ]);
+    final igc = choreographer.igcController;
+    final byOffset = igc.sortedMatches;
+    igc.updateMatchStatus(byOffset[2], PangeaMatchStatusEnum.viewed);
+    byOffset[3].selectChoice(0);
+    igc.updateMatchStatus(byOffset[3], PangeaMatchStatusEnum.accepted);
+    byOffset[4].selectChoice(0);
+    igc.updateMatchStatus(byOffset[4], PangeaMatchStatusEnum.automatic);
+    await pumpRing(tester);
+
+    final theme = Theme.of(context);
+    final ring = segments(tester);
+    expect(ring.map((s) => s.color).toList(), [
+      theme.pangea.errorGraphic, // a correction
+      theme.colorScheme.primary, // every choice right
+      theme.pangea.errorGraphic, // a viewed correction
+      theme.pangea.successGraphic, // accepted
+      theme.pangea.successGraphic, // fixed by itself
+    ]);
+    final bright = ring[0].opacity;
+    expect(ring[2].opacity, lessThan(bright));
+    expect(
+      [ring[1], ring[3], ring[4]].map((s) => s.opacity),
+      everyElement(bright),
+    );
+  });
+
+  test('in the composer only an unviewed match is bright', () {
+    final bright = PangeaMatchStatusEnum.open.underlineOpacity;
+    for (final status in PangeaMatchStatusEnum.values) {
+      if (status == PangeaMatchStatusEnum.open) continue;
+      expect(status.underlineOpacity, lessThan(bright), reason: status.name);
+    }
   });
 }
 
