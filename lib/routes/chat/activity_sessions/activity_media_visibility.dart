@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 
 /// Tracks how much of the activity's media carousel is on screen in the chat
 /// timeline, so [ActivityChatBackground] can fade the activity image in only
-/// once the carousel has scrolled away (see activities.instructions.md).
+/// once the carousel has scrolled away (see activity-session.instructions.md).
 ///
 /// The carousel registers itself through [ActivityMediaVisibilityTarget].
 /// Listeners hear that the carousel's position may have changed — it mounted,

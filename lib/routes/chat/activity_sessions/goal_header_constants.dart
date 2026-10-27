@@ -25,8 +25,10 @@ class GoalHeaderConstants {
   ///
   /// A narrow window gets the tighter value: the card floats over the
   /// conversation, and on a phone with the keyboard up the padding it spends
-  /// is most of the chat the learner has left (#9147). 8.0 still leaves the
-  /// toggle row a 52px tap target around the 36px star box.
+  /// is most of the chat the learner has left (#9147). The diamonds and label
+  /// keep their size; only padding gives. The floor is the toggle row's tap
+  /// target, which must stay at least 48px: 8.0 leaves it 52px around the
+  /// 36px star box.
   static double topPadding(BuildContext context) =>
       FluffyThemes.isColumnMode(context) ? 14.0 : 8.0;
 

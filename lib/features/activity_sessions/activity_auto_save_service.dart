@@ -57,7 +57,7 @@ bool activeAccountPublishesStars({
 /// Saves completed activity sessions automatically — records the session to
 /// the learner's analytics room and archives their role — so a session that
 /// completes while the learner is elsewhere still saves on the next sync.
-/// See activities.instructions.md → "Completion saves itself".
+/// See activity-session.instructions.md → "Completion saves itself".
 class ActivityAutoSaveService {
   final Client client;
   final AnalyticsDataService analyticsService;

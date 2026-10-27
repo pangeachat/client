@@ -92,6 +92,20 @@ void main() {
     );
   });
 
+  testWidgets('the narrow toggle row stays a 48px tap target', (tester) async {
+    // The padding the narrow layout trims has a floor: the row that opens the
+    // goal list must stay at least the minimum tap target.
+    await pumpHeader(tester, narrowWidth, goalsLedBy('Greet'));
+
+    final toggle = find
+        .descendant(
+          of: find.byType(ActivityDropdownHeader),
+          matching: find.byType(InkWell),
+        )
+        .first;
+    expect(tester.getSize(toggle).height, greaterThanOrEqualTo(48.0));
+  });
+
   testWidgets('the goal label never closes on the stars', (tester) async {
     for (final width in [narrowWidth, wideWidth]) {
       const label = 'Greet the person sharing your table and ask their name';

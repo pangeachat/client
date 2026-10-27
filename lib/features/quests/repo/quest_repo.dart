@@ -400,8 +400,8 @@ class QuestRepo {
   /// activity entries (`{plan, version_id, learning_objective_refs}` maps).
   /// Canonical-only filtering, translation-row exclusion, and hidden/private
   /// gating all happen server-side now — the client no longer builds an
-  /// activities-v2 `where` at all (see activities.instructions.md
-  /// § Ownership, visibility, and removal).
+  /// activities-v2 `where` at all (see pangeachat/.github
+  /// activities.instructions.md § Ownership, visibility, and removal).
   @visibleForTesting
   static List<Map<String, dynamic>> questActivityEntriesFromJson(
     dynamic decoded,
@@ -601,7 +601,8 @@ class QuestRepo {
   /// (which projects `learning_objective_refs`) rather than CMS-direct —
   /// end-user CMS credentials can no longer read hidden rows, and this
   /// attribution must keep working for sessions on hidden activities
-  /// (activities.instructions.md § Ownership, visibility, and removal).
+  /// (pangeachat/.github activities.instructions.md § Ownership, visibility,
+  /// and removal).
   /// See [ActivityCourseResolver].
   static Future<Result<List<String>>> activityLearningObjectiveRefs(
     String activityId,

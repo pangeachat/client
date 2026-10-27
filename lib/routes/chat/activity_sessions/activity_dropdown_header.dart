@@ -32,7 +32,7 @@ class ActivityDropdownHeader extends StatelessWidget {
   /// This session's target language. The left slot — opposite the chevron —
   /// carries it as a switch when it isn't what the learner is learning: the
   /// one offer to switch a running session has, since it has no Start or
-  /// Join button to attach one to (activities.instructions.md). Left null
+  /// Join button to attach one to (activity-session.instructions.md). Left null
   /// (the plain reserved slot) everywhere [ActivityDropdownHeader] renders
   /// outside a live session.
   final LanguageModel? contentLanguage;

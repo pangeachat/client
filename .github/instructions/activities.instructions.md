@@ -1,276 +1,70 @@
 ---
 applyTo: "lib/features/activity_sessions/**,lib/features/quests/**,lib/routes/analytics/activities/**,lib/routes/chat/activity_sessions/**,lib/routes/chat/chat_details/**"
-description: "Client design for activities: thin cards, the start page's room-driven state, navigation, the media carousel (video next), and how target vocab is matched in messages."
+description: "How a learner finds and starts a conversation activity, its media, and the record it leaves."
 ---
 
 # Activity System
 
-Conversation activities are structured, game-like conversations. What an activity _is_ — its schema, goals, session lifecycle, and the Matrix-room contract behind it — is owned by the org-wide [activities doc](../../../.github/.github/instructions/activities.instructions.md); backend generation and the read endpoints by the [choreographer doc](../../../2-step-choreographer/.github/instructions/activities.instructions.md). This doc covers only how the **client** discovers, opens, runs, and shows an activity.
+## Purpose
 
-## Cards are thin; the plan is full
+How learners find and start activities, and the record they leave. What an activity is belongs to the org [activities doc](../../../.github/.github/instructions/activities.instructions.md); the start page's layout to [activity-start-page](activity-start-page.instructions.md); a running session to [activity-session](activity-session.instructions.md).
 
-The cards a learner browses — in lists, on map pins, under a learning objective — are deliberately lightweight: a title, a level, a place, the searchable basics, and nothing more. The full activity, including its media, loads only when the learner opens it. So media is always a property of the _opened_ activity, never of the card list, and a card can show at most one thumbnail — and only once the activity behind it has loaded. [`QuestActivityCard`](../../lib/features/quests/models/quest_activity_card.dart) is the thin card; [`ActivityPlanModel`](../../lib/features/activity_sessions/activity_plan_model.dart) is the full thing.
+## The experience
 
-## A running activity is a chat room
+1. A card on the map or in a course shows an activity's basics and first media item; opening it shows the whole activity.
+2. The learner starts a new session or joins an open one. Joining, they pick a role and wait for the session to fill. Starting, they pick a role, then find players: ping the course, invite someone, or play with the bot.
+3. Once it ends, it leaves Chats, and the Learning Objectives page keeps the record.
 
-When a learner starts an activity, it becomes a Matrix room. That is the central design choice: a live session reuses the whole chat stack — timeline, sync, membership, roles — instead of a parallel "sessions" system. The room _is_ the session. The shapes of the room and its state events are the org doc's contract; the client only reads them.
+## Decisions
 
-Course context is borrowed, not owned. An activity belongs to learning objectives, not to a course, so the client works out which course (if any) an activity sits under at the moment it opens — from the room's place in the space hierarchy, or by matching when an activity is opened on its own. A session with no course behind it is perfectly valid.
+Who re-decides: unassigned throughout.
 
-On the write side, starting a session shares it into **every joined course the activity is eligible for** — each course whose learning objectives intersect the activity's, at a matching target language — as an `m.space.child` of that course's space, so coursemates and teachers can discover and join it. Eligibility is that direct learning-objective intersection ([`ActivityCourseResolver`](../../lib/routes/world/activity_course_resolver.dart)), _not_ membership in a course's hand-listed activity set; it is the same rule whether the session is launched from the course page or from a bare map pin. The launched-from course is additionally recorded as the session's origin (`source_course_id`) — a single provenance field, while the `m.space.child` set is the full eligible fan-out. The fan-out is client-side and best-effort, so it only reaches courses **the launcher has joined** — and that listing is also what a course shows: inside a course, only the sessions it lists are offered, so a session never surfaces in a course the launcher was not in ([#9026](https://github.com/pangeachat/client/issues/9026)). Any wider reach — sessions in courses the learner has not joined at all — is the world map's read-side job, and deferred ([world-map.instructions.md](world-map.instructions.md), Discovering joinable sessions).
+### A running activity is a chat room
 
-Starting a session opens it once the new room has reached the client with its initial state, including the launcher's role, which is usually one sync after the server creates it. Sharing into courses and the bot invite finish in the background, and a room panel whose room hasn't synced yet shows a loading state for up to 10 seconds before the room-unavailable panel.
+- A session is a chat room, so it reuses the chat app.
+- Activities belong to Missions, not courses, so a session needs no course.
+- Cards and pins load the whole activity before opening. A screen over the read budget fills in over seconds, not blanking for a minute.
+- A session is shared into every joined course listing its activity, so coursemates can join; a course shows only sessions it lists. A Content Studio course lists only activities under its own Can-Dos.
+- The started-from course is where it was launched; a map launch records one only when exactly one joined course lists the activity.
+- A session's panel waits at most 10 seconds for its room.
 
-## Sessions in Chats
+### Sessions in Chats
 
-A session's row in Chats — and in a course page's Chats section, which uses the same row — leads with the **activity's photo** as a rounded square, framed in its live state's colour (ongoing, or still filling its seats), with the course's avatar stacked on it so the course it belongs to stays visible ([`ChatListItem`](../../lib/routes/chat_list/chat_list_item.dart)). The photo and frame are the same picture and colours the activity's card and map pin wear, so one session looks like one thing wherever it shows.
+- A session's row shows the activity's photo in its live colour, with a course's avatar on it.
+- A session leaves Chats once ended for everyone or saved. A replay's row shows the completed stamp, without XP. No "live now" strip: rows carry the state.
+- A room a teacher joined only to review stays out of their lists until they take a role; links still open it, leaving the course leaves it, and the dashboard mutes it.
 
-**A finished session leaves Chats.** Once the session has ended for everyone, or the learner's own role is saved, its room is hidden from the chat lists (`isHiddenRoom`); its record lives on in the Learning Objectives page and the summary. A learner replaying an activity they have saved before sees the gold completed stamp on the new session's row, so a replay reads as one. The row shows the stamp alone, with no XP: the chat list keeps its own presentation ([quests.instructions.md](quests.instructions.md), "Activity cards"). Chats has no separate "live now" strip: the rows themselves carry the state.
+### The start page mirrors the room
 
-## Sessions a teacher only reviewed stay out of their chats
+- Each device can ping a course once a minute, against spam.
+- Joining with one open role takes it. The page's back arrow leaves a session the learner only viewed.
+- Ping, Invite and the online count use the started-from course, named there.
 
-When a teacher opens a student's session from the admin dashboard, the dashboard joins the teacher to that session room so they can read it. The teacher takes no part in that conversation, so the room stays out of every chat list and unread badge, the same way an archived activity does ([#9364](https://github.com/pangeachat/client/issues/9364)).
+### Rating an activity
 
-- **The dashboard keeps the list.** It records each room it joined for review in the teacher's `pangea.admin_review` account data, as a `room_ids` list. The record lives on the teacher's account rather than in the room, because a profile change rewrites the teacher's membership in every room and would erase a mark kept there.
-- **Taking a role ends the review.** A listed room shows again once the teacher takes a role in the session, because the teacher is then a participant.
-- **A direct link still opens it.** The room is hidden from the lists, but a link to it still opens it, so the dashboard's Open chat link keeps working.
-- **Leaving a course leaves these rooms too.** Leaving a course keeps only the teacher's analytics rooms and archived activities; a review room is left with the course.
-- **Muting these rooms, and later leaving them, is the dashboard's job, not the client's.**
+- Only the start page's info row shows an activity's rating, NEW until rated.
 
-## The start page mirrors the room
+### Media is a carousel
 
-The activity's start page doesn't store its own state; it reads it from the room — whether a room exists yet, whether the learner is in it, whether they've taken a role, whether every role is filled. From those facts it moves through a short sequence (not started → picking a role → in with a role → session full) and shows the right thing at each step: the waiting room (ping the course, play with the bot, or invite a friend — pinging is limited to once a minute so it can't be spammed), the role picker, or the live activity.
+- An activity's media is a list. The live session pages through it; the plan page, cards and pins show the first item. Today's generator gives each activity one.
+- Tapping the plan page's lead image shows it whole.
+- Nothing plays on its own; a video plays when tapped.
+- Phones play video full screen; an inline player breaks the sheet. YouTube is embedded, never downloaded, per its terms.
+- A video card wears a video tag; a play badge promised play in place.
+- Captions follow the activity's language, for listening practice.
+- On the web the embed takes the mouse only after a click, so scrolling works. Keys mirror YouTube's; focus never enters its frame.
 
-A few steps are taken for the learner, to keep them out of choices that don't matter ([client#9333](https://github.com/pangeachat/client/issues/9333)):
+### The Learning Objectives page
 
-- **Joining from the join list with exactly one open role** claims that role straight away and lands the learner in the session. With two or more open roles the role picker stays; if someone takes the seat first, the session opens for viewing instead.
-- **Play with Pangea Bot** adds the bot as soon as the new session exists, after the learner picks a role. If the bot fails to join, the waiting room's bot button re-invites it.
-- **A session viewed from the join list** opens inside the activity with a back arrow to the list; backing out without taking a role leaves the room, so looking doesn't leave the learner a member.
+- One tile per Mission in the current language's joined courses, in course order; a shared Mission is one tile, and the open tile gets a border. No activity count, which was busy, and no Practice.
+- Saved sessions outside the tiles close the list under Other activities, so a learner in no course keeps a record.
+- A Mission's page names the course it was opened from, shimmers until its XP is in, and shows finished activities only; what comes next is the Mission card's job. Its vocab opens word cards in place.
+- Practice is primary there, its main action, and secondary on the Mission card.
+- A Mission only in another language shows its language and the switch.
+- A session row's numbers come from its saved summary, so they match the end card; zero shows as zero, and without a summary only title and diamonds show.
 
-**Which course a session belongs to.** A session is shared into every joined course that lists its activity, so it has no single home course. For now the waiting room's online count, **Ping** and **Invite** all use the course the session was started from (`Room.sourceCourse`), and the waiting room names that course so a learner browsing another course can tell. Which course a shared session should belong to is still being discussed ([discussion #9328](https://github.com/pangeachat/client/discussions/9328)).
+## Open questions
 
-When a session counts as ended, and how the bot makes its summary, are the org doc's call ([activity-summary.instructions.md](../../../.github/.github/instructions/activity-summary.instructions.md)). The client shows the summary from the room state the bot writes. A viewer whose first language differs from the summary's sees it translated. The loading placeholder stays up while the translation is fetched, and if the translation fails, the viewer sees the summary in its original language. The client writes the room's analytics when no client has yet, and it sends a learner's retry or feedback as a request the bot serves. It also keeps a short-lived local cache of the room's analytics, so the page doesn't re-fetch on every visit.
-
-The page's **layout and gestures** — the mobile grow-before-scroll sheet, the header and info row, the CTA row, and how it owns its container over the nav rail and analytics bar — are their own concern: [activity-start-page.instructions.md](activity-start-page.instructions.md).
-
-## Target vocab in the conversation
-
-An activity's suggested vocab is a list of entries in the target language. An entry is usually one word, but the generator also emits set phrases ("hace sol", "cómo te llamas"), and a curriculum's vocab list keeps its phrases whole, so a phrase is one entry everywhere the client shows vocab: the chips on the start page and in the summary, the gold highlight in messages, and the used state.
-
-One rule, [`ActivityVocabMatcher`](../../lib/features/activity_sessions/activity_vocab_matcher.dart), decides where an entry appears in a message. A single-word entry matches a token by lemma, so "llueve" counts for "llover". A phrase matches a run of consecutive tokens where each word equals the token's text or its lemma, case-insensitively, so "hace sol" matches "Hace sol" and "ir de compras" matches "voy de compras"; punctuation between the words breaks the run. Every token in a matched run gets the gold highlight, in typed messages and spoken transcripts alike, and the same matches turn the chips gold as used, so the highlight and the chips can never disagree. The match runs once per message as it renders, so it costs nothing a learner can notice.
-
-Analytics stays word-grained: a phrase in a message writes only its single-word constructs, as before, so the used state comes from the room's messages, not from the learner's analytics. A phrase entry is tagged `phrase` where a word carries its part of speech; the client treats that tag as a content word, so the chip gets the new-word underline and a tap collects the phrase as its own construct, the same as tapping a noun.
-
-## The goal header
-
-A running activity carries its progress in a **goal header** pinned to the top of the conversation — a horizontal row of goal diamonds ([quests.instructions.md](quests.instructions.md), "Stars and goal diamonds"), one per goal, with the active goal named beneath them. It stays visible and sticky as the learner scrolls the timeline, and it is styled to read as a button (rounded corners, a drop shadow that lifts it off the conversation, a subtle hover state) because it is one: tapping it opens the full goal list.
-
-**The session's XP** sits at the header's far left, a sparkle beside the XP this session has earned so far — the XP credited to its room plus `kGoalXp` per goal awarded — ([`GoalHeaderSessionXp`](../../lib/routes/chat/activity_sessions/goal_header_session_xp.dart), [client#9559](https://github.com/pangeachat/client/issues/9559)). It is a number rather than a meter, so the header keeps its eye on the current goal, and it rebuilds as XP lands. It holds a fixed slot, mirrored by the chevron's on the right, so the diamonds stay centred. Each **earned** diamond carries the gold **"+50"** it paid into the session underneath it ([`GoalXpLabel`](../../lib/routes/chat/choreographer/activity_orchestrator/goal_xp_label.dart)); an unearned one holds the same space empty, so the row doesn't shift when a goal is earned. Both show only to a learner who holds a role in a session in their current language: XP is kept per language, so a session in another one counts none of it ([quests.instructions.md](quests.instructions.md), "Language scope"). What a session's XP counts for, once saved, is the resolver's rule ([quests.instructions.md](quests.instructions.md), "What fills a Mission"). [`ActivityStatsMenu`](../../lib/routes/chat/activity_sessions/activity_stats_menu.dart) hosts it in the live session; the collapsed row is [`ActivityDropdownHeader`](../../lib/routes/chat/activity_sessions/activity_dropdown_header.dart) and the dropped-down panel is [`ActivityDropdownContent`](../../lib/routes/chat/activity_sessions/activity_dropdown_content.dart).
-
-The header floats over the conversation, so the height it takes is chat the learner cannot read. A narrow window therefore uses smaller values for the header's own padding — the card's outer margin, and the band above and below the diamond row — while the diamonds and the goal label keep their size ([#9147](https://github.com/pangeachat/client/issues/9147)). Both faces use the same values, so the top of the header does not move when it opens. The lower limit is the toggle row's tap target, which stays at least 48px tall. The metrics are defined in one place, [`GoalHeaderConstants`](../../lib/routes/chat/activity_sessions/goal_header_constants.dart).
-
-Diamonds fill in the goals' fixed order and never reshuffle — the goal a learner sees first stays first from start to finish. The **active goal** is the first one still unfinished: its diamond has a highlighted fill around it, and its description is the label under the row. Completing a goal fills its diamond wherever it sits, active or not; only when the _active_ goal's diamond fills does the next unfinished goal become active. So with three goals and the first active, finishing the second fills the second diamond while the first stays active; finishing the first then fills its diamond and hands active status to the third. Whenever any diamond is earned it flies up from the conversation and lands in its slot in the header, filling it in ([`GoalStarAnimation`](../../lib/routes/chat/choreographer/activity_orchestrator/goal_star_animation.dart), one diamond per goal via [`GoalStatusWidget`](../../lib/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart)).
-
-Tapping the header drops it down. Its top row keeps the session's XP on the left and the collapse chevron on the right; below it the diamonds shift from a horizontal row into a vertical column, and **each** goal — not just the active one — gets its description beside its diamond, an earned one its "+50" at the row's end. Tapping again collapses it. The end-activity actions live in this dropped-down view and are always reachable there: **"I'm done!"** ends the session for the tapping learner, and a learner may end early — the button is live before every diamond is filled and turns gold once they have completed all their own goals. **"End for all"** appears for admins (outside two-person bot sessions) and ends it for everyone. A learner who marked themselves done but changed their mind gets **"Wait, I'm not done!"** to return to the activity. Which buttons show is the `_showEndForMe` / `_showEndForAll` / `_showWaitNotDone` logic in [`ActivityStatsMenu`](../../lib/routes/chat/activity_sessions/activity_stats_menu.dart).
-
-A goal can be longer than the space it has: the active-goal label under the diamonds shows at most four lines, and each goal in the dropped-down list shows at most two. A goal cut at that limit ends in an inline **Show more** that opens it in place to its full text, and **Show less** closes it again ([#9318](https://github.com/pangeachat/client/issues/9318)). Only a cut goal gets the control. A goal that fits is plain text and does nothing when tapped, so nothing looks or announces as tappable unless it opens. On the list's top row, Show more takes its own tap, and the rest of the row still collapses the list.
-
-When a learner has earned every one of their diamonds, the whole header turns gold — background, border, and button — and in the collapsed state the active-goal label is replaced by a gold **"I'm done!"** button. Tapping that button ends the activity and shows the summary; tapping anywhere else on the header still drops it down to the full gold list, where "I'm done!" stays gold and clickable and "End for all" is there for admins.
-
-The header's left slot, opposite the chevron, carries the session's language chip when that language can be switched to (it is not the user's L2 already, and it doesn't match the user's L1) — the one offer to switch that a running session has, since it has no Start or Join button to attach one to. The behavior is [Switching from context](profile.instructions.md#switching-from-context).
-
-A header with no goals to show falls back to a plain **"Activity actions"** title in the same spot — no diamonds, but it still opens to the same end-activity buttons. This covers the admin or teacher who joins a session without taking a role (no goals of their own, but they still need "End for all") and any case where a role's goals can't be resolved — a legacy plan, or a failure loading or generating them — so a learner is never stranded without a way to end the activity.
-
-Once the summary lands the header goes away and the summary carries the goals — under the participant picker, not above it. The diamonds there follow the pick: selecting a coursemate swaps their feedback card *and* their goal list, so the two always describe the same person. With no pick the viewer sees their own goals, and an observer who never took a role sees the first participant's ([#8672](https://github.com/pangeachat/client/issues/8672)). If a learner's feedback leads to a regeneration that fails, the summary they already had stays on screen, with a short note that it could not be updated.
-
-### Reporting a wrong goal (staging only)
-
-On a staging build the team can report a diamond the orchestrator got wrong, so their complaints become data for improving it ([#9044](https://github.com/pangeachat/client/issues/9044)). **Tapping a diamond in the dropped-down goal list of a live session** opens the prompt: a filled diamond asks why it should not have been given, an empty one asks why it should have been and makes the reporter name one of their own messages in the session as the evidence. The comment is required either way — it is the whole diagnostic value of the report, and the server rejects a blank one — so submission stays blocked until one is typed, and for an empty diamond until a message is picked. The read-only goal lists — the start page's and the summary's — stay inert: the start page has no session to report against, and on the summary the list follows the participant picker, so a diamond there is as likely to be somebody else's as the reporter's.
-
-**Only the diamonds in the dropped-down list report; the collapsed header's do not.** The collapsed row's one job is to open that list and its diamonds sit in the middle of it, so a report sharing that target would take taps away from opening the header — and the collapsed row carries no goal descriptions, which would mean reporting a diamond the reporter cannot read. Within the list each diamond is the tap target rather than its whole row, because the list's top row is what collapses it again.
-
-**Nothing about the diamond changes.** The report is recorded against the orchestrator turn that awarded the goal, or failed to; it does not re-run the orchestrator, does not give or take a diamond, and does not alter the turn it concerns. The header is therefore left exactly as it was on success, and the prompt never implies the diamond will move. Every rejection is shown to the reporter rather than swallowed — a mis-aimed report, a legacy diamond with no turn to attach to, a retryable failure — because this is the team's own instrument and a silent failure is a complaint that was never recorded. The endpoint and its contract are the choreographer's: [conversation-orchestrator.instructions.md](../../../.github/.github/instructions/conversation-orchestrator.instructions.md).
-
-## Completion saves itself
-
-Saving a completed session is automatic — the design (what saving means, when it happens, and how stars bank on it) is the org doc's ([Saving and stars](../../../.github/.github/instructions/activities.instructions.md#saving-and-stars)); what the client owns is where the save runs. [`ActivityAutoSaveService`](../../lib/features/activity_sessions/activity_auto_save_service.dart) watches activity-role state changes across **all** rooms, not just the open chat, so a session that completes while the learner is elsewhere — or that completed before this login — still saves on the next sync. The save is idempotent, so a second device observing the same completion is harmless. A room whose plan is still hydrating is retried once the plan lands; a room whose plan is gone entirely (the archived-view rung in [When the activity can't be fetched](#when-the-activity-cant-be-fetched)) cannot resolve a target language and is skipped.
-
-### Role state stays in step with the server
-
-Every role lives in one shared role event (`pangea.activity_roles`), and two people writing to a room at the same moment can fork its history. When that happens, a sync can hand the client an older copy of the role event, and the Matrix SDK applies it over the newer one it already holds: a finished role reads as unfinished, the chat drops back to "Waiting to fill 1 role", and the save above skips the session ([#9229](https://github.com/pangeachat/client/issues/9229)). [`ActivityRolesStateRepair`](../../lib/features/activity_sessions/activity_roles_state_repair.dart) watches for the role event arriving that way and, when the room's copy differs from the server's current one, re-applies the server's copy through the SDK's own sync path. It only ever moves the client toward the server's state, never away from it, and each repair is reported to Sentry so we can see how often it happens.
-
-The profile's banked goal counter ([`totalStarsEarned`](../../lib/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart), the name predating [client#9420](https://github.com/pangeachat/client/issues/9420)) counts saved sessions only. In-session diamond displays stay live; the profile total and an activity card's XP both wait for the save.
-
-## The Learning Objectives page
-
-The analytics bar's star tracker opens the **Learning Objectives** page ([client#9436](https://github.com/pangeachat/client/issues/9436); it was the Stars list): **one tile per can-do** across the learner's joined courses, in course order, with no course headings — a Mission two courses share is one tile, read from the first, as that course shows it (its copy, else its pins). Only courses in the learner's current language are listed ([quests.instructions.md](quests.instructions.md), "Language scope"). Each tile ([`MissionTile`](../../lib/routes/analytics/activities/mission_tile.dart)) is a self-contained unit: its XP ring split by source with the Mission's star inside, the can-do statement, and its XP over its threshold — no activity count, which was busy, and no Practice, which is the Mission page's main action ([client#9559](https://github.com/pangeachat/client/issues/9559)). A tap opens the Mission's page for the tile's own course, and the open one carries the selected fill. Saved sessions no joined course's plan accounts for close the list under **Other activities**, as session rows (below), so a learner in no course still sees their record. Short titles and an image per can-do come later ([2-step-choreographer#3349](https://github.com/pangeachat/2-step-choreographer/issues/3349)); until then the full statement stands.
-
-### A Learning Objective's page
-
-[`ObjectiveDetailsView`](../../lib/routes/analytics/activities/objective_details_view.dart) opens beside the list the way a word's page opens beside the vocab list. Top to bottom:
-
-- **The course** it is read from — its avatar and name — as a link that opens the course page with this Mission on show. It is the course the page was opened from — the Mission card's or the tile's, carried in the page's link (`objective:<missionId>.c<courseRoomId>`) — so a Mission two courses share shows the course the learner was looking at; a link without one picks a course in the learner's current language ([client#9559](https://github.com/pangeachat/client/issues/9559)).
-- **The star and statement**, then the XP ring with the XP left to the star and the Conversation / Practice legend, with how much of Conversation came from goals under it; then **By skill** — speaking, listening, writing and reading tiles, and Other when there is XP no skill claims ([quests.instructions.md](quests.instructions.md), "What fills a Mission"). Until the Mission's progress and the XP it counts are in, the ring and legend shimmer rather than draw an empty ring beside numbers about to change.
-- **Finished (N)** — this Mission's finished activities (XP from a saved session in the learner's current language, [quests.instructions.md](quests.instructions.md), "Activity cards"), as cards in a scrolling row, each wearing the completed stamp with its XP; a tap opens the latest of those sessions. Only what is finished: the page is the Mission's record, and what to do next is the course page's Mission card.
-- **Suggested vocab** — the Mission's word list as the activity page's own word chips: a tap opens the word card in place, as on an activity's start page, rather than leaving for the word's vocab page.
-
-Its app bar carries the same Practice button as the vocab and grammar pages — primary, with the icon and the short "Practice" label — scoped to this Mission. It is primary here because practice is this page's main action; on the course page's Mission card the same Practice is secondary to Play, so it is the tonal pill there. A Mission only a course in another language holds shows, in place of the page, which language it is in and the switch to it, and no Practice.
-
-A saved session's row ([`AnalyticsActivityItem`](../../lib/routes/analytics/activities/activity_archive.dart)), under Other activities, is the learner's record of that session: the activity's title (the room's name once the plan is gone), their diamonds, their level, the XP they earned, and how many different vocabulary and grammar items they used. Every number comes from the summary and analytics saved with the session, so the row and the end-of-activity card can never disagree. Tapping a row opens the session.
-
-The stats sit under the diamonds as one compact line — XP first, in the gold that marks XP everywhere else, then a vocabulary count and a grammar count behind the same two icons the analytics bar uses for words and grammar. The counts are of distinct items used in that session, not of items new to the learner: the saved summary does not record which were new, and the row never shows a number the summary cannot back. A count of zero shows as zero rather than dropping the stat, so the rows stay aligned down the list.
-
-A session with no saved summary — an older one, or one whose generation failed — keeps its title and diamonds and shows nothing else: no level, no stats, and no gap where they would be. Sessions summarized before the bot made the summary saved one per display language, so a learner who has since changed their first language sees that same reduced row for those sessions.
-
-The open row carries the selected fill, and XP gives up the gold there so it stays readable against it.
-
-## Rating an activity
-
-Once a learner's own role is finished ("I'm done!", or an admin's "End for all"), a rating card pins to the bottom of the chat, above the finished-status bar: thumbs up/down, an optional comment, submit, and a dismiss X ([`ActivityRatingCard`](../../lib/routes/chat/activity_sessions/activity_rating_card.dart)). The "must have played" gate is client-trusted for v1 — a finished role is the evidence of play. Three rules govern when it shows ([#7194](https://github.com/pangeachat/client/issues/7194)):
-
-- **A submitted rating is final for that version.** The device remembers the (activity, pinned version) it rated ([`ActivityRatingStore`](../../lib/features/activity_sessions/activity_rating_store.dart)) and the card never reappears for it. Dismissing with the X hides it for the current view only — reopening the finished, unrated session brings it back.
-- **A newer version re-prompts.** The server keeps ONE opinion per (user, activity) and upserts, so re-rating a changed activity overwrites the learner's previous opinion — the aggregate reflects each rater's latest take, not per-version scores. The session's pinned `version_id` travels with the rating as analytics metadata only.
-- **Failures degrade softly.** A comment rejected by post-time moderation (422) keeps the card open to reword or submit rating-only — the rating was not recorded. An owner rating their own activity (403) hides the card quietly and doesn't re-prompt.
-
-The aggregate — an up-fraction and rater count served with the single-activity fetch — renders in the start page's top-right app-bar corner ([`ActivityRatingMeter`](../../lib/routes/chat/activity_sessions/activity_rating_meter.dart)): a **NEW** pill while the activity has fewer than the rating threshold (`kNewRatingThreshold`, currently 1 — i.e. unrated), then a small meter tinted from light red (all down) to light purple (all up). This header slot is the **only** surface that shows the badge or meter — map pins, large cards, and activity cards deliberately don't (the thin-card fields exist on `QuestActivityCard`, but the rating enters the map only as a score term — [world-map.instructions.md](world-map.instructions.md), Priority matrix).
-
-## Downloading the transcript
-
-The session's app bar carries the same **More** menu as any other chat ([routing.instructions.md](routing.instructions.md) → A chat's header actions): everything the session's chat-list row offers — go to course, notifications, end activity, leave, delete — plus **Invite** and **Download**, which exports the transcript. **Invite** is the one item the completion gate itself removes — a session that has ended, meaning finished for everyone (`isActivityFinished`), cannot be joined, though a learner coming back to it still needs to export it. That gate is the session ending for all, not the learner's own role archiving (`hasArchivedActivity`), which is narrower and reached only after auto-save — an observer who never took a role is still looking at a session that has ended. What else the menu shows tracks the learner's own role rather than the session's completion: End activity is offered only while they hold a role they have not finished, and Leave only until they have taken a role in a session that has started. (Regular, non-activity chats export from the chat-details button row instead.)
-
-Download exports the full message history — sender, timestamp, original and sent message, and use type — as TXT / CSV / XLSX ([`lib/features/download/`](../../lib/features/download/)). Two decisions govern who sees it and where:
-
-- **Any room member can export.** The download only surfaces content the member can already read in the chat, so it grants no new visibility. Do not gate it behind power level. The one real cost is that it puts an off-platform copy of a whole room's messages — everyone's, in a group or multi-learner session — in one member's hands; for research-study or minor-heavy rooms that off-platform copy is a genuinely different exposure from in-app reading, and is the open question to revisit if the studies need tighter control.
-- **Web and desktop only, for now.** The download is `kIsWeb`-gated because the native mobile write path (`download_file_util.dart`, storage-permission + Downloads dir) has never shipped and is unvalidated. Enabling mobile is deliberately deferred until that path is tested — until then a completed session on native shows no ⋮ menu at all (Download would be its only item).
-
-## Plans arrive a screenful at a time
-
-A course screen shows one activity per session room, and each needs its plan. Fetching them one at a time made a single screen cost dozens of round trips, so [`ActivityPlanRepo`](../../lib/features/activity_sessions/activity_plan_repo.dart) collects the keys a frame asks for and reads them in one request. Cards still appear together; what changed is how many times the device asks.
-
-Collecting them depends on waiting: surfaces request a plan per card as they build, so dispatching on the first request would send it before the second arrived and batch nothing. The repo therefore dispatches after the frame finishes asking — soon enough that nothing is perceptibly delayed, late enough that a screen travels as one request.
-
-Three rules decide what can share a request, and each exists because ignoring it would quietly change what a caller asked for:
-
-- **One display language per request.** The read applies a single language to everything in it, so a key wanting a different one starts a new request rather than being reordered into an existing one — hydration follows the order surfaces asked, and a learner watching a screen fill in should not see it rearranged to suit the transport.
-- **A refresh travels alone.** Re-reading past the cache is the whole point of a refresh, and a shared request cannot ask for that on behalf of one activity and not the others.
-- **Activities already known to be gone never travel.** The backend's "this is gone" verdict outlives the app session, so a known-dead activity is dropped before the request rather than re-asked — re-asking is a loop this system has already been through once.
-
-Batching changes the number of requests, never their standing: each activity in a request costs the learner's allowance exactly what it would have cost alone, and one activity's failure never decides another's. What the backend guarantees in return is in the [org activities doc](../../../.github/.github/instructions/activities.instructions.md).
-
-Reads stay under the learner's allowance rather than finding its edge. The repo spends its own per-minute budget of activity reads, set below the backend's so the map and quest reads that share it still fit, and a read the budget cannot cover waits for it to refill instead of being sent. Tripping the backend's limit costs a full minute with nothing loading, so a screen larger than the budget is better filled in over a few seconds than blanked for sixty.
-
-## When the activity can't be fetched
-
-Some session rooms reference an activity that no longer exists on the backend. The fallback ladder and the view-only contract are the org doc's ([Removed or unresolvable activities](../../../.github/.github/instructions/activities.instructions.md#editing-semantics)); what the client shows on each rung:
-
-- **Legacy room with the plan embedded in state** — old rooms stored the whole plan in the `pangea.activity_plan` event, and [`ActivityPlanRepo`](../../lib/features/activity_sessions/activity_plan_repo.dart) falls back to it when the fetch confirms the activity is gone. The session page looks normal — hero media, role cards, goals with labels, description and vocab — but is **view-only**: no picking a role, no scoring, no suggestions. The session presents as ended without writing anything to the room. The summary section works: a cached summary shows, and a new one can still be generated.
-- **No plan anywhere** — instead of an error, the page shows an **archived session**: room name as the title, participants with their roles and finished status, star counts without goal labels, the conversation timeline, and the cached summary if one exists. A banner explains the activity ran on an older version of activities and is no longer supported.
-- **Transient fetch failure** (network, backend down) — a retryable error state, never the archived view or the "no longer supported" banner. Only a confirmed "this activity is gone" response walks down the ladder.
-
-The page never gates its whole render on the plan fetch — the timeline, roles, and progress always display from room state.
-
-## Two ways in
-
-An activity opens one of two ways: as an overlay over the world map (when the learner is inside its course) or from its own shareable link (when they reach it directly). Both open the same activity surface — a side panel beside the map on a wide screen, a half-open bottom sheet on narrow with the camera settled on its map location (the Google Maps target UX), swipe-expandable to the full plan; see [routing.instructions.md](routing.instructions.md). A link can also ask to skip the lobby straight to role selection, or to reopen a specific in-progress session. The exact URL shapes are the cross-repo [deep-linking](../../../.github/.github/instructions/deep-linking.instructions.md) contract; this doc only relies on them.
-
-## Media is a carousel
-
-An activity's stimulus is a carousel of mixed media — images, audio, and video (uploaded or from YouTube) — in a set order; a single image is just a carousel of one. The kinds of block and the rules for resolving and rendering them are the org doc's. What the client owns is turning that list into something the learner can see.
-
-Two things shape how the client renders it. First, uploaded media arrives as a reference, not an address, so the client resolves it to a real URL before showing anything — and **every path that prepares an activity for display must resolve, or the media falls back to a placeholder.** YouTube blocks are the exception: they already carry their link. Second, how much of the carousel a surface shows depends on the room it has — a focused surface (the plan page, the live session) presents the whole carousel; a compact surface (a card, a map pin) shows just the first block, standing in for the rest. When an activity has only one piece of media, there is nothing to page through: the carousel degrades to a single display with no navigation controls. [`ActivityMediaBlock`](../../lib/features/activity_sessions/activity_media_block.dart) is the media model.
-
-On the plan page the lead block fills the top of the page, cropped to fit, with the goals and role cards over it. Tapping a lead image shows all of it in place: the goals, role cards and fade disappear, the image shows uncropped on a black band, and a close button above it, or a second tap on the image, brings back the cropped view and the overlays ([#9351](https://github.com/pangeachat/client/issues/9351)). A playing video clears the overlays the same way. The image opens in place on every platform, because an image has no webview to escape the mobile sheet. For the keyboard the image is one button, "View image": Enter or Space opens and closes it, and closing it from the close button puts focus back on the image.
-
-In the live session the carousel sits at the top of the chat, and tapping an image opens it full screen so the learner sees the whole image. By default the activity image is not drawn behind the messages, and the chat background stays plain (or shows the learner's own wallpaper). A photo behind the chat made the screen too busy over the map ([#9356](https://github.com/pangeachat/client/issues/9356)).
-
-A learner who wants the photo can turn on **Use activity image as chat background** in Settings > Style, under the wallpaper controls. It is off by default and saved per device. The image and the background never compete. While the carousel is on screen the background stays plain. As the learner scrolls the carousel out of view, a faint copy of the activity image fades in behind the chat, keeping pace with the scroll. Scrolling back to the carousel reverses it ([#9440](https://github.com/pangeachat/client/issues/9440)). While the setting is on, an activity chat with its own image never draws the learner's wallpaper, so the two never layer ([#9514](https://github.com/pangeachat/client/issues/9514)). Every other chat keeps the wallpaper, and so does an activity chat when the setting is off. The background is the activity's own image: its first image, or a legacy activity's single image. An activity with no image of its own keeps the plain background.
-
-On the web, media images are fetched in a way that needs the content CDN to allow cross-origin requests; that requirement lives in the org and devops docs, not here.
-
-## Video: inline in some places, a thumbnail in others
-
-Video is where the two surfaces differ most:
-
-- **On a focused surface — the plan page, the live session — each block plays in place.** Images show, uploaded videos use the app's player, and YouTube always plays as an embed, never downloaded or re-hosted (YouTube's terms forbid it). The carousel stays calm: the learner swipes through blocks, a video plays only when they tap it, and nothing starts on its own. **Playing in place is web and desktop only.** On native mobile the focused surface is a scrolling bottom sheet, and a live player is a platform view (webview) that can't live inside a scrolling sheet — it escapes the sheet's bounds and its drag gestures force the embed into an inexitable fullscreen ([#7672](https://github.com/pangeachat/client/issues/7672)/[#7673](https://github.com/pangeachat/client/issues/7673)). So on iOS/Android a tapped video opens on its own full-screen player with an obvious close, instead of inline.
-- **On a compact surface — a card, a map pin — the first block stands in for the carousel, carrying a small video tag (not a play badge) when it's a video.** That is what makes a card carousel-aware: a video-first activity leads with its video, not an unrelated image. The tag differentiates video without a play badge's false promise of play-in-place: tapping the card doesn't play the video there; it opens the activity, where the video starts. (A centered play badge on a card read as "play here" and did nothing on tap — see [pangeachat/client#7543](https://github.com/pangeachat/client/issues/7543).)
-
-That tap is the _only_ time a video starts on its own, and it starts **muted, with a tap to unmute**. Muting is what lets it start at all — browsers block sound the learner didn't ask for — and it keeps the feel consistent with tap-to-play everywhere else. The request to autoplay travels with the activity's link, so reopening or sharing that link replays the same thing, the same way "skip to role selection" and "reopen this session" do.
-
-**Captions show in the activity's language.** YouTube shows captions by default, and we let it: the embed can't see a learner's own YouTube caption setting, so there is no "off" to respect. What we set is the track: **the activity's target language**, so a Spanish activity captions in Spanish. Same-language subtitles support listening practice, and tying the track to the activity rather than to the app's UI language keeps it right for a learner working across several languages. When the activity's language is unknown we name none and let YouTube choose. A learner who wants another language picks it from YouTube's own caption menu, which is why [#7693](https://github.com/pangeachat/client/issues/7693) needed no toggle of ours.
-
-Two limits come from YouTube. It only picks a track the video has, so a video with no caption track in the activity's language shows its default track instead. And turning captions off and on with the CC button brings back the video's default track, which YouTube then remembers for later videos. On iOS and Android we clear that remembered language each time a video opens, so every video starts in the activity's language again. On web YouTube keeps it inside its own frame, which the app can't reach, so we don't clear it there ([#8828](https://github.com/pangeachat/client/issues/8828)).
-
-**The embed takes the mouse only once the learner clicks it.** On the web a playing embed is a separate page inside ours, and the browser hands it every mouse event over its area. Left alone, a wheel over the video scrolls nothing, and a card floating over the video cannot be clicked ([#9063](https://github.com/pangeachat/client/issues/9063)). So the video area behaves like the rest of the page until the learner clicks it. That click plays or pauses, as a click on any video does, and from then on YouTube's own controls answer the mouse. Moving the pointer off the video gives the area back to the page. The cost is that YouTube's hover bar needs that one click first. A touch screen has no pointer to move away, so after the first tap the embed keeps touches.
-
-**The keyboard plays video without leaving the app.** The thumbnail is a button named "Play video", and the playing video is one Tab stop named for what it is. Each has the usual [focus ring](accessibility.instructions.md#focus-rings). With focus on the player, Space, Enter or K plays and pauses, M mutes and unmutes, and C turns captions on and off. K, M and C are YouTube's own keys, so a learner who knows them there already knows them here. M is also the keyboard's "tap to unmute" for a video that started muted from a link. Focus stays on our control and never moves into the YouTube frame. The way back out of that frame is about fifty Tab presses through YouTube's related-video links, it ends at the top of the page, and the app cannot hear Escape from inside another site's frame. A screen reader can still walk into the frame and use YouTube's buttons, which sit behind its "Show player controls" button while its bar is hidden. We do not depend on that. Where the browser blocks a video from starting with sound, as Safari's engine does, the player opens paused and the first press of Space, or the first click, starts it. Seeking and volume level have no key. The same keys work on the app's player for uploaded videos.
-
----
-
-Do not add ActivityVocabWidget to ActivityStatsMenu.
-
-## Future Work
-
-_Last updated: 2026-02-15_
-
-**Lifecycle & Session Management**
-
-- [pangeachat/client#5390](https://github.com/pangeachat/client/issues/5390) — Separate activities where user has a role from ones where they do not
-- [pangeachat/client#4805](https://github.com/pangeachat/client/discussions/4805) — Open/Joined/Done Activities not sorted
-- [pangeachat/client#4955](https://github.com/pangeachat/client/discussions/4955) — Highlight ongoing and open sessions
-- [pangeachat/client#4666](https://github.com/pangeachat/client/discussions/4666) — Auto-save to completed activities
-- [pangeachat/client#4667](https://github.com/pangeachat/client/discussions/4667) — Disallow kicking activity members with roles
-- [pangeachat/client#5435](https://github.com/pangeachat/client/discussions/5435) — On activity completion, create set of multiple-choice checks
-- [pangeachat/pangea-bot#1002](https://github.com/pangeachat/pangea-bot/issues/1002) — If goals seem complete, suggest they end the activity
-- [pangeachat/pangea-bot#999](https://github.com/pangeachat/pangea-bot/issues/999) — If stale activity session in-waiting, offer to do it
-- [pangeachat/pangea-bot#967](https://github.com/pangeachat/pangea-bot/issues/967) — Invite user to activity session
-
-**Roles & Bot Behavior**
-
-- [pangeachat/2-step-choreographer#1709](https://github.com/pangeachat/2-step-choreographer/issues/1709) — In Activity, if Bot's role shouldn't start activity, wait before posting message
-- [pangeachat/2-step-choreographer#1639](https://github.com/pangeachat/2-step-choreographer/issues/1639) — Activity roles look strange in non-english
-
-**Activity Summaries**
-
-- [pangeachat/2-step-choreographer#1340](https://github.com/pangeachat/2-step-choreographer/issues/1340) — activity summary not in activity's language of instruction
-- [pangeachat/2-step-choreographer#1695](https://github.com/pangeachat/2-step-choreographer/issues/1695) — Don't make punctuation corrections on voice message transcriptions
-- [pangeachat/2-step-choreographer#1102](https://github.com/pangeachat/2-step-choreographer/issues/1102) — Duplicate superlatives
-
-**Descriptions & Onboarding UX**
-
-- [pangeachat/2-step-choreographer#1707](https://github.com/pangeachat/2-step-choreographer/issues/1707) — Simplify Activity Descriptions
-- [pangeachat/2-step-choreographer#1708](https://github.com/pangeachat/2-step-choreographer/issues/1708) — Include translations for activity description examples
-- [pangeachat/client#5609](https://github.com/pangeachat/client/issues/5609) — Copy/Paste single words or letters feature
-- [pangeachat/client#5613](https://github.com/pangeachat/client/discussions/5613) — Shorten the learning curve time, especially for A1 users
-- [pangeachat/client#3382](https://github.com/pangeachat/client/discussions/3382) — More interesting loading screen during activity generation?
-- [pangeachat/client#4956](https://github.com/pangeachat/client/discussions/4956) — Add help-walkthrough for Course Page
-- [pangeachat/client#4947](https://github.com/pangeachat/client/discussions/4947) — Hard to tell where Activity Ping is coming from
-
-**Activity Content & Media**
-
-- [pangeachat/2-step-choreographer#1106](https://github.com/pangeachat/2-step-choreographer/issues/1106) — Generate role images based on activity images
-- [pangeachat/2-step-choreographer#1118](https://github.com/pangeachat/2-step-choreographer/issues/1118) — retry with feedback on image generation content violation
-- [pangeachat/2-step-choreographer#1440](https://github.com/pangeachat/2-step-choreographer/issues/1440) — Endpoint: Add avatar image to scene
-- [pangeachat/2-step-choreographer#1209](https://github.com/pangeachat/2-step-choreographer/issues/1209) — Prototype activity video search
-- [pangeachat/2-step-choreographer#1103](https://github.com/pangeachat/2-step-choreographer/issues/1103) — Add morphs to activities
-- [pangeachat/client#4650](https://github.com/pangeachat/client/discussions/4650) — Should generated images match art style associated with region language is associated with?
-- [pangeachat/client#2837](https://github.com/pangeachat/client/discussions/2837) — Integrating YouTube videos
-- [pangeachat/client#2773](https://github.com/pangeachat/client/discussions/2773) — Turn a link to interact-able activities
-- [pangeachat/cms#128](https://github.com/pangeachat/cms/issues/128) — Course languages get mixed up when previously translated
-- [pangeachat/cms#43](https://github.com/pangeachat/cms/issues/43) — Because course image is loaded from topic image, course image is not available until topics are fully loaded
-
-**Planning, Courses & Discovery**
-
-- [pangeachat/client#5196](https://github.com/pangeachat/client/issues/5196) — Don't see what you need? Course request button
-- [pangeachat/client#4793](https://github.com/pangeachat/client/discussions/4793) — In-app request for course
-- [pangeachat/client#2751](https://github.com/pangeachat/client/discussions/2751) — Mapping Learning Objectives with CEFR or ACTFL
-- [pangeachat/client#2185](https://github.com/pangeachat/client/discussions/2185) — Limit activity planner mode to provided choices?
-- [pangeachat/client#1658](https://github.com/pangeachat/client/discussions/1658) — Activity Planner Ideas
-
-**New Activity Types & Game Ideas**
-
-- [pangeachat/client#4841](https://github.com/pangeachat/client/discussions/4841) — Other Activity Game Ideas
-- [pangeachat/client#3952](https://github.com/pangeachat/client/discussions/3952) — I Spy vocab game
-
-**Teacher Experience**
-
-- [pangeachat/client#1837](https://github.com/pangeachat/client/discussions/1837) — Teacher's feedback (will add more)
+- Which course does a shared session belong to, including whose avatar its Chats row shows? ([#9328](https://github.com/pangeachat/client/discussions/9328))
+- Should browser or phone back leave a session the learner only viewed, as the back arrow does?
+- Should a Mission's sessions from a second course or another language show on its tile, not under Other activities?

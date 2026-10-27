@@ -202,9 +202,10 @@ class ActivitySessionStartView extends StatelessWidget {
           ),
           body: controller.loading
               ? const Center(child: CircularProgressIndicator.adaptive())
-              // Transient fetch failure — retryable, never the archived view
-              // or the "no longer supported" notice (the fallback ladder in
-              // activities.instructions.md engages only on a confirmed 404).
+              // Transient fetch failure — an error, never the archived view or
+              // the "no longer supported" notice: the fallback ladder in
+              // activity-session.instructions.md engages only on a confirmed
+              // 404.
               : controller.error != null
               ? Center(
                   child: Padding(
@@ -508,7 +509,8 @@ class _IconLabel extends StatelessWidget {
 }
 
 /// Archived body for a removed activity with no plan recoverable from room
-/// state (the last rung of the fallback ladder in activities.instructions.md):
+/// state (the last rung of the fallback ladder in
+/// activity-session.instructions.md):
 /// the "no longer supported" notice, plus whatever the room itself holds —
 /// each recorded role's occupant, role name, earned star count, and finished
 /// status — so past progress stays reviewable.

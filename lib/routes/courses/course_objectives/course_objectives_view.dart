@@ -550,8 +550,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     }
     // Immersive in-course open: the token producer drops the `left=course`
     // card (and any right panel) and keeps the `?m=course:` scope, so the plan
-    // takes the card's slot and backs out to it. A video hero autostarts
-    // (muted).
+    // takes the card's slot and backs out to it. A video hero sets the
+    // token's autoplay field, which nothing reads today, so nothing plays
+    // until tapped.
     context.go(
       WorkspaceNav.openCourseActivity(
         room.id,

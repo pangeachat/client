@@ -15,7 +15,7 @@ import 'package:fluffychat/widgets/url_image_widget.dart';
 /// activity's media carousel scrolls out of view and back out as it returns,
 /// so the background and the tappable image never show at the same time. While
 /// it is on, it replaces the learner's wallpaper ([replacesWallpaper]). See
-/// activities.instructions.md.
+/// activity-session.instructions.md.
 class ActivityChatBackground extends StatefulWidget {
   final Uri imageUrl;
   final double blur;

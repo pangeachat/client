@@ -156,10 +156,13 @@ class ChatListItem extends StatelessWidget {
             // archive page's delete button, renders in an overlay above the
             // tile — a semantic sibling of the row button — while an
             // invisible same-size copy holds its layout slot.
-            // An activity session's row wears the activity's photo the way
-            // its card and map pin do: a rounded square in the session's
-            // state frame, with the completed stamp on its corner when the
-            // learner is replaying an activity they've saved. Finished
+            // An activity session's row wears the room's avatar — the
+            // activity's first image, set at launch — as a rounded square in
+            // the session's state frame, with the completed stamp on its
+            // corner when the learner is replaying an activity they've
+            // saved. The course avatar on it is whatever [space] the caller
+            // passes; the app-wide list passes the last listing course it
+            // found (activities.instructions.md, "Sessions in Chats"). Finished
             // sessions never reach a list (isHiddenRoom), so every activity
             // row here is a live one. A listed room is never saved itself,
             // so a saved session of its activity is another room's.

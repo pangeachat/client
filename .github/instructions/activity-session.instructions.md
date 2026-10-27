@@ -1,0 +1,77 @@
+---
+applyTo: "lib/routes/chat/activity_sessions/**,lib/routes/chat/choreographer/activity_orchestrator/**,lib/features/activity_sessions/**,lib/features/download/**"
+description: "What a learner sees inside a running activity session and when it ends: the goal header, target vocab, the summary, saving, a session whose activity is gone, the chat background, rating and the transcript."
+---
+
+# Activity Session
+
+## Purpose
+
+What a learner sees while playing a conversation activity and when it ends. Finding and starting one, and its media, belong to [activities](activities.instructions.md).
+
+## The experience
+
+1. The chat opens with the activity's media on top and a goal header pinned above the messages: the learner's goals as diamonds, their session XP and the current goal.
+2. Target vocab the learner uses turns gold, in messages and in the vocab chips.
+3. Earning a goal fills its diamond; earning them all turns the header gold.
+4. The learner taps "I'm done!" and a rating card appears. Once everyone is done, the summary replaces the header.
+5. The session saves itself and leaves Chats. Its transcript can be downloaded from the chat's menu.
+
+## Decisions
+
+Who re-decides: unassigned throughout.
+
+### Target vocab in the conversation
+
+- A set phrase is one vocab entry, matched word by word; a word matches any form.
+- One rule drives the gold highlight and the used chips, so they agree. Analytics stays per word.
+
+### The goal header
+
+- The header stays pinned and looks like a button, because it opens the goal list. Only its top row opens and closes it.
+- Session XP is a number, so the eye stays on the goal; it and earned diamonds' XP show only to a role-holder in their current language.
+- A narrow window shrinks the header's padding, never the diamonds, because the header covers chat.
+- Diamonds keep the goals' order; the active goal, highlighted, is the first unfinished. An earned diamond flies up to the active goal's slot.
+- The header's left slot offers to switch to the session's language when the learner can switch to it.
+- The open list describes every goal. "I'm done!" works early and finishes the learner's own role; "Wait, I'm not done!" undoes it. Admins get "End for all", except in two-person bot sessions.
+- A long goal is cut with Show more; one that fits is plain text, so nothing falsely looks tappable.
+- All diamonds earned turns the header gold, "I'm done!" replacing the goal.
+- With no goals it reads "Activity actions", so nobody is stranded.
+- On staging the team reports a wrong diamond from the open list, with a required comment and, for a missing one, the message that earned it.
+- A report changes no diamond, and every failure shows, because a lost report is a lost complaint.
+
+### The summary
+
+- The summary replaces the header once everyone is done, showing the picked participant's goals, the viewer's own by default.
+- A failed regeneration keeps the old summary; a failed translation shows it as written.
+
+### Completion saves itself
+
+- A finished session saves even if it finished while the learner was away.
+
+### When the activity can't be fetched
+
+- A gone activity whose plan the room kept shows its page, view-only, with the "no longer supported" notice.
+- With no plan anywhere, the page says the activity is no longer supported and shows the participants, roles and Leave.
+- A network failure shows an error, with no retry button.
+- The start page waits for the activity; the chat shows timeline, roles and progress at once.
+
+### The chat background
+
+- No activity image behind the chat, as it was too busy over the map, unless a per-device setting fades it in as the media scrolls away, replacing the wallpaper.
+
+### The rating card
+
+- It appears once the learner's role is finished, trusted as proof of play.
+- A submitted rating is final until a new version; dismissing hides it for this visit.
+- A rejected comment keeps the card open; an owner's own rating closes it quietly.
+
+### Downloading the transcript
+
+- Any member can download, since it shows only what they can read; web only until the native path is tested.
+- The session's menu also has Search and Chat details; Delete is for admins. Invite leaves once the session ends for everyone. End activity shows while the learner holds an unfinished role in a started session, and Leave until they take a role in one.
+
+## Open questions
+
+- Should research-study or minor-heavy rooms restrict exporting everyone's messages?
+- Should an archived session show its timeline and saved summary?

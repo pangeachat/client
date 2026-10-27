@@ -33,8 +33,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// Learning Objectives list the way a word's page opens from the vocab list:
 /// the can-do with its star and XP ring, then the activities the learner has
 /// finished toward it as a scrolling row of stamped cards, then the course's
-/// words for it. Read from the first
-/// joined course that carries the Mission, as the list does.
+/// words for it. Read from the course it was opened from, as `_find`
+/// resolves it.
 class ObjectiveDetailsView extends StatefulWidget {
   final String missionId;
 

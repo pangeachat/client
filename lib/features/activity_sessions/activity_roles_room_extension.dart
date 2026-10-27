@@ -186,7 +186,9 @@ extension ActivityRolesRoomExtension on Room {
   bool get hasArchivedActivity => ownRoleState?.isArchived ?? false;
 
   /// The admin dashboard joined the user here to review the session, and they
-  /// have not taken a role in it (#9364).
+  /// have not taken a role in it (#9364). Taking a role makes them a
+  /// participant, so the room shows again. This only hides the room from the
+  /// lists; a link still opens it, so the dashboard's Open chat link works.
   bool get isAdminReviewOnly {
     final reviewRoomIds = client
         .accountData[PangeaEventTypes.adminReviewRooms]

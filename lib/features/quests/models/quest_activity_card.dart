@@ -39,9 +39,11 @@ class ActivityCardGoal {
       );
 }
 
-/// A thin activity projection for lists and map pins, read from `activities-v2`
-/// with a field projection (no full plan body). The full `ActivityPlanModel`
-/// is fetched only when an activity is opened.
+/// A thin activity projection for map pins and map search, read with a field
+/// projection (no full plan body). Course lists carry full plans instead
+/// (`QuestActivity`); a pin's full `ActivityPlanModel` loads when its preview
+/// card opens, before the activity itself does (activities.instructions.md,
+/// "A running activity is a chat room").
 ///
 /// Beyond the search/relevance fields, the bbox card carries cheap,
 /// **non-localized** structural metadata so the map can rank and show progress

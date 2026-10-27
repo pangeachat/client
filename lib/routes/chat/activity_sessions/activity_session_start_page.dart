@@ -79,13 +79,14 @@ enum SessionState {
 /// and its "no longer supported" notice.
 ///
 /// The removed-activity ladder is scoped to session ROOMS: every rung renders
-/// what the room itself holds — roles, stars, timeline — so a learner or their
-/// teacher can always reopen an old session and review the work done there
-/// (activities.instructions.md, "Removed or unresolvable activities"). Reached
-/// WITHOUT a session, as a bare world-map pin is, there is no such thing to
-/// review: the archived body would render empty and the notice would tell the
-/// learner an activity they never ran is out of date (#7918). That case is a
-/// plain not-found instead.
+/// what the room itself holds — the plan it kept, else each role's occupant
+/// and earned diamonds — so a learner or their teacher can always reopen an
+/// old session and see who played it and how far they got
+/// (activity-session.instructions.md, "When the activity can't be fetched").
+/// Reached WITHOUT a session, as a bare world-map pin is, there is no such
+/// thing to review: the archived body would render empty and the notice would
+/// tell the learner an activity they never ran is out of date (#7918). That
+/// case is a plain not-found instead.
 bool archivedSessionGate({
   required bool activityRemoved,
   required bool hasSessionRoom,
@@ -144,8 +145,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   /// The backend confirmed this activity no longer exists (404). [activity]
   /// may still be populated from the plan embedded in legacy room state; when
   /// it stays null the view renders the archived fallback from room state
-  /// alone. Distinct from [error], which is a transient failure worth
-  /// retrying.
+  /// alone. Distinct from [error], a transient failure the view shows as an
+  /// error, with no retry button.
   bool activityRemoved = false;
 
   ActivityPlanModel? activity;
@@ -522,9 +523,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   }
 
   Future<void> _loadActivity() async {
-    // v3: read the canonical activities-v2 plan directly (fetched on open, per
-    // the thin-list/full-on-open contract). Localization is choreo's concern,
-    // consumed later when this read swaps to a choreo endpoint.
+    // v3: read the plan through choreo's localized activity read. The page
+    // shows a spinner until this resolves, unlike the chat view, which shows
+    // timeline, roles and progress at once (activity-session.instructions.md,
+    // "When the activity can't be fetched").
     //
     // On an existing session room, read at the room's pinned version, not the
     // latest: role ids re-mint on owner edits, and the room's role state (and
@@ -540,7 +542,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
       case ActivityPlanLookupStatus.found:
         activity = lookup.plan;
       case ActivityPlanLookupStatus.removed:
-        // Removed-activity fallback ladder (activities.instructions.md):
+        // Removed-activity fallback ladder (activity-session.instructions.md):
         // legacy rooms embed the full plan in room state — render it
         // view-only; with no plan anywhere the view shows the archived body
         // built from role/goal state.
@@ -705,6 +707,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     closeOwnRoomPanel(context, room.id);
   }
 
+  /// The page stores no state of its own: its step is read from the room —
+  /// whether one exists, whether the learner is in it, whether they hold a
+  /// role, whether every role is filled (activities.instructions.md, "The
+  /// start page mirrors the room").
   SessionState get _sessionState {
     if (isArchived) return SessionState.archived;
 

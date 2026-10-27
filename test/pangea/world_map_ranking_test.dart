@@ -355,6 +355,12 @@ void main() {
       expect(isNewActivity(0), isTrue);
       expect(isNewActivity(kNewRatingThreshold), isFalse);
     });
+
+    test('an activity is NEW only until its first rating', () {
+      // NEW means unrated (activities.instructions.md, "Rating an activity").
+      expect(isNewActivity(0), isTrue);
+      expect(isNewActivity(1), isFalse);
+    });
   });
 
   group('pinScore — joinable dominates', () {

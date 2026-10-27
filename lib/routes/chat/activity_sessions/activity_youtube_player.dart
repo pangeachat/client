@@ -20,8 +20,9 @@ import 'package:fluffychat/utils/url_launcher.dart';
 /// embedded against their URL, never re-hosted (YouTube ToS), and this is the
 /// one player that runs on both Flutter web and mobile.
 ///
-/// When [muted] (the deep-link autoplay case) it autostarts silently so the
-/// browser permits autoplay; with sound it relies on the user's tap as the
+/// When [muted] (the deep-link autoplay case, which no surface reaches
+/// today: see `ActivityMediaCarousel.autoplayIndex`) it autostarts silently so
+/// the browser permits autoplay; with sound it relies on the user's tap as the
 /// gesture. Only the carousel's active page should mount one — it owns an
 /// iframe/webview that must be torn down with [YoutubePlayerController.close].
 ///
@@ -32,6 +33,12 @@ import 'package:fluffychat/utils/url_launcher.dart';
 /// captions anyway. The package's defaults would also hardcode English. On
 /// native we clear YouTube's remembered caption language before each video so
 /// the activity's language wins; see [_forgetStickyCaptionLanguage] (#8828).
+/// Same-language captions support listening practice, and tying the track to
+/// the activity rather than the app's UI language keeps it right for a learner
+/// working across several languages. YouTube only picks a track the video has,
+/// so a video with no track in that language shows its default one. A learner
+/// who wants another language picks it from YouTube's own caption menu, which
+/// is why there is no toggle of ours (#7693).
 ///
 /// The embed only takes the mouse once the learner clicks it, so the page
 /// around it keeps scrolling while they are just passing over ([
@@ -166,8 +173,9 @@ class _ActivityYoutubePlayerState extends State<ActivityYoutubePlayer> {
       _offerYoutubeIfUnplayable(value);
     });
     // Native only: every native player opens from the learner's tap and should
-    // start at once. On web a browser that blocks sound autoplay leaves it
-    // paused by design, so not starting there is no failure.
+    // start at once. On web a browser that blocks sound autoplay (Safari's
+    // engine does) leaves it paused by design, and the first Space or click
+    // starts it, so not starting there is no failure.
     if (!kIsWeb) {
       _stallTimer = Timer(const Duration(seconds: 10), () {
         _waitedOut = true;

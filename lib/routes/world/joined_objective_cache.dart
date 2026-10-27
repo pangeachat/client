@@ -226,8 +226,8 @@ class JoinedObjectiveCache {
       questIdByRoom.keys.toList(),
       // A joined member's outline read carries the course room id, so the
       // quest owner's private activities are included (membership-verified
-      // server-side; activities.instructions.md § Ownership, visibility, and
-      // removal).
+      // server-side; pangeachat/.github activities.instructions.md
+      // § Ownership, visibility, and removal).
       outlineOf: (roomId) => _outlineFromQuest(
         questIdByRoom[roomId]!,
         rules: rules[roomId] ?? CourseListRules.none,
