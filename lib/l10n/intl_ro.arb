@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:28:00.604284",
+    "@@last_modified": "2026-10-27 14:48:04.819391",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10778,5 +10778,8 @@
     "analyticsSharedOnJoin": "Profesorii tăi din {course} pot vedea acum progresul tău de învățare.",
     "sharedAnalyticsTitle": "Progres de învățare partajat",
     "sharedAnalyticsDesc": "Profesorii din aceste cursuri pot vedea progresul tău de învățare. Părăsește un curs pentru a opri partajarea.",
-    "sharedAnalyticsNone": "Nu partajezi progresul tău de învățare cu niciun curs."
+    "sharedAnalyticsNone": "Nu partajezi progresul tău de învățare cu niciun curs.",
+    "sharedAnalyticsOthersTitle": "Alții care îți pot vedea progresul",
+    "removeAnalyticsAccess": "Revocă accesul",
+    "removeAnalyticsAccessDesc": "{name} nu va mai putea să-ți vadă progresul de învățare."
 }

@@ -6284,5 +6284,23 @@
     "sharedAnalyticsNone": "You aren't sharing your learning progress with any course.",
     "@sharedAnalyticsNone": {
         "description": "Shown in Learning settings when no course's teachers can see the learner's progress."
+    },
+    "sharedAnalyticsOthersTitle": "Others who can see your progress",
+    "@sharedAnalyticsOthersTitle": {
+        "description": "Label in Learning settings above the people who can see the learner's progress but teach none of their courses."
+    },
+    "removeAnalyticsAccess": "Remove access",
+    "@removeAnalyticsAccess": {
+        "description": "Tooltip of the button that stops someone who teaches none of the learner's courses from seeing their progress."
+    },
+    "removeAnalyticsAccessDesc": "{name} will no longer be able to see your learning progress.",
+    "@removeAnalyticsAccessDesc": {
+        "description": "Confirmation message before removing someone's access to the learner's progress.",
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
     }
 }

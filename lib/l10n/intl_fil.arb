@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-27 12:27:53.457231",
+    "@@last_modified": "2026-10-27 14:47:57.376001",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10906,5 +10906,8 @@
     "analyticsSharedOnJoin": "Makikita na ng iyong mga guro sa {course} ang iyong pag-unlad sa pag-aaral.",
     "sharedAnalyticsTitle": "Naibahaging pag-unlad sa pag-aaral",
     "sharedAnalyticsDesc": "Makikita ng mga guro sa mga kursong ito ang iyong pag-unlad sa pag-aaral. Umalis sa isang kurso para ihinto ang pagbabahagi.",
-    "sharedAnalyticsNone": "Hindi mo ibinabahagi ang iyong pag-unlad sa pag-aaral sa anumang kurso."
+    "sharedAnalyticsNone": "Hindi mo ibinabahagi ang iyong pag-unlad sa pag-aaral sa anumang kurso.",
+    "sharedAnalyticsOthersTitle": "Iba pa na makakakita ng iyong progreso",
+    "removeAnalyticsAccess": "Alisin ang access",
+    "removeAnalyticsAccessDesc": "Hindi na makikita ni {name} ang iyong progreso sa pag-aaral."
 }

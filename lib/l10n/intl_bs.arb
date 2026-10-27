@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-27 12:27:50.294368",
+    "@@last_modified": "2026-10-27 14:47:55.617924",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Vaši nastavnici u {course} sada mogu vidjeti vaš napredak u učenju.",
     "sharedAnalyticsTitle": "Podijeljen napredak u učenju",
     "sharedAnalyticsDesc": "Nastavnici u ovim kursevima mogu vidjeti vaš napredak u učenju. Napustite kurs da prestanete dijeliti.",
-    "sharedAnalyticsNone": "Ne dijelite svoj napredak u učenju ni sa jednim kursom."
+    "sharedAnalyticsNone": "Ne dijelite svoj napredak u učenju ni sa jednim kursom.",
+    "sharedAnalyticsOthersTitle": "Drugi koji mogu vidjeti vaš napredak",
+    "removeAnalyticsAccess": "Ukloni pristup",
+    "removeAnalyticsAccessDesc": "{name} više neće moći vidjeti vaš napredak u učenju."
 }

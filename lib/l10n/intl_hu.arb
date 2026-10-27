@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-27 12:27:54.745396",
+    "@@last_modified": "2026-10-27 14:47:59.300886",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10152,5 +10152,8 @@
     "analyticsSharedOnJoin": "A {course} tanárai mostantól láthatják a tanulási folyamatodat.",
     "sharedAnalyticsTitle": "Megosztott tanulási folyamat",
     "sharedAnalyticsDesc": "Az ezeken a kurzusokon lévő tanárok láthatják a tanulási folyamatodat. Lépj ki egy kurzusból a megosztás leállításához.",
-    "sharedAnalyticsNone": "Nem osztod meg a tanulási folyamatodat egyetlen kurzussal sem."
+    "sharedAnalyticsNone": "Nem osztod meg a tanulási folyamatodat egyetlen kurzussal sem.",
+    "sharedAnalyticsOthersTitle": "Mások, akik láthatják a fejlődésedet",
+    "removeAnalyticsAccess": "Hozzáférés eltávolítása",
+    "removeAnalyticsAccessDesc": "{name} többé nem láthatja a tanulási folyamatodat."
 }

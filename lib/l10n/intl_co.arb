@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-27 12:27:51.468552",
+    "@@last_modified": "2026-10-27 14:47:56.709680",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "I vostri prufessori in {course} ponu avà vede u vostru prugressu d'apprendimentu.",
     "sharedAnalyticsTitle": "Prugressu d'apprendimentu spartutu",
     "sharedAnalyticsDesc": "I prufessori in sti corsi ponu vede u vostru prugressu d'apprendimentu. Lasciate un corsu per piantà di sparte.",
-    "sharedAnalyticsNone": "Ùn sparte micca u vostru prugressu d'apprendimentu cù alcun corsu."
+    "sharedAnalyticsNone": "Ùn sparte micca u vostru prugressu d'apprendimentu cù alcun corsu.",
+    "sharedAnalyticsOthersTitle": "Altri chì ponu vede u vostru prugressu",
+    "removeAnalyticsAccess": "Caccià l'accessu",
+    "removeAnalyticsAccessDesc": "{name} ùn puderà più vede u vostru prugressu d'amparera."
 }

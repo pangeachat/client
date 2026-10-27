@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-27 12:28:01.970913",
+    "@@last_modified": "2026-10-27 14:48:05.179550",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "توھان جا استاد {course} ۾ ھاڻي توھان جي سکيا جي ترقي ڏسي سگھن ٿا.",
     "sharedAnalyticsTitle": "گڏيل سکيا جي ترقي",
     "sharedAnalyticsDesc": "ھنن ڪورسن ۾ استاد توھان جي سکيا جي ترقي ڏسي سگھن ٿا. شيئرنگ بند ڪرڻ لاءِ ڪورس ڇڏي ڏيو.",
-    "sharedAnalyticsNone": "توھان ڪنھن به ڪورس سان پنھنجي سکيا جي ترقي شيئر نٿا ڪريو."
+    "sharedAnalyticsNone": "توھان ڪنھن به ڪورس سان پنھنجي سکيا جي ترقي شيئر نٿا ڪريو.",
+    "sharedAnalyticsOthersTitle": "ٻيا جيڪي توهان جي ترقي ڏسي سگهن ٿا",
+    "removeAnalyticsAccess": "رسائي ختم ڪريو",
+    "removeAnalyticsAccessDesc": "{name} هاڻي توهان جي سکيا جي ترقي ڏسي نه سگهندو."
 }

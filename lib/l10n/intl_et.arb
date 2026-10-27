@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-27 12:27:52.305961",
+    "@@last_modified": "2026-10-27 14:47:57.320461",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,8 @@
     "analyticsSharedOnJoin": "Sinu õpetajad kursusel {course} näevad nüüd sinu õppimise edenemist.",
     "sharedAnalyticsTitle": "Jagatud õppimise edenemine",
     "sharedAnalyticsDesc": "Nende kursuste õpetajad näevad sinu õppimise edenemist. Jagamise lõpetamiseks lahku kursuselt.",
-    "sharedAnalyticsNone": "Sa ei jaga oma õppimise edenemist ühegi kursusega."
+    "sharedAnalyticsNone": "Sa ei jaga oma õppimise edenemist ühegi kursusega.",
+    "sharedAnalyticsOthersTitle": "Teised, kes näevad sinu edusamme",
+    "removeAnalyticsAccess": "Eemalda ligipääs",
+    "removeAnalyticsAccessDesc": "{name} ei näe enam sinu õppimise edusamme."
 }

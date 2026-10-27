@@ -6,18 +6,70 @@ import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
-/// Which courses can see the learner's analytics, and taking that away when
-/// the learner leaves one (course-analytics-access.instructions.md).
+/// A joined course with those of its teachers who can see the learner's
+/// analytics.
+class SharedCourse {
+  final Room course;
+  final List<User> teachers;
+
+  const SharedCourse({required this.course, required this.teachers});
+}
+
+/// Who can see the learner's analytics, as Learning settings lists it: each
+/// course with its teachers who can, then everyone else who can, whom the
+/// learner may remove (course-analytics-access.instructions.md).
+class AnalyticsSharing {
+  final List<SharedCourse> courses;
+  final List<User> others;
+
+  const AnalyticsSharing({required this.courses, required this.others});
+
+  bool get isEmpty => courses.isEmpty && others.isEmpty;
+}
+
+/// Who can see the learner's analytics, and taking that away when the learner
+/// leaves a course or removes someone (course-analytics-access.instructions.md).
 extension AnalyticsSharingClientExtension on Client {
-  /// The joined courses whose teachers can see the learner's analytics: one of
-  /// the course's teachers is in one of the learner's analytics rooms. Shown
-  /// as the shared-courses list in Learning settings.
-  Future<List<Room>> coursesSharingAnalytics() async {
-    final viewers = await _analyticsViewerIds();
-    return [
-      for (final course in _joinedCourses())
-        if (_teacherIds(course).any(viewers.contains)) course,
-    ];
+  /// Everyone joined to one of the learner's analytics rooms, grouped by the
+  /// joined courses they teach; those who teach none of them are [others].
+  Future<AnalyticsSharing> analyticsSharing() async {
+    final viewers = await _analyticsViewers();
+    final teaching = <String>{};
+    final courses = <SharedCourse>[];
+    for (final course in _joinedCourses()) {
+      final teacherIds = _teacherIds(course);
+      teaching.addAll(teacherIds);
+      final teachers = [
+        for (final id in teacherIds)
+          if (viewers[id] != null) viewers[id]!,
+      ];
+      if (teachers.isNotEmpty) {
+        courses.add(SharedCourse(course: course, teachers: teachers));
+      }
+    }
+    return AnalyticsSharing(
+      courses: courses,
+      others: [
+        for (final viewer in viewers.values)
+          if (!teaching.contains(viewer.id)) viewer,
+      ],
+    );
+  }
+
+  /// Takes [userId] out of every one of the learner's analytics rooms. Offered
+  /// only for someone who teaches none of the learner's courses, since a
+  /// course's teachers seeing its students is a condition of membership. A
+  /// failure is thrown to the caller, which shows it.
+  Future<void> removeAnalyticsViewer(String userId) async {
+    for (final analyticsRoom in allMyAnalyticsRooms) {
+      final members = await analyticsRoom.requestParticipants([
+        Membership.join,
+        Membership.invite,
+      ]);
+      if (members.any((u) => u.id == userId)) {
+        await analyticsRoom.kick(userId);
+      }
+    }
   }
 
   /// When the learner leaves [course], its teachers stop seeing their
@@ -77,9 +129,12 @@ extension AnalyticsSharingClientExtension on Client {
     };
   }
 
-  Future<Set<String>> _analyticsViewerIds() async => {
+  /// Everyone but the learner and the bot joined to one of the learner's
+  /// analytics rooms, by id.
+  Future<Map<String, User>> _analyticsViewers() async => {
     for (final room in allMyAnalyticsRooms)
       for (final user in await room.requestParticipants([Membership.join]))
-        user.id,
+        if (user.id != userID && user.id != BotName.byEnvironment)
+          user.id: user,
   };
 }

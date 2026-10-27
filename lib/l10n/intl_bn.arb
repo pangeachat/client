@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:27:50.226011",
+    "@@last_modified": "2026-10-27 14:47:55.530242",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10674,5 +10674,8 @@
     "analyticsSharedOnJoin": "{course} এর আপনার শিক্ষকরা এখন আপনার শেখার অগ্রগতি দেখতে পারবেন।",
     "sharedAnalyticsTitle": "শেয়ার করা শেখার অগ্রগতি",
     "sharedAnalyticsDesc": "এই কোর্সগুলোর শিক্ষকরা আপনার শেখার অগ্রগতি দেখতে পারবেন। শেয়ার করা বন্ধ করতে একটি কোর্স ত্যাগ করুন।",
-    "sharedAnalyticsNone": "আপনি কোনো কোর্সের সাথে আপনার শেখার অগ্রগতি শেয়ার করছেন না।"
+    "sharedAnalyticsNone": "আপনি কোনো কোর্সের সাথে আপনার শেখার অগ্রগতি শেয়ার করছেন না।",
+    "sharedAnalyticsOthersTitle": "অন্যান্য যারা আপনার অগ্রগতি দেখতে পারে",
+    "removeAnalyticsAccess": "অ্যাক্সেস সরান",
+    "removeAnalyticsAccessDesc": "{name} আর আপনার শেখার অগ্রগতি দেখতে পারবে না।"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-27 12:28:00.292912",
+    "@@last_modified": "2026-10-27 14:48:03.735526",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Aphunzitsi anu mu {course} tsopano akhoza kuona mmene mukupitira patsogolo pa maphunziro anu.",
     "sharedAnalyticsTitle": "Kugawana mmene mukupitira patsogolo pa maphunziro",
     "sharedAnalyticsDesc": "Aphunzitsi m'maphunziro awa akhoza kuona mmene mukupitira patsogolo pa maphunziro anu. Tulukani mu phunziro kuti musiye kugawana.",
-    "sharedAnalyticsNone": "Simukugawana mmene mukupitira patsogolo pa maphunziro anu ndi phunziro lililonse."
+    "sharedAnalyticsNone": "Simukugawana mmene mukupitira patsogolo pa maphunziro anu ndi phunziro lililonse.",
+    "sharedAnalyticsOthersTitle": "Ena amene angathe kuona mmene mukuyendera",
+    "removeAnalyticsAccess": "Chotsani mwayi",
+    "removeAnalyticsAccessDesc": "{name} sadzakwanitsanso kuona mmene mukuyendera pakuphunzira."
 }

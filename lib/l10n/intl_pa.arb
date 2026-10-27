@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-27 12:28:00.610290",
+    "@@last_modified": "2026-10-27 14:48:04.269729",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "ਤੁਹਾਡੇ ਅਧਿਆਪਕ {course} ਵਿੱਚ ਹੁਣ ਤੁਹਾਡੀ ਸਿੱਖਣ ਦੀ ਪ੍ਰਗਤੀ ਦੇਖ ਸਕਦੇ ਹਨ।",
     "sharedAnalyticsTitle": "ਸਾਂਝੀ ਸਿੱਖਣ ਦੀ ਪ੍ਰਗਤੀ",
     "sharedAnalyticsDesc": "ਇਹਨਾਂ ਕੋਰਸਾਂ ਦੇ ਅਧਿਆਪਕ ਤੁਹਾਡੀ ਸਿੱਖਣ ਦੀ ਪ੍ਰਗਤੀ ਦੇਖ ਸਕਦੇ ਹਨ। ਸਾਂਝਾ ਕਰਨਾ ਬੰਦ ਕਰਨ ਲਈ ਕੋਰਸ ਛੱਡੋ।",
-    "sharedAnalyticsNone": "ਤੁਸੀਂ ਕਿਸੇ ਵੀ ਕੋਰਸ ਨਾਲ ਆਪਣੀ ਸਿੱਖਣ ਦੀ ਪ੍ਰਗਤੀ ਸਾਂਝੀ ਨਹੀਂ ਕਰ ਰਹੇ ਹੋ।"
+    "sharedAnalyticsNone": "ਤੁਸੀਂ ਕਿਸੇ ਵੀ ਕੋਰਸ ਨਾਲ ਆਪਣੀ ਸਿੱਖਣ ਦੀ ਪ੍ਰਗਤੀ ਸਾਂਝੀ ਨਹੀਂ ਕਰ ਰਹੇ ਹੋ।",
+    "sharedAnalyticsOthersTitle": "ਹੋਰ ਜੋ ਤੁਹਾਡੀ ਪ੍ਰਗਤੀ ਦੇਖ ਸਕਦੇ ਹਨ",
+    "removeAnalyticsAccess": "ਪਹੁੰਚ ਹਟਾਓ",
+    "removeAnalyticsAccessDesc": "{name} ਤੁਹਾਡੀ ਸਿੱਖਣ ਦੀ ਪ੍ਰਗਤੀ ਨੂੰ ਹੋਰ ਦੇਖਣ ਦੇ ਯੋਗ ਨਹੀਂ ਹੋਵੇਗਾ।"
 }

@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-27 12:27:52.528656",
+    "@@last_modified": "2026-10-27 14:47:57.912652",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10086,5 +10086,8 @@
     "analyticsSharedOnJoin": "Opettajasi kurssilla {course} näkevät nyt oppimisesi edistymisen.",
     "sharedAnalyticsTitle": "Jaettu oppimisen edistyminen",
     "sharedAnalyticsDesc": "Näiden kurssien opettajat näkevät oppimisesi edistymisen. Poistu kurssilta lopettaaksesi jakamisen.",
-    "sharedAnalyticsNone": "Et jaa oppimisesi edistymistä minkään kurssin kanssa."
+    "sharedAnalyticsNone": "Et jaa oppimisesi edistymistä minkään kurssin kanssa.",
+    "sharedAnalyticsOthersTitle": "Muut, jotka näkevät edistymisesi",
+    "removeAnalyticsAccess": "Poista pääsy",
+    "removeAnalyticsAccessDesc": "{name} ei enää näe oppimisesi edistymistä."
 }

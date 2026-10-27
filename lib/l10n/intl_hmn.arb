@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-27 12:27:54.849386",
+    "@@last_modified": "2026-10-27 14:48:00.378405",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Koj cov xib fwb hauv {course} tam sim no tuaj yeem pom koj txoj kev kawm.",
     "sharedAnalyticsTitle": "Kev kawm tau qhia tawm",
     "sharedAnalyticsDesc": "Cov xib fwb hauv cov chav kawm no tuaj yeem pom koj txoj kev kawm. Tawm ntawm chav kawm kom tsis txhob qhia tawm.",
-    "sharedAnalyticsNone": "Koj tsis tau qhia koj txoj kev kawm nrog ib chav kawm twg."
+    "sharedAnalyticsNone": "Koj tsis tau qhia koj txoj kev kawm nrog ib chav kawm twg.",
+    "sharedAnalyticsOthersTitle": "Lwm tus uas pom koj txoj kev kawm",
+    "removeAnalyticsAccess": "Tshem tawm kev nkag mus",
+    "removeAnalyticsAccessDesc": "{name} yuav tsis pom koj txoj kev kawm ntxiv lawm."
 }

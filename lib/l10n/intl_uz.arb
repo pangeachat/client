@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-27 12:28:04.539135",
+    "@@last_modified": "2026-10-27 14:48:07.597159",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10053,5 +10053,8 @@
     "analyticsSharedOnJoin": "{course} dagi oʻqituvchilaringiz endi sizning oʻquv jarayoningizni koʻrishlari mumkin.",
     "sharedAnalyticsTitle": "Umumiy oʻquv jarayoni",
     "sharedAnalyticsDesc": "Ushbu kurslardagi oʻqituvchilar sizning oʻquv jarayoningizni koʻrishlari mumkin. Ulashishni toʻxtatish uchun kursni tark eting.",
-    "sharedAnalyticsNone": "Siz oʻquv jarayoningizni hech qaysi kurs bilan baham koʻrmayapsiz."
+    "sharedAnalyticsNone": "Siz oʻquv jarayoningizni hech qaysi kurs bilan baham koʻrmayapsiz.",
+    "sharedAnalyticsOthersTitle": "Taraqqiyotingizni koʻra oladigan boshqalar",
+    "removeAnalyticsAccess": "Kirishni olib tashlash",
+    "removeAnalyticsAccessDesc": "{name} endi oʻquv taraqqiyotingizni koʻra olmaydi."
 }

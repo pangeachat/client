@@ -3515,7 +3515,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-27 12:27:57.645784",
+    "@@last_modified": "2026-10-27 14:48:02.460351",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10049,5 +10049,8 @@
     "analyticsSharedOnJoin": "Jūsu skolotāji kursā {course} tagad var redzēt jūsu mācību progresu.",
     "sharedAnalyticsTitle": "Kopīgotais mācību progress",
     "sharedAnalyticsDesc": "Šo kursu skolotāji var redzēt jūsu mācību progresu. Lai pārtrauktu kopīgošanu, pametiet kursu.",
-    "sharedAnalyticsNone": "Jūs nekopīgojat savu mācību progresu ne ar vienu kursu."
+    "sharedAnalyticsNone": "Jūs nekopīgojat savu mācību progresu ne ar vienu kursu.",
+    "sharedAnalyticsOthersTitle": "Citi, kas var redzēt jūsu progresu",
+    "removeAnalyticsAccess": "Noņemt piekļuvi",
+    "removeAnalyticsAccessDesc": "{name} vairs nevarēs redzēt jūsu mācību progresu."
 }

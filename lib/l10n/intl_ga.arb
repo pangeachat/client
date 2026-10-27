@@ -3543,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-27 12:27:53.451649",
+    "@@last_modified": "2026-10-27 14:47:58.587755",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10060,5 +10060,8 @@
     "analyticsSharedOnJoin": "Is féidir le do mhúinteoirí i {course} do dhul chun cinn foghlama a fheiceáil anois.",
     "sharedAnalyticsTitle": "Dul chun cinn foghlama roinnte",
     "sharedAnalyticsDesc": "Is féidir le múinteoirí sna cúrsaí seo do dhul chun cinn foghlama a fheiceáil. Fág cúrsa chun stop a chur leis an roinnt.",
-    "sharedAnalyticsNone": "Níl tú ag roinnt do dhul chun cinn foghlama le haon chúrsa."
+    "sharedAnalyticsNone": "Níl tú ag roinnt do dhul chun cinn foghlama le haon chúrsa.",
+    "sharedAnalyticsOthersTitle": "Daoine eile atá in ann do dhul chun cinn a fheiceáil",
+    "removeAnalyticsAccess": "Bain rochtain",
+    "removeAnalyticsAccessDesc": "Ní bheidh {name} in ann do dhul chun cinn foghlama a fheiceáil a thuilleadh."
 }

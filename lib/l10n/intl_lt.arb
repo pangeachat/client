@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-27 12:27:57.338257",
+    "@@last_modified": "2026-10-27 14:48:01.625806",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10827,5 +10827,8 @@
     "analyticsSharedOnJoin": "Jūsų mokytojai kurse „{course}“ dabar gali matyti jūsų mokymosi pažangą.",
     "sharedAnalyticsTitle": "Bendrinama mokymosi pažanga",
     "sharedAnalyticsDesc": "Šių kursų mokytojai gali matyti jūsų mokymosi pažangą. Išeikite iš kurso, kad nustotumėte bendrinti.",
-    "sharedAnalyticsNone": "Jūs nebendrinate savo mokymosi pažangos su jokiu kursu."
+    "sharedAnalyticsNone": "Jūs nebendrinate savo mokymosi pažangos su jokiu kursu.",
+    "sharedAnalyticsOthersTitle": "Kiti, kurie gali matyti jūsų pažangą",
+    "removeAnalyticsAccess": "Pašalinti prieigą",
+    "removeAnalyticsAccessDesc": "{name} nebegalės matyti jūsų mokymosi pažangos."
 }

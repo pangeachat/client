@@ -9,6 +9,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/analytics_access/analytics_sharing_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
@@ -19,6 +20,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   const courseId = '!course:fakeServer.notExisting';
+  const teacherId = '@rivera:fakeServer.notExisting';
 
   late Client client;
 
@@ -68,7 +70,16 @@ void main() {
       routes: [
         GoRoute(
           path: '/',
-          builder: (_, _) => Scaffold(body: SharedCourseTile(course: course)),
+          builder: (_, _) => Scaffold(
+            body: SharedCourseTile(
+              shared: SharedCourse(
+                course: course,
+                teachers: [
+                  User(teacherId, displayName: 'Ms Rivera', room: course),
+                ],
+              ),
+            ),
+          ),
         ),
       ],
     );
@@ -84,6 +95,8 @@ void main() {
 
     expect(find.byType(CourseAvatar), findsOneWidget);
     expect(find.byType(Icon), findsNothing);
+    // The course's teacher who can see the learner's progress, under it.
+    expect(find.text('Ms Rivera'), findsOneWidget);
 
     await tester.tap(find.text('Spanish 101'));
     await tester.pumpAndSettle();

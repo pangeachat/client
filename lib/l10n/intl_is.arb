@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-27 12:27:56.243604",
+    "@@last_modified": "2026-10-27 14:47:59.707751",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Kennararnir þínir í {course} geta nú séð námsframvindu þína.",
     "sharedAnalyticsTitle": "Deild námsframvinda",
     "sharedAnalyticsDesc": "Kennarar í þessum námskeiðum geta séð námsframvindu þína. Farðu úr námskeiði til að hætta að deila.",
-    "sharedAnalyticsNone": "Þú ert ekki að deila námsframvindu þinni með neinu námskeiði."
+    "sharedAnalyticsNone": "Þú ert ekki að deila námsframvindu þinni með neinu námskeiði.",
+    "sharedAnalyticsOthersTitle": "Aðrir sem sjá framfarir þínar",
+    "removeAnalyticsAccess": "Fjarlægja aðgang",
+    "removeAnalyticsAccessDesc": "{name} mun ekki lengur geta séð námsframfarir þínar."
 }

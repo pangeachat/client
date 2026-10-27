@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:27:54.851806",
+    "@@last_modified": "2026-10-27 14:47:59.520168",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10122,5 +10122,8 @@
     "analyticsSharedOnJoin": "Pengajar Anda di {course} kini dapat melihat progres belajar Anda.",
     "sharedAnalyticsTitle": "Progres belajar yang dibagikan",
     "sharedAnalyticsDesc": "Pengajar di kursus ini dapat melihat progres belajar Anda. Keluar dari kursus untuk berhenti berbagi.",
-    "sharedAnalyticsNone": "Anda tidak membagikan progres belajar Anda dengan kursus mana pun."
+    "sharedAnalyticsNone": "Anda tidak membagikan progres belajar Anda dengan kursus mana pun.",
+    "sharedAnalyticsOthersTitle": "Orang lain yang dapat melihat progres Anda",
+    "removeAnalyticsAccess": "Hapus akses",
+    "removeAnalyticsAccessDesc": "{name} tidak akan lagi dapat melihat progres belajar Anda."
 }

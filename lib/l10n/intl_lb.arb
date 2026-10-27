@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-27 12:27:57.658517",
+    "@@last_modified": "2026-10-27 14:48:01.590955",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Deng Enseignanten am Cours {course} kënnen elo däi Léierfortschrëtt gesinn.",
     "sharedAnalyticsTitle": "Gedeelte Léierfortschrëtt",
     "sharedAnalyticsDesc": "Enseignanten an dëse Coursë kënnen däi Léierfortschrëtt gesinn. Verlooss e Cours fir d'Deelen ze stoppen.",
-    "sharedAnalyticsNone": "Du deels däi Léierfortschrëtt mat kengem Cours."
+    "sharedAnalyticsNone": "Du deels däi Léierfortschrëtt mat kengem Cours.",
+    "sharedAnalyticsOthersTitle": "Anerer, déi däi Fortschrëtt gesinn",
+    "removeAnalyticsAccess": "Zougang ewechhuelen",
+    "removeAnalyticsAccessDesc": "{name} wäert däi Léierfortschrëtt net méi gesinn."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-27 12:27:50.663149",
+    "@@last_modified": "2026-10-27 14:47:55.726744",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "በ{course} ውስጥ ያሉ አስተማሪዎችዎ አሁን የመማር ሂደትዎን ማየት ይችላሉ።",
     "sharedAnalyticsTitle": "የተጋራ የመማር ሂደት",
     "sharedAnalyticsDesc": "በእነዚህ ኮርሶች ውስጥ ያሉ አስተማሪዎች የመማር ሂደትዎን ማየት ይችላሉ። ማጋራቱን ለማቆም ከኮርስ ይውጡ።",
-    "sharedAnalyticsNone": "የመማር ሂደትዎን ከማንኛውም ኮርስ ጋር እያጋሩ አይደሉም።"
+    "sharedAnalyticsNone": "የመማር ሂደትዎን ከማንኛውም ኮርስ ጋር እያጋሩ አይደሉም።",
+    "sharedAnalyticsOthersTitle": "ሂደትዎን ማየት የሚችሉ ሌሎች",
+    "removeAnalyticsAccess": "መዳረሻን አስወግድ",
+    "removeAnalyticsAccessDesc": "{name} ከእንግዲህ የመማር ሂደትዎን ማየት አይችልም።"
 }

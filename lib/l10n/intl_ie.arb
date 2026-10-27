@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-27 12:28:04.758312",
+    "@@last_modified": "2026-10-27 14:47:59.745743",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10678,5 +10678,8 @@
     "analyticsSharedOnJoin": "Is féidir le do mhúinteoirí i {course} do dhul chun cinn foghlama a fheiceáil anois.",
     "sharedAnalyticsTitle": "Dul chun cinn foghlama roinnte",
     "sharedAnalyticsDesc": "Is féidir le múinteoirí sna cúrsaí seo do dhul chun cinn foghlama a fheiceáil. Fág cúrsa chun stop a chur le roinnt.",
-    "sharedAnalyticsNone": "Níl tú ag roinnt do dhul chun cinn foghlama le haon chúrsa."
+    "sharedAnalyticsNone": "Níl tú ag roinnt do dhul chun cinn foghlama le haon chúrsa.",
+    "sharedAnalyticsOthersTitle": "Daoine eile atá in ann d'fhorbairt a fheiceáil",
+    "removeAnalyticsAccess": "Bain rochtain",
+    "removeAnalyticsAccessDesc": "Ní bheidh {name} in ann d'fhorbairt foghlama a fheiceáil a thuilleadh."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:27:54.411718",
+    "@@last_modified": "2026-10-27 14:47:58.529902",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10960,5 +10960,8 @@
     "analyticsSharedOnJoin": "המורים שלך בקורס {course} יכולים כעת לראות את התקדמות הלמידה שלך.",
     "sharedAnalyticsTitle": "התקדמות למידה משותפת",
     "sharedAnalyticsDesc": "מורים בקורסים אלה יכולים לראות את התקדמות הלמידה שלך. עזוב קורס כדי להפסיק לשתף.",
-    "sharedAnalyticsNone": "אינך משתף את התקדמות הלמידה שלך עם אף קורס."
+    "sharedAnalyticsNone": "אינך משתף את התקדמות הלמידה שלך עם אף קורס.",
+    "sharedAnalyticsOthersTitle": "אחרים שיכולים לראות את ההתקדמות שלך",
+    "removeAnalyticsAccess": "הסר גישה",
+    "removeAnalyticsAccessDesc": "{name} לא יוכל/תוכל יותר לראות את התקדמות הלמידה שלך."
 }

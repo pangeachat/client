@@ -1317,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-27 12:28:03.341433",
+    "@@last_modified": "2026-10-27 14:48:07.606204",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10996,5 +10996,8 @@
     "analyticsSharedOnJoin": "{course}లోని మీ ఉపాధ్యాయులు ఇప్పుడు మీ అభ్యాస పురోగతిని చూడగలరు.",
     "sharedAnalyticsTitle": "భాగస్వామ్యం చేయబడిన అభ్యాస పురోగతి",
     "sharedAnalyticsDesc": "ఈ కోర్సులలోని ఉపాధ్యాయులు మీ అభ్యాస పురోగతిని చూడగలరు. భాగస్వామ్యాన్ని ఆపడానికి ఒక కోర్సు నుండి నిష్క్రమించండి.",
-    "sharedAnalyticsNone": "మీరు ఏ కోర్సుతోనూ మీ అభ్యాస పురోగతిని పంచుకోవడం లేదు."
+    "sharedAnalyticsNone": "మీరు ఏ కోర్సుతోనూ మీ అభ్యాస పురోగతిని పంచుకోవడం లేదు.",
+    "sharedAnalyticsOthersTitle": "మీ పురోగతిని చూడగలిగే ఇతరులు",
+    "removeAnalyticsAccess": "యాక్సెస్‌ను తీసివేయండి",
+    "removeAnalyticsAccessDesc": "{name} మీ అభ్యాస పురోగతిని ఇకపై చూడలేరు."
 }

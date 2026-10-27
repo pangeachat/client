@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-27 12:28:02.216796",
+    "@@last_modified": "2026-10-27 14:48:05.950163",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Macallimiintaada {course} hadda waxay arki karaan horumarkaaga waxbarasho.",
     "sharedAnalyticsTitle": "Horumarka waxbarasho ee la wadaago",
     "sharedAnalyticsDesc": "Macallimiinta koorsooyinkan waxay arki karaan horumarkaaga waxbarasho. Ka bax koorsada si aad u joojiso wadaagista.",
-    "sharedAnalyticsNone": "Ma wadaagaysid horumarkaaga waxbarasho koorsana."
+    "sharedAnalyticsNone": "Ma wadaagaysid horumarkaaga waxbarasho koorsana.",
+    "sharedAnalyticsOthersTitle": "Kuwa kale ee arki kara horumarkaaga",
+    "removeAnalyticsAccess": "Ka saar gelitaanka",
+    "removeAnalyticsAccessDesc": "{name} ma awoodi doono inuu arko horumarkaaga waxbarasho."
 }

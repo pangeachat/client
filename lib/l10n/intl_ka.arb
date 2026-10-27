@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-27 12:27:56.133104",
+    "@@last_modified": "2026-10-27 14:48:00.416841",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10946,5 +10946,8 @@
     "analyticsSharedOnJoin": "თქვენი მასწავლებლები {course}-ში ახლა ხედავენ თქვენს სასწავლო პროგრესს.",
     "sharedAnalyticsTitle": "გაზიარებული სასწავლო პროგრესი",
     "sharedAnalyticsDesc": "ამ კურსების მასწავლებლებს შეუძლიათ ნახონ თქვენი სასწავლო პროგრესი. გაზიარების შესაჩერებლად დატოვეთ კურსი.",
-    "sharedAnalyticsNone": "თქვენ არ აზიარებთ თქვენს სასწავლო პროგრესს არცერთ კურსთან."
+    "sharedAnalyticsNone": "თქვენ არ აზიარებთ თქვენს სასწავლო პროგრესს არცერთ კურსთან.",
+    "sharedAnalyticsOthersTitle": "სხვები, ვინც ხედავს თქვენს პროგრესს",
+    "removeAnalyticsAccess": "წვდომის წაშლა",
+    "removeAnalyticsAccessDesc": "{name} ვეღარ შეძლებს თქვენი სწავლის პროგრესის ნახვას."
 }

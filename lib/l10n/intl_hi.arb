@@ -3082,7 +3082,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-27 12:27:54.684088",
+    "@@last_modified": "2026-10-27 14:47:58.792732",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10678,5 +10678,8 @@
     "analyticsSharedOnJoin": "{course} में आपके शिक्षक अब आपकी सीखने की प्रगति देख सकते हैं।",
     "sharedAnalyticsTitle": "सीखने की प्रगति साझा की गई",
     "sharedAnalyticsDesc": "इन कोर्स के शिक्षक आपकी सीखने की प्रगति देख सकते हैं। साझा करना बंद करने के लिए कोर्स छोड़ दें।",
-    "sharedAnalyticsNone": "आप किसी भी कोर्स के साथ अपनी सीखने की प्रगति साझा नहीं कर रहे हैं।"
+    "sharedAnalyticsNone": "आप किसी भी कोर्स के साथ अपनी सीखने की प्रगति साझा नहीं कर रहे हैं।",
+    "sharedAnalyticsOthersTitle": "अन्य लोग जो आपकी प्रगति देख सकते हैं",
+    "removeAnalyticsAccess": "पहुँच हटाएँ",
+    "removeAnalyticsAccessDesc": "{name} अब आपकी सीखने की प्रगति नहीं देख पाएगा।"
 }

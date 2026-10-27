@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-27 12:27:58.036063",
+    "@@last_modified": "2026-10-27 14:48:01.853564",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Afaka mahita ny fivoaran'ny fianaranao izao ny mpampianatra anao ao amin'ny {course}.",
     "sharedAnalyticsTitle": "Fizarana ny fivoaran'ny fianarana",
     "sharedAnalyticsDesc": "Afaka mahita ny fivoaran'ny fianaranao ny mpampianatra amin'ireo taranja ireo. Mialà amin'ny taranja iray mba hampitsaharana ny fizarana.",
-    "sharedAnalyticsNone": "Tsy mizara ny fivoaran'ny fianaranao amin'ny taranja rehetra ianao."
+    "sharedAnalyticsNone": "Tsy mizara ny fivoaran'ny fianaranao amin'ny taranja rehetra ianao.",
+    "sharedAnalyticsOthersTitle": "Ny hafa afaka mahita ny fivoaranao",
+    "removeAnalyticsAccess": "Esory ny fidirana",
+    "removeAnalyticsAccessDesc": "Tsy ho afaka hahita ny fivoaran'ny fianaranao intsony i {name}."
 }

@@ -27,6 +27,10 @@ void main() {
   const teacherA = '@teacherA:fakeServer.notExisting';
   const coTeacher = '@coteacher:fakeServer.notExisting';
   const teacherC = '@teacherC:fakeServer.notExisting';
+  // Teaches none of the learner's courses: a teacher of a course they left.
+  const formerTeacher = '@former:fakeServer.notExisting';
+  // BOT_NAME below; the bot is never listed.
+  const bot = 'pangeabot';
   const courseA = '!courseA:fakeServer.notExisting';
   const courseB = '!courseB:fakeServer.notExisting';
   const courseC = '!courseC:fakeServer.notExisting';
@@ -148,17 +152,37 @@ void main() {
     return room;
   }
 
-  test('lists the courses one of whose teachers sees the analytics', () async {
+  test('groups who sees the analytics by course, then everyone else', () async {
     client.rooms = [
       course(courseA, [teacherA, coTeacher]),
       course(courseB, [coTeacher]),
       course(courseC, [teacherC]),
-      analyticsRoom([teacherA, coTeacher]),
+      analyticsRoom([teacherA, coTeacher, formerTeacher, bot]),
     ];
 
-    final shared = await client.coursesSharingAnalytics();
+    final sharing = await client.analyticsSharing();
 
-    expect(shared.map((r) => r.id), [courseA, courseB]);
+    expect(
+      {
+        for (final shared in sharing.courses)
+          shared.course.id: shared.teachers.map((u) => u.id).toList(),
+      },
+      {
+        courseA: [teacherA, coTeacher],
+        courseB: [coTeacher],
+      },
+    );
+    expect(sharing.others.map((u) => u.id), [formerTeacher]);
+  });
+
+  test('removing someone takes them out of the analytics room', () async {
+    client.rooms = [
+      analyticsRoom([formerTeacher]),
+    ];
+
+    await client.removeAnalyticsViewer(formerTeacher);
+
+    expect(kicked, [formerTeacher]);
   });
 
   // Leaving stops the sharing (course-analytics-access.instructions.md).

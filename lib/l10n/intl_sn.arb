@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-27 12:28:02.965749",
+    "@@last_modified": "2026-10-27 14:48:05.894687",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Vadzidzisi vako mu {course} vava kukwanisa kuona kufambira mberi kwako pakudzidza.",
     "sharedAnalyticsTitle": "Kufambira mberi pakudzidza kwagoverwa",
     "sharedAnalyticsDesc": "Vadzidzisi vari muzvidzidzo izvi vanogona kuona kufambira mberi kwako pakudzidza. Siya chidzidzo kuti umise kugovera.",
-    "sharedAnalyticsNone": "Hauri kugovera kufambira mberi kwako pakudzidza nechero chidzidzo."
+    "sharedAnalyticsNone": "Hauri kugovera kufambira mberi kwako pakudzidza nechero chidzidzo.",
+    "sharedAnalyticsOthersTitle": "Vamwe vanogona kuona kufambira mberi kwako",
+    "removeAnalyticsAccess": "Bvisa mukana",
+    "removeAnalyticsAccessDesc": "{name} haachakwanisi kuona kufambira mberi kwako mukudzidza."
 }

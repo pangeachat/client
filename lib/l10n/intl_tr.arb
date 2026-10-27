@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-27 12:28:03.974160",
+    "@@last_modified": "2026-10-27 14:48:06.710612",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10347,5 +10347,8 @@
     "analyticsSharedOnJoin": "{course} içindeki öğretmenleriniz artık öğrenme ilerlemenizi görebilir.",
     "sharedAnalyticsTitle": "Paylaşılan öğrenme ilerlemesi",
     "sharedAnalyticsDesc": "Bu kurslardaki öğretmenler öğrenme ilerlemenizi görebilir. Paylaşımı durdurmak için bir kurstan ayrılın.",
-    "sharedAnalyticsNone": "Öğrenme ilerlemenizi hiçbir kursla paylaşmıyorsunuz."
+    "sharedAnalyticsNone": "Öğrenme ilerlemenizi hiçbir kursla paylaşmıyorsunuz.",
+    "sharedAnalyticsOthersTitle": "İlerlemenizi görebilen diğerleri",
+    "removeAnalyticsAccess": "Erişimi kaldır",
+    "removeAnalyticsAccessDesc": "{name} artık öğrenme ilerlemenizi göremeyecek."
 }

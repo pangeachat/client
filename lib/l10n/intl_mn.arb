@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-27 12:27:59.227899",
+    "@@last_modified": "2026-10-27 14:48:04.171628",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "{course} хичээлийн багш нар таны сурлагын явцыг одоо харах боломжтой.",
     "sharedAnalyticsTitle": "Хуваалцсан сурлагын явц",
     "sharedAnalyticsDesc": "Эдгээр хичээлийн багш нар таны сурлагын явцыг харах боломжтой. Хуваалцахаа зогсоохын тулд хичээлээс гарна уу.",
-    "sharedAnalyticsNone": "Та сурлагын явцаа ямар ч хичээлтэй хуваалцаагүй байна."
+    "sharedAnalyticsNone": "Та сурлагын явцаа ямар ч хичээлтэй хуваалцаагүй байна.",
+    "sharedAnalyticsOthersTitle": "Таны ахиц дэвшлийг харах боломжтой бусад хүмүүс",
+    "removeAnalyticsAccess": "Нэвтрэх эрхийг устгах",
+    "removeAnalyticsAccessDesc": "{name} таны сурах явцыг харах боломжгүй болно."
 }

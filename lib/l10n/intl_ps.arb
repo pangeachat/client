@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-27 12:28:00.876574",
+    "@@last_modified": "2026-10-27 14:48:04.776312",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "ستاسو ښوونکي په {course} کې اوس ستاسو د زده کړې پرمختګ لیدلی شي.",
     "sharedAnalyticsTitle": "شریک شوی زده کړې پرمختګ",
     "sharedAnalyticsDesc": "په دې کورسونو کې ښوونکي ستاسو د زده کړې پرمختګ لیدلی شي. د شریکولو بندولو لپاره له کورس څخه ووځئ.",
-    "sharedAnalyticsNone": "تاسو خپل د زده کړې پرمختګ له هیڅ کورس سره نه شریکوئ."
+    "sharedAnalyticsNone": "تاسو خپل د زده کړې پرمختګ له هیڅ کورس سره نه شریکوئ.",
+    "sharedAnalyticsOthersTitle": "نور کسان چې ستاسو پرمختګ لیدلی شي",
+    "removeAnalyticsAccess": "لاسرسی لرې کړئ",
+    "removeAnalyticsAccessDesc": "{name} به نور ونه شي کولی ستاسو د زده کړې پرمختګ وګوري."
 }

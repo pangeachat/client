@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-27 12:27:57.307798",
+    "@@last_modified": "2026-10-27 14:48:01.486314",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Magistri tui in {course} nunc progressum discendi tui videre possunt.",
     "sharedAnalyticsTitle": "Progressus discendi communicatus",
     "sharedAnalyticsDesc": "Magistri in his cursuibus progressum discendi tui videre possunt. Cursum relinque ut communicationem desinas.",
-    "sharedAnalyticsNone": "Progressum discendi tui cum ullo cursu non communicatis."
+    "sharedAnalyticsNone": "Progressum discendi tui cum ullo cursu non communicatis.",
+    "sharedAnalyticsOthersTitle": "Alii qui progressum tuum videre possunt",
+    "removeAnalyticsAccess": "Aditum remove",
+    "removeAnalyticsAccessDesc": "{name} progressum tuum discendi non iam videre poterit."
 }

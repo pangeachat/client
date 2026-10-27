@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-27 12:28:03.219394",
+    "@@last_modified": "2026-10-27 14:48:06.753061",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Walimu wako katika {course} sasa wanaweza kuona maendeleo yako ya kujifunza.",
     "sharedAnalyticsTitle": "Maendeleo ya kujifunza yaliyoshirikiwa",
     "sharedAnalyticsDesc": "Walimu katika kozi hizi wanaweza kuona maendeleo yako ya kujifunza. Ondoka kwenye kozi ili uache kushiriki.",
-    "sharedAnalyticsNone": "Hushiriki maendeleo yako ya kujifunza na kozi yoyote."
+    "sharedAnalyticsNone": "Hushiriki maendeleo yako ya kujifunza na kozi yoyote.",
+    "sharedAnalyticsOthersTitle": "Wengine wanaoweza kuona maendeleo yako",
+    "removeAnalyticsAccess": "Ondoa ufikiaji",
+    "removeAnalyticsAccessDesc": "{name} hataweza tena kuona maendeleo yako ya kujifunza."
 }

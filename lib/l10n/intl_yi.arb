@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-27 12:28:05.351339",
+    "@@last_modified": "2026-10-27 14:48:07.881655",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "אײַערע לערער אין {course} קענען איצט זען אײַער לערן־פֿאָרשריט.",
     "sharedAnalyticsTitle": "געטיילטער לערן־פֿאָרשריט",
     "sharedAnalyticsDesc": "לערער אין די קורסן קענען זען אײַער לערן־פֿאָרשריט. פֿאַרלאָזט אַ קורס כּדי אויפֿצוהערן טיילן.",
-    "sharedAnalyticsNone": "איר טיילט נישט אײַער לערן־פֿאָרשריט מיט קיין שום קורס."
+    "sharedAnalyticsNone": "איר טיילט נישט אײַער לערן־פֿאָרשריט מיט קיין שום קורס.",
+    "sharedAnalyticsOthersTitle": "אַנדערע וואָס קענען זען דיין פּראָגרעס",
+    "removeAnalyticsAccess": "אַראָפּנעמען צוטריט",
+    "removeAnalyticsAccessDesc": "{name} וועט מער נישט קענען זען דיין לערנען פּראָגרעס."
 }

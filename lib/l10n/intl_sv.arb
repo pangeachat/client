@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:28:03.221221",
+    "@@last_modified": "2026-10-27 14:48:06.542904",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10564,5 +10564,8 @@
     "analyticsSharedOnJoin": "Dina lärare i {course} kan nu se dina framsteg.",
     "sharedAnalyticsTitle": "Delade framsteg",
     "sharedAnalyticsDesc": "Lärare i dessa kurser kan se dina framsteg. Lämna en kurs för att sluta dela.",
-    "sharedAnalyticsNone": "Du delar inte dina framsteg med någon kurs."
+    "sharedAnalyticsNone": "Du delar inte dina framsteg med någon kurs.",
+    "sharedAnalyticsOthersTitle": "Andra som kan se dina framsteg",
+    "removeAnalyticsAccess": "Ta bort åtkomst",
+    "removeAnalyticsAccessDesc": "{name} kommer inte längre att kunna se dina inlärningsframsteg."
 }

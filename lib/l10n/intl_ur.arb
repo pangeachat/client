@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-27 12:28:04.520611",
+    "@@last_modified": "2026-10-27 14:48:07.788752",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "{course} میں آپ کے اساتذہ اب آپ کی سیکھنے کی پیشرفت دیکھ سکتے ہیں۔",
     "sharedAnalyticsTitle": "سیکھنے کی پیشرفت کا اشتراک کیا گیا",
     "sharedAnalyticsDesc": "ان کورسز میں اساتذہ آپ کی سیکھنے کی پیشرفت دیکھ سکتے ہیں۔ اشتراک بند کرنے کے لیے کورس چھوڑ دیں۔",
-    "sharedAnalyticsNone": "آپ کسی بھی کورس کے ساتھ اپنی سیکھنے کی پیشرفت کا اشتراک نہیں کر رہے ہیں۔"
+    "sharedAnalyticsNone": "آپ کسی بھی کورس کے ساتھ اپنی سیکھنے کی پیشرفت کا اشتراک نہیں کر رہے ہیں۔",
+    "sharedAnalyticsOthersTitle": "دوسرے جو آپ کی پیشرفت دیکھ سکتے ہیں",
+    "removeAnalyticsAccess": "رسائی ہٹائیں",
+    "removeAnalyticsAccessDesc": "{name} اب آپ کی سیکھنے کی پیشرفت نہیں دیکھ پائے گا۔"
 }

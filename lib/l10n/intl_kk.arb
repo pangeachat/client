@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-27 12:27:56.185777",
+    "@@last_modified": "2026-10-27 14:48:00.783795",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "{course} курсындағы мұғалімдеріңіз енді сіздің оқу үлгеріміңізді көре алады.",
     "sharedAnalyticsTitle": "Ортақ оқу үлгерімі",
     "sharedAnalyticsDesc": "Осы курстардағы мұғалімдер сіздің оқу үлгеріміңізді көре алады. Бөлісуді тоқтату үшін курстан шығыңыз.",
-    "sharedAnalyticsNone": "Сіз ешбір курспен оқу үлгеріміңізді бөліспейсіз."
+    "sharedAnalyticsNone": "Сіз ешбір курспен оқу үлгеріміңізді бөліспейсіз.",
+    "sharedAnalyticsOthersTitle": "Үлгеріміңізді көре алатын басқалар",
+    "removeAnalyticsAccess": "Қатынасты жою",
+    "removeAnalyticsAccessDesc": "{name} енді сіздің оқу үлгеріміңізді көре алмайды."
 }

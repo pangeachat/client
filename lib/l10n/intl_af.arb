@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-27 12:27:50.126738",
+    "@@last_modified": "2026-10-27 14:47:55.488052",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Jou onderwysers in {course} kan nou jou leervordering sien.",
     "sharedAnalyticsTitle": "Gedeelde leervordering",
     "sharedAnalyticsDesc": "Onderwysers in hierdie kursusse kan jou leervordering sien. Verlaat 'n kursus om op te hou deel.",
-    "sharedAnalyticsNone": "Jy deel nie jou leervordering met enige kursus nie."
+    "sharedAnalyticsNone": "Jy deel nie jou leervordering met enige kursus nie.",
+    "sharedAnalyticsOthersTitle": "Ander wat jou vordering kan sien",
+    "removeAnalyticsAccess": "Verwyder toegang",
+    "removeAnalyticsAccessDesc": "{name} sal nie meer jou leervordering kan sien nie."
 }

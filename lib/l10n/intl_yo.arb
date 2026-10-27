@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-27 12:28:05.600864",
+    "@@last_modified": "2026-10-27 14:48:08.482684",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Àwọn olùkọ́ rẹ ní {course} lè rí ìtẹ̀síwájú ẹ̀kọ́ rẹ nísinsìnyí.",
     "sharedAnalyticsTitle": "Ìtẹ̀síwájú ẹ̀kọ́ tí a pín",
     "sharedAnalyticsDesc": "Àwọn olùkọ́ nínú àwọn ìkẹ́kọ̀ọ́ wọ̀nyí lè rí ìtẹ̀síwájú ẹ̀kọ́ rẹ. Fi ìkẹ́kọ̀ọ́ sílẹ̀ láti dáwọ́ pínpín dúró.",
-    "sharedAnalyticsNone": "O kò pín ìtẹ̀síwájú ẹ̀kọ́ rẹ pẹ̀lú ìkẹ́kọ̀ọ́ kankan."
+    "sharedAnalyticsNone": "O kò pín ìtẹ̀síwájú ẹ̀kọ́ rẹ pẹ̀lú ìkẹ́kọ̀ọ́ kankan.",
+    "sharedAnalyticsOthersTitle": "Àwọn mìíràn tó lè rí ìtẹ̀síwájú rẹ",
+    "removeAnalyticsAccess": "Yọ ìwọlé kúrò",
+    "removeAnalyticsAccessDesc": "{name} kò ní lè rí ìtẹ̀síwájú ẹ̀kọ́ rẹ mọ́."
 }

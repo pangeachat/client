@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-27 12:27:58.711432",
+    "@@last_modified": "2026-10-27 14:48:02.621336",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "{course} मधील तुमचे शिक्षक आता तुमची शिकण्याची प्रगती पाहू शकतात.",
     "sharedAnalyticsTitle": "सामायिक केलेली शिकण्याची प्रगती",
     "sharedAnalyticsDesc": "या अभ्यासक्रमांमधील शिक्षक तुमची शिकण्याची प्रगती पाहू शकतात. सामायिक करणे थांबवण्यासाठी अभ्यासक्रम सोडा.",
-    "sharedAnalyticsNone": "तुम्ही कोणत्याही अभ्यासक्रमासोबत तुमची शिकण्याची प्रगती सामायिक करत नाही."
+    "sharedAnalyticsNone": "तुम्ही कोणत्याही अभ्यासक्रमासोबत तुमची शिकण्याची प्रगती सामायिक करत नाही.",
+    "sharedAnalyticsOthersTitle": "तुमची प्रगती पाहू शकणारे इतर",
+    "removeAnalyticsAccess": "प्रवेश काढून टाका",
+    "removeAnalyticsAccessDesc": "{name} तुमची शिकण्याची प्रगती यापुढे पाहू शकणार नाही."
 }

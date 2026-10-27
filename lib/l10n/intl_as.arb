@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-27 12:27:50.971085",
+    "@@last_modified": "2026-10-27 14:47:55.866293",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "{course}ত থকা আপোনাৰ শিক্ষকসকলে এতিয়া আপোনাৰ শিক্ষণৰ অগ্ৰগতি চাব পাৰিব।",
     "sharedAnalyticsTitle": "শিক্ষণৰ অগ্ৰগতি শ্বেয়াৰ কৰা হৈছে",
     "sharedAnalyticsDesc": "এই পাঠ্যক্ৰমসমূহৰ শিক্ষকসকলে আপোনাৰ শিক্ষণৰ অগ্ৰগতি চাব পাৰিব। শ্বেয়াৰ কৰা বন্ধ কৰিবলৈ এটা পাঠ্যক্ৰম এৰি দিয়ক।",
-    "sharedAnalyticsNone": "আপুনি কোনো পাঠ্যক্ৰমৰ সৈতে আপোনাৰ শিক্ষণৰ অগ্ৰগতি শ্বেয়াৰ কৰা নাই।"
+    "sharedAnalyticsNone": "আপুনি কোনো পাঠ্যক্ৰমৰ সৈতে আপোনাৰ শিক্ষণৰ অগ্ৰগতি শ্বেয়াৰ কৰা নাই।",
+    "sharedAnalyticsOthersTitle": "আপোনাৰ অগ্ৰগতি চাব পৰা আনসকল",
+    "removeAnalyticsAccess": "প্ৰৱেশাধিকাৰ আঁতৰাওক",
+    "removeAnalyticsAccessDesc": "{name}-এ আপোনাৰ শিক্ষণৰ অগ্ৰগতি চাব নোৱাৰিব।"
 }

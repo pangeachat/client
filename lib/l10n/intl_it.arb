@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:27:55.812655",
+    "@@last_modified": "2026-10-27 14:48:00.113228",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10122,5 +10122,8 @@
     "analyticsSharedOnJoin": "I tuoi insegnanti in {course} possono ora vedere i tuoi progressi di apprendimento.",
     "sharedAnalyticsTitle": "Progressi di apprendimento condivisi",
     "sharedAnalyticsDesc": "Gli insegnanti di questi corsi possono vedere i tuoi progressi di apprendimento. Lascia un corso per interrompere la condivisione.",
-    "sharedAnalyticsNone": "Non stai condividendo i tuoi progressi di apprendimento con nessun corso."
+    "sharedAnalyticsNone": "Non stai condividendo i tuoi progressi di apprendimento con nessun corso.",
+    "sharedAnalyticsOthersTitle": "Altri che possono vedere i tuoi progressi",
+    "removeAnalyticsAccess": "Rimuovi accesso",
+    "removeAnalyticsAccessDesc": "{name} non potrà più vedere i tuoi progressi di apprendimento."
 }

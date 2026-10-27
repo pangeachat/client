@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-27 12:28:01.746133",
+    "@@last_modified": "2026-10-27 14:48:05.596695",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "{course} හි සිටින ඔබේ ගුරුවරුන්ට දැන් ඔබේ ඉගෙනීමේ ප්‍රගතිය දැක ගත හැක.",
     "sharedAnalyticsTitle": "බෙදාගත් ඉගෙනීමේ ප්‍රගතිය",
     "sharedAnalyticsDesc": "මෙම පාඨමාලා වල සිටින ගුරුවරුන්ට ඔබේ ඉගෙනීමේ ප්‍රගතිය දැක ගත හැක. බෙදාගැනීම නැවැත්වීමට පාඨමාලාවෙන් ඉවත් වන්න.",
-    "sharedAnalyticsNone": "ඔබ කිසිදු පාඨමාලාවක් සමඟ ඔබේ ඉගෙනීමේ ප්‍රගතිය බෙදා නොගනී."
+    "sharedAnalyticsNone": "ඔබ කිසිදු පාඨමාලාවක් සමඟ ඔබේ ඉගෙනීමේ ප්‍රගතිය බෙදා නොගනී.",
+    "sharedAnalyticsOthersTitle": "ඔබේ ප්‍රගතිය දැකිය හැකි අනෙක් අය",
+    "removeAnalyticsAccess": "ප්‍රවේශය ඉවත් කරන්න",
+    "removeAnalyticsAccessDesc": "{name} හට තවදුරටත් ඔබේ ඉගෙනීමේ ප්‍රගතිය දැකීමට නොහැකි වනු ඇත."
 }

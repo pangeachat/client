@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-27 12:28:05.400640",
+    "@@last_modified": "2026-10-27 14:48:08.484436",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11003,5 +11003,8 @@
     "analyticsSharedOnJoin": "你喺 {course} 嘅老師而家可以睇到你嘅學習進度。",
     "sharedAnalyticsTitle": "已分享嘅學習進度",
     "sharedAnalyticsDesc": "呢啲課程嘅老師可以睇到你嘅學習進度。離開課程就可以停止分享。",
-    "sharedAnalyticsNone": "你冇同任何課程分享你嘅學習進度。"
+    "sharedAnalyticsNone": "你冇同任何課程分享你嘅學習進度。",
+    "sharedAnalyticsOthersTitle": "其他可以睇到你進度嘅人",
+    "removeAnalyticsAccess": "移除存取權",
+    "removeAnalyticsAccessDesc": "{name} 將唔再睇到你嘅學習進度。"
 }

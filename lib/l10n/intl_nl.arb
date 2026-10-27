@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:27:59.502085",
+    "@@last_modified": "2026-10-27 14:48:03.778853",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10049,5 +10049,8 @@
     "analyticsSharedOnJoin": "Je docenten in {course} kunnen nu je leerprogressie zien.",
     "sharedAnalyticsTitle": "Gedeelde leerprogressie",
     "sharedAnalyticsDesc": "Docenten in deze cursussen kunnen je leerprogressie zien. Verlaat een cursus om het delen te stoppen.",
-    "sharedAnalyticsNone": "Je deelt je leerprogressie met geen enkele cursus."
+    "sharedAnalyticsNone": "Je deelt je leerprogressie met geen enkele cursus.",
+    "sharedAnalyticsOthersTitle": "Anderen die je voortgang kunnen zien",
+    "removeAnalyticsAccess": "Toegang verwijderen",
+    "removeAnalyticsAccessDesc": "{name} kan je leervoortgang niet langer zien."
 }

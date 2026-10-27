@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-27 12:28:02.251690",
+    "@@last_modified": "2026-10-27 14:48:05.900543",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Mësuesit tuaj në {course} tani mund të shohin progresin tuaj të të nxënit.",
     "sharedAnalyticsTitle": "Progres i përbashkët i të nxënit",
     "sharedAnalyticsDesc": "Mësuesit në këto kurse mund të shohin progresin tuaj të të nxënit. Largohuni nga një kurs për të ndaluar ndarjen.",
-    "sharedAnalyticsNone": "Nuk po ndani progresin tuaj të të nxënit me asnjë kurs."
+    "sharedAnalyticsNone": "Nuk po ndani progresin tuaj të të nxënit me asnjë kurs.",
+    "sharedAnalyticsOthersTitle": "Të tjerët që mund të shohin progresin tuaj",
+    "removeAnalyticsAccess": "Hiq qasjen",
+    "removeAnalyticsAccessDesc": "{name} nuk do të mund të shohë më progresin tuaj të të nxënit."
 }

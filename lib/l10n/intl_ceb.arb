@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-27 12:27:53.856025",
+    "@@last_modified": "2026-10-27 14:47:56.693392",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Ang imong mga magtutudlo sa {course} makakita na sa imong pag-uswag sa pagkat-on.",
     "sharedAnalyticsTitle": "Gipaambit nga pag-uswag sa pagkat-on",
     "sharedAnalyticsDesc": "Ang mga magtutudlo niining mga kurso makakita sa imong pag-uswag sa pagkat-on. Biya sa usa ka kurso aron mohunong sa pagpaambit.",
-    "sharedAnalyticsNone": "Wala ka nagpaambit sa imong pag-uswag sa pagkat-on sa bisan unsang kurso."
+    "sharedAnalyticsNone": "Wala ka nagpaambit sa imong pag-uswag sa pagkat-on sa bisan unsang kurso.",
+    "sharedAnalyticsOthersTitle": "Ang uban nga makakita sa imong pag-uswag",
+    "removeAnalyticsAccess": "Kuhaa ang access",
+    "removeAnalyticsAccessDesc": "Dili na makita ni {name} ang imong pag-uswag sa pagkat-on."
 }

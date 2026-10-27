@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-27 12:27:59.675933",
+    "@@last_modified": "2026-10-27 14:48:03.330055",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Lærerne dine i {course} kan nå se læringsfremgangen din.",
     "sharedAnalyticsTitle": "Delt læringsfremgang",
     "sharedAnalyticsDesc": "Lærere i disse kursene kan se læringsfremgangen din. Forlat et kurs for å slutte å dele.",
-    "sharedAnalyticsNone": "Du deler ikke læringsfremgangen din med noe kurs."
+    "sharedAnalyticsNone": "Du deler ikke læringsfremgangen din med noe kurs.",
+    "sharedAnalyticsOthersTitle": "Andre som kan se fremgangen din",
+    "removeAnalyticsAccess": "Fjern tilgang",
+    "removeAnalyticsAccessDesc": "{name} vil ikke lenger kunne se læringsfremgangen din."
 }

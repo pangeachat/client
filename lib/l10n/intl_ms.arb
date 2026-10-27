@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-27 12:27:58.749024",
+    "@@last_modified": "2026-10-27 14:48:02.635375",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Guru anda dalam {course} kini boleh melihat kemajuan pembelajaran anda.",
     "sharedAnalyticsTitle": "Kemajuan pembelajaran yang dikongsi",
     "sharedAnalyticsDesc": "Guru dalam kursus ini boleh melihat kemajuan pembelajaran anda. Tinggalkan kursus untuk berhenti berkongsi.",
-    "sharedAnalyticsNone": "Anda tidak berkongsi kemajuan pembelajaran anda dengan mana-mana kursus."
+    "sharedAnalyticsNone": "Anda tidak berkongsi kemajuan pembelajaran anda dengan mana-mana kursus.",
+    "sharedAnalyticsOthersTitle": "Orang lain yang boleh melihat kemajuan anda",
+    "removeAnalyticsAccess": "Alih keluar akses",
+    "removeAnalyticsAccessDesc": "{name} tidak lagi dapat melihat kemajuan pembelajaran anda."
 }

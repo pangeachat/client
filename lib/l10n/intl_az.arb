@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-27 12:27:50.460538",
+    "@@last_modified": "2026-10-27 14:47:55.699791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "{course} kursundakı müəllimləriniz artıq öyrənmə tərəqqinizi görə bilərlər.",
     "sharedAnalyticsTitle": "Paylaşılan öyrənmə tərəqqisi",
     "sharedAnalyticsDesc": "Bu kurslardakı müəllimlər öyrənmə tərəqqinizi görə bilərlər. Paylaşımı dayandırmaq üçün kursdan çıxın.",
-    "sharedAnalyticsNone": "Heç bir kursla öyrənmə tərəqqinizi paylaşmırsınız."
+    "sharedAnalyticsNone": "Heç bir kursla öyrənmə tərəqqinizi paylaşmırsınız.",
+    "sharedAnalyticsOthersTitle": "Tərəqqinizi görə bilən digərləri",
+    "removeAnalyticsAccess": "Girişi sil",
+    "removeAnalyticsAccessDesc": "{name} artıq öyrənmə tərəqqinizi görə bilməyəcək."
 }

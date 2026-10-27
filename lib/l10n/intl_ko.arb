@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:27:56.590076",
+    "@@last_modified": "2026-10-27 14:48:00.749268",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10242,5 +10242,8 @@
     "analyticsSharedOnJoin": "{course}의 선생님들이 이제 학습 진행 상황을 볼 수 있습니다.",
     "sharedAnalyticsTitle": "학습 진행 상황 공유됨",
     "sharedAnalyticsDesc": "이 강좌의 선생님들이 학습 진행 상황을 볼 수 있습니다. 공유를 중지하려면 강좌를 나가세요.",
-    "sharedAnalyticsNone": "어떤 강좌와도 학습 진행 상황을 공유하고 있지 않습니다."
+    "sharedAnalyticsNone": "어떤 강좌와도 학습 진행 상황을 공유하고 있지 않습니다.",
+    "sharedAnalyticsOthersTitle": "내 진행 상황을 볼 수 있는 다른 사람",
+    "removeAnalyticsAccess": "액세스 제거",
+    "removeAnalyticsAccessDesc": "{name}님은 더 이상 회원님의 학습 진행 상황을 볼 수 없습니다."
 }

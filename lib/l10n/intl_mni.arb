@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-27 12:27:59.265622",
+    "@@last_modified": "2026-10-27 14:48:04.322148",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "{course}ta leibasingna nanggi tamliba khongthang uduna leire.",
     "sharedAnalyticsTitle": "Tamliba khongthang pao faonaba",
     "sharedAnalyticsDesc": "Hingchasingna nanggi tamliba khongthang uduna leire. Paonaba thingnaba course adu thadok-u.",
-    "sharedAnalyticsNone": "Nangna karisu tamliba khongthang pao faonade."
+    "sharedAnalyticsNone": "Nangna karisu tamliba khongthang pao faonade.",
+    "sharedAnalyticsOthersTitle": "ꯑꯇꯩꯁꯤꯡꯅ ꯅꯍꯥꯛꯀꯤ ꯄꯨꯔꯣꯒ꯭ꯔꯦꯁ ꯎꯕ ꯉꯃꯒꯅꯤ",
+    "removeAnalyticsAccess": "ꯑꯦꯛꯁꯦꯁ ꯂꯧꯊꯣꯛꯎ",
+    "removeAnalyticsAccessDesc": "{name} ꯅ ꯅꯍꯥꯛꯀꯤ ꯂꯔꯅꯤꯡ ꯄꯨꯔꯣꯒ꯭ꯔꯦꯁ ꯎꯕ ꯉꯃꯂꯔꯣꯏ."
 }

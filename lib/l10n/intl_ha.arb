@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-27 12:27:53.771007",
+    "@@last_modified": "2026-10-27 14:47:58.637357",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Malamanka a {course} yanzu za su iya ganin ci gaban karatunka.",
     "sharedAnalyticsTitle": "An raba ci gaban karatu",
     "sharedAnalyticsDesc": "Malamai a waɗannan darussan za su iya ganin ci gaban karatunka. Fita daga kwas don dakatar da rabawa.",
-    "sharedAnalyticsNone": "Ba ka raba ci gaban karatunka da kowane kwas."
+    "sharedAnalyticsNone": "Ba ka raba ci gaban karatunka da kowane kwas.",
+    "sharedAnalyticsOthersTitle": "Wasu da za su iya ganin ci gabanka",
+    "removeAnalyticsAccess": "Cire damar shiga",
+    "removeAnalyticsAccessDesc": "{name} ba zai ƙara iya ganin ci gaban koyon ka ba."
 }

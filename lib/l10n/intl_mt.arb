@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-27 12:27:58.831724",
+    "@@last_modified": "2026-10-27 14:48:03.021308",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "L-għalliema tiegħek f'{course}' issa jistgħu jaraw il-progress tat-tagħlim tiegħek.",
     "sharedAnalyticsTitle": "Progress tat-tagħlim maqsum",
     "sharedAnalyticsDesc": "L-għalliema f'dawn il-korsijiet jistgħu jaraw il-progress tat-tagħlim tiegħek. Ħalli kors biex tieqaf taqsam.",
-    "sharedAnalyticsNone": "M'intix qed taqsam il-progress tat-tagħlim tiegħek ma' ebda kors."
+    "sharedAnalyticsNone": "M'intix qed taqsam il-progress tat-tagħlim tiegħek ma' ebda kors.",
+    "sharedAnalyticsOthersTitle": "Oħrajn li jistgħu jaraw il-progress tiegħek",
+    "removeAnalyticsAccess": "Neħħi l-aċċess",
+    "removeAnalyticsAccessDesc": "{name} mhux se jibqa' jkun jista' jara l-progress tat-tagħlim tiegħek."
 }

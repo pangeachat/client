@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-27 12:28:02.339780",
+    "@@last_modified": "2026-10-27 14:48:05.413218",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Ua mafai nei e ou faiaoga i le {course} ona vaai i lou alualu i luma o le aʻoga.",
     "sharedAnalyticsTitle": "Faʻasoa le alualu i luma o le aʻoga",
     "sharedAnalyticsDesc": "E mafai e faiaoga i nei vasega ona vaai i lou alualu i luma o le aʻoga. Tuʻua se vasega e taofi ai le faʻasoaina.",
-    "sharedAnalyticsNone": "E te le o faʻasoaina lou alualu i luma o le aʻoga i soʻo se vasega."
+    "sharedAnalyticsNone": "E te le o faʻasoaina lou alualu i luma o le aʻoga i soʻo se vasega.",
+    "sharedAnalyticsOthersTitle": "O isi e mafai ona vaʻai i lau alualu i luma",
+    "removeAnalyticsAccess": "Aveese le avanoa",
+    "removeAnalyticsAccessDesc": "E le mafai ona toe vaʻai {name} i lau alualu i luma o le aʻoaʻoina."
 }

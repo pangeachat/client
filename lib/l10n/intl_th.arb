@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-27 12:28:03.579486",
+    "@@last_modified": "2026-10-27 14:48:06.970109",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10678,5 +10678,8 @@
     "analyticsSharedOnJoin": "ตอนนี้คุณครูใน {course} สามารถดูความคืบหน้าในการเรียนรู้ของคุณได้แล้ว",
     "sharedAnalyticsTitle": "ความคืบหน้าในการเรียนรู้ที่แชร์",
     "sharedAnalyticsDesc": "คุณครูในคอร์สเหล่านี้สามารถดูความคืบหน้าในการเรียนรู้ของคุณได้ หากต้องการหยุดแชร์ ให้ลาออกจากคอร์ส",
-    "sharedAnalyticsNone": "คุณไม่ได้แชร์ความคืบหน้าในการเรียนรู้กับคอร์สใดๆ"
+    "sharedAnalyticsNone": "คุณไม่ได้แชร์ความคืบหน้าในการเรียนรู้กับคอร์สใดๆ",
+    "sharedAnalyticsOthersTitle": "คนอื่น ๆ ที่สามารถเห็นความคืบหน้าของคุณ",
+    "removeAnalyticsAccess": "ลบการเข้าถึง",
+    "removeAnalyticsAccessDesc": "{name} จะไม่สามารถเห็นความคืบหน้าในการเรียนรู้ของคุณได้อีกต่อไป"
 }

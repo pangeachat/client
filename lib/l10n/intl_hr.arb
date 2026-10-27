@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-27 12:27:54.524452",
+    "@@last_modified": "2026-10-27 14:47:58.854343",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10482,5 +10482,8 @@
     "analyticsSharedOnJoin": "Vaši nastavnici u {course} sada mogu vidjeti vaš napredak u učenju.",
     "sharedAnalyticsTitle": "Podijeljeni napredak u učenju",
     "sharedAnalyticsDesc": "Nastavnici u ovim tečajevima mogu vidjeti vaš napredak u učenju. Napustite tečaj kako biste prestali dijeliti.",
-    "sharedAnalyticsNone": "Ne dijelite svoj napredak u učenju ni s jednim tečajem."
+    "sharedAnalyticsNone": "Ne dijelite svoj napredak u učenju ni s jednim tečajem.",
+    "sharedAnalyticsOthersTitle": "Ostali koji mogu vidjeti vaš napredak",
+    "removeAnalyticsAccess": "Ukloni pristup",
+    "removeAnalyticsAccessDesc": "{name} više neće moći vidjeti vaš napredak u učenju."
 }

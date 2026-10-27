@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:28:00.561667",
+    "@@last_modified": "2026-10-27 14:48:04.493253",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10049,5 +10049,8 @@
     "analyticsSharedOnJoin": "Seus professores em {course} agora podem ver seu progresso de aprendizado.",
     "sharedAnalyticsTitle": "Progresso de aprendizado compartilhado",
     "sharedAnalyticsDesc": "Os professores nestes cursos podem ver seu progresso de aprendizado. Saia de um curso para parar de compartilhar.",
-    "sharedAnalyticsNone": "Você não está compartilhando seu progresso de aprendizado com nenhum curso."
+    "sharedAnalyticsNone": "Você não está compartilhando seu progresso de aprendizado com nenhum curso.",
+    "sharedAnalyticsOthersTitle": "Outros que podem ver seu progresso",
+    "removeAnalyticsAccess": "Remover acesso",
+    "removeAnalyticsAccessDesc": "{name} não poderá mais ver seu progresso de aprendizado."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-27 12:27:53.539985",
+    "@@last_modified": "2026-10-27 14:47:58.802746",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Chì na tidsearan agad ann an {course} a-nis an adhartas ionnsachaidh agad.",
     "sharedAnalyticsTitle": "Adhartas ionnsachaidh co-roinnte",
     "sharedAnalyticsDesc": "Chì tidsearan anns na cùrsaichean seo an adhartas ionnsachaidh agad. Fàg cùrsa gus stad a chur air co-roinn.",
-    "sharedAnalyticsNone": "Chan eil thu a' co-roinn an adhartais ionnsachaidh agad le cùrsa sam bith."
+    "sharedAnalyticsNone": "Chan eil thu a' co-roinn an adhartais ionnsachaidh agad le cùrsa sam bith.",
+    "sharedAnalyticsOthersTitle": "Daoine eile a chì an adhartas agad",
+    "removeAnalyticsAccess": "Thoir air falbh cothrom",
+    "removeAnalyticsAccessDesc": "Cha bhith {name} comasach air an adhartas ionnsachaidh agad fhaicinn tuilleadh."
 }

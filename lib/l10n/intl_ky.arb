@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-27 12:27:57.371564",
+    "@@last_modified": "2026-10-27 14:48:02.600517",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "{course} курсундагы мугалимдериңиз эми сиздин окуу прогрессиңизди көрө алышат.",
     "sharedAnalyticsTitle": "Бөлүшүлгөн окуу прогресси",
     "sharedAnalyticsDesc": "Бул курстардагы мугалимдер сиздин окуу прогрессиңизди көрө алышат. Бөлүшүүнү токтотуу үчүн курстан чыгыңыз.",
-    "sharedAnalyticsNone": "Сиз эч бир курс менен окуу прогрессиңизди бөлүшпөй жатасыз."
+    "sharedAnalyticsNone": "Сиз эч бир курс менен окуу прогрессиңизди бөлүшпөй жатасыз.",
+    "sharedAnalyticsOthersTitle": "Прогрессиңизди көрө алган башкалар",
+    "removeAnalyticsAccess": "Кирүүнү алып салуу",
+    "removeAnalyticsAccessDesc": "{name} мындан ары сиздин окуу прогрессиңизди көрө албайт."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-27 12:28:01.791794",
+    "@@last_modified": "2026-10-27 14:48:06.014355",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10991,5 +10991,8 @@
     "analyticsSharedOnJoin": "Vaši učitelia v kurze {course} teraz vidia váš pokrok v učení.",
     "sharedAnalyticsTitle": "Zdieľaný pokrok v učení",
     "sharedAnalyticsDesc": "Učitelia v týchto kurzoch vidia váš pokrok v učení. Opustite kurz, ak chcete prestať zdieľať.",
-    "sharedAnalyticsNone": "Nezdieľate svoj pokrok v učení so žiadnym kurzom."
+    "sharedAnalyticsNone": "Nezdieľate svoj pokrok v učení so žiadnym kurzom.",
+    "sharedAnalyticsOthersTitle": "Ostatní, ktorí vidia váš pokrok",
+    "removeAnalyticsAccess": "Odstrániť prístup",
+    "removeAnalyticsAccessDesc": "{name} už nebude môcť vidieť váš pokrok v učení."
 }

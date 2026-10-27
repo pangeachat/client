@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:27:52.478890",
+    "@@last_modified": "2026-10-27 14:47:57.574429",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10137,5 +10137,8 @@
     "analyticsSharedOnJoin": "معلمان شما در {course} اکنون می‌توانند پیشرفت یادگیری شما را ببینند.",
     "sharedAnalyticsTitle": "پیشرفت یادگیری به اشتراک گذاشته شده",
     "sharedAnalyticsDesc": "معلمان در این دوره‌ها می‌توانند پیشرفت یادگیری شما را ببینند. برای توقف اشتراک‌گذاری، از دوره خارج شوید.",
-    "sharedAnalyticsNone": "شما پیشرفت یادگیری خود را با هیچ دوره‌ای به اشتراک نمی‌گذارید."
+    "sharedAnalyticsNone": "شما پیشرفت یادگیری خود را با هیچ دوره‌ای به اشتراک نمی‌گذارید.",
+    "sharedAnalyticsOthersTitle": "دیگران که می‌توانند پیشرفت شما را ببینند",
+    "removeAnalyticsAccess": "حذف دسترسی",
+    "removeAnalyticsAccessDesc": "{name} دیگر قادر به دیدن پیشرفت یادگیری شما نخواهد بود."
 }

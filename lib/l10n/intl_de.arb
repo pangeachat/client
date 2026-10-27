@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-27 12:27:51.591143",
+    "@@last_modified": "2026-10-27 14:47:56.655123",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10036,5 +10036,8 @@
     "analyticsSharedOnJoin": "Ihre Lehrer in {course} können jetzt Ihren Lernfortschritt sehen.",
     "sharedAnalyticsTitle": "Geteilter Lernfortschritt",
     "sharedAnalyticsDesc": "Lehrer in diesen Kursen können Ihren Lernfortschritt sehen. Verlassen Sie einen Kurs, um die Freigabe zu beenden.",
-    "sharedAnalyticsNone": "Sie teilen Ihren Lernfortschritt mit keinem Kurs."
+    "sharedAnalyticsNone": "Sie teilen Ihren Lernfortschritt mit keinem Kurs.",
+    "sharedAnalyticsOthersTitle": "Andere, die deinen Fortschritt sehen können",
+    "removeAnalyticsAccess": "Zugriff entfernen",
+    "removeAnalyticsAccessDesc": "{name} kann deinen Lernfortschritt nicht mehr sehen."
 }

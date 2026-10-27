@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-27 12:28:00.821492",
+    "@@last_modified": "2026-10-27 14:48:04.212599",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10134,5 +10134,8 @@
     "analyticsSharedOnJoin": "Twoi nauczyciele w {course} mogą teraz zobaczyć Twoje postępy w nauce.",
     "sharedAnalyticsTitle": "Udostępnione postępy w nauce",
     "sharedAnalyticsDesc": "Nauczyciele na tych kursach mogą zobaczyć Twoje postępy w nauce. Opuść kurs, aby przestać udostępniać.",
-    "sharedAnalyticsNone": "Nie udostępniasz swoich postępów w nauce żadnemu kursowi."
+    "sharedAnalyticsNone": "Nie udostępniasz swoich postępów w nauce żadnemu kursowi.",
+    "sharedAnalyticsOthersTitle": "Inni, którzy widzą Twoje postępy",
+    "removeAnalyticsAccess": "Usuń dostęp",
+    "removeAnalyticsAccessDesc": "{name} nie będzie już widzieć Twoich postępów w nauce."
 }

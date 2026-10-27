@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-27 12:28:00.871319",
+    "@@last_modified": "2026-10-27 14:48:04.693494",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10963,5 +10963,8 @@
     "analyticsSharedOnJoin": "Os teus professores em {course} podem agora ver o teu progresso de aprendizagem.",
     "sharedAnalyticsTitle": "Progresso de aprendizagem partilhado",
     "sharedAnalyticsDesc": "Os professores nestes cursos podem ver o teu progresso de aprendizagem. Sai de um curso para parar de partilhar.",
-    "sharedAnalyticsNone": "Não estás a partilhar o teu progresso de aprendizagem com nenhum curso."
+    "sharedAnalyticsNone": "Não estás a partilhar o teu progresso de aprendizagem com nenhum curso.",
+    "sharedAnalyticsOthersTitle": "Outros que podem ver o seu progresso",
+    "removeAnalyticsAccess": "Remover acesso",
+    "removeAnalyticsAccessDesc": "{name} deixará de poder ver o seu progresso de aprendizagem."
 }

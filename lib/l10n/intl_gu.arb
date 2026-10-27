@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-27 12:27:53.538400",
+    "@@last_modified": "2026-10-27 14:47:58.182825",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "તમારા શિક્ષકો {course} માં હવે તમારી શીખવાની પ્રગતિ જોઈ શકે છે.",
     "sharedAnalyticsTitle": "શેર કરેલી શીખવાની પ્રગતિ",
     "sharedAnalyticsDesc": "આ અભ્યાસક્રમોના શિક્ષકો તમારી શીખવાની પ્રગતિ જોઈ શકે છે. શેર કરવાનું બંધ કરવા માટે અભ્યાસક્રમ છોડો.",
-    "sharedAnalyticsNone": "તમે કોઈપણ અભ્યાસક્રમ સાથે તમારી શીખવાની પ્રગતિ શેર કરી રહ્યાં નથી."
+    "sharedAnalyticsNone": "તમે કોઈપણ અભ્યાસક્રમ સાથે તમારી શીખવાની પ્રગતિ શેર કરી રહ્યાં નથી.",
+    "sharedAnalyticsOthersTitle": "અન્ય લોકો જે તમારી પ્રગતિ જોઈ શકે છે",
+    "removeAnalyticsAccess": "ઍક્સેસ દૂર કરો",
+    "removeAnalyticsAccessDesc": "{name} તમારી શીખવાની પ્રગતિ જોઈ શકશે નહીં."
 }

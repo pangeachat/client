@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-27 12:27:52.334468",
+    "@@last_modified": "2026-10-27 14:48:00.613352",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Gall eich athrawon yn {course} weld eich cynnydd dysgu nawr.",
     "sharedAnalyticsTitle": "Cynnydd dysgu a rennir",
     "sharedAnalyticsDesc": "Gall athrawon yn y cyrsiau hyn weld eich cynnydd dysgu. Gadewch gwrs i roi'r gorau i rannu.",
-    "sharedAnalyticsNone": "Nid ydych chi'n rhannu eich cynnydd dysgu gydag unrhyw gwrs."
+    "sharedAnalyticsNone": "Nid ydych chi'n rhannu eich cynnydd dysgu gydag unrhyw gwrs.",
+    "sharedAnalyticsOthersTitle": "Eraill sy'n gallu gweld eich cynnydd",
+    "removeAnalyticsAccess": "Tynnu mynediad",
+    "removeAnalyticsAccessDesc": "Ni fydd {name} bellach yn gallu gweld eich cynnydd dysgu."
 }

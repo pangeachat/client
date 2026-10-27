@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-27 12:27:55.658189",
+    "@@last_modified": "2026-10-27 14:47:59.907099",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Ndị nkuzi gị na {course} nwere ike ịhụ ọganihu mmụta gị ugbu a.",
     "sharedAnalyticsTitle": "Ekesara ọganihu mmụta",
     "sharedAnalyticsDesc": "Ndị nkuzi n'ime nkuzi ndị a nwere ike ịhụ ọganihu mmụta gị. Hapụ nkuzi iji kwụsị ikesa.",
-    "sharedAnalyticsNone": "Ị naghị ekesa ọganihu mmụta gị na nkuzi ọ bụla."
+    "sharedAnalyticsNone": "Ị naghị ekesa ọganihu mmụta gị na nkuzi ọ bụla.",
+    "sharedAnalyticsOthersTitle": "Ndị ọzọ nwere ike ịhụ ọganihu gị",
+    "removeAnalyticsAccess": "Wepụ ohere",
+    "removeAnalyticsAccessDesc": "{name} agaghịzi enwe ike ịhụ ọganihu mmụta gị."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:27:50.919024",
+    "@@last_modified": "2026-10-27 14:47:56.250881",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10176,5 +10176,8 @@
     "analyticsSharedOnJoin": "Els teus professors de {course} ja poden veure el teu progrés d'aprenentatge.",
     "sharedAnalyticsTitle": "Progrés d'aprenentatge compartit",
     "sharedAnalyticsDesc": "Els professors d'aquests cursos poden veure el teu progrés d'aprenentatge. Abandona un curs per deixar de compartir.",
-    "sharedAnalyticsNone": "No estàs compartint el teu progrés d'aprenentatge amb cap curs."
+    "sharedAnalyticsNone": "No estàs compartint el teu progrés d'aprenentatge amb cap curs.",
+    "sharedAnalyticsOthersTitle": "Altres que poden veure el teu progrés",
+    "removeAnalyticsAccess": "Eliminar accés",
+    "removeAnalyticsAccessDesc": "{name} ja no podrà veure el teu progrés d'aprenentatge."
 }

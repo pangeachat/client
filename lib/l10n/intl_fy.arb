@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-27 12:27:53.440209",
+    "@@last_modified": "2026-10-27 14:47:57.979909",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Jo dosinten yn {course} kinne no jo learfoarútgong sjen.",
     "sharedAnalyticsTitle": "Dielde learfoarútgong",
     "sharedAnalyticsDesc": "Dosinten yn dizze kursussen kinne jo learfoarútgong sjen. Ferlit in kursus om it dielen te stopjen.",
-    "sharedAnalyticsNone": "Jo diele jo learfoarútgong net mei in kursus."
+    "sharedAnalyticsNone": "Jo diele jo learfoarútgong net mei in kursus.",
+    "sharedAnalyticsOthersTitle": "Oaren dy't dyn foarútgong sjen kinne",
+    "removeAnalyticsAccess": "Tagong fuortsmite",
+    "removeAnalyticsAccessDesc": "{name} sil dyn learfoarútgong net mear sjen kinne."
 }

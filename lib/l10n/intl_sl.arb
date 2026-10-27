@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-27 12:28:01.531638",
+    "@@last_modified": "2026-10-27 14:48:06.266519",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10991,5 +10991,8 @@
     "analyticsSharedOnJoin": "Vaši učitelji v {course} lahko zdaj vidijo vaš napredek pri učenju.",
     "sharedAnalyticsTitle": "Deljen napredek pri učenju",
     "sharedAnalyticsDesc": "Učitelji v teh tečajih lahko vidijo vaš napredek pri učenju. Zapustite tečaj, da prekinete deljenje.",
-    "sharedAnalyticsNone": "S svojim napredkom pri učenju ne delite nobenega tečaja."
+    "sharedAnalyticsNone": "S svojim napredkom pri učenju ne delite nobenega tečaja.",
+    "sharedAnalyticsOthersTitle": "Drugi, ki lahko vidijo vaš napredek",
+    "removeAnalyticsAccess": "Odstrani dostop",
+    "removeAnalyticsAccessDesc": "{name} ne bo več mogel videti vašega učnega napredka."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:28:02.458941",
+    "@@last_modified": "2026-10-27 14:48:05.885252",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10995,5 +10995,8 @@
     "analyticsSharedOnJoin": "Vaši nastavnici u {course} sada mogu da vide vaš napredak u učenju.",
     "sharedAnalyticsTitle": "Deljen napredak u učenju",
     "sharedAnalyticsDesc": "Nastavnici u ovim kursevima mogu da vide vaš napredak u učenju. Napustite kurs da biste prestali sa deljenjem.",
-    "sharedAnalyticsNone": "Ne delite svoj napredak u učenju ni sa jednim kursom."
+    "sharedAnalyticsNone": "Ne delite svoj napredak u učenju ni sa jednim kursom.",
+    "sharedAnalyticsOthersTitle": "Drugi koji mogu da vide vaš napredak",
+    "removeAnalyticsAccess": "Ukloni pristup",
+    "removeAnalyticsAccessDesc": "{name} više neće moći da vidi vaš napredak u učenju."
 }

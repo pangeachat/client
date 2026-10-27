@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 12:27:52.328478",
+    "@@last_modified": "2026-10-27 14:47:57.003778",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10991,5 +10991,8 @@
     "analyticsSharedOnJoin": "Viaj instruistoj en {course} nun povas vidi vian lernan progreson.",
     "sharedAnalyticsTitle": "Kunhavigata lerna progreso",
     "sharedAnalyticsDesc": "Instruistoj en ĉi tiuj kursoj povas vidi vian lernan progreson. Forlasu kurson por ĉesi kunhavigi.",
-    "sharedAnalyticsNone": "Vi ne kunhavigas vian lernan progreson kun iu ajn kurso."
+    "sharedAnalyticsNone": "Vi ne kunhavigas vian lernan progreson kun iu ajn kurso.",
+    "sharedAnalyticsOthersTitle": "Aliaj, kiuj povas vidi vian progreson",
+    "removeAnalyticsAccess": "Forigi aliron",
+    "removeAnalyticsAccessDesc": "{name} ne plu povos vidi vian lernan progreson."
 }

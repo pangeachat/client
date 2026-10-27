@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-27 12:27:50.284800",
+    "@@last_modified": "2026-10-27 14:47:56.012945",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10352,5 +10352,8 @@
     "analyticsSharedOnJoin": "يمكن لمعلميك في {course} الآن رؤية تقدمك في التعلم.",
     "sharedAnalyticsTitle": "مشاركة تقدم التعلم",
     "sharedAnalyticsDesc": "يمكن للمدرسين في هذه الدورات التدريبية رؤية تقدمك في التعلم. اترك الدورة التدريبية لإيقاف المشاركة.",
-    "sharedAnalyticsNone": "أنت لا تشارك تقدمك في التعلم مع أي دورة تدريبية."
+    "sharedAnalyticsNone": "أنت لا تشارك تقدمك في التعلم مع أي دورة تدريبية.",
+    "sharedAnalyticsOthersTitle": "الآخرون الذين يمكنهم رؤية تقدمك",
+    "removeAnalyticsAccess": "إزالة الوصول",
+    "removeAnalyticsAccessDesc": "لن يتمكن {name} بعد الآن من رؤية تقدمك في التعلم."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-27 12:28:05.509366",
+    "@@last_modified": "2026-10-27 14:48:07.236583",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10049,5 +10049,8 @@
     "analyticsSharedOnJoin": "Ваші викладачі в {course} тепер можуть бачити ваш прогрес у навчанні.",
     "sharedAnalyticsTitle": "Спільний прогрес у навчанні",
     "sharedAnalyticsDesc": "Викладачі цих курсів можуть бачити ваш прогрес у навчанні. Залиште курс, щоб припинити спільний доступ.",
-    "sharedAnalyticsNone": "Ви не ділитеся своїм прогресом у навчанні з жодним курсом."
+    "sharedAnalyticsNone": "Ви не ділитеся своїм прогресом у навчанні з жодним курсом.",
+    "sharedAnalyticsOthersTitle": "Інші, хто може бачити ваш прогрес",
+    "removeAnalyticsAccess": "Видалити доступ",
+    "removeAnalyticsAccessDesc": "{name} більше не зможе бачити ваш прогрес у навчанні."
 }

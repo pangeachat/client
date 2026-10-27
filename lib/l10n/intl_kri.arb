@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-27 12:27:57.179712",
+    "@@last_modified": "2026-10-27 14:48:01.149627",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Yu ticha dɛn insaid {course} kin si naw aw yu de lan.",
     "sharedAnalyticsTitle": "Yu lanin we dɛn de si",
     "sharedAnalyticsDesc": "Ticha dɛn insaid dɛn kɔs ya kin si aw yu de lan. Liv wan kɔs fɔ stɔp fɔ sho dɛn.",
-    "sharedAnalyticsNone": "Yu nɔ de sho ɛni kɔs aw yu de lan."
+    "sharedAnalyticsNone": "Yu nɔ de sho ɛni kɔs aw yu de lan.",
+    "sharedAnalyticsOthersTitle": "Uda pipul dɛn we go ebul si yu prɔgrɛs",
+    "removeAnalyticsAccess": "Pul aksɛs",
+    "removeAnalyticsAccessDesc": "{name} nɔ go ebul si yu lɔn prɔgrɛs igen."
 }

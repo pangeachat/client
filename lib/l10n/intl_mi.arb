@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-27 12:27:58.747513",
+    "@@last_modified": "2026-10-27 14:48:05.921843",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Ka taea e ō kaiako i {course} te kite i tō ahunga whakamua ako.",
     "sharedAnalyticsTitle": "Te tiri i te ahunga whakamua ako",
     "sharedAnalyticsDesc": "Ka taea e ngā kaiako i ēnei akoranga te kite i tō ahunga whakamua ako. Waiho i tētahi akoranga kia mutu ai te tiri.",
-    "sharedAnalyticsNone": "Kāore koe e tiri ana i tō ahunga whakamua ako ki tētahi akoranga."
+    "sharedAnalyticsNone": "Kāore koe e tiri ana i tō ahunga whakamua ako ki tētahi akoranga.",
+    "sharedAnalyticsOthersTitle": "Ētahi atu ka kite i tō ahunga whakamua",
+    "removeAnalyticsAccess": "Tangohia te urunga",
+    "removeAnalyticsAccessDesc": "Kāore a {name} e kite anō i tō ahunga whakamua ako."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-27 12:27:54.069236",
+    "@@last_modified": "2026-10-27 14:47:57.422596",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10401,5 +10401,8 @@
     "analyticsSharedOnJoin": "Vos professeurs de {course} peuvent maintenant voir votre progression d'apprentissage.",
     "sharedAnalyticsTitle": "Progression d'apprentissage partagée",
     "sharedAnalyticsDesc": "Les professeurs de ces cours peuvent voir votre progression d'apprentissage. Quittez un cours pour arrêter le partage.",
-    "sharedAnalyticsNone": "Vous ne partagez votre progression d'apprentissage avec aucun cours."
+    "sharedAnalyticsNone": "Vous ne partagez votre progression d'apprentissage avec aucun cours.",
+    "sharedAnalyticsOthersTitle": "Autres personnes qui peuvent voir votre progression",
+    "removeAnalyticsAccess": "Supprimer l'accès",
+    "removeAnalyticsAccessDesc": "{name} ne pourra plus voir votre progression d'apprentissage."
 }

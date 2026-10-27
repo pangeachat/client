@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-27 12:28:03.053098",
+    "@@last_modified": "2026-10-27 14:48:06.344157",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2511,5 +2511,8 @@
     "analyticsSharedOnJoin": "Guru anjeun di {course} ayeuna tiasa ningali kamajuan diajar anjeun.",
     "sharedAnalyticsTitle": "Kamajuan diajar dibagikeun",
     "sharedAnalyticsDesc": "Guru dina kursus ieu tiasa ningali kamajuan diajar anjeun. Kaluar tina kursus pikeun ngeureunkeun ngabagikeun.",
-    "sharedAnalyticsNone": "Anjeun henteu ngabagikeun kamajuan diajar anjeun sareng kursus mana waé."
+    "sharedAnalyticsNone": "Anjeun henteu ngabagikeun kamajuan diajar anjeun sareng kursus mana waé.",
+    "sharedAnalyticsOthersTitle": "Batur anu tiasa ningali kamajuan anjeun",
+    "removeAnalyticsAccess": "Pupus aksés",
+    "removeAnalyticsAccessDesc": "{name} moal tiasa ningali deui kamajuan diajar anjeun."
 }
