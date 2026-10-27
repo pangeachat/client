@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/analytics_access/consent_before_join.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
@@ -14,6 +15,15 @@ class SpaceTapUtil {
     BuildContext context,
     Room space,
   ) async {
+    // Asked before the join (course-analytics-access.instructions.md, "Ask
+    // before joining"); a decline turns the invite down.
+    if (!await AnalyticsConsentBeforeJoin.askForRoom(
+      space.client,
+      space.id,
+      context: context,
+    )) {
+      return null;
+    }
     final resp = await showFutureLoadingDialog(
       context: context,
       future: space.joinKnockedRoom,

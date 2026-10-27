@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
+import 'package:fluffychat/features/analytics_access/consent_before_join.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
@@ -315,6 +316,16 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
       return;
     }
 
+    // Asked before the join (course-analytics-access.instructions.md, "Ask
+    // before joining"); Go back stays on the preview with Join still offered.
+    if (!await AnalyticsConsentBeforeJoin.askForRoom(
+      client,
+      widget.roomID!,
+      context: context,
+    )) {
+      return;
+    }
+    if (!mounted) return;
     final accessCheckResp = await showFutureLoadingDialog<JoinResponse>(
       context: context,
       future: () => client.joinRoomWithAccessCheck(widget.roomID!),

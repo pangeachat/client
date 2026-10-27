@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/analytics_access/consent_before_join.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
@@ -108,6 +109,18 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
       return;
     }
 
+    // Asked before the join (course-analytics-access.instructions.md, "Ask
+    // before joining").
+    final roomId = chunk?.roomId;
+    if (roomId != null &&
+        !await AnalyticsConsentBeforeJoin.askForRoom(
+          client,
+          roomId,
+          context: context,
+        )) {
+      return;
+    }
+    if (!mounted) return;
     final result = await showFutureLoadingDialog<JoinResponse>(
       context: context,
       future: () => client.joinRoomWithAccessCheck(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/analytics_access/consent_before_join.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -59,6 +60,15 @@ class RoomInviteDialog {
 
     switch (resp) {
       case CourseInviteAction.accept:
+        // Asked before the join (course-analytics-access.instructions.md,
+        // "Ask before joining"); a decline turns the invite down.
+        if (!await AnalyticsConsentBeforeJoin.askForRoom(
+          room.client,
+          room.id,
+          context: appContext,
+        )) {
+          return;
+        }
         final result = await showFutureLoadingDialog(
           context: appContext,
           future: room.joinKnockedRoom,

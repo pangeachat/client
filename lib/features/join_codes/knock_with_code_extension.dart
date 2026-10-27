@@ -41,6 +41,32 @@ extension KnockWithCodeApiExtension on Api {
 
     return KnockSpaceResponse.fromJson(jsonDecode(responseString));
   }
+
+  /// The rooms [code] opens, read-only (`preview_with_code`): each room's
+  /// metadata, admins and Pangea state, and whether the code opens it as a
+  /// teacher.
+  Future<List<Map<String, dynamic>>> previewWithCode(String code) async {
+    final requestUri = Uri(path: '_synapse/client/pangea/v1/preview_with_code');
+    final request = Request('POST', baseUri!.resolveUri(requestUri));
+    request.headers['content-type'] = 'application/json';
+    request.headers['authorization'] = 'Bearer ${bearerToken!}';
+    request.bodyBytes = utf8.encode(jsonEncode({'access_code': code}));
+    final response = await httpClient.send(request);
+    final responseBody = await response.stream.toBytes();
+    if (response.statusCode != 200) {
+      throw PangeaHttpException.fromStreamedResponse(
+        request,
+        response,
+        responseBody,
+      );
+    }
+    final rooms = jsonDecode(utf8.decode(responseBody))['rooms'];
+    return [
+      if (rooms is List)
+        for (final room in rooms)
+          if (room is Map<String, dynamic>) room,
+    ];
+  }
 }
 
 extension KnockSpaceExtension on Client {

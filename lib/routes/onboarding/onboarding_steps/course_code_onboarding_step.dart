@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fluffychat/features/analytics_access/consent_before_join.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_join_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_language_onboarding_step.dart';
@@ -28,7 +29,14 @@ class CourseCodeOnboardingStep extends OnboardingStep with CourseJoinStep {
     // A failed join throws, and the step surfaces the error. A join that
     // succeeds always advances, even when the course's quest doesn't resolve
     // (#8593) — see joining-courses.instructions.md.
-    final roomId = await state.courseProvider.joinSpaceWithCode(code);
+    final String roomId;
+    try {
+      roomId = await state.courseProvider.joinSpaceWithCode(code);
+    } on AnalyticsConsentDeclined {
+      // Going back from the analytics notice joins nothing: carry on without
+      // a course, as skipping the code would.
+      return skip();
+    }
     return stepAfterJoin(roomId);
   }
 

@@ -14,6 +14,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_client_extension.dart';
 import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
+import 'package:fluffychat/features/analytics_access/consent_before_join.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
@@ -513,6 +514,15 @@ class ChatListController extends State<ChatList>
       // Auto-join analytics rooms or spaces the user has knocked on
       if (isAnalytics || hasKnocked) {
         try {
+          // Asked before the join (course-analytics-access.instructions.md,
+          // "Ask before joining"); a decline turns the invite down.
+          if (!await AnalyticsConsentBeforeJoin.askForRoom(
+            client,
+            room.id,
+            context: context,
+          )) {
+            continue;
+          }
           final joinResp = await room.joinKnockedRoom();
           if (joinResp == null) continue;
 

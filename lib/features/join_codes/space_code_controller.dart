@@ -10,6 +10,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/analytics_access/consent_before_join.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/joined_target.dart';
@@ -194,6 +195,20 @@ class SpaceCodeController {
     _inFlightJoins[spaceCode] = completer.future;
     try {
       await SpaceCodeRepo.setRecentCode(spaceCode);
+
+      // Asked before the knock, so Go back joins nothing
+      // (course-analytics-access.instructions.md, "Ask before joining").
+      if (!await AnalyticsConsentBeforeJoin.askForCode(
+        client,
+        spaceCode,
+        context: context,
+      )) {
+        final declined = Result<JoinResponse>.error(
+          const AnalyticsConsentDeclined(),
+        );
+        completer.complete(declined);
+        return declined;
+      }
 
       // TODO this should throw error if failed
       final roomId = showLoading && context != null

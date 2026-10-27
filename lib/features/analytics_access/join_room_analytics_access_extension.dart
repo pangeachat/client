@@ -98,16 +98,9 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
   Future<bool> sharesAnalyticsWithCourse(Room course) async {
     try {
       final lang = await getCourseLanguage(course);
-      final analyticsRoom = lang == null
-          ? null
-          : ownAnalyticsRoomLocal(lang: lang);
-      if (analyticsRoom == null) return false;
-
+      if (lang == null) return false;
       final teacherIds = (await course.nonBotRoomAdmins).map((u) => u.id);
-      final members = await analyticsRoom.requestParticipants([
-        Membership.join,
-      ]);
-      return members.any((u) => teacherIds.contains(u.id));
+      return await sharesAnalyticsWith(teacherIds, lang);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -119,7 +112,21 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
     }
   }
 
-  LanguageModel? _languageByCode(String? langCode) {
+  /// Whether any of [teacherIds] is joined to the learner's analytics room for
+  /// [lang]; the course-free core of [sharesAnalyticsWithCourse], for a course
+  /// known only from a preview before the join.
+  Future<bool> sharesAnalyticsWith(
+    Iterable<String> teacherIds,
+    LanguageModel lang,
+  ) async {
+    final analyticsRoom = ownAnalyticsRoomLocal(lang: lang);
+    if (analyticsRoom == null) return false;
+    final members = await analyticsRoom.requestParticipants([Membership.join]);
+    return members.any((u) => teacherIds.contains(u.id));
+  }
+
+  /// The language for a course's `l2` code, as the course plan names it.
+  LanguageModel? courseLanguageByCode(String? langCode) {
     if (langCode == null || langCode.isEmpty) return null;
     return PLanguageStore.byLangCode(langCode) ??
         LanguageModel(langCode: langCode, displayName: langCode);
@@ -130,7 +137,7 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
   /// on a lagging fresh-page-load sync); fall back to the localized plan fetch.
   Future<LanguageModel?> getCourseLanguage(Room room) async {
     final coursePlan = room.coursePlan;
-    final languageFromRoom = _languageByCode(coursePlan?.l2);
+    final languageFromRoom = courseLanguageByCode(coursePlan?.l2);
     if (languageFromRoom != null) return languageFromRoom;
 
     final courseId = coursePlan?.uuid;
@@ -139,7 +146,7 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
 
   Future<LanguageModel?> _getCourseLanguageByCourseId(String courseId) async {
     final course = await QuestPlansRepo.get(courseId);
-    return _languageByCode(course?.targetLanguage);
+    return courseLanguageByCode(course?.targetLanguage);
   }
 
   Future<Map<String, LanguageModel?>> _getCourseLanguages(

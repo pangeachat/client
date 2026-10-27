@@ -1,3 +1,4 @@
+import 'package:fluffychat/features/analytics_access/consent_before_join.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_join_step.dart';
@@ -40,11 +41,14 @@ class UserTypeOnboardingStep extends OnboardingStep with CourseJoinStep {
         // (#8593) — see joining-courses.instructions.md.
         return await stepAfterJoin(roomId);
       } catch (e, s) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {'cached_course_id': courseCode},
-        );
+        // Going back from the analytics notice is a choice, not a failure.
+        if (e is! AnalyticsConsentDeclined) {
+          ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {'cached_course_id': courseCode},
+          );
+        }
       } finally {
         // Onboarding is finished with the cached inbound code either way:
         // joined on success, handed off to manual entry on failure. A

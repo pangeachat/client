@@ -15,6 +15,7 @@ import 'package:fluffychat/features/activity_sessions/activity_session_constants
 import 'package:fluffychat/features/activity_sessions/activity_summary_analytics_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
+import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
@@ -113,6 +114,10 @@ class RoomSummaryResponse {
   final ActivitySummaryAnalyticsModel? activitySummaryAnalytics;
   final CoursePlanEvent? coursePlan;
 
+  /// Whether the course requires sharing analytics, read before the join so
+  /// the learner is asked first (course-analytics-access.instructions.md).
+  final CourseSettingsModel? courseSettings;
+
   final JoinRules? joinRule;
   final Map<String, int>? powerLevels;
   final Map<String, String> membershipSummary;
@@ -127,6 +132,7 @@ class RoomSummaryResponse {
     this.activitySummary,
     this.activitySummaryAnalytics,
     this.coursePlan,
+    this.courseSettings,
     this.joinRule,
     this.powerLevels,
     this.displayName,
@@ -311,6 +317,12 @@ class RoomSummaryResponse {
       coursePlan = CoursePlanEvent.tryParse(coursePlanEntry);
     }
 
+    final courseSettingsEntry =
+        json[PangeaEventTypes.courseSettings]?['default']?['content'];
+    final courseSettings = courseSettingsEntry is Map<String, dynamic>
+        ? CourseSettingsModel.fromJson(courseSettingsEntry)
+        : null;
+
     final powerLevelsEntry =
         json[EventTypes.RoomPowerLevels]?['default']?['content']?['users'];
     Map<String, int>? powerLevels;
@@ -345,6 +357,7 @@ class RoomSummaryResponse {
       activitySummary: summary,
       activitySummaryAnalytics: summaryAnalytics,
       coursePlan: coursePlan,
+      courseSettings: courseSettings,
       powerLevels: powerLevels,
       joinRule: joinRule,
       membershipSummary: Map<String, String>.from(
