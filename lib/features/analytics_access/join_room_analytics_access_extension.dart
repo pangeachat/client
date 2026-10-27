@@ -7,6 +7,7 @@ import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/analytics_access/grant_analytics_access_extension.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
@@ -81,10 +82,41 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
           join: true,
         ).timeout(const Duration(seconds: 10));
       } on TimeoutException {
-        // Sync lag, not a failed join — proceed without the local room.
+        // Sync lag, not a failed join — proceed without the local room. The
+        // callers' consent step needs that room, so it runs once it lands.
+        unawaited(JoinRoomAnalyticsConsentHandler.askOnceSynced(this, roomId));
       }
     }
     return getRoomById(roomId);
+  }
+
+  /// Whether one of [course]'s teachers is already in the learner's analytics
+  /// room for its language: the access itself, which the learner's recorded
+  /// answer does not track, since the analytics-room-creation grant and staff
+  /// bulk grants share without asking. False when the check cannot be made, so
+  /// the learner is asked as before.
+  Future<bool> sharesAnalyticsWithCourse(Room course) async {
+    try {
+      final lang = await getCourseLanguage(course);
+      final analyticsRoom = lang == null
+          ? null
+          : ownAnalyticsRoomLocal(lang: lang);
+      if (analyticsRoom == null) return false;
+
+      final teacherIds = (await course.nonBotRoomAdmins).map((u) => u.id);
+      final members = await analyticsRoom.requestParticipants([
+        Membership.join,
+      ]);
+      return members.any((u) => teacherIds.contains(u.id));
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"course_id": course.id},
+        level: PangeaHttpException.severityOf(e),
+      );
+      return false;
+    }
   }
 
   LanguageModel? _languageByCode(String? langCode) {

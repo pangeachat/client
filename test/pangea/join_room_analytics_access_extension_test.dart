@@ -1,8 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics_access/analytics_access_notice_dialog.dart';
@@ -245,25 +249,35 @@ void main() {
   });
 
   group('JoinRoomAnalyticsConsentHandler', () {
-    // CLIENT-EFF: a class-link join and a second caller each ran the handler
-    // for the same course, stacking two notices. The learner chose Go back on
-    // one (leaving the course) and Share and join on the other, which granted
-    // for a course they had just left.
-    testWidgets('concurrent calls for one course share a single notice', (
-      tester,
-    ) async {
+    const teacherId = '@teacher:fakeServer.notExisting';
+    const accountDataPath =
+        '/client/v3/user/%40test%3AfakeServer.notExisting'
+        '/account_data/${PangeaEventTypes.accessNoticeShown}';
+    late List<Object?> noticeWrites;
+
+    setUpAll(() async {
+      // The teacher lookup skips the bot by name: BotName.byEnvironment reads
+      // GetStorage (path_provider-backed) and dotenv.
+      final tempDir = await Directory.systemTemp.createTemp('consent_handler');
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(
+            const MethodChannel('plugins.flutter.io/path_provider'),
+            (methodCall) async => tempDir.path,
+          );
+      await GetStorage.init('env_override');
+      dotenv.testLoad(mergeWith: {'BOT_NAME': 'pangeabot'});
+    });
+
+    setUp(() {
       profileWithAnalyticsRoom(analyticsRoomId);
-      api.api['PUT']!['/client/v3/user/${Uri.encodeComponent(userId)}'
-          '/account_data/${PangeaEventTypes.accessNoticeShown}'] = (_) =>
-          {};
-      var leaves = 0;
-      api.api['POST']!['/client/v3/rooms/${Uri.encodeComponent(courseRoomId)}'
-          '/leave'] = (_) {
-        leaves++;
+      noticeWrites = [];
+      api.api['PUT']![accountDataPath] = (body) {
+        noticeWrites.add(jsonDecode(body as String));
         return {};
       };
-      final room = courseRoom();
-      client.rooms = [room];
+    });
+
+    Future<BuildContext> pumpHost(WidgetTester tester) async {
       late BuildContext context;
       await tester.pumpWidget(
         MaterialApp(
@@ -278,6 +292,54 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
+      return context;
+    }
+
+    // The notice, the leave and the grant wait on real I/O; let it land, then
+    // build.
+    Future<void> settle(WidgetTester tester) async {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 200)),
+      );
+      await tester.pumpAndSettle();
+    }
+
+    void addJoinedMembers(Room room, List<String> ids) {
+      for (final id in ids) {
+        room.setState(
+          Event(
+            type: EventTypes.RoomMember,
+            content: {'membership': 'join'},
+            senderId: id,
+            eventId: '\$member-$id-${room.id}',
+            originServerTs: DateTime.utc(2026, 1, 1),
+            stateKey: id,
+            room: room,
+          ),
+        );
+      }
+      room.summary = RoomSummary.fromJson({
+        'm.joined_member_count': ids.length,
+        'm.invited_member_count': 0,
+      });
+    }
+
+    // CLIENT-EFF: a class-link join and a second caller each ran the handler
+    // for the same course, stacking two notices. The learner chose Go back on
+    // one (leaving the course) and Share and join on the other, which granted
+    // for a course they had just left.
+    testWidgets('concurrent calls for one course share a single notice', (
+      tester,
+    ) async {
+      var leaves = 0;
+      api.api['POST']!['/client/v3/rooms/${Uri.encodeComponent(courseRoomId)}'
+          '/leave'] = (_) {
+        leaves++;
+        return {};
+      };
+      final room = courseRoom();
+      client.rooms = [room];
+      final context = await pumpHost(tester);
 
       const joinResp = JoinResponse(
         roomId: courseRoomId,
@@ -290,25 +352,100 @@ void main() {
           room,
         ).handle(context).then(results.add);
       }
-      // The notice and the leave wait on real I/O; let it land, then build.
-      Future<void> settle() async {
-        await tester.runAsync(
-          () => Future<void>.delayed(const Duration(milliseconds: 200)),
-        );
-        await tester.pumpAndSettle();
-      }
 
-      await settle();
+      await settle(tester);
       expect(find.byType(AnalyticsAccessNoticeDialog), findsOneWidget);
 
       await tester.tap(find.text(L10n.of(context).goBack));
       for (var i = 0; i < 5 && results.length < 2; i++) {
-        await settle();
+        await settle(tester);
       }
 
       expect(results, [null, null]);
       expect(leaves, 1);
       expect(grants, isEmpty);
+    });
+
+    // The 2026-10-26 class: their teachers were already in their analytics
+    // rooms, granted when those rooms were created, but no answer was recorded,
+    // so re-entering the class code asked again and Go back removed them.
+    testWidgets(
+      'a learner whose teacher already sees their analytics is not asked',
+      (tester) async {
+        final course = courseRoom();
+        course.setState(
+          Event(
+            type: EventTypes.RoomPowerLevels,
+            content: {
+              'users': {userId: 0, teacherId: 100},
+            },
+            senderId: teacherId,
+            eventId: '\$powerLevels',
+            originServerTs: DateTime.utc(2026, 1, 1),
+            stateKey: '',
+            room: course,
+          ),
+        );
+        addJoinedMembers(course, [userId, teacherId]);
+        final analytics = analyticsRoom(analyticsRoomId);
+        addJoinedMembers(analytics, [userId, teacherId]);
+        client.rooms = [course, analytics];
+        final context = await pumpHost(tester);
+
+        String? result;
+        JoinRoomAnalyticsConsentHandler(
+          const JoinResponse(roomId: courseRoomId, shouldShowNotice: true),
+          course,
+        ).handle(context).then((value) => result = value);
+        for (var i = 0; i < 5 && result == null; i++) {
+          await settle(tester);
+        }
+
+        expect(find.byType(AnalyticsAccessNoticeDialog), findsNothing);
+        expect(result, courseRoomId);
+        // The grant still runs, for any teacher who cannot see yet.
+        expect(grants.single['mx_analytics_room_id'], analyticsRoomId);
+      },
+    );
+
+    testWidgets('a join that outran sync asks once the course lands', (
+      tester,
+    ) async {
+      api.api['GET']!['/client/v3/rooms/!course%3AfakeServer.notExisting'
+          '/state/${PangeaEventTypes.courseSettings}'] = (_) =>
+          const CourseSettingsModel(requireAnalyticsAccess: true).toJson();
+      client.rooms = [];
+      final context = await pumpHost(tester);
+
+      JoinRoomAnalyticsConsentHandler.askOnceSynced(
+        client,
+        courseRoomId,
+        navigatorContext: () => context,
+      );
+      await settle(tester);
+
+      // Pending before the course lands, so closing the app now still asks
+      // on the next visit.
+      expect(noticeWrites, [
+        {
+          'notices_accepted': {courseRoomId: false},
+        },
+      ]);
+      expect(find.byType(AnalyticsAccessNoticeDialog), findsNothing);
+
+      client.rooms = [courseRoom()];
+      client.onSync.add(SyncUpdate(nextBatch: 'landed'));
+      final notice = find.byType(AnalyticsAccessNoticeDialog);
+      for (var i = 0; i < 5 && notice.evaluate().isEmpty; i++) {
+        await settle(tester);
+      }
+      expect(notice, findsOneWidget);
+
+      await tester.tap(find.text(L10n.of(context).shareAndJoin));
+      for (var i = 0; i < 5 && grants.isEmpty; i++) {
+        await settle(tester);
+      }
+      expect(grants.single['mx_course_id'], courseRoomId);
     });
   });
 }
