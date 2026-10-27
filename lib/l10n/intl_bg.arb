@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-23 13:25:36.906895",
+    "@@last_modified": "2026-10-27 14:47:55.715708",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Създадено от",
     "coursePreview": "Преглед на курса",
     "numActivities": "{count, plural, =1{1 активност} other{{count} активности}}",
-    "teacherAnalyticsRequestTitle": "Учителят изисква вашия напредък в обучението",
-    "teacherAnalyticsRequestDesc": "Той ще види всички думи и граматика, които сте използвали в {targetLang}, вашето ниво и XP, както и съобщенията, изпратени в дейностите по курса. Вашите съобщения 1-на-1 няма да бъдат споделяни. Споделянето на анализи е задължително за присъединяване към курса.",
-    "shareAndJoin": "Споделяне и присъединяване",
-    "goBack": "Назад",
     "emptyGroupsSearch": "Няма намерени групи. Уверете се, че търсенето е изписано правилно.",
     "emptyActivitiesSearch": "Няма намерени дейности. Уверете се, че търсенето е изписано правилно.",
     "chatListFiltersLabel": "Филтри за чат",
@@ -2511,5 +2507,12 @@
     "centralCourseMembersSeeYou": "Членовете на този курс могат да виждат вашето име и профил.",
     "practiceStartWordCount": "{count, plural, =1{дума за упражнение} other{думи за упражнение}}",
     "practiceStartGrammarCount": "{count, plural, =1{граматическа точка за упражнение} other{граматически точки за упражнение}}",
-    "practiceStartExerciseTypes": "Видове упражнения"
+    "practiceStartExerciseTypes": "Видове упражнения",
+    "analyticsSharedOnJoin": "Вашите учители в {course} вече могат да виждат напредъка ви в обучението.",
+    "sharedAnalyticsTitle": "Споделен напредък в обучението",
+    "sharedAnalyticsDesc": "Учителите в тези курсове могат да виждат напредъка ви в обучението. Напуснете курс, за да спрете споделянето.",
+    "sharedAnalyticsNone": "Не споделяте напредъка си в обучението с нито един курс.",
+    "sharedAnalyticsOthersTitle": "Други, които могат да виждат напредъка ви",
+    "removeAnalyticsAccess": "Премахване на достъпа",
+    "removeAnalyticsAccessDesc": "{name} вече няма да може да вижда напредъка ви в обучението."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-23 13:25:40.191541",
+    "@@last_modified": "2026-10-27 14:48:00.378405",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Tsim los ntawm",
     "coursePreview": "Saib ua ntej kawm",
     "numActivities": "{count, plural, =1{1 qho kev ua} other{{count} qho kev ua}}",
-    "teacherAnalyticsRequestTitle": "Tus kws qhia ntawv thov koj qhov kev kawm tau zoo",
-    "teacherAnalyticsRequestDesc": "Lawv yuav pom tag nrho cov lus thiab cov qauv lus koj tau siv hauv {targetLang}, koj qib thiab XP, thiab cov lus xa hauv kev kawm. Koj cov lus 1-rau-1 yuav tsis raug qhia. Yuav tsum qhia cov ntaub ntawv txhawm rau koom nrog chav kawm.",
-    "shareAndJoin": "Qhia thiab koom",
-    "goBack": "Rov qab",
     "emptyGroupsSearch": "Tsis pom ib pab pawg twg. Nco ntsoov tias koj qhov kev tshawb nrhiav sau kom raug.",
     "emptyActivitiesSearch": "Tsis pom ib qho haujlwm twg. Nco ntsoov tias koj qhov kev tshawb nrhiav sau kom raug.",
     "chatListFiltersLabel": "Kev lim dej sib tham",
@@ -2511,5 +2507,12 @@
     "centralCourseMembersSeeYou": "Cov tswv cuab ntawm chav kawm no tuaj yeem pom koj lub npe thiab profile.",
     "practiceStartWordCount": "{count, plural, =1{lo lus kawm} other{cov lus kawm}}",
     "practiceStartGrammarCount": "{count, plural, =1{txoj cai sau ntawv kawm} other{cov cai sau ntawv kawm}}",
-    "practiceStartExerciseTypes": "Hom kev kawm"
+    "practiceStartExerciseTypes": "Hom kev kawm",
+    "analyticsSharedOnJoin": "Koj cov xib fwb hauv {course} tam sim no tuaj yeem pom koj txoj kev kawm.",
+    "sharedAnalyticsTitle": "Kev kawm tau qhia tawm",
+    "sharedAnalyticsDesc": "Cov xib fwb hauv cov chav kawm no tuaj yeem pom koj txoj kev kawm. Tawm ntawm chav kawm kom tsis txhob qhia tawm.",
+    "sharedAnalyticsNone": "Koj tsis tau qhia koj txoj kev kawm nrog ib chav kawm twg.",
+    "sharedAnalyticsOthersTitle": "Lwm tus uas pom koj txoj kev kawm",
+    "removeAnalyticsAccess": "Tshem tawm kev nkag mus",
+    "removeAnalyticsAccessDesc": "{name} yuav tsis pom koj txoj kev kawm ntxiv lawm."
 }

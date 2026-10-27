@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-23 13:25:44.681038",
+    "@@last_modified": "2026-10-27 14:48:04.776312",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "جوړ شوی د",
     "coursePreview": "د کورس مخکتنه",
     "numActivities": "{count, plural, =1{1 فعالیت} other{{count} فعالیتونه}}",
-    "teacherAnalyticsRequestTitle": "ښوونکی ستاسو د زده کړې پرمختګ غواړي",
-    "teacherAnalyticsRequestDesc": "دوی به ټول هغه ټکي او ګرامر وګوري چې تاسو په {targetLang} کې کارولي دي، ستاسو کچه او XP، او په کورس فعالیتونو کې لیږل شوي پیغامونه. ستاسو 1-on-1 پیغامونه به شریک نشي. د کورس سره یوځای کیدو لپاره د تحلیلونو شریکول اړین دي.",
-    "shareAndJoin": "شریک کړئ او یوځای شئ",
-    "goBack": "بیرته لاړ شئ",
     "emptyGroupsSearch": "هیڅ ګروپ ونه موندل شو. ډاډ ترلاسه کړئ چې ستاسو لټون سم لیکل شوی.",
     "emptyActivitiesSearch": "هیڅ فعالیت ونه موندل شو. ډاډ ترلاسه کړئ چې ستاسو لټون سم لیکل شوی.",
     "chatListFiltersLabel": "د خبرو اترو فلټرونه",
@@ -2511,5 +2507,12 @@
     "centralCourseMembersSeeYou": "د دې کورس غړي کولی شي ستاسو نوم او پروفایل وګوري.",
     "practiceStartWordCount": "{count, plural, =1{د تمرین لپاره کلمه} other{د تمرین لپاره کلمې}}",
     "practiceStartGrammarCount": "{count, plural, =1{د تمرین لپاره ګرامر ټکی} other{د تمرین لپاره ګرامر ټکي}}",
-    "practiceStartExerciseTypes": "د تمرین ډولونه"
+    "practiceStartExerciseTypes": "د تمرین ډولونه",
+    "analyticsSharedOnJoin": "ستاسو ښوونکي په {course} کې اوس ستاسو د زده کړې پرمختګ لیدلی شي.",
+    "sharedAnalyticsTitle": "شریک شوی زده کړې پرمختګ",
+    "sharedAnalyticsDesc": "په دې کورسونو کې ښوونکي ستاسو د زده کړې پرمختګ لیدلی شي. د شریکولو بندولو لپاره له کورس څخه ووځئ.",
+    "sharedAnalyticsNone": "تاسو خپل د زده کړې پرمختګ له هیڅ کورس سره نه شریکوئ.",
+    "sharedAnalyticsOthersTitle": "نور کسان چې ستاسو پرمختګ لیدلی شي",
+    "removeAnalyticsAccess": "لاسرسی لرې کړئ",
+    "removeAnalyticsAccessDesc": "{name} به نور ونه شي کولی ستاسو د زده کړې پرمختګ وګوري."
 }

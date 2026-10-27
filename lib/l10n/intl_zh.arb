@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-23 13:25:47.318955",
+    "@@last_modified": "2026-10-27 14:48:08.679932",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9837,10 +9837,6 @@
     "contentCreatedBy": "创建者",
     "coursePreview": "课程预览",
     "numActivities": "{count, plural, =1{1 项活动} other{{count} 项活动}}",
-    "teacherAnalyticsRequestTitle": "老师请求查看您的学习进度",
-    "teacherAnalyticsRequestDesc": "他们将看到您在{targetLang}中使用的所有单词和语法、您的等级和经验值，以及在课程活动中发送的消息。您的1对1消息不会被分享。加入课程需要分享分析数据。",
-    "shareAndJoin": "分享并加入",
-    "goBack": "返回",
     "emptyGroupsSearch": "未找到群组。请检查您的搜索拼写是否正确。",
     "emptyActivitiesSearch": "未找到活动。请检查您的搜索拼写是否正确。",
     "chatListFiltersLabel": "聊天筛选器",
@@ -10049,5 +10045,12 @@
     "centralCourseMembersSeeYou": "本课程的成员可以看到您的姓名和个人资料。",
     "practiceStartWordCount": "{count, plural, =1{要练习的单词} other{要练习的单词}}",
     "practiceStartGrammarCount": "{count, plural, =1{要练习的语法点} other{要练习的语法点}}",
-    "practiceStartExerciseTypes": "练习类型"
+    "practiceStartExerciseTypes": "练习类型",
+    "analyticsSharedOnJoin": "您在 {course} 的老师现在可以看到您的学习进度了。",
+    "sharedAnalyticsTitle": "共享学习进度",
+    "sharedAnalyticsDesc": "这些课程的老师可以看到您的学习进度。退出课程即可停止共享。",
+    "sharedAnalyticsNone": "您未与任何课程共享学习进度。",
+    "sharedAnalyticsOthersTitle": "其他可查看您进度的人",
+    "removeAnalyticsAccess": "移除访问权限",
+    "removeAnalyticsAccessDesc": "{name} 将无法再查看您的学习进度。"
 }

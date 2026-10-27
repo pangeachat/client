@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/course_plans/map_border.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
@@ -316,11 +316,10 @@ class _SpaceItem extends StatelessWidget {
     final joinedRoom = client.getRoomById(joinResp.roomId);
     if (joinedRoom == null) return;
 
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, joinedRoom);
+    final handler = JoinRoomAnalyticsAccessHandler(joinResp, joinedRoom);
     final joinedRoomId = await handler.handle(
       router.routerDelegate.navigatorKey.currentContext ?? context,
     );
-    if (joinedRoomId == null) return;
 
     PanelEntryIntent.instance.arm();
     router.go(

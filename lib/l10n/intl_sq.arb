@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-23 13:25:45.338398",
+    "@@last_modified": "2026-10-27 14:48:05.900543",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Krijuar nga",
     "coursePreview": "Parashikim kursi",
     "numActivities": "{count, plural, =1{1 aktivitet} other{{count} aktivitete}}",
-    "teacherAnalyticsRequestTitle": "Mësuesi kërkon progresin tuaj të të nxënit",
-    "teacherAnalyticsRequestDesc": "Ata do të shohin të gjitha fjalët dhe gramatikën që keni përdorur në {targetLang}, nivelin tuaj dhe XP-në, si dhe mesazhet e dërguara në aktivitetet e kursit. Mesazhet tuaja 1-në-1 nuk do të ndahen. Ndarja e analitikave kërkohet për t'u bashkuar me kursin.",
-    "shareAndJoin": "Ndaj dhe bashkohu",
-    "goBack": "Kthehu",
     "emptyGroupsSearch": "Asnjë grup nuk u gjet. Sigurohuni që kërkimi juaj të jetë shkruar saktë.",
     "emptyActivitiesSearch": "Asnjë aktivitet nuk u gjet. Sigurohuni që kërkimi juaj të jetë shkruar saktë.",
     "chatListFiltersLabel": "Filtra bisede",
@@ -2511,5 +2507,12 @@
     "centralCourseMembersSeeYou": "Anëtarët e këtij kursi mund të shohin emrin dhe profilin tënd.",
     "practiceStartWordCount": "{count, plural, =1{fjalë për të praktikuar} other{fjalë për të praktikuar}}",
     "practiceStartGrammarCount": "{count, plural, =1{pikë gramatikore për të praktikuar} other{pika gramatikore për të praktikuar}}",
-    "practiceStartExerciseTypes": "Llojet e ushtrimeve"
+    "practiceStartExerciseTypes": "Llojet e ushtrimeve",
+    "analyticsSharedOnJoin": "Mësuesit tuaj në {course} tani mund të shohin progresin tuaj të të nxënit.",
+    "sharedAnalyticsTitle": "Progres i përbashkët i të nxënit",
+    "sharedAnalyticsDesc": "Mësuesit në këto kurse mund të shohin progresin tuaj të të nxënit. Largohuni nga një kurs për të ndaluar ndarjen.",
+    "sharedAnalyticsNone": "Nuk po ndani progresin tuaj të të nxënit me asnjë kurs.",
+    "sharedAnalyticsOthersTitle": "Të tjerët që mund të shohin progresin tuaj",
+    "removeAnalyticsAccess": "Hiq qasjen",
+    "removeAnalyticsAccessDesc": "{name} nuk do të mund të shohë më progresin tuaj të të nxënit."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:46.132886",
+    "@@last_modified": "2026-10-27 14:48:05.885252",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10783,10 +10783,6 @@
     "contentCreatedBy": "Kreirao/la",
     "coursePreview": "Pregled kursa",
     "numActivities": "{count, plural, =1{1 aktivnost} other{{count} aktivnosti}}",
-    "teacherAnalyticsRequestTitle": "Nastavnik zahteva vaš napredak u učenju",
-    "teacherAnalyticsRequestDesc": "Videće sve reči i gramatiku koje ste koristili u {targetLang}, vaš nivo i XP, kao i poruke poslate u aktivnostima kursa. Vaše 1-na-1 poruke neće biti deljene. Deljenje analitike je obavezno za pridruživanje kursu.",
-    "shareAndJoin": "Podeli i pridruži se",
-    "goBack": "Nazad",
     "emptyGroupsSearch": "Nema pronađenih grupa. Proverite da li ste ispravno napisali pretragu.",
     "emptyActivitiesSearch": "Nema pronađenih aktivnosti. Proverite da li ste ispravno napisali pretragu.",
     "chatListFiltersLabel": "Filteri za ćaskanje",
@@ -10995,5 +10991,12 @@
     "centralCourseMembersSeeYou": "Članovi ovog kursa mogu da vide vaše ime i profil.",
     "practiceStartWordCount": "{count, plural, =1{reč za vežbanje} other{reči za vežbanje}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatička jedinica za vežbanje} other{gramatičke jedinice za vežbanje}}",
-    "practiceStartExerciseTypes": "Vrste vežbi"
+    "practiceStartExerciseTypes": "Vrste vežbi",
+    "analyticsSharedOnJoin": "Vaši nastavnici u {course} sada mogu da vide vaš napredak u učenju.",
+    "sharedAnalyticsTitle": "Deljen napredak u učenju",
+    "sharedAnalyticsDesc": "Nastavnici u ovim kursevima mogu da vide vaš napredak u učenju. Napustite kurs da biste prestali sa deljenjem.",
+    "sharedAnalyticsNone": "Ne delite svoj napredak u učenju ni sa jednim kursom.",
+    "sharedAnalyticsOthersTitle": "Drugi koji mogu da vide vaš napredak",
+    "removeAnalyticsAccess": "Ukloni pristup",
+    "removeAnalyticsAccessDesc": "{name} više neće moći da vidi vaš napredak u učenju."
 }

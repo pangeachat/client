@@ -7,7 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
@@ -325,13 +325,9 @@ class PublicCoursePreviewController extends State<PublicCoursePreview>
     final room = client.getRoomById(joinResp.roomId);
     if (room == null) return;
 
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+    final handler = JoinRoomAnalyticsAccessHandler(joinResp, room);
     final joinedRoomId = await handler.handle(context);
-    // Null means the learner declined the analytics notice and the handler has
-    // already left the room. A decline is a choice, not a failure: stay on the
-    // preview with Join still offered (#9103). A real failure inside the
-    // handler still throws.
-    if (joinedRoomId == null) return;
+    if (!mounted) return;
 
     context.go(
       WorkspaceNav.openCourse(GoRouterState.of(context).uri, joinedRoomId),

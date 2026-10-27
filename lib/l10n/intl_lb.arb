@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-23 13:25:42.371081",
+    "@@last_modified": "2026-10-27 14:48:01.590955",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Erstellt vun",
     "coursePreview": "Cours Virschau",
     "numActivities": "{count, plural, =1{1 Aktivitéit} other{{count} Aktivitéiten}}",
-    "teacherAnalyticsRequestTitle": "Léierpersonal freet no dengem Léierfortschrëtt",
-    "teacherAnalyticsRequestDesc": "Si gesinn all d'Wierder an d'Grammatik, déi s du am {targetLang} benotzt hues, däin Niveau an deng XP, an d'Noriichten, déi an de Coursaktivitéite geschéckt goufen. Deng 1-op-1 Noriichte ginn net gedeelt. D'Deelen vun den Analyse-Donnéeë ass néideg fir de Cours matzemaachen.",
-    "shareAndJoin": "Deelen a matmaachen",
-    "goBack": "Zréck goen",
     "emptyGroupsSearch": "Keng Gruppe fonnt. Gitt sécher datt Är Sich richteg geschriwwen ass.",
     "emptyActivitiesSearch": "Keng Aktivitéite fonnt. Gitt sécher datt Är Sich richteg geschriwwen ass.",
     "chatListFiltersLabel": "Chatfilteren",
@@ -2511,5 +2507,12 @@
     "centralCourseMembersSeeYou": "D'Membere vun dësem Cours kënnen Ären Numm an Äre Profil gesinn.",
     "practiceStartWordCount": "{count, plural, =1{Wuert fir ze üben} other{Wierder fir ze üben}}",
     "practiceStartGrammarCount": "{count, plural, =1{Grammatikpunkt fir ze üben} other{Grammatikpunkte fir ze üben}}",
-    "practiceStartExerciseTypes": "Übungstypen"
+    "practiceStartExerciseTypes": "Übungstypen",
+    "analyticsSharedOnJoin": "Deng Enseignanten am Cours {course} kënnen elo däi Léierfortschrëtt gesinn.",
+    "sharedAnalyticsTitle": "Gedeelte Léierfortschrëtt",
+    "sharedAnalyticsDesc": "Enseignanten an dëse Coursë kënnen däi Léierfortschrëtt gesinn. Verlooss e Cours fir d'Deelen ze stoppen.",
+    "sharedAnalyticsNone": "Du deels däi Léierfortschrëtt mat kengem Cours.",
+    "sharedAnalyticsOthersTitle": "Anerer, déi däi Fortschrëtt gesinn",
+    "removeAnalyticsAccess": "Zougang ewechhuelen",
+    "removeAnalyticsAccessDesc": "{name} wäert däi Léierfortschrëtt net méi gesinn."
 }

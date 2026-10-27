@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:47.476336",
+    "@@last_modified": "2026-10-27 14:48:08.639610",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9943,10 +9943,6 @@
     "contentCreatedBy": "建立者",
     "coursePreview": "課程預覽",
     "numActivities": "{count, plural, =1{1 個活動} other{{count} 個活動}}",
-    "teacherAnalyticsRequestTitle": "老師要求您的學習進度",
-    "teacherAnalyticsRequestDesc": "他們將會看到您在{targetLang}中使用的所有單字和文法、您的等級和經驗值，以及在課程活動中發送的訊息。您的1對1訊息將不會被分享。分享分析資料是加入課程的必要條件。",
-    "shareAndJoin": "分享並加入",
-    "goBack": "返回",
     "emptyGroupsSearch": "找不到任何群組。請確認您的搜尋拼寫正確。",
     "emptyActivitiesSearch": "找不到任何活動。請確認您的搜尋拼寫正確。",
     "chatListFiltersLabel": "聊天篩選器",
@@ -10155,5 +10151,12 @@
     "centralCourseMembersSeeYou": "本課程的成員可以看到您的姓名和個人資料。",
     "practiceStartWordCount": "{count, plural, =1{個單字要練習} other{個單字要練習}}",
     "practiceStartGrammarCount": "{count, plural, =1{個文法點要練習} other{個文法點要練習}}",
-    "practiceStartExerciseTypes": "練習類型"
+    "practiceStartExerciseTypes": "練習類型",
+    "analyticsSharedOnJoin": "您在「{course}」的老師現在可以看到您的學習進度了。",
+    "sharedAnalyticsTitle": "已分享的學習進度",
+    "sharedAnalyticsDesc": "這些課程的老師可以看到您的學習進度。離開課程即可停止分享。",
+    "sharedAnalyticsNone": "您沒有與任何課程分享您的學習進度。",
+    "sharedAnalyticsOthersTitle": "其他可查看您進度的人",
+    "removeAnalyticsAccess": "移除存取權",
+    "removeAnalyticsAccessDesc": "{name} 將無法再查看您的學習進度。"
 }

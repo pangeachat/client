@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-23 13:25:38.419208",
+    "@@last_modified": "2026-10-27 14:47:56.655123",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9824,10 +9824,6 @@
     "contentCreatedBy": "Erstellt von",
     "coursePreview": "Kursvorschau",
     "numActivities": "{count, plural, =1{1 Aktivität} other{{count} Aktivitäten}}",
-    "teacherAnalyticsRequestTitle": "Lehrer fragt nach deinem Lernfortschritt",
-    "teacherAnalyticsRequestDesc": "Sie sehen alle Wörter und Grammatik, die du in {targetLang} verwendet hast, dein Level und deine XP sowie die in Kursaktivitäten gesendeten Nachrichten. Deine 1-zu-1-Nachrichten werden nicht geteilt. Das Teilen von Analysedaten ist für die Teilnahme am Kurs erforderlich.",
-    "shareAndJoin": "Teilen und beitreten",
-    "goBack": "Zurück",
     "emptyGroupsSearch": "Keine Gruppen gefunden. Stellen Sie sicher, dass Ihre Suche richtig geschrieben ist.",
     "emptyActivitiesSearch": "Keine Aktivitäten gefunden. Stellen Sie sicher, dass Ihre Suche richtig geschrieben ist.",
     "chatListFiltersLabel": "Chat-Filter",
@@ -10036,5 +10032,12 @@
     "centralCourseMembersSeeYou": "Mitglieder dieses Kurses können deinen Namen und dein Profil sehen.",
     "practiceStartWordCount": "{count, plural, =1{Wort zum Üben} other{Wörter zum Üben}}",
     "practiceStartGrammarCount": "{count, plural, =1{Grammatikpunkt zum Üben} other{Grammatikpunkte zum Üben}}",
-    "practiceStartExerciseTypes": "Übungstypen"
+    "practiceStartExerciseTypes": "Übungstypen",
+    "analyticsSharedOnJoin": "Ihre Lehrer in {course} können jetzt Ihren Lernfortschritt sehen.",
+    "sharedAnalyticsTitle": "Geteilter Lernfortschritt",
+    "sharedAnalyticsDesc": "Lehrer in diesen Kursen können Ihren Lernfortschritt sehen. Verlassen Sie einen Kurs, um die Freigabe zu beenden.",
+    "sharedAnalyticsNone": "Sie teilen Ihren Lernfortschritt mit keinem Kurs.",
+    "sharedAnalyticsOthersTitle": "Andere, die deinen Fortschritt sehen können",
+    "removeAnalyticsAccess": "Zugriff entfernen",
+    "removeAnalyticsAccessDesc": "{name} kann deinen Lernfortschritt nicht mehr sehen."
 }

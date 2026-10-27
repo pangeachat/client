@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-23 13:25:44.238235",
+    "@@last_modified": "2026-10-27 14:48:04.693494",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10751,10 +10751,6 @@
     "contentCreatedBy": "Criado por",
     "coursePreview": "Pré-visualização do curso",
     "numActivities": "{count, plural, =1{1 atividade} other{{count} atividades}}",
-    "teacherAnalyticsRequestTitle": "O professor solicitou o seu progresso de aprendizagem",
-    "teacherAnalyticsRequestDesc": "O professor verá todas as palavras e gramática que usou em {targetLang}, o seu nível e XP, e as mensagens enviadas nas atividades do curso. As suas mensagens 1-para-1 não serão partilhadas. A partilha de análises é necessária para participar no curso.",
-    "shareAndJoin": "Partilhar e participar",
-    "goBack": "Voltar",
     "emptyGroupsSearch": "Nenhum grupo encontrado. Certifique-se de que a sua pesquisa está escrita corretamente.",
     "emptyActivitiesSearch": "Nenhuma atividade encontrada. Certifique-se de que a sua pesquisa está escrita corretamente.",
     "chatListFiltersLabel": "Filtros de chat",
@@ -10963,5 +10959,12 @@
     "centralCourseMembersSeeYou": "Os membros deste curso podem ver o teu nome e perfil.",
     "practiceStartWordCount": "{count, plural, =1{palavra para praticar} other{palavras para praticar}}",
     "practiceStartGrammarCount": "{count, plural, =1{ponto gramatical para praticar} other{pontos gramaticais para praticar}}",
-    "practiceStartExerciseTypes": "Tipos de exercício"
+    "practiceStartExerciseTypes": "Tipos de exercício",
+    "analyticsSharedOnJoin": "Os teus professores em {course} podem agora ver o teu progresso de aprendizagem.",
+    "sharedAnalyticsTitle": "Progresso de aprendizagem partilhado",
+    "sharedAnalyticsDesc": "Os professores nestes cursos podem ver o teu progresso de aprendizagem. Sai de um curso para parar de partilhar.",
+    "sharedAnalyticsNone": "Não estás a partilhar o teu progresso de aprendizagem com nenhum curso.",
+    "sharedAnalyticsOthersTitle": "Outros que podem ver o seu progresso",
+    "removeAnalyticsAccess": "Remover acesso",
+    "removeAnalyticsAccessDesc": "{name} deixará de poder ver o seu progresso de aprendizagem."
 }

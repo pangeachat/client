@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-23 13:25:41.265465",
+    "@@last_modified": "2026-10-27 14:48:00.210479",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10603,10 +10603,6 @@
     "contentCreatedBy": "作成者",
     "coursePreview": "コースプレビュー",
     "numActivities": "{count, plural, =1{1件のアクティビティ} other{{count}件のアクティビティ}}",
-    "teacherAnalyticsRequestTitle": "先生があなたの学習進捗をリクエストしています",
-    "teacherAnalyticsRequestDesc": "先生は、あなたが{targetLang}で使ったすべての単語と文法、あなたのレベルとXP、コースアクティビティで送信されたメッセージを見ることができます。あなたの1対1のメッセージは共有されません。コースに参加するには、分析情報の共有が必要です。",
-    "shareAndJoin": "共有して参加",
-    "goBack": "戻る",
     "emptyGroupsSearch": "グループが見つかりません。検索のスペルが正しいことを確認してください。",
     "emptyActivitiesSearch": "アクティビティが見つかりません。検索のスペルが正しいことを確認してください。",
     "chatListFiltersLabel": "チャットフィルター",
@@ -10815,5 +10811,12 @@
     "centralCourseMembersSeeYou": "このコースのメンバーはあなたの名前とプロフィールを見ることができます。",
     "practiceStartWordCount": "{count, plural, =1{単語を練習} other{単語を練習}}",
     "practiceStartGrammarCount": "{count, plural, =1{文法項目を練習} other{文法項目を練習}}",
-    "practiceStartExerciseTypes": "練習タイプ"
+    "practiceStartExerciseTypes": "練習タイプ",
+    "analyticsSharedOnJoin": "{course}の先生があなたの学習の進捗を見られるようになりました。",
+    "sharedAnalyticsTitle": "共有された学習の進捗",
+    "sharedAnalyticsDesc": "これらのコースの先生はあなたの学習の進捗を見ることができます。共有を停止するにはコースを退出してください。",
+    "sharedAnalyticsNone": "あなたはどのコースとも学習の進捗を共有していません。",
+    "sharedAnalyticsOthersTitle": "進捗状況を閲覧できるその他のユーザー",
+    "removeAnalyticsAccess": "アクセスを削除",
+    "removeAnalyticsAccessDesc": "{name}はあなたの学習進捗状況を閲覧できなくなります。"
 }

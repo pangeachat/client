@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-23 13:25:42.769263",
+    "@@last_modified": "2026-10-27 14:48:01.776539",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "ສ້າງໂດຍ",
     "coursePreview": "ເບິ່ງຕົວຢ່າງຫຼັກສູດ",
     "numActivities": "{count, plural, =1{1 ກິດຈະກຳ} other{{count} ກິດຈະກຳ}}",
-    "teacherAnalyticsRequestTitle": "ຄູຮ້ອງຂໍຄວາມຄືບໜ້າໃນການຮຽນຮູ້ຂອງທ່ານ",
-    "teacherAnalyticsRequestDesc": "ພວກເຂົາຈະເຫັນຄຳສັບ ແລະ ໄວຍາກອນທັງໝົດທີ່ທ່ານໃຊ້ໃນ {targetLang}, ລະດັບ ແລະ XP ຂອງທ່ານ, ແລະຂໍ້ຄວາມທີ່ສົ່ງໃນກິດຈະກຳຫຼັກສູດ. ຂໍ້ຄວາມ 1 ຕໍ່ 1 ຂອງທ່ານຈະບໍ່ຖືກແບ່ງປັນ. ການແບ່ງປັນການວິເຄາະແມ່ນຈຳເປັນເພື່ອເຂົ້າຮ່ວມຫຼັກສູດ.",
-    "shareAndJoin": "ແບ່ງປັນ ແລະ ເຂົ້າຮ່ວມ",
-    "goBack": "ກັບຄືນ",
     "emptyGroupsSearch": "ບໍ່​ພົບ​ກຸ່ມ. ກວດ​ສອບ​ໃຫ້​ແນ່​ໃຈ​ວ່າ​ການ​ຄົ້ນ​ຫາ​ຂອງ​ທ່ານ​ສະ​ກົດ​ຖືກ​ຕ້ອງ.",
     "emptyActivitiesSearch": "ບໍ່​ພົບ​ກິດ​ຈະ​ກຳ. ກວດ​ສອບ​ໃຫ້​ແນ່​ໃຈ​ວ່າ​ການ​ຄົ້ນ​ຫາ​ຂອງ​ທ່ານ​ສະ​ກົດ​ຖືກ​ຕ້ອງ.",
     "chatListFiltersLabel": "ຕົວກອງການສົນທະນາ",
@@ -2511,5 +2507,12 @@
     "centralCourseMembersSeeYou": "ສະມາຊິກຂອງຫຼັກສູດນີ້ສາມາດເຫັນຊື່ ແລະ ໂປຣໄຟລ໌ຂອງທ່ານໄດ້.",
     "practiceStartWordCount": "{count, plural, =1{ຄຳສັບທີ່ຈະຝຶກ} other{ຄຳສັບທີ່ຈະຝຶກ}}",
     "practiceStartGrammarCount": "{count, plural, =1{ຫຼັກໄວຍາກອນທີ່ຈະຝຶກ} other{ຫຼັກໄວຍາກອນທີ່ຈະຝຶກ}}",
-    "practiceStartExerciseTypes": "ປະເພດການຝຶກ"
+    "practiceStartExerciseTypes": "ປະເພດການຝຶກ",
+    "analyticsSharedOnJoin": "ຄູສອນຂອງທ່ານໃນ {course} ສາມາດເບິ່ງຄວາມຄືບໜ້າການຮຽນຮູ້ຂອງທ່ານໄດ້ແລ້ວ.",
+    "sharedAnalyticsTitle": "ຄວາມຄືບໜ້າການຮຽນຮູ້ທີ່ແບ່ງປັນ",
+    "sharedAnalyticsDesc": "ຄູສອນໃນຫຼັກສູດເຫຼົ່ານີ້ສາມາດເບິ່ງຄວາມຄືບໜ້າການຮຽນຮູ້ຂອງທ່ານໄດ້. ອອກຈາກຫຼັກສູດເພື່ອຢຸດການແບ່ງປັນ.",
+    "sharedAnalyticsNone": "ທ່ານບໍ່ໄດ້ແບ່ງປັນຄວາມຄືບໜ້າການຮຽນຮູ້ຂອງທ່ານກັບຫຼັກສູດໃດໆ.",
+    "sharedAnalyticsOthersTitle": "ຄົນອື່ນໆທີ່ສາມາດເຫັນຄວາມຄືບໜ້າຂອງທ່ານ",
+    "removeAnalyticsAccess": "ລຶບການເຂົ້າເຖິງ",
+    "removeAnalyticsAccessDesc": "{name} ຈະບໍ່ສາມາດເຫັນຄວາມຄືບໜ້າໃນການຮຽນຮູ້ຂອງທ່ານໄດ້ອີກຕໍ່ໄປ."
 }

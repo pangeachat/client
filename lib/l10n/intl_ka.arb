@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-23 13:25:41.702244",
+    "@@last_modified": "2026-10-27 14:48:00.416841",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10734,10 +10734,6 @@
     "contentCreatedBy": "შექმნილია",
     "coursePreview": "კურსის გადახედვა",
     "numActivities": "{count, plural, =1{1 აქტივობა} other{{count} აქტივობა}}",
-    "teacherAnalyticsRequestTitle": "მასწავლებელი ითხოვს თქვენს პროგრესს",
-    "teacherAnalyticsRequestDesc": "ისინი ნახავენ ყველა სიტყვას და გრამატიკას, რომელიც თქვენ გამოიყენეთ {targetLang}-ში, თქვენს დონესა და XP-ს, და კურსის აქტივობებში გაგზავნილ შეტყობინებებს. თქვენი 1-on-1 შეტყობინებები არ გაზიარდება. კურსზე გასაწევრიანებლად ანალიტიკის გაზიარება სავალდებულოა.",
-    "shareAndJoin": "გაზიარება და შეერთება",
-    "goBack": "უკან დაბრუნება",
     "emptyGroupsSearch": "ჯგუფები ვერ მოიძებნა. დარწმუნდით, რომ ძიება სწორად არის დაწერილი.",
     "emptyActivitiesSearch": "აქტივობები ვერ მოიძებნა. დარწმუნდით, რომ ძიება სწორად არის დაწერილი.",
     "chatListFiltersLabel": "ჩეთის ფილტრები",
@@ -10946,5 +10942,12 @@
     "centralCourseMembersSeeYou": "ამ კურსის წევრებს შეუძლიათ ნახონ თქვენი სახელი და პროფილი.",
     "practiceStartWordCount": "{count, plural, =1{სავარჯიშო სიტყვა} other{სავარჯიშო სიტყვა}}",
     "practiceStartGrammarCount": "{count, plural, =1{სავარჯიშო გრამატიკის საკითხი} other{სავარჯიშო გრამატიკის საკითხი}}",
-    "practiceStartExerciseTypes": "სავარჯიშოების ტიპები"
+    "practiceStartExerciseTypes": "სავარჯიშოების ტიპები",
+    "analyticsSharedOnJoin": "თქვენი მასწავლებლები {course}-ში ახლა ხედავენ თქვენს სასწავლო პროგრესს.",
+    "sharedAnalyticsTitle": "გაზიარებული სასწავლო პროგრესი",
+    "sharedAnalyticsDesc": "ამ კურსების მასწავლებლებს შეუძლიათ ნახონ თქვენი სასწავლო პროგრესი. გაზიარების შესაჩერებლად დატოვეთ კურსი.",
+    "sharedAnalyticsNone": "თქვენ არ აზიარებთ თქვენს სასწავლო პროგრესს არცერთ კურსთან.",
+    "sharedAnalyticsOthersTitle": "სხვები, ვინც ხედავს თქვენს პროგრესს",
+    "removeAnalyticsAccess": "წვდომის წაშლა",
+    "removeAnalyticsAccessDesc": "{name} ვეღარ შეძლებს თქვენი სწავლის პროგრესის ნახვას."
 }

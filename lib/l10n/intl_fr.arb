@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-23 13:25:39.546160",
+    "@@last_modified": "2026-10-27 14:47:57.422596",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10189,10 +10189,6 @@
     "contentCreatedBy": "Créé par",
     "coursePreview": "Aperçu du cours",
     "numActivities": "{count, plural, =1{1 activité} other{{count} activités}}",
-    "teacherAnalyticsRequestTitle": "L'enseignant demande vos progrès d'apprentissage",
-    "teacherAnalyticsRequestDesc": "Ils verront tous les mots et la grammaire que vous avez utilisés en {targetLang}, votre niveau et votre XP, ainsi que les messages envoyés dans les activités du cours. Vos messages individuels ne seront pas partagés. Le partage des analyses est requis pour rejoindre le cours.",
-    "shareAndJoin": "Partager et rejoindre",
-    "goBack": "Retourner",
     "emptyGroupsSearch": "Aucun groupe trouvé. Assurez-vous que votre recherche est correctement orthographiée.",
     "emptyActivitiesSearch": "Aucune activité trouvée. Assurez-vous que votre recherche est correctement orthographiée.",
     "chatListFiltersLabel": "Filtres de chat",
@@ -10401,5 +10397,12 @@
     "centralCourseMembersSeeYou": "Les membres de ce cours peuvent voir votre nom et votre profil.",
     "practiceStartWordCount": "{count, plural, =1{mot à pratiquer} other{mots à pratiquer}}",
     "practiceStartGrammarCount": "{count, plural, =1{point de grammaire à pratiquer} other{points de grammaire à pratiquer}}",
-    "practiceStartExerciseTypes": "Types d'exercices"
+    "practiceStartExerciseTypes": "Types d'exercices",
+    "analyticsSharedOnJoin": "Vos professeurs de {course} peuvent maintenant voir votre progression d'apprentissage.",
+    "sharedAnalyticsTitle": "Progression d'apprentissage partagée",
+    "sharedAnalyticsDesc": "Les professeurs de ces cours peuvent voir votre progression d'apprentissage. Quittez un cours pour arrêter le partage.",
+    "sharedAnalyticsNone": "Vous ne partagez votre progression d'apprentissage avec aucun cours.",
+    "sharedAnalyticsOthersTitle": "Autres personnes qui peuvent voir votre progression",
+    "removeAnalyticsAccess": "Supprimer l'accès",
+    "removeAnalyticsAccessDesc": "{name} ne pourra plus voir votre progression d'apprentissage."
 }

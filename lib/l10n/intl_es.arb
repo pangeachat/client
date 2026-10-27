@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-23 13:25:38.521851",
+    "@@last_modified": "2026-10-27 14:47:56.958916",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8066,10 +8066,6 @@
     "contentCreatedBy": "Creado por",
     "coursePreview": "Vista previa del curso",
     "numActivities": "{count, plural, =1{1 actividad} other{{count} actividades}}",
-    "teacherAnalyticsRequestTitle": "El profesor solicita tu progreso de aprendizaje",
-    "teacherAnalyticsRequestDesc": "Verá todas las palabras y la gramática que has usado en {targetLang}, tu nivel y XP, y los mensajes enviados en las actividades del curso. Tus mensajes individuales no se compartirán. Es necesario compartir los análisis para unirte al curso.",
-    "shareAndJoin": "Compartir y unirse",
-    "goBack": "Volver",
     "emptyGroupsSearch": "No se encontraron grupos. Asegúrate de que la búsqueda esté bien escrita.",
     "emptyActivitiesSearch": "No se encontraron actividades. Asegúrate de que la búsqueda esté bien escrita.",
     "chatListFiltersLabel": "Filtros de chat",
@@ -8278,5 +8274,12 @@
     "centralCourseMembersSeeYou": "Los miembros de este curso pueden ver tu nombre y perfil.",
     "practiceStartWordCount": "{count, plural, =1{palabra para practicar} other{palabras para practicar}}",
     "practiceStartGrammarCount": "{count, plural, =1{punto gramatical para practicar} other{puntos gramaticales para practicar}}",
-    "practiceStartExerciseTypes": "Tipos de ejercicio"
+    "practiceStartExerciseTypes": "Tipos de ejercicio",
+    "analyticsSharedOnJoin": "Tus profesores en {course} ahora pueden ver tu progreso de aprendizaje.",
+    "sharedAnalyticsTitle": "Progreso de aprendizaje compartido",
+    "sharedAnalyticsDesc": "Los profesores de estos cursos pueden ver tu progreso de aprendizaje. Sal de un curso para dejar de compartir.",
+    "sharedAnalyticsNone": "No estás compartiendo tu progreso de aprendizaje con ningún curso.",
+    "sharedAnalyticsOthersTitle": "Otros que pueden ver tu progreso",
+    "removeAnalyticsAccess": "Quitar acceso",
+    "removeAnalyticsAccessDesc": "{name} ya no podrá ver tu progreso de aprendizaje."
 }

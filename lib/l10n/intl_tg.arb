@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-23 13:25:47.114027",
+    "@@last_modified": "2026-10-27 14:48:06.838581",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2299,10 +2299,6 @@
     "contentCreatedBy": "Сохта шудааст аз ҷониби",
     "coursePreview": "Пешнамоиши курс",
     "numActivities": "{count, plural, =1{1 фаъолият} other{{count} фаъолият}}",
-    "teacherAnalyticsRequestTitle": "Муаллим пешрафти омӯзиши шуморо дархост мекунад",
-    "teacherAnalyticsRequestDesc": "Онҳо ҳамаи калимаҳо ва грамматикаеро, ки шумо дар {targetLang} истифода бурдед, сатҳ ва XP-и шумо ва паёмҳои дар фаъолиятҳои курсӣ фиристодашударо мебинанд. Паёмҳои 1-ба-1-и шумо мубодила нахоҳанд шуд. Барои ҳамроҳ шудан ба курс мубодилаи таҳлилҳо ҳатмист.",
-    "shareAndJoin": "Мубодила ва ҳамроҳ шудан",
-    "goBack": "Бозгашт",
     "emptyGroupsSearch": "Гурӯҳҳо ёфт нашуданд. Боварӣ ҳосил кунед, ки ҷустуҷӯи шумо дуруст навишта шудааст.",
     "emptyActivitiesSearch": "Фаъолиятҳо ёфт нашуданд. Боварӣ ҳосил кунед, ки ҷустуҷӯи шумо дуруст навишта шудааст.",
     "chatListFiltersLabel": "Филтрҳои чат",
@@ -2511,5 +2507,12 @@
     "centralCourseMembersSeeYou": "Аъзоёни ин курс метавонанд ном ва профили шуморо бубинанд.",
     "practiceStartWordCount": "{count, plural, =1{калима барои машқ} other{калимаҳо барои машқ}}",
     "practiceStartGrammarCount": "{count, plural, =1{мавзӯи грамматикӣ барои машқ} other{мавзӯъҳои грамматикӣ барои машқ}}",
-    "practiceStartExerciseTypes": "Намудҳои машқ"
+    "practiceStartExerciseTypes": "Намудҳои машқ",
+    "analyticsSharedOnJoin": "Муаллимони шумо дар {course} акнун метавонанд пешрафти омӯзиши шуморо бубинанд.",
+    "sharedAnalyticsTitle": "Пешрафти омӯзиши муштарак",
+    "sharedAnalyticsDesc": "Муаллимони ин курсҳо метавонанд пешрафти омӯзиши шуморо бубинанд. Барои қатъ кардани мубодила курсро тарк кунед.",
+    "sharedAnalyticsNone": "Шумо пешрафти омӯзиши худро бо ягон курс мубодила намекунед.",
+    "sharedAnalyticsOthersTitle": "Дигарон, ки метавонанд пешрафти шуморо бубинанд",
+    "removeAnalyticsAccess": "Дастрасиро нест кардан",
+    "removeAnalyticsAccessDesc": "{name} дигар наметавонад пешрафти омӯзиши шуморо бубинад."
 }
