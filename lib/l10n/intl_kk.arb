@@ -2508,5 +2508,8 @@
     "openCourse": "Курсты ашу",
     "centralCourseJoinedTitle": "Сіз {course} курсына қосылдыңыз",
     "centralCourseJoinedBody": "Бұл Pangea-ның {language} үйренушілеріне арналған курсы. Оның мүшелері сіздің атыңызды және профиліңізді көре алады.",
-    "centralCourseMembersSeeYou": "Бұл курстың мүшелері сіздің атыңызды және профиліңізді көре алады."
+    "centralCourseMembersSeeYou": "Бұл курстың мүшелері сіздің атыңызды және профиліңізді көре алады.",
+    "practiceStartWordCount": "{count, plural, =1{жаттығу сөзі} other{жаттығу сөздері}}",
+    "practiceStartGrammarCount": "{count, plural, =1{жаттығу грамматикалық тармағы} other{жаттығу грамматикалық тармақтары}}",
+    "practiceStartExerciseTypes": "Жаттығу түрлері"
 }

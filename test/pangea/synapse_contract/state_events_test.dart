@@ -27,6 +27,10 @@ import 'package:fluffychat/features/bot/bot_options_model.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/quests/can_do_progress.dart';
+import 'package:fluffychat/features/quests/course_progress_event.dart';
+import 'package:fluffychat/features/quests/course_progress_room_extension.dart';
+import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/lemmas/user_lemma_info_extension.dart';
@@ -342,6 +346,90 @@ void main() {
           reason:
               'the write must land under the ESCAPED construct-id state key',
         );
+      },
+    );
+
+    test(
+      'pangea.course_progress: one record per course, dates intact',
+      () async {
+        final learner = await ContractHarness.loggedIn(
+          'contract-p2-progress-${DateTime.now().millisecondsSinceEpoch}',
+        );
+        addTearDown(() => ContractHarness.dispose(learner));
+        final room = (await learner.getMyAnalyticsRoom(
+          LanguageModel(langCode: 'es', displayName: 'Spanish'),
+        ))!;
+        ContractHarness.trackRoom(learner, room.id);
+
+        const courseA = '!p2-course-a:example.test';
+        const courseB = '!p2-course-b:example.test';
+        final seenAt = DateTime.utc(2026, 10, 20, 15, 41, 2);
+        final replayedAt = DateTime.utc(2026, 9, 3, 9);
+        final record = CourseProgressEvent(
+          computedAt: DateTime.utc(2026, 10, 26, 14, 3, 11),
+          appVersion: '5.0.14+1',
+          xpToComplete: 1000,
+          canDos: {
+            'lo-seen': CanDoProgress(
+              xp: 1240,
+              breakdown: const MissionXpBreakdown(
+                chat: 610,
+                speaking: 120,
+                goals: 300,
+                practice: 210,
+              ),
+              completed: true,
+              firstCompletedAt: seenAt,
+            ),
+            'lo-replayed': CanDoProgress(
+              xp: 1100,
+              breakdown: const MissionXpBreakdown(chat: 1100),
+              completed: true,
+              firstCompletedAt: replayedAt,
+              completedBeforeTracking: true,
+            ),
+            'lo-open': const CanDoProgress(
+              xp: 300,
+              breakdown: MissionXpBreakdown(practice: 300),
+              completed: false,
+            ),
+          },
+        );
+        await room.setCourseProgress(courseA, record);
+        await room.setCourseProgress(
+          courseB,
+          CourseProgressEvent(
+            computedAt: DateTime.utc(2026, 10, 26, 14, 3, 11),
+            appVersion: '5.0.14+1',
+            xpToComplete: 500,
+            canDos: const {},
+          ),
+        );
+
+        final state = await ContractHarness.serverState(learner, room.id);
+        final records = state[PangeaEventTypes.courseProgress] ?? const {};
+        expect(
+          records.keys,
+          unorderedEquals([courseA, courseB]),
+          reason: 'one record per course, keyed by its room id',
+        );
+        final read = CourseProgressEvent.fromJson(records[courseA]!)!;
+        expect(read.changedSince(record), isFalse);
+        expect(read.canDos['lo-seen']!.firstCompletedAt, seenAt);
+        expect(read.canDos['lo-replayed']!.firstCompletedAt, replayedAt);
+        expect(read.canDos['lo-replayed']!.completedBeforeTracking, isTrue);
+        expect(read.canDos['lo-open']!.firstCompletedAt, isNull);
+        expect(read.canDos['lo-open']!.completedBeforeTracking, isFalse);
+
+        // The writer's own read, with the room loaded in full first: the
+        // records aren't loaded with the room at startup.
+        await room.postLoad();
+        if (room.courseProgress(courseA) == null) {
+          await learner.onSync.stream
+              .firstWhere((_) => room.courseProgress(courseA) != null)
+              .timeout(const Duration(seconds: 30));
+        }
+        expect(room.courseProgress(courseA)!.changedSince(record), isFalse);
       },
     );
 

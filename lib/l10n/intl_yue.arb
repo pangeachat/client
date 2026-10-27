@@ -11000,5 +11000,8 @@
     "openCourse": "打開課程",
     "centralCourseJoinedTitle": "你已加入 {course}",
     "centralCourseJoinedBody": "呢個係 Pangea 專為 {language} 學習者而設嘅課程。課程成員可以睇到你嘅姓名同個人檔案。",
-    "centralCourseMembersSeeYou": "呢個課程嘅成員可以睇到你嘅姓名同個人檔案。"
+    "centralCourseMembersSeeYou": "呢個課程嘅成員可以睇到你嘅姓名同個人檔案。",
+    "practiceStartWordCount": "{count, plural, =1{個練習詞彙} other{個練習詞彙}}",
+    "practiceStartGrammarCount": "{count, plural, =1{個練習文法點} other{個練習文法點}}",
+    "practiceStartExerciseTypes": "練習類型"
 }

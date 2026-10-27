@@ -88,7 +88,11 @@ abstract class CoursePreviewPlans {
       _planIdByShortRoomId.remove(shortRoomId);
 }
 
-/// App-wide singleton the shell writes and the persistent map reads.
+/// App-wide singleton the shell writes and the persistent map reads. The
+/// scope is resolved once, from the URL, and published idempotently: a scope
+/// read from two places, or resolved in two asynchronous steps, makes the map
+/// flip between world and course or glide twice, and re-publishing an
+/// unchanged value must never re-fit the camera.
 abstract class MapContextController {
   static final ValueNotifier<MapContext> notifier = ValueNotifier<MapContext>(
     const WorldMapContext(),

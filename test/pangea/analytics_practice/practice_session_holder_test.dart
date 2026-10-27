@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
@@ -76,6 +77,40 @@ void main() {
       expect(holder.hasUnfinishedSession, isTrue);
       expect(holder.blocksAnalytics(ConstructTypeEnum.vocab), isTrue);
       expect(holder.blocksAnalytics(ConstructTypeEnum.morph), isFalse);
+    });
+
+    test('a session on its start page goes live when its clock starts', () {
+      final state = holder.claim(ConstructTypeEnum.vocab);
+      final session = _makeSession(ConstructTypeEnum.vocab)..startedAt = null;
+      state.sessionController.session = session;
+
+      expect(state.awaitingStart, isTrue);
+      expect(holder.liveType, isNull);
+      expect(holder.hasUnfinishedSession, isFalse);
+      expect(holder.blocksAnalytics(ConstructTypeEnum.vocab), isFalse);
+
+      // Start tapped: the first exercise is loading, the clock not yet run.
+      state.practiceExerciseState.value = const AsyncState.loading();
+      expect(state.awaitingStart, isFalse);
+      expect(holder.liveType, isNull);
+
+      session.markStarted();
+      expect(holder.liveType, ConstructTypeEnum.vocab);
+      expect(holder.hasUnfinishedSession, isTrue);
+    });
+
+    test('a session on its start page never times out with a notice', () {
+      final state = holder.claim(ConstructTypeEnum.vocab);
+      state.sessionController.session = _makeSession(ConstructTypeEnum.vocab)
+        ..startedAt = null;
+      state.lastInteractionAt = DateTime.now().subtract(
+        AnalyticsPracticeConstants.idleTimeout + const Duration(minutes: 1),
+      );
+
+      holder.evaluateIdleTimeout();
+
+      expect(holder.current, same(state));
+      expect(holder.hasTimeoutNotice, isFalse);
     });
 
     test('a completed session is not live and unblocks analytics', () {

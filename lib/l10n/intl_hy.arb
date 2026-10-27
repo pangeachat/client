@@ -2508,5 +2508,8 @@
     "openCourse": "Բացել դասընթացը",
     "centralCourseJoinedTitle": "Դուք միացել եք {course} դասընթացին",
     "centralCourseJoinedBody": "Սա Pangea-ի դասընթացն է {language} սովորողների համար։ Նրա անդամները կարող են տեսնել ձեր անունը և պրոֆիլը։",
-    "centralCourseMembersSeeYou": "Այս դասընթացի անդամները կարող են տեսնել ձեր անունը և պրոֆիլը։"
+    "centralCourseMembersSeeYou": "Այս դասընթացի անդամները կարող են տեսնել ձեր անունը և պրոֆիլը։",
+    "practiceStartWordCount": "{count, plural, =1{բառ՝ կիրառելու համար} other{բառեր՝ կիրառելու համար}}",
+    "practiceStartGrammarCount": "{count, plural, =1{քերականական կետ՝ կիրառելու համար} other{քերականական կետեր՝ կիրառելու համար}}",
+    "practiceStartExerciseTypes": "Վարժությունների տեսակներ"
 }

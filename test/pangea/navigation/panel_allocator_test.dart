@@ -512,7 +512,7 @@ void main() {
   });
 
   group('the fold is positional, not registry-linked (#9030)', () {
-    // routing.instructions.md: "When a column's two panels are not a registry
+    // The rule this pins: "When a column's two panels are not a registry
     // master/detail pair (a course card with a live room beside it), the same
     // rule applies positionally — the first token folds behind the second."
     // `course` has no parent and `room`'s parent is `chats`, so before #9030

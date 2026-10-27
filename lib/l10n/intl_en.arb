@@ -4778,6 +4778,30 @@
     "practiceVocab": "Practice vocabulary",
     "selectMeaning": "Select the meaning",
     "anotherRound": "Another round",
+    "practiceStartWordCount": "{count, plural, =1{word to practice} other{words to practice}}",
+    "@practiceStartWordCount": {
+        "description": "Under the large number on the practice start page, e.g. 8 / words to practice.",
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "practiceStartGrammarCount": "{count, plural, =1{grammar point to practice} other{grammar points to practice}}",
+    "@practiceStartGrammarCount": {
+        "description": "Under the large number on the grammar practice start page, e.g. 6 / grammar points to practice.",
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "practiceStartExerciseTypes": "Exercise types",
+    "@practiceStartExerciseTypes": {
+        "description": "Screen-reader name for the Reading, Listening and Speaking chips on the practice start page."
+    },
     "ssoDialogTitle": "Waiting for sign in to complete",
     "ssoDialogDesc": "We opened a new tab so you can sign in securely.",
     "ssoDialogHelpText": "🤔 If you didn't see the new tab, please check your popup blocker.",

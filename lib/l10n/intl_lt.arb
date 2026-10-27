@@ -10824,5 +10824,8 @@
     "openCourse": "Atidaryti kursą",
     "centralCourseJoinedTitle": "Prisijungėte prie {course}",
     "centralCourseJoinedBody": "Tai „Pangea“ kursas, skirtas {language} besimokantiems. Jo nariai gali matyti jūsų vardą ir profilį.",
-    "centralCourseMembersSeeYou": "Šio kurso nariai gali matyti jūsų vardą ir profilį."
+    "centralCourseMembersSeeYou": "Šio kurso nariai gali matyti jūsų vardą ir profilį.",
+    "practiceStartWordCount": "{count, plural, =1{žodis praktikai} other{žodžiai praktikai}}",
+    "practiceStartGrammarCount": "{count, plural, =1{gramatikos punktas praktikai} other{gramatikos punktai praktikai}}",
+    "practiceStartExerciseTypes": "Pratimų tipai"
 }

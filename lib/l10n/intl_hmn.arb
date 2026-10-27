@@ -2508,5 +2508,8 @@
     "openCourse": "Qhib kawm",
     "centralCourseJoinedTitle": "Koj tau koom nrog {course}",
     "centralCourseJoinedBody": "Nws yog Pangea cov chav kawm rau cov neeg kawm lus {language}. Nws cov tswv cuab tuaj yeem pom koj lub npe thiab profile.",
-    "centralCourseMembersSeeYou": "Cov tswv cuab ntawm chav kawm no tuaj yeem pom koj lub npe thiab profile."
+    "centralCourseMembersSeeYou": "Cov tswv cuab ntawm chav kawm no tuaj yeem pom koj lub npe thiab profile.",
+    "practiceStartWordCount": "{count, plural, =1{lo lus kawm} other{cov lus kawm}}",
+    "practiceStartGrammarCount": "{count, plural, =1{txoj cai sau ntawv kawm} other{cov cai sau ntawv kawm}}",
+    "practiceStartExerciseTypes": "Hom kev kawm"
 }

@@ -10046,5 +10046,8 @@
     "openCourse": "Ikastaroa ireki",
     "centralCourseJoinedTitle": "{course} ikastaroan sartu zara",
     "centralCourseJoinedBody": "Pangearen ikastaroa da {language} ikasleentzat. Bertako kideek zure izena eta profila ikus ditzakete.",
-    "centralCourseMembersSeeYou": "Ikastaro honetako kideek zure izena eta profila ikus ditzakete."
+    "centralCourseMembersSeeYou": "Ikastaro honetako kideek zure izena eta profila ikus ditzakete.",
+    "practiceStartWordCount": "{count, plural, =1{praktikatzeko hitza} other{praktikatzeko hitzak}}",
+    "practiceStartGrammarCount": "{count, plural, =1{praktikatzeko gramatika-puntua} other{praktikatzeko gramatika-puntuak}}",
+    "practiceStartExerciseTypes": "Ariketa motak"
 }

@@ -2508,5 +2508,8 @@
     "openCourse": "কোর্স খোলক",
     "centralCourseJoinedTitle": "আপুনি {course}ত যোগদান কৰিছে",
     "centralCourseJoinedBody": "এইটো {language} শিকোৱা সকলৰ বাবে পেংগিয়াৰ এটা পাঠ্যক্ৰম। ইয়াৰ সদস্যসকলে আপোনাৰ নাম আৰু প্ৰফাইল চাব পাৰিব।",
-    "centralCourseMembersSeeYou": "এই পাঠ্যক্ৰমৰ সদস্যসকলে আপোনাৰ নাম আৰু প্ৰফাইল চাব পাৰিব।"
+    "centralCourseMembersSeeYou": "এই পাঠ্যক্ৰমৰ সদস্যসকলে আপোনাৰ নাম আৰু প্ৰফাইল চাব পাৰিব।",
+    "practiceStartWordCount": "{count, plural, =1{অনুশীলন কৰিবলৈ শব্দ} other{অনুশীলন কৰিবলৈ শব্দসমূহ}}",
+    "practiceStartGrammarCount": "{count, plural, =1{অনুশীলন কৰিবলৈ ব্যাকৰণৰ সূত্ৰ} other{অনুশীলন কৰিবলৈ ব্যাকৰণৰ সূত্ৰসমূহ}}",
+    "practiceStartExerciseTypes": "অনুশীলনৰ প্ৰকাৰ"
 }

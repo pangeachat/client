@@ -181,7 +181,7 @@ class _LeftPanelActivityDetailsSubpageState
 
 /// The single close control shown over the activity-resolve spinner. Exactly ONE
 /// control, mirroring the loaded start view's rule (activity_sessions_start_view
-/// and routing.instructions.md → one close affordance per panel): a back-arrow
+/// and routing.instructions.md → Closing a panel): a back-arrow
 /// when [showBack] (the activity is still course-scoped, so it returns toward the
 /// course), an X otherwise (a map pin / standalone, so it dismisses to the map).
 /// Rendering both ← and X here was a redundant pair doing the same thing (#7115).

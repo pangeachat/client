@@ -159,6 +159,10 @@ class _TimelineUpdateNotifier extends ChangeNotifier {
 /// same frame; running two `room.getTimeline` calls at once is unsafe because
 /// `getTimeline` overwrites the shared `room.timeline`. Each controller awaits
 /// any in-flight load before starting its own. See `routing.instructions.md`.
+///
+/// The shared timeline is also why only one live view of a room is open at a
+/// time. Folding the choreographer controller into the chat controller would
+/// give rooms their own session state and could lift that limit.
 Completer<void>? _getTimelineGate;
 // Pangea#
 
@@ -725,10 +729,11 @@ class ChatController extends State<ChatPageWithRoom>
   /// tutorial sequence. Every clause reads state that arrives asynchronously —
   /// the profile, the message's language analysis, the analytics service that
   /// answers "is this word new" — so a "no" here only ever means "not yet",
-  /// and each of those arrivals re-asks (tutorials.instructions.md). The old
-  /// shape evaluated once per sync event and dropped the message for good on
-  /// any transient "no", which is why the sequence sometimes never fired on
-  /// the learner's first qualifying message.
+  /// and each of those arrivals re-asks
+  /// ([TutorialOverlayController.isPending]). The old shape evaluated once per
+  /// sync event and dropped the message for good on any transient "no", which
+  /// is why the sequence sometimes never fired on the learner's first
+  /// qualifying message.
   void _checkChatTutorialSequence() {
     if (!mounted) return;
     // An unloaded profile reports every tutorial as already seen.
@@ -780,7 +785,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   /// Registers what this chat can put on screen. Each launcher owns its own
   /// preparation, so the controller never has to know which host does what and
-  /// this class grows no per-tutorial switch. See tutorials.instructions.md.
+  /// this class grows no per-tutorial switch. See [TutorialLauncher].
   void _registerTutorialLaunchers() {
     tutorialOverlayController
       ..registerLauncher(

@@ -263,7 +263,7 @@ class _TutorialOverlayWidgetState extends State<TutorialOverlayWidget> {
   /// because leave-it-armed dismissal re-offered the card on every return
   /// visit, which read as the tutorial repeating itself. The arming still
   /// completes the step when the learner acts with the card NOT up (torn down
-  /// by its surface unmounting, or preempted by another sequence).
+  /// by its surface unmounting).
   void _completeArmedStep() {
     if (!_visible) return;
     widget.forward();

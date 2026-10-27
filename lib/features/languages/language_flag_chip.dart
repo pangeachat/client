@@ -9,7 +9,9 @@ import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
 /// renders empty: the target language's flag when there is one, otherwise the
 /// uppercase language code on the primary container — and a null [language]
 /// (an unresolved code) still shows the [langCode] chip. If the flag SVG fails
-/// to load it falls back to the code too.
+/// to load it falls back to the code too. A language with no single regional
+/// flag shows its code because bare `es` is ambiguous across regions, while
+/// `es-ES` resolves to one.
 ///
 /// [alwaysShowCode] overlays the code on the flag as well (the cluster's
 /// identity treatment); left false the flag shows alone, with the code only as

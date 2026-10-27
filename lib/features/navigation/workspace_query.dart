@@ -8,6 +8,9 @@
 /// home for that pattern; every redirect / panel / nav helper that edits the
 /// query routes through here instead of re-deriving (and re-explaining) it. See
 /// `routing.instructions.md`.
+///
+/// `m=` is reserved for future map filters (region, language, activity kind):
+/// display refinement, not workspace context. Nothing writes it today.
 abstract class WorkspaceQuery {
   /// The raw `key=value` segments of [query] (empty when there are none),
   /// each kept verbatim so an already-encoded param is not touched.

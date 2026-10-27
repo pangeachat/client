@@ -4,6 +4,14 @@ import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
+/// Every panel the workspace can open, one value per token type.
+///
+/// A new surface is a new entry here, not a new rule. Each value has a
+/// `PanelToken` subclass (`panel_token.dart`), optionally carrying a
+/// `TokenParam` subclass (`token_params/`) that parses the subpages and extra
+/// fields the panel needs to render, and a `PanelDef` in `panel_registry.dart`
+/// that says where and how the panel renders. The parser, the fold and the
+/// single-column focus then treat it like every other panel.
 enum PanelTypesEnum {
   chats,
   newprivatechat,

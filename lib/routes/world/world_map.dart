@@ -112,8 +112,8 @@ bool orientationSurfaceGate({
 /// The tour outranks the map INTRODUCTION — it answers "what now?" after a
 /// first finished activity, while the introduction describes a map the learner
 /// has by then already used. It never outranks the GREETING: an unseen welcome
-/// alongside finished activities is an account from before the tutorials
-/// shipped, and a tour that opens with "great job finishing your first
+/// alongside finished activities means a tutorial reset or an account from
+/// before the tutorials shipped, and a tour that opens with "great job finishing your first
 /// activity!" before any hello reads as the app misremembering them. The
 /// greeting (with the map orientation it fronts) runs first; the tour follows
 /// on the next map arrival, which is its own trigger anyway.
@@ -1600,8 +1600,10 @@ class WorldMapController extends State<WorldMap>
   }
 
   /// Each step opens the panel it is describing exactly as the learner would —
-  /// through the workspace URL, never by reaching into panel state — then gates
-  /// its own advance on that panel actually being open.
+  /// through the workspace URL, never by reaching into panel state, because the
+  /// URL is the single source of truth for which panels are open
+  /// (routing.instructions.md) — then gates its own advance on that panel
+  /// actually being open.
   Future<void> _launchAppTourTutorial() async {
     if (!mounted) return;
     final joinedCourses = _client?.joinedCourseRooms.length ?? 0;
@@ -1732,8 +1734,9 @@ class WorldMapController extends State<WorldMap>
         stepsData: [
           // No spotlight: lighting the whole map punches the entire scrim out,
           // which reads as the tutorial having closed. This step is about the
-          // map as a whole, so it takes the same dimmed-with-a-centred-card
-          // treatment as the greeting, and the map stays visible through it.
+          // map as a whole, so its template withholds the scrim instead and
+          // seats the card at the bottom of the screen
+          // ([TutorialStepTemplates.worldMap]).
           TutorialStepData(
             canShowNextStep: () => true,
             tooltipArgs: () => [languageName],

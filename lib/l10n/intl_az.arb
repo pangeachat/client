@@ -2508,5 +2508,8 @@
     "openCourse": "Kursu aç",
     "centralCourseJoinedTitle": "{course} kursuna qoşuldunuz",
     "centralCourseJoinedBody": "Bu, Pangea-nın {language} öyrənənlər üçün kursudur. Üzvləri adınızı və profilinizi görə bilər.",
-    "centralCourseMembersSeeYou": "Bu kursun üzvləri adınızı və profilinizi görə bilər."
+    "centralCourseMembersSeeYou": "Bu kursun üzvləri adınızı və profilinizi görə bilər.",
+    "practiceStartWordCount": "{count, plural, =1{təcrübə üçün söz} other{təcrübə üçün sözlər}}",
+    "practiceStartGrammarCount": "{count, plural, =1{təcrübə üçün qrammatika qaydası} other{təcrübə üçün qrammatika qaydaları}}",
+    "practiceStartExerciseTypes": "Məşq növləri"
 }

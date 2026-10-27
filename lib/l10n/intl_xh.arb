@@ -2508,5 +2508,8 @@
     "openCourse": "Vula ikhosi",
     "centralCourseJoinedTitle": "Ujoyine {course}",
     "centralCourseJoinedBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho neprofayile yakho.",
-    "centralCourseMembersSeeYou": "Amalungu ale khosi angabona igama lakho neprofayile yakho."
+    "centralCourseMembersSeeYou": "Amalungu ale khosi angabona igama lakho neprofayile yakho.",
+    "practiceStartWordCount": "{count, plural, =1{igama lokuziqhelanisa} other{amagama okuziqhelanisa}}",
+    "practiceStartGrammarCount": "{count, plural, =1{indawo yegrama yokuziqhelanisa} other{iindawo zegrama zokuziqhelanisa}}",
+    "practiceStartExerciseTypes": "Iintlobo zokuzilolonga"
 }

@@ -2508,5 +2508,8 @@
     "openCourse": "Apri u corsu",
     "centralCourseJoinedTitle": "Avete raghjuntu {course}",
     "centralCourseJoinedBody": "Hè u corsu di Pangea per l'amparera di u {language}. I so membri ponu vede u vostru nome è u vostru prufilu.",
-    "centralCourseMembersSeeYou": "I membri di stu corsu ponu vede u vostru nome è u vostru prufilu."
+    "centralCourseMembersSeeYou": "I membri di stu corsu ponu vede u vostru nome è u vostru prufilu.",
+    "practiceStartWordCount": "{count, plural, =1{parolla da praticà} other{parolle da praticà}}",
+    "practiceStartGrammarCount": "{count, plural, =1{puntu di grammatica da praticà} other{punti di grammatica da praticà}}",
+    "practiceStartExerciseTypes": "Tipi d'esercizii"
 }

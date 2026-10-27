@@ -10,9 +10,11 @@ import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_xp.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_skills_store.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_generation_repo.dart';
@@ -36,7 +38,13 @@ class PracticeSessionController {
 
   final Queue<_PracticeQueueEntry> _queue = Queue();
 
+  /// Bumped whenever the session's words are picked again, so a pick or an
+  /// exercise load still in flight for the words it replaced is dropped
+  /// rather than landing in the new session.
+  int _generation = 0;
+
   void clear() {
+    _generation++;
     _queue.clear();
   }
 
@@ -77,7 +85,15 @@ class PracticeSessionController {
     session?.submitAnswer(uses);
   }
 
-  Future<void> startSession(ConstructTypeEnum type, {String? missionId}) async {
+  /// Pick the session's words. Returns false when a later pick superseded
+  /// this one.
+  Future<bool> startSession(
+    ConstructTypeEnum type, {
+    String? missionId,
+    Set<LearningSkillsEnum> skills = PracticeSkillsStore.vocabSkills,
+  }) async {
+    clear();
+    final generation = _generation;
     try {
       isLoadingSession = true;
       sessionError = null;
@@ -87,20 +103,36 @@ class PracticeSessionController {
       final l1 = MatrixState.pangeaController.userController.userL1;
       final l2 = MatrixState.pangeaController.userController.userL2;
       if (l1 == null || l2 == null) throw Exception('Languages not set');
-      session = await AnalyticsPracticeSessionRepo.get(
+      final picked = await AnalyticsPracticeSessionRepo.get(
         type,
         l1,
         l2,
         missionId: missionId,
+        skills: skills,
       );
+      if (generation != _generation) return false;
+      session = picked;
     } catch (e, s) {
+      // silent-ok: a later pick replaced this one; its error is moot.
+      if (generation != _generation) return false;
       if (e is! UnsubscribedException && e is! InsufficientDataException) {
         ErrorHandler.logError(e: e, s: s, data: {});
       }
+      session = null;
       sessionError = e;
     } finally {
-      isLoadingSession = false;
+      if (generation == _generation) isLoadingSession = false;
     }
+    return true;
+  }
+
+  /// Deal the session's words for other start page chips. The words stay;
+  /// only their exercises change, so any exercise already loading is dropped.
+  void dealSkills(Set<LearningSkillsEnum> skills) {
+    final current = session;
+    if (current == null) return;
+    clear();
+    session = current.withSkills(skills);
   }
 
   Future<void> completeSession() async {
@@ -151,13 +183,19 @@ class PracticeSessionController {
     Future Function(MultipleChoicePracticeExerciseModel) onFetch,
   ) async {
     final requests = exerciseRequests;
+    final generation = _generation;
     for (var i = 0; i < requests.length; i++) {
       try {
         final req = requests[i];
         final res = await _fetchExercise(req, onFetch);
+        // The words were picked again while this loaded; the new pick fills
+        // the queue with its own.
+        if (generation != _generation) return null;
         _fillExerciseQueue(requests.skip(i + 1).toList(), onSkip, onFetch);
         return res;
       } catch (e) {
+        // silent-ok: a skip would count against the session that replaced it.
+        if (generation != _generation) return null;
         await onSkip(requests[i].target);
         // Try next request
         continue;
@@ -171,6 +209,7 @@ class PracticeSessionController {
     Future Function(PracticeTarget) onSkip,
     Future Function(MultipleChoicePracticeExerciseModel) onFetch,
   ) async {
+    final generation = _generation;
     for (final request in requests) {
       final completer = Completer<MultipleChoicePracticeExerciseModel?>();
       _queue.add(_PracticeQueueEntry(request: request, completer: completer));
@@ -182,7 +221,8 @@ class PracticeSessionController {
           })
           .catchError((e, s) async {
             completer.complete(null);
-            await onSkip(request.target);
+            // A skip would count against the session that replaced this one.
+            if (generation == _generation) await onSkip(request.target);
             return null;
           });
     }

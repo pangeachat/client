@@ -69,8 +69,7 @@ bool isMapHole(String? fullPath) => fullPath == PRoutes.world;
 /// nav highlight); the canvas is decided by [canvasFor], not the section, so an
 /// unrecognized detail route never flips the shell to the world map.
 AppSection sectionFor(Uri uri) {
-  // The rail highlight shows what you're looking at (routing.instructions.md
-  // decision 5). Precedence:
+  // The rail highlight shows what you're looking at (#7467). Precedence:
   //  1. The global chat LIST wins — even with a live room beside it, and even
   //     under a lingering `?c=` context: switching to Chats un-highlights the
   //     course (the #7467 "quest stays selected" oddity).
@@ -99,7 +98,7 @@ AppSection sectionFor(Uri uri) {
 /// Within the courses section this is what disambiguates the rail highlight:
 /// the hub icon lights over the specific course's avatar/shortcut — even while
 /// `?c=` persists under it, since opening the hub from inside a course keeps
-/// the context (#8605; open panels win, routing.instructions.md decision 5).
+/// the context (#8605; open panels win, as in [sectionFor]).
 bool coursesHubIsOpen(Uri uri) =>
     parseOpenPanels(uri).left.any((t) => t.type.isAddCoursePanel);
 

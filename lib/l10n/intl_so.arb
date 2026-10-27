@@ -2508,5 +2508,8 @@
     "openCourse": "Fur koorsada",
     "centralCourseJoinedTitle": "Waxaad ku biirtay {course}",
     "centralCourseJoinedBody": "Waa koorsada Pangea ee loogu talagalay barayaasha {language}. Xubnaheeda waxay arki karaan magacaaga iyo astaantaada.",
-    "centralCourseMembersSeeYou": "Xubnaha koorsadan waxay arki karaan magacaaga iyo astaantaada."
+    "centralCourseMembersSeeYou": "Xubnaha koorsadan waxay arki karaan magacaaga iyo astaantaada.",
+    "practiceStartWordCount": "{count, plural, =1{hal eray oo lagu celceliyo} other{erayo lagu celceliyo}}",
+    "practiceStartGrammarCount": "{count, plural, =1{hal qodob oo naxwe ah oo lagu celceliyo} other{qodobo naxwe ah oo lagu celceliyo}}",
+    "practiceStartExerciseTypes": "Noocyada jimicsiga"
 }

@@ -10943,5 +10943,8 @@
     "openCourse": "კურსის გახსნა",
     "centralCourseJoinedTitle": "თქვენ შეუერთდით კურსს: {course}",
     "centralCourseJoinedBody": "ეს არის Pangea-ს კურსი {language} ენის შემსწავლელებისთვის. მისი წევრები ხედავენ თქვენს სახელსა და პროფილს.",
-    "centralCourseMembersSeeYou": "ამ კურსის წევრებს შეუძლიათ ნახონ თქვენი სახელი და პროფილი."
+    "centralCourseMembersSeeYou": "ამ კურსის წევრებს შეუძლიათ ნახონ თქვენი სახელი და პროფილი.",
+    "practiceStartWordCount": "{count, plural, =1{სავარჯიშო სიტყვა} other{სავარჯიშო სიტყვა}}",
+    "practiceStartGrammarCount": "{count, plural, =1{სავარჯიშო გრამატიკის საკითხი} other{სავარჯიშო გრამატიკის საკითხი}}",
+    "practiceStartExerciseTypes": "სავარჯიშოების ტიპები"
 }

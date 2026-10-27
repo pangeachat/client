@@ -2508,5 +2508,8 @@
     "openCourse": "ኮርስ ክፈት",
     "centralCourseJoinedTitle": "የ{course} አባል ሆነዋል",
     "centralCourseJoinedBody": "ይህ የፓንጋያ ኮርስ ለ{language} ተማሪዎች ነው። አባላቱ የእርስዎን ስም እና መገለጫ ማየት ይችላሉ።",
-    "centralCourseMembersSeeYou": "የዚህ ኮርስ አባላት የእርስዎን ስም እና መገለጫ ማየት ይችላሉ።"
+    "centralCourseMembersSeeYou": "የዚህ ኮርስ አባላት የእርስዎን ስም እና መገለጫ ማየት ይችላሉ።",
+    "practiceStartWordCount": "{count, plural, =1{የሚለማመድ ቃል} other{የሚለማመዱ ቃላት}}",
+    "practiceStartGrammarCount": "{count, plural, =1{የሚለማመድ ሰዋስው ነጥብ} other{የሚለማመዱ ሰዋስው ነጥቦች}}",
+    "practiceStartExerciseTypes": "የልምምድ ዓይነቶች"
 }

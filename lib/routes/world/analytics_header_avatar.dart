@@ -30,7 +30,8 @@ class AnalyticsHeaderAvatar extends StatelessWidget {
 }
 
 /// The avatar circle wearing the XP ring, the level badge, and the small
-/// flag (Figma collapsed component) — one control: a single Tab stop,
+/// flag (Figma [collapsed component](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13372-100160))
+/// — one control: a single Tab stop,
 /// announced as a single button. Plain values only; [AnalyticsHeaderAvatar]
 /// is its Matrix-aware host, mounting it in a full-screen chat's app bar
 /// (routing.instructions.md → "Single-column analytics nav bar"). [scale]

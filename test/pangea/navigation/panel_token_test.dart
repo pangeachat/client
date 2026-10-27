@@ -5,9 +5,12 @@ import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
 void main() {
@@ -204,6 +207,70 @@ void main() {
       final popped = token.popped?.param;
       expect(popped?.subpage, 'subscription');
       expect(popped?.promoCode, isNull);
+    });
+  });
+
+  // The example workspace URLs routing.instructions.md carried before its
+  // trim (#9609): each one reads as exactly what is on screen.
+  group('example workspace URLs', () {
+    test('/ is the bare world map', () {
+      expect(left('/'), isEmpty);
+      expect(right('/'), isEmpty);
+      expect(activeSpaceIdFor(Uri.parse('/')), isNull);
+    });
+
+    test('the chat list with chat !abc open beside it', () {
+      final l = left('/?left=chats,room:!abc');
+      expect(l.map((t) => t.type), [PanelTypesEnum.chats, PanelTypesEnum.room]);
+      expect((l[1].param as RoomTokenParam).id, '!abc');
+    });
+
+    test('inside course !s: the card left, vocabulary analytics right', () {
+      const url = '/?c=!s&left=course&right=analytics:vocab';
+      expect(activeSpaceIdFor(Uri.parse(url)), '!s');
+      expect(left(url).map((t) => t.type), [PanelTypesEnum.course]);
+      final summary = right(url).single;
+      expect(summary.type, PanelTypesEnum.analytics);
+      expect(
+        (summary.param as AnalyticsTokenParam).subpage,
+        ProgressIndicatorEnum.wordsUsed,
+      );
+    });
+
+    test('the settings menu, Security beside it, pushed to change-email', () {
+      final r = right('/?right=settings,settingspage:security/3pid');
+      expect(r.map((t) => t.type), [
+        PanelTypesEnum.settings,
+        PanelTypesEnum.settingspage,
+      ]);
+      expect((r[1].param as SettingsTokenParam).subpage, 'security/3pid');
+    });
+
+    test('the course card on its More tab, the invite page beside it', () {
+      final l = left('/?c=!s&left=course:more,coursepage:invite');
+      expect(l.map((t) => t.type), [
+        PanelTypesEnum.course,
+        PanelTypesEnum.coursepage,
+      ]);
+      expect(
+        (l[0].param as CourseDetailsTokenParam).activeTab,
+        SpaceSettingsTabs.more,
+      );
+      expect(
+        (l[1].param as RoomSubpageTokenParam).subpage,
+        RoomSubpageEnum.invite,
+      );
+    });
+
+    test('vocabulary analytics, the adjective "abrigadoro" beside it', () {
+      final r = right('/?right=analytics:vocab,vocab:abrigadoro.adj');
+      expect(r.map((t) => t.type), [
+        PanelTypesEnum.analytics,
+        PanelTypesEnum.vocab,
+      ]);
+      final construct = (r[1].param as VocabAnalyticsTokenParam).constructId;
+      expect(construct?.lemma, 'abrigadoro');
+      expect(construct?.category, 'adj');
     });
   });
 }

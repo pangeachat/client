@@ -10344,5 +10344,8 @@
     "openCourse": "Kursu aç",
     "centralCourseJoinedTitle": "{course} kursuna katıldın",
     "centralCourseJoinedBody": "Bu, Pangea'nın {language} öğrenenler için kursu. Üyeleri adını ve profilini görebilir.",
-    "centralCourseMembersSeeYou": "Bu kursun üyeleri adını ve profilini görebilir."
+    "centralCourseMembersSeeYou": "Bu kursun üyeleri adını ve profilini görebilir.",
+    "practiceStartWordCount": "{count, plural, =1{pratik yapılacak kelime} other{pratik yapılacak kelime}}",
+    "practiceStartGrammarCount": "{count, plural, =1{pratik yapılacak dil bilgisi konusu} other{pratik yapılacak dil bilgisi konusu}}",
+    "practiceStartExerciseTypes": "Alıştırma türleri"
 }

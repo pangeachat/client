@@ -91,6 +91,9 @@ class SpacesNavigationRail extends StatelessWidget {
                   .where((s) => s.hasRoomUpdate)
                   .rateLimit(const Duration(seconds: 1)),
               builder: (context, _) {
+                // The Courses hub's order, so the rail mirrors the list. The
+                // hub's filter pills and search narrow only the hub; the rail
+                // always shows every course.
                 final courses = client.sortedCourses(L10n.of(context));
                 final unreadRooms = client.unreadRooms;
                 return AnimatedContainer(
