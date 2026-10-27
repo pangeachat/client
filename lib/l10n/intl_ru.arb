@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-23 13:25:44.638113",
+    "@@last_modified": "2026-10-27 14:57:20.964185",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11015,11 +11015,11 @@
     "watchOnYoutube": "Смотреть на YouTube",
     "createMyOwnCourse": "Создать свой курс",
     "xpTowardMission": "{xp} XP для этой миссии",
-    "openCourse": "Открыть курс",
-    "centralCourseJoinedTitle": "Вы присоединились к курсу «{course}»",
-    "centralCourseJoinedBody": "Это курс Pangea для изучающих {language}. Участники курса могут видеть ваше имя и профиль.",
+    "centralCourseOfferBody": "Это курс Pangea для изучающих {language}. Участники курса могут видеть ваше имя и профиль.",
     "centralCourseMembersSeeYou": "Участники этого курса могут видеть ваше имя и профиль.",
     "practiceStartWordCount": "{count, plural, =1{слово для практики} other{слов для практики}}",
     "practiceStartGrammarCount": "{count, plural, =1{грамматическая тема для практики} other{грамматических тем для практики}}",
-    "practiceStartExerciseTypes": "Типы упражнений"
+    "practiceStartExerciseTypes": "Типы упражнений",
+    "centralCourseOfferTitle": "Присоединиться к {course}?",
+    "makeMyOwnCourseInstead": "Создать свой курс"
 }

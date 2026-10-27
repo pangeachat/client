@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-23 13:25:40.360643",
+    "@@last_modified": "2026-10-27 14:57:16.046794",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "Gade sou YouTube",
     "createMyOwnCourse": "Kreye pwòp kou pa m",
     "xpTowardMission": "{xp} XP pou Misyon sa a",
-    "openCourse": "Louvri kou a",
-    "centralCourseJoinedTitle": "Ou rantre nan {course}",
-    "centralCourseJoinedBody": "Se kou Pangea a pou moun k ap aprann {language}. Manm li yo ka wè non w ak pwofil ou.",
+    "centralCourseOfferBody": "Se kou Pangea a pou moun k ap aprann {language}. Manm li yo ka wè non w ak pwofil ou.",
     "centralCourseMembersSeeYou": "Manm kou sa a ka wè non w ak pwofil ou.",
     "practiceStartWordCount": "{count, plural, =1{mo pou pratike} other{mo pou pratike}}",
     "practiceStartGrammarCount": "{count, plural, =1{pwen gramè pou pratike} other{pwen gramè pou pratike}}",
-    "practiceStartExerciseTypes": "Tip egzèsis"
+    "practiceStartExerciseTypes": "Tip egzèsis",
+    "centralCourseOfferTitle": "Antre nan {course}?",
+    "makeMyOwnCourseInstead": "Kreye pwòp kou pa m pito"
 }

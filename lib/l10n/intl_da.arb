@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-23 13:25:38.211455",
+    "@@last_modified": "2026-10-27 14:57:13.870146",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10960,11 +10960,11 @@
     "watchOnYoutube": "Se på YouTube",
     "createMyOwnCourse": "Opret mit eget kursus",
     "xpTowardMission": "{xp} XP til denne mission",
-    "openCourse": "Åbn kursus",
-    "centralCourseJoinedTitle": "Du er nu med i {course}",
-    "centralCourseJoinedBody": "Det er Pangeas kursus for {language}-elever. Medlemmer kan se dit navn og din profil.",
+    "centralCourseOfferBody": "Det er Pangeas kursus for {language}-elever. Medlemmer kan se dit navn og din profil.",
     "centralCourseMembersSeeYou": "Medlemmer af dette kursus kan se dit navn og din profil.",
     "practiceStartWordCount": "{count, plural, =1{ord at øve} other{ord at øve}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatikpunkt at øve} other{grammatikpunkter at øve}}",
-    "practiceStartExerciseTypes": "Øvelsestyper"
+    "practiceStartExerciseTypes": "Øvelsestyper",
+    "centralCourseOfferTitle": "Tilmeld dig {course}?",
+    "makeMyOwnCourseInstead": "Opret mit eget kursus i stedet"
 }

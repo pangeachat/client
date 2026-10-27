@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:47.476336",
+    "@@last_modified": "2026-10-27 14:57:24.391341",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10149,11 +10149,11 @@
     "watchOnYoutube": "在 YouTube 上觀看",
     "createMyOwnCourse": "建立我的課程",
     "xpTowardMission": "此任務的 {xp} 經驗值",
-    "openCourse": "開啟課程",
-    "centralCourseJoinedTitle": "您已加入 {course}",
-    "centralCourseJoinedBody": "這是 Pangea 專為 {language} 學習者開設的課程。課程成員可以看到您的姓名和個人資料。",
+    "centralCourseOfferBody": "這是 Pangea 專為 {language} 學習者開設的課程。課程成員可以看到您的姓名和個人資料。",
     "centralCourseMembersSeeYou": "本課程的成員可以看到您的姓名和個人資料。",
     "practiceStartWordCount": "{count, plural, =1{個單字要練習} other{個單字要練習}}",
     "practiceStartGrammarCount": "{count, plural, =1{個文法點要練習} other{個文法點要練習}}",
-    "practiceStartExerciseTypes": "練習類型"
+    "practiceStartExerciseTypes": "練習類型",
+    "centralCourseOfferTitle": "加入{course}？",
+    "makeMyOwnCourseInstead": "改為建立我的課程"
 }

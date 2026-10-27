@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-23 13:25:47.318955",
+    "@@last_modified": "2026-10-27 14:57:24.669356",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10043,11 +10043,11 @@
     "watchOnYoutube": "在 YouTube 上观看",
     "createMyOwnCourse": "创建我的课程",
     "xpTowardMission": "此任务的 {xp} 经验值",
-    "openCourse": "打开课程",
-    "centralCourseJoinedTitle": "您已加入{course}",
-    "centralCourseJoinedBody": "这是 Pangea 为{language}学习者开设的课程。课程成员可以看到您的姓名和个人资料。",
+    "centralCourseOfferBody": "这是 Pangea 为{language}学习者开设的课程。课程成员可以看到您的姓名和个人资料。",
     "centralCourseMembersSeeYou": "本课程的成员可以看到您的姓名和个人资料。",
     "practiceStartWordCount": "{count, plural, =1{要练习的单词} other{要练习的单词}}",
     "practiceStartGrammarCount": "{count, plural, =1{要练习的语法点} other{要练习的语法点}}",
-    "practiceStartExerciseTypes": "练习类型"
+    "practiceStartExerciseTypes": "练习类型",
+    "centralCourseOfferTitle": "加入 {course}？",
+    "makeMyOwnCourseInstead": "改为创建我自己的课程"
 }

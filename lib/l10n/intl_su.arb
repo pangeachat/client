@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-23 13:25:45.865265",
+    "@@last_modified": "2026-10-27 14:57:22.430908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "Tonton di YouTube",
     "createMyOwnCourse": "Jieun kursus kuring sorangan",
     "xpTowardMission": "{xp} XP pikeun Misi ieu",
-    "openCourse": "Buka kursus",
-    "centralCourseJoinedTitle": "Anjeun geus gabung {course}",
-    "centralCourseJoinedBody": "Ieu kursus Pangea pikeun nu diajar basa {language}. Anggotana bisa ningali ngaran jeung profil anjeun.",
+    "centralCourseOfferBody": "Ieu kursus Pangea pikeun nu diajar basa {language}. Anggotana bisa ningali ngaran jeung profil anjeun.",
     "centralCourseMembersSeeYou": "Anggota kursus ieu bisa ningali ngaran jeung profil anjeun.",
     "practiceStartWordCount": "{count, plural, =1{kecap pikeun latihan} other{kecap pikeun latihan}}",
     "practiceStartGrammarCount": "{count, plural, =1{titik tata basa pikeun latihan} other{titik tata basa pikeun latihan}}",
-    "practiceStartExerciseTypes": "Jinis latihan"
+    "practiceStartExerciseTypes": "Jinis latihan",
+    "centralCourseOfferTitle": "Gabung {course}?",
+    "makeMyOwnCourseInstead": "Jieun kursus kuring sorangan"
 }

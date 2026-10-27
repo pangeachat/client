@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-23 13:25:42.789260",
+    "@@last_modified": "2026-10-27 14:57:19.324503",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "YouTube дээр үзэх",
     "createMyOwnCourse": "Өөрийн сургалтыг үүсгэх",
     "xpTowardMission": "Энэхүү даалгаварт {xp} XP",
-    "openCourse": "Хичээл нээх",
-    "centralCourseJoinedTitle": "Та {course} хичээлд нэгдлээ",
-    "centralCourseJoinedBody": "Энэ бол {language} хэл суралцагчдад зориулсан Пангеагийн хичээл юм. Гишүүд таны нэр, профайлыг харах боломжтой.",
+    "centralCourseOfferBody": "Энэ бол {language} хэл суралцагчдад зориулсан Пангеагийн хичээл юм. Гишүүд таны нэр, профайлыг харах боломжтой.",
     "centralCourseMembersSeeYou": "Энэ хичээлийн гишүүд таны нэр, профайлыг харах боломжтой.",
     "practiceStartWordCount": "{count, plural, =1{үг давтах} other{үг давтах}}",
     "practiceStartGrammarCount": "{count, plural, =1{дүрмийн цэг давтах} other{дүрмийн цэг давтах}}",
-    "practiceStartExerciseTypes": "Дасгалын төрлүүд"
+    "practiceStartExerciseTypes": "Дасгалын төрлүүд",
+    "centralCourseOfferTitle": "{course}-д нэгдэх үү?",
+    "makeMyOwnCourseInstead": "Оронд нь өөрийн хичээлээ үүсгэх"
 }

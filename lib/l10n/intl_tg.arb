@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-23 13:25:47.114027",
+    "@@last_modified": "2026-10-27 14:57:22.742790",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "Дар YouTube тамошо кунед",
     "createMyOwnCourse": "Курси худро эҷод кунед",
     "xpTowardMission": "{xp} XP ба сӯи ин рисолат",
-    "openCourse": "Курсро кушоед",
-    "centralCourseJoinedTitle": "Шумо ба {course} ҳамроҳ шудед",
-    "centralCourseJoinedBody": "Ин курси Pangea барои омӯзандагони забони {language} аст. Аъзоёни он метавонанд ном ва профили шуморо бубинанд.",
+    "centralCourseOfferBody": "Ин курси Pangea барои омӯзандагони забони {language} аст. Аъзоёни он метавонанд ном ва профили шуморо бубинанд.",
     "centralCourseMembersSeeYou": "Аъзоёни ин курс метавонанд ном ва профили шуморо бубинанд.",
     "practiceStartWordCount": "{count, plural, =1{калима барои машқ} other{калимаҳо барои машқ}}",
     "practiceStartGrammarCount": "{count, plural, =1{мавзӯи грамматикӣ барои машқ} other{мавзӯъҳои грамматикӣ барои машқ}}",
-    "practiceStartExerciseTypes": "Намудҳои машқ"
+    "practiceStartExerciseTypes": "Намудҳои машқ",
+    "centralCourseOfferTitle": "Ба {course} ҳамроҳ шавед?",
+    "makeMyOwnCourseInstead": "Ба ҷои ин курси худро созед"
 }

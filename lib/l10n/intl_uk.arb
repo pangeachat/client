@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-23 13:25:46.420212",
+    "@@last_modified": "2026-10-27 14:57:23.375886",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10043,11 +10043,11 @@
     "watchOnYoutube": "Дивитися на YouTube",
     "createMyOwnCourse": "Створити власний курс",
     "xpTowardMission": "{xp} XP до цієї місії",
-    "openCourse": "Відкрити курс",
-    "centralCourseJoinedTitle": "Ви приєдналися до курсу «{course}»",
-    "centralCourseJoinedBody": "Це курс Pangea для тих, хто вивчає {language}. Учасники курсу бачитимуть ваше ім’я та профіль.",
+    "centralCourseOfferBody": "Це курс Pangea для тих, хто вивчає {language}. Учасники курсу бачитимуть ваше ім’я та профіль.",
     "centralCourseMembersSeeYou": "Учасники цього курсу бачитимуть ваше ім’я та профіль.",
     "practiceStartWordCount": "{count, plural, =1{слово для практики} other{слів для практики}}",
     "practiceStartGrammarCount": "{count, plural, =1{граматична тема для практики} other{граматичних тем для практики}}",
-    "practiceStartExerciseTypes": "Типи вправ"
+    "practiceStartExerciseTypes": "Типи вправ",
+    "centralCourseOfferTitle": "Приєднатися до курсу «{course}»?",
+    "makeMyOwnCourseInstead": "Натомість створити власний курс"
 }

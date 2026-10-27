@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:40.995467",
+    "@@last_modified": "2026-10-27 14:57:17.182442",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10116,11 +10116,11 @@
     "watchOnYoutube": "Guarda su YouTube",
     "createMyOwnCourse": "Crea il mio corso",
     "xpTowardMission": "{xp} XP per questa missione",
-    "openCourse": "Apri corso",
-    "centralCourseJoinedTitle": "Hai partecipato a {course}",
-    "centralCourseJoinedBody": "È il corso di Pangea per chi impara il {language}. I suoi membri possono vedere il tuo nome e il tuo profilo.",
+    "centralCourseOfferBody": "È il corso di Pangea per chi impara il {language}. I suoi membri possono vedere il tuo nome e il tuo profilo.",
     "centralCourseMembersSeeYou": "I membri di questo corso possono vedere il tuo nome e il tuo profilo.",
     "practiceStartWordCount": "{count, plural, =1{parola da praticare} other{parole da praticare}}",
     "practiceStartGrammarCount": "{count, plural, =1{punto grammaticale da praticare} other{punti grammaticali da praticare}}",
-    "practiceStartExerciseTypes": "Tipi di esercizio"
+    "practiceStartExerciseTypes": "Tipi di esercizio",
+    "centralCourseOfferTitle": "Vuoi unirti a {course}?",
+    "makeMyOwnCourseInstead": "Crea il mio corso"
 }

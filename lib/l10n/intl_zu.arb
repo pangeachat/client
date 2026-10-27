@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-23 13:25:47.761718",
+    "@@last_modified": "2026-10-27 14:57:24.865577",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "Buka ku-YouTube",
     "createMyOwnCourse": "Dala eyami inkambo",
     "xpTowardMission": "{xp} XP kule Mishini",
-    "openCourse": "Vula ikhosi",
-    "centralCourseJoinedTitle": "Ujoyine {course}",
-    "centralCourseJoinedBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho nephrofayili yakho.",
+    "centralCourseOfferBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho nephrofayili yakho.",
     "centralCourseMembersSeeYou": "Amalungu ale khosi angabona igama lakho nephrofayili yakho.",
     "practiceStartWordCount": "{count, plural, =1{igama lokuzijwayeza} other{amagama okuzijwayeza}}",
     "practiceStartGrammarCount": "{count, plural, =1{iphuzu lohlelo lolimi lokuzijwayeza} other{amaphuzu ohlelo lolimi okuzijwayeza}}",
-    "practiceStartExerciseTypes": "Izinhlobo zokuzivocavoca"
+    "practiceStartExerciseTypes": "Izinhlobo zokuzivocavoca",
+    "centralCourseOfferTitle": "Ujoyine i-{course}?",
+    "makeMyOwnCourseInstead": "Ngenze eyami inkambo esikhundleni salokho"
 }

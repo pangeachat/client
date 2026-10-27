@@ -3543,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-23 13:25:39.637105",
+    "@@last_modified": "2026-10-27 14:57:15.332844",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10054,11 +10054,11 @@
     "watchOnYoutube": "Féach ar YouTube",
     "createMyOwnCourse": "Cruthaigh mo chúrsa féin",
     "xpTowardMission": "{xp} XP i dtreo na Misean seo",
-    "openCourse": "Oscail an cúrsa",
-    "centralCourseJoinedTitle": "Tá tú páirteach i {course}",
-    "centralCourseJoinedBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
+    "centralCourseOfferBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
     "centralCourseMembersSeeYou": "Is féidir le baill an chúrsa seo d'ainm agus do phróifíl a fheiceáil.",
     "practiceStartWordCount": "{count, plural, =1{focal le cleachtadh} other{focail le cleachtadh}}",
     "practiceStartGrammarCount": "{count, plural, =1{pointe gramadaí le cleachtadh} other{pointí gramadaí le cleachtadh}}",
-    "practiceStartExerciseTypes": "Cineálacha cleachtaí"
+    "practiceStartExerciseTypes": "Cineálacha cleachtaí",
+    "centralCourseOfferTitle": "An mbeifeá páirteach i {course}?",
+    "makeMyOwnCourseInstead": "Cruthaigh mo chúrsa féin ina ionad"
 }

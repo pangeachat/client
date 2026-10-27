@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-23 13:25:44.860061",
+    "@@last_modified": "2026-10-27 14:57:21.504594",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10985,11 +10985,11 @@
     "watchOnYoutube": "Pozrieť na YouTube",
     "createMyOwnCourse": "Vytvoriť si vlastný kurz",
     "xpTowardMission": "{xp} XP k tejto misii",
-    "openCourse": "Otvoriť kurz",
-    "centralCourseJoinedTitle": "Pripojili ste sa ku kurzu {course}",
-    "centralCourseJoinedBody": "Je to kurz Pangea pre študentov jazyka {language}. Jeho členovia môžu vidieť vaše meno a profil.",
+    "centralCourseOfferBody": "Je to kurz Pangea pre študentov jazyka {language}. Jeho členovia môžu vidieť vaše meno a profil.",
     "centralCourseMembersSeeYou": "Členovia tohto kurzu môžu vidieť vaše meno a profil.",
     "practiceStartWordCount": "{count, plural, =1{slovo na precvičenie} other{slov na precvičenie}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatický bod na precvičenie} other{gramatické body na precvičenie}}",
-    "practiceStartExerciseTypes": "Typy cvičení"
+    "practiceStartExerciseTypes": "Typy cvičení",
+    "centralCourseOfferTitle": "Pridať sa do kurzu {course}?",
+    "makeMyOwnCourseInstead": "Namiesto toho si vytvoriť vlastný kurz"
 }

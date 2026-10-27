@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-23 13:25:36.906895",
+    "@@last_modified": "2026-10-27 14:57:12.896732",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "Гледайте в YouTube",
     "createMyOwnCourse": "Създаване на собствен курс",
     "xpTowardMission": "{xp} XP към тази мисия",
-    "openCourse": "Отвори курса",
-    "centralCourseJoinedTitle": "Присъединихте се към {course}",
-    "centralCourseJoinedBody": "Това е курсът на Pangea за изучаващи {language}. Неговите членове могат да виждат вашето име и профил.",
+    "centralCourseOfferBody": "Това е курсът на Pangea за изучаващи {language}. Неговите членове могат да виждат вашето име и профил.",
     "centralCourseMembersSeeYou": "Членовете на този курс могат да виждат вашето име и профил.",
     "practiceStartWordCount": "{count, plural, =1{дума за упражнение} other{думи за упражнение}}",
     "practiceStartGrammarCount": "{count, plural, =1{граматическа точка за упражнение} other{граматически точки за упражнение}}",
-    "practiceStartExerciseTypes": "Видове упражнения"
+    "practiceStartExerciseTypes": "Видове упражнения",
+    "centralCourseOfferTitle": "Да се присъединя към {course}?",
+    "makeMyOwnCourseInstead": "Вместо това да създам свой собствен курс"
 }

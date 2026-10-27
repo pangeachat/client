@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-23 13:25:44.824111",
+    "@@last_modified": "2026-10-27 14:57:21.387382",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "YouTube හි නරඹන්න",
     "createMyOwnCourse": "මගේම පාඨමාලාවක් සාදන්න",
     "xpTowardMission": "මෙම මෙහෙයුම සඳහා {xp} XP",
-    "openCourse": "පාඨමාලාව විවෘත කරන්න",
-    "centralCourseJoinedTitle": "ඔබ {course} හා සම්බන්ධ වී ඇත",
-    "centralCourseJoinedBody": "එය {language} ඉගෙන ගන්නන් සඳහා වන Pangea පාඨමාලාවයි. එහි සාමාජිකයින්ට ඔබේ නම සහ පැතිකඩ දැකිය හැක.",
+    "centralCourseOfferBody": "එය {language} ඉගෙන ගන්නන් සඳහා වන Pangea පාඨමාලාවයි. එහි සාමාජිකයින්ට ඔබේ නම සහ පැතිකඩ දැකිය හැක.",
     "centralCourseMembersSeeYou": "මෙම පාඨමාලාවේ සාමාජිකයින්ට ඔබේ නම සහ පැතිකඩ දැකිය හැක.",
     "practiceStartWordCount": "{count, plural, =1{පුහුණු වීමට වචනයක්} other{පුහුණු වීමට වචන}}",
     "practiceStartGrammarCount": "{count, plural, =1{පුහුණු වීමට ව්‍යාකරණ කරුණක්} other{පුහුණු වීමට ව්‍යාකරණ කරුණු}}",
-    "practiceStartExerciseTypes": "අභ්‍යාස වර්ග"
+    "practiceStartExerciseTypes": "අභ්‍යාස වර්ග",
+    "centralCourseOfferTitle": "{course} හා සම්බන්ධ වෙනවාද?",
+    "makeMyOwnCourseInstead": "ඒ වෙනුවට මගේම පාඨමාලාවක් සාදන්න"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-23 13:25:39.383730",
+    "@@last_modified": "2026-10-27 14:57:15.475797",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "YouTube પર જુઓ",
     "createMyOwnCourse": "મારો પોતાનો કોર્સ બનાવો",
     "xpTowardMission": "આ મિશન માટે {xp} XP",
-    "openCourse": "કોર્સ ખોલો",
-    "centralCourseJoinedTitle": "તમે {course} માં જોડાયા છો",
-    "centralCourseJoinedBody": "આ {language} શીખનારાઓ માટે પાંગિયાનો કોર્સ છે. તેના સભ્યો તમારું નામ અને પ્રોફાઇલ જોઈ શકે છે.",
+    "centralCourseOfferBody": "આ {language} શીખનારાઓ માટે પાંગિયાનો કોર્સ છે. તેના સભ્યો તમારું નામ અને પ્રોફાઇલ જોઈ શકે છે.",
     "centralCourseMembersSeeYou": "આ કોર્સના સભ્યો તમારું નામ અને પ્રોફાઇલ જોઈ શકે છે.",
     "practiceStartWordCount": "{count, plural, =1{અભ્યાસ કરવા માટેનો શબ્દ} other{અભ્યાસ કરવા માટેના શબ્દો}}",
     "practiceStartGrammarCount": "{count, plural, =1{અભ્યાસ કરવા માટેનો વ્યાકરણ મુદ્દો} other{અભ્યાસ કરવા માટેના વ્યાકરણ મુદ્દાઓ}}",
-    "practiceStartExerciseTypes": "વ્યાયામના પ્રકારો"
+    "practiceStartExerciseTypes": "વ્યાયામના પ્રકારો",
+    "centralCourseOfferTitle": "{course} માં જોડાઓ?",
+    "makeMyOwnCourseInstead": "તેના બદલે મારો પોતાનો કોર્સ બનાવો"
 }

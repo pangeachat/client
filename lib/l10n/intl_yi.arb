@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-23 13:25:47.129426",
+    "@@last_modified": "2026-10-27 14:57:23.888547",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "קוק אויף יאָוטובע",
     "createMyOwnCourse": "שאַפֿן מײַן אײגענעם קורס",
     "xpTowardMission": "{xp} XP צו דער מיסיע",
-    "openCourse": "עפֿן קורס",
-    "centralCourseJoinedTitle": "איר האָט זיך צוגעשלאָסן צו {course}",
-    "centralCourseJoinedBody": "דאָס איז פּאַנגעאַס קורס פֿאַר לערנערס פֿון {language}. די מיטגלידער קענען זען אײַער נאָמען און פּראָפֿיל.",
+    "centralCourseOfferBody": "דאָס איז פּאַנגעאַס קורס פֿאַר לערנערס פֿון {language}. די מיטגלידער קענען זען אײַער נאָמען און פּראָפֿיל.",
     "centralCourseMembersSeeYou": "מיטגלידער פֿון דעם קורס קענען זען אײַער נאָמען און פּראָפֿיל.",
     "practiceStartWordCount": "{count, plural, =1{וואָרט צו פּראַקטיצירן} other{ווערטער צו פּראַקטיצירן}}",
     "practiceStartGrammarCount": "{count, plural, =1{גראַמאַטיק פּונקט צו פּראַקטיצירן} other{גראַמאַטיק פּונקטן צו פּראַקטיצירן}}",
-    "practiceStartExerciseTypes": "טיפן פון איבונגען"
+    "practiceStartExerciseTypes": "טיפן פון איבונגען",
+    "centralCourseOfferTitle": "זאָל איך זיך אייַנשליסן אין {course}?",
+    "makeMyOwnCourseInstead": "איך וויל בעסער מאַכן מיין אייגענעם קורס"
 }

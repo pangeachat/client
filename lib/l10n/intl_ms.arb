@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-23 13:25:43.110855",
+    "@@last_modified": "2026-10-27 14:57:19.283753",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "Tonton di YouTube",
     "createMyOwnCourse": "Cipta kursus saya sendiri",
     "xpTowardMission": "{xp} XP untuk Misi ini",
-    "openCourse": "Buka kursus",
-    "centralCourseJoinedTitle": "Anda telah menyertai {course}",
-    "centralCourseJoinedBody": "Ini ialah kursus Pangea untuk pelajar {language}. Ahli-ahlinya boleh melihat nama dan profil anda.",
+    "centralCourseOfferBody": "Ini ialah kursus Pangea untuk pelajar {language}. Ahli-ahlinya boleh melihat nama dan profil anda.",
     "centralCourseMembersSeeYou": "Ahli kursus ini boleh melihat nama dan profil anda.",
     "practiceStartWordCount": "{count, plural, =1{perkataan untuk berlatih} other{perkataan untuk berlatih}}",
     "practiceStartGrammarCount": "{count, plural, =1{poin tatabahasa untuk berlatih} other{poin tatabahasa untuk berlatih}}",
-    "practiceStartExerciseTypes": "Jenis latihan"
+    "practiceStartExerciseTypes": "Jenis latihan",
+    "centralCourseOfferTitle": "Sertai {course}?",
+    "makeMyOwnCourseInstead": "Buat kursus saya sendiri"
 }

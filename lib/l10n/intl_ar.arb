@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-23 13:25:37.203282",
+    "@@last_modified": "2026-10-27 14:57:12.797096",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10346,11 +10346,11 @@
     "watchOnYoutube": "المشاهدة على يوتيوب",
     "createMyOwnCourse": "إنشاء دورتي التدريبية الخاصة",
     "xpTowardMission": "{xp} نقطة خبرة نحو هذه المهمة",
-    "openCourse": "فتح الدورة",
-    "centralCourseJoinedTitle": "لقد انضممت إلى {course}",
-    "centralCourseJoinedBody": "إنها دورة بانجيا لمتعلمي {language}. يمكن لأعضائها رؤية اسمك وملفك الشخصي.",
+    "centralCourseOfferBody": "إنها دورة بانجيا لمتعلمي {language}. يمكن لأعضائها رؤية اسمك وملفك الشخصي.",
     "centralCourseMembersSeeYou": "يمكن لأعضاء هذه الدورة رؤية اسمك وملفك الشخصي.",
     "practiceStartWordCount": "{count, plural, =1{كلمة للتدرب} other{كلمات للتدرب}}",
     "practiceStartGrammarCount": "{count, plural, =1{نقطة نحوية للتدرب} other{نقاط نحوية للتدرب}}",
-    "practiceStartExerciseTypes": "أنواع التمارين"
+    "practiceStartExerciseTypes": "أنواع التمارين",
+    "centralCourseOfferTitle": "هل تريد الانضمام إلى {course}؟",
+    "makeMyOwnCourseInstead": "إنشاء دورتي التدريبية بدلاً من ذلك"
 }

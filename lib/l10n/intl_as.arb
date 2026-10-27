@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-10-23 13:25:37.293333",
+    "@@last_modified": "2026-10-27 14:57:13.034056",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "ইউটিউবত চাওক",
     "createMyOwnCourse": "মোৰ নিজা পাঠ্যক্ৰম সৃষ্টি কৰক",
     "xpTowardMission": "এই অভিযানৰ বাবে {xp} XP",
-    "openCourse": "কোর্স খোলক",
-    "centralCourseJoinedTitle": "আপুনি {course}ত যোগদান কৰিছে",
-    "centralCourseJoinedBody": "এইটো {language} শিকোৱা সকলৰ বাবে পেংগিয়াৰ এটা পাঠ্যক্ৰম। ইয়াৰ সদস্যসকলে আপোনাৰ নাম আৰু প্ৰফাইল চাব পাৰিব।",
+    "centralCourseOfferBody": "এইটো {language} শিকোৱা সকলৰ বাবে পেংগিয়াৰ এটা পাঠ্যক্ৰম। ইয়াৰ সদস্যসকলে আপোনাৰ নাম আৰু প্ৰফাইল চাব পাৰিব।",
     "centralCourseMembersSeeYou": "এই পাঠ্যক্ৰমৰ সদস্যসকলে আপোনাৰ নাম আৰু প্ৰফাইল চাব পাৰিব।",
     "practiceStartWordCount": "{count, plural, =1{অনুশীলন কৰিবলৈ শব্দ} other{অনুশীলন কৰিবলৈ শব্দসমূহ}}",
     "practiceStartGrammarCount": "{count, plural, =1{অনুশীলন কৰিবলৈ ব্যাকৰণৰ সূত্ৰ} other{অনুশীলন কৰিবলৈ ব্যাকৰণৰ সূত্ৰসমূহ}}",
-    "practiceStartExerciseTypes": "অনুশীলনৰ প্ৰকাৰ"
+    "practiceStartExerciseTypes": "অনুশীলনৰ প্ৰকাৰ",
+    "centralCourseOfferTitle": "{course}ত যোগদান কৰিবনে?",
+    "makeMyOwnCourseInstead": "তাৰ পৰিৱৰ্তে মোৰ নিজা পাঠ্যক্ৰম সৃষ্টি কৰক"
 }

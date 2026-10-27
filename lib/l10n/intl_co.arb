@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-23 13:25:37.729644",
+    "@@last_modified": "2026-10-27 14:57:13.588945",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "Fighjà nant'à YouTube",
     "createMyOwnCourse": "Creà u mo corsu",
     "xpTowardMission": "{xp} XP per sta Missione",
-    "openCourse": "Apri u corsu",
-    "centralCourseJoinedTitle": "Avete raghjuntu {course}",
-    "centralCourseJoinedBody": "Hè u corsu di Pangea per l'amparera di u {language}. I so membri ponu vede u vostru nome è u vostru prufilu.",
+    "centralCourseOfferBody": "Hè u corsu di Pangea per l'amparera di u {language}. I so membri ponu vede u vostru nome è u vostru prufilu.",
     "centralCourseMembersSeeYou": "I membri di stu corsu ponu vede u vostru nome è u vostru prufilu.",
     "practiceStartWordCount": "{count, plural, =1{parolla da praticà} other{parolle da praticà}}",
     "practiceStartGrammarCount": "{count, plural, =1{puntu di grammatica da praticà} other{punti di grammatica da praticà}}",
-    "practiceStartExerciseTypes": "Tipi d'esercizii"
+    "practiceStartExerciseTypes": "Tipi d'esercizii",
+    "centralCourseOfferTitle": "Unisciti à {course}?",
+    "makeMyOwnCourseInstead": "Creà u mo corsu invece"
 }

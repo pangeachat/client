@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-23 13:25:45.338398",
+    "@@last_modified": "2026-10-27 14:57:21.787089",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "Shiko në YouTube",
     "createMyOwnCourse": "Krijo kursin tim",
     "xpTowardMission": "{xp} XP drejt këtij Misioni",
-    "openCourse": "Hap kursin",
-    "centralCourseJoinedTitle": "Je bashkuar me {course}",
-    "centralCourseJoinedBody": "Është kursi i Pangeas për nxënësit e gjuhës {language}. Anëtarët e tij mund të shohin emrin dhe profilin tënd.",
+    "centralCourseOfferBody": "Është kursi i Pangeas për nxënësit e gjuhës {language}. Anëtarët e tij mund të shohin emrin dhe profilin tënd.",
     "centralCourseMembersSeeYou": "Anëtarët e këtij kursi mund të shohin emrin dhe profilin tënd.",
     "practiceStartWordCount": "{count, plural, =1{fjalë për të praktikuar} other{fjalë për të praktikuar}}",
     "practiceStartGrammarCount": "{count, plural, =1{pikë gramatikore për të praktikuar} other{pika gramatikore për të praktikuar}}",
-    "practiceStartExerciseTypes": "Llojet e ushtrimeve"
+    "practiceStartExerciseTypes": "Llojet e ushtrimeve",
+    "centralCourseOfferTitle": "Bashkohuni me {course}?",
+    "makeMyOwnCourseInstead": "Krijo kursin tim"
 }

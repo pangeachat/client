@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-23 13:25:44.156224",
+    "@@last_modified": "2026-10-27 14:57:20.609705",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "Onerani pa YouTube",
     "createMyOwnCourse": "Panga maphunziro anga",
     "xpTowardMission": "{xp} XP pa Mission iyi",
-    "openCourse": "Tsegulani kosi",
-    "centralCourseJoinedTitle": "Mwalowa mu {course}",
-    "centralCourseJoinedBody": "Ndi kosi ya Pangea kwa ophunzira a {language}. Mamembala ake akhoza kuona dzina lanu ndi mbiri yanu.",
+    "centralCourseOfferBody": "Ndi kosi ya Pangea kwa ophunzira a {language}. Mamembala ake akhoza kuona dzina lanu ndi mbiri yanu.",
     "centralCourseMembersSeeYou": "Mamembala a kosiyi akhoza kuona dzina lanu ndi mbiri yanu.",
     "practiceStartWordCount": "{count, plural, =1{mawu oti muchite} other{mawu oti muchite}}",
     "practiceStartGrammarCount": "{count, plural, =1{mfundo ya galamala yochita} other{mfundo za galamala zochita}}",
-    "practiceStartExerciseTypes": "Mitundu ya zochita"
+    "practiceStartExerciseTypes": "Mitundu ya zochita",
+    "centralCourseOfferTitle": "Mulowe na {course}?",
+    "makeMyOwnCourseInstead": "Ndipange kursu yanga"
 }

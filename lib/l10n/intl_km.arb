@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-23 13:25:41.939725",
+    "@@last_modified": "2026-10-27 14:57:17.958549",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "មើលនៅលើ YouTube",
     "createMyOwnCourse": "បង្កើតវគ្គសិក្សាផ្ទាល់ខ្លួន",
     "xpTowardMission": "{xp} XP សម្រាប់បេសកកម្មនេះ",
-    "openCourse": "បើកវគ្គសិក្សា",
-    "centralCourseJoinedTitle": "អ្នកបានចូលរួម {course}",
-    "centralCourseJoinedBody": "នេះជាវគ្គសិក្សារបស់ Pangea សម្រាប់អ្នករៀន {language}។ សមាជិករបស់វគ្គសិក្សានេះអាចមើលឃើញឈ្មោះ និងប្រវត្តិរូបរបស់អ្នក។",
+    "centralCourseOfferBody": "នេះជាវគ្គសិក្សារបស់ Pangea សម្រាប់អ្នករៀន {language}។ សមាជិករបស់វគ្គសិក្សានេះអាចមើលឃើញឈ្មោះ និងប្រវត្តិរូបរបស់អ្នក។",
     "centralCourseMembersSeeYou": "សមាជិកនៃវគ្គសិក្សានេះអាចមើលឃើញឈ្មោះ និងប្រវត្តិរូបរបស់អ្នក។",
     "practiceStartWordCount": "{count, plural, =1{ពាក្យដើម្បីអនុវត្ត} other{ពាក្យដើម្បីអនុវត្ត}}",
     "practiceStartGrammarCount": "{count, plural, =1{ចំណុចវេយ្យាករណ៍ដើម្បីអនុវត្ត} other{ចំណុចវេយ្យាករណ៍ដើម្បីអនុវត្ត}}",
-    "practiceStartExerciseTypes": "ប្រភេទលំហាត់"
+    "practiceStartExerciseTypes": "ប្រភេទលំហាត់",
+    "centralCourseOfferTitle": "ចូលរួម {course} ទេ?",
+    "makeMyOwnCourseInstead": "បង្កើតវគ្គសិក្សាផ្ទាល់ខ្លួនវិញ"
 }

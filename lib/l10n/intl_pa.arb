@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-23 13:25:43.883527",
+    "@@last_modified": "2026-10-27 14:57:20.157582",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "YouTube 'ਤੇ ਦੇਖੋ",
     "createMyOwnCourse": "ਮੇਰਾ ਆਪਣਾ ਕੋਰਸ ਬਣਾਓ",
     "xpTowardMission": "ਇਸ ਮਿਸ਼ਨ ਲਈ {xp} XP",
-    "openCourse": "ਕੋਰਸ ਖੋਲ੍ਹੋ",
-    "centralCourseJoinedTitle": "ਤੁਸੀਂ {course} ਵਿੱਚ ਸ਼ਾਮਲ ਹੋ ਗਏ ਹੋ",
-    "centralCourseJoinedBody": "ਇਹ {language} ਸਿੱਖਣ ਵਾਲਿਆਂ ਲਈ ਪੈਂਜੀਆ ਦਾ ਕੋਰਸ ਹੈ। ਇਸਦੇ ਮੈਂਬਰ ਤੁਹਾਡਾ ਨਾਮ ਅਤੇ ਪ੍ਰੋਫਾਈਲ ਦੇਖ ਸਕਦੇ ਹਨ।",
+    "centralCourseOfferBody": "ਇਹ {language} ਸਿੱਖਣ ਵਾਲਿਆਂ ਲਈ ਪੈਂਜੀਆ ਦਾ ਕੋਰਸ ਹੈ। ਇਸਦੇ ਮੈਂਬਰ ਤੁਹਾਡਾ ਨਾਮ ਅਤੇ ਪ੍ਰੋਫਾਈਲ ਦੇਖ ਸਕਦੇ ਹਨ।",
     "centralCourseMembersSeeYou": "ਇਸ ਕੋਰਸ ਦੇ ਮੈਂਬਰ ਤੁਹਾਡਾ ਨਾਮ ਅਤੇ ਪ੍ਰੋਫਾਈਲ ਦੇਖ ਸਕਦੇ ਹਨ।",
     "practiceStartWordCount": "{count, plural, =1{ਅਭਿਆਸ ਕਰਨ ਲਈ ਸ਼ਬਦ} other{ਅਭਿਆਸ ਕਰਨ ਲਈ ਸ਼ਬਦ}}",
     "practiceStartGrammarCount": "{count, plural, =1{ਅਭਿਆਸ ਕਰਨ ਲਈ ਵਿਆਕਰਨ ਬਿੰਦੂ} other{ਅਭਿਆਸ ਕਰਨ ਲਈ ਵਿਆਕਰਨ ਬਿੰਦੂ}}",
-    "practiceStartExerciseTypes": "ਕਸਰਤ ਦੀਆਂ ਕਿਸਮਾਂ"
+    "practiceStartExerciseTypes": "ਕਸਰਤ ਦੀਆਂ ਕਿਸਮਾਂ",
+    "centralCourseOfferTitle": "{course} ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ?",
+    "makeMyOwnCourseInstead": "ਇਸ ਦੀ ਬਜਾਏ ਆਪਣਾ ਕੋਰਸ ਬਣਾਓ"
 }

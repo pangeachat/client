@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-23 13:25:43.062915",
+    "@@last_modified": "2026-10-27 14:57:19.080773",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "YouTube-ൽ കാണുക",
     "createMyOwnCourse": "എൻ്റെ സ്വന്തം കോഴ്സ് ഉണ്ടാക്കുക",
     "xpTowardMission": "ഈ ദൗത്യത്തിലേക്ക് {xp} XP",
-    "openCourse": "കോഴ്സ് തുറക്കുക",
-    "centralCourseJoinedTitle": "നിങ്ങൾ {course} എന്നതിൽ ചേർന്നു",
-    "centralCourseJoinedBody": "ഇത് {language} പഠിതാക്കൾക്കായുള്ള പാഞ്ചിയയുടെ കോഴ്സാണ്. ഇതിലെ അംഗങ്ങൾക്ക് നിങ്ങളുടെ പേരും പ്രൊഫൈലും കാണാൻ കഴിയും.",
+    "centralCourseOfferBody": "ഇത് {language} പഠിതാക്കൾക്കായുള്ള പാഞ്ചിയയുടെ കോഴ്സാണ്. ഇതിലെ അംഗങ്ങൾക്ക് നിങ്ങളുടെ പേരും പ്രൊഫൈലും കാണാൻ കഴിയും.",
     "centralCourseMembersSeeYou": "ഈ കോഴ്സിലെ അംഗങ്ങൾക്ക് നിങ്ങളുടെ പേരും പ്രൊഫൈലും കാണാൻ കഴിയും.",
     "practiceStartWordCount": "{count, plural, =1{പരിശീലിക്കാൻ ഒരു വാക്ക്} other{പരിശീലിക്കാൻ വാക്കുകൾ}}",
     "practiceStartGrammarCount": "{count, plural, =1{പരിശീലിക്കാൻ ഒരു വ്യാകരണ പോയിന്റ്} other{പരിശീലിക്കാൻ വ്യാകരണ പോയിന്റുകൾ}}",
-    "practiceStartExerciseTypes": "വ്യായാമ രീതികൾ"
+    "practiceStartExerciseTypes": "വ്യായാമ രീതികൾ",
+    "centralCourseOfferTitle": "{course}ൽ ചേരണോ?",
+    "makeMyOwnCourseInstead": "എൻ്റേതായ കോഴ്സ് ഉണ്ടാക്കുക"
 }

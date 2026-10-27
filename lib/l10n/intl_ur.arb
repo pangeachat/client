@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-23 13:25:46.537915",
+    "@@last_modified": "2026-10-27 14:57:23.765829",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "یوٹیوب پر دیکھیں",
     "createMyOwnCourse": "میرا اپنا کورس بنائیں",
     "xpTowardMission": "اس مشن کے لیے {xp} XP",
-    "openCourse": "کورس کھولیں",
-    "centralCourseJoinedTitle": "آپ {course} میں شامل ہو گئے ہیں",
-    "centralCourseJoinedBody": "یہ {language} سیکھنے والوں کے لیے Pangea کا کورس ہے۔ اس کے اراکین آپ کا نام اور پروفائل دیکھ سکتے ہیں۔",
+    "centralCourseOfferBody": "یہ {language} سیکھنے والوں کے لیے Pangea کا کورس ہے۔ اس کے اراکین آپ کا نام اور پروفائل دیکھ سکتے ہیں۔",
     "centralCourseMembersSeeYou": "اس کورس کے اراکین آپ کا نام اور پروفائل دیکھ سکتے ہیں۔",
     "practiceStartWordCount": "{count, plural, =1{مشق کرنے کے لیے لفظ} other{مشق کرنے کے لیے الفاظ}}",
     "practiceStartGrammarCount": "{count, plural, =1{مشق کرنے کے لیے گرامر کا نقطہ} other{مشق کرنے کے لیے گرامر کے نکات}}",
-    "practiceStartExerciseTypes": "ورزش کی اقسام"
+    "practiceStartExerciseTypes": "ورزش کی اقسام",
+    "centralCourseOfferTitle": "کیا {course} میں شامل ہوں؟",
+    "makeMyOwnCourseInstead": "اس کے بجائے اپنا کورس خود بناؤں"
 }

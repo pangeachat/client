@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-23 13:25:41.283192",
+    "@@last_modified": "2026-10-27 14:57:17.626982",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "YouTube ನಲ್ಲಿ ವೀಕ್ಷಿಸಿ",
     "createMyOwnCourse": "ನನ್ನದೇ ಆದ ಕೋರ್ಸ್ ರಚಿಸಿ",
     "xpTowardMission": "ಈ ಮಿಷನ್‌ಗೆ {xp} XP",
-    "openCourse": "ಕೋರ್ಸ್ ತೆರೆಯಿರಿ",
-    "centralCourseJoinedTitle": "ನೀವು {course} ಸೇರಿಕೊಂಡಿದ್ದೀರಿ",
-    "centralCourseJoinedBody": "ಇದು {language} ಕಲಿಯುವವರಿಗಾಗಿ ಇರುವ ಪ್ಯಾಂಗಿಯಾದ ಕೋರ್ಸ್ ಆಗಿದೆ. ಇದರ ಸದಸ್ಯರು ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಪ್ರೊಫೈಲ್ ಅನ್ನು ನೋಡಬಹುದು.",
+    "centralCourseOfferBody": "ಇದು {language} ಕಲಿಯುವವರಿಗಾಗಿ ಇರುವ ಪ್ಯಾಂಗಿಯಾದ ಕೋರ್ಸ್ ಆಗಿದೆ. ಇದರ ಸದಸ್ಯರು ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಪ್ರೊಫೈಲ್ ಅನ್ನು ನೋಡಬಹುದು.",
     "centralCourseMembersSeeYou": "ಈ ಕೋರ್ಸ್‌ನ ಸದಸ್ಯರು ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಪ್ರೊಫೈಲ್ ಅನ್ನು ನೋಡಬಹುದು.",
     "practiceStartWordCount": "{count, plural, =1{ಅಭ್ಯಾಸ ಮಾಡಲು ಪದ} other{ಅಭ್ಯಾಸ ಮಾಡಲು ಪದಗಳು}}",
     "practiceStartGrammarCount": "{count, plural, =1{ಅಭ್ಯಾಸ ಮಾಡಲು ವ್ಯಾಕರಣ ಅಂಶ} other{ಅಭ್ಯಾಸ ಮಾಡಲು ವ್ಯಾಕರಣ ಅಂಶಗಳು}}",
-    "practiceStartExerciseTypes": "ವ್ಯಾಯಾಮದ ವಿಧಗಳು"
+    "practiceStartExerciseTypes": "ವ್ಯಾಯಾಮದ ವಿಧಗಳು",
+    "centralCourseOfferTitle": "{course} ಸೇರಬೇಕೆ?",
+    "makeMyOwnCourseInstead": "ಬದಲಿಗೆ ನನ್ನದೇ ಆದ ಕೋರ್ಸ್ ರಚಿಸಿ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-23 13:25:43.051877",
+    "@@last_modified": "2026-10-27 14:57:19.292665",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "YouTube वर पहा",
     "createMyOwnCourse": "माझा स्वतःचा कोर्स तयार करा",
     "xpTowardMission": "या मिशनसाठी {xp} XP",
-    "openCourse": "कोर्स उघडा",
-    "centralCourseJoinedTitle": "तुम्ही {course} मध्ये सामील झाला आहात",
-    "centralCourseJoinedBody": "हा {language} शिकणाऱ्यांसाठी पँजियाचा कोर्स आहे. त्याचे सदस्य तुमचे नाव आणि प्रोफाइल पाहू शकतात.",
+    "centralCourseOfferBody": "हा {language} शिकणाऱ्यांसाठी पँजियाचा कोर्स आहे. त्याचे सदस्य तुमचे नाव आणि प्रोफाइल पाहू शकतात.",
     "centralCourseMembersSeeYou": "या कोर्सचे सदस्य तुमचे नाव आणि प्रोफाइल पाहू शकतात.",
     "practiceStartWordCount": "{count, plural, =1{सराव करण्यासाठी शब्द} other{सराव करण्यासाठी शब्द}}",
     "practiceStartGrammarCount": "{count, plural, =1{सराव करण्यासाठी व्याकरण मुद्दा} other{सराव करण्यासाठी व्याकरण मुद्दे}}",
-    "practiceStartExerciseTypes": "व्यायामाचे प्रकार"
+    "practiceStartExerciseTypes": "व्यायामाचे प्रकार",
+    "centralCourseOfferTitle": "{course} मध्ये सामील व्हायचे?",
+    "makeMyOwnCourseInstead": "त्याऐवजी माझा स्वतःचा कोर्स तयार करा"
 }

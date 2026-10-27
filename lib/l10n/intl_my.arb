@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-23 13:25:44.160622",
+    "@@last_modified": "2026-10-27 14:57:19.566024",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "YouTube တွင် ကြည့်ရန်",
     "createMyOwnCourse": "ကိုယ်ပိုင်သင်တန်းဖန်တီးမည်",
     "xpTowardMission": "ဤမစ်ရှင်အတွက် {xp} XP",
-    "openCourse": "သင်တန်းဖွင့်ပါ",
-    "centralCourseJoinedTitle": "{course} ကို သင်ဝင်ရောက်ပြီးပါပြီ",
-    "centralCourseJoinedBody": "၎င်းသည် {language} သင်ယူသူများအတွက် Pangea ၏ သင်တန်းဖြစ်သည်။ ၎င်း၏အဖွဲ့ဝင်များသည် သင့်အမည်နှင့် ပရိုဖိုင်ကို မြင်နိုင်ပါသည်။",
+    "centralCourseOfferBody": "၎င်းသည် {language} သင်ယူသူများအတွက် Pangea ၏ သင်တန်းဖြစ်သည်။ ၎င်း၏အဖွဲ့ဝင်များသည် သင့်အမည်နှင့် ပရိုဖိုင်ကို မြင်နိုင်ပါသည်။",
     "centralCourseMembersSeeYou": "ဤသင်တန်းမှ အဖွဲ့ဝင်များသည် သင့်အမည်နှင့် ပရိုဖိုင်ကို မြင်နိုင်ပါသည်။",
     "practiceStartWordCount": "{count, plural, =1{လေ့ကျင့်ရန် စကားလုံး} other{လေ့ကျင့်ရန် စကားလုံးများ}}",
     "practiceStartGrammarCount": "{count, plural, =1{လေ့ကျင့်ရန် သဒ္ဒါအချက်} other{လေ့ကျင့်ရန် သဒ္ဒါအချက်များ}}",
-    "practiceStartExerciseTypes": "လေ့ကျင့်ခန်းအမျိုးအစားများ"
+    "practiceStartExerciseTypes": "လေ့ကျင့်ခန်းအမျိုးအစားများ",
+    "centralCourseOfferTitle": "{course} ကို ဝင်မလား?",
+    "makeMyOwnCourseInstead": "ကျွန်ုပ်၏ကိုယ်ပိုင်သင်တန်းကို ဖန်တီးမည်"
 }

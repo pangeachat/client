@@ -6249,22 +6249,9 @@
             }
         }
     },
-    "openCourse": "Open course",
-    "@openCourse": {
-        "description": "Button in the dialog shown after the app joined the learner to their language's central course: opens that course."
-    },
-    "centralCourseJoinedTitle": "You've joined {course}",
-    "@centralCourseJoinedTitle": {
-        "description": "Title of the dialog shown once when the app joins an existing learner to the Pangea-run course for their target language.",
-        "placeholders": {
-            "course": {
-                "type": "String"
-            }
-        }
-    },
-    "centralCourseJoinedBody": "It's Pangea's course for {language} learners. Its members can see your name and profile.",
-    "@centralCourseJoinedBody": {
-        "description": "Body of the dialog shown once when the app joins an existing learner to the Pangea-run course for their target language. The learner can leave from the dialog.",
+    "centralCourseOfferBody": "It's Pangea's course for {language} learners. Its members can see your name and profile.",
+    "@centralCourseOfferBody": {
+        "description": "Body of the popup and onboarding page offering a learner the Pangea-run course for their target language; they can join it or make a course of their own.",
         "placeholders": {
             "language": {
                 "type": "String"
@@ -6273,6 +6260,19 @@
     },
     "centralCourseMembersSeeYou": "Members of this course can see your name and profile.",
     "@centralCourseMembersSeeYou": {
-        "description": "Line on the onboarding page after a new learner was joined to the Pangea-run course for their target language."
+        "description": "Line on the onboarding page offering a new learner the Pangea-run course for their target language, before they choose to join it."
+    },
+    "centralCourseOfferTitle": "Join {course}?",
+    "@centralCourseOfferTitle": {
+        "description": "Title of the popup and onboarding page offering a learner the Pangea-run course for their target language.",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "makeMyOwnCourseInstead": "Make my own course instead",
+    "@makeMyOwnCourseInstead": {
+        "description": "Secondary choice when a learner is offered the Pangea-run course for their language: instead, the app makes them a private course of their own."
     }
 }

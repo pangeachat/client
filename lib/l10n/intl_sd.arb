@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-23 13:25:44.740904",
+    "@@last_modified": "2026-10-27 14:57:21.465377",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "يوٽيوب تي ڏسو",
     "createMyOwnCourse": "منهنجو پنهنجو ڪورس ٺاهيو",
     "xpTowardMission": "هن مشن ڏانهن {xp} XP",
-    "openCourse": "ڪورس کوليو",
-    "centralCourseJoinedTitle": "توهان {course} ۾ شامل ٿي ويا آهيو",
-    "centralCourseJoinedBody": "هي {language} سکندڙن لاءِ پينگيا جو ڪورس آهي. ان جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا.",
+    "centralCourseOfferBody": "هي {language} سکندڙن لاءِ پينگيا جو ڪورس آهي. ان جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا.",
     "centralCourseMembersSeeYou": "هن ڪورس جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا.",
     "practiceStartWordCount": "{count, plural, =1{ورڊ جي مشق ڪرڻ} other{ورڊن جي مشق ڪرڻ}}",
     "practiceStartGrammarCount": "{count, plural, =1{گرامر پوائنٽ جي مشق ڪرڻ} other{گرامر پوائنٽن جي مشق ڪرڻ}}",
-    "practiceStartExerciseTypes": "مشق جا قسم"
+    "practiceStartExerciseTypes": "مشق جا قسم",
+    "centralCourseOfferTitle": "{course} ۾ شامل ٿيو؟",
+    "makeMyOwnCourseInstead": "ان جي بدران پنهنجو ڪورس ٺاهيو"
 }

@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-23 13:25:42.566163",
+    "@@last_modified": "2026-10-27 14:57:18.329201",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10821,11 +10821,11 @@
     "watchOnYoutube": "Žiūrėti „YouTube“",
     "createMyOwnCourse": "Sukurti savo kursą",
     "xpTowardMission": "{xp} XP šiai misijai",
-    "openCourse": "Atidaryti kursą",
-    "centralCourseJoinedTitle": "Prisijungėte prie {course}",
-    "centralCourseJoinedBody": "Tai „Pangea“ kursas, skirtas {language} besimokantiems. Jo nariai gali matyti jūsų vardą ir profilį.",
+    "centralCourseOfferBody": "Tai „Pangea“ kursas, skirtas {language} besimokantiems. Jo nariai gali matyti jūsų vardą ir profilį.",
     "centralCourseMembersSeeYou": "Šio kurso nariai gali matyti jūsų vardą ir profilį.",
     "practiceStartWordCount": "{count, plural, =1{žodis praktikai} other{žodžiai praktikai}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatikos punktas praktikai} other{gramatikos punktai praktikai}}",
-    "practiceStartExerciseTypes": "Pratimų tipai"
+    "practiceStartExerciseTypes": "Pratimų tipai",
+    "centralCourseOfferTitle": "Prisijungti prie {course}?",
+    "makeMyOwnCourseInstead": "Vietoj to sukurti savo kursą"
 }

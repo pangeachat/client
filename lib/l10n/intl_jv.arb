@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-23 13:25:41.593199",
+    "@@last_modified": "2026-10-27 14:57:17.089561",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "Tonton ing YouTube",
     "createMyOwnCourse": "Gawe kursusku dhewe",
     "xpTowardMission": "{xp} XP kanggo Misi iki",
-    "openCourse": "Bukak kursus",
-    "centralCourseJoinedTitle": "Sampeyan wis gabung {course}",
-    "centralCourseJoinedBody": "Iki kursus Pangea kanggo para siswa {language}. Anggotane bisa ndeleng jeneng lan profil sampeyan.",
+    "centralCourseOfferBody": "Iki kursus Pangea kanggo para siswa {language}. Anggotane bisa ndeleng jeneng lan profil sampeyan.",
     "centralCourseMembersSeeYou": "Anggota kursus iki bisa ndeleng jeneng lan profil sampeyan.",
     "practiceStartWordCount": "{count, plural, =1{tembung kanggo gladhen} other{tembung kanggo gladhen}}",
     "practiceStartGrammarCount": "{count, plural, =1{babagan tata basa kanggo gladhen} other{babagan tata basa kanggo gladhen}}",
-    "practiceStartExerciseTypes": "Jinis gladhen"
+    "practiceStartExerciseTypes": "Jinis gladhen",
+    "centralCourseOfferTitle": "Gabung {course}?",
+    "makeMyOwnCourseInstead": "Gawe kursusku dhewe wae"
 }

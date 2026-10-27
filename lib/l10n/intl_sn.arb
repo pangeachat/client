@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-23 13:25:45.652315",
+    "@@last_modified": "2026-10-27 14:57:21.595740",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2505,11 +2505,11 @@
     "watchOnYoutube": "Tarisa paYouTube",
     "createMyOwnCourse": "Gadzira kosi yangu",
     "xpTowardMission": "{xp} XP kuMission iyi",
-    "openCourse": "Vhura kosi",
-    "centralCourseJoinedTitle": "Wabatana ne {course}",
-    "centralCourseJoinedBody": "Iyi ikosi yePangea yevadzidzi ve {language}. Nhengo dzayo dzinogona kuona zita rako neprofile yako.",
+    "centralCourseOfferBody": "Iyi ikosi yePangea yevadzidzi ve {language}. Nhengo dzayo dzinogona kuona zita rako neprofile yako.",
     "centralCourseMembersSeeYou": "Nhengo dzekosi iyi dzinogona kuona zita rako neprofile yako.",
     "practiceStartWordCount": "{count, plural, =1{izwi rekudzidzira} other{mazwi ekudzidzira}}",
     "practiceStartGrammarCount": "{count, plural, =1{poindi yegirama yekudzidzira} other{mapoindi egirama ekudzidzira}}",
-    "practiceStartExerciseTypes": "Mhando dzekudzidzira"
+    "practiceStartExerciseTypes": "Mhando dzekudzidzira",
+    "centralCourseOfferTitle": "Pinda mu {course}?",
+    "makeMyOwnCourseInstead": "Gadzira kosi yangu pachangu"
 }

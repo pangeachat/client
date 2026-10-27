@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-23 13:25:46.542567",
+    "@@last_modified": "2026-10-27 14:57:23.579355",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10047,11 +10047,11 @@
     "watchOnYoutube": "YouTube'da tomosha qiling",
     "createMyOwnCourse": "Oʻz kursimni yaratish",
     "xpTowardMission": "Ushbu missiya uchun {xp} XP",
-    "openCourse": "Kursni ochish",
-    "centralCourseJoinedTitle": "Siz {course} kursiga qoʻshildingiz",
-    "centralCourseJoinedBody": "Bu Pangeaning {language} oʻrganuvchilari uchun kursi. Uning aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
+    "centralCourseOfferBody": "Bu Pangeaning {language} oʻrganuvchilari uchun kursi. Uning aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
     "centralCourseMembersSeeYou": "Ushbu kurs aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
     "practiceStartWordCount": "{count, plural, =1{mashq qilish uchun soʻz} other{mashq qilish uchun soʻzlar}}",
     "practiceStartGrammarCount": "{count, plural, =1{mashq qilish uchun grammatika qoidasi} other{mashq qilish uchun grammatika qoidalari}}",
-    "practiceStartExerciseTypes": "Mashq turlari"
+    "practiceStartExerciseTypes": "Mashq turlari",
+    "centralCourseOfferTitle": "{course}ga qo‘shilasizmi?",
+    "makeMyOwnCourseInstead": "Buning o‘rniga o‘zimning kursimni yarataman"
 }
