@@ -104,6 +104,15 @@ class AnalyticsDataService {
   Completer<void> initCompleter = Completer<void>();
   Object? initError;
 
+  /// The target language the store last finished initialising for, or null
+  /// before that, while it re-initialises, and after an init that failed. A
+  /// language switch reaches readers before [reinitialize] starts, while
+  /// [initCompleter] is still the old language's completed one: a reader that
+  /// gets a different language here is looking at a store that has not
+  /// loaded its language yet (#9678).
+  String? get initializedLanguage => _initializedLanguage;
+  String? _initializedLanguage;
+
   /// Opens the analytics store. Injectable so a test can drive the real init
   /// path against an in-memory database.
   ///
@@ -318,6 +327,7 @@ class AnalyticsDataService {
         await _initMergeTable(l2.langCodeShort);
         await client.combineAnalyticsRooms(l2);
       }
+      _initializedLanguage = l2?.langCodeShort;
     } catch (e, s) {
       Logs().e("Error initializing analytics: $e, $s");
       initError = e;
@@ -350,6 +360,7 @@ class AnalyticsDataService {
       Breadcrumb(message: 'AnalyticsDataService.reinitialize'),
     );
     initError = null;
+    _initializedLanguage = null;
     initCompleter = Completer<void>();
     _clearLocalCaches();
     // Notify listeners immediately so the UI transitions from error to loading.
