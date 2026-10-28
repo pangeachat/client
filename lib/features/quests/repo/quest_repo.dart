@@ -3,12 +3,14 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
 import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
@@ -85,24 +87,46 @@ Set<String> effectivePinnedActivityIds(
 }
 
 /// An activity in a quest outline: its id plus the full plan, so the card
-/// renders and a session can open without a refetch.
+/// renders and a session can open without a refetch, and where it is set
+/// ([point], null for an activity with no coordinates), so a course's copy can
+/// name the city its Can-Do's pins fall under.
 class QuestActivity {
   final String activityId;
   final ActivityPlanModel plan;
-  const QuestActivity({required this.activityId, required this.plan});
+  final LatLng? point;
+  const QuestActivity({
+    required this.activityId,
+    required this.plan,
+    this.point,
+  });
 }
 
-/// A course's own note and soft due date for one Mission, from its copy
-/// (`pangea.course_missions`, content-studio.instructions.md). [timeZone] is
-/// the course's IANA zone the due date is shown in; null shows it in the
-/// viewer's own zone. A due date never blocks, hides or locks anything.
+/// A course's own note, due date and city for one Mission, from its copy
+/// (`pangea.course_missions`, content-studio.instructions.md; org quests doc,
+/// "A course is a trip"). [timeZone] is the course's IANA zone the due date is
+/// shown in; null shows it in the viewer's own zone. On a dated course the due
+/// date is the day the course moves on from the Mission's city; [city] is the
+/// listed city the Mission's pins fall under, null on a version 1 copy or when
+/// no pin falls under a listed city.
 class MissionPacing {
   final String? note;
   final DateTime? dueAt;
   final String? timeZone;
-  const MissionPacing({this.note, this.dueAt, this.timeZone});
+  final MissionCity? city;
+  const MissionPacing({this.note, this.dueAt, this.timeZone, this.city});
 
-  bool get isEmpty => note == null && dueAt == null;
+  bool get isEmpty => note == null && dueAt == null && city == null;
+}
+
+/// What a version 2 copy says about the course as a trip (org quests doc,
+/// "Progression"): its first day when it runs by the calendar, else null for
+/// a course that runs by each student's progress.
+class CourseTrip {
+  final DateTime? startDate;
+  final String? timeZone;
+  const CourseTrip({this.startDate, this.timeZone});
+
+  bool get isDated => startDate != null;
 }
 
 /// A Learning Objective (Mission) with the activities that satisfy it, in
@@ -181,26 +205,34 @@ class QuestOutline {
   /// for the shared quest and for a course without a copy.
   final CourseCredit credit;
 
+  /// The course as a trip, from a version 2 copy; null for the shared quest
+  /// and for a course whose copy is version 1 (not yet sliced into cities).
+  final CourseTrip? trip;
+
   const QuestOutline({
     required this.quest,
     required this.groups,
     this.addedGroups = const [],
     this.familyIdsByActivity = const {},
     this.credit = CourseCredit.none,
+    this.trip,
   });
 
-  /// This outline with [groups], [quest] and [credit] replaced and everything
-  /// else carried over — so a transform never silently drops listing data.
+  /// This outline with [groups], [quest], [credit] and [trip] replaced and
+  /// everything else carried over — so a transform never silently drops
+  /// listing data.
   QuestOutline withCourse({
     QuestPlan? quest,
     List<QuestObjectiveGroup>? groups,
     CourseCredit? credit,
+    CourseTrip? trip,
   }) => QuestOutline(
     quest: quest ?? this.quest,
     groups: groups ?? this.groups,
     addedGroups: addedGroups,
     familyIdsByActivity: familyIdsByActivity,
     credit: credit ?? this.credit,
+    trip: trip ?? this.trip,
   );
 
   /// A copy with each pinned Mission's activities filtered to its pinned set —
@@ -679,7 +711,12 @@ class QuestRepo {
       ({
         Map<String, LearningObjective> missions,
         List<
-          ({ActivityPlanModel plan, List<String> refs, List<String> familyIds})
+          ({
+            ActivityPlanModel plan,
+            LatLng? point,
+            List<String> refs,
+            List<String> familyIds,
+          })
         >
         activities,
       })
@@ -708,6 +745,9 @@ class QuestRepo {
             .map(
               (e) => (
                 plan: activityPlanFromV2(cmsDocShapeFromEntry(e)),
+                point: QuestActivityCard.fromJson(
+                  cmsDocShapeFromEntry(e),
+                ).point,
                 refs: ((e['learning_objective_refs'] as List? ?? const [])
                     .map((x) => x as String)
                     .toList()),
@@ -731,6 +771,7 @@ class QuestRepo {
           for (var i = 0; i < entries.length; i++)
             (
               plan: resolved[i],
+              point: entries[i].point,
               refs: entries[i].refs,
               familyIds: entries[i].familyIds,
             ),
@@ -906,7 +947,11 @@ class QuestRepo {
 
       final byLo = <String, List<QuestActivity>>{};
       for (final a in read.activities) {
-        final qa = QuestActivity(activityId: a.plan.activityId, plan: a.plan);
+        final qa = QuestActivity(
+          activityId: a.plan.activityId,
+          plan: a.plan,
+          point: a.point,
+        );
         for (final ref in a.refs) {
           (byLo[ref] ??= []).add(qa);
         }

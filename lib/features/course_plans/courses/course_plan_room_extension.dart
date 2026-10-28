@@ -6,6 +6,7 @@ import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/course_plans/cities/cities_repo.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
@@ -138,6 +139,12 @@ extension CoursePlanRoomExtension on Room {
   /// A plan change with no snapshot to hand ([outline] null) clears the old
   /// quest's copy with an empty record, so readers fall back to the new
   /// shared quest rather than listing the old quest's Can-Dos.
+  ///
+  /// The copy is the trip (version 2): each Can-Do sliced to the listed city
+  /// most of its activities fall under, from the CMS city list. When that
+  /// list cannot be read (logged by the repo) the version 1 snapshot is
+  /// written instead, so the course still gets its own list; it reads as a
+  /// course not yet sliced into cities.
   Future<void> _writeCourseMissionsCopy(
     QuestOutline? outline, {
     required bool planChanged,
@@ -163,6 +170,7 @@ extension CoursePlanRoomExtension on Room {
     final snapshot = CourseMissionsEvent.snapshotOf(
       outline.restrictedTo(teacherMode.pinnedActivitiesByObjective),
       revision: (existing?.revision ?? 0) + 1,
+      cities: await CitiesRepo.index(),
     );
     await client.setRoomStateWithKey(
       id,

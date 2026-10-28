@@ -1,5 +1,7 @@
+import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/course_plans/cities/city_index.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
@@ -8,9 +10,53 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
+/// The listed city a Mission's pinned activities fall under (org quests doc,
+/// "A course is a trip"): a write-through cache the writer recomputes from
+/// `activity_ids` on every publish, never edited on its own, there so a ship
+/// can be placed from room state alone. Absent when no pin falls under a
+/// listed city.
+class MissionCity {
+  final String name;
+  final double lat;
+  final double lng;
+  const MissionCity({required this.name, required this.lat, required this.lng});
+
+  LatLng get point => LatLng(lat, lng);
+
+  Map<String, dynamic> toJson() => {'name': name, 'lat': lat, 'lng': lng};
+
+  /// Strict: a name and a finite position on the globe, or null.
+  static MissionCity? tryParse(Object? raw) {
+    if (raw is! Map) return null;
+    final name = raw['name'];
+    final lat = raw['lat'];
+    final lng = raw['lng'];
+    if (name is! String ||
+        name.isEmpty ||
+        lat is bool ||
+        lng is bool ||
+        lat is! num ||
+        lng is! num ||
+        !lat.isFinite ||
+        !lng.isFinite ||
+        lat < -90 ||
+        lat > 90 ||
+        lng < -180 ||
+        lng > 180) {
+      return null;
+    }
+    return MissionCity(name: name, lat: lat.toDouble(), lng: lng.toDouble());
+  }
+
+  /// The same city: by position, since the name alone repeats (two Suzhous).
+  bool sameAs(MissionCity other) =>
+      name == other.name && lat == other.lat && lng == other.lng;
+}
+
 /// One Mission (Can-Do) in a course's own copy: which Learning Objective, the
-/// activity content ids that satisfy it in this course, and the teacher's
-/// optional note and soft due date.
+/// activity content ids that satisfy it in this course (its city slice), the
+/// listed city those pins fall under, and the teacher's optional note and due
+/// date.
 class CourseMission {
   final String loId;
   final List<String> activityIds;
@@ -21,8 +67,14 @@ class CourseMission {
   final List<String> removedActivityIds;
   final String? note;
 
-  /// A UTC instant. Shown, never enforced: nothing is blocked after it.
+  /// A UTC instant: the day the course moves on from this Mission's city. On
+  /// a dated course it closes the city (org quests doc, "Progression");
+  /// assigned activities stay playable after it. Null on an undated course.
   final DateTime? dueAt;
+
+  /// The listed city the pins fall under (version 2); null on a version 1
+  /// record and for a Mission whose pins fall under no listed city.
+  final MissionCity? city;
 
   const CourseMission({
     required this.loId,
@@ -30,6 +82,7 @@ class CourseMission {
     this.removedActivityIds = const [],
     this.note,
     this.dueAt,
+    this.city,
   });
 
   Map<String, dynamic> toJson() => {
@@ -39,6 +92,7 @@ class CourseMission {
       'removed_activity_ids': removedActivityIds,
     if (note != null) 'note': note,
     if (dueAt != null) 'due_at': dueAt!.toUtc().toIso8601String(),
+    if (city != null) 'city': city!.toJson(),
   };
 }
 
@@ -69,13 +123,27 @@ class RemovedMission {
 /// valid the course reads only this list; when it is absent or invalid every
 /// reader behaves exactly as before it existed (shared quest order plus the
 /// teacher-mode pins).
+///
+/// Version 1 is the list with notes and dates. Version 2 (pangeachat/.github#780)
+/// is the trip: the same list sliced to one city per Can-Do, each Mission
+/// carrying its [MissionCity], and a `start_date` when the course runs by
+/// dates. A reader of either version treats any other as absent.
 class CourseMissionsEvent {
   static const int schemaVersion = 1;
+  static const int tripVersion = 2;
+  static const Set<int> supportedVersions = {schemaVersion, tripVersion};
   static const int maxNoteLength = 280;
   static final RegExp _hasUtcOffset = RegExp(r'T.*(Z|[+-]\d{2}:?\d{2})$');
+  static final RegExp _isDate = RegExp(r'^\d{4}-\d{2}-\d{2}$');
 
+  final int version;
   final int revision;
   final String? timeZone;
+
+  /// The course's first day (version 2), a date in the course time zone.
+  /// Present only on a dated course: with it cities open by the calendar,
+  /// without it by progress (org quests doc, "Progression").
+  final DateTime? startDate;
   final List<CourseMission> missions;
 
   /// Can-Dos the teacher removed; empty on every v1 record. Readers that
@@ -85,9 +153,18 @@ class CourseMissionsEvent {
   const CourseMissionsEvent({
     required this.revision,
     required this.missions,
+    this.version = schemaVersion,
     this.removedMissions = const [],
     this.timeZone,
+    this.startDate,
   });
+
+  /// Whether this copy is the trip (version 2): sliced into cities.
+  bool get isTrip => version == tripVersion;
+
+  /// Whether the course runs by the calendar (a start date) rather than by
+  /// each student's progress.
+  bool get isDated => startDate != null;
 
   /// Every Can-Do the record names: the shown ones and the removed ones.
   Set<String> get allLoIds => {
@@ -96,26 +173,43 @@ class CourseMissionsEvent {
   };
 
   Map<String, dynamic> toJson() => {
-    'version': schemaVersion,
+    'version': version,
     'revision': revision,
     if (timeZone != null) 'time_zone': timeZone,
+    if (startDate != null) 'start_date': _dateString(startDate!),
     'missions': [for (final m in missions) m.toJson()],
     if (removedMissions.isNotEmpty)
       'removed_missions': [for (final m in removedMissions) m.toJson()],
   };
 
-  /// Strict parse: any field of the wrong type, a version other than 1, a
-  /// revision below 1, a duplicate Can-Do, an over-long note or an unreadable
-  /// due date makes the whole record invalid (null), so a malformed copy can
-  /// never half-apply.
+  static String _dateString(DateTime date) =>
+      '${date.year.toString().padLeft(4, '0')}-'
+      '${date.month.toString().padLeft(2, '0')}-'
+      '${date.day.toString().padLeft(2, '0')}';
+
+  /// Strict parse: any field of the wrong type, a version other than 1 or 2,
+  /// a revision below 1, a duplicate Can-Do, an over-long note, an unreadable
+  /// due date, start date or city makes the whole record invalid (null), so a
+  /// malformed copy can never half-apply. A version 1 record's `start_date`
+  /// and `city` fields, if any, are ignored: they belong to version 2.
   static CourseMissionsEvent? tryParse(Object? content) {
     if (content is! Map) return null;
-    if (content['version'] != schemaVersion) return null;
+    final version = content['version'];
+    if (version is! int || !supportedVersions.contains(version)) return null;
+    final trip = version == tripVersion;
     final revision = content['revision'];
     if (revision is! int || revision < 1) return null;
     final timeZone = content['time_zone'];
     if (timeZone != null && (timeZone is! String || timeZone.isEmpty)) {
       return null;
+    }
+    DateTime? startDate;
+    final rawStart = trip ? content['start_date'] : null;
+    if (rawStart != null) {
+      if (rawStart is! String || !_isDate.hasMatch(rawStart)) return null;
+      startDate = DateTime.tryParse(rawStart);
+      if (startDate == null) return null;
+      startDate = DateTime(startDate.year, startDate.month, startDate.day);
     }
     final rawMissions = content['missions'];
     if (rawMissions is! List) return null;
@@ -146,6 +240,12 @@ class CourseMissionsEvent {
         dueAt = DateTime.tryParse(rawDue)?.toUtc();
         if (dueAt == null) return null;
       }
+      MissionCity? city;
+      final rawCity = trip ? raw['city'] : null;
+      if (rawCity != null) {
+        city = MissionCity.tryParse(rawCity);
+        if (city == null) return null;
+      }
       missions.add(
         CourseMission(
           loId: loId,
@@ -155,6 +255,7 @@ class CourseMissionsEvent {
               : (rawRemoved as List).cast<String>().toSet().toList(),
           note: note as String?,
           dueAt: dueAt,
+          city: city,
         ),
       );
     }
@@ -186,30 +287,72 @@ class CourseMissionsEvent {
       }
     }
     return CourseMissionsEvent(
+      version: version,
       revision: revision,
       timeZone: timeZone as String?,
+      startDate: startDate,
       missions: missions,
       removedMissions: removedMissions,
     );
   }
 
-  /// The copy a new course starts with: a snapshot of the list it shows
-  /// without one — every Can-Do in order, each with the activities shown for
-  /// it. No time zone (dates show in the viewer's zone until the Studio's
-  /// first publish sets one).
+  /// The copy a new course starts with. With [cities] (the listed cities),
+  /// the trip: every Can-Do in order, sliced to the activities under the
+  /// listed city most of its pins fall under ([sliceFor]), undated. Without
+  /// them, the version 1 snapshot: every Can-Do with every activity shown
+  /// for it. No time zone (dates show in the viewer's zone until the
+  /// Studio's first publish sets one).
   static CourseMissionsEvent snapshotOf(
     QuestOutline outline, {
     int revision = 1,
+    CityIndex? cities,
   }) => CourseMissionsEvent(
+    version: cities == null ? schemaVersion : tripVersion,
     revision: revision,
     missions: [
       for (final group in outline.groups)
-        CourseMission(
-          loId: group.objective.id,
-          activityIds: [for (final a in group.activities) a.activityId],
-        ),
+        if (cities == null)
+          CourseMission(
+            loId: group.objective.id,
+            activityIds: [for (final a in group.activities) a.activityId],
+          )
+        else
+          sliceFor(group, cities),
     ],
   );
+
+  /// A Can-Do's city slice (org quests doc, "A course is a trip"; the Create
+  /// my class rule on pangeachat/.github#780): the listed city most of its
+  /// activities fall under, ties to the first activity's city, and the pins
+  /// are its activities under that city. A Can-Do with no activity under a
+  /// listed city keeps every activity and has no city; it is still playable
+  /// and does not move the ship.
+  static CourseMission sliceFor(QuestObjectiveGroup group, CityIndex cities) {
+    final byCity = <String, (ListedCity, List<String>)>{};
+    for (final activity in group.activities) {
+      final point = activity.point;
+      if (point == null) continue;
+      final city = cities.nearest(point);
+      if (city == null) continue;
+      (byCity[city.key] ??= (city, [])).$2.add(activity.activityId);
+    }
+    if (byCity.isEmpty) {
+      return CourseMission(
+        loId: group.objective.id,
+        activityIds: [for (final a in group.activities) a.activityId],
+      );
+    }
+    var best = byCity.values.first;
+    for (final candidate in byCity.values) {
+      if (candidate.$2.length > best.$2.length) best = candidate;
+    }
+    final (city, ids) = best;
+    return CourseMission(
+      loId: group.objective.id,
+      activityIds: ids,
+      city: MissionCity(name: city.name, lat: city.lat, lng: city.lng),
+    );
+  }
 
   /// The Mission ids this copy lists that [quest] still carries, in the
   /// copy's order — the effective Can-Do list for a reader that has only the
@@ -334,6 +477,7 @@ extension QuestOutlineForCourse on QuestOutline {
         note: mission.note,
         dueAt: mission.dueAt,
         timeZone: copy.timeZone,
+        city: mission.city,
       );
       nextGroups.add(
         QuestObjectiveGroup(
@@ -362,6 +506,9 @@ extension QuestOutlineForCourse on QuestOutline {
       quest: quest.withSequence(nextSteps),
       groups: nextGroups,
       credit: credit,
+      trip: copy.isTrip
+          ? CourseTrip(startDate: copy.startDate, timeZone: copy.timeZone)
+          : null,
     );
   }
 

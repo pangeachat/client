@@ -3,11 +3,14 @@ import 'dart:convert';
 
 import 'package:async/async.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
+import 'package:fluffychat/features/course_plans/cities/cities_repo.dart';
+import 'package:fluffychat/features/course_plans/cities/city_index.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -56,7 +59,7 @@ void main() {
     });
 
     final invalid = <String, Map<String, dynamic> Function()>{
-      'version 2': () => valid()..['version'] = 2,
+      'version 3': () => valid()..['version'] = 3,
       'revision 0': () => valid()..['revision'] = 0,
       'revision as a string': () => valid()..['revision'] = '3',
       'missions missing': () => valid()..remove('missions'),
@@ -109,6 +112,167 @@ void main() {
         ),
         isNotNull,
       );
+    });
+  });
+
+  group('CourseMissionsEvent.tryParse, version 2 (the trip)', () {
+    Map<String, dynamic> trip() => {
+      'version': 2,
+      'revision': 4,
+      'time_zone': 'America/Mexico_City',
+      'start_date': '2026-11-02',
+      'missions': [
+        {
+          'lo_id': 'lo-a',
+          'activity_ids': ['a1', 'a2'],
+          'city': {'name': 'Mexico City', 'lat': 19.4444, 'lng': -99.1329},
+          'due_at': '2026-11-09T05:59:00Z',
+        },
+        {
+          'lo_id': 'lo-b',
+          'activity_ids': ['b1'],
+        },
+      ],
+    };
+
+    test('reads the start date and each Mission\'s city', () {
+      final copy = CourseMissionsEvent.tryParse(trip())!;
+      expect(copy.isTrip, isTrue);
+      expect(copy.isDated, isTrue);
+      expect(copy.startDate, DateTime(2026, 11, 2));
+      expect(copy.missions.first.city?.name, 'Mexico City');
+      expect(copy.missions.first.city?.point, const LatLng(19.4444, -99.1329));
+      // A Mission whose pins fall under no listed city has none.
+      expect(copy.missions.last.city, isNull);
+    });
+
+    test('round-trips through toJson', () {
+      final copy = CourseMissionsEvent.tryParse(trip())!;
+      final json = copy.toJson();
+      expect(json['version'], 2);
+      expect(json['start_date'], '2026-11-02');
+      expect(CourseMissionsEvent.tryParse(json)!.toJson(), json);
+    });
+
+    test('an undated trip has no start date and runs by progress', () {
+      final copy = CourseMissionsEvent.tryParse(trip()..remove('start_date'))!;
+      expect(copy.isDated, isFalse);
+      expect(copy.toJson().containsKey('start_date'), isFalse);
+    });
+
+    test('a version 1 record ignores a city or start date it carries', () {
+      final v1 = trip()..['version'] = 1;
+      final copy = CourseMissionsEvent.tryParse(v1)!;
+      expect(copy.isTrip, isFalse);
+      expect(copy.startDate, isNull);
+      expect(copy.missions.first.city, isNull);
+    });
+
+    final invalid = <String, Map<String, dynamic> Function()>{
+      'a start date that is not a date': () =>
+          trip()..['start_date'] = '2026-11-02T00:00',
+      'a start date that is not a string': () =>
+          trip()..['start_date'] = 20261102,
+      'a start date with no such day': () =>
+          trip()..['start_date'] = '2026-13-40',
+      'a city with no name': () =>
+          trip()..['missions'][0]['city'] = {'lat': 1.0, 'lng': 1.0},
+      'a city off the globe': () =>
+          trip()
+            ..['missions'][0]['city'] = {'name': 'X', 'lat': 91.0, 'lng': 0.0},
+      'a city with a string position': () =>
+          trip()
+            ..['missions'][0]['city'] = {'name': 'X', 'lat': '1', 'lng': 1.0},
+      'a city that is not a map': () =>
+          trip()..['missions'][0]['city'] = 'Paris',
+    };
+    for (final entry in invalid.entries) {
+      test('refuses ${entry.key}', () {
+        expect(CourseMissionsEvent.tryParse(entry.value()), isNull);
+      });
+    }
+  });
+
+  group('CourseMissionsEvent.sliceFor (a Can-Do\'s city slice)', () {
+    QuestObjectiveGroup group(List<(String, LatLng?)> activities) =>
+        QuestObjectiveGroup(
+          objective: const LearningObjective(id: 'lo', objective: ''),
+          activities: [
+            for (final (id, point) in activities)
+              QuestActivity(activityId: id, plan: _plan(id), point: point),
+          ],
+        );
+
+    test('keeps the activities under the city most of them fall under', () {
+      final slice = CourseMissionsEvent.sliceFor(
+        group([
+          ('m1', const LatLng(19.35, -99.16)), // Coyoacán
+          ('s1', const LatLng(40.42, -3.70)), // Madrid
+          ('m2', const LatLng(19.50, -99.10)), // Mexico City
+          ('none', null),
+          ('far', const LatLng(0.0, 0.0)), // no listed city within 250 mi
+        ]),
+        _cities(),
+      );
+      expect(slice.activityIds, ['m1', 'm2']);
+      expect(slice.city?.name, 'Mexico City');
+    });
+
+    test('ties go to the first activity\'s city', () {
+      final slice = CourseMissionsEvent.sliceFor(
+        group([
+          ('s1', const LatLng(40.42, -3.70)),
+          ('m1', const LatLng(19.35, -99.16)),
+        ]),
+        _cities(),
+      );
+      expect(slice.activityIds, ['s1']);
+      expect(slice.city?.name, 'Madrid');
+    });
+
+    test('with no activity under a listed city keeps every activity and '
+        'names no city', () {
+      final slice = CourseMissionsEvent.sliceFor(
+        group([('none', null), ('far', const LatLng(0.0, 0.0))]),
+        _cities(),
+      );
+      expect(slice.activityIds, ['none', 'far']);
+      expect(slice.city, isNull);
+    });
+
+    test('snapshotOf with the cities is the trip, undated', () {
+      final outline = QuestOutline(
+        quest: const QuestPlan(
+          id: 'q1',
+          name: '',
+          description: '',
+          targetLanguage: 'es',
+          sequence: [],
+        ),
+        groups: [
+          group([
+            ('m1', const LatLng(19.35, -99.16)),
+            ('s1', const LatLng(40.42, -3.70)),
+            ('m2', const LatLng(19.50, -99.10)),
+          ]),
+        ],
+      );
+      final json = CourseMissionsEvent.snapshotOf(
+        outline,
+        cities: _cities(),
+      ).toJson();
+      expect(json, {
+        'version': 2,
+        'revision': 1,
+        'missions': [
+          {
+            'lo_id': 'lo',
+            'activity_ids': ['m1', 'm2'],
+            'city': {'name': 'Mexico City', 'lat': 19.4444, 'lng': -99.1329},
+          },
+        ],
+      });
+      expect(CourseMissionsEvent.tryParse(json)?.isDated, isFalse);
     });
   });
 
@@ -230,6 +394,7 @@ void main() {
       FakeMatrixApi.calledEndpoints.clear();
       QuestRepo.resetOutlineCacheForTest();
       QuestRepo.debugDisplayL1 = 'en';
+      CitiesRepo.debugIndex = _cities();
       outlineReads = [];
       answer = null;
       QuestRepo.debugBuildOutline = (id, {courseRoomId}) async {
@@ -244,6 +409,7 @@ void main() {
       QuestRepo.debugBuildOutline = null;
       QuestRepo.debugDisplayL1 = null;
       QuestRepo.resetOutlineCacheForTest();
+      CitiesRepo.resetForTest();
       client.dispose();
     });
 
@@ -308,8 +474,9 @@ void main() {
       await space(ownLevel: 100).addCourseToSpace('q1', targetLanguage: 'es');
       final writes = copyWrites();
       expect(writes, hasLength(1));
+      // The trip (version 2); these activities carry no point, so no city.
       expect(jsonDecode(writes.single as String), {
-        'version': 1,
+        'version': 2,
         'revision': 1,
         'missions': [
           {
@@ -322,6 +489,58 @@ void main() {
           },
         ],
       });
+    });
+
+    test('with the city list unreadable the version 1 snapshot is written, '
+        'so the course still gets its own list', () async {
+      CitiesRepo.debugIndex = null;
+      CitiesRepo.debugUnavailable = true;
+      answer = (_) => shown();
+      await space(ownLevel: 100).addCourseToSpace('q1', targetLanguage: 'es');
+      expect(jsonDecode(copyWrites().single as String)['version'], 1);
+    });
+
+    test('each Can-Do is sliced to the city most of its activities fall '
+        'under', () async {
+      answer = (_) => QuestOutline(
+        quest: const QuestPlan(
+          id: 'q1',
+          name: '',
+          description: '',
+          targetLanguage: 'es',
+          sequence: [],
+        ),
+        groups: [
+          QuestObjectiveGroup(
+            objective: const LearningObjective(id: 'lo-3', objective: ''),
+            activities: [
+              QuestActivity(
+                activityId: 'c1',
+                plan: _plan('c1'),
+                point: const LatLng(40.42, -3.70),
+              ),
+              QuestActivity(
+                activityId: 'c2',
+                plan: _plan('c2'),
+                point: const LatLng(19.35, -99.16),
+              ),
+              QuestActivity(
+                activityId: 'c3',
+                plan: _plan('c3'),
+                point: const LatLng(19.50, -99.10),
+              ),
+            ],
+          ),
+        ],
+      );
+      await space(ownLevel: 100).addCourseToSpace('q1', targetLanguage: 'es');
+      expect(jsonDecode(copyWrites().single as String)['missions'], [
+        {
+          'lo_id': 'lo-3',
+          'activity_ids': ['c2', 'c3'],
+          'city': {'name': 'Mexico City', 'lat': 19.4444, 'lng': -99.1329},
+        },
+      ]);
     });
 
     test('a non-admin writes nothing', () async {
@@ -594,6 +813,7 @@ void main() {
       FakeMatrixApi.calledEndpoints.clear();
       QuestRepo.resetOutlineCacheForTest();
       QuestRepo.debugDisplayL1 = 'en';
+      CitiesRepo.debugIndex = _cities();
       scopes = [];
       QuestRepo.debugBuildOutline = (id, {courseRoomId}) async {
         scopes.add(courseRoomId);
@@ -602,6 +822,7 @@ void main() {
       };
     });
     tearDown(() {
+      CitiesRepo.resetForTest();
       QuestRepo.debugBuildOutline = null;
       QuestRepo.debugDisplayL1 = null;
       QuestRepo.resetOutlineCacheForTest();
@@ -638,7 +859,7 @@ void main() {
       await newSpace().writeNewCourseCopy('q1');
       expect(scopes, [spaceId]);
       expect(jsonDecode(copyWrites().single as String), {
-        'version': 1,
+        'version': 2,
         'revision': 1,
         'missions': [
           {
@@ -756,3 +977,21 @@ ActivityPlanModel _plan(String id) => ActivityPlanModel(
   vocab: const [],
   activityId: id,
 );
+
+/// Two listed cities, as the CMS `cities` collection serves them.
+CityIndex _cities() => CityIndex.fromRows(const [
+  {
+    'key': 'ne:1',
+    'name': 'Mexico City',
+    'country': 'Mexico',
+    'lat': 19.4444,
+    'lng': -99.1329,
+  },
+  {
+    'key': 'ne:2',
+    'name': 'Madrid',
+    'country': 'Spain',
+    'lat': 40.4,
+    'lng': -3.6834,
+  },
+]);
