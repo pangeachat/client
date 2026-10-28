@@ -14,7 +14,8 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 
 /// Shown on web in place of the notification permission prompt, since only
 /// the app gets push. A computer gets a QR code its owner's phone can scan, in
-/// the illustration's place; a phone browser gets its own store's badge.
+/// the illustration's place; a phone browser gets its own store's badge
+/// (get-the-app.instructions.md).
 class SuggestMobileDialog extends StatelessWidget {
   const SuggestMobileDialog({super.key});
 
