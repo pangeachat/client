@@ -82,7 +82,11 @@ class CourseProgressEvent {
     xpToComplete: xpToComplete,
     canDos: {
       for (final entry in canDos.entries)
-        entry.key: entry.value.datedAfter(stored?.canDos[entry.key], now),
+        entry.key: entry.value.datedAfter(
+          stored?.canDos[entry.key],
+          now,
+          xpToComplete,
+        ),
     },
   );
 

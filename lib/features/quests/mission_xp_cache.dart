@@ -4,13 +4,19 @@ import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
+import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/quests/can_do_progress.dart';
+import 'package:fluffychat/features/quests/course_progress_room_extension.dart';
 import 'package:fluffychat/features/quests/mission_room_xp.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -68,6 +74,25 @@ class MissionXpCache extends ChangeNotifier {
   /// [practiceXpByLemma] split the same way.
   Map<String, Map<LearningSkillsEnum, int>> get skillXpByLemma =>
       _skillXpByLemma;
+
+  /// The analytics room the learner's progress records were read from, with
+  /// its full state loaded.
+  Room? _recordRoom;
+
+  /// The learner's progress record entries by course room id, then Mission
+  /// id: what keeps a recorded completion complete (quests.instructions.md,
+  /// "A completed Mission stays complete"). Read from room state on each call,
+  /// so a record written since the last refresh counts at once.
+  Map<String, Map<String, CanDoProgress>> get recordedByCourse {
+    final room = _recordRoom;
+    if (room == null) return const {};
+    return {
+      for (final courseId
+          in room.states[PangeaEventTypes.courseProgress]?.keys ??
+              const <String>[])
+        courseId: room.courseProgress(courseId)?.canDos ?? const {},
+    };
+  }
 
   bool _wired = false;
   StreamSubscription? _sub;
@@ -168,9 +193,11 @@ class MissionXpCache extends ChangeNotifier {
   /// switched language, whose construct update calls [refresh] again.
   Future<bool> _refresh() async {
     final controller = MatrixState.pangeaController;
-    final language = controller.userController.userL2?.langCodeShort;
-    if (language == null) {
+    final l2 = controller.userController.userL2;
+    final language = l2?.langCodeShort;
+    if (l2 == null || language == null) {
       _readLanguage = null;
+      _recordRoom = null;
       _publish(const {}, const {}, const {}, const {}, const {}, const {});
       return true;
     }
@@ -183,6 +210,7 @@ class MissionXpCache extends ChangeNotifier {
       // record would file them as this language's (#9678).
       if (_readLanguage != language) {
         _readLanguage = null;
+        _recordRoom = null;
         _publish(const {}, const {}, const {}, const {}, const {}, const {});
       }
       return true;
@@ -211,6 +239,9 @@ class MissionXpCache extends ChangeNotifier {
       );
       return true;
     }
+    // Read with the XP, so the surfaces that wait for the XP also wait for the
+    // records.
+    final recordRoom = await _loadedRecordRoom(analytics, l2);
     // The learner switched language while this read ran: its maps are the
     // old language's. Read again rather than publish them.
     if (controller.userController.userL2?.langCodeShort != language) {
@@ -230,6 +261,7 @@ class MissionXpCache extends ChangeNotifier {
       }
     }
     _readLanguage = language;
+    _recordRoom = recordRoom;
     _publish(
       byRoom.chat,
       byRoom.speaking,
@@ -239,6 +271,29 @@ class MissionXpCache extends ChangeNotifier {
       skillByLemma,
     );
     return true;
+  }
+
+  /// [l2]'s analytics room with its full state loaded, since the progress
+  /// records don't load with the room at startup; null when the learner has
+  /// none yet. A failed load is reported and leaves the records unread, so
+  /// completion falls back to XP alone.
+  static Future<Room?> _loadedRecordRoom(
+    AnalyticsDataService analytics,
+    LanguageModel l2,
+  ) async {
+    final room = analytics.getAnalyticsRoomLocal(l2);
+    if (room == null || !room.partial) return room;
+    try {
+      await room.postLoad();
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'analyticsRoomId': room.id},
+        level: SentryLevel.warning,
+      );
+    }
+    return room;
   }
 
   /// [uses]' room-less XP by lowercased lemma, keeping only words that net

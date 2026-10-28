@@ -2,6 +2,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/quests/can_do_progress.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -104,11 +105,14 @@ class JoinedObjectiveCache {
   /// [inScope] keeps only the courses whose progress counts — the app passes
   /// [CourseLanguageScope.courseInTargetLanguage], so a course in another
   /// language resolves no progress at all rather than its goals without its XP
-  /// (#9559). Null resolves every outline.
+  /// (#9559). Null resolves every outline. [recordedByCourse] is the
+  /// learner's progress record per joined course, which keeps a recorded
+  /// completion complete.
   ProgressionResolution resolution(
     Map<String, int> xpByActivity, {
     Iterable<CourseLoOutline> extraOutlines = const [],
     Map<String, int> practiceXpByLemma = const {},
+    Map<String, Map<String, CanDoProgress>> recordedByCourse = const {},
     bool Function(String courseId)? inScope,
   }) => resolveProgression(
     outlines: [
@@ -117,6 +121,7 @@ class JoinedObjectiveCache {
     ],
     xpByActivity: xpByActivity,
     practiceXpByLemma: practiceXpByLemma,
+    recordedByCourse: recordedByCourse,
   );
 
   /// [starsByActivity] with each course's shown activities credited across

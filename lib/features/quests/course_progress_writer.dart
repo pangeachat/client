@@ -126,6 +126,7 @@ class CourseProgressWriter {
           xpToComplete: xpToComplete,
           xpByActivity: xpByActivity,
           byActivity: byActivity,
+          recorded: stored?.canDos ?? const {},
         ),
         now: DateTime.now().toUtc(),
         appVersion: appVersion,
