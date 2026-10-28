@@ -164,8 +164,8 @@ class MissionXpCache extends ChangeNotifier {
   /// Re-read and publish. True when the maps now reflect the current
   /// language, or when nothing more is coming (no language, analytics that
   /// failed to start, a failed read) — either way the surfaces stop
-  /// shimmering; false while analytics is still starting, whose first
-  /// construct update calls [refresh] again.
+  /// shimmering; false while analytics is still starting or loading a newly
+  /// switched language, whose construct update calls [refresh] again.
   Future<bool> _refresh() async {
     final controller = MatrixState.pangeaController;
     final language = controller.userController.userL2?.langCodeShort;
@@ -177,12 +177,26 @@ class MissionXpCache extends ChangeNotifier {
     final analytics = controller.matrixState.analyticsServiceIfExists;
     // silent-ok: analytics that failed to start reports itself; the meters
     // fall back to what they hold rather than shimmering forever.
-    if (analytics != null && analytics.hasInitError) return true;
+    if (analytics != null && analytics.hasInitError) {
+      // Only a read of this language is worth holding: another language's
+      // maps would credit its rooms and words here, and the course progress
+      // record would file them as this language's (#9678).
+      if (_readLanguage != language) {
+        _readLanguage = null;
+        _publish(const {}, const {}, const {}, const {}, const {}, const {});
+      }
+      return true;
+    }
     // A read before init completes would start it from here; init's own
     // first construct update calls [refresh] once it is done.
     if (analytics == null || !analytics.initCompleter.isCompleted) {
       return false;
     }
+    // A language switch reaches here before the store re-initialises: the
+    // completed init is the old language's, and the store holds none of this
+    // one's uses yet, so a read now would publish no XP as its full read. The
+    // re-init's construct update calls [refresh] again (#9678).
+    if (analytics.initializedLanguage != language) return false;
     final List<OneConstructUse> uses;
     try {
       uses = await analytics.getUses(language);
