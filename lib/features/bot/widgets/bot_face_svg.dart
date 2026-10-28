@@ -44,12 +44,18 @@ class BotFace extends StatefulWidget {
   /// worth the cost.
   final bool useRive;
 
+  /// When false, the bot appears already in place on his resting face instead
+  /// of dropping in. For a face sitting inside other UI, such as a button,
+  /// where the drop from above reads as out of place.
+  final bool playEntrance;
+
   const BotFace({
     super.key,
     required this.width,
     required this.expression,
     this.forceColor,
     this.useRive = true,
+    this.playEntrance = true,
   });
 
   @override
@@ -203,7 +209,7 @@ class BotFaceState extends State<BotFace> {
     _applyColour();
     _animateBriefly();
     _settleTimer?.cancel();
-    if (widget.expression == BotExpression.idle) {
+    if (widget.expression == BotExpression.idle && widget.playEntrance) {
       // Enter ends in idle on its own. The re-fire is for an expression that
       // changes while Enter is still swallowing triggers.
       _settleTimer = Timer(_enterSettle, () {
@@ -211,8 +217,10 @@ class BotFaceState extends State<BotFace> {
       });
       return;
     }
-    // Otherwise the bot drops in wearing its resting face and only changes a
-    // second later, which reads as a glitch on a dialog that opens addled.
+    // Otherwise skip Enter: a face opening on an emote would drop in wearing
+    // its resting face and only change a second later, which reads as a
+    // glitch on a dialog that opens addled; and a face asked not to play its
+    // entrance appears already in place.
     skipEnter(controller.stateMachine);
     _playExpression();
     // Addled swaps on the next frame, so taking that frame now makes it the
@@ -267,8 +275,11 @@ class BotFaceState extends State<BotFace> {
       child: controller != null
           ? RiveWidget(controller: controller, fit: Fit.cover)
           // The fallback image is the resting face. A bot about to open on an
-          // emote waits out the decode empty rather than flash the wrong face.
-          : _loading && widget.expression != BotExpression.idle
+          // emote waits out the decode empty rather than flash the wrong face,
+          // and so does a recoloured one: the image can't wear the colour.
+          : _loading &&
+                (widget.expression != BotExpression.idle ||
+                    widget.forceColor != null)
           ? null
           : CachedNetworkImage(
               imageUrl: '${AppConfig.assetsBaseURL}/bot_face_neutral.png',

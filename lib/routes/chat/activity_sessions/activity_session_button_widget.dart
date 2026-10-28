@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
@@ -16,7 +16,6 @@ import 'package:fluffychat/routes/chat/calls/call_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
 
 class ActivitySessionButtons extends StatelessWidget {
@@ -417,8 +416,10 @@ class _PlayChoiceTiles extends StatelessWidget {
     required this.playWithOthers,
   });
 
-  static const double _height = 88.0;
-  static const double _phoneHeight = 80.0;
+  /// The least a tile takes; it grows (both tiles together) when a label
+  /// wraps onto a second line under the glyph.
+  static const double _minHeight = 88.0;
+  static const double _phoneMinHeight = 84.0;
 
   @override
   Widget build(BuildContext context) {
@@ -426,6 +427,8 @@ class _PlayChoiceTiles extends StatelessWidget {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
     final wide = FluffyThemes.isColumnMode(context);
+    // Both glyphs sit in the same height of slot, so the two labels line up.
+    final glyphSlot = wide ? 32.0 : 28.0;
     final style = ElevatedButton.styleFrom(
       backgroundColor: scheme.primary,
       foregroundColor: scheme.onPrimary,
@@ -437,67 +440,87 @@ class _PlayChoiceTiles extends StatelessWidget {
     final choices = [
       (
         l10n.playWithBot,
-        _BotAvatarGlyph(size: wide ? 32.0 : 26.0) as Widget,
+        _BotAvatarGlyph(size: wide ? 40.0 : 36.0, slot: glyphSlot) as Widget,
         playWithBot,
       ),
       (
         l10n.playWithOthers,
-        Icon(Icons.group_outlined, size: wide ? 28.0 : 24.0) as Widget,
+        SizedBox(
+              height: glyphSlot,
+              child: Icon(Icons.group_outlined, size: wide ? 28.0 : 24.0),
+            )
+            as Widget,
         playWithOthers,
       ),
     ];
-    return Row(
-      spacing: 12.0,
-      children: [
-        for (final (label, glyph, action) in choices)
-          Expanded(
-            child: SizedBox(
-              height: wide ? _height : _phoneHeight,
-              child: ElevatedButton(
-                style: style,
-                onPressed: action,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: wide ? 6.0 : 4.0,
-                  children: [
-                    glyph,
-                    Text(
-                      label,
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.titleSmall?.copyWith(
-                        color: scheme.onPrimary,
-                        fontWeight: FontWeight.bold,
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        spacing: 12.0,
+        children: [
+          for (final (label, glyph, action) in choices)
+            Expanded(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: wide ? _minHeight : _phoneMinHeight,
+                ),
+                child: ElevatedButton(
+                  style: style,
+                  onPressed: action,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: wide ? 6.0 : 4.0,
+                    children: [
+                      glyph,
+                      Text(
+                        label,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: theme.textTheme.titleSmall?.copyWith(
+                          color: scheme.onPrimary,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }
 
-/// The Pangea Bot as he looks as an avatar, ringed in the button's foreground
-/// colour so he stands apart from the button fill.
+/// The Pangea Bot's face on a filled `primary` tile, with no avatar circle: at
+/// tile size his silhouette is what reads as him. He stays brand purple, in
+/// the opposite shade to the tile (`inversePrimary`: light on light mode's dark
+/// tile, dark on dark mode's light one), so he never melts into the button.
 class _BotAvatarGlyph extends StatelessWidget {
   final double size;
 
-  const _BotAvatarGlyph({required this.size});
+  /// The height he takes in the tile. His animation has empty space around
+  /// him, which spills past this (unclipped) so he can be drawn at [size]
+  /// while the label under him lines up with the next tile's.
+  final double slot;
+
+  const _BotAvatarGlyph({required this.size, required this.slot});
 
   @override
-  Widget build(BuildContext context) => Avatar(
-    userId: BotName.byEnvironment,
-    size: size,
-    showPresence: false,
-    // The static face: an animated one per button isn't worth its cost.
-    useRive: false,
-    border: BorderSide(
-      color: IconTheme.of(context).color ?? Colors.white,
-      width: 1.5,
+  Widget build(BuildContext context) => SizedBox(
+    height: slot,
+    child: OverflowBox(
+      minHeight: size,
+      maxHeight: size,
+      child: BotFace(
+        width: size,
+        expression: BotExpression.idle,
+        forceColor: Theme.of(context).colorScheme.inversePrimary,
+        // He sits in a button, so he appears in place rather than dropping
+        // in.
+        playEntrance: false,
+      ),
     ),
   );
 }
