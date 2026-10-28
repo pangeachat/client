@@ -36,7 +36,7 @@ When a teacher opens a student's session from the admin dashboard, the dashboard
 - **Taking a role ends the review.** A listed room shows again once the teacher takes a role in the session, because the teacher is then a participant.
 - **A direct link still opens it.** The room is hidden from the lists, but a link to it still opens it, so the dashboard's Open chat link keeps working.
 - **Leaving a course leaves these rooms too.** Leaving a course keeps only the teacher's analytics rooms and archived activities; a review room is left with the course.
-- **Muting these rooms, and later leaving them, is the dashboard's job, not the client's.**
+- **Muting these rooms, and later leaving them, is the dashboard's or the homeserver's job, not the client's.**
 
 ## The start page mirrors the room
 
