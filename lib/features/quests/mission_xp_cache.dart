@@ -95,6 +95,10 @@ class MissionXpCache extends ChangeNotifier {
   }
 
   bool _wired = false;
+
+  /// The account analytics service the cache is wired to: the maps and the
+  /// records are that account's.
+  AnalyticsDataService? _wiredAnalytics;
   StreamSubscription? _sub;
   StreamSubscription? _languageSub;
   Future<void>? _inflight;
@@ -113,11 +117,19 @@ class MissionXpCache extends ChangeNotifier {
   /// The language the maps were last read for.
   String? _readLanguage;
 
-  /// The maps hold [language]'s XP, read in full. False before the first
-  /// read, while a re-read for a new language is pending, and for a cache
-  /// that was never wired — whose empty maps would read as zero XP.
+  /// The maps hold [language]'s XP, read in full, for the account now active.
+  /// False before the first read, while a re-read for a new language is
+  /// pending, for a cache that was never wired — whose empty maps would read
+  /// as zero XP — and once another account is active, whose progress record
+  /// the previous account's XP would otherwise be written to.
   bool hasReadFor(String language) =>
-      _wired && !_loading && _readLanguage == language;
+      _wired &&
+      !_loading &&
+      _readLanguage == language &&
+      identical(
+        MatrixState.pangeaController.matrixState.analyticsServiceIfExists,
+        _wiredAnalytics,
+      );
 
   void _setLoading(bool value) {
     if (_loading == value) return;
@@ -127,16 +139,22 @@ class MissionXpCache extends ChangeNotifier {
     scheduleMicrotask(notifyListeners);
   }
 
-  /// Subscribe to the analytics streams and take the first read. Idempotent;
-  /// every consumer calls it, and the first one to run wires the cache. A
-  /// no-op before the Pangea controller or the account's analytics service
-  /// exists (widget tests); the next consumer retries.
+  /// Subscribe to the active account's analytics streams and take the first
+  /// read. Idempotent; every consumer calls it, and the first one to run wires
+  /// the cache. Once another account is active it drops the previous one's
+  /// read ([clear]) and wires to the new one. A no-op before the Pangea
+  /// controller or the account's analytics service exists (widget tests); the
+  /// next consumer retries.
   void ensureWired() {
-    if (_wired || !MatrixState.isPangeaControllerInitialized) return;
+    if (!MatrixState.isPangeaControllerInitialized) return;
     final controller = MatrixState.pangeaController;
     // Never the trigger for analytics initialisation: the active-client
     // getter creates the service on a miss and its constructor starts init.
     final analytics = controller.matrixState.analyticsServiceIfExists;
+    if (_wired) {
+      if (identical(analytics, _wiredAnalytics)) return;
+      clear();
+    }
     if (analytics == null) return;
     _sub = StreamGroup.merge([
       analytics.updateDispatcher.constructUpdateStream.stream,
@@ -152,8 +170,33 @@ class MissionXpCache extends ChangeNotifier {
     });
     // Marked wired only once the subscription holds, so a throw above leaves
     // the next caller to try again rather than a cache that never reads.
+    _wiredAnalytics = analytics;
     _wired = true;
     refresh();
+  }
+
+  /// Drops the maps, the records and the subscriptions, which are the
+  /// account's that is signing out or no longer active. The next
+  /// [ensureWired] wires the cache to the account then active.
+  void clear() {
+    _sub?.cancel();
+    _languageSub?.cancel();
+    _sub = null;
+    _languageSub = null;
+    _wired = false;
+    _wiredAnalytics = null;
+    _readLanguage = null;
+    _recordRoom = null;
+    _loading = true;
+    _dirty = false;
+    _creditedXpByRoom = const {};
+    _chatXpByRoom = const {};
+    _speakingXpByRoom = const {};
+    _practiceXpByRoom = const {};
+    _practiceXpByLemma = const {};
+    _skillXpByRoom = const {};
+    _skillXpByLemma = const {};
+    scheduleMicrotask(notifyListeners);
   }
 
   /// Re-read the learner's uses and regroup. A refresh asked for while one is
@@ -202,6 +245,8 @@ class MissionXpCache extends ChangeNotifier {
       return true;
     }
     final analytics = controller.matrixState.analyticsServiceIfExists;
+    // Another account is active: its read is the next [ensureWired]'s.
+    if (!identical(analytics, _wiredAnalytics)) return false;
     // silent-ok: analytics that failed to start reports itself; the meters
     // fall back to what they hold rather than shimmering forever.
     if (analytics != null && analytics.hasInitError) {
@@ -248,6 +293,8 @@ class MissionXpCache extends ChangeNotifier {
       _dirty = true;
       return false;
     }
+    // The account changed while this read ran: it is the previous account's.
+    if (!identical(analytics, _wiredAnalytics)) return false;
     final byRoom = MissionRoomXp.of(uses);
     final byLemma = practiceXpByLemmaOf(uses);
     final skillByLemma = <String, Map<LearningSkillsEnum, int>>{};

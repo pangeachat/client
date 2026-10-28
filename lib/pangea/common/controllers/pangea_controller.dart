@@ -14,6 +14,7 @@ import 'package:fluffychat/features/keyboards/keyboard_prompt_local_store.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/notifications/notifications_client_extension.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/features/user/pangea_push_rules_extension.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
@@ -119,6 +120,10 @@ class PangeaController {
     // account's first discovery pass — which never runs while it has no course
     // (#8895).
     DiscoveredSessionsCache.instance.clear();
+    // And the Mission XP cache: the next account's surfaces would show this
+    // one's XP and records, and its progress record would be written from them
+    // (#9681).
+    MissionXpCache.instance.clear();
     _languageSubscription?.cancel();
     _settingsSubscription?.cancel();
     _joinSpaceSubscription?.cancel();
