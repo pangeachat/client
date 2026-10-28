@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} તમારી શીખવાની પ્રગતિ જોઈ શકશે નહીં.",
     "centralCourseOfferBody": "આ {language} શીખનારાઓ માટે પાંગિયાનો કોર્સ છે. તેના સભ્યો તમારું નામ અને પ્રોફાઇલ જોઈ શકે છે.",
     "centralCourseOfferTitle": "{course} માં જોડાઓ?",
-    "makeMyOwnCourseInstead": "તેના બદલે મારો પોતાનો કોર્સ બનાવો"
+    "makeMyOwnCourseInstead": "તેના બદલે મારો પોતાનો કોર્સ બનાવો",
+    "suggestMobileSignInSameAccount": "પછી આ એકાઉન્ટ વડે ઍપમાં સાઇન ઇન કરો."
 }

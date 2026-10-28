@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} چیتر ناتوانێت پێشکەوتنی فێربوونەکەت ببینێت.",
     "centralCourseOfferBody": "ئەمە خولی پانگایە بۆ فێرخوازانی {language}. ئەندامەکانی دەتوانن ناوی تۆ و پڕۆفایلەکەت ببینن.",
     "centralCourseOfferTitle": "بەشداری {course} بکەم؟",
-    "makeMyOwnCourseInstead": "لەبری ئەوە کۆرسی خۆم دروست بکەم"
+    "makeMyOwnCourseInstead": "لەبری ئەوە کۆرسی خۆم دروست بکەم",
+    "suggestMobileSignInSameAccount": "پاشان بەم هەژمارە بچۆ ژوورەوە بۆ ئەپەکە."
 }

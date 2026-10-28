@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} sadzakwanitsanso kuona mmene mukuyendera pakuphunzira.",
     "centralCourseOfferBody": "Ndi kosi ya Pangea kwa ophunzira a {language}. Mamembala ake akhoza kuona dzina lanu ndi mbiri yanu.",
     "centralCourseOfferTitle": "Mulowe na {course}?",
-    "makeMyOwnCourseInstead": "Ndipange kursu yanga"
+    "makeMyOwnCourseInstead": "Ndipange kursu yanga",
+    "suggestMobileSignInSameAccount": "Kenako lowani mu pulogalamu ndi akaunti iyi."
 }

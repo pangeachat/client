@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} ma awoodi doono inuu arko horumarkaaga waxbarasho.",
     "centralCourseOfferBody": "Waa koorsada Pangea ee loogu talagalay barayaasha {language}. Xubnaheeda waxay arki karaan magacaaga iyo astaantaada.",
     "centralCourseOfferTitle": "Ku biir {course}?",
-    "makeMyOwnCourseInstead": "Anigu waxaan samaysanayaa koorsadayda"
+    "makeMyOwnCourseInstead": "Anigu waxaan samaysanayaa koorsadayda",
+    "suggestMobileSignInSameAccount": "Kadibna ku gal app-ka akoonkan."
 }

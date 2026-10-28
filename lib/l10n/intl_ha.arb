@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} ba zai ƙara iya ganin ci gaban koyon ka ba.",
     "centralCourseOfferBody": "Darasi ne na Pangea ga masu koyon harshen {language}. Membobinta za su iya ganin sunanka da bayanan martabarka.",
     "centralCourseOfferTitle": "Shiga {course}?",
-    "makeMyOwnCourseInstead": "Ƙirƙiri kwas na da kaina"
+    "makeMyOwnCourseInstead": "Ƙirƙiri kwas na da kaina",
+    "suggestMobileSignInSameAccount": "Sannan ka shiga cikin manhajar da wannan asusun."
 }

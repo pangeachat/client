@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name}-ն այլևս չի կարողանա տեսնել ձեր ուսման առաջընթացը։",
     "centralCourseOfferBody": "Սա Pangea-ի դասընթացն է {language} սովորողների համար։ Նրա անդամները կարող են տեսնել ձեր անունը և պրոֆիլը։",
     "centralCourseOfferTitle": "Միանա՞լ {course}-ին",
-    "makeMyOwnCourseInstead": "Փոխարենը ստեղծել իմ սեփական դասընթացը"
+    "makeMyOwnCourseInstead": "Փոխարենը ստեղծել իմ սեփական դասընթացը",
+    "suggestMobileSignInSameAccount": "Այնուհետև մուտք գործեք հավելված այս հաշվով։"
 }

@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} ora bakal bisa ndeleng kemajuan sinau sampeyan maneh.",
     "centralCourseOfferBody": "Iki kursus Pangea kanggo para siswa {language}. Anggotane bisa ndeleng jeneng lan profil sampeyan.",
     "centralCourseOfferTitle": "Gabung {course}?",
-    "makeMyOwnCourseInstead": "Gawe kursusku dhewe wae"
+    "makeMyOwnCourseInstead": "Gawe kursusku dhewe wae",
+    "suggestMobileSignInSameAccount": "Banjur mlebu menyang aplikasi nganggo akun iki."
 }

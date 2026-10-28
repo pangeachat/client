@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} agaghịzi enwe ike ịhụ ọganihu mmụta gị.",
     "centralCourseOfferBody": "Ọ bụ ọmụmụ ihe Pangea maka ndị na-amụ {language}. Ndị otu ya nwere ike ịhụ aha gị na profaịlụ gị.",
     "centralCourseOfferTitle": "Banye {course}?",
-    "makeMyOwnCourseInstead": "Mee nke m kama"
+    "makeMyOwnCourseInstead": "Mee nke m kama",
+    "suggestMobileSignInSameAccount": "Banyezie na ngwa ahụ na akaụntụ a."
 }

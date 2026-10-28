@@ -8281,5 +8281,6 @@
     "removeAnalyticsAccessDesc": "{name} ya no podrá ver tu progreso de aprendizaje.",
     "centralCourseOfferBody": "Es el curso de Pangea para estudiantes de {language}. Sus miembros pueden ver tu nombre y perfil.",
     "centralCourseOfferTitle": "¿Unirse a {course}?",
-    "makeMyOwnCourseInstead": "Crear mi propio curso"
+    "makeMyOwnCourseInstead": "Crear mi propio curso",
+    "suggestMobileSignInSameAccount": "Luego inicia sesión en la aplicación con esta cuenta."
 }

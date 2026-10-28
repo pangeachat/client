@@ -10994,5 +10994,6 @@
     "removeAnalyticsAccessDesc": "{name} ne bo več mogel videti vašega učnega napredka.",
     "centralCourseOfferBody": "To je Pangein tečaj za učence {language}. Njegovi člani lahko vidijo vaše ime in profil.",
     "centralCourseOfferTitle": "Se pridružiš tečaju {course}?",
-    "makeMyOwnCourseInstead": "Namesto tega ustvari svoj tečaj"
+    "makeMyOwnCourseInstead": "Namesto tega ustvari svoj tečaj",
+    "suggestMobileSignInSameAccount": "Nato se v aplikacijo prijavite s tem računom."
 }

@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} дигар наметавонад пешрафти омӯзиши шуморо бубинад.",
     "centralCourseOfferBody": "Ин курси Pangea барои омӯзандагони забони {language} аст. Аъзоёни он метавонанд ном ва профили шуморо бубинанд.",
     "centralCourseOfferTitle": "Ба {course} ҳамроҳ шавед?",
-    "makeMyOwnCourseInstead": "Ба ҷои ин курси худро созед"
+    "makeMyOwnCourseInstead": "Ба ҷои ин курси худро созед",
+    "suggestMobileSignInSameAccount": "Сипас бо ин ҳисоб ба барнома ворид шавед."
 }

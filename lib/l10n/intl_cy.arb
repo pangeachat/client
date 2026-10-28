@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "Ni fydd {name} bellach yn gallu gweld eich cynnydd dysgu.",
     "centralCourseOfferBody": "Dyma gwrs Pangea ar gyfer dysgwyr {language}. Gall ei aelodau weld eich enw a'ch proffil.",
     "centralCourseOfferTitle": "Ymunwch â {course}?",
-    "makeMyOwnCourseInstead": "Creu fy nghwrs fy hun yn lle hynny"
+    "makeMyOwnCourseInstead": "Creu fy nghwrs fy hun yn lle hynny",
+    "suggestMobileSignInSameAccount": "Yna mewngofnodwch i'r ap gyda'r cyfrif hwn."
 }

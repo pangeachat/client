@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} හට තවදුරටත් ඔබේ ඉගෙනීමේ ප්‍රගතිය දැකීමට නොහැකි වනු ඇත.",
     "centralCourseOfferBody": "එය {language} ඉගෙන ගන්නන් සඳහා වන Pangea පාඨමාලාවයි. එහි සාමාජිකයින්ට ඔබේ නම සහ පැතිකඩ දැකිය හැක.",
     "centralCourseOfferTitle": "{course} හා සම්බන්ධ වෙනවාද?",
-    "makeMyOwnCourseInstead": "ඒ වෙනුවට මගේම පාඨමාලාවක් සාදන්න"
+    "makeMyOwnCourseInstead": "ඒ වෙනුවට මගේම පාඨමාලාවක් සාදන්න",
+    "suggestMobileSignInSameAccount": "ඉන්පසු මෙම ගිණුමෙන් යෙදුමට පුරනය වන්න."
 }

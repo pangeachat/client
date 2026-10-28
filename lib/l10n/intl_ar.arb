@@ -10355,5 +10355,6 @@
     "removeAnalyticsAccessDesc": "لن يتمكن {name} بعد الآن من رؤية تقدمك في التعلم.",
     "centralCourseOfferBody": "إنها دورة بانجيا لمتعلمي {language}. يمكن لأعضائها رؤية اسمك وملفك الشخصي.",
     "centralCourseOfferTitle": "هل تريد الانضمام إلى {course}؟",
-    "makeMyOwnCourseInstead": "إنشاء دورتي التدريبية بدلاً من ذلك"
+    "makeMyOwnCourseInstead": "إنشاء دورتي التدريبية بدلاً من ذلك",
+    "suggestMobileSignInSameAccount": "ثم سجّل الدخول إلى التطبيق باستخدام هذا الحساب."
 }

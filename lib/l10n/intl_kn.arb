@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} ಇನ್ನು ಮುಂದೆ ನಿಮ್ಮ ಕಲಿಕೆಯ ಪ್ರಗತಿಯನ್ನು ನೋಡಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ.",
     "centralCourseOfferBody": "ಇದು {language} ಕಲಿಯುವವರಿಗಾಗಿ ಇರುವ ಪ್ಯಾಂಗಿಯಾದ ಕೋರ್ಸ್ ಆಗಿದೆ. ಇದರ ಸದಸ್ಯರು ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಪ್ರೊಫೈಲ್ ಅನ್ನು ನೋಡಬಹುದು.",
     "centralCourseOfferTitle": "{course} ಸೇರಬೇಕೆ?",
-    "makeMyOwnCourseInstead": "ಬದಲಿಗೆ ನನ್ನದೇ ಆದ ಕೋರ್ಸ್ ರಚಿಸಿ"
+    "makeMyOwnCourseInstead": "ಬದಲಿಗೆ ನನ್ನದೇ ಆದ ಕೋರ್ಸ್ ರಚಿಸಿ",
+    "suggestMobileSignInSameAccount": "ನಂತರ ಈ ಖಾತೆಯೊಂದಿಗೆ ಅಪ್ಲಿಕೇಶನ್‌ಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ."
 }

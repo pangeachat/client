@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} wäert däi Léierfortschrëtt net méi gesinn.",
     "centralCourseOfferBody": "Et ass de Pangea-Cours fir {language}-Léierpersonal. D'Membere kënnen Ären Numm an Äre Profil gesinn.",
     "centralCourseOfferTitle": "Bei {course} matmaachen?",
-    "makeMyOwnCourseInstead": "Mäin eegene Cours erstellen"
+    "makeMyOwnCourseInstead": "Mäin eegene Cours erstellen",
+    "suggestMobileSignInSameAccount": "Mellt Iech dann an der App mat dësem Kont un."
 }

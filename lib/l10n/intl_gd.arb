@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "Cha bhith {name} comasach air an adhartas ionnsachaidh agad fhaicinn tuilleadh.",
     "centralCourseOfferBody": "Is e cùrsa Pangea a th' ann do luchd-ionnsachaidh {language}. Chì na buill d' ainm agus do phròifil.",
     "centralCourseOfferTitle": "Thig a-steach do {course}?",
-    "makeMyOwnCourseInstead": "Cruthaich mo chùrsa fhèin an àite sin"
+    "makeMyOwnCourseInstead": "Cruthaich mo chùrsa fhèin an àite sin",
+    "suggestMobileSignInSameAccount": "An uairsin clàraich a-steach don aplacaid leis a’ chunntas seo."
 }

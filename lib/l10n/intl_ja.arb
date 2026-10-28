@@ -10818,5 +10818,6 @@
     "removeAnalyticsAccessDesc": "{name}はあなたの学習進捗状況を閲覧できなくなります。",
     "centralCourseOfferBody": "これは{language}学習者向けのPangeaのコースです。メンバーはあなたの名前とプロフィールを見ることができます。",
     "centralCourseOfferTitle": "{course}に参加しますか？",
-    "makeMyOwnCourseInstead": "代わりに自分でコースを作成する"
+    "makeMyOwnCourseInstead": "代わりに自分でコースを作成する",
+    "suggestMobileSignInSameAccount": "その後、このアカウントでアプリにサインインしてください。"
 }

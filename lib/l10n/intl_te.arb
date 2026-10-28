@@ -10999,5 +10999,6 @@
     "removeAnalyticsAccessDesc": "{name} మీ అభ్యాస పురోగతిని ఇకపై చూడలేరు.",
     "centralCourseOfferBody": "ఇది {language} నేర్చుకునే వారి కోసం పాంగేయా కోర్సు. దీని సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
     "centralCourseOfferTitle": "{course}లో చేరతారా?",
-    "makeMyOwnCourseInstead": "బదులుగా నా స్వంత కోర్సును సృష్టించు"
+    "makeMyOwnCourseInstead": "బదులుగా నా స్వంత కోర్సును సృష్టించు",
+    "suggestMobileSignInSameAccount": "ఆపై ఈ ఖాతాతో యాప్‌లోకి సైన్ ఇన్ చేయండి."
 }

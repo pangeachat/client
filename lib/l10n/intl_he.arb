@@ -10963,5 +10963,6 @@
     "removeAnalyticsAccessDesc": "{name} לא יוכל/תוכל יותר לראות את התקדמות הלמידה שלך.",
     "centralCourseOfferBody": "זהו הקורס של Pangea ללומדי {language}. חברי הקורס יכולים לראות את שמך ואת הפרופיל שלך.",
     "centralCourseOfferTitle": "להצטרף ל{course}?",
-    "makeMyOwnCourseInstead": "ליצור קורס משלי במקום"
+    "makeMyOwnCourseInstead": "ליצור קורס משלי במקום",
+    "suggestMobileSignInSameAccount": "לאחר מכן היכנס לאפליקציה עם חשבון זה."
 }

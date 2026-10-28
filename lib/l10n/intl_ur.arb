@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} اب آپ کی سیکھنے کی پیشرفت نہیں دیکھ پائے گا۔",
     "centralCourseOfferBody": "یہ {language} سیکھنے والوں کے لیے Pangea کا کورس ہے۔ اس کے اراکین آپ کا نام اور پروفائل دیکھ سکتے ہیں۔",
     "centralCourseOfferTitle": "کیا {course} میں شامل ہوں؟",
-    "makeMyOwnCourseInstead": "اس کے بجائے اپنا کورس خود بناؤں"
+    "makeMyOwnCourseInstead": "اس کے بجائے اپنا کورس خود بناؤں",
+    "suggestMobileSignInSameAccount": "پھر اس اکاؤنٹ سے ایپ میں سائن ان کریں۔"
 }

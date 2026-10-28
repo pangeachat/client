@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} तुमची शिकण्याची प्रगती यापुढे पाहू शकणार नाही.",
     "centralCourseOfferBody": "हा {language} शिकणाऱ्यांसाठी पँजियाचा कोर्स आहे. त्याचे सदस्य तुमचे नाव आणि प्रोफाइल पाहू शकतात.",
     "centralCourseOfferTitle": "{course} मध्ये सामील व्हायचे?",
-    "makeMyOwnCourseInstead": "त्याऐवजी माझा स्वतःचा कोर्स तयार करा"
+    "makeMyOwnCourseInstead": "त्याऐवजी माझा स्वतःचा कोर्स तयार करा",
+    "suggestMobileSignInSameAccount": "नंतर या खात्यासह ॲपमध्ये साइन इन करा."
 }

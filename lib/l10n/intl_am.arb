@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} ከእንግዲህ የመማር ሂደትዎን ማየት አይችልም።",
     "centralCourseOfferBody": "ይህ የፓንጋያ ኮርስ ለ{language} ተማሪዎች ነው። አባላቱ የእርስዎን ስም እና መገለጫ ማየት ይችላሉ።",
     "centralCourseOfferTitle": "{course}ን ይቀላቀላሉ?",
-    "makeMyOwnCourseInstead": "በምትኩ የራሴን ኮርስ ልፍጠር"
+    "makeMyOwnCourseInstead": "በምትኩ የራሴን ኮርስ ልፍጠር",
+    "suggestMobileSignInSameAccount": "ከዚያም በዚህ መለያ ወደ መተግበሪያው ይግቡ።"
 }

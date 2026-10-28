@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} повеќе нема да може да го гледа вашиот напредок во учењето.",
     "centralCourseOfferBody": "Ова е курсот на Pangea за ученици по {language}. Неговите членови можат да го видат вашето име и профил.",
     "centralCourseOfferTitle": "Да се приклучиш на {course}?",
-    "makeMyOwnCourseInstead": "Направи си свој курс"
+    "makeMyOwnCourseInstead": "Направи си свој курс",
+    "suggestMobileSignInSameAccount": "Потоа најавете се во апликацијата со оваа сметка."
 }

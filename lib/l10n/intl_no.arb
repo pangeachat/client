@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} vil ikke lenger kunne se læringsfremgangen din.",
     "centralCourseOfferBody": "Det er Pangeas kurs for {language}-elever. Medlemmene kan se navnet og profilen din.",
     "centralCourseOfferTitle": "Bli med på {course}?",
-    "makeMyOwnCourseInstead": "Lag mitt eget kurs i stedet"
+    "makeMyOwnCourseInstead": "Lag mitt eget kurs i stedet",
+    "suggestMobileSignInSameAccount": "Logg deretter på appen med denne kontoen."
 }

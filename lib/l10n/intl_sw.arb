@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} hataweza tena kuona maendeleo yako ya kujifunza.",
     "centralCourseOfferBody": "Hii ni kozi ya Pangea kwa wanafunzi wa {language}. Wanachama wake wanaweza kuona jina na wasifu wako.",
     "centralCourseOfferTitle": "Jiunge na {course}?",
-    "makeMyOwnCourseInstead": "Badala yake, nitengeneze kozi yangu mwenyewe"
+    "makeMyOwnCourseInstead": "Badala yake, nitengeneze kozi yangu mwenyewe",
+    "suggestMobileSignInSameAccount": "Kisha ingia kwenye programu ukitumia akaunti hii."
 }

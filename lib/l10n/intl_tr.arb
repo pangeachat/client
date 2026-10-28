@@ -10350,5 +10350,6 @@
     "removeAnalyticsAccessDesc": "{name} artık öğrenme ilerlemenizi göremeyecek.",
     "centralCourseOfferBody": "Bu, Pangea'nın {language} öğrenenler için kursu. Üyeleri adını ve profilini görebilir.",
     "centralCourseOfferTitle": "{course} kursuna katılmak ister misin?",
-    "makeMyOwnCourseInstead": "Bunun yerine kendi kursumu oluştur"
+    "makeMyOwnCourseInstead": "Bunun yerine kendi kursumu oluştur",
+    "suggestMobileSignInSameAccount": "Ardından bu hesapla uygulamaya giriş yapın."
 }

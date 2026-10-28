@@ -10089,5 +10089,6 @@
     "removeAnalyticsAccessDesc": "{name} ei enää näe oppimisesi edistymistä.",
     "centralCourseOfferBody": "Tämä on Pangean kurssi {language}-kielen opiskelijoille. Kurssin jäsenet näkevät nimesi ja profiilisi.",
     "centralCourseOfferTitle": "Liity kurssille {course}?",
-    "makeMyOwnCourseInstead": "Luo oma kurssi sen sijaan"
+    "makeMyOwnCourseInstead": "Luo oma kurssi sen sijaan",
+    "suggestMobileSignInSameAccount": "Kirjaudu sitten sovellukseen tällä tilillä."
 }

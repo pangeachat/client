@@ -10677,5 +10677,6 @@
     "removeAnalyticsAccessDesc": "{name} আর আপনার শেখার অগ্রগতি দেখতে পারবে না।",
     "centralCourseOfferBody": "এটি {language} শিক্ষার্থীদের জন্য প্যানজিয়ার কোর্স। এর সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।",
     "centralCourseOfferTitle": "{course}-এ যোগ দেবেন?",
-    "makeMyOwnCourseInstead": "এর বদলে আমার নিজের কোর্স তৈরি করি"
+    "makeMyOwnCourseInstead": "এর বদলে আমার নিজের কোর্স তৈরি করি",
+    "suggestMobileSignInSameAccount": "তারপর এই অ্যাকাউন্ট দিয়ে অ্যাপে সাইন ইন করুন।"
 }

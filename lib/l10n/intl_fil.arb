@@ -10909,5 +10909,6 @@
     "removeAnalyticsAccessDesc": "Hindi na makikita ni {name} ang iyong progreso sa pag-aaral.",
     "centralCourseOfferBody": "Ito ang kurso ng Pangea para sa mga nag-aaral ng {language}. Makikita ng mga miyembro nito ang iyong pangalan at profile.",
     "centralCourseOfferTitle": "Sumali sa {course}?",
-    "makeMyOwnCourseInstead": "Gumawa na lang ng sarili kong kurso"
+    "makeMyOwnCourseInstead": "Gumawa na lang ng sarili kong kurso",
+    "suggestMobileSignInSameAccount": "Pagkatapos, mag-sign in sa app gamit ang account na ito."
 }

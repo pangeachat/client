@@ -2514,5 +2514,6 @@
     "removeAnalyticsAccessDesc": "{name} sal nie meer jou leervordering kan sien nie.",
     "centralCourseOfferBody": "Dit is Pangea se kursus vir {language}-leerders. Die lede daarvan kan jou naam en profiel sien.",
     "centralCourseOfferTitle": "Sluit aan by {course}?",
-    "makeMyOwnCourseInstead": "Maak eerder my eie kursus"
+    "makeMyOwnCourseInstead": "Maak eerder my eie kursus",
+    "suggestMobileSignInSameAccount": "Meld dan by die toepassing aan met hierdie rekening."
 }

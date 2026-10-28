@@ -10781,5 +10781,6 @@
     "removeAnalyticsAccessDesc": "{name} nu va mai putea să-ți vadă progresul de învățare.",
     "centralCourseOfferBody": "Este cursul Pangea pentru cursanții de {language}. Membrii săi îți pot vedea numele și profilul.",
     "centralCourseOfferTitle": "Te alături la {course}?",
-    "makeMyOwnCourseInstead": "Creez propriul curs"
+    "makeMyOwnCourseInstead": "Creez propriul curs",
+    "suggestMobileSignInSameAccount": "Apoi conectați-vă la aplicație cu acest cont."
 }
