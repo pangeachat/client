@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} ले अब तपाईंको सिकाइ प्रगति हेर्न सक्ने छैन।",
     "centralCourseOfferBody": "यो {language} सिक्नेहरूका लागि पाङ्गियाको कोर्स हो। यसका सदस्यहरूले तपाईंको नाम र प्रोफाइल हेर्न सक्छन्।",
     "centralCourseOfferTitle": "{course} मा सामेल हुने?",
-    "makeMyOwnCourseInstead": "बरु म आफ्नै कोर्स बनाउँछु"
+    "makeMyOwnCourseInstead": "बरु म आफ्नै कोर्स बनाउँछु",
+    "suggestMobileScanQrCode": "आफ्नो फोनको क्यामेराले स्क्यान गर्नुहोस्",
+    "suggestMobileSignInSameAccount": "त्यसपछि यो खाताबाट एपमा साइन इन गर्नुहोस्।"
 }

@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} мындан ары сиздин окуу прогрессиңизди көрө албайт.",
     "centralCourseOfferBody": "Бул {language} үйрөнүүчүлөр үчүн Pangea курсу. Анын мүчөлөрү сиздин атыңызды жана профилиңизди көрө алышат.",
     "centralCourseOfferTitle": "{course} курсуна кошуласызбы?",
-    "makeMyOwnCourseInstead": "Анын ордуна өзүмдүн курсумду түзөм"
+    "makeMyOwnCourseInstead": "Анын ордуна өзүмдүн курсумду түзөм",
+    "suggestMobileScanQrCode": "Телефонуңуздун камерасы менен сканерлеңиз",
+    "suggestMobileSignInSameAccount": "Андан кийин бул аккаунт менен колдонмого кириңиз."
 }

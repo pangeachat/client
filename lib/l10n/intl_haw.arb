@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "ʻAʻole hiki iā {name} ke ʻike hou i kou holomua aʻo.",
     "centralCourseOfferBody": "ʻO ia ka papa a Pangea no ka poʻe aʻo {language}. Hiki i kona mau lālā ke ʻike i kou inoa a me kou ʻaoʻao.",
     "centralCourseOfferTitle": "E hui pū me {course}?",
-    "makeMyOwnCourseInstead": "E hana i kaʻu papa ponoʻī ma kahi"
+    "makeMyOwnCourseInstead": "E hana i kaʻu papa ponoʻī ma kahi",
+    "suggestMobileScanQrCode": "E nānā me ka pahupaʻiwikiō o kāu kelepona",
+    "suggestMobileSignInSameAccount": "A laila, e ʻeʻe i loko o ka polokalamu me kēia moʻokāki."
 }

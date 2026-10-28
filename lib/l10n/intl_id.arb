@@ -10125,5 +10125,7 @@
     "removeAnalyticsAccessDesc": "{name} tidak akan lagi dapat melihat progres belajar Anda.",
     "centralCourseOfferBody": "Ini adalah kursus Pangea untuk pembelajar {language}. Anggotanya dapat melihat nama dan profil Anda.",
     "centralCourseOfferTitle": "Gabung {course}?",
-    "makeMyOwnCourseInstead": "Buat kursus saya sendiri saja"
+    "makeMyOwnCourseInstead": "Buat kursus saya sendiri saja",
+    "suggestMobileScanQrCode": "Pindai dengan kamera ponsel Anda",
+    "suggestMobileSignInSameAccount": "Lalu masuk ke aplikasi dengan akun ini."
 }

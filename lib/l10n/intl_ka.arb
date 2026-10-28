@@ -10949,5 +10949,7 @@
     "removeAnalyticsAccessDesc": "{name} ვეღარ შეძლებს თქვენი სწავლის პროგრესის ნახვას.",
     "centralCourseOfferBody": "ეს არის Pangea-ს კურსი {language} ენის შემსწავლელებისთვის. მისი წევრები ხედავენ თქვენს სახელსა და პროფილს.",
     "centralCourseOfferTitle": "შეუერთდეთ {course}-ს?",
-    "makeMyOwnCourseInstead": "სამაგიეროდ შევქმნა ჩემი კურსი"
+    "makeMyOwnCourseInstead": "სამაგიეროდ შევქმნა ჩემი კურსი",
+    "suggestMobileScanQrCode": "დაასკანირეთ თქვენი ტელეფონის კამერით",
+    "suggestMobileSignInSameAccount": "შემდეგ შედით აპლიკაციაში ამ ანგარიშით."
 }

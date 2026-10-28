@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} ຈະບໍ່ສາມາດເຫັນຄວາມຄືບໜ້າໃນການຮຽນຮູ້ຂອງທ່ານໄດ້ອີກຕໍ່ໄປ.",
     "centralCourseOfferBody": "ມັນແມ່ນຫຼັກສູດຂອງ Pangea ສຳລັບຜູ້ຮຽນພາສາ {language}. ສະມາຊິກສາມາດເຫັນຊື່ ແລະ ໂປຣໄຟລ໌ຂອງທ່ານໄດ້.",
     "centralCourseOfferTitle": "ເຂົ້າຮ່ວມ {course}?",
-    "makeMyOwnCourseInstead": "ສ້າງຫຼັກສູດຂອງຂ້ອຍເອງແທນ"
+    "makeMyOwnCourseInstead": "ສ້າງຫຼັກສູດຂອງຂ້ອຍເອງແທນ",
+    "suggestMobileScanQrCode": "ສະແກນດ້ວຍກ້ອງໂທລະສັບຂອງທ່ານ",
+    "suggestMobileSignInSameAccount": "ຈາກນັ້ນເຂົ້າສູ່ລະບົບແອັບດ້ວຍບັນຊີນີ້."
 }

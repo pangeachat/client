@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} nuk do të mund të shohë më progresin tuaj të të nxënit.",
     "centralCourseOfferBody": "Është kursi i Pangeas për nxënësit e gjuhës {language}. Anëtarët e tij mund të shohin emrin dhe profilin tënd.",
     "centralCourseOfferTitle": "Bashkohuni me {course}?",
-    "makeMyOwnCourseInstead": "Krijo kursin tim"
+    "makeMyOwnCourseInstead": "Krijo kursin tim",
+    "suggestMobileScanQrCode": "Skano me kamerën e telefonit tuaj",
+    "suggestMobileSignInSameAccount": "Më pas, kyçuni në aplikacion me këtë llogari."
 }

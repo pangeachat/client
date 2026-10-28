@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} yuav tsis pom koj txoj kev kawm ntxiv lawm.",
     "centralCourseOfferBody": "Nws yog Pangea cov chav kawm rau cov neeg kawm lus {language}. Nws cov tswv cuab tuaj yeem pom koj lub npe thiab profile.",
     "centralCourseOfferTitle": "Koj puas xav koom {course}?",
-    "makeMyOwnCourseInstead": "Kuv xav tsim kuv tus kheej qhov kev kawm"
+    "makeMyOwnCourseInstead": "Kuv xav tsim kuv tus kheej qhov kev kawm",
+    "suggestMobileScanQrCode": "Luam theej duab nrog koj lub xov tooj lub koob yees duab",
+    "suggestMobileSignInSameAccount": "Tom qab ntawd nkag mus rau hauv lub app nrog tus account no."
 }

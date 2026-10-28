@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} nɔ go ebul si yu lɔn prɔgrɛs igen.",
     "centralCourseOfferBody": "Na Pangea in kõs fɔ {language} lɔna dɛn. In mɛmba dɛn go ebul si yu nem ɛn yu profil.",
     "centralCourseOfferTitle": "Jɔyn {course}?",
-    "makeMyOwnCourseInstead": "Mek mi yon kos insted"
+    "makeMyOwnCourseInstead": "Mek mi yon kos insted",
+    "suggestMobileScanQrCode": "Skán wit yu fɔn in kamera",
+    "suggestMobileSignInSameAccount": "Dɛn sayn in to di ap wit dis akaunt."
 }

@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} sil dyn learfoarútgong net mear sjen kinne.",
     "centralCourseOfferBody": "It is de kursus fan Pangea foar {language}-learders. De leden kinne jo namme en profyl sjen.",
     "centralCourseOfferTitle": "Meidwaan oan {course}?",
-    "makeMyOwnCourseInstead": "Myn eigen kursus meitsje"
+    "makeMyOwnCourseInstead": "Myn eigen kursus meitsje",
+    "suggestMobileScanQrCode": "Scan mei de kamera fan dyn telefoan",
+    "suggestMobileSignInSameAccount": "Meld dy dan oan by de app mei dit akkount."
 }

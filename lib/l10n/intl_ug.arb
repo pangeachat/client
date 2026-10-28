@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} ئارتقا قايتىش تەرەققىياتىڭىزنى كۆرەلمەيدۇ.",
     "centralCourseOfferBody": "بۇ پانگېيانىڭ {language} ئۆگەنگۈچىلەر ئۈچۈن تەييارلىغان دەرسى. ئۇنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ.",
     "centralCourseOfferTitle": "{course}غا قاتناشامسىز؟",
-    "makeMyOwnCourseInstead": "ئۆزۈمنىڭ دەرسلىكىنى قۇراشتۇرىمەن"
+    "makeMyOwnCourseInstead": "ئۆزۈمنىڭ دەرسلىكىنى قۇراشتۇرىمەن",
+    "suggestMobileScanQrCode": "تېلېفونىڭىزنىڭ كامېراسى بىلەن سىكاننېرلاڭ",
+    "suggestMobileSignInSameAccount": "ئاندىن بۇ ھېسابات ئارقىلىق ئەپكە كىرىڭ."
 }

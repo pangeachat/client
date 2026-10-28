@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} به نور ونه شي کولی ستاسو د زده کړې پرمختګ وګوري.",
     "centralCourseOfferBody": "دا د {language} زده کونکو لپاره د پانګیا کورس دی. د دې غړي کولی شي ستاسو نوم او پروفایل وګوري.",
     "centralCourseOfferTitle": "{course} سره یوځای شئ؟",
-    "makeMyOwnCourseInstead": "پرځای یې خپل کورس جوړ کړئ"
+    "makeMyOwnCourseInstead": "پرځای یې خپل کورس جوړ کړئ",
+    "suggestMobileScanQrCode": "د خپل تلیفون کیمرې سره سکین کړئ",
+    "suggestMobileSignInSameAccount": "بیا په دې حساب سره اپلیکیشن ته ننوځئ."
 }

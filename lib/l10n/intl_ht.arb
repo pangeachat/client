@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} p'ap kapab wè pwogrè aprantisaj ou ankò.",
     "centralCourseOfferBody": "Se kou Pangea a pou moun k ap aprann {language}. Manm li yo ka wè non w ak pwofil ou.",
     "centralCourseOfferTitle": "Antre nan {course}?",
-    "makeMyOwnCourseInstead": "Kreye pwòp kou pa m pito"
+    "makeMyOwnCourseInstead": "Kreye pwòp kou pa m pito",
+    "suggestMobileScanQrCode": "Fè eskanè ak kamera telefòn ou",
+    "suggestMobileSignInSameAccount": "Apre sa, konekte nan aplikasyon an avèk kont sa a."
 }

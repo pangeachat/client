@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} haachakwanisi kuona kufambira mberi kwako mukudzidza.",
     "centralCourseOfferBody": "Iyi ikosi yePangea yevadzidzi ve {language}. Nhengo dzayo dzinogona kuona zita rako neprofile yako.",
     "centralCourseOfferTitle": "Pinda mu {course}?",
-    "makeMyOwnCourseInstead": "Gadzira kosi yangu pachangu"
+    "makeMyOwnCourseInstead": "Gadzira kosi yangu pachangu",
+    "suggestMobileScanQrCode": "Skena nekamera yefoni yako",
+    "suggestMobileSignInSameAccount": "Wobva wapinda muapp neakaunti iyi."
 }

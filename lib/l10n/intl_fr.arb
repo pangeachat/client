@@ -10404,5 +10404,7 @@
     "removeAnalyticsAccessDesc": "{name} ne pourra plus voir votre progression d'apprentissage.",
     "centralCourseOfferBody": "C'est le cours Pangea pour les apprenants de {language}. Ses membres peuvent voir votre nom et votre profil.",
     "centralCourseOfferTitle": "Rejoindre {course} ?",
-    "makeMyOwnCourseInstead": "Créer mon propre cours à la place"
+    "makeMyOwnCourseInstead": "Créer mon propre cours à la place",
+    "suggestMobileScanQrCode": "Scannez avec l'appareil photo de votre téléphone",
+    "suggestMobileSignInSameAccount": "Connectez-vous ensuite à l'application avec ce compte."
 }

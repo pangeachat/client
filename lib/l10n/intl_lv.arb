@@ -10052,5 +10052,7 @@
     "removeAnalyticsAccessDesc": "{name} vairs nevarēs redzēt jūsu mācību progresu.",
     "centralCourseOfferBody": "Tas ir Pangea kurss valodu apguvējiem {language}. Tā dalībnieki var redzēt jūsu vārdu un profilu.",
     "centralCourseOfferTitle": "Pievienoties kursam {course}?",
-    "makeMyOwnCourseInstead": "Tā vietā izveidot savu kursu"
+    "makeMyOwnCourseInstead": "Tā vietā izveidot savu kursu",
+    "suggestMobileScanQrCode": "Skenējiet ar tālruņa kameru",
+    "suggestMobileSignInSameAccount": "Pēc tam pierakstieties lietotnē ar šo kontu."
 }

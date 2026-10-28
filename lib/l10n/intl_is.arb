@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} mun ekki lengur geta séð námsframfarir þínar.",
     "centralCourseOfferBody": "Þetta er námskeið Pangea fyrir {language} nemendur. Meðlimir þess geta séð nafn þitt og prófíl.",
     "centralCourseOfferTitle": "Taka þátt í {course}?",
-    "makeMyOwnCourseInstead": "Búa til mitt eigið námskeið í staðinn"
+    "makeMyOwnCourseInstead": "Búa til mitt eigið námskeið í staðinn",
+    "suggestMobileScanQrCode": "Skannaðu með myndavél símans þíns",
+    "suggestMobileSignInSameAccount": "Skráðu þig svo inn í appið með þessum reikningi."
 }

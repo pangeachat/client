@@ -10985,5 +10985,7 @@
     "removeAnalyticsAccessDesc": "{name} non plus pote vider tu progresso de apprendimento.",
     "centralCourseOfferBody": "Illo es le curso de Pangea pro apprededores de {language}. Su membros pote vider tu nomine e profilo.",
     "centralCourseOfferTitle": "Unir te a {course}?",
-    "makeMyOwnCourseInstead": "Crear mi proprie curso in vice"
+    "makeMyOwnCourseInstead": "Crear mi proprie curso in vice",
+    "suggestMobileScanQrCode": "Scanna con le camera de tu telephono",
+    "suggestMobileSignInSameAccount": "Postea aperi un session in le app con iste conto."
 }

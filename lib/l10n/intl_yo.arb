@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} kò ní lè rí ìtẹ̀síwájú ẹ̀kọ́ rẹ mọ́.",
     "centralCourseOfferBody": "Ó jẹ́ iṣẹ́-ẹ̀kọ́ Pangea fún àwọn akẹ́kọ̀ọ́ èdè {language}. Àwọn ọmọ ẹgbẹ́ rẹ̀ lè rí orúkọ àti àkọọ́lẹ̀ rẹ.",
     "centralCourseOfferTitle": "Darapọ mọ {course}?",
-    "makeMyOwnCourseInstead": "Ṣe ikẹkọọ ti ara mi dipo"
+    "makeMyOwnCourseInstead": "Ṣe ikẹkọọ ti ara mi dipo",
+    "suggestMobileScanQrCode": "Ṣe ayẹwo pẹlu kámẹ́rà fóònù rẹ",
+    "suggestMobileSignInSameAccount": "Lẹ́yìn náà, wọlé sí ohun èlò náà pẹ̀lú àkọọ́lẹ̀ yìí."
 }

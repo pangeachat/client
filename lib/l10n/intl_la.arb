@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} progressum tuum discendi non iam videre poterit.",
     "centralCourseOfferBody": "Hic est cursus Pangeae pro discentibus {language}. Sodales eius nomen et imaginem tuam videre possunt.",
     "centralCourseOfferTitle": "Visne {course} iungere?",
-    "makeMyOwnCourseInstead": "Meum cursum potius faciam"
+    "makeMyOwnCourseInstead": "Meum cursum potius faciam",
+    "suggestMobileScanQrCode": "Lustra camera telephonica",
+    "suggestMobileSignInSameAccount": "Deinde in app cum hoc usoris nomine inscribe."
 }

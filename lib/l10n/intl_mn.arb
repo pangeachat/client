@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} таны сурах явцыг харах боломжгүй болно.",
     "centralCourseOfferBody": "Энэ бол {language} хэл суралцагчдад зориулсан Пангеагийн хичээл юм. Гишүүд таны нэр, профайлыг харах боломжтой.",
     "centralCourseOfferTitle": "{course}-д нэгдэх үү?",
-    "makeMyOwnCourseInstead": "Оронд нь өөрийн хичээлээ үүсгэх"
+    "makeMyOwnCourseInstead": "Оронд нь өөрийн хичээлээ үүсгэх",
+    "suggestMobileScanQrCode": "Утсаараа QR кодыг уншина уу",
+    "suggestMobileSignInSameAccount": "Дараа нь энэ бүртгэлээр апп руу нэвтэрнэ үү."
 }

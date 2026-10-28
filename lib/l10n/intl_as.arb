@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name}-এ আপোনাৰ শিক্ষণৰ অগ্ৰগতি চাব নোৱাৰিব।",
     "centralCourseOfferBody": "এইটো {language} শিকোৱা সকলৰ বাবে পেংগিয়াৰ এটা পাঠ্যক্ৰম। ইয়াৰ সদস্যসকলে আপোনাৰ নাম আৰু প্ৰফাইল চাব পাৰিব।",
     "centralCourseOfferTitle": "{course}ত যোগদান কৰিবনে?",
-    "makeMyOwnCourseInstead": "তাৰ পৰিৱৰ্তে মোৰ নিজা পাঠ্যক্ৰম সৃষ্টি কৰক"
+    "makeMyOwnCourseInstead": "তাৰ পৰিৱৰ্তে মোৰ নিজা পাঠ্যক্ৰম সৃষ্টি কৰক",
+    "suggestMobileScanQrCode": "আপোনাৰ ফোনৰ কেমেৰাৰে স্কেন কৰক",
+    "suggestMobileSignInSameAccount": "তাৰ পিছত এই একাউণ্টেৰে এপটোত ছাইন ইন কৰক।"
 }

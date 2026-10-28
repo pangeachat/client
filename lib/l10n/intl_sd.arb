@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} هاڻي توهان جي سکيا جي ترقي ڏسي نه سگهندو.",
     "centralCourseOfferBody": "هي {language} سکندڙن لاءِ پينگيا جو ڪورس آهي. ان جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا.",
     "centralCourseOfferTitle": "{course} ۾ شامل ٿيو؟",
-    "makeMyOwnCourseInstead": "ان جي بدران پنهنجو ڪورس ٺاهيو"
+    "makeMyOwnCourseInstead": "ان جي بدران پنهنجو ڪورس ٺاهيو",
+    "suggestMobileScanQrCode": "پنهنجي فون جي ڪئميرا سان اسڪين ڪريو",
+    "suggestMobileSignInSameAccount": "پوءِ هن اڪائونٽ سان ايپ ۾ سائن ان ڪريو."
 }

@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "Dili na makita ni {name} ang imong pag-uswag sa pagkat-on.",
     "centralCourseOfferBody": "Kini ang kurso sa Pangea para sa mga nagkat-on og {language}. Makita sa mga miyembro niini ang imong ngalan ug profile.",
     "centralCourseOfferTitle": "Apil sa {course}?",
-    "makeMyOwnCourseInstead": "Maghimo na lang ko sa akong kaugalingong kurso"
+    "makeMyOwnCourseInstead": "Maghimo na lang ko sa akong kaugalingong kurso",
+    "suggestMobileScanQrCode": "I-scan gamit ang camera sa imong telepono",
+    "suggestMobileSignInSameAccount": "Dayon pag-sign in sa app gamit kini nga account."
 }

@@ -10144,5 +10144,7 @@
     "removeAnalyticsAccessDesc": "{name} இனி உங்கள் கற்றல் முன்னேற்றத்தைப் பார்க்க முடியாது.",
     "centralCourseOfferBody": "இது {language} கற்பவர்களுக்கான பான்ஜியாவின் பாடமாகும். இதன் உறுப்பினர்கள் உங்கள் பெயரையும் சுயவிவரத்தையும் பார்க்கலாம்.",
     "centralCourseOfferTitle": "{course} இல் சேரவா?",
-    "makeMyOwnCourseInstead": "அதற்குப் பதிலாக எனது சொந்தப் பாடத்திட்டத்தை உருவாக்கவும்"
+    "makeMyOwnCourseInstead": "அதற்குப் பதிலாக எனது சொந்தப் பாடத்திட்டத்தை உருவாக்கவும்",
+    "suggestMobileScanQrCode": "உங்கள் மொபைல் கேமரா மூலம் ஸ்கேன் செய்யவும்",
+    "suggestMobileSignInSameAccount": "பின்னர் இந்த கணக்குடன் பயன்பாட்டில் உள்நுழையவும்."
 }

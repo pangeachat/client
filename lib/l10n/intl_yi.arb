@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} וועט מער נישט קענען זען דיין לערנען פּראָגרעס.",
     "centralCourseOfferBody": "דאָס איז פּאַנגעאַס קורס פֿאַר לערנערס פֿון {language}. די מיטגלידער קענען זען אײַער נאָמען און פּראָפֿיל.",
     "centralCourseOfferTitle": "זאָל איך זיך אייַנשליסן אין {course}?",
-    "makeMyOwnCourseInstead": "איך וויל בעסער מאַכן מיין אייגענעם קורס"
+    "makeMyOwnCourseInstead": "איך וויל בעסער מאַכן מיין אייגענעם קורס",
+    "suggestMobileScanQrCode": "סקאַן מיט דיין טעלעפאָן ס אַפּאַראַט",
+    "suggestMobileSignInSameAccount": "דערנאָך צייכן אריין אין דער אַפּ מיט דעם חשבון."
 }

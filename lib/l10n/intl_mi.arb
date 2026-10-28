@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "Kāore a {name} e kite anō i tō ahunga whakamua ako.",
     "centralCourseOfferBody": "Koia te akoranga a Pangea mō ngā ākonga {language}. Ka kite ngā mema i tō ingoa me tō kōtaha.",
     "centralCourseOfferTitle": "Hono atu ki te {course}?",
-    "makeMyOwnCourseInstead": "Hangaia taku ake akoranga"
+    "makeMyOwnCourseInstead": "Hangaia taku ake akoranga",
+    "suggestMobileScanQrCode": "Matawai ki te kāmera o tō waea",
+    "suggestMobileSignInSameAccount": "Kātahi ka takiuru ki te taupānga me tēnei pūkete."
 }

@@ -2514,5 +2514,7 @@
     "removeAnalyticsAccessDesc": "{name} നിങ്ങളുടെ പഠന പുരോഗതി ഇനി കാണില്ല.",
     "centralCourseOfferBody": "ഇത് {language} പഠിതാക്കൾക്കായുള്ള പാഞ്ചിയയുടെ കോഴ്സാണ്. ഇതിലെ അംഗങ്ങൾക്ക് നിങ്ങളുടെ പേരും പ്രൊഫൈലും കാണാൻ കഴിയും.",
     "centralCourseOfferTitle": "{course}ൽ ചേരണോ?",
-    "makeMyOwnCourseInstead": "എൻ്റേതായ കോഴ്സ് ഉണ്ടാക്കുക"
+    "makeMyOwnCourseInstead": "എൻ്റേതായ കോഴ്സ് ഉണ്ടാക്കുക",
+    "suggestMobileScanQrCode": "നിങ്ങളുടെ ഫോണിന്റെ ക്യാമറ ഉപയോഗിച്ച് സ്കാൻ ചെയ്യുക",
+    "suggestMobileSignInSameAccount": "തുടർന്ന് ഈ അക്കൗണ്ട് ഉപയോഗിച്ച് ആപ്പിൽ സൈൻ ഇൻ ചെയ്യുക."
 }

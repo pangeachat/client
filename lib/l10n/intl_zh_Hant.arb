@@ -10158,5 +10158,7 @@
     "removeAnalyticsAccessDesc": "{name} 將無法再查看您的學習進度。",
     "centralCourseOfferBody": "這是 Pangea 專為 {language} 學習者開設的課程。課程成員可以看到您的姓名和個人資料。",
     "centralCourseOfferTitle": "加入{course}？",
-    "makeMyOwnCourseInstead": "改為建立我的課程"
+    "makeMyOwnCourseInstead": "改為建立我的課程",
+    "suggestMobileScanQrCode": "用手機相機掃描",
+    "suggestMobileSignInSameAccount": "然後用此帳號登入應用程式。"
 }

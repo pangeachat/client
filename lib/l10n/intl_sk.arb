@@ -10994,5 +10994,7 @@
     "removeAnalyticsAccessDesc": "{name} už nebude môcť vidieť váš pokrok v učení.",
     "centralCourseOfferBody": "Je to kurz Pangea pre študentov jazyka {language}. Jeho členovia môžu vidieť vaše meno a profil.",
     "centralCourseOfferTitle": "Pridať sa do kurzu {course}?",
-    "makeMyOwnCourseInstead": "Namiesto toho si vytvoriť vlastný kurz"
+    "makeMyOwnCourseInstead": "Namiesto toho si vytvoriť vlastný kurz",
+    "suggestMobileScanQrCode": "Naskenujte fotoaparátom telefónu",
+    "suggestMobileSignInSameAccount": "Potom sa prihláste do aplikácie pomocou tohto účtu."
 }

@@ -10681,5 +10681,7 @@
     "removeAnalyticsAccessDesc": "Ní bheidh {name} in ann d'fhorbairt foghlama a fheiceáil a thuilleadh.",
     "centralCourseOfferBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
     "centralCourseOfferTitle": "An bhfuil tú ag iarraidh a bheith páirteach i {course}?",
-    "makeMyOwnCourseInstead": "Cruthaigh mo chúrsa féin ina ionad"
+    "makeMyOwnCourseInstead": "Cruthaigh mo chúrsa féin ina ionad",
+    "suggestMobileScanQrCode": "Scan le do ghuthán",
+    "suggestMobileSignInSameAccount": "Ansin sínigh isteach san aip leis an gcuntas seo."
 }
