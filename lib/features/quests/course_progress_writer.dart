@@ -232,7 +232,18 @@ class CourseProgressWriter {
     StackTrace stack,
   ) {
     _outlineRetryAt[courseRoomId] = DateTime.now().add(_outlineRetryAfter);
-    unawaited(reportCourseOutlineFailure(courseRoomId, questId, error, stack));
+    // Its own key and tag, so a skipped write is counted apart from the map's
+    // and the course page's failures on the same outline.
+    unawaited(
+      reportCourseOutlineFailure(
+        courseRoomId,
+        questId,
+        error,
+        stack,
+        keyPrefix: 'course-progress-outline',
+        tags: const {'check': 'course_progress'},
+      ),
+    );
   }
 
   /// The record stored for [courseId]: the room's, or what this run wrote

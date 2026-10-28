@@ -47,12 +47,20 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 /// per course room would multiply one suppression event by however many
 /// joined courses race the rebuild — exactly the volume this function's
 /// per-room throttle exists to prevent for every other error.
+///
+/// The course progress check (`CourseProgressWriter`) reads outlines too and
+/// reports through here for the same skips, under its own [keyPrefix] and
+/// [tags]: its failure skips a record write, not a rebuild, and sharing the
+/// rebuilds' key hid it whenever a surface had already reported the course
+/// (#9681).
 Future<bool> reportCourseOutlineFailure(
   String roomId,
   String questId,
   Object error,
-  StackTrace stack,
-) {
+  StackTrace stack, {
+  String keyPrefix = 'course-outline-resolve',
+  Map<String, String>? tags,
+}) {
   if (error is RateLimitedException) return Future.value(false);
   // A missing quest is reported by the repo itself — once per quest id per
   // session at the actual fetch (`quest-plan-404:<id>`), with real fetches
@@ -63,11 +71,12 @@ Future<bool> reportCourseOutlineFailure(
   // dead quest (#8691).
   if (error is MissingQuestException) return Future.value(false);
   return ErrorHandler.logErrorOnce(
-    key: 'course-outline-resolve:$roomId',
+    key: '$keyPrefix:$roomId',
     e: error,
     s: stack,
     data: {'courseRoomId': roomId, 'questId': questId},
     level: courseOutlineErrorLevel(error),
+    tags: tags,
   );
 }
 
