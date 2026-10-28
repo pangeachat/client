@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:47:57.003778",
+    "@@last_modified": "2026-10-27 14:57:13.856170",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10981,9 +10981,6 @@
     "watchOnYoutube": "Spektu en YouTube",
     "createMyOwnCourse": "Krei mian propran kurson",
     "xpTowardMission": "{xp} XP al ĉi tiu Misio",
-    "openCourse": "Malfermi kurson",
-    "centralCourseJoinedTitle": "Vi aliĝis al {course}",
-    "centralCourseJoinedBody": "Ĝi estas la kurso de Pangea por lernantoj de la {language} lingvo. Ĝiaj membroj povas vidi vian nomon kaj profilon.",
     "centralCourseMembersSeeYou": "Membroj de ĉi tiu kurso povas vidi vian nomon kaj profilon.",
     "practiceStartWordCount": "{count, plural, =1{vorto por ekzerci} other{vortoj por ekzerci}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatikpunkto por ekzerci} other{gramatikpunktoj por ekzerci}}",
@@ -10994,5 +10991,8 @@
     "sharedAnalyticsNone": "Vi ne kunhavigas vian lernan progreson kun iu ajn kurso.",
     "sharedAnalyticsOthersTitle": "Aliaj, kiuj povas vidi vian progreson",
     "removeAnalyticsAccess": "Forigi aliron",
-    "removeAnalyticsAccessDesc": "{name} ne plu povos vidi vian lernan progreson."
+    "removeAnalyticsAccessDesc": "{name} ne plu povos vidi vian lernan progreson.",
+    "centralCourseOfferBody": "Ĝi estas la kurso de Pangea por lernantoj de la {language} lingvo. Ĝiaj membroj povas vidi vian nomon kaj profilon.",
+    "centralCourseOfferTitle": "Ĉu aliĝi al {course}?",
+    "makeMyOwnCourseInstead": "Krei mian propran kurson anstataŭe"
 }

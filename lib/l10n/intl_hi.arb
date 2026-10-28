@@ -3082,7 +3082,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-27 14:47:58.792732",
+    "@@last_modified": "2026-10-27 14:57:15.810657",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10668,9 +10668,6 @@
     "watchOnYoutube": "YouTube पर देखें",
     "createMyOwnCourse": "अपना कोर्स बनाएँ",
     "xpTowardMission": "इस मिशन के लिए {xp} XP",
-    "openCourse": "कोर्स खोलें",
-    "centralCourseJoinedTitle": "आप {course} में शामिल हो गए हैं",
-    "centralCourseJoinedBody": "यह {language} सीखने वालों के लिए पैंगिया का कोर्स है। इसके सदस्य आपका नाम और प्रोफ़ाइल देख सकते हैं।",
     "centralCourseMembersSeeYou": "इस कोर्स के सदस्य आपका नाम और प्रोफ़ाइल देख सकते हैं।",
     "practiceStartWordCount": "{count, plural, =1{अभ्यास करने के लिए शब्द} other{अभ्यास करने के लिए शब्द}}",
     "practiceStartGrammarCount": "{count, plural, =1{अभ्यास करने के लिए व्याकरण बिंदु} other{अभ्यास करने के लिए व्याकरण बिंदु}}",
@@ -10681,5 +10678,8 @@
     "sharedAnalyticsNone": "आप किसी भी कोर्स के साथ अपनी सीखने की प्रगति साझा नहीं कर रहे हैं।",
     "sharedAnalyticsOthersTitle": "अन्य लोग जो आपकी प्रगति देख सकते हैं",
     "removeAnalyticsAccess": "पहुँच हटाएँ",
-    "removeAnalyticsAccessDesc": "{name} अब आपकी सीखने की प्रगति नहीं देख पाएगा।"
+    "removeAnalyticsAccessDesc": "{name} अब आपकी सीखने की प्रगति नहीं देख पाएगा।",
+    "centralCourseOfferBody": "यह {language} सीखने वालों के लिए पैंगिया का कोर्स है। इसके सदस्य आपका नाम और प्रोफ़ाइल देख सकते हैं।",
+    "centralCourseOfferTitle": "{course} में शामिल हों?",
+    "makeMyOwnCourseInstead": "इसके बजाय अपना कोर्स बनाएं"
 }

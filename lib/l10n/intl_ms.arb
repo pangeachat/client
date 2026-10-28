@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-27 14:48:02.635375",
+    "@@last_modified": "2026-10-27 14:57:19.283753",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Tonton di YouTube",
     "createMyOwnCourse": "Cipta kursus saya sendiri",
     "xpTowardMission": "{xp} XP untuk Misi ini",
-    "openCourse": "Buka kursus",
-    "centralCourseJoinedTitle": "Anda telah menyertai {course}",
-    "centralCourseJoinedBody": "Ini ialah kursus Pangea untuk pelajar {language}. Ahli-ahlinya boleh melihat nama dan profil anda.",
     "centralCourseMembersSeeYou": "Ahli kursus ini boleh melihat nama dan profil anda.",
     "practiceStartWordCount": "{count, plural, =1{perkataan untuk berlatih} other{perkataan untuk berlatih}}",
     "practiceStartGrammarCount": "{count, plural, =1{poin tatabahasa untuk berlatih} other{poin tatabahasa untuk berlatih}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "Anda tidak berkongsi kemajuan pembelajaran anda dengan mana-mana kursus.",
     "sharedAnalyticsOthersTitle": "Orang lain yang boleh melihat kemajuan anda",
     "removeAnalyticsAccess": "Alih keluar akses",
-    "removeAnalyticsAccessDesc": "{name} tidak lagi dapat melihat kemajuan pembelajaran anda."
+    "removeAnalyticsAccessDesc": "{name} tidak lagi dapat melihat kemajuan pembelajaran anda.",
+    "centralCourseOfferBody": "Ini ialah kursus Pangea untuk pelajar {language}. Ahli-ahlinya boleh melihat nama dan profil anda.",
+    "centralCourseOfferTitle": "Sertai {course}?",
+    "makeMyOwnCourseInstead": "Buat kursus saya sendiri"
 }

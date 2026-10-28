@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-27 14:48:03.540994",
+    "@@last_modified": "2026-10-27 14:57:19.566024",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "YouTube တွင် ကြည့်ရန်",
     "createMyOwnCourse": "ကိုယ်ပိုင်သင်တန်းဖန်တီးမည်",
     "xpTowardMission": "ဤမစ်ရှင်အတွက် {xp} XP",
-    "openCourse": "သင်တန်းဖွင့်ပါ",
-    "centralCourseJoinedTitle": "{course} ကို သင်ဝင်ရောက်ပြီးပါပြီ",
-    "centralCourseJoinedBody": "၎င်းသည် {language} သင်ယူသူများအတွက် Pangea ၏ သင်တန်းဖြစ်သည်။ ၎င်း၏အဖွဲ့ဝင်များသည် သင့်အမည်နှင့် ပရိုဖိုင်ကို မြင်နိုင်ပါသည်။",
     "centralCourseMembersSeeYou": "ဤသင်တန်းမှ အဖွဲ့ဝင်များသည် သင့်အမည်နှင့် ပရိုဖိုင်ကို မြင်နိုင်ပါသည်။",
     "practiceStartWordCount": "{count, plural, =1{လေ့ကျင့်ရန် စကားလုံး} other{လေ့ကျင့်ရန် စကားလုံးများ}}",
     "practiceStartGrammarCount": "{count, plural, =1{လေ့ကျင့်ရန် သဒ္ဒါအချက်} other{လေ့ကျင့်ရန် သဒ္ဒါအချက်များ}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "သင်သည် သင်၏သင်ယူမှုတိုးတက်မှုကို မည်သည့်သင်တန်းနှင့်မျှ မျှဝေထားခြင်း မရှိပါ။",
     "sharedAnalyticsOthersTitle": "သင့်တိုးတက်မှုကို မြင်နိုင်သူများ",
     "removeAnalyticsAccess": "ဝင်ရောက်ခွင့်ကို ဖယ်ရှားပါ",
-    "removeAnalyticsAccessDesc": "{name} သည် သင့်သင်ယူမှုတိုးတက်မှုကို နောက်ထပ်မြင်နိုင်တော့မည် မဟုတ်ပါ။"
+    "removeAnalyticsAccessDesc": "{name} သည် သင့်သင်ယူမှုတိုးတက်မှုကို နောက်ထပ်မြင်နိုင်တော့မည် မဟုတ်ပါ။",
+    "centralCourseOfferBody": "၎င်းသည် {language} သင်ယူသူများအတွက် Pangea ၏ သင်တန်းဖြစ်သည်။ ၎င်း၏အဖွဲ့ဝင်များသည် သင့်အမည်နှင့် ပရိုဖိုင်ကို မြင်နိုင်ပါသည်။",
+    "centralCourseOfferTitle": "{course} ကို ဝင်မလား?",
+    "makeMyOwnCourseInstead": "ကျွန်ုပ်၏ကိုယ်ပိုင်သင်တန်းကို ဖန်တီးမည်"
 }

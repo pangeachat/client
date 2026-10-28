@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-27 14:47:58.637357",
+    "@@last_modified": "2026-10-27 14:57:15.404690",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Kalla a YouTube",
     "createMyOwnCourse": "Ƙirƙiri kwas na da kaina",
     "xpTowardMission": "{xp} XP zuwa wannan Ofishin Jakadancin",
-    "openCourse": "Buɗe darasi",
-    "centralCourseJoinedTitle": "Ka shiga {course}",
-    "centralCourseJoinedBody": "Darasi ne na Pangea ga masu koyon harshen {language}. Membobinta za su iya ganin sunanka da bayanan martabarka.",
     "centralCourseMembersSeeYou": "Membobin wannan darasi za su iya ganin sunanka da bayanan martabarka.",
     "practiceStartWordCount": "{count, plural, =1{kalma don yin aiki} other{kalmomi don yin aiki}}",
     "practiceStartGrammarCount": "{count, plural, =1{matsayin nahawu don yin aiki} other{matsayin nahawu don yin aiki}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "Ba ka raba ci gaban karatunka da kowane kwas.",
     "sharedAnalyticsOthersTitle": "Wasu da za su iya ganin ci gabanka",
     "removeAnalyticsAccess": "Cire damar shiga",
-    "removeAnalyticsAccessDesc": "{name} ba zai ƙara iya ganin ci gaban koyon ka ba."
+    "removeAnalyticsAccessDesc": "{name} ba zai ƙara iya ganin ci gaban koyon ka ba.",
+    "centralCourseOfferBody": "Darasi ne na Pangea ga masu koyon harshen {language}. Membobinta za su iya ganin sunanka da bayanan martabarka.",
+    "centralCourseOfferTitle": "Shiga {course}?",
+    "makeMyOwnCourseInstead": "Ƙirƙiri kwas na da kaina"
 }

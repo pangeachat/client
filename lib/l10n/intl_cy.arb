@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-27 14:48:00.613352",
+    "@@last_modified": "2026-10-27 14:57:14.306835",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Gwylio ar YouTube",
     "createMyOwnCourse": "Creu fy nghwrs fy hun",
     "xpTowardMission": "{xp} XP tuag at y Genhadaeth hon",
-    "openCourse": "Agor cwrs",
-    "centralCourseJoinedTitle": "Rydych chi wedi ymuno â {course}",
-    "centralCourseJoinedBody": "Dyma gwrs Pangea ar gyfer dysgwyr {language}. Gall ei aelodau weld eich enw a'ch proffil.",
     "centralCourseMembersSeeYou": "Gall aelodau'r cwrs hwn weld eich enw a'ch proffil.",
     "practiceStartWordCount": "{count, plural, =1{gair i ymarfer} other{eiriau i ymarfer}}",
     "practiceStartGrammarCount": "{count, plural, =1{pwynt gramadeg i ymarfer} other{bwyntiau gramadeg i ymarfer}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "Nid ydych chi'n rhannu eich cynnydd dysgu gydag unrhyw gwrs.",
     "sharedAnalyticsOthersTitle": "Eraill sy'n gallu gweld eich cynnydd",
     "removeAnalyticsAccess": "Tynnu mynediad",
-    "removeAnalyticsAccessDesc": "Ni fydd {name} bellach yn gallu gweld eich cynnydd dysgu."
+    "removeAnalyticsAccessDesc": "Ni fydd {name} bellach yn gallu gweld eich cynnydd dysgu.",
+    "centralCourseOfferBody": "Dyma gwrs Pangea ar gyfer dysgwyr {language}. Gall ei aelodau weld eich enw a'ch proffil.",
+    "centralCourseOfferTitle": "Ymunwch â {course}?",
+    "makeMyOwnCourseInstead": "Creu fy nghwrs fy hun yn lle hynny"
 }

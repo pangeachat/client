@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-27 14:47:57.736072",
+    "@@last_modified": "2026-10-27 14:57:14.663799",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10039,9 +10039,6 @@
     "watchOnYoutube": "Ikusi YouTuben",
     "createMyOwnCourse": "Nire ikastaroa sortu",
     "xpTowardMission": "{xp} esperientzia puntu misio honetarako",
-    "openCourse": "Ikastaroa ireki",
-    "centralCourseJoinedTitle": "{course} ikastaroan sartu zara",
-    "centralCourseJoinedBody": "Pangearen ikastaroa da {language} ikasleentzat. Bertako kideek zure izena eta profila ikus ditzakete.",
     "centralCourseMembersSeeYou": "Ikastaro honetako kideek zure izena eta profila ikus ditzakete.",
     "practiceStartWordCount": "{count, plural, =1{praktikatzeko hitza} other{praktikatzeko hitzak}}",
     "practiceStartGrammarCount": "{count, plural, =1{praktikatzeko gramatika-puntua} other{praktikatzeko gramatika-puntuak}}",
@@ -10052,5 +10049,8 @@
     "sharedAnalyticsNone": "Ez duzu zure ikaskuntza-aurrerapena inongo ikastarorekin partekatzen.",
     "sharedAnalyticsOthersTitle": "Zure aurrerapena ikus dezaketen beste batzuk",
     "removeAnalyticsAccess": "Kendu sarbidea",
-    "removeAnalyticsAccessDesc": "{name}ek ezingo du zure ikaskuntza-aurrerapena ikusi gehiago."
+    "removeAnalyticsAccessDesc": "{name}ek ezingo du zure ikaskuntza-aurrerapena ikusi gehiago.",
+    "centralCourseOfferBody": "Pangearen ikastaroa da {language} ikasleentzat. Bertako kideek zure izena eta profila ikus ditzakete.",
+    "centralCourseOfferTitle": "{course} ikastaroan sartu?",
+    "makeMyOwnCourseInstead": "Nire ikastaroa sortu ordez"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:47:55.530242",
+    "@@last_modified": "2026-10-27 14:57:23.646048",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10664,9 +10664,6 @@
     "watchOnYoutube": "ইউটিউবে দেখুন",
     "createMyOwnCourse": "আমার নিজের কোর্স তৈরি করুন",
     "xpTowardMission": "এই মিশনে {xp} XP",
-    "openCourse": "কোর্স খুলুন",
-    "centralCourseJoinedTitle": "আপনি {course}-এ যোগ দিয়েছেন",
-    "centralCourseJoinedBody": "এটি {language} শিক্ষার্থীদের জন্য প্যানজিয়ার কোর্স। এর সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।",
     "centralCourseMembersSeeYou": "এই কোর্সের সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।",
     "practiceStartWordCount": "{count, plural, =1{অনুশীলনের জন্য শব্দ} other{অনুশীলনের জন্য শব্দ}}",
     "practiceStartGrammarCount": "{count, plural, =1{অনুশীলনের জন্য ব্যাকরণ বিষয়} other{অনুশীলনের জন্য ব্যাকরণ বিষয়}}",
@@ -10677,5 +10674,8 @@
     "sharedAnalyticsNone": "আপনি কোনো কোর্সের সাথে আপনার শেখার অগ্রগতি শেয়ার করছেন না।",
     "sharedAnalyticsOthersTitle": "অন্যান্য যারা আপনার অগ্রগতি দেখতে পারে",
     "removeAnalyticsAccess": "অ্যাক্সেস সরান",
-    "removeAnalyticsAccessDesc": "{name} আর আপনার শেখার অগ্রগতি দেখতে পারবে না।"
+    "removeAnalyticsAccessDesc": "{name} আর আপনার শেখার অগ্রগতি দেখতে পারবে না।",
+    "centralCourseOfferBody": "এটি {language} শিক্ষার্থীদের জন্য প্যানজিয়ার কোর্স। এর সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।",
+    "centralCourseOfferTitle": "{course}-এ যোগ দেবেন?",
+    "makeMyOwnCourseInstead": "এর বদলে আমার নিজের কোর্স তৈরি করি"
 }

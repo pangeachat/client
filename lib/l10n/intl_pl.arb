@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-27 14:48:04.212599",
+    "@@last_modified": "2026-10-27 14:57:20.616682",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10124,9 +10124,6 @@
     "watchOnYoutube": "Obejrzyj na YouTube",
     "createMyOwnCourse": "Stwórz mój własny kurs",
     "xpTowardMission": "{xp} PD do tej misji",
-    "openCourse": "Otwórz kurs",
-    "centralCourseJoinedTitle": "Dołączyłeś do kursu {course}",
-    "centralCourseJoinedBody": "To kurs Pangea dla uczących się języka {language}. Członkowie kursu widzą Twoje imię i profil.",
     "centralCourseMembersSeeYou": "Członkowie tego kursu widzą Twoje imię i profil.",
     "practiceStartWordCount": "{count, plural, =1{słowo do ćwiczenia} other{słów do ćwiczenia}}",
     "practiceStartGrammarCount": "{count, plural, =1{zagadnienie gramatyczne do ćwiczenia} other{zagadnienia gramatyczne do ćwiczenia}}",
@@ -10137,5 +10134,8 @@
     "sharedAnalyticsNone": "Nie udostępniasz swoich postępów w nauce żadnemu kursowi.",
     "sharedAnalyticsOthersTitle": "Inni, którzy widzą Twoje postępy",
     "removeAnalyticsAccess": "Usuń dostęp",
-    "removeAnalyticsAccessDesc": "{name} nie będzie już widzieć Twoich postępów w nauce."
+    "removeAnalyticsAccessDesc": "{name} nie będzie już widzieć Twoich postępów w nauce.",
+    "centralCourseOfferBody": "To kurs Pangea dla uczących się języka {language}. Członkowie kursu widzą Twoje imię i profil.",
+    "centralCourseOfferTitle": "Dołączyć do kursu {course}?",
+    "makeMyOwnCourseInstead": "Zamiast tego stwórz mój własny kurs"
 }

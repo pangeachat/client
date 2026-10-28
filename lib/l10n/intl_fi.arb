@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-27 14:47:57.912652",
+    "@@last_modified": "2026-10-27 14:57:14.694714",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10076,9 +10076,6 @@
     "watchOnYoutube": "Katso YouTubessa",
     "createMyOwnCourse": "Luo oma kurssini",
     "xpTowardMission": "{xp} XP tähän tehtävään",
-    "openCourse": "Avaa kurssi",
-    "centralCourseJoinedTitle": "Olet liittynyt kurssille {course}",
-    "centralCourseJoinedBody": "Tämä on Pangean kurssi {language}-kielen opiskelijoille. Kurssin jäsenet näkevät nimesi ja profiilisi.",
     "centralCourseMembersSeeYou": "Tämän kurssin jäsenet näkevät nimesi ja profiilisi.",
     "practiceStartWordCount": "{count, plural, =1{sana harjoiteltavana} other{sanaa harjoiteltavana}}",
     "practiceStartGrammarCount": "{count, plural, =1{kielioppikohta harjoiteltavana} other{kielioppikohtaa harjoiteltavana}}",
@@ -10089,5 +10086,8 @@
     "sharedAnalyticsNone": "Et jaa oppimisesi edistymistä minkään kurssin kanssa.",
     "sharedAnalyticsOthersTitle": "Muut, jotka näkevät edistymisesi",
     "removeAnalyticsAccess": "Poista pääsy",
-    "removeAnalyticsAccessDesc": "{name} ei enää näe oppimisesi edistymistä."
+    "removeAnalyticsAccessDesc": "{name} ei enää näe oppimisesi edistymistä.",
+    "centralCourseOfferBody": "Tämä on Pangean kurssi {language}-kielen opiskelijoille. Kurssin jäsenet näkevät nimesi ja profiilisi.",
+    "centralCourseOfferTitle": "Liity kurssille {course}?",
+    "makeMyOwnCourseInstead": "Luo oma kurssi sen sijaan"
 }

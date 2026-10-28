@@ -3389,7 +3389,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-27 14:47:57.263302",
+    "@@last_modified": "2026-10-27 14:57:13.805148",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10911,9 +10911,6 @@
     "watchOnYoutube": "Παρακολουθήστε στο YouTube",
     "createMyOwnCourse": "Δημιουργία δικού μου μαθήματος",
     "xpTowardMission": "{xp} XP για αυτήν την αποστολή",
-    "openCourse": "Άνοιγμα μαθήματος",
-    "centralCourseJoinedTitle": "Έχετε εγγραφεί στο {course}",
-    "centralCourseJoinedBody": "Είναι το μάθημα της Pangea για μαθητές {language}. Τα μέλη του μπορούν να δουν το όνομα και το προφίλ σας.",
     "centralCourseMembersSeeYou": "Τα μέλη αυτού του μαθήματος μπορούν να δουν το όνομα και το προφίλ σας.",
     "practiceStartWordCount": "{count, plural, =1{λέξη για εξάσκηση} other{λέξεις για εξάσκηση}}",
     "practiceStartGrammarCount": "{count, plural, =1{σημείο γραμματικής για εξάσκηση} other{σημεία γραμματικής για εξάσκηση}}",
@@ -10924,5 +10921,8 @@
     "sharedAnalyticsNone": "Δεν μοιράζεστε την πρόοδό σας στην εκμάθηση με κανένα μάθημα.",
     "sharedAnalyticsOthersTitle": "Άλλοι που μπορούν να δουν την πρόοδό σας",
     "removeAnalyticsAccess": "Κατάργηση πρόσβασης",
-    "removeAnalyticsAccessDesc": "Ο/Η {name} δεν θα μπορεί πλέον να βλέπει την πρόοδό σας στην εκμάθηση."
+    "removeAnalyticsAccessDesc": "Ο/Η {name} δεν θα μπορεί πλέον να βλέπει την πρόοδό σας στην εκμάθηση.",
+    "centralCourseOfferBody": "Είναι το μάθημα της Pangea για μαθητές {language}. Τα μέλη του μπορούν να δουν το όνομα και το προφίλ σας.",
+    "centralCourseOfferTitle": "Συμμετοχή στο {course};",
+    "makeMyOwnCourseInstead": "Να φτιάξω το δικό μου μάθημα"
 }

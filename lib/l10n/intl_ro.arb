@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:48:04.819391",
+    "@@last_modified": "2026-10-27 14:57:21.131641",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10768,9 +10768,6 @@
     "watchOnYoutube": "Vizionează pe YouTube",
     "createMyOwnCourse": "Creează-mi propriul curs",
     "xpTowardMission": "{xp} XP pentru această misiune",
-    "openCourse": "Deschide cursul",
-    "centralCourseJoinedTitle": "Te-ai alăturat cursului {course}",
-    "centralCourseJoinedBody": "Este cursul Pangea pentru cursanții de {language}. Membrii săi îți pot vedea numele și profilul.",
     "centralCourseMembersSeeYou": "Membrii acestui curs îți pot vedea numele și profilul.",
     "practiceStartWordCount": "{count, plural, =1{cuvânt de exersat} other{cuvinte de exersat}}",
     "practiceStartGrammarCount": "{count, plural, =1{punct gramatical de exersat} other{puncte gramaticale de exersat}}",
@@ -10781,5 +10778,8 @@
     "sharedAnalyticsNone": "Nu partajezi progresul tău de învățare cu niciun curs.",
     "sharedAnalyticsOthersTitle": "Alții care îți pot vedea progresul",
     "removeAnalyticsAccess": "Revocă accesul",
-    "removeAnalyticsAccessDesc": "{name} nu va mai putea să-ți vadă progresul de învățare."
+    "removeAnalyticsAccessDesc": "{name} nu va mai putea să-ți vadă progresul de învățare.",
+    "centralCourseOfferBody": "Este cursul Pangea pentru cursanții de {language}. Membrii săi îți pot vedea numele și profilul.",
+    "centralCourseOfferTitle": "Te alături la {course}?",
+    "makeMyOwnCourseInstead": "Creez propriul curs"
 }

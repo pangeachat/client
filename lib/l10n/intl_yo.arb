@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-27 14:48:08.482684",
+    "@@last_modified": "2026-10-27 14:57:24.318912",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Wò ó lórí YouTube",
     "createMyOwnCourse": "Ṣẹda iṣẹ ikẹkọ ti ara mi",
     "xpTowardMission": "{xp} XP si Iṣẹ apinfunni yii",
-    "openCourse": "Ṣí iṣẹ́-ẹ̀kọ́",
-    "centralCourseJoinedTitle": "O ti darapọ̀ mọ́ {course}",
-    "centralCourseJoinedBody": "Ó jẹ́ iṣẹ́-ẹ̀kọ́ Pangea fún àwọn akẹ́kọ̀ọ́ èdè {language}. Àwọn ọmọ ẹgbẹ́ rẹ̀ lè rí orúkọ àti àkọọ́lẹ̀ rẹ.",
     "centralCourseMembersSeeYou": "Àwọn ọmọ ẹgbẹ́ iṣẹ́-ẹ̀kọ́ yìí lè rí orúkọ àti àkọọ́lẹ̀ rẹ.",
     "practiceStartWordCount": "{count, plural, =1{ọrọ lati ṣe adaṣe} other{awọn ọrọ lati ṣe adaṣe}}",
     "practiceStartGrammarCount": "{count, plural, =1{ọrọ-ọrọ lati ṣe adaṣe} other{awọn ọrọ-ọrọ lati ṣe adaṣe}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "O kò pín ìtẹ̀síwájú ẹ̀kọ́ rẹ pẹ̀lú ìkẹ́kọ̀ọ́ kankan.",
     "sharedAnalyticsOthersTitle": "Àwọn mìíràn tó lè rí ìtẹ̀síwájú rẹ",
     "removeAnalyticsAccess": "Yọ ìwọlé kúrò",
-    "removeAnalyticsAccessDesc": "{name} kò ní lè rí ìtẹ̀síwájú ẹ̀kọ́ rẹ mọ́."
+    "removeAnalyticsAccessDesc": "{name} kò ní lè rí ìtẹ̀síwájú ẹ̀kọ́ rẹ mọ́.",
+    "centralCourseOfferBody": "Ó jẹ́ iṣẹ́-ẹ̀kọ́ Pangea fún àwọn akẹ́kọ̀ọ́ èdè {language}. Àwọn ọmọ ẹgbẹ́ rẹ̀ lè rí orúkọ àti àkọọ́lẹ̀ rẹ.",
+    "centralCourseOfferTitle": "Darapọ mọ {course}?",
+    "makeMyOwnCourseInstead": "Ṣe ikẹkọọ ti ara mi dipo"
 }

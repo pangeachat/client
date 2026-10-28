@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:47:57.574429",
+    "@@last_modified": "2026-10-27 14:57:14.613217",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10127,9 +10127,6 @@
     "watchOnYoutube": "در یوتیوب تماشا کنید",
     "createMyOwnCourse": "دوره خودم را بسازم",
     "xpTowardMission": "{xp} امتیاز تجربه برای این مأموریت",
-    "openCourse": "باز کردن دوره",
-    "centralCourseJoinedTitle": "شما به {course} پیوستید",
-    "centralCourseJoinedBody": "این دوره پانگه‌آ برای زبان‌آموزان {language} است. اعضای آن می‌توانند نام و نمایه شما را ببینند.",
     "centralCourseMembersSeeYou": "اعضای این دوره می‌توانند نام و نمایه شما را ببینند.",
     "practiceStartWordCount": "{count, plural, =1{کلمه برای تمرین} other{کلمه برای تمرین}}",
     "practiceStartGrammarCount": "{count, plural, =1{نکته گرامری برای تمرین} other{نکته گرامری برای تمرین}}",
@@ -10140,5 +10137,8 @@
     "sharedAnalyticsNone": "شما پیشرفت یادگیری خود را با هیچ دوره‌ای به اشتراک نمی‌گذارید.",
     "sharedAnalyticsOthersTitle": "دیگران که می‌توانند پیشرفت شما را ببینند",
     "removeAnalyticsAccess": "حذف دسترسی",
-    "removeAnalyticsAccessDesc": "{name} دیگر قادر به دیدن پیشرفت یادگیری شما نخواهد بود."
+    "removeAnalyticsAccessDesc": "{name} دیگر قادر به دیدن پیشرفت یادگیری شما نخواهد بود.",
+    "centralCourseOfferBody": "این دوره پانگه‌آ برای زبان‌آموزان {language} است. اعضای آن می‌توانند نام و نمایه شما را ببینند.",
+    "centralCourseOfferTitle": "به {course} بپیوندید؟",
+    "makeMyOwnCourseInstead": "به جای آن، دوره خودم را بسازم"
 }

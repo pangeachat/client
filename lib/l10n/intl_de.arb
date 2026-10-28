@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-27 14:47:56.655123",
+    "@@last_modified": "2026-10-27 14:57:13.907049",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10026,9 +10026,6 @@
     "watchOnYoutube": "Auf YouTube ansehen",
     "createMyOwnCourse": "Meinen eigenen Kurs erstellen",
     "xpTowardMission": "{xp} XP für diese Mission",
-    "openCourse": "Kurs öffnen",
-    "centralCourseJoinedTitle": "Du bist {course} beigetreten",
-    "centralCourseJoinedBody": "Dies ist Pangeas Kurs für {language}-Lernende. Die Mitglieder können deinen Namen und dein Profil sehen.",
     "centralCourseMembersSeeYou": "Mitglieder dieses Kurses können deinen Namen und dein Profil sehen.",
     "practiceStartWordCount": "{count, plural, =1{Wort zum Üben} other{Wörter zum Üben}}",
     "practiceStartGrammarCount": "{count, plural, =1{Grammatikpunkt zum Üben} other{Grammatikpunkte zum Üben}}",
@@ -10039,5 +10036,8 @@
     "sharedAnalyticsNone": "Sie teilen Ihren Lernfortschritt mit keinem Kurs.",
     "sharedAnalyticsOthersTitle": "Andere, die deinen Fortschritt sehen können",
     "removeAnalyticsAccess": "Zugriff entfernen",
-    "removeAnalyticsAccessDesc": "{name} kann deinen Lernfortschritt nicht mehr sehen."
+    "removeAnalyticsAccessDesc": "{name} kann deinen Lernfortschritt nicht mehr sehen.",
+    "centralCourseOfferBody": "Dies ist Pangeas Kurs für {language}-Lernende. Die Mitglieder können deinen Namen und dein Profil sehen.",
+    "centralCourseOfferTitle": "An {course} teilnehmen?",
+    "makeMyOwnCourseInstead": "Stattdessen eigenen Kurs erstellen"
 }

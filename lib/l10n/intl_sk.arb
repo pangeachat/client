@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-27 14:48:06.014355",
+    "@@last_modified": "2026-10-27 14:57:21.504594",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10981,9 +10981,6 @@
     "watchOnYoutube": "Pozrieť na YouTube",
     "createMyOwnCourse": "Vytvoriť si vlastný kurz",
     "xpTowardMission": "{xp} XP k tejto misii",
-    "openCourse": "Otvoriť kurz",
-    "centralCourseJoinedTitle": "Pripojili ste sa ku kurzu {course}",
-    "centralCourseJoinedBody": "Je to kurz Pangea pre študentov jazyka {language}. Jeho členovia môžu vidieť vaše meno a profil.",
     "centralCourseMembersSeeYou": "Členovia tohto kurzu môžu vidieť vaše meno a profil.",
     "practiceStartWordCount": "{count, plural, =1{slovo na precvičenie} other{slov na precvičenie}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatický bod na precvičenie} other{gramatické body na precvičenie}}",
@@ -10994,5 +10991,8 @@
     "sharedAnalyticsNone": "Nezdieľate svoj pokrok v učení so žiadnym kurzom.",
     "sharedAnalyticsOthersTitle": "Ostatní, ktorí vidia váš pokrok",
     "removeAnalyticsAccess": "Odstrániť prístup",
-    "removeAnalyticsAccessDesc": "{name} už nebude môcť vidieť váš pokrok v učení."
+    "removeAnalyticsAccessDesc": "{name} už nebude môcť vidieť váš pokrok v učení.",
+    "centralCourseOfferBody": "Je to kurz Pangea pre študentov jazyka {language}. Jeho členovia môžu vidieť vaše meno a profil.",
+    "centralCourseOfferTitle": "Pridať sa do kurzu {course}?",
+    "makeMyOwnCourseInstead": "Namiesto toho si vytvoriť vlastný kurz"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-27 14:47:55.488052",
+    "@@last_modified": "2026-10-27 14:57:12.844761",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Kyk op YouTube",
     "createMyOwnCourse": "Skep my eie kursus",
     "xpTowardMission": "{xp} XP vir hierdie Missie",
-    "openCourse": "Maak kursus oop",
-    "centralCourseJoinedTitle": "Jy het by {course} aangesluit",
-    "centralCourseJoinedBody": "Dit is Pangea se kursus vir {language}-leerders. Die lede daarvan kan jou naam en profiel sien.",
     "centralCourseMembersSeeYou": "Lede van hierdie kursus kan jou naam en profiel sien.",
     "practiceStartWordCount": "{count, plural, =1{woord om te oefen} other{woorde om te oefen}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatikareël om te oefen} other{grammatikareëls om te oefen}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "Jy deel nie jou leervordering met enige kursus nie.",
     "sharedAnalyticsOthersTitle": "Ander wat jou vordering kan sien",
     "removeAnalyticsAccess": "Verwyder toegang",
-    "removeAnalyticsAccessDesc": "{name} sal nie meer jou leervordering kan sien nie."
+    "removeAnalyticsAccessDesc": "{name} sal nie meer jou leervordering kan sien nie.",
+    "centralCourseOfferBody": "Dit is Pangea se kursus vir {language}-leerders. Die lede daarvan kan jou naam en profiel sien.",
+    "centralCourseOfferTitle": "Sluit aan by {course}?",
+    "makeMyOwnCourseInstead": "Maak eerder my eie kursus"
 }

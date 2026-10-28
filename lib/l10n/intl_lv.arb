@@ -3515,7 +3515,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-27 14:48:02.460351",
+    "@@last_modified": "2026-10-27 14:57:18.614958",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10039,9 +10039,6 @@
     "watchOnYoutube": "Skatīties pakalpojumā YouTube",
     "createMyOwnCourse": "Izveidot savu kursu",
     "xpTowardMission": "{xp} XP šai misijai",
-    "openCourse": "Atvērt kursu",
-    "centralCourseJoinedTitle": "Esat pievienojies kursam {course}",
-    "centralCourseJoinedBody": "Tas ir Pangea kurss valodu apguvējiem {language}. Tā dalībnieki var redzēt jūsu vārdu un profilu.",
     "centralCourseMembersSeeYou": "Šī kursa dalībnieki var redzēt jūsu vārdu un profilu.",
     "practiceStartWordCount": "{count, plural, =1{vārds, ko praktizēt} other{vārdi, ko praktizēt}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatikas punkts, ko praktizēt} other{gramatikas punkti, ko praktizēt}}",
@@ -10052,5 +10049,8 @@
     "sharedAnalyticsNone": "Jūs nekopīgojat savu mācību progresu ne ar vienu kursu.",
     "sharedAnalyticsOthersTitle": "Citi, kas var redzēt jūsu progresu",
     "removeAnalyticsAccess": "Noņemt piekļuvi",
-    "removeAnalyticsAccessDesc": "{name} vairs nevarēs redzēt jūsu mācību progresu."
+    "removeAnalyticsAccessDesc": "{name} vairs nevarēs redzēt jūsu mācību progresu.",
+    "centralCourseOfferBody": "Tas ir Pangea kurss valodu apguvējiem {language}. Tā dalībnieki var redzēt jūsu vārdu un profilu.",
+    "centralCourseOfferTitle": "Pievienoties kursam {course}?",
+    "makeMyOwnCourseInstead": "Tā vietā izveidot savu kursu"
 }

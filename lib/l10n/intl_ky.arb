@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-27 14:48:02.600517",
+    "@@last_modified": "2026-10-27 14:57:18.506619",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "YouTube'дан көрүү",
     "createMyOwnCourse": "Өзүмдүн курсумду түзүү",
     "xpTowardMission": "Бул миссияга {xp} XP",
-    "openCourse": "Курсту ачуу",
-    "centralCourseJoinedTitle": "Сиз {course} курсуна кошулдуңуз",
-    "centralCourseJoinedBody": "Бул {language} үйрөнүүчүлөр үчүн Pangea курсу. Анын мүчөлөрү сиздин атыңызды жана профилиңизди көрө алышат.",
     "centralCourseMembersSeeYou": "Бул курстун мүчөлөрү сиздин атыңызды жана профилиңизди көрө алышат.",
     "practiceStartWordCount": "{count, plural, =1{кайталоо үчүн сөз} other{кайталоо үчүн сөздөр}}",
     "practiceStartGrammarCount": "{count, plural, =1{кайталоо үчүн грамматикалык тема} other{кайталоо үчүн грамматикалык темалар}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "Сиз эч бир курс менен окуу прогрессиңизди бөлүшпөй жатасыз.",
     "sharedAnalyticsOthersTitle": "Прогрессиңизди көрө алган башкалар",
     "removeAnalyticsAccess": "Кирүүнү алып салуу",
-    "removeAnalyticsAccessDesc": "{name} мындан ары сиздин окуу прогрессиңизди көрө албайт."
+    "removeAnalyticsAccessDesc": "{name} мындан ары сиздин окуу прогрессиңизди көрө албайт.",
+    "centralCourseOfferBody": "Бул {language} үйрөнүүчүлөр үчүн Pangea курсу. Анын мүчөлөрү сиздин атыңызды жана профилиңизди көрө алышат.",
+    "centralCourseOfferTitle": "{course} курсуна кошуласызбы?",
+    "makeMyOwnCourseInstead": "Анын ордуна өзүмдүн курсумду түзөм"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-27 14:48:05.950163",
+    "@@last_modified": "2026-10-27 14:57:24.816783",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Ka daawo YouTube",
     "createMyOwnCourse": "Samee koorsadayda",
     "xpTowardMission": "{xp} XP oo ku aaddan Hawshan",
-    "openCourse": "Fur koorsada",
-    "centralCourseJoinedTitle": "Waxaad ku biirtay {course}",
-    "centralCourseJoinedBody": "Waa koorsada Pangea ee loogu talagalay barayaasha {language}. Xubnaheeda waxay arki karaan magacaaga iyo astaantaada.",
     "centralCourseMembersSeeYou": "Xubnaha koorsadan waxay arki karaan magacaaga iyo astaantaada.",
     "practiceStartWordCount": "{count, plural, =1{hal eray oo lagu celceliyo} other{erayo lagu celceliyo}}",
     "practiceStartGrammarCount": "{count, plural, =1{hal qodob oo naxwe ah oo lagu celceliyo} other{qodobo naxwe ah oo lagu celceliyo}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "Ma wadaagaysid horumarkaaga waxbarasho koorsana.",
     "sharedAnalyticsOthersTitle": "Kuwa kale ee arki kara horumarkaaga",
     "removeAnalyticsAccess": "Ka saar gelitaanka",
-    "removeAnalyticsAccessDesc": "{name} ma awoodi doono inuu arko horumarkaaga waxbarasho."
+    "removeAnalyticsAccessDesc": "{name} ma awoodi doono inuu arko horumarkaaga waxbarasho.",
+    "centralCourseOfferBody": "Waa koorsada Pangea ee loogu talagalay barayaasha {language}. Xubnaheeda waxay arki karaan magacaaga iyo astaantaada.",
+    "centralCourseOfferTitle": "Ku biir {course}?",
+    "makeMyOwnCourseInstead": "Anigu waxaan samaysanayaa koorsadayda"
 }

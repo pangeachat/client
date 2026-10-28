@@ -1317,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-27 14:48:07.606204",
+    "@@last_modified": "2026-10-27 14:57:22.552803",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10986,9 +10986,6 @@
     "watchOnYoutube": "YouTubeలో చూడండి",
     "createMyOwnCourse": "నా స్వంత కోర్సును సృష్టించండి",
     "xpTowardMission": "ఈ మిషన్ కోసం {xp} XP",
-    "openCourse": "కోర్సును తెరవండి",
-    "centralCourseJoinedTitle": "మీరు {course}లో చేరారు",
-    "centralCourseJoinedBody": "ఇది {language} నేర్చుకునే వారి కోసం పాంగేయా కోర్సు. దీని సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
     "centralCourseMembersSeeYou": "ఈ కోర్సు సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
     "practiceStartWordCount": "{count, plural, =1{అభ్యాసం చేయడానికి పదం} other{అభ్యాసం చేయడానికి పదాలు}}",
     "practiceStartGrammarCount": "{count, plural, =1{అభ్యాసం చేయడానికి వ్యాకరణ అంశం} other{అభ్యాసం చేయడానికి వ్యాకరణ అంశాలు}}",
@@ -10999,5 +10996,8 @@
     "sharedAnalyticsNone": "మీరు ఏ కోర్సుతోనూ మీ అభ్యాస పురోగతిని పంచుకోవడం లేదు.",
     "sharedAnalyticsOthersTitle": "మీ పురోగతిని చూడగలిగే ఇతరులు",
     "removeAnalyticsAccess": "యాక్సెస్‌ను తీసివేయండి",
-    "removeAnalyticsAccessDesc": "{name} మీ అభ్యాస పురోగతిని ఇకపై చూడలేరు."
+    "removeAnalyticsAccessDesc": "{name} మీ అభ్యాస పురోగతిని ఇకపై చూడలేరు.",
+    "centralCourseOfferBody": "ఇది {language} నేర్చుకునే వారి కోసం పాంగేయా కోర్సు. దీని సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
+    "centralCourseOfferTitle": "{course}లో చేరతారా?",
+    "makeMyOwnCourseInstead": "బదులుగా నా స్వంత కోర్సును సృష్టించు"
 }

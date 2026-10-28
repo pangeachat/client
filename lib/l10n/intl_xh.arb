@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-27 14:48:09.296167",
+    "@@last_modified": "2026-10-27 14:57:23.812372",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Bukela kuYouTube",
     "createMyOwnCourse": "Yenza eyakho ikhosi",
     "xpTowardMission": "{xp} XP kweli Phulo",
-    "openCourse": "Vula ikhosi",
-    "centralCourseJoinedTitle": "Ujoyine {course}",
-    "centralCourseJoinedBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho neprofayile yakho.",
     "centralCourseMembersSeeYou": "Amalungu ale khosi angabona igama lakho neprofayile yakho.",
     "practiceStartWordCount": "{count, plural, =1{igama lokuziqhelanisa} other{amagama okuziqhelanisa}}",
     "practiceStartGrammarCount": "{count, plural, =1{indawo yegrama yokuziqhelanisa} other{iindawo zegrama zokuziqhelanisa}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "Awabelani ngenkqubela yakho yokufunda nakweyiphi na ikhosi.",
     "sharedAnalyticsOthersTitle": "Abanye abanokubona inkqubela yakho",
     "removeAnalyticsAccess": "Susa ukufikelela",
-    "removeAnalyticsAccessDesc": "U-{name} akasayi kuphinda akwazi ukubona inkqubela yakho yokufunda."
+    "removeAnalyticsAccessDesc": "U-{name} akasayi kuphinda akwazi ukubona inkqubela yakho yokufunda.",
+    "centralCourseOfferBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho neprofayile yakho.",
+    "centralCourseOfferTitle": "Ukujoyina {course}?",
+    "makeMyOwnCourseInstead": "Yenza eyakho ikhosi endaweni yoko"
 }

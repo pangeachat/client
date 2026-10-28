@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-27 14:48:03.021308",
+    "@@last_modified": "2026-10-27 14:57:19.548025",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Ara fuq YouTube",
     "createMyOwnCourse": "Oħloq il-kors tiegħi",
     "xpTowardMission": "{xp} XP lejn din il-Missjoni",
-    "openCourse": "Iftaħ il-kors",
-    "centralCourseJoinedTitle": "Ingħaqadt ma' {course}",
-    "centralCourseJoinedBody": "Huwa l-kors ta' Pangea għal dawk li qed jitgħallmu l-{language}. Il-membri tiegħu jistgħu jaraw ismek u l-profil tiegħek.",
     "centralCourseMembersSeeYou": "Il-membri ta' dan il-kors jistgħu jaraw ismek u l-profil tiegħek.",
     "practiceStartWordCount": "{count, plural, =1{kelma biex tipprattika} other{kliem biex tipprattika}}",
     "practiceStartGrammarCount": "{count, plural, =1{punt grammatikali biex tipprattika} other{punti grammatikali biex tipprattika}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "M'intix qed taqsam il-progress tat-tagħlim tiegħek ma' ebda kors.",
     "sharedAnalyticsOthersTitle": "Oħrajn li jistgħu jaraw il-progress tiegħek",
     "removeAnalyticsAccess": "Neħħi l-aċċess",
-    "removeAnalyticsAccessDesc": "{name} mhux se jibqa' jkun jista' jara l-progress tat-tagħlim tiegħek."
+    "removeAnalyticsAccessDesc": "{name} mhux se jibqa' jkun jista' jara l-progress tat-tagħlim tiegħek.",
+    "centralCourseOfferBody": "Huwa l-kors ta' Pangea għal dawk li qed jitgħallmu l-{language}. Il-membri tiegħu jistgħu jaraw ismek u l-profil tiegħek.",
+    "centralCourseOfferTitle": "Tissieħeb f'{course}'?",
+    "makeMyOwnCourseInstead": "Nagħmel il-kors tiegħi stess"
 }

@@ -2,8 +2,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/routes/onboarding/course_provider.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_result.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/central_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
@@ -201,17 +203,16 @@ void main() {
     },
   );
 
-  // A learner with no class code is joined to their language's central
-  // course after the level step and lands on it (#9591).
+  // A learner with no class code chooses, after the level step, between their
+  // language's central course and a private course of their own; with no
+  // central course they get their own course, repaired later
+  // (joining-courses.instructions.md § The central course).
   Future<OnboardingNavigationController> toLevelStep(
-    UserType type, {
-    String? centralCourseRoomId,
-  }) async {
+    UserType type,
+    MockCourseProvider courses,
+  ) async {
     final state = OnboardingNavigationController(
-      initialStep: getInitialOnboardingStep(
-        client,
-        centralCourseRoomId: centralCourseRoomId,
-      ),
+      initialStep: getInitialOnboardingStep(client, courses: courses),
     );
     await state.forward();
     (state.step as UserTypeOnboardingStep).setUserType(type);
@@ -231,30 +232,56 @@ void main() {
     return state;
   }
 
-  test("A learner without a code joins the central course (#9591)", () async {
-    const central = '!central:staging.pangea.chat';
-    final state = await toLevelStep(
-      UserType.student,
-      centralCourseRoomId: central,
-    );
+  const central = '!central:staging.pangea.chat';
+
+  test("A learner who joins the central course lands on it", () async {
+    final courses = MockCourseProvider(centralCourseRoomId: central);
+    final state = await toLevelStep(UserType.student, courses);
 
     expect(await state.forward(), isA<SuccessNavigationResult>());
-    expect(state.step, isA<JoinedCourseOnboardingStep>());
-    expect(state.step.joinedCourseSpaceId, central);
-    expect(state.step.state.joinedCentralCourse, isTrue);
+    expect(state.step, isA<CentralCourseOnboardingStep>());
+    (state.step as CentralCourseOnboardingStep).chooseOwnCourse(false);
     expect(await state.forward(), isA<ReachedEndNavigationResult>());
+    expect(state.step.joinedCourseSpaceId, central);
+    expect(courses.ownCoursePlans, isEmpty);
   });
 
-  test("A teacher without a code is not joined (#9591)", () async {
-    final state = await toLevelStep(
-      UserType.teacher,
-      centralCourseRoomId: '!central:staging.pangea.chat',
-    );
+  test("A learner who declines gets their own course on its plan", () async {
+    final courses = MockCourseProvider(centralCourseRoomId: central);
+    final state = await toLevelStep(UserType.student, courses);
 
     expect(await state.forward(), isA<SuccessNavigationResult>());
-    expect(state.step, isA<CustomCourseOnboardingStep>());
-    expect(state.step.joinedCourseSpaceId, isNull);
+    (state.step as CentralCourseOnboardingStep).chooseOwnCourse(true);
+    expect(await state.forward(), isA<ReachedEndNavigationResult>());
+    expect(state.step.joinedCourseSpaceId, MockCourseProvider.ownCourseRoomId);
+    expect(courses.ownCoursePlans, [MockCourseProvider.centralQuestId]);
   });
+
+  test(
+    "With no central course, a learner gets a course with no plan",
+    () async {
+      final courses = MockCourseProvider();
+      final state = await toLevelStep(UserType.student, courses);
+
+      expect(await state.forward(), isA<ReachedEndNavigationResult>());
+      expect(courses.ownCoursePlans, [null]);
+      // A course with no plan has nothing to show yet, so they land on the map.
+      expect(state.step.joinedCourseSpaceId, isNull);
+    },
+  );
+
+  test(
+    "A teacher without a code is neither asked nor given a course",
+    () async {
+      final courses = MockCourseProvider(centralCourseRoomId: central);
+      final state = await toLevelStep(UserType.teacher, courses);
+
+      expect(await state.forward(), isA<SuccessNavigationResult>());
+      expect(state.step, isA<CustomCourseOnboardingStep>());
+      expect(state.step.joinedCourseSpaceId, isNull);
+      expect(courses.ownCoursePlans, isEmpty);
+    },
+  );
 
   test("Switching role clears a stale CEFR selection (#7583)", () {
     final state = getInitialOnboardingStep(client).state;

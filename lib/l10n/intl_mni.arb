@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-27 14:48:04.322148",
+    "@@last_modified": "2026-10-27 14:57:19.288192",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "YouTube ꯗ ꯌꯦꯡꯕꯤꯌꯨ",
     "createMyOwnCourse": "ꯑꯩꯒꯤ ꯑꯣꯟ ꯀꯣꯔꯁ ꯁꯦꯝꯃꯨ",
     "xpTowardMission": "మిషన్ వైపు {xp} XP",
-    "openCourse": "কোর্স হাংদোক্কন",
-    "centralCourseJoinedTitle": "নখোই {course} দা শরুক য়াখ্রে",
-    "centralCourseJoinedBody": "অসি {language} তম্লিবাশিংগী পাংগিয়াগী কোর্সনি। মসিগী মেম্বরশিংনা নখোইগী মমিং অমসুং প্রোফাইল উবা ফংগনি।",
     "centralCourseMembersSeeYou": "অসিগী কোর্সকী মেম্বরশিংনা নখোইগী মমিং অমসুং প্রোফাইল উবা ফংগনি।",
     "practiceStartWordCount": "{count, plural, =1{চিনবা ৱাহৈ অম} other{চিনবা ৱাহৈশিং}}",
     "practiceStartGrammarCount": "{count, plural, =1{চিনবা গ্রামার পোইন্ট অম} other{চিনবা গ্রামার পোইন্টশিং}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "Nangna karisu tamliba khongthang pao faonade.",
     "sharedAnalyticsOthersTitle": "ꯑꯇꯩꯁꯤꯡꯅ ꯅꯍꯥꯛꯀꯤ ꯄꯨꯔꯣꯒ꯭ꯔꯦꯁ ꯎꯕ ꯉꯃꯒꯅꯤ",
     "removeAnalyticsAccess": "ꯑꯦꯛꯁꯦꯁ ꯂꯧꯊꯣꯛꯎ",
-    "removeAnalyticsAccessDesc": "{name} ꯅ ꯅꯍꯥꯛꯀꯤ ꯂꯔꯅꯤꯡ ꯄꯨꯔꯣꯒ꯭ꯔꯦꯁ ꯎꯕ ꯉꯃꯂꯔꯣꯏ."
+    "removeAnalyticsAccessDesc": "{name} ꯅ ꯅꯍꯥꯛꯀꯤ ꯂꯔꯅꯤꯡ ꯄꯨꯔꯣꯒ꯭ꯔꯦꯁ ꯎꯕ ꯉꯃꯂꯔꯣꯏ.",
+    "centralCourseOfferBody": "অসি {language} তম্লিবাশিংগী পাংগিয়াগী কোর্সনি। মসিগী মেম্বরশিংনা নখোইগী মমিং অমসুং প্রোফাইল উবা ফংগনি।",
+    "centralCourseOfferTitle": "{course}দা শরুক য়াগদ್ರಾ?",
+    "makeMyOwnCourseInstead": "ঐহাক্কী ওইবা কোর্স অমা শাগনি"
 }

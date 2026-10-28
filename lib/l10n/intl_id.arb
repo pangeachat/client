@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:47:59.520168",
+    "@@last_modified": "2026-10-27 14:57:16.335972",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10112,9 +10112,6 @@
     "watchOnYoutube": "Tonton di YouTube",
     "createMyOwnCourse": "Buat kursus saya sendiri",
     "xpTowardMission": "{xp} XP untuk Misi ini",
-    "openCourse": "Buka kursus",
-    "centralCourseJoinedTitle": "Anda telah bergabung dengan {course}",
-    "centralCourseJoinedBody": "Ini adalah kursus Pangea untuk pembelajar {language}. Anggotanya dapat melihat nama dan profil Anda.",
     "centralCourseMembersSeeYou": "Anggota kursus ini dapat melihat nama dan profil Anda.",
     "practiceStartWordCount": "{count, plural, =1{kata untuk dilatih} other{kata untuk dilatih}}",
     "practiceStartGrammarCount": "{count, plural, =1{poin tata bahasa untuk dilatih} other{poin tata bahasa untuk dilatih}}",
@@ -10125,5 +10122,8 @@
     "sharedAnalyticsNone": "Anda tidak membagikan progres belajar Anda dengan kursus mana pun.",
     "sharedAnalyticsOthersTitle": "Orang lain yang dapat melihat progres Anda",
     "removeAnalyticsAccess": "Hapus akses",
-    "removeAnalyticsAccessDesc": "{name} tidak akan lagi dapat melihat progres belajar Anda."
+    "removeAnalyticsAccessDesc": "{name} tidak akan lagi dapat melihat progres belajar Anda.",
+    "centralCourseOfferBody": "Ini adalah kursus Pangea untuk pembelajar {language}. Anggotanya dapat melihat nama dan profil Anda.",
+    "centralCourseOfferTitle": "Gabung {course}?",
+    "makeMyOwnCourseInstead": "Buat kursus saya sendiri saja"
 }

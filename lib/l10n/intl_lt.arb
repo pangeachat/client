@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-27 14:48:01.625806",
+    "@@last_modified": "2026-10-27 14:57:18.329201",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10817,9 +10817,6 @@
     "watchOnYoutube": "Žiūrėti „YouTube“",
     "createMyOwnCourse": "Sukurti savo kursą",
     "xpTowardMission": "{xp} XP šiai misijai",
-    "openCourse": "Atidaryti kursą",
-    "centralCourseJoinedTitle": "Prisijungėte prie {course}",
-    "centralCourseJoinedBody": "Tai „Pangea“ kursas, skirtas {language} besimokantiems. Jo nariai gali matyti jūsų vardą ir profilį.",
     "centralCourseMembersSeeYou": "Šio kurso nariai gali matyti jūsų vardą ir profilį.",
     "practiceStartWordCount": "{count, plural, =1{žodis praktikai} other{žodžiai praktikai}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatikos punktas praktikai} other{gramatikos punktai praktikai}}",
@@ -10830,5 +10827,8 @@
     "sharedAnalyticsNone": "Jūs nebendrinate savo mokymosi pažangos su jokiu kursu.",
     "sharedAnalyticsOthersTitle": "Kiti, kurie gali matyti jūsų pažangą",
     "removeAnalyticsAccess": "Pašalinti prieigą",
-    "removeAnalyticsAccessDesc": "{name} nebegalės matyti jūsų mokymosi pažangos."
+    "removeAnalyticsAccessDesc": "{name} nebegalės matyti jūsų mokymosi pažangos.",
+    "centralCourseOfferBody": "Tai „Pangea“ kursas, skirtas {language} besimokantiems. Jo nariai gali matyti jūsų vardą ir profilį.",
+    "centralCourseOfferTitle": "Prisijungti prie {course}?",
+    "makeMyOwnCourseInstead": "Vietoj to sukurti savo kursą"
 }

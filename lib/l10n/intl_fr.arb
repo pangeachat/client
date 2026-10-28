@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-27 14:47:57.422596",
+    "@@last_modified": "2026-10-27 14:57:14.603077",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10391,9 +10391,6 @@
     "watchOnYoutube": "Regarder sur YouTube",
     "createMyOwnCourse": "Créer mon propre cours",
     "xpTowardMission": "{xp} XP pour cette mission",
-    "openCourse": "Ouvrir le cours",
-    "centralCourseJoinedTitle": "Vous avez rejoint {course}",
-    "centralCourseJoinedBody": "C'est le cours Pangea pour les apprenants de {language}. Ses membres peuvent voir votre nom et votre profil.",
     "centralCourseMembersSeeYou": "Les membres de ce cours peuvent voir votre nom et votre profil.",
     "practiceStartWordCount": "{count, plural, =1{mot à pratiquer} other{mots à pratiquer}}",
     "practiceStartGrammarCount": "{count, plural, =1{point de grammaire à pratiquer} other{points de grammaire à pratiquer}}",
@@ -10404,5 +10401,8 @@
     "sharedAnalyticsNone": "Vous ne partagez votre progression d'apprentissage avec aucun cours.",
     "sharedAnalyticsOthersTitle": "Autres personnes qui peuvent voir votre progression",
     "removeAnalyticsAccess": "Supprimer l'accès",
-    "removeAnalyticsAccessDesc": "{name} ne pourra plus voir votre progression d'apprentissage."
+    "removeAnalyticsAccessDesc": "{name} ne pourra plus voir votre progression d'apprentissage.",
+    "centralCourseOfferBody": "C'est le cours Pangea pour les apprenants de {language}. Ses membres peuvent voir votre nom et votre profil.",
+    "centralCourseOfferTitle": "Rejoindre {course} ?",
+    "makeMyOwnCourseInstead": "Créer mon propre cours à la place"
 }

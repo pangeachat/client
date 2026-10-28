@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-27 14:47:58.802746",
+    "@@last_modified": "2026-10-27 14:57:15.262485",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Coimhead air YouTube",
     "createMyOwnCourse": "Cruthaich mo chùrsa fhèin",
     "xpTowardMission": "{xp} XP a dh'ionnsaigh an Rùin seo",
-    "openCourse": "Fosgail an cùrsa",
-    "centralCourseJoinedTitle": "Tha thu air a dhol a-steach do {course}",
-    "centralCourseJoinedBody": "Is e cùrsa Pangea a th' ann do luchd-ionnsachaidh {language}. Chì na buill d' ainm agus do phròifil.",
     "centralCourseMembersSeeYou": "Chì buill a' chùrsa seo d' ainm agus do phròifil.",
     "practiceStartWordCount": "{count, plural, =1{facal ri chleachdadh} other{faclan ri chleachdadh}}",
     "practiceStartGrammarCount": "{count, plural, =1{puing gràmair ri chleachdadh} other{puingean gràmair ri chleachdadh}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "Chan eil thu a' co-roinn an adhartais ionnsachaidh agad le cùrsa sam bith.",
     "sharedAnalyticsOthersTitle": "Daoine eile a chì an adhartas agad",
     "removeAnalyticsAccess": "Thoir air falbh cothrom",
-    "removeAnalyticsAccessDesc": "Cha bhith {name} comasach air an adhartas ionnsachaidh agad fhaicinn tuilleadh."
+    "removeAnalyticsAccessDesc": "Cha bhith {name} comasach air an adhartas ionnsachaidh agad fhaicinn tuilleadh.",
+    "centralCourseOfferBody": "Is e cùrsa Pangea a th' ann do luchd-ionnsachaidh {language}. Chì na buill d' ainm agus do phròifil.",
+    "centralCourseOfferTitle": "Thig a-steach do {course}?",
+    "makeMyOwnCourseInstead": "Cruthaich mo chùrsa fhèin an àite sin"
 }

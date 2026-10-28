@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-27 14:47:59.907099",
+    "@@last_modified": "2026-10-27 14:57:17.070493",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Lelee na YouTube",
     "createMyOwnCourse": "Mepụta nkuzi nke m",
     "xpTowardMission": "{xp} XP maka Misionu a",
-    "openCourse": "Mepee ọmụmụ ihe",
-    "centralCourseJoinedTitle": "Ị sonyeere {course}",
-    "centralCourseJoinedBody": "Ọ bụ ọmụmụ ihe Pangea maka ndị na-amụ {language}. Ndị otu ya nwere ike ịhụ aha gị na profaịlụ gị.",
     "centralCourseMembersSeeYou": "Ndị otu ọmụmụ ihe a nwere ike ịhụ aha gị na profaịlụ gị.",
     "practiceStartWordCount": "{count, plural, =1{okwu ị ga-eme} other{okwu ị ga-eme}}",
     "practiceStartGrammarCount": "{count, plural, =1{isiokwu ụtọasụsụ ị ga-eme} other{isiokwu ụtọasụsụ ị ga-eme}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "Ị naghị ekesa ọganihu mmụta gị na nkuzi ọ bụla.",
     "sharedAnalyticsOthersTitle": "Ndị ọzọ nwere ike ịhụ ọganihu gị",
     "removeAnalyticsAccess": "Wepụ ohere",
-    "removeAnalyticsAccessDesc": "{name} agaghịzi enwe ike ịhụ ọganihu mmụta gị."
+    "removeAnalyticsAccessDesc": "{name} agaghịzi enwe ike ịhụ ọganihu mmụta gị.",
+    "centralCourseOfferBody": "Ọ bụ ọmụmụ ihe Pangea maka ndị na-amụ {language}. Ndị otu ya nwere ike ịhụ aha gị na profaịlụ gị.",
+    "centralCourseOfferTitle": "Banye {course}?",
+    "makeMyOwnCourseInstead": "Mee nke m kama"
 }

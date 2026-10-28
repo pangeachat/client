@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:47:56.250881",
+    "@@last_modified": "2026-10-27 14:57:13.560671",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10166,9 +10166,6 @@
     "watchOnYoutube": "Mira'l a YouTube",
     "createMyOwnCourse": "Crear el meu propi curs",
     "xpTowardMission": "{xp} XP per a aquesta missió",
-    "openCourse": "Obrir curs",
-    "centralCourseJoinedTitle": "T'has unit a {course}",
-    "centralCourseJoinedBody": "És el curs de Pangea per a aprenents de {language}. Els seus membres poden veure el teu nom i perfil.",
     "centralCourseMembersSeeYou": "Els membres d'aquest curs poden veure el teu nom i perfil.",
     "practiceStartWordCount": "{count, plural, =1{paraula per practicar} other{paraules per practicar}}",
     "practiceStartGrammarCount": "{count, plural, =1{punt gramatical per practicar} other{punts gramaticals per practicar}}",
@@ -10179,5 +10176,8 @@
     "sharedAnalyticsNone": "No estàs compartint el teu progrés d'aprenentatge amb cap curs.",
     "sharedAnalyticsOthersTitle": "Altres que poden veure el teu progrés",
     "removeAnalyticsAccess": "Eliminar accés",
-    "removeAnalyticsAccessDesc": "{name} ja no podrà veure el teu progrés d'aprenentatge."
+    "removeAnalyticsAccessDesc": "{name} ja no podrà veure el teu progrés d'aprenentatge.",
+    "centralCourseOfferBody": "És el curs de Pangea per a aprenents de {language}. Els seus membres poden veure el teu nom i perfil.",
+    "centralCourseOfferTitle": "Unir-me a {course}?",
+    "makeMyOwnCourseInstead": "Crear el meu propi curs"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-27 14:48:00.378405",
+    "@@last_modified": "2026-10-27 14:57:16.094004",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Saib hauv YouTube",
     "createMyOwnCourse": "Tsim kuv tus kheej chav kawm",
     "xpTowardMission": "{xp} XP rau lub Hom Phiaj no",
-    "openCourse": "Qhib kawm",
-    "centralCourseJoinedTitle": "Koj tau koom nrog {course}",
-    "centralCourseJoinedBody": "Nws yog Pangea cov chav kawm rau cov neeg kawm lus {language}. Nws cov tswv cuab tuaj yeem pom koj lub npe thiab profile.",
     "centralCourseMembersSeeYou": "Cov tswv cuab ntawm chav kawm no tuaj yeem pom koj lub npe thiab profile.",
     "practiceStartWordCount": "{count, plural, =1{lo lus kawm} other{cov lus kawm}}",
     "practiceStartGrammarCount": "{count, plural, =1{txoj cai sau ntawv kawm} other{cov cai sau ntawv kawm}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "Koj tsis tau qhia koj txoj kev kawm nrog ib chav kawm twg.",
     "sharedAnalyticsOthersTitle": "Lwm tus uas pom koj txoj kev kawm",
     "removeAnalyticsAccess": "Tshem tawm kev nkag mus",
-    "removeAnalyticsAccessDesc": "{name} yuav tsis pom koj txoj kev kawm ntxiv lawm."
+    "removeAnalyticsAccessDesc": "{name} yuav tsis pom koj txoj kev kawm ntxiv lawm.",
+    "centralCourseOfferBody": "Nws yog Pangea cov chav kawm rau cov neeg kawm lus {language}. Nws cov tswv cuab tuaj yeem pom koj lub npe thiab profile.",
+    "centralCourseOfferTitle": "Koj puas xav koom {course}?",
+    "makeMyOwnCourseInstead": "Kuv xav tsim kuv tus kheej qhov kev kawm"
 }

@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-27 14:48:06.970109",
+    "@@last_modified": "2026-10-27 14:57:22.737339",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10668,9 +10668,6 @@
     "watchOnYoutube": "ดูบน YouTube",
     "createMyOwnCourse": "สร้างคอร์สของฉันเอง",
     "xpTowardMission": "{xp} XP สำหรับภารกิจนี้",
-    "openCourse": "เปิดคอร์ส",
-    "centralCourseJoinedTitle": "คุณได้เข้าร่วม {course} แล้ว",
-    "centralCourseJoinedBody": "นี่คือคอร์สของ Pangea สำหรับผู้เรียนภาษา {language} สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
     "centralCourseMembersSeeYou": "สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
     "practiceStartWordCount": "{count, plural, =1{คำศัพท์ที่จะฝึก} other{คำศัพท์ที่จะฝึก}}",
     "practiceStartGrammarCount": "{count, plural, =1{หลักไวยากรณ์ที่จะฝึก} other{หลักไวยากรณ์ที่จะฝึก}}",
@@ -10681,5 +10678,8 @@
     "sharedAnalyticsNone": "คุณไม่ได้แชร์ความคืบหน้าในการเรียนรู้กับคอร์สใดๆ",
     "sharedAnalyticsOthersTitle": "คนอื่น ๆ ที่สามารถเห็นความคืบหน้าของคุณ",
     "removeAnalyticsAccess": "ลบการเข้าถึง",
-    "removeAnalyticsAccessDesc": "{name} จะไม่สามารถเห็นความคืบหน้าในการเรียนรู้ของคุณได้อีกต่อไป"
+    "removeAnalyticsAccessDesc": "{name} จะไม่สามารถเห็นความคืบหน้าในการเรียนรู้ของคุณได้อีกต่อไป",
+    "centralCourseOfferBody": "นี่คือคอร์สของ Pangea สำหรับผู้เรียนภาษา {language} สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
+    "centralCourseOfferTitle": "เข้าร่วม {course} ไหม",
+    "makeMyOwnCourseInstead": "สร้างคอร์สของฉันเองดีกว่า"
 }

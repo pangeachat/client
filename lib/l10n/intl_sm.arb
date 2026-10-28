@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-27 14:48:05.413218",
+    "@@last_modified": "2026-10-27 14:57:21.742786",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Maimoa i le YouTube",
     "createMyOwnCourse": "Fausia la'u lava kosi",
     "xpTowardMission": "{xp} XP agai i lenei Misiona",
-    "openCourse": "Tatala le kosi",
-    "centralCourseJoinedTitle": "Ua e auai i le {course}",
-    "centralCourseJoinedBody": "O le kosi a Pangea mo tagata aʻoga {language}. E mafai e ona sui ona vaʻai i lou igoa ma lau talaaga.",
     "centralCourseMembersSeeYou": "E mafai e sui o lenei kosi ona vaʻai i lou igoa ma lau talaaga.",
     "practiceStartWordCount": "{count, plural, =1{upu e faataʻitaʻi} other{upu e faataʻitaʻi}}",
     "practiceStartGrammarCount": "{count, plural, =1{manatu o le kalama e faataʻitaʻi} other{manatu o le kalama e faataʻitaʻi}}",
@@ -2514,5 +2511,8 @@
     "sharedAnalyticsNone": "E te le o faʻasoaina lou alualu i luma o le aʻoga i soʻo se vasega.",
     "sharedAnalyticsOthersTitle": "O isi e mafai ona vaʻai i lau alualu i luma",
     "removeAnalyticsAccess": "Aveese le avanoa",
-    "removeAnalyticsAccessDesc": "E le mafai ona toe vaʻai {name} i lau alualu i luma o le aʻoaʻoina."
+    "removeAnalyticsAccessDesc": "E le mafai ona toe vaʻai {name} i lau alualu i luma o le aʻoaʻoina.",
+    "centralCourseOfferBody": "O le kosi a Pangea mo tagata aʻoga {language}. E mafai e ona sui ona vaʻai i lou igoa ma lau talaaga.",
+    "centralCourseOfferTitle": "Auai i le {course}?",
+    "makeMyOwnCourseInstead": "Fausia laʻu lava kosi"
 }
