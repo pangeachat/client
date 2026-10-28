@@ -709,14 +709,33 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   static const double _coursesSheetSearchBarEstimate = 64.0;
   static const double _coursesSheetFilterPillsEstimate = 56.0;
 
-  /// The activity plan's minimized rest height: the cavity handle + the start
-  /// page's app bar, info row, and CTA row, with no media/description. This is
-  /// the plan's opening stop (there is no taller mid-level); dragging up goes
-  /// to full, dragging down dismisses. Kept in step with
-  /// `kActivityCompactMaxHeight` in activity_sessions_start_view.dart, which
-  /// tells the body to drop its content below this height. See
-  /// activity-start-page.instructions.md.
-  static const double _activitySheetMinimizedHeight = 200.0;
+  @override
+  void initState() {
+    super.initState();
+    // The activity plan's minimized rest (its opening stop — there is no
+    // taller mid-level) fits the CTA area the start page measures
+    // ([ActivitySheetCtaHeight.minimizedSheetHeight]), so rebuild when it
+    // changes. It stays below `kActivityCompactMaxHeight` in
+    // activity_sessions_start_view.dart, which tells the body to drop its
+    // content. See activity-start-page.instructions.md.
+    ActivitySheetCtaHeight.notifier.addListener(_onCtaHeightChanged);
+  }
+
+  @override
+  void dispose() {
+    ActivitySheetCtaHeight.notifier.removeListener(_onCtaHeightChanged);
+    super.dispose();
+  }
+
+  /// The start page reports its CTA height after its frame and resets it when
+  /// it is disposed, which happens while the tree is locked; rebuilding on the
+  /// next frame is safe from both.
+  void _onCtaHeightChanged() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) setState(() {});
+    });
+    WidgetsBinding.instance.ensureVisualUpdate();
+  }
 
   /// The course PREVIEW's minimized rest height (#7826): the cavity handle +
   /// the header tile + the CTA row, description/modules dropped. Only the
@@ -860,7 +879,9 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // its button shows rather than waiting behind a drag.
     double? preferredCavityHeight;
     if (isActivityCavity) {
-      preferredCavityHeight = _activitySheetMinimizedHeight;
+      preferredCavityHeight = ActivitySheetCtaHeight.minimizedSheetHeight(
+        ActivitySheetCtaHeight.notifier.value,
+      );
     } else if (isCoursePreviewCavity) {
       preferredCavityHeight = _coursePreviewSheetMinimizedHeight;
     } else if (cavityToken?.type == PanelTypesEnum.chats) {
@@ -1628,11 +1649,13 @@ class _ShellLayout {
     // target UX). The band is the minimized cavity height plus the bottom safe
     // area and a margin of breathing room; the sheet carries no rail. An
     // estimate of the resting sheet, deliberately not live-tracked: dragging
-    // the sheet (or maximizing it) must not yank the camera.
+    // the sheet (or maximizing it) must not yank the camera. It takes the
+    // tallest minimized rest, since the CTA height is only known once the
+    // page loads, and a pin a little high still shows.
     var mapBottomOverlay = 0.0;
     if (hasCavity && leftTokens[cavityIndex].type == PanelTypesEnum.activity) {
       mapBottomOverlay =
-          _MobileNavLayerState._activitySheetMinimizedHeight +
+          ActivitySheetCtaHeight.maxSheetHeight +
           MediaQuery.viewPaddingOf(context).bottom +
           chromeMargin * 2;
     } else if (hasCavity && _tokenIsCoursePreview(leftTokens[cavityIndex])) {

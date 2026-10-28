@@ -50,6 +50,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart'
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -254,6 +255,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   @override
   void dispose() {
+    // The next activity opens at the usual height until its CTAs measure.
+    ActivitySheetCtaHeight.set(ActivitySheetCtaHeight.defaultHeight);
     scrollController.dispose();
     pickedRoleNotifier.dispose();
     DiscoveredSessionsCache.instance.removeListener(

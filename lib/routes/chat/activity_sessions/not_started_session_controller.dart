@@ -22,23 +22,25 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/session_presence_tracker.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum NotStartedSubPage {
+  /// The activity itself, listing any open sessions under it.
   main,
-  join,
+
+  /// The Completed list.
   view;
 
   List<ActivitySummaryStatus> get visibleStatuses {
     switch (this) {
-      case NotStartedSubPage.join:
-        return [ActivitySummaryStatus.notStarted];
       case NotStartedSubPage.view:
         return [ActivitySummaryStatus.completed];
       case NotStartedSubPage.main:
-        return [];
+        return [ActivitySummaryStatus.notStarted];
     }
   }
 }
@@ -83,41 +85,6 @@ class NotStartedSessionController extends State<NotStartedSession>
   NotStartedSubPage _subPage = NotStartedSubPage.main;
   final _goalsHandler = GoalsSubscriptionHandler();
 
-  /// The join list was opened for the learner because the activity had open
-  /// sessions, rather than by a tap.
-  bool _landedOnJoinList = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _syncJoinListLanding();
-  }
-
-  @override
-  void didUpdateWidget(NotStartedSession oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _syncJoinListLanding();
-  }
-
-  /// A joinable activity opens straight on its join list, so an open session
-  /// is never passed over for a bot the learner didn't need; if its last open
-  /// session fills while they look, the page falls back to the start choice.
-  void _syncJoinListLanding() {
-    if (widget.summariesLoading || joinedActivityRoomId != null) return;
-    final hasOpen = openSessionCount > 0;
-    if (hasOpen && _subPage == NotStartedSubPage.main && !_landedOnJoinList) {
-      _landedOnJoinList = true;
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) goToJoinPage();
-      });
-    } else if (!hasOpen && _subPage == NotStartedSubPage.join) {
-      _landedOnJoinList = false;
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) goToMainPage();
-      });
-    }
-  }
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -132,18 +99,13 @@ class NotStartedSessionController extends State<NotStartedSession>
 
   NotStartedSubPage get subPage => _subPage;
 
-  // The sub-page change is reported to the start state because the join list
-  // mounting is a tutorial trigger it can't otherwise see
+  // The sub-page change is reported to the start state because the open
+  // sessions mounting is a tutorial trigger it can't otherwise see
   // (ActivitySessionStartState.onTutorialSurfaceChanged).
-  void goToJoinPage() => _setSubPage(NotStartedSubPage.join);
   void goToViewPage() => _setSubPage(NotStartedSubPage.view);
   void goToMainPage() => _setSubPage(NotStartedSubPage.main);
 
-  /// Back from the Completed list returns to the join list when that is where
-  /// the activity landed.
-  void goBackFromSubPage() => _setSubPage(
-    _landedOnJoinList ? NotStartedSubPage.join : NotStartedSubPage.main,
-  );
+  void goBackFromSubPage() => goToMainPage();
 
   void _setSubPage(NotStartedSubPage subPage) {
     setState(() => _subPage = subPage);
@@ -280,12 +242,53 @@ class NotStartedSessionController extends State<NotStartedSession>
   void playWithBot() => startNewActivity(withBot: true);
 
   /// Join someone's open session if there is one, else start a session and
-  /// wait for people.
-  void playWithHuman() {
-    if (openSessionCount > 0) {
-      goToJoinPage();
+  /// wait for people. A new open session is only started when none is
+  /// waiting, so learners who want a partner meet in the same room rather
+  /// than each waiting alone in their own.
+  Future<void> playWithHuman() async {
+    final openSessionId = await bestOpenSessionId();
+    if (!mounted) return;
+    if (openSessionId != null) {
+      await joinActivityByRoomId(openSessionId);
     } else {
       startNewActivity();
+    }
+  }
+
+  /// The open session "Play with others" joins: the one a course ping pointed
+  /// the learner at, else the most recently active — the top of the open
+  /// sessions list, by the same presence rule. Reads only presence the client
+  /// already holds (sync keeps it current for anyone sharing the course), so
+  /// the tap doesn't wait on a request.
+  Future<String?> bestOpenSessionId() async {
+    final open = activityStatuses.getSessionsByStatus(
+      ActivitySummaryStatus.notStarted,
+    );
+    if (open.isEmpty) return null;
+    final ping = CoursePingBadgeCache.instance.value;
+    if (ping != null &&
+        ping.courseId == widget.course?.id &&
+        ping.activityId == widget.activityId &&
+        open.containsKey(ping.sessionRoomId)) {
+      return ping.sessionRoomId;
+    }
+    final presence = SessionPresenceTracker(Matrix.of(context).client);
+    try {
+      await presence.watch([
+        for (final summary in open.values) ...summary.joinedMemberIds,
+      ], cachedOnly: true);
+      final now = DateTime.now();
+      final entries = open.entries.toList()
+        ..sort((a, b) {
+          final byRecent = SessionPresenceTracker.compareRecentFirst(
+            presence.lastActiveOf(a.value.joinedMemberIds, now: now),
+            presence.lastActiveOf(b.value.joinedMemberIds, now: now),
+          );
+          return byRecent != 0 ? byRecent : a.key.compareTo(b.key);
+        });
+      return entries.first.key;
+    } finally {
+      presence.dispose();
     }
   }
 

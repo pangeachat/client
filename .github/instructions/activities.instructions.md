@@ -43,9 +43,10 @@ The activity's start page doesn't store its own state; it reads it from the room
 
 A few steps are taken for the learner, to keep them out of choices that don't matter ([client#9333](https://github.com/pangeachat/client/issues/9333)):
 
-- **Joining from the join list with exactly one open role** claims that role straight away and lands the learner in the session. With two or more open roles the role picker stays; if someone takes the seat first, the session opens for viewing instead.
+- **Play with others with a session already waiting** joins that session rather than opening a new one; the start page's buttons own which session it picks ([activity-start-page.instructions.md](activity-start-page.instructions.md#the-cta-row)).
+- **Joining an open session with exactly one open role** claims that role straight away and lands the learner in the session. With two or more open roles the role picker stays; if someone takes the seat first, the session opens for viewing instead.
 - **Play with Pangea Bot** adds the bot as soon as the new session exists, after the learner picks a role. If the bot fails to join, the waiting room's bot button re-invites it.
-- **A session viewed from the join list** opens inside the activity with a back arrow to the list; backing out without taking a role leaves the room, so looking doesn't leave the learner a member.
+- **A session viewed from the open sessions list** opens inside the activity with a back arrow to the list; backing out without taking a role leaves the room, so looking doesn't leave the learner a member.
 
 **Which course a session belongs to.** A session is shared into every joined course that lists its activity, so it has no single home course. For now the waiting room's online count, **Ping** and **Invite** all use the course the session was started from (`Room.sourceCourse`), and the waiting room names that course so a learner browsing another course can tell. Which course a shared session should belong to is still being discussed ([discussion #9328](https://github.com/pangeachat/client/discussions/9328)).
 
