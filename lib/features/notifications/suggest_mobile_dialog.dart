@@ -74,7 +74,7 @@ class SuggestMobileDialog extends StatelessWidget {
                     ),
                   ),
                   if (phoneStore == null) ...[
-                    // The caption and the link's text below say what this is.
+                    // The link written out below says where this goes.
                     ExcludeSemantics(
                       child: SizedBox.square(
                         dimension: _qrCodeSize,
@@ -89,14 +89,6 @@ class SuggestMobileDialog extends StatelessWidget {
                             background: Colors.white,
                           ),
                         ),
-                      ),
-                    ),
-                    Semantics(
-                      container: true,
-                      child: Text(
-                        l10n.suggestMobileScanQrCode,
-                        textAlign: TextAlign.center,
-                        style: theme.textTheme.bodyMedium,
                       ),
                     ),
                     // Typed into a phone by anyone who can't scan.
@@ -133,26 +125,29 @@ class SuggestMobileDialog extends StatelessWidget {
                   ),
                   Semantics(
                     container: true,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primary,
-                        foregroundColor: theme.colorScheme.onPrimary,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 24,
-                          vertical: 12,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: theme.colorScheme.primary,
+                          foregroundColor: theme.colorScheme.onPrimary,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 24,
+                            vertical: 12,
+                          ),
                         ),
-                      ),
-                      onPressed: () => Navigator.of(
-                        context,
-                      ).pop<OkCancelResult>(OkCancelResult.cancel),
-                      child: Text(
-                        l10n.gotIt,
-                        // bodyLarge carries onSurface; the label needs the
-                        // fill's ink.
-                        style: theme.textTheme.bodyLarge?.copyWith(
-                          color: theme.colorScheme.onPrimary,
+                        onPressed: () => Navigator.of(
+                          context,
+                        ).pop<OkCancelResult>(OkCancelResult.cancel),
+                        child: Text(
+                          l10n.gotIt,
+                          // bodyLarge carries onSurface; the label needs the
+                          // fill's ink.
+                          style: theme.textTheme.bodyLarge?.copyWith(
+                            color: theme.colorScheme.onPrimary,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),

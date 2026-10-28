@@ -10053,6 +10053,5 @@
     "centralCourseOfferBody": "Це курс Pangea для тих, хто вивчає {language}. Учасники курсу бачитимуть ваше ім’я та профіль.",
     "centralCourseOfferTitle": "Приєднатися до курсу «{course}»?",
     "makeMyOwnCourseInstead": "Натомість створити власний курс",
-    "suggestMobileScanQrCode": "Скануйте камерою телефону",
     "suggestMobileSignInSameAccount": "Потім увійдіть у програму за допомогою цього облікового запису."
 }

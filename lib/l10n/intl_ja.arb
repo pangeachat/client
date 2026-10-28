@@ -10819,6 +10819,5 @@
     "centralCourseOfferBody": "これは{language}学習者向けのPangeaのコースです。メンバーはあなたの名前とプロフィールを見ることができます。",
     "centralCourseOfferTitle": "{course}に参加しますか？",
     "makeMyOwnCourseInstead": "代わりに自分でコースを作成する",
-    "suggestMobileScanQrCode": "スマートフォンのカメラでスキャン",
     "suggestMobileSignInSameAccount": "その後、このアカウントでアプリにサインインしてください。"
 }

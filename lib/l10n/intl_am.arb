@@ -2515,6 +2515,5 @@
     "centralCourseOfferBody": "ይህ የፓንጋያ ኮርስ ለ{language} ተማሪዎች ነው። አባላቱ የእርስዎን ስም እና መገለጫ ማየት ይችላሉ።",
     "centralCourseOfferTitle": "{course}ን ይቀላቀላሉ?",
     "makeMyOwnCourseInstead": "በምትኩ የራሴን ኮርስ ልፍጠር",
-    "suggestMobileScanQrCode": "በስልክዎ ካሜራ ይቃኙ",
     "suggestMobileSignInSameAccount": "ከዚያም በዚህ መለያ ወደ መተግበሪያው ይግቡ።"
 }

@@ -5167,7 +5167,6 @@
     "analyticsDownloadDesc": "Downloads personal vocab and grammar analytics for the selected language.",
     "courseAnalyticsDownloadDesc": "Downloads the lemma and grammar usage in the selected language for all course participants with shared analytics.",
     "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!",
-    "suggestMobileScanQrCode": "Scan with your phone's camera",
     "suggestMobileSignInSameAccount": "Then sign in to the app with this account.",
     "cefrLevelMatch": "This course matches your language level",
     "cefrLevelBelow": "This course is below your language level.",

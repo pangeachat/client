@@ -2515,6 +2515,5 @@
     "centralCourseOfferBody": "එය {language} ඉගෙන ගන්නන් සඳහා වන Pangea පාඨමාලාවයි. එහි සාමාජිකයින්ට ඔබේ නම සහ පැතිකඩ දැකිය හැක.",
     "centralCourseOfferTitle": "{course} හා සම්බන්ධ වෙනවාද?",
     "makeMyOwnCourseInstead": "ඒ වෙනුවට මගේම පාඨමාලාවක් සාදන්න",
-    "suggestMobileScanQrCode": "ඔබගේ දුරකථනයේ කැමරාවෙන් ස්කෑන් කරන්න",
     "suggestMobileSignInSameAccount": "ඉන්පසු මෙම ගිණුමෙන් යෙදුමට පුරනය වන්න."
 }

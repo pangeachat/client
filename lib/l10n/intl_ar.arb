@@ -10356,6 +10356,5 @@
     "centralCourseOfferBody": "إنها دورة بانجيا لمتعلمي {language}. يمكن لأعضائها رؤية اسمك وملفك الشخصي.",
     "centralCourseOfferTitle": "هل تريد الانضمام إلى {course}؟",
     "makeMyOwnCourseInstead": "إنشاء دورتي التدريبية بدلاً من ذلك",
-    "suggestMobileScanQrCode": "امسح باستخدام كاميرا هاتفك",
     "suggestMobileSignInSameAccount": "ثم سجّل الدخول إلى التطبيق باستخدام هذا الحساب."
 }

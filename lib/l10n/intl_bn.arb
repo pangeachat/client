@@ -10678,6 +10678,5 @@
     "centralCourseOfferBody": "এটি {language} শিক্ষার্থীদের জন্য প্যানজিয়ার কোর্স। এর সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।",
     "centralCourseOfferTitle": "{course}-এ যোগ দেবেন?",
     "makeMyOwnCourseInstead": "এর বদলে আমার নিজের কোর্স তৈরি করি",
-    "suggestMobileScanQrCode": "আপনার ফোনের ক্যামেরা দিয়ে স্ক্যান করুন",
     "suggestMobileSignInSameAccount": "তারপর এই অ্যাকাউন্ট দিয়ে অ্যাপে সাইন ইন করুন।"
 }

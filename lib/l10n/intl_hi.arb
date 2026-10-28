@@ -10682,6 +10682,5 @@
     "centralCourseOfferBody": "यह {language} सीखने वालों के लिए पैंगिया का कोर्स है। इसके सदस्य आपका नाम और प्रोफ़ाइल देख सकते हैं।",
     "centralCourseOfferTitle": "{course} में शामिल हों?",
     "makeMyOwnCourseInstead": "इसके बजाय अपना कोर्स बनाएं",
-    "suggestMobileScanQrCode": "अपने फ़ोन के कैमरे से स्कैन करें",
     "suggestMobileSignInSameAccount": "फिर इसी अकाउंट से ऐप में साइन इन करें।"
 }

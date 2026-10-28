@@ -10925,6 +10925,5 @@
     "centralCourseOfferBody": "Είναι το μάθημα της Pangea για μαθητές {language}. Τα μέλη του μπορούν να δουν το όνομα και το προφίλ σας.",
     "centralCourseOfferTitle": "Συμμετοχή στο {course};",
     "makeMyOwnCourseInstead": "Να φτιάξω το δικό μου μάθημα",
-    "suggestMobileScanQrCode": "Σαρώστε με την κάμερα του τηλεφώνου σας",
     "suggestMobileSignInSameAccount": "Στη συνέχεια, συνδεθείτε στην εφαρμογή με αυτόν τον λογαριασμό."
 }

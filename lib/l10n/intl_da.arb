@@ -10970,6 +10970,5 @@
     "centralCourseOfferBody": "Det er Pangeas kursus for {language}-elever. Medlemmer kan se dit navn og din profil.",
     "centralCourseOfferTitle": "Tilmeld dig {course}?",
     "makeMyOwnCourseInstead": "Opret mit eget kursus i stedet",
-    "suggestMobileScanQrCode": "Scan med telefonens kamera",
     "suggestMobileSignInSameAccount": "Log derefter ind på appen med denne konto."
 }

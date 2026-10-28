@@ -10,7 +10,7 @@ Notifications reach a learner through the app, so where the app asks for notific
 ## The experience
 
 1. On web, a learner opens notification settings or a course page. If the browser is not already allowed to show Pangea Chat notifications, and they have not seen the dialog in the last 30 days, it opens.
-2. On a computer, the dialog shows its title and a line saying the app is needed for notifications. Below them are a QR code, the words "Scan with your phone's camera", and the link written out as pangea.chat/app. The App Store and Google Play badges follow.
+2. On a computer, the dialog shows its title and a line saying the app is needed for notifications. Below them are a QR code and the link written out as pangea.chat/app. The App Store and Google Play badges follow.
 3. On a phone or tablet browser, the dialog shows the illustration, the title and line, and only that device's store badge.
 4. Both end with "Then sign in to the app with this account." and a "Got it!" button.
 

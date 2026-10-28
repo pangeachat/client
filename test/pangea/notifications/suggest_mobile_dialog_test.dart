@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
@@ -48,8 +49,9 @@ void main() {
       final semantics = tester.ensureSemantics();
       final l10n = await pumpDialog(tester);
 
+      // The QR code takes the illustration's place.
       expect(find.byType(PrettyQrView), findsOneWidget);
-      expect(find.text(l10n.suggestMobileScanQrCode), findsOneWidget);
+      expect(find.byType(CachedNetworkImage), findsNothing);
       expect(find.text('pangea.chat/app'), findsOneWidget);
 
       final appStore = find.bySemanticsLabel(appStoreLabel);
@@ -99,7 +101,7 @@ void main() {
   );
 
   testWidgets(
-    'an iPhone browser shows only the App Store badge, without a QR code',
+    'an iPhone browser shows the illustration and only the App Store badge, without a QR code',
     (tester) async {
       final semantics = tester.ensureSemantics();
       final l10n = await pumpDialog(tester);
@@ -107,6 +109,7 @@ void main() {
       expect(find.bySemanticsLabel(appStoreLabel), findsOneWidget);
       expect(find.bySemanticsLabel(googlePlayLabel), findsNothing);
       expect(find.byType(PrettyQrView), findsNothing);
+      expect(find.byType(CachedNetworkImage), findsOneWidget);
       expect(find.text(l10n.suggestMobileSignInSameAccount), findsOneWidget);
       semantics.dispose();
     },
@@ -114,7 +117,7 @@ void main() {
   );
 
   testWidgets(
-    'an Android browser shows only the Google Play badge, without a QR code',
+    'an Android browser shows the illustration and only the Google Play badge, without a QR code',
     (tester) async {
       final semantics = tester.ensureSemantics();
       final l10n = await pumpDialog(tester);
@@ -122,6 +125,7 @@ void main() {
       expect(find.bySemanticsLabel(googlePlayLabel), findsOneWidget);
       expect(find.bySemanticsLabel(appStoreLabel), findsNothing);
       expect(find.byType(PrettyQrView), findsNothing);
+      expect(find.byType(CachedNetworkImage), findsOneWidget);
       expect(find.text(l10n.suggestMobileSignInSameAccount), findsOneWidget);
       semantics.dispose();
     },

@@ -10682,6 +10682,5 @@
     "centralCourseOfferBody": "นี่คือคอร์สของ Pangea สำหรับผู้เรียนภาษา {language} สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
     "centralCourseOfferTitle": "เข้าร่วม {course} ไหม",
     "makeMyOwnCourseInstead": "สร้างคอร์สของฉันเองดีกว่า",
-    "suggestMobileScanQrCode": "สแกนด้วยกล้องในโทรศัพท์ของคุณ",
     "suggestMobileSignInSameAccount": "จากนั้นลงชื่อเข้าใช้แอปด้วยบัญชีนี้"
 }
