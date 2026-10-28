@@ -18,12 +18,20 @@ class CanDoProgress {
   /// ([withReplayedDate]), and reconstructed rather than seen once it is set.
   final bool completedBeforeTracking;
 
+  /// The course's threshold when the app first saw this Mission complete, set
+  /// with [firstCompletedAt] and never changed after, so the Mission's meter
+  /// can keep counting against it (quests.instructions.md, "A completed
+  /// Mission stays complete"). Null for a date replayed from history, or one
+  /// stored before the record carried it.
+  final int? xpToCompleteAtFirstCompletion;
+
   const CanDoProgress({
     required this.xp,
     required this.breakdown,
     required this.completed,
     this.firstCompletedAt,
     this.completedBeforeTracking = false,
+    this.xpToCompleteAtFirstCompletion,
   });
 
   static const _xpKey = 'xp';
@@ -34,12 +42,16 @@ class CanDoProgress {
   static const _completedKey = 'completed';
   static const _firstCompletedAtKey = 'first_completed_at';
   static const _completedBeforeTrackingKey = 'completed_before_tracking';
+  static const _xpToCompleteAtFirstCompletionKey =
+      'xp_to_complete_at_first_completion';
 
   /// Null for anything that isn't an entry: the record is read from room
   /// state another device may have written.
   static CanDoProgress? fromJson(Object? json) {
     if (json is! Map) return null;
     final firstCompletedAt = json[_firstCompletedAtKey];
+    final xpToCompleteAtFirstCompletion =
+        json[_xpToCompleteAtFirstCompletionKey];
     return CanDoProgress(
       xp: _intOf(json[_xpKey]),
       breakdown: MissionXpBreakdown(
@@ -53,6 +65,9 @@ class CanDoProgress {
           ? DateTime.tryParse(firstCompletedAt)?.toUtc()
           : null,
       completedBeforeTracking: json[_completedBeforeTrackingKey] == true,
+      xpToCompleteAtFirstCompletion: xpToCompleteAtFirstCompletion is num
+          ? xpToCompleteAtFirstCompletion.toInt()
+          : null,
     );
   }
 
@@ -67,19 +82,27 @@ class CanDoProgress {
     _completedKey: completed,
     _firstCompletedAtKey: firstCompletedAt?.toUtc().toIso8601String(),
     if (completedBeforeTracking) _completedBeforeTrackingKey: true,
+    if (xpToCompleteAtFirstCompletion != null)
+      _xpToCompleteAtFirstCompletionKey: xpToCompleteAtFirstCompletion,
   };
 
   /// This entry with its completion date carried over from [before], the
-  /// entry stored last time. A stored date is kept. A Mission is dated [now]
-  /// only when it changes from not complete to complete; one already complete
-  /// the first time it is written gets no date, because its real date is
-  /// unknown and a guessed one could never be corrected.
-  CanDoProgress datedAfter(CanDoProgress? before, DateTime now) {
+  /// entry stored last time. A stored date is kept, with the threshold stored
+  /// beside it. A Mission is dated [now], at [xpToComplete], only when it
+  /// changes from not complete to complete; one already complete the first
+  /// time it is written gets no date, because its real date is unknown and a
+  /// guessed one could never be corrected.
+  CanDoProgress datedAfter(
+    CanDoProgress? before,
+    DateTime now,
+    int xpToComplete,
+  ) {
     final storedDate = before?.firstCompletedAt;
     if (storedDate != null) {
       return _dated(
         firstCompletedAt: storedDate,
         completedBeforeTracking: before!.completedBeforeTracking,
+        xpToCompleteAtFirstCompletion: before.xpToCompleteAtFirstCompletion,
       );
     }
     if (before?.completedBeforeTracking ?? false) {
@@ -88,7 +111,10 @@ class CanDoProgress {
     if (!completed) return _dated();
     return before == null
         ? _dated(completedBeforeTracking: true)
-        : _dated(firstCompletedAt: now);
+        : _dated(
+            firstCompletedAt: now,
+            xpToCompleteAtFirstCompletion: xpToComplete,
+          );
   }
 
   /// Complete, but completed before tracking with no date yet: its date is
@@ -105,11 +131,13 @@ class CanDoProgress {
   CanDoProgress _dated({
     DateTime? firstCompletedAt,
     bool completedBeforeTracking = false,
+    int? xpToCompleteAtFirstCompletion,
   }) => CanDoProgress(
     xp: xp,
     breakdown: breakdown,
     completed: completed,
     firstCompletedAt: firstCompletedAt,
     completedBeforeTracking: completedBeforeTracking,
+    xpToCompleteAtFirstCompletion: xpToCompleteAtFirstCompletion,
   );
 }

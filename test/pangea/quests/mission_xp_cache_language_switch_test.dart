@@ -19,7 +19,8 @@ import '../analytics_data/analytics_fixtures.dart';
 /// reaches the cache before the analytics store re-initialises for the new
 /// language, and a re-init can fail; in neither case may the cache hold an
 /// empty or other-language read as the new language's XP, which the meters
-/// would show and the course progress record would post.
+/// would show and the course progress record would post. Nor may it hold
+/// another account's read once a different account is active (#9681).
 void main() {
   final fr = LanguageModel(langCode: 'fr', displayName: 'French');
   final es = LanguageModel(langCode: 'es', displayName: 'Spanish');
@@ -27,6 +28,7 @@ void main() {
   final en = LanguageModel(langCode: 'en', displayName: 'English');
   late _Analytics analytics;
   late _Users users;
+  late _Matrix matrix;
   final cache = MissionXpCache.instance;
 
   /// Lets every queued refresh run: one asked for while another is in flight
@@ -50,7 +52,8 @@ void main() {
   setUpAll(() async {
     analytics = _Analytics()..loaded = 'fr';
     users = _Users()..userL2 = fr;
-    MatrixState.pangeaController = _Controller(users, _Matrix(analytics));
+    matrix = _Matrix(analytics);
+    MatrixState.pangeaController = _Controller(users, matrix);
     cache.ensureWired();
     await settle();
     expect(cache.hasReadFor('fr'), isTrue);
@@ -97,6 +100,29 @@ void main() {
     expect(cache.loading, isFalse);
     expect(cache.chatXpByRoom, isEmpty);
     expect(cache.practiceXpByLemma, isEmpty);
+  });
+
+  test('another account gets none of the previous account\'s read', () async {
+    analytics
+      ..initError = null
+      ..loaded = 'fr'
+      ..store['fr'] = [use(lemma: 'ami', xp: 4, ts: at(0))];
+    await switchTo(fr);
+    expect(cache.hasReadFor('fr'), isTrue);
+    expect(cache.practiceXpByLemma, {'ami': 4});
+
+    // A second account in the same language becomes active.
+    matrix.analytics = _Analytics()
+      ..loaded = 'fr'
+      ..store['fr'] = [use(lemma: 'chat', xp: 2, ts: at(0))];
+    expect(cache.hasReadFor('fr'), isFalse);
+
+    cache.ensureWired();
+    expect(cache.practiceXpByLemma, isEmpty);
+    await settle();
+
+    expect(cache.hasReadFor('fr'), isTrue);
+    expect(cache.practiceXpByLemma, {'chat': 2});
   });
 }
 
@@ -160,7 +186,8 @@ class _Users implements UserController {
 class _Matrix implements MatrixState {
   _Matrix(this.analytics);
 
-  final AnalyticsDataService analytics;
+  /// The active account's service.
+  AnalyticsDataService analytics;
 
   @override
   AnalyticsDataService? get analyticsServiceIfExists => analytics;

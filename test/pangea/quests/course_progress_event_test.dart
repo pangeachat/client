@@ -159,6 +159,53 @@ void main() {
       expect(again.canDos['lo1']!.completedBeforeTracking, isTrue);
     });
 
+    test('a Mission seen to become complete keeps the threshold it met', () {
+      final first = write(
+        null,
+        {'lo1': canDo(300)},
+        now: t0,
+        xpToComplete: 500,
+      )!;
+      final done = write(
+        first,
+        {'lo1': canDo(600, completed: true)},
+        now: t1,
+        xpToComplete: 500,
+      )!;
+      expect(done.canDos['lo1']!.xpToCompleteAtFirstCompletion, 500);
+      expect(
+        done.toJson()['can_dos'],
+        containsPair(
+          'lo1',
+          containsPair('xp_to_complete_at_first_completion', 500),
+        ),
+      );
+      final read = CourseProgressEvent.fromJson(done.toJson())!;
+      final raised = write(
+        read,
+        {'lo1': canDo(600, completed: true)},
+        now: t2,
+        xpToComplete: 1500,
+      )!;
+      expect(raised.canDos['lo1']!.xpToCompleteAtFirstCompletion, 500);
+      expect(raised.canDos['lo1']!.firstCompletedAt, t1);
+    });
+
+    test('a Mission complete at the first write, or replayed, has none', () {
+      final first = write(null, {
+        'lo1': canDo(1200, completed: true),
+      }, now: t1)!;
+      expect(first.canDos['lo1']!.xpToCompleteAtFirstCompletion, isNull);
+      final replayed = first.withReplayedDates({'lo1': t0});
+      expect(replayed.canDos['lo1']!.xpToCompleteAtFirstCompletion, isNull);
+      expect(
+        replayed.toJson()['can_dos'],
+        isNot(
+          containsPair('lo1', contains('xp_to_complete_at_first_completion')),
+        ),
+      );
+    });
+
     test('a Mission added to the course already complete gets no date', () {
       final first = write(null, {'lo1': canDo(300)}, now: t0)!;
       final added = write(first, {

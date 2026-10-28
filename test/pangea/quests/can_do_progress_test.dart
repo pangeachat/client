@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
+import 'package:fluffychat/features/quests/can_do_progress.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
 import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
@@ -99,6 +100,31 @@ void main() {
       final hidden = canDos['hidden']!;
       expect(hidden.xp, 2000);
       expect(hidden.completed, isFalse);
+      await client.dispose();
+    },
+  );
+
+  test(
+    'a recorded completion stays complete after the threshold rises',
+    () async {
+      final client = await getTestClient();
+      final canDos = client.canDoProgress(
+        outline,
+        xpToComplete: 1000,
+        xpByActivity: const {'a1': 150},
+        byActivity: const {'a1': MissionXpBreakdown(chat: 100, goals: 50)},
+        recorded: {
+          'shown': CanDoProgress(
+            xp: 150,
+            breakdown: const MissionXpBreakdown(chat: 100, goals: 50),
+            completed: true,
+            firstCompletedAt: DateTime.utc(2026, 10, 20),
+            xpToCompleteAtFirstCompletion: 100,
+          ),
+        },
+      );
+      expect(canDos['shown']!.xp, 150);
+      expect(canDos['shown']!.completed, isTrue);
       await client.dispose();
     },
   );
