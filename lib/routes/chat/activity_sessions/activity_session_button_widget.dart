@@ -312,6 +312,14 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                   playWithBot: expandThen(controller.playWithBot),
                   playWithOthers: expandThen(controller.playWithHuman),
                 )
+              // A larger activity's single button joins a waiting session when
+              // there is one, so it says so; otherwise it starts a new one.
+              else if (controller.openSessionCount > 0)
+                ActivitySessionCTAButton(
+                  L10n.of(context).joinOpenSession,
+                  expandThen(controller.playWithHuman),
+                  icon: ActivityPinState.joinable.icon,
+                )
               else
                 ActivitySessionCTAButton(
                   L10n.of(context).start,
