@@ -33,6 +33,7 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/notifications/nse_session.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -738,6 +739,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // Nothing below this widget rebuilds on an active-account change (see
       // [accounts]), so anything holding per-account state has to be told.
       _accountsChanged();
+      // The Mission XP cache holds one account's XP and records; it rewires
+      // to this one, or drops the old read until this one's analytics start.
+      MissionXpCache.instance.ensureWired();
       // Pangea#
     } else {
       Logs().w('Tried to set an unknown client ${cl!.userID} as active');

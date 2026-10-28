@@ -99,6 +99,34 @@ void main() {
       );
     });
 
+    test(
+      'a caller with its own key is not throttled by the rebuilds',
+      () async {
+        // The course progress check passes its own key (#9681): a surface that
+        // already reported the course must not hide the check's failure.
+        expect(
+          await reportCourseOutlineFailure(
+            '!room:server',
+            'quest-1',
+            Exception('choreo unreachable'),
+            StackTrace.current,
+          ),
+          isTrue,
+        );
+        expect(
+          await reportCourseOutlineFailure(
+            '!room:server',
+            'quest-1',
+            Exception('choreo unreachable'),
+            StackTrace.current,
+            keyPrefix: 'course-progress-outline',
+            tags: const {'check': 'course_progress'},
+          ),
+          isTrue,
+        );
+      },
+    );
+
     // CLIENT-EAG / #8507: a rate-limit pause suppressing the read is the
     // repo's own deliberate, correct behavior, and the repo that returned it
     // already reported the suppression once for this activation
