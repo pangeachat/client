@@ -257,6 +257,10 @@ class WorldMapController extends State<WorldMap>
   /// How long the veil takes to come and go.
   static const Duration fadeDuration = Duration(milliseconds: 180);
 
+  /// The course and Mission the map last faded to, so a course coming into
+  /// context and a Mission picked fade once each, not on every rebuild.
+  String? _fadedMissionKey;
+
   /// Ticks whenever the filtered view could have changed — a filter/query
   /// mutation or a completed pin load — so the shell-built narrow search bar
   /// can re-read [visiblePins] for its empty-view card: this State's own
@@ -757,6 +761,13 @@ class WorldMapController extends State<WorldMap>
     if (client == null) return;
     _pinsManager.recomputeProgress(client, course: courseRoom);
     if (mounted) setState(() {});
+    // The Mission on show may only now be known (the course's progression
+    // resolved) or have moved (a Mission completed opens the next).
+    try {
+      _fadeToMissionOnShow();
+    } catch (_) {
+      // Camera not laid out yet; the context fit fades when it is.
+    }
   }
 
   /// Refresh the course participant count that dims `available` pins: course
@@ -876,6 +887,7 @@ class WorldMapController extends State<WorldMap>
         }
         return;
       case WorldMapContext():
+        _fadedMissionKey = null;
         _pinsManager.resetScopedCourseOutline();
         _pinsManager.clearCourseAvailableParticipants();
         loadWorldPins();
@@ -1182,12 +1194,13 @@ class WorldMapController extends State<WorldMap>
           return;
         }
 
-        // A course coming into context moves the camera NOT AT ALL (#7616):
-        // neither the old zoomful bounds fit nor the pan-to-top-pin tried
-        // after it read as intentional — there is no single right place to
-        // point at, and any auto-move was disorienting. The scope change
-        // speaks through the pins; the camera goes to the course only via
-        // the explicit focus button ([_onCameraFocusRequest]).
+        // A joined course fades to the Mission on show's city: its ship's
+        // city when the course opens, a picked Mission's city after (org
+        // course-view doc, "The camera"; pangeachat/.github#780). Before
+        // courses were trips no one place fit a course, so the camera stayed
+        // still (#7616); the ship's city now fits. Nothing moves until the
+        // Mission on show is known and has a place.
+        _fadeToMissionOnShow();
       } catch (_) {
         // Controller/camera not ready yet; the next change will refit.
       }
@@ -1230,13 +1243,67 @@ class WorldMapController extends State<WorldMap>
       }
 
       if (MapContextController.notifier.value is! CourseMapContext) return;
-      // Focus on a course, or on its Mission on show (the Mission card's
-      // Focus): the map fades there, never pans or zooms (org course-view
-      // doc; pangeachat/.github#780).
-      _fitCourseBounds(fade: true);
+      // Focus on the Mission on show (the Mission card's Focus, the course
+      // header's): the map fades to its city, never pans or zooms (org
+      // course-view doc; pangeachat/.github#780). A preview, or a course
+      // whose Mission is not known yet, fades to the whole route.
+      if (!_fadeToMissionOnShow(force: true)) _fitCourseBounds(fade: true);
     } catch (_) {
       // Controller/camera not ready yet; the button can simply be pressed again.
     }
+  }
+
+  /// Fades the map to the Mission on show's city (org course-view doc,
+  /// "The camera": choosing a course fades to its ship's city, picking a
+  /// Mission fades to its city): the Mission's shown activities' bounds, else
+  /// the city the course record names for it. Fades once per course and
+  /// Mission unless [force]d (the Focus button). Returns whether there was a
+  /// place to fade to; a preview, or a course whose Mission on show is not
+  /// known yet, has none here.
+  bool _fadeToMissionOnShow({bool force = false}) {
+    final mapContext = MapContextController.notifier.value;
+    if (mapContext is! CourseMapContext ||
+        mapContext is CoursePreviewMapContext) {
+      return false;
+    }
+    final mission = selectedMissionId;
+    if (mission == null) return false;
+    final key = '${mapContext.spaceId ?? mapContext.coursePlanId}/$mission';
+    if (!force && key == _fadedMissionKey) return true;
+    final targets = missionFadeTargets(
+      pins: visiblePins,
+      missionId: mission,
+      recordedCity: courseRoom?.courseMissions?.missions
+          .firstWhereOrNull((m) => m.loId == mission)
+          ?.city
+          ?.point,
+    );
+    if (targets.isEmpty) return false;
+    _fadedMissionKey = key;
+    _fadeFit(
+      CameraFit.bounds(
+        bounds: LatLngBounds.fromPoints(targets),
+        padding: _exposedCanvasPadding,
+        maxZoom: WorldMapConstants.courseFitMaxZoom,
+      ),
+    );
+    return true;
+  }
+
+  /// Where a Mission's fade lands: the placed [pins] that serve [missionId],
+  /// else the [recordedCity] the course record names for it, else nowhere.
+  /// Pure, so the rule is testable without a map.
+  static List<LatLng> missionFadeTargets({
+    required List<QuestActivityCard> pins,
+    required String missionId,
+    LatLng? recordedCity,
+  }) {
+    final points = [
+      for (final card in pins)
+        if (card.learningObjectiveRefs.contains(missionId)) ?card.point,
+    ];
+    if (points.isNotEmpty) return points;
+    return [?recordedCity];
   }
 
   /// Fit the scoped course's activity pins into the exposed canvas — shared
