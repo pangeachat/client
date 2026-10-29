@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:async/async.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart' hide Result;
@@ -406,6 +407,8 @@ void main() {
       FakeMatrixApi.calledEndpoints.clear();
       QuestRepo.resetOutlineCacheForTest();
       QuestRepo.debugDisplayL1 = 'en';
+      // The app writes the trip only with the flag on (as the servers do).
+      dotenv.testLoad(mergeWith: {'COURSE_MISSIONS_V2_ENABLED': 'true'});
       CitiesRepo.debugIndex = _cities();
       outlineReads = [];
       answer = null;
@@ -501,6 +504,17 @@ void main() {
           },
         ],
       });
+    });
+
+    test('with the trip flag off the version 1 snapshot is written, though '
+        'the city list is readable', () async {
+      dotenv.testLoad(mergeWith: {'COURSE_MISSIONS_V2_ENABLED': 'false'});
+      // The list stays readable (setUp), so only the flag keeps this from
+      // being sliced into version 2.
+      answer = (_) => shown();
+      await space(ownLevel: 100).addCourseToSpace('q1', targetLanguage: 'es');
+      final written = jsonDecode(copyWrites().single as String);
+      expect(written['version'], 1);
     });
 
     test('with the city list unreadable the version 1 snapshot is written, '
@@ -829,6 +843,7 @@ void main() {
       FakeMatrixApi.calledEndpoints.clear();
       QuestRepo.resetOutlineCacheForTest();
       QuestRepo.debugDisplayL1 = 'en';
+      dotenv.testLoad(mergeWith: {'COURSE_MISSIONS_V2_ENABLED': 'true'});
       CitiesRepo.debugIndex = _cities();
       scopes = [];
       QuestRepo.debugBuildOutline = (id, {courseRoomId}) async {

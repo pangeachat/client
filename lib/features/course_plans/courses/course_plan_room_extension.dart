@@ -11,6 +11,7 @@ import 'package:fluffychat/features/course_plans/courses/course_missions_event.d
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/teacher_mode_model.dart';
@@ -140,7 +141,8 @@ extension CoursePlanRoomExtension on Room {
   /// quest's copy with an empty record, so readers fall back to the new
   /// shared quest rather than listing the old quest's Can-Dos.
   ///
-  /// The copy is the trip (version 2): each Can-Do sliced to the listed city
+  /// With [Environment.courseMissionsV2Enabled] the copy is the trip (version
+  /// 2): each Can-Do sliced to the listed city
   /// most of its activities fall under, from the CMS city list. When that
   /// list cannot be read (logged by the repo) the version 1 snapshot is
   /// written instead, so the course still gets its own list; it reads as a
@@ -170,7 +172,9 @@ extension CoursePlanRoomExtension on Room {
     final snapshot = CourseMissionsEvent.snapshotOf(
       outline.restrictedTo(teacherMode.pinnedActivitiesByObjective),
       revision: (existing?.revision ?? 0) + 1,
-      cities: await CitiesRepo.index(),
+      cities: Environment.courseMissionsV2Enabled
+          ? await CitiesRepo.index()
+          : null,
     );
     await client.setRoomStateWithKey(
       id,
