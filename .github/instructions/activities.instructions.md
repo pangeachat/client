@@ -12,37 +12,32 @@ How learners find and start activities, and the record they leave. What an activ
 ## The experience
 
 1. A card on the map or in a course shows an activity's basics and first media item; opening it shows the whole activity.
-2. The learner starts a new session or joins an open one. Joining, they pick a role and wait for the session to fill. Starting, they pick a role, then find players: ping the course, invite someone, or play with the bot.
-3. Once it ends, it leaves Chats, and the Learning Objectives page keeps the record.
+2. Cards are ranked to funnel users into finishing their sessions first, then joining open sessions, then starting a session as the last resort.
+3. The learner starts a new session or joins an open one. Joining, they pick a role and wait for the session to fill. Starting, they pick a role, then find players: ping the course, invite someone, or play with the bot.
+4. After a user has finished an activity, we prompt them to rate and optionally comment on it, which affects the ranking of the activity for all users.
+5. Once it ends, it leaves Chats, and the Learning Objectives page keeps the record.
 
-## Decisions
+### The waiting room
 
-Who re-decides: unassigned throughout.
+- After a user joins/starts an activity but before enough people have joined, they're on the waiting room screen.
+- Each device can ping a course once a minute, against spam.
+- Joining with one open role takes it. The page's back arrow leaves a session the learner only viewed.
+- Ping, Invite and the online count use the started-from course, named there.
 
 ### A running activity is a chat room
 
 - A session is a chat room, so it reuses the chat app.
-- Activities belong to Missions, not courses, so a session needs no course.
+- Activities belong to Missions.
 - Cards and pins load the whole activity before opening. A screen over the read budget fills in over seconds, not blanking for a minute.
 - A session is shared into every joined course listing its activity, so coursemates can join; a course shows only sessions it lists. A Content Studio course lists only activities under its own Can-Dos.
 - The started-from course is where it was launched; a map launch records one only when exactly one joined course lists the activity.
 - A session's panel waits at most 10 seconds for its room.
 
-### Sessions in Chats
+### Activity session chat list rows
 
-- A session's row shows the activity's photo in its live colour, with a course's avatar on it.
+- A session's row shows the activity's photo in its live color, with a course's avatar on it.
 - A session leaves Chats once ended for everyone or saved. A replay's row shows the completed stamp, without XP. No "live now" strip: rows carry the state.
 - A room a teacher joined only to review stays out of their lists until they take a role; links still open it, leaving the course leaves it, and the dashboard mutes it.
-
-### The start page mirrors the room
-
-- Each device can ping a course once a minute, against spam.
-- Joining with one open role takes it. The page's back arrow leaves a session the learner only viewed.
-- Ping, Invite and the online count use the started-from course, named there.
-
-### Rating an activity
-
-- Only the start page's info row shows an activity's rating, NEW until rated.
 
 ### Media is a carousel
 
