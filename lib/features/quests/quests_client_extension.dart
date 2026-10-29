@@ -213,18 +213,22 @@ extension QuestsClientExtension on Client {
   /// [outline] is the course's own ([QuestOutlineForCourse.forCourse]);
   /// [xpByActivity] ([userXpByActivity]) and [byActivity]
   /// ([cachedXpBreakdownByActivity]) are passed so several courses walk the
-  /// rooms once.
+  /// rooms once. [recorded] is the course's stored record entries, whose
+  /// recorded completions stay complete.
   Map<String, CanDoProgress> canDoProgress(
     QuestOutline outline, {
     required int xpToComplete,
     required Map<String, int> xpByActivity,
     required Map<String, MissionXpBreakdown> byActivity,
+    Map<String, CanDoProgress> recorded = const {},
   }) {
+    final courseOutline = outline.toCourseLoOutline(xpToComplete: xpToComplete);
     final rollup =
         resolveProgression(
-          outlines: [outline.toCourseLoOutline(xpToComplete: xpToComplete)],
+          outlines: [courseOutline],
           xpByActivity: xpByActivity,
           practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
+          recordedByCourse: {courseOutline.courseId: recorded},
         ).quests.firstOrNull?.rollup ??
         const {};
     return {

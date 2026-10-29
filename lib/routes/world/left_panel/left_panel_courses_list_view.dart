@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -225,11 +225,10 @@ class _LeftPanelCoursesListViewState extends State<LeftPanelCoursesListView> {
     final joinedRoom = course.client.getRoomById(joinResp.roomId);
     if (joinedRoom == null) return;
 
-    final handler = JoinRoomAnalyticsConsentHandler(joinResp, joinedRoom);
+    final handler = JoinRoomAnalyticsAccessHandler(joinResp, joinedRoom);
     final joinedRoomId = await handler.handle(
       router.routerDelegate.navigatorKey.currentContext ?? context,
     );
-    if (joinedRoomId == null) return;
 
     router.go(
       WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),

@@ -1317,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-23 13:25:46.014065",
+    "@@last_modified": "2026-10-27 14:57:22.552803",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10784,10 +10784,6 @@
     "contentCreatedBy": "దీనిని సృష్టించినవారు",
     "coursePreview": "కోర్సు ప్రివ్యూ",
     "numActivities": "{count, plural, =1{1 కార్యాచరణ} other{{count} కార్యాచరణలు}}",
-    "teacherAnalyticsRequestTitle": "ఉపాధ్యాయుడు మీ అభ్యాస పురోగతిని అభ్యర్థిస్తున్నాడు",
-    "teacherAnalyticsRequestDesc": "వారు మీరు {targetLang}లో ఉపయోగించిన అన్ని పదాలు మరియు వ్యాకరణం, మీ స్థాయి మరియు XP, మరియు కోర్సు కార్యకలాపాలలో పంపిన సందేశాలను చూస్తారు. మీ 1-ఆన్-1 సందేశాలు భాగస్వామ్యం చేయబడవు. కోర్సులో చేరడానికి విశ్లేషణలను భాగస్వామ్యం చేయడం అవసరం.",
-    "shareAndJoin": "భాగస్వామ్యం చేసి చేరండి",
-    "goBack": "వెనుకకు వెళ్ళు",
     "emptyGroupsSearch": "గ్రూపులు కనుగొనబడలేదు. మీ శోధన సరిగ్గా స్పెల్లింగ్ చేయబడిందని నిర్ధారించుకోండి.",
     "emptyActivitiesSearch": "కార్యకలాపాలు కనుగొనబడలేదు. మీ శోధన సరిగ్గా స్పెల్లింగ్ చేయబడిందని నిర్ధారించుకోండి.",
     "chatListFiltersLabel": "చాట్ ఫిల్టర్‌లు",
@@ -10990,11 +10986,19 @@
     "watchOnYoutube": "YouTubeలో చూడండి",
     "createMyOwnCourse": "నా స్వంత కోర్సును సృష్టించండి",
     "xpTowardMission": "ఈ మిషన్ కోసం {xp} XP",
-    "openCourse": "కోర్సును తెరవండి",
-    "centralCourseJoinedTitle": "మీరు {course}లో చేరారు",
-    "centralCourseJoinedBody": "ఇది {language} నేర్చుకునే వారి కోసం పాంగేయా కోర్సు. దీని సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
     "centralCourseMembersSeeYou": "ఈ కోర్సు సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
     "practiceStartWordCount": "{count, plural, =1{అభ్యాసం చేయడానికి పదం} other{అభ్యాసం చేయడానికి పదాలు}}",
     "practiceStartGrammarCount": "{count, plural, =1{అభ్యాసం చేయడానికి వ్యాకరణ అంశం} other{అభ్యాసం చేయడానికి వ్యాకరణ అంశాలు}}",
-    "practiceStartExerciseTypes": "అభ్యాస రకాలు"
+    "practiceStartExerciseTypes": "అభ్యాస రకాలు",
+    "analyticsSharedOnJoin": "{course}లోని మీ ఉపాధ్యాయులు ఇప్పుడు మీ అభ్యాస పురోగతిని చూడగలరు.",
+    "sharedAnalyticsTitle": "భాగస్వామ్యం చేయబడిన అభ్యాస పురోగతి",
+    "sharedAnalyticsDesc": "ఈ కోర్సులలోని ఉపాధ్యాయులు మీ అభ్యాస పురోగతిని చూడగలరు. భాగస్వామ్యాన్ని ఆపడానికి ఒక కోర్సు నుండి నిష్క్రమించండి.",
+    "sharedAnalyticsNone": "మీరు ఏ కోర్సుతోనూ మీ అభ్యాస పురోగతిని పంచుకోవడం లేదు.",
+    "sharedAnalyticsOthersTitle": "మీ పురోగతిని చూడగలిగే ఇతరులు",
+    "removeAnalyticsAccess": "యాక్సెస్‌ను తీసివేయండి",
+    "removeAnalyticsAccessDesc": "{name} మీ అభ్యాస పురోగతిని ఇకపై చూడలేరు.",
+    "centralCourseOfferBody": "ఇది {language} నేర్చుకునే వారి కోసం పాంగేయా కోర్సు. దీని సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
+    "centralCourseOfferTitle": "{course}లో చేరతారా?",
+    "makeMyOwnCourseInstead": "బదులుగా నా స్వంత కోర్సును సృష్టించు",
+    "suggestMobileSignInSameAccount": "ఆపై ఈ ఖాతాతో యాప్‌లోకి సైన్ ఇన్ చేయండి."
 }

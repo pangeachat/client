@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-23 13:25:45.285594",
+    "@@last_modified": "2026-10-27 14:57:21.509856",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10779,10 +10779,6 @@
     "contentCreatedBy": "Ustvaril",
     "coursePreview": "Predogled tečaja",
     "numActivities": "{count, plural, =1{1 dejavnost} other{{count} dejavnosti}}",
-    "teacherAnalyticsRequestTitle": "Učitelj zahteva vaš napredek pri učenju",
-    "teacherAnalyticsRequestDesc": "Videli bodo vse besede in slovnico, ki ste jih uporabili v {targetLang}, vašo raven in XP ter sporočila, poslana v dejavnostih tečaja. Vaša sporočila 1-na-1 ne bodo deljena. Deljenje analitike je obvezno za pridružitev tečaju.",
-    "shareAndJoin": "Deli in se pridruži",
-    "goBack": "Nazaj",
     "emptyGroupsSearch": "Ni najdenih skupin. Prepričajte se, da je iskanje pravilno črkovano.",
     "emptyActivitiesSearch": "Ni najdenih dejavnosti. Prepričajte se, da je iskanje pravilno črkovano.",
     "chatListFiltersLabel": "Filtri klepeta",
@@ -10985,11 +10981,19 @@
     "watchOnYoutube": "Glej na YouTubu",
     "createMyOwnCourse": "Ustvari svoj tečaj",
     "xpTowardMission": "{xp} XP za to misijo",
-    "openCourse": "Odpri tečaj",
-    "centralCourseJoinedTitle": "Pridružili ste se tečaju {course}",
-    "centralCourseJoinedBody": "To je Pangein tečaj za učence {language}. Njegovi člani lahko vidijo vaše ime in profil.",
     "centralCourseMembersSeeYou": "Člani tega tečaja lahko vidijo vaše ime in profil.",
     "practiceStartWordCount": "{count, plural, =1{beseda za vajo} other{besed za vajo}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatična točka za vajo} other{gramatičnih točk za vajo}}",
-    "practiceStartExerciseTypes": "Vrste vaj"
+    "practiceStartExerciseTypes": "Vrste vaj",
+    "analyticsSharedOnJoin": "Vaši učitelji v {course} lahko zdaj vidijo vaš napredek pri učenju.",
+    "sharedAnalyticsTitle": "Deljen napredek pri učenju",
+    "sharedAnalyticsDesc": "Učitelji v teh tečajih lahko vidijo vaš napredek pri učenju. Zapustite tečaj, da prekinete deljenje.",
+    "sharedAnalyticsNone": "S svojim napredkom pri učenju ne delite nobenega tečaja.",
+    "sharedAnalyticsOthersTitle": "Drugi, ki lahko vidijo vaš napredek",
+    "removeAnalyticsAccess": "Odstrani dostop",
+    "removeAnalyticsAccessDesc": "{name} ne bo več mogel videti vašega učnega napredka.",
+    "centralCourseOfferBody": "To je Pangein tečaj za učence {language}. Njegovi člani lahko vidijo vaše ime in profil.",
+    "centralCourseOfferTitle": "Se pridružiš tečaju {course}?",
+    "makeMyOwnCourseInstead": "Namesto tega ustvari svoj tečaj",
+    "suggestMobileSignInSameAccount": "Nato se v aplikacijo prijavite s tem računom."
 }

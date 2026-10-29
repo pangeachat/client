@@ -74,7 +74,7 @@ dependencies:
       # the commented-out semver range above: that reopens the drift this pin
       # prevents. test/pangea/calls/sdk_voip_surface_test.dart locks the SDK
       # surface the calls depend on.
-      ref: bc206b23b5d9d42e4a57d6339bb140bd791e0632
+      ref: 63cd20c0c8527769991dec52fe4032031c31e392
   # Pangea#
   mime: ^2.0.0
   opus_caf_converter_dart: ^1.0.1

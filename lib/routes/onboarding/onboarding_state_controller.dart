@@ -42,7 +42,7 @@ class OnboardingStateController {
   String? _courseCode;
   CoursePlanModel? _joinedCoursePlan;
   String? _joinedRoomId;
-  bool _joinedCentralCourse = false;
+  String? _ownCourseRoomId;
 
   AvatarInfo? get avatarInfo => _avatarInfo;
   String? get displayName => _displayName;
@@ -57,9 +57,10 @@ class OnboardingStateController {
   CoursePlanModel? get joinedCoursePlan => _joinedCoursePlan;
   String? get joinedRoomId => _joinedRoomId;
 
-  /// Whether [joinedRoomId] is the language's central course rather than a
-  /// course the user chose to join.
-  bool get joinedCentralCourse => _joinedCentralCourse;
+  /// The course of their own a learner was given with no plan, which
+  /// onboarding doesn't land on. Kept so stepping back and forward doesn't
+  /// make a second one.
+  String? get ownCourseRoomId => _ownCourseRoomId;
 
   void setAvatarInfo(AvatarInfo info) => _avatarInfo = info;
   void setDisplayName(String displayName) => _displayName = displayName;
@@ -80,8 +81,6 @@ class OnboardingStateController {
   void setCourseCode(String courseCode) => _courseCode = courseCode;
   void setJoinedCoursePlan(CoursePlanModel coursePlan) =>
       _joinedCoursePlan = coursePlan;
-  void setJoinedRoomId(String roomId, {bool central = false}) {
-    _joinedRoomId = roomId;
-    _joinedCentralCourse = central;
-  }
+  void setJoinedRoomId(String roomId) => _joinedRoomId = roomId;
+  void setOwnCourseRoomId(String roomId) => _ownCourseRoomId = roomId;
 }

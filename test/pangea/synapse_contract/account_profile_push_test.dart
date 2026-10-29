@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
-import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/notifications/communication_preferences.dart';
 import 'package:fluffychat/features/notifications/notifications_client_extension.dart';
@@ -48,23 +47,6 @@ void main() {
       client.getAccountData(client.userID!, type);
 
   group('custom account-data types', () {
-    test('analytics-access notice pending → accepted', () async {
-      await client.setAccessNoticePending('!p2-course:example.test');
-      var data = await accountData(PangeaEventTypes.accessNoticeShown);
-      expect(
-        (data['notices_accepted'] as Map?)?['!p2-course:example.test'],
-        false,
-        reason: 'pending is recorded as an explicit false',
-      );
-
-      await client.setAccessNoticeAccepted('!p2-course:example.test');
-      data = await accountData(PangeaEventTypes.accessNoticeShown);
-      expect(
-        (data['notices_accepted'] as Map?)?['!p2-course:example.test'],
-        true,
-      );
-    });
-
     test('onboarding settings persist', () async {
       await client.setShowedTrialPage();
       final data = await accountData(PangeaEventTypes.onboardingSettings);

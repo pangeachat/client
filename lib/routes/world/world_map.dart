@@ -42,7 +42,7 @@ import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
-import 'package:fluffychat/routes/world/central_course_joined_dialog.dart';
+import 'package:fluffychat/routes/world/central_course_offer_dialog.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
@@ -319,7 +319,7 @@ class WorldMapController extends State<WorldMap>
       (_) => _scheduleOrientationCheck(),
     );
 
-    _joinCentralCourseIfDue();
+    _offerCentralCourseIfDue();
 
     // Rebuild when a featured large card's full plan hydrates (image + goals),
     // and when the discovered-session previews change under the pins — the
@@ -340,7 +340,7 @@ class WorldMapController extends State<WorldMap>
       }
       if (update.prevTargetLang?.langCodeShort !=
           update.targetLang.langCodeShort) {
-        _joinCentralCourseIfDue();
+        _offerCentralCourseIfDue();
       }
       // L1 (base-language) change → open the shimmer window (see [_warmingL1]).
       if (update.prevBaseLang != update.baseLang) {
@@ -1435,13 +1435,23 @@ class WorldMapController extends State<WorldMap>
   /// view's build and fired again on every route change, and the check itself
   /// can open an overlay — which must never happen mid-frame.
   /// The map is mounted for every signed-in learner, so it runs the app-open
-  /// central-course join (joining-courses.instructions.md § The central
+  /// central-course offer (joining-courses.instructions.md § The central
   /// course).
-  Future<void> _joinCentralCourseIfDue() async {
+  Future<void> _offerCentralCourseIfDue() async {
     final client = MatrixState.pangeaController.matrixState.client;
-    final roomId = await CentralCourseJoin.joinIfDue(client);
-    if (roomId == null || !mounted) return;
-    await CentralCourseJoinedDialog.show(context, client, roomId);
+    final central = await CentralCourseOffer.dueOnOpen(client);
+    final language = MatrixState.pangeaController.userController.userL2;
+    if (central == null || language == null || !mounted) return;
+    await showAdaptiveDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => CentralCourseOfferDialog(
+        client: client,
+        central: central,
+        language: language.langCodeShort,
+        languageName: language.getDisplayName(L10n.of(context)),
+      ),
+    );
   }
 
   void _scheduleOrientationCheck() {

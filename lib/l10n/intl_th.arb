@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-23 13:25:46.630165",
+    "@@last_modified": "2026-10-27 14:57:22.737339",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10466,10 +10466,6 @@
     "contentCreatedBy": "สร้างโดย",
     "coursePreview": "ดูตัวอย่างคอร์ส",
     "numActivities": "{count, plural, =1{1 กิจกรรม} other{{count} กิจกรรม}}",
-    "teacherAnalyticsRequestTitle": "ครูขอข้อมูลความคืบหน้าในการเรียนรู้ของคุณ",
-    "teacherAnalyticsRequestDesc": "ครูจะเห็นคำศัพท์และไวยากรณ์ทั้งหมดที่คุณใช้ในภาษา{targetLang} ระดับและ XP ของคุณ รวมถึงข้อความที่ส่งในกิจกรรมของคอร์ส ข้อความส่วนตัวของคุณจะไม่ถูกแชร์ การแชร์ข้อมูลวิเคราะห์เป็นสิ่งจำเป็นสำหรับการเข้าร่วมคอร์ส",
-    "shareAndJoin": "แชร์และเข้าร่วม",
-    "goBack": "ย้อนกลับ",
     "emptyGroupsSearch": "ไม่พบกลุ่ม ตรวจสอบให้แน่ใจว่าการค้นหาของคุณสะกดถูกต้อง",
     "emptyActivitiesSearch": "ไม่พบกิจกรรม ตรวจสอบให้แน่ใจว่าการค้นหาของคุณสะกดถูกต้อง",
     "chatListFiltersLabel": "ตัวกรองแชท",
@@ -10672,11 +10668,19 @@
     "watchOnYoutube": "ดูบน YouTube",
     "createMyOwnCourse": "สร้างคอร์สของฉันเอง",
     "xpTowardMission": "{xp} XP สำหรับภารกิจนี้",
-    "openCourse": "เปิดคอร์ส",
-    "centralCourseJoinedTitle": "คุณได้เข้าร่วม {course} แล้ว",
-    "centralCourseJoinedBody": "นี่คือคอร์สของ Pangea สำหรับผู้เรียนภาษา {language} สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
     "centralCourseMembersSeeYou": "สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
     "practiceStartWordCount": "{count, plural, =1{คำศัพท์ที่จะฝึก} other{คำศัพท์ที่จะฝึก}}",
     "practiceStartGrammarCount": "{count, plural, =1{หลักไวยากรณ์ที่จะฝึก} other{หลักไวยากรณ์ที่จะฝึก}}",
-    "practiceStartExerciseTypes": "ประเภทแบบฝึกหัด"
+    "practiceStartExerciseTypes": "ประเภทแบบฝึกหัด",
+    "analyticsSharedOnJoin": "ตอนนี้คุณครูใน {course} สามารถดูความคืบหน้าในการเรียนรู้ของคุณได้แล้ว",
+    "sharedAnalyticsTitle": "ความคืบหน้าในการเรียนรู้ที่แชร์",
+    "sharedAnalyticsDesc": "คุณครูในคอร์สเหล่านี้สามารถดูความคืบหน้าในการเรียนรู้ของคุณได้ หากต้องการหยุดแชร์ ให้ลาออกจากคอร์ส",
+    "sharedAnalyticsNone": "คุณไม่ได้แชร์ความคืบหน้าในการเรียนรู้กับคอร์สใดๆ",
+    "sharedAnalyticsOthersTitle": "คนอื่น ๆ ที่สามารถเห็นความคืบหน้าของคุณ",
+    "removeAnalyticsAccess": "ลบการเข้าถึง",
+    "removeAnalyticsAccessDesc": "{name} จะไม่สามารถเห็นความคืบหน้าในการเรียนรู้ของคุณได้อีกต่อไป",
+    "centralCourseOfferBody": "นี่คือคอร์สของ Pangea สำหรับผู้เรียนภาษา {language} สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
+    "centralCourseOfferTitle": "เข้าร่วม {course} ไหม",
+    "makeMyOwnCourseInstead": "สร้างคอร์สของฉันเองดีกว่า",
+    "suggestMobileSignInSameAccount": "จากนั้นลงชื่อเข้าใช้แอปด้วยบัญชีนี้"
 }

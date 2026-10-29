@@ -11,12 +11,13 @@ Future<List<XFile>> selectFiles(
   String? title,
   FileType type = FileType.any,
   bool allowMultiple = false,
+  int compressionQuality = 0,
 }) async {
   final result = await AppLock.of(context).pauseWhile(
     showFutureLoadingDialog(
       context: context,
       future: () => FilePicker.platform.pickFiles(
-        compressionQuality: 0,
+        compressionQuality: compressionQuality,
         allowMultiple: allowMultiple,
         type: type,
       ),

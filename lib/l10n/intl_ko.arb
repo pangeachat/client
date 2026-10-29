@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:41.824135",
+    "@@last_modified": "2026-10-27 14:57:17.703488",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10030,10 +10030,6 @@
     "contentCreatedBy": "제작자",
     "coursePreview": "코스 미리보기",
     "numActivities": "{count, plural, =1{1개의 활동} other{{count}개의 활동}}",
-    "teacherAnalyticsRequestTitle": "선생님이 학습 진행 상황을 요청합니다",
-    "teacherAnalyticsRequestDesc": "선생님은 {targetLang}에서 사용한 모든 단어와 문법, 레벨 및 XP, 그리고 코스 활동에서 보낸 메시지를 볼 수 있습니다. 1대1 메시지는 공유되지 않습니다. 코스에 참여하려면 분석 공유가 필요합니다.",
-    "shareAndJoin": "공유하고 참여하기",
-    "goBack": "뒤로 가기",
     "emptyGroupsSearch": "그룹을 찾을 수 없습니다. 검색어 철자가 맞는지 확인하세요.",
     "emptyActivitiesSearch": "활동을 찾을 수 없습니다. 검색어 철자가 맞는지 확인하세요.",
     "chatListFiltersLabel": "채팅 필터",
@@ -10236,11 +10232,19 @@
     "watchOnYoutube": "YouTube에서 시청",
     "createMyOwnCourse": "나만의 코스 만들기",
     "xpTowardMission": "이번 미션으로 {xp} XP 획득",
-    "openCourse": "코스 열기",
-    "centralCourseJoinedTitle": "{course}에 참여했습니다",
-    "centralCourseJoinedBody": "이 코스는 {language} 학습자를 위한 Pangea 코스입니다. 코스 멤버는 회원님의 이름과 프로필을 볼 수 있습니다.",
     "centralCourseMembersSeeYou": "이 코스의 멤버는 회원님의 이름과 프로필을 볼 수 있습니다.",
     "practiceStartWordCount": "{count, plural, =1{연습할 단어} other{연습할 단어}}",
     "practiceStartGrammarCount": "{count, plural, =1{연습할 문법 포인트} other{연습할 문법 포인트}}",
-    "practiceStartExerciseTypes": "연습 유형"
+    "practiceStartExerciseTypes": "연습 유형",
+    "analyticsSharedOnJoin": "{course}의 선생님들이 이제 학습 진행 상황을 볼 수 있습니다.",
+    "sharedAnalyticsTitle": "학습 진행 상황 공유됨",
+    "sharedAnalyticsDesc": "이 강좌의 선생님들이 학습 진행 상황을 볼 수 있습니다. 공유를 중지하려면 강좌를 나가세요.",
+    "sharedAnalyticsNone": "어떤 강좌와도 학습 진행 상황을 공유하고 있지 않습니다.",
+    "sharedAnalyticsOthersTitle": "내 진행 상황을 볼 수 있는 다른 사람",
+    "removeAnalyticsAccess": "액세스 제거",
+    "removeAnalyticsAccessDesc": "{name}님은 더 이상 회원님의 학습 진행 상황을 볼 수 없습니다.",
+    "centralCourseOfferBody": "이 코스는 {language} 학습자를 위한 Pangea 코스입니다. 코스 멤버는 회원님의 이름과 프로필을 볼 수 있습니다.",
+    "centralCourseOfferTitle": "{course}에 참여하시겠어요?",
+    "makeMyOwnCourseInstead": "대신 나만의 코스 만들기",
+    "suggestMobileSignInSameAccount": "그런 다음 이 계정으로 앱에 로그인하세요."
 }
