@@ -61,6 +61,9 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   /// loaded, or when the session has no source course.
   final ValueNotifier<List<String>?> coursemateIds = ValueNotifier(null);
 
+  StreamSubscription? _roomStateSub;
+  bool _openedChat = false;
+
   @override
   void initState() {
     super.initState();
@@ -70,6 +73,20 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
       (_) => clock.value = DateTime.now(),
     );
     _loadCoursemates();
+    _roomStateSub = widget.room.client.onRoomState.stream
+        .where((update) => update.roomId == widget.room.id)
+        .listen((_) => _openChatOnceStarted());
+    _openChatOnceStarted();
+  }
+
+  /// Opens the chat once every seat is filled, whether that happens while the
+  /// learner waits or before they arrive.
+  void _openChatOnceStarted() {
+    if (_openedChat || !sessionStarted) return;
+    _openedChat = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) continueToChat();
+    });
   }
 
   @override
@@ -80,6 +97,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
 
   @override
   void dispose() {
+    _roomStateSub?.cancel();
     _pingCooldown?.cancel();
     _clockTimer?.cancel();
     clock.dispose();
@@ -144,11 +162,9 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   bool get enablePlayWithBot =>
       showInviteOptions && !widget.room.botHasActivityRole;
 
-  /// Every seat is filled. This page then shows only when a session link
-  /// opened it on a session the learner already has a role in, so it offers
-  /// Continue into the chat instead of the waiting room
-  /// (activity-start-page.instructions.md, "The CTA row": an ongoing session
-  /// the learner is in leads with Continue).
+  /// Every seat is filled. The chat opens on its own ([_openChatOnceStarted]);
+  /// if this page shows anyway, it offers Continue instead of the waiting room
+  /// (activity-start-page.instructions.md, "The CTA row").
   bool get sessionStarted => widget.room.isActivityStarted;
 
   void continueToChat() =>

@@ -44,7 +44,7 @@ The activity's start page doesn't store its own state; it reads it from the room
 A few steps are taken for the learner, to keep them out of choices that don't matter ([client#9333](https://github.com/pangeachat/client/issues/9333)):
 
 - **Play with others with a session already waiting** joins that session rather than opening a new one; the start page's buttons own which session it picks ([activity-start-page.instructions.md](activity-start-page.instructions.md#the-cta-row)).
-- **Joining an open session with exactly one open role** claims that role straight away and lands the learner in the session. With two or more open roles the role picker stays; if someone takes the seat first, the session opens for viewing instead.
+- **Joining an open session with exactly one open role** claims that role straight away and lands the learner in the session. With two or more open roles the role picker stays. If someone takes the seat first, a session picked from the list opens for viewing instead, while Play with others moves on to the next open session.
 - **Play with Pangea Bot** adds the bot as soon as the new session exists, after the learner picks a role. If the bot fails to join, the waiting room's bot button re-invites it.
 - **A session viewed from the open sessions list** opens inside the activity with a back arrow to the list; backing out without taking a role leaves the room, so looking doesn't leave the learner a member.
 

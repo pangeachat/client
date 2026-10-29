@@ -372,6 +372,32 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   Future<void> _loadSummary() async {
     if (!mounted) return;
+    try {
+      await _fetchSummaries();
+    } catch (e, s) {
+      // Summaries are non-essential (member counts / role availability); a slow
+      // or stalled preview read must not block or fail the activity render, so
+      // degrade to the empty model initialized in initState (#7085, #7159).
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"activityId": widget.activityId},
+      );
+      if (mounted) setState(() => _summariesLoading = false);
+    }
+  }
+
+  /// Re-reads this activity's sessions now and returns them. Unlike
+  /// [_loadSummary] it throws on a failed read, so Play with others never
+  /// joins from a list it couldn't refresh.
+  Future<ActivitySessionSummariesModel> refreshSummaries() async {
+    await _fetchSummaries();
+    return _roomSummariesModel;
+  }
+
+  /// The read behind [_loadSummary] and [refreshSummaries]; throws on failure.
+  Future<void> _fetchSummaries() async {
+    if (!mounted) return;
     final client = Matrix.of(context).client;
 
     // This activity's session rooms across ALL the learner's joined courses —
@@ -415,80 +441,65 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
       if (mounted) setState(() => _summariesLoading = false);
       return;
     }
-    try {
-      final l1Code = MatrixState.pangeaController.userController.userL1Code;
-      final results =
-          await Future.wait([
-            courseSpaceIds.isNotEmpty
-                ? client.loadActivitySessionPreviews(
-                    courseSpaceIds,
-                    activityId: widget.activityId,
-                    l1Code: l1Code,
-                  )
-                : Future.value(<String, RoomSummaryResponse>{}),
-            extraRoomIds.isNotEmpty
-                ? client.loadRoomSummaries(
-                    extraRoomIds.toList(),
-                    l1Code: l1Code,
-                  )
-                : Future.value(<String, RoomSummaryResponse>{}),
-          ]).timeoutNamed(
-            const Duration(seconds: 30),
-            'loadRoomSummaries: activity start page',
-          );
-      if (!mounted) return;
-      // Write the fresh space-scoped previews back so views rendering off the
-      // cache (the course card's Open state) correct themselves now instead of
-      // on the map's next discovery pass (#8150). Only results[0]: the per-room
-      // extras (deep-linked / invited rooms) are outside what discovery caches.
-      // Written first, so the join list below is that same read scoped to the
-      // course in context (#9026).
-      if (courseSpaceIds.isNotEmpty) {
-        DiscoveredSessionsCache.instance.updateActivity(
-          widget.activityId,
-          results[0],
+    final l1Code = MatrixState.pangeaController.userController.userL1Code;
+    final results =
+        await Future.wait([
+          courseSpaceIds.isNotEmpty
+              ? client.loadActivitySessionPreviews(
+                  courseSpaceIds,
+                  activityId: widget.activityId,
+                  l1Code: l1Code,
+                )
+              : Future.value(<String, RoomSummaryResponse>{}),
+          extraRoomIds.isNotEmpty
+              ? client.loadRoomSummaries(extraRoomIds.toList(), l1Code: l1Code)
+              : Future.value(<String, RoomSummaryResponse>{}),
+        ]).timeoutNamed(
+          const Duration(seconds: 30),
+          'loadRoomSummaries: activity start page',
         );
-      }
-      // Opened from a course, the join list offers only the sessions that
-      // course lists ([_sessionScope]); a bare pin or link offers every joined
-      // course's. The extras — the linked room, invited rooms — are never
-      // scoped out.
-      final courseSessions = courseSpaceIds.isEmpty
-          ? const <String, RoomSummaryResponse>{}
-          : DiscoveredSessionsCache.instance.forActivity(
-                  widget.activityId,
-                  course: _sessionScope,
-                ) ??
-                const <String, RoomSummaryResponse>{};
-      final otherSaved = await _loadOtherSavedSessions(
-        savedIds: savedIds,
-        known: {...results[0], ...results[1]},
-        inScope: {...courseSessions.keys, ...results[1].keys},
-        l1Code: l1Code,
+    if (!mounted) return;
+    // Write the fresh space-scoped previews back so views rendering off the
+    // cache (the course card's Open state) correct themselves now instead of
+    // on the map's next discovery pass (#8150). Only results[0]: the per-room
+    // extras (deep-linked / invited rooms) are outside what discovery caches.
+    // Written first, so the join list below is that same read scoped to the
+    // course in context (#9026).
+    if (courseSpaceIds.isNotEmpty) {
+      DiscoveredSessionsCache.instance.updateActivity(
+        widget.activityId,
+        results[0],
       );
-      if (!mounted) return;
-      setState(() {
-        _roomSummariesModel = ActivitySessionSummariesModel({
-          ...courseSessions,
-          ...results[1],
-        }, activityId: widget.activityId);
-        _otherCompletedSessions = otherSaved;
-        _summariesLoading = false;
-      });
-      // The summaries decide what the join list shows — their arrival is a
-      // tutorial re-ask.
-      _maybeStartStartPageTutorials();
-    } catch (e, s) {
-      // Summaries are non-essential (member counts / role availability); a slow
-      // or stalled preview read must not block or fail the activity render, so
-      // degrade to the empty model initialized in initState (#7085, #7159).
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"activityId": widget.activityId},
-      );
-      if (mounted) setState(() => _summariesLoading = false);
     }
+    // Opened from a course, the join list offers only the sessions that
+    // course lists ([_sessionScope]); a bare pin or link offers every joined
+    // course's. The extras — the linked room, invited rooms — are never
+    // scoped out.
+    final courseSessions = courseSpaceIds.isEmpty
+        ? const <String, RoomSummaryResponse>{}
+        : DiscoveredSessionsCache.instance.forActivity(
+                widget.activityId,
+                course: _sessionScope,
+              ) ??
+              const <String, RoomSummaryResponse>{};
+    final otherSaved = await _loadOtherSavedSessions(
+      savedIds: savedIds,
+      known: {...results[0], ...results[1]},
+      inScope: {...courseSessions.keys, ...results[1].keys},
+      l1Code: l1Code,
+    );
+    if (!mounted) return;
+    setState(() {
+      _roomSummariesModel = ActivitySessionSummariesModel({
+        ...courseSessions,
+        ...results[1],
+      }, activityId: widget.activityId);
+      _otherCompletedSessions = otherSaved;
+      _summariesLoading = false;
+    });
+    // The summaries decide what the join list shows — their arrival is a
+    // tutorial re-ask.
+    _maybeStartStartPageTutorials();
   }
 
   /// The learner's saved sessions of this activity that the page's own
