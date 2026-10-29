@@ -741,22 +741,21 @@ class QuestRepo {
       }
       final missions = questMissionsFromJson(body);
       final entries = dedupeByActivityId(
-        questActivityEntriesFromJson(body)
-            .map(
-              (e) => (
-                plan: activityPlanFromV2(cmsDocShapeFromEntry(e)),
-                point: QuestActivityCard.fromJson(
-                  cmsDocShapeFromEntry(e),
-                ).point,
-                refs: ((e['learning_objective_refs'] as List? ?? const [])
-                    .map((x) => x as String)
-                    .toList()),
-                familyIds: ((e['family_ids'] as List? ?? const [])
-                    .whereType<String>()
-                    .toList()),
-              ),
-            )
-            .toList(),
+        questActivityEntriesFromJson(body).map((e) {
+          // One shape per entry: the plan and the card's point (the one
+          // place the stored [lng, lat] order is read) both come from it.
+          final shape = cmsDocShapeFromEntry(e);
+          return (
+            plan: activityPlanFromV2(shape),
+            point: QuestActivityCard.fromJson(shape).point,
+            refs: ((e['learning_objective_refs'] as List? ?? const [])
+                .map((x) => x as String)
+                .toList()),
+            familyIds: ((e['family_ids'] as List? ?? const [])
+                .whereType<String>()
+                .toList()),
+          );
+        }).toList(),
         (e) => e.plan.activityId,
       );
 

@@ -536,16 +536,20 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   }
 
   /// Whether [missionId]'s city is not open to the learner (org quests doc,
-  /// "Progression"); nothing is closed in a preview or outside a trip.
-  bool _isClosed(String missionId) {
-    if (widget.readOnly) return false;
-    final open = CourseObjectiveCircles.openMissionIds(
-      widget.objectivesProvider,
-      widget.room,
-      DateTime.now(),
-    );
-    return open != null && !open.contains(missionId);
-  }
+  /// "Progression"), given [open] from [_openMissionIds], resolved once per
+  /// build or tap rather than per Mission. Null [open]: nothing is closed (a
+  /// preview, or a course that is not a trip).
+  static bool _isClosed(String missionId, Set<String>? open) =>
+      open != null && !open.contains(missionId);
+
+  /// The Missions open to the learner now; null when nothing is closed.
+  Set<String>? _openMissionIds() => widget.readOnly
+      ? null
+      : CourseObjectiveCircles.openMissionIds(
+          widget.objectivesProvider,
+          widget.room,
+          DateTime.now(),
+        );
 
   /// When the Mission's city opens: its date on a dated course, else after
   /// the Mission before it.
@@ -631,7 +635,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       final owners = groups
           .where((g) => g.activities.any((a) => a.activityId == ref.activityId))
           .toList();
-      if (owners.isNotEmpty && owners.every((g) => _isClosed(g.objective.id))) {
+      final open = _openMissionIds();
+      if (owners.isNotEmpty &&
+          owners.every((g) => _isClosed(g.objective.id, open))) {
         _explainClosed(owners.first);
         return;
       }
@@ -704,6 +710,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
               // rides above this list on the course page.)
               final groups = widget.objectivesProvider.filteredObjectiveGroups;
               final anchorId = widget.objectivesProvider.anchorMissionId;
+              final open = _openMissionIds();
               if (groups.isEmpty) {
                 return QuestLoadErrorView(
                   MissingQuestException(),
@@ -799,7 +806,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     final languageName = otherLanguage
                         ? CourseLanguageScope.courseLanguageName(room, l10n)
                         : null;
-                    final closed = _isClosed(current.objective.id);
+                    final closed = _isClosed(current.objective.id, open);
                     return MissionCard(
                       group: current,
                       index: position < 0 ? null : position + 1,
@@ -970,7 +977,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                             : null,
                         isUpNext: group.objective.id == anchorId,
                         isClassLocation: i == classIndex,
-                        closed: _isClosed(group.objective.id),
+                        closed: _isClosed(group.objective.id, open),
                         index: i + 1,
                         missionCount: groups.length,
                         group: group,
