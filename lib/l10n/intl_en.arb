@@ -6290,6 +6290,10 @@
     "@seatInviteDenied": {
         "description": "Shown when a student confirms an invitation their teacher has declined for this account."
     },
+    "yourTeacher": "Your teacher",
+    "@yourTeacher": {
+        "description": "On the onboarding page after joining a course, the card for the course's teacher. It names no one, because the course may have several teachers and the app cannot tell which one invited the student."
+    },
     "seatInviteNotLive": "This invitation is no longer available. You can still use the class code.",
     "@seatInviteNotLive": {
         "description": "Shown when a course invitation was withdrawn or already used."
