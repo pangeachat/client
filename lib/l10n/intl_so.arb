@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "Waa koorsada Pangea ee loogu talagalay barayaasha {language}. Xubnaheeda waxay arki karaan magacaaga iyo astaantaada.",
     "centralCourseOfferTitle": "Ku biir {course}?",
     "makeMyOwnCourseInstead": "Anigu waxaan samaysanayaa koorsadayda",
-    "suggestMobileSignInSameAccount": "Kadibna ku gal app-ka akoonkan."
+    "suggestMobileSignInSameAccount": "Kadibna ku gal app-ka akoonkan.",
+    "botJoinsIn": "Pangea Bot wuxuu ku soo biirayaa {duration}",
+    "botIsJoining": "Pangea Bot wuu soo biirayaa…",
+    "playWithBotNowTitle": "Ma la ciyaareysaa Pangea Bot hadda?",
+    "playWithBotNowMessage": "Weli qofna ma soo biirin. Pangea Bot wuxuu hadda qaadan karaa kursiga bannaan, ama waad sii sugi kartaa.",
+    "keepWaiting": "Sii sug",
+    "botTookSeatAfterAnHour": "Fadhigan wuxuu furnaa saacad, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan.",
+    "botTookSeatAfterADay": "Fadhigan wuxuu furnaa in ka badan maalin, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan. Fariin u dir si aad u bilowdo."
 }

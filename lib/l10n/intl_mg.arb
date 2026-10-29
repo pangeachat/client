@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "Ity no taranja Pangea ho an'ireo mpianatra {language}. Afaka mahita ny anaranao sy ny mombamomba anao ireo mpikambana ao.",
     "centralCourseOfferTitle": "Midira amin'ny {course}?",
     "makeMyOwnCourseInstead": "Mamorona ny taranja manokana kosa",
-    "suggestMobileSignInSameAccount": "Avy eo midira amin'ny fampiharana amin'ity kaonty ity."
+    "suggestMobileSignInSameAccount": "Avy eo midira amin'ny fampiharana amin'ity kaonty ity.",
+    "botJoinsIn": "Miditra ao anatin'ny {duration} ny Pangea Bot",
+    "botIsJoining": "Miditra ny Pangea Bot…",
+    "playWithBotNowTitle": "Hilalao amin'ny Pangea Bot izao?",
+    "playWithBotNowMessage": "Tsy mbola nisy niditra. Afaka maka ny toerana malalaka izao ny Pangea Bot, na afaka miandry ianao.",
+    "keepWaiting": "Manohy miandry",
+    "botTookSeatAfterAnHour": "Adiny iray no nisokafan'ity fivoriana ity, ka nalain'ny Pangea Bot ny toerana malalaka.",
+    "botTookSeatAfterADay": "Nisokatra nandritra ny iray andro mahery ity fivoriana ity, ka nalain'ny Pangea Bot ny toerana malalaka. Mandefasa hafatra hanombohana."
 }

@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "Ó jẹ́ iṣẹ́-ẹ̀kọ́ Pangea fún àwọn akẹ́kọ̀ọ́ èdè {language}. Àwọn ọmọ ẹgbẹ́ rẹ̀ lè rí orúkọ àti àkọọ́lẹ̀ rẹ.",
     "centralCourseOfferTitle": "Darapọ mọ {course}?",
     "makeMyOwnCourseInstead": "Ṣe ikẹkọọ ti ara mi dipo",
-    "suggestMobileSignInSameAccount": "Lẹ́yìn náà, wọlé sí ohun èlò náà pẹ̀lú àkọọ́lẹ̀ yìí."
+    "suggestMobileSignInSameAccount": "Lẹ́yìn náà, wọlé sí ohun èlò náà pẹ̀lú àkọọ́lẹ̀ yìí.",
+    "botJoinsIn": "Pangea Bot darapọ mọ ni {duration}",
+    "botIsJoining": "Pangea Bot n darapọ mọ…",
+    "playWithBotNowTitle": "Ṣe o fẹ lati ṣere pẹlu Pangea Bot ni bayi?",
+    "playWithBotNowMessage": "Ko si ẹnikan ti o darapọ mọ sibẹsibẹ. Pangea Bot le gba ipo ti o ṣ'ofo ni bayi, tabi o le tẹsiwaju lati duro.",
+    "keepWaiting": "Tẹsiwaju lati duro",
+    "botTookSeatAfterAnHour": "Aago kan ti kọja ti igba yii ti ṣ'i silẹ, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo.",
+    "botTookSeatAfterADay": "Igba yii ti ṣ'i silẹ fun ọjọ kan ju, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo. Fi ifiranṣẹ ranṣẹ lati bẹrẹ."
 }

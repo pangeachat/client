@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "ʻO ia ka papa a Pangea no ka poʻe aʻo {language}. Hiki i kona mau lālā ke ʻike i kou inoa a me kou ʻaoʻao.",
     "centralCourseOfferTitle": "E hui pū me {course}?",
     "makeMyOwnCourseInstead": "E hana i kaʻu papa ponoʻī ma kahi",
-    "suggestMobileSignInSameAccount": "A laila, e ʻeʻe i loko o ka polokalamu me kēia moʻokāki."
+    "suggestMobileSignInSameAccount": "A laila, e ʻeʻe i loko o ka polokalamu me kēia moʻokāki.",
+    "botJoinsIn": "E hui pū ana ʻo Pangea Bot i loko o {duration}",
+    "botIsJoining": "Ke hui pū nei ʻo Pangea Bot…",
+    "playWithBotNowTitle": "E pāʻani pū me Pangea Bot i kēia manawa?",
+    "playWithBotNowMessage": "ʻAʻohe mea i hui pū mai. Hiki iā Pangea Bot ke noho i ka noho hakahaka i kēia manawa, a i ʻole hiki iā ʻoe ke hoʻomau i ke kali.",
+    "keepWaiting": "E hoʻomau i ke kali",
+    "botTookSeatAfterAnHour": "Ua hāmama kēia kau no hoʻokahi hola, no laila ua noho ʻo Pangea Bot i ka noho hakahaka.",
+    "botTookSeatAfterADay": "Ua hāmama kēia kau no ka ʻoi aku ma mua o hoʻokahi lā, no laila ua noho ʻo Pangea Bot i ka noho hakahaka. E hoʻouna i kahi leka e hoʻomaka."
 }

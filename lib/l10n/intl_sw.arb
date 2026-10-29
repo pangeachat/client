@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "Hii ni kozi ya Pangea kwa wanafunzi wa {language}. Wanachama wake wanaweza kuona jina na wasifu wako.",
     "centralCourseOfferTitle": "Jiunge na {course}?",
     "makeMyOwnCourseInstead": "Badala yake, nitengeneze kozi yangu mwenyewe",
-    "suggestMobileSignInSameAccount": "Kisha ingia kwenye programu ukitumia akaunti hii."
+    "suggestMobileSignInSameAccount": "Kisha ingia kwenye programu ukitumia akaunti hii.",
+    "botJoinsIn": "Pangea Bot anajiunga baada ya {duration}",
+    "botIsJoining": "Pangea Bot anajiunga…",
+    "playWithBotNowTitle": "Ucheze na Pangea Bot sasa?",
+    "playWithBotNowMessage": "Hakuna aliyejiunga bado. Pangea Bot anaweza kuchukua nafasi iliyo wazi sasa, au unaweza kuendelea kusubiri.",
+    "keepWaiting": "Endelea kusubiri",
+    "botTookSeatAfterAnHour": "Kipindi hiki kilikuwa wazi kwa saa moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi.",
+    "botTookSeatAfterADay": "Kipindi hiki kilikuwa wazi kwa zaidi ya siku moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi. Tuma ujumbe ili kuanza."
 }

@@ -10995,5 +10995,12 @@
     "centralCourseOfferBody": "To je Pangein tečaj za učence {language}. Njegovi člani lahko vidijo vaše ime in profil.",
     "centralCourseOfferTitle": "Se pridružiš tečaju {course}?",
     "makeMyOwnCourseInstead": "Namesto tega ustvari svoj tečaj",
-    "suggestMobileSignInSameAccount": "Nato se v aplikacijo prijavite s tem računom."
+    "suggestMobileSignInSameAccount": "Nato se v aplikacijo prijavite s tem računom.",
+    "botJoinsIn": "Pangea Bot se pridruži čez {duration}",
+    "botIsJoining": "Pangea Bot se pridružuje ...",
+    "playWithBotNowTitle": "Želite igrati s Pangea Botom zdaj?",
+    "playWithBotNowMessage": "Nihče se še ni pridružil. Pangea Bot lahko zdaj zasede prosto mesto ali pa lahko še naprej čakate.",
+    "keepWaiting": "Nadaljuj čakanje",
+    "botTookSeatAfterAnHour": "Ta seja je bila odprta eno uro, zato je Pangea Bot zasedel prosto mesto.",
+    "botTookSeatAfterADay": "Ta seja je bila odprta več kot en dan, zato je Pangea Bot zasedel prosto mesto. Pošljite sporočilo za začetek."
 }

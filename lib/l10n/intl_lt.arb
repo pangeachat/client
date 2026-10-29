@@ -10831,5 +10831,12 @@
     "centralCourseOfferBody": "Tai „Pangea“ kursas, skirtas {language} besimokantiems. Jo nariai gali matyti jūsų vardą ir profilį.",
     "centralCourseOfferTitle": "Prisijungti prie {course}?",
     "makeMyOwnCourseInstead": "Vietoj to sukurti savo kursą",
-    "suggestMobileSignInSameAccount": "Tada prisijunkite prie programėlės naudodami šią paskyrą."
+    "suggestMobileSignInSameAccount": "Tada prisijunkite prie programėlės naudodami šią paskyrą.",
+    "botJoinsIn": "Pangea Bot prisijungs po {duration}",
+    "botIsJoining": "Pangea Bot jungiasi…",
+    "playWithBotNowTitle": "Žaisti su Pangea Bot dabar?",
+    "playWithBotNowMessage": "Dar niekas neprisijungė. Pangea Bot gali užimti laisvą vietą dabar, arba galite toliau laukti.",
+    "keepWaiting": "Laukti toliau",
+    "botTookSeatAfterAnHour": "Ši sesija buvo atidaryta valandą, todėl Pangea Bot užėmė laisvą vietą.",
+    "botTookSeatAfterADay": "Ši sesija buvo atidaryta ilgiau nei dieną, todėl Pangea Bot užėmė laisvą vietą. Norėdami pradėti, atsiųskite žinutę."
 }

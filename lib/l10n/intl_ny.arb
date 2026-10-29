@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "Ndi kosi ya Pangea kwa ophunzira a {language}. Mamembala ake akhoza kuona dzina lanu ndi mbiri yanu.",
     "centralCourseOfferTitle": "Mulowe na {course}?",
     "makeMyOwnCourseInstead": "Ndipange kursu yanga",
-    "suggestMobileSignInSameAccount": "Kenako lowani mu pulogalamu ndi akaunti iyi."
+    "suggestMobileSignInSameAccount": "Kenako lowani mu pulogalamu ndi akaunti iyi.",
+    "botJoinsIn": "Pangea Bot ikubwera mu {duration}",
+    "botIsJoining": "Pangea Bot ikubwera…",
+    "playWithBotNowTitle": "Kusewera ndi Pangea Bot tsopano?",
+    "playWithBotNowMessage": "Palibe amene wabwera. Pangea Bot ikhoza kutenga mpando wopanda munthu tsopano, kapena mukhoza kupitiriza kudikira.",
+    "keepWaiting": "Pitirizani kudikira",
+    "botTookSeatAfterAnHour": "Msonkhano uno unali wotseguka kwa ola limodzi, choncho Pangea Bot inatenga mpando wopanda munthu.",
+    "botTookSeatAfterADay": "Msonkhano uno unali wotseguka kwa tsiku limodzi, choncho Pangea Bot inatenga mpando wopanda munthu. Tumizani uthenga kuti muyambe."
 }

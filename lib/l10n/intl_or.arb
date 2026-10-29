@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "ଏହା {language} ଶିକ୍ଷାର୍ଥୀଙ୍କ ପାଇଁ Pangea ର କୋର୍ସ। ଏହାର ସଦସ୍ୟମାନେ ଆପଣଙ୍କ ନାମ ଏବଂ ପ୍ରୋଫାଇଲ୍ ଦେଖିପାରିବେ।",
     "centralCourseOfferTitle": "{course}ରେ ଯୋଗ ଦେବେ କି?",
     "makeMyOwnCourseInstead": "ଏହା ବଦଳରେ ମୋର ନିଜସ୍ୱ ପାଠ୍ୟକ୍ରମ ତିଆରି କରନ୍ତୁ",
-    "suggestMobileSignInSameAccount": "ତା’ପରେ ଏହି ଆକାଉଣ୍ଟ୍ ସହିତ ଆପରେ ସାଇନ୍ ଇନ୍ କରନ୍ତୁ।"
+    "suggestMobileSignInSameAccount": "ତା’ପରେ ଏହି ଆକାଉଣ୍ଟ୍ ସହିତ ଆପରେ ସାଇନ୍ ଇନ୍ କରନ୍ତୁ।",
+    "botJoinsIn": "Pangea Bot {duration} ରେ ଯୋଗ ଦେବ",
+    "botIsJoining": "Pangea Bot ଯୋଗ ଦେଉଛି…",
+    "playWithBotNowTitle": "ବର୍ତ୍ତମାନ Pangea Bot ସହିତ ଖେଳିବେ କି?",
+    "playWithBotNowMessage": "କେହି ଯୋଗ ଦେଇ ନାହାଁନ୍ତି। Pangea Bot ବର୍ତ୍ତମାନ ଖାଲି ସ୍ଥାନ ନେଇପାରିବ, କିମ୍ବା ଆପଣ ଅପେକ୍ଷା କରିପାରିବେ।",
+    "keepWaiting": "ଅପେକ୍ଷା କରନ୍ତୁ",
+    "botTookSeatAfterAnHour": "ଏହି ସେସନ୍ ଏକ ଘଣ୍ଟା ପାଇଁ ଖୋଲା ଥିଲା, ତେଣୁ Pangea Bot ଖାଲି ସ୍ଥାନ ନେଇଛି।",
+    "botTookSeatAfterADay": "ଏହି ସେସନ୍ ଏକ ଦିନରୁ ଅଧିକ ସମୟ ପାଇଁ ଖୋଲା ଥିଲା, ତେଣୁ Pangea Bot ଖାଲି ସ୍ଥାନ ନେଇଛି। ଆରମ୍ଭ କରିବାକୁ ଏକ ବାର୍ତ୍ତା ପଠାନ୍ତୁ।"
 }

@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "Koia te akoranga a Pangea mō ngā ākonga {language}. Ka kite ngā mema i tō ingoa me tō kōtaha.",
     "centralCourseOfferTitle": "Hono atu ki te {course}?",
     "makeMyOwnCourseInstead": "Hangaia taku ake akoranga",
-    "suggestMobileSignInSameAccount": "Kātahi ka takiuru ki te taupānga me tēnei pūkete."
+    "suggestMobileSignInSameAccount": "Kātahi ka takiuru ki te taupānga me tēnei pūkete.",
+    "botJoinsIn": "Ka uru mai a Pangea Bot i roto i te {duration}",
+    "botIsJoining": "Kei te uru mai a Pangea Bot…",
+    "playWithBotNowTitle": "Me tākaro ināianei ki a Pangea Bot?",
+    "playWithBotNowMessage": "Kāore anō kia uru mai tētahi. Ka taea e Pangea Bot te tango i te tūru wātea ināianei, ka taea rānei e koe te tatari tonu.",
+    "keepWaiting": "Me tatari tonu",
+    "botTookSeatAfterAnHour": "I wātea tēnei hui mō te hāora, nō reira i tangohia e Pangea Bot te tūru wātea.",
+    "botTookSeatAfterADay": "I wātea tēnei hui mō te rā kotahi, nō reira i tangohia e Pangea Bot te tūru wātea. Tukuna he karere kia tīmata ai."
 }

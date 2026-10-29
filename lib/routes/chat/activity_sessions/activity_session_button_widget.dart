@@ -681,8 +681,9 @@ class _PlayChoiceTiles extends StatelessWidget {
   }
 }
 
-/// The waiting room's status line: how long this session has waited, and how
-/// many coursemates are online right now.
+/// The waiting room's status line: how long until Pangea Bot takes the open
+/// seat, or else how long this session has waited, and how many coursemates
+/// are online right now.
 class _WaitingStatusLine extends StatelessWidget {
   final ConfirmedRoleSessionController controller;
 
@@ -704,17 +705,30 @@ class _WaitingStatusLine extends StatelessWidget {
         ValueListenableBuilder(
           valueListenable: controller.clock,
           builder: (context, now, _) {
+            final botJoinsAt = controller.botJoinsAt;
             final since = controller.waitingSince;
-            if (since == null) return const SizedBox.shrink();
+            final IconData icon;
+            final String text;
+            if (botJoinsAt != null) {
+              // The bot's sweep runs every few minutes, so it can join a
+              // little after the hour.
+              final left = botJoinsAt.difference(now);
+              icon = Icons.smart_toy_outlined;
+              text = left > Duration.zero
+                  ? l10n.botJoinsIn(formatCallDuration(left))
+                  : l10n.botIsJoining;
+            } else if (since != null) {
+              icon = Icons.schedule;
+              text = l10n.waitingFor(formatCallDuration(now.difference(since)));
+            } else {
+              return const SizedBox.shrink();
+            }
             return Row(
               mainAxisSize: MainAxisSize.min,
               spacing: 4.0,
               children: [
-                Icon(Icons.schedule, size: 16.0, color: style?.color),
-                Text(
-                  l10n.waitingFor(formatCallDuration(now.difference(since))),
-                  style: style,
-                ),
+                Icon(icon, size: 16.0, color: style?.color),
+                Text(text, style: style),
               ],
             );
           },

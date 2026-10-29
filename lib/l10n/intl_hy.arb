@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "Սա Pangea-ի դասընթացն է {language} սովորողների համար։ Նրա անդամները կարող են տեսնել ձեր անունը և պրոֆիլը։",
     "centralCourseOfferTitle": "Միանա՞լ {course}-ին",
     "makeMyOwnCourseInstead": "Փոխարենը ստեղծել իմ սեփական դասընթացը",
-    "suggestMobileSignInSameAccount": "Այնուհետև մուտք գործեք հավելված այս հաշվով։"
+    "suggestMobileSignInSameAccount": "Այնուհետև մուտք գործեք հավելված այս հաշվով։",
+    "botJoinsIn": "Pangea Bot-ը կմիանա {duration} հետո",
+    "botIsJoining": "Pangea Bot-ը միանում է…",
+    "playWithBotNowTitle": "Խաղա՞լ Pangea Bot-ի հետ հիմա։",
+    "playWithBotNowMessage": "Դեռ ոչ ոք չի միացել։ Pangea Bot-ը կարող է զբաղեցնել ազատ տեղը հիմա, կամ կարող եք շարունակել սպասել։",
+    "keepWaiting": "Շարունակել սպասել",
+    "botTookSeatAfterAnHour": "Այս նիստը բաց էր մեկ ժամ, ուստի Pangea Bot-ը զբաղեցրեց ազատ տեղը։",
+    "botTookSeatAfterADay": "Այս նիստը բաց էր մեկ օրից ավելի, ուստի Pangea Bot-ը զբաղեցրեց ազատ տեղը։ Սկսելու համար ուղարկեք հաղորդագրություն։"
 }

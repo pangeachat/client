@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "Hè u corsu di Pangea per l'amparera di u {language}. I so membri ponu vede u vostru nome è u vostru prufilu.",
     "centralCourseOfferTitle": "Unisciti à {course}?",
     "makeMyOwnCourseInstead": "Creà u mo corsu invece",
-    "suggestMobileSignInSameAccount": "Dopu cunnettatevi à l'app cù stu contu."
+    "suggestMobileSignInSameAccount": "Dopu cunnettatevi à l'app cù stu contu.",
+    "botJoinsIn": "U Bot Pangea si unisce in {duration}",
+    "botIsJoining": "U Bot Pangea si unisce…",
+    "playWithBotNowTitle": "Ghjucà cù u Bot Pangea avà?",
+    "playWithBotNowMessage": "Nimu s'hè ancu unitu. U Bot Pangea pò piglià u postu liberu avà, o pudete cuntinuà à aspittà.",
+    "keepWaiting": "Cuntinuà à aspittà",
+    "botTookSeatAfterAnHour": "Sta sessione hè stata aperta per un'ora, cusì u Bot Pangea hà pigliatu u postu liberu.",
+    "botTookSeatAfterADay": "Sta sessione hè stata aperta per più di un ghjornu, cusì u Bot Pangea hà pigliatu u postu liberu. Mandate un messagiu per principià."
 }
