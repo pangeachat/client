@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+
 import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/course_plans/cities/city_index.dart';
