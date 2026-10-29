@@ -25,11 +25,15 @@ class WorldViewLayer {
   Widget layer() => MarkerLayer(
     markers: [
       for (final city in cities)
+        // The box is centred on the coordinate and the dot sits at its
+        // vertical centre, so the dot is on the city and the label hangs
+        // below it. (flutter_map's alignment moves the whole widget: topCenter
+        // would float the entire marker above the city.)
         Marker(
           point: city.point,
           width: 120,
-          height: 56,
-          alignment: Alignment.topCenter,
+          height: WorldCityMarker.height,
+          alignment: Alignment.center,
           child: WorldCityMarker(
             key: ValueKey('city:${city.key}'),
             city: city,
@@ -38,11 +42,14 @@ class WorldViewLayer {
         ),
       // Ships paint over cities: a ship is the thing to find.
       for (final ship in ships)
+        // The whole box sits above the coordinate, with the pill at its
+        // bottom and a gap the size of the city dot, so the ship rides just
+        // above the city it has reached.
         Marker(
           point: ship.point,
           width: 180,
-          height: 44,
-          alignment: Alignment.bottomCenter,
+          height: WorldShipMarker.height,
+          alignment: Alignment.topCenter,
           child: WorldShipMarker(
             key: ValueKey('ship:${ship.roomId}'),
             ship: ship,
@@ -54,6 +61,8 @@ class WorldViewLayer {
 }
 
 class WorldCityMarker extends StatelessWidget {
+  static const double height = 60;
+  static const double dotSize = 18;
   final WorldCity city;
   final VoidCallback onTap;
   const WorldCityMarker({super.key, required this.city, required this.onTap});
@@ -74,9 +83,11 @@ class WorldCityMarker extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            // Puts the dot's centre at the box's centre, i.e. on the point.
+            const SizedBox(height: height / 2 - dotSize / 2),
             Container(
-              width: 18,
-              height: 18,
+              width: dotSize,
+              height: dotSize,
               decoration: BoxDecoration(
                 color: theme.colorScheme.surface,
                 shape: BoxShape.circle,
@@ -114,6 +125,7 @@ class WorldCityMarker extends StatelessWidget {
 }
 
 class WorldShipMarker extends StatelessWidget {
+  static const double height = 48;
   final WorldShip ship;
   final VoidCallback onTap;
   const WorldShipMarker({super.key, required this.ship, required this.onTap});
@@ -131,6 +143,9 @@ class WorldShipMarker extends StatelessWidget {
         child: Align(
           alignment: Alignment.bottomCenter,
           child: Container(
+            margin: const EdgeInsets.only(
+              bottom: WorldCityMarker.dotSize / 2 + 2,
+            ),
             padding: const EdgeInsets.fromLTRB(6, 3, 10, 3),
             decoration: BoxDecoration(
               color: theme.colorScheme.primary,
