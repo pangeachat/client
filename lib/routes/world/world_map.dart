@@ -262,6 +262,10 @@ class WorldMapController extends State<WorldMap>
   /// context and a Mission picked fade once each, not on every rebuild.
   String? _fadedMissionKey;
 
+  /// The context before the current one, to tell a Mission pick inside a
+  /// course from a hop between courses.
+  MapContext _lastContext = MapContextController.notifier.value;
+
   /// Ticks whenever the filtered view could have changed — a filter/query
   /// mutation or a completed pin load — so the shell-built narrow search bar
   /// can re-read [visiblePins] for its empty-view card: this State's own
@@ -841,7 +845,17 @@ class WorldMapController extends State<WorldMap>
     // Reset the map-pin global and reload pins when the map re-scopes (e.g.
     // entering a course), then refit. The camera fit is debounced so clicking
     // through courses doesn't snap the camera on every hop — it glides only after
-    // you've settled on one.
+    // you've settled on one. Picking a Mission inside the same course is one
+    // deliberate act, so its fade is not held back (org course-view doc).
+    final previous = _lastContext;
+    final next = MapContextController.notifier.value;
+    _lastContext = next;
+    final missionPick =
+        previous is CourseMapContext &&
+        next is CourseMapContext &&
+        previous.coursePlanId == next.coursePlanId &&
+        previous.spaceId == next.spaceId &&
+        previous.missionId != next.missionId;
     if (mounted) {
       WorldMapPinsManager.set(false);
     }
@@ -849,7 +863,7 @@ class WorldMapController extends State<WorldMap>
     // re-derive the signals now rather than on the next sync tick — entering a
     // course must not flash another course's session as joinable first.
     _recomputeProgress();
-    _loadForContext(debounceFit: true);
+    _loadForContext(debounceFit: !missionPick);
   }
 
   /// Load the pins for the active map context. A selected course shows that
