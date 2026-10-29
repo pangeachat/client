@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-27 14:57:23.454288",
+    "@@last_modified": "2026-10-29 11:20:57.700709",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "بۇ پانگېيانىڭ {language} ئۆگەنگۈچىلەر ئۈچۈن تەييارلىغان دەرسى. ئۇنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ.",
     "centralCourseOfferTitle": "{course}غا قاتناشامسىز؟",
     "makeMyOwnCourseInstead": "ئۆزۈمنىڭ دەرسلىكىنى قۇراشتۇرىمەن",
-    "suggestMobileSignInSameAccount": "ئاندىن بۇ ھېسابات ئارقىلىق ئەپكە كىرىڭ."
+    "suggestMobileSignInSameAccount": "ئاندىن بۇ ھېسابات ئارقىلىق ئەپكە كىرىڭ.",
+    "focusMission": "بۇ ۋەزىپىنىڭ پائالىيەتلىرىگە ئەھمىيەت بېرىڭ",
+    "missionNotYetOpen": "تېخى ئېچىلمىدى",
+    "objectiveCircleClosed": "{index}-ۋەزىپە، تېخى ئېچىلمىدى",
+    "missionOpensOn": "{date} دە ئېچىلىدۇ",
+    "missionOpensAfter": "{index}-ۋەزىپىدىن كېيىن ئېچىلىدۇ",
+    "enterCityEarly": "بالدۇر كىرىڭ",
+    "enterCityEarlyTitle": "{city} غا بالدۇر كىرەمسىز؟",
+    "enterCityEarlyBody": "بۇ شەھەر سىزگە تېخى ئېچىلمىدى. سىنىپتىن بۇرۇن ساياھەت قىلىشنىڭ چىقىمى بار؛ چىقىمى ھازىرچە بېكىتىلمىدى، شۇڭا ھازىرچە ھېچقانداق ھەق ئېلىنمايدۇ."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-27 14:57:17.070493",
+    "@@last_modified": "2026-10-29 11:20:41.995217",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Ọ bụ ọmụmụ ihe Pangea maka ndị na-amụ {language}. Ndị otu ya nwere ike ịhụ aha gị na profaịlụ gị.",
     "centralCourseOfferTitle": "Banye {course}?",
     "makeMyOwnCourseInstead": "Mee nke m kama",
-    "suggestMobileSignInSameAccount": "Banyezie na ngwa ahụ na akaụntụ a."
+    "suggestMobileSignInSameAccount": "Banyezie na ngwa ahụ na akaụntụ a.",
+    "focusMission": "Lekwasị anya n'ihe omume nke Misionụ a",
+    "missionNotYetOpen": "Emebeghị ya",
+    "objectiveCircleClosed": "Misionụ {index}, emebeghị ya",
+    "missionOpensOn": "Mepee {date}",
+    "missionOpensAfter": "Mepee mgbe Misionụ {index} gasịrị",
+    "enterCityEarly": "Banye ngwa ngwa",
+    "enterCityEarlyTitle": "Ị ga-abanye {city} ngwa ngwa?",
+    "enterCityEarlyBody": "Obodo a emepebeghị gị. Ịga njem tupu klas nwere ọnụ ahịa; a ka na-ekpebi ihe ọ ga-efu, yabụ na ugbu a, ọ nweghị ihe a na-ana."
 }

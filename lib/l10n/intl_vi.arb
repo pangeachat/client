@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:23.785091",
+    "@@last_modified": "2026-10-29 11:20:56.871419",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7360,5 +7360,13 @@
     "centralCourseOfferBody": "Đây là khóa học của Pangea dành cho người học tiếng {language}. Các thành viên có thể xem tên và hồ sơ của bạn.",
     "centralCourseOfferTitle": "Tham gia {course}?",
     "makeMyOwnCourseInstead": "Tự tạo khóa học của riêng tôi",
-    "suggestMobileSignInSameAccount": "Sau đó đăng nhập vào ứng dụng bằng tài khoản này."
+    "suggestMobileSignInSameAccount": "Sau đó đăng nhập vào ứng dụng bằng tài khoản này.",
+    "focusMission": "Tập trung vào các hoạt động của Nhiệm vụ này",
+    "missionNotYetOpen": "Chưa mở",
+    "objectiveCircleClosed": "Nhiệm vụ {index}, chưa mở",
+    "missionOpensOn": "Mở vào {date}",
+    "missionOpensAfter": "Mở sau Nhiệm vụ {index}",
+    "enterCityEarly": "Vào sớm",
+    "enterCityEarlyTitle": "Vào {city} sớm?",
+    "enterCityEarlyBody": "Thành phố này chưa mở cửa cho bạn. Việc đi trước lớp học sẽ phải trả phí; chi phí vẫn đang được quyết định, vì vậy hiện tại chưa có khoản phí nào được tính."
 }

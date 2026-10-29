@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-27 14:57:19.374225",
+    "@@last_modified": "2026-10-29 11:20:46.795376",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Ова е курсот на Pangea за ученици по {language}. Неговите членови можат да го видат вашето име и профил.",
     "centralCourseOfferTitle": "Да се приклучиш на {course}?",
     "makeMyOwnCourseInstead": "Направи си свој курс",
-    "suggestMobileSignInSameAccount": "Потоа најавете се во апликацијата со оваа сметка."
+    "suggestMobileSignInSameAccount": "Потоа најавете се во апликацијата со оваа сметка.",
+    "focusMission": "Фокусирајте се на активностите на оваа мисија",
+    "missionNotYetOpen": "Сè уште не е отворено",
+    "objectiveCircleClosed": "Мисија {index}, сè уште не е отворена",
+    "missionOpensOn": "Се отвора на {date}",
+    "missionOpensAfter": "Се отвора по мисија {index}",
+    "enterCityEarly": "Влезете порано",
+    "enterCityEarlyTitle": "Да влезете порано во {city}?",
+    "enterCityEarlyBody": "Овој град сè уште не е отворен за вас. Патувањето пред часот има цена; што точно чини сè уште се одлучува, па засега ништо не се наплаќа."
 }

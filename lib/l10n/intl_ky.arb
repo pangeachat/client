@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-27 14:57:18.506619",
+    "@@last_modified": "2026-10-29 11:20:45.204747",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Бул {language} үйрөнүүчүлөр үчүн Pangea курсу. Анын мүчөлөрү сиздин атыңызды жана профилиңизди көрө алышат.",
     "centralCourseOfferTitle": "{course} курсуна кошуласызбы?",
     "makeMyOwnCourseInstead": "Анын ордуна өзүмдүн курсумду түзөм",
-    "suggestMobileSignInSameAccount": "Андан кийин бул аккаунт менен колдонмого кириңиз."
+    "suggestMobileSignInSameAccount": "Андан кийин бул аккаунт менен колдонмого кириңиз.",
+    "focusMission": "Бул миссиянын иш-аракеттерине көңүл буруңуз",
+    "missionNotYetOpen": "Азырынча ачыла элек",
+    "objectiveCircleClosed": "{index}-миссия, азырынча ачыла элек",
+    "missionOpensOn": "{date} ачылат",
+    "missionOpensAfter": "{index}-миссиядан кийин ачылат",
+    "enterCityEarly": "Эрте кирүү",
+    "enterCityEarlyTitle": "{city} шаарына эрте кирүү керекпи?",
+    "enterCityEarlyBody": "Бул шаар сизге азырынча ачык эмес. Класстан алдыда саякаттоонун баасы бар; анын баасы дагы эле чечилип жатат, андыктан азырынча эч нерсе алынбайт."
 }

@@ -3389,7 +3389,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-27 14:57:13.805148",
+    "@@last_modified": "2026-10-29 11:20:37.498875",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10925,5 +10925,13 @@
     "centralCourseOfferBody": "Είναι το μάθημα της Pangea για μαθητές {language}. Τα μέλη του μπορούν να δουν το όνομα και το προφίλ σας.",
     "centralCourseOfferTitle": "Συμμετοχή στο {course};",
     "makeMyOwnCourseInstead": "Να φτιάξω το δικό μου μάθημα",
-    "suggestMobileSignInSameAccount": "Στη συνέχεια, συνδεθείτε στην εφαρμογή με αυτόν τον λογαριασμό."
+    "suggestMobileSignInSameAccount": "Στη συνέχεια, συνδεθείτε στην εφαρμογή με αυτόν τον λογαριασμό.",
+    "focusMission": "Εστίαση στις δραστηριότητες αυτής της Αποστολής",
+    "missionNotYetOpen": "Δεν έχει ανοίξει ακόμα",
+    "objectiveCircleClosed": "Αποστολή {index}, δεν έχει ανοίξει ακόμα",
+    "missionOpensOn": "Ανοίγει {date}",
+    "missionOpensAfter": "Ανοίγει μετά την Αποστολή {index}",
+    "enterCityEarly": "Είσοδος νωρίτερα",
+    "enterCityEarlyTitle": "Να μπείτε στην πόλη {city} νωρίτερα;",
+    "enterCityEarlyBody": "Αυτή η πόλη δεν είναι ακόμα ανοιχτή για εσάς. Το να ταξιδέψετε πριν από την τάξη έχει ένα κόστος. Το κόστος αυτό ακόμα αποφασίζεται, οπότε προς το παρόν δεν χρεώνεστε τίποτα."
 }

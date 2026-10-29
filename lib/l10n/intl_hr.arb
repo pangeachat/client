@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-27 14:57:16.180417",
+    "@@last_modified": "2026-10-29 11:20:40.291567",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10486,5 +10486,13 @@
     "centralCourseOfferBody": "Ovo je Pangein tečaj za učenike {language} jezika. Njegovi članovi mogu vidjeti vaše ime i profil.",
     "centralCourseOfferTitle": "Pridružiti se tečaju {course}?",
     "makeMyOwnCourseInstead": "Umjesto toga, izradite vlastiti tečaj",
-    "suggestMobileSignInSameAccount": "Zatim se prijavite u aplikaciju s ovim računom."
+    "suggestMobileSignInSameAccount": "Zatim se prijavite u aplikaciju s ovim računom.",
+    "focusMission": "Fokusirajte se na aktivnosti ove Misije",
+    "missionNotYetOpen": "Još nije otvoreno",
+    "objectiveCircleClosed": "Misija {index}, još nije otvorena",
+    "missionOpensOn": "Otvara se {date}",
+    "missionOpensAfter": "Otvara se nakon Misije {index}",
+    "enterCityEarly": "Uđite ranije",
+    "enterCityEarlyTitle": "Ući u {city} ranije?",
+    "enterCityEarlyBody": "Ovaj grad vam još nije otvoren. Putovanje ispred razreda ima svoju cijenu; što to košta još se odlučuje, tako da za sada ništa nije naplaćeno."
 }

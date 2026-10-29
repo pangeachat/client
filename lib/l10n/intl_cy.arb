@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-27 14:57:14.306835",
+    "@@last_modified": "2026-10-29 11:20:37.160102",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Dyma gwrs Pangea ar gyfer dysgwyr {language}. Gall ei aelodau weld eich enw a'ch proffil.",
     "centralCourseOfferTitle": "Ymunwch â {course}?",
     "makeMyOwnCourseInstead": "Creu fy nghwrs fy hun yn lle hynny",
-    "suggestMobileSignInSameAccount": "Yna mewngofnodwch i'r ap gyda'r cyfrif hwn."
+    "suggestMobileSignInSameAccount": "Yna mewngofnodwch i'r ap gyda'r cyfrif hwn.",
+    "focusMission": "Ffocysu ar weithgareddau'r Genhadaeth hon",
+    "missionNotYetOpen": "Heb agor eto",
+    "objectiveCircleClosed": "Cenhadaeth {index}, heb agor eto",
+    "missionOpensOn": "Yn agor {date}",
+    "missionOpensAfter": "Yn agor ar ôl Cenhadaeth {index}",
+    "enterCityEarly": "Ewch i mewn yn gynnar",
+    "enterCityEarlyTitle": "Ewch i mewn i {city} yn gynnar?",
+    "enterCityEarlyBody": "Nid yw'r ddinas hon ar agor i chi eto. Mae teithio o flaen y dosbarth yn costio; mae'r hyn y mae'n ei gostio yn dal i gael ei benderfynu, felly am y tro nid oes dim yn cael ei godi."
 }

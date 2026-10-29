@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-27 14:57:24.669356",
+    "@@last_modified": "2026-10-29 11:20:57.792378",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,13 @@
     "centralCourseOfferBody": "这是 Pangea 为{language}学习者开设的课程。课程成员可以看到您的姓名和个人资料。",
     "centralCourseOfferTitle": "加入 {course}？",
     "makeMyOwnCourseInstead": "改为创建我自己的课程",
-    "suggestMobileSignInSameAccount": "然后用此账号登录应用。"
+    "suggestMobileSignInSameAccount": "然后用此账号登录应用。",
+    "focusMission": "专注于此任务的活动",
+    "missionNotYetOpen": "尚未开放",
+    "objectiveCircleClosed": "任务 {index}，尚未开放",
+    "missionOpensOn": "{date} 开放",
+    "missionOpensAfter": "任务 {index} 后开放",
+    "enterCityEarly": "提前进入",
+    "enterCityEarlyTitle": "提前进入 {city}？",
+    "enterCityEarlyBody": "此城市尚未对您开放。提前于班级旅行会产生费用；具体费用仍在确定中，因此目前不收取任何费用。"
 }

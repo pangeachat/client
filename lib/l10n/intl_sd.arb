@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-27 14:57:21.465377",
+    "@@last_modified": "2026-10-29 11:20:52.137269",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "هي {language} سکندڙن لاءِ پينگيا جو ڪورس آهي. ان جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا.",
     "centralCourseOfferTitle": "{course} ۾ شامل ٿيو؟",
     "makeMyOwnCourseInstead": "ان جي بدران پنهنجو ڪورس ٺاهيو",
-    "suggestMobileSignInSameAccount": "پوءِ هن اڪائونٽ سان ايپ ۾ سائن ان ڪريو."
+    "suggestMobileSignInSameAccount": "پوءِ هن اڪائونٽ سان ايپ ۾ سائن ان ڪريو.",
+    "focusMission": "هن مشن جي سرگرمين تي ڌيان ڏيو",
+    "missionNotYetOpen": "اڃا کليل ناهي",
+    "objectiveCircleClosed": "مشن {index}، اڃا کليل ناهي",
+    "missionOpensOn": "{date} تي کلي ٿو",
+    "missionOpensAfter": "مشن {index} کان پوءِ کلي ٿو",
+    "enterCityEarly": "جلد داخل ٿيو",
+    "enterCityEarlyTitle": "{city} ۾ جلد داخل ٿيو؟",
+    "enterCityEarlyBody": "هي شهر اڃا توهان لاءِ کليل ناهي. ڪلاس کان اڳ سفر ڪرڻ جي قيمت آهي؛ ان جي قيمت اڃا طئي ڪئي پئي وڃي، تنهنڪري في الحال ڪجهه به چارج نه ڪيو ويندو."
 }

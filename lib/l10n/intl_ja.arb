@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-27 14:57:17.478293",
+    "@@last_modified": "2026-10-29 11:20:42.473567",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10819,5 +10819,13 @@
     "centralCourseOfferBody": "これは{language}学習者向けのPangeaのコースです。メンバーはあなたの名前とプロフィールを見ることができます。",
     "centralCourseOfferTitle": "{course}に参加しますか？",
     "makeMyOwnCourseInstead": "代わりに自分でコースを作成する",
-    "suggestMobileSignInSameAccount": "その後、このアカウントでアプリにサインインしてください。"
+    "suggestMobileSignInSameAccount": "その後、このアカウントでアプリにサインインしてください。",
+    "focusMission": "このミッションのアクティビティに集中する",
+    "missionNotYetOpen": "未開放",
+    "objectiveCircleClosed": "ミッション{index}、未開放",
+    "missionOpensOn": "{date}に開放",
+    "missionOpensAfter": "ミッション{index}の後に開放",
+    "enterCityEarly": "早期入場",
+    "enterCityEarlyTitle": "{city}に早期入場しますか？",
+    "enterCityEarlyBody": "この都市はまだ開放されていません。クラスより先に進むには費用がかかります。費用はまだ決定中ですので、現時点では無料です。"
 }

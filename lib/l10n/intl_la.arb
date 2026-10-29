@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-27 14:57:18.004967",
+    "@@last_modified": "2026-10-29 11:20:45.013796",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Hic est cursus Pangeae pro discentibus {language}. Sodales eius nomen et imaginem tuam videre possunt.",
     "centralCourseOfferTitle": "Visne {course} iungere?",
     "makeMyOwnCourseInstead": "Meum cursum potius faciam",
-    "suggestMobileSignInSameAccount": "Deinde in app cum hoc usoris nomine inscribe."
+    "suggestMobileSignInSameAccount": "Deinde in app cum hoc usoris nomine inscribe.",
+    "focusMission": "In hoc negotio incumbite",
+    "missionNotYetOpen": "Nondum apertum",
+    "objectiveCircleClosed": "Negotium {index}, nondum apertum",
+    "missionOpensOn": "Aperietur {date}",
+    "missionOpensAfter": "Aperietur post Negotium {index}",
+    "enterCityEarly": "Mature ingredi",
+    "enterCityEarlyTitle": "Maturene {city} ingredieris?",
+    "enterCityEarlyBody": "Haec urbs tibi nondum patet. Ante alios iter facere pretium habet; quid sit pretium, nondum constitutum est, itaque nunc nihil solvitur."
 }

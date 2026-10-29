@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-27 14:57:20.411576",
+    "@@last_modified": "2026-10-29 11:20:50.748059",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "دا د {language} زده کونکو لپاره د پانګیا کورس دی. د دې غړي کولی شي ستاسو نوم او پروفایل وګوري.",
     "centralCourseOfferTitle": "{course} سره یوځای شئ؟",
     "makeMyOwnCourseInstead": "پرځای یې خپل کورس جوړ کړئ",
-    "suggestMobileSignInSameAccount": "بیا په دې حساب سره اپلیکیشن ته ننوځئ."
+    "suggestMobileSignInSameAccount": "بیا په دې حساب سره اپلیکیشن ته ننوځئ.",
+    "focusMission": "په دې ماموریت فعالیتونو تمرکز وکړئ",
+    "missionNotYetOpen": "تر اوسه خلاص نه دی",
+    "objectiveCircleClosed": "ماموریت {index}، تر اوسه خلاص نه دی",
+    "missionOpensOn": "په {date} خلاصیږي",
+    "missionOpensAfter": "د ماموریت {index} وروسته خلاصیږي",
+    "enterCityEarly": "ژر داخل شئ",
+    "enterCityEarlyTitle": "ژر {city} ته داخل شئ؟",
+    "enterCityEarlyBody": "دا ښار تر اوسه ستاسو لپاره خلاص نه دی. د ټولګي څخه مخکې سفر کول لګښت لري؛ د دې لګښت لاهم پریکړه کیږي، نو د اوس لپاره هیڅ شی نه اخیستل کیږي."
 }

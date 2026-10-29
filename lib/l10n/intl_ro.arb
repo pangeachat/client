@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:21.131641",
+    "@@last_modified": "2026-10-29 11:20:51.473232",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10782,5 +10782,13 @@
     "centralCourseOfferBody": "Este cursul Pangea pentru cursanții de {language}. Membrii săi îți pot vedea numele și profilul.",
     "centralCourseOfferTitle": "Te alături la {course}?",
     "makeMyOwnCourseInstead": "Creez propriul curs",
-    "suggestMobileSignInSameAccount": "Apoi conectați-vă la aplicație cu acest cont."
+    "suggestMobileSignInSameAccount": "Apoi conectați-vă la aplicație cu acest cont.",
+    "focusMission": "Concentrează-te pe activitățile acestei Misiuni",
+    "missionNotYetOpen": "Încă nu este deschisă",
+    "objectiveCircleClosed": "Misiunea {index}, încă nu este deschisă",
+    "missionOpensOn": "Se deschide la {date}",
+    "missionOpensAfter": "Se deschide după Misiunea {index}",
+    "enterCityEarly": "Intră mai devreme",
+    "enterCityEarlyTitle": "Intri mai devreme în {city}?",
+    "enterCityEarlyBody": "Acest oraș nu este încă deschis pentru tine. Călătoria înaintea clasei are un cost; costul este încă în curs de decizie, așa că deocamdată nu se percepe nimic."
 }

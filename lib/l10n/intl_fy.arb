@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-27 14:57:14.825794",
+    "@@last_modified": "2026-10-29 11:20:38.781776",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "It is de kursus fan Pangea foar {language}-learders. De leden kinne jo namme en profyl sjen.",
     "centralCourseOfferTitle": "Meidwaan oan {course}?",
     "makeMyOwnCourseInstead": "Myn eigen kursus meitsje",
-    "suggestMobileSignInSameAccount": "Meld dy dan oan by de app mei dit akkount."
+    "suggestMobileSignInSameAccount": "Meld dy dan oan by de app mei dit akkount.",
+    "focusMission": "Fokusje op de aktiviteiten fan dizze missy",
+    "missionNotYetOpen": "Noch net iepen",
+    "objectiveCircleClosed": "Missy {index}, noch net iepen",
+    "missionOpensOn": "Iepent {date}",
+    "missionOpensAfter": "Iepent nei missy {index}",
+    "enterCityEarly": "Gean betiid yn",
+    "enterCityEarlyTitle": "Betiid {city} yngean?",
+    "enterCityEarlyBody": "Dizze stêd is noch net foar jo iepen. Foarút reizgje op de klasse hat in priis; wat it kostet wurdt noch besletten, dus foar no wurdt der neat yn rekken brocht."
 }

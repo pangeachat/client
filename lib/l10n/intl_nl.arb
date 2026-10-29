@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:19.974451",
+    "@@last_modified": "2026-10-29 11:20:48.817950",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,13 @@
     "centralCourseOfferBody": "Dit is de Pangea-cursus voor {language}-leerders. De leden kunnen je naam en profiel zien.",
     "centralCourseOfferTitle": "Deelnemen aan {course}?",
     "makeMyOwnCourseInstead": "In plaats daarvan mijn eigen cursus maken",
-    "suggestMobileSignInSameAccount": "Meld je vervolgens met dit account aan bij de app."
+    "suggestMobileSignInSameAccount": "Meld je vervolgens met dit account aan bij de app.",
+    "focusMission": "Focus op de activiteiten van deze missie",
+    "missionNotYetOpen": "Nog niet geopend",
+    "objectiveCircleClosed": "Missie {index}, nog niet geopend",
+    "missionOpensOn": "Opent {date}",
+    "missionOpensAfter": "Opent na missie {index}",
+    "enterCityEarly": "Vroeg binnengaan",
+    "enterCityEarlyTitle": "Vroeg naar {city} gaan?",
+    "enterCityEarlyBody": "Deze stad is nog niet voor je geopend. Vooruitreizen op de groep heeft een prijs; wat het kost wordt nog bepaald, dus voor nu wordt er niets in rekening gebracht."
 }

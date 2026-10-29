@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:14.613217",
+    "@@last_modified": "2026-10-29 11:20:37.945482",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10141,5 +10141,13 @@
     "centralCourseOfferBody": "این دوره پانگه‌آ برای زبان‌آموزان {language} است. اعضای آن می‌توانند نام و نمایه شما را ببینند.",
     "centralCourseOfferTitle": "به {course} بپیوندید؟",
     "makeMyOwnCourseInstead": "به جای آن، دوره خودم را بسازم",
-    "suggestMobileSignInSameAccount": "سپس با همین حساب وارد برنامه شوید."
+    "suggestMobileSignInSameAccount": "سپس با همین حساب وارد برنامه شوید.",
+    "focusMission": "روی فعالیت‌های این مأموریت تمرکز کنید",
+    "missionNotYetOpen": "هنوز باز نشده است",
+    "objectiveCircleClosed": "مأموریت {index}، هنوز باز نشده است",
+    "missionOpensOn": "در تاریخ {date} باز می‌شود",
+    "missionOpensAfter": "پس از مأموریت {index} باز می‌شود",
+    "enterCityEarly": "زودتر وارد شوید",
+    "enterCityEarlyTitle": "زودتر وارد {city} شوید؟",
+    "enterCityEarlyBody": "این شهر هنوز برای شما باز نشده است. سفر جلوتر از کلاس هزینه دارد؛ هنوز در مورد هزینه تصمیم‌گیری نشده است، بنابراین فعلاً چیزی دریافت نمی‌شود."
 }

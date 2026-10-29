@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-27 14:57:21.742786",
+    "@@last_modified": "2026-10-29 11:20:53.337837",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "O le kosi a Pangea mo tagata aʻoga {language}. E mafai e ona sui ona vaʻai i lou igoa ma lau talaaga.",
     "centralCourseOfferTitle": "Auai i le {course}?",
     "makeMyOwnCourseInstead": "Fausia laʻu lava kosi",
-    "suggestMobileSignInSameAccount": "Ona saini lea i totonu o le app i lenei teugatupe."
+    "suggestMobileSignInSameAccount": "Ona saini lea i totonu o le app i lenei teugatupe.",
+    "focusMission": "Taulai i gaoioiga o lenei Misiona",
+    "missionNotYetOpen": "E le'i tatalaina",
+    "objectiveCircleClosed": "Misiona {index}, e le'i tatalaina",
+    "missionOpensOn": "Tatala {date}",
+    "missionOpensAfter": "Tatala pe a uma le Misiona {index}",
+    "enterCityEarly": "Ulufale vave",
+    "enterCityEarlyTitle": "Ulufale vave i le aai o {city}?",
+    "enterCityEarlyBody": "E le'i tatalaina lenei aai mo oe. O le malaga i luma o le vasega e iai sona tau; o le a le tau o lo'o fuafuaina pea, o lea mo le taimi nei e leai se totogi."
 }

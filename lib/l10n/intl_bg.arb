@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-27 14:57:12.896732",
+    "@@last_modified": "2026-10-29 11:20:34.903991",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Това е курсът на Pangea за изучаващи {language}. Неговите членове могат да виждат вашето име и профил.",
     "centralCourseOfferTitle": "Да се присъединя към {course}?",
     "makeMyOwnCourseInstead": "Вместо това да създам свой собствен курс",
-    "suggestMobileSignInSameAccount": "След това влезте в приложението с този акаунт."
+    "suggestMobileSignInSameAccount": "След това влезте в приложението с този акаунт.",
+    "focusMission": "Фокусирай се върху дейностите на тази мисия",
+    "missionNotYetOpen": "Все още не е отворена",
+    "objectiveCircleClosed": "Мисия {index}, все още не е отворена",
+    "missionOpensOn": "Отваря на {date}",
+    "missionOpensAfter": "Отваря след мисия {index}",
+    "enterCityEarly": "Влез по-рано",
+    "enterCityEarlyTitle": "Да влезеш ли в {city} по-рано?",
+    "enterCityEarlyBody": "Този град все още не е отворен за теб. Пътуването преди класа има цена; все още се решава каква е тя, така че за момента нищо не се таксува."
 }

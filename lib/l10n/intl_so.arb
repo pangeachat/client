@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-27 14:57:24.816783",
+    "@@last_modified": "2026-10-29 11:20:53.705283",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Waa koorsada Pangea ee loogu talagalay barayaasha {language}. Xubnaheeda waxay arki karaan magacaaga iyo astaantaada.",
     "centralCourseOfferTitle": "Ku biir {course}?",
     "makeMyOwnCourseInstead": "Anigu waxaan samaysanayaa koorsadayda",
-    "suggestMobileSignInSameAccount": "Kadibna ku gal app-ka akoonkan."
+    "suggestMobileSignInSameAccount": "Kadibna ku gal app-ka akoonkan.",
+    "focusMission": "Diirad saar hawlaha Hawlgalkan",
+    "missionNotYetOpen": "Weli ma furna",
+    "objectiveCircleClosed": "Hawlgal {index}, weli ma furna",
+    "missionOpensOn": "Wuxuu furmayaa {date}",
+    "missionOpensAfter": "Wuxuu furmayaa Hawlgalka {index} ka dib",
+    "enterCityEarly": "Geli hore",
+    "enterCityEarlyTitle": "Ma gelaysaa {city} hore?",
+    "enterCityEarlyBody": "Magaaladan weli kuu furan maaha. Safarka ka hor fasalka wuxuu leeyahay kharash; waxa uu ku kacayo weli lama go'aansan, sidaa darteed hadda waxba lagama qaadayo."
 }

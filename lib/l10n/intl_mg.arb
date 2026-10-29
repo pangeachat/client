@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-27 14:57:18.881149",
+    "@@last_modified": "2026-10-29 11:20:46.170117",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Ity no taranja Pangea ho an'ireo mpianatra {language}. Afaka mahita ny anaranao sy ny mombamomba anao ireo mpikambana ao.",
     "centralCourseOfferTitle": "Midira amin'ny {course}?",
     "makeMyOwnCourseInstead": "Mamorona ny taranja manokana kosa",
-    "suggestMobileSignInSameAccount": "Avy eo midira amin'ny fampiharana amin'ity kaonty ity."
+    "suggestMobileSignInSameAccount": "Avy eo midira amin'ny fampiharana amin'ity kaonty ity.",
+    "focusMission": "Ifantoka amin'ny asan'ity Iraka ity",
+    "missionNotYetOpen": "Mbola tsy misokatra",
+    "objectiveCircleClosed": "Iraka {index}, mbola tsy misokatra",
+    "missionOpensOn": "Misokatra {date}",
+    "missionOpensAfter": "Misokatra aorian'ny Iraka {index}",
+    "enterCityEarly": "Midira aloha",
+    "enterCityEarlyTitle": "Hiditra aloha ao {city}?",
+    "enterCityEarlyBody": "Mbola tsy misokatra ho anao ity tanàna ity. Misy vidiny ny fandehanana alohan'ny kilasy; mbola tsy tapaka ny vidiny, ka tsy misy sarany aloha izao."
 }

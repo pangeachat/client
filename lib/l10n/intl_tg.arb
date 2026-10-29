@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-27 14:57:22.742790",
+    "@@last_modified": "2026-10-29 11:20:55.800541",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Ин курси Pangea барои омӯзандагони забони {language} аст. Аъзоёни он метавонанд ном ва профили шуморо бубинанд.",
     "centralCourseOfferTitle": "Ба {course} ҳамроҳ шавед?",
     "makeMyOwnCourseInstead": "Ба ҷои ин курси худро созед",
-    "suggestMobileSignInSameAccount": "Сипас бо ин ҳисоб ба барнома ворид шавед."
+    "suggestMobileSignInSameAccount": "Сипас бо ин ҳисоб ба барнома ворид шавед.",
+    "focusMission": "Ба фаъолиятҳои ин миссия тамаркуз кунед",
+    "missionNotYetOpen": "Ҳанӯз кушода нашудааст",
+    "objectiveCircleClosed": "Миссияи {index}, ҳанӯз кушода нашудааст",
+    "missionOpensOn": "Санаи кушодашавӣ: {date}",
+    "missionOpensAfter": "Пас аз миссияи {index} кушода мешавад",
+    "enterCityEarly": "Барвақт ворид шавед",
+    "enterCityEarlyTitle": "Ба {city} барвақт ворид шавед?",
+    "enterCityEarlyBody": "Ин шаҳр барои шумо ҳанӯз кушода нест. Пеш аз дарс сафар кардан арзиш дорад; арзиши он ҳанӯз муайян карда мешавад, аз ин рӯ ҳоло чизе ситонида намешавад."
 }

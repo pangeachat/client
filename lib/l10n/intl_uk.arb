@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-27 14:57:23.375886",
+    "@@last_modified": "2026-10-29 11:20:55.990957",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,13 @@
     "centralCourseOfferBody": "Це курс Pangea для тих, хто вивчає {language}. Учасники курсу бачитимуть ваше ім’я та профіль.",
     "centralCourseOfferTitle": "Приєднатися до курсу «{course}»?",
     "makeMyOwnCourseInstead": "Натомість створити власний курс",
-    "suggestMobileSignInSameAccount": "Потім увійдіть у програму за допомогою цього облікового запису."
+    "suggestMobileSignInSameAccount": "Потім увійдіть у програму за допомогою цього облікового запису.",
+    "focusMission": "Зосередьтеся на завданнях цієї Місії",
+    "missionNotYetOpen": "Ще не відкрито",
+    "objectiveCircleClosed": "Місія {index}, ще не відкрито",
+    "missionOpensOn": "Відкривається {date}",
+    "missionOpensAfter": "Відкривається після Місії {index}",
+    "enterCityEarly": "Увійти раніше",
+    "enterCityEarlyTitle": "Увійти до {city} раніше?",
+    "enterCityEarlyBody": "Це місто ще не відкрите для вас. Подорож попереду класу має свою ціну; що саме це коштуватиме, ще вирішується, тому наразі нічого не стягується."
 }

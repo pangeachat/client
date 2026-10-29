@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-27 14:57:16.398007",
+    "@@last_modified": "2026-10-29 11:20:56.201721",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Սա Pangea-ի դասընթացն է {language} սովորողների համար։ Նրա անդամները կարող են տեսնել ձեր անունը և պրոֆիլը։",
     "centralCourseOfferTitle": "Միանա՞լ {course}-ին",
     "makeMyOwnCourseInstead": "Փոխարենը ստեղծել իմ սեփական դասընթացը",
-    "suggestMobileSignInSameAccount": "Այնուհետև մուտք գործեք հավելված այս հաշվով։"
+    "suggestMobileSignInSameAccount": "Այնուհետև մուտք գործեք հավելված այս հաշվով։",
+    "focusMission": "Կենտրոնանալ այս առաքելության գործողությունների վրա",
+    "missionNotYetOpen": "Դեռ բաց չէ",
+    "objectiveCircleClosed": "Առաքելություն {index}, դեռ բաց չէ",
+    "missionOpensOn": "Բացվում է {date}",
+    "missionOpensAfter": "Բացվում է {index} առաքելությունից հետո",
+    "enterCityEarly": "Մուտք գործել վաղաժամ",
+    "enterCityEarlyTitle": "Մուտք գործե՞լ {city} վաղաժամ",
+    "enterCityEarlyBody": "Այս քաղաքը դեռ բաց չէ ձեզ համար։ Դասարանից առաջ ճանապարհորդելը ծախս ունի. թե ինչ արժե, դեռ որոշվում է, ուստի առայժմ ոչինչ չի գանձվում։"
 }

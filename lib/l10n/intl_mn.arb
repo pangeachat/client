@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-27 14:57:19.324503",
+    "@@last_modified": "2026-10-29 11:20:50.114181",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Энэ бол {language} хэл суралцагчдад зориулсан Пангеагийн хичээл юм. Гишүүд таны нэр, профайлыг харах боломжтой.",
     "centralCourseOfferTitle": "{course}-д нэгдэх үү?",
     "makeMyOwnCourseInstead": "Оронд нь өөрийн хичээлээ үүсгэх",
-    "suggestMobileSignInSameAccount": "Дараа нь энэ бүртгэлээр апп руу нэвтэрнэ үү."
+    "suggestMobileSignInSameAccount": "Дараа нь энэ бүртгэлээр апп руу нэвтэрнэ үү.",
+    "focusMission": "Энэхүү даалгаврын үйл ажиллагаанд анхаарлаа төвлөрүүл",
+    "missionNotYetOpen": "Хараахан нээгдээгүй байна",
+    "objectiveCircleClosed": "{index}-р даалгавар, хараахан нээгдээгүй байна",
+    "missionOpensOn": "{date} нээгдэнэ",
+    "missionOpensAfter": "{index}-р даалгаврын дараа нээгдэнэ",
+    "enterCityEarly": "Эрт орох",
+    "enterCityEarlyTitle": "{city} хотод эрт орох уу?",
+    "enterCityEarlyBody": "Энэ хот танд хараахан нээгдээгүй байна. Хичээлээс түрүүлж явах нь үнэтэй; үнэ нь одоогоор шийдэгдээгүй байгаа тул одоохондоо юу ч төлөхгүй."
 }

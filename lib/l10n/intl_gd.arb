@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-27 14:57:15.262485",
+    "@@last_modified": "2026-10-29 11:20:39.362131",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Is e cùrsa Pangea a th' ann do luchd-ionnsachaidh {language}. Chì na buill d' ainm agus do phròifil.",
     "centralCourseOfferTitle": "Thig a-steach do {course}?",
     "makeMyOwnCourseInstead": "Cruthaich mo chùrsa fhèin an àite sin",
-    "suggestMobileSignInSameAccount": "An uairsin clàraich a-steach don aplacaid leis a’ chunntas seo."
+    "suggestMobileSignInSameAccount": "An uairsin clàraich a-steach don aplacaid leis a’ chunntas seo.",
+    "focusMission": "Fòcas air gnìomhachdan an Rùin seo",
+    "missionNotYetOpen": "Gun fhosgladh fhathast",
+    "objectiveCircleClosed": "Rùn {index}, gun fhosgladh fhathast",
+    "missionOpensOn": "A’ fosgladh {date}",
+    "missionOpensAfter": "A’ fosgladh an dèidh Rùn {index}",
+    "enterCityEarly": "Cuir a-steach tràth",
+    "enterCityEarlyTitle": "Cuir a-steach {city} tràth?",
+    "enterCityEarlyBody": "Chan eil am baile seo fosgailte dhut fhathast. Tha cosgais air siubhal air thoiseach air a’ chlas; thathar fhathast a’ co-dhùnadh dè a chosgas e, mar sin chan eil dad ga chìsachadh an-dràsta."
 }

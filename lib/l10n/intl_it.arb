@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:17.182442",
+    "@@last_modified": "2026-10-29 11:20:41.847504",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10126,5 +10126,13 @@
     "centralCourseOfferBody": "È il corso di Pangea per chi impara il {language}. I suoi membri possono vedere il tuo nome e il tuo profilo.",
     "centralCourseOfferTitle": "Vuoi unirti a {course}?",
     "makeMyOwnCourseInstead": "Crea il mio corso",
-    "suggestMobileSignInSameAccount": "Quindi accedi all'app con questo account."
+    "suggestMobileSignInSameAccount": "Quindi accedi all'app con questo account.",
+    "focusMission": "Concentrati sulle attività di questa Missione",
+    "missionNotYetOpen": "Non ancora aperta",
+    "objectiveCircleClosed": "Missione {index}, non ancora aperta",
+    "missionOpensOn": "Apre il {date}",
+    "missionOpensAfter": "Apre dopo la Missione {index}",
+    "enterCityEarly": "Entra in anticipo",
+    "enterCityEarlyTitle": "Entrare a {city} in anticipo?",
+    "enterCityEarlyBody": "Questa città non è ancora aperta per te. Viaggiare in anticipo rispetto alla classe ha un costo; il costo è ancora in fase di decisione, quindi per ora non viene addebitato nulla."
 }

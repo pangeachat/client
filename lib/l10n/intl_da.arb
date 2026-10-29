@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-27 14:57:13.870146",
+    "@@last_modified": "2026-10-29 11:20:37.106579",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10970,5 +10970,13 @@
     "centralCourseOfferBody": "Det er Pangeas kursus for {language}-elever. Medlemmer kan se dit navn og din profil.",
     "centralCourseOfferTitle": "Tilmeld dig {course}?",
     "makeMyOwnCourseInstead": "Opret mit eget kursus i stedet",
-    "suggestMobileSignInSameAccount": "Log derefter ind på appen med denne konto."
+    "suggestMobileSignInSameAccount": "Log derefter ind på appen med denne konto.",
+    "focusMission": "Fokusér på denne missions aktiviteter",
+    "missionNotYetOpen": "Ikke åben endnu",
+    "objectiveCircleClosed": "Mission {index}, ikke åben endnu",
+    "missionOpensOn": "Åbner {date}",
+    "missionOpensAfter": "Åbner efter mission {index}",
+    "enterCityEarly": "Rejs tidligt ind",
+    "enterCityEarlyTitle": "Rejse tidligt ind i {city}?",
+    "enterCityEarlyBody": "Denne by er ikke åben for dig endnu. At rejse foran klassen har en pris; hvad det koster, er stadig under overvejelse, så indtil videre opkræves der intet."
 }

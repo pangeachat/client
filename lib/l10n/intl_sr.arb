@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:21.827460",
+    "@@last_modified": "2026-10-29 11:20:53.222947",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10999,5 +10999,13 @@
     "centralCourseOfferBody": "Ovo je Pangea kurs za učenike {language} jezika. Njegovi članovi mogu da vide vaše ime i profil.",
     "centralCourseOfferTitle": "Pridružiti se kursu {course}?",
     "makeMyOwnCourseInstead": "Umesto toga, napravi moj kurs",
-    "suggestMobileSignInSameAccount": "Zatim se prijavite u aplikaciju sa ovim nalogom."
+    "suggestMobileSignInSameAccount": "Zatim se prijavite u aplikaciju sa ovim nalogom.",
+    "focusMission": "Fokusirajte se na aktivnosti ove Misije",
+    "missionNotYetOpen": "Još nije otvoreno",
+    "objectiveCircleClosed": "Misija {index}, još nije otvorena",
+    "missionOpensOn": "Otvara se {date}",
+    "missionOpensAfter": "Otvara se nakon Misije {index}",
+    "enterCityEarly": "Uđite ranije",
+    "enterCityEarlyTitle": "Ući u {city} ranije?",
+    "enterCityEarlyBody": "Ovaj grad vam još nije otvoren. Putovanje ispred grupe ima svoju cenu; šta košta još uvek se odlučuje, tako da za sada ništa nije naplaćeno."
 }

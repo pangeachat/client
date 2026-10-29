@@ -1355,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-27 14:57:16.427929",
+    "@@last_modified": "2026-10-29 11:20:41.303095",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10986,5 +10986,13 @@
     "centralCourseOfferBody": "Illo es le curso de Pangea pro apprededores de {language}. Su membros pote vider tu nomine e profilo.",
     "centralCourseOfferTitle": "Unir te a {course}?",
     "makeMyOwnCourseInstead": "Crear mi proprie curso in vice",
-    "suggestMobileSignInSameAccount": "Postea aperi un session in le app con iste conto."
+    "suggestMobileSignInSameAccount": "Postea aperi un session in le app con iste conto.",
+    "focusMission": "Concentra te super le activitates de iste Mission",
+    "missionNotYetOpen": "Non ancora aperte",
+    "objectiveCircleClosed": "Mission {index}, non ancora aperte",
+    "missionOpensOn": "Aperi le {date}",
+    "missionOpensAfter": "Aperi post Mission {index}",
+    "enterCityEarly": "Entra tosto",
+    "enterCityEarlyTitle": "Entrar in {city} tosto?",
+    "enterCityEarlyBody": "Iste citate non es ancora aperte pro te. Viagiar ante le classe ha un costo; lo que illo costa es ancora in decision, dunque pro ora nihil es cargate."
 }

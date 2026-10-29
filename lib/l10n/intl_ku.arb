@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-27 14:57:18.626195",
+    "@@last_modified": "2026-10-29 11:20:45.413153",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "ئەمە خولی پانگایە بۆ فێرخوازانی {language}. ئەندامەکانی دەتوانن ناوی تۆ و پڕۆفایلەکەت ببینن.",
     "centralCourseOfferTitle": "بەشداری {course} بکەم؟",
     "makeMyOwnCourseInstead": "لەبری ئەوە کۆرسی خۆم دروست بکەم",
-    "suggestMobileSignInSameAccount": "پاشان بەم هەژمارە بچۆ ژوورەوە بۆ ئەپەکە."
+    "suggestMobileSignInSameAccount": "پاشان بەم هەژمارە بچۆ ژوورەوە بۆ ئەپەکە.",
+    "focusMission": "سەرنج بدە سەر چالاکییەکانی ئەم ئەرکە",
+    "missionNotYetOpen": "هێشتا نەکراوەتەوە",
+    "objectiveCircleClosed": "ئەرکی {index}، هێشتا نەکراوەتەوە",
+    "missionOpensOn": "لە {date} دەکرێتەوە",
+    "missionOpensAfter": "دوای ئەرکی {index} دەکرێتەوە",
+    "enterCityEarly": "زوو بچۆرە ژوورەوە",
+    "enterCityEarlyTitle": "زوو بچۆرە {city}؟",
+    "enterCityEarlyBody": "ئەم شارە هێشتا بۆ تۆ نەکراوەتەوە. گەشتکردن پێش پۆلەکە تێچووی هەیە؛ هێشتا بڕی تێچووەکە دیاری نەکراوە، بۆیە لە ئێستادا هیچ بڕێک وەرناگیرێت."
 }

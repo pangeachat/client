@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-27 14:57:24.865577",
+    "@@last_modified": "2026-10-29 11:20:59.201423",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho nephrofayili yakho.",
     "centralCourseOfferTitle": "Ujoyine i-{course}?",
     "makeMyOwnCourseInstead": "Ngenze eyami inkambo esikhundleni salokho",
-    "suggestMobileSignInSameAccount": "Bese ungena ngemvume kuhlelo lokusebenza ngale akhawunti."
+    "suggestMobileSignInSameAccount": "Bese ungena ngemvume kuhlelo lokusebenza ngale akhawunti.",
+    "focusMission": "Gxila emisebenzini yale Mission",
+    "missionNotYetOpen": "Ayikavulwa okwamanje",
+    "objectiveCircleClosed": "Mission {index}, ayikavulwa okwamanje",
+    "missionOpensOn": "Ivula {date}",
+    "missionOpensAfter": "Ivula ngemuva kwe-Mission {index}",
+    "enterCityEarly": "Ngena kusenesikhathi",
+    "enterCityEarlyTitle": "Ngena e-{city} kusenesikhathi?",
+    "enterCityEarlyBody": "Leli dolobha alikavulelwa wena okwamanje. Ukuhamba ngaphambi kwekilasi kunezindleko; ukuthi kubiza malini kusathathwa isinqumo, ngakho okwamanje akukho okukhokhiswayo."
 }

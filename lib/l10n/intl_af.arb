@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-27 14:57:12.844761",
+    "@@last_modified": "2026-10-29 11:20:35.690197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Dit is Pangea se kursus vir {language}-leerders. Die lede daarvan kan jou naam en profiel sien.",
     "centralCourseOfferTitle": "Sluit aan by {course}?",
     "makeMyOwnCourseInstead": "Maak eerder my eie kursus",
-    "suggestMobileSignInSameAccount": "Meld dan by die toepassing aan met hierdie rekening."
+    "suggestMobileSignInSameAccount": "Meld dan by die toepassing aan met hierdie rekening.",
+    "focusMission": "Fokus op hierdie Sending se aktiwiteite",
+    "missionNotYetOpen": "Nog nie oop nie",
+    "objectiveCircleClosed": "Sending {index}, nog nie oop nie",
+    "missionOpensOn": "Maak oop {date}",
+    "missionOpensAfter": "Maak oop na Sending {index}",
+    "enterCityEarly": "Gaan vroeg in",
+    "enterCityEarlyTitle": "Gaan vroeg in {city}?",
+    "enterCityEarlyBody": "Hierdie stad is nog nie vir jou oop nie. Om voor die klas te reis het 'n koste; wat dit kos word nog besluit, so vir nou word niks gehef nie."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-27 14:57:15.404690",
+    "@@last_modified": "2026-10-29 11:20:40.494941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Darasi ne na Pangea ga masu koyon harshen {language}. Membobinta za su iya ganin sunanka da bayanan martabarka.",
     "centralCourseOfferTitle": "Shiga {course}?",
     "makeMyOwnCourseInstead": "Ƙirƙiri kwas na da kaina",
-    "suggestMobileSignInSameAccount": "Sannan ka shiga cikin manhajar da wannan asusun."
+    "suggestMobileSignInSameAccount": "Sannan ka shiga cikin manhajar da wannan asusun.",
+    "focusMission": "Mayar da hankali kan ayyukan wannan manufa",
+    "missionNotYetOpen": "Bai buɗe ba tukuna",
+    "objectiveCircleClosed": "Manufa {index}, bai buɗe ba tukuna",
+    "missionOpensOn": "Zai buɗe {date}",
+    "missionOpensAfter": "Zai buɗe bayan Manufa {index}",
+    "enterCityEarly": "Shiga da wuri",
+    "enterCityEarlyTitle": "Shiga {city} da wuri?",
+    "enterCityEarlyBody": "Wannan birni bai buɗe muku ba tukuna. Tafiya gaban aji tana da tsada; har yanzu ana yanke shawara kan abin da zai ci, don haka a yanzu ba a caji komai."
 }

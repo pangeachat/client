@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:24.391341",
+    "@@last_modified": "2026-10-29 11:20:58.275131",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10159,5 +10159,13 @@
     "centralCourseOfferBody": "這是 Pangea 專為 {language} 學習者開設的課程。課程成員可以看到您的姓名和個人資料。",
     "centralCourseOfferTitle": "加入{course}？",
     "makeMyOwnCourseInstead": "改為建立我的課程",
-    "suggestMobileSignInSameAccount": "然後用此帳號登入應用程式。"
+    "suggestMobileSignInSameAccount": "然後用此帳號登入應用程式。",
+    "focusMission": "專注於此任務的活動",
+    "missionNotYetOpen": "尚未開放",
+    "objectiveCircleClosed": "任務 {index}，尚未開放",
+    "missionOpensOn": "{date} 開放",
+    "missionOpensAfter": "任務 {index} 後開放",
+    "enterCityEarly": "提早進入",
+    "enterCityEarlyTitle": "提早進入 {city}？",
+    "enterCityEarlyBody": "此城市尚未對您開放。超前進度會有代價；目前費用仍在決定中，因此暫不收費。"
 }

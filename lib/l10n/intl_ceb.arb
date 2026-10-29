@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-27 14:57:13.646462",
+    "@@last_modified": "2026-10-29 11:20:36.552581",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Kini ang kurso sa Pangea para sa mga nagkat-on og {language}. Makita sa mga miyembro niini ang imong ngalan ug profile.",
     "centralCourseOfferTitle": "Apil sa {course}?",
     "makeMyOwnCourseInstead": "Maghimo na lang ko sa akong kaugalingong kurso",
-    "suggestMobileSignInSameAccount": "Dayon pag-sign in sa app gamit kini nga account."
+    "suggestMobileSignInSameAccount": "Dayon pag-sign in sa app gamit kini nga account.",
+    "focusMission": "Tutok sa mga kalihokan niining Misyon",
+    "missionNotYetOpen": "Wala pa maabli",
+    "objectiveCircleClosed": "Misyon {index}, wala pa maabli",
+    "missionOpensOn": "Maabli sa {date}",
+    "missionOpensAfter": "Maabli human sa Misyon {index}",
+    "enterCityEarly": "Sulod og sayo",
+    "enterCityEarlyTitle": "Mosulod og sayo sa {city}?",
+    "enterCityEarlyBody": "Wala pa kini nga siyudad maabli para kanimo. Ang pagbiyahe nga una sa klase adunay bayad; ang kantidad niini ginadesisyonan pa, busa sa pagkakaron walay bayad."
 }

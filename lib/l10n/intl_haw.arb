@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-27 14:57:16.038351",
+    "@@last_modified": "2026-10-29 11:20:39.919552",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "ʻO ia ka papa a Pangea no ka poʻe aʻo {language}. Hiki i kona mau lālā ke ʻike i kou inoa a me kou ʻaoʻao.",
     "centralCourseOfferTitle": "E hui pū me {course}?",
     "makeMyOwnCourseInstead": "E hana i kaʻu papa ponoʻī ma kahi",
-    "suggestMobileSignInSameAccount": "A laila, e ʻeʻe i loko o ka polokalamu me kēia moʻokāki."
+    "suggestMobileSignInSameAccount": "A laila, e ʻeʻe i loko o ka polokalamu me kēia moʻokāki.",
+    "focusMission": "E kia i nā hana o kēia Mikiona",
+    "missionNotYetOpen": "ʻAʻole i wehe ʻia",
+    "objectiveCircleClosed": "Mikiona {index}, ʻaʻole i wehe ʻia",
+    "missionOpensOn": "E wehe ana ma ka lā {date}",
+    "missionOpensAfter": "E wehe ana ma hope o ka Mikiona {index}",
+    "enterCityEarly": "E komo mua",
+    "enterCityEarlyTitle": "E komo mua i {city}?",
+    "enterCityEarlyBody": "ʻAʻole i wehe ʻia kēia kūlanakauhale iā ʻoe. He kumu kūʻai ko ka hele mua ʻana ma mua o ka papa; ke hoʻoholo ʻia nei ke kumu kūʻai, no laila ʻaʻohe mea e uku ʻia i kēia manawa."
 }

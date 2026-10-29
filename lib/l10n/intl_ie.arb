@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-27 14:57:16.746028",
+    "@@last_modified": "2026-10-29 11:20:42.142264",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10682,5 +10682,13 @@
     "centralCourseOfferBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
     "centralCourseOfferTitle": "An bhfuil tú ag iarraidh a bheith páirteach i {course}?",
     "makeMyOwnCourseInstead": "Cruthaigh mo chúrsa féin ina ionad",
-    "suggestMobileSignInSameAccount": "Ansin sínigh isteach san aip leis an gcuntas seo."
+    "suggestMobileSignInSameAccount": "Ansin sínigh isteach san aip leis an gcuntas seo.",
+    "focusMission": "Dírigh ar ghníomhaíochtaí na Misean seo",
+    "missionNotYetOpen": "Níl sé oscailte fós",
+    "objectiveCircleClosed": "Misean {index}, nach bhfuil oscailte fós",
+    "missionOpensOn": "Osclaíonn sé ar {date}",
+    "missionOpensAfter": "Osclaíonn sé tar éis Misean {index}",
+    "enterCityEarly": "Isteach go luath",
+    "enterCityEarlyTitle": "Isteach i {city} go luath?",
+    "enterCityEarlyBody": "Níl an chathair seo oscailte duit fós. Tá costas ag baint le taisteal chun tosaigh ar an rang; tá an costas sin fós á chinneadh, mar sin níl aon táille á ghearradh faoi láthair."
 }

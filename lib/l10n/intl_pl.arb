@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-27 14:57:20.616682",
+    "@@last_modified": "2026-10-29 11:20:50.303281",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10138,5 +10138,13 @@
     "centralCourseOfferBody": "To kurs Pangea dla uczących się języka {language}. Członkowie kursu widzą Twoje imię i profil.",
     "centralCourseOfferTitle": "Dołączyć do kursu {course}?",
     "makeMyOwnCourseInstead": "Zamiast tego stwórz mój własny kurs",
-    "suggestMobileSignInSameAccount": "Następnie zaloguj się do aplikacji za pomocą tego konta."
+    "suggestMobileSignInSameAccount": "Następnie zaloguj się do aplikacji za pomocą tego konta.",
+    "focusMission": "Skup się na aktywnościach tej Misji",
+    "missionNotYetOpen": "Jeszcze nieotwarte",
+    "objectiveCircleClosed": "Misja {index}, jeszcze nieotwarta",
+    "missionOpensOn": "Otwiera się {date}",
+    "missionOpensAfter": "Otwiera się po Misji {index}",
+    "enterCityEarly": "Wejdź wcześniej",
+    "enterCityEarlyTitle": "Wejść do {city} wcześniej?",
+    "enterCityEarlyBody": "To miasto nie jest jeszcze dla Ciebie otwarte. Podróżowanie przed resztą klasy ma swoją cenę; to, ile to kosztuje, jest wciąż ustalane, więc na razie nic nie jest pobierane."
 }

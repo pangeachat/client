@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-27 14:57:18.329201",
+    "@@last_modified": "2026-10-29 11:20:45.104686",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10831,5 +10831,13 @@
     "centralCourseOfferBody": "Tai „Pangea“ kursas, skirtas {language} besimokantiems. Jo nariai gali matyti jūsų vardą ir profilį.",
     "centralCourseOfferTitle": "Prisijungti prie {course}?",
     "makeMyOwnCourseInstead": "Vietoj to sukurti savo kursą",
-    "suggestMobileSignInSameAccount": "Tada prisijunkite prie programėlės naudodami šią paskyrą."
+    "suggestMobileSignInSameAccount": "Tada prisijunkite prie programėlės naudodami šią paskyrą.",
+    "focusMission": "Sutelkti dėmesį į šios misijos veiklas",
+    "missionNotYetOpen": "Dar neatidaryta",
+    "objectiveCircleClosed": "{index} misija, dar neatidaryta",
+    "missionOpensOn": "Atidaroma {date}",
+    "missionOpensAfter": "Atidaroma po {index} misijos",
+    "enterCityEarly": "Įeiti anksčiau",
+    "enterCityEarlyTitle": "Įeiti į {city} anksčiau?",
+    "enterCityEarlyBody": "Šis miestas jums dar neatidarytas. Kelionė anksčiau nei klasė turi savo kainą; kas tai kainuoja, dar sprendžiama, todėl kol kas niekas neapmokestinama."
 }

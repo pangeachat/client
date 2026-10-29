@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:23.646048",
+    "@@last_modified": "2026-10-29 11:20:34.959438",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10678,5 +10678,13 @@
     "centralCourseOfferBody": "এটি {language} শিক্ষার্থীদের জন্য প্যানজিয়ার কোর্স। এর সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।",
     "centralCourseOfferTitle": "{course}-এ যোগ দেবেন?",
     "makeMyOwnCourseInstead": "এর বদলে আমার নিজের কোর্স তৈরি করি",
-    "suggestMobileSignInSameAccount": "তারপর এই অ্যাকাউন্ট দিয়ে অ্যাপে সাইন ইন করুন।"
+    "suggestMobileSignInSameAccount": "তারপর এই অ্যাকাউন্ট দিয়ে অ্যাপে সাইন ইন করুন।",
+    "focusMission": "এই মিশনের কার্যকলাপে মনোযোগ দিন",
+    "missionNotYetOpen": "এখনও খোলা হয়নি",
+    "objectiveCircleClosed": "মিশন {index}, এখনও খোলা হয়নি",
+    "missionOpensOn": "{date} এ খুলবে",
+    "missionOpensAfter": "মিশন {index} এর পর খুলবে",
+    "enterCityEarly": "আগে প্রবেশ করুন",
+    "enterCityEarlyTitle": "{city} এ আগে প্রবেশ করবেন?",
+    "enterCityEarlyBody": "এই শহরটি আপনার জন্য এখনও খোলা হয়নি। ক্লাসের আগে ভ্রমণ করার একটি খরচ আছে; এর খরচ এখনও নির্ধারণ করা হচ্ছে, তাই আপাতত কিছু চার্জ করা হবে না।"
 }

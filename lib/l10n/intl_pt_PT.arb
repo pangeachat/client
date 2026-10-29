@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-27 14:57:20.798329",
+    "@@last_modified": "2026-10-29 11:20:51.329671",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10967,5 +10967,13 @@
     "centralCourseOfferBody": "É o curso da Pangea para alunos de {language}. Os membros podem ver o teu nome e perfil.",
     "centralCourseOfferTitle": "Aderir a {course}?",
     "makeMyOwnCourseInstead": "Criar o meu próprio curso",
-    "suggestMobileSignInSameAccount": "Depois, inicie sessão na aplicação com esta conta."
+    "suggestMobileSignInSameAccount": "Depois, inicie sessão na aplicação com esta conta.",
+    "focusMission": "Focar nas atividades desta Missão",
+    "missionNotYetOpen": "Ainda não está aberta",
+    "objectiveCircleClosed": "Missão {index}, ainda não está aberta",
+    "missionOpensOn": "Abre a {date}",
+    "missionOpensAfter": "Abre depois da Missão {index}",
+    "enterCityEarly": "Entrar mais cedo",
+    "enterCityEarlyTitle": "Entrar em {city} mais cedo?",
+    "enterCityEarlyBody": "Esta cidade ainda não está aberta para ti. Viajar antes da turma tem um custo; o que custa ainda está a ser decidido, por isso, por enquanto, nada é cobrado."
 }

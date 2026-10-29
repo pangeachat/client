@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-27 14:57:21.787089",
+    "@@last_modified": "2026-10-29 11:20:53.592723",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Është kursi i Pangeas për nxënësit e gjuhës {language}. Anëtarët e tij mund të shohin emrin dhe profilin tënd.",
     "centralCourseOfferTitle": "Bashkohuni me {course}?",
     "makeMyOwnCourseInstead": "Krijo kursin tim",
-    "suggestMobileSignInSameAccount": "Më pas, kyçuni në aplikacion me këtë llogari."
+    "suggestMobileSignInSameAccount": "Më pas, kyçuni në aplikacion me këtë llogari.",
+    "focusMission": "Fokuso tek aktivitetet e këtij Misioni",
+    "missionNotYetOpen": "Ende nuk është hapur",
+    "objectiveCircleClosed": "Misioni {index}, ende nuk është hapur",
+    "missionOpensOn": "Hapet më {date}",
+    "missionOpensAfter": "Hapet pas Misionit {index}",
+    "enterCityEarly": "Hyrë herët",
+    "enterCityEarlyTitle": "Të hysh herët në {city}?",
+    "enterCityEarlyBody": "Ky qytet nuk është ende i hapur për ty. Udhëtimi përpara klasës ka një kosto; ajo që kushton ende po vendoset, kështu që për momentin nuk tarifohet asgjë."
 }

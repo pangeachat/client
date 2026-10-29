@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-27 14:57:23.888547",
+    "@@last_modified": "2026-10-29 11:20:58.761231",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "דאָס איז פּאַנגעאַס קורס פֿאַר לערנערס פֿון {language}. די מיטגלידער קענען זען אײַער נאָמען און פּראָפֿיל.",
     "centralCourseOfferTitle": "זאָל איך זיך אייַנשליסן אין {course}?",
     "makeMyOwnCourseInstead": "איך וויל בעסער מאַכן מיין אייגענעם קורס",
-    "suggestMobileSignInSameAccount": "דערנאָך צייכן אריין אין דער אַפּ מיט דעם חשבון."
+    "suggestMobileSignInSameAccount": "דערנאָך צייכן אריין אין דער אַפּ מיט דעם חשבון.",
+    "focusMission": "פאָקוס אויף די אַקטיוויטעטן פון דער מיסיע",
+    "missionNotYetOpen": "נאָך נישט אָפן",
+    "objectiveCircleClosed": "מיסיע {index}, נאָך נישט אָפן",
+    "missionOpensOn": "עפֿנט זיך {date}",
+    "missionOpensAfter": "עפֿנט זיך נאָך מיסיע {index}",
+    "enterCityEarly": "אַרײַן פֿריער",
+    "enterCityEarlyTitle": "אַרײַן אין {city} פֿריער?",
+    "enterCityEarlyBody": "די שטאָט איז נאָך נישט אָפן פֿאַר דיר. פֿאָרן פֿאָרויס פֿון דער קלאַס האָט אַ פּרײַז; וואָס עס קאָסט ווערט נאָך באַשלאָסן, אַזוי אַז פֿאַר איצט ווערט גאָרנישט אָפּגערעכנט."
 }

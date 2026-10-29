@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-27 14:57:16.094004",
+    "@@last_modified": "2026-10-29 11:20:41.512370",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2515,5 +2515,13 @@
     "centralCourseOfferBody": "Nws yog Pangea cov chav kawm rau cov neeg kawm lus {language}. Nws cov tswv cuab tuaj yeem pom koj lub npe thiab profile.",
     "centralCourseOfferTitle": "Koj puas xav koom {course}?",
     "makeMyOwnCourseInstead": "Kuv xav tsim kuv tus kheej qhov kev kawm",
-    "suggestMobileSignInSameAccount": "Tom qab ntawd nkag mus rau hauv lub app nrog tus account no."
+    "suggestMobileSignInSameAccount": "Tom qab ntawd nkag mus rau hauv lub app nrog tus account no.",
+    "focusMission": "Tsom ntsoov rau lub Hom Phiaj no cov haujlwm",
+    "missionNotYetOpen": "Tsis tau qhib",
+    "objectiveCircleClosed": "Lub Hom Phiaj {index}, tseem tsis tau qhib",
+    "missionOpensOn": "Qhib rau {date}",
+    "missionOpensAfter": "Qhib tom qab Lub Hom Phiaj {index}",
+    "enterCityEarly": "Mus ua ntej",
+    "enterCityEarlyTitle": "Mus rau {city} ua ntej?",
+    "enterCityEarlyBody": "Lub nroog no tseem tsis tau qhib rau koj. Kev mus ua ntej cov phooj ywg kawm ntawv muaj nqi; tus nqi tseem tab tom txiav txim siab, yog li tam sim no tsis tau them dab tsi."
 }
