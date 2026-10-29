@@ -669,9 +669,7 @@ class QuestRepo {
         .map((e) => QuestActivityCard.fromJson(cmsDocShapeFromEntry(e)))
         .where((card) => card.point != null)
         .toList();
-    return Result.value(
-      dedupeByActivityId(cards, (c) => c.activityId),
-    );
+    return Result.value(dedupeByActivityId(cards, (c) => c.activityId));
   }
 
   /// The course outline from one choreo read: the quest's Missions keyed by
