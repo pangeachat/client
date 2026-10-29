@@ -6255,7 +6255,7 @@
     "@seatInviteYourCourse": {
         "description": "Stands in for the course name in seat invitation messages when the name is unknown."
     },
-    "seatInviteEmailHint": "Use {email} so your class and seat find you.",
+    "seatInviteEmailHint": "Use {email} so your class finds you.",
     "@seatInviteEmailHint": {
         "description": "Line on the seat invitation card. The placeholder is a masked email address such as a***@school.edu, never the full address.",
         "placeholders": {

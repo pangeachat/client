@@ -270,7 +270,13 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.textContaining('Spanish 101'), findsWidgets);
-      expect(find.textContaining('a***@school.edu'), findsOneWidget);
+      // True with or without a seat: a course may have none (hand test
+      // 2026-10-28), so the line promises only the class.
+      expect(
+        find.text('Use a***@school.edu so your class finds you.'),
+        findsOneWidget,
+      );
+      expect(find.textContaining('seat'), findsNothing);
       expect(find.byType(Checkbox), findsNothing);
       expect(find.byType(CheckboxListTile), findsNothing);
       expect(
