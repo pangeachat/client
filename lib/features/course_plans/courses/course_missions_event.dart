@@ -14,43 +14,62 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 /// "A course is a trip"): a write-through cache the writer recomputes from
 /// `activity_ids` on every publish, never edited on its own, there so a ship
 /// can be placed from room state alone. Absent when no pin falls under a
-/// listed city.
+/// listed city. Its position travels as integer microdegrees (`lat_e6`,
+/// `lng_e6`): Matrix event content is canonical JSON, which has no decimals.
 class MissionCity {
-  final String name;
-  final double lat;
-  final double lng;
-  const MissionCity({required this.name, required this.lat, required this.lng});
+  static const int e6 = 1000000;
 
+  final String name;
+  final int latE6;
+  final int lngE6;
+  const MissionCity({
+    required this.name,
+    required this.latE6,
+    required this.lngE6,
+  });
+
+  factory MissionCity.fromDegrees({
+    required String name,
+    required double lat,
+    required double lng,
+  }) => MissionCity(
+    name: name,
+    latE6: (lat * e6).round(),
+    lngE6: (lng * e6).round(),
+  );
+
+  double get lat => latE6 / e6;
+  double get lng => lngE6 / e6;
   LatLng get point => LatLng(lat, lng);
 
-  Map<String, dynamic> toJson() => {'name': name, 'lat': lat, 'lng': lng};
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'lat_e6': latE6,
+    'lng_e6': lngE6,
+  };
 
-  /// Strict: a name and a finite position on the globe, or null.
+  /// Strict: a name and an integer position on the globe, or null.
   static MissionCity? tryParse(Object? raw) {
     if (raw is! Map) return null;
     final name = raw['name'];
-    final lat = raw['lat'];
-    final lng = raw['lng'];
+    final lat = raw['lat_e6'];
+    final lng = raw['lng_e6'];
     if (name is! String ||
         name.isEmpty ||
-        lat is bool ||
-        lng is bool ||
-        lat is! num ||
-        lng is! num ||
-        !lat.isFinite ||
-        !lng.isFinite ||
-        lat < -90 ||
-        lat > 90 ||
-        lng < -180 ||
-        lng > 180) {
+        lat is! int ||
+        lng is! int ||
+        lat < -90 * e6 ||
+        lat > 90 * e6 ||
+        lng < -180 * e6 ||
+        lng > 180 * e6) {
       return null;
     }
-    return MissionCity(name: name, lat: lat.toDouble(), lng: lng.toDouble());
+    return MissionCity(name: name, latE6: lat, lngE6: lng);
   }
 
   /// The same city: by position, since the name alone repeats (two Suzhous).
   bool sameAs(MissionCity other) =>
-      name == other.name && lat == other.lat && lng == other.lng;
+      name == other.name && latE6 == other.latE6 && lngE6 == other.lngE6;
 }
 
 /// One Mission (Can-Do) in a course's own copy: which Learning Objective, the
@@ -207,9 +226,11 @@ class CourseMissionsEvent {
     final rawStart = trip ? content['start_date'] : null;
     if (rawStart != null) {
       if (rawStart is! String || !_isDate.hasMatch(rawStart)) return null;
-      startDate = DateTime.tryParse(rawStart);
-      if (startDate == null) return null;
-      startDate = DateTime(startDate.year, startDate.month, startDate.day);
+      final parsed = DateTime.tryParse(rawStart);
+      // Dart rolls a 13th month or a 40th day over into the next; a date
+      // that reads back as written is a real one.
+      if (parsed == null || _dateString(parsed) != rawStart) return null;
+      startDate = DateTime(parsed.year, parsed.month, parsed.day);
     }
     final rawMissions = content['missions'];
     if (rawMissions is! List) return null;
@@ -350,7 +371,11 @@ class CourseMissionsEvent {
     return CourseMission(
       loId: group.objective.id,
       activityIds: ids,
-      city: MissionCity(name: city.name, lat: city.lat, lng: city.lng),
+      city: MissionCity.fromDegrees(
+        name: city.name,
+        lat: city.lat,
+        lng: city.lng,
+      ),
     );
   }
 

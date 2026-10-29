@@ -125,7 +125,11 @@ void main() {
         {
           'lo_id': 'lo-a',
           'activity_ids': ['a1', 'a2'],
-          'city': {'name': 'Mexico City', 'lat': 19.4444, 'lng': -99.1329},
+          'city': {
+            'name': 'Mexico City',
+            'lat_e6': 19444400,
+            'lng_e6': -99132900,
+          },
           'due_at': '2026-11-09T05:59:00Z',
         },
         {
@@ -176,13 +180,17 @@ void main() {
       'a start date with no such day': () =>
           trip()..['start_date'] = '2026-13-40',
       'a city with no name': () =>
-          trip()..['missions'][0]['city'] = {'lat': 1.0, 'lng': 1.0},
-      'a city off the globe': () =>
-          trip()
-            ..['missions'][0]['city'] = {'name': 'X', 'lat': 91.0, 'lng': 0.0},
-      'a city with a string position': () =>
-          trip()
-            ..['missions'][0]['city'] = {'name': 'X', 'lat': '1', 'lng': 1.0},
+          trip()..['missions'][0]['city'] = {'lat_e6': 1, 'lng_e6': 1},
+      'a city off the globe': () => trip()
+        ..['missions'][0]['city'] = {
+          'name': 'X',
+          'lat_e6': 91000000,
+          'lng_e6': 0,
+        },
+      'a city with a string position': () => trip()
+        ..['missions'][0]['city'] = {'name': 'X', 'lat_e6': '1', 'lng_e6': 1},
+      'a city with a decimal position (Matrix has no floats)': () => trip()
+        ..['missions'][0]['city'] = {'name': 'X', 'lat_e6': 19.4, 'lng_e6': 1},
       'a city that is not a map': () =>
           trip()..['missions'][0]['city'] = 'Paris',
     };
@@ -268,7 +276,11 @@ void main() {
           {
             'lo_id': 'lo',
             'activity_ids': ['m1', 'm2'],
-            'city': {'name': 'Mexico City', 'lat': 19.4444, 'lng': -99.1329},
+            'city': {
+              'name': 'Mexico City',
+              'lat_e6': 19444400,
+              'lng_e6': -99132900,
+            },
           },
         ],
       });
@@ -538,7 +550,11 @@ void main() {
         {
           'lo_id': 'lo-3',
           'activity_ids': ['c2', 'c3'],
-          'city': {'name': 'Mexico City', 'lat': 19.4444, 'lng': -99.1329},
+          'city': {
+            'name': 'Mexico City',
+            'lat_e6': 19444400,
+            'lng_e6': -99132900,
+          },
         },
       ]);
     });
