@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:48.372371",
+    "@@last_modified": "2026-10-29 12:07:29.788852",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10118,5 +10118,8 @@
     "missionOpensAfter": "Åpner etter misjon {index}",
     "enterCityEarly": "Gå inn tidlig",
     "enterCityEarlyTitle": "Gå inn i {city} tidlig?",
-    "enterCityEarlyBody": "Denne byen er ikke åpen for deg ennå. Å reise foran klassen har en kostnad; hva det koster er fortsatt under vurdering, så foreløpig blir ingenting belastet."
+    "enterCityEarlyBody": "Denne byen er ikke åpen for deg ennå. Å reise foran klassen har en kostnad; hva det koster er fortsatt under vurdering, så foreløpig blir ingenting belastet.",
+    "worldShipLabel": "{course}, et kurs i {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, besøkt"
 }

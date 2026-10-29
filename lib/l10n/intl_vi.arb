@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:56.871419",
+    "@@last_modified": "2026-10-29 12:07:33.147421",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7368,5 +7368,8 @@
     "missionOpensAfter": "Mở sau Nhiệm vụ {index}",
     "enterCityEarly": "Vào sớm",
     "enterCityEarlyTitle": "Vào {city} sớm?",
-    "enterCityEarlyBody": "Thành phố này chưa mở cửa cho bạn. Việc đi trước lớp học sẽ phải trả phí; chi phí vẫn đang được quyết định, vì vậy hiện tại chưa có khoản phí nào được tính."
+    "enterCityEarlyBody": "Thành phố này chưa mở cửa cho bạn. Việc đi trước lớp học sẽ phải trả phí; chi phí vẫn đang được quyết định, vì vậy hiện tại chưa có khoản phí nào được tính.",
+    "worldShipLabel": "{course}, một khóa học tại {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, đã ghé thăm"
 }

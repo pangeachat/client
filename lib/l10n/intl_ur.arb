@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-29 11:20:56.071615",
+    "@@last_modified": "2026-10-29 12:07:33.131346",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "مشن {index} کے بعد کھلے گا",
     "enterCityEarly": "جلد داخل ہوں",
     "enterCityEarlyTitle": "{city} میں جلد داخل ہوں؟",
-    "enterCityEarlyBody": "یہ شہر ابھی آپ کے لیے کھلا نہیں ہے۔ کلاس سے پہلے سفر کرنے کی قیمت ہوتی ہے؛ اس کی قیمت ابھی طے کی جا رہی ہے، لہذا فی الحال کچھ بھی چارج نہیں کیا جائے گا۔"
+    "enterCityEarlyBody": "یہ شہر ابھی آپ کے لیے کھلا نہیں ہے۔ کلاس سے پہلے سفر کرنے کی قیمت ہوتی ہے؛ اس کی قیمت ابھی طے کی جا رہی ہے، لہذا فی الحال کچھ بھی چارج نہیں کیا جائے گا۔",
+    "worldShipLabel": "{course}، {city} میں ایک کورس",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}، ملاحظہ کیا گیا"
 }

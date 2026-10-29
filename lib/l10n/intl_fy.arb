@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-29 11:20:38.781776",
+    "@@last_modified": "2026-10-29 12:07:25.886180",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Iepent nei missy {index}",
     "enterCityEarly": "Gean betiid yn",
     "enterCityEarlyTitle": "Betiid {city} yngean?",
-    "enterCityEarlyBody": "Dizze stêd is noch net foar jo iepen. Foarút reizgje op de klasse hat in priis; wat it kostet wurdt noch besletten, dus foar no wurdt der neat yn rekken brocht."
+    "enterCityEarlyBody": "Dizze stêd is noch net foar jo iepen. Foarút reizgje op de klasse hat in priis; wat it kostet wurdt noch besletten, dus foar no wurdt der neat yn rekken brocht.",
+    "worldShipLabel": "{course}, in kursus yn {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, besocht"
 }

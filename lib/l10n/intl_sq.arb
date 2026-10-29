@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-29 11:20:53.592723",
+    "@@last_modified": "2026-10-29 12:07:32.107670",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Hapet pas Misionit {index}",
     "enterCityEarly": "Hyrë herët",
     "enterCityEarlyTitle": "Të hysh herët në {city}?",
-    "enterCityEarlyBody": "Ky qytet nuk është ende i hapur për ty. Udhëtimi përpara klasës ka një kosto; ajo që kushton ende po vendoset, kështu që për momentin nuk tarifohet asgjë."
+    "enterCityEarlyBody": "Ky qytet nuk është ende i hapur për ty. Udhëtimi përpara klasës ka një kosto; ajo që kushton ende po vendoset, kështu që për momentin nuk tarifohet asgjë.",
+    "worldShipLabel": "{course}, një kurs në {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, i vizituar"
 }

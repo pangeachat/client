@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-29 11:20:52.137269",
+    "@@last_modified": "2026-10-29 12:07:31.194257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "مشن {index} کان پوءِ کلي ٿو",
     "enterCityEarly": "جلد داخل ٿيو",
     "enterCityEarlyTitle": "{city} ۾ جلد داخل ٿيو؟",
-    "enterCityEarlyBody": "هي شهر اڃا توهان لاءِ کليل ناهي. ڪلاس کان اڳ سفر ڪرڻ جي قيمت آهي؛ ان جي قيمت اڃا طئي ڪئي پئي وڃي، تنهنڪري في الحال ڪجهه به چارج نه ڪيو ويندو."
+    "enterCityEarlyBody": "هي شهر اڃا توهان لاءِ کليل ناهي. ڪلاس کان اڳ سفر ڪرڻ جي قيمت آهي؛ ان جي قيمت اڃا طئي ڪئي پئي وڃي، تنهنڪري في الحال ڪجهه به چارج نه ڪيو ويندو.",
+    "worldShipLabel": "{course}, {city} ۾ هڪ ڪورس",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, گهميل"
 }

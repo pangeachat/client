@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:48.817950",
+    "@@last_modified": "2026-10-29 12:07:30.413316",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10061,5 +10061,8 @@
     "missionOpensAfter": "Opent na missie {index}",
     "enterCityEarly": "Vroeg binnengaan",
     "enterCityEarlyTitle": "Vroeg naar {city} gaan?",
-    "enterCityEarlyBody": "Deze stad is nog niet voor je geopend. Vooruitreizen op de groep heeft een prijs; wat het kost wordt nog bepaald, dus voor nu wordt er niets in rekening gebracht."
+    "enterCityEarlyBody": "Deze stad is nog niet voor je geopend. Vooruitreizen op de groep heeft een prijs; wat het kost wordt nog bepaald, dus voor nu wordt er niets in rekening gebracht.",
+    "worldShipLabel": "{course}, een cursus in {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, bezocht"
 }

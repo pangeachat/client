@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-29 11:20:56.237207",
+    "@@last_modified": "2026-10-29 12:07:32.821376",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10359,5 +10359,8 @@
     "missionOpensAfter": "Görev {index} sonrasında açılır",
     "enterCityEarly": "Erken gir",
     "enterCityEarlyTitle": "{city} şehrine erken mi girilsin?",
-    "enterCityEarlyBody": "Bu şehir sizin için henüz açık değil. Sınıfın ilerisine seyahat etmenin bir maliyeti vardır; maliyet henüz belirlenmediği için şimdilik herhangi bir ücret alınmamaktadır."
+    "enterCityEarlyBody": "Bu şehir sizin için henüz açık değil. Sınıfın ilerisine seyahat etmenin bir maliyeti vardır; maliyet henüz belirlenmediği için şimdilik herhangi bir ücret alınmamaktadır.",
+    "worldShipLabel": "{city} şehrinde bir kurs olan {course}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, ziyaret edildi"
 }

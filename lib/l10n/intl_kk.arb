@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-10-29 11:20:43.009253",
+    "@@last_modified": "2026-10-29 12:07:27.688206",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "{index} миссиясынан кейін ашылады",
     "enterCityEarly": "Ерте кіру",
     "enterCityEarlyTitle": "{city} қаласына ерте кіру керек пе?",
-    "enterCityEarlyBody": "Бұл қала сіз үшін әлі ашық емес. Сабақтан ерте кетудің құны бар; оның құны әлі анықталуда, сондықтан әзірге ештеңе алынбайды."
+    "enterCityEarlyBody": "Бұл қала сіз үшін әлі ашық емес. Сабақтан ерте кетудің құны бар; оның құны әлі анықталуда, сондықтан әзірге ештеңе алынбайды.",
+    "worldShipLabel": "{city} қаласындағы {course} курсы",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, барылды"
 }

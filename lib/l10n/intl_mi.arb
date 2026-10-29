@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-29 11:20:47.094642",
+    "@@last_modified": "2026-10-29 12:07:28.879631",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Ka huaki i muri i te Mihana {index}",
     "enterCityEarly": "Tomo wawe",
     "enterCityEarlyTitle": "Ka tomo wawe ki {city}?",
-    "enterCityEarlyBody": "Kāore anō tēnei tāone kia huaki mōu. He utu tō te haere i mua i te akomanga; kei te whakatauhia tonu te utu, nō reira kāore he utu i tēnei wā."
+    "enterCityEarlyBody": "Kāore anō tēnei tāone kia huaki mōu. He utu tō te haere i mua i te akomanga; kei te whakatauhia tonu te utu, nō reira kāore he utu i tēnei wā.",
+    "worldShipLabel": "{course}, he akoranga i {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, kua tae atu"
 }

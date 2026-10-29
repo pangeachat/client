@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-29 11:20:48.200558",
+    "@@last_modified": "2026-10-29 12:07:29.671039",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Tiftaħ wara l-Missjoni {index}",
     "enterCityEarly": "Idħol kmieni",
     "enterCityEarlyTitle": "Tidħol {city} kmieni?",
-    "enterCityEarlyBody": "Din il-belt għadha mhix miftuħa għalik. Li tivvjaġġa qabel il-klassi għandu spiża; x'jiswa għadu qed jiġi deċiż, allura għalissa ma jiġi ċċarġjat xejn."
+    "enterCityEarlyBody": "Din il-belt għadha mhix miftuħa għalik. Li tivvjaġġa qabel il-klassi għandu spiża; x'jiswa għadu qed jiġi deċiż, allura għalissa ma jiġi ċċarġjat xejn.",
+    "worldShipLabel": "{course}, kors fi {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, miżjura"
 }

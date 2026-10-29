@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-29 11:20:50.303281",
+    "@@last_modified": "2026-10-29 12:07:30.711065",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10146,5 +10146,8 @@
     "missionOpensAfter": "Otwiera się po Misji {index}",
     "enterCityEarly": "Wejdź wcześniej",
     "enterCityEarlyTitle": "Wejść do {city} wcześniej?",
-    "enterCityEarlyBody": "To miasto nie jest jeszcze dla Ciebie otwarte. Podróżowanie przed resztą klasy ma swoją cenę; to, ile to kosztuje, jest wciąż ustalane, więc na razie nic nie jest pobierane."
+    "enterCityEarlyBody": "To miasto nie jest jeszcze dla Ciebie otwarte. Podróżowanie przed resztą klasy ma swoją cenę; to, ile to kosztuje, jest wciąż ustalane, więc na razie nic nie jest pobierane.",
+    "worldShipLabel": "{course}, kurs w {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, odwiedzone"
 }

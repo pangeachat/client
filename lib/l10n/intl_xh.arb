@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-29 11:20:58.119719",
+    "@@last_modified": "2026-10-29 12:07:33.581800",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Ivula emva kweMishini {index}",
     "enterCityEarly": "Ngena kwangethuba",
     "enterCityEarlyTitle": "Ngena e-{city} kwangethuba?",
-    "enterCityEarlyBody": "Esi sixeko asikavulwa kuwe okwangoku. Ukuhamba phambi kweklasi kuneendleko; oko kubizayo kusagqitywa, ngoko okwangoku akukho nto ihlawuliswayo."
+    "enterCityEarlyBody": "Esi sixeko asikavulwa kuwe okwangoku. Ukuhamba phambi kweklasi kuneendleko; oko kubizayo kusagqitywa, ngoko okwangoku akukho nto ihlawuliswayo.",
+    "worldShipLabel": "{course}, ikhosi e-{city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, ityelelwe"
 }

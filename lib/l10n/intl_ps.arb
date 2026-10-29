@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-29 11:20:50.748059",
+    "@@last_modified": "2026-10-29 12:07:31.279080",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "د ماموریت {index} وروسته خلاصیږي",
     "enterCityEarly": "ژر داخل شئ",
     "enterCityEarlyTitle": "ژر {city} ته داخل شئ؟",
-    "enterCityEarlyBody": "دا ښار تر اوسه ستاسو لپاره خلاص نه دی. د ټولګي څخه مخکې سفر کول لګښت لري؛ د دې لګښت لاهم پریکړه کیږي، نو د اوس لپاره هیڅ شی نه اخیستل کیږي."
+    "enterCityEarlyBody": "دا ښار تر اوسه ستاسو لپاره خلاص نه دی. د ټولګي څخه مخکې سفر کول لګښت لري؛ د دې لګښت لاهم پریکړه کیږي، نو د اوس لپاره هیڅ شی نه اخیستل کیږي.",
+    "worldShipLabel": "{course}, په {city} کې یو کورس",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, لیدل شوی"
 }

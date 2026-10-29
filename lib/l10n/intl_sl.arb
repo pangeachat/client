@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-29 11:20:52.580275",
+    "@@last_modified": "2026-10-29 12:07:31.838997",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11003,5 +11003,8 @@
     "missionOpensAfter": "Odpre se po misiji {index}",
     "enterCityEarly": "Vstopi prej",
     "enterCityEarlyTitle": "Vstopiti v {city} prej?",
-    "enterCityEarlyBody": "To mesto ti še ni odprto. Potovanje pred razredom ima svojo ceno; kaj točno stane, se še določa, zato zaenkrat ni nobenih stroškov."
+    "enterCityEarlyBody": "To mesto ti še ni odprto. Potovanje pred razredom ima svojo ceno; kaj točno stane, se še določa, zato zaenkrat ni nobenih stroškov.",
+    "worldShipLabel": "{course}, tečaj v {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, obiskano"
 }

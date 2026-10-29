@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-29 11:20:38.787086",
+    "@@last_modified": "2026-10-29 12:07:24.732475",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10413,5 +10413,8 @@
     "missionOpensAfter": "Ouvre après la mission {index}",
     "enterCityEarly": "Entrer plus tôt",
     "enterCityEarlyTitle": "Entrer plus tôt dans {city} ?",
-    "enterCityEarlyBody": "Cette ville ne vous est pas encore ouverte. Voyager en avance sur la classe a un coût ; ce coût est encore en cours de décision, donc pour l'instant rien n'est facturé."
+    "enterCityEarlyBody": "Cette ville ne vous est pas encore ouverte. Voyager en avance sur la classe a un coût ; ce coût est encore en cours de décision, donc pour l'instant rien n'est facturé.",
+    "worldShipLabel": "{course}, un cours à {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, visitée"
 }

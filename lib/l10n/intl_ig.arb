@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-29 11:20:41.995217",
+    "@@last_modified": "2026-10-29 12:07:26.966954",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Mepee mgbe Misionụ {index} gasịrị",
     "enterCityEarly": "Banye ngwa ngwa",
     "enterCityEarlyTitle": "Ị ga-abanye {city} ngwa ngwa?",
-    "enterCityEarlyBody": "Obodo a emepebeghị gị. Ịga njem tupu klas nwere ọnụ ahịa; a ka na-ekpebi ihe ọ ga-efu, yabụ na ugbu a, ọ nweghị ihe a na-ana."
+    "enterCityEarlyBody": "Obodo a emepebeghị gị. Ịga njem tupu klas nwere ọnụ ahịa; a ka na-ekpebi ihe ọ ga-efu, yabụ na ugbu a, ọ nweghị ihe a na-ana.",
+    "worldShipLabel": "{course}, nkuzi na {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, agara aga"
 }

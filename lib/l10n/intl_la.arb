@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-29 11:20:45.013796",
+    "@@last_modified": "2026-10-29 12:07:27.834535",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Aperietur post Negotium {index}",
     "enterCityEarly": "Mature ingredi",
     "enterCityEarlyTitle": "Maturene {city} ingredieris?",
-    "enterCityEarlyBody": "Haec urbs tibi nondum patet. Ante alios iter facere pretium habet; quid sit pretium, nondum constitutum est, itaque nunc nihil solvitur."
+    "enterCityEarlyBody": "Haec urbs tibi nondum patet. Ante alios iter facere pretium habet; quid sit pretium, nondum constitutum est, itaque nunc nihil solvitur.",
+    "worldShipLabel": "{course}, cursus apud {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, visitata"
 }

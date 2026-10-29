@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-29 11:20:53.737913",
+    "@@last_modified": "2026-10-29 12:07:31.916914",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -11003,5 +11003,8 @@
     "missionOpensAfter": "Otvorí sa po misii {index}",
     "enterCityEarly": "Vstúpiť skôr",
     "enterCityEarlyTitle": "Vstúpiť do mesta {city} skôr?",
-    "enterCityEarlyBody": "Toto mesto pre vás ešte nie je otvorené. Cestovanie pred triedou má svoju cenu; čo to stojí, sa stále rozhoduje, takže zatiaľ sa nič neúčtuje."
+    "enterCityEarlyBody": "Toto mesto pre vás ešte nie je otvorené. Cestovanie pred triedou má svoju cenu; čo to stojí, sa stále rozhoduje, takže zatiaľ sa nič neúčtuje.",
+    "worldShipLabel": "{course}, kurz v meste {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, navštívené"
 }

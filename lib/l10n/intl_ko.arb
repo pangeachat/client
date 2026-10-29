@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:43.294456",
+    "@@last_modified": "2026-10-29 12:07:27.827133",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10254,5 +10254,8 @@
     "missionOpensAfter": "미션 {index} 후에 열림",
     "enterCityEarly": "일찍 입장하기",
     "enterCityEarlyTitle": "{city}에 일찍 입장하시겠어요?",
-    "enterCityEarlyBody": "이 도시는 아직 열리지 않았습니다. 수업보다 먼저 이동하는 데는 비용이 발생합니다. 비용은 아직 결정 중이므로 현재는 청구되지 않습니다."
+    "enterCityEarlyBody": "이 도시는 아직 열리지 않았습니다. 수업보다 먼저 이동하는 데는 비용이 발생합니다. 비용은 아직 결정 중이므로 현재는 청구되지 않습니다.",
+    "worldShipLabel": "{city}의 코스인 {course}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "방문한 {city}"
 }

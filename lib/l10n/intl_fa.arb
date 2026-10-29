@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:37.945482",
+    "@@last_modified": "2026-10-29 12:07:25.422419",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10149,5 +10149,8 @@
     "missionOpensAfter": "پس از مأموریت {index} باز می‌شود",
     "enterCityEarly": "زودتر وارد شوید",
     "enterCityEarlyTitle": "زودتر وارد {city} شوید؟",
-    "enterCityEarlyBody": "این شهر هنوز برای شما باز نشده است. سفر جلوتر از کلاس هزینه دارد؛ هنوز در مورد هزینه تصمیم‌گیری نشده است، بنابراین فعلاً چیزی دریافت نمی‌شود."
+    "enterCityEarlyBody": "این شهر هنوز برای شما باز نشده است. سفر جلوتر از کلاس هزینه دارد؛ هنوز در مورد هزینه تصمیم‌گیری نشده است، بنابراین فعلاً چیزی دریافت نمی‌شود.",
+    "worldShipLabel": "{course}، یک دوره در {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}، بازدید شده"
 }

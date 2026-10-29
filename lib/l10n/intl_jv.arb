@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-29 11:20:42.802631",
+    "@@last_modified": "2026-10-29 12:07:27.922121",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Dibuka sawise Misi {index}",
     "enterCityEarly": "Mlebu luwih awal",
     "enterCityEarlyTitle": "Mlebu {city} luwih awal?",
-    "enterCityEarlyBody": "Kutha iki durung dibuka kanggo sampeyan. Lelungan luwih dhisik saka kelas ana regane; regane isih diputusake, dadi saiki ora ana sing dikenani biaya."
+    "enterCityEarlyBody": "Kutha iki durung dibuka kanggo sampeyan. Lelungan luwih dhisik saka kelas ana regane; regane isih diputusake, dadi saiki ora ana sing dikenani biaya.",
+    "worldShipLabel": "{course}, kursus ing {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, wis ditekani"
 }

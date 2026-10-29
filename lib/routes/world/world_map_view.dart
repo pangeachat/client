@@ -8,6 +8,7 @@ import 'package:flutter/rendering.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart' show NumberFormat;
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
@@ -24,6 +25,7 @@ import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.
 import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
 import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/widgets/filtered_network_note.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target.dart';
@@ -56,6 +58,7 @@ import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
+import 'package:fluffychat/routes/world/world_view_markers.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
@@ -1183,7 +1186,26 @@ class _WorldMapViewState extends State<WorldMapView>
                       savedActivityIds: widget.controller.savedActivityIds,
                       wordsFor: widget.controller.stampWordsFor,
                     ),
-                  _ShimmerLayer(active: warming, child: dotLayer),
+                  // The world view (org world-view doc): outside any course
+                  // and above the cities, the map shows the learner's
+                  // courses as ships and the cities along their trips, and
+                  // no activity pins; inside a course or a city the pin
+                  // layers below take over.
+                  if (widget.controller.worldOverview)
+                    WorldViewLayer(
+                      cities: widget.controller.worldCities,
+                      ships: widget.controller.worldShips,
+                      onCityTap: widget.controller.fadeToCity,
+                      onShipTap: (ship) => context.go(
+                        WorkspaceNav.openCourseSection(
+                          GoRouterState.of(context).uri,
+                          ship.roomId,
+                          keepRoom: false,
+                        ),
+                      ),
+                    ).layer()
+                  else
+                    _ShimmerLayer(active: warming, child: dotLayer),
                   // Dying pins (a separate layer) so they don't disturb the live pins
                   // while animating out.
                   ExitingMarkersLayer(
@@ -1199,7 +1221,8 @@ class _WorldMapViewState extends State<WorldMapView>
                     onExited: _onExitedLargeCardMarker,
                   ).layer(),
                   // Large cards (always visible): the featured cards the width affords.
-                  _ShimmerLayer(active: warming, child: largeLayer),
+                  if (!widget.controller.worldOverview)
+                    _ShimmerLayer(active: warming, child: largeLayer),
                   Positioned(
                     // On a narrow screen the bottom chrome (nav widget + the search bar
                     // riding above it) owns the bottom edge, so lift the attribution

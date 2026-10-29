@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-29 11:20:57.813381",
+    "@@last_modified": "2026-10-29 12:07:34.069040",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11015,5 +11015,8 @@
     "missionOpensAfter": "任務 {index} 後開放",
     "enterCityEarly": "提早進入",
     "enterCityEarlyTitle": "提早進入 {city}？",
-    "enterCityEarlyBody": "此城市尚未向您開放。比班級提早前往需要付出代價；目前代價仍在決定中，因此暫時不收取任何費用。"
+    "enterCityEarlyBody": "此城市尚未向您開放。比班級提早前往需要付出代價；目前代價仍在決定中，因此暫時不收取任何費用。",
+    "worldShipLabel": "{city}嘅課程：{course}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "已到訪：{city}"
 }

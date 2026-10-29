@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-29 11:20:54.740363",
+    "@@last_modified": "2026-10-29 12:07:32.110622",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Inafunguliwa baada ya Misheni {index}",
     "enterCityEarly": "Ingia mapema",
     "enterCityEarlyTitle": "Uingie {city} mapema?",
-    "enterCityEarlyBody": "Jiji hili bado halijafunguliwa kwako. Kusafiri kabla ya darasa kuna gharama; gharama yake bado inaamuliwa, kwa hivyo kwa sasa hakuna kinachotozwa."
+    "enterCityEarlyBody": "Jiji hili bado halijafunguliwa kwako. Kusafiri kabla ya darasa kuna gharama; gharama yake bado inaamuliwa, kwa hivyo kwa sasa hakuna kinachotozwa.",
+    "worldShipLabel": "{course}, kozi katika {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, imetembelewa"
 }

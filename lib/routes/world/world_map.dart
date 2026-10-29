@@ -49,6 +49,7 @@ import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_view.dart';
+import 'package:fluffychat/routes/world/world_view_items.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -523,6 +524,54 @@ class WorldMapController extends State<WorldMap>
 
   bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
 
+  /// Whether the world view is zoomed into a city ([WorldMapConstants.cityZoom]),
+  /// where its open sessions and the learner's played activities show.
+  bool get zoomedIntoCity {
+    try {
+      return mapController.camera.zoom >= WorldMapConstants.cityZoom;
+    } catch (_) {
+      return false; // camera not laid out yet: the world overview
+    }
+  }
+
+  /// The world view proper: outside any course and above the cities, where
+  /// the map shows cities and ships, and nothing else (org world-view doc).
+  bool get worldOverview => isWorld && !zoomedIntoCity;
+
+  /// Whether the last camera settle was inside a city, to rebuild when the
+  /// view crosses [WorldMapConstants.cityZoom].
+  bool _wasZoomedIntoCity = false;
+
+  /// The learner's joined courses as the world view reads them.
+  List<CourseTripView> get _courseTrips => [
+    for (final room in _client?.joinedCourseRooms ?? const <Room>[])
+      CourseTripView(
+        roomId: room.id,
+        name: room.getLocalizedDisplayname(),
+        copy: room.courseMissions,
+        position: room.coursePosition,
+      ),
+  ];
+
+  /// The learner's courses as ships, at the city each trip has reached.
+  List<WorldShip> get worldShips => shipsOf(_courseTrips, DateTime.now());
+
+  /// The cities along the learner's trips, stamped where they have played.
+  List<WorldCity> get worldCities =>
+      citiesOf(_courseTrips, savedActivityIds, DateTime.now());
+
+  /// Brings the world view down into [city] with a fade, where its sessions
+  /// and the learner's played activities show.
+  void fadeToCity(WorldCity city) {
+    _fadeFit(
+      CameraFit.coordinates(
+        coordinates: [city.point],
+        padding: _exposedCanvasPadding,
+        maxZoom: WorldMapConstants.cityFocusZoom,
+      ),
+    );
+  }
+
   /// The joined course space a course-scoped map is showing, or null on the
   /// world map and under a course the learner has not joined (a preview). The
   /// space the scope came from names it outright — two joined courses can
@@ -601,6 +650,10 @@ class WorldMapController extends State<WorldMap>
   /// scope-dependent term is the settings-fixed language, applied on the world
   /// map only; see [WorldMapFilterState.include].
   List<QuestActivityCard> get visiblePins {
+    // Outside any course the map shows cities and ships, not activities
+    // (org world-view doc); zoomed into a city it shows the city's open
+    // sessions and the activities the learner has played there.
+    if (worldOverview) return const [];
     final filtered = _pinsManager.filteredPins(
       (c) => _filterState.include(
         c,
@@ -608,6 +661,12 @@ class WorldMapController extends State<WorldMap>
         applyLanguage: isWorld,
       ),
     );
+    if (isWorld) {
+      return [
+        for (final c in filtered)
+          if (_pinsManager.displayStateOf(c) != ActivityPinState.available) c,
+      ];
+    }
     final mission = selectedMissionId;
     if (mission == null) return filtered;
     // The Mission scope: a joined course's map shows only the Mission on
@@ -669,7 +728,7 @@ class WorldMapController extends State<WorldMap>
   /// coordinates count anywhere here: a match that can never render can't be
   /// revealed by any remedy the card offers.
   MapEmptyVerdict get emptyVerdict {
-    if (loadingPins) return MapEmptyVerdict.none;
+    if (loadingPins || worldOverview) return MapEmptyVerdict.none;
     final loaded = visiblePins.where((c) => c.point != null).toList();
     if (loaded.isNotEmpty) {
       // Matches exist under the current filters/query — the verdict is about
@@ -1513,6 +1572,13 @@ class WorldMapController extends State<WorldMap>
     // frame of a pan, but the surface no-ops once already collapsed.
     if (hasGesture) mapPanTick.value++;
     if (!isWorld) return;
+    // Crossing the city zoom swaps the world's cities and ships for the
+    // city's own items, so the layers rebuild on that frame.
+    final inCity = zoomedIntoCity;
+    if (inCity != _wasZoomedIntoCity) {
+      _wasZoomedIntoCity = inCity;
+      if (mounted) setState(() {});
+    }
     _refetchDebounce?.cancel();
     _refetchDebounce = Timer(
       const Duration(milliseconds: 500),

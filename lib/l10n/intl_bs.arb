@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-29 11:20:34.827778",
+    "@@last_modified": "2026-10-29 12:07:22.866300",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Otvara se nakon Misije {index}",
     "enterCityEarly": "Uđite ranije",
     "enterCityEarlyTitle": "Ući u {city} ranije?",
-    "enterCityEarlyBody": "Ovaj grad vam još nije otvoren. Putovanje ispred razreda ima svoju cijenu; šta to košta još se odlučuje, tako da se za sada ništa ne naplaćuje."
+    "enterCityEarlyBody": "Ovaj grad vam još nije otvoren. Putovanje ispred razreda ima svoju cijenu; šta to košta još se odlučuje, tako da se za sada ništa ne naplaćuje.",
+    "worldShipLabel": "{course}, kurs u {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, posjećeno"
 }

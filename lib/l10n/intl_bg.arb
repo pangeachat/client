@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-29 11:20:34.903991",
+    "@@last_modified": "2026-10-29 12:07:22.863282",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Отваря след мисия {index}",
     "enterCityEarly": "Влез по-рано",
     "enterCityEarlyTitle": "Да влезеш ли в {city} по-рано?",
-    "enterCityEarlyBody": "Този град все още не е отворен за теб. Пътуването преди класа има цена; все още се решава каква е тя, така че за момента нищо не се таксува."
+    "enterCityEarlyBody": "Този град все още не е отворен за теб. Пътуването преди класа има цена; все още се решава каква е тя, така че за момента нищо не се таксува.",
+    "worldShipLabel": "{course}, курс в {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, посетен"
 }

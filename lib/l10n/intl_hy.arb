@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-29 11:20:56.201721",
+    "@@last_modified": "2026-10-29 12:07:26.835015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Բացվում է {index} առաքելությունից հետո",
     "enterCityEarly": "Մուտք գործել վաղաժամ",
     "enterCityEarlyTitle": "Մուտք գործե՞լ {city} վաղաժամ",
-    "enterCityEarlyBody": "Այս քաղաքը դեռ բաց չէ ձեզ համար։ Դասարանից առաջ ճանապարհորդելը ծախս ունի. թե ինչ արժե, դեռ որոշվում է, ուստի առայժմ ոչինչ չի գանձվում։"
+    "enterCityEarlyBody": "Այս քաղաքը դեռ բաց չէ ձեզ համար։ Դասարանից առաջ ճանապարհորդելը ծախս ունի. թե ինչ արժե, դեռ որոշվում է, ուստի առայժմ ոչինչ չի գանձվում։",
+    "worldShipLabel": "{course}, դասընթաց {city}-ում",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, այցելված"
 }

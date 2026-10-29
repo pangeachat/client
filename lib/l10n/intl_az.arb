@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-29 11:20:35.544667",
+    "@@last_modified": "2026-10-29 12:07:22.951487",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Missiya {index} sonra açılır",
     "enterCityEarly": "Tez daxil olun",
     "enterCityEarlyTitle": "{city} şəhərinə tez daxil olmaq?",
-    "enterCityEarlyBody": "Bu şəhər hələ sizin üçün açıq deyil. Sinifdən qabaq səyahət etməyin bir qiyməti var; bu qiymət hələ müəyyənləşdirilir, buna görə də hələlik heç nə ödənilmir."
+    "enterCityEarlyBody": "Bu şəhər hələ sizin üçün açıq deyil. Sinifdən qabaq səyahət etməyin bir qiyməti var; bu qiymət hələ müəyyənləşdirilir, buna görə də hələlik heç nə ödənilmir.",
+    "worldShipLabel": "{city} şəhərində kurs: {course}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, ziyarət edildi"
 }

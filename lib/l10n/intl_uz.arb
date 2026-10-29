@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-29 11:20:57.387370",
+    "@@last_modified": "2026-10-29 12:07:33.414479",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10065,5 +10065,8 @@
     "missionOpensAfter": "{index}-missiyadan keyin ochiladi",
     "enterCityEarly": "Erta kirish",
     "enterCityEarlyTitle": "{city}ga erta kirasizmi?",
-    "enterCityEarlyBody": "Bu shahar siz uchun hali ochiq emas. Sinfdan oldin sayohat qilishning o'ziga yarasha narxi bor; narxi hali aniqlanmagan, shuning uchun hozircha hech narsa olinmaydi."
+    "enterCityEarlyBody": "Bu shahar siz uchun hali ochiq emas. Sinfdan oldin sayohat qilishning o'ziga yarasha narxi bor; narxi hali aniqlanmagan, shuning uchun hozircha hech narsa olinmaydi.",
+    "worldShipLabel": "{city}dagi kurs — {course}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, tashrif buyurilgan"
 }

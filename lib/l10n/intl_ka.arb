@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-29 11:20:43.700414",
+    "@@last_modified": "2026-10-29 12:07:27.945999",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10958,5 +10958,8 @@
     "missionOpensAfter": "გაიხსნება მისიის {index} შემდეგ",
     "enterCityEarly": "ადრე შესვლა",
     "enterCityEarlyTitle": "ადრე შეხვიდეთ {city}-ში?",
-    "enterCityEarlyBody": "ეს ქალაქი ჯერ არ არის თქვენთვის გახსნილი. კლასზე ადრე მოგზაურობას აქვს ფასი; რა ღირს, ჯერ კიდევ გადაწყვეტილია, ასე რომ, ჯერჯერობით არაფერი ირიცხება."
+    "enterCityEarlyBody": "ეს ქალაქი ჯერ არ არის თქვენთვის გახსნილი. კლასზე ადრე მოგზაურობას აქვს ფასი; რა ღირს, ჯერ კიდევ გადაწყვეტილია, ასე რომ, ჯერჯერობით არაფერი ირიცხება.",
+    "worldShipLabel": "{course}, კურსი ქალაქ {city}-ში",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, ნამყოფია"
 }

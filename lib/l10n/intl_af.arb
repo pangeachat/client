@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-29 11:20:35.690197",
+    "@@last_modified": "2026-10-29 12:07:22.883719",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Maak oop na Sending {index}",
     "enterCityEarly": "Gaan vroeg in",
     "enterCityEarlyTitle": "Gaan vroeg in {city}?",
-    "enterCityEarlyBody": "Hierdie stad is nog nie vir jou oop nie. Om voor die klas te reis het 'n koste; wat dit kos word nog besluit, so vir nou word niks gehef nie."
+    "enterCityEarlyBody": "Hierdie stad is nog nie vir jou oop nie. Om voor die klas te reis het 'n koste; wat dit kos word nog besluit, so vir nou word niks gehef nie.",
+    "worldShipLabel": "{course}, 'n kursus by {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, besoek"
 }

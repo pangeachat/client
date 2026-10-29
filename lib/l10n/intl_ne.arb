@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-29 11:20:48.691023",
+    "@@last_modified": "2026-10-29 12:07:29.877236",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "मिसन {index} पछि खुल्छ",
     "enterCityEarly": "चाँडै प्रवेश गर्नुहोस्",
     "enterCityEarlyTitle": "{city} मा चाँडै प्रवेश गर्ने?",
-    "enterCityEarlyBody": "यो सहर तपाईंको लागि अझै खुलेको छैन। कक्षा अगाडि यात्रा गर्दा लागत लाग्छ; यसको लागत के हो भन्ने अझै निर्णय भइरहेको छ, त्यसैले अहिले कुनै शुल्क लाग्दैन।"
+    "enterCityEarlyBody": "यो सहर तपाईंको लागि अझै खुलेको छैन। कक्षा अगाडि यात्रा गर्दा लागत लाग्छ; यसको लागत के हो भन्ने अझै निर्णय भइरहेको छ, त्यसैले अहिले कुनै शुल्क लाग्दैन।",
+    "worldShipLabel": "{city} मा रहेको एउटा कोर्स, {course}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, भ्रमण गरियो"
 }

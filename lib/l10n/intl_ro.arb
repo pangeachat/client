@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:51.473232",
+    "@@last_modified": "2026-10-29 12:07:30.923384",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10790,5 +10790,8 @@
     "missionOpensAfter": "Se deschide după Misiunea {index}",
     "enterCityEarly": "Intră mai devreme",
     "enterCityEarlyTitle": "Intri mai devreme în {city}?",
-    "enterCityEarlyBody": "Acest oraș nu este încă deschis pentru tine. Călătoria înaintea clasei are un cost; costul este încă în curs de decizie, așa că deocamdată nu se percepe nimic."
+    "enterCityEarlyBody": "Acest oraș nu este încă deschis pentru tine. Călătoria înaintea clasei are un cost; costul este încă în curs de decizie, așa că deocamdată nu se percepe nimic.",
+    "worldShipLabel": "{course}, un curs în {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, vizitat"
 }

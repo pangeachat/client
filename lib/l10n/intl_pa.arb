@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-29 11:20:50.416057",
+    "@@last_modified": "2026-10-29 12:07:30.502665",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "ਮਿਸ਼ਨ {index} ਤੋਂ ਬਾਅਦ ਖੁੱਲ੍ਹਦਾ ਹੈ",
     "enterCityEarly": "ਜਲਦੀ ਦਾਖਲ ਹੋਵੋ",
     "enterCityEarlyTitle": "{city} ਵਿੱਚ ਜਲਦੀ ਦਾਖਲ ਹੋਵੋ?",
-    "enterCityEarlyBody": "ਇਹ ਸ਼ਹਿਰ ਤੁਹਾਡੇ ਲਈ ਅਜੇ ਖੁੱਲ੍ਹਾ ਨਹੀਂ ਹੈ। ਕਲਾਸ ਤੋਂ ਅੱਗੇ ਯਾਤਰਾ ਕਰਨ ਦੀ ਇੱਕ ਕੀਮਤ ਹੈ; ਇਸਦੀ ਕੀਮਤ ਅਜੇ ਤੈਅ ਨਹੀਂ ਕੀਤੀ ਗਈ ਹੈ, ਇਸ ਲਈ ਫਿਲਹਾਲ ਕੁਝ ਵੀ ਚਾਰਜ ਨਹੀਂ ਕੀਤਾ ਜਾਵੇਗਾ।"
+    "enterCityEarlyBody": "ਇਹ ਸ਼ਹਿਰ ਤੁਹਾਡੇ ਲਈ ਅਜੇ ਖੁੱਲ੍ਹਾ ਨਹੀਂ ਹੈ। ਕਲਾਸ ਤੋਂ ਅੱਗੇ ਯਾਤਰਾ ਕਰਨ ਦੀ ਇੱਕ ਕੀਮਤ ਹੈ; ਇਸਦੀ ਕੀਮਤ ਅਜੇ ਤੈਅ ਨਹੀਂ ਕੀਤੀ ਗਈ ਹੈ, ਇਸ ਲਈ ਫਿਲਹਾਲ ਕੁਝ ਵੀ ਚਾਰਜ ਨਹੀਂ ਕੀਤਾ ਜਾਵੇਗਾ।",
+    "worldShipLabel": "{course}, {city} ਵਿਖੇ ਇੱਕ ਕੋਰਸ",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, ਵੇਖਿਆ ਗਿਆ"
 }

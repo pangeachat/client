@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:39.711450",
+    "@@last_modified": "2026-10-29 12:07:25.813870",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10972,5 +10972,8 @@
     "missionOpensAfter": "נפתח לאחר משימה {index}",
     "enterCityEarly": "היכנס/י מוקדם",
     "enterCityEarlyTitle": "להיכנס ל{city} מוקדם?",
-    "enterCityEarlyBody": "העיר הזו עדיין לא פתוחה עבורך. נסיעה לפני הכיתה כרוכה בעלות; העלות עדיין נקבעת, אז כרגע לא נגבה תשלום."
+    "enterCityEarlyBody": "העיר הזו עדיין לא פתוחה עבורך. נסיעה לפני הכיתה כרוכה בעלות; העלות עדיין נקבעת, אז כרגע לא נגבה תשלום.",
+    "worldShipLabel": "{course}, קורס ב{city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, ביקר"
 }

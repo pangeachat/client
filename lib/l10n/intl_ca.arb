@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:36.391620",
+    "@@last_modified": "2026-10-29 12:07:23.866298",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10188,5 +10188,8 @@
     "missionOpensAfter": "Obre després de la Missió {index}",
     "enterCityEarly": "Entra abans",
     "enterCityEarlyTitle": "Entrar a {city} abans d'hora?",
-    "enterCityEarlyBody": "Aquesta ciutat encara no està oberta per a tu. Viatjar abans que la classe té un cost; el que costa encara s'està decidint, així que de moment no es cobra res."
+    "enterCityEarlyBody": "Aquesta ciutat encara no està oberta per a tu. Viatjar abans que la classe té un cost; el que costa encara s'està decidint, així que de moment no es cobra res.",
+    "worldShipLabel": "{course}, un curs a {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, visitat"
 }

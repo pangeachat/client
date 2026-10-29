@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-29 11:20:53.705283",
+    "@@last_modified": "2026-10-29 12:07:31.925832",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Wuxuu furmayaa Hawlgalka {index} ka dib",
     "enterCityEarly": "Geli hore",
     "enterCityEarlyTitle": "Ma gelaysaa {city} hore?",
-    "enterCityEarlyBody": "Magaaladan weli kuu furan maaha. Safarka ka hor fasalka wuxuu leeyahay kharash; waxa uu ku kacayo weli lama go'aansan, sidaa darteed hadda waxba lagama qaadayo."
+    "enterCityEarlyBody": "Magaaladan weli kuu furan maaha. Safarka ka hor fasalka wuxuu leeyahay kharash; waxa uu ku kacayo weli lama go'aansan, sidaa darteed hadda waxba lagama qaadayo.",
+    "worldShipLabel": "{course}, kooras ku yaal {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, la booqday"
 }

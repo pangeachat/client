@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-29 11:20:37.513520",
+    "@@last_modified": "2026-10-29 12:07:25.325781",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8290,5 +8290,8 @@
     "missionOpensAfter": "Abre después de la Misión {index}",
     "enterCityEarly": "Entrar antes",
     "enterCityEarlyTitle": "¿Entrar antes a {city}?",
-    "enterCityEarlyBody": "Esta ciudad aún no está abierta para ti. Viajar antes que la clase tiene un costo; lo que cuesta aún se está decidiendo, así que por ahora no se cobra nada."
+    "enterCityEarlyBody": "Esta ciudad aún no está abierta para ti. Viajar antes que la clase tiene un costo; lo que cuesta aún se está decidiendo, así que por ahora no se cobra nada.",
+    "worldShipLabel": "{course}, un curso en {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, visitado"
 }

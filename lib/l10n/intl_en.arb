@@ -6096,6 +6096,28 @@
     "@classLocation": {
         "description": "Above the Mission circle the teacher's due dates say the class is on now."
     },
+    "worldShipLabel": "{course}, a course at {city}",
+    "@worldShipLabel": {
+        "description": "World map: a ship marker, one course at the city its trip has reached; tapping opens the course.",
+        "placeholders": {
+            "course": {"type": "String"},
+            "city": {"type": "String"}
+        }
+    },
+    "worldCityLabel": "{city}",
+    "@worldCityLabel": {
+        "description": "World map: a city marker on one of the learner's trips; tapping zooms into the city.",
+        "placeholders": {
+            "city": {"type": "String"}
+        }
+    },
+    "worldCityVisitedLabel": "{city}, visited",
+    "@worldCityVisitedLabel": {
+        "description": "World map: a city marker wearing the gold stamp because the learner finished an activity there.",
+        "placeholders": {
+            "city": {"type": "String"}
+        }
+    },
     "focusMission": "Focus on this Mission's activities",
     "@focusMission": {
         "description": "Tooltip of the Mission card's Focus button: the map fades to the Mission's pinned activities."

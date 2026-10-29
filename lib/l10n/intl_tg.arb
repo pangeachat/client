@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-29 11:20:55.800541",
+    "@@last_modified": "2026-10-29 12:07:32.661794",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Пас аз миссияи {index} кушода мешавад",
     "enterCityEarly": "Барвақт ворид шавед",
     "enterCityEarlyTitle": "Ба {city} барвақт ворид шавед?",
-    "enterCityEarlyBody": "Ин шаҳр барои шумо ҳанӯз кушода нест. Пеш аз дарс сафар кардан арзиш дорад; арзиши он ҳанӯз муайян карда мешавад, аз ин рӯ ҳоло чизе ситонида намешавад."
+    "enterCityEarlyBody": "Ин шаҳр барои шумо ҳанӯз кушода нест. Пеш аз дарс сафар кардан арзиш дорад; арзиши он ҳанӯз муайян карда мешавад, аз ин рӯ ҳоло чизе ситонида намешавад.",
+    "worldShipLabel": "{course}, як курс дар {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, боздид шуд"
 }

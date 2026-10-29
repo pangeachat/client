@@ -1355,7 +1355,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-29 11:20:41.303095",
+    "@@last_modified": "2026-10-29 12:07:26.635499",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10994,5 +10994,8 @@
     "missionOpensAfter": "Aperi post Mission {index}",
     "enterCityEarly": "Entra tosto",
     "enterCityEarlyTitle": "Entrar in {city} tosto?",
-    "enterCityEarlyBody": "Iste citate non es ancora aperte pro te. Viagiar ante le classe ha un costo; lo que illo costa es ancora in decision, dunque pro ora nihil es cargate."
+    "enterCityEarlyBody": "Iste citate non es ancora aperte pro te. Viagiar ante le classe ha un costo; lo que illo costa es ancora in decision, dunque pro ora nihil es cargate.",
+    "worldShipLabel": "{course}, un curso a {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, visitate"
 }

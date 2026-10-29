@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-29 11:20:36.293627",
+    "@@last_modified": "2026-10-29 12:07:24.063006",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "Apre dopu à a Missione {index}",
     "enterCityEarly": "Entrà prestu",
     "enterCityEarlyTitle": "Entrà in {city} prestu?",
-    "enterCityEarlyBody": "Sta cità ùn hè ancu aperta per voi. Viaghjà in anticipu nantu à a classa hà un costu; ciò chì costa hè sempre in decisione, dunque per avà nunda hè incaricatu."
+    "enterCityEarlyBody": "Sta cità ùn hè ancu aperta per voi. Viaghjà in anticipu nantu à a classa hà un costu; ciò chì costa hè sempre in decisione, dunque per avà nunda hè incaricatu.",
+    "worldShipLabel": "{course}, un corsu in {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, visitatu"
 }

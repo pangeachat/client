@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-29 11:20:35.914149",
+    "@@last_modified": "2026-10-29 12:07:23.005422",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2523,5 +2523,8 @@
     "missionOpensAfter": "ከተልዕኮ {index} በኋላ ይከፈታል።",
     "enterCityEarly": "በጊዜ ይግቡ",
     "enterCityEarlyTitle": "ወደ {city} በጊዜ ይግቡ?",
-    "enterCityEarlyBody": "ይህ ከተማ ገና ለእርስዎ አልተከፈተም። ከክፍል ቀድሞ መጓዝ ዋጋ አለው፤ ምን ያህል እንደሚያስወጣ ገና እየተወሰነ ነው፣ ስለዚህ ለአሁን ምንም ክፍያ አይጠየቅም።"
+    "enterCityEarlyBody": "ይህ ከተማ ገና ለእርስዎ አልተከፈተም። ከክፍል ቀድሞ መጓዝ ዋጋ አለው፤ ምን ያህል እንደሚያስወጣ ገና እየተወሰነ ነው፣ ስለዚህ ለአሁን ምንም ክፍያ አይጠየቅም።",
+    "worldShipLabel": "{course}, በ{city} የሚገኝ ኮርስ",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, ተጎብኝቷል"
 }

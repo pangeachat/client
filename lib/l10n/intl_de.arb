@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-29 11:20:37.120082",
+    "@@last_modified": "2026-10-29 12:07:23.720618",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10048,5 +10048,8 @@
     "missionOpensAfter": "Öffnet nach Mission {index}",
     "enterCityEarly": "Früh eintreten",
     "enterCityEarlyTitle": "Früh nach {city} eintreten?",
-    "enterCityEarlyBody": "Diese Stadt ist für dich noch nicht geöffnet. Vor der Klasse zu reisen hat Kosten; was es kostet, wird noch entschieden, daher wird vorerst nichts berechnet."
+    "enterCityEarlyBody": "Diese Stadt ist für dich noch nicht geöffnet. Vor der Klasse zu reisen hat Kosten; was es kostet, wird noch entschieden, daher wird vorerst nichts berechnet.",
+    "worldShipLabel": "{course}, ein Kurs in {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, besucht"
 }
