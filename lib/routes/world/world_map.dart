@@ -24,6 +24,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/course_itinerary.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
@@ -1274,14 +1275,28 @@ class WorldMapController extends State<WorldMap>
         mapContext is CoursePreviewMapContext) {
       return false;
     }
-    final mission = selectedMissionId;
+    // The Mission picked in the URL; else, on a trip, the ship's stop from
+    // the record itself (no progression needed, so a course in another
+    // language fades too); else the course's current Mission.
+    final courseRoom = this.courseRoom;
+    final copy = courseRoom?.courseMissions;
+    String? mission = mapContext.missionId;
+    if (mission == null && copy != null) {
+      final stop = CourseItinerary.shipStopOf(
+        copy,
+        courseRoom?.coursePosition,
+        DateTime.now(),
+      );
+      if (stop != null) mission = copy.missions[stop].loId;
+    }
+    mission ??= selectedMissionId;
     if (mission == null) return false;
     final key = '${mapContext.spaceId ?? mapContext.coursePlanId}/$mission';
     if (!force && key == _fadedMissionKey) return true;
     final targets = missionFadeTargets(
-      pins: visiblePins,
+      pins: _pinsManager.filteredPins((_) => true),
       missionId: mission,
-      recordedCity: courseRoom?.courseMissions?.missions
+      recordedCity: copy?.missions
           .firstWhereOrNull((m) => m.loId == mission)
           ?.city
           ?.point,

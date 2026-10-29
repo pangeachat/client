@@ -1,5 +1,6 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -107,6 +108,32 @@ abstract final class CourseItinerary {
       lastDated = i;
     }
     return lastDated;
+  }
+
+  /// The stop a course's SHIP is at, read from its record alone (org
+  /// course-view doc, "The camera": choosing a course fades to its ship's
+  /// city): on a dated trip the first Mission whose date is still ahead (every
+  /// date past, the last dated one); on an undated trip the ship's
+  /// [position]; null for a record that is not a trip, so a course from before
+  /// trips moves no camera by itself.
+  static int? shipStopOf(
+    CourseMissionsEvent copy,
+    CoursePositionEvent? position,
+    DateTime now,
+  ) {
+    if (!copy.isTrip || copy.missions.isEmpty) return null;
+    if (copy.isDated) {
+      int? lastDated;
+      for (var i = 0; i < copy.missions.length; i++) {
+        final dueAt = copy.missions[i].dueAt;
+        if (dueAt == null) continue;
+        if (dueAt.isAfter(now)) return i;
+        lastDated = i;
+      }
+      return lastDated ?? 0;
+    }
+    final stop = position?.stop ?? 0;
+    return stop < copy.missions.length ? stop : null;
   }
 
   /// The Mission the class is at, for the "Class location" mark: a dated
