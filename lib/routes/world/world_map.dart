@@ -864,6 +864,27 @@ class WorldMapController extends State<WorldMap>
     // course must not flash another course's session as joinable first.
     _recomputeProgress();
     _loadForContext(debounceFit: !missionPick);
+    // Leaving a course for the world fades back out to the whole world (Will,
+    // 2026-10-29): the same view the reset button gives, under the veil.
+    if (previous is CourseMapContext && next is WorldMapContext) {
+      _fadeToWorld();
+    }
+  }
+
+  /// Fades the map out to the world view ([resetToWorld]'s target) instead of
+  /// gliding there from a city.
+  void _fadeToWorld() {
+    _dropGlideInFlight();
+    mapVeiled.value = true;
+    Future<void>.delayed(fadeDuration, () {
+      if (!mounted) return;
+      try {
+        mapController.move(_worldResetCenter(), minZoom);
+      } catch (_) {
+        // Camera not laid out yet; the world load places it.
+      }
+      mapVeiled.value = false;
+    });
   }
 
   /// Load the pins for the active map context. A selected course shows that
