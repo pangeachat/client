@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/quests/course_itinerary.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -118,6 +119,14 @@ void main() {
 
   group('the class location', () {
     final groups = [mission('a'), mission('b'), mission('c')];
+    CourseMissionsEvent copyOf(List<String> ids) => CourseMissionsEvent(
+      version: CourseMissionsEvent.tripVersion,
+      revision: 1,
+      missions: [
+        for (final id in ids) CourseMission(loId: id, activityIds: const []),
+      ],
+    );
+    final copy = copyOf(['a', 'b', 'c']);
 
     test('an undated trip marks the ship\'s stop', () {
       expect(
@@ -125,6 +134,7 @@ void main() {
           groups: groups,
           trip: const CourseTrip(),
           position: const CoursePositionEvent(stop: 2, fromStop: 0, since: 1),
+          copy: copy,
           now: now,
         ),
         2,
@@ -134,6 +144,7 @@ void main() {
           groups: groups,
           trip: const CourseTrip(),
           position: null,
+          copy: copy,
           now: now,
         ),
         isNull,
@@ -144,6 +155,33 @@ void main() {
           groups: groups,
           trip: const CourseTrip(),
           position: const CoursePositionEvent(stop: 9, fromStop: 0, since: 1),
+          copy: copy,
+          now: now,
+        ),
+        isNull,
+      );
+    });
+
+    test('the ship\'s stop is placed by its Mission, not its index', () {
+      // The record lists an empty Can-Do ('x') the course page leaves out,
+      // so the record's stop 2 ('b') is the page's second Mission.
+      expect(
+        CourseItinerary.classStop(
+          groups: [mission('a'), mission('b')],
+          trip: const CourseTrip(),
+          position: const CoursePositionEvent(stop: 2, fromStop: 0, since: 1),
+          copy: copyOf(['a', 'x', 'b']),
+          now: now,
+        ),
+        1,
+      );
+      // The ship at a Mission the page does not show marks nothing.
+      expect(
+        CourseItinerary.classStop(
+          groups: [mission('a'), mission('b')],
+          trip: const CourseTrip(),
+          position: const CoursePositionEvent(stop: 1, fromStop: 0, since: 1),
+          copy: copyOf(['a', 'x', 'b']),
           now: now,
         ),
         isNull,
@@ -162,6 +200,7 @@ void main() {
             groups: dated,
             trip: CourseTrip(startDate: DateTime.utc(2026, 10, 1)),
             position: null,
+            copy: null,
             now: now,
           ),
           1,
@@ -171,6 +210,7 @@ void main() {
             groups: dated,
             trip: null,
             position: null,
+            copy: null,
             now: now,
           ),
           1,

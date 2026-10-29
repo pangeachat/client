@@ -99,10 +99,15 @@ abstract final class CourseItinerary {
   /// The stop a dated course is at on [now]: the first Mission in order
   /// whose date is still ahead; every dated Mission past, the last dated one;
   /// before any date, the first Mission. Null for a course with no dates.
-  static int? datedStop(List<QuestObjectiveGroup> groups, DateTime now) {
+  static int? datedStop(List<QuestObjectiveGroup> groups, DateTime now) =>
+      _datedStopOf([for (final g in groups) g.pacing?.dueAt], now);
+
+  /// The one dated-stop rule over Missions' due dates in order, shared by
+  /// [datedStop] (the outline) and [shipStopOf] (the record alone).
+  static int? _datedStopOf(List<DateTime?> dueDates, DateTime now) {
     int? lastDated;
-    for (var i = 0; i < groups.length; i++) {
-      final dueAt = groups[i].pacing?.dueAt;
+    for (var i = 0; i < dueDates.length; i++) {
+      final dueAt = dueDates[i];
       if (dueAt == null) continue;
       if (dueAt.isAfter(now)) return i;
       lastDated = i;
@@ -123,14 +128,7 @@ abstract final class CourseItinerary {
   ) {
     if (!copy.isTrip || copy.missions.isEmpty) return null;
     if (copy.isDated) {
-      int? lastDated;
-      for (var i = 0; i < copy.missions.length; i++) {
-        final dueAt = copy.missions[i].dueAt;
-        if (dueAt == null) continue;
-        if (dueAt.isAfter(now)) return i;
-        lastDated = i;
-      }
-      return lastDated ?? 0;
+      return _datedStopOf([for (final m in copy.missions) m.dueAt], now) ?? 0;
     }
     final stop = position?.stop ?? 0;
     return stop < copy.missions.length ? stop : null;
@@ -139,16 +137,26 @@ abstract final class CourseItinerary {
   /// The Mission the class is at, for the "Class location" mark: a dated
   /// trip's [datedStop]; an undated trip's ship ([position]); a course that
   /// is not a trip keeps the due-date rule it had. Null when unknown.
+  ///
+  /// The ship's stop indexes the record's whole `missions[]` ([copy]), while
+  /// [groups] leaves out Missions with no activities, so the stop is resolved
+  /// to its Mission id before it is placed among [groups].
   static int? classStop({
     required List<QuestObjectiveGroup> groups,
     required CourseTrip? trip,
     required CoursePositionEvent? position,
+    required CourseMissionsEvent? copy,
     required DateTime now,
   }) {
     if (trip == null || trip.isDated) return datedStop(groups, now);
     final stop = position?.stop;
-    if (stop == null || stop >= groups.length) return null;
-    return stop;
+    final missions = copy?.missions;
+    if (stop == null || missions == null || stop >= missions.length) {
+      return null;
+    }
+    final shipMissionId = missions[stop].loId;
+    final index = groups.indexWhere((g) => g.objective.id == shipMissionId);
+    return index < 0 ? null : index;
   }
 
   /// The ids of the Missions open to the learner, or null when nothing is

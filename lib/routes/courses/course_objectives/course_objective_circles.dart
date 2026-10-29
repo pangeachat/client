@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/quests/course_itinerary.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
@@ -50,6 +51,7 @@ class CourseObjectiveCircles extends StatelessWidget {
     groups: groups,
     trip: trip,
     position: course?.coursePosition,
+    copy: course?.courseMissions,
     now: now,
   );
 
