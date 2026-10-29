@@ -11,7 +11,6 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
-import 'package:fluffychat/features/discussions/discussion_fixtures.dart';
 import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
@@ -670,14 +669,8 @@ class QuestRepo {
         .map((e) => QuestActivityCard.fromJson(cmsDocShapeFromEntry(e)))
         .where((card) => card.point != null)
         .toList();
-    // Prototype (#9647): the course's dummy discussions get pins too.
-    final withDiscussions = await DiscussionFixtures.addPins(
-      cards,
-      questId: questId,
-      courseRoomId: courseRoomId,
-    );
     return Result.value(
-      dedupeByActivityId(withDiscussions, (c) => c.activityId),
+      dedupeByActivityId(cards, (c) => c.activityId),
     );
   }
 
@@ -957,11 +950,7 @@ class QuestRepo {
             if (a.familyIds.isNotEmpty) a.plan.activityId: a.familyIds,
         },
       );
-      // Prototype (#9647): the course's dummy discussions join its Missions
-      // as if the listing had returned them.
-      return Result.value(
-        await DiscussionFixtures.addTo(outline, courseRoomId: courseRoomId),
-      );
+      return Result.value(outline);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

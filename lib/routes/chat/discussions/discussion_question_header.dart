@@ -4,8 +4,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
-import 'package:fluffychat/features/discussions/discussion_fixtures.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
@@ -40,6 +40,22 @@ class DiscussionQuestionHeader extends StatefulWidget {
 class _DiscussionQuestionHeaderState extends State<DiscussionQuestionHeader> {
   bool _expanded = false;
 
+  @override
+  void initState() {
+    super.initState();
+    // Fetch the discussion's plan as the chat opens. A build-time `ensure`
+    // declines while the app is still starting and nothing asks again until
+    // the next sync; `lookup` waits for the app, and its result notifies the
+    // repo, which rebuilds this header and the chat's top block.
+    final activityId = widget.room.discussionActivityId;
+    if (activityId != null) {
+      ActivityPlanRepo.instance.lookup(activityId).catchError((e, s) {
+        ErrorHandler.logError(e: e, s: s, data: {'roomId': widget.room.id});
+        return ActivityPlanLookup(ActivityPlanLookupStatus.failed, null, e);
+      });
+    }
+  }
+
   void _toggle() => setState(() => _expanded = !_expanded);
 
   Future<void> _setEnded(bool ended) async {
@@ -61,20 +77,22 @@ class _DiscussionQuestionHeaderState extends State<DiscussionQuestionHeader> {
     final activityId = room.discussionActivityId;
     if (activityId == null) return const SizedBox.shrink();
     // The learner's progress is room account data: it changes on sync.
-    return StreamBuilder(
-      stream: room.client.onSync.stream,
-      builder: (context, _) => _build(context, activityId),
+    // The plan loads after the room opens: rebuild when it arrives too.
+    return ListenableBuilder(
+      listenable: ActivityPlanRepo.instance,
+      builder: (context, _) => StreamBuilder(
+        stream: room.client.onSync.stream,
+        builder: (context, _) => _build(context, activityId),
+      ),
     );
   }
 
   Widget _build(BuildContext context, String activityId) {
     final room = widget.room;
-    final fixtureQuestions = DiscussionFixtures.questionsFor(activityId);
-    // The room is named for its first question, so a room opened before the
-    // course listing loaded still has one.
-    final questions = fixtureQuestions.isNotEmpty
-        ? fixtureQuestions
-        : [room.name];
+    final planQuestions = room.discussionPlan?.discussionQuestions ?? const [];
+    // The room is named for its discussion, so a room opened before its plan
+    // loaded still shows something.
+    final questions = planQuestions.isNotEmpty ? planQuestions : [room.name];
     final goals = [
       for (var i = 0; i < questions.length; i++)
         ActivityRoleGoal(id: 'question_$i', description: questions[i]),

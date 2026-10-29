@@ -1,18 +1,16 @@
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 
-/// The names a discussion travels under (#9647). A discussion is listed like
-/// an activity (its plan's mode marks it) but runs as a plain group chat.
+/// The names a discussion travels under (#9647). A discussion is an activity
+/// in the Discussion mode, stored course-only in one of the course's Missions.
 abstract class DiscussionIds {
-  /// The plan mode that marks a listed activity as a discussion.
-  static const String mode = 'discussion';
-
-  /// Prefix of a dummy discussion's activity id.
-  static const String prefix = 'discussion-';
+  /// The plan mode that marks an activity as a discussion.
+  static const String mode = 'Discussion';
 
   /// The state event a discussion room carries: which discussion, which
   /// Mission, which course.
@@ -20,25 +18,38 @@ abstract class DiscussionIds {
 
   /// How many members a discussion room takes before the next learner is
   /// put in a new one.
-  static const int roomCapacity = 20;
+  static const int roomCapacity = 12;
 
   /// Per-room account data holding the learner's own progress in a
   /// discussion: which questions they have answered, and whether they ended.
   static const String progressAccountData = 'pangea.discussion_progress';
 }
 
+bool isDiscussionMode(String? mode) =>
+    mode?.toLowerCase() == DiscussionIds.mode.toLowerCase();
+
 extension DiscussionPlanExtension on ActivityPlanModel {
-  bool get isDiscussion => req.mode == DiscussionIds.mode;
+  bool get isDiscussion => isDiscussionMode(req.mode);
+
+  /// The discussion's questions in order: the goals of its one shared
+  /// participant role.
+  List<String> get discussionQuestions => [
+    for (final goal
+        in roles.values.firstOrNull?.allGoals ?? const <ActivityRoleGoal>[])
+      goal.description,
+  ];
 
   /// The photo a discussion shows, and its room's avatar.
+  /// Null until the photo has resolved, never the generic placeholder: a
+  /// room avatar set from it would keep the placeholder for good.
   Uri? get discussionImageUrl {
     final hero = heroBlock?.displayUrl();
-    return hero != null ? Uri.tryParse(hero) : imageURL;
+    return hero != null ? Uri.tryParse(hero) : ownImageURL;
   }
 }
 
 extension DiscussionCardExtension on QuestActivityCard {
-  bool get isDiscussion => mode == DiscussionIds.mode;
+  bool get isDiscussion => isDiscussionMode(mode);
 }
 
 extension DiscussionRoomExtension on Room {
@@ -49,6 +60,17 @@ extension DiscussionRoomExtension on Room {
     const prefix = '${PangeaRoomTypes.discussion}:';
     if (type == null || !type.startsWith(prefix)) return null;
     return type.substring(prefix.length);
+  }
+
+  /// The plan of the discussion this room is for, once the activity cache
+  /// holds it; null for every other room. Asks the cache to load it, as an
+  /// activity room does, so a [ListenableBuilder] on [ActivityPlanRepo]
+  /// rebuilds when it arrives.
+  ActivityPlanModel? get discussionPlan {
+    final id = discussionActivityId;
+    if (id == null) return null;
+    ActivityPlanRepo.instance.ensure(id);
+    return ActivityPlanRepo.instance.cachedPlan(id);
   }
 }
 

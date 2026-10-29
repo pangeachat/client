@@ -5,13 +5,13 @@ import 'package:swipe_to_action/swipe_to_action.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
-import 'package:fluffychat/features/discussions/discussion_fixtures.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
@@ -152,25 +152,32 @@ class Message extends StatelessWidget {
         if (event.room.isActivitySession) return const SizedBox();
         // A discussion opens like an activity: its photo large at the top,
         // then its questions and suggested vocab, without roles (#9647).
-        final discussionId = event.room.discussionActivityId;
-        final discussion = discussionId == null
-            ? null
-            : DiscussionFixtures.planFor(discussionId);
-        if (discussion != null) {
-          return ValueListenableBuilder(
-            valueListenable: controller.activityController.showInstructions,
-            builder: (context, show, _) => ActivitySummary(
-              inChat: true,
-              activity: discussion,
-              room: event.room,
-              assignedRoles: const {},
-              showRoleCards: false,
-              showInstructions: show,
-              toggleInstructions:
-                  controller.activityController.toggleShowInstructions,
-              usedVocab: controller.activityController.usedVocab,
-              mediaVisibility: controller.activityController.mediaVisibility,
-            ),
+        if (event.room.discussionActivityId != null) {
+          // The plan loads after the room opens; rebuild when it arrives.
+          return ListenableBuilder(
+            listenable: ActivityPlanRepo.instance,
+            builder: (context, _) {
+              final discussion = event.room.discussionPlan;
+              if (discussion == null) {
+                return RoomCreationStateEvent(event: event);
+              }
+              return ValueListenableBuilder(
+                valueListenable: controller.activityController.showInstructions,
+                builder: (context, show, _) => ActivitySummary(
+                  inChat: true,
+                  activity: discussion,
+                  room: event.room,
+                  assignedRoles: const {},
+                  showRoleCards: false,
+                  showInstructions: show,
+                  toggleInstructions:
+                      controller.activityController.toggleShowInstructions,
+                  usedVocab: controller.activityController.usedVocab,
+                  mediaVisibility:
+                      controller.activityController.mediaVisibility,
+                ),
+              );
+            },
           );
         }
         return RoomCreationStateEvent(event: event);

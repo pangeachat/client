@@ -20,7 +20,6 @@ import 'package:fluffychat/features/central_courses/central_course_extension.dar
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
-import 'package:fluffychat/features/discussions/discussion_fixtures.dart';
 import 'package:fluffychat/features/discussions/discussion_room_service.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -1812,7 +1811,7 @@ class WorldMapController extends State<WorldMap>
     final spaceId = mapContext is CourseMapContext ? mapContext.spaceId : null;
     final course = spaceId == null ? null : client?.getRoomById(spaceId);
     if (course == null) return;
-    final plan = DiscussionFixtures.planFor(card.activityId);
+    final plan = ActivityPlanRepo.instance.cachedPlan(card.activityId);
     final roomId = await DiscussionRoomService.open(
       context,
       course: course,
