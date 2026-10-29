@@ -73,6 +73,7 @@ void main() {
           client: client,
           inTrialWindow: true,
           hasSeat: () => true,
+          invitationWaiting: () => false,
         ).shouldShowTrialPage,
         isFalse,
       );
@@ -84,8 +85,26 @@ void main() {
           client: client,
           inTrialWindow: true,
           hasSeat: () => false,
+          invitationWaiting: () => false,
         ).shouldShowTrialPage,
         isTrue,
+      );
+    });
+
+    // Rough edge #1 (hand test 2026-10-28): a student who signed up through
+    // an invitation with a different address waits for the teacher's
+    // approval. They have no seat yet, but must not be offered (and so burn)
+    // the trial while the seat may still come.
+    test('a student whose seat invitation is not settled yet skips the '
+        'trial page', () {
+      expect(
+        ClientTrialInfoProvider(
+          client: client,
+          inTrialWindow: true,
+          hasSeat: () => false,
+          invitationWaiting: () => true,
+        ).shouldShowTrialPage,
+        isFalse,
       );
     });
 
@@ -96,6 +115,7 @@ void main() {
         client: client,
         inTrialWindow: true,
         hasSeat: () => seat,
+        invitationWaiting: () => false,
       );
       expect(provider.shouldShowTrialPage, isTrue);
       seat = true;

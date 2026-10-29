@@ -175,6 +175,34 @@ class SpaceCodeRepo {
   static Future<void> clearPendingInvitation() =>
       _clearStamped(PLocalKey.cachedInvitation, PLocalKey.cachedInvitationAt);
 
+  /// Whether the last opened invitation went to the teacher for approval
+  /// (the account's address did not match it). Onboarding reads it, with
+  /// [pendingInvitation], so a student whose seat may still come is not
+  /// offered the free trial meanwhile (TrialInfoProvider). Written by
+  /// PendingClaimsFlow from the open's answer; same box, same TTL.
+  static bool get seatApprovalPending =>
+      _readFresh(
+        PLocalKey.seatApprovalPending,
+        PLocalKey.seatApprovalPendingAt,
+      ) !=
+      null;
+
+  static Future<void> setSeatApprovalPending(bool pending) => pending
+      ? _writeStamped(
+          PLocalKey.seatApprovalPending,
+          PLocalKey.seatApprovalPendingAt,
+          'pending',
+        )
+      : _clearStamped(
+          PLocalKey.seatApprovalPending,
+          PLocalKey.seatApprovalPendingAt,
+        );
+
+  /// Whether a seat invitation is still unsettled for this sign-in: one is
+  /// stored and not yet opened, or the opened one waits for approval.
+  static bool get seatInvitationWaiting =>
+      pendingInvitation != null || seatApprovalPending;
+
   /// The Canvas launch ticket from `/lti/link` (C5), cached by that route's
   /// redirect and returned once after sign-in. The module expires a ticket
   /// after 10 minutes, so the TTL here only bounds how long a dead one lingers.

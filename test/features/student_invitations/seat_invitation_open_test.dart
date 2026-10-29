@@ -150,6 +150,45 @@ void main() {
       });
     }
 
+    // Rough edge #1 (hand test 2026-10-28): a student whose invitation went
+    // to a teacher for approval was offered "Claim your trial" in
+    // onboarding. The open's answer is kept so onboarding can wait instead.
+    test('an open that waits for approval is remembered; a claim or a '
+        'refusal clears it', () async {
+      for (final (result, waiting) in [
+        ('pending', true),
+        ('claimed', false),
+        ('pending_approval', true),
+        ('denied', false),
+      ]) {
+        await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
+        routes['POST $prefix/student_invitations/$inv/open'] = (_) => json(
+          200,
+          {'result': result, 'invitation_id': inv, 'room_id': '!c'},
+        );
+
+        await flow().consumeInvitation();
+
+        expect(SpaceCodeRepo.seatApprovalPending, waiting, reason: result);
+      }
+    });
+
+    test('the invitation counts as unsettled while its open is in flight, '
+        'and stays so if the open fails without an answer', () async {
+      await SpaceCodeRepo.setSeatApprovalPending(false);
+      await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
+      routes['POST $prefix/student_invitations/$inv/open'] = (_) =>
+          json(500, {'errcode': 'M_UNKNOWN'});
+
+      final opening = flow().consumeInvitation();
+      await Future<void>.delayed(const Duration(milliseconds: 10));
+      expect(SpaceCodeRepo.pendingInvitation, isNull);
+      expect(SpaceCodeRepo.seatInvitationWaiting, isTrue);
+      await opening;
+
+      expect(SpaceCodeRepo.seatInvitationWaiting, isTrue);
+    });
+
     test('a gone invitation is reported plainly and not retried', () async {
       await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
       routes.remove('POST $prefix/student_invitations/$inv/open');

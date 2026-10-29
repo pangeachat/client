@@ -17,16 +17,27 @@ class ClientTrialInfoProvider implements TrialInfoProvider {
   /// construction: the status may still be loading when onboarding starts.
   final bool Function() hasSeat;
 
+  /// Whether a seat invitation is still unsettled: stored and not yet
+  /// opened, or opened and waiting for the teacher's approval. Read when a
+  /// step is decided, like [hasSeat].
+  final bool Function() invitationWaiting;
+
   const ClientTrialInfoProvider({
     required this.client,
     required this.inTrialWindow,
     required this.hasSeat,
+    required this.invitationWaiting,
   });
 
-  /// A seat holder already has access, so the free-trial offer is skipped.
+  /// A seat holder already has access, and a student whose seat may still
+  /// come must not spend the trial meanwhile, so the free-trial offer is
+  /// skipped for both.
   @override
   bool get shouldShowTrialPage =>
-      inTrialWindow && !client.showedTrialPage && !hasSeat();
+      inTrialWindow &&
+      !client.showedTrialPage &&
+      !hasSeat() &&
+      !invitationWaiting();
 
   @override
   Future<void> setShowedTrialPage() => client.setShowedTrialPage();

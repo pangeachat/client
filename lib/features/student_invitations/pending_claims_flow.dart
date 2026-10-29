@@ -78,11 +78,19 @@ class PendingClaimsFlow {
   Future<void> consumeInvitation() async {
     final pending = SpaceCodeRepo.pendingInvitation;
     if (pending == null) return;
+    // Unsettled until the module answers: onboarding must not offer the
+    // trial while the open is in flight (TrialInfoProvider).
+    await SpaceCodeRepo.setSeatApprovalPending(true);
     await SpaceCodeRepo.clearPendingInvitation();
     try {
       final opened = await api.open(
         accessToken: accessToken,
         invitationId: pending.invitationId,
+      );
+      // Kept while the teacher's approval is outstanding; any other answer
+      // settles it. A failed open leaves it set: the outcome is unknown.
+      await SpaceCodeRepo.setSeatApprovalPending(
+        opened.outcome == OpenOutcome.pending,
       );
       notify(
         ClaimNotice(switch (opened.outcome) {
@@ -93,9 +101,11 @@ class PendingClaimsFlow {
       );
     } on StudentInvitationApiException catch (e, s) {
       if (e.statusCode == 404) {
+        await SpaceCodeRepo.setSeatApprovalPending(false);
         notify(const ClaimNotice(ClaimNoticeKind.notLive));
       } else if (e.errcode ==
           StudentInvitationApiException.alreadyClaimedInCourse) {
+        await SpaceCodeRepo.setSeatApprovalPending(false);
         notify(const ClaimNotice(ClaimNoticeKind.alreadyClaimed));
       } else {
         onError?.call(e, s);

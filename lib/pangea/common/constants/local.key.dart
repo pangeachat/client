@@ -5,6 +5,8 @@ class PLocalKey {
   static const String cachedDmInviteUserIdAt = "cacheddminviteuseridat";
   static const String cachedInvitation = "cachedinvitation";
   static const String cachedInvitationAt = "cachedinvitationat";
+  static const String seatApprovalPending = "seatapprovalpending";
+  static const String seatApprovalPendingAt = "seatapprovalpendingat";
   static const String cachedLtiTicket = "cachedltiticket";
   static const String cachedLtiTicketAt = "cachedltiticketat";
   static const String beganPayment = "beganWebPayment";
