@@ -791,7 +791,15 @@ class WorldMapController extends State<WorldMap>
 
   Future<void> _rebuildObjectiveCache(Client client) async {
     await _pinsManager.rebuildObjectiveCache(client);
-    if (mounted) setState(() {});
+    if (!mounted) return;
+    setState(() {});
+    // A just-joined course's progression resolves here first, so its map
+    // fades to the Mission on show now rather than at the next sync.
+    try {
+      _fadeToMissionOnShow();
+    } catch (_) {
+      // Camera not laid out yet; the context fit fades when it is.
+    }
   }
 
   Future<void> _maybeRebuildObjectiveCache(Client client) async {
