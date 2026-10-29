@@ -26,10 +26,11 @@ void main() {
     String? anchorId,
     Set<String> completed = const {},
     Set<String> reopened = const {},
+    DateTime? at,
   }) => CourseItinerary.openMissionIds(
     groups: groups,
     trip: trip,
-    now: now,
+    now: at ?? now,
     progressResolved: progressResolved,
     anchorId: anchorId,
     completedIds: completed,
@@ -46,9 +47,12 @@ void main() {
     const trip = CourseTrip();
     final groups = [mission('a'), mission('b'), mission('c'), mission('d')];
 
-    test('opens every Mission up to the first incomplete one', () {
+    test('opens the first incomplete Mission, beside the ones completed', () {
       expect(open(groups: groups, trip: trip, anchorId: 'a'), {'a'});
-      expect(open(groups: groups, trip: trip, anchorId: 'c'), {'a', 'b', 'c'});
+      expect(
+        open(groups: groups, trip: trip, anchorId: 'c', completed: {'a', 'b'}),
+        {'a', 'b', 'c'},
+      );
     });
 
     test('with every Mission complete, every one is open', () {
@@ -88,9 +92,17 @@ void main() {
     ];
 
     test('the course is at the first Mission whose date is still ahead, '
-        'and everything up to it is open', () {
+        'and a past city the learner never finished is closed', () {
       expect(CourseItinerary.datedStop(groups, now), 1);
-      expect(open(groups: groups, trip: trip), {'a', 'b'});
+      expect(open(groups: groups, trip: trip), {'b'});
+    });
+
+    test('the city just left stays open for about a day while the ship '
+        'is in transit', () {
+      final sailing = DateTime.utc(2026, 11, 8, 18);
+      expect(open(groups: groups, trip: trip, at: sailing), {'a', 'b'});
+      final arrived = DateTime.utc(2026, 11, 9, 1);
+      expect(open(groups: groups, trip: trip, at: arrived), {'b'});
     });
 
     test('before the start date only the first city is open', () {
@@ -105,15 +117,11 @@ void main() {
         mission('c'),
       ];
       expect(CourseItinerary.datedStop(later, now), 1);
-      expect(open(groups: later, trip: trip), {'a', 'b'});
+      expect(open(groups: later, trip: trip), {'b'});
     });
 
     test('a completed later city stays open', () {
-      expect(open(groups: groups, trip: trip, completed: {'d'}), {
-        'a',
-        'b',
-        'd',
-      });
+      expect(open(groups: groups, trip: trip, completed: {'d'}), {'b', 'd'});
     });
   });
 

@@ -159,9 +159,17 @@ abstract final class CourseItinerary {
     return index < 0 ? null : index;
   }
 
+  /// How long both cities stay open after a dated city's date passes: the
+  /// ship takes about a day to arrive, so stragglers catch up, then the old
+  /// city closes (org quests doc, "Progression").
+  static const Duration transit = Duration(days: 1);
+
   /// The ids of the Missions open to the learner, or null when nothing is
   /// closed: the course is not a trip, or ([progressResolved] false) the
   /// learner's progress is not known yet, so nothing is locked on a guess.
+  /// Open: the city the course is at; on a dated course the city it just
+  /// left, for [transit]; every Mission the learner completed; every one a
+  /// teacher opened for them. A past city the learner never finished closes.
   static Set<String>? openMissionIds({
     required List<QuestObjectiveGroup> groups,
     required CourseTrip? trip,
@@ -172,13 +180,21 @@ abstract final class CourseItinerary {
     required Set<String> reopenedIds,
   }) {
     if (trip == null) return null;
-    final int current;
+    final open = <int>{};
     if (trip.isDated) {
       final start = trip.startDate;
       if (start != null && now.isBefore(start)) {
-        current = 0;
+        open.add(0);
       } else {
-        current = datedStop(groups, now) ?? groups.length - 1;
+        final current = datedStop(groups, now) ?? groups.length - 1;
+        open.add(current);
+        // The city just left stays open while the ship is in transit.
+        for (var i = current - 1; i >= 0; i--) {
+          final dueAt = groups[i].pacing?.dueAt;
+          if (dueAt == null) continue;
+          if (now.difference(dueAt) < transit) open.add(i);
+          break;
+        }
       }
     } else {
       if (!progressResolved) return null;
@@ -186,11 +202,15 @@ abstract final class CourseItinerary {
           ? -1
           : groups.indexWhere((g) => g.objective.id == anchorId);
       // No anchor: every Mission is complete, so every one is open.
-      current = anchor < 0 ? groups.length - 1 : anchor;
+      if (anchor < 0) {
+        open.addAll(List.generate(groups.length, (i) => i));
+      } else {
+        open.add(anchor);
+      }
     }
     return {
       for (final (i, group) in groups.indexed)
-        if (i <= current ||
+        if (open.contains(i) ||
             completedIds.contains(group.objective.id) ||
             reopenedIds.contains(group.objective.id))
           group.objective.id,
