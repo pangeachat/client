@@ -83,6 +83,14 @@ class PangeaEventTypes {
   /// dashboard (client#9643).
   static const courseProgress = "pangea.course_progress";
 
+  /// Where an undated course's ship is: the busiest stop, written by the
+  /// homeserver (pangeachat/.github#780). `{stop, from_stop, since}`.
+  static const coursePosition = "pangea.course_position";
+
+  /// The Missions a teacher opened for one student ahead of the itinerary
+  /// (state key: the student's user id). `{open: [<Mission id>]}`.
+  static const courseAccess = "pangea.course_access";
+
   static const regenerationRequest = "pangea.regeneration_request";
 
   /// A notice the engagement runner sends into a learner's bot DM.

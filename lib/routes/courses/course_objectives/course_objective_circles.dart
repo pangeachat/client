@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/quests/course_itinerary.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -36,21 +37,48 @@ class CourseObjectiveCircles extends StatelessWidget {
     super.key,
   });
 
-  /// Where the class is, by the teacher's due dates: the first Mission in
-  /// plan order still due at [now], else — every dated Mission past — the
-  /// last dated one. Null when the course sets no due dates.
+  /// Where the class is: the itinerary's current city (org quests doc,
+  /// "Progression") — a dated trip's by its dates, an undated trip's ship
+  /// from the course space, and a course that is not a trip by the teacher's
+  /// due dates as before. Null when unknown.
   static int? classLocationIndex(
     List<QuestObjectiveGroup> groups,
+    DateTime now, {
+    CourseTrip? trip,
+    Room? course,
+  }) => CourseItinerary.classStop(
+    groups: groups,
+    trip: trip,
+    position: course?.coursePosition,
+    now: now,
+  );
+
+  /// The Missions open to the learner on the course's trip, or null when
+  /// nothing is closed ([CourseItinerary.openMissionIds]).
+  static Set<String>? openMissionIds(
+    QuestObjectivesLoader objectivesProvider,
+    Room? course,
     DateTime now,
   ) {
-    int? lastDated;
-    for (var i = 0; i < groups.length; i++) {
-      final dueAt = groups[i].pacing?.dueAt;
-      if (dueAt == null) continue;
-      if (dueAt.isAfter(now)) return i;
-      lastDated = i;
-    }
-    return lastDated;
+    final groups = objectivesProvider.filteredObjectiveGroups;
+    final resolved = objectivesProvider.hasResolvedProgress;
+    final userId = course?.client.userID;
+    return CourseItinerary.openMissionIds(
+      groups: groups,
+      trip: objectivesProvider.trip,
+      now: now,
+      progressResolved: resolved && !objectivesProvider.progressLoading,
+      anchorId: objectivesProvider.currentObjectiveGroup?.objective.id,
+      completedIds: {
+        for (final g in groups)
+          if (objectivesProvider.missionProgress(g.objective.id)?.satisfied ==
+              true)
+            g.objective.id,
+      },
+      reopenedIds: course == null || userId == null
+          ? const {}
+          : course.missionsOpenedFor(userId),
+    );
   }
 
   /// Whether a coursemate pinged a session of [group] that is still open to
@@ -91,7 +119,14 @@ class CourseObjectiveCircles extends StatelessWidget {
           objectivesProvider.objectiveGroup(selectedMissionId)?.objective.id ??
           (loading ? null : currentId);
       final pinged = WorldMapPinsManager.pingedActivityIds.value;
-      final classIndex = classLocationIndex(groups, DateTime.now());
+      final now = DateTime.now();
+      final classIndex = classLocationIndex(
+        groups,
+        now,
+        trip: objectivesProvider.trip,
+        course: course,
+      );
+      final open = openMissionIds(objectivesProvider, course, now);
       final onSelectMission = this.onSelectMission;
       return ObjectiveProgressCircles(
         onTap: onSelectMission == null
@@ -108,6 +143,7 @@ class CourseObjectiveCircles extends StatelessWidget {
                 statement: group.objective.objective,
                 selected: group.objective.id == shownId,
                 classLocation: i == classIndex,
+                closed: open != null && !open.contains(group.objective.id),
                 pinged:
                     course != null &&
                     group.objective.id != shownId &&

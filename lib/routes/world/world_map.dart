@@ -249,6 +249,14 @@ class WorldMapController extends State<WorldMap>
   /// mode ignores it (its filter bar is always open).
   final ValueNotifier<int> mapPanTick = ValueNotifier(0);
 
+  /// The canvas is veiled while the camera is set in one step: the fade the
+  /// map makes instead of a pan or a zoom to another city (org course-view
+  /// doc). Read by the view's veil.
+  final ValueNotifier<bool> mapVeiled = ValueNotifier(false);
+
+  /// How long the veil takes to come and go.
+  static const Duration fadeDuration = Duration(milliseconds: 180);
+
   /// Ticks whenever the filtered view could have changed — a filter/query
   /// mutation or a completed pin load — so the shell-built narrow search bar
   /// can re-read [visiblePins] for its empty-view card: this State's own
@@ -486,6 +494,7 @@ class WorldMapController extends State<WorldMap>
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     MapCameraFocusRequests.notifier.removeListener(_onCameraFocusRequest);
+    mapVeiled.dispose();
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
     DiscoveredSessionsCache.instance.removeListener(
       _onDiscoveredPreviewsChanged,
@@ -1221,25 +1230,49 @@ class WorldMapController extends State<WorldMap>
       }
 
       if (MapContextController.notifier.value is! CourseMapContext) return;
-      _fitCourseBounds();
+      // Focus on a course, or on its Mission on show (the Mission card's
+      // Focus): the map fades there, never pans or zooms (org course-view
+      // doc; pangeachat/.github#780).
+      _fitCourseBounds(fade: true);
     } catch (_) {
       // Controller/camera not ready yet; the button can simply be pressed again.
     }
   }
 
-  /// Zoom+pan-fit the scoped course's activity pins into the exposed canvas —
-  /// shared by the course focus button and the preview's fit-on-scope-in
-  /// (#7826).
-  void _fitCourseBounds() {
+  /// Fit the scoped course's activity pins into the exposed canvas — shared
+  /// by the course focus button and the preview's fit-on-scope-in (#7826).
+  /// With [fade] the camera is set in one step under the veil
+  /// ([_fadeFit]); otherwise it glides.
+  void _fitCourseBounds({bool fade = false}) {
     final points = _pinsManager.focusPoints;
     if (points.isEmpty) return;
-    _animateFit(
-      CameraFit.bounds(
-        bounds: LatLngBounds.fromPoints(points),
-        padding: _exposedCanvasPadding,
-        maxZoom: WorldMapConstants.courseFitMaxZoom,
-      ),
+    final fit = CameraFit.bounds(
+      bounds: LatLngBounds.fromPoints(points),
+      padding: _exposedCanvasPadding,
+      maxZoom: WorldMapConstants.courseFitMaxZoom,
     );
+    if (fade) {
+      _fadeFit(fit);
+    } else {
+      _animateFit(fit);
+    }
+  }
+
+  /// Fades the map to where [fit] places it (org course-view doc: a pan or
+  /// zoom fetches tiles for every view it passes through and is jarring):
+  /// the canvas veils, the camera is set in one step, the canvas unveils.
+  void _fadeFit(CameraFit fit) {
+    _dropGlideInFlight();
+    mapVeiled.value = true;
+    Future<void>.delayed(fadeDuration, () {
+      if (!mounted) return;
+      try {
+        mapController.fitCamera(fit);
+      } catch (_) {
+        // Camera not laid out yet; the next request will land.
+      }
+      mapVeiled.value = false;
+    });
   }
 
   /// Glide the camera to where [fit] would place it (instead of snapping via

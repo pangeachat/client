@@ -253,6 +253,14 @@ class Environment {
         : envEntry;
   }
 
+  /// Entering a closed city at a cost (org quests doc, "Progression"): the
+  /// prompt that explains the cost and lets a learner travel ahead of the
+  /// itinerary. Off by default: which resource it costs is still being
+  /// decided (pangeachat/.github#780, open questions), so until then a closed
+  /// Mission says it is not yet open and nothing is charged.
+  static bool get travelCostEnabled =>
+      dotenv.env["TRAVEL_COST_ENABLED"]?.toLowerCase() == 'true';
+
   /// Feature flag for the best-effort analytics dual-write to the teacher-BFF.
   /// Defaults to `false` so the behavior ships dark; the dual-write is also a
   /// no-op whenever [teacherBffApi] is empty, so both must be set for it to run.

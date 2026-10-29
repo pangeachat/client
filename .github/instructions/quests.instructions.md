@@ -5,7 +5,7 @@ description: "Client-side next-Mission resolver — the one shared answer to 'wh
 
 # Quests & Learning-Objective Progression (Client)
 
-A **Quest** is the learner's ordered journey through **Learning Objectives** (learner-facing label: **Missions**). The cross-repo model — what a Mission is, and the rule that progression is **soft** (an ordered suggestion that only *ranks* content, never locks it) — lives in the org doc [`quests-and-learning-objectives`](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md). This doc owns the **client-side resolver**: how the app computes, from data it already holds, each quest's **next Mission** — the single ranking input the world map and other surfaces preference toward — and what the learner sees of it on the course page.
+A **Quest** is the learner's ordered journey through **Learning Objectives** (learner-facing label: **Missions**). The cross-repo model — what a Mission is, how a course runs as a trip through cities, and which cities are open — lives in the org doc [`quests-and-learning-objectives`](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md). This doc owns the **client-side resolver**: how the app computes, from data it already holds, each quest's **next Mission** — the single ranking input the world map and other surfaces preference toward — and what the learner sees of it on the course page.
 
 ## Stars and goal diamonds
 
@@ -36,7 +36,7 @@ A learner's XP is kept per target language, so progress is shown only for conten
 
 ## One shared resolver
 
-Nothing is locked, so the question is not "is this allowed?" but "where should the learner go next?" — and that is asked by many surfaces, so it is resolved **once** into a single shared answer, never re-derived per surface (re-deriving invites two surfaces drifting on the same question). It is built from inputs the client already holds:
+The question every surface asks is "where should the learner go next?" (which cities are open is the itinerary's question, [below](#cities-and-the-itinerary)) — and it is asked by many surfaces, so it is resolved **once** into a single shared answer, never re-derived per surface (re-deriving invites two surfaces drifting on the same question). It is built from inputs the client already holds:
 
 - **The ordered Mission sequences** of the learner's in-scope quests — their joined courses by default, or whatever the world map's quest filter selects — each quest's outline (ordered Mission ids and the activities under each), cached and rebuilt on course join/leave. The order comes from the quest row, read from the CMS directly; each Mission's statement and the activity cards come from choreo's course outline read in the learner's resolved display language (L2 when "App in target language" is on, else L1), and the outline is re-read when that language changes ([client#8577](https://github.com/pangeachat/client/issues/8577), [#9151](https://github.com/pangeachat/client/issues/9151)). The client never reads `learning-objectives` from the CMS: a direct read returns canonical text only (org doc § Content access and localization).
 - **The per-Mission XP rollup** above, read from the course's own list of Missions and activities — its copy, else its pins — the same view the course page shows.
@@ -45,14 +45,14 @@ From those, the resolver finds each quest's **anchor (next) Mission**: the **fir
 
 **Progression totals are per course, never blended across them** ([client#7771](https://github.com/pangeachat/client/issues/7771)). Missions are a shared catalog reused across quests, so two joined courses routinely carry the same Mission with *different* activities. A Mission's XP only means something against the activity set it was summed over: rolling several courses together would credit one course's XP to another's content and silently undo that course's activity pins. Accumulation across quests is the *consumer's* job (the map's band), not a property of the totals. Where two courses genuinely list the **same** activity, each counts it once on its own — that needs no merging, since both outlines carry it. The star *count*, by contrast, is the learner's: a Mission complete in two courses is one star.
 
-**Fail soft.** A surface that asks before the resolver is built simply has no anchor yet and ranks on plain relevance — a cold open (e.g. an activity link opened without visiting the map first) is never blocked, because nothing is ever blocked. The resolver only sharpens ordering; its absence degrades to neutral ranking, not to a wall.
+**Fail soft.** A surface that asks before the resolver is built simply has no anchor yet and ranks on plain relevance — a cold open (e.g. an activity link opened without visiting the map first) is never blocked by the resolver. The resolver only sharpens ordering; its absence degrades to neutral ranking, not to a wall. The itinerary locks nothing either until progress is known.
 
 ## Consumed by
 
 Every surface that preferences by progression reads the *same* shared resolver, so the answer is consistent and computed once:
 
 - the [world map](world-map.instructions.md) — the Priority matrix raises activities carrying the anchor Mission to the top of the relevance band, decaying for Missions further along; a finished activity's pin wears the completed stamp (see its pin-display section). The map's pins manager resolves first in a session and publishes to the shared answer — once its outlines have loaded, since an earlier, empty resolution would read as zero stars — which is what puts a star count on the analytics bar before any course page has been opened;
-- the **activity start page** — opens directly into play for every activity (nothing is gated); its finished view totals the activity's XP ([activity-start-page.instructions.md](activity-start-page.instructions.md));
+- the **activity start page** — opens directly into play for every activity it is reached for (the course page is where a closed city explains itself); its finished view totals the activity's XP ([activity-start-page.instructions.md](activity-start-page.instructions.md));
 - the **course page's Mission circles and Mission card**, and the collapsed course bar's circles (below);
 - the **analytics bar's star count** and the Learning Objectives page;
 - the course/quest list, as it is built for v3.
@@ -65,7 +65,7 @@ The course page tells the learner how far along they are, read from the same sha
 
 Two more marks ride the circles:
 
-- **Class location** — where the teacher's due dates put the class: the first Mission in plan order still due, else, every dated Mission past, the last dated one. A muted grey bubble reading "Class location" sits above that circle, its pointer turned down onto it — quieter than the learner's own pointer, so it reads as the class's mark rather than theirs. A course with no due dates shows none. The due dates are the teacher's, set from the admin dashboard and carried in the course's own copy of its Mission list (`pangea.course_missions`); a due date never blocks, hides or locks anything.
+- **Class location** — where the course is on its trip: the itinerary's current city ([below](#cities-and-the-itinerary)) — on a dated course the first Mission in plan order still due, else, every dated Mission past, the last dated one; on an undated course the ship's stop the homeserver writes to the course space (`pangea.course_position`). A muted grey bubble reading "Class location" sits above that circle, its pointer turned down onto it — quieter than the learner's own pointer, so it reads as the class's mark rather than theirs. A course with no dates and no ship shows none. The due dates are the teacher's, set from the admin dashboard and carried in the course's own copy of its Mission list (`pangea.course_missions`); on a dated course a due date is the day the course moves on from the Mission's city, which closes it, and assigned activities stay playable after it.
 - **A ping bell** — on a Mission other than the one on show, when a coursemate has pinged one of its sessions and the session is still open to join. The course map shows only the Mission on show ([world-map.instructions.md](world-map.instructions.md), "The Mission on show"), so the bell is how a learner hears about a session elsewhere in the course.
 
 **The Mission on show** is the circle the learner picked, else the anchor, else — before progress resolves — the plan's first Mission. It rides the URL (`?mission=`), so the course page, the collapsed course bar and the course map always show the same Mission. Picking another course drops it; a picked id the course no longer carries falls back to the anchor.
@@ -73,6 +73,17 @@ Two more marks ride the circles:
 **At the course panel's floor** — the wide context bar ([world-map.instructions.md](world-map.instructions.md), "The course context bar") and the narrow peek — the same circles show with the Mission on show named under its pointer ("Mission 3"), since no Mission card is in view to say it. The row keeps a fixed height whether or not its circles have loaded, so the bar never jumps when the plan arrives, and it keeps the class location's space whether or not the course has one. The bar is kept tight around it ([client#9559](https://github.com/pangeachat/client/issues/9559)): a small gap under the title, a small one at the foot, and the narrow peek sized to the circles rather than leaving a band under them.
 
 A course **preview** (not joined) shows no progress — there is no learner progress to show. The course page shows no activity count beside its progress ([client#9390](https://github.com/pangeachat/client/issues/9390)): a count beside a goal read as a second requirement.
+
+## Cities and the itinerary
+
+A course that is a trip (a version 2 `pangea.course_missions` copy; org doc, "A course is a trip") pins each Mission's activities in one city, and the copy names the city (`city`: its name and position in integer microdegrees, since Matrix event content has no decimals). Which Missions are open is one rule in [`CourseItinerary`](../../lib/features/quests/course_itinerary.dart), read by the circles, the Mission card and the full plan (org doc, "Progression"):
+
+- **With dates** (the copy has a `start_date`), cities open by the calendar: a Mission's due date is the day the course moves on from its city, so the course is at the first Mission whose date is still ahead, and every Mission up to it is open; before the start date only the first city is open; after the last date the course sits at its last city.
+- **Without dates**, cities open by progress: the first city is open, and completing a Mission opens the next, so every Mission up to the learner's first incomplete one is open. Nothing is locked until the learner's progress is known.
+- A Mission the learner completed stays open, and one a teacher opened for them is open: `pangea.course_access` on the course space, state key the student's user id, `{open: [<Mission id>]}`, counted only when a course admin sent it.
+- A closed Mission is drawn faded in the circles and named "not yet open"; its card says when it opens (its date, or the Mission before it) where Play would pulse, and its plan section carries a "Not yet open" badge. Tapping one of its activities explains instead of opening it. Entering a closed city at a cost is behind `TRAVEL_COST_ENABLED` until the resource is decided (pangeachat/.github#780): on, the card and the explanation offer "Enter early", a dialog that says what it costs and opens the Mission's first activity; nothing is charged yet.
+- The Mission card shows the Mission's city and **Focus**, which brings the world map to the Mission's pinned activities with a fade, never a pan or a zoom (org course-view doc); the map's veil is `WorldMapController.mapVeiled`.
+- A copy not yet sliced into cities (version 1) closes nothing and shows no city; the course reads as before.
 
 ## Who made the course
 
@@ -145,7 +156,7 @@ The design — what a pin means, why it lives in course state and never the ques
 
 - The pin travels on the course space's teacher-mode state (`TeacherModeModel.pinnedActivitiesByObjective`: Mission id → pinned `activity_id` content ids). Null, a missing Mission key, or an empty list all mean unrestricted.
 - Restriction is a **pure copy** at the outline boundary (`QuestOutline.restrictedTo`) — never a mutation of the quest-outline cache, which is shared across courses referencing the same quest; that copy is what lets the same quest run restricted in one course and open in another.
-- **One rule, one home**: `effectivePinnedActivityIds` carries the fail-open rule (no pin, empty pin, or an all-stale pin → unrestricted, so a pin can never make a Mission uncompletable). Both the outline restriction and the course-scoped map's marker filter call it. The world-scoped map is deliberately never filtered — everything stays playable everywhere.
+- **One rule, one home**: `effectivePinnedActivityIds` carries the fail-open rule (no pin, empty pin, or an all-stale pin → unrestricted, so a pin can never make a Mission uncompletable). Both the outline restriction and the course-scoped map's marker filter call it. The world-scoped map is deliberately never filtered — what the itinerary closes is explained on the course page, not hidden from the map.
 - The resolver is **pin-unaware by construction**: XP attribution and a Mission's vocabulary both derive from the outline's per-Mission activity sets, so a filtered outline scopes both with no resolver changes. This holds only because totals are per course (above) — a cross-course rollup would re-admit the very activities the pin excluded ([client#7771](https://github.com/pangeachat/client/issues/7771)).
 - Previews and non-joined contexts pass no pins — there is no learner progress to scope, and fail-open is the default everywhere.
 - The teacher editing surface is deferred to the admin panel ([admin-dash#30](https://github.com/pangeachat/admin-dash/issues/30)); until it ships, pins are written to course room state directly.
@@ -155,6 +166,5 @@ The design — what a pin means, why it lives in course state and never the ques
 File GitHub issues for these and link them here.
 
 - A persisted per-Mission XP total (server-side rollup) once reading every session room and the local analytics database client-side becomes too costly at catalog scale.
-- Teacher-set **hard** restrictions (an opt-in gate on top of the soft default), if classroom demand appears — deliberately not built today (see the org doc). Distinct from per-course activity pinning (above), which is built and restricts *which activities count*, not *when Missions are reachable*.
 - Implement the joinable/open activity card design — [pangeachat/client#7669](https://github.com/pangeachat/client/issues/7669).
 - Design hint indicating an activity needs more people to start — [pangeachat/client#6810](https://github.com/pangeachat/client/issues/6810).

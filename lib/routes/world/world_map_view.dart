@@ -1342,6 +1342,23 @@ class _WorldMapViewState extends State<WorldMapView>
       builder: (context, viewConstraints) => Stack(
         children: [
           Positioned.fill(child: map),
+          // The veil the map fades behind when it moves to another city
+          // (WorldMapController.mapVeiled): the themed paper, over the tiles
+          // and under the chrome, never a pointer target.
+          Positioned.fill(
+            child: IgnorePointer(
+              child: ValueListenableBuilder<bool>(
+                valueListenable: widget.controller.mapVeiled,
+                builder: (context, veiled, _) => AnimatedOpacity(
+                  opacity: veiled ? 1.0 : 0.0,
+                  duration: WorldMapController.fadeDuration,
+                  child: ColoredBox(
+                    color: Theme.of(context).colorScheme.surface,
+                  ),
+                ),
+              ),
+            ),
+          ),
           Positioned(
             top: 0,
             bottom: 0,

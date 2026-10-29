@@ -6096,6 +6096,48 @@
     "@classLocation": {
         "description": "Above the Mission circle the teacher's due dates say the class is on now."
     },
+    "focusMission": "Focus on this Mission's activities",
+    "@focusMission": {
+        "description": "Tooltip of the Mission card's Focus button: the map fades to the Mission's pinned activities."
+    },
+    "missionNotYetOpen": "Not yet open",
+    "@missionNotYetOpen": {
+        "description": "A Mission whose city the course's itinerary has not reached: on the Mission card, the plan's section header and the circle's accessible name."
+    },
+    "objectiveCircleClosed": "Mission {index}, not yet open",
+    "@objectiveCircleClosed": {
+        "placeholders": {
+            "index": {}
+        }
+    },
+    "missionOpensOn": "Opens {date}",
+    "@missionOpensOn": {
+        "description": "When a closed Mission's city opens on a dated course.",
+        "placeholders": {
+            "date": {}
+        }
+    },
+    "missionOpensAfter": "Opens after Mission {index}",
+    "@missionOpensAfter": {
+        "description": "When a closed Mission's city opens on an undated course: once the Mission before it is complete.",
+        "placeholders": {
+            "index": {}
+        }
+    },
+    "enterCityEarly": "Enter early",
+    "@enterCityEarly": {
+        "description": "Button on a closed Mission to travel ahead of the itinerary at a cost."
+    },
+    "enterCityEarlyTitle": "Enter {city} early?",
+    "@enterCityEarlyTitle": {
+        "placeholders": {
+            "city": {}
+        }
+    },
+    "enterCityEarlyBody": "This city is not open to you yet. Travelling ahead of the class has a cost; what it costs is still being decided, so for now nothing is charged.",
+    "@enterCityEarlyBody": {
+        "description": "The explanation shown when a learner enters a closed city ahead of the itinerary."
+    },
     "xpThresholdSuffix": "/ {threshold} XP",
     "@xpThresholdSuffix": {
         "description": "Under the XP count in the middle of a Mission's ring: the XP that completes it.",
