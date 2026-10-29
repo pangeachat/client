@@ -39,7 +39,7 @@ import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
-import 'package:fluffychat/routes/world/central_course_joined_dialog.dart';
+import 'package:fluffychat/routes/world/central_course_offer_dialog.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
@@ -109,8 +109,8 @@ bool orientationSurfaceGate({
 /// The tour outranks the map INTRODUCTION — it answers "what now?" after a
 /// first finished activity, while the introduction describes a map the learner
 /// has by then already used. It never outranks the GREETING: an unseen welcome
-/// alongside finished activities is an account from before the tutorials
-/// shipped, and a tour that opens with "great job finishing your first
+/// alongside finished activities means a tutorial reset or an account from
+/// before the tutorials shipped, and a tour that opens with "great job finishing your first
 /// activity!" before any hello reads as the app misremembering them. The
 /// greeting (with the map orientation it fronts) runs first; the tour follows
 /// on the next map arrival, which is its own trigger anyway.
@@ -316,7 +316,7 @@ class WorldMapController extends State<WorldMap>
       (_) => _scheduleOrientationCheck(),
     );
 
-    _joinCentralCourseIfDue();
+    _offerCentralCourseIfDue();
 
     // Rebuild when a featured large card's full plan hydrates (image + goals),
     // and when the discovered-session previews change under the pins — the
@@ -337,7 +337,7 @@ class WorldMapController extends State<WorldMap>
       }
       if (update.prevTargetLang?.langCodeShort !=
           update.targetLang.langCodeShort) {
-        _joinCentralCourseIfDue();
+        _offerCentralCourseIfDue();
       }
       // L1 (base-language) change → open the shimmer window (see [_warmingL1]).
       if (update.prevBaseLang != update.baseLang) {
@@ -1432,13 +1432,23 @@ class WorldMapController extends State<WorldMap>
   /// view's build and fired again on every route change, and the check itself
   /// can open an overlay — which must never happen mid-frame.
   /// The map is mounted for every signed-in learner, so it runs the app-open
-  /// central-course join (joining-courses.instructions.md § The central
+  /// central-course offer (joining-courses.instructions.md § The central
   /// course).
-  Future<void> _joinCentralCourseIfDue() async {
+  Future<void> _offerCentralCourseIfDue() async {
     final client = MatrixState.pangeaController.matrixState.client;
-    final roomId = await CentralCourseJoin.joinIfDue(client);
-    if (roomId == null || !mounted) return;
-    await CentralCourseJoinedDialog.show(context, client, roomId);
+    final central = await CentralCourseOffer.dueOnOpen(client);
+    final language = MatrixState.pangeaController.userController.userL2;
+    if (central == null || language == null || !mounted) return;
+    await showAdaptiveDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => CentralCourseOfferDialog(
+        client: client,
+        central: central,
+        language: language.langCodeShort,
+        languageName: language.getDisplayName(L10n.of(context)),
+      ),
+    );
   }
 
   void _scheduleOrientationCheck() {
@@ -1597,8 +1607,10 @@ class WorldMapController extends State<WorldMap>
   }
 
   /// Each step opens the panel it is describing exactly as the learner would —
-  /// through the workspace URL, never by reaching into panel state — then gates
-  /// its own advance on that panel actually being open.
+  /// through the workspace URL, never by reaching into panel state, because the
+  /// URL is the single source of truth for which panels are open
+  /// (routing.instructions.md) — then gates its own advance on that panel
+  /// actually being open.
   Future<void> _launchAppTourTutorial() async {
     if (!mounted) return;
     final joinedCourses = _client?.joinedCourseRooms.length ?? 0;
@@ -1729,8 +1741,9 @@ class WorldMapController extends State<WorldMap>
         stepsData: [
           // No spotlight: lighting the whole map punches the entire scrim out,
           // which reads as the tutorial having closed. This step is about the
-          // map as a whole, so it takes the same dimmed-with-a-centred-card
-          // treatment as the greeting, and the map stays visible through it.
+          // map as a whole, so its template withholds the scrim instead and
+          // seats the card at the bottom of the screen
+          // ([TutorialStepTemplates.worldMap]).
           TutorialStepData(
             canShowNextStep: () => true,
             tooltipArgs: () => [languageName],

@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-23 13:25:39.060799",
+    "@@last_modified": "2026-10-27 14:57:14.597760",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10694,10 +10694,6 @@
     "contentCreatedBy": "Ginawa ni",
     "coursePreview": "Preview ng kurso",
     "numActivities": "{count, plural, =1{1 aktibidad} other{{count} aktibidad}}",
-    "teacherAnalyticsRequestTitle": "Hinihingi ng guro ang iyong pag-usad sa pag-aaral",
-    "teacherAnalyticsRequestDesc": "Makikita nila ang lahat ng salita at grammar na ginamit mo sa {targetLang}, ang iyong level at XP, at ang mga mensaheng ipinadala sa mga aktibidad ng kurso. Hindi ibabahagi ang iyong mga 1-on-1 na mensahe. Kinakailangan ang pagbabahagi ng analytics para makasali sa kurso.",
-    "shareAndJoin": "Ibahagi at sumali",
-    "goBack": "Bumalik",
     "emptyGroupsSearch": "Walang nakitang grupo. Siguraduhin na tama ang baybay ng iyong hinahanap.",
     "emptyActivitiesSearch": "Walang nakitang aktibidad. Siguraduhin na tama ang baybay ng iyong hinahanap.",
     "chatListFiltersLabel": "Mga filter ng chat",
@@ -10900,8 +10896,19 @@
     "watchOnYoutube": "Panoorin sa YouTube",
     "createMyOwnCourse": "Gumawa ng sarili kong kurso",
     "xpTowardMission": "{xp} XP para sa Misyon na ito",
-    "openCourse": "Buksan ang kurso",
-    "centralCourseJoinedTitle": "Sumali ka sa {course}",
-    "centralCourseJoinedBody": "Ito ang kurso ng Pangea para sa mga nag-aaral ng {language}. Makikita ng mga miyembro nito ang iyong pangalan at profile.",
-    "centralCourseMembersSeeYou": "Makikita ng mga miyembro ng kursong ito ang iyong pangalan at profile."
+    "centralCourseMembersSeeYou": "Makikita ng mga miyembro ng kursong ito ang iyong pangalan at profile.",
+    "practiceStartWordCount": "{count, plural, =1{salita na isasanay} other{mga salita na isasanay}}",
+    "practiceStartGrammarCount": "{count, plural, =1{grammar point na isasanay} other{mga grammar point na isasanay}}",
+    "practiceStartExerciseTypes": "Mga uri ng ehersisyo",
+    "analyticsSharedOnJoin": "Makikita na ng iyong mga guro sa {course} ang iyong pag-unlad sa pag-aaral.",
+    "sharedAnalyticsTitle": "Naibahaging pag-unlad sa pag-aaral",
+    "sharedAnalyticsDesc": "Makikita ng mga guro sa mga kursong ito ang iyong pag-unlad sa pag-aaral. Umalis sa isang kurso para ihinto ang pagbabahagi.",
+    "sharedAnalyticsNone": "Hindi mo ibinabahagi ang iyong pag-unlad sa pag-aaral sa anumang kurso.",
+    "sharedAnalyticsOthersTitle": "Iba pa na makakakita ng iyong progreso",
+    "removeAnalyticsAccess": "Alisin ang access",
+    "removeAnalyticsAccessDesc": "Hindi na makikita ni {name} ang iyong progreso sa pag-aaral.",
+    "centralCourseOfferBody": "Ito ang kurso ng Pangea para sa mga nag-aaral ng {language}. Makikita ng mga miyembro nito ang iyong pangalan at profile.",
+    "centralCourseOfferTitle": "Sumali sa {course}?",
+    "makeMyOwnCourseInstead": "Gumawa na lang ng sarili kong kurso",
+    "suggestMobileSignInSameAccount": "Pagkatapos, mag-sign in sa app gamit ang account na ito."
 }

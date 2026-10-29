@@ -7,6 +7,7 @@ import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_repo.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_request_model.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_response_model.dart';
@@ -30,8 +31,20 @@ abstract class CourseProvider {
 
   Future<String> joinSpaceWithCode(String code);
 
-  /// The central course joined for [language], or null when none was joined.
-  Future<String?> joinCentralCourse(String language);
+  /// [language]'s central course, or null when it has none or the lookup
+  /// failed (reported).
+  Future<PublicCoursesChunk?> centralCourseFor(String language);
+
+  /// The quest behind [questId], or null when it cannot be resolved.
+  Future<CoursePlanModel?> getCourse(String questId);
+
+  Future<String> joinCourse(String roomId);
+
+  /// A private course of the learner's own, on [plan] when there is one.
+  Future<String> createOwnCourse({
+    required String language,
+    CoursePlanModel? plan,
+  });
 
   /// The joined course's quest, or null when it cannot be resolved — a space
   /// pointing at a retired plan id, or a content service that didn't answer.
@@ -49,8 +62,21 @@ class ClientCourseProvider implements CourseProvider {
   const ClientCourseProvider({required this.client});
 
   @override
-  Future<String?> joinCentralCourse(String language) =>
-      client.joinCentralCourse(language);
+  Future<PublicCoursesChunk?> centralCourseFor(String language) =>
+      client.centralCourseFor(language);
+
+  @override
+  Future<CoursePlanModel?> getCourse(String questId) =>
+      QuestPlansRepo.get(questId);
+
+  @override
+  Future<String> joinCourse(String roomId) => client.joinCourse(roomId);
+
+  @override
+  Future<String> createOwnCourse({
+    required String language,
+    CoursePlanModel? plan,
+  }) => client.createOwnCourse(language: language, plan: plan);
 
   @override
   String? getCachedJoinCode() => SpaceCodeRepo.pendingJoinCode;
@@ -107,13 +133,59 @@ class ClientCourseProvider implements CourseProvider {
 }
 
 class MockCourseProvider implements CourseProvider {
+  static const String centralQuestId = 'central-quest';
+  static const String ownCourseRoomId = '!own:staging.pangea.chat';
+
   final String? centralCourseRoomId;
+
+  /// The plan id of each course of their own the learner was given, null for
+  /// one made with no plan.
+  final List<String?> ownCoursePlans = [];
 
   MockCourseProvider({this.centralCourseRoomId});
 
   @override
-  Future<String?> joinCentralCourse(String language) async =>
-      centralCourseRoomId;
+  Future<PublicCoursesChunk?> centralCourseFor(String language) async {
+    final roomId = centralCourseRoomId;
+    if (roomId == null) return null;
+    return PublicCoursesChunk.tryParse({
+      'room_id': roomId,
+      'name': 'Central course',
+      'num_joined_members': 1,
+      'world_readable': false,
+      'guest_can_join': false,
+      'join_rule': 'public',
+      'course_id': centralQuestId,
+      'target_language': language,
+      'central': true,
+    });
+  }
+
+  @override
+  Future<CoursePlanModel?> getCourse(String questId) async => CoursePlanModel(
+    targetLanguage: "es",
+    languageOfInstructions: "en",
+    cefrLevel: LanguageLevelTypeEnum.a1,
+    title: "Central course",
+    description: "Course for testing",
+    topicIds: [],
+    mediaIds: [],
+    updatedAt: DateTime(2026, 5, 1),
+    createdAt: DateTime(2026, 5, 1),
+    uuid: questId,
+  );
+
+  @override
+  Future<String> joinCourse(String roomId) async => roomId;
+
+  @override
+  Future<String> createOwnCourse({
+    required String language,
+    CoursePlanModel? plan,
+  }) async {
+    ownCoursePlans.add(plan?.uuid);
+    return ownCourseRoomId;
+  }
 
   @override
   String? getCachedJoinCode() => null;

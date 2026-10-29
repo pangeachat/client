@@ -115,6 +115,8 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
       context,
       allowMultiple: false,
       type: FileType.image,
+      // Above 0, iOS hands back JPEG instead of a HEIC camera photo (#9675).
+      compressionQuality: 50,
     );
 
     await showFutureLoadingDialog(

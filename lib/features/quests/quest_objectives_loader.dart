@@ -330,6 +330,7 @@ class QuestObjectivesLoader {
       _objectiveCache.resolution(
         client.userXpByActivity(MissionXpCache.instance.creditedXpByRoom),
         practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
+        recordedByCourse: MissionXpCache.instance.recordedByCourse,
         inScope: (courseId) => CourseLanguageScope.courseInTargetLanguage(
           client.getRoomById(courseId),
         ),

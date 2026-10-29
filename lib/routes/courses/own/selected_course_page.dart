@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' as sdk;
-import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_client_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -15,7 +15,6 @@ import 'package:fluffychat/features/navigation/token_params/add_course_token.dar
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -150,7 +149,7 @@ class SelectedCourseController extends State<SelectedCourse>
           spaceChild: 0,
         )
         .then<void>((spaceId) async {
-          await _writeNewCourseCopy(client, spaceId, courseId);
+          await client.writeNewCourseCopy(spaceId, courseId);
           completer.complete(spaceId);
         })
         .catchError((error) => completer.completeError(error));
@@ -164,35 +163,6 @@ class SelectedCourseController extends State<SelectedCourse>
       ),
       extra: completer,
     );
-  }
-
-  /// The new course's own copy, from the list its members are shown. Never
-  /// fails the creation: an error is logged and the course reads the shared
-  /// quest until the Studio's first publish.
-  static Future<void> _writeNewCourseCopy(
-    sdk.Client client,
-    String spaceId,
-    String questId,
-  ) async {
-    try {
-      final room = client.getRoomById(spaceId);
-      if (room == null) {
-        ErrorHandler.logError(
-          e: 'Course created without its own Can-Do copy: room not in sync',
-          data: {'room_id': spaceId},
-          level: SentryLevel.warning,
-        );
-        return;
-      }
-      await room.writeNewCourseCopy(questId);
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'room_id': spaceId},
-        level: SentryLevel.warning,
-      );
-    }
   }
 
   Future<void> addCourseToSpace(CoursePlanModel course) async {

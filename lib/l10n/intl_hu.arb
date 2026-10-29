@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-23 13:25:40.773471",
+    "@@last_modified": "2026-10-27 14:57:16.198656",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9940,10 +9940,6 @@
     "contentCreatedBy": "Létrehozta",
     "coursePreview": "Tanfolyam előnézete",
     "numActivities": "{count, plural, =1{1 tevékenység} other{{count} tevékenység}}",
-    "teacherAnalyticsRequestTitle": "A tanár kéri a tanulási haladásodat",
-    "teacherAnalyticsRequestDesc": "Látni fogja az összes szót és nyelvtant, amit használtál a(z) {targetLang} nyelvben, a szintedet és az XP-det, valamint a tanfolyami tevékenységek során küldött üzeneteket. Az 1-az-1-hez üzeneteid nem lesznek megosztva. Az analitika megosztása kötelező a tanfolyamhoz való csatlakozáshoz.",
-    "shareAndJoin": "Megosztás és csatlakozás",
-    "goBack": "Vissza",
     "emptyGroupsSearch": "Nincsenek csoportok. Ellenőrizd, hogy helyesen írtad-e be a keresést.",
     "emptyActivitiesSearch": "Nincsenek tevékenységek. Ellenőrizd, hogy helyesen írtad-e be a keresést.",
     "chatListFiltersLabel": "Csevegésszűrők",
@@ -10146,8 +10142,19 @@
     "watchOnYoutube": "Megtekintés YouTube-on",
     "createMyOwnCourse": "Saját tanfolyam létrehozása",
     "xpTowardMission": "{xp} XP ehhez a küldetéshez",
-    "openCourse": "Kurzus megnyitása",
-    "centralCourseJoinedTitle": "Csatlakoztál ehhez a kurzushoz: {course}",
-    "centralCourseJoinedBody": "Ez a Pangea kurzusa {language} nyelvtanulók számára. A tagok láthatják a nevedet és a profilodat.",
-    "centralCourseMembersSeeYou": "A kurzus tagjai láthatják a nevedet és a profilodat."
+    "centralCourseMembersSeeYou": "A kurzus tagjai láthatják a nevedet és a profilodat.",
+    "practiceStartWordCount": "{count, plural, =1{gyakorlandó szó} other{gyakorlandó szó}}",
+    "practiceStartGrammarCount": "{count, plural, =1{gyakorlandó nyelvtani pont} other{gyakorlandó nyelvtani pont}}",
+    "practiceStartExerciseTypes": "Gyakorlattípusok",
+    "analyticsSharedOnJoin": "A {course} tanárai mostantól láthatják a tanulási folyamatodat.",
+    "sharedAnalyticsTitle": "Megosztott tanulási folyamat",
+    "sharedAnalyticsDesc": "Az ezeken a kurzusokon lévő tanárok láthatják a tanulási folyamatodat. Lépj ki egy kurzusból a megosztás leállításához.",
+    "sharedAnalyticsNone": "Nem osztod meg a tanulási folyamatodat egyetlen kurzussal sem.",
+    "sharedAnalyticsOthersTitle": "Mások, akik láthatják a fejlődésedet",
+    "removeAnalyticsAccess": "Hozzáférés eltávolítása",
+    "removeAnalyticsAccessDesc": "{name} többé nem láthatja a tanulási folyamatodat.",
+    "centralCourseOfferBody": "Ez a Pangea kurzusa {language} nyelvtanulók számára. A tagok láthatják a nevedet és a profilodat.",
+    "centralCourseOfferTitle": "Csatlakozás a(z) {course} kurzushoz?",
+    "makeMyOwnCourseInstead": "Inkább saját kurzust készítek",
+    "suggestMobileSignInSameAccount": "Ezután jelentkezz be az alkalmazásba ezzel a fiókkal."
 }

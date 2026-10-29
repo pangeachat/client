@@ -60,6 +60,11 @@ abstract class AppConfig {
   static String androidUpdateURL =
       "https://play.google.com/store/apps/details?id=com.talktolearn.chat";
   static String iosUpdateURL = "itms-apps://itunes.apple.com/app/id1445118630";
+  // The https listing, for a browser: itms-apps opens only on iOS itself.
+  static String iosAppStoreURL = "https://apps.apple.com/app/id1445118630";
+  // The website sends a phone on to its own store (pangeachat/website,
+  // navigation.instructions.md § Get-the-app link).
+  static String getTheAppURL = "https://pangea.chat/app";
   static String googlePlayPaymentMethodUrl =
       "https://play.google.com/store/paymentmethods";
   static String appleMangementUrl =

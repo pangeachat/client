@@ -4778,6 +4778,30 @@
     "practiceVocab": "Practice vocabulary",
     "selectMeaning": "Select the meaning",
     "anotherRound": "Another round",
+    "practiceStartWordCount": "{count, plural, =1{word to practice} other{words to practice}}",
+    "@practiceStartWordCount": {
+        "description": "Under the large number on the practice start page, e.g. 8 / words to practice.",
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "practiceStartGrammarCount": "{count, plural, =1{grammar point to practice} other{grammar points to practice}}",
+    "@practiceStartGrammarCount": {
+        "description": "Under the large number on the grammar practice start page, e.g. 6 / grammar points to practice.",
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "practiceStartExerciseTypes": "Exercise types",
+    "@practiceStartExerciseTypes": {
+        "description": "Screen-reader name for the Reading, Listening and Speaking chips on the practice start page."
+    },
     "ssoDialogTitle": "Waiting for sign in to complete",
     "ssoDialogDesc": "We opened a new tab so you can sign in securely.",
     "ssoDialogHelpText": "🤔 If you didn't see the new tab, please check your popup blocker.",
@@ -5102,18 +5126,6 @@
     "@showMoreOptionsHint": {
         "description": "Semantics hint fragment: TalkBack reads it as 'double tap and hold to <this>' on controls whose long-press opens the options menu."
     },
-    "teacherAnalyticsRequestTitle": "Teacher requests your learning progress",
-    "teacherAnalyticsRequestDesc": "They'll see all the words and grammar you've used in {targetLang}, your level and XP, and the messages sent in course activities. Your 1-on-1 messages will not be shared. Sharing analytics is required to join the course.",
-    "@teacherAnalyticsRequestDesc": {
-        "type": "String",
-        "placeholders": {
-            "targetLang": {
-                "type": "String"
-            }
-        }
-    },
-    "shareAndJoin": "Share and join",
-    "goBack": "Go back",
     "setPermissionsLevelDesc": "Please choose a predefined role below or enter a custom permission level. Pick a whole number between 0 and 100.",
     "reportContentIssue": "Report content issue",
     "userTypeTitle": "I use Pangea Chat to",
@@ -5155,6 +5167,7 @@
     "analyticsDownloadDesc": "Downloads personal vocab and grammar analytics for the selected language.",
     "courseAnalyticsDownloadDesc": "Downloads the lemma and grammar usage in the selected language for all course participants with shared analytics.",
     "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!",
+    "suggestMobileSignInSameAccount": "Then sign in to the app with this account.",
     "cefrLevelMatch": "This course matches your language level",
     "cefrLevelBelow": "This course is below your language level.",
     "cefrLevelAbove": "This course is above your language level.",
@@ -6225,31 +6238,9 @@
             }
         }
     },
-    "openCourse": "Open course",
-    "@openCourse": {
-        "description": "Button in the dialog shown after the app joined the learner to their language's central course: opens that course."
-    },
-    "centralCourseJoinedTitle": "You've joined {course}",
-    "@centralCourseJoinedTitle": {
-        "description": "Title of the dialog shown once when the app joins an existing learner to the Pangea-run course for their target language.",
-        "placeholders": {
-            "course": {
-                "type": "String"
-            }
-        }
-    },
-    "centralCourseJoinedBody": "It's Pangea's course for {language} learners. Its members can see your name and profile.",
-    "@centralCourseJoinedBody": {
-        "description": "Body of the dialog shown once when the app joins an existing learner to the Pangea-run course for their target language. The learner can leave from the dialog.",
-        "placeholders": {
-            "language": {
-                "type": "String"
-            }
-        }
-    },
     "centralCourseMembersSeeYou": "Members of this course can see your name and profile.",
     "@centralCourseMembersSeeYou": {
-        "description": "Line on the onboarding page after a new learner was joined to the Pangea-run course for their target language."
+        "description": "Line on the onboarding page offering a new learner the Pangea-run course for their target language, before they choose to join it."
     },
     "seatInviteTitle": "Join {course}",
     "@seatInviteTitle": {
@@ -6341,5 +6332,67 @@
     "canvasSignInExpired": "This sign-in link has expired. Open Pangea Chat from your Canvas course again, or log in.",
     "@canvasSignInExpired": {
         "description": "Shown on the Canvas sign-in page when there is no sign-in to finish."
+    },
+    "analyticsSharedOnJoin": "Your teachers in {course} can now see your learning progress.",
+    "@analyticsSharedOnJoin": {
+        "description": "Snackbar after a learner joins a course that requires sharing analytics; its action opens Learning settings.",
+        "type": "String",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "sharedAnalyticsTitle": "Shared learning progress",
+    "@sharedAnalyticsTitle": {
+        "description": "Heading of the Learning settings section listing the courses whose teachers can see the learner's progress."
+    },
+    "sharedAnalyticsDesc": "Teachers in these courses can see your learning progress. Leave a course to stop sharing.",
+    "@sharedAnalyticsDesc": {
+        "description": "Explanation under the shared learning progress heading in Learning settings."
+    },
+    "sharedAnalyticsNone": "You aren't sharing your learning progress with any course.",
+    "@sharedAnalyticsNone": {
+        "description": "Shown in Learning settings when no course's teachers can see the learner's progress."
+    },
+    "sharedAnalyticsOthersTitle": "Others who can see your progress",
+    "@sharedAnalyticsOthersTitle": {
+        "description": "Label in Learning settings above the people who can see the learner's progress but teach none of their courses."
+    },
+    "removeAnalyticsAccess": "Remove access",
+    "@removeAnalyticsAccess": {
+        "description": "Tooltip of the button that stops someone who teaches none of the learner's courses from seeing their progress."
+    },
+    "removeAnalyticsAccessDesc": "{name} will no longer be able to see your learning progress.",
+    "@removeAnalyticsAccessDesc": {
+        "description": "Confirmation message before removing someone's access to the learner's progress.",
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "centralCourseOfferBody": "It's Pangea's course for {language} learners. Its members can see your name and profile.",
+    "@centralCourseOfferBody": {
+        "description": "Body of the popup and onboarding page offering a learner the Pangea-run course for their target language; they can join it or make a course of their own.",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "centralCourseOfferTitle": "Join {course}?",
+    "@centralCourseOfferTitle": {
+        "description": "Title of the popup and onboarding page offering a learner the Pangea-run course for their target language.",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "makeMyOwnCourseInstead": "Make my own course instead",
+    "@makeMyOwnCourseInstead": {
+        "description": "Secondary choice when a learner is offered the Pangea-run course for their language: instead, the app makes them a private course of their own."
     }
 }

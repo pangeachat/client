@@ -180,10 +180,11 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     PanelFocusController.instance.addListener(_onPanelFocusChanged);
     _syncTutorialRegistration();
     _subscribeTutorialRoomState();
-    // Re-asks, per tutorials.instructions.md ("a trigger keeps asking"): the
-    // profile reports every tutorial as seen until it loads, so its arrival is
-    // a trigger of its own — and so is the veteran backfill's evaluation,
-    // which may be about to mark the roles tutorial seen.
+    // Re-asks, because a trigger keeps asking (see
+    // TutorialOverlayController.isPending): the profile reports every tutorial
+    // as seen until it loads, so its arrival is a trigger of its own — and so
+    // is the veteran backfill's evaluation, which may be about to mark the
+    // roles tutorial seen.
     MatrixState.pangeaController.userController.initCompleter.future.then(
       (_) => _maybeStartStartPageTutorials(),
     );

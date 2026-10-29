@@ -4,12 +4,19 @@ import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
+import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/quests/can_do_progress.dart';
+import 'package:fluffychat/features/quests/course_progress_room_extension.dart';
+import 'package:fluffychat/features/quests/mission_room_xp.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -51,7 +58,8 @@ class MissionXpCache extends ChangeNotifier {
 
   /// The practice part of [creditedXpByRoom]: every other use in the room
   /// (message practice and the like). With [chatXpByRoom] and
-  /// [speakingXpByRoom] it sums to [creditedXpByRoom].
+  /// [speakingXpByRoom] it sums to [creditedXpByRoom]. Each part is floored at
+  /// zero per room ([MissionRoomXp.of]).
   Map<String, int> get practiceXpByRoom => _practiceXpByRoom;
 
   /// Room-less practice XP by lowercased lemma — what a Mission's word list
@@ -67,7 +75,30 @@ class MissionXpCache extends ChangeNotifier {
   Map<String, Map<LearningSkillsEnum, int>> get skillXpByLemma =>
       _skillXpByLemma;
 
+  /// The analytics room the learner's progress records were read from, with
+  /// its full state loaded.
+  Room? _recordRoom;
+
+  /// The learner's progress record entries by course room id, then Mission
+  /// id: what keeps a recorded completion complete (quests.instructions.md,
+  /// "A completed Mission stays complete"). Read from room state on each call,
+  /// so a record written since the last refresh counts at once.
+  Map<String, Map<String, CanDoProgress>> get recordedByCourse {
+    final room = _recordRoom;
+    if (room == null) return const {};
+    return {
+      for (final courseId
+          in room.states[PangeaEventTypes.courseProgress]?.keys ??
+              const <String>[])
+        courseId: room.courseProgress(courseId)?.canDos ?? const {},
+    };
+  }
+
   bool _wired = false;
+
+  /// The account analytics service the cache is wired to: the maps and the
+  /// records are that account's.
+  AnalyticsDataService? _wiredAnalytics;
   StreamSubscription? _sub;
   StreamSubscription? _languageSub;
   Future<void>? _inflight;
@@ -83,6 +114,23 @@ class MissionXpCache extends ChangeNotifier {
   /// Only once wired: an unwired cache has no read coming to clear it.
   bool get loading => _loading && _wired;
 
+  /// The language the maps were last read for.
+  String? _readLanguage;
+
+  /// The maps hold [language]'s XP, read in full, for the account now active.
+  /// False before the first read, while a re-read for a new language is
+  /// pending, for a cache that was never wired — whose empty maps would read
+  /// as zero XP — and once another account is active, whose progress record
+  /// the previous account's XP would otherwise be written to.
+  bool hasReadFor(String language) =>
+      _wired &&
+      !_loading &&
+      _readLanguage == language &&
+      identical(
+        MatrixState.pangeaController.matrixState.analyticsServiceIfExists,
+        _wiredAnalytics,
+      );
+
   void _setLoading(bool value) {
     if (_loading == value) return;
     _loading = value;
@@ -91,16 +139,22 @@ class MissionXpCache extends ChangeNotifier {
     scheduleMicrotask(notifyListeners);
   }
 
-  /// Subscribe to the analytics streams and take the first read. Idempotent;
-  /// every consumer calls it, and the first one to run wires the cache. A
-  /// no-op before the Pangea controller or the account's analytics service
-  /// exists (widget tests); the next consumer retries.
+  /// Subscribe to the active account's analytics streams and take the first
+  /// read. Idempotent; every consumer calls it, and the first one to run wires
+  /// the cache. Once another account is active it drops the previous one's
+  /// read ([clear]) and wires to the new one. A no-op before the Pangea
+  /// controller or the account's analytics service exists (widget tests); the
+  /// next consumer retries.
   void ensureWired() {
-    if (_wired || !MatrixState.isPangeaControllerInitialized) return;
+    if (!MatrixState.isPangeaControllerInitialized) return;
     final controller = MatrixState.pangeaController;
     // Never the trigger for analytics initialisation: the active-client
     // getter creates the service on a miss and its constructor starts init.
     final analytics = controller.matrixState.analyticsServiceIfExists;
+    if (_wired) {
+      if (identical(analytics, _wiredAnalytics)) return;
+      clear();
+    }
     if (analytics == null) return;
     _sub = StreamGroup.merge([
       analytics.updateDispatcher.constructUpdateStream.stream,
@@ -116,8 +170,33 @@ class MissionXpCache extends ChangeNotifier {
     });
     // Marked wired only once the subscription holds, so a throw above leaves
     // the next caller to try again rather than a cache that never reads.
+    _wiredAnalytics = analytics;
     _wired = true;
     refresh();
+  }
+
+  /// Drops the maps, the records and the subscriptions, which are the
+  /// account's that is signing out or no longer active. The next
+  /// [ensureWired] wires the cache to the account then active.
+  void clear() {
+    _sub?.cancel();
+    _languageSub?.cancel();
+    _sub = null;
+    _languageSub = null;
+    _wired = false;
+    _wiredAnalytics = null;
+    _readLanguage = null;
+    _recordRoom = null;
+    _loading = true;
+    _dirty = false;
+    _creditedXpByRoom = const {};
+    _chatXpByRoom = const {};
+    _speakingXpByRoom = const {};
+    _practiceXpByRoom = const {};
+    _practiceXpByLemma = const {};
+    _skillXpByRoom = const {};
+    _skillXpByLemma = const {};
+    scheduleMicrotask(notifyListeners);
   }
 
   /// Re-read the learner's uses and regroup. A refresh asked for while one is
@@ -153,24 +232,44 @@ class MissionXpCache extends ChangeNotifier {
   /// Re-read and publish. True when the maps now reflect the current
   /// language, or when nothing more is coming (no language, analytics that
   /// failed to start, a failed read) — either way the surfaces stop
-  /// shimmering; false while analytics is still starting, whose first
-  /// construct update calls [refresh] again.
+  /// shimmering; false while analytics is still starting or loading a newly
+  /// switched language, whose construct update calls [refresh] again.
   Future<bool> _refresh() async {
     final controller = MatrixState.pangeaController;
-    final language = controller.userController.userL2?.langCodeShort;
-    if (language == null) {
+    final l2 = controller.userController.userL2;
+    final language = l2?.langCodeShort;
+    if (l2 == null || language == null) {
+      _readLanguage = null;
+      _recordRoom = null;
       _publish(const {}, const {}, const {}, const {}, const {}, const {});
       return true;
     }
     final analytics = controller.matrixState.analyticsServiceIfExists;
+    // Another account is active: its read is the next [ensureWired]'s.
+    if (!identical(analytics, _wiredAnalytics)) return false;
     // silent-ok: analytics that failed to start reports itself; the meters
     // fall back to what they hold rather than shimmering forever.
-    if (analytics != null && analytics.hasInitError) return true;
+    if (analytics != null && analytics.hasInitError) {
+      // Only a read of this language is worth holding: another language's
+      // maps would credit its rooms and words here, and the course progress
+      // record would file them as this language's (#9678).
+      if (_readLanguage != language) {
+        _readLanguage = null;
+        _recordRoom = null;
+        _publish(const {}, const {}, const {}, const {}, const {}, const {});
+      }
+      return true;
+    }
     // A read before init completes would start it from here; init's own
     // first construct update calls [refresh] once it is done.
     if (analytics == null || !analytics.initCompleter.isCompleted) {
       return false;
     }
+    // A language switch reaches here before the store re-initialises: the
+    // completed init is the old language's, and the store holds none of this
+    // one's uses yet, so a read now would publish no XP as its full read. The
+    // re-init's construct update calls [refresh] again (#9678).
+    if (analytics.initializedLanguage != language) return false;
     final List<OneConstructUse> uses;
     try {
       uses = await analytics.getUses(language);
@@ -185,45 +284,63 @@ class MissionXpCache extends ChangeNotifier {
       );
       return true;
     }
+    // Read with the XP, so the surfaces that wait for the XP also wait for the
+    // records.
+    final recordRoom = await _loadedRecordRoom(analytics, l2);
     // The learner switched language while this read ran: its maps are the
     // old language's. Read again rather than publish them.
     if (controller.userController.userL2?.langCodeShort != language) {
       _dirty = true;
       return false;
     }
-    final chatByRoom = <String, int>{};
-    final speakingByRoom = <String, int>{};
-    final practiceByRoom = <String, int>{};
+    // The account changed while this read ran: it is the previous account's.
+    if (!identical(analytics, _wiredAnalytics)) return false;
+    final byRoom = MissionRoomXp.of(uses);
     final byLemma = practiceXpByLemmaOf(uses);
-    final skillByRoom = <String, Map<LearningSkillsEnum, int>>{};
     final skillByLemma = <String, Map<LearningSkillsEnum, int>>{};
     for (final use in uses) {
-      if (use.xp == 0) continue;
-      final roomId = use.metadata.roomId;
-      if (roomId == null) {
-        final lemma = QuestObjectiveGroup.lemmaKey(use.lemma);
-        // A word that credits nothing has no skills to show either, so the
-        // detail page's tiles still sum to its Practice share.
-        if (byLemma.containsKey(lemma)) _addSkill(skillByLemma, lemma, use);
-        continue;
+      if (use.xp == 0 || use.metadata.roomId != null) continue;
+      final lemma = QuestObjectiveGroup.lemmaKey(use.lemma);
+      // A word that credits nothing has no skills to show either, so the
+      // detail page's tiles still sum to its Practice share.
+      if (byLemma.containsKey(lemma)) {
+        MissionRoomXp.addSkill(skillByLemma, lemma, use);
       }
-      _addSkill(skillByRoom, roomId, use);
-      final bucket = use.useType.isChatUse
-          ? chatByRoom
-          : use.useType.skillsEnumType == LearningSkillsEnum.speaking
-          ? speakingByRoom
-          : practiceByRoom;
-      bucket[roomId] = (bucket[roomId] ?? 0) + use.xp;
     }
+    _readLanguage = language;
+    _recordRoom = recordRoom;
     _publish(
-      chatByRoom,
-      speakingByRoom,
-      practiceByRoom,
+      byRoom.chat,
+      byRoom.speaking,
+      byRoom.practice,
       byLemma,
-      skillByRoom,
+      byRoom.skills,
       skillByLemma,
     );
     return true;
+  }
+
+  /// [l2]'s analytics room with its full state loaded, since the progress
+  /// records don't load with the room at startup; null when the learner has
+  /// none yet. A failed load is reported and leaves the records unread, so
+  /// completion falls back to XP alone.
+  static Future<Room?> _loadedRecordRoom(
+    AnalyticsDataService analytics,
+    LanguageModel l2,
+  ) async {
+    final room = analytics.getAnalyticsRoomLocal(l2);
+    if (room == null || !room.partial) return room;
+    try {
+      await room.postLoad();
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'analyticsRoomId': room.id},
+        level: SentryLevel.warning,
+      );
+    }
+    return room;
   }
 
   /// [uses]' room-less XP by lowercased lemma, keeping only words that net
@@ -240,17 +357,6 @@ class MissionXpCache extends ChangeNotifier {
     return byLemma..removeWhere((_, xp) => xp <= 0);
   }
 
-  /// Adds [use]'s XP to its skill under [key] in [into].
-  static void _addSkill(
-    Map<String, Map<LearningSkillsEnum, int>> into,
-    String key,
-    OneConstructUse use,
-  ) {
-    final skills = into[key] ??= {};
-    final skill = use.useType.skillsEnumType;
-    skills[skill] = (skills[skill] ?? 0) + use.xp;
-  }
-
   void _publish(
     Map<String, int> chat,
     Map<String, int> speaking,
@@ -259,10 +365,7 @@ class MissionXpCache extends ChangeNotifier {
     Map<String, Map<LearningSkillsEnum, int>> skillByRoom,
     Map<String, Map<LearningSkillsEnum, int>> skillByLemma,
   ) {
-    final credited = Map<String, int>.of(chat);
-    for (final part in [speaking, practice]) {
-      part.forEach((room, xp) => credited[room] = (credited[room] ?? 0) + xp);
-    }
+    final credited = MissionRoomXp.sumOf([chat, speaking, practice]);
     if (mapEquals(chat, _chatXpByRoom) &&
         mapEquals(speaking, _speakingXpByRoom) &&
         mapEquals(practice, _practiceXpByRoom) &&

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-23 13:25:51.408561",
+    "@@last_modified": "2026-10-27 14:57:23.785091",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7144,10 +7144,6 @@
     "contentCreatedBy": "Được tạo bởi",
     "coursePreview": "Xem trước khóa học",
     "numActivities": "{count, plural, =1{1 hoạt động} other{{count} hoạt động}}",
-    "teacherAnalyticsRequestTitle": "Giáo viên yêu cầu xem tiến độ học tập của bạn",
-    "teacherAnalyticsRequestDesc": "Họ sẽ thấy tất cả các từ và ngữ pháp bạn đã sử dụng trong {targetLang}, cấp độ và XP của bạn, cũng như các tin nhắn đã gửi trong hoạt động khóa học. Tin nhắn 1-1 của bạn sẽ không được chia sẻ. Chia sẻ phân tích là bắt buộc để tham gia khóa học.",
-    "shareAndJoin": "Chia sẻ và tham gia",
-    "goBack": "Quay lại",
     "emptyGroupsSearch": "Không tìm thấy nhóm nào. Hãy đảm bảo bạn đã nhập đúng chính tả.",
     "emptyActivitiesSearch": "Không tìm thấy hoạt động nào. Hãy đảm bảo bạn đã nhập đúng chính tả.",
     "chatListFiltersLabel": "Bộ lọc trò chuyện",
@@ -7350,8 +7346,19 @@
     "watchOnYoutube": "Xem trên YouTube",
     "createMyOwnCourse": "Tạo khóa học của riêng tôi",
     "xpTowardMission": "{xp} XP cho Nhiệm vụ này",
-    "openCourse": "Mở khóa học",
-    "centralCourseJoinedTitle": "Bạn đã tham gia {course}",
-    "centralCourseJoinedBody": "Đây là khóa học của Pangea dành cho người học tiếng {language}. Các thành viên có thể xem tên và hồ sơ của bạn.",
-    "centralCourseMembersSeeYou": "Các thành viên của khóa học này có thể xem tên và hồ sơ của bạn."
+    "centralCourseMembersSeeYou": "Các thành viên của khóa học này có thể xem tên và hồ sơ của bạn.",
+    "practiceStartWordCount": "{count, plural, =1{từ để luyện tập} other{từ để luyện tập}}",
+    "practiceStartGrammarCount": "{count, plural, =1{điểm ngữ pháp để luyện tập} other{điểm ngữ pháp để luyện tập}}",
+    "practiceStartExerciseTypes": "Các dạng bài tập",
+    "analyticsSharedOnJoin": "Giáo viên của bạn trong {course} giờ đây có thể xem tiến độ học tập của bạn.",
+    "sharedAnalyticsTitle": "Tiến độ học tập được chia sẻ",
+    "sharedAnalyticsDesc": "Giáo viên trong các khóa học này có thể xem tiến độ học tập của bạn. Rời khỏi khóa học để ngừng chia sẻ.",
+    "sharedAnalyticsNone": "Bạn không chia sẻ tiến độ học tập của mình với bất kỳ khóa học nào.",
+    "sharedAnalyticsOthersTitle": "Những người khác có thể xem tiến độ của bạn",
+    "removeAnalyticsAccess": "Xóa quyền truy cập",
+    "removeAnalyticsAccessDesc": "{name} sẽ không còn có thể xem tiến độ học tập của bạn.",
+    "centralCourseOfferBody": "Đây là khóa học của Pangea dành cho người học tiếng {language}. Các thành viên có thể xem tên và hồ sơ của bạn.",
+    "centralCourseOfferTitle": "Tham gia {course}?",
+    "makeMyOwnCourseInstead": "Tự tạo khóa học của riêng tôi",
+    "suggestMobileSignInSameAccount": "Sau đó đăng nhập vào ứng dụng bằng tài khoản này."
 }

@@ -28,10 +28,12 @@ import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/notifications/nse_session.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -737,6 +739,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // Nothing below this widget rebuilds on an active-account change (see
       // [accounts]), so anything holding per-account state has to be told.
       _accountsChanged();
+      // The Mission XP cache holds one account's XP and records; it rewires
+      // to this one, or drops the old read until this one's analytics start.
+      MissionXpCache.instance.ensureWired();
       // Pangea#
     } else {
       Logs().w('Tried to set an unknown client ${cl!.userID} as active');
@@ -932,29 +937,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     });
   }
 
-  String? get activeRoomId {
-    final route = FluffyChatApp.router.routeInformationProvider.value.uri.path;
-    // #Pangea
-    // world_v2: open chats also live under /courses/:spaceid/:roomid and
-    // /analytics/activities/:roomid.
-    if (!route.startsWith('/rooms/') &&
-        !route.startsWith('/courses/') &&
-        !route.startsWith('/analytics/activities/')) {
-      return null;
-    }
-    // if (!route.startsWith('/rooms/')) return null;
-    // Pangea#
-    // #Pangea
-    // return route.split('/')[2];
-    // world_v2 URLs carry a bare localpart; re-attach the home server_name so
-    // this matches full event room ids (e.g. notification suppression).
-    final roomId = FluffyChatApp.router.state.pathParameters['roomid'];
-    if (roomId == null || roomId.contains(':')) return roomId;
-    final userId = client.userID;
-    final sep = userId?.indexOf(':') ?? -1;
-    return sep == -1 ? roomId : '$roomId:${userId!.substring(sep + 1)}';
-    // Pangea#
-  }
+  /// The chat open on screen, which gets no notification for its own messages.
+  /// The workspace URL carries it as a `room:` panel token, not a path
+  /// segment (#9666).
+  String? get activeRoomId => activeRoomIdFromPanels(
+    FluffyChatApp.router.routeInformationProvider.value.uri,
+  );
 
   final linuxNotifications = PlatformInfos.isLinux
       ? NotificationsClient()

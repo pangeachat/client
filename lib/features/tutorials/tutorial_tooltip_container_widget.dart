@@ -17,8 +17,10 @@ class TutorialTooltipContainerWidget extends StatelessWidget {
   /// progress rather than one that mysteriously restarted.
   final TutorialSequenceKind? sequenceKind;
 
-  /// Skips the whole running sequence. Null hides the control — the steps
-  /// where skipping is unavailable (armed, branch) and uncatalogued sequences.
+  /// Skips the whole running sequence. Null hides the control — see
+  /// [TutorialOverlayWidget.showsSkip] for which cards go without it. An armed
+  /// card keeps it: a tap there completes the step wherever it lands, and the
+  /// Skip label just says so honestly.
   final VoidCallback? onSkip;
 
   final int currentStep;

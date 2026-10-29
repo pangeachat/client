@@ -19,11 +19,14 @@ import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
 import 'package:fluffychat/routes/onboarding/course_provider.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/central_course_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/joined_course_step_view.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/central_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/trial_info_provider.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -180,17 +183,13 @@ void main() {
     updatedAt: DateTime.utc(2026, 1, 1),
   );
 
-  Future<void> pumpPage(
-    WidgetTester tester, {
-    CoursePlanModel? course,
-    bool central = false,
-  }) async {
+  Future<void> pumpPage(WidgetTester tester, {CoursePlanModel? course}) async {
     final state = OnboardingStateController(
       accountUpdater: MockAccountUpdater(),
       courseProvider: MockCourseProvider(),
       avatarProvider: MockAvatarProvider(),
       trialInfoProvider: MockTrialInfoProvider(),
-    )..setJoinedRoomId(spaceId, central: central);
+    )..setJoinedRoomId(spaceId);
     if (course != null) state.setJoinedCoursePlan(course);
 
     await tester.pumpWidget(
@@ -284,25 +283,91 @@ void main() {
     expect(find.text('Coteacher Chen'), findsNothing);
   });
 
-  // A central course puts the learner in front of strangers, so the page
-  // says so (#9591); a class the learner chose to join does not need it.
-  testWidgets('a central-course join says members can see the learner', (
-    tester,
-  ) async {
-    seedOutline();
-    await pumpPage(tester, course: quest(), central: true);
-    expect(
-      find.text('Members of this course can see your name and profile.'),
-      findsOneWidget,
-    );
-  });
+  // After the level step a learner with no class code chooses between their
+  // language's central course and a private course of their own; the page
+  // says the course's members can see them (joining-courses.instructions.md
+  // § The central course).
+  group('CentralCourseStepView', () {
+    late int forwarded;
 
-  testWidgets('a class-code join does not', (tester) async {
-    seedOutline();
-    await pumpPage(tester, course: quest());
-    expect(
-      find.text('Members of this course can see your name and profile.'),
-      findsNothing,
-    );
+    Future<CentralCourseOnboardingStep> pumpChoice(WidgetTester tester) async {
+      forwarded = 0;
+      final step = CentralCourseOnboardingStep(
+        client: client,
+        state: OnboardingStateController(
+          accountUpdater: MockAccountUpdater(),
+          courseProvider: MockCourseProvider(),
+          avatarProvider: MockAvatarProvider(),
+          trialInfoProvider: MockTrialInfoProvider(),
+        ),
+        central: PublicCoursesChunk.tryParse({
+          'room_id': '!central:fakeServer.notExisting',
+          'name': 'German 1: Intensive Elementary German',
+          'num_joined_members': 40,
+          'world_readable': false,
+          'guest_can_join': false,
+          'join_rule': 'public',
+          'course_id': 'quest-1',
+          'target_language': 'de',
+          'central': true,
+        })!,
+        plan: quest(),
+        language: 'de',
+        maxRemainingSteps: 0,
+      );
+      await tester.pumpWidget(
+        Provider<MatrixState>.value(
+          value: _FakeMatrixState(client),
+          child: MaterialApp(
+            locale: const Locale('en'),
+            localizationsDelegates: L10n.localizationsDelegates,
+            supportedLocales: L10n.supportedLocales,
+            home: Scaffold(
+              body: CentralCourseStepView(
+                step: step,
+                loading: false,
+                error: null,
+                hasNextStep: false,
+                forward: () => forwarded++,
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      return step;
+    }
+
+    testWidgets('shows the course, who can see the learner, and both choices', (
+      tester,
+    ) async {
+      seedOutline();
+      await pumpChoice(tester);
+      expect(find.text('German A1: Your Journey'), findsOneWidget);
+      expect(
+        find.text('Members of this course can see your name and profile.'),
+        findsOneWidget,
+      );
+      expect(find.text('Join'), findsOneWidget);
+      expect(find.text('Make my own course instead'), findsOneWidget);
+    });
+
+    testWidgets('Join joins the central course', (tester) async {
+      seedOutline();
+      final step = await pumpChoice(tester);
+      await tester.tap(find.text('Join'));
+      expect(forwarded, 1);
+      expect(step.ownCourse, isFalse);
+    });
+
+    testWidgets('declining makes the learner a course of their own', (
+      tester,
+    ) async {
+      seedOutline();
+      final step = await pumpChoice(tester);
+      await tester.tap(find.text('Make my own course instead'));
+      expect(forwarded, 1);
+      expect(step.ownCourse, isTrue);
+    });
   });
 }
