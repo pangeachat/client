@@ -170,4 +170,42 @@ void main() {
       expect(fillTime(age: botFillMaxAge), isNull, reason: 'a day old');
     });
   });
+
+  group('heldSeatCount', () {
+    int held({
+      List<ActivityRoleModel> assignedRoles = const [],
+      int invitedMembers = 0,
+      bool botInvited = false,
+    }) => heldSeatCount(
+      assignedRoles: assignedRoles,
+      invitedMembers: invitedMembers,
+      botInvited: botInvited,
+      botUserId: bot,
+    );
+
+    test('a role holds a seat; a member who joined without one, such as a '
+        'course admin reading along, does not (#9701)', () {
+      // The admins are joined but appear nowhere in the count's inputs.
+      expect(held(assignedRoles: [role('human-role', human)]), 1);
+    });
+
+    test('an invite holds a seat', () {
+      expect(
+        held(assignedRoles: [role('human-role', human)], invitedMembers: 1),
+        2,
+      );
+    });
+
+    test("the bot's own role or invite is not counted", () {
+      expect(held(assignedRoles: roles.values.toList()), 1);
+      expect(
+        held(
+          assignedRoles: [role('human-role', human)],
+          invitedMembers: 1,
+          botInvited: true,
+        ),
+        1,
+      );
+    });
+  });
 }
