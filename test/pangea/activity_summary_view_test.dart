@@ -183,15 +183,19 @@ void main() {
     at: at,
   );
 
-  void setRequest(Room room, {required DateTime at, String? userId}) =>
-      setState(
-        room,
-        PangeaEventTypes.activitySummary,
-        ActivitySummaryStateKeys.request,
-        {'user_id': ?userId, 'requested_at': at.toIso8601String()},
-        sender: learner,
-        at: at,
-      );
+  void setRequest(
+    Room room, {
+    required DateTime at,
+    String? userId,
+    String sender = learner,
+  }) => setState(
+    room,
+    PangeaEventTypes.activitySummary,
+    ActivitySummaryStateKeys.request,
+    {'user_id': ?userId, 'requested_at': at.toIso8601String()},
+    sender: sender,
+    at: at,
+  );
 
   ActivitySummaryView view(
     Room room, {
@@ -419,6 +423,27 @@ void main() {
         theirs.loadingDeadline,
         requestAt.add(ActivitySummaryModel.requestTimeout),
       );
+    });
+
+    test('a request that names nobody is for its sender\'s own card', () {
+      final room = activityRoom(coursemateDone: true);
+      final cardAt = DateTime.now().subtract(const Duration(minutes: 5));
+      for (final userId in [learner, coursemate]) {
+        setCard(
+          room,
+          userId,
+          ActivitySummaryModel(
+            summary: card(userId, 'First try.'),
+            callStartedTs: cardAt.millisecondsSinceEpoch,
+          ),
+          at: cardAt,
+        );
+      }
+      setRequest(room, at: DateTime.now(), sender: coursemate);
+
+      final shown = view(room);
+      expect(shown.cardFor(learner)!.isLoading, isFalse);
+      expect(shown.cardFor(coursemate)!.isLoading, isTrue);
     });
 
     test('a request the bot already served does not show loading', () {
