@@ -10053,5 +10053,12 @@
     "centralCourseOfferBody": "É o curso de Pangea para estudantes de {language}. Os seus membros poden ver o teu nome e perfil.",
     "centralCourseOfferTitle": "Unirte a {course}?",
     "makeMyOwnCourseInstead": "Crear o meu propio curso",
-    "suggestMobileSignInSameAccount": "Despois inicia sesión na aplicación con esta conta."
+    "suggestMobileSignInSameAccount": "Despois inicia sesión na aplicación con esta conta.",
+    "botJoinsIn": "O Pangea Bot únese en {duration}",
+    "botIsJoining": "O Pangea Bot estase unindo…",
+    "playWithBotNowTitle": "Xogar co Pangea Bot agora?",
+    "playWithBotNowMessage": "Aínda ninguén se uniu. O Pangea Bot pode ocupar o asento libre agora, ou podes seguir esperando.",
+    "keepWaiting": "Seguir esperando",
+    "botTookSeatAfterAnHour": "Esta sesión estivo aberta durante unha hora, así que o Pangea Bot ocupou o asento libre.",
+    "botTookSeatAfterADay": "Esta sesión estivo aberta durante máis dun día, así que o Pangea Bot ocupou o asento libre. Envía unha mensaxe para comezar."
 }

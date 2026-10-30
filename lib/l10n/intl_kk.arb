@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "Бұл Pangea-ның {language} үйренушілеріне арналған курсы. Оның мүшелері сіздің атыңызды және профиліңізді көре алады.",
     "centralCourseOfferTitle": "{course} курсына қосыласыз ба?",
     "makeMyOwnCourseInstead": "Оның орнына өз курсымды жасаймын",
-    "suggestMobileSignInSameAccount": "Содан кейін осы аккаунтпен қолданбаға кіріңіз."
+    "suggestMobileSignInSameAccount": "Содан кейін осы аккаунтпен қолданбаға кіріңіз.",
+    "botJoinsIn": "Pangea Bot {duration} ішінде қосылады",
+    "botIsJoining": "Pangea Bot қосылуда…",
+    "playWithBotNowTitle": "Pangea Bot-пен қазір ойнайсыз ба?",
+    "playWithBotNowMessage": "Әлі ешкім қосылған жоқ. Pangea Bot қазір бос орынды ала алады немесе күте тұруыңызға болады.",
+    "keepWaiting": "Күте тұру",
+    "botTookSeatAfterAnHour": "Бұл сессия бір сағат бойы ашық болды, сондықтан Pangea Bot бос орынды алды.",
+    "botTookSeatAfterADay": "Бұл сессия бір күннен астам уақыт бойы ашық болды, сондықтан Pangea Bot бос орынды алды. Бастау үшін хабарлама жіберіңіз."
 }

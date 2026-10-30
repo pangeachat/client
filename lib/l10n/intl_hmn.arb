@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "Nws yog Pangea cov chav kawm rau cov neeg kawm lus {language}. Nws cov tswv cuab tuaj yeem pom koj lub npe thiab profile.",
     "centralCourseOfferTitle": "Koj puas xav koom {course}?",
     "makeMyOwnCourseInstead": "Kuv xav tsim kuv tus kheej qhov kev kawm",
-    "suggestMobileSignInSameAccount": "Tom qab ntawd nkag mus rau hauv lub app nrog tus account no."
+    "suggestMobileSignInSameAccount": "Tom qab ntawd nkag mus rau hauv lub app nrog tus account no.",
+    "botJoinsIn": "Pangea Bot koom hauv {duration}",
+    "botIsJoining": "Pangea Bot tab tom koom…",
+    "playWithBotNowTitle": "Ua si nrog Pangea Bot tam sim no?",
+    "playWithBotNowMessage": "Tsis muaj leej twg koom dua. Pangea Bot tuaj yeem zaum tam sim no, los yog koj tuaj yeem tos ntxiv.",
+    "keepWaiting": "Tos ntxiv",
+    "botTookSeatAfterAnHour": "Qhov kev sib tham no qhib tau ib teev, yog li Pangea Bot tau zaum.",
+    "botTookSeatAfterADay": "Qhov kev sib tham no qhib tau ntau tshaj ib hnub, yog li Pangea Bot tau zaum. Xa lus los pib."
 }

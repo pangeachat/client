@@ -17,6 +17,7 @@ import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_roles_event_widget.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_summary_widget.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/bot_seat_note.dart';
 import 'package:fluffychat/routes/chat/bot_notice_widget.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -219,6 +220,10 @@ class Message extends StatelessWidget {
 
       if (event.isShownBotNotice) {
         return BotNoticeWidget(event);
+      }
+
+      if (event.isBotSeatNote) {
+        return BotSeatNote(event);
       }
 
       // return StateMessage(event, onExpand: onExpand, isCollapsed: isCollapsed);

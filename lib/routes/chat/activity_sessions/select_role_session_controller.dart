@@ -222,16 +222,19 @@ class SelectRoleSessionController extends State<SelectRoleSession>
       if (!resp.isError && resp.result != null) {
         roomId = resp.result;
         final room = client.getRoomById(roomId!);
+        // The page can swap this picker for the waiting room before the launch
+        // returns, so continue from the page, which outlives the swap.
+        final page = widget.controller;
         if (PlayWithBotIntent.consume(activity.activityId) &&
             room != null &&
-            mounted) {
+            page.mounted) {
           await showDialog(
-            context: context,
+            context: page.context,
             builder: (_) => PlayWithBotLoadingDialog(room: room),
           );
         }
-        if (!mounted) return;
-        NavigationUtil.goToSpaceRoute(roomId, [], context);
+        if (!page.mounted) return;
+        NavigationUtil.goToSpaceRoute(roomId, [], page.context);
       }
     }
 

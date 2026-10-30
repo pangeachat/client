@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "Na Pangea in kõs fɔ {language} lɔna dɛn. In mɛmba dɛn go ebul si yu nem ɛn yu profil.",
     "centralCourseOfferTitle": "Jɔyn {course}?",
     "makeMyOwnCourseInstead": "Mek mi yon kos insted",
-    "suggestMobileSignInSameAccount": "Dɛn sayn in to di ap wit dis akaunt."
+    "suggestMobileSignInSameAccount": "Dɛn sayn in to di ap wit dis akaunt.",
+    "botJoinsIn": "Pangea Bot de go jɔyn insay {duration}",
+    "botIsJoining": "Pangea Bot de jɔyn…",
+    "playWithBotNowTitle": "Yu want fɔ ple wit Pangea Bot naw?",
+    "playWithBotNowMessage": "Nɔbɔdi nɔ jɔyn yet. Pangea Bot kin tek di ples naw, ɔ yu kin kɔntinyu fɔ wet.",
+    "keepWaiting": "Kɔntinyu fɔ wet",
+    "botTookSeatAfterAnHour": "Dis seshɔn bin opin fɔ wan awa, so Pangea Bot tek di ples we bin fri.",
+    "botTookSeatAfterADay": "Dis seshɔn bin opin fɔ pas wan de, so Pangea Bot tek di ples we bin fri. Send mɛsej fɔ stat."
 }

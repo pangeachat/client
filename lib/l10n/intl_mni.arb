@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "অসি {language} তম্লিবাশিংগী পাংগিয়াগী কোর্সনি। মসিগী মেম্বরশিংনা নখোইগী মমিং অমসুং প্রোফাইল উবা ফংগনি।",
     "centralCourseOfferTitle": "{course}দা শরুক য়াগদ್ರಾ?",
     "makeMyOwnCourseInstead": "ঐহাক্কী ওইবা কোর্স অমা শাগনি",
-    "suggestMobileSignInSameAccount": "అదుగీ మతంగ్ద, అసింగీ అకౌంట్ అసిదా ఏప్ అసిదా సైన్ ఇన్ తౌ"
+    "suggestMobileSignInSameAccount": "అదుగీ మతంగ్ద, అసింగీ అకౌంట్ అసిదా ఏప్ అసిదా సైన్ ఇన్ తౌ",
+    "botJoinsIn": "{duration} da Pangea Bot yaokhi",
+    "botIsJoining": "Pangea Bot yaoribani…",
+    "playWithBotNowTitle": "Pangea Bot ga loinana houjik sanaba?",
+    "playWithBotNowMessage": "Kanadasu houjik faoba yaodri. Pangea Bot na houjik khongpham louba yai, nattraga nangna ngairaga leiba yai.",
+    "keepWaiting": "Ngairaga leiyu",
+    "botTookSeatAfterAnHour": "Seesion asi pung ama muk hangkhre, aduna Pangea Bot na khongpham lourabani.",
+    "botTookSeatAfterADay": "Seesion asi numit ama muk hangkhre, aduna Pangea Bot na khongpham lourabani. Haurunaba wahei amata thabiyu."
 }

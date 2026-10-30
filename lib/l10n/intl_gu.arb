@@ -2515,5 +2515,12 @@
     "centralCourseOfferBody": "આ {language} શીખનારાઓ માટે પાંગિયાનો કોર્સ છે. તેના સભ્યો તમારું નામ અને પ્રોફાઇલ જોઈ શકે છે.",
     "centralCourseOfferTitle": "{course} માં જોડાઓ?",
     "makeMyOwnCourseInstead": "તેના બદલે મારો પોતાનો કોર્સ બનાવો",
-    "suggestMobileSignInSameAccount": "પછી આ એકાઉન્ટ વડે ઍપમાં સાઇન ઇન કરો."
+    "suggestMobileSignInSameAccount": "પછી આ એકાઉન્ટ વડે ઍપમાં સાઇન ઇન કરો.",
+    "botJoinsIn": "Pangea Bot {duration}માં જોડાશે",
+    "botIsJoining": "Pangea Bot જોડાઈ રહ્યું છે…",
+    "playWithBotNowTitle": "હમણાં Pangea Bot સાથે રમવું છે?",
+    "playWithBotNowMessage": "હજી કોઈ જોડાયું નથી. Pangea Bot હમણાં ખાલી જગ્યા લઈ શકે છે, અથવા તમે રાહ જોઈ શકો છો.",
+    "keepWaiting": "રાહ જોતા રહો",
+    "botTookSeatAfterAnHour": "આ સત્ર એક કલાક માટે ખુલ્લું હતું, તેથી Pangea Botએ ખાલી જગ્યા લીધી.",
+    "botTookSeatAfterADay": "આ સત્ર એક દિવસથી વધુ સમય માટે ખુલ્લું હતું, તેથી Pangea Botએ ખાલી જગ્યા લીધી. શરૂ કરવા માટે સંદેશ મોકલો."
 }
