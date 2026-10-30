@@ -55,7 +55,7 @@ Decision; reason. Who re-decides is unassigned throughout.
 
 - The saved recording is transcribed after the call, live transcription is the fallback, and each side succeeds or fails alone.
 - Transcription is paid: a subscriber's app also fills in the other person's side. With no subscriber nothing is transcribed, though audio is kept; others see a locked placeholder.
-- Each side uses its speaker's target language, fixed at call start.
+- Each side may come back in either of its speaker's languages, fixed at call start: learners speak both in a call. A third language usually comes back empty.
 - Only the two chat members get a section, so a forged card cannot add a speaker.
 - Sides merge on the call server's clock, so a wrong phone clock never changes who spoke first.
 - A side that cannot be ordered shows each speaker separately. Pauses are not drawn.

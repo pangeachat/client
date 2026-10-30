@@ -268,6 +268,9 @@ class CallTranscriptSink implements CallAudioSink {
       // giving up `stt_tokens`, and `constructs()` is gated on those --
       // the credit would silently go to zero on every call.
       includeWordTimings: true,
+      // A learner in a call speaks their L1 too; its words come back in L1
+      // rather than translated into the L2 (#3351).
+      allowSpeakerL1: true,
       config: SpeechToTextAudioConfigModel(
         encoding: AudioEncodingEnum.linear16,
         sampleRateHertz: chunk.sampleRate,

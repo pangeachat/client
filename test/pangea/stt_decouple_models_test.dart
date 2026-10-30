@@ -105,6 +105,39 @@ void main() {
     });
   });
 
+  group('SpeechToTextRequestModel — allow_speaker_l1 (#3351)', () {
+    final audio = Uint8List.fromList(List<int>.generate(64, (i) => i));
+    SpeechToTextRequestModel req({required bool allow}) =>
+        SpeechToTextRequestModel(
+          audioContent: audio,
+          config: _sharedConfig,
+          allowSpeakerL1: allow,
+        );
+
+    test('sent only when true, so a voice message is byte-identical', () {
+      expect(req(allow: true).toJson()['allow_speaker_l1'], isTrue);
+      expect(
+        req(allow: false).toJson().containsKey('allow_speaker_l1'),
+        isFalse,
+      );
+      final voice = buildVoiceSttRequest(
+        audioContent: audio,
+        mimeType: 'audio/x-wav',
+        userL1: 'en',
+        userL2: 'es',
+      );
+      expect(voice.toJson().containsKey('allow_speaker_l1'), isFalse);
+    });
+
+    test('the flag alone separates cache slot, equality and hash', () {
+      final pinned = req(allow: false);
+      final open = req(allow: true);
+      expect(pinned.storageKey, isNot(open.storageKey));
+      expect(pinned == open, isFalse);
+      expect({pinned, open, req(allow: true)}, hasLength(2));
+    });
+  });
+
   group('TokensRequestModel — langCode in identity/hash', () {
     TokensRequestModel model(String? langCode) => TokensRequestModel(
       fullText: 'hola mundo',
