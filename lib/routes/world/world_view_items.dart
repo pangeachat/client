@@ -99,13 +99,14 @@ List<WorldShip> shipsOf(Iterable<CourseTripView> courses, DateTime now) {
 /// The cities along the learner's trips, each once, with the [ships] there
 /// (from [shipsOf] over the same courses) and the learner's XP in the city's
 /// activities ([xpByActivity], `Client.userXpByActivity`), which sizes the
-/// dot and, once above zero, stamps it.
+/// dot and, once above zero, stamps it. An activity two courses both list
+/// counts once.
 List<WorldCity> citiesOf(
   Iterable<CourseTripView> courses,
   Map<String, int> xpByActivity,
   List<WorldShip> ships,
 ) {
-  final byKey = <String, ({MissionCity city, int xp})>{};
+  final byKey = <String, ({MissionCity city, Set<String> activityIds})>{};
   for (final course in courses) {
     final copy = course.copy;
     if (copy == null || !copy.isTrip) continue;
@@ -113,12 +114,11 @@ List<WorldCity> citiesOf(
       final city = mission.city;
       if (city == null) continue;
       final key = cityKeyOf(city);
-      var xp = 0;
-      for (final id in mission.activityIds) {
-        xp += xpByActivity[id] ?? 0;
-      }
       final seen = byKey[key];
-      byKey[key] = (city: city, xp: xp + (seen?.xp ?? 0));
+      byKey[key] = (
+        city: city,
+        activityIds: {...?seen?.activityIds, ...mission.activityIds},
+      );
     }
   }
   return [
@@ -131,7 +131,10 @@ List<WorldCity> citiesOf(
           for (final ship in ships)
             if (ship.cityKey == key) ship.roomId,
         ],
-        xp: value.xp,
+        xp: value.activityIds.fold(
+          0,
+          (sum, id) => sum + (xpByActivity[id] ?? 0),
+        ),
       ),
   ];
 }

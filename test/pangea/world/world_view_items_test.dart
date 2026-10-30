@@ -92,6 +92,23 @@ void main() {
     },
   );
 
+  test('an activity two courses list at one city counts its XP once', () {
+    final sharing = CourseTripView(
+      roomId: '!es3:x',
+      name: 'Central',
+      copy: trip([
+        ('lo1', ['a2', 'a3'], oaxaca),
+      ]),
+      position: null,
+    );
+    final oax = citiesOf(
+      [spanish, sharing],
+      {'a2': 120, 'a3': 30},
+      const [],
+    ).firstWhere((c) => c.name == 'Oaxaca');
+    expect(oax.xp, 150);
+  });
+
   test('a stop with no listed city puts no ship on the map', () {
     final unplaced = CourseTripView(
       roomId: '!u:x',
