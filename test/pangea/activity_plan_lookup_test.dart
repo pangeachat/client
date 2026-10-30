@@ -9,7 +9,8 @@ import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
 
 /// The 404-vs-transient split behind the removed-activity fallback ladder
-/// (activity-start-page.instructions.md): only a confirmed 404 may walk the
+/// (activity-start-page.instructions.md, "When the activity can't be
+/// fetched"): only a confirmed 404 may walk the
 /// ladder (embedded state plan → archived view) or claim "no longer supported";
 /// every other failure stays a transient error, so an outage can never
 /// mislabel healthy activities as removed. 404s are also expected data state

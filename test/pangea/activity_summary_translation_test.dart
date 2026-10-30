@@ -35,7 +35,8 @@ import 'get_test_client.dart';
 /// The bot writes the summary in the activity's language of instruction. A
 /// viewer whose first language differs sees it translated: the loading state
 /// stays up while the translation is fetched, and a failed translation leaves
-/// the summary as written (#9199; activity-session.instructions.md).
+/// the summary as written (#9199; activity-session.instructions.md, "The
+/// summary").
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 

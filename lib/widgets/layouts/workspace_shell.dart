@@ -1133,8 +1133,8 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             // subpages open at full (their content is unrelated to the map,
             // #8659) — except the single-course preview they push, which
             // rests low (#7826); other sections and the activity plan open at
-            // half (the plan keeps its pin visible above — the Google Maps
-            // UX).
+            // the half stop (for the plan that stop is its minimized rest, so
+            // its pin stays visible above — the Google Maps UX).
             cavityDefaultsToPeek: cavityToken?.type.defaultCavityToPeek == true,
             cavityDefaultsToFull:
                 cavityToken?.type.defaultCavityToFull == true &&
@@ -1341,7 +1341,8 @@ class _ShellLayout {
   /// Index into [leftTokens] of the panel hosted in the nav widget's expandable
   /// **cavity** on a narrow screen — the chat list, the Courses/add-course hub,
   /// the course family (card + coursepage detail), or the activity plan (a
-  /// half-open sheet with the camera on its pin — the Google Maps UX). Null
+  /// sheet resting minimized, with the camera on its pin — the Google Maps UX).
+  /// Null
   /// when nothing cavity-hosted is the narrow focus; [hasCavity] is its
   /// presence. Full-screen surfaces (a room, a session, any right panel) never
   /// ride the cavity. See `routing.instructions.md` → Single-column bottom nav.
@@ -1587,7 +1588,7 @@ class _ShellLayout {
     final hasCavity = cavityIndex != null;
 
     // The floating nav widget shows wherever the narrow chrome does — the bare
-    // map or a cavity surface (which includes the activity plan's half-open
+    // map or a cavity surface (which includes the activity plan's minimized
     // sheet, #7530) — and is covered by a focused full-screen surface (a
     // room/session, a center-detail page, or a right panel expanding over it).
     final navWidgetVisible =
@@ -1648,8 +1649,9 @@ class _ShellLayout {
     // the band the left/right overlays don't model. Pad the camera's bottom by
     // the sheet's minimized rest (the height it opens at) so a focused pin
     // lands in the exposed map ABOVE the sheet instead of behind it (#7640;
-    // activities doc — "the plan keeps its pin visible above", the Google Maps
-    // target UX). The band is the minimized cavity height plus the bottom safe
+    // world-map.instructions.md: focusing an activity pans its pin into the
+    // exposed map, the Google Maps UX). The band is the minimized cavity
+    // height plus the bottom safe
     // area and a margin of breathing room; the sheet carries no rail. An
     // estimate of the resting sheet, deliberately not live-tracked: dragging
     // the sheet (or maximizing it) must not yank the camera. It takes the

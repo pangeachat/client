@@ -183,7 +183,9 @@ class _ActivityArchiveState extends State<ActivityArchive> {
 /// in their current language, in course order — a Mission two courses share
 /// is one item, read from the first — each a [MissionTile] whose tap opens
 /// the Mission's page with the sessions that fed it; then the sessions no
-/// joined course's plan accounts for, under "Other activities".
+/// joined course's plan accounts for, under "Other activities". A Mission's
+/// session from a second course or another language lands there too today (an
+/// open question in activities.instructions.md).
 class _ObjectiveList extends StatelessWidget {
   final List<CourseMissions> courses;
   final ProgressionResolution progression;

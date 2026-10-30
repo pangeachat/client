@@ -138,7 +138,9 @@ abstract class ActivitySheetCtaHeight {
   static const double _aboveCta = 144.0;
 
   /// The tallest minimized rest, so a very tall CTA area (a very large text
-  /// size) clips rather than covering the map.
+  /// size) clips rather than covering the map. The minimized sheet therefore
+  /// grows to fit its buttons only up to this cap (an open question in
+  /// activity-start-page.instructions.md).
   static const double maxSheetHeight = 360.0;
 
   /// The minimized sheet height that fits a CTA area [ctaHeight] tall.
@@ -150,6 +152,9 @@ abstract class ActivitySheetCtaHeight {
 /// sheet grows over the top analytics bar, so the shell hides the bar (its
 /// band is reclaimed for the sheet's height). Set by the nav cavity for the
 /// activity only — false for every other cavity and when nothing is open.
+/// Phones only: the wide web panel has no maximize, so the analytics cluster
+/// stays beside the card (activity-start-page.instructions.md, "The sheet and
+/// its container").
 abstract class ActivitySheetFull {
   static final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
 

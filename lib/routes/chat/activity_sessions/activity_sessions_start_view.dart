@@ -212,8 +212,8 @@ class ActivitySessionStartView extends StatelessWidget {
               ? const Center(child: CircularProgressIndicator.adaptive())
               // Transient fetch failure — an error, never the archived view or
               // the "no longer supported" notice: the fallback ladder in
-              // activity-start-page.instructions.md engages only on a confirmed
-              // 404.
+              // activity-start-page.instructions.md, "When the activity can't
+              // be fetched", engages only on a confirmed 404; no retry button.
               : controller.error != null
               ? Center(
                   child: Padding(
@@ -465,7 +465,8 @@ class _ActivityStartInfoRow extends StatelessWidget {
           // Never empty: the flag when the language resolves to one, else a
           // langcode chip (shared with the analytics cluster's flag). Doubles
           // as the switch to that language when it isn't the learner's
-          // target (activity-start-page.instructions.md).
+          // target (activity-start-page.instructions.md, "The top of the
+          // page").
           ContextLanguageSwitchTarget(
             contentLanguage: language,
             builder: (context, canSwitch) => LanguageFlagChip(
@@ -533,8 +534,9 @@ class _IconLabel extends StatelessWidget {
 
 /// Archived body for a removed activity with no plan recoverable from room
 /// state (the last rung of the fallback ladder in
-/// activity-start-page.instructions.md):
-/// the "no longer supported" notice, plus whatever the room itself holds —
+/// activity-start-page.instructions.md, "When the activity can't be
+/// fetched"): the "no longer supported" notice, plus whatever the room itself
+/// holds —
 /// each recorded role's occupant, role name, earned star count, and finished
 /// status — so past progress stays reviewable.
 class _ArchivedSessionFallbackBody extends StatelessWidget {

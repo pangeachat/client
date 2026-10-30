@@ -71,6 +71,8 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
 
   void _toggleShowDropdown() => setShowDropdown(!visibilityNotifier.value);
 
+  /// Finishes only this learner's own role, early if they like, with no
+  /// confirmation step (activity-session.instructions.md, "The goal header").
   Future<void> _finishActivityForMe(BuildContext context) async {
     final resp = await showFutureLoadingDialog(
       context: context,

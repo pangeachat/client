@@ -47,8 +47,9 @@ import 'package:fluffychat/utils/url_launcher.dart';
 ///
 /// The embed stays inline: fullscreen is fully disabled (no fullscreen button,
 /// no auto-fullscreen on landscape rotation, no fullscreen-on-vertical-drag).
-/// Activity video is an in-place plan-page stimulus, and the package's
-/// fullscreen has no in-app exit affordance the way we mount it, so on a
+/// Activity video plays in place on web and desktop and on its own screen on
+/// phones (`ActivityVideoScreen`), and the package's fullscreen has no in-app
+/// exit affordance the way we mount it, so on a
 /// landscape tablet it would otherwise take over the screen with no way out and
 /// trap the learner (#7500).
 ///

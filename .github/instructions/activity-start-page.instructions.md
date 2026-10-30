@@ -22,7 +22,7 @@ What a learner sees on tapping an activity, in every state. Its job is to start 
 
 ## The top of the page
 
-- Title row: a control top-left (a close X, or a back arrow to the open sessions list or the course card), then the title, share and focus; flag sits with the description, off the buttons. Info row, always: creator, language (its chip [switches to it](profile.instructions.md#switching-from-context)), level, players, and the rating, shown nowhere else.
+- Title row: a control top-left (a close X, or a back arrow to the open sessions list or the course card), then the title, share and focus; flag sits with the description, off the buttons. Info row, always: creator, language (its chip [switches to it](profile.instructions.md#switching-from-context)), level, players, and the rating (NEW until rated), shown nowhere else.
 - The creator is the owner, from their profile, so teachers control their credit, else their account id and a placeholder icon. Pangea's name and logo only for Pangea's own: an ugly credit beats giving Pangea a teacher's work.
 - A vocab word opens its card; another word switches cards in one tap; any other tap only closes it.
 

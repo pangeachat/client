@@ -275,7 +275,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   /// Back out of a session viewed from the join list: leave it if no role
   /// was picked (joining only to look shouldn't keep you a member), then
-  /// return to the activity, which lands on its join list again.
+  /// return to the activity, which lands on its join list again. Only this
+  /// arrow leaves: browser or phone back keeps the room joined (an open
+  /// question in activity-start-page.instructions.md).
   void backToJoinList() {
     final room = activityRoom;
     if (room != null &&
@@ -560,8 +562,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
         activity = lookup.plan;
       case ActivityPlanLookupStatus.removed:
         // Removed-activity fallback ladder
-        // (activity-start-page.instructions.md): legacy rooms embed the full plan in room state — render it
-        // view-only; with no plan anywhere the view shows the archived body
+        // (activity-start-page.instructions.md, "When the activity can't be
+        // fetched"): legacy rooms embed the full
+        // plan in room state — render it view-only; with no plan anywhere the
+        // view shows the archived body
         // built from role/goal state.
         if (!mounted) return;
         final statePlan = activityRoom?.activityPlan;
@@ -581,7 +585,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   /// the course [ShareRoomButton]: copy-only (never the OS share sheet), and
   /// `hideCurrentSnackBar` + `showCloseIcon` so rapid taps replace the toast
   /// (with a dismissal X) instead of queueing a backlog. See
-  /// activity-start-page.instructions.md.
+  /// activity-start-page.instructions.md, "The top of the page".
   ///
   /// Path URL strategy (main.dart) means the link carries no `#` — on web a
   /// fragment is ignored (`shouldNavigateToIncomingUri` is false there) and the
@@ -669,7 +673,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   /// The learner has confirmed a role and is waiting for the room to fill, but
   /// the activity chat hasn't begun — the one live state where they can still
   /// back out via the app-bar "…" menu. See
-  /// activity-start-page.instructions.md.
+  /// activity-start-page.instructions.md, "The waiting room".
   bool get isPendingSession {
     final room = activityRoom;
     return _sessionState == SessionState.confirmedRole &&

@@ -106,7 +106,8 @@ ActivityPlanModel activityPlanFromV2(Map<String, dynamic> doc) {
     activityId: (plan['activity_id'] ?? doc['id']) as String,
     // `version_id` is the choreo fetch's content-signature of the plan;
     // `updatedAt` is the canonical row's version stamp for direct CMS reads.
-    // Either pins the session at launch (activities.instructions.md).
+    // Either pins the session at launch (org activities.instructions.md,
+    // "Editing semantics").
     versionId: (doc['version_id'] ?? doc['updatedAt']) as String?,
     // Pin-resolution outcome from the fetch (top-level, like version_id).
     // Absent for direct CMS reads → defaults to "honored".

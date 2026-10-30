@@ -29,8 +29,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// and its container").
 ///
 /// The parent course is the active course space when one is selected;
-/// otherwise the first joined course whose plan includes the activity (or none
-/// — you no longer need a course to play).
+/// otherwise the one joined course that lists the activity, or none when
+/// several do or the match is incomplete — you no longer need a course to play
+/// (activities.instructions.md, "A running activity is a chat room").
 class LeftPanelActivityDetailsSubpage extends StatefulWidget {
   final ActivityTokenParam param;
   final String? parentSpaceId;

@@ -751,8 +751,8 @@ class QuestRepo {
   /// Resolve every plan's media `upload_id`s to CDN URLs in ONE batched read,
   /// returning the plans with resolved media. `upload_id` is plain text on
   /// `activities-v2` (not a relationship), so a depth read never hydrates the
-  /// URL — this second `media`-collection read is the contract. See
-  /// `.github/.github/instructions/activities.instructions.md`.
+  /// URL — this second `media`-collection read is the contract. See org
+  /// architecture.instructions.md.
   static Future<List<ActivityPlanModel>> _withResolvedMedia(
     List<ActivityPlanModel> plans,
   ) async {

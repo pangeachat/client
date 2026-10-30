@@ -7,7 +7,7 @@ description: "How a learner finds and starts a conversation activity, its media,
 
 ## Purpose
 
-How learners find and start activities, and the record they leave. What an activity is belongs to the org [activities doc](../../../.github/.github/instructions/activities.instructions.md); the start page, with its waiting room, to [activity-start-page](activity-start-page.instructions.md); a running session to [activity-session](activity-session.instructions.md).
+How learners find and start activities, and the record they leave. What an activity is belongs to the org [activities doc](../../../.github/.github/instructions/activities.instructions.md); the start page, with its waiting room, to [activity-start-page](activity-start-page.instructions.md); a running session to [activity-session](activity-session.instructions.md); Missions, stars and XP to [quests](quests.instructions.md).
 
 ## The experience
 
@@ -17,12 +17,14 @@ How learners find and start activities, and the record they leave. What an activ
 4. After finishing, the learner is prompted to rate the activity and optionally comment, which affects its ranking for everyone.
 5. Once it ends, it leaves Chats, and the Learning Objectives page keeps the record.
 
+## Cards and pins
+
+- Cards and pins show the activity's first media item and load the whole activity before opening. A screen over the read budget fills in over seconds, not blanking for a minute.
+
 ## A running activity is a chat room
 
 - A session is a chat room, so it reuses the chat app.
-- Activities belong to Missions.
-- Cards and pins load the whole activity before opening. A screen over the read budget fills in over seconds, not blanking for a minute.
-- A session is shared into every joined course that lists its activity, in the session's language, so coursemates can join. A course lists an activity by its own copy, else by its pins, not by Mission overlap, and shows only sessions it lists. The course it started from is always included.
+- Activities belong to Missions. A session is shared into every joined course that lists its activity, in the session's language, so coursemates can join. A course lists an activity by its own copy, else by its pins, not by Mission overlap, and shows only sessions it lists. The course it started from is always included.
 - The started-from course is where it was launched; a map launch records one only when exactly one joined course lists the activity.
 - A session's panel waits at most 10 seconds for its room.
 
@@ -54,5 +56,4 @@ How learners find and start activities, and the record they leave. What an activ
 ## Open questions
 
 - Which course does a shared session belong to, including whose avatar its Chats row shows? ([#9328](https://github.com/pangeachat/client/discussions/9328))
-- Should browser or phone back leave a session the learner only viewed, as the back arrow does?
 - Should a Mission's sessions from a second course or another language show on its tile, not under Other activities?

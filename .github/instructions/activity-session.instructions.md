@@ -7,14 +7,14 @@ description: "What a learner sees inside a running activity session and when it 
 
 ## Purpose
 
-What a learner sees while playing a conversation activity and when it ends. Finding and starting one, and its media, belong to [activities](activities.instructions.md).
+What a learner sees while playing a conversation activity and when it ends. Finding and starting one, and its media, belong to [activities](activities.instructions.md) and the [start page](activity-start-page.instructions.md).
 
 ## The experience
 
 1. The chat opens with the activity's media on top and a goal header pinned above the messages: the learner's goals as diamonds, their session XP and the current goal.
 2. Target vocab the learner uses turns gold, in messages and in the vocab chips.
 3. Earning a goal fills its diamond; earning them all turns the header gold.
-4. The learner taps "I'm done!" and a rating card appears. Once everyone is done, the summary replaces the header.
+4. The learner taps "I'm done!" and their own summary appears at once, with a rating card. In a roleplay, the other players' summaries join it as each finishes.
 5. The session saves itself and leaves Chats. Its transcript can be downloaded from the chat's menu.
 
 ## Target vocab in the conversation
@@ -38,8 +38,9 @@ What a learner sees while playing a conversation activity and when it ends. Find
 
 ## The summary
 
-- The summary replaces the header once everyone is done, showing the picked participant's goals, the viewer's own by default.
-- A failed regeneration keeps the old summary; a failed translation shows it as written.
+- Each learner's summary is made when they finish, in either mode, with no group blurb ([activity summary](../../../.github/.github/instructions/activity-summary.instructions.md)).
+- The summary replaces the header, showing the picked participant's goals, the viewer's own by default.
+- A failed summary can be retried, and a learner can flag one to be regenerated. A failed regeneration keeps the old summary; a failed translation shows it as written.
 
 ## Completion saves itself
 
@@ -62,9 +63,10 @@ What a learner sees while playing a conversation activity and when it ends. Find
 ## Downloading the transcript
 
 - Any member can download, since it shows only what they can read; web only until the native path is tested.
-- The session's menu also has Search and Chat details; Delete is for admins. Invite leaves once the session ends for everyone. End activity shows while the learner holds an unfinished role in a started session, and Leave until they take a role in one.
+- The menu also has Search, Chat details and admin-only Delete. Invite leaves once the session ends for everyone; End activity shows while the learner holds an unfinished role in a started session, Leave until they take a role in one.
 
 ## Open questions
 
+- The app still waits until every player is done and shows one shared summary with a group blurb. Per-learner summaries need the bot and choreographer changed first.
 - Should research-study or minor-heavy rooms restrict exporting everyone's messages?
 - Should an archived session show its timeline and saved summary?
