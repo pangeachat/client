@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Geet op no der Missioun {index}",
     "enterCityEarly": "Fréizäiteg antrëtt",
     "enterCityEarlyTitle": "Fréizäiteg an {city} antrieden?",
-    "enterCityEarlyBody": "Dës Stad ass nach net fir dech op. Virun der Klass reesen huet e Präis; wat et kascht, gëtt nach decidéiert, dofir gëtt elo nach näischt verrechent."
+    "enterCityEarlyBody": "Dës Stad ass nach net fir dech op. Virun der Klass reesen huet e Präis; wat et kascht, gëtt nach decidéiert, dofir gëtt elo nach näischt verrechent.",
+    "botJoinsIn": "Pangea Bot kënnt a(n) {duration}",
+    "botIsJoining": "Pangea Bot kënnt derbäi…",
+    "playWithBotNowTitle": "Elo mam Pangea Bot spillen?",
+    "playWithBotNowMessage": "Nach keen huet matgemaach. De Pangea Bot kann elo de fräie Sëtz huelen, oder Dir kënnt weider waarden.",
+    "keepWaiting": "Weider waarden",
+    "botTookSeatAfterAnHour": "Dës Sessioun war eng Stonn laang op, dofir huet de Pangea Bot de fräie Sëtz geholl.",
+    "botTookSeatAfterADay": "Dës Sessioun war iwwer een Dag laang op, dofir huet de Pangea Bot de fräie Sëtz geholl. Schéckt eng Noriicht fir unzefänken."
 }

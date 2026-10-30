@@ -10972,5 +10972,12 @@
     "missionOpensAfter": "נפתח לאחר משימה {index}",
     "enterCityEarly": "היכנס/י מוקדם",
     "enterCityEarlyTitle": "להיכנס ל{city} מוקדם?",
-    "enterCityEarlyBody": "העיר הזו עדיין לא פתוחה עבורך. נסיעה לפני הכיתה כרוכה בעלות; העלות עדיין נקבעת, אז כרגע לא נגבה תשלום."
+    "enterCityEarlyBody": "העיר הזו עדיין לא פתוחה עבורך. נסיעה לפני הכיתה כרוכה בעלות; העלות עדיין נקבעת, אז כרגע לא נגבה תשלום.",
+    "botJoinsIn": "בוט Pangea מצטרף בעוד {duration}",
+    "botIsJoining": "בוט Pangea מצטרף…",
+    "playWithBotNowTitle": "לשחק עם בוט Pangea עכשיו?",
+    "playWithBotNowMessage": "אף אחד עוד לא הצטרף. בוט Pangea יכול לתפוס את המקום הפנוי עכשיו, או שאתה יכול להמשיך לחכות.",
+    "keepWaiting": "המשך לחכות",
+    "botTookSeatAfterAnHour": "השיחה הזו הייתה פתוחה במשך שעה, אז בוט Pangea תפס את המקום הפנוי.",
+    "botTookSeatAfterADay": "השיחה הזו הייתה פתוחה למעלה מיום, אז בוט Pangea תפס את המקום הפנוי. שלח הודעה כדי להתחיל."
 }

@@ -91,8 +91,9 @@ class ActivitySummary extends StatelessWidget {
     final theme = Theme.of(context);
     // Deep-link autostart: the autoplay index rides the activity token's
     // fields (route_facts.activityFor; the legacy `?autoplay=` param is
-    // accepted inbound). Only the plan page (not the in-session render)
-    // honors it.
+    // accepted inbound). Read only off the chat, and this widget's one call
+    // site (message.dart) is in chat, so the token is currently not
+    // consumed.
     final autoplayIndex = inChat
         ? null
         : activityFor(GoRouterState.of(context))?.autoplay;

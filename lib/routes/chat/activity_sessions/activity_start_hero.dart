@@ -25,10 +25,11 @@ import 'package:fluffychat/widgets/url_image_widget.dart';
 /// The activity start page's hero: a full-bleed background over which the role
 /// cards and goals dropdown float.
 ///
-/// The plan page is a focused surface, so media plays in place (see
-/// activities.instructions.md). When the activity's lead media block is a video
-/// or YouTube clip, the hero shows that block's poster with a play badge, and
-/// tapping it mounts the player inline. While the clip plays, the role cards,
+/// The plan page shows only the lead media block; the live session pages
+/// through the rest (activities.instructions.md, "Media is a carousel").
+/// When the lead block is a video or YouTube clip, the hero shows its poster
+/// with a play badge; nothing plays until it is tapped, and the tap mounts the
+/// player inline. While the clip plays, the role cards,
 /// gradient, and goals overlay fade out so the player is unobstructed; a close
 /// control returns to the poster and restores the overlays.
 ///
@@ -375,7 +376,8 @@ class _ActivityStartHeroState extends State<ActivityStartHero> {
 
 /// The learner's total XP from an activity, as the completed stamp with its
 /// XP — the badge the activity's card wears, larger — or nothing while they
-/// have none. Follows their XP as it is read.
+/// have none. Follows their XP as it is read; what counts is
+/// quests.instructions.md, "What fills a Mission".
 class _ActivityXpTotalBadge extends StatelessWidget {
   final String activityId;
 

@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Inafunguliwa baada ya Misheni {index}",
     "enterCityEarly": "Ingia mapema",
     "enterCityEarlyTitle": "Uingie {city} mapema?",
-    "enterCityEarlyBody": "Jiji hili bado halijafunguliwa kwako. Kusafiri kabla ya darasa kuna gharama; gharama yake bado inaamuliwa, kwa hivyo kwa sasa hakuna kinachotozwa."
+    "enterCityEarlyBody": "Jiji hili bado halijafunguliwa kwako. Kusafiri kabla ya darasa kuna gharama; gharama yake bado inaamuliwa, kwa hivyo kwa sasa hakuna kinachotozwa.",
+    "botJoinsIn": "Pangea Bot anajiunga baada ya {duration}",
+    "botIsJoining": "Pangea Bot anajiunga…",
+    "playWithBotNowTitle": "Ucheze na Pangea Bot sasa?",
+    "playWithBotNowMessage": "Hakuna aliyejiunga bado. Pangea Bot anaweza kuchukua nafasi iliyo wazi sasa, au unaweza kuendelea kusubiri.",
+    "keepWaiting": "Endelea kusubiri",
+    "botTookSeatAfterAnHour": "Kipindi hiki kilikuwa wazi kwa saa moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi.",
+    "botTookSeatAfterADay": "Kipindi hiki kilikuwa wazi kwa zaidi ya siku moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi. Tuma ujumbe ili kuanza."
 }

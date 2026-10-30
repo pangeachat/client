@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Opnar eftir þraut {index}",
     "enterCityEarly": "Fara inn snemma",
     "enterCityEarlyTitle": "Fara inn í {city} snemma?",
-    "enterCityEarlyBody": "Þessi borg er ekki opin þér ennþá. Að ferðast á undan bekknum hefur kostnað; hvað það kostar er enn verið að ákveða, svo í bili er ekkert rukkað."
+    "enterCityEarlyBody": "Þessi borg er ekki opin þér ennþá. Að ferðast á undan bekknum hefur kostnað; hvað það kostar er enn verið að ákveða, svo í bili er ekkert rukkað.",
+    "botJoinsIn": "Pangea Bot tekur þátt eftir {duration}",
+    "botIsJoining": "Pangea Bot er að taka þátt…",
+    "playWithBotNowTitle": "Spila með Pangea Bot núna?",
+    "playWithBotNowMessage": "Enginn hefur tekið þátt ennþá. Pangea Bot getur tekið lausa sætið núna, eða þú getur haldið áfram að bíða.",
+    "keepWaiting": "Halda áfram að bíða",
+    "botTookSeatAfterAnHour": "Þessi lota var opin í klukkutíma, svo Pangea Bot tók lausa sætið.",
+    "botTookSeatAfterADay": "Þessi lota var opin í yfir sólarhring, svo Pangea Bot tók lausa sætið. Sendu skilaboð til að byrja."
 }

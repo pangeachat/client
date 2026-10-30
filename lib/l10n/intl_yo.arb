@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Yóò sílẹ̀ lẹ́hìn Àfojúsùn {index}",
     "enterCityEarly": "Wọlé ní kùtùkùtù",
     "enterCityEarlyTitle": "Ṣé o fẹ́ wọ {city} ní kùtùkùtù?",
-    "enterCityEarlyBody": "Ìlú yìí kò tíì sílẹ̀ fún ọ. Rírìn lọ síwájú àwọn akẹ́kọ̀ọ́ yóò ní owó; owó tí yóò jẹ́ kò tíì dájú, nítorí náà kò sí owó tí a gbà lọ́wọ́ rẹ báyìí."
+    "enterCityEarlyBody": "Ìlú yìí kò tíì sílẹ̀ fún ọ. Rírìn lọ síwájú àwọn akẹ́kọ̀ọ́ yóò ní owó; owó tí yóò jẹ́ kò tíì dájú, nítorí náà kò sí owó tí a gbà lọ́wọ́ rẹ báyìí.",
+    "botJoinsIn": "Pangea Bot darapọ mọ ni {duration}",
+    "botIsJoining": "Pangea Bot n darapọ mọ…",
+    "playWithBotNowTitle": "Ṣe o fẹ lati ṣere pẹlu Pangea Bot ni bayi?",
+    "playWithBotNowMessage": "Ko si ẹnikan ti o darapọ mọ sibẹsibẹ. Pangea Bot le gba ipo ti o ṣ'ofo ni bayi, tabi o le tẹsiwaju lati duro.",
+    "keepWaiting": "Tẹsiwaju lati duro",
+    "botTookSeatAfterAnHour": "Aago kan ti kọja ti igba yii ti ṣ'i silẹ, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo.",
+    "botTookSeatAfterADay": "Igba yii ti ṣ'i silẹ fun ọjọ kan ju, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo. Fi ifiranṣẹ ranṣẹ lati bẹrẹ."
 }

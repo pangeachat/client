@@ -10359,5 +10359,12 @@
     "missionOpensAfter": "Görev {index} sonrasında açılır",
     "enterCityEarly": "Erken gir",
     "enterCityEarlyTitle": "{city} şehrine erken mi girilsin?",
-    "enterCityEarlyBody": "Bu şehir sizin için henüz açık değil. Sınıfın ilerisine seyahat etmenin bir maliyeti vardır; maliyet henüz belirlenmediği için şimdilik herhangi bir ücret alınmamaktadır."
+    "enterCityEarlyBody": "Bu şehir sizin için henüz açık değil. Sınıfın ilerisine seyahat etmenin bir maliyeti vardır; maliyet henüz belirlenmediği için şimdilik herhangi bir ücret alınmamaktadır.",
+    "botJoinsIn": "Pangea Bot {duration} içinde katılıyor",
+    "botIsJoining": "Pangea Bot katılıyor…",
+    "playWithBotNowTitle": "Şimdi Pangea Bot ile oynayalım mı?",
+    "playWithBotNowMessage": "Henüz kimse katılmadı. Pangea Bot şimdi boş koltuğu alabilir veya beklemeye devam edebilirsiniz.",
+    "keepWaiting": "Beklemeye devam et",
+    "botTookSeatAfterAnHour": "Bu oturum bir saat boyunca açıktı, bu yüzden Pangea Bot boş koltuğu aldı.",
+    "botTookSeatAfterADay": "Bu oturum bir günden fazla açıktı, bu yüzden Pangea Bot boş koltuğu aldı. Başlamak için bir mesaj gönderin."
 }

@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Qhib tom qab Lub Hom Phiaj {index}",
     "enterCityEarly": "Mus ua ntej",
     "enterCityEarlyTitle": "Mus rau {city} ua ntej?",
-    "enterCityEarlyBody": "Lub nroog no tseem tsis tau qhib rau koj. Kev mus ua ntej cov phooj ywg kawm ntawv muaj nqi; tus nqi tseem tab tom txiav txim siab, yog li tam sim no tsis tau them dab tsi."
+    "enterCityEarlyBody": "Lub nroog no tseem tsis tau qhib rau koj. Kev mus ua ntej cov phooj ywg kawm ntawv muaj nqi; tus nqi tseem tab tom txiav txim siab, yog li tam sim no tsis tau them dab tsi.",
+    "botJoinsIn": "Pangea Bot koom hauv {duration}",
+    "botIsJoining": "Pangea Bot tab tom koom…",
+    "playWithBotNowTitle": "Ua si nrog Pangea Bot tam sim no?",
+    "playWithBotNowMessage": "Tsis muaj leej twg koom dua. Pangea Bot tuaj yeem zaum tam sim no, los yog koj tuaj yeem tos ntxiv.",
+    "keepWaiting": "Tos ntxiv",
+    "botTookSeatAfterAnHour": "Qhov kev sib tham no qhib tau ib teev, yog li Pangea Bot tau zaum.",
+    "botTookSeatAfterADay": "Qhov kev sib tham no qhib tau ntau tshaj ib hnub, yog li Pangea Bot tau zaum. Xa lus los pib."
 }

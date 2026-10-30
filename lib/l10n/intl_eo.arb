@@ -11003,5 +11003,12 @@
     "missionOpensAfter": "Malfermiĝas post Misio {index}",
     "enterCityEarly": "Eniri frue",
     "enterCityEarlyTitle": "Ĉu eniri {city} frue?",
-    "enterCityEarlyBody": "Ĉi tiu urbo ankoraŭ ne estas malfermita al vi. Vojaĝi antaŭ la klaso havas koston; kio kostas estas ankoraŭ decidata, do nuntempe nenio estas ŝargita."
+    "enterCityEarlyBody": "Ĉi tiu urbo ankoraŭ ne estas malfermita al vi. Vojaĝi antaŭ la klaso havas koston; kio kostas estas ankoraŭ decidata, do nuntempe nenio estas ŝargita.",
+    "botJoinsIn": "Pangea Bot aliĝas post {duration}",
+    "botIsJoining": "Pangea Bot aliĝas…",
+    "playWithBotNowTitle": "Ĉu ludi kun Pangea Bot nun?",
+    "playWithBotNowMessage": "Neniu ankoraŭ aliĝis. Pangea Bot povas okupi la liberan lokon nun, aŭ vi povas plu atendi.",
+    "keepWaiting": "Plu atendi",
+    "botTookSeatAfterAnHour": "Ĉi tiu sesio estis malfermita dum unu horo, do Pangea Bot okupis la liberan lokon.",
+    "botTookSeatAfterADay": "Ĉi tiu sesio estis malfermita dum pli ol unu tago, do Pangea Bot okupis la liberan lokon. Sendu mesaĝon por komenci."
 }

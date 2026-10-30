@@ -13,13 +13,17 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// State keys of `pangea.activity_summary`. Each slot has one writer (org doc
-/// activity-summary.instructions.md, "Coordination model").
+/// activity-summary.instructions.md, "Room state"). The org design keys cards
+/// and analytics per learner (`card:<learner>`, `analytics:<learner>`); the
+/// three slots here, one `canonical` summary for the whole room, are what
+/// is built today.
 abstract final class ActivitySummaryStateKeys {
   /// The bot's loading marker, error marker, or summary.
   static const canonical = 'canonical';
 
   /// The room's vocabulary and grammar use, written by the first client that
-  /// finds it missing.
+  /// finds it missing once the activity is finished (the org design has each
+  /// learner's own client write theirs; not yet built here).
   static const analytics = 'analytics';
 
   /// A learner's retry or feedback, which the bot serves.

@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Dibuka saatos Misi {index}",
     "enterCityEarly": "Asup leuwih awal",
     "enterCityEarlyTitle": "Asup ka {city} leuwih awal?",
-    "enterCityEarlyBody": "Kota ieu teu acan dibuka pikeun anjeun. Iinditan payuneun kelas aya biaya; naon biayana masih diputuskeun, janten ayeuna mah teu aya anu ditagih."
+    "enterCityEarlyBody": "Kota ieu teu acan dibuka pikeun anjeun. Iinditan payuneun kelas aya biaya; naon biayana masih diputuskeun, janten ayeuna mah teu aya anu ditagih.",
+    "botJoinsIn": "Pangea Bot ngagabung dina {duration}",
+    "botIsJoining": "Pangea Bot nuju ngagabung…",
+    "playWithBotNowTitle": "Maén sareng Pangea Bot ayeuna?",
+    "playWithBotNowMessage": "Teu acan aya nu ngagabung. Pangea Bot tiasa nyandak korsi kosong ayeuna, atanapi anjeun tiasa teras ngantosan.",
+    "keepWaiting": "Teraskeun ngantosan",
+    "botTookSeatAfterAnHour": "Sési ieu dibuka sajam, janten Pangea Bot nyandak korsi kosong.",
+    "botTookSeatAfterADay": "Sési ieu dibuka langkung ti sadinten, janten Pangea Bot nyandak korsi kosong. Kirim pesen pikeun ngamimitian."
 }

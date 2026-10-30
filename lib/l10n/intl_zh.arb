@@ -10061,5 +10061,12 @@
     "missionOpensAfter": "任务 {index} 后开放",
     "enterCityEarly": "提前进入",
     "enterCityEarlyTitle": "提前进入 {city}？",
-    "enterCityEarlyBody": "此城市尚未对您开放。提前于班级旅行会产生费用；具体费用仍在确定中，因此目前不收取任何费用。"
+    "enterCityEarlyBody": "此城市尚未对您开放。提前于班级旅行会产生费用；具体费用仍在确定中，因此目前不收取任何费用。",
+    "botJoinsIn": "Pangea Bot 将在 {duration} 后加入",
+    "botIsJoining": "Pangea Bot 正在加入…",
+    "playWithBotNowTitle": "现在就和 Pangea Bot 一起玩吗？",
+    "playWithBotNowMessage": "还没有人加入。Pangea Bot 现在可以加入，或者您可以继续等待。",
+    "keepWaiting": "继续等待",
+    "botTookSeatAfterAnHour": "此会话已开放一小时，Pangea Bot 已加入。",
+    "botTookSeatAfterADay": "此会话已开放超过一天，Pangea Bot 已加入。发送消息即可开始。"
 }

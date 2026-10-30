@@ -175,6 +175,12 @@ class RoomSummaryResponse {
       .where((membership) => membership == Membership.join.name)
       .length;
 
+  /// The members still in the session. Someone who left or was only invited
+  /// says nothing about who will answer.
+  Iterable<String> get joinedMemberIds => membershipSummary.entries
+      .where((e) => e.value == Membership.join.name)
+      .map((e) => e.key);
+
   /// Resolves a thin activity ref to its hydrated plan. Defaults to the
   /// [ActivityPlanRepo] lookup (kicking off hydration on first read — the same
   /// pattern as `Room.activityPlan`); replaceable in tests, where the repo's
@@ -264,8 +270,7 @@ class RoomSummaryResponse {
     ActivityPlanModel? plan;
     // v3 rooms store a thin { activity_id, version_id } reference (no `req`);
     // only an embedded plan can be parsed here. References are resolved lazily
-    // by consumers, so the summary's plan stays null. See
-    // activities.instructions.md.
+    // by consumers, so the summary's plan stays null.
     if (planEntry is Map<String, dynamic> &&
         planEntry[ActivitySessionConstants.activityPlanRequest] != null) {
       plan = ActivityPlanModel.fromJson(planEntry);

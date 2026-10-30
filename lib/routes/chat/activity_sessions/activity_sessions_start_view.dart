@@ -47,10 +47,19 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 /// Below this body height the start page is at its mobile minimized rest and
 /// renders only the header + info row + CTA — the scroll content is dropped
-/// until the sheet is dragged/tapped up. Kept in step with
-/// `_activitySheetMinimizedHeight` in workspace_shell.dart, the cavity height
-/// that produces this. See activity-start-page.instructions.md.
-const double kActivityCompactMaxHeight = 150.0;
+/// until the sheet is dragged/tapped up. It sits above the body of the tallest
+/// minimized sheet ([ActivitySheetCtaHeight.maxSheetHeight]) and below
+/// where the full layout's footer still fits beside the info row, so neither
+/// layout overflows mid-drag. The app is portrait-only, so a full sheet always
+/// clears it.
+///
+/// Dropping the content, as the course card's compact peek does
+/// (`_kCompactCardMaxHeight`), is what spares the sheet any scroll-versus-grow
+/// coordination: with nothing to scroll at the minimized rest, an upward drag
+/// can only grow the sheet, and the content mounts and scrolls once it is
+/// full. See activity-start-page.instructions.md, "The sheet and its
+/// container".
+const double kActivityCompactMaxHeight = 340.0;
 
 class ActivitySessionStartView extends StatelessWidget {
   final ActivitySessionStartState controller;
@@ -176,16 +185,15 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
-              // While a confirmed session waits to fill, the "…" menu stands in
-              // for share on web and is a net-new action on mobile — so nobody
-              // confuses sharing the activity with inviting people into the
-              // room. See activity-start-page.instructions.md.
+              // While a confirmed session waits to fill, the "…" menu takes
+              // share's place at every size, so nobody confuses sharing the
+              // activity with inviting people into the room. See
+              // activity-start-page.instructions.md, "The waiting room".
               if (controller.activityRoom case final room?
                   when controller.isPendingSession)
                 _WaitingRoomMenuButton(room)
-              // Web hosts share in the app bar, left of focus; mobile keeps it
-              // as a chip in the bottom CTA row instead.
-              else if (FluffyThemes.isColumnMode(context))
+              // Share sits in the app bar, left of focus, at every size.
+              else
                 IconButton(
                   tooltip: L10n.of(context).share,
                   icon: const Icon(Icons.share_outlined),
@@ -202,9 +210,10 @@ class ActivitySessionStartView extends StatelessWidget {
           ),
           body: controller.loading
               ? const Center(child: CircularProgressIndicator.adaptive())
-              // Transient fetch failure — retryable, never the archived view
-              // or the "no longer supported" notice (the fallback ladder in
-              // activities.instructions.md engages only on a confirmed 404).
+              // Transient fetch failure — an error, never the archived view or
+              // the "no longer supported" notice: the fallback ladder in
+              // activity-start-page.instructions.md, "When the activity can't
+              // be fetched", engages only on a confirmed 404; no retry button.
               : controller.error != null
               ? Center(
                   child: Padding(
@@ -234,18 +243,31 @@ class ActivitySessionStartView extends StatelessWidget {
                         constraints.maxHeight < kActivityCompactMaxHeight;
                     // No scroll content at this rest, so fill the short sheet and
                     // space the info row and CTA evenly down it — the slack reads
-                    // as breathing room rather than a gap under the CTA.
+                    // as breathing room rather than a gap under the CTA. The
+                    // sheet grows to the CTA height the page measures, but for
+                    // the frame before it does (or at a very large text size)
+                    // the CTA clips at the bottom instead of overflowing. The
+                    // scroll view never scrolls, so an upward drag still grows
+                    // the sheet.
                     if (compact) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          _ActivityStartInfoRow(activity: activity),
-                          ActivitySessionButtons(
-                            controller: controller,
-                            sessionController: sessionController,
-                            compact: true,
+                      return SingleChildScrollView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minHeight: constraints.maxHeight,
                           ),
-                        ],
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              _ActivityStartInfoRow(activity: activity),
+                              ActivitySessionButtons(
+                                controller: controller,
+                                sessionController: sessionController,
+                                compact: true,
+                              ),
+                            ],
+                          ),
+                        ),
                       );
                     }
                     return Column(
@@ -311,23 +333,23 @@ class ActivitySessionStartView extends StatelessWidget {
                                                   ).launchUrl(),
                                                 ),
                                               ),
-                                              // Web relocates the flag out of the
-                                              // old share/flag row to here, the
-                                              // top-right of the text content;
-                                              // mobile keeps its CTA-row chip.
-                                              if (FluffyThemes.isColumnMode(
-                                                context,
-                                              ))
-                                                IconButton(
-                                                  tooltip: L10n.of(
-                                                    context,
-                                                  ).feedbackButton,
-                                                  icon: const Icon(
-                                                    Icons.flag_outlined,
-                                                  ),
-                                                  onPressed: controller
-                                                      .submitActivityFeedback,
+                                              // The flag rides the top-right of
+                                              // the text content at every size:
+                                              // out of the buttons, which hold
+                                              // only the choices, and on the
+                                              // main page alone, since the
+                                              // Completed subpage has no
+                                              // description to anchor it.
+                                              IconButton(
+                                                tooltip: L10n.of(
+                                                  context,
+                                                ).feedbackButton,
+                                                icon: const Icon(
+                                                  Icons.flag_outlined,
                                                 ),
+                                                onPressed: controller
+                                                    .submitActivityFeedback,
+                                              ),
                                             ],
                                           ),
                                           if (activity.vocab.isNotEmpty)
@@ -382,7 +404,9 @@ class ActivitySessionStartView extends StatelessWidget {
 
 /// The waiting-room "…" menu in the app bar: the same actions the session's
 /// chat-list row offers, from the same list, surfaced while a confirmed session
-/// waits to fill. See activity-start-page.instructions.md.
+/// waits to fill. It carries none of the chat header's extras: invite is
+/// already a waiting-room button, and there is no chat yet to search. See
+/// activity-start-page.instructions.md, "The waiting room".
 class _WaitingRoomMenuButton extends StatelessWidget {
   final Room room;
 
@@ -416,7 +440,7 @@ class _WaitingRoomMenuButton extends StatelessWidget {
 /// the scrollable body so a map explorer sees the essentials without expanding
 /// the sheet. The creator is the plan's own owner — Pangea's name and logo
 /// only for content Pangea genuinely owns ([ContentCreatorChip]), never for a
-/// teacher's. See activity-start-page.instructions.md.
+/// teacher's. See activity-start-page.instructions.md, "The top of the page".
 class _ActivityStartInfoRow extends StatelessWidget {
   final ActivityPlanModel activity;
 
@@ -441,7 +465,8 @@ class _ActivityStartInfoRow extends StatelessWidget {
           // Never empty: the flag when the language resolves to one, else a
           // langcode chip (shared with the analytics cluster's flag). Doubles
           // as the switch to that language when it isn't the learner's
-          // target (activity-start-page.instructions.md).
+          // target (activity-start-page.instructions.md, "The top of the
+          // page").
           ContextLanguageSwitchTarget(
             contentLanguage: language,
             builder: (context, canSwitch) => LanguageFlagChip(
@@ -508,8 +533,10 @@ class _IconLabel extends StatelessWidget {
 }
 
 /// Archived body for a removed activity with no plan recoverable from room
-/// state (the last rung of the fallback ladder in activities.instructions.md):
-/// the "no longer supported" notice, plus whatever the room itself holds —
+/// state (the last rung of the fallback ladder in
+/// activity-start-page.instructions.md, "When the activity can't be
+/// fetched"): the "no longer supported" notice, plus whatever the room itself
+/// holds —
 /// each recorded role's occupant, role name, earned star count, and finished
 /// status — so past progress stays reviewable.
 class _ArchivedSessionFallbackBody extends StatelessWidget {

@@ -10994,5 +10994,12 @@
     "missionOpensAfter": "Aperi post Mission {index}",
     "enterCityEarly": "Entra tosto",
     "enterCityEarlyTitle": "Entrar in {city} tosto?",
-    "enterCityEarlyBody": "Iste citate non es ancora aperte pro te. Viagiar ante le classe ha un costo; lo que illo costa es ancora in decision, dunque pro ora nihil es cargate."
+    "enterCityEarlyBody": "Iste citate non es ancora aperte pro te. Viagiar ante le classe ha un costo; lo que illo costa es ancora in decision, dunque pro ora nihil es cargate.",
+    "botJoinsIn": "Pangea Bot se junge in {duration}",
+    "botIsJoining": "Pangea Bot se junge…",
+    "playWithBotNowTitle": "Jugar con Pangea Bot ora?",
+    "playWithBotNowMessage": "Nemo ha ancora jungite. Pangea Bot pote prender le sede vacante ora, o tu pote continuar a attender.",
+    "keepWaiting": "Continuar a attender",
+    "botTookSeatAfterAnHour": "Iste session esseva aperte pro un hora, dunque Pangea Bot prendeva le sede vacante.",
+    "botTookSeatAfterADay": "Iste session esseva aperte pro plus de un die, dunque Pangea Bot prendeva le sede vacante. Invia un message pro initiar."
 }

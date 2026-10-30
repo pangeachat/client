@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "A’ fosgladh an dèidh Rùn {index}",
     "enterCityEarly": "Cuir a-steach tràth",
     "enterCityEarlyTitle": "Cuir a-steach {city} tràth?",
-    "enterCityEarlyBody": "Chan eil am baile seo fosgailte dhut fhathast. Tha cosgais air siubhal air thoiseach air a’ chlas; thathar fhathast a’ co-dhùnadh dè a chosgas e, mar sin chan eil dad ga chìsachadh an-dràsta."
+    "enterCityEarlyBody": "Chan eil am baile seo fosgailte dhut fhathast. Tha cosgais air siubhal air thoiseach air a’ chlas; thathar fhathast a’ co-dhùnadh dè a chosgas e, mar sin chan eil dad ga chìsachadh an-dràsta.",
+    "botJoinsIn": "Thig Pangea Bot a-steach ann an {duration}",
+    "botIsJoining": "Tha Pangea Bot a' tighinn a-steach…",
+    "playWithBotNowTitle": "Cluich le Pangea Bot a-nis?",
+    "playWithBotNowMessage": "Cha tàinig duine a-steach fhathast. Faodaidh Pangea Bot an cathair fhosgailte a ghabhail a-nis, no faodaidh tu cumail a' feitheamh.",
+    "keepWaiting": "Cùm a' feitheamh",
+    "botTookSeatAfterAnHour": "Bha an seisean seo fosgailte airson uair a thìde, agus mar sin ghabh Pangea Bot an cathair fhosgailte.",
+    "botTookSeatAfterADay": "Bha an seisean seo fosgailte airson còrr is latha, agus mar sin ghabh Pangea Bot an cathair fhosgailte. Cuir teachdaireachd gus tòiseachadh."
 }

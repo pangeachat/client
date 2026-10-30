@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Aperietur post Negotium {index}",
     "enterCityEarly": "Mature ingredi",
     "enterCityEarlyTitle": "Maturene {city} ingredieris?",
-    "enterCityEarlyBody": "Haec urbs tibi nondum patet. Ante alios iter facere pretium habet; quid sit pretium, nondum constitutum est, itaque nunc nihil solvitur."
+    "enterCityEarlyBody": "Haec urbs tibi nondum patet. Ante alios iter facere pretium habet; quid sit pretium, nondum constitutum est, itaque nunc nihil solvitur.",
+    "botJoinsIn": "Pangea Bot iungit in {duration}",
+    "botIsJoining": "Pangea Bot iungit…",
+    "playWithBotNowTitle": "Ludere cum Pangea Bot nunc?",
+    "playWithBotNowMessage": "Nemo adhuc iunxit. Pangea Bot sedem liberam nunc capere potest, aut tu manere potes.",
+    "keepWaiting": "Manere",
+    "botTookSeatAfterAnHour": "Haec sessio per horam aperta erat, ergo Pangea Bot sedem liberam cepit.",
+    "botTookSeatAfterADay": "Haec sessio per diem apertior erat, ergo Pangea Bot sedem liberam cepit. Mitte nuntium ut incipias."
 }

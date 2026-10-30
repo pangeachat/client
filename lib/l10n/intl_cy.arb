@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Yn agor ar ôl Cenhadaeth {index}",
     "enterCityEarly": "Ewch i mewn yn gynnar",
     "enterCityEarlyTitle": "Ewch i mewn i {city} yn gynnar?",
-    "enterCityEarlyBody": "Nid yw'r ddinas hon ar agor i chi eto. Mae teithio o flaen y dosbarth yn costio; mae'r hyn y mae'n ei gostio yn dal i gael ei benderfynu, felly am y tro nid oes dim yn cael ei godi."
+    "enterCityEarlyBody": "Nid yw'r ddinas hon ar agor i chi eto. Mae teithio o flaen y dosbarth yn costio; mae'r hyn y mae'n ei gostio yn dal i gael ei benderfynu, felly am y tro nid oes dim yn cael ei godi.",
+    "botJoinsIn": "Mae Bot Pangea yn ymuno mewn {duration}",
+    "botIsJoining": "Mae Bot Pangea yn ymuno…",
+    "playWithBotNowTitle": "Chwarae gyda Bot Pangea nawr?",
+    "playWithBotNowMessage": "Nid oes neb wedi ymuno eto. Gall Bot Pangea gymryd y sedd wag nawr, neu gallwch barhau i aros.",
+    "keepWaiting": "Parhau i aros",
+    "botTookSeatAfterAnHour": "Roedd y sesiwn hon ar agor am awr, felly cymerodd Bot Pangea y sedd wag.",
+    "botTookSeatAfterADay": "Roedd y sesiwn hon ar agor am dros ddiwrnod, felly cymerodd Bot Pangea y sedd wag. Anfonwch neges i ddechrau."
 }

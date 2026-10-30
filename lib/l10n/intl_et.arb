@@ -10058,5 +10058,12 @@
     "missionOpensAfter": "Avatakse pärast missiooni {index}",
     "enterCityEarly": "Sisene varem",
     "enterCityEarlyTitle": "Siseneda linna {city} varem?",
-    "enterCityEarlyBody": "See linn pole sulle veel avatud. Klassist ette reisimine on tasuline; selle maksumus on veel otsustamisel, seega praegu midagi ei võeta."
+    "enterCityEarlyBody": "See linn pole sulle veel avatud. Klassist ette reisimine on tasuline; selle maksumus on veel otsustamisel, seega praegu midagi ei võeta.",
+    "botJoinsIn": "Pangea Bot liitub {duration} pärast",
+    "botIsJoining": "Pangea Bot liitub…",
+    "playWithBotNowTitle": "Mängida Pangea Botiga kohe?",
+    "playWithBotNowMessage": "Keegi pole veel liitunud. Pangea Bot saab nüüd vaba koha võtta või võite oodata.",
+    "keepWaiting": "Jätka ootamist",
+    "botTookSeatAfterAnHour": "See seanss oli tund aega avatud, nii et Pangea Bot võttis vaba koha.",
+    "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum."
 }

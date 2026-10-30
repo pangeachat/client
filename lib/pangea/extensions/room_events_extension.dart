@@ -18,7 +18,9 @@ extension EventsRoomExtension on Room {
     for (final child in spaceChildren) {
       if (child.roomId == null) continue;
       final Room? room = client.getRoomById(child.roomId!);
-      // Kept on leave, unlike rooms that are only hidden from the lists.
+      // Kept on leave, unlike rooms that are only hidden from the lists. A
+      // room a teacher joined only to review is left with the course
+      // (activities.instructions.md, "Activity session chat list rows").
       if (room == null || room.isAnalyticsRoom || room.hasArchivedActivity) {
         continue;
       }

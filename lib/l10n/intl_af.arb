@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Maak oop na Sending {index}",
     "enterCityEarly": "Gaan vroeg in",
     "enterCityEarlyTitle": "Gaan vroeg in {city}?",
-    "enterCityEarlyBody": "Hierdie stad is nog nie vir jou oop nie. Om voor die klas te reis het 'n koste; wat dit kos word nog besluit, so vir nou word niks gehef nie."
+    "enterCityEarlyBody": "Hierdie stad is nog nie vir jou oop nie. Om voor die klas te reis het 'n koste; wat dit kos word nog besluit, so vir nou word niks gehef nie.",
+    "botJoinsIn": "Pangea Bot sluit aan oor {duration}",
+    "botIsJoining": "Pangea Bot sluit aan…",
+    "playWithBotNowTitle": "Speel nou met Pangea Bot?",
+    "playWithBotNowMessage": "Niemand het nog aangesluit nie. Pangea Bot kan nou die oop plek inneem, of jy kan aanhou wag.",
+    "keepWaiting": "Hou aan wag",
+    "botTookSeatAfterAnHour": "Hierdie sessie was vir 'n uur oop, so Pangea Bot het die oop plek ingeneem.",
+    "botTookSeatAfterADay": "Hierdie sessie was vir meer as 'n dag oop, so Pangea Bot het die oop plek ingeneem. Stuur 'n boodskap om te begin."
 }

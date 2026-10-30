@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Dibuka selepas Misi {index}",
     "enterCityEarly": "Masuk awal",
     "enterCityEarlyTitle": "Masuk {city} awal?",
-    "enterCityEarlyBody": "Bandar ini belum dibuka untuk anda. Mengembara lebih awal daripada kelas ada kosnya; kosnya masih ditentukan, jadi buat masa ini tiada apa-apa yang dicaj."
+    "enterCityEarlyBody": "Bandar ini belum dibuka untuk anda. Mengembara lebih awal daripada kelas ada kosnya; kosnya masih ditentukan, jadi buat masa ini tiada apa-apa yang dicaj.",
+    "botJoinsIn": "Pangea Bot akan menyertai dalam {duration}",
+    "botIsJoining": "Pangea Bot sedang menyertai…",
+    "playWithBotNowTitle": "Bermain dengan Pangea Bot sekarang?",
+    "playWithBotNowMessage": "Tiada sesiapa yang menyertai lagi. Pangea Bot boleh mengambil tempat kosong sekarang, atau anda boleh terus menunggu.",
+    "keepWaiting": "Terus menunggu",
+    "botTookSeatAfterAnHour": "Sesi ini dibuka selama sejam, jadi Pangea Bot mengambil tempat kosong.",
+    "botTookSeatAfterADay": "Sesi ini dibuka selama lebih sehari, jadi Pangea Bot mengambil tempat kosong. Hantar mesej untuk bermula."
 }

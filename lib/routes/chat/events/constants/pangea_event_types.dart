@@ -105,7 +105,10 @@ class PangeaEventTypes {
   static const communicationPreferences = 'pangea.communication_preferences';
 
   /// Account data the admin dashboard writes: the session rooms it joined this
-  /// user to so they could review them.
+  /// user to so they could review them. Kept on the account, not in the room,
+  /// because a profile change rewrites the user's membership in every room and
+  /// would erase a mark kept there (activities.instructions.md, "Activity
+  /// session chat list rows").
   static const adminReviewRooms = 'pangea.admin_review';
 
   static const firstBotDMMessage = "pangea_first_bot_dm_message";

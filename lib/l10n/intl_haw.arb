@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "E wehe ana ma hope o ka Mikiona {index}",
     "enterCityEarly": "E komo mua",
     "enterCityEarlyTitle": "E komo mua i {city}?",
-    "enterCityEarlyBody": "ʻAʻole i wehe ʻia kēia kūlanakauhale iā ʻoe. He kumu kūʻai ko ka hele mua ʻana ma mua o ka papa; ke hoʻoholo ʻia nei ke kumu kūʻai, no laila ʻaʻohe mea e uku ʻia i kēia manawa."
+    "enterCityEarlyBody": "ʻAʻole i wehe ʻia kēia kūlanakauhale iā ʻoe. He kumu kūʻai ko ka hele mua ʻana ma mua o ka papa; ke hoʻoholo ʻia nei ke kumu kūʻai, no laila ʻaʻohe mea e uku ʻia i kēia manawa.",
+    "botJoinsIn": "E hui pū ana ʻo Pangea Bot i loko o {duration}",
+    "botIsJoining": "Ke hui pū nei ʻo Pangea Bot…",
+    "playWithBotNowTitle": "E pāʻani pū me Pangea Bot i kēia manawa?",
+    "playWithBotNowMessage": "ʻAʻohe mea i hui pū mai. Hiki iā Pangea Bot ke noho i ka noho hakahaka i kēia manawa, a i ʻole hiki iā ʻoe ke hoʻomau i ke kali.",
+    "keepWaiting": "E hoʻomau i ke kali",
+    "botTookSeatAfterAnHour": "Ua hāmama kēia kau no hoʻokahi hola, no laila ua noho ʻo Pangea Bot i ka noho hakahaka.",
+    "botTookSeatAfterADay": "Ua hāmama kēia kau no ka ʻoi aku ma mua o hoʻokahi lā, no laila ua noho ʻo Pangea Bot i ka noho hakahaka. E hoʻouna i kahi leka e hoʻomaka."
 }

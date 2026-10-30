@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Ouvè apre Misyon {index}",
     "enterCityEarly": "Antre bonè",
     "enterCityEarlyTitle": "Antre {city} bonè?",
-    "enterCityEarlyBody": "Vil sa a pokò ouvè pou ou. Vwayaje anvan klas la gen yon pri; sa li koute toujou ap deside, kidonk pou kounye a pa gen anyen ki chaje."
+    "enterCityEarlyBody": "Vil sa a pokò ouvè pou ou. Vwayaje anvan klas la gen yon pri; sa li koute toujou ap deside, kidonk pou kounye a pa gen anyen ki chaje.",
+    "botJoinsIn": "Pangea Bot ap rantre nan {duration}",
+    "botIsJoining": "Pangea Bot ap rantre…",
+    "playWithBotNowTitle": "Jwe ak Pangea Bot kounye a?",
+    "playWithBotNowMessage": "Pèsonn poko rantre. Pangea Bot ka pran plas ki vid la kounye a, oswa ou ka kontinye tann.",
+    "keepWaiting": "Kontinye tann",
+    "botTookSeatAfterAnHour": "Sesyon sa a te ouvè pandan inèdtan, kidonk Pangea Bot te pran plas ki vid la.",
+    "botTookSeatAfterADay": "Sesyon sa a te ouvè pandan plis pase yon jou, kidonk Pangea Bot te pran plas ki vid la. Voye yon mesaj pou kòmanse."
 }

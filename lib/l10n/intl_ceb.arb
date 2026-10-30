@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Maabli human sa Misyon {index}",
     "enterCityEarly": "Sulod og sayo",
     "enterCityEarlyTitle": "Mosulod og sayo sa {city}?",
-    "enterCityEarlyBody": "Wala pa kini nga siyudad maabli para kanimo. Ang pagbiyahe nga una sa klase adunay bayad; ang kantidad niini ginadesisyonan pa, busa sa pagkakaron walay bayad."
+    "enterCityEarlyBody": "Wala pa kini nga siyudad maabli para kanimo. Ang pagbiyahe nga una sa klase adunay bayad; ang kantidad niini ginadesisyonan pa, busa sa pagkakaron walay bayad.",
+    "botJoinsIn": "Ang Pangea Bot moapil sa {duration}",
+    "botIsJoining": "Ang Pangea Bot moapil na…",
+    "playWithBotNowTitle": "Makigdula sa Pangea Bot karon?",
+    "playWithBotNowMessage": "Wala pa'y miapil. Ang Pangea Bot makalingkod na karon, o mahimo kang magpadayon sa paghulat.",
+    "keepWaiting": "Padayon sa paghulat",
+    "botTookSeatAfterAnHour": "Bukas kini nga sesyon sulod sa usa ka oras, busa ang Pangea Bot milingkod sa bakanteng lingkoranan.",
+    "botTookSeatAfterADay": "Bukas kini nga sesyon sulod sa kapin sa usa ka adlaw, busa ang Pangea Bot milingkod sa bakanteng lingkoranan. Pagpadala og mensahe aron magsugod."
 }

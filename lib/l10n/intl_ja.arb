@@ -10827,5 +10827,12 @@
     "missionOpensAfter": "ミッション{index}の後に開放",
     "enterCityEarly": "早期入場",
     "enterCityEarlyTitle": "{city}に早期入場しますか？",
-    "enterCityEarlyBody": "この都市はまだ開放されていません。クラスより先に進むには費用がかかります。費用はまだ決定中ですので、現時点では無料です。"
+    "enterCityEarlyBody": "この都市はまだ開放されていません。クラスより先に進むには費用がかかります。費用はまだ決定中ですので、現時点では無料です。",
+    "botJoinsIn": "Pangea Botが{duration}で参加します",
+    "botIsJoining": "Pangea Botが参加しています…",
+    "playWithBotNowTitle": "今すぐPangea Botとプレイしますか？",
+    "playWithBotNowMessage": "まだ誰も参加していません。Pangea Botが今すぐ空席に着くことも、引き続き待つこともできます。",
+    "keepWaiting": "待ち続ける",
+    "botTookSeatAfterAnHour": "このセッションは1時間開いていたため、Pangea Botが空席に着きました。",
+    "botTookSeatAfterADay": "このセッションは1日以上開いていたため、Pangea Botが空席に着きました。メッセージを送信して開始してください。"
 }

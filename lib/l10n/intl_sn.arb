@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Inovhura mushure meMission {index}",
     "enterCityEarly": "Pinda kare",
     "enterCityEarlyTitle": "Pinda mu{city} kare here?",
-    "enterCityEarlyBody": "Guta iri harina kuvhurirwa iwe. Kufamba pamberi pekirasi kune mutengo; mutengo wacho uchiri kusarudzwa, saka parizvino hapana chinobhadhariswa."
+    "enterCityEarlyBody": "Guta iri harina kuvhurirwa iwe. Kufamba pamberi pekirasi kune mutengo; mutengo wacho uchiri kusarudzwa, saka parizvino hapana chinobhadhariswa.",
+    "botJoinsIn": "Pangea Bot anopinda mukati me {duration}",
+    "botIsJoining": "Pangea Bot iri kupinda…",
+    "playWithBotNowTitle": "Tamba nePangea Bot izvozvi?",
+    "playWithBotNowMessage": "Hapana munhu apinda zvakadaro. Pangea Bot inogona kutora chigaro chisina munhu izvozvi, kana kuti unogona kuramba wakamirira.",
+    "keepWaiting": "Ramba wakamirira",
+    "botTookSeatAfterAnHour": "Chikamu ichi chaive chakavhurika kweawa, saka Pangea Bot yakatora chigaro chisina munhu.",
+    "botTookSeatAfterADay": "Chikamu ichi chaive chakavhurika kwezuva rose, saka Pangea Bot yakatora chigaro chisina munhu. Tumira meseji kuti utange."
 }

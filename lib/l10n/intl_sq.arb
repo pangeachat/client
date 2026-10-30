@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Hapet pas Misionit {index}",
     "enterCityEarly": "Hyrë herët",
     "enterCityEarlyTitle": "Të hysh herët në {city}?",
-    "enterCityEarlyBody": "Ky qytet nuk është ende i hapur për ty. Udhëtimi përpara klasës ka një kosto; ajo që kushton ende po vendoset, kështu që për momentin nuk tarifohet asgjë."
+    "enterCityEarlyBody": "Ky qytet nuk është ende i hapur për ty. Udhëtimi përpara klasës ka një kosto; ajo që kushton ende po vendoset, kështu që për momentin nuk tarifohet asgjë.",
+    "botJoinsIn": "Pangea Bot bashkohet pas {duration}",
+    "botIsJoining": "Pangea Bot po bashkohet…",
+    "playWithBotNowTitle": "Të luash me Pangea Bot tani?",
+    "playWithBotNowMessage": "Askush nuk është bashkuar ende. Pangea Bot mund të zërë vendin e lirë tani, ose mund të vazhdosh të presësh.",
+    "keepWaiting": "Vazhdo të presësh",
+    "botTookSeatAfterAnHour": "Kjo seancë ishte e hapur për një orë, kështu që Pangea Bot zuri vendin e lirë.",
+    "botTookSeatAfterADay": "Kjo seancë ishte e hapur për më shumë se një ditë, kështu që Pangea Bot zuri vendin e lirë. Dërgo një mesazh për të filluar."
 }

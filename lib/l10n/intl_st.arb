@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "E bula kamora Thomo {index}",
     "enterCityEarly": "Kena kapele",
     "enterCityEarlyTitle": "Kena {city} kapele?",
-    "enterCityEarlyBody": "Toropo ena ha e so bulehele. Ho tsamaea pele ho sehlopha ho na le litšenyehelo; hore na ho ja bokae ho ntse ho etsoa qeto, kahoo hajoale ha ho lefiso le lefuoang."
+    "enterCityEarlyBody": "Toropo ena ha e so bulehele. Ho tsamaea pele ho sehlopha ho na le litšenyehelo; hore na ho ja bokae ho ntse ho etsoa qeto, kahoo hajoale ha ho lefiso le lefuoang.",
+    "botJoinsIn": "Pangea Bot e kenela ka {duration}",
+    "botIsJoining": "Pangea Bot e kenela…",
+    "playWithBotNowTitle": "Bapala le Pangea Bot hona jwale?",
+    "playWithBotNowMessage": "Ha ho motho ya kenetseng. Pangea Bot e ka nka setulo se se nang motho hona jwale, kapa o ka tswela pele ho ema.",
+    "keepWaiting": "Tswela pele ho ema",
+    "botTookSeatAfterAnHour": "Thuto ena e ne e butswe ka hora, kahoo Pangea Bot e nkile setulo se se nang motho.",
+    "botTookSeatAfterADay": "Thuto ena e ne e butswe ho feta letsatsi, kahoo Pangea Bot e nkile setulo se se nang motho. Romela molaetsa ho qala."
 }

@@ -10061,5 +10061,12 @@
     "missionOpensAfter": "Atveras pēc misijas {index}",
     "enterCityEarly": "Ieiet ātrāk",
     "enterCityEarlyTitle": "Ieiet pilsētā {city} ātrāk?",
-    "enterCityEarlyBody": "Šī pilsēta jums vēl nav atvērta. Ceļošana pirms klases ir saistīta ar izmaksām; to, cik tas maksā, vēl tiek lemts, tāpēc pagaidām nekas netiek iekasēts."
+    "enterCityEarlyBody": "Šī pilsēta jums vēl nav atvērta. Ceļošana pirms klases ir saistīta ar izmaksām; to, cik tas maksā, vēl tiek lemts, tāpēc pagaidām nekas netiek iekasēts.",
+    "botJoinsIn": "Pangea Bots pievienosies pēc {duration}",
+    "botIsJoining": "Pangea Bots pievienojas…",
+    "playWithBotNowTitle": "Spēlēt ar Pangea Botu tagad?",
+    "playWithBotNowMessage": "Neviens vēl nav pievienojies. Pangea Bots var ieņemt brīvo vietu tagad, vai arī jūs varat turpināt gaidīt.",
+    "keepWaiting": "Turpināt gaidīt",
+    "botTookSeatAfterAnHour": "Šī sesija bija atvērta stundu, tāpēc Pangea Bots ieņēma brīvo vietu.",
+    "botTookSeatAfterADay": "Šī sesija bija atvērta vairāk nekā dienu, tāpēc Pangea Bots ieņēma brīvo vietu. Nosūtiet ziņu, lai sāktu."
 }

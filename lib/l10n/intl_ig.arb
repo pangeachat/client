@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Mepee mgbe Misionụ {index} gasịrị",
     "enterCityEarly": "Banye ngwa ngwa",
     "enterCityEarlyTitle": "Ị ga-abanye {city} ngwa ngwa?",
-    "enterCityEarlyBody": "Obodo a emepebeghị gị. Ịga njem tupu klas nwere ọnụ ahịa; a ka na-ekpebi ihe ọ ga-efu, yabụ na ugbu a, ọ nweghị ihe a na-ana."
+    "enterCityEarlyBody": "Obodo a emepebeghị gị. Ịga njem tupu klas nwere ọnụ ahịa; a ka na-ekpebi ihe ọ ga-efu, yabụ na ugbu a, ọ nweghị ihe a na-ana.",
+    "botJoinsIn": "Pangea Bot ga-esonye na {duration}",
+    "botIsJoining": "Pangea Bot na-esonye…",
+    "playWithBotNowTitle": "Soro Pangea Bot gwuo egwu ugbu a?",
+    "playWithBotNowMessage": "Ọ dịghị onye esonyela. Pangea Bot nwere ike ịnọ n'oche tọgbọrọ chakoo ugbu a, ma ọ bụ ị nwere ike ịnọgide na-eche.",
+    "keepWaiting": "Nọgide na-eche",
+    "botTookSeatAfterAnHour": "Nzukọ a mepere otu awa, yabụ Pangea Bot nọrọ n'oche tọgbọrọ chakoo.",
+    "botTookSeatAfterADay": "Nzukọ a mepere ihe karịrị otu ụbọchị, yabụ Pangea Bot nọrọ n'oche tọgbọrọ chakoo. Zipụ ozi ka ịmalite."
 }

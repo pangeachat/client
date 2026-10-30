@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "د ماموریت {index} وروسته خلاصیږي",
     "enterCityEarly": "ژر داخل شئ",
     "enterCityEarlyTitle": "ژر {city} ته داخل شئ؟",
-    "enterCityEarlyBody": "دا ښار تر اوسه ستاسو لپاره خلاص نه دی. د ټولګي څخه مخکې سفر کول لګښت لري؛ د دې لګښت لاهم پریکړه کیږي، نو د اوس لپاره هیڅ شی نه اخیستل کیږي."
+    "enterCityEarlyBody": "دا ښار تر اوسه ستاسو لپاره خلاص نه دی. د ټولګي څخه مخکې سفر کول لګښت لري؛ د دې لګښت لاهم پریکړه کیږي، نو د اوس لپاره هیڅ شی نه اخیستل کیږي.",
+    "botJoinsIn": "Pangea Bot په {duration} کې شاملیږي",
+    "botIsJoining": "Pangea Bot شاملیږي…",
+    "playWithBotNowTitle": "اوس د Pangea Bot سره لوبه وکړئ؟",
+    "playWithBotNowMessage": "تر اوسه هیڅوک نه دي شامل شوي. Pangea Bot اوس خالي څوکۍ نیولی شي، یا تاسو انتظار کولی شئ.",
+    "keepWaiting": "انتظار وکړئ",
+    "botTookSeatAfterAnHour": "دا ناسته د یو ساعت لپاره خلاصه وه، نو Pangea Bot خالي څوکۍ ونیوله.",
+    "botTookSeatAfterADay": "دا ناسته د یوې ورځې څخه زیاته خلاصه وه، نو Pangea Bot خالي څوکۍ ونیوله. د پیل کولو لپاره یو پیغام واستوئ."
 }

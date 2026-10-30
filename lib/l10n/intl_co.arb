@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Apre dopu à a Missione {index}",
     "enterCityEarly": "Entrà prestu",
     "enterCityEarlyTitle": "Entrà in {city} prestu?",
-    "enterCityEarlyBody": "Sta cità ùn hè ancu aperta per voi. Viaghjà in anticipu nantu à a classa hà un costu; ciò chì costa hè sempre in decisione, dunque per avà nunda hè incaricatu."
+    "enterCityEarlyBody": "Sta cità ùn hè ancu aperta per voi. Viaghjà in anticipu nantu à a classa hà un costu; ciò chì costa hè sempre in decisione, dunque per avà nunda hè incaricatu.",
+    "botJoinsIn": "U Bot Pangea si unisce in {duration}",
+    "botIsJoining": "U Bot Pangea si unisce…",
+    "playWithBotNowTitle": "Ghjucà cù u Bot Pangea avà?",
+    "playWithBotNowMessage": "Nimu s'hè ancu unitu. U Bot Pangea pò piglià u postu liberu avà, o pudete cuntinuà à aspittà.",
+    "keepWaiting": "Cuntinuà à aspittà",
+    "botTookSeatAfterAnHour": "Sta sessione hè stata aperta per un'ora, cusì u Bot Pangea hà pigliatu u postu liberu.",
+    "botTookSeatAfterADay": "Sta sessione hè stata aperta per più di un ghjornu, cusì u Bot Pangea hà pigliatu u postu liberu. Mandate un messagiu per principià."
 }

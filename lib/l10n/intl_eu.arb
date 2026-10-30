@@ -10061,5 +10061,12 @@
     "missionOpensAfter": "{index} misioaren ondoren irekiko da",
     "enterCityEarly": "Sartu goiz",
     "enterCityEarlyTitle": "Sartu {city} hirian goiz?",
-    "enterCityEarlyBody": "Hiri hau oraindik ez dago zuretzat irekita. Taldearen aurretik bidaiatzeak kostu bat du; kostu hori oraindik erabakitzen ari da, beraz, oraingoz ez da ezer kobratzen."
+    "enterCityEarlyBody": "Hiri hau oraindik ez dago zuretzat irekita. Taldearen aurretik bidaiatzeak kostu bat du; kostu hori oraindik erabakitzen ari da, beraz, oraingoz ez da ezer kobratzen.",
+    "botJoinsIn": "Pangea Bot {duration} barruan elkartuko da",
+    "botIsJoining": "Pangea Bot elkartzen ari da…",
+    "playWithBotNowTitle": "Pangea Bot-ekin jokatu orain?",
+    "playWithBotNowMessage": "Oraindik inor ez da elkartu. Pangea Bot-ek libre dagoen lekua har dezake orain, edo zuk itxaroten jarrai dezakezu.",
+    "keepWaiting": "Itxaroten jarraitu",
+    "botTookSeatAfterAnHour": "Saio hau ordubetez egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du.",
+    "botTookSeatAfterADay": "Saio hau egun bat baino gehiagoz egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du. Bidali mezu bat hasteko."
 }

@@ -12,8 +12,11 @@
 /// `resolved*` fields. `youtube` blocks instead carry a [url] (YouTube ToS
 /// forbids storing bytes) and an optional [thumbnailUrl].
 ///
-/// See `.github/.github/instructions/activities.instructions.md` (canonical
-/// media model) and `activities.instructions.md`.
+/// Why the client resolves `upload_id` itself: org
+/// architecture.instructions.md.
+/// How the page shows the blocks: activities.instructions.md, "Media is a
+/// carousel". An audio block parses and resolves like any upload, but no
+/// surface renders it (the carousel and start hero skip it).
 class ActivityMediaBlock {
   /// `image` | `audio` | `video` | `youtube`.
   final String blockType;
@@ -80,8 +83,11 @@ class ActivityMediaBlock {
       : null;
 
   /// The best displayable image URL for a render at [width] px, or null when
-  /// the block is non-visual or not yet resolved. Picks the smallest size
-  /// variant that covers [width]: thumbnail (256) ≤ medium (512) ≤ original.
+  /// the block is not yet resolved. A resolved audio block returns its audio
+  /// URL, so a card or pin whose first block is audio draws that URL as an
+  /// image; only the carousel and start hero filter by kind. Picks the
+  /// smallest size variant that covers [width]: thumbnail (256) ≤ medium (512)
+  /// ≤ original.
   String? displayUrl([double width = 1024]) {
     if (isYoutube) return thumbnailUrl ?? youtubeThumbnailUrl;
     if (resolvedUrl == null) return null;

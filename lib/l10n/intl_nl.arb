@@ -10061,5 +10061,12 @@
     "missionOpensAfter": "Opent na missie {index}",
     "enterCityEarly": "Vroeg binnengaan",
     "enterCityEarlyTitle": "Vroeg naar {city} gaan?",
-    "enterCityEarlyBody": "Deze stad is nog niet voor je geopend. Vooruitreizen op de groep heeft een prijs; wat het kost wordt nog bepaald, dus voor nu wordt er niets in rekening gebracht."
+    "enterCityEarlyBody": "Deze stad is nog niet voor je geopend. Vooruitreizen op de groep heeft een prijs; wat het kost wordt nog bepaald, dus voor nu wordt er niets in rekening gebracht.",
+    "botJoinsIn": "Pangea Bot doet mee over {duration}",
+    "botIsJoining": "Pangea Bot doet mee…",
+    "playWithBotNowTitle": "Nu met Pangea Bot spelen?",
+    "playWithBotNowMessage": "Niemand heeft zich nog aangesloten. Pangea Bot kan nu de open plek innemen, of je kunt blijven wachten.",
+    "keepWaiting": "Blijven wachten",
+    "botTookSeatAfterAnHour": "Deze sessie was een uur open, dus Pangea Bot heeft de open plek ingenomen.",
+    "botTookSeatAfterADay": "Deze sessie was langer dan een dag open, dus Pangea Bot heeft de open plek ingenomen. Stuur een bericht om te beginnen."
 }

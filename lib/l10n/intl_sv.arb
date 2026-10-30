@@ -10576,5 +10576,12 @@
     "missionOpensAfter": "Öppnar efter mission {index}",
     "enterCityEarly": "Gå in tidigt",
     "enterCityEarlyTitle": "Gå in i {city} tidigt?",
-    "enterCityEarlyBody": "Denna stad är inte öppen för dig än. Att resa före klassen har en kostnad; vad det kostar bestäms fortfarande, så för närvarande debiteras inget."
+    "enterCityEarlyBody": "Denna stad är inte öppen för dig än. Att resa före klassen har en kostnad; vad det kostar bestäms fortfarande, så för närvarande debiteras inget.",
+    "botJoinsIn": "Pangea Bot ansluter om {duration}",
+    "botIsJoining": "Pangea Bot ansluter…",
+    "playWithBotNowTitle": "Spela med Pangea Bot nu?",
+    "playWithBotNowMessage": "Ingen har anslutit än. Pangea Bot kan ta den lediga platsen nu, eller så kan du fortsätta vänta.",
+    "keepWaiting": "Fortsätt vänta",
+    "botTookSeatAfterAnHour": "Den här sessionen var öppen i en timme, så Pangea Bot tog den lediga platsen.",
+    "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja."
 }

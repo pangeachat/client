@@ -10839,5 +10839,12 @@
     "missionOpensAfter": "Atidaroma po {index} misijos",
     "enterCityEarly": "Įeiti anksčiau",
     "enterCityEarlyTitle": "Įeiti į {city} anksčiau?",
-    "enterCityEarlyBody": "Šis miestas jums dar neatidarytas. Kelionė anksčiau nei klasė turi savo kainą; kas tai kainuoja, dar sprendžiama, todėl kol kas niekas neapmokestinama."
+    "enterCityEarlyBody": "Šis miestas jums dar neatidarytas. Kelionė anksčiau nei klasė turi savo kainą; kas tai kainuoja, dar sprendžiama, todėl kol kas niekas neapmokestinama.",
+    "botJoinsIn": "Pangea Bot prisijungs po {duration}",
+    "botIsJoining": "Pangea Bot jungiasi…",
+    "playWithBotNowTitle": "Žaisti su Pangea Bot dabar?",
+    "playWithBotNowMessage": "Dar niekas neprisijungė. Pangea Bot gali užimti laisvą vietą dabar, arba galite toliau laukti.",
+    "keepWaiting": "Laukti toliau",
+    "botTookSeatAfterAnHour": "Ši sesija buvo atidaryta valandą, todėl Pangea Bot užėmė laisvą vietą.",
+    "botTookSeatAfterADay": "Ši sesija buvo atidaryta ilgiau nei dieną, todėl Pangea Bot užėmė laisvą vietą. Norėdami pradėti, atsiųskite žinutę."
 }

@@ -10413,5 +10413,12 @@
     "missionOpensAfter": "Ouvre après la mission {index}",
     "enterCityEarly": "Entrer plus tôt",
     "enterCityEarlyTitle": "Entrer plus tôt dans {city} ?",
-    "enterCityEarlyBody": "Cette ville ne vous est pas encore ouverte. Voyager en avance sur la classe a un coût ; ce coût est encore en cours de décision, donc pour l'instant rien n'est facturé."
+    "enterCityEarlyBody": "Cette ville ne vous est pas encore ouverte. Voyager en avance sur la classe a un coût ; ce coût est encore en cours de décision, donc pour l'instant rien n'est facturé.",
+    "botJoinsIn": "Le bot Pangea se joint dans {duration}",
+    "botIsJoining": "Le bot Pangea se joint…",
+    "playWithBotNowTitle": "Jouer avec le bot Pangea maintenant ?",
+    "playWithBotNowMessage": "Personne n'a encore rejoint. Le bot Pangea peut prendre la place libre maintenant, ou vous pouvez continuer à attendre.",
+    "keepWaiting": "Continuer à attendre",
+    "botTookSeatAfterAnHour": "Cette session est restée ouverte pendant une heure, alors le bot Pangea a pris la place libre.",
+    "botTookSeatAfterADay": "Cette session est restée ouverte pendant plus d'une journée, alors le bot Pangea a pris la place libre. Envoyez un message pour commencer."
 }

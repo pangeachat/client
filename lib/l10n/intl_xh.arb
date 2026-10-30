@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Ivula emva kweMishini {index}",
     "enterCityEarly": "Ngena kwangethuba",
     "enterCityEarlyTitle": "Ngena e-{city} kwangethuba?",
-    "enterCityEarlyBody": "Esi sixeko asikavulwa kuwe okwangoku. Ukuhamba phambi kweklasi kuneendleko; oko kubizayo kusagqitywa, ngoko okwangoku akukho nto ihlawuliswayo."
+    "enterCityEarlyBody": "Esi sixeko asikavulwa kuwe okwangoku. Ukuhamba phambi kweklasi kuneendleko; oko kubizayo kusagqitywa, ngoko okwangoku akukho nto ihlawuliswayo.",
+    "botJoinsIn": "IPangea Bot ijoyina ngaphakathi {duration}",
+    "botIsJoining": "IPangea Bot ijoyina…",
+    "playWithBotNowTitle": "Udlale nePangea Bot ngoku?",
+    "playWithBotNowMessage": "Akukho mntu ujoyinileyo okwangoku. IPangea Bot ingathatha isihlalo esivulekileyo ngoku, okanye ungaqhubeka ulindile.",
+    "keepWaiting": "Qhubeka ulindile",
+    "botTookSeatAfterAnHour": "Le seshoni ibivulekile iyure, ngoko iPangea Bot ithathe isihlalo esivulekileyo.",
+    "botTookSeatAfterADay": "Le seshoni ibivulekile ngaphezu kosuku, ngoko iPangea Bot ithathe isihlalo esivulekileyo. Thumela umyalezo ukuze uqale."
 }

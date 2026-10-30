@@ -10918,5 +10918,12 @@
     "missionOpensAfter": "Magbubukas pagkatapos ng Mission {index}",
     "enterCityEarly": "Pumasok nang maaga",
     "enterCityEarlyTitle": "Pumasok sa {city} nang maaga?",
-    "enterCityEarlyBody": "Hindi pa bukas sa iyo ang lungsod na ito. May bayad ang paglalakbay nang mas maaga sa klase; kasalukuyan pa itong pinagdedesisyunan, kaya sa ngayon ay wala pang sinisingil."
+    "enterCityEarlyBody": "Hindi pa bukas sa iyo ang lungsod na ito. May bayad ang paglalakbay nang mas maaga sa klase; kasalukuyan pa itong pinagdedesisyunan, kaya sa ngayon ay wala pang sinisingil.",
+    "botJoinsIn": "Sasali si Pangea Bot sa loob ng {duration}",
+    "botIsJoining": "Sumasali si Pangea Bot…",
+    "playWithBotNowTitle": "Makipaglaro kay Pangea Bot ngayon?",
+    "playWithBotNowMessage": "Wala pang sumasali. Puwedeng umupo si Pangea Bot sa bakanteng upuan ngayon, o puwede kang maghintay pa.",
+    "keepWaiting": "Maghintay pa",
+    "botTookSeatAfterAnHour": "Isang oras nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan.",
+    "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula."
 }

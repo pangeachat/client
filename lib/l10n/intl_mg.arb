@@ -2523,5 +2523,12 @@
     "missionOpensAfter": "Misokatra aorian'ny Iraka {index}",
     "enterCityEarly": "Midira aloha",
     "enterCityEarlyTitle": "Hiditra aloha ao {city}?",
-    "enterCityEarlyBody": "Mbola tsy misokatra ho anao ity tanàna ity. Misy vidiny ny fandehanana alohan'ny kilasy; mbola tsy tapaka ny vidiny, ka tsy misy sarany aloha izao."
+    "enterCityEarlyBody": "Mbola tsy misokatra ho anao ity tanàna ity. Misy vidiny ny fandehanana alohan'ny kilasy; mbola tsy tapaka ny vidiny, ka tsy misy sarany aloha izao.",
+    "botJoinsIn": "Miditra ao anatin'ny {duration} ny Pangea Bot",
+    "botIsJoining": "Miditra ny Pangea Bot…",
+    "playWithBotNowTitle": "Hilalao amin'ny Pangea Bot izao?",
+    "playWithBotNowMessage": "Tsy mbola nisy niditra. Afaka maka ny toerana malalaka izao ny Pangea Bot, na afaka miandry ianao.",
+    "keepWaiting": "Manohy miandry",
+    "botTookSeatAfterAnHour": "Adiny iray no nisokafan'ity fivoriana ity, ka nalain'ny Pangea Bot ny toerana malalaka.",
+    "botTookSeatAfterADay": "Nisokatra nandritra ny iray andro mahery ity fivoriana ity, ka nalain'ny Pangea Bot ny toerana malalaka. Mandefasa hafatra hanombohana."
 }

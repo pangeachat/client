@@ -18,7 +18,7 @@ import 'get_test_client.dart';
 
 /// The client shows the summary the bot writes to the `canonical` slot and
 /// asks for retries and regenerations through the `request` slot (#9199; org
-/// doc activity-summary.instructions.md, "Coordination model").
+/// doc activity-summary.instructions.md, "Room state").
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 

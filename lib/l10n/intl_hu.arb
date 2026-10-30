@@ -10164,5 +10164,12 @@
     "missionOpensAfter": "A(z) {index}. küldetés után nyílik meg",
     "enterCityEarly": "Belépés korán",
     "enterCityEarlyTitle": "Korán belépsz {city} városába?",
-    "enterCityEarlyBody": "Ez a város még nem nyitott meg számodra. Az osztály előtt utazni költséges; a költségek még meghatározás alatt állnak, így egyelőre semmit sem számolunk fel."
+    "enterCityEarlyBody": "Ez a város még nem nyitott meg számodra. Az osztály előtt utazni költséges; a költségek még meghatározás alatt állnak, így egyelőre semmit sem számolunk fel.",
+    "botJoinsIn": "Pangea Bot csatlakozik {duration} múlva",
+    "botIsJoining": "Pangea Bot csatlakozik…",
+    "playWithBotNowTitle": "Játssz a Pangea Bottal most?",
+    "playWithBotNowMessage": "Még senki sem csatlakozott. A Pangea Bot most elfoglalhatja a szabad helyet, vagy tovább várhatsz.",
+    "keepWaiting": "Tovább várok",
+    "botTookSeatAfterAnHour": "Ez a munkamenet egy órája nyitva volt, ezért a Pangea Bot elfoglalta a szabad helyet.",
+    "botTookSeatAfterADay": "Ez a munkamenet több mint egy napja nyitva volt, ezért a Pangea Bot elfoglalta a szabad helyet. Üzenj a kezdéshez."
 }

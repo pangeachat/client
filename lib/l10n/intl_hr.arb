@@ -10494,5 +10494,12 @@
     "missionOpensAfter": "Otvara se nakon Misije {index}",
     "enterCityEarly": "Uđite ranije",
     "enterCityEarlyTitle": "Ući u {city} ranije?",
-    "enterCityEarlyBody": "Ovaj grad vam još nije otvoren. Putovanje ispred razreda ima svoju cijenu; što to košta još se odlučuje, tako da za sada ništa nije naplaćeno."
+    "enterCityEarlyBody": "Ovaj grad vam još nije otvoren. Putovanje ispred razreda ima svoju cijenu; što to košta još se odlučuje, tako da za sada ništa nije naplaćeno.",
+    "botJoinsIn": "Pangea Bot se pridružuje za {duration}",
+    "botIsJoining": "Pangea Bot se pridružuje…",
+    "playWithBotNowTitle": "Igrati se s Pangea Botom sada?",
+    "playWithBotNowMessage": "Nitko se još nije pridružio. Pangea Bot može zauzeti slobodno mjesto sada, ili možete nastaviti čekati.",
+    "keepWaiting": "Nastavi čekati",
+    "botTookSeatAfterAnHour": "Ova sesija je bila otvorena sat vremena, pa je Pangea Bot zauzeo slobodno mjesto.",
+    "botTookSeatAfterADay": "Ova sesija je bila otvorena više od jednog dana, pa je Pangea Bot zauzeo slobodno mjesto. Pošaljite poruku za početak."
 }

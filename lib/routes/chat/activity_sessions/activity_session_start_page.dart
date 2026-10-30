@@ -50,6 +50,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart'
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -79,13 +80,14 @@ enum SessionState {
 /// and its "no longer supported" notice.
 ///
 /// The removed-activity ladder is scoped to session ROOMS: every rung renders
-/// what the room itself holds — roles, stars, timeline — so a learner or their
-/// teacher can always reopen an old session and review the work done there
-/// (activities.instructions.md, "Removed or unresolvable activities"). Reached
-/// WITHOUT a session, as a bare world-map pin is, there is no such thing to
-/// review: the archived body would render empty and the notice would tell the
-/// learner an activity they never ran is out of date (#7918). That case is a
-/// plain not-found instead.
+/// what the room itself holds — the plan it kept, else each role's occupant
+/// and earned diamonds — so a learner or their teacher can always reopen an
+/// old session and see who played it and how far they got
+/// (activity-start-page.instructions.md, "When the activity can't be fetched").
+/// Reached WITHOUT a session, as a bare world-map pin is, there is no such
+/// thing to review: the archived body would render empty and the notice would
+/// tell the learner an activity they never ran is out of date (#7918). That
+/// case is a plain not-found instead.
 bool archivedSessionGate({
   required bool activityRemoved,
   required bool hasSessionRoom,
@@ -144,8 +146,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   /// The backend confirmed this activity no longer exists (404). [activity]
   /// may still be populated from the plan embedded in legacy room state; when
   /// it stays null the view renders the archived fallback from room state
-  /// alone. Distinct from [error], which is a transient failure worth
-  /// retrying.
+  /// alone. Distinct from [error], a transient failure the view shows as an
+  /// error, with no retry button.
   bool activityRemoved = false;
 
   ActivityPlanModel? activity;
@@ -254,6 +256,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   @override
   void dispose() {
+    // The next activity opens at the usual height until its CTAs measure.
+    ActivitySheetCtaHeight.set(ActivitySheetCtaHeight.defaultHeight);
     scrollController.dispose();
     pickedRoleNotifier.dispose();
     DiscoveredSessionsCache.instance.removeListener(
@@ -271,7 +275,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   /// Back out of a session viewed from the join list: leave it if no role
   /// was picked (joining only to look shouldn't keep you a member), then
-  /// return to the activity, which lands on its join list again.
+  /// return to the activity, which lands on its join list again. Only this
+  /// arrow leaves: browser or phone back keeps the room joined (an open
+  /// question in activity-start-page.instructions.md).
   void backToJoinList() {
     final room = activityRoom;
     if (room != null &&
@@ -369,6 +375,34 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   Future<void> _loadSummary() async {
     if (!mounted) return;
+    try {
+      await _fetchSummaries();
+    } catch (e, s) {
+      // Summaries are non-essential (member counts / role availability); a slow
+      // or stalled preview read must not block or fail the activity render, so
+      // degrade to the empty model initialized in initState (#7085, #7159).
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"activityId": widget.activityId},
+      );
+      if (mounted) setState(() => _summariesLoading = false);
+    }
+  }
+
+  /// Re-reads this activity's sessions now and returns them. Unlike
+  /// [_loadSummary] it throws on a failed read, so Play with others never
+  /// joins from a list it couldn't refresh: the list on screen can hold a
+  /// session that has since filled, and joining it would send the learner
+  /// into a full room.
+  Future<ActivitySessionSummariesModel> refreshSummaries() async {
+    await _fetchSummaries();
+    return _roomSummariesModel;
+  }
+
+  /// The read behind [_loadSummary] and [refreshSummaries]; throws on failure.
+  Future<void> _fetchSummaries() async {
+    if (!mounted) return;
     final client = Matrix.of(context).client;
 
     // This activity's session rooms across ALL the learner's joined courses —
@@ -412,80 +446,65 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
       if (mounted) setState(() => _summariesLoading = false);
       return;
     }
-    try {
-      final l1Code = MatrixState.pangeaController.userController.userL1Code;
-      final results =
-          await Future.wait([
-            courseSpaceIds.isNotEmpty
-                ? client.loadActivitySessionPreviews(
-                    courseSpaceIds,
-                    activityId: widget.activityId,
-                    l1Code: l1Code,
-                  )
-                : Future.value(<String, RoomSummaryResponse>{}),
-            extraRoomIds.isNotEmpty
-                ? client.loadRoomSummaries(
-                    extraRoomIds.toList(),
-                    l1Code: l1Code,
-                  )
-                : Future.value(<String, RoomSummaryResponse>{}),
-          ]).timeoutNamed(
-            const Duration(seconds: 30),
-            'loadRoomSummaries: activity start page',
-          );
-      if (!mounted) return;
-      // Write the fresh space-scoped previews back so views rendering off the
-      // cache (the course card's Open state) correct themselves now instead of
-      // on the map's next discovery pass (#8150). Only results[0]: the per-room
-      // extras (deep-linked / invited rooms) are outside what discovery caches.
-      // Written first, so the join list below is that same read scoped to the
-      // course in context (#9026).
-      if (courseSpaceIds.isNotEmpty) {
-        DiscoveredSessionsCache.instance.updateActivity(
-          widget.activityId,
-          results[0],
+    final l1Code = MatrixState.pangeaController.userController.userL1Code;
+    final results =
+        await Future.wait([
+          courseSpaceIds.isNotEmpty
+              ? client.loadActivitySessionPreviews(
+                  courseSpaceIds,
+                  activityId: widget.activityId,
+                  l1Code: l1Code,
+                )
+              : Future.value(<String, RoomSummaryResponse>{}),
+          extraRoomIds.isNotEmpty
+              ? client.loadRoomSummaries(extraRoomIds.toList(), l1Code: l1Code)
+              : Future.value(<String, RoomSummaryResponse>{}),
+        ]).timeoutNamed(
+          const Duration(seconds: 30),
+          'loadRoomSummaries: activity start page',
         );
-      }
-      // Opened from a course, the join list offers only the sessions that
-      // course lists ([_sessionScope]); a bare pin or link offers every joined
-      // course's. The extras — the linked room, invited rooms — are never
-      // scoped out.
-      final courseSessions = courseSpaceIds.isEmpty
-          ? const <String, RoomSummaryResponse>{}
-          : DiscoveredSessionsCache.instance.forActivity(
-                  widget.activityId,
-                  course: _sessionScope,
-                ) ??
-                const <String, RoomSummaryResponse>{};
-      final otherSaved = await _loadOtherSavedSessions(
-        savedIds: savedIds,
-        known: {...results[0], ...results[1]},
-        inScope: {...courseSessions.keys, ...results[1].keys},
-        l1Code: l1Code,
+    if (!mounted) return;
+    // Write the fresh space-scoped previews back so views rendering off the
+    // cache (the course card's Open state) correct themselves now instead of
+    // on the map's next discovery pass (#8150). Only results[0]: the per-room
+    // extras (deep-linked / invited rooms) are outside what discovery caches.
+    // Written first, so the join list below is that same read scoped to the
+    // course in context (#9026).
+    if (courseSpaceIds.isNotEmpty) {
+      DiscoveredSessionsCache.instance.updateActivity(
+        widget.activityId,
+        results[0],
       );
-      if (!mounted) return;
-      setState(() {
-        _roomSummariesModel = ActivitySessionSummariesModel({
-          ...courseSessions,
-          ...results[1],
-        }, activityId: widget.activityId);
-        _otherCompletedSessions = otherSaved;
-        _summariesLoading = false;
-      });
-      // The summaries decide what the join list shows — their arrival is a
-      // tutorial re-ask.
-      _maybeStartStartPageTutorials();
-    } catch (e, s) {
-      // Summaries are non-essential (member counts / role availability); a slow
-      // or stalled preview read must not block or fail the activity render, so
-      // degrade to the empty model initialized in initState (#7085, #7159).
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"activityId": widget.activityId},
-      );
-      if (mounted) setState(() => _summariesLoading = false);
     }
+    // Opened from a course, the join list offers only the sessions that
+    // course lists ([_sessionScope]); a bare pin or link offers every joined
+    // course's. The extras — the linked room, invited rooms — are never
+    // scoped out.
+    final courseSessions = courseSpaceIds.isEmpty
+        ? const <String, RoomSummaryResponse>{}
+        : DiscoveredSessionsCache.instance.forActivity(
+                widget.activityId,
+                course: _sessionScope,
+              ) ??
+              const <String, RoomSummaryResponse>{};
+    final otherSaved = await _loadOtherSavedSessions(
+      savedIds: savedIds,
+      known: {...results[0], ...results[1]},
+      inScope: {...courseSessions.keys, ...results[1].keys},
+      l1Code: l1Code,
+    );
+    if (!mounted) return;
+    setState(() {
+      _roomSummariesModel = ActivitySessionSummariesModel({
+        ...courseSessions,
+        ...results[1],
+      }, activityId: widget.activityId);
+      _otherCompletedSessions = otherSaved;
+      _summariesLoading = false;
+    });
+    // The summaries decide what the join list shows — their arrival is a
+    // tutorial re-ask.
+    _maybeStartStartPageTutorials();
   }
 
   /// The learner's saved sessions of this activity that the page's own
@@ -523,9 +542,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   }
 
   Future<void> _loadActivity() async {
-    // v3: read the canonical activities-v2 plan directly (fetched on open, per
-    // the thin-list/full-on-open contract). Localization is choreo's concern,
-    // consumed later when this read swaps to a choreo endpoint.
+    // v3: read the plan through choreo's localized activity read. The page
+    // shows a spinner until this resolves, unlike the chat view, which shows
+    // timeline, roles and progress at once (activity-start-page.instructions.md,
+    // "When the activity can't be fetched").
     //
     // On an existing session room, read at the room's pinned version, not the
     // latest: role ids re-mint on owner edits, and the room's role state (and
@@ -541,9 +561,11 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
       case ActivityPlanLookupStatus.found:
         activity = lookup.plan;
       case ActivityPlanLookupStatus.removed:
-        // Removed-activity fallback ladder (activities.instructions.md):
-        // legacy rooms embed the full plan in room state — render it
-        // view-only; with no plan anywhere the view shows the archived body
+        // Removed-activity fallback ladder
+        // (activity-start-page.instructions.md, "When the activity can't be
+        // fetched"): legacy rooms embed the full
+        // plan in room state — render it view-only; with no plan anywhere the
+        // view shows the archived body
         // built from role/goal state.
         if (!mounted) return;
         final statePlan = activityRoom?.activityPlan;
@@ -563,7 +585,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   /// the course [ShareRoomButton]: copy-only (never the OS share sheet), and
   /// `hideCurrentSnackBar` + `showCloseIcon` so rapid taps replace the toast
   /// (with a dismissal X) instead of queueing a backlog. See
-  /// activity-start-page.instructions.md.
+  /// activity-start-page.instructions.md, "The top of the page".
   ///
   /// Path URL strategy (main.dart) means the link carries no `#` — on web a
   /// fragment is ignored (`shouldNavigateToIncomingUri` is false there) and the
@@ -650,7 +672,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   /// The learner has confirmed a role and is waiting for the room to fill, but
   /// the activity chat hasn't begun — the one live state where they can still
-  /// back out via the app-bar "…" menu. See activity-start-page.instructions.md.
+  /// back out via the app-bar "…" menu. See
+  /// activity-start-page.instructions.md, "The waiting room".
   bool get isPendingSession {
     final room = activityRoom;
     return _sessionState == SessionState.confirmedRole &&
@@ -706,6 +729,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     closeOwnRoomPanel(context, room.id);
   }
 
+  /// The page stores no state of its own: its step is read from the room —
+  /// whether one exists, whether the learner is in it, whether they hold a
+  /// role, whether every role is filled (activity-start-page.instructions.md,
+  /// "Purpose").
   SessionState get _sessionState {
     if (isArchived) return SessionState.archived;
 
