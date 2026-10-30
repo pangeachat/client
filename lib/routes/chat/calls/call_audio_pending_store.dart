@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart' show Logs;
 import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+
 import 'package:fluffychat/routes/chat/calls/call_audio_rows_stub.dart'
     if (dart.library.js_interop) 'package:fluffychat/routes/chat/calls/call_audio_rows_web.dart';
 
