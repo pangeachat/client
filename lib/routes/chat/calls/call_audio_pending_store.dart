@@ -183,39 +183,39 @@ Future<List<PendingCallAudio>> _withinCap(
 final ValueNotifier<bool> callAudioWaitingToSend = ValueNotifier(false);
 
 /// What the web store needs of its database: records and WAVs, by the audio
-/// half's transaction id. Each put is durable when it returns.
+/// half's transaction id. Each write is durable when it returns.
 abstract class PendingCallAudioRows {
   Future<void> putRecord(String id, String json);
+
+  /// The record and its WAV in ONE transaction: both or neither, so no tab,
+  /// dead or alive, can leave or see one without the other.
+  Future<void> putRecording(String id, String json, Uint8List wav);
   Future<String?> getRecord(String id);
-  Future<void> putWav(String id, Uint8List wav);
   Future<Uint8List?> getWav(String id);
   Future<void> remove(String id);
   Future<List<String>> ids();
 }
 
-/// The native store's rules over [PendingCallAudioRows]: the record first, then
-/// the WAV, then the record saying so; judged by length and hash on the way
-/// back; the same retention window and cap; purged with the account.
+/// The native store's rules over [PendingCallAudioRows]: never a WAV without
+/// its record or the reverse, here by writing both in one transaction; judged by
+/// length and hash on the way back; the same retention window and cap; purged
+/// with the account.
 class RowsCallAudioPendingStore implements CallAudioPendingStore {
   final PendingCallAudioRows _rows;
 
   RowsCallAudioPendingStore(this._rows);
-
-  /// How long a record may say `persisting` before [recover] takes it for what
-  /// a dead tab left. Another open tab may be writing it right now: the
-  /// database is shared, and a write takes moments.
-  static const _writeWindow = Duration(minutes: 1);
 
   Future<void> _put(PendingCallAudio item) =>
       _rows.putRecord(item.audioTxnId, jsonEncode(item.json));
 
   @override
   Future<bool> persist(PendingCallAudio item, Uint8List wav) async {
-    final id = item.audioTxnId;
     try {
-      await _put(item.withStatus(PendingCallAudio.persisting));
-      await _rows.putWav(id, wav);
-      await _put(item.withStatus(PendingCallAudio.persisted));
+      await _rows.putRecording(
+        item.audioTxnId,
+        jsonEncode(item.withStatus(PendingCallAudio.persisted).json),
+        wav,
+      );
       callAudioWaitingToSend.value = true;
       return true;
     } catch (e, s) {
@@ -268,7 +268,7 @@ class RowsCallAudioPendingStore implements CallAudioPendingStore {
           await _rows.remove(id);
           continue;
         }
-        var item = PendingCallAudio(Map<String, dynamic>.from(json as Map));
+        final item = PendingCallAudio(Map<String, dynamic>.from(json as Map));
         if (now.difference(item.createdAt) > PendingCallAudio.ttl) {
           _reportLost('older than its retention window', id);
           await _rows.remove(id);
@@ -279,17 +279,9 @@ class RowsCallAudioPendingStore implements CallAudioPendingStore {
           continue;
         }
         if (!await _complete(item)) {
-          if (item.status == PendingCallAudio.persisting &&
-              now.difference(item.createdAt) < _writeWindow) {
-            continue;
-          }
           _reportLost('its recording was incomplete', id);
           await _rows.remove(id);
           continue;
-        }
-        if (item.status == PendingCallAudio.persisting) {
-          item = item.withStatus(PendingCallAudio.persisted);
-          await _put(item);
         }
         items.add(item);
       } catch (e, s) {

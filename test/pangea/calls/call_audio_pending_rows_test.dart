@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -17,7 +15,11 @@ class _Rows implements PendingCallAudioRows {
   @override
   Future<String?> getRecord(String id) async => records[id];
   @override
-  Future<void> putWav(String id, Uint8List wav) async => wavs[id] = wav;
+  Future<void> putRecording(String id, String json, Uint8List wav) async {
+    records[id] = json;
+    wavs[id] = wav;
+  }
+
   @override
   Future<Uint8List?> getWav(String id) async => wavs[id];
   @override
@@ -71,26 +73,16 @@ void main() {
     expect(await reloaded.readVerified(found.single), wav);
   });
 
-  test('a tab killed before its WAV was written leaves nothing', () async {
-    final item = await _item(
-      wav,
-      now: DateTime.now().subtract(const Duration(minutes: 2)),
-    );
-    await rows.putRecord(
-      item.audioTxnId,
-      jsonEncode(item.withStatus(PendingCallAudio.persisting).json),
-    );
-    expect(await store.recover(), isEmpty);
-    expect(rows.records, isEmpty);
-  });
-
-  test('a WAV written whole under a persisting record is kept', () async {
-    final item = await _item(wav);
-    await store.persist(item, wav);
-    await store.update(item.withStatus(PendingCallAudio.persisting));
-    final found = await RowsCallAudioPendingStore(rows).recover();
-    expect(found.single.status, PendingCallAudio.persisted);
-  });
+  test(
+    'a record with no WAV, which only damage can leave, is dropped',
+    () async {
+      final item = await _item(wav);
+      await store.persist(item, wav);
+      rows.wavs.clear();
+      expect(await store.recover(), isEmpty);
+      expect(rows.records, isEmpty);
+    },
+  );
 
   test('a WAV that does not match its hash is dropped', () async {
     final item = await _item(wav);
@@ -144,30 +136,4 @@ void main() {
     await store.update(item);
     expect(rows.records, isEmpty);
   });
-
-  test('recovery leaves alone what another tab is still writing', () async {
-    final item = await _item(wav);
-    final slow = _SlowRows();
-    final writing = RowsCallAudioPendingStore(slow);
-    final persisted = writing.persist(item, wav);
-    await pumpEventQueue();
-    expect(await writing.recover(), isEmpty);
-    expect(slow.records, isNotEmpty, reason: 'not taken for a dead write');
-    slow.release();
-    expect(await persisted, isTrue);
-    expect((await writing.recover()).single.audioTxnId, item.audioTxnId);
-  });
-}
-
-/// Holds the WAV write open, as a slow disk would.
-class _SlowRows extends _Rows {
-  final _released = Completer<void>();
-
-  void release() => _released.complete();
-
-  @override
-  Future<void> putWav(String id, Uint8List wav) async {
-    await _released.future;
-    await super.putWav(id, wav);
-  }
 }

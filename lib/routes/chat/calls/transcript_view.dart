@@ -513,20 +513,22 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
 
   Future<void> _readStillSending() async {
     final store = widget.pendingStore ?? pendingCallAudioStoreForPlatform();
-    var items = const <PendingCallAudio>[];
+    List<PendingCallAudio>? items;
     try {
       items = await store.recover();
     } catch (e, s) {
       Logs().w('Could not read the call recordings waiting to send', e, s);
     }
     if (!mounted) return;
+    // A read that failed says nothing, so what was shown stands.
     final sending =
         CallHalfInFlight.finishing.contains(widget.callKey) ||
-        items.any(
+        (items ?? const []).any(
           (item) =>
               item.callKey == widget.callKey &&
               item.owner == widget.room.client.userID,
-        );
+        ) ||
+        (items == null && _stillSendingHere);
     if (sending != _stillSendingHere) {
       setState(() => _stillSendingHere = sending);
     }

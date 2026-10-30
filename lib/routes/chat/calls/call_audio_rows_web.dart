@@ -111,11 +111,11 @@ class _IndexedDbRows implements PendingCallAudioRows {
   }
 
   @override
-  Future<void> putWav(String id, Uint8List wav) => _run(
-    [_wavs],
-    'readwrite',
-    (tx) => tx.objectStore(_wavs).put(wav.toJS, id.toJS),
-  );
+  Future<void> putRecording(String id, String json, Uint8List wav) =>
+      _run([_records, _wavs], 'readwrite', (tx) {
+        tx.objectStore(_wavs).put(wav.toJS, id.toJS);
+        return tx.objectStore(_records).put(json.toJS, id.toJS);
+      });
 
   @override
   Future<Uint8List?> getWav(String id) async {
