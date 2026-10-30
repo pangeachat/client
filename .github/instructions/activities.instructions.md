@@ -44,9 +44,10 @@ The activity's start page doesn't store its own state; it reads it from the room
 
 A few steps are taken for the learner, to keep them out of choices that don't matter ([client#9333](https://github.com/pangeachat/client/issues/9333)):
 
-- **Joining from the join list with exactly one open role** claims that role straight away and lands the learner in the session. With two or more open roles the role picker stays; if someone takes the seat first, the session opens for viewing instead.
+- **Play with others with a session already waiting** joins that session rather than opening a new one; the start page's buttons own which session it picks ([activity-start-page.instructions.md](activity-start-page.instructions.md#the-cta-row)).
+- **Joining an open session with exactly one open role** claims that role straight away and lands the learner in the session. With two or more open roles the role picker stays. If someone takes the seat first, a session picked from the list opens for viewing instead, while Play with others moves on to the next open session.
 - **Play with Pangea Bot** adds the bot as soon as the new session exists, after the learner picks a role. If the bot fails to join, the waiting room's bot button re-invites it.
-- **A session viewed from the join list** opens inside the activity with a back arrow to the list; backing out without taking a role leaves the room, so looking doesn't leave the learner a member.
+- **A session viewed from the open sessions list** opens inside the activity with a back arrow to the list; backing out without taking a role leaves the room, so looking doesn't leave the learner a member.
 - **Opening a session from its 30-minute notice** (its push, or Open on the notice in the bot DM) offers Play with Pangea Bot once, in a dialog, while the bot can still be added. Opening the session any other way adds nothing; the waiting room's bot button is always there.
 
 **When the bot took the seat on its own.** A session whose last seat stays open for an hour gets the bot (the org activities doc's rule). Where the bot joined, the chat shows a note: the session was open for an hour, so Pangea Bot took the open seat. For a session the bot filled after more than a day, the note says so and adds that the bot is waiting for a message, since it sent none. A marker a learner wrote, by tapping Play with Pangea Bot, shows nothing.
