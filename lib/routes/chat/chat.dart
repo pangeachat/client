@@ -31,6 +31,7 @@ import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart'
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_signals.dart';
 import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
@@ -3151,6 +3152,19 @@ class ChatController extends State<ChatPageWithRoom>
     // stream sends the data for newly sent messages.
     if (originalSent?.langCodeMatchesL2 != true) {
       return;
+    }
+
+    // A target-language message in a discussion answers the question in
+    // front of the learner (#9647, prototype rule).
+    final discussionId = room.discussionActivityId;
+    if (discussionId != null && eventId != null) {
+      final count = room.discussionPlan?.discussionQuestions.length ?? 0;
+      room
+          .answerCurrentDiscussionQuestion(count == 0 ? 1 : count)
+          .catchError(
+            (e, s) =>
+                ErrorHandler.logError(e: e, s: s, data: {'roomId': roomId}),
+          );
     }
 
     final metadata = ConstructUseMetaData(

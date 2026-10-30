@@ -1,6 +1,7 @@
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
@@ -329,6 +330,10 @@ extension QuestOutlineForCourse on QuestOutline {
       final shown = [
         for (final id in mission.activityIds)
           if (available[id] != null) available[id]!,
+        // A discussion belongs to its course rather than the library, so
+        // the copy's activity list never names it (#9647).
+        for (final a in group.activities)
+          if (a.plan.isDiscussion && !listedIds.contains(a.activityId)) a,
       ];
       final pacing = MissionPacing(
         note: mission.note,
@@ -419,9 +424,13 @@ List<QuestActivityCard> restrictCardsForCourse(
     };
     return cards
         .where(
-          (card) => card.learningObjectiveRefs.any(
-            (loId) => allowedByLo[loId]?.contains(card.activityId) ?? false,
-          ),
+          (card) =>
+              // A discussion belongs to its course, not the copy's list
+              // (#9647).
+              card.isDiscussion ||
+              card.learningObjectiveRefs.any(
+                (loId) => allowedByLo[loId]?.contains(card.activityId) ?? false,
+              ),
         )
         .toList();
   }
@@ -442,9 +451,11 @@ List<QuestActivityCard> restrictCardsForCourse(
   };
   return cards
       .where(
-        (card) => card.learningObjectiveRefs.any(
-          (loId) => allowedByLo[loId]?.contains(card.activityId) ?? true,
-        ),
+        (card) =>
+            card.isDiscussion ||
+            card.learningObjectiveRefs.any(
+              (loId) => allowedByLo[loId]?.contains(card.activityId) ?? true,
+            ),
       )
       .toList();
 }

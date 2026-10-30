@@ -6336,5 +6336,26 @@
     "makeMyOwnCourseInstead": "Make my own course instead",
     "@makeMyOwnCourseInstead": {
         "description": "Secondary choice when a learner is offered the Pangea-run course for their language: instead, the app makes them a private course of their own."
+    },
+    "discussionLabel": "Discussion",
+    "@discussionLabel": {
+        "description": "Label on a discussion question's card and map pin: an open-ended question a course's learners talk about together in a group chat."
+    },
+    "discussionCardSemantics": "Discussion: {question}",
+    "@discussionCardSemantics": {
+        "description": "Screen-reader name of a discussion question's card or map pin.",
+        "placeholders": {
+            "question": {
+                "type": "String"
+            }
+        }
+    },
+    "discussionJoined": "Joined",
+    "@discussionJoined": {
+        "description": "State of a discussion the learner has joined the chat for: the pill on its card and its screen-reader state."
+    },
+    "roleplayLabel": "Roleplay",
+    "@roleplayLabel": {
+        "description": "Mode tag on an activity card for a roleplay: learners take roles and work toward goals in a structured conversation."
     }
 }

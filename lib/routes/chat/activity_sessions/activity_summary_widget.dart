@@ -8,8 +8,10 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goals_dropdown.dart';
@@ -18,6 +20,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_media_visibili
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_visibility_target.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_list.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
+import 'package:fluffychat/routes/chat/discussions/discussion_question_list.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 
 class ActivitySummary extends StatelessWidget {
@@ -169,6 +172,11 @@ class ActivitySummary extends StatelessWidget {
                       onOpen: (link) =>
                           UrlLauncher(context, link.url).launchUrl(),
                     ),
+                    if (activity.activityMode.listsQuestions &&
+                        activity.discussionQuestions.isNotEmpty)
+                      DiscussionQuestionList(
+                        questions: activity.discussionQuestions,
+                      ),
                     const Divider(height: 1),
                     ActivityVocabWidget(
                       key: ValueKey("activity-summary-${activity.activityId}"),

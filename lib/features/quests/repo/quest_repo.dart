@@ -10,6 +10,7 @@ import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
@@ -232,8 +233,10 @@ class QuestOutline {
     if (allowed.length == available.length) return group;
     return QuestObjectiveGroup(
       objective: group.objective,
+      // A discussion belongs to its course, so the course's pins never
+      // filter it out (#9647).
       activities: group.activities
-          .where((a) => allowed.contains(a.activityId))
+          .where((a) => allowed.contains(a.activityId) || a.plan.isDiscussion)
           .toList(),
       pacing: group.pacing,
       credit: group.credit,
@@ -936,17 +939,16 @@ class QuestRepo {
             ),
       ];
 
-      return Result.value(
-        QuestOutline(
-          quest: quest,
-          groups: groups,
-          addedGroups: addedGroups,
-          familyIdsByActivity: {
-            for (final a in read.activities)
-              if (a.familyIds.isNotEmpty) a.plan.activityId: a.familyIds,
-          },
-        ),
+      final outline = QuestOutline(
+        quest: quest,
+        groups: groups,
+        addedGroups: addedGroups,
+        familyIdsByActivity: {
+          for (final a in read.activities)
+            if (a.familyIds.isNotEmpty) a.plan.activityId: a.familyIds,
+        },
       );
+      return Result.value(outline);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

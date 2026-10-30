@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
@@ -28,6 +29,7 @@ import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dar
 import 'package:fluffychat/routes/chat/chat_event_list.dart';
 import 'package:fluffychat/routes/chat/chat_floating_action_button.dart';
 import 'package:fluffychat/routes/chat/chat_input_bar.dart';
+import 'package:fluffychat/routes/chat/discussions/discussion_question_header.dart';
 import 'package:fluffychat/routes/chat/pinned_events.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/world/analytics_header_avatar.dart';
@@ -470,13 +472,24 @@ class ChatView extends StatelessWidget {
                     ],
                   ),
                   // #Pangea
-                  ActivityStatsMenu(
-                    room: controller.room,
-                    visibilityNotifier:
-                        controller.activityController.showActivityDropdown,
-                    setShowDropdown:
-                        controller.activityController.setShowDropdown,
-                    activeGoalNotifier: controller.activeGoalNotifier,
+                  // The activity's mode picks its header (#9647); the mode is
+                  // known once the plan has loaded, so this rebuilds when it
+                  // arrives.
+                  ListenableBuilder(
+                    listenable: ActivityPlanRepo.instance,
+                    builder: (context, _) =>
+                        controller.room.activityMode?.header ==
+                            ActivityHeader.questions
+                        ? DiscussionQuestionHeader(room: controller.room)
+                        : ActivityStatsMenu(
+                            room: controller.room,
+                            visibilityNotifier: controller
+                                .activityController
+                                .showActivityDropdown,
+                            setShowDropdown:
+                                controller.activityController.setShowDropdown,
+                            activeGoalNotifier: controller.activeGoalNotifier,
+                          ),
                   ),
                   // if (controller.dragging)
                   //   Container(

@@ -5,6 +5,7 @@ import 'package:swipe_to_action/swipe_to_action.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
@@ -148,9 +149,8 @@ class Message extends StatelessWidget {
       }
       // #Pangea
       if (event.type == EventTypes.RoomCreate) {
-        return event.room.isActivitySession
-            ? const SizedBox()
-            : RoomCreationStateEvent(event: event);
+        if (event.room.isActivitySession) return const SizedBox();
+        return RoomCreationStateEvent(event: event);
       }
 
       if (event.type == PangeaEventTypes.activityPlan &&
@@ -165,6 +165,10 @@ class Message extends StatelessWidget {
               assignedRoles: event.room.hasArchivedActivity
                   ? event.room.activityRoles?.roles ?? {}
                   : event.room.assignedRoles ?? {},
+              // A discussion has no roles to show, only its questions
+              // (#9647).
+              showRoleCards:
+                  event.room.activityPlan!.activityMode.showsRoleCards,
               showInstructions: show,
               toggleInstructions:
                   controller.activityController.toggleShowInstructions,

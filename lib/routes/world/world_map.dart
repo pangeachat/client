@@ -9,6 +9,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
@@ -19,6 +20,8 @@ import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/central_courses/central_course_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
+import 'package:fluffychat/features/discussions/discussion_room_service.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
@@ -1785,6 +1788,10 @@ class WorldMapController extends State<WorldMap>
     // demote through the ranked tiers, but opening a plan would navigate away
     // from the join decision. Guards every tap funnel.
     if (MapContextController.notifier.value is CoursePreviewMapContext) return;
+    if (card.activityMode.opensSharedRoom) {
+      _openDiscussion(card);
+      return;
+    }
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     // Seat the activity as the sole left token via the nav helper — no raw
     // query surgery in feature code (routing.instructions.md). The course
@@ -1796,6 +1803,25 @@ class WorldMapController extends State<WorldMap>
     context.go(
       WorkspaceNav.openActivity(uri, card.activityId, roomId: myRoom?.id),
     );
+  }
+
+  /// A discussion pin opens straight into its chat (#9647), in the course
+  /// whose map it is on.
+  Future<void> _openDiscussion(QuestActivityCard card) async {
+    final mapContext = MapContextController.notifier.value;
+    final spaceId = mapContext is CourseMapContext ? mapContext.spaceId : null;
+    final course = spaceId == null ? null : client?.getRoomById(spaceId);
+    if (course == null) return;
+    final plan = ActivityPlanRepo.instance.cachedPlan(card.activityId);
+    final roomId = await DiscussionRoomService.open(
+      context,
+      course: course,
+      activityId: card.activityId,
+      imageUrl: plan?.discussionImageUrl,
+    );
+    if (roomId == null || !mounted) return;
+    final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+    context.go(WorkspaceNav.openRoomById(uri, roomId));
   }
 
   /// The large card's X (#7207): demote this activity out of the large tier

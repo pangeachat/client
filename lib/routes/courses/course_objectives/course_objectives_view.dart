@@ -3,12 +3,16 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
+import 'package:fluffychat/features/discussions/discussion_room_service.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/course_plan_return.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
@@ -472,7 +476,13 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     String activityId,
     Map<String, MissionXpBreakdown> xpByActivity,
   ) => PinSignals(
-    state: _liveStateFor(activityId).state ?? ActivityPinState.available,
+    // A discussion the learner is in ranks as an ongoing session (#9647).
+    state:
+        widget.objectivesProvider.client
+            .discussionRoomsFor(activityId)
+            .isNotEmpty
+        ? ActivityPinState.ongoingActive
+        : _liveStateFor(activityId).state ?? ActivityPinState.available,
     completionFraction: _finished(xpByActivity, activityId) ? 1.0 : 0.0,
     pinged: activityId == _pingedActivityId,
   );
@@ -537,6 +547,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   void _openActivity(QuestActivity ref) {
     if (widget.readOnly) return;
+    if (ref.plan.activityMode.opensSharedRoom) {
+      _openDiscussion(ref);
+      return;
+    }
     final room = widget.room;
     // The activity takes the card's slot, and the pressed card goes with it,
     // so the activity panel that mounts claims focus
@@ -568,6 +582,21 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
         fromCoursePlan: _isFullCoursePlan,
       ),
     );
+  }
+
+  /// A discussion opens straight into its chat (#9647): the learner's own
+  /// room for it, else one with space, else a new one.
+  Future<void> _openDiscussion(QuestActivity ref) async {
+    final course = widget.room;
+    if (course == null) return;
+    final roomId = await DiscussionRoomService.open(
+      context,
+      course: course,
+      activityId: ref.activityId,
+      imageUrl: ref.plan.discussionImageUrl,
+    );
+    if (roomId == null || !mounted) return;
+    _openSession(roomId);
   }
 
   @override
@@ -667,8 +696,16 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // course can't fill yet. Each Mission keeps to its own
                     // activities: a session from another Mission resumes from
                     // that Mission's card or Chats.
-                    final inRow = activities.firstOrNull;
-                    final playTarget = inRow ?? current.activities.firstOrNull;
+                    // Play opens activities only; a discussion is opened
+                    // from its own card (#9647).
+                    final inRow = activities
+                        .where((a) => !a.plan.isDiscussion)
+                        .firstOrNull;
+                    final playTarget =
+                        inRow ??
+                        current.activities
+                            .where((a) => !a.plan.isDiscussion)
+                            .firstOrNull;
                     final ongoingRoomId = inRow == null
                         ? null
                         : widget.room?.activeActivityRoomId(inRow.activityId);
