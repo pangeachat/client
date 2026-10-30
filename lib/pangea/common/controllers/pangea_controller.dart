@@ -233,11 +233,25 @@ class PangeaController {
       cefrLevel: userController.profile.userSettings.cefrLevel.string,
     );
 
+    await _clearCache(exclude: cachesKeptOnLanguageUpdate(update));
+    await matrixState.client.updateBotOptions(
+      userController.profile.userSettings,
+    );
+    await userController.updatePublicProfile();
+  }
+
+  /// The storage boxes a language change leaves alone.
+  @visibleForTesting
+  static List<String> cachesKeptOnLanguageUpdate(LanguageUpdate update) {
     final exclude = [
       'course_location_media_storage',
       'course_location_storage',
       'course_media_storage',
       'grammar_constructs_storage',
+      // Keyed by display language and pinned version, so no language change
+      // can serve a stale plan. Erasing it blanked every saved session's
+      // goals until its plan was fetched again (#9683).
+      'activity_plan_storage',
     ];
 
     // only clear course data if the base language has changed
@@ -248,12 +262,7 @@ class PangeaController {
         'course_activity_storage',
       ]);
     }
-
-    await _clearCache(exclude: exclude);
-    await matrixState.client.updateBotOptions(
-      userController.profile.userSettings,
-    );
-    await userController.updatePublicProfile();
+    return exclude;
   }
 
   void registerStorageKey(String key) => _storageKeyRegistry.add(key);
