@@ -500,7 +500,8 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     if (!_autoFilled.add(speaker)) return;
     _onDemandInFlight.add(speaker);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) unawaited(_transcribeHalf(speaker, ask: false));
+      if (!mounted) return;
+      unawaited(_transcribeHalf(speaker, ask: false));
     });
   }
 
