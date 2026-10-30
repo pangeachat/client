@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-27 14:47:56.012945",
+    "@@last_modified": "2026-10-27 14:57:12.797096",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10342,9 +10342,6 @@
     "watchOnYoutube": "المشاهدة على يوتيوب",
     "createMyOwnCourse": "إنشاء دورتي التدريبية الخاصة",
     "xpTowardMission": "{xp} نقطة خبرة نحو هذه المهمة",
-    "openCourse": "فتح الدورة",
-    "centralCourseJoinedTitle": "لقد انضممت إلى {course}",
-    "centralCourseJoinedBody": "إنها دورة بانجيا لمتعلمي {language}. يمكن لأعضائها رؤية اسمك وملفك الشخصي.",
     "centralCourseMembersSeeYou": "يمكن لأعضاء هذه الدورة رؤية اسمك وملفك الشخصي.",
     "practiceStartWordCount": "{count, plural, =1{كلمة للتدرب} other{كلمات للتدرب}}",
     "practiceStartGrammarCount": "{count, plural, =1{نقطة نحوية للتدرب} other{نقاط نحوية للتدرب}}",
@@ -10355,5 +10352,16 @@
     "sharedAnalyticsNone": "أنت لا تشارك تقدمك في التعلم مع أي دورة تدريبية.",
     "sharedAnalyticsOthersTitle": "الآخرون الذين يمكنهم رؤية تقدمك",
     "removeAnalyticsAccess": "إزالة الوصول",
-    "removeAnalyticsAccessDesc": "لن يتمكن {name} بعد الآن من رؤية تقدمك في التعلم."
+    "removeAnalyticsAccessDesc": "لن يتمكن {name} بعد الآن من رؤية تقدمك في التعلم.",
+    "centralCourseOfferBody": "إنها دورة بانجيا لمتعلمي {language}. يمكن لأعضائها رؤية اسمك وملفك الشخصي.",
+    "centralCourseOfferTitle": "هل تريد الانضمام إلى {course}؟",
+    "makeMyOwnCourseInstead": "إنشاء دورتي التدريبية بدلاً من ذلك",
+    "suggestMobileSignInSameAccount": "ثم سجّل الدخول إلى التطبيق باستخدام هذا الحساب.",
+    "botJoinsIn": "ينضم بوت بانجيا خلال {duration}",
+    "botIsJoining": "بوت بانجيا ينضم الآن…",
+    "playWithBotNowTitle": "هل تود اللعب مع بوت بانجيا الآن؟",
+    "playWithBotNowMessage": "لم ينضم أحد بعد. يمكن لبوت بانجيا أن يشغل المقعد الشاغر الآن، أو يمكنك الاستمرار في الانتظار.",
+    "keepWaiting": "الاستمرار في الانتظار",
+    "botTookSeatAfterAnHour": "كانت هذه الجلسة مفتوحة لمدة ساعة، لذا شغل بوت بانجيا المقعد الشاغر.",
+    "botTookSeatAfterADay": "كانت هذه الجلسة مفتوحة لأكثر من يوم، لذا شغل بوت بانجيا المقعد الشاغر. أرسل رسالة للبدء."
 }

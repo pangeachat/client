@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-27 14:47:59.707751",
+    "@@last_modified": "2026-10-27 14:57:16.887083",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Horfa á YouTube",
     "createMyOwnCourse": "Búa til mitt eigið námskeið",
     "xpTowardMission": "{xp} XP í átt að þessu verkefni",
-    "openCourse": "Opna námskeið",
-    "centralCourseJoinedTitle": "Þú hefur gengið í {course}",
-    "centralCourseJoinedBody": "Þetta er námskeið Pangea fyrir {language} nemendur. Meðlimir þess geta séð nafn þitt og prófíl.",
     "centralCourseMembersSeeYou": "Meðlimir þessa námskeiðs geta séð nafn þitt og prófíl.",
     "practiceStartWordCount": "{count, plural, =1{orð til að æfa} other{orð til að æfa}}",
     "practiceStartGrammarCount": "{count, plural, =1{málfræðiatriði til að æfa} other{málfræðiatriði til að æfa}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "Þú ert ekki að deila námsframvindu þinni með neinu námskeiði.",
     "sharedAnalyticsOthersTitle": "Aðrir sem sjá framfarir þínar",
     "removeAnalyticsAccess": "Fjarlægja aðgang",
-    "removeAnalyticsAccessDesc": "{name} mun ekki lengur geta séð námsframfarir þínar."
+    "removeAnalyticsAccessDesc": "{name} mun ekki lengur geta séð námsframfarir þínar.",
+    "centralCourseOfferBody": "Þetta er námskeið Pangea fyrir {language} nemendur. Meðlimir þess geta séð nafn þitt og prófíl.",
+    "centralCourseOfferTitle": "Taka þátt í {course}?",
+    "makeMyOwnCourseInstead": "Búa til mitt eigið námskeið í staðinn",
+    "suggestMobileSignInSameAccount": "Skráðu þig svo inn í appið með þessum reikningi.",
+    "botJoinsIn": "Pangea Bot tekur þátt eftir {duration}",
+    "botIsJoining": "Pangea Bot er að taka þátt…",
+    "playWithBotNowTitle": "Spila með Pangea Bot núna?",
+    "playWithBotNowMessage": "Enginn hefur tekið þátt ennþá. Pangea Bot getur tekið lausa sætið núna, eða þú getur haldið áfram að bíða.",
+    "keepWaiting": "Halda áfram að bíða",
+    "botTookSeatAfterAnHour": "Þessi lota var opin í klukkutíma, svo Pangea Bot tók lausa sætið.",
+    "botTookSeatAfterADay": "Þessi lota var opin í yfir sólarhring, svo Pangea Bot tók lausa sætið. Sendu skilaboð til að byrja."
 }

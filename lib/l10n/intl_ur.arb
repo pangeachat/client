@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-27 14:48:07.788752",
+    "@@last_modified": "2026-10-27 14:57:23.765829",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "یوٹیوب پر دیکھیں",
     "createMyOwnCourse": "میرا اپنا کورس بنائیں",
     "xpTowardMission": "اس مشن کے لیے {xp} XP",
-    "openCourse": "کورس کھولیں",
-    "centralCourseJoinedTitle": "آپ {course} میں شامل ہو گئے ہیں",
-    "centralCourseJoinedBody": "یہ {language} سیکھنے والوں کے لیے Pangea کا کورس ہے۔ اس کے اراکین آپ کا نام اور پروفائل دیکھ سکتے ہیں۔",
     "centralCourseMembersSeeYou": "اس کورس کے اراکین آپ کا نام اور پروفائل دیکھ سکتے ہیں۔",
     "practiceStartWordCount": "{count, plural, =1{مشق کرنے کے لیے لفظ} other{مشق کرنے کے لیے الفاظ}}",
     "practiceStartGrammarCount": "{count, plural, =1{مشق کرنے کے لیے گرامر کا نقطہ} other{مشق کرنے کے لیے گرامر کے نکات}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "آپ کسی بھی کورس کے ساتھ اپنی سیکھنے کی پیشرفت کا اشتراک نہیں کر رہے ہیں۔",
     "sharedAnalyticsOthersTitle": "دوسرے جو آپ کی پیشرفت دیکھ سکتے ہیں",
     "removeAnalyticsAccess": "رسائی ہٹائیں",
-    "removeAnalyticsAccessDesc": "{name} اب آپ کی سیکھنے کی پیشرفت نہیں دیکھ پائے گا۔"
+    "removeAnalyticsAccessDesc": "{name} اب آپ کی سیکھنے کی پیشرفت نہیں دیکھ پائے گا۔",
+    "centralCourseOfferBody": "یہ {language} سیکھنے والوں کے لیے Pangea کا کورس ہے۔ اس کے اراکین آپ کا نام اور پروفائل دیکھ سکتے ہیں۔",
+    "centralCourseOfferTitle": "کیا {course} میں شامل ہوں؟",
+    "makeMyOwnCourseInstead": "اس کے بجائے اپنا کورس خود بناؤں",
+    "suggestMobileSignInSameAccount": "پھر اس اکاؤنٹ سے ایپ میں سائن ان کریں۔",
+    "botJoinsIn": "پینجیا بوٹ {duration} میں شامل ہو رہا ہے",
+    "botIsJoining": "پینجیا بوٹ شامل ہو رہا ہے…",
+    "playWithBotNowTitle": "ابھی پینجیا بوٹ کے ساتھ کھیلیں؟",
+    "playWithBotNowMessage": "ابھی تک کوئی شامل نہیں ہوا۔ پینجیا بوٹ اب خالی سیٹ لے سکتا ہے، یا آپ انتظار جاری رکھ سکتے ہیں۔",
+    "keepWaiting": "انتظار جاری رکھیں",
+    "botTookSeatAfterAnHour": "یہ سیشن ایک گھنٹے کے لیے کھلا تھا، لہذا پینجیا بوٹ نے خالی سیٹ لے لی۔",
+    "botTookSeatAfterADay": "یہ سیشن ایک دن سے زیادہ کے لیے کھلا تھا، لہذا پینجیا بوٹ نے خالی سیٹ لے لی۔ شروع کرنے کے لیے ایک پیغام بھیجیں۔"
 }

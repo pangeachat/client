@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-27 14:48:00.210479",
+    "@@last_modified": "2026-10-27 14:57:17.478293",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10805,9 +10805,6 @@
     "watchOnYoutube": "YouTubeで視聴",
     "createMyOwnCourse": "自分のコースを作成",
     "xpTowardMission": "このミッションまであと {xp} XP",
-    "openCourse": "コースを開く",
-    "centralCourseJoinedTitle": "{course}に参加しました",
-    "centralCourseJoinedBody": "これは{language}学習者向けのPangeaのコースです。メンバーはあなたの名前とプロフィールを見ることができます。",
     "centralCourseMembersSeeYou": "このコースのメンバーはあなたの名前とプロフィールを見ることができます。",
     "practiceStartWordCount": "{count, plural, =1{単語を練習} other{単語を練習}}",
     "practiceStartGrammarCount": "{count, plural, =1{文法項目を練習} other{文法項目を練習}}",
@@ -10818,5 +10815,16 @@
     "sharedAnalyticsNone": "あなたはどのコースとも学習の進捗を共有していません。",
     "sharedAnalyticsOthersTitle": "進捗状況を閲覧できるその他のユーザー",
     "removeAnalyticsAccess": "アクセスを削除",
-    "removeAnalyticsAccessDesc": "{name}はあなたの学習進捗状況を閲覧できなくなります。"
+    "removeAnalyticsAccessDesc": "{name}はあなたの学習進捗状況を閲覧できなくなります。",
+    "centralCourseOfferBody": "これは{language}学習者向けのPangeaのコースです。メンバーはあなたの名前とプロフィールを見ることができます。",
+    "centralCourseOfferTitle": "{course}に参加しますか？",
+    "makeMyOwnCourseInstead": "代わりに自分でコースを作成する",
+    "suggestMobileSignInSameAccount": "その後、このアカウントでアプリにサインインしてください。",
+    "botJoinsIn": "Pangea Botが{duration}で参加します",
+    "botIsJoining": "Pangea Botが参加しています…",
+    "playWithBotNowTitle": "今すぐPangea Botとプレイしますか？",
+    "playWithBotNowMessage": "まだ誰も参加していません。Pangea Botが今すぐ空席に着くことも、引き続き待つこともできます。",
+    "keepWaiting": "待ち続ける",
+    "botTookSeatAfterAnHour": "このセッションは1時間開いていたため、Pangea Botが空席に着きました。",
+    "botTookSeatAfterADay": "このセッションは1日以上開いていたため、Pangea Botが空席に着きました。メッセージを送信して開始してください。"
 }

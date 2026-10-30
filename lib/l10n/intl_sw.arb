@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-27 14:48:06.753061",
+    "@@last_modified": "2026-10-27 14:57:22.530566",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Tazama kwenye YouTube",
     "createMyOwnCourse": "Unda kozi yangu mwenyewe",
     "xpTowardMission": "{xp} XP kuelekea Misheni hii",
-    "openCourse": "Fungua kozi",
-    "centralCourseJoinedTitle": "Umejiunga na {course}",
-    "centralCourseJoinedBody": "Hii ni kozi ya Pangea kwa wanafunzi wa {language}. Wanachama wake wanaweza kuona jina na wasifu wako.",
     "centralCourseMembersSeeYou": "Wanachama wa kozi hii wanaweza kuona jina na wasifu wako.",
     "practiceStartWordCount": "{count, plural, =1{neno la kufanyia mazoezi} other{maneno ya kufanyia mazoezi}}",
     "practiceStartGrammarCount": "{count, plural, =1{kipengele cha sarufi cha kufanyia mazoezi} other{vipengele vya sarufi vya kufanyia mazoezi}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "Hushiriki maendeleo yako ya kujifunza na kozi yoyote.",
     "sharedAnalyticsOthersTitle": "Wengine wanaoweza kuona maendeleo yako",
     "removeAnalyticsAccess": "Ondoa ufikiaji",
-    "removeAnalyticsAccessDesc": "{name} hataweza tena kuona maendeleo yako ya kujifunza."
+    "removeAnalyticsAccessDesc": "{name} hataweza tena kuona maendeleo yako ya kujifunza.",
+    "centralCourseOfferBody": "Hii ni kozi ya Pangea kwa wanafunzi wa {language}. Wanachama wake wanaweza kuona jina na wasifu wako.",
+    "centralCourseOfferTitle": "Jiunge na {course}?",
+    "makeMyOwnCourseInstead": "Badala yake, nitengeneze kozi yangu mwenyewe",
+    "suggestMobileSignInSameAccount": "Kisha ingia kwenye programu ukitumia akaunti hii.",
+    "botJoinsIn": "Pangea Bot anajiunga baada ya {duration}",
+    "botIsJoining": "Pangea Bot anajiunga…",
+    "playWithBotNowTitle": "Ucheze na Pangea Bot sasa?",
+    "playWithBotNowMessage": "Hakuna aliyejiunga bado. Pangea Bot anaweza kuchukua nafasi iliyo wazi sasa, au unaweza kuendelea kusubiri.",
+    "keepWaiting": "Endelea kusubiri",
+    "botTookSeatAfterAnHour": "Kipindi hiki kilikuwa wazi kwa saa moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi.",
+    "botTookSeatAfterADay": "Kipindi hiki kilikuwa wazi kwa zaidi ya siku moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi. Tuma ujumbe ili kuanza."
 }

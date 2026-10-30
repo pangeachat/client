@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-27 14:47:58.854343",
+    "@@last_modified": "2026-10-27 14:57:16.180417",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10472,9 +10472,6 @@
     "watchOnYoutube": "Gledaj na YouTubeu",
     "createMyOwnCourse": "Izradi moj tečaj",
     "xpTowardMission": "{xp} XP za ovu misiju",
-    "openCourse": "Otvori tečaj",
-    "centralCourseJoinedTitle": "Pridružili ste se tečaju {course}",
-    "centralCourseJoinedBody": "Ovo je Pangein tečaj za učenike {language} jezika. Njegovi članovi mogu vidjeti vaše ime i profil.",
     "centralCourseMembersSeeYou": "Članovi ovog tečaja mogu vidjeti vaše ime i profil.",
     "practiceStartWordCount": "{count, plural, =1{riječ za vježbanje} other{riječi za vježbanje}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatička točka za vježbanje} other{gramatičke točke za vježbanje}}",
@@ -10485,5 +10482,16 @@
     "sharedAnalyticsNone": "Ne dijelite svoj napredak u učenju ni s jednim tečajem.",
     "sharedAnalyticsOthersTitle": "Ostali koji mogu vidjeti vaš napredak",
     "removeAnalyticsAccess": "Ukloni pristup",
-    "removeAnalyticsAccessDesc": "{name} više neće moći vidjeti vaš napredak u učenju."
+    "removeAnalyticsAccessDesc": "{name} više neće moći vidjeti vaš napredak u učenju.",
+    "centralCourseOfferBody": "Ovo je Pangein tečaj za učenike {language} jezika. Njegovi članovi mogu vidjeti vaše ime i profil.",
+    "centralCourseOfferTitle": "Pridružiti se tečaju {course}?",
+    "makeMyOwnCourseInstead": "Umjesto toga, izradite vlastiti tečaj",
+    "suggestMobileSignInSameAccount": "Zatim se prijavite u aplikaciju s ovim računom.",
+    "botJoinsIn": "Pangea Bot se pridružuje za {duration}",
+    "botIsJoining": "Pangea Bot se pridružuje…",
+    "playWithBotNowTitle": "Igrati se s Pangea Botom sada?",
+    "playWithBotNowMessage": "Nitko se još nije pridružio. Pangea Bot može zauzeti slobodno mjesto sada, ili možete nastaviti čekati.",
+    "keepWaiting": "Nastavi čekati",
+    "botTookSeatAfterAnHour": "Ova sesija je bila otvorena sat vremena, pa je Pangea Bot zauzeo slobodno mjesto.",
+    "botTookSeatAfterADay": "Ova sesija je bila otvorena više od jednog dana, pa je Pangea Bot zauzeo slobodno mjesto. Pošaljite poruku za početak."
 }

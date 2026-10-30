@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-27 14:48:04.269729",
+    "@@last_modified": "2026-10-27 14:57:20.157582",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "YouTube 'ਤੇ ਦੇਖੋ",
     "createMyOwnCourse": "ਮੇਰਾ ਆਪਣਾ ਕੋਰਸ ਬਣਾਓ",
     "xpTowardMission": "ਇਸ ਮਿਸ਼ਨ ਲਈ {xp} XP",
-    "openCourse": "ਕੋਰਸ ਖੋਲ੍ਹੋ",
-    "centralCourseJoinedTitle": "ਤੁਸੀਂ {course} ਵਿੱਚ ਸ਼ਾਮਲ ਹੋ ਗਏ ਹੋ",
-    "centralCourseJoinedBody": "ਇਹ {language} ਸਿੱਖਣ ਵਾਲਿਆਂ ਲਈ ਪੈਂਜੀਆ ਦਾ ਕੋਰਸ ਹੈ। ਇਸਦੇ ਮੈਂਬਰ ਤੁਹਾਡਾ ਨਾਮ ਅਤੇ ਪ੍ਰੋਫਾਈਲ ਦੇਖ ਸਕਦੇ ਹਨ।",
     "centralCourseMembersSeeYou": "ਇਸ ਕੋਰਸ ਦੇ ਮੈਂਬਰ ਤੁਹਾਡਾ ਨਾਮ ਅਤੇ ਪ੍ਰੋਫਾਈਲ ਦੇਖ ਸਕਦੇ ਹਨ।",
     "practiceStartWordCount": "{count, plural, =1{ਅਭਿਆਸ ਕਰਨ ਲਈ ਸ਼ਬਦ} other{ਅਭਿਆਸ ਕਰਨ ਲਈ ਸ਼ਬਦ}}",
     "practiceStartGrammarCount": "{count, plural, =1{ਅਭਿਆਸ ਕਰਨ ਲਈ ਵਿਆਕਰਨ ਬਿੰਦੂ} other{ਅਭਿਆਸ ਕਰਨ ਲਈ ਵਿਆਕਰਨ ਬਿੰਦੂ}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "ਤੁਸੀਂ ਕਿਸੇ ਵੀ ਕੋਰਸ ਨਾਲ ਆਪਣੀ ਸਿੱਖਣ ਦੀ ਪ੍ਰਗਤੀ ਸਾਂਝੀ ਨਹੀਂ ਕਰ ਰਹੇ ਹੋ।",
     "sharedAnalyticsOthersTitle": "ਹੋਰ ਜੋ ਤੁਹਾਡੀ ਪ੍ਰਗਤੀ ਦੇਖ ਸਕਦੇ ਹਨ",
     "removeAnalyticsAccess": "ਪਹੁੰਚ ਹਟਾਓ",
-    "removeAnalyticsAccessDesc": "{name} ਤੁਹਾਡੀ ਸਿੱਖਣ ਦੀ ਪ੍ਰਗਤੀ ਨੂੰ ਹੋਰ ਦੇਖਣ ਦੇ ਯੋਗ ਨਹੀਂ ਹੋਵੇਗਾ।"
+    "removeAnalyticsAccessDesc": "{name} ਤੁਹਾਡੀ ਸਿੱਖਣ ਦੀ ਪ੍ਰਗਤੀ ਨੂੰ ਹੋਰ ਦੇਖਣ ਦੇ ਯੋਗ ਨਹੀਂ ਹੋਵੇਗਾ।",
+    "centralCourseOfferBody": "ਇਹ {language} ਸਿੱਖਣ ਵਾਲਿਆਂ ਲਈ ਪੈਂਜੀਆ ਦਾ ਕੋਰਸ ਹੈ। ਇਸਦੇ ਮੈਂਬਰ ਤੁਹਾਡਾ ਨਾਮ ਅਤੇ ਪ੍ਰੋਫਾਈਲ ਦੇਖ ਸਕਦੇ ਹਨ।",
+    "centralCourseOfferTitle": "{course} ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ?",
+    "makeMyOwnCourseInstead": "ਇਸ ਦੀ ਬਜਾਏ ਆਪਣਾ ਕੋਰਸ ਬਣਾਓ",
+    "suggestMobileSignInSameAccount": "ਫਿਰ ਇਸ ਖਾਤੇ ਨਾਲ ਐਪ ਵਿੱਚ ਸਾਈਨ ਇਨ ਕਰੋ।",
+    "botJoinsIn": "ਪੈਂਗੇਆ ਬੋਟ {duration} ਵਿੱਚ ਸ਼ਾਮਲ ਹੁੰਦਾ ਹੈ",
+    "botIsJoining": "ਪੈਂਗੇਆ ਬੋਟ ਸ਼ਾਮਲ ਹੋ ਰਿਹਾ ਹੈ…",
+    "playWithBotNowTitle": "ਹੁਣੇ ਪੈਂਗੇਆ ਬੋਟ ਨਾਲ ਖੇਡੋ?",
+    "playWithBotNowMessage": "ਕੋਈ ਵੀ ਅਜੇ ਸ਼ਾਮਲ ਨਹੀਂ ਹੋਇਆ ਹੈ। ਪੈਂਗੇਆ ਬੋਟ ਹੁਣ ਖਾਲੀ ਸੀਟ ਲੈ ਸਕਦਾ ਹੈ, ਜਾਂ ਤੁਸੀਂ ਉਡੀਕ ਕਰ ਸਕਦੇ ਹੋ।",
+    "keepWaiting": "ਉਡੀਕ ਕਰਦੇ ਰਹੋ",
+    "botTookSeatAfterAnHour": "ਇਹ ਸੈਸ਼ਨ ਇੱਕ ਘੰਟੇ ਲਈ ਖੁੱਲ੍ਹਾ ਸੀ, ਇਸ ਲਈ ਪੈਂਗੇਆ ਬੋਟ ਨੇ ਖਾਲੀ ਸੀਟ ਲੈ ਲਈ।",
+    "botTookSeatAfterADay": "ਇਹ ਸੈਸ਼ਨ ਇੱਕ ਦਿਨ ਤੋਂ ਵੱਧ ਸਮੇਂ ਲਈ ਖੁੱਲ੍ਹਾ ਸੀ, ਇਸ ਲਈ ਪੈਂਗੇਆ ਬੋਟ ਨੇ ਖਾਲੀ ਸੀਟ ਲੈ ਲਈ। ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੱਕ ਸੁਨੇਹਾ ਭੇਜੋ।"
 }

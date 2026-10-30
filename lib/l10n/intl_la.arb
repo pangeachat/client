@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-27 14:48:01.486314",
+    "@@last_modified": "2026-10-27 14:57:18.004967",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Specta in YouTube",
     "createMyOwnCourse": "Curriculum meum crea",
     "xpTowardMission": "{xp} XP ad hanc Missionem",
-    "openCourse": "Aperire cursum",
-    "centralCourseJoinedTitle": "Curriculum {course} coniunxisti",
-    "centralCourseJoinedBody": "Hic est cursus Pangeae pro discentibus {language}. Sodales eius nomen et imaginem tuam videre possunt.",
     "centralCourseMembersSeeYou": "Sodales huius cursus nomen et imaginem tuam videre possunt.",
     "practiceStartWordCount": "{count, plural, =1{verbum exercendum} other{verba exercenda}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatica exercenda} other{grammaticae exercendae}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "Progressum discendi tui cum ullo cursu non communicatis.",
     "sharedAnalyticsOthersTitle": "Alii qui progressum tuum videre possunt",
     "removeAnalyticsAccess": "Aditum remove",
-    "removeAnalyticsAccessDesc": "{name} progressum tuum discendi non iam videre poterit."
+    "removeAnalyticsAccessDesc": "{name} progressum tuum discendi non iam videre poterit.",
+    "centralCourseOfferBody": "Hic est cursus Pangeae pro discentibus {language}. Sodales eius nomen et imaginem tuam videre possunt.",
+    "centralCourseOfferTitle": "Visne {course} iungere?",
+    "makeMyOwnCourseInstead": "Meum cursum potius faciam",
+    "suggestMobileSignInSameAccount": "Deinde in app cum hoc usoris nomine inscribe.",
+    "botJoinsIn": "Pangea Bot iungit in {duration}",
+    "botIsJoining": "Pangea Bot iungit…",
+    "playWithBotNowTitle": "Ludere cum Pangea Bot nunc?",
+    "playWithBotNowMessage": "Nemo adhuc iunxit. Pangea Bot sedem liberam nunc capere potest, aut tu manere potes.",
+    "keepWaiting": "Manere",
+    "botTookSeatAfterAnHour": "Haec sessio per horam aperta erat, ergo Pangea Bot sedem liberam cepit.",
+    "botTookSeatAfterADay": "Haec sessio per diem apertior erat, ergo Pangea Bot sedem liberam cepit. Mitte nuntium ut incipias."
 }

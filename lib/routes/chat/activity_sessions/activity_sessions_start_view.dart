@@ -47,10 +47,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 /// Below this body height the start page is at its mobile minimized rest and
 /// renders only the header + info row + CTA — the scroll content is dropped
-/// until the sheet is dragged/tapped up. Kept in step with
-/// `_activitySheetMinimizedHeight` in workspace_shell.dart, the cavity height
-/// that produces this. See activity-start-page.instructions.md.
-const double kActivityCompactMaxHeight = 150.0;
+/// until the sheet is dragged/tapped up. It sits above the body of the tallest
+/// minimized sheet ([ActivitySheetCtaHeight.maxSheetHeight]) and below
+/// where the full layout's footer still fits beside the info row, so neither
+/// layout overflows mid-drag. The app is portrait-only, so a full sheet always
+/// clears it. See activity-start-page.instructions.md.
+const double kActivityCompactMaxHeight = 340.0;
 
 class ActivitySessionStartView extends StatelessWidget {
   final ActivitySessionStartState controller;
@@ -183,9 +185,8 @@ class ActivitySessionStartView extends StatelessWidget {
               if (controller.activityRoom case final room?
                   when controller.isPendingSession)
                 _WaitingRoomMenuButton(room)
-              // Web hosts share in the app bar, left of focus; mobile keeps it
-              // as a chip in the bottom CTA row instead.
-              else if (FluffyThemes.isColumnMode(context))
+              // Share sits in the app bar, left of focus, at every size.
+              else
                 IconButton(
                   tooltip: L10n.of(context).share,
                   icon: const Icon(Icons.share_outlined),
@@ -235,18 +236,31 @@ class ActivitySessionStartView extends StatelessWidget {
                         constraints.maxHeight < kActivityCompactMaxHeight;
                     // No scroll content at this rest, so fill the short sheet and
                     // space the info row and CTA evenly down it — the slack reads
-                    // as breathing room rather than a gap under the CTA.
+                    // as breathing room rather than a gap under the CTA. The
+                    // sheet grows to the CTA height the page measures, but for
+                    // the frame before it does (or at a very large text size)
+                    // the CTA clips at the bottom instead of overflowing. The
+                    // scroll view never scrolls, so an upward drag still grows
+                    // the sheet.
                     if (compact) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          _ActivityStartInfoRow(activity: activity),
-                          ActivitySessionButtons(
-                            controller: controller,
-                            sessionController: sessionController,
-                            compact: true,
+                      return SingleChildScrollView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minHeight: constraints.maxHeight,
                           ),
-                        ],
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              _ActivityStartInfoRow(activity: activity),
+                              ActivitySessionButtons(
+                                controller: controller,
+                                sessionController: sessionController,
+                                compact: true,
+                              ),
+                            ],
+                          ),
+                        ),
                       );
                     }
                     return Column(
@@ -312,23 +326,18 @@ class ActivitySessionStartView extends StatelessWidget {
                                                   ).launchUrl(),
                                                 ),
                                               ),
-                                              // Web relocates the flag out of the
-                                              // old share/flag row to here, the
-                                              // top-right of the text content;
-                                              // mobile keeps its CTA-row chip.
-                                              if (FluffyThemes.isColumnMode(
-                                                context,
-                                              ))
-                                                IconButton(
-                                                  tooltip: L10n.of(
-                                                    context,
-                                                  ).feedbackButton,
-                                                  icon: const Icon(
-                                                    Icons.flag_outlined,
-                                                  ),
-                                                  onPressed: controller
-                                                      .submitActivityFeedback,
+                                              // The flag rides the top-right of
+                                              // the text content at every size.
+                                              IconButton(
+                                                tooltip: L10n.of(
+                                                  context,
+                                                ).feedbackButton,
+                                                icon: const Icon(
+                                                  Icons.flag_outlined,
                                                 ),
+                                                onPressed: controller
+                                                    .submitActivityFeedback,
+                                              ),
                                             ],
                                           ),
                                           if (activity.vocab.isNotEmpty)

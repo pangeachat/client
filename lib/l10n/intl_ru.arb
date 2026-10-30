@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-27 14:48:05.190954",
+    "@@last_modified": "2026-10-27 14:57:20.964185",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11011,9 +11011,6 @@
     "watchOnYoutube": "Смотреть на YouTube",
     "createMyOwnCourse": "Создать свой курс",
     "xpTowardMission": "{xp} XP для этой миссии",
-    "openCourse": "Открыть курс",
-    "centralCourseJoinedTitle": "Вы присоединились к курсу «{course}»",
-    "centralCourseJoinedBody": "Это курс Pangea для изучающих {language}. Участники курса могут видеть ваше имя и профиль.",
     "centralCourseMembersSeeYou": "Участники этого курса могут видеть ваше имя и профиль.",
     "practiceStartWordCount": "{count, plural, =1{слово для практики} other{слов для практики}}",
     "practiceStartGrammarCount": "{count, plural, =1{грамматическая тема для практики} other{грамматических тем для практики}}",
@@ -11024,5 +11021,16 @@
     "sharedAnalyticsNone": "Вы не делитесь своим прогрессом в обучении ни с одним курсом.",
     "sharedAnalyticsOthersTitle": "Другие пользователи, которые видят ваш прогресс",
     "removeAnalyticsAccess": "Удалить доступ",
-    "removeAnalyticsAccessDesc": "{name} больше не сможет видеть ваш прогресс в обучении."
+    "removeAnalyticsAccessDesc": "{name} больше не сможет видеть ваш прогресс в обучении.",
+    "centralCourseOfferBody": "Это курс Pangea для изучающих {language}. Участники курса могут видеть ваше имя и профиль.",
+    "centralCourseOfferTitle": "Присоединиться к {course}?",
+    "makeMyOwnCourseInstead": "Создать свой курс",
+    "suggestMobileSignInSameAccount": "Затем войдите в приложение с этой учетной записью.",
+    "botJoinsIn": "Бот Pangea присоединится через {duration}",
+    "botIsJoining": "Бот Pangea присоединяется…",
+    "playWithBotNowTitle": "Играть с ботом Pangea сейчас?",
+    "playWithBotNowMessage": "Пока никто не присоединился. Бот Pangea может занять свободное место сейчас, или вы можете продолжить ждать.",
+    "keepWaiting": "Продолжить ждать",
+    "botTookSeatAfterAnHour": "Эта сессия была открыта в течение часа, поэтому бот Pangea занял свободное место.",
+    "botTookSeatAfterADay": "Эта сессия была открыта более суток, поэтому бот Pangea занял свободное место. Отправьте сообщение, чтобы начать."
 }

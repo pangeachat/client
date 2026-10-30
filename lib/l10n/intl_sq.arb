@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-27 14:48:05.900543",
+    "@@last_modified": "2026-10-27 14:57:21.787089",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Shiko në YouTube",
     "createMyOwnCourse": "Krijo kursin tim",
     "xpTowardMission": "{xp} XP drejt këtij Misioni",
-    "openCourse": "Hap kursin",
-    "centralCourseJoinedTitle": "Je bashkuar me {course}",
-    "centralCourseJoinedBody": "Është kursi i Pangeas për nxënësit e gjuhës {language}. Anëtarët e tij mund të shohin emrin dhe profilin tënd.",
     "centralCourseMembersSeeYou": "Anëtarët e këtij kursi mund të shohin emrin dhe profilin tënd.",
     "practiceStartWordCount": "{count, plural, =1{fjalë për të praktikuar} other{fjalë për të praktikuar}}",
     "practiceStartGrammarCount": "{count, plural, =1{pikë gramatikore për të praktikuar} other{pika gramatikore për të praktikuar}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "Nuk po ndani progresin tuaj të të nxënit me asnjë kurs.",
     "sharedAnalyticsOthersTitle": "Të tjerët që mund të shohin progresin tuaj",
     "removeAnalyticsAccess": "Hiq qasjen",
-    "removeAnalyticsAccessDesc": "{name} nuk do të mund të shohë më progresin tuaj të të nxënit."
+    "removeAnalyticsAccessDesc": "{name} nuk do të mund të shohë më progresin tuaj të të nxënit.",
+    "centralCourseOfferBody": "Është kursi i Pangeas për nxënësit e gjuhës {language}. Anëtarët e tij mund të shohin emrin dhe profilin tënd.",
+    "centralCourseOfferTitle": "Bashkohuni me {course}?",
+    "makeMyOwnCourseInstead": "Krijo kursin tim",
+    "suggestMobileSignInSameAccount": "Më pas, kyçuni në aplikacion me këtë llogari.",
+    "botJoinsIn": "Pangea Bot bashkohet pas {duration}",
+    "botIsJoining": "Pangea Bot po bashkohet…",
+    "playWithBotNowTitle": "Të luash me Pangea Bot tani?",
+    "playWithBotNowMessage": "Askush nuk është bashkuar ende. Pangea Bot mund të zërë vendin e lirë tani, ose mund të vazhdosh të presësh.",
+    "keepWaiting": "Vazhdo të presësh",
+    "botTookSeatAfterAnHour": "Kjo seancë ishte e hapur për një orë, kështu që Pangea Bot zuri vendin e lirë.",
+    "botTookSeatAfterADay": "Kjo seancë ishte e hapur për më shumë se një ditë, kështu që Pangea Bot zuri vendin e lirë. Dërgo një mesazh për të filluar."
 }

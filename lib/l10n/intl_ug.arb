@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-27 14:48:08.133704",
+    "@@last_modified": "2026-10-27 14:57:23.454288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "YouTube دا كۆرۈڭ",
     "createMyOwnCourse": "ئۆز كۇرسۇمنى قۇرۇش",
     "xpTowardMission": "بۇ ۋەزىپە ئۈچۈن {xp} XP",
-    "openCourse": "دەرستىن ئاچ",
-    "centralCourseJoinedTitle": "سىز {course} غا قاتناشتىڭىز",
-    "centralCourseJoinedBody": "بۇ پانگېيانىڭ {language} ئۆگەنگۈچىلەر ئۈچۈن تەييارلىغان دەرسى. ئۇنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ.",
     "centralCourseMembersSeeYou": "بۇ دەرسنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ.",
     "practiceStartWordCount": "{count, plural, =1{مەشقى قىلىدىغان سۆز} other{مەشقى قىلىدىغان سۆزلەر}}",
     "practiceStartGrammarCount": "{count, plural, =1{مەشقى قىلىدىغان گرامماتىكا نۇقتىسى} other{مەشقى قىلىدىغان گرامماتىكا نۇقتىلىرى}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "سىز ھېچقانداق دەرسلىك بىلەن ئۆگىنىش جەريانىڭىزنى ئورتاقلاشمايسىز.",
     "sharedAnalyticsOthersTitle": "تەرەققىياتىڭىزنى كۆرەلەيدىغان باشقىلار",
     "removeAnalyticsAccess": "زۇلۇمنى ئۆچۈرۈش",
-    "removeAnalyticsAccessDesc": "{name} ئارتقا قايتىش تەرەققىياتىڭىزنى كۆرەلمەيدۇ."
+    "removeAnalyticsAccessDesc": "{name} ئارتقا قايتىش تەرەققىياتىڭىزنى كۆرەلمەيدۇ.",
+    "centralCourseOfferBody": "بۇ پانگېيانىڭ {language} ئۆگەنگۈچىلەر ئۈچۈن تەييارلىغان دەرسى. ئۇنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ.",
+    "centralCourseOfferTitle": "{course}غا قاتناشامسىز؟",
+    "makeMyOwnCourseInstead": "ئۆزۈمنىڭ دەرسلىكىنى قۇراشتۇرىمەن",
+    "suggestMobileSignInSameAccount": "ئاندىن بۇ ھېسابات ئارقىلىق ئەپكە كىرىڭ.",
+    "botJoinsIn": "Pangea Bot {duration} ئىچىدە قوشۇلىدۇ",
+    "botIsJoining": "Pangea Bot قوشۇلۇۋاتىدۇ…",
+    "playWithBotNowTitle": "ھازىر Pangea Bot بىلەن ئوينامدۇ؟",
+    "playWithBotNowMessage": "تېخىچە ھېچكىم قوشۇلمىدى. Pangea Bot ھازىر بوش ئورۇننى ئالالايدۇ ياكى ساقلىسىڭىز بولىدۇ.",
+    "keepWaiting": "ساقلاشنى داۋاملاشتۇرۇش",
+    "botTookSeatAfterAnHour": "بۇ يىغىن بىر سائەت ئوچۇق بولغاچقا، Pangea Bot بوش ئورۇننى ئالدى.",
+    "botTookSeatAfterADay": "بۇ يىغىن بىر كۈندىن ئارتۇق ئوچۇق بولغاچقا، Pangea Bot بوش ئورۇننى ئالدى. باشلاش ئۈچۈن ئۇچۇر ئەۋەتىڭ."
 }

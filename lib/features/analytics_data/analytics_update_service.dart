@@ -22,6 +22,7 @@ import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/quests/course_progress_writer.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -126,6 +127,10 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     _connectionStatus
       ..removeListener(_onConnectionStatusChanged)
       ..addListener(_onConnectionStatusChanged);
+    MissionXpCache.instance
+      ..removeListener(_onMissionXpChanged)
+      ..addListener(_onMissionXpChanged);
+    _onMissionXpChanged();
     // Open the audio coverage period HERE, not at the first playback: a build
     // that instrumented listening and heard none has to say it was watching, or
     // its zero cannot be told apart from an unknown.
@@ -154,6 +159,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   Future<void> dispose() async {
     WidgetsBinding.instance.removeObserver(this);
     _connectionStatus.removeListener(_onConnectionStatusChanged);
+    MissionXpCache.instance.removeListener(_onMissionXpChanged);
     _periodicTimer?.cancel();
     // Await the final flush so the last open engagement span is actually sent —
     // callers dispose BEFORE invalidating the bearer, so the POST uses a valid
@@ -212,6 +218,23 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     final lang = _l2OrNull;
     if (lang == null || !dataService.isLogged) return;
     unawaited(_flushAfterInFlightUpload(lang));
+  }
+
+  /// The language whose course progress was checked once its Mission XP was
+  /// first read.
+  String? _progressCheckedOnRead;
+
+  /// Checks the course progress records once the app has opened and read the
+  /// learner's Mission XP, and again after a language switch, so a threshold
+  /// changed while the app was closed reaches the teacher dashboard without
+  /// waiting for an upload (quests.instructions.md, "A completed Mission
+  /// stays complete").
+  void _onMissionXpChanged() {
+    final lang = _l2OrNull?.langCodeShort;
+    if (lang == null || lang == _progressCheckedOnRead) return;
+    if (!MissionXpCache.instance.hasReadFor(lang) || !_isActiveAccount) return;
+    _progressCheckedOnRead = lang;
+    unawaited(updateCourseProgress());
   }
 
   /// An upload already in flight may have started before the connection was

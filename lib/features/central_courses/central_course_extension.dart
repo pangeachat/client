@@ -2,78 +2,45 @@ import 'dart:async';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
 import 'package:fluffychat/features/central_courses/central_course_rules.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_client_extension.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 extension CentralCourseRoomExtension on Room {
-  bool get isCentralCourse {
-    final userId = client.userID;
-    final settings = getState(PangeaEventTypes.courseSettings);
-    return userId != null &&
-        settings != null &&
-        CentralCourseRules.isCentralMark(
-          settings.content,
-          settings.senderId,
-          CentralCourseRules.supportUserId(userId),
-        );
-  }
-
-  bool get isTeachersCourse {
-    final userId = client.userID;
-    if (userId == null ||
-        !isSpace ||
-        coursePlan == null ||
-        membership != Membership.join) {
-      return false;
+  /// The language this learner's own course is waiting for a plan in, or
+  /// null when it isn't one of theirs or already has a plan.
+  String? get ownCourseAwaitingPlan {
+    if (!isSpace || membership != Membership.join) return null;
+    if (getState(EventTypes.RoomCreate)?.senderId != client.userID) {
+      return null;
     }
-    final users =
-        getState(
-          EventTypes.RoomPowerLevels,
-        )?.content.tryGetMap<String, Object?>('users') ??
-        const {};
-    return CentralCourseRules.hasOtherHumanAdmin(
-      users,
-      self: userId,
-      support: CentralCourseRules.supportUserId(userId),
-      bot: BotName.byEnvironment,
+    return CentralCourseRules.awaitingPlanLanguage(
+      getState(PangeaEventTypes.coursePlan)?.content,
     );
   }
 }
 
 extension CentralCourseClientExtension on Client {
-  bool get inTeachersCourse => rooms.any((room) => room.isTeachersCourse);
-
-  /// Answered from local state, so a learner already home costs no catalog
-  /// lookup on each app open.
-  bool inCentralCourseFor(String language) => rooms.any(
+  /// A course still waiting for its plan counts: the learner is in it.
+  bool get inAnyCourse => rooms.any(
     (room) =>
+        room.isSpace &&
         room.membership == Membership.join &&
-        room.isCentralCourse &&
-        room.coursePlan?.l2?.split('-').first == language,
+        (room.coursePlan != null || room.ownCourseAwaitingPlan != null),
   );
 
-  /// Joins [language]'s central course. Returns its room id when joined now;
-  /// null when the language has none, the learner is already in it, or the
-  /// join failed (reported).
-  Future<String?> joinCentralCourse(String language) async {
-    final roomId = await centralCourseFor(language);
-    if (roomId == null) return null;
-    if (getRoomById(roomId)?.membership == Membership.join) return null;
-    try {
-      await joinRoom(roomId);
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'room_id': roomId, 'target_language': language},
-      );
-      return null;
-    }
+  Future<String> joinCourse(String roomId) async {
+    await joinRoom(roomId);
     try {
       await waitForRoomInSync(
         roomId,
@@ -85,45 +52,107 @@ extension CentralCourseClientExtension on Client {
     }
     return roomId;
   }
+
+  /// A private, invite-only course of the learner's own, kept out of Browse:
+  /// on [plan] when there is one, otherwise waiting for one in [language].
+  Future<String> createOwnCourse({
+    required String language,
+    CoursePlanModel? plan,
+  }) async {
+    final roomId = await createPangeaSpace(
+      name:
+          plan?.title ??
+          PLanguageStore.byLangCode(language)?.displayName ??
+          language,
+      topic: plan?.description,
+      avatarUrl: plan?.imageUrl?.toString(),
+      visibility: Visibility.private,
+      joinRules: JoinRules.invite,
+      initialState: [
+        StateEvent(
+          type: PangeaEventTypes.coursePlan,
+          content: plan != null
+              ? CoursePlanEvent(uuid: plan.uuid, l2: language).toJson()
+              : CentralCourseRules.pendingPlan(language),
+        ),
+        StateEvent(
+          type: PangeaEventTypes.courseSettings,
+          content: const CourseSettingsModel(
+            requireAnalyticsAccess: true,
+          ).toJson(),
+        ),
+      ],
+      spaceChild: 0,
+    );
+    if (plan != null) await writeNewCourseCopy(roomId, plan.uuid);
+    return roomId;
+  }
+
+  /// Gives each of the learner's own courses that is waiting for a plan the
+  /// plan of its language's central course, once one is found. A course whose
+  /// language still has none waits for a later app open.
+  Future<void> repairOwnCourses() async {
+    for (final room in rooms.toList()) {
+      final language = room.ownCourseAwaitingPlan;
+      if (language == null) continue;
+      final central = await centralCourseFor(language);
+      if (central == null) continue;
+      try {
+        // Also writes the course's own copy of the plan.
+        await room.addCourseToSpace(central.courseId, targetLanguage: language);
+      } catch (e, s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {'room_id': room.id, 'target_language': language},
+        );
+      }
+    }
+  }
 }
 
-/// The app-open half: an existing learner who qualifies is joined to their
-/// language's central course (joining-courses.instructions.md § The central
-/// course).
-abstract class CentralCourseJoin {
-  /// Per user and language, so the app-open and language-change checks can't
-  /// both join.
+/// The app-open half: a learner in no course is offered their language's
+/// central course (joining-courses.instructions.md § The central course).
+abstract class CentralCourseOffer {
+  /// Per user, so overlapping checks can't create two courses.
   static final Set<String> _running = {};
 
-  /// The room joined now, for the caller to tell the learner; null when
-  /// nothing was joined.
-  static Future<String?> joinIfDue(Client client) async {
+  /// The central course to offer, or null when there is nothing to ask. A
+  /// learner in no course whose language has no central course, or whose
+  /// lookup failed, gets their own course with no plan instead.
+  static Future<PublicCoursesChunk?> dueOnOpen(Client client) async {
     await client.roomsLoading;
     await client.accountDataLoading;
     final user = MatrixState.pangeaController.userController;
     await user.initialize();
 
     final userId = client.userID;
+    final role = user.profile.userSettings.selfIdentifiedRole;
     final language = user.userL2?.langCodeShort;
-    final settings = user.profile.userSettings;
     if (userId == null ||
-        !CentralCourseRules.qualifies(
-          role: settings.selfIdentifiedRole,
-          language: language,
-          leftLanguages: settings.leftCentralCourses,
-          inTeachersCourse: client.inTeachersCourse,
-        )) {
+        role == UserType.teacher ||
+        language == null ||
+        !_running.add(userId)) {
       return null;
     }
-
-    if (client.inCentralCourseFor(language!)) return null;
-
-    final key = '$userId $language';
-    if (!_running.add(key)) return null;
     try {
-      return await client.joinCentralCourse(language);
+      await client.repairOwnCourses();
+      if (!CentralCourseRules.qualifies(
+        role: role,
+        language: language,
+        inAnyCourse: client.inAnyCourse,
+      )) {
+        return null;
+      }
+      final central = await client.centralCourseFor(language);
+      if (central != null) return central;
+      await client.createOwnCourse(language: language);
+      return null;
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'target_language': language});
+      return null;
     } finally {
-      _running.remove(key);
+      _running.remove(userId);
     }
   }
 }

@@ -1,3 +1,5 @@
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/central_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
@@ -40,8 +42,9 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
       return JoinedCourseOnboardingStep.next(client: client, state: state);
     }
 
-    if (type == UserType.student && await _joinCentralCourse()) {
-      return JoinedCourseOnboardingStep.next(client: client, state: state);
+    if (type == UserType.student) {
+      final central = await _centralCourseStep();
+      if (central != null) return central;
     }
 
     return switch (type) {
@@ -61,18 +64,35 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
     };
   }
 
-  /// A learner who didn't join with a class code joins their language's
-  /// central course here. See joining-courses.instructions.md § The central
-  /// course.
-  Future<bool> _joinCentralCourse() async {
+  /// A learner who didn't join with a class code is offered their language's
+  /// central course next. With none, or a failed lookup, they get a course of
+  /// their own with no plan, which a later app open repairs; it has nothing
+  /// to show yet, so onboarding still ends on the map. See
+  /// joining-courses.instructions.md § The central course.
+  Future<OnboardingStep?> _centralCourseStep() async {
     final language = state.targetLanguage?.langCodeShort;
-    if (language == null) return false;
-    final roomId = await state.courseProvider.joinCentralCourse(language);
-    if (roomId == null) return false;
-    state.setJoinedRoomId(roomId, central: true);
-    final course = await state.courseProvider.getCourseByRoomId(roomId);
-    if (course != null) state.setJoinedCoursePlan(course);
-    return true;
+    if (language == null) return null;
+    final central = await state.courseProvider.centralCourseFor(language);
+    if (central != null) {
+      return CentralCourseOnboardingStep(
+        client: client,
+        state: state,
+        central: central,
+        plan: await state.courseProvider.getCourse(central.courseId),
+        language: language,
+        maxRemainingSteps: state.trialInfoProvider.shouldShowTrialPage ? 1 : 0,
+      );
+    }
+    if (state.ownCourseRoomId != null) return null;
+    try {
+      state.setOwnCourseRoomId(
+        await state.courseProvider.createOwnCourse(language: language),
+      );
+    } catch (e, s) {
+      // Onboarding goes on; the app-open check makes the course instead.
+      ErrorHandler.logError(e: e, s: s, data: {'target_language': language});
+    }
+    return null;
   }
 
   @override

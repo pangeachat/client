@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-27 14:47:55.650323",
+    "@@last_modified": "2026-10-27 14:57:13.039284",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10053,9 +10053,6 @@
     "watchOnYoutube": "Глядзець на YouTube",
     "createMyOwnCourse": "Стварыць свой курс",
     "xpTowardMission": "{xp} XP да гэтай місіі",
-    "openCourse": "Адкрыць курс",
-    "centralCourseJoinedTitle": "Вы далучыліся да {course}",
-    "centralCourseJoinedBody": "Гэта курс Pangea для тых, хто вывучае {language}. Яго ўдзельнікі могуць бачыць ваша імя і профіль.",
     "centralCourseMembersSeeYou": "Удзельнікі гэтага курса могуць бачыць ваша імя і профіль.",
     "practiceStartWordCount": "{count, plural, =1{слова для практыкі} other{слоў для практыкі}}",
     "practiceStartGrammarCount": "{count, plural, =1{граматычны пункт для практыкі} other{граматычных пунктаў для практыкі}}",
@@ -10066,5 +10063,16 @@
     "sharedAnalyticsNone": "Вы не дзеліцеся сваім прагрэсам у навучанні ні з адным курсам.",
     "sharedAnalyticsOthersTitle": "Іншыя, хто бачыць ваш прагрэс",
     "removeAnalyticsAccess": "Выдаліць доступ",
-    "removeAnalyticsAccessDesc": "{name} больш не зможа бачыць ваш прагрэс у навучанні."
+    "removeAnalyticsAccessDesc": "{name} больш не зможа бачыць ваш прагрэс у навучанні.",
+    "centralCourseOfferBody": "Гэта курс Pangea для тых, хто вывучае {language}. Яго ўдзельнікі могуць бачыць ваша імя і профіль.",
+    "centralCourseOfferTitle": "Далучыцца да {course}?",
+    "makeMyOwnCourseInstead": "Замест гэтага стварыць свой уласны курс",
+    "suggestMobileSignInSameAccount": "Затым увайдзіце ў праграму з дапамогай гэтага ўліковага запісу.",
+    "botJoinsIn": "Бот Pangea далучыцца праз {duration}",
+    "botIsJoining": "Бот Pangea далучаецца…",
+    "playWithBotNowTitle": "Пагуляць з ботам Pangea зараз?",
+    "playWithBotNowMessage": "Пакуль ніхто не далучыўся. Бот Pangea можа заняць свабоднае месца зараз, або вы можаце працягнуць чакаць.",
+    "keepWaiting": "Працягнуць чакаць",
+    "botTookSeatAfterAnHour": "Гэтая сесія была адкрыта гадзіну, таму бот Pangea заняў свабоднае месца.",
+    "botTookSeatAfterADay": "Гэтая сесія была адкрыта больш за дзень, таму бот Pangea заняў свабоднае месца. Адпраўце паведамленне, каб пачаць."
 }

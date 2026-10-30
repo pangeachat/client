@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-27 14:48:01.590955",
+    "@@last_modified": "2026-10-27 14:57:18.113108",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Op YouTube kucken",
     "createMyOwnCourse": "Mäin eegene Cours erstellen",
     "xpTowardMission": "{xp} XP fir dës Missioun",
-    "openCourse": "Cours opmaachen",
-    "centralCourseJoinedTitle": "Dir sidd dem Cours „{course}“ bäigetrueden",
-    "centralCourseJoinedBody": "Et ass de Pangea-Cours fir {language}-Léierpersonal. D'Membere kënnen Ären Numm an Äre Profil gesinn.",
     "centralCourseMembersSeeYou": "D'Membere vun dësem Cours kënnen Ären Numm an Äre Profil gesinn.",
     "practiceStartWordCount": "{count, plural, =1{Wuert fir ze üben} other{Wierder fir ze üben}}",
     "practiceStartGrammarCount": "{count, plural, =1{Grammatikpunkt fir ze üben} other{Grammatikpunkte fir ze üben}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "Du deels däi Léierfortschrëtt mat kengem Cours.",
     "sharedAnalyticsOthersTitle": "Anerer, déi däi Fortschrëtt gesinn",
     "removeAnalyticsAccess": "Zougang ewechhuelen",
-    "removeAnalyticsAccessDesc": "{name} wäert däi Léierfortschrëtt net méi gesinn."
+    "removeAnalyticsAccessDesc": "{name} wäert däi Léierfortschrëtt net méi gesinn.",
+    "centralCourseOfferBody": "Et ass de Pangea-Cours fir {language}-Léierpersonal. D'Membere kënnen Ären Numm an Äre Profil gesinn.",
+    "centralCourseOfferTitle": "Bei {course} matmaachen?",
+    "makeMyOwnCourseInstead": "Mäin eegene Cours erstellen",
+    "suggestMobileSignInSameAccount": "Mellt Iech dann an der App mat dësem Kont un.",
+    "botJoinsIn": "Pangea Bot kënnt a(n) {duration}",
+    "botIsJoining": "Pangea Bot kënnt derbäi…",
+    "playWithBotNowTitle": "Elo mam Pangea Bot spillen?",
+    "playWithBotNowMessage": "Nach keen huet matgemaach. De Pangea Bot kann elo de fräie Sëtz huelen, oder Dir kënnt weider waarden.",
+    "keepWaiting": "Weider waarden",
+    "botTookSeatAfterAnHour": "Dës Sessioun war eng Stonn laang op, dofir huet de Pangea Bot de fräie Sëtz geholl.",
+    "botTookSeatAfterADay": "Dës Sessioun war iwwer een Dag laang op, dofir huet de Pangea Bot de fräie Sëtz geholl. Schéckt eng Noriicht fir unzefänken."
 }

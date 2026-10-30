@@ -120,6 +120,8 @@ class _PangeaSsoButtonState extends State<PangeaSsoButton> {
       );
       if (proceed != true || !context.mounted) return;
     }
+    // The page can rebuild while the check above runs (#9674).
+    if (!context.mounted) return;
 
     if (kIsWeb &&
         browserNeedsSameTabSso(

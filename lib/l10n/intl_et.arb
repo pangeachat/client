@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-27 14:47:57.320461",
+    "@@last_modified": "2026-10-27 14:57:14.550178",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10036,9 +10036,6 @@
     "watchOnYoutube": "Vaata YouTube'is",
     "createMyOwnCourse": "Loo oma kursus",
     "xpTowardMission": "{xp} XP selle missiooni suunas",
-    "openCourse": "Ava kursus",
-    "centralCourseJoinedTitle": "Oled liitunud kursusega {course}",
-    "centralCourseJoinedBody": "See on Pangea kursus {language} õppijatele. Selle liikmed näevad sinu nime ja profiili.",
     "centralCourseMembersSeeYou": "Selle kursuse liikmed näevad sinu nime ja profiili.",
     "practiceStartWordCount": "{count, plural, =1{sõna harjutamiseks} other{sõna harjutamiseks}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatikapunkt harjutamiseks} other{grammatikapunkti harjutamiseks}}",
@@ -10049,5 +10046,16 @@
     "sharedAnalyticsNone": "Sa ei jaga oma õppimise edenemist ühegi kursusega.",
     "sharedAnalyticsOthersTitle": "Teised, kes näevad sinu edusamme",
     "removeAnalyticsAccess": "Eemalda ligipääs",
-    "removeAnalyticsAccessDesc": "{name} ei näe enam sinu õppimise edusamme."
+    "removeAnalyticsAccessDesc": "{name} ei näe enam sinu õppimise edusamme.",
+    "centralCourseOfferBody": "See on Pangea kursus {language} õppijatele. Selle liikmed näevad sinu nime ja profiili.",
+    "centralCourseOfferTitle": "Liituda kursusega {course}?",
+    "makeMyOwnCourseInstead": "Looma oma kursuse",
+    "suggestMobileSignInSameAccount": "Seejärel logi selle kontoga rakendusse sisse.",
+    "botJoinsIn": "Pangea Bot liitub {duration} pärast",
+    "botIsJoining": "Pangea Bot liitub…",
+    "playWithBotNowTitle": "Mängida Pangea Botiga kohe?",
+    "playWithBotNowMessage": "Keegi pole veel liitunud. Pangea Bot saab nüüd vaba koha võtta või võite oodata.",
+    "keepWaiting": "Jätka ootamist",
+    "botTookSeatAfterAnHour": "See seanss oli tund aega avatud, nii et Pangea Bot võttis vaba koha.",
+    "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum."
 }

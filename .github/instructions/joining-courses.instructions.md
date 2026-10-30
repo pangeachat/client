@@ -6,7 +6,7 @@ applyTo: "lib/features/join_codes/**,lib/routes/chat_list/**,lib/routes/courses/
 
 > **Note:** "Course" here = a Matrix **course space** (group room), which survives the v1→v3 content migration. It is distinct from the retired CMS "course‑plan" content tree (now v3 Quests). The join/knock/code mechanics below are model-agnostic; only the course‑plans cross-link points at deprecated v1.
 
-How users join courses (Matrix spaces) through three routes (class link, class code, and knock-accept), and how a learner with no teacher's course is joined to their language's central course.
+How users join courses (Matrix spaces) through three routes (class link, class code, and knock-accept), and how a learner in no course is offered their language's central course.
 
 - **Synapse module cleanup**: [synapse-pangea-chat PR #21](https://github.com/pangeachat/synapse-pangea-chat/pull/21)
 - **Course plans**: [course-plans.instructions.md](course-plans.instructions.md)
@@ -106,15 +106,14 @@ Admin taps the knocking user → popup menu shows "Approve" (only visible for `M
 
 ## The central course
 
-Every learner belongs to a course with a person responsible for it ([central courses](../../../.github/.github/instructions/central-courses.instructions.md#every-account-has-a-home-course)). A learner who isn't in a teacher's course is joined to the central course for their target language.
+Every learner belongs to a course ([central courses](../../../.github/.github/instructions/central-courses.instructions.md#every-account-has-a-home-course)). A learner in no course is offered the central course for their target language, and gets a private course of their own if they decline.
 
-- **Who is joined.** A learner is joined when none of their courses has an admin other than themselves, Pangea's support account or the bot. That includes a learner whose only course is one they made alone. An account that chose teacher in onboarding is never joined, because its home is the course it will request or build.
-- **A new learner, in onboarding.** A learner who didn't join with a class code is joined after the level step and sees the joined-course page, as after a class-code join. The page also says the course's members can see their name and profile. Onboarding ends on the central course.
-- **An existing learner, on opening the app.** The app joins them and shows a dialog once. It says they've joined Pangea's course for their language and that its members can see their name and profile. It has Open course and Leave buttons.
-- **Leaving is remembered.** When a learner leaves a language's central course, from the dialog or the course page, the app saves that for that language in their settings. After that, no device joins them to it again. Offering it again is the job of engagement's `join_course` notice.
-- **A new target language.** A learner who switches language is joined to the new language's central course, with the same dialog. They stay in the old language's course.
-- **A language with no central course** is skipped, and the app checks again each time it opens.
-- **No separate switch.** Joins for a language start when its course is marked central, so the team chooses when each language starts.
+- **Who is asked.** A learner who isn't in any course. An account that chose teacher in onboarding is never asked, because its home is the course it will request or build.
+- **A new learner, in onboarding.** After the level step, a learner who didn't join with a class code sees the central course's card, with Join and a secondary "Make my own course instead". The page says the course's members can see their name and profile. Onboarding ends on whichever course they end up in.
+- **An existing learner, on opening the app.** A learner in no course sees a popup offering the central course, with the same two choices and the same line about members.
+- **A course of one's own.** Declining creates a private, invite-only course on the central course's plan, kept out of Browse. When the language has no central course, or the lookup fails, the app creates the course without asking and without a plan, then adds the central course's plan on a later app open, once it finds one.
+- **Leaving.** A learner who leaves their only course is asked again the next time the app opens.
+- **No separate switch.** Offers for a language start when its course is marked central, so the team chooses when each language starts.
 
 ---
 
@@ -167,7 +166,6 @@ Every case where the user is joined to a room without confirming it. The client 
 | Default chats in a course (announcements, introductions) | Server-side, when the user joins the course or the chat is linked to it ([course default chats](../../../synapse-pangea-chat/.github/instructions/course-default-chats.instructions.md)) |
 | knock_with_code succeeded                                | Code entry flow                   |
 | User previously knocked on the room                      | Invite received for a prior knock |
-| No teacher's course, and the target language has a central course (not for an account that chose teacher, or one that left that course) | Onboarding's level step, or app open |
 
 ---
 

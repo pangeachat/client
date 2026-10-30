@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:48:04.493253",
+    "@@last_modified": "2026-10-27 14:57:20.711598",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10039,9 +10039,6 @@
     "watchOnYoutube": "Assistir no YouTube",
     "createMyOwnCourse": "Criar meu próprio curso",
     "xpTowardMission": "{xp} XP para esta Missão",
-    "openCourse": "Abrir curso",
-    "centralCourseJoinedTitle": "Você entrou em {course}",
-    "centralCourseJoinedBody": "Este é o curso de Pangea para alunos de {language}. Os membros podem ver seu nome e perfil.",
     "centralCourseMembersSeeYou": "Os membros deste curso podem ver seu nome e perfil.",
     "practiceStartWordCount": "{count, plural, =1{palavra para praticar} other{palavras para praticar}}",
     "practiceStartGrammarCount": "{count, plural, =1{ponto gramatical para praticar} other{pontos gramaticais para praticar}}",
@@ -10052,5 +10049,16 @@
     "sharedAnalyticsNone": "Você não está compartilhando seu progresso de aprendizado com nenhum curso.",
     "sharedAnalyticsOthersTitle": "Outros que podem ver seu progresso",
     "removeAnalyticsAccess": "Remover acesso",
-    "removeAnalyticsAccessDesc": "{name} não poderá mais ver seu progresso de aprendizado."
+    "removeAnalyticsAccessDesc": "{name} não poderá mais ver seu progresso de aprendizado.",
+    "centralCourseOfferBody": "Este é o curso de Pangea para alunos de {language}. Os membros podem ver seu nome e perfil.",
+    "centralCourseOfferTitle": "Entrar em {course}?",
+    "makeMyOwnCourseInstead": "Criar meu próprio curso",
+    "suggestMobileSignInSameAccount": "Depois, entre no aplicativo com esta conta.",
+    "botJoinsIn": "Pangea Bot entra em {duration}",
+    "botIsJoining": "Pangea Bot está entrando…",
+    "playWithBotNowTitle": "Jogar com Pangea Bot agora?",
+    "playWithBotNowMessage": "Ninguém entrou ainda. Pangea Bot pode ocupar o lugar vago agora, ou você pode continuar esperando.",
+    "keepWaiting": "Continuar esperando",
+    "botTookSeatAfterAnHour": "Esta sessão ficou aberta por uma hora, então Pangea Bot ocupou o lugar vago.",
+    "botTookSeatAfterADay": "Esta sessão ficou aberta por mais de um dia, então Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar."
 }

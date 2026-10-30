@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-10-27 14:48:04.049786",
+    "@@last_modified": "2026-10-27 14:57:20.428009",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "YouTube ରେ ଦେଖନ୍ତୁ",
     "createMyOwnCourse": "ମୋର ନିଜସ୍ୱ ପାଠ୍ୟକ୍ରମ ତିଆରି କରନ୍ତୁ",
     "xpTowardMission": "ଏହି ମିଶନ୍ ପାଇଁ {xp} XP",
-    "openCourse": "କୋର୍ସ ଖୋଲନ୍ତୁ",
-    "centralCourseJoinedTitle": "ଆପଣ {course} ରେ ଯୋଗ ଦେଇଛନ୍ତି",
-    "centralCourseJoinedBody": "ଏହା {language} ଶିକ୍ଷାର୍ଥୀଙ୍କ ପାଇଁ Pangea ର କୋର୍ସ। ଏହାର ସଦସ୍ୟମାନେ ଆପଣଙ୍କ ନାମ ଏବଂ ପ୍ରୋଫାଇଲ୍ ଦେଖିପାରିବେ।",
     "centralCourseMembersSeeYou": "ଏହି କୋର୍ସର ସଦସ୍ୟମାନେ ଆପଣଙ୍କ ନାମ ଏବଂ ପ୍ରୋଫାଇଲ୍ ଦେଖିପାରିବେ।",
     "practiceStartWordCount": "{count, plural, =1{ଅଭ୍ୟାସ କରିବାକୁ ଶବ୍ଦ} other{ଅଭ୍ୟାସ କରିବାକୁ ଶବ୍ଦ}}",
     "practiceStartGrammarCount": "{count, plural, =1{ଅଭ୍ୟାସ କରିବାକୁ ବ୍ୟାକରଣ ବିନ୍ଦୁ} other{ଅଭ୍ୟାସ କରିବାକୁ ବ୍ୟାକରଣ ବିନ୍ଦୁ}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "ଆପଣ କୌଣସି କୋର୍ସ ସହିତ ଆପଣଙ୍କ ଶିକ୍ଷଣ ପ୍ରଗତି ବଣ୍ଟୁନାହାଁନ୍ତି।",
     "sharedAnalyticsOthersTitle": "ଅନ୍ୟମାନେ ଯେଉଁମାନେ ଆପଣଙ୍କ ପ୍ରଗତି ଦେଖିପାରିବେ",
     "removeAnalyticsAccess": "ପହଞ୍ଚ ଅପସାରଣ କରନ୍ତୁ",
-    "removeAnalyticsAccessDesc": "{name} ଆଉ ଆପଣଙ୍କ ଶିକ୍ଷଣ ପ୍ରଗତି ଦେଖିପାରିବେ ନାହିଁ।"
+    "removeAnalyticsAccessDesc": "{name} ଆଉ ଆପଣଙ୍କ ଶିକ୍ଷଣ ପ୍ରଗତି ଦେଖିପାରିବେ ନାହିଁ।",
+    "centralCourseOfferBody": "ଏହା {language} ଶିକ୍ଷାର୍ଥୀଙ୍କ ପାଇଁ Pangea ର କୋର୍ସ। ଏହାର ସଦସ୍ୟମାନେ ଆପଣଙ୍କ ନାମ ଏବଂ ପ୍ରୋଫାଇଲ୍ ଦେଖିପାରିବେ।",
+    "centralCourseOfferTitle": "{course}ରେ ଯୋଗ ଦେବେ କି?",
+    "makeMyOwnCourseInstead": "ଏହା ବଦଳରେ ମୋର ନିଜସ୍ୱ ପାଠ୍ୟକ୍ରମ ତିଆରି କରନ୍ତୁ",
+    "suggestMobileSignInSameAccount": "ତା’ପରେ ଏହି ଆକାଉଣ୍ଟ୍ ସହିତ ଆପରେ ସାଇନ୍ ଇନ୍ କରନ୍ତୁ।",
+    "botJoinsIn": "Pangea Bot {duration} ରେ ଯୋଗ ଦେବ",
+    "botIsJoining": "Pangea Bot ଯୋଗ ଦେଉଛି…",
+    "playWithBotNowTitle": "ବର୍ତ୍ତମାନ Pangea Bot ସହିତ ଖେଳିବେ କି?",
+    "playWithBotNowMessage": "କେହି ଯୋଗ ଦେଇ ନାହାଁନ୍ତି। Pangea Bot ବର୍ତ୍ତମାନ ଖାଲି ସ୍ଥାନ ନେଇପାରିବ, କିମ୍ବା ଆପଣ ଅପେକ୍ଷା କରିପାରିବେ।",
+    "keepWaiting": "ଅପେକ୍ଷା କରନ୍ତୁ",
+    "botTookSeatAfterAnHour": "ଏହି ସେସନ୍ ଏକ ଘଣ୍ଟା ପାଇଁ ଖୋଲା ଥିଲା, ତେଣୁ Pangea Bot ଖାଲି ସ୍ଥାନ ନେଇଛି।",
+    "botTookSeatAfterADay": "ଏହି ସେସନ୍ ଏକ ଦିନରୁ ଅଧିକ ସମୟ ପାଇଁ ଖୋଲା ଥିଲା, ତେଣୁ Pangea Bot ଖାଲି ସ୍ଥାନ ନେଇଛି। ଆରମ୍ଭ କରିବାକୁ ଏକ ବାର୍ତ୍ତା ପଠାନ୍ତୁ।"
 }

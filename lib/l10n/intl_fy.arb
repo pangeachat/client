@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-27 14:47:57.979909",
+    "@@last_modified": "2026-10-27 14:57:14.825794",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Besjoch op YouTube",
     "createMyOwnCourse": "Mei eigen kursus oanmeitsje",
     "xpTowardMission": "{xp} XP foar dizze Missje",
-    "openCourse": "Kursus iepenje",
-    "centralCourseJoinedTitle": "Jo hawwe meidien oan {course}",
-    "centralCourseJoinedBody": "It is de kursus fan Pangea foar {language}-learders. De leden kinne jo namme en profyl sjen.",
     "centralCourseMembersSeeYou": "Leden fan dizze kursus kinne jo namme en profyl sjen.",
     "practiceStartWordCount": "{count, plural, =1{wurd om te oefenjen} other{wurden om te oefenjen}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatikapunt om te oefenjen} other{grammatikapunten om te oefenjen}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "Jo diele jo learfoarútgong net mei in kursus.",
     "sharedAnalyticsOthersTitle": "Oaren dy't dyn foarútgong sjen kinne",
     "removeAnalyticsAccess": "Tagong fuortsmite",
-    "removeAnalyticsAccessDesc": "{name} sil dyn learfoarútgong net mear sjen kinne."
+    "removeAnalyticsAccessDesc": "{name} sil dyn learfoarútgong net mear sjen kinne.",
+    "centralCourseOfferBody": "It is de kursus fan Pangea foar {language}-learders. De leden kinne jo namme en profyl sjen.",
+    "centralCourseOfferTitle": "Meidwaan oan {course}?",
+    "makeMyOwnCourseInstead": "Myn eigen kursus meitsje",
+    "suggestMobileSignInSameAccount": "Meld dy dan oan by de app mei dit akkount.",
+    "botJoinsIn": "Pangea Bot docht mei oer {duration}",
+    "botIsJoining": "Pangea Bot docht mei…",
+    "playWithBotNowTitle": "No mei Pangea Bot boartsje?",
+    "playWithBotNowMessage": "Der hat noch nimmen meidien. Pangea Bot kin no de iepen plak ynnimme, of jo kinne wachtsje bliuwe.",
+    "keepWaiting": "Wachtsje bliuwe",
+    "botTookSeatAfterAnHour": "Dizze sesje wie in oere iepen, dus Pangea Bot hat de iepen plak ynnommen.",
+    "botTookSeatAfterADay": "Dizze sesje wie mear as in dei iepen, dus Pangea Bot hat de iepen plak ynnommen. Stjoer in berjocht om te begjinnen."
 }

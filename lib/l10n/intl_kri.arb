@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-27 14:48:01.149627",
+    "@@last_modified": "2026-10-27 14:57:18.197331",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Go wach na YouTube",
     "createMyOwnCourse": "Mek mi yon kos",
     "xpTowardMission": "{xp} XP fɔ dis Mishɔn",
-    "openCourse": "Opén kõs",
-    "centralCourseJoinedTitle": "Yu dɔn jɔyn {course}",
-    "centralCourseJoinedBody": "Na Pangea in kõs fɔ {language} lɔna dɛn. In mɛmba dɛn go ebul si yu nem ɛn yu profil.",
     "centralCourseMembersSeeYou": "Mɛmba dɛn fɔ dis kõs go ebul si yu nem ɛn yu profil.",
     "practiceStartWordCount": "{count, plural, =1{wɔd fɔ praktis} other{wɔd dɛn fɔ praktis}}",
     "practiceStartGrammarCount": "{count, plural, =1{grama pɔynt fɔ praktis} other{grama pɔynt dɛn fɔ praktis}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "Yu nɔ de sho ɛni kɔs aw yu de lan.",
     "sharedAnalyticsOthersTitle": "Uda pipul dɛn we go ebul si yu prɔgrɛs",
     "removeAnalyticsAccess": "Pul aksɛs",
-    "removeAnalyticsAccessDesc": "{name} nɔ go ebul si yu lɔn prɔgrɛs igen."
+    "removeAnalyticsAccessDesc": "{name} nɔ go ebul si yu lɔn prɔgrɛs igen.",
+    "centralCourseOfferBody": "Na Pangea in kõs fɔ {language} lɔna dɛn. In mɛmba dɛn go ebul si yu nem ɛn yu profil.",
+    "centralCourseOfferTitle": "Jɔyn {course}?",
+    "makeMyOwnCourseInstead": "Mek mi yon kos insted",
+    "suggestMobileSignInSameAccount": "Dɛn sayn in to di ap wit dis akaunt.",
+    "botJoinsIn": "Pangea Bot de go jɔyn insay {duration}",
+    "botIsJoining": "Pangea Bot de jɔyn…",
+    "playWithBotNowTitle": "Yu want fɔ ple wit Pangea Bot naw?",
+    "playWithBotNowMessage": "Nɔbɔdi nɔ jɔyn yet. Pangea Bot kin tek di ples naw, ɔ yu kin kɔntinyu fɔ wet.",
+    "keepWaiting": "Kɔntinyu fɔ wet",
+    "botTookSeatAfterAnHour": "Dis seshɔn bin opin fɔ wan awa, so Pangea Bot tek di ples we bin fri.",
+    "botTookSeatAfterADay": "Dis seshɔn bin opin fɔ pas wan de, so Pangea Bot tek di ples we bin fri. Send mɛsej fɔ stat."
 }

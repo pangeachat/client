@@ -79,12 +79,12 @@ extension PublicCoursesRequest on Client {
   /// [targetLanguage]'s central course (#9591), or null when it has none. A
   /// failed lookup is reported and also returns null, so the learner carries
   /// on without one and the next check tries again.
-  Future<String?> centralCourseFor(String targetLanguage) async {
+  Future<PublicCoursesChunk?> centralCourseFor(String targetLanguage) async {
     try {
       final courses = await _allPublicCourses(
         targetLanguage,
       ).timeout(const Duration(seconds: 10));
-      return PublicCoursesChunk.centralOf(courses)?.room.roomId;
+      return PublicCoursesChunk.centralOf(courses);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

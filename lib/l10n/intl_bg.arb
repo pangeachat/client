@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-10-27 14:47:55.715708",
+    "@@last_modified": "2026-10-27 14:57:12.896732",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Гледайте в YouTube",
     "createMyOwnCourse": "Създаване на собствен курс",
     "xpTowardMission": "{xp} XP към тази мисия",
-    "openCourse": "Отвори курса",
-    "centralCourseJoinedTitle": "Присъединихте се към {course}",
-    "centralCourseJoinedBody": "Това е курсът на Pangea за изучаващи {language}. Неговите членове могат да виждат вашето име и профил.",
     "centralCourseMembersSeeYou": "Членовете на този курс могат да виждат вашето име и профил.",
     "practiceStartWordCount": "{count, plural, =1{дума за упражнение} other{думи за упражнение}}",
     "practiceStartGrammarCount": "{count, plural, =1{граматическа точка за упражнение} other{граматически точки за упражнение}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "Не споделяте напредъка си в обучението с нито един курс.",
     "sharedAnalyticsOthersTitle": "Други, които могат да виждат напредъка ви",
     "removeAnalyticsAccess": "Премахване на достъпа",
-    "removeAnalyticsAccessDesc": "{name} вече няма да може да вижда напредъка ви в обучението."
+    "removeAnalyticsAccessDesc": "{name} вече няма да може да вижда напредъка ви в обучението.",
+    "centralCourseOfferBody": "Това е курсът на Pangea за изучаващи {language}. Неговите членове могат да виждат вашето име и профил.",
+    "centralCourseOfferTitle": "Да се присъединя към {course}?",
+    "makeMyOwnCourseInstead": "Вместо това да създам свой собствен курс",
+    "suggestMobileSignInSameAccount": "След това влезте в приложението с този акаунт.",
+    "botJoinsIn": "Ботът на Pangea се присъединява след {duration}",
+    "botIsJoining": "Ботът на Pangea се присъединява...",
+    "playWithBotNowTitle": "Да играете ли с бота на Pangea сега?",
+    "playWithBotNowMessage": "Все още никой не се е присъединил. Ботът на Pangea може да заеме свободното място сега или можете да продължите да чакате.",
+    "keepWaiting": "Продължи да чакаш",
+    "botTookSeatAfterAnHour": "Тази сесия беше отворена за един час, така че ботът на Pangea зае свободното място.",
+    "botTookSeatAfterADay": "Тази сесия беше отворена за повече от един ден, така че ботът на Pangea зае свободното място. Изпратете съобщение, за да започнете."
 }

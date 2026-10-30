@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:48:00.113228",
+    "@@last_modified": "2026-10-27 14:57:17.182442",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10112,9 +10112,6 @@
     "watchOnYoutube": "Guarda su YouTube",
     "createMyOwnCourse": "Crea il mio corso",
     "xpTowardMission": "{xp} XP per questa missione",
-    "openCourse": "Apri corso",
-    "centralCourseJoinedTitle": "Hai partecipato a {course}",
-    "centralCourseJoinedBody": "È il corso di Pangea per chi impara il {language}. I suoi membri possono vedere il tuo nome e il tuo profilo.",
     "centralCourseMembersSeeYou": "I membri di questo corso possono vedere il tuo nome e il tuo profilo.",
     "practiceStartWordCount": "{count, plural, =1{parola da praticare} other{parole da praticare}}",
     "practiceStartGrammarCount": "{count, plural, =1{punto grammaticale da praticare} other{punti grammaticali da praticare}}",
@@ -10125,5 +10122,16 @@
     "sharedAnalyticsNone": "Non stai condividendo i tuoi progressi di apprendimento con nessun corso.",
     "sharedAnalyticsOthersTitle": "Altri che possono vedere i tuoi progressi",
     "removeAnalyticsAccess": "Rimuovi accesso",
-    "removeAnalyticsAccessDesc": "{name} non potrà più vedere i tuoi progressi di apprendimento."
+    "removeAnalyticsAccessDesc": "{name} non potrà più vedere i tuoi progressi di apprendimento.",
+    "centralCourseOfferBody": "È il corso di Pangea per chi impara il {language}. I suoi membri possono vedere il tuo nome e il tuo profilo.",
+    "centralCourseOfferTitle": "Vuoi unirti a {course}?",
+    "makeMyOwnCourseInstead": "Crea il mio corso",
+    "suggestMobileSignInSameAccount": "Quindi accedi all'app con questo account.",
+    "botJoinsIn": "Pangea Bot si unisce tra {duration}",
+    "botIsJoining": "Pangea Bot si sta unendo…",
+    "playWithBotNowTitle": "Giocare con Pangea Bot ora?",
+    "playWithBotNowMessage": "Nessuno si è ancora unito. Pangea Bot può prendere il posto libero ora, oppure puoi continuare ad aspettare.",
+    "keepWaiting": "Continua ad aspettare",
+    "botTookSeatAfterAnHour": "Questa sessione è rimasta aperta per un'ora, quindi Pangea Bot ha preso il posto libero.",
+    "botTookSeatAfterADay": "Questa sessione è rimasta aperta per più di un giorno, quindi Pangea Bot ha preso il posto libero. Invia un messaggio per iniziare."
 }

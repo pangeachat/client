@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-27 14:48:01.776539",
+    "@@last_modified": "2026-10-27 14:57:18.297608",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "ເບິ່ງໃນ YouTube",
     "createMyOwnCourse": "ສ້າງຫຼັກສູດຂອງຂ້ອຍເອງ",
     "xpTowardMission": "{xp} XP ສູ່ພາລະກິດນີ້",
-    "openCourse": "ເປີດຫຼັກສູດ",
-    "centralCourseJoinedTitle": "ທ່ານໄດ້ເຂົ້າຮ່ວມ {course} ແລ້ວ",
-    "centralCourseJoinedBody": "ມັນແມ່ນຫຼັກສູດຂອງ Pangea ສຳລັບຜູ້ຮຽນພາສາ {language}. ສະມາຊິກສາມາດເຫັນຊື່ ແລະ ໂປຣໄຟລ໌ຂອງທ່ານໄດ້.",
     "centralCourseMembersSeeYou": "ສະມາຊິກຂອງຫຼັກສູດນີ້ສາມາດເຫັນຊື່ ແລະ ໂປຣໄຟລ໌ຂອງທ່ານໄດ້.",
     "practiceStartWordCount": "{count, plural, =1{ຄຳສັບທີ່ຈະຝຶກ} other{ຄຳສັບທີ່ຈະຝຶກ}}",
     "practiceStartGrammarCount": "{count, plural, =1{ຫຼັກໄວຍາກອນທີ່ຈະຝຶກ} other{ຫຼັກໄວຍາກອນທີ່ຈະຝຶກ}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "ທ່ານບໍ່ໄດ້ແບ່ງປັນຄວາມຄືບໜ້າການຮຽນຮູ້ຂອງທ່ານກັບຫຼັກສູດໃດໆ.",
     "sharedAnalyticsOthersTitle": "ຄົນອື່ນໆທີ່ສາມາດເຫັນຄວາມຄືບໜ້າຂອງທ່ານ",
     "removeAnalyticsAccess": "ລຶບການເຂົ້າເຖິງ",
-    "removeAnalyticsAccessDesc": "{name} ຈະບໍ່ສາມາດເຫັນຄວາມຄືບໜ້າໃນການຮຽນຮູ້ຂອງທ່ານໄດ້ອີກຕໍ່ໄປ."
+    "removeAnalyticsAccessDesc": "{name} ຈະບໍ່ສາມາດເຫັນຄວາມຄືບໜ້າໃນການຮຽນຮູ້ຂອງທ່ານໄດ້ອີກຕໍ່ໄປ.",
+    "centralCourseOfferBody": "ມັນແມ່ນຫຼັກສູດຂອງ Pangea ສຳລັບຜູ້ຮຽນພາສາ {language}. ສະມາຊິກສາມາດເຫັນຊື່ ແລະ ໂປຣໄຟລ໌ຂອງທ່ານໄດ້.",
+    "centralCourseOfferTitle": "ເຂົ້າຮ່ວມ {course}?",
+    "makeMyOwnCourseInstead": "ສ້າງຫຼັກສູດຂອງຂ້ອຍເອງແທນ",
+    "suggestMobileSignInSameAccount": "ຈາກນັ້ນເຂົ້າສູ່ລະບົບແອັບດ້ວຍບັນຊີນີ້.",
+    "botJoinsIn": "Pangea Bot ເຂົ້າຮ່ວມໃນ {duration}",
+    "botIsJoining": "Pangea Bot ກໍາລັງເຂົ້າຮ່ວມ…",
+    "playWithBotNowTitle": "ຫຼິ້ນກັບ Pangea Bot ດຽວນີ້ບໍ?",
+    "playWithBotNowMessage": "ຍັງບໍ່ມີໃຜເຂົ້າຮ່ວມເທື່ອ. Pangea Bot ສາມາດເຂົ້າຮ່ວມໄດ້ດຽວນີ້, ຫຼືທ່ານສາມາດລໍຖ້າຕໍ່ໄປ.",
+    "keepWaiting": "ລໍຖ້າຕໍ່ໄປ",
+    "botTookSeatAfterAnHour": "ເຊສຊັນນີ້ເປີດມາໄດ້ໜຶ່ງຊົ່ວໂມງແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ.",
+    "botTookSeatAfterADay": "ເຊສຊັນນີ້ເປີດມາໄດ້ຫຼາຍກວ່າໜຶ່ງມື້ແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ. ສົ່ງຂໍ້ຄວາມເພື່ອເລີ່ມຕົ້ນ."
 }

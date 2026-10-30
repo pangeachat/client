@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-27 14:47:59.745743",
+    "@@last_modified": "2026-10-27 14:57:16.746028",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10668,9 +10668,6 @@
     "watchOnYoutube": "Féach ar YouTube",
     "createMyOwnCourse": "Cruthaigh mo chúrsa féin",
     "xpTowardMission": "{xp} XP i dtreo an Mhisiúin seo",
-    "openCourse": "Oscail an cúrsa",
-    "centralCourseJoinedTitle": "Tá tú páirteach i {course}",
-    "centralCourseJoinedBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
     "centralCourseMembersSeeYou": "Is féidir le baill an chúrsa seo d'ainm agus do phróifíl a fheiceáil.",
     "practiceStartWordCount": "{count, plural, =1{focal a chleachtadh} other{focail a chleachtadh}}",
     "practiceStartGrammarCount": "{count, plural, =1{pointe gramadaí a chleachtadh} other{pointí gramadaí a chleachtadh}}",
@@ -10681,5 +10678,16 @@
     "sharedAnalyticsNone": "Níl tú ag roinnt do dhul chun cinn foghlama le haon chúrsa.",
     "sharedAnalyticsOthersTitle": "Daoine eile atá in ann d'fhorbairt a fheiceáil",
     "removeAnalyticsAccess": "Bain rochtain",
-    "removeAnalyticsAccessDesc": "Ní bheidh {name} in ann d'fhorbairt foghlama a fheiceáil a thuilleadh."
+    "removeAnalyticsAccessDesc": "Ní bheidh {name} in ann d'fhorbairt foghlama a fheiceáil a thuilleadh.",
+    "centralCourseOfferBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
+    "centralCourseOfferTitle": "An bhfuil tú ag iarraidh a bheith páirteach i {course}?",
+    "makeMyOwnCourseInstead": "Cruthaigh mo chúrsa féin ina ionad",
+    "suggestMobileSignInSameAccount": "Ansin sínigh isteach san aip leis an gcuntas seo.",
+    "botJoinsIn": "Pangea Bot joins in {duration}",
+    "botIsJoining": "Pangea Bot is joining…",
+    "playWithBotNowTitle": "Play with Pangea Bot now?",
+    "playWithBotNowMessage": "Nobody has joined yet. Pangea Bot can take the open seat now, or you can keep waiting.",
+    "keepWaiting": "Keep waiting",
+    "botTookSeatAfterAnHour": "This session was open for an hour, so Pangea Bot took the open seat.",
+    "botTookSeatAfterADay": "This session was open for over a day, so Pangea Bot took the open seat. Send a message to start."
 }

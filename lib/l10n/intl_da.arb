@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-27 14:47:56.674274",
+    "@@last_modified": "2026-10-27 14:57:13.870146",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10956,9 +10956,6 @@
     "watchOnYoutube": "Se på YouTube",
     "createMyOwnCourse": "Opret mit eget kursus",
     "xpTowardMission": "{xp} XP til denne mission",
-    "openCourse": "Åbn kursus",
-    "centralCourseJoinedTitle": "Du er nu med i {course}",
-    "centralCourseJoinedBody": "Det er Pangeas kursus for {language}-elever. Medlemmer kan se dit navn og din profil.",
     "centralCourseMembersSeeYou": "Medlemmer af dette kursus kan se dit navn og din profil.",
     "practiceStartWordCount": "{count, plural, =1{ord at øve} other{ord at øve}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatikpunkt at øve} other{grammatikpunkter at øve}}",
@@ -10969,5 +10966,16 @@
     "sharedAnalyticsNone": "Du deler ikke dine fremskridt med noget kursus.",
     "sharedAnalyticsOthersTitle": "Andre, der kan se dine fremskridt",
     "removeAnalyticsAccess": "Fjern adgang",
-    "removeAnalyticsAccessDesc": "{name} vil ikke længere kunne se dine læringsfremskridt."
+    "removeAnalyticsAccessDesc": "{name} vil ikke længere kunne se dine læringsfremskridt.",
+    "centralCourseOfferBody": "Det er Pangeas kursus for {language}-elever. Medlemmer kan se dit navn og din profil.",
+    "centralCourseOfferTitle": "Tilmeld dig {course}?",
+    "makeMyOwnCourseInstead": "Opret mit eget kursus i stedet",
+    "suggestMobileSignInSameAccount": "Log derefter ind på appen med denne konto.",
+    "botJoinsIn": "Pangea Bot deltager om {duration}",
+    "botIsJoining": "Pangea Bot deltager…",
+    "playWithBotNowTitle": "Spil med Pangea Bot nu?",
+    "playWithBotNowMessage": "Ingen er kommet med endnu. Pangea Bot kan tage den ledige plads nu, eller du kan fortsætte med at vente.",
+    "keepWaiting": "Fortsæt med at vente",
+    "botTookSeatAfterAnHour": "Denne session var åben i en time, så Pangea Bot tog den ledige plads.",
+    "botTookSeatAfterADay": "Denne session var åben i over et døgn, så Pangea Bot tog den ledige plads. Send en besked for at starte."
 }

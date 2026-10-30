@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/routes/onboarding/onboarding_step_views/central_course_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/course_code_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/custom_course_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/free_trial_step_view.dart';
@@ -8,6 +9,7 @@ import 'package:fluffychat/routes/onboarding/onboarding_step_views/pick_cefr_lev
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/pick_language_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/profile_setup_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/user_type_step_view.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/central_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
@@ -70,6 +72,16 @@ class OnboardingStepView extends StatelessWidget {
         hasNextStep: hasNextStep,
         forward: forward,
         skip: skip,
+      );
+    }
+
+    if (step is CentralCourseOnboardingStep) {
+      return CentralCourseStepView(
+        step: step,
+        loading: loading,
+        error: error,
+        hasNextStep: hasNextStep,
+        forward: forward,
       );
     }
 

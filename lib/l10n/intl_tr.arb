@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-27 14:48:06.710612",
+    "@@last_modified": "2026-10-27 14:57:23.318667",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10337,9 +10337,6 @@
     "watchOnYoutube": "YouTube'da İzle",
     "createMyOwnCourse": "Kendi kursumu oluştur",
     "xpTowardMission": "Bu Görev için {xp} XP",
-    "openCourse": "Kursu aç",
-    "centralCourseJoinedTitle": "{course} kursuna katıldın",
-    "centralCourseJoinedBody": "Bu, Pangea'nın {language} öğrenenler için kursu. Üyeleri adını ve profilini görebilir.",
     "centralCourseMembersSeeYou": "Bu kursun üyeleri adını ve profilini görebilir.",
     "practiceStartWordCount": "{count, plural, =1{pratik yapılacak kelime} other{pratik yapılacak kelime}}",
     "practiceStartGrammarCount": "{count, plural, =1{pratik yapılacak dil bilgisi konusu} other{pratik yapılacak dil bilgisi konusu}}",
@@ -10350,5 +10347,16 @@
     "sharedAnalyticsNone": "Öğrenme ilerlemenizi hiçbir kursla paylaşmıyorsunuz.",
     "sharedAnalyticsOthersTitle": "İlerlemenizi görebilen diğerleri",
     "removeAnalyticsAccess": "Erişimi kaldır",
-    "removeAnalyticsAccessDesc": "{name} artık öğrenme ilerlemenizi göremeyecek."
+    "removeAnalyticsAccessDesc": "{name} artık öğrenme ilerlemenizi göremeyecek.",
+    "centralCourseOfferBody": "Bu, Pangea'nın {language} öğrenenler için kursu. Üyeleri adını ve profilini görebilir.",
+    "centralCourseOfferTitle": "{course} kursuna katılmak ister misin?",
+    "makeMyOwnCourseInstead": "Bunun yerine kendi kursumu oluştur",
+    "suggestMobileSignInSameAccount": "Ardından bu hesapla uygulamaya giriş yapın.",
+    "botJoinsIn": "Pangea Bot {duration} içinde katılıyor",
+    "botIsJoining": "Pangea Bot katılıyor…",
+    "playWithBotNowTitle": "Şimdi Pangea Bot ile oynayalım mı?",
+    "playWithBotNowMessage": "Henüz kimse katılmadı. Pangea Bot şimdi boş koltuğu alabilir veya beklemeye devam edebilirsiniz.",
+    "keepWaiting": "Beklemeye devam et",
+    "botTookSeatAfterAnHour": "Bu oturum bir saat boyunca açıktı, bu yüzden Pangea Bot boş koltuğu aldı.",
+    "botTookSeatAfterADay": "Bu oturum bir günden fazla açıktı, bu yüzden Pangea Bot boş koltuğu aldı. Başlamak için bir mesaj gönderin."
 }

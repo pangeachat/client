@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:48:03.778853",
+    "@@last_modified": "2026-10-27 14:57:19.974451",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10039,9 +10039,6 @@
     "watchOnYoutube": "Bekijk op YouTube",
     "createMyOwnCourse": "Mijn eigen cursus maken",
     "xpTowardMission": "{xp} XP voor deze missie",
-    "openCourse": "Open cursus",
-    "centralCourseJoinedTitle": "Je hebt je aangemeld voor {course}",
-    "centralCourseJoinedBody": "Dit is de Pangea-cursus voor {language}-leerders. De leden kunnen je naam en profiel zien.",
     "centralCourseMembersSeeYou": "Leden van deze cursus kunnen je naam en profiel zien.",
     "practiceStartWordCount": "{count, plural, =1{woord om te oefenen} other{woorden om te oefenen}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammaticapunt om te oefenen} other{grammaticapunten om te oefenen}}",
@@ -10052,5 +10049,16 @@
     "sharedAnalyticsNone": "Je deelt je leerprogressie met geen enkele cursus.",
     "sharedAnalyticsOthersTitle": "Anderen die je voortgang kunnen zien",
     "removeAnalyticsAccess": "Toegang verwijderen",
-    "removeAnalyticsAccessDesc": "{name} kan je leervoortgang niet langer zien."
+    "removeAnalyticsAccessDesc": "{name} kan je leervoortgang niet langer zien.",
+    "centralCourseOfferBody": "Dit is de Pangea-cursus voor {language}-leerders. De leden kunnen je naam en profiel zien.",
+    "centralCourseOfferTitle": "Deelnemen aan {course}?",
+    "makeMyOwnCourseInstead": "In plaats daarvan mijn eigen cursus maken",
+    "suggestMobileSignInSameAccount": "Meld je vervolgens met dit account aan bij de app.",
+    "botJoinsIn": "Pangea Bot doet mee over {duration}",
+    "botIsJoining": "Pangea Bot doet mee…",
+    "playWithBotNowTitle": "Nu met Pangea Bot spelen?",
+    "playWithBotNowMessage": "Niemand heeft zich nog aangesloten. Pangea Bot kan nu de open plek innemen, of je kunt blijven wachten.",
+    "keepWaiting": "Blijven wachten",
+    "botTookSeatAfterAnHour": "Deze sessie was een uur open, dus Pangea Bot heeft de open plek ingenomen.",
+    "botTookSeatAfterADay": "Deze sessie was langer dan een dag open, dus Pangea Bot heeft de open plek ingenomen. Stuur een bericht om te beginnen."
 }

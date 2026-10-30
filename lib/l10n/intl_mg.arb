@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-27 14:48:01.853564",
+    "@@last_modified": "2026-10-27 14:57:18.881149",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "Jereo ao amin'ny YouTube",
     "createMyOwnCourse": "Mamorona ny taranja manokana",
     "xpTowardMission": "{xp} XP mankany amin'ity iraka ity",
-    "openCourse": "Sokafy ny taranja",
-    "centralCourseJoinedTitle": "Tafiditra ao amin'ny {course} ianao",
-    "centralCourseJoinedBody": "Ity no taranja Pangea ho an'ireo mpianatra {language}. Afaka mahita ny anaranao sy ny mombamomba anao ireo mpikambana ao.",
     "centralCourseMembersSeeYou": "Afaka mahita ny anaranao sy ny mombamomba anao ireo mpikambana ao amin'ity taranja ity.",
     "practiceStartWordCount": "{count, plural, =1{teny hianarana} other{teny hianarana}}",
     "practiceStartGrammarCount": "{count, plural, =1{fitsipika ara-pitsipiteny hianarana} other{fitsipika ara-pitsipiteny hianarana}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "Tsy mizara ny fivoaran'ny fianaranao amin'ny taranja rehetra ianao.",
     "sharedAnalyticsOthersTitle": "Ny hafa afaka mahita ny fivoaranao",
     "removeAnalyticsAccess": "Esory ny fidirana",
-    "removeAnalyticsAccessDesc": "Tsy ho afaka hahita ny fivoaran'ny fianaranao intsony i {name}."
+    "removeAnalyticsAccessDesc": "Tsy ho afaka hahita ny fivoaran'ny fianaranao intsony i {name}.",
+    "centralCourseOfferBody": "Ity no taranja Pangea ho an'ireo mpianatra {language}. Afaka mahita ny anaranao sy ny mombamomba anao ireo mpikambana ao.",
+    "centralCourseOfferTitle": "Midira amin'ny {course}?",
+    "makeMyOwnCourseInstead": "Mamorona ny taranja manokana kosa",
+    "suggestMobileSignInSameAccount": "Avy eo midira amin'ny fampiharana amin'ity kaonty ity.",
+    "botJoinsIn": "Miditra ao anatin'ny {duration} ny Pangea Bot",
+    "botIsJoining": "Miditra ny Pangea Bot…",
+    "playWithBotNowTitle": "Hilalao amin'ny Pangea Bot izao?",
+    "playWithBotNowMessage": "Tsy mbola nisy niditra. Afaka maka ny toerana malalaka izao ny Pangea Bot, na afaka miandry ianao.",
+    "keepWaiting": "Manohy miandry",
+    "botTookSeatAfterAnHour": "Adiny iray no nisokafan'ity fivoriana ity, ka nalain'ny Pangea Bot ny toerana malalaka.",
+    "botTookSeatAfterADay": "Nisokatra nandritra ny iray andro mahery ity fivoriana ity, ka nalain'ny Pangea Bot ny toerana malalaka. Mandefasa hafatra hanombohana."
 }

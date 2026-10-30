@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-27 14:48:07.881655",
+    "@@last_modified": "2026-10-27 14:57:23.888547",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2501,9 +2501,6 @@
     "watchOnYoutube": "קוק אויף יאָוטובע",
     "createMyOwnCourse": "שאַפֿן מײַן אײגענעם קורס",
     "xpTowardMission": "{xp} XP צו דער מיסיע",
-    "openCourse": "עפֿן קורס",
-    "centralCourseJoinedTitle": "איר האָט זיך צוגעשלאָסן צו {course}",
-    "centralCourseJoinedBody": "דאָס איז פּאַנגעאַס קורס פֿאַר לערנערס פֿון {language}. די מיטגלידער קענען זען אײַער נאָמען און פּראָפֿיל.",
     "centralCourseMembersSeeYou": "מיטגלידער פֿון דעם קורס קענען זען אײַער נאָמען און פּראָפֿיל.",
     "practiceStartWordCount": "{count, plural, =1{וואָרט צו פּראַקטיצירן} other{ווערטער צו פּראַקטיצירן}}",
     "practiceStartGrammarCount": "{count, plural, =1{גראַמאַטיק פּונקט צו פּראַקטיצירן} other{גראַמאַטיק פּונקטן צו פּראַקטיצירן}}",
@@ -2514,5 +2511,16 @@
     "sharedAnalyticsNone": "איר טיילט נישט אײַער לערן־פֿאָרשריט מיט קיין שום קורס.",
     "sharedAnalyticsOthersTitle": "אַנדערע וואָס קענען זען דיין פּראָגרעס",
     "removeAnalyticsAccess": "אַראָפּנעמען צוטריט",
-    "removeAnalyticsAccessDesc": "{name} וועט מער נישט קענען זען דיין לערנען פּראָגרעס."
+    "removeAnalyticsAccessDesc": "{name} וועט מער נישט קענען זען דיין לערנען פּראָגרעס.",
+    "centralCourseOfferBody": "דאָס איז פּאַנגעאַס קורס פֿאַר לערנערס פֿון {language}. די מיטגלידער קענען זען אײַער נאָמען און פּראָפֿיל.",
+    "centralCourseOfferTitle": "זאָל איך זיך אייַנשליסן אין {course}?",
+    "makeMyOwnCourseInstead": "איך וויל בעסער מאַכן מיין אייגענעם קורס",
+    "suggestMobileSignInSameAccount": "דערנאָך צייכן אריין אין דער אַפּ מיט דעם חשבון.",
+    "botJoinsIn": "פּאַנגעאַ באָט קומט אין {duration}",
+    "botIsJoining": "פּאַנגעאַ באָט קומט אַרײַן…",
+    "playWithBotNowTitle": "שפּילן מיט פּאַנגעאַ באָט איצט?",
+    "playWithBotNowMessage": "קיינער האָט נאָך ניט זיך צוגעשלאָסן. פּאַנגעאַ באָט קען איצט נעמען דעם ליידיקן פּלאַץ, אָדער איר קענט ווײַטער וואַרטן.",
+    "keepWaiting": "ווײַטער וואַרטן",
+    "botTookSeatAfterAnHour": "די סעסיע איז געווען אָפן פֿאַר אַ שעה, אַזוי פּאַנגעאַ באָט האָט גענומען דעם ליידיקן פּלאַץ.",
+    "botTookSeatAfterADay": "די סעסיע איז געווען אָפן פֿאַר איבער אַ טאָג, אַזוי פּאַנגעאַ באָט האָט גענומען דעם ליידיקן פּלאַץ. שיק אַ מעסעדזש צו אָנהייבן."
 }

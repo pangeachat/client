@@ -14,6 +14,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/spaces/course_access_filter.dart';
 import 'package:fluffychat/routes/courses/public_course_search_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -21,7 +22,7 @@ import '../fake_pangea_controller.dart';
 
 /// The browse list's access pills (#9358; course-preview.instructions.md).
 /// The catalog does not filter by join rule, so the list does, over the pages
-/// it fetches.
+/// it fetches. Also how a load ends when a request fails (#9704).
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   sqfliteFfiInit();
@@ -253,4 +254,61 @@ void main() {
       );
     },
   );
+
+  test('a failed first load waits for Try again instead of retrying', () async {
+    var requests = 0;
+    await http.runWithClient(() async {
+      final client = await clientServing((_) async {
+        requests++;
+        // A turn of the event loop, as a network reply takes: failing
+        // synchronously would spin a retry loop in microtasks, hanging the
+        // test instead of failing it.
+        await Future<void>.delayed(Duration.zero);
+        throw http.ClientException('Failed to fetch');
+      });
+      final controller = PublicCourseSearchController(client: client);
+      // Disposing is what stops a retry loop, so do it even when an
+      // expectation fails.
+      addTearDown(controller.disposeCourseSearch);
+      controller.initCourseSearch();
+      await settled(controller);
+      await drain();
+      expect(requests, 1);
+      expect(controller.filteredCoursesLoader.value, isA<AsyncError>());
+
+      await controller.loadMore(); // Try again
+      await drain();
+      expect(requests, 2);
+      expect(controller.filteredCoursesLoader.value, isA<AsyncError>());
+    }, cms);
+  });
+
+  test('a failed later page keeps the courses already shown', () async {
+    var requests = 0;
+    await http.runWithClient(() async {
+      final client = await clientServing((query) async {
+        requests++;
+        if (query['since'] != null) {
+          throw http.ClientException('Failed to fetch');
+        }
+        return {
+          'chunk': [course('!open', 'public')],
+          'next_batch': 'page-2',
+        };
+      });
+      final controller = PublicCourseSearchController(client: client);
+      addTearDown(controller.disposeCourseSearch);
+      controller.initCourseSearch();
+      await settled(controller);
+      await drain();
+      expect(requests, 2);
+      expect(shown(controller), ['!open']);
+      expect(controller.filteredCoursesLoader.value, isA<AsyncLoaded>());
+      expect(
+        controller.fullyLoaded,
+        isFalse,
+        reason: 'Load more… stays offered',
+      );
+    }, cms);
+  });
 }

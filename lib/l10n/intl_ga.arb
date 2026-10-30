@@ -3543,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-27 14:47:58.587755",
+    "@@last_modified": "2026-10-27 14:57:15.332844",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10050,9 +10050,6 @@
     "watchOnYoutube": "Féach ar YouTube",
     "createMyOwnCourse": "Cruthaigh mo chúrsa féin",
     "xpTowardMission": "{xp} XP i dtreo na Misean seo",
-    "openCourse": "Oscail an cúrsa",
-    "centralCourseJoinedTitle": "Tá tú páirteach i {course}",
-    "centralCourseJoinedBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
     "centralCourseMembersSeeYou": "Is féidir le baill an chúrsa seo d'ainm agus do phróifíl a fheiceáil.",
     "practiceStartWordCount": "{count, plural, =1{focal le cleachtadh} other{focail le cleachtadh}}",
     "practiceStartGrammarCount": "{count, plural, =1{pointe gramadaí le cleachtadh} other{pointí gramadaí le cleachtadh}}",
@@ -10063,5 +10060,16 @@
     "sharedAnalyticsNone": "Níl tú ag roinnt do dhul chun cinn foghlama le haon chúrsa.",
     "sharedAnalyticsOthersTitle": "Daoine eile atá in ann do dhul chun cinn a fheiceáil",
     "removeAnalyticsAccess": "Bain rochtain",
-    "removeAnalyticsAccessDesc": "Ní bheidh {name} in ann do dhul chun cinn foghlama a fheiceáil a thuilleadh."
+    "removeAnalyticsAccessDesc": "Ní bheidh {name} in ann do dhul chun cinn foghlama a fheiceáil a thuilleadh.",
+    "centralCourseOfferBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
+    "centralCourseOfferTitle": "An mbeifeá páirteach i {course}?",
+    "makeMyOwnCourseInstead": "Cruthaigh mo chúrsa féin ina ionad",
+    "suggestMobileSignInSameAccount": "Ansin sínigh isteach san aip leis an gcuntas seo.",
+    "botJoinsIn": "Tagann Pangea Bot isteach i {duration}",
+    "botIsJoining": "Tá Pangea Bot ag teacht isteach…",
+    "playWithBotNowTitle": "Ar mhaith leat imirt le Pangea Bot anois?",
+    "playWithBotNowMessage": "Níl éinne tagtha isteach fós. Is féidir le Pangea Bot an suíochán folamh a thógáil anois, nó is féidir leat fanacht.",
+    "keepWaiting": "Fanacht",
+    "botTookSeatAfterAnHour": "Bhí an seisiún seo ar oscailt ar feadh uaire an chloig, mar sin thóg Pangea Bot an suíochán folamh.",
+    "botTookSeatAfterADay": "Bhí an seisiún seo ar oscailt ar feadh níos mó ná lá, mar sin thóg Pangea Bot an suíochán folamh. Seol teachtaireacht chun tús a chur leis."
 }

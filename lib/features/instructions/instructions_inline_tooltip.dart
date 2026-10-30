@@ -51,6 +51,10 @@ class InlineTooltip extends StatefulWidget {
   final Color? backgroundColor;
   final IconData? icon;
 
+  /// Whether the tooltip has an X. A note that is part of a room's record has
+  /// none.
+  final bool closable;
+
   const InlineTooltip({
     super.key,
     required this.message,
@@ -63,6 +67,7 @@ class InlineTooltip extends StatefulWidget {
     this.extraContent,
     this.backgroundColor,
     this.icon,
+    this.closable = true,
   });
 
   @override
@@ -204,29 +209,31 @@ class InlineTooltipState extends State<InlineTooltip>
                       ),
                     ),
                   ),
-                  const SizedBox(width: 4.0),
-                  IconButton(
-                    tooltip: L10n.of(context).closeHint,
-                    // Even padding, so the focus ring circles the X instead
-                    // of hugging it off-centre.
-                    padding: const EdgeInsets.all(2.0),
-                    constraints: const BoxConstraints(),
-                    // Material's focus wash all but vanishes on the gold fill
-                    // (#9278), so the X wears the shared ring in the fill's
-                    // own ink.
-                    style: ButtonStyle(
-                      side: FocusRingTapTarget.ringSideProperty(
-                        context,
+                  if (widget.closable) ...[
+                    const SizedBox(width: 4.0),
+                    IconButton(
+                      tooltip: L10n.of(context).closeHint,
+                      // Even padding, so the focus ring circles the X instead
+                      // of hugging it off-centre.
+                      padding: const EdgeInsets.all(2.0),
+                      constraints: const BoxConstraints(),
+                      // Material's focus wash all but vanishes on the gold fill
+                      // (#9278), so the X wears the shared ring in the fill's
+                      // own ink.
+                      style: ButtonStyle(
+                        side: FocusRingTapTarget.ringSideProperty(
+                          context,
+                          color: Theme.of(context).pangea.onGoldFixed,
+                        ),
+                      ),
+                      icon: Icon(
+                        Icons.close_outlined,
+                        size: 20,
                         color: Theme.of(context).pangea.onGoldFixed,
                       ),
+                      onPressed: _closeTooltip,
                     ),
-                    icon: Icon(
-                      Icons.close_outlined,
-                      size: 20,
-                      color: Theme.of(context).pangea.onGoldFixed,
-                    ),
-                    onPressed: _closeTooltip,
-                  ),
+                  ],
                 ],
               ),
             ),
