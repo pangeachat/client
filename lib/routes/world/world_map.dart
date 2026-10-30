@@ -9,6 +9,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
@@ -1787,7 +1788,7 @@ class WorldMapController extends State<WorldMap>
     // demote through the ranked tiers, but opening a plan would navigate away
     // from the join decision. Guards every tap funnel.
     if (MapContextController.notifier.value is CoursePreviewMapContext) return;
-    if (card.isDiscussion) {
+    if (card.activityMode.opensSharedRoom) {
       _openDiscussion(card);
       return;
     }

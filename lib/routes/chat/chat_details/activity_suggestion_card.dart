@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
-import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_video_tag.dart';
@@ -195,7 +195,9 @@ class ActivitySuggestionCard extends StatelessWidget {
                         bottom: 6.0,
                         child: AnimatedSwitcher(
                           duration: FluffyThemes.animationDuration,
-                          child: activity.isDiscussion
+                          child:
+                              activity.activityMode.completionMark ==
+                                  CompletionMark.xpBadge
                               ? (xpEarned > 0
                                     ? XpBadge(
                                         key: const ValueKey('xp'),
@@ -251,16 +253,14 @@ class ActivitySuggestionCard extends StatelessWidget {
                                     spacing: 4.0,
                                     children: [
                                       Icon(
-                                        activity.isDiscussion
-                                            ? Icons.live_help_outlined
-                                            : Icons.theater_comedy_outlined,
+                                        activity.activityMode.icon,
                                         size: iconSize ?? 12.0,
                                       ),
                                       Flexible(
                                         child: Text(
-                                          activity.isDiscussion
-                                              ? L10n.of(context).discussionLabel
-                                              : L10n.of(context).roleplayLabel,
+                                          activity.activityMode.label(
+                                            L10n.of(context),
+                                          ),
                                           style: labelStyle,
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
@@ -270,7 +270,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              if (!activity.isDiscussion)
+                              if (activity.activityMode.showsPlayerCount)
                                 Padding(
                                   padding: const EdgeInsets.all(4.0),
                                   child: Row(

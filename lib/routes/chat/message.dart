@@ -5,12 +5,12 @@ import 'package:swipe_to_action/swipe_to_action.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_settings_language_icon.dart';
-import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
@@ -167,7 +167,8 @@ class Message extends StatelessWidget {
                   : event.room.assignedRoles ?? {},
               // A discussion has no roles to show, only its questions
               // (#9647).
-              showRoleCards: !event.room.activityPlan!.isDiscussion,
+              showRoleCards:
+                  event.room.activityPlan!.activityMode.showsRoleCards,
               showInstructions: show,
               toggleInstructions:
                   controller.activityController.toggleShowInstructions,

@@ -1,5 +1,6 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
@@ -17,7 +18,7 @@ abstract class DiscussionIds {
 }
 
 bool isDiscussionMode(String? mode) =>
-    mode?.toLowerCase() == DiscussionIds.mode.toLowerCase();
+    ActivityMode.fromPlanMode(mode) == ActivityMode.discussion;
 
 extension DiscussionPlanExtension on ActivityPlanModel {
   bool get isDiscussion => isDiscussionMode(req.mode);
@@ -49,9 +50,7 @@ extension DiscussionRoomExtension on Room {
   /// plan has loaded; wrap readers in a [ListenableBuilder] on
   /// [ActivityPlanRepo] to rebuild when it arrives.
   String? get discussionActivityId =>
-      isActivitySession && (activityPlan?.isDiscussion ?? false)
-      ? activityId
-      : null;
+      activityMode == ActivityMode.discussion ? activityId : null;
 
   /// The plan of the discussion this room is for; null for every other room
   /// and until it has loaded.

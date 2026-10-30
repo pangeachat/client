@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -192,9 +193,7 @@ class _WorldMapDotState extends State<WorldMapDot>
                                         )
                                         .firstOrNull
                                   : widget.unreadRoom,
-                              glyphIcon: widget.card.isDiscussion
-                                  ? Icons.live_help_outlined
-                                  : null,
+                              glyphIcon: widget.card.activityMode.pinGlyph,
                               participantsFilled: widget.participantsFilled,
                               participantsTotal: widget.participantsTotal,
                               starLevel: widget.starLevel,

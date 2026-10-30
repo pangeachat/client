@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
@@ -171,7 +172,7 @@ class ActivitySummary extends StatelessWidget {
                       onOpen: (link) =>
                           UrlLauncher(context, link.url).launchUrl(),
                     ),
-                    if (activity.isDiscussion &&
+                    if (activity.activityMode.listsQuestions &&
                         activity.discussionQuestions.isNotEmpty)
                       DiscussionQuestionList(
                         questions: activity.discussionQuestions,

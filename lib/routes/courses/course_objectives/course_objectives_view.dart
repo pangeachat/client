@@ -7,6 +7,7 @@ import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -543,7 +544,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   void _openActivity(QuestActivity ref) {
     if (widget.readOnly) return;
-    if (ref.plan.isDiscussion) {
+    if (ref.plan.activityMode.opensSharedRoom) {
       _openDiscussion(ref);
       return;
     }

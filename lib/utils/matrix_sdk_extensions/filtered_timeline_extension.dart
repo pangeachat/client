@@ -1,10 +1,10 @@
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
-import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/bot_seat_note.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -73,7 +73,7 @@ extension IsStateExtension on Event {
       // the server writes beside it (#9647).
       !(type == EventTypes.RoomMember &&
           roomMemberChangeType == RoomMemberChangeType.join &&
-          room.discussionActivityId != null) &&
+          room.activityMode?.announcesArrivals == true) &&
       !{
         EventTypes.Message,
         EventTypes.Sticker,
@@ -106,7 +106,8 @@ extension IsStateExtension on Event {
     // arrival is news there, unlike a roleplay's fixed cast (#9647). The
     // course's admins are joined to every session automatically and the bot
     // is no arrival, so neither is announced.
-    if (type == EventTypes.RoomMember && room.discussionActivityId != null) {
+    if (type == EventTypes.RoomMember &&
+        room.activityMode?.announcesArrivals == true) {
       final userId = stateKey;
       return roomMemberChangeType == RoomMemberChangeType.join &&
           userId != null &&

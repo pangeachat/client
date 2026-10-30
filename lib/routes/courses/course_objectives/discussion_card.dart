@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -70,7 +71,7 @@ class DiscussionCard extends StatelessWidget {
               stateLabel: room != null
                   ? L10n.of(context).discussionJoined
                   : null,
-              stateIcon: Icons.live_help_outlined,
+              stateIcon: ActivityMode.discussion.icon,
               xpEarned: xpEarned,
               frameWhenResting: frameWhenResting,
               selected: selected,

@@ -8,10 +8,10 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/unread_rooms_client_extension.dart';
@@ -472,13 +472,14 @@ class ChatView extends StatelessWidget {
                     ],
                   ),
                   // #Pangea
-                  // A discussion shows its question header in place of the
-                  // activity's goal menu (#9647). Which one is known once the
-                  // plan has loaded, so this rebuilds when it arrives.
+                  // The activity's mode picks its header (#9647); the mode is
+                  // known once the plan has loaded, so this rebuilds when it
+                  // arrives.
                   ListenableBuilder(
                     listenable: ActivityPlanRepo.instance,
                     builder: (context, _) =>
-                        controller.room.discussionActivityId != null
+                        controller.room.activityMode?.header ==
+                            ActivityHeader.questions
                         ? DiscussionQuestionHeader(room: controller.room)
                         : ActivityStatsMenu(
                             room: controller.room,
