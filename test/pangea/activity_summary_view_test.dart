@@ -80,11 +80,13 @@ void main() {
         at: DateTime.utc(2026),
       );
 
-  /// Writes the room's roles: who has finished, at [at].
+  /// Writes the room's roles: who has finished, the learner at
+  /// [learnerFinishedAt], and when the event was sent, at [at].
   void setRoles(
     Room room, {
     required bool learnerDone,
     required bool coursemateDone,
+    DateTime? learnerFinishedAt,
     DateTime? at,
   }) {
     final roles = {
@@ -92,7 +94,9 @@ void main() {
         id: 'role1',
         userId: learner,
         role: 'Customer',
-        finishedAt: learnerDone ? DateTime.utc(2026) : null,
+        finishedAt: learnerDone
+            ? learnerFinishedAt ?? DateTime.utc(2026)
+            : null,
       ),
       'role2': ActivityRoleModel(
         id: 'role2',
@@ -197,6 +201,9 @@ void main() {
   final expired =
       ActivitySummaryModel.requestTimeout + const Duration(seconds: 1);
 
+  /// When the fixtures' learners finished.
+  final finish = DateTime.utc(2026);
+
   group('own card, others still playing', () {
     test('shows the learner their own card as soon as the bot writes it', () {
       final room = activityRoom();
@@ -234,7 +241,12 @@ void main() {
 
       final waiting = view(
         room,
-        waits: {learner: ActivitySummaryWait(since: DateTime.now())},
+        waits: {
+          learner: ActivitySummaryWait(
+            since: DateTime.now(),
+            finishedAt: finish,
+          ),
+        },
       ).cardFor(learner)!;
       expect(waiting.isLoading, isTrue);
       expect(waiting.loadingDeadline, isNotNull);
@@ -242,7 +254,10 @@ void main() {
       final gaveUp = view(
         room,
         waits: {
-          learner: ActivitySummaryWait(since: DateTime.now().subtract(expired)),
+          learner: ActivitySummaryWait(
+            since: DateTime.now().subtract(expired),
+            finishedAt: finish,
+          ),
         },
       ).cardFor(learner)!;
       expect(gaveUp.isLoading, isFalse);
@@ -428,13 +443,24 @@ void main() {
   });
 
   group('ending again', () {
+    final later = DateTime.utc(2026, 1, 1, 0, 10);
+
     test('a card made for an earlier finish shows loading until the new one, '
         'then itself with a note', () {
       final room = activityRoom();
-      final old = setCard(
+      setRoles(
+        room,
+        learnerDone: true,
+        coursemateDone: false,
+        learnerFinishedAt: later,
+      );
+      setCard(
         room,
         learner,
-        ActivitySummaryModel(summary: card(learner, 'Before.')),
+        ActivitySummaryModel(
+          summary: card(learner, 'Before.'),
+          finishedAt: finish,
+        ),
       );
 
       final waiting = view(
@@ -442,7 +468,7 @@ void main() {
         waits: {
           learner: ActivitySummaryWait(
             since: DateTime.now(),
-            supersededEventId: old.eventId,
+            finishedAt: later,
           ),
         },
       ).cardFor(learner)!;
@@ -454,65 +480,76 @@ void main() {
         waits: {
           learner: ActivitySummaryWait(
             since: DateTime.now().subtract(expired),
-            supersededEventId: old.eventId,
+            finishedAt: later,
           ),
         },
       ).cardFor(learner)!;
       expect(gaveUp.participant?.feedback, 'Before.');
       expect(gaveUp.updateFailed, isTrue);
 
-      // The bot's next write to the slot ends the wait.
+      // A wait left over from the earlier finish says nothing about this one.
+      final leftOver = view(
+        room,
+        waits: {
+          learner: ActivitySummaryWait(
+            since: DateTime.now(),
+            finishedAt: finish,
+          ),
+        },
+      ).cardFor(learner)!;
+      expect(leftOver.isLoading, isFalse);
+      expect(leftOver.updateFailed, isTrue);
+
+      // The card made for this finish ends the wait.
       setCard(
         room,
         learner,
-        ActivitySummaryModel(summary: card(learner, 'After.')),
+        ActivitySummaryModel(
+          summary: card(learner, 'After.'),
+          finishedAt: later,
+        ),
       );
       final replaced = view(
         room,
         waits: {
           learner: ActivitySummaryWait(
             since: DateTime.now(),
-            supersededEventId: old.eventId,
+            finishedAt: later,
           ),
         },
       ).cardFor(learner)!;
       expect(replaced.isLoading, isFalse);
+      expect(replaced.updateFailed, isFalse);
       expect(replaced.participant?.feedback, 'After.');
     });
 
-    test('a card counts as superseded only if it predates the finish', () {
-      final room = activityRoom(learnerDone: false);
-      final cardAt = DateTime.now().subtract(const Duration(minutes: 5));
-      final old = setCard(
+    test('a card made for this finish is current however its time is '
+        'written', () {
+      final room = activityRoom();
+      setState(
         room,
-        learner,
-        ActivitySummaryModel(
-          summary: card(learner, 'Before.'),
-          callStartedTs: cardAt.millisecondsSinceEpoch,
-        ),
-        at: cardAt,
+        PangeaEventTypes.activitySummary,
+        ActivitySummaryStateKeys.card(learner),
+        {
+          ...ActivitySummaryModel(summary: card(learner, 'Mine.')).toJson(),
+          'finished_at': '2026-01-01T00:00:00+00:00',
+        },
+        sender: bot,
+        at: DateTime.now(),
       );
+
+      expect(room.hasActivitySummaryCardFor(learner), isTrue);
+      final own = view(room).cardFor(learner)!;
+      expect(own.participant?.feedback, 'Mine.');
+      expect(own.updateFailed, isFalse);
+
       setRoles(
         room,
         learnerDone: true,
         coursemateDone: false,
-        at: DateTime.now(),
+        learnerFinishedAt: later,
       );
-      expect(room.activitySummaryCardBefore(learner), old.eventId);
-
-      // A device catching up sees the new card arrive with the finish.
-      final fresh = setCard(
-        room,
-        learner,
-        ActivitySummaryModel(
-          summary: card(learner, 'After.'),
-          callStartedTs: DateTime.now()
-              .add(const Duration(seconds: 2))
-              .millisecondsSinceEpoch,
-        ),
-      );
-      expect(fresh.eventId, isNot(old.eventId));
-      expect(room.activitySummaryCardBefore(learner), isNull);
+      expect(room.hasActivitySummaryCardFor(learner), isFalse);
     });
   });
 
@@ -605,7 +642,12 @@ void main() {
       expect(
         view(
           room,
-          waits: {learner: ActivitySummaryWait(since: DateTime.now())},
+          waits: {
+            learner: ActivitySummaryWait(
+              since: DateTime.now(),
+              finishedAt: finish,
+            ),
+          },
         ).cardFor(learner)!.isLoading,
         isTrue,
       );
@@ -613,7 +655,10 @@ void main() {
       final own = view(
         room,
         waits: {
-          learner: ActivitySummaryWait(since: DateTime.now().subtract(expired)),
+          learner: ActivitySummaryWait(
+            since: DateTime.now().subtract(expired),
+            finishedAt: finish,
+          ),
         },
       ).cardFor(learner)!;
       expect(own.hasFailed, isTrue);
