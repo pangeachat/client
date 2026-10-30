@@ -8,7 +8,9 @@ import 'package:fluffychat/routes/world/world_view_items.dart';
 /// The world view's markers (org world-view doc): a city as a small circle,
 /// gold-ringed once the learner has finished an activity there, and a ship
 /// carrying its course's name at the city its trip has reached. A ship opens
-/// its course; a city brings the map down into it.
+/// its course; a city brings the map down into it. A city carries no label of
+/// its own: the basemap already names it, and its name stays available to
+/// screen readers and as a hover tooltip.
 class WorldViewLayer {
   final List<WorldCity> cities;
   final List<WorldShip> ships;
@@ -25,14 +27,13 @@ class WorldViewLayer {
   Widget layer() => MarkerLayer(
     markers: [
       for (final city in cities)
-        // The box is centred on the coordinate and the dot sits at its
-        // vertical centre, so the dot is on the city and the label hangs
-        // below it. (flutter_map's alignment moves the whole widget: topCenter
-        // would float the entire marker above the city.)
+        // The box is centred on the coordinate with the dot at its centre, so
+        // the dot is on the city. (flutter_map's alignment moves the whole
+        // widget: topCenter would float the entire marker above the city.)
         Marker(
           point: city.point,
-          width: 120,
-          height: WorldCityMarker.height,
+          width: WorldCityMarker.hitSize,
+          height: WorldCityMarker.hitSize,
           alignment: Alignment.center,
           child: WorldCityMarker(
             key: ValueKey('city:${city.key}'),
@@ -61,8 +62,9 @@ class WorldViewLayer {
 }
 
 class WorldCityMarker extends StatelessWidget {
-  static const double height = 60;
-  static const double dotSize = 18;
+  /// The tappable square around the dot.
+  static const double hitSize = 28;
+  static const double dotSize = 10;
   final WorldCity city;
   final VoidCallback onTap;
   const WorldCityMarker({super.key, required this.city, required this.onTap});
@@ -77,15 +79,13 @@ class WorldCityMarker extends StatelessWidget {
       label: city.stamped
           ? l10n.worldCityVisitedLabel(city.name)
           : l10n.worldCityLabel(city.name),
-      child: GestureDetector(
-        onTap: onTap,
-        behavior: HitTestBehavior.opaque,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Puts the dot's centre at the box's centre, i.e. on the point.
-            const SizedBox(height: height / 2 - dotSize / 2),
-            Container(
+      child: Tooltip(
+        message: city.name,
+        child: GestureDetector(
+          onTap: onTap,
+          behavior: HitTestBehavior.opaque,
+          child: Center(
+            child: Container(
               width: dotSize,
               height: dotSize,
               decoration: BoxDecoration(
@@ -93,31 +93,14 @@ class WorldCityMarker extends StatelessWidget {
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: city.stamped ? gold : theme.colorScheme.primary,
-                  width: city.stamped ? 3 : 2,
+                  width: city.stamped ? 2.5 : 1.5,
                 ),
                 boxShadow: const [
                   BoxShadow(color: Colors.black38, blurRadius: 4),
                 ],
               ),
             ),
-            const SizedBox(height: 2),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.surface.withValues(alpha: 0.85),
-                borderRadius: BorderRadius.circular(6),
-              ),
-              child: Text(
-                city.name,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: theme.colorScheme.onSurface,
-                  fontWeight: city.stamped ? FontWeight.w700 : FontWeight.w500,
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -144,7 +127,7 @@ class WorldShipMarker extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: Container(
             margin: const EdgeInsets.only(
-              bottom: WorldCityMarker.dotSize / 2 + 2,
+              bottom: WorldCityMarker.dotSize / 2 + 4,
             ),
             padding: const EdgeInsets.fromLTRB(6, 3, 10, 3),
             decoration: BoxDecoration(
