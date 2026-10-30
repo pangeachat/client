@@ -553,12 +553,11 @@ class WorldMapController extends State<WorldMap>
       ),
   ];
 
-  /// The learner's courses as ships, at the city each trip has reached.
-  List<WorldShip> get worldShips => shipsOf(_courseTrips, DateTime.now());
-
-  /// The cities along the learner's trips, stamped where they have played.
-  List<WorldCity> get worldCities =>
-      citiesOf(_courseTrips, savedActivityIds, DateTime.now());
+  /// The learner's courses as ships at the city each trip has reached, and
+  /// the cities along those trips, stamped where they have played; read once
+  /// per build.
+  ({List<WorldShip> ships, List<WorldCity> cities}) get worldView =>
+      worldViewOf(_courseTrips, savedActivityIds, DateTime.now());
 
   /// Brings the world view down into [city] with a fade, where its sessions
   /// and the learner's played activities show.
@@ -1012,7 +1011,10 @@ class WorldMapController extends State<WorldMap>
   /// CEFR band, completion, and text search are applied client-side over the
   /// result via [visiblePins].
   Future<void> loadWorldPins() async {
-    if (!isWorld) return;
+    // The world overview draws cities and ships, never activity pins (org
+    // world-view doc), so it reads none: pins are read once the view is in a
+    // city, where its sessions and played activities show.
+    if (!isWorld || worldOverview) return;
     final LatLngBounds bounds;
     try {
       bounds = mapController.camera.visibleBounds;

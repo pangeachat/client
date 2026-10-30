@@ -12,17 +12,19 @@ import 'package:fluffychat/routes/world/world_view_items.dart';
 /// its own: the basemap already names it, and its name stays available to
 /// screen readers and as a hover tooltip.
 class WorldViewLayer {
-  final List<WorldCity> cities;
-  final List<WorldShip> ships;
+  /// The ships and cities to draw ([worldViewOf]).
+  final ({List<WorldShip> ships, List<WorldCity> cities}) view;
   final void Function(WorldCity city) onCityTap;
   final void Function(WorldShip ship) onShipTap;
 
   const WorldViewLayer({
-    required this.cities,
-    required this.ships,
+    required this.view,
     required this.onCityTap,
     required this.onShipTap,
   });
+
+  List<WorldCity> get cities => view.cities;
+  List<WorldShip> get ships => view.ships;
 
   Widget layer() => MarkerLayer(
     markers: [

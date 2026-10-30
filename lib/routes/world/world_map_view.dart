@@ -1193,8 +1193,7 @@ class _WorldMapViewState extends State<WorldMapView>
                   // layers below take over.
                   if (widget.controller.worldOverview)
                     WorldViewLayer(
-                      cities: widget.controller.worldCities,
-                      ships: widget.controller.worldShips,
+                      view: widget.controller.worldView,
                       onCityTap: widget.controller.fadeToCity,
                       onShipTap: (ship) => context.go(
                         WorkspaceNav.openCourseSection(

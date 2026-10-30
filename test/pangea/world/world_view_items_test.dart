@@ -70,7 +70,11 @@ void main() {
   test(
     'cities appear once each with the ships there, stamped where the learner played',
     () {
-      final cities = citiesOf([spanish, second, legacy], {'a2'}, now);
+      final cities = citiesOf(
+        [spanish, second, legacy],
+        {'a2'},
+        shipsOf([spanish, second, legacy], now),
+      );
       expect(cities.map((c) => c.name), ['Oaxaca', 'Mexico City', 'Madrid']);
       final oax = cities.firstWhere((c) => c.name == 'Oaxaca');
       expect(oax.stamped, isTrue);
@@ -91,6 +95,6 @@ void main() {
       position: null,
     );
     expect(shipsOf([unplaced], now), isEmpty);
-    expect(citiesOf([unplaced], const {}, now), isEmpty);
+    expect(citiesOf([unplaced], const {}, shipsOf([unplaced], now)), isEmpty);
   });
 }

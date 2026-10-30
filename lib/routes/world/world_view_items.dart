@@ -89,15 +89,14 @@ List<WorldShip> shipsOf(Iterable<CourseTripView> courses, DateTime now) {
   return ships;
 }
 
-/// The cities along the learner's trips, each once, with the ships there
-/// and the gold stamp when one of the learner's saved activities belongs to
-/// a Mission at that city.
+/// The cities along the learner's trips, each once, with the [ships] there
+/// (from [shipsOf] over the same courses) and the gold stamp when one of the
+/// learner's saved activities belongs to a Mission at that city.
 List<WorldCity> citiesOf(
   Iterable<CourseTripView> courses,
   Set<String> savedActivityIds,
-  DateTime now,
+  List<WorldShip> ships,
 ) {
-  final ships = shipsOf(courses, now);
   final byKey = <String, ({MissionCity city, bool stamped})>{};
   for (final course in courses) {
     final copy = course.copy;
@@ -124,4 +123,14 @@ List<WorldCity> citiesOf(
         stamped: value.stamped,
       ),
   ];
+}
+
+/// The world view's ships and cities over [courses], each course read once.
+({List<WorldShip> ships, List<WorldCity> cities}) worldViewOf(
+  List<CourseTripView> courses,
+  Set<String> savedActivityIds,
+  DateTime now,
+) {
+  final ships = shipsOf(courses, now);
+  return (ships: ships, cities: citiesOf(courses, savedActivityIds, ships));
 }
