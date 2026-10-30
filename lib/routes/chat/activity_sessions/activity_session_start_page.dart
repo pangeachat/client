@@ -80,13 +80,14 @@ enum SessionState {
 /// and its "no longer supported" notice.
 ///
 /// The removed-activity ladder is scoped to session ROOMS: every rung renders
-/// what the room itself holds — roles, stars, timeline — so a learner or their
-/// teacher can always reopen an old session and review the work done there
-/// (activities.instructions.md, "Removed or unresolvable activities"). Reached
-/// WITHOUT a session, as a bare world-map pin is, there is no such thing to
-/// review: the archived body would render empty and the notice would tell the
-/// learner an activity they never ran is out of date (#7918). That case is a
-/// plain not-found instead.
+/// what the room itself holds — the plan it kept, else each role's occupant
+/// and earned diamonds — so a learner or their teacher can always reopen an
+/// old session and see who played it and how far they got
+/// (activity-start-page.instructions.md, "When the activity can't be fetched").
+/// Reached WITHOUT a session, as a bare world-map pin is, there is no such
+/// thing to review: the archived body would render empty and the notice would
+/// tell the learner an activity they never ran is out of date (#7918). That
+/// case is a plain not-found instead.
 bool archivedSessionGate({
   required bool activityRemoved,
   required bool hasSessionRoom,
@@ -145,8 +146,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   /// The backend confirmed this activity no longer exists (404). [activity]
   /// may still be populated from the plan embedded in legacy room state; when
   /// it stays null the view renders the archived fallback from room state
-  /// alone. Distinct from [error], which is a transient failure worth
-  /// retrying.
+  /// alone. Distinct from [error], a transient failure the view shows as an
+  /// error, with no retry button.
   bool activityRemoved = false;
 
   ActivityPlanModel? activity;
@@ -274,7 +275,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   /// Back out of a session viewed from the join list: leave it if no role
   /// was picked (joining only to look shouldn't keep you a member), then
-  /// return to the activity, which lands on its join list again.
+  /// return to the activity, which lands on its join list again. Only this
+  /// arrow leaves: browser or phone back keeps the room joined (an open
+  /// question in activity-start-page.instructions.md).
   void backToJoinList() {
     final room = activityRoom;
     if (room != null &&
@@ -389,7 +392,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   /// Re-reads this activity's sessions now and returns them. Unlike
   /// [_loadSummary] it throws on a failed read, so Play with others never
-  /// joins from a list it couldn't refresh.
+  /// joins from a list it couldn't refresh: the list on screen can hold a
+  /// session that has since filled, and joining it would send the learner
+  /// into a full room.
   Future<ActivitySessionSummariesModel> refreshSummaries() async {
     await _fetchSummaries();
     return _roomSummariesModel;
@@ -537,9 +542,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   }
 
   Future<void> _loadActivity() async {
-    // v3: read the canonical activities-v2 plan directly (fetched on open, per
-    // the thin-list/full-on-open contract). Localization is choreo's concern,
-    // consumed later when this read swaps to a choreo endpoint.
+    // v3: read the plan through choreo's localized activity read. The page
+    // shows a spinner until this resolves, unlike the chat view, which shows
+    // timeline, roles and progress at once (activity-start-page.instructions.md,
+    // "When the activity can't be fetched").
     //
     // On an existing session room, read at the room's pinned version, not the
     // latest: role ids re-mint on owner edits, and the room's role state (and
@@ -555,9 +561,11 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
       case ActivityPlanLookupStatus.found:
         activity = lookup.plan;
       case ActivityPlanLookupStatus.removed:
-        // Removed-activity fallback ladder (activities.instructions.md):
-        // legacy rooms embed the full plan in room state — render it
-        // view-only; with no plan anywhere the view shows the archived body
+        // Removed-activity fallback ladder
+        // (activity-start-page.instructions.md, "When the activity can't be
+        // fetched"): legacy rooms embed the full
+        // plan in room state — render it view-only; with no plan anywhere the
+        // view shows the archived body
         // built from role/goal state.
         if (!mounted) return;
         final statePlan = activityRoom?.activityPlan;
@@ -577,7 +585,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   /// the course [ShareRoomButton]: copy-only (never the OS share sheet), and
   /// `hideCurrentSnackBar` + `showCloseIcon` so rapid taps replace the toast
   /// (with a dismissal X) instead of queueing a backlog. See
-  /// activity-start-page.instructions.md.
+  /// activity-start-page.instructions.md, "The top of the page".
   ///
   /// Path URL strategy (main.dart) means the link carries no `#` — on web a
   /// fragment is ignored (`shouldNavigateToIncomingUri` is false there) and the
@@ -664,7 +672,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   /// The learner has confirmed a role and is waiting for the room to fill, but
   /// the activity chat hasn't begun — the one live state where they can still
-  /// back out via the app-bar "…" menu. See activity-start-page.instructions.md.
+  /// back out via the app-bar "…" menu. See
+  /// activity-start-page.instructions.md, "The waiting room".
   bool get isPendingSession {
     final room = activityRoom;
     return _sessionState == SessionState.confirmedRole &&
@@ -720,6 +729,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     closeOwnRoomPanel(context, room.id);
   }
 
+  /// The page stores no state of its own: its step is read from the room —
+  /// whether one exists, whether the learner is in it, whether they hold a
+  /// role, whether every role is filled (activity-start-page.instructions.md,
+  /// "Purpose").
   SessionState get _sessionState {
     if (isArchived) return SessionState.archived;
 

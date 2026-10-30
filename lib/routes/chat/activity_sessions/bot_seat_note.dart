@@ -17,9 +17,9 @@ extension BotSeatNoteEvent on Event {
 }
 
 /// Where the bot took a waiting session's open seat on its own, the reason in
-/// the chat (activities.instructions.md, "When the bot took the seat on its
-/// own"). Past a day the bot fills quietly and sends nothing, so the note says
-/// the learner starts.
+/// the chat (activity-session.instructions.md, "The bot's seat"). Past a day
+/// the bot fills quietly and sends nothing, so the note says the learner
+/// starts.
 class BotSeatNote extends StatelessWidget {
   final Event event;
   const BotSeatNote(this.event, {super.key});

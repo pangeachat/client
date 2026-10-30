@@ -19,12 +19,14 @@ import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/mxc_image_viewer.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
 
-/// The focused-surface media display for an activity (plan page and live
-/// session): a per-block carousel over the activity's media list. Images render
-/// directly; video and YouTube blocks render as a thumbnail with a play badge
-/// and only mount a live player when tapped — one live player at a time, and
-/// nothing autostarts, so the carousel stays calm. The exception is
-/// [autoplayIndex], which starts that block muted for the thumbnail deep link.
+/// The live session's media display for an activity: a per-block carousel
+/// over the activity's media list (the plan page shows only the lead block,
+/// `ActivityStartHero`). Images render directly; video and YouTube blocks
+/// render as a thumbnail with a play badge and only mount a live player when
+/// tapped — one live player at a time, and nothing autostarts, so the carousel
+/// stays calm (activities.instructions.md, "Media is a carousel"). The one
+/// exception, [autoplayIndex], starts that block muted; no caller passes one
+/// today.
 ///
 /// Degrades to a single, un-navigable display when there is one renderable
 /// block, and to [fallbackImageUrl] (the legacy single image / placeholder)
@@ -39,7 +41,8 @@ class ActivityMediaCarousel extends StatefulWidget {
 
   /// Index — into the visible (image/video/youtube) blocks — to autostart muted
   /// on first build, for the thumbnail-tap deep link. Null means nothing
-  /// autostarts.
+  /// autostarts; its only caller, `ActivitySummary`, passes null in chat,
+  /// which is the only place it renders.
   final int? autoplayIndex;
 
   /// The activity's target language, so a YouTube block prefers caption tracks

@@ -283,10 +283,13 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
           );
         }
 
-        // The browse CTA: the same vertical layout at every size. An action
-        // from the minimized phone sheet maximizes it first, since the view it
-        // opens (role picker, Completed) is dropped at the minimized rest;
-        // Continue is exempt, as it leaves for the chat.
+        // The browse CTA: the same vertical layout at every size, whether or
+        // not sessions are open, so the choice never changes shape under the
+        // learner. Nothing scrolls sideways; a long label wraps instead. An
+        // action from the minimized phone sheet maximizes it first, since the
+        // view it opens (role picker, Completed) is dropped at the minimized
+        // rest; Continue is exempt, as it leaves for the chat. See
+        // activity-start-page.instructions.md, "The CTA row".
         final expand = CavityControls.maybeExpandToFull(context);
         VoidCallback expandThen(VoidCallback action) => () {
           expand?.call();

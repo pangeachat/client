@@ -50,6 +50,8 @@ enum AppSettings<T> {
   showPresences<bool>('chat.fluffy.show_presences', true),
   displayNavigationRail<bool>('chat.fluffy.display_navigation_rail', false),
   experimentalVoip<bool>('chat.fluffy.experimental_voip', false),
+  // Off by default: a photo behind the chat made the screen too busy over the
+  // map (#9356). Opt-in, per device, from Settings > Style (#9440).
   activityImageAsChatBackground<bool>(
     'pangea.activity_image_as_chat_background',
     false,

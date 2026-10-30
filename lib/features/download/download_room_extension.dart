@@ -40,6 +40,11 @@ class _EventDownloadInfo {
 class EmptyChatException implements Exception {}
 
 extension DownloadExtension on Room {
+  /// Exports the room's whole message history — every member's — with each
+  /// message's sender, time, original and sent text, and use type. Nothing
+  /// restricts the export for research-study or minor-heavy rooms today (an
+  /// open question in activity-session.instructions.md, "Downloading the
+  /// transcript").
   Future<void> download(DownloadType type, BuildContext context) async {
     List<PangeaMessageEvent> allPangeaMessages;
 

@@ -15,7 +15,7 @@ import 'get_test_client.dart';
 /// #9075 — a saved session's row carries the learner's own numbers from the
 /// summary saved with the session: the XP they earned and how many distinct
 /// vocabulary and grammar items they used (activities.instructions.md, "The
-/// Stars list").
+/// Learning Objectives page").
 void main() {
   late Client client;
 

@@ -10,7 +10,7 @@ import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 /// The XP a live session has earned so far (#9559) — its messages, practice
-/// credited to its room, and 100 per goal, awarded every session — beside
+/// credited to its room, and `kGoalXp` per goal awarded this session — beside
 /// the goal header's diamonds. A number, not a meter, so the header keeps
 /// its eye on the current goal. Rebuilds as XP lands. Nothing for a viewer
 /// who holds no role, or in a session whose language isn't the learner's

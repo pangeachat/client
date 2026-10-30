@@ -78,7 +78,7 @@ extension IsStateExtension on Event {
     // A notice reads as the bot's message (notices.instructions.md).
     PangeaEventTypes.botNotice,
     // The note where the bot took the open seat explains it, so it isn't
-    // folded away (activities.instructions.md).
+    // folded away (activity-session.instructions.md, "The bot's seat").
     PangeaEventTypes.botParticipant,
   }.contains(type);
 

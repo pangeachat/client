@@ -30,7 +30,7 @@ class ActivitySessionConstants {
 
   /// Reference-shape `pangea.activity_plan` state event fields. The session
   /// room stores `{ activity_id, version_id, source_course_id? }` and the plan
-  /// body is fetched live from CMS — see activities.instructions.md.
+  /// body is fetched live through choreo.
   static const String versionId = 'version_id';
   static const String sourceCourseId = 'source_course_id';
   // Pin-resolution outcome carried alongside the plan for analytics: whether

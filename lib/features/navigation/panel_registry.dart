@@ -125,8 +125,8 @@ sealed class PanelDef {
   /// section surfaces (the chat list, the add-course hub, the course family)
   /// AND the activity plan ride the nav widget's expandable cavity over the
   /// (scoped) map (`MobileNavWidget`, via the shell's `cavityIndex`) — the
-  /// plan as a half-open sheet with the camera on its pin, the Google Maps
-  /// UX. See `routing.instructions.md`.
+  /// plan as a sheet resting low (the shell's minimized rest) with the camera
+  /// on its pin, the Google Maps UX. See `routing.instructions.md`.
   final bool mapContent;
 
   /// This child ALWAYS folds its same-column [parent] behind it — one

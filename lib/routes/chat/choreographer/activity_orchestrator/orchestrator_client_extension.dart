@@ -37,7 +37,11 @@ extension OrchestratorClientExtension on Client {
 
   /// Profile star total: counts saved sessions only. Stars earned in a
   /// session bank into this total when the session is auto-saved on
-  /// completion — see activities.instructions.md → "Completion saves itself".
+  /// completion — see activity-session.instructions.md → "Completion saves
+  /// itself".
+  /// The name predates client#9420, which made goals diamonds: this is the
+  /// profile's banked goal counter. In-session diamonds stay live; this total
+  /// and an activity card's XP both wait for the save.
   int totalStarsEarned(LanguageModel lang) {
     final sessions = <SessionStars>[];
     for (final room in rooms) {

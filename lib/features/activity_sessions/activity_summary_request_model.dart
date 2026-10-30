@@ -3,7 +3,7 @@ import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 /// A viewer's request to have the bot's summary translated into their L1. The
 /// bot makes the summary itself; the client only ever asks for a translation
-/// (org doc activity-summary.instructions.md, "Translation").
+/// (org doc activity-summary.instructions.md, "Language and translation").
 class ActivitySummaryRequestModel {
   final ActivityPlanModel activity;
 

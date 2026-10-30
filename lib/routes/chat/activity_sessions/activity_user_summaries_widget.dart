@@ -22,6 +22,12 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+/// The finished activity's summary: ONE shared summary for the room, with a
+/// group blurb above a per-participant card, shown once every player is done
+/// ([Room.isActivityFinished]). The org design makes each learner's summary
+/// when they finish, with no group blurb, and joins the other players' cards
+/// as each finishes (activity-session.instructions.md, "The summary"; org
+/// activity-summary.instructions.md); that is not yet built here.
 class ActivityUserSummaries extends StatelessWidget {
   final ChatController controller;
 

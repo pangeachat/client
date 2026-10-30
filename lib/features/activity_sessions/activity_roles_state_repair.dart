@@ -32,7 +32,7 @@ bool stateBlockCarriesActivityRoles(JoinedRoomUpdate update) =>
 /// room holds a different one, feeds the server's event back through the
 /// SDK's own sync pipeline, so memory, the local database and every role-state
 /// listener all converge on it. It only ever moves a room toward server truth.
-/// See activities.instructions.md, "Role state stays in step with the server".
+/// See activity-session.instructions.md, "Completion saves itself".
 class ActivityRolesStateRepair {
   final Client client;
 
