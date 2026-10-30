@@ -5,8 +5,8 @@ import 'package:fluffychat/features/quests/course_itinerary.dart';
 
 /// What the world view draws outside any course (org world-view doc): the
 /// learner's courses as ships at the city each trip has reached, and the
-/// cities along those trips, a city stamped once the learner has finished an
-/// activity there. Pure over the courses' records, so the rule is testable
+/// cities along those trips, each sized by the XP the learner has earned there
+/// and stamped once they have finished an activity. Pure over the courses' records, so the rule is testable
 /// without a client; the map controller feeds it the joined courses.
 
 /// One joined course as the world view reads it: its record and its ship's
@@ -42,22 +42,29 @@ class WorldShip {
   });
 }
 
-/// A city on a trip the learner is on, with the ships there now and whether
-/// the learner has finished an activity in it.
+/// A city on a trip the learner is on, with the ships there now, the XP the
+/// learner has earned in its activities, and whether they have finished one.
 class WorldCity {
   final String key;
   final String name;
   final LatLng point;
   final List<String> shipRoomIds;
-  final bool stamped;
+
+  /// The learner's activity XP summed over the city's Missions' activities
+  /// (`Client.userXpByActivity`). The dot grows with it.
+  final int xp;
 
   const WorldCity({
     required this.key,
     required this.name,
     required this.point,
     required this.shipRoomIds,
-    required this.stamped,
+    required this.xp,
   });
+
+  /// Finished an activity here: a saved session banks XP, so any XP at all
+  /// is the stamp.
+  bool get stamped => xp > 0;
 }
 
 /// One key per listed city, from its recorded position (integer
@@ -90,14 +97,15 @@ List<WorldShip> shipsOf(Iterable<CourseTripView> courses, DateTime now) {
 }
 
 /// The cities along the learner's trips, each once, with the [ships] there
-/// (from [shipsOf] over the same courses) and the gold stamp when one of the
-/// learner's saved activities belongs to a Mission at that city.
+/// (from [shipsOf] over the same courses) and the learner's XP in the city's
+/// activities ([xpByActivity], `Client.userXpByActivity`), which sizes the
+/// dot and, once above zero, stamps it.
 List<WorldCity> citiesOf(
   Iterable<CourseTripView> courses,
-  Set<String> savedActivityIds,
+  Map<String, int> xpByActivity,
   List<WorldShip> ships,
 ) {
-  final byKey = <String, ({MissionCity city, bool stamped})>{};
+  final byKey = <String, ({MissionCity city, int xp})>{};
   for (final course in courses) {
     final copy = course.copy;
     if (copy == null || !copy.isTrip) continue;
@@ -105,9 +113,12 @@ List<WorldCity> citiesOf(
       final city = mission.city;
       if (city == null) continue;
       final key = cityKeyOf(city);
-      final stamped = mission.activityIds.any(savedActivityIds.contains);
+      var xp = 0;
+      for (final id in mission.activityIds) {
+        xp += xpByActivity[id] ?? 0;
+      }
       final seen = byKey[key];
-      byKey[key] = (city: city, stamped: stamped || (seen?.stamped ?? false));
+      byKey[key] = (city: city, xp: xp + (seen?.xp ?? 0));
     }
   }
   return [
@@ -120,7 +131,7 @@ List<WorldCity> citiesOf(
           for (final ship in ships)
             if (ship.cityKey == key) ship.roomId,
         ],
-        stamped: value.stamped,
+        xp: value.xp,
       ),
   ];
 }
@@ -128,9 +139,9 @@ List<WorldCity> citiesOf(
 /// The world view's ships and cities over [courses], each course read once.
 ({List<WorldShip> ships, List<WorldCity> cities}) worldViewOf(
   List<CourseTripView> courses,
-  Set<String> savedActivityIds,
+  Map<String, int> xpByActivity,
   DateTime now,
 ) {
   final ships = shipsOf(courses, now);
-  return (ships: ships, cities: citiesOf(courses, savedActivityIds, ships));
+  return (ships: ships, cities: citiesOf(courses, xpByActivity, ships));
 }

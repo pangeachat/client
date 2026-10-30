@@ -5,9 +5,10 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_view_items.dart';
 
-/// The world view's markers (org world-view doc): a city as a small circle,
-/// gold-ringed once the learner has finished an activity there (a solid gold
-/// dot on the dark basemap, light-ringed once stamped), and a ship
+/// The world view's markers (org world-view doc): a city as a tiny circle
+/// that grows with the XP the learner has earned there, gold-ringed once they
+/// have finished an activity (a solid gold dot on the dark basemap,
+/// light-ringed once stamped), and a ship
 /// carrying its course's name at the city its trip has reached. A ship opens
 /// its course; a city brings the map down into it. A city carries no label of
 /// its own: the basemap already names it, and its name stays available to
@@ -67,7 +68,19 @@ class WorldViewLayer {
 class WorldCityMarker extends StatelessWidget {
   /// The tappable square around the dot.
   static const double hitSize = 28;
-  static const double dotSize = 10;
+
+  /// A city the learner has not played is a tiny dot; it grows with the XP
+  /// earned there, levelling off at [maxDotSize] so one well-played city
+  /// never swallows its neighbours. Half of the growth comes by [halfXp].
+  static const double minDotSize = 5;
+  static const double maxDotSize = 20;
+  static const int halfXp = 300;
+
+  /// The ship pill's clearance above the city, at the largest dot.
+  static const double dotSize = maxDotSize;
+
+  static double dotSizeFor(int xp) =>
+      minDotSize + (maxDotSize - minDotSize) * (xp / (xp + halfXp));
   final WorldCity city;
   final VoidCallback onTap;
   const WorldCityMarker({super.key, required this.city, required this.onTap});
@@ -96,8 +109,8 @@ class WorldCityMarker extends StatelessWidget {
           behavior: HitTestBehavior.opaque,
           child: Center(
             child: Container(
-              width: dotSize,
-              height: dotSize,
+              width: dotSizeFor(city.xp),
+              height: dotSizeFor(city.xp),
               decoration: BoxDecoration(
                 color: fill,
                 shape: BoxShape.circle,

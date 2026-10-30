@@ -77,15 +77,17 @@ void main() {
     () {
       final cities = citiesOf(
         [spanish, second, legacy],
-        {'a2'},
+        {'a2': 120},
         shipsOf([spanish, second, legacy], now),
       );
       expect(cities.map((c) => c.name), ['Oaxaca', 'Mexico City', 'Madrid']);
       final oax = cities.firstWhere((c) => c.name == 'Oaxaca');
       expect(oax.stamped, isTrue);
+      expect(oax.xp, 120);
       expect(oax.shipRoomIds, isEmpty);
       final mex = cities.firstWhere((c) => c.name == 'Mexico City');
       expect(mex.stamped, isFalse);
+      expect(mex.xp, 0);
       expect(mex.shipRoomIds, ['!es:x', '!es2:x']);
     },
   );

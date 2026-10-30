@@ -559,10 +559,10 @@ class WorldMapController extends State<WorldMap>
   ];
 
   /// The learner's courses as ships at the city each trip has reached, and
-  /// the cities along those trips, stamped where they have played; read once
-  /// per build.
+  /// the cities along those trips, sized by the XP earned there and stamped
+  /// where they have played; read once per build.
   ({List<WorldShip> ships, List<WorldCity> cities}) get worldView =>
-      worldViewOf(_courseTrips, savedActivityIds, DateTime.now());
+      worldViewOf(_courseTrips, _pinsManager.xpByActivity, DateTime.now());
 
   /// Brings the world view down into [city] with a fade, where its sessions
   /// and the learner's played activities show.
