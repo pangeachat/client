@@ -34,7 +34,9 @@ function tonesAfter(media, t0) {
 const cutOk = (x) => x.playedMs != null && (x.how === 'ended'
   || (Number.isFinite(x.dur) && x.dur > 0 && Number.isFinite(x.endAt) && x.endAt >= 0.8 * x.dur));
 const RINGTONE = /\/(phone|call)\.(mp3|ogg)/;
-const ENDED_TONE = /\/call_ended\.(mp3|ogg)|busy|engaged/;
+const ENDED_TONE = /\/call_ended\.(mp3|ogg)/;
+// The engaged tone is notification.ogg played twice (ring_player.dart).
+const BUSY_TONE = /\/notification\.(mp3|ogg)/;
 
 async function main() {
   R.refuseIfNotLocal();
@@ -122,9 +124,9 @@ async function main() {
   h.check(s, 'the caller is told the other person is on another call', told, 'no "<name> is on another call" on the caller (labels + OCR, ~18s)');
   await wait(6000); // let a tone that is still sounding finish before judging it
   const mediaA2 = await R.saveParticipant(A);
-  const busyTone = tonesAfter(mediaA2, tBusy).filter((x) => ENDED_TONE.test(x.src));
+  const busyTone = tonesAfter(mediaA2, tBusy).filter((x) => BUSY_TONE.test(x.src));
   if (!busyTone.length) h.skipped(s, 'the busy tone is not cut off (#9458)', 'no media element played on the caller after the busy decline');
-  else h.check(s, 'the busy tone is not cut off (#9458)', busyTone.every(cutOk), JSON.stringify(busyTone));
+  else h.check(s, 'the busy tone plays twice, neither cut off (#9458)', busyTone.length === 2 && busyTone.every(cutOk), JSON.stringify(busyTone));
   const stillFirst = await mx.hasMembership(E.token, esRoomId, E.userId) && await mx.hasMembership(B2.token, esRoomId, B2.userId);
   h.check(s, 'the call already in progress was not disturbed', stillFirst, 'a membership of the first call went away');
   await R.hangUp(s, E, esRoomId);

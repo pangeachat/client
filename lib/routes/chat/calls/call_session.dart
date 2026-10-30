@@ -736,6 +736,7 @@ class CallSession extends ChangeNotifier {
   void leaveForOtherDevice() => call.leaveForOtherDevice();
   bool get peerWasBusy => call.peerWasBusy;
   bool get hadPeer => call.hadPeer;
+  bool get wasDeclined => call.wasDeclined;
   bool get placedCall => call.placedCall;
   DateTime? get talkStartedAt => call.talkStartedAt;
   DateTime? get callStartedAt => call.callStartedAt;
@@ -1122,10 +1123,13 @@ class CallSession extends ChangeNotifier {
     }
     if (outcome == CallOutcome.ended || outcome == CallOutcome.declined) {
       _finishRecording();
-      // An ended conversation earns a moment on screen; everything else --
-      // declined, missed, torn down unanswered -- goes at once, as it always
-      // did. Teardown itself is never held by any of this.
-      if (outcome == CallOutcome.ended && call.hadPeer) {
+      // An ended conversation earns a moment on screen, and so does a declined
+      // call: the caller is owed the reason, and "<name> is on another call"
+      // has nowhere else to be read. Everything else -- missed, torn down
+      // unanswered -- goes at once. Teardown itself is never held by any of
+      // this.
+      if (outcome == CallOutcome.declined ||
+          (outcome == CallOutcome.ended && call.hadPeer)) {
         _finishWithSummary();
       } else {
         _release();
@@ -1858,10 +1862,11 @@ class CallSession extends ChangeNotifier {
   }
 
   /// Ends the session but keeps the screen for a moment: avatar, name, "call
-  /// ended", how long it was. Only for a call that WAS a conversation --
+  /// ended", how long it was. For a call that WAS a conversation --
   /// [ActiveCall.hadPeer], the code's real somebody-was-here latch, never the
-  /// stage, which reads connected while still waiting for an answer.
-  /// Declined, failed and missed calls release at once, exactly as before.
+  /// stage, which reads connected while still waiting for an answer -- and for
+  /// a declined call, whose screen says why instead. Failed and missed calls
+  /// release at once.
   void _finishWithSummary() {
     if (_over) return;
     _finish();
