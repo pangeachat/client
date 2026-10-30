@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -321,10 +320,8 @@ class AnalyticsActivityItem extends StatelessWidget {
     final goals = room.ownRole?.allGoals;
 
     final userId = room.client.userID;
-    final summary = room.activitySummary?.summary;
-    final cefrLevel = summary?.participants
-        .firstWhereOrNull((p) => p.participantId == userId)
-        ?.cefrLevel;
+    final summary = userId == null ? null : room.activitySummaryFor(userId);
+    final cefrLevel = summary?.cefrLevel;
 
     // The level and the stats come and go together: a session with no
     // generated summary keeps its title and stars and shows neither, rather

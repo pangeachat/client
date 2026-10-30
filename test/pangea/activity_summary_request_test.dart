@@ -20,7 +20,7 @@ import 'fake_activity_chat_pangea_controller.dart';
 import 'get_test_client.dart';
 
 /// A learner's retry or feedback goes to the bot as a write to the `request`
-/// slot (#9199). Offline, that write fails, and the failure must come back
+/// slot, naming whose card to remake (#9199, #795). Offline, that write fails, and the failure must come back
 /// to the caller rather than escape it (#8362).
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -49,8 +49,8 @@ void main() {
   setUp(() async => client = await getTestClient());
   tearDown(() => client.dispose());
 
-  /// A finished activity whose summary failed, with the bot still in the room
-  /// to serve a retry.
+  /// A finished activity whose card failed, with the bot still in the room to
+  /// serve a retry.
   Room failedSummaryRoom(String roomId) {
     final room = Room(id: roomId, client: client, membership: Membership.join);
     var count = 0;
@@ -86,14 +86,14 @@ void main() {
     setState(EventTypes.RoomMember, bot, {'membership': 'join'}, sender: bot);
     setState(
       PangeaEventTypes.activitySummary,
-      ActivitySummaryStateKeys.canonical,
+      ActivitySummaryStateKeys.card(userId),
       ActivitySummaryModel(errorAt: DateTime.now()).toJson(),
       sender: bot,
     );
     // Already written, so the controller has no analytics to compute.
     setState(
       PangeaEventTypes.activitySummary,
-      ActivitySummaryStateKeys.analytics,
+      ActivitySummaryStateKeys.learnerAnalytics(userId),
       ActivitySummaryAnalyticsModel().toJson(),
     );
     return room;
@@ -105,11 +105,15 @@ void main() {
     inputFocus: FocusNode(),
   );
 
-  test('writes the request slot with the feedback and a timestamp', () async {
+  test('writes the request slot with the card\'s learner, the feedback and a '
+      'timestamp', () async {
     final controller = controllerFor(failedSummaryRoom(onlineRoomId));
-    expect(controller.summaryView.value.canRequest, isTrue);
+    expect(controller.summaryView.value.cardFor(userId)?.canRequest, isTrue);
 
-    final ok = await controller.requestSummary(feedback: 'Too harsh.');
+    final ok = await controller.requestSummary(
+      userId: userId,
+      feedback: 'Too harsh.',
+    );
     await controller.dispose();
 
     expect(ok, isTrue);
@@ -120,6 +124,7 @@ void main() {
             '/${ActivitySummaryStateKeys.request}'];
     expect(writes, hasLength(1));
     final body = jsonDecode(writes!.single as String) as Map<String, dynamic>;
+    expect(body['user_id'], userId);
     expect(body['feedback'], 'Too harsh.');
     expect(DateTime.tryParse(body['requested_at'] as String), isNotNull);
   });
@@ -128,8 +133,8 @@ void main() {
     final controller = controllerFor(failedSummaryRoom(offlineRoomId));
 
     // Must not throw: an escaping throw is what used to strand the spinner.
-    final ok = await controller.requestSummary();
-    final view = controller.summaryView.value;
+    final ok = await controller.requestSummary(userId: userId);
+    final view = controller.summaryView.value.cardFor(userId)!;
     await controller.dispose();
 
     expect(ok, isFalse);

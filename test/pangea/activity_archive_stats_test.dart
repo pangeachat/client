@@ -150,6 +150,51 @@ void main() {
     expect(find.text('A2'), findsNothing);
   });
 
+  testWidgets('a session with per-learner cards reads the learner\'s own card '
+      'and analytics slot', (tester) async {
+    final room = makeRoom(withSummary: false);
+    room.setState(
+      Event(
+        type: PangeaEventTypes.activitySummary,
+        content: {
+          'summary': {
+            'summary': '',
+            'participants': [
+              {
+                'participant_id': ownUserId,
+                'feedback': 'Nicely done.',
+                'cefr_level': 'B1',
+                'superlatives': [],
+              },
+            ],
+          },
+        },
+        stateKey: 'card:$ownUserId',
+        senderId: '@bot:example.org',
+        eventId: '\$card',
+        originServerTs: DateTime.utc(2026, 1, 1),
+        room: room,
+      ),
+    );
+    room.setState(
+      Event(
+        type: PangeaEventTypes.activitySummary,
+        content: {
+          ownUserId: [construct('café', 'vocab'), construct('Tense', 'morph')],
+        },
+        stateKey: 'analytics:$ownUserId',
+        senderId: ownUserId,
+        eventId: '\$analytics',
+        originServerTs: DateTime.utc(2026, 1, 1),
+        room: room,
+      ),
+    );
+    await pump(tester, room);
+
+    expect(find.text('B1'), findsOneWidget);
+    expect(find.text('20 XP'), findsOneWidget);
+  });
+
   testWidgets(
     'XP drops the gold on the selected fill, which it fails against',
     (tester) async {
