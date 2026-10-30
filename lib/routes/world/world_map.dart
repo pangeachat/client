@@ -1816,8 +1816,6 @@ class WorldMapController extends State<WorldMap>
       context,
       course: course,
       activityId: card.activityId,
-      question: card.title,
-      missionId: card.learningObjectiveRefs.firstOrNull,
       imageUrl: plan?.discussionImageUrl,
     );
     if (roomId == null || !mounted) return;

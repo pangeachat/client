@@ -2,23 +2,14 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 
 /// The names a discussion travels under (#9647). A discussion is an activity
 /// in the Discussion mode, stored course-only in one of the course's Missions.
 abstract class DiscussionIds {
   /// The plan mode that marks an activity as a discussion.
   static const String mode = 'Discussion';
-
-  /// The state event a discussion room carries: which discussion, which
-  /// Mission, which course.
-  static const String stateEvent = 'pangea.discussion';
-
-  /// How many members a discussion room takes before the next learner is
-  /// put in a new one.
-  static const int roomCapacity = 12;
 
   /// Per-room account data holding the learner's own progress in a
   /// discussion: which questions they have answered, and whether they ended.
@@ -53,25 +44,19 @@ extension DiscussionCardExtension on QuestActivityCard {
 }
 
 extension DiscussionRoomExtension on Room {
-  /// The discussion this room is a chat for, from its room type; null for
-  /// every other room.
-  String? get discussionActivityId {
-    final type = roomType;
-    const prefix = '${PangeaRoomTypes.discussion}:';
-    if (type == null || !type.startsWith(prefix)) return null;
-    return type.substring(prefix.length);
-  }
+  /// The discussion this room is a chat for: an activity session room whose
+  /// plan is in the Discussion mode. Null for every other room, and until the
+  /// plan has loaded; wrap readers in a [ListenableBuilder] on
+  /// [ActivityPlanRepo] to rebuild when it arrives.
+  String? get discussionActivityId =>
+      isActivitySession && (activityPlan?.isDiscussion ?? false)
+      ? activityId
+      : null;
 
-  /// The plan of the discussion this room is for, once the activity cache
-  /// holds it; null for every other room. Asks the cache to load it, as an
-  /// activity room does, so a [ListenableBuilder] on [ActivityPlanRepo]
-  /// rebuilds when it arrives.
-  ActivityPlanModel? get discussionPlan {
-    final id = discussionActivityId;
-    if (id == null) return null;
-    ActivityPlanRepo.instance.ensure(id);
-    return ActivityPlanRepo.instance.cachedPlan(id);
-  }
+  /// The plan of the discussion this room is for; null for every other room
+  /// and until it has loaded.
+  ActivityPlanModel? get discussionPlan =>
+      discussionActivityId == null ? null : activityPlan;
 }
 
 /// The learner's own progress in one discussion room (#9647): the questions

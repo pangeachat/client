@@ -585,18 +585,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   Future<void> _openDiscussion(QuestActivity ref) async {
     final course = widget.room;
     if (course == null) return;
-    final missionId = widget.objectivesProvider.filteredObjectiveGroups
-        .firstWhereOrNull(
-          (g) => g.activities.any((a) => a.activityId == ref.activityId),
-        )
-        ?.objective
-        .id;
     final roomId = await DiscussionRoomService.open(
       context,
       course: course,
       activityId: ref.activityId,
-      question: ref.plan.title,
-      missionId: missionId,
       imageUrl: ref.plan.discussionImageUrl,
     );
     if (roomId == null || !mounted) return;

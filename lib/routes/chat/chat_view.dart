@@ -472,18 +472,24 @@ class ChatView extends StatelessWidget {
                     ],
                   ),
                   // #Pangea
-                  ActivityStatsMenu(
-                    room: controller.room,
-                    visibilityNotifier:
-                        controller.activityController.showActivityDropdown,
-                    setShowDropdown:
-                        controller.activityController.setShowDropdown,
-                    activeGoalNotifier: controller.activeGoalNotifier,
+                  // A discussion shows its question header in place of the
+                  // activity's goal menu (#9647). Which one is known once the
+                  // plan has loaded, so this rebuilds when it arrives.
+                  ListenableBuilder(
+                    listenable: ActivityPlanRepo.instance,
+                    builder: (context, _) =>
+                        controller.room.discussionActivityId != null
+                        ? DiscussionQuestionHeader(room: controller.room)
+                        : ActivityStatsMenu(
+                            room: controller.room,
+                            visibilityNotifier: controller
+                                .activityController
+                                .showActivityDropdown,
+                            setShowDropdown:
+                                controller.activityController.setShowDropdown,
+                            activeGoalNotifier: controller.activeGoalNotifier,
+                          ),
                   ),
-                  // A discussion's question stays at the top of its chat
-                  // (#9647).
-                  if (controller.room.discussionActivityId != null)
-                    DiscussionQuestionHeader(room: controller.room),
                   // if (controller.dragging)
                   //   Container(
                   //     color: theme.scaffoldBackgroundColor.withAlpha(230),
