@@ -48,14 +48,14 @@ Decision; reason. Who re-decides is unassigned throughout.
 - One device per account records, so speech never counts twice.
 - Silence is not transcribed; providers invent words for it ([call-silence-trim-design](call-silence-trim-design.instructions.md)).
 - The notice says what happens to the words: that makes recording the other speaker legitimate.
-- Call audio, never video, is saved like a voice message, with the same retention.
+- Call audio, never video, is saved like a voice message, with the same retention; unsent, it waits on the device, even on web.
 - A whole-call recording is shown only when every piece is accounted for.
 
 ### The transcript
 
 - The saved recording is transcribed after the call, live transcription is the fallback, and each side succeeds or fails alone.
 - Transcription is paid: a subscriber's app also fills in the other person's side. With no subscriber nothing is transcribed, though audio is kept; others see a locked placeholder.
-- Each side may come back in either of its speaker's languages, fixed at call start: learners speak both in a call. A third language usually comes back empty.
+- Each side may use either of its speaker's languages, fixed at call start; others usually come back empty.
 - Only the two chat members get a section, so a forged card cannot add a speaker.
 - Sides merge on the call server's clock, so a wrong phone clock never changes who spoke first.
 - A side that cannot be ordered shows each speaker separately. Pauses are not drawn.
@@ -77,6 +77,6 @@ Decision; reason. Who re-decides is unassigned throughout.
 
 - Should a device with no microphone get a listen-only call?
 - History records a busy decline as "Call declined", not "busy". Intended?
-- The old doc said the missed-call push stops a closed phone ringing; the code stops it by watching the caller. Which?
+- Does the missed-call push, or watching the caller, stop a closed phone ringing?
 - Recording-based turns still drop punctuation, yet [#9303](https://github.com/pangeachat/client/issues/9303) is closed. Accepted?
-- The old doc called live-fallback chunks short; they run 45 to 90 seconds. Short enough?
+- Live-fallback chunks run 45 to 90 seconds. Short enough?
