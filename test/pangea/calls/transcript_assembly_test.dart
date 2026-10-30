@@ -4262,6 +4262,43 @@ void main() {
       expect(_halfFor(transcript, alice).segments, isNotEmpty);
     });
 
+    // The rank is for an authentic half against a peer copy. Between two of the
+    // speaker's own, an empty half with an unfinished drain must not hide words
+    // because the later half lost a chunk.
+    test('two authentic halves are chosen by their words', () {
+      final transcript = assembleTranscript(
+        candidates: [
+          TranscriptCandidate(
+            senderId: alice,
+            eventId: '\$a1',
+            deviceId: 'devA',
+            originServerTs: 500,
+            segments: const [],
+            accounting: const HalfAccounting(
+              chunksCaptured: 2,
+              drainComplete: false,
+              declared: true,
+            ),
+          ),
+          TranscriptCandidate(
+            senderId: alice,
+            eventId: '\$a2',
+            deviceId: 'devA',
+            originServerTs: 600,
+            segments: [TranscriptSegment('hola')],
+            accounting: const HalfAccounting(
+              chunksCaptured: 2,
+              chunksTranscribed: 1,
+              chunksLost: 1,
+              declared: true,
+            ),
+          ),
+        ],
+        expectedSenders: [alice, bob],
+      );
+      expect(_halfFor(transcript, alice).segments, isNotEmpty);
+    });
+
     test('a refused own half with ANY other admitted gap keeps the unit', () {
       // "Only because of no subscription" means nothing else went missing.
       // Mutation proof: dropping any one of these terms from

@@ -2690,21 +2690,24 @@ String? _effectiveSpeakerOf(
 /// valid transcription of the whole recording is the better account of the
 /// speaker.
 ///
+/// The rank only ever decides an authentic half against a peer-produced one:
+/// two authentic halves are [_beats]'s, whatever either of them lost.
+///
 /// Used as a running-max predicate: "does [candidate] rank strictly above
-/// [held]". The rank is compared first and each rank is a total order within
-/// itself, so the whole is a total order and the winner is independent of the
-/// order events arrived.
+/// [held]". Each kind is a total order within itself, so the winner is
+/// independent of the order events arrived.
 bool _winsUnit(
   TranscriptCandidate candidate,
   TranscriptCandidate held, {
   required String speaker,
 }) {
-  final candidateRank = _unitRank(candidate, speaker);
-  final heldRank = _unitRank(held, speaker);
-  if (candidateRank != heldRank) return candidateRank > heldRank;
-  return candidate.senderId == speaker
-      ? _beats(candidate, held)
-      : _peerBeats(candidate, held);
+  final candidateAuthentic = candidate.senderId == speaker;
+  final heldAuthentic = held.senderId == speaker;
+  if (candidateAuthentic && heldAuthentic) return _beats(candidate, held);
+  if (!candidateAuthentic && !heldAuthentic) {
+    return _peerBeats(candidate, held);
+  }
+  return _unitRank(candidate, speaker) > _unitRank(held, speaker);
 }
 
 /// The tier [_winsUnit] compares first: an authentic half (2) over a

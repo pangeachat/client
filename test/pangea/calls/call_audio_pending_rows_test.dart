@@ -11,7 +11,10 @@ class _Rows implements PendingCallAudioRows {
   final wavs = <String, Uint8List>{};
 
   @override
-  Future<void> putRecord(String id, String json) async => records[id] = json;
+  Future<void> updateRecord(String id, String json) async {
+    if (records.containsKey(id)) records[id] = json;
+  }
+
   @override
   Future<String?> getRecord(String id) async => records[id];
   @override
@@ -135,6 +138,17 @@ void main() {
     expect(rows.records.keys, ['theirs']);
   });
 
+  // A read then a write is two transactions, and another tab's purge at logout
+  // can land between them.
+  test('an update leaves the existence check to its one transaction', () async {
+    final item = await _item(wav);
+    final oneShot = _NoSeparateRead();
+    final store = RowsCallAudioPendingStore(oneShot);
+    await store.persist(item, wav);
+    await store.update(item.withStatus(PendingCallAudio.uploaded));
+    expect(oneShot.records[item.audioTxnId], contains('uploaded'));
+  });
+
   test('an update never brings back a deleted item', () async {
     final item = await _item(wav);
     await store.persist(item, wav);
@@ -150,4 +164,11 @@ class _FailingRows extends _Rows {
   @override
   Future<void> putRecording(String id, String json, Uint8List wav) =>
       Future.error(StateError('IndexedDB: aborted'));
+}
+
+/// An update that read the record first would be two transactions.
+class _NoSeparateRead extends _Rows {
+  @override
+  Future<String?> getRecord(String id) =>
+      Future.error(StateError('read outside the update transaction'));
 }

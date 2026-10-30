@@ -185,7 +185,9 @@ final ValueNotifier<bool> callAudioWaitingToSend = ValueNotifier(false);
 /// What the web store needs of its database: records and WAVs, by the audio
 /// half's transaction id. Each write is durable when it returns.
 abstract class PendingCallAudioRows {
-  Future<void> putRecord(String id, String json);
+  /// Replaces the record only if it is still there, in ONE transaction: read
+  /// and write apart, a purge by another tab in between would be undone.
+  Future<void> updateRecord(String id, String json);
 
   /// The record and its WAV in ONE transaction: both or neither, so no tab,
   /// dead or alive, can leave or see one without the other.
@@ -204,9 +206,6 @@ class RowsCallAudioPendingStore implements CallAudioPendingStore {
   final PendingCallAudioRows _rows;
 
   RowsCallAudioPendingStore(this._rows);
-
-  Future<void> _put(PendingCallAudio item) =>
-      _rows.putRecord(item.audioTxnId, jsonEncode(item.json));
 
   @override
   Future<bool> persist(PendingCallAudio item, Uint8List wav) async {
@@ -227,8 +226,7 @@ class RowsCallAudioPendingStore implements CallAudioPendingStore {
   @override
   Future<void> update(PendingCallAudio item) async {
     // Never resurrects a deleted item.
-    if (await _rows.getRecord(item.audioTxnId) == null) return;
-    await _put(item);
+    await _rows.updateRecord(item.audioTxnId, jsonEncode(item.json));
   }
 
   @override

@@ -94,11 +94,18 @@ class _IndexedDbRows implements PendingCallAudioRows {
   }
 
   @override
-  Future<void> putRecord(String id, String json) => _run(
-    [_records],
-    'readwrite',
-    (tx) => tx.objectStore(_records).put(json.toJS, id.toJS),
-  );
+  Future<void> updateRecord(String id, String json) =>
+      _run([_records], 'readwrite', (tx) {
+        final records = tx.objectStore(_records);
+        final current = records.get(id.toJS);
+        // Placed from the read's own success, which keeps the transaction open.
+        current.onsuccess = (JSAny? _) {
+          if (current.result.isDefinedAndNotNull) {
+            records.put(json.toJS, id.toJS);
+          }
+        }.toJS;
+        return current;
+      });
 
   @override
   Future<String?> getRecord(String id) async {
