@@ -1,7 +1,6 @@
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/course_plans/cities/city_index.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
@@ -27,16 +26,6 @@ class MissionCity {
     required this.latE6,
     required this.lngE6,
   });
-
-  factory MissionCity.fromDegrees({
-    required String name,
-    required double lat,
-    required double lng,
-  }) => MissionCity(
-    name: name,
-    latE6: (lat * e6).round(),
-    lngE6: (lng * e6).round(),
-  );
 
   double get lat => latE6 / e6;
   double get lng => lngE6 / e6;
@@ -317,67 +306,25 @@ class CourseMissionsEvent {
     );
   }
 
-  /// The copy a new course starts with. With [cities] (the listed cities),
-  /// the trip: every Can-Do in order, sliced to the activities under the
-  /// listed city most of its pins fall under ([sliceFor]), undated. Without
-  /// them, the version 1 snapshot: every Can-Do with every activity shown
-  /// for it. No time zone (dates show in the viewer's zone until the
-  /// Studio's first publish sets one).
+  /// The copy a new course starts with: a snapshot of the list it shows
+  /// without one — every Can-Do in order, each with the activities shown for
+  /// it. No time zone (dates show in the viewer's zone until the Studio's
+  /// first publish sets one). It is version 1: the homeserver slices it into
+  /// cities as it lands (synapse-pangea-chat course-trip doc), so no app
+  /// keeps a copy of the city rule.
   static CourseMissionsEvent snapshotOf(
     QuestOutline outline, {
     int revision = 1,
-    CityIndex? cities,
   }) => CourseMissionsEvent(
-    version: cities == null ? schemaVersion : tripVersion,
     revision: revision,
     missions: [
       for (final group in outline.groups)
-        if (cities == null)
-          CourseMission(
-            loId: group.objective.id,
-            activityIds: [for (final a in group.activities) a.activityId],
-          )
-        else
-          sliceFor(group, cities),
+        CourseMission(
+          loId: group.objective.id,
+          activityIds: [for (final a in group.activities) a.activityId],
+        ),
     ],
   );
-
-  /// A Can-Do's city slice (org quests doc, "A course is a trip"; the Create
-  /// my class rule on pangeachat/.github#780): the listed city most of its
-  /// activities fall under, ties to the first activity's city, and the pins
-  /// are its activities under that city. A Can-Do with no activity under a
-  /// listed city keeps every activity and has no city; it is still playable
-  /// and does not move the ship.
-  static CourseMission sliceFor(QuestObjectiveGroup group, CityIndex cities) {
-    final byCity = <String, (ListedCity, List<String>)>{};
-    for (final activity in group.activities) {
-      final point = activity.point;
-      if (point == null) continue;
-      final city = cities.nearest(point);
-      if (city == null) continue;
-      (byCity[city.key] ??= (city, [])).$2.add(activity.activityId);
-    }
-    if (byCity.isEmpty) {
-      return CourseMission(
-        loId: group.objective.id,
-        activityIds: [for (final a in group.activities) a.activityId],
-      );
-    }
-    var best = byCity.values.first;
-    for (final candidate in byCity.values) {
-      if (candidate.$2.length > best.$2.length) best = candidate;
-    }
-    final (city, ids) = best;
-    return CourseMission(
-      loId: group.objective.id,
-      activityIds: ids,
-      city: MissionCity.fromDegrees(
-        name: city.name,
-        lat: city.lat,
-        lng: city.lng,
-      ),
-    );
-  }
 
   /// The Mission ids this copy lists that [quest] still carries, in the
   /// copy's order — the effective Can-Do list for a reader that has only the
