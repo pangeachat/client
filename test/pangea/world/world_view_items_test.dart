@@ -35,7 +35,12 @@ void main() {
       ('lo2', ['b1'], cdmx),
       ('lo3', ['c1'], madrid),
     ]),
-    position: const CoursePositionEvent(stop: 1, fromStop: 0, since: 1),
+    position: const CoursePositionEvent(
+      stop: 1,
+      fromStop: 0,
+      since: 1,
+      revision: 1,
+    ),
   );
   final second = CourseTripView(
     roomId: '!es2:x',
