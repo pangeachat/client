@@ -509,9 +509,17 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// false; a slow connection holds it up for minutes (#3379).
   bool _stillSendingHere = false;
 
+  Timer? _stillSendingCheck;
+
   Future<void> _readStillSending() async {
     final store = widget.pendingStore ?? pendingCallAudioStoreForPlatform();
-    final items = await store.recover();
+    final List<PendingCallAudio> items;
+    try {
+      items = await store.recover();
+    } catch (e, s) {
+      Logs().w('Could not read the call recordings waiting to send', e, s);
+      return;
+    }
     if (!mounted) return;
     final sending =
         CallHalfInFlight.finishing.contains(widget.callKey) ||
@@ -522,6 +530,15 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         );
     if (sending != _stillSendingHere) {
       setState(() => _stillSendingHere = sending);
+    }
+    // Nothing announces the end of it, and the sync it lands in can arrive
+    // first, so while it lasts this looks again by itself.
+    _stillSendingCheck?.cancel();
+    if (sending) {
+      _stillSendingCheck = Timer(
+        const Duration(seconds: 10),
+        () => unawaited(_readStillSending()),
+      );
     }
   }
 
@@ -1192,6 +1209,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     _releaseMergedPlayerIfOwned();
     _disposePlayback();
     _loadController.dispose();
+    _stillSendingCheck?.cancel();
     super.dispose();
   }
 
@@ -2994,7 +3012,7 @@ class _HalfSection extends StatelessWidget {
     // A half whose chunks never came back was never produced from their audio,
     // so it is offered exactly as an absent half is (#8792): a subscribed
     // reader can have it transcribed from the recording.
-    if (half.waitsOnItsRecording) {
+    if (half.segments.isEmpty && half.waitsOnItsRecording) {
       return _onDemandOffer(
         note: emptyHalfNote(half, name, l10n),
         name: name,

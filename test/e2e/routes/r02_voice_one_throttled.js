@@ -8,5 +8,5 @@ runStandardCall({
   sub: { A: true, B: false },
   network: { mode: 'throttled' },
   wavA: R.fixture('learner'), wavB: R.fixture('peer'),
-  talkS: 50, settleS: 720,
+  talkS: 50, settleS: 420,
 });

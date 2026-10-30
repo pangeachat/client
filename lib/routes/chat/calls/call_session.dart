@@ -291,7 +291,7 @@ class CallSession extends ChangeNotifier {
       // `transcript_writer.dart`'s own `encrypted` parameter for the
       // precedent), so there is no attached-file key to produce and nothing
       // downstream ever needs to decrypt this.
-      upload: room.client.uploadContent,
+      upload: callService.uploadCallAudio,
       send: (content, txid) =>
           room.sendEvent(content, type: CallAudioContent.relType, txid: txid),
       // Read FRESH at finish, never latched at run start: the anchor is

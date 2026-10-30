@@ -547,8 +547,7 @@ class CallService {
       final resumer = _halfResumer ??= CallHalfResumer(
         store: pendingCallAudioStoreForPlatform(),
         fetch: fetch,
-        upload: (bytes, {required filename, required contentType}) => client
-            .uploadContent(bytes, filename: filename, contentType: contentType),
+        upload: uploadCallAudio,
         send: (roomId, type, content, txnId) async => client
             .getRoomById(roomId)
             ?.sendEvent(content, type: type, txid: txnId),
@@ -560,6 +559,24 @@ class CallService {
       _flushingTranscripts = false;
     }
   }
+
+  /// A recording's upload on a fresh token. The homeserver reads the token once
+  /// the whole body has arrived, and sync only refreshes one with a minute left,
+  /// so an upload slower than that came back 401 after all those minutes.
+  Future<Uri> uploadCallAudio(
+    Uint8List bytes, {
+    required String filename,
+    required String contentType,
+  }) async {
+    await client.ensureNotSoftLoggedOut(slowUploadWindow);
+    return client.uploadContent(
+      bytes,
+      filename: filename,
+      contentType: contentType,
+    );
+  }
+
+  static const slowUploadWindow = Duration(minutes: 4);
 
   /// Deletes every call recording this account left waiting on this device.
   /// Run when the account signs out: a recording is the learner's, and the

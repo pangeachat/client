@@ -55,6 +55,16 @@ CallAudioRecording _rec({
   content: content ?? _content(),
 );
 
+Future<WholeCallManifest> _ownOnly(String _) async =>
+    WholeCallManifest(resolved: true, recordings: [_ownRec()]);
+
+/// This device's own recording.
+CallAudioRecording _ownRec() => _rec(
+  eventId: r'$own_audio',
+  senderId: _self,
+  content: _content(deviceId: 'DEV'),
+);
+
 CallAudioMergedRecording _manifest({
   required String eventId,
   required List<String> sourceEventIds,
@@ -148,6 +158,25 @@ CallTranscript _transcript({
     provenance: provenance,
   );
 }
+
+CallTranscript _ownPartial({int lost = 1}) => assembleTranscript(
+  candidates: [
+    TranscriptCandidate(
+      senderId: _self,
+      eventId: '\$t_own',
+      deviceId: 'DEV',
+      originServerTs: 1500,
+      segments: [_seg('some of it')],
+      accounting: HalfAccounting(
+        declared: true,
+        chunksCaptured: 2,
+        chunksTranscribed: 2 - lost,
+        chunksLost: lost,
+      ),
+    ),
+  ],
+  expectedSenders: const [_self, _peer],
+);
 
 /// One posted peer half, captured for assertions.
 class _Posted {
@@ -693,6 +722,60 @@ void main() {
       ]);
       expect(h.transcribeCalls, 1);
       expect(h.posts, hasLength(1));
+    });
+
+    test('two accounts on one device never share a run', () async {
+      final gate = Completer<void>();
+      Future<List<TranscriptSegment>> held(
+        Uint8List bytes, {
+        required String l1,
+        required String l2,
+        required int startedAtMs,
+        required int durationMs,
+      }) async {
+        await gate.future;
+        return [_seg('hola', startedAtMs)];
+      }
+
+      final mine = _Harness()..transcribe = held;
+      final theirs = _Harness()
+        ..transcribe = held
+        ..selfUserId = '@second:server'
+        ..participants = const {'@second:server', _peer};
+      final a = mine.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      final b = theirs.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      await Future<void>.delayed(Duration.zero);
+      gate.complete();
+      await Future.wait([a, b]);
+      expect(mine.posts, hasLength(1));
+      expect(theirs.posts, hasLength(1));
+    });
+
+    // A whole-recording transcription that timed out leaves partial live
+    // words on this device's own half (#3379). Once the recording is in the
+    // room, the same backfill finishes the job.
+    test('its own partial half is retried from its own recording', () async {
+      final h = _Harness()
+        ..selfDeviceId = 'DEV'
+        ..discover = _ownOnly
+        ..readTranscript = (_) async => _ownPartial();
+      await h.build().transcribeAtCallEnd(_callKey);
+      expect(h.posts.single.spokenBy, _self);
+    });
+
+    test('a complete own half is left alone', () async {
+      final h = _Harness()
+        ..selfDeviceId = 'DEV'
+        ..discover = _ownOnly
+        ..readTranscript = (_) async => _ownPartial(lost: 0);
+      await h.build().transcribeAtCallEnd(_callKey);
+      expect(h.posts, isEmpty);
     });
 
     test(

@@ -266,8 +266,8 @@ class WholeCallTranscriber {
   /// Injected so a test gets a deterministic wait; defaults to `Random`.
   final double Function() _jitter;
 
-  /// The runs in progress in this process, by call, speaker and recording
-  /// device. The call-end run and the transcript screen are two instances, so
+  /// The runs in progress in this process, by account, call, speaker and
+  /// recording device. The call-end run and the transcript screen are two instances, so
   /// this is shared: a second asker joins the first and sees its result, which
   /// is what lets the screen hold its loading row instead of spending a second
   /// speech-to-text. A cross-device or cross-process duplicate is caught by the
@@ -494,11 +494,14 @@ class WholeCallTranscriber {
     final transcript = await readTranscript(callKey);
     for (final recording in recordings) {
       final speaker = recording.senderId;
-      // This device's own recording is the ordinary flow's half, and a recording
-      // whose sender is not on the call is not this call's -- neither is ever
-      // transcribed here. ANOTHER device of this account is recovered like a
-      // peer: a learner who moved the call left its stretch on that device.
-      if (_isOwnRecording(recording)) continue;
+      // This device's own recording is the ordinary flow's half, unless that
+      // half is left missing what only the recording has: a whole-recording
+      // transcription that timed out on a slow link leaves partial live words,
+      // and this is its retry. A recording whose sender is not on the call is
+      // not this call's and is never transcribed here. ANOTHER device of this
+      // account is recovered like a peer: a learner who moved the call left its
+      // stretch on that device.
+      if (_isOwnRecording(recording) && !_ownHalfWaits(transcript)) continue;
       if (!participants.contains(speaker)) continue;
       // Skip a unit that already has a half on screen -- an authentic half (the
       // peer was subscribed and posted their own) or a VALID peer-produced one
@@ -527,12 +530,9 @@ class WholeCallTranscriber {
     String? chosenLanguage,
   }) async {
     final speaker = recording.senderId;
-    // Defensive: both callers already exclude self and non-participants, so this
-    // is unreached in practice -- reported as no-recording so the view never
-    // marks such a half unavailable off a guard that cannot fire.
-    if (_isOwnRecording(recording)) {
-      return OnDemandTranscriptionResult.noRecording;
-    }
+    // Defensive: both callers already exclude non-participants, so this is
+    // unreached in practice -- reported as no-recording so the view never marks
+    // such a half unavailable off a guard that cannot fire.
     if (!participants.contains(speaker)) {
       return OnDemandTranscriptionResult.noRecording;
     }
@@ -541,7 +541,7 @@ class WholeCallTranscriber {
     // Keyed by speaker AND device: a moved call leaves one speaker several
     // recordings, each its own unit of work. No await between the read and the
     // write, so two concurrent runs for one device cannot both start one.
-    final flight = '$callKey|$speaker|${device ?? ''}';
+    final flight = '$selfUserId|$callKey|$speaker|${device ?? ''}';
     return _inFlight[flight] ??=
         _transcribeOnePeer(
           callKey,
@@ -642,6 +642,13 @@ class WholeCallTranscriber {
                 half.deviceIds.isEmpty ||
                 half.deviceIds.contains(device)),
       );
+
+  bool _ownHalfWaits(CallTranscript transcript) => transcript.halves.any(
+    (half) =>
+        half.senderId == selfUserId &&
+        half.state != HalfState.absent &&
+        half.waitsOnItsRecording,
+  );
 
   /// This device's own recording, whose half it writes itself.
   bool _isOwnRecording(CallAudioRecording recording) =>

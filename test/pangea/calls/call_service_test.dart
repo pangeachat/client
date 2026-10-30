@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
@@ -3819,6 +3820,32 @@ void main() {
       },
     );
 
+    // The homeserver reads the token once the whole body has arrived, so a
+    // slow upload needs one that outlasts it (#3379).
+    test('a recording uploads on a token that will outlast it', () async {
+      var refreshed = 0;
+      final client = _ExpiringClient(
+        expiresIn: const Duration(minutes: 3),
+        database: (await bareClient()).database,
+        onRefresh: () => refreshed++,
+      );
+      final uri = await CallService(client).uploadCallAudio(
+        Uint8List(1),
+        filename: 'call_audio.wav',
+        contentType: 'audio/wav',
+      );
+      expect(refreshed, 1);
+      expect(uri.toString(), 'mxc://server/audio');
+
+      client.expiresIn = const Duration(minutes: 5);
+      await CallService(client).uploadCallAudio(
+        Uint8List(1),
+        filename: 'call_audio.wav',
+        contentType: 'audio/wav',
+      );
+      expect(refreshed, 1, reason: 'a fresh token is left alone');
+    });
+
     // A parked half used to wait for a launch or a foreground, neither of which
     // comes to a page that simply stays open (#3379).
     test('tries again on a later sync, so a parked half recovers', () async {
@@ -3839,6 +3866,27 @@ void main() {
       expect(service.flushEvery, Duration.zero);
     });
   });
+}
+
+/// A client whose token runs out when a test says, uploading nothing.
+class _ExpiringClient extends Client {
+  _ExpiringClient({
+    required this.expiresIn,
+    required super.database,
+    required void Function() onRefresh,
+  }) : super('expiring', onSoftLogout: (_) async => onRefresh());
+
+  Duration expiresIn;
+
+  @override
+  DateTime? get accessTokenExpiresAt => DateTime.now().add(expiresIn);
+
+  @override
+  Future<Uri> uploadContent(
+    Uint8List file, {
+    String? filename,
+    String? contentType,
+  }) async => Uri.parse('mxc://server/audio');
 }
 
 /// A room that accepts any send and remembers the transaction ids used.

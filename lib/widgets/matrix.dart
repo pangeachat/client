@@ -300,6 +300,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   Future<SpeechToTextResponseModel> _transcribeCallAudio(
     SpeechToTextRequestModel request,
   ) async {
+    // The server reads the token when the whole body has arrived, and on a slow
+    // link that is longer than the minute sync leaves it.
+    await client.ensureNotSoftLoggedOut(const Duration(minutes: 2));
     final result = await SpeechToTextRepo.instance.get(request);
     final value = result.asValue;
     if (value == null) {

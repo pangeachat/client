@@ -207,19 +207,14 @@ bool discardExplainsEmptiness(
   HalfAccounting accounting,
 ) => explainsEmptiness(MissingAudio.heldForASibling, segments, accounting);
 
-/// Whether an empty half is empty only because its chunks never came back from
-/// the transcriber -- refused for no subscription, or lost to a timeout on a
-/// slow link -- and nothing else about the accounting is in doubt.
+/// Whether all a half lacks is chunks that never came back from the transcriber
+/// -- refused for no subscription, or lost to a timeout on a slow link -- with
+/// nothing else about the accounting in doubt.
 ///
-/// The speech is in the saved recording, so such a half is NOT a record of what
-/// was said: a subscriber's transcription of that recording replaces it. Both
-/// causes at once is the ordinary shape on a bad connection, where some chunks
-/// time out and the rest are refused.
-bool lostChunksExplainEmptiness(
-  List<TranscriptSegment> segments,
-  HalfAccounting accounting,
-) =>
-    segments.isEmpty &&
+/// The speech is in the saved recording, so such a half is NOT the whole record
+/// of what was said: a transcription of that recording replaces it. Both causes
+/// at once is the ordinary shape on a bad connection.
+bool onlyChunksWereLost(HalfAccounting accounting) =>
     accounting.declared &&
     !accounting.incoherent &&
     !accounting.unreadableContent &&
@@ -231,6 +226,12 @@ bool lostChunksExplainEmptiness(
     accounting.segmentsOmitted == 0 &&
     accounting.drainComplete &&
     accounting.chunksLost > 0;
+
+/// [onlyChunksWereLost] about a half with no words left at all.
+bool lostChunksExplainEmptiness(
+  List<TranscriptSegment> segments,
+  HalfAccounting accounting,
+) => segments.isEmpty && onlyChunksWereLost(accounting);
 
 /// Whether [claim]'s audio is missing from the TRANSCRIPT -- gone from this
 /// half and from every other half of the same speaker in the same assembly.
@@ -1438,11 +1439,9 @@ class TranscriptHalf {
     discardWasCovered: discardWasCovered,
   );
 
-  /// Whether this half has no words yet only because its chunks never came
-  /// back, so the speaker's saved recording can still fill it. See
-  /// [lostChunksExplainEmptiness].
-  bool get waitsOnItsRecording =>
-      lostChunksExplainEmptiness(segments, accounting);
+  /// Whether all this half lacks is chunks that never came back, so the
+  /// speaker's saved recording can still complete it. See [onlyChunksWereLost].
+  bool get waitsOnItsRecording => onlyChunksWereLost(accounting);
 
   /// Whether this half is a person who was recorded and said nothing.
   ///
@@ -2686,10 +2685,9 @@ String? _effectiveSpeakerOf(
 ///    first, latest attempt within a lane. See there for why the lane, not the
 ///    clock, is primary.
 ///
-/// One exception to tier 1 (#8792): an authentic half emptied only because its
-/// chunks never came back ([lostChunksExplainEmptiness]) ranks BELOW a
-/// peer-produced one. It is not the speaker's record of their words, so a valid
-/// peer transcription of the same recording is the better account of the
+/// One exception to tier 1 (#8792): an authentic half missing only chunks that
+/// never came back ([onlyChunksWereLost]) ranks BELOW a peer-produced one. A
+/// valid transcription of the whole recording is the better account of the
 /// speaker.
 ///
 /// Used as a running-max predicate: "does [candidate] rank strictly above
@@ -2710,13 +2708,11 @@ bool _winsUnit(
 }
 
 /// The tier [_winsUnit] compares first: an authentic half (2) over a
-/// peer-produced one (1) over an authentic half emptied only by its chunks
-/// never coming back (0).
+/// peer-produced one (1) over an authentic half missing only chunks that never
+/// came back (0).
 int _unitRank(TranscriptCandidate candidate, String speaker) {
   if (candidate.senderId != speaker) return 1;
-  return lostChunksExplainEmptiness(candidate.segments, candidate.accounting)
-      ? 0
-      : 2;
+  return onlyChunksWereLost(candidate.accounting) ? 0 : 2;
 }
 
 /// Which of two PEER-PRODUCED halves of one (speaker, device) unit to keep.
