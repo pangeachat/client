@@ -137,6 +137,17 @@ void main() {
       expect(SpaceCodeRepo.pendingInvitation?.invitationId, other);
     });
 
+    test('clearing one invitation by id keeps a newer one', () async {
+      const other = 'b3RoZXJJbnZpdGF0aW9u';
+      await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(other));
+
+      await SpaceCodeRepo.clearPendingInvitationIf(inv);
+      expect(SpaceCodeRepo.pendingInvitation?.invitationId, other);
+
+      await SpaceCodeRepo.clearPendingInvitationIf(other);
+      expect(SpaceCodeRepo.pendingInvitation, isNull);
+    });
+
     test('a stale invitation entry reads as absent', () async {
       await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
       final storage = GetStorage('class_storage');

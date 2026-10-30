@@ -58,7 +58,7 @@ class PendingClaimsFlow {
     // Unsettled until the module answers: onboarding must not offer the
     // trial while the open is in flight (TrialInfoProvider).
     await SpaceCodeRepo.setSeatApprovalPending(true);
-    await SpaceCodeRepo.clearPendingInvitation();
+    await SpaceCodeRepo.clearPendingInvitationIf(pending.invitationId);
     try {
       final opened = await api.open(
         accessToken: accessToken,

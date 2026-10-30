@@ -10,6 +10,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/bot/bot_client_extension.dart';
+import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/keyboards/keyboard_prompt_local_store.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
@@ -124,6 +125,9 @@ class PangeaController {
     // one's XP and records, and its progress record would be written from them
     // (#9681).
     MissionXpCache.instance.clear();
+    // A seat approval the account logging out was waiting on would otherwise
+    // hide the next account's trial offer until it expires.
+    SpaceCodeRepo.setSeatApprovalPending(false);
     _languageSubscription?.cancel();
     _settingsSubscription?.cancel();
     _joinSpaceSubscription?.cancel();

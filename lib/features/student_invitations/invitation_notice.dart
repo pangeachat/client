@@ -59,7 +59,7 @@ class _InvitationNoticeState extends State<InvitationNotice> {
         _keepWithoutHint();
         return;
       }
-      await SpaceCodeRepo.clearPendingInvitation();
+      await SpaceCodeRepo.clearPendingInvitationIf(widget.pending.invitationId);
       if (mounted) setState(() => _gone = true);
     } catch (_) {
       _keepWithoutHint();

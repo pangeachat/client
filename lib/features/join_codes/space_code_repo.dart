@@ -175,6 +175,13 @@ class SpaceCodeRepo {
   static Future<void> clearPendingInvitation() =>
       _clearStamped(PLocalKey.cachedInvitation, PLocalKey.cachedInvitationAt);
 
+  /// Clears the stored invitation only while it is still [invitationId], so a
+  /// newer link stored meanwhile is kept for its own open.
+  static Future<void> clearPendingInvitationIf(String invitationId) async {
+    if (pendingInvitation?.invitationId != invitationId) return;
+    await clearPendingInvitation();
+  }
+
   /// Whether the last opened invitation went to the teacher for approval
   /// (the account's address did not match it). Onboarding reads it, with
   /// [pendingInvitation], so a student whose seat may still come is not

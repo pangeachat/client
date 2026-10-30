@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -189,6 +190,7 @@ void main() {
     expect(sent, hasLength(2));
     for (final request in sent) {
       expect(request.url.toString(), isNot(contains('@')));
+      expect(request.url.toString(), isNot(contains('%40')));
     }
   });
 
@@ -226,6 +228,28 @@ void main() {
         isEmpty,
         reason: 'nothing is opened before sign-in',
       );
+    });
+
+    testWidgets('a late "not found" for one invitation keeps a newer one', (
+      tester,
+    ) async {
+      const newer = 'TmV3ZXJJbnZpdGUtMDAy';
+      final answer = Completer<http.Response>();
+      final slowHint = StudentInvitationApi(
+        httpClient: MockClient((_) => answer.future),
+        homeserver: Uri.parse(homeserver),
+      );
+      const pending = PendingInvitation(inv);
+      await SpaceCodeRepo.setPendingInvitation(pending);
+      await tester.pumpWidget(
+        host(InvitationNotice(pending: pending, api: slowHint)),
+      );
+
+      await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(newer));
+      answer.complete(json(404, {'errcode': 'M_NOT_FOUND'}));
+      await tester.pumpAndSettle();
+
+      expect(SpaceCodeRepo.pendingInvitation?.invitationId, newer);
     });
   });
 }
