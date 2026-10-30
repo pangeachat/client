@@ -10993,5 +10993,15 @@
     "playWithBotNowMessage": "Nemo ha ancora jungite. Pangea Bot pote prender le sede vacante ora, o tu pote continuar a attender.",
     "keepWaiting": "Continuar a attender",
     "botTookSeatAfterAnHour": "Iste session esseva aperte pro un hora, dunque Pangea Bot prendeva le sede vacante.",
-    "botTookSeatAfterADay": "Iste session esseva aperte pro plus de un die, dunque Pangea Bot prendeva le sede vacante. Invia un message pro initiar."
+    "botTookSeatAfterADay": "Iste session esseva aperte pro plus de un die, dunque Pangea Bot prendeva le sede vacante. Invia un message pro initiar.",
+    "seatInviteTitle": "Junge a {course}",
+    "seatInviteYourCourse": "tu curso",
+    "seatInviteEmailHint": "Usa {email} pro que tu classe te trova.",
+    "seatInviteClaimed": "Tu es in {course}.",
+    "seatInvitePendingApproval": "Expectante que tu inseniator approba.",
+    "seatInviteDenied": "Tu inseniator non approbava iste conto pro le curso. Tu pote ancora usar le codice de classe.",
+    "yourTeacher": "Tu inseniator",
+    "seatInviteNotLive": "Iste invitation non es plus disponibile. Tu pote ancora usar le codice de classe.",
+    "seatInviteAlreadyClaimed": "Tu ha ja juncte iste curso con un altere invitation.",
+    "seatInviteFailed": "Nos non poteva aperir le invitation. Per favor reprova plus tarde."
 }

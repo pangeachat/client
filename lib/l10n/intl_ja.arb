@@ -10826,5 +10826,15 @@
     "playWithBotNowMessage": "まだ誰も参加していません。Pangea Botが今すぐ空席に着くことも、引き続き待つこともできます。",
     "keepWaiting": "待ち続ける",
     "botTookSeatAfterAnHour": "このセッションは1時間開いていたため、Pangea Botが空席に着きました。",
-    "botTookSeatAfterADay": "このセッションは1日以上開いていたため、Pangea Botが空席に着きました。メッセージを送信して開始してください。"
+    "botTookSeatAfterADay": "このセッションは1日以上開いていたため、Pangea Botが空席に着きました。メッセージを送信して開始してください。",
+    "seatInviteTitle": "{course}に参加",
+    "seatInviteYourCourse": "あなたのコース",
+    "seatInviteEmailHint": "クラスであなたを見つけられるように、{email}を使用してください。",
+    "seatInviteClaimed": "{course}に参加しました。",
+    "seatInvitePendingApproval": "先生の承認待ちです。",
+    "seatInviteDenied": "先生がこのアカウントのコース参加を承認しませんでした。クラスコードは引き続き使用できます。",
+    "yourTeacher": "あなたの先生",
+    "seatInviteNotLive": "この招待は利用できなくなりました。クラスコードは引き続き使用できます。",
+    "seatInviteAlreadyClaimed": "別の招待でこのコースにすでに参加しています。",
+    "seatInviteFailed": "招待を開けませんでした。後でもう一度お試しください。"
 }

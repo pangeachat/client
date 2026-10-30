@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Der hat noch nimmen meidien. Pangea Bot kin no de iepen plak ynnimme, of jo kinne wachtsje bliuwe.",
     "keepWaiting": "Wachtsje bliuwe",
     "botTookSeatAfterAnHour": "Dizze sesje wie in oere iepen, dus Pangea Bot hat de iepen plak ynnommen.",
-    "botTookSeatAfterADay": "Dizze sesje wie mear as in dei iepen, dus Pangea Bot hat de iepen plak ynnommen. Stjoer in berjocht om te begjinnen."
+    "botTookSeatAfterADay": "Dizze sesje wie mear as in dei iepen, dus Pangea Bot hat de iepen plak ynnommen. Stjoer in berjocht om te begjinnen.",
+    "seatInviteTitle": "Doch mei oan {course}",
+    "seatInviteYourCourse": "dyn kursus",
+    "seatInviteEmailHint": "Brûk {email} sadat dyn klasse dy fine kin.",
+    "seatInviteClaimed": "Do sitst yn {course}.",
+    "seatInvitePendingApproval": "Wachtsje op goedkarring fan dyn learaar.",
+    "seatInviteDenied": "Dyn learaar hat dit akkount net goedkard foar de kursus. Do kinst de klassekoade noch altyd brûke.",
+    "yourTeacher": "Dyn learaar",
+    "seatInviteNotLive": "Dizze útnoeging is net mear beskikber. Do kinst de klassekoade noch altyd brûke.",
+    "seatInviteAlreadyClaimed": "Do hast dy al by dizze kursus oansletten mei in oare útnoeging.",
+    "seatInviteFailed": "Wy koene de útnoeging net iepenje. Besykje it letter nochris."
 }

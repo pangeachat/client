@@ -11002,5 +11002,15 @@
     "playWithBotNowMessage": "Neniu ankoraŭ aliĝis. Pangea Bot povas okupi la liberan lokon nun, aŭ vi povas plu atendi.",
     "keepWaiting": "Plu atendi",
     "botTookSeatAfterAnHour": "Ĉi tiu sesio estis malfermita dum unu horo, do Pangea Bot okupis la liberan lokon.",
-    "botTookSeatAfterADay": "Ĉi tiu sesio estis malfermita dum pli ol unu tago, do Pangea Bot okupis la liberan lokon. Sendu mesaĝon por komenci."
+    "botTookSeatAfterADay": "Ĉi tiu sesio estis malfermita dum pli ol unu tago, do Pangea Bot okupis la liberan lokon. Sendu mesaĝon por komenci.",
+    "seatInviteTitle": "Aliĝu al {course}",
+    "seatInviteYourCourse": "via kurso",
+    "seatInviteEmailHint": "Uzu {email} por ke via klaso trovu vin.",
+    "seatInviteClaimed": "Vi estas en {course}.",
+    "seatInvitePendingApproval": "Atendante aprobon de via instruisto.",
+    "seatInviteDenied": "Via instruisto ne aprobis ĉi tiun konton por la kurso. Vi ankoraŭ povas uzi la klasan kodon.",
+    "yourTeacher": "Via instruisto",
+    "seatInviteNotLive": "Ĉi tiu invito ne plu disponeblas. Vi ankoraŭ povas uzi la klasan kodon.",
+    "seatInviteAlreadyClaimed": "Vi jam aliĝis al ĉi tiu kurso per alia invito.",
+    "seatInviteFailed": "Ni ne povis malfermi la inviton. Bonvolu reprovi poste."
 }

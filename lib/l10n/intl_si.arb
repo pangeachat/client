@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "තවම කිසිවෙක් සම්බන්ධ වී නැත. Pangea Bot හට දැන් හිස් ආසනය ගත හැක, නැතහොත් ඔබට දිගටම බලා සිටිය හැක.",
     "keepWaiting": "බලා සිටින්න",
     "botTookSeatAfterAnHour": "මෙම සැසිය පැයක් විවෘතව තිබූ නිසා, Pangea Bot හිස් ආසනය ගත්තේය.",
-    "botTookSeatAfterADay": "මෙම සැසිය දවසකට වඩා විවෘතව තිබූ නිසා, Pangea Bot හිස් ආසනය ගත්තේය. ආරම්භ කිරීමට පණිවිඩයක් යවන්න."
+    "botTookSeatAfterADay": "මෙම සැසිය දවසකට වඩා විවෘතව තිබූ නිසා, Pangea Bot හිස් ආසනය ගත්තේය. ආරම්භ කිරීමට පණිවිඩයක් යවන්න.",
+    "seatInviteTitle": "{course} හා එක්වන්න",
+    "seatInviteYourCourse": "ඔබේ පාඨමාලාව",
+    "seatInviteEmailHint": "ඔබේ පන්තියට ඔබව සොයා ගැනීමට {email} භාවිතා කරන්න.",
+    "seatInviteClaimed": "ඔබ {course} හි සිටී.",
+    "seatInvitePendingApproval": "ඔබේ ගුරුවරයාගේ අනුමැතිය සඳහා රැඳී සිටින්න.",
+    "seatInviteDenied": "ඔබේ ගුරුවරයා මෙම ගිණුම පාඨමාලාව සඳහා අනුමත කළේ නැත. ඔබට තවමත් පන්ති කේතය භාවිතා කළ හැක.",
+    "yourTeacher": "ඔබේ ගුරුවරයා",
+    "seatInviteNotLive": "මෙම ආරාධනාව තවදුරටත් ලබා ගත නොහැක. ඔබට තවමත් පන්ති කේතය භාවිතා කළ හැක.",
+    "seatInviteAlreadyClaimed": "ඔබ දැනටමත් වෙනත් ආරාධනාවකින් මෙම පාඨමාලාවට සම්බන්ධ වී ඇත.",
+    "seatInviteFailed": "අපට ආරාධනාව විවෘත කිරීමට නොහැකි විය. කරුණාකර පසුව නැවත උත්සාහ කරන්න."
 }

@@ -10097,5 +10097,15 @@
     "playWithBotNowMessage": "Kukaan ei ole vielä liittynyt. Pangea Bot voi ottaa avoimen paikan nyt, tai voit jatkaa odottamista.",
     "keepWaiting": "Jatka odottamista",
     "botTookSeatAfterAnHour": "Tämä istunto oli auki tunnin, joten Pangea Bot otti avoimen paikan.",
-    "botTookSeatAfterADay": "Tämä istunto oli auki yli päivän, joten Pangea Bot otti avoimen paikan. Aloita lähettämällä viesti."
+    "botTookSeatAfterADay": "Tämä istunto oli auki yli päivän, joten Pangea Bot otti avoimen paikan. Aloita lähettämällä viesti.",
+    "seatInviteTitle": "Liity kurssille {course}",
+    "seatInviteYourCourse": "kurssillesi",
+    "seatInviteEmailHint": "Käytä sähköpostiosoitetta {email}, jotta luokkasi löytää sinut.",
+    "seatInviteClaimed": "Olet kurssilla {course}.",
+    "seatInvitePendingApproval": "Odotetaan opettajan hyväksyntää.",
+    "seatInviteDenied": "Opettajasi ei hyväksynyt tätä tiliä kurssille. Voit silti käyttää luokkakoodia.",
+    "yourTeacher": "Opettajasi",
+    "seatInviteNotLive": "Tämä kutsu ei ole enää saatavilla. Voit silti käyttää luokkakoodia.",
+    "seatInviteAlreadyClaimed": "Olet jo liittynyt tälle kurssille toisella kutsulla.",
+    "seatInviteFailed": "Kutsua ei voitu avata. Yritä myöhemmin uudelleen."
 }

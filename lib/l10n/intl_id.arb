@@ -10133,5 +10133,15 @@
     "playWithBotNowMessage": "Belum ada yang bergabung. Pangea Bot bisa mengisi kursi kosong sekarang, atau Anda bisa terus menunggu.",
     "keepWaiting": "Terus menunggu",
     "botTookSeatAfterAnHour": "Sesi ini terbuka selama satu jam, jadi Pangea Bot mengambil kursi kosong.",
-    "botTookSeatAfterADay": "Sesi ini terbuka selama lebih dari sehari, jadi Pangea Bot mengambil kursi kosong. Kirim pesan untuk memulai."
+    "botTookSeatAfterADay": "Sesi ini terbuka selama lebih dari sehari, jadi Pangea Bot mengambil kursi kosong. Kirim pesan untuk memulai.",
+    "seatInviteTitle": "Gabung {course}",
+    "seatInviteYourCourse": "kursus Anda",
+    "seatInviteEmailHint": "Gunakan {email} agar kelas Anda menemukan Anda.",
+    "seatInviteClaimed": "Anda sudah masuk {course}.",
+    "seatInvitePendingApproval": "Menunggu persetujuan guru Anda.",
+    "seatInviteDenied": "Guru Anda tidak menyetujui akun ini untuk kursus. Anda masih bisa menggunakan kode kelas.",
+    "yourTeacher": "Guru Anda",
+    "seatInviteNotLive": "Undangan ini tidak lagi tersedia. Anda masih bisa menggunakan kode kelas.",
+    "seatInviteAlreadyClaimed": "Anda sudah bergabung dengan kursus ini dengan undangan lain.",
+    "seatInviteFailed": "Kami tidak dapat membuka undangan. Silakan coba lagi nanti."
 }

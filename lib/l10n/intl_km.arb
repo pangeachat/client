@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "មិនទាន់មាននរណាម្នាក់ចូលរួមនៅឡើយទេ។ Pangea Bot អាចចូលរួមឥឡូវនេះ ឬអ្នកអាចបន្តរង់ចាំ។",
     "keepWaiting": "បន្តរង់ចាំ",
     "botTookSeatAfterAnHour": "វគ្គនេះបានបើករយៈពេលមួយម៉ោង ដូច្នេះ Pangea Bot បានចូលរួម។",
-    "botTookSeatAfterADay": "វគ្គនេះបានបើករយៈពេលជាងមួយថ្ងៃ ដូច្នេះ Pangea Bot បានចូលរួម។ ផ្ញើសារដើម្បីចាប់ផ្តើម។"
+    "botTookSeatAfterADay": "វគ្គនេះបានបើករយៈពេលជាងមួយថ្ងៃ ដូច្នេះ Pangea Bot បានចូលរួម។ ផ្ញើសារដើម្បីចាប់ផ្តើម។",
+    "seatInviteTitle": "ចូលរួម {course}",
+    "seatInviteYourCourse": "វគ្គសិក្សារបស់អ្នក",
+    "seatInviteEmailHint": "ប្រើ {email} ដើម្បីឱ្យថ្នាក់របស់អ្នកស្វែងរកអ្នក។",
+    "seatInviteClaimed": "អ្នកនៅក្នុង {course}។",
+    "seatInvitePendingApproval": "កំពុងរង់ចាំគ្រូរបស់អ្នកអនុម័ត។",
+    "seatInviteDenied": "គ្រូរបស់អ្នកមិនបានអនុម័តគណនីនេះសម្រាប់វគ្គសិក្សាទេ។ អ្នកនៅតែអាចប្រើលេខកូដថ្នាក់រៀនបាន។",
+    "yourTeacher": "គ្រូរបស់អ្នក",
+    "seatInviteNotLive": "ការអញ្ជើញនេះលែងមានទៀតហើយ។ អ្នកនៅតែអាចប្រើលេខកូដថ្នាក់រៀនបាន។",
+    "seatInviteAlreadyClaimed": "អ្នកបានចូលរួមវគ្គសិក្សានេះរួចហើយជាមួយនឹងការអញ្ជើញផ្សេងទៀត។",
+    "seatInviteFailed": "យើងមិនអាចបើកការអញ្ជើញបានទេ។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។"
 }

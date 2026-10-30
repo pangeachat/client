@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Enginn hefur tekið þátt ennþá. Pangea Bot getur tekið lausa sætið núna, eða þú getur haldið áfram að bíða.",
     "keepWaiting": "Halda áfram að bíða",
     "botTookSeatAfterAnHour": "Þessi lota var opin í klukkutíma, svo Pangea Bot tók lausa sætið.",
-    "botTookSeatAfterADay": "Þessi lota var opin í yfir sólarhring, svo Pangea Bot tók lausa sætið. Sendu skilaboð til að byrja."
+    "botTookSeatAfterADay": "Þessi lota var opin í yfir sólarhring, svo Pangea Bot tók lausa sætið. Sendu skilaboð til að byrja.",
+    "seatInviteTitle": "Vertu með í {course}",
+    "seatInviteYourCourse": "námskeiðið þitt",
+    "seatInviteEmailHint": "Notaðu {email} svo bekkurinn þinn finni þig.",
+    "seatInviteClaimed": "Þú ert komin/n í {course}.",
+    "seatInvitePendingApproval": "Bíð eftir samþykki kennarans þíns.",
+    "seatInviteDenied": "Kennarinn þinn samþykkti ekki þennan reikning fyrir námskeiðið. Þú getur samt notað bekkjarkóðann.",
+    "yourTeacher": "Kennarinn þinn",
+    "seatInviteNotLive": "Þetta boð er ekki lengur í boði. Þú getur samt notað bekkjarkóðann.",
+    "seatInviteAlreadyClaimed": "Þú hefur nú þegar gengið í þetta námskeið með öðru boði.",
+    "seatInviteFailed": "Við gátum ekki opnað boðið. Vinsamlegast reyndu aftur síðar."
 }

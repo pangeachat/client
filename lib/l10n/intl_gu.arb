@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "હજી કોઈ જોડાયું નથી. Pangea Bot હમણાં ખાલી જગ્યા લઈ શકે છે, અથવા તમે રાહ જોઈ શકો છો.",
     "keepWaiting": "રાહ જોતા રહો",
     "botTookSeatAfterAnHour": "આ સત્ર એક કલાક માટે ખુલ્લું હતું, તેથી Pangea Botએ ખાલી જગ્યા લીધી.",
-    "botTookSeatAfterADay": "આ સત્ર એક દિવસથી વધુ સમય માટે ખુલ્લું હતું, તેથી Pangea Botએ ખાલી જગ્યા લીધી. શરૂ કરવા માટે સંદેશ મોકલો."
+    "botTookSeatAfterADay": "આ સત્ર એક દિવસથી વધુ સમય માટે ખુલ્લું હતું, તેથી Pangea Botએ ખાલી જગ્યા લીધી. શરૂ કરવા માટે સંદેશ મોકલો.",
+    "seatInviteTitle": "{course} માં જોડાઓ",
+    "seatInviteYourCourse": "તમારો કોર્સ",
+    "seatInviteEmailHint": "તમારો ક્લાસ તમને શોધી શકે તે માટે {email} નો ઉપયોગ કરો.",
+    "seatInviteClaimed": "તમે {course} માં છો.",
+    "seatInvitePendingApproval": "તમારા શિક્ષકની મંજૂરીની રાહ જોઈ રહ્યા છીએ.",
+    "seatInviteDenied": "તમારા શિક્ષકે આ એકાઉન્ટને કોર્સ માટે મંજૂર કર્યું નથી. તમે હજી પણ ક્લાસ કોડનો ઉપયોગ કરી શકો છો.",
+    "yourTeacher": "તમારા શિક્ષક",
+    "seatInviteNotLive": "આ આમંત્રણ હવે ઉપલબ્ધ નથી. તમે હજી પણ ક્લાસ કોડનો ઉપયોગ કરી શકો છો.",
+    "seatInviteAlreadyClaimed": "તમે પહેલાથી જ બીજા આમંત્રણ સાથે આ કોર્સમાં જોડાયા છો.",
+    "seatInviteFailed": "અમે આમંત્રણ ખોલી શક્યા નથી. કૃપા કરીને પછીથી ફરી પ્રયાસ કરો."
 }

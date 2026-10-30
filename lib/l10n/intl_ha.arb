@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Babu wanda ya shigo tukuna. Pangea Bot zai iya shiga yanzu, ko kuma za ka iya ci gaba da jira.",
     "keepWaiting": "Ci gaba da jira",
     "botTookSeatAfterAnHour": "Wannan zaman ya kasance a buɗe na awa ɗaya, don haka Pangea Bot ya shiga.",
-    "botTookSeatAfterADay": "Wannan zaman ya kasance a buɗe fiye da kwana ɗaya, don haka Pangea Bot ya shiga. Aika saƙo don farawa."
+    "botTookSeatAfterADay": "Wannan zaman ya kasance a buɗe fiye da kwana ɗaya, don haka Pangea Bot ya shiga. Aika saƙo don farawa.",
+    "seatInviteTitle": "Shiga {course}",
+    "seatInviteYourCourse": "darussanka",
+    "seatInviteEmailHint": "Yi amfani da {email} don ajinka ya same ka.",
+    "seatInviteClaimed": "Kana cikin {course}.",
+    "seatInvitePendingApproval": "Ana jiran malamin ka ya amince.",
+    "seatInviteDenied": "Malaminka bai amince da wannan asusun don darasin ba. Har yanzu za ka iya amfani da lambar aji.",
+    "yourTeacher": "Malaminka",
+    "seatInviteNotLive": "Wannan gayyatar ba ta samuwa kuma. Har yanzu za ka iya amfani da lambar aji.",
+    "seatInviteAlreadyClaimed": "Kun riga kun shiga wannan kwas ɗin da wata gayyata.",
+    "seatInviteFailed": "Ba mu iya buɗe gayyatar ba. Da fatan za a sake gwadawa daga baya."
 }

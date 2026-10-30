@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "تر اوسه هیڅوک نه دي شامل شوي. Pangea Bot اوس خالي څوکۍ نیولی شي، یا تاسو انتظار کولی شئ.",
     "keepWaiting": "انتظار وکړئ",
     "botTookSeatAfterAnHour": "دا ناسته د یو ساعت لپاره خلاصه وه، نو Pangea Bot خالي څوکۍ ونیوله.",
-    "botTookSeatAfterADay": "دا ناسته د یوې ورځې څخه زیاته خلاصه وه، نو Pangea Bot خالي څوکۍ ونیوله. د پیل کولو لپاره یو پیغام واستوئ."
+    "botTookSeatAfterADay": "دا ناسته د یوې ورځې څخه زیاته خلاصه وه، نو Pangea Bot خالي څوکۍ ونیوله. د پیل کولو لپاره یو پیغام واستوئ.",
+    "seatInviteTitle": "{course} ته ورګډ شئ",
+    "seatInviteYourCourse": "ستاسو کورس",
+    "seatInviteEmailHint": "{email} وکاروئ ترڅو ستاسو ټولګی تاسو ومومي.",
+    "seatInviteClaimed": "تاسو په {course} کې یاست.",
+    "seatInvitePendingApproval": "ستاسو د ښوونکي د تایید لپاره انتظار دی.",
+    "seatInviteDenied": "ستاسو ښوونکي دا حساب د کورس لپاره تایید نه کړ. تاسو لاهم کولی شئ د ټولګي کوډ وکاروئ.",
+    "yourTeacher": "ستاسو ښوونکی",
+    "seatInviteNotLive": "دا بلنه نور شتون نلري. تاسو لاهم کولی شئ د ټولګي کوډ وکاروئ.",
+    "seatInviteAlreadyClaimed": "تاسو دمخه دا کورس د بلې بلنې سره یوځای کړی دی.",
+    "seatInviteFailed": "موږ ونشو کولی بلنه پرانیزو. مهرباني وکړئ وروسته بیا هڅه وکړئ."
 }

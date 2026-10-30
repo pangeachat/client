@@ -75,6 +75,10 @@ class SubscriptionStatusResponse extends BaseResponse {
 
   bool get isTrialOfferable => trialEligible == true && trialClaimed != true;
 
+  /// Access from a seat a teacher or institution bought for this account.
+  bool get hasActiveSeat =>
+      entitlements.any((e) => e.isActive && e.type == SubscriptionType.seat);
+
   /// A billable entitlement whose `planId` is missing. The catalog plan is
   /// reverse-mapped from the Stripe price the CMS stored, so a paid winner
   /// without one is an anomaly (CLIENT-EMJ, #8842).

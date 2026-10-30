@@ -10977,5 +10977,15 @@
     "playWithBotNowMessage": "Ingen er kommet med endnu. Pangea Bot kan tage den ledige plads nu, eller du kan fortsætte med at vente.",
     "keepWaiting": "Fortsæt med at vente",
     "botTookSeatAfterAnHour": "Denne session var åben i en time, så Pangea Bot tog den ledige plads.",
-    "botTookSeatAfterADay": "Denne session var åben i over et døgn, så Pangea Bot tog den ledige plads. Send en besked for at starte."
+    "botTookSeatAfterADay": "Denne session var åben i over et døgn, så Pangea Bot tog den ledige plads. Send en besked for at starte.",
+    "seatInviteTitle": "Tilmeld dig {course}",
+    "seatInviteYourCourse": "dit kursus",
+    "seatInviteEmailHint": "Brug {email}, så din klasse kan finde dig.",
+    "seatInviteClaimed": "Du er med i {course}.",
+    "seatInvitePendingApproval": "Venter på din lærers godkendelse.",
+    "seatInviteDenied": "Din lærer godkendte ikke denne konto til kurset. Du kan stadig bruge klassekoden.",
+    "yourTeacher": "Din lærer",
+    "seatInviteNotLive": "Denne invitation er ikke længere tilgængelig. Du kan stadig bruge klassekoden.",
+    "seatInviteAlreadyClaimed": "Du har allerede tilmeldt dig dette kursus med en anden invitation.",
+    "seatInviteFailed": "Vi kunne ikke åbne invitationen. Prøv venligst igen senere."
 }

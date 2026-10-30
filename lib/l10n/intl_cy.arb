@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Nid oes neb wedi ymuno eto. Gall Bot Pangea gymryd y sedd wag nawr, neu gallwch barhau i aros.",
     "keepWaiting": "Parhau i aros",
     "botTookSeatAfterAnHour": "Roedd y sesiwn hon ar agor am awr, felly cymerodd Bot Pangea y sedd wag.",
-    "botTookSeatAfterADay": "Roedd y sesiwn hon ar agor am dros ddiwrnod, felly cymerodd Bot Pangea y sedd wag. Anfonwch neges i ddechrau."
+    "botTookSeatAfterADay": "Roedd y sesiwn hon ar agor am dros ddiwrnod, felly cymerodd Bot Pangea y sedd wag. Anfonwch neges i ddechrau.",
+    "seatInviteTitle": "Ymunwch â {course}",
+    "seatInviteYourCourse": "eich cwrs",
+    "seatInviteEmailHint": "Defnyddiwch {email} fel y gall eich dosbarth ddod o hyd i chi.",
+    "seatInviteClaimed": "Rydych chi yn {course}.",
+    "seatInvitePendingApproval": "Yn aros i'ch athro gymeradwyo.",
+    "seatInviteDenied": "Ni chymeradwyodd eich athro'r cyfrif hwn ar gyfer y cwrs. Gallwch barhau i ddefnyddio cod y dosbarth.",
+    "yourTeacher": "Eich athro",
+    "seatInviteNotLive": "Nid yw'r gwahoddiad hwn ar gael mwyach. Gallwch barhau i ddefnyddio cod y dosbarth.",
+    "seatInviteAlreadyClaimed": "Rydych eisoes wedi ymuno â'r cwrs hwn gyda gwahoddiad arall.",
+    "seatInviteFailed": "Ni allem agor y gwahoddiad. Ceisiwch eto yn nes ymlaen."
 }

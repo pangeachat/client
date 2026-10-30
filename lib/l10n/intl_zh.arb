@@ -10060,5 +10060,15 @@
     "playWithBotNowMessage": "还没有人加入。Pangea Bot 现在可以加入，或者您可以继续等待。",
     "keepWaiting": "继续等待",
     "botTookSeatAfterAnHour": "此会话已开放一小时，Pangea Bot 已加入。",
-    "botTookSeatAfterADay": "此会话已开放超过一天，Pangea Bot 已加入。发送消息即可开始。"
+    "botTookSeatAfterADay": "此会话已开放超过一天，Pangea Bot 已加入。发送消息即可开始。",
+    "seatInviteTitle": "加入 {course}",
+    "seatInviteYourCourse": "你的课程",
+    "seatInviteEmailHint": "使用 {email}，以便你的班级找到你。",
+    "seatInviteClaimed": "你已加入 {course}。",
+    "seatInvitePendingApproval": "正在等待你的老师批准。",
+    "seatInviteDenied": "你的老师未批准此帐户加入课程。你仍然可以使用班级代码。",
+    "yourTeacher": "你的老师",
+    "seatInviteNotLive": "此邀请不再可用。你仍然可以使用班级代码。",
+    "seatInviteAlreadyClaimed": "你已使用其他邀请加入此课程。",
+    "seatInviteFailed": "我们无法打开邀请。请稍后重试。"
 }

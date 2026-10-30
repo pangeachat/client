@@ -2,15 +2,17 @@ import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/student_invitations/pending_claims.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 
 /// The join-code box, which doubles as the **login-bounce ferry**: the
 /// workspace location a logged-out visitor opened is cached here when they
 /// are bounced to login, and re-entered by the `/` auth guard on the next
 /// logged-in landing (PAuthGaurd; routing.instructions.md § A signed-out
-/// visitor's destination). Two TTL-stamped entries ride it — the
-/// [destination] itself, and the DM invite link's pending user id
-/// ([dmInviteUserId]), which has its own consumer because it must act when
+/// visitor's destination). TTL-stamped entries ride it — the
+/// [destination] itself, the DM invite link's pending user id
+/// ([dmInviteUserId]) and a seat invitation's id ([pendingInvitation]). The
+/// last two have their own consumer in the shell because they must act when
 /// tapped logged in too.
 class SpaceCodeRepo {
   static final GetStorage _spaceStorage = GetStorage('class_storage');
@@ -147,6 +149,66 @@ class SpaceCodeRepo {
     PLocalKey.cachedDmInviteUserId,
     PLocalKey.cachedDmInviteUserIdAt,
   );
+
+  /// The seat invitation a class link carried (`?inv=<id>`), cached by the
+  /// `/` guard on every landing (PAuthGaurd.stashInvitation) and consumed
+  /// once after sign-in by the shell (PendingClaimsConsumer). Same box, same
+  /// TTL as [destination].
+  static PendingInvitation? get pendingInvitation {
+    final raw = _readFresh(
+      PLocalKey.cachedInvitation,
+      PLocalKey.cachedInvitationAt,
+    );
+    if (raw == null) return null;
+    final pending = PendingInvitation.decode(raw);
+    if (pending == null) clearPendingInvitation();
+    return pending;
+  }
+
+  static Future<void> setPendingInvitation(PendingInvitation pending) =>
+      _writeStamped(
+        PLocalKey.cachedInvitation,
+        PLocalKey.cachedInvitationAt,
+        pending.encode(),
+      );
+
+  static Future<void> clearPendingInvitation() =>
+      _clearStamped(PLocalKey.cachedInvitation, PLocalKey.cachedInvitationAt);
+
+  /// Clears the stored invitation only while it is still [invitationId], so a
+  /// newer link stored meanwhile is kept for its own open.
+  static Future<void> clearPendingInvitationIf(String invitationId) async {
+    if (pendingInvitation?.invitationId != invitationId) return;
+    await clearPendingInvitation();
+  }
+
+  /// Whether the last opened invitation went to the teacher for approval
+  /// (the account's address did not match it). Onboarding reads it, with
+  /// [pendingInvitation], so a student whose seat may still come is not
+  /// offered the free trial meanwhile (TrialInfoProvider). Written by
+  /// PendingClaimsFlow from the open's answer; same box, same TTL.
+  static bool get seatApprovalPending =>
+      _readFresh(
+        PLocalKey.seatApprovalPending,
+        PLocalKey.seatApprovalPendingAt,
+      ) !=
+      null;
+
+  static Future<void> setSeatApprovalPending(bool pending) => pending
+      ? _writeStamped(
+          PLocalKey.seatApprovalPending,
+          PLocalKey.seatApprovalPendingAt,
+          'pending',
+        )
+      : _clearStamped(
+          PLocalKey.seatApprovalPending,
+          PLocalKey.seatApprovalPendingAt,
+        );
+
+  /// Whether a seat invitation is still unsettled for this sign-in: one is
+  /// stored and not yet opened, or the opened one waits for approval.
+  static bool get seatInvitationWaiting =>
+      pendingInvitation != null || seatApprovalPending;
 
   static String? get recentCode =>
       _spaceStorage.read(PLocalKey.justInputtedCode);

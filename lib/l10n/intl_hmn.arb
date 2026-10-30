@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Tsis muaj leej twg koom dua. Pangea Bot tuaj yeem zaum tam sim no, los yog koj tuaj yeem tos ntxiv.",
     "keepWaiting": "Tos ntxiv",
     "botTookSeatAfterAnHour": "Qhov kev sib tham no qhib tau ib teev, yog li Pangea Bot tau zaum.",
-    "botTookSeatAfterADay": "Qhov kev sib tham no qhib tau ntau tshaj ib hnub, yog li Pangea Bot tau zaum. Xa lus los pib."
+    "botTookSeatAfterADay": "Qhov kev sib tham no qhib tau ntau tshaj ib hnub, yog li Pangea Bot tau zaum. Xa lus los pib.",
+    "seatInviteTitle": "Koom nrog {course}",
+    "seatInviteYourCourse": "koj chav kawm",
+    "seatInviteEmailHint": "Siv {email} kom koj chav kawm nrhiav tau koj.",
+    "seatInviteClaimed": "Koj nyob hauv {course} lawm.",
+    "seatInvitePendingApproval": "Tos koj tus xib fwb pom zoo.",
+    "seatInviteDenied": "Koj tus xib fwb tsis pom zoo tus account no rau chav kawm. Koj tseem siv tau tus lej chav kawm.",
+    "yourTeacher": "Koj tus xib fwb",
+    "seatInviteNotLive": "Daim ntawv caw no tsis muaj lawm. Koj tseem siv tau tus lej chav kawm.",
+    "seatInviteAlreadyClaimed": "Koj twb koom nrog chav kawm no lawm nrog lwm daim ntawv caw.",
+    "seatInviteFailed": "Peb qhib tsis tau daim ntawv caw. Thov sim dua tom qab."
 }

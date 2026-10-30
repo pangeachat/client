@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Kanadasu houjik faoba yaodri. Pangea Bot na houjik khongpham louba yai, nattraga nangna ngairaga leiba yai.",
     "keepWaiting": "Ngairaga leiyu",
     "botTookSeatAfterAnHour": "Seesion asi pung ama muk hangkhre, aduna Pangea Bot na khongpham lourabani.",
-    "botTookSeatAfterADay": "Seesion asi numit ama muk hangkhre, aduna Pangea Bot na khongpham lourabani. Haurunaba wahei amata thabiyu."
+    "botTookSeatAfterADay": "Seesion asi numit ama muk hangkhre, aduna Pangea Bot na khongpham lourabani. Haurunaba wahei amata thabiyu.",
+    "seatInviteTitle": "{course} da sínnaba",
+    "seatInviteYourCourse": "nanggi course",
+    "seatInviteEmailHint": "Nanggi class na nangbu phangnaba {email} sijinnau.",
+    "seatInviteClaimed": "Nang {course} da yaore.",
+    "seatInvitePendingApproval": "Nanggi oja na yaningba ngairabani.",
+    "seatInviteDenied": "Nanggi oja na class asigi damak account asibu yaningkhide. Nang class code adu sijinnaba ngaihak leppana yai.",
+    "yourTeacher": "Nanggi oja",
+    "seatInviteNotLive": "Invitation asi leplabani. Nang class code adu sijinnaba ngaihak leppana yai.",
+    "seatInviteAlreadyClaimed": "Nangna invitation amaga loinana course asida yaokhrabani.",
+    "seatInviteFailed": "Eikhoina invitation adu hangba ngamkhide. Ngaihak leiraga amuk hanna hotnaba yai."
 }

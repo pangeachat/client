@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Akukho mntu ujoyinileyo okwangoku. IPangea Bot ingathatha isihlalo esivulekileyo ngoku, okanye ungaqhubeka ulindile.",
     "keepWaiting": "Qhubeka ulindile",
     "botTookSeatAfterAnHour": "Le seshoni ibivulekile iyure, ngoko iPangea Bot ithathe isihlalo esivulekileyo.",
-    "botTookSeatAfterADay": "Le seshoni ibivulekile ngaphezu kosuku, ngoko iPangea Bot ithathe isihlalo esivulekileyo. Thumela umyalezo ukuze uqale."
+    "botTookSeatAfterADay": "Le seshoni ibivulekile ngaphezu kosuku, ngoko iPangea Bot ithathe isihlalo esivulekileyo. Thumela umyalezo ukuze uqale.",
+    "seatInviteTitle": "Joyina {course}",
+    "seatInviteYourCourse": "ikhosi yakho",
+    "seatInviteEmailHint": "Sebenzisa {email} ukuze iklasi lakho likufumane.",
+    "seatInviteClaimed": "Uku {course}.",
+    "seatInvitePendingApproval": "Lindela utitshala wakho ukuba avume.",
+    "seatInviteDenied": "Utitshala wakho akazange ayivume le akhawunti yekhosi. Usengawusebenzisa ikhowudi yeklasi.",
+    "yourTeacher": "Utitshala wakho",
+    "seatInviteNotLive": "Esi simemo asisafumaneki. Usengawusebenzisa ikhowudi yeklasi.",
+    "seatInviteAlreadyClaimed": "Sele uyijoyinile le khosi ngesinye isimemo.",
+    "seatInviteFailed": "Asikwazanga ukuvula isimemo. Nceda zama kwakhona kamva."
 }

@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "ʻAʻohe mea i hui pū mai. Hiki iā Pangea Bot ke noho i ka noho hakahaka i kēia manawa, a i ʻole hiki iā ʻoe ke hoʻomau i ke kali.",
     "keepWaiting": "E hoʻomau i ke kali",
     "botTookSeatAfterAnHour": "Ua hāmama kēia kau no hoʻokahi hola, no laila ua noho ʻo Pangea Bot i ka noho hakahaka.",
-    "botTookSeatAfterADay": "Ua hāmama kēia kau no ka ʻoi aku ma mua o hoʻokahi lā, no laila ua noho ʻo Pangea Bot i ka noho hakahaka. E hoʻouna i kahi leka e hoʻomaka."
+    "botTookSeatAfterADay": "Ua hāmama kēia kau no ka ʻoi aku ma mua o hoʻokahi lā, no laila ua noho ʻo Pangea Bot i ka noho hakahaka. E hoʻouna i kahi leka e hoʻomaka.",
+    "seatInviteTitle": "E hui pū me {course}",
+    "seatInviteYourCourse": "kāu papa",
+    "seatInviteEmailHint": "E hoʻohana iā {email} i loaʻa ʻoe i kāu papa.",
+    "seatInviteClaimed": "Aia ʻoe i loko o {course}.",
+    "seatInvitePendingApproval": "Ke kali nei i ka ʻae ʻana mai kāu kumu.",
+    "seatInviteDenied": "ʻAʻole i ʻae kāu kumu i kēia moʻokāki no ka papa. Hiki nō iā ʻoe ke hoʻohana i ke code papa.",
+    "yourTeacher": "Kāu kumu",
+    "seatInviteNotLive": "ʻAʻole i loaʻa hou kēia kono. Hiki nō iā ʻoe ke hoʻohana i ke code papa.",
+    "seatInviteAlreadyClaimed": "Ua hui pū ʻoe i kēia papa me kekahi kono ʻē aʻe.",
+    "seatInviteFailed": "ʻAʻole hiki iā mākou ke wehe i ke kono. E ʻoluʻolu e hoʻāʻo hou ma hope."
 }

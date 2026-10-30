@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Tsy mbola nisy niditra. Afaka maka ny toerana malalaka izao ny Pangea Bot, na afaka miandry ianao.",
     "keepWaiting": "Manohy miandry",
     "botTookSeatAfterAnHour": "Adiny iray no nisokafan'ity fivoriana ity, ka nalain'ny Pangea Bot ny toerana malalaka.",
-    "botTookSeatAfterADay": "Nisokatra nandritra ny iray andro mahery ity fivoriana ity, ka nalain'ny Pangea Bot ny toerana malalaka. Mandefasa hafatra hanombohana."
+    "botTookSeatAfterADay": "Nisokatra nandritra ny iray andro mahery ity fivoriana ity, ka nalain'ny Pangea Bot ny toerana malalaka. Mandefasa hafatra hanombohana.",
+    "seatInviteTitle": "Midira ao amin'ny {course}",
+    "seatInviteYourCourse": "ny taranjao",
+    "seatInviteEmailHint": "Ampiasao ny {email} mba hahitanao ny kilasinao.",
+    "seatInviteClaimed": "Tafiditra ao amin'ny {course} ianao.",
+    "seatInvitePendingApproval": "Miandry ny fankatoavan'ny mpampianatra anao.",
+    "seatInviteDenied": "Tsy nankatoavin'ny mpampianatra anao ity kaonty ity ho an'ny taranja. Mbola afaka mampiasa ny kaody kilasy ianao.",
+    "yourTeacher": "Ny mpampianatra anao",
+    "seatInviteNotLive": "Tsy misy intsony ity fanasana ity. Mbola afaka mampiasa ny kaody kilasy ianao.",
+    "seatInviteAlreadyClaimed": "Efa niditra tamin'ity taranja ity ianao tamin'ny fanasana hafa.",
+    "seatInviteFailed": "Tsy afaka nanokatra ny fanasana izahay. Andramo indray azafady any aoriana."
 }

@@ -10358,5 +10358,15 @@
     "playWithBotNowMessage": "Henüz kimse katılmadı. Pangea Bot şimdi boş koltuğu alabilir veya beklemeye devam edebilirsiniz.",
     "keepWaiting": "Beklemeye devam et",
     "botTookSeatAfterAnHour": "Bu oturum bir saat boyunca açıktı, bu yüzden Pangea Bot boş koltuğu aldı.",
-    "botTookSeatAfterADay": "Bu oturum bir günden fazla açıktı, bu yüzden Pangea Bot boş koltuğu aldı. Başlamak için bir mesaj gönderin."
+    "botTookSeatAfterADay": "Bu oturum bir günden fazla açıktı, bu yüzden Pangea Bot boş koltuğu aldı. Başlamak için bir mesaj gönderin.",
+    "seatInviteTitle": "{course} Katıl",
+    "seatInviteYourCourse": "kursunuz",
+    "seatInviteEmailHint": "Sınıfınızın sizi bulması için {email} kullanın.",
+    "seatInviteClaimed": "{course} içindesiniz.",
+    "seatInvitePendingApproval": "Öğretmeninizin onaylamasını bekliyor.",
+    "seatInviteDenied": "Öğretmeniniz bu hesabı kurs için onaylamadı. Yine de sınıf kodunu kullanabilirsiniz.",
+    "yourTeacher": "Öğretmeniniz",
+    "seatInviteNotLive": "Bu davetiye artık mevcut değil. Yine de sınıf kodunu kullanabilirsiniz.",
+    "seatInviteAlreadyClaimed": "Bu kursa başka bir davetiye ile zaten katıldınız.",
+    "seatInviteFailed": "Davetiyeyi açamadık. Lütfen daha sonra tekrar deneyin."
 }

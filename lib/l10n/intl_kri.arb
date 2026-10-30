@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Nɔbɔdi nɔ jɔyn yet. Pangea Bot kin tek di ples naw, ɔ yu kin kɔntinyu fɔ wet.",
     "keepWaiting": "Kɔntinyu fɔ wet",
     "botTookSeatAfterAnHour": "Dis seshɔn bin opin fɔ wan awa, so Pangea Bot tek di ples we bin fri.",
-    "botTookSeatAfterADay": "Dis seshɔn bin opin fɔ pas wan de, so Pangea Bot tek di ples we bin fri. Send mɛsej fɔ stat."
+    "botTookSeatAfterADay": "Dis seshɔn bin opin fɔ pas wan de, so Pangea Bot tek di ples we bin fri. Send mɛsej fɔ stat.",
+    "seatInviteTitle": "Jɔyn {course}",
+    "seatInviteYourCourse": "yu kɔs",
+    "seatInviteEmailHint": "Yuz {email} so dat yu klas go fɛn yu.",
+    "seatInviteClaimed": "Yu de insay {course}.",
+    "seatInvitePendingApproval": "De wet fɔ yu ticha fɔ agry.",
+    "seatInviteDenied": "Yu ticha nɔ agry dis akaunt fɔ di kɔs. Yu stil go yuz di klas kod.",
+    "yourTeacher": "Yu ticha",
+    "seatInviteNotLive": "Dis invitɛshɔn nɔ de igen. Yu stil go yuz di klas kod.",
+    "seatInviteAlreadyClaimed": "Yu dɔn jɔyn dis kɔs wit ɔda invitɛshɔn.",
+    "seatInviteFailed": "Wi nɔ ebul fɔ ɔpen di invitɛshɔn. Plis tray bak leta."
 }

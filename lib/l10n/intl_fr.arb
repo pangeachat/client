@@ -10412,5 +10412,15 @@
     "playWithBotNowMessage": "Personne n'a encore rejoint. Le bot Pangea peut prendre la place libre maintenant, ou vous pouvez continuer à attendre.",
     "keepWaiting": "Continuer à attendre",
     "botTookSeatAfterAnHour": "Cette session est restée ouverte pendant une heure, alors le bot Pangea a pris la place libre.",
-    "botTookSeatAfterADay": "Cette session est restée ouverte pendant plus d'une journée, alors le bot Pangea a pris la place libre. Envoyez un message pour commencer."
+    "botTookSeatAfterADay": "Cette session est restée ouverte pendant plus d'une journée, alors le bot Pangea a pris la place libre. Envoyez un message pour commencer.",
+    "seatInviteTitle": "Rejoindre {course}",
+    "seatInviteYourCourse": "votre cours",
+    "seatInviteEmailHint": "Utilisez {email} pour que votre classe vous trouve.",
+    "seatInviteClaimed": "Vous êtes dans {course}.",
+    "seatInvitePendingApproval": "En attente de l'approbation de votre professeur.",
+    "seatInviteDenied": "Votre professeur n'a pas approuvé ce compte pour le cours. Vous pouvez toujours utiliser le code de la classe.",
+    "yourTeacher": "Votre professeur",
+    "seatInviteNotLive": "Cette invitation n'est plus disponible. Vous pouvez toujours utiliser le code de la classe.",
+    "seatInviteAlreadyClaimed": "Vous avez déjà rejoint ce cours avec une autre invitation.",
+    "seatInviteFailed": "Nous n'avons pas pu ouvrir l'invitation. Veuillez réessayer plus tard."
 }

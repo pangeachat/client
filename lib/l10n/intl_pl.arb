@@ -10145,5 +10145,15 @@
     "playWithBotNowMessage": "Nikt jeszcze nie dołączył. Pangea Bot może zająć wolne miejsce teraz, albo możesz poczekać.",
     "keepWaiting": "Czekaj dalej",
     "botTookSeatAfterAnHour": "Ta sesja była otwarta przez godzinę, więc Pangea Bot zajął wolne miejsce.",
-    "botTookSeatAfterADay": "Ta sesja była otwarta przez ponad dzień, więc Pangea Bot zajął wolne miejsce. Wyślij wiadomość, aby rozpocząć."
+    "botTookSeatAfterADay": "Ta sesja była otwarta przez ponad dzień, więc Pangea Bot zajął wolne miejsce. Wyślij wiadomość, aby rozpocząć.",
+    "seatInviteTitle": "Dołącz do {course}",
+    "seatInviteYourCourse": "Twój kurs",
+    "seatInviteEmailHint": "Użyj adresu {email}, aby Twoja klasa Cię znalazła.",
+    "seatInviteClaimed": "Jesteś w {course}.",
+    "seatInvitePendingApproval": "Oczekiwanie na zatwierdzenie przez nauczyciela.",
+    "seatInviteDenied": "Twój nauczyciel nie zatwierdził tego konta dla kursu. Nadal możesz użyć kodu klasy.",
+    "yourTeacher": "Twój nauczyciel",
+    "seatInviteNotLive": "To zaproszenie jest już niedostępne. Nadal możesz użyć kodu klasy.",
+    "seatInviteAlreadyClaimed": "Już dołączyłeś do tego kursu z innym zaproszeniem.",
+    "seatInviteFailed": "Nie udało nam się otworzyć zaproszenia. Spróbuj ponownie później."
 }

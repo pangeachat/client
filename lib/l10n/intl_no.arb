@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Ingen har blitt med ennå. Pangea-boten kan ta den ledige plassen nå, eller du kan fortsette å vente.",
     "keepWaiting": "Fortsett å vente",
     "botTookSeatAfterAnHour": "Denne økten var åpen i en time, så Pangea-boten tok den ledige plassen.",
-    "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea-boten tok den ledige plassen. Send en melding for å starte."
+    "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea-boten tok den ledige plassen. Send en melding for å starte.",
+    "seatInviteTitle": "Bli med i {course}",
+    "seatInviteYourCourse": "kurset ditt",
+    "seatInviteEmailHint": "Bruk {email} slik at klassen din finner deg.",
+    "seatInviteClaimed": "Du er med i {course}.",
+    "seatInvitePendingApproval": "Venter på godkjenning fra læreren din.",
+    "seatInviteDenied": "Læreren din godkjente ikke denne kontoen for kurset. Du kan fortsatt bruke klassekoden.",
+    "yourTeacher": "Læreren din",
+    "seatInviteNotLive": "Denne invitasjonen er ikke lenger tilgjengelig. Du kan fortsatt bruke klassekoden.",
+    "seatInviteAlreadyClaimed": "Du har allerede blitt med i dette kurset med en annen invitasjon.",
+    "seatInviteFailed": "Vi kunne ikke åpne invitasjonen. Vennligst prøv igjen senere."
 }

@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "እስካሁን ማንም አልተቀላቀለም። ፓንጋያ ቦት አሁን ያለውን ክፍት ቦታ ሊይዝ ይችላል፣ ወይም መጠበቅ ይችላሉ።",
     "keepWaiting": "መጠበቅ ይቀጥሉ",
     "botTookSeatAfterAnHour": "ይህ ክፍለ ጊዜ ለአንድ ሰዓት ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ።",
-    "botTookSeatAfterADay": "ይህ ክፍለ ጊዜ ከአንድ ቀን በላይ ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ። ለመጀመር መልእክት ይላኩ።"
+    "botTookSeatAfterADay": "ይህ ክፍለ ጊዜ ከአንድ ቀን በላይ ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ። ለመጀመር መልእክት ይላኩ።",
+    "seatInviteTitle": "{course}ን ይቀላቀሉ",
+    "seatInviteYourCourse": "የእርስዎ ኮርስ",
+    "seatInviteEmailHint": "ክፍልዎ እርስዎን እንዲያገኝ {email}ን ይጠቀሙ።",
+    "seatInviteClaimed": "በ{course} ውስጥ ነዎት።",
+    "seatInvitePendingApproval": "መምህርዎ እንዲያጸድቁ በመጠበቅ ላይ።",
+    "seatInviteDenied": "መምህርዎ ይህንን አካውንት ለኮርሱ አላጸደቁትም። አሁንም የክፍል ኮዱን መጠቀም ይችላሉ።",
+    "yourTeacher": "የእርስዎ መምህር",
+    "seatInviteNotLive": "ይህ ግብዣ ከእንግዲህ አይገኝም። አሁንም የክፍል ኮዱን መጠቀም ይችላሉ።",
+    "seatInviteAlreadyClaimed": "ይህን ኮርስ በሌላ ግብዣ አስቀድመው ተቀላቅለዋል።",
+    "seatInviteFailed": "ግብዣውን መክፈት አልቻልንም። እባክዎ ቆይተው እንደገና ይሞክሩ።"
 }

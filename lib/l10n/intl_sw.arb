@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Hakuna aliyejiunga bado. Pangea Bot anaweza kuchukua nafasi iliyo wazi sasa, au unaweza kuendelea kusubiri.",
     "keepWaiting": "Endelea kusubiri",
     "botTookSeatAfterAnHour": "Kipindi hiki kilikuwa wazi kwa saa moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi.",
-    "botTookSeatAfterADay": "Kipindi hiki kilikuwa wazi kwa zaidi ya siku moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi. Tuma ujumbe ili kuanza."
+    "botTookSeatAfterADay": "Kipindi hiki kilikuwa wazi kwa zaidi ya siku moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi. Tuma ujumbe ili kuanza.",
+    "seatInviteTitle": "Jiunge na {course}",
+    "seatInviteYourCourse": "kozi yako",
+    "seatInviteEmailHint": "Tumia {email} ili darasa lako likupate.",
+    "seatInviteClaimed": "Uko katika {course}.",
+    "seatInvitePendingApproval": "Unasubiri mwalimu wako akubali.",
+    "seatInviteDenied": "Mwalimu wako hakukubali akaunti hii kwa kozi. Bado unaweza kutumia msimbo wa darasa.",
+    "yourTeacher": "Mwalimu wako",
+    "seatInviteNotLive": "Mwaliko huu haupatikani tena. Bado unaweza kutumia msimbo wa darasa.",
+    "seatInviteAlreadyClaimed": "Tayari umejiunga na kozi hii kwa mwaliko mwingine.",
+    "seatInviteFailed": "Hatukuweza kufungua mwaliko. Tafadhali jaribu tena baadaye."
 }

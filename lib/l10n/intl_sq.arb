@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Askush nuk është bashkuar ende. Pangea Bot mund të zërë vendin e lirë tani, ose mund të vazhdosh të presësh.",
     "keepWaiting": "Vazhdo të presësh",
     "botTookSeatAfterAnHour": "Kjo seancë ishte e hapur për një orë, kështu që Pangea Bot zuri vendin e lirë.",
-    "botTookSeatAfterADay": "Kjo seancë ishte e hapur për më shumë se një ditë, kështu që Pangea Bot zuri vendin e lirë. Dërgo një mesazh për të filluar."
+    "botTookSeatAfterADay": "Kjo seancë ishte e hapur për më shumë se një ditë, kështu që Pangea Bot zuri vendin e lirë. Dërgo një mesazh për të filluar.",
+    "seatInviteTitle": "Bashkohuni me {course}",
+    "seatInviteYourCourse": "kursin tuaj",
+    "seatInviteEmailHint": "Përdorni {email} në mënyrë që klasa juaj t'ju gjejë.",
+    "seatInviteClaimed": "Jeni në {course}.",
+    "seatInvitePendingApproval": "Po presim që mësuesi juaj të miratojë.",
+    "seatInviteDenied": "Mësuesi juaj nuk e miratoi këtë llogari për kursin. Mund të përdorni ende kodin e klasës.",
+    "yourTeacher": "Mësuesi juaj",
+    "seatInviteNotLive": "Kjo ftesë nuk është më e disponueshme. Mund të përdorni ende kodin e klasës.",
+    "seatInviteAlreadyClaimed": "Jeni bashkuar tashmë me këtë kurs me një ftesë tjetër.",
+    "seatInviteFailed": "Nuk mundëm ta hapnim ftesën. Ju lutemi provoni përsëri më vonë."
 }

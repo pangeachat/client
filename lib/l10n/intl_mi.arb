@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Kāore anō kia uru mai tētahi. Ka taea e Pangea Bot te tango i te tūru wātea ināianei, ka taea rānei e koe te tatari tonu.",
     "keepWaiting": "Me tatari tonu",
     "botTookSeatAfterAnHour": "I wātea tēnei hui mō te hāora, nō reira i tangohia e Pangea Bot te tūru wātea.",
-    "botTookSeatAfterADay": "I wātea tēnei hui mō te rā kotahi, nō reira i tangohia e Pangea Bot te tūru wātea. Tukuna he karere kia tīmata ai."
+    "botTookSeatAfterADay": "I wātea tēnei hui mō te rā kotahi, nō reira i tangohia e Pangea Bot te tūru wātea. Tukuna he karere kia tīmata ai.",
+    "seatInviteTitle": "Hono atu ki {course}",
+    "seatInviteYourCourse": "tō akoranga",
+    "seatInviteEmailHint": "Whakamahia {email} kia kitea ai koe e tō akomanga.",
+    "seatInviteClaimed": "Kua uru koe ki {course}.",
+    "seatInvitePendingApproval": "E tatari ana kia whakaaetia e tō kaiako.",
+    "seatInviteDenied": "Kāore tō kaiako i whakaae ki tēnei pūkete mō te akoranga. Ka taea tonu e koe te whakamahi i te waehere akomanga.",
+    "yourTeacher": "Tō kaiako",
+    "seatInviteNotLive": "Kāore tēnei pōwhiri i te wātea ināianei. Ka taea tonu e koe te whakamahi i te waehere akomanga.",
+    "seatInviteAlreadyClaimed": "Kua uru kē koe ki tēnei akoranga mā tētahi atu pōwhiri.",
+    "seatInviteFailed": "Kāore i taea e mātou te whakatuwhera i te pōwhiri. Nō reira, tēnā koa, me ngana anō ā muri ake nei."
 }

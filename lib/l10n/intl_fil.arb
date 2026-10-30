@@ -10917,5 +10917,15 @@
     "playWithBotNowMessage": "Wala pang sumasali. Puwedeng umupo si Pangea Bot sa bakanteng upuan ngayon, o puwede kang maghintay pa.",
     "keepWaiting": "Maghintay pa",
     "botTookSeatAfterAnHour": "Isang oras nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan.",
-    "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula."
+    "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula.",
+    "seatInviteTitle": "Sumali sa {course}",
+    "seatInviteYourCourse": "ang iyong kurso",
+    "seatInviteEmailHint": "Gamitin ang {email} para mahanap ka ng iyong klase.",
+    "seatInviteClaimed": "Nasa {course} ka na.",
+    "seatInvitePendingApproval": "Naghihintay ng pag-apruba ng iyong guro.",
+    "seatInviteDenied": "Hindi inaprubahan ng iyong guro ang account na ito para sa kurso. Maaari mo pa ring gamitin ang class code.",
+    "yourTeacher": "Ang iyong guro",
+    "seatInviteNotLive": "Hindi na available ang imbitasyong ito. Maaari mo pa ring gamitin ang class code.",
+    "seatInviteAlreadyClaimed": "Nakapasok ka na sa kursong ito gamit ang isa pang imbitasyon.",
+    "seatInviteFailed": "Hindi namin mabuksan ang imbitasyon. Pakisubukang muli sa ibang pagkakataon."
 }

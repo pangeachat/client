@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Cha tàinig duine a-steach fhathast. Faodaidh Pangea Bot an cathair fhosgailte a ghabhail a-nis, no faodaidh tu cumail a' feitheamh.",
     "keepWaiting": "Cùm a' feitheamh",
     "botTookSeatAfterAnHour": "Bha an seisean seo fosgailte airson uair a thìde, agus mar sin ghabh Pangea Bot an cathair fhosgailte.",
-    "botTookSeatAfterADay": "Bha an seisean seo fosgailte airson còrr is latha, agus mar sin ghabh Pangea Bot an cathair fhosgailte. Cuir teachdaireachd gus tòiseachadh."
+    "botTookSeatAfterADay": "Bha an seisean seo fosgailte airson còrr is latha, agus mar sin ghabh Pangea Bot an cathair fhosgailte. Cuir teachdaireachd gus tòiseachadh.",
+    "seatInviteTitle": "Thig a-steach do {course}",
+    "seatInviteYourCourse": "do chùrsa",
+    "seatInviteEmailHint": "Cleachd {email} gus am faigh do chlas thu.",
+    "seatInviteClaimed": "Tha thu ann an {course}.",
+    "seatInvitePendingApproval": "A' feitheamh ri do thidsear cead a thoirt seachad.",
+    "seatInviteDenied": "Cha do dh'aontaich do thidsear an cunntas seo airson a' chùrsa. Faodaidh tu an còd-clas a chleachdadh fhathast.",
+    "yourTeacher": "Do thidsear",
+    "seatInviteNotLive": "Chan eil an cuireadh seo ri fhaighinn tuilleadh. Faodaidh tu an còd-clas a chleachdadh fhathast.",
+    "seatInviteAlreadyClaimed": "Tha thu air a dhol a-steach don chùrsa seo mu thràth le cuireadh eile.",
+    "seatInviteFailed": "Cha b' urrainn dhuinn an cuireadh fhosgladh. Feuch ris a-rithist nas fhaide air adhart."
 }

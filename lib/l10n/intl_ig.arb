@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Ọ dịghị onye esonyela. Pangea Bot nwere ike ịnọ n'oche tọgbọrọ chakoo ugbu a, ma ọ bụ ị nwere ike ịnọgide na-eche.",
     "keepWaiting": "Nọgide na-eche",
     "botTookSeatAfterAnHour": "Nzukọ a mepere otu awa, yabụ Pangea Bot nọrọ n'oche tọgbọrọ chakoo.",
-    "botTookSeatAfterADay": "Nzukọ a mepere ihe karịrị otu ụbọchị, yabụ Pangea Bot nọrọ n'oche tọgbọrọ chakoo. Zipụ ozi ka ịmalite."
+    "botTookSeatAfterADay": "Nzukọ a mepere ihe karịrị otu ụbọchị, yabụ Pangea Bot nọrọ n'oche tọgbọrọ chakoo. Zipụ ozi ka ịmalite.",
+    "seatInviteTitle": "Soro {course}",
+    "seatInviteYourCourse": "ọmụmụ ihe gị",
+    "seatInviteEmailHint": "Jiri {email} ka klaasị gị chọta gị.",
+    "seatInviteClaimed": "Ị nọ na {course}.",
+    "seatInvitePendingApproval": "Na-eche ka onye nkuzi gị kwado.",
+    "seatInviteDenied": "Onye nkuzi gị ekwadoghị akaụntụ a maka ọmụmụ ihe ahụ. Ị ka nwere ike iji koodu klaasị ahụ.",
+    "yourTeacher": "Onye nkuzi gị",
+    "seatInviteNotLive": "Ọkpụkpọ òkù a adịkwaghị. Ị ka nwere ike iji koodu klaasị ahụ.",
+    "seatInviteAlreadyClaimed": "Ị sonyelarị ọmụmụ ihe a site na ọkpụkpọ òkù ọzọ.",
+    "seatInviteFailed": "Anyị enweghị ike imeghe ọkpụkpọ òkù ahụ. Biko nwaa ọzọ ma emechaa."
 }

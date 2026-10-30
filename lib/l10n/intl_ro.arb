@@ -10789,5 +10789,15 @@
     "playWithBotNowMessage": "Nimeni nu s-a alăturat încă. Pangea Bot poate ocupa locul liber acum, sau poți continua să aștepți.",
     "keepWaiting": "Continuă să aștepți",
     "botTookSeatAfterAnHour": "Această sesiune a fost deschisă timp de o oră, așa că Pangea Bot a ocupat locul liber.",
-    "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe."
+    "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe.",
+    "seatInviteTitle": "Alătură-te la {course}",
+    "seatInviteYourCourse": "cursul tău",
+    "seatInviteEmailHint": "Folosește {email} pentru ca clasa ta să te găsească.",
+    "seatInviteClaimed": "Ești în {course}.",
+    "seatInvitePendingApproval": "Așteptăm aprobarea profesorului tău.",
+    "seatInviteDenied": "Profesorul tău nu a aprobat acest cont pentru curs. Poți folosi în continuare codul clasei.",
+    "yourTeacher": "Profesorul tău",
+    "seatInviteNotLive": "Această invitație nu mai este disponibilă. Poți folosi în continuare codul clasei.",
+    "seatInviteAlreadyClaimed": "Te-ai alăturat deja acestui curs cu o altă invitație.",
+    "seatInviteFailed": "Nu am putut deschide invitația. Te rugăm să încerci din nou mai târziu."
 }

@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Nach keen huet matgemaach. De Pangea Bot kann elo de fräie Sëtz huelen, oder Dir kënnt weider waarden.",
     "keepWaiting": "Weider waarden",
     "botTookSeatAfterAnHour": "Dës Sessioun war eng Stonn laang op, dofir huet de Pangea Bot de fräie Sëtz geholl.",
-    "botTookSeatAfterADay": "Dës Sessioun war iwwer een Dag laang op, dofir huet de Pangea Bot de fräie Sëtz geholl. Schéckt eng Noriicht fir unzefänken."
+    "botTookSeatAfterADay": "Dës Sessioun war iwwer een Dag laang op, dofir huet de Pangea Bot de fräie Sëtz geholl. Schéckt eng Noriicht fir unzefänken.",
+    "seatInviteTitle": "Maach mat bei {course}",
+    "seatInviteYourCourse": "däi Cours",
+    "seatInviteEmailHint": "Benotz {email} fir dass deng Klass dech fënnt.",
+    "seatInviteClaimed": "Du bass am Cours {course}.",
+    "seatInvitePendingApproval": "Waarden op d'Zoustëmmung vun dengem Enseignant.",
+    "seatInviteDenied": "Däin Enseignant huet dëse Kont net fir de Cours guttgeheescht. Du kanns ëmmer nach de Klassencode benotzen.",
+    "yourTeacher": "Däin Enseignant",
+    "seatInviteNotLive": "Dës Invitatioun ass net méi disponibel. Du kanns ëmmer nach de Klassencode benotzen.",
+    "seatInviteAlreadyClaimed": "Du bass schonn mat enger anerer Invitatioun an dëse Cours bäigetrueden.",
+    "seatInviteFailed": "Mir konnten d'Invitatioun net opmaachen. Probéier w.e.g. méi spéit nach eng Kéier."
 }
