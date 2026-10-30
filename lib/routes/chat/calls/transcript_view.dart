@@ -499,9 +499,9 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     final speaker = half.senderId;
     if (!_autoFilled.add(speaker)) return;
     _onDemandInFlight.add(speaker);
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => unawaited(_transcribeHalf(speaker, ask: false)),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) unawaited(_transcribeHalf(speaker, ask: false));
+    });
   }
 
   /// Whether this device has not finished sending this call yet. The room
