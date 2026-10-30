@@ -11,8 +11,8 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Read-only session page for an activity the backend no longer has — the
-/// removed-activity fallback ladder in activity-session.instructions.md. With
-/// a plan recovered from legacy room state the page renders fully (roles, goal
+/// removed-activity fallback ladder in
+/// activity-start-page.instructions.md. With a plan recovered from legacy room state the page renders fully (roles, goal
 /// labels, media); with none the view falls back to the archived body built
 /// from role/goal room state. Either way nothing can be joined, selected, or
 /// written — the footer shows the "no longer supported" notice and, to a

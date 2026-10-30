@@ -162,7 +162,8 @@ class ChatListItem extends StatelessWidget {
             // corner when the learner is replaying an activity they've
             // saved. The course avatar on it is whatever [space] the caller
             // passes; the app-wide list passes the last listing course it
-            // found (activities.instructions.md, "Sessions in Chats"). Finished
+            // found (activities.instructions.md, "Activity session chat list
+            // rows"). Finished
             // sessions never reach a list (isHiddenRoom), so every activity
             // row here is a live one. A listed room is never saved itself,
             // so a saved session of its activity is another room's.

@@ -132,7 +132,9 @@ abstract class ActivitySheetCtaHeight {
   }
 
   /// The cavity handle, the start page's app bar, and its info row: what the
-  /// minimized sheet holds above the CTA area.
+  /// minimized sheet holds above the CTA area. An estimate, so a sliver of
+  /// the content may peek below the buttons — preferred to snapping the sheet
+  /// to a content boundary.
   static const double _aboveCta = 144.0;
 
   /// The tallest minimized rest, so a very tall CTA area (a very large text

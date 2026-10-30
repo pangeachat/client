@@ -1,68 +1,64 @@
 ---
 applyTo: "lib/routes/chat/activity_sessions/**,lib/routes/world/**,lib/widgets/layouts/mobile_nav_widget.dart,lib/widgets/layouts/workspace_shell.dart"
-description: "The activity start page's layout and interaction: the mobile grow-before-scroll sheet, the header + info row, the CTA row, the suggested-vocab word cards, and how the page owns its container over the nav rail and analytics bar."
+description: "Each state of the activity start page, and how its sheet sizes, moves and owns its container."
 ---
 
 # Activity Start Page
 
-The start page is the panel a learner opens by tapping an activity — from a map pin or from a course plan. Its lifecycle (which step it shows, driven by the room) is [activities.instructions.md](activities.instructions.md#the-start-page-mirrors-the-room); this doc owns only its **layout and gestures**: how it fills its container, what the top of it shows, and how the buttons lay out.
+## Purpose
 
-One widget renders in two hosts, and the platform difference lives in the host, not the page: on narrow screens it is the swipe-expandable sheet inside the mobile nav container ([`MobileNavWidget`](../../lib/widgets/layouts/mobile_nav_widget.dart)); on wide screens it is a floating card beside the map ([`WorkspaceLeftPanel`](../../lib/routes/world/left_panel/workspace_left_panel.dart) → [`PanelCard`](../../lib/routes/world/panel_card.dart)). Both mount [`ActivitySessionStartPage`](../../lib/routes/chat/activity_sessions/activity_session_start_page.dart) via [`LeftPanelActivityDetailsSubpage`](../../lib/routes/world/activity_detail_panel.dart). Prominence comes entirely from the container behavior below — the page owns its rounded container and, at full size, reaches over the chrome around it. It gets **no** added scrim, extra shadow, border, or accent.
+What a learner sees on tapping an activity, in every state. Its job is to start a conversation in as few choices as possible. What it shows follows the session room.
 
-## The sheet grows before it scrolls
+## The experience
 
-On mobile the sheet has **two visible stops**: a **minimized** rest and **full**. The mid-level was dropped — its only extra over minimized was a sliver of the media, which isn't worth a stop. Minimized shows just the header, info row, and CTA (no media, description, or roles); full is the whole plan. Dragging up (or tapping the minimized sheet's dead space) opens full; dragging down past minimized dismisses the sheet (the Google-Maps pull-away). Under the hood this reuses the cavity's `half` stop, sized to the minimized height via `preferredCavityHeightPx`, so there is no taller stop between it and `full` ([`NavCavityHeight`](../../lib/widgets/layouts/mobile_nav_widget.dart)); `collapsed` remains the drag-down dismissal. Heights are approximate, so a sliver may peek — acceptable, and preferable to snapping to a content boundary. The minimized rest grows to fit whatever buttons the page is showing, such as a two-player activity's tiles or stacked buttons, so they are never cut off at the bottom.
+1. A sheet opens over the map (a card on the web).
+2. The learner chooses how to play, picks a role, and waits for the seats.
+3. Afterwards, Completed lists their sessions.
 
-The sheet **never remembers a manual resize**: it always re-opens at the minimized rest, so a maximized activity that is closed and reopened comes back minimized (`rememberHeight` is off for the activity cavity in [`workspace_shell.dart`](../../lib/widgets/layouts/workspace_shell.dart)).
+## The sheet and its container
 
-The reason this needs **no** scroll-vs-grow coordination: the minimized view has no scrollable content at all. A `LayoutBuilder` in the start page drops the media/description/roles below a height threshold (`kActivityCompactMaxHeight`), exactly as the course card's compact peek does ([`_kCompactCardMaxHeight`](../../lib/routes/chat/chat_details/space_details_content.dart)) — so at minimized an upward drag simply grows the sheet (nothing competes for the gesture), and the content mounts and scrolls once the sheet is full. Tap-to-expand rides the same `tapBodyExpands` path the course peek uses.
+- On a phone it rests minimized, the top rows and buttons only, grown to fit them; drag up or tap for full, down to close. It always reopens minimized.
+- It owns its rounded container, hiding the nav icons until it closes and, at full, the analytics bar, with no added scrim, shadow, border or accent. Even at full it stays inset: a map panel, not a full-screen chat.
 
-## Top row and info row
+## The top of the page
 
-The top of the page is two rows, present at every size (they, with the CTA, are what the minimized stop is sized around):
-
-- **Top row** — the activity **title**, the **focus** button, and a **close (X)** in the top-right. Focus zooms and pans the map all the way to this activity's pin — it already exists ([`activity_sessions_start_view.dart`](../../lib/routes/chat/activity_sessions/activity_sessions_start_view.dart) → [`MapCameraFocusRequests`](../../lib/routes/world/map_context.dart)); only its icon changed. The X dismisses the page (see [Owning the container](#owning-the-container-nav-rail-and-analytics-bar)).
-- **Info row** — creator **avatar** and **name**, the activity **L2**, **level**, **participant count**, and the **rating**. The creator is the activity's **owner** (`res.plan.user_id`), resolved for display from that owner's Matrix profile, so a teacher controls their own credit by editing their profile and we store no second name. No usable profile — no account behind the MXID, or no display name on it — falls back to the stored MXID with a placeholder contact icon. **The PangeaChat avatar and name are reserved for `@system`-owned rows**, which are most of the catalog: crediting a person's hand-built work to Pangea is the failure this ordering prevents, so an ugly credit is preferred to a wrong one. The rating reuses [`ActivityRatingMeter`](../../lib/routes/chat/activity_sessions/activity_rating_meter.dart) — the NEW pill / tinted meter — and this stays the only surface that shows it (per [activities.instructions.md](activities.instructions.md#rating-an-activity)). This row is new: those fields exist on the model but were never gathered into a header, so a map explorer sees the essentials without expanding the sheet. The L2 chip doubles as the control for switching to that language when it is not what the learner is learning — [Switching from context](profile.instructions.md#switching-from-context) owns that behavior.
-
-Below the info row the middle content (media carousel, description, suggested vocab, role cards) is unchanged, as is the role picker.
-
-**Suggested vocab.** Tapping a word opens its word card over the page. While a card is open, tapping another word switches to that word's card in one tap, tapping the open word closes it, and a tap anywhere else only closes the card. Only the vocab words stay reachable behind an open card, so a dismissing tap can never land on the X, a role card or a CTA. The same [`ActivityVocabWidget`](../../lib/routes/chat/activity_sessions/activity_vocab_widget.dart) renders the vocab in the in-chat activity summary, which behaves the same way.
+- Title row: a control top-left (a close X, or a back arrow to the open sessions list or the course card), then the title, share and focus; flag sits with the description, off the buttons. Info row, always: creator, language (its chip [switches to it](profile.instructions.md#switching-from-context)), level, players, and the rating, shown nowhere else.
+- The creator is the owner, from their profile, so teachers control their credit, else their account id and a placeholder icon. Pangea's name and logo only for Pangea's own: an ugly credit beats giving Pangea a teacher's work.
+- A vocab word opens its card; another word switches cards in one tap; any other tap only closes it.
 
 ## The CTA row
 
-The start page's main job is to put the learner in a conversation with as few choices as possible ([client#9333](https://github.com/pangeachat/client/issues/9333)). What it offers depends on the activity's state:
+- **In a session**: once full, opening goes straight to the chat; until then Continue, to its waiting room, and nothing to start or join.
+- **Two players**: equal tiles, Play with Pangea Bot (always the learner's own session) and Play with others, on the right for a right thumb.
+- **Three or more**: Join open session when one waits, else Start.
+- A loading bar shows until sessions are known, so the choice never changes meaning.
+- The first choice is filled, later ones quieter; labels wrap rather than scroll. Completed sits below for a viewer with sessions to review.
+- A course with too few members for the activity shows a notice of how many more it needs, Invite for those who can invite, and Pick a different activity unless minimized. A session with no course needs none.
 
-- **An ongoing session the learner is in** — once every seat is filled, opening the activity from anywhere (the map, a course, a link, or the waiting room as the last seat fills) goes straight into its chat. While the session still waits for people, **Continue** leads to its waiting room, and nothing else to start or join appears; the same page with Continue is also the fallback for a full session if the page is reached some other way.
-- **A 2-player activity** — **Play with Pangea Bot** and **Play with others**, side by side with equal weight as tall tiles at every size, a little smaller on a phone. Play with others sits on the right, where a right thumb reaches it more easily. Each tile shows its icon above its label, so the label has the tile's whole width to wrap in on a narrow phone; the bot's tile shows the Pangea Bot's own face, in the theme's purple (or chosen colour) at the opposite shade to the button so he never blends into it, already in place rather than dropping in from above. Play with Pangea Bot always starts the learner's own session: the role picker, then the bot joins as soon as the session exists. Play with others joins a waiting classmate's open session when there is one, and only starts a new session (the role picker, then the waiting room) when none is waiting.
-- **A 3+ player activity** — a single button. When a session is waiting it reads **Join open session** and joins it the same way Play with others does; otherwise it reads **Start** and leads to the role picker and the waiting room.
+### Open sessions
 
-Play with others never opens a new session while another is waiting, so two learners who both want a partner meet in one session instead of each waiting alone in their own. The buttons keep the same layout whether or not sessions are open, so the choice never changes shape under the learner; only a larger activity's single button changes its label, to say it will join.
+- Listed above the buttons at full, with each open role and when members were last online, most recent first. Played roles go unmarked: activities are replayable.
+- Play with others joins one, a course ping's else the most recently active (the list's top), rather than opening its own, so partners meet. If the seat is gone it tries the next, up to three, so simultaneous tappers pair up; then it starts a new session.
+- One open role is taken straight away; several keep the role picker. Backing out of a viewed session leaves it, so looking joins nobody.
+- A quiet Start my own keeps joining the default.
 
-**Open sessions** are listed above the buttons once the sheet is opened full on a phone, and always on web, so a learner who wants a particular partner or role can pick one. Sessions are sorted by when their members were last online, each labelled the way a profile is ("Currently active" / "Last active: 3:42 PM"), and each shows its open role. Activities are replayable, so the list doesn't mark roles the learner has played before. Play with others joins the session a course ping pointed the learner at, otherwise the top of this list. It reads the open sessions fresh at the tap rather than trusting the list on screen, since joining a stale list sends the learner into a session that has already filled. If the seat is gone by the time they reach it, taken by someone tapping at the same moment, they leave that room and the next open session is tried, so learners tapping together pair up with each other; a new session opens only when none is left. If the fresh read fails, nothing is joined and the learner sees the error. Under the list, a small, de-emphasized **Start my own** text button lets a learner open their own session for others anyway; it is there only when sessions are open, and kept quiet so joining stays the default.
+### Completed sessions
 
-The buttons wait until the activity's open sessions are known, showing a loading bar rather than a choice whose meaning could change a moment later.
+- Opens with the learner's total XP from the activity across courses, as their card's stamp ([what fills a Mission](quests.instructions.md#what-fills-a-mission)). Lists this course's sessions, then their others under Other courses, to match the total; an admin sees everyone's, own first. Each shows the XP it paid the viewer.
 
-A **Completed** button, under the play choice, appears only when the viewer has completed sessions to review — their own, or (for a course admin) everyone's with their own listed first — and opens the completed-sessions subpage. The selection logic is [`_NotStartedSessionCTAButtons`](../../lib/routes/chat/activity_sessions/activity_session_button_widget.dart) and the state machine is in [`activity_session_start_page.dart`](../../lib/routes/chat/activity_sessions/activity_session_start_page.dart).
+## The waiting room
 
-**The completed-sessions subpage** shows the learner's total XP from the activity as the completed stamp the activity's card wears — larger, centred at the top of the image. It is the card's number, so it counts their saved sessions of the activity in **every** course, or none, in their current language ([quests.instructions.md](quests.instructions.md), "What fills a Mission"). Below, the sessions it counts are all listed: this course's first, under a **Finished** title — "Finished in this course" when there are others — then the learner's sessions of it from other courses, or from none, under **Other courses**. A course admin's first list holds everyone's sessions in the course, their own first. Each session shows the XP it paid the viewer in the activity's own XP look — the goal header's sparkle, in gold: the XP credited to the session's room plus `kGoalXp` per goal awarded there. A listed session that paid the viewer nothing they can see — another learner's, for an admin — shows no XP. Listing the other courses' sessions is what keeps the total and the list in agreement ([client#9559](https://github.com/pangeachat/client/issues/9559): a deliberate choice of the activity's whole XP over a course-only total that would not match its card).
+- A status line: time waited since creation, and coursemates online; or, when the bot will take the last seat ([when](../../../.github/.github/instructions/open-activity-sessions.instructions.md)), a countdown to it.
+- Invite friends and Ping course participants lead, both filled; Play with Pangea Bot follows, quieter. Each device can ping once a minute, against spam.
+- Ping, Invite and the online count use the course the session started from, named on the page.
+- A "…" menu takes share's place, so inviting isn't mistaken for sharing, with the chat-list row's actions ([routing](routing.instructions.md#a-chats-header-actions)).
 
-The buttons are the same vertical list at every size: the leading choice filled in `primary`, every following action a fully filled but **quieter** tonal (`secondaryContainer`) button — under the fidelity scheme `primaryContainer` is the vivid brand fill, a near twin of `primary`, so it no longer reads as the lighter step. Nothing scrolls sideways; a long label wraps instead.
+## When the activity can't be fetched
 
-When a session still needs more participants, the blocking notice keeps **Invite** at every size but drops **pick a different activity** at the minimized rest — it only navigates away and wouldn't fit the short sheet — restoring it once the sheet is maximized (and always on web).
+- A gone activity whose plan the room kept shows view-only, with a "no longer supported" notice. With none, only that notice, the participants, roles and Leave.
+- A failed load shows an error, no retry; the page waits for the activity, the chat does not.
 
-### The waiting room
+## Open questions
 
-While a session waits for its seats to fill, a status line leads: **"Waiting m:ss · N online in {course}"**. The timer counts from when the session was created, so it survives leaving and coming back. When Pangea Bot will take the last seat at the hour, the timer counts down to that hour instead: **"Pangea Bot joins in m:ss"**, then **"Pangea Bot is joining…"** until its seat is taken, because the bot checks only every few minutes. The bot takes the seat when exactly one seat is open (a role or an invite holds a seat; a course admin reading along holds none), the session's creator and the bot are still in it, nobody has asked for the bot, and the session is under a day old. With more seats open the bot never joins, so the line never promises it. "Online" uses the same rule as the green presence dot on an avatar, and the course is the one the session was started from (see [activities.instructions.md](activities.instructions.md#the-start-page-mirrors-the-room)). Below it, bringing people in leads: **Invite friends** and **Ping course participants** in the primary fill, then **Play with Pangea Bot** in the quieter style at the bottom. The bot button also re-invites the bot if it failed to join.
-
-**Share** and **flag** sit outside the buttons at every size, so nothing but the choices themselves crowds the place a learner starts an activity. **Share** is an app-bar action to the left of focus. **Flag** sits in the top-right of the text-content (description) section under the hero — so it rides the main step, not the Completed sub-page, where there is no description to anchor it.
-
-While a confirmed session waits to fill (chat not started), a **"…"** menu takes the app-bar share slot. It offers exactly what the session's chat-list row offers, built from the same list ([routing.instructions.md](routing.instructions.md) → A chat's header actions): go to course, notifications, **Leave**, and **Delete** for the room's admin. It carries none of the chat header's extras: invite is already a button in the waiting room, and there is no chat yet to search. It displaces share here so inviting people isn't confused with sharing the link.
-
-
-## Owning the container: nav rail and analytics bar
-
-The "nav rail" is the four icons that switch page/scope — the bottom row of the mobile nav container, and its wide-screen counterpart. Normally surfaces open in the container *above* those icons, so a learner can keep navigating. The activity start page instead **takes over the container**: while it is open the four nav items are gone, and the always-present **X** on the page is the way back to them. This replaces today's behavior, where the page opened above a still-visible rail that no longer controlled anything.
-
-At the **full** stop only, the mobile sheet covers the top **analytics bar** ([`WorldAnalyticsBar`](../../lib/routes/world/world_analytics_bar.dart)); at minimized it stays visible. Two pieces make it "cover" rather than just "hide": the sheet's full-height bound reserves neither the analytics-bar band nor the rail's (the plan hides the rail), so it grows up into that space; and the bar fades out — kept mounted so it doesn't re-fetch — while the sheet is full. The signal is the nav cavity's `onCavityFullChanged`, published for the activity only through [`ActivitySheetFull`](../../lib/routes/world/map_context.dart) and read by the shell ([`workspace_shell.dart`](../../lib/widgets/layouts/workspace_shell.dart)). This is mobile-only: on the wide web panel the analytics cluster ([`WorldUserCluster`](../../lib/routes/world/world_user_cluster.dart)) stays beside the fixed panel, which has no maximize.
-
-Even at full the page stays **inset with rounded corners over the map** — it is overlaid on the map, never true edge-to-edge fullscreen, on either platform. This is what keeps it feeling like a map panel rather than the chat view (which does take the whole screen). Reaching a genuine subpage from here — opening a chat — is the one case that leaves this panel model for the full-screen chat surface with its own back control.
+- Should the minimized sheet grow with very large text? Code clips it.
+- Should browser or phone back leave a viewed session, as the back arrow does?

@@ -19,7 +19,7 @@ import 'get_test_client.dart';
 
 /// #9646 — where the bot took a waiting session's open seat on its own, the
 /// chat says why. A marker a learner wrote by asking for the bot shows nothing
-/// (activities.instructions.md, "When the bot took the seat on its own").
+/// (activity-session.instructions.md, "The bot's seat").
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   sqfliteFfiInit();

@@ -318,6 +318,8 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
 /// screen reader hears; these exist so a pointer can reach a chip through the
 /// open card's backdrop and switch cards in one tap (#9122) — see
 /// [OverlayDisplayDetails.aboveBackdrop] for why a hole in the backdrop can't.
+/// Only the chips are reachable this way, so a tap meant to dismiss the card
+/// never lands on the page's close, a role card or a button.
 class _VocabTapTargets extends StatelessWidget {
   final String targetId;
   final List<Vocab> vocab;

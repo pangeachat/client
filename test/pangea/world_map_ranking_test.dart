@@ -357,7 +357,8 @@ void main() {
     });
 
     test('an activity is NEW only until its first rating', () {
-      // NEW means unrated (activities.instructions.md, "Rating an activity").
+      // NEW means unrated (activity-start-page.instructions.md, "The top of the
+      // page").
       expect(isNewActivity(0), isTrue);
       expect(isNewActivity(1), isFalse);
     });

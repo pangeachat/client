@@ -8,7 +8,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_
 ///
 /// The removed-activity ladder is scoped to session ROOMS — every rung renders
 /// what the room itself holds (the plan it kept, else roles and diamonds) so
-/// past work stays reviewable (activity-session.instructions.md, "When the
+/// past work stays reviewable (activity-start-page.instructions.md, "When the
 /// activity can't be fetched"). The regression this locks (#7918): the gate was
 /// `removed` alone, so a removed activity opened from a bare world-map pin — no
 /// session, nothing to review — rendered an all-but-empty archived page telling

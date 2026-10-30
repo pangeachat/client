@@ -83,7 +83,7 @@ enum SessionState {
 /// what the room itself holds — the plan it kept, else each role's occupant
 /// and earned diamonds — so a learner or their teacher can always reopen an
 /// old session and see who played it and how far they got
-/// (activity-session.instructions.md, "When the activity can't be fetched").
+/// (activity-start-page.instructions.md, "When the activity can't be fetched").
 /// Reached WITHOUT a session, as a bare world-map pin is, there is no such
 /// thing to review: the archived body would render empty and the notice would
 /// tell the learner an activity they never ran is out of date (#7918). That
@@ -390,7 +390,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   /// Re-reads this activity's sessions now and returns them. Unlike
   /// [_loadSummary] it throws on a failed read, so Play with others never
-  /// joins from a list it couldn't refresh.
+  /// joins from a list it couldn't refresh: the list on screen can hold a
+  /// session that has since filled, and joining it would send the learner
+  /// into a full room.
   Future<ActivitySessionSummariesModel> refreshSummaries() async {
     await _fetchSummaries();
     return _roomSummariesModel;
@@ -540,7 +542,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
   Future<void> _loadActivity() async {
     // v3: read the plan through choreo's localized activity read. The page
     // shows a spinner until this resolves, unlike the chat view, which shows
-    // timeline, roles and progress at once (activity-session.instructions.md,
+    // timeline, roles and progress at once (activity-start-page.instructions.md,
     // "When the activity can't be fetched").
     //
     // On an existing session room, read at the room's pinned version, not the
@@ -557,8 +559,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
       case ActivityPlanLookupStatus.found:
         activity = lookup.plan;
       case ActivityPlanLookupStatus.removed:
-        // Removed-activity fallback ladder (activity-session.instructions.md):
-        // legacy rooms embed the full plan in room state — render it
+        // Removed-activity fallback ladder
+        // (activity-start-page.instructions.md): legacy rooms embed the full plan in room state — render it
         // view-only; with no plan anywhere the view shows the archived body
         // built from role/goal state.
         if (!mounted) return;
@@ -666,7 +668,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   /// The learner has confirmed a role and is waiting for the room to fill, but
   /// the activity chat hasn't begun — the one live state where they can still
-  /// back out via the app-bar "…" menu. See activity-start-page.instructions.md.
+  /// back out via the app-bar "…" menu. See
+  /// activity-start-page.instructions.md.
   bool get isPendingSession {
     final room = activityRoom;
     return _sessionState == SessionState.confirmedRole &&
@@ -724,8 +727,8 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
 
   /// The page stores no state of its own: its step is read from the room —
   /// whether one exists, whether the learner is in it, whether they hold a
-  /// role, whether every role is filled (activities.instructions.md, "The
-  /// start page mirrors the room").
+  /// role, whether every role is filled (activity-start-page.instructions.md,
+  /// "Purpose").
   SessionState get _sessionState {
     if (isArchived) return SessionState.archived;
 

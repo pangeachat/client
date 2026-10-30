@@ -313,7 +313,7 @@ class AnalyticsActivityItem extends StatelessWidget {
     // empty title. The room was named after the activity at creation, so fall
     // back to the room name rather than a blank row (#9033) — the same rung
     // the start page's archived session lands on
-    // (activity-session.instructions.md, "When the activity can't be
+    // (activity-start-page.instructions.md, "When the activity can't be
     // fetched").
     final planTitle = activity?.title ?? '';
     final title = planTitle.isNotEmpty

@@ -713,11 +713,14 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   void initState() {
     super.initState();
     // The activity plan's minimized rest (its opening stop — there is no
-    // taller mid-level) fits the CTA area the start page measures
+    // taller mid-level: its only extra over minimized was a sliver of the
+    // media, not worth a stop) fits the CTA area the start page measures
     // ([ActivitySheetCtaHeight.minimizedSheetHeight]), so rebuild when it
-    // changes. It stays below `kActivityCompactMaxHeight` in
-    // activity_sessions_start_view.dart, which tells the body to drop its
-    // content. See activity-start-page.instructions.md.
+    // changes. It reuses the cavity's half stop, so nothing sits between it
+    // and full, and collapsed stays the drag-down dismissal. It stays below
+    // `kActivityCompactMaxHeight` in activity_sessions_start_view.dart, which
+    // tells the body to drop its content. See
+    // activity-start-page.instructions.md, "The sheet and its container".
     ActivitySheetCtaHeight.notifier.addListener(_onCtaHeightChanged);
   }
 

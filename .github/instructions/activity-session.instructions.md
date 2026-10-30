@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/routes/chat/activity_sessions/**,lib/routes/chat/choreographer/activity_orchestrator/**,lib/features/activity_sessions/**,lib/features/download/**"
-description: "What a learner sees inside a running activity session and when it ends: the goal header, target vocab, the summary, saving, a session whose activity is gone, the chat background, rating and the transcript."
+description: "What a learner sees inside a running activity session and when it ends: the goal header, target vocab, the summary, saving, the bot's seat, the chat background, rating and the transcript."
 ---
 
 # Activity Session
@@ -17,16 +17,12 @@ What a learner sees while playing a conversation activity and when it ends. Find
 4. The learner taps "I'm done!" and a rating card appears. Once everyone is done, the summary replaces the header.
 5. The session saves itself and leaves Chats. Its transcript can be downloaded from the chat's menu.
 
-## Decisions
-
-Who re-decides: unassigned throughout.
-
-### Target vocab in the conversation
+## Target vocab in the conversation
 
 - A set phrase is one vocab entry, matched word by word; a word matches any form.
 - One rule drives the gold highlight and the used chips, so they agree. Analytics stays per word.
 
-### The goal header
+## The goal header
 
 - The header stays pinned and looks like a button, because it opens the goal list. Only its top row opens and closes it.
 - Session XP is a number, so the eye stays on the goal; it and earned diamonds' XP show only to a role-holder in their current language.
@@ -40,33 +36,30 @@ Who re-decides: unassigned throughout.
 - On staging the team reports a wrong diamond from the open list, with a required comment and, for a missing one, the message that earned it.
 - A report changes no diamond, and every failure shows, because a lost report is a lost complaint.
 
-### The summary
+## The summary
 
 - The summary replaces the header once everyone is done, showing the picked participant's goals, the viewer's own by default.
 - A failed regeneration keeps the old summary; a failed translation shows it as written.
 
-### Completion saves itself
+## Completion saves itself
 
 - A finished session saves even if it finished while the learner was away.
 
-### When the activity can't be fetched
+## The bot's seat
 
-- A gone activity whose plan the room kept shows its page, view-only, with the "no longer supported" notice.
-- With no plan anywhere, the page says the activity is no longer supported and shows the participants, roles and Leave.
-- A network failure shows an error, with no retry button.
-- The start page waits for the activity; the chat shows timeline, roles and progress at once.
+- When the bot took the last seat on its own, after the session sat open for an hour, the chat says so; after a day it adds that the bot is waiting for a message, since it sent none. A seat a learner asked the bot for shows no note.
 
-### The chat background
+## The chat background
 
 - No activity image behind the chat, as it was too busy over the map, unless a per-device setting fades it in as the media scrolls away, replacing the wallpaper.
 
-### The rating card
+## The rating card
 
 - It appears once the learner's role is finished, trusted as proof of play.
 - A submitted rating is final until a new version; dismissing hides it for this visit.
 - A rejected comment keeps the card open; an owner's own rating closes it quietly.
 
-### Downloading the transcript
+## Downloading the transcript
 
 - Any member can download, since it shows only what they can read; web only until the native path is tested.
 - The session's menu also has Search and Chat details; Delete is for admins. Invite leaves once the session ends for everyone. End activity shows while the learner holds an unfinished role in a started session, and Leave until they take a role in one.

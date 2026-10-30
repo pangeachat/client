@@ -13,7 +13,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 /// looked like an empty progress meter rather than an all-negative rating. This
 /// is the ONLY surface that shows the badge/meter — map pins and cards carry
 /// neither (the rating enters the map solely as a score term;
-/// activities.instructions.md, "Rating an activity").
+/// activity-start-page.instructions.md, "The top of the page").
 class ActivityRatingMeter extends StatelessWidget {
   /// Up-fraction 0..1, null when the read path didn't carry it.
   final double? average;

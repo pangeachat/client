@@ -51,7 +51,14 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// minimized sheet ([ActivitySheetCtaHeight.maxSheetHeight]) and below
 /// where the full layout's footer still fits beside the info row, so neither
 /// layout overflows mid-drag. The app is portrait-only, so a full sheet always
-/// clears it. See activity-start-page.instructions.md.
+/// clears it.
+///
+/// Dropping the content, as the course card's compact peek does
+/// (`_kCompactCardMaxHeight`), is what spares the sheet any scroll-versus-grow
+/// coordination: with nothing to scroll at the minimized rest, an upward drag
+/// can only grow the sheet, and the content mounts and scrolls once it is
+/// full. See activity-start-page.instructions.md, "The sheet and its
+/// container".
 const double kActivityCompactMaxHeight = 340.0;
 
 class ActivitySessionStartView extends StatelessWidget {
@@ -178,10 +185,10 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
-              // While a confirmed session waits to fill, the "…" menu stands in
-              // for share on web and is a net-new action on mobile — so nobody
-              // confuses sharing the activity with inviting people into the
-              // room. See activity-start-page.instructions.md.
+              // While a confirmed session waits to fill, the "…" menu takes
+              // share's place at every size, so nobody confuses sharing the
+              // activity with inviting people into the room. See
+              // activity-start-page.instructions.md, "The waiting room".
               if (controller.activityRoom case final room?
                   when controller.isPendingSession)
                 _WaitingRoomMenuButton(room)
@@ -205,7 +212,7 @@ class ActivitySessionStartView extends StatelessWidget {
               ? const Center(child: CircularProgressIndicator.adaptive())
               // Transient fetch failure — an error, never the archived view or
               // the "no longer supported" notice: the fallback ladder in
-              // activity-session.instructions.md engages only on a confirmed
+              // activity-start-page.instructions.md engages only on a confirmed
               // 404.
               : controller.error != null
               ? Center(
@@ -327,7 +334,12 @@ class ActivitySessionStartView extends StatelessWidget {
                                                 ),
                                               ),
                                               // The flag rides the top-right of
-                                              // the text content at every size.
+                                              // the text content at every size:
+                                              // out of the buttons, which hold
+                                              // only the choices, and on the
+                                              // main page alone, since the
+                                              // Completed subpage has no
+                                              // description to anchor it.
                                               IconButton(
                                                 tooltip: L10n.of(
                                                   context,
@@ -392,7 +404,9 @@ class ActivitySessionStartView extends StatelessWidget {
 
 /// The waiting-room "…" menu in the app bar: the same actions the session's
 /// chat-list row offers, from the same list, surfaced while a confirmed session
-/// waits to fill. See activity-start-page.instructions.md.
+/// waits to fill. It carries none of the chat header's extras: invite is
+/// already a waiting-room button, and there is no chat yet to search. See
+/// activity-start-page.instructions.md, "The waiting room".
 class _WaitingRoomMenuButton extends StatelessWidget {
   final Room room;
 
@@ -426,7 +440,7 @@ class _WaitingRoomMenuButton extends StatelessWidget {
 /// the scrollable body so a map explorer sees the essentials without expanding
 /// the sheet. The creator is the plan's own owner — Pangea's name and logo
 /// only for content Pangea genuinely owns ([ContentCreatorChip]), never for a
-/// teacher's. See activity-start-page.instructions.md.
+/// teacher's. See activity-start-page.instructions.md, "The top of the page".
 class _ActivityStartInfoRow extends StatelessWidget {
   final ActivityPlanModel activity;
 
@@ -519,7 +533,7 @@ class _IconLabel extends StatelessWidget {
 
 /// Archived body for a removed activity with no plan recoverable from room
 /// state (the last rung of the fallback ladder in
-/// activity-session.instructions.md):
+/// activity-start-page.instructions.md):
 /// the "no longer supported" notice, plus whatever the room itself holds —
 /// each recorded role's occupant, role name, earned star count, and finished
 /// status — so past progress stays reviewable.

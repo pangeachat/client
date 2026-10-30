@@ -37,6 +37,9 @@ void main() {
     double keyboardInset = 0.0,
     Widget Function(Widget child)? chatsBadgeBuilder,
     Widget Function(Widget child)? coursesBadgeBuilder,
+    bool tapBodyExpands = false,
+    bool hideRail = false,
+    bool rememberHeight = true,
     bool settle = true,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
@@ -67,6 +70,9 @@ void main() {
             keyboardInset: keyboardInset,
             chatsBadgeBuilder: chatsBadgeBuilder,
             coursesBadgeBuilder: coursesBadgeBuilder,
+            tapBodyExpands: tapBodyExpands,
+            hideRail: hideRail,
+            rememberHeight: rememberHeight,
           ),
         ),
       ),
@@ -1166,6 +1172,75 @@ void main() {
         reason: 'a different key must not inherit the previous key\'s height',
       );
       expect(height, lessThan(maxHeightPx));
+    });
+  });
+
+  // The activity start page's sheet: it owns the container, opens full on a
+  // tap, and never carries a dragged height into a later open
+  // (activity-start-page.instructions.md, "The sheet and its container").
+  group('the activity plan sheet', () {
+    testWidgets('without height memory it reopens at its default stop', (
+      tester,
+    ) async {
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Activity'),
+        cavityKey: 'activity-1',
+        preferredCavityHeightPx: 240.0,
+        rememberHeight: false,
+      );
+      expect(cavityHeightOf(tester), closeTo(240.0, 1.0));
+
+      await tester.tap(handleFinder()); // minimized -> full
+      await tester.pumpAndSettle();
+      expect(cavityHeightOf(tester), closeTo(800.0 * 0.75, 1.0));
+
+      await unmountNav(tester);
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Activity'),
+        cavityKey: 'activity-1',
+        preferredCavityHeightPx: 240.0,
+        rememberHeight: false,
+      );
+
+      expect(
+        cavityHeightOf(tester),
+        closeTo(240.0, 1.0),
+        reason: 'a maximized activity reopens minimized',
+      );
+    });
+
+    testWidgets('a tap on its minimized body opens it full', (tester) async {
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Activity'),
+        cavityKey: 'activity-1',
+        preferredCavityHeightPx: 240.0,
+        tapBodyExpands: true,
+        rememberHeight: false,
+      );
+
+      await tester.tap(find.text('Activity'));
+      await tester.pumpAndSettle();
+
+      expect(cavityHeightOf(tester), closeTo(800.0 * 0.75, 1.0));
+    });
+
+    testWidgets('hiding the rail leaves the container to the sheet', (
+      tester,
+    ) async {
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Activity'),
+        cavityKey: 'activity-1',
+        hideRail: true,
+      );
+
+      expect(find.text('Activity'), findsOneWidget);
+      expect(find.byTooltip('World'), findsNothing);
+      expect(find.byTooltip('Courses'), findsNothing);
+      expect(find.byTooltip('Add a course'), findsNothing);
     });
   });
 

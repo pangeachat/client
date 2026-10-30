@@ -44,7 +44,7 @@ enum ActivityPlanLookupStatus {
 
   /// The backend confirmed the activity no longer exists (HTTP 404).
   /// Consumers fall back per the removed-activity ladder
-  /// (activity-session.instructions.md, "When the activity can't be
+  /// (activity-start-page.instructions.md, "When the activity can't be
   /// fetched"): embedded state plan → archived view, walked by the start
   /// page's `_loadActivity`, not here.
   removed,
