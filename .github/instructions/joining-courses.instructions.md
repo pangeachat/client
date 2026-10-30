@@ -40,6 +40,14 @@ A course carries its own target language — the quest's, the same field its inf
 
 **Pre-login**: a logged-out visitor is bounced to login, and the coded location survives the bounce the way every workspace location does ([routing.instructions.md § A signed-out visitor's destination](routing.instructions.md#a-signed-out-visitors-destination)): the `/` auth guard ([`PAuthGaurd`](../../lib/pangea/common/utils/p_vguard.dart)) stores the folded `left=addcourse:private/<code>` URL (`SpaceCodeRepo.destination`) before bouncing, and the same guard sends the next logged-in landing back to it, where the join page submits. While signed out, the login and signup screens tell the visitor the code was kept ([signup-and-login.instructions.md § Arriving with a class code](signup-and-login.instructions.md#arriving-with-a-class-code)). A brand-new user's onboarding reads the code out of the stored destination and joins with it instead (below). The shared activity link (`/<uuid>`) rides the same way. The DM invite link (`/invite_user/<id>`, [user_id_url.dart](../../lib/features/navigation/user_id_url.dart)) is different: the invite route never renders — its redirect caches the invited user id in its own entry (on every landing, not only the bounce) and lands the user on the world map with the chat list open — and the shell itself opens the DM from there, consuming the entry once the DM has actually opened (or definitively failed). It waits while a coded join is in progress on screen and takes its turn on the next workspace navigation. The invite entry is time-stamped and expires (`SpaceCodeRepo.cacheTTL`) like the destination, so a visitor who never logs in can't leave one that surprises a much later login.
 
+**A seat invitation link** is the class link plus the invitation: `<app>/<code>?inv=<id>`, written by the Synapse module ([seats](../../../.github/.github/instructions/seats.instructions.md)). The rewrite of the class link keeps `inv` and still drops every other parameter. On every landing, signed in or out, the `/` guard moves `inv` into its own stored entry (`SpaceCodeRepo.pendingInvitation`) and removes it from the URL. The class code joins the course exactly as before; the invitation decides only the seat and management. After sign-in the app opens the invitation once and shows the outcome:
+
+- Claimed: "You're in <course>".
+- Another address: "Waiting for your teacher to approve".
+- Denied, withdrawn or already joined: the app says so plainly, and the class code still works.
+
+The app clears the stored entry before sending it, so it opens the invitation at most once. If that one attempt fails, the module still claims the invitation when the account verifies the invited address.
+
 ### Onboarding with a link-joined course
 
 A new user arriving by class link signs up before joining, so the join runs inside onboarding: after they choose learner or teacher, onboarding joins with the ferried code and then loads the quest behind the course, which supplies the course title, description, target language and level.
@@ -51,13 +59,13 @@ Once the user is a member, onboarding continues as a joined-course flow and the 
 | Quest resolves | What the user does first |
 | --- | --- |
 | Yes | Nothing — the quest supplies target language, base language and level, and onboarding goes straight to the joined-course page with the full course card |
-| No | The user supplies what the quest could not, then lands on the joined-course page built from the space alone — its name, avatar and teacher, with no course card |
+| No | The user supplies what the quest could not, then lands on the joined-course page built from the space alone — its name, avatar and a "Your teacher" line that names no one, with no course card |
 
 **The space records its own target language,** in the `pangea.course_plan` state event next to the quest id ([`CoursePlanEvent`](../../lib/features/course_plans/courses/course_plan_event.dart)). When it is there, onboarding records it as the user's target language and their device language as their base language, and only the level is asked for. Onboarding always writes both languages to the profile, whether the user chose them or the course supplied them.
 
 The language step is still shown in two cases: the space records no language — spaces predate the field, and the old spaces are the ones whose quests fail — or the course teaches the user's own device language, since a course cannot be taught in the language it teaches.
 
-**Onboarding ends on the joined course itself,** not the world map — whatever the last page turns out to be. A new user is inside their trial window, so the trial page follows the joined-course page and is the page they finish on; the destination follows from having joined a course at all, not from which page is last (#8593).
+**Onboarding ends on the joined course itself,** not the world map — whatever the last page turns out to be. A new user is inside their trial window, so the trial page follows the joined-course page and is the page they finish on, unless they hold a seat or a seat invitation is still waiting, when there is no trial page; the destination follows from having joined a course at all, not from which page is last (#8593).
 
 None of this repairs the quest: the space still points at an id the content service cannot return, so the course plan page fails the same way after onboarding.
 

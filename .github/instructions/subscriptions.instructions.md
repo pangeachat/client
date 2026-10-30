@@ -13,6 +13,8 @@ The client holds no payment state. It reads entitlement status from the choreogr
 
 [`SubscriptionController`](../../lib/features/subscription/controllers/subscription_controller.dart) resolves the user's status from the choreographer on startup — returning from web checkout must feel immediate, and server-side grants (seats, trials, comps) appear the same way. There is no in-app purchase SDK and no store-package merging: entitlement is a choreographer-served record that the app reflects, never unlocks. Paid features gate on `showSubscriptionGatedContent`; the paywall surfaces only when the user is unsubscribed outside the trial window and hasn't dismissed it.
 
+**A seat** is an entitlement like any other. A teacher buys it and the student claims it through a seat invitation; the student never checks out. The choreographer grants the free trial on an account's first AI request, so every choreographer request first waits for a stored seat invitation to be opened (`ChoreoGate`). With nothing stored the wait costs nothing. The open has its own 30-second timeout, so a silent module never holds up sign-in.
+
 ## Purchase surface
 
 Which purchase surface the client renders — the plans, prices, discount field, and whether checkout is offered — is defined by the org doc's [Platform policy](../../../.github/.github/instructions/subscriptions.instructions.md). The client renders that design; it does not decide it.
