@@ -55,63 +55,6 @@ PendingClaimsFlow pendingClaimsFlowFor(BuildContext context, Client client) {
   );
 }
 
-/// The choreo preflight (ChoreoGate.preflight): before the session's first
-/// choreo call, open the stored invitation, so the claim lands before
-/// choreo's HTTP gate could auto-claim a trial on that call. Outcomes are
-/// shown once the shell is up ([PendingClaimsConsumer]).
-///
-/// Choreo calls wait for the open's answer or failure, never a cut-off: the
-/// open is bounded only by the API's own request timeout (30 s), so sign-in
-/// cannot hang on a silent module. If the module gives no answer at all, the
-/// failure is reported and the calls proceed; the claim may or may not have
-/// landed (the entry is not resent, keeping it at most once).
-///
-/// Single-flight: every choreo call made meanwhile awaits the same run;
-/// none finds the ferry already taken and goes ahead while it is in flight.
-Future<void> openPendingClaims({
-  required StudentInvitationApi api,
-  required String accessToken,
-}) => _claimsBeforeChoreo ??= _openPending(
-  api,
-  accessToken,
-).whenComplete(() => _claimsBeforeChoreo = null);
-
-Future<void>? _claimsBeforeChoreo;
-
-Future<void> _openPending(StudentInvitationApi api, String accessToken) async {
-  try {
-    await PendingClaimsFlow(
-      api: api,
-      accessToken: accessToken,
-      notify: PendingClaimsConsumer._deferred.add,
-      onError: _logError,
-    ).consumeInvitation();
-  } catch (e, s) {
-    _logError(e, s);
-  }
-}
-
-/// The preflight for the signed-in [client]. Joins a run in flight first;
-/// otherwise resolves at once when nothing is waiting or no one is signed
-/// in, so ordinary choreo calls pay nothing.
-Future<void> openPendingClaimsBeforeChoreo(Client client) {
-  final inFlight = _claimsBeforeChoreo;
-  if (inFlight != null) return inFlight;
-  if (!PendingClaimsFlow.hasPendingClaim) return Future.value();
-  final homeserver = client.homeserver;
-  final token = client.accessToken;
-  if (!client.isLogged() || homeserver == null || token == null) {
-    return Future.value();
-  }
-  return openPendingClaims(
-    api: StudentInvitationApi(
-      httpClient: client.httpClient,
-      homeserver: homeserver,
-    ),
-    accessToken: token,
-  );
-}
-
 void _logError(Object e, StackTrace s) => ErrorHandler.logError(
   e: e,
   s: s,
@@ -119,16 +62,17 @@ void _logError(Object e, StackTrace s) => ErrorHandler.logError(
 );
 
 /// Headless shell resident (like DmInviteFerryConsumer) for the student side
-/// after sign-in: runs (or joins) [openPendingClaims] and shows what it did.
+/// after sign-in: opens a stored seat invitation and shows what happened.
 /// Mounted by the workspace shell, so it runs exactly when signed in with the
 /// map up. Waits while a coded join is in progress on screen, and tries
 /// again on every workspace navigation. Renders nothing.
+///
+/// No choreo call waits for it: the module already claims an invitation
+/// whose address the account has verified when the account signs in, and
+/// choreo activates a claimed seat before it considers a trial.
 class PendingClaimsConsumer extends StatefulWidget {
   final Uri uri;
   const PendingClaimsConsumer({super.key, required this.uri});
-
-  /// Outcomes of [openPendingClaims], shown once the shell is up.
-  static final List<ClaimNotice> _deferred = [];
 
   @override
   State<PendingClaimsConsumer> createState() => _PendingClaimsConsumerState();
@@ -154,7 +98,7 @@ class _PendingClaimsConsumerState extends State<PendingClaimsConsumer> {
   }
 
   Future<void> _consume() async {
-    if (!mounted || _running) return;
+    if (!mounted || _running || !PendingClaimsFlow.hasPendingClaim) return;
     // The auto-submitting class-code join is on screen: let it land first.
     if (joinCodeFor(widget.uri) != null) return;
     final client = Matrix.of(context).client;
@@ -165,13 +109,9 @@ class _PendingClaimsConsumerState extends State<PendingClaimsConsumer> {
     }
     _running = true;
     try {
-      final flow = pendingClaimsFlowFor(context, client);
-      // The same single-flight run choreo calls wait on: it opens a stored
-      // invitation if no choreo call has yet.
-      await openPendingClaimsBeforeChoreo(client);
-      final deferred = [...PendingClaimsConsumer._deferred];
-      PendingClaimsConsumer._deferred.clear();
-      deferred.forEach(flow.notify);
+      await pendingClaimsFlowFor(context, client).consumeInvitation();
+    } catch (e, s) {
+      _logError(e, s);
     } finally {
       _running = false;
     }

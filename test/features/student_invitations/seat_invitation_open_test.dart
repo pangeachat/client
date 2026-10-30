@@ -9,27 +9,20 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:matrix/matrix.dart' as matrix;
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/student_invitations/invitation_notice.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims.dart';
-import 'package:fluffychat/features/student_invitations/pending_claims_consumer.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims_flow.dart';
 import 'package:fluffychat/features/student_invitations/student_invitation_api.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/network/choreo_gate.dart';
-import 'package:fluffychat/pangea/common/network/requests.dart';
-import 'package:fluffychat/pangea/common/network/urls.dart';
 
 /// Spec amendment 2026-10-10 §1: no checkbox anywhere. After sign-in the
 /// app opens the stored invitation (`POST …/student_invitations/{id}/open`,
-/// body `{}`) at most once, every choreo call waits until that open
-/// resolves, and no email or Matrix id is put in a request URL.
+/// body `{}`) at most once, and no email or Matrix id is put in a request
+/// URL.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  sqfliteFfiInit();
 
   const inv = 'Q2xhc3NJbnZpdGUtMDAx_-';
   const homeserver = 'https://matrix.example.org';
@@ -53,7 +46,6 @@ void main() {
     await lookupL10n(const Locale('en'));
   });
 
-  late List<String> order;
   late List<http.Request> sent;
   late Map<String, http.Response Function(http.Request)> routes;
   late List<ClaimNotice> notices;
@@ -66,7 +58,6 @@ void main() {
   );
 
   setUp(() async {
-    order = [];
     sent = [];
     notices = [];
     routes = {
@@ -81,12 +72,8 @@ void main() {
       sent.add(request);
       final path = request.url.path;
       if (path.endsWith('/open')) {
-        // Slower than any choreo call: only an awaited open comes first.
+        // The open takes a moment, so a test can look while it is in flight.
         await Future<void>.delayed(const Duration(milliseconds: 50));
-        order.add('open');
-      } else if (path.endsWith('/grammar_constructs')) {
-        order.add('grammar_constructs');
-        return http.Response('{}', 200);
       }
       final handler = routes['${request.method} $path'];
       return handler == null
@@ -186,41 +173,6 @@ void main() {
 
       expect(calls('student_invitations/$inv/open'), hasLength(1));
       expect(notices.single.kind, ClaimNoticeKind.notLive);
-    });
-  });
-
-  group('every choreo call waits until open resolves, with no tick', () {
-    test('grammar_constructs at sign-in waits for the open', () async {
-      await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
-      final client = matrix.Client(
-        'seat-open',
-        httpClient: module,
-        database: await matrix.MatrixSdkDatabase.init(
-          'seat-open',
-          database: await databaseFactoryFfi.openDatabase(':memory:'),
-          sqfliteFactory: databaseFactoryFfi,
-        ),
-      );
-      client.homeserver = Uri.parse(homeserver);
-      client.accessToken = token;
-      ChoreoGate.preflight = () => openPendingClaimsBeforeChoreo(client);
-      addTearDown(() => ChoreoGate.preflight = null);
-
-      await http.runWithClient(
-        () => Future.wait([
-          Requests(
-            accessToken: token,
-          ).post(url: PApiUrls.grammarConstructs, body: {}),
-          Requests(
-            accessToken: token,
-          ).post(url: PApiUrls.grammarConstructs, body: {}),
-        ]),
-        () => module,
-      );
-
-      expect(order.where((o) => o == 'open'), hasLength(1));
-      expect(order.first, 'open', reason: 'the claim exists first');
-      expect(order.where((o) => o == 'grammar_constructs'), hasLength(2));
     });
   });
 

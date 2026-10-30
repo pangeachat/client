@@ -6,7 +6,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
 import 'package:fluffychat/pangea/common/models/base_request_model.dart';
-import 'package:fluffychat/pangea/common/network/choreo_gate.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_response_parser.dart';
 
@@ -37,7 +36,6 @@ class Requests {
 
     final uri = Uri.parse(url);
     inFlight = 'POST ${PangeaHttpException.normalizePath(uri)}';
-    await ChoreoGate.beforeRequest(uri);
     final http.Response response = await FilteredNetworkController.instance
         .observe(uri, http.post(uri, body: encoded, headers: _headers));
 
@@ -55,7 +53,6 @@ class Requests {
   }) async {
     final uri = Uri.parse(url);
     inFlight = 'GET ${PangeaHttpException.normalizePath(uri)}';
-    await ChoreoGate.beforeRequest(uri);
     final http.Response response = await FilteredNetworkController.instance
         .observe(uri, http.get(uri, headers: _headers));
 

@@ -71,8 +71,8 @@ class PAuthGaurd {
   /// drop it, and the bounce must not carry it in the destination twice.
   /// Returns the location without `inv` (the redirect re-runs on it), or null
   /// when [uri] has none. A different invitation replaces a stored one; a
-  /// malformed id is dropped. It is opened once after sign-in, before any
-  /// choreo call (ChoreoGate, PendingClaimsConsumer).
+  /// malformed id is dropped. It is opened once after sign-in
+  /// (PendingClaimsConsumer).
   static Future<String?> stashInvitation(Uri uri) async {
     final location = PRoutes.locationWithoutInvitation(uri);
     if (location == null) return null;

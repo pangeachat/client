@@ -52,8 +52,6 @@ class PendingClaimsFlow {
   static bool get hasPendingClaim => SpaceCodeRepo.pendingInvitation != null;
 
   /// The invitation a class link carried (`?inv=`), if one is waiting.
-  /// Called before the session's first choreo call, so the claim exists
-  /// before choreo's HTTP gate could auto-claim a trial.
   Future<void> consumeInvitation() async {
     final pending = SpaceCodeRepo.pendingInvitation;
     if (pending == null) return;
