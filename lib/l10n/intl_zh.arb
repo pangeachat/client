@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-27 14:57:24.669356",
+    "@@last_modified": "2026-10-30 10:21:52.699134",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,15 @@
     "centralCourseOfferBody": "这是 Pangea 为{language}学习者开设的课程。课程成员可以看到您的姓名和个人资料。",
     "centralCourseOfferTitle": "加入 {course}？",
     "makeMyOwnCourseInstead": "改为创建我自己的课程",
-    "suggestMobileSignInSameAccount": "然后用此账号登录应用。"
+    "suggestMobileSignInSameAccount": "然后用此账号登录应用。",
+    "seatInviteTitle": "加入 {course}",
+    "seatInviteYourCourse": "你的课程",
+    "seatInviteEmailHint": "使用 {email}，以便你的班级找到你。",
+    "seatInviteClaimed": "你已加入 {course}。",
+    "seatInvitePendingApproval": "正在等待你的老师批准。",
+    "seatInviteDenied": "你的老师未批准此帐户加入课程。你仍然可以使用班级代码。",
+    "yourTeacher": "你的老师",
+    "seatInviteNotLive": "此邀请不再可用。你仍然可以使用班级代码。",
+    "seatInviteAlreadyClaimed": "你已使用其他邀请加入此课程。",
+    "seatInviteFailed": "我们无法打开邀请。请稍后重试。"
 }

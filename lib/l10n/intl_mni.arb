@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-27 14:57:19.288192",
+    "@@last_modified": "2026-10-30 10:21:45.302889",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "অসি {language} তম্লিবাশিংগী পাংগিয়াগী কোর্সনি। মসিগী মেম্বরশিংনা নখোইগী মমিং অমসুং প্রোফাইল উবা ফংগনি।",
     "centralCourseOfferTitle": "{course}দা শরুক য়াগদ್ರಾ?",
     "makeMyOwnCourseInstead": "ঐহাক্কী ওইবা কোর্স অমা শাগনি",
-    "suggestMobileSignInSameAccount": "అదుగీ మతంగ్ద, అసింగీ అకౌంట్ అసిదా ఏప్ అసిదా సైన్ ఇన్ తౌ"
+    "suggestMobileSignInSameAccount": "అదుగీ మతంగ్ద, అసింగీ అకౌంట్ అసిదా ఏప్ అసిదా సైన్ ఇన్ తౌ",
+    "seatInviteTitle": "{course} da sínnaba",
+    "seatInviteYourCourse": "nanggi course",
+    "seatInviteEmailHint": "Nanggi class na nangbu phangnaba {email} sijinnau.",
+    "seatInviteClaimed": "Nang {course} da yaore.",
+    "seatInvitePendingApproval": "Nanggi oja na yaningba ngairabani.",
+    "seatInviteDenied": "Nanggi oja na class asigi damak account asibu yaningkhide. Nang class code adu sijinnaba ngaihak leppana yai.",
+    "yourTeacher": "Nanggi oja",
+    "seatInviteNotLive": "Invitation asi leplabani. Nang class code adu sijinnaba ngaihak leppana yai.",
+    "seatInviteAlreadyClaimed": "Nangna invitation amaga loinana course asida yaokhrabani.",
+    "seatInviteFailed": "Eikhoina invitation adu hangba ngamkhide. Ngaihak leiraga amuk hanna hotnaba yai."
 }

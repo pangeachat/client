@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-27 14:57:21.509856",
+    "@@last_modified": "2026-10-30 10:21:48.156434",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10995,5 +10995,15 @@
     "centralCourseOfferBody": "To je Pangein tečaj za učence {language}. Njegovi člani lahko vidijo vaše ime in profil.",
     "centralCourseOfferTitle": "Se pridružiš tečaju {course}?",
     "makeMyOwnCourseInstead": "Namesto tega ustvari svoj tečaj",
-    "suggestMobileSignInSameAccount": "Nato se v aplikacijo prijavite s tem računom."
+    "suggestMobileSignInSameAccount": "Nato se v aplikacijo prijavite s tem računom.",
+    "seatInviteTitle": "Pridružite se tečaju {course}",
+    "seatInviteYourCourse": "vaš tečaj",
+    "seatInviteEmailHint": "Uporabite {email}, da vas bo razred našel.",
+    "seatInviteClaimed": "Ste v tečaju {course}.",
+    "seatInvitePendingApproval": "Čakamo na odobritev vašega učitelja.",
+    "seatInviteDenied": "Vaš učitelj ni odobril tega računa za tečaj. Še vedno lahko uporabite kodo razreda.",
+    "yourTeacher": "Vaš učitelj",
+    "seatInviteNotLive": "To povabilo ni več na voljo. Še vedno lahko uporabite kodo razreda.",
+    "seatInviteAlreadyClaimed": "S tem povabilom ste se že pridružili temu tečaju.",
+    "seatInviteFailed": "Povabila nismo mogli odpreti. Poskusite znova pozneje."
 }

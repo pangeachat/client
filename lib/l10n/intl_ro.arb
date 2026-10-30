@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:21.131641",
+    "@@last_modified": "2026-10-30 10:21:51.076797",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10782,5 +10782,15 @@
     "centralCourseOfferBody": "Este cursul Pangea pentru cursanții de {language}. Membrii săi îți pot vedea numele și profilul.",
     "centralCourseOfferTitle": "Te alături la {course}?",
     "makeMyOwnCourseInstead": "Creez propriul curs",
-    "suggestMobileSignInSameAccount": "Apoi conectați-vă la aplicație cu acest cont."
+    "suggestMobileSignInSameAccount": "Apoi conectați-vă la aplicație cu acest cont.",
+    "seatInviteTitle": "Alătură-te la {course}",
+    "seatInviteYourCourse": "cursul tău",
+    "seatInviteEmailHint": "Folosește {email} pentru ca clasa ta să te găsească.",
+    "seatInviteClaimed": "Ești în {course}.",
+    "seatInvitePendingApproval": "Așteptăm aprobarea profesorului tău.",
+    "seatInviteDenied": "Profesorul tău nu a aprobat acest cont pentru curs. Poți folosi în continuare codul clasei.",
+    "yourTeacher": "Profesorul tău",
+    "seatInviteNotLive": "Această invitație nu mai este disponibilă. Poți folosi în continuare codul clasei.",
+    "seatInviteAlreadyClaimed": "Te-ai alăturat deja acestui curs cu o altă invitație.",
+    "seatInviteFailed": "Nu am putut deschide invitația. Te rugăm să încerci din nou mai târziu."
 }

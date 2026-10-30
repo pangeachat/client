@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-27 14:57:23.579355",
+    "@@last_modified": "2026-10-30 10:21:52.425356",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10057,5 +10057,15 @@
     "centralCourseOfferBody": "Bu Pangeaning {language} oʻrganuvchilari uchun kursi. Uning aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
     "centralCourseOfferTitle": "{course}ga qo‘shilasizmi?",
     "makeMyOwnCourseInstead": "Buning o‘rniga o‘zimning kursimni yarataman",
-    "suggestMobileSignInSameAccount": "Keyin ushbu hisob bilan ilovaga kiring."
+    "suggestMobileSignInSameAccount": "Keyin ushbu hisob bilan ilovaga kiring.",
+    "seatInviteTitle": "{course}ga qo‘shiling",
+    "seatInviteYourCourse": "kursingiz",
+    "seatInviteEmailHint": "Sinfingiz sizni topishi uchun {email}dan foydalaning.",
+    "seatInviteClaimed": "Siz {course}dasiz.",
+    "seatInvitePendingApproval": "O‘qituvchingiz tasdiqlashini kuting.",
+    "seatInviteDenied": "O‘qituvchingiz ushbu hisobni kursga tasdiqlamadi. Siz baribir sinf kodidan foydalanishingiz mumkin.",
+    "yourTeacher": "Sizning o‘qituvchingiz",
+    "seatInviteNotLive": "Ushbu taklif endi mavjud emas. Siz baribir sinf kodidan foydalanishingiz mumkin.",
+    "seatInviteAlreadyClaimed": "Siz allaqachon boshqa taklifnoma bilan ushbu kursga qo‘shilgansiz.",
+    "seatInviteFailed": "Taklifnomani ochib bo‘lmadi. Iltimos, keyinroq qayta urinib ko‘ring."
 }

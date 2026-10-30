@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-27 14:57:18.626195",
+    "@@last_modified": "2026-10-30 10:21:42.770502",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "ئەمە خولی پانگایە بۆ فێرخوازانی {language}. ئەندامەکانی دەتوانن ناوی تۆ و پڕۆفایلەکەت ببینن.",
     "centralCourseOfferTitle": "بەشداری {course} بکەم؟",
     "makeMyOwnCourseInstead": "لەبری ئەوە کۆرسی خۆم دروست بکەم",
-    "suggestMobileSignInSameAccount": "پاشان بەم هەژمارە بچۆ ژوورەوە بۆ ئەپەکە."
+    "suggestMobileSignInSameAccount": "پاشان بەم هەژمارە بچۆ ژوورەوە بۆ ئەپەکە.",
+    "seatInviteTitle": "بەشداری بکە لە {course}",
+    "seatInviteYourCourse": "خولی تۆ",
+    "seatInviteEmailHint": "ئیمەیڵی {email} بەکاربهێنە بۆ ئەوەی پۆلەکەت بدۆزێتەوە.",
+    "seatInviteClaimed": "تۆ لە {course}دایت.",
+    "seatInvitePendingApproval": "چاوەڕێی پەسەندکردنی مامۆستاکەت.",
+    "seatInviteDenied": "مامۆستاکەت ئەم هەژمارەی بۆ خولەکە پەسەند نەکرد. هێشتا دەتوانیت کۆدی پۆلەکە بەکاربهێنیت.",
+    "yourTeacher": "مامۆستاکەت",
+    "seatInviteNotLive": "ئەم بانگهێشتنامەیە چیتر بەردەست نییە. هێشتا دەتوانیت کۆدی پۆلەکە بەکاربهێنیت.",
+    "seatInviteAlreadyClaimed": "تۆ پێشتر بە بانگهێشتنامەیەکی تر بەشداری ئەم خولەت کردووە.",
+    "seatInviteFailed": "نەمانتوانی بانگهێشتنامەکە بکەینەوە. تکایە دواتر هەوڵبدەوە."
 }

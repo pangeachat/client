@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-27 14:57:19.283753",
+    "@@last_modified": "2026-10-30 10:21:44.511998",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Ini ialah kursus Pangea untuk pelajar {language}. Ahli-ahlinya boleh melihat nama dan profil anda.",
     "centralCourseOfferTitle": "Sertai {course}?",
     "makeMyOwnCourseInstead": "Buat kursus saya sendiri",
-    "suggestMobileSignInSameAccount": "Kemudian log masuk ke aplikasi dengan akaun ini."
+    "suggestMobileSignInSameAccount": "Kemudian log masuk ke aplikasi dengan akaun ini.",
+    "seatInviteTitle": "Sertai {course}",
+    "seatInviteYourCourse": "kursus anda",
+    "seatInviteEmailHint": "Gunakan {email} supaya kelas anda dapat mencari anda.",
+    "seatInviteClaimed": "Anda berada dalam {course}.",
+    "seatInvitePendingApproval": "Menunggu guru anda meluluskan.",
+    "seatInviteDenied": "Guru anda tidak meluluskan akaun ini untuk kursus tersebut. Anda masih boleh menggunakan kod kelas.",
+    "yourTeacher": "Guru anda",
+    "seatInviteNotLive": "Jemputan ini tidak lagi tersedia. Anda masih boleh menggunakan kod kelas.",
+    "seatInviteAlreadyClaimed": "Anda sudah menyertai kursus ini dengan jemputan lain.",
+    "seatInviteFailed": "Kami tidak dapat membuka jemputan. Sila cuba lagi nanti."
 }

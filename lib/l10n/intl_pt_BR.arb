@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:20.711598",
+    "@@last_modified": "2026-10-30 10:21:46.792214",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,15 @@
     "centralCourseOfferBody": "Este é o curso de Pangea para alunos de {language}. Os membros podem ver seu nome e perfil.",
     "centralCourseOfferTitle": "Entrar em {course}?",
     "makeMyOwnCourseInstead": "Criar meu próprio curso",
-    "suggestMobileSignInSameAccount": "Depois, entre no aplicativo com esta conta."
+    "suggestMobileSignInSameAccount": "Depois, entre no aplicativo com esta conta.",
+    "seatInviteTitle": "Entrar em {course}",
+    "seatInviteYourCourse": "seu curso",
+    "seatInviteEmailHint": "Use {email} para que sua turma possa te encontrar.",
+    "seatInviteClaimed": "Você está em {course}.",
+    "seatInvitePendingApproval": "Aguardando a aprovação do seu professor.",
+    "seatInviteDenied": "Seu professor não aprovou esta conta para o curso. Você ainda pode usar o código da turma.",
+    "yourTeacher": "Seu professor",
+    "seatInviteNotLive": "Este convite não está mais disponível. Você ainda pode usar o código da turma.",
+    "seatInviteAlreadyClaimed": "Você já entrou neste curso com outro convite.",
+    "seatInviteFailed": "Não foi possível abrir o convite. Por favor, tente novamente mais tarde."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-27 14:57:24.318912",
+    "@@last_modified": "2026-10-30 10:21:53.740144",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Ó jẹ́ iṣẹ́-ẹ̀kọ́ Pangea fún àwọn akẹ́kọ̀ọ́ èdè {language}. Àwọn ọmọ ẹgbẹ́ rẹ̀ lè rí orúkọ àti àkọọ́lẹ̀ rẹ.",
     "centralCourseOfferTitle": "Darapọ mọ {course}?",
     "makeMyOwnCourseInstead": "Ṣe ikẹkọọ ti ara mi dipo",
-    "suggestMobileSignInSameAccount": "Lẹ́yìn náà, wọlé sí ohun èlò náà pẹ̀lú àkọọ́lẹ̀ yìí."
+    "suggestMobileSignInSameAccount": "Lẹ́yìn náà, wọlé sí ohun èlò náà pẹ̀lú àkọọ́lẹ̀ yìí.",
+    "seatInviteTitle": "Darapọ mọ {course}",
+    "seatInviteYourCourse": "ẹkọ rẹ",
+    "seatInviteEmailHint": "Lo {email} ki kilasi rẹ le ri ọ.",
+    "seatInviteClaimed": "O wa ninu {course}.",
+    "seatInvitePendingApproval": "Nduro de olukọ rẹ lati fọwọsi.",
+    "seatInviteDenied": "Olukọ rẹ ko fọwọsi akọọlẹ yii fun ẹkọ naa. O tun le lo koodu kilasi naa.",
+    "yourTeacher": "Olukọ rẹ",
+    "seatInviteNotLive": "Ifiwepe yii ko si mọ. O tun le lo koodu kilasi naa.",
+    "seatInviteAlreadyClaimed": "O ti darapọ mọ ẹkọ yii tẹlẹ pẹlu ifiwepe miiran.",
+    "seatInviteFailed": "A ko le ṣi ifiwepe naa. Jọwọ gbiyanju lẹẹkansi nigbamii."
 }

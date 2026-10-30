@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-27 14:57:18.881149",
+    "@@last_modified": "2026-10-30 10:21:43.369894",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Ity no taranja Pangea ho an'ireo mpianatra {language}. Afaka mahita ny anaranao sy ny mombamomba anao ireo mpikambana ao.",
     "centralCourseOfferTitle": "Midira amin'ny {course}?",
     "makeMyOwnCourseInstead": "Mamorona ny taranja manokana kosa",
-    "suggestMobileSignInSameAccount": "Avy eo midira amin'ny fampiharana amin'ity kaonty ity."
+    "suggestMobileSignInSameAccount": "Avy eo midira amin'ny fampiharana amin'ity kaonty ity.",
+    "seatInviteTitle": "Midira ao amin'ny {course}",
+    "seatInviteYourCourse": "ny taranjao",
+    "seatInviteEmailHint": "Ampiasao ny {email} mba hahitanao ny kilasinao.",
+    "seatInviteClaimed": "Tafiditra ao amin'ny {course} ianao.",
+    "seatInvitePendingApproval": "Miandry ny fankatoavan'ny mpampianatra anao.",
+    "seatInviteDenied": "Tsy nankatoavin'ny mpampianatra anao ity kaonty ity ho an'ny taranja. Mbola afaka mampiasa ny kaody kilasy ianao.",
+    "yourTeacher": "Ny mpampianatra anao",
+    "seatInviteNotLive": "Tsy misy intsony ity fanasana ity. Mbola afaka mampiasa ny kaody kilasy ianao.",
+    "seatInviteAlreadyClaimed": "Efa niditra tamin'ity taranja ity ianao tamin'ny fanasana hafa.",
+    "seatInviteFailed": "Tsy afaka nanokatra ny fanasana izahay. Andramo indray azafady any aoriana."
 }

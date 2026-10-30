@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-10-27 14:57:19.566024",
+    "@@last_modified": "2026-10-30 10:21:45.614250",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "၎င်းသည် {language} သင်ယူသူများအတွက် Pangea ၏ သင်တန်းဖြစ်သည်။ ၎င်း၏အဖွဲ့ဝင်များသည် သင့်အမည်နှင့် ပရိုဖိုင်ကို မြင်နိုင်ပါသည်။",
     "centralCourseOfferTitle": "{course} ကို ဝင်မလား?",
     "makeMyOwnCourseInstead": "ကျွန်ုပ်၏ကိုယ်ပိုင်သင်တန်းကို ဖန်တီးမည်",
-    "suggestMobileSignInSameAccount": "ထို့နောက် ဤအကောင့်ဖြင့် အက်ပ်သို့ ဝင်ရောက်ပါ။"
+    "suggestMobileSignInSameAccount": "ထို့နောက် ဤအကောင့်ဖြင့် အက်ပ်သို့ ဝင်ရောက်ပါ။",
+    "seatInviteTitle": "{course} သို့ ဝင်ပါ",
+    "seatInviteYourCourse": "သင်၏သင်တန်း",
+    "seatInviteEmailHint": "သင်၏အတန်းက သင့်ကိုရှာတွေ့နိုင်ရန် {email} ကို အသုံးပြုပါ။",
+    "seatInviteClaimed": "သင်သည် {course} တွင် ရှိနေပါသည်။",
+    "seatInvitePendingApproval": "သင်၏ဆရာမှ အတည်ပြုရန် စောင့်ဆိုင်းနေပါသည်။",
+    "seatInviteDenied": "သင်၏ဆရာက ဤအကောင့်ကို သင်တန်းအတွက် အတည်မပြုခဲ့ပါ။ သင်သည် အတန်းကုဒ်ကို ဆက်လက်အသုံးပြုနိုင်ပါသည်။",
+    "yourTeacher": "သင်၏ဆရာ",
+    "seatInviteNotLive": "ဤဖိတ်ကြားချက်ကို မရရှိနိုင်တော့ပါ။ သင်သည် အတန်းကုဒ်ကို ဆက်လက်အသုံးပြုနိုင်ပါသည်။",
+    "seatInviteAlreadyClaimed": "သင်သည် ဤသင်တန်းကို အခြားဖိတ်ကြားချက်တစ်ခုဖြင့် ပူးပေါင်းပြီးသားဖြစ်သည်။",
+    "seatInviteFailed": "ဖိတ်ကြားချက်ကို ကျွန်ုပ်တို့ ဖွင့်မရပါ။ နောက်မှ ထပ်ကြိုးစားပါ။"
 }

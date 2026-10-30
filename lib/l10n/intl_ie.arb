@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-27 14:57:16.746028",
+    "@@last_modified": "2026-10-30 10:21:38.997103",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10682,5 +10682,15 @@
     "centralCourseOfferBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
     "centralCourseOfferTitle": "An bhfuil tú ag iarraidh a bheith páirteach i {course}?",
     "makeMyOwnCourseInstead": "Cruthaigh mo chúrsa féin ina ionad",
-    "suggestMobileSignInSameAccount": "Ansin sínigh isteach san aip leis an gcuntas seo."
+    "suggestMobileSignInSameAccount": "Ansin sínigh isteach san aip leis an gcuntas seo.",
+    "seatInviteTitle": "Join {course}",
+    "seatInviteYourCourse": "your course",
+    "seatInviteEmailHint": "Use {email} so your class finds you.",
+    "seatInviteClaimed": "You're in {course}.",
+    "seatInvitePendingApproval": "Waiting for your teacher to approve.",
+    "seatInviteDenied": "Your teacher didn't approve this account for the course. You can still use the class code.",
+    "yourTeacher": "Your teacher",
+    "seatInviteNotLive": "This invitation is no longer available. You can still use the class code.",
+    "seatInviteAlreadyClaimed": "You already joined this course with another invitation.",
+    "seatInviteFailed": "We couldn't open the invitation. Please try again later."
 }

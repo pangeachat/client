@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-10-27 14:57:23.888547",
+    "@@last_modified": "2026-10-30 10:21:53.687860",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "דאָס איז פּאַנגעאַס קורס פֿאַר לערנערס פֿון {language}. די מיטגלידער קענען זען אײַער נאָמען און פּראָפֿיל.",
     "centralCourseOfferTitle": "זאָל איך זיך אייַנשליסן אין {course}?",
     "makeMyOwnCourseInstead": "איך וויל בעסער מאַכן מיין אייגענעם קורס",
-    "suggestMobileSignInSameAccount": "דערנאָך צייכן אריין אין דער אַפּ מיט דעם חשבון."
+    "suggestMobileSignInSameAccount": "דערנאָך צייכן אריין אין דער אַפּ מיט דעם חשבון.",
+    "seatInviteTitle": "באַהעפֿטן זיך צו {course}",
+    "seatInviteYourCourse": "אײַער קורס",
+    "seatInviteEmailHint": "ניצט {email} כּדי אײַער קלאַס זאָל אײַך געפֿינען.",
+    "seatInviteClaimed": "איר זענט אין {course}.",
+    "seatInvitePendingApproval": "וואַרטן ביז אײַער לערער וועט באַשטעטיקן.",
+    "seatInviteDenied": "אײַער לערער האָט נישט באַשטעטיקט דעם חשבון פֿאַרן קורס. איר קענט נאָך אַלץ ניצן דעם קלאַס-קאָד.",
+    "yourTeacher": "אײַער לערער",
+    "seatInviteNotLive": "די אינוויטאַציע איז מער נישט צוטריטלעך. איר קענט נאָך אַלץ ניצן דעם קלאַס-קאָד.",
+    "seatInviteAlreadyClaimed": "איר האָט זיך שוין באַהעפֿט צו דעם קורס מיט אַן אַנדער אינוויטאַציע.",
+    "seatInviteFailed": "מיר האָבן נישט געקענט עפֿענען די אינוויטאַציע. ביטע פּרוּווט ווידער שפּעטער."
 }

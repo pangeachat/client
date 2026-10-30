@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-27 14:57:17.089561",
+    "@@last_modified": "2026-10-30 10:21:40.437111",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Iki kursus Pangea kanggo para siswa {language}. Anggotane bisa ndeleng jeneng lan profil sampeyan.",
     "centralCourseOfferTitle": "Gabung {course}?",
     "makeMyOwnCourseInstead": "Gawe kursusku dhewe wae",
-    "suggestMobileSignInSameAccount": "Banjur mlebu menyang aplikasi nganggo akun iki."
+    "suggestMobileSignInSameAccount": "Banjur mlebu menyang aplikasi nganggo akun iki.",
+    "seatInviteTitle": "Gabung {course}",
+    "seatInviteYourCourse": "kursusmu",
+    "seatInviteEmailHint": "Gunakake {email} supaya kelasmu nemokake sampeyan.",
+    "seatInviteClaimed": "Sampeyan ana ing {course}.",
+    "seatInvitePendingApproval": "Ngenteni guru sampeyan nyetujoni.",
+    "seatInviteDenied": "Guru sampeyan ora nyetujoni akun iki kanggo kursus kasebut. Sampeyan isih bisa nggunakake kode kelas.",
+    "yourTeacher": "Guru sampeyan",
+    "seatInviteNotLive": "Undangan iki wis ora kasedhiya. Sampeyan isih bisa nggunakake kode kelas.",
+    "seatInviteAlreadyClaimed": "Sampeyan wis gabung kursus iki kanthi undangan liyane.",
+    "seatInviteFailed": "Kita ora bisa mbukak undangan kasebut. Coba maneh mengko."
 }

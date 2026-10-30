@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-10-27 14:57:20.428009",
+    "@@last_modified": "2026-10-30 10:21:47.443113",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "ଏହା {language} ଶିକ୍ଷାର୍ଥୀଙ୍କ ପାଇଁ Pangea ର କୋର୍ସ। ଏହାର ସଦସ୍ୟମାନେ ଆପଣଙ୍କ ନାମ ଏବଂ ପ୍ରୋଫାଇଲ୍ ଦେଖିପାରିବେ।",
     "centralCourseOfferTitle": "{course}ରେ ଯୋଗ ଦେବେ କି?",
     "makeMyOwnCourseInstead": "ଏହା ବଦଳରେ ମୋର ନିଜସ୍ୱ ପାଠ୍ୟକ୍ରମ ତିଆରି କରନ୍ତୁ",
-    "suggestMobileSignInSameAccount": "ତା’ପରେ ଏହି ଆକାଉଣ୍ଟ୍ ସହିତ ଆପରେ ସାଇନ୍ ଇନ୍ କରନ୍ତୁ।"
+    "suggestMobileSignInSameAccount": "ତା’ପରେ ଏହି ଆକାଉଣ୍ଟ୍ ସହିତ ଆପରେ ସାଇନ୍ ଇନ୍ କରନ୍ତୁ।",
+    "seatInviteTitle": "{course} ରେ ଯୋଗ ଦିଅନ୍ତୁ",
+    "seatInviteYourCourse": "ଆପଣଙ୍କ କୋର୍ସ",
+    "seatInviteEmailHint": "ଆପଣଙ୍କ ଶ୍ରେଣୀ ଆପଣଙ୍କୁ ଖୋଜିବା ପାଇଁ {email} ବ୍ୟବହାର କରନ୍ତୁ।",
+    "seatInviteClaimed": "ଆପଣ {course} ରେ ଅଛନ୍ତି।",
+    "seatInvitePendingApproval": "ଆପଣଙ୍କ ଶିକ୍ଷକଙ୍କ ଅନୁମୋଦନକୁ ଅପେକ୍ଷା କରାଯାଇଛି।",
+    "seatInviteDenied": "ଆପଣଙ୍କ ଶିକ୍ଷକ ଏହି ଆକାଉଣ୍ଟକୁ କୋର୍ସ ପାଇଁ ଅନୁମୋଦନ କରିନାହାଁନ୍ତି। ଆପଣ ଏବେ ବି କ୍ଲାସ୍ କୋଡ୍ ବ୍ୟବହାର କରିପାରିବେ।",
+    "yourTeacher": "ଆପଣଙ୍କ ଶିକ୍ଷକ",
+    "seatInviteNotLive": "ଏହି ନିମନ୍ତ୍ରଣ ଆଉ ଉପଲବ୍ଧ ନାହିଁ। ଆପଣ ଏବେ ବି କ୍ଲାସ୍ କୋଡ୍ ବ୍ୟବହାର କରିପାରିବେ।",
+    "seatInviteAlreadyClaimed": "ଆପଣ ଅନ୍ୟ ଏକ ନିମନ୍ତ୍ରଣ ସହିତ ଏହି କୋର୍ସରେ ପୂର୍ବରୁ ଯୋଗ ଦେଇଛନ୍ତି।",
+    "seatInviteFailed": "ଆମେ ନିମନ୍ତ୍ରଣ ଖୋଲିପାରିଲୁ ନାହିଁ। ଦୟାକରି ପରେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"
 }

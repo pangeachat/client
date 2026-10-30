@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-10-27 14:57:23.812372",
+    "@@last_modified": "2026-10-30 10:21:53.275846",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho neprofayile yakho.",
     "centralCourseOfferTitle": "Ukujoyina {course}?",
     "makeMyOwnCourseInstead": "Yenza eyakho ikhosi endaweni yoko",
-    "suggestMobileSignInSameAccount": "Emva koko ngena kwi-app ngale akhawunti."
+    "suggestMobileSignInSameAccount": "Emva koko ngena kwi-app ngale akhawunti.",
+    "seatInviteTitle": "Joyina {course}",
+    "seatInviteYourCourse": "ikhosi yakho",
+    "seatInviteEmailHint": "Sebenzisa {email} ukuze iklasi lakho likufumane.",
+    "seatInviteClaimed": "Uku {course}.",
+    "seatInvitePendingApproval": "Lindela utitshala wakho ukuba avume.",
+    "seatInviteDenied": "Utitshala wakho akazange ayivume le akhawunti yekhosi. Usengawusebenzisa ikhowudi yeklasi.",
+    "yourTeacher": "Utitshala wakho",
+    "seatInviteNotLive": "Esi simemo asisafumaneki. Usengawusebenzisa ikhowudi yeklasi.",
+    "seatInviteAlreadyClaimed": "Sele uyijoyinile le khosi ngesinye isimemo.",
+    "seatInviteFailed": "Asikwazanga ukuvula isimemo. Nceda zama kwakhona kamva."
 }

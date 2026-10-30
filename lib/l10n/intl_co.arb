@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-27 14:57:13.588945",
+    "@@last_modified": "2026-10-30 10:21:33.633452",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Hè u corsu di Pangea per l'amparera di u {language}. I so membri ponu vede u vostru nome è u vostru prufilu.",
     "centralCourseOfferTitle": "Unisciti à {course}?",
     "makeMyOwnCourseInstead": "Creà u mo corsu invece",
-    "suggestMobileSignInSameAccount": "Dopu cunnettatevi à l'app cù stu contu."
+    "suggestMobileSignInSameAccount": "Dopu cunnettatevi à l'app cù stu contu.",
+    "seatInviteTitle": "Unisciti à {course}",
+    "seatInviteYourCourse": "u vostru corsu",
+    "seatInviteEmailHint": "Aduprate {email} per chì a vostra classa vi trovi.",
+    "seatInviteClaimed": "Site in {course}.",
+    "seatInvitePendingApproval": "Aspittendu l'appruvazione di u vostru prufessore.",
+    "seatInviteDenied": "U vostru prufessore ùn hà micca appruvatu stu contu per u corsu. Pudete sempre aduprà u codice di a classa.",
+    "yourTeacher": "U vostru prufessore",
+    "seatInviteNotLive": "Questa invitazione ùn hè più dispunibule. Pudete sempre aduprà u codice di a classa.",
+    "seatInviteAlreadyClaimed": "Avete digià unitu à stu corsu cù un'altra invitazione.",
+    "seatInviteFailed": "Ùn pudemu micca apre l'invitazione. Per piacè riprovate più tardi."
 }

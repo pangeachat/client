@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-27 14:57:17.251683",
+    "@@last_modified": "2026-10-30 10:21:40.790865",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10950,5 +10950,15 @@
     "centralCourseOfferBody": "ეს არის Pangea-ს კურსი {language} ენის შემსწავლელებისთვის. მისი წევრები ხედავენ თქვენს სახელსა და პროფილს.",
     "centralCourseOfferTitle": "შეუერთდეთ {course}-ს?",
     "makeMyOwnCourseInstead": "სამაგიეროდ შევქმნა ჩემი კურსი",
-    "suggestMobileSignInSameAccount": "შემდეგ შედით აპლიკაციაში ამ ანგარიშით."
+    "suggestMobileSignInSameAccount": "შემდეგ შედით აპლიკაციაში ამ ანგარიშით.",
+    "seatInviteTitle": "შემოუერთდით {course}-ს",
+    "seatInviteYourCourse": "თქვენს კურსს",
+    "seatInviteEmailHint": "გამოიყენეთ {email}, რათა თქვენმა კლასმა გიპოვოთ.",
+    "seatInviteClaimed": "თქვენ ხართ {course}-ში.",
+    "seatInvitePendingApproval": "თქვენი მასწავლებლის თანხმობას ელოდება.",
+    "seatInviteDenied": "თქვენმა მასწავლებელმა არ დაამტკიცა ეს ანგარიში კურსისთვის. თქვენ კვლავ შეგიძლიათ გამოიყენოთ კლასის კოდი.",
+    "yourTeacher": "თქვენი მასწავლებელი",
+    "seatInviteNotLive": "ეს მოწვევა აღარ არის ხელმისაწვდომი. თქვენ კვლავ შეგიძლიათ გამოიყენოთ კლასის კოდი.",
+    "seatInviteAlreadyClaimed": "თქვენ უკვე შეუერთდით ამ კურსს სხვა მოწვევით.",
+    "seatInviteFailed": "მოწვევის გახსნა ვერ მოხერხდა. გთხოვთ, სცადოთ მოგვიანებით."
 }

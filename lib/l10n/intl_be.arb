@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-27 14:57:13.039284",
+    "@@last_modified": "2026-10-30 10:21:31.962816",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10067,5 +10067,15 @@
     "centralCourseOfferBody": "Гэта курс Pangea для тых, хто вывучае {language}. Яго ўдзельнікі могуць бачыць ваша імя і профіль.",
     "centralCourseOfferTitle": "Далучыцца да {course}?",
     "makeMyOwnCourseInstead": "Замест гэтага стварыць свой уласны курс",
-    "suggestMobileSignInSameAccount": "Затым увайдзіце ў праграму з дапамогай гэтага ўліковага запісу."
+    "suggestMobileSignInSameAccount": "Затым увайдзіце ў праграму з дапамогай гэтага ўліковага запісу.",
+    "seatInviteTitle": "Далучыцца да {course}",
+    "seatInviteYourCourse": "ваш курс",
+    "seatInviteEmailHint": "Выкарыстоўвайце {email}, каб ваш клас вас знайшоў.",
+    "seatInviteClaimed": "Вы ў {course}.",
+    "seatInvitePendingApproval": "Чакаем адабрэння вашага настаўніка.",
+    "seatInviteDenied": "Ваш настаўнік не ўхваліў гэты ўліковы запіс для курса. Вы ўсё яшчэ можаце выкарыстоўваць код класа.",
+    "yourTeacher": "Ваш настаўнік",
+    "seatInviteNotLive": "Гэтае запрашэнне больш недаступнае. Вы ўсё яшчэ можаце выкарыстоўваць код класа.",
+    "seatInviteAlreadyClaimed": "Вы ўжо далучыліся да гэтага курса з іншым запрашэннем.",
+    "seatInviteFailed": "Нам не ўдалося адкрыць запрашэнне. Калі ласка, паспрабуйце яшчэ раз пазней."
 }

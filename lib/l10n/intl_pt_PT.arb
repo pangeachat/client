@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-27 14:57:20.798329",
+    "@@last_modified": "2026-10-30 10:21:47.079722",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10967,5 +10967,15 @@
     "centralCourseOfferBody": "É o curso da Pangea para alunos de {language}. Os membros podem ver o teu nome e perfil.",
     "centralCourseOfferTitle": "Aderir a {course}?",
     "makeMyOwnCourseInstead": "Criar o meu próprio curso",
-    "suggestMobileSignInSameAccount": "Depois, inicie sessão na aplicação com esta conta."
+    "suggestMobileSignInSameAccount": "Depois, inicie sessão na aplicação com esta conta.",
+    "seatInviteTitle": "Aderir a {course}",
+    "seatInviteYourCourse": "o seu curso",
+    "seatInviteEmailHint": "Use {email} para que a sua turma o encontre.",
+    "seatInviteClaimed": "Está em {course}.",
+    "seatInvitePendingApproval": "A aguardar aprovação do seu professor.",
+    "seatInviteDenied": "O seu professor não aprovou esta conta para o curso. Pode continuar a usar o código da turma.",
+    "yourTeacher": "O seu professor",
+    "seatInviteNotLive": "Este convite já não está disponível. Pode continuar a usar o código da turma.",
+    "seatInviteAlreadyClaimed": "Já aderiu a este curso com outro convite.",
+    "seatInviteFailed": "Não foi possível abrir o convite. Por favor, tente novamente mais tarde."
 }

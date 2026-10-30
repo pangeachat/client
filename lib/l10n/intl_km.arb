@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-10-27 14:57:17.958549",
+    "@@last_modified": "2026-10-30 10:21:40.876367",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "នេះជាវគ្គសិក្សារបស់ Pangea សម្រាប់អ្នករៀន {language}។ សមាជិករបស់វគ្គសិក្សានេះអាចមើលឃើញឈ្មោះ និងប្រវត្តិរូបរបស់អ្នក។",
     "centralCourseOfferTitle": "ចូលរួម {course} ទេ?",
     "makeMyOwnCourseInstead": "បង្កើតវគ្គសិក្សាផ្ទាល់ខ្លួនវិញ",
-    "suggestMobileSignInSameAccount": "បន្ទាប់មកចូលកម្មវិធីដោយប្រើគណនីនេះ។"
+    "suggestMobileSignInSameAccount": "បន្ទាប់មកចូលកម្មវិធីដោយប្រើគណនីនេះ។",
+    "seatInviteTitle": "ចូលរួម {course}",
+    "seatInviteYourCourse": "វគ្គសិក្សារបស់អ្នក",
+    "seatInviteEmailHint": "ប្រើ {email} ដើម្បីឱ្យថ្នាក់របស់អ្នកស្វែងរកអ្នក។",
+    "seatInviteClaimed": "អ្នកនៅក្នុង {course}។",
+    "seatInvitePendingApproval": "កំពុងរង់ចាំគ្រូរបស់អ្នកអនុម័ត។",
+    "seatInviteDenied": "គ្រូរបស់អ្នកមិនបានអនុម័តគណនីនេះសម្រាប់វគ្គសិក្សាទេ។ អ្នកនៅតែអាចប្រើលេខកូដថ្នាក់រៀនបាន។",
+    "yourTeacher": "គ្រូរបស់អ្នក",
+    "seatInviteNotLive": "ការអញ្ជើញនេះលែងមានទៀតហើយ។ អ្នកនៅតែអាចប្រើលេខកូដថ្នាក់រៀនបាន។",
+    "seatInviteAlreadyClaimed": "អ្នកបានចូលរួមវគ្គសិក្សានេះរួចហើយជាមួយនឹងការអញ្ជើញផ្សេងទៀត។",
+    "seatInviteFailed": "យើងមិនអាចបើកការអញ្ជើញបានទេ។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។"
 }

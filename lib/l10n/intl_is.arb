@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-27 14:57:16.887083",
+    "@@last_modified": "2026-10-30 10:21:41.277244",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Þetta er námskeið Pangea fyrir {language} nemendur. Meðlimir þess geta séð nafn þitt og prófíl.",
     "centralCourseOfferTitle": "Taka þátt í {course}?",
     "makeMyOwnCourseInstead": "Búa til mitt eigið námskeið í staðinn",
-    "suggestMobileSignInSameAccount": "Skráðu þig svo inn í appið með þessum reikningi."
+    "suggestMobileSignInSameAccount": "Skráðu þig svo inn í appið með þessum reikningi.",
+    "seatInviteTitle": "Vertu með í {course}",
+    "seatInviteYourCourse": "námskeiðið þitt",
+    "seatInviteEmailHint": "Notaðu {email} svo bekkurinn þinn finni þig.",
+    "seatInviteClaimed": "Þú ert komin/n í {course}.",
+    "seatInvitePendingApproval": "Bíð eftir samþykki kennarans þíns.",
+    "seatInviteDenied": "Kennarinn þinn samþykkti ekki þennan reikning fyrir námskeiðið. Þú getur samt notað bekkjarkóðann.",
+    "yourTeacher": "Kennarinn þinn",
+    "seatInviteNotLive": "Þetta boð er ekki lengur í boði. Þú getur samt notað bekkjarkóðann.",
+    "seatInviteAlreadyClaimed": "Þú hefur nú þegar gengið í þetta námskeið með öðru boði.",
+    "seatInviteFailed": "Við gátum ekki opnað boðið. Vinsamlegast reyndu aftur síðar."
 }

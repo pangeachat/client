@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-27 14:57:19.950050",
+    "@@last_modified": "2026-10-30 10:21:45.365846",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "यो {language} सिक्नेहरूका लागि पाङ्गियाको कोर्स हो। यसका सदस्यहरूले तपाईंको नाम र प्रोफाइल हेर्न सक्छन्।",
     "centralCourseOfferTitle": "{course} मा सामेल हुने?",
     "makeMyOwnCourseInstead": "बरु म आफ्नै कोर्स बनाउँछु",
-    "suggestMobileSignInSameAccount": "त्यसपछि यो खाताबाट एपमा साइन इन गर्नुहोस्।"
+    "suggestMobileSignInSameAccount": "त्यसपछि यो खाताबाट एपमा साइन इन गर्नुहोस्।",
+    "seatInviteTitle": "{course} मा सामेल हुनुहोस्",
+    "seatInviteYourCourse": "तपाईंको पाठ्यक्रम",
+    "seatInviteEmailHint": "तपाईंको कक्षाले तपाईंलाई फेला पार्नको लागि {email} प्रयोग गर्नुहोस्।",
+    "seatInviteClaimed": "तपाईं {course} मा हुनुहुन्छ।",
+    "seatInvitePendingApproval": "तपाईंको शिक्षकले अनुमोदन गर्न पर्खँदै।",
+    "seatInviteDenied": "तपाईंको शिक्षकले यो खातालाई पाठ्यक्रमको लागि अनुमोदन गरेनन्। तपाईं अझै पनि कक्षा कोड प्रयोग गर्न सक्नुहुन्छ।",
+    "yourTeacher": "तपाईंको शिक्षक",
+    "seatInviteNotLive": "यो निमन्त्रणा अब उपलब्ध छैन। तपाईं अझै पनि कक्षा कोड प्रयोग गर्न सक्नुहुन्छ।",
+    "seatInviteAlreadyClaimed": "तपाईंले अर्को निमन्त्रणाको साथ यो पाठ्यक्रममा पहिले नै सामेल हुनुभयो।",
+    "seatInviteFailed": "हामी निमन्त्रणा खोल्न सकेनौं। कृपया पछि फेरि प्रयास गर्नुहोस्।"
 }

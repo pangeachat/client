@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-27 14:57:20.157582",
+    "@@last_modified": "2026-10-30 10:21:46.891862",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "ਇਹ {language} ਸਿੱਖਣ ਵਾਲਿਆਂ ਲਈ ਪੈਂਜੀਆ ਦਾ ਕੋਰਸ ਹੈ। ਇਸਦੇ ਮੈਂਬਰ ਤੁਹਾਡਾ ਨਾਮ ਅਤੇ ਪ੍ਰੋਫਾਈਲ ਦੇਖ ਸਕਦੇ ਹਨ।",
     "centralCourseOfferTitle": "{course} ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ?",
     "makeMyOwnCourseInstead": "ਇਸ ਦੀ ਬਜਾਏ ਆਪਣਾ ਕੋਰਸ ਬਣਾਓ",
-    "suggestMobileSignInSameAccount": "ਫਿਰ ਇਸ ਖਾਤੇ ਨਾਲ ਐਪ ਵਿੱਚ ਸਾਈਨ ਇਨ ਕਰੋ।"
+    "suggestMobileSignInSameAccount": "ਫਿਰ ਇਸ ਖਾਤੇ ਨਾਲ ਐਪ ਵਿੱਚ ਸਾਈਨ ਇਨ ਕਰੋ।",
+    "seatInviteTitle": "{course} ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
+    "seatInviteYourCourse": "ਤੁਹਾਡਾ ਕੋਰਸ",
+    "seatInviteEmailHint": "ਆਪਣੀ ਕਲਾਸ ਨੂੰ ਲੱਭਣ ਲਈ {email} ਦੀ ਵਰਤੋਂ ਕਰੋ।",
+    "seatInviteClaimed": "ਤੁਸੀਂ {course} ਵਿੱਚ ਹੋ।",
+    "seatInvitePendingApproval": "ਤੁਹਾਡੇ ਅਧਿਆਪਕ ਦੀ ਪ੍ਰਵਾਨਗੀ ਦੀ ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ।",
+    "seatInviteDenied": "ਤੁਹਾਡੇ ਅਧਿਆਪਕ ਨੇ ਇਸ ਖਾਤੇ ਨੂੰ ਕੋਰਸ ਲਈ ਮਨਜ਼ੂਰੀ ਨਹੀਂ ਦਿੱਤੀ। ਤੁਸੀਂ ਅਜੇ ਵੀ ਕਲਾਸ ਕੋਡ ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦੇ ਹੋ।",
+    "yourTeacher": "ਤੁਹਾਡਾ ਅਧਿਆਪਕ",
+    "seatInviteNotLive": "ਇਹ ਸੱਦਾ ਹੁਣ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਤੁਸੀਂ ਅਜੇ ਵੀ ਕਲਾਸ ਕੋਡ ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦੇ ਹੋ।",
+    "seatInviteAlreadyClaimed": "ਤੁਸੀਂ ਪਹਿਲਾਂ ਹੀ ਕਿਸੇ ਹੋਰ ਸੱਦੇ ਨਾਲ ਇਸ ਕੋਰਸ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋ ਚੁੱਕੇ ਹੋ।",
+    "seatInviteFailed": "ਅਸੀਂ ਸੱਦਾ ਨਹੀਂ ਖੋਲ੍ਹ ਸਕੇ। ਕਿਰਪਾ ਕਰਕੇ ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 }

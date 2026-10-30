@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-10-27 14:57:23.765829",
+    "@@last_modified": "2026-10-30 10:21:52.384726",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "یہ {language} سیکھنے والوں کے لیے Pangea کا کورس ہے۔ اس کے اراکین آپ کا نام اور پروفائل دیکھ سکتے ہیں۔",
     "centralCourseOfferTitle": "کیا {course} میں شامل ہوں؟",
     "makeMyOwnCourseInstead": "اس کے بجائے اپنا کورس خود بناؤں",
-    "suggestMobileSignInSameAccount": "پھر اس اکاؤنٹ سے ایپ میں سائن ان کریں۔"
+    "suggestMobileSignInSameAccount": "پھر اس اکاؤنٹ سے ایپ میں سائن ان کریں۔",
+    "seatInviteTitle": "{course} میں شامل ہوں",
+    "seatInviteYourCourse": "آپ کا کورس",
+    "seatInviteEmailHint": "اپنے کلاس کے ساتھیوں کو تلاش کرنے کے لیے {email} استعمال کریں۔",
+    "seatInviteClaimed": "آپ {course} میں شامل ہو گئے ہیں۔",
+    "seatInvitePendingApproval": "آپ کے استاد کی منظوری کا انتظار ہے۔",
+    "seatInviteDenied": "آپ کے استاد نے اس اکاؤنٹ کو کورس کے لیے منظور نہیں کیا۔ آپ پھر بھی کلاس کوڈ استعمال کر سکتے ہیں۔",
+    "yourTeacher": "آپ کے استاد",
+    "seatInviteNotLive": "یہ دعوت اب دستیاب نہیں ہے۔ آپ پھر بھی کلاس کوڈ استعمال کر سکتے ہیں۔",
+    "seatInviteAlreadyClaimed": "آپ پہلے ہی کسی اور دعوت کے ساتھ اس کورس میں شامل ہو چکے ہیں۔",
+    "seatInviteFailed": "ہم دعوت نہیں کھول سکے۔ براہ کرم بعد میں دوبارہ کوشش کریں۔"
 }

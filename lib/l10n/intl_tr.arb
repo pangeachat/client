@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-27 14:57:23.318667",
+    "@@last_modified": "2026-10-30 10:21:51.190890",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10351,5 +10351,15 @@
     "centralCourseOfferBody": "Bu, Pangea'nın {language} öğrenenler için kursu. Üyeleri adını ve profilini görebilir.",
     "centralCourseOfferTitle": "{course} kursuna katılmak ister misin?",
     "makeMyOwnCourseInstead": "Bunun yerine kendi kursumu oluştur",
-    "suggestMobileSignInSameAccount": "Ardından bu hesapla uygulamaya giriş yapın."
+    "suggestMobileSignInSameAccount": "Ardından bu hesapla uygulamaya giriş yapın.",
+    "seatInviteTitle": "{course} Katıl",
+    "seatInviteYourCourse": "kursunuz",
+    "seatInviteEmailHint": "Sınıfınızın sizi bulması için {email} kullanın.",
+    "seatInviteClaimed": "{course} içindesiniz.",
+    "seatInvitePendingApproval": "Öğretmeninizin onaylamasını bekliyor.",
+    "seatInviteDenied": "Öğretmeniniz bu hesabı kurs için onaylamadı. Yine de sınıf kodunu kullanabilirsiniz.",
+    "yourTeacher": "Öğretmeniniz",
+    "seatInviteNotLive": "Bu davetiye artık mevcut değil. Yine de sınıf kodunu kullanabilirsiniz.",
+    "seatInviteAlreadyClaimed": "Bu kursa başka bir davetiye ile zaten katıldınız.",
+    "seatInviteFailed": "Davetiyeyi açamadık. Lütfen daha sonra tekrar deneyin."
 }

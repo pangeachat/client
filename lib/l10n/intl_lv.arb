@@ -3515,7 +3515,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-27 14:57:18.614958",
+    "@@last_modified": "2026-10-30 10:21:42.712672",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10053,5 +10053,15 @@
     "centralCourseOfferBody": "Tas ir Pangea kurss valodu apguvējiem {language}. Tā dalībnieki var redzēt jūsu vārdu un profilu.",
     "centralCourseOfferTitle": "Pievienoties kursam {course}?",
     "makeMyOwnCourseInstead": "Tā vietā izveidot savu kursu",
-    "suggestMobileSignInSameAccount": "Pēc tam pierakstieties lietotnē ar šo kontu."
+    "suggestMobileSignInSameAccount": "Pēc tam pierakstieties lietotnē ar šo kontu.",
+    "seatInviteTitle": "Pievienoties kursam {course}",
+    "seatInviteYourCourse": "jūsu kurss",
+    "seatInviteEmailHint": "Izmantojiet {email}, lai jūsu klase jūs atrastu.",
+    "seatInviteClaimed": "Jūs esat kursā {course}.",
+    "seatInvitePendingApproval": "Gaida jūsu skolotāja apstiprinājumu.",
+    "seatInviteDenied": "Jūsu skolotājs neapstiprināja šo kontu kursam. Jūs joprojām varat izmantot klases kodu.",
+    "yourTeacher": "Jūsu skolotājs",
+    "seatInviteNotLive": "Šis uzaicinājums vairs nav pieejams. Jūs joprojām varat izmantot klases kodu.",
+    "seatInviteAlreadyClaimed": "Jūs jau pievienojāties šim kursam ar citu uzaicinājumu.",
+    "seatInviteFailed": "Mēs nevarējām atvērt uzaicinājumu. Lūdzu, mēģiniet vēlreiz vēlāk."
 }

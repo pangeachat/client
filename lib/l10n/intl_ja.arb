@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-27 14:57:17.478293",
+    "@@last_modified": "2026-10-30 10:21:40.199236",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10819,5 +10819,15 @@
     "centralCourseOfferBody": "これは{language}学習者向けのPangeaのコースです。メンバーはあなたの名前とプロフィールを見ることができます。",
     "centralCourseOfferTitle": "{course}に参加しますか？",
     "makeMyOwnCourseInstead": "代わりに自分でコースを作成する",
-    "suggestMobileSignInSameAccount": "その後、このアカウントでアプリにサインインしてください。"
+    "suggestMobileSignInSameAccount": "その後、このアカウントでアプリにサインインしてください。",
+    "seatInviteTitle": "{course}に参加",
+    "seatInviteYourCourse": "あなたのコース",
+    "seatInviteEmailHint": "クラスであなたを見つけられるように、{email}を使用してください。",
+    "seatInviteClaimed": "{course}に参加しました。",
+    "seatInvitePendingApproval": "先生の承認待ちです。",
+    "seatInviteDenied": "先生がこのアカウントのコース参加を承認しませんでした。クラスコードは引き続き使用できます。",
+    "yourTeacher": "あなたの先生",
+    "seatInviteNotLive": "この招待は利用できなくなりました。クラスコードは引き続き使用できます。",
+    "seatInviteAlreadyClaimed": "別の招待でこのコースにすでに参加しています。",
+    "seatInviteFailed": "招待を開けませんでした。後でもう一度お試しください。"
 }

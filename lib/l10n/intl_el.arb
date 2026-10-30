@@ -3389,7 +3389,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-27 14:57:13.805148",
+    "@@last_modified": "2026-10-30 10:21:34.315085",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10925,5 +10925,15 @@
     "centralCourseOfferBody": "Είναι το μάθημα της Pangea για μαθητές {language}. Τα μέλη του μπορούν να δουν το όνομα και το προφίλ σας.",
     "centralCourseOfferTitle": "Συμμετοχή στο {course};",
     "makeMyOwnCourseInstead": "Να φτιάξω το δικό μου μάθημα",
-    "suggestMobileSignInSameAccount": "Στη συνέχεια, συνδεθείτε στην εφαρμογή με αυτόν τον λογαριασμό."
+    "suggestMobileSignInSameAccount": "Στη συνέχεια, συνδεθείτε στην εφαρμογή με αυτόν τον λογαριασμό.",
+    "seatInviteTitle": "Συμμετοχή στο {course}",
+    "seatInviteYourCourse": "το μάθημά σας",
+    "seatInviteEmailHint": "Χρησιμοποιήστε το {email} για να σας βρει η τάξη σας.",
+    "seatInviteClaimed": "Είστε στο {course}.",
+    "seatInvitePendingApproval": "Αναμονή έγκρισης από τον καθηγητή σας.",
+    "seatInviteDenied": "Ο καθηγητής σας δεν ενέκρινε αυτόν τον λογαριασμό για το μάθημα. Μπορείτε ακόμα να χρησιμοποιήσετε τον κωδικό της τάξης.",
+    "yourTeacher": "Ο καθηγητής σας",
+    "seatInviteNotLive": "Αυτή η πρόσκληση δεν είναι πλέον διαθέσιμη. Μπορείτε ακόμα να χρησιμοποιήσετε τον κωδικό της τάξης.",
+    "seatInviteAlreadyClaimed": "Έχετε ήδη συμμετάσχει σε αυτό το μάθημα με άλλη πρόσκληση.",
+    "seatInviteFailed": "Δεν μπορέσαμε να ανοίξουμε την πρόσκληση. Παρακαλούμε δοκιμάστε ξανά αργότερα."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-27 14:57:21.387382",
+    "@@last_modified": "2026-10-30 10:21:48.958048",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "එය {language} ඉගෙන ගන්නන් සඳහා වන Pangea පාඨමාලාවයි. එහි සාමාජිකයින්ට ඔබේ නම සහ පැතිකඩ දැකිය හැක.",
     "centralCourseOfferTitle": "{course} හා සම්බන්ධ වෙනවාද?",
     "makeMyOwnCourseInstead": "ඒ වෙනුවට මගේම පාඨමාලාවක් සාදන්න",
-    "suggestMobileSignInSameAccount": "ඉන්පසු මෙම ගිණුමෙන් යෙදුමට පුරනය වන්න."
+    "suggestMobileSignInSameAccount": "ඉන්පසු මෙම ගිණුමෙන් යෙදුමට පුරනය වන්න.",
+    "seatInviteTitle": "{course} හා එක්වන්න",
+    "seatInviteYourCourse": "ඔබේ පාඨමාලාව",
+    "seatInviteEmailHint": "ඔබේ පන්තියට ඔබව සොයා ගැනීමට {email} භාවිතා කරන්න.",
+    "seatInviteClaimed": "ඔබ {course} හි සිටී.",
+    "seatInvitePendingApproval": "ඔබේ ගුරුවරයාගේ අනුමැතිය සඳහා රැඳී සිටින්න.",
+    "seatInviteDenied": "ඔබේ ගුරුවරයා මෙම ගිණුම පාඨමාලාව සඳහා අනුමත කළේ නැත. ඔබට තවමත් පන්ති කේතය භාවිතා කළ හැක.",
+    "yourTeacher": "ඔබේ ගුරුවරයා",
+    "seatInviteNotLive": "මෙම ආරාධනාව තවදුරටත් ලබා ගත නොහැක. ඔබට තවමත් පන්ති කේතය භාවිතා කළ හැක.",
+    "seatInviteAlreadyClaimed": "ඔබ දැනටමත් වෙනත් ආරාධනාවකින් මෙම පාඨමාලාවට සම්බන්ධ වී ඇත.",
+    "seatInviteFailed": "අපට ආරාධනාව විවෘත කිරීමට නොහැකි විය. කරුණාකර පසුව නැවත උත්සාහ කරන්න."
 }

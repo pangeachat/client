@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:13.856170",
+    "@@last_modified": "2026-10-30 10:21:34.398865",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10995,5 +10995,15 @@
     "centralCourseOfferBody": "Ĝi estas la kurso de Pangea por lernantoj de la {language} lingvo. Ĝiaj membroj povas vidi vian nomon kaj profilon.",
     "centralCourseOfferTitle": "Ĉu aliĝi al {course}?",
     "makeMyOwnCourseInstead": "Krei mian propran kurson anstataŭe",
-    "suggestMobileSignInSameAccount": "Poste ensalutu al la apo per ĉi tiu konto."
+    "suggestMobileSignInSameAccount": "Poste ensalutu al la apo per ĉi tiu konto.",
+    "seatInviteTitle": "Aliĝu al {course}",
+    "seatInviteYourCourse": "via kurso",
+    "seatInviteEmailHint": "Uzu {email} por ke via klaso trovu vin.",
+    "seatInviteClaimed": "Vi estas en {course}.",
+    "seatInvitePendingApproval": "Atendante aprobon de via instruisto.",
+    "seatInviteDenied": "Via instruisto ne aprobis ĉi tiun konton por la kurso. Vi ankoraŭ povas uzi la klasan kodon.",
+    "yourTeacher": "Via instruisto",
+    "seatInviteNotLive": "Ĉi tiu invito ne plu disponeblas. Vi ankoraŭ povas uzi la klasan kodon.",
+    "seatInviteAlreadyClaimed": "Vi jam aliĝis al ĉi tiu kurso per alia invito.",
+    "seatInviteFailed": "Ni ne povis malfermi la inviton. Bonvolu reprovi poste."
 }

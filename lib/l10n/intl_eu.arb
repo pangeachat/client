@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-27 14:57:14.663799",
+    "@@last_modified": "2026-10-30 10:21:37.133282",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,15 @@
     "centralCourseOfferBody": "Pangearen ikastaroa da {language} ikasleentzat. Bertako kideek zure izena eta profila ikus ditzakete.",
     "centralCourseOfferTitle": "{course} ikastaroan sartu?",
     "makeMyOwnCourseInstead": "Nire ikastaroa sortu ordez",
-    "suggestMobileSignInSameAccount": "Ondoren, hasi saioa aplikazioan kontu honekin."
+    "suggestMobileSignInSameAccount": "Ondoren, hasi saioa aplikazioan kontu honekin.",
+    "seatInviteTitle": "{course} ikastaroan sartu",
+    "seatInviteYourCourse": "zure ikastaroa",
+    "seatInviteEmailHint": "Erabili {email} zure klaseak aurki zaitzan.",
+    "seatInviteClaimed": "{course} ikastaroan zaude.",
+    "seatInvitePendingApproval": "Zure irakasleak onartu zain.",
+    "seatInviteDenied": "Zure irakasleak ez du kontu hau ikastarorako onartu. Klase-kodea erabil dezakezu oraindik.",
+    "yourTeacher": "Zure irakaslea",
+    "seatInviteNotLive": "Gonbidapen hau ez dago erabilgarri jada. Klase-kodea erabil dezakezu oraindik.",
+    "seatInviteAlreadyClaimed": "Dagoeneko sartu zara ikastaro honetan beste gonbidapen batekin.",
+    "seatInviteFailed": "Ezin izan dugu gonbidapena ireki. Saiatu berriro geroago."
 }

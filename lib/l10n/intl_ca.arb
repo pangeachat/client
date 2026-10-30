@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:13.560671",
+    "@@last_modified": "2026-10-30 10:21:34.320013",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10180,5 +10180,15 @@
     "centralCourseOfferBody": "És el curs de Pangea per a aprenents de {language}. Els seus membres poden veure el teu nom i perfil.",
     "centralCourseOfferTitle": "Unir-me a {course}?",
     "makeMyOwnCourseInstead": "Crear el meu propi curs",
-    "suggestMobileSignInSameAccount": "Després, inicia sessió a l'aplicació amb aquest compte."
+    "suggestMobileSignInSameAccount": "Després, inicia sessió a l'aplicació amb aquest compte.",
+    "seatInviteTitle": "Uneix-te a {course}",
+    "seatInviteYourCourse": "el teu curs",
+    "seatInviteEmailHint": "Fes servir {email} perquè la teva classe et trobi.",
+    "seatInviteClaimed": "Ja ets a {course}.",
+    "seatInvitePendingApproval": "Esperant l'aprovació del teu professor.",
+    "seatInviteDenied": "El teu professor no ha aprovat aquest compte per al curs. Encara pots utilitzar el codi de la classe.",
+    "yourTeacher": "El teu professor",
+    "seatInviteNotLive": "Aquesta invitació ja no està disponible. Encara pots utilitzar el codi de la classe.",
+    "seatInviteAlreadyClaimed": "Ja t'has unit a aquest curs amb una altra invitació.",
+    "seatInviteFailed": "No hem pogut obrir la invitació. Torna-ho a provar més tard."
 }

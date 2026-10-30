@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-27 14:57:18.506619",
+    "@@last_modified": "2026-10-30 10:21:42.471145",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Бул {language} үйрөнүүчүлөр үчүн Pangea курсу. Анын мүчөлөрү сиздин атыңызды жана профилиңизди көрө алышат.",
     "centralCourseOfferTitle": "{course} курсуна кошуласызбы?",
     "makeMyOwnCourseInstead": "Анын ордуна өзүмдүн курсумду түзөм",
-    "suggestMobileSignInSameAccount": "Андан кийин бул аккаунт менен колдонмого кириңиз."
+    "suggestMobileSignInSameAccount": "Андан кийин бул аккаунт менен колдонмого кириңиз.",
+    "seatInviteTitle": "{course} курсуна кошулуңуз",
+    "seatInviteYourCourse": "сиздин курсуңуз",
+    "seatInviteEmailHint": "Сизди классташтарыңыз табышы үчүн {email} колдонуңуз.",
+    "seatInviteClaimed": "Сиз {course} курсундасыз.",
+    "seatInvitePendingApproval": "Мугалимиңиздин уруксатын күтүп жатабыз.",
+    "seatInviteDenied": "Мугалимиңиз бул аккаунтту курска уруксат берген жок. Сиз дагы эле класс кодун колдоно аласыз.",
+    "yourTeacher": "Сиздин мугалимиңиз",
+    "seatInviteNotLive": "Бул чакыруу мындан ары жеткиликтүү эмес. Сиз дагы эле класс кодун колдоно аласыз.",
+    "seatInviteAlreadyClaimed": "Сиз бул курска башка чакыруу менен кошулгансыз.",
+    "seatInviteFailed": "Чакырууну ача алган жокпуз. Кийинчерээк кайра аракет кылыңыз."
 }

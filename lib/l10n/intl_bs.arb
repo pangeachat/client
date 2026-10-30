@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-10-27 14:57:12.974639",
+    "@@last_modified": "2026-10-30 10:21:32.470607",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Ovo je Pangea kurs za učenike {language} jezika. Njegovi članovi mogu vidjeti vaše ime i profil.",
     "centralCourseOfferTitle": "Pridružiti se {course}?",
     "makeMyOwnCourseInstead": "Umjesto toga, kreiraj moj vlastiti kurs",
-    "suggestMobileSignInSameAccount": "Zatim se prijavite u aplikaciju s ovim računom."
+    "suggestMobileSignInSameAccount": "Zatim se prijavite u aplikaciju s ovim računom.",
+    "seatInviteTitle": "Pridružite se kursu {course}",
+    "seatInviteYourCourse": "vaš kurs",
+    "seatInviteEmailHint": "Koristite {email} kako bi vas vaš razred pronašao.",
+    "seatInviteClaimed": "U kursu ste {course}.",
+    "seatInvitePendingApproval": "Čekam odobrenje vašeg nastavnika.",
+    "seatInviteDenied": "Vaš nastavnik nije odobrio ovaj nalog za kurs. I dalje možete koristiti kod za razred.",
+    "yourTeacher": "Vaš nastavnik",
+    "seatInviteNotLive": "Ova pozivnica više nije dostupna. I dalje možete koristiti kod za razred.",
+    "seatInviteAlreadyClaimed": "Već ste se pridružili ovom kursu s drugom pozivnicom.",
+    "seatInviteFailed": "Nismo mogli otvoriti pozivnicu. Pokušajte ponovo kasnije."
 }

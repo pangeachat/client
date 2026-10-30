@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:23.646048",
+    "@@last_modified": "2026-10-30 10:21:32.310019",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10678,5 +10678,15 @@
     "centralCourseOfferBody": "এটি {language} শিক্ষার্থীদের জন্য প্যানজিয়ার কোর্স। এর সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।",
     "centralCourseOfferTitle": "{course}-এ যোগ দেবেন?",
     "makeMyOwnCourseInstead": "এর বদলে আমার নিজের কোর্স তৈরি করি",
-    "suggestMobileSignInSameAccount": "তারপর এই অ্যাকাউন্ট দিয়ে অ্যাপে সাইন ইন করুন।"
+    "suggestMobileSignInSameAccount": "তারপর এই অ্যাকাউন্ট দিয়ে অ্যাপে সাইন ইন করুন।",
+    "seatInviteTitle": "{course}-এ যোগ দিন",
+    "seatInviteYourCourse": "আপনার কোর্স",
+    "seatInviteEmailHint": "আপনার ক্লাস যাতে আপনাকে খুঁজে পায়, তার জন্য {email} ব্যবহার করুন।",
+    "seatInviteClaimed": "আপনি {course}-এ আছেন।",
+    "seatInvitePendingApproval": "আপনার শিক্ষকের অনুমোদনের জন্য অপেক্ষা করা হচ্ছে।",
+    "seatInviteDenied": "আপনার শিক্ষক এই অ্যাকাউন্টের জন্য কোর্সটি অনুমোদন করেননি। আপনি এখনও ক্লাস কোড ব্যবহার করতে পারেন।",
+    "yourTeacher": "আপনার শিক্ষক",
+    "seatInviteNotLive": "এই আমন্ত্রণটি আর উপলব্ধ নেই। আপনি এখনও ক্লাস কোড ব্যবহার করতে পারেন।",
+    "seatInviteAlreadyClaimed": "আপনি অন্য একটি আমন্ত্রণ ব্যবহার করে ইতিমধ্যেই এই কোর্সে যোগ দিয়েছেন।",
+    "seatInviteFailed": "আমরা আমন্ত্রণটি খুলতে পারিনি। অনুগ্রহ করে পরে আবার চেষ্টা করুন।"
 }

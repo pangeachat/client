@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-27 14:57:21.742786",
+    "@@last_modified": "2026-10-30 10:21:49.379127",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "O le kosi a Pangea mo tagata aʻoga {language}. E mafai e ona sui ona vaʻai i lou igoa ma lau talaaga.",
     "centralCourseOfferTitle": "Auai i le {course}?",
     "makeMyOwnCourseInstead": "Fausia laʻu lava kosi",
-    "suggestMobileSignInSameAccount": "Ona saini lea i totonu o le app i lenei teugatupe."
+    "suggestMobileSignInSameAccount": "Ona saini lea i totonu o le app i lenei teugatupe.",
+    "seatInviteTitle": "Auai i le {course}",
+    "seatInviteYourCourse": "lau vasega",
+    "seatInviteEmailHint": "Fa'aaoga le {email} ina ia maua oe e lau vasega.",
+    "seatInviteClaimed": "Ua e i ai i le {course}.",
+    "seatInvitePendingApproval": "Fa'atali mo le fa'amaoniga a lau faiaoga.",
+    "seatInviteDenied": "E le'i fa'amaonia e lau faiaoga lenei teugatupe mo le vasega. E mafai lava ona e fa'aaogaina le code o le vasega.",
+    "yourTeacher": "Lau faiaoga",
+    "seatInviteNotLive": "Ua le toe avanoa lenei vala'aulia. E mafai lava ona e fa'aaogaina le code o le vasega.",
+    "seatInviteAlreadyClaimed": "Ua uma ona e auai i lenei vasega i se isi vala'aulia.",
+    "seatInviteFailed": "E le mafai ona matou tatalaina le vala'aulia. Fa'amolemole toe taumafai mulimuli ane."
 }

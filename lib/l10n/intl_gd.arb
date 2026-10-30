@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-27 14:57:15.262485",
+    "@@last_modified": "2026-10-30 10:21:36.581666",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Is e cùrsa Pangea a th' ann do luchd-ionnsachaidh {language}. Chì na buill d' ainm agus do phròifil.",
     "centralCourseOfferTitle": "Thig a-steach do {course}?",
     "makeMyOwnCourseInstead": "Cruthaich mo chùrsa fhèin an àite sin",
-    "suggestMobileSignInSameAccount": "An uairsin clàraich a-steach don aplacaid leis a’ chunntas seo."
+    "suggestMobileSignInSameAccount": "An uairsin clàraich a-steach don aplacaid leis a’ chunntas seo.",
+    "seatInviteTitle": "Thig a-steach do {course}",
+    "seatInviteYourCourse": "do chùrsa",
+    "seatInviteEmailHint": "Cleachd {email} gus am faigh do chlas thu.",
+    "seatInviteClaimed": "Tha thu ann an {course}.",
+    "seatInvitePendingApproval": "A' feitheamh ri do thidsear cead a thoirt seachad.",
+    "seatInviteDenied": "Cha do dh'aontaich do thidsear an cunntas seo airson a' chùrsa. Faodaidh tu an còd-clas a chleachdadh fhathast.",
+    "yourTeacher": "Do thidsear",
+    "seatInviteNotLive": "Chan eil an cuireadh seo ri fhaighinn tuilleadh. Faodaidh tu an còd-clas a chleachdadh fhathast.",
+    "seatInviteAlreadyClaimed": "Tha thu air a dhol a-steach don chùrsa seo mu thràth le cuireadh eile.",
+    "seatInviteFailed": "Cha b' urrainn dhuinn an cuireadh fhosgladh. Feuch ris a-rithist nas fhaide air adhart."
 }

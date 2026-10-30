@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-27 14:57:18.113108",
+    "@@last_modified": "2026-10-30 10:21:43.474611",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Et ass de Pangea-Cours fir {language}-Léierpersonal. D'Membere kënnen Ären Numm an Äre Profil gesinn.",
     "centralCourseOfferTitle": "Bei {course} matmaachen?",
     "makeMyOwnCourseInstead": "Mäin eegene Cours erstellen",
-    "suggestMobileSignInSameAccount": "Mellt Iech dann an der App mat dësem Kont un."
+    "suggestMobileSignInSameAccount": "Mellt Iech dann an der App mat dësem Kont un.",
+    "seatInviteTitle": "Maach mat bei {course}",
+    "seatInviteYourCourse": "däi Cours",
+    "seatInviteEmailHint": "Benotz {email} fir dass deng Klass dech fënnt.",
+    "seatInviteClaimed": "Du bass am Cours {course}.",
+    "seatInvitePendingApproval": "Waarden op d'Zoustëmmung vun dengem Enseignant.",
+    "seatInviteDenied": "Däin Enseignant huet dëse Kont net fir de Cours guttgeheescht. Du kanns ëmmer nach de Klassencode benotzen.",
+    "yourTeacher": "Däin Enseignant",
+    "seatInviteNotLive": "Dës Invitatioun ass net méi disponibel. Du kanns ëmmer nach de Klassencode benotzen.",
+    "seatInviteAlreadyClaimed": "Du bass schonn mat enger anerer Invitatioun an dëse Cours bäigetrueden.",
+    "seatInviteFailed": "Mir konnten d'Invitatioun net opmaachen. Probéier w.e.g. méi spéit nach eng Kéier."
 }

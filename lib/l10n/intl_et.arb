@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-27 14:57:14.550178",
+    "@@last_modified": "2026-10-30 10:21:36.142354",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10050,5 +10050,15 @@
     "centralCourseOfferBody": "See on Pangea kursus {language} õppijatele. Selle liikmed näevad sinu nime ja profiili.",
     "centralCourseOfferTitle": "Liituda kursusega {course}?",
     "makeMyOwnCourseInstead": "Looma oma kursuse",
-    "suggestMobileSignInSameAccount": "Seejärel logi selle kontoga rakendusse sisse."
+    "suggestMobileSignInSameAccount": "Seejärel logi selle kontoga rakendusse sisse.",
+    "seatInviteTitle": "Liitu kursusega {course}",
+    "seatInviteYourCourse": "sinu kursus",
+    "seatInviteEmailHint": "Kasuta e-posti aadressi {email}, et klass sind leiaks.",
+    "seatInviteClaimed": "Oled kursusel {course}.",
+    "seatInvitePendingApproval": "Ootab õpetaja heakskiitu.",
+    "seatInviteDenied": "Sinu õpetaja ei kinnitanud seda kontot kursusele. Saad siiski kasutada klassikoodi.",
+    "yourTeacher": "Sinu õpetaja",
+    "seatInviteNotLive": "See kutse pole enam saadaval. Saad siiski kasutada klassikoodi.",
+    "seatInviteAlreadyClaimed": "Oled juba selle kursusega liitunud teise kutsega.",
+    "seatInviteFailed": "Kutset ei õnnestunud avada. Palun proovi hiljem uuesti."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-27 14:57:22.742790",
+    "@@last_modified": "2026-10-30 10:21:51.171817",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Ин курси Pangea барои омӯзандагони забони {language} аст. Аъзоёни он метавонанд ном ва профили шуморо бубинанд.",
     "centralCourseOfferTitle": "Ба {course} ҳамроҳ шавед?",
     "makeMyOwnCourseInstead": "Ба ҷои ин курси худро созед",
-    "suggestMobileSignInSameAccount": "Сипас бо ин ҳисоб ба барнома ворид шавед."
+    "suggestMobileSignInSameAccount": "Сипас бо ин ҳисоб ба барнома ворид шавед.",
+    "seatInviteTitle": "Ба {course} ҳамроҳ шавед",
+    "seatInviteYourCourse": "курси шумо",
+    "seatInviteEmailHint": "Барои он ки синфатон шуморо пайдо кунад, {email}-ро истифода баред.",
+    "seatInviteClaimed": "Шумо дар {course} ҳастед.",
+    "seatInvitePendingApproval": "Интизори тасдиқи муаллими шумо.",
+    "seatInviteDenied": "Муаллими шумо ин ҳисобро барои курс тасдиқ накард. Шумо ба ҳар ҳол метавонед рамзи синфро истифода баред.",
+    "yourTeacher": "Муаллими шумо",
+    "seatInviteNotLive": "Ин даъватнома дигар дастрас нест. Шумо ба ҳар ҳол метавонед рамзи синфро истифода баред.",
+    "seatInviteAlreadyClaimed": "Шумо аллакай ба ин курс бо даъватномаи дигар ҳамроҳ шудаед.",
+    "seatInviteFailed": "Мо даъватномаро кушода натавонистем. Лутфан баъдтар бори дигар кӯшиш кунед."
 }

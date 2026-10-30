@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-27 14:57:13.850855",
+    "@@last_modified": "2026-10-30 10:21:34.091850",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10544,5 +10544,15 @@
     "centralCourseOfferBody": "Je to kurz Pangea pro studenty {language}. Jeho členové uvidí vaše jméno a profil.",
     "centralCourseOfferTitle": "Připojit se k {course}?",
     "makeMyOwnCourseInstead": "Vytvořit si vlastní kurz",
-    "suggestMobileSignInSameAccount": "Poté se do aplikace přihlaste pomocí tohoto účtu."
+    "suggestMobileSignInSameAccount": "Poté se do aplikace přihlaste pomocí tohoto účtu.",
+    "seatInviteTitle": "Připojte se k {course}",
+    "seatInviteYourCourse": "váš kurz",
+    "seatInviteEmailHint": "Použijte {email}, aby vás vaše třída našla.",
+    "seatInviteClaimed": "Jste v kurzu {course}.",
+    "seatInvitePendingApproval": "Čeká se na schválení vaším učitelem.",
+    "seatInviteDenied": "Váš učitel tento účet pro kurz neschválil. Stále můžete použít kód třídy.",
+    "yourTeacher": "Váš učitel",
+    "seatInviteNotLive": "Tato pozvánka již není k dispozici. Stále můžete použít kód třídy.",
+    "seatInviteAlreadyClaimed": "K tomuto kurzu jste se již připojili s jinou pozvánkou.",
+    "seatInviteFailed": "Pozvánku se nepodařilo otevřít. Zkuste to prosím později."
 }

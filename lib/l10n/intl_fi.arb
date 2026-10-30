@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-27 14:57:14.694714",
+    "@@last_modified": "2026-10-30 10:21:35.773049",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10090,5 +10090,15 @@
     "centralCourseOfferBody": "Tämä on Pangean kurssi {language}-kielen opiskelijoille. Kurssin jäsenet näkevät nimesi ja profiilisi.",
     "centralCourseOfferTitle": "Liity kurssille {course}?",
     "makeMyOwnCourseInstead": "Luo oma kurssi sen sijaan",
-    "suggestMobileSignInSameAccount": "Kirjaudu sitten sovellukseen tällä tilillä."
+    "suggestMobileSignInSameAccount": "Kirjaudu sitten sovellukseen tällä tilillä.",
+    "seatInviteTitle": "Liity kurssille {course}",
+    "seatInviteYourCourse": "kurssillesi",
+    "seatInviteEmailHint": "Käytä sähköpostiosoitetta {email}, jotta luokkasi löytää sinut.",
+    "seatInviteClaimed": "Olet kurssilla {course}.",
+    "seatInvitePendingApproval": "Odotetaan opettajan hyväksyntää.",
+    "seatInviteDenied": "Opettajasi ei hyväksynyt tätä tiliä kurssille. Voit silti käyttää luokkakoodia.",
+    "yourTeacher": "Opettajasi",
+    "seatInviteNotLive": "Tämä kutsu ei ole enää saatavilla. Voit silti käyttää luokkakoodia.",
+    "seatInviteAlreadyClaimed": "Olet jo liittynyt tälle kurssille toisella kutsulla.",
+    "seatInviteFailed": "Kutsua ei voitu avata. Yritä myöhemmin uudelleen."
 }

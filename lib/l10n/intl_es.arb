@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-27 14:57:14.586310",
+    "@@last_modified": "2026-10-30 10:21:35.003669",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8282,5 +8282,15 @@
     "centralCourseOfferBody": "Es el curso de Pangea para estudiantes de {language}. Sus miembros pueden ver tu nombre y perfil.",
     "centralCourseOfferTitle": "¿Unirse a {course}?",
     "makeMyOwnCourseInstead": "Crear mi propio curso",
-    "suggestMobileSignInSameAccount": "Luego inicia sesión en la aplicación con esta cuenta."
+    "suggestMobileSignInSameAccount": "Luego inicia sesión en la aplicación con esta cuenta.",
+    "seatInviteTitle": "Únete a {course}",
+    "seatInviteYourCourse": "tu curso",
+    "seatInviteEmailHint": "Usa {email} para que tu clase te encuentre.",
+    "seatInviteClaimed": "Estás en {course}.",
+    "seatInvitePendingApproval": "Esperando la aprobación de tu profesor.",
+    "seatInviteDenied": "Tu profesor no aprobó esta cuenta para el curso. Aún puedes usar el código de clase.",
+    "yourTeacher": "Tu profesor",
+    "seatInviteNotLive": "Esta invitación ya no está disponible. Aún puedes usar el código de clase.",
+    "seatInviteAlreadyClaimed": "Ya te uniste a este curso con otra invitación.",
+    "seatInviteFailed": "No pudimos abrir la invitación. Inténtalo de nuevo más tarde."
 }

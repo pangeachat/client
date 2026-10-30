@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-27 14:57:21.595740",
+    "@@last_modified": "2026-10-30 10:21:49.159857",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Iyi ikosi yePangea yevadzidzi ve {language}. Nhengo dzayo dzinogona kuona zita rako neprofile yako.",
     "centralCourseOfferTitle": "Pinda mu {course}?",
     "makeMyOwnCourseInstead": "Gadzira kosi yangu pachangu",
-    "suggestMobileSignInSameAccount": "Wobva wapinda muapp neakaunti iyi."
+    "suggestMobileSignInSameAccount": "Wobva wapinda muapp neakaunti iyi.",
+    "seatInviteTitle": "Join {course}",
+    "seatInviteYourCourse": "kosi yako",
+    "seatInviteEmailHint": "Shandisa {email} kuitira kuti kirasi yako ikuwane.",
+    "seatInviteClaimed": "Wapinda mu {course}.",
+    "seatInvitePendingApproval": "Kwakumirira kuti mudzidzisi wako abvumire.",
+    "seatInviteDenied": "Mudzidzisi wako haana kubvumira account iyi kukosi. Unogona kuramba uchishandisa kodhi yekirasi.",
+    "yourTeacher": "Mudzidzisi wako",
+    "seatInviteNotLive": "Kukoka uku hakuchawanikwi. Unogona kuramba uchishandisa kodhi yekirasi.",
+    "seatInviteAlreadyClaimed": "Wakatopinda mukosi iyi nekumwe kukoka.",
+    "seatInviteFailed": "Hatina kukwanisa kuvhura kukoka. Ndapota edza zvakare gare gare."
 }

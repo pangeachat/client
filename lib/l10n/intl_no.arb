@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-27 14:57:20.110907",
+    "@@last_modified": "2026-10-30 10:21:45.564837",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Det er Pangeas kurs for {language}-elever. Medlemmene kan se navnet og profilen din.",
     "centralCourseOfferTitle": "Bli med på {course}?",
     "makeMyOwnCourseInstead": "Lag mitt eget kurs i stedet",
-    "suggestMobileSignInSameAccount": "Logg deretter på appen med denne kontoen."
+    "suggestMobileSignInSameAccount": "Logg deretter på appen med denne kontoen.",
+    "seatInviteTitle": "Bli med i {course}",
+    "seatInviteYourCourse": "kurset ditt",
+    "seatInviteEmailHint": "Bruk {email} slik at klassen din finner deg.",
+    "seatInviteClaimed": "Du er med i {course}.",
+    "seatInvitePendingApproval": "Venter på godkjenning fra læreren din.",
+    "seatInviteDenied": "Læreren din godkjente ikke denne kontoen for kurset. Du kan fortsatt bruke klassekoden.",
+    "yourTeacher": "Læreren din",
+    "seatInviteNotLive": "Denne invitasjonen er ikke lenger tilgjengelig. Du kan fortsatt bruke klassekoden.",
+    "seatInviteAlreadyClaimed": "Du har allerede blitt med i dette kurset med en annen invitasjon.",
+    "seatInviteFailed": "Vi kunne ikke åpne invitasjonen. Vennligst prøv igjen senere."
 }

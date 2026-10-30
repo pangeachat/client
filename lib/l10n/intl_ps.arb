@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-27 14:57:20.411576",
+    "@@last_modified": "2026-10-30 10:21:47.434956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "دا د {language} زده کونکو لپاره د پانګیا کورس دی. د دې غړي کولی شي ستاسو نوم او پروفایل وګوري.",
     "centralCourseOfferTitle": "{course} سره یوځای شئ؟",
     "makeMyOwnCourseInstead": "پرځای یې خپل کورس جوړ کړئ",
-    "suggestMobileSignInSameAccount": "بیا په دې حساب سره اپلیکیشن ته ننوځئ."
+    "suggestMobileSignInSameAccount": "بیا په دې حساب سره اپلیکیشن ته ننوځئ.",
+    "seatInviteTitle": "{course} ته ورګډ شئ",
+    "seatInviteYourCourse": "ستاسو کورس",
+    "seatInviteEmailHint": "{email} وکاروئ ترڅو ستاسو ټولګی تاسو ومومي.",
+    "seatInviteClaimed": "تاسو په {course} کې یاست.",
+    "seatInvitePendingApproval": "ستاسو د ښوونکي د تایید لپاره انتظار دی.",
+    "seatInviteDenied": "ستاسو ښوونکي دا حساب د کورس لپاره تایید نه کړ. تاسو لاهم کولی شئ د ټولګي کوډ وکاروئ.",
+    "yourTeacher": "ستاسو ښوونکی",
+    "seatInviteNotLive": "دا بلنه نور شتون نلري. تاسو لاهم کولی شئ د ټولګي کوډ وکاروئ.",
+    "seatInviteAlreadyClaimed": "تاسو دمخه دا کورس د بلې بلنې سره یوځای کړی دی.",
+    "seatInviteFailed": "موږ ونشو کولی بلنه پرانیزو. مهرباني وکړئ وروسته بیا هڅه وکړئ."
 }

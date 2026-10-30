@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-27 14:57:19.548025",
+    "@@last_modified": "2026-10-30 10:21:45.112160",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Huwa l-kors ta' Pangea għal dawk li qed jitgħallmu l-{language}. Il-membri tiegħu jistgħu jaraw ismek u l-profil tiegħek.",
     "centralCourseOfferTitle": "Tissieħeb f'{course}'?",
     "makeMyOwnCourseInstead": "Nagħmel il-kors tiegħi stess",
-    "suggestMobileSignInSameAccount": "Imbagħad idħol fl-app b'dan il-kont."
+    "suggestMobileSignInSameAccount": "Imbagħad idħol fl-app b'dan il-kont.",
+    "seatInviteTitle": "Ingħaqad ma' {course}",
+    "seatInviteYourCourse": "il-kors tiegħek",
+    "seatInviteEmailHint": "Uża {email} biex il-klassi tiegħek issibek.",
+    "seatInviteClaimed": "Inti f'{course}.",
+    "seatInvitePendingApproval": "Qed tistenna l-approvazzjoni tal-għalliem tiegħek.",
+    "seatInviteDenied": "L-għalliem tiegħek ma approvax dan il-kont għall-kors. Xorta tista' tuża l-kodiċi tal-klassi.",
+    "yourTeacher": "L-għalliem tiegħek",
+    "seatInviteNotLive": "Din l-istedina m'għadhiex disponibbli. Xorta tista' tuża l-kodiċi tal-klassi.",
+    "seatInviteAlreadyClaimed": "Diġà ngħaqadt ma' dan il-kors b'istedina oħra.",
+    "seatInviteFailed": "Ma stajniex niftħu l-istedina. Jekk jogħġbok erġa' pprova aktar tard."
 }

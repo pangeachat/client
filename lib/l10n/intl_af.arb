@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-10-27 14:57:12.844761",
+    "@@last_modified": "2026-10-30 10:21:32.196934",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Dit is Pangea se kursus vir {language}-leerders. Die lede daarvan kan jou naam en profiel sien.",
     "centralCourseOfferTitle": "Sluit aan by {course}?",
     "makeMyOwnCourseInstead": "Maak eerder my eie kursus",
-    "suggestMobileSignInSameAccount": "Meld dan by die toepassing aan met hierdie rekening."
+    "suggestMobileSignInSameAccount": "Meld dan by die toepassing aan met hierdie rekening.",
+    "seatInviteTitle": "Sluit aan by {course}",
+    "seatInviteYourCourse": "jou kursus",
+    "seatInviteEmailHint": "Gebruik {email} sodat jou klas jou kan vind.",
+    "seatInviteClaimed": "Jy is in {course}.",
+    "seatInvitePendingApproval": "Wag vir jou onderwyser om goed te keur.",
+    "seatInviteDenied": "Jou onderwyser het nie hierdie rekening vir die kursus goedgekeur nie. Jy kan steeds die klaskode gebruik.",
+    "yourTeacher": "Jou onderwyser",
+    "seatInviteNotLive": "Hierdie uitnodiging is nie meer beskikbaar nie. Jy kan steeds die klaskode gebruik.",
+    "seatInviteAlreadyClaimed": "Jy het reeds by hierdie kursus aangesluit met 'n ander uitnodiging.",
+    "seatInviteFailed": "Ons kon nie die uitnodiging oopmaak nie. Probeer asseblief later weer."
 }

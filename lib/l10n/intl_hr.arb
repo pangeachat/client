@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-10-27 14:57:16.180417",
+    "@@last_modified": "2026-10-30 10:21:38.984746",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10486,5 +10486,15 @@
     "centralCourseOfferBody": "Ovo je Pangein tečaj za učenike {language} jezika. Njegovi članovi mogu vidjeti vaše ime i profil.",
     "centralCourseOfferTitle": "Pridružiti se tečaju {course}?",
     "makeMyOwnCourseInstead": "Umjesto toga, izradite vlastiti tečaj",
-    "suggestMobileSignInSameAccount": "Zatim se prijavite u aplikaciju s ovim računom."
+    "suggestMobileSignInSameAccount": "Zatim se prijavite u aplikaciju s ovim računom.",
+    "seatInviteTitle": "Pridružite se tečaju {course}",
+    "seatInviteYourCourse": "vaš tečaj",
+    "seatInviteEmailHint": "Koristite {email} kako bi vas vaš razred pronašao.",
+    "seatInviteClaimed": "U tečaju ste {course}.",
+    "seatInvitePendingApproval": "Čeka se odobrenje vašeg učitelja.",
+    "seatInviteDenied": "Vaš učitelj nije odobrio ovaj račun za tečaj. I dalje možete koristiti kod razreda.",
+    "yourTeacher": "Vaš učitelj",
+    "seatInviteNotLive": "Ova pozivnica više nije dostupna. I dalje možete koristiti kod razreda.",
+    "seatInviteAlreadyClaimed": "Već ste se pridružili ovom tečaju s drugom pozivnicom.",
+    "seatInviteFailed": "Nismo mogli otvoriti pozivnicu. Pokušajte ponovno kasnije."
 }

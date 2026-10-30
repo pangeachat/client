@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:15.481767",
+    "@@last_modified": "2026-10-30 10:21:37.869120",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10964,5 +10964,15 @@
     "centralCourseOfferBody": "זהו הקורס של Pangea ללומדי {language}. חברי הקורס יכולים לראות את שמך ואת הפרופיל שלך.",
     "centralCourseOfferTitle": "להצטרף ל{course}?",
     "makeMyOwnCourseInstead": "ליצור קורס משלי במקום",
-    "suggestMobileSignInSameAccount": "לאחר מכן היכנס לאפליקציה עם חשבון זה."
+    "suggestMobileSignInSameAccount": "לאחר מכן היכנס לאפליקציה עם חשבון זה.",
+    "seatInviteTitle": "הצטרף/הצטרפי ל-{course}",
+    "seatInviteYourCourse": "הקורס שלך",
+    "seatInviteEmailHint": "השתמש/י ב-{email} כדי שהכיתה שלך תמצא אותך.",
+    "seatInviteClaimed": "את/ה בתוך {course}.",
+    "seatInvitePendingApproval": "ממתין/ה לאישור המורה שלך.",
+    "seatInviteDenied": "המורה שלך לא אישר/ה את החשבון הזה לקורס. עדיין באפשרותך להשתמש בקוד הכיתה.",
+    "yourTeacher": "המורה שלך",
+    "seatInviteNotLive": "ההזמנה הזו אינה זמינה עוד. עדיין באפשרותך להשתמש בקוד הכיתה.",
+    "seatInviteAlreadyClaimed": "כבר הצטרפת לקורס זה עם הזמנה אחרת.",
+    "seatInviteFailed": "לא הצלחנו לפתוח את ההזמנה. אנא נסה/י שוב מאוחר יותר."
 }

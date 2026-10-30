@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-27 14:57:15.475797",
+    "@@last_modified": "2026-10-30 10:21:37.094482",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "આ {language} શીખનારાઓ માટે પાંગિયાનો કોર્સ છે. તેના સભ્યો તમારું નામ અને પ્રોફાઇલ જોઈ શકે છે.",
     "centralCourseOfferTitle": "{course} માં જોડાઓ?",
     "makeMyOwnCourseInstead": "તેના બદલે મારો પોતાનો કોર્સ બનાવો",
-    "suggestMobileSignInSameAccount": "પછી આ એકાઉન્ટ વડે ઍપમાં સાઇન ઇન કરો."
+    "suggestMobileSignInSameAccount": "પછી આ એકાઉન્ટ વડે ઍપમાં સાઇન ઇન કરો.",
+    "seatInviteTitle": "{course} માં જોડાઓ",
+    "seatInviteYourCourse": "તમારો કોર્સ",
+    "seatInviteEmailHint": "તમારો ક્લાસ તમને શોધી શકે તે માટે {email} નો ઉપયોગ કરો.",
+    "seatInviteClaimed": "તમે {course} માં છો.",
+    "seatInvitePendingApproval": "તમારા શિક્ષકની મંજૂરીની રાહ જોઈ રહ્યા છીએ.",
+    "seatInviteDenied": "તમારા શિક્ષકે આ એકાઉન્ટને કોર્સ માટે મંજૂર કર્યું નથી. તમે હજી પણ ક્લાસ કોડનો ઉપયોગ કરી શકો છો.",
+    "yourTeacher": "તમારા શિક્ષક",
+    "seatInviteNotLive": "આ આમંત્રણ હવે ઉપલબ્ધ નથી. તમે હજી પણ ક્લાસ કોડનો ઉપયોગ કરી શકો છો.",
+    "seatInviteAlreadyClaimed": "તમે પહેલાથી જ બીજા આમંત્રણ સાથે આ કોર્સમાં જોડાયા છો.",
+    "seatInviteFailed": "અમે આમંત્રણ ખોલી શક્યા નથી. કૃપા કરીને પછીથી ફરી પ્રયાસ કરો."
 }

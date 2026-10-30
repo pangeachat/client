@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-27 14:57:16.094004",
+    "@@last_modified": "2026-10-30 10:21:39.032445",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Nws yog Pangea cov chav kawm rau cov neeg kawm lus {language}. Nws cov tswv cuab tuaj yeem pom koj lub npe thiab profile.",
     "centralCourseOfferTitle": "Koj puas xav koom {course}?",
     "makeMyOwnCourseInstead": "Kuv xav tsim kuv tus kheej qhov kev kawm",
-    "suggestMobileSignInSameAccount": "Tom qab ntawd nkag mus rau hauv lub app nrog tus account no."
+    "suggestMobileSignInSameAccount": "Tom qab ntawd nkag mus rau hauv lub app nrog tus account no.",
+    "seatInviteTitle": "Koom nrog {course}",
+    "seatInviteYourCourse": "koj chav kawm",
+    "seatInviteEmailHint": "Siv {email} kom koj chav kawm nrhiav tau koj.",
+    "seatInviteClaimed": "Koj nyob hauv {course} lawm.",
+    "seatInvitePendingApproval": "Tos koj tus xib fwb pom zoo.",
+    "seatInviteDenied": "Koj tus xib fwb tsis pom zoo tus account no rau chav kawm. Koj tseem siv tau tus lej chav kawm.",
+    "yourTeacher": "Koj tus xib fwb",
+    "seatInviteNotLive": "Daim ntawv caw no tsis muaj lawm. Koj tseem siv tau tus lej chav kawm.",
+    "seatInviteAlreadyClaimed": "Koj twb koom nrog chav kawm no lawm nrog lwm daim ntawv caw.",
+    "seatInviteFailed": "Peb qhib tsis tau daim ntawv caw. Thov sim dua tom qab."
 }

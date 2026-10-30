@@ -1317,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-27 14:57:22.552803",
+    "@@last_modified": "2026-10-30 10:21:50.894608",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11000,5 +11000,15 @@
     "centralCourseOfferBody": "ఇది {language} నేర్చుకునే వారి కోసం పాంగేయా కోర్సు. దీని సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
     "centralCourseOfferTitle": "{course}లో చేరతారా?",
     "makeMyOwnCourseInstead": "బదులుగా నా స్వంత కోర్సును సృష్టించు",
-    "suggestMobileSignInSameAccount": "ఆపై ఈ ఖాతాతో యాప్‌లోకి సైన్ ఇన్ చేయండి."
+    "suggestMobileSignInSameAccount": "ఆపై ఈ ఖాతాతో యాప్‌లోకి సైన్ ఇన్ చేయండి.",
+    "seatInviteTitle": "{course}లో చేరండి",
+    "seatInviteYourCourse": "మీ కోర్సు",
+    "seatInviteEmailHint": "మీ తరగతి మిమ్మల్ని కనుగొనడానికి {email}ని ఉపయోగించండి.",
+    "seatInviteClaimed": "మీరు {course}లో ఉన్నారు.",
+    "seatInvitePendingApproval": "మీ ఉపాధ్యాయుడు ఆమోదించడానికి వేచి ఉంది.",
+    "seatInviteDenied": "మీ ఉపాధ్యాయుడు ఈ ఖాతాను కోర్సు కోసం ఆమోదించలేదు. మీరు ఇప్పటికీ క్లాస్ కోడ్‌ను ఉపయోగించవచ్చు.",
+    "yourTeacher": "మీ ఉపాధ్యాయుడు",
+    "seatInviteNotLive": "ఈ ఆహ్వానం ఇకపై అందుబాటులో లేదు. మీరు ఇప్పటికీ క్లాస్ కోడ్‌ను ఉపయోగించవచ్చు.",
+    "seatInviteAlreadyClaimed": "మీరు ఇప్పటికే మరొక ఆహ్వానంతో ఈ కోర్సులో చేరారు.",
+    "seatInviteFailed": "మేము ఆహ్వానాన్ని తెరవలేకపోయాము. దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి."
 }

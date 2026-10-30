@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-27 14:57:18.197331",
+    "@@last_modified": "2026-10-30 10:21:42.571653",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Na Pangea in kõs fɔ {language} lɔna dɛn. In mɛmba dɛn go ebul si yu nem ɛn yu profil.",
     "centralCourseOfferTitle": "Jɔyn {course}?",
     "makeMyOwnCourseInstead": "Mek mi yon kos insted",
-    "suggestMobileSignInSameAccount": "Dɛn sayn in to di ap wit dis akaunt."
+    "suggestMobileSignInSameAccount": "Dɛn sayn in to di ap wit dis akaunt.",
+    "seatInviteTitle": "Jɔyn {course}",
+    "seatInviteYourCourse": "yu kɔs",
+    "seatInviteEmailHint": "Yuz {email} so dat yu klas go fɛn yu.",
+    "seatInviteClaimed": "Yu de insay {course}.",
+    "seatInvitePendingApproval": "De wet fɔ yu ticha fɔ agry.",
+    "seatInviteDenied": "Yu ticha nɔ agry dis akaunt fɔ di kɔs. Yu stil go yuz di klas kod.",
+    "yourTeacher": "Yu ticha",
+    "seatInviteNotLive": "Dis invitɛshɔn nɔ de igen. Yu stil go yuz di klas kod.",
+    "seatInviteAlreadyClaimed": "Yu dɔn jɔyn dis kɔs wit ɔda invitɛshɔn.",
+    "seatInviteFailed": "Wi nɔ ebul fɔ ɔpen di invitɛshɔn. Plis tray bak leta."
 }

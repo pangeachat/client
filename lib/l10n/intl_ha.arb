@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-27 14:57:15.404690",
+    "@@last_modified": "2026-10-30 10:21:37.873988",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Darasi ne na Pangea ga masu koyon harshen {language}. Membobinta za su iya ganin sunanka da bayanan martabarka.",
     "centralCourseOfferTitle": "Shiga {course}?",
     "makeMyOwnCourseInstead": "Ƙirƙiri kwas na da kaina",
-    "suggestMobileSignInSameAccount": "Sannan ka shiga cikin manhajar da wannan asusun."
+    "suggestMobileSignInSameAccount": "Sannan ka shiga cikin manhajar da wannan asusun.",
+    "seatInviteTitle": "Shiga {course}",
+    "seatInviteYourCourse": "darussanka",
+    "seatInviteEmailHint": "Yi amfani da {email} don ajinka ya same ka.",
+    "seatInviteClaimed": "Kana cikin {course}.",
+    "seatInvitePendingApproval": "Ana jiran malamin ka ya amince.",
+    "seatInviteDenied": "Malaminka bai amince da wannan asusun don darasin ba. Har yanzu za ka iya amfani da lambar aji.",
+    "yourTeacher": "Malaminka",
+    "seatInviteNotLive": "Wannan gayyatar ba ta samuwa kuma. Har yanzu za ka iya amfani da lambar aji.",
+    "seatInviteAlreadyClaimed": "Kun riga kun shiga wannan kwas ɗin da wata gayyata.",
+    "seatInviteFailed": "Ba mu iya buɗe gayyatar ba. Da fatan za a sake gwadawa daga baya."
 }

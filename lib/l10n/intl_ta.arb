@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:22.276814",
+    "@@last_modified": "2026-10-30 10:21:51.598259",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10145,5 +10145,15 @@
     "centralCourseOfferBody": "இது {language} கற்பவர்களுக்கான பான்ஜியாவின் பாடமாகும். இதன் உறுப்பினர்கள் உங்கள் பெயரையும் சுயவிவரத்தையும் பார்க்கலாம்.",
     "centralCourseOfferTitle": "{course} இல் சேரவா?",
     "makeMyOwnCourseInstead": "அதற்குப் பதிலாக எனது சொந்தப் பாடத்திட்டத்தை உருவாக்கவும்",
-    "suggestMobileSignInSameAccount": "பின்னர் இந்த கணக்குடன் பயன்பாட்டில் உள்நுழையவும்."
+    "suggestMobileSignInSameAccount": "பின்னர் இந்த கணக்குடன் பயன்பாட்டில் உள்நுழையவும்.",
+    "seatInviteTitle": "{course} இல் சேரவும்",
+    "seatInviteYourCourse": "உங்கள் பாடப்பிரிவு",
+    "seatInviteEmailHint": "உங்கள் வகுப்பு உங்களைக் கண்டறிய {email} ஐப் பயன்படுத்தவும்.",
+    "seatInviteClaimed": "நீங்கள் {course} இல் உள்ளீர்கள்.",
+    "seatInvitePendingApproval": "உங்கள் ஆசிரியர் அங்கீகரிக்கக் காத்திருக்கிறது.",
+    "seatInviteDenied": "இந்தக் கணக்கை உங்கள் ஆசிரியர் பாடப்பிரிவுக்கு அங்கீகரிக்கவில்லை. நீங்கள் இன்னும் வகுப்பு குறியீட்டைப் பயன்படுத்தலாம்.",
+    "yourTeacher": "உங்கள் ஆசிரியர்",
+    "seatInviteNotLive": "இந்த அழைப்பு இனி கிடைக்காது. நீங்கள் இன்னும் வகுப்பு குறியீட்டைப் பயன்படுத்தலாம்.",
+    "seatInviteAlreadyClaimed": "நீங்கள் ஏற்கனவே மற்றொரு அழைப்பின் மூலம் இந்தப் பாடப்பிரிவில் சேர்ந்துவிட்டீர்கள்.",
+    "seatInviteFailed": "அழைப்பை எங்களால் திறக்க முடியவில்லை. பிறகு மீண்டும் முயற்சிக்கவும்."
 }

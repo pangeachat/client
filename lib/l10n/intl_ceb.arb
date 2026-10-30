@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-27 14:57:13.646462",
+    "@@last_modified": "2026-10-30 10:21:34.021499",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Kini ang kurso sa Pangea para sa mga nagkat-on og {language}. Makita sa mga miyembro niini ang imong ngalan ug profile.",
     "centralCourseOfferTitle": "Apil sa {course}?",
     "makeMyOwnCourseInstead": "Maghimo na lang ko sa akong kaugalingong kurso",
-    "suggestMobileSignInSameAccount": "Dayon pag-sign in sa app gamit kini nga account."
+    "suggestMobileSignInSameAccount": "Dayon pag-sign in sa app gamit kini nga account.",
+    "seatInviteTitle": "Apil sa {course}",
+    "seatInviteYourCourse": "imong kurso",
+    "seatInviteEmailHint": "Gamita ang {email} aron makit-an ka sa imong klase.",
+    "seatInviteClaimed": "Naa ka na sa {course}.",
+    "seatInvitePendingApproval": "Naghuwat sa pag-apruba sa imong magtutudlo.",
+    "seatInviteDenied": "Wala gi-aprubahan sa imong magtutudlo kining account para sa kurso. Mahimo gihapon nimo gamiton ang class code.",
+    "yourTeacher": "Imong magtutudlo",
+    "seatInviteNotLive": "Dili na magamit kining imbitasyon. Mahimo gihapon nimo gamiton ang class code.",
+    "seatInviteAlreadyClaimed": "Naapil na ka niining kurso gamit ang laing imbitasyon.",
+    "seatInviteFailed": "Dili namo maablihan ang imbitasyon. Palihug sulayi pag-usab unya."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-27 14:57:19.324503",
+    "@@last_modified": "2026-10-30 10:21:45.484805",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Энэ бол {language} хэл суралцагчдад зориулсан Пангеагийн хичээл юм. Гишүүд таны нэр, профайлыг харах боломжтой.",
     "centralCourseOfferTitle": "{course}-д нэгдэх үү?",
     "makeMyOwnCourseInstead": "Оронд нь өөрийн хичээлээ үүсгэх",
-    "suggestMobileSignInSameAccount": "Дараа нь энэ бүртгэлээр апп руу нэвтэрнэ үү."
+    "suggestMobileSignInSameAccount": "Дараа нь энэ бүртгэлээр апп руу нэвтэрнэ үү.",
+    "seatInviteTitle": "{course}-д нэгдээрэй",
+    "seatInviteYourCourse": "таны хичээл",
+    "seatInviteEmailHint": "Анги таныг олохын тулд {email}-г ашиглана уу.",
+    "seatInviteClaimed": "Та {course}-д нэгдлээ.",
+    "seatInvitePendingApproval": "Багшаасаа зөвшөөрөл хүлээж байна.",
+    "seatInviteDenied": "Таны багш энэ бүртгэлийг хичээлд зөвшөөрөөгүй. Та ангийн кодыг ашиглаж болно.",
+    "yourTeacher": "Таны багш",
+    "seatInviteNotLive": "Энэ урилга хүчингүй болсон. Та ангийн кодыг ашиглаж болно.",
+    "seatInviteAlreadyClaimed": "Та энэ хичээлд өөр урилгаар аль хэдийн нэгдсэн байна.",
+    "seatInviteFailed": "Урилгыг нээж чадсангүй. Дараа дахин оролдоно уу."
 }

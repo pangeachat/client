@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-10-27 14:57:16.398007",
+    "@@last_modified": "2026-10-30 10:21:39.332060",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Սա Pangea-ի դասընթացն է {language} սովորողների համար։ Նրա անդամները կարող են տեսնել ձեր անունը և պրոֆիլը։",
     "centralCourseOfferTitle": "Միանա՞լ {course}-ին",
     "makeMyOwnCourseInstead": "Փոխարենը ստեղծել իմ սեփական դասընթացը",
-    "suggestMobileSignInSameAccount": "Այնուհետև մուտք գործեք հավելված այս հաշվով։"
+    "suggestMobileSignInSameAccount": "Այնուհետև մուտք գործեք հավելված այս հաշվով։",
+    "seatInviteTitle": "{course}-ին միանալ",
+    "seatInviteYourCourse": "ձեր դասընթացը",
+    "seatInviteEmailHint": "Օգտագործեք {email}, որպեսզի ձեր դասարանը գտնի ձեզ։",
+    "seatInviteClaimed": "Դուք {course}-ում եք։",
+    "seatInvitePendingApproval": "Սպասում ենք ձեր ուսուցչի հաստատմանը։",
+    "seatInviteDenied": "Ձեր ուսուցիչը չհաստատեց այս հաշիվը դասընթացի համար։ Դուք դեռ կարող եք օգտագործել դասարանի կոդը։",
+    "yourTeacher": "Ձեր ուսուցիչը",
+    "seatInviteNotLive": "Այս հրավերն այլևս հասանելի չէ։ Դուք դեռ կարող եք օգտագործել դասարանի կոդը։",
+    "seatInviteAlreadyClaimed": "Դուք արդեն միացել եք այս դասընթացին այլ հրավերով։",
+    "seatInviteFailed": "Մենք չկարողացանք բացել հրավերը։ Խնդրում ենք փորձել ավելի ուշ։"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-27 14:57:17.070493",
+    "@@last_modified": "2026-10-30 10:21:40.516619",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Ọ bụ ọmụmụ ihe Pangea maka ndị na-amụ {language}. Ndị otu ya nwere ike ịhụ aha gị na profaịlụ gị.",
     "centralCourseOfferTitle": "Banye {course}?",
     "makeMyOwnCourseInstead": "Mee nke m kama",
-    "suggestMobileSignInSameAccount": "Banyezie na ngwa ahụ na akaụntụ a."
+    "suggestMobileSignInSameAccount": "Banyezie na ngwa ahụ na akaụntụ a.",
+    "seatInviteTitle": "Soro {course}",
+    "seatInviteYourCourse": "ọmụmụ ihe gị",
+    "seatInviteEmailHint": "Jiri {email} ka klaasị gị chọta gị.",
+    "seatInviteClaimed": "Ị nọ na {course}.",
+    "seatInvitePendingApproval": "Na-eche ka onye nkuzi gị kwado.",
+    "seatInviteDenied": "Onye nkuzi gị ekwadoghị akaụntụ a maka ọmụmụ ihe ahụ. Ị ka nwere ike iji koodu klaasị ahụ.",
+    "yourTeacher": "Onye nkuzi gị",
+    "seatInviteNotLive": "Ọkpụkpọ òkù a adịkwaghị. Ị ka nwere ike iji koodu klaasị ahụ.",
+    "seatInviteAlreadyClaimed": "Ị sonyelarị ọmụmụ ihe a site na ọkpụkpọ òkù ọzọ.",
+    "seatInviteFailed": "Anyị enweghị ike imeghe ọkpụkpọ òkù ahụ. Biko nwaa ọzọ ma emechaa."
 }

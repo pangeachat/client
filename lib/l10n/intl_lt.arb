@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-27 14:57:18.329201",
+    "@@last_modified": "2026-10-30 10:21:42.239277",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10831,5 +10831,15 @@
     "centralCourseOfferBody": "Tai „Pangea“ kursas, skirtas {language} besimokantiems. Jo nariai gali matyti jūsų vardą ir profilį.",
     "centralCourseOfferTitle": "Prisijungti prie {course}?",
     "makeMyOwnCourseInstead": "Vietoj to sukurti savo kursą",
-    "suggestMobileSignInSameAccount": "Tada prisijunkite prie programėlės naudodami šią paskyrą."
+    "suggestMobileSignInSameAccount": "Tada prisijunkite prie programėlės naudodami šią paskyrą.",
+    "seatInviteTitle": "Prisijunkite prie {course}",
+    "seatInviteYourCourse": "jūsų kursas",
+    "seatInviteEmailHint": "Naudokite {email}, kad jūsų klasė jus rastų.",
+    "seatInviteClaimed": "Jūs esate {course}.",
+    "seatInvitePendingApproval": "Laukiama mokytojo patvirtinimo.",
+    "seatInviteDenied": "Jūsų mokytojas nepatvirtino šios paskyros kursui. Vis tiek galite naudoti klasės kodą.",
+    "yourTeacher": "Jūsų mokytojas",
+    "seatInviteNotLive": "Šis kvietimas nebegalioja. Vis tiek galite naudoti klasės kodą.",
+    "seatInviteAlreadyClaimed": "Jau prisijungėte prie šio kurso su kitu kvietimu.",
+    "seatInviteFailed": "Nepavyko atidaryti kvietimo. Bandykite dar kartą vėliau."
 }

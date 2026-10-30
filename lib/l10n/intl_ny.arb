@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-27 14:57:20.609705",
+    "@@last_modified": "2026-10-30 10:21:45.990129",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Ndi kosi ya Pangea kwa ophunzira a {language}. Mamembala ake akhoza kuona dzina lanu ndi mbiri yanu.",
     "centralCourseOfferTitle": "Mulowe na {course}?",
     "makeMyOwnCourseInstead": "Ndipange kursu yanga",
-    "suggestMobileSignInSameAccount": "Kenako lowani mu pulogalamu ndi akaunti iyi."
+    "suggestMobileSignInSameAccount": "Kenako lowani mu pulogalamu ndi akaunti iyi.",
+    "seatInviteTitle": "Lowani {course}",
+    "seatInviteYourCourse": "kosi yanu",
+    "seatInviteEmailHint": "Gwiritsani ntchito {email} kuti kalasi yanu ikupezeni.",
+    "seatInviteClaimed": "Muli mu {course}.",
+    "seatInvitePendingApproval": "Tikudikira mphunzitsi wanu kuti avomereze.",
+    "seatInviteDenied": "Mphunzitsi wanu sanavomereze akaunti iyi pa kosiyi. Mukhoza kugwiritsabe ntchito nambala ya kalasi.",
+    "yourTeacher": "Mphunzitsi wanu",
+    "seatInviteNotLive": "Kuitana uku kulibenso. Mukhoza kugwiritsabe ntchito nambala ya kalasi.",
+    "seatInviteAlreadyClaimed": "Munalowa kale kosiyi ndi kuitana kwina.",
+    "seatInviteFailed": "Talephera kutsegula kuitana. Chonde yesaninso pambuyo pake."
 }

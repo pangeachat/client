@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-27 14:57:12.797096",
+    "@@last_modified": "2026-10-30 10:21:32.315803",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10356,5 +10356,15 @@
     "centralCourseOfferBody": "إنها دورة بانجيا لمتعلمي {language}. يمكن لأعضائها رؤية اسمك وملفك الشخصي.",
     "centralCourseOfferTitle": "هل تريد الانضمام إلى {course}؟",
     "makeMyOwnCourseInstead": "إنشاء دورتي التدريبية بدلاً من ذلك",
-    "suggestMobileSignInSameAccount": "ثم سجّل الدخول إلى التطبيق باستخدام هذا الحساب."
+    "suggestMobileSignInSameAccount": "ثم سجّل الدخول إلى التطبيق باستخدام هذا الحساب.",
+    "seatInviteTitle": "انضم إلى {course}",
+    "seatInviteYourCourse": "دورتك التدريبية",
+    "seatInviteEmailHint": "استخدم {email} حتى تتمكن صفوفك من العثور عليك.",
+    "seatInviteClaimed": "أنت في {course}.",
+    "seatInvitePendingApproval": "في انتظار موافقة معلمك.",
+    "seatInviteDenied": "لم يوافق معلمك على هذا الحساب للدورة التدريبية. لا يزال بإمكانك استخدام رمز الفصل.",
+    "yourTeacher": "معلمك",
+    "seatInviteNotLive": "هذه الدعوة لم تعد متاحة. لا يزال بإمكانك استخدام رمز الفصل.",
+    "seatInviteAlreadyClaimed": "لقد انضممت بالفعل إلى هذه الدورة التدريبية بدعوة أخرى.",
+    "seatInviteFailed": "تعذر علينا فتح الدعوة. الرجاء المحاولة مرة أخرى لاحقًا."
 }

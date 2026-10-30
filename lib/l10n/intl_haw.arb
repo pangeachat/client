@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-27 14:57:16.038351",
+    "@@last_modified": "2026-10-30 10:21:38.132964",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "ʻO ia ka papa a Pangea no ka poʻe aʻo {language}. Hiki i kona mau lālā ke ʻike i kou inoa a me kou ʻaoʻao.",
     "centralCourseOfferTitle": "E hui pū me {course}?",
     "makeMyOwnCourseInstead": "E hana i kaʻu papa ponoʻī ma kahi",
-    "suggestMobileSignInSameAccount": "A laila, e ʻeʻe i loko o ka polokalamu me kēia moʻokāki."
+    "suggestMobileSignInSameAccount": "A laila, e ʻeʻe i loko o ka polokalamu me kēia moʻokāki.",
+    "seatInviteTitle": "E hui pū me {course}",
+    "seatInviteYourCourse": "kāu papa",
+    "seatInviteEmailHint": "E hoʻohana iā {email} i loaʻa ʻoe i kāu papa.",
+    "seatInviteClaimed": "Aia ʻoe i loko o {course}.",
+    "seatInvitePendingApproval": "Ke kali nei i ka ʻae ʻana mai kāu kumu.",
+    "seatInviteDenied": "ʻAʻole i ʻae kāu kumu i kēia moʻokāki no ka papa. Hiki nō iā ʻoe ke hoʻohana i ke code papa.",
+    "yourTeacher": "Kāu kumu",
+    "seatInviteNotLive": "ʻAʻole i loaʻa hou kēia kono. Hiki nō iā ʻoe ke hoʻohana i ke code papa.",
+    "seatInviteAlreadyClaimed": "Ua hui pū ʻoe i kēia papa me kekahi kono ʻē aʻe.",
+    "seatInviteFailed": "ʻAʻole hiki iā mākou ke wehe i ke kono. E ʻoluʻolu e hoʻāʻo hou ma hope."
 }

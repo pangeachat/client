@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-27 14:57:20.616682",
+    "@@last_modified": "2026-10-30 10:21:46.994695",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10138,5 +10138,15 @@
     "centralCourseOfferBody": "To kurs Pangea dla uczących się języka {language}. Członkowie kursu widzą Twoje imię i profil.",
     "centralCourseOfferTitle": "Dołączyć do kursu {course}?",
     "makeMyOwnCourseInstead": "Zamiast tego stwórz mój własny kurs",
-    "suggestMobileSignInSameAccount": "Następnie zaloguj się do aplikacji za pomocą tego konta."
+    "suggestMobileSignInSameAccount": "Następnie zaloguj się do aplikacji za pomocą tego konta.",
+    "seatInviteTitle": "Dołącz do {course}",
+    "seatInviteYourCourse": "Twój kurs",
+    "seatInviteEmailHint": "Użyj adresu {email}, aby Twoja klasa Cię znalazła.",
+    "seatInviteClaimed": "Jesteś w {course}.",
+    "seatInvitePendingApproval": "Oczekiwanie na zatwierdzenie przez nauczyciela.",
+    "seatInviteDenied": "Twój nauczyciel nie zatwierdził tego konta dla kursu. Nadal możesz użyć kodu klasy.",
+    "yourTeacher": "Twój nauczyciel",
+    "seatInviteNotLive": "To zaproszenie jest już niedostępne. Nadal możesz użyć kodu klasy.",
+    "seatInviteAlreadyClaimed": "Już dołączyłeś do tego kursu z innym zaproszeniem.",
+    "seatInviteFailed": "Nie udało nam się otworzyć zaproszenia. Spróbuj ponownie później."
 }

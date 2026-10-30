@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-27 14:57:19.292665",
+    "@@last_modified": "2026-10-30 10:21:44.020726",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "हा {language} शिकणाऱ्यांसाठी पँजियाचा कोर्स आहे. त्याचे सदस्य तुमचे नाव आणि प्रोफाइल पाहू शकतात.",
     "centralCourseOfferTitle": "{course} मध्ये सामील व्हायचे?",
     "makeMyOwnCourseInstead": "त्याऐवजी माझा स्वतःचा कोर्स तयार करा",
-    "suggestMobileSignInSameAccount": "नंतर या खात्यासह ॲपमध्ये साइन इन करा."
+    "suggestMobileSignInSameAccount": "नंतर या खात्यासह ॲपमध्ये साइन इन करा.",
+    "seatInviteTitle": "{course} मध्ये सामील व्हा",
+    "seatInviteYourCourse": "तुमचा कोर्स",
+    "seatInviteEmailHint": "तुमच्या वर्गाला तुम्ही सापडण्यासाठी {email} वापरा.",
+    "seatInviteClaimed": "तुम्ही {course} मध्ये आहात.",
+    "seatInvitePendingApproval": "तुमच्या शिक्षकांच्या मंजुरीची प्रतीक्षा आहे.",
+    "seatInviteDenied": "तुमच्या शिक्षकांनी या खात्याला कोर्ससाठी मंजूर केले नाही. तुम्ही तरीही वर्ग कोड वापरू शकता.",
+    "yourTeacher": "तुमचे शिक्षक",
+    "seatInviteNotLive": "हे आमंत्रण आता उपलब्ध नाही. तुम्ही तरीही वर्ग कोड वापरू शकता.",
+    "seatInviteAlreadyClaimed": "तुम्ही यापूर्वीच दुसऱ्या आमंत्रणासह या कोर्समध्ये सामील झाला आहात.",
+    "seatInviteFailed": "आम्ही आमंत्रण उघडू शकलो नाही. कृपया नंतर पुन्हा प्रयत्न करा."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-27 14:57:17.626982",
+    "@@last_modified": "2026-10-30 10:21:41.025850",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "ಇದು {language} ಕಲಿಯುವವರಿಗಾಗಿ ಇರುವ ಪ್ಯಾಂಗಿಯಾದ ಕೋರ್ಸ್ ಆಗಿದೆ. ಇದರ ಸದಸ್ಯರು ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಪ್ರೊಫೈಲ್ ಅನ್ನು ನೋಡಬಹುದು.",
     "centralCourseOfferTitle": "{course} ಸೇರಬೇಕೆ?",
     "makeMyOwnCourseInstead": "ಬದಲಿಗೆ ನನ್ನದೇ ಆದ ಕೋರ್ಸ್ ರಚಿಸಿ",
-    "suggestMobileSignInSameAccount": "ನಂತರ ಈ ಖಾತೆಯೊಂದಿಗೆ ಅಪ್ಲಿಕೇಶನ್‌ಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ."
+    "suggestMobileSignInSameAccount": "ನಂತರ ಈ ಖಾತೆಯೊಂದಿಗೆ ಅಪ್ಲಿಕೇಶನ್‌ಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ.",
+    "seatInviteTitle": "{course} ಸೇರಿಕೊಳ್ಳಿ",
+    "seatInviteYourCourse": "ನಿಮ್ಮ ಕೋರ್ಸ್",
+    "seatInviteEmailHint": "ನಿಮ್ಮ ತರಗತಿ ನಿಮ್ಮನ್ನು ಹುಡುಕಲು {email} ಬಳಸಿ.",
+    "seatInviteClaimed": "ನೀವು {course} ನಲ್ಲಿದ್ದೀರಿ.",
+    "seatInvitePendingApproval": "ನಿಮ್ಮ ಶಿಕ್ಷಕರು ಅನುಮೋದಿಸಲು ಕಾಯಲಾಗುತ್ತಿದೆ.",
+    "seatInviteDenied": "ನಿಮ್ಮ ಶಿಕ್ಷಕರು ಈ ಖಾತೆಯನ್ನು ಕೋರ್ಸ್‌ಗೆ ಅನುಮೋದಿಸಲಿಲ್ಲ. ನೀವು ಇನ್ನೂ ಕ್ಲಾಸ್ ಕೋಡ್ ಬಳಸಬಹುದು.",
+    "yourTeacher": "ನಿಮ್ಮ ಶಿಕ್ಷಕರು",
+    "seatInviteNotLive": "ಈ ಆಹ್ವಾನ ಇನ್ನು ಮುಂದೆ ಲಭ್ಯವಿಲ್ಲ. ನೀವು ಇನ್ನೂ ಕ್ಲಾಸ್ ಕೋಡ್ ಬಳಸಬಹುದು.",
+    "seatInviteAlreadyClaimed": "ನೀವು ಈಗಾಗಲೇ ಇನ್ನೊಂದು ಆಹ್ವಾನದೊಂದಿಗೆ ಈ ಕೋರ್ಸ್‌ಗೆ ಸೇರಿಕೊಂಡಿದ್ದೀರಿ.",
+    "seatInviteFailed": "ನಾವು ಆಹ್ವಾನವನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 }

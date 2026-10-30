@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-27 14:57:12.917608",
+    "@@last_modified": "2026-10-30 10:21:32.678829",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Bu, Pangea-nın {language} öyrənənlər üçün kursudur. Üzvləri adınızı və profilinizi görə bilər.",
     "centralCourseOfferTitle": "{course} kursuna qoşulmaq?",
     "makeMyOwnCourseInstead": "Əvəzinə öz kursumu yarat",
-    "suggestMobileSignInSameAccount": "Sonra bu hesabla tətbiqə daxil olun."
+    "suggestMobileSignInSameAccount": "Sonra bu hesabla tətbiqə daxil olun.",
+    "seatInviteTitle": "{course} kursuna qoşulun",
+    "seatInviteYourCourse": "kursunuz",
+    "seatInviteEmailHint": "Sinifinizin sizi tapması üçün {email} istifadə edin.",
+    "seatInviteClaimed": "Siz {course} kursundasınız.",
+    "seatInvitePendingApproval": "Müəlliminizin təsdiqini gözləyirsiniz.",
+    "seatInviteDenied": "Müəlliminiz bu hesabı kurs üçün təsdiq etmədi. Siz hələ də sinif kodundan istifadə edə bilərsiniz.",
+    "yourTeacher": "Müəlliminiz",
+    "seatInviteNotLive": "Bu dəvət artıq mövcud deyil. Siz hələ də sinif kodundan istifadə edə bilərsiniz.",
+    "seatInviteAlreadyClaimed": "Siz artıq başqa bir dəvətlə bu kursa qoşulmusunuz.",
+    "seatInviteFailed": "Dəvəti aça bilmədik. Zəhmət olmasa, daha sonra yenidən cəhd edin."
 }

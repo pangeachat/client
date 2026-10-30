@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-27 14:57:22.737339",
+    "@@last_modified": "2026-10-30 10:21:50.822269",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10682,5 +10682,15 @@
     "centralCourseOfferBody": "นี่คือคอร์สของ Pangea สำหรับผู้เรียนภาษา {language} สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
     "centralCourseOfferTitle": "เข้าร่วม {course} ไหม",
     "makeMyOwnCourseInstead": "สร้างคอร์สของฉันเองดีกว่า",
-    "suggestMobileSignInSameAccount": "จากนั้นลงชื่อเข้าใช้แอปด้วยบัญชีนี้"
+    "suggestMobileSignInSameAccount": "จากนั้นลงชื่อเข้าใช้แอปด้วยบัญชีนี้",
+    "seatInviteTitle": "เข้าร่วม {course}",
+    "seatInviteYourCourse": "คอร์สของคุณ",
+    "seatInviteEmailHint": "ใช้ {email} เพื่อให้ชั้นเรียนของคุณหาคุณเจอ",
+    "seatInviteClaimed": "คุณอยู่ใน {course} แล้ว",
+    "seatInvitePendingApproval": "กำลังรอครูของคุณอนุมัติ",
+    "seatInviteDenied": "ครูของคุณไม่อนุมัติบัญชีนี้สำหรับคอร์สนี้ คุณยังคงสามารถใช้รหัสชั้นเรียนได้",
+    "yourTeacher": "ครูของคุณ",
+    "seatInviteNotLive": "คำเชิญนี้ไม่สามารถใช้งานได้แล้ว คุณยังคงสามารถใช้รหัสชั้นเรียนได้",
+    "seatInviteAlreadyClaimed": "คุณเข้าร่วมคอร์สนี้ด้วยคำเชิญอื่นแล้ว",
+    "seatInviteFailed": "เราไม่สามารถเปิดคำเชิญได้ โปรดลองอีกครั้งในภายหลัง"
 }

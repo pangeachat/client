@@ -3543,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-27 14:57:15.332844",
+    "@@last_modified": "2026-10-30 10:21:36.503011",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10064,5 +10064,15 @@
     "centralCourseOfferBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
     "centralCourseOfferTitle": "An mbeifeá páirteach i {course}?",
     "makeMyOwnCourseInstead": "Cruthaigh mo chúrsa féin ina ionad",
-    "suggestMobileSignInSameAccount": "Ansin sínigh isteach san aip leis an gcuntas seo."
+    "suggestMobileSignInSameAccount": "Ansin sínigh isteach san aip leis an gcuntas seo.",
+    "seatInviteTitle": "Bí páirteach i {course}",
+    "seatInviteYourCourse": "do chúrsa",
+    "seatInviteEmailHint": "Úsáid {email} ionas go bhfaighidh do rang thú.",
+    "seatInviteClaimed": "Tá tú i {course}.",
+    "seatInvitePendingApproval": "Ag fanacht le do mhúinteoir ceadú.",
+    "seatInviteDenied": "Níor cheadaigh do mhúinteoir an cuntas seo don chúrsa. Is féidir leat an cód ranga a úsáid fós.",
+    "yourTeacher": "Do mhúinteoir",
+    "seatInviteNotLive": "Níl an cuireadh seo ar fáil a thuilleadh. Is féidir leat an cód ranga a úsáid fós.",
+    "seatInviteAlreadyClaimed": "Tá tú páirteach sa chúrsa seo cheana féin le cuireadh eile.",
+    "seatInviteFailed": "Níorbh fhéidir linn an cuireadh a oscailt. Bain triail eile as níos déanaí."
 }

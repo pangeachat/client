@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-27 14:57:20.964185",
+    "@@last_modified": "2026-10-30 10:21:46.812288",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11025,5 +11025,15 @@
     "centralCourseOfferBody": "Это курс Pangea для изучающих {language}. Участники курса могут видеть ваше имя и профиль.",
     "centralCourseOfferTitle": "Присоединиться к {course}?",
     "makeMyOwnCourseInstead": "Создать свой курс",
-    "suggestMobileSignInSameAccount": "Затем войдите в приложение с этой учетной записью."
+    "suggestMobileSignInSameAccount": "Затем войдите в приложение с этой учетной записью.",
+    "seatInviteTitle": "Присоединяйтесь к курсу «{course}»",
+    "seatInviteYourCourse": "ваш курс",
+    "seatInviteEmailHint": "Используйте {email}, чтобы ваш класс вас нашел.",
+    "seatInviteClaimed": "Вы на курсе «{course}».",
+    "seatInvitePendingApproval": "Ожидание одобрения учителя.",
+    "seatInviteDenied": "Ваш учитель не одобрил эту учетную запись для курса. Вы все еще можете использовать код класса.",
+    "yourTeacher": "Ваш учитель",
+    "seatInviteNotLive": "Это приглашение больше недействительно. Вы все еще можете использовать код класса.",
+    "seatInviteAlreadyClaimed": "Вы уже присоединились к этому курсу по другому приглашению.",
+    "seatInviteFailed": "Не удалось открыть приглашение. Пожалуйста, попробуйте еще раз позже."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-27 14:57:19.374225",
+    "@@last_modified": "2026-10-30 10:21:44.188472",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Ова е курсот на Pangea за ученици по {language}. Неговите членови можат да го видат вашето име и профил.",
     "centralCourseOfferTitle": "Да се приклучиш на {course}?",
     "makeMyOwnCourseInstead": "Направи си свој курс",
-    "suggestMobileSignInSameAccount": "Потоа најавете се во апликацијата со оваа сметка."
+    "suggestMobileSignInSameAccount": "Потоа најавете се во апликацијата со оваа сметка.",
+    "seatInviteTitle": "Приклучи се на {course}",
+    "seatInviteYourCourse": "твојот курс",
+    "seatInviteEmailHint": "Користи {email} за да те најде твојот клас.",
+    "seatInviteClaimed": "Ти си во {course}.",
+    "seatInvitePendingApproval": "Се чека одобрување од твојот наставник.",
+    "seatInviteDenied": "Твојот наставник не ја одобри оваа сметка за курсот. Сè уште можеш да го користиш кодот за класот.",
+    "yourTeacher": "Твојот наставник",
+    "seatInviteNotLive": "Оваа покана повеќе не е достапна. Сè уште можеш да го користиш кодот за класот.",
+    "seatInviteAlreadyClaimed": "Веќе се приклучи на овој курс со друга покана.",
+    "seatInviteFailed": "Не можевме да ја отвориме поканата. Ве молиме обидете се повторно подоцна."
 }

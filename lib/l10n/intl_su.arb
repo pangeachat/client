@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-27 14:57:22.430908",
+    "@@last_modified": "2026-10-30 10:21:50.306342",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Ieu kursus Pangea pikeun nu diajar basa {language}. Anggotana bisa ningali ngaran jeung profil anjeun.",
     "centralCourseOfferTitle": "Gabung {course}?",
     "makeMyOwnCourseInstead": "Jieun kursus kuring sorangan",
-    "suggestMobileSignInSameAccount": "Teras lebet kana aplikasi nganggo akun ieu."
+    "suggestMobileSignInSameAccount": "Teras lebet kana aplikasi nganggo akun ieu.",
+    "seatInviteTitle": "Gabung {course}",
+    "seatInviteYourCourse": "kursus anjeun",
+    "seatInviteEmailHint": "Anggo {email} supados kelas anjeun mendakan anjeun.",
+    "seatInviteClaimed": "Anjeun parantos gabung {course}.",
+    "seatInvitePendingApproval": "Ngantosan guru anjeun nyatujuan.",
+    "seatInviteDenied": "Guru anjeun henteu nyatujuan akun ieu pikeun kursus. Anjeun masih tiasa nganggo kode kelas.",
+    "yourTeacher": "Guru anjeun",
+    "seatInviteNotLive": "Uleman ieu henteu sayogi deui. Anjeun masih tiasa nganggo kode kelas.",
+    "seatInviteAlreadyClaimed": "Anjeun parantos gabung kursus ieu nganggo uleman sanés.",
+    "seatInviteFailed": "Kami henteu tiasa muka uleman. Punten cobian deui engké."
 }

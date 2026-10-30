@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-10-27 14:57:23.454288",
+    "@@last_modified": "2026-10-30 10:21:53.143175",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "بۇ پانگېيانىڭ {language} ئۆگەنگۈچىلەر ئۈچۈن تەييارلىغان دەرسى. ئۇنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ.",
     "centralCourseOfferTitle": "{course}غا قاتناشامسىز؟",
     "makeMyOwnCourseInstead": "ئۆزۈمنىڭ دەرسلىكىنى قۇراشتۇرىمەن",
-    "suggestMobileSignInSameAccount": "ئاندىن بۇ ھېسابات ئارقىلىق ئەپكە كىرىڭ."
+    "suggestMobileSignInSameAccount": "ئاندىن بۇ ھېسابات ئارقىلىق ئەپكە كىرىڭ.",
+    "seatInviteTitle": "{course}غا قاتناشتىڭىز",
+    "seatInviteYourCourse": "سىزنىڭ دەرسىڭىز",
+    "seatInviteEmailHint": "سىنىپىڭىز سىزنى تاپالىشى ئۈچۈن {email}نى ئىشلىتىڭ.",
+    "seatInviteClaimed": "سىز {course}قا قاتناشتىڭىز.",
+    "seatInvitePendingApproval": "ئوقۇتقۇچىڭىزنىڭ تەستىقلىشىنى ساقلاۋاتىدۇ.",
+    "seatInviteDenied": "ئوقۇتقۇچىڭىز بۇ ھېساباتنى دەرسكە تەستىقلىمىدى. سىز يەنىلا سىنىپ كودىنى ئىشلىتەلەيسىز.",
+    "yourTeacher": "سىزنىڭ ئوقۇتقۇچىڭىز",
+    "seatInviteNotLive": "بۇ تەكلىپ ئەمدى ئىناۋەتسىز. سىز يەنىلا سىنىپ كودىنى ئىشلىتەلەيسىز.",
+    "seatInviteAlreadyClaimed": "سىز باشقا تەكلىپ بىلەن بۇ دەرسكە ئاللىبۇرۇن قاتناشقان.",
+    "seatInviteFailed": "بىز تەكلىپنى ئاچالماي قالدۇق. كېيىنرەك قايتا سىناپ بېقىڭ."
 }

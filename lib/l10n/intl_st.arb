@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-10-27 14:57:22.516014",
+    "@@last_modified": "2026-10-30 10:21:49.890709",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Ke thupelo ea Pangea bakeng sa baithuti ba {language}. Litho tsa eona li ka bona lebitso la hau le profileng ea hau.",
     "centralCourseOfferTitle": "Kena ho {course}?",
     "makeMyOwnCourseInstead": "Iketsetse thupelo ea ka",
-    "suggestMobileSignInSameAccount": "Ebe u kena ho app ka ak'haonte ena."
+    "suggestMobileSignInSameAccount": "Ebe u kena ho app ka ak'haonte ena.",
+    "seatInviteTitle": "Kena ho {course}",
+    "seatInviteYourCourse": "thuto ea hau",
+    "seatInviteEmailHint": "Sebelisa {email} e le hore sehlopha sa hau se u fumane.",
+    "seatInviteClaimed": "U ho {course}.",
+    "seatInvitePendingApproval": "Emela hore tichere ea hau e u amohele.",
+    "seatInviteDenied": "Tichere ea hau ha ea ka ea amohela ak'haonte ena bakeng sa thuto. U ntse u ka sebelisa khoutu ea sehlopha.",
+    "yourTeacher": "Tichere ea hau",
+    "seatInviteNotLive": "Memo ena ha e sa fumaneha. U ntse u ka sebelisa khoutu ea sehlopha.",
+    "seatInviteAlreadyClaimed": "U se u kene thutong ena ka memo e 'ngoe.",
+    "seatInviteFailed": "Ha rea ka ra khona ho bula memo. Ka kopo leka hape hamorao."
 }

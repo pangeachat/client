@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-27 14:57:24.816783",
+    "@@last_modified": "2026-10-30 10:21:49.063207",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Waa koorsada Pangea ee loogu talagalay barayaasha {language}. Xubnaheeda waxay arki karaan magacaaga iyo astaantaada.",
     "centralCourseOfferTitle": "Ku biir {course}?",
     "makeMyOwnCourseInstead": "Anigu waxaan samaysanayaa koorsadayda",
-    "suggestMobileSignInSameAccount": "Kadibna ku gal app-ka akoonkan."
+    "suggestMobileSignInSameAccount": "Kadibna ku gal app-ka akoonkan.",
+    "seatInviteTitle": "Ku biir {course}",
+    "seatInviteYourCourse": "koorsadaada",
+    "seatInviteEmailHint": "Isticmaal {email} si fasalkaagu kuu helo.",
+    "seatInviteClaimed": "Waxaad ku jirtaa {course}.",
+    "seatInvitePendingApproval": "Waxaa la sugayaa in macalinkaagu ogolaado.",
+    "seatInviteDenied": "Macalinkaagu ma ogolaan koontadan koorsada. Wali waxaad isticmaali kartaa koodhka fasalka.",
+    "yourTeacher": "Macalinkaaga",
+    "seatInviteNotLive": "Martiqaadkani hadda lama heli karo. Wali waxaad isticmaali kartaa koodhka fasalka.",
+    "seatInviteAlreadyClaimed": "Horay ayaad ugu biirtay koorsadan martiqaad kale.",
+    "seatInviteFailed": "Ma awoodin inaan furno martiqaadka. Fadlan isku day mar dambe."
 }

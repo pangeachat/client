@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-27 14:57:19.230887",
+    "@@last_modified": "2026-10-30 10:21:44.096885",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "Koia te akoranga a Pangea mō ngā ākonga {language}. Ka kite ngā mema i tō ingoa me tō kōtaha.",
     "centralCourseOfferTitle": "Hono atu ki te {course}?",
     "makeMyOwnCourseInstead": "Hangaia taku ake akoranga",
-    "suggestMobileSignInSameAccount": "Kātahi ka takiuru ki te taupānga me tēnei pūkete."
+    "suggestMobileSignInSameAccount": "Kātahi ka takiuru ki te taupānga me tēnei pūkete.",
+    "seatInviteTitle": "Hono atu ki {course}",
+    "seatInviteYourCourse": "tō akoranga",
+    "seatInviteEmailHint": "Whakamahia {email} kia kitea ai koe e tō akomanga.",
+    "seatInviteClaimed": "Kua uru koe ki {course}.",
+    "seatInvitePendingApproval": "E tatari ana kia whakaaetia e tō kaiako.",
+    "seatInviteDenied": "Kāore tō kaiako i whakaae ki tēnei pūkete mō te akoranga. Ka taea tonu e koe te whakamahi i te waehere akomanga.",
+    "yourTeacher": "Tō kaiako",
+    "seatInviteNotLive": "Kāore tēnei pōwhiri i te wātea ināianei. Ka taea tonu e koe te whakamahi i te waehere akomanga.",
+    "seatInviteAlreadyClaimed": "Kua uru kē koe ki tēnei akoranga mā tētahi atu pōwhiri.",
+    "seatInviteFailed": "Kāore i taea e mātou te whakatuwhera i te pōwhiri. Nō reira, tēnā koa, me ngana anō ā muri ake nei."
 }

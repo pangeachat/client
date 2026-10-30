@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-27 14:57:14.825794",
+    "@@last_modified": "2026-10-30 10:21:36.373446",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "It is de kursus fan Pangea foar {language}-learders. De leden kinne jo namme en profyl sjen.",
     "centralCourseOfferTitle": "Meidwaan oan {course}?",
     "makeMyOwnCourseInstead": "Myn eigen kursus meitsje",
-    "suggestMobileSignInSameAccount": "Meld dy dan oan by de app mei dit akkount."
+    "suggestMobileSignInSameAccount": "Meld dy dan oan by de app mei dit akkount.",
+    "seatInviteTitle": "Doch mei oan {course}",
+    "seatInviteYourCourse": "dyn kursus",
+    "seatInviteEmailHint": "Brûk {email} sadat dyn klasse dy fine kin.",
+    "seatInviteClaimed": "Do sitst yn {course}.",
+    "seatInvitePendingApproval": "Wachtsje op goedkarring fan dyn learaar.",
+    "seatInviteDenied": "Dyn learaar hat dit akkount net goedkard foar de kursus. Do kinst de klassekoade noch altyd brûke.",
+    "yourTeacher": "Dyn learaar",
+    "seatInviteNotLive": "Dizze útnoeging is net mear beskikber. Do kinst de klassekoade noch altyd brûke.",
+    "seatInviteAlreadyClaimed": "Do hast dy al by dizze kursus oansletten mei in oare útnoeging.",
+    "seatInviteFailed": "Wy koene de útnoeging net iepenje. Besykje it letter nochris."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-27 14:57:18.297608",
+    "@@last_modified": "2026-10-30 10:21:42.914765",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "ມັນແມ່ນຫຼັກສູດຂອງ Pangea ສຳລັບຜູ້ຮຽນພາສາ {language}. ສະມາຊິກສາມາດເຫັນຊື່ ແລະ ໂປຣໄຟລ໌ຂອງທ່ານໄດ້.",
     "centralCourseOfferTitle": "ເຂົ້າຮ່ວມ {course}?",
     "makeMyOwnCourseInstead": "ສ້າງຫຼັກສູດຂອງຂ້ອຍເອງແທນ",
-    "suggestMobileSignInSameAccount": "ຈາກນັ້ນເຂົ້າສູ່ລະບົບແອັບດ້ວຍບັນຊີນີ້."
+    "suggestMobileSignInSameAccount": "ຈາກນັ້ນເຂົ້າສູ່ລະບົບແອັບດ້ວຍບັນຊີນີ້.",
+    "seatInviteTitle": "ເຂົ້າຮ່ວມ {course}",
+    "seatInviteYourCourse": "ຫຼັກສູດຂອງທ່ານ",
+    "seatInviteEmailHint": "ໃຊ້ {email} ເພື່ອໃຫ້ຫ້ອງຮຽນຂອງທ່ານຊອກຫາທ່ານ.",
+    "seatInviteClaimed": "ທ່ານຢູ່ໃນ {course}.",
+    "seatInvitePendingApproval": "ກຳລັງລໍຖ້າຄູສອນຂອງທ່ານອະນຸມັດ.",
+    "seatInviteDenied": "ຄູສອນຂອງທ່ານບໍ່ໄດ້ອະນຸມັດບັນຊີນີ້ສຳລັບຫຼັກສູດ. ທ່ານຍັງສາມາດໃຊ້ລະຫັດຫ້ອງຮຽນໄດ້.",
+    "yourTeacher": "ຄູສອນຂອງທ່ານ",
+    "seatInviteNotLive": "ຄຳເຊີນນີ້ບໍ່ສາມາດໃຊ້ໄດ້ອີກຕໍ່ໄປ. ທ່ານຍັງສາມາດໃຊ້ລະຫັດຫ້ອງຮຽນໄດ້.",
+    "seatInviteAlreadyClaimed": "ທ່ານໄດ້ເຂົ້າຮ່ວມຫຼັກສູດນີ້ແລ້ວດ້ວຍຄຳເຊີນອື່ນ.",
+    "seatInviteFailed": "ພວກເຮົາບໍ່ສາມາດເປີດຄຳເຊີນໄດ້. ກະລຸນາລອງໃໝ່ອີກຄັ້ງພາຍຫຼັງ."
 }

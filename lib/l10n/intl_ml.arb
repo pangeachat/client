@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-27 14:57:19.080773",
+    "@@last_modified": "2026-10-30 10:21:43.735756",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "ഇത് {language} പഠിതാക്കൾക്കായുള്ള പാഞ്ചിയയുടെ കോഴ്സാണ്. ഇതിലെ അംഗങ്ങൾക്ക് നിങ്ങളുടെ പേരും പ്രൊഫൈലും കാണാൻ കഴിയും.",
     "centralCourseOfferTitle": "{course}ൽ ചേരണോ?",
     "makeMyOwnCourseInstead": "എൻ്റേതായ കോഴ്സ് ഉണ്ടാക്കുക",
-    "suggestMobileSignInSameAccount": "തുടർന്ന് ഈ അക്കൗണ്ട് ഉപയോഗിച്ച് ആപ്പിൽ സൈൻ ഇൻ ചെയ്യുക."
+    "suggestMobileSignInSameAccount": "തുടർന്ന് ഈ അക്കൗണ്ട് ഉപയോഗിച്ച് ആപ്പിൽ സൈൻ ഇൻ ചെയ്യുക.",
+    "seatInviteTitle": "{course}ൽ ചേരുക",
+    "seatInviteYourCourse": "നിങ്ങളുടെ കോഴ്സ്",
+    "seatInviteEmailHint": "നിങ്ങളുടെ ക്ലാസ് നിങ്ങളെ കണ്ടെത്താൻ {email} ഉപയോഗിക്കുക.",
+    "seatInviteClaimed": "നിങ്ങൾ {course}ൽ ഉണ്ട്.",
+    "seatInvitePendingApproval": "നിങ്ങളുടെ അധ്യാപകൻ അംഗീകരിക്കുന്നതിനായി കാത്തിരിക്കുന്നു.",
+    "seatInviteDenied": "നിങ്ങളുടെ അധ്യാപകൻ ഈ അക്കൗണ്ട് കോഴ്സിനായി അംഗീകരിച്ചില്ല. നിങ്ങൾക്ക് ഇപ്പോഴും ക്ലാസ് കോഡ് ഉപയോഗിക്കാം.",
+    "yourTeacher": "നിങ്ങളുടെ അധ്യാപകൻ",
+    "seatInviteNotLive": "ഈ ക്ഷണം ഇപ്പോൾ ലഭ്യമല്ല. നിങ്ങൾക്ക് ഇപ്പോഴും ക്ലാസ് കോഡ് ഉപയോഗിക്കാം.",
+    "seatInviteAlreadyClaimed": "മറ്റൊരു ക്ഷണം ഉപയോഗിച്ച് നിങ്ങൾ ഇതിനകം ഈ കോഴ്സിൽ ചേർന്നു.",
+    "seatInviteFailed": "ഞങ്ങൾക്ക് ക്ഷണം തുറക്കാൻ കഴിഞ്ഞില്ല. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക."
 }

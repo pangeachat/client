@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-27 14:57:13.079198",
+    "@@last_modified": "2026-10-30 10:21:32.423813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2515,5 +2515,15 @@
     "centralCourseOfferBody": "ይህ የፓንጋያ ኮርስ ለ{language} ተማሪዎች ነው። አባላቱ የእርስዎን ስም እና መገለጫ ማየት ይችላሉ።",
     "centralCourseOfferTitle": "{course}ን ይቀላቀላሉ?",
     "makeMyOwnCourseInstead": "በምትኩ የራሴን ኮርስ ልፍጠር",
-    "suggestMobileSignInSameAccount": "ከዚያም በዚህ መለያ ወደ መተግበሪያው ይግቡ።"
+    "suggestMobileSignInSameAccount": "ከዚያም በዚህ መለያ ወደ መተግበሪያው ይግቡ።",
+    "seatInviteTitle": "{course}ን ይቀላቀሉ",
+    "seatInviteYourCourse": "የእርስዎ ኮርስ",
+    "seatInviteEmailHint": "ክፍልዎ እርስዎን እንዲያገኝ {email}ን ይጠቀሙ።",
+    "seatInviteClaimed": "በ{course} ውስጥ ነዎት።",
+    "seatInvitePendingApproval": "መምህርዎ እንዲያጸድቁ በመጠበቅ ላይ።",
+    "seatInviteDenied": "መምህርዎ ይህንን አካውንት ለኮርሱ አላጸደቁትም። አሁንም የክፍል ኮዱን መጠቀም ይችላሉ።",
+    "yourTeacher": "የእርስዎ መምህር",
+    "seatInviteNotLive": "ይህ ግብዣ ከእንግዲህ አይገኝም። አሁንም የክፍል ኮዱን መጠቀም ይችላሉ።",
+    "seatInviteAlreadyClaimed": "ይህን ኮርስ በሌላ ግብዣ አስቀድመው ተቀላቅለዋል።",
+    "seatInviteFailed": "ግብዣውን መክፈት አልቻልንም። እባክዎ ቆይተው እንደገና ይሞክሩ።"
 }
