@@ -47,6 +47,12 @@ async function runStandardCall(def) {
     h.check(s, 'the recording notice is shown during the call', notice.some((t) => panelText.includes(t) || during.some((l) => l.includes(t))),
       'no "This call is transcribed and saved" notice on the caller');
 
+    // On the web, leaving asks first while a call is on (owner decision).
+    if (def.killDuringUpload) {
+      const asks = await R.leaveAsks(A);
+      h.check(s, 'closing the tab asks first during a call', asks === true, `beforeunload prevented: ${asks}`);
+    }
+
     if (net.mode === 'dropMid') {
       await wait((def.dropAtS || 25) * 1000);
       await R.setNetwork(netTarget, 'offline');
@@ -73,8 +79,19 @@ async function runStandardCall(def) {
     if (def.killDuringUpload && netTarget !== B) throw new Error('killDuringUpload is written for the callee (network.who B)');
     if (def.killDuringUpload) {
       // The app is killed while its recording is still to be uploaded, then
-      // reopened with the network back.
-      await wait(4000);
+      // reopened with the network back. An offline callee cannot hear the
+      // caller leave, so it hangs up itself: otherwise it is killed still IN
+      // the call, with no finished recording to upload.
+      await ui.clickPanel(netTarget.page, 'hangup').catch(() => {});
+      // The recording goes to IndexedDB once the app has wound the call down,
+      // which offline takes a while. The kill is "during upload" from then on.
+      let held = 0;
+      for (let i = 0; i < 90 && held < 1; i++) {
+        await wait(2000);
+        held = await R.recordingsHeld(netTarget);
+      }
+      h.check(s, 'the recording is held in the browser before the kill', held >= 1, `IndexedDB holds ${held}, ${Math.round((Date.now() - endedAt) / 1000)}s after hangup`);
+      console.log(`   (held in IndexedDB ${Math.round((Date.now() - endedAt) / 1000)}s after hangup)`);
       // The premise: the callee's recording has NOT landed yet. If it already
       // has, this run did not test a kill during upload and says so.
       const landed = (await R.related(A.token, roomId, call.callKey, R.AUDIO)).some((e) => e.sender === netTarget.userId);
@@ -103,6 +120,7 @@ async function runStandardCall(def) {
     const expectHalves = anySubscribed ? (sub.A && sub.B ? 2 : 3) : 2;
     if (reader) {
       await R.watchLoading(s, reader, {
+        fillsPeerHalf: sub.A !== sub.B,
         doneAlready: async () => {
           const t = await R.related(A.token, roomId, call.callKey, R.TRANSCRIPT);
           const m = await R.related(A.token, roomId, call.callKey, R.MERGED);

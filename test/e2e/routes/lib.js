@@ -250,6 +250,8 @@ async function openP(name, roomLocalpart, port, { wav } = {}) {
   const p = await h.openParticipant(name, roomLocalpart, port, {
     prepare: async (page) => {
       await instrument(page);
+      // A "leave this page?" prompt would otherwise hang any navigation.
+      page.on('dialog', (d) => d.accept().catch(() => {}));
       page.on('console', (m) => consoleLines.push(`${new Date().toISOString()} ${m.type()} ${m.text()}`.slice(0, 3000)));
       page.on('requestfinished', (r) => {
         const u = r.url();
@@ -719,7 +721,7 @@ async function openNewestTranscript(p) {
 
 /// Samples the transcript screen right after a call, while it should still be
 /// processing, for the loading state (#8808).
-async function watchLoading(s, p, { seconds = 40, doneAlready = null } = {}) {
+async function watchLoading(s, p, { seconds = 40, doneAlready = null, fillsPeerHalf = false } = {}) {
   // Whether everything this call will write had ALREADY landed when watching
   // began: then no loading state was owed, and not seeing one proves nothing.
   const finishedBefore = doneAlready ? await doneAlready().catch(() => false) : false;
@@ -741,6 +743,18 @@ async function watchLoading(s, p, { seconds = 40, doneAlready = null } = {}) {
     await wait(1500);
   }
   save(`loading-${p.name}.json`, { finishedBefore, seen });
+  // #9485: while the subscriber's app fills in the other half, the screen does
+  // not say it was not transcribed, nor ask them to press anything. Sampled
+  // after the half has had a moment to fill itself in or fail.
+  if (fillsPeerHalf && loading) {
+    let offered = false;
+    for (let i = 0; i < 4 && !offered; i++) {
+      const t = await ocr(p, `filling-${i}`);
+      offered = ocrHas(t, 'did not have a subscription') && ocrHas(t, 'Transcribe') && !ocrHas(t, 'Still transcribing');
+      await wait(1500);
+    }
+    h.check(s, `${p.name}: no "no subscription" note or Transcribe button while the half fills itself in (#9485)`, !offered, 'the note and the button are on screen');
+  }
   if (!loading && finishedBefore) {
     h.skipped(s, `${p.name}: a loading indicator shows while the transcript is processing`, 'processing had already finished when the screen was first watched');
     await p.page.keyboard.press('Escape').catch(() => {});
@@ -751,6 +765,29 @@ async function watchLoading(s, p, { seconds = 40, doneAlready = null } = {}) {
   await p.page.keyboard.press('Escape').catch(() => {});
   return loading;
 }
+
+/// Whether the app would stop the tab closing without asking. Browsers show
+/// that prompt only after a real close, so the event itself is asked.
+const leaveAsks = (p) => p.page.evaluate(() => {
+  const e = new Event('beforeunload', { cancelable: true });
+  window.dispatchEvent(e);
+  return e.defaultPrevented;
+}).catch(() => null);
+
+/// How many recordings this browser's IndexedDB holds to send.
+const recordingsHeld = (p) => p.page.evaluate(() => new Promise((res) => {
+  const open = indexedDB.open('pangea_call_audio_pending', 1);
+  open.onupgradeneeded = () => {
+    open.result.createObjectStore('records');
+    open.result.createObjectStore('wavs');
+  };
+  open.onsuccess = () => {
+    const count = open.result.transaction('records').objectStore('records').count();
+    count.onsuccess = () => { open.result.close(); res(count.result); };
+    count.onerror = () => res(-1);
+  };
+  open.onerror = () => res(-1);
+})).catch(() => -1);
 
 /// The transcript screen once everything has landed.
 async function readTranscriptScreen(p, tag = 'final') {
@@ -983,7 +1020,7 @@ module.exports = {
   refuseIfNotLocal, ensureSubscriptions, confirmSubscriptions, refuseIfLearning, waitNoLiveCall, setEntitlement,
   openP, setNetwork, save, dumpLabels, saveParticipant,
   placeAndAnswer, cameraOn, hangUp, related, eventsSince, collect, summarise, spoken, wordSet, hitsOf,
-  probeMedia, creditsFor, checkCreditOnce, openNewestTranscript, watchLoading, readTranscriptScreen,
+  probeMedia, creditsFor, checkCreditOnce, openNewestTranscript, watchLoading, leaveAsks, recordingsHeld, readTranscriptScreen,
   assertTranscriptCriteria, assertPlays, assertScreens, repetition, clockOf, anyLabel, L,
   finish, fatal, ocr, ocrHas, ocrFind, sees, clickText, EN,
 };

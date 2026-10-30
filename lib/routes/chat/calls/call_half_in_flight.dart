@@ -23,6 +23,11 @@ class CallHalfInFlight {
 
   static final Map<String, ClaimToken> _held = {};
 
+  /// The keys of the calls this device is still writing up: on a slow
+  /// connection that takes minutes, and until then the room has no recording
+  /// or transcript from it to show.
+  static final Set<String> finishing = {};
+
   /// A fresh token when [txnId] was free, or null when someone else holds it
   /// (skip this pass; the next trigger retries).
   static ClaimToken? claim(String txnId) {

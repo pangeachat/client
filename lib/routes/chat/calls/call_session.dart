@@ -14,6 +14,7 @@ import 'package:fluffychat/routes/chat/calls/call_audio_pending_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_upload_state_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
+import 'package:fluffychat/routes/chat/calls/call_half_in_flight.dart';
 import 'package:fluffychat/routes/chat/calls/call_key_clock.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
@@ -315,8 +316,8 @@ class CallSession extends ChangeNotifier {
       userL1: recordingTranscript ? userL1 : null,
       userL2: recordingTranscript ? userL2 : null,
       // On the recording-based path the finished WAV is kept on disk (in
-      // memory on the web) until its half is sent, so an app kill or a parked
-      // upload resumes on the next launch or foreground instead of losing it.
+      // IndexedDB on the web) until its half is sent, so an app kill or a
+      // parked upload resumes instead of losing it.
       // Off, the recording stays in memory exactly as before.
       pendingStore: recordingTranscript
           ? pendingCallAudioStoreForPlatform()
@@ -1384,6 +1385,8 @@ class CallSession extends ChangeNotifier {
   void _finishRecording() {
     if (_recordingFinished) return;
     _recordingFinished = true;
+    final finishingKey = _callIdentity.key;
+    if (finishingKey != null) CallHalfInFlight.finishing.add(finishingKey);
     unawaited(
       call
           .hangUp()
@@ -1471,6 +1474,9 @@ class CallSession extends ChangeNotifier {
           })
           .catchError((Object e, StackTrace s) {
             Logs().e('Could not finish the call recording', e, s);
+          })
+          .whenComplete(() {
+            CallHalfInFlight.finishing.remove(finishingKey);
           }),
     );
   }

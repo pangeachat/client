@@ -9,6 +9,7 @@ import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
@@ -3758,32 +3759,85 @@ void main() {
       },
     );
 
+    test('replays on the first sync after launch, not on every sync', () async {
+      final store = _CountingPendingCallTranscriptStore();
+      final client = await bareClient();
+      CallService(
+        client,
+        transcriptOutbox: CallTranscriptOutbox(store: store),
+        recordingTranscriptEnabled: true,
+      );
+
+      // Spaced so the first sync's fire-and-forget replay fully completes
+      // (its re-entrancy guard released) before the second arrives -- so this
+      // pins the throttle, not merely that guard.
+      await client.handleSync(SyncUpdate(nextBatch: 'one'));
+      await Future.delayed(const Duration(milliseconds: 10));
+      await client.handleSync(SyncUpdate(nextBatch: 'two'));
+      await Future.delayed(const Duration(milliseconds: 10));
+
+      expect(store.reads, 1, reason: 'two syncs in a row are one replay');
+    });
+
+    // The run at call end has long given up by the time a parked recording
+    // lands, so the full recording arriving is what fills the other half in.
     test(
-      'replays once on the first sync after launch, not on every sync',
+      'a full recording landing asks for the halves to be filled in',
       () async {
-        final store = _CountingPendingCallTranscriptStore();
         final client = await bareClient();
-        CallService(
-          client,
-          transcriptOutbox: CallTranscriptOutbox(store: store),
-          recordingTranscriptEnabled: true,
+        final asked = <String>[];
+        final service = CallService(client)
+          ..fillPeerHalves = (room, callKey) => asked.add(callKey);
+        final room = Room(id: '!merged:server', client: client);
+        client.rooms.add(room);
+        addTearDown(() => client.rooms.remove(room));
+
+        service.handleSync(
+          SyncUpdate(
+            nextBatch: 'one',
+            rooms: RoomsUpdate(
+              join: {
+                room.id: JoinedRoomUpdate(
+                  timeline: TimelineUpdate(
+                    events: [
+                      MatrixEvent(
+                        type: CallAudioMergedContent.relType,
+                        content: {'call_key': r'$call'},
+                        senderId: '@a:server',
+                        eventId: r'$merged',
+                        originServerTs: DateTime.now(),
+                      ),
+                    ],
+                  ),
+                ),
+              },
+            ),
+          ),
         );
 
-        // Spaced so the first sync's fire-and-forget replay fully completes
-        // (its re-entrancy guard released) before the second arrives -- so this
-        // pins the once-latch, not merely that guard.
-        await client.handleSync(SyncUpdate(nextBatch: 'one'));
-        await Future.delayed(const Duration(milliseconds: 10));
-        await client.handleSync(SyncUpdate(nextBatch: 'two'));
-        await Future.delayed(const Duration(milliseconds: 10));
-
-        expect(
-          store.reads,
-          1,
-          reason: 'the startup replay is latched to the first sync',
-        );
+        expect(asked, [r'$call']);
       },
     );
+
+    // A parked half used to wait for a launch or a foreground, neither of which
+    // comes to a page that simply stays open (#3379).
+    test('tries again on a later sync, so a parked half recovers', () async {
+      final store = _CountingPendingCallTranscriptStore();
+      final client = await bareClient();
+      final service = CallService(
+        client,
+        transcriptOutbox: CallTranscriptOutbox(store: store),
+        recordingTranscriptEnabled: true,
+      )..flushEvery = Duration.zero;
+
+      await client.handleSync(SyncUpdate(nextBatch: 'one'));
+      await Future.delayed(const Duration(milliseconds: 10));
+      await client.handleSync(SyncUpdate(nextBatch: 'two'));
+      await Future.delayed(const Duration(milliseconds: 10));
+
+      expect(store.reads, 2);
+      expect(service.flushEvery, Duration.zero);
+    });
   });
 }
 

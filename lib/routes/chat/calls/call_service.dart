@@ -63,7 +63,7 @@ class CallService {
   /// The startup replay runs once, on the first sync after launch. A foreground
   /// replay (see `MatrixState.didChangeAppLifecycleState`) is not latched -- a
   /// half dropped this session must still be picked up when the app comes back.
-  bool _flushedPendingTranscripts = false;
+  DateTime? _flushedPendingTranscriptsAt;
 
   /// One replay at a time: the first-sync and foreground triggers can land
   /// together, and a second concurrent pass would read the store mid-drain.
@@ -439,27 +439,46 @@ class CallService {
   void handleSync(SyncUpdate update) {
     final userId = client.userID;
     if (userId != null) _lastUserId = userId;
-    // The first sync after launch is the reliable "client is up" signal, and
-    // the moment to replay a transcript half whose publish the app was killed
-    // before finishing. Latched to once (foreground handles later drops); a
-    // no-op when the feature is off.
-    _maybeFlushPendingTranscriptsOnce();
+    // A sync is the reliable "the network is up" signal, and the moment to
+    // replay what did not land: a transcript half the app was killed before
+    // publishing, a recording a slow connection parked. Launch and foreground
+    // alone left a parked half waiting for ever on a page that simply stays
+    // open (#3379). A no-op when the feature is off.
+    _maybeFlushPendingTranscripts();
     dispatchSyncedCallAudioEvents(
       update,
       onHalf: (roomId, callKey) => _driveMergeCoordinator(
         (coordinator) => coordinator.onSyncedCallAudio(roomId, callKey),
       ),
-      onMerged: (roomId, callKey) => _driveMergeCoordinator(
-        (coordinator) => coordinator.onSyncedMergedEvent(roomId, callKey),
-      ),
+      onMerged: (roomId, callKey) {
+        _driveMergeCoordinator(
+          (coordinator) => coordinator.onSyncedMergedEvent(roomId, callKey),
+        );
+        final room = client.getRoomById(roomId);
+        if (room != null) fillPeerHalves?.call(room, callKey);
+      },
     );
   }
 
-  void _maybeFlushPendingTranscriptsOnce() {
-    if (_flushedPendingTranscripts || !_recordingTranscriptEnabled) return;
-    _flushedPendingTranscripts = true;
+  /// Fills in whatever a call's recordings can still give, when they all land.
+  /// The run at call end gives up after seconds, and a recording a slow
+  /// connection parked lands minutes later (#3379). Supplied by the widget
+  /// layer, where the subscription and language controllers live.
+  void Function(Room room, String callKey)? fillPeerHalves;
+
+  void _maybeFlushPendingTranscripts() {
+    if (!_recordingTranscriptEnabled) return;
+    final now = DateTime.now();
+    final last = _flushedPendingTranscriptsAt;
+    if (last != null && now.difference(last) < flushEvery) return;
+    _flushedPendingTranscriptsAt = now;
     unawaited(flushPendingCallTranscripts());
   }
+
+  /// How often a sync may try again, so a phone on a bad connection is not
+  /// re-reading the room for a parked half on every sync.
+  @visibleForTesting
+  Duration flushEvery = const Duration(minutes: 1);
 
   /// Replays this device's own transcript halves whose hangup-time publish did
   /// not land -- dropped when the app backgrounded or was killed at hangup,
