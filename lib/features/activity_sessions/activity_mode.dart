@@ -65,6 +65,14 @@ enum ActivityMode {
     discussion => true,
   };
 
+  /// Its sessions are offered to other learners to join (open sessions on the
+  /// map and the start page). A discussion's room is picked by the server, so
+  /// its rooms are never offered.
+  bool get listsOpenSessions => switch (this) {
+    roleplay => true,
+    discussion => false,
+  };
+
   /// In the chat, a sender's name is prefixed with their role. Every student
   /// in a discussion holds the same role, so there it says nothing.
   bool get namesRoles => switch (this) {

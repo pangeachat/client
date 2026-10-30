@@ -7,6 +7,7 @@ import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
@@ -252,6 +253,10 @@ class RoomSummaryResponse {
     // attempting it errors. The preview's membership summary keeps role-holders
     // who left (value "leave"), so presence — not map emptiness — is the test.
     if (!hasPresentNonBotMember) return false;
+    // A mode whose rooms the server assigns is never offered to join here.
+    if (resolvedActivityPlan?.activityMode.listsOpenSessions == false) {
+      return false;
+    }
     return !isStarted;
   }
 
