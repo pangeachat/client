@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "Энэ хот танд хараахан нээгдээгүй байна. Хичээлээс түрүүлж явах нь үнэтэй; үнэ нь одоогоор шийдэгдээгүй байгаа тул одоохондоо юу ч төлөхгүй.",
     "worldShipLabel": "{city} хот дахь {course} хичээл",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, зочилсон"
+    "worldCityVisitedLabel": "{city}, зочилсон",
+    "botJoinsIn": "Pangea Bot {duration}-ийн дараа нэгдэнэ",
+    "botIsJoining": "Pangea Bot нэгдэж байна…",
+    "playWithBotNowTitle": "Одоо Pangea Bot-той тоглох уу?",
+    "playWithBotNowMessage": "Одоогоор хэн ч нэгдээгүй байна. Pangea Bot одоо сул суудалд суух боломжтой, эсвэл та хүлээсээр байж болно.",
+    "keepWaiting": "Хүлээсээр байх",
+    "botTookSeatAfterAnHour": "Энэ хуралдаан нэг цаг нээлттэй байсан тул Pangea Bot сул суудалд суусан.",
+    "botTookSeatAfterADay": "Энэ хуралдаан нэг өдрөөс илүү нээлттэй байсан тул Pangea Bot сул суудалд суусан. Эхлүүлэхийн тулд мессеж илгээнэ үү."
 }

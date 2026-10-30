@@ -331,17 +331,18 @@ const double kMultiPersonFirstMapPenalty = 2.0;
 const double kDismissedPenalty = 0.5;
 
 /// Rating-count threshold below which an activity counts as NEW (#7993): it
-/// takes the TOP of the ratings range (+[kRatingWeight]) and renders a NEW
-/// badge — new content gets the benefit of the doubt, not a cold-start
-/// penalty. A hand-set lever (world-map.instructions.md).
+/// takes the TOP of the ratings range (+[kRatingWeight]), and the start page's
+/// rating meter shows NEW for it — new content gets the benefit of the doubt,
+/// not a cold-start penalty. A hand-set lever (world-map.instructions.md).
 const int kNewRatingThreshold = 1;
 
 /// Magnitude of the `ratings` term in [pinScore]: the term spans
 /// −[kRatingWeight]…+[kRatingWeight] (world-map.instructions.md).
 const double kRatingWeight = 2.0;
 
-/// True when this pin has too few ratings to score on them — it renders a NEW
-/// badge and [ratingsTerm] gives it the top of the range.
+/// True when this activity has too few ratings to score on them — the start
+/// page's `ActivityRatingMeter` shows NEW and [ratingsTerm] gives it the top
+/// of the range. A pin shows no badge.
 bool isNewActivity(int? ratingCount) =>
     (ratingCount ?? 0) < kNewRatingThreshold;
 

@@ -10978,5 +10978,12 @@
     "enterCityEarlyBody": "Esta cidade ainda não está aberta para ti. Viajar antes da turma tem um custo; o que custa ainda está a ser decidido, por isso, por enquanto, nada é cobrado.",
     "worldShipLabel": "{course}, um curso em {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, visitada"
+    "worldCityVisitedLabel": "{city}, visitada",
+    "botJoinsIn": "O Pangea Bot junta-se em {duration}",
+    "botIsJoining": "O Pangea Bot está a juntar-se…",
+    "playWithBotNowTitle": "Jogar com o Pangea Bot agora?",
+    "playWithBotNowMessage": "Ninguém se juntou ainda. O Pangea Bot pode ocupar o lugar vago agora, ou pode continuar à espera.",
+    "keepWaiting": "Continuar à espera",
+    "botTookSeatAfterAnHour": "Esta sessão esteve aberta durante uma hora, por isso o Pangea Bot ocupou o lugar vago.",
+    "botTookSeatAfterADay": "Esta sessão esteve aberta por mais de um dia, por isso o Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar."
 }

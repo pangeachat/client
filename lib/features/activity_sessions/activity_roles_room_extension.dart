@@ -159,8 +159,11 @@ extension ActivityRolesRoomExtension on Room {
   /// has left the room. There is no stored "ended" field; this is computed
   /// from role state and membership. Waiting for every human is deliberate,
   /// so one learner cannot end the activity for the room. It gates the
-  /// summary request and the automatic save (pangeachat/.github
-  /// activities.instructions.md, "Saving and stars").
+  /// summary request and the automatic save (org activities.instructions.md,
+  /// "Saving and goals"; activity-session.instructions.md, "Completion saves
+  /// itself"). Today's summary waits on this, so it appears once every player
+  /// is done; the org design makes each learner's summary when they finish
+  /// ([ActivityUserSummaries]; not yet built here).
   bool get isActivityFinished {
     final roles = activityRoles?.roles.values.where(
       (r) => r.userId != BotName.byEnvironment,
@@ -186,7 +189,9 @@ extension ActivityRolesRoomExtension on Room {
   bool get hasArchivedActivity => ownRoleState?.isArchived ?? false;
 
   /// The admin dashboard joined the user here to review the session, and they
-  /// have not taken a role in it (#9364).
+  /// have not taken a role in it (#9364). Taking a role makes them a
+  /// participant, so the room shows again. This only hides the room from the
+  /// lists; a link still opens it, so the dashboard's Open chat link works.
   bool get isAdminReviewOnly {
     final reviewRoomIds = client
         .accountData[PangeaEventTypes.adminReviewRooms]

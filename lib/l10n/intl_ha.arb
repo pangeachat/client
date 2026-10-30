@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "Wannan birni bai buɗe muku ba tukuna. Tafiya gaban aji tana da tsada; har yanzu ana yanke shawara kan abin da zai ci, don haka a yanzu ba a caji komai.",
     "worldShipLabel": "{course}, wani kwas a {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, an ziyarta"
+    "worldCityVisitedLabel": "{city}, an ziyarta",
+    "botJoinsIn": "Pangea Bot zai shigo nan da {duration}",
+    "botIsJoining": "Pangea Bot na shigowa…",
+    "playWithBotNowTitle": "Ka yi wasa da Pangea Bot yanzu?",
+    "playWithBotNowMessage": "Babu wanda ya shigo tukuna. Pangea Bot zai iya shiga yanzu, ko kuma za ka iya ci gaba da jira.",
+    "keepWaiting": "Ci gaba da jira",
+    "botTookSeatAfterAnHour": "Wannan zaman ya kasance a buɗe na awa ɗaya, don haka Pangea Bot ya shiga.",
+    "botTookSeatAfterADay": "Wannan zaman ya kasance a buɗe fiye da kwana ɗaya, don haka Pangea Bot ya shiga. Aika saƙo don farawa."
 }

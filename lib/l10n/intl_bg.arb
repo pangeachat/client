@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "Този град все още не е отворен за теб. Пътуването преди класа има цена; все още се решава каква е тя, така че за момента нищо не се таксува.",
     "worldShipLabel": "{course}, курс в {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, посетен"
+    "worldCityVisitedLabel": "{city}, посетен",
+    "botJoinsIn": "Ботът на Pangea се присъединява след {duration}",
+    "botIsJoining": "Ботът на Pangea се присъединява...",
+    "playWithBotNowTitle": "Да играете ли с бота на Pangea сега?",
+    "playWithBotNowMessage": "Все още никой не се е присъединил. Ботът на Pangea може да заеме свободното място сега или можете да продължите да чакате.",
+    "keepWaiting": "Продължи да чакаш",
+    "botTookSeatAfterAnHour": "Тази сесия беше отворена за един час, така че ботът на Pangea зае свободното място.",
+    "botTookSeatAfterADay": "Тази сесия беше отворена за повече от един ден, така че ботът на Pangea зае свободното място. Изпратете съобщение, за да започнете."
 }

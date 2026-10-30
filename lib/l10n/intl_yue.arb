@@ -11018,5 +11018,12 @@
     "enterCityEarlyBody": "此城市尚未向您開放。比班級提早前往需要付出代價；目前代價仍在決定中，因此暫時不收取任何費用。",
     "worldShipLabel": "{city}嘅課程：{course}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "已到訪：{city}"
+    "worldCityVisitedLabel": "已到訪：{city}",
+    "botJoinsIn": "Pangea機械人將會喺{duration}之後加入",
+    "botIsJoining": "Pangea機械人正在加入…",
+    "playWithBotNowTitle": "而家同Pangea機械人玩？",
+    "playWithBotNowMessage": "仲未有人加入。Pangea機械人可以而家加入，或者你可以繼續等。",
+    "keepWaiting": "繼續等",
+    "botTookSeatAfterAnHour": "呢個環節開咗一個鐘，所以Pangea機械人加入咗。",
+    "botTookSeatAfterADay": "呢個環節開咗超過一日，所以Pangea機械人加入咗。傳送訊息嚟開始啦。"
 }

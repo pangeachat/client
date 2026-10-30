@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "ꯁꯤꯡꯁꯤ ꯁꯍꯔ ꯑꯁꯤ ꯅꯍꯥꯛꯀꯤꯗꯃꯛ ꯍꯧꯖꯤꯛ ꯐꯥꯎꯕꯗꯤ ꯍꯣꯡꯗ꯭ꯔꯤ꯫ ꯀ꯭ꯂꯥꯁ ꯑꯁꯤꯒꯤ ꯃꯃꯥꯡꯗ ꯆꯠꯄꯗ ꯆꯥꯟꯗ꯭ꯔꯤꯕ ꯈꯔ ꯂꯩ꯫ ꯃꯗꯨ ꯀꯔꯤ ꯆꯥꯟꯗ꯭ꯔꯤꯕ ꯈꯪꯗ꯭ꯔꯤ, ꯃꯗꯨꯅ ꯍꯧꯖꯤꯛ ꯐꯥꯎꯕꯗꯤ ꯀꯔꯤꯁꯨ ꯆꯥꯟꯗ꯭ꯔꯤꯕ ꯅꯠꯇꯦ꯫",
     "worldShipLabel": "{city} da leiba {course} haibasi",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, yatra toukhre"
+    "worldCityVisitedLabel": "{city}, yatra toukhre",
+    "botJoinsIn": "{duration} da Pangea Bot yaokhi",
+    "botIsJoining": "Pangea Bot yaoribani…",
+    "playWithBotNowTitle": "Pangea Bot ga loinana houjik sanaba?",
+    "playWithBotNowMessage": "Kanadasu houjik faoba yaodri. Pangea Bot na houjik khongpham louba yai, nattraga nangna ngairaga leiba yai.",
+    "keepWaiting": "Ngairaga leiyu",
+    "botTookSeatAfterAnHour": "Seesion asi pung ama muk hangkhre, aduna Pangea Bot na khongpham lourabani.",
+    "botTookSeatAfterADay": "Seesion asi numit ama muk hangkhre, aduna Pangea Bot na khongpham lourabani. Haurunaba wahei amata thabiyu."
 }

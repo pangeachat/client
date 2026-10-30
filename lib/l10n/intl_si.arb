@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "මෙම නගරය ඔබට තවම විවෘත නැත. පන්තියට පෙර ගමන් කිරීම සඳහා වියදමක් ඇත; එහි වියදම තවමත් තීරණය කරමින් පවතී, එබැවින් දැනට කිසිවක් අය නොකෙරේ.",
     "worldShipLabel": "{city} හි පාඨමාලාවක් වන {course}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, නරඹන ලදී"
+    "worldCityVisitedLabel": "{city}, නරඹන ලදී",
+    "botJoinsIn": "Pangea Bot {duration} තුළට එක්වේ",
+    "botIsJoining": "Pangea Bot එක්වෙමින් පවතී...",
+    "playWithBotNowTitle": "දැන් Pangea Bot සමඟ සෙල්ලම් කරනවාද?",
+    "playWithBotNowMessage": "තවම කිසිවෙක් සම්බන්ධ වී නැත. Pangea Bot හට දැන් හිස් ආසනය ගත හැක, නැතහොත් ඔබට දිගටම බලා සිටිය හැක.",
+    "keepWaiting": "බලා සිටින්න",
+    "botTookSeatAfterAnHour": "මෙම සැසිය පැයක් විවෘතව තිබූ නිසා, Pangea Bot හිස් ආසනය ගත්තේය.",
+    "botTookSeatAfterADay": "මෙම සැසිය දවසකට වඩා විවෘතව තිබූ නිසා, Pangea Bot හිස් ආසනය ගත්තේය. ආරම්භ කිරීමට පණිවිඩයක් යවන්න."
 }

@@ -36,7 +36,13 @@ class ActivityDropdownContent extends StatelessWidget {
   /// team's builds make it a reporting surface.
   ///
   /// The collapsed header deliberately has no equivalent: its whole top row is
-  /// the toggle that opens this list, and the stars sit in the middle of it.
+  /// the toggle that opens this list, and the stars sit in the middle of it,
+  /// so reporting would take taps from opening it — and it shows no goal
+  /// descriptions, so the reporter could not read what they report. The
+  /// read-only lists stay inert too: the start page has no session to report
+  /// against, and the summary's list follows the participant picker, so a star
+  /// there is as likely somebody else's (activity-session.instructions.md, "The
+  /// goal header").
   final void Function(ActivityRoleGoal goal)? onReportStar;
 
   /// What each earned goal paid, shown as a small gold "+N" at the end of

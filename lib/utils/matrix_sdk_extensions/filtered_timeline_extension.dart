@@ -3,6 +3,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/bot_seat_note.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
@@ -52,7 +53,10 @@ extension IsStateExtension on Event {
       ((unsigned?['extra_content']
               as Map<String, dynamic>?)?[MessageConstants.transcription] ==
           null) &&
-      (!isState || importantStateEvents.contains(type) || isShownBotNotice);
+      (!isState ||
+          importantStateEvents.contains(type) ||
+          isShownBotNotice ||
+          isBotSeatNote);
   // Pangea#
 
   bool get isState => !{
@@ -73,6 +77,9 @@ extension IsStateExtension on Event {
     PangeaEventTypes.call,
     // A notice reads as the bot's message (notices.instructions.md).
     PangeaEventTypes.botNotice,
+    // The note where the bot took the open seat explains it, so it isn't
+    // folded away (activity-session.instructions.md, "The bot's seat").
+    PangeaEventTypes.botParticipant,
   }.contains(type);
 
   bool get isKnownHiddenStates =>
@@ -97,7 +104,8 @@ extension IsStateExtension on Event {
         PangeaEventTypes.activityRole,
         PangeaEventTypes.call,
       ].contains(type) ||
-      isShownBotNotice;
+      isShownBotNotice ||
+      isBotSeatNote;
 
   // we're filtering out some state events that we don't want to render
   static const Set<String> importantStateEvents = {

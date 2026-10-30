@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "Dis siti nɔ opin fɔ yu yɛt. If yu de travul bifo di klasi gɛt in kɔst; wetin i kɔst dɛn stil de disayd, so fɔ naw nɔtin nɔ de pe.",
     "worldShipLabel": "{course}, wan kos na {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, dɛn dɔn vizit am"
+    "worldCityVisitedLabel": "{city}, dɛn dɔn vizit am",
+    "botJoinsIn": "Pangea Bot de go jɔyn insay {duration}",
+    "botIsJoining": "Pangea Bot de jɔyn…",
+    "playWithBotNowTitle": "Yu want fɔ ple wit Pangea Bot naw?",
+    "playWithBotNowMessage": "Nɔbɔdi nɔ jɔyn yet. Pangea Bot kin tek di ples naw, ɔ yu kin kɔntinyu fɔ wet.",
+    "keepWaiting": "Kɔntinyu fɔ wet",
+    "botTookSeatAfterAnHour": "Dis seshɔn bin opin fɔ wan awa, so Pangea Bot tek di ples we bin fri.",
+    "botTookSeatAfterADay": "Dis seshɔn bin opin fɔ pas wan de, so Pangea Bot tek di ples we bin fri. Send mɛsej fɔ stat."
 }

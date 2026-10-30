@@ -10693,5 +10693,12 @@
     "enterCityEarlyBody": "Níl an chathair seo oscailte duit fós. Tá costas ag baint le taisteal chun tosaigh ar an rang; tá an costas sin fós á chinneadh, mar sin níl aon táille á ghearradh faoi láthair.",
     "worldShipLabel": "{course}, cúrsa i {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, tugtha cuairt air"
+    "worldCityVisitedLabel": "{city}, tugtha cuairt air",
+    "botJoinsIn": "Pangea Bot joins in {duration}",
+    "botIsJoining": "Pangea Bot is joining…",
+    "playWithBotNowTitle": "Play with Pangea Bot now?",
+    "playWithBotNowMessage": "Nobody has joined yet. Pangea Bot can take the open seat now, or you can keep waiting.",
+    "keepWaiting": "Keep waiting",
+    "botTookSeatAfterAnHour": "This session was open for an hour, so Pangea Bot took the open seat.",
+    "botTookSeatAfterADay": "This session was open for over a day, so Pangea Bot took the open seat. Send a message to start."
 }

@@ -11006,5 +11006,12 @@
     "enterCityEarlyBody": "To mesto ti še ni odprto. Potovanje pred razredom ima svojo ceno; kaj točno stane, se še določa, zato zaenkrat ni nobenih stroškov.",
     "worldShipLabel": "{course}, tečaj v {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, obiskano"
+    "worldCityVisitedLabel": "{city}, obiskano",
+    "botJoinsIn": "Pangea Bot se pridruži čez {duration}",
+    "botIsJoining": "Pangea Bot se pridružuje ...",
+    "playWithBotNowTitle": "Želite igrati s Pangea Botom zdaj?",
+    "playWithBotNowMessage": "Nihče se še ni pridružil. Pangea Bot lahko zdaj zasede prosto mesto ali pa lahko še naprej čakate.",
+    "keepWaiting": "Nadaljuj čakanje",
+    "botTookSeatAfterAnHour": "Ta seja je bila odprta eno uro, zato je Pangea Bot zasedel prosto mesto.",
+    "botTookSeatAfterADay": "Ta seja je bila odprta več kot en dan, zato je Pangea Bot zasedel prosto mesto. Pošljite sporočilo za začetek."
 }

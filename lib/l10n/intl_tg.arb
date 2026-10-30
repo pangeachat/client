@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "Ин шаҳр барои шумо ҳанӯз кушода нест. Пеш аз дарс сафар кардан арзиш дорад; арзиши он ҳанӯз муайян карда мешавад, аз ин рӯ ҳоло чизе ситонида намешавад.",
     "worldShipLabel": "{course}, як курс дар {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, боздид шуд"
+    "worldCityVisitedLabel": "{city}, боздид шуд",
+    "botJoinsIn": "Pangea Bot дар {duration} ҳамроҳ мешавад",
+    "botIsJoining": "Pangea Bot ҳамроҳ шуда истодааст…",
+    "playWithBotNowTitle": "Ҳозир бо Pangea Bot бозӣ мекунед?",
+    "playWithBotNowMessage": "Ҳанӯз касе ҳамроҳ нашудааст. Pangea Bot метавонад ҳозир ҷои холиро ишғол кунад, ё шумо метавонед интизор шавед.",
+    "keepWaiting": "Интизор шавед",
+    "botTookSeatAfterAnHour": "Ин сессия як соат боз кушода буд, аз ин рӯ Pangea Bot ҷои холиро ишғол кард.",
+    "botTookSeatAfterADay": "Ин сессия зиёда аз як рӯз боз кушода буд, аз ин рӯ Pangea Bot ҷои холиро ишғол кард. Барои оғоз паём фиристед."
 }

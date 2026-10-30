@@ -6,12 +6,17 @@ import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 
 /// The playing activity video as one named Tab stop that answers YouTube's own
 /// keys — Space, Enter or K to play and pause, M to mute, C for captions
-/// (#9128; design in activities.instructions.md).
+/// (#9128; design in activities.instructions.md, "Media is a carousel"). A
+/// learner who knows them on YouTube already knows them here, and M is also
+/// the keyboard's unmute for a video that started muted. Seeking and volume
+/// level have no key.
 ///
 /// Focus stays here and never enters the player: on web the player is a
 /// platform view whose own focus node is a dead Tab stop, and Tab cannot reach
 /// the frame behind it, so everything inside [child] is kept out of focus
-/// traversal.
+/// traversal. Were focus let in, the way back out is about fifty Tab presses
+/// through YouTube's related-video links, ending at the top of the page, and
+/// the app cannot hear Escape from inside another site's frame.
 ///
 /// The node is a plain named group, never a button. A button's children are
 /// presentational on web, and the embed's frame — which a screen reader can

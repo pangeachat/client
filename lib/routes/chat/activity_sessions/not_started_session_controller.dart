@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_repo.dart';
 import 'package:fluffychat/features/activity_sessions/play_with_bot_intent.dart';
@@ -18,27 +19,31 @@ import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/session_presence_tracker.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum NotStartedSubPage {
+  /// The activity itself, listing any open sessions under it.
   main,
-  join,
+
+  /// The Completed list.
   view;
 
   List<ActivitySummaryStatus> get visibleStatuses {
     switch (this) {
-      case NotStartedSubPage.join:
-        return [ActivitySummaryStatus.notStarted];
       case NotStartedSubPage.view:
         return [ActivitySummaryStatus.completed];
       case NotStartedSubPage.main:
-        return [];
+        return [ActivitySummaryStatus.notStarted];
     }
   }
 }
@@ -82,40 +87,36 @@ class NotStartedSessionController extends State<NotStartedSession>
     implements ActivitySessionStateController {
   NotStartedSubPage _subPage = NotStartedSubPage.main;
   final _goalsHandler = GoalsSubscriptionHandler();
-
-  /// The join list was opened for the learner because the activity had open
-  /// sessions, rather than by a tap.
-  bool _landedOnJoinList = false;
+  bool _openedJoinedSession = false;
 
   @override
   void initState() {
     super.initState();
-    _syncJoinListLanding();
+    // The client is read through context, which isn't available yet.
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _openJoinedSessionIfFull(),
+    );
   }
 
   @override
   void didUpdateWidget(NotStartedSession oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _syncJoinListLanding();
+    _openJoinedSessionIfFull();
   }
 
-  /// A joinable activity opens straight on its join list, so an open session
-  /// is never passed over for a bot the learner didn't need; if its last open
-  /// session fills while they look, the page falls back to the start choice.
-  void _syncJoinListLanding() {
-    if (widget.summariesLoading || joinedActivityRoomId != null) return;
-    final hasOpen = openSessionCount > 0;
-    if (hasOpen && _subPage == NotStartedSubPage.main && !_landedOnJoinList) {
-      _landedOnJoinList = true;
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) goToJoinPage();
-      });
-    } else if (!hasOpen && _subPage == NotStartedSubPage.join) {
-      _landedOnJoinList = false;
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) goToMainPage();
-      });
-    }
+  /// Opening an activity whose session the learner is in and is full goes
+  /// straight into its chat (activity-start-page.instructions.md, "The CTA
+  /// row").
+  void _openJoinedSessionIfFull() {
+    if (_openedJoinedSession || !mounted) return;
+    final roomId = joinedActivityRoomId;
+    if (roomId == null) return;
+    final room = Matrix.of(context).client.getRoomById(roomId);
+    if (room == null || !room.isActivityStarted) return;
+    _openedJoinedSession = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) goToJoinedActivity();
+    });
   }
 
   @override
@@ -132,18 +133,13 @@ class NotStartedSessionController extends State<NotStartedSession>
 
   NotStartedSubPage get subPage => _subPage;
 
-  // The sub-page change is reported to the start state because the join list
-  // mounting is a tutorial trigger it can't otherwise see
+  // The sub-page change is reported to the start state because the open
+  // sessions mounting is a tutorial trigger it can't otherwise see
   // (ActivitySessionStartState.onTutorialSurfaceChanged).
-  void goToJoinPage() => _setSubPage(NotStartedSubPage.join);
   void goToViewPage() => _setSubPage(NotStartedSubPage.view);
   void goToMainPage() => _setSubPage(NotStartedSubPage.main);
 
-  /// Back from the Completed list returns to the join list when that is where
-  /// the activity landed.
-  void goBackFromSubPage() => _setSubPage(
-    _landedOnJoinList ? NotStartedSubPage.join : NotStartedSubPage.main,
-  );
+  void goBackFromSubPage() => goToMainPage();
 
   void _setSubPage(NotStartedSubPage subPage) {
     setState(() => _subPage = subPage);
@@ -279,13 +275,92 @@ class NotStartedSessionController extends State<NotStartedSession>
   /// Pick a role, then the session launches with the bot already added.
   void playWithBot() => startNewActivity(withBot: true);
 
-  /// Join someone's open session if there is one, else start a session and
-  /// wait for people.
-  void playWithHuman() {
-    if (openSessionCount > 0) {
-      goToJoinPage();
-    } else {
+  /// Open sessions "Play with others" tries before opening a new one.
+  static const int _maxJoinAttempts = 3;
+
+  /// Joins an open session, read fresh at the tap, trying the next one when a
+  /// seat is gone on arrival. It gives up after [_maxJoinAttempts] tries, or
+  /// when none is left, and starts a new session even if more are open.
+  /// A failed read shows its error and joins nothing. See
+  /// activity-start-page.instructions.md, "Open sessions".
+  Future<void> playWithHuman() async {
+    final resp = await showFutureLoadingDialog<({String roomId, bool seated})?>(
+      context: context,
+      future: () async {
+        final tried = <String>{};
+        for (var attempt = 0; attempt < _maxJoinAttempts; attempt++) {
+          final fresh = await widget.controller.refreshSummaries();
+          if (!mounted) return null;
+          final roomId = await bestOpenSessionId(fresh, exclude: tried);
+          if (roomId == null) return null;
+          final outcome = await _joinAndClaimSeat(roomId);
+          switch (outcome) {
+            case _SeatOutcome.seated:
+              return (roomId: roomId, seated: true);
+            case _SeatOutcome.picksRole:
+              return (roomId: roomId, seated: false);
+            case _SeatOutcome.noSeat:
+              tried.add(roomId);
+              await _leaveWithoutSeat(roomId);
+          }
+        }
+        return null;
+      },
+    );
+    if (resp.isError || !mounted) return;
+    final joined = resp.result;
+    if (joined == null) {
       startNewActivity();
+      return;
+    }
+    await ActivitySessionPreviewRepo.set(joined.roomId);
+    if (!mounted) return;
+    if (joined.seated) {
+      NavigationUtil.goToSpaceRoute(joined.roomId, [], context);
+    } else {
+      _viewSession(joined.roomId);
+    }
+  }
+
+  /// The open session in [summaries] to join, skipping [exclude]: a course
+  /// ping's, else the most recently active (the list's top). Uses only
+  /// presence the client already holds, so the tap doesn't wait on a request.
+  Future<String?> bestOpenSessionId(
+    ActivitySessionSummariesModel summaries, {
+    Set<String> exclude = const {},
+  }) async {
+    final open = {
+      for (final entry
+          in summaries.activitySessionStatuses
+              .getSessionsByStatus(ActivitySummaryStatus.notStarted)
+              .entries)
+        if (!exclude.contains(entry.key)) entry.key: entry.value,
+    };
+    if (open.isEmpty) return null;
+    final ping = CoursePingBadgeCache.instance.value;
+    if (ping != null &&
+        ping.courseId == widget.course?.id &&
+        ping.activityId == widget.activityId &&
+        open.containsKey(ping.sessionRoomId)) {
+      return ping.sessionRoomId;
+    }
+    final presence = SessionPresenceTracker(Matrix.of(context).client);
+    try {
+      await presence.watch([
+        for (final summary in open.values) ...summary.joinedMemberIds,
+      ], cachedOnly: true);
+      final now = DateTime.now();
+      final entries = open.entries.toList()
+        ..sort((a, b) {
+          final byRecent = SessionPresenceTracker.compareRecentFirst(
+            presence.lastActiveOf(a.value.joinedMemberIds, now: now),
+            presence.lastActiveOf(b.value.joinedMemberIds, now: now),
+          );
+          return byRecent != 0 ? byRecent : a.key.compareTo(b.key);
+        });
+      return entries.first.key;
+    } finally {
+      presence.dispose();
     }
   }
 
@@ -352,46 +427,61 @@ class NotStartedSessionController extends State<NotStartedSession>
     ),
   );
 
-  /// Join [roomId] from the join list. With exactly one open role, it is
-  /// claimed straight away and the learner lands in the session; otherwise
-  /// the session opens for viewing, to pick a role.
+  /// Joins [roomId], tapped in the open sessions list: into the chat when its
+  /// one open seat is claimed, else to the session's page. The learner chose
+  /// this session, so a lost seat doesn't move them to another.
   Future<void> joinActivityByRoomId(String roomId) async {
-    final client = Matrix.of(context).client;
     final resp = await showFutureLoadingDialog(
       context: context,
-      future: () async {
-        final existing = client.getRoomById(roomId);
-        if (existing == null || existing.membership != Membership.join) {
-          await client.joinRoom(
-            roomId,
-            via: widget.course?.spaceChildren
-                .firstWhereOrNull((child) => child.roomId == roomId)
-                ?.via,
-          );
-          final joined = client.getRoomById(roomId);
-          if (joined == null || joined.membership != Membership.join) {
-            await client.waitForRoomInSync(roomId, join: true);
-          }
-        }
-        return _claimOnlyOpenRole(client.getRoomById(roomId));
-      },
+      future: () => _joinAndClaimSeat(roomId),
     );
     if (resp.isError) return;
     await ActivitySessionPreviewRepo.set(roomId);
     if (!mounted) return;
-    if (resp.result == true) {
+    if (resp.result == _SeatOutcome.seated) {
       NavigationUtil.goToSpaceRoute(roomId, [], context);
     } else {
       _viewSession(roomId);
     }
   }
 
-  /// Whether the learner holds a role in [room] after this: already had one,
-  /// or the session had exactly one open role and it was claimed now.
-  Future<bool> _claimOnlyOpenRole(Room? room) async {
+  /// Joins [roomId] if the learner isn't in it yet, then claims its seat when
+  /// exactly one is open.
+  Future<_SeatOutcome> _joinAndClaimSeat(String roomId) async {
+    final client = Matrix.of(context).client;
+    final existing = client.getRoomById(roomId);
+    if (existing == null || existing.membership != Membership.join) {
+      await client.joinRoom(
+        roomId,
+        via: widget.course?.spaceChildren
+            .firstWhereOrNull((child) => child.roomId == roomId)
+            ?.via,
+      );
+      final joined = client.getRoomById(roomId);
+      if (joined == null || joined.membership != Membership.join) {
+        await client.waitForRoomInSync(roomId, join: true);
+      }
+    }
+    return _claimOnlyOpenRole(client.getRoomById(roomId));
+  }
+
+  /// Leaves a session whose seat was gone, so the learner isn't left a member.
+  Future<void> _leaveWithoutSeat(String roomId) async {
+    final room = Matrix.of(context).client.getRoomById(roomId);
+    if (room == null || room.membership != Membership.join) return;
+    try {
+      await room.leave();
+    } catch (e, s) {
+      // silent-ok: the next session is still worth trying; logged.
+      ErrorHandler.logError(e: e, s: s, data: {'roomId': roomId});
+    }
+  }
+
+  /// Claims [room]'s seat when exactly one is open.
+  Future<_SeatOutcome> _claimOnlyOpenRole(Room? room) async {
     final activity = widget.activity;
-    if (room == null || activity == null) return false;
-    if (room.hasPickedRole) return true;
+    if (room == null || activity == null) return _SeatOutcome.noSeat;
+    if (room.hasPickedRole) return _SeatOutcome.seated;
     // Seat math needs each holder's membership (left holders free a seat).
     await room.requestParticipants(
       const [Membership.join, Membership.invite, Membership.knock],
@@ -403,18 +493,50 @@ class NotStartedSessionController extends State<NotStartedSession>
       for (final role in activity.roles.values)
         if (!taken.contains(role.id)) role,
     ];
-    if (open.length != 1) return false;
+    if (open.isEmpty) return _SeatOutcome.noSeat;
+    if (open.length > 1) return _SeatOutcome.picksRole;
     try {
       await room.joinActivity(open.single);
-      return true;
     } on RoleException {
-      // silent-ok: someone took the seat first; the session opens for
-      // viewing instead, where the role picker shows what's left.
-      return false;
+      // silent-ok: someone took the seat first; the caller decides what next.
+      return _SeatOutcome.noSeat;
+    }
+    // The claim rewrites the whole roles state, so a simultaneous claim can
+    // silently overwrite it; reading it back catches that.
+    return await _stillHoldsSeat(room, open.single.id)
+        ? _SeatOutcome.seated
+        : _SeatOutcome.noSeat;
+  }
+
+  Future<bool> _stillHoldsSeat(Room room, String roleId) async {
+    try {
+      final content = await room.client.getRoomStateWithKey(
+        room.id,
+        PangeaEventTypes.activityRole,
+        '',
+      );
+      final holder = ActivityRolesModel.fromJson(content).roles[roleId];
+      return holder?.userId == room.client.userID;
+    } catch (e, s) {
+      // silent-ok: the claim succeeded; an unreadable check keeps the seat.
+      ErrorHandler.logError(e: e, s: s, data: {'roomId': room.id});
+      return true;
     }
   }
 
   @override
   Widget build(BuildContext context) =>
       ActivitySessionStartView(widget.controller, sessionController: this);
+}
+
+/// Where a learner stands in a session after trying for its seat.
+enum _SeatOutcome {
+  /// They hold a role and can go into the session.
+  seated,
+
+  /// Several roles are open, so they choose one from the session's page.
+  picksRole,
+
+  /// No seat was left for them.
+  noSeat,
 }

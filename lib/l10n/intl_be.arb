@@ -10078,5 +10078,12 @@
     "enterCityEarlyBody": "Гэты горад для вас яшчэ не адкрыты. Падарожжа наперадзе класа мае сваю цану; што менавіта гэта каштуе, яшчэ вырашаецца, таму пакуль нічога не спаганяецца.",
     "worldShipLabel": "{course}, курс у {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, наведана"
+    "worldCityVisitedLabel": "{city}, наведана",
+    "botJoinsIn": "Бот Pangea далучыцца праз {duration}",
+    "botIsJoining": "Бот Pangea далучаецца…",
+    "playWithBotNowTitle": "Пагуляць з ботам Pangea зараз?",
+    "playWithBotNowMessage": "Пакуль ніхто не далучыўся. Бот Pangea можа заняць свабоднае месца зараз, або вы можаце працягнуць чакаць.",
+    "keepWaiting": "Працягнуць чакаць",
+    "botTookSeatAfterAnHour": "Гэтая сесія была адкрыта гадзіну, таму бот Pangea заняў свабоднае месца.",
+    "botTookSeatAfterADay": "Гэтая сесія была адкрыта больш за дзень, таму бот Pangea заняў свабоднае месца. Адпраўце паведамленне, каб пачаць."
 }

@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "Leli dolobha alikavulelwa wena okwamanje. Ukuhamba ngaphambi kwekilasi kunezindleko; ukuthi kubiza malini kusathathwa isinqumo, ngakho okwamanje akukho okukhokhiswayo.",
     "worldShipLabel": "{course}, isifundo e-{city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, uvakashelwe"
+    "worldCityVisitedLabel": "{city}, uvakashelwe",
+    "botJoinsIn": "I-Pangea Bot ijoyina ngo-{duration}",
+    "botIsJoining": "I-Pangea Bot ijoyina…",
+    "playWithBotNowTitle": "Udlale ne-Pangea Bot manje?",
+    "playWithBotNowMessage": "Akekho ojoyinile okwamanje. I-Pangea Bot ingathatha isihlalo esingenalutho manje, noma ungaqhubeka nokulinda.",
+    "keepWaiting": "Qhubeka nokulinda",
+    "botTookSeatAfterAnHour": "Lesi sikhathi besivuliwe ihora, ngakho i-Pangea Bot yathatha isihlalo esingenalutho.",
+    "botTookSeatAfterADay": "Lesi sikhathi besivuliwe isikhathi esingaphezu kosuku, ngakho i-Pangea Bot yathatha isihlalo esingenalutho. Thumela umlayezo ukuze uqale."
 }

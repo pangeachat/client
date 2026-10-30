@@ -7371,5 +7371,12 @@
     "enterCityEarlyBody": "Thành phố này chưa mở cửa cho bạn. Việc đi trước lớp học sẽ phải trả phí; chi phí vẫn đang được quyết định, vì vậy hiện tại chưa có khoản phí nào được tính.",
     "worldShipLabel": "{course}, một khóa học tại {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, đã ghé thăm"
+    "worldCityVisitedLabel": "{city}, đã ghé thăm",
+    "botJoinsIn": "Pangea Bot tham gia sau {duration}",
+    "botIsJoining": "Pangea Bot đang tham gia…",
+    "playWithBotNowTitle": "Chơi với Pangea Bot ngay bây giờ?",
+    "playWithBotNowMessage": "Chưa có ai tham gia. Pangea Bot có thể nhận chỗ trống ngay bây giờ, hoặc bạn có thể tiếp tục chờ đợi.",
+    "keepWaiting": "Tiếp tục chờ đợi",
+    "botTookSeatAfterAnHour": "Phiên này đã mở được một giờ, vì vậy Pangea Bot đã nhận chỗ trống.",
+    "botTookSeatAfterADay": "Phiên này đã mở hơn một ngày, vì vậy Pangea Bot đã nhận chỗ trống. Gửi tin nhắn để bắt đầu."
 }

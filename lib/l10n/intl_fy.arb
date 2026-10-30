@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "Dizze stêd is noch net foar jo iepen. Foarút reizgje op de klasse hat in priis; wat it kostet wurdt noch besletten, dus foar no wurdt der neat yn rekken brocht.",
     "worldShipLabel": "{course}, in kursus yn {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, besocht"
+    "worldCityVisitedLabel": "{city}, besocht",
+    "botJoinsIn": "Pangea Bot docht mei oer {duration}",
+    "botIsJoining": "Pangea Bot docht mei…",
+    "playWithBotNowTitle": "No mei Pangea Bot boartsje?",
+    "playWithBotNowMessage": "Der hat noch nimmen meidien. Pangea Bot kin no de iepen plak ynnimme, of jo kinne wachtsje bliuwe.",
+    "keepWaiting": "Wachtsje bliuwe",
+    "botTookSeatAfterAnHour": "Dizze sesje wie in oere iepen, dus Pangea Bot hat de iepen plak ynnommen.",
+    "botTookSeatAfterADay": "Dizze sesje wie mear as in dei iepen, dus Pangea Bot hat de iepen plak ynnommen. Stjoer in berjocht om te begjinnen."
 }

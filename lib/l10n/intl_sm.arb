@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "E le'i tatalaina lenei aai mo oe. O le malaga i luma o le vasega e iai sona tau; o le a le tau o lo'o fuafuaina pea, o lea mo le taimi nei e leai se totogi.",
     "worldShipLabel": "{course}, o se kosi i {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, na asiasi i ai"
+    "worldCityVisitedLabel": "{city}, na asiasi i ai",
+    "botJoinsIn": "Ua auai le Pangea Bot i le {duration}",
+    "botIsJoining": "O lo'o auai le Pangea Bot…",
+    "playWithBotNowTitle": "Ta'alo ma le Pangea Bot nei?",
+    "playWithBotNowMessage": "E leai se tasi na auai mai. E mafai e le Pangea Bot ona nofo i le nofoa avanoa nei, pe e te mana'o e fa'atali pea.",
+    "keepWaiting": "Fa'atali pea",
+    "botTookSeatAfterAnHour": "Na tatala lenei sauniga mo le itula, o lea na nofo ai le Pangea Bot i le nofoa avanoa.",
+    "botTookSeatAfterADay": "Na tatala lenei sauniga mo le silia ma le aso, o lea na nofo ai le Pangea Bot i le nofoa avanoa. Auina mai se fe'au e amata ai."
 }

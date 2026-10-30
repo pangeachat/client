@@ -10793,5 +10793,12 @@
     "enterCityEarlyBody": "Acest oraș nu este încă deschis pentru tine. Călătoria înaintea clasei are un cost; costul este încă în curs de decizie, așa că deocamdată nu se percepe nimic.",
     "worldShipLabel": "{course}, un curs în {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, vizitat"
+    "worldCityVisitedLabel": "{city}, vizitat",
+    "botJoinsIn": "Pangea Bot se alătură în {duration}",
+    "botIsJoining": "Pangea Bot se alătură…",
+    "playWithBotNowTitle": "Vrei să te joci cu Pangea Bot acum?",
+    "playWithBotNowMessage": "Nimeni nu s-a alăturat încă. Pangea Bot poate ocupa locul liber acum, sau poți continua să aștepți.",
+    "keepWaiting": "Continuă să aștepți",
+    "botTookSeatAfterAnHour": "Această sesiune a fost deschisă timp de o oră, așa că Pangea Bot a ocupat locul liber.",
+    "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe."
 }

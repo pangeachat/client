@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "Бұл қала сіз үшін әлі ашық емес. Сабақтан ерте кетудің құны бар; оның құны әлі анықталуда, сондықтан әзірге ештеңе алынбайды.",
     "worldShipLabel": "{city} қаласындағы {course} курсы",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, барылды"
+    "worldCityVisitedLabel": "{city}, барылды",
+    "botJoinsIn": "Pangea Bot {duration} ішінде қосылады",
+    "botIsJoining": "Pangea Bot қосылуда…",
+    "playWithBotNowTitle": "Pangea Bot-пен қазір ойнайсыз ба?",
+    "playWithBotNowMessage": "Әлі ешкім қосылған жоқ. Pangea Bot қазір бос орынды ала алады немесе күте тұруыңызға болады.",
+    "keepWaiting": "Күте тұру",
+    "botTookSeatAfterAnHour": "Бұл сессия бір сағат бойы ашық болды, сондықтан Pangea Bot бос орынды алды.",
+    "botTookSeatAfterADay": "Бұл сессия бір күннен астам уақыт бойы ашық болды, сондықтан Pangea Bot бос орынды алды. Бастау үшін хабарлама жіберіңіз."
 }

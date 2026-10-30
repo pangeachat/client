@@ -121,8 +121,8 @@ class PApiUrls {
   /// the membership-aware course listing. Query: course_room_id? — when it
   /// names a course the caller is a joined member of, the quest owner's
   /// private activities are included. Replaces the direct CMS activity list
-  /// for course scope. See activities.instructions.md § Ownership,
-  /// visibility, and removal.
+  /// for course scope. See pangeachat/.github activities.instructions.md
+  /// § Ownership, visibility, and removal.
   static String questActivities(String questId) =>
       "${PApiUrls._choreoRoute}/quests/$questId/activities";
 

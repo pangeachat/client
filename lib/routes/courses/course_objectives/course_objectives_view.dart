@@ -414,6 +414,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   Future<void> _loadAvailableParticipants() async {
     final room = widget.room;
     if (room == null) return; // A preview has no members — nothing to dim.
+    // Nor does a course the learner hasn't joined: the server refuses its
+    // member list, and an unknown count dims nothing, as on the map (#9707).
+    if (room.membership != Membership.join) return;
     final available = await room.availableActivityParticipants();
     // Rebuild only on a real change — the sync handler calls this frequently.
     if (!mounted || available == _availableParticipants) return;
@@ -661,8 +664,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     }
     // Immersive in-course open: the token producer drops the `left=course`
     // card (and any right panel) and keeps the `?m=course:` scope, so the plan
-    // takes the card's slot and backs out to it. A video hero autostarts
-    // (muted).
+    // takes the card's slot and backs out to it. A video hero sets the
+    // token's autoplay field, which nothing reads today, so nothing plays
+    // until tapped.
     context.go(
       WorkspaceNav.openCourseActivity(
         room.id,

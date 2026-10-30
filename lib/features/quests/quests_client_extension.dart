@@ -91,8 +91,8 @@ extension QuestsClientExtension on Client {
   /// to it, MissionXpCache) and a flat [kGoalXp] per goal the learner was
   /// awarded in it. Repeat sessions accumulate — XP is effort — and a
   /// session counts only once it is saved, so finishing is what banks it
-  /// (org activities doc, "Activity XP" and "Saving"; quests.instructions.md,
-  /// "What fills a Mission").
+  /// (quests.instructions.md, "What fills a Mission"; org
+  /// activities.instructions.md, "Saving and goals").
   ///
   /// Raw per member: readers that answer for a course credit it across the
   /// activity's copies ([CourseCredit.creditedBy]).
@@ -318,7 +318,7 @@ extension QuestsClientExtension on Client {
 
   /// One session's XP: the XP credited to its room plus its goal checkmarks.
   /// What [userXpByActivity] banks once the session is saved, and what the
-  /// goal header's ring shows while it runs.
+  /// goal header's number shows while it runs.
   int sessionXp(Room room, Map<String, int> creditedXpByRoom) =>
       (creditedXpByRoom[room.id] ?? 0) +
       kGoalXp * room.ownCompletedGoals.length;

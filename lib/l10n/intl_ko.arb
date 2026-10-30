@@ -10257,5 +10257,12 @@
     "enterCityEarlyBody": "이 도시는 아직 열리지 않았습니다. 수업보다 먼저 이동하는 데는 비용이 발생합니다. 비용은 아직 결정 중이므로 현재는 청구되지 않습니다.",
     "worldShipLabel": "{city}의 코스인 {course}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "방문한 {city}"
+    "worldCityVisitedLabel": "방문한 {city}",
+    "botJoinsIn": "판게아 봇이 {duration} 후에 참여합니다",
+    "botIsJoining": "판게아 봇이 참여 중입니다…",
+    "playWithBotNowTitle": "지금 판게아 봇과 플레이하시겠어요?",
+    "playWithBotNowMessage": "아직 아무도 참여하지 않았습니다. 판게아 봇이 지금 빈자리에 참여하거나, 계속 기다릴 수 있습니다.",
+    "keepWaiting": "계속 기다리기",
+    "botTookSeatAfterAnHour": "이 세션은 한 시간 동안 열려 있었으므로 판게아 봇이 빈자리에 참여했습니다.",
+    "botTookSeatAfterADay": "이 세션은 하루 이상 열려 있었으므로 판게아 봇이 빈자리에 참여했습니다. 메시지를 보내 시작하세요."
 }

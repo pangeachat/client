@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "Mzinda uwu sunatsegulidwe kwa inu. Kuyenda patsogolo pa kalasi kuli ndi mtengo; zomwe zimawononga zikadali mkati mokhazikitsidwa, choncho pakali pano palibe chomwe chimalipitsidwa.",
     "worldShipLabel": "{course}, maphunziro ku {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, mwachezera"
+    "worldCityVisitedLabel": "{city}, mwachezera",
+    "botJoinsIn": "Pangea Bot ikubwera mu {duration}",
+    "botIsJoining": "Pangea Bot ikubwera…",
+    "playWithBotNowTitle": "Kusewera ndi Pangea Bot tsopano?",
+    "playWithBotNowMessage": "Palibe amene wabwera. Pangea Bot ikhoza kutenga mpando wopanda munthu tsopano, kapena mukhoza kupitiriza kudikira.",
+    "keepWaiting": "Pitirizani kudikira",
+    "botTookSeatAfterAnHour": "Msonkhano uno unali wotseguka kwa ola limodzi, choncho Pangea Bot inatenga mpando wopanda munthu.",
+    "botTookSeatAfterADay": "Msonkhano uno unali wotseguka kwa tsiku limodzi, choncho Pangea Bot inatenga mpando wopanda munthu. Tumizani uthenga kuti muyambe."
 }

@@ -10579,5 +10579,12 @@
     "enterCityEarlyBody": "Denna stad är inte öppen för dig än. Att resa före klassen har en kostnad; vad det kostar bestäms fortfarande, så för närvarande debiteras inget.",
     "worldShipLabel": "{course}, en kurs i {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, besökt"
+    "worldCityVisitedLabel": "{city}, besökt",
+    "botJoinsIn": "Pangea Bot ansluter om {duration}",
+    "botIsJoining": "Pangea Bot ansluter…",
+    "playWithBotNowTitle": "Spela med Pangea Bot nu?",
+    "playWithBotNowMessage": "Ingen har anslutit än. Pangea Bot kan ta den lediga platsen nu, eller så kan du fortsätta vänta.",
+    "keepWaiting": "Fortsätt vänta",
+    "botTookSeatAfterAnHour": "Den här sessionen var öppen i en timme, så Pangea Bot tog den lediga platsen.",
+    "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja."
 }

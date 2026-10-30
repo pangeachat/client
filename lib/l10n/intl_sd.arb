@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "هي شهر اڃا توهان لاءِ کليل ناهي. ڪلاس کان اڳ سفر ڪرڻ جي قيمت آهي؛ ان جي قيمت اڃا طئي ڪئي پئي وڃي، تنهنڪري في الحال ڪجهه به چارج نه ڪيو ويندو.",
     "worldShipLabel": "{course}, {city} ۾ هڪ ڪورس",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, گهميل"
+    "worldCityVisitedLabel": "{city}, گهميل",
+    "botJoinsIn": "پينگيا بوٽ {duration} ۾ شامل ٿيندو",
+    "botIsJoining": "پينگيا بوٽ شامل ٿي رهيو آهي…",
+    "playWithBotNowTitle": "هاڻي پينگيا بوٽ سان کيڏجي؟",
+    "playWithBotNowMessage": "اڃا ڪو به شامل نه ٿيو آهي. پينگيا بوٽ هاڻي خالي جاءِ وٺي سگهي ٿو، يا توهان انتظار ڪري سگهو ٿا.",
+    "keepWaiting": "انتظار ڪندا رهو",
+    "botTookSeatAfterAnHour": "هي سيشن هڪ ڪلاڪ لاءِ کليل هو، تنهنڪري پينگيا بوٽ خالي جاءِ ورتي.",
+    "botTookSeatAfterADay": "هي سيشن هڪ ڏينهن کان وڌيڪ عرصي لاءِ کليل هو، تنهنڪري پينگيا بوٽ خالي جاءِ ورتي. شروع ڪرڻ لاءِ پيغام موڪليو."
 }

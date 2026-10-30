@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "Toropo ena ha e so bulehele. Ho tsamaea pele ho sehlopha ho na le litšenyehelo; hore na ho ja bokae ho ntse ho etsoa qeto, kahoo hajoale ha ho lefiso le lefuoang.",
     "worldShipLabel": "{course}, thuto e fumanehang {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, e etetswe"
+    "worldCityVisitedLabel": "{city}, e etetswe",
+    "botJoinsIn": "Pangea Bot e kenela ka {duration}",
+    "botIsJoining": "Pangea Bot e kenela…",
+    "playWithBotNowTitle": "Bapala le Pangea Bot hona jwale?",
+    "playWithBotNowMessage": "Ha ho motho ya kenetseng. Pangea Bot e ka nka setulo se se nang motho hona jwale, kapa o ka tswela pele ho ema.",
+    "keepWaiting": "Tswela pele ho ema",
+    "botTookSeatAfterAnHour": "Thuto ena e ne e butswe ka hora, kahoo Pangea Bot e nkile setulo se se nang motho.",
+    "botTookSeatAfterADay": "Thuto ena e ne e butswe ho feta letsatsi, kahoo Pangea Bot e nkile setulo se se nang motho. Romela molaetsa ho qala."
 }

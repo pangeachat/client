@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "ይህ ከተማ ገና ለእርስዎ አልተከፈተም። ከክፍል ቀድሞ መጓዝ ዋጋ አለው፤ ምን ያህል እንደሚያስወጣ ገና እየተወሰነ ነው፣ ስለዚህ ለአሁን ምንም ክፍያ አይጠየቅም።",
     "worldShipLabel": "{course}, በ{city} የሚገኝ ኮርስ",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, ተጎብኝቷል"
+    "worldCityVisitedLabel": "{city}, ተጎብኝቷል",
+    "botJoinsIn": "ፓንጋያ ቦት በ{duration} ውስጥ ይቀላቀላል",
+    "botIsJoining": "ፓንጋያ ቦት እየተቀላቀለ ነው…",
+    "playWithBotNowTitle": "አሁን ከፓንጋያ ቦት ጋር ይጫወቱ?",
+    "playWithBotNowMessage": "እስካሁን ማንም አልተቀላቀለም። ፓንጋያ ቦት አሁን ያለውን ክፍት ቦታ ሊይዝ ይችላል፣ ወይም መጠበቅ ይችላሉ።",
+    "keepWaiting": "መጠበቅ ይቀጥሉ",
+    "botTookSeatAfterAnHour": "ይህ ክፍለ ጊዜ ለአንድ ሰዓት ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ።",
+    "botTookSeatAfterADay": "ይህ ክፍለ ጊዜ ከአንድ ቀን በላይ ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ። ለመጀመር መልእክት ይላኩ።"
 }

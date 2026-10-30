@@ -9,10 +9,9 @@ class CourseCtaAction {
   const CourseCtaAction({required this.label, this.icon, this.onPressed});
 }
 
-/// The course preview's pinned footer (#7826), kept visually in step with the
-/// activity start page's mobile CTA row (activity_session_button_widget.dart):
-/// one filled primary that stretches when everything fits, light chips after
-/// it, and a horizontal scroll on overflow.
+/// The course preview's pinned footer (#7826): one filled primary that
+/// stretches when everything fits, light chips after it, and a horizontal
+/// scroll on overflow.
 class CourseCtaRow extends StatelessWidget {
   final CourseCtaAction primary;
   final List<CourseCtaAction> secondary;
@@ -101,7 +100,8 @@ class _CourseCtaChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     // The lead chip is the filled primary; every other chip is the tonal
-    // secondaryContainer pill, as in the activity page's CTA row.
+    // secondaryContainer pill, the same hierarchy as the activity page's
+    // buttons.
     final style = ElevatedButton.styleFrom(
       backgroundColor: filled
           ? theme.colorScheme.primary

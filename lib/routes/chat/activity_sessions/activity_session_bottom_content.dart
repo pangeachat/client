@@ -90,27 +90,11 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
             // The finished view also lists the learner's sessions from
             // other courses, so it has something to show even when this
             // course lists none.
+            // With no open sessions the activity page simply has no list;
+            // the play choice below it starts one.
             if (roomSummaries.isEmpty &&
                 status != ActivitySummaryStatus.completed) {
-              if (status != ActivitySummaryStatus.notStarted) {
-                return const SizedBox.shrink();
-              }
-              // The join list updates live, so its last session can fill
-              // while it is open (#9134): say so instead of leaving the page
-              // blank, and announce it to a screen reader watching the list.
-              return Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 36.0,
-                  vertical: 32.0,
-                ),
-                child: Semantics(
-                  liveRegion: true,
-                  child: Text(
-                    L10n.of(context).noOpenSessions,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                ),
-              );
+              return const SizedBox.shrink();
             }
 
             final section = status == ActivitySummaryStatus.completed
@@ -136,10 +120,28 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
             // reported upward: on mobile it happens only after the sheet's
             // expand animation, past every other re-ask signal.
             if (status != ActivitySummaryStatus.notStarted) return section;
-            return TutorialTarget(
-              targetId: openSessionsTargetId,
-              onMounted: controller.widget.controller.onTutorialSurfaceChanged,
-              child: section,
+            return Column(
+              children: [
+                TutorialTarget(
+                  targetId: openSessionsTargetId,
+                  onMounted:
+                      controller.widget.controller.onTutorialSurfaceChanged,
+                  child: section,
+                ),
+                // Play with others joins one of these, so a learner who still
+                // wants a session of their own for others to join gets a
+                // deliberately quiet way to start one.
+                TextButton(
+                  onPressed: controller.startNewActivity,
+                  style: TextButton.styleFrom(
+                    textStyle: Theme.of(context).textTheme.labelMedium,
+                    foregroundColor: Theme.of(
+                      context,
+                    ).colorScheme.onSurfaceVariant,
+                  ),
+                  child: Text(L10n.of(context).startOwn),
+                ),
+              ],
             );
           }),
         ],
@@ -268,16 +270,9 @@ class _ActivitySummaryStatusSectionState
     if (!_isOpenList) return;
     _presence.watch([
       for (final summary in widget.roomSummaries.values)
-        ..._joinedMembersOf(summary),
+        ...summary.joinedMemberIds,
     ]);
   }
-
-  /// Only members still in the session count toward its activity: someone
-  /// who left or was only invited says nothing about who will answer.
-  static Iterable<String> _joinedMembersOf(RoomSummaryResponse summary) =>
-      summary.membershipSummary.entries
-          .where((e) => e.value == Membership.join.name)
-          .map((e) => e.key);
 
   /// The names of [summary]'s open roles, so the learner can pick a session
   /// before joining.
@@ -292,7 +287,7 @@ class _ActivitySummaryStatusSectionState
 
   DateTime? _lastActiveOf(RoomSummaryResponse summary, DateTime now) =>
       _isOpenList
-      ? _presence.lastActiveOf(_joinedMembersOf(summary), now: now)
+      ? _presence.lastActiveOf(summary.joinedMemberIds, now: now)
       : null;
 
   @override

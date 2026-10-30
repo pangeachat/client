@@ -10068,5 +10068,12 @@
     "enterCityEarlyBody": "Bu shahar siz uchun hali ochiq emas. Sinfdan oldin sayohat qilishning o'ziga yarasha narxi bor; narxi hali aniqlanmagan, shuning uchun hozircha hech narsa olinmaydi.",
     "worldShipLabel": "{city}dagi kurs — {course}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, tashrif buyurilgan"
+    "worldCityVisitedLabel": "{city}, tashrif buyurilgan",
+    "botJoinsIn": "Pangea Bot {duration} ichida qo‘shiladi",
+    "botIsJoining": "Pangea Bot qo‘shilmoqda…",
+    "playWithBotNowTitle": "Hozir Pangea Bot bilan o‘ynaysizmi?",
+    "playWithBotNowMessage": "Hali hech kim qo‘shilmadi. Pangea Bot hozir bo‘sh o‘rinni egallashi mumkin yoki kutishda davom etishingiz mumkin.",
+    "keepWaiting": "Kutishda davom etish",
+    "botTookSeatAfterAnHour": "Bu sessiya bir soat davomida ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi.",
+    "botTookSeatAfterADay": "Bu sessiya bir kundan ortiq ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi. Boshlash uchun xabar yuboring."
 }

@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "Այս քաղաքը դեռ բաց չէ ձեզ համար։ Դասարանից առաջ ճանապարհորդելը ծախս ունի. թե ինչ արժե, դեռ որոշվում է, ուստի առայժմ ոչինչ չի գանձվում։",
     "worldShipLabel": "{course}, դասընթաց {city}-ում",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, այցելված"
+    "worldCityVisitedLabel": "{city}, այցելված",
+    "botJoinsIn": "Pangea Bot-ը կմիանա {duration} հետո",
+    "botIsJoining": "Pangea Bot-ը միանում է…",
+    "playWithBotNowTitle": "Խաղա՞լ Pangea Bot-ի հետ հիմա։",
+    "playWithBotNowMessage": "Դեռ ոչ ոք չի միացել։ Pangea Bot-ը կարող է զբաղեցնել ազատ տեղը հիմա, կամ կարող եք շարունակել սպասել։",
+    "keepWaiting": "Շարունակել սպասել",
+    "botTookSeatAfterAnHour": "Այս նիստը բաց էր մեկ ժամ, ուստի Pangea Bot-ը զբաղեցրեց ազատ տեղը։",
+    "botTookSeatAfterADay": "Այս նիստը բաց էր մեկ օրից ավելի, ուստի Pangea Bot-ը զբաղեցրեց ազատ տեղը։ Սկսելու համար ուղարկեք հաղորդագրություն։"
 }

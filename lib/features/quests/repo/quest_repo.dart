@@ -424,8 +424,8 @@ class QuestRepo {
   /// activity entries (`{plan, version_id, learning_objective_refs}` maps).
   /// Canonical-only filtering, translation-row exclusion, and hidden/private
   /// gating all happen server-side now — the client no longer builds an
-  /// activities-v2 `where` at all (see activities.instructions.md
-  /// § Ownership, visibility, and removal).
+  /// activities-v2 `where` at all (see pangeachat/.github
+  /// activities.instructions.md § Ownership, visibility, and removal).
   @visibleForTesting
   static List<Map<String, dynamic>> questActivityEntriesFromJson(
     dynamic decoded,
@@ -625,7 +625,8 @@ class QuestRepo {
   /// (which projects `learning_objective_refs`) rather than CMS-direct —
   /// end-user CMS credentials can no longer read hidden rows, and this
   /// attribution must keep working for sessions on hidden activities
-  /// (activities.instructions.md § Ownership, visibility, and removal).
+  /// (pangeachat/.github activities.instructions.md § Ownership, visibility,
+  /// and removal).
   /// See [ActivityCourseResolver].
   static Future<Result<List<String>>> activityLearningObjectiveRefs(
     String activityId,
@@ -772,8 +773,8 @@ class QuestRepo {
   /// Resolve every plan's media `upload_id`s to CDN URLs in ONE batched read,
   /// returning the plans with resolved media. `upload_id` is plain text on
   /// `activities-v2` (not a relationship), so a depth read never hydrates the
-  /// URL — this second `media`-collection read is the contract. See
-  /// `.github/.github/instructions/activities.instructions.md`.
+  /// URL — this second `media`-collection read is the contract. See org
+  /// architecture.instructions.md.
   static Future<List<ActivityPlanModel>> _withResolvedMedia(
     List<ActivityPlanModel> plans,
   ) async {

@@ -10137,5 +10137,12 @@
     "enterCityEarlyBody": "Kota ini belum terbuka untukmu. Bepergian mendahului kelas ada biayanya; biayanya masih ditentukan, jadi untuk saat ini tidak ada yang dikenakan.",
     "worldShipLabel": "{course}, kursus di {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, dikunjungi"
+    "worldCityVisitedLabel": "{city}, dikunjungi",
+    "botJoinsIn": "Pangea Bot bergabung dalam {duration}",
+    "botIsJoining": "Pangea Bot bergabung…",
+    "playWithBotNowTitle": "Main dengan Pangea Bot sekarang?",
+    "playWithBotNowMessage": "Belum ada yang bergabung. Pangea Bot bisa mengisi kursi kosong sekarang, atau Anda bisa terus menunggu.",
+    "keepWaiting": "Terus menunggu",
+    "botTookSeatAfterAnHour": "Sesi ini terbuka selama satu jam, jadi Pangea Bot mengambil kursi kosong.",
+    "botTookSeatAfterADay": "Sesi ini terbuka selama lebih dari sehari, jadi Pangea Bot mengambil kursi kosong. Kirim pesan untuk memulai."
 }

@@ -10936,5 +10936,12 @@
     "enterCityEarlyBody": "Αυτή η πόλη δεν είναι ακόμα ανοιχτή για εσάς. Το να ταξιδέψετε πριν από την τάξη έχει ένα κόστος. Το κόστος αυτό ακόμα αποφασίζεται, οπότε προς το παρόν δεν χρεώνεστε τίποτα.",
     "worldShipLabel": "{course}, ένα μάθημα στην {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, επισκέφθηκε"
+    "worldCityVisitedLabel": "{city}, επισκέφθηκε",
+    "botJoinsIn": "Το Pangea Bot συμμετέχει σε {duration}",
+    "botIsJoining": "Το Pangea Bot συμμετέχει…",
+    "playWithBotNowTitle": "Να παίξετε με το Pangea Bot τώρα;",
+    "playWithBotNowMessage": "Κανείς δεν έχει συμμετάσχει ακόμα. Το Pangea Bot μπορεί να πάρει την κενή θέση τώρα, ή μπορείτε να συνεχίσετε να περιμένετε.",
+    "keepWaiting": "Συνέχιση αναμονής",
+    "botTookSeatAfterAnHour": "Αυτή η συνεδρία ήταν ανοιχτή για μία ώρα, οπότε το Pangea Bot πήρε την κενή θέση.",
+    "botTookSeatAfterADay": "Αυτή η συνεδρία ήταν ανοιχτή για πάνω από μία ημέρα, οπότε το Pangea Bot πήρε την κενή θέση. Στείλτε ένα μήνυμα για να ξεκινήσετε."
 }

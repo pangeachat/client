@@ -115,10 +115,46 @@ abstract class MapCameraFocusRequests {
   static void request() => notifier.value++;
 }
 
+/// How tall the activity plan's mobile CTA area is at the minimized rest, as
+/// the start page measures it. The shell sizes the sheet's minimized rest from
+/// it, so buttons that stack or wrap onto a second line still fit. See
+/// activity-start-page.instructions.md.
+abstract class ActivitySheetCtaHeight {
+  /// One button with its padding: the height before the page has measured.
+  static const double defaultHeight = 56.0;
+
+  static final ValueNotifier<double> notifier = ValueNotifier<double>(
+    defaultHeight,
+  );
+
+  static void set(double height) {
+    if ((notifier.value - height).abs() > 0.5) notifier.value = height;
+  }
+
+  /// The cavity handle, the start page's app bar, and its info row: what the
+  /// minimized sheet holds above the CTA area. An estimate, so a sliver of
+  /// the content may peek below the buttons — preferred to snapping the sheet
+  /// to a content boundary.
+  static const double _aboveCta = 144.0;
+
+  /// The tallest minimized rest, so a very tall CTA area (a very large text
+  /// size) clips rather than covering the map. The minimized sheet therefore
+  /// grows to fit its buttons only up to this cap (an open question in
+  /// activity-start-page.instructions.md).
+  static const double maxSheetHeight = 360.0;
+
+  /// The minimized sheet height that fits a CTA area [ctaHeight] tall.
+  static double minimizedSheetHeight(double ctaHeight) =>
+      (_aboveCta + ctaHeight).clamp(_aboveCta + defaultHeight, maxSheetHeight);
+}
+
 /// Whether the activity plan's mobile sheet is at its FULL rest. At full the
 /// sheet grows over the top analytics bar, so the shell hides the bar (its
 /// band is reclaimed for the sheet's height). Set by the nav cavity for the
 /// activity only — false for every other cavity and when nothing is open.
+/// Phones only: the wide web panel has no maximize, so the analytics cluster
+/// stays beside the card (activity-start-page.instructions.md, "The sheet and
+/// its container").
 abstract class ActivitySheetFull {
   static final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
 

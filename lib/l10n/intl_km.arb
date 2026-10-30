@@ -2526,5 +2526,12 @@
     "enterCityEarlyBody": "ទីក្រុងនេះមិនទាន់បើកសម្រាប់អ្នកនៅឡើយទេ។ ការធ្វើដំណើរមុនថ្នាក់រៀនមានតម្លៃមួយចំនួន។ តម្លៃនោះកំពុងត្រូវបានសម្រេច ដូច្នេះសម្រាប់ពេលនេះ គ្មានអ្វីត្រូវបានគិតថ្លៃនោះទេ។",
     "worldShipLabel": "{course}, វគ្គសិក្សានៅ {city}",
     "worldCityLabel": "{city}",
-    "worldCityVisitedLabel": "{city}, បានទស្សនា"
+    "worldCityVisitedLabel": "{city}, បានទស្សនា",
+    "botJoinsIn": "Pangea Bot ចូលរួមក្នុងរយៈពេល {duration}",
+    "botIsJoining": "Pangea Bot កំពុងចូលរួម…",
+    "playWithBotNowTitle": "លេងជាមួយ Pangea Bot ឥឡូវនេះ?",
+    "playWithBotNowMessage": "មិនទាន់មាននរណាម្នាក់ចូលរួមនៅឡើយទេ។ Pangea Bot អាចចូលរួមឥឡូវនេះ ឬអ្នកអាចបន្តរង់ចាំ។",
+    "keepWaiting": "បន្តរង់ចាំ",
+    "botTookSeatAfterAnHour": "វគ្គនេះបានបើករយៈពេលមួយម៉ោង ដូច្នេះ Pangea Bot បានចូលរួម។",
+    "botTookSeatAfterADay": "វគ្គនេះបានបើករយៈពេលជាងមួយថ្ងៃ ដូច្នេះ Pangea Bot បានចូលរួម។ ផ្ញើសារដើម្បីចាប់ផ្តើម។"
 }

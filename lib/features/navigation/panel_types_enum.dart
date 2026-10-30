@@ -124,12 +124,12 @@ enum PanelTypesEnum {
 
   // Narrow chrome (routing.instructions.md → Single-column bottom nav): the
   // section surfaces — the chat list, the Courses/add-course hub, the course
-  // family (card + coursepage detail), and the ACTIVITY PLAN (a half-open
-  // sheet with the camera on its pin — the Google Maps UX) — ride the nav
-  // widget's expandable CAVITY over the map. Only a live chat (a room or a
-  // launched session) and the right panels render full-screen over the
-  // chrome. The left-panel loop skips the cavity index so it is not also
-  // drawn full-screen.
+  // family (card + coursepage detail), and the ACTIVITY PLAN (a sheet resting
+  // low, minimized, with the camera on its pin — the Google Maps UX) — ride the
+  // nav widget's expandable CAVITY over the map. Only a live chat (a room or a
+  // launched session) and the right panels render full-screen over the chrome.
+  // The left-panel loop skips the cavity index so it is not also drawn
+  // full-screen.
   bool get isCavity => isLeftSection;
 
   bool get shouldDropOnOpenCourse =>
