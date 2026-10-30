@@ -39,7 +39,8 @@ What a learner sees while playing a conversation activity and when it ends. Find
 ## The summary
 
 - Each learner's summary is made when they finish, in either mode, with no group blurb ([activity summary](../../../.github/.github/instructions/activity-summary.instructions.md)).
-- The summary replaces the header, showing the picked participant's goals, the viewer's own by default.
+- Once the whole session has ended, the summary replaces the header, showing the picked participant's goals, the viewer's own by default.
+- The "1st" marks compare learners, so they show only once everyone has finished.
 - A failed summary can be retried, and a learner can flag one to be regenerated. A failed regeneration keeps the old summary; a failed translation shows it as written.
 
 ## Completion saves itself
@@ -67,6 +68,5 @@ What a learner sees while playing a conversation activity and when it ends. Find
 
 ## Open questions
 
-- The app still waits until every player is done and shows one shared summary with a group blurb. Per-learner summaries need the bot and choreographer changed first.
 - Should research-study or minor-heavy rooms restrict exporting everyone's messages?
 - Should an archived session show its timeline and saved summary?

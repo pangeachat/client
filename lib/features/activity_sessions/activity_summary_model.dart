@@ -25,6 +25,11 @@ class ActivitySummaryModel {
   /// been handled.
   final int? callStartedTs;
 
+  /// The learner's finish a card was made for: their seat's `finished_at`
+  /// when the bot made it. A card whose finish differs from the seat's was
+  /// made before they resumed and ended again. Set by the bot on cards only.
+  final DateTime? finishedAt;
+
   ActivitySummaryModel({
     this.summary,
     this.requestedAt,
@@ -33,6 +38,7 @@ class ActivitySummaryModel {
     this.langCode,
     this.requestHash,
     this.callStartedTs,
+    this.finishedAt,
   });
 
   Map<String, dynamic> toJson() {
@@ -44,6 +50,7 @@ class ActivitySummaryModel {
       "lang_code": langCode,
       "request_hash": requestHash,
       "call_started_ts": callStartedTs,
+      "finished_at": finishedAt?.toUtc().toIso8601String(),
     };
   }
 
@@ -64,6 +71,9 @@ class ActivitySummaryModel {
       langCode: json['lang_code'] as String?,
       requestHash: json['request_hash'] as String?,
       callStartedTs: json['call_started_ts'] as int?,
+      finishedAt: json['finished_at'] != null
+          ? DateTime.parse(json['finished_at'])
+          : null,
     );
   }
 

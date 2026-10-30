@@ -172,6 +172,7 @@ void main() {
           summary: card(userId, 'Bien joué.'),
           langCode: langCode,
           requestHash: requestHash,
+          finishedAt: DateTime.utc(2026),
         ).toJson(),
         sender: bot,
       );
@@ -535,6 +536,56 @@ void main() {
       }, () => MockClient((request) async => translated(request)));
 
       expect(ownFeedback(controller), 'Well played.');
+      expect(controller.confettiNotifier.value, isTrue);
+    });
+
+    test('ending again shows loading until the card for the new finish, '
+        'which fires it', () async {
+      final room = finishedRoom(langCode: 'en', requestHash: 'row-first');
+      final (controller, _) = await open(room, respond: translated);
+      expect(ownFeedback(controller), 'Bien joué.');
+
+      void setOwnRole(DateTime? finishedAt) => room.setState(
+        Event(
+          type: PangeaEventTypes.activityRole,
+          stateKey: '',
+          content: ActivityRolesModel({
+            'role1': ActivityRoleModel(
+              id: 'role1',
+              userId: userId,
+              role: 'Customer',
+              finishedAt: finishedAt,
+            ),
+          }).toJson(),
+          senderId: userId,
+          eventId: '\$roles-${liveCount++}',
+          originServerTs: DateTime.now(),
+          room: room,
+        ),
+      );
+
+      // Resumed play, then ended again.
+      setOwnRole(null);
+      await Future.delayed(Duration.zero);
+      expect(controller.summaryView.value.cards, isEmpty);
+      final again = DateTime.utc(2026, 1, 1, 1);
+      setOwnRole(again);
+      await Future.delayed(Duration.zero);
+      expect(controller.summaryView.value.cardFor(userId)?.isLoading, isTrue);
+
+      writeSlot(
+        room,
+        ActivitySummaryStateKeys.card(userId),
+        ActivitySummaryModel(
+          summary: card(userId, 'Encore mieux.'),
+          langCode: 'en',
+          requestHash: 'row-again',
+          finishedAt: again,
+        ).toJson(),
+      );
+      await Future.delayed(const Duration(milliseconds: 20));
+
+      expect(ownFeedback(controller), 'Encore mieux.');
       expect(controller.confettiNotifier.value, isTrue);
     });
 

@@ -75,11 +75,10 @@ UserConstructAnalytics? learnerAnalyticsFromSlot({
 class ActivitySummaryWait {
   final DateTime since;
 
-  /// The card the learner already had, made for an earlier finish. It no
-  /// longer counts, and the wait ends with the bot's next write to the slot.
-  final String? supersededEventId;
+  /// The learner's finish the card is due for: their seat's `finished_at`.
+  final DateTime finishedAt;
 
-  const ActivitySummaryWait({required this.since, this.supersededEventId});
+  const ActivitySummaryWait({required this.since, required this.finishedAt});
 }
 
 /// What one learner's card shows.
@@ -179,8 +178,7 @@ class ActivitySummaryView {
 class _SummarySlot {
   final ActivitySummaryModel model;
 
-  /// Null for a slot held as stripped state, which has neither.
-  final String? eventId;
+  /// Null for a slot held as stripped state, which has none.
   final DateTime? sentAt;
 
   /// The bot wrote it, so it can serve requests for it.
@@ -191,16 +189,23 @@ class _SummarySlot {
 
   const _SummarySlot(
     this.model, {
-    required this.eventId,
     required this.sentAt,
     required this.fromBot,
     required this.roomWide,
   });
 
-  /// The server time (ms) the call behind this slot started. A request or
-  /// finish no newer than this has been handled.
+  /// The server time (ms) the call behind this slot started. A request no
+  /// newer than this has been handled.
   int? get handledUntil =>
       model.callStartedTs ?? sentAt?.millisecondsSinceEpoch;
+
+  /// Whether this slot was made for the learner's finish at [finishedAt]. A
+  /// room-wide summary, or a card that names no finish, can't tell, so it
+  /// counts.
+  bool madeFor(DateTime finishedAt) =>
+      roomWide ||
+      model.finishedAt == null ||
+      model.finishedAt!.isAtSameMomentAs(finishedAt);
 }
 
 extension ActivitySummaryRoomExtension on Room {
@@ -242,7 +247,6 @@ extension ActivitySummaryRoomExtension on Room {
     if (event == null || model == null) return null;
     return _SummarySlot(
       model,
-      eventId: event.eventId,
       sentAt: event.originServerTs,
       fromBot: true,
       roomWide: false,
@@ -257,7 +261,6 @@ extension ActivitySummaryRoomExtension on Room {
     if (canonical != null && canonicalModel != null) {
       return _SummarySlot(
         canonicalModel,
-        eventId: canonical.eventId,
         sentAt: canonical.originServerTs,
         fromBot: true,
         roomWide: true,
@@ -271,7 +274,6 @@ extension ActivitySummaryRoomExtension on Room {
       if (model == null) continue;
       return _SummarySlot(
         model,
-        eventId: event is Event ? event.eventId : null,
         sentAt: event is Event ? event.originServerTs : null,
         fromBot: false,
         roomWide: true,
@@ -295,10 +297,8 @@ extension ActivitySummaryRoomExtension on Room {
       );
 
   /// The learners who have finished, whose cards are due.
-  Set<String> get finishedLearnerIds => {
-    for (final role in _learnerRoles)
-      if (role.isFinished) role.userId,
-  };
+  Iterable<ActivityRoleModel> get finishedLearnerRoles =>
+      _learnerRoles.where((role) => role.isFinished);
 
   /// True once the whole activity has finished and a card is in the room.
   /// The cards carry the learners' goals from then on, so the goal header
@@ -315,21 +315,12 @@ extension ActivitySummaryRoomExtension on Room {
     );
   }
 
-  /// Whether [userId] has a card slot, or a room-wide summary stands in.
-  bool hasActivitySummarySlot(String userId) =>
-      (_cardSlot(userId) ?? _roomWideSlot) != null;
-
-  /// The card [userId] had when this client saw them finish, if the bot made
-  /// it for an earlier finish: its call started before the role write that
-  /// finished them. Both are server times, so device clocks don't matter.
-  String? activitySummaryCardBefore(String userId) {
+  /// Whether [userId] has a card made for their latest finish, or a
+  /// room-wide summary stands in for one.
+  bool hasActivitySummaryCardFor(String userId) {
     final slot = _cardSlot(userId) ?? _roomWideSlot;
-    final roles = getState(PangeaEventTypes.activityRole);
-    final handledUntil = slot?.handledUntil;
-    if (handledUntil == null || roles is! Event) return null;
-    return handledUntil < roles.originServerTs.millisecondsSinceEpoch
-        ? slot!.eventId
-        : null;
+    final finishedAt = activityRoles?.role(userId)?.finishedAt;
+    return slot != null && (finishedAt == null || slot.madeFor(finishedAt));
   }
 
   /// The room's own vocabulary and grammar use, from an older client's room
@@ -504,9 +495,9 @@ extension ActivitySummaryRoomExtension on Room {
   /// once they finish, to them at once and to the others once those have
   /// finished too.
   ///
-  /// [waits] holds the learners whose finish this client saw with no card,
-  /// or with one made for an earlier finish; the bot gets
-  /// [ActivitySummaryModel.requestTimeout] from then to write one. Every
+  /// [waits] holds the learners whose finish this client saw with no card
+  /// made for it; the bot gets [ActivitySummaryModel.requestTimeout] from
+  /// then to write one. Every
   /// loading state ends at a deadline, so a bot or network that never
   /// answers ends in the error, not an endless spinner (#8362).
   ActivitySummaryView activitySummaryView({
@@ -537,11 +528,17 @@ extension ActivitySummaryRoomExtension on Room {
         if (entry == null) continue;
       }
 
+      // A card made before the learner resumed and ended again is stale:
+      // the bot owes one for this finish.
+      final finishedAt = role.finishedAt;
+      final stale =
+          slot != null && finishedAt != null && !slot.madeFor(finishedAt);
       final wait = waits[userId];
       final waiting =
           wait != null &&
-          (slot == null ||
-              (slot.eventId != null && slot.eventId == wait.supersededEventId));
+          finishedAt != null &&
+          wait.finishedAt.isAtSameMomentAs(finishedAt) &&
+          (slot == null || stale);
       final loadingDeadline = [
         if (model != null && model.isLoading) model.loadingDeadline,
         if (request is Event && _requestPending(request, slot, userId))
@@ -577,7 +574,7 @@ extension ActivitySummaryRoomExtension on Room {
           isLoading: isLoading,
           hasFailed: !isLoading && shown == null,
           // The bot's call failed, or never came for a later finish.
-          updateFailed: shown != null && (model!.hasError || waiting),
+          updateFailed: shown != null && (model!.hasError || stale),
           canRequest: canRequest,
           loadingDeadline: loadingDeadline,
           langCode: model?.langCode,

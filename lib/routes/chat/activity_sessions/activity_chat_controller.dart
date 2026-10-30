@@ -69,12 +69,8 @@ class ActivityChatController {
   );
 
   /// The learners whose card this client is waiting for, since it saw them
-  /// finish.
+  /// finish with no card made for that finish.
   final Map<String, ActivitySummaryWait> _summaryWaits = {};
-
-  /// Who had finished at the last recompute; null before the first, whose
-  /// finishes this client did not see happen.
-  Set<String>? _finishedLearners;
 
   Timer? _summaryLoadingTimer;
 
@@ -171,28 +167,30 @@ class ActivityChatController {
     _writeOwnAnalytics();
   }
 
-  /// Starts a wait for each learner who finished with no card, or whose card
-  /// predates a finish this client saw happen; ends it when they resume.
+  /// Starts a wait for each learner who has finished with no card made for
+  /// that finish, and ends it when they resume.
   void _updateSummaryWaits() {
     if (_disposed) return;
-    final finished = room.finishedLearnerIds;
-    final before = _finishedLearners;
     final now = DateTime.now();
-    for (final userId in finished) {
-      if (before != null && !before.contains(userId)) {
-        _summaryWaits[userId] = ActivitySummaryWait(
+    final finished = room.finishedLearnerRoles.toList();
+    for (final role in finished) {
+      final finishedAt = role.finishedAt!;
+      final wait = _summaryWaits[role.userId];
+      if (wait != null && wait.finishedAt.isAtSameMomentAs(finishedAt)) {
+        continue;
+      }
+      if (room.hasActivitySummaryCardFor(role.userId)) {
+        _summaryWaits.remove(role.userId);
+      } else {
+        _summaryWaits[role.userId] = ActivitySummaryWait(
           since: now,
-          supersededEventId: room.activitySummaryCardBefore(userId),
-        );
-      } else if (!room.hasActivitySummarySlot(userId)) {
-        _summaryWaits.putIfAbsent(
-          userId,
-          () => ActivitySummaryWait(since: now),
+          finishedAt: finishedAt,
         );
       }
     }
-    _summaryWaits.removeWhere((userId, _) => !finished.contains(userId));
-    _finishedLearners = finished;
+    _summaryWaits.removeWhere(
+      (userId, _) => !finished.any((role) => role.userId == userId),
+    );
   }
 
   void _refreshSummaryView() {
