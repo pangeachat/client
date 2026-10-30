@@ -170,20 +170,10 @@ class _UnjoinableCalls extends _FakeCalls {
       throw StateError('the SFU refused this join');
 }
 
-/// A service whose answer to "is this membership current" the test states.
+/// The ordinary fake service; liveness is read by the REAL code from the
+/// room state a joiner test writes (see `liveDevices`).
 class _JoinerCalls extends _FakeCalls {
   _JoinerCalls(super.client);
-
-  /// Current memberships, as `userId|eventId`: the account matters, because
-  /// a sibling's record must be checked against THIS account's memberships.
-  Set<String> current = {};
-
-  @override
-  bool membershipEventIsCurrent(
-    matrix.Room room,
-    String userId,
-    String eventId,
-  ) => current.contains('$userId|$eventId');
 }
 
 class _FakeRoster extends CallRoster {
@@ -3001,7 +2991,11 @@ void main() {
     >
     join({
       CallInProgress? record,
-      Set<String> current = const {},
+      // Devices holding a live membership, as `userId|deviceId`. Written as
+      // REFRESHED state events -- ids that differ from anything a record or a
+      // ring names -- because two minutes into a call that is what room state
+      // holds (client#9173).
+      Set<String> liveDevices = const {},
       List<matrix.Event> Function(matrix.Room room)? timeline,
       List<matrix.MatrixEvent> clocks = const [],
       Map<String, matrix.Event> Function(matrix.Room room)? memberships,
@@ -3014,9 +3008,31 @@ void main() {
           content: record.toJson(),
         );
       }
-      final calls = _JoinerCalls(client)
-        ..current = current
-        ..adoptCallIdForTest('!r:server');
+      for (final entry in liveDevices) {
+        final [user, device] = entry.split('|');
+        room.setState(
+          matrix.Event(
+            type: matrix.EventTypes.GroupCallMember,
+            content: {
+              'memberships': [
+                {
+                  'call_id': '!r:server',
+                  'device_id': device,
+                  'expires_ts': DateTime.now()
+                      .add(const Duration(minutes: 4))
+                      .millisecondsSinceEpoch,
+                },
+              ],
+            },
+            senderId: user,
+            eventId: '\$refreshed-$device',
+            originServerTs: DateTime.now(),
+            room: room,
+            stateKey: '${device}_$user',
+          ),
+        );
+      }
+      final calls = _JoinerCalls(client)..adoptCallIdForTest('!r:server');
       final media = _FakeMedia(
         now: () => DateTime.fromMillisecondsSinceEpoch(1000000500),
       );
@@ -3065,7 +3081,7 @@ void main() {
           writerDeviceId: 'SIBLINGDEV',
           writerMembershipEventId: r'$sibling-membership',
         ),
-        current: {'@test:fakeServer.notExisting|\$sibling-membership'},
+        liveDevices: {'@test:fakeServer.notExisting|SIBLINGDEV'},
       );
       expect(t.session.placedCall, isFalse, reason: 'a joiner');
       expect(t.recorded, isNotEmpty);
@@ -3086,15 +3102,21 @@ void main() {
           writerDeviceId: 'GONEDEV',
           writerMembershipEventId: r'$gone-membership',
         ),
-        current: {
-          '@test:fakeServer.notExisting|\$gone-membership',
-          '$friendId|$callerMembership',
+        // GONEDEV's membership is live but it is not in the SFU; the ring's
+        // device is live.
+        liveDevices: {
+          '@test:fakeServer.notExisting|GONEDEV',
+          '$friendId|FRIENDDEV',
         },
         timeline: (room) => [
           matrix.Event(
             type: PangeaEventTypes.callNotification,
             content: {
-              'application': {'type': 'm.call', 'notification_type': 'ring'},
+              'application': {
+                'type': 'm.call',
+                'notification_type': 'ring',
+                'device_id': 'FRIENDDEV',
+              },
               'm.relates_to': {
                 'rel_type': 'm.reference',
                 'event_id': callerMembership,
@@ -3129,7 +3151,7 @@ void main() {
           writerDeviceId: 'SIBLINGDEV',
           writerMembershipEventId: r'$sibling-membership',
         ),
-        current: {'@test:fakeServer.notExisting|\$sibling-membership'},
+        liveDevices: {'@test:fakeServer.notExisting|SIBLINGDEV'},
         clocks: [
           matrix.MatrixEvent(
             type: CallClockContent.type,

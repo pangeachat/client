@@ -238,6 +238,10 @@ class CallSession extends ChangeNotifier {
     String? rejoinAnchor,
     DateTime? rejoinSince,
     String? callerMembershipEventId,
+
+    /// The lifetime of the ring this call answers, when it answers one: how
+    /// long a sibling could have kept ringing for the same call.
+    Duration? answeredRingLifetime,
     ({String mute, String channel})? platformLabels,
 
     /// Whether the call covers the whole app from its first frame. See
@@ -626,6 +630,7 @@ class CallSession extends ChangeNotifier {
             (!kIsWeb && Platform.isAndroid
                 ? const CallForegroundControl()
                 : null),
+        answeredRingLifetime: answeredRingLifetime,
       ),
       record: record,
       myUserId: callService.client.userID,
@@ -1552,10 +1557,12 @@ class CallSession extends ChangeNotifier {
         myUserId: me,
         myDeviceId: device,
         siblingDeviceIds: call.siblingDeviceIds,
-        ownMembershipCurrent: call.calls.membershipEventIsCurrent(
+        // The device, not the announce's event id: the SDK's periodic
+        // membership refresh mints a new id (see deviceHoldsLiveMembership).
+        ownMembershipCurrent: call.calls.deviceHoldsLiveMembership(
           room,
           me,
-          membership,
+          device,
         ),
       ),
       epochSfuMs: () => call.callEpochFromSfuJoins,
@@ -1577,8 +1584,8 @@ class CallSession extends ChangeNotifier {
         CallInProgress.accepts(
           data: data,
           siblingDeviceIdsInSfu: call.siblingDeviceIds,
-          isCurrentOwnMembership: (id) =>
-              call.calls.membershipEventIsCurrent(room, me, id),
+          writerDeviceLive: (device) =>
+              call.calls.deviceHoldsLiveMembership(room, me, device),
           myDeviceId: room.client.deviceID,
           rejoinAnchor: call.rejoinedCall ? call.callAnchorId : null,
         )) {
@@ -1597,7 +1604,8 @@ class CallSession extends ChangeNotifier {
       if (_joinerKey != null || _over || _disposing) return;
       final found = keyFromCurrentRing(
         events,
-        (sender, id) => call.calls.membershipEventIsCurrent(room, sender, id),
+        (sender, device) =>
+            call.calls.deviceHoldsLiveMembership(room, sender, device),
       );
       if (found == null) {
         Logs().i('Joined a call under way with no key: nothing names it');

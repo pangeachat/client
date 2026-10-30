@@ -96,6 +96,42 @@ void main() {
     });
   });
 
+  group('the ring window (client#9173)', () {
+    test("is the longest ring this device knows of, capped; else the cap", () {
+      expect(
+        CallPredecessor.ringLifetimeOf([const Duration(seconds: 30), null]),
+        const Duration(seconds: 30),
+      );
+      expect(
+        CallPredecessor.ringLifetimeOf([
+          const Duration(seconds: 30),
+          const Duration(seconds: 45),
+        ]),
+        const Duration(seconds: 45),
+      );
+      expect(
+        CallPredecessor.ringLifetimeOf([const Duration(minutes: 5)]),
+        CallPredecessor.ringLifetime,
+      );
+      expect(
+        CallPredecessor.ringLifetimeOf([null]),
+        CallPredecessor.ringLifetime,
+      );
+    });
+
+    test('a 30 s ring makes a move past 62 s a move, and inside it a race', () {
+      bool rule(int afterMs) => CallPredecessor.isPredecessor(
+        talkedBeforeFirstSibling: true,
+        siblingFirstJoinSfuMs: [join + afterMs],
+        ringUpperSfuMs: join,
+        ringLifetime: const Duration(seconds: 30),
+      );
+      expect(rule(62001), isTrue);
+      expect(rule(62000), isFalse);
+      expect(rule(30000), isFalse);
+    });
+  });
+
   group('what the arbiter latches for it', () {
     test(
       "a sibling's first join is kept through its leaving and rejoining",

@@ -1676,6 +1676,105 @@ void main() {
       expect(await service.rejoinOffers(), isEmpty);
     });
 
+    // client#9173: the SDK rewrites a device's membership every two minutes
+    // to push its expiry forward, and every rewrite is a NEW state event. A
+    // device stays in the call across that; the question asked of it must too.
+    test('a device stays live across the two-minute membership refresh, '
+        'though the event it first wrote is no longer current', () async {
+      final client = await clientWithOwnMembership(live: true);
+      final service = CallService(client);
+      final room = client.getRoomById(roomId)!;
+      expect(service.deviceHoldsLiveMembership(room, me, 'GHTYAJCE'), isTrue);
+
+      // The refresh: same device, same state key, new expiry, new event id.
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch2',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                state: [
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: {
+                      'memberships': [
+                        {
+                          'call_id': 'call-id',
+                          'device_id': 'GHTYAJCE',
+                          'expires_ts': DateTime.now()
+                              .add(const Duration(minutes: 7))
+                              .millisecondsSinceEpoch,
+                        },
+                      ],
+                    },
+                    senderId: me,
+                    eventId: r'$own-membership-refreshed',
+                    originServerTs: DateTime.now(),
+                    stateKey: 'GHTYAJCE_$me',
+                  ),
+                ],
+              ),
+            },
+          ),
+        ),
+      );
+
+      // The premise: this device's state now carries the refreshed event, so
+      // the id it first wrote (what a record or ring names) is not current.
+      expect(
+        (room.states[EventTypes.GroupCallMember]!['GHTYAJCE_$me']! as Event)
+            .eventId,
+        r'$own-membership-refreshed',
+      );
+      expect(
+        service.deviceHoldsLiveMembership(room, me, 'GHTYAJCE'),
+        isTrue,
+        reason: 'the device is still in the call',
+      );
+      expect(service.deviceHoldsLiveMembership(room, me, 'OTHERDEV'), isFalse);
+    });
+
+    test('an expired or retracted membership is not live', () {
+      final now = DateTime.now().millisecondsSinceEpoch;
+      StrippedStateEvent member(List<Map<String, Object?>> memberships) =>
+          StrippedStateEvent(
+            type: EventTypes.GroupCallMember,
+            content: {'memberships': memberships},
+            senderId: me,
+            stateKey: 'DEV_$me',
+          );
+      expect(
+        CallService.liveMembershipIn(
+          [
+            member([
+              {'device_id': 'DEV', 'expires_ts': now - 1},
+            ]),
+          ],
+          me,
+          'DEV',
+          nowMs: now,
+        ),
+        isFalse,
+      );
+      expect(
+        CallService.liveMembershipIn([member(const [])], me, 'DEV', nowMs: now),
+        isFalse,
+      );
+      expect(
+        CallService.liveMembershipIn(
+          [
+            member([
+              {'device_id': 'DEV', 'expires_ts': now + 60000},
+            ]),
+          ],
+          '@someone-else:s',
+          'DEV',
+          nowMs: now,
+        ),
+        isFalse,
+      );
+    });
+
     test('a ring is live only for the exact state event it names', () async {
       // A sender can hold several membership state keys (per-device and
       // legacy shapes). The discriminator must match the ring's OWN event,
@@ -2026,6 +2125,60 @@ void main() {
           ),
           PeerPresence.live,
           reason: 'the departure floor must not hide their presence',
+        );
+      },
+    );
+
+    // client#9173: a device that JOINS a call already under way (a learner
+    // moving the call to another device, a rejoin) arrives long after the
+    // other person's membership was written -- the SDK only rewrites it every
+    // two minutes. The one-ring floor skipped it, presence fell to "cannot
+    // see", the remembered sighting made that "gone", and the joiner hung up
+    // two seconds after joining. Their state here is written now; we "join"
+    // 100 s later, so it is 100 s older than our join.
+    test(
+      'a joiner still sees a peer whose membership is 100 s older than its join',
+      () async {
+        final (service, room) = await withPeerState([
+          {'call_id': 'this-call', 'expires_ts': inFuture()},
+        ]);
+        service.adoptCallIdForTest('this-call');
+        final weJoined = DateTime.now().add(const Duration(seconds: 100));
+        expect(
+          service.peerPresenceInCurrentCall(
+            room,
+            peer,
+            notBefore: CallService.callFloorFrom(
+              weJoined,
+              joinedUnderWay: true,
+            ),
+            goneAfter: weJoined,
+          ),
+          PeerPresence.live,
+        );
+      },
+    );
+
+    // The tighter floor stays wherever a ring invited us: there, nobody can
+    // have joined more than one ring before we did, and a membership that old
+    // is a leftover of an earlier call.
+    test(
+      'a placed or answered call still screens a membership 100 s older than '
+      'its join',
+      () async {
+        final (service, room) = await withPeerState([
+          {'call_id': 'this-call', 'expires_ts': inFuture()},
+        ]);
+        service.adoptCallIdForTest('this-call');
+        final weJoined = DateTime.now().add(const Duration(seconds: 100));
+        expect(
+          service.peerPresenceInCurrentCall(
+            room,
+            peer,
+            notBefore: CallService.callFloorFrom(weJoined),
+            goneAfter: weJoined,
+          ),
+          PeerPresence.unknown,
         );
       },
     );
