@@ -49,8 +49,8 @@ class PangeaController {
     userController = UserController();
     subscriptionController = SubscriptionController();
     PAuthGaurd.pController = this;
-    // Every choreo request waits for the stored seat invitation / Canvas
-    // ticket to be opened (ChoreoGate), so no gated call grants a trial first.
+    // Every choreo request waits for the stored seat invitation to be opened
+    // (ChoreoGate), so no gated call grants a trial first.
     ChoreoGate.preflight = () =>
         openPendingClaimsBeforeChoreo(matrixState.client);
     _registerSubscriptions();

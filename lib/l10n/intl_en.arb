@@ -6297,42 +6297,6 @@
     "@seatInviteFailed": {
         "description": "Shown when opening a course invitation fails unexpectedly."
     },
-    "canvasLinkTitle": "Open your Canvas course in Pangea Chat",
-    "@canvasLinkTitle": {
-        "description": "Title of the page a student reaches from a Canvas course."
-    },
-    "canvasLinkExplanation": "Next, sign up or log in to Pangea Chat. You can always sign in the same way without Canvas.",
-    "@canvasLinkExplanation": {
-        "description": "Line on the page a student reaches from a Canvas course, before they sign in."
-    },
-    "canvasConnectTitle": "Connect your Canvas course",
-    "@canvasConnectTitle": {
-        "description": "Title of the page a teacher reaches from a Canvas course to connect it to Pangea Chat."
-    },
-    "canvasConnectExplanation": "Log in to Pangea Chat, then pick the Pangea course to connect.",
-    "@canvasConnectExplanation": {
-        "description": "Line on the page a teacher reaches from a Canvas course."
-    },
-    "canvasLinked": "Your Canvas course is connected.",
-    "@canvasLinked": {
-        "description": "Shown after a student's Canvas account is linked and their course invitation claimed."
-    },
-    "canvasTicketExpired": "This Canvas link has expired. Open Pangea Chat from your Canvas course again.",
-    "@canvasTicketExpired": {
-        "description": "Shown when the one-time link from Canvas is expired or already used."
-    },
-    "canvasTicketWrongAccount": "This Canvas link belongs to a different Pangea account. Log out, then open Pangea Chat from Canvas again.",
-    "@canvasTicketWrongAccount": {
-        "description": "Shown when the one-time Canvas link was issued for another account."
-    },
-    "canvasAlreadyLinked": "This Canvas account is already linked to a different Pangea account.",
-    "@canvasAlreadyLinked": {
-        "description": "Shown when the Canvas account is linked to another Pangea account."
-    },
-    "canvasSignInExpired": "This sign-in link has expired. Open Pangea Chat from your Canvas course again, or log in.",
-    "@canvasSignInExpired": {
-        "description": "Shown on the Canvas sign-in page when there is no sign-in to finish."
-    },
     "analyticsSharedOnJoin": "Your teachers in {course} can now see your learning progress.",
     "@analyticsSharedOnJoin": {
         "description": "Snackbar after a learner joins a course that requires sharing analytics; its action opens Learning settings.",

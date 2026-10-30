@@ -11,9 +11,9 @@ import 'package:fluffychat/pangea/common/constants/local.key.dart';
 /// logged-in landing (PAuthGaurd; routing.instructions.md § A signed-out
 /// visitor's destination). TTL-stamped entries ride it — the
 /// [destination] itself, the DM invite link's pending user id
-/// ([dmInviteUserId]), a seat invitation's id ([pendingInvitation]) and a
-/// Canvas launch ticket ([pendingLtiTicket]). The last three have their own
-/// consumer in the shell because they must act when tapped logged in too.
+/// ([dmInviteUserId]) and a seat invitation's id ([pendingInvitation]). The
+/// last two have their own consumer in the shell because they must act when
+/// tapped logged in too.
 class SpaceCodeRepo {
   static final GetStorage _spaceStorage = GetStorage('class_storage');
 
@@ -202,30 +202,6 @@ class SpaceCodeRepo {
   /// stored and not yet opened, or the opened one waits for approval.
   static bool get seatInvitationWaiting =>
       pendingInvitation != null || seatApprovalPending;
-
-  /// The Canvas launch ticket from `/lti/link` (C5), cached by that route's
-  /// redirect and returned once after sign-in. The module expires a ticket
-  /// after 10 minutes, so the TTL here only bounds how long a dead one lingers.
-  static PendingLtiTicket? get pendingLtiTicket {
-    final raw = _readFresh(
-      PLocalKey.cachedLtiTicket,
-      PLocalKey.cachedLtiTicketAt,
-    );
-    if (raw == null) return null;
-    final pending = PendingLtiTicket.decode(raw);
-    if (pending == null) clearPendingLtiTicket();
-    return pending;
-  }
-
-  static Future<void> setPendingLtiTicket(PendingLtiTicket pending) =>
-      _writeStamped(
-        PLocalKey.cachedLtiTicket,
-        PLocalKey.cachedLtiTicketAt,
-        pending.encode(),
-      );
-
-  static Future<void> clearPendingLtiTicket() =>
-      _clearStamped(PLocalKey.cachedLtiTicket, PLocalKey.cachedLtiTicketAt);
 
   static String? get recentCode =>
       _spaceStorage.read(PLocalKey.justInputtedCode);

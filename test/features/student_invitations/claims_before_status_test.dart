@@ -26,14 +26,13 @@ import '../../pangea/fake_pangea_controller.dart';
 /// SPEC: a student with a waiting seat never burns their trial. choreo's HTTP
 /// gate auto-claims a trial on ANY gated call (the status read, and
 /// grammar_constructs at sign-in, among others), so a stored seat invitation
-/// (or Canvas learner ticket) must be opened before the session's first
-/// choreo call: every choreo request waits on it (ChoreoGate, in the shared
-/// request layer). No tick is involved (amendment 2026-10-10).
+/// must be opened before the session's first choreo call: every choreo
+/// request waits on it (ChoreoGate, in the shared request layer). No tick is
+/// involved (amendment 2026-10-10).
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   const inv = 'Q2xhc3NJbnZpdGUtMDAx_-';
-  const ticket = 'dGlja2V0LWZvci1hLWNhbnZhcy1sZWFybmVyLWxhdW5jaA';
   const userId = '@student:example.org';
 
   setUpAll(() async {
@@ -60,7 +59,6 @@ void main() {
   setUp(() async {
     order = [];
     await SpaceCodeRepo.clearPendingInvitation();
-    await SpaceCodeRepo.clearPendingLtiTicket();
     final fake = FakePangeaController(accessToken: 'syt_student');
     fake.userController.initCompleter.complete();
     MatrixState.pangeaController = fake;
@@ -81,14 +79,6 @@ void main() {
             'invitation_id': inv,
             'room_id': '!c:example.org',
           }),
-          200,
-        );
-      }
-      if (path.endsWith('/lti/link')) {
-        await Future<void>.delayed(const Duration(milliseconds: 50));
-        order.add('lti_link');
-        return http.Response(
-          jsonEncode({'next': 'app', 'claimed': [], 'login_token': null}),
           200,
         );
       }
@@ -173,29 +163,6 @@ void main() {
       expect(order.where((o) => o == 'open'), hasLength(1));
       expect(order, contains('status'));
       expect(SpaceCodeRepo.pendingInvitation, isNull);
-    },
-  );
-
-  test('a stored Canvas learner ticket is returned before the first status '
-      'read', () async {
-    await SpaceCodeRepo.setPendingLtiTicket(const PendingLtiTicket(ticket));
-
-    await initialize(await controller());
-
-    expectBefore('lti_link', 'status', reason: 'the claim must exist first');
-  });
-
-  test(
-    'an instructor ticket is left for the shell: it opens admin-dash',
-    () async {
-      await SpaceCodeRepo.setPendingLtiTicket(
-        const PendingLtiTicket(ticket, instructor: true),
-      );
-
-      await initialize(await controller());
-
-      expect(order, isNot(contains('lti_link')));
-      expect(SpaceCodeRepo.pendingLtiTicket?.instructor, isTrue);
     },
   );
 

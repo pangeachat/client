@@ -199,10 +199,10 @@ class PAuthGaurd {
   }
 
   /// Whether [uri] is a route that exists only to get an account STARTED: the
-  /// `/home` family (sign in, sign up, and the email variant of each), the
-  /// onboarding and registration hops, and the Canvas login-token sign-in.
+  /// `/home` family (sign in, sign up, and the email variant of each), plus the
+  /// onboarding and registration hops.
   ///
-  /// None of these is somewhere an account that has finished starting can
+  /// None of the three is somewhere an account that has finished starting can
   /// stay, and none is a place a person deep-links to, so moving off them costs
   /// nothing. The `/home` screens cannot navigate away from themselves once a
   /// login succeeds — that is the whole reason the listener exists. Onboarding
@@ -220,8 +220,6 @@ class PAuthGaurd {
     '/home',
     '/onboarding',
     '/registration',
-    // The Canvas login-token sign-in (C5): nothing to stay on once signed in.
-    PRoutes.ltiToken,
   ];
 
   /// Redirect for onboarding routes

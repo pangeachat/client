@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims_flow.dart';
@@ -21,16 +20,12 @@ String claimNoticeText(L10n l10n, ClaimNotice notice, {String? courseName}) {
     ClaimNoticeKind.denied => l10n.seatInviteDenied,
     ClaimNoticeKind.notLive => l10n.seatInviteNotLive,
     ClaimNoticeKind.alreadyClaimed => l10n.seatInviteAlreadyClaimed,
-    ClaimNoticeKind.canvasLinked => l10n.canvasLinked,
-    ClaimNoticeKind.ticketExpired => l10n.canvasTicketExpired,
-    ClaimNoticeKind.ticketWrongAccount => l10n.canvasTicketWrongAccount,
-    ClaimNoticeKind.canvasAlreadyLinked => l10n.canvasAlreadyLinked,
     ClaimNoticeKind.failed => l10n.seatInviteFailed,
   };
 }
 
-/// The flow for the signed-in [client], with the app's snackbar, browser
-/// hand-off and error reporting.
+/// The flow for the signed-in [client], with the app's snackbar and error
+/// reporting.
 PendingClaimsFlow pendingClaimsFlowFor(BuildContext context, Client client) {
   final messenger = ScaffoldMessenger.of(context);
   final l10n = L10n.of(context);
@@ -55,31 +50,21 @@ PendingClaimsFlow pendingClaimsFlowFor(BuildContext context, Client client) {
         ),
       );
     },
-    // admin-dash's canvas-connect page, in this window (C5.3 L1).
-    openUrl: (url) async {
-      await launchUrl(
-        url,
-        mode: LaunchMode.externalApplication,
-        webOnlyWindowName: '_self',
-      );
-    },
-    // Ids, tickets and bodies stay out: the error carries status + errcode.
+    // Ids and bodies stay out: the error carries status + errcode.
     onError: _logError,
   );
 }
 
 /// The choreo preflight (ChoreoGate.preflight): before the session's first
-/// choreo call, open the stored invitation and return a learner Canvas
-/// ticket, so the claim lands before choreo's HTTP gate could auto-claim a
-/// trial on that call. Outcomes are shown once the shell is up
-/// ([PendingClaimsConsumer]).
+/// choreo call, open the stored invitation, so the claim lands before
+/// choreo's HTTP gate could auto-claim a trial on that call. Outcomes are
+/// shown once the shell is up ([PendingClaimsConsumer]).
 ///
-/// Choreo calls wait for each claim call's answer or failure, never a
-/// cut-off: a claim call is bounded only by the API's own request timeout
-/// (30 s), so sign-in cannot hang on a silent module. If the module gives no
-/// answer at all, the failure is reported and the calls proceed; the claim
-/// may or may not have landed (the entry is not resent, keeping it at most
-/// once).
+/// Choreo calls wait for the open's answer or failure, never a cut-off: the
+/// open is bounded only by the API's own request timeout (30 s), so sign-in
+/// cannot hang on a silent module. If the module gives no answer at all, the
+/// failure is reported and the calls proceed; the claim may or may not have
+/// landed (the entry is not resent, keeping it at most once).
 ///
 /// Single-flight: every choreo call made meanwhile awaits the same run;
 /// none finds the ferry already taken and goes ahead while it is in flight.
@@ -99,9 +84,8 @@ Future<void> _openPending(StudentInvitationApi api, String accessToken) async {
       api: api,
       accessToken: accessToken,
       notify: PendingClaimsConsumer._deferred.add,
-      openUrl: (_) async {},
       onError: _logError,
-    ).consumeClaims();
+    ).consumeInvitation();
   } catch (e, s) {
     _logError(e, s);
   }
@@ -135,8 +119,7 @@ void _logError(Object e, StackTrace s) => ErrorHandler.logError(
 );
 
 /// Headless shell resident (like DmInviteFerryConsumer) for the student side
-/// after sign-in: runs (or joins) [openPendingClaims], shows what it did,
-/// then returns an instructor's Canvas ticket, which opens admin-dash.
+/// after sign-in: runs (or joins) [openPendingClaims] and shows what it did.
 /// Mounted by the workspace shell, so it runs exactly when signed in with the
 /// map up. Waits while a coded join is in progress on screen, and tries
 /// again on every workspace navigation. Renders nothing.
@@ -184,13 +167,11 @@ class _PendingClaimsConsumerState extends State<PendingClaimsConsumer> {
     try {
       final flow = pendingClaimsFlowFor(context, client);
       // The same single-flight run choreo calls wait on: it opens a stored
-      // invitation and returns a learner ticket if no choreo call has yet.
+      // invitation if no choreo call has yet.
       await openPendingClaimsBeforeChoreo(client);
       final deferred = [...PendingClaimsConsumer._deferred];
       PendingClaimsConsumer._deferred.clear();
       deferred.forEach(flow.notify);
-      // What is left is an instructor's ticket: it opens admin-dash.
-      await flow.consumeLtiTicket();
     } finally {
       _running = false;
     }

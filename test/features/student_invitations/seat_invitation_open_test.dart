@@ -14,7 +14,6 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/student_invitations/invitation_notice.dart';
-import 'package:fluffychat/features/student_invitations/lti_link_page.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims_consumer.dart';
 import 'package:fluffychat/features/student_invitations/pending_claims_flow.dart';
@@ -27,13 +26,12 @@ import 'package:fluffychat/pangea/common/network/urls.dart';
 /// Spec amendment 2026-10-10 §1: no checkbox anywhere. After sign-in the
 /// app opens the stored invitation (`POST …/student_invitations/{id}/open`,
 /// body `{}`) at most once, every choreo call waits until that open
-/// resolves, and the Canvas link body is just the ticket.
+/// resolves, and no email or Matrix id is put in a request URL.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   sqfliteFfiInit();
 
   const inv = 'Q2xhc3NJbnZpdGUtMDAx_-';
-  const ticket = 'dGlja2V0LWZvci1hLWNhbnZhcy1sZWFybmVyLWxhdW5jaA';
   const homeserver = 'https://matrix.example.org';
   const prefix = '/_synapse/client/pangea/v1';
   const token = 'syt_student';
@@ -77,11 +75,8 @@ void main() {
         'invitation_id': inv,
         'room_id': '!c:example.org',
       }),
-      'POST $prefix/lti/link': (_) =>
-          json(200, {'next': 'app', 'claimed': [], 'login_token': null}),
     };
     await SpaceCodeRepo.clearPendingInvitation();
-    await SpaceCodeRepo.clearPendingLtiTicket();
     module = MockClient((request) async {
       sent.add(request);
       final path = request.url.path;
@@ -89,9 +84,6 @@ void main() {
         // Slower than any choreo call: only an awaited open comes first.
         await Future<void>.delayed(const Duration(milliseconds: 50));
         order.add('open');
-      } else if (path.endsWith('/lti/link')) {
-        await Future<void>.delayed(const Duration(milliseconds: 50));
-        order.add('lti_link');
       } else if (path.endsWith('/grammar_constructs')) {
         order.add('grammar_constructs');
         return http.Response('{}', 200);
@@ -108,12 +100,8 @@ void main() {
     homeserver: Uri.parse(homeserver),
   );
 
-  PendingClaimsFlow flow() => PendingClaimsFlow(
-    api: api(),
-    accessToken: token,
-    notify: notices.add,
-    openUrl: (_) async {},
-  );
+  PendingClaimsFlow flow() =>
+      PendingClaimsFlow(api: api(), accessToken: token, notify: notices.add);
 
   Iterable<http.Request> calls(String path) =>
       sent.where((r) => r.url.path == '$prefix/$path');
@@ -236,18 +224,20 @@ void main() {
     });
   });
 
-  group('Canvas L1 body', () {
-    test('a learner ticket goes back as just the ticket', () async {
-      await SpaceCodeRepo.setPendingLtiTicket(const PendingLtiTicket(ticket));
-
-      await flow().consumeLtiTicket();
-
-      final link = calls('lti/link').single;
-      expect(jsonDecode(link.body), {'ticket': ticket});
-      expect(link.headers['authorization'], 'Bearer $token');
-      expect(notices.single.kind, ClaimNoticeKind.canvasLinked);
-      expect(SpaceCodeRepo.pendingLtiTicket, isNull);
+  test('no email or Matrix id is ever put in a request URL', () async {
+    routes['GET $prefix/student_invitations/hint'] = (_) => json(200, {
+      'course_name': 'Spanish 101',
+      'masked_email_hint': 'a***@school.edu',
     });
+    await SpaceCodeRepo.setPendingInvitation(const PendingInvitation(inv));
+
+    await api().hint(inv);
+    await flow().consumeInvitation();
+
+    expect(sent, hasLength(2));
+    for (final request in sent) {
+      expect(request.url.toString(), isNot(contains('@')));
+    }
   });
 
   group('no checkbox is rendered anywhere', () {
@@ -283,31 +273,6 @@ void main() {
         sent.where((r) => r.method == 'POST'),
         isEmpty,
         reason: 'nothing is opened before sign-in',
-      );
-    });
-
-    testWidgets('the Canvas link step: Continue is ready at once', (
-      tester,
-    ) async {
-      await SpaceCodeRepo.setPendingLtiTicket(
-        const PendingLtiTicket(ticket, courseName: 'Spanish 101'),
-      );
-      await tester.pumpWidget(
-        MaterialApp(
-          localizationsDelegates: L10n.localizationsDelegates,
-          supportedLocales: L10n.supportedLocales,
-          home: LtiLinkPage(api: api()),
-        ),
-      );
-      await tester.pumpAndSettle();
-
-      expect(find.byType(Checkbox), findsNothing);
-      expect(find.byType(CheckboxListTile), findsNothing);
-      expect(
-        tester
-            .widget<ElevatedButton>(find.byKey(LtiLinkPage.continueKey))
-            .onPressed,
-        isNotNull,
       );
     });
   });

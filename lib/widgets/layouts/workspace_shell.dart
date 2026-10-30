@@ -386,9 +386,8 @@ class WorkspaceShell extends StatelessWidget {
                 /// is a shell resident so it exists exactly when logged in.
                 DmInviteFerryConsumer(uri: state.uri),
 
-                /// Headless: after sign-in, returns a ferried Canvas ticket,
-                /// confirms a ferried seat invitation, and offers invitations
-                /// waiting for this account (SPEC §4 Student).
+                /// Headless: after sign-in, opens a ferried seat invitation
+                /// and shows the outcome (SPEC §4 Student).
                 PendingClaimsConsumer(uri: state.uri),
 
                 /// Under a narrow full-screen surface (a live room / session,

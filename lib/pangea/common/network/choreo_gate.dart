@@ -4,9 +4,9 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 ///
 /// choreo's HTTP gate grants a trial to a signed-in account with no paid
 /// access, on ANY gated call (status, grammar_constructs, ...). A student who
-/// arrived with a seat invitation (or a Canvas learner ticket) may have a
-/// seat waiting, so the claim must exist before the first choreo call of the
-/// session (SPEC: a student with a waiting seat never burns their trial).
+/// arrived with a seat invitation may have a seat waiting, so the claim must
+/// exist before the first choreo call of the session (SPEC: a student with a
+/// waiting seat never burns their trial).
 /// [preflight] opens it (openPendingClaimsBeforeChoreo); every choreo
 /// request awaits it. It resolves at once when nothing is waiting.
 abstract class ChoreoGate {

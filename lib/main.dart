@@ -19,7 +19,6 @@ import 'package:fluffychat/features/connection_status/network_help_repo.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/workspace_screen_tracker.dart';
-import 'package:fluffychat/features/student_invitations/lti_entry.dart';
 import 'package:fluffychat/pangea/common/config/env_loader.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -39,11 +38,6 @@ ReceivePort? mainIsolateReceivePort;
 void main() => ErrorHandler.runGuarded(_main);
 
 Future<void> _main() async {
-  // #Pangea
-  // Before the engine sets up its browser history (which rewrites the URL
-  // without its fragment): keep a Canvas hand-off's fragment secret (C5.2).
-  LtiEntry.captureLaunchFragment();
-  // Pangea#
   // Our background push shared isolate accesses flutter-internal things very early in the startup proccess
   // To make sure that the parts of flutter needed are started up already, we need to ensure that the
   // widget bindings are initialized already.

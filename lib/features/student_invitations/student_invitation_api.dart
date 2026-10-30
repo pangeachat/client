@@ -2,11 +2,10 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-/// The Synapse module routes the student side calls (C2 open and H1, C5 L1).
+/// The Synapse module routes the student side calls (C2 open and H1).
 ///
-/// Bodies stay out of every error and log: an open or link body carries an
-/// invitation id or a single-use Canvas ticket, and the hint carries a masked
-/// email. A failure surfaces as [StudentInvitationApiException] with the
+/// Bodies stay out of every error and log: an open carries an invitation id,
+/// and the hint carries a masked email. A failure surfaces as [StudentInvitationApiException] with the
 /// status and the module's errcode only.
 class StudentInvitationApi {
   final http.Client httpClient;
@@ -59,29 +58,6 @@ class StudentInvitationApi {
     };
     final roomId = json['room_id'];
     return (outcome: outcome, roomId: roomId is String ? roomId : null);
-  }
-
-  /// L1 — return a Canvas link ticket (body: just the ticket). [accessToken]
-  /// is the account's own token after sign-in; null only for the attempt the
-  /// link page makes signed out, which a ticket bound to an already-linked
-  /// account answers with a login token (an unbound ticket answers 401 and
-  /// is not consumed).
-  Future<LtiLinkOutcome> ltiLink({
-    required String? accessToken,
-    required String ticket,
-  }) async {
-    final json = await _send(
-      'POST',
-      'lti/link',
-      accessToken: accessToken,
-      body: {'ticket': ticket},
-    );
-    final connect = json['connect_url'];
-    final login = json['login_token'];
-    return LtiLinkOutcome(
-      connectUrl: connect is String ? Uri.tryParse(connect) : null,
-      loginToken: login is String && login.isNotEmpty ? login : null,
-    );
   }
 
   Future<Map<String, Object?>> _send(
@@ -147,9 +123,6 @@ class StudentInvitationApiException implements Exception {
 
   static const String alreadyClaimedInCourse =
       'ORG.PANGEA.ALREADY_CLAIMED_IN_COURSE';
-  static const String ticketInvalid = 'ORG.PANGEA.TICKET_INVALID';
-  static const String ticketWrongAccount = 'ORG.PANGEA.TICKET_WRONG_ACCOUNT';
-  static const String ltiAlreadyLinked = 'ORG.PANGEA.LTI_ALREADY_LINKED';
 
   @override
   String toString() =>
@@ -164,13 +137,3 @@ class InvitationHint {
 }
 
 enum OpenOutcome { claimed, pending, denied }
-
-class LtiLinkOutcome {
-  /// Set for an instructor ticket: admin-dash's `canvas-connect` page.
-  final Uri? connectUrl;
-
-  /// Set only for a bound learner ticket sent without a token.
-  final String? loginToken;
-
-  const LtiLinkOutcome({this.connectUrl, this.loginToken});
-}

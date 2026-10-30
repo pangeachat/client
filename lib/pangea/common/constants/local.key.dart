@@ -7,8 +7,6 @@ class PLocalKey {
   static const String cachedInvitationAt = "cachedinvitationat";
   static const String seatApprovalPending = "seatapprovalpending";
   static const String seatApprovalPendingAt = "seatapprovalpendingat";
-  static const String cachedLtiTicket = "cachedltiticket";
-  static const String cachedLtiTicketAt = "cachedltiticketat";
   static const String beganPayment = "beganWebPayment";
   static const String beganPaymentPlanId = "beganWebPaymentPlanId";
   static const String launchedBillingPortal = "launchedBillingPortal";

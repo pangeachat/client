@@ -98,18 +98,14 @@ abstract class PRoutes {
   /// (`<app>/<class code>?inv=<id>`, written by the Synapse module).
   static const String invitationParam = 'inv';
 
-  /// An opaque server-issued id — an invitation id or an LTI ticket: URL-safe
-  /// base64 characters only, so it never needs encoding, and bounded so a
-  /// crafted link can't stuff the URL or the ferry.
-  static final RegExp _opaqueIdRegExp = RegExp(r'^[A-Za-z0-9_-]{1,128}$');
+  /// An invitation id (`token_urlsafe(16)`): URL-safe base64 characters only,
+  /// so it never needs encoding, and at most 64 characters (the module
+  /// refuses longer), so a crafted link can't stuff the URL or the ferry.
+  static final RegExp _invitationIdRegExp = RegExp(r'^[A-Za-z0-9_-]{1,64}$');
 
-  /// Whether [value] can be an invitation id (`token_urlsafe(16)`; the
-  /// module refuses anything over 64 characters).
+  /// Whether [value] can be an invitation id.
   static bool isInvitationId(String value) =>
-      value.length <= 64 && _opaqueIdRegExp.hasMatch(value);
-
-  /// Whether [value] can be an LTI ticket (`token_urlsafe(32)`, 43 chars).
-  static bool isLtiTicket(String value) => _opaqueIdRegExp.hasMatch(value);
+      _invitationIdRegExp.hasMatch(value);
 
   /// The well-formed invitation id on [uri], or null.
   static String? invitationIdIn(Uri uri) {
@@ -126,15 +122,6 @@ abstract class PRoutes {
     if (parts.length == before) return null;
     return WorkspaceQuery.location(uri.path, parts);
   }
-
-  /// The Canvas (LTI) learner/instructor hand-off page: the module redirects a
-  /// launch to `/lti/link#ticket=…` (C5). Its redirect ferries the ticket and
-  /// strips it from the address bar before the page renders.
-  static const String ltiLink = '/lti/link';
-
-  /// The Canvas login-token entry: `/lti/token#loginToken=…` signs a linked
-  /// learner in (C5). The token leaves the address bar at once.
-  static const String ltiToken = '/lti/token';
 
   /// Open an activity with no course context — the shareable first-class uuid
   /// (`/<uuid>`). [launch] skips the lobby.
