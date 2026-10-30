@@ -476,15 +476,12 @@ extension ActivitySummaryRoomExtension on Room {
 
   /// A request for [userId]'s card the bot has not started serving yet, by
   /// the rule the bot uses: newer than the start of the call behind [slot].
-  /// A card serves requests that name its learner; a room-wide summary, or
-  /// none yet, also serves an older client's, which names nobody.
+  /// A room-wide summary serves every request.
   bool _requestPending(Event? request, _SummarySlot? slot, String userId) {
     if (request == null) return false;
-    final named = request.content[ModelKey.userId];
-    final forThisCard =
-        (slot != null && slot.roomWide) ||
-        named == userId ||
-        (slot == null && named == null);
+    // An older client's request names nobody: it is for the sender's card.
+    final named = request.content[ModelKey.userId] ?? request.senderId;
+    final forThisCard = (slot != null && slot.roomWide) || named == userId;
     if (!forThisCard) return false;
     final handledUntil = slot?.handledUntil;
     return handledUntil == null ||
