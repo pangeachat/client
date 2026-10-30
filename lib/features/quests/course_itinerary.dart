@@ -16,10 +16,16 @@ class CoursePositionEvent {
 
   /// Milliseconds since the epoch when the ship set off for [stop].
   final int since;
+
+  /// The copy's revision the indexes refer to: a publish that reorders or
+  /// removes Can-Dos makes them name other Missions, so a position of
+  /// another revision is ignored until the homeserver writes a fresh one.
+  final int revision;
   const CoursePositionEvent({
     required this.stop,
     required this.fromStop,
     required this.since,
+    required this.revision,
   });
 
   static CoursePositionEvent? tryParse(Object? content) {
@@ -27,16 +33,29 @@ class CoursePositionEvent {
     final stop = content['stop'];
     final fromStop = content['from_stop'];
     final since = content['since'];
+    final revision = content['revision'];
     if (stop is! int ||
         fromStop is! int ||
         since is! int ||
+        revision is! int ||
         stop < 0 ||
         fromStop < 0 ||
-        since < 0) {
+        since < 0 ||
+        revision < 1) {
       return null;
     }
-    return CoursePositionEvent(stop: stop, fromStop: fromStop, since: since);
+    return CoursePositionEvent(
+      stop: stop,
+      fromStop: fromStop,
+      since: since,
+      revision: revision,
+    );
   }
+
+  /// [stop] when this position belongs to [copy] (its revision, and a stop
+  /// the copy has), else null.
+  int? stopIn(CourseMissionsEvent copy) =>
+      revision == copy.revision && stop < copy.missions.length ? stop : null;
 }
 
 /// The `pangea.course_access` course-space state event, one per student
@@ -119,19 +138,33 @@ abstract final class CourseItinerary {
   /// course-view doc, "The camera": choosing a course fades to its ship's
   /// city): on a dated trip the first Mission whose date is still ahead (every
   /// date past, the last dated one); on an undated trip the ship's
-  /// [position]; null for a record that is not a trip, so a course from before
-  /// trips moves no camera by itself.
+  /// [position]. A Mission with no city does not move the ship (org quests
+  /// doc, "Progression"), so it stays at the last Mission with a city before
+  /// that, or the first one with a city. Null for a record that is not a
+  /// trip, so a course from before trips moves no camera by itself.
   static int? shipStopOf(
     CourseMissionsEvent copy,
     CoursePositionEvent? position,
     DateTime now,
   ) {
     if (!copy.isTrip || copy.missions.isEmpty) return null;
-    if (copy.isDated) {
-      return _datedStopOf([for (final m in copy.missions) m.dueAt], now) ?? 0;
+    final stop = copy.isDated
+        ? _datedStopOf([for (final m in copy.missions) m.dueAt], now) ?? 0
+        : position?.stopIn(copy) ?? 0;
+    return _locatedStop(copy.missions, stop);
+  }
+
+  /// [stop], or the Mission with a city the ship stays at when [stop] has
+  /// none: the last one before it, else the first one after it. [stop] as
+  /// is when no Mission has a city.
+  static int _locatedStop(List<CourseMission> missions, int stop) {
+    for (var i = stop; i >= 0; i--) {
+      if (missions[i].city != null) return i;
     }
-    final stop = position?.stop ?? 0;
-    return stop < copy.missions.length ? stop : null;
+    for (var i = stop + 1; i < missions.length; i++) {
+      if (missions[i].city != null) return i;
+    }
+    return stop;
   }
 
   /// The Mission the class is at, for the "Class location" mark: a dated
@@ -149,12 +182,10 @@ abstract final class CourseItinerary {
     required DateTime now,
   }) {
     if (trip == null || trip.isDated) return datedStop(groups, now);
-    final stop = position?.stop;
-    final missions = copy?.missions;
-    if (stop == null || missions == null || stop >= missions.length) {
-      return null;
-    }
-    final shipMissionId = missions[stop].loId;
+    if (copy == null) return null;
+    final stop = position?.stopIn(copy);
+    if (stop == null) return null;
+    final shipMissionId = copy.missions[stop].loId;
     final index = groups.indexWhere((g) => g.objective.id == shipMissionId);
     return index < 0 ? null : index;
   }
