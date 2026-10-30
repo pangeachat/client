@@ -84,6 +84,13 @@ void main() {
     },
   );
 
+  test('a write that fails says so and leaves nothing to recover', () async {
+    final failing = RowsCallAudioPendingStore(_FailingRows());
+    expect(await failing.persist(await _item(wav), wav), isFalse);
+    expect(await failing.recover(), isEmpty);
+    expect(callAudioWaitingToSend.value, isFalse);
+  });
+
   test('a WAV that does not match its hash is dropped', () async {
     final item = await _item(wav);
     await store.persist(item, wav);
@@ -136,4 +143,11 @@ void main() {
     await store.update(item);
     expect(rows.records, isEmpty);
   });
+}
+
+/// A transaction that aborts: the database keeps neither half.
+class _FailingRows extends _Rows {
+  @override
+  Future<void> putRecording(String id, String json, Uint8List wav) =>
+      Future.error(StateError('IndexedDB: aborted'));
 }
