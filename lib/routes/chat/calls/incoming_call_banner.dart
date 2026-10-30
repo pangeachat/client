@@ -173,6 +173,30 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
   /// when it puts one away.
   final Map<String, String> _onCallScreen = {};
 
+  /// The account each ring on the call screen is for, kept syncing until the
+  /// ring is off it: with the app in the background, sync is how this hears
+  /// the caller hang up.
+  final Map<String, matrix.Client> _ringAccounts = {};
+
+  void _keepSyncingFor(CallScreenRing ring, matrix.Client account) {
+    _ringAccounts[ring.eventId] = account;
+    (_ringSync = Matrix.of(context)).keepSyncingForRing(account, ringing: true);
+  }
+
+  /// Kept, because a ring can come off the call screen during [dispose].
+  MatrixState? _ringSync;
+
+  String? _takeOffCallScreen(String eventId) {
+    final account = _ringAccounts.remove(eventId);
+    if (account != null) {
+      _ringSync?.keepSyncingForRing(
+        account,
+        ringing: _ringAccounts.containsValue(account),
+      );
+    }
+    return _onCallScreen.remove(eventId);
+  }
+
   /// The call screen's id for a ring answered there, held until the call it
   /// became ends, and the call screen with it.
   String? _answeredOnCallScreen;
@@ -231,7 +255,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
   /// lifetime ran out, the caller gave up, another device took it, or a redial
   /// replaced it. Not when it was answered there -- that call goes on.
   void _leaveCallScreen(IncomingCallNotification ring) {
-    final uuid = _onCallScreen.remove(ring.event.eventId);
+    final uuid = _takeOffCallScreen(ring.event.eventId);
     if (uuid == null || uuid == _answeredOnCallScreen) return;
     _endCallScreen(uuid, CallScreenEndReason.remoteEnded);
   }
@@ -283,6 +307,9 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
         clients.firstWhereOrNull(
           (c) => c.getRoomById(screenRing.roomId) != null,
         );
+    // Before the read: a room this device has not synced yet can only arrive
+    // through sync.
+    if (account != null) _keepSyncingFor(screenRing, account);
     final ring = account == null ? null : await _readRing(account, screenRing);
     if (!mounted) return;
     final service = ring == null ? null : _serviceFor(ring.event.room);
@@ -298,6 +325,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
           'accountTagged': screenRing.account.isNotEmpty,
         },
       );
+      _takeOffCallScreen(screenRing.eventId);
       _endCallScreen(screenRing.uuid, CallScreenEndReason.failed);
       return;
     }
@@ -335,7 +363,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
     final choice = _chosenOnCallScreen.remove(screenRing.eventId);
     final up = _ringing?.event.eventId == ring.event.eventId;
     if (!up) {
-      _onCallScreen.remove(screenRing.eventId);
+      _takeOffCallScreen(screenRing.eventId);
       _endCallScreen(screenRing.uuid, CallScreenEndReason.unanswered);
       return;
     }
@@ -437,7 +465,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
       }
       return;
     }
-    _onCallScreen.remove(end.ring.eventId);
+    _takeOffCallScreen(end.ring.eventId);
     final ring = _ringing;
     if (ring != null && ring.event.eventId == end.ring.eventId) {
       _decline(ring);
@@ -1253,6 +1281,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _ringAccounts.keys.toList().forEach(_takeOffCallScreen);
     for (final sub in _callScreenSubs) {
       unawaited(sub.cancel());
     }

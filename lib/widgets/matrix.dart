@@ -1436,17 +1436,41 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
   }
 
+  /// Whether an account syncs in [state]: only in the foreground, unless a ring
+  /// is on the iOS call screen. The ring ends through sync -- the caller
+  /// hanging up only retracts their membership -- so with sync off the phone
+  /// rang out its whole lifetime after the caller had gone (#9558).
+  static bool syncsIn(AppLifecycleState? state, {required bool ringing}) =>
+      ringing ||
+      (state != AppLifecycleState.inactive &&
+          state != AppLifecycleState.paused);
+
+  /// The accounts with a ring on the iOS call screen.
+  @visibleForTesting
+  final Set<Client> syncKeptForRing = {};
+
+  /// Keeps [client] syncing while a ring is on the iOS call screen.
+  void keepSyncingForRing(Client client, {required bool ringing}) {
+    ringing ? syncKeptForRing.add(client) : syncKeptForRing.remove(client);
+    if (!PlatformInfos.isMobile) return;
+    client.backgroundSync = syncsIn(
+      WidgetsBinding.instance.lifecycleState,
+      ringing: ringing,
+    );
+  }
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    final foreground =
-        state != AppLifecycleState.inactive &&
-        state != AppLifecycleState.paused;
+    final foreground = syncsIn(state, ringing: false);
     for (final client in widget.clients) {
       client.syncPresence = state == AppLifecycleState.resumed
           ? null
           : PresenceType.unavailable;
       if (PlatformInfos.isMobile) {
-        client.backgroundSync = foreground;
+        client.backgroundSync = syncsIn(
+          state,
+          ringing: syncKeptForRing.contains(client),
+        );
         client.requestHistoryOnLimitedTimeline = !foreground;
         Logs().v('Set background sync to', foreground);
       }
