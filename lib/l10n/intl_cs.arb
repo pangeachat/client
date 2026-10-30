@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-30 10:21:34.091850",
+    "@@last_modified": "2026-10-27 14:57:13.850855",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10545,6 +10545,13 @@
     "centralCourseOfferTitle": "Připojit se k {course}?",
     "makeMyOwnCourseInstead": "Vytvořit si vlastní kurz",
     "suggestMobileSignInSameAccount": "Poté se do aplikace přihlaste pomocí tohoto účtu.",
+    "botJoinsIn": "Pangea Bot se připojí za {duration}",
+    "botIsJoining": "Pangea Bot se připojuje…",
+    "playWithBotNowTitle": "Hrát s Pangea Botem hned teď?",
+    "playWithBotNowMessage": "Ještě se nikdo nepřipojil. Pangea Bot může obsadit volné místo hned teď, nebo můžete dál čekat.",
+    "keepWaiting": "Pokračovat v čekání",
+    "botTookSeatAfterAnHour": "Tato relace byla otevřená hodinu, takže Pangea Bot obsadil volné místo.",
+    "botTookSeatAfterADay": "Tato relace byla otevřená déle než den, takže Pangea Bot obsadil volné místo. Pošlete zprávu pro zahájení.",
     "seatInviteTitle": "Připojte se k {course}",
     "seatInviteYourCourse": "váš kurz",
     "seatInviteEmailHint": "Použijte {email}, aby vás vaše třída našla.",

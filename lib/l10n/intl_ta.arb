@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-30 10:21:51.598259",
+    "@@last_modified": "2026-10-27 14:57:22.276814",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10146,6 +10146,13 @@
     "centralCourseOfferTitle": "{course} இல் சேரவா?",
     "makeMyOwnCourseInstead": "அதற்குப் பதிலாக எனது சொந்தப் பாடத்திட்டத்தை உருவாக்கவும்",
     "suggestMobileSignInSameAccount": "பின்னர் இந்த கணக்குடன் பயன்பாட்டில் உள்நுழையவும்.",
+    "botJoinsIn": "{duration} இல் பாங்கேயா பாட் இணைகிறது",
+    "botIsJoining": "பாங்கேயா பாட் இணைகிறது...",
+    "playWithBotNowTitle": "இப்போதே பாங்கேயா பாட்டுடன் விளையாடவா?",
+    "playWithBotNowMessage": "யாரும் இன்னும் இணையவில்லை. பாங்கேயா பாட் இப்போது காலியான இடத்தைப் பிடிக்கலாம், அல்லது நீங்கள் காத்திருக்கலாம்.",
+    "keepWaiting": "காத்திருங்கள்",
+    "botTookSeatAfterAnHour": "இந்த அமர்வு ஒரு மணிநேரம் திறந்திருந்தது, அதனால் பாங்கேயா பாட் காலியான இடத்தைப் பிடித்தது.",
+    "botTookSeatAfterADay": "இந்த அமர்வு ஒரு நாளுக்கும் மேலாக திறந்திருந்தது, அதனால் பாங்கேயா பாட் காலியான இடத்தைப் பிடித்தது. தொடங்க ஒரு செய்தியை அனுப்பவும்.",
     "seatInviteTitle": "{course} இல் சேரவும்",
     "seatInviteYourCourse": "உங்கள் பாடப்பிரிவு",
     "seatInviteEmailHint": "உங்கள் வகுப்பு உங்களைக் கண்டறிய {email} ஐப் பயன்படுத்தவும்.",

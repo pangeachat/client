@@ -121,4 +121,53 @@ void main() {
       );
     });
   });
+
+  group('botFillTime', () {
+    final created = DateTime.utc(2026, 10, 27, 12);
+
+    DateTime? fillTime({
+      Duration age = const Duration(minutes: 10),
+      bool botChosen = false,
+      bool creatorJoined = true,
+      bool botJoined = true,
+      bool anyRoleFinished = false,
+      int seats = 2,
+      int takenSeats = 1,
+    }) => botFillTime(
+      created: created,
+      now: created.add(age),
+      botChosen: botChosen,
+      creatorJoined: creatorJoined,
+      botJoined: botJoined,
+      anyRoleFinished: anyRoleFinished,
+      seats: seats,
+      takenSeats: takenSeats,
+    );
+
+    test('one open seat with the creator and the bot in: the bot joins an '
+        'hour after the session was created', () {
+      expect(fillTime(), created.add(botFillDelay));
+      // An invited friend holds their seat, so three seats with two taken
+      // still leaves the bot exactly one.
+      expect(fillTime(seats: 3, takenSeats: 2), created.add(botFillDelay));
+    });
+
+    test('past the hour it still reads the hour, so the line says the bot is '
+        'joining until its seat lands', () {
+      expect(
+        fillTime(age: const Duration(hours: 2)),
+        created.add(botFillDelay),
+      );
+    });
+
+    test('no countdown when the bot will not join', () {
+      expect(fillTime(seats: 3), isNull, reason: 'two seats open');
+      expect(fillTime(takenSeats: 2), isNull, reason: 'no seat open');
+      expect(fillTime(botChosen: true), isNull, reason: 'a learner asked');
+      expect(fillTime(creatorJoined: false), isNull, reason: 'creator left');
+      expect(fillTime(botJoined: false), isNull, reason: 'bot not in room');
+      expect(fillTime(anyRoleFinished: true), isNull, reason: 'session ending');
+      expect(fillTime(age: botFillMaxAge), isNull, reason: 'a day old');
+    });
+  });
 }

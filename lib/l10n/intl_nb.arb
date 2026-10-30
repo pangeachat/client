@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-30 10:21:44.961230",
+    "@@last_modified": "2026-10-27 14:57:20.054852",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10111,6 +10111,13 @@
     "centralCourseOfferTitle": "Bli med på {course}?",
     "makeMyOwnCourseInstead": "Lag mitt eget kurs i stedet",
     "suggestMobileSignInSameAccount": "Logg deretter på appen med denne kontoen.",
+    "botJoinsIn": "Pangea Bot blir med om {duration}",
+    "botIsJoining": "Pangea Bot blir med…",
+    "playWithBotNowTitle": "Spille med Pangea Bot nå?",
+    "playWithBotNowMessage": "Ingen har blitt med ennå. Pangea Bot kan ta den ledige plassen nå, eller du kan fortsette å vente.",
+    "keepWaiting": "Fortsett å vente",
+    "botTookSeatAfterAnHour": "Denne økten var åpen i en time, så Pangea Bot tok den ledige plassen.",
+    "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea Bot tok den ledige plassen. Send en melding for å starte.",
     "seatInviteTitle": "Bli med i {course}",
     "seatInviteYourCourse": "kurset ditt",
     "seatInviteEmailHint": "Bruk {email} slik at klassen din finner deg.",

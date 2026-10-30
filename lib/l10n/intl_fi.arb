@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-30 10:21:35.773049",
+    "@@last_modified": "2026-10-27 14:57:14.694714",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10091,6 +10091,13 @@
     "centralCourseOfferTitle": "Liity kurssille {course}?",
     "makeMyOwnCourseInstead": "Luo oma kurssi sen sijaan",
     "suggestMobileSignInSameAccount": "Kirjaudu sitten sovellukseen tällä tilillä.",
+    "botJoinsIn": "Pangea Bot liittyy {duration} kuluttua",
+    "botIsJoining": "Pangea Bot liittyy…",
+    "playWithBotNowTitle": "Pelataanko Pangea Botin kanssa nyt?",
+    "playWithBotNowMessage": "Kukaan ei ole vielä liittynyt. Pangea Bot voi ottaa avoimen paikan nyt, tai voit jatkaa odottamista.",
+    "keepWaiting": "Jatka odottamista",
+    "botTookSeatAfterAnHour": "Tämä istunto oli auki tunnin, joten Pangea Bot otti avoimen paikan.",
+    "botTookSeatAfterADay": "Tämä istunto oli auki yli päivän, joten Pangea Bot otti avoimen paikan. Aloita lähettämällä viesti.",
     "seatInviteTitle": "Liity kurssille {course}",
     "seatInviteYourCourse": "kurssillesi",
     "seatInviteEmailHint": "Käytä sähköpostiosoitetta {email}, jotta luokkasi löytää sinut.",

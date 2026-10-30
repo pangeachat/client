@@ -16,6 +16,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/notifications/open_session_notice.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
@@ -281,6 +282,9 @@ class NotificationTapUtil {
         sessionRoomId.isNotEmpty &&
         activityId != null &&
         activityId.isNotEmpty) {
+      if (notification?[_checkInTypeKey] == OpenSessionNotice.checkInType) {
+        OpenSessionNotice.offerBotIn.value = sessionRoomId;
+      }
       _navigateToActivitySession(
         router: router,
         room: room,

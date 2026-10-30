@@ -1317,7 +1317,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-30 10:21:50.894608",
+    "@@last_modified": "2026-10-27 14:57:22.552803",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -11001,6 +11001,13 @@
     "centralCourseOfferTitle": "{course}లో చేరతారా?",
     "makeMyOwnCourseInstead": "బదులుగా నా స్వంత కోర్సును సృష్టించు",
     "suggestMobileSignInSameAccount": "ఆపై ఈ ఖాతాతో యాప్‌లోకి సైన్ ఇన్ చేయండి.",
+    "botJoinsIn": "పాంగియా బాట్ {duration}లో చేరుతుంది",
+    "botIsJoining": "పాంగియా బాట్ చేరుతోంది…",
+    "playWithBotNowTitle": "ఇప్పుడే పాంగియా బాట్‌తో ఆడాలా?",
+    "playWithBotNowMessage": "ఇంకా ఎవరూ చేరలేదు. పాంగియా బాట్ ఇప్పుడు ఖాళీ స్థానాన్ని తీసుకోవచ్చు లేదా మీరు వేచి ఉండవచ్చు.",
+    "keepWaiting": "వేచి ఉండండి",
+    "botTookSeatAfterAnHour": "ఈ సెషన్ ఒక గంట పాటు తెరిచి ఉంది, కాబట్టి పాంగియా బాట్ ఖాళీ స్థానాన్ని తీసుకుంది.",
+    "botTookSeatAfterADay": "ఈ సెషన్ ఒక రోజుకు పైగా తెరిచి ఉంది, కాబట్టి పాంగియా బాట్ ఖాళీ స్థానాన్ని తీసుకుంది. ప్రారంభించడానికి సందేశం పంపండి.",
     "seatInviteTitle": "{course}లో చేరండి",
     "seatInviteYourCourse": "మీ కోర్సు",
     "seatInviteEmailHint": "మీ తరగతి మిమ్మల్ని కనుగొనడానికి {email}ని ఉపయోగించండి.",

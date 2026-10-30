@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-30 10:21:34.398865",
+    "@@last_modified": "2026-10-27 14:57:13.856170",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10996,6 +10996,13 @@
     "centralCourseOfferTitle": "Ĉu aliĝi al {course}?",
     "makeMyOwnCourseInstead": "Krei mian propran kurson anstataŭe",
     "suggestMobileSignInSameAccount": "Poste ensalutu al la apo per ĉi tiu konto.",
+    "botJoinsIn": "Pangea Bot aliĝas post {duration}",
+    "botIsJoining": "Pangea Bot aliĝas…",
+    "playWithBotNowTitle": "Ĉu ludi kun Pangea Bot nun?",
+    "playWithBotNowMessage": "Neniu ankoraŭ aliĝis. Pangea Bot povas okupi la liberan lokon nun, aŭ vi povas plu atendi.",
+    "keepWaiting": "Plu atendi",
+    "botTookSeatAfterAnHour": "Ĉi tiu sesio estis malfermita dum unu horo, do Pangea Bot okupis la liberan lokon.",
+    "botTookSeatAfterADay": "Ĉi tiu sesio estis malfermita dum pli ol unu tago, do Pangea Bot okupis la liberan lokon. Sendu mesaĝon por komenci.",
     "seatInviteTitle": "Aliĝu al {course}",
     "seatInviteYourCourse": "via kurso",
     "seatInviteEmailHint": "Uzu {email} por ke via klaso trovu vin.",

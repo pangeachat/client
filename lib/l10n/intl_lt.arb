@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-30 10:21:42.239277",
+    "@@last_modified": "2026-10-27 14:57:18.329201",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10832,6 +10832,13 @@
     "centralCourseOfferTitle": "Prisijungti prie {course}?",
     "makeMyOwnCourseInstead": "Vietoj to sukurti savo kursą",
     "suggestMobileSignInSameAccount": "Tada prisijunkite prie programėlės naudodami šią paskyrą.",
+    "botJoinsIn": "Pangea Bot prisijungs po {duration}",
+    "botIsJoining": "Pangea Bot jungiasi…",
+    "playWithBotNowTitle": "Žaisti su Pangea Bot dabar?",
+    "playWithBotNowMessage": "Dar niekas neprisijungė. Pangea Bot gali užimti laisvą vietą dabar, arba galite toliau laukti.",
+    "keepWaiting": "Laukti toliau",
+    "botTookSeatAfterAnHour": "Ši sesija buvo atidaryta valandą, todėl Pangea Bot užėmė laisvą vietą.",
+    "botTookSeatAfterADay": "Ši sesija buvo atidaryta ilgiau nei dieną, todėl Pangea Bot užėmė laisvą vietą. Norėdami pradėti, atsiųskite žinutę.",
     "seatInviteTitle": "Prisijunkite prie {course}",
     "seatInviteYourCourse": "jūsų kursas",
     "seatInviteEmailHint": "Naudokite {email}, kad jūsų klasė jus rastų.",

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-30 10:21:36.142354",
+    "@@last_modified": "2026-10-27 14:57:14.550178",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10051,6 +10051,13 @@
     "centralCourseOfferTitle": "Liituda kursusega {course}?",
     "makeMyOwnCourseInstead": "Looma oma kursuse",
     "suggestMobileSignInSameAccount": "Seejärel logi selle kontoga rakendusse sisse.",
+    "botJoinsIn": "Pangea Bot liitub {duration} pärast",
+    "botIsJoining": "Pangea Bot liitub…",
+    "playWithBotNowTitle": "Mängida Pangea Botiga kohe?",
+    "playWithBotNowMessage": "Keegi pole veel liitunud. Pangea Bot saab nüüd vaba koha võtta või võite oodata.",
+    "keepWaiting": "Jätka ootamist",
+    "botTookSeatAfterAnHour": "See seanss oli tund aega avatud, nii et Pangea Bot võttis vaba koha.",
+    "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum.",
     "seatInviteTitle": "Liitu kursusega {course}",
     "seatInviteYourCourse": "sinu kursus",
     "seatInviteEmailHint": "Kasuta e-posti aadressi {email}, et klass sind leiaks.",

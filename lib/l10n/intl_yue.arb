@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-30 10:21:52.767930",
+    "@@last_modified": "2026-10-27 14:57:24.431960",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11008,6 +11008,13 @@
     "centralCourseOfferTitle": "加入{course}？",
     "makeMyOwnCourseInstead": "自己建立課程",
     "suggestMobileSignInSameAccount": "然後用呢個帳戶登入應用程式。",
+    "botJoinsIn": "Pangea機械人將會喺{duration}之後加入",
+    "botIsJoining": "Pangea機械人正在加入…",
+    "playWithBotNowTitle": "而家同Pangea機械人玩？",
+    "playWithBotNowMessage": "仲未有人加入。Pangea機械人可以而家加入，或者你可以繼續等。",
+    "keepWaiting": "繼續等",
+    "botTookSeatAfterAnHour": "呢個環節開咗一個鐘，所以Pangea機械人加入咗。",
+    "botTookSeatAfterADay": "呢個環節開咗超過一日，所以Pangea機械人加入咗。傳送訊息嚟開始啦。",
     "seatInviteTitle": "加入{course}",
     "seatInviteYourCourse": "你嘅課程",
     "seatInviteEmailHint": "用{email}，咁你班同學就搵到你。",

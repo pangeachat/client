@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-30 10:21:38.700468",
+    "@@last_modified": "2026-10-27 14:57:16.198656",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10157,6 +10157,13 @@
     "centralCourseOfferTitle": "Csatlakozás a(z) {course} kurzushoz?",
     "makeMyOwnCourseInstead": "Inkább saját kurzust készítek",
     "suggestMobileSignInSameAccount": "Ezután jelentkezz be az alkalmazásba ezzel a fiókkal.",
+    "botJoinsIn": "Pangea Bot csatlakozik {duration} múlva",
+    "botIsJoining": "Pangea Bot csatlakozik…",
+    "playWithBotNowTitle": "Játssz a Pangea Bottal most?",
+    "playWithBotNowMessage": "Még senki sem csatlakozott. A Pangea Bot most elfoglalhatja a szabad helyet, vagy tovább várhatsz.",
+    "keepWaiting": "Tovább várok",
+    "botTookSeatAfterAnHour": "Ez a munkamenet egy órája nyitva volt, ezért a Pangea Bot elfoglalta a szabad helyet.",
+    "botTookSeatAfterADay": "Ez a munkamenet több mint egy napja nyitva volt, ezért a Pangea Bot elfoglalta a szabad helyet. Üzenj a kezdéshez.",
     "seatInviteTitle": "Csatlakozz ehhez: {course}",
     "seatInviteYourCourse": "a kurzusod",
     "seatInviteEmailHint": "Használd ezt az e-mail-címet: {email}, hogy az osztályod megtaláljon.",

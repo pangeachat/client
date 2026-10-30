@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-30 10:21:51.373358",
+    "@@last_modified": "2026-10-27 14:57:23.375886",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10054,6 +10054,13 @@
     "centralCourseOfferTitle": "Приєднатися до курсу «{course}»?",
     "makeMyOwnCourseInstead": "Натомість створити власний курс",
     "suggestMobileSignInSameAccount": "Потім увійдіть у програму за допомогою цього облікового запису.",
+    "botJoinsIn": "Бот Pangea приєднається через {duration}",
+    "botIsJoining": "Бот Pangea приєднується…",
+    "playWithBotNowTitle": "Зіграти з ботом Pangea зараз?",
+    "playWithBotNowMessage": "Ще ніхто не приєднався. Бот Pangea може зайняти вільне місце зараз, або ви можете продовжити чекати.",
+    "keepWaiting": "Продовжити чекати",
+    "botTookSeatAfterAnHour": "Ця сесія була відкритою годину, тому бот Pangea зайняв вільне місце.",
+    "botTookSeatAfterADay": "Ця сесія була відкритою більше доби, тому бот Pangea зайняв вільне місце. Надішліть повідомлення, щоб почати.",
     "seatInviteTitle": "Приєднатися до {course}",
     "seatInviteYourCourse": "ваш курс",
     "seatInviteEmailHint": "Використовуйте {email}, щоб ваш клас вас знайшов.",

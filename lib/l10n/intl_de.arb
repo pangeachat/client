@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-30 10:21:33.839403",
+    "@@last_modified": "2026-10-27 14:57:13.907049",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10041,6 +10041,13 @@
     "centralCourseOfferTitle": "An {course} teilnehmen?",
     "makeMyOwnCourseInstead": "Stattdessen eigenen Kurs erstellen",
     "suggestMobileSignInSameAccount": "Melde dich dann mit diesem Konto in der App an.",
+    "botJoinsIn": "Pangea Bot kommt in {duration} dazu",
+    "botIsJoining": "Pangea Bot kommt dazu …",
+    "playWithBotNowTitle": "Jetzt mit Pangea Bot spielen?",
+    "playWithBotNowMessage": "Es ist noch niemand beigetreten. Pangea Bot kann den freien Platz jetzt einnehmen, oder du kannst weiter warten.",
+    "keepWaiting": "Weiter warten",
+    "botTookSeatAfterAnHour": "Diese Sitzung war eine Stunde lang offen, daher hat Pangea Bot den freien Platz eingenommen.",
+    "botTookSeatAfterADay": "Diese Sitzung war über einen Tag lang offen, daher hat Pangea Bot den freien Platz eingenommen. Sende eine Nachricht, um zu beginnen.",
     "seatInviteTitle": "Tritt {course} bei",
     "seatInviteYourCourse": "deinem Kurs",
     "seatInviteEmailHint": "Verwende {email}, damit dein Kurs dich findet.",

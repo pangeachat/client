@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-30 10:21:48.156434",
+    "@@last_modified": "2026-10-27 14:57:21.509856",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10996,6 +10996,13 @@
     "centralCourseOfferTitle": "Se pridružiš tečaju {course}?",
     "makeMyOwnCourseInstead": "Namesto tega ustvari svoj tečaj",
     "suggestMobileSignInSameAccount": "Nato se v aplikacijo prijavite s tem računom.",
+    "botJoinsIn": "Pangea Bot se pridruži čez {duration}",
+    "botIsJoining": "Pangea Bot se pridružuje ...",
+    "playWithBotNowTitle": "Želite igrati s Pangea Botom zdaj?",
+    "playWithBotNowMessage": "Nihče se še ni pridružil. Pangea Bot lahko zdaj zasede prosto mesto ali pa lahko še naprej čakate.",
+    "keepWaiting": "Nadaljuj čakanje",
+    "botTookSeatAfterAnHour": "Ta seja je bila odprta eno uro, zato je Pangea Bot zasedel prosto mesto.",
+    "botTookSeatAfterADay": "Ta seja je bila odprta več kot en dan, zato je Pangea Bot zasedel prosto mesto. Pošljite sporočilo za začetek.",
     "seatInviteTitle": "Pridružite se tečaju {course}",
     "seatInviteYourCourse": "vaš tečaj",
     "seatInviteEmailHint": "Uporabite {email}, da vas bo razred našel.",

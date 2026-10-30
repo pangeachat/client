@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-30 10:21:41.021044",
+    "@@last_modified": "2026-10-27 14:57:17.703488",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10247,6 +10247,13 @@
     "centralCourseOfferTitle": "{course}에 참여하시겠어요?",
     "makeMyOwnCourseInstead": "대신 나만의 코스 만들기",
     "suggestMobileSignInSameAccount": "그런 다음 이 계정으로 앱에 로그인하세요.",
+    "botJoinsIn": "판게아 봇이 {duration} 후에 참여합니다",
+    "botIsJoining": "판게아 봇이 참여 중입니다…",
+    "playWithBotNowTitle": "지금 판게아 봇과 플레이하시겠어요?",
+    "playWithBotNowMessage": "아직 아무도 참여하지 않았습니다. 판게아 봇이 지금 빈자리에 참여하거나, 계속 기다릴 수 있습니다.",
+    "keepWaiting": "계속 기다리기",
+    "botTookSeatAfterAnHour": "이 세션은 한 시간 동안 열려 있었으므로 판게아 봇이 빈자리에 참여했습니다.",
+    "botTookSeatAfterADay": "이 세션은 하루 이상 열려 있었으므로 판게아 봇이 빈자리에 참여했습니다. 메시지를 보내 시작하세요.",
     "seatInviteTitle": "{course}에 참여하기",
     "seatInviteYourCourse": "회원님의 코스",
     "seatInviteEmailHint": "수업에서 회원님을 찾을 수 있도록 {email}을(를) 사용하세요.",

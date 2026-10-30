@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-30 10:21:34.320013",
+    "@@last_modified": "2026-10-27 14:57:13.560671",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10181,6 +10181,13 @@
     "centralCourseOfferTitle": "Unir-me a {course}?",
     "makeMyOwnCourseInstead": "Crear el meu propi curs",
     "suggestMobileSignInSameAccount": "Després, inicia sessió a l'aplicació amb aquest compte.",
+    "botJoinsIn": "El bot Pangea s'uneix en {duration}",
+    "botIsJoining": "El bot Pangea s'està unint…",
+    "playWithBotNowTitle": "Vols jugar amb el bot Pangea ara?",
+    "playWithBotNowMessage": "Encara no s'ha unit ningú. El bot Pangea pot ocupar el seient lliure ara, o pots seguir esperant.",
+    "keepWaiting": "Seguir esperant",
+    "botTookSeatAfterAnHour": "Aquesta sessió ha estat oberta durant una hora, així que el bot Pangea ha ocupat el seient lliure.",
+    "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar.",
     "seatInviteTitle": "Uneix-te a {course}",
     "seatInviteYourCourse": "el teu curs",
     "seatInviteEmailHint": "Fes servir {email} perquè la teva classe et trobi.",

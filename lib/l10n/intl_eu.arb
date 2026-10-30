@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-30 10:21:37.133282",
+    "@@last_modified": "2026-10-27 14:57:14.663799",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10054,6 +10054,13 @@
     "centralCourseOfferTitle": "{course} ikastaroan sartu?",
     "makeMyOwnCourseInstead": "Nire ikastaroa sortu ordez",
     "suggestMobileSignInSameAccount": "Ondoren, hasi saioa aplikazioan kontu honekin.",
+    "botJoinsIn": "Pangea Bot {duration} barruan elkartuko da",
+    "botIsJoining": "Pangea Bot elkartzen ari da…",
+    "playWithBotNowTitle": "Pangea Bot-ekin jokatu orain?",
+    "playWithBotNowMessage": "Oraindik inor ez da elkartu. Pangea Bot-ek libre dagoen lekua har dezake orain, edo zuk itxaroten jarrai dezakezu.",
+    "keepWaiting": "Itxaroten jarraitu",
+    "botTookSeatAfterAnHour": "Saio hau ordubetez egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du.",
+    "botTookSeatAfterADay": "Saio hau egun bat baino gehiagoz egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du. Bidali mezu bat hasteko.",
     "seatInviteTitle": "{course} ikastaroan sartu",
     "seatInviteYourCourse": "zure ikastaroa",
     "seatInviteEmailHint": "Erabili {email} zure klaseak aurki zaitzan.",

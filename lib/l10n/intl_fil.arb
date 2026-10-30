@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-30 10:21:36.178752",
+    "@@last_modified": "2026-10-27 14:57:14.597760",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10911,6 +10911,13 @@
     "centralCourseOfferTitle": "Sumali sa {course}?",
     "makeMyOwnCourseInstead": "Gumawa na lang ng sarili kong kurso",
     "suggestMobileSignInSameAccount": "Pagkatapos, mag-sign in sa app gamit ang account na ito.",
+    "botJoinsIn": "Sasali si Pangea Bot sa loob ng {duration}",
+    "botIsJoining": "Sumasali si Pangea Bot…",
+    "playWithBotNowTitle": "Makipaglaro kay Pangea Bot ngayon?",
+    "playWithBotNowMessage": "Wala pang sumasali. Puwedeng umupo si Pangea Bot sa bakanteng upuan ngayon, o puwede kang maghintay pa.",
+    "keepWaiting": "Maghintay pa",
+    "botTookSeatAfterAnHour": "Isang oras nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan.",
+    "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula.",
     "seatInviteTitle": "Sumali sa {course}",
     "seatInviteYourCourse": "ang iyong kurso",
     "seatInviteEmailHint": "Gamitin ang {email} para mahanap ka ng iyong klase.",

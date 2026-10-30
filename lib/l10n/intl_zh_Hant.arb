@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-30 10:21:53.183996",
+    "@@last_modified": "2026-10-27 14:57:24.391341",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10160,6 +10160,13 @@
     "centralCourseOfferTitle": "加入{course}？",
     "makeMyOwnCourseInstead": "改為建立我的課程",
     "suggestMobileSignInSameAccount": "然後用此帳號登入應用程式。",
+    "botJoinsIn": "Pangea Bot 將在 {duration} 後加入",
+    "botIsJoining": "Pangea Bot 正在加入…",
+    "playWithBotNowTitle": "現在就和 Pangea Bot 一起玩嗎？",
+    "playWithBotNowMessage": "還沒有人加入。Pangea Bot 現在可以加入，或者您可以繼續等待。",
+    "keepWaiting": "繼續等待",
+    "botTookSeatAfterAnHour": "此會話已開放一小時，Pangea Bot 已加入。",
+    "botTookSeatAfterADay": "此會話已開放超過一天，Pangea Bot 已加入。發送訊息即可開始。",
     "seatInviteTitle": "加入 {course}",
     "seatInviteYourCourse": "你的課程",
     "seatInviteEmailHint": "使用 {email} 讓你的班級找到你。",

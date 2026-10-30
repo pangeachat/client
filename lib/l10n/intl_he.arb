@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-30 10:21:37.869120",
+    "@@last_modified": "2026-10-27 14:57:15.481767",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10965,6 +10965,13 @@
     "centralCourseOfferTitle": "להצטרף ל{course}?",
     "makeMyOwnCourseInstead": "ליצור קורס משלי במקום",
     "suggestMobileSignInSameAccount": "לאחר מכן היכנס לאפליקציה עם חשבון זה.",
+    "botJoinsIn": "בוט Pangea מצטרף בעוד {duration}",
+    "botIsJoining": "בוט Pangea מצטרף…",
+    "playWithBotNowTitle": "לשחק עם בוט Pangea עכשיו?",
+    "playWithBotNowMessage": "אף אחד עוד לא הצטרף. בוט Pangea יכול לתפוס את המקום הפנוי עכשיו, או שאתה יכול להמשיך לחכות.",
+    "keepWaiting": "המשך לחכות",
+    "botTookSeatAfterAnHour": "השיחה הזו הייתה פתוחה במשך שעה, אז בוט Pangea תפס את המקום הפנוי.",
+    "botTookSeatAfterADay": "השיחה הזו הייתה פתוחה למעלה מיום, אז בוט Pangea תפס את המקום הפנוי. שלח הודעה כדי להתחיל.",
     "seatInviteTitle": "הצטרף/הצטרפי ל-{course}",
     "seatInviteYourCourse": "הקורס שלך",
     "seatInviteEmailHint": "השתמש/י ב-{email} כדי שהכיתה שלך תמצא אותך.",

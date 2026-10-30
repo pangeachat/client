@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-30 10:21:46.994695",
+    "@@last_modified": "2026-10-27 14:57:20.616682",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10139,6 +10139,13 @@
     "centralCourseOfferTitle": "Dołączyć do kursu {course}?",
     "makeMyOwnCourseInstead": "Zamiast tego stwórz mój własny kurs",
     "suggestMobileSignInSameAccount": "Następnie zaloguj się do aplikacji za pomocą tego konta.",
+    "botJoinsIn": "Pangea Bot dołącza za {duration}",
+    "botIsJoining": "Pangea Bot dołącza…",
+    "playWithBotNowTitle": "Zagrać teraz z Pangea Botem?",
+    "playWithBotNowMessage": "Nikt jeszcze nie dołączył. Pangea Bot może zająć wolne miejsce teraz, albo możesz poczekać.",
+    "keepWaiting": "Czekaj dalej",
+    "botTookSeatAfterAnHour": "Ta sesja była otwarta przez godzinę, więc Pangea Bot zajął wolne miejsce.",
+    "botTookSeatAfterADay": "Ta sesja była otwarta przez ponad dzień, więc Pangea Bot zajął wolne miejsce. Wyślij wiadomość, aby rozpocząć.",
     "seatInviteTitle": "Dołącz do {course}",
     "seatInviteYourCourse": "Twój kurs",
     "seatInviteEmailHint": "Użyj adresu {email}, aby Twoja klasa Cię znalazła.",

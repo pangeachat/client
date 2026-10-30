@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-30 10:21:51.076797",
+    "@@last_modified": "2026-10-27 14:57:21.131641",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10783,6 +10783,13 @@
     "centralCourseOfferTitle": "Te alături la {course}?",
     "makeMyOwnCourseInstead": "Creez propriul curs",
     "suggestMobileSignInSameAccount": "Apoi conectați-vă la aplicație cu acest cont.",
+    "botJoinsIn": "Pangea Bot se alătură în {duration}",
+    "botIsJoining": "Pangea Bot se alătură…",
+    "playWithBotNowTitle": "Vrei să te joci cu Pangea Bot acum?",
+    "playWithBotNowMessage": "Nimeni nu s-a alăturat încă. Pangea Bot poate ocupa locul liber acum, sau poți continua să aștepți.",
+    "keepWaiting": "Continuă să aștepți",
+    "botTookSeatAfterAnHour": "Această sesiune a fost deschisă timp de o oră, așa că Pangea Bot a ocupat locul liber.",
+    "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe.",
     "seatInviteTitle": "Alătură-te la {course}",
     "seatInviteYourCourse": "cursul tău",
     "seatInviteEmailHint": "Folosește {email} pentru ca clasa ta să te găsească.",

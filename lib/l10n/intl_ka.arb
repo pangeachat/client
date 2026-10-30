@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-30 10:21:40.790865",
+    "@@last_modified": "2026-10-27 14:57:17.251683",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10951,6 +10951,13 @@
     "centralCourseOfferTitle": "შეუერთდეთ {course}-ს?",
     "makeMyOwnCourseInstead": "სამაგიეროდ შევქმნა ჩემი კურსი",
     "suggestMobileSignInSameAccount": "შემდეგ შედით აპლიკაციაში ამ ანგარიშით.",
+    "botJoinsIn": "Pangea Bot შემოგიერთდებათ {duration}-ში",
+    "botIsJoining": "Pangea Bot გიერთდებათ…",
+    "playWithBotNowTitle": "ითამაშებთ Pangea Bot-თან ახლავე?",
+    "playWithBotNowMessage": "ჯერ არავინ შემოგვიერთდა. Pangea Bot-ს შეუძლია დაიკავოს თავისუფალი ადგილი ახლავე, ან შეგიძლიათ გააგრძელოთ ლოდინი.",
+    "keepWaiting": "გააგრძელეთ ლოდინი",
+    "botTookSeatAfterAnHour": "ეს სესია ერთი საათის განმავლობაში ღია იყო, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი.",
+    "botTookSeatAfterADay": "ეს სესია ერთ დღეზე მეტხანს იყო ღია, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი. გასააქტიურებლად გაგზავნეთ შეტყობინება.",
     "seatInviteTitle": "შემოუერთდით {course}-ს",
     "seatInviteYourCourse": "თქვენს კურსს",
     "seatInviteEmailHint": "გამოიყენეთ {email}, რათა თქვენმა კლასმა გიპოვოთ.",

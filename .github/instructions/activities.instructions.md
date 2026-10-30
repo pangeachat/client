@@ -32,10 +32,11 @@ A session's row in Chats — and in a course page's Chats section, which uses th
 When a teacher opens a student's session from the admin dashboard, the dashboard joins the teacher to that session room so they can read it. The teacher takes no part in that conversation, so the room stays out of every chat list and unread badge, the same way an archived activity does ([#9364](https://github.com/pangeachat/client/issues/9364)).
 
 - **The dashboard keeps the list.** It records each room it joined for review in the teacher's `pangea.admin_review` account data, as a `room_ids` list. The record lives on the teacher's account rather than in the room, because a profile change rewrites the teacher's membership in every room and would erase a mark kept there.
+- **New sessions already include the course's admins.** When a session is first shared into a course, the homeserver joins that course's admins and lists and mutes the room the same way, so a teacher can read any new session without a dashboard join. Older sessions are still joined from the dashboard when opened ([synapse-pangea-chat#315](https://github.com/pangeachat/synapse-pangea-chat/issues/315)).
 - **Taking a role ends the review.** A listed room shows again once the teacher takes a role in the session, because the teacher is then a participant.
 - **A direct link still opens it.** The room is hidden from the lists, but a link to it still opens it, so the dashboard's Open chat link keeps working.
 - **Leaving a course leaves these rooms too.** Leaving a course keeps only the teacher's analytics rooms and archived activities; a review room is left with the course.
-- **Muting these rooms, and later leaving them, is the dashboard's job, not the client's.**
+- **Muting these rooms, and later leaving them, is the dashboard's or the homeserver's job, not the client's.**
 
 ## The start page mirrors the room
 
@@ -46,6 +47,9 @@ A few steps are taken for the learner, to keep them out of choices that don't ma
 - **Joining from the join list with exactly one open role** claims that role straight away and lands the learner in the session. With two or more open roles the role picker stays; if someone takes the seat first, the session opens for viewing instead.
 - **Play with Pangea Bot** adds the bot as soon as the new session exists, after the learner picks a role. If the bot fails to join, the waiting room's bot button re-invites it.
 - **A session viewed from the join list** opens inside the activity with a back arrow to the list; backing out without taking a role leaves the room, so looking doesn't leave the learner a member.
+- **Opening a session from its 30-minute notice** (its push, or Open on the notice in the bot DM) offers Play with Pangea Bot once, in a dialog, while the bot can still be added. Opening the session any other way adds nothing; the waiting room's bot button is always there.
+
+**When the bot took the seat on its own.** A session whose last seat stays open for an hour gets the bot (the org activities doc's rule). Where the bot joined, the chat shows a note: the session was open for an hour, so Pangea Bot took the open seat. For a session the bot filled after more than a day, the note says so and adds that the bot is waiting for a message, since it sent none. A marker a learner wrote, by tapping Play with Pangea Bot, shows nothing.
 
 **Which course a session belongs to.** A session is shared into every joined course that lists its activity, so it has no single home course. For now the waiting room's online count, **Ping** and **Invite** all use the course the session was started from (`Room.sourceCourse`), and the waiting room names that course so a learner browsing another course can tell. Which course a shared session should belong to is still being discussed ([discussion #9328](https://github.com/pangeachat/client/discussions/9328)).
 
