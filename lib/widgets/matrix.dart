@@ -994,6 +994,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     activeCall.addListener(_guardLeaving);
     callAudioWaitingToSend.addListener(_guardLeaving);
+    _guardLeaving();
     initMatrix();
     // #Pangea
     Sentry.configureScope(
@@ -1536,6 +1537,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     WidgetsBinding.instance.removeObserver(this);
     activeCall.removeListener(_guardLeaving);
     callAudioWaitingToSend.removeListener(_guardLeaving);
+    setCallLeaveGuard(false);
 
     // #Pangea
     // A call must never outlive the account UI that owns it. Disposing the

@@ -72,7 +72,10 @@ void main() {
   });
 
   test('a tab killed before its WAV was written leaves nothing', () async {
-    final item = await _item(wav);
+    final item = await _item(
+      wav,
+      now: DateTime.now().subtract(const Duration(minutes: 2)),
+    );
     await rows.putRecord(
       item.audioTxnId,
       jsonEncode(item.withStatus(PendingCallAudio.persisting).json),
@@ -142,7 +145,7 @@ void main() {
     expect(rows.records, isEmpty);
   });
 
-  test('recovery leaves alone what this process is still writing', () async {
+  test('recovery leaves alone what another tab is still writing', () async {
     final item = await _item(wav);
     final slow = _SlowRows();
     final writing = RowsCallAudioPendingStore(slow);

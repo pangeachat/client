@@ -513,12 +513,11 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
 
   Future<void> _readStillSending() async {
     final store = widget.pendingStore ?? pendingCallAudioStoreForPlatform();
-    final List<PendingCallAudio> items;
+    var items = const <PendingCallAudio>[];
     try {
       items = await store.recover();
     } catch (e, s) {
       Logs().w('Could not read the call recordings waiting to send', e, s);
-      return;
     }
     if (!mounted) return;
     final sending =

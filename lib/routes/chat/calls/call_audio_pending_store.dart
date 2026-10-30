@@ -201,9 +201,10 @@ class RowsCallAudioPendingStore implements CallAudioPendingStore {
 
   RowsCallAudioPendingStore(this._rows);
 
-  /// Being written by this process right now, which [recover] must not take
-  /// for what a crash left.
-  final Set<String> _writing = {};
+  /// How long a record may say `persisting` before [recover] takes it for what
+  /// a dead tab left. Another open tab may be writing it right now: the
+  /// database is shared, and a write takes moments.
+  static const _writeWindow = Duration(minutes: 1);
 
   Future<void> _put(PendingCallAudio item) =>
       _rows.putRecord(item.audioTxnId, jsonEncode(item.json));
@@ -211,7 +212,6 @@ class RowsCallAudioPendingStore implements CallAudioPendingStore {
   @override
   Future<bool> persist(PendingCallAudio item, Uint8List wav) async {
     final id = item.audioTxnId;
-    _writing.add(id);
     try {
       await _put(item.withStatus(PendingCallAudio.persisting));
       await _rows.putWav(id, wav);
@@ -221,8 +221,6 @@ class RowsCallAudioPendingStore implements CallAudioPendingStore {
     } catch (e, s) {
       Logs().w('Could not keep the call recording in this browser', e, s);
       return false;
-    } finally {
-      _writing.remove(id);
     }
   }
 
@@ -262,7 +260,6 @@ class RowsCallAudioPendingStore implements CallAudioPendingStore {
     final items = <PendingCallAudio>[];
     final now = DateTime.now();
     for (final id in ids) {
-      if (_writing.contains(id)) continue;
       try {
         final raw = await _rows.getRecord(id);
         final json = raw == null ? null : jsonDecode(raw);
@@ -282,6 +279,10 @@ class RowsCallAudioPendingStore implements CallAudioPendingStore {
           continue;
         }
         if (!await _complete(item)) {
+          if (item.status == PendingCallAudio.persisting &&
+              now.difference(item.createdAt) < _writeWindow) {
+            continue;
+          }
           _reportLost('its recording was incomplete', id);
           await _rows.remove(id);
           continue;
