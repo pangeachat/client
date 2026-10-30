@@ -3,10 +3,11 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:async/async.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:matrix/matrix.dart';
+import 'package:matrix/matrix.dart' hide Result;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -16,8 +17,12 @@ import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_outbox.dart';
+import 'package:fluffychat/routes/chat/calls/recording_transcription.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 
 /// Covers what CallService decides before any network or SDK object is involved:
 /// whether calling is offered at all, and that constructing the service does not
@@ -3846,6 +3851,45 @@ void main() {
       expect(refreshed, 1, reason: 'a fresh token is left alone');
     });
 
+    // One way into speech-to-text, so no caller can miss the token refresh: the
+    // transcript screen had its own copy and did (#3379).
+    test('call speech-to-text runs on a token that will outlast it', () async {
+      var refreshed = 0;
+      final client = _ExpiringClient(
+        expiresIn: const Duration(seconds: 90),
+        database: (await bareClient()).database,
+        onRefresh: () => refreshed++,
+      );
+      final transcribe = callAudioTranscriberFor(
+        client,
+        speechToText: (_) async =>
+            Result.value(SpeechToTextResponseModel(results: const [])),
+      );
+      await transcribe(_sttRequest());
+      expect(refreshed, 1);
+    });
+
+    test('a failed speech-to-text is a throw, as the sink expects', () async {
+      final transcribe = callAudioTranscriberFor(
+        await bareClient(),
+        speechToText: (_) async => Result.error(StateError('no')),
+      );
+      expect(transcribe(_sttRequest()), throwsStateError);
+    });
+
+    test('nothing reaches call speech-to-text around that one way', () {
+      for (final path in [
+        'lib/routes/chat/calls/transcript_view.dart',
+        'lib/widgets/matrix.dart',
+      ]) {
+        expect(
+          File(path).readAsStringSync().contains('SpeechToTextRepo.instance'),
+          isFalse,
+          reason: path,
+        );
+      }
+    });
+
     // A parked half used to wait for a launch or a foreground, neither of which
     // comes to a page that simply stays open (#3379).
     test('tries again on a later sync, so a parked half recovers', () async {
@@ -3867,6 +3911,16 @@ void main() {
     });
   });
 }
+
+SpeechToTextRequestModel _sttRequest() => SpeechToTextRequestModel(
+  audioContent: Uint8List(2),
+  config: SpeechToTextAudioConfigModel(
+    encoding: AudioEncodingEnum.linear16,
+    sampleRateHertz: 16000,
+    userL1: 'en',
+    userL2: 'es',
+  ),
+);
 
 /// A client whose token runs out when a test says, uploading nothing.
 class _ExpiringClient extends Client {

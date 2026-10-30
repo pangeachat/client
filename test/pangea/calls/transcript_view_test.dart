@@ -6015,6 +6015,51 @@ void main() {
         });
       }
 
+      // Partial words and a recording: if filling it in comes to nothing, the
+      // reader can still ask, in either shape of the screen.
+      for (final placed in [true, false]) {
+        final shape = placed ? 'timeline' : 'per speaker';
+        testWidgets('$shape: a half with partial words still offers Transcribe '
+            'once the automatic attempt has failed', (tester) async {
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              half(
+                _me,
+                texts: const ['hola'],
+                atMs: placed ? [_callStart] : null,
+              ),
+              half(
+                _peer,
+                texts: const ['que'],
+                atMs: placed ? [_callStart + 2000] : null,
+                captured: 2,
+                transcribed: 1,
+                lost: 1,
+              ),
+              audioEvent(_peer),
+            ]),
+            transcriber: buildFakeTranscriber(
+              resolvePeerLanguages: (_) async => (l1: null, l2: null),
+              post:
+                  ({
+                    required callKey,
+                    required spokenBy,
+                    required sourceAudioEventId,
+                    required deviceId,
+                    required langCode,
+                    required clockAnchor,
+                    required segments,
+                  }) async {},
+            ),
+          );
+
+          expect(find.text('Transcribe'), findsOneWidget);
+        });
+      }
+
       testWidgets('timeline: an absent peer half offers Transcribe', (
         tester,
       ) async {

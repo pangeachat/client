@@ -23,6 +23,7 @@ import 'package:fluffychat/routes/chat/calls/call_half_in_flight.dart';
 import 'package:fluffychat/routes/chat/calls/call_playback_controller.dart';
 import 'package:fluffychat/routes/chat/calls/call_recordings_load.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
+import 'package:fluffychat/routes/chat/calls/recording_transcription.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_provenance.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
@@ -30,7 +31,6 @@ import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_tokens.dart';
 import 'package:fluffychat/routes/chat/calls/turn_timeline.dart';
 import 'package:fluffychat/routes/chat/calls/whole_call_transcriber.dart';
-import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/utils/multi_platform_audio_player.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -545,18 +545,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
 
   WholeCallTranscriber _buildTranscriber() => WholeCallTranscriber.forCall(
     room: widget.room,
-    // The repo answers with a Result; the sink's contract is a value or a
-    // throw, exactly as `matrix.dart`'s own construction of this seam reads --
-    // reused verbatim so the on-demand path is transcribed by the identical
-    // route the call-end auto-producer already uses.
-    transcribe: (request) async {
-      final result = await SpeechToTextRepo.instance.get(request);
-      final value = result.asValue;
-      if (value == null) {
-        throw result.asError?.error ?? StateError('speech-to-text failed');
-      }
-      return value.value;
-    },
+    transcribe: callAudioTranscriberFor(widget.room.client),
     // Read at run time on every entry, never cached -- the root principle
     // that entitlement is checked at READ time (spec section 3).
     isSubscribed: () => MatrixState
@@ -3046,7 +3035,18 @@ class _HalfSection extends StatelessWidget {
 
       // Said after the words, not instead of them: what we have is worth
       // reading, and the caveat is about what may be missing from it.
-      if (half.state == HalfState.incomplete) ...[
+      if (half.waitsOnItsRecording && hasRecording) ...[
+        const SizedBox(height: 4),
+        ..._onDemandOffer(
+          note: l10n.callTranscriptPartial(name),
+          name: name,
+          l10n: l10n,
+          hasRecording: hasRecording,
+          inFlight: onDemandInFlight,
+          unavailable: onDemandUnavailable,
+          onTranscribe: onTranscribe,
+        ),
+      ] else if (half.state == HalfState.incomplete) ...[
         const SizedBox(height: 4),
         _Caveat(text: l10n.callTranscriptPartial(name)),
       ],
@@ -3057,8 +3057,8 @@ class _HalfSection extends StatelessWidget {
 /// Task 3's (#8792) on-demand offer for a half nobody has transcribed from its
 /// recording: [note], then the Transcribe button when [hasRecording].
 ///
-/// Shared by an absent half and by one emptied only because its writer had no
-/// subscription, in both shapes of the screen, so the gating cannot drift
+/// Shared by an absent half and by one missing only chunks that never came
+/// back, in both shapes of the screen, so the gating cannot drift
 /// between them. A terminal note replaces the button once the audio proved
 /// unusable ([unavailable]), and a loading row replaces it while a request
 /// runs ([inFlight]) -- never a stuck button.

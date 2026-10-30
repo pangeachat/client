@@ -50,10 +50,8 @@ import 'package:fluffychat/routes/chat/calls/call_ringing_ask.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
 import 'package:fluffychat/routes/chat/calls/ios_call_screen.dart';
+import 'package:fluffychat/routes/chat/calls/recording_transcription.dart';
 import 'package:fluffychat/routes/chat/calls/whole_call_transcriber.dart';
-import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
-import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
-import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/utils/pending_reports.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -286,29 +284,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     unawaited(
       WholeCallTranscriber.forCall(
         room: room,
-        transcribe: _transcribeCallAudio,
+        transcribe: callAudioTranscriberFor(room.client),
         isSubscribed: _isSubscribed,
         peerLanguages: _peerCallLanguages,
       ).transcribeAtCallEnd(callKey).catchError((Object e, StackTrace s) {
         Logs().w('Could not fill in a call transcript', e, s);
       }),
     );
-  }
-
-  // The repo answers with a Result; the sink's contract is a value or a throw,
-  // and it already treats a throw as "this chunk's words are lost".
-  Future<SpeechToTextResponseModel> _transcribeCallAudio(
-    SpeechToTextRequestModel request,
-  ) async {
-    // The server reads the token when the whole body has arrived, and on a slow
-    // link that is longer than the minute sync leaves it.
-    await client.ensureNotSoftLoggedOut(const Duration(minutes: 2));
-    final result = await SpeechToTextRepo.instance.get(request);
-    final value = result.asValue;
-    if (value == null) {
-      throw result.asError?.error ?? StateError('speech-to-text failed');
-    }
-    return value.value;
   }
 
   bool _isSubscribed() =>
@@ -482,7 +464,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         mute: L10n.of(context).callMute,
         channel: L10n.of(context).callOngoingChannel,
       ),
-      transcribe: _transcribeCallAudio,
+      transcribe: callAudioTranscriberFor(room.client),
       userL1: languages.l1 ?? LanguageKeys.unknownLanguage,
       userL2: languages.l2 ?? LanguageKeys.unknownLanguage,
       // The whole-call transcriber's controller seams (#8792), supplied here

@@ -13,10 +13,12 @@ library;
 import 'dart:math';
 import 'dart:typed_data';
 
-import 'package:matrix/matrix.dart';
+import 'package:async/async.dart';
+import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/wav_writer.dart';
 
@@ -24,6 +26,25 @@ import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart'
     show ChunkTranscriber;
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart'
     show SpeechToTextResponseModel, WordTiming;
+
+/// How [client]'s calls reach speech-to-text, for every caller there is: the one
+/// place that keeps a slow request's token alive. The server reads the token when
+/// the whole body has arrived, and on a slow link that is longer than the minute
+/// sync leaves it. The repo answers with a Result; the sink's contract is a value
+/// or a throw.
+ChunkTranscriber callAudioTranscriberFor(
+  Client client, {
+  Future<Result<SpeechToTextResponseModel>> Function(SpeechToTextRequestModel)?
+  speechToText,
+}) => (request) async {
+  await client.ensureNotSoftLoggedOut(const Duration(minutes: 2));
+  final result = await (speechToText ?? SpeechToTextRepo.instance.get)(request);
+  final value = result.asValue;
+  if (value == null) {
+    throw result.asError?.error ?? StateError('speech-to-text failed');
+  }
+  return value.value;
+};
 
 /// The rate the STT copy of a recording is downsampled to. 16 kHz mono is what
 /// speech-to-text providers accept natively (see `captureSampleRate` in
