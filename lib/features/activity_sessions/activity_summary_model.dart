@@ -1,8 +1,9 @@
 import 'package:fluffychat/features/activity_sessions/activity_summary_analytics_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
 
-/// One `pangea.activity_summary` summary slot: the bot's `canonical` slot, or a
-/// per-L1 / `default` slot an older client wrote.
+/// One `pangea.activity_summary` summary slot: a learner's `card:` slot or the
+/// `canonical` slot, both the bot's, or a per-L1 / `default` slot an older
+/// client wrote.
 class ActivitySummaryModel {
   final ActivitySummaryResponseModel? summary;
   final DateTime? requestedAt;

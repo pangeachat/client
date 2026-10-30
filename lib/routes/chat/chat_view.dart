@@ -464,7 +464,9 @@ class ChatView extends StatelessWidget {
                         // finished-status bar; manages its own visibility
                         // (finished role, not yet rated, not dismissed).
                         ActivityRatingCard(room: controller.room),
-                        ActivityFinishedStatusMessage(controller: controller),
+                        ActivityFinishedStatusMessage(
+                          activityController: controller.activityController,
+                        ),
                       ],
                       // Pangea#
                     ],

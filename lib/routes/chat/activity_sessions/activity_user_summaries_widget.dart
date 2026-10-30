@@ -14,6 +14,7 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_response_
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_summary_unsubscribed_card.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -27,7 +28,21 @@ class ActivityUserSummaries extends StatelessWidget {
 
   const ActivityUserSummaries({super.key, required this.controller});
 
-  Room get room => controller.room;
+  @override
+  Widget build(BuildContext context) =>
+      ActivitySummaryCards(activityController: controller.activityController);
+}
+
+/// The activity's summary in the chat: one card per learner who has finished.
+/// A learner sees their own card as soon as they finish, and the others' join
+/// as each of them finishes (org doc activity-summary.instructions.md, "The
+/// experience").
+class ActivitySummaryCards extends StatelessWidget {
+  final ActivityChatController activityController;
+
+  const ActivitySummaryCards({super.key, required this.activityController});
+
+  Room get room => activityController.room;
 
   /// How many picker circles the subscription gate draws: one per learner who
   /// actually took a role, falling back to the plan's designed role count
@@ -50,51 +65,62 @@ class ActivityUserSummaries extends StatelessWidget {
         .pangeaController
         .subscriptionController
         .showSubscriptionGatedContent) {
-      return room.isActivityFinished
+      return room.hasCompletedRole || room.isActivityFinished
           ? ActivitySummaryUnsubscribedCard(roleCount: _skeletonRoleCount)
           : const SizedBox.shrink();
     }
 
     return ValueListenableBuilder(
-      valueListenable: controller.activityController.summaryView,
+      valueListenable: activityController.summaryView,
       builder: (context, view, _) {
-        // Generation runs in the chat, in the same semi-transparent box the
-        // summary will fill, so the finished-status bar doesn't grow and
-        // shove the rating card around while we wait (#8018).
-        if (view.isLoading) return const _SummaryLoading();
-        final summary = view.summary;
-        if (summary == null) return const SizedBox();
-        return _SummaryCard(
-          summary: summary,
-          updateFailed: view.updateFailed,
-          canRequest: view.canRequest,
-          controller: controller,
+        if (view.cards.isEmpty) return const SizedBox();
+        return ValueListenableBuilder(
+          valueListenable: activityController.highlightedRole,
+          builder: (context, highlightedRole, _) {
+            final selected = view.cardFor(
+              selectedParticipantId(
+                participantIds: [for (final card in view.cards) card.userId],
+                highlightedUserId: highlightedRole?.userId,
+                ownUserId: room.client.userID,
+              ),
+            )!;
+            return _SummaryBlock(
+              view: view,
+              selected: selected,
+              activityController: activityController,
+            );
+          },
         );
       },
     );
   }
 }
 
-class _SummaryCard extends StatelessWidget {
-  final ActivitySummaryResponseModel summary;
+/// The summary's box: the session as a whole above the rule, the picked
+/// learner's card below it.
+class _SummaryBlock extends StatelessWidget {
+  final ActivitySummaryView view;
+  final ActivitySummaryCardView selected;
+  final ActivityChatController activityController;
 
-  /// A regeneration failed, so this is the summary the learner already had.
-  final bool updateFailed;
-
-  /// Feedback asks the bot to regenerate, so it shows only while the bot is
-  /// still in the room to answer.
-  final bool canRequest;
-  final ChatController controller;
-
-  const _SummaryCard({
-    required this.summary,
-    required this.updateFailed,
-    required this.canRequest,
-    required this.controller,
+  const _SummaryBlock({
+    required this.view,
+    required this.selected,
+    required this.activityController,
   });
 
   @override
   Widget build(BuildContext context) {
+    final room = activityController.room;
+    final groupSummary = view.groupSummary;
+    final header = [
+      // Only the whole room finishing is "all finished"; until then the
+      // finished-status bar says the learner is waiting for the rest.
+      if (room.isActivityFinished)
+        Text(L10n.of(context).activityFinishedMessage),
+      if (groupSummary != null) Text(groupSummary, textAlign: TextAlign.center),
+    ];
+
     return Center(
       child: Stack(
         children: [
@@ -114,38 +140,40 @@ class _SummaryCard extends StatelessWidget {
               spacing: 12.0,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Center(
-                  child: Column(
-                    spacing: 6.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(L10n.of(context).activityFinishedMessage),
-                      Text(summary.summary, textAlign: TextAlign.center),
-                      if (updateFailed)
-                        Text(
-                          L10n.of(context).activitySummaryUpdateFailed,
-                          style: const TextStyle(fontStyle: FontStyle.italic),
-                          textAlign: TextAlign.center,
-                        ),
-                    ],
+                if (header.isNotEmpty) ...[
+                  Center(
+                    child: Column(
+                      spacing: 6.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: header,
+                    ),
                   ),
-                ),
+                  // Everything below the rule is about the picked learner —
+                  // their stars and their card, swapping together. Above it is
+                  // the session as a whole, which no pick changes (#8678).
+                  const Divider(height: 1),
+                ],
                 ActivityParticipantSummaries(
-                  summary: summary,
-                  controller: controller,
+                  view: view,
+                  selected: selected,
+                  activityController: activityController,
                 ),
               ],
             ),
           ),
-          if (canRequest)
+          // Feedback asks the bot to remake the picked card, so it shows only
+          // while the bot is still in the room to answer.
+          if (selected.canRequest && selected.participant != null)
             Positioned(
               right: 18.0,
               top: 18.0,
               child: IconButton(
                 tooltip: L10n.of(context).feedbackButton,
                 icon: const Icon(Icons.flag_outlined),
-                onPressed: () => controller.activityController
-                    .submitSummaryFeedback(context),
+                onPressed: () => activityController.submitSummaryFeedback(
+                  context,
+                  userId: selected.userId,
+                ),
               ),
             ),
         ],
@@ -154,52 +182,77 @@ class _SummaryCard extends StatelessWidget {
   }
 }
 
-/// Placeholder shown where the summary will land while it is being generated.
+/// Placeholder shown where a card will land while it is being generated.
 class _SummaryLoading extends StatelessWidget {
   const _SummaryLoading();
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        padding: const EdgeInsets.all(16.0),
-        margin: const EdgeInsets.all(16.0),
-        constraints: const BoxConstraints(maxWidth: 400.0),
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface.withAlpha(128),
-          borderRadius: BorderRadius.circular(12.0),
+    return Column(
+      spacing: 12.0,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          L10n.of(context).generatingSummary,
+          style: const TextStyle(fontStyle: FontStyle.italic),
+          textAlign: TextAlign.center,
         ),
-        child: Column(
-          spacing: 12.0,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              L10n.of(context).generatingSummary,
-              style: const TextStyle(fontStyle: FontStyle.italic),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(
-              height: 36.0,
-              width: 36.0,
-              child: CircularProgressIndicator(),
-            ),
-          ],
+        const SizedBox(
+          height: 36.0,
+          width: 36.0,
+          child: CircularProgressIndicator(),
         ),
-      ),
+      ],
     );
   }
 }
 
-/// Whose feedback the summary shows: whoever the learner picked, else their
-/// own, else the first participant so the card is never empty (#8289).
-ParticipantSummaryModel selectedParticipantSummary({
-  required List<ParticipantSummaryModel> summaries,
+/// A card failed. The retry asks the bot, so it shows only while the bot is
+/// still in the room to answer.
+class _SummaryError extends StatelessWidget {
+  final VoidCallback? onRetry;
+
+  const _SummaryError({required this.onRetry});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: 8,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.school_outlined, size: 24),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Text(
+                L10n.of(context).activitySummaryError,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+        if (onRetry != null)
+          TextButton(
+            onPressed: onRetry,
+            child: Text(L10n.of(context).requestSummaries),
+          ),
+      ],
+    );
+  }
+}
+
+/// Whose card the summary shows: whoever the learner picked, else their own,
+/// else the first so the summary is never empty (#8289).
+String selectedParticipantId({
+  required List<String> participantIds,
   required String? highlightedUserId,
   required String? ownUserId,
 }) =>
-    summaries.firstWhereOrNull((p) => p.participantId == highlightedUserId) ??
-    summaries.firstWhereOrNull((p) => p.participantId == ownUserId) ??
-    summaries.first;
+    participantIds.firstWhereOrNull((id) => id == highlightedUserId) ??
+    participantIds.firstWhereOrNull((id) => id == ownUserId) ??
+    participantIds.first;
 
 /// The plan role held by the participant whose card is up — the source of the
 /// goal list under the picker. Null when the room holds no role for them, or
@@ -218,126 +271,110 @@ ActivityRole? selectedParticipantRole({
   return planRoles?[assigned.id];
 }
 
-/// The feedback body of the summary: one participant's card at a time — the
-/// viewer's own by default — with a picker for everyone else. A single card is
-/// what keeps the section free of horizontal scrolling (#8289).
+/// The cards under the rule: one learner's at a time — the viewer's own by
+/// default — with a picker for everyone else. A single card is what keeps the
+/// section free of horizontal scrolling (#8289).
 class ActivityParticipantSummaries extends StatelessWidget {
-  final ActivitySummaryResponseModel summary;
-  final ChatController controller;
+  final ActivitySummaryView view;
+  final ActivitySummaryCardView selected;
+  final ActivityChatController activityController;
 
   const ActivityParticipantSummaries({
     super.key,
-    required this.summary,
-    required this.controller,
+    required this.view,
+    required this.selected,
+    required this.activityController,
   });
-
-  Room get room => controller.room;
-
-  /// The summaries the room still holds a role for, in the plan's role order.
-  List<ParticipantSummaryModel> get _roleSummaries {
-    final assignedRoles = room.assignedRoles?.values ?? const [];
-    return summary.participants
-        .where(
-          (p) => assignedRoles.any((role) => role.userId == p.participantId),
-        )
-        .toList();
-  }
 
   @override
   Widget build(BuildContext context) {
-    // Reference plan may not be hydrated yet; the surface rebuilds once it
-    // lands (ActivityPlanRepo).
-    if (room.activityPlan == null) return const SizedBox.shrink();
+    final room = activityController.room;
+    final selectedRole = selectedParticipantRole(
+      planRoles: room.activityPlan?.roles,
+      assignedRoles: room.assignedRoles?.values ?? const [],
+      participantId: selected.userId,
+    );
+    final awarded = room.orchestratorAwardedGoals;
+    final participant = selected.participant;
 
-    final roleSummaries = _roleSummaries;
-    if (roleSummaries.isEmpty) return const SizedBox();
-
-    return ValueListenableBuilder(
-      valueListenable: controller.activityController.highlightedRole,
-      builder: (context, highlightedRole, _) {
-        final selected = selectedParticipantSummary(
-          summaries: roleSummaries,
-          highlightedUserId: highlightedRole?.userId,
-          ownUserId: room.client.userID,
-        );
-        final selectedRole = selectedParticipantRole(
-          planRoles: room.activityPlan?.roles,
-          assignedRoles: room.assignedRoles?.values ?? const [],
-          participantId: selected.participantId,
-        );
-        final awarded = room.orchestratorAwardedGoals;
-        return Column(
-          spacing: 12.0,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Everything below the rule is about the picked participant —
-            // their stars and their feedback, swapping together. Above it is
-            // the session as a whole, which no pick changes (#8678).
-            const Divider(height: 1),
-            if (roleSummaries.length > 1)
-              Wrap(
-                spacing: 8.0,
-                runSpacing: 8.0,
-                alignment: WrapAlignment.center,
-                children: [
-                  for (final participant in roleSummaries)
-                    _ParticipantPickerTile(
-                      participant: participant,
-                      controller: controller,
-                      selected:
-                          participant.participantId == selected.participantId,
-                    ),
-                ],
-              ),
-            // The goal header steps aside once the summary lands, so the
-            // stars come along with it (#8289) — and they follow the picker,
-            // so a learner reading somebody else's card sees that person's
-            // goals, not their own (#8672).
-            if (selectedRole != null && selectedRole.allGoals.isNotEmpty)
-              Column(
-                spacing: 8.0,
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  for (final goal in selectedRole.allGoals)
-                    GoalStatusWidget(
-                      goal: goal,
-                      complete: awarded.isGoalCompletedForRole(
-                        selectedRole.id,
-                        goal.id,
-                        goalSlug: goal.goalSlug,
-                      ),
-                    ),
-                ],
-              ),
-            _ParticipantSummaryCard(
-              participant: selected,
-              controller: controller,
+    return Column(
+      spacing: 12.0,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (view.cards.length > 1)
+          Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
+            alignment: WrapAlignment.center,
+            children: [
+              for (final card in view.cards)
+                _ParticipantPickerTile(
+                  userId: card.userId,
+                  activityController: activityController,
+                  selected: card.userId == selected.userId,
+                ),
+            ],
+          ),
+        // The goal header steps aside once the summary lands, so the stars
+        // come along with it (#8289) — and they follow the picker, so a
+        // learner reading somebody else's card sees that person's goals, not
+        // their own (#8672).
+        if (selectedRole != null && selectedRole.allGoals.isNotEmpty)
+          Column(
+            spacing: 8.0,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (final goal in selectedRole.allGoals)
+                GoalStatusWidget(
+                  goal: goal,
+                  complete: awarded.isGoalCompletedForRole(
+                    selectedRole.id,
+                    goal.id,
+                    goalSlug: goal.goalSlug,
+                  ),
+                ),
+            ],
+          ),
+        if (selected.isLoading)
+          const _SummaryLoading()
+        else if (participant != null) ...[
+          if (selected.updateFailed)
+            Text(
+              L10n.of(context).activitySummaryUpdateFailed,
+              style: const TextStyle(fontStyle: FontStyle.italic),
+              textAlign: TextAlign.center,
             ),
-          ],
-        );
-      },
+          _ParticipantSummaryCard(participant: participant, room: room),
+        ] else
+          _SummaryError(
+            onRetry: selected.canRequest
+                ? () =>
+                      activityController.requestSummary(userId: selected.userId)
+                : null,
+          ),
+      ],
     );
   }
 }
 
 /// One face in the picker row. Tapping it swaps the card below.
 class _ParticipantPickerTile extends StatelessWidget {
-  final ParticipantSummaryModel participant;
-  final ChatController controller;
+  final String userId;
+  final ActivityChatController activityController;
   final bool selected;
 
   const _ParticipantPickerTile({
-    required this.participant,
-    required this.controller,
+    required this.userId,
+    required this.activityController,
     required this.selected,
   });
 
   @override
   Widget build(BuildContext context) {
-    final room = controller.room;
+    final room = activityController.room;
     final role = room.assignedRoles?.values.firstWhereOrNull(
-      (role) => role.userId == participant.participantId,
+      (role) => role.userId == userId,
     );
     if (role == null) return const SizedBox.shrink();
 
@@ -353,13 +390,11 @@ class _ParticipantPickerTile extends StatelessWidget {
       width: 100.0,
       child: ActivityParticipantIndicator(
         name: roleName,
-        userId: participant.participantId,
-        user: room.getParticipants().firstWhereOrNull(
-          (u) => u.id == participant.participantId,
-        ),
+        userId: userId,
+        user: room.getParticipants().firstWhereOrNull((u) => u.id == userId),
         borderRadius: BorderRadius.circular(4),
         selected: selected,
-        onTap: () => controller.activityController.highlightRole(role),
+        onTap: () => activityController.highlightRole(role),
         room: room,
       ),
     );
@@ -370,16 +405,15 @@ class _ParticipantPickerTile extends StatelessWidget {
 /// scrolling inside a fixed height (#8289).
 class _ParticipantSummaryCard extends StatelessWidget {
   final ParticipantSummaryModel participant;
-  final ChatController controller;
+  final Room room;
 
   const _ParticipantSummaryCard({
     required this.participant,
-    required this.controller,
+    required this.room,
   });
 
   @override
   Widget build(BuildContext context) {
-    final room = controller.room;
     final user = room.getParticipants().firstWhereOrNull(
       (u) => u.id == participant.participantId,
     );
@@ -390,7 +424,11 @@ class _ParticipantSummaryCard extends StatelessWidget {
         user?.localizedDisplayname(L10n.of(context)) ??
         participant.participantId.localpart ??
         participant.participantId;
-    final superlatives = room.activitySummaryAnalytics?.generateSuperlatives();
+    // A "1st" ranks the learner against the room, which only means something
+    // once everyone's use is in.
+    final superlatives = room.isActivityFinished
+        ? room.activitySummaryAnalytics?.generateSuperlatives()
+        : null;
 
     return Container(
       width: double.infinity,

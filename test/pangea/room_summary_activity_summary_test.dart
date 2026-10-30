@@ -9,9 +9,10 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_room_exte
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
-/// A session's preview reads the same summary slots, in the same order, as
-/// the open room: the bot's `canonical` slot, else one an older client wrote,
-/// with the analytics from their own slot (#9199).
+/// A session's preview reads the same room-wide summary slots, in the same
+/// order, as the open room: the bot's `canonical` slot, else one an older
+/// client wrote, with each learner's analytics from their own slot, else the
+/// room's (#9199, #795).
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -86,5 +87,23 @@ void main() {
       ActivitySummaryStateKeys.analytics: slot(learner, uses('leche')),
     });
     expect(lemmaOf(ownSlot), 'leche');
+
+    final learnerSlot = parse({
+      ActivitySummaryStateKeys.canonical: slot(bot, summary('')),
+      ActivitySummaryStateKeys.analytics: slot(learner, uses('leche')),
+      ActivitySummaryStateKeys.learnerAnalytics(learner): slot(
+        learner,
+        uses('pan'),
+      ),
+    });
+    expect(lemmaOf(learnerSlot), 'pan');
+
+    final forged = parse({
+      ActivitySummaryStateKeys.learnerAnalytics(learner): slot(
+        bot,
+        uses('forged'),
+      ),
+    });
+    expect(lemmaOf(forged), isNull);
   });
 }

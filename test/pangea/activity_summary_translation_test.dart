@@ -32,15 +32,17 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_activity_chat_pangea_controller.dart';
 import 'get_test_client.dart';
 
-/// The bot writes the summary in the activity's language of instruction. A
-/// viewer whose first language differs sees it translated: the loading state
-/// stays up while the translation is fetched, and a failed translation leaves
-/// the summary as written (#9199; client activities.instructions.md).
+/// The bot writes each card in the activity's language of instruction. A
+/// viewer whose first language differs sees every card translated from that
+/// card's own stored row: the card stays loading while its translation is
+/// fetched, and a failed translation leaves it as written (#9199, #795;
+/// client activities.instructions.md).
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   const bot = '@bot:example.org';
   const userId = '@test:fakeServer.notExisting';
+  const coursemate = '@alice:example.org';
   const roomId = '!translate:fakeServer.notExisting';
   const summaryPath = '/choreo/activity_summary';
 
@@ -66,38 +68,55 @@ void main() {
   setUp(() async => client = await getTestClient());
   tearDown(() => client.dispose());
 
-  ActivitySummaryResponseModel summaryText(String text) =>
-      ActivitySummaryResponseModel(participants: const [], summary: text);
+  /// One learner's card content, as the bot writes it.
+  ActivitySummaryResponseModel card(String learner, String text) =>
+      ActivitySummaryResponseModel(
+        participants: [
+          ParticipantSummaryModel(
+            participantId: learner,
+            feedback: text,
+            cefrLevel: 'A2',
+            superlatives: const [],
+          ),
+        ],
+        summary: '',
+      );
 
-  /// A finished activity whose bot summary is in [langCode], stored under
-  /// choreo row [requestHash]. A translation is built against the activity's
-  /// plan, so only [withPlan] rooms can fetch one.
+  var stateCount = 0;
+  void setState(
+    Room room,
+    String type,
+    String stateKey,
+    Map<String, dynamic> content, {
+    String sender = userId,
+  }) => room.setState(
+    Event(
+      type: type,
+      stateKey: stateKey,
+      content: content,
+      senderId: sender,
+      eventId: '\$state${stateCount++}',
+      originServerTs: DateTime.now(),
+      room: room,
+    ),
+  );
+
+  /// A room where the viewer (and, with [withCoursemate], a coursemate) has
+  /// finished, and whose bot card is in [langCode], stored under choreo row
+  /// [requestHash]. A translation is built against the activity's plan, so
+  /// only [withPlan] rooms can fetch one.
   Room finishedRoom({
     required String langCode,
     String? requestHash,
     bool withPlan = false,
+    bool withCoursemate = false,
+    bool withCard = true,
   }) {
     final room = Room(id: roomId, client: client, membership: Membership.join);
-    var count = 0;
-    void setState(
-      String type,
-      String stateKey,
-      Map<String, dynamic> content, {
-      String sender = userId,
-    }) => room.setState(
-      Event(
-        type: type,
-        stateKey: stateKey,
-        content: content,
-        senderId: sender,
-        eventId: '\$state${count++}',
-        originServerTs: DateTime.now(),
-        room: room,
-      ),
-    );
 
     if (withPlan) {
       setState(
+        room,
         PangeaEventTypes.activityPlan,
         '',
         ActivityPlanModel(
@@ -119,33 +138,49 @@ void main() {
         ).toJson(),
       );
     }
-    final role = ActivityRoleModel(
-      id: 'role1',
-      userId: userId,
-      role: 'Customer',
-      finishedAt: DateTime.utc(2026),
-    );
+    final roles = {
+      'role1': ActivityRoleModel(
+        id: 'role1',
+        userId: userId,
+        role: 'Customer',
+        finishedAt: DateTime.utc(2026),
+      ),
+      if (withCoursemate)
+        'role2': ActivityRoleModel(
+          id: 'role2',
+          userId: coursemate,
+          role: 'Barista',
+          finishedAt: DateTime.utc(2026),
+        ),
+    };
     setState(
+      room,
       PangeaEventTypes.activityRole,
       '',
-      ActivityRolesModel({role.id: role}).toJson(),
+      ActivityRolesModel(roles).toJson(),
     );
-    setState(EventTypes.RoomMember, userId, {'membership': 'join'});
-    setState(EventTypes.RoomMember, bot, {'membership': 'join'}, sender: bot);
-    setState(
-      PangeaEventTypes.activitySummary,
-      ActivitySummaryStateKeys.canonical,
-      ActivitySummaryModel(
-        summary: summaryText('Bien joué.'),
-        langCode: langCode,
-        requestHash: requestHash,
-      ).toJson(),
-      sender: bot,
-    );
+    setState(room, EventTypes.RoomMember, userId, {'membership': 'join'});
+    setState(room, EventTypes.RoomMember, bot, {
+      'membership': 'join',
+    }, sender: bot);
+    if (withCard) {
+      setState(
+        room,
+        PangeaEventTypes.activitySummary,
+        ActivitySummaryStateKeys.card(userId),
+        ActivitySummaryModel(
+          summary: card(userId, 'Bien joué.'),
+          langCode: langCode,
+          requestHash: requestHash,
+        ).toJson(),
+        sender: bot,
+      );
+    }
     // Already written, so the controller has no analytics to compute.
     setState(
+      room,
       PangeaEventTypes.activitySummary,
-      ActivitySummaryStateKeys.analytics,
+      ActivitySummaryStateKeys.learnerAnalytics(userId),
       ActivitySummaryAnalyticsModel().toJson(),
     );
     return room;
@@ -192,14 +227,21 @@ void main() {
     return (controller, requests);
   }
 
-  http.Response translated(http.Request request) => http.Response(
-    jsonEncode(summaryText('Well played.').toJson()),
-    200,
-    request: request,
-    headers: {'content-type': 'application/json; charset=utf-8'},
-  );
+  http.Response json(http.Request request, ActivitySummaryResponseModel body) =>
+      http.Response(
+        jsonEncode(body.toJson()),
+        200,
+        request: request,
+        headers: {'content-type': 'application/json; charset=utf-8'},
+      );
 
-  test('translates the bot\'s summary into the viewer\'s L1', () async {
+  http.Response translated(http.Request request) =>
+      json(request, card(userId, 'Well played.'));
+
+  String? ownFeedback(ActivityChatController controller) =>
+      controller.summaryView.value.cardFor(userId)?.participant?.feedback;
+
+  test('translates the learner\'s card into the viewer\'s L1', () async {
     final room = finishedRoom(
       langCode: 'fr',
       requestHash: 'row-translate',
@@ -208,7 +250,7 @@ void main() {
 
     final (controller, requests) = await open(room, respond: translated);
 
-    expect(controller.summaryView.value.summary?.summary, 'Well played.');
+    expect(ownFeedback(controller), 'Well played.');
     expect(requests, hasLength(1));
     expect(requests.single['source_request_hash'], 'row-translate');
     expect(requests.single['viewer_l1'], 'en');
@@ -219,7 +261,82 @@ void main() {
     );
   });
 
-  test('keeps the loading state up while the translation is fetched', () {
+  test('translates each card from its own row', () async {
+    final room = finishedRoom(
+      langCode: 'fr',
+      requestHash: 'row-own',
+      withPlan: true,
+      withCoursemate: true,
+    );
+    setState(
+      room,
+      PangeaEventTypes.activitySummary,
+      ActivitySummaryStateKeys.card(coursemate),
+      ActivitySummaryModel(
+        summary: card(coursemate, 'Très bien.'),
+        langCode: 'fr',
+        requestHash: 'row-coursemate',
+      ).toJson(),
+      sender: bot,
+    );
+
+    final (controller, requests) = await open(
+      room,
+      respond: (request) {
+        final hash = (jsonDecode(request.body) as Map)['source_request_hash'];
+        return hash == 'row-coursemate'
+            ? json(request, card(coursemate, 'Very good.'))
+            : translated(request);
+      },
+    );
+
+    final view = controller.summaryView.value;
+    expect(
+      requests.map((r) => r['source_request_hash']),
+      unorderedEquals(['row-own', 'row-coursemate']),
+    );
+    expect(view.cardFor(userId)?.participant?.feedback, 'Well played.');
+    expect(view.cardFor(coursemate)?.participant?.feedback, 'Very good.');
+  });
+
+  test('translates a room summarized before per-learner cards once, group '
+      'text included', () async {
+    // A room from before per-learner cards has only the bot's whole-room
+    // summary.
+    final room = finishedRoom(langCode: 'fr', withPlan: true, withCard: false);
+    setState(
+      room,
+      PangeaEventTypes.activitySummary,
+      ActivitySummaryStateKeys.canonical,
+      ActivitySummaryModel(
+        summary: ActivitySummaryResponseModel(
+          participants: card(userId, 'Bien joué.').participants,
+          summary: 'Une bonne conversation.',
+        ),
+        langCode: 'fr',
+        requestHash: 'row-room',
+      ).toJson(),
+      sender: bot,
+    );
+
+    final (controller, requests) = await open(
+      room,
+      respond: (request) => json(
+        request,
+        ActivitySummaryResponseModel(
+          participants: card(userId, 'Well played.').participants,
+          summary: 'A good conversation.',
+        ),
+      ),
+    );
+
+    final view = controller.summaryView.value;
+    expect(requests.map((r) => r['source_request_hash']), ['row-room']);
+    expect(view.groupSummary, 'A good conversation.');
+    expect(ownFeedback(controller), 'Well played.');
+  });
+
+  test('keeps the card loading while its translation is fetched', () {
     final room = finishedRoom(langCode: 'fr', requestHash: 'row-pending');
     MatrixState.pangeaController = ActivityChatTestPangeaController(
       accessToken: 'syt_test_token',
@@ -236,11 +353,12 @@ void main() {
     addTearDown(controller.dispose);
 
     // Nothing has answered yet: the viewer sees loading, not the French text.
-    expect(controller.summaryView.value.isLoading, isTrue);
-    expect(controller.summaryView.value.summary, isNull);
+    final own = controller.summaryView.value.cardFor(userId)!;
+    expect(own.isLoading, isTrue);
+    expect(own.participant, isNull);
   });
 
-  test('a failed translation shows the summary as written', () async {
+  test('a failed translation shows the card as written', () async {
     final room = finishedRoom(
       langCode: 'fr',
       requestHash: 'row-fails',
@@ -252,42 +370,39 @@ void main() {
       respond: (request) => http.Response('', 500, request: request),
     );
 
-    final view = controller.summaryView.value;
+    final own = controller.summaryView.value.cardFor(userId)!;
     expect(requests, hasLength(1));
-    expect(view.isLoading, isFalse);
-    expect(view.hasFailed, isFalse);
-    expect(view.summary?.summary, 'Bien joué.');
+    expect(own.isLoading, isFalse);
+    expect(own.hasFailed, isFalse);
+    expect(own.participant?.feedback, 'Bien joué.');
   });
 
-  test(
-    'a translation that never answers shows the summary as written',
-    () async {
-      final room = finishedRoom(
-        langCode: 'fr',
-        requestHash: 'row-hangs',
-        withPlan: true,
-      );
-      ActivitySummaryRepo.timeout = const Duration(milliseconds: 50);
-      addTearDown(
-        () => ActivitySummaryRepo.timeout = const Duration(seconds: 60),
-      );
-      final never = Completer<http.Response>();
+  test('a translation that never answers shows the card as written', () async {
+    final room = finishedRoom(
+      langCode: 'fr',
+      requestHash: 'row-hangs',
+      withPlan: true,
+    );
+    ActivitySummaryRepo.timeout = const Duration(milliseconds: 50);
+    addTearDown(
+      () => ActivitySummaryRepo.timeout = const Duration(seconds: 60),
+    );
+    final never = Completer<http.Response>();
 
-      final (controller, requests) = await open(
-        room,
-        respond: (_) => throw StateError('unused'),
-        pending: never.future,
-      );
+    final (controller, requests) = await open(
+      room,
+      respond: (_) => throw StateError('unused'),
+      pending: never.future,
+    );
 
-      final view = controller.summaryView.value;
-      expect(requests, hasLength(1));
-      expect(view.isLoading, isFalse);
-      expect(view.hasFailed, isFalse);
-      expect(view.summary?.summary, 'Bien joué.');
-    },
-  );
+    final own = controller.summaryView.value.cardFor(userId)!;
+    expect(requests, hasLength(1));
+    expect(own.isLoading, isFalse);
+    expect(own.hasFailed, isFalse);
+    expect(own.participant?.feedback, 'Bien joué.');
+  });
 
-  test('a plan that fails to map shows the summary as written', () async {
+  test('a plan that fails to map shows the card as written', () async {
     final room = finishedRoom(langCode: 'fr', requestHash: 'row-bad-plan');
     // A session room with no plan in state, so the controller fetches one.
     room.setState(
@@ -326,31 +441,28 @@ void main() {
     );
     addTearDown(controller.dispose);
 
-    final view = controller.summaryView.value;
+    final own = controller.summaryView.value.cardFor(userId)!;
     expect(requests, isNot(contains(summaryPath)));
-    expect(view.isLoading, isFalse);
-    expect(view.summary?.summary, 'Bien joué.');
+    expect(own.isLoading, isFalse);
+    expect(own.participant?.feedback, 'Bien joué.');
+  });
+
+  test('a card already in the viewer\'s language is not translated', () async {
+    // With a plan, a wrongful translation would reach choreo.
+    final room = finishedRoom(
+      langCode: 'en-US',
+      requestHash: 'row-same',
+      withPlan: true,
+    );
+
+    final (controller, requests) = await open(room, respond: translated);
+
+    expect(requests, isEmpty);
+    expect(ownFeedback(controller), 'Bien joué.');
   });
 
   test(
-    'a summary already in the viewer\'s language is not translated',
-    () async {
-      // With a plan, a wrongful translation would reach choreo.
-      final room = finishedRoom(
-        langCode: 'en-US',
-        requestHash: 'row-same',
-        withPlan: true,
-      );
-
-      final (controller, requests) = await open(room, respond: translated);
-
-      expect(requests, isEmpty);
-      expect(controller.summaryView.value.summary?.summary, 'Bien joué.');
-    },
-  );
-
-  test(
-    'a bot summary without a row id is shown as written, and reported',
+    'a bot card without a row id is shown as written, and reported',
     () async {
       ErrorHandler.resetReportedOnceKeysForTest();
       final room = finishedRoom(langCode: 'fr');
@@ -358,7 +470,7 @@ void main() {
       final (controller, requests) = await open(room, respond: translated);
 
       expect(requests, isEmpty);
-      expect(controller.summaryView.value.summary?.summary, 'Bien joué.');
+      expect(ownFeedback(controller), 'Bien joué.');
       expect(
         ErrorHandler.reportedOnceKeysForTest,
         contains('activity_summary_no_request_hash'),
@@ -367,6 +479,7 @@ void main() {
   );
 
   group('confetti', () {
+    var liveCount = 0;
     void writeSlot(
       Room room,
       String stateKey,
@@ -378,14 +491,14 @@ void main() {
         stateKey: stateKey,
         content: content,
         senderId: sender,
-        eventId: '\$live-$stateKey',
+        eventId: '\$live-${liveCount++}',
         originServerTs: DateTime.now(),
         room: room,
       ),
     );
 
-    test('a summary that lands while the room is open fires once it shows, '
-        'translated', () async {
+    test('the learner\'s card landing while the room is open fires once it '
+        'shows, translated', () async {
       final room = finishedRoom(
         langCode: 'fr',
         requestHash: 'row-old',
@@ -395,10 +508,10 @@ void main() {
       expect(controller.confettiNotifier.value, isFalse);
 
       await http.runWithClient(() async {
-        // The bot regenerates: a loading marker, then a new summary.
+        // The bot regenerates: a loading marker, then a new card.
         writeSlot(
           room,
-          ActivitySummaryStateKeys.canonical,
+          ActivitySummaryStateKeys.card(userId),
           ActivitySummaryModel(
             requestedAt: DateTime.now(),
             langCode: 'fr',
@@ -409,9 +522,9 @@ void main() {
 
         writeSlot(
           room,
-          ActivitySummaryStateKeys.canonical,
+          ActivitySummaryStateKeys.card(userId),
           ActivitySummaryModel(
-            summary: summaryText('Encore mieux.'),
+            summary: card(userId, 'Encore mieux.'),
             langCode: 'fr',
             requestHash: 'row-new',
           ).toJson(),
@@ -421,21 +534,47 @@ void main() {
         }
       }, () => MockClient((request) async => translated(request)));
 
-      expect(controller.summaryView.value.summary?.summary, 'Well played.');
+      expect(ownFeedback(controller), 'Well played.');
       expect(controller.confettiNotifier.value, isTrue);
     });
 
+    test('a coursemate\'s card landing does not fire it', () async {
+      final room = finishedRoom(
+        langCode: 'en',
+        requestHash: 'row-own',
+        withCoursemate: true,
+      );
+      final (controller, _) = await open(room, respond: translated);
+
+      writeSlot(
+        room,
+        ActivitySummaryStateKeys.card(coursemate),
+        ActivitySummaryModel(
+          summary: card(coursemate, 'Theirs.'),
+          langCode: 'en',
+          requestHash: 'row-theirs',
+        ).toJson(),
+      );
+      await Future.delayed(const Duration(milliseconds: 20));
+
+      expect(
+        controller.summaryView.value.cardFor(coursemate)?.participant?.feedback,
+        'Theirs.',
+      );
+      expect(controller.confettiNotifier.value, isFalse);
+    });
+
     test(
-      'a regeneration that fails keeps the old summary without confetti',
+      'a regeneration that fails keeps the old card without confetti',
       () async {
         final room = finishedRoom(langCode: 'en', requestHash: 'row-keep');
         final (controller, _) = await open(room, respond: translated);
 
         // The bot regenerates: a loading marker, then an error marker that
-        // still carries the summary the learner had.
+        // still carries the card the learner had.
         writeSlot(
           room,
-          ActivitySummaryStateKeys.canonical,
+          ActivitySummaryStateKeys.card(userId),
           ActivitySummaryModel(
             requestedAt: DateTime.now(),
             langCode: 'en',
@@ -444,9 +583,9 @@ void main() {
         await Future.delayed(Duration.zero);
         writeSlot(
           room,
-          ActivitySummaryStateKeys.canonical,
+          ActivitySummaryStateKeys.card(userId),
           ActivitySummaryModel(
-            summary: summaryText('Bien joué.'),
+            summary: card(userId, 'Bien joué.'),
             errorAt: DateTime.now(),
             langCode: 'en',
             requestHash: 'row-keep',
@@ -454,7 +593,10 @@ void main() {
         );
         await Future.delayed(const Duration(milliseconds: 20));
 
-        expect(controller.summaryView.value.updateFailed, isTrue);
+        expect(
+          controller.summaryView.value.cardFor(userId)?.updateFailed,
+          isTrue,
+        );
         expect(controller.confettiNotifier.value, isFalse);
       },
     );
@@ -463,17 +605,17 @@ void main() {
         'not fire it', () async {
       final room = finishedRoom(langCode: 'en', requestHash: 'row-reopen');
       final (controller, _) = await open(room, respond: translated);
-      expect(controller.summaryView.value.summary, isNotNull);
+      expect(ownFeedback(controller), isNotNull);
 
       writeSlot(
         room,
-        ActivitySummaryStateKeys.analytics,
+        ActivitySummaryStateKeys.learnerAnalytics(userId),
         ActivitySummaryAnalyticsModel().toJson(),
         sender: userId,
       );
       await Future.delayed(const Duration(milliseconds: 20));
 
-      expect(controller.summaryView.value.summary, isNotNull);
+      expect(ownFeedback(controller), isNotNull);
       expect(controller.confettiNotifier.value, isFalse);
     });
   });

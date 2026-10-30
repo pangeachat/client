@@ -20,6 +20,7 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_response_
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_vocab_matcher.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
@@ -47,7 +48,12 @@ class ActivityChatController {
   }
 
   bool _disposed = false;
-  bool _ensuringSummaryAnalytics = false;
+  bool _writingOwnAnalytics = false;
+
+  /// The finish this client last wrote the learner's own analytics for, so a
+  /// slot that still reads as older (a device clock running ahead) is not
+  /// recomputed on every change.
+  DateTime? _ownAnalyticsWrittenFor;
 
   final ValueNotifier<Set<String>> usedVocab = ValueNotifier({});
   final ValueNotifier<ActivityRoleModel?> highlightedRole = ValueNotifier(null);
@@ -56,24 +62,28 @@ class ActivityChatController {
   final ValueNotifier<bool> confettiNotifier = ValueNotifier(false);
   final ActivityMediaVisibility mediaVisibility = ActivityMediaVisibility();
 
-  /// What the finished activity shows where its summary goes. Recomputed on
-  /// every room-state change that feeds it, and when a loading state expires.
+  /// What the activity shows where its summary goes. Recomputed on every
+  /// room-state change that feeds it, and when a loading state expires.
   final ValueNotifier<ActivitySummaryView> summaryView = ValueNotifier(
     ActivitySummaryView.empty,
   );
 
-  /// When this client first saw the activity finished with no summary slot.
-  DateTime? _summaryWaitingSince;
+  /// The learners whose card this client is waiting for, since it saw them
+  /// finish.
+  final Map<String, ActivitySummaryWait> _summaryWaits = {};
+
+  /// Who had finished at the last recompute; null before the first, whose
+  /// finishes this client did not see happen.
+  Set<String>? _finishedLearners;
 
   Timer? _summaryLoadingTimer;
 
-  /// The translation of the bot's summary into the viewer's L1: which row and
-  /// language it is for, and its result once fetched (null while in flight).
-  String? _translationKey;
-  Result<ActivitySummaryResponseModel>? _translationResult;
+  /// Translations of cards into the viewer's L1, by source row and language:
+  /// null while in flight.
+  final Map<String, Result<ActivitySummaryResponseModel>?> _translations = {};
 
-  /// A summary slot changed while this controller was up, so the next summary
-  /// on screen is a new one to celebrate, not one the learner reopened.
+  /// The learner's own card slot changed while this controller was up, so the
+  /// next card on screen is a new one to celebrate, not one they reopened.
   bool _summaryMayHaveLanded = false;
 
   late final StreamSubscription _analyticsSubscription;
@@ -104,11 +114,19 @@ class ActivityChatController {
     await _onLeaveActivitySession();
   }
 
-  bool get hasSummary => summaryView.value.summary != null;
+  /// The card a celebration is for: the learner's own, or for a viewer with
+  /// no role, any card.
+  bool get hasSummary {
+    final view = summaryView.value;
+    final own = view.cardFor(userID);
+    if (own != null) return own.participant != null;
+    return !room.hasPickedRole &&
+        view.cards.any((card) => card.participant != null);
+  }
 
   void _setRolesSubscription() {
-    // A seat finishing, or a learner or the bot leaving, can finish the
-    // activity or change who can answer a request.
+    // A seat finishing, or a learner or the bot leaving, can bring a card due
+    // or change who can answer a request.
     _rolesSubscription = room.client.onRoomState.stream
         .where(
           (event) =>
@@ -130,32 +148,64 @@ class ActivityChatController {
         )
         .listen((update) {
           final stateKey = update.state.stateKey;
-          if (stateKey != ActivitySummaryStateKeys.analytics &&
-              stateKey != ActivitySummaryStateKeys.request) {
+          if (stateKey != null && _celebrates(stateKey)) {
             _summaryMayHaveLanded = true;
           }
           _onActivitySummaryInputsChanged();
         });
   }
 
+  /// Whether a write to [stateKey] can bring this viewer a card to celebrate:
+  /// their own card, a room-wide summary, or for a viewer with no role, any.
+  bool _celebrates(String stateKey) {
+    final owner = ActivitySummaryStateKeys.cardOwner(stateKey);
+    if (owner != null) return owner == userID || !room.hasPickedRole;
+    return stateKey != ActivitySummaryStateKeys.analytics &&
+        stateKey != ActivitySummaryStateKeys.request &&
+        ActivitySummaryStateKeys.analyticsOwner(stateKey) == null;
+  }
+
   void _onActivitySummaryInputsChanged() {
+    _updateSummaryWaits();
     _refreshSummaryView();
-    _ensureSummaryAnalytics();
+    _writeOwnAnalytics();
+  }
+
+  /// Starts a wait for each learner who finished with no card, or whose card
+  /// predates a finish this client saw happen; ends it when they resume.
+  void _updateSummaryWaits() {
+    if (_disposed) return;
+    final finished = room.finishedLearnerIds;
+    final before = _finishedLearners;
+    final now = DateTime.now();
+    for (final userId in finished) {
+      if (before != null && !before.contains(userId)) {
+        _summaryWaits[userId] = ActivitySummaryWait(
+          since: now,
+          supersededEventId: room.activitySummaryCardBefore(userId),
+        );
+      } else if (!room.hasActivitySummarySlot(userId)) {
+        _summaryWaits.putIfAbsent(
+          userId,
+          () => ActivitySummaryWait(since: now),
+        );
+      }
+    }
+    _summaryWaits.removeWhere((userId, _) => !finished.contains(userId));
+    _finishedLearners = finished;
   }
 
   void _refreshSummaryView() {
     if (_disposed) return;
-    if (room.isActivityFinished && room.activitySummary == null) {
-      _summaryWaitingSince ??= DateTime.now();
-    }
-    final view = _withTranslation(
-      room.activitySummaryView(waitingSince: _summaryWaitingSince),
+    final view = _withTranslations(
+      room.activitySummaryView(waits: _summaryWaits),
     );
     summaryView.value = view;
-    if (_summaryMayHaveLanded && view.summary != null) {
+    final own = view.cardFor(userID);
+    if (_summaryMayHaveLanded && hasSummary) {
       _summaryMayHaveLanded = false;
-      // A failed regeneration keeps the old summary on screen; nothing landed.
-      if (!view.updateFailed) showConfetti();
+      // A failed regeneration keeps the old card on screen; nothing landed.
+      if (own?.updateFailed != true) showConfetti();
     }
 
     _summaryLoadingTimer?.cancel();
@@ -168,35 +218,77 @@ class ActivityChatController {
     }
   }
 
-  /// [view] as this viewer sees it: the bot's summary translated into their
-  /// L1 when it is written in another language. The loading state stays up
-  /// while the translation is fetched, and a failed translation leaves the
-  /// summary as written.
-  ActivitySummaryView _withTranslation(ActivitySummaryView view) {
+  /// [view] as this viewer sees it: each card translated into their L1 from
+  /// its own stored row when it is written in another language. A card stays
+  /// loading while its translation is fetched, and a failed translation
+  /// leaves it as written.
+  ActivitySummaryView _withTranslations(ActivitySummaryView view) {
     final viewerL1 = MatrixState.pangeaController.userController.userL1Code;
-    if (viewerL1 == null || !view.needsTranslation(viewerL1)) return view;
+    if (viewerL1 == null) return view;
 
-    final sourceRequestHash = view.summaryRequestHash;
+    final cards = [
+      for (final card in view.cards)
+        if (!card.needsTranslation(viewerL1))
+          card
+        else
+          switch (_translation(card.requestHash, viewerL1)) {
+            _NoTranslation() => card,
+            _TranslationPending() => card.translatedTo(null),
+            _Translated(:final summary) => card.translatedTo(
+              summary.userSummary(card.userId) ?? card.participant,
+            ),
+          },
+    ];
+
+    var groupSummary = view.groupSummary;
+    final groupLangCode = view.groupLangCode;
+    if (groupSummary != null &&
+        groupLangCode != null &&
+        !PLanguageStore.sameWrittenLanguage(groupLangCode, viewerL1)) {
+      switch (_translation(view.groupRequestHash, viewerL1)) {
+        case _NoTranslation():
+          break;
+        case _TranslationPending():
+          groupSummary = null;
+        case _Translated(:final summary):
+          groupSummary = summary.summary.isNotEmpty
+              ? summary.summary
+              : groupSummary;
+      }
+    }
+
+    return ActivitySummaryView(
+      cards: cards,
+      groupSummary: groupSummary,
+      groupLangCode: groupLangCode,
+      groupRequestHash: view.groupRequestHash,
+    );
+  }
+
+  /// The translation of the stored row [sourceRequestHash] into [viewerL1],
+  /// starting the fetch the first time it is asked for.
+  _TranslationState _translation(String? sourceRequestHash, String viewerL1) {
     if (sourceRequestHash == null) {
-      // Choreo returns the row id, and the bot stores it with every summary.
+      // Choreo returns the row id, and the bot stores it with every card.
       ErrorHandler.logErrorOnce(
         key: 'activity_summary_no_request_hash',
         e: 'Bot activity summary has no request_hash to translate from',
         data: {'roomID': room.id},
         level: SentryLevel.warning,
       );
-      return view;
+      return const _NoTranslation();
     }
 
     final key = '$sourceRequestHash:$viewerL1';
-    if (_translationKey != key) {
-      _translationKey = key;
-      _translationResult = null;
+    if (!_translations.containsKey(key)) {
+      _translations[key] = null;
       _fetchTranslation(sourceRequestHash, viewerL1, key);
     }
-    final result = _translationResult;
-    if (result == null) return view.translatedTo(null);
-    return result.isValue ? view.translatedTo(result.asValue!.value) : view;
+    final result = _translations[key];
+    if (result == null) return const _TranslationPending();
+    return result.isValue
+        ? _Translated(result.asValue!.value)
+        : const _NoTranslation();
   }
 
   Future<void> _fetchTranslation(
@@ -230,29 +322,37 @@ class ActivityChatController {
               viewerL1: viewerL1,
             ),
           );
-    if (_disposed || _translationKey != key) return;
-    _translationResult = result;
+    if (_disposed) return;
+    _translations[key] = result;
     _refreshSummaryView();
   }
 
-  Future<void> _ensureSummaryAnalytics() async {
-    if (_ensuringSummaryAnalytics) return;
-    _ensuringSummaryAnalytics = true;
+  /// Writes the learner's own vocabulary and grammar use when they finish,
+  /// and again when they end after resuming.
+  Future<void> _writeOwnAnalytics() async {
+    if (_writingOwnAnalytics || !room.needsOwnActivityAnalytics) return;
+    final finishedAt = room.ownRoleState?.finishedAt;
+    if (finishedAt == null || finishedAt == _ownAnalyticsWrittenFor) return;
+    _writingOwnAnalytics = true;
     try {
-      await room.ensureActivitySummaryAnalytics();
+      await room.writeOwnActivityAnalytics();
+      _ownAnalyticsWrittenFor = finishedAt;
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'roomID': room.id});
     } finally {
-      _ensuringSummaryAnalytics = false;
+      _writingOwnAnalytics = false;
     }
   }
 
-  /// Asks the bot to retry the summary, or to regenerate it with [feedback].
-  /// Returns whether the request reached the server; the summary view follows
-  /// from room state either way.
-  Future<bool> requestSummary({String? feedback}) async {
+  /// Asks the bot to retry [userId]'s card, or to regenerate it with
+  /// [feedback]. Returns whether the request reached the server; the card
+  /// follows from room state either way.
+  Future<bool> requestSummary({
+    required String userId,
+    String? feedback,
+  }) async {
     try {
-      await room.requestActivitySummary(feedback: feedback);
+      await room.requestActivitySummary(userId: userId, feedback: feedback);
       return true;
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'roomID': room.id});
@@ -400,7 +500,12 @@ class ActivityChatController {
     return analytics;
   }
 
-  Future<void> submitSummaryFeedback(BuildContext context) async {
+  /// Asks the learner what is wrong with [userId]'s card, then has the bot
+  /// regenerate it.
+  Future<void> submitSummaryFeedback(
+    BuildContext context, {
+    required String userId,
+  }) async {
     final resp = await showDialog(
       context: context,
       builder: (context) => FeedbackDialog(
@@ -412,16 +517,21 @@ class ActivityChatController {
       return;
     }
 
-    await regenerateSummaryWithFeedback(context, resp);
+    await regenerateSummaryWithFeedback(
+      context,
+      userId: userId,
+      feedback: resp,
+    );
   }
 
-  /// Asks the bot to regenerate the summary with [feedback], telling the
+  /// Asks the bot to regenerate [userId]'s card with [feedback], telling the
   /// learner it is under way and then whether the request went through.
   @visibleForTesting
   Future<void> regenerateSummaryWithFeedback(
-    BuildContext context,
-    String feedback,
-  ) async {
+    BuildContext context, {
+    required String userId,
+    required String feedback,
+  }) async {
     // The summary card swaps to its loading placeholder while the summary
     // regenerates, unmounting [context], so capture what the result needs now.
     final messenger = ScaffoldMessenger.of(context);
@@ -455,7 +565,7 @@ class ActivityChatController {
     var processingShown = true;
     unawaited(processing.closed.then((_) => processingShown = false));
 
-    final ok = await requestSummary(feedback: feedback);
+    final ok = await requestSummary(userId: userId, feedback: feedback);
     if (!messenger.mounted) return;
     if (processingShown) processing.close();
     messenger.showSnackBarAnnounced(
@@ -492,4 +602,24 @@ class ActivityChatController {
       );
     }
   }
+}
+
+/// Where a card's translation into the viewer's L1 stands.
+sealed class _TranslationState {
+  const _TranslationState();
+}
+
+/// None to wait for: the card shows as written.
+class _NoTranslation extends _TranslationState {
+  const _NoTranslation();
+}
+
+class _TranslationPending extends _TranslationState {
+  const _TranslationPending();
+}
+
+class _Translated extends _TranslationState {
+  final ActivitySummaryResponseModel summary;
+
+  const _Translated(this.summary);
 }

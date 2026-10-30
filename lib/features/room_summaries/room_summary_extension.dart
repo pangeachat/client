@@ -284,8 +284,9 @@ class RoomSummaryResponse {
       roles = ActivityRolesModel.fromJson(rolesEntry);
     }
 
-    // The same slots, in the same order, as ActivitySummaryRoomExtension:
-    // the bot's summary, else one an older client wrote.
+    // The room-wide slots, in the same order, as ActivitySummaryRoomExtension:
+    // the bot's summary (once the whole activity has finished, its copy of
+    // every card), else one an older client wrote.
     final summaryEntries = json[PangeaEventTypes.activitySummary];
     Map<String, dynamic>? summaryContent(
       String? stateKey, {
@@ -306,9 +307,28 @@ class RoomSummaryResponse {
         ? null
         : ActivitySummaryModel.fromJson(summaryJson);
     final analyticsJson = summaryContent(ActivitySummaryStateKeys.analytics);
-    final summaryAnalytics = analyticsJson == null
+    var summaryAnalytics = analyticsJson == null
         ? summary?.analytics
         : ActivitySummaryAnalyticsModel.fromJson(analyticsJson);
+    // Each learner's own slot wins over the room's.
+    if (summaryEntries is Map) {
+      for (final MapEntry(:key, :value) in summaryEntries.entries) {
+        final owner = key is String
+            ? ActivitySummaryStateKeys.analyticsOwner(key)
+            : null;
+        final content = value is Map ? value['content'] : null;
+        if (owner == null || content is! Map<String, dynamic>) continue;
+        final own = learnerAnalyticsFromSlot(
+          owner: owner,
+          sender: value['sender'] as String?,
+          content: content,
+        );
+        if (own == null) continue;
+        (summaryAnalytics ??= ActivitySummaryAnalyticsModel())
+                .constructs[owner] =
+            own;
+      }
+    }
 
     final coursePlanEntry =
         json[PangeaEventTypes.coursePlan]?["default"]?["content"];

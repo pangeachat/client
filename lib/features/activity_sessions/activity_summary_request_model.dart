@@ -1,14 +1,15 @@
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
-/// A viewer's request to have the bot's summary translated into their L1. The
-/// bot makes the summary itself; the client only ever asks for a translation
-/// (org doc activity-summary.instructions.md, "Translation").
+/// A viewer's request to have one of the bot's cards translated into their
+/// L1. The bot makes the cards itself; the client only ever asks for a
+/// translation (org doc activity-summary.instructions.md, "Language and
+/// translation").
 class ActivitySummaryRequestModel {
   final ActivityPlanModel activity;
 
-  /// Choreo's id for the stored row behind the bot's summary, from the
-  /// `canonical` slot. The client cannot rebuild the bot's request, so it
+  /// Choreo's id for the stored row behind the card, from its slot. Each card
+  /// has its own row. The client cannot rebuild the bot's request, so it
   /// names the row to translate instead.
   final String sourceRequestHash;
 
