@@ -411,6 +411,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   Future<void> _loadAvailableParticipants() async {
     final room = widget.room;
     if (room == null) return; // A preview has no members — nothing to dim.
+    // Nor does a course the learner hasn't joined: the server refuses its
+    // member list, and an unknown count dims nothing, as on the map (#9707).
+    if (room.membership != Membership.join) return;
     final available = await room.availableActivityParticipants();
     // Rebuild only on a real change — the sync handler calls this frequently.
     if (!mounted || available == _availableParticipants) return;
