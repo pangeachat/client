@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:async/async.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart' hide Result;
@@ -10,8 +9,6 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
-import 'package:fluffychat/features/course_plans/cities/cities_repo.dart';
-import 'package:fluffychat/features/course_plans/cities/city_index.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -202,93 +199,6 @@ void main() {
     }
   });
 
-  group('CourseMissionsEvent.sliceFor (a Can-Do\'s city slice)', () {
-    QuestObjectiveGroup group(List<(String, LatLng?)> activities) =>
-        QuestObjectiveGroup(
-          objective: const LearningObjective(id: 'lo', objective: ''),
-          activities: [
-            for (final (id, point) in activities)
-              QuestActivity(activityId: id, plan: _plan(id), point: point),
-          ],
-        );
-
-    test('keeps the activities under the city most of them fall under', () {
-      final slice = CourseMissionsEvent.sliceFor(
-        group([
-          ('m1', const LatLng(19.35, -99.16)), // Coyoacán
-          ('s1', const LatLng(40.42, -3.70)), // Madrid
-          ('m2', const LatLng(19.50, -99.10)), // Mexico City
-          ('none', null),
-          ('far', const LatLng(0.0, 0.0)), // no listed city within 250 mi
-        ]),
-        _cities(),
-      );
-      expect(slice.activityIds, ['m1', 'm2']);
-      expect(slice.city?.name, 'Mexico City');
-    });
-
-    test('ties go to the first activity\'s city', () {
-      final slice = CourseMissionsEvent.sliceFor(
-        group([
-          ('s1', const LatLng(40.42, -3.70)),
-          ('m1', const LatLng(19.35, -99.16)),
-        ]),
-        _cities(),
-      );
-      expect(slice.activityIds, ['s1']);
-      expect(slice.city?.name, 'Madrid');
-    });
-
-    test('with no activity under a listed city keeps every activity and '
-        'names no city', () {
-      final slice = CourseMissionsEvent.sliceFor(
-        group([('none', null), ('far', const LatLng(0.0, 0.0))]),
-        _cities(),
-      );
-      expect(slice.activityIds, ['none', 'far']);
-      expect(slice.city, isNull);
-    });
-
-    test('snapshotOf with the cities is the trip, undated', () {
-      final outline = QuestOutline(
-        quest: const QuestPlan(
-          id: 'q1',
-          name: '',
-          description: '',
-          targetLanguage: 'es',
-          sequence: [],
-        ),
-        groups: [
-          group([
-            ('m1', const LatLng(19.35, -99.16)),
-            ('s1', const LatLng(40.42, -3.70)),
-            ('m2', const LatLng(19.50, -99.10)),
-          ]),
-        ],
-      );
-      final json = CourseMissionsEvent.snapshotOf(
-        outline,
-        cities: _cities(),
-      ).toJson();
-      expect(json, {
-        'version': 2,
-        'revision': 1,
-        'missions': [
-          {
-            'lo_id': 'lo',
-            'activity_ids': ['m1', 'm2'],
-            'city': {
-              'name': 'Mexico City',
-              'lat_e6': 19444400,
-              'lng_e6': -99132900,
-            },
-          },
-        ],
-      });
-      expect(CourseMissionsEvent.tryParse(json)?.isDated, isFalse);
-    });
-  });
-
   group('room.courseMissions', () {
     late Client client;
     late Room room;
@@ -407,9 +317,6 @@ void main() {
       FakeMatrixApi.calledEndpoints.clear();
       QuestRepo.resetOutlineCacheForTest();
       QuestRepo.debugDisplayL1 = 'en';
-      // The app writes the trip only with the flag on (as the servers do).
-      dotenv.testLoad(mergeWith: {'COURSE_MISSIONS_V2_ENABLED': 'true'});
-      CitiesRepo.debugIndex = _cities();
       outlineReads = [];
       answer = null;
       QuestRepo.debugBuildOutline = (id, {courseRoomId}) async {
@@ -424,7 +331,6 @@ void main() {
       QuestRepo.debugBuildOutline = null;
       QuestRepo.debugDisplayL1 = null;
       QuestRepo.resetOutlineCacheForTest();
-      CitiesRepo.resetForTest();
       client.dispose();
     });
 
@@ -489,9 +395,9 @@ void main() {
       await space(ownLevel: 100).addCourseToSpace('q1', targetLanguage: 'es');
       final writes = copyWrites();
       expect(writes, hasLength(1));
-      // The trip (version 2); these activities carry no point, so no city.
+      // Version 1: the homeserver slices it into cities as it lands.
       expect(jsonDecode(writes.single as String), {
-        'version': 2,
+        'version': 1,
         'revision': 1,
         'missions': [
           {
@@ -504,73 +410,6 @@ void main() {
           },
         ],
       });
-    });
-
-    test('with the trip flag off the version 1 snapshot is written, though '
-        'the city list is readable', () async {
-      dotenv.testLoad(mergeWith: {'COURSE_MISSIONS_V2_ENABLED': 'false'});
-      // The list stays readable (setUp), so only the flag keeps this from
-      // being sliced into version 2.
-      answer = (_) => shown();
-      await space(ownLevel: 100).addCourseToSpace('q1', targetLanguage: 'es');
-      final written = jsonDecode(copyWrites().single as String);
-      expect(written['version'], 1);
-    });
-
-    test('with the city list unreadable the version 1 snapshot is written, '
-        'so the course still gets its own list', () async {
-      CitiesRepo.debugIndex = null;
-      CitiesRepo.debugUnavailable = true;
-      answer = (_) => shown();
-      await space(ownLevel: 100).addCourseToSpace('q1', targetLanguage: 'es');
-      expect(jsonDecode(copyWrites().single as String)['version'], 1);
-    });
-
-    test('each Can-Do is sliced to the city most of its activities fall '
-        'under', () async {
-      answer = (_) => QuestOutline(
-        quest: const QuestPlan(
-          id: 'q1',
-          name: '',
-          description: '',
-          targetLanguage: 'es',
-          sequence: [],
-        ),
-        groups: [
-          QuestObjectiveGroup(
-            objective: const LearningObjective(id: 'lo-3', objective: ''),
-            activities: [
-              QuestActivity(
-                activityId: 'c1',
-                plan: _plan('c1'),
-                point: const LatLng(40.42, -3.70),
-              ),
-              QuestActivity(
-                activityId: 'c2',
-                plan: _plan('c2'),
-                point: const LatLng(19.35, -99.16),
-              ),
-              QuestActivity(
-                activityId: 'c3',
-                plan: _plan('c3'),
-                point: const LatLng(19.50, -99.10),
-              ),
-            ],
-          ),
-        ],
-      );
-      await space(ownLevel: 100).addCourseToSpace('q1', targetLanguage: 'es');
-      expect(jsonDecode(copyWrites().single as String)['missions'], [
-        {
-          'lo_id': 'lo-3',
-          'activity_ids': ['c2', 'c3'],
-          'city': {
-            'name': 'Mexico City',
-            'lat_e6': 19444400,
-            'lng_e6': -99132900,
-          },
-        },
-      ]);
     });
 
     test('a non-admin writes nothing', () async {
@@ -843,8 +682,6 @@ void main() {
       FakeMatrixApi.calledEndpoints.clear();
       QuestRepo.resetOutlineCacheForTest();
       QuestRepo.debugDisplayL1 = 'en';
-      dotenv.testLoad(mergeWith: {'COURSE_MISSIONS_V2_ENABLED': 'true'});
-      CitiesRepo.debugIndex = _cities();
       scopes = [];
       QuestRepo.debugBuildOutline = (id, {courseRoomId}) async {
         scopes.add(courseRoomId);
@@ -853,7 +690,6 @@ void main() {
       };
     });
     tearDown(() {
-      CitiesRepo.resetForTest();
       QuestRepo.debugBuildOutline = null;
       QuestRepo.debugDisplayL1 = null;
       QuestRepo.resetOutlineCacheForTest();
@@ -890,7 +726,7 @@ void main() {
       await newSpace().writeNewCourseCopy('q1');
       expect(scopes, [spaceId]);
       expect(jsonDecode(copyWrites().single as String), {
-        'version': 2,
+        'version': 1,
         'revision': 1,
         'missions': [
           {
@@ -1010,19 +846,3 @@ ActivityPlanModel _plan(String id) => ActivityPlanModel(
 );
 
 /// Two listed cities, as the CMS `cities` collection serves them.
-CityIndex _cities() => CityIndex.fromRows(const [
-  {
-    'key': 'ne:1',
-    'name': 'Mexico City',
-    'country': 'Mexico',
-    'lat': 19.4444,
-    'lng': -99.1329,
-  },
-  {
-    'key': 'ne:2',
-    'name': 'Madrid',
-    'country': 'Spain',
-    'lat': 40.4,
-    'lng': -3.6834,
-  },
-]);

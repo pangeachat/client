@@ -141,7 +141,12 @@ void main() {
         CourseItinerary.classStop(
           groups: groups,
           trip: const CourseTrip(),
-          position: const CoursePositionEvent(stop: 2, fromStop: 0, since: 1),
+          position: const CoursePositionEvent(
+            stop: 2,
+            fromStop: 0,
+            since: 1,
+            revision: 1,
+          ),
           copy: copy,
           now: now,
         ),
@@ -162,7 +167,30 @@ void main() {
         CourseItinerary.classStop(
           groups: groups,
           trip: const CourseTrip(),
-          position: const CoursePositionEvent(stop: 9, fromStop: 0, since: 1),
+          position: const CoursePositionEvent(
+            stop: 9,
+            fromStop: 0,
+            since: 1,
+            revision: 1,
+          ),
+          copy: copy,
+          now: now,
+        ),
+        isNull,
+      );
+    });
+
+    test('a position of another copy revision marks nothing', () {
+      expect(
+        CourseItinerary.classStop(
+          groups: groups,
+          trip: const CourseTrip(),
+          position: const CoursePositionEvent(
+            stop: 2,
+            fromStop: 0,
+            since: 1,
+            revision: 7,
+          ),
           copy: copy,
           now: now,
         ),
@@ -177,7 +205,12 @@ void main() {
         CourseItinerary.classStop(
           groups: [mission('a'), mission('b')],
           trip: const CourseTrip(),
-          position: const CoursePositionEvent(stop: 2, fromStop: 0, since: 1),
+          position: const CoursePositionEvent(
+            stop: 2,
+            fromStop: 0,
+            since: 1,
+            revision: 1,
+          ),
           copy: copyOf(['a', 'x', 'b']),
           now: now,
         ),
@@ -188,7 +221,12 @@ void main() {
         CourseItinerary.classStop(
           groups: [mission('a'), mission('b')],
           trip: const CourseTrip(),
-          position: const CoursePositionEvent(stop: 1, fromStop: 0, since: 1),
+          position: const CoursePositionEvent(
+            stop: 1,
+            fromStop: 0,
+            since: 1,
+            revision: 1,
+          ),
           copy: copyOf(['a', 'x', 'b']),
           now: now,
         ),
@@ -228,21 +266,14 @@ void main() {
   });
 
   group('the position and access records', () {
-    test('a position is three non-negative integers', () {
+    test('a position is four non-negative integers, its revision from 1', () {
+      const good = {'stop': 1, 'from_stop': 0, 'since': 5, 'revision': 2};
+      expect(CoursePositionEvent.tryParse(good)?.stop, 1);
+      expect(CoursePositionEvent.tryParse({...good, 'stop': '1'}), isNull);
+      expect(CoursePositionEvent.tryParse({...good, 'stop': -1}), isNull);
+      expect(CoursePositionEvent.tryParse({...good, 'revision': 0}), isNull);
       expect(
-        CoursePositionEvent.tryParse({
-          'stop': 1,
-          'from_stop': 0,
-          'since': 5,
-        })?.stop,
-        1,
-      );
-      expect(
-        CoursePositionEvent.tryParse({'stop': '1', 'from_stop': 0, 'since': 5}),
-        isNull,
-      );
-      expect(
-        CoursePositionEvent.tryParse({'stop': -1, 'from_stop': 0, 'since': 5}),
+        CoursePositionEvent.tryParse({'stop': 1, 'from_stop': 0, 'since': 5}),
         isNull,
       );
       expect(CoursePositionEvent.tryParse('x'), isNull);

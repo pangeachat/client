@@ -253,16 +253,6 @@ class Environment {
         : envEntry;
   }
 
-  /// Whether a course's own copy is written as the trip (`pangea.course_missions`
-  /// version 2, each Can-Do sliced to its city) when the app writes it at
-  /// course creation. Off by default, like admin-dash-api's and Synapse's
-  /// `COURSE_MISSIONS_V2_ENABLED`: an app from before version 2 reads a
-  /// version 2 copy as no copy, so no writer turns it on until those apps are
-  /// gone (pangeachat/.github#780). Off, the app writes version 1, as before,
-  /// and never reads the city list.
-  static bool get courseMissionsV2Enabled =>
-      dotenv.env["COURSE_MISSIONS_V2_ENABLED"]?.toLowerCase() == 'true';
-
   /// Entering a closed city at a cost (org quests doc, "Progression"): the
   /// prompt that explains the cost and lets a learner travel ahead of the
   /// itinerary. Off by default: which resource it costs is still being

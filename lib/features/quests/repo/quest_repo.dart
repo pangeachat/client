@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
@@ -87,18 +86,11 @@ Set<String> effectivePinnedActivityIds(
 }
 
 /// An activity in a quest outline: its id plus the full plan, so the card
-/// renders and a session can open without a refetch, and where it is set
-/// ([point], null for an activity with no coordinates), so a course's copy can
-/// name the city its Can-Do's pins fall under.
+/// renders and a session can open without a refetch.
 class QuestActivity {
   final String activityId;
   final ActivityPlanModel plan;
-  final LatLng? point;
-  const QuestActivity({
-    required this.activityId,
-    required this.plan,
-    this.point,
-  });
+  const QuestActivity({required this.activityId, required this.plan});
 }
 
 /// A course's own note, due date and city for one Mission, from its copy
@@ -711,12 +703,7 @@ class QuestRepo {
       ({
         Map<String, LearningObjective> missions,
         List<
-          ({
-            ActivityPlanModel plan,
-            LatLng? point,
-            List<String> refs,
-            List<String> familyIds,
-          })
+          ({ActivityPlanModel plan, List<String> refs, List<String> familyIds})
         >
         activities,
       })
@@ -742,12 +729,8 @@ class QuestRepo {
       final missions = questMissionsFromJson(body);
       final entries = dedupeByActivityId(
         questActivityEntriesFromJson(body).map((e) {
-          // One shape per entry: the plan and the card's point (the one
-          // place the stored [lng, lat] order is read) both come from it.
-          final shape = cmsDocShapeFromEntry(e);
           return (
-            plan: activityPlanFromV2(shape),
-            point: QuestActivityCard.fromJson(shape).point,
+            plan: activityPlanFromV2(cmsDocShapeFromEntry(e)),
             refs: ((e['learning_objective_refs'] as List? ?? const [])
                 .map((x) => x as String)
                 .toList()),
@@ -770,7 +753,6 @@ class QuestRepo {
           for (var i = 0; i < entries.length; i++)
             (
               plan: resolved[i],
-              point: entries[i].point,
               refs: entries[i].refs,
               familyIds: entries[i].familyIds,
             ),
@@ -946,11 +928,7 @@ class QuestRepo {
 
       final byLo = <String, List<QuestActivity>>{};
       for (final a in read.activities) {
-        final qa = QuestActivity(
-          activityId: a.plan.activityId,
-          plan: a.plan,
-          point: a.point,
-        );
+        final qa = QuestActivity(activityId: a.plan.activityId, plan: a.plan);
         for (final ref in a.refs) {
           (byLo[ref] ??= []).add(qa);
         }
