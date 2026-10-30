@@ -121,4 +121,28 @@ void main() {
     expect(shipsOf([unplaced], now), isEmpty);
     expect(citiesOf([unplaced], const {}, shipsOf([unplaced], now)), isEmpty);
   });
+
+  test(
+    'a public course is a ship the learner is not aboard; a joined copy of the same room wins',
+    () {
+      final public = CourseTripView(
+        roomId: spanish.roomId,
+        name: 'Catalog copy',
+        copy: spanish.copy,
+        position: null,
+        aboard: false,
+      );
+      final other = CourseTripView(
+        roomId: '!pub:x',
+        name: 'Public trip',
+        copy: spanish.copy,
+        position: null,
+        aboard: false,
+      );
+      final trips = mergeTrips([spanish], [public, other]);
+      expect(trips.map((t) => t.name), ['Spanish 101', 'Public trip']);
+      final ships = shipsOf(trips, now);
+      expect(ships.map((s) => s.aboard), [true, false]);
+    },
+  );
 }

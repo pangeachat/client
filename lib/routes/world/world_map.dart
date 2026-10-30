@@ -39,6 +39,8 @@ import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/central_course_offer_dialog.dart';
@@ -547,7 +549,7 @@ class WorldMapController extends State<WorldMap>
   /// world view reads them: a city shows only with activities in that
   /// language, so a course in another language puts nothing on the world view
   /// (world-map.instructions.md, "What appears on the map").
-  List<CourseTripView> get _courseTrips => [
+  List<CourseTripView> get _joinedTrips => [
     for (final room in _client?.joinedCourseRooms ?? const <Room>[])
       if (CourseLanguageScope.courseInTargetLanguage(room))
         CourseTripView(
@@ -558,9 +560,62 @@ class WorldMapController extends State<WorldMap>
         ),
   ];
 
-  /// The learner's courses as ships at the city each trip has reached, and
-  /// the cities along those trips, sized by the XP earned there and stamped
-  /// where they have played; read once per build.
+  /// The public catalog's courses in the learner's target language, as
+  /// ships beside their own (org world-view doc). Read in pages of 100 and
+  /// kept until the language changes or it is a minute old; a failed read
+  /// is reported and keeps the last list, so the world view never loses its
+  /// ships to one bad request.
+  List<CourseTripView> _publicTrips = const [];
+  String? _publicTripsL2;
+  DateTime? _publicTripsAt;
+  Future<void>? _publicTripsLoad;
+  static const _publicTripsMaxAge = Duration(minutes: 1);
+
+  void _ensurePublicTripsFresh() {
+    final client = _client;
+    final l2 = MatrixState.pangeaController.userController.userL2Code;
+    if (client == null || l2 == null || _publicTripsLoad != null) return;
+    final fresh =
+        _publicTripsL2 == l2 &&
+        _publicTripsAt != null &&
+        DateTime.now().difference(_publicTripsAt!) < _publicTripsMaxAge;
+    if (fresh) return;
+    _publicTripsLoad = client
+        .allPublicCourses(l2)
+        .then((courses) {
+          _publicTrips = [
+            for (final course in courses)
+              CourseTripView(
+                roomId: course.room.roomId,
+                name: course.room.name ?? '',
+                copy: course.courseMissions,
+                position: course.coursePosition,
+                aboard: false,
+              ),
+          ];
+          _publicTripsL2 = l2;
+          _publicTripsAt = DateTime.now();
+          if (mounted) setState(() {});
+        })
+        .catchError((Object e, StackTrace s) {
+          ErrorHandler.logError(e: e, s: s, data: {'target_language': l2});
+          _publicTripsAt = DateTime.now();
+          _publicTripsL2 = l2;
+        })
+        .whenComplete(() => _publicTripsLoad = null);
+  }
+
+  /// Every course the world view draws: the learner's own, then the public
+  /// catalog's, one ship per room ([mergeTrips]).
+  List<CourseTripView> get _courseTrips {
+    _ensurePublicTripsFresh();
+    return mergeTrips(_joinedTrips, _publicTrips);
+  }
+
+  /// The learner's courses and the public catalog's as ships at the city
+  /// each trip has reached, and the cities along those trips, sized by the
+  /// XP earned there and stamped where they have played; read once per
+  /// build.
   ({List<WorldShip> ships, List<WorldCity> cities}) get worldView =>
       worldViewOf(_courseTrips, _pinsManager.xpByActivity, DateTime.now());
 

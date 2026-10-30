@@ -9,29 +9,51 @@ import 'package:fluffychat/features/quests/course_itinerary.dart';
 /// and stamped once they have finished an activity. Pure over the courses' records, so the rule is testable
 /// without a client; the map controller feeds it the joined courses.
 
-/// One joined course as the world view reads it: its record and its ship's
-/// position.
+/// One course as the world view reads it: its record and its ship's
+/// position, and whether the learner is aboard (a joined room) or sees it
+/// from the public catalog.
 class CourseTripView {
   final String roomId;
   final String name;
   final CourseMissionsEvent? copy;
   final CoursePositionEvent? position;
+  final bool aboard;
 
   const CourseTripView({
     required this.roomId,
     required this.name,
     required this.copy,
     required this.position,
+    this.aboard = true,
   });
 }
 
-/// A course on the map: at the city its trip has reached.
+/// The learner's [joined] courses with the [public] catalog behind them: a
+/// course in both is read from its joined room, whose state is fresher than
+/// the catalog's cache, so one room is one ship.
+List<CourseTripView> mergeTrips(
+  Iterable<CourseTripView> joined,
+  Iterable<CourseTripView> public,
+) {
+  final seen = <String>{};
+  return [
+    for (final course in joined)
+      if (seen.add(course.roomId)) course,
+    for (final course in public)
+      if (seen.add(course.roomId)) course,
+  ];
+}
+
+/// A course on the map: at the city its trip has reached. [aboard] when the
+/// learner is in it; a ship they are aboard opens its course, any other
+/// opens the course to join.
 class WorldShip {
   final String roomId;
   final String name;
   final LatLng point;
   final String cityName;
   final String cityKey;
+  final bool aboard;
 
   const WorldShip({
     required this.roomId,
@@ -39,6 +61,7 @@ class WorldShip {
     required this.point,
     required this.cityName,
     required this.cityKey,
+    required this.aboard,
   });
 }
 
@@ -71,7 +94,7 @@ class WorldCity {
 /// microdegrees), so two courses at the same city share one marker.
 String cityKeyOf(MissionCity city) => '${city.latE6}/${city.lngE6}';
 
-/// The learner's courses as ships: one per course whose record is a trip
+/// The courses as ships: one per course whose record is a trip
 /// and whose ship's stop has a city. A course without a trip, or at a stop
 /// with no listed city, has no ship yet.
 List<WorldShip> shipsOf(Iterable<CourseTripView> courses, DateTime now) {
@@ -90,6 +113,7 @@ List<WorldShip> shipsOf(Iterable<CourseTripView> courses, DateTime now) {
         point: city.point,
         cityName: city.name,
         cityKey: cityKeyOf(city),
+        aboard: course.aboard,
       ),
     );
   }

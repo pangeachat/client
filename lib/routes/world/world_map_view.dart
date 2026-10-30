@@ -1195,12 +1195,20 @@ class _WorldMapViewState extends State<WorldMapView>
                     WorldViewLayer(
                       view: widget.controller.worldView,
                       onCityTap: widget.controller.fadeToCity,
+                      // A ship the learner is aboard opens its course; a
+                      // public one opens the course's preview, where they
+                      // join (org world-view doc).
                       onShipTap: (ship) => context.go(
-                        WorkspaceNav.openCourseSection(
-                          GoRouterState.of(context).uri,
-                          ship.roomId,
-                          keepRoom: false,
-                        ),
+                        ship.aboard
+                            ? WorkspaceNav.openCourseSection(
+                                GoRouterState.of(context).uri,
+                                ship.roomId,
+                                keepRoom: false,
+                              )
+                            : WorkspaceNav.openCoursePreview(
+                                GoRouterState.of(context).uri,
+                                ship.roomId,
+                              ),
                       ),
                     ).layer()
                   else

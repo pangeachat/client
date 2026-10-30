@@ -6104,6 +6104,13 @@
             "city": {"type": "String"}
         }
     },
+    "worldPublicShipLabel": "{course}, a public course at {city}, open to join",
+    "@worldPublicShipLabel": {
+        "placeholders": {
+            "course": {"type": "String"},
+            "city": {"type": "String"}
+        }
+    },
     "worldCityLabel": "{city}",
     "@worldCityLabel": {
         "description": "World map: a city marker on one of the learner's trips; tapping zooms into the city.",

@@ -8,7 +8,8 @@ import 'package:fluffychat/routes/world/world_view_items.dart';
 /// The world view's markers (org world-view doc): a city as a tiny circle
 /// that grows with the XP the learner has earned there, gold-ringed once they
 /// have finished an activity (a solid gold dot on the dark basemap,
-/// light-ringed once stamped), and a ship
+/// light-ringed once stamped), and a ship, filled for a course the learner
+/// is aboard and outlined for a public course they could join,
 /// carrying its course's name at the city its trip has reached. A ship opens
 /// its course; a city brings the map down into it. A city carries no label of
 /// its own: the basemap already names it, and its name stays available to
@@ -140,9 +141,17 @@ class WorldShipMarker extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = L10n.of(context);
+    final fill = ship.aboard
+        ? theme.colorScheme.primary
+        : theme.colorScheme.surface;
+    final ink = ship.aboard
+        ? theme.colorScheme.onPrimary
+        : theme.colorScheme.primary;
     return Semantics(
       button: true,
-      label: l10n.worldShipLabel(ship.name, ship.cityName),
+      label: ship.aboard
+          ? l10n.worldShipLabel(ship.name, ship.cityName)
+          : l10n.worldPublicShipLabel(ship.name, ship.cityName),
       child: GestureDetector(
         onTap: onTap,
         behavior: HitTestBehavior.opaque,
@@ -154,7 +163,10 @@ class WorldShipMarker extends StatelessWidget {
             ),
             padding: const EdgeInsets.fromLTRB(6, 3, 10, 3),
             decoration: BoxDecoration(
-              color: theme.colorScheme.primary,
+              color: fill,
+              border: ship.aboard
+                  ? null
+                  : Border.all(color: theme.colorScheme.primary, width: 1.5),
               borderRadius: BorderRadius.circular(14),
               boxShadow: const [
                 BoxShadow(color: Colors.black45, blurRadius: 6),
@@ -163,11 +175,7 @@ class WorldShipMarker extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  Icons.sailing,
-                  size: 16,
-                  color: theme.colorScheme.onPrimary,
-                ),
+                Icon(Icons.sailing, size: 16, color: ink),
                 const SizedBox(width: 4),
                 Flexible(
                   child: Text(
@@ -175,7 +183,7 @@ class WorldShipMarker extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.labelMedium?.copyWith(
-                      color: theme.colorScheme.onPrimary,
+                      color: ink,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
