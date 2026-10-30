@@ -3,6 +3,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/bot_seat_note.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -65,22 +67,29 @@ extension IsStateExtension on Event {
     EventTypes.Encrypted,
   }.contains(type);
 
-  bool get isCollapsedState => !{
-    EventTypes.Message,
-    EventTypes.Sticker,
-    EventTypes.Encrypted,
-    EventTypes.RoomCreate,
-    EventTypes.RoomTombstone,
-    // A call is the record of something that happened, not routine room
-    // bookkeeping. Collapsing it behind "more events" would hide the only
-    // trace a missed call leaves.
-    PangeaEventTypes.call,
-    // A notice reads as the bot's message (notices.instructions.md).
-    PangeaEventTypes.botNotice,
-    // The note where the bot took the open seat explains it, so it isn't
-    // folded away (activities.instructions.md).
-    PangeaEventTypes.botParticipant,
-  }.contains(type);
+  bool get isCollapsedState =>
+      // A learner arriving in a discussion is shown on its own line (see
+      // isVisibleInPangeaGui), never folded into "more events" with the seat
+      // the server writes beside it (#9647).
+      !(type == EventTypes.RoomMember &&
+          roomMemberChangeType == RoomMemberChangeType.join &&
+          room.discussionActivityId != null) &&
+      !{
+        EventTypes.Message,
+        EventTypes.Sticker,
+        EventTypes.Encrypted,
+        EventTypes.RoomCreate,
+        EventTypes.RoomTombstone,
+        // A call is the record of something that happened, not routine room
+        // bookkeeping. Collapsing it behind "more events" would hide the only
+        // trace a missed call leaves.
+        PangeaEventTypes.call,
+        // A notice reads as the bot's message (notices.instructions.md).
+        PangeaEventTypes.botNotice,
+        // The note where the bot took the open seat explains it, so it isn't
+        // folded away (activities.instructions.md).
+        PangeaEventTypes.botParticipant,
+      }.contains(type);
 
   bool get isKnownHiddenStates =>
       {PollEventContent.responseType}.contains(type) ||
@@ -92,6 +101,17 @@ extension IsStateExtension on Event {
       return type != EventTypes.RoomMember ||
           (roomMemberChangeType != RoomMemberChangeType.avatar &&
               roomMemberChangeType != RoomMemberChangeType.other);
+    }
+    // Students arrive in a discussion over hours or days, so a learner's
+    // arrival is news there, unlike a roleplay's fixed cast (#9647). The
+    // course's admins are joined to every session automatically and the bot
+    // is no arrival, so neither is announced.
+    if (type == EventTypes.RoomMember && room.discussionActivityId != null) {
+      final userId = stateKey;
+      return roomMemberChangeType == RoomMemberChangeType.join &&
+          userId != null &&
+          userId != BotName.byEnvironment &&
+          room.getPowerLevelByUserId(userId) < 100;
     }
 
     return type != EventTypes.RoomMember;

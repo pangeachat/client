@@ -183,11 +183,6 @@ class Message extends StatelessWidget {
       }
 
       if (event.type == PangeaEventTypes.activityRole) {
-        // A discussion's seats change with every learner who joins; the
-        // member list already says who is here (#9647).
-        if (event.room.discussionActivityId != null) {
-          return const SizedBox.shrink();
-        }
         return ActivityRolesEvent(event: event);
       }
 
