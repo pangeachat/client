@@ -271,6 +271,8 @@ class _Harness {
 }
 
 void main() {
+  setUp(WholeCallTranscriber.forgetRunsInFlight);
+
   group('gating', () {
     test('disabled (flag off or unsubscribed) produces nothing', () async {
       // Mutation proof: dropping the run-time gate makes a disabled call wait the
@@ -369,6 +371,26 @@ void main() {
       },
     );
 
+    // A bad connection loses some chunks to timeouts and has the rest refused,
+    // and the half is just as empty: its recording can still fill it (#3379).
+    test(
+      'an empty half that also timed out is produced from the recording',
+      () async {
+        const refusedAndTimedOut = HalfAccounting(
+          declared: true,
+          chunksCaptured: 2,
+          chunksTranscribed: 0,
+          chunksLost: 2,
+          chunksRefusedUnsubscribed: 1,
+        );
+        final h = _Harness()
+          ..readTranscript = (_) async =>
+              _transcript(peerEmptyOwnHalf: refusedAndTimedOut);
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(h.posts, hasLength(1));
+      },
+    );
+
     test('on demand, the same half is produced rather than refused', () async {
       final h = _Harness()
         ..readTranscript = (_) async =>
@@ -394,10 +416,10 @@ void main() {
     });
 
     test(
-      'an empty own-half that LOST audio another way is still skipped',
+      'an empty own-half with a gap beyond lost chunks is still skipped',
       () async {
-        // Only the no-subscription reason is reclassified. A half that also lost
-        // a chunk for some other reason keeps its old behaviour.
+        // Audio dropped at capture is not in the recording either, so the
+        // recording cannot be read as the whole of what was said.
         final h = _Harness()
           ..readTranscript = (_) async => _transcript(
             peerEmptyOwnHalf: const HalfAccounting(
@@ -405,6 +427,7 @@ void main() {
               chunksCaptured: 3,
               chunksLost: 3,
               chunksRefusedUnsubscribed: 2,
+              captureDroppedMs: 500,
             ),
           );
         await h.build().transcribeAtCallEnd(_callKey);
@@ -633,6 +656,41 @@ void main() {
       await Future<void>.delayed(Duration.zero);
       gate.complete();
       await Future.wait([a, b]);
+      expect(h.transcribeCalls, 1);
+      expect(h.posts, hasLength(1));
+    });
+
+    test('a second instance joins the run instead of starting one', () async {
+      // The call-end run and the transcript screen are separate instances. The
+      // screen joining it is what lets it hold its loading row to the end.
+      final gate = Completer<void>();
+      final h = _Harness();
+      h.transcribe =
+          (
+            bytes, {
+            required String l1,
+            required String l2,
+            required int startedAtMs,
+            required int durationMs,
+          }) async {
+            h.transcribeCalls++;
+            await gate.future;
+            return [_seg('hola', startedAtMs)];
+          };
+      final a = h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      final b = h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      await Future<void>.delayed(Duration.zero);
+      gate.complete();
+      expect(await Future.wait([a, b]), [
+        OnDemandTranscriptionResult.produced,
+        OnDemandTranscriptionResult.produced,
+      ]);
       expect(h.transcribeCalls, 1);
       expect(h.posts, hasLength(1));
     });

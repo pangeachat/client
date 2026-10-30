@@ -4245,12 +4245,12 @@ void main() {
       );
       final half = _halfFor(transcript, alice);
       expect(half.issue, HalfIssue.notSubscribed);
-      expect(half.emptiedOnlyByNoSubscription, isTrue);
+      expect(half.waitsOnItsRecording, isTrue);
     });
 
-    test('an own half that lost audio another way still beats a peer copy', () {
-      // Only the no-subscription reason is reclassified; any other loss keeps
-      // the speaker's own record (and its note) on screen.
+    test('an own half that also timed out yields to a peer copy too', () {
+      // Refused or timed out, the chunks never came back and the recording has
+      // the words. Both at once is the ordinary shape on a bad connection.
       final transcript = assembleTranscript(
         candidates: [
           peer(writer: bob, spokenBy: alice, eventId: '\$p1', texts: ['hola']),
@@ -4259,16 +4259,13 @@ void main() {
         expectedSenders: [alice, bob],
         provenance: const {'\$p1': ProvenanceState.valid},
       );
-      final half = _halfFor(transcript, alice);
-      expect(half.segments, isEmpty);
-      expect(half.issue, HalfIssue.audioLost);
-      expect(half.emptiedOnlyByNoSubscription, isFalse);
+      expect(_halfFor(transcript, alice).segments, isNotEmpty);
     });
 
     test('a refused own half with ANY other admitted gap keeps the unit', () {
       // "Only because of no subscription" means nothing else went missing.
       // Mutation proof: dropping any one of these terms from
-      // `noSubscriptionExplainsEmptiness` lets the peer copy win here.
+      // `lostChunksExplainEmptiness` lets the peer copy win here.
       const base = HalfAccounting(
         chunksCaptured: 2,
         chunksLost: 2,
@@ -4312,10 +4309,10 @@ void main() {
           declared: true,
         ),
       };
-      expect(noSubscriptionExplainsEmptiness(const [], base), isTrue);
+      expect(lostChunksExplainEmptiness(const [], base), isTrue);
       for (final entry in variants.entries) {
         expect(
-          noSubscriptionExplainsEmptiness(const [], entry.value),
+          lostChunksExplainEmptiness(const [], entry.value),
           isFalse,
           reason: entry.key,
         );
@@ -4341,7 +4338,7 @@ void main() {
         );
         final half = _halfFor(transcript, alice);
         expect(half.segments, isEmpty, reason: entry.key);
-        expect(half.emptiedOnlyByNoSubscription, isFalse, reason: entry.key);
+        expect(half.waitsOnItsRecording, isFalse, reason: entry.key);
       }
     });
 
@@ -4390,7 +4387,7 @@ void main() {
     test('reads as emptied only by the missing subscription', () {
       final accounting = HalfAccounting.fromJson(wire);
       expect(accounting.declared, isTrue);
-      expect(noSubscriptionExplainsEmptiness(const [], accounting), isTrue);
+      expect(lostChunksExplainEmptiness(const [], accounting), isTrue);
 
       final transcript = assembleTranscript(
         candidates: [
@@ -4407,7 +4404,7 @@ void main() {
       );
       final half = _halfFor(transcript, alice);
       expect(half.issue, HalfIssue.notSubscribed);
-      expect(half.emptiedOnlyByNoSubscription, isTrue);
+      expect(half.waitsOnItsRecording, isTrue);
     });
   });
 }

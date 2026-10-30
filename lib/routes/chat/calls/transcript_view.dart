@@ -17,7 +17,9 @@ import 'package:fluffychat/pangea/common/widgets/shimmer_box.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_closure.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_pending_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
+import 'package:fluffychat/routes/chat/calls/call_half_in_flight.dart';
 import 'package:fluffychat/routes/chat/calls/call_playback_controller.dart';
 import 'package:fluffychat/routes/chat/calls/call_recordings_load.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
@@ -205,6 +207,9 @@ class CallTranscriptView extends StatefulWidget {
   @visibleForTesting
   final WholeCallTranscriber? transcriber;
 
+  /// Injected only by tests. See [_CallTranscriptViewState._readStillSending].
+  final CallAudioPendingStore? pendingStore;
+
   /// Injected only by tests, standing in for
   /// `MatrixState.pangeaController.pLanguageStore.targetOptions` -- the
   /// language list task 3's picker offers when a peer's languages do not
@@ -223,6 +228,7 @@ class CallTranscriptView extends StatefulWidget {
     this.mergedFileLoader,
     this.now,
     this.transcriber,
+    this.pendingStore,
     this.pickerLanguages,
     super.key,
   });
@@ -482,6 +488,43 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// failed is not retried by tapping again.
   final Set<String> _onDemandUnavailable = {};
 
+  /// Speakers this screen has started filling in by itself, once per screen:
+  /// a subscriber is not asked to press anything for a half whose recording is
+  /// here. A failure leaves the button (#9485).
+  final Set<String> _autoFilled = {};
+
+  /// Fills in [half] from its recording, unasked, the first time it is drawn.
+  /// Marked in flight at once so the note and the button never flash up first.
+  void _autoFill(TranscriptHalf half) {
+    final speaker = half.senderId;
+    if (!_autoFilled.add(speaker)) return;
+    _onDemandInFlight.add(speaker);
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => unawaited(_transcribeHalf(speaker, ask: false)),
+    );
+  }
+
+  /// Whether this device has not finished sending this call yet. The room
+  /// cannot know about it, so "no recording" and "no transcript" would be
+  /// false; a slow connection holds it up for minutes (#3379).
+  bool _stillSendingHere = false;
+
+  Future<void> _readStillSending() async {
+    final store = widget.pendingStore ?? pendingCallAudioStoreForPlatform();
+    final items = await store.recover();
+    if (!mounted) return;
+    final sending =
+        CallHalfInFlight.finishing.contains(widget.callKey) ||
+        items.any(
+          (item) =>
+              item.callKey == widget.callKey &&
+              item.owner == widget.room.client.userID,
+        );
+    if (sending != _stillSendingHere) {
+      setState(() => _stillSendingHere = sending);
+    }
+  }
+
   WholeCallTranscriber _buildTranscriber() => WholeCallTranscriber.forCall(
     room: widget.room,
     // The repo answers with a Result; the sink's contract is a value or a
@@ -514,6 +557,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     super.initState();
     _load();
     _listenForSync();
+    unawaited(_readStillSending());
   }
 
   /// Subscribes to the room's sync stream so a late merge/half is picked up
@@ -541,6 +585,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// first drain -- so an early sync can neither clobber that feed nor be
   /// lost.
   void _requestRefresh() {
+    unawaited(_readStillSending());
     _transcriptRefreshRequested = true;
     unawaited(_drainTranscriptRefreshes());
     _refreshRequested = true;
@@ -1061,11 +1106,18 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       _onDemandInFlight.add(speakerId);
       _onDemandUnavailable.remove(speakerId);
     });
+    await _transcribeHalf(speakerId, ask: true);
+  }
+
+  /// [ask] is whether the learner pressed the button: only then may this put a
+  /// language picker in front of them. Unasked, an unresolved pair just leaves
+  /// the button.
+  Future<void> _transcribeHalf(String speakerId, {required bool ask}) async {
     try {
       final resolved = await _transcriber.resolvePeerLanguages(speakerId);
       String? language;
       if (resolved.l1 == null || resolved.l2 == null) {
-        if (!mounted) return;
+        if (!mounted || !ask) return;
         language = await _pickLanguage();
         // Dismissed without a choice: nothing to do, and this is not the
         // UNAVAILABLE-TERMINAL case, so the plain button stays offered.
@@ -1865,6 +1917,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
                         theme: theme,
                         l10n: l10n,
                         state: _loadController.state,
+                        stillSendingHere: _stillSendingHere,
                         mergedPlayer: mergedRow == null
                             ? null
                             : _mergedRecordingPlayer(mergedRow, theme),
@@ -1955,6 +2008,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     final now = (widget.now ?? DateTime.now)();
     bool transcribing(TranscriptHalf half) {
       if (half.state != HalfState.absent || half.senderId != me) return false;
+      if (_stillSendingHere) return true;
       final recordedAt = recordingTimes[half.senderId];
       return recordedAt != null &&
           now.difference(recordedAt) < transcribingWindow;
@@ -1968,6 +2022,11 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // only no-op. The viewer's own half is the ordinary call-end flow's job.
     bool hasRecording(TranscriptHalf half) =>
         half.senderId != me && recordingTimes.containsKey(half.senderId);
+
+    // Nothing left for the reader to do about these: their recording is here.
+    for (final half in transcript.halves) {
+      if (half.waitsOnItsRecording && hasRecording(half)) _autoFill(half);
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -2032,13 +2091,13 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         if (displayTurns.isNotEmpty) ...[
           // Worked out here, where the recording set is in scope, so a half
           // still being transcribed drops out of the notes and shows as loading
-          // instead. A half emptied only because its writer had no subscription
-          // carries the same on-demand offer the per-speaker view gives it
+          // instead. An absent half, and one whose chunks never came back,
+          // carry the same on-demand offer the per-speaker view gives them
           // (#8792); every other note is text alone, as before.
           for (final half in transcript.halves)
             if (_noteFor(half, l10n, transcribing: transcribing(half))
                 case final note?)
-              if (half.emptiedOnlyByNoSubscription)
+              if (half.state == HalfState.absent || half.waitsOnItsRecording)
                 ..._onDemandOffer(
                   note: note,
                   name: _nameFor(half.senderId, l10n),
@@ -2932,10 +2991,10 @@ class _HalfSection extends StatelessWidget {
       );
     }
 
-    // A half emptied only because its writer had no subscription was never
-    // produced from their audio, so it is offered exactly as an absent half is
-    // (#8792): a subscribed reader can have it transcribed from the recording.
-    if (half.emptiedOnlyByNoSubscription) {
+    // A half whose chunks never came back was never produced from their audio,
+    // so it is offered exactly as an absent half is (#8792): a subscribed
+    // reader can have it transcribed from the recording.
+    if (half.waitsOnItsRecording) {
       return _onDemandOffer(
         note: emptyHalfNote(half, name, l10n),
         name: name,
@@ -3203,6 +3262,7 @@ class _FullCallCard extends StatelessWidget {
     required this.theme,
     required this.l10n,
     required this.state,
+    required this.stillSendingHere,
     required this.mergedPlayer,
     required this.hasDeviceRows,
     required this.expanded,
@@ -3214,6 +3274,9 @@ class _FullCallCard extends StatelessWidget {
   final ThemeData theme;
   final L10n l10n;
   final ValueListenable<CallRecordingsLoadState> state;
+
+  /// Whether this device has not finished sending the call yet.
+  final bool stillSendingHere;
 
   /// The merged recording's player, pre-built by the state, or null when no
   /// merged row is on screen (so [CallRecordingsLoadState.ready] can never be
@@ -3398,6 +3461,11 @@ class _FullCallCard extends StatelessWidget {
     // is NO player: a shimmer while still resolving, a note otherwise.
     final player = mergedPlayer;
     if (player != null) return player;
+    // This device has not sent its own recording yet, so whatever the room
+    // says about the full call is not the last word.
+    if (stillSendingHere) {
+      return _shimmer(l10n.callTranscriptPreparingRecording);
+    }
     switch (loadState) {
       case CallRecordingsLoadState.loading:
         return _shimmer(null);

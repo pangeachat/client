@@ -207,20 +207,15 @@ bool discardExplainsEmptiness(
   HalfAccounting accounting,
 ) => explainsEmptiness(MissingAudio.heldForASibling, segments, accounting);
 
-/// Whether an empty half is empty ONLY because its writer had no subscription:
-/// every chunk it lost was refused by the transcriber for that reason, and
-/// nothing else about the accounting is in doubt.
+/// Whether an empty half is empty only because its chunks never came back from
+/// the transcriber -- refused for no subscription, or lost to a timeout on a
+/// slow link -- and nothing else about the accounting is in doubt.
 ///
-/// Such a half is not a record of what the speaker said; it is a record that
-/// nobody was paying to transcribe it from that device. A subscribed
-/// participant can still transcribe the speaker's saved recording (#8792), so
-/// this half counts as NOT produced: the backfill does not skip it, and a valid
-/// peer-produced half for the same unit wins over it in assembly. Any other
-/// loss or gap the writer admits (audio dropped at capture, a stretch handed to
-/// a sibling, words omitted to fit, an unfinished drain), an incoherent or
-/// undeclared accounting, or a refused microphone keeps the half exactly as it
-/// was.
-bool noSubscriptionExplainsEmptiness(
+/// The speech is in the saved recording, so such a half is NOT a record of what
+/// was said: a subscriber's transcription of that recording replaces it. Both
+/// causes at once is the ordinary shape on a bad connection, where some chunks
+/// time out and the rest are refused.
+bool lostChunksExplainEmptiness(
   List<TranscriptSegment> segments,
   HalfAccounting accounting,
 ) =>
@@ -235,8 +230,7 @@ bool noSubscriptionExplainsEmptiness(
     !accounting.truncated &&
     accounting.segmentsOmitted == 0 &&
     accounting.drainComplete &&
-    accounting.chunksLost > 0 &&
-    accounting.chunksRefusedUnsubscribed == accounting.chunksLost;
+    accounting.chunksLost > 0;
 
 /// Whether [claim]'s audio is missing from the TRANSCRIPT -- gone from this
 /// half and from every other half of the same speaker in the same assembly.
@@ -1444,13 +1438,11 @@ class TranscriptHalf {
     discardWasCovered: discardWasCovered,
   );
 
-  /// Whether this half is empty only because its writer had no subscription,
-  /// so it still waits on a transcription of the speaker's saved recording.
-  /// See [noSubscriptionExplainsEmptiness]; asked through [issue] as well so
-  /// the screen, the backfill and the note all name the same cause.
-  bool get emptiedOnlyByNoSubscription =>
-      issue == HalfIssue.notSubscribed &&
-      noSubscriptionExplainsEmptiness(segments, accounting);
+  /// Whether this half has no words yet only because its chunks never came
+  /// back, so the speaker's saved recording can still fill it. See
+  /// [lostChunksExplainEmptiness].
+  bool get waitsOnItsRecording =>
+      lostChunksExplainEmptiness(segments, accounting);
 
   /// Whether this half is a person who was recorded and said nothing.
   ///
@@ -2694,11 +2686,11 @@ String? _effectiveSpeakerOf(
 ///    first, latest attempt within a lane. See there for why the lane, not the
 ///    clock, is primary.
 ///
-/// One exception to tier 1 (#8792): an authentic half emptied ONLY because its
-/// writer had no subscription ([noSubscriptionExplainsEmptiness]) ranks BELOW a
-/// peer-produced one. It is not the speaker's record of their words, only a
-/// record that nobody paid to transcribe them on that device, so a valid peer
-/// transcription of the same recording is the better account of the speaker.
+/// One exception to tier 1 (#8792): an authentic half emptied only because its
+/// chunks never came back ([lostChunksExplainEmptiness]) ranks BELOW a
+/// peer-produced one. It is not the speaker's record of their words, so a valid
+/// peer transcription of the same recording is the better account of the
+/// speaker.
 ///
 /// Used as a running-max predicate: "does [candidate] rank strictly above
 /// [held]". The rank is compared first and each rank is a total order within
@@ -2718,14 +2710,11 @@ bool _winsUnit(
 }
 
 /// The tier [_winsUnit] compares first: an authentic half (2) over a
-/// peer-produced one (1) over an authentic half emptied only by the writer
-/// having no subscription (0).
+/// peer-produced one (1) over an authentic half emptied only by its chunks
+/// never coming back (0).
 int _unitRank(TranscriptCandidate candidate, String speaker) {
   if (candidate.senderId != speaker) return 1;
-  return noSubscriptionExplainsEmptiness(
-        candidate.segments,
-        candidate.accounting,
-      )
+  return lostChunksExplainEmptiness(candidate.segments, candidate.accounting)
       ? 0
       : 2;
 }

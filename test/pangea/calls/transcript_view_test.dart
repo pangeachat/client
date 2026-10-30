@@ -18,7 +18,9 @@ import 'package:fluffychat/pangea/common/widgets/shimmer_box.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_pending_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
+import 'package:fluffychat/routes/chat/calls/call_half_in_flight.dart';
 import 'package:fluffychat/routes/chat/calls/call_recordings_load.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
@@ -2278,6 +2280,7 @@ void main() {
       // picker's language list with plain fake seams.
       WholeCallTranscriber? transcriber,
       List<LanguageModel>? pickerLanguages,
+      CallAudioPendingStore? pendingStore,
       // Injected only by the tests that read a peer-produced half, which
       // resolve its source recording without a homeserver.
       AudioEventFetcher? audioFetcher,
@@ -2319,6 +2322,7 @@ void main() {
               now: now,
               transcriber: transcriber,
               pickerLanguages: pickerLanguages,
+              pendingStore: pendingStore ?? InMemoryCallAudioPendingStore(),
             ),
           ),
         ),
@@ -5957,53 +5961,134 @@ void main() {
         },
       );
 
-      testWidgets(
-        'timeline: a peer half refused for no subscription offers Transcribe',
-        (tester) async {
-          // The QA scenario: the viewer's turns are placed, so the timeline is
-          // drawn and the peer's note sits below it. Mutation proof: dropping
-          // the offer from the timeline notes leaves only the note -> RED.
+      // #9485: the recording is here and the reader is subscribed, so there is
+      // nothing to ask. The note and the button are what is left when the
+      // attempt comes to nothing.
+      for (final placed in [true, false]) {
+        final shape = placed ? 'timeline' : 'per speaker';
+        testWidgets('$shape: a refused peer half transcribes itself, showing a '
+            'loading row and no note', (tester) async {
           MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final languages = Completer<({String? l1, String? l2})>();
           await pumpWithRecordings(
             tester,
             room(),
             servingByType([
-              half(_me, texts: const ['hola'], atMs: [_callStart]),
+              half(
+                _me,
+                texts: const ['hola'],
+                atMs: placed ? [_callStart] : null,
+              ),
               refusedHalf(_peer),
               audioEvent(_peer),
             ]),
+            transcriber: buildFakeTranscriber(
+              resolvePeerLanguages: (_) => languages.future,
+              post:
+                  ({
+                    required callKey,
+                    required spokenBy,
+                    required sourceAudioEventId,
+                    required deviceId,
+                    required langCode,
+                    required clockAnchor,
+                    required segments,
+                  }) async {},
+            ),
           );
 
-          expect(find.byType(TurnTimeline), findsOneWidget);
+          expect(find.textContaining('Still transcribing'), findsOneWidget);
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsNothing,
+          );
+          expect(find.text('Transcribe'), findsNothing);
+
+          languages.complete((l1: null, l2: null));
+          await tester.pumpAndSettle();
+          expect(find.byType(SimpleDialog), findsNothing, reason: 'unasked');
+          expect(find.text('Transcribe'), findsOneWidget);
           expect(
             find.textContaining('did not have a subscription'),
             findsOneWidget,
           );
-          expect(find.text('Transcribe'), findsOneWidget);
-        },
-      );
+        });
+      }
 
-      testWidgets('per speaker: a peer half refused for no subscription offers '
-          'Transcribe', (tester) async {
-        // Mutation proof: offering the button only for an ABSENT half leaves
-        // this section with the note alone -> RED.
+      testWidgets('timeline: an absent peer half offers Transcribe', (
+        tester,
+      ) async {
+        // The gap #9452 left: the per-speaker view offered it, the notes under
+        // the timeline did not.
         MatrixState.pangeaController = FakePangeaController(subscribed: true);
         await pumpWithRecordings(
           tester,
           room(),
           servingByType([
-            half(_me, texts: const ['hola']),
-            refusedHalf(_peer),
+            half(_me, texts: const ['hola'], atMs: [_callStart]),
             audioEvent(_peer),
           ]),
         );
 
-        expect(find.byType(TurnTimeline), findsNothing);
-        expect(
-          find.textContaining('did not have a subscription'),
-          findsOneWidget,
-        );
+        expect(find.byType(TurnTimeline), findsOneWidget);
         expect(find.text('Transcribe'), findsOneWidget);
+      });
+
+      // A slow connection parks this device's own recording. The room has none
+      // yet, and saying so was false (#3379).
+      testWidgets('a call this device is still finishing reads as being '
+          'prepared', (tester) async {
+        MatrixState.pangeaController = FakePangeaController(subscribed: true);
+        CallHalfInFlight.finishing.add(_callKey);
+        addTearDown(() => CallHalfInFlight.finishing.remove(_callKey));
+        await pumpWithRecordings(tester, room(), servingByType(const []));
+        await tester.runAsync(() => Future<void>.delayed(Duration.zero));
+        await tester.pump();
+
+        expect(find.text('Preparing the full recording…'), findsOneWidget);
+        expect(
+          find.textContaining('No recording of the full call'),
+          findsNothing,
+        );
+        expect(find.textContaining('Still transcribing'), findsOneWidget);
+      });
+
+      testWidgets('a recording still waiting here reads as being prepared', (
+        tester,
+      ) async {
+        MatrixState.pangeaController = FakePangeaController(subscribed: true);
+        final pending = InMemoryCallAudioPendingStore();
+        await pending.persist(
+          PendingCallAudio.create(
+            audioTxnId: 'txn',
+            transcriptTxnId: null,
+            roomId: '!room:fakeServer.notExisting',
+            owner: _me,
+            deviceId: null,
+            generationId: 'gen',
+            callKey: _callKey,
+            expectedBytes: 4,
+            contentSha256: 'hash',
+            audioContent: const {},
+          ),
+          Uint8List(4),
+        );
+        await pumpWithRecordings(
+          tester,
+          room(),
+          servingByType([
+            half(_me, texts: const ['hola']),
+          ]),
+          pendingStore: pending,
+        );
+        await tester.runAsync(() => Future<void>.delayed(Duration.zero));
+        await tester.pump();
+
+        expect(find.text('Preparing the full recording…'), findsOneWidget);
+        expect(
+          find.textContaining('No recording of the full call'),
+          findsNothing,
+        );
       });
 
       testWidgets(
@@ -6079,7 +6164,7 @@ void main() {
       );
 
       testWidgets(
-        'timeline: tapping Transcribe on a refused peer half fills it in',
+        'timeline: a refused peer half fills itself in, with nothing tapped',
         (tester) async {
           MatrixState.pangeaController = FakePangeaController(subscribed: true);
           final events = [
@@ -6121,8 +6206,6 @@ void main() {
             servingByType(events),
             transcriber: fake,
           );
-
-          await tester.tap(find.text('Transcribe'));
           await tester.pumpAndSettle();
 
           expect(posted, [_peer]);

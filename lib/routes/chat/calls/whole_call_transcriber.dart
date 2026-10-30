@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:flutter/foundation.dart' show visibleForTesting;
+
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -264,12 +266,17 @@ class WholeCallTranscriber {
   /// Injected so a test gets a deterministic wait; defaults to `Random`.
   final double Function() _jitter;
 
-  /// The recording devices currently being transcribed by THIS instance, so a
-  /// concurrent call-end and on-demand run (or two backfill passes) never
-  /// transcribe one device twice. In-memory and per-instance by design -- a
-  /// cross-device or cross-process duplicate is caught by the skip re-check and
-  /// is benign (the deterministic transaction id collapses a duplicate event).
-  final Set<String> _inFlight = {};
+  /// The runs in progress in this process, by call, speaker and recording
+  /// device. The call-end run and the transcript screen are two instances, so
+  /// this is shared: a second asker joins the first and sees its result, which
+  /// is what lets the screen hold its loading row instead of spending a second
+  /// speech-to-text. A cross-device or cross-process duplicate is caught by the
+  /// skip re-check and is benign (the deterministic transaction id collapses a
+  /// duplicate event).
+  static final Map<String, Future<OnDemandTranscriptionResult>> _inFlight = {};
+
+  @visibleForTesting
+  static void forgetRunsInFlight() => _inFlight.clear();
 
   WholeCallTranscriber({
     required this.selfUserId,
@@ -532,88 +539,96 @@ class WholeCallTranscriber {
 
     final device = recording.content.deviceId;
     // Keyed by speaker AND device: a moved call leaves one speaker several
-    // recordings, each its own unit of work.
-    final flight = '$speaker|${device ?? ''}';
-    // Check-and-add is atomic: there is no await between them, so two concurrent
-    // runs for one device cannot both pass. A concurrent pass holding the lock
-    // means a half for this exact unit is already being written, so this reads
-    // as already-present: the view re-reads rather than marking it unavailable.
-    if (_inFlight.contains(flight)) {
+    // recordings, each its own unit of work. No await between the read and the
+    // write, so two concurrent runs for one device cannot both start one.
+    final flight = '$callKey|$speaker|${device ?? ''}';
+    return _inFlight[flight] ??=
+        _transcribeOnePeer(
+          callKey,
+          recording,
+          chosenLanguage: chosenLanguage,
+        ).whenComplete(() {
+          // A block, not an arrow: `remove` returns this very future, and
+          // `whenComplete` would wait on it for ever.
+          _inFlight.remove(flight);
+        });
+  }
+
+  Future<OnDemandTranscriptionResult> _transcribeOnePeer(
+    String callKey,
+    CallAudioRecording recording, {
+    String? chosenLanguage,
+  }) async {
+    final speaker = recording.senderId;
+    final device = recording.content.deviceId;
+    final resolved = await resolvePeerLanguages(speaker);
+    // The target language drives the whole provider chain, so it must be the
+    // SPEAKER's -- the peer's resolved target, or the picker's explicit choice.
+    final l2 = chosenLanguage ?? resolved.l2;
+    // The base language is the peer's, falling back to the picker's choice only
+    // so the request has a pair at all when the peer's profile did not resolve.
+    final l1 = resolved.l1 ?? chosenLanguage;
+    // Unresolved with no picker choice: NO auto-produce and no silent fallback
+    // -- the on-demand language picker (task 3) is the recovery, so this stays
+    // retryable rather than terminal. (Unreached on the on-demand path, which
+    // resolves the language before calling; the auto path discards the result.)
+    if (l1 == null || l2 == null) return OnDemandTranscriptionResult.disabled;
+
+    // Re-read before spending speech-to-text: the transcript that gated this
+    // in [_backfillPeers] may be stale, and a peer authentic half or another
+    // subscriber's valid half may have landed since.
+    if (_skip(await readTranscript(callKey), speaker, device)) {
       return OnDemandTranscriptionResult.alreadyPresent;
     }
-    _inFlight.add(flight);
+
+    final Uint8List? bytes;
     try {
-      final resolved = await resolvePeerLanguages(speaker);
-      // The target language drives the whole provider chain, so it must be the
-      // SPEAKER's -- the peer's resolved target, or the picker's explicit choice.
-      final l2 = chosenLanguage ?? resolved.l2;
-      // The base language is the peer's, falling back to the picker's choice only
-      // so the request has a pair at all when the peer's profile did not resolve.
-      final l1 = resolved.l1 ?? chosenLanguage;
-      // Unresolved with no picker choice: NO auto-produce and no silent fallback
-      // -- the on-demand language picker (task 3) is the recovery, so this stays
-      // retryable rather than terminal. (Unreached on the on-demand path, which
-      // resolves the language before calling; the auto path discards the result.)
-      if (l1 == null || l2 == null) return OnDemandTranscriptionResult.disabled;
-
-      // Re-read before spending speech-to-text: the transcript that gated this
-      // in [_backfillPeers] may be stale, and a peer authentic half or another
-      // subscriber's valid half may have landed since.
-      if (_skip(await readTranscript(callKey), speaker, device)) {
-        return OnDemandTranscriptionResult.alreadyPresent;
-      }
-
-      final Uint8List? bytes;
-      try {
-        bytes = await _download(recording);
-      } catch (_) {
-        // A transient download failure (_download rethrows those; a malformed
-        // url comes back null below). Retryable, not terminal.
-        return OnDemandTranscriptionResult.downloadFailed;
-      }
-      if (bytes == null || bytes.isEmpty) {
-        return OnDemandTranscriptionResult.audioUnavailable;
-      }
-
-      final segments = await transcribe(
-        bytes,
-        l1: l1,
-        l2: l2,
-        startedAtMs: _peerStartMs(recording),
-        durationMs: recording.content.durationMs,
-      );
-      // An empty transcription is NOT posted as "the peer said nothing": a
-      // subscriber's speech-to-text miss must not put that claim in the peer's
-      // mouth. The unit stays absent, and the on-demand button remains. The
-      // audio was there but yielded nothing usable, so this reads as unavailable.
-      if (segments.isEmpty) return OnDemandTranscriptionResult.audioUnavailable;
-
-      // Re-check once more before sending: STT is the slow step, and a half may
-      // have landed while it ran.
-      if (_skip(await readTranscript(callKey), speaker, device)) {
-        return OnDemandTranscriptionResult.alreadyPresent;
-      }
-
-      await post(
-        callKey: callKey,
-        spokenBy: speaker,
-        sourceAudioEventId: recording.eventId,
-        deviceId: recording.content.deviceId,
-        langCode: l2,
-        clockAnchor: recording.content.clockAnchor,
-        segments: segments,
-      );
-      return OnDemandTranscriptionResult.produced;
-    } finally {
-      _inFlight.remove(flight);
+      bytes = await _download(recording);
+    } catch (_) {
+      // A transient download failure (_download rethrows those; a malformed
+      // url comes back null below). Retryable, not terminal.
+      return OnDemandTranscriptionResult.downloadFailed;
     }
+    if (bytes == null || bytes.isEmpty) {
+      return OnDemandTranscriptionResult.audioUnavailable;
+    }
+
+    final segments = await transcribe(
+      bytes,
+      l1: l1,
+      l2: l2,
+      startedAtMs: _peerStartMs(recording),
+      durationMs: recording.content.durationMs,
+    );
+    // An empty transcription is NOT posted as "the peer said nothing": a
+    // subscriber's speech-to-text miss must not put that claim in the peer's
+    // mouth. The unit stays absent, and the on-demand button remains. The
+    // audio was there but yielded nothing usable, so this reads as unavailable.
+    if (segments.isEmpty) return OnDemandTranscriptionResult.audioUnavailable;
+
+    // Re-check once more before sending: STT is the slow step, and a half may
+    // have landed while it ran.
+    if (_skip(await readTranscript(callKey), speaker, device)) {
+      return OnDemandTranscriptionResult.alreadyPresent;
+    }
+
+    await post(
+      callKey: callKey,
+      spokenBy: speaker,
+      sourceAudioEventId: recording.eventId,
+      deviceId: recording.content.deviceId,
+      langCode: l2,
+      clockAnchor: recording.content.clockAnchor,
+      segments: segments,
+    );
+    return OnDemandTranscriptionResult.produced;
   }
 
   /// Whether [speaker]'s recording from [device] already has a half in the
   /// assembled transcript. A half that resolved to words or an empty-but-
   /// present authentic half both count; an absent one is produced, and so is
-  /// one emptied only because its writer had no subscription (#8792) -- that
-  /// half says nobody paid to transcribe it, not what was said. Keyed
+  /// one whose chunks never came back (#8792) -- that half says the words did
+  /// not reach a transcriber, not what they were. Keyed
   /// by speaker AND device (client#9173): a moved call leaves one speaker a
   /// recording per device. A half that names no devices -- an older writer --
   /// speaks for the speaker's whole side, as it always did.
@@ -622,7 +637,7 @@ class WholeCallTranscriber {
         (half) =>
             half.senderId == speaker &&
             half.state != HalfState.absent &&
-            !half.emptiedOnlyByNoSubscription &&
+            !half.waitsOnItsRecording &&
             (device == null ||
                 half.deviceIds.isEmpty ||
                 half.deviceIds.contains(device)),
