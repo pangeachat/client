@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:flutter/foundation.dart' show compute, kIsWeb;
+import 'package:flutter/foundation.dart' show ValueNotifier, compute, kIsWeb;
 import 'package:flutter/services.dart' show MethodChannel;
 
 import 'package:crypto/crypto.dart';
@@ -10,6 +10,8 @@ import 'package:matrix/matrix.dart' show Logs;
 import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_rows_stub.dart'
+    if (dart.library.js_interop) 'package:fluffychat/routes/chat/calls/call_audio_rows_web.dart';
 
 /// Where a finished call's recording waits between hangup and its audio half
 /// confirming, so an app kill or a slow upload does not lose it.
@@ -153,27 +155,180 @@ void _reportLost(String reason, String audioTxnId) {
   );
 }
 
-/// Held in memory only. The store on the web, which has no durable file system
-/// a recording could survive a reload in -- a reload there loses the item, and
-/// [persist] says so in the log -- and the store tests use.
-class InMemoryCallAudioPendingStore implements CallAudioPendingStore {
-  final Map<String, PendingCallAudio> _items = {};
-  final Map<String, Uint8List> _wavs = {};
-  bool _webLossLogged = false;
+/// Keeps the newest items within [kMaxPendingCallAudioItems] and
+/// [kMaxPendingCallAudioBytes], newest first, and hands the rest to [drop].
+Future<List<PendingCallAudio>> _withinCap(
+  List<PendingCallAudio> items,
+  Future<void> Function(PendingCallAudio item) drop,
+) async {
+  items.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+  final kept = <PendingCallAudio>[];
+  var bytes = 0;
+  for (final item in items) {
+    if (kept.length >= kMaxPendingCallAudioItems ||
+        bytes + item.expectedBytes > kMaxPendingCallAudioBytes) {
+      _reportLost('over the pending recordings cap', item.audioTxnId);
+      await drop(item);
+      continue;
+    }
+    bytes += item.expectedBytes;
+    kept.add(item);
+  }
+  return kept;
+}
 
-  /// One per process, so a resume finds what the live finish held.
-  static final InMemoryCallAudioPendingStore shared =
-      InMemoryCallAudioPendingStore();
+/// Whether a recording is waiting on the web store, so the tab can ask before
+/// it closes.
+final ValueNotifier<bool> callAudioWaitingToSend = ValueNotifier(false);
+
+/// What the web store needs of its database: records and WAVs, by the audio
+/// half's transaction id. Each put is durable when it returns.
+abstract class PendingCallAudioRows {
+  Future<void> putRecord(String id, String json);
+  Future<String?> getRecord(String id);
+  Future<void> putWav(String id, Uint8List wav);
+  Future<Uint8List?> getWav(String id);
+  Future<void> remove(String id);
+  Future<List<String>> ids();
+}
+
+/// The native store's rules over [PendingCallAudioRows]: the record first, then
+/// the WAV, then the record saying so; judged by length and hash on the way
+/// back; the same retention window and cap; purged with the account.
+class RowsCallAudioPendingStore implements CallAudioPendingStore {
+  final PendingCallAudioRows _rows;
+
+  RowsCallAudioPendingStore(this._rows);
+
+  /// Being written by this process right now, which [recover] must not take
+  /// for what a crash left.
+  final Set<String> _writing = {};
+
+  Future<void> _put(PendingCallAudio item) =>
+      _rows.putRecord(item.audioTxnId, jsonEncode(item.json));
 
   @override
   Future<bool> persist(PendingCallAudio item, Uint8List wav) async {
-    if (kIsWeb && !_webLossLogged) {
-      _webLossLogged = true;
-      Logs().w(
-        'Call recordings wait in memory only on the web; closing or reloading '
-        'the tab before the audio half lands loses it',
-      );
+    final id = item.audioTxnId;
+    _writing.add(id);
+    try {
+      await _put(item.withStatus(PendingCallAudio.persisting));
+      await _rows.putWav(id, wav);
+      await _put(item.withStatus(PendingCallAudio.persisted));
+      callAudioWaitingToSend.value = true;
+      return true;
+    } catch (e, s) {
+      Logs().w('Could not keep the call recording in this browser', e, s);
+      return false;
+    } finally {
+      _writing.remove(id);
     }
+  }
+
+  @override
+  Future<void> update(PendingCallAudio item) async {
+    // Never resurrects a deleted item.
+    if (await _rows.getRecord(item.audioTxnId) == null) return;
+    await _put(item);
+  }
+
+  @override
+  Future<void> delete(String audioTxnId) async {
+    await _rows.remove(audioTxnId);
+    await _noteWaiting();
+  }
+
+  Future<void> _noteWaiting() async {
+    callAudioWaitingToSend.value = (await _rows.ids()).isNotEmpty;
+  }
+
+  Future<bool> _complete(PendingCallAudio item) async {
+    final wav = await _rows.getWav(item.audioTxnId);
+    return wav != null &&
+        wav.length == item.expectedBytes &&
+        await callAudioSha256(wav) == item.contentSha256;
+  }
+
+  @override
+  Future<List<PendingCallAudio>> recover() async {
+    final List<String> ids;
+    try {
+      ids = await _rows.ids();
+    } catch (e, s) {
+      Logs().w('Could not list the pending call recordings', e, s);
+      return const [];
+    }
+    final items = <PendingCallAudio>[];
+    final now = DateTime.now();
+    for (final id in ids) {
+      if (_writing.contains(id)) continue;
+      try {
+        final raw = await _rows.getRecord(id);
+        final json = raw == null ? null : jsonDecode(raw);
+        if (!PendingCallAudio.isWellFormed(json)) {
+          _reportLost('an unreadable record', id);
+          await _rows.remove(id);
+          continue;
+        }
+        var item = PendingCallAudio(Map<String, dynamic>.from(json as Map));
+        if (now.difference(item.createdAt) > PendingCallAudio.ttl) {
+          _reportLost('older than its retention window', id);
+          await _rows.remove(id);
+          continue;
+        }
+        if (item.status == PendingCallAudio.sent) {
+          await _rows.remove(id);
+          continue;
+        }
+        if (!await _complete(item)) {
+          _reportLost('its recording was incomplete', id);
+          await _rows.remove(id);
+          continue;
+        }
+        if (item.status == PendingCallAudio.persisting) {
+          item = item.withStatus(PendingCallAudio.persisted);
+          await _put(item);
+        }
+        items.add(item);
+      } catch (e, s) {
+        Logs().w('Could not recover a pending call recording', e, s);
+      }
+    }
+    final kept = await _withinCap(
+      items,
+      (item) => _rows.remove(item.audioTxnId),
+    );
+    await _noteWaiting();
+    return kept;
+  }
+
+  @override
+  Future<Uint8List?> readVerified(PendingCallAudio item) async =>
+      await _complete(item) ? _rows.getWav(item.audioTxnId) : null;
+
+  @override
+  Future<void> purgeOwner(String owner) async {
+    try {
+      for (final id in await _rows.ids()) {
+        final raw = await _rows.getRecord(id);
+        if (raw == null) continue;
+        final json = jsonDecode(raw);
+        if (json is Map && json['owner'] == owner) await _rows.remove(id);
+      }
+      await _noteWaiting();
+    } catch (e, s) {
+      Logs().w('Could not purge the pending call recordings', e, s);
+    }
+  }
+}
+
+/// Held in memory only. The store the tests use.
+class InMemoryCallAudioPendingStore implements CallAudioPendingStore {
+  final Map<String, PendingCallAudio> _items = {};
+  final Map<String, Uint8List> _wavs = {};
+
+  @override
+  Future<bool> persist(PendingCallAudio item, Uint8List wav) async {
     _items[item.audioTxnId] = item.withStatus(PendingCallAudio.persisted);
     _wavs[item.audioTxnId] = wav;
     return true;
@@ -264,11 +419,17 @@ class FileCallAudioPendingStore implements CallAudioPendingStore {
     await tmp.rename(_sidecar(dir, h).path);
   }
 
+  /// Being written by this process right now, which [recover] must not take
+  /// for what a crash left: it now runs through a live session, not only at
+  /// launch.
+  final Set<String> _writing = {};
+
   @override
   Future<bool> persist(PendingCallAudio item, Uint8List wav) async {
+    final h = nameFor(item.audioTxnId);
+    _writing.add(h);
     try {
       final dir = await _ensureDir();
-      final h = nameFor(item.audioTxnId);
       // 1. The sidecar FIRST, carrying the length and hash the WAV must match:
       // whatever a crash leaves behind is judged against it.
       await _writeSidecar(dir, item.withStatus(PendingCallAudio.persisting));
@@ -282,6 +443,8 @@ class FileCallAudioPendingStore implements CallAudioPendingStore {
     } catch (e, s) {
       Logs().w('Could not keep the call recording on disk', e, s);
       return false;
+    } finally {
+      _writing.remove(h);
     }
   }
 
@@ -349,7 +512,7 @@ class FileCallAudioPendingStore implements CallAudioPendingStore {
 
     final items = <PendingCallAudio>[];
     final now = DateTime.now();
-    for (final h in names) {
+    for (final h in names.difference(_writing)) {
       try {
         // A sidecar write that never reached its rename: the previous state
         // (if any) is the real one.
@@ -415,21 +578,10 @@ class FileCallAudioPendingStore implements CallAudioPendingStore {
       }
     }
 
-    // Retention: newest first, at most N items and B bytes.
-    items.sort((a, b) => b.createdAt.compareTo(a.createdAt));
-    final kept = <PendingCallAudio>[];
-    var bytes = 0;
-    for (final item in items) {
-      if (kept.length >= kMaxPendingCallAudioItems ||
-          bytes + item.expectedBytes > kMaxPendingCallAudioBytes) {
-        _reportLost('over the pending recordings cap', item.audioTxnId);
-        await _deleteName(dir, nameFor(item.audioTxnId));
-        continue;
-      }
-      bytes += item.expectedBytes;
-      kept.add(item);
-    }
-    return kept;
+    return _withinCap(
+      items,
+      (item) => _deleteName(dir, nameFor(item.audioTxnId)),
+    );
   }
 
   @override
@@ -488,8 +640,11 @@ class FileCallAudioPendingStore implements CallAudioPendingStore {
 }
 
 /// The store this platform uses: on disk where there is a file system, in
-/// memory on the web.
+/// IndexedDB on the web.
 CallAudioPendingStore pendingCallAudioStoreForPlatform() =>
-    kIsWeb ? InMemoryCallAudioPendingStore.shared : _sharedFileStore;
+    kIsWeb ? _sharedWebStore : _sharedFileStore;
 
 final FileCallAudioPendingStore _sharedFileStore = FileCallAudioPendingStore();
+final RowsCallAudioPendingStore _sharedWebStore = RowsCallAudioPendingStore(
+  indexedDbPendingCallAudioRows(),
+);
