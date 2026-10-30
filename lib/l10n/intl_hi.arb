@@ -3082,7 +3082,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-27 14:57:15.810657",
+    "@@last_modified": "2026-10-29 11:20:40.218530",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10683,6 +10683,14 @@
     "centralCourseOfferTitle": "{course} में शामिल हों?",
     "makeMyOwnCourseInstead": "इसके बजाय अपना कोर्स बनाएं",
     "suggestMobileSignInSameAccount": "फिर इसी अकाउंट से ऐप में साइन इन करें।",
+    "focusMission": "इस मिशन की गतिविधियों पर ध्यान दें",
+    "missionNotYetOpen": "अभी खुला नहीं है",
+    "objectiveCircleClosed": "मिशन {index}, अभी खुला नहीं है",
+    "missionOpensOn": "{date} को खुलता है",
+    "missionOpensAfter": "मिशन {index} के बाद खुलता है",
+    "enterCityEarly": "जल्दी प्रवेश करें",
+    "enterCityEarlyTitle": "{city} में जल्दी प्रवेश करें?",
+    "enterCityEarlyBody": "यह शहर अभी आपके लिए खुला नहीं है। क्लास से आगे यात्रा करने की एक लागत होती है; इसकी लागत क्या होगी यह अभी तय किया जा रहा है, इसलिए अभी कुछ भी शुल्क नहीं लिया जाएगा।",
     "botJoinsIn": "पंगिया बॉट {duration} में शामिल होता है",
     "botIsJoining": "पंगिया बॉट शामिल हो रहा है…",
     "playWithBotNowTitle": "अभी पंगिया बॉट के साथ खेलें?",

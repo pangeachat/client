@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-27 14:57:22.737339",
+    "@@last_modified": "2026-10-29 11:20:55.508856",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10683,6 +10683,14 @@
     "centralCourseOfferTitle": "เข้าร่วม {course} ไหม",
     "makeMyOwnCourseInstead": "สร้างคอร์สของฉันเองดีกว่า",
     "suggestMobileSignInSameAccount": "จากนั้นลงชื่อเข้าใช้แอปด้วยบัญชีนี้",
+    "focusMission": "มุ่งเน้นกิจกรรมของภารกิจนี้",
+    "missionNotYetOpen": "ยังไม่เปิด",
+    "objectiveCircleClosed": "ภารกิจที่ {index} ยังไม่เปิด",
+    "missionOpensOn": "เปิดวันที่ {date}",
+    "missionOpensAfter": "เปิดหลังจากภารกิจที่ {index}",
+    "enterCityEarly": "เข้าเมืองก่อน",
+    "enterCityEarlyTitle": "เข้าเมือง {city} ก่อนหรือไม่?",
+    "enterCityEarlyBody": "เมืองนี้ยังไม่เปิดให้คุณเข้า การเดินทางล่วงหน้าก่อนชั้นเรียนมีค่าใช้จ่าย ซึ่งกำลังอยู่ระหว่างการตัดสินใจ ดังนั้นตอนนี้จึงยังไม่มีการเรียกเก็บเงิน",
     "botJoinsIn": "Pangea Bot จะเข้าร่วมใน {duration}",
     "botIsJoining": "Pangea Bot กำลังเข้าร่วม…",
     "playWithBotNowTitle": "เล่นกับ Pangea Bot ตอนนี้เลยไหม?",

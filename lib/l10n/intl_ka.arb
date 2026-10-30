@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-27 14:57:17.251683",
+    "@@last_modified": "2026-10-29 11:20:43.700414",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10951,6 +10951,14 @@
     "centralCourseOfferTitle": "შეუერთდეთ {course}-ს?",
     "makeMyOwnCourseInstead": "სამაგიეროდ შევქმნა ჩემი კურსი",
     "suggestMobileSignInSameAccount": "შემდეგ შედით აპლიკაციაში ამ ანგარიშით.",
+    "focusMission": "ფოკუსირება ამ მისიის აქტივობებზე",
+    "missionNotYetOpen": "ჯერ არ არის გახსნილი",
+    "objectiveCircleClosed": "მისია {index}, ჯერ არ არის გახსნილი",
+    "missionOpensOn": "გაიხსნება {date}",
+    "missionOpensAfter": "გაიხსნება მისიის {index} შემდეგ",
+    "enterCityEarly": "ადრე შესვლა",
+    "enterCityEarlyTitle": "ადრე შეხვიდეთ {city}-ში?",
+    "enterCityEarlyBody": "ეს ქალაქი ჯერ არ არის თქვენთვის გახსნილი. კლასზე ადრე მოგზაურობას აქვს ფასი; რა ღირს, ჯერ კიდევ გადაწყვეტილია, ასე რომ, ჯერჯერობით არაფერი ირიცხება.",
     "botJoinsIn": "Pangea Bot შემოგიერთდებათ {duration}-ში",
     "botIsJoining": "Pangea Bot გიერთდებათ…",
     "playWithBotNowTitle": "ითამაშებთ Pangea Bot-თან ახლავე?",

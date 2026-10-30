@@ -1256,7 +1256,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-27 14:57:24.431960",
+    "@@last_modified": "2026-10-29 11:20:57.813381",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11008,6 +11008,14 @@
     "centralCourseOfferTitle": "加入{course}？",
     "makeMyOwnCourseInstead": "自己建立課程",
     "suggestMobileSignInSameAccount": "然後用呢個帳戶登入應用程式。",
+    "focusMission": "專注於此任務的活動",
+    "missionNotYetOpen": "尚未開放",
+    "objectiveCircleClosed": "任務 {index}，尚未開放",
+    "missionOpensOn": "{date} 開放",
+    "missionOpensAfter": "任務 {index} 後開放",
+    "enterCityEarly": "提早進入",
+    "enterCityEarlyTitle": "提早進入 {city}？",
+    "enterCityEarlyBody": "此城市尚未向您開放。比班級提早前往需要付出代價；目前代價仍在決定中，因此暫時不收取任何費用。",
     "botJoinsIn": "Pangea機械人將會喺{duration}之後加入",
     "botIsJoining": "Pangea機械人正在加入…",
     "playWithBotNowTitle": "而家同Pangea機械人玩？",

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-27 14:57:14.586310",
+    "@@last_modified": "2026-10-29 11:20:37.513520",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8283,6 +8283,14 @@
     "centralCourseOfferTitle": "¿Unirse a {course}?",
     "makeMyOwnCourseInstead": "Crear mi propio curso",
     "suggestMobileSignInSameAccount": "Luego inicia sesión en la aplicación con esta cuenta.",
+    "focusMission": "Concéntrate en las actividades de esta misión",
+    "missionNotYetOpen": "Aún no está abierta",
+    "objectiveCircleClosed": "Misión {index}, aún no está abierta",
+    "missionOpensOn": "Abre el {date}",
+    "missionOpensAfter": "Abre después de la Misión {index}",
+    "enterCityEarly": "Entrar antes",
+    "enterCityEarlyTitle": "¿Entrar antes a {city}?",
+    "enterCityEarlyBody": "Esta ciudad aún no está abierta para ti. Viajar antes que la clase tiene un costo; lo que cuesta aún se está decidiendo, así que por ahora no se cobra nada.",
     "botJoinsIn": "Pangea Bot se une en {duration}",
     "botIsJoining": "Pangea Bot se está uniendo…",
     "playWithBotNowTitle": "¿Jugar con Pangea Bot ahora?",

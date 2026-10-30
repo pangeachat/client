@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-27 14:57:14.597760",
+    "@@last_modified": "2026-10-29 11:20:38.957991",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10911,6 +10911,14 @@
     "centralCourseOfferTitle": "Sumali sa {course}?",
     "makeMyOwnCourseInstead": "Gumawa na lang ng sarili kong kurso",
     "suggestMobileSignInSameAccount": "Pagkatapos, mag-sign in sa app gamit ang account na ito.",
+    "focusMission": "Mag-focus sa mga aktibidad ng Mission na ito",
+    "missionNotYetOpen": "Hindi pa bukas",
+    "objectiveCircleClosed": "Mission {index}, hindi pa bukas",
+    "missionOpensOn": "Magbubukas {date}",
+    "missionOpensAfter": "Magbubukas pagkatapos ng Mission {index}",
+    "enterCityEarly": "Pumasok nang maaga",
+    "enterCityEarlyTitle": "Pumasok sa {city} nang maaga?",
+    "enterCityEarlyBody": "Hindi pa bukas sa iyo ang lungsod na ito. May bayad ang paglalakbay nang mas maaga sa klase; kasalukuyan pa itong pinagdedesisyunan, kaya sa ngayon ay wala pang sinisingil.",
     "botJoinsIn": "Sasali si Pangea Bot sa loob ng {duration}",
     "botIsJoining": "Sumasali si Pangea Bot…",
     "playWithBotNowTitle": "Makipaglaro kay Pangea Bot ngayon?",

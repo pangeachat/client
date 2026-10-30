@@ -3543,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-27 14:57:15.332844",
+    "@@last_modified": "2026-10-29 11:20:39.488640",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10065,6 +10065,14 @@
     "centralCourseOfferTitle": "An mbeifeá páirteach i {course}?",
     "makeMyOwnCourseInstead": "Cruthaigh mo chúrsa féin ina ionad",
     "suggestMobileSignInSameAccount": "Ansin sínigh isteach san aip leis an gcuntas seo.",
+    "focusMission": "Díriú ar ghníomhaíochtaí na Misean seo",
+    "missionNotYetOpen": "Níl sé oscailte fós",
+    "objectiveCircleClosed": "Misean {index}, níl sé oscailte fós",
+    "missionOpensOn": "Osclaíonn sé ar {date}",
+    "missionOpensAfter": "Osclaíonn sé tar éis Misean {index}",
+    "enterCityEarly": "Isteach go luath",
+    "enterCityEarlyTitle": "Isteach i {city} go luath?",
+    "enterCityEarlyBody": "Níl an chathair seo oscailte duit fós. Tá costas ag baint le taisteal chun tosaigh ar an rang; tá an costas sin fós á chinneadh, mar sin níl aon rud á ghearradh faoi láthair.",
     "botJoinsIn": "Tagann Pangea Bot isteach i {duration}",
     "botIsJoining": "Tá Pangea Bot ag teacht isteach…",
     "playWithBotNowTitle": "Ar mhaith leat imirt le Pangea Bot anois?",

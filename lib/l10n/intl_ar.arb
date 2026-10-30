@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-27 14:57:12.797096",
+    "@@last_modified": "2026-10-29 11:20:34.820966",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10357,6 +10357,14 @@
     "centralCourseOfferTitle": "هل تريد الانضمام إلى {course}؟",
     "makeMyOwnCourseInstead": "إنشاء دورتي التدريبية بدلاً من ذلك",
     "suggestMobileSignInSameAccount": "ثم سجّل الدخول إلى التطبيق باستخدام هذا الحساب.",
+    "focusMission": "التركيز على أنشطة هذه المهمة",
+    "missionNotYetOpen": "لم تفتح بعد",
+    "objectiveCircleClosed": "المهمة {index}، لم تفتح بعد",
+    "missionOpensOn": "تفتح في {date}",
+    "missionOpensAfter": "تفتح بعد المهمة {index}",
+    "enterCityEarly": "ادخل مبكرًا",
+    "enterCityEarlyTitle": "هل تريد دخول {city} مبكرًا؟",
+    "enterCityEarlyBody": "هذه المدينة ليست مفتوحة لك بعد. السفر قبل الفصل الدراسي له تكلفة؛ ما هي التكلفة لا يزال قيد التحديد، لذا لا يتم فرض أي رسوم في الوقت الحالي.",
     "botJoinsIn": "ينضم بوت بانجيا خلال {duration}",
     "botIsJoining": "بوت بانجيا ينضم الآن…",
     "playWithBotNowTitle": "هل تود اللعب مع بوت بانجيا الآن؟",

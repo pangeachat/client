@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:16.335972",
+    "@@last_modified": "2026-10-29 11:20:41.361141",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10127,6 +10127,14 @@
     "centralCourseOfferTitle": "Gabung {course}?",
     "makeMyOwnCourseInstead": "Buat kursus saya sendiri saja",
     "suggestMobileSignInSameAccount": "Lalu masuk ke aplikasi dengan akun ini.",
+    "focusMission": "Fokus pada aktivitas Misi ini",
+    "missionNotYetOpen": "Belum dibuka",
+    "objectiveCircleClosed": "Misi {index}, belum dibuka",
+    "missionOpensOn": "Dibuka {date}",
+    "missionOpensAfter": "Dibuka setelah Misi {index}",
+    "enterCityEarly": "Masuk lebih awal",
+    "enterCityEarlyTitle": "Masuk {city} lebih awal?",
+    "enterCityEarlyBody": "Kota ini belum terbuka untukmu. Bepergian mendahului kelas ada biayanya; biayanya masih ditentukan, jadi untuk saat ini tidak ada yang dikenakan.",
     "botJoinsIn": "Pangea Bot bergabung dalam {duration}",
     "botIsJoining": "Pangea Bot bergabung…",
     "playWithBotNowTitle": "Main dengan Pangea Bot sekarang?",

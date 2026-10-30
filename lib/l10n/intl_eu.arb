@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-27 14:57:14.663799",
+    "@@last_modified": "2026-10-29 11:20:37.968790",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10054,6 +10054,14 @@
     "centralCourseOfferTitle": "{course} ikastaroan sartu?",
     "makeMyOwnCourseInstead": "Nire ikastaroa sortu ordez",
     "suggestMobileSignInSameAccount": "Ondoren, hasi saioa aplikazioan kontu honekin.",
+    "focusMission": "Misio honetako jardueretan zentratu",
+    "missionNotYetOpen": "Oraindik ez dago irekita",
+    "objectiveCircleClosed": "{index} misioa, oraindik ez dago irekita",
+    "missionOpensOn": "{date} irekiko da",
+    "missionOpensAfter": "{index} misioaren ondoren irekiko da",
+    "enterCityEarly": "Sartu goiz",
+    "enterCityEarlyTitle": "Sartu {city} hirian goiz?",
+    "enterCityEarlyBody": "Hiri hau oraindik ez dago zuretzat irekita. Taldearen aurretik bidaiatzeak kostu bat du; kostu hori oraindik erabakitzen ari da, beraz, oraingoz ez da ezer kobratzen.",
     "botJoinsIn": "Pangea Bot {duration} barruan elkartuko da",
     "botIsJoining": "Pangea Bot elkartzen ari da…",
     "playWithBotNowTitle": "Pangea Bot-ekin jokatu orain?",

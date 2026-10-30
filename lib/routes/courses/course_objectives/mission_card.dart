@@ -54,6 +54,20 @@ class MissionCard extends StatelessWidget {
   /// The name of the activity Play opens, for its tooltip and accessible name.
   final String? playTarget;
 
+  /// Brings the world map to the Mission's pinned activities (a fade, never
+  /// a pan or zoom: org course-view doc); null hides Focus.
+  final VoidCallback? onFocus;
+
+  /// The Mission's city is not open to the learner yet (org quests doc,
+  /// "Progression"): Play gives way to [opensLine], and [onEnterEarly], when
+  /// entering a closed city at a cost is on, offers the way in.
+  final bool closed;
+
+  /// When the city opens: its date on a dated course, or the Mission before
+  /// it on an undated one.
+  final String? opensLine;
+  final VoidCallback? onEnterEarly;
+
   /// Drills the Mission's words; null hides Practice — a course in the
   /// learner's base language, whose words aren't a language they're
   /// learning (#9559).
@@ -89,6 +103,10 @@ class MissionCard extends StatelessWidget {
     required this.progress,
     required this.breakdown,
     required this.onPlay,
+    this.onFocus,
+    this.closed = false,
+    this.opensLine,
+    this.onEnterEarly,
     required this.playLabel,
     required this.onPractice,
     this.playTarget,
@@ -108,6 +126,35 @@ class MissionCard extends StatelessWidget {
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
     final l10n = L10n.of(context);
+    final closedLine = !closed
+        ? null
+        : Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Row(
+              spacing: 8.0,
+              children: [
+                Icon(
+                  Icons.lock_outline,
+                  size: 16.0,
+                  color: scheme.onSurfaceVariant,
+                  semanticLabel: l10n.missionNotYetOpen,
+                ),
+                Expanded(
+                  child: Text(
+                    [l10n.missionNotYetOpen, ?opensLine].join(' · '),
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: scheme.onSurfaceVariant,
+                    ),
+                  ),
+                ),
+                if (onEnterEarly case final onEnterEarly?)
+                  TextButton(
+                    onPressed: onEnterEarly,
+                    child: Text(l10n.enterCityEarly),
+                  ),
+              ],
+            ),
+          );
     final numbers = NumberFormat.decimalPattern(
       Localizations.localeOf(context).toLanguageTag(),
     );
@@ -193,6 +240,14 @@ class MissionCard extends StatelessWidget {
                         fontWeight: FontWeight.w800,
                         letterSpacing: 1.0,
                       ),
+                    ),
+                  // The Mission's city (org quests doc, "A course is a
+                  // trip"), with Focus beside it.
+                  if (group.pacing?.city case final city?)
+                    _CityChip(
+                      name: city.name,
+                      closed: closed,
+                      onFocus: onFocus,
                     ),
                   // The teacher's due date, beside the label so it is
                   // never behind "See full course plan" (#9559).
@@ -282,16 +337,18 @@ class MissionCard extends StatelessWidget {
             // invisibly at its real size, so nothing jumps when it lands.
             if (loading) ProgressShimmer(child: header) else header,
             const SizedBox(height: 18.0),
+            // A city not yet open says so where Play would pulse.
+            ?closedLine,
             // Play is the width of the card it opens and sits directly on
             // it under its "Up next", so the two read as one thing.
             Align(
               alignment: AlignmentDirectional.centerStart,
               child: PulsingGlow(
-                enabled: onPlay != null && !satisfied,
+                enabled: onPlay != null && !satisfied && !closed,
                 color: scheme.primary,
                 borderRadius: MissionPlayButton.radius,
                 child: MissionPlayButton(
-                  onPressed: onPlay,
+                  onPressed: closed ? null : onPlay,
                   label: playLabel,
                   target: playTarget,
                   width: activities == null
@@ -514,6 +571,67 @@ class _CountChip extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// The Mission's city (org quests doc, "A course is a trip") as a chip like
+/// the due date's, with Focus beside it: the map fades to the Mission's
+/// pinned activities, never pans or zooms (org course-view doc).
+class _CityChip extends StatelessWidget {
+  final String name;
+  final bool closed;
+  final VoidCallback? onFocus;
+  const _CityChip({required this.name, required this.closed, this.onFocus});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final l10n = L10n.of(context);
+    final chip = Container(
+      padding: const EdgeInsetsDirectional.fromSTEB(6.0, 2.0, 8.0, 2.0),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerHigh,
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Text.rich(
+        TextSpan(
+          children: [
+            WidgetSpan(
+              alignment: PlaceholderAlignment.middle,
+              child: Padding(
+                padding: const EdgeInsetsDirectional.only(end: 4.0),
+                child: Icon(
+                  closed ? Icons.lock_outline : Icons.place_outlined,
+                  size: 14.0,
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ),
+            ),
+            TextSpan(text: name),
+          ],
+        ),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: theme.textTheme.labelMedium?.copyWith(
+          color: theme.colorScheme.onSurfaceVariant,
+        ),
+      ),
+    );
+    final onFocus = this.onFocus;
+    if (onFocus == null) return chip;
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      spacing: 2.0,
+      children: [
+        chip,
+        IconButton(
+          tooltip: l10n.focusMission,
+          icon: const Icon(Icons.my_location, size: 18.0),
+          visualDensity: VisualDensity.compact,
+          onPressed: onFocus,
+        ),
+      ],
     );
   }
 }

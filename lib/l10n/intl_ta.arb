@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:22.276814",
+    "@@last_modified": "2026-10-29 11:20:54.798942",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10146,6 +10146,14 @@
     "centralCourseOfferTitle": "{course} இல் சேரவா?",
     "makeMyOwnCourseInstead": "அதற்குப் பதிலாக எனது சொந்தப் பாடத்திட்டத்தை உருவாக்கவும்",
     "suggestMobileSignInSameAccount": "பின்னர் இந்த கணக்குடன் பயன்பாட்டில் உள்நுழையவும்.",
+    "focusMission": "இந்த மிஷனின் செயல்பாடுகளில் கவனம் செலுத்துங்கள்",
+    "missionNotYetOpen": "இன்னும் திறக்கப்படவில்லை",
+    "objectiveCircleClosed": "மிஷன் {index}, இன்னும் திறக்கப்படவில்லை",
+    "missionOpensOn": "{date} அன்று திறக்கும்",
+    "missionOpensAfter": "மிஷன் {index} பிறகு திறக்கும்",
+    "enterCityEarly": "முன்கூட்டியே நுழையவும்",
+    "enterCityEarlyTitle": "{city} நகருக்கு முன்கூட்டியே நுழையவா?",
+    "enterCityEarlyBody": "இந்த நகரம் உங்களுக்கு இன்னும் திறக்கப்படவில்லை. வகுப்பிற்கு முன்னதாகப் பயணம் செய்வதற்கு ஒரு செலவு உண்டு; அதன் செலவு இன்னும் தீர்மானிக்கப்படவில்லை, எனவே இப்போதைக்கு எதுவும் வசூலிக்கப்படாது.",
     "botJoinsIn": "{duration} இல் பாங்கேயா பாட் இணைகிறது",
     "botIsJoining": "பாங்கேயா பாட் இணைகிறது...",
     "playWithBotNowTitle": "இப்போதே பாங்கேயா பாட்டுடன் விளையாடவா?",

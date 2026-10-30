@@ -138,6 +138,9 @@ extension CoursePlanRoomExtension on Room {
   /// A plan change with no snapshot to hand ([outline] null) clears the old
   /// quest's copy with an empty record, so readers fall back to the new
   /// shared quest rather than listing the old quest's Can-Dos.
+  ///
+  /// The copy is version 1; the homeserver slices it into cities as it lands
+  /// (synapse-pangea-chat course-trip doc).
   Future<void> _writeCourseMissionsCopy(
     QuestOutline? outline, {
     required bool planChanged,

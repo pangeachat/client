@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-27 14:57:13.850855",
+    "@@last_modified": "2026-10-29 11:20:36.514235",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10545,6 +10545,14 @@
     "centralCourseOfferTitle": "Připojit se k {course}?",
     "makeMyOwnCourseInstead": "Vytvořit si vlastní kurz",
     "suggestMobileSignInSameAccount": "Poté se do aplikace přihlaste pomocí tohoto účtu.",
+    "focusMission": "Zaměřit se na aktivity této mise",
+    "missionNotYetOpen": "Ještě není otevřeno",
+    "objectiveCircleClosed": "Mise {index}, ještě není otevřena",
+    "missionOpensOn": "Otevře se {date}",
+    "missionOpensAfter": "Otevře se po misi {index}",
+    "enterCityEarly": "Vstoupit dříve",
+    "enterCityEarlyTitle": "Vstoupit do města {city} dříve?",
+    "enterCityEarlyBody": "Toto město pro vás ještě není otevřeno. Cestování před třídou má svou cenu; co to stojí, se stále rozhoduje, takže prozatím nic není účtováno.",
     "botJoinsIn": "Pangea Bot se připojí za {duration}",
     "botIsJoining": "Pangea Bot se připojuje…",
     "playWithBotNowTitle": "Hrát s Pangea Botem hned teď?",

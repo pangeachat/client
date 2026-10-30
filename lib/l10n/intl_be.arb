@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-27 14:57:13.039284",
+    "@@last_modified": "2026-10-29 11:20:35.216228",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10068,6 +10068,14 @@
     "centralCourseOfferTitle": "Далучыцца да {course}?",
     "makeMyOwnCourseInstead": "Замест гэтага стварыць свой уласны курс",
     "suggestMobileSignInSameAccount": "Затым увайдзіце ў праграму з дапамогай гэтага ўліковага запісу.",
+    "focusMission": "Засяродзьцеся на дзейнасці гэтай місіі",
+    "missionNotYetOpen": "Пакуль не адкрыта",
+    "objectiveCircleClosed": "Місія {index}, пакуль не адкрыта",
+    "missionOpensOn": "Адкрываецца {date}",
+    "missionOpensAfter": "Адкрываецца пасля місіі {index}",
+    "enterCityEarly": "Увайсці раней",
+    "enterCityEarlyTitle": "Увайсці ў {city} раней?",
+    "enterCityEarlyBody": "Гэты горад для вас яшчэ не адкрыты. Падарожжа наперадзе класа мае сваю цану; што менавіта гэта каштуе, яшчэ вырашаецца, таму пакуль нічога не спаганяецца.",
     "botJoinsIn": "Бот Pangea далучыцца праз {duration}",
     "botIsJoining": "Бот Pangea далучаецца…",
     "playWithBotNowTitle": "Пагуляць з ботам Pangea зараз?",

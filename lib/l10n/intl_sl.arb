@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-27 14:57:21.509856",
+    "@@last_modified": "2026-10-29 11:20:52.580275",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10996,6 +10996,14 @@
     "centralCourseOfferTitle": "Se pridružiš tečaju {course}?",
     "makeMyOwnCourseInstead": "Namesto tega ustvari svoj tečaj",
     "suggestMobileSignInSameAccount": "Nato se v aplikacijo prijavite s tem računom.",
+    "focusMission": "Osredotoči se na dejavnosti te misije",
+    "missionNotYetOpen": "Še ni odprto",
+    "objectiveCircleClosed": "Misija {index}, še ni odprta",
+    "missionOpensOn": "Odpre se {date}",
+    "missionOpensAfter": "Odpre se po misiji {index}",
+    "enterCityEarly": "Vstopi prej",
+    "enterCityEarlyTitle": "Vstopiti v {city} prej?",
+    "enterCityEarlyBody": "To mesto ti še ni odprto. Potovanje pred razredom ima svojo ceno; kaj točno stane, se še določa, zato zaenkrat ni nobenih stroškov.",
     "botJoinsIn": "Pangea Bot se pridruži čez {duration}",
     "botIsJoining": "Pangea Bot se pridružuje ...",
     "playWithBotNowTitle": "Želite igrati s Pangea Botom zdaj?",

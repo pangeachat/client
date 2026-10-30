@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:async/async.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
@@ -56,7 +57,7 @@ void main() {
     });
 
     final invalid = <String, Map<String, dynamic> Function()>{
-      'version 2': () => valid()..['version'] = 2,
+      'version 3': () => valid()..['version'] = 3,
       'revision 0': () => valid()..['revision'] = 0,
       'revision as a string': () => valid()..['revision'] = '3',
       'missions missing': () => valid()..remove('missions'),
@@ -110,6 +111,92 @@ void main() {
         isNotNull,
       );
     });
+  });
+
+  group('CourseMissionsEvent.tryParse, version 2 (the trip)', () {
+    Map<String, dynamic> trip() => {
+      'version': 2,
+      'revision': 4,
+      'time_zone': 'America/Mexico_City',
+      'start_date': '2026-11-02',
+      'missions': [
+        {
+          'lo_id': 'lo-a',
+          'activity_ids': ['a1', 'a2'],
+          'city': {
+            'name': 'Mexico City',
+            'lat_e6': 19444400,
+            'lng_e6': -99132900,
+          },
+          'due_at': '2026-11-09T05:59:00Z',
+        },
+        {
+          'lo_id': 'lo-b',
+          'activity_ids': ['b1'],
+        },
+      ],
+    };
+
+    test('reads the start date and each Mission\'s city', () {
+      final copy = CourseMissionsEvent.tryParse(trip())!;
+      expect(copy.isTrip, isTrue);
+      expect(copy.isDated, isTrue);
+      expect(copy.startDate, DateTime(2026, 11, 2));
+      expect(copy.missions.first.city?.name, 'Mexico City');
+      expect(copy.missions.first.city?.point, const LatLng(19.4444, -99.1329));
+      // A Mission whose pins fall under no listed city has none.
+      expect(copy.missions.last.city, isNull);
+    });
+
+    test('round-trips through toJson', () {
+      final copy = CourseMissionsEvent.tryParse(trip())!;
+      final json = copy.toJson();
+      expect(json['version'], 2);
+      expect(json['start_date'], '2026-11-02');
+      expect(CourseMissionsEvent.tryParse(json)!.toJson(), json);
+    });
+
+    test('an undated trip has no start date and runs by progress', () {
+      final copy = CourseMissionsEvent.tryParse(trip()..remove('start_date'))!;
+      expect(copy.isDated, isFalse);
+      expect(copy.toJson().containsKey('start_date'), isFalse);
+    });
+
+    test('a version 1 record ignores a city or start date it carries', () {
+      final v1 = trip()..['version'] = 1;
+      final copy = CourseMissionsEvent.tryParse(v1)!;
+      expect(copy.isTrip, isFalse);
+      expect(copy.startDate, isNull);
+      expect(copy.missions.first.city, isNull);
+    });
+
+    final invalid = <String, Map<String, dynamic> Function()>{
+      'a start date that is not a date': () =>
+          trip()..['start_date'] = '2026-11-02T00:00',
+      'a start date that is not a string': () =>
+          trip()..['start_date'] = 20261102,
+      'a start date with no such day': () =>
+          trip()..['start_date'] = '2026-13-40',
+      'a city with no name': () =>
+          trip()..['missions'][0]['city'] = {'lat_e6': 1, 'lng_e6': 1},
+      'a city off the globe': () => trip()
+        ..['missions'][0]['city'] = {
+          'name': 'X',
+          'lat_e6': 91000000,
+          'lng_e6': 0,
+        },
+      'a city with a string position': () => trip()
+        ..['missions'][0]['city'] = {'name': 'X', 'lat_e6': '1', 'lng_e6': 1},
+      'a city with a decimal position (Matrix has no floats)': () => trip()
+        ..['missions'][0]['city'] = {'name': 'X', 'lat_e6': 19.4, 'lng_e6': 1},
+      'a city that is not a map': () =>
+          trip()..['missions'][0]['city'] = 'Paris',
+    };
+    for (final entry in invalid.entries) {
+      test('refuses ${entry.key}', () {
+        expect(CourseMissionsEvent.tryParse(entry.value()), isNull);
+      });
+    }
   });
 
   group('room.courseMissions', () {
@@ -308,6 +395,7 @@ void main() {
       await space(ownLevel: 100).addCourseToSpace('q1', targetLanguage: 'es');
       final writes = copyWrites();
       expect(writes, hasLength(1));
+      // Version 1: the homeserver slices it into cities as it lands.
       expect(jsonDecode(writes.single as String), {
         'version': 1,
         'revision': 1,
@@ -756,3 +844,5 @@ ActivityPlanModel _plan(String id) => ActivityPlanModel(
   vocab: const [],
   activityId: id,
 );
+
+/// Two listed cities, as the CMS `cities` collection serves them.

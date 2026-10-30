@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-27 14:57:23.318667",
+    "@@last_modified": "2026-10-29 11:20:56.237207",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10352,6 +10352,14 @@
     "centralCourseOfferTitle": "{course} kursuna katılmak ister misin?",
     "makeMyOwnCourseInstead": "Bunun yerine kendi kursumu oluştur",
     "suggestMobileSignInSameAccount": "Ardından bu hesapla uygulamaya giriş yapın.",
+    "focusMission": "Bu Görevin etkinliklerine odaklan",
+    "missionNotYetOpen": "Henüz açık değil",
+    "objectiveCircleClosed": "Görev {index}, henüz açık değil",
+    "missionOpensOn": "{date} tarihinde açılır",
+    "missionOpensAfter": "Görev {index} sonrasında açılır",
+    "enterCityEarly": "Erken gir",
+    "enterCityEarlyTitle": "{city} şehrine erken mi girilsin?",
+    "enterCityEarlyBody": "Bu şehir sizin için henüz açık değil. Sınıfın ilerisine seyahat etmenin bir maliyeti vardır; maliyet henüz belirlenmediği için şimdilik herhangi bir ücret alınmamaktadır.",
     "botJoinsIn": "Pangea Bot {duration} içinde katılıyor",
     "botIsJoining": "Pangea Bot katılıyor…",
     "playWithBotNowTitle": "Şimdi Pangea Bot ile oynayalım mı?",

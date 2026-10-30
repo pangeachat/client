@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-27 14:57:13.907049",
+    "@@last_modified": "2026-10-29 11:20:37.120082",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10041,6 +10041,14 @@
     "centralCourseOfferTitle": "An {course} teilnehmen?",
     "makeMyOwnCourseInstead": "Stattdessen eigenen Kurs erstellen",
     "suggestMobileSignInSameAccount": "Melde dich dann mit diesem Konto in der App an.",
+    "focusMission": "Auf diese Mission konzentrieren",
+    "missionNotYetOpen": "Noch nicht geöffnet",
+    "objectiveCircleClosed": "Mission {index}, noch nicht geöffnet",
+    "missionOpensOn": "Öffnet am {date}",
+    "missionOpensAfter": "Öffnet nach Mission {index}",
+    "enterCityEarly": "Früh eintreten",
+    "enterCityEarlyTitle": "Früh nach {city} eintreten?",
+    "enterCityEarlyBody": "Diese Stadt ist für dich noch nicht geöffnet. Vor der Klasse zu reisen hat Kosten; was es kostet, wird noch entschieden, daher wird vorerst nichts berechnet.",
     "botJoinsIn": "Pangea Bot kommt in {duration} dazu",
     "botIsJoining": "Pangea Bot kommt dazu …",
     "playWithBotNowTitle": "Jetzt mit Pangea Bot spielen?",

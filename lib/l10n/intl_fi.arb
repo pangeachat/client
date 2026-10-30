@@ -3516,7 +3516,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-27 14:57:14.694714",
+    "@@last_modified": "2026-10-29 11:20:38.246365",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10091,6 +10091,14 @@
     "centralCourseOfferTitle": "Liity kurssille {course}?",
     "makeMyOwnCourseInstead": "Luo oma kurssi sen sijaan",
     "suggestMobileSignInSameAccount": "Kirjaudu sitten sovellukseen tällä tilillä.",
+    "focusMission": "Keskity tämän tehtävän aktiviteetteihin",
+    "missionNotYetOpen": "Ei vielä avoinna",
+    "objectiveCircleClosed": "Tehtävä {index}, ei vielä avoinna",
+    "missionOpensOn": "Avautuu {date}",
+    "missionOpensAfter": "Avautuu tehtävän {index} jälkeen",
+    "enterCityEarly": "Siirry kaupunkiin etuajassa",
+    "enterCityEarlyTitle": "Siirry kaupunkiin {city} etuajassa?",
+    "enterCityEarlyBody": "Tämä kaupunki ei ole vielä avoinna sinulle. Luokan edellä matkustamisesta koituu kustannuksia; niiden suuruutta päätetään vielä, joten toistaiseksi mitään ei veloiteta.",
     "botJoinsIn": "Pangea Bot liittyy {duration} kuluttua",
     "botIsJoining": "Pangea Bot liittyy…",
     "playWithBotNowTitle": "Pelataanko Pangea Botin kanssa nyt?",

@@ -15,6 +15,7 @@ import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
+import 'package:fluffychat/features/quests/mission_due_date.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
@@ -29,6 +30,7 @@ import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -41,6 +43,7 @@ import 'package:fluffychat/routes/courses/course_objectives/mission_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -535,8 +538,113 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     );
   }
 
-  void _openActivity(QuestActivity ref) {
+  /// Whether [missionId]'s city is not open to the learner (org quests doc,
+  /// "Progression"), given [open] from [_openMissionIds], resolved once per
+  /// build or tap rather than per Mission. Null [open]: nothing is closed (a
+  /// preview, or a course that is not a trip).
+  static bool _isClosed(String missionId, Set<String>? open) =>
+      open != null && !open.contains(missionId);
+
+  /// The Missions open to the learner now; null when nothing is closed.
+  Set<String>? _openMissionIds() => widget.readOnly
+      ? null
+      : CourseObjectiveCircles.openMissionIds(
+          widget.objectivesProvider,
+          widget.room,
+          DateTime.now(),
+        );
+
+  /// When the Mission's city opens: its date on a dated course, else after
+  /// the Mission before it.
+  String _opensLine(L10n l10n, QuestObjectiveGroup group) {
+    final trip = widget.objectivesProvider.trip;
+    final groups = widget.objectivesProvider.filteredObjectiveGroups;
+    final index = groups.indexWhere(
+      (g) => g.objective.id == group.objective.id,
+    );
+    if (trip?.isDated == true) {
+      // The city before this one closes on its date: this one opens then.
+      final before = index > 0 ? groups[index - 1].pacing?.dueAt : null;
+      if (before != null) {
+        return l10n.missionOpensOn(
+          missionDueLabel(context, before, groups[index - 1].pacing?.timeZone),
+        );
+      }
+      final start = trip?.startDate;
+      if (start != null) {
+        return l10n.missionOpensOn(
+          missionDueLabel(context, start, trip?.timeZone),
+        );
+      }
+    }
+    return l10n.missionOpensAfter(index > 0 ? index : 1);
+  }
+
+  /// A tap on a closed Mission's activity: the explanation, and, when
+  /// entering a closed city at a cost is on, the way in.
+  Future<void> _explainClosed(QuestObjectiveGroup group) async {
+    final l10n = L10n.of(context);
+    if (!Environment.travelCostEnabled) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            '${l10n.missionNotYetOpen} · ${_opensLine(l10n, group)}',
+          ),
+        ),
+      );
+      return;
+    }
+    await _enterEarly(group);
+  }
+
+  /// Entering a closed city at a cost (org quests doc, "Progression";
+  /// behind [Environment.travelCostEnabled] until the resource is decided):
+  /// says what it costs, and on Continue opens the Mission's first activity.
+  /// Nothing is charged yet: the resource is an open question on
+  /// pangeachat/.github#780, so the dialog says so.
+  Future<void> _enterEarly(QuestObjectiveGroup group) async {
+    final l10n = L10n.of(context);
+    final city = group.pacing?.city?.name;
+    final go = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(
+          city == null ? l10n.enterCityEarly : l10n.enterCityEarlyTitle(city),
+        ),
+        content: Text(l10n.enterCityEarlyBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text(l10n.cancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text(l10n.continueText),
+          ),
+        ],
+      ),
+    );
+    if (go != true || !mounted) return;
+    final first = group.activities.firstOrNull;
+    if (first != null) _openActivity(first, force: true);
+  }
+
+  void _openActivity(QuestActivity ref, {bool force = false}) {
     if (widget.readOnly) return;
+    if (!force) {
+      // A closed city explains instead of opening (org quests doc,
+      // "Progression"); an activity in two Missions opens if either is open.
+      final groups = widget.objectivesProvider.filteredObjectiveGroups;
+      final owners = groups
+          .where((g) => g.activities.any((a) => a.activityId == ref.activityId))
+          .toList();
+      final open = _openMissionIds();
+      if (owners.isNotEmpty &&
+          owners.every((g) => _isClosed(g.objective.id, open))) {
+        _explainClosed(owners.first);
+        return;
+      }
+    }
     final room = widget.room;
     // The activity takes the card's slot, and the pressed card goes with it,
     // so the activity panel that mounts claims focus
@@ -606,6 +714,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
               // rides above this list on the course page.)
               final groups = widget.objectivesProvider.filteredObjectiveGroups;
               final anchorId = widget.objectivesProvider.anchorMissionId;
+              final open = _openMissionIds();
               if (groups.isEmpty) {
                 return QuestLoadErrorView(
                   MissingQuestException(),
@@ -701,9 +810,18 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     final languageName = otherLanguage
                         ? CourseLanguageScope.courseLanguageName(room, l10n)
                         : null;
+                    final closed = _isClosed(current.objective.id, open);
                     return MissionCard(
                       group: current,
                       index: position < 0 ? null : position + 1,
+                      closed: closed,
+                      opensLine: closed ? _opensLine(l10n, current) : null,
+                      onEnterEarly: closed && Environment.travelCostEnabled
+                          ? () => _enterEarly(current)
+                          : null,
+                      onFocus: widget.room == null || widget.readOnly
+                          ? null
+                          : MapCameraFocusRequests.request,
                       progress: hasProgress
                           ? widget.objectivesProvider.missionProgress(missionId)
                           : null,
@@ -832,6 +950,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                   final classIndex = CourseObjectiveCircles.classLocationIndex(
                     groups,
                     DateTime.now(),
+                    trip: widget.objectivesProvider.trip,
+                    course: widget.room,
                   );
                   final list = ListView.separated(
                     controller: widget.shrinkWrap ? null : _scrollController,
@@ -861,6 +981,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                             : null,
                         isUpNext: group.objective.id == anchorId,
                         isClassLocation: i == classIndex,
+                        closed: _isClosed(group.objective.id, open),
                         index: i + 1,
                         missionCount: groups.length,
                         group: group,

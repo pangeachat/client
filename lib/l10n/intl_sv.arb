@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:22.985551",
+    "@@last_modified": "2026-10-29 11:20:54.526653",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10569,6 +10569,14 @@
     "centralCourseOfferTitle": "Gå med i {course}?",
     "makeMyOwnCourseInstead": "Skapa min egen kurs istället",
     "suggestMobileSignInSameAccount": "Logga sedan in i appen med det här kontot.",
+    "focusMission": "Fokusera på denna missions aktiviteter",
+    "missionNotYetOpen": "Inte öppen än",
+    "objectiveCircleClosed": "Mission {index}, inte öppen än",
+    "missionOpensOn": "Öppnar {date}",
+    "missionOpensAfter": "Öppnar efter mission {index}",
+    "enterCityEarly": "Gå in tidigt",
+    "enterCityEarlyTitle": "Gå in i {city} tidigt?",
+    "enterCityEarlyBody": "Denna stad är inte öppen för dig än. Att resa före klassen har en kostnad; vad det kostar bestäms fortfarande, så för närvarande debiteras inget.",
     "botJoinsIn": "Pangea Bot ansluter om {duration}",
     "botIsJoining": "Pangea Bot ansluter…",
     "playWithBotNowTitle": "Spela med Pangea Bot nu?",

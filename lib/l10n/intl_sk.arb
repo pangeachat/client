@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-27 14:57:21.504594",
+    "@@last_modified": "2026-10-29 11:20:53.737913",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10996,6 +10996,14 @@
     "centralCourseOfferTitle": "Pridať sa do kurzu {course}?",
     "makeMyOwnCourseInstead": "Namiesto toho si vytvoriť vlastný kurz",
     "suggestMobileSignInSameAccount": "Potom sa prihláste do aplikácie pomocou tohto účtu.",
+    "focusMission": "Zamerajte sa na aktivity tejto misie",
+    "missionNotYetOpen": "Ešte nie je otvorené",
+    "objectiveCircleClosed": "Misia {index}, ešte nie je otvorená",
+    "missionOpensOn": "Otvorí sa {date}",
+    "missionOpensAfter": "Otvorí sa po misii {index}",
+    "enterCityEarly": "Vstúpiť skôr",
+    "enterCityEarlyTitle": "Vstúpiť do mesta {city} skôr?",
+    "enterCityEarlyBody": "Toto mesto pre vás ešte nie je otvorené. Cestovanie pred triedou má svoju cenu; čo to stojí, sa stále rozhoduje, takže zatiaľ sa nič neúčtuje.",
     "botJoinsIn": "Pangea Bot sa pripojí o {duration}",
     "botIsJoining": "Pangea Bot sa pripája…",
     "playWithBotNowTitle": "Hrať s Pangea Botom teraz?",

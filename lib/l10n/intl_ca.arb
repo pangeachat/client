@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:13.560671",
+    "@@last_modified": "2026-10-29 11:20:36.391620",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10181,6 +10181,14 @@
     "centralCourseOfferTitle": "Unir-me a {course}?",
     "makeMyOwnCourseInstead": "Crear el meu propi curs",
     "suggestMobileSignInSameAccount": "Després, inicia sessió a l'aplicació amb aquest compte.",
+    "focusMission": "Centra't en les activitats d'aquesta missió",
+    "missionNotYetOpen": "Encara no obert",
+    "objectiveCircleClosed": "Missió {index}, encara no oberta",
+    "missionOpensOn": "Obre el {date}",
+    "missionOpensAfter": "Obre després de la Missió {index}",
+    "enterCityEarly": "Entra abans",
+    "enterCityEarlyTitle": "Entrar a {city} abans d'hora?",
+    "enterCityEarlyBody": "Aquesta ciutat encara no està oberta per a tu. Viatjar abans que la classe té un cost; el que costa encara s'està decidint, així que de moment no es cobra res.",
     "botJoinsIn": "El bot Pangea s'uneix en {duration}",
     "botIsJoining": "El bot Pangea s'està unint…",
     "playWithBotNowTitle": "Vols jugar amb el bot Pangea ara?",

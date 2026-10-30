@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:13.856170",
+    "@@last_modified": "2026-10-29 11:20:37.395671",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10996,6 +10996,14 @@
     "centralCourseOfferTitle": "Ĉu aliĝi al {course}?",
     "makeMyOwnCourseInstead": "Krei mian propran kurson anstataŭe",
     "suggestMobileSignInSameAccount": "Poste ensalutu al la apo per ĉi tiu konto.",
+    "focusMission": "Koncentriĝu al la agadoj de ĉi tiu Misio",
+    "missionNotYetOpen": "Ankoraŭ ne malfermita",
+    "objectiveCircleClosed": "Misio {index}, ankoraŭ ne malfermita",
+    "missionOpensOn": "Malfermiĝas {date}",
+    "missionOpensAfter": "Malfermiĝas post Misio {index}",
+    "enterCityEarly": "Eniri frue",
+    "enterCityEarlyTitle": "Ĉu eniri {city} frue?",
+    "enterCityEarlyBody": "Ĉi tiu urbo ankoraŭ ne estas malfermita al vi. Vojaĝi antaŭ la klaso havas koston; kio kostas estas ankoraŭ decidata, do nuntempe nenio estas ŝargita.",
     "botJoinsIn": "Pangea Bot aliĝas post {duration}",
     "botIsJoining": "Pangea Bot aliĝas…",
     "playWithBotNowTitle": "Ĉu ludi kun Pangea Bot nun?",
