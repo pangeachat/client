@@ -6,8 +6,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_view_items.dart';
 
 /// The world view's markers (org world-view doc): a city as a small circle,
-/// gold-ringed once the learner has finished an activity there (gold throughout
-/// on the dark basemap, filled once stamped), and a ship
+/// gold-ringed once the learner has finished an activity there (a solid gold
+/// dot on the dark basemap, light-ringed once stamped), and a ship
 /// carrying its course's name at the city its trip has reached. A ship opens
 /// its course; a city brings the map down into it. A city carries no label of
 /// its own: the basemap already names it, and its name stays available to
@@ -77,11 +77,13 @@ class WorldCityMarker extends StatelessWidget {
     final theme = Theme.of(context);
     final l10n = L10n.of(context);
     final gold = Colors.amber.shade600;
-    // On the dark basemap a gold dot reads where the primary ring sinks in; a
-    // stamped city fills in gold so it still stands apart from the rest.
+    // On the dark basemap a city is a solid gold dot, no hollow centre; a
+    // stamped one gains a light ring so it still stands apart from the rest.
     final dark = theme.brightness == Brightness.dark;
-    final ring = dark || city.stamped ? gold : theme.colorScheme.primary;
-    final fill = dark && city.stamped ? gold : theme.colorScheme.surface;
+    final fill = dark ? gold : theme.colorScheme.surface;
+    final ring = dark
+        ? (city.stamped ? Colors.white : gold)
+        : (city.stamped ? gold : theme.colorScheme.primary);
     return Semantics(
       button: true,
       label: city.stamped
