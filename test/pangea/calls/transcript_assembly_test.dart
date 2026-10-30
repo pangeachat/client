@@ -4299,6 +4299,62 @@ void main() {
       expect(_halfFor(transcript, alice).segments, isNotEmpty);
     });
 
+    // Weighing the kinds pairwise was not a total order: the empty half beat
+    // the peer copy, the peer copy beat the half with words, and that half beat
+    // the empty one, so what was shown depended on what arrived first.
+    test('the winner does not depend on the order events arrived', () {
+      final empty = TranscriptCandidate(
+        senderId: alice,
+        eventId: '\$a1',
+        deviceId: 'devA',
+        originServerTs: 500,
+        segments: const [],
+        accounting: const HalfAccounting(
+          chunksCaptured: 2,
+          drainComplete: false,
+          declared: true,
+        ),
+      );
+      final partial = TranscriptCandidate(
+        senderId: alice,
+        eventId: '\$a2',
+        deviceId: 'devA',
+        originServerTs: 600,
+        segments: [TranscriptSegment('hola')],
+        accounting: const HalfAccounting(
+          chunksCaptured: 2,
+          chunksTranscribed: 1,
+          chunksLost: 1,
+          declared: true,
+        ),
+      );
+      final copy = peer(
+        writer: bob,
+        spokenBy: alice,
+        eventId: '\$p1',
+        texts: ['hola que tal'],
+      );
+      final orders = [
+        [empty, partial, copy],
+        [empty, copy, partial],
+        [partial, empty, copy],
+        [partial, copy, empty],
+        [copy, empty, partial],
+        [copy, partial, empty],
+      ];
+      for (final order in orders) {
+        final transcript = assembleTranscript(
+          candidates: order,
+          expectedSenders: [alice, bob],
+          provenance: const {'\$p1': ProvenanceState.valid},
+        );
+        expect(
+          _halfFor(transcript, alice).segments.single.text,
+          'hola que tal',
+        );
+      }
+    });
+
     test('a refused own half with ANY other admitted gap keeps the unit', () {
       // "Only because of no subscription" means nothing else went missing.
       // Mutation proof: dropping any one of these terms from

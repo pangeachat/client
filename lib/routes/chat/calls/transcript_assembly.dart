@@ -2400,6 +2400,7 @@ CallTranscript assembleTranscript({
   // two old builds still key alike, so one is still kept, and this change
   // reaches them only once one of the two devices is updated.
   final bySpeaker = <String, Map<String, TranscriptCandidate>>{};
+  final peerCopies = <String, Map<String, TranscriptCandidate>>{};
 
   for (final candidate in candidates) {
     final speaker = _effectiveSpeakerOf(candidate, provenance);
@@ -2407,17 +2408,37 @@ CallTranscript assembleTranscript({
     // It never enters a group, so it can neither be shown nor block the real
     // half -- and, held out rather than attributed, it is never its writer's.
     if (speaker == null) continue;
-    final byDevice = bySpeaker.putIfAbsent(speaker, () => {});
+    // ONE half per (effective speaker, device) unit. Authentic halves and
+    // peer-produced ones are each narrowed to their best first, and only those
+    // two are weighed: comparing across the kinds one event at a time is not a
+    // total order, so the winner came to depend on arrival order. Two authentic
+    // copies are chosen between by [_beats] (a resend or a buggy empty-first
+    // half) and two peer-produced ones by [_peerBeats], a stable writer lane so
+    // one writer cannot churn over another's by posting later. What is no
+    // longer treated as a duplicate is a second DEVICE's half.
+    final authentic = candidate.senderId == speaker;
     final key = candidate.deviceId ?? '';
-    final held = byDevice[key];
-    // ONE half per (effective speaker, device) unit, chosen by the total order
-    // in [_winsUnit]: an authentic half beats any peer-produced one, two
-    // authentic copies are chosen between exactly as before (a resend or a
-    // buggy empty-first half), and two peer-produced halves are ordered by a
-    // stable writer lane so one writer cannot churn over another's by posting
-    // later. What is no longer treated as a duplicate is a second DEVICE's half.
-    if (held == null || _winsUnit(candidate, held, speaker: speaker)) {
-      byDevice[key] = candidate;
+    final group = (authentic ? bySpeaker : peerCopies).putIfAbsent(
+      speaker,
+      () => {},
+    );
+    final held = group[key];
+    if (held == null ||
+        (authentic ? _beats(candidate, held) : _peerBeats(candidate, held))) {
+      group[key] = candidate;
+    }
+  }
+
+  // A peer-produced half fills a unit with no authentic half, and replaces one
+  // missing only chunks that never came back (#8792): a valid transcription of
+  // the whole recording is the better account of the speaker.
+  for (final MapEntry(key: speaker, value: copies) in peerCopies.entries) {
+    final byDevice = bySpeaker.putIfAbsent(speaker, () => {});
+    for (final MapEntry(key: device, value: copy) in copies.entries) {
+      final own = byDevice[device];
+      if (own == null || onlyChunksWereLost(own.accounting)) {
+        byDevice[device] = copy;
+      }
     }
   }
 
@@ -2666,56 +2687,6 @@ String? _effectiveSpeakerOf(
     ProvenanceState.unavailableTerminal => null,
     ProvenanceState.pendingTransient => null,
   };
-}
-
-/// Which of two halves the same (effective speaker, device) unit keeps.
-///
-/// The LANE-BASED TOTAL ORDER of the design's §2, layered over [_beats] so the
-/// legacy authentic-vs-authentic choice is exactly what it always was:
-///
-/// 1. AUTHENTIC beats peer-produced. "Authentic" is `sender == speaker` — a half
-///    the person themselves wrote (or an INVALID claim fallen back to its
-///    writer), as opposed to a VALID peer transcription of them. A speaker's own
-///    record of their words always wins over someone else's transcription of
-///    them, so a peer half can never override the real one.
-/// 2. Two AUTHENTIC halves are chosen between by [_beats] — a resend, or a
-///    buggy empty-first half against the real one — unchanged from before this
-///    feature, which is what makes every existing room read identically.
-/// 3. Two PEER-PRODUCED halves are ordered by [_peerBeats]: a stable WRITER LANE
-///    first, latest attempt within a lane. See there for why the lane, not the
-///    clock, is primary.
-///
-/// One exception to tier 1 (#8792): an authentic half missing only chunks that
-/// never came back ([onlyChunksWereLost]) ranks BELOW a peer-produced one. A
-/// valid transcription of the whole recording is the better account of the
-/// speaker.
-///
-/// The rank only ever decides an authentic half against a peer-produced one:
-/// two authentic halves are [_beats]'s, whatever either of them lost.
-///
-/// Used as a running-max predicate: "does [candidate] rank strictly above
-/// [held]". Each kind is a total order within itself, so the winner is
-/// independent of the order events arrived.
-bool _winsUnit(
-  TranscriptCandidate candidate,
-  TranscriptCandidate held, {
-  required String speaker,
-}) {
-  final candidateAuthentic = candidate.senderId == speaker;
-  final heldAuthentic = held.senderId == speaker;
-  if (candidateAuthentic && heldAuthentic) return _beats(candidate, held);
-  if (!candidateAuthentic && !heldAuthentic) {
-    return _peerBeats(candidate, held);
-  }
-  return _unitRank(candidate, speaker) > _unitRank(held, speaker);
-}
-
-/// The tier [_winsUnit] compares first: an authentic half (2) over a
-/// peer-produced one (1) over an authentic half missing only chunks that never
-/// came back (0).
-int _unitRank(TranscriptCandidate candidate, String speaker) {
-  if (candidate.senderId != speaker) return 1;
-  return onlyChunksWereLost(candidate.accounting) ? 0 : 2;
 }
 
 /// Which of two PEER-PRODUCED halves of one (speaker, device) unit to keep.
