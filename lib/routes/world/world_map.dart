@@ -25,6 +25,7 @@ import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/course_itinerary.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
@@ -542,15 +543,19 @@ class WorldMapController extends State<WorldMap>
   /// view crosses [WorldMapConstants.cityZoom].
   bool _wasZoomedIntoCity = false;
 
-  /// The learner's joined courses as the world view reads them.
+  /// The learner's joined courses in their selected target language, as the
+  /// world view reads them: a city shows only with activities in that
+  /// language, so a course in another language puts nothing on the world view
+  /// (world-map.instructions.md, "What appears on the map").
   List<CourseTripView> get _courseTrips => [
     for (final room in _client?.joinedCourseRooms ?? const <Room>[])
-      CourseTripView(
-        roomId: room.id,
-        name: room.getLocalizedDisplayname(),
-        copy: room.courseMissions,
-        position: room.coursePosition,
-      ),
+      if (CourseLanguageScope.courseInTargetLanguage(room))
+        CourseTripView(
+          roomId: room.id,
+          name: room.getLocalizedDisplayname(),
+          copy: room.courseMissions,
+          position: room.coursePosition,
+        ),
   ];
 
   /// The learner's courses as ships at the city each trip has reached, and
