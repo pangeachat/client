@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "U-{name} akasayi kuphinda akwazi ukubona inkqubela yakho yokufunda.",
     "centralCourseOfferBody": "Yikhosi yePangea yabafundi besi-{language}. Amalungu ayo angabona igama lakho neprofayile yakho.",
     "centralCourseOfferTitle": "Ukujoyina {course}?",
-    "makeMyOwnCourseInstead": "Yenza eyakho ikhosi endaweni yoko"
+    "makeMyOwnCourseInstead": "Yenza eyakho ikhosi endaweni yoko",
+    "suggestMobileSignInSameAccount": "Emva koko ngena kwi-app ngale akhawunti.",
+    "botJoinsIn": "IPangea Bot ijoyina ngaphakathi {duration}",
+    "botIsJoining": "IPangea Bot ijoyina…",
+    "playWithBotNowTitle": "Udlale nePangea Bot ngoku?",
+    "playWithBotNowMessage": "Akukho mntu ujoyinileyo okwangoku. IPangea Bot ingathatha isihlalo esivulekileyo ngoku, okanye ungaqhubeka ulindile.",
+    "keepWaiting": "Qhubeka ulindile",
+    "botTookSeatAfterAnHour": "Le seshoni ibivulekile iyure, ngoko iPangea Bot ithathe isihlalo esivulekileyo.",
+    "botTookSeatAfterADay": "Le seshoni ibivulekile ngaphezu kosuku, ngoko iPangea Bot ithathe isihlalo esivulekileyo. Thumela umyalezo ukuze uqale."
 }

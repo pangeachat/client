@@ -8281,5 +8281,13 @@
     "removeAnalyticsAccessDesc": "{name} ya no podrá ver tu progreso de aprendizaje.",
     "centralCourseOfferBody": "Es el curso de Pangea para estudiantes de {language}. Sus miembros pueden ver tu nombre y perfil.",
     "centralCourseOfferTitle": "¿Unirse a {course}?",
-    "makeMyOwnCourseInstead": "Crear mi propio curso"
+    "makeMyOwnCourseInstead": "Crear mi propio curso",
+    "suggestMobileSignInSameAccount": "Luego inicia sesión en la aplicación con esta cuenta.",
+    "botJoinsIn": "Pangea Bot se une en {duration}",
+    "botIsJoining": "Pangea Bot se está uniendo…",
+    "playWithBotNowTitle": "¿Jugar con Pangea Bot ahora?",
+    "playWithBotNowMessage": "Nadie se ha unido todavía. Pangea Bot puede ocupar el asiento ahora, o puedes seguir esperando.",
+    "keepWaiting": "Seguir esperando",
+    "botTookSeatAfterAnHour": "Esta sesión estuvo abierta durante una hora, así que Pangea Bot ocupó el asiento.",
+    "botTookSeatAfterADay": "Esta sesión estuvo abierta durante más de un día, así que Pangea Bot ocupó el asiento. Envía un mensaje para empezar."
 }

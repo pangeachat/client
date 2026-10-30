@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} ba zai ƙara iya ganin ci gaban koyon ka ba.",
     "centralCourseOfferBody": "Darasi ne na Pangea ga masu koyon harshen {language}. Membobinta za su iya ganin sunanka da bayanan martabarka.",
     "centralCourseOfferTitle": "Shiga {course}?",
-    "makeMyOwnCourseInstead": "Ƙirƙiri kwas na da kaina"
+    "makeMyOwnCourseInstead": "Ƙirƙiri kwas na da kaina",
+    "suggestMobileSignInSameAccount": "Sannan ka shiga cikin manhajar da wannan asusun.",
+    "botJoinsIn": "Pangea Bot zai shigo nan da {duration}",
+    "botIsJoining": "Pangea Bot na shigowa…",
+    "playWithBotNowTitle": "Ka yi wasa da Pangea Bot yanzu?",
+    "playWithBotNowMessage": "Babu wanda ya shigo tukuna. Pangea Bot zai iya shiga yanzu, ko kuma za ka iya ci gaba da jira.",
+    "keepWaiting": "Ci gaba da jira",
+    "botTookSeatAfterAnHour": "Wannan zaman ya kasance a buɗe na awa ɗaya, don haka Pangea Bot ya shiga.",
+    "botTookSeatAfterADay": "Wannan zaman ya kasance a buɗe fiye da kwana ɗaya, don haka Pangea Bot ya shiga. Aika saƙo don farawa."
 }

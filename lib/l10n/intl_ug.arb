@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} ئارتقا قايتىش تەرەققىياتىڭىزنى كۆرەلمەيدۇ.",
     "centralCourseOfferBody": "بۇ پانگېيانىڭ {language} ئۆگەنگۈچىلەر ئۈچۈن تەييارلىغان دەرسى. ئۇنىڭ ئەزالىرى سىزنىڭ ئىسمىڭىز ۋە پروفىلىڭىزنى كۆرەلەيدۇ.",
     "centralCourseOfferTitle": "{course}غا قاتناشامسىز؟",
-    "makeMyOwnCourseInstead": "ئۆزۈمنىڭ دەرسلىكىنى قۇراشتۇرىمەن"
+    "makeMyOwnCourseInstead": "ئۆزۈمنىڭ دەرسلىكىنى قۇراشتۇرىمەن",
+    "suggestMobileSignInSameAccount": "ئاندىن بۇ ھېسابات ئارقىلىق ئەپكە كىرىڭ.",
+    "botJoinsIn": "Pangea Bot {duration} ئىچىدە قوشۇلىدۇ",
+    "botIsJoining": "Pangea Bot قوشۇلۇۋاتىدۇ…",
+    "playWithBotNowTitle": "ھازىر Pangea Bot بىلەن ئوينامدۇ؟",
+    "playWithBotNowMessage": "تېخىچە ھېچكىم قوشۇلمىدى. Pangea Bot ھازىر بوش ئورۇننى ئالالايدۇ ياكى ساقلىسىڭىز بولىدۇ.",
+    "keepWaiting": "ساقلاشنى داۋاملاشتۇرۇش",
+    "botTookSeatAfterAnHour": "بۇ يىغىن بىر سائەت ئوچۇق بولغاچقا، Pangea Bot بوش ئورۇننى ئالدى.",
+    "botTookSeatAfterADay": "بۇ يىغىن بىر كۈندىن ئارتۇق ئوچۇق بولغاچقا، Pangea Bot بوش ئورۇننى ئالدى. باشلاش ئۈچۈن ئۇچۇر ئەۋەتىڭ."
 }

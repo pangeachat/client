@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} នឹងលែងអាចមើលឃើញវឌ្ឍនភាពនៃការរៀនរបស់អ្នកទៀតហើយ។",
     "centralCourseOfferBody": "នេះជាវគ្គសិក្សារបស់ Pangea សម្រាប់អ្នករៀន {language}។ សមាជិករបស់វគ្គសិក្សានេះអាចមើលឃើញឈ្មោះ និងប្រវត្តិរូបរបស់អ្នក។",
     "centralCourseOfferTitle": "ចូលរួម {course} ទេ?",
-    "makeMyOwnCourseInstead": "បង្កើតវគ្គសិក្សាផ្ទាល់ខ្លួនវិញ"
+    "makeMyOwnCourseInstead": "បង្កើតវគ្គសិក្សាផ្ទាល់ខ្លួនវិញ",
+    "suggestMobileSignInSameAccount": "បន្ទាប់មកចូលកម្មវិធីដោយប្រើគណនីនេះ។",
+    "botJoinsIn": "Pangea Bot ចូលរួមក្នុងរយៈពេល {duration}",
+    "botIsJoining": "Pangea Bot កំពុងចូលរួម…",
+    "playWithBotNowTitle": "លេងជាមួយ Pangea Bot ឥឡូវនេះ?",
+    "playWithBotNowMessage": "មិនទាន់មាននរណាម្នាក់ចូលរួមនៅឡើយទេ។ Pangea Bot អាចចូលរួមឥឡូវនេះ ឬអ្នកអាចបន្តរង់ចាំ។",
+    "keepWaiting": "បន្តរង់ចាំ",
+    "botTookSeatAfterAnHour": "វគ្គនេះបានបើករយៈពេលមួយម៉ោង ដូច្នេះ Pangea Bot បានចូលរួម។",
+    "botTookSeatAfterADay": "វគ្គនេះបានបើករយៈពេលជាងមួយថ្ងៃ ដូច្នេះ Pangea Bot បានចូលរួម។ ផ្ញើសារដើម្បីចាប់ផ្តើម។"
 }

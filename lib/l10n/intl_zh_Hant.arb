@@ -10158,5 +10158,13 @@
     "removeAnalyticsAccessDesc": "{name} 將無法再查看您的學習進度。",
     "centralCourseOfferBody": "這是 Pangea 專為 {language} 學習者開設的課程。課程成員可以看到您的姓名和個人資料。",
     "centralCourseOfferTitle": "加入{course}？",
-    "makeMyOwnCourseInstead": "改為建立我的課程"
+    "makeMyOwnCourseInstead": "改為建立我的課程",
+    "suggestMobileSignInSameAccount": "然後用此帳號登入應用程式。",
+    "botJoinsIn": "Pangea Bot 將在 {duration} 後加入",
+    "botIsJoining": "Pangea Bot 正在加入…",
+    "playWithBotNowTitle": "現在就和 Pangea Bot 一起玩嗎？",
+    "playWithBotNowMessage": "還沒有人加入。Pangea Bot 現在可以加入，或者您可以繼續等待。",
+    "keepWaiting": "繼續等待",
+    "botTookSeatAfterAnHour": "此會話已開放一小時，Pangea Bot 已加入。",
+    "botTookSeatAfterADay": "此會話已開放超過一天，Pangea Bot 已加入。發送訊息即可開始。"
 }

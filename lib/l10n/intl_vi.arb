@@ -7359,5 +7359,13 @@
     "removeAnalyticsAccessDesc": "{name} sẽ không còn có thể xem tiến độ học tập của bạn.",
     "centralCourseOfferBody": "Đây là khóa học của Pangea dành cho người học tiếng {language}. Các thành viên có thể xem tên và hồ sơ của bạn.",
     "centralCourseOfferTitle": "Tham gia {course}?",
-    "makeMyOwnCourseInstead": "Tự tạo khóa học của riêng tôi"
+    "makeMyOwnCourseInstead": "Tự tạo khóa học của riêng tôi",
+    "suggestMobileSignInSameAccount": "Sau đó đăng nhập vào ứng dụng bằng tài khoản này.",
+    "botJoinsIn": "Pangea Bot tham gia sau {duration}",
+    "botIsJoining": "Pangea Bot đang tham gia…",
+    "playWithBotNowTitle": "Chơi với Pangea Bot ngay bây giờ?",
+    "playWithBotNowMessage": "Chưa có ai tham gia. Pangea Bot có thể nhận chỗ trống ngay bây giờ, hoặc bạn có thể tiếp tục chờ đợi.",
+    "keepWaiting": "Tiếp tục chờ đợi",
+    "botTookSeatAfterAnHour": "Phiên này đã mở được một giờ, vì vậy Pangea Bot đã nhận chỗ trống.",
+    "botTookSeatAfterADay": "Phiên này đã mở hơn một ngày, vì vậy Pangea Bot đã nhận chỗ trống. Gửi tin nhắn để bắt đầu."
 }

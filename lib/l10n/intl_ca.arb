@@ -10179,5 +10179,13 @@
     "removeAnalyticsAccessDesc": "{name} ja no podrà veure el teu progrés d'aprenentatge.",
     "centralCourseOfferBody": "És el curs de Pangea per a aprenents de {language}. Els seus membres poden veure el teu nom i perfil.",
     "centralCourseOfferTitle": "Unir-me a {course}?",
-    "makeMyOwnCourseInstead": "Crear el meu propi curs"
+    "makeMyOwnCourseInstead": "Crear el meu propi curs",
+    "suggestMobileSignInSameAccount": "Després, inicia sessió a l'aplicació amb aquest compte.",
+    "botJoinsIn": "El bot Pangea s'uneix en {duration}",
+    "botIsJoining": "El bot Pangea s'està unint…",
+    "playWithBotNowTitle": "Vols jugar amb el bot Pangea ara?",
+    "playWithBotNowMessage": "Encara no s'ha unit ningú. El bot Pangea pot ocupar el seient lliure ara, o pots seguir esperant.",
+    "keepWaiting": "Seguir esperant",
+    "botTookSeatAfterAnHour": "Aquesta sessió ha estat oberta durant una hora, així que el bot Pangea ha ocupat el seient lliure.",
+    "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar."
 }

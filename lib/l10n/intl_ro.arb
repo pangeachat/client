@@ -10781,5 +10781,13 @@
     "removeAnalyticsAccessDesc": "{name} nu va mai putea să-ți vadă progresul de învățare.",
     "centralCourseOfferBody": "Este cursul Pangea pentru cursanții de {language}. Membrii săi îți pot vedea numele și profilul.",
     "centralCourseOfferTitle": "Te alături la {course}?",
-    "makeMyOwnCourseInstead": "Creez propriul curs"
+    "makeMyOwnCourseInstead": "Creez propriul curs",
+    "suggestMobileSignInSameAccount": "Apoi conectați-vă la aplicație cu acest cont.",
+    "botJoinsIn": "Pangea Bot se alătură în {duration}",
+    "botIsJoining": "Pangea Bot se alătură…",
+    "playWithBotNowTitle": "Vrei să te joci cu Pangea Bot acum?",
+    "playWithBotNowMessage": "Nimeni nu s-a alăturat încă. Pangea Bot poate ocupa locul liber acum, sau poți continua să aștepți.",
+    "keepWaiting": "Continuă să aștepți",
+    "botTookSeatAfterAnHour": "Această sesiune a fost deschisă timp de o oră, așa că Pangea Bot a ocupat locul liber.",
+    "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe."
 }

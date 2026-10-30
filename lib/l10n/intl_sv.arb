@@ -10567,5 +10567,13 @@
     "removeAnalyticsAccessDesc": "{name} kommer inte längre att kunna se dina inlärningsframsteg.",
     "centralCourseOfferBody": "Det är Pangeas kurs för {language}-elever. Dess medlemmar kan se ditt namn och din profil.",
     "centralCourseOfferTitle": "Gå med i {course}?",
-    "makeMyOwnCourseInstead": "Skapa min egen kurs istället"
+    "makeMyOwnCourseInstead": "Skapa min egen kurs istället",
+    "suggestMobileSignInSameAccount": "Logga sedan in i appen med det här kontot.",
+    "botJoinsIn": "Pangea Bot ansluter om {duration}",
+    "botIsJoining": "Pangea Bot ansluter…",
+    "playWithBotNowTitle": "Spela med Pangea Bot nu?",
+    "playWithBotNowMessage": "Ingen har anslutit än. Pangea Bot kan ta den lediga platsen nu, eller så kan du fortsätta vänta.",
+    "keepWaiting": "Fortsätt vänta",
+    "botTookSeatAfterAnHour": "Den här sessionen var öppen i en timme, så Pangea Bot tog den lediga platsen.",
+    "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja."
 }

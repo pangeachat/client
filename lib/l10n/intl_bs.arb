@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} više neće moći vidjeti vaš napredak u učenju.",
     "centralCourseOfferBody": "Ovo je Pangea kurs za učenike {language} jezika. Njegovi članovi mogu vidjeti vaše ime i profil.",
     "centralCourseOfferTitle": "Pridružiti se {course}?",
-    "makeMyOwnCourseInstead": "Umjesto toga, kreiraj moj vlastiti kurs"
+    "makeMyOwnCourseInstead": "Umjesto toga, kreiraj moj vlastiti kurs",
+    "suggestMobileSignInSameAccount": "Zatim se prijavite u aplikaciju s ovim računom.",
+    "botJoinsIn": "Pangea Bot se pridružuje za {duration}",
+    "botIsJoining": "Pangea Bot se pridružuje…",
+    "playWithBotNowTitle": "Igrati sa Pangea Botom sada?",
+    "playWithBotNowMessage": "Još niko se nije pridružio. Pangea Bot može zauzeti slobodno mjesto sada, ili možete nastaviti čekati.",
+    "keepWaiting": "Nastavi čekati",
+    "botTookSeatAfterAnHour": "Ova sesija je bila otvorena sat vremena, tako da je Pangea Bot zauzeo slobodno mjesto.",
+    "botTookSeatAfterADay": "Ova sesija je bila otvorena više od jednog dana, tako da je Pangea Bot zauzeo slobodno mjesto. Pošaljite poruku za početak."
 }

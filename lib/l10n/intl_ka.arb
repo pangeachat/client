@@ -10949,5 +10949,13 @@
     "removeAnalyticsAccessDesc": "{name} ვეღარ შეძლებს თქვენი სწავლის პროგრესის ნახვას.",
     "centralCourseOfferBody": "ეს არის Pangea-ს კურსი {language} ენის შემსწავლელებისთვის. მისი წევრები ხედავენ თქვენს სახელსა და პროფილს.",
     "centralCourseOfferTitle": "შეუერთდეთ {course}-ს?",
-    "makeMyOwnCourseInstead": "სამაგიეროდ შევქმნა ჩემი კურსი"
+    "makeMyOwnCourseInstead": "სამაგიეროდ შევქმნა ჩემი კურსი",
+    "suggestMobileSignInSameAccount": "შემდეგ შედით აპლიკაციაში ამ ანგარიშით.",
+    "botJoinsIn": "Pangea Bot შემოგიერთდებათ {duration}-ში",
+    "botIsJoining": "Pangea Bot გიერთდებათ…",
+    "playWithBotNowTitle": "ითამაშებთ Pangea Bot-თან ახლავე?",
+    "playWithBotNowMessage": "ჯერ არავინ შემოგვიერთდა. Pangea Bot-ს შეუძლია დაიკავოს თავისუფალი ადგილი ახლავე, ან შეგიძლიათ გააგრძელოთ ლოდინი.",
+    "keepWaiting": "გააგრძელეთ ლოდინი",
+    "botTookSeatAfterAnHour": "ეს სესია ერთი საათის განმავლობაში ღია იყო, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი.",
+    "botTookSeatAfterADay": "ეს სესია ერთ დღეზე მეტხანს იყო ღია, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი. გასააქტიურებლად გაგზავნეთ შეტყობინება."
 }

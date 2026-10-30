@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} هاڻي توهان جي سکيا جي ترقي ڏسي نه سگهندو.",
     "centralCourseOfferBody": "هي {language} سکندڙن لاءِ پينگيا جو ڪورس آهي. ان جا ميمبر توهان جو نالو ۽ پروفائيل ڏسي سگهن ٿا.",
     "centralCourseOfferTitle": "{course} ۾ شامل ٿيو؟",
-    "makeMyOwnCourseInstead": "ان جي بدران پنهنجو ڪورس ٺاهيو"
+    "makeMyOwnCourseInstead": "ان جي بدران پنهنجو ڪورس ٺاهيو",
+    "suggestMobileSignInSameAccount": "پوءِ هن اڪائونٽ سان ايپ ۾ سائن ان ڪريو.",
+    "botJoinsIn": "پينگيا بوٽ {duration} ۾ شامل ٿيندو",
+    "botIsJoining": "پينگيا بوٽ شامل ٿي رهيو آهي…",
+    "playWithBotNowTitle": "هاڻي پينگيا بوٽ سان کيڏجي؟",
+    "playWithBotNowMessage": "اڃا ڪو به شامل نه ٿيو آهي. پينگيا بوٽ هاڻي خالي جاءِ وٺي سگهي ٿو، يا توهان انتظار ڪري سگهو ٿا.",
+    "keepWaiting": "انتظار ڪندا رهو",
+    "botTookSeatAfterAnHour": "هي سيشن هڪ ڪلاڪ لاءِ کليل هو، تنهنڪري پينگيا بوٽ خالي جاءِ ورتي.",
+    "botTookSeatAfterADay": "هي سيشن هڪ ڏينهن کان وڌيڪ عرصي لاءِ کليل هو، تنهنڪري پينگيا بوٽ خالي جاءِ ورتي. شروع ڪرڻ لاءِ پيغام موڪليو."
 }

@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} သည် သင့်သင်ယူမှုတိုးတက်မှုကို နောက်ထပ်မြင်နိုင်တော့မည် မဟုတ်ပါ။",
     "centralCourseOfferBody": "၎င်းသည် {language} သင်ယူသူများအတွက် Pangea ၏ သင်တန်းဖြစ်သည်။ ၎င်း၏အဖွဲ့ဝင်များသည် သင့်အမည်နှင့် ပရိုဖိုင်ကို မြင်နိုင်ပါသည်။",
     "centralCourseOfferTitle": "{course} ကို ဝင်မလား?",
-    "makeMyOwnCourseInstead": "ကျွန်ုပ်၏ကိုယ်ပိုင်သင်တန်းကို ဖန်တီးမည်"
+    "makeMyOwnCourseInstead": "ကျွန်ုပ်၏ကိုယ်ပိုင်သင်တန်းကို ဖန်တီးမည်",
+    "suggestMobileSignInSameAccount": "ထို့နောက် ဤအကောင့်ဖြင့် အက်ပ်သို့ ဝင်ရောက်ပါ။",
+    "botJoinsIn": "Pangea Bot သည် {duration} အတွင်း ပါဝင်လာပါမည်။",
+    "botIsJoining": "Pangea Bot ပါဝင်နေသည်…",
+    "playWithBotNowTitle": "Pangea Bot နှင့် အခုပဲ ကစားမလား။",
+    "playWithBotNowMessage": "မည်သူမျှ မပါဝင်သေးပါ။ Pangea Bot သည် ယခုပဲ နေရာယူနိုင်သည် သို့မဟုတ် သင် ဆက်စောင့်နိုင်သည်။",
+    "keepWaiting": "ဆက်စောင့်မည်",
+    "botTookSeatAfterAnHour": "ဤစကားဝိုင်းသည် တစ်နာရီကြာ ဖွင့်ထားခဲ့ပြီးဖြစ်၍ Pangea Bot သည် နေရာယူလိုက်ပါသည်။",
+    "botTookSeatAfterADay": "ဤစကားဝိုင်းသည် တစ်ရက်ကျော်ကြာ ဖွင့်ထားခဲ့ပြီးဖြစ်၍ Pangea Bot သည် နေရာယူလိုက်ပါသည်။ စတင်ရန် မက်ဆေ့ချ်ပို့ပါ။"
 }

@@ -10818,5 +10818,13 @@
     "removeAnalyticsAccessDesc": "{name}はあなたの学習進捗状況を閲覧できなくなります。",
     "centralCourseOfferBody": "これは{language}学習者向けのPangeaのコースです。メンバーはあなたの名前とプロフィールを見ることができます。",
     "centralCourseOfferTitle": "{course}に参加しますか？",
-    "makeMyOwnCourseInstead": "代わりに自分でコースを作成する"
+    "makeMyOwnCourseInstead": "代わりに自分でコースを作成する",
+    "suggestMobileSignInSameAccount": "その後、このアカウントでアプリにサインインしてください。",
+    "botJoinsIn": "Pangea Botが{duration}で参加します",
+    "botIsJoining": "Pangea Botが参加しています…",
+    "playWithBotNowTitle": "今すぐPangea Botとプレイしますか？",
+    "playWithBotNowMessage": "まだ誰も参加していません。Pangea Botが今すぐ空席に着くことも、引き続き待つこともできます。",
+    "keepWaiting": "待ち続ける",
+    "botTookSeatAfterAnHour": "このセッションは1時間開いていたため、Pangea Botが空席に着きました。",
+    "botTookSeatAfterADay": "このセッションは1日以上開いていたため、Pangea Botが空席に着きました。メッセージを送信して開始してください。"
 }

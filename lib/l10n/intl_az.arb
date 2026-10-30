@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} artıq öyrənmə tərəqqinizi görə bilməyəcək.",
     "centralCourseOfferBody": "Bu, Pangea-nın {language} öyrənənlər üçün kursudur. Üzvləri adınızı və profilinizi görə bilər.",
     "centralCourseOfferTitle": "{course} kursuna qoşulmaq?",
-    "makeMyOwnCourseInstead": "Əvəzinə öz kursumu yarat"
+    "makeMyOwnCourseInstead": "Əvəzinə öz kursumu yarat",
+    "suggestMobileSignInSameAccount": "Sonra bu hesabla tətbiqə daxil olun.",
+    "botJoinsIn": "Pangea Bot {duration} ərzində qoşulur",
+    "botIsJoining": "Pangea Bot qoşulur…",
+    "playWithBotNowTitle": "İndi Pangea Bot ilə oynamaq istəyirsiniz?",
+    "playWithBotNowMessage": "Hələ heç kim qoşulmayıb. Pangea Bot indi boş yeri tuta bilər və ya gözləməyə davam edə bilərsiniz.",
+    "keepWaiting": "Gözləməyə davam et",
+    "botTookSeatAfterAnHour": "Bu sessiya bir saat açıq idi, buna görə Pangea Bot boş yeri tutdu.",
+    "botTookSeatAfterADay": "Bu sessiya bir gündən çox açıq idi, buna görə Pangea Bot boş yeri tutdu. Başlamaq üçün mesaj göndərin."
 }

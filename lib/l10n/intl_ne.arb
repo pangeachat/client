@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} ले अब तपाईंको सिकाइ प्रगति हेर्न सक्ने छैन।",
     "centralCourseOfferBody": "यो {language} सिक्नेहरूका लागि पाङ्गियाको कोर्स हो। यसका सदस्यहरूले तपाईंको नाम र प्रोफाइल हेर्न सक्छन्।",
     "centralCourseOfferTitle": "{course} मा सामेल हुने?",
-    "makeMyOwnCourseInstead": "बरु म आफ्नै कोर्स बनाउँछु"
+    "makeMyOwnCourseInstead": "बरु म आफ्नै कोर्स बनाउँछु",
+    "suggestMobileSignInSameAccount": "त्यसपछि यो खाताबाट एपमा साइन इन गर्नुहोस्।",
+    "botJoinsIn": "Pangea Bot {duration} मा सामेल हुन्छ",
+    "botIsJoining": "Pangea Bot सामेल हुँदैछ…",
+    "playWithBotNowTitle": "अहिले Pangea Bot सँग खेल्ने हो?",
+    "playWithBotNowMessage": "अहिलेसम्म कोही पनि सामेल भएका छैनन्। Pangea Bot ले अहिले खाली सिट लिन सक्छ, वा तपाईं पर्खन सक्नुहुन्छ।",
+    "keepWaiting": "पर्खिरहनुहोस्",
+    "botTookSeatAfterAnHour": "यो सत्र एक घण्टाको लागि खुला थियो, त्यसैले Pangea Bot ले खाली सिट लियो।",
+    "botTookSeatAfterADay": "यो सत्र एक दिनभन्दा बढी समयदेखि खुला थियो, त्यसैले Pangea Bot ले खाली सिट लियो। सुरु गर्न सन्देश पठाउनुहोस्।"
 }

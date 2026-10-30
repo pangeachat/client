@@ -10063,5 +10063,13 @@
     "removeAnalyticsAccessDesc": "Ní bheidh {name} in ann do dhul chun cinn foghlama a fheiceáil a thuilleadh.",
     "centralCourseOfferBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
     "centralCourseOfferTitle": "An mbeifeá páirteach i {course}?",
-    "makeMyOwnCourseInstead": "Cruthaigh mo chúrsa féin ina ionad"
+    "makeMyOwnCourseInstead": "Cruthaigh mo chúrsa féin ina ionad",
+    "suggestMobileSignInSameAccount": "Ansin sínigh isteach san aip leis an gcuntas seo.",
+    "botJoinsIn": "Tagann Pangea Bot isteach i {duration}",
+    "botIsJoining": "Tá Pangea Bot ag teacht isteach…",
+    "playWithBotNowTitle": "Ar mhaith leat imirt le Pangea Bot anois?",
+    "playWithBotNowMessage": "Níl éinne tagtha isteach fós. Is féidir le Pangea Bot an suíochán folamh a thógáil anois, nó is féidir leat fanacht.",
+    "keepWaiting": "Fanacht",
+    "botTookSeatAfterAnHour": "Bhí an seisiún seo ar oscailt ar feadh uaire an chloig, mar sin thóg Pangea Bot an suíochán folamh.",
+    "botTookSeatAfterADay": "Bhí an seisiún seo ar oscailt ar feadh níos mó ná lá, mar sin thóg Pangea Bot an suíochán folamh. Seol teachtaireacht chun tús a chur leis."
 }

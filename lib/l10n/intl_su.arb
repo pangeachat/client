@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} moal tiasa ningali deui kamajuan diajar anjeun.",
     "centralCourseOfferBody": "Ieu kursus Pangea pikeun nu diajar basa {language}. Anggotana bisa ningali ngaran jeung profil anjeun.",
     "centralCourseOfferTitle": "Gabung {course}?",
-    "makeMyOwnCourseInstead": "Jieun kursus kuring sorangan"
+    "makeMyOwnCourseInstead": "Jieun kursus kuring sorangan",
+    "suggestMobileSignInSameAccount": "Teras lebet kana aplikasi nganggo akun ieu.",
+    "botJoinsIn": "Pangea Bot ngagabung dina {duration}",
+    "botIsJoining": "Pangea Bot nuju ngagabung…",
+    "playWithBotNowTitle": "Maén sareng Pangea Bot ayeuna?",
+    "playWithBotNowMessage": "Teu acan aya nu ngagabung. Pangea Bot tiasa nyandak korsi kosong ayeuna, atanapi anjeun tiasa teras ngantosan.",
+    "keepWaiting": "Teraskeun ngantosan",
+    "botTookSeatAfterAnHour": "Sési ieu dibuka sajam, janten Pangea Bot nyandak korsi kosong.",
+    "botTookSeatAfterADay": "Sési ieu dibuka langkung ti sadinten, janten Pangea Bot nyandak korsi kosong. Kirim pesen pikeun ngamimitian."
 }

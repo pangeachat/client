@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} tidak lagi dapat melihat kemajuan pembelajaran anda.",
     "centralCourseOfferBody": "Ini ialah kursus Pangea untuk pelajar {language}. Ahli-ahlinya boleh melihat nama dan profil anda.",
     "centralCourseOfferTitle": "Sertai {course}?",
-    "makeMyOwnCourseInstead": "Buat kursus saya sendiri"
+    "makeMyOwnCourseInstead": "Buat kursus saya sendiri",
+    "suggestMobileSignInSameAccount": "Kemudian log masuk ke aplikasi dengan akaun ini.",
+    "botJoinsIn": "Pangea Bot akan menyertai dalam {duration}",
+    "botIsJoining": "Pangea Bot sedang menyertai…",
+    "playWithBotNowTitle": "Bermain dengan Pangea Bot sekarang?",
+    "playWithBotNowMessage": "Tiada sesiapa yang menyertai lagi. Pangea Bot boleh mengambil tempat kosong sekarang, atau anda boleh terus menunggu.",
+    "keepWaiting": "Terus menunggu",
+    "botTookSeatAfterAnHour": "Sesi ini dibuka selama sejam, jadi Pangea Bot mengambil tempat kosong.",
+    "botTookSeatAfterADay": "Sesi ini dibuka selama lebih sehari, jadi Pangea Bot mengambil tempat kosong. Hantar mesej untuk bermula."
 }

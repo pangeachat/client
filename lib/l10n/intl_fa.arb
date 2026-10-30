@@ -10140,5 +10140,13 @@
     "removeAnalyticsAccessDesc": "{name} دیگر قادر به دیدن پیشرفت یادگیری شما نخواهد بود.",
     "centralCourseOfferBody": "این دوره پانگه‌آ برای زبان‌آموزان {language} است. اعضای آن می‌توانند نام و نمایه شما را ببینند.",
     "centralCourseOfferTitle": "به {course} بپیوندید؟",
-    "makeMyOwnCourseInstead": "به جای آن، دوره خودم را بسازم"
+    "makeMyOwnCourseInstead": "به جای آن، دوره خودم را بسازم",
+    "suggestMobileSignInSameAccount": "سپس با همین حساب وارد برنامه شوید.",
+    "botJoinsIn": "ربات Pangea در {duration} به شما ملحق می‌شود",
+    "botIsJoining": "ربات Pangea در حال پیوستن است…",
+    "playWithBotNowTitle": "اکنون با ربات Pangea بازی می‌کنید؟",
+    "playWithBotNowMessage": "هنوز کسی به شما ملحق نشده است. ربات Pangea می‌تواند اکنون جای خالی را پر کند، یا می‌توانید منتظر بمانید.",
+    "keepWaiting": "منتظر بمانید",
+    "botTookSeatAfterAnHour": "این جلسه به مدت یک ساعت باز بود، بنابراین ربات Pangea جای خالی را پر کرد.",
+    "botTookSeatAfterADay": "این جلسه بیش از یک روز باز بود، بنابراین ربات Pangea جای خالی را پر کرد. برای شروع یک پیام ارسال کنید."
 }

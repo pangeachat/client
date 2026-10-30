@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "Dili na makita ni {name} ang imong pag-uswag sa pagkat-on.",
     "centralCourseOfferBody": "Kini ang kurso sa Pangea para sa mga nagkat-on og {language}. Makita sa mga miyembro niini ang imong ngalan ug profile.",
     "centralCourseOfferTitle": "Apil sa {course}?",
-    "makeMyOwnCourseInstead": "Maghimo na lang ko sa akong kaugalingong kurso"
+    "makeMyOwnCourseInstead": "Maghimo na lang ko sa akong kaugalingong kurso",
+    "suggestMobileSignInSameAccount": "Dayon pag-sign in sa app gamit kini nga account.",
+    "botJoinsIn": "Ang Pangea Bot moapil sa {duration}",
+    "botIsJoining": "Ang Pangea Bot moapil na…",
+    "playWithBotNowTitle": "Makigdula sa Pangea Bot karon?",
+    "playWithBotNowMessage": "Wala pa'y miapil. Ang Pangea Bot makalingkod na karon, o mahimo kang magpadayon sa paghulat.",
+    "keepWaiting": "Padayon sa paghulat",
+    "botTookSeatAfterAnHour": "Bukas kini nga sesyon sulod sa usa ka oras, busa ang Pangea Bot milingkod sa bakanteng lingkoranan.",
+    "botTookSeatAfterADay": "Bukas kini nga sesyon sulod sa kapin sa usa ka adlaw, busa ang Pangea Bot milingkod sa bakanteng lingkoranan. Pagpadala og mensahe aron magsugod."
 }

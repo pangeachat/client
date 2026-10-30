@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "E le mafai ona toe vaʻai {name} i lau alualu i luma o le aʻoaʻoina.",
     "centralCourseOfferBody": "O le kosi a Pangea mo tagata aʻoga {language}. E mafai e ona sui ona vaʻai i lou igoa ma lau talaaga.",
     "centralCourseOfferTitle": "Auai i le {course}?",
-    "makeMyOwnCourseInstead": "Fausia laʻu lava kosi"
+    "makeMyOwnCourseInstead": "Fausia laʻu lava kosi",
+    "suggestMobileSignInSameAccount": "Ona saini lea i totonu o le app i lenei teugatupe.",
+    "botJoinsIn": "Ua auai le Pangea Bot i le {duration}",
+    "botIsJoining": "O lo'o auai le Pangea Bot…",
+    "playWithBotNowTitle": "Ta'alo ma le Pangea Bot nei?",
+    "playWithBotNowMessage": "E leai se tasi na auai mai. E mafai e le Pangea Bot ona nofo i le nofoa avanoa nei, pe e te mana'o e fa'atali pea.",
+    "keepWaiting": "Fa'atali pea",
+    "botTookSeatAfterAnHour": "Na tatala lenei sauniga mo le itula, o lea na nofo ai le Pangea Bot i le nofoa avanoa.",
+    "botTookSeatAfterADay": "Na tatala lenei sauniga mo le silia ma le aso, o lea na nofo ai le Pangea Bot i le nofoa avanoa. Auina mai se fe'au e amata ai."
 }

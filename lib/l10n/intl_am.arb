@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} ከእንግዲህ የመማር ሂደትዎን ማየት አይችልም።",
     "centralCourseOfferBody": "ይህ የፓንጋያ ኮርስ ለ{language} ተማሪዎች ነው። አባላቱ የእርስዎን ስም እና መገለጫ ማየት ይችላሉ።",
     "centralCourseOfferTitle": "{course}ን ይቀላቀላሉ?",
-    "makeMyOwnCourseInstead": "በምትኩ የራሴን ኮርስ ልፍጠር"
+    "makeMyOwnCourseInstead": "በምትኩ የራሴን ኮርስ ልፍጠር",
+    "suggestMobileSignInSameAccount": "ከዚያም በዚህ መለያ ወደ መተግበሪያው ይግቡ።",
+    "botJoinsIn": "ፓንጋያ ቦት በ{duration} ውስጥ ይቀላቀላል",
+    "botIsJoining": "ፓንጋያ ቦት እየተቀላቀለ ነው…",
+    "playWithBotNowTitle": "አሁን ከፓንጋያ ቦት ጋር ይጫወቱ?",
+    "playWithBotNowMessage": "እስካሁን ማንም አልተቀላቀለም። ፓንጋያ ቦት አሁን ያለውን ክፍት ቦታ ሊይዝ ይችላል፣ ወይም መጠበቅ ይችላሉ።",
+    "keepWaiting": "መጠበቅ ይቀጥሉ",
+    "botTookSeatAfterAnHour": "ይህ ክፍለ ጊዜ ለአንድ ሰዓት ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ።",
+    "botTookSeatAfterADay": "ይህ ክፍለ ጊዜ ከአንድ ቀን በላይ ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ። ለመጀመር መልእክት ይላኩ።"
 }

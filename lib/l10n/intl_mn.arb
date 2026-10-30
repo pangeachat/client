@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} таны сурах явцыг харах боломжгүй болно.",
     "centralCourseOfferBody": "Энэ бол {language} хэл суралцагчдад зориулсан Пангеагийн хичээл юм. Гишүүд таны нэр, профайлыг харах боломжтой.",
     "centralCourseOfferTitle": "{course}-д нэгдэх үү?",
-    "makeMyOwnCourseInstead": "Оронд нь өөрийн хичээлээ үүсгэх"
+    "makeMyOwnCourseInstead": "Оронд нь өөрийн хичээлээ үүсгэх",
+    "suggestMobileSignInSameAccount": "Дараа нь энэ бүртгэлээр апп руу нэвтэрнэ үү.",
+    "botJoinsIn": "Pangea Bot {duration}-ийн дараа нэгдэнэ",
+    "botIsJoining": "Pangea Bot нэгдэж байна…",
+    "playWithBotNowTitle": "Одоо Pangea Bot-той тоглох уу?",
+    "playWithBotNowMessage": "Одоогоор хэн ч нэгдээгүй байна. Pangea Bot одоо сул суудалд суух боломжтой, эсвэл та хүлээсээр байж болно.",
+    "keepWaiting": "Хүлээсээр байх",
+    "botTookSeatAfterAnHour": "Энэ хуралдаан нэг цаг нээлттэй байсан тул Pangea Bot сул суудалд суусан.",
+    "botTookSeatAfterADay": "Энэ хуралдаан нэг өдрөөс илүү нээлттэй байсан тул Pangea Bot сул суудалд суусан. Эхлүүлэхийн тулд мессеж илгээнэ үү."
 }

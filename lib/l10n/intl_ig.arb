@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} agaghịzi enwe ike ịhụ ọganihu mmụta gị.",
     "centralCourseOfferBody": "Ọ bụ ọmụmụ ihe Pangea maka ndị na-amụ {language}. Ndị otu ya nwere ike ịhụ aha gị na profaịlụ gị.",
     "centralCourseOfferTitle": "Banye {course}?",
-    "makeMyOwnCourseInstead": "Mee nke m kama"
+    "makeMyOwnCourseInstead": "Mee nke m kama",
+    "suggestMobileSignInSameAccount": "Banyezie na ngwa ahụ na akaụntụ a.",
+    "botJoinsIn": "Pangea Bot ga-esonye na {duration}",
+    "botIsJoining": "Pangea Bot na-esonye…",
+    "playWithBotNowTitle": "Soro Pangea Bot gwuo egwu ugbu a?",
+    "playWithBotNowMessage": "Ọ dịghị onye esonyela. Pangea Bot nwere ike ịnọ n'oche tọgbọrọ chakoo ugbu a, ma ọ bụ ị nwere ike ịnọgide na-eche.",
+    "keepWaiting": "Nọgide na-eche",
+    "botTookSeatAfterAnHour": "Nzukọ a mepere otu awa, yabụ Pangea Bot nọrọ n'oche tọgbọrọ chakoo.",
+    "botTookSeatAfterADay": "Nzukọ a mepere ihe karịrị otu ụbọchị, yabụ Pangea Bot nọrọ n'oche tọgbọrọ chakoo. Zipụ ozi ka ịmalite."
 }

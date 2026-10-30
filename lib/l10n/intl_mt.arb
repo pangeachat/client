@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} mhux se jibqa' jkun jista' jara l-progress tat-tagħlim tiegħek.",
     "centralCourseOfferBody": "Huwa l-kors ta' Pangea għal dawk li qed jitgħallmu l-{language}. Il-membri tiegħu jistgħu jaraw ismek u l-profil tiegħek.",
     "centralCourseOfferTitle": "Tissieħeb f'{course}'?",
-    "makeMyOwnCourseInstead": "Nagħmel il-kors tiegħi stess"
+    "makeMyOwnCourseInstead": "Nagħmel il-kors tiegħi stess",
+    "suggestMobileSignInSameAccount": "Imbagħad idħol fl-app b'dan il-kont.",
+    "botJoinsIn": "Pangea Bot jingħaqad fi {duration}",
+    "botIsJoining": "Pangea Bot qed jingħaqad…",
+    "playWithBotNowTitle": "Tilgħab ma' Pangea Bot issa?",
+    "playWithBotNowMessage": "Ħadd ma ngħaqad s'issa. Pangea Bot jista' jieħu s-siġġu vojt issa, jew tista' tibqa' tistenna.",
+    "keepWaiting": "Ibqa' stenna",
+    "botTookSeatAfterAnHour": "Din is-sessjoni kienet miftuħa għal siegħa, allura Pangea Bot ħa s-siġġu vojt.",
+    "botTookSeatAfterADay": "Din is-sessjoni kienet miftuħa għal aktar minn ġurnata, allura Pangea Bot ħa s-siġġu vojt. Ibgħat messaġġ biex tibda."
 }

@@ -2514,5 +2514,13 @@
     "removeAnalyticsAccessDesc": "{name} a ke ke a hlola a khona ho bona tsoelo-pele ea hau ea ho ithuta.",
     "centralCourseOfferBody": "Ke thupelo ea Pangea bakeng sa baithuti ba {language}. Litho tsa eona li ka bona lebitso la hau le profileng ea hau.",
     "centralCourseOfferTitle": "Kena ho {course}?",
-    "makeMyOwnCourseInstead": "Iketsetse thupelo ea ka"
+    "makeMyOwnCourseInstead": "Iketsetse thupelo ea ka",
+    "suggestMobileSignInSameAccount": "Ebe u kena ho app ka ak'haonte ena.",
+    "botJoinsIn": "Pangea Bot e kenela ka {duration}",
+    "botIsJoining": "Pangea Bot e kenela…",
+    "playWithBotNowTitle": "Bapala le Pangea Bot hona jwale?",
+    "playWithBotNowMessage": "Ha ho motho ya kenetseng. Pangea Bot e ka nka setulo se se nang motho hona jwale, kapa o ka tswela pele ho ema.",
+    "keepWaiting": "Tswela pele ho ema",
+    "botTookSeatAfterAnHour": "Thuto ena e ne e butswe ka hora, kahoo Pangea Bot e nkile setulo se se nang motho.",
+    "botTookSeatAfterADay": "Thuto ena e ne e butswe ho feta letsatsi, kahoo Pangea Bot e nkile setulo se se nang motho. Romela molaetsa ho qala."
 }

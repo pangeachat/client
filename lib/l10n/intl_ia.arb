@@ -10985,5 +10985,13 @@
     "removeAnalyticsAccessDesc": "{name} non plus pote vider tu progresso de apprendimento.",
     "centralCourseOfferBody": "Illo es le curso de Pangea pro apprededores de {language}. Su membros pote vider tu nomine e profilo.",
     "centralCourseOfferTitle": "Unir te a {course}?",
-    "makeMyOwnCourseInstead": "Crear mi proprie curso in vice"
+    "makeMyOwnCourseInstead": "Crear mi proprie curso in vice",
+    "suggestMobileSignInSameAccount": "Postea aperi un session in le app con iste conto.",
+    "botJoinsIn": "Pangea Bot se junge in {duration}",
+    "botIsJoining": "Pangea Bot se junge…",
+    "playWithBotNowTitle": "Jugar con Pangea Bot ora?",
+    "playWithBotNowMessage": "Nemo ha ancora jungite. Pangea Bot pote prender le sede vacante ora, o tu pote continuar a attender.",
+    "keepWaiting": "Continuar a attender",
+    "botTookSeatAfterAnHour": "Iste session esseva aperte pro un hora, dunque Pangea Bot prendeva le sede vacante.",
+    "botTookSeatAfterADay": "Iste session esseva aperte pro plus de un die, dunque Pangea Bot prendeva le sede vacante. Invia un message pro initiar."
 }

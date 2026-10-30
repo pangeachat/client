@@ -10089,5 +10089,13 @@
     "removeAnalyticsAccessDesc": "{name} ei enää näe oppimisesi edistymistä.",
     "centralCourseOfferBody": "Tämä on Pangean kurssi {language}-kielen opiskelijoille. Kurssin jäsenet näkevät nimesi ja profiilisi.",
     "centralCourseOfferTitle": "Liity kurssille {course}?",
-    "makeMyOwnCourseInstead": "Luo oma kurssi sen sijaan"
+    "makeMyOwnCourseInstead": "Luo oma kurssi sen sijaan",
+    "suggestMobileSignInSameAccount": "Kirjaudu sitten sovellukseen tällä tilillä.",
+    "botJoinsIn": "Pangea Bot liittyy {duration} kuluttua",
+    "botIsJoining": "Pangea Bot liittyy…",
+    "playWithBotNowTitle": "Pelataanko Pangea Botin kanssa nyt?",
+    "playWithBotNowMessage": "Kukaan ei ole vielä liittynyt. Pangea Bot voi ottaa avoimen paikan nyt, tai voit jatkaa odottamista.",
+    "keepWaiting": "Jatka odottamista",
+    "botTookSeatAfterAnHour": "Tämä istunto oli auki tunnin, joten Pangea Bot otti avoimen paikan.",
+    "botTookSeatAfterADay": "Tämä istunto oli auki yli päivän, joten Pangea Bot otti avoimen paikan. Aloita lähettämällä viesti."
 }

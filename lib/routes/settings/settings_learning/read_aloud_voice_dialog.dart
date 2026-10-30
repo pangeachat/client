@@ -54,8 +54,6 @@ class ReadAloudVoiceDialog extends StatelessWidget {
   const ReadAloudVoiceDialog({super.key, required this.language});
 
   static const String _chromeUrl = 'https://www.google.com/chrome/';
-  static const String _iosAppStoreUrl =
-      'https://apps.apple.com/app/id1445118630';
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +77,7 @@ class ReadAloudVoiceDialog extends StatelessWidget {
           onAction: () => launchUrl(
             Uri.parse(
               defaultTargetPlatform == TargetPlatform.iOS
-                  ? _iosAppStoreUrl
+                  ? AppConfig.iosAppStoreURL
                   : AppConfig.androidUpdateURL,
             ),
           ),
