@@ -324,54 +324,61 @@ void main() {
     // AVPlayer cannot open Ogg Vorbis: on an iPad simulator all three .ogg cues
     // failed to load and their .mp3 twins played, so an iPhone or iPad got no
     // in-app ring, no engaged tone and no reconnecting tone.
-    group('on a platform that cannot play Ogg', () {
-      test('every cue, looped or once, plays its mp3', () async {
-        final player = _FakeRingAudio();
-        final sound = AssetRingSound(
-          audioFactory: () => player,
-          playsOgg: false,
-        );
+    group('the asset a cue plays', () {
+      const cues = ['phone', 'notification', 'call'];
 
-        await sound.start('sounds/phone.ogg');
-        await sound.start('sounds/call.ogg');
-        unawaited(sound.busy());
-        unawaited(sound.playOnce('sounds/call_ended.mp3'));
-        await pumpEventQueue();
-
-        final played = [
-          for (final entry in player.log)
-            if (entry.startsWith('play')) entry,
-        ];
-        expect(played, isNotEmpty);
-        expect(played.where((entry) => entry.contains('.ogg')), isEmpty);
-        expect(
-          played.where((entry) => entry.contains('phone.mp3')),
-          isNotEmpty,
-        );
-        expect(played.where((entry) => entry.contains('call.mp3')), isNotEmpty);
-        expect(
-          played.where((entry) => entry.contains('notification.mp3')),
-          isNotEmpty,
-        );
+      test('on iOS is the mp3, and that file exists', () {
+        for (final name in cues) {
+          final asset = playableCueAsset('sounds/$name.ogg', isIOS: true);
+          expect(asset, 'sounds/$name.mp3');
+          expect(File('assets/$asset').existsSync(), isTrue, reason: asset);
+        }
       });
 
-      test('every .ogg cue the app plays has an mp3 beside it', () {
-        for (final name in ['phone', 'notification', 'call']) {
-          expect(File('assets/sounds/$name.mp3').existsSync(), isTrue);
+      test('everywhere else is the ogg', () {
+        for (final name in cues) {
+          expect(
+            playableCueAsset('sounds/$name.ogg', isIOS: false),
+            'sounds/$name.ogg',
+          );
         }
+      });
+
+      test('that is already an mp3 is left alone', () {
+        expect(
+          playableCueAsset('sounds/ringback.mp3', isIOS: true),
+          'sounds/ringback.mp3',
+        );
       });
     });
 
-    test('elsewhere the cue plays as named', () async {
+    // Run where this test runs, which is not iOS. Both call sites go through
+    // the one function: a site that skipped it would still pass this, and the
+    // reading of the platform is what these two lines pin.
+    test('a looped cue and a one-shot both play as this platform can', () async {
       final player = _FakeRingAudio();
-      final sound = AssetRingSound(audioFactory: () => player, playsOgg: true);
+      final sound = AssetRingSound(audioFactory: () => player);
+
+      /// Finishes every note of [cue], so it ends rather than timing out.
+      Future<void> finish(Future<void> cue, int notes) async {
+        for (var i = 0; i < notes; i++) {
+          await Future<void>.delayed(const Duration(milliseconds: 500));
+          player.completeCurrentPlay();
+        }
+        await cue;
+      }
 
       await sound.start('sounds/phone.ogg');
+      await finish(sound.busy(), 2);
+      await finish(sound.playOnce('sounds/call_ended.mp3'), 1);
 
-      expect(
-        player.log.where((entry) => entry.contains('phone.ogg')),
-        isNotEmpty,
-      );
+      final played = player.log.where((entry) => entry.startsWith('play:'));
+      expect(played, [
+        'play:${playableCueAsset('sounds/phone.ogg', isIOS: Platform.isIOS)}',
+        'play:${playableCueAsset('sounds/notification.ogg', isIOS: Platform.isIOS)}',
+        'play:${playableCueAsset('sounds/notification.ogg', isIOS: Platform.isIOS)}',
+        'play:sounds/call_ended.mp3',
+      ]);
     });
 
     test('the incoming ring keeps the default session', () async {

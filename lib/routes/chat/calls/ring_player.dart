@@ -59,6 +59,11 @@ class _AudioPlayersRing implements RingAudio {
   Future<void> dispose() => _player.dispose();
 }
 
+/// [asset] as this platform can play it: AVPlayer cannot open Ogg Vorbis, so iOS
+/// gets the mp3 beside it.
+String playableCueAsset(String asset, {required bool isIOS}) =>
+    isIOS ? asset.replaceFirst(RegExp(r'\.ogg$'), '.mp3') : asset;
+
 /// The sound behind a keyed ring lifecycle, seamed so the lifecycle can be
 /// tested without a platform audio plugin.
 abstract class RingSound {
@@ -163,19 +168,14 @@ class AssetRingSound implements RingSound {
     AndroidUsageType usage = AndroidUsageType.notificationRingtone,
     AudioContextIOS? iosSession,
     @visibleForTesting RingAudio Function()? audioFactory,
-    @visibleForTesting bool? playsOgg,
   }) : _usage = usage,
        _iosSession = iosSession ?? AudioContextIOS(),
-       _audioFactory = audioFactory ?? (() => _AudioPlayersRing()),
-       _playsOgg = playsOgg ?? !PlatformInfos.isIOS;
-
-  /// Whether this platform's player can open Ogg Vorbis. AVPlayer cannot.
-  final bool _playsOgg;
+       _audioFactory = audioFactory ?? (() => _AudioPlayersRing());
 
   /// [asset] in a format this platform can play. The one place a cue reaches a
   /// player from, so no cue can pick its format and miss this.
   String _playable(String asset) =>
-      _playsOgg ? asset : asset.replaceFirst(RegExp(r'\.ogg$'), '.mp3');
+      playableCueAsset(asset, isIOS: PlatformInfos.isIOS);
 
   /// A caller's own call cues (#8807), played under the call-signalling usage so
   /// the caller hears them even with ringtones silenced, and on iOS under the
