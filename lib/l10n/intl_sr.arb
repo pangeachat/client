@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:53.222947",
+    "@@last_modified": "2026-10-29 12:07:31.971405",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -11008,6 +11008,9 @@
     "enterCityEarly": "Uđite ranije",
     "enterCityEarlyTitle": "Ući u {city} ranije?",
     "enterCityEarlyBody": "Ovaj grad vam još nije otvoren. Putovanje ispred grupe ima svoju cenu; šta košta još uvek se odlučuje, tako da za sada ništa nije naplaćeno.",
+    "worldShipLabel": "{course}, kurs u {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, posećeno",
     "botJoinsIn": "Pangea Bot se pridružuje za {duration}",
     "botIsJoining": "Pangea Bot se pridružuje…",
     "playWithBotNowTitle": "Igrati sa Pangea Botom sada?",

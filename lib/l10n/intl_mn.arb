@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-10-29 11:20:50.114181",
+    "@@last_modified": "2026-10-29 12:07:29.582277",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Эрт орох",
     "enterCityEarlyTitle": "{city} хотод эрт орох уу?",
     "enterCityEarlyBody": "Энэ хот танд хараахан нээгдээгүй байна. Хичээлээс түрүүлж явах нь үнэтэй; үнэ нь одоогоор шийдэгдээгүй байгаа тул одоохондоо юу ч төлөхгүй.",
+    "worldShipLabel": "{city} хот дахь {course} хичээл",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, зочилсон",
     "botJoinsIn": "Pangea Bot {duration}-ийн дараа нэгдэнэ",
     "botIsJoining": "Pangea Bot нэгдэж байна…",
     "playWithBotNowTitle": "Одоо Pangea Bot-той тоглох уу?",

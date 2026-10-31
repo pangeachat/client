@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:58.275131",
+    "@@last_modified": "2026-10-29 12:07:34.014857",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10168,6 +10168,9 @@
     "enterCityEarly": "提早進入",
     "enterCityEarlyTitle": "提早進入 {city}？",
     "enterCityEarlyBody": "此城市尚未對您開放。超前進度會有代價；目前費用仍在決定中，因此暫不收費。",
+    "worldShipLabel": "{course}，位於{city}的課程",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "已造訪{city}",
     "botJoinsIn": "Pangea Bot 將在 {duration} 後加入",
     "botIsJoining": "Pangea Bot 正在加入…",
     "playWithBotNowTitle": "現在就和 Pangea Bot 一起玩嗎？",

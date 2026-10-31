@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-29 11:20:36.514235",
+    "@@last_modified": "2026-10-29 12:07:23.820611",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10553,6 +10553,9 @@
     "enterCityEarly": "Vstoupit dříve",
     "enterCityEarlyTitle": "Vstoupit do města {city} dříve?",
     "enterCityEarlyBody": "Toto město pro vás ještě není otevřeno. Cestování před třídou má svou cenu; co to stojí, se stále rozhoduje, takže prozatím nic není účtováno.",
+    "worldShipLabel": "{course}, kurz v {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, navštíveno",
     "botJoinsIn": "Pangea Bot se připojí za {duration}",
     "botIsJoining": "Pangea Bot se připojuje…",
     "playWithBotNowTitle": "Hrát s Pangea Botem hned teď?",

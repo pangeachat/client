@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-29 11:20:46.394229",
+    "@@last_modified": "2026-10-29 12:07:28.424444",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Fréizäiteg antrëtt",
     "enterCityEarlyTitle": "Fréizäiteg an {city} antrieden?",
     "enterCityEarlyBody": "Dës Stad ass nach net fir dech op. Virun der Klass reesen huet e Präis; wat et kascht, gëtt nach decidéiert, dofir gëtt elo nach näischt verrechent.",
+    "worldShipLabel": "{course}, e Cours zu {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, besicht",
     "botJoinsIn": "Pangea Bot kënnt a(n) {duration}",
     "botIsJoining": "Pangea Bot kënnt derbäi…",
     "playWithBotNowTitle": "Elo mam Pangea Bot spillen?",

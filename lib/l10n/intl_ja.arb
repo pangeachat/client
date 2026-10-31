@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-29 11:20:42.473567",
+    "@@last_modified": "2026-10-29 12:07:27.197780",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10828,6 +10828,9 @@
     "enterCityEarly": "早期入場",
     "enterCityEarlyTitle": "{city}に早期入場しますか？",
     "enterCityEarlyBody": "この都市はまだ開放されていません。クラスより先に進むには費用がかかります。費用はまだ決定中ですので、現時点では無料です。",
+    "worldShipLabel": "{city}のコース、{course}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}、訪問済み",
     "botJoinsIn": "Pangea Botが{duration}で参加します",
     "botIsJoining": "Pangea Botが参加しています…",
     "playWithBotNowTitle": "今すぐPangea Botとプレイしますか？",

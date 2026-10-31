@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-29 11:20:38.957991",
+    "@@last_modified": "2026-10-29 12:07:24.682125",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10919,6 +10919,9 @@
     "enterCityEarly": "Pumasok nang maaga",
     "enterCityEarlyTitle": "Pumasok sa {city} nang maaga?",
     "enterCityEarlyBody": "Hindi pa bukas sa iyo ang lungsod na ito. May bayad ang paglalakbay nang mas maaga sa klase; kasalukuyan pa itong pinagdedesisyunan, kaya sa ngayon ay wala pang sinisingil.",
+    "worldShipLabel": "{course}, isang kurso sa {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, nabisita",
     "botJoinsIn": "Sasali si Pangea Bot sa loob ng {duration}",
     "botIsJoining": "Sumasali si Pangea Bot…",
     "playWithBotNowTitle": "Makipaglaro kay Pangea Bot ngayon?",

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-29 11:20:40.757007",
+    "@@last_modified": "2026-10-29 12:07:26.553656",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Antre bonè",
     "enterCityEarlyTitle": "Antre {city} bonè?",
     "enterCityEarlyBody": "Vil sa a pokò ouvè pou ou. Vwayaje anvan klas la gen yon pri; sa li koute toujou ap deside, kidonk pou kounye a pa gen anyen ki chaje.",
+    "worldShipLabel": "{course}, yon kou nan {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, vizite",
     "botJoinsIn": "Pangea Bot ap rantre nan {duration}",
     "botIsJoining": "Pangea Bot ap rantre…",
     "playWithBotNowTitle": "Jwe ak Pangea Bot kounye a?",

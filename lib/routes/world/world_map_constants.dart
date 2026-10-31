@@ -93,6 +93,23 @@ class WorldMapConstants {
   /// one-location course never dives below city level.
   static const double courseFitMaxZoom = 12.0;
 
+  /// On the world view, the zoom at and above which the learner is "in a
+  /// city": the cities and ships give way to the city's open sessions and the
+  /// activities the learner has played there (org world-view doc).
+  static const double cityZoom = 9.0;
+
+  /// The world map zooms no closer than this, just under [cityZoom], except
+  /// over a city where the learner has a course (org world-view doc).
+  static const double worldZoomCap = cityZoom - 0.01;
+
+  /// How near the camera's centre must be to such a city for the cap to
+  /// lift: about the width of the view at [cityZoom].
+  static const double ownCityRadiusKm = 120;
+
+  /// Where tapping a city on the world view takes the camera: just inside
+  /// [cityZoom], so the city's own items show.
+  static const double cityFocusZoom = 11.0;
+
   static const Duration fitSettleDelay = Duration(seconds: 2);
   static const Duration camGlideDuration = Duration(milliseconds: 600);
 

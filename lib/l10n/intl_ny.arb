@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-29 11:20:50.159884",
+    "@@last_modified": "2026-10-29 12:07:30.235385",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Lowani msanga",
     "enterCityEarlyTitle": "Kulowa {city} msanga?",
     "enterCityEarlyBody": "Mzinda uwu sunatsegulidwe kwa inu. Kuyenda patsogolo pa kalasi kuli ndi mtengo; zomwe zimawononga zikadali mkati mokhazikitsidwa, choncho pakali pano palibe chomwe chimalipitsidwa.",
+    "worldShipLabel": "{course}, maphunziro ku {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, mwachezera",
     "botJoinsIn": "Pangea Bot ikubwera mu {duration}",
     "botIsJoining": "Pangea Bot ikubwera…",
     "playWithBotNowTitle": "Kusewera ndi Pangea Bot tsopano?",

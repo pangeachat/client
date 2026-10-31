@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-10-29 11:20:55.990957",
+    "@@last_modified": "2026-10-29 12:07:32.977719",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10062,6 +10062,9 @@
     "enterCityEarly": "Увійти раніше",
     "enterCityEarlyTitle": "Увійти до {city} раніше?",
     "enterCityEarlyBody": "Це місто ще не відкрите для вас. Подорож попереду класу має свою ціну; що саме це коштуватиме, ще вирішується, тому наразі нічого не стягується.",
+    "worldShipLabel": "{course}, курс у місті {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, відвідано",
     "botJoinsIn": "Бот Pangea приєднається через {duration}",
     "botIsJoining": "Бот Pangea приєднується…",
     "playWithBotNowTitle": "Зіграти з ботом Pangea зараз?",

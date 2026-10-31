@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-29 11:20:43.264614",
+    "@@last_modified": "2026-10-29 12:07:27.823972",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "ಮುಂಚಿತವಾಗಿ ಪ್ರವೇಶಿಸಿ",
     "enterCityEarlyTitle": "{city} ಅನ್ನು ಮುಂಚಿತವಾಗಿ ಪ್ರವೇಶಿಸುವುದೇ?",
     "enterCityEarlyBody": "ಈ ನಗರವು ನಿಮಗೆ ಇನ್ನೂ ತೆರೆದಿಲ್ಲ. ತರಗತಿಗಿಂತ ಮುಂಚಿತವಾಗಿ ಪ್ರಯಾಣಿಸುವುದಕ್ಕೆ ವೆಚ್ಚವಿದೆ; ಅದರ ವೆಚ್ಚವನ್ನು ಇನ್ನೂ ನಿರ್ಧರಿಸಲಾಗುತ್ತಿದೆ, ಆದ್ದರಿಂದ ಸದ್ಯಕ್ಕೆ ಏನನ್ನೂ ವಿಧಿಸಲಾಗುವುದಿಲ್ಲ.",
+    "worldShipLabel": "{city} ನಲ್ಲಿರುವ ಒಂದು ಕೋರ್ಸ್ ಆದ {course}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, ಭೇಟಿ ನೀಡಲಾಗಿದೆ",
     "botJoinsIn": "Pangea Bot {duration} ನಲ್ಲಿ ಸೇರಿಕೊಳ್ಳುತ್ತದೆ",
     "botIsJoining": "Pangea Bot ಸೇರಿಕೊಳ್ಳುತ್ತಿದೆ…",
     "playWithBotNowTitle": "ಈಗ Pangea Bot ಜೊತೆ ಆಡಬೇಕೆ?",

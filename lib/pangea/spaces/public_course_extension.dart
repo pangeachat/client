@@ -6,6 +6,8 @@ import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
+import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
+import 'package:fluffychat/features/quests/course_itinerary.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -95,6 +97,12 @@ extension PublicCoursesRequest on Client {
     }
   }
 
+  /// Every public course in [targetLanguage], all pages read (the catalog
+  /// pages by 100). The world view draws them as ships; the central-course
+  /// and join-instead lookups read the same list.
+  Future<List<PublicCoursesChunk>> allPublicCourses(String targetLanguage) =>
+      _allPublicCourses(targetLanguage);
+
   Future<List<PublicCoursesChunk>> _allPublicCourses(
     String targetLanguage,
   ) async {
@@ -170,11 +178,31 @@ class PublicCoursesChunk {
   /// Whether the catalog marks this as its language's central course.
   final bool central;
 
+  /// The course's current `pangea.course_missions` and
+  /// `pangea.course_position` state, verbatim from the catalog, so a course
+  /// the learner is not in is placed by the same rule as one they are
+  /// (org world-view doc). Null when the room has none, or the homeserver
+  /// predates them.
+  final CourseMissionsEvent? courseMissions;
+  final CoursePositionEvent? coursePosition;
+
+  /// The course's admins still in it who are not bots, as the catalog names
+  /// them: a display name where the room has one, else the user id.
+  final List<String> adminNames;
+
+  /// The course's affiliated institution (`pangea.course_institution`),
+  /// when the catalog carries it.
+  final CourseInstitution? institution;
+
   PublicCoursesChunk({
     required this.room,
     required this.courseId,
     this.targetLanguage,
     this.central = false,
+    this.courseMissions,
+    this.coursePosition,
+    this.adminNames = const [],
+    this.institution,
   });
 
   /// The central course, else the public course on [questId] with the most
@@ -206,6 +234,19 @@ class PublicCoursesChunk {
       courseId: courseId,
       targetLanguage: json[ModelKey.targetLanguage] as String?,
       central: json['central'] == true,
+      courseMissions: CourseMissionsEvent.tryParse(json['course_missions']),
+      coursePosition: CoursePositionEvent.tryParse(json['course_position']),
+      institution: CourseInstitution.tryParse(json['institution']),
+      adminNames: [
+        if (json['admins'] case final List admins)
+          for (final admin in admins)
+            if (admin is Map)
+              if (admin['display_name'] case final String name
+                  when name.isNotEmpty)
+                name
+              else if (admin['user_id'] case final String userId)
+                userId,
+      ],
     );
   }
 

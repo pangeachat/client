@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-10-29 11:20:47.311819",
+    "@@last_modified": "2026-10-29 12:07:29.442548",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "लवकर प्रवेश करा",
     "enterCityEarlyTitle": "{city} मध्ये लवकर प्रवेश करायचा?",
     "enterCityEarlyBody": "हे शहर तुमच्यासाठी अजून खुले नाही. वर्गाच्या पुढे प्रवास करण्याची किंमत आहे; त्याची किंमत अजून ठरलेली नाही, त्यामुळे सध्या काहीही शुल्क आकारले जाणार नाही.",
+    "worldShipLabel": "{city} मधील एक कोर्स, {course}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, भेट दिली",
     "botJoinsIn": "पँजिया बॉट {duration} मध्ये सामील होईल",
     "botIsJoining": "पँजिया बॉट सामील होत आहे…",
     "playWithBotNowTitle": "आता पँजिया बॉटसोबत खेळायचे आहे का?",

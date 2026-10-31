@@ -2956,7 +2956,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-29 11:20:45.104686",
+    "@@last_modified": "2026-10-29 12:07:28.761561",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10840,6 +10840,9 @@
     "enterCityEarly": "Įeiti anksčiau",
     "enterCityEarlyTitle": "Įeiti į {city} anksčiau?",
     "enterCityEarlyBody": "Šis miestas jums dar neatidarytas. Kelionė anksčiau nei klasė turi savo kainą; kas tai kainuoja, dar sprendžiama, todėl kol kas niekas neapmokestinama.",
+    "worldShipLabel": "{course}, kursas mieste {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, aplankyta",
     "botJoinsIn": "Pangea Bot prisijungs po {duration}",
     "botIsJoining": "Pangea Bot jungiasi…",
     "playWithBotNowTitle": "Žaisti su Pangea Bot dabar?",

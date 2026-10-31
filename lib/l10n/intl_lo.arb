@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-29 11:20:45.236331",
+    "@@last_modified": "2026-10-29 12:07:28.868552",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "ເຂົ້າເມືອງກ່ອນກຳນົດ",
     "enterCityEarlyTitle": "ເຂົ້າເມືອງ {city} ກ່ອນກຳນົດບໍ?",
     "enterCityEarlyBody": "ເມືອງນີ້ຍັງບໍ່ເປີດໃຫ້ທ່ານເທື່ອ. ການເດີນທາງລ່ວງໜ້າກ່ອນຫ້ອງຮຽນມີຄ່າໃຊ້ຈ່າຍ; ຄ່າໃຊ້ຈ່າຍແມ່ນຍັງຢູ່ໃນຂັ້ນຕອນການຕັດສິນໃຈ, ສະນັ້ນຕອນນີ້ຈຶ່ງບໍ່ມີການຄິດຄ່າບໍລິການ.",
+    "worldShipLabel": "{course}, ຫຼັກສູດຢູ່ {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, ໄດ້ໄປຢ້ຽມຢາມແລ້ວ",
     "botJoinsIn": "Pangea Bot ເຂົ້າຮ່ວມໃນ {duration}",
     "botIsJoining": "Pangea Bot ກໍາລັງເຂົ້າຮ່ວມ…",
     "playWithBotNowTitle": "ຫຼິ້ນກັບ Pangea Bot ດຽວນີ້ບໍ?",

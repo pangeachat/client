@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-29 11:20:53.337837",
+    "@@last_modified": "2026-10-29 12:07:31.348053",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Ulufale vave",
     "enterCityEarlyTitle": "Ulufale vave i le aai o {city}?",
     "enterCityEarlyBody": "E le'i tatalaina lenei aai mo oe. O le malaga i luma o le vasega e iai sona tau; o le a le tau o lo'o fuafuaina pea, o lea mo le taimi nei e leai se totogi.",
+    "worldShipLabel": "{course}, o se kosi i {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, na asiasi i ai",
     "botJoinsIn": "Ua auai le Pangea Bot i le {duration}",
     "botIsJoining": "O lo'o auai le Pangea Bot…",
     "playWithBotNowTitle": "Ta'alo ma le Pangea Bot nei?",

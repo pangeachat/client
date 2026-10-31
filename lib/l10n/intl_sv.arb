@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:54.526653",
+    "@@last_modified": "2026-10-29 12:07:32.252741",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10577,6 +10577,9 @@
     "enterCityEarly": "Gå in tidigt",
     "enterCityEarlyTitle": "Gå in i {city} tidigt?",
     "enterCityEarlyBody": "Denna stad är inte öppen för dig än. Att resa före klassen har en kostnad; vad det kostar bestäms fortfarande, så för närvarande debiteras inget.",
+    "worldShipLabel": "{course}, en kurs i {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, besökt",
     "botJoinsIn": "Pangea Bot ansluter om {duration}",
     "botIsJoining": "Pangea Bot ansluter…",
     "playWithBotNowTitle": "Spela med Pangea Bot nu?",

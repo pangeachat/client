@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-29 11:20:59.355859",
+    "@@last_modified": "2026-10-29 12:07:33.712480",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Wọlé ní kùtùkùtù",
     "enterCityEarlyTitle": "Ṣé o fẹ́ wọ {city} ní kùtùkùtù?",
     "enterCityEarlyBody": "Ìlú yìí kò tíì sílẹ̀ fún ọ. Rírìn lọ síwájú àwọn akẹ́kọ̀ọ́ yóò ní owó; owó tí yóò jẹ́ kò tíì dájú, nítorí náà kò sí owó tí a gbà lọ́wọ́ rẹ báyìí.",
+    "worldShipLabel": "{course}, ikẹkọ ni {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, ti ṣabẹwo",
     "botJoinsIn": "Pangea Bot darapọ mọ ni {duration}",
     "botIsJoining": "Pangea Bot n darapọ mọ…",
     "playWithBotNowTitle": "Ṣe o fẹ lati ṣere pẹlu Pangea Bot ni bayi?",

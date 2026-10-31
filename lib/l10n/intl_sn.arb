@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-10-29 11:21:01.665505",
+    "@@last_modified": "2026-10-29 12:07:32.105038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Pinda kare",
     "enterCityEarlyTitle": "Pinda mu{city} kare here?",
     "enterCityEarlyBody": "Guta iri harina kuvhurirwa iwe. Kufamba pamberi pekirasi kune mutengo; mutengo wacho uchiri kusarudzwa, saka parizvino hapana chinobhadhariswa.",
+    "worldShipLabel": "{course}, kosi iri ku{city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, yashanyirwa",
     "botJoinsIn": "Pangea Bot anopinda mukati me {duration}",
     "botIsJoining": "Pangea Bot iri kupinda…",
     "playWithBotNowTitle": "Tamba nePangea Bot izvozvi?",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:39.711450",
+    "@@last_modified": "2026-10-29 12:07:25.813870",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10973,6 +10973,9 @@
     "enterCityEarly": "היכנס/י מוקדם",
     "enterCityEarlyTitle": "להיכנס ל{city} מוקדם?",
     "enterCityEarlyBody": "העיר הזו עדיין לא פתוחה עבורך. נסיעה לפני הכיתה כרוכה בעלות; העלות עדיין נקבעת, אז כרגע לא נגבה תשלום.",
+    "worldShipLabel": "{course}, קורס ב{city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, ביקר",
     "botJoinsIn": "בוט Pangea מצטרף בעוד {duration}",
     "botIsJoining": "בוט Pangea מצטרף…",
     "playWithBotNowTitle": "לשחק עם בוט Pangea עכשיו?",

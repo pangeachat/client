@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-10-29 11:20:45.204747",
+    "@@last_modified": "2026-10-29 12:07:28.121422",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Эрте кирүү",
     "enterCityEarlyTitle": "{city} шаарына эрте кирүү керекпи?",
     "enterCityEarlyBody": "Бул шаар сизге азырынча ачык эмес. Класстан алдыда саякаттоонун баасы бар; анын баасы дагы эле чечилип жатат, андыктан азырынча эч нерсе алынбайт.",
+    "worldShipLabel": "{city} шаарындагы {course} курсу",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, барылган",
     "botJoinsIn": "Pangea Bot {duration} ичинде кошулат",
     "botIsJoining": "Pangea Bot кошулуп жатат…",
     "playWithBotNowTitle": "Pangea Bot менен азыр ойнойсузбу?",

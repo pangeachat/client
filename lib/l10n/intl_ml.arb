@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-29 11:20:46.658479",
+    "@@last_modified": "2026-10-29 12:07:29.079557",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "നേരത്തെ പ്രവേശിക്കുക",
     "enterCityEarlyTitle": "{city} ൽ നേരത്തെ പ്രവേശിക്കണോ?",
     "enterCityEarlyBody": "ഈ നഗരം നിങ്ങൾക്ക് ഇതുവരെ തുറന്നിട്ടില്ല. ക്ലാസ്സിന് മുൻപേ യാത്ര ചെയ്യുന്നതിന് ഒരു ചിലവുണ്ട്; ആ ചിലവ് എത്രയാണെന്ന് ഇതുവരെ തീരുമാനിച്ചിട്ടില്ല, അതിനാൽ ഇപ്പോൾ ഒന്നും ഈടാക്കുന്നില്ല.",
+    "worldShipLabel": "{city} എന്ന സ്ഥലത്തെ ഒരു കോഴ്സായ {course}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, സന്ദർശിച്ചു",
     "botJoinsIn": "{duration} സമയത്തിനുള്ളിൽ പാഞ്ചിയ ബോട്ട് ചേരും",
     "botIsJoining": "പാഞ്ചിയ ബോട്ട് ചേരുന്നു...",
     "playWithBotNowTitle": "ഇപ്പോൾ പാഞ്ചിയ ബോട്ടിനൊപ്പം കളിക്കണോ?",

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-29 11:20:57.792378",
+    "@@last_modified": "2026-10-29 12:07:33.951997",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10062,6 +10062,9 @@
     "enterCityEarly": "提前进入",
     "enterCityEarlyTitle": "提前进入 {city}？",
     "enterCityEarlyBody": "此城市尚未对您开放。提前于班级旅行会产生费用；具体费用仍在确定中，因此目前不收取任何费用。",
+    "worldShipLabel": "{course}，{city} 的一门课程",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}，已访问",
     "botJoinsIn": "Pangea Bot 将在 {duration} 后加入",
     "botIsJoining": "Pangea Bot 正在加入…",
     "playWithBotNowTitle": "现在就和 Pangea Bot 一起玩吗？",

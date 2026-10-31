@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-29 11:20:37.968790",
+    "@@last_modified": "2026-10-29 12:07:24.748847",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10062,6 +10062,9 @@
     "enterCityEarly": "Sartu goiz",
     "enterCityEarlyTitle": "Sartu {city} hirian goiz?",
     "enterCityEarlyBody": "Hiri hau oraindik ez dago zuretzat irekita. Taldearen aurretik bidaiatzeak kostu bat du; kostu hori oraindik erabakitzen ari da, beraz, oraingoz ez da ezer kobratzen.",
+    "worldShipLabel": "{course}, ikastaro bat {city}n",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, bisitatua",
     "botJoinsIn": "Pangea Bot {duration} barruan elkartuko da",
     "botIsJoining": "Pangea Bot elkartzen ari da…",
     "playWithBotNowTitle": "Pangea Bot-ekin jokatu orain?",

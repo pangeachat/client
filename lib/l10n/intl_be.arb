@@ -3528,7 +3528,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-29 11:20:35.216228",
+    "@@last_modified": "2026-10-29 12:07:23.177972",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10076,6 +10076,9 @@
     "enterCityEarly": "Увайсці раней",
     "enterCityEarlyTitle": "Увайсці ў {city} раней?",
     "enterCityEarlyBody": "Гэты горад для вас яшчэ не адкрыты. Падарожжа наперадзе класа мае сваю цану; што менавіта гэта каштуе, яшчэ вырашаецца, таму пакуль нічога не спаганяецца.",
+    "worldShipLabel": "{course}, курс у {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, наведана",
     "botJoinsIn": "Бот Pangea далучыцца праз {duration}",
     "botIsJoining": "Бот Pangea далучаецца…",
     "playWithBotNowTitle": "Пагуляць з ботам Pangea зараз?",

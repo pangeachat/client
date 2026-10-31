@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-29 11:20:59.201423",
+    "@@last_modified": "2026-10-29 12:07:34.006627",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Ngena kusenesikhathi",
     "enterCityEarlyTitle": "Ngena e-{city} kusenesikhathi?",
     "enterCityEarlyBody": "Leli dolobha alikavulelwa wena okwamanje. Ukuhamba ngaphambi kwekilasi kunezindleko; ukuthi kubiza malini kusathathwa isinqumo, ngakho okwamanje akukho okukhokhiswayo.",
+    "worldShipLabel": "{course}, isifundo e-{city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, uvakashelwe",
     "botJoinsIn": "I-Pangea Bot ijoyina ngo-{duration}",
     "botIsJoining": "I-Pangea Bot ijoyina…",
     "playWithBotNowTitle": "Udlale ne-Pangea Bot manje?",

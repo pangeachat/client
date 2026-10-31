@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-29 11:20:49.042444",
+    "@@last_modified": "2026-10-29 12:07:30.111920",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Gå inn tidlig",
     "enterCityEarlyTitle": "Gå inn i {city} tidlig?",
     "enterCityEarlyBody": "Denne byen er ikke åpen for deg ennå. Å reise i forveien for klassen har en kostnad; hva det koster er fortsatt under vurdering, så foreløpig belastes ingenting.",
+    "worldShipLabel": "{course}, et kurs i {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, besøkt",
     "botJoinsIn": "Pangea-boten blir med om {duration}",
     "botIsJoining": "Pangea-boten blir med nå …",
     "playWithBotNowTitle": "Spille med Pangea-boten nå?",

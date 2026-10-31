@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-29 11:20:59.715244",
+    "@@last_modified": "2026-10-29 12:07:26.953192",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Fara inn snemma",
     "enterCityEarlyTitle": "Fara inn í {city} snemma?",
     "enterCityEarlyBody": "Þessi borg er ekki opin þér ennþá. Að ferðast á undan bekknum hefur kostnað; hvað það kostar er enn verið að ákveða, svo í bili er ekkert rukkað.",
+    "worldShipLabel": "{course}, námskeið í {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, heimsótt",
     "botJoinsIn": "Pangea Bot tekur þátt eftir {duration}",
     "botIsJoining": "Pangea Bot er að taka þátt…",
     "playWithBotNowTitle": "Spila með Pangea Bot núna?",

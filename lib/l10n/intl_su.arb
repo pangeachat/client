@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-29 11:20:54.157079",
+    "@@last_modified": "2026-10-29 12:07:31.923957",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Asup leuwih awal",
     "enterCityEarlyTitle": "Asup ka {city} leuwih awal?",
     "enterCityEarlyBody": "Kota ieu teu acan dibuka pikeun anjeun. Iinditan payuneun kelas aya biaya; naon biayana masih diputuskeun, janten ayeuna mah teu aya anu ditagih.",
+    "worldShipLabel": "{course}, kursus di {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, tos dilongok",
     "botJoinsIn": "Pangea Bot ngagabung dina {duration}",
     "botIsJoining": "Pangea Bot nuju ngagabung…",
     "playWithBotNowTitle": "Maén sareng Pangea Bot ayeuna?",

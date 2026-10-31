@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-10-29 11:20:46.795376",
+    "@@last_modified": "2026-10-29 12:07:29.221041",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Влезете порано",
     "enterCityEarlyTitle": "Да влезете порано во {city}?",
     "enterCityEarlyBody": "Овој град сè уште не е отворен за вас. Патувањето пред часот има цена; што точно чини сè уште се одлучува, па засега ништо не се наплаќа.",
+    "worldShipLabel": "{course}, курс во {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, посетено",
     "botJoinsIn": "Pangea Bot се приклучува за {duration}",
     "botIsJoining": "Pangea Bot се приклучува…",
     "playWithBotNowTitle": "Играјте со Pangea Bot сега?",

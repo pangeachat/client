@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:41.361141",
+    "@@last_modified": "2026-10-29 12:07:26.603520",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10135,6 +10135,9 @@
     "enterCityEarly": "Masuk lebih awal",
     "enterCityEarlyTitle": "Masuk {city} lebih awal?",
     "enterCityEarlyBody": "Kota ini belum terbuka untukmu. Bepergian mendahului kelas ada biayanya; biayanya masih ditentukan, jadi untuk saat ini tidak ada yang dikenakan.",
+    "worldShipLabel": "{course}, kursus di {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, dikunjungi",
     "botJoinsIn": "Pangea Bot bergabung dalam {duration}",
     "botIsJoining": "Pangea Bot bergabung…",
     "playWithBotNowTitle": "Main dengan Pangea Bot sekarang?",

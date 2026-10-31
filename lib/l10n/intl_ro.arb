@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 11:20:51.473232",
+    "@@last_modified": "2026-10-29 12:07:30.923384",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10791,6 +10791,9 @@
     "enterCityEarly": "Intră mai devreme",
     "enterCityEarlyTitle": "Intri mai devreme în {city}?",
     "enterCityEarlyBody": "Acest oraș nu este încă deschis pentru tine. Călătoria înaintea clasei are un cost; costul este încă în curs de decizie, așa că deocamdată nu se percepe nimic.",
+    "worldShipLabel": "{course}, un curs în {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, vizitat",
     "botJoinsIn": "Pangea Bot se alătură în {duration}",
     "botIsJoining": "Pangea Bot se alătură…",
     "playWithBotNowTitle": "Vrei să te joci cu Pangea Bot acum?",

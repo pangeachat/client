@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-29 11:20:38.787086",
+    "@@last_modified": "2026-10-29 12:07:24.732475",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10414,6 +10414,9 @@
     "enterCityEarly": "Entrer plus tôt",
     "enterCityEarlyTitle": "Entrer plus tôt dans {city} ?",
     "enterCityEarlyBody": "Cette ville ne vous est pas encore ouverte. Voyager en avance sur la classe a un coût ; ce coût est encore en cours de décision, donc pour l'instant rien n'est facturé.",
+    "worldShipLabel": "{course}, un cours à {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, visitée",
     "botJoinsIn": "Le bot Pangea se joint dans {duration}",
     "botIsJoining": "Le bot Pangea se joint…",
     "playWithBotNowTitle": "Jouer avec le bot Pangea maintenant ?",

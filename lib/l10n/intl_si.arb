@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-29 11:20:51.994346",
+    "@@last_modified": "2026-10-29 12:07:31.346302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "කලින් ඇතුළු වන්න",
     "enterCityEarlyTitle": "{city} නගරයට කලින් ඇතුළු වෙනවාද?",
     "enterCityEarlyBody": "මෙම නගරය ඔබට තවම විවෘත නැත. පන්තියට පෙර ගමන් කිරීම සඳහා වියදමක් ඇත; එහි වියදම තවමත් තීරණය කරමින් පවතී, එබැවින් දැනට කිසිවක් අය නොකෙරේ.",
+    "worldShipLabel": "{city} හි පාඨමාලාවක් වන {course}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, නරඹන ලදී",
     "botJoinsIn": "Pangea Bot {duration} තුළට එක්වේ",
     "botIsJoining": "Pangea Bot එක්වෙමින් පවතී...",
     "playWithBotNowTitle": "දැන් Pangea Bot සමඟ සෙල්ලම් කරනවාද?",

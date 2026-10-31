@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-10-29 11:20:45.413153",
+    "@@last_modified": "2026-10-29 12:07:28.409814",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "زوو بچۆرە ژوورەوە",
     "enterCityEarlyTitle": "زوو بچۆرە {city}؟",
     "enterCityEarlyBody": "ئەم شارە هێشتا بۆ تۆ نەکراوەتەوە. گەشتکردن پێش پۆلەکە تێچووی هەیە؛ هێشتا بڕی تێچووەکە دیاری نەکراوە، بۆیە لە ئێستادا هیچ بڕێک وەرناگیرێت.",
+    "worldShipLabel": "{course}, خولێک لە {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, سەردانیکراوە",
     "botJoinsIn": "بۆتی پانگایا لە {duration}دا بەشداری دەکات",
     "botIsJoining": "بۆتی پانگایا بەشداری دەکات…",
     "playWithBotNowTitle": "ئێستا لەگەڵ بۆتی پانگایا یاری دەکەیت؟",

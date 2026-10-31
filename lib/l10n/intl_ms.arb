@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-29 11:20:47.627388",
+    "@@last_modified": "2026-10-29 12:07:29.962456",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Masuk awal",
     "enterCityEarlyTitle": "Masuk {city} awal?",
     "enterCityEarlyBody": "Bandar ini belum dibuka untuk anda. Mengembara lebih awal daripada kelas ada kosnya; kosnya masih ditentukan, jadi buat masa ini tiada apa-apa yang dicaj.",
+    "worldShipLabel": "{course}, kursus di {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, dilawati",
     "botJoinsIn": "Pangea Bot akan menyertai dalam {duration}",
     "botIsJoining": "Pangea Bot sedang menyertai…",
     "playWithBotNowTitle": "Bermain dengan Pangea Bot sekarang?",

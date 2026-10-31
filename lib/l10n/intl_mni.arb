@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-29 11:20:49.843655",
+    "@@last_modified": "2026-10-29 12:07:29.764117",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "ꯑꯋꯥꯡꯕꯗ ꯆꯠꯂꯨ",
     "enterCityEarlyTitle": "{city} ꯑꯋꯥꯡꯕꯗ ꯆꯠꯂꯨ?",
     "enterCityEarlyBody": "ꯁꯤꯡꯁꯤ ꯁꯍꯔ ꯑꯁꯤ ꯅꯍꯥꯛꯀꯤꯗꯃꯛ ꯍꯧꯖꯤꯛ ꯐꯥꯎꯕꯗꯤ ꯍꯣꯡꯗ꯭ꯔꯤ꯫ ꯀ꯭ꯂꯥꯁ ꯑꯁꯤꯒꯤ ꯃꯃꯥꯡꯗ ꯆꯠꯄꯗ ꯆꯥꯟꯗ꯭ꯔꯤꯕ ꯈꯔ ꯂꯩ꯫ ꯃꯗꯨ ꯀꯔꯤ ꯆꯥꯟꯗ꯭ꯔꯤꯕ ꯈꯪꯗ꯭ꯔꯤ, ꯃꯗꯨꯅ ꯍꯧꯖꯤꯛ ꯐꯥꯎꯕꯗꯤ ꯀꯔꯤꯁꯨ ꯆꯥꯟꯗ꯭ꯔꯤꯕ ꯅꯠꯇꯦ꯫",
+    "worldShipLabel": "{city} da leiba {course} haibasi",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, yatra toukhre",
     "botJoinsIn": "{duration} da Pangea Bot yaokhi",
     "botIsJoining": "Pangea Bot yaoribani…",
     "playWithBotNowTitle": "Pangea Bot ga loinana houjik sanaba?",

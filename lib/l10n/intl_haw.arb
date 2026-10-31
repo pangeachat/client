@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-29 11:20:39.919552",
+    "@@last_modified": "2026-10-29 12:07:25.844773",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "E komo mua",
     "enterCityEarlyTitle": "E komo mua i {city}?",
     "enterCityEarlyBody": "ʻAʻole i wehe ʻia kēia kūlanakauhale iā ʻoe. He kumu kūʻai ko ka hele mua ʻana ma mua o ka papa; ke hoʻoholo ʻia nei ke kumu kūʻai, no laila ʻaʻohe mea e uku ʻia i kēia manawa.",
+    "worldShipLabel": "{course}, he papa ma {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, i kipa ʻia",
     "botJoinsIn": "E hui pū ana ʻo Pangea Bot i loko o {duration}",
     "botIsJoining": "Ke hui pū nei ʻo Pangea Bot…",
     "playWithBotNowTitle": "E pāʻani pū me Pangea Bot i kēia manawa?",

@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-29 11:20:51.329671",
+    "@@last_modified": "2026-10-29 12:07:30.841503",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10976,6 +10976,9 @@
     "enterCityEarly": "Entrar mais cedo",
     "enterCityEarlyTitle": "Entrar em {city} mais cedo?",
     "enterCityEarlyBody": "Esta cidade ainda não está aberta para ti. Viajar antes da turma tem um custo; o que custa ainda está a ser decidido, por isso, por enquanto, nada é cobrado.",
+    "worldShipLabel": "{course}, um curso em {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, visitada",
     "botJoinsIn": "O Pangea Bot junta-se em {duration}",
     "botIsJoining": "O Pangea Bot está a juntar-se…",
     "playWithBotNowTitle": "Jogar com o Pangea Bot agora?",

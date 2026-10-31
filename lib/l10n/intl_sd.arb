@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-10-29 11:20:52.137269",
+    "@@last_modified": "2026-10-29 12:07:31.194257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "جلد داخل ٿيو",
     "enterCityEarlyTitle": "{city} ۾ جلد داخل ٿيو؟",
     "enterCityEarlyBody": "هي شهر اڃا توهان لاءِ کليل ناهي. ڪلاس کان اڳ سفر ڪرڻ جي قيمت آهي؛ ان جي قيمت اڃا طئي ڪئي پئي وڃي، تنهنڪري في الحال ڪجهه به چارج نه ڪيو ويندو.",
+    "worldShipLabel": "{course}, {city} ۾ هڪ ڪورس",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, گهميل",
     "botJoinsIn": "پينگيا بوٽ {duration} ۾ شامل ٿيندو",
     "botIsJoining": "پينگيا بوٽ شامل ٿي رهيو آهي…",
     "playWithBotNowTitle": "هاڻي پينگيا بوٽ سان کيڏجي؟",

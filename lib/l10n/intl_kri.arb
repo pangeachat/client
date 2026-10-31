@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-10-29 11:20:44.359791",
+    "@@last_modified": "2026-10-29 12:07:29.394568",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Go insay kwik",
     "enterCityEarlyTitle": "Go insay {city} kwik?",
     "enterCityEarlyBody": "Dis siti nɔ opin fɔ yu yɛt. If yu de travul bifo di klasi gɛt in kɔst; wetin i kɔst dɛn stil de disayd, so fɔ naw nɔtin nɔ de pe.",
+    "worldShipLabel": "{course}, wan kos na {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, dɛn dɔn vizit am",
     "botJoinsIn": "Pangea Bot de go jɔyn insay {duration}",
     "botIsJoining": "Pangea Bot de jɔyn…",
     "playWithBotNowTitle": "Yu want fɔ ple wit Pangea Bot naw?",

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-29 11:20:40.494941",
+    "@@last_modified": "2026-10-29 12:07:25.677233",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Shiga da wuri",
     "enterCityEarlyTitle": "Shiga {city} da wuri?",
     "enterCityEarlyBody": "Wannan birni bai buɗe muku ba tukuna. Tafiya gaban aji tana da tsada; har yanzu ana yanke shawara kan abin da zai ci, don haka a yanzu ba a caji komai.",
+    "worldShipLabel": "{course}, wani kwas a {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, an ziyarta",
     "botJoinsIn": "Pangea Bot zai shigo nan da {duration}",
     "botIsJoining": "Pangea Bot na shigowa…",
     "playWithBotNowTitle": "Ka yi wasa da Pangea Bot yanzu?",

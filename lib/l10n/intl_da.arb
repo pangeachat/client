@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-29 11:20:37.106579",
+    "@@last_modified": "2026-10-29 12:07:23.854637",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10979,6 +10979,9 @@
     "enterCityEarly": "Rejs tidligt ind",
     "enterCityEarlyTitle": "Rejse tidligt ind i {city}?",
     "enterCityEarlyBody": "Denne by er ikke åben for dig endnu. At rejse foran klassen har en pris; hvad det koster, er stadig under overvejelse, så indtil videre opkræves der intet.",
+    "worldShipLabel": "{course}, et kursus i {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, besøgt",
     "botJoinsIn": "Pangea Bot deltager om {duration}",
     "botIsJoining": "Pangea Bot deltager…",
     "playWithBotNowTitle": "Spil med Pangea Bot nu?",

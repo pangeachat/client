@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-29 11:20:41.512370",
+    "@@last_modified": "2026-10-29 12:07:26.287001",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Mus ua ntej",
     "enterCityEarlyTitle": "Mus rau {city} ua ntej?",
     "enterCityEarlyBody": "Lub nroog no tseem tsis tau qhib rau koj. Kev mus ua ntej cov phooj ywg kawm ntawv muaj nqi; tus nqi tseem tab tom txiav txim siab, yog li tam sim no tsis tau them dab tsi.",
+    "worldShipLabel": "{course}, ib chav kawm ntawm {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, tau mus xyuas",
     "botJoinsIn": "Pangea Bot koom hauv {duration}",
     "botIsJoining": "Pangea Bot tab tom koom…",
     "playWithBotNowTitle": "Ua si nrog Pangea Bot tam sim no?",

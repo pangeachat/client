@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-29 11:20:41.371046",
+    "@@last_modified": "2026-10-29 12:07:26.736578",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10165,6 +10165,9 @@
     "enterCityEarly": "Belépés korán",
     "enterCityEarlyTitle": "Korán belépsz {city} városába?",
     "enterCityEarlyBody": "Ez a város még nem nyitott meg számodra. Az osztály előtt utazni költséges; a költségek még meghatározás alatt állnak, így egyelőre semmit sem számolunk fel.",
+    "worldShipLabel": "{course}, egy kurzus itt: {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, meglátogatva",
     "botJoinsIn": "Pangea Bot csatlakozik {duration} múlva",
     "botIsJoining": "Pangea Bot csatlakozik…",
     "playWithBotNowTitle": "Játssz a Pangea Bottal most?",

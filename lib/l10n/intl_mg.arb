@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-10-29 11:20:46.170117",
+    "@@last_modified": "2026-10-29 12:07:29.353836",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2524,6 +2524,9 @@
     "enterCityEarly": "Midira aloha",
     "enterCityEarlyTitle": "Hiditra aloha ao {city}?",
     "enterCityEarlyBody": "Mbola tsy misokatra ho anao ity tanàna ity. Misy vidiny ny fandehanana alohan'ny kilasy; mbola tsy tapaka ny vidiny, ka tsy misy sarany aloha izao.",
+    "worldShipLabel": "{course}, taranja ao {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, notsidihina",
     "botJoinsIn": "Miditra ao anatin'ny {duration} ny Pangea Bot",
     "botIsJoining": "Miditra ny Pangea Bot…",
     "playWithBotNowTitle": "Hilalao amin'ny Pangea Bot izao?",

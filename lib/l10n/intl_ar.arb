@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-10-29 11:20:34.820966",
+    "@@last_modified": "2026-10-29 12:07:22.854999",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10365,6 +10365,9 @@
     "enterCityEarly": "ادخل مبكرًا",
     "enterCityEarlyTitle": "هل تريد دخول {city} مبكرًا؟",
     "enterCityEarlyBody": "هذه المدينة ليست مفتوحة لك بعد. السفر قبل الفصل الدراسي له تكلفة؛ ما هي التكلفة لا يزال قيد التحديد، لذا لا يتم فرض أي رسوم في الوقت الحالي.",
+    "worldShipLabel": "{course}، دورة في {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}، تمت زيارتها",
     "botJoinsIn": "ينضم بوت بانجيا خلال {duration}",
     "botIsJoining": "بوت بانجيا ينضم الآن…",
     "playWithBotNowTitle": "هل تود اللعب مع بوت بانجيا الآن؟",

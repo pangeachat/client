@@ -3543,7 +3543,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-29 11:20:39.488640",
+    "@@last_modified": "2026-10-29 12:07:25.119593",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10073,6 +10073,9 @@
     "enterCityEarly": "Isteach go luath",
     "enterCityEarlyTitle": "Isteach i {city} go luath?",
     "enterCityEarlyBody": "Níl an chathair seo oscailte duit fós. Tá costas ag baint le taisteal chun tosaigh ar an rang; tá an costas sin fós á chinneadh, mar sin níl aon rud á ghearradh faoi láthair.",
+    "worldShipLabel": "{course}, cúrsa i {city}",
+    "worldCityLabel": "{city}",
+    "worldCityVisitedLabel": "{city}, tugtha cuairt air",
     "botJoinsIn": "Tagann Pangea Bot isteach i {duration}",
     "botIsJoining": "Tá Pangea Bot ag teacht isteach…",
     "playWithBotNowTitle": "Ar mhaith leat imirt le Pangea Bot anois?",
