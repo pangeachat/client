@@ -226,7 +226,11 @@ abstract final class CourseItinerary {
 
   /// [openMissionIds] from the course record alone, for a surface with no
   /// outline, such as the world view's cities: the same rule over the
-  /// copy's Missions, keyed by Can-Do id. Null when nothing is closed.
+  /// copy's Missions, keyed by Can-Do id. Null when nothing is closed. The
+  /// outline drops a Mission whose Can-Do the catalog no longer returns and
+  /// the record keeps it, so on a dated course the two can, rarely, name a
+  /// different current stop; the world view accepts that over a catalog
+  /// read per course.
   static Set<String>? openMissionIdsOf({
     required CourseMissionsEvent copy,
     required DateTime now,
