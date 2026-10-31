@@ -381,17 +381,18 @@ void main() {
       ]);
     });
 
-    test('the incoming ring keeps the default session', () async {
+    // Answering has to open the microphone while the ring is still going away.
+    // A ring in `playback` made that fail on the iPhone simulator, with engine
+    // error -4010 and "Could not connect the call".
+    test('the incoming ring can be answered: it records, on speaker', () async {
       final loop = _FakeRingAudio();
       final sound = AssetRingSound(audioFactory: () => loop);
 
       await sound.start('sounds/phone.ogg');
 
-      expect(
-        loop.contexts.single.iOS.category,
-        AVAudioSessionCategory.playback,
-        reason: 'it rings before any call exists, so it has no call to match',
-      );
+      final ios = loop.contexts.single.iOS;
+      expect(ios.category, AVAudioSessionCategory.playAndRecord);
+      expect(ios.options, contains(AVAudioSessionOptions.defaultToSpeaker));
     });
   });
 

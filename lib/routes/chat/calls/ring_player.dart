@@ -139,18 +139,16 @@ class AssetRingSound implements RingSound {
   /// caller's call-cue sound is call signalling.
   final AndroidUsageType _usage;
 
-  /// The iOS audio session every cue from this sound plays under. Per-sound for
-  /// the same reason as [_usage].
-  final AudioContextIOS _iosSession;
-
-  /// The session a live call runs in on iOS: LiveKit's own category and
+  /// The session every cue plays under on iOS: LiveKit's own category and
   /// options for a call (playAndRecord, Bluetooth and AirPlay allowed).
   ///
   /// On iOS audioplayers applies a player's context to the app's ONE shared
   /// AVAudioSession, so the default `playback` switched a call that was
   /// connecting or reconnecting to a category that cannot record -- the likely
-  /// cause of a silent ringback on iPad (#9166). Keeping the call's category
-  /// means a cue never takes recording away from the call. `defaultToSpeaker`
+  /// cause of a silent ringback on iPad (#9166) -- and a ring answered in
+  /// `playback` could not start the microphone (engine error -4010). Keeping
+  /// the call's category means no cue takes recording away from a call, and
+  /// that holds for the ring too: it is the moment before one. `defaultToSpeaker`
   /// is the one option LiveKit does not set: it covers a ringback that starts
   /// before LiveKit has put the call on the speaker, which would otherwise play
   /// from an iPhone's earpiece.
@@ -166,10 +164,8 @@ class AssetRingSound implements RingSound {
 
   AssetRingSound({
     AndroidUsageType usage = AndroidUsageType.notificationRingtone,
-    AudioContextIOS? iosSession,
     @visibleForTesting RingAudio Function()? audioFactory,
   }) : _usage = usage,
-       _iosSession = iosSession ?? AudioContextIOS(),
        _audioFactory = audioFactory ?? (() => _AudioPlayersRing());
 
   /// [asset] in a format this platform can play. The one place a cue reaches a
@@ -178,13 +174,11 @@ class AssetRingSound implements RingSound {
       playableCueAsset(asset, isIOS: PlatformInfos.isIOS);
 
   /// A caller's own call cues (#8807), played under the call-signalling usage so
-  /// the caller hears them even with ringtones silenced, and on iOS under the
-  /// call's own session so a cue never reconfigures the call's audio.
+  /// the caller hears them even with ringtones silenced.
   AssetRingSound.callSignalling({
     @visibleForTesting RingAudio Function()? audioFactory,
   }) : this(
          usage: AndroidUsageType.voiceCommunicationSignalling,
-         iosSession: callSessionIOS,
          audioFactory: audioFactory,
        );
 
@@ -194,7 +188,7 @@ class AssetRingSound implements RingSound {
       contentType: AndroidContentType.sonification,
       audioFocus: AndroidAudioFocus.gainTransient,
     ),
-    iOS: _iosSession,
+    iOS: callSessionIOS,
   );
 
   /// Configure the loop player exactly once. [_configured] flips true only
