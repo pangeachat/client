@@ -118,7 +118,9 @@ class WorldCityMarker extends StatelessWidget {
     final size = iconSizeFor(city.xp);
     return Semantics(
       button: true,
-      label: city.stamped
+      label: city.locked
+          ? l10n.worldCityLockedLabel(city.name)
+          : city.stamped
           ? l10n.worldCityVisitedLabel(city.name)
           : l10n.worldCityLabel(city.name),
       child: Tooltip(
@@ -136,12 +138,34 @@ class WorldCityMarker extends StatelessWidget {
                       border: Border.all(color: ring, width: 1.5),
                     )
                   : null,
-              child: Icon(
-                Symbols.location_city_rounded,
-                size: size,
-                fill: 1,
-                color: ink,
-                shadows: const [Shadow(color: Colors.black54, blurRadius: 4)],
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Icon(
+                    Symbols.location_city_rounded,
+                    size: size,
+                    fill: 1,
+                    color: ink,
+                    shadows: const [
+                      Shadow(color: Colors.black54, blurRadius: 4),
+                    ],
+                  ),
+                  // A city in one of the learner's courses that is not open
+                  // to them yet wears a lock (org quests doc, "Progression").
+                  if (city.locked)
+                    Positioned(
+                      right: -4,
+                      bottom: -2,
+                      child: Icon(
+                        Icons.lock,
+                        size: 11,
+                        color: theme.colorScheme.onSurface,
+                        shadows: const [
+                          Shadow(color: Colors.black87, blurRadius: 3),
+                        ],
+                      ),
+                    ),
+                ],
               ),
             ),
           ),

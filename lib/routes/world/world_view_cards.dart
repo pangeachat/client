@@ -344,9 +344,18 @@ class _WorldCityCardState extends State<WorldCityCard> {
                             onTap: () => _step(-1),
                           ),
                         Expanded(
-                          child: FilledButton(
-                            onPressed: widget.onExplore,
-                            child: Text(l10n.worldExploreCity),
+                          // Only a city with one of the learner's courses
+                          // opens all the way (org world-view doc).
+                          child: Tooltip(
+                            message: widget.city.aboard
+                                ? ''
+                                : l10n.worldCityNoCourseHere,
+                            child: FilledButton(
+                              onPressed: widget.city.aboard
+                                  ? widget.onExplore
+                                  : null,
+                              child: Text(l10n.worldExploreCity),
+                            ),
                           ),
                         ),
                         if (count > 1)

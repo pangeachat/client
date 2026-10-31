@@ -211,17 +211,78 @@ abstract final class CourseItinerary {
     required Set<String> reopenedIds,
   }) {
     if (trip == null) return null;
+    final ids = [for (final g in groups) g.objective.id];
+    final open = _openStops(
+      dueDates: [for (final g in groups) g.pacing?.dueAt],
+      isDated: trip.isDated,
+      startDate: trip.startDate,
+      now: now,
+      progressResolved: progressResolved,
+      anchorIndex: anchorId == null ? -1 : ids.indexOf(anchorId),
+    );
+    if (open == null) return null;
+    return _openIds(ids, open, completedIds, reopenedIds);
+  }
+
+  /// [openMissionIds] from the course record alone, for a surface with no
+  /// outline, such as the world view's cities: the same rule over the
+  /// copy's Missions, keyed by Can-Do id. Null when nothing is closed.
+  static Set<String>? openMissionIdsOf({
+    required CourseMissionsEvent copy,
+    required DateTime now,
+    required bool progressResolved,
+    required String? anchorId,
+    required Set<String> completedIds,
+    required Set<String> reopenedIds,
+  }) {
+    if (!copy.isTrip || copy.missions.isEmpty) return null;
+    final ids = [for (final m in copy.missions) m.loId];
+    final open = _openStops(
+      dueDates: [for (final m in copy.missions) m.dueAt],
+      isDated: copy.isDated,
+      startDate: copy.startDate,
+      now: now,
+      progressResolved: progressResolved,
+      anchorIndex: anchorId == null ? -1 : ids.indexOf(anchorId),
+    );
+    if (open == null) return null;
+    return _openIds(ids, open, completedIds, reopenedIds);
+  }
+
+  static Set<String> _openIds(
+    List<String> ids,
+    Set<int> open,
+    Set<String> completedIds,
+    Set<String> reopenedIds,
+  ) => {
+    for (final (i, id) in ids.indexed)
+      if (open.contains(i) ||
+          completedIds.contains(id) ||
+          reopenedIds.contains(id))
+        id,
+  };
+
+  /// The open stops by the one rule ([openMissionIds] states it), over the
+  /// Missions' due dates in order; null when the learner's progress is not
+  /// known yet on an undated trip.
+  static Set<int>? _openStops({
+    required List<DateTime?> dueDates,
+    required bool isDated,
+    required DateTime? startDate,
+    required DateTime now,
+    required bool progressResolved,
+    required int anchorIndex,
+  }) {
     final open = <int>{};
-    if (trip.isDated) {
-      final start = trip.startDate;
-      if (start != null && now.isBefore(start)) {
+    if (isDated) {
+      if (startDate != null && now.isBefore(startDate)) {
         open.add(0);
       } else {
-        final current = datedStop(groups, now) ?? groups.length - 1;
+        final current = _datedStopOf(dueDates, now) ?? dueDates.length - 1;
         open.add(current);
         // The city just left stays open while the ship is in transit.
         for (var i = current - 1; i >= 0; i--) {
-          final dueAt = groups[i].pacing?.dueAt;
+          final dueAt = dueDates[i];
           if (dueAt == null) continue;
           if (now.difference(dueAt) < transit) open.add(i);
           break;
@@ -229,22 +290,13 @@ abstract final class CourseItinerary {
       }
     } else {
       if (!progressResolved) return null;
-      final anchor = anchorId == null
-          ? -1
-          : groups.indexWhere((g) => g.objective.id == anchorId);
       // No anchor: every Mission is complete, so every one is open.
-      if (anchor < 0) {
-        open.addAll(List.generate(groups.length, (i) => i));
+      if (anchorIndex < 0) {
+        open.addAll(List.generate(dueDates.length, (i) => i));
       } else {
-        open.add(anchor);
+        open.add(anchorIndex);
       }
     }
-    return {
-      for (final (i, group) in groups.indexed)
-        if (open.contains(i) ||
-            completedIds.contains(group.objective.id) ||
-            reopenedIds.contains(group.objective.id))
-          group.objective.id,
-    };
+    return open;
   }
 }

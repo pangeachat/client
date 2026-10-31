@@ -548,21 +548,69 @@ class WorldMapController extends State<WorldMap>
   /// Whether the last camera settle was inside a city, to rebuild when the
   /// view crosses [WorldMapConstants.cityZoom].
   bool _wasZoomedIntoCity = false;
+  double _lastWorldMaxZoom = WorldMapConstants.maxZoom;
 
   /// The learner's joined courses in their selected target language, as the
   /// world view reads them: a city shows only with activities in that
   /// language, so a course in another language puts nothing on the world view
   /// (world-map.instructions.md, "What appears on the map").
-  List<CourseTripView> get _joinedTrips => [
-    for (final room in _client?.joinedCourseRooms ?? const <Room>[])
-      if (CourseLanguageScope.courseInTargetLanguage(room))
-        CourseTripView(
-          roomId: room.id,
-          name: room.getLocalizedDisplayname(),
-          copy: room.courseMissions,
-          position: room.coursePosition,
-        ),
-  ];
+  List<CourseTripView> get _joinedTrips {
+    final now = DateTime.now();
+    return [
+      for (final room in _client?.joinedCourseRooms ?? const <Room>[])
+        if (CourseLanguageScope.courseInTargetLanguage(room))
+          CourseTripView(
+            roomId: room.id,
+            name: room.getLocalizedDisplayname(),
+            copy: room.courseMissions,
+            position: room.coursePosition,
+            openMissionIds: _openMissionIdsFor(room, now),
+          ),
+    ];
+  }
+
+  /// The Missions open to the learner on [room]'s trip, by the course page's
+  /// own rule from the record and the shared progression (null: nothing is
+  /// closed, or progress is not known yet, so nothing locks on a guess).
+  Set<String>? _openMissionIdsFor(Room room, DateTime now) {
+    final copy = room.courseMissions;
+    if (copy == null) return null;
+    final progress = _pinsManager.progression.forCourse(room.id);
+    final userId = _client?.userID;
+    return CourseItinerary.openMissionIdsOf(
+      copy: copy,
+      now: now,
+      progressResolved: progress != null,
+      anchorId: progress?.anchorMissionId,
+      completedIds: {
+        if (progress != null)
+          for (final entry in progress.rollup.entries)
+            if (entry.value.satisfied) entry.key,
+      },
+      reopenedIds: userId == null ? const {} : room.missionsOpenedFor(userId),
+    );
+  }
+
+  /// How far the world map zooms (org world-view doc): to just under the
+  /// city zoom anywhere, and all the way in only over a city where the
+  /// learner has a course. A course-scoped map is not capped.
+  double get worldMaxZoom {
+    if (!isWorld) return WorldMapConstants.maxZoom;
+    final LatLng center;
+    try {
+      center = mapController.camera.center;
+    } catch (_) {
+      return WorldMapConstants.worldZoomCap;
+    }
+    for (final city in worldView.cities) {
+      if (!city.aboard) continue;
+      if (const Distance().as(LengthUnit.Kilometer, center, city.point) <=
+          WorldMapConstants.ownCityRadiusKm) {
+        return WorldMapConstants.maxZoom;
+      }
+    }
+    return WorldMapConstants.worldZoomCap;
+  }
 
   /// The public catalog's courses in the learner's target language, as
   /// ships beside their own (org world-view doc). Read in pages of 100 and
@@ -1732,8 +1780,10 @@ class WorldMapController extends State<WorldMap>
     // Crossing the city zoom swaps the world's cities and ships for the
     // city's own items, so the layers rebuild on that frame.
     final inCity = zoomedIntoCity;
-    if (inCity != _wasZoomedIntoCity) {
+    final cap = worldMaxZoom;
+    if (inCity != _wasZoomedIntoCity || cap != _lastWorldMaxZoom) {
       _wasZoomedIntoCity = inCity;
+      _lastWorldMaxZoom = cap;
       if (mounted) setState(() {});
     }
     _refetchDebounce?.cancel();

@@ -19,12 +19,18 @@ class CourseTripView {
   final CoursePositionEvent? position;
   final bool aboard;
 
+  /// The Can-Do ids of the Missions open to the learner on this course
+  /// (`CourseItinerary.openMissionIdsOf`), or null when nothing is closed:
+  /// a course they are not aboard, not a trip, or progress not known yet.
+  final Set<String>? openMissionIds;
+
   const CourseTripView({
     required this.roomId,
     required this.name,
     required this.copy,
     required this.position,
     this.aboard = true,
+    this.openMissionIds,
   });
 }
 
@@ -77,12 +83,22 @@ class WorldCity {
   /// (`Client.userXpByActivity`). The dot grows with it.
   final int xp;
 
+  /// A course the learner is aboard has a Mission here: the one condition
+  /// for zooming all the way into the city.
+  final bool aboard;
+
+  /// Aboard, and every such Mission is closed to the learner (org quests
+  /// doc, "Progression"): the city wears a lock.
+  final bool locked;
+
   const WorldCity({
     required this.key,
     required this.name,
     required this.point,
     required this.shipRoomIds,
     required this.xp,
+    this.aboard = false,
+    this.locked = false,
   });
 
   /// Finished an activity here: a saved session banks XP, so any XP at all
@@ -130,7 +146,11 @@ List<WorldCity> citiesOf(
   Map<String, int> xpByActivity,
   List<WorldShip> ships,
 ) {
-  final byKey = <String, ({MissionCity city, Set<String> activityIds})>{};
+  final byKey =
+      <
+        String,
+        ({MissionCity city, Set<String> activityIds, bool aboard, bool open})
+      >{};
   for (final course in courses) {
     final copy = course.copy;
     if (copy == null || !copy.isTrip) continue;
@@ -139,9 +159,16 @@ List<WorldCity> citiesOf(
       if (city == null) continue;
       final key = cityKeyOf(city);
       final seen = byKey[key];
+      // Open to the learner unless a course they are aboard names this
+      // Mission closed; a public course locks nothing.
+      final open =
+          course.aboard &&
+          (course.openMissionIds?.contains(mission.loId) ?? true);
       byKey[key] = (
         city: city,
         activityIds: {...?seen?.activityIds, ...mission.activityIds},
+        aboard: course.aboard || (seen?.aboard ?? false),
+        open: open || (seen?.open ?? false),
       );
     }
   }
@@ -159,6 +186,8 @@ List<WorldCity> citiesOf(
           0,
           (sum, id) => sum + (xpByActivity[id] ?? 0),
         ),
+        aboard: value.aboard,
+        locked: value.aboard && !value.open,
       ),
   ];
 }

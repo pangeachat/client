@@ -157,4 +157,44 @@ void main() {
       expect(activityIdsAtCity([spanish], 'nowhere'), isEmpty);
     },
   );
+
+  test(
+    'a city is aboard when a joined course has a Mission there, locked when none is open',
+    () {
+      final locked = CourseTripView(
+        roomId: spanish.roomId,
+        name: spanish.name,
+        copy: spanish.copy,
+        position: null,
+        openMissionIds: const {'lo2'},
+      );
+      final oax = citiesOf(
+        [locked],
+        const {},
+        const [],
+      ).firstWhere((c) => c.name == 'Oaxaca');
+      expect(oax.aboard, isTrue);
+      expect(oax.locked, isTrue);
+      final open = citiesOf(
+        [spanish],
+        const {},
+        const [],
+      ).firstWhere((c) => c.name == 'Oaxaca');
+      expect(open.locked, isFalse);
+      final public = CourseTripView(
+        roomId: '!pub:x',
+        name: 'Public',
+        copy: spanish.copy,
+        position: null,
+        aboard: false,
+      );
+      final theirs = citiesOf(
+        [public],
+        const {},
+        const [],
+      ).firstWhere((c) => c.name == 'Oaxaca');
+      expect(theirs.aboard, isFalse);
+      expect(theirs.locked, isFalse);
+    },
+  );
 }

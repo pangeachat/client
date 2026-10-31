@@ -1174,7 +1174,7 @@ class _WorldMapViewState extends State<WorldMapView>
                       const LatLng(20, 0),
                   initialZoom: widget.controller.widget.initialZoom ?? 3,
                   minZoom: minZoom,
-                  maxZoom: WorldMapConstants.maxZoom,
+                  maxZoom: widget.controller.worldMaxZoom,
                   // Clamp latitude only — leaving longitude free so the user can pan
                   // east-west and the world wraps seamlessly ("rotate the world
                   // around"). Epsg3857 replicates longitude, so tiles and markers

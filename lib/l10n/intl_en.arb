@@ -6160,6 +6160,9 @@
     "worldShipMembers": "{count, plural, =1{1 member} other{{count} members}}",
     "@worldShipMembers": {"placeholders": {"count": {"type": "int"}}},
     "worldShipOpenCourse": "Open course",
+    "worldCityLockedLabel": "{city}, not open to you yet",
+    "@worldCityLockedLabel": {"placeholders": {"city": {"type": "String"}}},
+    "worldCityNoCourseHere": "Join a course here to explore it",
     "worldCityLabel": "{city}",
     "@worldCityLabel": {
         "description": "World map: a city marker on one of the learner's trips; tapping zooms into the city.",
