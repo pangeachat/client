@@ -190,9 +190,9 @@ class PublicCoursesChunk {
   /// them: a display name where the room has one, else the user id.
   final List<String> adminNames;
 
-  /// The course's affiliated institution from its course-plan state, when
-  /// the catalog carries it.
-  final String? institution;
+  /// The course's affiliated institution (`pangea.course_institution`),
+  /// when the catalog carries it.
+  final CourseInstitution? institution;
 
   PublicCoursesChunk({
     required this.room,
@@ -236,10 +236,7 @@ class PublicCoursesChunk {
       central: json['central'] == true,
       courseMissions: CourseMissionsEvent.tryParse(json['course_missions']),
       coursePosition: CoursePositionEvent.tryParse(json['course_position']),
-      institution: switch (json['institution']) {
-        final String value when value.trim().isNotEmpty => value.trim(),
-        _ => null,
-      },
+      institution: CourseInstitution.tryParse(json['institution']),
       adminNames: [
         if (json['admins'] case final List admins)
           for (final admin in admins)

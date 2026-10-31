@@ -75,6 +75,28 @@ class CourseAccessEvent {
   }
 }
 
+/// The course's affiliated institution (`pangea.course_institution`): the
+/// school's name and, when the dashboard's school picker chose one, its
+/// `ror:`/`nces:` id. Set by a course admin in the admin dashboard, or
+/// carried over from the course request the course was made from.
+class CourseInstitution {
+  final String name;
+  final String? id;
+  const CourseInstitution({required this.name, this.id});
+
+  /// Strict: a non-empty name, or null.
+  static CourseInstitution? tryParse(Object? content) {
+    if (content is! Map) return null;
+    final name = content['name'];
+    if (name is! String || name.trim().isEmpty) return null;
+    final id = content['id'];
+    return CourseInstitution(
+      name: name.trim(),
+      id: id is String && id.isNotEmpty ? id : null,
+    );
+  }
+}
+
 extension CourseItineraryRoomExtension on Room {
   /// The ship's position, or null when none is written, it is malformed,
   /// or its sender is not a course admin now (a student cannot move the
@@ -87,6 +109,19 @@ extension CourseItineraryRoomExtension on Room {
       return null;
     }
     return CoursePositionEvent.tryParse(event.content);
+  }
+
+  /// The course's institution, or null when none is set, it is malformed,
+  /// or its sender is not a course admin now (the same check as the ship's
+  /// position: a student cannot name the school).
+  CourseInstitution? get courseInstitution {
+    final event = getState(PangeaEventTypes.courseInstitution);
+    if (event == null) return null;
+    if (getPowerLevelByUserId(event.senderId) <
+        SpaceConstants.powerLevelOfAdmin) {
+      return null;
+    }
+    return CourseInstitution.tryParse(event.content);
   }
 
   /// The Missions a teacher opened for [userId] ahead of the itinerary;
