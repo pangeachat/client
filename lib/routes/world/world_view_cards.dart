@@ -475,12 +475,13 @@ class _Dots extends StatelessWidget {
 
 /// What a ship's card says about its course: its name, the city it is at,
 /// who runs it (its human admins; Pangea for a central course), how many
-/// people are in it, and what the course says it is. An affiliated
-/// institution shows once the course record carries one; today none does.
+/// people are in it, its affiliated institution when its teacher set one in
+/// the admin dashboard, and what the course says it is.
 class WorldShipInfo {
   final String name;
   final String cityName;
   final List<String> admins;
+  final String? institution;
   final bool central;
   final int? members;
   final String? description;
@@ -493,6 +494,7 @@ class WorldShipInfo {
     required this.name,
     required this.cityName,
     required this.admins,
+    this.institution,
     required this.central,
     required this.members,
     required this.description,

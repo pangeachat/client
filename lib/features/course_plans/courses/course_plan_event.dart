@@ -12,9 +12,17 @@ class CoursePlanEvent {
   /// excludes them when a language filter is applied.
   final String? l2;
 
-  CoursePlanEvent({required this.uuid, this.l2});
+  /// The course's affiliated institution, set by its teacher in the admin
+  /// dashboard; shown on the course's card. Null when none was set.
+  final String? institution;
 
-  Map<String, dynamic> toJson() => {'uuid': uuid, if (l2 != null) 'l2': l2};
+  CoursePlanEvent({required this.uuid, this.l2, this.institution});
+
+  Map<String, dynamic> toJson() => {
+    'uuid': uuid,
+    if (l2 != null) 'l2': l2,
+    if (institution != null) 'institution': institution,
+  };
 
   /// Returns null when the event carries no usable plan id, so a malformed or
   /// blanked event reads as "this room has no course plan" — the same answer a
@@ -26,9 +34,13 @@ class CoursePlanEvent {
     final id = _planId(json);
     if (id == null) return null;
     final l2 = json['l2'];
+    final institution = json['institution'];
     return CoursePlanEvent(
       uuid: id,
       l2: l2 is String && l2.isNotEmpty ? l2 : null,
+      institution: institution is String && institution.trim().isNotEmpty
+          ? institution.trim()
+          : null,
     );
   }
 

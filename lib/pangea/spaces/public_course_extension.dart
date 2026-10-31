@@ -190,6 +190,10 @@ class PublicCoursesChunk {
   /// them: a display name where the room has one, else the user id.
   final List<String> adminNames;
 
+  /// The course's affiliated institution from its course-plan state, when
+  /// the catalog carries it.
+  final String? institution;
+
   PublicCoursesChunk({
     required this.room,
     required this.courseId,
@@ -198,6 +202,7 @@ class PublicCoursesChunk {
     this.courseMissions,
     this.coursePosition,
     this.adminNames = const [],
+    this.institution,
   });
 
   /// The central course, else the public course on [questId] with the most
@@ -231,6 +236,10 @@ class PublicCoursesChunk {
       central: json['central'] == true,
       courseMissions: CourseMissionsEvent.tryParse(json['course_missions']),
       coursePosition: CoursePositionEvent.tryParse(json['course_position']),
+      institution: switch (json['institution']) {
+        final String value when value.trim().isNotEmpty => value.trim(),
+        _ => null,
+      },
       adminNames: [
         if (json['admins'] case final List admins)
           for (final admin in admins)
