@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:matrix/matrix.dart';
 
@@ -767,29 +766,24 @@ class CallRecord {
     }
     final fromRecording = recorded.isNotEmpty;
     final segments = fromRecording ? recorded : transcripts.segments;
-    // The counts describe whatever produced the words. Recording words owe
-    // nothing to the live chunks, so what those went through -- suppressed,
-    // lost, still draining -- is no gap in this half, and declaring it beside
-    // the words made a whole half read as impossible. Chunks handed to a
-    // sibling are the exception: they are not in this device's recording, and
-    // stay declared.
-    final chunksDiscarded = transcripts.chunksDiscarded;
-    final recordedChunks = max(transcripts.chunksCaptured - chunksDiscarded, 1);
-    final chunksCaptured = fromRecording
-        ? recordedChunks + chunksDiscarded
-        : transcripts.chunksCaptured;
-    final chunksTranscribed = fromRecording
-        ? recordedChunks
+    // Nothing says how much of the call a recording covers: a dead tap or a call
+    // moved to another device leaves a short one. So what the live chunks
+    // declared stays declared, and a recording only ever adds itself, as one
+    // chunk captured and transcribed, when no live chunk yielded words. Without
+    // that its words read as impossible. A false gap is better than a hidden one.
+    final recordingCounts = fromRecording && transcripts.chunksTranscribed == 0;
+    final chunksCaptured =
+        transcripts.chunksCaptured + (recordingCounts ? 1 : 0);
+    final chunksTranscribed = recordingCounts
+        ? 1
         : transcripts.chunksTranscribed;
-    final chunksLost = fromRecording ? 0 : transcripts.chunksLost;
-    final chunksRefusedUnsubscribed = fromRecording
-        ? 0
-        : transcripts.chunksRefusedUnsubscribed;
-    final chunksSuppressed = fromRecording ? 0 : transcripts.chunksSuppressed;
+    final chunksLost = transcripts.chunksLost;
+    final chunksRefusedUnsubscribed = transcripts.chunksRefusedUnsubscribed;
+    final chunksSuppressed = transcripts.chunksSuppressed;
     // Meaningful only once the sink has closed, which the capture service does
     // before this runs. Read earlier it would be the optimistic default and a
     // half could claim a completeness nothing had checked.
-    final drainComplete = fromRecording || transcripts.drainComplete;
+    final drainComplete = transcripts.drainComplete;
     final langCode = transcripts.langCode;
 
     // Kept so the report at the bottom can carry the CAUSE. Each attempt logs

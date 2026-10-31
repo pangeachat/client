@@ -6,9 +6,11 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/calls/call_upload_gate.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
+import 'package:fluffychat/routes/chat/calls/transcript_assembly.dart';
 import 'package:fluffychat/routes/chat/calls/transcript_segments.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
@@ -65,6 +67,7 @@ void main() {
       int transcribed,
       int lost,
       int suppressed,
+      int discarded,
       bool drained,
     })
   >
@@ -171,6 +174,7 @@ void main() {
               transcribed: chunksTranscribed,
               lost: chunksLost,
               suppressed: chunksSuppressed,
+              discarded: transcripts.chunksDiscarded,
               drained: drainComplete,
             ));
           },
@@ -743,76 +747,157 @@ void main() {
       startedAtMs: 1000,
     );
 
-    // The words came from the recording, so what the live chunks went through
-    // says nothing about them. Publishing the live counts beside them made a
-    // whole half read as impossible (words with nothing transcribed) or as
-    // missing the chunks a recording had in fact covered.
-    test('counts the recording, not the live chunks it replaced', () async {
+    // What the half's numbers mean to a reader, end to end. The half as it would
+    // be published and read back, not the counts in isolation.
+    HalfIssue issueOfPublishedHalf() {
+      final half = published.single;
+      final parsed = CallTranscriptContent.fromJson({
+        'call_key': '\$anchor',
+        'segments': [
+          for (final s in fromRecording()) {'text': s.text, 'at_ms': s.atMs},
+        ],
+        'chunks_captured': half.captured,
+        'chunks_transcribed': half.transcribed,
+        'chunks_lost': half.lost,
+        'chunks_refused_unsubscribed': 0,
+        'chunks_suppressed': half.suppressed,
+        'chunks_discarded': half.discarded,
+        'capture_dropped_ms': 0,
+        'capture_refused': false,
+        'truncated': false,
+        'segments_omitted': 0,
+        'drain_complete': half.drained,
+        'positions_marked': true,
+      })!;
+      return TranscriptHalf(
+        senderId: '@a:example.com',
+        segments: parsed.segments,
+        accounting: parsed.accounting,
+        state: parsed.accounting.writerAdmitsGaps
+            ? HalfState.incomplete
+            : HalfState.present,
+        readWasCutShort: false,
+        participantsWereAGuess: false,
+        positionsMarked: parsed.positionsMarked,
+        arrival: HalfArrival.placed,
+      ).issue;
+    }
+
+    Future<void> finishWithRecording(CallTranscriptSink sink) => record(
+      sink,
+      withPublisher: true,
+      withAudioPublisher: true,
+      recordingSegments: fromRecording(),
+    ).finish(duration: kDur, video: false, callKey: '\$anchor');
+
+    CallTranscriptSink failingSink() => CallTranscriptSink(
+      userL1: 'en',
+      userL2: 'es',
+      transcribe: (_) async => throw Exception('no answer'),
+    );
+
+    // Only the words are the recording's. Nothing says how much of the call it
+    // covers -- a tap that died or a call moved to another device leaves a short
+    // one -- so what the live chunks declared stays declared. A false gap is
+    // better than a hidden one. All the recording adds is that it was captured
+    // and transcribed, which is what stops its words reading as impossible.
+    test(
+      'words from a recording are not impossible over a silent live half',
+      () async {
+        final sink = CallTranscriptSink(
+          userL1: 'en',
+          userL2: 'es',
+          transcribe: (_) async => spokenWord('hola'),
+        );
+        await sink.deliver(longSilence(0));
+        expect(sink.chunksSuppressed, 1);
+        expect(sink.chunksTranscribed, 0);
+
+        await finishWithRecording(sink);
+
+        expect(published.single.captured, 2);
+        expect(published.single.transcribed, 1);
+        expect(published.single.suppressed, 1);
+        expect(issueOfPublishedHalf(), HalfIssue.none);
+      },
+    );
+
+    test('a recording does not erase chunks the live path lost', () async {
+      final sink = failingSink();
+      await sink.deliver(chunk(0)).catchError((Object _) {});
+      await sink.deliver(chunk(1)).catchError((Object _) {});
+      expect(sink.chunksLost, 2);
+
+      await finishWithRecording(sink);
+
+      expect(published.single.lost, 2);
+      expect(published.single.transcribed, 1);
+      expect(published.single.captured, 3);
+      expect(issueOfPublishedHalf(), HalfIssue.audioLost);
+    });
+
+    test(
+      'a recording that may be partial leaves a declared gap standing',
+      () async {
+        var calls = 0;
+        final sink = CallTranscriptSink(
+          userL1: 'en',
+          userL2: 'es',
+          transcribe: (_) async =>
+              calls++ == 0 ? spokenWord('hola') : throw Exception('no answer'),
+        );
+        await sink.deliver(chunk(0));
+        await sink.deliver(chunk(1)).catchError((Object _) {});
+        expect(sink.chunksTranscribed, 1);
+        expect(sink.chunksLost, 1);
+
+        await finishWithRecording(sink);
+
+        expect(published.single.captured, 2);
+        expect(published.single.transcribed, 1);
+        expect(published.single.lost, 1);
+        expect(issueOfPublishedHalf(), HalfIssue.audioLost);
+      },
+    );
+
+    test(
+      'a recording does not turn a failed drain into a finished one',
+      () async {
+        final sink = CallTranscriptSink(
+          userL1: 'en',
+          userL2: 'es',
+          settleWithin: Duration.zero,
+          transcribe: (_) => Completer<SpeechToTextResponseModel>().future,
+        );
+        unawaited(sink.deliver(chunk(0)));
+        expect(await sink.close(), isFalse);
+
+        await finishWithRecording(sink);
+
+        expect(published.single.drained, isFalse);
+        expect(issueOfPublishedHalf(), HalfIssue.drainAbandoned);
+      },
+    );
+
+    test('chunks handed to a sibling keep their place in the sum', () async {
       final sink = CallTranscriptSink(
         userL1: 'en',
         userL2: 'es',
         transcribe: (_) async => spokenWord('hola'),
       );
-      await sink.deliver(longSilence(0));
-      expect(sink.chunksSuppressed, 1);
-      expect(sink.chunksTranscribed, 0);
-
-      final r = record(
-        sink,
-        withPublisher: true,
-        withAudioPublisher: true,
-        recordingSegments: fromRecording(),
-      );
-      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
-
-      expect(published.single.captured, 1);
-      expect(published.single.transcribed, 1);
-      expect(published.single.lost, 0);
-      expect(published.single.suppressed, 0);
-      expect(published.single.drained, isTrue);
-    });
-
-    test('a chunk the live path lost is not a gap in the recording', () async {
-      final sink = CallTranscriptSink(
-        userL1: 'en',
-        userL2: 'es',
-        transcribe: (_) async => throw Exception('no answer'),
-      );
-      await sink.deliver(chunk(0)).catchError((Object _) {});
-      await sink.deliver(chunk(1)).catchError((Object _) {});
-      expect(sink.chunksLost, 2);
-
-      final r = record(
-        sink,
-        withPublisher: true,
-        withAudioPublisher: true,
-        recordingSegments: fromRecording(),
-      );
-      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
-
-      expect(published.single.captured, 2);
-      expect(published.single.transcribed, 2);
-      expect(published.single.lost, 0);
-    });
-
-    // Chunks handed to a sibling device are not in this device's recording, and
-    // stay declared so a reader can still ask whether the sibling held them.
-    test('chunks handed to a sibling stay out of the words counted', () async {
-      final sink = await sinkWith(() => spokenWord('hola'));
       sink.discarded(chunk(1));
       sink.discarded(chunk(2));
-      expect(sink.chunksCaptured, 3);
 
-      final r = record(
-        sink,
-        withPublisher: true,
-        withAudioPublisher: true,
-        recordingSegments: fromRecording(),
-      );
-      await r.finish(duration: kDur, video: false, callKey: '\$anchor');
+      await finishWithRecording(sink);
 
+      expect(published.single.discarded, 2);
       expect(published.single.captured, 3);
       expect(published.single.transcribed, 1);
+      // Coherent, and still asking whether the sibling held them.
+      expect(
+        issueOfPublishedHalf(),
+        HalfIssue.audioLeftToADeviceThatDidNotHoldIt,
+      );
     });
 
     test('the live half keeps the live counts when it stands', () async {
