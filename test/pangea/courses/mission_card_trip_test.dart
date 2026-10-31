@@ -90,14 +90,14 @@ void main() {
   ) async {
     var focused = 0;
     await pump(tester, onFocus: () => focused++);
-    expect(find.textContaining('Oaxaca'), findsOneWidget);
+    expect(find.textContaining('OAXACA'), findsOneWidget);
     await tester.tap(find.byTooltip("Focus on this Mission's activities"));
     expect(focused, 1);
   });
 
   testWidgets('without Focus the city still shows', (tester) async {
     await pump(tester);
-    expect(find.textContaining('Oaxaca'), findsOneWidget);
+    expect(find.textContaining('OAXACA'), findsOneWidget);
     expect(find.byTooltip("Focus on this Mission's activities"), findsNothing);
   });
 
