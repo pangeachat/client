@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
@@ -291,14 +292,27 @@ class _WorldCityCardState extends State<WorldCityCard> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            widget.city.name,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w800,
-                            ),
+                          Row(
+                            spacing: 6,
+                            children: [
+                              const Icon(
+                                Symbols.location_city_rounded,
+                                size: 20,
+                                fill: 1,
+                                color: Colors.white,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  widget.city.name,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: theme.textTheme.titleMedium?.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           Text(
                             l10n.numActivities(widget.activityIds.length),
@@ -554,7 +568,7 @@ class WorldShipCard extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             _InfoLine(
-              icon: Icons.location_on_outlined,
+              icon: Symbols.location_city_rounded,
               text: l10n.worldShipAtCity(info.cityName),
             ),
             if (runBy != null)
