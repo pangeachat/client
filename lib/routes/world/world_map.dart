@@ -602,7 +602,7 @@ class WorldMapController extends State<WorldMap>
     } catch (_) {
       return WorldMapConstants.worldZoomCap;
     }
-    for (final city in worldView.cities) {
+    for (final city in (_lastWorldView ?? worldView).cities) {
       if (!city.aboard) continue;
       if (const Distance().as(LengthUnit.Kilometer, center, city.point) <=
           WorldMapConstants.ownCityRadiusKm) {
@@ -673,7 +673,17 @@ class WorldMapController extends State<WorldMap>
   /// XP earned there and stamped where they have played; read once per
   /// build.
   ({List<WorldShip> ships, List<WorldCity> cities}) get worldView =>
-      worldViewOf(_courseTrips, _pinsManager.xpByActivity, DateTime.now());
+      _lastWorldView = worldViewOf(
+        _courseTrips,
+        _pinsManager.xpByActivity,
+        DateTime.now(),
+      );
+
+  /// The last [worldView] built. [worldMaxZoom] runs on every frame of a pan,
+  /// and building the view there would parse every course's record per
+  /// frame; the cities a learner can zoom into change only with what a build
+  /// already reads.
+  ({List<WorldShip> ships, List<WorldCity> cities})? _lastWorldView;
 
   /// The world view's one open card: a city's or a ship's (org world-view
   /// doc). Tapping a city or ship opens its card; the X, or opening another,
