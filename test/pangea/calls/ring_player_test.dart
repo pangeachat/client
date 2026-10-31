@@ -299,7 +299,7 @@ void main() {
     // On iOS audioplayers applies a player's context to the app's one shared
     // AVAudioSession, so a call cue configured as `playback` took recording
     // away from a live call.
-    test('a call cue keeps the call recording-capable', () async {
+    test('a call cue asks for the call session', () async {
       final loop = _FakeRingAudio();
       final oneShot = _FakeRingAudio();
       final players = [loop, oneShot];
@@ -352,39 +352,40 @@ void main() {
       });
     });
 
-    // Run where this test runs, which is not iOS. Both call sites go through
-    // the one function: a site that skipped it would still pass this, and the
-    // reading of the platform is what these two lines pin.
-    test('a looped cue and a one-shot both play as this platform can', () async {
-      final player = _FakeRingAudio();
-      final sound = AssetRingSound(audioFactory: () => player);
+    // Both playback paths, through the sound itself: a path that skipped the
+    // format choice plays the .ogg on iOS, which AVPlayer cannot read.
+    for (final (isIOS, extension) in const [(true, 'mp3'), (false, 'ogg')]) {
+      final platform = isIOS ? 'iOS' : 'other platforms';
 
-      /// Finishes every note of [cue], so it ends rather than timing out.
-      Future<void> finish(Future<void> cue, int notes) async {
-        for (var i = 0; i < notes; i++) {
-          await Future<void>.delayed(const Duration(milliseconds: 500));
-          player.completeCurrentPlay();
-        }
+      test('the loop plays $extension on $platform', () async {
+        final player = _FakeRingAudio();
+        final sound = AssetRingSound(audioFactory: () => player, isIOS: isIOS);
+
+        await sound.start('sounds/phone.ogg');
+
+        expect(player.log.where((entry) => entry.startsWith('play:')), [
+          'play:sounds/phone.$extension',
+        ]);
+      });
+
+      test('a one-shot plays $extension on $platform', () async {
+        final player = _FakeRingAudio();
+        final sound = AssetRingSound(audioFactory: () => player, isIOS: isIOS);
+
+        final cue = sound.playOnce('sounds/notification.ogg');
+        await pumpEventQueue();
+        player.completeCurrentPlay();
         await cue;
-      }
 
-      await sound.start('sounds/phone.ogg');
-      await finish(sound.busy(), 2);
-      await finish(sound.playOnce('sounds/call_ended.mp3'), 1);
+        expect(player.log.where((entry) => entry.startsWith('play:')), [
+          'play:sounds/notification.$extension',
+        ]);
+      });
+    }
 
-      final played = player.log.where((entry) => entry.startsWith('play:'));
-      expect(played, [
-        'play:${playableCueAsset('sounds/phone.ogg', isIOS: Platform.isIOS)}',
-        'play:${playableCueAsset('sounds/notification.ogg', isIOS: Platform.isIOS)}',
-        'play:${playableCueAsset('sounds/notification.ogg', isIOS: Platform.isIOS)}',
-        'play:sounds/call_ended.mp3',
-      ]);
-    });
-
-    // Answering has to open the microphone while the ring is still going away.
-    // A ring in `playback` made that fail on the iPhone simulator, with engine
-    // error -4010 and "Could not connect the call".
-    test('the incoming ring can be answered: it records, on speaker', () async {
+    // The session the ring leaves is the one a call starts from. This checks the
+    // category and options handed over, and nothing about an answer itself.
+    test('the incoming ring asks for playAndRecord, on speaker', () async {
       final loop = _FakeRingAudio();
       final sound = AssetRingSound(audioFactory: () => loop);
 

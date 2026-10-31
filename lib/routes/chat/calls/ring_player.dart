@@ -145,10 +145,9 @@ class AssetRingSound implements RingSound {
   /// On iOS audioplayers applies a player's context to the app's ONE shared
   /// AVAudioSession, so the default `playback` switched a call that was
   /// connecting or reconnecting to a category that cannot record -- the likely
-  /// cause of a silent ringback on iPad (#9166) -- and a ring answered in
-  /// `playback` could not start the microphone (engine error -4010). Keeping
-  /// the call's category means no cue takes recording away from a call, and
-  /// that holds for the ring too: it is the moment before one. `defaultToSpeaker`
+  /// cause of a silent ringback on iPad (#9166). Keeping the call's category
+  /// means no cue takes recording away from a call, and that holds for the ring
+  /// too: it is the session a call starts from. `defaultToSpeaker`
   /// is the one option LiveKit does not set: it covers a ringback that starts
   /// before LiveKit has put the call on the speaker, which would otherwise play
   /// from an iPhone's earpiece.
@@ -165,13 +164,17 @@ class AssetRingSound implements RingSound {
   AssetRingSound({
     AndroidUsageType usage = AndroidUsageType.notificationRingtone,
     @visibleForTesting RingAudio Function()? audioFactory,
+    @visibleForTesting bool? isIOS,
   }) : _usage = usage,
-       _audioFactory = audioFactory ?? (() => _AudioPlayersRing());
+       _audioFactory = audioFactory ?? (() => _AudioPlayersRing()),
+       _isIOSOverride = isIOS;
+
+  final bool? _isIOSOverride;
 
   /// [asset] in a format this platform can play. The one place a cue reaches a
   /// player from, so no cue can pick its format and miss this.
   String _playable(String asset) =>
-      playableCueAsset(asset, isIOS: PlatformInfos.isIOS);
+      playableCueAsset(asset, isIOS: _isIOSOverride ?? PlatformInfos.isIOS);
 
   /// A caller's own call cues (#8807), played under the call-signalling usage so
   /// the caller hears them even with ringtones silenced.
