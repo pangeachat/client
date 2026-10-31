@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:matrix/matrix.dart' show Logs;
 
+import 'package:fluffychat/utils/platform_infos.dart';
+
 /// A minimal seam over audioplayers' [AudioPlayer], so the ring lifecycle --
 /// configure, play, stop, playback-completion, dispose -- can be driven in a
 /// unit test without a platform audio plugin. The default is a thin wrapper
@@ -161,9 +163,19 @@ class AssetRingSound implements RingSound {
     AndroidUsageType usage = AndroidUsageType.notificationRingtone,
     AudioContextIOS? iosSession,
     @visibleForTesting RingAudio Function()? audioFactory,
+    @visibleForTesting bool? playsOgg,
   }) : _usage = usage,
        _iosSession = iosSession ?? AudioContextIOS(),
-       _audioFactory = audioFactory ?? (() => _AudioPlayersRing());
+       _audioFactory = audioFactory ?? (() => _AudioPlayersRing()),
+       _playsOgg = playsOgg ?? !PlatformInfos.isIOS;
+
+  /// Whether this platform's player can open Ogg Vorbis. AVPlayer cannot.
+  final bool _playsOgg;
+
+  /// [asset] in a format this platform can play. The one place a cue reaches a
+  /// player from, so no cue can pick its format and miss this.
+  String _playable(String asset) =>
+      _playsOgg ? asset : asset.replaceFirst(RegExp(r'\.ogg$'), '.mp3');
 
   /// A caller's own call cues (#8807), played under the call-signalling usage so
   /// the caller hears them even with ringtones silenced, and on iOS under the
@@ -231,7 +243,7 @@ class AssetRingSound implements RingSound {
         // too; re-check before committing the player to a loop.
         if (generation != _generation) return;
         reachedPlayForTest = true;
-        await _player.play(asset);
+        await _player.play(_playable(asset));
       } catch (e) {
         // Autoplay refused (web without a gesture), or no audio device. The cue
         // is an enhancement, not the mechanism.
@@ -308,7 +320,7 @@ class AssetRingSound implements RingSound {
         if (i > 0) {
           await Future<void>.delayed(Duration(milliseconds: gapMs));
         }
-        await beeper.play(asset);
+        await beeper.play(_playable(asset));
         // Wait for THIS note to finish before the next one -- or the teardown --
         // so a cue longer than any fixed guess is never cut off. Bounded, so a
         // completion event that never arrives cannot wedge the cue for ever;

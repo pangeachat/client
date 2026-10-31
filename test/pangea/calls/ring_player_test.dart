@@ -321,6 +321,59 @@ void main() {
       }
     });
 
+    // AVPlayer cannot open Ogg Vorbis: on an iPad simulator all three .ogg cues
+    // failed to load and their .mp3 twins played, so an iPhone or iPad got no
+    // in-app ring, no engaged tone and no reconnecting tone.
+    group('on a platform that cannot play Ogg', () {
+      test('every cue, looped or once, plays its mp3', () async {
+        final player = _FakeRingAudio();
+        final sound = AssetRingSound(
+          audioFactory: () => player,
+          playsOgg: false,
+        );
+
+        await sound.start('sounds/phone.ogg');
+        await sound.start('sounds/call.ogg');
+        unawaited(sound.busy());
+        unawaited(sound.playOnce('sounds/call_ended.mp3'));
+        await pumpEventQueue();
+
+        final played = [
+          for (final entry in player.log)
+            if (entry.startsWith('play')) entry,
+        ];
+        expect(played, isNotEmpty);
+        expect(played.where((entry) => entry.contains('.ogg')), isEmpty);
+        expect(
+          played.where((entry) => entry.contains('phone.mp3')),
+          isNotEmpty,
+        );
+        expect(played.where((entry) => entry.contains('call.mp3')), isNotEmpty);
+        expect(
+          played.where((entry) => entry.contains('notification.mp3')),
+          isNotEmpty,
+        );
+      });
+
+      test('every .ogg cue the app plays has an mp3 beside it', () {
+        for (final name in ['phone', 'notification', 'call']) {
+          expect(File('assets/sounds/$name.mp3').existsSync(), isTrue);
+        }
+      });
+    });
+
+    test('elsewhere the cue plays as named', () async {
+      final player = _FakeRingAudio();
+      final sound = AssetRingSound(audioFactory: () => player, playsOgg: true);
+
+      await sound.start('sounds/phone.ogg');
+
+      expect(
+        player.log.where((entry) => entry.contains('phone.ogg')),
+        isNotEmpty,
+      );
+    });
+
     test('the incoming ring keeps the default session', () async {
       final loop = _FakeRingAudio();
       final sound = AssetRingSound(audioFactory: () => loop);
