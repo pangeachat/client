@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/world_view_cards.dart';
 import 'package:fluffychat/routes/world/world_view_items.dart';
 
 /// The world view's markers (org world-view doc): a city as a small city
 /// icon that grows with the XP the learner has earned there, gold on the dark
 /// basemap, ringed once they have finished an activity there, and an airship
 /// above the city its course has reached, filled for a course the learner is
-/// aboard and outlined for a public course they could join, with the course
-/// names beside the city,
+/// aboard and outlined for a public course they could join,, its name on its card,
 /// carrying its course's name at the city its trip has reached. A ship opens
 /// its course; a city brings the map down into it. A city carries no label of
 /// its own: the basemap already names it, and its name stays available to
@@ -23,10 +24,14 @@ class WorldViewLayer {
   final void Function(WorldCity city) onCityTap;
   final void Function(WorldShip ship) onShipTap;
 
+  /// The one open card, standing on its city or ship, or null.
+  final ({LatLng point, Widget card})? openCard;
+
   const WorldViewLayer({
     required this.view,
     required this.onCityTap,
     required this.onShipTap,
+    this.openCard,
   });
 
   List<WorldCity> get cities => view.cities;
@@ -49,23 +54,6 @@ class WorldViewLayer {
             onTap: () => onCityTap(city),
           ),
         ),
-      // The names of the courses whose ships are at a city sit beside the
-      // city, one per line, so the airship itself stays small.
-      for (final city in cities)
-        if (city.shipRoomIds.isNotEmpty)
-          Marker(
-            point: city.point,
-            width: WorldCityNames.width,
-            height: WorldCityNames.height,
-            alignment: Alignment.centerRight,
-            child: WorldCityNames(
-              key: ValueKey('names:${city.key}'),
-              names: [
-                for (final ship in ships)
-                  if (ship.cityKey == city.key) ship.name,
-              ],
-            ),
-          ),
       // Ships paint over cities: a ship is the thing to find.
       for (final ship in ships)
         // The whole box sits above the coordinate, with the airship at its
@@ -82,48 +70,18 @@ class WorldViewLayer {
             onTap: () => onShipTap(ship),
           ),
         ),
+      // The open card stands above its point, caret on the marker, over
+      // everything else.
+      if (openCard case final card?)
+        Marker(
+          point: card.point,
+          width: WorldViewCardFrame.width,
+          height: WorldViewCardFrame.height + WorldShipMarker.height,
+          alignment: Alignment.topCenter,
+          child: Align(alignment: Alignment.topCenter, child: card.card),
+        ),
     ],
   );
-}
-
-/// The course names beside a city, right of its icon.
-class WorldCityNames extends StatelessWidget {
-  static const double width = 200;
-  static const double height = 64;
-  final List<String> names;
-  const WorldCityNames({super.key, required this.names});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return IgnorePointer(
-      child: Padding(
-        padding: const EdgeInsets.only(left: WorldCityMarker.hitSize / 2 + 2),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              for (final name in names)
-                Text(
-                  name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.labelMedium?.copyWith(
-                    color: theme.colorScheme.onSurface,
-                    fontWeight: FontWeight.w700,
-                    shadows: const [
-                      Shadow(color: Colors.black87, blurRadius: 4),
-                    ],
-                  ),
-                ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 class WorldCityMarker extends StatelessWidget {

@@ -186,6 +186,10 @@ class PublicCoursesChunk {
   final CourseMissionsEvent? courseMissions;
   final CoursePositionEvent? coursePosition;
 
+  /// The course's admins still in it who are not bots, as the catalog names
+  /// them: a display name where the room has one, else the user id.
+  final List<String> adminNames;
+
   PublicCoursesChunk({
     required this.room,
     required this.courseId,
@@ -193,6 +197,7 @@ class PublicCoursesChunk {
     this.central = false,
     this.courseMissions,
     this.coursePosition,
+    this.adminNames = const [],
   });
 
   /// The central course, else the public course on [questId] with the most
@@ -226,6 +231,16 @@ class PublicCoursesChunk {
       central: json['central'] == true,
       courseMissions: CourseMissionsEvent.tryParse(json['course_missions']),
       coursePosition: CoursePositionEvent.tryParse(json['course_position']),
+      adminNames: [
+        if (json['admins'] case final List admins)
+          for (final admin in admins)
+            if (admin is Map)
+              if (admin['display_name'] case final String name
+                  when name.isNotEmpty)
+                name
+              else if (admin['user_id'] case final String userId)
+                userId,
+      ],
     );
   }
 

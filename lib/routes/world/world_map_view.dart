@@ -58,6 +58,7 @@ import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
+import 'package:fluffychat/routes/world/world_view_cards.dart';
 import 'package:fluffychat/routes/world/world_view_markers.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
@@ -352,6 +353,46 @@ class _WorldMapViewState extends State<WorldMapView>
   /// only actually resizes/dismisses once movement is confirmed settled
   /// (#7245).
   _PinRenderer? _lastSettledRenderer;
+
+  /// The world view's open card, if any, with the point it stands on.
+  ({LatLng point, Widget card})? _worldCard(BuildContext context) {
+    final controller = widget.controller;
+    final uri = GoRouterState.of(context).uri;
+    if (controller.selectedWorldCity case final city?) {
+      return (
+        point: city.point,
+        card: WorldCityCard(
+          key: ValueKey('city-card:${city.key}'),
+          city: city,
+          activityIds: controller.activityIdsAt(city),
+          onExplore: () => controller.fadeToCity(city),
+          onOpenActivity: (id) =>
+              context.go(WorkspaceNav.openActivity(uri, id)),
+          onDismiss: controller.dismissWorldCard,
+        ),
+      );
+    }
+    if (controller.selectedWorldShip case final ship?) {
+      return (
+        point: ship.point,
+        card: WorldShipCard(
+          key: ValueKey('ship-card:${ship.roomId}'),
+          info: controller.shipInfo(ship),
+          onOpen: () => context.go(
+            ship.aboard
+                ? WorkspaceNav.openCourseSection(
+                    uri,
+                    ship.roomId,
+                    keepRoom: false,
+                  )
+                : WorkspaceNav.openCoursePreview(uri, ship.roomId),
+          ),
+          onDismiss: controller.dismissWorldCard,
+        ),
+      );
+    }
+    return null;
+  }
 
   /// The marker box for a pin — [PinTier.markerBox]: the tier size for a
   /// teardrop or card, and the min touch-target square for a dot-shaped pin (a
@@ -1194,22 +1235,14 @@ class _WorldMapViewState extends State<WorldMapView>
                   if (widget.controller.worldOverview)
                     WorldViewLayer(
                       view: widget.controller.worldView,
-                      onCityTap: widget.controller.fadeToCity,
-                      // A ship the learner is aboard opens its course; a
-                      // public one opens the course's preview, where they
-                      // join (org world-view doc).
-                      onShipTap: (ship) => context.go(
-                        ship.aboard
-                            ? WorkspaceNav.openCourseSection(
-                                GoRouterState.of(context).uri,
-                                ship.roomId,
-                                keepRoom: false,
-                              )
-                            : WorkspaceNav.openCoursePreview(
-                                GoRouterState.of(context).uri,
-                                ship.roomId,
-                              ),
-                      ),
+                      // A tap opens the city's or the ship's card; the card
+                      // carries the next step: Explore brings the map down
+                      // into the city, and a ship's card opens its course
+                      // (aboard) or the course's preview to join (org
+                      // world-view doc).
+                      onCityTap: widget.controller.selectWorldCity,
+                      onShipTap: widget.controller.selectWorldShip,
+                      openCard: _worldCard(context),
                     ).layer()
                   else
                     _ShimmerLayer(active: warming, child: dotLayer),

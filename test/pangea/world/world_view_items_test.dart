@@ -145,4 +145,16 @@ void main() {
       expect(ships.map((s) => s.aboard), [true, false]);
     },
   );
+
+  test(
+    'a city card lists the activities of every Mission placed there, once',
+    () {
+      final cities = citiesOf([spanish, second], const {}, const []);
+      final oax = cities.firstWhere((c) => c.name == 'Oaxaca');
+      final ids = activityIdsAtCity([spanish, second], oax.key);
+      expect(ids.toSet().length, ids.length);
+      expect(ids, containsAll(['a1', 'a2']));
+      expect(activityIdsAtCity([spanish], 'nowhere'), isEmpty);
+    },
+  );
 }

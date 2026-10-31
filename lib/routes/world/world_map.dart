@@ -16,6 +16,7 @@ import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/central_courses/central_course_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -41,6 +42,7 @@ import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/central_course_offer_dialog.dart';
@@ -52,6 +54,7 @@ import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_view.dart';
+import 'package:fluffychat/routes/world/world_view_cards.dart';
 import 'package:fluffychat/routes/world/world_view_items.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -566,6 +569,7 @@ class WorldMapController extends State<WorldMap>
   /// is reported and keeps the last list, so the world view never loses its
   /// ships to one bad request.
   List<CourseTripView> _publicTrips = const [];
+  Map<String, PublicCoursesChunk> _publicCoursesByRoom = const {};
   String? _publicTripsL2;
   DateTime? _publicTripsAt;
   Future<void>? _publicTripsLoad;
@@ -583,6 +587,9 @@ class WorldMapController extends State<WorldMap>
     _publicTripsLoad = client
         .allPublicCourses(l2)
         .then((courses) {
+          _publicCoursesByRoom = {
+            for (final course in courses) course.room.roomId: course,
+          };
           _publicTrips = [
             for (final course in courses)
               CourseTripView(
@@ -619,9 +626,71 @@ class WorldMapController extends State<WorldMap>
   ({List<WorldShip> ships, List<WorldCity> cities}) get worldView =>
       worldViewOf(_courseTrips, _pinsManager.xpByActivity, DateTime.now());
 
+  /// The world view's one open card: a city's or a ship's (org world-view
+  /// doc). Tapping a city or ship opens its card; the X, or opening another,
+  /// closes it. Leaving the world view drops it.
+  WorldCity? selectedWorldCity;
+  WorldShip? selectedWorldShip;
+
+  void selectWorldCity(WorldCity city) => setState(() {
+    selectedWorldCity = city;
+    selectedWorldShip = null;
+  });
+
+  void selectWorldShip(WorldShip ship) => setState(() {
+    selectedWorldShip = ship;
+    selectedWorldCity = null;
+  });
+
+  void dismissWorldCard() => setState(() {
+    selectedWorldCity = null;
+    selectedWorldShip = null;
+  });
+
+  /// The activities the city card shows for [city] ([activityIdsAtCity]).
+  List<String> activityIdsAt(WorldCity city) =>
+      activityIdsAtCity(_courseTrips, city.key);
+
+  /// What [ship]'s card says: from the joined room when the learner is
+  /// aboard, else from the public catalog's entry.
+  WorldShipInfo shipInfo(WorldShip ship) {
+    final chunk = _publicCoursesByRoom[ship.roomId];
+    final room = _client?.getRoomById(ship.roomId);
+    if (ship.aboard && room != null) {
+      final admins = [
+        for (final user in room.getParticipants())
+          if (user.membership == Membership.join &&
+              user.powerLevel >= SpaceConstants.powerLevelOfAdmin &&
+              user.id != BotName.byEnvironment)
+            user.calcDisplayname(),
+      ];
+      return WorldShipInfo(
+        name: ship.name,
+        cityName: ship.cityName,
+        admins: admins,
+        central: chunk?.central ?? false,
+        members: room.summary.mJoinedMemberCount,
+        description: room.topic,
+        aboard: true,
+        joinOutright: true,
+      );
+    }
+    return WorldShipInfo(
+      name: ship.name,
+      cityName: ship.cityName,
+      admins: chunk?.adminNames ?? const [],
+      central: chunk?.central ?? false,
+      members: chunk?.room.numJoinedMembers,
+      description: chunk?.room.topic,
+      aboard: false,
+      joinOutright: chunk?.room.joinRule == JoinRules.public.name,
+    );
+  }
+
   /// Brings the world view down into [city] with a fade, where its sessions
   /// and the learner's played activities show.
   void fadeToCity(WorldCity city) {
+    dismissWorldCard();
     _fadeFit(
       CameraFit.coordinates(
         coordinates: [city.point],

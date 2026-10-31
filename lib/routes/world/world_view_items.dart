@@ -172,3 +172,24 @@ List<WorldCity> citiesOf(
   final ships = shipsOf(courses, now);
   return (ships: ships, cities: citiesOf(courses, xpByActivity, ships));
 }
+
+/// The activities at the city [cityKey], from every Mission placed there
+/// across [courses] (the learner's own and the public catalog's), each once
+/// and in Mission order. The city card's carousel; the slicer's own placement
+/// of each Mission, never a second point-to-city match.
+List<String> activityIdsAtCity(
+  Iterable<CourseTripView> courses,
+  String cityKey,
+) {
+  final ids = <String>{};
+  for (final course in courses) {
+    final copy = course.copy;
+    if (copy == null) continue;
+    for (final mission in copy.missions) {
+      final city = mission.city;
+      if (city == null || cityKeyOf(city) != cityKey) continue;
+      ids.addAll(mission.activityIds);
+    }
+  }
+  return ids.toList();
+}

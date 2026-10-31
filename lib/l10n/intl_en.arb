@@ -6144,6 +6144,22 @@
             "city": {"type": "String"}
         }
     },
+    "worldCardClose": "Close the {name} card",
+    "@worldCardClose": {"placeholders": {"name": {"type": "String"}}},
+    "worldCardSlide": "{index} of {count}",
+    "@worldCardSlide": {"placeholders": {"index": {"type": "int"}, "count": {"type": "int"}}},
+    "worldCardPrevious": "Previous activity",
+    "worldCardNext": "Next activity",
+    "worldCityNothingHere": "Nothing here for this language yet.",
+    "worldExploreCity": "Explore",
+    "worldShipAtCity": "At {city}",
+    "@worldShipAtCity": {"placeholders": {"city": {"type": "String"}}},
+    "worldShipRunBy": "Run by {admins}",
+    "@worldShipRunBy": {"placeholders": {"admins": {"type": "String"}}},
+    "worldShipRunByPangea": "Run by Pangea",
+    "worldShipMembers": "{count, plural, =1{1 member} other{{count} members}}",
+    "@worldShipMembers": {"placeholders": {"count": {"type": "int"}}},
+    "worldShipOpenCourse": "Open course",
     "worldCityLabel": "{city}",
     "@worldCityLabel": {
         "description": "World map: a city marker on one of the learner's trips; tapping zooms into the city.",
