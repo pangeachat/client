@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -114,6 +115,17 @@ class _TailPainter extends CustomPainter {
 /// those activities (each slide an activity's picture and title, turning
 /// every five seconds while nobody points at it), and Explore, which brings
 /// the map down into the city. Tapping a slide opens that activity.
+/// Where a city card reads its slides' plans: the repo's cache, then the repo.
+class CityCardPlans {
+  const CityCardPlans();
+
+  ActivityPlanModel? cached(String activityId) =>
+      ActivityPlanRepo.instance.cachedPlan(activityId);
+
+  Future<ActivityPlanModel?> read(String activityId) =>
+      ActivityPlanRepo.instance.getPlan(activityId);
+}
+
 class WorldCityCard extends StatefulWidget {
   final WorldCity city;
 
@@ -123,6 +135,7 @@ class WorldCityCard extends StatefulWidget {
   final VoidCallback onExplore;
   final void Function(String activityId) onOpenActivity;
   final VoidCallback onDismiss;
+  final CityCardPlans plans;
 
   const WorldCityCard({
     super.key,
@@ -131,6 +144,7 @@ class WorldCityCard extends StatefulWidget {
     required this.onExplore,
     required this.onOpenActivity,
     required this.onDismiss,
+    this.plans = const CityCardPlans(),
   });
 
   @override
@@ -141,6 +155,7 @@ class _WorldCityCardState extends State<WorldCityCard> {
   static const _turn = Duration(seconds: 5);
   final Map<String, ActivityPlanModel> _plans = {};
   final Set<String> _failed = {};
+  final Set<String> _requested = {};
   int _index = 0;
   bool _hovering = false;
   Timer? _timer;
@@ -158,6 +173,7 @@ class _WorldCityCardState extends State<WorldCityCard> {
     if (old.city.key != widget.city.key) {
       _plans.clear();
       _failed.clear();
+      _requested.clear();
       _index = 0;
       _hydrate();
     }
@@ -169,17 +185,21 @@ class _WorldCityCardState extends State<WorldCityCard> {
     super.dispose();
   }
 
-  /// Each activity's plan for its picture and title; a plan that cannot be
-  /// read is reported by the repo and its slide is skipped, never shown
-  /// broken.
+  /// The plans for the slide on show and the next one, for their picture and
+  /// title: the carousel shows one at a time, so a city with forty activities
+  /// reads two, and the rest as it turns. A plan that cannot be read is
+  /// reported by the repo and its slide is skipped, never shown broken.
   void _hydrate() {
-    for (final id in widget.activityIds) {
-      final cached = ActivityPlanRepo.instance.cachedPlan(id);
+    final slides = _slides;
+    for (var offset = 0; offset < min(2, slides.length); offset++) {
+      final id = slides[(_index + offset) % slides.length];
+      if (_plans.containsKey(id) || !_requested.add(id)) continue;
+      final cached = widget.plans.cached(id);
       if (cached != null) {
         _plans[id] = cached;
         continue;
       }
-      ActivityPlanRepo.instance.getPlan(id).then((plan) {
+      widget.plans.read(id).then((plan) {
         if (!mounted) return;
         setState(() {
           if (plan == null) {
@@ -188,6 +208,8 @@ class _WorldCityCardState extends State<WorldCityCard> {
             _plans[id] = plan;
           }
         });
+        // A skipped slide moves the next one up; it may not be read yet.
+        if (plan == null) _hydrate();
       });
     }
   }
@@ -205,6 +227,7 @@ class _WorldCityCardState extends State<WorldCityCard> {
       final reduced = MediaQuery.of(context).disableAnimations;
       if (count > 1 && !_hovering && !reduced) {
         setState(() => _index = (_index + 1) % count);
+        _hydrate();
       }
       _schedule();
     });
@@ -214,6 +237,7 @@ class _WorldCityCardState extends State<WorldCityCard> {
     final count = _slides.length;
     if (count == 0) return;
     setState(() => _index = (_index + by + count) % count);
+    _hydrate();
     _schedule();
   }
 
