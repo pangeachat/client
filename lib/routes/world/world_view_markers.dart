@@ -10,8 +10,9 @@ import 'package:fluffychat/routes/world/world_view_items.dart';
 /// The world view's markers (org world-view doc): a city as a small city
 /// icon that grows with the XP the learner has earned there, gold on the dark
 /// basemap, ringed once they have finished an activity there, and an airship
-/// pill, filled for a course the learner is aboard and outlined for a public
-/// course they could join,
+/// above the city its course has reached, filled for a course the learner is
+/// aboard and outlined for a public course they could join, with the course
+/// names beside the city,
 /// carrying its course's name at the city its trip has reached. A ship opens
 /// its course; a city brings the map down into it. A city carries no label of
 /// its own: the basemap already names it, and its name stays available to
@@ -48,14 +49,31 @@ class WorldViewLayer {
             onTap: () => onCityTap(city),
           ),
         ),
+      // The names of the courses whose ships are at a city sit beside the
+      // city, one per line, so the airship itself stays small.
+      for (final city in cities)
+        if (city.shipRoomIds.isNotEmpty)
+          Marker(
+            point: city.point,
+            width: WorldCityNames.width,
+            height: WorldCityNames.height,
+            alignment: Alignment.centerRight,
+            child: WorldCityNames(
+              key: ValueKey('names:${city.key}'),
+              names: [
+                for (final ship in ships)
+                  if (ship.cityKey == city.key) ship.name,
+              ],
+            ),
+          ),
       // Ships paint over cities: a ship is the thing to find.
       for (final ship in ships)
-        // The whole box sits above the coordinate, with the pill at its
+        // The whole box sits above the coordinate, with the airship at its
         // bottom and a gap the size of the city icon, so the airship rides
         // just above the city it has reached.
         Marker(
           point: ship.point,
-          width: 180,
+          width: WorldShipMarker.width,
           height: WorldShipMarker.height,
           alignment: Alignment.topCenter,
           child: WorldShipMarker(
@@ -66,6 +84,46 @@ class WorldViewLayer {
         ),
     ],
   );
+}
+
+/// The course names beside a city, right of its icon.
+class WorldCityNames extends StatelessWidget {
+  static const double width = 200;
+  static const double height = 64;
+  final List<String> names;
+  const WorldCityNames({super.key, required this.names});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return IgnorePointer(
+      child: Padding(
+        padding: const EdgeInsets.only(left: WorldCityMarker.hitSize / 2 + 2),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (final name in names)
+                Text(
+                  name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: theme.colorScheme.onSurface,
+                    fontWeight: FontWeight.w700,
+                    shadows: const [
+                      Shadow(color: Colors.black87, blurRadius: 4),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class WorldCityMarker extends StatelessWidget {
@@ -161,6 +219,7 @@ class AirshipIcon extends StatelessWidget {
 }
 
 class WorldShipMarker extends StatelessWidget {
+  static const double width = 44;
   static const double height = 48;
   final WorldShip ship;
   final VoidCallback onTap;
@@ -181,43 +240,29 @@ class WorldShipMarker extends StatelessWidget {
       label: ship.aboard
           ? l10n.worldShipLabel(ship.name, ship.cityName)
           : l10n.worldPublicShipLabel(ship.name, ship.cityName),
-      child: GestureDetector(
-        onTap: onTap,
-        behavior: HitTestBehavior.opaque,
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            margin: const EdgeInsets.only(
-              bottom: WorldCityMarker.dotSize / 2 + 4,
-            ),
-            padding: const EdgeInsets.fromLTRB(6, 3, 10, 3),
-            decoration: BoxDecoration(
-              color: fill,
-              border: ship.aboard
-                  ? null
-                  : Border.all(color: theme.colorScheme.primary, width: 1.5),
-              borderRadius: BorderRadius.circular(14),
-              boxShadow: const [
-                BoxShadow(color: Colors.black45, blurRadius: 6),
-              ],
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AirshipIcon(size: 18, color: ink),
-                const SizedBox(width: 4),
-                Flexible(
-                  child: Text(
-                    ship.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.labelMedium?.copyWith(
-                      color: ink,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-              ],
+      child: Tooltip(
+        message: ship.name,
+        child: GestureDetector(
+          onTap: onTap,
+          behavior: HitTestBehavior.opaque,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              margin: const EdgeInsets.only(
+                bottom: WorldCityMarker.dotSize / 2 + 4,
+              ),
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: fill,
+                shape: BoxShape.circle,
+                border: ship.aboard
+                    ? null
+                    : Border.all(color: theme.colorScheme.primary, width: 1.5),
+                boxShadow: const [
+                  BoxShadow(color: Colors.black45, blurRadius: 6),
+                ],
+              ),
+              child: AirshipIcon(size: 20, color: ink),
             ),
           ),
         ),
