@@ -56,6 +56,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_view.dart';
 import 'package:fluffychat/routes/world/world_view_cards.dart';
 import 'package:fluffychat/routes/world/world_view_items.dart';
+import 'package:fluffychat/routes/world/world_view_markers.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -632,15 +633,40 @@ class WorldMapController extends State<WorldMap>
   WorldCity? selectedWorldCity;
   WorldShip? selectedWorldShip;
 
-  void selectWorldCity(WorldCity city) => setState(() {
-    selectedWorldCity = city;
-    selectedWorldShip = null;
-  });
+  void selectWorldCity(WorldCity city) {
+    setState(() {
+      selectedWorldCity = city;
+      selectedWorldShip = null;
+    });
+    _bringCardIntoView(city.point);
+  }
 
-  void selectWorldShip(WorldShip ship) => setState(() {
-    selectedWorldShip = ship;
-    selectedWorldCity = null;
-  });
+  void selectWorldShip(WorldShip ship) {
+    setState(() {
+      selectedWorldShip = ship;
+      selectedWorldCity = null;
+    });
+    _bringCardIntoView(ship.point);
+  }
+
+  /// A card stands above its point, so the point glides to where the card
+  /// fits under the top chrome: a pure pan at the current zoom, like the
+  /// focus glide for an activity.
+  void _bringCardIntoView(LatLng point) {
+    final padding = _exposedCanvasPadding;
+    _animateFit(
+      CameraFit.coordinates(
+        coordinates: [point],
+        padding: padding.copyWith(
+          top: padding.top + WorldViewCardFrame.height + WorldShipMarker.height,
+          left: padding.left + WorldViewCardFrame.width / 2,
+          right: padding.right + WorldViewCardFrame.width / 2,
+        ),
+        maxZoom: mapController.camera.zoom,
+      ),
+      anchor: point,
+    );
+  }
 
   void dismissWorldCard() => setState(() {
     selectedWorldCity = null;
