@@ -170,6 +170,45 @@ class PublicCoursesResponse extends GetPublicRoomsResponse {
   }
 }
 
+/// The course search's one match and order, shared by the add-course list
+/// and the world view so the two can't drift: a course matches when its
+/// name contains [query] (case-folded); matches whose name starts with it
+/// come first, then more members, then an open course before one you ask
+/// to join. An empty [query] keeps every course, in the same order after
+/// the first rule.
+List<T> rankCoursesByName<T>(
+  Iterable<T> courses,
+  String query, {
+  required String Function(T) name,
+  required int Function(T) members,
+  required String? Function(T) joinRule,
+}) {
+  final q = query.trim().toLowerCase();
+  final matches = [
+    for (final c in courses)
+      if (q.isEmpty || name(c).toLowerCase().contains(q)) c,
+  ];
+  matches.sort((a, b) {
+    if (q.isNotEmpty) {
+      final aStarts = name(a).toLowerCase().startsWith(q);
+      final bStarts = name(b).toLowerCase().startsWith(q);
+      if (aStarts != bStarts) return aStarts ? -1 : 1;
+    }
+    final byMembers = members(b) - members(a);
+    if (byMembers != 0) return byMembers;
+    final aRule = joinRule(a);
+    final bRule = joinRule(b);
+    if (aRule == JoinRules.public.name && bRule == JoinRules.knock.name) {
+      return -1;
+    }
+    if (aRule == JoinRules.knock.name && bRule == JoinRules.public.name) {
+      return 1;
+    }
+    return 0;
+  });
+  return matches;
+}
+
 class PublicCoursesChunk {
   final PublishedRoomsChunk room;
   final String courseId;

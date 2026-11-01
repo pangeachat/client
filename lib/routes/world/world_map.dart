@@ -679,6 +679,39 @@ class WorldMapController extends State<WorldMap>
         DateTime.now(),
       );
 
+  /// The world view's ships matching the search, by the course search's
+  /// one match and order ([rankCoursesByName]); empty with no query.
+  List<WorldShip> get worldShipMatches {
+    final query = filter.query.trim();
+    if (query.isEmpty) return const [];
+    return rankCoursesByName(
+      (_lastWorldView ?? worldView).ships,
+      query,
+      name: (ship) => ship.name,
+      members: (ship) =>
+          _client?.getRoomById(ship.roomId)?.summary.mJoinedMemberCount ??
+          _publicCoursesByRoom[ship.roomId]?.room.numJoinedMembers ??
+          0,
+      joinRule: (ship) => _publicCoursesByRoom[ship.roomId]?.room.joinRule,
+    );
+  }
+
+  /// The world view as drawn: a search narrows the ships to the courses it
+  /// matches, as it narrows the pins in a course; the cities stay, since
+  /// they are the map, not the results.
+  ({List<WorldShip> ships, List<WorldCity> cities}) get worldViewShown {
+    final view = worldView;
+    if (filter.query.trim().isEmpty) return view;
+    final matching = {for (final ship in worldShipMatches) ship.roomId};
+    return (
+      ships: [
+        for (final ship in view.ships)
+          if (matching.contains(ship.roomId)) ship,
+      ],
+      cities: view.cities,
+    );
+  }
+
   /// The last [worldView] built. [worldMaxZoom] runs on every frame of a pan,
   /// and building the view there would parse every course's record per
   /// frame; the cities a learner can zoom into change only with what a build

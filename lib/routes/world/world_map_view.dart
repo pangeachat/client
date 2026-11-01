@@ -1234,7 +1234,7 @@ class _WorldMapViewState extends State<WorldMapView>
                   // layers below take over.
                   if (widget.controller.worldOverview)
                     WorldViewLayer(
-                      view: widget.controller.worldView,
+                      view: widget.controller.worldViewShown,
                       // A tap opens the city's or the ship's card; the card
                       // carries the next step: Explore brings the map down
                       // into the city, and a ship's card opens its course
@@ -1597,6 +1597,11 @@ class _WorldMapViewState extends State<WorldMapView>
                           setStatus: widget.controller.setStatus,
                           results: render.visible,
                           onResultTap: widget.controller.flyTo,
+                          // Outside any course the results are courses.
+                          courseResults: widget.controller.worldOverview
+                              ? widget.controller.worldShipMatches
+                              : const [],
+                          onCourseResultTap: widget.controller.selectWorldShip,
                           onReset: widget.controller.resetFilters,
                           emptyVerdict: widget.controller.emptyVerdict,
                           canZoomOut: widget.controller.canZoomOut,
