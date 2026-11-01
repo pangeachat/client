@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Ha ho motho ya kenetseng. Pangea Bot e ka nka setulo se se nang motho hona jwale, kapa o ka tswela pele ho ema.",
     "keepWaiting": "Tswela pele ho ema",
     "botTookSeatAfterAnHour": "Thuto ena e ne e butswe ka hora, kahoo Pangea Bot e nkile setulo se se nang motho.",
-    "botTookSeatAfterADay": "Thuto ena e ne e butswe ho feta letsatsi, kahoo Pangea Bot e nkile setulo se se nang motho. Romela molaetsa ho qala."
+    "botTookSeatAfterADay": "Thuto ena e ne e butswe ho feta letsatsi, kahoo Pangea Bot e nkile setulo se se nang motho. Romela molaetsa ho qala.",
+    "seatInviteTitle": "Kena ho {course}",
+    "seatInviteYourCourse": "thuto ea hau",
+    "seatInviteEmailHint": "Sebelisa {email} e le hore sehlopha sa hau se u fumane.",
+    "seatInviteClaimed": "U ho {course}.",
+    "seatInvitePendingApproval": "Emela hore tichere ea hau e u amohele.",
+    "seatInviteDenied": "Tichere ea hau ha ea ka ea amohela ak'haonte ena bakeng sa thuto. U ntse u ka sebelisa khoutu ea sehlopha.",
+    "yourTeacher": "Tichere ea hau",
+    "seatInviteNotLive": "Memo ena ha e sa fumaneha. U ntse u ka sebelisa khoutu ea sehlopha.",
+    "seatInviteAlreadyClaimed": "U se u kene thutong ena ka memo e 'ngoe.",
+    "seatInviteFailed": "Ha rea ka ra khona ho bula memo. Ka kopo leka hape hamorao."
 }

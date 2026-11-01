@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Wala pa'y miapil. Ang Pangea Bot makalingkod na karon, o mahimo kang magpadayon sa paghulat.",
     "keepWaiting": "Padayon sa paghulat",
     "botTookSeatAfterAnHour": "Bukas kini nga sesyon sulod sa usa ka oras, busa ang Pangea Bot milingkod sa bakanteng lingkoranan.",
-    "botTookSeatAfterADay": "Bukas kini nga sesyon sulod sa kapin sa usa ka adlaw, busa ang Pangea Bot milingkod sa bakanteng lingkoranan. Pagpadala og mensahe aron magsugod."
+    "botTookSeatAfterADay": "Bukas kini nga sesyon sulod sa kapin sa usa ka adlaw, busa ang Pangea Bot milingkod sa bakanteng lingkoranan. Pagpadala og mensahe aron magsugod.",
+    "seatInviteTitle": "Apil sa {course}",
+    "seatInviteYourCourse": "imong kurso",
+    "seatInviteEmailHint": "Gamita ang {email} aron makit-an ka sa imong klase.",
+    "seatInviteClaimed": "Naa ka na sa {course}.",
+    "seatInvitePendingApproval": "Naghuwat sa pag-apruba sa imong magtutudlo.",
+    "seatInviteDenied": "Wala gi-aprubahan sa imong magtutudlo kining account para sa kurso. Mahimo gihapon nimo gamiton ang class code.",
+    "yourTeacher": "Imong magtutudlo",
+    "seatInviteNotLive": "Dili na magamit kining imbitasyon. Mahimo gihapon nimo gamiton ang class code.",
+    "seatInviteAlreadyClaimed": "Naapil na ka niining kurso gamit ang laing imbitasyon.",
+    "seatInviteFailed": "Dili namo maablihan ang imbitasyon. Palihug sulayi pag-usab unya."
 }

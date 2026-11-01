@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "E leai se tasi na auai mai. E mafai e le Pangea Bot ona nofo i le nofoa avanoa nei, pe e te mana'o e fa'atali pea.",
     "keepWaiting": "Fa'atali pea",
     "botTookSeatAfterAnHour": "Na tatala lenei sauniga mo le itula, o lea na nofo ai le Pangea Bot i le nofoa avanoa.",
-    "botTookSeatAfterADay": "Na tatala lenei sauniga mo le silia ma le aso, o lea na nofo ai le Pangea Bot i le nofoa avanoa. Auina mai se fe'au e amata ai."
+    "botTookSeatAfterADay": "Na tatala lenei sauniga mo le silia ma le aso, o lea na nofo ai le Pangea Bot i le nofoa avanoa. Auina mai se fe'au e amata ai.",
+    "seatInviteTitle": "Auai i le {course}",
+    "seatInviteYourCourse": "lau vasega",
+    "seatInviteEmailHint": "Fa'aaoga le {email} ina ia maua oe e lau vasega.",
+    "seatInviteClaimed": "Ua e i ai i le {course}.",
+    "seatInvitePendingApproval": "Fa'atali mo le fa'amaoniga a lau faiaoga.",
+    "seatInviteDenied": "E le'i fa'amaonia e lau faiaoga lenei teugatupe mo le vasega. E mafai lava ona e fa'aaogaina le code o le vasega.",
+    "yourTeacher": "Lau faiaoga",
+    "seatInviteNotLive": "Ua le toe avanoa lenei vala'aulia. E mafai lava ona e fa'aaogaina le code o le vasega.",
+    "seatInviteAlreadyClaimed": "Ua uma ona e auai i lenei vasega i se isi vala'aulia.",
+    "seatInviteFailed": "E le mafai ona matou tatalaina le vala'aulia. Fa'amolemole toe taumafai mulimuli ane."
 }

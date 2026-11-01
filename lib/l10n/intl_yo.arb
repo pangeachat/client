@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Ko si ẹnikan ti o darapọ mọ sibẹsibẹ. Pangea Bot le gba ipo ti o ṣ'ofo ni bayi, tabi o le tẹsiwaju lati duro.",
     "keepWaiting": "Tẹsiwaju lati duro",
     "botTookSeatAfterAnHour": "Aago kan ti kọja ti igba yii ti ṣ'i silẹ, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo.",
-    "botTookSeatAfterADay": "Igba yii ti ṣ'i silẹ fun ọjọ kan ju, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo. Fi ifiranṣẹ ranṣẹ lati bẹrẹ."
+    "botTookSeatAfterADay": "Igba yii ti ṣ'i silẹ fun ọjọ kan ju, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo. Fi ifiranṣẹ ranṣẹ lati bẹrẹ.",
+    "seatInviteTitle": "Darapọ mọ {course}",
+    "seatInviteYourCourse": "ẹkọ rẹ",
+    "seatInviteEmailHint": "Lo {email} ki kilasi rẹ le ri ọ.",
+    "seatInviteClaimed": "O wa ninu {course}.",
+    "seatInvitePendingApproval": "Nduro de olukọ rẹ lati fọwọsi.",
+    "seatInviteDenied": "Olukọ rẹ ko fọwọsi akọọlẹ yii fun ẹkọ naa. O tun le lo koodu kilasi naa.",
+    "yourTeacher": "Olukọ rẹ",
+    "seatInviteNotLive": "Ifiwepe yii ko si mọ. O tun le lo koodu kilasi naa.",
+    "seatInviteAlreadyClaimed": "O ti darapọ mọ ẹkọ yii tẹlẹ pẹlu ifiwepe miiran.",
+    "seatInviteFailed": "A ko le ṣi ifiwepe naa. Jọwọ gbiyanju lẹẹkansi nigbamii."
 }

@@ -10163,5 +10163,15 @@
     "playWithBotNowMessage": "Még senki sem csatlakozott. A Pangea Bot most elfoglalhatja a szabad helyet, vagy tovább várhatsz.",
     "keepWaiting": "Tovább várok",
     "botTookSeatAfterAnHour": "Ez a munkamenet egy órája nyitva volt, ezért a Pangea Bot elfoglalta a szabad helyet.",
-    "botTookSeatAfterADay": "Ez a munkamenet több mint egy napja nyitva volt, ezért a Pangea Bot elfoglalta a szabad helyet. Üzenj a kezdéshez."
+    "botTookSeatAfterADay": "Ez a munkamenet több mint egy napja nyitva volt, ezért a Pangea Bot elfoglalta a szabad helyet. Üzenj a kezdéshez.",
+    "seatInviteTitle": "Csatlakozz ehhez: {course}",
+    "seatInviteYourCourse": "a kurzusod",
+    "seatInviteEmailHint": "Használd ezt az e-mail-címet: {email}, hogy az osztályod megtaláljon.",
+    "seatInviteClaimed": "Benne vagy ebben: {course}.",
+    "seatInvitePendingApproval": "Várjuk a tanárod jóváhagyását.",
+    "seatInviteDenied": "A tanárod nem hagyta jóvá ezt a fiókot a kurzushoz. Továbbra is használhatod az osztálykódot.",
+    "yourTeacher": "A tanárod",
+    "seatInviteNotLive": "Ez a meghívó már nem elérhető. Továbbra is használhatod az osztálykódot.",
+    "seatInviteAlreadyClaimed": "Már csatlakoztál ehhez a kurzushoz egy másik meghívóval.",
+    "seatInviteFailed": "Nem sikerült megnyitni a meghívót. Kérjük, próbáld újra később."
 }

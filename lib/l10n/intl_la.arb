@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Nemo adhuc iunxit. Pangea Bot sedem liberam nunc capere potest, aut tu manere potes.",
     "keepWaiting": "Manere",
     "botTookSeatAfterAnHour": "Haec sessio per horam aperta erat, ergo Pangea Bot sedem liberam cepit.",
-    "botTookSeatAfterADay": "Haec sessio per diem apertior erat, ergo Pangea Bot sedem liberam cepit. Mitte nuntium ut incipias."
+    "botTookSeatAfterADay": "Haec sessio per diem apertior erat, ergo Pangea Bot sedem liberam cepit. Mitte nuntium ut incipias.",
+    "seatInviteTitle": "Coniunge {course}",
+    "seatInviteYourCourse": "cursus tuus",
+    "seatInviteEmailHint": "Utere {email} ut classis tua te inveniat.",
+    "seatInviteClaimed": "In {course} es.",
+    "seatInvitePendingApproval": "Magistrum tuum exspectamus ut probet.",
+    "seatInviteDenied": "Magister tuus hanc rationem ad cursum non probavit. Codicem classis adhuc uti potes.",
+    "yourTeacher": "Magister tuus",
+    "seatInviteNotLive": "Haec invitatio iam non praesto est. Codicem classis adhuc uti potes.",
+    "seatInviteAlreadyClaimed": "Hunc cursum iam cum alia invitatione coniunxisti.",
+    "seatInviteFailed": "Invitationem aperire non potuimus. Quaeso iterum postea conare."
 }

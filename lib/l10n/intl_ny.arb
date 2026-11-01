@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Palibe amene wabwera. Pangea Bot ikhoza kutenga mpando wopanda munthu tsopano, kapena mukhoza kupitiriza kudikira.",
     "keepWaiting": "Pitirizani kudikira",
     "botTookSeatAfterAnHour": "Msonkhano uno unali wotseguka kwa ola limodzi, choncho Pangea Bot inatenga mpando wopanda munthu.",
-    "botTookSeatAfterADay": "Msonkhano uno unali wotseguka kwa tsiku limodzi, choncho Pangea Bot inatenga mpando wopanda munthu. Tumizani uthenga kuti muyambe."
+    "botTookSeatAfterADay": "Msonkhano uno unali wotseguka kwa tsiku limodzi, choncho Pangea Bot inatenga mpando wopanda munthu. Tumizani uthenga kuti muyambe.",
+    "seatInviteTitle": "Lowani {course}",
+    "seatInviteYourCourse": "kosi yanu",
+    "seatInviteEmailHint": "Gwiritsani ntchito {email} kuti kalasi yanu ikupezeni.",
+    "seatInviteClaimed": "Muli mu {course}.",
+    "seatInvitePendingApproval": "Tikudikira mphunzitsi wanu kuti avomereze.",
+    "seatInviteDenied": "Mphunzitsi wanu sanavomereze akaunti iyi pa kosiyi. Mukhoza kugwiritsabe ntchito nambala ya kalasi.",
+    "yourTeacher": "Mphunzitsi wanu",
+    "seatInviteNotLive": "Kuitana uku kulibenso. Mukhoza kugwiritsabe ntchito nambala ya kalasi.",
+    "seatInviteAlreadyClaimed": "Munalowa kale kosiyi ndi kuitana kwina.",
+    "seatInviteFailed": "Talephera kutsegula kuitana. Chonde yesaninso pambuyo pake."
 }

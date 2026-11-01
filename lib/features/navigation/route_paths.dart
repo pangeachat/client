@@ -2,6 +2,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
+import 'package:fluffychat/features/navigation/workspace_query.dart';
 
 /// Canonical route paths for Pangea-owned surfaces (world_v2).
 ///
@@ -84,9 +85,43 @@ abstract class PRoutes {
   /// panel's `private/<code>` leaf over the world map, which prefills the
   /// join-with-code page and submits the join. The `LegacyRedirects` join-link
   /// rewrite target, re-entered after the login bounce as the cached
-  /// destination (PAuthGaurd).
-  static String joinWithCode(String code) =>
-      '$world?left=${AddCoursePagePanelToken(AddCoursePageTokenParam(subpage: AddCourseSubpageEnum.private, privateCourseJoinCode: code)).encode()}';
+  /// destination (PAuthGaurd). A seat invitation link adds its opaque
+  /// [invitationId] as `inv=`; the `/` guard moves it into its own ferry
+  /// entry before anything else reads the URL (PAuthGaurd.stashInvitation).
+  static String joinWithCode(String code, {String? invitationId}) {
+    final join =
+        '$world?left=${AddCoursePagePanelToken(AddCoursePageTokenParam(subpage: AddCourseSubpageEnum.private, privateCourseJoinCode: code)).encode()}';
+    return invitationId == null ? join : '$join&$invitationParam=$invitationId';
+  }
+
+  /// The query key of a seat invitation id on the class link
+  /// (`<app>/<class code>?inv=<id>`, written by the Synapse module).
+  static const String invitationParam = 'inv';
+
+  /// An invitation id (`token_urlsafe(16)`): URL-safe base64 characters only,
+  /// so it never needs encoding, and at most 64 characters (the module
+  /// refuses longer), so a crafted link can't stuff the URL or the ferry.
+  static final RegExp _invitationIdRegExp = RegExp(r'^[A-Za-z0-9_-]{1,64}$');
+
+  /// Whether [value] can be an invitation id.
+  static bool isInvitationId(String value) =>
+      _invitationIdRegExp.hasMatch(value);
+
+  /// The well-formed invitation id on [uri], or null.
+  static String? invitationIdIn(Uri uri) {
+    final value = uri.queryParameters[invitationParam];
+    return value != null && isInvitationId(value) ? value : null;
+  }
+
+  /// [uri]'s location with its `inv=` key removed (every other key kept as
+  /// written), or null when [uri] carries no `inv=` key at all.
+  static String? locationWithoutInvitation(Uri uri) {
+    final parts = WorkspaceQuery.parts(uri.query);
+    final before = parts.length;
+    WorkspaceQuery.removeKeys(parts, {invitationParam});
+    if (parts.length == before) return null;
+    return WorkspaceQuery.location(uri.path, parts);
+  }
 
   /// Open an activity with no course context — the shareable first-class uuid
   /// (`/<uuid>`). [launch] skips the lobby.

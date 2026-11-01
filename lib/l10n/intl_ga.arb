@@ -10071,5 +10071,15 @@
     "playWithBotNowMessage": "Níl éinne tagtha isteach fós. Is féidir le Pangea Bot an suíochán folamh a thógáil anois, nó is féidir leat fanacht.",
     "keepWaiting": "Fanacht",
     "botTookSeatAfterAnHour": "Bhí an seisiún seo ar oscailt ar feadh uaire an chloig, mar sin thóg Pangea Bot an suíochán folamh.",
-    "botTookSeatAfterADay": "Bhí an seisiún seo ar oscailt ar feadh níos mó ná lá, mar sin thóg Pangea Bot an suíochán folamh. Seol teachtaireacht chun tús a chur leis."
+    "botTookSeatAfterADay": "Bhí an seisiún seo ar oscailt ar feadh níos mó ná lá, mar sin thóg Pangea Bot an suíochán folamh. Seol teachtaireacht chun tús a chur leis.",
+    "seatInviteTitle": "Bí páirteach i {course}",
+    "seatInviteYourCourse": "do chúrsa",
+    "seatInviteEmailHint": "Úsáid {email} ionas go bhfaighidh do rang thú.",
+    "seatInviteClaimed": "Tá tú i {course}.",
+    "seatInvitePendingApproval": "Ag fanacht le do mhúinteoir ceadú.",
+    "seatInviteDenied": "Níor cheadaigh do mhúinteoir an cuntas seo don chúrsa. Is féidir leat an cód ranga a úsáid fós.",
+    "yourTeacher": "Do mhúinteoir",
+    "seatInviteNotLive": "Níl an cuireadh seo ar fáil a thuilleadh. Is féidir leat an cód ranga a úsáid fós.",
+    "seatInviteAlreadyClaimed": "Tá tú páirteach sa chúrsa seo cheana féin le cuireadh eile.",
+    "seatInviteFailed": "Níorbh fhéidir linn an cuireadh a oscailt. Bain triail eile as níos déanaí."
 }

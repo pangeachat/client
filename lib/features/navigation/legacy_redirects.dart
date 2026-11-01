@@ -35,7 +35,14 @@ abstract class LegacyRedirects {
     if (segments.length != 1) return null;
     final segment = segments.first;
     if (PRoutes.isWorldObjectId(segment)) return _resolveActivityLink(uri);
-    if (PRoutes.isJoinCode(segment)) return PRoutes.joinWithCode(segment);
+    if (PRoutes.isJoinCode(segment)) {
+      // Every other link param is dropped (this link IS the join); a seat
+      // invitation id is kept for the confirmation after sign-in (V4).
+      return PRoutes.joinWithCode(
+        segment,
+        invitationId: PRoutes.invitationIdIn(uri),
+      );
+    }
     return null;
   }
 

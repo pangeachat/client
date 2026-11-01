@@ -9,7 +9,6 @@ import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_fo
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 
 class JoinedCourseStepView extends StatelessWidget {
   final JoinedCourseOnboardingStep step;
@@ -36,7 +35,7 @@ class JoinedCourseStepView extends StatelessWidget {
     final theme = Theme.of(context);
     final coursePlan = step.state.joinedCoursePlan;
     final room = _room;
-    final admin = room?.nonBotRoomAdminsLocal.firstOrNull;
+    final hasTeacher = room?.nonBotRoomAdminsLocal.isNotEmpty ?? false;
 
     return Column(
       spacing: 32.0,
@@ -57,7 +56,7 @@ class JoinedCourseStepView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if (admin != null)
+                  if (hasTeacher)
                     Padding(
                       padding: EdgeInsetsGeometry.symmetric(horizontal: 16.0),
                       child: Container(
@@ -69,16 +68,14 @@ class JoinedCourseStepView extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(16.0),
                         ),
+                        // "Your teacher", naming no one: a course can have
+                        // several teachers and the first admin here need not
+                        // be the one who invited the student (owner, 2026-10-28).
                         child: Row(
                           spacing: 12.0,
                           children: [
-                            Avatar(
-                              mxContent: admin.avatarUrl,
-                              name: admin.calcDisplayname(),
-                              size: 40,
-                              userId: admin.id,
-                            ),
-                            Text(admin.calcDisplayname()),
+                            const Icon(Icons.school_outlined, size: 40),
+                            Text(L10n.of(context).yourTeacher),
                           ],
                         ),
                       ),

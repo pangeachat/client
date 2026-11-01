@@ -6275,6 +6275,61 @@
     "@centralCourseMembersSeeYou": {
         "description": "Line on the onboarding page offering a new learner the Pangea-run course for their target language, before they choose to join it."
     },
+    "seatInviteTitle": "Join {course}",
+    "@seatInviteTitle": {
+        "description": "Heading of the seat invitation card on the sign-up and login pages and of the confirmation, naming the course the student was invited to.",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "seatInviteYourCourse": "your course",
+    "@seatInviteYourCourse": {
+        "description": "Stands in for the course name in seat invitation messages when the name is unknown."
+    },
+    "seatInviteEmailHint": "Use {email} so your class finds you.",
+    "@seatInviteEmailHint": {
+        "description": "Line on the seat invitation card. The placeholder is a masked email address such as a***@school.edu, never the full address.",
+        "placeholders": {
+            "email": {
+                "type": "String"
+            }
+        }
+    },
+    "seatInviteClaimed": "You're in {course}.",
+    "@seatInviteClaimed": {
+        "description": "Shown after a student opens their course invitation and it is claimed.",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "seatInvitePendingApproval": "Waiting for your teacher to approve.",
+    "@seatInvitePendingApproval": {
+        "description": "Shown after a student opens a course invitation with an account whose email does not match it, so the teacher must approve."
+    },
+    "seatInviteDenied": "Your teacher didn't approve this account for the course. You can still use the class code.",
+    "@seatInviteDenied": {
+        "description": "Shown when a student confirms an invitation their teacher has declined for this account."
+    },
+    "yourTeacher": "Your teacher",
+    "@yourTeacher": {
+        "description": "On the onboarding page after joining a course, the card for the course's teacher. It names no one, because the course may have several teachers and the app cannot tell which one invited the student."
+    },
+    "seatInviteNotLive": "This invitation is no longer available. You can still use the class code.",
+    "@seatInviteNotLive": {
+        "description": "Shown when a course invitation was withdrawn or already used."
+    },
+    "seatInviteAlreadyClaimed": "You already joined this course with another invitation.",
+    "@seatInviteAlreadyClaimed": {
+        "description": "Shown when the account already holds an invitation in that course."
+    },
+    "seatInviteFailed": "We couldn't open the invitation. Please try again later.",
+    "@seatInviteFailed": {
+        "description": "Shown when opening a course invitation fails unexpectedly."
+    },
     "analyticsSharedOnJoin": "Your teachers in {course} can now see your learning progress.",
     "@analyticsSharedOnJoin": {
         "description": "Snackbar after a learner joins a course that requires sharing analytics; its action opens Learning settings.",

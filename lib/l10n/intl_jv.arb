@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Durung ana sing gabung. Pangea Bot bisa njupuk kursi sing kosong saiki, utawa sampeyan bisa terus ngenteni.",
     "keepWaiting": "Terus ngenteni",
     "botTookSeatAfterAnHour": "Sesi iki wis mbukak sakjam, dadi Pangea Bot njupuk kursi sing kosong.",
-    "botTookSeatAfterADay": "Sesi iki wis mbukak luwih saka sedina, dadi Pangea Bot njupuk kursi sing kosong. Kirim pesen kanggo miwiti."
+    "botTookSeatAfterADay": "Sesi iki wis mbukak luwih saka sedina, dadi Pangea Bot njupuk kursi sing kosong. Kirim pesen kanggo miwiti.",
+    "seatInviteTitle": "Gabung {course}",
+    "seatInviteYourCourse": "kursusmu",
+    "seatInviteEmailHint": "Gunakake {email} supaya kelasmu nemokake sampeyan.",
+    "seatInviteClaimed": "Sampeyan ana ing {course}.",
+    "seatInvitePendingApproval": "Ngenteni guru sampeyan nyetujoni.",
+    "seatInviteDenied": "Guru sampeyan ora nyetujoni akun iki kanggo kursus kasebut. Sampeyan isih bisa nggunakake kode kelas.",
+    "yourTeacher": "Guru sampeyan",
+    "seatInviteNotLive": "Undangan iki wis ora kasedhiya. Sampeyan isih bisa nggunakake kode kelas.",
+    "seatInviteAlreadyClaimed": "Sampeyan wis gabung kursus iki kanthi undangan liyane.",
+    "seatInviteFailed": "Kita ora bisa mbukak undangan kasebut. Coba maneh mengko."
 }

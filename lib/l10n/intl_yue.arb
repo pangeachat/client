@@ -11014,5 +11014,15 @@
     "playWithBotNowMessage": "仲未有人加入。Pangea機械人可以而家加入，或者你可以繼續等。",
     "keepWaiting": "繼續等",
     "botTookSeatAfterAnHour": "呢個環節開咗一個鐘，所以Pangea機械人加入咗。",
-    "botTookSeatAfterADay": "呢個環節開咗超過一日，所以Pangea機械人加入咗。傳送訊息嚟開始啦。"
+    "botTookSeatAfterADay": "呢個環節開咗超過一日，所以Pangea機械人加入咗。傳送訊息嚟開始啦。",
+    "seatInviteTitle": "加入{course}",
+    "seatInviteYourCourse": "你嘅課程",
+    "seatInviteEmailHint": "用{email}，咁你班同學就搵到你。",
+    "seatInviteClaimed": "你已加入{course}。",
+    "seatInvitePendingApproval": "等緊你老師批准。",
+    "seatInviteDenied": "你老師冇批准呢個帳戶加入課程。你仍然可以用班級代碼。",
+    "yourTeacher": "你嘅老師",
+    "seatInviteNotLive": "呢個邀請已失效。你仍然可以用班級代碼。",
+    "seatInviteAlreadyClaimed": "你已經用另一個邀請加入咗呢個課程。",
+    "seatInviteFailed": "我哋開唔到個邀請。請稍後再試。"
 }

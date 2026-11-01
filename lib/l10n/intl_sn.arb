@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Hapana munhu apinda zvakadaro. Pangea Bot inogona kutora chigaro chisina munhu izvozvi, kana kuti unogona kuramba wakamirira.",
     "keepWaiting": "Ramba wakamirira",
     "botTookSeatAfterAnHour": "Chikamu ichi chaive chakavhurika kweawa, saka Pangea Bot yakatora chigaro chisina munhu.",
-    "botTookSeatAfterADay": "Chikamu ichi chaive chakavhurika kwezuva rose, saka Pangea Bot yakatora chigaro chisina munhu. Tumira meseji kuti utange."
+    "botTookSeatAfterADay": "Chikamu ichi chaive chakavhurika kwezuva rose, saka Pangea Bot yakatora chigaro chisina munhu. Tumira meseji kuti utange.",
+    "seatInviteTitle": "Join {course}",
+    "seatInviteYourCourse": "kosi yako",
+    "seatInviteEmailHint": "Shandisa {email} kuitira kuti kirasi yako ikuwane.",
+    "seatInviteClaimed": "Wapinda mu {course}.",
+    "seatInvitePendingApproval": "Kwakumirira kuti mudzidzisi wako abvumire.",
+    "seatInviteDenied": "Mudzidzisi wako haana kubvumira account iyi kukosi. Unogona kuramba uchishandisa kodhi yekirasi.",
+    "yourTeacher": "Mudzidzisi wako",
+    "seatInviteNotLive": "Kukoka uku hakuchawanikwi. Unogona kuramba uchishandisa kodhi yekirasi.",
+    "seatInviteAlreadyClaimed": "Wakatopinda mukosi iyi nekumwe kukoka.",
+    "seatInviteFailed": "Hatina kukwanisa kuvhura kukoka. Ndapota edza zvakare gare gare."
 }

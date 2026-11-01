@@ -8,6 +8,7 @@ import 'package:fluffychat/features/dm_invite/dm_invite_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/user_id_url.dart';
+import 'package:fluffychat/features/student_invitations/pending_claims.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../controllers/pangea_controller.dart';
 
@@ -42,6 +43,8 @@ class PAuthGaurd {
     BuildContext context,
     GoRouterState state,
   ) async {
+    final withoutInvitation = await stashInvitation(state.uri);
+    if (withoutInvitation != null) return withoutInvitation;
     if (pController == null) {
       if (Matrix.of(context).client.isLogged()) return null;
       return _loginBounce(state);
@@ -59,6 +62,25 @@ class PAuthGaurd {
     final bool hasSetL2 = await pController!.userController.isUserL2Set;
     if (!hasSetL2) return '/registration';
     return consumeCachedDestination(state.uri);
+  }
+
+  /// A seat invitation link's id (`inv=`, kept by the `/<code>` fold) moves
+  /// into its own ferry entry (SpaceCodeRepo.pendingInvitation) on EVERY
+  /// landing, logged in or out, and leaves the URL: the coded join page
+  /// history-replaces its URL and then navigates to the course, which would
+  /// drop it, and the bounce must not carry it in the destination twice.
+  /// Returns the location without `inv` (the redirect re-runs on it), or null
+  /// when [uri] has none. A different invitation replaces a stored one; a
+  /// malformed id is dropped. It is opened once after sign-in
+  /// (PendingClaimsConsumer).
+  static Future<String?> stashInvitation(Uri uri) async {
+    final location = PRoutes.locationWithoutInvitation(uri);
+    if (location == null) return null;
+    final id = PRoutes.invitationIdIn(uri);
+    if (id != null) {
+      await SpaceCodeRepo.setPendingInvitation(PendingInvitation(id));
+    }
+    return location;
   }
 
   /// The DM invite link's redirect (`/invite_user/:userID`, #8436) — the one

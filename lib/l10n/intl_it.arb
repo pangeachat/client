@@ -10133,5 +10133,15 @@
     "playWithBotNowMessage": "Nessuno si è ancora unito. Pangea Bot può prendere il posto libero ora, oppure puoi continuare ad aspettare.",
     "keepWaiting": "Continua ad aspettare",
     "botTookSeatAfterAnHour": "Questa sessione è rimasta aperta per un'ora, quindi Pangea Bot ha preso il posto libero.",
-    "botTookSeatAfterADay": "Questa sessione è rimasta aperta per più di un giorno, quindi Pangea Bot ha preso il posto libero. Invia un messaggio per iniziare."
+    "botTookSeatAfterADay": "Questa sessione è rimasta aperta per più di un giorno, quindi Pangea Bot ha preso il posto libero. Invia un messaggio per iniziare.",
+    "seatInviteTitle": "Unisciti a {course}",
+    "seatInviteYourCourse": "il tuo corso",
+    "seatInviteEmailHint": "Usa {email} così la tua classe ti trova.",
+    "seatInviteClaimed": "Sei in {course}.",
+    "seatInvitePendingApproval": "In attesa dell'approvazione del tuo insegnante.",
+    "seatInviteDenied": "Il tuo insegnante non ha approvato questo account per il corso. Puoi comunque usare il codice della classe.",
+    "yourTeacher": "Il tuo insegnante",
+    "seatInviteNotLive": "Questo invito non è più disponibile. Puoi comunque usare il codice della classe.",
+    "seatInviteAlreadyClaimed": "Ti sei già unito a questo corso con un altro invito.",
+    "seatInviteFailed": "Non siamo riusciti ad aprire l'invito. Riprova più tardi."
 }

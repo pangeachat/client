@@ -10689,5 +10689,15 @@
     "playWithBotNowMessage": "Nobody has joined yet. Pangea Bot can take the open seat now, or you can keep waiting.",
     "keepWaiting": "Keep waiting",
     "botTookSeatAfterAnHour": "This session was open for an hour, so Pangea Bot took the open seat.",
-    "botTookSeatAfterADay": "This session was open for over a day, so Pangea Bot took the open seat. Send a message to start."
+    "botTookSeatAfterADay": "This session was open for over a day, so Pangea Bot took the open seat. Send a message to start.",
+    "seatInviteTitle": "Join {course}",
+    "seatInviteYourCourse": "your course",
+    "seatInviteEmailHint": "Use {email} so your class finds you.",
+    "seatInviteClaimed": "You're in {course}.",
+    "seatInvitePendingApproval": "Waiting for your teacher to approve.",
+    "seatInviteDenied": "Your teacher didn't approve this account for the course. You can still use the class code.",
+    "yourTeacher": "Your teacher",
+    "seatInviteNotLive": "This invitation is no longer available. You can still use the class code.",
+    "seatInviteAlreadyClaimed": "You already joined this course with another invitation.",
+    "seatInviteFailed": "We couldn't open the invitation. Please try again later."
 }

@@ -10838,5 +10838,15 @@
     "playWithBotNowMessage": "Dar niekas neprisijungė. Pangea Bot gali užimti laisvą vietą dabar, arba galite toliau laukti.",
     "keepWaiting": "Laukti toliau",
     "botTookSeatAfterAnHour": "Ši sesija buvo atidaryta valandą, todėl Pangea Bot užėmė laisvą vietą.",
-    "botTookSeatAfterADay": "Ši sesija buvo atidaryta ilgiau nei dieną, todėl Pangea Bot užėmė laisvą vietą. Norėdami pradėti, atsiųskite žinutę."
+    "botTookSeatAfterADay": "Ši sesija buvo atidaryta ilgiau nei dieną, todėl Pangea Bot užėmė laisvą vietą. Norėdami pradėti, atsiųskite žinutę.",
+    "seatInviteTitle": "Prisijunkite prie {course}",
+    "seatInviteYourCourse": "jūsų kursas",
+    "seatInviteEmailHint": "Naudokite {email}, kad jūsų klasė jus rastų.",
+    "seatInviteClaimed": "Jūs esate {course}.",
+    "seatInvitePendingApproval": "Laukiama mokytojo patvirtinimo.",
+    "seatInviteDenied": "Jūsų mokytojas nepatvirtino šios paskyros kursui. Vis tiek galite naudoti klasės kodą.",
+    "yourTeacher": "Jūsų mokytojas",
+    "seatInviteNotLive": "Šis kvietimas nebegalioja. Vis tiek galite naudoti klasės kodą.",
+    "seatInviteAlreadyClaimed": "Jau prisijungėte prie šio kurso su kitu kvietimu.",
+    "seatInviteFailed": "Nepavyko atidaryti kvietimo. Bandykite dar kartą vėliau."
 }

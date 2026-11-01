@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Weli qofna ma soo biirin. Pangea Bot wuxuu hadda qaadan karaa kursiga bannaan, ama waad sii sugi kartaa.",
     "keepWaiting": "Sii sug",
     "botTookSeatAfterAnHour": "Fadhigan wuxuu furnaa saacad, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan.",
-    "botTookSeatAfterADay": "Fadhigan wuxuu furnaa in ka badan maalin, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan. Fariin u dir si aad u bilowdo."
+    "botTookSeatAfterADay": "Fadhigan wuxuu furnaa in ka badan maalin, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan. Fariin u dir si aad u bilowdo.",
+    "seatInviteTitle": "Ku biir {course}",
+    "seatInviteYourCourse": "koorsadaada",
+    "seatInviteEmailHint": "Isticmaal {email} si fasalkaagu kuu helo.",
+    "seatInviteClaimed": "Waxaad ku jirtaa {course}.",
+    "seatInvitePendingApproval": "Waxaa la sugayaa in macalinkaagu ogolaado.",
+    "seatInviteDenied": "Macalinkaagu ma ogolaan koontadan koorsada. Wali waxaad isticmaali kartaa koodhka fasalka.",
+    "yourTeacher": "Macalinkaaga",
+    "seatInviteNotLive": "Martiqaadkani hadda lama heli karo. Wali waxaad isticmaali kartaa koodhka fasalka.",
+    "seatInviteAlreadyClaimed": "Horay ayaad ugu biirtay koorsadan martiqaad kale.",
+    "seatInviteFailed": "Ma awoodin inaan furno martiqaadka. Fadlan isku day mar dambe."
 }

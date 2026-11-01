@@ -10689,5 +10689,15 @@
     "playWithBotNowMessage": "ยังไม่มีใครเข้าร่วม Pangea Bot สามารถเข้าร่วมตอนนี้ได้เลย หรือคุณจะรอต่อไปก็ได้",
     "keepWaiting": "รอต่อไป",
     "botTookSeatAfterAnHour": "เซสชันนี้เปิดมาหนึ่งชั่วโมงแล้ว Pangea Bot จึงเข้าร่วม",
-    "botTookSeatAfterADay": "เซสชันนี้เปิดมานานกว่าหนึ่งวันแล้ว Pangea Bot จึงเข้าร่วม ส่งข้อความเพื่อเริ่มต้น"
+    "botTookSeatAfterADay": "เซสชันนี้เปิดมานานกว่าหนึ่งวันแล้ว Pangea Bot จึงเข้าร่วม ส่งข้อความเพื่อเริ่มต้น",
+    "seatInviteTitle": "เข้าร่วม {course}",
+    "seatInviteYourCourse": "คอร์สของคุณ",
+    "seatInviteEmailHint": "ใช้ {email} เพื่อให้ชั้นเรียนของคุณหาคุณเจอ",
+    "seatInviteClaimed": "คุณอยู่ใน {course} แล้ว",
+    "seatInvitePendingApproval": "กำลังรอครูของคุณอนุมัติ",
+    "seatInviteDenied": "ครูของคุณไม่อนุมัติบัญชีนี้สำหรับคอร์สนี้ คุณยังคงสามารถใช้รหัสชั้นเรียนได้",
+    "yourTeacher": "ครูของคุณ",
+    "seatInviteNotLive": "คำเชิญนี้ไม่สามารถใช้งานได้แล้ว คุณยังคงสามารถใช้รหัสชั้นเรียนได้",
+    "seatInviteAlreadyClaimed": "คุณเข้าร่วมคอร์สนี้ด้วยคำเชิญอื่นแล้ว",
+    "seatInviteFailed": "เราไม่สามารถเปิดคำเชิญได้ โปรดลองอีกครั้งในภายหลัง"
 }

@@ -11002,5 +11002,15 @@
     "playWithBotNowMessage": "Nihče se še ni pridružil. Pangea Bot lahko zdaj zasede prosto mesto ali pa lahko še naprej čakate.",
     "keepWaiting": "Nadaljuj čakanje",
     "botTookSeatAfterAnHour": "Ta seja je bila odprta eno uro, zato je Pangea Bot zasedel prosto mesto.",
-    "botTookSeatAfterADay": "Ta seja je bila odprta več kot en dan, zato je Pangea Bot zasedel prosto mesto. Pošljite sporočilo za začetek."
+    "botTookSeatAfterADay": "Ta seja je bila odprta več kot en dan, zato je Pangea Bot zasedel prosto mesto. Pošljite sporočilo za začetek.",
+    "seatInviteTitle": "Pridružite se tečaju {course}",
+    "seatInviteYourCourse": "vaš tečaj",
+    "seatInviteEmailHint": "Uporabite {email}, da vas bo razred našel.",
+    "seatInviteClaimed": "Ste v tečaju {course}.",
+    "seatInvitePendingApproval": "Čakamo na odobritev vašega učitelja.",
+    "seatInviteDenied": "Vaš učitelj ni odobril tega računa za tečaj. Še vedno lahko uporabite kodo razreda.",
+    "yourTeacher": "Vaš učitelj",
+    "seatInviteNotLive": "To povabilo ni več na voljo. Še vedno lahko uporabite kodo razreda.",
+    "seatInviteAlreadyClaimed": "S tem povabilom ste se že pridružili temu tečaju.",
+    "seatInviteFailed": "Povabila nismo mogli odpreti. Poskusite znova pozneje."
 }

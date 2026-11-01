@@ -10971,5 +10971,15 @@
     "playWithBotNowMessage": "אף אחד עוד לא הצטרף. בוט Pangea יכול לתפוס את המקום הפנוי עכשיו, או שאתה יכול להמשיך לחכות.",
     "keepWaiting": "המשך לחכות",
     "botTookSeatAfterAnHour": "השיחה הזו הייתה פתוחה במשך שעה, אז בוט Pangea תפס את המקום הפנוי.",
-    "botTookSeatAfterADay": "השיחה הזו הייתה פתוחה למעלה מיום, אז בוט Pangea תפס את המקום הפנוי. שלח הודעה כדי להתחיל."
+    "botTookSeatAfterADay": "השיחה הזו הייתה פתוחה למעלה מיום, אז בוט Pangea תפס את המקום הפנוי. שלח הודעה כדי להתחיל.",
+    "seatInviteTitle": "הצטרף/הצטרפי ל-{course}",
+    "seatInviteYourCourse": "הקורס שלך",
+    "seatInviteEmailHint": "השתמש/י ב-{email} כדי שהכיתה שלך תמצא אותך.",
+    "seatInviteClaimed": "את/ה בתוך {course}.",
+    "seatInvitePendingApproval": "ממתין/ה לאישור המורה שלך.",
+    "seatInviteDenied": "המורה שלך לא אישר/ה את החשבון הזה לקורס. עדיין באפשרותך להשתמש בקוד הכיתה.",
+    "yourTeacher": "המורה שלך",
+    "seatInviteNotLive": "ההזמנה הזו אינה זמינה עוד. עדיין באפשרותך להשתמש בקוד הכיתה.",
+    "seatInviteAlreadyClaimed": "כבר הצטרפת לקורס זה עם הזמנה אחרת.",
+    "seatInviteFailed": "לא הצלחנו לפתוח את ההזמנה. אנא נסה/י שוב מאוחר יותר."
 }

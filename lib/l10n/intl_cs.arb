@@ -10551,5 +10551,15 @@
     "playWithBotNowMessage": "Ještě se nikdo nepřipojil. Pangea Bot může obsadit volné místo hned teď, nebo můžete dál čekat.",
     "keepWaiting": "Pokračovat v čekání",
     "botTookSeatAfterAnHour": "Tato relace byla otevřená hodinu, takže Pangea Bot obsadil volné místo.",
-    "botTookSeatAfterADay": "Tato relace byla otevřená déle než den, takže Pangea Bot obsadil volné místo. Pošlete zprávu pro zahájení."
+    "botTookSeatAfterADay": "Tato relace byla otevřená déle než den, takže Pangea Bot obsadil volné místo. Pošlete zprávu pro zahájení.",
+    "seatInviteTitle": "Připojte se k {course}",
+    "seatInviteYourCourse": "váš kurz",
+    "seatInviteEmailHint": "Použijte {email}, aby vás vaše třída našla.",
+    "seatInviteClaimed": "Jste v kurzu {course}.",
+    "seatInvitePendingApproval": "Čeká se na schválení vaším učitelem.",
+    "seatInviteDenied": "Váš učitel tento účet pro kurz neschválil. Stále můžete použít kód třídy.",
+    "yourTeacher": "Váš učitel",
+    "seatInviteNotLive": "Tato pozvánka již není k dispozici. Stále můžete použít kód třídy.",
+    "seatInviteAlreadyClaimed": "K tomuto kurzu jste se již připojili s jinou pozvánkou.",
+    "seatInviteFailed": "Pozvánku se nepodařilo otevřít. Zkuste to prosím později."
 }

@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Nimu s'hè ancu unitu. U Bot Pangea pò piglià u postu liberu avà, o pudete cuntinuà à aspittà.",
     "keepWaiting": "Cuntinuà à aspittà",
     "botTookSeatAfterAnHour": "Sta sessione hè stata aperta per un'ora, cusì u Bot Pangea hà pigliatu u postu liberu.",
-    "botTookSeatAfterADay": "Sta sessione hè stata aperta per più di un ghjornu, cusì u Bot Pangea hà pigliatu u postu liberu. Mandate un messagiu per principià."
+    "botTookSeatAfterADay": "Sta sessione hè stata aperta per più di un ghjornu, cusì u Bot Pangea hà pigliatu u postu liberu. Mandate un messagiu per principià.",
+    "seatInviteTitle": "Unisciti à {course}",
+    "seatInviteYourCourse": "u vostru corsu",
+    "seatInviteEmailHint": "Aduprate {email} per chì a vostra classa vi trovi.",
+    "seatInviteClaimed": "Site in {course}.",
+    "seatInvitePendingApproval": "Aspittendu l'appruvazione di u vostru prufessore.",
+    "seatInviteDenied": "U vostru prufessore ùn hà micca appruvatu stu contu per u corsu. Pudete sempre aduprà u codice di a classa.",
+    "yourTeacher": "U vostru prufessore",
+    "seatInviteNotLive": "Questa invitazione ùn hè più dispunibule. Pudete sempre aduprà u codice di a classa.",
+    "seatInviteAlreadyClaimed": "Avete digià unitu à stu corsu cù un'altra invitazione.",
+    "seatInviteFailed": "Ùn pudemu micca apre l'invitazione. Per piacè riprovate più tardi."
 }

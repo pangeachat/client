@@ -10187,5 +10187,15 @@
     "playWithBotNowMessage": "Encara no s'ha unit ningú. El bot Pangea pot ocupar el seient lliure ara, o pots seguir esperant.",
     "keepWaiting": "Seguir esperant",
     "botTookSeatAfterAnHour": "Aquesta sessió ha estat oberta durant una hora, així que el bot Pangea ha ocupat el seient lliure.",
-    "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar."
+    "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar.",
+    "seatInviteTitle": "Uneix-te a {course}",
+    "seatInviteYourCourse": "el teu curs",
+    "seatInviteEmailHint": "Fes servir {email} perquè la teva classe et trobi.",
+    "seatInviteClaimed": "Ja ets a {course}.",
+    "seatInvitePendingApproval": "Esperant l'aprovació del teu professor.",
+    "seatInviteDenied": "El teu professor no ha aprovat aquest compte per al curs. Encara pots utilitzar el codi de la classe.",
+    "yourTeacher": "El teu professor",
+    "seatInviteNotLive": "Aquesta invitació ja no està disponible. Encara pots utilitzar el codi de la classe.",
+    "seatInviteAlreadyClaimed": "Ja t'has unit a aquest curs amb una altra invitació.",
+    "seatInviteFailed": "No hem pogut obrir la invitació. Torna-ho a provar més tard."
 }

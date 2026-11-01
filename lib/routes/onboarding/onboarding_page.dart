@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -53,6 +54,14 @@ class OnboardingController extends State<Onboarding> {
         client: client,
         inTrialWindow: MatrixState.pangeaController.userController
             .inTrialWindow(),
+        hasSeat: () =>
+            MatrixState
+                .pangeaController
+                .subscriptionController
+                .subscriptionStatus
+                ?.hasActiveSeat ??
+            false,
+        invitationWaiting: () => SpaceCodeRepo.seatInvitationWaiting,
       ),
       userType: client.selfIdentifiedRole,
     );

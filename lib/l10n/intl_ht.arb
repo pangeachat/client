@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Pèsonn poko rantre. Pangea Bot ka pran plas ki vid la kounye a, oswa ou ka kontinye tann.",
     "keepWaiting": "Kontinye tann",
     "botTookSeatAfterAnHour": "Sesyon sa a te ouvè pandan inèdtan, kidonk Pangea Bot te pran plas ki vid la.",
-    "botTookSeatAfterADay": "Sesyon sa a te ouvè pandan plis pase yon jou, kidonk Pangea Bot te pran plas ki vid la. Voye yon mesaj pou kòmanse."
+    "botTookSeatAfterADay": "Sesyon sa a te ouvè pandan plis pase yon jou, kidonk Pangea Bot te pran plas ki vid la. Voye yon mesaj pou kòmanse.",
+    "seatInviteTitle": "Antre nan {course}",
+    "seatInviteYourCourse": "kou ou",
+    "seatInviteEmailHint": "Itilize {email} pou klas ou a jwenn ou.",
+    "seatInviteClaimed": "Ou nan {course}.",
+    "seatInvitePendingApproval": "N ap tann pwofesè w apwouve.",
+    "seatInviteDenied": "Pwofesè w pa apwouve kont sa a pou kou a. Ou ka toujou itilize kòd klas la.",
+    "yourTeacher": "Pwofesè w",
+    "seatInviteNotLive": "Envitasyon sa a pa disponib ankò. Ou ka toujou itilize kòd klas la.",
+    "seatInviteAlreadyClaimed": "Ou deja antre nan kou sa a ak yon lòt envitasyon.",
+    "seatInviteFailed": "Nou pa t ka ouvri envitasyon an. Tanpri eseye ankò pita."
 }

@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Ħadd ma ngħaqad s'issa. Pangea Bot jista' jieħu s-siġġu vojt issa, jew tista' tibqa' tistenna.",
     "keepWaiting": "Ibqa' stenna",
     "botTookSeatAfterAnHour": "Din is-sessjoni kienet miftuħa għal siegħa, allura Pangea Bot ħa s-siġġu vojt.",
-    "botTookSeatAfterADay": "Din is-sessjoni kienet miftuħa għal aktar minn ġurnata, allura Pangea Bot ħa s-siġġu vojt. Ibgħat messaġġ biex tibda."
+    "botTookSeatAfterADay": "Din is-sessjoni kienet miftuħa għal aktar minn ġurnata, allura Pangea Bot ħa s-siġġu vojt. Ibgħat messaġġ biex tibda.",
+    "seatInviteTitle": "Ingħaqad ma' {course}",
+    "seatInviteYourCourse": "il-kors tiegħek",
+    "seatInviteEmailHint": "Uża {email} biex il-klassi tiegħek issibek.",
+    "seatInviteClaimed": "Inti f'{course}.",
+    "seatInvitePendingApproval": "Qed tistenna l-approvazzjoni tal-għalliem tiegħek.",
+    "seatInviteDenied": "L-għalliem tiegħek ma approvax dan il-kont għall-kors. Xorta tista' tuża l-kodiċi tal-klassi.",
+    "yourTeacher": "L-għalliem tiegħek",
+    "seatInviteNotLive": "Din l-istedina m'għadhiex disponibbli. Xorta tista' tuża l-kodiċi tal-klassi.",
+    "seatInviteAlreadyClaimed": "Diġà ngħaqadt ma' dan il-kors b'istedina oħra.",
+    "seatInviteFailed": "Ma stajniex niftħu l-istedina. Jekk jogħġbok erġa' pprova aktar tard."
 }

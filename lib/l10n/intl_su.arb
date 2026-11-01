@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Teu acan aya nu ngagabung. Pangea Bot tiasa nyandak korsi kosong ayeuna, atanapi anjeun tiasa teras ngantosan.",
     "keepWaiting": "Teraskeun ngantosan",
     "botTookSeatAfterAnHour": "Sési ieu dibuka sajam, janten Pangea Bot nyandak korsi kosong.",
-    "botTookSeatAfterADay": "Sési ieu dibuka langkung ti sadinten, janten Pangea Bot nyandak korsi kosong. Kirim pesen pikeun ngamimitian."
+    "botTookSeatAfterADay": "Sési ieu dibuka langkung ti sadinten, janten Pangea Bot nyandak korsi kosong. Kirim pesen pikeun ngamimitian.",
+    "seatInviteTitle": "Gabung {course}",
+    "seatInviteYourCourse": "kursus anjeun",
+    "seatInviteEmailHint": "Anggo {email} supados kelas anjeun mendakan anjeun.",
+    "seatInviteClaimed": "Anjeun parantos gabung {course}.",
+    "seatInvitePendingApproval": "Ngantosan guru anjeun nyatujuan.",
+    "seatInviteDenied": "Guru anjeun henteu nyatujuan akun ieu pikeun kursus. Anjeun masih tiasa nganggo kode kelas.",
+    "yourTeacher": "Guru anjeun",
+    "seatInviteNotLive": "Uleman ieu henteu sayogi deui. Anjeun masih tiasa nganggo kode kelas.",
+    "seatInviteAlreadyClaimed": "Anjeun parantos gabung kursus ieu nganggo uleman sanés.",
+    "seatInviteFailed": "Kami henteu tiasa muka uleman. Punten cobian deui engké."
 }

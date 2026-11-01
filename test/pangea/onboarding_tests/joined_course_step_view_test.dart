@@ -241,6 +241,48 @@ void main() {
     expect(find.textContaining('module'), findsNothing);
   });
 
+  // Owner decision 2026-10-28 (hand test): the page names no inviter. It
+  // picked an arbitrary course admin, so a student invited by one teacher
+  // was greeted with another's name. It now just says "Your teacher".
+  testWidgets('a course teacher is shown as "Your teacher", not by name', (
+    tester,
+  ) async {
+    seedOutline();
+    final space = client.getRoomById(spaceId)!;
+    Event state(String type, String stateKey, Map<String, Object?> content) =>
+        Event(
+          type: type,
+          content: content,
+          stateKey: stateKey,
+          senderId: '@coteacher:fakeServer.notExisting',
+          eventId: '\$$type$stateKey',
+          originServerTs: DateTime.utc(2026, 1, 1),
+          room: space,
+        );
+    space.setState(
+      state('m.room.member', '@coteacher:fakeServer.notExisting', {
+        'membership': 'join',
+        'displayname': 'Coteacher Chen',
+      }),
+    );
+    space.setState(
+      state('m.room.power_levels', '', {
+        'users': {'@coteacher:fakeServer.notExisting': 100},
+      }),
+    );
+    addTearDown(() {
+      space.states.remove('m.room.power_levels');
+      space.states['m.room.member']?.remove(
+        '@coteacher:fakeServer.notExisting',
+      );
+    });
+
+    await pumpPage(tester, course: quest());
+
+    expect(find.text('Your teacher'), findsOneWidget);
+    expect(find.text('Coteacher Chen'), findsNothing);
+  });
+
   // After the level step a learner with no class code chooses between their
   // language's central course and a private course of their own; the page
   // says the course's members can see them (joining-courses.instructions.md

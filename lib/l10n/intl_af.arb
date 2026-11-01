@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Niemand het nog aangesluit nie. Pangea Bot kan nou die oop plek inneem, of jy kan aanhou wag.",
     "keepWaiting": "Hou aan wag",
     "botTookSeatAfterAnHour": "Hierdie sessie was vir 'n uur oop, so Pangea Bot het die oop plek ingeneem.",
-    "botTookSeatAfterADay": "Hierdie sessie was vir meer as 'n dag oop, so Pangea Bot het die oop plek ingeneem. Stuur 'n boodskap om te begin."
+    "botTookSeatAfterADay": "Hierdie sessie was vir meer as 'n dag oop, so Pangea Bot het die oop plek ingeneem. Stuur 'n boodskap om te begin.",
+    "seatInviteTitle": "Sluit aan by {course}",
+    "seatInviteYourCourse": "jou kursus",
+    "seatInviteEmailHint": "Gebruik {email} sodat jou klas jou kan vind.",
+    "seatInviteClaimed": "Jy is in {course}.",
+    "seatInvitePendingApproval": "Wag vir jou onderwyser om goed te keur.",
+    "seatInviteDenied": "Jou onderwyser het nie hierdie rekening vir die kursus goedgekeur nie. Jy kan steeds die klaskode gebruik.",
+    "yourTeacher": "Jou onderwyser",
+    "seatInviteNotLive": "Hierdie uitnodiging is nie meer beskikbaar nie. Jy kan steeds die klaskode gebruik.",
+    "seatInviteAlreadyClaimed": "Jy het reeds by hierdie kursus aangesluit met 'n ander uitnodiging.",
+    "seatInviteFailed": "Ons kon nie die uitnodiging oopmaak nie. Probeer asseblief later weer."
 }

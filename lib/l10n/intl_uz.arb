@@ -10064,5 +10064,15 @@
     "playWithBotNowMessage": "Hali hech kim qo‘shilmadi. Pangea Bot hozir bo‘sh o‘rinni egallashi mumkin yoki kutishda davom etishingiz mumkin.",
     "keepWaiting": "Kutishda davom etish",
     "botTookSeatAfterAnHour": "Bu sessiya bir soat davomida ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi.",
-    "botTookSeatAfterADay": "Bu sessiya bir kundan ortiq ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi. Boshlash uchun xabar yuboring."
+    "botTookSeatAfterADay": "Bu sessiya bir kundan ortiq ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi. Boshlash uchun xabar yuboring.",
+    "seatInviteTitle": "{course}ga qo‘shiling",
+    "seatInviteYourCourse": "kursingiz",
+    "seatInviteEmailHint": "Sinfingiz sizni topishi uchun {email}dan foydalaning.",
+    "seatInviteClaimed": "Siz {course}dasiz.",
+    "seatInvitePendingApproval": "O‘qituvchingiz tasdiqlashini kuting.",
+    "seatInviteDenied": "O‘qituvchingiz ushbu hisobni kursga tasdiqlamadi. Siz baribir sinf kodidan foydalanishingiz mumkin.",
+    "yourTeacher": "Sizning o‘qituvchingiz",
+    "seatInviteNotLive": "Ushbu taklif endi mavjud emas. Siz baribir sinf kodidan foydalanishingiz mumkin.",
+    "seatInviteAlreadyClaimed": "Siz allaqachon boshqa taklifnoma bilan ushbu kursga qo‘shilgansiz.",
+    "seatInviteFailed": "Taklifnomani ochib bo‘lmadi. Iltimos, keyinroq qayta urinib ko‘ring."
 }

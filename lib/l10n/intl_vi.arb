@@ -7367,5 +7367,15 @@
     "playWithBotNowMessage": "Chưa có ai tham gia. Pangea Bot có thể nhận chỗ trống ngay bây giờ, hoặc bạn có thể tiếp tục chờ đợi.",
     "keepWaiting": "Tiếp tục chờ đợi",
     "botTookSeatAfterAnHour": "Phiên này đã mở được một giờ, vì vậy Pangea Bot đã nhận chỗ trống.",
-    "botTookSeatAfterADay": "Phiên này đã mở hơn một ngày, vì vậy Pangea Bot đã nhận chỗ trống. Gửi tin nhắn để bắt đầu."
+    "botTookSeatAfterADay": "Phiên này đã mở hơn một ngày, vì vậy Pangea Bot đã nhận chỗ trống. Gửi tin nhắn để bắt đầu.",
+    "seatInviteTitle": "Tham gia {course}",
+    "seatInviteYourCourse": "khóa học của bạn",
+    "seatInviteEmailHint": "Sử dụng {email} để lớp học của bạn tìm thấy bạn.",
+    "seatInviteClaimed": "Bạn đã tham gia {course}.",
+    "seatInvitePendingApproval": "Đang chờ giáo viên của bạn phê duyệt.",
+    "seatInviteDenied": "Giáo viên của bạn không chấp thuận tài khoản này cho khóa học. Bạn vẫn có thể sử dụng mã lớp học.",
+    "yourTeacher": "Giáo viên của bạn",
+    "seatInviteNotLive": "Lời mời này không còn khả dụng. Bạn vẫn có thể sử dụng mã lớp học.",
+    "seatInviteAlreadyClaimed": "Bạn đã tham gia khóa học này bằng một lời mời khác.",
+    "seatInviteFailed": "Chúng tôi không thể mở lời mời. Vui lòng thử lại sau."
 }

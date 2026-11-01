@@ -10057,5 +10057,15 @@
     "playWithBotNowMessage": "Keegi pole veel liitunud. Pangea Bot saab nüüd vaba koha võtta või võite oodata.",
     "keepWaiting": "Jätka ootamist",
     "botTookSeatAfterAnHour": "See seanss oli tund aega avatud, nii et Pangea Bot võttis vaba koha.",
-    "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum."
+    "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum.",
+    "seatInviteTitle": "Liitu kursusega {course}",
+    "seatInviteYourCourse": "sinu kursus",
+    "seatInviteEmailHint": "Kasuta e-posti aadressi {email}, et klass sind leiaks.",
+    "seatInviteClaimed": "Oled kursusel {course}.",
+    "seatInvitePendingApproval": "Ootab õpetaja heakskiitu.",
+    "seatInviteDenied": "Sinu õpetaja ei kinnitanud seda kontot kursusele. Saad siiski kasutada klassikoodi.",
+    "yourTeacher": "Sinu õpetaja",
+    "seatInviteNotLive": "See kutse pole enam saadaval. Saad siiski kasutada klassikoodi.",
+    "seatInviteAlreadyClaimed": "Oled juba selle kursusega liitunud teise kutsega.",
+    "seatInviteFailed": "Kutset ei õnnestunud avada. Palun proovi hiljem uuesti."
 }

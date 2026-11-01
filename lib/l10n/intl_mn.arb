@@ -2522,5 +2522,15 @@
     "playWithBotNowMessage": "Одоогоор хэн ч нэгдээгүй байна. Pangea Bot одоо сул суудалд суух боломжтой, эсвэл та хүлээсээр байж болно.",
     "keepWaiting": "Хүлээсээр байх",
     "botTookSeatAfterAnHour": "Энэ хуралдаан нэг цаг нээлттэй байсан тул Pangea Bot сул суудалд суусан.",
-    "botTookSeatAfterADay": "Энэ хуралдаан нэг өдрөөс илүү нээлттэй байсан тул Pangea Bot сул суудалд суусан. Эхлүүлэхийн тулд мессеж илгээнэ үү."
+    "botTookSeatAfterADay": "Энэ хуралдаан нэг өдрөөс илүү нээлттэй байсан тул Pangea Bot сул суудалд суусан. Эхлүүлэхийн тулд мессеж илгээнэ үү.",
+    "seatInviteTitle": "{course}-д нэгдээрэй",
+    "seatInviteYourCourse": "таны хичээл",
+    "seatInviteEmailHint": "Анги таныг олохын тулд {email}-г ашиглана уу.",
+    "seatInviteClaimed": "Та {course}-д нэгдлээ.",
+    "seatInvitePendingApproval": "Багшаасаа зөвшөөрөл хүлээж байна.",
+    "seatInviteDenied": "Таны багш энэ бүртгэлийг хичээлд зөвшөөрөөгүй. Та ангийн кодыг ашиглаж болно.",
+    "yourTeacher": "Таны багш",
+    "seatInviteNotLive": "Энэ урилга хүчингүй болсон. Та ангийн кодыг ашиглаж болно.",
+    "seatInviteAlreadyClaimed": "Та энэ хичээлд өөр урилгаар аль хэдийн нэгдсэн байна.",
+    "seatInviteFailed": "Урилгыг нээж чадсангүй. Дараа дахин оролдоно уу."
 }
