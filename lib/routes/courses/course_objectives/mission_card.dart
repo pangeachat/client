@@ -232,20 +232,13 @@ class MissionCard extends StatelessWidget {
                 runSpacing: 4.0,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
+                  // A placed Mission is named by its city (org quests doc,
+                  // "A course is a trip"), a lock marking one not yet open,
+                  // with Focus beside it; one not yet placed by its number.
                   if (index != null)
-                    Text(
-                      l10n.missionNumber(index).toUpperCase(),
-                      style: theme.textTheme.labelMedium?.copyWith(
-                        color: scheme.primary,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 1.0,
-                      ),
-                    ),
-                  // The Mission's city (org quests doc, "A course is a
-                  // trip"), with Focus beside it.
-                  if (group.pacing?.city case final city?)
-                    _CityChip(
-                      name: city.name,
+                    _MissionLabel(
+                      index: index,
+                      city: group.pacing?.city?.name,
                       closed: closed,
                       onFocus: onFocus,
                     ),
@@ -578,59 +571,55 @@ class _CountChip extends StatelessWidget {
 /// The Mission's city (org quests doc, "A course is a trip") as a chip like
 /// the due date's, with Focus beside it: the map fades to the Mission's
 /// pinned activities, never pans or zooms (org course-view doc).
-class _CityChip extends StatelessWidget {
-  final String name;
+class _MissionLabel extends StatelessWidget {
+  final int index;
+  final String? city;
   final bool closed;
   final VoidCallback? onFocus;
-  const _CityChip({required this.name, required this.closed, this.onFocus});
+  const _MissionLabel({
+    required this.index,
+    required this.city,
+    required this.closed,
+    this.onFocus,
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
     final l10n = L10n.of(context);
-    final chip = Container(
-      padding: const EdgeInsetsDirectional.fromSTEB(6.0, 2.0, 8.0, 2.0),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerHigh,
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: Text.rich(
-        TextSpan(
-          children: [
-            WidgetSpan(
-              alignment: PlaceholderAlignment.middle,
-              child: Padding(
-                padding: const EdgeInsetsDirectional.only(end: 4.0),
-                child: Icon(
-                  closed ? Icons.lock_outline : Icons.place_outlined,
-                  size: 14.0,
-                  color: theme.colorScheme.onSurfaceVariant,
-                ),
-              ),
-            ),
-            TextSpan(text: name),
-          ],
-        ),
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: theme.textTheme.labelMedium?.copyWith(
-          color: theme.colorScheme.onSurfaceVariant,
-        ),
+    final city = this.city;
+    final label = Text(
+      (city ?? l10n.missionNumber(index)).toUpperCase(),
+      // The number stays in the accessible name, since the circles and
+      // the full plan still count Missions.
+      semanticsLabel: city == null
+          ? null
+          : '${l10n.missionNumber(index)}, $city',
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: theme.textTheme.labelMedium?.copyWith(
+        color: scheme.primary,
+        fontWeight: FontWeight.w800,
+        letterSpacing: 1.0,
       ),
     );
+    if (city == null) return label;
     final onFocus = this.onFocus;
-    if (onFocus == null) return chip;
     return Row(
       mainAxisSize: MainAxisSize.min,
       spacing: 2.0,
       children: [
-        chip,
-        IconButton(
-          tooltip: l10n.focusMission,
-          icon: const Icon(Icons.my_location, size: 18.0),
-          visualDensity: VisualDensity.compact,
-          onPressed: onFocus,
-        ),
+        Flexible(child: label),
+        if (closed)
+          Icon(Icons.lock_outline, size: 14.0, color: scheme.onSurfaceVariant),
+        if (onFocus != null)
+          IconButton(
+            tooltip: l10n.focusMission,
+            icon: const Icon(Icons.my_location, size: 18.0),
+            visualDensity: VisualDensity.compact,
+            onPressed: onFocus,
+          ),
       ],
     );
   }

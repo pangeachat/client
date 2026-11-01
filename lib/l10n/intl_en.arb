@@ -5221,7 +5221,7 @@
     "announcementsChatDetails": "A place for course admins to create announcements for course participants. While all may view this channel, only admins can type in it.",
     "introChatDesc": "Anyone in the course can post.",
     "announcementsChatDesc": "Only course admins can post.",
-    "mapSearchHint": "Search activities",
+    "mapSearchHint": "Search public courses",
     "coursePreview": "Course preview",
     "mapFilterAllLanguages": "All languages",
     "mapFilterNotStarted": "Not started",
@@ -6128,6 +6128,54 @@
     "classLocation": "Class location",
     "@classLocation": {
         "description": "Above the Mission circle the teacher's due dates say the class is on now."
+    },
+    "worldShipLabel": "{course}, a course at {city}",
+    "@worldShipLabel": {
+        "description": "World map: a ship marker, one course at the city its trip has reached; tapping opens the course.",
+        "placeholders": {
+            "course": {"type": "String"},
+            "city": {"type": "String"}
+        }
+    },
+    "worldPublicShipLabel": "{course}, a public course at {city}, open to join",
+    "@worldPublicShipLabel": {
+        "placeholders": {
+            "course": {"type": "String"},
+            "city": {"type": "String"}
+        }
+    },
+    "worldCardClose": "Close the {name} card",
+    "@worldCardClose": {"placeholders": {"name": {"type": "String"}}},
+    "worldCardSlide": "{index} of {count}",
+    "@worldCardSlide": {"placeholders": {"index": {"type": "int"}, "count": {"type": "int"}}},
+    "worldCardPrevious": "Previous activity",
+    "worldCardNext": "Next activity",
+    "worldCityNothingHere": "Nothing here for this language yet.",
+    "worldExploreCity": "Explore",
+    "worldShipAtCity": "At {city}",
+    "@worldShipAtCity": {"placeholders": {"city": {"type": "String"}}},
+    "worldShipRunBy": "Run by {admins}",
+    "@worldShipRunBy": {"placeholders": {"admins": {"type": "String"}}},
+    "worldShipRunByPangea": "Run by Pangea",
+    "worldShipMembers": "{count, plural, =1{1 member} other{{count} members}}",
+    "@worldShipMembers": {"placeholders": {"count": {"type": "int"}}},
+    "worldShipOpenCourse": "Open course",
+    "worldCityLockedLabel": "{city}, not open to you yet",
+    "@worldCityLockedLabel": {"placeholders": {"city": {"type": "String"}}},
+    "worldCityNoCourseHere": "Join a course here to explore it",
+    "worldCityLabel": "{city}",
+    "@worldCityLabel": {
+        "description": "World map: a city marker on one of the learner's trips; tapping zooms into the city.",
+        "placeholders": {
+            "city": {"type": "String"}
+        }
+    },
+    "worldCityVisitedLabel": "{city}, visited",
+    "@worldCityVisitedLabel": {
+        "description": "World map: a city marker wearing the gold stamp because the learner finished an activity there.",
+        "placeholders": {
+            "city": {"type": "String"}
+        }
     },
     "focusMission": "Focus on this Mission's activities",
     "@focusMission": {

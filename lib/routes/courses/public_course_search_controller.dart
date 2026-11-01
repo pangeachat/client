@@ -77,49 +77,14 @@ class PublicCourseSearchController
       accessFilter.value.includes,
     );
 
-    // filter by search term
-    List<PublicCoursesChunk> filtered = accessibleCourses.toList();
-    final searchText = searchController.text.trim().toLowerCase();
-    if (searchText.isNotEmpty) {
-      filtered = filtered.where((chunk) {
-        final course = _coursePlans[chunk.courseId];
-        if (course == null) return false;
-        final name = chunk.room.name?.toLowerCase() ?? '';
-        return name.contains(searchText);
-      }).toList();
-    }
-
-    // sort by
-    // 1) beginning matching search term
-    // 2) number of participants
-    // 3) join rule (public > knock)
-    filtered.sort((a, b) {
-      final searchText = searchController.text.trim().toLowerCase();
-
-      if (searchText.isNotEmpty) {
-        final aName = a.room.name?.toLowerCase() ?? '';
-        final bName = b.room.name?.toLowerCase() ?? '';
-
-        final aStartsWith = aName.startsWith(searchText);
-        final bStartsWith = bName.startsWith(searchText);
-
-        if (aStartsWith && !bStartsWith) return -1;
-        if (!aStartsWith && bStartsWith) return 1;
-      }
-
-      final participantsDiff =
-          b.room.numJoinedMembers - a.room.numJoinedMembers;
-      if (participantsDiff != 0) return participantsDiff;
-
-      if (a.room.joinRule == JoinRules.public.name &&
-          b.room.joinRule == JoinRules.knock.name) {
-        return -1;
-      } else if (a.room.joinRule == JoinRules.knock.name &&
-          b.room.joinRule == JoinRules.public.name) {
-        return 1;
-      }
-      return 0;
-    });
+    // The shared name match and order (public_course_extension.dart).
+    final filtered = rankCoursesByName(
+      accessibleCourses,
+      searchController.text,
+      name: (c) => c.room.name ?? '',
+      members: (c) => c.room.numJoinedMembers,
+      joinRule: (c) => c.room.joinRule,
+    );
 
     return filtered;
   }

@@ -87,6 +87,10 @@ class PangeaEventTypes {
   /// homeserver (pangeachat/.github#780). `{stop, from_stop, since}`.
   static const coursePosition = "pangea.course_position";
 
+  /// The course's affiliated institution, set by a course admin from the
+  /// admin dashboard: `{"name": ..., "id"?: "ror:…" | "nces:…"}`.
+  static const courseInstitution = "pangea.course_institution";
+
   /// The Missions a teacher opened for one student ahead of the itinerary
   /// (state key: the student's user id). `{open: [<Mission id>]}`.
   static const courseAccess = "pangea.course_access";

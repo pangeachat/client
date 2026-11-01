@@ -311,6 +311,9 @@ class WorldMapPinsManager {
   /// current language — what a played card's coin shows (#9559).
   int? activityXpEarned(String activityId) => _xpByActivity[activityId];
 
+  /// Every played activity's XP at once, for the world view's city dots.
+  Map<String, int> get xpByActivity => _xpByActivity;
+
   /// Activity ids the learner has earned at least one goal in — the trail the
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
   Set<String> get progressedActivityIds => {
