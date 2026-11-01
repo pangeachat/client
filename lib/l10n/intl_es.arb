@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-29 12:07:25.325781",
+    "@@last_modified": "2026-11-01 09:54:06.776377",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7220,7 +7220,6 @@
     "addCourseBrowsePublic": "Explorar cursos públicos",
     "browsePublicCourses": "Explorar cursos públicos",
     "editProfile": "Editar perfil",
-    "mapSearchHint": "Buscar actividades",
     "mapFilterAllLanguages": "Todos los idiomas",
     "mapFilterNotStarted": "No iniciado",
     "mapFilterInProgress": "En progreso",
@@ -8300,5 +8299,20 @@
     "playWithBotNowMessage": "Nadie se ha unido todavía. Pangea Bot puede ocupar el asiento ahora, o puedes seguir esperando.",
     "keepWaiting": "Seguir esperando",
     "botTookSeatAfterAnHour": "Esta sesión estuvo abierta durante una hora, así que Pangea Bot ocupó el asiento.",
-    "botTookSeatAfterADay": "Esta sesión estuvo abierta durante más de un día, así que Pangea Bot ocupó el asiento. Envía un mensaje para empezar."
+    "botTookSeatAfterADay": "Esta sesión estuvo abierta durante más de un día, así que Pangea Bot ocupó el asiento. Envía un mensaje para empezar.",
+    "worldPublicShipLabel": "{course}, un curso público en {city}, abierto para unirse",
+    "worldCardClose": "Cerrar la tarjeta de {name}",
+    "worldCardSlide": "{index} de {count}",
+    "worldCardPrevious": "Actividad anterior",
+    "worldCardNext": "Siguiente actividad",
+    "worldCityNothingHere": "Todavía no hay nada aquí para este idioma.",
+    "worldExploreCity": "Explorar",
+    "worldShipAtCity": "En {city}",
+    "worldShipRunBy": "Dirigido por {admins}",
+    "worldShipRunByPangea": "Dirigido por Pangea",
+    "worldShipMembers": "{count, plural, =1{1 miembro} other{{count} miembros}}",
+    "worldShipOpenCourse": "Curso abierto",
+    "worldCityLockedLabel": "{city}, aún no está abierto para ti",
+    "worldCityNoCourseHere": "Únete a un curso aquí para explorarlo",
+    "mapSearchHint": "Buscar cursos públicos"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-10-29 12:07:28.424444",
+    "@@last_modified": "2026-11-01 09:54:10.279890",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Eng Plaz fir Cours-Administrateuren, fir Ukënnegungen fir Cours-Participanten ze maachen. Och wann all dëse Kanal kucke kënnen, kënnen nëmmen Administrateuren dra schreiwen.",
     "introChatDesc": "Jiddereen am Cours kann posten.",
     "announcementsChatDesc": "Nëmmen Cours-Administrateuren kënne posten.",
-    "mapSearchHint": "Aktivitéiten sichen",
     "mapFilterAllLanguages": "All Sproochen",
     "mapFilterNotStarted": "Net ugefaangen",
     "mapFilterInProgress": "Am Gaang",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Nach keen huet matgemaach. De Pangea Bot kann elo de fräie Sëtz huelen, oder Dir kënnt weider waarden.",
     "keepWaiting": "Weider waarden",
     "botTookSeatAfterAnHour": "Dës Sessioun war eng Stonn laang op, dofir huet de Pangea Bot de fräie Sëtz geholl.",
-    "botTookSeatAfterADay": "Dës Sessioun war iwwer een Dag laang op, dofir huet de Pangea Bot de fräie Sëtz geholl. Schéckt eng Noriicht fir unzefänken."
+    "botTookSeatAfterADay": "Dës Sessioun war iwwer een Dag laang op, dofir huet de Pangea Bot de fräie Sëtz geholl. Schéckt eng Noriicht fir unzefänken.",
+    "worldPublicShipLabel": "{course}, en ëffentleche Cours zu {city}, op fir matzemaachen",
+    "worldCardClose": "D'Kaart {name} zoumaachen",
+    "worldCardSlide": "{index} vun {count}",
+    "worldCardPrevious": "Vireg Aktivitéit",
+    "worldCardNext": "Nächst Aktivitéit",
+    "worldCityNothingHere": "Nach näischt hei fir dës Sprooch.",
+    "worldExploreCity": "Entdecken",
+    "worldShipAtCity": "Zu {city}",
+    "worldShipRunBy": "Geleet vun {admins}",
+    "worldShipRunByPangea": "Geleet vu Pangea",
+    "worldShipMembers": "{count, plural, =1{1 Member} other{{count} Memberen}}",
+    "worldShipOpenCourse": "Oppene Cours",
+    "worldCityLockedLabel": "{city}, nach net fir dech op",
+    "worldCityNoCourseHere": "Maach hei bei engem Cours mat fir en z'entdecken",
+    "mapSearchHint": "Ëffentlech Coursen sichen"
 }

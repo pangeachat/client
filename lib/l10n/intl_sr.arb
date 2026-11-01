@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 12:07:31.971405",
+    "@@last_modified": "2026-11-01 09:54:13.260647",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -9933,7 +9933,6 @@
     "addCourseBrowsePublic": "Pretraži javne kurseve",
     "browsePublicCourses": "Pretraži javne kurseve",
     "editProfile": "Izmeni profil",
-    "mapSearchHint": "Pretraži aktivnosti",
     "mapFilterAllLanguages": "Svi jezici",
     "mapFilterNotStarted": "Nije započeto",
     "mapFilterInProgress": "U toku",
@@ -11017,5 +11016,20 @@
     "playWithBotNowMessage": "Još niko se nije pridružio. Pangea Bot može zauzeti slobodno mesto sada, ili možete nastaviti da čekate.",
     "keepWaiting": "Nastavi čekati",
     "botTookSeatAfterAnHour": "Ova sesija je bila otvorena sat vremena, tako da je Pangea Bot zauzeo slobodno mesto.",
-    "botTookSeatAfterADay": "Ova sesija je bila otvorena više od jednog dana, tako da je Pangea Bot zauzeo slobodno mesto. Pošaljite poruku da započnete."
+    "botTookSeatAfterADay": "Ova sesija je bila otvorena više od jednog dana, tako da je Pangea Bot zauzeo slobodno mesto. Pošaljite poruku da započnete.",
+    "worldPublicShipLabel": "{course}, javni kurs u {city}, otvoren za pridruživanje",
+    "worldCardClose": "Zatvorite karticu {name}",
+    "worldCardSlide": "{index} od {count}",
+    "worldCardPrevious": "Prethodna aktivnost",
+    "worldCardNext": "Sledeća aktivnost",
+    "worldCityNothingHere": "Još uvek nema ničega ovde za ovaj jezik.",
+    "worldExploreCity": "Istražite",
+    "worldShipAtCity": "U {city}",
+    "worldShipRunBy": "Vodi {admins}",
+    "worldShipRunByPangea": "Vodi Pangea",
+    "worldShipMembers": "{count, plural, =1{1 član} other{{count} članova}}",
+    "worldShipOpenCourse": "Otvoren kurs",
+    "worldCityLockedLabel": "{city}, još uvek vam nije otvoren",
+    "worldCityNoCourseHere": "Pridružite se kursu ovde da biste ga istražili",
+    "mapSearchHint": "Pretražite javne kurseve"
 }

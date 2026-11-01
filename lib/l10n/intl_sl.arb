@@ -1795,7 +1795,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-29 12:07:31.838997",
+    "@@last_modified": "2026-11-01 09:54:12.925353",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9929,7 +9929,6 @@
     "addCourseBrowsePublic": "Brskajte po javnih tečajih",
     "browsePublicCourses": "Brskajte po javnih tečajih",
     "editProfile": "Uredi profil",
-    "mapSearchHint": "Išči aktivnosti",
     "mapFilterAllLanguages": "Vsi jeziki",
     "mapFilterNotStarted": "Ni začeto",
     "mapFilterInProgress": "V teku",
@@ -11013,5 +11012,20 @@
     "playWithBotNowMessage": "Nihče se še ni pridružil. Pangea Bot lahko zdaj zasede prosto mesto ali pa lahko še naprej čakate.",
     "keepWaiting": "Nadaljuj čakanje",
     "botTookSeatAfterAnHour": "Ta seja je bila odprta eno uro, zato je Pangea Bot zasedel prosto mesto.",
-    "botTookSeatAfterADay": "Ta seja je bila odprta več kot en dan, zato je Pangea Bot zasedel prosto mesto. Pošljite sporočilo za začetek."
+    "botTookSeatAfterADay": "Ta seja je bila odprta več kot en dan, zato je Pangea Bot zasedel prosto mesto. Pošljite sporočilo za začetek.",
+    "worldPublicShipLabel": "{course}, javni tečaj v mestu {city}, odprt za pridružitev",
+    "worldCardClose": "Zapri kartico {name}",
+    "worldCardSlide": "{index} od {count}",
+    "worldCardPrevious": "Prejšnja aktivnost",
+    "worldCardNext": "Naslednja aktivnost",
+    "worldCityNothingHere": "Za ta jezik še ni nič tukaj.",
+    "worldExploreCity": "Razišči",
+    "worldShipAtCity": "V mestu {city}",
+    "worldShipRunBy": "Vodi {admins}",
+    "worldShipRunByPangea": "Vodi Pangea",
+    "worldShipMembers": "{count, plural, =1{1 član} other{{count} članov}}",
+    "worldShipOpenCourse": "Odpri tečaj",
+    "worldCityLockedLabel": "{city}, še ni odprto za vas",
+    "worldCityNoCourseHere": "Pridružite se tečaju tukaj, da ga raziščete",
+    "mapSearchHint": "Iskanje javnih tečajev"
 }

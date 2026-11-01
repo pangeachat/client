@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-29 12:07:32.661794",
+    "@@last_modified": "2026-11-01 09:54:14.103389",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Ҷой барои администраторони курс барои эҷоди эъломияҳо барои иштирокчиёни курс. Ҳарчанд ҳама метавонанд ин каналро бубинанд, танҳо администраторҳо метавонанд дар он нависанд.",
     "introChatDesc": "Ҳар кас дар курс метавонад паём фиристад.",
     "announcementsChatDesc": "Танҳо администраторони курс метавонанд паём фиристанд.",
-    "mapSearchHint": "Фаъолиятҳоро ҷустуҷӯ кунед",
     "mapFilterAllLanguages": "Ҳама забонҳо",
     "mapFilterNotStarted": "Оғоз нашудааст",
     "mapFilterInProgress": "Дар ҳоли иҷро",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Ҳанӯз касе ҳамроҳ нашудааст. Pangea Bot метавонад ҳозир ҷои холиро ишғол кунад, ё шумо метавонед интизор шавед.",
     "keepWaiting": "Интизор шавед",
     "botTookSeatAfterAnHour": "Ин сессия як соат боз кушода буд, аз ин рӯ Pangea Bot ҷои холиро ишғол кард.",
-    "botTookSeatAfterADay": "Ин сессия зиёда аз як рӯз боз кушода буд, аз ин рӯ Pangea Bot ҷои холиро ишғол кард. Барои оғоз паём фиристед."
+    "botTookSeatAfterADay": "Ин сессия зиёда аз як рӯз боз кушода буд, аз ин рӯ Pangea Bot ҷои холиро ишғол кард. Барои оғоз паём фиристед.",
+    "worldPublicShipLabel": "{course}, як курси оммавӣ дар {city}, барои ҳамроҳ шудан кушода аст",
+    "worldCardClose": "Корти {name}-ро пӯшед",
+    "worldCardSlide": "{index} аз {count}",
+    "worldCardPrevious": "Фаъолияти қаблӣ",
+    "worldCardNext": "Фаъолияти навбатӣ",
+    "worldCityNothingHere": "Ҳанӯз дар ин ҷо барои ин забон чизе нест.",
+    "worldExploreCity": "Кашф кунед",
+    "worldShipAtCity": "Дар {city}",
+    "worldShipRunBy": "Аз ҷониби {admins} идора мешавад",
+    "worldShipRunByPangea": "Аз ҷониби Pangea идора мешавад",
+    "worldShipMembers": "{count, plural, =1{1 аъзо} other{{count} аъзо}}",
+    "worldShipOpenCourse": "Курси кушода",
+    "worldCityLockedLabel": "{city}, ҳанӯз барои шумо кушода нест",
+    "worldCityNoCourseHere": "Барои кашф кардани он ба як курс дар ин ҷо ҳамроҳ шавед",
+    "mapSearchHint": "Курсҳои оммавиро ҷустуҷӯ кунед"
 }

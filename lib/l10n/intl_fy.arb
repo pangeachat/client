@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-29 12:07:25.886180",
+    "@@last_modified": "2026-11-01 09:54:08.036336",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "In plak foar kursusadmins om meidielings te meitsjen foar kursusdielnimmers. Wylst elkenien dit kanaal besjen kin, kinne allinnich admins deryn type.",
     "introChatDesc": "Elkenien yn de kursus kin poste.",
     "announcementsChatDesc": "Allinnich kursusadmins kinne poste.",
-    "mapSearchHint": "Sykje aktiviteiten",
     "mapFilterAllLanguages": "Alle talen",
     "mapFilterNotStarted": "Net begûn",
     "mapFilterInProgress": "Mee dwaande",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Der hat noch nimmen meidien. Pangea Bot kin no de iepen plak ynnimme, of jo kinne wachtsje bliuwe.",
     "keepWaiting": "Wachtsje bliuwe",
     "botTookSeatAfterAnHour": "Dizze sesje wie in oere iepen, dus Pangea Bot hat de iepen plak ynnommen.",
-    "botTookSeatAfterADay": "Dizze sesje wie mear as in dei iepen, dus Pangea Bot hat de iepen plak ynnommen. Stjoer in berjocht om te begjinnen."
+    "botTookSeatAfterADay": "Dizze sesje wie mear as in dei iepen, dus Pangea Bot hat de iepen plak ynnommen. Stjoer in berjocht om te begjinnen.",
+    "worldPublicShipLabel": "{course}, in iepenbiere kursus yn {city}, iepen om mei te dwaan",
+    "worldCardClose": "Slút de {name}-kaart",
+    "worldCardSlide": "{index} fan {count}",
+    "worldCardPrevious": "Foarige aktiviteit",
+    "worldCardNext": "Folgjende aktiviteit",
+    "worldCityNothingHere": "Hjir is noch neat foar dizze taal.",
+    "worldExploreCity": "Ferkenne",
+    "worldShipAtCity": "Yn {city}",
+    "worldShipRunBy": "Beheard troch {admins}",
+    "worldShipRunByPangea": "Beheard troch Pangea",
+    "worldShipMembers": "{count, plural, =1{1 lid} other{{count} leden}}",
+    "worldShipOpenCourse": "Iepen kursus",
+    "worldCityLockedLabel": "{city}, noch net iepen foar dy",
+    "worldCityNoCourseHere": "Doch hjir mei oan in kursus om it te ferkennen",
+    "mapSearchHint": "Sykje iepenbiere kursussen"
 }

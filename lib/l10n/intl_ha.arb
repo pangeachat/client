@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-10-29 12:07:25.677233",
+    "@@last_modified": "2026-11-01 09:54:08.563688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Wuri ne da masu gudanar da kwas za su iya yin sanarwa ga mahalartan kwas. Duk da cewa kowa na iya ganin wannan tashar, masu gudanarwa ne kaɗai za su iya rubutu a ciki.",
     "introChatDesc": "Kowa a cikin kwas ɗin zai iya aikawa.",
     "announcementsChatDesc": "Masu gudanar da kwas ne kaɗai za su iya aikawa.",
-    "mapSearchHint": "Bincika ayyuka",
     "mapFilterAllLanguages": "Duk harsuna",
     "mapFilterNotStarted": "Ba a fara ba",
     "mapFilterInProgress": "Ana kan yi",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Babu wanda ya shigo tukuna. Pangea Bot zai iya shiga yanzu, ko kuma za ka iya ci gaba da jira.",
     "keepWaiting": "Ci gaba da jira",
     "botTookSeatAfterAnHour": "Wannan zaman ya kasance a buɗe na awa ɗaya, don haka Pangea Bot ya shiga.",
-    "botTookSeatAfterADay": "Wannan zaman ya kasance a buɗe fiye da kwana ɗaya, don haka Pangea Bot ya shiga. Aika saƙo don farawa."
+    "botTookSeatAfterADay": "Wannan zaman ya kasance a buɗe fiye da kwana ɗaya, don haka Pangea Bot ya shiga. Aika saƙo don farawa.",
+    "worldPublicShipLabel": "{course}, kwas na jama'a a {city}, a buɗe don shiga",
+    "worldCardClose": "Rufe katin {name}",
+    "worldCardSlide": "{index} na {count}",
+    "worldCardPrevious": "Aiki na baya",
+    "worldCardNext": "Aiki na gaba",
+    "worldCityNothingHere": "Babu komai a nan don wannan yaren tukuna.",
+    "worldExploreCity": "Bincika",
+    "worldShipAtCity": "A {city}",
+    "worldShipRunBy": "Wanda {admins} ke gudanarwa",
+    "worldShipRunByPangea": "Wanda Pangea ke gudanarwa",
+    "worldShipMembers": "{count, plural, =1{memba 1} other{mambobi {count}}}",
+    "worldShipOpenCourse": "Bude kwas",
+    "worldCityLockedLabel": "{city}, bai buɗe muku ba tukuna",
+    "worldCityNoCourseHere": "Shiga kwas a nan don bincika shi",
+    "mapSearchHint": "Nemo darussa na jama'a"
 }

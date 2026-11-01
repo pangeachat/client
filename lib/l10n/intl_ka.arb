@@ -1930,7 +1930,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-29 12:07:27.945999",
+    "@@last_modified": "2026-11-01 09:54:09.697989",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9884,7 +9884,6 @@
     "addCourseBrowsePublic": "გადახედეთ საჯარო კურსებს",
     "browsePublicCourses": "გადახედეთ საჯარო კურსებს",
     "editProfile": "რედაქტირება პროფილში",
-    "mapSearchHint": "ძებნა აქტივობებში",
     "mapFilterAllLanguages": "ყველა ენა",
     "mapFilterNotStarted": "არ დაწყებულა",
     "mapFilterInProgress": "მიმდინარეა",
@@ -10968,5 +10967,20 @@
     "playWithBotNowMessage": "ჯერ არავინ შემოგვიერთდა. Pangea Bot-ს შეუძლია დაიკავოს თავისუფალი ადგილი ახლავე, ან შეგიძლიათ გააგრძელოთ ლოდინი.",
     "keepWaiting": "გააგრძელეთ ლოდინი",
     "botTookSeatAfterAnHour": "ეს სესია ერთი საათის განმავლობაში ღია იყო, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი.",
-    "botTookSeatAfterADay": "ეს სესია ერთ დღეზე მეტხანს იყო ღია, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი. გასააქტიურებლად გაგზავნეთ შეტყობინება."
+    "botTookSeatAfterADay": "ეს სესია ერთ დღეზე მეტხანს იყო ღია, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი. გასააქტიურებლად გაგზავნეთ შეტყობინება.",
+    "worldPublicShipLabel": "{course}, საჯარო კურსი {city}-ში, ღიაა გასაწევრიანებლად",
+    "worldCardClose": "{name} ბარათის დახურვა",
+    "worldCardSlide": "{index} / {count}",
+    "worldCardPrevious": "წინა აქტივობა",
+    "worldCardNext": "შემდეგი აქტივობა",
+    "worldCityNothingHere": "ამ ენისთვის ჯერ არაფერია.",
+    "worldExploreCity": "დათვალიერება",
+    "worldShipAtCity": "{city}-ში",
+    "worldShipRunBy": "მართავს {admins}",
+    "worldShipRunByPangea": "მართავს Pangea",
+    "worldShipMembers": "{count, plural, =1{1 წევრი} other{{count} წევრი}}",
+    "worldShipOpenCourse": "ღია კურსი",
+    "worldCityLockedLabel": "{city}, ჯერ არ არის თქვენთვის ღია",
+    "worldCityNoCourseHere": "შეუერთდით კურსს აქ მის დასათვალიერებლად",
+    "mapSearchHint": "საჯარო კურსების ძიება"
 }

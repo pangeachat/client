@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-29 12:07:24.754363",
+    "@@last_modified": "2026-11-01 09:54:07.422175",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -8984,7 +8984,6 @@
     "addCourseBrowsePublic": "Sirvi avalikke kursusi",
     "browsePublicCourses": "Sirvi avalikke kursusi",
     "editProfile": "Muuda profiili",
-    "mapSearchHint": "Otsi tegevusi",
     "mapFilterAllLanguages": "Kõik keeled",
     "mapFilterNotStarted": "Alustamata",
     "mapFilterInProgress": "Käimas",
@@ -10068,5 +10067,20 @@
     "playWithBotNowMessage": "Keegi pole veel liitunud. Pangea Bot saab nüüd vaba koha võtta või võite oodata.",
     "keepWaiting": "Jätka ootamist",
     "botTookSeatAfterAnHour": "See seanss oli tund aega avatud, nii et Pangea Bot võttis vaba koha.",
-    "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum."
+    "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum.",
+    "worldPublicShipLabel": "{course}, avalik kursus asukohas {city}, avatud liitumiseks",
+    "worldCardClose": "Sulge kaardi {name}",
+    "worldCardSlide": "{index} / {count}",
+    "worldCardPrevious": "Eelmine tegevus",
+    "worldCardNext": "Järgmine tegevus",
+    "worldCityNothingHere": "Selle keele jaoks pole siin veel midagi.",
+    "worldExploreCity": "Avasta",
+    "worldShipAtCity": "Asukohas {city}",
+    "worldShipRunBy": "Haldab {admins}",
+    "worldShipRunByPangea": "Haldab Pangea",
+    "worldShipMembers": "{count, plural, =1{1 liige} other{{count} liiget}}",
+    "worldShipOpenCourse": "Avatud kursus",
+    "worldCityLockedLabel": "{city}, pole sulle veel avatud",
+    "worldCityNoCourseHere": "Selle avastamiseks liitu siin kursusega",
+    "mapSearchHint": "Otsi avalikke kursuseid"
 }

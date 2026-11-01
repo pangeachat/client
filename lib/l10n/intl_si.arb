@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-10-29 12:07:31.346302",
+    "@@last_modified": "2026-11-01 09:54:13.153641",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "පාඨමාලා පරිපාලකයින්ට පාඨමාලා සහභාගිවන්නන් සඳහා නිවේදන නිර්මාණය කිරීමට ස්ථානයක්. සියලු දෙනාටම මෙම නාලිකාව බැලිය හැකි වුවද, පරිපාලකයින්ට පමණක් එහි ටයිප් කළ හැක.",
     "introChatDesc": "පාඨමාලාවේ ඕනෑම කෙනෙකුට පළ කළ හැක.",
     "announcementsChatDesc": "පාඨමාලා පරිපාලකයින්ට පමණක් පළ කළ හැක.",
-    "mapSearchHint": "ක්‍රියාකාරකම් සොයන්න",
     "mapFilterAllLanguages": "සියලුම භාෂා",
     "mapFilterNotStarted": "ආරම්භ කර නැත",
     "mapFilterInProgress": "ප්‍රගතියේ පවතී",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "තවම කිසිවෙක් සම්බන්ධ වී නැත. Pangea Bot හට දැන් හිස් ආසනය ගත හැක, නැතහොත් ඔබට දිගටම බලා සිටිය හැක.",
     "keepWaiting": "බලා සිටින්න",
     "botTookSeatAfterAnHour": "මෙම සැසිය පැයක් විවෘතව තිබූ නිසා, Pangea Bot හිස් ආසනය ගත්තේය.",
-    "botTookSeatAfterADay": "මෙම සැසිය දවසකට වඩා විවෘතව තිබූ නිසා, Pangea Bot හිස් ආසනය ගත්තේය. ආරම්භ කිරීමට පණිවිඩයක් යවන්න."
+    "botTookSeatAfterADay": "මෙම සැසිය දවසකට වඩා විවෘතව තිබූ නිසා, Pangea Bot හිස් ආසනය ගත්තේය. ආරම්භ කිරීමට පණිවිඩයක් යවන්න.",
+    "worldPublicShipLabel": "{city} හි පොදු පාඨමාලාවක් වන {course} වෙත සම්බන්ධ වීමට විවෘතයි",
+    "worldCardClose": "{name} කාඩ්පත වසන්න",
+    "worldCardSlide": "{count} න් {index}",
+    "worldCardPrevious": "පෙර ක්‍රියාකාරකම",
+    "worldCardNext": "ඊළඟ ක්‍රියාකාරකම",
+    "worldCityNothingHere": "මෙම භාෂාව සඳහා මෙහි තවමත් කිසිවක් නැත.",
+    "worldExploreCity": "ගවේෂණය කරන්න",
+    "worldShipAtCity": "{city} හි",
+    "worldShipRunBy": "{admins} විසින් පවත්වනු ලැබේ",
+    "worldShipRunByPangea": "Pangea විසින් පවත්වනු ලැබේ",
+    "worldShipMembers": "{count, plural, =1{1 සාමාජිකයෙක්} other{{count} සාමාජිකයන්}}",
+    "worldShipOpenCourse": "විවෘත පාඨමාලාව",
+    "worldCityLockedLabel": "{city}, ඔබට තවම විවෘත නැත",
+    "worldCityNoCourseHere": "එය ගවේෂණය කිරීමට මෙහි පාඨමාලාවකට සම්බන්ධ වන්න",
+    "mapSearchHint": "පොදු පාඨමාලා සොයන්න"
 }

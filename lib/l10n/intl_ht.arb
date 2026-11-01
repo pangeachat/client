@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-29 12:07:26.553656",
+    "@@last_modified": "2026-11-01 09:54:08.781302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Yon kote pou admin kou yo kreye anons pou patisipan kou yo. Pandan ke tout moun ka wè chanèl sa a, sèlman admin yo ka tape ladan l.",
     "introChatDesc": "Nenpòt moun nan kou a ka poste.",
     "announcementsChatDesc": "Sèlman admin kou yo ka poste.",
-    "mapSearchHint": "Chèche aktivite",
     "mapFilterAllLanguages": "Tout lang",
     "mapFilterNotStarted": "Pa kòmanse",
     "mapFilterInProgress": "An pwogrè",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Pèsonn poko rantre. Pangea Bot ka pran plas ki vid la kounye a, oswa ou ka kontinye tann.",
     "keepWaiting": "Kontinye tann",
     "botTookSeatAfterAnHour": "Sesyon sa a te ouvè pandan inèdtan, kidonk Pangea Bot te pran plas ki vid la.",
-    "botTookSeatAfterADay": "Sesyon sa a te ouvè pandan plis pase yon jou, kidonk Pangea Bot te pran plas ki vid la. Voye yon mesaj pou kòmanse."
+    "botTookSeatAfterADay": "Sesyon sa a te ouvè pandan plis pase yon jou, kidonk Pangea Bot te pran plas ki vid la. Voye yon mesaj pou kòmanse.",
+    "worldPublicShipLabel": "{course}, yon kou piblik nan {city}, ouvè pou w patisipe",
+    "worldCardClose": "Fèmen kat {name} la",
+    "worldCardSlide": "{index} sou {count}",
+    "worldCardPrevious": "Aktivite anvan",
+    "worldCardNext": "Pwochèn aktivite",
+    "worldCityNothingHere": "Pa gen anyen isit la pou lang sa a ankò.",
+    "worldExploreCity": "Eksplore",
+    "worldShipAtCity": "Nan {city}",
+    "worldShipRunBy": "Dirije pa {admins}",
+    "worldShipRunByPangea": "Dirije pa Pangea",
+    "worldShipMembers": "{count, plural, =1{1 manm} other{{count} manm}}",
+    "worldShipOpenCourse": "Louvri kou",
+    "worldCityLockedLabel": "{city}, poko ouvè pou ou",
+    "worldCityNoCourseHere": "Antre nan yon kou isit la pou eksplore li",
+    "mapSearchHint": "Chèche kou piblik yo"
 }

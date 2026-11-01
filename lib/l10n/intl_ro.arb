@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 12:07:30.923384",
+    "@@last_modified": "2026-11-01 09:54:12.204362",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -9716,7 +9716,6 @@
     "addCourseBrowsePublic": "Răsfoiți cursurile publice",
     "browsePublicCourses": "Răsfoiți cursurile publice",
     "editProfile": "Editează profilul",
-    "mapSearchHint": "Căutați activități",
     "mapFilterAllLanguages": "Toate limbile",
     "mapFilterNotStarted": "Nepornit",
     "mapFilterInProgress": "În desfășurare",
@@ -10800,5 +10799,20 @@
     "playWithBotNowMessage": "Nimeni nu s-a alăturat încă. Pangea Bot poate ocupa locul liber acum, sau poți continua să aștepți.",
     "keepWaiting": "Continuă să aștepți",
     "botTookSeatAfterAnHour": "Această sesiune a fost deschisă timp de o oră, așa că Pangea Bot a ocupat locul liber.",
-    "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe."
+    "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe.",
+    "worldPublicShipLabel": "{course}, un curs public în {city}, deschis pentru înscriere",
+    "worldCardClose": "Închide cardul {name}",
+    "worldCardSlide": "{index} din {count}",
+    "worldCardPrevious": "Activitatea anterioară",
+    "worldCardNext": "Activitatea următoare",
+    "worldCityNothingHere": "Încă nu e nimic aici pentru această limbă.",
+    "worldExploreCity": "Explorează",
+    "worldShipAtCity": "În {city}",
+    "worldShipRunBy": "Administrat de {admins}",
+    "worldShipRunByPangea": "Administrat de Pangea",
+    "worldShipMembers": "{count, plural, =1{1 membru} other{{count} membri}}",
+    "worldShipOpenCourse": "Curs deschis",
+    "worldCityLockedLabel": "{city}, încă nu este deschis pentru tine",
+    "worldCityNoCourseHere": "Înscrie-te la un curs aici pentru a-l explora",
+    "mapSearchHint": "Căutați cursuri publice"
 }

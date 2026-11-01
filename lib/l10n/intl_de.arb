@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-29 12:07:23.720618",
+    "@@last_modified": "2026-11-01 09:54:07.056643",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -8974,7 +8974,6 @@
     "addCourseBrowsePublic": "Öffentliche Kurse durchsuchen",
     "browsePublicCourses": "Öffentliche Kurse durchsuchen",
     "editProfile": "Profil bearbeiten",
-    "mapSearchHint": "Aktivitäten suchen",
     "mapFilterAllLanguages": "Alle Sprachen",
     "mapFilterNotStarted": "Nicht gestartet",
     "mapFilterInProgress": "In Bearbeitung",
@@ -10058,5 +10057,20 @@
     "playWithBotNowMessage": "Es ist noch niemand beigetreten. Pangea Bot kann den freien Platz jetzt einnehmen, oder du kannst weiter warten.",
     "keepWaiting": "Weiter warten",
     "botTookSeatAfterAnHour": "Diese Sitzung war eine Stunde lang offen, daher hat Pangea Bot den freien Platz eingenommen.",
-    "botTookSeatAfterADay": "Diese Sitzung war über einen Tag lang offen, daher hat Pangea Bot den freien Platz eingenommen. Sende eine Nachricht, um zu beginnen."
+    "botTookSeatAfterADay": "Diese Sitzung war über einen Tag lang offen, daher hat Pangea Bot den freien Platz eingenommen. Sende eine Nachricht, um zu beginnen.",
+    "worldPublicShipLabel": "{course}, ein öffentlicher Kurs in {city}, offen für alle",
+    "worldCardClose": "Die {name}-Karte schließen",
+    "worldCardSlide": "{index} von {count}",
+    "worldCardPrevious": "Vorherige Aktivität",
+    "worldCardNext": "Nächste Aktivität",
+    "worldCityNothingHere": "Noch nichts für diese Sprache hier.",
+    "worldExploreCity": "Erkunden",
+    "worldShipAtCity": "In {city}",
+    "worldShipRunBy": "Betrieben von {admins}",
+    "worldShipRunByPangea": "Betrieben von Pangea",
+    "worldShipMembers": "{count, plural, =1{1 Mitglied} other{{count} Mitglieder}}",
+    "worldShipOpenCourse": "Kurs öffnen",
+    "worldCityLockedLabel": "{city}, noch nicht für dich geöffnet",
+    "worldCityNoCourseHere": "Tritt einem Kurs hier bei, um ihn zu erkunden",
+    "mapSearchHint": "Öffentliche Kurse suchen"
 }

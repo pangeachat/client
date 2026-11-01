@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-29 12:07:28.868552",
+    "@@last_modified": "2026-11-01 09:54:10.442350",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "ສະຖານທີ່ສຳລັບຜູ້ເບິ່ງແຍງລະບົບຫຼັກສູດເພື່ອສ້າງການປະກາດສຳລັບຜູ້ເຂົ້າຮ່ວມຫຼັກສູດ. ໃນຂະນະທີ່ທຸກຄົນສາມາດເບິ່ງຊ່ອງນີ້ໄດ້, ມີພຽງຜູ້ເບິ່ງແຍງລະບົບເທົ່ານັ້ນທີ່ສາມາດພິມໃນມັນໄດ້.",
     "introChatDesc": "ໃຜກໍຕາມໃນຫຼັກສູດສາມາດໂພສໄດ້.",
     "announcementsChatDesc": "ມີພຽງຜູ້ເບິ່ງແຍງລະບົບຫຼັກສູດເທົ່ານັ້ນທີ່ສາມາດໂພສໄດ້.",
-    "mapSearchHint": "ຄົ້ນຫາກິດຈະກຳ",
     "mapFilterAllLanguages": "ທຸກພາສາ",
     "mapFilterNotStarted": "ຍັງບໍ່ໄດ້ເລີ່ມຕົ້ນ",
     "mapFilterInProgress": "ກຳລັງດຳເນີນການ",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "ຍັງບໍ່ມີໃຜເຂົ້າຮ່ວມເທື່ອ. Pangea Bot ສາມາດເຂົ້າຮ່ວມໄດ້ດຽວນີ້, ຫຼືທ່ານສາມາດລໍຖ້າຕໍ່ໄປ.",
     "keepWaiting": "ລໍຖ້າຕໍ່ໄປ",
     "botTookSeatAfterAnHour": "ເຊສຊັນນີ້ເປີດມາໄດ້ໜຶ່ງຊົ່ວໂມງແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ.",
-    "botTookSeatAfterADay": "ເຊສຊັນນີ້ເປີດມາໄດ້ຫຼາຍກວ່າໜຶ່ງມື້ແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ. ສົ່ງຂໍ້ຄວາມເພື່ອເລີ່ມຕົ້ນ."
+    "botTookSeatAfterADay": "ເຊສຊັນນີ້ເປີດມາໄດ້ຫຼາຍກວ່າໜຶ່ງມື້ແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ. ສົ່ງຂໍ້ຄວາມເພື່ອເລີ່ມຕົ້ນ.",
+    "worldPublicShipLabel": "{course}, ຫຼັກສູດສາທາລະນະທີ່ {city}, ເປີດໃຫ້ເຂົ້າຮ່ວມ",
+    "worldCardClose": "ປິດບັດ {name}",
+    "worldCardSlide": "{index} ຂອງ {count}",
+    "worldCardPrevious": "ກິດຈະກຳທີ່ຜ່ານມາ",
+    "worldCardNext": "ກິດຈະກຳຕໍ່ໄປ",
+    "worldCityNothingHere": "ຍັງບໍ່ມີຫຍັງສຳລັບພາສານີ້ເທື່ອ.",
+    "worldExploreCity": "ສຳຫຼວດ",
+    "worldShipAtCity": "ທີ່ {city}",
+    "worldShipRunBy": "ດຳເນີນການໂດຍ {admins}",
+    "worldShipRunByPangea": "ດຳເນີນການໂດຍ Pangea",
+    "worldShipMembers": "{count, plural, =1{1 ສະມາຊິກ} other{{count} ສະມາຊິກ}}",
+    "worldShipOpenCourse": "ເປີດຫຼັກສູດ",
+    "worldCityLockedLabel": "{city}, ຍັງບໍ່ເປີດໃຫ້ທ່ານເທື່ອ",
+    "worldCityNoCourseHere": "ເຂົ້າຮ່ວມຫຼັກສູດທີ່ນີ້ເພື່ອສຳຫຼວດ",
+    "mapSearchHint": "ຊອກຫາຫຼັກສູດສາທາລະນະ"
 }

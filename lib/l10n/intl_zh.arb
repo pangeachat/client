@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-29 12:07:33.951997",
+    "@@last_modified": "2026-11-01 09:54:14.747706",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -8987,7 +8987,6 @@
     "addCourseBrowsePublic": "浏览公开课程",
     "browsePublicCourses": "浏览公开课程",
     "editProfile": "编辑个人资料",
-    "mapSearchHint": "搜索活动",
     "mapFilterAllLanguages": "所有语言",
     "mapFilterNotStarted": "未开始",
     "mapFilterInProgress": "进行中",
@@ -10071,5 +10070,20 @@
     "playWithBotNowMessage": "还没有人加入。Pangea Bot 现在可以加入，或者您可以继续等待。",
     "keepWaiting": "继续等待",
     "botTookSeatAfterAnHour": "此会话已开放一小时，Pangea Bot 已加入。",
-    "botTookSeatAfterADay": "此会话已开放超过一天，Pangea Bot 已加入。发送消息即可开始。"
+    "botTookSeatAfterADay": "此会话已开放超过一天，Pangea Bot 已加入。发送消息即可开始。",
+    "worldPublicShipLabel": "{course}，{city} 的一个公共课程，开放加入",
+    "worldCardClose": "关闭 {name} 卡片",
+    "worldCardSlide": "{index} / {count}",
+    "worldCardPrevious": "上一个活动",
+    "worldCardNext": "下一个活动",
+    "worldCityNothingHere": "此语言暂无内容。",
+    "worldExploreCity": "探索",
+    "worldShipAtCity": "在 {city}",
+    "worldShipRunBy": "由 {admins} 运营",
+    "worldShipRunByPangea": "由 Pangea 运营",
+    "worldShipMembers": "{count, plural, =1{1 位成员} other{{count} 位成员}}",
+    "worldShipOpenCourse": "开放课程",
+    "worldCityLockedLabel": "{city}，尚未对您开放",
+    "worldCityNoCourseHere": "在此加入课程以探索",
+    "mapSearchHint": "搜索公开课程"
 }

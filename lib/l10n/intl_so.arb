@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-10-29 12:07:31.925832",
+    "@@last_modified": "2026-11-01 09:54:13.077067",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Meel ay maamulayaasha koorsadu ku sameeyaan ogeysiisyada ka qaybgalayaasha koorsada. In kasta oo dhammaan ay arki karaan kanaalkan, kaliya maamulayaasha ayaa wax ku qori kara.",
     "introChatDesc": "Qof kasta oo koorsada ku jira ayaa wax soo dhigi kara.",
     "announcementsChatDesc": "Kaliya maamulayaasha koorsada ayaa wax soo dhigi kara.",
-    "mapSearchHint": "Raadi hawlaha",
     "mapFilterAllLanguages": "Dhammaan luqadaha",
     "mapFilterNotStarted": "Aan la bilaabin",
     "mapFilterInProgress": "Wuu socdaa",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Weli qofna ma soo biirin. Pangea Bot wuxuu hadda qaadan karaa kursiga bannaan, ama waad sii sugi kartaa.",
     "keepWaiting": "Sii sug",
     "botTookSeatAfterAnHour": "Fadhigan wuxuu furnaa saacad, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan.",
-    "botTookSeatAfterADay": "Fadhigan wuxuu furnaa in ka badan maalin, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan. Fariin u dir si aad u bilowdo."
+    "botTookSeatAfterADay": "Fadhigan wuxuu furnaa in ka badan maalin, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan. Fariin u dir si aad u bilowdo.",
+    "worldPublicShipLabel": "{course}, kooras furan oo ku yaal {city}, oo diyaar u ah in lagu soo biiro",
+    "worldCardClose": "Xidh kaadhka {name}",
+    "worldCardSlide": "{index} ee {count}",
+    "worldCardPrevious": "Hawshii hore",
+    "worldCardNext": "Hawsha xigta",
+    "worldCityNothingHere": "Wali waxba kuma jiraan luqaddan.",
+    "worldExploreCity": "Sahami",
+    "worldShipAtCity": "Ku yaal {city}",
+    "worldShipRunBy": "Waxaa maamula {admins}",
+    "worldShipRunByPangea": "Waxaa maamula Pangea",
+    "worldShipMembers": "{count, plural, =1{1 xubin} other{{count} xubnood}}",
+    "worldShipOpenCourse": "Furo koorsada",
+    "worldCityLockedLabel": "{city}, wali kuu furan maaha",
+    "worldCityNoCourseHere": "Ku soo biir kooras halkan si aad u sahamiso",
+    "mapSearchHint": "Raadi koorsooyinka dadweynaha"
 }

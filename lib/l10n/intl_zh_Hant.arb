@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 12:07:34.014857",
+    "@@last_modified": "2026-11-01 09:54:15.011050",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9093,7 +9093,6 @@
     "addCourseBrowsePublic": "瀏覽公共課程",
     "browsePublicCourses": "瀏覽公共課程",
     "editProfile": "編輯個人資料",
-    "mapSearchHint": "搜尋活動",
     "mapFilterAllLanguages": "所有語言",
     "mapFilterNotStarted": "尚未開始",
     "mapFilterInProgress": "進行中",
@@ -10177,5 +10176,20 @@
     "playWithBotNowMessage": "還沒有人加入。Pangea Bot 現在可以加入，或者您可以繼續等待。",
     "keepWaiting": "繼續等待",
     "botTookSeatAfterAnHour": "此會話已開放一小時，Pangea Bot 已加入。",
-    "botTookSeatAfterADay": "此會話已開放超過一天，Pangea Bot 已加入。發送訊息即可開始。"
+    "botTookSeatAfterADay": "此會話已開放超過一天，Pangea Bot 已加入。發送訊息即可開始。",
+    "worldPublicShipLabel": "{course}，位於{city}的公開課程，歡迎加入",
+    "worldCardClose": "關閉{name}卡片",
+    "worldCardSlide": "{index} / {count}",
+    "worldCardPrevious": "上一個活動",
+    "worldCardNext": "下一個活動",
+    "worldCityNothingHere": "此語言暫無內容。",
+    "worldExploreCity": "探索",
+    "worldShipAtCity": "在{city}",
+    "worldShipRunBy": "由{admins}營運",
+    "worldShipRunByPangea": "由Pangea營運",
+    "worldShipMembers": "{count, plural, =1{1 位成員} other{{count} 位成員}}",
+    "worldShipOpenCourse": "公開課程",
+    "worldCityLockedLabel": "{city}，尚未對您開放",
+    "worldCityNoCourseHere": "在此加入課程以探索它",
+    "mapSearchHint": "搜尋公開課程"
 }

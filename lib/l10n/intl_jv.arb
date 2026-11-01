@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-29 12:07:27.922121",
+    "@@last_modified": "2026-11-01 09:54:09.276331",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Papan kanggo admin kursus nggawe pengumuman kanggo peserta kursus. Sanajan kabeh bisa ndeleng saluran iki, mung admin sing bisa ngetik ing kene.",
     "introChatDesc": "Sapa wae ing kursus bisa ngirim.",
     "announcementsChatDesc": "Mung admin kursus sing bisa ngirim.",
-    "mapSearchHint": "Telusuri aktivitas",
     "mapFilterAllLanguages": "Kabeh basa",
     "mapFilterNotStarted": "Durung diwiwiti",
     "mapFilterInProgress": "Lagi lumaku",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Durung ana sing gabung. Pangea Bot bisa njupuk kursi sing kosong saiki, utawa sampeyan bisa terus ngenteni.",
     "keepWaiting": "Terus ngenteni",
     "botTookSeatAfterAnHour": "Sesi iki wis mbukak sakjam, dadi Pangea Bot njupuk kursi sing kosong.",
-    "botTookSeatAfterADay": "Sesi iki wis mbukak luwih saka sedina, dadi Pangea Bot njupuk kursi sing kosong. Kirim pesen kanggo miwiti."
+    "botTookSeatAfterADay": "Sesi iki wis mbukak luwih saka sedina, dadi Pangea Bot njupuk kursi sing kosong. Kirim pesen kanggo miwiti.",
+    "worldPublicShipLabel": "{course}, kursus umum ing {city}, mbukak kanggo gabung",
+    "worldCardClose": "Tutup kertu {name}",
+    "worldCardSlide": "{index} saka {count}",
+    "worldCardPrevious": "Aktivitas sadurunge",
+    "worldCardNext": "Aktivitas sabanjure",
+    "worldCityNothingHere": "Durung ana apa-apa ing kene kanggo basa iki.",
+    "worldExploreCity": "Jelajahi",
+    "worldShipAtCity": "Ing {city}",
+    "worldShipRunBy": "Diatur dening {admins}",
+    "worldShipRunByPangea": "Diatur dening Pangea",
+    "worldShipMembers": "{count, plural, =1{1 anggota} other{{count} anggota}}",
+    "worldShipOpenCourse": "Kursus mbukak",
+    "worldCityLockedLabel": "{city}, durung mbukak kanggo sampeyan",
+    "worldCityNoCourseHere": "Gabung kursus ing kene kanggo njelajah",
+    "mapSearchHint": "Golèk kursus umum"
 }

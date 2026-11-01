@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-29 12:07:23.820611",
+    "@@last_modified": "2026-11-01 09:54:06.703578",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -9478,7 +9478,6 @@
     "addCourseBrowsePublic": "Procházet veřejné kurzy",
     "browsePublicCourses": "Procházet veřejné kurzy",
     "editProfile": "Upravit profil",
-    "mapSearchHint": "Hledat aktivity",
     "mapFilterAllLanguages": "Všechny jazyky",
     "mapFilterNotStarted": "Nebylo zahájeno",
     "mapFilterInProgress": "Probíhá",
@@ -10562,5 +10561,20 @@
     "playWithBotNowMessage": "Ještě se nikdo nepřipojil. Pangea Bot může obsadit volné místo hned teď, nebo můžete dál čekat.",
     "keepWaiting": "Pokračovat v čekání",
     "botTookSeatAfterAnHour": "Tato relace byla otevřená hodinu, takže Pangea Bot obsadil volné místo.",
-    "botTookSeatAfterADay": "Tato relace byla otevřená déle než den, takže Pangea Bot obsadil volné místo. Pošlete zprávu pro zahájení."
+    "botTookSeatAfterADay": "Tato relace byla otevřená déle než den, takže Pangea Bot obsadil volné místo. Pošlete zprávu pro zahájení.",
+    "worldPublicShipLabel": "{course}, veřejný kurz v {city}, otevřený k připojení",
+    "worldCardClose": "Zavřít kartu {name}",
+    "worldCardSlide": "{index} z {count}",
+    "worldCardPrevious": "Předchozí aktivita",
+    "worldCardNext": "Další aktivita",
+    "worldCityNothingHere": "Pro tento jazyk zde zatím nic není.",
+    "worldExploreCity": "Prozkoumat",
+    "worldShipAtCity": "V {city}",
+    "worldShipRunBy": "Spravuje {admins}",
+    "worldShipRunByPangea": "Spravuje Pangea",
+    "worldShipMembers": "{count, plural, =1{1 člen} few{{count} členové} many{{count} členů} other{{count} členů}}",
+    "worldShipOpenCourse": "Otevřený kurz",
+    "worldCityLockedLabel": "{city}, pro vás zatím není otevřeno",
+    "worldCityNoCourseHere": "Připojte se k kurzu zde a prozkoumejte ho",
+    "mapSearchHint": "Hledat veřejné kurzy"
 }

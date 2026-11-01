@@ -3082,7 +3082,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-29 12:07:33.462229",
+    "@@last_modified": "2026-11-01 09:54:13.693833",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9616,7 +9616,6 @@
     "addCourseBrowsePublic": "เรียกดูหลักสูตรสาธารณะ",
     "browsePublicCourses": "เรียกดูหลักสูตรสาธารณะ",
     "editProfile": "แก้ไขโปรไฟล์",
-    "mapSearchHint": "ค้นหากิจกรรม",
     "mapFilterAllLanguages": "ทุกภาษา",
     "mapFilterNotStarted": "ยังไม่เริ่ม",
     "mapFilterInProgress": "กำลังดำเนินการ",
@@ -10700,5 +10699,20 @@
     "playWithBotNowMessage": "ยังไม่มีใครเข้าร่วม Pangea Bot สามารถเข้าร่วมตอนนี้ได้เลย หรือคุณจะรอต่อไปก็ได้",
     "keepWaiting": "รอต่อไป",
     "botTookSeatAfterAnHour": "เซสชันนี้เปิดมาหนึ่งชั่วโมงแล้ว Pangea Bot จึงเข้าร่วม",
-    "botTookSeatAfterADay": "เซสชันนี้เปิดมานานกว่าหนึ่งวันแล้ว Pangea Bot จึงเข้าร่วม ส่งข้อความเพื่อเริ่มต้น"
+    "botTookSeatAfterADay": "เซสชันนี้เปิดมานานกว่าหนึ่งวันแล้ว Pangea Bot จึงเข้าร่วม ส่งข้อความเพื่อเริ่มต้น",
+    "worldPublicShipLabel": "{course} คอร์สสาธารณะที่ {city} เปิดให้เข้าร่วม",
+    "worldCardClose": "ปิดการ์ด {name}",
+    "worldCardSlide": "{index} จาก {count}",
+    "worldCardPrevious": "กิจกรรมก่อนหน้า",
+    "worldCardNext": "กิจกรรมถัดไป",
+    "worldCityNothingHere": "ยังไม่มีอะไรสำหรับภาษานี้",
+    "worldExploreCity": "สำรวจ",
+    "worldShipAtCity": "ที่ {city}",
+    "worldShipRunBy": "ดำเนินการโดย {admins}",
+    "worldShipRunByPangea": "ดำเนินการโดย Pangea",
+    "worldShipMembers": "{count, plural, =1{1 สมาชิก} other{{count} สมาชิก}}",
+    "worldShipOpenCourse": "เปิดคอร์ส",
+    "worldCityLockedLabel": "{city} ยังไม่เปิดให้คุณ",
+    "worldCityNoCourseHere": "เข้าร่วมคอร์สที่นี่เพื่อสำรวจ",
+    "mapSearchHint": "ค้นหาคอร์สสาธารณะ"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 12:07:32.252741",
+    "@@last_modified": "2026-11-01 09:54:13.682106",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9502,7 +9502,6 @@
     "addCourseBrowsePublic": "Bläddra bland offentliga kurser",
     "browsePublicCourses": "Bläddra bland offentliga kurser",
     "editProfile": "Redigera profil",
-    "mapSearchHint": "Sök aktiviteter",
     "mapFilterAllLanguages": "Alla språk",
     "mapFilterNotStarted": "Ej påbörjad",
     "mapFilterInProgress": "Pågår",
@@ -10586,5 +10585,20 @@
     "playWithBotNowMessage": "Ingen har anslutit än. Pangea Bot kan ta den lediga platsen nu, eller så kan du fortsätta vänta.",
     "keepWaiting": "Fortsätt vänta",
     "botTookSeatAfterAnHour": "Den här sessionen var öppen i en timme, så Pangea Bot tog den lediga platsen.",
-    "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja."
+    "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja.",
+    "worldPublicShipLabel": "{course}, en offentlig kurs i {city}, öppen att gå med i",
+    "worldCardClose": "Stäng kortet {name}",
+    "worldCardSlide": "{index} av {count}",
+    "worldCardPrevious": "Föregående aktivitet",
+    "worldCardNext": "Nästa aktivitet",
+    "worldCityNothingHere": "Inget här för det här språket än.",
+    "worldExploreCity": "Utforska",
+    "worldShipAtCity": "I {city}",
+    "worldShipRunBy": "Drivs av {admins}",
+    "worldShipRunByPangea": "Drivs av Pangea",
+    "worldShipMembers": "{count, plural, =1{1 medlem} other{{count} medlemmar}}",
+    "worldShipOpenCourse": "Öppen kurs",
+    "worldCityLockedLabel": "{city}, inte öppen för dig än",
+    "worldCityNoCourseHere": "Gå med i en kurs här för att utforska den",
+    "mapSearchHint": "Sök offentliga kurser"
 }

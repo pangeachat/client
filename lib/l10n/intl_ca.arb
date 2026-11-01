@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 12:07:23.866298",
+    "@@last_modified": "2026-11-01 09:54:06.852250",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9114,7 +9114,6 @@
     "addCourseBrowsePublic": "Explora cursos públics",
     "browsePublicCourses": "Explora cursos públics",
     "editProfile": "Edita el perfil",
-    "mapSearchHint": "Cerca activitats",
     "mapFilterAllLanguages": "Totes les llengües",
     "mapFilterNotStarted": "No iniciat",
     "mapFilterInProgress": "En curs",
@@ -10198,5 +10197,20 @@
     "playWithBotNowMessage": "Encara no s'ha unit ningú. El bot Pangea pot ocupar el seient lliure ara, o pots seguir esperant.",
     "keepWaiting": "Seguir esperant",
     "botTookSeatAfterAnHour": "Aquesta sessió ha estat oberta durant una hora, així que el bot Pangea ha ocupat el seient lliure.",
-    "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar."
+    "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar.",
+    "worldPublicShipLabel": "{course}, un curs públic a {city}, obert a tothom",
+    "worldCardClose": "Tanca la targeta de {name}",
+    "worldCardSlide": "{index} de {count}",
+    "worldCardPrevious": "Activitat anterior",
+    "worldCardNext": "Activitat següent",
+    "worldCityNothingHere": "Encara no hi ha res per a aquest idioma.",
+    "worldExploreCity": "Explora",
+    "worldShipAtCity": "A {city}",
+    "worldShipRunBy": "Gestionat per {admins}",
+    "worldShipRunByPangea": "Gestionat per Pangea",
+    "worldShipMembers": "{count, plural, =1{1 membre} other{{count} membres}}",
+    "worldShipOpenCourse": "Curs obert",
+    "worldCityLockedLabel": "{city}, encara no obert per a tu",
+    "worldCityNoCourseHere": "Uneix-te a un curs aquí per explorar-lo",
+    "mapSearchHint": "Cerca cursos públics"
 }

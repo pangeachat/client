@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-10-29 12:07:23.730900",
+    "@@last_modified": "2026-11-01 09:54:07.175018",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Lle i weinyddwyr cwrs greu cyhoeddiadau ar gyfer cyfranogwyr cwrs. Er y gall pawb weld y sianel hon, dim ond gweinyddwyr all deipio ynddi.",
     "introChatDesc": "Gall unrhyw un yn y cwrs bostio.",
     "announcementsChatDesc": "Dim ond gweinyddwyr cwrs all bostio.",
-    "mapSearchHint": "Chwilio gweithgareddau",
     "mapFilterAllLanguages": "Pob iaith",
     "mapFilterNotStarted": "Heb ddechrau",
     "mapFilterInProgress": "Ar y gweill",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Nid oes neb wedi ymuno eto. Gall Bot Pangea gymryd y sedd wag nawr, neu gallwch barhau i aros.",
     "keepWaiting": "Parhau i aros",
     "botTookSeatAfterAnHour": "Roedd y sesiwn hon ar agor am awr, felly cymerodd Bot Pangea y sedd wag.",
-    "botTookSeatAfterADay": "Roedd y sesiwn hon ar agor am dros ddiwrnod, felly cymerodd Bot Pangea y sedd wag. Anfonwch neges i ddechrau."
+    "botTookSeatAfterADay": "Roedd y sesiwn hon ar agor am dros ddiwrnod, felly cymerodd Bot Pangea y sedd wag. Anfonwch neges i ddechrau.",
+    "worldPublicShipLabel": "{course}, cwrs cyhoeddus yn {city}, ar agor i ymuno",
+    "worldCardClose": "Cau cerdyn {name}",
+    "worldCardSlide": "{index} o {count}",
+    "worldCardPrevious": "Gweithgaredd blaenorol",
+    "worldCardNext": "Gweithgaredd nesaf",
+    "worldCityNothingHere": "Dim byd yma ar gyfer yr iaith hon eto.",
+    "worldExploreCity": "Archwilio",
+    "worldShipAtCity": "Yn {city}",
+    "worldShipRunBy": "Wedi'i redeg gan {admins}",
+    "worldShipRunByPangea": "Wedi'i redeg gan Pangea",
+    "worldShipMembers": "{count, plural, =1{1 aelod} other{{count} aelod}}",
+    "worldShipOpenCourse": "Cwrs agored",
+    "worldCityLockedLabel": "{city}, heb fod ar agor i chi eto",
+    "worldCityNoCourseHere": "Ymunwch â chwrs yma i'w archwilio",
+    "mapSearchHint": "Chwilio am gyrsiau cyhoeddus"
 }

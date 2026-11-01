@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-10-29 12:07:32.110622",
+    "@@last_modified": "2026-11-01 09:54:14.026375",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Mahali pa wasimamizi wa kozi kuunda matangazo kwa washiriki wa kozi. Ingawa wote wanaweza kutazama chaneli hii, wasimamizi pekee ndio wanaweza kuandika ndani yake.",
     "introChatDesc": "Mtu yeyote katika kozi anaweza kuchapisha.",
     "announcementsChatDesc": "Wasimamizi wa kozi pekee ndio wanaweza kuchapisha.",
-    "mapSearchHint": "Tafuta shughuli",
     "mapFilterAllLanguages": "Lugha zote",
     "mapFilterNotStarted": "Haijaanza",
     "mapFilterInProgress": "Inaendelea",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Hakuna aliyejiunga bado. Pangea Bot anaweza kuchukua nafasi iliyo wazi sasa, au unaweza kuendelea kusubiri.",
     "keepWaiting": "Endelea kusubiri",
     "botTookSeatAfterAnHour": "Kipindi hiki kilikuwa wazi kwa saa moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi.",
-    "botTookSeatAfterADay": "Kipindi hiki kilikuwa wazi kwa zaidi ya siku moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi. Tuma ujumbe ili kuanza."
+    "botTookSeatAfterADay": "Kipindi hiki kilikuwa wazi kwa zaidi ya siku moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi. Tuma ujumbe ili kuanza.",
+    "worldPublicShipLabel": "{course}, kozi ya umma katika {city}, wazi kujiunga",
+    "worldCardClose": "Funga kadi ya {name}",
+    "worldCardSlide": "{index} kati ya {count}",
+    "worldCardPrevious": "Shughuli Iliyotangulia",
+    "worldCardNext": "Shughuli Inayofuata",
+    "worldCityNothingHere": "Hakuna chochote hapa kwa lugha hii bado.",
+    "worldExploreCity": "Gundua",
+    "worldShipAtCity": "Katika {city}",
+    "worldShipRunBy": "Inaendeshwa na {admins}",
+    "worldShipRunByPangea": "Inaendeshwa na Pangea",
+    "worldShipMembers": "{count, plural, =1{mwanachama 1} other{wanachama {count}}}",
+    "worldShipOpenCourse": "Fungua kozi",
+    "worldCityLockedLabel": "{city}, haijafunguliwa kwako bado",
+    "worldCityNoCourseHere": "Jiunge na kozi hapa ili kuigundua",
+    "mapSearchHint": "Tafuta kozi za umma"
 }

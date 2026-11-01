@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-29 12:07:31.348053",
+    "@@last_modified": "2026-11-01 09:54:13.117334",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "O se nofoaga mo pule o le kosi e faia ai faʻasalalauga mo tagata auai i le kosi. E ui e mafai e tagata uma ona matamata i lenei alalaupapa, ae naʻo pule e mafai ona taina i ai.",
     "introChatDesc": "Soʻo se tasi i le kosi e mafai ona lafoina.",
     "announcementsChatDesc": "Naʻo pule o le kosi e mafai ona lafoina.",
-    "mapSearchHint": "Suʻe gaioiga",
     "mapFilterAllLanguages": "Gagana uma",
     "mapFilterNotStarted": "Leʻi amata",
     "mapFilterInProgress": "O loʻo faʻagasolo",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "E leai se tasi na auai mai. E mafai e le Pangea Bot ona nofo i le nofoa avanoa nei, pe e te mana'o e fa'atali pea.",
     "keepWaiting": "Fa'atali pea",
     "botTookSeatAfterAnHour": "Na tatala lenei sauniga mo le itula, o lea na nofo ai le Pangea Bot i le nofoa avanoa.",
-    "botTookSeatAfterADay": "Na tatala lenei sauniga mo le silia ma le aso, o lea na nofo ai le Pangea Bot i le nofoa avanoa. Auina mai se fe'au e amata ai."
+    "botTookSeatAfterADay": "Na tatala lenei sauniga mo le silia ma le aso, o lea na nofo ai le Pangea Bot i le nofoa avanoa. Auina mai se fe'au e amata ai.",
+    "worldPublicShipLabel": "{course}, o se kosi lautele i {city}, tatala mo le auai",
+    "worldCardClose": "Tapuni le pepa {name}",
+    "worldCardSlide": "{index} o le {count}",
+    "worldCardPrevious": "Gaoioiga talu ai",
+    "worldCardNext": "Gaoioiga e sosoo ai",
+    "worldCityNothingHere": "Leai se mea iinei mo lenei gagana i le taimi nei.",
+    "worldExploreCity": "Suʻesuʻe",
+    "worldShipAtCity": "I {city}",
+    "worldShipRunBy": "Faʻatautaia e {admins}",
+    "worldShipRunByPangea": "Faʻatautaia e Pangea",
+    "worldShipMembers": "{count, plural, =1{1 sui} other{{count} sui}}",
+    "worldShipOpenCourse": "Tatala le kosi",
+    "worldCityLockedLabel": "{city}, e leʻi tatala mo oe",
+    "worldCityNoCourseHere": "Auai i se kosi iinei e suʻesuʻe ai",
+    "mapSearchHint": "Su'e a'oa'oga lautele"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-29 12:07:24.748847",
+    "@@last_modified": "2026-11-01 09:54:07.557231",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -8987,7 +8987,6 @@
     "addCourseBrowsePublic": "Arakatu publiko ikastaroak",
     "browsePublicCourses": "Arakatu publiko ikastaroak",
     "editProfile": "Editatu profila",
-    "mapSearchHint": "Bilatu jarduerak",
     "mapFilterAllLanguages": "Hizkuntza guztiak",
     "mapFilterNotStarted": "Hasita ez",
     "mapFilterInProgress": "Prozesuan",
@@ -10071,5 +10070,20 @@
     "playWithBotNowMessage": "Oraindik inor ez da elkartu. Pangea Bot-ek libre dagoen lekua har dezake orain, edo zuk itxaroten jarrai dezakezu.",
     "keepWaiting": "Itxaroten jarraitu",
     "botTookSeatAfterAnHour": "Saio hau ordubetez egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du.",
-    "botTookSeatAfterADay": "Saio hau egun bat baino gehiagoz egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du. Bidali mezu bat hasteko."
+    "botTookSeatAfterADay": "Saio hau egun bat baino gehiagoz egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du. Bidali mezu bat hasteko.",
+    "worldPublicShipLabel": "{course}, {city}-ko ikastaro publikoa, irekia",
+    "worldCardClose": "Itxi {name} txartela",
+    "worldCardSlide": "{index} / {count}",
+    "worldCardPrevious": "Aurreko jarduera",
+    "worldCardNext": "Hurrengo jarduera",
+    "worldCityNothingHere": "Oraindik ez dago ezer hizkuntza honetarako.",
+    "worldExploreCity": "Arakatu",
+    "worldShipAtCity": "{city}-n",
+    "worldShipRunBy": "{admins}-ek kudeatua",
+    "worldShipRunByPangea": "Pangeak kudeatua",
+    "worldShipMembers": "{count, plural, =1{kide 1} other{{count} kide}}",
+    "worldShipOpenCourse": "Ikastaro irekia",
+    "worldCityLockedLabel": "{city}, oraindik ez dago irekita zuretzat",
+    "worldCityNoCourseHere": "Sartu ikastaro batean hemen arakatzeko",
+    "mapSearchHint": "Ikastaro publikoak bilatu"
 }

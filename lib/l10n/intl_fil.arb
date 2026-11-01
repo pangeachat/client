@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-29 12:07:24.682125",
+    "@@last_modified": "2026-11-01 09:54:07.626128",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9844,7 +9844,6 @@
     "addCourseBrowsePublic": "Mag-browse ng mga pampublikong kurso",
     "browsePublicCourses": "Mag-browse ng mga pampublikong kurso",
     "editProfile": "I-edit ang profile",
-    "mapSearchHint": "Maghanap ng mga aktibidad",
     "mapFilterAllLanguages": "Lahat ng wika",
     "mapFilterNotStarted": "Hindi pa nagsimula",
     "mapFilterInProgress": "Nasa proseso",
@@ -10928,5 +10927,20 @@
     "playWithBotNowMessage": "Wala pang sumasali. Puwedeng umupo si Pangea Bot sa bakanteng upuan ngayon, o puwede kang maghintay pa.",
     "keepWaiting": "Maghintay pa",
     "botTookSeatAfterAnHour": "Isang oras nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan.",
-    "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula."
+    "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula.",
+    "worldPublicShipLabel": "{course}, isang pampublikong kurso sa {city}, bukas para salihan",
+    "worldCardClose": "Isara ang card ng {name}",
+    "worldCardSlide": "{index} ng {count}",
+    "worldCardPrevious": "Nakaraang aktibidad",
+    "worldCardNext": "Susunod na aktibidad",
+    "worldCityNothingHere": "Wala pa rito para sa wikang ito.",
+    "worldExploreCity": "Galugarin",
+    "worldShipAtCity": "Sa {city}",
+    "worldShipRunBy": "Pinapatakbo ni {admins}",
+    "worldShipRunByPangea": "Pinapatakbo ng Pangea",
+    "worldShipMembers": "{count, plural, =1{1 miyembro} other{{count} miyembro}}",
+    "worldShipOpenCourse": "Buksan ang kurso",
+    "worldCityLockedLabel": "{city}, hindi pa bukas sa iyo",
+    "worldCityNoCourseHere": "Sumali sa isang kurso dito para galugarin ito",
+    "mapSearchHint": "Maghanap ng mga pampublikong kurso"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 12:07:29.788852",
+    "@@last_modified": "2026-11-01 09:54:11.717389",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9044,7 +9044,6 @@
     "addCourseBrowsePublic": "Bla gjennom offentlige kurs",
     "browsePublicCourses": "Bla gjennom offentlige kurs",
     "editProfile": "Rediger profil",
-    "mapSearchHint": "Søk aktiviteter",
     "mapFilterAllLanguages": "Alle språk",
     "mapFilterNotStarted": "Ikke startet",
     "mapFilterInProgress": "Pågår",
@@ -10128,5 +10127,20 @@
     "playWithBotNowMessage": "Ingen har blitt med ennå. Pangea Bot kan ta den ledige plassen nå, eller du kan fortsette å vente.",
     "keepWaiting": "Fortsett å vente",
     "botTookSeatAfterAnHour": "Denne økten var åpen i en time, så Pangea Bot tok den ledige plassen.",
-    "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea Bot tok den ledige plassen. Send en melding for å starte."
+    "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea Bot tok den ledige plassen. Send en melding for å starte.",
+    "worldPublicShipLabel": "{course}, et offentlig kurs i {city}, åpent for alle",
+    "worldCardClose": "Lukk {name}-kortet",
+    "worldCardSlide": "{index} av {count}",
+    "worldCardPrevious": "Forrige aktivitet",
+    "worldCardNext": "Neste aktivitet",
+    "worldCityNothingHere": "Ingenting her for dette språket ennå.",
+    "worldExploreCity": "Utforsk",
+    "worldShipAtCity": "I {city}",
+    "worldShipRunBy": "Drives av {admins}",
+    "worldShipRunByPangea": "Drives av Pangea",
+    "worldShipMembers": "{count, plural, =1{1 medlem} other{{count} medlemmer}}",
+    "worldShipOpenCourse": "Åpent kurs",
+    "worldCityLockedLabel": "{city}, ikke åpent for deg ennå",
+    "worldCityNoCourseHere": "Bli med på et kurs her for å utforske det",
+    "mapSearchHint": "Søk etter offentlige kurs"
 }

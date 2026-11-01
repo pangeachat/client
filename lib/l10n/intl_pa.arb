@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-10-29 12:07:30.502665",
+    "@@last_modified": "2026-11-01 09:54:12.098845",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "ਕੋਰਸ ਪ੍ਰਬੰਧਕਾਂ ਲਈ ਕੋਰਸ ਭਾਗੀਦਾਰਾਂ ਲਈ ਘੋਸ਼ਣਾਵਾਂ ਬਣਾਉਣ ਲਈ ਇੱਕ ਜਗ੍ਹਾ। ਜਦੋਂ ਕਿ ਸਾਰੇ ਇਸ ਚੈਨਲ ਨੂੰ ਦੇਖ ਸਕਦੇ ਹਨ, ਸਿਰਫ਼ ਪ੍ਰਬੰਧਕ ਹੀ ਇਸ ਵਿੱਚ ਟਾਈਪ ਕਰ ਸਕਦੇ ਹਨ।",
     "introChatDesc": "ਕੋਰਸ ਵਿੱਚ ਕੋਈ ਵੀ ਪੋਸਟ ਕਰ ਸਕਦਾ ਹੈ।",
     "announcementsChatDesc": "ਸਿਰਫ਼ ਕੋਰਸ ਪ੍ਰਬੰਧਕ ਹੀ ਪੋਸਟ ਕਰ ਸਕਦੇ ਹਨ।",
-    "mapSearchHint": "ਗਤੀਵਿਧੀਆਂ ਖੋਜੋ",
     "mapFilterAllLanguages": "ਸਾਰੀਆਂ ਭਾਸ਼ਾਵਾਂ",
     "mapFilterNotStarted": "ਸ਼ੁਰੂ ਨਹੀਂ ਹੋਇਆ",
     "mapFilterInProgress": "ਜਾਰੀ ਹੈ",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "ਕੋਈ ਵੀ ਅਜੇ ਸ਼ਾਮਲ ਨਹੀਂ ਹੋਇਆ ਹੈ। ਪੈਂਗੇਆ ਬੋਟ ਹੁਣ ਖਾਲੀ ਸੀਟ ਲੈ ਸਕਦਾ ਹੈ, ਜਾਂ ਤੁਸੀਂ ਉਡੀਕ ਕਰ ਸਕਦੇ ਹੋ।",
     "keepWaiting": "ਉਡੀਕ ਕਰਦੇ ਰਹੋ",
     "botTookSeatAfterAnHour": "ਇਹ ਸੈਸ਼ਨ ਇੱਕ ਘੰਟੇ ਲਈ ਖੁੱਲ੍ਹਾ ਸੀ, ਇਸ ਲਈ ਪੈਂਗੇਆ ਬੋਟ ਨੇ ਖਾਲੀ ਸੀਟ ਲੈ ਲਈ।",
-    "botTookSeatAfterADay": "ਇਹ ਸੈਸ਼ਨ ਇੱਕ ਦਿਨ ਤੋਂ ਵੱਧ ਸਮੇਂ ਲਈ ਖੁੱਲ੍ਹਾ ਸੀ, ਇਸ ਲਈ ਪੈਂਗੇਆ ਬੋਟ ਨੇ ਖਾਲੀ ਸੀਟ ਲੈ ਲਈ। ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੱਕ ਸੁਨੇਹਾ ਭੇਜੋ।"
+    "botTookSeatAfterADay": "ਇਹ ਸੈਸ਼ਨ ਇੱਕ ਦਿਨ ਤੋਂ ਵੱਧ ਸਮੇਂ ਲਈ ਖੁੱਲ੍ਹਾ ਸੀ, ਇਸ ਲਈ ਪੈਂਗੇਆ ਬੋਟ ਨੇ ਖਾਲੀ ਸੀਟ ਲੈ ਲਈ। ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੱਕ ਸੁਨੇਹਾ ਭੇਜੋ।",
+    "worldPublicShipLabel": "{course}, {city} ਵਿੱਚ ਇੱਕ ਜਨਤਕ ਕੋਰਸ, ਸ਼ਾਮਲ ਹੋਣ ਲਈ ਖੁੱਲ੍ਹਾ ਹੈ",
+    "worldCardClose": "{name} ਕਾਰਡ ਬੰਦ ਕਰੋ",
+    "worldCardSlide": "{count} ਵਿੱਚੋਂ {index}",
+    "worldCardPrevious": "ਪਿਛਲੀ ਗਤੀਵਿਧੀ",
+    "worldCardNext": "ਅਗਲੀ ਗਤੀਵਿਧੀ",
+    "worldCityNothingHere": "ਇਸ ਭਾਸ਼ਾ ਲਈ ਅਜੇ ਇੱਥੇ ਕੁਝ ਨਹੀਂ ਹੈ।",
+    "worldExploreCity": "ਪੜਚੋਲ ਕਰੋ",
+    "worldShipAtCity": "{city} ਵਿੱਚ",
+    "worldShipRunBy": "{admins} ਦੁਆਰਾ ਚਲਾਇਆ ਜਾਂਦਾ ਹੈ",
+    "worldShipRunByPangea": "ਪੈਂਜੀਆ ਦੁਆਰਾ ਚਲਾਇਆ ਜਾਂਦਾ ਹੈ",
+    "worldShipMembers": "{count, plural, =1{1 ਮੈਂਬਰ} other{{count} ਮੈਂਬਰ}}",
+    "worldShipOpenCourse": "ਕੋਰਸ ਖੋਲ੍ਹੋ",
+    "worldCityLockedLabel": "{city}, ਤੁਹਾਡੇ ਲਈ ਅਜੇ ਖੁੱਲ੍ਹਾ ਨਹੀਂ ਹੈ",
+    "worldCityNoCourseHere": "ਇਸਦੀ ਪੜਚੋਲ ਕਰਨ ਲਈ ਇੱਥੇ ਇੱਕ ਕੋਰਸ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
+    "mapSearchHint": "ਜਨਤਕ ਕੋਰਸਾਂ ਦੀ ਖੋਜ ਕਰੋ"
 }

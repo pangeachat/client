@@ -3389,7 +3389,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-10-29 12:07:23.763201",
+    "@@last_modified": "2026-11-01 09:54:06.903953",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -9859,7 +9859,6 @@
     "addCourseBrowsePublic": "Περιήγηση σε δημόσια μαθήματα",
     "browsePublicCourses": "Περιήγηση σε δημόσια μαθήματα",
     "editProfile": "Επεξεργασία προφίλ",
-    "mapSearchHint": "Αναζητήστε δραστηριότητες",
     "mapFilterAllLanguages": "Όλες οι γλώσσες",
     "mapFilterNotStarted": "Δεν έχει ξεκινήσει",
     "mapFilterInProgress": "Σε εξέλιξη",
@@ -10943,5 +10942,20 @@
     "playWithBotNowMessage": "Κανείς δεν έχει συμμετάσχει ακόμα. Το Pangea Bot μπορεί να πάρει την κενή θέση τώρα, ή μπορείτε να συνεχίσετε να περιμένετε.",
     "keepWaiting": "Συνέχιση αναμονής",
     "botTookSeatAfterAnHour": "Αυτή η συνεδρία ήταν ανοιχτή για μία ώρα, οπότε το Pangea Bot πήρε την κενή θέση.",
-    "botTookSeatAfterADay": "Αυτή η συνεδρία ήταν ανοιχτή για πάνω από μία ημέρα, οπότε το Pangea Bot πήρε την κενή θέση. Στείλτε ένα μήνυμα για να ξεκινήσετε."
+    "botTookSeatAfterADay": "Αυτή η συνεδρία ήταν ανοιχτή για πάνω από μία ημέρα, οπότε το Pangea Bot πήρε την κενή θέση. Στείλτε ένα μήνυμα για να ξεκινήσετε.",
+    "worldPublicShipLabel": "{course}, ένα δημόσιο μάθημα στην {city}, ανοιχτό για συμμετοχή",
+    "worldCardClose": "Κλείσιμο της κάρτας {name}",
+    "worldCardSlide": "{index} από {count}",
+    "worldCardPrevious": "Προηγούμενη δραστηριότητα",
+    "worldCardNext": "Επόμενη δραστηριότητα",
+    "worldCityNothingHere": "Τίποτα εδώ για αυτήν τη γλώσσα ακόμα.",
+    "worldExploreCity": "Εξερεύνηση",
+    "worldShipAtCity": "Στην {city}",
+    "worldShipRunBy": "Διαχειρίζεται από {admins}",
+    "worldShipRunByPangea": "Διαχειρίζεται από την Pangea",
+    "worldShipMembers": "{count, plural, =1{1 μέλος} other{{count} μέλη}}",
+    "worldShipOpenCourse": "Ανοιχτό μάθημα",
+    "worldCityLockedLabel": "{city}, δεν είναι ακόμα ανοιχτή για εσάς",
+    "worldCityNoCourseHere": "Εγγραφείτε σε ένα μάθημα εδώ για να το εξερευνήσετε",
+    "mapSearchHint": "Αναζήτηση δημόσιων μαθημάτων"
 }

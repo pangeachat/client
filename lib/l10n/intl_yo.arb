@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-29 12:07:33.712480",
+    "@@last_modified": "2026-11-01 09:54:14.987591",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Ibi kan fún àwọn adarí ẹ̀kọ́ láti ṣẹ̀dá àwọn ìkéde fún àwọn olùkópa ẹ̀kọ́. Bí gbogbo ènìyàn bá ti lè wo ikanni yìí, àwọn adarí nìkan ló lè tẹ́wọ́ sí i.",
     "introChatDesc": "Ẹnikẹ́ni nínú ẹ̀kọ́ lè fi sílẹ̀.",
     "announcementsChatDesc": "Àwọn adarí ẹ̀kọ́ nìkan ló lè fi sílẹ̀.",
-    "mapSearchHint": "Wá àwọn iṣẹ́",
     "mapFilterAllLanguages": "Gbogbo èdè",
     "mapFilterNotStarted": "Kò tíì bẹ̀rẹ̀",
     "mapFilterInProgress": "Ní ìlọsíwájú",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Ko si ẹnikan ti o darapọ mọ sibẹsibẹ. Pangea Bot le gba ipo ti o ṣ'ofo ni bayi, tabi o le tẹsiwaju lati duro.",
     "keepWaiting": "Tẹsiwaju lati duro",
     "botTookSeatAfterAnHour": "Aago kan ti kọja ti igba yii ti ṣ'i silẹ, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo.",
-    "botTookSeatAfterADay": "Igba yii ti ṣ'i silẹ fun ọjọ kan ju, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo. Fi ifiranṣẹ ranṣẹ lati bẹrẹ."
+    "botTookSeatAfterADay": "Igba yii ti ṣ'i silẹ fun ọjọ kan ju, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo. Fi ifiranṣẹ ranṣẹ lati bẹrẹ.",
+    "worldPublicShipLabel": "{course}, ikẹkọ gbogbo eniyan ni {city}, ṣi silẹ lati darapọ mọ",
+    "worldCardClose": "Pa kaadi {name} naa",
+    "worldCardSlide": "{index} ninu {count}",
+    "worldCardPrevious": "Iṣẹ ti tẹlẹ",
+    "worldCardNext": "Iṣẹ ti o tẹle",
+    "worldCityNothingHere": "Ko si nkankan nibi fun ede yii sibẹsibẹ.",
+    "worldExploreCity": "Ṣawari",
+    "worldShipAtCity": "Ni {city}",
+    "worldShipRunBy": "Ṣiṣe nipasẹ {admins}",
+    "worldShipRunByPangea": "Ṣiṣe nipasẹ Pangea",
+    "worldShipMembers": "{count, plural, =1{ọmọ ẹgbẹ 1} other{awọn ọmọ ẹgbẹ {count}}}",
+    "worldShipOpenCourse": "Ikẹkọ ti o ṣii",
+    "worldCityLockedLabel": "{city}, ko ṣi silẹ fun ọ sibẹsibẹ",
+    "worldCityNoCourseHere": "Darapọ mọ ikẹkọ nibi lati ṣawari rẹ",
+    "mapSearchHint": "Wa awọn ikẹkọ gbogbo eniyan"
 }

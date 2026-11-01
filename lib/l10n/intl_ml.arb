@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-10-29 12:07:29.079557",
+    "@@last_modified": "2026-11-01 09:54:11.392797",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "കോഴ്സ് അഡ്മിൻമാർക്ക് കോഴ്സ് പങ്കാളികൾക്കായി അറിയിപ്പുകൾ സൃഷ്ടിക്കാനുള്ള ഒരിടം. എല്ലാവർക്കും ഈ ചാനൽ കാണാൻ കഴിയുമെങ്കിലും, അഡ്മിൻമാർക്ക് മാത്രമേ അതിൽ ടൈപ്പ് ചെയ്യാൻ കഴിയൂ.",
     "introChatDesc": "കോഴ്സിലുള്ള ആർക്കും പോസ്റ്റ് ചെയ്യാം.",
     "announcementsChatDesc": "കോഴ്സ് അഡ്മിൻമാർക്ക് മാത്രമേ പോസ്റ്റ് ചെയ്യാൻ കഴിയൂ.",
-    "mapSearchHint": "പ്രവർത്തനങ്ങൾ തിരയുക",
     "mapFilterAllLanguages": "എല്ലാ ഭാഷകളും",
     "mapFilterNotStarted": "ആരംഭിച്ചിട്ടില്ല",
     "mapFilterInProgress": "പുരോഗമിക്കുന്നു",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "ആരും ഇതുവരെ ചേർന്നിട്ടില്ല. പാഞ്ചിയ ബോട്ടിന് ഇപ്പോൾ ഒഴിവുള്ള സീറ്റ് എടുക്കാം, അല്ലെങ്കിൽ നിങ്ങൾക്ക് കാത്തിരിക്കാം.",
     "keepWaiting": "കാത്തിരിക്കുക",
     "botTookSeatAfterAnHour": "ഈ സെഷൻ ഒരു മണിക്കൂർ തുറന്നിരുന്നു, അതിനാൽ പാഞ്ചിയ ബോട്ട് ഒഴിവുള്ള സീറ്റ് എടുത്തു.",
-    "botTookSeatAfterADay": "ഈ സെഷൻ ഒരു ദിവസത്തിലേറെയായി തുറന്നിരുന്നു, അതിനാൽ പാഞ്ചിയ ബോട്ട് ഒഴിവുള്ള സീറ്റ് എടുത്തു. ആരംഭിക്കാൻ ഒരു സന്ദേശം അയയ്‌ക്കുക."
+    "botTookSeatAfterADay": "ഈ സെഷൻ ഒരു ദിവസത്തിലേറെയായി തുറന്നിരുന്നു, അതിനാൽ പാഞ്ചിയ ബോട്ട് ഒഴിവുള്ള സീറ്റ് എടുത്തു. ആരംഭിക്കാൻ ഒരു സന്ദേശം അയയ്‌ക്കുക.",
+    "worldPublicShipLabel": "{city} എന്ന സ്ഥലത്തെ ഒരു പൊതു കോഴ്സായ {course} ചേരാൻ തുറന്നിരിക്കുന്നു",
+    "worldCardClose": "{name} കാർഡ് അടയ്ക്കുക",
+    "worldCardSlide": "{count} എണ്ണത്തിൽ {index}",
+    "worldCardPrevious": "മുമ്പത്തെ പ്രവർത്തനം",
+    "worldCardNext": "അടുത്ത പ്രവർത്തനം",
+    "worldCityNothingHere": "ഈ ഭാഷയ്ക്ക് ഇവിടെ ഇതുവരെ ഒന്നുമില്ല.",
+    "worldExploreCity": "പര്യവേക്ഷണം ചെയ്യുക",
+    "worldShipAtCity": "{city} എന്ന സ്ഥലത്ത്",
+    "worldShipRunBy": "{admins} ആണ് നടത്തുന്നത്",
+    "worldShipRunByPangea": "Pangea ആണ് നടത്തുന്നത്",
+    "worldShipMembers": "{count, plural, =1{1 അംഗം} other{{count} അംഗങ്ങൾ}}",
+    "worldShipOpenCourse": "തുറന്ന കോഴ്സ്",
+    "worldCityLockedLabel": "{city}, നിങ്ങൾക്ക് ഇതുവരെ തുറന്നിട്ടില്ല",
+    "worldCityNoCourseHere": "ഇത് പര്യവേക്ഷണം ചെയ്യാൻ ഇവിടെ ഒരു കോഴ്സിൽ ചേരുക",
+    "mapSearchHint": "പൊതു കോഴ്സുകൾ തിരയുക"
 }

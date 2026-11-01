@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-29 12:07:32.107670",
+    "@@last_modified": "2026-11-01 09:54:13.339551",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Një vend ku administratorët e kursit mund të krijojnë njoftime për pjesëmarrësit e kursit. Ndërsa të gjithë mund ta shohin këtë kanal, vetëm administratorët mund të shkruajnë në të.",
     "introChatDesc": "Kushdo në kurs mund të postojë.",
     "announcementsChatDesc": "Vetëm administratorët e kursit mund të postojnë.",
-    "mapSearchHint": "Kërko aktivitete",
     "mapFilterAllLanguages": "Të gjitha gjuhët",
     "mapFilterNotStarted": "Pa filluar",
     "mapFilterInProgress": "Në progres",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Askush nuk është bashkuar ende. Pangea Bot mund të zërë vendin e lirë tani, ose mund të vazhdosh të presësh.",
     "keepWaiting": "Vazhdo të presësh",
     "botTookSeatAfterAnHour": "Kjo seancë ishte e hapur për një orë, kështu që Pangea Bot zuri vendin e lirë.",
-    "botTookSeatAfterADay": "Kjo seancë ishte e hapur për më shumë se një ditë, kështu që Pangea Bot zuri vendin e lirë. Dërgo një mesazh për të filluar."
+    "botTookSeatAfterADay": "Kjo seancë ishte e hapur për më shumë se një ditë, kështu që Pangea Bot zuri vendin e lirë. Dërgo një mesazh për të filluar.",
+    "worldPublicShipLabel": "{course}, një kurs publik në {city}, i hapur për t'u bashkuar",
+    "worldCardClose": "Mbyll kartën {name}",
+    "worldCardSlide": "{index} nga {count}",
+    "worldCardPrevious": "Aktiviteti i mëparshëm",
+    "worldCardNext": "Aktiviteti tjetër",
+    "worldCityNothingHere": "Asgjë këtu për këtë gjuhë ende.",
+    "worldExploreCity": "Eksploro",
+    "worldShipAtCity": "Në {city}",
+    "worldShipRunBy": "Drejtuar nga {admins}",
+    "worldShipRunByPangea": "Drejtuar nga Pangea",
+    "worldShipMembers": "{count, plural, =1{1 anëtar} other{{count} anëtarë}}",
+    "worldShipOpenCourse": "Kurs i hapur",
+    "worldCityLockedLabel": "{city}, nuk është ende i hapur për ty",
+    "worldCityNoCourseHere": "Bashkohuni me një kurs këtu për ta eksploruar",
+    "mapSearchHint": "Kërko kurse publike"
 }

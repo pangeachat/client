@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-10-29 12:07:30.111920",
+    "@@last_modified": "2026-11-01 09:54:12.452297",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Et sted for kursadministratorer å lage kunngjøringer for kursdeltakere. Mens alle kan se denne kanalen, kan bare administratorer skrive i den.",
     "introChatDesc": "Alle i kurset kan poste.",
     "announcementsChatDesc": "Bare kursadministratorer kan poste.",
-    "mapSearchHint": "Søk aktiviteter",
     "mapFilterAllLanguages": "Alle språk",
     "mapFilterNotStarted": "Ikke startet",
     "mapFilterInProgress": "Pågår",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Ingen har blitt med ennå. Pangea-boten kan ta den ledige plassen nå, eller du kan fortsette å vente.",
     "keepWaiting": "Fortsett å vente",
     "botTookSeatAfterAnHour": "Denne økten var åpen i en time, så Pangea-boten tok den ledige plassen.",
-    "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea-boten tok den ledige plassen. Send en melding for å starte."
+    "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea-boten tok den ledige plassen. Send en melding for å starte.",
+    "worldPublicShipLabel": "{course}, et offentlig kurs i {city}, åpent for alle",
+    "worldCardClose": "Lukk {name}-kortet",
+    "worldCardSlide": "{index} av {count}",
+    "worldCardPrevious": "Forrige aktivitet",
+    "worldCardNext": "Neste aktivitet",
+    "worldCityNothingHere": "Ingenting her for dette språket ennå.",
+    "worldExploreCity": "Utforsk",
+    "worldShipAtCity": "I {city}",
+    "worldShipRunBy": "Drives av {admins}",
+    "worldShipRunByPangea": "Drives av Pangea",
+    "worldShipMembers": "{count, plural, =1{1 medlem} other{{count} medlemmer}}",
+    "worldShipOpenCourse": "Åpent kurs",
+    "worldCityLockedLabel": "{city}, ikke åpent for deg ennå",
+    "worldCityNoCourseHere": "Bli med på et kurs her for å utforske det",
+    "mapSearchHint": "Søk i offentlige kurs"
 }

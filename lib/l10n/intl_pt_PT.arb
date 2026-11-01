@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-29 12:07:30.841503",
+    "@@last_modified": "2026-11-01 09:54:12.268302",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9901,7 +9901,6 @@
     "addCourseBrowsePublic": "Navegar por cursos públicos",
     "browsePublicCourses": "Navegar por cursos públicos",
     "editProfile": "Editar perfil",
-    "mapSearchHint": "Pesquisar atividades",
     "mapFilterAllLanguages": "Todos os idiomas",
     "mapFilterNotStarted": "Não iniciado",
     "mapFilterInProgress": "Em andamento",
@@ -10985,5 +10984,20 @@
     "playWithBotNowMessage": "Ninguém se juntou ainda. O Pangea Bot pode ocupar o lugar vago agora, ou pode continuar à espera.",
     "keepWaiting": "Continuar à espera",
     "botTookSeatAfterAnHour": "Esta sessão esteve aberta durante uma hora, por isso o Pangea Bot ocupou o lugar vago.",
-    "botTookSeatAfterADay": "Esta sessão esteve aberta por mais de um dia, por isso o Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar."
+    "botTookSeatAfterADay": "Esta sessão esteve aberta por mais de um dia, por isso o Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar.",
+    "worldPublicShipLabel": "{course}, um curso público em {city}, aberto a todos",
+    "worldCardClose": "Fechar o cartão {name}",
+    "worldCardSlide": "{index} de {count}",
+    "worldCardPrevious": "Atividade anterior",
+    "worldCardNext": "Próxima atividade",
+    "worldCityNothingHere": "Ainda nada aqui para este idioma.",
+    "worldExploreCity": "Explorar",
+    "worldShipAtCity": "Em {city}",
+    "worldShipRunBy": "Gerido por {admins}",
+    "worldShipRunByPangea": "Gerido pela Pangea",
+    "worldShipMembers": "{count, plural, =1{1 membro} other{{count} membros}}",
+    "worldShipOpenCourse": "Curso aberto",
+    "worldCityLockedLabel": "{city}, ainda não está aberto para si",
+    "worldCityNoCourseHere": "Junte-se a um curso aqui para o explorar",
+    "mapSearchHint": "Procurar cursos públicos"
 }

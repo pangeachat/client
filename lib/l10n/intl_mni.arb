@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-29 12:07:29.764117",
+    "@@last_modified": "2026-11-01 09:54:11.210116",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Course admin-singna course participant-singgi damak announcement-sing semnanaba mafam amakhak. Pumnamakna channel asi yengba yai, adubu admin-singna khaktana type touba yai.",
     "introChatDesc": "Course-ta leiba mi khudingmakna post touba yai.",
     "announcementsChatDesc": "Course admin-singna khaktana post touba yai.",
-    "mapSearchHint": "Activities-sing thiyu",
     "mapFilterAllLanguages": "Language pumnamak",
     "mapFilterNotStarted": "Houkhidri",
     "mapFilterInProgress": "Chatli",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Kanadasu houjik faoba yaodri. Pangea Bot na houjik khongpham louba yai, nattraga nangna ngairaga leiba yai.",
     "keepWaiting": "Ngairaga leiyu",
     "botTookSeatAfterAnHour": "Seesion asi pung ama muk hangkhre, aduna Pangea Bot na khongpham lourabani.",
-    "botTookSeatAfterADay": "Seesion asi numit ama muk hangkhre, aduna Pangea Bot na khongpham lourabani. Haurunaba wahei amata thabiyu."
+    "botTookSeatAfterADay": "Seesion asi numit ama muk hangkhre, aduna Pangea Bot na khongpham lourabani. Haurunaba wahei amata thabiyu.",
+    "worldPublicShipLabel": "{city} da {course}, pꠏblic kꠏrs, sꠏmꠏnba ꠀꠈꠥꠝ",
+    "worldCardClose": "{name} kꠀrd to sꠏmꠏnbi",
+    "worldCardSlide": "{count} tꠀgi {index}",
+    "worldCardPrevious": "ꠀrꠥmꠀ ꠀkꠥꠝ",
+    "worldCardNext": "mꠀtꠥng ꠀkꠥꠝ",
+    "worldCityNothingHere": "sꠥbꠀk lꠥꠝjꠀ sꠥdꠀ kꠥnꠀmꠀtꠀ ꠀmꠥtꠥ nꠥtꠥ",
+    "worldExploreCity": "thꠥbꠀ",
+    "worldShipAtCity": "{city} dꠀ",
+    "worldShipRunBy": "{admins} nꠀ sꠥnꠀrꠀmꠥ",
+    "worldShipRunByPangea": "pꠀngꠥꠀ nꠀ sꠥnꠀrꠀmꠥ",
+    "worldShipMembers": "{count, plural, =1{ꠀmꠀ mꠥmꠀbꠀr} other{{count} mꠥmꠀbꠀr}}",
+    "worldShipOpenCourse": "hꠀngꠀbꠀ kꠏrs",
+    "worldCityLockedLabel": "{city}, nꠥngꠀng sꠥdꠀ hꠥtꠀtꠥ nꠥtꠥ",
+    "worldCityNoCourseHere": "sꠥdꠀ kꠏrs ꠀmꠀ yꠀwnꠀrꠀgꠀ thꠥbꠀ",
+    "mapSearchHint": "পাবলিক কোর্সশিং থিজিনবীয়ু"
 }

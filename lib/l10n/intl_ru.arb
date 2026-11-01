@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-29 12:07:31.051054",
+    "@@last_modified": "2026-11-01 09:54:12.974567",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -9959,7 +9959,6 @@
     "addCourseBrowsePublic": "Просмотреть публичные курсы",
     "browsePublicCourses": "Просмотреть публичные курсы",
     "editProfile": "Редактировать профиль",
-    "mapSearchHint": "Поиск мероприятий",
     "mapFilterAllLanguages": "Все языки",
     "mapFilterNotStarted": "Не начато",
     "mapFilterInProgress": "В процессе",
@@ -11043,5 +11042,20 @@
     "playWithBotNowMessage": "Пока никто не присоединился. Бот Pangea может занять свободное место сейчас, или вы можете продолжить ждать.",
     "keepWaiting": "Продолжить ждать",
     "botTookSeatAfterAnHour": "Эта сессия была открыта в течение часа, поэтому бот Pangea занял свободное место.",
-    "botTookSeatAfterADay": "Эта сессия была открыта более суток, поэтому бот Pangea занял свободное место. Отправьте сообщение, чтобы начать."
+    "botTookSeatAfterADay": "Эта сессия была открыта более суток, поэтому бот Pangea занял свободное место. Отправьте сообщение, чтобы начать.",
+    "worldPublicShipLabel": "{course}, публичный курс в {city}, открыт для присоединения",
+    "worldCardClose": "Закрыть карточку {name}",
+    "worldCardSlide": "{index} из {count}",
+    "worldCardPrevious": "Предыдущее занятие",
+    "worldCardNext": "Следующее занятие",
+    "worldCityNothingHere": "Пока ничего нет для этого языка.",
+    "worldExploreCity": "Исследовать",
+    "worldShipAtCity": "В {city}",
+    "worldShipRunBy": "Организатор: {admins}",
+    "worldShipRunByPangea": "Организатор: Pangea",
+    "worldShipMembers": "{count, plural, one{1 участник} few{{count} участника} many{{count} участников} other{{count} участника}}",
+    "worldShipOpenCourse": "Открытый курс",
+    "worldCityLockedLabel": "{city}, пока не открыт для вас",
+    "worldCityNoCourseHere": "Присоединитесь к курсу здесь, чтобы исследовать его",
+    "mapSearchHint": "Искать публичные курсы"
 }

@@ -1327,7 +1327,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-29 12:07:23.854637",
+    "@@last_modified": "2026-11-01 09:54:07.124332",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -9904,7 +9904,6 @@
     "addCourseBrowsePublic": "Gennemse offentlige kurser",
     "browsePublicCourses": "Gennemse offentlige kurser",
     "editProfile": "Rediger profil",
-    "mapSearchHint": "Søg aktiviteter",
     "mapFilterAllLanguages": "Alle sprog",
     "mapFilterNotStarted": "Ikke startet",
     "mapFilterInProgress": "I gang",
@@ -10988,5 +10987,20 @@
     "playWithBotNowMessage": "Ingen er kommet med endnu. Pangea Bot kan tage den ledige plads nu, eller du kan fortsætte med at vente.",
     "keepWaiting": "Fortsæt med at vente",
     "botTookSeatAfterAnHour": "Denne session var åben i en time, så Pangea Bot tog den ledige plads.",
-    "botTookSeatAfterADay": "Denne session var åben i over et døgn, så Pangea Bot tog den ledige plads. Send en besked for at starte."
+    "botTookSeatAfterADay": "Denne session var åben i over et døgn, så Pangea Bot tog den ledige plads. Send en besked for at starte.",
+    "worldPublicShipLabel": "{course}, et offentligt kursus i {city}, åbent for tilmelding",
+    "worldCardClose": "Luk {name}-kortet",
+    "worldCardSlide": "{index} af {count}",
+    "worldCardPrevious": "Forrige aktivitet",
+    "worldCardNext": "Næste aktivitet",
+    "worldCityNothingHere": "Intet her for dette sprog endnu.",
+    "worldExploreCity": "Udforsk",
+    "worldShipAtCity": "I {city}",
+    "worldShipRunBy": "Drives af {admins}",
+    "worldShipRunByPangea": "Drives af Pangea",
+    "worldShipMembers": "{count, plural, =1{1 medlem} other{{count} medlemmer}}",
+    "worldShipOpenCourse": "Åbent kursus",
+    "worldCityLockedLabel": "{city}, ikke åben for dig endnu",
+    "worldCityNoCourseHere": "Tilmeld dig et kursus her for at udforske det",
+    "mapSearchHint": "Søg offentlige kurser"
 }

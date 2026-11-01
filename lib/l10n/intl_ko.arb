@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 12:07:27.827133",
+    "@@last_modified": "2026-11-01 09:54:09.688574",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9180,7 +9180,6 @@
     "addCourseBrowsePublic": "공개 과정 탐색",
     "browsePublicCourses": "공개 과정 탐색",
     "editProfile": "프로필 수정",
-    "mapSearchHint": "활동 검색",
     "mapFilterAllLanguages": "모든 언어",
     "mapFilterNotStarted": "시작하지 않음",
     "mapFilterInProgress": "진행 중",
@@ -10264,5 +10263,20 @@
     "playWithBotNowMessage": "아직 아무도 참여하지 않았습니다. 판게아 봇이 지금 빈자리에 참여하거나, 계속 기다릴 수 있습니다.",
     "keepWaiting": "계속 기다리기",
     "botTookSeatAfterAnHour": "이 세션은 한 시간 동안 열려 있었으므로 판게아 봇이 빈자리에 참여했습니다.",
-    "botTookSeatAfterADay": "이 세션은 하루 이상 열려 있었으므로 판게아 봇이 빈자리에 참여했습니다. 메시지를 보내 시작하세요."
+    "botTookSeatAfterADay": "이 세션은 하루 이상 열려 있었으므로 판게아 봇이 빈자리에 참여했습니다. 메시지를 보내 시작하세요.",
+    "worldPublicShipLabel": "{city}의 공개 코스인 {course}에 참여할 수 있습니다.",
+    "worldCardClose": "{name} 카드 닫기",
+    "worldCardSlide": "{count}개 중 {index}번째",
+    "worldCardPrevious": "이전 활동",
+    "worldCardNext": "다음 활동",
+    "worldCityNothingHere": "이 언어에 대한 내용이 아직 없습니다.",
+    "worldExploreCity": "탐색",
+    "worldShipAtCity": "{city}에서",
+    "worldShipRunBy": "{admins}에 의해 운영",
+    "worldShipRunByPangea": "Pangea에 의해 운영",
+    "worldShipMembers": "{count, plural, =1{회원 1명} other{회원 {count}명}}",
+    "worldShipOpenCourse": "공개 코스",
+    "worldCityLockedLabel": "{city}, 아직 이용할 수 없습니다.",
+    "worldCityNoCourseHere": "탐색하려면 여기에서 코스에 참여하세요.",
+    "mapSearchHint": "공개 코스 검색"
 }

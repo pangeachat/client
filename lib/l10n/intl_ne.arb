@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-29 12:07:29.877236",
+    "@@last_modified": "2026-11-01 09:54:11.550621",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "पाठ्यक्रम प्रशासकहरूका लागि पाठ्यक्रम सहभागीहरूका लागि घोषणाहरू सिर्जना गर्ने ठाउँ। सबैले यो च्यानल हेर्न सक्छन्, तर प्रशासकहरूले मात्र यसमा टाइप गर्न सक्छन्।",
     "introChatDesc": "पाठ्यक्रममा जो कोहीले पनि पोस्ट गर्न सक्छन्।",
     "announcementsChatDesc": "पाठ्यक्रम प्रशासकहरूले मात्र पोस्ट गर्न सक्छन्।",
-    "mapSearchHint": "गतिविधिहरू खोज्नुहोस्",
     "mapFilterAllLanguages": "सबै भाषाहरू",
     "mapFilterNotStarted": "सुरु भएको छैन",
     "mapFilterInProgress": "प्रगतिमा",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "अहिलेसम्म कोही पनि सामेल भएका छैनन्। Pangea Bot ले अहिले खाली सिट लिन सक्छ, वा तपाईं पर्खन सक्नुहुन्छ।",
     "keepWaiting": "पर्खिरहनुहोस्",
     "botTookSeatAfterAnHour": "यो सत्र एक घण्टाको लागि खुला थियो, त्यसैले Pangea Bot ले खाली सिट लियो।",
-    "botTookSeatAfterADay": "यो सत्र एक दिनभन्दा बढी समयदेखि खुला थियो, त्यसैले Pangea Bot ले खाली सिट लियो। सुरु गर्न सन्देश पठाउनुहोस्।"
+    "botTookSeatAfterADay": "यो सत्र एक दिनभन्दा बढी समयदेखि खुला थियो, त्यसैले Pangea Bot ले खाली सिट लियो। सुरु गर्न सन्देश पठाउनुहोस्।",
+    "worldPublicShipLabel": "{city} मा रहेको सार्वजनिक कोर्स {course} मा सामेल हुन खुल्ला छ",
+    "worldCardClose": "{name} कार्ड बन्द गर्नुहोस्",
+    "worldCardSlide": "{count} मध्ये {index}",
+    "worldCardPrevious": "अघिल्लो गतिविधि",
+    "worldCardNext": "अर्को गतिविधि",
+    "worldCityNothingHere": "यस भाषाको लागि यहाँ केही छैन।",
+    "worldExploreCity": "अन्वेषण गर्नुहोस्",
+    "worldShipAtCity": "{city} मा",
+    "worldShipRunBy": "{admins} द्वारा सञ्चालित",
+    "worldShipRunByPangea": "Pangea द्वारा सञ्चालित",
+    "worldShipMembers": "{count, plural, =1{१ सदस्य} other{{count} सदस्यहरू}}",
+    "worldShipOpenCourse": "खुला कोर्स",
+    "worldCityLockedLabel": "{city}, तपाईंको लागि अझै खुला छैन",
+    "worldCityNoCourseHere": "यसलाई अन्वेषण गर्न यहाँ एउटा कोर्समा सामेल हुनुहोस्",
+    "mapSearchHint": "सार्वजनिक पाठ्यक्रमहरू खोज्नुहोस्"
 }

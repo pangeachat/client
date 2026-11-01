@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-29 12:07:27.834535",
+    "@@last_modified": "2026-11-01 09:54:10.064312",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Locus ubi administratores cursus nuntios pro participibus creare possunt. Cum omnes hunc canalem videre possint, soli administratores in eo scribere possunt.",
     "introChatDesc": "Quisquis in cursu est scribere potest.",
     "announcementsChatDesc": "Soli administratores cursus scribere possunt.",
-    "mapSearchHint": "Actus quaere",
     "mapFilterAllLanguages": "Omnes linguae",
     "mapFilterNotStarted": "Non incepti",
     "mapFilterInProgress": "In progressu",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Nemo adhuc iunxit. Pangea Bot sedem liberam nunc capere potest, aut tu manere potes.",
     "keepWaiting": "Manere",
     "botTookSeatAfterAnHour": "Haec sessio per horam aperta erat, ergo Pangea Bot sedem liberam cepit.",
-    "botTookSeatAfterADay": "Haec sessio per diem apertior erat, ergo Pangea Bot sedem liberam cepit. Mitte nuntium ut incipias."
+    "botTookSeatAfterADay": "Haec sessio per diem apertior erat, ergo Pangea Bot sedem liberam cepit. Mitte nuntium ut incipias.",
+    "worldPublicShipLabel": "{course}, cursus publicus apud {city}, apertus ad coniungendum",
+    "worldCardClose": "Claudere chartam {name}",
+    "worldCardSlide": "{index} de {count}",
+    "worldCardPrevious": "Actio prior",
+    "worldCardNext": "Actio proxima",
+    "worldCityNothingHere": "Nihil hic pro hac lingua adhuc.",
+    "worldExploreCity": "Explorare",
+    "worldShipAtCity": "Apud {city}",
+    "worldShipRunBy": "Administratur a {admins}",
+    "worldShipRunByPangea": "Administratur a Pangea",
+    "worldShipMembers": "{count, plural, =1{1 membrum} other{{count} membra}}",
+    "worldShipOpenCourse": "Cursus apertus",
+    "worldCityLockedLabel": "{city}, nondum tibi apertum",
+    "worldCityNoCourseHere": "Coniunge cursum hic ut explores",
+    "mapSearchHint": "Quaere cursus publicos"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-10-29 12:07:29.671039",
+    "@@last_modified": "2026-11-01 09:54:11.084252",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Post fejn l-amministraturi tal-kors jistgħu joħolqu avviżi għall-parteċipanti tal-kors. Filwaqt li kulħadd jista' jara dan il-kanal, l-amministraturi biss jistgħu jiktbu fih.",
     "introChatDesc": "Kulħadd fil-kors jista' jippubblika.",
     "announcementsChatDesc": "L-amministraturi tal-kors biss jistgħu jippubblikaw.",
-    "mapSearchHint": "Fittex attivitajiet",
     "mapFilterAllLanguages": "Il-lingwi kollha",
     "mapFilterNotStarted": "Mhux mibdi",
     "mapFilterInProgress": "Għaddej",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Ħadd ma ngħaqad s'issa. Pangea Bot jista' jieħu s-siġġu vojt issa, jew tista' tibqa' tistenna.",
     "keepWaiting": "Ibqa' stenna",
     "botTookSeatAfterAnHour": "Din is-sessjoni kienet miftuħa għal siegħa, allura Pangea Bot ħa s-siġġu vojt.",
-    "botTookSeatAfterADay": "Din is-sessjoni kienet miftuħa għal aktar minn ġurnata, allura Pangea Bot ħa s-siġġu vojt. Ibgħat messaġġ biex tibda."
+    "botTookSeatAfterADay": "Din is-sessjoni kienet miftuħa għal aktar minn ġurnata, allura Pangea Bot ħa s-siġġu vojt. Ibgħat messaġġ biex tibda.",
+    "worldPublicShipLabel": "{course}, kors pubbliku f' {city}, miftuħ biex tingħaqad",
+    "worldCardClose": "Agħlaq il-karta ta' {name}",
+    "worldCardSlide": "{index} minn {count}",
+    "worldCardPrevious": "Attività preċedenti",
+    "worldCardNext": "Attività li jmiss",
+    "worldCityNothingHere": "Għad m'hemm xejn hawn għal din il-lingwa.",
+    "worldExploreCity": "Esplora",
+    "worldShipAtCity": "Fi {city}",
+    "worldShipRunBy": "Immexxi minn {admins}",
+    "worldShipRunByPangea": "Immexxi minn Pangea",
+    "worldShipMembers": "{count, plural, =1{1 membru} other{{count} membri}}",
+    "worldShipOpenCourse": "Kors miftuħ",
+    "worldCityLockedLabel": "{city}, għadu mhux miftuħ għalik",
+    "worldCityNoCourseHere": "Ingħaqad ma' kors hawn biex tesplorah",
+    "mapSearchHint": "Fittex korsijiet pubbliċi"
 }

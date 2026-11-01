@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-29 12:07:34.006627",
+    "@@last_modified": "2026-11-01 09:54:15.398812",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Indawo lapho abaphathi besifundo bangakha khona izimemezelo zabahlanganyeli besifundo. Nakuba bonke bengabuka lesi siteshi, abaphathi kuphela abangabhala kuso.",
     "introChatDesc": "Noma ubani osesifundweni angathumela.",
     "announcementsChatDesc": "Abaphathi besifundo kuphela abangathumela.",
-    "mapSearchHint": "Sesha imisebenzi",
     "mapFilterAllLanguages": "Zonke izilimi",
     "mapFilterNotStarted": "Akaqaliwe",
     "mapFilterInProgress": "Iyaqhubeka",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Akekho ojoyinile okwamanje. I-Pangea Bot ingathatha isihlalo esingenalutho manje, noma ungaqhubeka nokulinda.",
     "keepWaiting": "Qhubeka nokulinda",
     "botTookSeatAfterAnHour": "Lesi sikhathi besivuliwe ihora, ngakho i-Pangea Bot yathatha isihlalo esingenalutho.",
-    "botTookSeatAfterADay": "Lesi sikhathi besivuliwe isikhathi esingaphezu kosuku, ngakho i-Pangea Bot yathatha isihlalo esingenalutho. Thumela umlayezo ukuze uqale."
+    "botTookSeatAfterADay": "Lesi sikhathi besivuliwe isikhathi esingaphezu kosuku, ngakho i-Pangea Bot yathatha isihlalo esingenalutho. Thumela umlayezo ukuze uqale.",
+    "worldPublicShipLabel": "{course}, ikhosi yomphakathi e-{city}, evulekile ukuze ujoyine",
+    "worldCardClose": "Vala ikhadi le-{name}",
+    "worldCardSlide": "{index} koku-{count}",
+    "worldCardPrevious": "Umsebenzi odlule",
+    "worldCardNext": "Umsebenzi olandelayo",
+    "worldCityNothingHere": "Akukho lutho lapha lwalolu limi okwamanje.",
+    "worldExploreCity": "Hlola",
+    "worldShipAtCity": "E-{city}",
+    "worldShipRunBy": "Iqhutshwa ngu-{admins}",
+    "worldShipRunByPangea": "Iqhutshwa yi-Pangea",
+    "worldShipMembers": "{count, plural, =1{ilungu eli-1} other{amalungu angu-{count}}}",
+    "worldShipOpenCourse": "Vula ikhosi",
+    "worldCityLockedLabel": "{city}, ayikavulelwa wena okwamanje",
+    "worldCityNoCourseHere": "Joyina ikhosi lapha ukuze uyihlole",
+    "mapSearchHint": "Sesha izifundo zomphakathi"
 }

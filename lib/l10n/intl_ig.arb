@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-10-29 12:07:26.966954",
+    "@@last_modified": "2026-11-01 09:54:09.062225",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Ebe maka ndị nchịkwa ọmụmụ ihe iji mepụta ọkwa maka ndị sonyere na ọmụmụ ihe. Ọ bụ ezie na mmadụ niile nwere ike ịhụ ọwa a, naanị ndị nchịkwa nwere ike pịnye na ya.",
     "introChatDesc": "Onye ọ bụla nọ na ọmụmụ ihe nwere ike biputere.",
     "announcementsChatDesc": "Naanị ndị nchịkwa ọmụmụ ihe nwere ike biputere.",
-    "mapSearchHint": "Chọọ ihe omume",
     "mapFilterAllLanguages": "Asụsụ niile",
     "mapFilterNotStarted": "Emebeghị",
     "mapFilterInProgress": "Na-aga n'ihu",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Ọ dịghị onye esonyela. Pangea Bot nwere ike ịnọ n'oche tọgbọrọ chakoo ugbu a, ma ọ bụ ị nwere ike ịnọgide na-eche.",
     "keepWaiting": "Nọgide na-eche",
     "botTookSeatAfterAnHour": "Nzukọ a mepere otu awa, yabụ Pangea Bot nọrọ n'oche tọgbọrọ chakoo.",
-    "botTookSeatAfterADay": "Nzukọ a mepere ihe karịrị otu ụbọchị, yabụ Pangea Bot nọrọ n'oche tọgbọrọ chakoo. Zipụ ozi ka ịmalite."
+    "botTookSeatAfterADay": "Nzukọ a mepere ihe karịrị otu ụbọchị, yabụ Pangea Bot nọrọ n'oche tọgbọrọ chakoo. Zipụ ozi ka ịmalite.",
+    "worldPublicShipLabel": "{course}, nkuzi ọha na {city}, mepere emepe isonye",
+    "worldCardClose": "Mechie kaadị {name}",
+    "worldCardSlide": "{index} nke {count}",
+    "worldCardPrevious": "Ọrụ gara aga",
+    "worldCardNext": "Ọrụ ọzọ",
+    "worldCityNothingHere": "Ọ dịghị ihe dị ebe a maka asụsụ a ma.",
+    "worldExploreCity": "Chọgharịa",
+    "worldShipAtCity": "Na {city}",
+    "worldShipRunBy": "Ndị {admins} na-elekọta",
+    "worldShipRunByPangea": "Pangea na-elekọta",
+    "worldShipMembers": "{count, plural, =1{1 onye otu} other{{count} ndị otu}}",
+    "worldShipOpenCourse": "Nkuzi mepere emepe",
+    "worldCityLockedLabel": "{city}, emepebeghị gị ma",
+    "worldCityNoCourseHere": "Soro nkuzi ebe a ka ị chọgharịa ya",
+    "mapSearchHint": "Chọọ nkuzi ọha"
 }

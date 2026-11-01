@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-10-29 12:07:25.708595",
+    "@@last_modified": "2026-11-01 09:54:07.994492",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "કોર્સના સહભાગીઓ માટે જાહેરાતો બનાવવા માટે કોર્સ એડમિન માટે એક જગ્યા. જ્યારે બધા આ ચેનલ જોઈ શકે છે, ત્યારે ફક્ત એડમિન જ તેમાં ટાઇપ કરી શકે છે.",
     "introChatDesc": "કોર્સમાં કોઈપણ પોસ્ટ કરી શકે છે.",
     "announcementsChatDesc": "ફક્ત કોર્સ એડમિન જ પોસ્ટ કરી શકે છે.",
-    "mapSearchHint": "એક્ટિવિટી શોધો",
     "mapFilterAllLanguages": "બધી ભાષાઓ",
     "mapFilterNotStarted": "શરૂ નથી થઈ",
     "mapFilterInProgress": "ચાલુ છે",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "હજી કોઈ જોડાયું નથી. Pangea Bot હમણાં ખાલી જગ્યા લઈ શકે છે, અથવા તમે રાહ જોઈ શકો છો.",
     "keepWaiting": "રાહ જોતા રહો",
     "botTookSeatAfterAnHour": "આ સત્ર એક કલાક માટે ખુલ્લું હતું, તેથી Pangea Botએ ખાલી જગ્યા લીધી.",
-    "botTookSeatAfterADay": "આ સત્ર એક દિવસથી વધુ સમય માટે ખુલ્લું હતું, તેથી Pangea Botએ ખાલી જગ્યા લીધી. શરૂ કરવા માટે સંદેશ મોકલો."
+    "botTookSeatAfterADay": "આ સત્ર એક દિવસથી વધુ સમય માટે ખુલ્લું હતું, તેથી Pangea Botએ ખાલી જગ્યા લીધી. શરૂ કરવા માટે સંદેશ મોકલો.",
+    "worldPublicShipLabel": "{city} માં એક સાર્વજનિક કોર્સ {course}, જોડાવા માટે ખુલ્લો છે",
+    "worldCardClose": "{name} કાર્ડ બંધ કરો",
+    "worldCardSlide": "{count} માંથી {index}",
+    "worldCardPrevious": "પહેલાની પ્રવૃત્તિ",
+    "worldCardNext": "આગળની પ્રવૃત્તિ",
+    "worldCityNothingHere": "આ ભાષા માટે અહીં હજી કંઈ નથી.",
+    "worldExploreCity": "અન્વેષણ કરો",
+    "worldShipAtCity": "{city} માં",
+    "worldShipRunBy": "{admins} દ્વારા સંચાલિત",
+    "worldShipRunByPangea": "Pangea દ્વારા સંચાલિત",
+    "worldShipMembers": "{count, plural, =1{1 સભ્ય} other{{count} સભ્યો}}",
+    "worldShipOpenCourse": "કોર્સ ખોલો",
+    "worldCityLockedLabel": "{city}, તમારા માટે હજી ખુલ્લું નથી",
+    "worldCityNoCourseHere": "અન્વેષણ કરવા માટે અહીં એક કોર્સમાં જોડાઓ",
+    "mapSearchHint": "જાહેર અભ્યાસક્રમો શોધો"
 }

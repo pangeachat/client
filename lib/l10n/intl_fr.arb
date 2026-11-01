@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-29 12:07:24.732475",
+    "@@last_modified": "2026-11-01 09:54:07.541939",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -9339,7 +9339,6 @@
     "addCourseBrowsePublic": "Parcourir les cours publics",
     "browsePublicCourses": "Parcourir les cours publics",
     "editProfile": "Modifier le profil",
-    "mapSearchHint": "Rechercher des activités",
     "mapFilterAllLanguages": "Toutes les langues",
     "mapFilterNotStarted": "Pas commencé",
     "mapFilterInProgress": "En cours",
@@ -10423,5 +10422,20 @@
     "playWithBotNowMessage": "Personne n'a encore rejoint. Le bot Pangea peut prendre la place libre maintenant, ou vous pouvez continuer à attendre.",
     "keepWaiting": "Continuer à attendre",
     "botTookSeatAfterAnHour": "Cette session est restée ouverte pendant une heure, alors le bot Pangea a pris la place libre.",
-    "botTookSeatAfterADay": "Cette session est restée ouverte pendant plus d'une journée, alors le bot Pangea a pris la place libre. Envoyez un message pour commencer."
+    "botTookSeatAfterADay": "Cette session est restée ouverte pendant plus d'une journée, alors le bot Pangea a pris la place libre. Envoyez un message pour commencer.",
+    "worldPublicShipLabel": "{course}, un cours public à {city}, ouvert à tous",
+    "worldCardClose": "Fermer la carte {name}",
+    "worldCardSlide": "{index} sur {count}",
+    "worldCardPrevious": "Activité précédente",
+    "worldCardNext": "Activité suivante",
+    "worldCityNothingHere": "Rien ici pour cette langue pour l'instant.",
+    "worldExploreCity": "Explorer",
+    "worldShipAtCity": "À {city}",
+    "worldShipRunBy": "Géré par {admins}",
+    "worldShipRunByPangea": "Géré par Pangea",
+    "worldShipMembers": "{count, plural, =1{1 membre} other{{count} membres}}",
+    "worldShipOpenCourse": "Cours ouvert",
+    "worldCityLockedLabel": "{city}, pas encore ouvert pour vous",
+    "worldCityNoCourseHere": "Rejoignez un cours ici pour l'explorer",
+    "mapSearchHint": "Rechercher des cours publics"
 }

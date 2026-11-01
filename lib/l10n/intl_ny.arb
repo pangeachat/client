@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-29 12:07:30.235385",
+    "@@last_modified": "2026-11-01 09:54:11.679592",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Malo oti oyang'anira maphunziro apange zidziwitso kwa ophunzira. Ngakhale aliyense angathe kuona njira iyi, oyang'anira okha ndi omwe angathe kulemba.",
     "introChatDesc": "Aliyense mu maphunzirowa akhoza kutumiza.",
     "announcementsChatDesc": "Oyang'anira maphunziro okha ndi omwe angathe kutumiza.",
-    "mapSearchHint": "Sakani zochitika",
     "mapFilterAllLanguages": "Zilankhulo zonse",
     "mapFilterNotStarted": "Osayamba",
     "mapFilterInProgress": "Ikupita patsogolo",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Palibe amene wabwera. Pangea Bot ikhoza kutenga mpando wopanda munthu tsopano, kapena mukhoza kupitiriza kudikira.",
     "keepWaiting": "Pitirizani kudikira",
     "botTookSeatAfterAnHour": "Msonkhano uno unali wotseguka kwa ola limodzi, choncho Pangea Bot inatenga mpando wopanda munthu.",
-    "botTookSeatAfterADay": "Msonkhano uno unali wotseguka kwa tsiku limodzi, choncho Pangea Bot inatenga mpando wopanda munthu. Tumizani uthenga kuti muyambe."
+    "botTookSeatAfterADay": "Msonkhano uno unali wotseguka kwa tsiku limodzi, choncho Pangea Bot inatenga mpando wopanda munthu. Tumizani uthenga kuti muyambe.",
+    "worldPublicShipLabel": "{course}, maphunziro a anthu onse ku {city}, otseguka kuti mulowe",
+    "worldCardClose": "Tsekani khadi la {name}",
+    "worldCardSlide": "{index} pa {count}",
+    "worldCardPrevious": "Zochitika zam'mbuyomu",
+    "worldCardNext": "Zochitika zotsatira",
+    "worldCityNothingHere": "Palibe chilichonse cha chilankhulo ichi pano.",
+    "worldExploreCity": "Fufuzani",
+    "worldShipAtCity": "Ku {city}",
+    "worldShipRunBy": "Kuyendetsedwa ndi {admins}",
+    "worldShipRunByPangea": "Kuyendetsedwa ndi Pangea",
+    "worldShipMembers": "{count, plural, =1{membala 1} other{mamembala {count}}}",
+    "worldShipOpenCourse": "Tsegulani maphunziro",
+    "worldCityLockedLabel": "{city}, osatsegukira inu pano",
+    "worldCityNoCourseHere": "Lowani nawo maphunziro pano kuti muwafufuze",
+    "mapSearchHint": "Sakani maphunziro a anthu onse"
 }

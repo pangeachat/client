@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-10-29 12:07:27.823972",
+    "@@last_modified": "2026-11-01 09:54:10.117252",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "ಕೋರ್ಸ್ ಭಾಗವಹಿಸುವವರಿಗೆ ಪ್ರಕಟಣೆಗಳನ್ನು ರಚಿಸಲು ಕೋರ್ಸ್ ನಿರ್ವಾಹಕರಿಗೆ ಒಂದು ಸ್ಥಳ. ಎಲ್ಲರೂ ಈ ಚಾನಲ್ ಅನ್ನು ವೀಕ್ಷಿಸಬಹುದಾದರೂ, ನಿರ್ವಾಹಕರು ಮಾತ್ರ ಅದರಲ್ಲಿ ಟೈಪ್ ಮಾಡಬಹುದು.",
     "introChatDesc": "ಕೋರ್ಸ್‌ನಲ್ಲಿರುವ ಯಾರಾದರೂ ಪೋಸ್ಟ್ ಮಾಡಬಹುದು.",
     "announcementsChatDesc": "ಕೋರ್ಸ್ ನಿರ್ವಾಹಕರು ಮಾತ್ರ ಪೋಸ್ಟ್ ಮಾಡಬಹುದು.",
-    "mapSearchHint": "ಚಟುವಟಿಕೆಗಳನ್ನು ಹುಡುಕಿ",
     "mapFilterAllLanguages": "ಎಲ್ಲಾ ಭಾಷೆಗಳು",
     "mapFilterNotStarted": "ಪ್ರಾರಂಭಿಸಿಲ್ಲ",
     "mapFilterInProgress": "ಪ್ರಗತಿಯಲ್ಲಿದೆ",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "ಇನ್ನೂ ಯಾರೂ ಸೇರಿಕೊಂಡಿಲ್ಲ. Pangea Bot ಈಗ ಖಾಲಿ ಜಾಗವನ್ನು ತೆಗೆದುಕೊಳ್ಳಬಹುದು, ಅಥವಾ ನೀವು ಕಾಯುವುದನ್ನು ಮುಂದುವರಿಸಬಹುದು.",
     "keepWaiting": "ಕಾಯುವುದನ್ನು ಮುಂದುವರಿಸಿ",
     "botTookSeatAfterAnHour": "ಈ ಸೆಷನ್ ಒಂದು ಗಂಟೆ ತೆರೆದಿತ್ತು, ಆದ್ದರಿಂದ Pangea Bot ಖಾಲಿ ಜಾಗವನ್ನು ತೆಗೆದುಕೊಂಡಿತು.",
-    "botTookSeatAfterADay": "ಈ ಸೆಷನ್ ಒಂದು ದಿನಕ್ಕಿಂತ ಹೆಚ್ಚು ಸಮಯ ತೆರೆದಿತ್ತು, ಆದ್ದರಿಂದ Pangea Bot ಖಾಲಿ ಜಾಗವನ್ನು ತೆಗೆದುಕೊಂಡಿತು. ಪ್ರಾರಂಭಿಸಲು ಸಂದೇಶ ಕಳುಹಿಸಿ."
+    "botTookSeatAfterADay": "ಈ ಸೆಷನ್ ಒಂದು ದಿನಕ್ಕಿಂತ ಹೆಚ್ಚು ಸಮಯ ತೆರೆದಿತ್ತು, ಆದ್ದರಿಂದ Pangea Bot ಖಾಲಿ ಜಾಗವನ್ನು ತೆಗೆದುಕೊಂಡಿತು. ಪ್ರಾರಂಭಿಸಲು ಸಂದೇಶ ಕಳುಹಿಸಿ.",
+    "worldPublicShipLabel": "{city} ನಲ್ಲಿರುವ ಸಾರ್ವಜನಿಕ ಕೋರ್ಸ್ {course}, ಸೇರಲು ಮುಕ್ತವಾಗಿದೆ",
+    "worldCardClose": "{name} ಕಾರ್ಡ್ ಮುಚ್ಚಿ",
+    "worldCardSlide": "{count} ರಲ್ಲಿ {index}",
+    "worldCardPrevious": "ಹಿಂದಿನ ಚಟುವಟಿಕೆ",
+    "worldCardNext": "ಮುಂದಿನ ಚಟುವಟಿಕೆ",
+    "worldCityNothingHere": "ಈ ಭಾಷೆಗೆ ಇಲ್ಲಿ ಇನ್ನೂ ಏನೂ ಇಲ್ಲ.",
+    "worldExploreCity": "ಅನ್ವೇಷಿಸಿ",
+    "worldShipAtCity": "{city} ನಲ್ಲಿ",
+    "worldShipRunBy": "{admins} ರವರಿಂದ ನಡೆಸಲ್ಪಡುತ್ತಿದೆ",
+    "worldShipRunByPangea": "ಪ್ಯಾಂಗಿಯಾ ರವರಿಂದ ನಡೆಸಲ್ಪಡುತ್ತಿದೆ",
+    "worldShipMembers": "{count, plural, =1{1 ಸದಸ್ಯ} other{{count} ಸದಸ್ಯರು}}",
+    "worldShipOpenCourse": "ಮುಕ್ತ ಕೋರ್ಸ್",
+    "worldCityLockedLabel": "{city}, ನಿಮಗೆ ಇನ್ನೂ ತೆರೆದಿಲ್ಲ",
+    "worldCityNoCourseHere": "ಇದನ್ನು ಅನ್ವೇಷಿಸಲು ಇಲ್ಲಿ ಒಂದು ಕೋರ್ಸ್ ಸೇರಿಕೊಳ್ಳಿ",
+    "mapSearchHint": "ಸಾರ್ವಜನಿಕ ಕೋರ್ಸ್‌ಗಳನ್ನು ಹುಡುಕಿ"
 }

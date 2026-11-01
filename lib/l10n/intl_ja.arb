@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-10-29 12:07:27.197780",
+    "@@last_modified": "2026-11-01 09:54:09.233624",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -9753,7 +9753,6 @@
     "addCourseBrowsePublic": "公開コースをブラウズ",
     "browsePublicCourses": "公開コースをブラウズ",
     "editProfile": "プロフィールを編集",
-    "mapSearchHint": "アクティビティを検索",
     "mapFilterAllLanguages": "すべての言語",
     "mapFilterNotStarted": "未開始",
     "mapFilterInProgress": "進行中",
@@ -10837,5 +10836,20 @@
     "playWithBotNowMessage": "まだ誰も参加していません。Pangea Botが今すぐ空席に着くことも、引き続き待つこともできます。",
     "keepWaiting": "待ち続ける",
     "botTookSeatAfterAnHour": "このセッションは1時間開いていたため、Pangea Botが空席に着きました。",
-    "botTookSeatAfterADay": "このセッションは1日以上開いていたため、Pangea Botが空席に着きました。メッセージを送信して開始してください。"
+    "botTookSeatAfterADay": "このセッションは1日以上開いていたため、Pangea Botが空席に着きました。メッセージを送信して開始してください。",
+    "worldPublicShipLabel": "{city}の公開コース「{course}」に参加できます",
+    "worldCardClose": "{name}カードを閉じる",
+    "worldCardSlide": "{count}件中{index}件目",
+    "worldCardPrevious": "前のアクティビティ",
+    "worldCardNext": "次のアクティビティ",
+    "worldCityNothingHere": "この言語ではまだ何もありません。",
+    "worldExploreCity": "探索する",
+    "worldShipAtCity": "{city}にて",
+    "worldShipRunBy": "{admins}が運営",
+    "worldShipRunByPangea": "Pangeaが運営",
+    "worldShipMembers": "{count, plural, =1{1人のメンバー} other{{count}人のメンバー}}",
+    "worldShipOpenCourse": "公開コース",
+    "worldCityLockedLabel": "{city}はまだ公開されていません",
+    "worldCityNoCourseHere": "探索するには、ここにあるコースに参加してください",
+    "mapSearchHint": "公開コースを検索"
 }

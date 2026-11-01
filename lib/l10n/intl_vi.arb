@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-29 12:07:33.147421",
+    "@@last_modified": "2026-11-01 09:54:14.496775",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6298,7 +6298,6 @@
     "addCourseBrowsePublic": "Duyệt các khóa học công khai",
     "browsePublicCourses": "Duyệt các khóa học công khai",
     "editProfile": "Chỉnh sửa hồ sơ",
-    "mapSearchHint": "Tìm kiếm hoạt động",
     "mapFilterAllLanguages": "Tất cả các ngôn ngữ",
     "mapFilterNotStarted": "Chưa bắt đầu",
     "mapFilterInProgress": "Đang tiến hành",
@@ -7378,5 +7377,20 @@
     "playWithBotNowMessage": "Chưa có ai tham gia. Pangea Bot có thể nhận chỗ trống ngay bây giờ, hoặc bạn có thể tiếp tục chờ đợi.",
     "keepWaiting": "Tiếp tục chờ đợi",
     "botTookSeatAfterAnHour": "Phiên này đã mở được một giờ, vì vậy Pangea Bot đã nhận chỗ trống.",
-    "botTookSeatAfterADay": "Phiên này đã mở hơn một ngày, vì vậy Pangea Bot đã nhận chỗ trống. Gửi tin nhắn để bắt đầu."
+    "botTookSeatAfterADay": "Phiên này đã mở hơn một ngày, vì vậy Pangea Bot đã nhận chỗ trống. Gửi tin nhắn để bắt đầu.",
+    "worldPublicShipLabel": "{course}, một khóa học công khai tại {city}, mở để tham gia",
+    "worldCardClose": "Đóng thẻ {name}",
+    "worldCardSlide": "{index} trên {count}",
+    "worldCardPrevious": "Hoạt động trước",
+    "worldCardNext": "Hoạt động tiếp theo",
+    "worldCityNothingHere": "Chưa có gì ở đây cho ngôn ngữ này.",
+    "worldExploreCity": "Khám phá",
+    "worldShipAtCity": "Tại {city}",
+    "worldShipRunBy": "Điều hành bởi {admins}",
+    "worldShipRunByPangea": "Điều hành bởi Pangea",
+    "worldShipMembers": "{count, plural, =1{1 thành viên} other{{count} thành viên}}",
+    "worldShipOpenCourse": "Khóa học mở",
+    "worldCityLockedLabel": "{city}, chưa mở cho bạn",
+    "worldCityNoCourseHere": "Tham gia một khóa học ở đây để khám phá",
+    "mapSearchHint": "Tìm kiếm khóa học công khai"
 }

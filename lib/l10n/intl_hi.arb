@@ -3082,7 +3082,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-10-29 12:07:26.108261",
+    "@@last_modified": "2026-11-01 09:54:08.307168",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9616,7 +9616,6 @@
     "addCourseBrowsePublic": "सार्वजनिक पाठ्यक्रम ब्राउज़ करें",
     "browsePublicCourses": "सार्वजनिक पाठ्यक्रम ब्राउज़ करें",
     "editProfile": "प्रोफ़ाइल संपादित करें",
-    "mapSearchHint": "गतिविधियों की खोज करें",
     "mapFilterAllLanguages": "सभी भाषाएँ",
     "mapFilterNotStarted": "शुरू नहीं हुआ",
     "mapFilterInProgress": "प्रगति पर",
@@ -10700,5 +10699,20 @@
     "playWithBotNowMessage": "अभी तक कोई शामिल नहीं हुआ है। पंगिया बॉट अब खाली सीट ले सकता है, या आप इंतज़ार कर सकते हैं।",
     "keepWaiting": "इंतज़ार करते रहें",
     "botTookSeatAfterAnHour": "यह सत्र एक घंटे के लिए खुला था, इसलिए पंगिया बॉट ने खाली सीट ले ली।",
-    "botTookSeatAfterADay": "यह सत्र एक दिन से अधिक समय से खुला था, इसलिए पंगिया बॉट ने खाली सीट ले ली। शुरू करने के लिए एक संदेश भेजें।"
+    "botTookSeatAfterADay": "यह सत्र एक दिन से अधिक समय से खुला था, इसलिए पंगिया बॉट ने खाली सीट ले ली। शुरू करने के लिए एक संदेश भेजें।",
+    "worldPublicShipLabel": "{city} में एक सार्वजनिक पाठ्यक्रम {course}, इसमें शामिल होने के लिए खुला है",
+    "worldCardClose": "{name} कार्ड बंद करें",
+    "worldCardSlide": "{count} में से {index}",
+    "worldCardPrevious": "पिछली गतिविधि",
+    "worldCardNext": "अगली गतिविधि",
+    "worldCityNothingHere": "इस भाषा के लिए अभी तक कुछ भी नहीं है।",
+    "worldExploreCity": "अन्वेषण करें",
+    "worldShipAtCity": "{city} में",
+    "worldShipRunBy": "{admins} द्वारा संचालित",
+    "worldShipRunByPangea": "पेंजिया द्वारा संचालित",
+    "worldShipMembers": "{count, plural, =1{1 सदस्य} other{{count} सदस्य}}",
+    "worldShipOpenCourse": "खुला पाठ्यक्रम",
+    "worldCityLockedLabel": "{city}, अभी तक आपके लिए खुला नहीं है",
+    "worldCityNoCourseHere": "इसका अन्वेषण करने के लिए यहाँ एक पाठ्यक्रम में शामिल हों",
+    "mapSearchHint": "सार्वजनिक पाठ्यक्रम खोजें"
 }

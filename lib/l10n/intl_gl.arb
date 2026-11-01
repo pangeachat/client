@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-29 12:07:25.784104",
+    "@@last_modified": "2026-11-01 09:54:07.919514",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8987,7 +8987,6 @@
     "addCourseBrowsePublic": "Explorar cursos públicos",
     "browsePublicCourses": "Explorar cursos públicos",
     "editProfile": "Editar perfil",
-    "mapSearchHint": "Buscar actividades",
     "mapFilterAllLanguages": "Todas as linguas",
     "mapFilterNotStarted": "Non comezado",
     "mapFilterInProgress": "En progreso",
@@ -10071,5 +10070,20 @@
     "playWithBotNowMessage": "Aínda ninguén se uniu. O Pangea Bot pode ocupar o asento libre agora, ou podes seguir esperando.",
     "keepWaiting": "Seguir esperando",
     "botTookSeatAfterAnHour": "Esta sesión estivo aberta durante unha hora, así que o Pangea Bot ocupou o asento libre.",
-    "botTookSeatAfterADay": "Esta sesión estivo aberta durante máis dun día, así que o Pangea Bot ocupou o asento libre. Envía unha mensaxe para comezar."
+    "botTookSeatAfterADay": "Esta sesión estivo aberta durante máis dun día, así que o Pangea Bot ocupou o asento libre. Envía unha mensaxe para comezar.",
+    "worldPublicShipLabel": "{course}, un curso público en {city}, aberto a unirse",
+    "worldCardClose": "Pechar a tarxeta de {name}",
+    "worldCardSlide": "{index} de {count}",
+    "worldCardPrevious": "Actividade anterior",
+    "worldCardNext": "Seguinte actividade",
+    "worldCityNothingHere": "Aínda non hai nada aquí para este idioma.",
+    "worldExploreCity": "Explorar",
+    "worldShipAtCity": "En {city}",
+    "worldShipRunBy": "Xestionado por {admins}",
+    "worldShipRunByPangea": "Xestionado por Pangea",
+    "worldShipMembers": "{count, plural, =1{1 membro} other{{count} membros}}",
+    "worldShipOpenCourse": "Curso aberto",
+    "worldCityLockedLabel": "{city}, aínda non está aberto para ti",
+    "worldCityNoCourseHere": "Únete a un curso aquí para exploralo",
+    "mapSearchHint": "Buscar cursos públicos"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-29 12:07:22.951487",
+    "@@last_modified": "2026-11-01 09:54:06.048998",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1888,7 +1888,6 @@
     "announcementsChatDetails": "Kurs adminlərinin kurs iştirakçıları üçün elanlar yaratdığı bir yer. Bu kanalı hamı görə bilsə də, yalnız adminlər yaza bilər.",
     "introChatDesc": "Kursda olan hər kəs paylaşım edə bilər.",
     "announcementsChatDesc": "Yalnız kurs adminləri paylaşım edə bilər.",
-    "mapSearchHint": "Tapşırıqları axtar",
     "mapFilterAllLanguages": "Bütün dillər",
     "mapFilterNotStarted": "Başlanmayıb",
     "mapFilterInProgress": "Davam edir",
@@ -2533,5 +2532,20 @@
     "playWithBotNowMessage": "Hələ heç kim qoşulmayıb. Pangea Bot indi boş yeri tuta bilər və ya gözləməyə davam edə bilərsiniz.",
     "keepWaiting": "Gözləməyə davam et",
     "botTookSeatAfterAnHour": "Bu sessiya bir saat açıq idi, buna görə Pangea Bot boş yeri tutdu.",
-    "botTookSeatAfterADay": "Bu sessiya bir gündən çox açıq idi, buna görə Pangea Bot boş yeri tutdu. Başlamaq üçün mesaj göndərin."
+    "botTookSeatAfterADay": "Bu sessiya bir gündən çox açıq idi, buna görə Pangea Bot boş yeri tutdu. Başlamaq üçün mesaj göndərin.",
+    "worldPublicShipLabel": "{city} şəhərində ictimai kurs olan {course} qoşulmaq üçün açıqdır",
+    "worldCardClose": "{name} kartını bağlayın",
+    "worldCardSlide": "{count} dən {index}",
+    "worldCardPrevious": "Əvvəlki fəaliyyət",
+    "worldCardNext": "Növbəti fəaliyyət",
+    "worldCityNothingHere": "Bu dil üçün hələ heç nə yoxdur.",
+    "worldExploreCity": "Kəşf edin",
+    "worldShipAtCity": "{city} şəhərində",
+    "worldShipRunBy": "{admins} tərəfindən idarə olunur",
+    "worldShipRunByPangea": "Pangea tərəfindən idarə olunur",
+    "worldShipMembers": "{count, plural, =1{1 üzv} other{{count} üzv}}",
+    "worldShipOpenCourse": "Açıq kurs",
+    "worldCityLockedLabel": "{city}, hələ sizin üçün açıq deyil",
+    "worldCityNoCourseHere": "Kəşf etmək üçün buradakı kursa qoşulun",
+    "mapSearchHint": "İctimai kurslarda axtarış"
 }
