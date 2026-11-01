@@ -298,6 +298,37 @@ void main() {
       );
     });
 
+    test('skills read back as written; an old entry has none', () {
+      const skills = {
+        'writing': 40,
+        'speaking': 30,
+        'listening': 20,
+        'reading': 10,
+      };
+      CanDoProgress entry(Map<String, int>? skills) => CanDoProgress(
+        xp: 100,
+        breakdown: const MissionXpBreakdown(chat: 100),
+        completed: false,
+        skills: skills,
+      );
+      final record = write(null, {'lo1': entry(skills)}, now: t0)!;
+      final read = CourseProgressEvent.fromJson(record.toJson())!;
+      expect(read.canDos['lo1']!.skills, skills);
+      expect(write(read, {'lo1': entry(skills)}, now: t1), isNull);
+      expect(
+        write(read, {
+          'lo1': entry({...skills, 'writing': 30, 'reading': 20}),
+        }, now: t1),
+        isNotNull,
+      );
+
+      final old = write(null, {'lo1': canDo(300)}, now: t0)!;
+      expect(
+        CourseProgressEvent.fromJson(old.toJson())!.canDos['lo1']!.skills,
+        isNull,
+      );
+    });
+
     test('a record that is not one reads as none', () {
       expect(CourseProgressEvent.fromJson({'can_dos': 'nope'}), isNull);
       expect(CourseProgressEvent.fromJson({}), isNull);

@@ -222,12 +222,14 @@ extension QuestsClientExtension on Client {
           recordedByCourse: {courseOutline.courseId: recorded},
         ).quests.firstOrNull?.rollup ??
         const {};
+    final sessions = savedSessionsByActivity;
     return {
       for (final group in outline.groups)
         group.objective.id: _canDoProgress(
           group,
           rollup[group.objective.id],
           byActivity,
+          sessions,
         ),
     };
   }
@@ -236,6 +238,7 @@ extension QuestsClientExtension on Client {
     QuestObjectiveGroup group,
     MissionProgress? progress,
     Map<String, MissionXpBreakdown> byActivity,
+    Map<String, List<Room>> sessionsByActivity,
   ) {
     final breakdown = missionXpBreakdown(group, byActivity: byActivity);
     // The split reads the resolver's inputs, so they only part on a bug; the
@@ -256,6 +259,9 @@ extension QuestsClientExtension on Client {
       xp: progress?.xp ?? breakdown.total,
       breakdown: breakdown,
       completed: progress?.satisfied ?? false,
+      skills: CanDoProgress.skillsOf(
+        missionSkillXp(group, sessionsByActivity: sessionsByActivity),
+      ),
     );
   }
 
@@ -264,12 +270,16 @@ extension QuestsClientExtension on Client {
   /// saved sessions and practice outside any session on its words. Goals are
   /// no skill and are not in it (their XP is [MissionXpBreakdown.goals]).
   /// Listening counts listening exercises only: hearing a message read aloud
-  /// earns no XP.
-  Map<LearningSkillsEnum, int> missionSkillXp(QuestObjectiveGroup group) {
+  /// earns no XP. Pass [sessionsByActivity] ([savedSessionsByActivity]) when
+  /// reading several Missions at once, so the rooms are walked once.
+  Map<LearningSkillsEnum, int> missionSkillXp(
+    QuestObjectiveGroup group, {
+    Map<String, List<Room>>? sessionsByActivity,
+  }) {
     final cache = MissionXpCache.instance;
     final activityIds = {for (final a in group.activities) a.activityId};
     final xp = <LearningSkillsEnum, int>{};
-    final sessions = savedSessionsByActivity;
+    final sessions = sessionsByActivity ?? savedSessionsByActivity;
     for (final activityId in activityIds) {
       for (final room in sessions[activityId] ?? const <Room>[]) {
         _addSkills(xp, cache.skillXpByRoom[room.id]);
