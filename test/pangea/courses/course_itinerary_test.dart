@@ -97,6 +97,11 @@ void main() {
       expect(open(groups: groups, trip: trip), {'b'});
     });
 
+    test('locks nothing before progress is known, so a Mission the learner '
+        'completed in a past city never closes on a guess', () {
+      expect(open(groups: groups, trip: trip, progressResolved: false), isNull);
+    });
+
     test('the city just left stays open for about a day while the ship '
         'is in transit', () {
       final sailing = DateTime.utc(2026, 11, 8, 18);

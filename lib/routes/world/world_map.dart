@@ -1310,12 +1310,13 @@ class WorldMapController extends State<WorldMap>
         mapContext is CoursePreviewMapContext) {
       return false;
     }
-    // The Mission picked in the URL; else, on a trip, the ship's stop from
-    // the record itself (no progression needed, so a course in another
-    // language fades too); else the course's current Mission.
+    // Focus ([force]) goes to the Mission the card shows. Entering the
+    // course goes to the Mission picked in the URL; else, on a trip, the
+    // ship's stop from the record itself (no progression needed, so a course
+    // in another language fades too); else the course's current Mission.
     final courseRoom = this.courseRoom;
     final copy = courseRoom?.courseMissions;
-    String? mission = mapContext.missionId;
+    String? mission = force ? selectedMissionId : mapContext.missionId;
     if (mission == null && copy != null) {
       final stop = CourseItinerary.shipStopOf(
         copy,

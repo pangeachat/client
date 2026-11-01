@@ -210,7 +210,10 @@ abstract final class CourseItinerary {
     required Set<String> completedIds,
     required Set<String> reopenedIds,
   }) {
-    if (trip == null) return null;
+    // Nothing is locked on a guess, dated or not: until progress is known a
+    // completed Mission would close with the calendar (quests doc, "Fail
+    // soft").
+    if (trip == null || !progressResolved) return null;
     final open = <int>{};
     if (trip.isDated) {
       final start = trip.startDate;
@@ -228,7 +231,6 @@ abstract final class CourseItinerary {
         }
       }
     } else {
-      if (!progressResolved) return null;
       final anchor = anchorId == null
           ? -1
           : groups.indexWhere((g) => g.objective.id == anchorId);
