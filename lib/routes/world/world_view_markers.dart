@@ -55,19 +55,23 @@ class WorldViewLayer {
           ),
         ),
       // Ships paint over cities: a ship is the thing to find.
-      for (final ship in ships)
+      for (final (ship, slot) in shipSlots(ships))
         // The whole box sits above the coordinate, with the airship at its
         // bottom and a gap the size of the city icon, so the airship rides
-        // just above the city it has reached.
+        // just above the city it has reached. Ships at one city fan out
+        // side by side so each stays reachable.
         Marker(
           point: ship.point,
           width: WorldShipMarker.width,
           height: WorldShipMarker.height,
           alignment: Alignment.topCenter,
-          child: WorldShipMarker(
-            key: ValueKey('ship:${ship.roomId}'),
-            ship: ship,
-            onTap: () => onShipTap(ship),
+          child: Transform.translate(
+            offset: Offset(slot * WorldShipMarker.fanSpacing, 0),
+            child: WorldShipMarker(
+              key: ValueKey('ship:${ship.roomId}'),
+              ship: ship,
+              onTap: () => onShipTap(ship),
+            ),
           ),
         ),
       // The open card stands above its point, caret on the marker, over
@@ -82,6 +86,26 @@ class WorldViewLayer {
         ),
     ],
   );
+}
+
+/// Each ship with its place in the row of ships at its city: 0 for a ship
+/// alone, else centred offsets (-0.5, 0.5; -1, 0, 1; ...) in list order, so
+/// two courses at one city sit side by side instead of one covering the other.
+List<(WorldShip, double)> shipSlots(List<WorldShip> ships) {
+  final byCity = <String, int>{};
+  for (final ship in ships) {
+    byCity[ship.cityKey] = (byCity[ship.cityKey] ?? 0) + 1;
+  }
+  final seen = <String, int>{};
+  return [
+    for (final ship in ships)
+      (
+        ship,
+        (seen[ship.cityKey] = (seen[ship.cityKey] ?? 0) + 1) -
+            1 -
+            (byCity[ship.cityKey]! - 1) / 2,
+      ),
+  ];
 }
 
 class WorldCityMarker extends StatelessWidget {
@@ -202,6 +226,9 @@ class AirshipIcon extends StatelessWidget {
 
 class WorldShipMarker extends StatelessWidget {
   static const double width = 44;
+
+  /// Horizontal distance between ships fanned out at one city.
+  static const double fanSpacing = 30;
   static const double height = 48;
   final WorldShip ship;
   final VoidCallback onTap;

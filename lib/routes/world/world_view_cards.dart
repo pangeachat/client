@@ -393,6 +393,8 @@ class _WorldCityCardState extends State<WorldCityCard> {
 
   void _pick(int i) {
     setState(() => _index = i);
+    // A slide picked by its dot may not have been read yet.
+    _hydrate();
     _schedule();
   }
 }
@@ -578,6 +580,9 @@ class WorldShipCard extends StatelessWidget {
                 icon: Icons.group_outlined,
                 text: l10n.worldShipMembers(info.members!),
               ),
+            if (info.institution case final institution?
+                when institution.trim().isNotEmpty)
+              _InfoLine(icon: Icons.school_outlined, text: institution),
             if (info.description case final description?
                 when description.trim().isNotEmpty)
               Expanded(
