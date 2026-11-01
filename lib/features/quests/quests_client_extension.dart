@@ -168,33 +168,34 @@ extension QuestsClientExtension on Client {
         MissionXpCache.instance.practiceXpByLemma,
       ),
     );
+    for (final id in _creditedActivityIds(group, perActivity.keys)) {
+      sum = sum + (perActivity[id] ?? MissionXpBreakdown.zero);
+    }
+    return sum;
+  }
+
+  /// The activities out of [activityIds] whose XP counts toward [group]: its
+  /// own, or with a course copy every member of an activity's family, which
+  /// counts toward the member the course shows, hidden activities included
+  /// (activity_family.dart).
+  static Set<String> _creditedActivityIds(
+    QuestObjectiveGroup group,
+    Iterable<String> activityIds,
+  ) {
     final credit = group.credit;
-    if (credit.isEmpty) {
-      for (final activity in group.activities) {
-        sum =
-            sum + (perActivity[activity.activityId] ?? MissionXpBreakdown.zero);
-      }
-      return sum;
-    }
-    // Every member of an activity's family counts toward the member the
-    // course shows, hidden activities included (activity_family.dart).
-    final byCanonical = <String, MissionXpBreakdown>{};
-    for (final entry in perActivity.entries) {
-      if (!credit.family.containsKey(entry.key)) continue;
-      final canonical = credit.canonicalOf(entry.key);
-      byCanonical[canonical] =
-          (byCanonical[canonical] ?? MissionXpBreakdown.zero) + entry.value;
-    }
+    if (credit.isEmpty) return {for (final a in group.activities) a.activityId};
     final ids = {
       for (final a in group.activities) credit.canonicalOf(a.activityId),
       for (final id
           in credit.removedByLo[group.objective.id] ?? const <String>[])
         credit.canonicalOf(id),
     };
-    for (final id in ids) {
-      sum = sum + (byCanonical[id] ?? MissionXpBreakdown.zero);
-    }
-    return sum;
+    return {
+      for (final id in activityIds)
+        if (credit.family.containsKey(id) &&
+            ids.contains(credit.canonicalOf(id)))
+          id,
+    };
   }
 
   /// [outline]'s Missions for the course's progress record (client#9643):
@@ -277,10 +278,9 @@ extension QuestsClientExtension on Client {
     Map<String, List<Room>>? sessionsByActivity,
   }) {
     final cache = MissionXpCache.instance;
-    final activityIds = {for (final a in group.activities) a.activityId};
     final xp = <LearningSkillsEnum, int>{};
     final sessions = sessionsByActivity ?? savedSessionsByActivity;
-    for (final activityId in activityIds) {
+    for (final activityId in _creditedActivityIds(group, sessions.keys)) {
       for (final room in sessions[activityId] ?? const <Room>[]) {
         _addSkills(xp, cache.skillXpByRoom[room.id]);
       }
