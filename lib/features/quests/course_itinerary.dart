@@ -303,7 +303,7 @@ abstract final class CourseItinerary {
 
   /// The open stops by the one rule ([openMissionIds] states it), over the
   /// Missions' due dates in order; null when the learner's progress is not
-  /// known yet on an undated trip.
+  /// known yet.
   static Set<int>? _openStops({
     required List<DateTime?> dueDates,
     required bool isDated,
@@ -312,6 +312,10 @@ abstract final class CourseItinerary {
     required bool progressResolved,
     required int anchorIndex,
   }) {
+    // Nothing is locked on a guess, dated or not: until progress is known a
+    // completed Mission would close with the calendar (quests doc, "Fail
+    // soft").
+    if (!progressResolved) return null;
     final open = <int>{};
     if (isDated) {
       if (startDate != null && now.isBefore(startDate)) {
@@ -328,7 +332,6 @@ abstract final class CourseItinerary {
         }
       }
     } else {
-      if (!progressResolved) return null;
       // No anchor: every Mission is complete, so every one is open.
       if (anchorIndex < 0) {
         open.addAll(List.generate(dueDates.length, (i) => i));
