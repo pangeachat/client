@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
@@ -10,7 +11,6 @@ import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/completed_stamp.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/config/pangea_colors.dart';
 
 /// A discussion's card (#9647): the activity card, so a discussion sits in
 /// the row like any activity, told apart by its "Discussion" mode tag and

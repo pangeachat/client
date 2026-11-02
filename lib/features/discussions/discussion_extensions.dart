@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
@@ -7,7 +8,6 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
-import 'package:collection/collection.dart';
 
 /// The names a discussion travels under (#9647). A discussion is an activity
 /// in the Discussion mode, stored course-only in one of the course's Missions.

@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -13,12 +14,11 @@ import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
 import 'package:fluffychat/routes/chat/calls/call_panel.dart';
+import 'package:fluffychat/routes/chat/discussions/discussion_join_cta.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
-import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
-import 'package:fluffychat/routes/chat/discussions/discussion_join_cta.dart';
 
 class ActivitySessionButtons extends StatelessWidget {
   final ActivitySessionStartState controller;

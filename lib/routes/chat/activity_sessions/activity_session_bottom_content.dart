@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
@@ -20,7 +21,6 @@ import 'package:fluffychat/routes/chat/activity_sessions/session_last_active_lab
 import 'package:fluffychat/routes/chat/activity_sessions/session_presence_tracker.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/sparkle_xp_text.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 
 class ActivitySessionBottomContent extends StatelessWidget {
   final ActivitySessionStateController controller;
