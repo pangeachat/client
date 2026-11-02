@@ -13,7 +13,7 @@ How learners find and start activities, and the record they leave. What an activ
 
 1. A card on the map or in a course shows an activity's basics and first media item; opening it shows the whole activity on its start page.
 2. Cards are ranked to funnel users into finishing their sessions first, then joining open sessions, then starting a session as the last resort.
-3. The learner starts a new session or joins an open one. Joining, they pick a role and wait for the session to fill. Starting, they pick a role, then find players: ping the course, invite someone, or play with the bot.
+3. The learner starts a new session or joins an open one. Joining, they pick a role and wait for the session to fill. Starting, they pick a role, then find players: ping the course, invite someone, or play with the bot. A [discussion](#discussions) offers one Join instead, to a room the server picks.
 4. After finishing, the learner is prompted to rate the activity and optionally comment, which affects its ranking for everyone.
 5. Once it ends, it leaves Chats, and the Learning Objectives page keeps the record.
 
@@ -24,9 +24,16 @@ How learners find and start activities, and the record they leave. What an activ
 ## A running activity is a chat room
 
 - A session is a chat room, so it reuses the chat app.
-- Activities belong to Missions. A session is shared into every joined course that lists its activity, in the session's language, so coursemates can join. A course lists an activity by its own copy, else by its pins, not by Mission overlap, and shows only sessions it lists. The course it started from is always included.
+- Activities belong to Missions. A roleplay session is shared into every joined course that lists its activity, in the session's language, so coursemates can join. A course lists an activity by its own copy, else by its pins, not by Mission overlap, and shows only sessions it lists. The course it started from is always included.
 - The started-from course is where it was launched; a map launch records one only when exactly one joined course lists the activity.
 - A session's panel waits at most 10 seconds for its room.
+
+## Discussions
+
+- A learner with a seat in one of a [discussion](../../../.github/.github/instructions/discussions.instructions.md)'s rooms, done or not, goes straight to the chat; others get its [start page](activity-start-page.instructions.md#a-discussion). Opened without a course, it finds its own among the learner's.
+- Its card is plain until joined; then the Ongoing frame, a "Joined" pill and the unread count; once done, plain with an "Answered" pill styled like the XP badge. The badge keeps counting, with no completed stamp. Joined and unfinished ranks as ongoing.
+- In the chat, students' arrivals show, since they come over hours or days, but not admins' or the bot's; names carry no role.
+- "I'm done" and "Wait, I'm not done" work per seat, as in a roleplay, with no summary yet. The room notifies normally while joined.
 
 ## Activity session chat list rows
 

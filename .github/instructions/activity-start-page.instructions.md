@@ -46,6 +46,10 @@ What a learner sees on tapping an activity, in every state. Its job is to start 
 
 - Opens with the learner's total XP from the activity across courses, as their card's stamp ([what fills a Mission](quests.instructions.md#what-fills-a-mission)). Lists this course's sessions, then their others under Other courses, to match the total; an admin sees everyone's, own first. Each shows the XP it paid the viewer.
 
+### A discussion
+
+A [discussion](../../../.github/.github/instructions/discussions.instructions.md)'s page has nothing to choose: no players count, role cards, open sessions, waiting room, too-few-members notice or Completed. Its questions fill the goal header from the start, open and collapsible. One filled Join the discussion; above it, "N classmates are in this discussion", counting the room Join would pick now and kept current while open, else "Be the first to start this discussion".
+
 ## The waiting room
 
 - A status line: time waited since creation, and coursemates online; or, when the bot will take the last seat ([when](../../../.github/.github/instructions/open-activity-sessions.instructions.md)), a countdown to it.
