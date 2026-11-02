@@ -7,7 +7,6 @@ import 'package:flutter/widgets.dart' show AppLifecycleListener;
 import 'package:matrix/matrix.dart' show Logs, MatrixEvent;
 import 'package:permission_handler/permission_handler.dart';
 
-import 'package:fluffychat/features/dosage/dosage_audio_signals.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
@@ -1395,25 +1394,12 @@ class CallSession extends ChangeNotifier {
             // here is covered by the same check rather than by remembering to
             // guard each one.
             if (!call.carriedOn && !call.isPredecessor) return;
-            final identity = _callIdentity;
-            // Ahead of everything awaited below: transcription can take minutes,
-            // and an app killed during it must not lose the call's time.
-            final talkStartedAt = call.talkStartedAt;
-            if (talkStartedAt != null) {
-              DosageAudioSignals.recordCall(
-                roomId: room.id,
-                callKey: identity.key,
-                deviceId: room.client.deviceID,
-                talkStartedAt: talkStartedAt,
-                connected: call.talkDuration,
-                userId: room.client.userID,
-                accessToken: room.client.accessToken,
-              );
-            }
             // The card is normally already in the timeline by now (written the
             // moment the call ended); this call credits the transcripts against
             // it, and writes the card itself only if that earlier attempt had
             // failed outright.
+
+            final identity = _callIdentity;
             _halfLinks.value ??= await _resolveHalfLinks(identity.key);
             // Handed to the recorder BEFORE the record finishes: finishing
             // first makes the recording durable (an app kill resumes it from

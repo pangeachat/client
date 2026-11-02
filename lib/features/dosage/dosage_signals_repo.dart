@@ -8,7 +8,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/dosage/dosage_audio_coverage.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_event.dart';
-import 'package:fluffychat/features/dosage/dosage_call_time.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_span.dart';
 import 'package:fluffychat/features/dosage/dosage_message_event.dart';
 import 'package:fluffychat/features/dosage/dosage_session_outcome.dart';
@@ -267,7 +266,6 @@ class DosageSignalsRepo {
     required List<DosageAudioEvent> events,
     required List<DosageAudioCoverage> coverage,
     List<DosageVoiceMessage> voiceMessages = const [],
-    List<DosageCallTime> calls = const [],
     required String? accessToken,
     http.Client? client,
   }) async {
@@ -307,19 +305,9 @@ class DosageSignalsRepo {
               .take(voiceRoom < 0 ? 0 : voiceRoom)
               .toList()
         : const <DosageVoiceMessage>[];
-    // `calls` has `voice_messages`' old-server hazard, so it sits behind the same
-    // gate, shares its cap room and is stripped by the same 422 retry below.
-    final int callRoom = voiceRoom - validVoiceMessages.length;
-    final validCalls = voiceMessagesEnabled
-        ? calls
-              .where((c) => c.isValid)
-              .take(callRoom < 0 ? 0 : callRoom)
-              .toList()
-        : const <DosageCallTime>[];
     if (validEvents.isEmpty &&
         validCoverage.isEmpty &&
-        validVoiceMessages.isEmpty &&
-        validCalls.isEmpty) {
+        validVoiceMessages.isEmpty) {
       return DosageAudioPostResult.undelivered;
     }
     final Map<String, dynamic> baseBody = {
@@ -328,21 +316,19 @@ class DosageSignalsRepo {
     };
     http.Response? response = await _sendForDelivery(
       url: PApiUrls.dosageAudioSignals,
-      body: {
-        ...baseBody,
-        if (validVoiceMessages.isNotEmpty)
-          "voice_messages": validVoiceMessages.map((v) => v.toJson()).toList(),
-        if (validCalls.isNotEmpty)
-          "calls": validCalls.map((c) => c.toJson()).toList(),
-      },
+      body: validVoiceMessages.isEmpty
+          ? baseBody
+          : {
+              ...baseBody,
+              "voice_messages": validVoiceMessages
+                  .map((v) => v.toJson())
+                  .toList(),
+            },
       accessToken: accessToken!,
       client: client,
       signal: "audio-signals",
       count:
-          validEvents.length +
-          validCoverage.length +
-          validVoiceMessages.length +
-          validCalls.length,
+          validEvents.length + validCoverage.length + validVoiceMessages.length,
     );
     // Old-server safety net for the already-live lanes. A server that predates
     // the `voice_messages` field 422s the unknown key and drops the WHOLE batch,
@@ -353,7 +339,7 @@ class DosageSignalsRepo {
     // field, and only when there is a sibling lane to salvage — never for a
     // 404/5xx, which the buffer's own retry handles. This is belt-and-suspenders
     // on the siblings, never the primary gate, which stays the flag above.
-    if ((validVoiceMessages.isNotEmpty || validCalls.isNotEmpty) &&
+    if (validVoiceMessages.isNotEmpty &&
         (validEvents.isNotEmpty || validCoverage.isNotEmpty) &&
         response != null &&
         response.statusCode == 422) {

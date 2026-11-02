@@ -5,7 +5,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_event.dart';
-import 'package:fluffychat/features/dosage/dosage_call_time.dart';
 import 'package:fluffychat/features/dosage/dosage_signal_identity.dart';
 import 'package:fluffychat/features/dosage/dosage_voice_message.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -108,51 +107,6 @@ class DosageAudioSignals {
           s: s,
           level: SentryLevel.warning,
           data: const {"signal": "voice-message"},
-        ).catchError((_) {}),
-      );
-    }
-  }
-
-  /// Records a finished call's connected time, so speaking minutes can count it.
-  ///
-  /// Synchronous and allocation-only, like [recordVoiceMessage]: the call's
-  /// teardown waits on none of it, and delivery rides the analytics heartbeat.
-  /// Never throws.
-  static void recordCall({
-    required String roomId,
-    required String? callKey,
-    required String? deviceId,
-    required DateTime talkStartedAt,
-    required Duration connected,
-    required String? userId,
-    required String? accessToken,
-    DateTime? endedAt,
-    DosageAudioBuffer? buffer,
-  }) {
-    try {
-      final target = buffer ?? DosageAudioBuffer.forAccount(userId ?? "");
-      if (target == null) return;
-      target.recordCall(
-        DosageCallTime(
-          callId: DosageCallTime.idFor(
-            roomId: roomId,
-            callKey: callKey,
-            deviceId: deviceId,
-            talkStartedAt: talkStartedAt,
-          ),
-          roomId: roomId,
-          connectedMs: connected.inMilliseconds,
-          ts: (endedAt ?? DateTime.now()).toUtc(),
-        ),
-        accessToken: accessToken,
-      );
-    } catch (e, s) {
-      unawaited(
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          level: SentryLevel.warning,
-          data: const {"signal": "call-time"},
         ).catchError((_) {}),
       );
     }
