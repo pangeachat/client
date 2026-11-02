@@ -36,7 +36,9 @@ extension ChangePasswordExtension on Client {
 
     try {
       // A bare MatrixApi, because Client.login re-initialises the running
-      // client; only the tokens should change.
+      // client; only the tokens should change. The in-memory expiry is
+      // private to the SDK and stays at the old, earlier value, which at
+      // worst brings the next refresh forward; the stored one is updated.
       final response =
           await MatrixApi(
             homeserver: homeserverUrl,

@@ -61,4 +61,27 @@ void main() {
     expect(loginCalled, isFalse);
     expect(client.accessToken, tokenBefore);
   });
+
+  test(
+    'a failed sign-in after the password changed still reports success',
+    () async {
+      final client = await prepareTestClient(loggedIn: true);
+      final tokenBefore = client.accessToken;
+      final api = FakeMatrixApi.currentApi!;
+
+      var loginCalled = false;
+      api.api['POST']!['/client/v3/login'] = (req) {
+        loginCalled = true;
+        throw MatrixException.fromJson({
+          'errcode': 'M_LIMIT_EXCEEDED',
+          'error': 'Too many requests',
+        });
+      };
+
+      await client.changePasswordKeepingSession('newPass', oldPassword: 'old');
+
+      expect(loginCalled, isTrue);
+      expect(client.accessToken, tokenBefore);
+    },
+  );
 }

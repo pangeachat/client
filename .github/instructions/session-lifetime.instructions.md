@@ -23,6 +23,6 @@ The app signs a learner out only when the homeserver rejects the session: the re
 
 ## Changing the password
 
-Changing the password signs the learner out of every other device but keeps them signed in on the one they changed it from. The homeserver also ends the current session when the password changes, so the app signs in again on the same device with the new password straight away. The learner stays signed in, and the device keeps its identity and encryption keys.
+Changing the password signs the learner out of every other device but keeps them signed in on the one they changed it from. The homeserver also ends the current session when the password changes, so the app signs in again on the same device with the new password straight away. The learner stays signed in, and the device keeps its identity and encryption keys. If that sign-in fails, the app still tells the learner their password changed, because it did, and the team is alerted; the learner is then signed out on this device within a day.
 
 See also: [signup-and-login.instructions.md](signup-and-login.instructions.md) for the signed-out screens, and [returning-user-detection.instructions.md](returning-user-detection.instructions.md) for what happens when a learner comes back signed out.
