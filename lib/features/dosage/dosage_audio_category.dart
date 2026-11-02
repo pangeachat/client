@@ -2,7 +2,7 @@
 /// a build declares.
 ///
 /// The two are deliberately different types. A playback event is always one of
-/// the six LISTENING categories; `voiceSend` is a coverage category only —
+/// the seven LISTENING categories; `voiceSend` is a coverage category only —
 /// speaking's magnitude is derived server-side from the `m.audio` event, so
 /// there is no client-side speaking playback event for it to label. Splitting
 /// the enums makes "emit a listening event tagged voiceSend" unrepresentable
@@ -73,7 +73,16 @@ enum DosageListeningCategory {
   /// a drill — and the same distinction as [wordAudio] carries: this is
   /// listening produced BY an exercise, whose volume tracks how much practice
   /// the learner did, not how much conversation they read.
-  practiceAudio('practice_audio');
+  practiceAudio('practice_audio'),
+
+  /// A saved call played back, in the call's transcript: either side's recording
+  /// or the merged whole.
+  ///
+  /// A surface of its own for the same reason as [wordAudio] and [practiceAudio]:
+  /// it is neither a message nor a word nor a drill, and at a whole conversation
+  /// long it would swamp any counter it shared. Listening LIVE on a call is not a
+  /// playback and is not this.
+  callRecording('call_recording');
 
   const DosageListeningCategory(this.wireName);
 
@@ -89,6 +98,8 @@ enum DosageListeningCategory {
     DosageListeningCategory.wordAudio => DosageCoverageCategory.wordAudio,
     DosageListeningCategory.practiceAudio =>
       DosageCoverageCategory.practiceAudio,
+    DosageListeningCategory.callRecording =>
+      DosageCoverageCategory.callRecording,
   };
 
   /// The category for a TIMELINE audio message, or null when this playback is
@@ -115,13 +126,28 @@ enum DosageListeningCategory {
     if (senderId.isEmpty) return null;
     return senderId == ownUserId ? null : DosageListeningCategory.peer;
   }
+
+  /// The category for ONE SIDE of a saved call, or null when that side is the
+  /// learner's own: hearing yourself back is not listening, as with
+  /// [forTimelineAudio]. The merged recording holds both voices and is always
+  /// [callRecording]. Sound only where the sender is the recording event's real
+  /// Matrix sender.
+  static DosageListeningCategory? forCallRecording({
+    required String senderId,
+    required String? ownUserId,
+  }) {
+    if (ownUserId == null || ownUserId.isEmpty) return null;
+    if (senderId.isEmpty) return null;
+    return senderId == ownUserId ? null : DosageListeningCategory.callRecording;
+  }
 }
 
 /// A category of instrumentation this build declares it is running (D-V2-9).
 ///
 /// Coverage is what converts "no signal" into "zero" rather than "unknown", so
 /// a category that is NOT declared is uncovered and its counter is withheld.
-/// There are seven, not six: `voiceSend` covers the `onVoiceMessageSend`
+/// There is one more than the listening categories: `voiceSend` covers the
+/// `onVoiceMessageSend`
 /// envelope and therefore `speakingMinutes` and `voiceMessagesSent` (D-V2-15).
 /// Speaking's MEASUREMENT is server-side, but the server never learns a voice
 /// message exists without a client-originated row, so its DENOMINATOR is
@@ -141,6 +167,7 @@ enum DosageCoverageCategory {
   toolbarRead('toolbar_read'),
   wordAudio('word_audio'),
   practiceAudio('practice_audio'),
+  callRecording('call_recording'),
   voiceSend('voice_send');
 
   const DosageCoverageCategory(this.wireName);

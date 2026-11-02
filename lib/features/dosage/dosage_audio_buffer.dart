@@ -173,14 +173,14 @@ class DosageAudioBuffer {
   /// The most coverage declarations one seal can produce: every category, times
   /// the segments its interval can be cut into.
   ///
-  /// The 7 is [DosageCoverageCategory.values].length restated as a literal
+  /// The 8 is [DosageCoverageCategory.values].length restated as a literal
   /// rather than computed, because [maxEventsPerBatch] must be a compile-time
   /// constant. So it is hand-bumped whenever a category is added, and
   /// `dosage_audio_buffer_test.dart` pins it against
   /// [DosageCoverageCategory.values] and against [maxObservedGap] — a category
   /// added without bumping it here is a failing test rather than a batch the
   /// route silently 413s.
-  static const int maxCoverageItemsPerBatch = 7 * maxCoverageSegmentsPerSeal;
+  static const int maxCoverageItemsPerBatch = 8 * maxCoverageSegmentsPerSeal;
 
   /// OBSERVATIONS — playbacks, voice messages AND calls together — accumulated before
   /// the accumulator seals. The route's cap minus the room the same body's
@@ -472,7 +472,7 @@ class DosageAudioBuffer {
   /// server has already acknowledged coverage right up to it, that acknowledged
   /// row's start, so the upsert extends one row instead of banking another.
   ///
-  /// The declaration set is [DosageCoverageCategory.values] — all seven,
+  /// The declaration set is [DosageCoverageCategory.values] — all of them,
   /// including `voiceSend`. This is the one place the build asserts what it
   /// instruments,
   /// so if an emitter is ever removed without removing its category here, the
@@ -484,7 +484,7 @@ class DosageAudioBuffer {
   /// no edit, and an older build that has neither declares neither, so the server
   /// withholds that counter for it rather than serving its silence as a zero.
   ///
-  /// The six LISTENING categories are always declared: their events ride in
+  /// The LISTENING categories are always declared: their events ride in
   /// this same batch, so a lost batch loses the declaration with it — and, since
   /// no later seal may anchor past an interval the ingest never acknowledged,
   /// loses it for good rather than having a subsequent extension quietly cover
@@ -825,9 +825,10 @@ class DosageAudioBuffer {
         // rows WRITTEN accounts for EVERY declaration this batch sent — not on
         // the 202, which it answers even for a failed write, and not on a partial
         // count, which cannot say WHICH rows it covered.
-        if (batch.coverage.isNotEmpty &&
-            result.coverageWritten == batch.coverage.length) {
-          _bankDelivered(batch.coverage);
+        final List<DosageAudioCoverage> sent =
+            result.coverageSent ?? batch.coverage;
+        if (sent.isNotEmpty && result.coverageWritten == sent.length) {
+          _bankDelivered(sent);
         }
         delivered.add(batch);
         continue;
