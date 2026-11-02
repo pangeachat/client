@@ -135,11 +135,14 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     // that instrumented listening and heard none has to say it was watching, or
     // its zero cannot be told apart from an unknown.
     _audioBuffer?.start();
-    ListeningExposureBuffer.forAccount(_accountUserId)?.onAudioEntry = () {
+    final exposure = ListeningExposureBuffer.forAccount(_accountUserId);
+    exposure?.onAudioEntry = () {
       final lang = _l2OrNull;
       // Off the playback path. With no L2 yet the entry waits for a later drain.
       if (lang != null) unawaited(Future(() => _storeAudioEntries(lang)));
     };
+    // Whatever was recorded before this service started.
+    exposure?.onAudioEntry?.call();
     _periodicTimer?.cancel();
     _periodicTimer = Timer.periodic(const Duration(minutes: 5), (_) {
       // Heartbeat flush of any open engagement span (no-op when none / dark).

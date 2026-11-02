@@ -296,17 +296,6 @@ void main() {
       expect(told, 1);
     });
 
-    test('are bounded, dropping the oldest', () {
-      final buffer = ListeningExposureBuffer();
-      for (var i = 0; i < ListeningExposureBuffer.maxHeldRows + 1; i++) {
-        buffer.recordAudioEntry(entry('$i'));
-      }
-
-      final rows = buffer.drainAudioEntries();
-      expect(rows, hasLength(ListeningExposureBuffer.maxHeldRows));
-      expect(rows.first.id, '1');
-    });
-
     test('are not exposure, and do not move the exposure count', () {
       final buffer = ListeningExposureBuffer();
       buffer.recordAudioEntry(entry('a'));

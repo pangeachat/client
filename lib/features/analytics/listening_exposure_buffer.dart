@@ -156,7 +156,8 @@ class ListeningExposureBuffer with ChangeNotifier {
   /// Held here because they come from the same static playback paths, with no
   /// handle on the account's analytics service. Apart from the language buckets:
   /// an entry names no word and the server reads them across languages, so it
-  /// goes to whatever analytics room is current.
+  /// goes to whatever analytics room is current. Unbounded, unlike exposure: a
+  /// learner makes a few a day, and each one is a duration nothing can recover.
   final List<OneConstructUse> _audioEntries = [];
 
   /// Set by the account's analytics service, which stores an entry at once. A
@@ -167,7 +168,6 @@ class ListeningExposureBuffer with ChangeNotifier {
   /// apart from telling [onAudioEntry].
   void recordAudioEntry(OneConstructUse entry) {
     _audioEntries.add(entry);
-    _boundAudioEntries();
     onAudioEntry?.call();
   }
 
@@ -182,12 +182,6 @@ class ListeningExposureBuffer with ChangeNotifier {
   /// Puts drained entries back after a failed write, ahead of any newer ones.
   void restoreAudioEntries(List<OneConstructUse> entries) {
     _audioEntries.insertAll(0, entries);
-    _boundAudioEntries();
-  }
-
-  void _boundAudioEntries() {
-    final overflow = _audioEntries.length - maxHeldRows;
-    if (overflow > 0) _audioEntries.removeRange(0, overflow);
   }
 
   /// Closes and returns everything waiting to be written for [langCode].

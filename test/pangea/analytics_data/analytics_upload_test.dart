@@ -304,6 +304,24 @@ void main() {
       expect(buffer.drainAudioEntries().map((row) => row.id), ['call:one']);
     });
 
+    test(
+      'recorded before the service started go to the store when it does',
+      () async {
+        await connect([true]);
+        MatrixState.pangeaController = _FakePangeaController();
+        ListeningExposureBuffer.forAccount(
+          testUserId,
+        )!.recordAudioEntry(entry());
+        final data = _FakeDataService(room, {});
+
+        final service = updateService(data)..start();
+        addTearDown(service.dispose);
+        await pumpEventQueue();
+
+        expect(data.batches[testLang]!.values.single.single.id, 'call:one');
+      },
+    );
+
     test('a flush waits for a store already in progress', () async {
       await connect([true]);
       MatrixState.pangeaController = _FakePangeaController();
