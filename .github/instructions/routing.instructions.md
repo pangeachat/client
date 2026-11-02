@@ -75,7 +75,7 @@ Learners use panels that open over one world map, on any screen size. Outside li
 
 ### A signed-out visitor's destination
 
-- A signed-out visitor's last link opens once after sign-in; it expires so a shared browser cannot pass it on, and is never logged or reported. Will.
+- A signed-out visitor's last link is kept on the device and opens once after sign-in; it expires an hour after it was opened, so a shared browser cannot pass it on, and is never logged or reported. Will.
 
 ## Open questions
 
