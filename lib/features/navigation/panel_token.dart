@@ -206,8 +206,6 @@ class AddCoursePagePanelToken extends PanelToken<AddCoursePageTokenParam> {
             ? 'own'
             : param.showNewCourseInvitePage
             ? 'own/invite'
-            : param.previewRoomId != null
-            ? 'own/join'
             : 'own/preview',
     };
     return '${type.name}:$leaf';

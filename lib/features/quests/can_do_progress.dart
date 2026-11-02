@@ -1,4 +1,5 @@
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 
 /// One Mission's entry in a course's progress record (client#9643): its XP as
 /// the Mission's ring shows it, that XP's parts as its split shows them, and
@@ -25,6 +26,11 @@ class CanDoProgress {
   /// stored before the record carried it.
   final int? xpToCompleteAtFirstCompletion;
 
+  /// The Mission's XP as its detail page splits it by skill: writing,
+  /// speaking, listening and reading ([skillsOf]). Null on an entry stored
+  /// before the record carried it, which is not the same as no XP.
+  final Map<String, int>? skills;
+
   const CanDoProgress({
     required this.xp,
     required this.breakdown,
@@ -32,6 +38,7 @@ class CanDoProgress {
     this.firstCompletedAt,
     this.completedBeforeTracking = false,
     this.xpToCompleteAtFirstCompletion,
+    this.skills,
   });
 
   static const _xpKey = 'xp';
@@ -44,6 +51,21 @@ class CanDoProgress {
   static const _completedBeforeTrackingKey = 'completed_before_tracking';
   static const _xpToCompleteAtFirstCompletionKey =
       'xp_to_complete_at_first_completion';
+  static const _skillsKey = 'skills';
+
+  /// The record's skills and their JSON names: goals are no skill, and XP no
+  /// skill claims ([LearningSkillsEnum.other]) is not stored.
+  static const _skillKeys = {
+    LearningSkillsEnum.writing: 'writing',
+    LearningSkillsEnum.speaking: 'speaking',
+    LearningSkillsEnum.hearing: 'listening',
+    LearningSkillsEnum.reading: 'reading',
+  };
+
+  /// [xp] as an entry's [skills], every skill present.
+  static Map<String, int> skillsOf(Map<LearningSkillsEnum, int> xp) => {
+    for (final entry in _skillKeys.entries) entry.value: xp[entry.key] ?? 0,
+  };
 
   /// Null for anything that isn't an entry: the record is read from room
   /// state another device may have written.
@@ -52,6 +74,7 @@ class CanDoProgress {
     final firstCompletedAt = json[_firstCompletedAtKey];
     final xpToCompleteAtFirstCompletion =
         json[_xpToCompleteAtFirstCompletionKey];
+    final skills = json[_skillsKey];
     return CanDoProgress(
       xp: _intOf(json[_xpKey]),
       breakdown: MissionXpBreakdown(
@@ -67,6 +90,9 @@ class CanDoProgress {
       completedBeforeTracking: json[_completedBeforeTrackingKey] == true,
       xpToCompleteAtFirstCompletion: xpToCompleteAtFirstCompletion is num
           ? xpToCompleteAtFirstCompletion.toInt()
+          : null,
+      skills: skills is Map
+          ? {for (final key in _skillKeys.values) key: _intOf(skills[key])}
           : null,
     );
   }
@@ -84,6 +110,7 @@ class CanDoProgress {
     if (completedBeforeTracking) _completedBeforeTrackingKey: true,
     if (xpToCompleteAtFirstCompletion != null)
       _xpToCompleteAtFirstCompletionKey: xpToCompleteAtFirstCompletion,
+    if (skills != null) _skillsKey: skills,
   };
 
   /// This entry with its completion date carried over from [before], the
@@ -139,5 +166,6 @@ class CanDoProgress {
     firstCompletedAt: firstCompletedAt,
     completedBeforeTracking: completedBeforeTracking,
     xpToCompleteAtFirstCompletion: xpToCompleteAtFirstCompletion,
+    skills: skills,
   );
 }
