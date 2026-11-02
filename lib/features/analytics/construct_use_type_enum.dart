@@ -116,7 +116,12 @@ enum ConstructUseTypeEnum {
   /// receptive exposure, worth 0 XP: the count is the data. Bucketed rather
   /// than stored one row per event - see [OneConstructUse.count] and
   /// analytics-system.instructions.md.
-  hrd;
+  hrd,
+
+  /// Not a use of any word: one play, voice message or call, carrying its
+  /// duration to the analytics room. See [DosageAudioEntry]. Worth 0 XP and read
+  /// by no app.
+  aud;
 
   static ConstructUseTypeEnum fromString(String value) {
     return ConstructUseTypeEnum.values.firstWhere(
@@ -196,6 +201,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.bonus:
         return L10n.of(context).constructUseBonus;
       case ConstructUseTypeEnum.nan:
+      case ConstructUseTypeEnum.aud:
         return L10n.of(context).constructUseNanDesc;
       case ConstructUseTypeEnum.corLM:
         return L10n.of(context).constructUseCorLMDesc;
@@ -278,6 +284,7 @@ enum ConstructUseTypeEnum {
         return Icons.mic;
       case ConstructUseTypeEnum.unk:
       case ConstructUseTypeEnum.nan:
+      case ConstructUseTypeEnum.aud:
         return Icons.help;
       case ConstructUseTypeEnum.click:
         return Icons.format_color_text;
@@ -344,6 +351,7 @@ enum ConstructUseTypeEnum {
       // answer anything, so paying XP for it would inflate every word they
       // happen to have heard.
       case ConstructUseTypeEnum.hrd:
+      case ConstructUseTypeEnum.aud:
       // A read-aloud miss is as likely the recognizer's as the learner's, and
       // there is no guessing a read, so it costs nothing — unlike a wrong
       // multiple-choice pick (practice-exercises.instructions.md, "Scoring").
@@ -420,6 +428,7 @@ enum ConstructUseTypeEnum {
       // Heard, not produced. Keeping exposure out of here is what keeps it out
       // of the turn and target-language-word counters downstream.
       case ConstructUseTypeEnum.hrd:
+      case ConstructUseTypeEnum.aud:
         return false;
     }
   }
@@ -477,6 +486,7 @@ enum ConstructUseTypeEnum {
         return LearningSkillsEnum.speaking;
       case ConstructUseTypeEnum.bonus:
       case ConstructUseTypeEnum.nan:
+      case ConstructUseTypeEnum.aud:
         return LearningSkillsEnum.other;
     }
   }
@@ -537,6 +547,7 @@ enum ConstructUseTypeEnum {
       // Exposure is neither a correct nor an incorrect answer, and it is not a
       // typed word. It belongs in none of the summary buckets.
       case ConstructUseTypeEnum.hrd:
+      case ConstructUseTypeEnum.aud:
         return null;
     }
   }

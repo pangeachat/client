@@ -135,6 +135,11 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     // that instrumented listening and heard none has to say it was watching, or
     // its zero cannot be told apart from an unknown.
     _audioBuffer?.start();
+    ListeningExposureBuffer.forAccount(_accountUserId)?.onAudioEntry = () {
+      final lang = _l2OrNull;
+      // Off the playback path. With no L2 yet the entry waits for a later drain.
+      if (lang != null) unawaited(Future(() => _storeAudioEntries(lang)));
+    };
     _periodicTimer?.cancel();
     _periodicTimer = Timer.periodic(const Duration(minutes: 5), (_) {
       // Heartbeat flush of any open engagement span (no-op when none / dark).
@@ -314,6 +319,27 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     }
   }
 
+  /// Moves held audio entries into the local store. Never throws: this runs
+  /// unawaited, and a failed write leaves them held for the next drain.
+  Future<void> _storeAudioEntries(LanguageModel language) async {
+    final buffer = ListeningExposureBuffer.forAccount(_accountUserId);
+    if (buffer == null) return;
+    final entries = buffer.drainAudioEntries();
+    if (entries.isEmpty) return;
+    try {
+      await dataService.storeAudioEntries(entries, language.langCodeShort);
+    } catch (err, s) {
+      buffer.restoreAudioEntries(entries);
+      ErrorHandler.logErrorOnce(
+        key: "audio-entries-store-failed",
+        e: err,
+        s: s,
+        data: {"rows": entries.length},
+        level: SentryLevel.warning,
+      );
+    }
+  }
+
   /// Moves any buffered listening exposure into the local store.
   ///
   /// Deliberately called from [sendLocalAnalyticsToAnalyticsRoom] rather than
@@ -322,6 +348,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   /// the one that matters most, the pre-logout save in `p_logout`, which is the
   /// last moment a valid bearer exists before the store is deleted.
   Future<void> _drainListeningExposure(LanguageModel language) async {
+    await _storeAudioEntries(language);
     final buffer = ListeningExposureBuffer.forAccount(_accountUserId);
     if (buffer == null || buffer.isEmpty) return;
     // Only this language's rows. The buffer may be holding exposure in others —

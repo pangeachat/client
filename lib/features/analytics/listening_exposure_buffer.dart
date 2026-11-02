@@ -151,6 +151,45 @@ class ListeningExposureBuffer with ChangeNotifier {
     notifyListeners();
   }
 
+  /// Audio entries ([DosageAudioEntry]) waiting for the local store.
+  ///
+  /// Held here because they come from the same static playback paths, with no
+  /// handle on the account's analytics service. Apart from the language buckets:
+  /// an entry names no word and the server reads them across languages, so it
+  /// goes to whatever analytics room is current.
+  final List<OneConstructUse> _audioEntries = [];
+
+  /// Set by the account's analytics service, which stores an entry at once. A
+  /// call's time is too much to leave in memory until the next heartbeat.
+  void Function()? onAudioEntry;
+
+  /// Records one audio entry. Synchronous and allocation-only, like [record],
+  /// apart from telling [onAudioEntry].
+  void recordAudioEntry(OneConstructUse entry) {
+    _audioEntries.add(entry);
+    _boundAudioEntries();
+    onAudioEntry?.call();
+  }
+
+  /// Hands back every held entry. A caller that fails to store them calls
+  /// [restoreAudioEntries].
+  List<OneConstructUse> drainAudioEntries() {
+    final drained = List<OneConstructUse>.unmodifiable(_audioEntries);
+    _audioEntries.clear();
+    return drained;
+  }
+
+  /// Puts drained entries back after a failed write, ahead of any newer ones.
+  void restoreAudioEntries(List<OneConstructUse> entries) {
+    _audioEntries.insertAll(0, entries);
+    _boundAudioEntries();
+  }
+
+  void _boundAudioEntries() {
+    final overflow = _audioEntries.length - maxHeldRows;
+    if (overflow > 0) _audioEntries.removeRange(0, overflow);
+  }
+
   /// Closes and returns everything waiting to be written for [langCode].
   ///
   /// Only that language: a drain files its rows under the language it asked
