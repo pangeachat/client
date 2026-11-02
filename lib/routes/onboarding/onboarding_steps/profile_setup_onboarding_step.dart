@@ -27,6 +27,9 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
     if (avatarBytes != null && avatarUrl == null) {
       try {
         avatarUrl = await client.uploadContent(avatarBytes);
+        // Kept as the uploaded address, so moving forward again doesn't upload
+        // the same picture a second time.
+        state.setAvatarInfo(AvatarInfo(avatarUrl: avatarUrl));
       } catch (e, s) {
         ErrorHandler.logError(e: e, s: s, data: {});
       }

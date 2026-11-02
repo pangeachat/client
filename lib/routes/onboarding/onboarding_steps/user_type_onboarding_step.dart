@@ -36,10 +36,16 @@ class UserTypeOnboardingStep extends OnboardingStep with CourseJoinStep {
       ErrorHandler.logError(e: e, s: s, data: {'user_type': type.name});
     }
 
+    // Back on this page after a class-link join: the link's code is used up,
+    // so carry on from the course it joined, as the first pass did.
+    final linkRoomId = state.linkJoinedRoomId;
+    if (linkRoomId != null) return stepAfterJoin(linkRoomId);
+
     final courseCode = state.courseProvider.getCachedJoinCode();
     if (courseCode != null) {
       try {
         final roomId = await state.courseProvider.joinSpaceWithCode(courseCode);
+        state.setLinkJoinedRoomId(roomId);
         // Only a failed JOIN falls through to the code step. A joined course
         // whose quest doesn't resolve continues as a joined-course flow
         // (#8593) — see onboarding.instructions.md.
