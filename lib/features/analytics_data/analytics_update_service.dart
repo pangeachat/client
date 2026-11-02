@@ -319,9 +319,18 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     }
   }
 
-  /// Moves held audio entries into the local store. Never throws: this runs
-  /// unawaited, and a failed write leaves them held for the next drain.
-  Future<void> _storeAudioEntries(LanguageModel language) async {
+  /// The audio store in progress. Each store runs after the last, so a caller
+  /// that awaits one has every earlier entry on disk: the pre-logout save would
+  /// otherwise find the buffer empty mid-write and let the store be deleted.
+  Future<void> _audioStore = Future.value();
+
+  /// Moves held audio entries into the local store.
+  Future<void> _storeAudioEntries(LanguageModel language) =>
+      _audioStore = _audioStore.then((_) => _storeHeldAudioEntries(language));
+
+  /// Never throws, or it would break the chain above: a failed write leaves the
+  /// entries held for the next drain.
+  Future<void> _storeHeldAudioEntries(LanguageModel language) async {
     final buffer = ListeningExposureBuffer.forAccount(_accountUserId);
     if (buffer == null) return;
     final entries = buffer.drainAudioEntries();

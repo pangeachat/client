@@ -286,7 +286,7 @@ void main() {
       expect(buffer.drainAudioEntries(), isEmpty);
     });
 
-    test('tell the store at once, so an app kill does not take them', () {
+    test('tell the service at once, not at the next heartbeat', () {
       final buffer = ListeningExposureBuffer();
       var told = 0;
       buffer.onAudioEntry = () => told++;

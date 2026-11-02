@@ -140,6 +140,9 @@ class _FakeDataService implements AnalyticsDataService {
   /// When set, storing audio entries throws.
   bool audioStoreFails = false;
 
+  /// When set, storing audio entries waits for it.
+  Completer<void>? holdAudioStore;
+
   @override
   String? get accountUserId => testUserId;
 
@@ -175,6 +178,7 @@ class _FakeDataService implements AnalyticsDataService {
     List<OneConstructUse> entries,
     String language,
   ) async {
+    await holdAudioStore?.future;
     if (audioStoreFails) throw Exception('store failed');
     batches[language]!['audio${batches[language]!.length}'] = entries;
   }
@@ -298,6 +302,28 @@ void main() {
 
       expect(server.sentUses, isEmpty);
       expect(buffer.drainAudioEntries().map((row) => row.id), ['call:one']);
+    });
+
+    test('a flush waits for a store already in progress', () async {
+      await connect([true]);
+      MatrixState.pangeaController = _FakePangeaController();
+      final hold = Completer<void>();
+      final data = _FakeDataService(room, {})..holdAudioStore = hold;
+      final service = updateService(data)..start();
+      addTearDown(service.dispose);
+      ListeningExposureBuffer.forAccount(testUserId)!.recordAudioEntry(entry());
+      await pumpEventQueue();
+
+      var flushed = false;
+      final flush = service
+          .sendLocalAnalyticsToAnalyticsRoom(l2Override: _spanish)
+          .whenComplete(() => flushed = true);
+      await pumpEventQueue();
+      expect(flushed, isFalse);
+
+      hold.complete();
+      await flush;
+      expect(server.sentUses.single.single['id'], 'call:one');
     });
 
     test('go to the local store as soon as they are recorded', () async {
