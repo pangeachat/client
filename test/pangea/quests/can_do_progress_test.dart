@@ -1,8 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
+import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/can_do_progress.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
@@ -10,6 +12,7 @@ import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import '../get_test_client.dart';
 
@@ -128,6 +131,37 @@ void main() {
       await client.dispose();
     },
   );
+
+  test('skills credit the activity\'s family and removed activities', () async {
+    final client = await getTestClient();
+    Room room(String id) => Room(id: id, client: client);
+    MissionXpCache.instance.seed(
+      skillXpByRoom: {
+        for (final (id, xp) in [('copy', 10), ('gone', 20), ('other', 40)])
+          id: {LearningSkillsEnum.writing: xp},
+      },
+    );
+    final credited = QuestObjectiveGroup(
+      objective: LearningObjective(id: 'lo', objective: 'lo'),
+      activities: [QuestActivity(activityId: 'a1', plan: plan('a1', 'casa'))],
+      credit: const CourseCredit(
+        family: {'copy': 'a1', 'a1': 'a1', 'gone': 'gone', 'other': 'other'},
+        removedByLo: {
+          'lo': ['gone'],
+        },
+      ),
+    );
+    final skills = client.missionSkillXp(
+      credited,
+      sessionsByActivity: {
+        'copy': [room('copy')],
+        'gone': [room('gone')],
+        'other': [room('other')],
+      },
+    );
+    expect(skills, {LearningSkillsEnum.writing: 30});
+    await client.dispose();
+  });
 
   test('below the threshold is not complete', () async {
     final client = await getTestClient();
