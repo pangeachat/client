@@ -22,14 +22,19 @@ class UserTypeOnboardingStep extends OnboardingStep with CourseJoinStep {
       throw StateError("Must set user type to move to next step");
     }
 
-    // Stored before the course join, so a failed write stops the step before
-    // anything else happens: the navigation controller reports it, the view
-    // shows it, and the same button retries.
-    await state.accountUpdater.updateProfile(
-      (profile) => profile.copyWith(
-        userSettings: profile.userSettings.copyWith(selfIdentifiedRole: type),
-      ),
-    );
+    // A failed save doesn't stop onboarding: the role stays in the onboarding
+    // state and is saved again with the person's language, which onboarding
+    // can't finish without (onboarding.instructions.md § What onboarding reads
+    // and saves).
+    try {
+      await state.accountUpdater.updateProfile(
+        (profile) => profile.copyWith(
+          userSettings: profile.userSettings.copyWith(selfIdentifiedRole: type),
+        ),
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'user_type': type.name});
+    }
 
     final courseCode = state.courseProvider.getCachedJoinCode();
     if (courseCode != null) {

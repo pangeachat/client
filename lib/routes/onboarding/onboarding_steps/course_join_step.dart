@@ -52,12 +52,16 @@ mixin CourseJoinStep on OnboardingStep {
     );
     state.setLanguageLevel(course.cefrLevel);
 
+    // The role rides along in case its own save failed: saving the language
+    // marks onboarding done (onboarding.instructions.md § What onboarding reads
+    // and saves).
     await state.accountUpdater.updateProfile((profile) {
       return profile.copyWith(
         userSettings: profile.userSettings.copyWith(
           targetLanguage: course.targetLanguage,
           sourceLanguage: course.languageOfInstructions,
           cefrLevel: course.cefrLevel,
+          selfIdentifiedRole: state.userType,
         ),
       );
     });
@@ -92,6 +96,7 @@ mixin CourseJoinStep on OnboardingStep {
         userSettings: profile.userSettings.copyWith(
           targetLanguage: courseLanguage!.langCode,
           sourceLanguage: baseLanguage!.langCode,
+          selfIdentifiedRole: state.userType,
         ),
       );
     });

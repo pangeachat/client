@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' hide Profile, Result;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/user_constants.dart';
 import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -19,6 +20,8 @@ import 'package:fluffychat/routes/onboarding/onboarding_navigation_result.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/user_type_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_language_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/user_type_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/trial_info_provider.dart';
@@ -171,27 +174,49 @@ void main() {
     }
 
     test(
-      'a failed write keeps the step, skips the course join, and can be retried',
+      'a failed role save moves on and is saved with the languages page',
+      () async {
+        final updater = _StoredProfileUpdater(Profile.emptyProfile)
+          ..failNextWith = Exception('write failed');
+        final nav = await atRoleStep(updater);
+        (nav.step as UserTypeOnboardingStep).setUserType(UserType.student);
+
+        expect(await nav.forward(), isA<SuccessNavigationResult>());
+        expect(nav.step, isA<CourseCodeOnboardingStep>());
+        expect(updater.stored.userSettings.selfIdentifiedRole, isNull);
+
+        expect(nav.skip(), isA<SuccessNavigationResult>());
+        final languages = nav.step as PickLanguageOnboardingStep;
+        languages.selectBaseLanguage(
+          LanguageModel(langCode: 'en', displayName: 'English'),
+        );
+        languages.selectTargetLanguage(
+          LanguageModel(langCode: 'es', displayName: 'Spanish'),
+        );
+        expect(await nav.forward(), isA<SuccessNavigationResult>());
+
+        final settings = updater.stored.userSettings;
+        expect(settings.targetLanguage, 'es');
+        expect(settings.selfIdentifiedRole, UserType.student);
+      },
+    );
+
+    test(
+      'a failed role save still joins a class link and is saved with its languages',
       () async {
         final courseProvider = _CachedCodeCourseProvider();
         final updater = _StoredProfileUpdater(Profile.emptyProfile)
-          ..failWith = Exception('write failed');
+          ..failNextWith = Exception('write failed');
         final nav = await atRoleStep(updater, courseProvider: courseProvider);
         (nav.step as UserTypeOnboardingStep).setUserType(UserType.teacher);
 
-        final failed = await nav.forward();
-        expect(failed, isA<ErrorNavigationResult>());
-        expect(nav.step, isA<UserTypeOnboardingStep>());
-        expect(updater.stored.userSettings.selfIdentifiedRole, isNull);
-        expect(courseProvider.joinAttempts, 0);
-
-        updater.failWith = null;
-        courseProvider.cachedCode = null;
         expect(await nav.forward(), isA<SuccessNavigationResult>());
-        expect(
-          updater.stored.userSettings.selfIdentifiedRole,
-          UserType.teacher,
-        );
+        expect(courseProvider.joinAttempts, 1);
+        expect(nav.step, isA<JoinedCourseOnboardingStep>());
+
+        final settings = updater.stored.userSettings;
+        expect(settings.targetLanguage, 'es');
+        expect(settings.selfIdentifiedRole, UserType.teacher);
       },
     );
 
@@ -325,12 +350,17 @@ class _StoredProfileUpdater implements AccountUpdater {
   _StoredProfileUpdater(this.stored);
 
   Profile stored;
-  Object? failWith;
+
+  /// Thrown by the next update only.
+  Object? failNextWith;
 
   @override
   Future<void> updateProfile(Profile Function(Profile) update) async {
-    final error = failWith;
-    if (error != null) throw error;
+    final error = failNextWith;
+    if (error != null) {
+      failNextWith = null;
+      throw error;
+    }
     stored = Profile.fromAccountData(update(stored).toJson())!;
   }
 }
