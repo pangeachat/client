@@ -73,6 +73,11 @@ class ActivitySuggestionCard extends StatelessWidget {
   final String? stateLabel;
   final IconData? stateIcon;
 
+  /// Shows the pill named [stateLabel] in these colours, with no live state
+  /// and so no frame: a discussion the learner has ended, "Answered" in gold
+  /// (#9647).
+  final ({Color fill, Color on})? stateColors;
+
   static const double _frameWidth = 2.0;
 
   const ActivitySuggestionCard({
@@ -95,6 +100,7 @@ class ActivitySuggestionCard extends StatelessWidget {
     this.imageHeight,
     this.stateLabel,
     this.stateIcon,
+    this.stateColors,
   });
 
   @override
@@ -111,10 +117,11 @@ class ActivitySuggestionCard extends StatelessWidget {
     // family of pills — what is live top-left, what the learner earned
     // bottom-right — and only a live card adds a thin frame in its state's
     // hue, matching the map's pins.
-    final stateColor = pinState?.bodyColor(context);
-    final onState = pinState?.onBodyColor(context);
+    final liveColor = pinState?.bodyColor(context);
+    final stateColor = stateColors?.fill ?? liveColor;
+    final onState = stateColors?.on ?? pinState?.onBodyColor(context);
     final restingFrame =
-        stateColor ??
+        liveColor ??
         (frameWhenResting
             ? ActivityPinState.available.bodyColor(context)
             : null);
@@ -319,7 +326,7 @@ class ActivitySuggestionCard extends StatelessWidget {
             ),
           // ...and named in a pill at the photo's top-left, with the Waiting
           // state's roster just under it.
-          if (pinState != null && stateColor != null)
+          if ((pinState != null || stateColors != null) && stateColor != null)
             Positioned(
               top: 6.0,
               left: 6.0,
@@ -356,14 +363,19 @@ class ActivitySuggestionCard extends StatelessWidget {
                             // The shared status glyph, matching the map pin —
                             // or the ping's bell, folded into the pill so a card
                             // carries one badge for what is live (#9559).
-                            Icon(
-                              pinged
-                                  ? Icons.notifications_outlined
-                                  : stateIcon ?? pinState!.icon,
-                              size: (fontSizeSmall ?? 11.0) + 3.0,
-                              color: onState,
-                            ),
-                            const SizedBox(width: 4.0),
+                            if (pinged || stateIcon != null || pinState != null)
+                              Padding(
+                                padding: const EdgeInsetsDirectional.only(
+                                  end: 4.0,
+                                ),
+                                child: Icon(
+                                  pinged
+                                      ? Icons.notifications_outlined
+                                      : stateIcon ?? pinState!.icon,
+                                  size: (fontSizeSmall ?? 11.0) + 3.0,
+                                  color: onState,
+                                ),
+                              ),
                             Flexible(
                               child: Text(
                                 _stateLabel(context),

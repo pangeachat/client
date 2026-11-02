@@ -187,13 +187,16 @@ class _WorldMapDotState extends State<WorldMapDot>
                               // bubble, and its glyph is the question bubble
                               // (#9647).
                               unreadRoom: widget.card.isDiscussion
-                                  ? Matrix.of(context).client
-                                        .discussionRoomsFor(
-                                          widget.card.activityId,
-                                        )
-                                        .firstOrNull
+                                  ? Matrix.of(
+                                      context,
+                                    ).client.activeDiscussionRoomFor(
+                                      widget.card.activityId,
+                                    )
                                   : widget.unreadRoom,
-                              glyphIcon: widget.card.activityMode.pinGlyph,
+                              glyphIcon: widget.card.activityMode.midPinGlyph(
+                                available:
+                                    widget.state == ActivityPinState.available,
+                              ),
                               participantsFilled: widget.participantsFilled,
                               participantsTotal: widget.participantsTotal,
                               starLevel: widget.starLevel,
@@ -337,7 +340,9 @@ class _MediumDotContent extends StatelessWidget {
       final icon => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 16, color: glyphColor),
+          // Fills most of the head; smaller beside a seat count so the two
+          // still fit inside it.
+          Icon(icon, size: label == null ? 20 : 18, color: glyphColor),
           if (label != null)
             Text(
               label,

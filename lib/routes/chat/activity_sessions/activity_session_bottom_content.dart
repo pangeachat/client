@@ -20,6 +20,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/session_last_active_lab
 import 'package:fluffychat/routes/chat/activity_sessions/session_presence_tracker.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/sparkle_xp_text.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 
 class ActivitySessionBottomContent extends StatelessWidget {
   final ActivitySessionStateController controller;
@@ -60,6 +61,10 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // A discussion's rooms are picked by the server, never listed.
+    if (!(controller.widget.activity?.activityMode.listsOpenSessions ?? true)) {
+      return const SizedBox.shrink();
+    }
     if (controller.subPage.visibleStatuses.isEmpty) {
       return const SizedBox.shrink();
     }

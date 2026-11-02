@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -115,7 +116,7 @@ class _DiscussionQuestionHeaderState extends State<DiscussionQuestionHeader> {
       right: 0,
       bottom: _expanded ? 0 : null,
       child: GoalMarkScope(
-        style: GoalMarkStyle.question,
+        style: ActivityMode.discussion.goalMark,
         child: Stack(
           children: [
             if (_expanded) ...[

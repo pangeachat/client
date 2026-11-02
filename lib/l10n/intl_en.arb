@@ -6327,6 +6327,25 @@
     "@discussionJoined": {
         "description": "State of a discussion the learner has joined the chat for: the pill on its card and its screen-reader state."
     },
+    "discussionAnswered": "Answered",
+    "@discussionAnswered": {
+        "description": "Pill on a discussion's card once the learner has said they are done with it."
+    },
+    "joinTheDiscussion": "Join the discussion",
+    "@joinTheDiscussion": {
+        "description": "The one button on a discussion's start page: puts the learner in the discussion's chat."
+    },
+    "discussionClassmatesInRoom": "{count, plural, =1{1 classmate is in this discussion} other{{count} classmates are in this discussion}}",
+    "@discussionClassmatesInRoom": {
+        "description": "Above the Join button: how many students are in the discussion room the learner will join.",
+        "placeholders": {
+            "count": {"type": "int"}
+        }
+    },
+    "discussionStartIt": "Be the first to start this discussion",
+    "@discussionStartIt": {
+        "description": "Above the Join button when the learner will open a new, empty discussion room."
+    },
     "roleplayLabel": "Roleplay",
     "@roleplayLabel": {
         "description": "Mode tag on an activity card for a roleplay: learners take roles and work toward goals in a structured conversation."

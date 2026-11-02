@@ -30,6 +30,8 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 
 enum NotStartedSubPage {
   /// The activity itself, listing any open sessions under it.
@@ -185,13 +187,21 @@ class NotStartedSessionController extends State<NotStartedSession>
   );
 
   @override
-  bool get showRoleCards => _subPage == NotStartedSubPage.main;
+  bool get showRoleCards =>
+      _subPage == NotStartedSubPage.main &&
+      (widget.activity?.activityMode.showsRoleCards ?? true);
 
   @override
   bool get showDescriptionSection => _subPage == NotStartedSubPage.main;
 
+  /// A discussion has no role to pick, so its questions (the one shared
+  /// role's goals) fill the goal header from the start, as a roleplay's do
+  /// once a role is picked.
   @override
-  List<ActivityRoleGoal>? get selectedRoleGoals => null;
+  List<ActivityRoleGoal>? get selectedRoleGoals =>
+      (widget.activity?.activityMode.listsQuestions ?? false)
+      ? widget.activity!.discussionGoals
+      : null;
 
   @override
   Set<String> get selectedRoleCompletedGoalIds => {};

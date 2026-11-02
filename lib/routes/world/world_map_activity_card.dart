@@ -82,9 +82,8 @@ class WorldMapActivityCard extends StatelessWidget {
     // (#9647).
     final discussionJoined =
         discussion &&
-        Matrix.of(
-          context,
-        ).client.discussionRoomsFor(card.activityId).isNotEmpty;
+        Matrix.of(context).client.activeDiscussionRoomFor(card.activityId) !=
+            null;
     final frameColor = discussion
         ? (discussionJoined
                   ? ActivityPinState.ongoingActive

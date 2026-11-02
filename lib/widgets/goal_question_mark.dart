@@ -34,6 +34,36 @@ class GoalQuestionMark extends StatelessWidget {
   const GoalQuestionMark({required this.earned, required this.size, super.key});
 
   @override
+  Widget build(BuildContext context) => _GoalCircleMark(
+    earned: earned,
+    size: size,
+    glyph: (color) => Text(
+      '?',
+      style: TextStyle(
+        fontSize: size * 0.62,
+        height: 1.0,
+        fontWeight: FontWeight.w900,
+        color: color,
+      ),
+    ),
+  );
+}
+
+/// A goal mark's circle: filled with the bright gold and edged in the mark
+/// gold once earned, an outline while open, with [glyph] drawn in the edge's
+/// colour, or on the gold once earned.
+class _GoalCircleMark extends StatelessWidget {
+  final bool earned;
+  final double size;
+  final Widget Function(Color color) glyph;
+
+  const _GoalCircleMark({
+    required this.earned,
+    required this.size,
+    required this.glyph,
+  });
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final edge = earned
@@ -49,15 +79,7 @@ class GoalQuestionMark extends StatelessWidget {
         color: earned ? theme.pangea.goldFixedDim : null,
         border: Border.all(color: edge, width: stroke),
       ),
-      child: Text(
-        '?',
-        style: TextStyle(
-          fontSize: size * 0.62,
-          height: 1.0,
-          fontWeight: FontWeight.w900,
-          color: earned ? theme.pangea.onGoldFixed : edge,
-        ),
-      ),
+      child: glyph(earned ? theme.pangea.onGoldFixed : edge),
     );
   }
 }

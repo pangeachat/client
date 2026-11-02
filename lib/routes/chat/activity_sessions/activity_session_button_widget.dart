@@ -17,6 +17,8 @@ import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
+import 'package:fluffychat/routes/chat/discussions/discussion_join_cta.dart';
 
 class ActivitySessionButtons extends StatelessWidget {
   final ActivitySessionStartState controller;
@@ -228,6 +230,16 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // A discussion has nothing to choose: one Join, and how many classmates
+    // are in the room it joins.
+    final activity = controller.widget.activity;
+    if (activity?.activityMode.opensSharedRoom ?? false) {
+      return DiscussionJoinCta(
+        course: controller.course,
+        activityId: controller.widget.activityId,
+        activity: activity,
+      );
+    }
     // Other sub-pages show a single Back button.
     if (controller.subPage != NotStartedSubPage.main) {
       return ActivitySessionCTAButton(

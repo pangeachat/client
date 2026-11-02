@@ -40,6 +40,7 @@ import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/goal_diamond.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 
 // The close-only-this-room-token location moved to the navigation layer
 // (`roomTokenCloseLocation`) once leaving a chat needed the same semantic
@@ -487,12 +488,15 @@ class _ActivityStartInfoRow extends StatelessWidget {
             label: activity.req.cefrLevel.string,
             color: onVariant,
           ),
-          const SizedBox(width: 12.0),
-          _IconLabel(
-            icon: Icons.group_outlined,
-            label: '${activity.req.numberOfParticipants}',
-            color: onVariant,
-          ),
+          // A discussion has no set number of players.
+          if (activity.activityMode.showsPlayerCount) ...[
+            const SizedBox(width: 12.0),
+            _IconLabel(
+              icon: Icons.group_outlined,
+              label: '${activity.req.numberOfParticipants}',
+              color: onVariant,
+            ),
+          ],
           const SizedBox(width: 8.0),
           ActivityRatingMeter(
             average: activity.ratingAverage,

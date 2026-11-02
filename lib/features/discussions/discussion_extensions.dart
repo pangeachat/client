@@ -7,6 +7,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:collection/collection.dart';
 
 /// The names a discussion travels under (#9647). A discussion is an activity
 /// in the Discussion mode, stored course-only in one of the course's Missions.
@@ -112,12 +113,28 @@ extension DiscussionProgressRoomExtension on Room {
 }
 
 extension DiscussionClientExtension on Client {
-  /// The learner's joined rooms for [activityId] — normally one; more only if
-  /// they joined a second when the first was full.
+  /// The learner's rooms for [activityId], where they hold a seat: normally
+  /// one. A room a course admin was joined to on its creation, to observe it,
+  /// is not one until they join it as a participant (their seat), so it opens
+  /// the start page rather than a chat they cannot write in.
   List<Room> discussionRoomsFor(String activityId) => [
     for (final room in rooms)
       if (room.membership == Membership.join &&
-          room.discussionActivityId == activityId)
+          room.discussionActivityId == activityId &&
+          room.ownRoleState != null)
         room,
   ];
+
+  /// The learner's room for [activityId] while they are still in the
+  /// discussion: joined, holding a seat, and not ended. What shows it as
+  /// Joined and carries its unread bubble.
+  Room? activeDiscussionRoomFor(String activityId) => discussionRoomsFor(
+    activityId,
+  ).where((room) => !(room.ownRoleState?.isFinished ?? false)).firstOrNull;
+
+  /// Whether the learner has ended [activityId] ("I'm done") in their room
+  /// for it: its card reads Answered.
+  bool hasAnsweredDiscussion(String activityId) =>
+      activeDiscussionRoomFor(activityId) == null &&
+      discussionRoomsFor(activityId).isNotEmpty;
 }

@@ -49,6 +49,41 @@ class DiscussionRoomService {
     return resp.result;
   }
 
+  /// Where opening [activityId] would put the learner now, without joining:
+  /// the server's own placement rule, so the count is the room they land in.
+  /// Throws on a failed read; the caller shows no count.
+  static Future<DiscussionPlacement> preview(
+    Client client, {
+    required String courseId,
+    required String activityId,
+  }) async {
+    final request = Request(
+      'GET',
+      client.homeserver!.resolveUri(
+        Uri(
+          path: '/_synapse/client/pangea/v1/discussion_room',
+          queryParameters: {'course_id': courseId, 'activity_id': activityId},
+        ),
+      ),
+    );
+    request.headers['authorization'] = 'Bearer ${client.accessToken!}';
+    final response = await client.httpClient.send(request);
+    final body = await response.stream.toBytes();
+    if (response.statusCode != 200) {
+      throw PangeaHttpException.fromStreamedResponse(request, response, body);
+    }
+    final json = jsonDecode(utf8.decode(body));
+    final students = json is Map ? json['students'] : null;
+    if (students is! int) {
+      throw Exception('discussion_room preview answered without students');
+    }
+    return DiscussionPlacement(
+      roomId: json['room_id'] as String?,
+      students: students,
+      joined: json['joined'] == true,
+    );
+  }
+
   static Future<String> _requestRoom(
     Client client, {
     required String courseId,
@@ -80,4 +115,19 @@ class DiscussionRoomService {
     }
     return roomId;
   }
+}
+
+/// Where opening a discussion would put the learner: [roomId] (null for a new
+/// room), its [students] (course admins and the bot never count), and whether
+/// it is the learner's own room already.
+class DiscussionPlacement {
+  final String? roomId;
+  final int students;
+  final bool joined;
+
+  const DiscussionPlacement({
+    required this.roomId,
+    required this.students,
+    required this.joined,
+  });
 }
