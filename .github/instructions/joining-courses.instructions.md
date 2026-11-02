@@ -106,7 +106,7 @@ Admin taps the knocking user → popup menu shows "Approve" (only visible for `M
 
 ## The central course
 
-Every learner belongs to a course ([central courses](../../../.github/.github/instructions/central-courses.instructions.md#every-account-has-a-home-course)). A learner in no course is offered the central course for their target language, and gets a private course of their own if they decline.
+Every learner belongs to a course ([home course](../../../.github/.github/instructions/courses.instructions.md#every-account-has-a-home-course)). A learner in no course is offered the central course for their target language, and gets a private course of their own if they decline.
 
 - **Who is asked.** A learner who isn't in any course. An account that chose teacher in onboarding is never asked, because its home is the course it will request or build.
 - **A new learner, in onboarding.** After the level step, a learner who didn't join with a class code sees the central course's card, with Join and a secondary "Make my own course instead". The page says the course's members can see their name and profile. Onboarding ends on whichever course they end up in.

@@ -11,7 +11,7 @@ import 'get_test_client.dart';
 /// #9589 — changing "Require analytics access" rewrote `pangea.course_settings`
 /// from a model that knows only that one key, so every other key on the event
 /// was dropped. A central course's `central` mark lives on the same event
-/// (central-courses.instructions.md), and toggling the setting erased it.
+/// (courses.instructions.md, in the org .github repo), and toggling the setting erased it.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
