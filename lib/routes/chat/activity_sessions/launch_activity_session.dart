@@ -108,8 +108,8 @@ extension LaunchActivitySession on Client {
         initialState: [
           // Thin reference, not the embedded plan: the body stays canonical in
           // CMS and is fetched live per-viewer. Pin the version at creation so
-          // scoring is stable against later owner edits. See
-          // activities.instructions.md.
+          // scoring is stable against later owner edits. See org
+          // activities.instructions.md, "Editing semantics".
           StateEvent(
             type: PangeaEventTypes.activityPlan,
             content: {

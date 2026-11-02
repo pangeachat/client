@@ -7,14 +7,17 @@ import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 /// Field 0 is the activity id; optional session-binding fields follow, each
 /// tagged by its first character: `r<roomid>` (the learner's bound session
 /// room, bare localpart), `l` (launch the session on arrival), `a<index>`
-/// (autoplay the plan's media at that carousel index), `p` (opened from the
-/// course card's full course plan, so the back arrow returns there — #9367),
+/// (a request to autoplay that carousel index; see below), `p` (opened from
+/// the course card's full course plan, so the back arrow returns there —
+/// #9367),
 /// `j` (the bound session was opened from the activity's join list, so its
 /// back arrow returns to that list — #9333).
-/// `a` re-fires on refresh, as autoplay does anywhere on the web: the URL
-/// says how the panel opens, so a shared link opens the same way for its
-/// recipient. Internal navigation rebuilds the token from state, so a flag
-/// drops on the next in-panel navigation rather than lingering.
+/// `a` is written but not consumed today: the one reader, `ActivitySummary`,
+/// ignores it in chat, the only place it renders. It would re-fire on
+/// refresh, as autoplay does anywhere on the web: the URL says how the panel
+/// opens, so a shared link opens the same way for its recipient. Internal
+/// navigation rebuilds the token from state, so a flag drops on the next
+/// in-panel navigation rather than lingering.
 /// These fields replaced
 /// the loose `?roomid=` / `?launch=` / `?autoplay=` query params — everything
 /// a panel needs rides in its token (routing.instructions.md); the loose

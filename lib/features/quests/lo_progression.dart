@@ -15,7 +15,8 @@ const int kDefaultXpToCompleteObjective = 1000;
 
 /// What one awarded activity goal — a checkmark — pays into the session's
 /// activity XP, flat. Goals guide the conversation and reward it; the XP is
-/// what completes the Mission (org activities doc, "Activity XP"). Lowered
+/// what completes the Mission (quests.instructions.md, "What fills a
+/// Mission"). Lowered
 /// together with [kDefaultXpToCompleteObjective] (#9601) to stay generally
 /// balanced.
 const int kGoalXp = 50;

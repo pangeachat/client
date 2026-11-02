@@ -115,6 +115,8 @@ jobs:
         with:
           name: web
           path: build/web
+          # Only the deploy jobs of this run read it; see main_deploy.yaml.
+          retention-days: 1
       - name: Upload to release
         # Only a release run has a release to attach the bundle to; a
         # workflow_dispatch redeploy skips this and still deploys.

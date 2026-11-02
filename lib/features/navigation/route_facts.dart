@@ -267,9 +267,10 @@ MapFocus? mapFocusFor(GoRouterState state) {
 bool showNavRail(GoRouterState state, bool isColumnMode) {
   if (isColumnMode) return true;
   // NOTE: an open `activity` token must NOT suppress the nav widget. The plan
-  // stage rides the widget's expandable cavity on narrow (a half-open sheet,
-  // pin visible — routing.instructions.md), so hiding the widget here left the
-  // activity with no host at all: a bare map with every control gone (#7530).
+  // stage rides the widget's expandable cavity on narrow (a sheet resting
+  // low, pin visible — routing.instructions.md), so hiding the widget here
+  // left the activity with no host at all: a bare map with every control gone
+  // (#7530).
   // The immersive case — a LAUNCHED session — is a `room`/`session` token,
   // which hides the chrome through the focused-full-screen path instead; the
   // liveView sibling rule drops the plan token at launch, so the two never

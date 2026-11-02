@@ -279,8 +279,10 @@ class NotStartedSessionController extends State<NotStartedSession>
   static const int _maxJoinAttempts = 3;
 
   /// Joins an open session, read fresh at the tap, trying the next one when a
-  /// seat is gone on arrival; starts a new session only when none is left.
-  /// See activity-start-page.instructions.md, "Open sessions".
+  /// seat is gone on arrival. It gives up after [_maxJoinAttempts] tries, or
+  /// when none is left, and starts a new session even if more are open.
+  /// A failed read shows its error and joins nothing. See
+  /// activity-start-page.instructions.md, "Open sessions".
   Future<void> playWithHuman() async {
     final resp = await showFutureLoadingDialog<({String roomId, bool seated})?>(
       context: context,

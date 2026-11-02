@@ -16,7 +16,8 @@ import 'get_test_client.dart';
 /// #8097 — the invite page offered "in this course" to activity sessions
 /// launched from the world map. Launching a session shares it into EVERY
 /// eligible joined course as an `m.space.child`, while only the launched-from
-/// course is pinned as `source_course_id` (activities.instructions.md), so a
+/// course is pinned as `source_course_id` (activities.instructions.md, "A
+/// running activity is a chat room"), so a
 /// world-launched session collects course parents it was never "in" and the
 /// filter appeared — and was auto-selected — for someone not in a course at all.
 ///

@@ -314,6 +314,10 @@ class ActivityChatController {
   bool _updatingUsedVocab = false;
   bool _usedVocabDirty = false;
 
+  /// The used state comes from the room's messages, not the learner's
+  /// analytics: analytics stays word-grained, so a phrase in a message records
+  /// only its single words (activity-session.instructions.md, "Target vocab
+  /// in the conversation").
   Future<void> _updateUsedVocab() async {
     if (room.activityPlan == null || _disposed) return;
 

@@ -7,7 +7,8 @@ import 'package:fluffychat/pangea/common/utils/base_request.dart';
 /// L1, so two L1-different viewers must not collide on cache; and a session
 /// pins a `version` (an opaque content-signature), so the pinned read must not
 /// collide with the latest read. `version` is sent only when pinning; omit it
-/// to read the latest. See activities.instructions.md.
+/// to read the latest. See org activities.instructions.md, "Editing
+/// semantics".
 class ActivityPlanFetchRequest extends BaseRequest {
   final String activityId;
   final String l1;

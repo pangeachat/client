@@ -54,10 +54,12 @@ int heldSeatCount({
     (botInvited ? 1 : 0);
 
 /// When pangea-bot will take a waiting session's last seat on its own, or null
-/// when it won't (activity-start-page.instructions.md, "The waiting room"). The
-/// bot's own rule: nobody has asked for it, the creator and the bot are in,
-/// nothing has finished, and held seats ([heldSeatCount]) leave exactly one
-/// open.
+/// when it won't, for the countdown in the start page's waiting room
+/// (activity-start-page.instructions.md, "The waiting room"; the rule itself
+/// is open-activity-sessions.instructions.md's). The bot's own rule: nobody
+/// has asked for it, the creator and the bot are in, nothing has finished,
+/// held seats ([heldSeatCount]) leave exactly one open, and the session is
+/// under a day old.
 @visibleForTesting
 DateTime? botFillTime({
   required DateTime created,

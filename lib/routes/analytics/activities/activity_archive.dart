@@ -75,11 +75,11 @@ class CourseMissions {
 }
 
 /// The Learning Objectives page (#9436, formerly Stars): the learner's
-/// Missions across their joined courses, each a tile with its XP ring and a
-/// Practice button that opens its detail page. Sessions outside
-/// every joined course's plan close the list under "Other activities", so a
-/// learner in no course still sees their record. Design:
-/// activities.instructions.md, "The Learning Objectives list".
+/// Missions across their joined courses, each a tile with its XP ring that
+/// opens its detail page. Sessions outside every joined course's plan close
+/// the list under "Other activities", so a learner in no course still sees
+/// their record. Design:
+/// activities.instructions.md, "The Learning Objectives page".
 class ActivityArchive extends StatefulWidget {
   final Widget closeButton;
   const ActivityArchive({super.key, required this.closeButton});
@@ -180,11 +180,12 @@ class _ActivityArchiveState extends State<ActivityArchive> {
 }
 
 /// The page's list: one item per can-do across the learner's joined courses
-/// in their current language,
-/// in course order — a Mission two courses share is one item, read from the
-/// first — each collapsed to its statement and XP with the saved sessions that
-/// fed it behind a tap; then the sessions no joined course's plan accounts
-/// for, under "Other activities".
+/// in their current language, in course order — a Mission two courses share
+/// is one item, read from the first — each a [MissionTile] whose tap opens
+/// the Mission's page with the sessions that fed it; then the sessions no
+/// joined course's plan accounts for, under "Other activities". A Mission's
+/// session from a second course or another language lands there too today (an
+/// open question in activities.instructions.md).
 class _ObjectiveList extends StatelessWidget {
   final List<CourseMissions> courses;
   final ProgressionResolution progression;
@@ -309,11 +310,13 @@ class AnalyticsActivityItem extends StatelessWidget {
         : RovingFocusGroup.nodeOf(context, rovingId);
 
     final activity = room.activityPlan;
-    // A v3 session's plan is hydrated from CMS, so it can be null (still
-    // loading, or gone from the backend) and can land with an empty title. The
-    // room was named after the activity at creation, so fall back to the room
-    // name rather than a blank row (#9033) — the same rung the start page's
-    // archived session lands on (activities.instructions.md).
+    // A v3 session's plan is hydrated through ActivityPlanRepo, so it can be
+    // null (still loading, or gone from the backend) and can land with an
+    // empty title. The room was named after the activity at creation, so fall
+    // back to the room name rather than a blank row (#9033) — the same rung
+    // the start page's archived session lands on
+    // (activity-start-page.instructions.md, "When the activity can't be
+    // fetched").
     final planTitle = activity?.title ?? '';
     final title = planTitle.isNotEmpty
         ? planTitle
@@ -328,7 +331,8 @@ class AnalyticsActivityItem extends StatelessWidget {
 
     // The level and the stats come and go together: a session with no
     // generated summary keeps its title and stars and shows neither, rather
-    // than a half-filled row (activities.instructions.md, "The Stars list").
+    // than a half-filled row (activities.instructions.md, "The Learning
+    // Objectives page").
     final analytics = room.activitySummaryAnalytics;
     final stats = summary == null || analytics == null || userId == null
         ? null
@@ -429,7 +433,10 @@ class AnalyticsActivityItem extends StatelessWidget {
 /// The learner's own numbers from a saved session: the XP they earned, and how
 /// many distinct vocabulary and grammar items they used. All three come from
 /// the summary saved with the session, so the row can never disagree with the
-/// end-of-activity card (activities.instructions.md, "The Stars list").
+/// end-of-activity card (activities.instructions.md, "The Learning Objectives
+/// page"). The counts are of items used, not items new to the learner: the
+/// saved summary does not record which were new, and the row never shows a
+/// number the summary cannot back.
 class _ActivitySessionStats extends StatelessWidget {
   final int xp;
   final int vocab;
@@ -480,7 +487,9 @@ class _ActivitySessionStats extends StatelessWidget {
 }
 
 /// One count on the stats line: the analytics bar's icon for that kind of
-/// item, the number, and the spoken [label] the number alone can't carry.
+/// item, the number, and the spoken [label] the number alone can't carry. A
+/// count of zero still shows as zero rather than dropping the stat, so the
+/// rows stay aligned down the list.
 class _ActivitySessionStat extends StatelessWidget {
   final IconData icon;
   final int count;

@@ -489,8 +489,9 @@ abstract class WorkspaceNav {
   /// starting the session (which opens a `room` token) drops the activity in
   /// turn. The surviving context keeps the plan's close a back-arrow that
   /// reopens the card. [launch] skips the lobby straight to role selection;
-  /// [roomId] reopens/rejoins a specific session room; [autoplay] autostarts
-  /// the plan's hero media (muted, block 0); [fromCoursePlan] marks an open
+  /// [roomId] reopens/rejoins a specific session room; [autoplay] asks for
+  /// the hero media (block 0) to start muted, a field nothing reads today
+  /// (see [ActivityTokenParam]); [fromCoursePlan] marks an open
   /// from the card's full course plan, so the back-arrow reopens that page —
   /// all four ride as fields of the activity token's param
   /// ([ActivityTokenParam]), never as loose query params.
