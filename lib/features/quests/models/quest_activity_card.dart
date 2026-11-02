@@ -159,6 +159,10 @@ class QuestActivityCard {
       // and the card shows), so a course-scoped pin can dim when the course
       // lacks enough members to start it. Null when roles weren't projected.
       roleCount: rolesJson?.length,
+      // The mode decides how the pin draws and whether the course's pin rules
+      // apply (a discussion is always shown, #9647); without it every course
+      // card read as a roleplay.
+      mode: plan['mode'] as String?,
     );
   }
 

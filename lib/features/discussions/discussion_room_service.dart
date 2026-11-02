@@ -6,11 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 /// What a discussion card or pin opens (#9647): the learner's own room for the
@@ -42,9 +40,9 @@ class DiscussionRoomService {
           imageUrl: imageUrl,
         );
         // The server joined the learner; wait for that join to reach this
-        // client before opening the room.
+        // client before opening the room. It keeps the default notifications:
+        // a learner in a discussion hears every message until they end it.
         await client.waitForRoomInSync(roomId, join: true);
-        await _mentionsOnly(client, roomId);
         return roomId;
       },
     );
@@ -81,24 +79,5 @@ class DiscussionRoomService {
       throw Exception('discussion_room answered without a room_id');
     }
     return roomId;
-  }
-
-  /// A discussion notifies the learner only when someone mentions them: they
-  /// may have said their piece already.
-  static Future<void> _mentionsOnly(Client client, String roomId) async {
-    final room = client.getRoomById(roomId);
-    if (room == null || room.pushRuleState == PushRuleState.mentionsOnly) {
-      return;
-    }
-    try {
-      await room.setPushRuleState(PushRuleState.mentionsOnly);
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'roomId': roomId},
-        level: SentryLevel.warning,
-      );
-    }
   }
 }
