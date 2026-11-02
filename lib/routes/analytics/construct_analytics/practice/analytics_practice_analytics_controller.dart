@@ -24,8 +24,9 @@ class AnalyticsPracticeAnalyticsController {
 
   Future<void> addSkippedExerciseAnalytics(
     PracticeTarget target,
-    String language,
-  ) async {
+    String language, {
+    String? sessionId,
+  }) async {
     final uses = target.tokens
         .map(
           (t) => OneConstructUse(
@@ -34,6 +35,7 @@ class AnalyticsPracticeAnalyticsController {
             metadata: ConstructUseMetaData(
               roomId: null,
               timeStamp: DateTime.now(),
+              sessionId: sessionId,
             ),
             category: t.pos,
             lemma: t.lemma.text,

@@ -73,6 +73,9 @@ class PracticeSessionController {
     session?.incrementSkippedActivities();
   }
 
+  List<OneConstructUse> ownUses(List<OneConstructUse> uses) =>
+      session?.ownUses(uses) ?? uses;
+
   void submitAnswer(List<OneConstructUse> uses) {
     session?.submitAnswer(uses);
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:uuid/uuid.dart';
+
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
@@ -136,9 +138,14 @@ class AnalyticsPracticeSessionModel {
   /// practice-exercises.instructions.md, "Offline Practice".
   final bool offline;
 
+  /// Written on every use this session records, so a teacher's view can
+  /// group them without guessing from their times.
+  final String id;
+
   AnalyticsPracticeSessionState state;
 
   AnalyticsPracticeSessionModel({
+    String? id,
     this.startedAt,
     required this.type,
     required this.practiceTargets,
@@ -148,7 +155,8 @@ class AnalyticsPracticeSessionModel {
     this.missionLabel,
     this.offline = false,
     AnalyticsPracticeSessionState? state,
-  }) : state = state ?? const AnalyticsPracticeSessionState();
+  }) : id = id ?? const Uuid().v4(),
+       state = state ?? const AnalyticsPracticeSessionState();
 
   // Maximum activities to attempt (including skips)
   int get _maxAttempts => AnalyticsPracticeConstants.targetsToGenerate
@@ -249,10 +257,24 @@ class AnalyticsPracticeSessionModel {
   void submitAnswer(List<OneConstructUse> uses) =>
       state = state.copyWith(completedUses: [...state.completedUses, ...uses]);
 
+  /// [uses] carrying this session's [id].
+  List<OneConstructUse> ownUses(List<OneConstructUse> uses) => [
+    for (final use in uses)
+      use.copyWith(
+        metadata: ConstructUseMetaData(
+          eventId: use.metadata.eventId,
+          roomId: use.metadata.roomId,
+          timeStamp: use.metadata.timeStamp,
+          sessionId: id,
+        ),
+      ),
+  ];
+
   void useHint() => state = state.copyWith(hintsUsed: state.hintsUsed + 1);
 
   factory AnalyticsPracticeSessionModel.fromJson(Map<String, dynamic> json) {
     return AnalyticsPracticeSessionModel(
+      id: json['id'] as String?,
       startedAt: json['startedAt'] != null
           ? DateTime.parse(json['startedAt'] as String)
           : null,
@@ -275,6 +297,7 @@ class AnalyticsPracticeSessionModel {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'startedAt': startedAt?.toIso8601String(),
       'type': type.name,
       'practiceTargets': practiceTargets.map((e) => e.toJson()).toList(),
@@ -347,6 +370,7 @@ class AnalyticsPracticeSessionState {
     metadata: ConstructUseMetaData(
       roomId: originalUse.metadata.roomId,
       timeStamp: DateTime.now(),
+      sessionId: originalUse.metadata.sessionId,
     ),
     category: originalUse.category,
     lemma: originalUse.lemma,
