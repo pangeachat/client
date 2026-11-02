@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-10-27 14:57:15.262485",
+    "@@last_modified": "2026-11-02 14:31:48.887262",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "Cha tàinig duine a-steach fhathast. Faodaidh Pangea Bot an cathair fhosgailte a ghabhail a-nis, no faodaidh tu cumail a' feitheamh.",
     "keepWaiting": "Cùm a' feitheamh",
     "botTookSeatAfterAnHour": "Bha an seisean seo fosgailte airson uair a thìde, agus mar sin ghabh Pangea Bot an cathair fhosgailte.",
-    "botTookSeatAfterADay": "Bha an seisean seo fosgailte airson còrr is latha, agus mar sin ghabh Pangea Bot an cathair fhosgailte. Cuir teachdaireachd gus tòiseachadh."
+    "botTookSeatAfterADay": "Bha an seisean seo fosgailte airson còrr is latha, agus mar sin ghabh Pangea Bot an cathair fhosgailte. Cuir teachdaireachd gus tòiseachadh.",
+    "accountSetupFailedHelp": "Cha b' urrainn dhuinn crìoch a chur air do chunntas a stèidheachadh. Thoir sùil air a' cheangal agad agus feuch a-rithist, no log a-mach agus clàraich a-steach nas fhaide air adhart."
 }

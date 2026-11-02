@@ -2552,7 +2552,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-27 14:57:20.798329",
+    "@@last_modified": "2026-11-02 14:31:54.764883",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10974,5 +10974,6 @@
     "playWithBotNowMessage": "Ninguém se juntou ainda. O Pangea Bot pode ocupar o lugar vago agora, ou pode continuar à espera.",
     "keepWaiting": "Continuar à espera",
     "botTookSeatAfterAnHour": "Esta sessão esteve aberta durante uma hora, por isso o Pangea Bot ocupou o lugar vago.",
-    "botTookSeatAfterADay": "Esta sessão esteve aberta por mais de um dia, por isso o Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar."
+    "botTookSeatAfterADay": "Esta sessão esteve aberta por mais de um dia, por isso o Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar.",
+    "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique a sua ligação e tente novamente, ou termine a sessão e inicie-a mais tarde."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-10-27 14:57:16.094004",
+    "@@last_modified": "2026-11-02 14:31:49.341883",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "Tsis muaj leej twg koom dua. Pangea Bot tuaj yeem zaum tam sim no, los yog koj tuaj yeem tos ntxiv.",
     "keepWaiting": "Tos ntxiv",
     "botTookSeatAfterAnHour": "Qhov kev sib tham no qhib tau ib teev, yog li Pangea Bot tau zaum.",
-    "botTookSeatAfterADay": "Qhov kev sib tham no qhib tau ntau tshaj ib hnub, yog li Pangea Bot tau zaum. Xa lus los pib."
+    "botTookSeatAfterADay": "Qhov kev sib tham no qhib tau ntau tshaj ib hnub, yog li Pangea Bot tau zaum. Xa lus los pib.",
+    "accountSetupFailedHelp": "Peb tsis tuaj yeem teeb tsa koj tus account kom tiav. Txheeb xyuas koj qhov kev sib txuas thiab sim dua, lossis tawm hauv thiab nkag mus tom qab."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-10-27 14:57:17.089561",
+    "@@last_modified": "2026-11-02 14:31:50.801284",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "Durung ana sing gabung. Pangea Bot bisa njupuk kursi sing kosong saiki, utawa sampeyan bisa terus ngenteni.",
     "keepWaiting": "Terus ngenteni",
     "botTookSeatAfterAnHour": "Sesi iki wis mbukak sakjam, dadi Pangea Bot njupuk kursi sing kosong.",
-    "botTookSeatAfterADay": "Sesi iki wis mbukak luwih saka sedina, dadi Pangea Bot njupuk kursi sing kosong. Kirim pesen kanggo miwiti."
+    "botTookSeatAfterADay": "Sesi iki wis mbukak luwih saka sedina, dadi Pangea Bot njupuk kursi sing kosong. Kirim pesen kanggo miwiti.",
+    "accountSetupFailedHelp": "Kita ora bisa ngrampungake nyetel akun sampeyan. Priksa sambungan sampeyan banjur coba maneh, utawa metu banjur mlebu mengko."
 }

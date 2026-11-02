@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:24.391341",
+    "@@last_modified": "2026-11-02 14:31:57.427729",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10166,5 +10166,6 @@
     "playWithBotNowMessage": "還沒有人加入。Pangea Bot 現在可以加入，或者您可以繼續等待。",
     "keepWaiting": "繼續等待",
     "botTookSeatAfterAnHour": "此會話已開放一小時，Pangea Bot 已加入。",
-    "botTookSeatAfterADay": "此會話已開放超過一天，Pangea Bot 已加入。發送訊息即可開始。"
+    "botTookSeatAfterADay": "此會話已開放超過一天，Pangea Bot 已加入。發送訊息即可開始。",
+    "accountSetupFailedHelp": "我們無法完成您的帳號設定。請檢查您的連線並再試一次，或登出並稍後再登入。"
 }

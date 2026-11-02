@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-10-27 14:57:13.079198",
+    "@@last_modified": "2026-11-02 14:31:45.660860",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "እስካሁን ማንም አልተቀላቀለም። ፓንጋያ ቦት አሁን ያለውን ክፍት ቦታ ሊይዝ ይችላል፣ ወይም መጠበቅ ይችላሉ።",
     "keepWaiting": "መጠበቅ ይቀጥሉ",
     "botTookSeatAfterAnHour": "ይህ ክፍለ ጊዜ ለአንድ ሰዓት ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ።",
-    "botTookSeatAfterADay": "ይህ ክፍለ ጊዜ ከአንድ ቀን በላይ ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ። ለመጀመር መልእክት ይላኩ።"
+    "botTookSeatAfterADay": "ይህ ክፍለ ጊዜ ከአንድ ቀን በላይ ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ። ለመጀመር መልእክት ይላኩ።",
+    "accountSetupFailedHelp": "መለያዎን ማዋቀር አልቻልንም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ፣ ወይም ይውጡ እና በኋላ ይግቡ።"
 }

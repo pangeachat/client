@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:23.785091",
+    "@@last_modified": "2026-11-02 14:31:56.709854",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7367,5 +7367,6 @@
     "playWithBotNowMessage": "Chưa có ai tham gia. Pangea Bot có thể nhận chỗ trống ngay bây giờ, hoặc bạn có thể tiếp tục chờ đợi.",
     "keepWaiting": "Tiếp tục chờ đợi",
     "botTookSeatAfterAnHour": "Phiên này đã mở được một giờ, vì vậy Pangea Bot đã nhận chỗ trống.",
-    "botTookSeatAfterADay": "Phiên này đã mở hơn một ngày, vì vậy Pangea Bot đã nhận chỗ trống. Gửi tin nhắn để bắt đầu."
+    "botTookSeatAfterADay": "Phiên này đã mở hơn một ngày, vì vậy Pangea Bot đã nhận chỗ trống. Gửi tin nhắn để bắt đầu.",
+    "accountSetupFailedHelp": "Chúng tôi không thể hoàn tất việc thiết lập tài khoản của bạn. Vui lòng kiểm tra kết nối và thử lại, hoặc đăng xuất và đăng nhập sau."
 }

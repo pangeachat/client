@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-10-27 14:57:22.430908",
+    "@@last_modified": "2026-11-02 14:31:56.061984",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "Teu acan aya nu ngagabung. Pangea Bot tiasa nyandak korsi kosong ayeuna, atanapi anjeun tiasa teras ngantosan.",
     "keepWaiting": "Teraskeun ngantosan",
     "botTookSeatAfterAnHour": "Sési ieu dibuka sajam, janten Pangea Bot nyandak korsi kosong.",
-    "botTookSeatAfterADay": "Sési ieu dibuka langkung ti sadinten, janten Pangea Bot nyandak korsi kosong. Kirim pesen pikeun ngamimitian."
+    "botTookSeatAfterADay": "Sési ieu dibuka langkung ti sadinten, janten Pangea Bot nyandak korsi kosong. Kirim pesen pikeun ngamimitian.",
+    "accountSetupFailedHelp": "Kami henteu tiasa ngarengsekeun panyetélan akun anjeun. Pariksa sambungan anjeun teras cobian deui, atanapi kaluar teras asup deui engké."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-10-27 14:57:12.917608",
+    "@@last_modified": "2026-11-02 14:31:45.754702",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "Hələ heç kim qoşulmayıb. Pangea Bot indi boş yeri tuta bilər və ya gözləməyə davam edə bilərsiniz.",
     "keepWaiting": "Gözləməyə davam et",
     "botTookSeatAfterAnHour": "Bu sessiya bir saat açıq idi, buna görə Pangea Bot boş yeri tutdu.",
-    "botTookSeatAfterADay": "Bu sessiya bir gündən çox açıq idi, buna görə Pangea Bot boş yeri tutdu. Başlamaq üçün mesaj göndərin."
+    "botTookSeatAfterADay": "Bu sessiya bir gündən çox açıq idi, buna görə Pangea Bot boş yeri tutdu. Başlamaq üçün mesaj göndərin.",
+    "accountSetupFailedHelp": "Hesabınızı qura bilmədik. Bağlantınızı yoxlayın və yenidən cəhd edin, yaxud çıxış edib sonra daxil olun."
 }

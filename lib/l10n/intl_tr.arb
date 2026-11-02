@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-27 14:57:23.318667",
+    "@@last_modified": "2026-11-02 14:31:56.354931",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10358,5 +10358,6 @@
     "playWithBotNowMessage": "Henüz kimse katılmadı. Pangea Bot şimdi boş koltuğu alabilir veya beklemeye devam edebilirsiniz.",
     "keepWaiting": "Beklemeye devam et",
     "botTookSeatAfterAnHour": "Bu oturum bir saat boyunca açıktı, bu yüzden Pangea Bot boş koltuğu aldı.",
-    "botTookSeatAfterADay": "Bu oturum bir günden fazla açıktı, bu yüzden Pangea Bot boş koltuğu aldı. Başlamak için bir mesaj gönderin."
+    "botTookSeatAfterADay": "Bu oturum bir günden fazla açıktı, bu yüzden Pangea Bot boş koltuğu aldı. Başlamak için bir mesaj gönderin.",
+    "accountSetupFailedHelp": "Hesabınızı kurmayı tamamlayamadık. Bağlantınızı kontrol edin ve tekrar deneyin veya çıkış yapıp daha sonra tekrar giriş yapın."
 }

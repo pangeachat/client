@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:13.856170",
+    "@@last_modified": "2026-11-02 14:31:47.487405",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -11002,5 +11002,6 @@
     "playWithBotNowMessage": "Neniu ankoraŭ aliĝis. Pangea Bot povas okupi la liberan lokon nun, aŭ vi povas plu atendi.",
     "keepWaiting": "Plu atendi",
     "botTookSeatAfterAnHour": "Ĉi tiu sesio estis malfermita dum unu horo, do Pangea Bot okupis la liberan lokon.",
-    "botTookSeatAfterADay": "Ĉi tiu sesio estis malfermita dum pli ol unu tago, do Pangea Bot okupis la liberan lokon. Sendu mesaĝon por komenci."
+    "botTookSeatAfterADay": "Ĉi tiu sesio estis malfermita dum pli ol unu tago, do Pangea Bot okupis la liberan lokon. Sendu mesaĝon por komenci.",
+    "accountSetupFailedHelp": "Ni ne povis fini agordi vian konton. Kontrolu vian konekton kaj reprovu, aŭ elsalutu kaj ensalutu poste."
 }

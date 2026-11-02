@@ -3082,7 +3082,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-10-27 14:57:16.746028",
+    "@@last_modified": "2026-11-02 14:31:50.023840",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10689,5 +10689,6 @@
     "playWithBotNowMessage": "Nobody has joined yet. Pangea Bot can take the open seat now, or you can keep waiting.",
     "keepWaiting": "Keep waiting",
     "botTookSeatAfterAnHour": "This session was open for an hour, so Pangea Bot took the open seat.",
-    "botTookSeatAfterADay": "This session was open for over a day, so Pangea Bot took the open seat. Send a message to start."
+    "botTookSeatAfterADay": "This session was open for over a day, so Pangea Bot took the open seat. Send a message to start.",
+    "accountSetupFailedHelp": "Non puvim completar li arangeament de vor conto. Controla vor conexion e prova denov, o deslogga e logga plu tard."
 }

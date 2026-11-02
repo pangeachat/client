@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-10-27 14:57:14.825794",
+    "@@last_modified": "2026-11-02 14:31:48.312974",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "Der hat noch nimmen meidien. Pangea Bot kin no de iepen plak ynnimme, of jo kinne wachtsje bliuwe.",
     "keepWaiting": "Wachtsje bliuwe",
     "botTookSeatAfterAnHour": "Dizze sesje wie in oere iepen, dus Pangea Bot hat de iepen plak ynnommen.",
-    "botTookSeatAfterADay": "Dizze sesje wie mear as in dei iepen, dus Pangea Bot hat de iepen plak ynnommen. Stjoer in berjocht om te begjinnen."
+    "botTookSeatAfterADay": "Dizze sesje wie mear as in dei iepen, dus Pangea Bot hat de iepen plak ynnommen. Stjoer in berjocht om te begjinnen.",
+    "accountSetupFailedHelp": "Wy koene jo akkount net ynstelle. Kontrolearje jo ferbining en besykje it opnij, of meld jo ôf en meld jo letter wer oan."
 }

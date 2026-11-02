@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-10-27 14:57:16.887083",
+    "@@last_modified": "2026-11-02 14:31:50.427451",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "Enginn hefur tekið þátt ennþá. Pangea Bot getur tekið lausa sætið núna, eða þú getur haldið áfram að bíða.",
     "keepWaiting": "Halda áfram að bíða",
     "botTookSeatAfterAnHour": "Þessi lota var opin í klukkutíma, svo Pangea Bot tók lausa sætið.",
-    "botTookSeatAfterADay": "Þessi lota var opin í yfir sólarhring, svo Pangea Bot tók lausa sætið. Sendu skilaboð til að byrja."
+    "botTookSeatAfterADay": "Þessi lota var opin í yfir sólarhring, svo Pangea Bot tók lausa sætið. Sendu skilaboð til að byrja.",
+    "accountSetupFailedHelp": "Við gátum ekki lokið við að setja upp reikninginn þinn. Athugaðu tenginguna þína og reyndu aftur, eða skráðu þig út og inn aftur síðar."
 }

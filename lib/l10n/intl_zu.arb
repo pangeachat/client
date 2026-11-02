@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-10-27 14:57:24.865577",
+    "@@last_modified": "2026-11-02 14:31:57.706349",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "Akekho ojoyinile okwamanje. I-Pangea Bot ingathatha isihlalo esingenalutho manje, noma ungaqhubeka nokulinda.",
     "keepWaiting": "Qhubeka nokulinda",
     "botTookSeatAfterAnHour": "Lesi sikhathi besivuliwe ihora, ngakho i-Pangea Bot yathatha isihlalo esingenalutho.",
-    "botTookSeatAfterADay": "Lesi sikhathi besivuliwe isikhathi esingaphezu kosuku, ngakho i-Pangea Bot yathatha isihlalo esingenalutho. Thumela umlayezo ukuze uqale."
+    "botTookSeatAfterADay": "Lesi sikhathi besivuliwe isikhathi esingaphezu kosuku, ngakho i-Pangea Bot yathatha isihlalo esingenalutho. Thumela umlayezo ukuze uqale.",
+    "accountSetupFailedHelp": "Asikwazanga ukuqeda ukusetha i-akhawunti yakho. Hlola uxhumano lwakho bese uzama futhi, noma phuma bese ungena ngemvume kamuva."
 }

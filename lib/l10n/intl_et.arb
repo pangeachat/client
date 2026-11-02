@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-27 14:57:14.550178",
+    "@@last_modified": "2026-11-02 14:31:47.843244",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10057,5 +10057,6 @@
     "playWithBotNowMessage": "Keegi pole veel liitunud. Pangea Bot saab nüüd vaba koha võtta või võite oodata.",
     "keepWaiting": "Jätka ootamist",
     "botTookSeatAfterAnHour": "See seanss oli tund aega avatud, nii et Pangea Bot võttis vaba koha.",
-    "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum."
+    "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum.",
+    "accountSetupFailedHelp": "Me ei saanud teie konto seadistamist lõpule viia. Kontrollige oma ühendust ja proovige uuesti või logige välja ja proovige hiljem uuesti sisse logida."
 }

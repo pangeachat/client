@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-27 14:57:20.609705",
+    "@@last_modified": "2026-11-02 14:31:53.917000",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "Palibe amene wabwera. Pangea Bot ikhoza kutenga mpando wopanda munthu tsopano, kapena mukhoza kupitiriza kudikira.",
     "keepWaiting": "Pitirizani kudikira",
     "botTookSeatAfterAnHour": "Msonkhano uno unali wotseguka kwa ola limodzi, choncho Pangea Bot inatenga mpando wopanda munthu.",
-    "botTookSeatAfterADay": "Msonkhano uno unali wotseguka kwa tsiku limodzi, choncho Pangea Bot inatenga mpando wopanda munthu. Tumizani uthenga kuti muyambe."
+    "botTookSeatAfterADay": "Msonkhano uno unali wotseguka kwa tsiku limodzi, choncho Pangea Bot inatenga mpando wopanda munthu. Tumizani uthenga kuti muyambe.",
+    "accountSetupFailedHelp": "Sitakwanitse kumaliza kukonza akaunti yanu. Chongani intaneti yanu ndikuyesanso, kapena tulukani ndikulowanso pambuyo pake."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:22.985551",
+    "@@last_modified": "2026-11-02 14:31:55.672725",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10575,5 +10575,6 @@
     "playWithBotNowMessage": "Ingen har anslutit än. Pangea Bot kan ta den lediga platsen nu, eller så kan du fortsätta vänta.",
     "keepWaiting": "Fortsätt vänta",
     "botTookSeatAfterAnHour": "Den här sessionen var öppen i en timme, så Pangea Bot tog den lediga platsen.",
-    "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja."
+    "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja.",
+    "accountSetupFailedHelp": "Vi kunde inte slutföra installationen av ditt konto. Kontrollera din anslutning och försök igen, eller logga ut och logga in senare."
 }

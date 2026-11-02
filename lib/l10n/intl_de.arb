@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-27 14:57:13.907049",
+    "@@last_modified": "2026-11-02 14:31:46.984218",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10047,5 +10047,6 @@
     "playWithBotNowMessage": "Es ist noch niemand beigetreten. Pangea Bot kann den freien Platz jetzt einnehmen, oder du kannst weiter warten.",
     "keepWaiting": "Weiter warten",
     "botTookSeatAfterAnHour": "Diese Sitzung war eine Stunde lang offen, daher hat Pangea Bot den freien Platz eingenommen.",
-    "botTookSeatAfterADay": "Diese Sitzung war über einen Tag lang offen, daher hat Pangea Bot den freien Platz eingenommen. Sende eine Nachricht, um zu beginnen."
+    "botTookSeatAfterADay": "Diese Sitzung war über einen Tag lang offen, daher hat Pangea Bot den freien Platz eingenommen. Sende eine Nachricht, um zu beginnen.",
+    "accountSetupFailedHelp": "Wir konnten Ihr Konto nicht einrichten. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut, oder melden Sie sich ab und später wieder an."
 }

@@ -1,5 +1,6 @@
 {
  "bo": [
+  "accountSetupFailedHelp",
   "aceDisplayName",
   "achDisplayName",
   "actionsLabel",
@@ -786,6 +787,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -3262,6 +3264,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -5738,6 +5741,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -8214,6 +8218,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -10690,6 +10695,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -13166,6 +13172,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -15642,6 +15649,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -18118,6 +18126,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -20594,6 +20603,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -23070,6 +23080,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -25546,6 +25557,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -28022,6 +28034,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -30498,6 +30511,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -32974,6 +32988,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -35450,6 +35465,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -37926,6 +37942,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -40402,6 +40419,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -42878,6 +42896,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -45354,6 +45373,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -47830,6 +47850,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -50306,6 +50327,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -52782,6 +52804,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -55258,6 +55281,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -57734,6 +57758,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -60210,6 +60235,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -62686,6 +62712,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -65162,6 +65189,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -67638,6 +67666,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -70114,6 +70143,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -72590,6 +72620,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -75066,6 +75097,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -77542,6 +77574,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -80018,6 +80051,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -82494,6 +82528,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -84970,6 +85005,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -87446,6 +87482,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -89922,6 +89959,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -92398,6 +92436,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -94874,6 +94913,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -97350,6 +97390,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -99826,6 +99867,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -102302,6 +102344,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -104778,6 +104821,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -107254,6 +107298,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -109730,6 +109775,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -112206,6 +112252,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -114682,6 +114729,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -117158,6 +117206,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -119634,6 +119683,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -122110,6 +122160,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -124586,6 +124637,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -127062,6 +127114,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -129538,6 +129591,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -132014,6 +132068,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -134490,6 +134545,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -136966,6 +137022,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -139442,6 +139499,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -141918,6 +141976,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -144394,6 +144453,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -146870,6 +146930,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -149346,6 +149407,7 @@
   "accessRequestedDesc",
   "accessRequestedTitle",
   "account",
+  "accountSetupFailedHelp",
   "accuracy",
   "aceDisplayName",
   "achDisplayName",
@@ -151807,6 +151869,7 @@
   "zwCountryDisplayName"
  ],
  "ar": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -152313,6 +152376,7 @@
   "xpTowardObjective"
  ],
  "bn": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -152819,6 +152883,7 @@
   "xpTowardObjective"
  ],
  "be": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -153325,6 +153390,7 @@
   "xpTowardObjective"
  ],
  "cs": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -153831,6 +153897,7 @@
   "xpTowardObjective"
  ],
  "da": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -154337,6 +154404,7 @@
   "xpTowardObjective"
  ],
  "eo": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -154843,6 +154911,7 @@
   "xpTowardObjective"
  ],
  "es": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -155346,6 +155415,7 @@
   "xpTowardObjective"
  ],
  "de": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -155852,6 +155922,7 @@
   "xpTowardObjective"
  ],
  "et": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -156358,6 +156429,7 @@
   "xpTowardObjective"
  ],
  "el": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -156864,6 +156936,7 @@
   "xpTowardObjective"
  ],
  "fil": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -157370,6 +157443,7 @@
   "xpTowardObjective"
  ],
  "fr": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -157876,6 +157950,7 @@
   "xpTowardObjective"
  ],
  "ga": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -158382,6 +158457,7 @@
   "xpTowardObjective"
  ],
  "he": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -158888,6 +158964,7 @@
   "xpTowardObjective"
  ],
  "hr": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -159394,6 +159471,7 @@
   "xpTowardObjective"
  ],
  "hi": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -159900,6 +159978,7 @@
   "xpTowardObjective"
  ],
  "ia": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -160406,6 +160485,7 @@
   "xpTowardObjective"
  ],
  "id": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -160912,6 +160992,7 @@
   "xpTowardObjective"
  ],
  "it": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -161418,6 +161499,7 @@
   "xpTowardObjective"
  ],
  "ie": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -161924,6 +162006,7 @@
   "xpTowardObjective"
  ],
  "ja": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -162430,6 +162513,7 @@
   "xpTowardObjective"
  ],
  "lt": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -162936,6 +163020,7 @@
   "xpTowardObjective"
  ],
  "lv": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -163442,6 +163527,7 @@
   "xpTowardObjective"
  ],
  "nb": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -163948,6 +164034,7 @@
   "xpTowardObjective"
  ],
  "nl": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -164454,6 +164541,7 @@
   "xpTowardObjective"
  ],
  "pt": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -164960,6 +165048,7 @@
   "xpTowardObjective"
  ],
  "ro": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -165466,6 +165555,7 @@
   "xpTowardObjective"
  ],
  "pt_PT": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -165972,6 +166062,7 @@
   "xpTowardObjective"
  ],
  "ru": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -166478,6 +166569,7 @@
   "xpTowardObjective"
  ],
  "sl": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -166984,6 +167076,7 @@
   "xpTowardObjective"
  ],
  "sk": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -167490,6 +167583,7 @@
   "xpTowardObjective"
  ],
  "sv": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -167996,6 +168090,7 @@
   "xpTowardObjective"
  ],
  "th": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -168502,6 +168597,7 @@
   "xpTowardObjective"
  ],
  "ta": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -169008,6 +169104,7 @@
   "xpTowardObjective"
  ],
  "te": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -169514,6 +169611,7 @@
   "xpTowardObjective"
  ],
  "uk": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -170020,6 +170118,7 @@
   "xpTowardObjective"
  ],
  "uz": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -170526,6 +170625,7 @@
   "xpTowardObjective"
  ],
  "yue": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -171032,6 +171132,7 @@
   "xpTowardObjective"
  ],
  "zh_Hant": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -171537,6 +171638,7 @@
   "xpTowardObjective"
  ],
  "ca": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -172043,6 +172145,7 @@
   "xpTowardObjective"
  ],
  "eu": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -172549,6 +172652,7 @@
   "xpTowardObjective"
  ],
  "fa": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -173055,6 +173159,7 @@
   "xpTowardObjective"
  ],
  "fi": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -173561,6 +173666,7 @@
   "xpTowardObjective"
  ],
  "gl": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -174067,6 +174173,7 @@
   "xpTowardObjective"
  ],
  "hu": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -174573,6 +174680,7 @@
   "xpTowardObjective"
  ],
  "ka": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -175079,6 +175187,7 @@
   "xpTowardObjective"
  ],
  "ko": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -175585,6 +175694,7 @@
   "xpTowardObjective"
  ],
  "pl": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -176091,6 +176201,7 @@
   "xpTowardObjective"
  ],
  "pt_BR": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -176597,6 +176708,7 @@
   "xpTowardObjective"
  ],
  "sr": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -177103,6 +177215,7 @@
   "xpTowardObjective"
  ],
  "tr": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -177609,6 +177722,7 @@
   "xpTowardObjective"
  ],
  "vi": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",
@@ -178115,6 +178229,7 @@
   "xpTowardObjective"
  ],
  "zh": [
+  "accountSetupFailedHelp",
   "actionsLabel",
   "activitiesFilterTooltip",
   "activityActions",

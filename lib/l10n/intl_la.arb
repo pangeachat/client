@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-10-27 14:57:18.004967",
+    "@@last_modified": "2026-11-02 14:31:51.775242",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "Nemo adhuc iunxit. Pangea Bot sedem liberam nunc capere potest, aut tu manere potes.",
     "keepWaiting": "Manere",
     "botTookSeatAfterAnHour": "Haec sessio per horam aperta erat, ergo Pangea Bot sedem liberam cepit.",
-    "botTookSeatAfterADay": "Haec sessio per diem apertior erat, ergo Pangea Bot sedem liberam cepit. Mitte nuntium ut incipias."
+    "botTookSeatAfterADay": "Haec sessio per diem apertior erat, ergo Pangea Bot sedem liberam cepit. Mitte nuntium ut incipias.",
+    "accountSetupFailedHelp": "Rationem tuam constituere non potuimus. Coniunctionem tuam inspice et iterum conare, aut exi et postea inscribe."
 }

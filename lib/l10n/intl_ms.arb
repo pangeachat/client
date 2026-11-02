@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-10-27 14:57:19.283753",
+    "@@last_modified": "2026-11-02 14:31:52.821188",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "Tiada sesiapa yang menyertai lagi. Pangea Bot boleh mengambil tempat kosong sekarang, atau anda boleh terus menunggu.",
     "keepWaiting": "Terus menunggu",
     "botTookSeatAfterAnHour": "Sesi ini dibuka selama sejam, jadi Pangea Bot mengambil tempat kosong.",
-    "botTookSeatAfterADay": "Sesi ini dibuka selama lebih sehari, jadi Pangea Bot mengambil tempat kosong. Hantar mesej untuk bermula."
+    "botTookSeatAfterADay": "Sesi ini dibuka selama lebih sehari, jadi Pangea Bot mengambil tempat kosong. Hantar mesej untuk bermula.",
+    "accountSetupFailedHelp": "Kami tidak dapat menyelesaikan persediaan akaun anda. Semak sambungan anda dan cuba lagi, atau log keluar dan daftar masuk kemudian."
 }

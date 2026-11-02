@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-10-27 14:57:13.646462",
+    "@@last_modified": "2026-11-02 14:31:47.024188",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2522,5 +2522,6 @@
     "playWithBotNowMessage": "Wala pa'y miapil. Ang Pangea Bot makalingkod na karon, o mahimo kang magpadayon sa paghulat.",
     "keepWaiting": "Padayon sa paghulat",
     "botTookSeatAfterAnHour": "Bukas kini nga sesyon sulod sa usa ka oras, busa ang Pangea Bot milingkod sa bakanteng lingkoranan.",
-    "botTookSeatAfterADay": "Bukas kini nga sesyon sulod sa kapin sa usa ka adlaw, busa ang Pangea Bot milingkod sa bakanteng lingkoranan. Pagpadala og mensahe aron magsugod."
+    "botTookSeatAfterADay": "Bukas kini nga sesyon sulod sa kapin sa usa ka adlaw, busa ang Pangea Bot milingkod sa bakanteng lingkoranan. Pagpadala og mensahe aron magsugod.",
+    "accountSetupFailedHelp": "Dili namo mahuman ang pag-set up sa imong account. Susiha ang imong koneksyon ug sulayi pag-usab, o pag-log out ug pag-sign in unya."
 }

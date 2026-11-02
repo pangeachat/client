@@ -2073,7 +2073,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-27 14:57:14.597760",
+    "@@last_modified": "2026-11-02 14:31:48.132022",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10917,5 +10917,6 @@
     "playWithBotNowMessage": "Wala pang sumasali. Puwedeng umupo si Pangea Bot sa bakanteng upuan ngayon, o puwede kang maghintay pa.",
     "keepWaiting": "Maghintay pa",
     "botTookSeatAfterAnHour": "Isang oras nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan.",
-    "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula."
+    "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula.",
+    "accountSetupFailedHelp": "Hindi namin matapos ang pag-set up ng iyong account. Suriin ang iyong koneksyon at subukang muli, o mag-log out at mag-sign in mamaya."
 }

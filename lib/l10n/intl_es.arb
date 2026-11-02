@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-27 14:57:14.586310",
+    "@@last_modified": "2026-11-02 14:31:47.443917",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8289,5 +8289,6 @@
     "playWithBotNowMessage": "Nadie se ha unido todavía. Pangea Bot puede ocupar el asiento ahora, o puedes seguir esperando.",
     "keepWaiting": "Seguir esperando",
     "botTookSeatAfterAnHour": "Esta sesión estuvo abierta durante una hora, así que Pangea Bot ocupó el asiento.",
-    "botTookSeatAfterADay": "Esta sesión estuvo abierta durante más de un día, así que Pangea Bot ocupó el asiento. Envía un mensaje para empezar."
+    "botTookSeatAfterADay": "Esta sesión estuvo abierta durante más de un día, así que Pangea Bot ocupó el asiento. Envía un mensaje para empezar.",
+    "accountSetupFailedHelp": "No pudimos terminar de configurar tu cuenta. Revisa tu conexión e inténtalo de nuevo, o cierra sesión y vuelve a iniciarla más tarde."
 }

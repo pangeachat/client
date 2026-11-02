@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:21.131641",
+    "@@last_modified": "2026-11-02 14:31:54.741929",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10789,5 +10789,6 @@
     "playWithBotNowMessage": "Nimeni nu s-a alăturat încă. Pangea Bot poate ocupa locul liber acum, sau poți continua să aștepți.",
     "keepWaiting": "Continuă să aștepți",
     "botTookSeatAfterAnHour": "Această sesiune a fost deschisă timp de o oră, așa că Pangea Bot a ocupat locul liber.",
-    "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe."
+    "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe.",
+    "accountSetupFailedHelp": "Nu am putut finaliza configurarea contului tău. Verifică-ți conexiunea și încearcă din nou, sau deconectează-te și conectează-te mai târziu."
 }

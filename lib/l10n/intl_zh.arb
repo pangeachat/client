@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-27 14:57:24.669356",
+    "@@last_modified": "2026-11-02 14:31:57.641022",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10060,5 +10060,6 @@
     "playWithBotNowMessage": "还没有人加入。Pangea Bot 现在可以加入，或者您可以继续等待。",
     "keepWaiting": "继续等待",
     "botTookSeatAfterAnHour": "此会话已开放一小时，Pangea Bot 已加入。",
-    "botTookSeatAfterADay": "此会话已开放超过一天，Pangea Bot 已加入。发送消息即可开始。"
+    "botTookSeatAfterADay": "此会话已开放超过一天，Pangea Bot 已加入。发送消息即可开始。",
+    "accountSetupFailedHelp": "我们无法完成您的账户设置。请检查您的网络连接，然后重试，或者退出并稍后登录。"
 }
