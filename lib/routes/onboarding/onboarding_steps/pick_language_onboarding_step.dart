@@ -58,12 +58,11 @@ class PickLanguageOnboardingStep extends OnboardingStep {
     });
 
     // A joined course adds the joined-course page after the level step, for
-    // learners and teachers alike, and a learner may still join their
-    // language's central course there — see joining-courses.instructions.md.
+    // learners and teachers alike — see joining-courses.instructions.md.
     final maxRemainingSteps = state.joinedRoomId != null
         ? 1
         : switch (state.userType) {
-            UserType.student => 1,
+            UserType.student => 0,
             UserType.teacher => 1,
             null => 0,
           };

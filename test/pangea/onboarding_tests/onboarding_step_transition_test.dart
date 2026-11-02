@@ -2,10 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/routes/onboarding/course_provider.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_result.dart';
-import 'package:fluffychat/routes/onboarding/onboarding_steps/central_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
@@ -200,86 +198,6 @@ void main() {
       final state = createController();
       await testForwardNavigationWithoutCode(state, UserType.teacher);
       testBackwardNavigationWithoutCode(state, UserType.teacher);
-    },
-  );
-
-  // A learner with no class code chooses, after the level step, between their
-  // language's central course and a private course of their own; with no
-  // central course they get their own course, repaired later
-  // (joining-courses.instructions.md § The central course).
-  Future<OnboardingNavigationController> toLevelStep(
-    UserType type,
-    MockCourseProvider courses,
-  ) async {
-    final state = OnboardingNavigationController(
-      initialStep: getInitialOnboardingStep(client, courses: courses),
-    );
-    await state.forward();
-    (state.step as UserTypeOnboardingStep).setUserType(type);
-    await state.forward();
-    state.skip();
-    (state.step as PickLanguageOnboardingStep)
-      ..selectBaseLanguage(
-        LanguageModel(langCode: "en", displayName: "English"),
-      )
-      ..selectTargetLanguage(
-        LanguageModel(langCode: "es", displayName: "Spanish"),
-      );
-    await state.forward();
-    (state.step as PickCefrLevelOnboardingStep).selectCefrLevel(
-      LanguageLevelTypeEnum.a1,
-    );
-    return state;
-  }
-
-  const central = '!central:staging.pangea.chat';
-
-  test("A learner who joins the central course lands on it", () async {
-    final courses = MockCourseProvider(centralCourseRoomId: central);
-    final state = await toLevelStep(UserType.student, courses);
-
-    expect(await state.forward(), isA<SuccessNavigationResult>());
-    expect(state.step, isA<CentralCourseOnboardingStep>());
-    (state.step as CentralCourseOnboardingStep).chooseOwnCourse(false);
-    expect(await state.forward(), isA<ReachedEndNavigationResult>());
-    expect(state.step.joinedCourseSpaceId, central);
-    expect(courses.ownCoursePlans, isEmpty);
-  });
-
-  test("A learner who declines gets their own course on its plan", () async {
-    final courses = MockCourseProvider(centralCourseRoomId: central);
-    final state = await toLevelStep(UserType.student, courses);
-
-    expect(await state.forward(), isA<SuccessNavigationResult>());
-    (state.step as CentralCourseOnboardingStep).chooseOwnCourse(true);
-    expect(await state.forward(), isA<ReachedEndNavigationResult>());
-    expect(state.step.joinedCourseSpaceId, MockCourseProvider.ownCourseRoomId);
-    expect(courses.ownCoursePlans, [MockCourseProvider.centralQuestId]);
-  });
-
-  test(
-    "With no central course, a learner gets a course with no plan",
-    () async {
-      final courses = MockCourseProvider();
-      final state = await toLevelStep(UserType.student, courses);
-
-      expect(await state.forward(), isA<ReachedEndNavigationResult>());
-      expect(courses.ownCoursePlans, [null]);
-      // A course with no plan has nothing to show yet, so they land on the map.
-      expect(state.step.joinedCourseSpaceId, isNull);
-    },
-  );
-
-  test(
-    "A teacher without a code is neither asked nor given a course",
-    () async {
-      final courses = MockCourseProvider(centralCourseRoomId: central);
-      final state = await toLevelStep(UserType.teacher, courses);
-
-      expect(await state.forward(), isA<SuccessNavigationResult>());
-      expect(state.step, isA<CustomCourseOnboardingStep>());
-      expect(state.step.joinedCourseSpaceId, isNull);
-      expect(courses.ownCoursePlans, isEmpty);
     },
   );
 

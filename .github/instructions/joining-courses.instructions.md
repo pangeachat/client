@@ -6,7 +6,7 @@ applyTo: "lib/features/join_codes/**,lib/routes/chat_list/**,lib/routes/courses/
 
 > **Note:** "Course" here = a Matrix **course space** (group room), which survives the v1→v3 content migration. It is distinct from the retired CMS "course‑plan" content tree (now v3 Quests). The join/knock/code mechanics below are model-agnostic; only the course‑plans cross-link points at deprecated v1.
 
-How users join courses (Matrix spaces) through three routes (class link, class code, and knock-accept), and how a learner in no course is offered their language's central course.
+How users join courses (Matrix spaces) through three routes: class link, class code, and knock-accept.
 
 - **Synapse module cleanup**: [synapse-pangea-chat PR #21](https://github.com/pangeachat/synapse-pangea-chat/pull/21)
 - **Course plans**: [course-plans.instructions.md](course-plans.instructions.md)
@@ -101,19 +101,6 @@ Admin notices the knock in one of three places:
 Admin taps the knocking user → popup menu shows "Approve" (only visible for `Membership.knock`) → `room.invite(userId)`.
 
 **Analytics room knocks** follow the same mechanism — admins request access to a student's analytics room by knocking, and the student's client auto-accepts when the invite arrives.
-
----
-
-## The central course
-
-Every learner belongs to a course ([central courses](../../../.github/.github/instructions/central-courses.instructions.md#every-account-has-a-home-course)). A learner in no course is offered the central course for their target language, and gets a private course of their own if they decline.
-
-- **Who is asked.** A learner who isn't in any course. An account that chose teacher in onboarding is never asked, because its home is the course it will request or build.
-- **A new learner, in onboarding.** After the level step, a learner who didn't join with a class code sees the central course's card, with Join and a secondary "Make my own course instead". The page says the course's members can see their name and profile. Onboarding ends on whichever course they end up in.
-- **An existing learner, on opening the app.** A learner in no course sees a popup offering the central course, with the same two choices and the same line about members.
-- **A course of one's own.** Declining creates a private, invite-only course on the central course's plan, kept out of Browse. When the language has no central course, or the lookup fails, the app creates the course without asking and without a plan, then adds the central course's plan on a later app open, once it finds one.
-- **Leaving.** A learner who leaves their only course is asked again the next time the app opens.
-- **No separate switch.** Offers for a language start when its course is marked central, so the team chooses when each language starts.
 
 ---
 
