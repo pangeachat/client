@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/authentication/change_password_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_security/settings_password/settings_password_view.dart';
@@ -57,7 +58,7 @@ class SettingsPasswordController extends State<SettingsPassword> {
     });
     try {
       final scaffoldMessenger = ScaffoldMessenger.of(context);
-      await Matrix.of(context).client.changePassword(
+      await Matrix.of(context).client.changePasswordKeepingSession(
         newPassword1Controller.text,
         oldPassword: oldPasswordController.text,
       );
