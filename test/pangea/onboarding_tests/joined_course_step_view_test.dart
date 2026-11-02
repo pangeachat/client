@@ -50,7 +50,7 @@ class _FakeMatrixState extends MatrixState {
 
 /// #8593 — the joined-course page is where a link join now finishes even when
 /// the course's quest doesn't resolve, so it has to say what was joined from
-/// the space alone. See `joining-courses.instructions.md`.
+/// the space alone. See `onboarding.instructions.md`.
 ///
 /// #8949 — the card's language / level / count chips are now the shared
 /// [CourseInfoChips], so the count is the course's activities (from the quest

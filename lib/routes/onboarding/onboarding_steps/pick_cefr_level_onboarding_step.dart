@@ -37,7 +37,7 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
 
     // A joined course ends onboarding on the joined-course page, and for a
     // teacher it takes the place of the course request — they already have a
-    // course. See joining-courses.instructions.md.
+    // course. See onboarding.instructions.md.
     if (state.joinedRoomId != null) {
       return JoinedCourseOnboardingStep.next(client: client, state: state);
     }

@@ -37,7 +37,7 @@ class UserTypeOnboardingStep extends OnboardingStep with CourseJoinStep {
         final roomId = await state.courseProvider.joinSpaceWithCode(courseCode);
         // Only a failed JOIN falls through to the code step. A joined course
         // whose quest doesn't resolve continues as a joined-course flow
-        // (#8593) — see joining-courses.instructions.md.
+        // (#8593) — see onboarding.instructions.md.
         return await stepAfterJoin(roomId);
       } catch (e, s) {
         ErrorHandler.logError(

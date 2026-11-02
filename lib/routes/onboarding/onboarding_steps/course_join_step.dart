@@ -17,7 +17,7 @@ import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_language_onbo
 /// be joined while its quest does not resolve — so a join is never presented
 /// as no join. Onboarding asks the user for whatever the quest could not
 /// supply and finishes on the joined-course page either way. See
-/// `joining-courses.instructions.md`.
+/// `onboarding.instructions.md`.
 mixin CourseJoinStep on OnboardingStep {
   Future<OnboardingStep> stepAfterJoin(String roomId) async {
     state.setJoinedRoomId(roomId);

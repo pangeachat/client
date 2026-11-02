@@ -34,7 +34,7 @@ import 'get_initial_onboarding_step.dart';
 /// class code. The join had succeeded; loading the course's quest had not, and
 /// onboarding treated the pair as one outcome. A joined course now always
 /// finishes on the joined-course page, and the user is asked only for what the
-/// quest could not supply. See `joining-courses.instructions.md`.
+/// quest could not supply. See `onboarding.instructions.md`.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 

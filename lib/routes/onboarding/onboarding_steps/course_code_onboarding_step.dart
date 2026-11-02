@@ -27,7 +27,7 @@ class CourseCodeOnboardingStep extends OnboardingStep with CourseJoinStep {
 
     // A failed join throws, and the step surfaces the error. A join that
     // succeeds always advances, even when the course's quest doesn't resolve
-    // (#8593) — see joining-courses.instructions.md.
+    // (#8593) — see onboarding.instructions.md.
     final roomId = await state.courseProvider.joinSpaceWithCode(code);
     return stepAfterJoin(roomId);
   }
