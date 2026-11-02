@@ -67,13 +67,20 @@ class CustomCourseOnboardingStep extends OnboardingStep {
       return FreeTrialOnboardingStep(
         client: client,
         state: state,
-        maxRemainingSteps: maxRemainingSteps,
+        maxRemainingSteps: 0,
       );
     }
 
     return null;
   }
 
+  /// Skipping the request still leads to the trial page, as submitting does.
   @override
-  OnboardingStep? skip() => null;
+  OnboardingStep? skip() => state.trialInfoProvider.shouldShowTrialPage
+      ? FreeTrialOnboardingStep(
+          client: client,
+          state: state,
+          maxRemainingSteps: 0,
+        )
+      : null;
 }

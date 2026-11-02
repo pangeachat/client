@@ -56,10 +56,11 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
                 maxRemainingSteps: maxRemainingSteps,
               )
             : null,
+      // The trial page can follow, so the request's button says Next then.
       UserType.teacher => CustomCourseOnboardingStep(
         client: client,
         state: state,
-        maxRemainingSteps: 0,
+        maxRemainingSteps: state.trialInfoProvider.shouldShowTrialPage ? 1 : 0,
       ),
     };
   }

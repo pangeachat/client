@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' hide Profile;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
@@ -9,14 +10,18 @@ import 'package:fluffychat/routes/onboarding/course_provider.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_result.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/user_type_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/trial_info_provider.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import '../get_test_client.dart';
 
-/// Failure branches the onboarding doc describes. See
-/// `onboarding.instructions.md` § Joining a course during onboarding.
+/// Failure and skip branches the onboarding doc describes. See
+/// `onboarding.instructions.md` § Joining a course during onboarding and
+/// § The course request.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -56,6 +61,37 @@ void main() {
       expect(courses.joins, 1);
     },
   );
+
+  group('skipping the course request', () {
+    CustomCourseOnboardingStep requestStep(TrialInfoProvider trial) =>
+        CustomCourseOnboardingStep(
+          client: client,
+          state:
+              OnboardingStateController(
+                  accountUpdater: MockAccountUpdater(),
+                  courseProvider: MockCourseProvider(),
+                  avatarProvider: MockAvatarProvider(),
+                  trialInfoProvider: trial,
+                )
+                ..setUserType(UserType.teacher)
+                ..setBaseLanguage(
+                  LanguageModel(langCode: 'en', displayName: 'English'),
+                )
+                ..setTargetLanguage(
+                  LanguageModel(langCode: 'es', displayName: 'Spanish'),
+                )
+                ..setLanguageLevel(LanguageLevelTypeEnum.a2),
+          maxRemainingSteps: 1,
+        );
+
+    test('leads to the trial page when it would show', () {
+      expect(requestStep(_TrialShown()).skip(), isA<FreeTrialOnboardingStep>());
+    });
+
+    test('ends onboarding when there is no trial page', () {
+      expect(requestStep(MockTrialInfoProvider()).skip(), isNull);
+    });
+  });
 }
 
 /// Fails only the [failCall]th profile save.
@@ -89,4 +125,12 @@ class _LinkCourseProvider extends MockCourseProvider {
     joins++;
     return super.joinSpaceWithCode(code);
   }
+}
+
+class _TrialShown implements TrialInfoProvider {
+  @override
+  bool get shouldShowTrialPage => true;
+
+  @override
+  Future<void> setShowedTrialPage() async {}
 }
