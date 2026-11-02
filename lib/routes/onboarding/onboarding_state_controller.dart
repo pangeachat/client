@@ -90,14 +90,9 @@ class OnboardingStateController {
   void setAvatarInfo(AvatarInfo info) => _avatarInfo = info;
   void setDisplayName(String displayName) => _displayName = displayName;
 
-  void setUserType(UserType type) {
-    // Switching teacher <-> learner starts the CEFR pick over: the level is a
-    // single shared field, so without this a teacher-picked level leaks onto
-    // the learner's CEFR page — nothing highlighted, yet Next enabled (#7583).
-    // Re-tapping the same role keeps the existing pick.
-    if (_userType != type) _languageLevel = null;
-    _userType = type;
-  }
+  /// Switching role keeps the level, like every other choice; the level page
+  /// shows whatever is in memory selected.
+  void setUserType(UserType type) => _userType = type;
 
   void setBaseLanguage(LanguageModel? lang) => _baseLanguage = lang;
   void setTargetLanguage(LanguageModel? lang) => _targetLanguage = lang;
