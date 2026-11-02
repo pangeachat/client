@@ -42,7 +42,6 @@ class OnboardingStateController {
   String? _courseCode;
   CoursePlanModel? _joinedCoursePlan;
   String? _joinedRoomId;
-  String? _ownCourseRoomId;
 
   AvatarInfo? get avatarInfo => _avatarInfo;
   String? get displayName => _displayName;
@@ -56,11 +55,6 @@ class OnboardingStateController {
   String? get courseCode => _courseCode;
   CoursePlanModel? get joinedCoursePlan => _joinedCoursePlan;
   String? get joinedRoomId => _joinedRoomId;
-
-  /// The course of their own a learner was given with no plan, which
-  /// onboarding doesn't land on. Kept so stepping back and forward doesn't
-  /// make a second one.
-  String? get ownCourseRoomId => _ownCourseRoomId;
 
   void setAvatarInfo(AvatarInfo info) => _avatarInfo = info;
   void setDisplayName(String displayName) => _displayName = displayName;
@@ -82,5 +76,4 @@ class OnboardingStateController {
   void setJoinedCoursePlan(CoursePlanModel coursePlan) =>
       _joinedCoursePlan = coursePlan;
   void setJoinedRoomId(String roomId) => _joinedRoomId = roomId;
-  void setOwnCourseRoomId(String roomId) => _ownCourseRoomId = roomId;
 }

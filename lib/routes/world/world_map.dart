@@ -16,7 +16,6 @@ import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
-import 'package:fluffychat/features/central_courses/central_course_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -39,7 +38,6 @@ import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
-import 'package:fluffychat/routes/world/central_course_offer_dialog.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
@@ -316,8 +314,6 @@ class WorldMapController extends State<WorldMap>
       (_) => _scheduleOrientationCheck(),
     );
 
-    _offerCentralCourseIfDue();
-
     // Rebuild when a featured large card's full plan hydrates (image + goals),
     // and when the discovered-session previews change under the pins — the
     // start page's revalidate-on-view rewrites them (#8150); both re-gate which
@@ -334,10 +330,6 @@ class WorldMapController extends State<WorldMap>
     _languageSubscription = user.languageStream.stream.listen((update) {
       if (update.targetLang != _filterState.filter.l2) {
         _setL2(update.targetLang);
-      }
-      if (update.prevTargetLang?.langCodeShort !=
-          update.targetLang.langCodeShort) {
-        _offerCentralCourseIfDue();
       }
       // L1 (base-language) change → open the shimmer window (see [_warmingL1]).
       if (update.prevBaseLang != update.baseLang) {
@@ -1431,26 +1423,6 @@ class WorldMapController extends State<WorldMap>
   /// Always post-frame, and at most one pending: this is published from the
   /// view's build and fired again on every route change, and the check itself
   /// can open an overlay — which must never happen mid-frame.
-  /// The map is mounted for every signed-in learner, so it runs the app-open
-  /// central-course offer (joining-courses.instructions.md § The central
-  /// course).
-  Future<void> _offerCentralCourseIfDue() async {
-    final client = MatrixState.pangeaController.matrixState.client;
-    final central = await CentralCourseOffer.dueOnOpen(client);
-    final language = MatrixState.pangeaController.userController.userL2;
-    if (central == null || language == null || !mounted) return;
-    await showAdaptiveDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => CentralCourseOfferDialog(
-        client: client,
-        central: central,
-        language: language.langCodeShort,
-        languageName: language.getDisplayName(L10n.of(context)),
-      ),
-    );
-  }
-
   void _scheduleOrientationCheck() {
     if (_orientationCheckScheduled) return;
     _orientationCheckScheduled = true;
