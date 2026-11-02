@@ -75,14 +75,6 @@ class LeftPanelAddCourseSubpage extends StatelessWidget {
               courseCreationCompleter: courseCreationCompleter,
             );
           }
-          final joinRoomId = param.previewRoomId;
-          if (joinRoomId != null) {
-            return PublicCoursePreview(
-              roomID: fullRoomId(joinRoomId),
-              ownQuestId: courseId,
-              closeButton: closeButton,
-            );
-          }
           return SelectedCourse(
             courseId,
             SelectedCourseMode.launch,
