@@ -3,8 +3,10 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 
 /// The names a discussion travels under (#9647). A discussion is an activity
 /// in the Discussion mode, stored course-only in one of the course's Missions.
@@ -12,9 +14,13 @@ abstract class DiscussionIds {
   /// The plan mode that marks an activity as a discussion.
   static const String mode = 'Discussion';
 
-  /// Per-room account data holding the learner's own progress in a
-  /// discussion: which questions they have answered, and whether they ended.
-  static const String progressAccountData = 'pangea.discussion_progress';
+  /// The plan's one shared role; every student's seat is on it.
+  static const String roleId = 'participant';
+
+  /// A student's seat in `pangea.activity_roles`, and the key their question
+  /// awards are stored under: keyed by student, since every student holds
+  /// the same role (synapse-pangea-chat `discussion_room`).
+  static String seatKey(String userId) => '$roleId:$userId';
 }
 
 bool isDiscussionMode(String? mode) =>
@@ -23,12 +29,14 @@ bool isDiscussionMode(String? mode) =>
 extension DiscussionPlanExtension on ActivityPlanModel {
   bool get isDiscussion => isDiscussionMode(req.mode);
 
-  /// The discussion's questions in order: the goals of its one shared
-  /// participant role.
+  /// The discussion's questions in order, as goals: the goals of its one
+  /// shared participant role.
+  List<ActivityRoleGoal> get discussionGoals =>
+      roles.values.firstOrNull?.allGoals ?? const <ActivityRoleGoal>[];
+
+  /// The discussion's questions in order.
   List<String> get discussionQuestions => [
-    for (final goal
-        in roles.values.firstOrNull?.allGoals ?? const <ActivityRoleGoal>[])
-      goal.description,
+    for (final goal in discussionGoals) goal.description,
   ];
 
   /// The photo a discussion shows, and its room's avatar.
@@ -59,29 +67,14 @@ extension DiscussionRoomExtension on Room {
 }
 
 /// The learner's own progress in one discussion room (#9647): the questions
-/// they have answered, by index, and whether they have ended. Kept per player
-/// in room account data, which any member may write; a discussion has no
-/// roles to hang awards on. Prototype: the full version moves awards into
-/// room state the orchestrator writes.
+/// they have answered, by index, and whether they have ended. Both live on
+/// the learner's own seat: the orchestrator's awards, and the seat's
+/// `finished_at`, which "I'm done" stamps as it does in a roleplay.
 class DiscussionProgress {
   final Set<int> answered;
   final bool ended;
 
   const DiscussionProgress({this.answered = const {}, this.ended = false});
-
-  static DiscussionProgress fromJson(Map<String, Object?>? json) =>
-      DiscussionProgress(
-        answered: {
-          for (final i in (json?['answered'] as List?) ?? const [])
-            if (i is int) i,
-        },
-        ended: json?['ended'] == true,
-      );
-
-  Map<String, Object?> toJson() => {
-    'answered': answered.toList()..sort(),
-    'ended': ended,
-  };
 
   /// The first question not yet answered, or null when every one is.
   int? currentOf(int questionCount) {
@@ -93,17 +86,29 @@ class DiscussionProgress {
 }
 
 extension DiscussionProgressRoomExtension on Room {
-  DiscussionProgress get discussionProgress => DiscussionProgress.fromJson(
-    roomAccountData[DiscussionIds.progressAccountData]?.content,
+  DiscussionProgress get discussionProgress => DiscussionProgress(
+    answered: _answeredDiscussionQuestions,
+    ended: ownRoleState?.isFinished ?? false,
   );
 
-  Future<void> setDiscussionProgress(DiscussionProgress progress) =>
-      client.setAccountDataPerRoom(
-        client.userID!,
-        id,
-        DiscussionIds.progressAccountData,
-        progress.toJson(),
-      );
+  /// The questions the orchestrator has awarded the learner's own seat, by
+  /// index. Empty until the plan has loaded.
+  Set<int> get _answeredDiscussionQuestions {
+    final userId = client.userID;
+    final goals = discussionPlan?.discussionGoals;
+    if (userId == null || goals == null) return const {};
+    final seat = DiscussionIds.seatKey(userId);
+    final awarded = orchestratorAwardedGoals;
+    return {
+      for (var i = 0; i < goals.length; i++)
+        if (awarded.isGoalCompletedForRole(
+          seat,
+          goals[i].id,
+          goalSlug: goals[i].goalSlug,
+        ))
+          i,
+    };
+  }
 }
 
 extension DiscussionClientExtension on Client {
@@ -115,24 +120,4 @@ extension DiscussionClientExtension on Client {
           room.discussionActivityId == activityId)
         room,
   ];
-}
-
-extension DiscussionAwardRoomExtension on Room {
-  /// Prototype award rule (#9647): the learner's target-language message
-  /// answers the question in front of them, which earns its goal and brings
-  /// up the next. The full version awards on the orchestrator's judgement,
-  /// relative to the learner's level.
-  Future<void> answerCurrentDiscussionQuestion(int questionCount) async {
-    if (discussionActivityId == null) return;
-    final progress = discussionProgress;
-    if (progress.ended) return;
-    final current = progress.currentOf(questionCount);
-    if (current == null) return;
-    await setDiscussionProgress(
-      DiscussionProgress(
-        answered: {...progress.answered, current},
-        ended: progress.ended,
-      ),
-    );
-  }
 }

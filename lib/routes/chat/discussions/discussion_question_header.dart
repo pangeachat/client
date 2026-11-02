@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
@@ -25,8 +26,9 @@ import 'package:fluffychat/widgets/goal_question_mark.dart';
 /// done!" (or "Wait, I'm not done!" once ended). So a learner who joins a
 /// long conversation still sees what it is answering.
 ///
-/// Prototype: the question in front is the first one the learner hasn't
-/// answered; in the full version it is the bot's latest question.
+/// The question in front is the first one the learner hasn't answered: the
+/// bot asks each student their own next question, so the room has no single
+/// current one.
 class DiscussionQuestionHeader extends StatefulWidget {
   final Room room;
 
@@ -60,12 +62,11 @@ class _DiscussionQuestionHeaderState extends State<DiscussionQuestionHeader> {
 
   Future<void> _setEnded(bool ended) async {
     final room = widget.room;
-    final progress = room.discussionProgress;
     setState(() => _expanded = false);
     try {
-      await room.setDiscussionProgress(
-        DiscussionProgress(answered: progress.answered, ended: ended),
-      );
+      // The same per-seat ending a roleplay player's "I'm done" writes, so
+      // the per-learner ending built for every mode reaches discussions.
+      await (ended ? room.finishActivity() : room.continueActivity());
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'roomId': room.id});
     }
@@ -76,7 +77,8 @@ class _DiscussionQuestionHeaderState extends State<DiscussionQuestionHeader> {
     final room = widget.room;
     final activityId = room.discussionActivityId;
     if (activityId == null) return const SizedBox.shrink();
-    // The learner's progress is room account data: it changes on sync.
+    // The learner's answers and their ending are room state: both change on
+    // sync.
     // The plan loads after the room opens: rebuild when it arrives too.
     return ListenableBuilder(
       listenable: ActivityPlanRepo.instance,
