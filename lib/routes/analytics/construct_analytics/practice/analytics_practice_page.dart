@@ -479,7 +479,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     if (notifier.hasSelectedChoice(choiceContent)) return;
     notifier.selectChoice(choiceContent);
 
-    final uses = exercise.constructUses(choiceContent);
+    final uses = session.ownUses(exercise.constructUses(choiceContent));
     session.submitAnswer(uses);
     await _analyticsController.addCompletedExerciseAnalytics(
       uses,
@@ -534,6 +534,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _analyticsController.addSkippedExerciseAnalytics(
       target,
       _l2!.langCodeShort,
+      sessionId: session.session?.id,
     );
   }
 
@@ -585,7 +586,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }) async {
     PracticeSessionHolder.instance.markInteraction();
     if (notifier.exerciseComplete(exercise)) return;
-    final uses = exercise.takeUses(targetHeard: targetHeard, heard: heard);
+    final uses = session.ownUses(
+      exercise.takeUses(targetHeard: targetHeard, heard: heard),
+    );
     session.submitAnswer(uses);
     notifier.selectChoice(exercise.heardAnswer);
     await _analyticsController.addCompletedExerciseAnalytics(
