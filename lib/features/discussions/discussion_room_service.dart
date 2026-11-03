@@ -3,11 +3,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/discussions/discussion_extensions.dart';
+import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
@@ -28,7 +27,7 @@ class DiscussionRoomService {
     Uri? imageUrl,
   }) async {
     final client = course.client;
-    final own = client.discussionRoomsFor(activityId).firstOrNull;
+    final own = client.discussionStandingFor(activityId).room;
     if (own != null) return own.id;
     final resp = await showFutureLoadingDialog(
       context: context,

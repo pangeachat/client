@@ -6,13 +6,13 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
-import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_indicator.dart';
@@ -48,10 +48,9 @@ class ActivityUserSummaries extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // A discussion has no summary yet: its cards come with the per-learner
-    // summary every mode is getting (org activity-summary.instructions.md,
-    // "One card per learner"), so nothing stands in for one here.
-    if (room.discussionActivityId != null) return const SizedBox.shrink();
+    if (!(room.activityMode?.showsSummary ?? true)) {
+      return const SizedBox.shrink();
+    }
     // The subscription gate stands HERE, in the summary's own place, rather
     // than as a line in the finished-status bar — a gate that fills the space
     // the feature would have filled is the pattern every other one follows

@@ -21,14 +21,30 @@ enum ActivityMode {
   /// questions, with the bot facilitating (org discussions doc).
   discussion;
 
-  /// The mode a plan's `mode` field names.
+  /// The plan `mode` value of a discussion, compared case-insensitively.
+  static const String _discussionPlanMode = 'discussion';
+
   static ActivityMode fromPlanMode(String? mode) =>
-      mode?.toLowerCase() == 'discussion' ? discussion : roleplay;
+      mode?.toLowerCase() == _discussionPlanMode ? discussion : roleplay;
 
   /// The tag on its cards.
   String label(L10n l10n) => switch (this) {
     roleplay => l10n.roleplayLabel,
     discussion => l10n.discussionLabel,
+  };
+
+  /// The screen-reader name of an activity's card or pin.
+  String titleLabel(L10n l10n, String title) => switch (this) {
+    roleplay => l10n.activityLabel(title),
+    discussion => l10n.discussionCardSemantics(title),
+  };
+
+  /// What a learner in one of its live sessions is called, in place of the
+  /// session state's own name; null keeps that name ("Ongoing"). A discussion
+  /// has no session that starts and ends, so the learner has "Joined" it.
+  String? joinedLabel(L10n l10n) => switch (this) {
+    roleplay => null,
+    discussion => l10n.discussionJoined,
   };
 
   /// The icon beside that tag, and the glyph on its map pins.
@@ -37,47 +53,79 @@ enum ActivityMode {
     discussion => Icons.live_help_outlined,
   };
 
-  /// The glyph on a mid map pin. A discussion's pin always wears its icon; a
-  /// roleplay's wears its icon only while [available], where a live session's
-  /// own glyph (its seats, its chat) says more. Null leaves the state's glyph.
+  /// The glyph on a mid map pin; null leaves the pin state's own. A
+  /// roleplay's live session has a glyph that says more (its seats, its
+  /// chat), so its icon shows only while [available].
   IconData? midPinGlyph({required bool available}) => switch (this) {
     roleplay => available ? icon : null,
     discussion => icon,
   };
 
-  /// What a card shows once the learner has played it: the completed stamp,
-  /// or a gold badge with the XP earned there, which keeps counting up since
-  /// a discussion has no single end.
+  /// Which card draws it on the course page and the map.
+  ActivityCardStyle get cardStyle => switch (this) {
+    roleplay => ActivityCardStyle.activity,
+    discussion => ActivityCardStyle.discussion,
+  };
+
+  /// What a card shows once the learner has played it. A discussion has no
+  /// single end, so its badge keeps counting XP up instead of stamping.
   CompletionMark get completionMark => switch (this) {
     roleplay => CompletionMark.stamp,
     discussion => CompletionMark.xpBadge,
   };
 
-  /// A card shows how many players the activity takes. A discussion has no
-  /// set number.
   bool get showsPlayerCount => switch (this) {
     roleplay => true,
     discussion => false,
   };
 
-  /// Opened by joining the course's shared room for it, picked by the server:
-  /// its start page offers one Join instead of the play choices, and a
-  /// learner already in its room goes straight to the chat.
+  /// Belongs to its course rather than to the course's activity list, so the
+  /// list and the course's pins never filter it out.
+  bool get ownedByCourse => switch (this) {
+    roleplay => false,
+    discussion => true,
+  };
+
+  /// The course page's Play button may open it. A discussion opens only from
+  /// its own card.
+  bool get offeredByPlay => switch (this) {
+    roleplay => true,
+    discussion => false,
+  };
+
+  /// Opened by joining the course's shared room for it, which the server
+  /// picks: its start page offers one Join instead of the play choices, and
+  /// a learner already in its room goes straight to the chat.
   bool get opensSharedRoom => switch (this) {
     roleplay => false,
     discussion => true,
   };
 
   /// Its sessions are offered to other learners to join (open sessions on the
-  /// map and the start page). A discussion's room is picked by the server, so
-  /// its rooms are never offered.
+  /// map and the start page).
   bool get listsOpenSessions => switch (this) {
     roleplay => true,
     discussion => false,
   };
 
-  /// In the chat, a sender's name is prefixed with their role. Every student
-  /// in a discussion holds the same role, so there it says nothing.
+  /// Its room's XP counts toward the Mission while the learner is in it,
+  /// rather than once the session is saved: a discussion has no end to save
+  /// at.
+  bool get countsWhileOpen => switch (this) {
+    roleplay => false,
+    discussion => true,
+  };
+
+  /// A finished session shows the per-learner summary cards. A discussion's
+  /// come with the per-learner summary every mode is getting (org
+  /// activity-summary.instructions.md, "One card per learner").
+  bool get showsSummary => switch (this) {
+    roleplay => true,
+    discussion => false,
+  };
+
+  /// A sender's name in the chat is prefixed with their role. Every student
+  /// in a discussion holds the same role.
   bool get namesRoles => switch (this) {
     roleplay => true,
     discussion => false,
@@ -102,23 +150,28 @@ enum ActivityMode {
     discussion => true,
   };
 
-  /// What sits at the top of the chat.
   ActivityHeader get header => switch (this) {
     roleplay => ActivityHeader.goalMenu,
     discussion => ActivityHeader.questions,
   };
 }
 
-/// What an activity's card shows once the learner has played it.
+enum ActivityCardStyle {
+  /// `ActivitySuggestionCard`, with its live session state.
+  activity,
+
+  /// `DiscussionCard`.
+  discussion,
+}
+
 enum CompletionMark { stamp, xpBadge }
 
 /// The header at the top of an activity's chat.
 enum ActivityHeader {
-  /// The roleplay goal menu (`ActivityStatsMenu`).
+  /// `ActivityStatsMenu`.
   goalMenu,
 
-  /// The current question and the question circles
-  /// (`DiscussionQuestionHeader`).
+  /// `DiscussionQuestionHeader`.
   questions,
 }
 

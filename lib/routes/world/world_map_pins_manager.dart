@@ -4,13 +4,14 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/discussions/discussion_extensions.dart';
+import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
@@ -27,6 +28,7 @@ import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/trailing_throttle.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/courses/course_objectives/discussion_card.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -291,9 +293,8 @@ class WorldMapPinsManager {
   /// Whether [card] wears the completed stamp: the learner has finished it
   /// ([savedActivityIds]). A set lookup, never a rooms rescan.
   ActivityStarLevel starLevelOf(QuestActivityCard card) =>
-      // A discussion never wears the played stamp: its chat stays open
-      // (#9647).
-      !card.isDiscussion && _savedActivityIds.contains(card.activityId)
+      card.activityMode.completionMark == CompletionMark.stamp &&
+          _savedActivityIds.contains(card.activityId)
       ? ActivityStarLevel.star
       : ActivityStarLevel.none;
 
@@ -592,14 +593,13 @@ class WorldMapPinsManager {
     // current, and the map re-resolves when it changes.
     MissionXpCache.instance.ensureWired();
 
-    // A discussion the learner is in ranks as an ongoing session; until they
-    // join, it ranks as available like any activity (#9647).
     final withDiscussions = {...signals};
-    for (final room in client.rooms) {
-      final id = room.discussionActivityId;
-      if (id == null || room.membership != Membership.join) continue;
+    for (final MapEntry(key: id, value: standing)
+        in client.discussionStandings.entries) {
+      final state = DiscussionCard.stateOf(standing);
+      if (state == null) continue;
       withDiscussions[id] = PinSignals(
-        state: ActivityPinState.ongoingActive,
+        state: state,
         completionFraction: signals[id]?.completionFraction ?? 0,
         pinged: signals[id]?.pinged ?? false,
       );

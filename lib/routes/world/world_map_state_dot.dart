@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
-import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pass_through_tooltip.dart';
@@ -16,7 +15,6 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/routes/world/world_map_star_dot.dart';
 import 'package:fluffychat/widgets/completed_stamp.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class WorldMapDot extends StatefulWidget {
   final QuestActivityCard card;
@@ -125,6 +123,11 @@ class _WorldMapDotState extends State<WorldMapDot>
   @override
   Widget build(BuildContext context) {
     final isDot = widget.tier.isDot(widget.state);
+    final l10n = L10n.of(context);
+    final mode = widget.card.activityMode;
+    final stateLabel =
+        (widget.state.isOngoing ? mode.joinedLabel(l10n) : null) ??
+        widget.state.label(l10n);
     return ScaleTransition(
       scale: CurvedAnimation(
         parent: _ctrl,
@@ -144,9 +147,7 @@ class _WorldMapDotState extends State<WorldMapDot>
             button: !widget.dying,
             label: widget.dying
                 ? ''
-                : widget.card.isDiscussion
-                ? L10n.of(context).discussionCardSemantics(widget.card.title)
-                : "${L10n.of(context).activityLabel(widget.card.title)}, ${widget.state.label(L10n.of(context))}",
+                : "${mode.titleLabel(l10n, widget.card.title)}, $stateLabel",
             // excludeSemantics drops the DESCENDANT tree — including the
             // GestureDetector's implicit tap action — so this node must carry
             // its own onTap, or assistive tech can name the pin but never
@@ -183,17 +184,8 @@ class _WorldMapDotState extends State<WorldMapDot>
                           ? _MediumDotContent(
                               state: widget.state,
                               pinged: widget.pinged,
-                              // A discussion's chat carries its own unread
-                              // bubble, and its glyph is the question bubble
-                              // (#9647).
-                              unreadRoom: widget.card.isDiscussion
-                                  ? Matrix.of(
-                                      context,
-                                    ).client.activeDiscussionRoomFor(
-                                      widget.card.activityId,
-                                    )
-                                  : widget.unreadRoom,
-                              glyphIcon: widget.card.activityMode.midPinGlyph(
+                              unreadRoom: widget.unreadRoom,
+                              glyphIcon: mode.midPinGlyph(
                                 available:
                                     widget.state == ActivityPinState.available,
                               ),

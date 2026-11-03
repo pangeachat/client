@@ -7,10 +7,10 @@ import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
-import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
@@ -233,10 +233,12 @@ class QuestOutline {
     if (allowed.length == available.length) return group;
     return QuestObjectiveGroup(
       objective: group.objective,
-      // A discussion belongs to its course, so the course's pins never
-      // filter it out (#9647).
       activities: group.activities
-          .where((a) => allowed.contains(a.activityId) || a.plan.isDiscussion)
+          .where(
+            (a) =>
+                allowed.contains(a.activityId) ||
+                a.plan.activityMode.ownedByCourse,
+          )
           .toList(),
       pacing: group.pacing,
       credit: group.credit,

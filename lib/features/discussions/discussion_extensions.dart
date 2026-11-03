@@ -6,29 +6,19 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 
-/// The names a discussion travels under (#9647). A discussion is an activity
-/// in the Discussion mode, stored course-only in one of the course's Missions.
+/// A discussion's seats (#9647). Every student holds the plan's one shared
+/// role, so a seat in `pangea.activity_roles`, and the question awards stored
+/// under it, are keyed by student (synapse-pangea-chat `discussion_room`).
 abstract class DiscussionIds {
-  /// The plan mode that marks an activity as a discussion.
-  static const String mode = 'Discussion';
+  static const String _roleId = 'participant';
 
-  /// The plan's one shared role; every student's seat is on it.
-  static const String roleId = 'participant';
-
-  /// A student's seat in `pangea.activity_roles`, and the key their question
-  /// awards are stored under: keyed by student, since every student holds
-  /// the same role (synapse-pangea-chat `discussion_room`).
-  static String seatKey(String userId) => '$roleId:$userId';
+  static String seatKey(String userId) => '$_roleId:$userId';
 }
 
-bool isDiscussionMode(String? mode) =>
-    ActivityMode.fromPlanMode(mode) == ActivityMode.discussion;
-
 extension DiscussionPlanExtension on ActivityPlanModel {
-  bool get isDiscussion => isDiscussionMode(req.mode);
+  bool get isDiscussion => activityMode == ActivityMode.discussion;
 
   /// The discussion's questions in order, as goals: the goals of its one
   /// shared participant role.
@@ -47,10 +37,6 @@ extension DiscussionPlanExtension on ActivityPlanModel {
     final hero = heroBlock?.displayUrl();
     return hero != null ? Uri.tryParse(hero) : ownImageURL;
   }
-}
-
-extension DiscussionCardExtension on QuestActivityCard {
-  bool get isDiscussion => isDiscussionMode(mode);
 }
 
 extension DiscussionRoomExtension on Room {
@@ -110,31 +96,4 @@ extension DiscussionProgressRoomExtension on Room {
           i,
     };
   }
-}
-
-extension DiscussionClientExtension on Client {
-  /// The learner's rooms for [activityId], where they hold a seat: normally
-  /// one. A room a course admin was joined to on its creation, to observe it,
-  /// is not one until they join it as a participant (their seat), so it opens
-  /// the start page rather than a chat they cannot write in.
-  List<Room> discussionRoomsFor(String activityId) => [
-    for (final room in rooms)
-      if (room.membership == Membership.join &&
-          room.discussionActivityId == activityId &&
-          room.ownRoleState != null)
-        room,
-  ];
-
-  /// The learner's room for [activityId] while they are still in the
-  /// discussion: joined, holding a seat, and not ended. What shows it as
-  /// Joined and carries its unread bubble.
-  Room? activeDiscussionRoomFor(String activityId) => discussionRoomsFor(
-    activityId,
-  ).where((room) => !(room.ownRoleState?.isFinished ?? false)).firstOrNull;
-
-  /// Whether the learner has ended [activityId] ("I'm done") in their room
-  /// for it: its card reads Answered.
-  bool hasAnsweredDiscussion(String activityId) =>
-      activeDiscussionRoomFor(activityId) == null &&
-      discussionRoomsFor(activityId).isNotEmpty;
 }

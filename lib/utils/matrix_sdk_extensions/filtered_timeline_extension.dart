@@ -5,6 +5,7 @@ import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/bot_seat_note.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -68,12 +69,9 @@ extension IsStateExtension on Event {
   }.contains(type);
 
   bool get isCollapsedState =>
-      // A learner arriving in a discussion is shown on its own line (see
-      // isVisibleInPangeaGui), never folded into "more events" with the seat
-      // the server writes beside it (#9647).
-      !(type == EventTypes.RoomMember &&
-          roomMemberChangeType == RoomMemberChangeType.join &&
-          room.activityMode?.announcesArrivals == true) &&
+      // Never folded into "more events" with the seat the server writes
+      // beside it.
+      !isAnnouncedArrival &&
       !{
         EventTypes.Message,
         EventTypes.Sticker,
@@ -102,20 +100,25 @@ extension IsStateExtension on Event {
           (roomMemberChangeType != RoomMemberChangeType.avatar &&
               roomMemberChangeType != RoomMemberChangeType.other);
     }
-    // Students arrive in a discussion over hours or days, so a learner's
-    // arrival is news there, unlike a roleplay's fixed cast (#9647). The
-    // course's admins are joined to every session automatically and the bot
-    // is no arrival, so neither is announced.
     if (type == EventTypes.RoomMember &&
-        room.activityMode?.announcesArrivals == true) {
-      final userId = stateKey;
-      return roomMemberChangeType == RoomMemberChangeType.join &&
-          userId != null &&
-          userId != BotName.byEnvironment &&
-          room.getPowerLevelByUserId(userId) < 100;
+        (room.activityMode?.announcesArrivals ?? false)) {
+      return isAnnouncedArrival;
     }
 
     return type != EventTypes.RoomMember;
+  }
+
+  /// A learner joining a room whose mode announces arrivals (#9647). The
+  /// course's admins are joined to every session automatically and the bot
+  /// is no arrival, so neither is announced.
+  bool get isAnnouncedArrival {
+    final userId = stateKey;
+    return type == EventTypes.RoomMember &&
+        roomMemberChangeType == RoomMemberChangeType.join &&
+        (room.activityMode?.announcesArrivals ?? false) &&
+        userId != null &&
+        userId != BotName.byEnvironment &&
+        room.getPowerLevelByUserId(userId) < SpaceConstants.powerLevelOfAdmin;
   }
 
   bool get pangeaIsEventTypeKnown =>

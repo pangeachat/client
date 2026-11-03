@@ -1,5 +1,6 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/quests/activity_family.dart';
@@ -425,9 +426,7 @@ List<QuestActivityCard> restrictCardsForCourse(
     return cards
         .where(
           (card) =>
-              // A discussion belongs to its course, not the copy's list
-              // (#9647).
-              card.isDiscussion ||
+              card.activityMode.ownedByCourse ||
               card.learningObjectiveRefs.any(
                 (loId) => allowedByLo[loId]?.contains(card.activityId) ?? false,
               ),
@@ -452,7 +451,7 @@ List<QuestActivityCard> restrictCardsForCourse(
   return cards
       .where(
         (card) =>
-            card.isDiscussion ||
+            card.activityMode.ownedByCourse ||
             card.learningObjectiveRefs.any(
               (loId) => allowedByLo[loId]?.contains(card.activityId) ?? true,
             ),

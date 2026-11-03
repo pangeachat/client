@@ -8,6 +8,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_video_tag.dart';
+import 'package:fluffychat/routes/chat/chat_details/activity_card_state_pill.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/widgets/completed_stamp.dart';
@@ -68,15 +69,7 @@ class ActivitySuggestionCard extends StatelessWidget {
   /// activity cards squash it so the card reads squarer.
   final double? imageHeight;
 
-  /// Names the live state in place of [pinState]'s own label and glyph — a
-  /// discussion's "Joined" (#9647), which wears the Ongoing colours.
-  final String? stateLabel;
-  final IconData? stateIcon;
-
-  /// Shows the pill named [stateLabel] in these colours, with no live state
-  /// and so no frame: a discussion the learner has ended, "Answered" in gold
-  /// (#9647).
-  final ({Color fill, Color on})? stateColors;
+  final ActivityCardStatePill? statePill;
 
   static const double _frameWidth = 2.0;
 
@@ -98,9 +91,7 @@ class ActivitySuggestionCard extends StatelessWidget {
     this.frameWhenResting = false,
     this.selected = false,
     this.imageHeight,
-    this.stateLabel,
-    this.stateIcon,
-    this.stateColors,
+    this.statePill,
   });
 
   @override
@@ -118,8 +109,9 @@ class ActivitySuggestionCard extends StatelessWidget {
     // bottom-right — and only a live card adds a thin frame in its state's
     // hue, matching the map's pins.
     final liveColor = pinState?.bodyColor(context);
-    final stateColor = stateColors?.fill ?? liveColor;
-    final onState = stateColors?.on ?? pinState?.onBodyColor(context);
+    final stateColor = statePill?.fill ?? liveColor;
+    final onState = statePill?.onFill ?? pinState?.onBodyColor(context);
+    final stateIcon = statePill?.icon ?? pinState?.icon;
     final restingFrame =
         liveColor ??
         (frameWhenResting
@@ -326,7 +318,7 @@ class ActivitySuggestionCard extends StatelessWidget {
             ),
           // ...and named in a pill at the photo's top-left, with the Waiting
           // state's roster just under it.
-          if ((pinState != null || stateColors != null) && stateColor != null)
+          if (stateColor != null)
             Positioned(
               top: 6.0,
               left: 6.0,
@@ -363,7 +355,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                             // The shared status glyph, matching the map pin —
                             // or the ping's bell, folded into the pill so a card
                             // carries one badge for what is live (#9559).
-                            if (pinged || stateIcon != null || pinState != null)
+                            if (pinged || stateIcon != null)
                               Padding(
                                 padding: const EdgeInsetsDirectional.only(
                                   end: 4.0,
@@ -371,7 +363,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                                 child: Icon(
                                   pinged
                                       ? Icons.notifications_outlined
-                                      : stateIcon ?? pinState!.icon,
+                                      : stateIcon,
                                   size: (fontSizeSmall ?? 11.0) + 3.0,
                                   color: onState,
                                 ),
@@ -414,7 +406,7 @@ class ActivitySuggestionCard extends StatelessWidget {
   }
 
   String _stateLabel(BuildContext context) =>
-      stateLabel ?? _pinStateLabel(context);
+      statePill?.label ?? _pinStateLabel(context);
 
   String _pinStateLabel(BuildContext context) => switch (pinState!) {
     ActivityPinState.ongoingActive => L10n.of(context).ongoing,

@@ -11,7 +11,7 @@ import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/discussions/discussion_extensions.dart';
+import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/course_plan_return.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
@@ -40,6 +40,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart'
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_live_state_room_extension.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objective_circles.dart';
+import 'package:fluffychat/routes/courses/course_objectives/discussion_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
@@ -475,13 +476,12 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     String activityId,
     Map<String, MissionXpBreakdown> xpByActivity,
   ) => PinSignals(
-    // A discussion the learner is in, and has not ended, ranks as an
-    // ongoing session (#9647).
     state:
-        widget.objectivesProvider.client.activeDiscussionRoomFor(activityId) !=
-            null
-        ? ActivityPinState.ongoingActive
-        : _liveStateFor(activityId).state ?? ActivityPinState.available,
+        DiscussionCard.stateOf(
+          widget.objectivesProvider.client.discussionStandingFor(activityId),
+        ) ??
+        _liveStateFor(activityId).state ??
+        ActivityPinState.available,
     completionFraction: _finished(xpByActivity, activityId) ? 1.0 : 0.0,
     pinged: activityId == _pingedActivityId,
   );
@@ -546,12 +546,12 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   void _openActivity(QuestActivity ref) {
     if (widget.readOnly) return;
-    // A discussion the learner is in opens straight into its chat; one they
-    // are not in opens its start page, whose one button joins (#9647).
+    // In a discussion the learner already has a seat, its chat; otherwise
+    // its start page, whose one button joins.
     if (ref.plan.activityMode.opensSharedRoom) {
       final own = Matrix.of(
         context,
-      ).client.discussionRoomsFor(ref.activityId).firstOrNull;
+      ).client.discussionStandingFor(ref.activityId).room;
       if (own != null) {
         _openSession(own.id);
         return;
@@ -688,15 +688,13 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // course can't fill yet. Each Mission keeps to its own
                     // activities: a session from another Mission resumes from
                     // that Mission's card or Chats.
-                    // Play opens activities only; a discussion is opened
-                    // from its own card (#9647).
                     final inRow = activities
-                        .where((a) => !a.plan.isDiscussion)
+                        .where((a) => a.plan.activityMode.offeredByPlay)
                         .firstOrNull;
                     final playTarget =
                         inRow ??
                         current.activities
-                            .where((a) => !a.plan.isDiscussion)
+                            .where((a) => a.plan.activityMode.offeredByPlay)
                             .firstOrNull;
                     final ongoingRoomId = inRow == null
                         ? null

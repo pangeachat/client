@@ -19,7 +19,7 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/discussions/discussion_extensions.dart';
+import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
@@ -1760,10 +1760,10 @@ class WorldMapController extends State<WorldMap>
     // from the join decision. Guards every tap funnel.
     if (MapContextController.notifier.value is CoursePreviewMapContext) return;
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    // A discussion the learner is in opens straight into its chat; one they
-    // are not in opens its start page, whose one button joins (#9647).
+    // In a discussion the learner already has a seat, its chat; otherwise
+    // its start page, whose one button joins.
     if (card.activityMode.opensSharedRoom) {
-      final own = client?.discussionRoomsFor(card.activityId).firstOrNull;
+      final own = client?.discussionStandingFor(card.activityId).room;
       if (own != null) {
         context.go(WorkspaceNav.openRoomById(uri, own.id));
         return;
