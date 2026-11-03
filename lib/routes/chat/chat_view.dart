@@ -101,13 +101,17 @@ class ChatView extends StatelessWidget {
     // reference room hydrates asynchronously (ActivityPlanRepo). Rebuild the
     // subtree when the plan lands so it isn't blank until an unrelated sync.
     // Settings changes rebuild it too: the activity-image background setting
-    // decides whether the wallpaper shows (ChatController.showWallpaper).
-    return ListenableBuilder(
-      listenable: Listenable.merge([
-        ActivityPlanRepo.instance,
-        AppSettings.changes,
-      ]),
-      builder: (context, _) => _buildContent(context),
+    // decides whether the wallpaper shows (ChatController.showWallpaper). So do
+    // account config updates, which carry the wallpaper, its opacity and blur.
+    return StreamBuilder(
+      stream: controller.room.client.applicationAccountConfigUpdates,
+      builder: (context, _) => ListenableBuilder(
+        listenable: Listenable.merge([
+          ActivityPlanRepo.instance,
+          AppSettings.changes,
+        ]),
+        builder: (context, _) => _buildContent(context),
+      ),
     );
   }
 

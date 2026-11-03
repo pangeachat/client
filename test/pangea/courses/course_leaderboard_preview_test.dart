@@ -185,6 +185,7 @@ void main() {
 
   Future<void> pumpPreview(WidgetTester tester, Room room) async {
     onInviteCalls = 0;
+    cacheMemberPresence(room);
     await tester.pumpWidget(
       _TestMatrix(
         clients: [client],
@@ -209,23 +210,6 @@ void main() {
       ),
     );
     await settle(tester, find.byType(CourseLeaderboardPreview));
-  }
-
-  /// The member cards start presence and avatar work that outlives the tree.
-  /// Tear the tree down and let both finish — a pending timer fails the
-  /// binding's invariants, and a presence read still in flight hits the
-  /// client's database after `tearDown` closes it.
-  Future<void> drain(WidgetTester tester) async {
-    await tester.pumpWidget(const SizedBox.shrink());
-    await tester.runAsync(
-      () => Future.delayed(const Duration(milliseconds: 300)),
-    );
-    await tester.pump(const Duration(seconds: 10));
-    // The timers that pump fired answer presence reads, whose writes need
-    // real time to reach the database before `tearDown` closes it.
-    await tester.runAsync(
-      () => Future.delayed(const Duration(milliseconds: 300)),
-    );
   }
 
   /// The invite control is icon-only, so it is found by its tooltip — which
@@ -264,8 +248,6 @@ void main() {
     expect(inviteShortcut(), findsOneWidget);
     // The full page would only repeat these same three rows.
     expect(find.text('See all'), findsNothing);
-
-    await drain(tester);
   });
 
   testWidgets('rows rank by goals, then level, and show both', (tester) async {
@@ -293,8 +275,6 @@ void main() {
     expect(first.label, contains(': 10'));
     expect(first.label, contains('Level 1'));
     handle.dispose();
-
-    await drain(tester);
   });
 
   testWidgets('a fourth ranked member adds See all', (tester) async {
@@ -303,8 +283,6 @@ void main() {
     expect(find.byType(LeaderboardRow), findsNWidgets(3));
     expect(find.text('See all'), findsOneWidget);
     expect(inviteShortcut(), findsOneWidget);
-
-    await drain(tester);
   });
 
   testWidgets('a pending member adds See all', (tester) async {
@@ -313,8 +291,6 @@ void main() {
     // The invitee is on the full page only, so the preview offers it.
     expect(find.text('Invitee 1'), findsNothing);
     expect(find.text('See all'), findsOneWidget);
-
-    await drain(tester);
   });
 
   testWidgets('one ranked member gets an invite row in second place', (
@@ -333,8 +309,6 @@ void main() {
 
     await tester.tap(inviteRow);
     expect(onInviteCalls, 1);
-
-    await drain(tester);
   });
 
   testWidgets(
@@ -358,8 +332,6 @@ void main() {
 
       await tester.tap(inviteRow);
       expect(onInviteCalls, 1);
-
-      await drain(tester);
     },
   );
 
@@ -369,8 +341,6 @@ void main() {
     expect(podiumNames(tester), isNot(contains('Pangea Bot')));
     expect(find.byType(LeaderboardRow), findsNWidgets(2));
     expect(find.byType(ParticipantCard), findsOneWidget);
-
-    await drain(tester);
   });
 
   testWidgets(
@@ -431,7 +401,6 @@ void main() {
       }
 
       handle.dispose();
-      await drain(tester);
     },
   );
 }

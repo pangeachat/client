@@ -97,6 +97,10 @@ extension AnalyticsClientExtension on Client {
   }
 
   Room? ownAnalyticsRoomLocal({required LanguageModel lang}) {
+    // silent-ok: a logged-out client has no analytics room. Listeners that run
+    // just after logout land here, and each reported its own issue (#9732).
+    if (!isLogged()) return null;
+
     final userID = this.userID;
     if (userID == null) {
       ErrorHandler.logError(

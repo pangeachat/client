@@ -1,6 +1,6 @@
 ---
-applyTo: "lib/utils/client_manager.dart,lib/utils/init_with_restore.dart"
-description: "How a learner's session lasts: day-long access tokens renewed in the background, renewal before the app's first requests, and the one condition that signs a learner out."
+applyTo: "lib/utils/client_manager.dart,lib/utils/init_with_restore.dart,lib/features/authentication/change_password_extension.dart"
+description: "How a learner's session lasts: day-long access tokens renewed in the background, renewal before the app's first requests, the one condition that signs a learner out, and keeping the session through a password change."
 ---
 
 # Staying Signed In — Session Lifetime and Renewal
@@ -20,5 +20,9 @@ When the app starts, it renews an expired or expiring access token before it sen
 ## Sign out only when the server says so
 
 The app signs a learner out only when the homeserver rejects the session: the refresh token is invalid or revoked, or the account is deactivated. A renewal that fails because the device is offline, the homeserver is unreachable or the request times out keeps the session, and the app tries again when it next reaches the server. The Matrix SDK signs out on any failed renewal, so our fork of it (`pangeachat/matrix-dart-sdk`) is where this rule is enforced.
+
+## Changing the password
+
+Changing the password signs the learner out of every other device but keeps them signed in on the one they changed it from. The homeserver also ends the current session when the password changes, so the app signs in again on the same device with the new password straight away. The learner stays signed in, and the device keeps its identity and encryption keys. If that sign-in fails, the app still tells the learner their password changed, because it did, and the team is alerted; the learner is then signed out on this device within a day.
 
 See also: [signup-and-login.instructions.md](signup-and-login.instructions.md) for the signed-out screens, and [returning-user-detection.instructions.md](returning-user-detection.instructions.md) for what happens when a learner comes back signed out.

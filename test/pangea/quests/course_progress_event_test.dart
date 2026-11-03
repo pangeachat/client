@@ -252,6 +252,39 @@ void main() {
     });
   });
 
+  group('lowering a Mission\'s XP', () {
+    CourseProgressEvent record(
+      Map<String, int> xp, {
+      int xpToComplete = 1000,
+    }) => write(
+      null,
+      {for (final entry in xp.entries) entry.key: canDo(entry.value)},
+      now: t0,
+      xpToComplete: xpToComplete,
+    )!;
+
+    test('a lower XP at the same threshold lowers it', () {
+      final stored = record({'lo1': 391, 'lo2': 50});
+      expect(record({'lo1': 91, 'lo2': 50}).lowersXpOf(stored), isTrue);
+    });
+
+    test('the same or more XP, or a Mission added or dropped, does not', () {
+      final stored = record({'lo1': 391});
+      expect(record({'lo1': 391}).lowersXpOf(stored), isFalse);
+      expect(record({'lo1': 480}).lowersXpOf(stored), isFalse);
+      expect(record({'lo1': 391, 'lo2': 0}).lowersXpOf(stored), isFalse);
+      expect(record({'lo2': 0}).lowersXpOf(stored), isFalse);
+    });
+
+    test('nothing stored, or a new threshold, is not a regression', () {
+      expect(record({'lo1': 91}).lowersXpOf(null), isFalse);
+      expect(
+        record({'lo1': 91}, xpToComplete: 500).lowersXpOf(record({'lo1': 391})),
+        isFalse,
+      );
+    });
+  });
+
   group('stored as JSON', () {
     test('uses the dashboard\'s names', () {
       final record = write(null, {
