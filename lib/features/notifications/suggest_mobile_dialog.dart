@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/link.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/notifications/notifications_constants.dart';
@@ -218,36 +218,41 @@ class _StoreBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final url = Uri.parse(store.url);
     // Named by the artwork's own words (accessibility.instructions.md: visible
     // label = accessible name). Not marked as English: that splits the tap
     // and focus onto a second node, and the web engine reads a link's name in
     // the UI voice whatever its language.
     return Semantics(
       container: true,
-      link: true,
-      linkUrl: url,
       label: store.badgeLabel,
-      child: FocusRingTapTarget(
-        onTap: () => launchUrl(url),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      // On web, Link gives this node its link role and URL, and a click on
+      // the semantics tree's anchor opens one new tab. A hand-set link role
+      // left that anchor without a target, so the click also took this tab to
+      // the store (#9702). Setting the role here as well splits the node.
+      child: Link(
+        uri: Uri.parse(store.url),
+        target: LinkTarget.blank,
+        builder: (context, followLink) => FocusRingTapTarget(
+          onTap: followLink!,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          ),
+          ringStrokeAlign: BorderSide.strokeAlignOutside,
+          child: switch (store) {
+            _AppStore.apple => SvgPicture.asset(
+              store.badgeAsset,
+              height: height,
+              width: height * store.badgeAspectRatio,
+              excludeFromSemantics: true,
+            ),
+            _AppStore.google => Image.asset(
+              store.badgeAsset,
+              height: height,
+              width: height * store.badgeAspectRatio,
+              excludeFromSemantics: true,
+            ),
+          },
         ),
-        ringStrokeAlign: BorderSide.strokeAlignOutside,
-        child: switch (store) {
-          _AppStore.apple => SvgPicture.asset(
-            store.badgeAsset,
-            height: height,
-            width: height * store.badgeAspectRatio,
-            excludeFromSemantics: true,
-          ),
-          _AppStore.google => Image.asset(
-            store.badgeAsset,
-            height: height,
-            width: height * store.badgeAspectRatio,
-            excludeFromSemantics: true,
-          ),
-        },
       ),
     );
   }
