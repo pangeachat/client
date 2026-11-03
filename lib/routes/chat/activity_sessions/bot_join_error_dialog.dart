@@ -52,12 +52,13 @@ class PlayWithBotLoadingDialogState extends State<PlayWithBotLoadingDialog> {
       // claim the open role and start playing. Re-invite defensively in case the
       // auto-invite never landed (harmless if the bot is already joined).
       await widget.room.addBotToActivity();
-      // The bot is invited at room creation, so it is normally already present
-      // here. Only re-invite if it is genuinely absent (it left, or the
-      // create-time invite failed). Look up membership from the authoritative
-      // participant list rather than possibly-stale in-memory state. A failed
-      // re-invite is logged rather than silently swallowed; the 5s timeout below
-      // still surfaces a stuck bot.
+      // The launcher invites the bot too, but behind the chat (#9297), so a
+      // session just started with the bot can have no bot here yet. Invite
+      // only if it is absent (not yet invited, it left, or the launcher's
+      // invite failed). Look up membership from the authoritative participant
+      // list rather than possibly-stale in-memory state. A failed invite is
+      // logged rather than silently swallowed; the 5s timeout below still
+      // surfaces a stuck bot.
       final participants = await widget.room.requestParticipants();
       final botMembership = participants
           .firstWhereOrNull((u) => u.id == BotName.byEnvironment)
@@ -67,12 +68,16 @@ class PlayWithBotLoadingDialogState extends State<PlayWithBotLoadingDialog> {
         try {
           await widget.room.invite(BotName.byEnvironment);
         } catch (e, s) {
-          ErrorHandler.logError(
-            e: e,
-            s: s,
-            data: {'roomId': widget.room.id},
-            level: SentryLevel.warning,
-          );
+          // silent-ok: a refusal because the bot already joined (the
+          // launcher's invite landed first) means the invite's work is done.
+          if (!isBotAlreadyJoinedRefusal(e, BotName.byEnvironment)) {
+            ErrorHandler.logError(
+              e: e,
+              s: s,
+              data: {'roomId': widget.room.id},
+              level: SentryLevel.warning,
+            );
+          }
         }
       }
       await future.timeoutNamed(
