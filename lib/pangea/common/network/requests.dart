@@ -123,3 +123,15 @@ class UnsubscribedException implements Exception {
   @override
   String toString() => 'UnsubscribedException: no active subscription (401)';
 }
+
+/// A request was built with no access token, which means the client is logged
+/// out. Thrown by `UserController.accessToken`; [ErrorHandler.shouldReport]
+/// keeps it out of Sentry. A read already queued when the learner logs out
+/// lands here, and nothing in code can fix that race (CLIENT-ESE, #9738).
+class NotLoggedInException implements Exception {
+  const NotLoggedInException();
+
+  @override
+  String toString() =>
+      'NotLoggedInException: no access token, the client is logged out';
+}

@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
+import 'package:url_launcher/link.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/notifications/suggest_mobile_dialog.dart';
@@ -56,11 +57,12 @@ void main() {
 
       final appStore = find.bySemanticsLabel(appStoreLabel);
       final googlePlay = find.bySemanticsLabel(googlePlayLabel);
+      // Name, focus and tap on one node. Its link role and URL come from
+      // Link's web delegate, so they appear on web only.
       expect(
         tester.getSemantics(appStore),
-        matchesSemantics(
+        isSemantics(
           label: appStoreLabel,
-          isLink: true,
           isFocusable: true,
           hasTapAction: true,
           hasFocusAction: true,
@@ -68,22 +70,21 @@ void main() {
       );
       expect(
         tester.getSemantics(googlePlay),
-        matchesSemantics(
+        isSemantics(
           label: googlePlayLabel,
-          isLink: true,
           isFocusable: true,
           hasTapAction: true,
           hasFocusAction: true,
         ),
       );
-      expect(
-        tester.getSemantics(appStore).getSemanticsData().linkUrl,
+      // Each badge opens its listing in a new tab, so a click leaves this tab
+      // on Pangea Chat (#9702).
+      final links = tester.widgetList<Link>(find.byType(Link));
+      expect(links.map((link) => link.uri), [
         Uri.parse(AppConfig.iosAppStoreURL),
-      );
-      expect(
-        tester.getSemantics(googlePlay).getSemanticsData().linkUrl,
         Uri.parse(AppConfig.androidUpdateURL),
-      );
+      ]);
+      expect(links.map((link) => link.target), everyElement(LinkTarget.blank));
       // The same height, as Google asks, and each holds its width before its
       // artwork has loaded.
       expect(tester.getSize(appStore).height, 40);

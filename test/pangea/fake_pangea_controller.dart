@@ -12,6 +12,7 @@ import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -153,8 +154,7 @@ class _FakeUserController implements UserController {
   /// when nobody is logged in.
   @override
   String get accessToken =>
-      _accessToken ??
-      (throw "Trying to get accessToken with null token. User is not logged in.");
+      _accessToken ?? (throw const NotLoggedInException());
 
   /// Left uncompleted, which is what the real controller looks like before the
   /// profile lands. Callers that read it — `InstructionsEnum.isToggledOff`, for
