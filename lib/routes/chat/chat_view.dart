@@ -472,16 +472,15 @@ class ChatView extends StatelessWidget {
                     ],
                   ),
                   // #Pangea
-                  // The activity's mode picks its header (#9647); the mode is
-                  // known once the plan has loaded, so this rebuilds when it
-                  // arrives.
+                  // The mode is known once the plan has loaded.
                   ListenableBuilder(
                     listenable: ActivityPlanRepo.instance,
                     builder: (context, _) =>
-                        controller.room.activityMode?.header ==
-                            ActivityHeader.questions
-                        ? DiscussionQuestionHeader(room: controller.room)
-                        : ActivityStatsMenu(
+                        switch (controller.room.activityMode?.header) {
+                          ActivityHeader.questions => DiscussionQuestionHeader(
+                            room: controller.room,
+                          ),
+                          ActivityHeader.goalMenu || null => ActivityStatsMenu(
                             room: controller.room,
                             visibilityNotifier: controller
                                 .activityController
@@ -490,6 +489,7 @@ class ChatView extends StatelessWidget {
                                 controller.activityController.setShowDropdown,
                             activeGoalNotifier: controller.activeGoalNotifier,
                           ),
+                        },
                   ),
                   // if (controller.dragging)
                   //   Container(

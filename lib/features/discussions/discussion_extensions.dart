@@ -53,23 +53,17 @@ extension DiscussionRoomExtension on Room {
       discussionActivityId == null ? null : activityPlan;
 }
 
-/// The learner's own progress in one discussion room (#9647): the questions
-/// they have answered, by index, and whether they have ended. Both live on
-/// the learner's own seat: the orchestrator's awards, and the seat's
+/// The learner's own progress in one discussion room (#9647), both on their
+/// own seat: the questions the orchestrator has awarded it, and the seat's
 /// `finished_at`, which "I'm done" stamps as it does in a roleplay.
 class DiscussionProgress {
-  final Set<int> answered;
+  /// The ids of the questions they have answered.
+  final Set<String> answered;
   final bool ended;
 
   const DiscussionProgress({this.answered = const {}, this.ended = false});
 
-  /// The first question not yet answered, or null when every one is.
-  int? currentOf(int questionCount) {
-    for (var i = 0; i < questionCount; i++) {
-      if (!answered.contains(i)) return i;
-    }
-    return null;
-  }
+  bool isAnswered(ActivityRoleGoal question) => answered.contains(question.id);
 }
 
 extension DiscussionProgressRoomExtension on Room {
@@ -78,22 +72,21 @@ extension DiscussionProgressRoomExtension on Room {
     ended: ownRoleState?.isFinished ?? false,
   );
 
-  /// The questions the orchestrator has awarded the learner's own seat, by
-  /// index. Empty until the plan has loaded.
-  Set<int> get _answeredDiscussionQuestions {
+  /// Empty until the plan has loaded.
+  Set<String> get _answeredDiscussionQuestions {
     final userId = client.userID;
     final goals = discussionPlan?.discussionGoals;
     if (userId == null || goals == null) return const {};
     final seat = DiscussionIds.seatKey(userId);
     final awarded = orchestratorAwardedGoals;
     return {
-      for (var i = 0; i < goals.length; i++)
+      for (final goal in goals)
         if (awarded.isGoalCompletedForRole(
           seat,
-          goals[i].id,
-          goalSlug: goals[i].goalSlug,
+          goal.id,
+          goalSlug: goal.goalSlug,
         ))
-          i,
+          goal.id,
     };
   }
 }
