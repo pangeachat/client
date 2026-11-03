@@ -6312,13 +6312,13 @@
     },
     "discussionLabel": "Discussion",
     "@discussionLabel": {
-        "description": "Label on a discussion question's card and map pin: an open-ended question a course's learners talk about together in a group chat."
+        "description": "Mode tag on a discussion's card and map pin: a photo and a few open-ended questions a course's learners talk about together in a group chat."
     },
-    "discussionCardSemantics": "Discussion: {question}",
+    "discussionCardSemantics": "Discussion: {title}",
     "@discussionCardSemantics": {
-        "description": "Screen-reader name of a discussion question's card or map pin.",
+        "description": "Screen-reader name of a discussion's card or map pin; title is the discussion's title.",
         "placeholders": {
-            "question": {
+            "title": {
                 "type": "String"
             }
         }

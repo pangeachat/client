@@ -230,8 +230,6 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // A discussion has nothing to choose: one Join, and how many classmates
-    // are in the room it joins.
     final activity = controller.widget.activity;
     if (activity?.activityMode.opensSharedRoom ?? false) {
       return DiscussionJoinCta(

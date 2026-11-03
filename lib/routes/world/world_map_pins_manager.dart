@@ -293,10 +293,12 @@ class WorldMapPinsManager {
   /// Whether [card] wears the completed stamp: the learner has finished it
   /// ([savedActivityIds]). A set lookup, never a rooms rescan.
   ActivityStarLevel starLevelOf(QuestActivityCard card) =>
-      card.activityMode.completionMark == CompletionMark.stamp &&
-          _savedActivityIds.contains(card.activityId)
-      ? ActivityStarLevel.star
-      : ActivityStarLevel.none;
+      switch (card.activityMode.completionMark) {
+        CompletionMark.stamp when _savedActivityIds.contains(card.activityId) =>
+          ActivityStarLevel.star,
+        CompletionMark.stamp ||
+        CompletionMark.xpBadge => ActivityStarLevel.none,
+      };
 
   /// The activity's resolved display [ActivityPinState]: a live-session state
   /// (from [_signals]) wins the colour, else a saved session layers in

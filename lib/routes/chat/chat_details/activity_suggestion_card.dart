@@ -194,24 +194,22 @@ class ActivitySuggestionCard extends StatelessWidget {
                         bottom: 6.0,
                         child: AnimatedSwitcher(
                           duration: FluffyThemes.animationDuration,
-                          child:
-                              activity.activityMode.completionMark ==
-                                  CompletionMark.xpBadge
-                              ? (xpEarned > 0
-                                    ? XpBadge(
-                                        key: const ValueKey('xp'),
-                                        xp: xpEarned,
-                                        width: width,
-                                      )
-                                    : const SizedBox.shrink())
-                              : timesCompleted > 0
-                              ? CompletedStamp(
-                                  key: const ValueKey('stamp'),
-                                  size: (width / 8).clamp(14.0, 18.0),
-                                  times: timesCompleted,
-                                  xp: xpEarned,
-                                )
-                              : const SizedBox.shrink(),
+                          child: switch (activity.activityMode.completionMark) {
+                            CompletionMark.xpBadge when xpEarned > 0 => XpBadge(
+                              key: const ValueKey('xp'),
+                              xp: xpEarned,
+                              width: width,
+                            ),
+                            CompletionMark.stamp when timesCompleted > 0 =>
+                              CompletedStamp(
+                                key: const ValueKey('stamp'),
+                                size: CompletedStamp.cardSizeFor(width),
+                                times: timesCompleted,
+                                xp: xpEarned,
+                              ),
+                            CompletionMark.xpBadge ||
+                            CompletionMark.stamp => const SizedBox.shrink(),
+                          },
                         ),
                       ),
                     ],
@@ -227,7 +225,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // Fixed-height card: cap the title and let it yield space
-                          // (Flexible) so the participant row below
+                          // (Flexible) so the participant/mode row below
                           // can't be pushed past the card's bottom edge and clipped by
                           // the ClipRRect when a long title wraps (#7675).
                           Flexible(
@@ -242,9 +240,6 @@ class ActivitySuggestionCard extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             spacing: 8.0,
                             children: [
-                              // The activity's mode (#9647, prototype): every
-                              // mode but Discussion reads as Roleplay until
-                              // the others get their own flow.
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.all(4.0),

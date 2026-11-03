@@ -194,9 +194,8 @@ class NotStartedSessionController extends State<NotStartedSession>
   @override
   bool get showDescriptionSection => _subPage == NotStartedSubPage.main;
 
-  /// A discussion has no role to pick, so its questions (the one shared
-  /// role's goals) fill the goal header from the start, as a roleplay's do
-  /// once a role is picked.
+  /// A discussion has no role to pick, so its questions fill the goal header
+  /// from the start.
   @override
   List<ActivityRoleGoal>? get selectedRoleGoals =>
       (widget.activity?.activityMode.listsQuestions ?? false)

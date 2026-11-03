@@ -61,7 +61,6 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // A discussion's rooms are picked by the server, never listed.
     if (!(controller.widget.activity?.activityMode.listsOpenSessions ?? true)) {
       return const SizedBox.shrink();
     }

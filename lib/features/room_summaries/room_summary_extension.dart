@@ -253,7 +253,6 @@ class RoomSummaryResponse {
     // attempting it errors. The preview's membership summary keeps role-holders
     // who left (value "leave"), so presence — not map emptiness — is the test.
     if (!hasPresentNonBotMember) return false;
-    // A mode whose rooms the server assigns is never offered to join here.
     if (resolvedActivityPlan?.activityMode.listsOpenSessions == false) {
       return false;
     }

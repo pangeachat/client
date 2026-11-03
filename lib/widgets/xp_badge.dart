@@ -16,7 +16,7 @@ class XpBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final size = (width / 8).clamp(14.0, 18.0);
+    final size = CompletedStamp.cardSizeFor(width);
     final fontSize = (size * 0.75).clamp(10.0, 12.0);
     return Container(
       padding: const EdgeInsetsDirectional.fromSTEB(6.0, 2.0, 7.0, 2.0),

@@ -166,8 +166,6 @@ class Message extends StatelessWidget {
               assignedRoles: event.room.hasArchivedActivity
                   ? event.room.activityRoles?.roles ?? {}
                   : event.room.assignedRoles ?? {},
-              // A discussion has no roles to show, only its questions
-              // (#9647).
               showRoleCards:
                   event.room.activityPlan!.activityMode.showsRoleCards,
               showInstructions: show,

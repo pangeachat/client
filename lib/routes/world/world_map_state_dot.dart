@@ -287,7 +287,7 @@ String? _participantLabel(ActivityPinState state, int? filled, int? total) {
 class _MediumDotContent extends StatelessWidget {
   final ActivityPinState state;
 
-  /// Draws in place of the state's glyph: a discussion's question bubble.
+  /// Null draws the state's own glyph.
   final IconData? glyphIcon;
   final bool pinged;
   final Room? unreadRoom;
@@ -295,6 +295,11 @@ class _MediumDotContent extends StatelessWidget {
   final int? participantsTotal;
   final ActivityStarLevel starLevel;
   final bool isFocused;
+
+  /// The glyph fills most of the head; beside a seat count it is smaller, so
+  /// the two still fit inside it.
+  static const double _glyphSize = 20.0;
+  static const double _glyphSizeBesideCount = 18.0;
 
   const _MediumDotContent({
     required this.state,
@@ -332,9 +337,11 @@ class _MediumDotContent extends StatelessWidget {
       final icon => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Fills most of the head; smaller beside a seat count so the two
-          // still fit inside it.
-          Icon(icon, size: label == null ? 20 : 18, color: glyphColor),
+          Icon(
+            icon,
+            size: label == null ? _glyphSize : _glyphSizeBesideCount,
+            color: glyphColor,
+          ),
           if (label != null)
             Text(
               label,

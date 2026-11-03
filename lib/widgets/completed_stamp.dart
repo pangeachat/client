@@ -31,6 +31,10 @@ class CompletedStamp extends StatelessWidget {
     super.key,
   });
 
+  /// The stamp's [size] on a card [cardWidth] wide.
+  static double cardSizeFor(double cardWidth) =>
+      (cardWidth / 8).clamp(14.0, 18.0);
+
   /// The XP from which the stamp's pill shortens the number ("12K XP").
   static const int _compactFrom = 10000;
 

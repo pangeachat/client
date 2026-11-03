@@ -488,7 +488,6 @@ class _ActivityStartInfoRow extends StatelessWidget {
             label: activity.req.cefrLevel.string,
             color: onVariant,
           ),
-          // A discussion has no set number of players.
           if (activity.activityMode.showsPlayerCount) ...[
             const SizedBox(width: 12.0),
             _IconLabel(

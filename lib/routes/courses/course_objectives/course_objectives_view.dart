@@ -546,8 +546,6 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   void _openActivity(QuestActivity ref) {
     if (widget.readOnly) return;
-    // In a discussion the learner already has a seat, its chat; otherwise
-    // its start page, whose one button joins.
     if (ref.plan.activityMode.opensSharedRoom) {
       final own = Matrix.of(
         context,

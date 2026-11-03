@@ -1760,8 +1760,6 @@ class WorldMapController extends State<WorldMap>
     // from the join decision. Guards every tap funnel.
     if (MapContextController.notifier.value is CoursePreviewMapContext) return;
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
-    // In a discussion the learner already has a seat, its chat; otherwise
-    // its start page, whose one button joins.
     if (card.activityMode.opensSharedRoom) {
       final own = client?.discussionStandingFor(card.activityId).room;
       if (own != null) {
