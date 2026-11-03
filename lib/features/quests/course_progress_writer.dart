@@ -114,6 +114,9 @@ class CourseProgressWriter {
     for (final course in courses) {
       final outline = await _outlineOf(course);
       if (outline == null) continue;
+      // The read can take seconds, and a learner who logs out meanwhile
+      // leaves a client with no session to read their progress or write it.
+      if (!client.isLogged()) return;
       final xpToComplete =
           course.teacherMode.xpToCompleteObjective ??
           kDefaultXpToCompleteObjective;
