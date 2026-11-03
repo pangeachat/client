@@ -87,16 +87,20 @@ class LeftPanelCloseButton extends StatelessWidget {
   // room.
   void _close(BuildContext context) {
     final uri = _liveUri(context);
-    _armReturnFocus(uri);
     if (token.type.isRoomPanel) {
       final param = token.param;
       final close = roomTokenCloseLocation(
         uri,
         param is RoomTokenParam ? param.id : null,
       );
+      _armReturnFocus(
+        uri,
+        reopensCourseCard: close != null && closeReopensCourseCard(uri, close),
+      );
       context.go(close ?? WorkspaceNav.closeLeft(uri, token));
       return;
     }
+    _armReturnFocus(uri);
     context.go(WorkspaceNav.closeSection(uri, token));
   }
 
@@ -104,11 +108,13 @@ class LeftPanelCloseButton extends StatelessWidget {
   /// control is destroyed with this panel, so that panel claims focus
   /// (routing.instructions.md, "Every panel is a named group to assistive
   /// tech"). A chat closed beside its list is left to the framework's own
-  /// focus restore.
-  void _armReturnFocus(Uri uri) {
-    if (foldedOver) {
-      // Whatever folded beneath mounts fresh. Folding is positional, so it is
-      // not always the registry parent, and the arm names no one.
+  /// focus restore; a session that gives its place back to the course card
+  /// ([reopensCourseCard]) hands focus to the card that mounts.
+  void _armReturnFocus(Uri uri, {bool reopensCourseCard = false}) {
+    if (foldedOver || reopensCourseCard) {
+      // Whatever folded beneath, or the reopened course card, mounts fresh.
+      // Folding is positional, so it is not always the registry parent, and
+      // the arm names no one.
       PanelEntryIntent.instance.armForSwap();
     } else if (!token.type.isRoomPanel && parentIsOpen(uri, token)) {
       // The parent is on screen beside this panel, so nothing mounts: name it.

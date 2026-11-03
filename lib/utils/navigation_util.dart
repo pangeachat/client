@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/features/navigation/course_plan_return.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
@@ -109,6 +110,7 @@ class NavigationUtil {
     // [event] into the token's `e/<eventId>` field; shared items ride `extra`,
     // which the shell forwards to the room.
     final shortId = shortRoomId(goalRoomID);
+    final fromCourseCard = _roomFromCourseCard(uri, shortId);
     if (sub.isEmpty) {
       // The bare room is the single live left panel (one live room rule), even
       // when a one-shot jump-to-message rides along — [event] gates nothing
@@ -120,7 +122,13 @@ class NavigationUtil {
       context.go(
         WorkspaceNav.openExclusiveLeftRoom(
           stripActivityOverlay(uri),
-          RoomPanelToken(RoomTokenParam(id: shortId, eventId: event)),
+          RoomPanelToken(
+            RoomTokenParam(
+              id: shortId,
+              eventId: event,
+              fromCourseCard: fromCourseCard,
+            ),
+          ),
         ),
         extra: extra,
       );
@@ -131,10 +139,33 @@ class NavigationUtil {
       WorkspaceNav.pushPage(
         uri,
         RoomPanelToken(
-          RoomTokenParam(id: shortId, subpage: sub, filter: filter),
+          RoomTokenParam(
+            id: shortId,
+            subpage: sub,
+            filter: filter,
+            fromCourseCard: fromCourseCard,
+          ),
         ),
       ),
       extra: extra,
+    );
+  }
+
+  /// Whether room [shortId]'s panel, opening from [uri], is a session the
+  /// course card opened, so its close reopens the card: it replaces an
+  /// activity plan the card opened, or is already open as such a session (a
+  /// sub-page or a jump within it keeps that). See routing.instructions.md
+  /// (#9632).
+  static bool _roomFromCourseCard(Uri uri, String shortId) {
+    if (activityInfoFor(uri)?.fromCourseCard == true) return true;
+    return parseOpenPanels(uri).left.any(
+      (t) =>
+          t.type == PanelTypesEnum.room &&
+          switch (t.param) {
+            RoomTokenParam(fromCourseCard: true, :final id) =>
+              shortRoomId(id) == shortId,
+            _ => false,
+          },
     );
   }
 
