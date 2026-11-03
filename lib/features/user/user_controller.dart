@@ -14,6 +14,7 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_constants.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -369,9 +370,7 @@ class UserController {
   /// Retrieves matrix access token.
   String get accessToken {
     final token = client.accessToken;
-    if (token == null) {
-      throw ("Trying to get accessToken with null token. User is not logged in.");
-    }
+    if (token == null) throw const NotLoggedInException();
     return token;
   }
 
