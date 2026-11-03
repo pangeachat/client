@@ -8,6 +8,19 @@ extension ApplicationAccountConfigExtension on Client {
         accountData[accountDataKey]?.content ?? {},
       );
 
+  /// The config after each sync that changed it, so a screen already showing
+  /// the wallpaper can follow a change made in settings.
+  Stream<ApplicationAccountConfig> get applicationAccountConfigUpdates => onSync
+      .stream
+      .where(
+        (syncUpdate) =>
+            syncUpdate.accountData?.any(
+              (accountData) => accountData.type == accountDataKey,
+            ) ??
+            false,
+      )
+      .map((_) => applicationAccountConfig);
+
   Future<void> setApplicationAccountConfig(ApplicationAccountConfig config) =>
       setAccountData(userID!, accountDataKey, config.toJson());
 
