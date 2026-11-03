@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_message_widget.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar_error_example_widget.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
@@ -64,6 +65,7 @@ class AnalyticsPracticeExerciseContent extends StatelessWidget {
             senderId: Matrix.of(context).client.userID!,
             matrixFile: audioFile,
             autoplay: true,
+            listeningCategory: DosageListeningCategory.practiceAudio,
             playbackSpeedController: playbackSpeedController,
           ),
         ),

@@ -6,6 +6,7 @@ import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics_data/analytics_database.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_entry.dart';
 import 'analytics_fixtures.dart';
 
 /// Golden tests for [AnalyticsDatabase] read/write paths on an in-memory
@@ -280,6 +281,32 @@ void main() {
         );
       },
     );
+
+    test('an audio entry waits with the batches, duration intact, and leaves '
+        'nothing once uploaded', () async {
+      final entry = DosageAudioEntry.use(
+        id: 'call:one',
+        category: DosageAudioEntry.callCategory,
+        durMs: 60000,
+        ts: at(0),
+      )!;
+
+      await db.updateLocalAnalytics([entry], testLang);
+
+      final batches = await db.getLocalUseBatches(testLang);
+      expect(batches.values.single.single.toJson(), entry.toJson());
+
+      await db.clearLocalConstructData(
+        testLang,
+        batchKeys: batches.keys.toList(),
+      );
+
+      expect(await db.getLocalUses(testLang), isEmpty);
+      expect(
+        await db.getAggregatedConstructs(ConstructTypeEnum.vocab, testLang),
+        isEmpty,
+      );
+    });
 
     test('batches written back-to-back never share a storage key', () async {
       for (var i = 0; i < 10; i++) {

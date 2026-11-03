@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_coverage.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_event.dart';
+import 'package:fluffychat/features/dosage/dosage_call_time.dart';
 import 'package:fluffychat/features/dosage/dosage_signal_identity.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 import 'package:fluffychat/features/dosage/dosage_voice_message.dart';
@@ -26,6 +27,7 @@ class DosageAudioBatch {
     required this.events,
     required this.coverage,
     required this.voiceMessages,
+    this.calls = const [],
   });
 
   final List<DosageAudioEvent> events;
@@ -38,6 +40,10 @@ class DosageAudioBatch {
   /// `m.audio` event id, so a retried batch dedups on `(sender, msg_id)`.
   final List<DosageVoiceMessage> voiceMessages;
 
+  /// The learner's finished calls in this period, on the same terms as
+  /// [voiceMessages]. Each has a stable id, so a retry is one row.
+  final List<DosageCallTime> calls;
+
   /// Delivery attempts made so far.
   int attempts = 0;
 
@@ -45,7 +51,10 @@ class DosageAudioBatch {
   int backoffTicks = 0;
 
   bool get isEmpty =>
-      events.isEmpty && coverage.isEmpty && voiceMessages.isEmpty;
+      events.isEmpty &&
+      coverage.isEmpty &&
+      voiceMessages.isEmpty &&
+      calls.isEmpty;
 }
 
 /// One coverage row the ingest has WRITTEN for a category — the period the
@@ -164,16 +173,16 @@ class DosageAudioBuffer {
   /// The most coverage declarations one seal can produce: every category, times
   /// the segments its interval can be cut into.
   ///
-  /// The 7 is [DosageCoverageCategory.values].length restated as a literal
+  /// The 8 is [DosageCoverageCategory.values].length restated as a literal
   /// rather than computed, because [maxEventsPerBatch] must be a compile-time
   /// constant. So it is hand-bumped whenever a category is added, and
   /// `dosage_audio_buffer_test.dart` pins it against
   /// [DosageCoverageCategory.values] and against [maxObservedGap] — a category
   /// added without bumping it here is a failing test rather than a batch the
   /// route silently 413s.
-  static const int maxCoverageItemsPerBatch = 7 * maxCoverageSegmentsPerSeal;
+  static const int maxCoverageItemsPerBatch = 8 * maxCoverageSegmentsPerSeal;
 
-  /// OBSERVATIONS — playbacks AND voice messages together — accumulated before
+  /// OBSERVATIONS — playbacks, voice messages AND calls together — accumulated before
   /// the accumulator seals. The route's cap minus the room the same body's
   /// coverage needs, so a full batch plus its declarations is still a body the
   /// route accepts — which is what the cap was always for, and what counting
@@ -293,6 +302,9 @@ class DosageAudioBuffer {
   /// so it can never be separated from the coverage that licenses it.
   final List<DosageVoiceMessage> _voiceMessages = [];
 
+  /// Finished calls not yet sealed. Same budget, same batch as [_voiceMessages].
+  final List<DosageCallTime> _calls = [];
+
   final List<DosageAudioBatch> _batches = [];
 
   /// Start of the interval this buffer has OBSERVED and not yet sealed.
@@ -331,7 +343,13 @@ class DosageAudioBuffer {
       List.unmodifiable(_voiceMessages);
 
   @visibleForTesting
+  List<DosageCallTime> get bufferedCalls => List.unmodifiable(_calls);
+
+  @visibleForTesting
   DateTime? get observedFrom => _observedFrom;
+
+  int get _observations =>
+      _events.length + _voiceMessages.length + _calls.length;
 
   @visibleForTesting
   bool get voiceSendCoveredForTest => _voiceSendCovered;
@@ -366,7 +384,7 @@ class DosageAudioBuffer {
     }
     // Events and voice messages share ONE observation budget, because the route
     // caps them together with coverage; see [maxEventsPerBatch].
-    if (_events.length + _voiceMessages.length >= maxEventsPerBatch) _seal();
+    if (_observations >= maxEventsPerBatch) _seal();
     _events.add(event);
   }
 
@@ -392,8 +410,22 @@ class DosageAudioBuffer {
     if (accessToken != null && accessToken.isNotEmpty) {
       _accessToken = accessToken;
     }
-    if (_events.length + _voiceMessages.length >= maxEventsPerBatch) _seal();
+    if (_observations >= maxEventsPerBatch) _seal();
     _voiceMessages.add(message);
+  }
+
+  /// Records one finished call. Behind the same capability flag as voice messages,
+  /// because the `calls` field has the same old-server hazard; synchronous and
+  /// never throws, like every record here.
+  void recordCall(DosageCallTime call, {required String? accessToken}) {
+    if (!DosageSignalsRepo.voiceMessagesEnabled) return;
+    if (!call.isValid) return;
+    _observedFrom ??= _now().toUtc();
+    if (accessToken != null && accessToken.isNotEmpty) {
+      _accessToken = accessToken;
+    }
+    if (_observations >= maxEventsPerBatch) _seal();
+    _calls.add(call);
   }
 
   /// A voice-send envelope has been posted and not yet acknowledged.
@@ -440,7 +472,7 @@ class DosageAudioBuffer {
   /// server has already acknowledged coverage right up to it, that acknowledged
   /// row's start, so the upsert extends one row instead of banking another.
   ///
-  /// The declaration set is [DosageCoverageCategory.values] — all seven,
+  /// The declaration set is [DosageCoverageCategory.values] — all of them,
   /// including `voiceSend`. This is the one place the build asserts what it
   /// instruments,
   /// so if an emitter is ever removed without removing its category here, the
@@ -452,7 +484,7 @@ class DosageAudioBuffer {
   /// no edit, and an older build that has neither declares neither, so the server
   /// withholds that counter for it rather than serving its silence as a zero.
   ///
-  /// The six LISTENING categories are always declared: their events ride in
+  /// The LISTENING categories are always declared: their events ride in
   /// this same batch, so a lost batch loses the declaration with it — and, since
   /// no later seal may anchor past an interval the ingest never acknowledged,
   /// loses it for good rather than having a subsequent extension quietly cover
@@ -479,7 +511,7 @@ class DosageAudioBuffer {
     // places allowed to say so. A staged voice message always set [start] when it
     // was recorded, so its presence with no start is impossible; guarding on it
     // anyway means this can never silently drop one.
-    if (start == null && _events.isEmpty && _voiceMessages.isEmpty) return;
+    if (start == null && _observations == 0) return;
 
     final DateTime end = _now().toUtc();
     _observedFrom = end;
@@ -514,7 +546,7 @@ class DosageAudioBuffer {
               .where((declaration) => declaration.isValid)
               .toList();
 
-    if (_events.isEmpty && coverage.isEmpty && _voiceMessages.isEmpty) return;
+    if (_observations == 0 && coverage.isEmpty) return;
 
     // Only a period that actually DECLARED something discharges a known voice
     // envelope loss. Clearing the flag on a seal that emitted no coverage — a
@@ -528,9 +560,11 @@ class DosageAudioBuffer {
       events: List.of(_events),
       coverage: coverage,
       voiceMessages: List.of(_voiceMessages),
+      calls: List.of(_calls),
     );
     _events.clear();
     _voiceMessages.clear();
+    _calls.clear();
 
     // Capacity: drop the OLDEST batch whole. Its events and the declaration that
     // licensed them go together, so the server sees an undeclared period and
@@ -782,6 +816,7 @@ class DosageAudioBuffer {
             events: batch.events,
             coverage: batch.coverage,
             voiceMessages: batch.voiceMessages,
+            calls: batch.calls,
             accessToken: token,
             client: _httpClient,
           );
@@ -790,9 +825,10 @@ class DosageAudioBuffer {
         // rows WRITTEN accounts for EVERY declaration this batch sent — not on
         // the 202, which it answers even for a failed write, and not on a partial
         // count, which cannot say WHICH rows it covered.
-        if (batch.coverage.isNotEmpty &&
-            result.coverageWritten == batch.coverage.length) {
-          _bankDelivered(batch.coverage);
+        final List<DosageAudioCoverage> sent =
+            result.coverageSent ?? batch.coverage;
+        if (sent.isNotEmpty && result.coverageWritten == sent.length) {
+          _bankDelivered(sent);
         }
         delivered.add(batch);
         continue;
