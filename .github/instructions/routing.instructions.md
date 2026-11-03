@@ -30,6 +30,7 @@ Learners use panels that open over one world map, on any screen size. Outside li
 ### Panels are independent
 
 - Chats and courses open to the left, analytics and settings to the right, so a chat stays open beside analytics. Gabby.
+- Analytics, practice and settings take the right side one at a time, so a learner sees what they just opened.
 - Closing one panel leaves the others open, so a learner can uncover the map and keep their chat. Choosing from the rail replaces only the left side. Gabby.
 - A detail opens beside its list and covers it only when space runs out, so nothing closes to make room. Gabby.
 - One live chat at a time, because two open copies of a chat overwrite each other. Gabby.
@@ -50,7 +51,6 @@ Learners use panels that open over one world map, on any screen size. Outside li
 - Leaving practice keeps the session and its clock running, so looking up answers costs time; only ending asks to confirm. Gabby.
 - During vocab or grammar practice, that tracker shows the timer and resumes practice instead of opening analytics, so learners cannot look up answers. Gabby.
 - A session goes live when its clock starts. Practice opens on a [start page](practice-exercises.instructions.md#start-page); until Start, replacing the session asks nothing and its section's analytics stays open. Gabby.
-- Practice and settings replace each other on the right, so a learner who starts practice sees it.
 
 ### Single-column (narrow and mobile) mode
 
