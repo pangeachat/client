@@ -244,4 +244,54 @@ void main() {
       expect(analytics.languageAnalytics!['fr']!.level, 7);
     },
   );
+
+  group('loading the profile, for an account with no analytics room', () {
+    void serveProfile(Map<String, dynamic> analytics) {
+      api.api['GET']!['/client/v3/profile/%40test%3AfakeServer.notExisting'] =
+          (_) => {
+            PangeaEventTypes.profileAnalytics: {
+              'target_language': 'es',
+              'source_language': 'en',
+              'analytics': analytics,
+            },
+          };
+    }
+
+    // The room-id repair publishes in the background of [initialize].
+    Future<void> settle() async {
+      for (var i = 0; i < 10 && api.puts.isEmpty; i++) {
+        await Future<void>.delayed(const Duration(milliseconds: 50));
+      }
+    }
+
+    test('drops a room id copied from another account', () async {
+      // CLIENT-EFF: with no room of its own to compare against, an account
+      // kept a copied id, and its join-time grant sent it.
+      serveProfile({
+        'es': {
+          'level': 3,
+          'xp_offset': 0,
+          'analytics_room_id': '!theirs:fakeServer.notExisting',
+        },
+      });
+
+      await controller.userController.initialize();
+      await settle();
+
+      final es = (api.puts.single['analytics'] as Map)['es'] as Map;
+      expect(es.containsKey('analytics_room_id'), isFalse);
+      expect(es['level'], 3);
+    });
+
+    test('publishes nothing when there is no room id to drop', () async {
+      serveProfile({
+        'es': {'level': 3, 'xp_offset': 0},
+      });
+
+      await controller.userController.initialize();
+      await settle();
+
+      expect(api.puts, isEmpty);
+    });
+  });
 }
