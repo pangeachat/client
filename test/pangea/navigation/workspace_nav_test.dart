@@ -10,6 +10,7 @@ import 'package:fluffychat/features/navigation/token_params/analytics_practice_t
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/grammar_analytics_token.dart';
+import 'package:fluffychat/features/navigation/token_params/objective_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
@@ -652,6 +653,48 @@ void main() {
         lists.right.last,
         VocabAnalyticsPanelToken(VocabAnalyticsTokenParam.parse('hablar')),
       );
+    });
+
+    test('closes an open settings menu and page, keeping a live chat '
+        '(#9639)', () {
+      final constructId = ConstructIdentifier.fromTokenParam(
+        ConstructTypeEnum.vocab,
+        'hablar',
+      );
+      final loc = WorkspaceNav.openConstructDetail(
+        u('/?left=room:!live&right=settings,settingspage:learning'),
+        ConstructTypeEnum.vocab,
+        constructId: constructId,
+      );
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.right.map((t) => t.type), [
+        PanelTypesEnum.analytics,
+        PanelTypesEnum.vocab,
+      ]);
+      expect(lists.left.map((t) => t.type), [PanelTypesEnum.room]);
+    });
+  });
+
+  group('openObjectiveDetail (a Mission beside the Learning Objectives '
+      'list)', () {
+    test('closes an open settings menu and page, and seats the list on a '
+        'cold start (#9639)', () {
+      final loc = WorkspaceNav.openObjectiveDetail(
+        u('/?c=!s&left=course&right=settings,settingspage:learning'),
+        'm1',
+        courseId: '!s',
+      );
+      final lists = parseOpenPanels(u(loc));
+      expect(lists.right, [
+        const AnalyticsPanelToken(
+          AnalyticsTokenParam(subpage: ProgressIndicatorEnum.activities),
+        ),
+        const ObjectivePanelToken(
+          ObjectiveTokenParam(missionId: 'm1', courseId: '!s'),
+        ),
+      ]);
+      // The course card the Mission was opened from stays on the left.
+      expect(lists.left.single, const CoursePanelToken());
     });
   });
 
@@ -1528,6 +1571,21 @@ void main() {
         expect(lists.left.map((t) => t.type), [PanelTypesEnum.room]);
       },
     );
+
+    test('closes an open settings menu and page, so practice does not fold '
+        'behind them (#9639)', () {
+      final loc = WorkspaceNav.openPractice(
+        u('/?c=!s&left=course&right=settings,settingspage:learning'),
+        ConstructTypeEnum.vocab,
+      );
+      final lists = parseOpenPanels(u(loc));
+      expect(
+        lists.right.single,
+        AnalyticsPracticePanelToken(AnalyticsPracticeTokenParam.parse('vocab')),
+      );
+      // The course card practice was started from stays open on the left.
+      expect(lists.left.single, const CoursePanelToken());
+    });
 
     test(
       'opening a construct detail closes practice (one detail across columns)',
