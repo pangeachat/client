@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -109,6 +110,7 @@ class CourseProgressWriter {
     if (analyticsRoom.partial) await analyticsRoom.postLoad();
     final xpByActivity = client.userXpByActivity(cache.creditedXpByRoom);
     final byActivity = client.cachedXpBreakdownByActivity;
+    final awaitingPlan = await _awaitingPlan(client);
     final appVersion = await _appVersion();
     MissionCompletionReplay? replay;
     for (final course in courses) {
@@ -150,6 +152,12 @@ class CourseProgressWriter {
         );
       }
       if (!next.changedSince(stored)) continue;
+      // A saved session not filed under a language counts once its plan
+      // loads, and a loaded plan leaves the cache after an hour. Written
+      // while one reloads, the record would lose that session's XP until the
+      // next check put it back (ADMIN-DASH-API-1W), so a lower figure waits
+      // for the plans; a higher one is written.
+      if (awaitingPlan && next.lowersXpOf(stored)) continue;
       await analyticsRoom.setCourseProgress(course.id, next);
       _written[course.id] = next;
     }
@@ -184,6 +192,18 @@ class CourseProgressWriter {
       );
     }
     return dates;
+  }
+
+  /// Whether a saved session's language is still undecided because its plan
+  /// hasn't loaded ([QuestsClientExtension.savedSessionActivitiesAwaitingPlan]).
+  /// An activity the backend has removed never loads, so it isn't waited on.
+  Future<bool> _awaitingPlan(Client client) async {
+    for (final activityId in client.savedSessionActivitiesAwaitingPlan) {
+      if (!await ActivityPlanRepo.instance.isConfirmedRemoved(activityId)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /// [course]'s outline as the course shows it, read the way the course page
