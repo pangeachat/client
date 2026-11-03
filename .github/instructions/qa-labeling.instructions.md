@@ -1,11 +1,11 @@
 ---
 applyTo: ""
-description: "How a client issue's testing platforms are chosen — the platform checklist, who fills it in, and how it becomes needs-testing labels at close — plus the standing responsiveness item injected beside it."
+description: "How a client issue's testing platforms are chosen — which changes need none, the platform checklist, who fills it in, and how it becomes needs-testing labels at close — plus the standing responsiveness item injected beside it."
 ---
 
 # QA Platform Labeling (Client)
 
-Extends the org-wide [qa-testing-process](../../../.github/.github/instructions/qa-testing-process.instructions.md), which owns the label vocabulary, the tested-on-staging flip, and the QA-complete definition that gates a release. This doc covers the two sections injected into every client issue: mainly **which** of the four platform labels an issue gets, rather than always getting all four, and the standing responsiveness item.
+Extends the org-wide [qa-testing-process](../../../.github/.github/instructions/qa-testing-process.instructions.md), which owns the label vocabulary, the tested-on-staging flip, and the QA-complete definition that gates a release. This doc covers the two sections injected into every client issue: mainly **which** of the four platform labels an issue gets, if any, rather than always getting all four, and the standing responsiveness item.
 
 Client issues carried all four since the auto-labeling workflow was introduced. Only 47 of 1,235 files under `lib/` contain platform-conditional code, so most changes were being verified four times against identical code paths, and the queue grew faster than it could drain. This narrows the set to what a change can actually break.
 
@@ -62,7 +62,20 @@ The last row is an explicit statement that the change needs no human verificatio
 
 ## Choosing platforms
 
-Default to **web alone**, then add only what the change can actually break.
+Decide first whether a tester needs to see the change at all. If one does, default to **web alone**, then add only what the change can actually break.
+
+### Changes that need no testing
+
+Tick **Evaluated** with no platforms when a tester could not see the change:
+
+- Tests, CI, docs or tooling only.
+- Copy only: the app's text and its translations, nothing else.
+- A fix for a Sentry-reported error, such as a crash check or a retry, that changes nothing the learner sees; the developer confirms after release that the error stopped.
+- An internal change with nothing on screen to observe, such as a field sent to or read from a server, or what analytics records.
+
+Testers rarely know how to observe the changes on this list, and QA has not caught a problem in them. A change that also alters what the learner sees (a message, an empty or loading state, a layout) or what the app stores on the device is not on the list.
+
+### Which platforms
 
 | If the change touches… | Test on |
 |---|---|
@@ -72,19 +85,23 @@ Default to **web alone**, then add only what the change can actually break.
 | Push notifications | Android, iOS, iPad |
 | Deep links | All four |
 | Login, session, local storage or persistence | All four |
+| Timers, backgrounding and resuming, offline behavior | All four |
 | Paywall display, entitlement gating, billing management UI | All four |
+| Native project files, Firebase setup, or a dependency upgrade | All four |
 | Any file containing `kIsWeb`, `Platform.is`, or `defaultTargetPlatform` | All four |
 
-Web is the default because platform cannot matter for a change that isn't in this table, so the cheapest verifier is the right one. The moment it *could* matter, the table has already moved you off web.
+Web is the default because platform cannot matter for a change outside this table, so the cheapest verifier is the right one.
 
 Notes on individual rows:
 
-- **Layout** — the phone is a genuine either/or: tick Android **or** iOS, not both. Phone-form-factor layout bugs reproduce on either, so a second phone buys little over the iPad and web coverage already required.
-- **Push notifications** — iPad is listed for notification *handling* and its distinct form factor, not for delivery. Delivery is APNs-identical to iOS, which is why the org doc's sygnal row says web and iPad don't apply there.
+- **Layout** — tick Android **or** iOS, not both: a phone layout bug reproduces on either, and web and iPad cover the rest.
+- **Push notifications** — iPad is listed for notification *handling* and its distinct form factor, not for delivery, which is the same as iOS.
 - **Deep links** — web is included because [routing.instructions.md](routing.instructions.md) makes the URL the source of truth for panel state, so a link change exercises the shared route parser plus three separate registration paths (web history, iOS universal links, Android app links).
+- **Timers, backgrounding, offline** — phones pause and close apps in ways a browser tab does not.
 - **Paywall and entitlements** — purchases run on a single Stripe rail and checkout happens on web, but paywall display, entitlement gating, and billing management render on every platform.
+- **Native files, Firebase, dependency upgrades** — each platform has its own build, so one can break while the others work.
 
-Absence of `kIsWeb` does not prove a change renders identically everywhere: Flutter branches beneath us on font metrics, safe areas, scroll physics, and IME behavior, and this repo has shipped bugs in exactly that class. Treat the table as strong for logic changes and weaker for visual ones. When genuinely unsure, tick more boxes — over-testing costs a tester an hour, under-testing costs a production bug during a research study.
+Absence of `kIsWeb` does not prove a change renders identically everywhere: Flutter branches beneath us on font metrics, safe areas, scroll physics, and IME behavior. Treat the table as strong for logic changes and weaker for visual ones. Outside its rows, a second platform rarely finds what web misses and holds the change back from shipping, so add one only when you can say what it could break.
 
 ## Implementation
 
