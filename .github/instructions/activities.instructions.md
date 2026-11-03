@@ -30,10 +30,12 @@ How learners find and start activities, and the record they leave. What an activ
 
 ## Discussions
 
-- A learner with a seat in one of a [discussion](../../../.github/.github/instructions/discussions.instructions.md)'s rooms, done or not, goes straight to the chat; others get its [start page](activity-start-page.instructions.md#a-discussion). Opened without a course, it finds its own among the learner's.
-- Its card is plain until joined; then the Ongoing frame, a "Joined" pill and the unread count; once done, plain with an "Answered" pill styled like the XP badge. The badge keeps counting, with no completed stamp. Joined and unfinished ranks as ongoing.
-- In the chat, students' arrivals show, since they come over hours or days, but not admins' or the bot's; names carry no role.
-- "I'm done" and "Wait, I'm not done" work per seat, as in a roleplay, with no summary yet. The room notifies normally while joined.
+- A room is a [discussion](../../../.github/.github/instructions/discussions.instructions.md)'s only when the server made it for one, so the app knows a discussion room before its plan loads and an older activity whose mode reads "Discussion" stays a roleplay.
+- A learner with a seat in one of its rooms, done or not, goes straight to the chat; anyone else gets its [start page](activity-start-page.instructions.md#a-discussion), whose Join puts them in a room the server picks.
+- An admin who taps Join takes a seat and counts like a student. Admins joined to watch hold no seat, never count, and can read and post.
+- Its card shows "Joined" while the learner takes part, ranked as ongoing, and "Answered" once they have ended. It never takes the completed stamp; its XP shows once it is saved.
+- In the chat, students' arrivals show, since they come over hours or days, but not admins' or the bot's; names carry no role. There are no suggestions.
+- "I'm done" ends only the learner's own seat: the server finishes and saves it, it leaves their Chats and is muted for them, and only then does it count as finished. "Wait, I'm not done" undoes all of it. There is no "End for all" and no summary yet; the summary waits on the per-learner summary.
 
 ## Activity session chat list rows
 

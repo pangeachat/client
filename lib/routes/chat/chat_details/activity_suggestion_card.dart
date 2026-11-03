@@ -13,7 +13,6 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/widgets/completed_stamp.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
-import 'package:fluffychat/widgets/xp_badge.dart';
 
 class ActivitySuggestionCard extends StatelessWidget {
   final ActivityPlanModel activity;
@@ -195,11 +194,13 @@ class ActivitySuggestionCard extends StatelessWidget {
                         child: AnimatedSwitcher(
                           duration: FluffyThemes.animationDuration,
                           child: switch (activity.activityMode.completionMark) {
-                            CompletionMark.xpBadge when xpEarned > 0 => XpBadge(
-                              key: const ValueKey('xp'),
-                              xp: xpEarned,
-                              width: width,
-                            ),
+                            CompletionMark.xpBadge when xpEarned > 0 =>
+                              CompletedStamp(
+                                key: const ValueKey('xp'),
+                                size: CompletedStamp.cardSizeFor(width),
+                                xp: xpEarned,
+                                showCoin: false,
+                              ),
                             CompletionMark.stamp when timesCompleted > 0 =>
                               CompletedStamp(
                                 key: const ValueKey('stamp'),

@@ -5,8 +5,8 @@ import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 
 /// Where the learner stands in one discussion: their rooms for it where they
 /// hold a seat. A room a course admin was joined to on its creation, to
-/// observe it, is not theirs until they join it as a participant, so it opens
-/// the start page rather than a chat they cannot write in.
+/// observe it, is not theirs until they tap Join and take a seat there, so
+/// the discussion opens its start page for them.
 class DiscussionStanding {
   /// Their room while they are still in the discussion: not ended. It shows
   /// the discussion as Joined and carries its unread bubble.
@@ -62,9 +62,11 @@ extension DiscussionClientExtension on Client {
 
 extension on Room {
   /// The discussion this room is the learner's own seat in: joined, and
-  /// holding a seat.
-  String? get _seatedDiscussionId =>
-      membership == Membership.join && ownRoleState != null
-      ? discussionActivityId
-      : null;
+  /// holding a seat. The room-type checks come first, so only discussion
+  /// rooms parse their roles.
+  String? get _seatedDiscussionId {
+    if (membership != Membership.join) return null;
+    final id = discussionActivityId;
+    return id != null && ownRoleState != null ? id : null;
+  }
 }

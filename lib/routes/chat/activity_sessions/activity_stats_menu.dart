@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
@@ -58,8 +59,12 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
   bool get _showEndForMe =>
       !_activityComplete && room.hasPickedRole && !room.hasCompletedRole;
 
+  /// Never in a discussion, where each student ends their own seat.
   bool get _showEndForAll =>
-      !_activityComplete && room.isRoomAdmin && !room.isTwoPersonBotActivity;
+      !_activityComplete &&
+      room.isRoomAdmin &&
+      !room.isTwoPersonBotActivity &&
+      !(room.activityMode?.endsPerSeat ?? false);
 
   bool get _showDoneButtonHint => _showEndForMe && room.hasCompletedOwnGoals;
 
@@ -83,13 +88,27 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
     }
   }
 
+  /// "Wait, I'm not done": reopens this learner's own role. In a discussion
+  /// it is a server call, so it waits and shows a failure like ending does.
+  Future<void> _continueActivity(BuildContext context) async {
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: room.continueActivity,
+    );
+
+    if (!resp.isError) {
+      setShowDropdown(false);
+    }
+  }
+
   /// The report prompt behind a goal star (staging only, for the team).
   ///
   /// Null on any other build, and null when the learner holds no role: the
   /// report names the role whose star it is, and a role-less admin has none to
   /// name — nor any stars, since the list is their own goals.
   void Function(ActivityRoleGoal)? _onReportStar(BuildContext context) {
-    final roleId = room.ownRoleState?.id;
+    // The key the orchestrator awarded under: a discussion's seat key.
+    final roleId = room.ownAwardKey;
     if (!Environment.isStagingEnvironment || roleId == null) return null;
     return (goal) => showGoalReportDialog(
       context: context,
@@ -185,7 +204,7 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                     room.haveAllRolesCompletedAllGoals,
                 finishActivityForAll: () => _finishActivityForAll(context),
                 finishActivityForMe: () => _finishActivityForMe(context),
-                continueActivity: room.continueActivity,
+                continueActivity: () => _continueActivity(context),
                 onReportStar: _onReportStar(context),
                 goalXp: GoalHeaderSessionXp.shows(room) ? kGoalXp : null,
                 sessionXp: goals.isEmpty

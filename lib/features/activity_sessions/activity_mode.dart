@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
@@ -12,9 +13,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 /// rather than checking for one mode, so a new mode is added here: give it a
 /// value, and the exhaustive switches below name every answer it needs.
 enum ActivityMode {
-  /// Players take roles and work toward their own goals. Every mode without
-  /// an experience of its own yet (Debate, Decision Making, 20 Questions,
-  /// Conversation) plays as a roleplay.
+  /// Players take roles and work toward their own goals. Activities made in
+  /// the older modes (Debate, Decision Making, 20 Questions, Conversation)
+  /// are re-categorized as roleplay and play as one (#700).
   roleplay,
 
   /// A course's shared room of students talking about one photo and a few
@@ -24,8 +25,23 @@ enum ActivityMode {
   /// The plan `mode` value of a discussion, compared case-insensitively.
   static const String _discussionPlanMode = 'discussion';
 
-  static ActivityMode fromPlanMode(String? mode) =>
-      mode?.toLowerCase() == _discussionPlanMode ? discussion : roleplay;
+  /// A discussion's one shared role; every student's seat is on it.
+  static const String discussionRoleId = 'participant';
+
+  /// A plan's mode from its shape: a discussion only when its mode is
+  /// "discussion" AND its roles are exactly the one shared `participant`
+  /// role. The v1 planner took free-text modes, so a roleplay-shaped plan
+  /// can carry "Discussion" and must stay a roleplay. Unknown roles (a card
+  /// whose roles weren't projected) read as roleplay.
+  static ActivityMode fromShape({
+    required String? mode,
+    required Iterable<String> roleIds,
+  }) =>
+      mode?.toLowerCase() == _discussionPlanMode &&
+          roleIds.length == 1 &&
+          roleIds.first == discussionRoleId
+      ? discussion
+      : roleplay;
 
   /// The tag on its cards.
   String label(L10n l10n) => switch (this) {
@@ -79,13 +95,6 @@ enum ActivityMode {
     discussion => false,
   };
 
-  /// Belongs to its course rather than to the course's activity list, so the
-  /// list and the course's pins never filter it out.
-  bool get ownedByCourse => switch (this) {
-    roleplay => false,
-    discussion => true,
-  };
-
   /// The course page's Play button may open it. A discussion opens only from
   /// its own card.
   bool get offeredByPlay => switch (this) {
@@ -108,10 +117,11 @@ enum ActivityMode {
     discussion => false,
   };
 
-  /// Its room's XP counts toward the Mission while the learner is in it,
-  /// rather than once the session is saved: a discussion has no end to save
-  /// at.
-  bool get countsWhileOpen => switch (this) {
+  /// Each student ends their own seat and the room never ends as a whole:
+  /// "I'm done" saves, hides and mutes the room for that student only, and
+  /// the server writes the seat (synapse `discussion_room`). There is no
+  /// "End for all".
+  bool get endsPerSeat => switch (this) {
     roleplay => false,
     discussion => true,
   };
@@ -149,11 +159,6 @@ enum ActivityMode {
     roleplay => false,
     discussion => true,
   };
-
-  ActivityHeader get header => switch (this) {
-    roleplay => ActivityHeader.goalMenu,
-    discussion => ActivityHeader.questions,
-  };
 }
 
 enum ActivityCardStyle {
@@ -166,27 +171,39 @@ enum ActivityCardStyle {
 
 enum CompletionMark { stamp, xpBadge }
 
-/// The header at the top of an activity's chat.
-enum ActivityHeader {
-  /// `ActivityStatsMenu`.
-  goalMenu,
-
-  /// `DiscussionQuestionHeader`.
-  questions,
-}
-
 extension ActivityPlanModeExtension on ActivityPlanModel {
-  ActivityMode get activityMode => ActivityMode.fromPlanMode(req.mode);
+  ActivityMode get activityMode =>
+      ActivityMode.fromShape(mode: req.mode, roleIds: roles.keys);
 }
 
 extension QuestActivityCardModeExtension on QuestActivityCard {
-  ActivityMode get activityMode => ActivityMode.fromPlanMode(mode);
+  ActivityMode get activityMode =>
+      ActivityMode.fromShape(mode: mode, roleIds: roleIds);
 }
 
 extension RoomActivityModeExtension on Room {
+  /// The creation-content key synapse writes on a room it made for a
+  /// discussion (`{course_id, activity_id}`).
+  static const String _discussionMarker = 'pangea.discussion';
+
+  /// A room the server made for a discussion: created by the discussion bot,
+  /// with the discussion marker in its creation content. Read from the create
+  /// event, so it is known on the first frame, before the plan loads, and an
+  /// older room whose plan happens to say "Discussion" never qualifies.
+  bool get isDiscussionRoom {
+    final create = getState(EventTypes.RoomCreate);
+    // The marker first: every other room stops there, before the bot's name
+    // is resolved from the environment.
+    return create != null &&
+        create.content[_discussionMarker] is Map &&
+        create.senderId == BotName.byEnvironment;
+  }
+
   /// The mode of the activity this room is a session of; null for a room
-  /// that is not one, and until its plan has loaded (rebuild on
-  /// `ActivityPlanRepo` to see it arrive).
-  ActivityMode? get activityMode =>
-      isActivitySession ? activityPlan?.activityMode : null;
+  /// that is not one. Known without the plan.
+  ActivityMode? get activityMode => !isActivitySession
+      ? null
+      : isDiscussionRoom
+      ? ActivityMode.discussion
+      : ActivityMode.roleplay;
 }

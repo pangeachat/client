@@ -810,6 +810,12 @@ class WorldMapPinsManager {
     // viewport, and the next camera settle refetches. Only a successful empty
     // list means the viewport is genuinely empty, and that still clears.
     if (pins == null) return;
-    _pins = pins;
+    // A discussion is a course's activity: it shows on a course's map, never
+    // the world map. The bbox read leaves discussions out too; this keeps the
+    // rule if an older server sends one.
+    _pins = [
+      for (final pin in pins)
+        if (pin.activityMode != ActivityMode.discussion) pin,
+    ];
   }
 }

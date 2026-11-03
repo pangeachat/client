@@ -90,8 +90,9 @@ class QuestActivityCard {
   /// without hydrating the full plan. Empty when not projected.
   final List<ActivityCardGoal> goals;
 
-  /// Conversation mode / format (Roleplay, Conversation, Debate, …),
-  /// non-localized. Null when not projected.
+  /// The plan's mode, non-localized: "Roleplay" or "Discussion" for new
+  /// activities; older free-text modes play as roleplay
+  /// (`ActivityMode.fromShape`). Null when not projected.
   final String? mode;
 
   final double? ratingAverage;
@@ -159,8 +160,12 @@ class QuestActivityCard {
       // and the card shows), so a course-scoped pin can dim when the course
       // lacks enough members to start it. Null when roles weren't projected.
       roleCount: rolesJson?.length,
-      // How the pin draws and whether the course's pin rules apply depend on
-      // it (ActivityMode).
+      // With the mode, they decide whether the card is a discussion
+      // (ActivityMode.fromShape).
+      roleIds: [
+        for (final r in rolesJson ?? const [])
+          if (r is Map && r['role_id'] is String) r['role_id'] as String,
+      ],
       mode: plan['mode'] as String?,
     );
   }

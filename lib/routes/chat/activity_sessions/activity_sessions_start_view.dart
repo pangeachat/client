@@ -558,7 +558,7 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
     final room = controller.activityRoom;
     // All recorded roles — not just currently-joined members — so a learner
     // who left the room still shows in the review.
-    final roles = room?.activityRoles?.roles.values.toList() ?? [];
+    final seats = room?.activityRoles?.roles.entries.toList() ?? [];
     final awards = room?.orchestratorAwardedGoals;
 
     return Center(
@@ -590,9 +590,15 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
               ),
               const SizedBox(height: 16.0),
             ],
-            ...roles.map((role) {
+            ...seats.map((seat) {
+              final role = seat.value;
               final user = room!.unsafeGetUserFromMemoryOrFallback(role.userId);
-              final stars = awards?.awards[role.id]?.length ?? 0;
+              // Awards are filed per role in a roleplay, per seat in a
+              // discussion (`participant:<user id>`).
+              final awardKey = room.activityMode == ActivityMode.discussion
+                  ? seat.key
+                  : role.id;
+              final stars = awards?.awards[awardKey]?.length ?? 0;
               return ListTile(
                 leading: Avatar(
                   mxContent: user.avatarUrl,

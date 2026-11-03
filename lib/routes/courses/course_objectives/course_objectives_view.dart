@@ -472,14 +472,18 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   /// the same live state the cards render. `recency` stays 0: open sessions
   /// reach this surface through the discovery cache, which carries no
   /// per-session start time. See [rankSuggestedActivities].
+  /// [discussionStandings] is read once per build
+  /// ([DiscussionClientExtension.discussionStandings]), not per activity.
   PinSignals _signalsFor(
     String activityId,
     Map<String, MissionXpBreakdown> xpByActivity,
+    Map<String, DiscussionStanding> discussionStandings,
   ) => PinSignals(
     state:
-        DiscussionCard.stateOf(
-          widget.objectivesProvider.client.discussionStandingFor(activityId),
-        ) ??
+        switch (discussionStandings[activityId]) {
+          final standing? => DiscussionCard.stateOf(standing),
+          null => null,
+        } ??
         _liveStateFor(activityId).state ??
         ActivityPinState.available,
     completionFraction: _finished(xpByActivity, activityId) ? 1.0 : 0.0,
@@ -640,6 +644,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                 ]),
                 builder: (context, _) {
                   final xpByActivity = _xpByActivity();
+                  final discussionStandings =
+                      widget.objectivesProvider.client.discussionStandings;
                   if (widget.suggestedOnly) {
                     // The course page's Mission card and its activities
                     // (#9437), ordered by the same Priority matrix the map
@@ -659,7 +665,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       groups: [current],
                       missionGradient:
                           widget.objectivesProvider.missionGradient,
-                      signalsFor: (id) => _signalsFor(id, xpByActivity),
+                      signalsFor: (id) =>
+                          _signalsFor(id, xpByActivity, discussionStandings),
                       cap: null,
                       includeOngoing: true,
                       includeCompleted: true,
@@ -672,7 +679,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         roles: activity.plan.req.numberOfParticipants,
                       ),
                     );
-                    final activities = [
+                    final ranked = [
                       for (final suggestion in suggested) suggestion.activity,
                     ];
                     // Play opens the row's first card, and that card carries a
@@ -686,9 +693,15 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // course can't fill yet. Each Mission keeps to its own
                     // activities: a session from another Mission resumes from
                     // that Mission's card or Chats.
-                    final inRow = activities
+                    final inRow = ranked
                         .where((a) => a.plan.activityMode.offeredByPlay)
                         .firstOrNull;
+                    // Play sits on the row's first card, so the card it opens
+                    // leads the row even where a joined discussion, which
+                    // Play never opens, ranks above it.
+                    final activities = inRow == null || ranked.first == inRow
+                        ? ranked
+                        : [inRow, ...ranked.where((a) => a != inRow)];
                     final playTarget =
                         inRow ??
                         current.activities

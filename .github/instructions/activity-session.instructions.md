@@ -33,6 +33,7 @@ What a learner sees while playing a conversation activity and when it ends. Find
 - A long goal is cut with Show more; one that fits is plain text, so nothing falsely looks tappable.
 - All diamonds earned turns the header gold, "I'm done!" replacing the goal.
 - With no goals it reads "Activity actions", so nobody is stranded.
+- A discussion uses the same header, its questions as the goals and the first unanswered one active. It has no "End for all", since each student ends only their own seat.
 - On staging the team reports a wrong diamond from the open list, with a required comment and, for a missing one, the message that earned it.
 - A report changes no diamond, and every failure shows, because a lost report is a lost complaint.
 
@@ -45,6 +46,7 @@ What a learner sees while playing a conversation activity and when it ends. Find
 ## Completion saves itself
 
 - A finished session saves even if it finished while the learner was away.
+- A discussion saves when the learner taps "I'm done": the server finishes and archives their seat, and the app files the session and mutes the room.
 
 ## The bot's seat
 

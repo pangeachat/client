@@ -7,7 +7,6 @@ import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
-import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/course_plans/payload_client/payload_client.dart';
@@ -234,11 +233,7 @@ class QuestOutline {
     return QuestObjectiveGroup(
       objective: group.objective,
       activities: group.activities
-          .where(
-            (a) =>
-                allowed.contains(a.activityId) ||
-                a.plan.activityMode.ownedByCourse,
-          )
+          .where((a) => allowed.contains(a.activityId))
           .toList(),
       pacing: group.pacing,
       credit: group.credit,

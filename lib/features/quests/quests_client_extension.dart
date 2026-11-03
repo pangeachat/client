@@ -3,12 +3,10 @@ import 'dart:math';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/quests/can_do_progress.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
@@ -77,14 +75,6 @@ extension QuestsClientExtension on Client {
     final sessions = <String, List<Room>>{};
     for (final room in rooms) {
       final activityId = room.activityId;
-      // Its XP is read in the current language only (MissionXpCache), so it
-      // needs no language check of its own.
-      if (activityId != null &&
-          (room.activityMode?.countsWhileOpen ?? false) &&
-          room.membership == Membership.join) {
-        (sessions[activityId] ??= []).add(room);
-        continue;
-      }
       if (activityId == null ||
           !room.hasArchivedActivity ||
           !CourseLanguageScope.savedSessionInTargetLanguage(room, inLanguage)) {
@@ -164,7 +154,7 @@ extension QuestsClientExtension on Client {
             MissionXpBreakdown(
               chat: chatXpByRoom[room.id] ?? 0,
               speaking: speakingXpByRoom[room.id] ?? 0,
-              goals: kGoalXp * _ownGoalCount(room),
+              goals: kGoalXp * room.ownCompletedGoals.length,
               practice: practiceXpByRoom[room.id] ?? 0,
             );
       }
@@ -356,16 +346,10 @@ extension QuestsClientExtension on Client {
     return null;
   }
 
-  /// The goals awarded to the learner in [room]. A discussion's are on their
-  /// own seat rather than the role every student shares.
-  static int _ownGoalCount(Room room) => switch (room.activityMode) {
-    ActivityMode.discussion => room.discussionProgress.answered.length,
-    ActivityMode.roleplay || null => room.ownCompletedGoals.length,
-  };
-
   /// One session's XP: the XP credited to its room plus its goal checkmarks.
   /// What [userXpByActivity] banks once the session is saved, and what the
   /// goal header's number shows while it runs.
   int sessionXp(Room room, Map<String, int> creditedXpByRoom) =>
-      (creditedXpByRoom[room.id] ?? 0) + kGoalXp * _ownGoalCount(room);
+      (creditedXpByRoom[room.id] ?? 0) +
+      kGoalXp * room.ownCompletedGoals.length;
 }

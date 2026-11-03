@@ -11,19 +11,8 @@ class ActivityRolesModel {
     return roles.values.firstWhereOrNull((r) => r.userId == userId);
   }
 
-  /// Writes [role] back to the key its seat is stored under. A roleplay keys
-  /// a seat by its role; a discussion by its student, since every student
-  /// holds the same role (`participant:<user id>`), so finishing there must
-  /// not add a second seat under the role's id.
   void updateRole(ActivityRoleModel role) {
-    final key =
-        roles.entries
-            .firstWhereOrNull(
-              (e) => e.value.id == role.id && e.value.userId == role.userId,
-            )
-            ?.key ??
-        role.id;
-    roles[key] = role;
+    roles[role.id] = role;
   }
 
   void finishAll() {

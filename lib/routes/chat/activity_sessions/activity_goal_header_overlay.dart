@@ -39,7 +39,9 @@ class ActivityGoalHeaderOverlay extends StatelessWidget {
             child: GestureDetector(
               behavior: HitTestBehavior.opaque,
               onTap: onDismiss,
-              child: ColoredBox(color: Colors.black.withAlpha(100)),
+              child: ColoredBox(
+                color: Theme.of(context).colorScheme.scrim.withAlpha(100),
+              ),
             ),
           ),
         ],

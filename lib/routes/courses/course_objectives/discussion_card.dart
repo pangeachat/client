@@ -8,7 +8,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_card_state_pill.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
-import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/completed_stamp.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -92,7 +91,12 @@ class DiscussionCard extends StatelessWidget {
               Positioned(
                 top: -6.0,
                 right: -6.0,
-                child: UnreadBubble(room: room, borderColor: PinSize.markRing),
+                // Rings the bubble off the card it overlaps, in the card's
+                // own surface colour.
+                child: UnreadBubble(
+                  room: room,
+                  borderColor: theme.colorScheme.surface,
+                ),
               ),
           ],
         );

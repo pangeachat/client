@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
@@ -80,10 +81,14 @@ extension ActivityRoomExtension on Room {
 
   bool get showActivityChatUI {
     // Keyed off the room type, not plan hydration, so the activity shell shows
-    // immediately while the reference plan loads.
+    // immediately while the reference plan loads. A discussion room's seats
+    // are written only by the server, so its roles are locked on purpose
+    // (synapse `discussion_room`) and say nothing about the room's kind.
     return isActivitySession &&
-        powerForChangingStateEvent(PangeaEventTypes.activityRole) == 0 &&
-        powerForChangingStateEvent(PangeaEventTypes.activitySummary) == 0;
+        (isDiscussionRoom ||
+            (powerForChangingStateEvent(PangeaEventTypes.activityRole) == 0 &&
+                powerForChangingStateEvent(PangeaEventTypes.activitySummary) ==
+                    0));
   }
 
   bool get isActivitySession {

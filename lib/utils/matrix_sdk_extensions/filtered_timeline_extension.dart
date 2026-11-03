@@ -108,9 +108,10 @@ extension IsStateExtension on Event {
     return type != EventTypes.RoomMember;
   }
 
-  /// A learner joining a room whose mode announces arrivals (#9647). The
+  /// A student joining a room whose mode announces arrivals (#9647). The
   /// course's admins are joined to every session automatically and the bot
-  /// is no arrival, so neither is announced.
+  /// is no arrival, so neither is announced. In a discussion room students
+  /// are the only members at power 0 (admins 50, the bot 100).
   bool get isAnnouncedArrival {
     final userId = stateKey;
     return type == EventTypes.RoomMember &&
@@ -118,7 +119,8 @@ extension IsStateExtension on Event {
         (room.activityMode?.announcesArrivals ?? false) &&
         userId != null &&
         userId != BotName.byEnvironment &&
-        room.getPowerLevelByUserId(userId) < SpaceConstants.powerLevelOfAdmin;
+        room.getPowerLevelByUserId(userId) <
+            SpaceConstants.powerLevelOfModerator;
   }
 
   bool get pangeaIsEventTypeKnown =>
