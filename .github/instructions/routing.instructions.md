@@ -30,6 +30,7 @@ Learners use panels that open over one world map, on any screen size. Outside li
 ### Panels are independent
 
 - Chats and courses open to the left, analytics and settings to the right, so a chat stays open beside analytics. Gabby.
+- Analytics, practice and settings take the right side one at a time, so a learner sees what they just opened.
 - Closing one panel leaves the others open, so a learner can uncover the map and keep their chat. Choosing from the rail replaces only the left side. Gabby.
 - A detail opens beside its list and covers it only when space runs out, so nothing closes to make room. Gabby.
 - One live chat at a time, because two open copies of a chat overwrite each other. Gabby.

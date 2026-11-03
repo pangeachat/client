@@ -200,12 +200,9 @@ abstract class WorkspaceNav {
     }, (right) => right.where((t) => !_areSiblings(token, t)).toList());
   }
 
-  /// Open a vocab/grammar construct detail (the `detail` group): drops the
-  /// other construct detail and any `session`, ensures its pinned `analytics`
-  /// summary master exists (seated at [summaryTab] from a cold start), and
-  /// appends the detail after it — master-first canonical order, with the
-  /// renderer blooming the detail to the left of the edge-justified master. See
-  /// `routing.instructions.md`.
+  /// Open a vocab/grammar construct detail beside its `analytics` summary
+  /// master, seated on [view]'s tab from a cold start. See
+  /// [_openAnalyticsDetail].
   static String openConstructDetail(
     Uri current,
     ConstructTypeEnum view, {
@@ -218,26 +215,7 @@ abstract class WorkspaceNav {
         : GrammarAnalyticsPanelToken(
             GrammarAnalyticsTokenParam(constructId: constructId),
           );
-
-    return _mutateBoth(
-      current,
-      (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
-      (right) {
-        final next = right
-            .where((t) => t != detail && !_areSiblings(detail, t))
-            .toList();
-
-        if (!next.any((t) => t.type == PanelTypesEnum.analytics)) {
-          next.insert(
-            0,
-            AnalyticsPanelToken(AnalyticsTokenParam(subpage: view.indicator)),
-          );
-        }
-
-        next.add(detail);
-        return next;
-      },
-    );
+    return _openAnalyticsDetail(current, detail, masterTab: view.indicator);
   }
 
   /// Pick the Mission the course card, its collapsed header and the course
@@ -250,44 +228,64 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(current.path, parts);
   }
 
-  /// Open a Learning Objective's detail beside the Learning Objectives list —
-  /// [openConstructDetail]'s twin: drops any other detail across columns,
-  /// seats the list (the analytics `activities` master) on a cold start, and
-  /// appends `objective:<missionId>` after it. [courseId] is the course it
-  /// was opened from, so the detail shows that course's numbers (#9559).
+  /// Open a Learning Objective's detail beside the Learning Objectives list
+  /// (the analytics `activities` master). [courseId] is the course it was
+  /// opened from, so the detail shows that course's numbers (#9559). See
+  /// [_openAnalyticsDetail].
   static String openObjectiveDetail(
     Uri current,
     String missionId, {
     String? courseId,
-  }) {
-    final PanelToken detail = ObjectivePanelToken(
+  }) => _openAnalyticsDetail(
+    current,
+    ObjectivePanelToken(
       ObjectiveTokenParam(missionId: missionId, courseId: courseId),
-    );
-    return _mutateBoth(
-      current,
-      (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
-      (right) {
-        final next = right
-            .where((t) => t != detail && !_areSiblings(detail, t))
-            .toList();
-        if (!next.any((t) => t.type == PanelTypesEnum.analytics)) {
-          next.insert(
-            0,
-            const AnalyticsPanelToken(
-              AnalyticsTokenParam(subpage: ProgressIndicatorEnum.activities),
-            ),
-          );
-        }
-        next.add(detail);
-        return next;
-      },
-    );
-  }
+    ),
+    masterTab: ProgressIndicatorEnum.activities,
+  );
+
+  /// Open [detail] after its `analytics` master as the one "zoom" detail
+  /// across columns: drops every sibling (another construct or Mission
+  /// detail, practice, a left `session` review), seats the master on
+  /// [masterTab] from a cold start, and appends the detail — master-first
+  /// canonical order, with the renderer blooming it to the left of the
+  /// edge-justified master. It also closes an open settings menu or page:
+  /// analytics and settings take turns on the right, as [openSettings] closes
+  /// analytics (#9639). See `routing.instructions.md`.
+  static String _openAnalyticsDetail(
+    Uri current,
+    PanelToken detail, {
+    required ProgressIndicatorEnum masterTab,
+  }) => _mutateBoth(
+    current,
+    (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
+    (right) {
+      final next = right
+          .where(
+            (t) =>
+                t != detail &&
+                !_areSiblings(detail, t) &&
+                !t.type.isSettingsPanel,
+          )
+          .toList();
+      if (!next.any((t) => t.type == PanelTypesEnum.analytics)) {
+        next.insert(
+          0,
+          AnalyticsPanelToken(AnalyticsTokenParam(subpage: masterTab)),
+        );
+      }
+      next.add(detail);
+      return next;
+    },
+  );
 
   /// Open a practice session as a right-column panel that **takes over the
   /// analytics surface**: it clears the analytics master and any vocab/grammar
   /// detail on the right (and a left `session` review — practice shares the one
   /// "detail" slot across columns), then seats `practice:<type>` at the front.
+  /// It also closes an open settings menu or page, the mirror of [openSettings]
+  /// closing practice: left open, settings would fold the new practice panel
+  /// behind it (#9639).
   /// While practice is open no vocab/grammar list or detail can be viewed —
   /// opening one drops practice (the registry `detail` group), and tapping the
   /// cluster's analytics replaces the whole right column. Practice is a normal
@@ -304,7 +302,9 @@ abstract class WorkspaceNav {
     current,
     (left) => left.where((t) => t.type != PanelTypesEnum.session).toList(),
     (right) {
-      final next = right.where((t) => !t.type.isAnalyticsPanel).toList();
+      final next = right
+          .where((t) => !t.type.isAnalyticsPanel && !t.type.isSettingsPanel)
+          .toList();
       next.insert(
         0,
         AnalyticsPracticePanelToken(

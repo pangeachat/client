@@ -929,11 +929,16 @@ class ChatController extends State<ChatPageWithRoom>
 
     await completer.future.timeout(
       Duration(seconds: 15),
-      onTimeout: () => ErrorHandler.logError(
-        e: "Goal completion star animation timeout",
-        data: {},
-        level: SentryLevel.warning,
-      ),
+      onTimeout: () {
+        // silent-ok: with frames off (a hidden tab or a backgrounded app) the
+        // star can't fly until the learner comes back, so the wait is expected.
+        if (!WidgetsBinding.instance.framesEnabled) return;
+        ErrorHandler.logError(
+          e: "Goal completion star animation timeout",
+          data: {},
+          level: SentryLevel.warning,
+        );
+      },
     );
 
     activeGoalNotifier.value = room.currentGoal;

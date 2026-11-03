@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
@@ -7,11 +9,13 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/invite_all_in_space_tile.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'get_test_client.dart';
+import 'invite_page_harness.dart';
 
 /// #8097 — the invite page offered "in this course" to activity sessions
 /// launched from the world map. Launching a session shares it into EVERY
@@ -23,6 +27,9 @@ import 'get_test_client.dart';
 ///
 /// Same issue: an activity session's start page already lists every
 /// participant by role, so the invite page's roster filter is redundant there.
+///
+/// #9645 — a session's invite page offered "Invite all in this course", which
+/// invited the whole course into a session that seats a few.
 void main() {
   late Client client;
 
@@ -207,6 +214,66 @@ void main() {
         membership: Membership.join,
       );
       expect(chat.showInvitationParticipantsFilter, isTrue);
+    });
+  });
+
+  group('invite all in this course', () {
+    const classmateId = '@classmate:fakeServer.notExisting';
+
+    late InvitePageHarness harness;
+
+    setUpAll(() async {
+      harness = await InvitePageHarness.create();
+    });
+
+    /// A course member who is not in the invited-to room, so the course's
+    /// "invite all" has someone left to invite.
+    void addClassmate(Room course) => course.setState(
+      stateEvent(
+        course,
+        type: EventTypes.RoomMember,
+        content: {'membership': 'join', 'displayname': 'Classmate'},
+        stateKey: classmateId,
+      ),
+    );
+
+    void addJoinCode(Room room) => room.setState(
+      stateEvent(
+        room,
+        type: EventTypes.RoomJoinRules,
+        content: {'join_rule': 'knock', 'access_code': 'abc12de'},
+      ),
+    );
+
+    testWidgets('is not offered on an activity session', (tester) async {
+      const courseId = '!launchedFrom:fakeServer.notExisting';
+      addJoinCode(activitySession(sourceCourseId: courseId));
+      addClassmate(courseSpace(courseId, childId: sessionId));
+
+      await harness.pump(tester, client: client, roomId: sessionId);
+
+      // The course's members are still listed, each with their own Invite.
+      expect(find.text(classmateId), findsOneWidget);
+      expect(find.widgetWithText(TextButton, 'Invite'), findsOneWidget);
+      expect(find.byType(InviteAllInSpaceTile), findsNothing);
+    });
+
+    testWidgets('is offered on a chat in a course', (tester) async {
+      const chatId = '!chat:fakeServer.notExisting';
+      final chat = Room(
+        id: chatId,
+        client: client,
+        membership: Membership.join,
+      );
+      addJoinCode(chat);
+      client.rooms.add(chat);
+      addClassmate(
+        courseSpace('!course:fakeServer.notExisting', childId: chatId),
+      );
+
+      await harness.pump(tester, client: client, roomId: chatId);
+
+      expect(find.byType(InviteAllInSpaceTile), findsOneWidget);
     });
   });
 }

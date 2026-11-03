@@ -27,7 +27,7 @@ What a learner sees while playing a conversation activity and when it ends. Find
 - The header stays pinned and looks like a button, because it opens the goal list. Only its top row opens and closes it.
 - Session XP is a number, so the eye stays on the goal; it and earned diamonds' XP show only to a role-holder in their current language.
 - A narrow window shrinks the header's padding, never the diamonds, because the header covers chat.
-- Diamonds keep the goals' order; the active goal, highlighted, is the first unfinished. An earned diamond flies up to the active goal's slot.
+- Diamonds keep the goals' order; the active goal, highlighted, is the first unfinished. An earned diamond flies up to the active goal's slot, except while a tutorial card is open: the diamond still fills, and the card has the learner's attention.
 - The header's left slot offers to switch to the session's language when the learner can switch to it.
 - The open list describes every goal. "I'm done!" works early and finishes the learner's own role; "Wait, I'm not done!" undoes it. Admins get "End for all", except in two-person bot sessions.
 - A long goal is cut with Show more; one that fits is plain text, so nothing falsely looks tappable.

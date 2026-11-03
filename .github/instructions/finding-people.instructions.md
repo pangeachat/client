@@ -14,7 +14,9 @@ Two surfaces let a learner find a person by name: the **New Direct Message** pan
 | **My contacts** | the people the learner already has a direct chat with | local; answers every keystroke |
 | **Public** | the homeserver's user directory | a network request, rate-limited |
 
-Contacts comes first and is what the New Direct Message panel opens on, because the person a learner wants is usually someone they have already spoken to, and that list costs nothing to search. The invite page offers the same two, plus its room-scoped filters — in this space, participants, invited, knocking, banned — which only mean anything against a room.
+Contacts comes first and is what the New Direct Message panel opens on, because the person a learner wants is usually someone they have already spoken to, and that list costs nothing to search. The invite page offers the same two, plus its room-scoped filters — in this course, participants, invited, knocking, banned — which only mean anything against a room.
+
+In a chat inside a course, the "in this course" list starts with a button that invites the whole course at once. An activity session's list has no such button: a session seats only a few people, so the rest of the course would hold invitations to a session they can only watch. From a session, the invite page invites one person at a time, and [Ping course participants](activity-start-page.instructions.md#the-waiting-room) is how the whole course hears about it.
 
 ## Who is findable under Public
 
