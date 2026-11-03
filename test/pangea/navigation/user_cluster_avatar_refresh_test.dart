@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 
+import 'package:fake_async/fake_async.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -27,10 +28,10 @@ class _FakeAnalyticsService implements AnalyticsDataService {
 const _profileRoute = '/client/v3/profile/%40test%3AfakeServer.notExisting';
 const _userId = '@test:fakeServer.notExisting';
 
-/// Short enough to wait out in a test, long enough to land several signals in.
+/// Long enough to land several signals in. The tests that use it run on a fake
+/// clock: on a real one, a loaded machine let the timer fire between steps the
+/// test meant to be back to back.
 const _quietPeriod = Duration(milliseconds: 80);
-
-Future<void> _afterQuietPeriod() => Future.delayed(_quietPeriod * 2);
 
 /// One profile fetch the test completes by hand; [fromServer] records whether
 /// the view model let the SDK answer from its cache.
@@ -142,80 +143,96 @@ void main() {
   // apiece either: exactly one follow-up fetch, once the burst goes quiet.
   test('updates during a fetch fold into one follow-up fetch', () async {
     final client = _ManualProfileClient(database: await _inMemoryDatabase());
-    final viewModel = WorldUserClusterViewModel(
-      analyticsService: _FakeAnalyticsService(),
-      client: client,
-      profileRefreshQuietPeriod: _quietPeriod,
-    );
-    addTearDown(viewModel.dispose);
+    fakeAsync((async) {
+      final viewModel = WorldUserClusterViewModel(
+        analyticsService: _FakeAnalyticsService(),
+        client: client,
+        profileRefreshQuietPeriod: _quietPeriod,
+      );
+      addTearDown(viewModel.dispose);
 
-    viewModel.reloadProfile();
-    expect(client.fetches, hasLength(1));
-    expect(client.fetches[0].fromServer, isFalse, reason: 'first load: cache');
+      viewModel.reloadProfile();
+      expect(client.fetches, hasLength(1));
+      expect(
+        client.fetches[0].fromServer,
+        isFalse,
+        reason: 'first load: cache',
+      );
 
-    for (var i = 0; i < 3; i++) {
-      client.onUserProfileUpdate.add(_userId);
-    }
-    await pumpEventQueue();
-    expect(client.fetches, hasLength(1), reason: 'burst waits on the fetch');
+      for (var i = 0; i < 3; i++) {
+        client.onUserProfileUpdate.add(_userId);
+      }
+      async.flushMicrotasks();
+      expect(client.fetches, hasLength(1), reason: 'burst waits on the fetch');
 
-    client.fetches[0].completer.complete(
-      Profile(userId: _userId, avatarUrl: Uri.parse('mxc://server/stale')),
-    );
-    await pumpEventQueue();
-    expect(viewModel.avatarUrl.value.toString(), 'mxc://server/stale');
-    expect(client.fetches, hasLength(1), reason: 'burst not yet quiet');
+      client.fetches[0].completer.complete(
+        Profile(userId: _userId, avatarUrl: Uri.parse('mxc://server/stale')),
+      );
+      async.flushMicrotasks();
+      expect(viewModel.avatarUrl.value.toString(), 'mxc://server/stale');
+      expect(client.fetches, hasLength(1), reason: 'burst not yet quiet');
 
-    await _afterQuietPeriod();
-    expect(client.fetches, hasLength(2), reason: 'one follow-up for the burst');
-    // The SDK just cached the stale answer as fresh; the follow-up must not
-    // be served from it.
-    expect(client.fetches[1].fromServer, isTrue);
+      async.elapse(_quietPeriod * 2);
+      expect(
+        client.fetches,
+        hasLength(2),
+        reason: 'one follow-up for the burst',
+      );
+      // The SDK just cached the stale answer as fresh; the follow-up must not
+      // be served from it.
+      expect(client.fetches[1].fromServer, isTrue);
 
-    client.fetches[1].completer.complete(
-      Profile(userId: _userId, avatarUrl: Uri.parse('mxc://server/fresh')),
-    );
-    await _afterQuietPeriod();
-    expect(viewModel.avatarUrl.value.toString(), 'mxc://server/fresh');
-    expect(client.fetches, hasLength(2), reason: 'nothing pending, no refetch');
+      client.fetches[1].completer.complete(
+        Profile(userId: _userId, avatarUrl: Uri.parse('mxc://server/fresh')),
+      );
+      async.elapse(_quietPeriod * 2);
+      expect(viewModel.avatarUrl.value.toString(), 'mxc://server/fresh');
+      expect(
+        client.fetches,
+        hasLength(2),
+        reason: 'nothing pending, no refetch',
+      );
+    });
   });
 
   test('a burst of signals costs one leading and one trailing fetch', () async {
     final client = _ManualProfileClient(database: await _inMemoryDatabase());
-    final viewModel = WorldUserClusterViewModel(
-      analyticsService: _FakeAnalyticsService(),
-      client: client,
-      profileRefreshQuietPeriod: _quietPeriod,
-    );
-    addTearDown(viewModel.dispose);
+    fakeAsync((async) {
+      final viewModel = WorldUserClusterViewModel(
+        analyticsService: _FakeAnalyticsService(),
+        client: client,
+        profileRefreshQuietPeriod: _quietPeriod,
+      );
+      addTearDown(viewModel.dispose);
 
-    // The first signal — the profile page's own announcement — fetches at
-    // once, from the server, so a local edit shows immediately.
-    client.onUserProfileUpdate.add(_userId);
-    await pumpEventQueue();
-    expect(client.fetches, hasLength(1));
-    expect(client.fetches[0].fromServer, isTrue);
-    client.fetches[0].completer.complete(
-      Profile(userId: _userId, avatarUrl: Uri.parse('mxc://server/new')),
-    );
-    await pumpEventQueue();
-    expect(viewModel.avatarUrl.value.toString(), 'mxc://server/new');
-
-    // The member-event burst — one per joined room, each landing before the
-    // stream has been quiet for long — folds into a single trailing fetch.
-    for (var i = 0; i < 20; i++) {
+      // The first signal — the profile page's own announcement — fetches at
+      // once, from the server, so a local edit shows immediately.
       client.onUserProfileUpdate.add(_userId);
-      await Future.delayed(_quietPeriod ~/ 4);
-    }
-    expect(client.fetches, hasLength(1), reason: 'burst still running');
-    await _afterQuietPeriod();
-    expect(client.fetches, hasLength(2), reason: 'one trailing fetch');
-    expect(client.fetches[1].fromServer, isTrue);
-    client.fetches[1].completer.complete(
-      Profile(userId: _userId, avatarUrl: Uri.parse('mxc://server/new')),
-    );
-    await _afterQuietPeriod();
-    expect(client.fetches, hasLength(2), reason: 'burst fully drained');
+      async.flushMicrotasks();
+      expect(client.fetches, hasLength(1));
+      expect(client.fetches[0].fromServer, isTrue);
+      client.fetches[0].completer.complete(
+        Profile(userId: _userId, avatarUrl: Uri.parse('mxc://server/new')),
+      );
+      async.flushMicrotasks();
+      expect(viewModel.avatarUrl.value.toString(), 'mxc://server/new');
+
+      // The member-event burst — one per joined room, each landing before the
+      // stream has been quiet for long — folds into a single trailing fetch.
+      for (var i = 0; i < 20; i++) {
+        client.onUserProfileUpdate.add(_userId);
+        async.elapse(_quietPeriod ~/ 4);
+      }
+      expect(client.fetches, hasLength(1), reason: 'burst still running');
+      async.elapse(_quietPeriod * 2);
+      expect(client.fetches, hasLength(2), reason: 'one trailing fetch');
+      expect(client.fetches[1].fromServer, isTrue);
+      client.fetches[1].completer.complete(
+        Profile(userId: _userId, avatarUrl: Uri.parse('mxc://server/new')),
+      );
+      async.elapse(_quietPeriod * 2);
+      expect(client.fetches, hasLength(2), reason: 'burst fully drained');
+    });
   });
 
   // CLIENT-EQ4 (#9060): the signal is legitimate while signed in, but its
@@ -223,27 +240,29 @@ void main() {
   // whose user id is gone.
   test('a trailing fetch that fires after sign-out is skipped', () async {
     final client = _ManualProfileClient(database: await _inMemoryDatabase());
-    final viewModel = WorldUserClusterViewModel(
-      analyticsService: _FakeAnalyticsService(),
-      client: client,
-      profileRefreshQuietPeriod: _quietPeriod,
-    );
-    addTearDown(viewModel.dispose);
+    fakeAsync((async) {
+      final viewModel = WorldUserClusterViewModel(
+        analyticsService: _FakeAnalyticsService(),
+        client: client,
+        profileRefreshQuietPeriod: _quietPeriod,
+      );
+      addTearDown(viewModel.dispose);
 
-    client.onUserProfileUpdate.add(_userId);
-    await pumpEventQueue();
-    expect(client.fetches, hasLength(1));
-    // A second signal lands mid-fetch and is deferred to a trailing fetch.
-    client.onUserProfileUpdate.add(_userId);
-    await pumpEventQueue();
-    client.fetches[0].completer.complete(
-      Profile(userId: _userId, avatarUrl: Uri.parse('mxc://server/new')),
-    );
-    await pumpEventQueue();
+      client.onUserProfileUpdate.add(_userId);
+      async.flushMicrotasks();
+      expect(client.fetches, hasLength(1));
+      // A second signal lands mid-fetch and is deferred to a trailing fetch.
+      client.onUserProfileUpdate.add(_userId);
+      async.flushMicrotasks();
+      client.fetches[0].completer.complete(
+        Profile(userId: _userId, avatarUrl: Uri.parse('mxc://server/new')),
+      );
+      async.flushMicrotasks();
 
-    client.signedInUserId = null;
-    await _afterQuietPeriod();
-    expect(client.fetches, hasLength(1), reason: 'no fetch once signed out');
+      client.signedInUserId = null;
+      async.elapse(_quietPeriod * 2);
+      expect(client.fetches, hasLength(1), reason: 'no fetch once signed out');
+    });
   });
 
   test('a fetch that lands after dispose is dropped', () async {
