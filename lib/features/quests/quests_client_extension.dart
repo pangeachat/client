@@ -85,6 +85,26 @@ extension QuestsClientExtension on Client {
     return sessions;
   }
 
+  /// The activities of the learner's saved sessions whose language can't be
+  /// decided yet ([CourseLanguageScope.savedSessionAwaitingPlan]): their XP
+  /// joins [savedSessionsByActivity] once their plans load.
+  Set<String> get savedSessionActivitiesAwaitingPlan {
+    final inLanguage = CourseLanguageScope.savedSessionIdsInTargetLanguage(
+      this,
+    );
+    final awaiting = <String>{};
+    for (final room in rooms) {
+      final activityId = room.activityId;
+      if (activityId == null ||
+          !room.hasArchivedActivity ||
+          !CourseLanguageScope.savedSessionAwaitingPlan(room, inLanguage)) {
+        continue;
+      }
+      awaiting.add(activityId);
+    }
+    return awaiting;
+  }
+
   /// The learner's activity XP per activity: every saved session of it
   /// ([savedSessionsByActivity]), each counting the XP credited to its room
   /// ([creditedXpByRoom] — the chat XP earned there plus practice credited
