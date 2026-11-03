@@ -288,6 +288,9 @@ abstract class WorkspaceNav {
   /// analytics surface**: it clears the analytics master and any vocab/grammar
   /// detail on the right (and a left `session` review — practice shares the one
   /// "detail" slot across columns), then seats `practice:<type>` at the front.
+  /// It also closes an open settings menu or page, the mirror of [openSettings]
+  /// closing practice: left open, settings would fold the new practice panel
+  /// behind it (#9639).
   /// While practice is open no vocab/grammar list or detail can be viewed —
   /// opening one drops practice (the registry `detail` group), and tapping the
   /// cluster's analytics replaces the whole right column. Practice is a normal
@@ -304,7 +307,9 @@ abstract class WorkspaceNav {
     current,
     (left) => left.where((t) => t.type != PanelTypesEnum.session).toList(),
     (right) {
-      final next = right.where((t) => !t.type.isAnalyticsPanel).toList();
+      final next = right
+          .where((t) => !t.type.isAnalyticsPanel && !t.type.isSettingsPanel)
+          .toList();
       next.insert(
         0,
         AnalyticsPracticePanelToken(

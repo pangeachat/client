@@ -1529,6 +1529,21 @@ void main() {
       },
     );
 
+    test('closes an open settings menu and page, so practice does not fold '
+        'behind them (#9639)', () {
+      final loc = WorkspaceNav.openPractice(
+        u('/?c=!s&left=course&right=settings,settingspage:learning'),
+        ConstructTypeEnum.vocab,
+      );
+      final lists = parseOpenPanels(u(loc));
+      expect(
+        lists.right.single,
+        AnalyticsPracticePanelToken(AnalyticsPracticeTokenParam.parse('vocab')),
+      );
+      // The course card practice was started from stays open on the left.
+      expect(lists.left.single, const CoursePanelToken());
+    });
+
     test(
       'opening a construct detail closes practice (one detail across columns)',
       () {
