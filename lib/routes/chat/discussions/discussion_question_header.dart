@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
-import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -18,7 +17,6 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_conte
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_header.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goal_header_card.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_label.dart';
-import 'package:fluffychat/widgets/goal_question_mark.dart';
 
 /// A discussion's goal header (#9647): the activity goal header with the
 /// discussion's questions as its goals, drawn as question marks. Collapsed,
@@ -115,50 +113,47 @@ class _DiscussionQuestionHeaderState extends State<DiscussionQuestionHeader> {
       left: 0,
       right: 0,
       bottom: _expanded ? 0 : null,
-      child: GoalMarkScope(
-        style: ActivityMode.discussion.goalMark,
-        child: Stack(
-          children: [
-            if (_expanded) ...[
-              const Positioned.fill(child: EmbedPointerShield()),
-              Positioned.fill(
-                child: GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: _toggle,
-                  child: ColoredBox(color: Colors.black.withAlpha(100)),
-                ),
-              ),
-            ],
-            ActivityGoalHeaderCard(
-              showDropdown: _expanded,
-              isComplete: allAnswered,
-              collapsed: ActivityDropdownHeader(
-                goals: goals,
-                isGoalCompleted: isCompleted,
-                onToggle: _toggle,
-                activeGoalId: activeId,
-                subtitle: activeId == null
-                    ? null
-                    : GoalHeaderLabel(questions[current!], maxLines: 4),
-                goalXp: kGoalXp,
-                sessionXp: xp,
-              ),
-              expanded: ActivityDropdownContent(
-                goals: goals,
-                isGoalCompleted: isCompleted,
-                onToggle: _toggle,
-                activeGoalId: activeId,
-                showEndForMe: !progress.ended,
-                showWaitNotDone: progress.ended,
-                hasCompletedOwnGoals: allAnswered,
-                finishActivityForMe: () => _setEnded(true),
-                continueActivity: () => _setEnded(false),
-                goalXp: kGoalXp,
-                sessionXp: xp,
+      child: Stack(
+        children: [
+          if (_expanded) ...[
+            const Positioned.fill(child: EmbedPointerShield()),
+            Positioned.fill(
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: _toggle,
+                child: ColoredBox(color: Colors.black.withAlpha(100)),
               ),
             ),
           ],
-        ),
+          ActivityGoalHeaderCard(
+            showDropdown: _expanded,
+            isComplete: allAnswered,
+            collapsed: ActivityDropdownHeader(
+              goals: goals,
+              isGoalCompleted: isCompleted,
+              onToggle: _toggle,
+              activeGoalId: activeId,
+              subtitle: activeId == null
+                  ? null
+                  : GoalHeaderLabel(questions[current!], maxLines: 4),
+              goalXp: kGoalXp,
+              sessionXp: xp,
+            ),
+            expanded: ActivityDropdownContent(
+              goals: goals,
+              isGoalCompleted: isCompleted,
+              onToggle: _toggle,
+              activeGoalId: activeId,
+              showEndForMe: !progress.ended,
+              showWaitNotDone: progress.ended,
+              hasCompletedOwnGoals: allAnswered,
+              finishActivityForMe: () => _setEnded(true),
+              continueActivity: () => _setEnded(false),
+              goalXp: kGoalXp,
+              sessionXp: xp,
+            ),
+          ),
+        ],
       ),
     );
   }

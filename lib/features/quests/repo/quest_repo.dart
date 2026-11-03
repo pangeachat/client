@@ -940,16 +940,17 @@ class QuestRepo {
             ),
       ];
 
-      final outline = QuestOutline(
-        quest: quest,
-        groups: groups,
-        addedGroups: addedGroups,
-        familyIdsByActivity: {
-          for (final a in read.activities)
-            if (a.familyIds.isNotEmpty) a.plan.activityId: a.familyIds,
-        },
+      return Result.value(
+        QuestOutline(
+          quest: quest,
+          groups: groups,
+          addedGroups: addedGroups,
+          familyIdsByActivity: {
+            for (final a in read.activities)
+              if (a.familyIds.isNotEmpty) a.plan.activityId: a.familyIds,
+          },
+        ),
       );
-      return Result.value(outline);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

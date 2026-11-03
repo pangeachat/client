@@ -149,8 +149,9 @@ class Message extends StatelessWidget {
       }
       // #Pangea
       if (event.type == EventTypes.RoomCreate) {
-        if (event.room.isActivitySession) return const SizedBox();
-        return RoomCreationStateEvent(event: event);
+        return event.room.isActivitySession
+            ? const SizedBox()
+            : RoomCreationStateEvent(event: event);
       }
 
       if (event.type == PangeaEventTypes.activityPlan &&

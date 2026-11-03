@@ -6,7 +6,6 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/widgets/goal_question_mark.dart';
 
 /// The activity modes, and every way a mode changes how its activities look
 /// and run (#9647). Screens ask the mode a question ("does it name roles?")
@@ -44,13 +43,6 @@ enum ActivityMode {
   IconData? midPinGlyph({required bool available}) => switch (this) {
     roleplay => available ? icon : null,
     discussion => icon,
-  };
-
-  /// How a player's goal in it is drawn: every goal is a diamond, so a goal
-  /// reads as one thing in every mode; the pins tell the modes apart.
-  GoalMarkStyle get goalMark => switch (this) {
-    roleplay => GoalMarkStyle.diamond,
-    discussion => GoalMarkStyle.diamond,
   };
 
   /// What a card shows once the learner has played it: the completed stamp,
