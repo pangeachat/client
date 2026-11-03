@@ -33,38 +33,33 @@ Back returns to earlier pages, with the choices made there kept.
 
 ### What onboarding reads and saves
 
-Choices go into memory as soon as they are made, and every page reads them from there. Changing one choice does not clear another, and a choice that has not been saved yet stays in memory even if the person goes back instead of forward.
+Choices are kept for the run as soon as they are made, and every page reads them from there. An unsaved choice is kept when the person goes back. Unsaved choices are lost if the person leaves onboarding; saved ones stay on their account, on any device.
 
 #### What it reads
 
 Besides the person's choices, onboarding reads:
 
-- **This device:** its language, which the languages page first selects as the user's L1. It is also saved as their L1 when a joined course's content does not load.
-- **Account data:** the saved role, languages and level, which those pages show selected when memory has none.
-- **Matrix profile:** the display name and avatar, which the profile page shows and compares against before saving. If they cannot be read when Next is pressed, the page shows the error.
+- The device's language: the languages page first selects it as their L1, and it becomes their L1 when a joined course's content does not load.
+- Their account's saved role, languages and level, which those pages show when the run has none, and display name and avatar, which the profile page shows and compares before saving. If the name and avatar cannot be read when Next is pressed, the page shows the error.
 
 #### What it saves
 
-Each page saves its own choices when the person moves on from it, to one of two places: their Matrix profile (the public name and picture other people see) or their account data (settings stored on their account).
+Each page saves its choices to the person's account when they move on, unless the table says otherwise.
 
-A page saves only what has changed since it last saved, so moving forward again over a page with nothing changed saves nothing, joins no course a second time and sends no second course request.
-
-| Page | What is saved, and where | If the save fails |
+| Page | What is saved | If the save fails |
 | --- | --- | --- |
-| Setup | The creation date, if there is none yet, to account data | Setup stops, with Try again and Log out |
-| Profile | Display name and avatar, to the Matrix profile | Onboarding moves on, and the old name or picture stays |
-| Role | The role, to account data | Onboarding moves on, and the role is saved again with the L2 (below) |
-| Class code | The code, to this device, as every code join does ([joining-courses § Route 2 — Class Code](joining-courses.instructions.md#route-2--class-code)); the person is joined to the course | The page shows the error |
-| Languages | Both languages, and the role again, to account data; a joined course saves the ones it supplies, and its level when its content loads, right after the join | The page shows the error |
-| Level | The level, to account data | The page shows the error |
+| Setup | The creation date, if there is none yet | Setup stops, with Try again and Log out |
+| Profile | Display name and avatar, which other people see | Onboarding moves on, and the old name or picture stays |
+| Role | The role | Onboarding moves on, and the role is saved again with the L2 (below) |
+| Class code | The code, on this device only, as every code join does ([joining-courses § Route 2 — Class Code](joining-courses.instructions.md#route-2--class-code)); the person is joined to the course | The page shows the error |
+| Languages | Both languages, and the role again; a joined course saves the ones it supplies, and its level when its content loads, right after the join | The page shows the error |
+| Level | The level | The page shows the error |
 | Course request | The request, sent to the team | The page shows the error |
-| Trial | That the page was shown, to account data | Onboarding moves on |
+| Trial | That the page was shown | Onboarding moves on |
 
-A page that shows an error stays where it is, and pressing Next again retries. Two of those pages can also be skipped: the class-code page with "I don't have a code", and the course request with "Skip for now". The other pages have no skip; the person can go Back, but moves past them only once the save works.
+A page that shows an error stays where it is, and pressing Next again retries. Two of those pages can also be skipped: the class-code page and the course request page. Otherwise, the person moves forward only once the save works. The profile, role and trial pages are the exceptions: a failed save there does not stop the person, and the role is saved again with their languages.
 
-**Why the role is saved twice.** The role page saves the role, and saving the person's languages saves it again. If the first save worked, the second changes nothing. If it failed, the person moves on without an error, and the second save is the one that has to work. The role must be saved before onboarding ends ([profile § Data Model](profile.instructions.md#data-model) says who reads it), because it is only chosen here and onboarding does not come back once the L2 is saved.
-
-A signed-in account with no L2 is sent to onboarding, whatever link it opened, and saving the L2 marks onboarding as done. Someone who leaves before then starts a new run, with nothing in memory. The profile page fills in their saved display name and avatar, and the role page their saved role.
+A signed-in account with no L2 is sent to onboarding, whatever link it opened, and saving the L2 marks onboarding as done. Someone who leaves before then starts a new run, with only what was saved to their account. The profile page fills in their saved display name and avatar, and the role page their saved role.
 
 ### Setup
 
