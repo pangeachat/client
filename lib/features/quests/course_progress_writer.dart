@@ -155,11 +155,11 @@ class CourseProgressWriter {
         );
       }
       if (!next.changedSince(stored)) continue;
-      // A saved session not filed under a language counts once its plan
-      // loads, and a loaded plan leaves the cache after an hour. Written
-      // while one reloads, the record would lose that session's XP until the
-      // next check put it back (ADMIN-DASH-API-1W), so a lower figure waits
-      // for the plans; a higher one is written.
+      // A saved session's goals, and the language of one not filed under a
+      // language, come from its plan, and a loaded plan leaves the cache
+      // after an hour. Written while one reloads, the record would lose that
+      // XP until the next check put it back (ADMIN-DASH-API-1W), so a lower
+      // figure waits for the plans; a higher one is written.
       if (awaitingPlan && next.lowersXpOf(stored)) continue;
       await analyticsRoom.setCourseProgress(course.id, next);
       _written[course.id] = next;
@@ -197,9 +197,9 @@ class CourseProgressWriter {
     return dates;
   }
 
-  /// Whether a saved session's language is still undecided because its plan
-  /// hasn't loaded ([QuestsClientExtension.savedSessionActivitiesAwaitingPlan]).
-  /// An activity the backend has removed never loads, so it isn't waited on.
+  /// Whether a saved session's plan hasn't loaded
+  /// ([QuestsClientExtension.savedSessionActivitiesAwaitingPlan]). An activity
+  /// the backend has removed never loads, so it isn't waited on.
   Future<bool> _awaitingPlan(Client client) async {
     for (final activityId in client.savedSessionActivitiesAwaitingPlan) {
       if (!await ActivityPlanRepo.instance.isConfirmedRemoved(activityId)) {
