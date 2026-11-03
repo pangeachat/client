@@ -1,3 +1,5 @@
+import 'dart:ui' as ui show SemanticsHitTestBehavior;
+
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -254,9 +256,11 @@ class _BannerCard extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Text(
-              text,
-              style: theme.textTheme.bodyMedium?.copyWith(color: ink),
+            child: ExcludeSemantics(
+              child: Text(
+                text,
+                style: theme.textTheme.bodyMedium?.copyWith(color: ink),
+              ),
             ),
           ),
         ),
@@ -297,6 +301,11 @@ class _BannerCard extends StatelessWidget {
     return Semantics(
       container: true,
       liveRegion: true,
+      // Opaque, so on web with the semantics tree on the banner takes the
+      // clicks that land on it (#9584). An opaque node takes no labels from its
+      // children, so it carries the message for the live region itself.
+      hitTestBehavior: ui.SemanticsHitTestBehavior.opaque,
+      label: text,
       child: Material(
         color: positive ? colors.primaryContainer : colors.errorContainer,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
