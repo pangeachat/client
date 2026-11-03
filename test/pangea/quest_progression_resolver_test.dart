@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/quests/can_do_progress.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 
@@ -271,6 +272,84 @@ void main() {
 
     test('the empty resolution is fail-soft (always 0)', () {
       expect(ProgressionResolution.empty.missionGradient(['m1']), 0);
+    });
+  });
+
+  // A completed Mission stays complete (client#9681).
+  group('resolveProgression — recorded completions', () {
+    final completedAt = DateTime.utc(2026, 10, 20);
+
+    CanDoProgress entry({
+      DateTime? firstCompletedAt,
+      int? xpToCompleteAtFirstCompletion,
+      bool completedBeforeTracking = false,
+    }) => CanDoProgress(
+      xp: 0,
+      breakdown: MissionXpBreakdown.zero,
+      completed: true,
+      firstCompletedAt: firstCompletedAt,
+      completedBeforeTracking: completedBeforeTracking,
+      xpToCompleteAtFirstCompletion: xpToCompleteAtFirstCompletion,
+    );
+
+    ProgressionResolution resolve(
+      Map<String, Map<String, CanDoProgress>> recordedByCourse,
+    ) => resolveProgression(
+      outlines: [
+        outline(
+          ['m1', 'm2'],
+          {
+            'm1': {'a'},
+            'm2': {'b'},
+          },
+          xpToComplete: 1500,
+        ),
+      ],
+      xpByActivity: {'a': 600},
+      recordedByCourse: recordedByCourse,
+    );
+
+    test('stays complete after the threshold rises, against its own', () {
+      final r = resolve({
+        'c1': {
+          'm1': entry(
+            firstCompletedAt: completedAt,
+            xpToCompleteAtFirstCompletion: 500,
+          ),
+        },
+      });
+      final m1 = rollupOf(r)['m1']!;
+      expect(m1.satisfied, isTrue);
+      expect(m1.threshold, 500);
+      expect(m1.fraction, 1.0);
+      expect(r.forCourse('c1')!.anchorMissionId, 'm2');
+      expect(r.completedMissionIds(), {'m1'});
+    });
+
+    test('without a stored threshold, counts against the course\'s', () {
+      final m1 = rollupOf(
+        resolve({
+          'c1': {'m1': entry(firstCompletedAt: completedAt)},
+        }),
+      )['m1']!;
+      expect(m1.satisfied, isTrue);
+      expect(m1.threshold, 1500);
+      expect(m1.fraction, closeTo(0.4, 1e-9));
+    });
+
+    test('an undated entry does not keep a Mission complete', () {
+      final r = resolve({
+        'c1': {'m1': entry(completedBeforeTracking: true)},
+      });
+      expect(rollupOf(r)['m1']!.satisfied, isFalse);
+      expect(r.forCourse('c1')!.anchorMissionId, 'm1');
+    });
+
+    test('another course\'s record does not count', () {
+      final r = resolve({
+        'c2': {'m1': entry(firstCompletedAt: completedAt)},
+      });
+      expect(rollupOf(r)['m1']!.satisfied, isFalse);
     });
   });
 }

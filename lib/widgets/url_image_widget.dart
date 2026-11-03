@@ -93,6 +93,10 @@ class ImageByUrl extends StatelessWidget {
                         return replacement ?? const SizedBox();
                       },
                       httpHeaders: headers,
+                      // HttpGet byte-fetches over XHR, which CanvasKit needs to
+                      // composite correctly; it is also why the image CDN must
+                      // send CORS headers, or web shows a blank box while mobile
+                      // renders (devops image-cdn.instructions.md, "CORS").
                       imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
                     )
             : SizedBox(

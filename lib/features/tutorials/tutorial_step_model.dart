@@ -111,6 +111,9 @@ class TutorialStepData {
 /// changed; [isSatisfied] is the answer. Watched by the controller rather than
 /// the overlay, because an armed step deliberately outlives the overlay — the
 /// learner is off doing the thing, and the tutorial resumes when they have.
+/// So an armed step needs no timeout: a learner can never be stuck under the
+/// scrim waiting. See tutorials.instructions.md § Decisions, "The role-picker
+/// card leaves the choice to the learner".
 class TutorialStepArming {
   final Listenable signal;
   final bool Function() isSatisfied;

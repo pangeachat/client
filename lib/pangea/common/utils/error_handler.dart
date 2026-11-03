@@ -114,6 +114,9 @@ class ErrorHandler {
   /// copied per call site drifts; a rule with one home cannot.
   static bool shouldReport(Object? e) {
     if (e is UnsubscribedException) return false;
+    // silent-ok: no access token means the client is logged out. Reads that
+    // run during logout land here, and nothing in code can fix that (#9738).
+    if (e is NotLoggedInException) return false;
     // A request timeout while the app is not resumed describes the device's
     // sleep, not the network: the OS suspends the socket and every pending
     // timer fires together on wake (severity table, Timeout row; #9132).

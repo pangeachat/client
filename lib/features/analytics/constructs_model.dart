@@ -129,6 +129,7 @@ class OneConstructUse {
         eventId: json['msgId'],
         roomId: json['chatId'],
         timeStamp: DateTime.parse(json['timeStamp']),
+        sessionId: json['sessionId'] is String ? json['sessionId'] : null,
       ),
       xp: json['xp'] ?? useType.pointValue,
       // Absent on every row written before bucketing existed, and on every row
@@ -157,6 +158,8 @@ class OneConstructUse {
     // and these events are chunked against a hard Matrix size limit. Absent
     // reads back as 1.
     if (count != 1) 'count': count,
+    // Only a practice session's uses carry one. Older apps ignore the key.
+    if (metadata.sessionId != null) 'sessionId': metadata.sessionId,
   };
 
   OneConstructUse copyWith({
@@ -231,9 +234,14 @@ class ConstructUseMetaData {
   final String? roomId;
   final DateTime timeStamp;
 
+  /// The practice session this use came from; null outside practice and on
+  /// every use an older app wrote.
+  final String? sessionId;
+
   ConstructUseMetaData({
     required this.roomId,
     required this.timeStamp,
     this.eventId,
+    this.sessionId,
   });
 }

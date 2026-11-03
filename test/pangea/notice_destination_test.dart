@@ -18,6 +18,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/notifications/notification_tap_utils.dart';
+import 'package:fluffychat/features/notifications/open_session_notice.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/bot_notice_widget.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -249,6 +250,27 @@ void main() {
       expect(param.activityId, activityId);
       expect(param.roomId, leftSessionId);
       expect(activeSpaceIdFor(uri), isNull);
+    });
+
+    testWidgets('the open-session notice offers the bot in its session, and '
+        'other notices do not', (tester) async {
+      addTearDown(() => OpenSessionNotice.offerBotIn.value = null);
+      final session = {
+        'sender': botId,
+        'content_pangea.activity.id': activityId,
+        'content_pangea.activity.session_room_id': joinedSessionId,
+      };
+      await tap(tester, botDmId, {
+        ...session,
+        'content_check_in_type': 'do_activity',
+      });
+      expect(OpenSessionNotice.offerBotIn.value, isNull);
+      final uri = await tap(tester, botDmId, {
+        ...session,
+        'content_check_in_type': OpenSessionNotice.checkInType,
+      });
+      expect(openedRoomId(uri), joinedSessionId);
+      expect(OpenSessionNotice.offerBotIn.value, joinedSessionId);
     });
 
     testWidgets('a course ping still opens its activity in its course', (

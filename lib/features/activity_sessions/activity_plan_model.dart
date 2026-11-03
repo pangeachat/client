@@ -18,11 +18,13 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dar
 class ActivityPlanModel {
   final String activityId;
 
-  /// The pinned Payload version this plan was read at, when known. Sessions
+  /// The content-signature this plan was read at, when known. Sessions
   /// pin `(activity_id, version_id)` into `pangea.activity_plan` room state at
   /// creation so scoring stays stable against later owner edits; the in-room
   /// read passes it back as `?version=`. Null for legacy embedded rooms and
-  /// for card/lobby reads that don't pin. See activities.instructions.md.
+  /// for a read that carries none (the course outline and the single-activity
+  /// fetch both carry it). See org activities.instructions.md, "Editing
+  /// semantics".
   final String? versionId;
 
   /// Pin-resolution outcome at the time this plan was last read, parallel to
@@ -134,14 +136,15 @@ class ActivityPlanModel {
         title.hashCode,
       ).nextInt(placeholderImages.length)];
 
-  /// First image block in the media carousel, if any (the "hero").
+  /// First image block in the media list, if any (the "hero").
   ActivityMediaBlock? get heroImage => media.firstWhereOrNull((b) => b.isImage);
 
   /// First media block of any kind — the compact-surface "hero". Cards, list
   /// tiles, and map pins show this block standing in for the whole carousel,
-  /// with a play badge when it is a video. Contrast [heroImage], which skips to
-  /// the first *image* (used by the single-image paths: chat background, room
-  /// avatar).
+  /// with a video tag when it is a video (#7543). Contrast [heroImage], which
+  /// skips to the first *image* (used by the single-image paths: chat
+  /// background, room avatar). An audio first block is still the hero here and
+  /// no surface renders audio (see [ActivityMediaBlock.displayUrl]).
   ActivityMediaBlock? get heroBlock => media.firstOrNull;
 
   /// First *visible* media block (image / video / youtube) — the lead the
@@ -168,20 +171,22 @@ class ActivityPlanModel {
     return b != null && (b.isVideo || b.isYoutube);
   }
 
-  /// The hero image to render today (the carousel is a follow-up). Resolution
-  /// order: the first resolved image block in the v2/v3 `media` list → the
+  /// The hero image to render on a still surface (the live session's carousel
+  /// pages through the rest). Resolution order: the first resolved image block
+  /// in the v2/v3 `media` list → the
   /// legacy single `image_url` (the choreo `/activity_plan/localize` path) →
   /// a deterministic placeholder when the activity genuinely has no image.
   ///
   /// image-cdn cutover: both the resolved media URL and the legacy `image_url`
   /// are absolute CDN urls used as-is; `resolveMediaUrl` prepends the CMS origin
-  /// only for legacy relative paths. See media_url.dart and
-  /// `.github/.github/instructions/activities.instructions.md`.
+  /// only for legacy relative paths. See media_url.dart and devops
+  /// image-cdn.instructions.md.
   Uri? get imageURL => ownImageURL ?? Uri.tryParse(randomPlaceholder);
 
   /// The activity's own image — its first image block, else the legacy single
   /// `image_url` — and never the placeholder. Null when it has none, which
-  /// keeps the opt-in activity chat background off (activities.instructions.md).
+  /// keeps the opt-in activity chat background off
+  /// (activity-session.instructions.md, "The chat background").
   Uri? get ownImageURL {
     final heroUrl = heroImage?.displayUrl();
     if (heroUrl != null) return Uri.tryParse(heroUrl);

@@ -3824,6 +3824,18 @@
       "summaryEnumType": "numChoicesIncorrect"
     },
     {
+      "name": "corRA",
+      "pointValue": 5,
+      "sentByUser": false,
+      "summaryEnumType": "numChoicesCorrect"
+    },
+    {
+      "name": "incRA",
+      "pointValue": 0,
+      "sentByUser": false,
+      "summaryEnumType": "numChoicesIncorrect"
+    },
+    {
       "name": "corGC",
       "pointValue": 5,
       "sentByUser": false,

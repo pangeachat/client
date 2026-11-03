@@ -41,6 +41,9 @@ class AnalyticsPracticeExerciseContent extends StatelessWidget {
           showTranslation: showHint,
         ),
       ),
+      // The read-aloud item draws its own sentence, with the words filling
+      // in as they are heard.
+      ReadAloudPracticeExerciseModel() => const SizedBox.shrink(),
       MorphCategoryPracticeExerciseModel() => Center(
         child: AnalyticsPracticeExerciseExampleMessage(
           exampleMessage,

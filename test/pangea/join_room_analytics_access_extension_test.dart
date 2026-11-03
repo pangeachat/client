@@ -7,8 +7,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
@@ -123,46 +124,87 @@ void main() {
       .toList();
 
   group('grantInstructorsAnalyticsAccess', () {
-    testWidgets('admin claim ignores a stale learner notice response', (
+    Future<BuildContext> pumpScaffold(WidgetTester tester) async {
+      late BuildContext context;
+      await tester.pumpWidget(
+        MaterialApp(
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+          home: Scaffold(
+            body: Builder(
+              builder: (value) {
+                context = value;
+                return const SizedBox();
+              },
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      return context;
+    }
+
+    testWidgets('a teacher joining their own course shares nothing', (
       tester,
     ) async {
       final room = courseRoom(powerLevel: 100);
       client.rooms = [room];
-      late BuildContext context;
-      await tester.pumpWidget(
-        Builder(
-          builder: (value) {
-            context = value;
-            return const SizedBox();
-          },
-        ),
-      );
+      final context = await pumpScaffold(tester);
       final before = FakeMatrixApi.calledEndpoints.toString();
-      final result = await JoinRoomAnalyticsConsentHandler(
-        const JoinResponse(roomId: courseRoomId, shouldShowNotice: true),
+
+      final result = await JoinRoomAnalyticsAccessHandler(
+        const JoinResponse(roomId: courseRoomId),
         room,
       ).handle(context);
+      await tester.pumpAndSettle();
 
       expect(result, courseRoomId);
       expect(FakeMatrixApi.calledEndpoints.toString(), before);
       expect(grants, isEmpty);
-      expect(JoinRoomAnalyticsConsentHandler.currentRoomId, isNull);
+      expect(find.byType(SnackBar), findsNothing);
     });
 
-    test('course admin skips the learner notice and analytics grant', () async {
+    // Told, not asked (course-analytics-access.instructions.md): no dialog,
+    // the grant goes out, and a snackbar says so.
+    testWidgets('a learner joining a course that requires sharing is granted '
+        'without a question and told', (tester) async {
+      profileWithAnalyticsRoom(analyticsRoomId);
+      final room = courseRoom();
+      client.rooms = [room];
+      final context = await pumpScaffold(tester);
+
+      final result = await JoinRoomAnalyticsAccessHandler(
+        const JoinResponse(roomId: courseRoomId),
+        room,
+      ).handle(context);
+      for (var i = 0; i < 5 && grants.isEmpty; i++) {
+        await tester.runAsync(
+          () => Future<void>.delayed(const Duration(milliseconds: 200)),
+        );
+        await tester.pump();
+      }
+
+      expect(result, courseRoomId);
+      expect(find.byType(Dialog), findsNothing);
+      expect(grants.single['mx_analytics_room_id'], analyticsRoomId);
+      expect(
+        find.textContaining('can now see your learning progress'),
+        findsOneWidget,
+      );
+      // Let the snackbar time out so no timer outlives the test.
+      await tester.pump(const Duration(seconds: 10));
+      await tester.pumpAndSettle();
+    });
+
+    test('course admin skips the analytics grant', () async {
       profileWithAnalyticsRoom(analyticsRoomId);
       final room = courseRoom(powerLevel: 100);
       client.rooms = [room];
 
-      expect(room.shouldShowAnalyticsAccessNotice, false);
       await client.grantInstructorsAnalyticsAccess(courseRoomId);
       await client.grantAnalyticsAccessByAnalyticsRoom(analyticsRoomId, 'de');
 
       expect(grants, isEmpty);
-    });
-
-    test('ordinary learner still sees the required analytics notice', () {
-      expect(courseRoom().shouldShowAnalyticsAccessNotice, true);
     });
 
     test(
@@ -241,5 +283,83 @@ void main() {
         expect(grants, isEmpty);
       },
     );
+  });
+
+  group('grantAnalyticsAccessByAnalyticsRoom', () {
+    // The new-student sequence: the student joins a required course before
+    // they have an analytics room (the join-time grant has nothing to grant
+    // into), and their first practice creates the room, which fires this. The
+    // course room's own `pangea.course_plan` carries the target language, so
+    // the grant must not hinge on the course-plan read from the CMS, which
+    // the test environment (like a failing or malformed read) cannot serve.
+    test(
+      'grants every required course whose own l2 matches the new room',
+      () async {
+        client.rooms = [courseRoom(), analyticsRoom(analyticsRoomId)];
+
+        await client.grantAnalyticsAccessByAnalyticsRoom(analyticsRoomId, 'de');
+
+        expect(grants, [
+          {
+            'mx_course_id': courseRoomId,
+            'mx_analytics_room_id': analyticsRoomId,
+          },
+        ]);
+      },
+    );
+
+    test('does not grant a required course in another language', () async {
+      client.rooms = [courseRoom(), analyticsRoom(analyticsRoomId)];
+
+      await client.grantAnalyticsAccessByAnalyticsRoom(analyticsRoomId, 'es');
+
+      expect(grants, isEmpty);
+    });
+
+    test('does not grant a course that does not require access', () async {
+      client.rooms = [
+        courseRoom(requireAnalyticsAccess: false),
+        analyticsRoom(analyticsRoomId),
+      ];
+
+      await client.grantAnalyticsAccessByAnalyticsRoom(analyticsRoomId, 'de');
+
+      expect(grants, isEmpty);
+    });
+
+    test('logs when a required course language cannot be resolved', () async {
+      final printed = <String>[];
+      final original = debugPrint;
+      debugPrint = (String? message, {int? wrapWidth}) {
+        if (message != null) printed.add(message);
+      };
+      addTearDown(() => debugPrint = original);
+
+      final room = courseRoom();
+      // A course plan event with no `l2`, and a course-plan read that does
+      // not resolve: nothing says which language the course is in.
+      room.setState(
+        Event(
+          type: PangeaEventTypes.coursePlan,
+          content: CoursePlanEvent(uuid: 'quest-1').toJson(),
+          senderId: userId,
+          eventId: '\$coursePlanNoL2',
+          originServerTs: DateTime.utc(2026, 1, 2),
+          stateKey: '',
+          room: room,
+        ),
+      );
+      client.rooms = [room, analyticsRoom(analyticsRoomId)];
+
+      await client.grantAnalyticsAccessByAnalyticsRoom(analyticsRoomId, 'de');
+
+      expect(grants, isEmpty);
+      expect(
+        printed,
+        contains(
+          contains('Course language unresolved; analytics grant skipped'),
+        ),
+      );
+    });
   });
 }

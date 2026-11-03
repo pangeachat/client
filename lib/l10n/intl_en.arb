@@ -822,7 +822,7 @@
             }
         }
     },
-    "createGroup": "Create group",
+    "createGroup": "Create chat",
     "@createGroup": {},
     "currentlyActive": "Currently active",
     "@currentlyActive": {
@@ -2499,7 +2499,7 @@
     "@knocking": {},
     "nothingFound": "Nothing found...",
     "@nothingFound": {},
-    "groupName": "Group name",
+    "groupName": "Chat name",
     "@groupName": {},
     "wrongRecoveryKey": "Sorry... this does not seem to be the correct recovery key.",
     "@wrongRecoveryKey": {},
@@ -4777,6 +4777,30 @@
     "practiceVocab": "Practice vocabulary",
     "selectMeaning": "Select the meaning",
     "anotherRound": "Another round",
+    "practiceStartWordCount": "{count, plural, =1{word to practice} other{words to practice}}",
+    "@practiceStartWordCount": {
+        "description": "Under the large number on the practice start page, e.g. 8 / words to practice.",
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "practiceStartGrammarCount": "{count, plural, =1{grammar point to practice} other{grammar points to practice}}",
+    "@practiceStartGrammarCount": {
+        "description": "Under the large number on the grammar practice start page, e.g. 6 / grammar points to practice.",
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "practiceStartExerciseTypes": "Exercise types",
+    "@practiceStartExerciseTypes": {
+        "description": "Screen-reader name for the Reading, Listening and Speaking chips on the practice start page."
+    },
     "ssoDialogTitle": "Waiting for sign in to complete",
     "ssoDialogDesc": "We opened a new tab so you can sign in securely.",
     "ssoDialogHelpText": "🤔 If you didn't see the new tab, please check your popup blocker.",
@@ -5083,6 +5107,39 @@
             }
         }
     },
+    "botJoinsIn": "Pangea Bot joins in {duration}",
+    "@botJoinsIn": {
+        "description": "Waiting-room status line counting down to when Pangea Bot takes the session's last open seat on its own. duration is m:ss.",
+        "placeholders": {
+            "duration": {
+                "type": "String"
+            }
+        }
+    },
+    "botIsJoining": "Pangea Bot is joining…",
+    "@botIsJoining": {
+        "description": "Waiting-room status line once the countdown to Pangea Bot taking the open seat has reached zero, until it has joined."
+    },
+    "playWithBotNowTitle": "Play with Pangea Bot now?",
+    "@playWithBotNowTitle": {
+        "description": "Title of the dialog offered when a learner opens their waiting activity session from the notice saying the bot joins soon."
+    },
+    "playWithBotNowMessage": "Nobody has joined yet. Pangea Bot can take the open seat now, or you can keep waiting.",
+    "@playWithBotNowMessage": {
+        "description": "Body of the dialog offering to play an activity session with Pangea Bot instead of waiting for a person."
+    },
+    "keepWaiting": "Keep waiting",
+    "@keepWaiting": {
+        "description": "Dialog button that closes the offer to play with Pangea Bot and keeps waiting for a person to join."
+    },
+    "botTookSeatAfterAnHour": "This session was open for an hour, so Pangea Bot took the open seat.",
+    "@botTookSeatAfterAnHour": {
+        "description": "Note in an activity chat where Pangea Bot joined on its own because nobody took the last seat within an hour."
+    },
+    "botTookSeatAfterADay": "This session was open for over a day, so Pangea Bot took the open seat. Send a message to start.",
+    "@botTookSeatAfterADay": {
+        "description": "Note in an activity chat where Pangea Bot joined on its own, without a message, because the last seat was open for over a day."
+    },
     "onlineInCourse": "{count} online in {course}",
     "@onlineInCourse": {
         "placeholders": {
@@ -5101,18 +5158,6 @@
     "@showMoreOptionsHint": {
         "description": "Semantics hint fragment: TalkBack reads it as 'double tap and hold to <this>' on controls whose long-press opens the options menu."
     },
-    "teacherAnalyticsRequestTitle": "Teacher requests your learning progress",
-    "teacherAnalyticsRequestDesc": "They'll see all the words and grammar you've used in {targetLang}, your level and XP, and the messages sent in course activities. Your 1-on-1 messages will not be shared. Sharing analytics is required to join the course.",
-    "@teacherAnalyticsRequestDesc": {
-        "type": "String",
-        "placeholders": {
-            "targetLang": {
-                "type": "String"
-            }
-        }
-    },
-    "shareAndJoin": "Share and join",
-    "goBack": "Go back",
     "setPermissionsLevelDesc": "Please choose a predefined role below or enter a custom permission level. Pick a whole number between 0 and 100.",
     "reportContentIssue": "Report content issue",
     "userTypeTitle": "I use Pangea Chat to",
@@ -5154,6 +5199,7 @@
     "analyticsDownloadDesc": "Downloads personal vocab and grammar analytics for the selected language.",
     "courseAnalyticsDownloadDesc": "Downloads the lemma and grammar usage in the selected language for all course participants with shared analytics.",
     "suggestMobileDesc": "Get the Pangea Chat app to receive notifications!",
+    "suggestMobileSignInSameAccount": "Then sign in to the app with this account.",
     "cefrLevelMatch": "This course matches your language level",
     "cefrLevelBelow": "This course is below your language level.",
     "cefrLevelAbove": "This course is above your language level.",
@@ -5496,6 +5542,7 @@
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
     "exitVocabPracticeSession": "Your current vocab practice session progress won't be saved.",
     "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved.",
+    "learnLanguageWhileTexting": "Learn a language while texting your friends!",
     "explorePlayAndLearn": "Explore, play and learn",
     "conversationFromDayOne": "Conversation from Day One",
     "builtForConnection": "Built for connection",
@@ -5757,6 +5804,14 @@
     "videoPlayer": "Video player",
     "@videoPlayer": {
         "description": "Accessible name of a playing activity video, which is one keyboard stop."
+    },
+    "videoWontPlayHere": "This video won't play here.",
+    "@videoWontPlayHere": {
+        "description": "Note shown in place of an activity's YouTube video when YouTube refuses to play it inside the app, or it never starts."
+    },
+    "watchOnYoutube": "Watch on YouTube",
+    "@watchOnYoutube": {
+        "description": "Button beside the note that an activity video won't play here. It opens the video in the YouTube app or the browser. YouTube is a brand name; keep it as is."
     },
     "joinYourCourse": "Join your course",
     "@joinYourCourse": {
@@ -6098,5 +6153,161 @@
     "offlinePracticeNothingSaved": "Not enough is saved on this device to practice offline. Try again when you're back online.",
     "@offlinePracticeNothingSaved": {
         "description": "Shown instead of a practice session when the app has no connection to Pangea Chat and the device has not saved enough words or messages to build one offline."
+    },
+    "constructUseCorRADesc": "Read aloud and heard",
+    "@constructUseCorRADesc": {
+        "description": "Analytics label for a read-aloud practice exercise where the target word was heard."
+    },
+    "constructUseIncRADesc": "Read aloud, not heard",
+    "@constructUseIncRADesc": {
+        "description": "Analytics label for a read-aloud practice exercise where the target word was not heard after every try."
+    },
+    "hearItFirstToolName": "Hear it first",
+    "@hearItFirstToolName": {
+        "description": "Audio setting: in read-aloud practice, the example sentence plays before the learner records."
+    },
+    "hearItFirstDescription": "In read-aloud practice, play the sentence before you record.",
+    "@hearItFirstDescription": {
+        "description": "Description under the Hear it first audio setting."
+    },
+    "readAloudInstruction": "Tap the mic and read the sentence aloud",
+    "@readAloudInstruction": {
+        "description": "Instruction on a read-aloud practice exercise before the learner records."
+    },
+    "readAloudRecord": "Record",
+    "@readAloudRecord": {
+        "description": "Accessible name of the record button on a read-aloud exercise before anything has been heard."
+    },
+    "readAloudMicLabel": "{count, plural, =1{Record, 1 word not yet heard} other{Record, {count} words not yet heard}}",
+    "@readAloudMicLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        },
+        "description": "Accessible name of the record button on a read-aloud exercise; count is how many words of the sentence have not been heard yet (never zero)."
+    },
+    "readAloudStop": "Stop recording",
+    "@readAloudStop": {
+        "description": "Accessible name of the record button while a read-aloud recording is running."
+    },
+    "readAloudStarting": "Getting the microphone ready…",
+    "@readAloudStarting": {
+        "description": "Status on a read-aloud exercise between the record tap and the microphone being live: permission is being asked and the connection opened, nothing is recorded yet."
+    },
+    "readAloudListening": "Listening…",
+    "@readAloudListening": {
+        "description": "Status on a read-aloud exercise while the microphone is live and nothing has been heard yet."
+    },
+    "readAloudHeardAll": "Every word heard!",
+    "@readAloudHeardAll": {
+        "description": "Shown when the learner read the whole sentence and every word was heard."
+    },
+    "readAloudNotHeard": "{count, plural, =1{1 word not heard} other{{count} words not heard}}",
+    "@readAloudNotHeard": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        },
+        "description": "Shown after a read-aloud recording in which some words of the sentence were not heard."
+    },
+    "readAloudTriesLeft": "{count, plural, =1{1 try left} other{{count} tries left}}",
+    "@readAloudTriesLeft": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        },
+        "description": "How many more recordings the learner may make on this read-aloud exercise."
+    },
+    "readAloudHeardTranscript": "Heard: {transcript}",
+    "@readAloudHeardTranscript": {
+        "type": "String",
+        "placeholders": {
+            "transcript": {
+                "type": "String"
+            }
+        },
+        "description": "The words the recognizer heard in the learner's read-aloud recording."
+    },
+    "readAloudTranscribeFailed": "Couldn't transcribe your recording. Check your connection and try again.",
+    "@readAloudTranscribeFailed": {
+        "description": "Shown when a read-aloud recording could not be transcribed by any route."
+    },
+    "readAloudMicUnavailable": "No microphone is available, so this word is a meaning exercise instead.",
+    "@readAloudMicUnavailable": {
+        "description": "Shown when microphone permission is refused or no microphone exists and a read-aloud exercise is swapped for a meaning exercise."
+    },
+    "readAloudExample": "Example",
+    "@readAloudExample": {
+        "description": "Label of the player for the example sentence's audio on a read-aloud exercise."
+    },
+    "readAloudTake": "Take {number}",
+    "@readAloudTake": {
+        "type": "String",
+        "placeholders": {
+            "number": {
+                "type": "int"
+            }
+        },
+        "description": "Label of the player for one of the learner's read-aloud recordings, numbered from 1 in the order they were made."
+    },
+    "readAloudStartOver": "Start over",
+    "@readAloudStartOver": {
+        "description": "Button under the mic while a read-aloud recording runs: discards the recording in progress and begins a fresh one, without spending a take."
+    },
+    "xpTowardMission": "{xp} XP toward this Mission",
+    "@xpTowardMission": {
+        "description": "Under the XP total when a Mission's practice session ends: the XP that Mission gained. xp is a signed number such as '+ 65' or '− 3'.",
+        "type": "String",
+        "placeholders": {
+            "xp": {
+                "type": "String"
+            }
+        }
+    },
+    "analyticsSharedOnJoin": "Your teachers in {course} can now see your learning progress.",
+    "@analyticsSharedOnJoin": {
+        "description": "Snackbar after a learner joins a course that requires sharing analytics; its action opens Learning settings.",
+        "type": "String",
+        "placeholders": {
+            "course": {
+                "type": "String"
+            }
+        }
+    },
+    "sharedAnalyticsTitle": "Shared learning progress",
+    "@sharedAnalyticsTitle": {
+        "description": "Heading of the Learning settings section listing the courses whose teachers can see the learner's progress."
+    },
+    "sharedAnalyticsDesc": "Teachers in these courses can see your learning progress. Leave a course to stop sharing.",
+    "@sharedAnalyticsDesc": {
+        "description": "Explanation under the shared learning progress heading in Learning settings."
+    },
+    "sharedAnalyticsNone": "You aren't sharing your learning progress with any course.",
+    "@sharedAnalyticsNone": {
+        "description": "Shown in Learning settings when no course's teachers can see the learner's progress."
+    },
+    "sharedAnalyticsOthersTitle": "Others who can see your progress",
+    "@sharedAnalyticsOthersTitle": {
+        "description": "Label in Learning settings above the people who can see the learner's progress but teach none of their courses."
+    },
+    "removeAnalyticsAccess": "Remove access",
+    "@removeAnalyticsAccess": {
+        "description": "Tooltip of the button that stops someone who teaches none of the learner's courses from seeing their progress."
+    },
+    "removeAnalyticsAccessDesc": "{name} will no longer be able to see your learning progress.",
+    "@removeAnalyticsAccessDesc": {
+        "description": "Confirmation message before removing someone's access to the learner's progress.",
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
     }
 }

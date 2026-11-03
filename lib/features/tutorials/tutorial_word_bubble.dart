@@ -56,7 +56,7 @@ class _TutorialWordBubbleState extends State<TutorialWordBubble>
     // The profile and the analytics room both land asynchronously, and until
     // they do the service reports every construct as already known. So this is
     // re-asked rather than concluded — the same rule every tutorial trigger
-    // follows. See tutorials.instructions.md.
+    // follows ([TutorialOverlayController.isPending]).
     _analyticsSubscription = MatrixState
         .pangeaController
         .matrixState
@@ -84,7 +84,11 @@ class _TutorialWordBubbleState extends State<TutorialWordBubble>
     // — and only content words are ever reported new, so this is normally false
     // and the bubble simply carries no green underline. Asked anyway rather than
     // assumed: what the tokenizer returns varies by language, and deciding here
-    // would put a second, quietly disagreeing answer next to the real one.
+    // would put a second, quietly disagreeing answer next to the real one — and
+    // asking the same service every chat token asks means a tooltip reset
+    // cannot fake a discovery. No underline is accepted: the point of the
+    // bubble is that the word is touchable, not that it is new, and it still
+    // collects and still opens a card (tutorials.instructions.md § Decisions).
     final isNew = TokensUtil.instance
         .getNewTokens(_id, [token], langCode)
         .any((t) => t == token.text);

@@ -200,7 +200,8 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
   }
 
   /// A call that failed because the microphone is off: iOS will not let the
-  /// app ask again, so the learner is told where to turn it on.
+  /// app ask again, so the learner is told where to turn it on. Nothing is sent
+  /// to the caller: their ring runs out and becomes a missed call.
   Future<void> _tellIfMicrophoneOff(call_ui.CallSession call) async {
     if (!mounted) return;
     final l10n = L10n.of(context);

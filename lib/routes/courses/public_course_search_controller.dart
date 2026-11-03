@@ -200,26 +200,31 @@ class PublicCourseSearchController
         !fullyLoaded &&
         batches < _maxBatchesPerLoad &&
         loadedCourses.length - startingCount < _pageTarget) {
-      await _loadNextBatch(generation);
+      final error = await _loadNextBatch(generation);
       if (disposed || loadGeneration != generation) return;
+      // A failed request ends the load. Publishing the unchanged list would
+      // start another load whenever it is empty (setFilteredCourses), which
+      // retries the failing server as fast as it answers (#9704).
+      if (error != null) {
+        if (loadedCourses.isEmpty) setFilteredCourses(AsyncError(error));
+        return;
+      }
       setLoadedCourses([...loadedCourses, ..._coursesToAdd]);
       setFilteredCourses(AsyncLoaded(filteredCourses));
       batches++;
     }
   }
 
-  /// Load and cache the next 10 public courses and course plans if applicable
-  Future<void> _loadNextBatch(int generation) async {
-    if (fullyLoaded) return;
+  /// Load and cache the next 10 public courses and course plans if applicable.
+  /// Returns the error when a request failed.
+  Future<Object?> _loadNextBatch(int generation) async {
+    if (fullyLoaded) return null;
     final coursesResult = await _requestPublicCourses();
     // A filter change while a request was in flight cleared the cache and
     // restarted paging. This batch answers the old filters, and its cursor
     // would make the new load skip pages.
-    if (disposed || loadGeneration != generation) return;
-    if (coursesResult.isError) {
-      loadingMore.value = false;
-      return;
-    }
+    if (disposed || loadGeneration != generation) return null;
+    if (coursesResult.isError) return coursesResult.error;
 
     final coursesResp = coursesResult.result!;
     _nextBatch = coursesResp.nextBatch;
@@ -240,16 +245,14 @@ class PublicCourseSearchController
         .toList();
 
     final coursePlansResult = await _requestCoursePlans(undiscoveredCourseIds);
-    if (disposed || loadGeneration != generation) return;
-    if (coursePlansResult.isError) {
-      loadingMore.value = false;
-      return;
-    }
+    if (disposed || loadGeneration != generation) return null;
+    if (coursePlansResult.isError) return coursePlansResult.error;
 
     final searchResult = coursePlansResult.result!;
     for (final entry in searchResult.entries) {
       _coursePlans[entry.key] = entry.value;
     }
+    return null;
   }
 
   Future<Result<PublicCoursesResponse>> _requestPublicCourses() async {

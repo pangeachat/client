@@ -6,6 +6,7 @@
 // unit-testable. Design: quests.instructions.md, world-map.instructions.md.
 
 import 'package:fluffychat/features/quests/activity_family.dart';
+import 'package:fluffychat/features/quests/can_do_progress.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 
 /// How far along a quest the next-Mission gradient reaches before decaying to
@@ -25,13 +26,25 @@ const double kBandCeiling = 2.0;
 /// threshold that completes it (#9420).
 class MissionProgress {
   final int xp;
+
+  /// What the Mission's meter counts against: the threshold it was completed
+  /// at when its progress record holds one, else the course's.
   final int threshold;
 
-  const MissionProgress({required this.xp, required this.threshold});
+  /// The learner's progress record dates this Mission complete, which keeps it
+  /// complete whatever its XP or the course's threshold is now (#9681).
+  final bool recordedComplete;
+
+  const MissionProgress({
+    required this.xp,
+    required this.threshold,
+    this.recordedComplete = false,
+  });
 
   /// A Mission is complete — one star — once its XP reaches the
-  /// (teacher-overridable) threshold. See quests.instructions.md.
-  bool get satisfied => xp >= threshold;
+  /// (teacher-overridable) threshold, and stays complete once that is
+  /// recorded. See quests.instructions.md.
+  bool get satisfied => recordedComplete || xp >= threshold;
 
   /// How full the Mission's meter is. Surplus XP shows raw in the count (e.g.
   /// 340/300); only the bar clamps.
@@ -115,8 +128,8 @@ class QuestProgress {
 
   final List<String> orderedMissionIds;
 
-  /// The anchor (next) Mission: the first Mission in order whose XP is below
-  /// the threshold. Null when there is no next step — every scored Mission
+  /// The anchor (next) Mission: the first Mission in order that is not
+  /// complete. Null when there is no next step — every scored Mission
   /// complete, or none scored at all.
   final String? anchorMissionId;
 
@@ -278,13 +291,16 @@ class ProgressionResolution {
 /// activity XP per activity ([xpByActivity] — saved sessions' credited XP plus
 /// goal checkmarks, `Client.userXpByActivity`), plus the practice done outside
 /// any session on each Mission's words ([practiceXpByLemma], #9420
-/// prototype). Pure. In-scope quests are the
+/// prototype), and each course's progress record entries by Mission id
+/// ([recordedByCourse], keyed like [CourseLoOutline.courseId]). Pure. In-scope
+/// quests are the
 /// learner's joined courses by default, or whatever the world map's quest filter
 /// selects — the caller decides which outlines to pass; this only resolves them.
 ProgressionResolution resolveProgression({
   required Iterable<CourseLoOutline> outlines,
   required Map<String, int> xpByActivity,
   Map<String, int> practiceXpByLemma = const {},
+  Map<String, Map<String, CanDoProgress>> recordedByCourse = const {},
 }) {
   // Resolved per outline, NOT unioned across them. A Mission's XP total is
   // only meaningful against the activity set it was summed over, and Missions
@@ -302,6 +318,7 @@ ProgressionResolution resolveProgression({
     // XP on any copy of an activity counts toward the one the course shows; a
     // no-op for a course without a copy (activity_family.dart).
     final credited = outline.credit.creditedBy(xpByActivity);
+    final recorded = recordedByCourse[outline.courseId] ?? const {};
 
     final rollup = <String, MissionProgress>{};
     for (final missionId in seq) {
@@ -329,9 +346,13 @@ ProgressionResolution resolveProgression({
         outline.lemmasByLo[missionId] ?? const {},
         practiceXpByLemma,
       );
+      // Only a dated entry carries a threshold of its own.
+      final record = recorded[missionId];
       rollup[missionId] = MissionProgress(
         xp: xp,
-        threshold: outline.xpToComplete,
+        threshold:
+            record?.xpToCompleteAtFirstCompletion ?? outline.xpToComplete,
+        recordedComplete: record?.firstCompletedAt != null,
       );
     }
 
@@ -354,7 +375,7 @@ ProgressionResolution resolveProgression({
 }
 
 /// The anchor (next) Mission for one quest's ordered [seq]: the first Mission
-/// whose XP is below its threshold. Null once every scored Mission is
+/// that is not complete. Null once every scored Mission is
 /// complete — a finished quest has no next step, and naming one anyway
 /// pointed the learner back at work already done (#8997).
 ///

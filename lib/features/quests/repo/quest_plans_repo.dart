@@ -50,10 +50,16 @@ class QuestPlansRepo {
   /// Each quest's cover image, by quest id: a URL, or null for a quest known to
   /// have none (no `image`, a media miss, or a removed quest). A missing key
   /// means not yet known. Filled by [cover] and by every quest-plans read that
-  /// resolved its image; a failed read leaves the key missing, so the next
-  /// [cover] retries it. Process-scoped, like [ActivityMediaRepo]'s cache.
+  /// resolved its image. Process-scoped, like [ActivityMediaRepo]'s cache.
   static final Map<String, Uri?> _covers = {};
   static final Map<String, Future<Uri?>> _coverRequests = {};
+
+  /// Quests whose cover read failed this session. [cover] answers null for
+  /// them without reading again (#9569): retrying on every mount sent a burst
+  /// of reads at a CMS that was already slow. A later quest-plans read that
+  /// resolves the image (e.g. opening the course's page) fills [_covers],
+  /// which [cover] checks first, so it replaces the failure.
+  static final Set<String> _failedCovers = {};
 
   /// The cover [cover] already knows for [questId], or null. Lets a widget
   /// paint a known cover on its first frame instead of after a future.
@@ -63,14 +69,17 @@ class QuestPlansRepo {
   static void resetCoverCacheForTest() {
     _covers.clear();
     _coverRequests.clear();
+    _failedCovers.clear();
   }
 
   /// The quest's cover image, the fallback a course room with no
   /// `m.room.avatar` shows (course-plans.instructions.md § Course avatar).
   /// Null means the quest has no cover, or the read failed; a failure is
-  /// reported here and not cached. Concurrent calls share one read.
+  /// reported here and remembered for the session, so it is not read again
+  /// until the app restarts. Concurrent calls share one read.
   static Future<Uri?> cover(String questId) {
     if (_covers.containsKey(questId)) return Future.value(_covers[questId]);
+    if (_failedCovers.contains(questId)) return Future.value(null);
     // Block body on purpose: `remove` returns this very future, and a
     // whenComplete callback that returns a future is awaited — a self-wait.
     return _coverRequests[questId] ??= _fetchCover(questId).whenComplete(() {
@@ -107,6 +116,7 @@ class QuestPlansRepo {
         data: {'quest_id': questId},
         level: PangeaHttpException.severityOf(e),
       );
+      _failedCovers.add(questId);
       return null;
     }
   }

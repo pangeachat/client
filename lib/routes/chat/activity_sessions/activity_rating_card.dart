@@ -103,6 +103,9 @@ class ActivityRatingCardState extends State<ActivityRatingCard> {
     }
   }
 
+  /// The "must have played" gate is client-trusted for v1: a finished role is
+  /// the evidence of play (activity-session.instructions.md, "The rating
+  /// card").
   bool get _visible {
     final activityId = widget.room.activityId;
     return widget.room.hasCompletedRole &&

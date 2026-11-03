@@ -1914,7 +1914,8 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // recordings/Full-call audio ABOVE this section is NOT gated: the paywall
     // audit (#8792) found only the transcript WORDS reachable outside
     // `transcript_view.dart`, never the raw audio, which already plays for
-    // anybody in the room today.
+    // anybody in the room today. The gate is the app's, not cryptographic:
+    // the words live in the room like the rest of the call.
     if (!MatrixState
         .pangeaController
         .subscriptionController

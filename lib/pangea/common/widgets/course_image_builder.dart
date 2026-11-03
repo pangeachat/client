@@ -7,8 +7,8 @@ import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 
 /// Builds with the image a course shows: its own [avatar] when it has one,
 /// otherwise its quest's cover (course-plans.instructions.md § Course avatar).
-/// [builder] gets null while the cover loads and when there is none, so the
-/// letter avatar shows in both cases.
+/// [builder] gets null while the cover loads, when there is none, and when its
+/// read failed this session, so the letter avatar shows in each case.
 ///
 /// Every surface that renders a course's image goes through this widget, so a
 /// room created before its quest had a cover shows the cover everywhere at

@@ -4,7 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -48,7 +48,7 @@ class UnjoinedChatListItem extends StatelessWidget {
     final room = course.client.getRoomById(joinResp.roomId);
     if (room == null) return null;
 
-    return JoinRoomAnalyticsConsentHandler(joinResp, room).handle(context);
+    return JoinRoomAnalyticsAccessHandler(joinResp, room).handle(context);
   }
 
   @override

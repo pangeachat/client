@@ -109,6 +109,11 @@ class _CallPanelState extends State<CallPanel> {
                           padding: const EdgeInsets.symmetric(horizontal: 24),
                           child: Column(
                             children: [
+                              // Says what happens to the words (transcribed,
+                              // saved, readable by both), not only that they
+                              // are counted: knowing that is what makes
+                              // capturing the other speaker's audio legitimate
+                              // (voice-video-calls.instructions.md, "Recording").
                               Text(
                                 l10n.callTranscriptSharedNotice,
                                 textAlign: TextAlign.center,

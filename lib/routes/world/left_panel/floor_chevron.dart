@@ -21,7 +21,9 @@ import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
 /// trailing edge beside the course's share / focus actions — in the open card
 /// and the context bar alike (#8866). Which way it POINTS is per form factor
 /// too, because the sheet slides and the panel does not — see
-/// [ChevronMeaning].
+/// [ChevronMeaning]. One control in one place is the point: a close and an
+/// expand on opposite sides of the header made the two states look like two
+/// different surfaces.
 class FloorChevron extends StatelessWidget {
   /// Collapse action for a panel drawn outside the nav cavity (the wide
   /// panel): drop this panel's token so its floor — the context bar — shows.

@@ -19,8 +19,8 @@ import 'get_test_client.dart';
 /// gone from the backend) or whose plan carries an empty title rendered a blank
 /// row. The session room is named after the activity at creation, so the row
 /// falls back to the room name — the rung the start page's archived session
-/// already lands on (activities.instructions.md, "When the activity can't be
-/// fetched").
+/// already lands on (activity-start-page.instructions.md, "When the activity
+/// can't be fetched").
 void main() {
   late Client client;
 

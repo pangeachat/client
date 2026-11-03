@@ -5,6 +5,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_settings_switch_list_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/read_aloud_voice_dialog.dart';
+import 'package:fluffychat/routes/settings/settings_learning/settings_section_header.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 
 /// The audio section of the learning settings page: the per-surface audio
@@ -37,7 +38,6 @@ class AudioSettingsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     // Without a known-good voice the message-audio settings cannot do
     // anything, so those toggles render disabled and a single note above them
     // carries the explanation plus the toolbar alternative (#8664). See
@@ -50,15 +50,7 @@ class AudioSettingsSection extends StatelessWidget {
     final hasChoiceAudio = viewModel.getToolSetting(ToolSetting.audioChoices);
     return Column(
       children: [
-        ListTile(
-          title: Text(
-            L10n.of(context).audioSectionTitle,
-            style: TextStyle(
-              color: theme.colorScheme.secondary,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+        SettingsSectionHeader(title: L10n.of(context).audioSectionTitle),
         ...ToolSetting.audioSettings
             .where(
               (setting) =>

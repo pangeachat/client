@@ -29,6 +29,8 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
+/// The live session's goal header. Holds no vocab list: ActivityVocabWidget
+/// was taken out of this menu on purpose (#7283), so do not add it back.
 class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
   final ValueNotifier<bool> visibilityNotifier;
   final void Function(bool) setShowDropdown;
@@ -69,6 +71,8 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
 
   void _toggleShowDropdown() => setShowDropdown(!visibilityNotifier.value);
 
+  /// Finishes only this learner's own role, early if they like, with no
+  /// confirmation step (activity-session.instructions.md, "The goal header").
   Future<void> _finishActivityForMe(BuildContext context) async {
     final resp = await showFutureLoadingDialog(
       context: context,

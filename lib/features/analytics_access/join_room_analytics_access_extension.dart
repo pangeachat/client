@@ -4,9 +4,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
-import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
 import 'package:fluffychat/features/analytics_access/course_settings_extension.dart';
 import 'package:fluffychat/features/analytics_access/grant_analytics_access_extension.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
@@ -18,9 +18,8 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 
 class JoinResponse {
   final String roomId;
-  final bool shouldShowNotice;
 
-  const JoinResponse({required this.roomId, required this.shouldShowNotice});
+  const JoinResponse({required this.roomId});
 }
 
 extension JoinRoomAnalyticsAccessClientExtension on Client {
@@ -39,12 +38,8 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
       thirdPartySigned: thirdPartySigned,
     );
 
-    final room = await _loadRoom(resp);
-    final joinResp = JoinResponse(
-      roomId: resp,
-      shouldShowNotice: room?.shouldShowAnalyticsAccessNotice ?? false,
-    );
-    return joinResp;
+    await _loadRoom(resp);
+    return JoinResponse(roomId: resp);
   }
 
   Future<JoinResponse> joinRoomByIdWithAccessCheck(
@@ -57,12 +52,8 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
       reason: reason,
       thirdPartySigned: thirdPartySigned,
     );
-    final room = await _loadRoom(resp);
-    final joinResp = JoinResponse(
-      roomId: roomId,
-      shouldShowNotice: room?.shouldShowAnalyticsAccessNotice ?? false,
-    );
-    return joinResp;
+    await _loadRoom(resp);
+    return JoinResponse(roomId: roomId);
   }
 
   /// The joined room from local state, waiting briefly for sync to surface it.
@@ -81,7 +72,11 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
           join: true,
         ).timeout(const Duration(seconds: 10));
       } on TimeoutException {
-        // Sync lag, not a failed join — proceed without the local room.
+        // Sync lag, not a failed join — proceed without the local room. The
+        // callers' post-join step needs that room, so it runs once it lands.
+        unawaited(
+          JoinRoomAnalyticsAccessHandler.handleOnceSynced(this, roomId),
+        );
       }
     }
     return getRoomById(roomId);
@@ -108,16 +103,6 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
   Future<LanguageModel?> _getCourseLanguageByCourseId(String courseId) async {
     final course = await QuestPlansRepo.get(courseId);
     return _languageByCode(course?.targetLanguage);
-  }
-
-  Future<Map<String, LanguageModel?>> _getCourseLanguages(
-    List<String> courseIds,
-  ) async {
-    final output = <String, LanguageModel?>{};
-    for (final courseId in courseIds) {
-      output[courseId] = await _getCourseLanguageByCourseId(courseId);
-    }
-    return output;
   }
 
   /// The student's OWN analytics room id for [lang] as recorded in their
@@ -228,29 +213,39 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
     String analyticsLangCode,
   ) async {
     try {
-      final roomIdToCourseId = Map<String, String>.fromEntries(
-        rooms
-            .where(
-              (r) =>
-                  r.requireAnalyticsAccess &&
-                  !r.isRoomAdmin &&
-                  r.coursePlan != null,
-            )
-            .map((r) => MapEntry(r.id, r.coursePlan!.uuid)),
-      );
-
-      final languages = await _getCourseLanguages(
-        roomIdToCourseId.values.toList(),
-      );
+      // A snapshot: the loop awaits, and sync replaces rooms meanwhile.
+      final courses = rooms
+          .where(
+            (r) =>
+                r.requireAnalyticsAccess &&
+                !r.isRoomAdmin &&
+                r.coursePlan != null,
+          )
+          .toList();
 
       final grantFutures = <Future>[];
-      for (final entry in roomIdToCourseId.entries) {
-        final roomId = entry.key;
-        final courseId = entry.value;
-        final lang = languages[courseId];
-        if (lang?.langCodeShort == analyticsLangCode) {
+      for (final course in courses) {
+        // The same lookup the join-time grant uses: the course room's own
+        // `pangea.course_plan` l2 first, the course-plan read only as a
+        // fallback. Reading only the CMS skipped this grant for a new student
+        // whenever that read failed or did not parse, so the instructors were
+        // never granted (the join-time grant had no analytics room to grant).
+        final lang = await getCourseLanguage(course);
+        if (lang == null) {
+          ErrorHandler.logError(
+            e: "Course language unresolved; analytics grant skipped",
+            data: {
+              "course_room_id": course.id,
+              "course_id": course.coursePlan?.uuid,
+              "analytics_room_id": analyticsRoomId,
+              "analytics_lang_code": analyticsLangCode,
+            },
+          );
+          continue;
+        }
+        if (lang.langCodeShort == analyticsLangCode) {
           grantFutures.add(
-            grantInstructorAnalyticsAccess(roomId, analyticsRoomId),
+            grantInstructorAnalyticsAccess(course.id, analyticsRoomId),
           );
         }
       }
@@ -270,18 +265,9 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
 }
 
 extension JoinRoomAnalyticsAccessRoomExtension on Room {
-  bool get shouldShowAnalyticsAccessNotice =>
-      requireAnalyticsAccess &&
-      !isRoomAdmin &&
-      !client.acceptedAccessNotice(id);
-
   Future<JoinResponse?> joinWithAccessCheck() async {
     await join();
-    final room = await client._loadRoom(id);
-    final joinResp = JoinResponse(
-      roomId: id,
-      shouldShowNotice: room?.shouldShowAnalyticsAccessNotice ?? false,
-    );
-    return joinResp;
+    await client._loadRoom(id);
+    return JoinResponse(roomId: id);
   }
 }

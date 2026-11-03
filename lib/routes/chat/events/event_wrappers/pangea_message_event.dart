@@ -159,6 +159,23 @@ class PangeaMessageEvent {
     }
   }
 
+  /// The body of a message [content] without the `> <@user> …` quote the SDK
+  /// sends in front of a reply's text as its fallback. Keyed on the reply
+  /// RELATION (`m.relates_to.m.in_reply_to`), not the body's shape, so text
+  /// that merely begins like a quote is kept whole. The pattern is the SDK's
+  /// own `hideReply` crop.
+  static String bodyWithoutReplyFallback(Map<String, dynamic> content) {
+    final body = content['body'];
+    final bodyStr = body is String ? body : '';
+    final relatesTo = content['m.relates_to'];
+    final isReply = relatesTo is Map && relatesTo['m.in_reply_to'] != null;
+    return isReply ? bodyStr.replaceFirst(_replyFallback, '') : bodyStr;
+  }
+
+  static final RegExp _replyFallback = RegExp(
+    r'^>( \*)? <[^>]+>[^\n\r]+\r?\n(> [^\n]*\r?\n)*\r?\n',
+  );
+
   List<RepresentationEvent>? _representations;
   List<RepresentationEvent> get representations {
     if (_representations != null) return _representations!;
@@ -181,7 +198,9 @@ class PangeaMessageEvent {
 
         final original = PangeaRepresentation(
           langCode: lang ?? LanguageKeys.unknownLanguage,
-          text: _latestEdit.body,
+          // The tokens were computed for the text the sender typed, before
+          // the SDK put a reply's quote in front of it.
+          text: bodyWithoutReplyFallback(_latestEdit.content),
           originalSent: true,
           originalWritten: false,
         );

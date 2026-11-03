@@ -86,6 +86,10 @@ class WorkspaceLayout {
 /// ([PanelDef.parent]): it seats the most-recently-opened panel ([focusHint])
 /// and falls back to that tree's active leaf when there is no recency (a cold
 /// deep link). Pure + unit-tested. See `routing.instructions.md`.
+///
+/// Width is the only canvas concept: a full-bleed surface is a panel whose max
+/// is the viewport, and a surface that must hold the screen alone could mark
+/// itself exclusive, collapsing the others, though no surface needs that today.
 abstract class PanelAllocator {
   /// Right margin reserved for the top-right cluster on EVERY column-mode
   /// layout. The cluster is persistent chrome drawn whenever the column
@@ -249,7 +253,7 @@ abstract class PanelAllocator {
       // Tier 1: fold the panel BENEATH behind the one above it in its column.
       // Positional, not registry-linked: a column's first token is the one that
       // folds whether or not the pair is a declared master/detail
-      // (routing.instructions.md → "the same rule applies positionally"), so a
+      // (routing.instructions.md → Panels are independent), so a
       // chat opened in a course folds the course card behind it (#9030).
       //
       // A panel with a FLOOR is the exception, in both directions, because its

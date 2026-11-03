@@ -162,6 +162,7 @@ void main() {
     Room room, {
     required double width,
   }) async {
+    cacheMemberPresence(room);
     await tester.pumpWidget(
       _TestMatrix(
         clients: [client],
@@ -182,19 +183,6 @@ void main() {
       ),
     );
     await settle(tester, find.byType(CourseLeaderboardPage));
-  }
-
-  Future<void> drain(WidgetTester tester) async {
-    await tester.pumpWidget(const SizedBox.shrink());
-    await tester.runAsync(
-      () => Future.delayed(const Duration(milliseconds: 300)),
-    );
-    await tester.pump(const Duration(seconds: 10));
-    // The timers that pump fired answer presence reads, whose writes need
-    // real time to reach the database before `tearDown` closes it.
-    await tester.runAsync(
-      () => Future.delayed(const Duration(milliseconds: 300)),
-    );
   }
 
   List<int> tileRanks(WidgetTester tester) => tester
@@ -227,8 +215,6 @@ void main() {
       tester.getTopLeft(tiles.at(0)).dy,
       greaterThan(tester.getBottomLeft(find.byType(LeaderboardRow).last).dy),
     );
-
-    await drain(tester);
   });
 
   testWidgets('one column on a narrow page', (tester) async {
@@ -243,8 +229,6 @@ void main() {
       tester.getTopLeft(tiles.at(1)).dy,
       greaterThan(tester.getTopLeft(tiles.at(0)).dy),
     );
-
-    await drain(tester);
   });
 
   testWidgets(
@@ -276,8 +260,6 @@ void main() {
       final invite = tester.getTopLeft(find.byType(LeaderboardInviteRow)).dy;
       expect(invitee, greaterThan(lastRow));
       expect(invite, greaterThan(invitee));
-
-      await drain(tester);
     },
   );
 }

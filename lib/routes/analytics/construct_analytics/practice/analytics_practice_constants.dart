@@ -16,5 +16,10 @@ class AnalyticsPracticeConstants {
   static const int minAttemptsToBypassRecentCooldown = 2;
   static const double incorrectRatioToBypassRecentCooldown = 0.5;
   static const int consecutiveCorrectToEndRetry = 2;
+
+  /// The most words a read-aloud item asks the learner to read: a window of
+  /// the example message around the target word. See
+  /// practice-exercises.instructions.md, "Speaking practice".
+  static const int readAloudMaxWords = 8;
   static int get targetsToGenerate => practiceGroupSize + errorBufferSize;
 }

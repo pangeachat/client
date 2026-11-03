@@ -1813,6 +1813,9 @@ class CallService {
   /// rooms, not calls, and a room accumulates a membership state event per
   /// device that keeps reading non-empty long after its call ended. Only a
   /// membership still being renewed belongs to somebody who is still here.
+  /// Treat any new comparison on the call id as wrong by default: a stale row
+  /// from an earlier call in the same room dismissing a live ring has shipped
+  /// twice that way.
   ///
   /// Answers true when it cannot tell (no call of our own to compare
   /// against): the caller treats that as "no opinion" and falls back to the

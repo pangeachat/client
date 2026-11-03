@@ -458,6 +458,76 @@ void main() {
   });
 
   // ===========================================================================
+  // The catalog as the design lays it out: which tutorials teach the app, how
+  // long each run is, and how the greeting comes once ever. See
+  // tutorials.instructions.md § The experience.
+  // ===========================================================================
+  group('the catalog', () {
+    test('the chat tools are the only feature tutorials — everything else '
+        'teaches the app', () {
+      expect(
+        TutorialEnum.values.where((t) => !t.isOrientation).toSet(),
+        TutorialSequences.chatTutorialSequence.toSet(),
+      );
+    });
+
+    test('each orientation tutorial runs the length the design names — the '
+        'tour reads 1/6 through 6/6 because its offer counts', () {
+      expect(
+        {
+          for (final t in TutorialEnum.values.where((t) => t.isOrientation))
+            t: t.stepCount,
+        },
+        {
+          TutorialEnum.welcome: 1,
+          TutorialEnum.worldMap: 2,
+          TutorialEnum.coursePlan: 1,
+          TutorialEnum.appTour: 6,
+          TutorialEnum.openSessions: 1,
+          TutorialEnum.activityRoles: 1,
+        },
+      );
+    });
+
+    test('the tour opens on its offer, the only branch step, with a way in '
+        'and a way out', () {
+      final offer = TutorialEnum.appTour.stepTemplates.first;
+      expect(offer.choices.map((c) => c.outcome).toSet(), {
+        TutorialChoiceOutcome.advance,
+        TutorialChoiceOutcome.decline,
+      });
+      for (final tutorial in TutorialEnum.values) {
+        for (var i = 0; i < tutorial.stepCount; i++) {
+          if (tutorial == TutorialEnum.appTour && i == 0) continue;
+          expect(
+            tutorial.stepTemplates[i].choices,
+            isEmpty,
+            reason: '$tutorial step $i',
+          );
+        }
+      }
+    });
+
+    test('both orientation sequences open with the greeting, so a learner '
+        'who has seen it starts straight at the second surface', () {
+      expect(
+        TutorialSequences.worldOrientationSequence.first,
+        TutorialEnum.welcome,
+      );
+      expect(
+        TutorialSequences.courseOrientationSequence.first,
+        TutorialEnum.welcome,
+      );
+      final c = TutorialOverlayController(
+        progress: const _FakeProgress(seen: {TutorialEnum.welcome}),
+      );
+      c.requestSequence(TutorialSequences.courseOrientationSequence);
+      expect(c.state.tutorialType, TutorialEnum.coursePlan);
+      expect(c.state.totalStepsInSequence, TutorialEnum.coursePlan.stepCount);
+    });
+  });
+
+  // ===========================================================================
   // App-scoped controller: one sequence at a time, the rest queued
   // ===========================================================================
   group('TutorialOverlayController — sequences', () {
@@ -1065,8 +1135,8 @@ void main() {
 
   // Which cards carry the sequence-wide Skip control. The interesting case is
   // the one-step run: skipping there is the same act as finishing, which a tap
-  // anywhere already performs. See tutorials.instructions.md, "A one-step run
-  // carries no Skip".
+  // anywhere already performs. See tutorials.instructions.md, "No Skip on a
+  // single-card run".
   group('TutorialOverlayWidget.showsSkip', () {
     const plain = TutorialStepStyle(tooltip: 'x', tooltipSize: Size(1, 1));
     const branch = TutorialStepStyle(

@@ -99,6 +99,11 @@ enum ConstructUseTypeEnum {
   corLA,
   incLA,
 
+  /// read-aloud practice exercise: the target word was heard, or was not
+  /// heard once the tries ran out
+  corRA,
+  incRA,
+
   // grammar category activity
   corGC,
   incGC,
@@ -200,6 +205,10 @@ enum ConstructUseTypeEnum {
         return L10n.of(context).constructUseCorLADesc;
       case ConstructUseTypeEnum.incLA:
         return L10n.of(context).constructUseIncLADesc;
+      case ConstructUseTypeEnum.corRA:
+        return L10n.of(context).constructUseCorRADesc;
+      case ConstructUseTypeEnum.incRA:
+        return L10n.of(context).constructUseIncRADesc;
       case ConstructUseTypeEnum.corGC:
         return L10n.of(context).constructUseCorGCDesc;
       case ConstructUseTypeEnum.incGC:
@@ -239,6 +248,9 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corLA:
       case ConstructUseTypeEnum.incLA:
         return PracticeExerciseTypeEnum.wordFocusListening.icon;
+      case ConstructUseTypeEnum.corRA:
+      case ConstructUseTypeEnum.incRA:
+        return PracticeExerciseTypeEnum.readAloud.icon;
       case ConstructUseTypeEnum.incHWL:
       case ConstructUseTypeEnum.ignHWL:
       case ConstructUseTypeEnum.corHWL:
@@ -291,6 +303,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corM:
       case ConstructUseTypeEnum.corLM:
       case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.corRA:
       case ConstructUseTypeEnum.corGC:
       case ConstructUseTypeEnum.corGE:
         return 5;
@@ -331,6 +344,10 @@ enum ConstructUseTypeEnum {
       // answer anything, so paying XP for it would inflate every word they
       // happen to have heard.
       case ConstructUseTypeEnum.hrd:
+      // A read-aloud miss is as likely the recognizer's as the learner's, and
+      // there is no guessing a read, so it costs nothing — unlike a wrong
+      // multiple-choice pick (practice-exercises.instructions.md, "Scoring").
+      case ConstructUseTypeEnum.incRA:
         return 0;
 
       case ConstructUseTypeEnum.incMM:
@@ -393,6 +410,8 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incLM:
       case ConstructUseTypeEnum.corLA:
       case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.corRA:
+      case ConstructUseTypeEnum.incRA:
       case ConstructUseTypeEnum.bonus:
       case ConstructUseTypeEnum.corGC:
       case ConstructUseTypeEnum.incGC:
@@ -453,6 +472,8 @@ enum ConstructUseTypeEnum {
         return LearningSkillsEnum.reading;
       case ConstructUseTypeEnum.pvm:
       case ConstructUseTypeEnum.pvc:
+      case ConstructUseTypeEnum.corRA:
+      case ConstructUseTypeEnum.incRA:
         return LearningSkillsEnum.speaking;
       case ConstructUseTypeEnum.bonus:
       case ConstructUseTypeEnum.nan:
@@ -481,6 +502,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corMM:
       case ConstructUseTypeEnum.corLM:
       case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.corRA:
       case ConstructUseTypeEnum.corGC:
       case ConstructUseTypeEnum.corGE:
       case ConstructUseTypeEnum.sug:
@@ -496,6 +518,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incMM:
       case ConstructUseTypeEnum.incLM:
       case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.incRA:
       case ConstructUseTypeEnum.incGC:
       case ConstructUseTypeEnum.incGE:
         return SpaceAnalyticsSummaryEnum.numChoicesIncorrect;
@@ -568,6 +591,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incIGC:
       case ConstructUseTypeEnum.incLM:
       case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.incRA:
       case ConstructUseTypeEnum.incGC:
       case ConstructUseTypeEnum.incGE:
         return true;

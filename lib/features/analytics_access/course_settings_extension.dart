@@ -34,7 +34,12 @@ extension CourseSettingsExtension on Room {
       id,
       PangeaEventTypes.courseSettings,
       '',
-      model.toJson(),
+      // Keys the model doesn't know, such as a central course's `central`
+      // mark, belong to others; write them back unchanged (#9589).
+      {
+        ...?getState(PangeaEventTypes.courseSettings)?.content,
+        ...model.toJson(),
+      },
     );
     await syncFuture;
   }

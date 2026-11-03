@@ -29,6 +29,14 @@ import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.da
 /// `routing.instructions.md`), so every open/close routes through here and then
 /// `context.go(...)` rather than mutating app-state.
 ///
+/// This is the one writer for internal navigation. A surface that needs a
+/// navigation these helpers cannot express gets a new helper here, so the
+/// grammar stays in one place; feature code never builds a path literal or
+/// edits the query by hand (navigation_guardrails_test). Each surface has one
+/// canonical entry point on every form factor, so the same tap behaves the
+/// same on a phone and a desktop: the narrow chrome changes how panels are
+/// drawn, never the URL grammar, the tokens or these helpers.
+///
 /// The raw query is reassembled by hand instead of via `Uri.replace`'s
 /// `queryParameters`, which would percent-encode a second time and corrupt a
 /// token whose param is already encoded (an encoded construct's `%7B` etc.).
@@ -283,8 +291,9 @@ abstract class WorkspaceNav {
   /// While practice is open no vocab/grammar list or detail can be viewed —
   /// opening one drops practice (the registry `detail` group), and tapping the
   /// cluster's analytics replaces the whole right column. Practice is a normal
-  /// bounded panel, not a route or a fullscreen surface. See
-  /// `routing.instructions.md`.
+  /// bounded panel, not a route or a fullscreen surface, and not a detail of
+  /// the analytics master: it hides that surface while live, so closing it
+  /// could never reveal it. See `routing.instructions.md`.
   /// [missionId] scopes the session to a Mission's target vocabulary (#9438);
   /// the scope rides the token so it survives a panel swap and can be linked.
   static String openPractice(
@@ -331,9 +340,10 @@ abstract class WorkspaceNav {
       // (#7385). A live `room` is kept (a course can scope a chat).
       ...lists.left.where((t) => !t.type.shouldDropOnOpenCourse),
       // The course seats LAST, after whatever it is opening over
-      // (routing.instructions.md → Reading a workspace URL). The card and its
-      // collapsed state then occupy the same end of the column, so collapsing
-      // hands the freed width to the panel beside it without moving it
+      // (routing.instructions.md → Closing a panel: X or back arrow). The
+      // card and its collapsed state then occupy the same end of the column,
+      // so collapsing hands the freed width to the panel beside it without
+      // moving it
       // ([#9037](https://github.com/pangeachat/client/issues/9037)).
       CoursePanelToken(
         tab != null ? CourseDetailsTokenParam(activeTab: tab) : null,
@@ -479,8 +489,9 @@ abstract class WorkspaceNav {
   /// starting the session (which opens a `room` token) drops the activity in
   /// turn. The surviving context keeps the plan's close a back-arrow that
   /// reopens the card. [launch] skips the lobby straight to role selection;
-  /// [roomId] reopens/rejoins a specific session room; [autoplay] autostarts
-  /// the plan's hero media (muted, block 0); [fromCoursePlan] marks an open
+  /// [roomId] reopens/rejoins a specific session room; [autoplay] asks for
+  /// the hero media (block 0) to start muted, a field nothing reads today
+  /// (see [ActivityTokenParam]); [fromCoursePlan] marks an open
   /// from the card's full course plan, so the back-arrow reopens that page —
   /// all four ride as fields of the activity token's param
   /// ([ActivityTokenParam]), never as loose query params.
@@ -707,8 +718,9 @@ abstract class WorkspaceNav {
   /// ever a token, so it just drops its own token via [closeLeft].
   static String closeSection(Uri current, PanelToken token) {
     final lists = parseOpenPanels(current);
-    // Drop only this token, nothing else — "closing a panel drops its token and
-    // nothing else" (routing.instructions.md). A course card's management page
+    // Drop only this token, nothing else: closing a panel drops its token and
+    // nothing else (routing.instructions.md → Panels are independent). A
+    // course card's management page
     // (`coursepage`) therefore stays open when the card closes, exactly as the
     // chat list's `room` child stays when the list closes; both read on from the
     // surviving `?c=` scope / their own id. (A coursepage left with no
@@ -847,8 +859,9 @@ abstract class WorkspaceNav {
   }
 
   /// Close the settings/profile MENU master, dropping only the `settings`
-  /// token — "closing a panel drops its token and nothing else"
-  /// (routing.instructions.md), the same rule [closeSection] documents for the
+  /// token — closing a panel drops its token and nothing else
+  /// (routing.instructions.md → Panels are independent), the same rule
+  /// [closeSection] documents for the
   /// course family. An open `settingspage` detail therefore survives a menu
   /// close exactly as a `coursepage` survives its `course` card closing: the
   /// page keeps rendering (it reads its own identity from its token param, not
@@ -875,6 +888,20 @@ abstract class WorkspaceNav {
 
   static String openAddCourse(Uri current) =>
       setSection(current, AddCoursePanelToken());
+
+  /// The preview of course [spaceId] for a learner who is not in it: the
+  /// browse flow's preview page, with the course context (`?c=`, and the
+  /// Mission picked in it) cleared — a course the learner is not in cannot
+  /// scope the workspace (routing.instructions.md § The course context).
+  static String openCoursePreview(Uri current, String spaceId) {
+    final parts = WorkspaceQuery.parts(current.query);
+    WorkspaceQuery.removeKeys(parts, {'c', 'mission'});
+    return openAddCoursePage(
+      Uri.parse(WorkspaceQuery.location(PRoutes.world, parts)),
+      AddCourseSubpageEnum.browse,
+      previewRoomId: spaceId,
+    );
+  }
 
   static String openAddCoursePage(
     Uri current,

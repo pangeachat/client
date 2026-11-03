@@ -59,6 +59,12 @@ import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 /// architecture). The GlobalKey preserves the map's State — tiles, camera,
 /// pins — even if this shell page is rebuilt or remounted across navigation,
 /// so sections open *over* the map instead of refreshing it.
+///
+/// The map survives only while this shell stays mounted: routing through a
+/// non-shell top-level page (login, onboarding, logs) tears it down, so auth
+/// and error flows are the only legitimate exits. Every overlay sizes to what
+/// it draws; one stretched to the full shell paints over and hides the whole
+/// map (a bug we hit on web).
 final GlobalKey _persistentWorldMapKey = GlobalKey(debugLabel: 'worldMap');
 
 /// Preserves the top-right cluster's State (counts, level, stream subs) across
@@ -160,7 +166,7 @@ String _recencyKey(PanelToken token) {
 /// Whether the narrow rail's 4th slot — the course shortcut — is showing the
 /// surface the cavity currently hosts, which makes its tap the
 /// tap-the-active-item TOGGLE rather than a navigation
-/// (routing.instructions.md → "Collapsing is not closing").
+/// (routing.instructions.md → Single-column bottom nav).
 ///
 /// The slot resolves contextually, so "its own surface" does too:
 ///
@@ -554,8 +560,10 @@ class WorkspaceShell extends StatelessWidget {
                                 key: ValueKey(l.rightTokens[i].encode()),
                                 // Respect the top safe-area inset so the close/back control clears the
                                 // system top bar (#7143). On narrow the analytics bar heads the panel
-                                // ("the analytics bar itself remains visible at the top throughout" —
-                                // routing.instructions.md), so the panel starts below it.
+                                // and stays visible at the top throughout, so the panel starts below
+                                // it and covers the bottom nav completely (unlike the nav's own
+                                // cavity, whose rail icons stay visible). It fills the width with no
+                                // fixed cap; bound it if a large tablet ever stretches it awkwardly.
                                 top: l.isColumnMode
                                     ? 0
                                     : _ShellLayout.analyticsBarAllowance,
@@ -701,14 +709,36 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   static const double _coursesSheetSearchBarEstimate = 64.0;
   static const double _coursesSheetFilterPillsEstimate = 56.0;
 
-  /// The activity plan's minimized rest height: the cavity handle + the start
-  /// page's app bar, info row, and CTA row, with no media/description. This is
-  /// the plan's opening stop (there is no taller mid-level); dragging up goes
-  /// to full, dragging down dismisses. Kept in step with
-  /// `kActivityCompactMaxHeight` in activity_sessions_start_view.dart, which
-  /// tells the body to drop its content below this height. See
-  /// activity-start-page.instructions.md.
-  static const double _activitySheetMinimizedHeight = 200.0;
+  @override
+  void initState() {
+    super.initState();
+    // The activity plan's minimized rest (its opening stop — there is no
+    // taller mid-level: its only extra over minimized was a sliver of the
+    // media, not worth a stop) fits the CTA area the start page measures
+    // ([ActivitySheetCtaHeight.minimizedSheetHeight]), so rebuild when it
+    // changes. It reuses the cavity's half stop, so nothing sits between it
+    // and full, and collapsed stays the drag-down dismissal. It stays below
+    // `kActivityCompactMaxHeight` in activity_sessions_start_view.dart, which
+    // tells the body to drop its content. See
+    // activity-start-page.instructions.md, "The sheet and its container".
+    ActivitySheetCtaHeight.notifier.addListener(_onCtaHeightChanged);
+  }
+
+  @override
+  void dispose() {
+    ActivitySheetCtaHeight.notifier.removeListener(_onCtaHeightChanged);
+    super.dispose();
+  }
+
+  /// The start page reports its CTA height after its frame and resets it when
+  /// it is disposed, which happens while the tree is locked; rebuilding on the
+  /// next frame is safe from both.
+  void _onCtaHeightChanged() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) setState(() {});
+    });
+    WidgetsBinding.instance.ensureVisualUpdate();
+  }
 
   /// The course PREVIEW's minimized rest height (#7826): the cavity handle +
   /// the header tile + the CTA row, description/modules dropped. Only the
@@ -852,7 +882,9 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // its button shows rather than waiting behind a drag.
     double? preferredCavityHeight;
     if (isActivityCavity) {
-      preferredCavityHeight = _activitySheetMinimizedHeight;
+      preferredCavityHeight = ActivitySheetCtaHeight.minimizedSheetHeight(
+        ActivitySheetCtaHeight.notifier.value,
+      );
     } else if (isCoursePreviewCavity) {
       preferredCavityHeight = _coursePreviewSheetMinimizedHeight;
     } else if (cavityToken?.type == PanelTypesEnum.chats) {
@@ -1101,8 +1133,8 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             // subpages open at full (their content is unrelated to the map,
             // #8659) — except the single-course preview they push, which
             // rests low (#7826); other sections and the activity plan open at
-            // half (the plan keeps its pin visible above — the Google Maps
-            // UX).
+            // the half stop (for the plan that stop is its minimized rest, so
+            // its pin stays visible above — the Google Maps UX).
             cavityDefaultsToPeek: cavityToken?.type.defaultCavityToPeek == true,
             cavityDefaultsToFull:
                 cavityToken?.type.defaultCavityToFull == true &&
@@ -1308,7 +1340,8 @@ class _ShellLayout {
   /// Index into [leftTokens] of the panel hosted in the nav widget's expandable
   /// **cavity** on a narrow screen — the chat list, the Courses/add-course hub,
   /// the course family (card + coursepage detail), or the activity plan (a
-  /// half-open sheet with the camera on its pin — the Google Maps UX). Null
+  /// sheet resting minimized, with the camera on its pin — the Google Maps UX).
+  /// Null
   /// when nothing cavity-hosted is the narrow focus; [hasCavity] is its
   /// presence. Full-screen surfaces (a room, a session, any right panel) never
   /// ride the cavity. See `routing.instructions.md` → Single-column bottom nav.
@@ -1336,7 +1369,7 @@ class _ShellLayout {
   /// above its header or below its composer (#7554, #8879). Every other
   /// narrow ground (the map, a cavity, a right panel under the analytics
   /// bar) leaves the map visible there. See `routing.instructions.md` →
-  /// Full-screen surfaces.
+  /// Single-column (narrow and mobile) mode.
   final bool fullBleedFocus;
 
   /// Whether this layout resolved in two-column mode (chrome picks the web rail
@@ -1418,7 +1451,7 @@ class _ShellLayout {
     final parsedLeft = parseOpenPanels(state.uri).left;
 
     // A `?c=` context with no `course` token is the course panel COLLAPSED
-    // (routing.instructions.md → Reading a workspace URL), and its collapsed
+    // (routing.instructions.md → Closing a panel: X or back arrow), and its collapsed
     // state — the context bar — is a panel like any other, seated here rather
     // than drawn as chrome somewhere else (#9037).
     //
@@ -1554,7 +1587,7 @@ class _ShellLayout {
     final hasCavity = cavityIndex != null;
 
     // The floating nav widget shows wherever the narrow chrome does — the bare
-    // map or a cavity surface (which includes the activity plan's half-open
+    // map or a cavity surface (which includes the activity plan's minimized
     // sheet, #7530) — and is covered by a focused full-screen surface (a
     // room/session, a center-detail page, or a right panel expanding over it).
     final navWidgetVisible =
@@ -1615,15 +1648,18 @@ class _ShellLayout {
     // the band the left/right overlays don't model. Pad the camera's bottom by
     // the sheet's minimized rest (the height it opens at) so a focused pin
     // lands in the exposed map ABOVE the sheet instead of behind it (#7640;
-    // activities doc — "the plan keeps its pin visible above", the Google Maps
-    // target UX). The band is the minimized cavity height plus the bottom safe
+    // world-map.instructions.md: focusing an activity pans its pin into the
+    // exposed map, the Google Maps UX). The band is the minimized cavity
+    // height plus the bottom safe
     // area and a margin of breathing room; the sheet carries no rail. An
     // estimate of the resting sheet, deliberately not live-tracked: dragging
-    // the sheet (or maximizing it) must not yank the camera.
+    // the sheet (or maximizing it) must not yank the camera. It takes the
+    // tallest minimized rest, since the CTA height is only known once the
+    // page loads, and a pin a little high still shows.
     var mapBottomOverlay = 0.0;
     if (hasCavity && leftTokens[cavityIndex].type == PanelTypesEnum.activity) {
       mapBottomOverlay =
-          _MobileNavLayerState._activitySheetMinimizedHeight +
+          ActivitySheetCtaHeight.maxSheetHeight +
           MediaQuery.viewPaddingOf(context).bottom +
           chromeMargin * 2;
     } else if (hasCavity && _tokenIsCoursePreview(leftTokens[cavityIndex])) {

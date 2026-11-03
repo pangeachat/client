@@ -34,8 +34,9 @@ typedef TutorialLauncher = Future<void> Function();
 /// to open anything while a blocking entry is up — two controllers would
 /// contend for the same key and the loser would silently fail to launch.
 ///
-/// A sequence outliving the screen it started on is the point: an orientation
-/// tutorial spans the map and an activity, and the app tour spans panels.
+/// A sequence outliving the screen it started on is the point: the app tour
+/// spans five panels, and the greeting hands off to a surface tutorial
+/// without the scrim blinking between them.
 class TutorialOverlayController {
   TutorialOverlayController({
     TutorialProgressSource progress = const TutorialProgressSource(),
@@ -96,7 +97,15 @@ class TutorialOverlayController {
   /// settings. A remembered "nothing left to show" outlives the profile it came
   /// from, and on a host that is never remounted (the world map) that retires
   /// the tutorial for the rest of the session. Ask again; the answer is a map
-  /// lookup. See tutorials.instructions.md on trigger evaluation.
+  /// lookup.
+  ///
+  /// The same holds for every gate a trigger reads — a fetched activity plan,
+  /// panel focus published a frame late, a target mounting
+  /// ([TutorialTarget.onMounted]). A failed check means "not yet", never
+  /// "nothing to do"; a trigger latches only on state it has confirmed from
+  /// loaded data. Checking once on arrival is how a tutorial silently never
+  /// appears, which tutorials.instructions.md § Decisions ("Never on an empty or
+  /// still-loading screen") depends on not happening.
   bool isPending(TutorialEnum tutorial) => _progress.isEnabled(tutorial);
 
   /// Puts the current step back on screen when a sequence is running but nothing
@@ -138,6 +147,8 @@ class TutorialOverlayController {
       return false;
     }
 
+    // Built over only what this learner will actually see, so the card's
+    // `n / total` counter never promises steps already seen.
     final enabled = sequence.where(_progress.isEnabled).toList();
     if (enabled.isEmpty) {
       Logs().v("Tutorial sequence $sequence has nothing left to show");

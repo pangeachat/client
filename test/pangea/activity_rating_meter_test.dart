@@ -7,7 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_meter.dart';
 import 'contrast_ratio.dart';
 
-/// Render contract of the activity header's rating indicator (#8088): the
+/// Render contract of the start page's rating indicator (#8088): the
 /// aggregate reads as a thumbs-up share — a thumb icon plus the percentage —
 /// never a ring, so an all-negative activity shows "0%" rather than an empty
 /// progress dial. An unrated activity still shows the NEW pill instead.

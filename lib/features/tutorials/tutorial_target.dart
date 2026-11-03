@@ -23,7 +23,7 @@ class TutorialTarget extends StatefulWidget {
   /// the target on screen" listens here, because the target can arrive after
   /// every other signal has already fired — a mobile sheet finishing its
   /// expand animation, a list landing — and a trigger keeps asking
-  /// (tutorials.instructions.md).
+  /// ([TutorialOverlayController.isPending]).
   final VoidCallback? onMounted;
 
   final Widget child;

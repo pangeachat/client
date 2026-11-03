@@ -7,12 +7,12 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_
 /// read-only archived view and its "no longer supported" notice.
 ///
 /// The removed-activity ladder is scoped to session ROOMS — every rung renders
-/// what the room itself holds (roles, stars, timeline) so past work stays
-/// reviewable (activities.instructions.md, "Removed or unresolvable
-/// activities"). The regression this locks (#7918): the gate was `removed`
-/// alone, so a removed activity opened from a bare world-map pin — no session,
-/// nothing to review — rendered an all-but-empty archived page telling the
-/// learner their activity "ran on an older version". Without a session that
+/// what the room itself holds (the plan it kept, else roles and diamonds) so
+/// past work stays reviewable (activity-start-page.instructions.md, "When the
+/// activity can't be fetched"). The regression this locks (#7918): the gate was
+/// `removed` alone, so a removed activity opened from a bare world-map pin — no
+/// session, nothing to review — rendered an all-but-empty archived page telling
+/// the learner their activity "ran on an older version". Without a session that
 /// notice is simply wrong, and the map dead-ends.
 void main() {
   group('archivedSessionGate', () {

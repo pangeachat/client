@@ -248,6 +248,13 @@ class StreamingSttSession {
   /// existing waveform renderer needs no change.
   List<double> get amplitudeTimeline => _amplitudeTimeline;
 
+  /// The retained WAV synthesized at stop, kept in memory so a caller can play
+  /// the recording back (the read-aloud exercise's compare row) without
+  /// re-reading the temp artifact, which on web is a blob URL. Null until a
+  /// stop has synthesized one.
+  Uint8List? get lastWav => _lastWav;
+  Uint8List? _lastWav;
+
   int get _durationMs =>
       (_pcm.length * 1000) ~/ (sampleRate * 2); // 16-bit mono
 
@@ -395,27 +402,7 @@ class StreamingSttSession {
   }
 
   void _appendAmplitude(Uint8List frame) {
-    final sampleCount = frame.length ~/ 2;
-    if (sampleCount == 0) {
-      _amplitudeTimeline.add(1);
-      return;
-    }
-    final data = ByteData.view(
-      frame.buffer,
-      frame.offsetInBytes,
-      sampleCount * 2,
-    );
-    var sumSquares = 0.0;
-    for (var i = 0; i < sampleCount; i++) {
-      final sample = data.getInt16(i * 2, Endian.little);
-      sumSquares += sample * sample;
-    }
-    final rms = math.sqrt(sumSquares / sampleCount);
-    // dBFS relative to full-scale int16, mapped onto today's amplitude scale
-    // (`100 + amplitude.current * 2`, clamped to >= 1).
-    final dbfs = rms <= 0 ? -160.0 : 20 * (math.log(rms / 32768) / math.ln10);
-    final value = 100 + dbfs * 2;
-    _amplitudeTimeline.add(value < 1 ? 1 : value);
+    _amplitudeTimeline.add(pcm16FrameAmplitude(frame));
   }
 
   void _onPartial(SttPartial partial) {
@@ -517,6 +504,7 @@ class StreamingSttSession {
       return null; // nothing to save (also guarded by _pcm.length>0)
     }
     final wav = pcm16ToWav(pcm, sampleRate: sampleRate);
+    _lastWav = wav;
     final path = await _tempFileWriter(wav);
     if (_teardownDone) {
       await _disposeTempArtifact(path);
@@ -551,6 +539,7 @@ class StreamingSttSession {
 
     final pcm = _pcm.toBytes();
     final wav = pcm16ToWav(pcm, sampleRate: sampleRate);
+    _lastWav = wav;
     final path = await _tempFileWriter(wav);
     // teardown() can also race the (async) write above — in which case it could
     // not have seen this path. Dispose it ourselves (web-aware: revoke the blob
@@ -700,4 +689,28 @@ Future<String> defaultWavTempFileWriter(Uint8List wav) async {
   final file = File(path_lib.join(dir.path, name));
   await file.writeAsBytes(wav);
   return file.path;
+}
+
+/// One PCM16 mono frame's loudness on the app's amplitude scale: dBFS
+/// relative to full-scale int16, mapped as the voice recorder maps the
+/// `record` package's reading (`100 + amplitude.current * 2`, never below 1).
+/// Shared by the streaming session and the read-aloud recorder's batch path,
+/// so a take's waveform bars match a voice message's.
+double pcm16FrameAmplitude(Uint8List frame) {
+  final sampleCount = frame.length ~/ 2;
+  if (sampleCount == 0) return 1;
+  final data = ByteData.view(
+    frame.buffer,
+    frame.offsetInBytes,
+    sampleCount * 2,
+  );
+  var sumSquares = 0.0;
+  for (var i = 0; i < sampleCount; i++) {
+    final sample = data.getInt16(i * 2, Endian.little);
+    sumSquares += sample * sample;
+  }
+  final rms = math.sqrt(sumSquares / sampleCount);
+  final dbfs = rms <= 0 ? -160.0 : 20 * (math.log(rms / 32768) / math.ln10);
+  final value = 100 + dbfs * 2;
+  return value < 1 ? 1 : value;
 }

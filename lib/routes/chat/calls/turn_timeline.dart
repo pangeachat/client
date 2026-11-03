@@ -13,6 +13,10 @@ import 'package:fluffychat/widgets/avatar.dart';
 /// reader can be told and only one of them is a time we stand behind. An
 /// earlier design had two renderings for these three, which left the third
 /// printing a plain `m:ss` it had no standing to print.
+///
+/// The recording pass times each turn's first word, so [exact] is the ordinary
+/// case; [atOrBefore] belongs to the live fallback, whose chunks can bound a
+/// turn only to the audio it was cut from.
 enum TurnTime {
   /// [CallTurn.at] is the start of this turn's first word, as the provider
   /// timed it in the audio that was sent. Printed as `m:ss`.

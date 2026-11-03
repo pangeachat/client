@@ -306,6 +306,9 @@ class CallRoster extends ChangeNotifier {
   /// has to mean "does not speak this protocol" (an older build), which is the
   /// whole basis of the participation test. That is why it is NOT seeded into
   /// [_announced] the way capability is: the `no` must actually be written.
+  /// The two existing attributes cannot do this job: the recorder election
+  /// already ships, so a device with the election and without this design
+  /// publishes both and would read as participating.
   static const chosenAttribute = 'pangea_chosen';
   static const _chosen = 'yes';
   static const _notChosen = 'no';
@@ -498,6 +501,14 @@ class CallRoster extends ChangeNotifier {
   ///
   /// Drawn from the same list as everything else, so the recorder election and
   /// presence can never disagree about who is present.
+  ///
+  /// The SFU's list, never Matrix membership, for the ownership arbiter
+  /// (call-device-ownership.instructions.md): room state lags a join by seconds
+  /// and keeps a crashed device's entry until delayed-leave cleanup, so a rule
+  /// built on it would silence a live device because of a dead one. This list
+  /// errs the safe way: it holds a departed device through the SFU's retention
+  /// window rather than dropping a present one, so staleness can delay an
+  /// unmute and never cause an early one.
   Iterable<String> get siblingDeviceIds => participants
       .where((p) => p.userId == myUserId)
       .map((p) => p.deviceId)
@@ -734,6 +745,12 @@ class CallRoster extends ChangeNotifier {
   /// protocol" rather than "has not answered yet" — and `true` only once the
   /// learner has picked this device. On the same announcer as the two above, so
   /// there is no new channel and no new failure mode.
+  ///
+  /// Nothing waits on this landing, deliberately: a failed write releases its
+  /// waiters anyway, so a completed future means settled, never landed. A
+  /// device treats itself as chosen because the learner tapped it; if the
+  /// write never goes out, the sibling never leaves and the arbiter's bounded
+  /// wait covers it.
   Future<void> announceChosen(bool chosen) =>
       _announce(chosenAttribute, chosen ? _chosen : _notChosen);
 

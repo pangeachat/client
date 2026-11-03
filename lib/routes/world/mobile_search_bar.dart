@@ -9,7 +9,9 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 /// The single-column floating search bar riding above the nav widget
 /// (routing.instructions.md → Single-column search bar): ONE persistent bar for
 /// the map's activity search. It rides the nav widget's expansion for free
-/// by rendering in the widget's `topAttachment` slot.
+/// by rendering in the widget's `topAttachment` slot. Figma:
+/// [default](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44560),
+/// [minimized](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44562).
 ///
 /// Mounted over the bare WORLD map only, mirroring the web overlay
 /// ([WorldMapSearchOverlay]): a selected course takes this slot with the

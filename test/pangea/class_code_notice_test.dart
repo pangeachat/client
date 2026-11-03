@@ -113,6 +113,22 @@ void main() {
       await unmount(tester);
     });
 
+    // Slide 1 has no headline to name its image, which axe reported as an
+    // unnamed role="img" (role-img-alt) on the landing page. The image itself
+    // never loads in a widget test, so the e2e axe audit checks the role.
+    testWidgets('names slide 1 by the brand line its image draws', (
+      tester,
+    ) async {
+      final semantics = tester.ensureSemantics();
+      await pumpLanding(tester);
+      expect(
+        find.bySemanticsLabel('Learn a language while texting your friends!'),
+        findsOneWidget,
+      );
+      await unmount(tester);
+      semantics.dispose();
+    });
+
     testWidgets('opens nothing when no class code is pending', (tester) async {
       await tester.runAsync(
         () => SpaceCodeRepo.setDestination('/?right=settings'),

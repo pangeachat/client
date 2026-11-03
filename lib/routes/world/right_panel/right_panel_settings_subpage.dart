@@ -23,6 +23,9 @@ import 'package:fluffychat/routes/settings/settings_subscription/subscription_hi
 /// empty param is the menu, and a sub-page is reached by a *push* (the menu row
 /// sets the param) with the panel's back arrow popping it. The panel chrome
 /// (close on the menu, back on a sub-page) is supplied by [WorkspaceRightPanel].
+/// On narrow this same surface renders in the analytics-bar chrome; the
+/// reorganized settings content some Figma frames show (inline language and
+/// CEFR pickers) is a separate design effort, not part of that chrome.
 /// See `routing.instructions.md`.
 class RightPanelSettingsSubpage extends StatelessWidget {
   /// The settings sub-page id from the token param, e.g. `learning`,

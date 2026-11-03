@@ -32,7 +32,8 @@ class ActivityDropdownHeader extends StatelessWidget {
   /// This session's target language. The left slot — opposite the chevron —
   /// carries it as a switch when it isn't what the learner is learning: the
   /// one offer to switch a running session has, since it has no Start or
-  /// Join button to attach one to (activities.instructions.md). Left null
+  /// Join button to attach one to (activity-session.instructions.md, "The goal
+  /// header"). Left null
   /// (the plain reserved slot) everywhere [ActivityDropdownHeader] renders
   /// outside a live session.
   final LanguageModel? contentLanguage;
@@ -119,7 +120,7 @@ class ActivityDropdownHeader extends StatelessWidget {
             // The session's XP at the far left and the chevron at the far
             // right (#9559), each in a slot of the same width so the diamonds
             // stay centred; both line up with the diamonds rather than with
-            // the "+100" line under them.
+            // the "+50" line under them.
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

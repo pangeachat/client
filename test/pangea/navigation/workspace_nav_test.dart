@@ -1559,6 +1559,30 @@ void main() {
     );
   });
 
+  group('openCoursePreview (a course the learner is not in, #9586)', () {
+    test('seats the browse preview and clears the course context', () {
+      final uri = u(
+        WorkspaceNav.openCoursePreview(
+          u('/?c=!abc&left=chats,course&right=analytics:vocab&mission=m1'),
+          '!abc:server',
+        ),
+      );
+      expect(activeSpaceIdFor(uri), isNull);
+      expect(uri.queryParameters.containsKey('mission'), isFalse);
+      final panels = parseOpenPanels(uri);
+      expect(panels.left.map((t) => t.type), [
+        PanelTypesEnum.addcourse,
+        PanelTypesEnum.addcoursepage,
+      ]);
+      final param = (panels.left.last as AddCoursePagePanelToken).param!;
+      expect(param.subpage, AddCourseSubpageEnum.browse);
+      // No home domain is set in a unit test, so the id rides in full.
+      expect(param.previewRoomId, '!abc:server');
+      // The right column rides along untouched.
+      expect(uri.queryParameters['right'], 'analytics:vocab');
+    });
+  });
+
   group('openCourseActivity (token-native activity panel, #7385/#7267)', () {
     // Bare localpart ids (no `:domain`): shortRoomId only strips the home
     // server_name, which is unavailable in a unit test (no MatrixState), so a

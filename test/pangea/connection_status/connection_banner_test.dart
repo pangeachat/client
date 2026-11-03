@@ -359,6 +359,8 @@ void main() {
           .claim(ConstructTypeEnum.morph)
           .sessionController
           .session = AnalyticsPracticeSessionModel(
+        // Started: a session still on its start page is not in progress.
+        startedAt: DateTime.now(),
         type: ConstructTypeEnum.morph,
         practiceTargets: [
           AnalyticsPracticeTarget(

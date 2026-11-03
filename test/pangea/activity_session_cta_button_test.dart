@@ -1,8 +1,8 @@
 // The CTA colour hierarchy the start page's buttons render, pinned here so the
 // look stays consistent wherever [ActivitySessionCTAButton] is reused.
 //
-// Per activity-start-page.instructions.md § The CTA row, the web CTA list (and
-// the mobile row it mirrors) carries a two-tier hierarchy: exactly one PRIMARY
+// Per activity-start-page.instructions.md § The CTA row, the CTA list (the
+// same at every size) carries a two-tier hierarchy: exactly one PRIMARY
 // action is the filled `primary`; every following action is a fully filled
 // tonal `secondaryContainer` button — never a bare outline (under the fidelity
 // scheme `primaryContainer` is a near twin of `primary`, so it is no longer

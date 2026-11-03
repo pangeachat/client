@@ -199,12 +199,14 @@ void main() {
       );
     });
 
-    test('audioSettings lists exactly the five audio toggles', () {
+    test('audioSettings lists exactly the six audio toggles', () {
       expect(ToolSetting.audioSettings, [
         ToolSetting.audioWords,
         ToolSetting.audioChoices,
         // Ordered next to the choices audio it sequences (#8823).
         ToolSetting.listenFirst,
+        // Read-aloud practice plays the sentence before recording (#8967).
+        ToolSetting.hearItFirst,
         ToolSetting.audioOnNewMessage,
         ToolSetting.audioOnMessageClick,
       ]);

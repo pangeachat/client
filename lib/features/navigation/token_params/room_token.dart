@@ -18,7 +18,9 @@ import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_sel
 /// panel needs rides in its token, with no second query channel to sweep (see
 /// `routing.instructions.md`). [filter] and [eventId] are open-ended content
 /// (an eventId carries `$`, `:`, `/`) and are [TokenFields]-encoded so they
-/// can't collide with the `/` sub-path separator.
+/// can't collide with the `/` sub-path separator. The FluffyChat params get no
+/// exception: the client is a hard fork, and one consistent grammar outranks
+/// staying close to the base.
 class RoomTokenParam extends TokenParam {
   final String id;
   final String? subpage;

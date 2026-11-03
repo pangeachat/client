@@ -620,6 +620,7 @@ class WorldMapPinsManager {
     _progression = _objectiveCache.resolution(
       _xpByActivity,
       practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
+      recordedByCourse: MissionXpCache.instance.recordedByCourse,
       extraOutlines: _scopedCourseOutline == null
           ? const []
           : [_scopedCourseOutline!],

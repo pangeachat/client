@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:matrix/matrix.dart' show Client;
+
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
@@ -10,6 +12,7 @@ import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -35,18 +38,22 @@ class FakePangeaController implements PangeaController {
   /// -- true by default, matching what the REAL controller answers before its
   /// own state resolves (`SubscriptionLoading`), so a test that never mentions
   /// subscriptions keeps seeing gated content exactly as it did before this
-  /// field existed (#8792).
+  /// field existed (#8792). [client] is what `matrixState.client` answers, for
+  /// a widget that reads the signed-in client through here — the course plan
+  /// does, via `TutorialSeenBackfill`.
   FakePangeaController({
     String? userL1Code = 'en',
     String? accessToken,
     Map<String, AnalyticsProfileModel> analyticsProfiles = const {},
     bool subscribed = true,
+    Client? client,
   }) : userController = _FakeUserController(
          userL1Code,
          accessToken,
          analyticsProfiles,
        ),
-       subscriptionController = _FakeSubscriptionController(subscribed);
+       subscriptionController = _FakeSubscriptionController(subscribed),
+       matrixState = _FakeMatrixState(client);
 
   /// The one slice of [MatrixState] a widget test reaches through this
   /// controller: `MissionXpCache.ensureWired` subscribes to
@@ -56,13 +63,22 @@ class FakePangeaController implements PangeaController {
   /// `Null is not a subtype of MatrixState` from [noSuchMethod] before it
   /// could build. Nothing emits on the stream unless a test does.
   @override
-  final MatrixState matrixState = _FakeMatrixState();
+  final MatrixState matrixState;
 
   @override
   dynamic noSuchMethod(Invocation invocation) => null;
 }
 
 class _FakeMatrixState implements MatrixState {
+  _FakeMatrixState(this._client);
+
+  final Client? _client;
+
+  // Without a client this answers as it did before the field existed: null,
+  // through [noSuchMethod].
+  @override
+  Client get client => _client ?? noSuchMethod(Invocation.getter(#client));
+
   @override
   final AnalyticsDataService analyticsDataService = _FakeAnalyticsDataService();
 
@@ -138,8 +154,7 @@ class _FakeUserController implements UserController {
   /// when nobody is logged in.
   @override
   String get accessToken =>
-      _accessToken ??
-      (throw "Trying to get accessToken with null token. User is not logged in.");
+      _accessToken ?? (throw const NotLoggedInException());
 
   /// Left uncompleted, which is what the real controller looks like before the
   /// profile lands. Callers that read it — `InstructionsEnum.isToggledOff`, for
