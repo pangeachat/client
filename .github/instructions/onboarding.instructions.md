@@ -89,7 +89,6 @@ A teacher gives their name, institution, and textbook or curriculum. Submitting 
 
 ## Open questions
 
-- Someone who leaves once their language is saved is not brought back: their level stays at the default, a teacher is not asked for a course request, and the trial page does not show. Should onboarding resume where they left off?
-- Some accounts have no saved role: they finished onboarding before the role was saved, or an older app version erased it when saving their profile. How should they be asked for one: a one-time popup when the app opens, or a role setting in their settings?
-- A joined course sets the person's L1 differently depending on whether its content loads: to the language the course is taught in when it does, and to the device's language when it does not. Should both cases use the same one?
-- When a save keeps failing, for example while the person is offline, the profile, role-page join, languages and level pages leave them with only Next to retry, and the error often does not say what is wrong. Should onboarding let them move on and save later, as it does the role; say when the problem is their connection ([connection status](connection-status.instructions.md)); or offer a way out, like Setup's Log out?
+- Someone who leaves once their L2 is saved skips the rest: the level, course request and trial pages. Should onboarding resume where they left off?
+- Some older or corrupted account have no role. When and how should they be asked to set it?
+- When a save keeps failing, for example offline, the profile, languages and level pages, and the role page after a class-link join, offer only Next, often with an unclear error. Should onboarding let the person move on and save later, explain connection problems ([connection status](connection-status.instructions.md)), or offer a way out like Setup's Log out?
