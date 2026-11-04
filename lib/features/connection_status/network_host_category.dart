@@ -6,6 +6,9 @@ import 'package:fluffychat/pangea/common/utils/map_tiles.dart';
 /// A host, or group of hosts, the app needs to reach. A network filter blocks
 /// the app one category at a time. See connection-status.instructions.md,
 /// "Hosts the app needs".
+///
+/// When the app starts to depend on a new host, add it to a category here, so
+/// the check covers it and the domain list shown to IT staff names it.
 enum NetworkHostCategory {
   chatServer,
   pangeaApi,
@@ -19,7 +22,9 @@ enum NetworkHostCategory {
   /// with `privacyEnhancedMode` on.
   static const String _videoEmbedHost = 'www.youtube-nocookie.com';
 
-  /// Whether a block stops the app as a whole, rather than one feature.
+  /// Whether a block stops the app as a whole, rather than one feature: the
+  /// chat server carries sign-in, chat and courses; the Pangea API carries
+  /// the language tools, activities and subscriptions.
   bool get stopsApp => this == chatServer || this == pangeaApi;
 
   /// Whether the category is one of our own servers, which a deploy restarts.

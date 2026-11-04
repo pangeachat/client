@@ -36,9 +36,10 @@ enum ConnectionStatus {
 /// The chat server sync is the signal: it runs the whole time the app is
 /// open and retries every few seconds. The connection counts as lost after
 /// [failuresBeforeLost] failed attempts in a row, or at once when the device
-/// reports no network. A filtered chat server is [FilteredNetworkController]'s
-/// to decide; the observer client already starts that check on every failed
-/// sync request.
+/// reports no network. That report is the faster signal: a dead connection
+/// can otherwise take up to the request timeout, about 35 seconds, to fail.
+/// A filtered chat server is [FilteredNetworkController]'s to decide; the
+/// observer client already starts that check on every failed sync request.
 class ConnectionStatusController {
   ConnectionStatusController._();
 
