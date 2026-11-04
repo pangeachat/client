@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-11-04 10:19:27.150298",
+    "@@last_modified": "2026-11-04 15:02:40.370856",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Gözləməyə davam et",
     "botTookSeatAfterAnHour": "Bu sessiya bir saat açıq idi, buna görə Pangea Bot boş yeri tutdu.",
     "botTookSeatAfterADay": "Bu sessiya bir gündən çox açıq idi, buna görə Pangea Bot boş yeri tutdu. Başlamaq üçün mesaj göndərin.",
-    "subscriptionGracePeriodEndsOn": "Ödəniş uğursuz oldu. Güzəşt müddəti {date} tarixində bitir"
+    "subscriptionGracePeriodEndsOn": "Ödəniş uğursuz oldu. Güzəşt müddəti {date} tarixində bitir",
+    "changeBaseLanguageTitle": "Əsas dili dəyişdirilsin?",
+    "changeBaseLanguageDesc": "Tətbiqin menyuları və düymələri {language} dilinə keçəcək."
 }

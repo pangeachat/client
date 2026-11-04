@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-11-04 10:19:29.545033",
+    "@@last_modified": "2026-11-04 15:02:42.876766",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,7 @@
     "keepWaiting": "Seguir esperando",
     "botTookSeatAfterAnHour": "Esta sesión estivo aberta durante unha hora, así que o Pangea Bot ocupou o asento libre.",
     "botTookSeatAfterADay": "Esta sesión estivo aberta durante máis dun día, así que o Pangea Bot ocupou o asento libre. Envía unha mensaxe para comezar.",
-    "subscriptionGracePeriodEndsOn": "O pago fallou. O período de gracia remata o {date}"
+    "subscriptionGracePeriodEndsOn": "O pago fallou. O período de gracia remata o {date}",
+    "changeBaseLanguageTitle": "Cambiar idioma base?",
+    "changeBaseLanguageDesc": "Os menús e botóns da aplicación cambiarán a {language}."
 }

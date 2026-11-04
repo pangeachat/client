@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-11-04 10:19:37.215168",
+    "@@last_modified": "2026-11-04 15:02:54.027402",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Qhubeka nokulinda",
     "botTookSeatAfterAnHour": "Lesi sikhathi besivuliwe ihora, ngakho i-Pangea Bot yathatha isihlalo esingenalutho.",
     "botTookSeatAfterADay": "Lesi sikhathi besivuliwe isikhathi esingaphezu kosuku, ngakho i-Pangea Bot yathatha isihlalo esingenalutho. Thumela umlayezo ukuze uqale.",
-    "subscriptionGracePeriodEndsOn": "Inkokhelo yehlulekile. Isikhathi somusa siphela ngo-{date}"
+    "subscriptionGracePeriodEndsOn": "Inkokhelo yehlulekile. Isikhathi somusa siphela ngo-{date}",
+    "changeBaseLanguageTitle": "Shintsha ulimi oluyisisekelo?",
+    "changeBaseLanguageDesc": "Amamenyu nezinkinobho zohlelo lokusebenza kuzoshintshela ku-{language}."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-11-04 10:19:36.451107",
+    "@@last_modified": "2026-11-04 15:02:52.171724",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,7 @@
     "keepWaiting": "Продовжити чекати",
     "botTookSeatAfterAnHour": "Ця сесія була відкритою годину, тому бот Pangea зайняв вільне місце.",
     "botTookSeatAfterADay": "Ця сесія була відкритою більше доби, тому бот Pangea зайняв вільне місце. Надішліть повідомлення, щоб почати.",
-    "subscriptionGracePeriodEndsOn": "Платіж не пройшов. Пільговий період закінчується {date}"
+    "subscriptionGracePeriodEndsOn": "Платіж не пройшов. Пільговий період закінчується {date}",
+    "changeBaseLanguageTitle": "Змінити базову мову?",
+    "changeBaseLanguageDesc": "Меню та кнопки програми переключаться на {language}."
 }

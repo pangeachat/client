@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 10:19:33.392978",
+    "@@last_modified": "2026-11-04 15:02:48.232962",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,7 @@
     "keepWaiting": "Blijven wachten",
     "botTookSeatAfterAnHour": "Deze sessie was een uur open, dus Pangea Bot heeft de open plek ingenomen.",
     "botTookSeatAfterADay": "Deze sessie was langer dan een dag open, dus Pangea Bot heeft de open plek ingenomen. Stuur een bericht om te beginnen.",
-    "subscriptionGracePeriodEndsOn": "Betaling mislukt. Respijtperiode eindigt op {date}"
+    "subscriptionGracePeriodEndsOn": "Betaling mislukt. Respijtperiode eindigt op {date}",
+    "changeBaseLanguageTitle": "Basistaal wijzigen?",
+    "changeBaseLanguageDesc": "De menu's en knoppen van de app worden gewijzigd naar {language}."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-11-04 10:19:32.271965",
+    "@@last_modified": "2026-11-04 15:02:46.694203",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "ລໍຖ້າຕໍ່ໄປ",
     "botTookSeatAfterAnHour": "ເຊສຊັນນີ້ເປີດມາໄດ້ໜຶ່ງຊົ່ວໂມງແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ.",
     "botTookSeatAfterADay": "ເຊສຊັນນີ້ເປີດມາໄດ້ຫຼາຍກວ່າໜຶ່ງມື້ແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ. ສົ່ງຂໍ້ຄວາມເພື່ອເລີ່ມຕົ້ນ.",
-    "subscriptionGracePeriodEndsOn": "ການຊໍາລະເງິນບໍ່ສໍາເລັດ. ໄລຍະຜ່ອນຜັນຈະສິ້ນສຸດໃນວັນທີ {date}"
+    "subscriptionGracePeriodEndsOn": "ການຊໍາລະເງິນບໍ່ສໍາເລັດ. ໄລຍະຜ່ອນຜັນຈະສິ້ນສຸດໃນວັນທີ {date}",
+    "changeBaseLanguageTitle": "ປ່ຽນພາສາຫຼັກບໍ?",
+    "changeBaseLanguageDesc": "ເມນູ ແລະ ປຸ່ມຕ່າງໆຂອງແອັບຈະປ່ຽນເປັນພາສາ {language}."
 }

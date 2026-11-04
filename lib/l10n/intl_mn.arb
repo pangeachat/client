@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-11-04 10:19:32.880708",
+    "@@last_modified": "2026-11-04 15:02:48.021147",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Хүлээсээр байх",
     "botTookSeatAfterAnHour": "Энэ хуралдаан нэг цаг нээлттэй байсан тул Pangea Bot сул суудалд суусан.",
     "botTookSeatAfterADay": "Энэ хуралдаан нэг өдрөөс илүү нээлттэй байсан тул Pangea Bot сул суудалд суусан. Эхлүүлэхийн тулд мессеж илгээнэ үү.",
-    "subscriptionGracePeriodEndsOn": "Төлбөр амжилтгүй боллоо. Хөнгөлөлтийн хугацаа {date}-нд дуусна"
+    "subscriptionGracePeriodEndsOn": "Төлбөр амжилтгүй боллоо. Хөнгөлөлтийн хугацаа {date}-нд дуусна",
+    "changeBaseLanguageTitle": "Үндсэн хэлийг өөрчлөх үү?",
+    "changeBaseLanguageDesc": "Аппын цэс болон товчлуурууд {language} хэл рүү шилжинэ."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-11-04 10:19:31.568555",
+    "@@last_modified": "2026-11-04 15:02:46.743593",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Күтө туруңуз",
     "botTookSeatAfterAnHour": "Бул сессия бир саат бою ачык болгондуктан, Pangea Bot бош орунду ээледи.",
     "botTookSeatAfterADay": "Бул сессия бир күндөн ашык ачык болгондуктан, Pangea Bot бош орунду ээледи. Баштоо үчүн билдирүү жөнөтүңүз.",
-    "subscriptionGracePeriodEndsOn": "Төлөм ишке ашкан жок. Жеңилдетилген мөөнөт {date} күнү аяктайт"
+    "subscriptionGracePeriodEndsOn": "Төлөм ишке ашкан жок. Жеңилдетилген мөөнөт {date} күнү аяктайт",
+    "changeBaseLanguageTitle": "Негизги тилди өзгөртөсүзбү?",
+    "changeBaseLanguageDesc": "Колдонмонун менюлары жана баскычтары {language} тилине которулат."
 }

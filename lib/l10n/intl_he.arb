@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 10:19:29.971356",
+    "@@last_modified": "2026-11-04 15:02:43.647796",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10957,5 +10957,7 @@
     "keepWaiting": "המשך לחכות",
     "botTookSeatAfterAnHour": "השיחה הזו הייתה פתוחה במשך שעה, אז בוט Pangea תפס את המקום הפנוי.",
     "botTookSeatAfterADay": "השיחה הזו הייתה פתוחה למעלה מיום, אז בוט Pangea תפס את המקום הפנוי. שלח הודעה כדי להתחיל.",
-    "subscriptionGracePeriodEndsOn": "התשלום נכשל. תקופת החסד מסתיימת ב-{date}"
+    "subscriptionGracePeriodEndsOn": "התשלום נכשל. תקופת החסד מסתיימת ב-{date}",
+    "changeBaseLanguageTitle": "לשנות שפת בסיס?",
+    "changeBaseLanguageDesc": "התפריטים והלחצנים של האפליקציה יעברו ל{language}."
 }

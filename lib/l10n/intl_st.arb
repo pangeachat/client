@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-11-04 10:19:35.446208",
+    "@@last_modified": "2026-11-04 15:02:51.199615",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Tswela pele ho ema",
     "botTookSeatAfterAnHour": "Thuto ena e ne e butswe ka hora, kahoo Pangea Bot e nkile setulo se se nang motho.",
     "botTookSeatAfterADay": "Thuto ena e ne e butswe ho feta letsatsi, kahoo Pangea Bot e nkile setulo se se nang motho. Romela molaetsa ho qala.",
-    "subscriptionGracePeriodEndsOn": "Tefo e hlotsoe. Nako ea mohau e fela ka {date}"
+    "subscriptionGracePeriodEndsOn": "Tefo e hlotsoe. Nako ea mohau e fela ka {date}",
+    "changeBaseLanguageTitle": "Fetola puo ea motheo?",
+    "changeBaseLanguageDesc": "Limenu le likonopo tsa app li tla fetohela ho {language}."
 }

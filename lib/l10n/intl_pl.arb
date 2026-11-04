@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-11-04 10:19:34.013078",
+    "@@last_modified": "2026-11-04 15:02:49.228189",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10131,5 +10131,7 @@
     "keepWaiting": "Czekaj dalej",
     "botTookSeatAfterAnHour": "Ta sesja była otwarta przez godzinę, więc Pangea Bot zajął wolne miejsce.",
     "botTookSeatAfterADay": "Ta sesja była otwarta przez ponad dzień, więc Pangea Bot zajął wolne miejsce. Wyślij wiadomość, aby rozpocząć.",
-    "subscriptionGracePeriodEndsOn": "Płatność nie powiodła się. Okres prolongaty kończy się {date}"
+    "subscriptionGracePeriodEndsOn": "Płatność nie powiodła się. Okres prolongaty kończy się {date}",
+    "changeBaseLanguageTitle": "Zmienić język podstawowy?",
+    "changeBaseLanguageDesc": "Menu i przyciski aplikacji przełączą się na język {language}."
 }

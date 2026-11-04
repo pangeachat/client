@@ -3541,7 +3541,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-11-04 10:19:28.918214",
+    "@@last_modified": "2026-11-04 15:02:42.850478",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10057,5 +10057,7 @@
     "keepWaiting": "Fanacht",
     "botTookSeatAfterAnHour": "Bhí an seisiún seo ar oscailt ar feadh uaire an chloig, mar sin thóg Pangea Bot an suíochán folamh.",
     "botTookSeatAfterADay": "Bhí an seisiún seo ar oscailt ar feadh níos mó ná lá, mar sin thóg Pangea Bot an suíochán folamh. Seol teachtaireacht chun tús a chur leis.",
-    "subscriptionGracePeriodEndsOn": "Theip ar an íocaíocht. Críochnaíonn an tréimhse cairde ar {date}"
+    "subscriptionGracePeriodEndsOn": "Theip ar an íocaíocht. Críochnaíonn an tréimhse cairde ar {date}",
+    "changeBaseLanguageTitle": "Athraigh an bhuntheanga?",
+    "changeBaseLanguageDesc": "Athróidh biachláir agus cnaipí an aip go {language}."
 }

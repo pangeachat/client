@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-11-04 10:19:30.550521",
+    "@@last_modified": "2026-11-04 15:02:44.062241",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10149,5 +10149,7 @@
     "keepWaiting": "Tovább várok",
     "botTookSeatAfterAnHour": "Ez a munkamenet egy órája nyitva volt, ezért a Pangea Bot elfoglalta a szabad helyet.",
     "botTookSeatAfterADay": "Ez a munkamenet több mint egy napja nyitva volt, ezért a Pangea Bot elfoglalta a szabad helyet. Üzenj a kezdéshez.",
-    "subscriptionGracePeriodEndsOn": "Sikertelen fizetés. A türelmi időszak ekkor jár le: {date}"
+    "subscriptionGracePeriodEndsOn": "Sikertelen fizetés. A türelmi időszak ekkor jár le: {date}",
+    "changeBaseLanguageTitle": "Alapnyelv módosítása?",
+    "changeBaseLanguageDesc": "Az alkalmazás menüi és gombjai átváltanak a következő nyelvre: {language}."
 }

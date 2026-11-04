@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-11-04 10:19:36.936150",
+    "@@last_modified": "2026-11-04 15:02:53.081690",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Qhubeka ulindile",
     "botTookSeatAfterAnHour": "Le seshoni ibivulekile iyure, ngoko iPangea Bot ithathe isihlalo esivulekileyo.",
     "botTookSeatAfterADay": "Le seshoni ibivulekile ngaphezu kosuku, ngoko iPangea Bot ithathe isihlalo esivulekileyo. Thumela umyalezo ukuze uqale.",
-    "subscriptionGracePeriodEndsOn": "Intlawulo ayiphumelelanga. Ixesha lesisa liphela ngo-{date}"
+    "subscriptionGracePeriodEndsOn": "Intlawulo ayiphumelelanga. Ixesha lesisa liphela ngo-{date}",
+    "changeBaseLanguageTitle": "Guqula ulwimi olusisiseko?",
+    "changeBaseLanguageDesc": "Iimenyu zosetyenziso namaqhosha aya kutshintshela kwisi-{language}."
 }

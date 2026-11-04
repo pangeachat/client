@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-11-04 10:19:35.251461",
+    "@@last_modified": "2026-11-04 15:02:50.519292",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Ramba wakamirira",
     "botTookSeatAfterAnHour": "Chikamu ichi chaive chakavhurika kweawa, saka Pangea Bot yakatora chigaro chisina munhu.",
     "botTookSeatAfterADay": "Chikamu ichi chaive chakavhurika kwezuva rose, saka Pangea Bot yakatora chigaro chisina munhu. Tumira meseji kuti utange.",
-    "subscriptionGracePeriodEndsOn": "Kubhadhara kwakakundikana. Nguva yenyasha inopera musi wa {date}"
+    "subscriptionGracePeriodEndsOn": "Kubhadhara kwakakundikana. Nguva yenyasha inopera musi wa {date}",
+    "changeBaseLanguageTitle": "Chinja mutauro wekutanga here?",
+    "changeBaseLanguageDesc": "Mamenu nemabhatani eapp achachinja kuita {language}."
 }
