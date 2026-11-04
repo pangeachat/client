@@ -317,6 +317,13 @@ class WorkspaceShell extends StatelessWidget {
     required this.sideView,
   });
 
+  /// The column-mode reservation at the viewport's right edge, the mirror of
+  /// the rail's on the left: the cluster's [_ShellLayout.chromeMargin] inset,
+  /// its width, and one more margin before the panels, so a right panel sits
+  /// as far from the cluster as a left panel from the rail (#9778).
+  static const double clusterGutter =
+      _ShellLayout.chromeMargin * 2 + WorldUserCluster.minWidth;
+
   @override
   Widget build(BuildContext context) {
     final l = _ShellLayout.resolve(context, state: state, sideView: sideView);
@@ -586,7 +593,7 @@ class WorkspaceShell extends StatelessWidget {
                         ],
 
                         /// The right column's entry point. In column mode: the persistent
-                        /// top-right vertical cluster, in the gutter the allocator reserves.
+                        /// top-right vertical cluster, in [WorkspaceShell.clusterGutter].
                         /// On narrow: the horizontal ANALYTICS NAV BAR pinned to the top
                         /// safe area — full form only, on the surfaces where it IS
                         /// navigation (the map/cavity ground and the right panels it
@@ -1534,6 +1541,7 @@ class _ShellLayout {
       left: leftDefs,
       right: rightDefs,
       railWidth: columnWidth,
+      clusterGutter: WorkspaceShell.clusterGutter,
       focusHint: focusHint,
     );
 
