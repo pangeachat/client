@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-02 14:31:47.487405",
+    "@@last_modified": "2026-11-04 10:19:28.438949",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2726,13 +2726,11 @@
     "editCourseLater": "Vi povas redakti la titolon, priskribojn, kaj bildon de la kurso poste.",
     "createCourse": "Krei kurson",
     "stats": "Statistikoj",
-    "createGroupChat": "Krei grupan babiladon",
     "editCourse": "Redakti kurson",
     "inviteDesc": "Per uzantnomo, per kodo aŭ ligilo",
     "editCourseDesc": "Ĉi tie vi povas redakti la titolon, priskribon, ktp. de la kurso.",
     "permissionsDesc": "Agordi permesojn kiel kiu povas inviti uzantojn, sendi mesaĝojn, krei babilejojn, ktp.",
     "accessDesc": "Vi povas fari vian kurson malfermita al la mondo! Aŭ, fari vian kurson private kaj sekura.",
-    "createGroupChatDesc": "Dum agado-sesioj komenciĝas kaj finiĝas, grupaj babilejoj restos malfermita por regula komunikado.",
     "deleteDesc": "Nur administrantoj povas forigi kurson. Ĉi tio estas detrua ago kiu forigas ĉiujn uzantojn kaj forigas ĉiujn elektitajn babilejojn ene de la kurso. Estu singarda.",
     "whatNow": "Kio nun?",
     "chooseNextActivity": "Elektu vian sekvan agadon!",
@@ -6839,10 +6837,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6860,10 +6854,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10998,5 +10988,6 @@
     "keepWaiting": "Plu atendi",
     "botTookSeatAfterAnHour": "Ĉi tiu sesio estis malfermita dum unu horo, do Pangea Bot okupis la liberan lokon.",
     "botTookSeatAfterADay": "Ĉi tiu sesio estis malfermita dum pli ol unu tago, do Pangea Bot okupis la liberan lokon. Sendu mesaĝon por komenci.",
+    "subscriptionGracePeriodEndsOn": "Pago malsukcesis. Tolerema periodo finiĝas je {date}",
     "accountSetupFailedHelp": "Ni ne povis fini agordi vian konton. Kontrolu vian konekton kaj reprovu, aŭ elsalutu kaj ensalutu poste."
 }

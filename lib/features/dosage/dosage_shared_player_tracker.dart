@@ -36,8 +36,9 @@ class DosageSharedPlayerTracker {
   /// What kind of listening a playback through this surface is.
   final DosageListeningCategory category;
 
-  /// The room the playback belongs to. The only identifier that travels.
-  final String roomId;
+  /// The room the playback belongs to, or null for a surface with none. The
+  /// only identifier that travels.
+  final String? roomId;
 
   /// This surface's key in the shared player's owner notifier — the timeline
   /// bubble's event id, the overlay's `_overlay` variant, or the toolbar

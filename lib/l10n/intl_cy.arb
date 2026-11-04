@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-11-02 14:31:47.255901",
+    "@@last_modified": "2026-11-04 10:19:28.062648",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Gallwch olygu teitl y templed, disgrifiadau, a delwedd y cwrs yn ddiweddarach.",
     "createCourse": "Creu cwrs",
     "stats": "Ystadegau",
-    "createGroupChat": "Creu sgwrs grŵp",
     "editCourse": "Golygu cwrs",
     "inviteDesc": "Trwy enw defnyddiwr, trwy god neu ddolen",
     "editCourseDesc": "Yma gallwch olygu teitl y cwrs, disgrifiad, ac ati.",
     "permissionsDesc": "Gosod caniatadau megis pwy all wahodd defnyddwyr, anfon negeseuon, creu sgyrsiau, ac ati.",
     "accessDesc": "Gallwch wneud eich cwrs yn agored i'r byd! Neu, gwnewch eich cwrs yn breifat ac yn ddiogel.",
-    "createGroupChatDesc": "Tra bod sesiynau gweithgaredd yn dechrau ac yn dod i ben, bydd sgyrsiau grŵp yn aros ar agor ar gyfer cyfathrebu arferol.",
     "deleteDesc": "Dim ond gweinyddwyr all ddileu cwrs. Mae hwn yn weithred ddinistriol sy'n tynnu pob defnyddiwr ac yn dileu pob sgwrs a ddewiswyd o fewn y cwrs. Ewch ymlaen yn ofalus.",
     "whatNow": "Beth nawr?",
     "chooseNextActivity": "Dewiswch eich gweithgaredd nesaf!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Parhau i aros",
     "botTookSeatAfterAnHour": "Roedd y sesiwn hon ar agor am awr, felly cymerodd Bot Pangea y sedd wag.",
     "botTookSeatAfterADay": "Roedd y sesiwn hon ar agor am dros ddiwrnod, felly cymerodd Bot Pangea y sedd wag. Anfonwch neges i ddechrau.",
+    "subscriptionGracePeriodEndsOn": "Methodd taliad. Daw'r cyfnod gras i ben ar {date}",
     "accountSetupFailedHelp": "Ni allem orffen sefydlu eich cyfrif. Gwiriwch eich cysylltiad a rhowch gynnig arall arni, neu allgofnodwch a mewngofnodwch yn ddiweddarach."
 }

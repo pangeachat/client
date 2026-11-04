@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-11-02 14:31:56.035041",
+    "@@last_modified": "2026-11-04 10:19:35.446208",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "U ka fetola sehlooho sa thempleite, litlhaloso, le setšoantšo sa thuto hamorao.",
     "createCourse": "Theha thuto",
     "stats": "Lipalopalo",
-    "createGroupChat": "Theha moqoqo oa sehlopha",
     "editCourse": "Fetola thuto",
     "inviteDesc": "Ka lebitso la mosebelisi, ka khoutu kapa sehokelo",
     "editCourseDesc": "Mona o ka fetola sehlooho sa thuto, tlhaloso, jj.",
     "permissionsDesc": "Beha litumello tse kang hore na ke mang ea ka memang basebelisi, a romella melaetsa, a theha meqoqo, jj.",
     "accessDesc": "U ka etsa hore thuto ea hau e bulehele lefatše lohle! Kapa, etsa hore thuto ea hau e be ea lekunutu ebile e sireletsehile.",
-    "createGroupChatDesc": "Le hoja linako tsa mesebetsi li qala ebile li fela, meqoqo ea sehlopha e tla lula e bulehile bakeng sa puisano e tloaelehileng.",
     "deleteDesc": "Ke batsamaisi feela ba ka hlakolang thuto. Ena ke ketso e senyang e tlosang basebelisi bohle le ho hlakola meqoqo eohle e khethiloeng ka har'a thuto. Tsoela pele ka hloko.",
     "whatNow": "Joale ho etsahalang?",
     "chooseNextActivity": "Khetha mosebetsi o latelang!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Tswela pele ho ema",
     "botTookSeatAfterAnHour": "Thuto ena e ne e butswe ka hora, kahoo Pangea Bot e nkile setulo se se nang motho.",
     "botTookSeatAfterADay": "Thuto ena e ne e butswe ho feta letsatsi, kahoo Pangea Bot e nkile setulo se se nang motho. Romela molaetsa ho qala.",
+    "subscriptionGracePeriodEndsOn": "Tefo e hlotsoe. Nako ea mohau e fela ka {date}",
     "accountSetupFailedHelp": "Re hlotsoe ho qeta ho hloma ak'haonte ea hau. Lekola khokahano ea hau ebe u leka hape, kapa u tsoe ebe u kena hape hamorao."
 }

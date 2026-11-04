@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-11-02 14:31:48.887262",
+    "@@last_modified": "2026-11-04 10:19:29.897590",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Faodaidh tu tiotal teamplaid, tuairisgeulan, agus ìomhaigh cùrsa a dheasachadh nas fhaide air adhart.",
     "createCourse": "Cruthaich cùrsa",
     "stats": "Staitistig",
-    "createGroupChat": "Cruthaich còmhradh buidhne",
     "editCourse": "Deasaich cùrsa",
     "inviteDesc": "Le ainm-cleachdaiche, le còd no ceangal",
     "editCourseDesc": "An seo faodaidh tu tiotal cùrsa, tuairisgeul, msaa a dheasachadh.",
     "permissionsDesc": "Suidhich ceadan leithid cò as urrainn luchd-cleachdaidh a chuireadh, teachdaireachdan a chur, còmhradh a chruthachadh, msaa.",
     "accessDesc": "Faodaidh tu do chùrsa a dhèanamh fosgailte don t-saoghal! No, dèan do chùrsa prìobhaideach agus tèarainte.",
-    "createGroupChatDesc": "Fhad 's a thòisicheas agus a thig seiseanan gnìomhachd gu crìch, bidh còmhradh buidhne fosgailte airson conaltradh àbhaisteach.",
     "deleteDesc": "Chan urrainn ach rianairean cùrsa a dhubhadh às. Is e gnìomh millteach a tha seo a bheir air falbh a h-uile neach-cleachdaidh agus a sguabas às a h-uile còmhradh taghte taobh a-staigh a' chùrsa. Bi faiceallach.",
     "whatNow": "Dè a-nis?",
     "chooseNextActivity": "Tagh an ath ghnìomhachd agad!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Cùm a' feitheamh",
     "botTookSeatAfterAnHour": "Bha an seisean seo fosgailte airson uair a thìde, agus mar sin ghabh Pangea Bot an cathair fhosgailte.",
     "botTookSeatAfterADay": "Bha an seisean seo fosgailte airson còrr is latha, agus mar sin ghabh Pangea Bot an cathair fhosgailte. Cuir teachdaireachd gus tòiseachadh.",
+    "subscriptionGracePeriodEndsOn": "Dh'fhàillig am pàigheadh. Thig an ùine-ghràis gu crìch air {date}",
     "accountSetupFailedHelp": "Cha b' urrainn dhuinn crìoch a chur air do chunntas a stèidheachadh. Thoir sùil air a' cheangal agad agus feuch a-rithist, no log a-mach agus clàraich a-steach nas fhaide air adhart."
 }

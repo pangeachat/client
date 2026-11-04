@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-11-02 14:31:56.061984",
+    "@@last_modified": "2026-11-04 10:19:35.796718",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Anjeun tiasa ngédit judul témplat, déskripsi, sareng gambar kursus engké.",
     "createCourse": "Jieun kursus",
     "stats": "Statistik",
-    "createGroupChat": "Jieun obrolan grup",
     "editCourse": "Édit kursus",
     "inviteDesc": "Ku ngaran pamaké, ku kode atawa tautan",
     "editCourseDesc": "Di dieu anjeun tiasa ngédit judul kursus, déskripsi, jsb.",
     "permissionsDesc": "Setel idin sapertos saha anu tiasa ngundang pangguna, ngirim pesen, nyiptakeun obrolan, jsb.",
     "accessDesc": "Anjeun tiasa ngajantenkeun kursus anjeun kabuka pikeun dunya! Atanapi, jantenkeun kursus anjeun pribadi sareng aman.",
-    "createGroupChatDesc": "Sanaos sési kagiatan dimimitian sareng réngsé, obrolan grup bakal tetep kabuka pikeun komunikasi rutin.",
     "deleteDesc": "Ngan admin anu tiasa ngahapus kursus. Ieu mangrupikeun tindakan anu ngaruksak anu ngahapus sadaya pangguna sareng ngahapus sadaya obrolan anu dipilih dina kursus. Teraskeun kalayan ati-ati.",
     "whatNow": "Ayeuna kumaha?",
     "chooseNextActivity": "Pilih kagiatan anjeun salajengna!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Teraskeun ngantosan",
     "botTookSeatAfterAnHour": "Sési ieu dibuka sajam, janten Pangea Bot nyandak korsi kosong.",
     "botTookSeatAfterADay": "Sési ieu dibuka langkung ti sadinten, janten Pangea Bot nyandak korsi kosong. Kirim pesen pikeun ngamimitian.",
+    "subscriptionGracePeriodEndsOn": "Pamayaran gagal. Mangsa tenggang réngsé dina {date}",
     "accountSetupFailedHelp": "Kami henteu tiasa ngarengsekeun panyetélan akun anjeun. Pariksa sambungan anjeun teras cobian deui, atanapi kaluar teras asup deui engké."
 }

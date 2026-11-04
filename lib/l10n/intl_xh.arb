@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-11-02 14:31:57.716907",
+    "@@last_modified": "2026-11-04 10:19:36.936150",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Ungahlela isihloko setemplate, iinkcazelo, kunye nomfanekiso wekhosi kamva.",
     "createCourse": "Yenza ikhosi",
     "stats": "Izibalo",
-    "createGroupChat": "Yenza ingxoxo yeqela",
     "editCourse": "Hlela ikhosi",
     "inviteDesc": "Ngegama lomsebenzisi, ngekhowudi okanye ngelink",
     "editCourseDesc": "Apha ungahlela isihloko sekhosi, inkcazelo, njl.njl.",
     "permissionsDesc": "Seta iimvume ezifana nokuba ngubani onokumema abasebenzisi, athumele imiyalezo, enze iingxoxo, njl.njl.",
     "accessDesc": "Ungayenza ikhosi yakho ivulekele ihlabathi! Okanye, yenza ikhosi yakho ibe yimfihlo kwaye ikhuseleke.",
-    "createGroupChatDesc": "Ngelixa iiseshoni zomsebenzi ziqala kwaye ziphela, iingxoxo zeqela ziya kuhlala zivulekile kunxibelelwano oluqhelekileyo.",
     "deleteDesc": "Ngabaphathi kuphela abanokucima ikhosi. Olu luhlobo oluyingozi olususa bonke abasebenzisi kwaye lucime zonke iingxoxo ezikhethiweyo ngaphakathi kwekhosi. Qhubeka ngononophelo.",
     "whatNow": "Yintoni ngoku?",
     "chooseNextActivity": "Khetha umsebenzi wakho olandelayo!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Qhubeka ulindile",
     "botTookSeatAfterAnHour": "Le seshoni ibivulekile iyure, ngoko iPangea Bot ithathe isihlalo esivulekileyo.",
     "botTookSeatAfterADay": "Le seshoni ibivulekile ngaphezu kosuku, ngoko iPangea Bot ithathe isihlalo esivulekileyo. Thumela umyalezo ukuze uqale.",
+    "subscriptionGracePeriodEndsOn": "Intlawulo ayiphumelelanga. Ixesha lesisa liphela ngo-{date}",
     "accountSetupFailedHelp": "Asikwazanga ukugqiba ukuseta iakhawunti yakho. Jonga uqhagamshelo lwakho uze uzame kwakhona, okanye phuma uze ungene kamva."
 }

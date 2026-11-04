@@ -3447,13 +3447,11 @@
     "requestSummaries": "Pieprasīt kopsavilkumus",
     "requestAccessTitle": "Pieprasīt analītikas piekļuvi?",
     "requestAccessDesc": "Vai vēlaties pieprasīt piekļuvi, lai skatītu dalībnieku analītiku?\n\nJa dalībnieki piekrīt, šīs kursa administratori varēs skatīt viņu:\n    • kopējo vārdu krājumu\n    • kopējo gramatikas jēdzienu skaitu\n    • kopējo aktivitāšu sesiju skaitu\n    • konkrētus izmantotos, pareizi un nepareizi, gramatikas jēdzienus\n\nViņi nevarēs skatīt viņu:\n    • ziņojumus ārpus kursa čatos\n    • vārdu krājuma sarakstu",
-    "createGroupChat": "Izveidot grupu čatu",
     "editCourse": "Rediģēt kursu",
     "inviteDesc": "Ar lietotājvārdu, ar kodu vai saiti",
     "editCourseDesc": "Šeit jūs varat rediģēt kursa nosaukumu, aprakstu utt.",
     "permissionsDesc": "Iestatiet atļaujas, piemēram, kas var uzaicināt lietotājus, sūtīt ziņojumus, veidot čatus utt.",
     "accessDesc": "Jūs varat padarīt savu kursu atvērtu pasaulei! Vai arī padarīt kursu privātu un drošu.",
-    "createGroupChatDesc": "Kamēr aktivitāšu sesijas sākas un beidzas, grupu čati paliks atvērti ikdienas saziņai.",
     "deleteDesc": "Tikai administratori var dzēst kursu. Šī ir postoša darbība, kas izdzēš visus lietotājus un dzēš visus atlasītos čatus kursā. Esiet uzmanīgs.",
     "whatNow": "Kas tagad?",
     "chooseNextActivity": "Izvēlies nākamo aktivitāti!",
@@ -3515,7 +3513,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-11-02 14:31:52.078316",
+    "@@last_modified": "2026-11-04 10:19:32.312409",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10056,5 +10046,6 @@
     "keepWaiting": "Turpināt gaidīt",
     "botTookSeatAfterAnHour": "Šī sesija bija atvērta stundu, tāpēc Pangea Bots ieņēma brīvo vietu.",
     "botTookSeatAfterADay": "Šī sesija bija atvērta vairāk nekā dienu, tāpēc Pangea Bots ieņēma brīvo vietu. Nosūtiet ziņu, lai sāktu.",
+    "subscriptionGracePeriodEndsOn": "Maksājums neizdevās. Atliktais periods beidzas {date}",
     "accountSetupFailedHelp": "Mēs nevarējām pabeigt jūsu konta iestatīšanu. Pārbaudiet savienojumu un mēģiniet vēlreiz, vai izrakstieties un pierakstieties vēlāk."
 }

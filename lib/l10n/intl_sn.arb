@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-11-02 14:31:55.165461",
+    "@@last_modified": "2026-11-04 10:19:35.251461",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Unogona kugadzirisa zita retemplate, tsanangudzo, uye mufananidzo wechikamu gare gare.",
     "createCourse": "Gadzira chikamu",
     "stats": "Nhamba",
-    "createGroupChat": "Gadzira chat yeboka",
     "editCourse": "Gadzirisa chikamu",
     "inviteDesc": "Nezita remushandisi, nekodhi kana link",
     "editCourseDesc": "Pano unogona kugadzirisa zita rechikamu, tsanangudzo, nezvimwe.",
     "permissionsDesc": "Gadzira mvumo dzakadai sekuti ndiani anogona kukoka vashandisi, kutumira mameseji, kugadzira machat, nezvimwe.",
     "accessDesc": "Unogona kuita kuti chikamu chako chivhurike kune nyika! Kana, ita kuti chikamu chako chive chakavanzika uye chakachengeteka.",
-    "createGroupChatDesc": "Nepo zvikamu zvezviitiko zvichitanga nekupedza, machat eboka anoramba akavhurika kune kutaurirana kwemazuva ese.",
     "deleteDesc": "Maadmin chete ndivo vanogona kudzima chikamu. Ichi chiito chinoparadza chinobvisa vese vashandisi uye chinodzima machat ese akasarudzwa mukati mechikamu. Enda nekuchenjerera.",
     "whatNow": "Zvino chii?",
     "chooseNextActivity": "Sarudza chiitiko chako chinotevera!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Ramba wakamirira",
     "botTookSeatAfterAnHour": "Chikamu ichi chaive chakavhurika kweawa, saka Pangea Bot yakatora chigaro chisina munhu.",
     "botTookSeatAfterADay": "Chikamu ichi chaive chakavhurika kwezuva rose, saka Pangea Bot yakatora chigaro chisina munhu. Tumira meseji kuti utange.",
+    "subscriptionGracePeriodEndsOn": "Kubhadhara kwakakundikana. Nguva yenyasha inopera musi wa {date}",
     "accountSetupFailedHelp": "Hatina kukwanisa kupedza kuseta account yako. Tarisa network yako woedza zvakare, kana kuti log out wozoedza zvakare gare gare gare."
 }

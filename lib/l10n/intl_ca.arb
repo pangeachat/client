@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-02 14:31:46.616968",
+    "@@last_modified": "2026-11-04 10:19:27.863548",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3353,13 +3353,11 @@
     "editCourseLater": "Pots editar el títol de la plantilla, les descripcions i la imatge del curs més tard.",
     "createCourse": "Crear curs",
     "stats": "Estadístiques",
-    "createGroupChat": "Crear xat de grup",
     "editCourse": "Editar curs",
     "inviteDesc": "Per nom d'usuari, per codi o enllaç",
     "editCourseDesc": "Aquí pots editar el títol del curs, la descripció, etc.",
     "permissionsDesc": "Estableix permisos com qui pot convidar usuaris, enviar missatges, crear xats, etc.",
     "accessDesc": "Pots fer que el teu curs sigui obert al món! O bé, fer que el teu curs sigui privat i segur.",
-    "createGroupChatDesc": "Mentre que les sessions d'activitat comencen i acaben, els xats de grup romandran oberts per a la comunicació rutinària.",
     "deleteDesc": "Només els administradors poden eliminar un curs. Aquesta és una acció destructiva que elimina tots els usuaris i elimina tots els xats seleccionats dins del curs. Procedeix amb precaució.",
     "whatNow": "I ara què?",
     "chooseNextActivity": "Tria la teva propera activitat!",
@@ -6024,10 +6022,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6045,10 +6039,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10183,5 +10173,6 @@
     "keepWaiting": "Seguir esperant",
     "botTookSeatAfterAnHour": "Aquesta sessió ha estat oberta durant una hora, així que el bot Pangea ha ocupat el seient lliure.",
     "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar.",
+    "subscriptionGracePeriodEndsOn": "El pagament ha fallat. El període de gràcia finalitza el {date}",
     "accountSetupFailedHelp": "No hem pogut acabar de configurar el teu compte. Comprova la teva connexió i torna-ho a provar, o tanca la sessió i torna a iniciar-la més tard."
 }

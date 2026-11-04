@@ -57,7 +57,6 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -1320,7 +1319,7 @@ class _WorldMapViewState extends State<WorldMapView>
           searchLeft -
           math.max(
             widget.controller.widget.rightOverlayWidth,
-            PanelAllocator.clusterGutter,
+            WorkspaceShell.clusterGutter,
           ) -
           PanelCard.margin.right,
     );

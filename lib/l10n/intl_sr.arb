@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-02 14:31:55.506978",
+    "@@last_modified": "2026-11-04 10:19:35.332798",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -2659,13 +2659,11 @@
     "editCourseLater": "Možete kasnije izmeniti naslov šablona, opise i sliku kursa.",
     "createCourse": "Kreiraj kurs",
     "stats": "Statistika",
-    "createGroupChat": "Kreiraj grupni chat",
     "editCourse": "Izmeni kurs",
     "inviteDesc": "Po korisničkom imenu, po kodu ili linku",
     "editCourseDesc": "Ovde možete izmeniti naslov kursa, opis, itd.",
     "permissionsDesc": "Postavite dozvole kao što su ko može pozvati korisnike, slati poruke, kreirati chatove, itd.",
     "accessDesc": "Možete učiniti svoj kurs otvorenim za sve! Ili, učiniti ga privatnim i sigurnim.",
-    "createGroupChatDesc": "Dok sesije aktivnosti počinju i završavaju, grupni chatovi će ostati otvoreni za rutinsku komunikaciju.",
     "deleteDesc": "Samo administratori mogu obrisati kurs. Ovo je destruktivna radnja koja uklanja sve korisnike i briše sve odabrane chatove unutar kursa. Budite oprezni.",
     "whatNow": "Шта сада?",
     "chooseNextActivity": "Изаберите следећу активност!",
@@ -6843,10 +6841,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6864,10 +6858,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -11002,5 +10992,6 @@
     "keepWaiting": "Nastavi čekati",
     "botTookSeatAfterAnHour": "Ova sesija je bila otvorena sat vremena, tako da je Pangea Bot zauzeo slobodno mesto.",
     "botTookSeatAfterADay": "Ova sesija je bila otvorena više od jednog dana, tako da je Pangea Bot zauzeo slobodno mesto. Pošaljite poruku da započnete.",
+    "subscriptionGracePeriodEndsOn": "Plaćanje nije uspelo. Grejs period se završava {date}",
     "accountSetupFailedHelp": "Nismo uspeli da završimo podešavanje vašeg naloga. Proverite vezu i pokušajte ponovo, ili se odjavite i prijavite kasnije."
 }

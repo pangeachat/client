@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-02 14:31:50.035212",
+    "@@last_modified": "2026-11-04 10:19:30.674724",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3388,13 +3388,11 @@
     "editCourseLater": "Anda dapat mengedit judul template, deskripsi, dan gambar kursus nanti.",
     "createCourse": "Buat kursus",
     "stats": "Statistik",
-    "createGroupChat": "Buat obrolan grup",
     "editCourse": "Edit kursus",
     "inviteDesc": "Undang dengan nama pengguna, kode, atau tautan",
     "editCourseDesc": "Di sini Anda dapat mengedit judul kursus, deskripsi, dll.",
     "permissionsDesc": "Atur izin seperti siapa yang dapat mengundang pengguna, mengirim pesan, membuat obrolan, dll.",
     "accessDesc": "Anda dapat membuat kursus Anda terbuka untuk dunia! Atau, buat kursus Anda pribadi dan aman.",
-    "createGroupChatDesc": "Sedangkan sesi aktivitas dimulai dan berakhir, obrolan grup akan tetap terbuka untuk komunikasi rutin.",
     "deleteDesc": "Hanya admin yang dapat menghapus kursus. Ini adalah tindakan destruktif yang menghapus semua pengguna dan menghapus semua obrolan yang dipilih dalam kursus. Lanjutkan dengan hati-hati.",
     "whatNow": "Apa sekarang?",
     "chooseNextActivity": "Pilih aktivitas berikutnya!",
@@ -6000,10 +5998,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6021,10 +6015,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10129,5 +10119,6 @@
     "keepWaiting": "Terus menunggu",
     "botTookSeatAfterAnHour": "Sesi ini terbuka selama satu jam, jadi Pangea Bot mengambil kursi kosong.",
     "botTookSeatAfterADay": "Sesi ini terbuka selama lebih dari sehari, jadi Pangea Bot mengambil kursi kosong. Kirim pesan untuk memulai.",
+    "subscriptionGracePeriodEndsOn": "Pembayaran gagal. Masa tenggang berakhir pada {date}",
     "accountSetupFailedHelp": "Kami tidak dapat menyelesaikan penyiapan akun Anda. Periksa koneksi Anda dan coba lagi, atau keluar dan masuk nanti."
 }

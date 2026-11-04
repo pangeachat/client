@@ -238,14 +238,12 @@ void main() {
       },
     );
 
-    test('prefers the profile room id over the local canonical room', () async {
-      // The profile is authoritative and is the SAME source the teacher
-      // dashboard reads, so it must win over any local room.
-      profileWithAnalyticsRoom(analyticsRoomId);
-      client.rooms = [
-        courseRoom(),
-        analyticsRoom('!stale:fakeServer.notExisting'),
-      ];
+    test('prefers the local canonical room over the profile room id', () async {
+      // CLIENT-EFF: a profile can carry a room id copied from another account
+      // (#8531), and the server refuses a room the caller did not create. The
+      // local room is checked to be this learner's own.
+      profileWithAnalyticsRoom('!theirs:fakeServer.notExisting');
+      client.rooms = [courseRoom(), analyticsRoom(analyticsRoomId)];
 
       await client.grantInstructorsAnalyticsAccess(courseRoomId);
 

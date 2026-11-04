@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui' as ui show SemanticsHitTestBehavior;
 
 import 'package:flutter/material.dart';
 
@@ -239,9 +240,54 @@ void main() {
     });
   });
 
+  // #9584 — on web with the semantics tree on, clicks go by the semantics
+  // DOM, which a widget test does not have, so this pins what that DOM is
+  // built from: the banner's own node takes the clicks, and it still carries
+  // the message its live region announces.
+  testWidgets('every banner takes the clicks that land on it', (tester) async {
+    final semantics = tester.ensureSemantics();
+    var taps = 0;
+    await tester.pumpWidget(
+      app(
+        SizedBox.expand(
+          child: TextButton(onPressed: () => taps++, child: const SizedBox()),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byType(TextButton));
+    expect(taps, 1);
+
+    Future<void> expectTakesClicks(String text) async {
+      final banner = tester.getSemantics(find.text(text));
+      expect(banner.label, text);
+      expect(banner.flagsCollection.isLiveRegion, isTrue, reason: text);
+      expect(
+        banner.hitTestBehavior,
+        ui.SemanticsHitTestBehavior.opaque,
+        reason: text,
+      );
+      await tester.tap(find.text(text));
+      expect(taps, 1, reason: text);
+    }
+
+    await setStatus(tester, ConnectionStatus.offline);
+    await expectTakesClicks(offlineText);
+    await setStatus(tester, ConnectionStatus.unreachable);
+    await expectTakesClicks(unreachableText);
+    await setStatus(tester, ConnectionStatus.backOnline);
+    await expectTakesClicks('Back online');
+    await block(tester, {NetworkHostCategory.chatServer});
+    await expectTakesClicks(bannerText);
+
+    semantics.dispose();
+  });
+
   // #9513 — practice that works offline, offered from the banner.
   group('the practice offer', () {
     const offerText = 'Practice vocab while you wait';
+    // By its name, which every layout gives it; only a wide screen shows it.
+    Finder offer() => find.bySemanticsLabel(offerText);
     final holder = PracticeSessionHolder.instance;
     late GoRouter router;
 
@@ -280,27 +326,27 @@ void main() {
     ) async {
       await tester.pumpWidget(routedApp());
       await tester.pumpAndSettle();
-      expect(find.text(offerText), findsNothing);
+      expect(offer(), findsNothing);
 
       status.value = ConnectionStatus.offline;
       await settle(tester);
       expect(find.text(offlineText), findsOneWidget);
-      expect(find.text(offerText), findsOneWidget);
+      expect(offer(), findsOneWidget);
 
       status.value = ConnectionStatus.unreachable;
       await settle(tester);
       expect(find.text(unreachableText), findsOneWidget);
-      expect(find.text(offerText), findsOneWidget);
+      expect(offer(), findsOneWidget);
 
       blocked.value = {NetworkHostCategory.pangeaApi};
       await settle(tester);
       expect(find.text(bannerText), findsOneWidget);
-      expect(find.text(offerText), findsOneWidget);
+      expect(offer(), findsOneWidget);
 
       blocked.value = {};
       status.value = ConnectionStatus.backOnline;
       await settle(tester);
-      expect(find.text(offerText), findsNothing);
+      expect(offer(), findsNothing);
     });
 
     testWidgets('is not made without a session\'s worth of saved meanings', (
@@ -313,7 +359,7 @@ void main() {
       status.value = ConnectionStatus.offline;
       await settle(tester);
       expect(find.text(offlineText), findsOneWidget);
-      expect(find.text(offerText), findsNothing);
+      expect(offer(), findsNothing);
     });
 
     testWidgets('dismisses the banner and opens vocab practice', (
@@ -324,7 +370,7 @@ void main() {
       status.value = ConnectionStatus.offline;
       await settle(tester);
 
-      await tester.tap(find.text(offerText));
+      await tester.tap(offer());
       await tester.pumpAndSettle();
 
       expect(find.text(offlineText), findsNothing);
@@ -347,7 +393,7 @@ void main() {
       status.value = ConnectionStatus.offline;
       await settle(tester);
       expect(find.text(offlineText), findsOneWidget);
-      expect(find.text(offerText), findsNothing);
+      expect(offer(), findsNothing);
     });
 
     testWidgets('waits while a practice session is in progress', (
@@ -389,11 +435,78 @@ void main() {
       status.value = ConnectionStatus.offline;
       await settle(tester);
       expect(find.text(offlineText), findsOneWidget);
-      expect(find.text(offerText), findsNothing);
+      expect(offer(), findsNothing);
 
       holder.end();
       await settle(tester);
+      expect(offer(), findsOneWidget);
+    });
+
+    // #9570 — on a phone the banner floats over the strip above a sheet that
+    // can rise to just below the top bar, so the offer must not add a row.
+    Future<void> showOfflineAt(WidgetTester tester, Size size) async {
+      tester.view.devicePixelRatio = 1;
+      tester.view.physicalSize = size;
+      addTearDown(tester.view.reset);
+      await tester.pumpWidget(routedApp());
+      await tester.pumpAndSettle();
+      status.value = ConnectionStatus.offline;
+      await settle(tester);
+    }
+
+    testWidgets('on a phone, is the practice icon on the message\'s row', (
+      tester,
+    ) async {
+      await showOfflineAt(tester, const Size(390, 844));
+
+      expect(find.text(offerText), findsNothing);
+      expect(
+        tester.getCenter(offer()).dy,
+        tester.getCenter(find.bySemanticsLabel('Close')).dy,
+      );
+    });
+
+    testWidgets('on a phone, is the practice icon on the filtered-network '
+        'banner\'s row too', (tester) async {
+      await showOfflineAt(tester, const Size(390, 844));
+      blocked.value = {NetworkHostCategory.pangeaApi};
+      await settle(tester);
+
+      expect(find.text(bannerText), findsOneWidget);
+      expect(find.text(offerText), findsNothing);
+      expect(
+        tester.getCenter(offer()).dy,
+        tester.getCenter(find.bySemanticsLabel('Close')).dy,
+      );
+    });
+
+    // The test font draws every glyph a full em wide, which makes the English
+    // "What can I do?" as wide as its longest translations.
+    testWidgets('a long "What can I do?" wraps instead of squeezing the '
+        'message', (tester) async {
+      await showOfflineAt(tester, const Size(390, 844));
+      blocked.value = {NetworkHostCategory.pangeaApi};
+      await settle(tester);
+
+      expect(tester.takeException(), isNull);
+      expect(
+        tester.getSize(find.text(bannerText)).width,
+        greaterThanOrEqualTo(tester.getSize(find.text('What can I do?')).width),
+      );
+    });
+
+    testWidgets('on a wide screen, has a labelled row under the message', (
+      tester,
+    ) async {
+      await showOfflineAt(tester, const Size(1280, 800));
+
       expect(find.text(offerText), findsOneWidget);
+      expect(
+        tester.getTopLeft(offer()).dy,
+        greaterThanOrEqualTo(
+          tester.getBottomLeft(find.bySemanticsLabel('Close')).dy,
+        ),
+      );
     });
   });
 

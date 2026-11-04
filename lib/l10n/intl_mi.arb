@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-11-02 14:31:53.480265",
+    "@@last_modified": "2026-11-04 10:19:32.777114",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Ka taea e koe te whakatika i te taitara tauira, ngā whakaahuatanga, me te ahua akoranga ā muri ake.",
     "createCourse": "Waihanga akoranga",
     "stats": "Tatauranga",
-    "createGroupChat": "Waihanga kōrerorero rōpū",
     "editCourse": "Whakatika akoranga",
     "inviteDesc": "Mā te ingoa kaiwhakamahi, mā te waehere, mā te hononga rānei",
     "editCourseDesc": "I konei ka taea e koe te whakatika i te taitara akoranga, te whakaahuatanga, me ētahi atu.",
     "permissionsDesc": "Whakaritea ngā whakaaetanga pēnei i te tangata ka taea te pōwhiri kaiwhakamahi, te tuku karere, te waihanga kōrerorero, me ētahi atu.",
     "accessDesc": "Ka taea e koe te whakatuwhera i tō akoranga ki te ao! Ka taea rānei e koe te whakatū i tō akoranga kia tūmataiti, kia haumaru hoki.",
-    "createGroupChatDesc": "Ahakoa ka tīmata, ka mutu ngā hui mahi, ka noho tuwhera tonu ngā kōrerorero rōpū mō te kōrero auau.",
     "deleteDesc": "Mā ngā kaiwhakahaere anake e muku he akoranga. He mahi whakangaro tēnei e tango ana i ngā kaiwhakamahi katoa, e muku ana hoki i ngā kōrerorero katoa kua tohua i roto i te akoranga. Kia tūpato.",
     "whatNow": "He aha inaianei?",
     "chooseNextActivity": "Kōwhiria tō mahi e whai ake nei!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Me tatari tonu",
     "botTookSeatAfterAnHour": "I wātea tēnei hui mō te hāora, nō reira i tangohia e Pangea Bot te tūru wātea.",
     "botTookSeatAfterADay": "I wātea tēnei hui mō te rā kotahi, nō reira i tangohia e Pangea Bot te tūru wātea. Tukuna he karere kia tīmata ai.",
+    "subscriptionGracePeriodEndsOn": "Kua rahua te utu. Ka mutu te wā āwhina ā-utu hei te {date}",
     "accountSetupFailedHelp": "Kāore i oti i a mātou te whakarite i tō pūkete. Tirohia tō hononga ka ngana anō, takiuru atu rānei ka takiuru mai anō ā muri ake."
 }

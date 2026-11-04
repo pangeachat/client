@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-11-02 14:31:45.754702",
+    "@@last_modified": "2026-11-04 10:19:27.150298",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Şablon başlığını, təsvirləri və kurs şəklini daha sonra redaktə edə bilərsiniz.",
     "createCourse": "Kurs yarat",
     "stats": "Statistika",
-    "createGroupChat": "Qrup söhbəti yarat",
     "editCourse": "Kursa düzəliş et",
     "inviteDesc": "İstifadəçi adı, kod və ya link ilə",
     "editCourseDesc": "Burada kursun başlığına, təsvirinə və s. düzəliş edə bilərsiniz.",
     "permissionsDesc": "Kimlərin istifadəçiləri dəvət edə, mesaj göndərə, söhbət yarada biləcəyi kimi icazələri təyin edin.",
     "accessDesc": "Kursunuzu bütün dünyaya aça bilərsiniz! Və ya kursunuzu özəl və təhlükəsiz edə bilərsiniz.",
-    "createGroupChatDesc": "Fəaliyyət sessiyaları başlayıb bitsə də, qrup söhbətləri gündəlik ünsiyyət üçün açıq qalacaq.",
     "deleteDesc": "Yalnız adminlər kursu silə bilər. Bu, bütün istifadəçiləri silən və kurs daxilində seçilmiş bütün söhbətləri silən dağıdıcı bir hərəkətdir. Ehtiyatla davam edin.",
     "whatNow": "İndi nə edək?",
     "chooseNextActivity": "Növbəti fəaliyyətinizi seçin!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Gözləməyə davam et",
     "botTookSeatAfterAnHour": "Bu sessiya bir saat açıq idi, buna görə Pangea Bot boş yeri tutdu.",
     "botTookSeatAfterADay": "Bu sessiya bir gündən çox açıq idi, buna görə Pangea Bot boş yeri tutdu. Başlamaq üçün mesaj göndərin.",
+    "subscriptionGracePeriodEndsOn": "Ödəniş uğursuz oldu. Güzəşt müddəti {date} tarixində bitir",
     "accountSetupFailedHelp": "Hesabınızı qura bilmədik. Bağlantınızı yoxlayın və yenidən cəhd edin, yaxud çıxış edib sonra daxil olun."
 }

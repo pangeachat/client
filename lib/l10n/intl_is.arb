@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-11-02 14:31:50.427451",
+    "@@last_modified": "2026-11-04 10:19:31.046695",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Þú getur breytt titli sniðmáts, lýsingum og námskeiðsmynd síðar.",
     "createCourse": "Búa til námskeið",
     "stats": "Tölfræði",
-    "createGroupChat": "Búa til hópspjall",
     "editCourse": "Breyta námskeiði",
     "inviteDesc": "Eftir notandanafni, með kóða eða hlekk",
     "editCourseDesc": "Hér getur þú breytt titli námskeiðs, lýsingu o.s.frv.",
     "permissionsDesc": "Stilltu heimildir eins og hverjir geta boðið notendum, sent skilaboð, búið til spjallrásir o.s.frv.",
     "accessDesc": "Þú getur gert námskeiðið þitt opið öllum! Eða, gert námskeiðið þitt einkarekið og öruggt.",
-    "createGroupChatDesc": "Þó að verkefnatímar byrji og endi, munu hópspjallrásir haldast opnar fyrir venjuleg samskipti.",
     "deleteDesc": "Aðeins stjórnendur geta eytt námskeiði. Þetta er eyðileggjandi aðgerð sem fjarlægir alla notendur og eyðir öllum völdum spjallrásum innan námskeiðsins. Farið varlega.",
     "whatNow": "Hvað nú?",
     "chooseNextActivity": "Veldu næsta verkefni þitt!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Halda áfram að bíða",
     "botTookSeatAfterAnHour": "Þessi lota var opin í klukkutíma, svo Pangea Bot tók lausa sætið.",
     "botTookSeatAfterADay": "Þessi lota var opin í yfir sólarhring, svo Pangea Bot tók lausa sætið. Sendu skilaboð til að byrja.",
+    "subscriptionGracePeriodEndsOn": "Greiðsla mistókst. Frestur rennur út {date}",
     "accountSetupFailedHelp": "Við gátum ekki lokið við að setja upp reikninginn þinn. Athugaðu tenginguna þína og reyndu aftur, eða skráðu þig út og inn aftur síðar."
 }

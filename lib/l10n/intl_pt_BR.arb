@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-02 14:31:54.874800",
+    "@@last_modified": "2026-11-04 10:19:34.106015",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -3469,13 +3469,11 @@
     "editCourseLater": "Você pode editar o título do modelo, descrições e a imagem do curso posteriormente.",
     "createCourse": "Criar curso",
     "stats": "Estatísticas",
-    "createGroupChat": "Criar chat em grupo",
     "editCourse": "Editar curso",
     "inviteDesc": "Por nome de usuário, por código ou link",
     "editCourseDesc": "Aqui você pode editar o título do curso, descrição, etc.",
     "permissionsDesc": "Defina permissões como quem pode convidar usuários, enviar mensagens, criar chats, etc.",
     "accessDesc": "Você pode tornar seu curso aberto ao mundo! Ou, tornar seu curso privado e seguro.",
-    "createGroupChatDesc": "Enquanto as sessões de atividade começam e terminam, os chats em grupo permanecerão abertos para comunicação rotineira.",
     "deleteDesc": "Somente administradores podem excluir um curso. Esta é uma ação destrutiva que remove todos os usuários e exclui todos os chats selecionados dentro do curso. Proceda com cautela.",
     "whatNow": "E agora?",
     "chooseNextActivity": "Escolha sua próxima atividade!",
@@ -6088,10 +6086,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6109,10 +6103,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10056,5 +10046,6 @@
     "keepWaiting": "Continuar esperando",
     "botTookSeatAfterAnHour": "Esta sessão ficou aberta por uma hora, então Pangea Bot ocupou o lugar vago.",
     "botTookSeatAfterADay": "Esta sessão ficou aberta por mais de um dia, então Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar.",
+    "subscriptionGracePeriodEndsOn": "Pagamento falhou. O período de carência termina em {date}",
     "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique sua conexão e tente novamente, ou saia e faça login mais tarde."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-02 14:31:53.003592",
+    "@@last_modified": "2026-11-04 10:19:33.154124",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3370,13 +3370,11 @@
     "editCourseLater": "Du kan redigere malens tittel, beskrivelser og kursbilde senere.",
     "createCourse": "Opprett kurs",
     "stats": "Statistikk",
-    "createGroupChat": "Opprett gruppechat",
     "editCourse": "Rediger kurs",
     "inviteDesc": "Med brukernavn, kode eller lenke",
     "editCourseDesc": "Her kan du redigere kursnavn, beskrivelse, osv.",
     "permissionsDesc": "Sett tillatelser som hvem som kan invitere brukere, sende meldinger, opprette chatter, osv.",
     "accessDesc": "Du kan gjøre kurset ditt åpent for alle! Eller, gjør kurset ditt privat og sikkert.",
-    "createGroupChatDesc": "Mens aktivitetsøkter starter og slutter, vil gruppechatter forbli åpne for rutinemessig kommunikasjon.",
     "deleteDesc": "Bare administratorer kan slette et kurs. Dette er en ødeleggende handling som fjerner alle brukere og sletter alle valgte chatter innen kurset. Vær forsiktig.",
     "whatNow": "Hva nå?",
     "chooseNextActivity": "Velg din neste aktivitet!",
@@ -6133,10 +6131,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6154,10 +6148,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10113,5 +10103,6 @@
     "keepWaiting": "Fortsett å vente",
     "botTookSeatAfterAnHour": "Denne økten var åpen i en time, så Pangea Bot tok den ledige plassen.",
     "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea Bot tok den ledige plassen. Send en melding for å starte.",
+    "subscriptionGracePeriodEndsOn": "Betaling mislyktes. Utsatt betalingsperiode avsluttes {date}",
     "accountSetupFailedHelp": "Vi kunne ikke fullføre oppsettet av kontoen din. Sjekk tilkoblingen din og prøv igjen, eller logg ut og logg inn senere."
 }

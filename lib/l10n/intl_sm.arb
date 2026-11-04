@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-11-02 14:31:55.735328",
+    "@@last_modified": "2026-11-04 10:19:34.953590",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "E mafai ona e faʻasaʻo le ulutala o le template, faʻamatalaga, ma le ata o le kosi mulimuli ane.",
     "createCourse": "Fausia se kosi",
     "stats": "Faʻamaumauga",
-    "createGroupChat": "Fausia se talanoaga faʻatasi",
     "editCourse": "Faʻasaʻo le kosi",
     "inviteDesc": "E ala i le igoa faʻaoga, e ala i le code poʻo le soʻotaga",
     "editCourseDesc": "Iinei e mafai ona e faʻasaʻo ai le ulutala o le kosi, faʻamatalaga, ma isi.",
     "permissionsDesc": "Seti faʻatagaga e pei o ai e mafai ona valaʻau tagata faʻaoga, lafo feʻau, fausia talanoaga, ma isi.",
     "accessDesc": "E mafai ona e tatalaina lau kosi i le lalolagi! Poʻo, faʻapitoa ma saogalemu lau kosi.",
-    "createGroupChatDesc": "Aʻo amata ma faʻaiʻu vasega gaioiga, o talanoaga faʻatasi o le a tumau pea mo fesoʻotaʻiga masani.",
     "deleteDesc": "Naʻo pule e mafai ona tape se kosi. O se gaioiga faʻaleagaina lea e aveese uma tagata faʻaoga ma tape uma talanoaga filifilia i totonu o le kosi. Faʻaauau ma le faʻaeteete.",
     "whatNow": "O le a le isi?",
     "chooseNextActivity": "Filifili lau isi gaioiga!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Fa'atali pea",
     "botTookSeatAfterAnHour": "Na tatala lenei sauniga mo le itula, o lea na nofo ai le Pangea Bot i le nofoa avanoa.",
     "botTookSeatAfterADay": "Na tatala lenei sauniga mo le silia ma le aso, o lea na nofo ai le Pangea Bot i le nofoa avanoa. Auina mai se fe'au e amata ai.",
+    "subscriptionGracePeriodEndsOn": "Ua lē taulau le totogi. E muta le vaitaimi fa'aopoopo i le aso {date}",
     "accountSetupFailedHelp": "E leʻi mafai ona matou faʻamaeʻaina le faʻatulagaina o lau teugatupe. Siaki lau fesoʻotaʻiga ma toe taumafai, pe alu ese ma saini i totonu mulimuli ane."
 }

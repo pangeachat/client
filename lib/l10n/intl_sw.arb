@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-11-02 14:31:56.005495",
+    "@@last_modified": "2026-11-04 10:19:35.846838",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Unaweza kuhariri jina la kiolezo, maelezo, na picha ya kozi baadaye.",
     "createCourse": "Unda kozi",
     "stats": "Takwimu",
-    "createGroupChat": "Unda gumzo la kikundi",
     "editCourse": "Hariri kozi",
     "inviteDesc": "Kwa jina la mtumiaji, kwa msimbo au kiungo",
     "editCourseDesc": "Hapa unaweza kuhariri jina la kozi, maelezo, n.k.",
     "permissionsDesc": "Weka ruhusa kama vile nani anaweza kualika watumiaji, kutuma jumbe, kuunda gumzo, n.k.",
     "accessDesc": "Unaweza kufanya kozi yako iwe wazi kwa ulimwengu! Au, fanya kozi yako iwe ya faragha na salama.",
-    "createGroupChatDesc": "Wakati vipindi vya shughuli vinaanza na kuisha, gumzo za kikundi zitabaki wazi kwa mawasiliano ya kawaida.",
     "deleteDesc": "Wasimamizi pekee ndio wanaweza kufuta kozi. Hii ni hatua hatari inayoondoa watumiaji wote na kufuta gumzo zote zilizochaguliwa ndani ya kozi. Endelea kwa tahadhari.",
     "whatNow": "Sasa nini?",
     "chooseNextActivity": "Chagua shughuli yako inayofuata!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Endelea kusubiri",
     "botTookSeatAfterAnHour": "Kipindi hiki kilikuwa wazi kwa saa moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi.",
     "botTookSeatAfterADay": "Kipindi hiki kilikuwa wazi kwa zaidi ya siku moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi. Tuma ujumbe ili kuanza.",
+    "subscriptionGracePeriodEndsOn": "Malipo yameshindwa. Muda wa ziada unaisha tarehe {date}",
     "accountSetupFailedHelp": "Hatukuweza kumaliza kusanidi akaunti yako. Angalia muunganisho wako na ujaribu tena, au ingia na uingie baadaye."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-11-02 14:31:50.725392",
+    "@@last_modified": "2026-11-04 10:19:30.774923",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -2870,13 +2870,11 @@
     "editCourseLater": "テンプレートのタイトル、説明、コース画像は後で編集できます。",
     "createCourse": "コースを作成",
     "stats": "統計",
-    "createGroupChat": "グループチャットを作成",
     "editCourse": "コースを編集",
     "inviteDesc": "ユーザー名、コードまたはリンクで招待",
     "editCourseDesc": "ここでコースのタイトル、説明などを編集できます。",
     "permissionsDesc": "招待、メッセージ送信、チャット作成などの権限を設定します。",
     "accessDesc": "コースを公開して世界に向けることも、プライベートで安全に保つこともできます。",
-    "createGroupChatDesc": "アクティビティセッションは開始と終了がありますが、グループチャットは日常的なコミュニケーションのために開いたままにします。",
     "deleteDesc": "コースを削除できるのは管理者のみです。これはすべてのユーザーを削除し、コース内のすべての選択されたチャットを削除する破壊的な操作です。注意して進めてください。",
     "whatNow": "次はどうする？",
     "chooseNextActivity": "次の活動を選択してください！",
@@ -6663,10 +6661,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6684,10 +6678,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10822,5 +10812,6 @@
     "keepWaiting": "待ち続ける",
     "botTookSeatAfterAnHour": "このセッションは1時間開いていたため、Pangea Botが空席に着きました。",
     "botTookSeatAfterADay": "このセッションは1日以上開いていたため、Pangea Botが空席に着きました。メッセージを送信して開始してください。",
+    "subscriptionGracePeriodEndsOn": "お支払いに失敗しました。猶予期間は{date}に終了します",
     "accountSetupFailedHelp": "アカウント設定を完了できませんでした。接続を確認して再試行するか、ログアウトして後でサインインしてください。"
 }

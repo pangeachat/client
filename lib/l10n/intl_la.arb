@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-11-02 14:31:51.775242",
+    "@@last_modified": "2026-11-04 10:19:31.767977",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Titulum exemplaris, descriptiones, et imaginem cursus postea mutare potes.",
     "createCourse": "Crea cursum",
     "stats": "Statistica",
-    "createGroupChat": "Crea colloquium gregis",
     "editCourse": "Muta cursum",
     "inviteDesc": "Per nomen utentis, codicem aut nexum",
     "editCourseDesc": "Hic titulum cursus, descriptionem, etc. mutare potes.",
     "permissionsDesc": "Permissa constitue, ut qui utentes invitare, nuntios mittere, colloquia creare possit, etc.",
     "accessDesc": "Cursum tuum mundo patere potes! Aut cursum tuum privatum et securum facere.",
-    "createGroupChatDesc": "Dum sessiones actionis incipiunt et finiunt, colloquia gregis ad communicationem quotidianam aperta manebunt.",
     "deleteDesc": "Solum magistri cursum delere possunt. Haec actio destructiva est quae omnes utentes amovet et omnia colloquia selecta intra cursum delet. Cautus procede.",
     "whatNow": "Quid nunc?",
     "chooseNextActivity": "Elige proximam actionem tuam!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Manere",
     "botTookSeatAfterAnHour": "Haec sessio per horam aperta erat, ergo Pangea Bot sedem liberam cepit.",
     "botTookSeatAfterADay": "Haec sessio per diem apertior erat, ergo Pangea Bot sedem liberam cepit. Mitte nuntium ut incipias.",
+    "subscriptionGracePeriodEndsOn": "Solutio defecit. Tempus gratiae desinit die {date}",
     "accountSetupFailedHelp": "Rationem tuam constituere non potuimus. Coniunctionem tuam inspice et iterum conare, aut exi et postea inscribe."
 }

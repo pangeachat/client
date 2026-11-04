@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-11-02 14:31:57.692804",
+    "@@last_modified": "2026-11-04 10:19:37.535750",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "O le ṣatunkọ akọle awoṣe, awọn apejuwe, ati aworan ikẹkọ nigbamii.",
     "createCourse": "Ṣẹda ikẹkọ",
     "stats": "Awọn iṣiro",
-    "createGroupChat": "Ṣẹda iwiregbe ẹgbẹ",
     "editCourse": "Ṣatunkọ ikẹkọ",
     "inviteDesc": "Nipa orukọ olumulo, nipa koodu tabi ọna asopọ",
     "editCourseDesc": "Nibi o le ṣatunkọ akọle ikẹkọ, apejuwe, ati bẹbẹ lọ.",
     "permissionsDesc": "Ṣeto awọn igbanilaaye gẹgẹbi ẹniti o le pe awọn olumulo, fi awọn ifiranṣẹ ranṣẹ, ṣẹda awọn iwiregbe, ati bẹbẹ lọ.",
     "accessDesc": "O le jẹ ki ikẹkọ rẹ ṣii si agbaye! Tabi, jẹ ki ikẹkọ rẹ jẹ ikọkọ ati aabo.",
-    "createGroupChatDesc": "Lakoko ti awọn akoko iṣẹ ṣiṣe bẹrẹ ati pari, awọn iwiregbe ẹgbẹ yoo wa ni ṣiṣi fun ibaraẹnisọrọ deede.",
     "deleteDesc": "Awọn oluṣakoso nikan le pa ikẹkọ kan. Eyi jẹ iṣe iparun ti o yọ gbogbo awọn olumulo kuro ti o si pa gbogbo awọn iwiregbe ti a yan ninu ikẹkọ. Tẹsiwaju pẹlu iṣọra.",
     "whatNow": "Kini bayi?",
     "chooseNextActivity": "Yan iṣẹ rẹ ti o tẹle!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Tẹsiwaju lati duro",
     "botTookSeatAfterAnHour": "Aago kan ti kọja ti igba yii ti ṣ'i silẹ, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo.",
     "botTookSeatAfterADay": "Igba yii ti ṣ'i silẹ fun ọjọ kan ju, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo. Fi ifiranṣẹ ranṣẹ lati bẹrẹ.",
+    "subscriptionGracePeriodEndsOn": "Ìsanwó kùnà. Àkókò oore-ọ̀fẹ́ parí ní {date}",
     "accountSetupFailedHelp": "A kò le pari siseto àkọọlẹ rẹ. Ṣayẹwo asopọ rẹ ki o tun gbiyanju, tabi jade ki o wọle nigbamii."
 }

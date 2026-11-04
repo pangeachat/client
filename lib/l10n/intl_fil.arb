@@ -1994,13 +1994,11 @@
     "editCourseLater": "Maaari mong i-edit ang pamagat ng template, mga paglalarawan, at larawan ng kurso sa ibang pagkakataon.",
     "createCourse": "Lumikha ng kurso",
     "stats": "Mga Estadistika",
-    "createGroupChat": "Lumikha ng pangkat na usapan",
     "editCourse": "I-edit ang kurso",
     "inviteDesc": "Sa pamamagitan ng username, code, o link",
     "editCourseDesc": "Dito maaari mong i-edit ang pamagat ng kurso, paglalarawan, atbp.",
     "permissionsDesc": "Itakda ang mga pahintulot tulad ng kung sino ang maaaring mag-imbita ng mga user, magpadala ng mga mensahe, lumikha ng mga usapan, atbp.",
     "accessDesc": "Maaari mong gawing bukas ang iyong kurso sa buong mundo! O, gawing pribado at ligtas ang iyong kurso.",
-    "createGroupChatDesc": "Kung saan nagsisimula at nagtatapos ang mga sesyon ng aktibidad, mananatiling bukas ang mga pangkat na usapan para sa pang-araw-araw na komunikasyon.",
     "deleteDesc": "Tanging mga admin lamang ang maaaring magtanggal ng kurso. Ito ay isang mapanirang aksyon na nag-aalis ng lahat ng mga user at nagtatanggal ng lahat ng napiling usapan sa loob ng kurso. Mag-ingat sa pagproseso.",
     "whatNow": "Ano na ngayon?",
     "chooseNextActivity": "Piliin ang iyong susunod na aktibidad!",
@@ -2073,7 +2071,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-11-02 14:31:48.132022",
+    "@@last_modified": "2026-11-04 10:19:28.627865",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6765,10 +6763,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6786,10 +6780,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10913,5 +10903,6 @@
     "keepWaiting": "Maghintay pa",
     "botTookSeatAfterAnHour": "Isang oras nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan.",
     "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula.",
+    "subscriptionGracePeriodEndsOn": "Nabigo ang pagbabayad. Matatapos ang grace period sa {date}",
     "accountSetupFailedHelp": "Hindi namin matapos ang pag-set up ng iyong account. Suriin ang iyong koneksyon at subukang muli, o mag-log out at mag-sign in mamaya."
 }

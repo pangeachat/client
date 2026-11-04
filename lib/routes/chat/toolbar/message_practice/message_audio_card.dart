@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
@@ -85,6 +86,7 @@ class MessageAudioCardState extends State<MessageAudioCard> {
               roomId: widget.messageEvent.room.id,
               senderId: widget.messageEvent.senderId,
               matrixFile: audioFile,
+              listeningCategory: DosageListeningCategory.practiceAudio,
               // The card sits on the bare surface, like the analytics
               // practice player, so it takes the same pair.
               color: Theme.of(context).colorScheme.primary,

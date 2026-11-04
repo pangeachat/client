@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-11-02 14:31:50.077219",
+    "@@last_modified": "2026-11-04 10:19:30.044295",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Ou ka edite tit modèl, deskripsyon, ak imaj kou a pita.",
     "createCourse": "Kreye kou",
     "stats": "Estatistik",
-    "createGroupChat": "Kreye chat gwoup",
     "editCourse": "Edite kou",
     "inviteDesc": "Pa non itilizatè, pa kòd oswa lyen",
     "editCourseDesc": "Isit la ou ka edite tit kou a, deskripsyon, elatriye.",
     "permissionsDesc": "Mete pèmisyon tankou ki moun ki ka envite itilizatè, voye mesaj, kreye chat, elatriye.",
     "accessDesc": "Ou ka fè kou ou ouvè pou tout mond lan! Oswa, fè kou ou prive ak an sekirite.",
-    "createGroupChatDesc": "Pandan ke sesyon aktivite yo kòmanse epi fini, chat gwoup yo ap rete ouvè pou kominikasyon woutin.",
     "deleteDesc": "Se sèlman administratè yo ki ka efase yon kou. Sa a se yon aksyon destriktif ki retire tout itilizatè yo epi efase tout chat chwazi nan kou a. Kontinye ak prekosyon.",
     "whatNow": "Kisa kounye a?",
     "chooseNextActivity": "Chwazi pwochen aktivite ou!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Kontinye tann",
     "botTookSeatAfterAnHour": "Sesyon sa a te ouvè pandan inèdtan, kidonk Pangea Bot te pran plas ki vid la.",
     "botTookSeatAfterADay": "Sesyon sa a te ouvè pandan plis pase yon jou, kidonk Pangea Bot te pran plas ki vid la. Voye yon mesaj pou kòmanse.",
+    "subscriptionGracePeriodEndsOn": "Peman an echwe. Peryòd gras la fini sou {date}",
     "accountSetupFailedHelp": "Nou pa t' kapab fini konfigirasyon kont ou. Tcheke koneksyon ou epi eseye ankò, oswa dekonekte epi konekte pita."
 }

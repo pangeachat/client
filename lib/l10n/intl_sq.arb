@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-11-02 14:31:55.805018",
+    "@@last_modified": "2026-11-04 10:19:35.274893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Mund të ndryshoni titullin e shabllonit, përshkrimet dhe imazhin e kursit më vonë.",
     "createCourse": "Krijo kurs",
     "stats": "Statistika",
-    "createGroupChat": "Krijo bisedë grupi",
     "editCourse": "Ndrysho kursin",
     "inviteDesc": "Me emër përdoruesi, me kod ose lidhje",
     "editCourseDesc": "Këtu mund të ndryshoni titullin e kursit, përshkrimin, etj.",
     "permissionsDesc": "Vendosni lejet si kush mund të ftojë përdorues, të dërgojë mesazhe, të krijojë biseda, etj.",
     "accessDesc": "Mund ta bëni kursin tuaj të hapur për të gjithë botën! Ose, bëjeni kursin tuaj privat dhe të sigurt.",
-    "createGroupChatDesc": "Ndërsa seancat e aktivitetit fillojnë dhe mbarojnë, bisedat në grup do të qëndrojnë të hapura për komunikim rutinë.",
     "deleteDesc": "Vetëm administratorët mund të fshijnë një kurs. Ky është një veprim shkatërrues që largon të gjithë përdoruesit dhe fshin të gjitha bisedat e zgjedhura brenda kursit. Vazhdoni me kujdes.",
     "whatNow": "Çfarë tani?",
     "chooseNextActivity": "Zgjidhni aktivitetin tuaj të radhës!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Vazhdo të presësh",
     "botTookSeatAfterAnHour": "Kjo seancë ishte e hapur për një orë, kështu që Pangea Bot zuri vendin e lirë.",
     "botTookSeatAfterADay": "Kjo seancë ishte e hapur për më shumë se një ditë, kështu që Pangea Bot zuri vendin e lirë. Dërgo një mesazh për të filluar.",
+    "subscriptionGracePeriodEndsOn": "Pagesa dështoi. Periudha e tolerancës përfundon më {date}",
     "accountSetupFailedHelp": "Nuk mundëm të përfundonim konfigurimin e llogarisë suaj. Kontrolloni lidhjen tuaj dhe provoni përsëri, ose dilni dhe kyçuni më vonë."
 }

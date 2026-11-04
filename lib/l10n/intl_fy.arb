@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-11-02 14:31:48.312974",
+    "@@last_modified": "2026-11-04 10:19:28.854371",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Jo kinne de titel, beskriuwingen en kursusôfbylding fan it sjabloan letter bewurkje.",
     "createCourse": "Kursus oanmeitsje",
     "stats": "Statistiken",
-    "createGroupChat": "Groepschat oanmeitsje",
     "editCourse": "Kursus bewurkje",
     "inviteDesc": "Mei brûkersnamme, koade of link",
     "editCourseDesc": "Hjir kinne jo de titel, beskriuwing, ensfh. fan de kursus bewurkje.",
     "permissionsDesc": "Stel tastimmingen yn, lykas wa't brûkers útnoegje, berjochten ferstjoere, chats oanmeitsje, ensfh. kin.",
     "accessDesc": "Jo kinne jo kursus iepenstelle foar de hiele wrâld! Of meitsje jo kursus privee en feilich.",
-    "createGroupChatDesc": "Wylst aktiviteitsesjes begjinne en einigje, bliuwe groepschats iepen foar reguliere kommunikaasje.",
     "deleteDesc": "Allinnich behearders kinne in kursus wiskje. Dit is in destruktive aksje dy't alle brûkers ferwideret en alle selektearre chats binnen de kursus wist. Wês foarsichtich.",
     "whatNow": "Wat no?",
     "chooseNextActivity": "Kies jo folgjende aktiviteit!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Wachtsje bliuwe",
     "botTookSeatAfterAnHour": "Dizze sesje wie in oere iepen, dus Pangea Bot hat de iepen plak ynnommen.",
     "botTookSeatAfterADay": "Dizze sesje wie mear as in dei iepen, dus Pangea Bot hat de iepen plak ynnommen. Stjoer in berjocht om te begjinnen.",
+    "subscriptionGracePeriodEndsOn": "Betelling mislearre. Betellingsfrije perioade einiget op {date}",
     "accountSetupFailedHelp": "Wy koene jo akkount net ynstelle. Kontrolearje jo ferbining en besykje it opnij, of meld jo ôf en meld jo letter wer oan."
 }

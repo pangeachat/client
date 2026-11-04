@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-02 14:31:48.971663",
+    "@@last_modified": "2026-11-04 10:19:29.971356",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2283,13 +2283,11 @@
     "editCourseLater": "אתה יכול לערוך את כותרת התבנית, תיאורים ותמונת הקורס מאוחר יותר.",
     "createCourse": "צור קורס",
     "stats": "סטטיסטיקות",
-    "createGroupChat": "צור שיחת קבוצתית",
     "editCourse": "ערוך קורס",
     "inviteDesc": "על ידי שם משתמש, קוד או קישור",
     "editCourseDesc": "כאן תוכל לערוך את כותרת הקורס, תיאור ועוד.",
     "permissionsDesc": "הגדר הרשאות כגון מי יכול להזמין משתמשים, לשלוח הודעות, ליצור שיחות, ועוד.",
     "accessDesc": "אתה יכול להפוך את הקורס שלך לגלוי לעולם! או, להפוך את הקורס לפרטי ומאובטח.",
-    "createGroupChatDesc": "בעוד שמפגשי הפעילות מתחילים ומסתיימים, שיחות קבוצתיות יישארו פתוחות לתקשורת שוטפת.",
     "deleteDesc": "רק מנהלים יכולים למחוק קורס. זוהי פעולה הרסנית שמסירה את כל המשתמשים ומוחקת את כל השיחות שנבחרו בתוך הקורס. המשך בזהירות.",
     "whatNow": "מה עכשיו?",
     "chooseNextActivity": "בחר את הפעילות הבאה שלך!",
@@ -6808,10 +6806,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6829,10 +6823,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10967,5 +10957,6 @@
     "keepWaiting": "המשך לחכות",
     "botTookSeatAfterAnHour": "השיחה הזו הייתה פתוחה במשך שעה, אז בוט Pangea תפס את המקום הפנוי.",
     "botTookSeatAfterADay": "השיחה הזו הייתה פתוחה למעלה מיום, אז בוט Pangea תפס את המקום הפנוי. שלח הודעה כדי להתחיל.",
+    "subscriptionGracePeriodEndsOn": "התשלום נכשל. תקופת החסד מסתיימת ב-{date}",
     "accountSetupFailedHelp": "לא הצלחנו לסיים את הגדרת החשבון שלך. בדוק את החיבור שלך ונסה שוב, או התנתק והתחבר מאוחר יותר."
 }

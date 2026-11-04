@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-02 14:31:54.741929",
+    "@@last_modified": "2026-11-04 10:19:34.082350",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -2944,13 +2944,11 @@
     "editCourseLater": "Poți edita titlul, descrierile și imaginea cursului mai târziu.",
     "createCourse": "Creează curs",
     "stats": "Statistici",
-    "createGroupChat": "Creează chat de grup",
     "editCourse": "Editează cursul",
     "inviteDesc": "Prin nume de utilizator, cod sau link",
     "editCourseDesc": "Aici poți edita titlul, descrierea și altele ale cursului.",
     "permissionsDesc": "Setează permisiuni precum cine poate invita utilizatori, trimite mesaje, crea chat-uri etc.",
     "accessDesc": "Poți face cursul tău deschis lumii! Sau, îl poți face privat și sigur.",
-    "createGroupChatDesc": "În timp ce sesiunile de activitate încep și se termină, chat-urile de grup vor rămâne deschise pentru comunicare de rutină.",
     "deleteDesc": "Doar administratorii pot șterge un curs. Aceasta este o acțiune distructivă care elimină toți utilizatorii și șterge toate chat-urile selectate din curs. Procedează cu precauție.",
     "whatNow": "Ce urmează?",
     "chooseNextActivity": "Alege următoarea activitate!",
@@ -6626,10 +6624,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6647,10 +6641,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10785,5 +10775,6 @@
     "keepWaiting": "Continuă să aștepți",
     "botTookSeatAfterAnHour": "Această sesiune a fost deschisă timp de o oră, așa că Pangea Bot a ocupat locul liber.",
     "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe.",
+    "subscriptionGracePeriodEndsOn": "Plata a eșuat. Perioada de grație se încheie pe {date}",
     "accountSetupFailedHelp": "Nu am putut finaliza configurarea contului tău. Verifică-ți conexiunea și încearcă din nou, sau deconectează-te și conectează-te mai târziu."
 }

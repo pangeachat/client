@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-11-02 14:31:56.164934",
+    "@@last_modified": "2026-11-04 10:19:35.133099",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Waad sixi kartaa cinwaanka template-ka, sharraxaadaha, iyo sawirka koorsada hadhow.",
     "createCourse": "Samee koorso",
     "stats": "Tirakoob",
-    "createGroupChat": "Samee sheeko kooxeed",
     "editCourse": "Tafatir koorsada",
     "inviteDesc": "Magaca isticmaalaha, koodhka ama linkiga",
     "editCourseDesc": "Halkan waxaad ka tafatiri kartaa cinwaanka koorsada, sharraxaadda, iwm.",
     "permissionsDesc": "Deji oggolaanshaha sida cidda casuumi karta isticmaalayaasha, diri karta fariimaha, samayn karta sheekooyin, iwm.",
     "accessDesc": "Waxaad ka dhigi kartaa koorsadaada mid u furan adduunka! Ama, ka dhig koorsadaada mid gaar ah oo ammaan ah.",
-    "createGroupChatDesc": "Halka kalfadhiyada hawluhu ay bilaabmaan oo dhammaadaan, sheekooyinka kooxeedku way furnaan doonaan si loogu wada xiriiro si joogto ah.",
     "deleteDesc": "Kaliya maamulayaasha ayaa tirtiri kara koorso. Tani waa ficil wax burburinaya oo meesha ka saaraya dhammaan isticmaalayaasha oo tirtiraya dhammaan sheekooyinka la xushay ee koorsada dhexdeeda ah. Si taxaddar leh u wad.",
     "whatNow": "Maxaa hadda?",
     "chooseNextActivity": "Dooro hawshaada xigta!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Sii sug",
     "botTookSeatAfterAnHour": "Fadhigan wuxuu furnaa saacad, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan.",
     "botTookSeatAfterADay": "Fadhigan wuxuu furnaa in ka badan maalin, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan. Fariin u dir si aad u bilowdo.",
+    "subscriptionGracePeriodEndsOn": "Lacag bixintu way fashilantay. Muddada dheeraadka ah waxay ku dhamaanaysaa {date}",
     "accountSetupFailedHelp": "Ma aanu dhammaystiri karin dejinta akoonkaaga. Hubi isku xidhkaaga oo isku day mar kale, ama ka bax oo soo gal mar dambe."
 }

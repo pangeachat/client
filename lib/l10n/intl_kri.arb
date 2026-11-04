@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-11-02 14:31:51.792288",
+    "@@last_modified": "2026-11-04 10:19:31.704643",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Yu go ebul fɔ ɛdit tɛmplet taytul, diskripshɔn dɛn, ɛn kos pikchɔ léta.",
     "createCourse": "Kriet kos",
     "stats": "Statistiks",
-    "createGroupChat": "Kriet grup chat",
     "editCourse": "Ɛdit kos",
     "inviteDesc": "Bay yuzanem, bay kod ɔ link",
     "editCourseDesc": "Na ya yu go ebul fɔ ɛdit kos taytul, diskripshɔn, ɛtsetra.",
     "permissionsDesc": "Sɛt pɛrmishɔn dɛn lɛk udat go ebul fɔ invayt yuzas, sɛn mɛsej dɛn, kriet chat dɛn, ɛtsetra.",
     "accessDesc": "Yu go ebul fɔ mek yu kos opin to di wɔl! Ɔ, mek yu kos prayvet ɛn sef.",
-    "createGroupChatDesc": "Wɛl aktiviti seshɔn dɛn de bigin ɛn end, grup chat dɛn go kɔntinyu fɔ de opin fɔ ɔlwe kɔmyunikeshɔn.",
     "deleteDesc": "Na ɔnli admin dɛn go ebul fɔ dilɛt kos. Dis na wan bad aksɔn we de pul ɔl yuzas ɛn dilɛt ɔl di chat dɛn we dɛn dɔn pik insay di kos. Duya bi kɛful.",
     "whatNow": "Wetin naw?",
     "chooseNextActivity": "Pik yu nɛks aktiviti!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Kɔntinyu fɔ wet",
     "botTookSeatAfterAnHour": "Dis seshɔn bin opin fɔ wan awa, so Pangea Bot tek di ples we bin fri.",
     "botTookSeatAfterADay": "Dis seshɔn bin opin fɔ pas wan de, so Pangea Bot tek di ples we bin fri. Send mɛsej fɔ stat.",
+    "subscriptionGracePeriodEndsOn": "Peimɛnt fɛl. Grɛs piriod de ɛnd ɔn {date}",
     "accountSetupFailedHelp": "Wi nɔ ebul fɔ dɔn sɛt yu akawnt. Chɛk yu kɔnɛkshɔn ɛn tray bak, ɔ lɔg awt ɛn lɔg in bak leta."
 }

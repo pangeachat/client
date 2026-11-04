@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-02 14:31:50.783160",
+    "@@last_modified": "2026-11-04 10:19:30.692817",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -3388,13 +3388,11 @@
     "editCourseLater": "Puoi modificare in seguito il titolo del corso, le descrizioni e l'immagine del corso.",
     "createCourse": "Crea corso",
     "stats": "Statistiche",
-    "createGroupChat": "Crea chat di gruppo",
     "editCourse": "Modifica corso",
     "inviteDesc": "Per nome utente, codice o link",
     "editCourseDesc": "Qui puoi modificare il titolo del corso, la descrizione, ecc.",
     "permissionsDesc": "Imposta i permessi come chi può invitare utenti, inviare messaggi, creare chat, ecc.",
     "accessDesc": "Puoi rendere il tuo corso accessibile a tutti! Oppure, rendilo privato e sicuro.",
-    "createGroupChatDesc": "Mentre le sessioni di attività iniziano e finiscono, le chat di gruppo rimarranno aperte per comunicazioni di routine.",
     "deleteDesc": "Solo gli amministratori possono eliminare un corso. Questa è un'azione distruttiva che rimuove tutti gli utenti e elimina tutte le chat selezionate all'interno del corso. Procedi con cautela.",
     "whatNow": "E ora?",
     "chooseNextActivity": "Scegli la tua prossima attività!",
@@ -6000,10 +5998,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6021,10 +6015,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10129,5 +10119,6 @@
     "keepWaiting": "Continua ad aspettare",
     "botTookSeatAfterAnHour": "Questa sessione è rimasta aperta per un'ora, quindi Pangea Bot ha preso il posto libero.",
     "botTookSeatAfterADay": "Questa sessione è rimasta aperta per più di un giorno, quindi Pangea Bot ha preso il posto libero. Invia un messaggio per iniziare.",
+    "subscriptionGracePeriodEndsOn": "Pagamento fallito. Il periodo di grazia termina il {date}",
     "accountSetupFailedHelp": "Non è stato possibile completare la configurazione del tuo account. Controlla la tua connessione e riprova, oppure disconnettiti e accedi più tardi."
 }

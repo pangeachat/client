@@ -12,12 +12,14 @@ import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics/listening_exposure_buffer.dart';
 import 'package:fluffychat/features/analytics/packed_construct_event.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_service.dart';
 import 'package:fluffychat/features/analytics_data/server_event_arrivals.dart';
 import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_entry.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
@@ -135,6 +137,12 @@ class _FakeDataService implements AnalyticsDataService {
   /// When set, looking up the L2's room throws.
   bool l2RoomFails = false;
 
+  /// When set, storing audio entries throws.
+  bool audioStoreFails = false;
+
+  /// When set, storing audio entries waits for it.
+  Completer<void>? holdAudioStore;
+
   @override
   String? get accountUserId => testUserId;
 
@@ -164,6 +172,16 @@ class _FakeDataService implements AnalyticsDataService {
   Future<Map<String, List<OneConstructUse>>> getLocalUseBatches(
     String language,
   ) async => Map.of(batches[language] ?? {});
+
+  @override
+  Future<void> storeAudioEntries(
+    List<OneConstructUse> entries,
+    String language,
+  ) async {
+    await holdAudioStore?.future;
+    if (audioStoreFails) throw Exception('store failed');
+    batches[language]!['audio${batches[language]!.length}'] = entries;
+  }
 
   @override
   Future<void> clearLocalAnalytics(
@@ -240,6 +258,105 @@ void main() {
   /// batch of two fills an event on its own.
   OneConstructUse thirdOfCapUse(int i) =>
       use(lemma: '$i${'x' * (PackedConstructEvent.maxBytes ~/ 6)}', ts: at(i));
+
+  group('audio entries', () {
+    OneConstructUse entry() => DosageAudioEntry.use(
+      id: 'call:one',
+      category: DosageAudioEntry.callCategory,
+      durMs: 60000,
+      ts: at(0),
+    )!;
+
+    setUp(ListeningExposureBuffer.debugResetAccounts);
+    tearDown(ListeningExposureBuffer.debugResetAccounts);
+
+    test(
+      'reach the room on the same flush, with the duration on them',
+      () async {
+        await connect([true]);
+        ListeningExposureBuffer.forAccount(
+          testUserId,
+        )!.recordAudioEntry(entry());
+
+        await updateService(
+          _FakeDataService(room, {}),
+        ).sendLocalAnalyticsToAnalyticsRoom(l2Override: _spanish);
+
+        final sent = server.sentUses.single.single as Map;
+        expect(sent['useType'], 'aud');
+        expect(sent['constructType'], 'g');
+        expect(sent['id'], 'call:one');
+        expect(sent['durMs'], 60000);
+      },
+    );
+
+    test('stay held when the local store fails, for the next flush', () async {
+      await connect([true]);
+      final buffer = ListeningExposureBuffer.forAccount(testUserId)!;
+      buffer.recordAudioEntry(entry());
+      final data = _FakeDataService(room, {})..audioStoreFails = true;
+
+      await updateService(
+        data,
+      ).sendLocalAnalyticsToAnalyticsRoom(l2Override: _spanish);
+
+      expect(server.sentUses, isEmpty);
+      expect(buffer.drainAudioEntries().map((row) => row.id), ['call:one']);
+    });
+
+    test(
+      'recorded before the service started go to the store when it does',
+      () async {
+        await connect([true]);
+        MatrixState.pangeaController = _FakePangeaController();
+        ListeningExposureBuffer.forAccount(
+          testUserId,
+        )!.recordAudioEntry(entry());
+        final data = _FakeDataService(room, {});
+
+        final service = updateService(data)..start();
+        addTearDown(service.dispose);
+        await pumpEventQueue();
+
+        expect(data.batches[testLang]!.values.single.single.id, 'call:one');
+      },
+    );
+
+    test('a flush waits for a store already in progress', () async {
+      await connect([true]);
+      MatrixState.pangeaController = _FakePangeaController();
+      final hold = Completer<void>();
+      final data = _FakeDataService(room, {})..holdAudioStore = hold;
+      final service = updateService(data)..start();
+      addTearDown(service.dispose);
+      ListeningExposureBuffer.forAccount(testUserId)!.recordAudioEntry(entry());
+      await pumpEventQueue();
+
+      var flushed = false;
+      final flush = service
+          .sendLocalAnalyticsToAnalyticsRoom(l2Override: _spanish)
+          .whenComplete(() => flushed = true);
+      await pumpEventQueue();
+      expect(flushed, isFalse);
+
+      hold.complete();
+      await flush;
+      expect(server.sentUses.single.single['id'], 'call:one');
+    });
+
+    test('go to the local store as soon as they are recorded', () async {
+      await connect([true]);
+      MatrixState.pangeaController = _FakePangeaController();
+      final data = _FakeDataService(room, {});
+      final service = updateService(data)..start();
+      addTearDown(service.dispose);
+
+      ListeningExposureBuffer.forAccount(testUserId)!.recordAudioEntry(entry());
+      await pumpEventQueue();
+
+      expect(data.batches[testLang]!.values.single.single.id, 'call:one');
+    });
+  });
 
   group('a flush clears only what the server accepted', () {
     test('every batch is cleared once the server accepts them', () async {

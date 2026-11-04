@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-11-02 14:31:45.780239",
+    "@@last_modified": "2026-11-04 10:19:27.105386",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -3286,13 +3286,11 @@
     "editCourseLater": "يمكنك تعديل عنوان النموذج، الأوصاف، وصورة الدورة لاحقًا.",
     "createCourse": "إنشاء دورة",
     "stats": "إحصائيات",
-    "createGroupChat": "إنشاء دردشة جماعية",
     "editCourse": "تعديل الدورة",
     "inviteDesc": "عن طريق اسم المستخدم، أو الرمز، أو الرابط",
     "editCourseDesc": "هنا يمكنك تحرير عنوان الدورة، الوصف، إلخ.",
     "permissionsDesc": "حدد الأذونات مثل من يمكنه دعوة المستخدمين، إرسال الرسائل، إنشاء الدردشات، إلخ.",
     "accessDesc": "يمكنك جعل دورتك مفتوحة للعالم! أو، جعل دورتك خاصة وآمنة.",
-    "createGroupChatDesc": "بينما تبدأ وتنتهي جلسات النشاط، ستظل الدردشات الجماعية مفتوحة للتواصل الروتيني.",
     "deleteDesc": "يمكن للمسؤولين فقط حذف الدورة. هذا إجراء تدميري يزيل جميع المستخدمين ويحذف جميع الدردشات المختارة داخل الدورة. تابع بحذر.",
     "whatNow": "ماذا الآن؟",
     "chooseNextActivity": "اختر نشاطك التالي!",
@@ -6204,10 +6202,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6225,10 +6219,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10359,5 +10349,6 @@
     "keepWaiting": "الاستمرار في الانتظار",
     "botTookSeatAfterAnHour": "كانت هذه الجلسة مفتوحة لمدة ساعة، لذا شغل بوت بانجيا المقعد الشاغر.",
     "botTookSeatAfterADay": "كانت هذه الجلسة مفتوحة لأكثر من يوم، لذا شغل بوت بانجيا المقعد الشاغر. أرسل رسالة للبدء.",
+    "subscriptionGracePeriodEndsOn": "فشل الدفع. تنتهي فترة السماح في {date}",
     "accountSetupFailedHelp": "تعذر علينا إنهاء إعداد حسابك. تحقق من اتصالك وحاول مرة أخرى، أو قم بتسجيل الخروج وسجل الدخول لاحقًا."
 }

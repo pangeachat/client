@@ -300,6 +300,19 @@ class AnalyticsPracticePanelToken
     extends PanelToken<AnalyticsPracticeTokenParam> {
   const AnalyticsPracticePanelToken(AnalyticsPracticeTokenParam param)
     : super(PanelTypesEnum.practice, param);
+
+  /// The section is navigational; a Mission's id is identity, so a Mission's
+  /// session names the same screen as the usual one
+  /// (google-analytics.instructions.md).
+  @override
+  String get screenName {
+    final param = this.param;
+    if (param == null) return type.name;
+    final named = AnalyticsPracticeTokenParam(
+      constructType: param.constructType,
+    ).build();
+    return '${type.name}:$named';
+  }
 }
 
 class NewPrivateChatPanelToken extends PanelToken {

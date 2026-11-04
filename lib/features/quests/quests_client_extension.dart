@@ -85,6 +85,25 @@ extension QuestsClientExtension on Client {
     return sessions;
   }
 
+  /// The activities of the learner's saved sessions whose plan hasn't loaded,
+  /// or expired from the cache and is reloading. Until it lands, the session's
+  /// goals count no XP ([sessionXp] reads them from the plan), and one not
+  /// filed under a language counts none at all
+  /// ([CourseLanguageScope.savedSessionInTargetLanguage]).
+  Set<String> get savedSessionActivitiesAwaitingPlan {
+    final awaiting = <String>{};
+    for (final room in rooms) {
+      final activityId = room.activityId;
+      if (activityId == null ||
+          !room.hasArchivedActivity ||
+          room.activityPlan != null) {
+        continue;
+      }
+      awaiting.add(activityId);
+    }
+    return awaiting;
+  }
+
   /// The learner's activity XP per activity: every saved session of it
   /// ([savedSessionsByActivity]), each counting the XP credited to its room
   /// ([creditedXpByRoom] — the chat XP earned there plus practice credited

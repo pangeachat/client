@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-11-02 14:31:54.027237",
+    "@@last_modified": "2026-11-04 10:19:34.013078",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -3381,13 +3381,11 @@
     "editCourseLater": "Możesz edytować tytuł szablonu, opisy i obraz kursu później.",
     "createCourse": "Utwórz kurs",
     "stats": "Statystyki",
-    "createGroupChat": "Utwórz czat grupowy",
     "editCourse": "Edytuj kurs",
     "inviteDesc": "Przez nazwę użytkownika, kod lub link",
     "editCourseDesc": "Tutaj możesz edytować tytuł kursu, opis itp.",
     "permissionsDesc": "Ustaw uprawnienia, takie jak kto może zapraszać użytkowników, wysyłać wiadomości, tworzyć czaty itp.",
     "accessDesc": "Możesz uczynić swój kurs otwartym dla świata! Lub, uczynić go prywatnym i bezpiecznym.",
-    "createGroupChatDesc": "Podczas gdy sesje aktywności zaczynają się i kończą, czaty grupowe pozostaną otwarte do rutynowej komunikacji.",
     "deleteDesc": "Tylko administratorzy mogą usunąć kurs. To działanie destrukcyjne, które usuwa wszystkich użytkowników i kasuje wszystkie wybrane czaty w kursie. Postępuj ostrożnie.",
     "whatNow": "Co teraz?",
     "chooseNextActivity": "Wybierz swoją następną aktywność!",
@@ -5992,10 +5990,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6013,10 +6007,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10141,5 +10131,6 @@
     "keepWaiting": "Czekaj dalej",
     "botTookSeatAfterAnHour": "Ta sesja była otwarta przez godzinę, więc Pangea Bot zajął wolne miejsce.",
     "botTookSeatAfterADay": "Ta sesja była otwarta przez ponad dzień, więc Pangea Bot zajął wolne miejsce. Wyślij wiadomość, aby rozpocząć.",
+    "subscriptionGracePeriodEndsOn": "Płatność nie powiodła się. Okres prolongaty kończy się {date}",
     "accountSetupFailedHelp": "Nie udało nam się dokończyć konfiguracji Twojego konta. Sprawdź połączenie i spróbuj ponownie, lub wyloguj się i zaloguj później."
 }

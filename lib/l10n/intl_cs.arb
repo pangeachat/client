@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-11-02 14:31:46.548743",
+    "@@last_modified": "2026-11-04 10:19:28.043052",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -3084,13 +3084,11 @@
     "editCourseLater": "Později můžete upravit název šablony, popisy a obrázek kurzu.",
     "createCourse": "Vytvořit kurz",
     "stats": "Statistiky",
-    "createGroupChat": "Vytvořit skupinový chat",
     "editCourse": "Upravit kurz",
     "inviteDesc": "Podle uživatelského jména, kódu nebo odkazu",
     "editCourseDesc": "Zde můžete upravit název kurzu, popis atd.",
     "permissionsDesc": "Nastavte oprávnění, například kdo může zvát uživatele, posílat zprávy, vytvářet chaty atd.",
     "accessDesc": "Můžete udělat svůj kurz otevřený pro celý svět! Nebo ho udělat soukromým a zabezpečeným.",
-    "createGroupChatDesc": "Zatímco se začínají a končí aktivity, skupinové chaty zůstanou otevřené pro rutinní komunikaci.",
     "deleteDesc": "Pouze správci mohou smazat kurz. Jedná se o destruktivní akci, která odstraní všechny uživatele a smaže všechny vybrané chaty v kurzu. Postupujte opatrně.",
     "whatNow": "Co teď?",
     "chooseNextActivity": "Vyberte si další aktivitu!",
@@ -6402,10 +6400,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6423,10 +6417,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10547,5 +10537,6 @@
     "keepWaiting": "Pokračovat v čekání",
     "botTookSeatAfterAnHour": "Tato relace byla otevřená hodinu, takže Pangea Bot obsadil volné místo.",
     "botTookSeatAfterADay": "Tato relace byla otevřená déle než den, takže Pangea Bot obsadil volné místo. Pošlete zprávu pro zahájení.",
+    "subscriptionGracePeriodEndsOn": "Platba se nezdařila. Ochranná lhůta končí {date}",
     "accountSetupFailedHelp": "Nepodařilo se nám dokončit nastavení vašeho účtu. Zkontrolujte připojení a zkuste to znovu, nebo se odhlaste a přihlaste se později."
 }

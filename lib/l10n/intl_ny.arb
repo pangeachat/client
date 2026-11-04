@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-11-02 14:31:53.917000",
+    "@@last_modified": "2026-11-04 10:19:33.853768",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Mutha kusintha mutu wa template, mafotokozedwe, ndi chithunzi cha kosi pambuyo pake.",
     "createCourse": "Pangani kosi",
     "stats": "Ziwerengero",
-    "createGroupChat": "Pangani macheza a gulu",
     "editCourse": "Sinthani kosi",
     "inviteDesc": "Ndi dzina la wogwiritsa ntchito, ndi nambala kapena ulalo",
     "editCourseDesc": "Apa mutha kusintha mutu wa kosi, kufotokozera, ndi zina zotero.",
     "permissionsDesc": "Khazikitsani zilolezo monga yemwe angaitanire ogwiritsa ntchito, kutumiza mauthenga, kupanga macheza, ndi zina zotero.",
     "accessDesc": "Mutha kupanga kosi yanu kukhala yotseguka kwa dziko lonse! Kapena, pangani kosi yanu kukhala yachinsinsi komanso yotetezeka.",
-    "createGroupChatDesc": "Ngakhale magawo a ntchito amayamba ndi kutha, macheza a gulu adzakhala otseguka kuti azilankhulana nthawi zonse.",
     "deleteDesc": "Akuluakulu okha ndi omwe angathe kufufuta kosi. Izi ndi zochitika zowononga zomwe zimachotsa ogwiritsa ntchito onse ndikufufuta macheza onse osankhidwa mkati mwa kosi. Chitani mosamala.",
     "whatNow": "Tsopano chiyani?",
     "chooseNextActivity": "Sankhani ntchito yanu yotsatira!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Pitirizani kudikira",
     "botTookSeatAfterAnHour": "Msonkhano uno unali wotseguka kwa ola limodzi, choncho Pangea Bot inatenga mpando wopanda munthu.",
     "botTookSeatAfterADay": "Msonkhano uno unali wotseguka kwa tsiku limodzi, choncho Pangea Bot inatenga mpando wopanda munthu. Tumizani uthenga kuti muyambe.",
+    "subscriptionGracePeriodEndsOn": "Malipiro alephera. Nthawi yowonjezera ikutha pa {date}",
     "accountSetupFailedHelp": "Sitakwanitse kumaliza kukonza akaunti yanu. Chongani intaneti yanu ndikuyesanso, kapena tulukani ndikulowanso pambuyo pake."
 }

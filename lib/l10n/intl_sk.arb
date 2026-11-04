@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-11-02 14:31:54.851938",
+    "@@last_modified": "2026-11-04 10:19:34.647251",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -2316,13 +2316,11 @@
     "editCourseLater": "Môžete neskôr upraviť názov kurzu, popisy a obrázok kurzu.",
     "createCourse": "Vytvoriť kurz",
     "stats": "Štatistiky",
-    "createGroupChat": "Vytvoriť skupinový chat",
     "editCourse": "Upraviť kurz",
     "inviteDesc": "Podľa používateľského mena, kódu alebo odkazu",
     "editCourseDesc": "Tu môžete upraviť názov kurzu, popis atď.",
     "permissionsDesc": "Nastavte oprávnenia, ako kto môže pozvať používateľov, posielať správy, vytvárať chaty atď.",
     "accessDesc": "Môžete spraviť svoj kurz otvorený svetu! Alebo, urobiť svoj kurz súkromným a zabezpečeným.",
-    "createGroupChatDesc": "Kde začínajú a končia aktivity, skupinové chaty zostanú otvorené na bežnú komunikáciu.",
     "deleteDesc": "Iba správcovia môžu vymazať kurz. Ide o deštruktívnu akciu, ktorá odstráni všetkých používateľov a vymaže všetky vybrané chaty v kurze. Postupujte opatrne.",
     "whatNow": "Čo teraz?",
     "chooseNextActivity": "Vyberte svoju ďalšiu aktivitu!",
@@ -6839,10 +6837,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6860,10 +6854,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10998,5 +10988,6 @@
     "keepWaiting": "Pokračovať v čakaní",
     "botTookSeatAfterAnHour": "Táto relácia bola otvorená hodinu, takže Pangea Bot si sadol na voľné miesto.",
     "botTookSeatAfterADay": "Táto relácia bola otvorená viac ako deň, takže Pangea Bot si sadol na voľné miesto. Pošlite správu pre začatie.",
+    "subscriptionGracePeriodEndsOn": "Platba zlyhala. Tolerančné obdobie končí {date}",
     "accountSetupFailedHelp": "Nepodarilo sa nám dokončiť nastavenie vášho účtu. Skontrolujte pripojenie a skúste to znova, alebo sa odhláste a prihláste sa neskôr."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-11-02 14:31:49.140350",
+    "@@last_modified": "2026-11-04 10:19:29.564294",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Kuna iya gyara taken samfuri, kwatance, da hoton kwas daga baya.",
     "createCourse": "Ƙirƙiri kwas",
     "stats": "Kididdiga",
-    "createGroupChat": "Ƙirƙiri hira ta rukuni",
     "editCourse": "Gyara kwas",
     "inviteDesc": "Ta sunan mai amfani, ta lamba ko mahada",
     "editCourseDesc": "A nan za ku iya gyara taken kwas, kwatance, da sauransu.",
     "permissionsDesc": "Saita izini kamar wanda zai iya gayyatar masu amfani, aika saƙonni, ƙirƙirar hirarraki, da sauransu.",
     "accessDesc": "Kuna iya buɗe kwas ɗinku ga duniya! Ko, ku mayar da kwas ɗinku na sirri kuma amintacce.",
-    "createGroupChatDesc": "Duk da cewa zaman ayyuka na farawa da ƙarewa, hirarrakin rukuni za su kasance a buɗe don sadarwa ta yau da kullun.",
     "deleteDesc": "Masu gudanarwa ne kaɗai za su iya goge kwas. Wannan aiki ne mai lalatawa wanda ke cire dukkan masu amfani kuma yana goge duk zaɓaɓɓun hirarraki a cikin kwas ɗin. A yi da hankali.",
     "whatNow": "Me kuma yanzu?",
     "chooseNextActivity": "Zaɓi aikinku na gaba!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Ci gaba da jira",
     "botTookSeatAfterAnHour": "Wannan zaman ya kasance a buɗe na awa ɗaya, don haka Pangea Bot ya shiga.",
     "botTookSeatAfterADay": "Wannan zaman ya kasance a buɗe fiye da kwana ɗaya, don haka Pangea Bot ya shiga. Aika saƙo don farawa.",
+    "subscriptionGracePeriodEndsOn": "Biyan kuɗi bai yi nasara ba. Lokacin alheri ya ƙare a ranar {date}",
     "accountSetupFailedHelp": "Mun kasa kammala saita asusunka. Duba haɗinka kuma sake gwadawa, ko fita daga asusunka ka shiga daga baya."
 }

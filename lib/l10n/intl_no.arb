@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-11-02 14:31:53.900033",
+    "@@last_modified": "2026-11-04 10:19:33.931217",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Du kan redigere malens tittel, beskrivelser og kursbilde senere.",
     "createCourse": "Opprett kurs",
     "stats": "Statistikk",
-    "createGroupChat": "Opprett gruppechat",
     "editCourse": "Rediger kurs",
     "inviteDesc": "Med brukernavn, kode eller lenke",
     "editCourseDesc": "Her kan du redigere kurstittel, beskrivelse osv.",
     "permissionsDesc": "Angi tillatelser som hvem som kan invitere brukere, sende meldinger, opprette chatter osv.",
     "accessDesc": "Du kan gjøre kurset ditt åpent for alle! Eller, gjør kurset ditt privat og sikkert.",
-    "createGroupChatDesc": "Mens aktivitetssesjoner starter og slutter, vil gruppechatter forbli åpne for rutinemessig kommunikasjon.",
     "deleteDesc": "Kun administratorer kan slette et kurs. Dette er en destruktiv handling som fjerner alle brukere og sletter alle valgte chatter innenfor kurset. Fortsett med forsiktighet.",
     "whatNow": "Hva nå?",
     "chooseNextActivity": "Velg din neste aktivitet!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Fortsett å vente",
     "botTookSeatAfterAnHour": "Denne økten var åpen i en time, så Pangea-boten tok den ledige plassen.",
     "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea-boten tok den ledige plassen. Send en melding for å starte.",
+    "subscriptionGracePeriodEndsOn": "Betaling mislyktes. Utsatt betalingsfrist utløper {date}",
     "accountSetupFailedHelp": "Vi kunne ikke fullføre kontooppsettet. Sjekk tilkoblingen din og prøv igjen, eller logg ut og logg på senere."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-02 14:31:55.672725",
+    "@@last_modified": "2026-11-04 10:19:35.557150",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3113,13 +3113,11 @@
     "editCourseLater": "Du kan redigera mallens titel, beskrivningar och kursbild senare.",
     "createCourse": "Skapa kurs",
     "stats": "Statistik",
-    "createGroupChat": "Skapa gruppchatt",
     "editCourse": "Redigera kurs",
     "inviteDesc": "Via användarnamn, kod eller länk",
     "editCourseDesc": "Här kan du redigera kursens titel, beskrivning, etc.",
     "permissionsDesc": "Ställ in behörigheter som vem som kan bjuda in användare, skicka meddelanden, skapa chattar, etc.",
     "accessDesc": "Du kan göra din kurs öppen för världen! Eller, gör din kurs privat och säker.",
-    "createGroupChatDesc": "Medan aktivitetsessioner startar och slutar, förblir gruppchattar öppna för rutinkommunikation.",
     "deleteDesc": "Endast administratörer kan radera en kurs. Detta är en destruktiv åtgärd som tar bort alla användare och raderar alla valda chattar inom kursen. Fortsätt med försiktighet.",
     "whatNow": "Vad nu?",
     "chooseNextActivity": "Välj din nästa aktivitet!",
@@ -6412,10 +6410,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6433,10 +6427,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10571,5 +10561,6 @@
     "keepWaiting": "Fortsätt vänta",
     "botTookSeatAfterAnHour": "Den här sessionen var öppen i en timme, så Pangea Bot tog den lediga platsen.",
     "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja.",
+    "subscriptionGracePeriodEndsOn": "Betalningen misslyckades. Anståndsperioden slutar {date}",
     "accountSetupFailedHelp": "Vi kunde inte slutföra installationen av ditt konto. Kontrollera din anslutning och försök igen, eller logga ut och logga in senare."
 }

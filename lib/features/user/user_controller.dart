@@ -14,6 +14,7 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_constants.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -369,9 +370,7 @@ class UserController {
   /// Retrieves matrix access token.
   String get accessToken {
     final token = client.accessToken;
-    if (token == null) {
-      throw ("Trying to get accessToken with null token. User is not logged in.");
-    }
+    if (token == null) throw const NotLoggedInException();
     return token;
   }
 
@@ -577,10 +576,11 @@ class UserController {
   /// [allMyAnalyticsRooms] directly, because a learner can end up with more
   /// than one analytics room for a language and that lookup resolves the
   /// CANONICAL one (the oldest). Analytics itself reads and writes the
-  /// canonical room, and instructor analytics access is granted through
-  /// whatever id is published here — so picking a different room publishes an
-  /// id the rest of the system ignores, and one that can change between calls
-  /// as room ordering shifts.
+  /// canonical room, and the teacher dashboard (and the instructor-access
+  /// grant, before that room has synced) reads whatever id is published
+  /// here — so picking a different room publishes an id the rest of the
+  /// system ignores, and one that can change between calls as room ordering
+  /// shifts.
   String? _ownAnalyticsRoomIdFor(String language) {
     final model = PLanguageStore.byLangCode(language);
     if (model == null) return null;
@@ -594,8 +594,6 @@ class UserController {
     }
     final analyticsRooms = client.allMyAnalyticsRooms;
 
-    if (analyticsRooms.isEmpty) return;
-
     // Drop any analytics room id naming a room this user did not create. Such
     // an id arrived with another account's blob (#8531) and is not decoration:
     // the instructor-access grant reads it to choose the room it invites
@@ -606,12 +604,18 @@ class UserController {
     // same blob is left to the normal analytics update, which overwrites it for
     // the language the user actually studies.
     //
-    // Safe against a room that has not surfaced in sync yet: the early return
-    // above means this runs only once some analytics room is visible, and an id
-    // cleared in error is restored by the loop below on the next init.
-    publicProfile!.analytics.clearForeignAnalyticsRoomIds(
-      analyticsRooms.map((room) => room.id).toSet(),
-    );
+    // An account with no analytics room is repaired too: nothing else ever
+    // drops its copied id, and its join-time grant sent it (CLIENT-EFF). Safe
+    // against a room that has not surfaced in sync yet, one made on another
+    // device since this one last synced: an id cleared in error is restored by
+    // the loop below on the next init.
+    final droppedForeignIds = publicProfile!.analytics
+        .clearForeignAnalyticsRoomIds(
+          analyticsRooms.map((room) => room.id).toSet(),
+        );
+    // With no room to add, only a repair is worth publishing; anything else
+    // would re-send an unchanged profile on every startup.
+    if (analyticsRooms.isEmpty && !droppedForeignIds) return;
 
     for (final analyticsRoom in analyticsRooms) {
       final madeForLang = analyticsRoom.madeForLang;

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-11-02 14:31:52.821188",
+    "@@last_modified": "2026-11-04 10:19:32.862507",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1304,13 +1304,11 @@
     "editCourseLater": "Anda boleh mengedit tajuk templat, penerangan dan imej kursus kemudian.",
     "createCourse": "Cipta kursus",
     "stats": "Statistik",
-    "createGroupChat": "Cipta sembang kumpulan",
     "editCourse": "Edit kursus",
     "inviteDesc": "Mengikut nama pengguna, mengikut kod atau pautan",
     "editCourseDesc": "Di sini anda boleh mengedit tajuk kursus, penerangan, dsb.",
     "permissionsDesc": "Tetapkan kebenaran seperti siapa yang boleh menjemput pengguna, menghantar mesej, mencipta sembang, dsb.",
     "accessDesc": "Anda boleh menjadikan kursus anda terbuka kepada dunia! Atau, jadikan kursus anda peribadi dan selamat.",
-    "createGroupChatDesc": "Walaupun sesi aktiviti bermula dan berakhir, sembang kumpulan akan kekal terbuka untuk komunikasi rutin.",
     "deleteDesc": "Hanya pentadbir boleh memadam kursus. Ini adalah tindakan merosakkan yang mengalih keluar semua pengguna dan memadam semua sembang yang dipilih dalam kursus. Teruskan dengan berhati-hati.",
     "whatNow": "Apa sekarang?",
     "chooseNextActivity": "Pilih aktiviti anda yang seterusnya!",
@@ -2518,5 +2516,6 @@
     "keepWaiting": "Terus menunggu",
     "botTookSeatAfterAnHour": "Sesi ini dibuka selama sejam, jadi Pangea Bot mengambil tempat kosong.",
     "botTookSeatAfterADay": "Sesi ini dibuka selama lebih sehari, jadi Pangea Bot mengambil tempat kosong. Hantar mesej untuk bermula.",
+    "subscriptionGracePeriodEndsOn": "Pembayaran gagal. Tempoh tangguh berakhir pada {date}",
     "accountSetupFailedHelp": "Kami tidak dapat menyelesaikan persediaan akaun anda. Semak sambungan anda dan cuba lagi, atau log keluar dan daftar masuk kemudian."
 }
