@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-10-27 14:57:20.609705",
+    "@@last_modified": "2026-11-04 10:19:33.853768",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2515,5 +2515,6 @@
     "playWithBotNowMessage": "Palibe amene wabwera. Pangea Bot ikhoza kutenga mpando wopanda munthu tsopano, kapena mukhoza kupitiriza kudikira.",
     "keepWaiting": "Pitirizani kudikira",
     "botTookSeatAfterAnHour": "Msonkhano uno unali wotseguka kwa ola limodzi, choncho Pangea Bot inatenga mpando wopanda munthu.",
-    "botTookSeatAfterADay": "Msonkhano uno unali wotseguka kwa tsiku limodzi, choncho Pangea Bot inatenga mpando wopanda munthu. Tumizani uthenga kuti muyambe."
+    "botTookSeatAfterADay": "Msonkhano uno unali wotseguka kwa tsiku limodzi, choncho Pangea Bot inatenga mpando wopanda munthu. Tumizani uthenga kuti muyambe.",
+    "subscriptionGracePeriodEndsOn": "Malipiro alephera. Nthawi yowonjezera ikutha pa {date}"
 }

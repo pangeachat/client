@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-10-27 14:57:21.787089",
+    "@@last_modified": "2026-11-04 10:19:35.274893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2515,5 +2515,6 @@
     "playWithBotNowMessage": "Askush nuk është bashkuar ende. Pangea Bot mund të zërë vendin e lirë tani, ose mund të vazhdosh të presësh.",
     "keepWaiting": "Vazhdo të presësh",
     "botTookSeatAfterAnHour": "Kjo seancë ishte e hapur për një orë, kështu që Pangea Bot zuri vendin e lirë.",
-    "botTookSeatAfterADay": "Kjo seancë ishte e hapur për më shumë se një ditë, kështu që Pangea Bot zuri vendin e lirë. Dërgo një mesazh për të filluar."
+    "botTookSeatAfterADay": "Kjo seancë ishte e hapur për më shumë se një ditë, kështu që Pangea Bot zuri vendin e lirë. Dërgo një mesazh për të filluar.",
+    "subscriptionGracePeriodEndsOn": "Pagesa dështoi. Periudha e tolerancës përfundon më {date}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-10-27 14:57:21.504594",
+    "@@last_modified": "2026-11-04 10:19:34.647251",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10987,5 +10987,6 @@
     "playWithBotNowMessage": "Zatiaľ sa nikto nepripojil. Pangea Bot si môže teraz sadnúť na voľné miesto, alebo môžete naďalej čakať.",
     "keepWaiting": "Pokračovať v čakaní",
     "botTookSeatAfterAnHour": "Táto relácia bola otvorená hodinu, takže Pangea Bot si sadol na voľné miesto.",
-    "botTookSeatAfterADay": "Táto relácia bola otvorená viac ako deň, takže Pangea Bot si sadol na voľné miesto. Pošlite správu pre začatie."
+    "botTookSeatAfterADay": "Táto relácia bola otvorená viac ako deň, takže Pangea Bot si sadol na voľné miesto. Pošlite správu pre začatie.",
+    "subscriptionGracePeriodEndsOn": "Platba zlyhala. Tolerančné obdobie končí {date}"
 }

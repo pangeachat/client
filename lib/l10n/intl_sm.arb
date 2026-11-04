@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-10-27 14:57:21.742786",
+    "@@last_modified": "2026-11-04 10:19:34.953590",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2515,5 +2515,6 @@
     "playWithBotNowMessage": "E leai se tasi na auai mai. E mafai e le Pangea Bot ona nofo i le nofoa avanoa nei, pe e te mana'o e fa'atali pea.",
     "keepWaiting": "Fa'atali pea",
     "botTookSeatAfterAnHour": "Na tatala lenei sauniga mo le itula, o lea na nofo ai le Pangea Bot i le nofoa avanoa.",
-    "botTookSeatAfterADay": "Na tatala lenei sauniga mo le silia ma le aso, o lea na nofo ai le Pangea Bot i le nofoa avanoa. Auina mai se fe'au e amata ai."
+    "botTookSeatAfterADay": "Na tatala lenei sauniga mo le silia ma le aso, o lea na nofo ai le Pangea Bot i le nofoa avanoa. Auina mai se fe'au e amata ai.",
+    "subscriptionGracePeriodEndsOn": "Ua lē taulau le totogi. E muta le vaitaimi fa'aopoopo i le aso {date}"
 }

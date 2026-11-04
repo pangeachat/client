@@ -1793,7 +1793,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-27 14:57:21.509856",
+    "@@last_modified": "2026-11-04 10:19:34.981192",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10987,5 +10987,6 @@
     "playWithBotNowMessage": "Nihče se še ni pridružil. Pangea Bot lahko zdaj zasede prosto mesto ali pa lahko še naprej čakate.",
     "keepWaiting": "Nadaljuj čakanje",
     "botTookSeatAfterAnHour": "Ta seja je bila odprta eno uro, zato je Pangea Bot zasedel prosto mesto.",
-    "botTookSeatAfterADay": "Ta seja je bila odprta več kot en dan, zato je Pangea Bot zasedel prosto mesto. Pošljite sporočilo za začetek."
+    "botTookSeatAfterADay": "Ta seja je bila odprta več kot en dan, zato je Pangea Bot zasedel prosto mesto. Pošljite sporočilo za začetek.",
+    "subscriptionGracePeriodEndsOn": "Plačilo ni uspelo. Prehodno obdobje se konča {date}"
 }

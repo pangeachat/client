@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-10-27 14:57:19.950050",
+    "@@last_modified": "2026-11-04 10:19:33.087735",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2515,5 +2515,6 @@
     "playWithBotNowMessage": "अहिलेसम्म कोही पनि सामेल भएका छैनन्। Pangea Bot ले अहिले खाली सिट लिन सक्छ, वा तपाईं पर्खन सक्नुहुन्छ।",
     "keepWaiting": "पर्खिरहनुहोस्",
     "botTookSeatAfterAnHour": "यो सत्र एक घण्टाको लागि खुला थियो, त्यसैले Pangea Bot ले खाली सिट लियो।",
-    "botTookSeatAfterADay": "यो सत्र एक दिनभन्दा बढी समयदेखि खुला थियो, त्यसैले Pangea Bot ले खाली सिट लियो। सुरु गर्न सन्देश पठाउनुहोस्।"
+    "botTookSeatAfterADay": "यो सत्र एक दिनभन्दा बढी समयदेखि खुला थियो, त्यसैले Pangea Bot ले खाली सिट लियो। सुरु गर्न सन्देश पठाउनुहोस्।",
+    "subscriptionGracePeriodEndsOn": "भुक्तानी असफल भयो। अनुग्रह अवधि {date} मा समाप्त हुन्छ"
 }

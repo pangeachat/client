@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-10-27 14:57:18.297608",
+    "@@last_modified": "2026-11-04 10:19:32.271965",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2515,5 +2515,6 @@
     "playWithBotNowMessage": "ຍັງບໍ່ມີໃຜເຂົ້າຮ່ວມເທື່ອ. Pangea Bot ສາມາດເຂົ້າຮ່ວມໄດ້ດຽວນີ້, ຫຼືທ່ານສາມາດລໍຖ້າຕໍ່ໄປ.",
     "keepWaiting": "ລໍຖ້າຕໍ່ໄປ",
     "botTookSeatAfterAnHour": "ເຊສຊັນນີ້ເປີດມາໄດ້ໜຶ່ງຊົ່ວໂມງແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ.",
-    "botTookSeatAfterADay": "ເຊສຊັນນີ້ເປີດມາໄດ້ຫຼາຍກວ່າໜຶ່ງມື້ແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ. ສົ່ງຂໍ້ຄວາມເພື່ອເລີ່ມຕົ້ນ."
+    "botTookSeatAfterADay": "ເຊສຊັນນີ້ເປີດມາໄດ້ຫຼາຍກວ່າໜຶ່ງມື້ແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ. ສົ່ງຂໍ້ຄວາມເພື່ອເລີ່ມຕົ້ນ.",
+    "subscriptionGracePeriodEndsOn": "ການຊໍາລະເງິນບໍ່ສໍາເລັດ. ໄລຍະຜ່ອນຜັນຈະສິ້ນສຸດໃນວັນທີ {date}"
 }
