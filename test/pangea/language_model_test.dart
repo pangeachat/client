@@ -275,6 +275,26 @@ void main() {
     });
   });
 
+  // #9720 — the website loads the bare flag URL without CORS, and browsers
+  // share that cached copy with the app, so the app's fetch of it fails.
+  group('LanguageModel.svgUrl', () {
+    test('asks for the flag file at a URL apart from the website', () {
+      final url = LanguageModel(
+        langCode: 'af',
+        displayName: 'Afrikaans',
+      ).svgUrl;
+
+      expect(url.path, '/language-flags/af.svg');
+      expect(
+        url.hasQuery,
+        isTrue,
+        reason:
+            'the query string keeps the app off the copy the website '
+            'cached; see the comment on LanguageModel.svgUrl',
+      );
+    });
+  });
+
   group('LanguageModel.unknown', () {
     test('has correct defaults', () {
       final unknown = LanguageModel.unknown;
