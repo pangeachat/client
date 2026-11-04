@@ -34,7 +34,9 @@ class CourseProgressWriter {
 
   CourseProgressWriter({
     required Future<List<OneConstructUse>> Function(String language) readUses,
-  }) : _readUses = readUses;
+    Duration outlineReadTimeout = _defaultOutlineReadTimeout,
+  }) : _readUses = readUses,
+       _outlineReadTimeout = outlineReadTimeout;
 
   Future<void>? _inflight;
   Room? _queuedRoom;
@@ -49,9 +51,10 @@ class CourseProgressWriter {
   /// failing replay isn't repeated after every upload.
   final Set<String> _unreplayable = {};
 
-  /// How long a course's outline read may take before the check skips the
-  /// course: the read goes over the network.
-  static const _outlineReadTimeout = Duration(seconds: 5);
+  /// How long the check waits for a course's outline before it moves on to
+  /// the next course: the read goes over the network.
+  final Duration _outlineReadTimeout;
+  static const _defaultOutlineReadTimeout = Duration(seconds: 5);
 
   /// How long a course whose outline read failed is skipped, so a failing
   /// read is retried at this pace rather than on every check.
@@ -114,7 +117,7 @@ class CourseProgressWriter {
     final appVersion = await _appVersion();
     MissionCompletionReplay? replay;
     for (final course in courses) {
-      final outline = await _outlineOf(course);
+      final outline = await _outlineOf(course, analyticsRoom, language);
       if (outline == null) continue;
       // The read can take seconds, and a learner who logs out meanwhile
       // leaves a client with no session to read their progress or write it.
@@ -210,40 +213,69 @@ class CourseProgressWriter {
   }
 
   /// [course]'s outline as the course shows it, read the way the course page
-  /// reads it. Null when it can't be read in time, which is reported, or
-  /// while a failed read waits to be retried.
-  Future<QuestOutline?> _outlineOf(Room course) async {
+  /// reads it. Null when the read fails, which is reported, while a failed
+  /// read waits to be retried, or while the read is slower than
+  /// [_outlineReadTimeout]: [language] is checked again once it lands.
+  Future<QuestOutline?> _outlineOf(
+    Room course,
+    Room analyticsRoom,
+    String language,
+  ) async {
     final questId = course.coursePlan?.uuid;
     if (questId == null) return null;
     final retryAt = _outlineRetryAt[course.id];
     if (retryAt != null && DateTime.now().isBefore(retryAt)) return null;
     final rules = course.courseListRules;
+    final read = QuestRepo.outline(
+      questId,
+      courseRoomId: course.id,
+      courseLoIds: rules.missions?.allLoIds ?? const {},
+      copyRevision: rules.revision,
+    );
     final QuestOutline? outline;
     final Object? error;
     try {
-      final result = await QuestRepo.outline(
-        questId,
-        courseRoomId: course.id,
-        courseLoIds: rules.missions?.allLoIds ?? const {},
-        copyRevision: rules.revision,
-      ).timeout(_outlineReadTimeout);
+      final result = await read.timeout(_outlineReadTimeout);
       outline = result.result;
       error = result.error;
-    } on TimeoutException catch (e, s) {
-      _outlineFailed(course.id, questId, e, s);
+    } on TimeoutException {
+      // silent-ok: a slow read is not a failed one. It keeps running, the
+      // course is checked again once it lands, and a failure is reported then.
+      unawaited(
+        read.then((landed) {
+          final settled = _settled(
+            course.id,
+            questId,
+            landed.result,
+            landed.error,
+          );
+          if (settled != null) unawaited(update(analyticsRoom, language));
+        }),
+      );
       return null;
     }
+    return _settled(course.id, questId, outline, error)?.forRules(rules);
+  }
+
+  /// [outline] from a finished read, or null once the read's failure
+  /// ([error]) is reported and [courseRoomId] waits for its retry.
+  QuestOutline? _settled(
+    String courseRoomId,
+    String questId,
+    QuestOutline? outline,
+    Object? error,
+  ) {
     if (outline == null) {
       _outlineFailed(
-        course.id,
+        courseRoomId,
         questId,
         error ?? MissingQuestException(),
         StackTrace.current,
       );
       return null;
     }
-    _outlineRetryAt.remove(course.id);
-    return outline.forRules(rules);
+    _outlineRetryAt.remove(courseRoomId);
+    return outline;
   }
 
   /// Reports [courseRoomId]'s failed outline read and skips the course until
