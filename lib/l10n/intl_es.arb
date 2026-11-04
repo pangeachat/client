@@ -3933,13 +3933,11 @@
     "editCourseLater": "Puedes editar el título, las descripciones y la imagen del curso más tarde.",
     "createCourse": "Crear curso",
     "stats": "Estadísticas",
-    "createGroupChat": "Crear chat grupal",
     "editCourse": "Editar curso",
     "inviteDesc": "Por nombre de usuario, por código o enlace",
     "editCourseDesc": "Aquí puedes editar el título, la descripción, etc., del curso.",
     "permissionsDesc": "Configura permisos como quién puede invitar usuarios, enviar mensajes, crear chats, etc.",
     "accessDesc": "¡Puedes hacer que tu curso sea abierto al mundo! O, hacer que tu curso sea privado y seguro.",
-    "createGroupChatDesc": "Mientras que las sesiones de actividad comienzan y terminan, los chats grupales permanecerán abiertos para la comunicación rutinaria.",
     "deleteDesc": "Solo los administradores pueden eliminar un curso. Esta es una acción destructiva que elimina a todos los usuarios y elimina todos los chats seleccionados dentro del curso. Procede con precaución.",
     "whatNow": "¿Y ahora?",
     "chooseNextActivity": "¡Elige tu próxima actividad!",
@@ -4185,10 +4183,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -4206,10 +4200,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

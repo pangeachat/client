@@ -3373,13 +3373,11 @@
     "editCourseLater": "Később szerkesztheti a sablon címet, leírásokat és a tanfolyam képét.",
     "createCourse": "Tanfolyam létrehozása",
     "stats": "Statisztika",
-    "createGroupChat": "Csoportos beszélgetés létrehozása",
     "editCourse": "Kurzus szerkesztése",
     "inviteDesc": "Felhasználónév, kód vagy link alapján",
     "editCourseDesc": "Itt szerkesztheted a kurzus címét, leírását stb.",
     "permissionsDesc": "Állíts be jogosultságokat, például ki küldhet meghívókat, üzeneteket, csoportokat hozhat létre stb.",
     "accessDesc": "Nyilvánossá teheted a kurzusodat a világ számára! Vagy, tedd priváttá és biztonságossá.",
-    "createGroupChatDesc": "Míg az aktivitási ülések kezdete és vége, a csoportos beszélgetések nyitva maradnak a rutinszerű kommunikációhoz.",
     "deleteDesc": "Csak az adminok törölhetnek kurzust. Ez egy destruktív művelet, amely minden felhasználót eltávolít és törli az összes kiválasztott csoportot a kurzuson belül. Légy óvatos.",
     "whatNow": "Most mi?",
     "chooseNextActivity": "Válaszd ki a következő tevékenységet!",
@@ -6000,10 +5998,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6021,10 +6015,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

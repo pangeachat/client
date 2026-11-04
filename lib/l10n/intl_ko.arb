@@ -3323,13 +3323,11 @@
     "editCourseLater": "템플릿 제목, 설명, 과정 이미지는 나중에 편집할 수 있습니다.",
     "createCourse": "과정 생성",
     "stats": "통계",
-    "createGroupChat": "단체 채팅 만들기",
     "editCourse": "코스 편집",
     "inviteDesc": "사용자 이름, 코드 또는 링크로 초대",
     "editCourseDesc": "여기서 코스 제목, 설명 등을 편집할 수 있습니다.",
     "permissionsDesc": "초대할 수 있는 사용자, 메시지 보내기, 채팅 만들기 등의 권한을 설정하세요.",
     "accessDesc": "코스를 공개하거나 비공개로 안전하게 설정할 수 있습니다!",
-    "createGroupChatDesc": "활동 세션이 시작되고 종료되는 동안, 그룹 채팅은 일상적인 소통을 위해 열려 있습니다.",
     "deleteDesc": "코스는 관리자만 삭제할 수 있습니다. 이는 모든 사용자와 선택된 채팅을 삭제하는 파괴적인 작업입니다. 신중히 진행하세요.",
     "whatNow": "이제 무엇을 할까요?",
     "chooseNextActivity": "다음 활동을 선택하세요!",
@@ -6090,10 +6088,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6111,10 +6105,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

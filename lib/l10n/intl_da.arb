@@ -1259,13 +1259,11 @@
     "editCourseLater": "Du kan redigere skabelonens titel, beskrivelser og kursusbillede senere.",
     "createCourse": "Opret kursus",
     "stats": "Statistikker",
-    "createGroupChat": "Opret gruppechat",
     "editCourse": "Rediger kursus",
     "inviteDesc": "Efter brugernavn, kode eller link",
     "editCourseDesc": "Her kan du redigere kursustitel, beskrivelse osv.",
     "permissionsDesc": "Indstil tilladelser såsom hvem der kan invitere brugere, sende beskeder, oprette chats osv.",
     "accessDesc": "Du kan gøre dit kursus åbent for alle! Eller gøre det privat og sikkert.",
-    "createGroupChatDesc": "Mens aktivitetsessioner starter og slutter, forbliver gruppechats åbne for rutinemæssig kommunikation.",
     "deleteDesc": "Kun administratorer kan slette et kursus. Dette er en destruktiv handling, der fjerner alle brugere og sletter alle valgte chats inden for kurset. Vær forsigtig.",
     "whatNow": "Hvad nu?",
     "chooseNextActivity": "Vælg din næste aktivitet!",
@@ -6814,10 +6812,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6835,10 +6829,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

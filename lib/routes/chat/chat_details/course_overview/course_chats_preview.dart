@@ -240,10 +240,10 @@ class _CourseChatsPreviewState extends State<CourseChatsPreview> {
                 title: title,
                 icon: Icons.forum_outlined,
                 actions: [
-                  // Creating a course chat is buried in the More section's
-                  // settings list; teachers asked for it where the chats are
-                  // (#8744). Same permission gate as that row — the shortcut
-                  // can't do what the setting wouldn't.
+                  // The only way to create a course chat: teachers look for
+                  // it where the chats are (#8744, #9547). Shown to an admin
+                  // who can add a room to the course space, which creating
+                  // the chat does.
                   if (_course.isRoomAdmin &&
                       _course.canChangeStateEvent(EventTypes.SpaceChild))
                     CourseSectionShortcut(
