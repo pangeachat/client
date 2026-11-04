@@ -1727,5 +1727,27 @@ void main() {
         );
       },
     );
+
+    test('a rail switch keeps the same course\'s pick and drops it for '
+        'another course (#9632)', () {
+      final picked = u(
+        WorkspaceNav.selectMission(
+          u(WorkspaceNav.openCourseSection(u('/'), '!a:server')),
+          'm1',
+        ),
+      );
+      expect(
+        selectedMissionIdFor(
+          u(WorkspaceNav.openCourseSection(picked, '!a:server')),
+        ),
+        'm1',
+      );
+      expect(
+        selectedMissionIdFor(
+          u(WorkspaceNav.openCourseSection(picked, '!b:server')),
+        ),
+        isNull,
+      );
+    });
   });
 }
