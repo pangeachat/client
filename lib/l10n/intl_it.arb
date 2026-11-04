@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:17.182442",
+    "@@last_modified": "2026-11-04 10:19:30.692817",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10118,5 +10118,6 @@
     "playWithBotNowMessage": "Nessuno si è ancora unito. Pangea Bot può prendere il posto libero ora, oppure puoi continuare ad aspettare.",
     "keepWaiting": "Continua ad aspettare",
     "botTookSeatAfterAnHour": "Questa sessione è rimasta aperta per un'ora, quindi Pangea Bot ha preso il posto libero.",
-    "botTookSeatAfterADay": "Questa sessione è rimasta aperta per più di un giorno, quindi Pangea Bot ha preso il posto libero. Invia un messaggio per iniziare."
+    "botTookSeatAfterADay": "Questa sessione è rimasta aperta per più di un giorno, quindi Pangea Bot ha preso il posto libero. Invia un messaggio per iniziare.",
+    "subscriptionGracePeriodEndsOn": "Pagamento fallito. Il periodo di grazia termina il {date}"
 }

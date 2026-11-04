@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-10-27 14:57:16.046794",
+    "@@last_modified": "2026-11-04 10:19:30.044295",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2515,5 +2515,6 @@
     "playWithBotNowMessage": "Pèsonn poko rantre. Pangea Bot ka pran plas ki vid la kounye a, oswa ou ka kontinye tann.",
     "keepWaiting": "Kontinye tann",
     "botTookSeatAfterAnHour": "Sesyon sa a te ouvè pandan inèdtan, kidonk Pangea Bot te pran plas ki vid la.",
-    "botTookSeatAfterADay": "Sesyon sa a te ouvè pandan plis pase yon jou, kidonk Pangea Bot te pran plas ki vid la. Voye yon mesaj pou kòmanse."
+    "botTookSeatAfterADay": "Sesyon sa a te ouvè pandan plis pase yon jou, kidonk Pangea Bot te pran plas ki vid la. Voye yon mesaj pou kòmanse.",
+    "subscriptionGracePeriodEndsOn": "Peman an echwe. Peryòd gras la fini sou {date}"
 }

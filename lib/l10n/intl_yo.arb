@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-10-27 14:57:24.318912",
+    "@@last_modified": "2026-11-04 10:19:37.535750",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2515,5 +2515,6 @@
     "playWithBotNowMessage": "Ko si ẹnikan ti o darapọ mọ sibẹsibẹ. Pangea Bot le gba ipo ti o ṣ'ofo ni bayi, tabi o le tẹsiwaju lati duro.",
     "keepWaiting": "Tẹsiwaju lati duro",
     "botTookSeatAfterAnHour": "Aago kan ti kọja ti igba yii ti ṣ'i silẹ, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo.",
-    "botTookSeatAfterADay": "Igba yii ti ṣ'i silẹ fun ọjọ kan ju, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo. Fi ifiranṣẹ ranṣẹ lati bẹrẹ."
+    "botTookSeatAfterADay": "Igba yii ti ṣ'i silẹ fun ọjọ kan ju, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo. Fi ifiranṣẹ ranṣẹ lati bẹrẹ.",
+    "subscriptionGracePeriodEndsOn": "Ìsanwó kùnà. Àkókò oore-ọ̀fẹ́ parí ní {date}"
 }

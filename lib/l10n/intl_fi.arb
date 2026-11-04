@@ -3514,7 +3514,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-27 14:57:14.694714",
+    "@@last_modified": "2026-11-04 10:19:28.907069",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10082,5 +10082,6 @@
     "playWithBotNowMessage": "Kukaan ei ole vielä liittynyt. Pangea Bot voi ottaa avoimen paikan nyt, tai voit jatkaa odottamista.",
     "keepWaiting": "Jatka odottamista",
     "botTookSeatAfterAnHour": "Tämä istunto oli auki tunnin, joten Pangea Bot otti avoimen paikan.",
-    "botTookSeatAfterADay": "Tämä istunto oli auki yli päivän, joten Pangea Bot otti avoimen paikan. Aloita lähettämällä viesti."
+    "botTookSeatAfterADay": "Tämä istunto oli auki yli päivän, joten Pangea Bot otti avoimen paikan. Aloita lähettämällä viesti.",
+    "subscriptionGracePeriodEndsOn": "Maksu epäonnistui. Armonaika päättyy {date}"
 }
