@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
-import 'package:emoji_picker_flutter/locales/default_emoji_set_locale.dart';
 
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/routes/chat/emoji_keywords.dart';
 
 class PangeaEmojiSearchView extends SearchView {
   const PangeaEmojiSearchView(
@@ -23,10 +23,6 @@ class PangeaEmojiSearchView extends SearchView {
 
 class PangeaEmojiSearchViewState
     extends SearchViewState<PangeaEmojiSearchView> {
-  /// The language [getDefaultEmojiLocale] answers with for a language it has
-  /// no keywords in.
-  static const _fallbackKeywordsLanguageCode = 'en';
-
   String? _targetKeywordsLanguageCode;
   Map<String, Set<String>> _targetKeywordsByEmoji = const {};
 
@@ -85,22 +81,13 @@ class PangeaEmojiSearchViewState
     return _targetKeywordsByEmoji;
   }
 
-  /// The package's keywords in [locale]'s language, by emoji. A language it
-  /// has no keywords in adds none, rather than its English fallback.
-  static Map<String, Set<String>> _keywordsByEmoji(Locale locale) {
-    final emojiSet = getDefaultEmojiLocale(locale);
-    if (identical(emojiSet, emojiSetEnglish) &&
-        locale.languageCode != _fallbackKeywordsLanguageCode) {
-      return const {};
-    }
-    return {
-      for (final category in emojiSet)
-        for (final emoji in category.emoji)
-          emoji.emoji: emoji.keywords
-              .map((keyword) => keyword.toLowerCase())
-              .toSet(),
-    };
-  }
+  static Map<String, Set<String>> _keywordsByEmoji(Locale locale) => {
+    for (final category in EmojiKeywords.setFor(locale))
+      for (final emoji in category.emoji)
+        emoji.emoji: emoji.keywords
+            .map((keyword) => keyword.toLowerCase())
+            .toSet(),
+  };
 
   @override
   Widget build(BuildContext context) {
