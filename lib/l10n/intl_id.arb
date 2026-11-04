@@ -2412,8 +2412,6 @@
     },
     "files": "Berkas",
     "@files": {},
-    "restricted": "Dibatasi",
-    "@restricted": {},
     "knockRestricted": "Ketukan dibatasi",
     "@knockRestricted": {},
     "alwaysUse24HourFormat": "tidak",
@@ -3324,17 +3322,8 @@
     "introductions": "Perkenalan",
     "announcements": "Pengumuman",
     "activities": "Kegiatan",
-    "access": "Akses",
-    "howSpaceCanBeFound": "Bagaimana kursus ini dapat ditemukan",
     "private": "Pribadi",
-    "cannotBeFoundInSearch": "Tidak dapat ditemukan dalam pencarian",
     "public": "Publik",
-    "visibleToCommunity": "Terlihat oleh komunitas Pangea Chat yang lebih luas melalui \"Cari kursus\"",
-    "howSpaceCanBeJoined": "Bagaimana kursus ini dapat bergabung",
-    "canBeFoundVia": "Dapat ditemukan melalui:",
-    "canBeFoundViaInvitation": "• undangan",
-    "canBeFoundViaCodeOrLink": "• kode atau tautan",
-    "canBeFoundViaKnock": "• permintaan bergabung dan persetujuan admin",
     "sendActivities": "Kirim kegiatan",
     "directMessage": "Pesan Langsung",
     "newDirectMessage": "Pesan langsung baru",
@@ -3393,7 +3382,6 @@
     "inviteDesc": "Undang dengan nama pengguna, kode, atau tautan",
     "editCourseDesc": "Di sini Anda dapat mengedit judul kursus, deskripsi, dll.",
     "permissionsDesc": "Atur izin seperti siapa yang dapat mengundang pengguna, mengirim pesan, membuat obrolan, dll.",
-    "accessDesc": "Anda dapat membuat kursus Anda terbuka untuk dunia! Atau, buat kursus Anda pribadi dan aman.",
     "createGroupChatDesc": "Sedangkan sesi aktivitas dimulai dan berakhir, obrolan grup akan tetap terbuka untuk komunikasi rutin.",
     "deleteDesc": "Hanya admin yang dapat menghapus kursus. Ini adalah tindakan destruktif yang menghapus semua pengguna dan menghapus semua obrolan yang dipilih dalam kursus. Lanjutkan dengan hati-hati.",
     "whatNow": "Apa sekarang?",
@@ -5706,47 +5694,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6017,10 +5969,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7812,11 +7760,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Secara default, kursus dapat dicari secara publik dan memerlukan persetujuan admin untuk bergabung. Anda dapat mengedit pengaturan ini kapan saja.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Bahasa apa yang Anda pelajari?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8661,11 +8604,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Izinkan orang lain mencari kursus Anda",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Jangan lewatkan obrolan!",
     "enableNotificationsDesc": "Izinkan notifikasi untuk Pangea Chat dan tetap terhubung dengan teman bahasa Anda!",
     "enableNotifications": "Izinkan notifikasi",
@@ -8758,7 +8696,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Pilih kata untuk mempelajari lebih lanjut tentangnya",
     "requireAnalyticsAccessTitle": "Memerlukan akses analitik untuk bergabung",
-    "requireAnalyticsAccessDesc": "Peserta harus memberikan akses ke analitik pembelajaran mereka untuk bergabung dengan kursus ini",
     "analyticsAccessNoticeTitle": "Akses Analitik Diperlukan",
     "analyticsAccessNoticeDesc": "Dengan bergabung dengan kursus ini, Anda setuju untuk memberikan akses kepada admin ke analitik pembelajaran Anda.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8766,10 +8703,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10128,5 +10061,12 @@
     "playWithBotNowMessage": "Belum ada yang bergabung. Pangea Bot bisa mengisi kursi kosong sekarang, atau Anda bisa terus menunggu.",
     "keepWaiting": "Terus menunggu",
     "botTookSeatAfterAnHour": "Sesi ini terbuka selama satu jam, jadi Pangea Bot mengambil kursi kosong.",
-    "botTookSeatAfterADay": "Sesi ini terbuka selama lebih dari sehari, jadi Pangea Bot mengambil kursi kosong. Kirim pesan untuk memulai."
+    "botTookSeatAfterADay": "Sesi ini terbuka selama lebih dari sehari, jadi Pangea Bot mengambil kursi kosong. Kirim pesan untuk memulai.",
+    "whoCanJoin": "Siapa yang bisa bergabung?",
+    "approvalRequired": "Persetujuan diperlukan",
+    "courseAccessPublicDesc": "Siapa pun dapat menemukan dan bergabung dengan kursus ini.",
+    "courseAccessApprovalRequiredDesc": "Siapa pun dapat menemukan kursus ini dan meminta untuk bergabung. Anda menyetujui setiap permintaan.",
+    "courseAccessPrivateDesc": "Hanya orang dengan undangan atau kode kursus Anda yang dapat bergabung. Kursus ini tidak muncul dalam pencarian.",
+    "courseAccessCodeNote": "Siswa dengan kode kursus atau undangan Anda dapat langsung bergabung, apa pun pilihan Anda.",
+    "requireAnalyticsAccessSummary": "Siswa membagikan progres belajar mereka kepada Anda saat mereka bergabung."
 }

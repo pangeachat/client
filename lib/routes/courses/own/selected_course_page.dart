@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/analytics_access/course_settings_model.dart';
+import 'package:fluffychat/features/course_access/course_access.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
@@ -16,10 +17,12 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/course_access_sheet.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
+import 'package:fluffychat/routes/courses/own/course_creation_settings_widget.dart';
 import 'package:fluffychat/routes/courses/own/selected_course_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -54,6 +57,12 @@ class SelectedCourseController extends State<SelectedCourse>
 
   QuestObjectivesLoader get objectivesProvider => _objectivesLoader ??=
       QuestObjectivesLoader(client: Matrix.of(context).client);
+
+  /// The access setting the course is created with.
+  CourseAccess access = CourseAccess.initial;
+
+  /// Whether joining the new course requires sharing learning analytics.
+  bool requireAnalyticsAccess = true;
 
   @override
   initState() {
@@ -124,8 +133,8 @@ class SelectedCourseController extends State<SelectedCourse>
           name: course.title,
           topic: course.description,
           avatarUrl: course.imageUrl?.toString(),
-          visibility: sdk.Visibility.public,
-          joinRules: sdk.JoinRules.knock,
+          visibility: access.visibility,
+          joinRules: access.joinRule,
           initialState: [
             sdk.StateEvent(
               type: PangeaEventTypes.coursePlan,
@@ -137,7 +146,7 @@ class SelectedCourseController extends State<SelectedCourse>
             sdk.StateEvent(
               type: PangeaEventTypes.courseSettings,
               content: CourseSettingsModel(
-                requireAnalyticsAccess: true,
+                requireAnalyticsAccess: requireAnalyticsAccess,
               ).toJson(),
             ),
           ],
@@ -189,6 +198,15 @@ class SelectedCourseController extends State<SelectedCourse>
     }
   }
 
+  Future<void> chooseAccess() async {
+    final chosen = await CourseAccessSheet.show(context, access);
+    if (chosen == null || !mounted) return;
+    setState(() => access = chosen);
+  }
+
+  void setRequireAnalyticsAccess(bool value) =>
+      setState(() => requireAnalyticsAccess = value);
+
   Future<void> addCourseToSpace(CoursePlanModel course) async {
     if (widget.spaceId == null) {
       throw Exception("Space ID is null");
@@ -235,5 +253,13 @@ class SelectedCourseController extends State<SelectedCourse>
     onTapCta: submit,
     ctaButtonText: buttonText,
     objectivesProvider: _objectivesLoader,
+    creationSettings: widget.mode == SelectedCourseMode.launch
+        ? CourseCreationSettings(
+            access: access,
+            onTapAccess: chooseAccess,
+            requireAnalyticsAccess: requireAnalyticsAccess,
+            onChangedRequireAnalyticsAccess: setRequireAnalyticsAccess,
+          )
+        : null,
   );
 }

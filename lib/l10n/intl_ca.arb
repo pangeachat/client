@@ -2370,8 +2370,6 @@
     "@knock": {},
     "knocking": "S'està picant",
     "@knocking": {},
-    "restricted": "Restringit",
-    "@restricted": {},
     "knockRestricted": "No es pot picar a la porta",
     "@knockRestricted": {},
     "goToSpace": "Ves a l'espai {space}",
@@ -3289,17 +3287,8 @@
     "introductions": "Presentacions",
     "announcements": "Anuncis",
     "activities": "Activitats",
-    "access": "Accés",
-    "howSpaceCanBeFound": "Com es pot trobar aquest curs",
     "private": "Privat",
-    "cannotBeFoundInSearch": "No es pot trobar a la cerca",
     "public": "Públic",
-    "visibleToCommunity": "Visible per a la comunitat més àmplia de Pangea Chat a través de \"Troba un curs\"",
-    "howSpaceCanBeJoined": "Com es pot unir a aquest curs",
-    "canBeFoundVia": "Es pot trobar a través de:",
-    "canBeFoundViaInvitation": "• invitació",
-    "canBeFoundViaCodeOrLink": "• codi o enllaç",
-    "canBeFoundViaKnock": "• sol·licitud d'entrada i aprovació de l'administrador",
     "sendActivities": "Envia activitats",
     "directMessage": "Missatge directe",
     "newDirectMessage": "Nou missatge directe",
@@ -3358,7 +3347,6 @@
     "inviteDesc": "Per nom d'usuari, per codi o enllaç",
     "editCourseDesc": "Aquí pots editar el títol del curs, la descripció, etc.",
     "permissionsDesc": "Estableix permisos com qui pot convidar usuaris, enviar missatges, crear xats, etc.",
-    "accessDesc": "Pots fer que el teu curs sigui obert al món! O bé, fer que el teu curs sigui privat i segur.",
     "createGroupChatDesc": "Mentre que les sessions d'activitat comencen i acaben, els xats de grup romandran oberts per a la comunicació rutinària.",
     "deleteDesc": "Només els administradors poden eliminar un curs. Aquesta és una acció destructiva que elimina tots els usuaris i elimina tots els xats seleccionats dins del curs. Procedeix amb precaució.",
     "whatNow": "I ara què?",
@@ -5730,47 +5718,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6041,10 +5993,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7836,11 +7784,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Per defecte, els cursos són cercables públicament i requereixen l'aprovació de l'administrador per unir-se. Podeu editar aquestes configuracions en qualsevol moment.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Quina llengua estàs aprenent?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8715,11 +8658,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Permetre que altres busquin el teu curs",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "No et perdis cap xat!",
     "enableNotificationsDesc": "Permet notificacions per a Pangea Chat i mantingues't connectat amb els teus companys d'idioma!",
     "enableNotifications": "Permet notificacions",
@@ -8812,7 +8750,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selecciona paraules per aprendre'n més",
     "requireAnalyticsAccessTitle": "Requereix accés a l'analítica per unir-se",
-    "requireAnalyticsAccessDesc": "Els participants han de concedir accés a les seves analítiques d'aprenentatge per unir-se a aquest curs",
     "analyticsAccessNoticeTitle": "Accés a l'analítica requerit",
     "analyticsAccessNoticeDesc": "En unir-te a aquest curs, acceptes concedir als administradors accés a les teves analítiques d'aprenentatge.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8820,10 +8757,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10182,5 +10115,12 @@
     "playWithBotNowMessage": "Encara no s'ha unit ningú. El bot Pangea pot ocupar el seient lliure ara, o pots seguir esperant.",
     "keepWaiting": "Seguir esperant",
     "botTookSeatAfterAnHour": "Aquesta sessió ha estat oberta durant una hora, així que el bot Pangea ha ocupat el seient lliure.",
-    "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar."
+    "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar.",
+    "whoCanJoin": "Qui es pot unir?",
+    "approvalRequired": "Aprovació necessària",
+    "courseAccessPublicDesc": "Qualsevol pot trobar i unir-se a aquest curs.",
+    "courseAccessApprovalRequiredDesc": "Qualsevol pot trobar aquest curs i demanar unir-s'hi. Tu aproves cada sol·licitud.",
+    "courseAccessPrivateDesc": "Només les persones amb la teva invitació o codi de curs es poden unir. El curs no apareix a la cerca.",
+    "courseAccessCodeNote": "Els estudiants amb el teu codi de curs o una invitació es poden unir de seguida, sigui quina sigui la teva elecció.",
+    "requireAnalyticsAccessSummary": "Els estudiants comparteixen el seu progrés d'aprenentatge amb tu quan s'uneixen."
 }
