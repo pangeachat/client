@@ -66,6 +66,11 @@ class ObjectiveSection extends StatelessWidget {
   /// Mission too; then the two badges sit side by side.
   final bool isClassLocation;
 
+  /// The Mission's city is not open to the learner yet (org quests doc,
+  /// "Progression"): labelled "Not yet open" and its cards dimmed; tapping
+  /// one explains instead of opening it.
+  final bool closed;
+
   /// The Mission's 1-based place in the plan, for its circle's number.
   final int index;
 
@@ -88,6 +93,7 @@ class ObjectiveSection extends StatelessWidget {
     this.onToggleCollapsed,
     this.isUpNext = false,
     this.isClassLocation = false,
+    this.closed = false,
     required this.index,
     required this.missionCount,
     this.spacing = 16.0,
@@ -167,6 +173,15 @@ class ObjectiveSection extends StatelessWidget {
               child: _SectionBadge(
                 label: L10n.of(context).classLocation,
                 fill: theme.colorScheme.outlineVariant,
+                ink: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+          if (closed)
+            WidgetSpan(
+              alignment: PlaceholderAlignment.middle,
+              child: _SectionBadge(
+                label: L10n.of(context).missionNotYetOpen,
+                fill: theme.colorScheme.surfaceContainerHighest,
                 ink: theme.colorScheme.onSurfaceVariant,
               ),
             ),

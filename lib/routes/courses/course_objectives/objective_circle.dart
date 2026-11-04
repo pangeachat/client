@@ -51,7 +51,9 @@ class ObjectiveCircle extends StatelessWidget {
       ObjectiveCircleState.later => (
         theme.colorScheme.surface,
         theme.colorScheme.onSurfaceVariant,
-        l10n.missionNofM(item.index, count),
+        item.closed
+            ? l10n.objectiveCircleClosed(item.index)
+            : l10n.missionNofM(item.index, count),
       ),
     };
     const inner =
@@ -85,7 +87,9 @@ class ObjectiveCircle extends StatelessWidget {
       ),
     );
     if (item.state == ObjectiveCircleState.later) {
-      circle = Opacity(opacity: 0.8, child: circle);
+      // A city not yet open is faded further; its name says so too, so the
+      // fade is never the only carrier.
+      circle = Opacity(opacity: item.closed ? 0.45 : 0.8, child: circle);
     }
     if (item.loading) {
       // The number stays readable; only the ring and fill, which are what

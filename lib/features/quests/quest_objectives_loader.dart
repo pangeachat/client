@@ -315,6 +315,13 @@ class QuestObjectivesLoader {
         _ => const [],
       };
 
+  /// The course as a trip, from its version 2 copy; null for the shared
+  /// quest, a version 1 copy, or while the outline loads.
+  CourseTrip? get trip => switch (_questLoader.value) {
+    AsyncLoaded(value: final outline) => outline.trip,
+    _ => null,
+  };
+
   /// Re-resolve the shared progression from the cached outlines and the
   /// learner's current XP — the SAME inputs and resolver the world map uses,
   /// so the numbers can never disagree (quests.instructions.md). Pure and
