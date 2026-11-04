@@ -3289,13 +3289,11 @@
     "editCourseLater": "Şablon başlığı, açıklamalar ve kurs resmi daha sonra düzenleyebilirsiniz.",
     "createCourse": "Kurs Oluştur",
     "stats": "İstatistikler",
-    "createGroupChat": "Grup sohbeti oluştur",
     "editCourse": "Kursu düzenle",
     "inviteDesc": "Kullanıcı adı, kod veya bağlantı ile",
     "editCourseDesc": "Burada kurs başlığını, açıklamasını vb. düzenleyebilirsiniz.",
     "permissionsDesc": "Kimin kullanıcı davet edebileceği, mesaj gönderebileceği, sohbet oluşturabileceği gibi izinleri ayarlayın.",
     "accessDesc": "Kursunuzu dünyaya açık hale getirebilirsiniz! Ya da, kursunuzu özel ve güvenli yapabilirsiniz.",
-    "createGroupChatDesc": "Etkinlik oturumları başlar ve biterken, grup sohbetleri rutin iletişim için açık kalacaktır.",
     "deleteDesc": "Sadece yöneticiler kursu silebilir. Bu, tüm kullanıcıları kaldıran ve kurs içindeki tüm seçili sohbetleri silen yıkıcı bir işlemdir. Dikkatli ilerleyin.",
     "whatNow": "Şimdi ne olacak?",
     "chooseNextActivity": "Bir sonraki etkinliğinizi seçin!",
@@ -6195,10 +6193,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6216,10 +6210,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

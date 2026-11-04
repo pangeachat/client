@@ -3274,13 +3274,11 @@
     "editCourseLater": "Vous pouvez modifier le titre du modèle, les descriptions et l'image du cours plus tard.",
     "createCourse": "Créer un cours",
     "stats": "Statistiques",
-    "createGroupChat": "Créer un chat de groupe",
     "editCourse": "Modifier le cours",
     "inviteDesc": "Par nom d'utilisateur, par code ou lien",
     "editCourseDesc": "Ici, vous pouvez modifier le titre du cours, la description, etc.",
     "permissionsDesc": "Définissez les autorisations telles que qui peut inviter des utilisateurs, envoyer des messages, créer des discussions, etc.",
     "accessDesc": "Vous pouvez rendre votre cours accessible au monde entier ! Ou, rendre votre cours privé et sécurisé.",
-    "createGroupChatDesc": "Alors que les sessions d'activité commencent et se terminent, les discussions de groupe resteront ouvertes pour la communication de routine.",
     "deleteDesc": "Seuls les administrateurs peuvent supprimer un cours. Il s'agit d'une action destructive qui supprime tous les utilisateurs et supprime toutes les discussions sélectionnées dans le cours. Proceed with caution.",
     "whatNow": "Et maintenant ?",
     "chooseNextActivity": "Choisissez votre prochaine activité !",
@@ -6264,10 +6262,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6285,10 +6279,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

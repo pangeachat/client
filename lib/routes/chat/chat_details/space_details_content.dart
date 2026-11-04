@@ -341,14 +341,6 @@ List<ButtonDetails> _courseSettingsButtons(
       enabled: room.isRoomAdmin && room.spaceParents.isEmpty,
     ),
     ButtonDetails(
-      title: l10n.createGroupChat,
-      description: l10n.createGroupChatDesc,
-      icon: const Icon(Symbols.chat_add_on, size: 30.0),
-      onPressed: controller.addGroupChat,
-      enabled:
-          room.isRoomAdmin && room.canChangeStateEvent(EventTypes.SpaceChild),
-    ),
-    ButtonDetails(
       title: l10n.leave,
       description: l10n.leaveDesc,
       icon: const Icon(Icons.logout_outlined, size: 30.0),

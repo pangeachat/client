@@ -398,6 +398,8 @@ abstract class WorkspaceNav {
       // Single-column: a rail section closes an open right panel (peers in
       // the same slot — see setSection's clearRight).
       if (clearRight) 'right',
+      // As in [openCourse]: another course opens on its own current Mission.
+      if (current.queryParameters['c'] != shortRoomId(spaceId)) 'mission',
     });
     final query = <String>[
       'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
@@ -492,9 +494,11 @@ abstract class WorkspaceNav {
   /// [roomId] reopens/rejoins a specific session room; [autoplay] asks for
   /// the hero media (block 0) to start muted, a field nothing reads today
   /// (see [ActivityTokenParam]); [fromCoursePlan] marks an open
-  /// from the card's full course plan, so the back-arrow reopens that page —
-  /// all four ride as fields of the activity token's param
-  /// ([ActivityTokenParam]), never as loose query params.
+  /// from the card's full course plan, so the back-arrow reopens that page;
+  /// [fromCourseCard] marks any open from the card, so a session started from
+  /// it closes back to the card (#9632) — all five ride as fields of the
+  /// activity token's param ([ActivityTokenParam]), never as loose query
+  /// params.
   ///
   /// Inbound `/courses/:id?activity=` external links and the standalone
   /// `/<uuid>` link map to this same token form through `legacy_redirects`. The
@@ -507,6 +511,7 @@ abstract class WorkspaceNav {
     String? roomId,
     bool autoplay = false,
     bool fromCoursePlan = false,
+    bool fromCourseCard = false,
   }) {
     final token = ActivityPanelToken(
       ActivityTokenParam(
@@ -515,6 +520,7 @@ abstract class WorkspaceNav {
         launch: launch,
         autoplay: autoplay ? 0 : null,
         fromCoursePlan: fromCoursePlan,
+        fromCourseCard: fromCourseCard,
       ),
     );
 
@@ -524,6 +530,32 @@ abstract class WorkspaceNav {
     ];
 
     return WorkspaceQuery.location(PRoutes.world, parts);
+  }
+
+  /// Start [activityId]'s session from its open plan in course [spaceId]:
+  /// [openCourseActivity] with launch, keeping where the plan was opened from
+  /// and the Mission picked in that course, so the plan's back arrow and the
+  /// session's close still return there (#9632; quests.instructions.md, "The
+  /// Mission on show").
+  static String launchCourseActivity(
+    Uri current,
+    String spaceId,
+    String activityId,
+  ) {
+    final opened = activityInfoFor(current);
+    final launch = openCourseActivity(
+      spaceId,
+      activityId,
+      launch: true,
+      fromCoursePlan: opened?.fromCoursePlan ?? false,
+      fromCourseCard: opened?.fromCourseCard ?? false,
+    );
+    final missionId = current.queryParameters['c'] == shortRoomId(spaceId)
+        ? selectedMissionIdFor(current)
+        : null;
+    return missionId == null
+        ? launch
+        : selectMission(Uri.parse(launch), missionId);
   }
 
   /// Seat [activityId] as the SOLE left `activity:` token over the current
@@ -563,8 +595,8 @@ abstract class WorkspaceNav {
   /// Open session [roomId] of [activityId] INSIDE the activity panel — the
   /// token keeps the activity and binds the room — so a session viewed from
   /// the join list closes with a back arrow to that list rather than an X.
-  /// The course context, if any, is kept, and so is an open from the full
-  /// course plan (#9367).
+  /// The course context, if any, is kept, and so is where the activity was
+  /// opened from (#9367, #9632).
   static String openActivitySession(
     Uri current,
     String activityId,
@@ -578,6 +610,7 @@ abstract class WorkspaceNav {
           activityId: activityId,
           roomId: roomId,
           fromCoursePlan: activityInfoFor(current)?.fromCoursePlan ?? false,
+          fromCourseCard: activityInfoFor(current)?.fromCourseCard ?? false,
           fromJoinList: true,
         ),
       ),
@@ -585,8 +618,8 @@ abstract class WorkspaceNav {
   );
 
   /// Back out of a session viewed inside [activityId]'s panel to the activity
-  /// itself, keeping the course context and an open from the full course plan
-  /// (#9367), so the activity's own back arrow still returns there.
+  /// itself, keeping the course context and where the activity was opened
+  /// from (#9367, #9632), so the activity's own back arrow still returns there.
   static String closeActivitySession(Uri current, String activityId) => _mutate(
     current,
     'left',
@@ -595,6 +628,7 @@ abstract class WorkspaceNav {
         ActivityTokenParam(
           activityId: activityId,
           fromCoursePlan: activityInfoFor(current)?.fromCoursePlan ?? false,
+          fromCourseCard: activityInfoFor(current)?.fromCourseCard ?? false,
         ),
       ),
     ],
@@ -708,6 +742,24 @@ abstract class WorkspaceNav {
 
   static String closeLeft(Uri current, PanelToken token) =>
       _mutate(current, 'left', (tokens) => _remove(tokens, token));
+
+  /// Close the open left room panel [token], dropping only it — unless it is
+  /// a session the course card opened ([RoomTokenParam.fromCourseCard]) and
+  /// the column's only panel. The session took the card's place, so the card
+  /// takes it back, over the surviving `?c=` and on the Mission riding
+  /// `?mission=` (routing.instructions.md → Closing a panel: X or back arrow;
+  /// #9632).
+  static String closeLeftRoom(Uri current, PanelToken token) {
+    final param = token.param;
+    final reopensCourseCard =
+        param is RoomTokenParam &&
+        param.fromCourseCard &&
+        activeSpaceIdFor(current) != null &&
+        parseOpenPanels(current).left.every((t) => t == token);
+    return reopensCourseCard
+        ? setLeft(current, const [CoursePanelToken()])
+        : closeLeft(current, token);
+  }
 
   /// Close a *section* left panel (a course, the chat list, the add-course
   /// wizard), dropping its token while **keeping the map filter** and the rest of

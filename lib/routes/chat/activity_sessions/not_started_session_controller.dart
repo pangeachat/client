@@ -380,21 +380,15 @@ class NotStartedSessionController extends State<NotStartedSession>
     //Nothing to jump to if container is minimized, so skip
     if (widget.scrollController.hasClients) widget.scrollController.jumpTo(0);
     final course = widget.course;
-    // With a course, launch scoped to it; otherwise launch the activity as a
-    // standalone immersive panel over the map (no course context to clear —
-    // this session already has none). See routing.instructions.md.
+    final uri = GoRouterState.of(context).uri;
+    // With a course, launch scoped to it, keeping where the plan was opened
+    // from and its Mission; otherwise launch the activity as a standalone
+    // immersive panel over the map (no course context to clear — this session
+    // already has none). See routing.instructions.md.
     context.go(
       course != null
-          ? WorkspaceNav.openCourseActivity(
-              course.id,
-              widget.activityId,
-              launch: true,
-            )
-          : WorkspaceNav.openActivity(
-              GoRouterState.of(context).uri,
-              widget.activityId,
-              launch: true,
-            ),
+          ? WorkspaceNav.launchCourseActivity(uri, course.id, widget.activityId)
+          : WorkspaceNav.openActivity(uri, widget.activityId, launch: true),
     );
   }
 

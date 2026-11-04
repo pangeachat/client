@@ -3470,13 +3470,11 @@
     "editCourseLater": "您可以稍后编辑模板标题、描述和课程图片。",
     "createCourse": "创建课程",
     "stats": "统计",
-    "createGroupChat": "创建群聊",
     "editCourse": "编辑课程",
     "inviteDesc": "通过用户名、代码或链接",
     "editCourseDesc": "在这里你可以编辑课程标题、描述等。",
     "permissionsDesc": "设置权限，例如谁可以邀请用户、发送消息、创建聊天等。",
     "accessDesc": "你可以让你的课程对全世界开放！或者，将你的课程设为私密且安全。",
-    "createGroupChatDesc": "活动会话开始和结束，而群聊将保持开放以进行日常沟通。",
     "deleteDesc": "只有管理员可以删除课程。这是一个破坏性操作，会删除所有用户和课程内的所有选定聊天。请谨慎操作。",
     "whatNow": "接下来怎么办？",
     "chooseNextActivity": "选择你的下一个活动！",
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

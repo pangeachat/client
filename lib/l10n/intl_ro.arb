@@ -2944,13 +2944,11 @@
     "editCourseLater": "Poți edita titlul, descrierile și imaginea cursului mai târziu.",
     "createCourse": "Creează curs",
     "stats": "Statistici",
-    "createGroupChat": "Creează chat de grup",
     "editCourse": "Editează cursul",
     "inviteDesc": "Prin nume de utilizator, cod sau link",
     "editCourseDesc": "Aici poți edita titlul, descrierea și altele ale cursului.",
     "permissionsDesc": "Setează permisiuni precum cine poate invita utilizatori, trimite mesaje, crea chat-uri etc.",
     "accessDesc": "Poți face cursul tău deschis lumii! Sau, îl poți face privat și sigur.",
-    "createGroupChatDesc": "În timp ce sesiunile de activitate încep și se termină, chat-urile de grup vor rămâne deschise pentru comunicare de rutină.",
     "deleteDesc": "Doar administratorii pot șterge un curs. Aceasta este o acțiune distructivă care elimină toți utilizatorii și șterge toate chat-urile selectate din curs. Procedează cu precauție.",
     "whatNow": "Ce urmează?",
     "chooseNextActivity": "Alege următoarea activitate!",
@@ -6626,10 +6624,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6647,10 +6641,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

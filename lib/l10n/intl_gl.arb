@@ -3470,13 +3470,11 @@
     "editCourseLater": "Podes editar o título da plantilla, as descricións e a imaxe do curso máis tarde.",
     "createCourse": "Crear curso",
     "stats": "Estadísticas",
-    "createGroupChat": "Crear chat de grupo",
     "editCourse": "Editar curso",
     "inviteDesc": "Por nome de usuario, por código ou ligazón",
     "editCourseDesc": "Aquí podes editar o título do curso, a descrición, etc.",
     "permissionsDesc": "Establece permisos como quen pode invitar usuarios, enviar mensaxes, crear chats, etc.",
     "accessDesc": "Podes facer que o teu curso sexa aberto ao mundo! Ou, facer que o teu curso sexa privado e seguro.",
-    "createGroupChatDesc": "Mentres as sesións de actividade comezan e rematan, os chats de grupo permanecerán abertos para comunicación de rutina.",
     "deleteDesc": "Só os administradores poden eliminar un curso. Esta é unha acción destructiva que elimina a todos os usuarios e elimina todos os chats seleccionados dentro do curso. Procede con precaución.",
     "whatNow": "E agora?",
     "chooseNextActivity": "Elixe a túa próxima actividade!",
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
