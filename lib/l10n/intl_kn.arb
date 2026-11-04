@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-11-04 10:19:31.381009",
+    "@@last_modified": "2026-11-04 15:02:45.364900",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "ಕಾಯುವುದನ್ನು ಮುಂದುವರಿಸಿ",
     "botTookSeatAfterAnHour": "ಈ ಸೆಷನ್ ಒಂದು ಗಂಟೆ ತೆರೆದಿತ್ತು, ಆದ್ದರಿಂದ Pangea Bot ಖಾಲಿ ಜಾಗವನ್ನು ತೆಗೆದುಕೊಂಡಿತು.",
     "botTookSeatAfterADay": "ಈ ಸೆಷನ್ ಒಂದು ದಿನಕ್ಕಿಂತ ಹೆಚ್ಚು ಸಮಯ ತೆರೆದಿತ್ತು, ಆದ್ದರಿಂದ Pangea Bot ಖಾಲಿ ಜಾಗವನ್ನು ತೆಗೆದುಕೊಂಡಿತು. ಪ್ರಾರಂಭಿಸಲು ಸಂದೇಶ ಕಳುಹಿಸಿ.",
-    "subscriptionGracePeriodEndsOn": "ಪಾವತಿ ವಿಫಲವಾಗಿದೆ. ರಿಯಾಯಿತಿ ಅವಧಿ {date} ರಂದು ಕೊನೆಗೊಳ್ಳುತ್ತದೆ"
+    "subscriptionGracePeriodEndsOn": "ಪಾವತಿ ವಿಫಲವಾಗಿದೆ. ರಿಯಾಯಿತಿ ಅವಧಿ {date} ರಂದು ಕೊನೆಗೊಳ್ಳುತ್ತದೆ",
+    "changeBaseLanguageTitle": "ಮೂಲ ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸುವುದೇ?",
+    "changeBaseLanguageDesc": "ಅಪ್ಲಿಕೇಶನ್‌ನ ಮೆನುಗಳು ಮತ್ತು ಬಟನ್‌ಗಳು {language} ಗೆ ಬದಲಾಗುತ್ತವೆ."
 }

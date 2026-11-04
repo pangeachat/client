@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-11-04 10:19:28.043052",
+    "@@last_modified": "2026-11-04 15:02:41.142084",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10537,5 +10537,7 @@
     "keepWaiting": "Pokračovat v čekání",
     "botTookSeatAfterAnHour": "Tato relace byla otevřená hodinu, takže Pangea Bot obsadil volné místo.",
     "botTookSeatAfterADay": "Tato relace byla otevřená déle než den, takže Pangea Bot obsadil volné místo. Pošlete zprávu pro zahájení.",
-    "subscriptionGracePeriodEndsOn": "Platba se nezdařila. Ochranná lhůta končí {date}"
+    "subscriptionGracePeriodEndsOn": "Platba se nezdařila. Ochranná lhůta končí {date}",
+    "changeBaseLanguageTitle": "Změnit základní jazyk?",
+    "changeBaseLanguageDesc": "Nabídky a tlačítka aplikace se přepnou do jazyka {language}."
 }

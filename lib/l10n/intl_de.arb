@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-11-04 10:19:28.016093",
+    "@@last_modified": "2026-11-04 15:02:41.181288",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10033,5 +10033,7 @@
     "keepWaiting": "Weiter warten",
     "botTookSeatAfterAnHour": "Diese Sitzung war eine Stunde lang offen, daher hat Pangea Bot den freien Platz eingenommen.",
     "botTookSeatAfterADay": "Diese Sitzung war über einen Tag lang offen, daher hat Pangea Bot den freien Platz eingenommen. Sende eine Nachricht, um zu beginnen.",
-    "subscriptionGracePeriodEndsOn": "Zahlung fehlgeschlagen. Kulanzzeitraum endet am {date}"
+    "subscriptionGracePeriodEndsOn": "Zahlung fehlgeschlagen. Kulanzzeitraum endet am {date}",
+    "changeBaseLanguageTitle": "Basissprache ändern?",
+    "changeBaseLanguageDesc": "Die Menüs und Schaltflächen der App werden auf {language} umgestellt."
 }

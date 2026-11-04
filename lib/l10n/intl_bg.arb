@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-11-04 10:19:27.001953",
+    "@@last_modified": "2026-11-04 15:02:40.453044",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Продължи да чакаш",
     "botTookSeatAfterAnHour": "Тази сесия беше отворена за един час, така че ботът на Pangea зае свободното място.",
     "botTookSeatAfterADay": "Тази сесия беше отворена за повече от един ден, така че ботът на Pangea зае свободното място. Изпратете съобщение, за да започнете.",
-    "subscriptionGracePeriodEndsOn": "Неуспешно плащане. Гратисният период изтича на {date}"
+    "subscriptionGracePeriodEndsOn": "Неуспешно плащане. Гратисният период изтича на {date}",
+    "changeBaseLanguageTitle": "Да сменя основния език?",
+    "changeBaseLanguageDesc": "Менютата и бутоните на приложението ще преминат на {language}."
 }

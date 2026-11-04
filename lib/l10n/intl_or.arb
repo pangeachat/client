@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-11-04 10:19:34.210991",
+    "@@last_modified": "2026-11-04 15:02:49.478530",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "ଅପେକ୍ଷା କରନ୍ତୁ",
     "botTookSeatAfterAnHour": "ଏହି ସେସନ୍ ଏକ ଘଣ୍ଟା ପାଇଁ ଖୋଲା ଥିଲା, ତେଣୁ Pangea Bot ଖାଲି ସ୍ଥାନ ନେଇଛି।",
     "botTookSeatAfterADay": "ଏହି ସେସନ୍ ଏକ ଦିନରୁ ଅଧିକ ସମୟ ପାଇଁ ଖୋଲା ଥିଲା, ତେଣୁ Pangea Bot ଖାଲି ସ୍ଥାନ ନେଇଛି। ଆରମ୍ଭ କରିବାକୁ ଏକ ବାର୍ତ୍ତା ପଠାନ୍ତୁ।",
-    "subscriptionGracePeriodEndsOn": "ପେମେଣ୍ଟ ବିଫଳ ହୋଇଛି। ଅନୁଗ୍ରହ ଅବଧି {date} ରେ ଶେଷ ହେବ"
+    "subscriptionGracePeriodEndsOn": "ପେମେଣ୍ଟ ବିଫଳ ହୋଇଛି। ଅନୁଗ୍ରହ ଅବଧି {date} ରେ ଶେଷ ହେବ",
+    "changeBaseLanguageTitle": "ମୂଳ ଭାଷା ପରିବର୍ତ୍ତନ କରିବେ କି?",
+    "changeBaseLanguageDesc": "ଆପ୍‌ର ମେନୁ ଏବଂ ବଟନ୍‌ଗୁଡ଼ିକ {language}କୁ ବଦଳିଯିବ।"
 }

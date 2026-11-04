@@ -3526,7 +3526,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-11-04 10:19:27.095103",
+    "@@last_modified": "2026-11-04 15:02:40.186496",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10060,5 +10060,7 @@
     "keepWaiting": "Працягнуць чакаць",
     "botTookSeatAfterAnHour": "Гэтая сесія была адкрыта гадзіну, таму бот Pangea заняў свабоднае месца.",
     "botTookSeatAfterADay": "Гэтая сесія была адкрыта больш за дзень, таму бот Pangea заняў свабоднае месца. Адпраўце паведамленне, каб пачаць.",
-    "subscriptionGracePeriodEndsOn": "Аплата не прайшла. Льготны перыяд заканчваецца {date}"
+    "subscriptionGracePeriodEndsOn": "Аплата не прайшла. Льготны перыяд заканчваецца {date}",
+    "changeBaseLanguageTitle": "Змяніць асноўную мову?",
+    "changeBaseLanguageDesc": "Меню і кнопкі праграмы пераключацца на {language}."
 }

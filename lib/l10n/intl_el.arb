@@ -3387,7 +3387,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-11-04 10:19:28.139217",
+    "@@last_modified": "2026-11-04 15:02:41.579048",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10918,5 +10918,7 @@
     "keepWaiting": "Συνέχιση αναμονής",
     "botTookSeatAfterAnHour": "Αυτή η συνεδρία ήταν ανοιχτή για μία ώρα, οπότε το Pangea Bot πήρε την κενή θέση.",
     "botTookSeatAfterADay": "Αυτή η συνεδρία ήταν ανοιχτή για πάνω από μία ημέρα, οπότε το Pangea Bot πήρε την κενή θέση. Στείλτε ένα μήνυμα για να ξεκινήσετε.",
-    "subscriptionGracePeriodEndsOn": "Η πληρωμή απέτυχε. Η περίοδος χάριτος λήγει στις {date}"
+    "subscriptionGracePeriodEndsOn": "Η πληρωμή απέτυχε. Η περίοδος χάριτος λήγει στις {date}",
+    "changeBaseLanguageTitle": "Αλλαγή βασικής γλώσσας;",
+    "changeBaseLanguageDesc": "Τα μενού και τα κουμπιά της εφαρμογής θα αλλάξουν σε {language}."
 }

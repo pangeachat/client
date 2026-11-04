@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-11-04 10:19:33.800476",
+    "@@last_modified": "2026-11-04 15:02:49.632612",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "ਉਡੀਕ ਕਰਦੇ ਰਹੋ",
     "botTookSeatAfterAnHour": "ਇਹ ਸੈਸ਼ਨ ਇੱਕ ਘੰਟੇ ਲਈ ਖੁੱਲ੍ਹਾ ਸੀ, ਇਸ ਲਈ ਪੈਂਗੇਆ ਬੋਟ ਨੇ ਖਾਲੀ ਸੀਟ ਲੈ ਲਈ।",
     "botTookSeatAfterADay": "ਇਹ ਸੈਸ਼ਨ ਇੱਕ ਦਿਨ ਤੋਂ ਵੱਧ ਸਮੇਂ ਲਈ ਖੁੱਲ੍ਹਾ ਸੀ, ਇਸ ਲਈ ਪੈਂਗੇਆ ਬੋਟ ਨੇ ਖਾਲੀ ਸੀਟ ਲੈ ਲਈ। ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੱਕ ਸੁਨੇਹਾ ਭੇਜੋ।",
-    "subscriptionGracePeriodEndsOn": "ਭੁਗਤਾਨ ਅਸਫਲ ਰਿਹਾ। ਗ੍ਰੇਸ ਪੀਰੀਅਡ {date} ਨੂੰ ਖਤਮ ਹੁੰਦਾ ਹੈ"
+    "subscriptionGracePeriodEndsOn": "ਭੁਗਤਾਨ ਅਸਫਲ ਰਿਹਾ। ਗ੍ਰੇਸ ਪੀਰੀਅਡ {date} ਨੂੰ ਖਤਮ ਹੁੰਦਾ ਹੈ",
+    "changeBaseLanguageTitle": "ਮੂਲ ਭਾਸ਼ਾ ਬਦਲਣੀ ਹੈ?",
+    "changeBaseLanguageDesc": "ਐਪ ਦੇ ਮੀਨੂ ਅਤੇ ਬਟਨ {language} ਵਿੱਚ ਬਦਲ ਜਾਣਗੇ।"
 }

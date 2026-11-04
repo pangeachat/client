@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-11-04 10:19:35.796718",
+    "@@last_modified": "2026-11-04 15:02:51.366631",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Teraskeun ngantosan",
     "botTookSeatAfterAnHour": "Sési ieu dibuka sajam, janten Pangea Bot nyandak korsi kosong.",
     "botTookSeatAfterADay": "Sési ieu dibuka langkung ti sadinten, janten Pangea Bot nyandak korsi kosong. Kirim pesen pikeun ngamimitian.",
-    "subscriptionGracePeriodEndsOn": "Pamayaran gagal. Mangsa tenggang réngsé dina {date}"
+    "subscriptionGracePeriodEndsOn": "Pamayaran gagal. Mangsa tenggang réngsé dina {date}",
+    "changeBaseLanguageTitle": "Ganti basa dasar?",
+    "changeBaseLanguageDesc": "Ménu jeung tombol aplikasi bakal robah jadi basa {language}."
 }

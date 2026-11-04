@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-11-04 10:19:28.854371",
+    "@@last_modified": "2026-11-04 15:02:42.537154",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Wachtsje bliuwe",
     "botTookSeatAfterAnHour": "Dizze sesje wie in oere iepen, dus Pangea Bot hat de iepen plak ynnommen.",
     "botTookSeatAfterADay": "Dizze sesje wie mear as in dei iepen, dus Pangea Bot hat de iepen plak ynnommen. Stjoer in berjocht om te begjinnen.",
-    "subscriptionGracePeriodEndsOn": "Betelling mislearre. Betellingsfrije perioade einiget op {date}"
+    "subscriptionGracePeriodEndsOn": "Betelling mislearre. Betellingsfrije perioade einiget op {date}",
+    "changeBaseLanguageTitle": "Basistaal feroarje?",
+    "changeBaseLanguageDesc": "De menu's en knoppen fan de app sille oerskeakelje nei {language}."
 }

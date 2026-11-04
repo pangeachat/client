@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-11-04 10:19:29.897590",
+    "@@last_modified": "2026-11-04 15:02:43.148548",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Cùm a' feitheamh",
     "botTookSeatAfterAnHour": "Bha an seisean seo fosgailte airson uair a thìde, agus mar sin ghabh Pangea Bot an cathair fhosgailte.",
     "botTookSeatAfterADay": "Bha an seisean seo fosgailte airson còrr is latha, agus mar sin ghabh Pangea Bot an cathair fhosgailte. Cuir teachdaireachd gus tòiseachadh.",
-    "subscriptionGracePeriodEndsOn": "Dh'fhàillig am pàigheadh. Thig an ùine-ghràis gu crìch air {date}"
+    "subscriptionGracePeriodEndsOn": "Dh'fhàillig am pàigheadh. Thig an ùine-ghràis gu crìch air {date}",
+    "changeBaseLanguageTitle": "Atharraich bun-chànan?",
+    "changeBaseLanguageDesc": "Gluaisidh clàir-taice agus putanan an aplacaid gu {language}."
 }

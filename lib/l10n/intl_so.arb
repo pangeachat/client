@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-11-04 10:19:35.133099",
+    "@@last_modified": "2026-11-04 15:02:50.955170",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Sii sug",
     "botTookSeatAfterAnHour": "Fadhigan wuxuu furnaa saacad, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan.",
     "botTookSeatAfterADay": "Fadhigan wuxuu furnaa in ka badan maalin, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan. Fariin u dir si aad u bilowdo.",
-    "subscriptionGracePeriodEndsOn": "Lacag bixintu way fashilantay. Muddada dheeraadka ah waxay ku dhamaanaysaa {date}"
+    "subscriptionGracePeriodEndsOn": "Lacag bixintu way fashilantay. Muddada dheeraadka ah waxay ku dhamaanaysaa {date}",
+    "changeBaseLanguageTitle": "Beddel luqadda aasaasiga ah?",
+    "changeBaseLanguageDesc": "Liisaska iyo badhamada abka waxay u wareegi doonaan {language}."
 }

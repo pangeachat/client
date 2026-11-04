@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-11-04 10:19:32.429153",
+    "@@last_modified": "2026-11-04 15:02:47.246433",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Продолжи да чекаш",
     "botTookSeatAfterAnHour": "Оваа сесија беше отворена еден час, па Pangea Bot го зазеде слободното место.",
     "botTookSeatAfterADay": "Оваа сесија беше отворена повеќе од еден ден, па Pangea Bot го зазеде слободното место. Испратете порака за да започнете.",
-    "subscriptionGracePeriodEndsOn": "Неуспешна уплата. Грејс периодот завршува на {date}"
+    "subscriptionGracePeriodEndsOn": "Неуспешна уплата. Грејс периодот завршува на {date}",
+    "changeBaseLanguageTitle": "Да се смени основниот јазик?",
+    "changeBaseLanguageDesc": "Менијата и копчињата на апликацијата ќе се префрлат на {language}."
 }

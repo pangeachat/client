@@ -6315,5 +6315,19 @@
                 "type": "String"
             }
         }
+    },
+    "changeBaseLanguageTitle": "Change base language?",
+    "@changeBaseLanguageTitle": {
+        "description": "Title of the confirmation shown before a new base language switches the language of the app's menus and buttons."
+    },
+    "changeBaseLanguageDesc": "The app's menus and buttons will switch to {language}.",
+    "@changeBaseLanguageDesc": {
+        "description": "Confirmation message before a new base language switches the language of the app's menus and buttons. {language} is the name of the new base language.",
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-11-04 10:19:31.767977",
+    "@@last_modified": "2026-11-04 15:02:46.196142",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2516,5 +2516,7 @@
     "keepWaiting": "Manere",
     "botTookSeatAfterAnHour": "Haec sessio per horam aperta erat, ergo Pangea Bot sedem liberam cepit.",
     "botTookSeatAfterADay": "Haec sessio per diem apertior erat, ergo Pangea Bot sedem liberam cepit. Mitte nuntium ut incipias.",
-    "subscriptionGracePeriodEndsOn": "Solutio defecit. Tempus gratiae desinit die {date}"
+    "subscriptionGracePeriodEndsOn": "Solutio defecit. Tempus gratiae desinit die {date}",
+    "changeBaseLanguageTitle": "Mutare linguam fundamentalem?",
+    "changeBaseLanguageDesc": "Menu et bullae applicationis ad {language} mutabuntur."
 }
