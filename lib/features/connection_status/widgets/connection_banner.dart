@@ -170,6 +170,8 @@ class _ConnectionBannerState extends State<ConnectionBanner> {
     ConnectionStatus status,
   ) {
     final l10n = L10n.of(context);
+    // Where a sheet can rise to just below the top bar (#9570).
+    final compact = !FluffyThemes.isColumnMode(context);
     final stopping = blocked.where((category) => category.stopsApp).toSet();
     // A block that cleared and came back is news again.
     if (stopping.isEmpty) _filteredDismissedFor = const {};
@@ -186,6 +188,7 @@ class _ConnectionBannerState extends State<ConnectionBanner> {
         onAction: FilteredNetworkDialog.show,
         onPractice: _practiceOffer(dismiss),
         onClose: dismiss,
+        compact: compact,
       );
     }
 
@@ -193,8 +196,6 @@ class _ConnectionBannerState extends State<ConnectionBanner> {
     // after the user dismissed it.
     if (blocked.contains(NetworkHostCategory.chatServer)) return null;
 
-    // Where a sheet can rise to just below the top bar (#9570).
-    final compact = !FluffyThemes.isColumnMode(context);
     if (!status.isLost) _connectionDismissedFor = null;
     switch (status) {
       case ConnectionStatus.connected:
@@ -265,34 +266,53 @@ class _BannerCard extends StatelessWidget {
         Icon(icon, color: ink),
         SizedBox(width: compact ? 8 : 12),
         Expanded(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: compact ? 0 : 8),
-            child: ExcludeSemantics(
-              child: Text(
-                text,
-                style: theme.textTheme.bodyMedium?.copyWith(color: ink),
-              ),
+          // The action takes at most half the width it shares with the
+          // message, so a long translation of it wraps instead of squeezing
+          // the message to a sliver (#9570).
+          child: LayoutBuilder(
+            builder: (context, constraints) => Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: compact ? 0 : 8),
+                    child: ExcludeSemantics(
+                      child: Text(
+                        text,
+                        style: theme.textTheme.bodyMedium?.copyWith(color: ink),
+                      ),
+                    ),
+                  ),
+                ),
+                if (actionLabel != null)
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: constraints.maxWidth / 2,
+                    ),
+                    // Each button is its own node: with one button, the live
+                    // region would otherwise merge the whole banner into it.
+                    child: Semantics(
+                      container: true,
+                      button: true,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(8),
+                        onTap: onAction,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Text(
+                            actionLabel,
+                            textAlign: TextAlign.center,
+                            style: theme.textTheme.labelLarge?.copyWith(
+                              color: ink,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ),
         ),
-        if (actionLabel != null)
-          // Each button is its own node: with one button, the live
-          // region would otherwise merge the whole banner into it.
-          Semantics(
-            container: true,
-            button: true,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(8),
-              onTap: onAction,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Text(
-                  actionLabel,
-                  style: theme.textTheme.labelLarge?.copyWith(color: ink),
-                ),
-              ),
-            ),
-          ),
         if (compact && onPractice != null)
           _BannerIconButton(
             icon: Symbols.fitness_center,

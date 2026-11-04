@@ -466,6 +466,35 @@ void main() {
       );
     });
 
+    testWidgets('on a phone, is the practice icon on the filtered-network '
+        'banner\'s row too', (tester) async {
+      await showOfflineAt(tester, const Size(390, 844));
+      blocked.value = {NetworkHostCategory.pangeaApi};
+      await settle(tester);
+
+      expect(find.text(bannerText), findsOneWidget);
+      expect(find.text(offerText), findsNothing);
+      expect(
+        tester.getCenter(offer()).dy,
+        tester.getCenter(find.bySemanticsLabel('Close')).dy,
+      );
+    });
+
+    // The test font draws every glyph a full em wide, which makes the English
+    // "What can I do?" as wide as its longest translations.
+    testWidgets('a long "What can I do?" wraps instead of squeezing the '
+        'message', (tester) async {
+      await showOfflineAt(tester, const Size(390, 844));
+      blocked.value = {NetworkHostCategory.pangeaApi};
+      await settle(tester);
+
+      expect(tester.takeException(), isNull);
+      expect(
+        tester.getSize(find.text(bannerText)).width,
+        greaterThanOrEqualTo(tester.getSize(find.text('What can I do?')).width),
+      );
+    });
+
     testWidgets('on a wide screen, has a labelled row under the message', (
       tester,
     ) async {
