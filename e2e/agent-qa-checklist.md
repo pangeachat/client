@@ -108,7 +108,7 @@ The spine of the product. The expensive bugs live at these seams (the LO-lock ga
 - [ ] Tap a course the user previously LEFT (still in their list) — **Expect:** auto-join via `room.join()` without explicit confirmation. _(joining-courses.instructions.md; [gated])_
 - [ ] Open a bare-code class link in a MOBILE web browser, app not installed — **Expect:** no automatic store/scheme bounce (removed in #7830); Android shows the "Open in app" banner whose tap carries the current path via `intent://`; the Flutter web app loads and processes the code directly. _(joining-courses.instructions.md; [flaky] [staging-only])_
 - [ ] Open the class link where no native app intercepts — **Expect:** web app processes the code directly, no deferred-deep-link service; join completes in the browser. _(joining-courses.instructions.md)_
-- [ ] Navigate to `/courses/preview/:courseroomid` for a public/knock room, not a member — **Expect:** `PublicCoursePreview` loads (loadCourse → loadTopics), shows course detail with a Join/Knock affordance — browsable before joining. _(routes.dart; course-plans.instructions.md)_
+- [ ] Navigate to `/courses/preview/:courseroomid` for a public/knock room, not a member — **Expect:** `PublicCoursePreview` loads, shows course detail with a Join/Knock affordance — browsable before joining. _(routes.dart; course-preview.instructions.md)_
 
 ### 2f. Course scope, panels & navigation
 

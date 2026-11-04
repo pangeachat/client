@@ -4,12 +4,12 @@ applyTo: "lib/features/join_codes/**,lib/routes/chat_list/**,lib/routes/courses/
 
 # Joining Courses — Client Design
 
-> **Note:** "Course" here = a Matrix **course space** (group room), which survives the v1→v3 content migration. It is distinct from the retired CMS "course‑plan" content tree (now v3 Quests). The join/knock/code mechanics below are model-agnostic; only the course‑plans cross-link points at deprecated v1.
+> **Note:** "Course" here = a Matrix **course space** (group room), which survives the v1→v3 content migration. It is distinct from the retired CMS "course‑plan" content tree (now v3 Quests). The join/knock/code mechanics below are model-agnostic.
 
 How users join courses (Matrix spaces) through three routes: class link, class code, and knock-accept.
 
 - **Synapse module cleanup**: [synapse-pangea-chat PR #21](https://github.com/pangeachat/synapse-pangea-chat/pull/21)
-- **Course plans**: [course-plans.instructions.md](course-plans.instructions.md)
+- **Quests**: [quests.instructions.md](quests.instructions.md)
 
 ---
 
