@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "ይህ ክፍለ ጊዜ ከአንድ ቀን በላይ ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ። ለመጀመር መልእክት ይላኩ።",
     "subscriptionGracePeriodEndsOn": "ክፍያ አልተሳካም። የቅናሽ ጊዜ የሚያበቃው በ{date} ነው።",
     "changeBaseLanguageTitle": "መሰረታዊ ቋንቋ ይቀየር?",
-    "changeBaseLanguageDesc": "የመተግበሪያው ምናሌዎች እና አዝራሮች ወደ {language} ይቀየራሉ።"
+    "changeBaseLanguageDesc": "የመተግበሪያው ምናሌዎች እና አዝራሮች ወደ {language} ይቀየራሉ።",
+    "activitySavedTo": "እንቅስቃሴ ወደ {page} ተቀምጧል"
 }

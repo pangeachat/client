@@ -10920,5 +10920,6 @@
     "botTookSeatAfterADay": "Αυτή η συνεδρία ήταν ανοιχτή για πάνω από μία ημέρα, οπότε το Pangea Bot πήρε την κενή θέση. Στείλτε ένα μήνυμα για να ξεκινήσετε.",
     "subscriptionGracePeriodEndsOn": "Η πληρωμή απέτυχε. Η περίοδος χάριτος λήγει στις {date}",
     "changeBaseLanguageTitle": "Αλλαγή βασικής γλώσσας;",
-    "changeBaseLanguageDesc": "Τα μενού και τα κουμπιά της εφαρμογής θα αλλάξουν σε {language}."
+    "changeBaseLanguageDesc": "Τα μενού και τα κουμπιά της εφαρμογής θα αλλάξουν σε {language}.",
+    "activitySavedTo": "Η δραστηριότητα αποθηκεύτηκε στο {page}"
 }

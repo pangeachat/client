@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "I wātea tēnei hui mō te rā kotahi, nō reira i tangohia e Pangea Bot te tūru wātea. Tukuna he karere kia tīmata ai.",
     "subscriptionGracePeriodEndsOn": "Kua rahua te utu. Ka mutu te wā āwhina ā-utu hei te {date}",
     "changeBaseLanguageTitle": "Huri reo tūāpapa?",
-    "changeBaseLanguageDesc": "Ka huri ngā tahua me ngā pātene o te taupānga ki te {language}."
+    "changeBaseLanguageDesc": "Ka huri ngā tahua me ngā pātene o te taupānga ki te {language}.",
+    "activitySavedTo": "Kua tiakina te mahi ki {page}"
 }

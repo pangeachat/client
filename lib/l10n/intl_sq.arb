@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Kjo seancë ishte e hapur për më shumë se një ditë, kështu që Pangea Bot zuri vendin e lirë. Dërgo një mesazh për të filluar.",
     "subscriptionGracePeriodEndsOn": "Pagesa dështoi. Periudha e tolerancës përfundon më {date}",
     "changeBaseLanguageTitle": "Ndrysho gjuhën bazë?",
-    "changeBaseLanguageDesc": "Menytë dhe butonat e aplikacionit do të kalojnë në {language}."
+    "changeBaseLanguageDesc": "Menytë dhe butonat e aplikacionit do të kalojnë në {language}.",
+    "activitySavedTo": "Aktiviteti u ruajt te {page}"
 }

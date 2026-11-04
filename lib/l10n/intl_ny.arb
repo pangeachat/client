@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Msonkhano uno unali wotseguka kwa tsiku limodzi, choncho Pangea Bot inatenga mpando wopanda munthu. Tumizani uthenga kuti muyambe.",
     "subscriptionGracePeriodEndsOn": "Malipiro alephera. Nthawi yowonjezera ikutha pa {date}",
     "changeBaseLanguageTitle": "Musinthe chilankhulo choyambira?",
-    "changeBaseLanguageDesc": "Mamenyu ndi mabatani a pulogalamuyi asinthira ku {language}."
+    "changeBaseLanguageDesc": "Mamenyu ndi mabatani a pulogalamuyi asinthira ku {language}.",
+    "activitySavedTo": "Zochitika zasungidwa ku {page}"
 }

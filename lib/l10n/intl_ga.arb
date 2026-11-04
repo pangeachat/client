@@ -10059,5 +10059,6 @@
     "botTookSeatAfterADay": "Bhí an seisiún seo ar oscailt ar feadh níos mó ná lá, mar sin thóg Pangea Bot an suíochán folamh. Seol teachtaireacht chun tús a chur leis.",
     "subscriptionGracePeriodEndsOn": "Theip ar an íocaíocht. Críochnaíonn an tréimhse cairde ar {date}",
     "changeBaseLanguageTitle": "Athraigh an bhuntheanga?",
-    "changeBaseLanguageDesc": "Athróidh biachláir agus cnaipí an aip go {language}."
+    "changeBaseLanguageDesc": "Athróidh biachláir agus cnaipí an aip go {language}.",
+    "activitySavedTo": "Gníomhaíocht sábháilte chuig {page}"
 }

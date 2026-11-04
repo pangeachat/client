@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "यो सत्र एक दिनभन्दा बढी समयदेखि खुला थियो, त्यसैले Pangea Bot ले खाली सिट लियो। सुरु गर्न सन्देश पठाउनुहोस्।",
     "subscriptionGracePeriodEndsOn": "भुक्तानी असफल भयो। अनुग्रह अवधि {date} मा समाप्त हुन्छ",
     "changeBaseLanguageTitle": "आधार भाषा परिवर्तन गर्ने?",
-    "changeBaseLanguageDesc": "एपका मेनु र बटनहरू {language} मा परिवर्तन हुनेछन्।"
+    "changeBaseLanguageDesc": "एपका मेनु र बटनहरू {language} मा परिवर्तन हुनेछन्।",
+    "activitySavedTo": "गतिविधि {page} मा सुरक्षित गरियो"
 }

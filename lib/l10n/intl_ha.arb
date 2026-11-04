@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Wannan zaman ya kasance a buɗe fiye da kwana ɗaya, don haka Pangea Bot ya shiga. Aika saƙo don farawa.",
     "subscriptionGracePeriodEndsOn": "Biyan kuɗi bai yi nasara ba. Lokacin alheri ya ƙare a ranar {date}",
     "changeBaseLanguageTitle": "Canza harshen asali?",
-    "changeBaseLanguageDesc": "Za a canza menu da maɓallan manhajar zuwa {language}."
+    "changeBaseLanguageDesc": "Za a canza menu da maɓallan manhajar zuwa {language}.",
+    "activitySavedTo": "An adana aiki zuwa {page}"
 }

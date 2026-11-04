@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Roedd y sesiwn hon ar agor am dros ddiwrnod, felly cymerodd Bot Pangea y sedd wag. Anfonwch neges i ddechrau.",
     "subscriptionGracePeriodEndsOn": "Methodd taliad. Daw'r cyfnod gras i ben ar {date}",
     "changeBaseLanguageTitle": "Newid iaith sylfaen?",
-    "changeBaseLanguageDesc": "Bydd dewislenni a botymau'r ap yn newid i {language}."
+    "changeBaseLanguageDesc": "Bydd dewislenni a botymau'r ap yn newid i {language}.",
+    "activitySavedTo": "Gweithgaredd wedi'i gadw i {page}"
 }

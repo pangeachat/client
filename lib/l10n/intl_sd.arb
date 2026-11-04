@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "هي سيشن هڪ ڏينهن کان وڌيڪ عرصي لاءِ کليل هو، تنهنڪري پينگيا بوٽ خالي جاءِ ورتي. شروع ڪرڻ لاءِ پيغام موڪليو.",
     "subscriptionGracePeriodEndsOn": "ادائگي ناڪام ٿي وئي. رعايتي مدت {date} تي ختم ٿيندي",
     "changeBaseLanguageTitle": "بنيادي ٻولي تبديل ڪريو؟",
-    "changeBaseLanguageDesc": "ايپ جا مينيو ۽ بٽڻ {language} ۾ تبديل ٿي ويندا."
+    "changeBaseLanguageDesc": "ايپ جا مينيو ۽ بٽڻ {language} ۾ تبديل ٿي ويندا.",
+    "activitySavedTo": "سرگرمي {page} ۾ محفوظ ڪئي وئي"
 }

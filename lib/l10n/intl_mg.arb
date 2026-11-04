@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Nisokatra nandritra ny iray andro mahery ity fivoriana ity, ka nalain'ny Pangea Bot ny toerana malalaka. Mandefasa hafatra hanombohana.",
     "subscriptionGracePeriodEndsOn": "Tsy nahomby ny fandoavam-bola. Tapitra ny fe-potoana fanomezan-danja amin'ny {date}",
     "changeBaseLanguageTitle": "Hanova ny fiteny fototra?",
-    "changeBaseLanguageDesc": "Hivadika ho amin'ny {language} ny menio sy ny bokotra rehetra ao amin'ny fampiharana."
+    "changeBaseLanguageDesc": "Hivadika ho amin'ny {language} ny menio sy ny bokotra rehetra ao amin'ny fampiharana.",
+    "activitySavedTo": "Voatahiry ao amin'ny {page} ny asa"
 }

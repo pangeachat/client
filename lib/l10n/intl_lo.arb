@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "ເຊສຊັນນີ້ເປີດມາໄດ້ຫຼາຍກວ່າໜຶ່ງມື້ແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ. ສົ່ງຂໍ້ຄວາມເພື່ອເລີ່ມຕົ້ນ.",
     "subscriptionGracePeriodEndsOn": "ການຊໍາລະເງິນບໍ່ສໍາເລັດ. ໄລຍະຜ່ອນຜັນຈະສິ້ນສຸດໃນວັນທີ {date}",
     "changeBaseLanguageTitle": "ປ່ຽນພາສາຫຼັກບໍ?",
-    "changeBaseLanguageDesc": "ເມນູ ແລະ ປຸ່ມຕ່າງໆຂອງແອັບຈະປ່ຽນເປັນພາສາ {language}."
+    "changeBaseLanguageDesc": "ເມນູ ແລະ ປຸ່ມຕ່າງໆຂອງແອັບຈະປ່ຽນເປັນພາສາ {language}.",
+    "activitySavedTo": "ກິດຈະກຳຖືກບັນທຶກໄວ້ທີ່ {page}"
 }

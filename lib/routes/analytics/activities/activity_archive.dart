@@ -18,6 +18,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/objective_token.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
@@ -71,6 +72,45 @@ class CourseMissions {
       );
     }
     return courses;
+  }
+
+  /// [courses] as the page lists them: only those in the learner's current
+  /// language, since XP is kept per language and another language's Missions
+  /// have nothing to show (#9559), and each Mission once, from the first
+  /// course that carries it.
+  static List<CourseMissions> listed(List<CourseMissions> courses) {
+    final seen = <String>{};
+    return [
+      for (final course in courses)
+        if (CourseLanguageScope.courseInTargetLanguage(course.room))
+          CourseMissions(
+            room: course.room,
+            groups: [
+              for (final group in course.groups)
+                if (seen.add(group.objective.id)) group,
+            ],
+          ),
+    ];
+  }
+
+  /// The Mission page that lists a saved session of [activityId]: the first
+  /// of the [listed] Missions whose activities include it. Null when the page
+  /// lists the session under "Other activities" instead.
+  static ObjectiveTokenParam? missionPageFor(
+    List<CourseMissions> listed,
+    String? activityId,
+  ) {
+    for (final course in listed) {
+      for (final group in course.groups) {
+        if (group.activities.any((a) => a.activityId == activityId)) {
+          return ObjectiveTokenParam(
+            missionId: group.objective.id,
+            courseId: course.room.id,
+          );
+        }
+      }
+    }
+    return null;
   }
 }
 
@@ -207,26 +247,13 @@ class _ObjectiveList extends StatelessWidget {
     );
     final client = Matrix.of(context).client;
     final xpByActivity = client.cachedXpBreakdownByActivity;
-    final placed = <String>{};
-    final seen = <String>{};
+    // Re-read on every resolution, which a language switch triggers.
+    final listed = CourseMissions.listed(courses);
     final children = <Widget>[];
-    for (final course in courses) {
-      // Only courses in the learner's current language: their XP is kept
-      // per language, so another language's Missions have nothing to show
-      // here (#9559). Re-read on every resolution, which a language switch
-      // triggers.
-      if (!CourseLanguageScope.courseInTargetLanguage(course.room)) continue;
+    for (final course in listed) {
       final quest = progression.forCourse(course.room.id);
       for (final group in course.groups) {
         final missionId = group.objective.id;
-        if (!seen.add(missionId)) continue;
-        // A session whose activity serves a Mission is that Mission's, not
-        // one of the "other activities" below.
-        final ids = {for (final a in group.activities) a.activityId};
-        placed.addAll([
-          for (final room in archive)
-            if (ids.contains(room.activityId)) room.id,
-        ]);
         children.add(
           MissionTile(
             group: group,
@@ -241,9 +268,12 @@ class _ObjectiveList extends StatelessWidget {
         );
       }
     }
+    // A session whose activity serves a Mission is that Mission's, not one of
+    // the "other activities" below.
     final other = [
       for (final room in archive)
-        if (!placed.contains(room.id)) room,
+        if (CourseMissions.missionPageFor(listed, room.activityId) == null)
+          room,
     ];
     if (other.isNotEmpty) {
       if (children.isNotEmpty) children.add(_Heading(l10n.otherActivities));

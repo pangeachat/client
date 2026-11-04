@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "یہ سیشن ایک دن سے زیادہ کے لیے کھلا تھا، لہذا پینجیا بوٹ نے خالی سیٹ لے لی۔ شروع کرنے کے لیے ایک پیغام بھیجیں۔",
     "subscriptionGracePeriodEndsOn": "ادائیگی ناکام ہو گئی۔ رعایت کی مدت {date} کو ختم ہو رہی ہے",
     "changeBaseLanguageTitle": "بنیادی زبان تبدیل کریں؟",
-    "changeBaseLanguageDesc": "ایپ کے مینیو اور بٹن {language} میں تبدیل ہو جائیں گے۔"
+    "changeBaseLanguageDesc": "ایپ کے مینیو اور بٹن {language} میں تبدیل ہو جائیں گے۔",
+    "activitySavedTo": "سرگرمی {page} میں محفوظ ہو گئی"
 }

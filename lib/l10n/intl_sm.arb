@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Na tatala lenei sauniga mo le silia ma le aso, o lea na nofo ai le Pangea Bot i le nofoa avanoa. Auina mai se fe'au e amata ai.",
     "subscriptionGracePeriodEndsOn": "Ua lē taulau le totogi. E muta le vaitaimi fa'aopoopo i le aso {date}",
     "changeBaseLanguageTitle": "Suia le gagana autū?",
-    "changeBaseLanguageDesc": "O menus ma fa'amau o le app o le a sui i le {language}."
+    "changeBaseLanguageDesc": "O menus ma fa'amau o le app o le a sui i le {language}.",
+    "activitySavedTo": "Gaoioiga ua sefe i le {page}"
 }

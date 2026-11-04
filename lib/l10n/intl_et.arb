@@ -10045,5 +10045,6 @@
     "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum.",
     "subscriptionGracePeriodEndsOn": "Makse ebaõnnestus. Ajapikendus lõpeb {date}",
     "changeBaseLanguageTitle": "Muuda baaskeelt?",
-    "changeBaseLanguageDesc": "Rakenduse menüüd ja nupud lülituvad keelele {language}."
+    "changeBaseLanguageDesc": "Rakenduse menüüd ja nupud lülituvad keelele {language}.",
+    "activitySavedTo": "Tegevus salvestatud asukohta {page}"
 }

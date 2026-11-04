@@ -10959,5 +10959,6 @@
     "botTookSeatAfterADay": "השיחה הזו הייתה פתוחה למעלה מיום, אז בוט Pangea תפס את המקום הפנוי. שלח הודעה כדי להתחיל.",
     "subscriptionGracePeriodEndsOn": "התשלום נכשל. תקופת החסד מסתיימת ב-{date}",
     "changeBaseLanguageTitle": "לשנות שפת בסיס?",
-    "changeBaseLanguageDesc": "התפריטים והלחצנים של האפליקציה יעברו ל{language}."
+    "changeBaseLanguageDesc": "התפריטים והלחצנים של האפליקציה יעברו ל{language}.",
+    "activitySavedTo": "הפעילות נשמרה ב{page}"
 }

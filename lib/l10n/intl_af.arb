@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Hierdie sessie was vir meer as 'n dag oop, so Pangea Bot het die oop plek ingeneem. Stuur 'n boodskap om te begin.",
     "subscriptionGracePeriodEndsOn": "Betaling het misluk. Grasietydperk eindig op {date}",
     "changeBaseLanguageTitle": "Verander basistaal?",
-    "changeBaseLanguageDesc": "Die toepassing se spyskaarte en knoppies sal na {language} verander."
+    "changeBaseLanguageDesc": "Die toepassing se spyskaarte en knoppies sal na {language} verander.",
+    "activitySavedTo": "Aktiwiteit gestoor na {page}"
 }

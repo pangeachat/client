@@ -10048,5 +10048,6 @@
     "botTookSeatAfterADay": "Ця сесія була відкритою більше доби, тому бот Pangea зайняв вільне місце. Надішліть повідомлення, щоб почати.",
     "subscriptionGracePeriodEndsOn": "Платіж не пройшов. Пільговий період закінчується {date}",
     "changeBaseLanguageTitle": "Змінити базову мову?",
-    "changeBaseLanguageDesc": "Меню та кнопки програми переключаться на {language}."
+    "changeBaseLanguageDesc": "Меню та кнопки програми переключаться на {language}.",
+    "activitySavedTo": "Активність збережено до {page}"
 }

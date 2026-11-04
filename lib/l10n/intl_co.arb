@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Sta sessione hè stata aperta per più di un ghjornu, cusì u Bot Pangea hà pigliatu u postu liberu. Mandate un messagiu per principià.",
     "subscriptionGracePeriodEndsOn": "U pagamentu hà fiascatu. U periodu di grazia finisce u {date}",
     "changeBaseLanguageTitle": "Cambia a lingua di basa?",
-    "changeBaseLanguageDesc": "I menu è i buttoni di l'app cambieranu in {language}."
+    "changeBaseLanguageDesc": "I menu è i buttoni di l'app cambieranu in {language}.",
+    "activitySavedTo": "Attività salvata in {page}"
 }

@@ -10905,5 +10905,6 @@
     "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula.",
     "subscriptionGracePeriodEndsOn": "Nabigo ang pagbabayad. Matatapos ang grace period sa {date}",
     "changeBaseLanguageTitle": "Palitan ang base language?",
-    "changeBaseLanguageDesc": "Ang mga menu at button ng app ay lilipat sa {language}."
+    "changeBaseLanguageDesc": "Ang mga menu at button ng app ay lilipat sa {language}.",
+    "activitySavedTo": "Na-save ang aktibidad sa {page}"
 }

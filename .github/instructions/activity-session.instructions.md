@@ -45,6 +45,7 @@ What a learner sees while playing a conversation activity and when it ends. Find
 ## Completion saves itself
 
 - A finished session saves even if it finished while the learner was away.
+- Once saved, the end card says so, subscribed or not: "Activity saved to Learning Objectives", opening the [page that lists it](activities.instructions.md#the-learning-objectives-page).
 
 ## The bot's seat
 

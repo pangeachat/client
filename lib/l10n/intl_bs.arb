@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Ova sesija je bila otvorena više od jednog dana, tako da je Pangea Bot zauzeo slobodno mjesto. Pošaljite poruku za početak.",
     "subscriptionGracePeriodEndsOn": "Plaćanje nije uspjelo. Grejs period se završava {date}",
     "changeBaseLanguageTitle": "Promijeniti osnovni jezik?",
-    "changeBaseLanguageDesc": "Meniji i dugmad aplikacije će se prebaciti na {language}."
+    "changeBaseLanguageDesc": "Meniji i dugmad aplikacije će se prebaciti na {language}.",
+    "activitySavedTo": "Aktivnost sačuvana u {page}"
 }

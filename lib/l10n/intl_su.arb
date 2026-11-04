@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Sési ieu dibuka langkung ti sadinten, janten Pangea Bot nyandak korsi kosong. Kirim pesen pikeun ngamimitian.",
     "subscriptionGracePeriodEndsOn": "Pamayaran gagal. Mangsa tenggang réngsé dina {date}",
     "changeBaseLanguageTitle": "Ganti basa dasar?",
-    "changeBaseLanguageDesc": "Ménu jeung tombol aplikasi bakal robah jadi basa {language}."
+    "changeBaseLanguageDesc": "Ménu jeung tombol aplikasi bakal robah jadi basa {language}.",
+    "activitySavedTo": "Aktivitas disimpen ka {page}"
 }

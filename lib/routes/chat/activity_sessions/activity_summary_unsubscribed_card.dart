@@ -34,7 +34,15 @@ class ActivitySummaryUnsubscribedCard extends StatelessWidget {
   /// skeleton whose shape carries information.
   final int roleCount;
 
-  const ActivitySummaryUnsubscribedCard({required this.roleCount, super.key});
+  /// The line saying the session was saved, above the skeleton: what the
+  /// summary card shows under its heading (#9418). Nothing is locked about it.
+  final Widget? savedNotice;
+
+  const ActivitySummaryUnsubscribedCard({
+    required this.roleCount,
+    this.savedNotice,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -59,11 +67,12 @@ class ActivitySummaryUnsubscribedCard extends StatelessWidget {
       // (message.dart).
       child: SelectionContainer.disabled(
         child: Center(
-          // The gate is a SURFACE with exactly one control. Every tap that is
-          // not on the button stops here: the skeleton below is wrapped in an
-          // IgnorePointer so it can never take one, and this opaque hit keeps
-          // what lands in the gaps from reaching the timeline underneath.
-          // Children are hit-tested first, so the button keeps its own taps.
+          // The gate is a SURFACE whose only controls are the button and the
+          // saved line. Every tap that is not on one of them stops here: the
+          // skeleton below is wrapped in an IgnorePointer so it can never take
+          // one, and this opaque hit keeps what lands in the gaps from reaching
+          // the timeline underneath. Children are hit-tested first, so the
+          // controls keep their own taps.
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             child: Container(
@@ -78,98 +87,104 @@ class ActivitySummaryUnsubscribedCard extends StatelessWidget {
                 color: theme.colorScheme.surface.withAlpha(128),
                 borderRadius: BorderRadius.circular(12.0),
               ),
-              child: Stack(
-                alignment: Alignment.center,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  // A skeleton of the real summary, in its order: the finished
-                  // heading, the feedback body, the participant picker, then the
-                  // goals under it. Pointer-blind: it is a picture of content,
-                  // and nothing in it is meant to be clickable.
-                  IgnorePointer(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const LockedShimmerBox(width: 200, height: 18),
-                        const SizedBox(height: 14.0),
-                        LockedShimmerBox(
-                          // Tinted like the practice page's example message, so the
-                          // summary reads as the content and not as more chrome.
-                          baseColor: Theme.of(
-                            context,
-                          ).pangea.goldFixedDim.withAlpha(70),
-                          width: double.infinity,
-                          height: _summaryHeight,
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        if (roleCount > 0) ...[
-                          const SizedBox(height: 22.0),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            spacing: 12.0,
-                            children: [
-                              for (int i = 0; i < roleCount; i++)
-                                LockedShimmerBox(
-                                  width: _avatarSize,
-                                  height: _avatarSize,
-                                  borderRadius: BorderRadius.circular(
-                                    _avatarSize / 2,
-                                  ),
-                                ),
+                  ?savedNotice,
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      // A skeleton of the real summary, in its order: the finished
+                      // heading, the feedback body, the participant picker, then the
+                      // goals under it. Pointer-blind: it is a picture of content,
+                      // and nothing in it is meant to be clickable.
+                      IgnorePointer(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const LockedShimmerBox(width: 200, height: 18),
+                            const SizedBox(height: 14.0),
+                            LockedShimmerBox(
+                              // Tinted like the practice page's example message, so the
+                              // summary reads as the content and not as more chrome.
+                              baseColor: Theme.of(
+                                context,
+                              ).pangea.goldFixedDim.withAlpha(70),
+                              width: double.infinity,
+                              height: _summaryHeight,
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            if (roleCount > 0) ...[
+                              const SizedBox(height: 22.0),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                spacing: 12.0,
+                                children: [
+                                  for (int i = 0; i < roleCount; i++)
+                                    LockedShimmerBox(
+                                      width: _avatarSize,
+                                      height: _avatarSize,
+                                      borderRadius: BorderRadius.circular(
+                                        _avatarSize / 2,
+                                      ),
+                                    ),
+                                ],
+                              ),
                             ],
+                            const SizedBox(height: 20.0),
+                            const LockedShimmerBox(
+                              width: double.infinity,
+                              height: 14,
+                            ),
+                            const SizedBox(height: 8.0),
+                            const LockedShimmerBox(width: 220, height: 14),
+                          ],
+                        ),
+                      ),
+                      // Texture, listed before the call to action so it never eats the
+                      // label's contrast. Unequal sizes and insets — a matched pair at
+                      // opposite corners reads as a frame rather than a scatter
+                      // (#7929).
+                      const DecorativeStars(
+                        stars: [
+                          DecorativeStarSpec(
+                            size: 72.0,
+                            top: -8.0,
+                            left: 14.0,
+                            rotation: -0.22,
+                          ),
+                          DecorativeStarSpec(
+                            size: 30.0,
+                            top: 104.0,
+                            right: -6.0,
+                            rotation: -0.6,
+                          ),
+                          DecorativeStarSpec(
+                            size: 46.0,
+                            bottom: 2.0,
+                            right: 28.0,
+                            rotation: 0.45,
                           ),
                         ],
-                        const SizedBox(height: 20.0),
-                        const LockedShimmerBox(
-                          width: double.infinity,
-                          height: 14,
+                      ),
+                      // The label has to FIT ON ONE LINE, which is the whole
+                      // reason the kit's labels name the feature alone ("Unlock word
+                      // tools") instead of pitching the purchase. A wrapped [Text]
+                      // fills its constraints, so the longer
+                      // "Subscribe to unlock activity summaries" — 657px of natural
+                      // width against the card's 538 — turned this pill into a
+                      // full-width band 74px tall, and clicks from most of the card
+                      // landed on it (#8860). Shorter label, and the pill hugs it.
+                      UnlockButton(
+                        label: L10n.of(context).unlockActivitySummaries,
+                        fontSize: 16.0,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0,
+                          vertical: 12.0,
                         ),
-                        const SizedBox(height: 8.0),
-                        const LockedShimmerBox(width: 220, height: 14),
-                      ],
-                    ),
-                  ),
-                  // Texture, listed before the call to action so it never eats the
-                  // label's contrast. Unequal sizes and insets — a matched pair at
-                  // opposite corners reads as a frame rather than a scatter
-                  // (#7929).
-                  const DecorativeStars(
-                    stars: [
-                      DecorativeStarSpec(
-                        size: 72.0,
-                        top: -8.0,
-                        left: 14.0,
-                        rotation: -0.22,
-                      ),
-                      DecorativeStarSpec(
-                        size: 30.0,
-                        top: 104.0,
-                        right: -6.0,
-                        rotation: -0.6,
-                      ),
-                      DecorativeStarSpec(
-                        size: 46.0,
-                        bottom: 2.0,
-                        right: 28.0,
-                        rotation: 0.45,
+                        showStars: true,
                       ),
                     ],
-                  ),
-                  // The label has to FIT ON ONE LINE, which is the whole
-                  // reason the kit's labels name the feature alone ("Unlock word
-                  // tools") instead of pitching the purchase. A wrapped [Text]
-                  // fills its constraints, so the longer
-                  // "Subscribe to unlock activity summaries" — 657px of natural
-                  // width against the card's 538 — turned this pill into a
-                  // full-width band 74px tall, and clicks from most of the card
-                  // landed on it (#8860). Shorter label, and the pill hugs it.
-                  UnlockButton(
-                    label: L10n.of(context).unlockActivitySummaries,
-                    fontSize: 16.0,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                      vertical: 12.0,
-                    ),
-                    showStars: true,
                   ),
                 ],
               ),

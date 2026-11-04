@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea-boten tok den ledige plassen. Send en melding for å starte.",
     "subscriptionGracePeriodEndsOn": "Betaling mislyktes. Utsatt betalingsfrist utløper {date}",
     "changeBaseLanguageTitle": "Endre grunnspråk?",
-    "changeBaseLanguageDesc": "Appens menyer og knapper vil bytte til {language}."
+    "changeBaseLanguageDesc": "Appens menyer og knapper vil bytte til {language}.",
+    "activitySavedTo": "Aktivitet lagret til {page}"
 }

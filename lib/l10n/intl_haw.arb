@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Ua hāmama kēia kau no ka ʻoi aku ma mua o hoʻokahi lā, no laila ua noho ʻo Pangea Bot i ka noho hakahaka. E hoʻouna i kahi leka e hoʻomaka.",
     "subscriptionGracePeriodEndsOn": "ʻAʻole i kūleʻa ka uku. E pau ana ka manawa hoʻopaneʻe ma {date}",
     "changeBaseLanguageTitle": "E hoʻololi i ka ʻōlelo kumu?",
-    "changeBaseLanguageDesc": "E hoʻololi nā papa kuhikuhi a me nā pihi o ka polokalamu i ka {language}."
+    "changeBaseLanguageDesc": "E hoʻololi nā papa kuhikuhi a me nā pihi o ka polokalamu i ka {language}.",
+    "activitySavedTo": "Ua mālama ʻia ka hana ma {page}"
 }

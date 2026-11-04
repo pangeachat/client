@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Seesion asi numit ama muk hangkhre, aduna Pangea Bot na khongpham lourabani. Haurunaba wahei amata thabiyu.",
     "subscriptionGracePeriodEndsOn": "শেন্থোক ফেইল তৌরবনি। গ্রেস পিরিয়ড {date} দা লোইগনি।",
     "changeBaseLanguageTitle": "ꯃୂଳ ꯂꯣꯟ ꯑꯣꯟꯊꯣꯛꯀꯗ꯭ꯔꯥ?",
-    "changeBaseLanguageDesc": "ꯑꯦꯞꯄꯀꯤ ꯃꯦꯅꯨ ꯑꯃꯁꯨꯡ ꯕꯇꯟꯁꯤꯡ ꯑꯁꯤ {language} ꯗꯥ ꯑꯣꯟꯊꯣꯛꯀꯅꯤ."
+    "changeBaseLanguageDesc": "ꯑꯦꯞꯄꯀꯤ ꯃꯦꯅꯨ ꯑꯃꯁꯨꯡ ꯕꯇꯟꯁꯤꯡ ꯑꯁꯤ {language} ꯗꯥ ꯑꯣꯟꯊꯣꯛꯀꯅꯤ.",
+    "activitySavedTo": "Activity {page} da save toukhre"
 }

@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "វគ្គនេះបានបើករយៈពេលជាងមួយថ្ងៃ ដូច្នេះ Pangea Bot បានចូលរួម។ ផ្ញើសារដើម្បីចាប់ផ្តើម។",
     "subscriptionGracePeriodEndsOn": "ការទូទាត់បរាជ័យ។ រយៈពេលអនុគ្រោះបញ្ចប់នៅថ្ងៃទី {date}",
     "changeBaseLanguageTitle": "ប្ដូរភាសាមូលដ្ឋាន?",
-    "changeBaseLanguageDesc": "ម៉ឺនុយ និងប៊ូតុងរបស់កម្មវិធីនឹងប្ដូរទៅជាភាសា{language}។"
+    "changeBaseLanguageDesc": "ម៉ឺនុយ និងប៊ូតុងរបស់កម្មវិធីនឹងប្ដូរទៅជាភាសា{language}។",
+    "activitySavedTo": "សកម្មភាពបានរក្សាទុកទៅ {page}"
 }

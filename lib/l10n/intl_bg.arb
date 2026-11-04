@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Тази сесия беше отворена за повече от един ден, така че ботът на Pangea зае свободното място. Изпратете съобщение, за да започнете.",
     "subscriptionGracePeriodEndsOn": "Неуспешно плащане. Гратисният период изтича на {date}",
     "changeBaseLanguageTitle": "Да сменя основния език?",
-    "changeBaseLanguageDesc": "Менютата и бутоните на приложението ще преминат на {language}."
+    "changeBaseLanguageDesc": "Менютата и бутоните на приложението ще преминат на {language}.",
+    "activitySavedTo": "Дейността е запазена в {page}"
 }

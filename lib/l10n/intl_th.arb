@@ -10677,5 +10677,6 @@
     "botTookSeatAfterADay": "เซสชันนี้เปิดมานานกว่าหนึ่งวันแล้ว Pangea Bot จึงเข้าร่วม ส่งข้อความเพื่อเริ่มต้น",
     "subscriptionGracePeriodEndsOn": "การชำระเงินล้มเหลว ระยะเวลาผ่อนผันสิ้นสุดวันที่ {date}",
     "changeBaseLanguageTitle": "เปลี่ยนภาษาหลักใช่ไหม",
-    "changeBaseLanguageDesc": "เมนูและปุ่มต่างๆ ของแอปจะเปลี่ยนเป็นภาษา{language}"
+    "changeBaseLanguageDesc": "เมนูและปุ่มต่างๆ ของแอปจะเปลี่ยนเป็นภาษา{language}",
+    "activitySavedTo": "กิจกรรมบันทึกแล้วใน {page}"
 }

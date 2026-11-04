@@ -10035,5 +10035,6 @@
     "botTookSeatAfterADay": "Diese Sitzung war über einen Tag lang offen, daher hat Pangea Bot den freien Platz eingenommen. Sende eine Nachricht, um zu beginnen.",
     "subscriptionGracePeriodEndsOn": "Zahlung fehlgeschlagen. Kulanzzeitraum endet am {date}",
     "changeBaseLanguageTitle": "Basissprache ändern?",
-    "changeBaseLanguageDesc": "Die Menüs und Schaltflächen der App werden auf {language} umgestellt."
+    "changeBaseLanguageDesc": "Die Menüs und Schaltflächen der App werden auf {language} umgestellt.",
+    "activitySavedTo": "Aktivität gespeichert in {page}"
 }

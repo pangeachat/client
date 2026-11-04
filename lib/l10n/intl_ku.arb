@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "ئەم دانیشتنە بۆ ماوەی زیاتر لە ڕۆژێک کراوە بوو، بۆیە بۆتی پانگایا جێگەی بەتاڵی گرتەوە. پەیامێک بنێرە بۆ دەستپێکردن.",
     "subscriptionGracePeriodEndsOn": "پارەدان سەرکەوتوو نەبوو. ماوەی مۆڵەت لە {date} کۆتایی دێت",
     "changeBaseLanguageTitle": "زمانی بنەڕەت بگۆڕیت؟",
-    "changeBaseLanguageDesc": "مێنو و دوگمەکانی ئەپەکە دەگۆڕدرێن بۆ {language}."
+    "changeBaseLanguageDesc": "مێنو و دوگمەکانی ئەپەکە دەگۆڕدرێن بۆ {language}.",
+    "activitySavedTo": "چالاکی پاشەکەوت کرا بۆ {page}"
 }

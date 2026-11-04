@@ -10563,5 +10563,6 @@
     "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja.",
     "subscriptionGracePeriodEndsOn": "Betalningen misslyckades. Anståndsperioden slutar {date}",
     "changeBaseLanguageTitle": "Byta basspråk?",
-    "changeBaseLanguageDesc": "Appens menyer och knappar kommer att byta till {language}."
+    "changeBaseLanguageDesc": "Appens menyer och knappar kommer att byta till {language}.",
+    "activitySavedTo": "Aktivitet sparad i {page}"
 }

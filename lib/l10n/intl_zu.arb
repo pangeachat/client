@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Lesi sikhathi besivuliwe isikhathi esingaphezu kosuku, ngakho i-Pangea Bot yathatha isihlalo esingenalutho. Thumela umlayezo ukuze uqale.",
     "subscriptionGracePeriodEndsOn": "Inkokhelo yehlulekile. Isikhathi somusa siphela ngo-{date}",
     "changeBaseLanguageTitle": "Shintsha ulimi oluyisisekelo?",
-    "changeBaseLanguageDesc": "Amamenyu nezinkinobho zohlelo lokusebenza kuzoshintshela ku-{language}."
+    "changeBaseLanguageDesc": "Amamenyu nezinkinobho zohlelo lokusebenza kuzoshintshela ku-{language}.",
+    "activitySavedTo": "Umsebenzi ulondolozwe ku-{page}"
 }

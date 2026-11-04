@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Nzukọ a mepere ihe karịrị otu ụbọchị, yabụ Pangea Bot nọrọ n'oche tọgbọrọ chakoo. Zipụ ozi ka ịmalite.",
     "subscriptionGracePeriodEndsOn": "Ịkwụ ụgwọ ahụ emeghị. Oge amara ga-agwụ na {date}",
     "changeBaseLanguageTitle": "Ị ga-agbanwe asụsụ isi?",
-    "changeBaseLanguageDesc": "Nchịkọta nhọrọ na bọtịnụ ngwa ahụ ga-agbanwe gaa na {language}."
+    "changeBaseLanguageDesc": "Nchịkọta nhọrọ na bọtịnụ ngwa ahụ ga-agbanwe gaa na {language}.",
+    "activitySavedTo": "Echekwara ọrụ na {page}"
 }

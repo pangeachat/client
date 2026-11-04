@@ -10351,5 +10351,6 @@
     "botTookSeatAfterADay": "كانت هذه الجلسة مفتوحة لأكثر من يوم، لذا شغل بوت بانجيا المقعد الشاغر. أرسل رسالة للبدء.",
     "subscriptionGracePeriodEndsOn": "فشل الدفع. تنتهي فترة السماح في {date}",
     "changeBaseLanguageTitle": "تغيير اللغة الأساسية؟",
-    "changeBaseLanguageDesc": "ستتحول قوائم التطبيق وأزراره إلى {language}."
+    "changeBaseLanguageDesc": "ستتحول قوائم التطبيق وأزراره إلى {language}.",
+    "activitySavedTo": "تم حفظ النشاط في {page}"
 }

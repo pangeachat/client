@@ -10945,5 +10945,6 @@
     "botTookSeatAfterADay": "ეს სესია ერთ დღეზე მეტხანს იყო ღია, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი. გასააქტიურებლად გაგზავნეთ შეტყობინება.",
     "subscriptionGracePeriodEndsOn": "გადახდა ვერ განხორციელდა. საშეღავათო პერიოდი სრულდება {date}-ზე",
     "changeBaseLanguageTitle": "ძირითადი ენის შეცვლა?",
-    "changeBaseLanguageDesc": "აპლიკაციის მენიუები და ღილაკები შეიცვლება {language}-ზე."
+    "changeBaseLanguageDesc": "აპლიკაციის მენიუები და ღილაკები შეიცვლება {language}-ზე.",
+    "activitySavedTo": "აქტივობა შენახულია: {page}"
 }

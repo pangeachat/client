@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "এই অধিবেশনটো এদিনতকৈও অধিক সময়ৰ বাবে খোলা আছিল, সেয়েহে পেংগিয়া ব'টে খালী আসনখন ল'লে। আৰম্ভ কৰিবলৈ এটা বাৰ্তা প্ৰেৰণ কৰক।",
     "subscriptionGracePeriodEndsOn": "পেমেণ্ট বিফল হৈছে। গ্ৰেচ পিৰিয়ড {date} তাৰিখে শেষ হ'ব",
     "changeBaseLanguageTitle": "মূল ভাষা সলনি কৰিবনে?",
-    "changeBaseLanguageDesc": "এপৰ মেনু আৰু বুটামসমূহ {language} লৈ সলনি হ'ব।"
+    "changeBaseLanguageDesc": "এপৰ মেনু আৰু বুটামসমূহ {language} লৈ সলনি হ'ব।",
+    "activitySavedTo": "কাৰ্যকলাপ {page} লৈ সংৰক্ষিত হৈছে"
 }

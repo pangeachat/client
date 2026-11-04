@@ -10814,5 +10814,6 @@
     "botTookSeatAfterADay": "このセッションは1日以上開いていたため、Pangea Botが空席に着きました。メッセージを送信して開始してください。",
     "subscriptionGracePeriodEndsOn": "お支払いに失敗しました。猶予期間は{date}に終了します",
     "changeBaseLanguageTitle": "ベース言語を変更しますか？",
-    "changeBaseLanguageDesc": "アプリのメニューとボタンが{language}に切り替わります。"
+    "changeBaseLanguageDesc": "アプリのメニューとボタンが{language}に切り替わります。",
+    "activitySavedTo": "アクティビティを{page}に保存しました"
 }

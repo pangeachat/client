@@ -7355,5 +7355,6 @@
     "botTookSeatAfterADay": "Phiên này đã mở hơn một ngày, vì vậy Pangea Bot đã nhận chỗ trống. Gửi tin nhắn để bắt đầu.",
     "subscriptionGracePeriodEndsOn": "Thanh toán không thành công. Thời gian gia hạn kết thúc vào {date}",
     "changeBaseLanguageTitle": "Đổi ngôn ngữ cơ sở?",
-    "changeBaseLanguageDesc": "Các menu và nút của ứng dụng sẽ chuyển sang tiếng {language}."
+    "changeBaseLanguageDesc": "Các menu và nút của ứng dụng sẽ chuyển sang tiếng {language}.",
+    "activitySavedTo": "Hoạt động đã lưu vào {page}"
 }

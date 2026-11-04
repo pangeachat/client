@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Fadhigan wuxuu furnaa in ka badan maalin, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan. Fariin u dir si aad u bilowdo.",
     "subscriptionGracePeriodEndsOn": "Lacag bixintu way fashilantay. Muddada dheeraadka ah waxay ku dhamaanaysaa {date}",
     "changeBaseLanguageTitle": "Beddel luqadda aasaasiga ah?",
-    "changeBaseLanguageDesc": "Liisaska iyo badhamada abka waxay u wareegi doonaan {language}."
+    "changeBaseLanguageDesc": "Liisaska iyo badhamada abka waxay u wareegi doonaan {language}.",
+    "activitySavedTo": "Hawsha waxa lagu kaydiyay {page}"
 }

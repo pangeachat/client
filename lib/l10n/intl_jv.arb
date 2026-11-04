@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Sesi iki wis mbukak luwih saka sedina, dadi Pangea Bot njupuk kursi sing kosong. Kirim pesen kanggo miwiti.",
     "subscriptionGracePeriodEndsOn": "Pembayaran gagal. Masa tenggang rampung ing {date}",
     "changeBaseLanguageTitle": "Ganti basa dhasar?",
-    "changeBaseLanguageDesc": "Menu lan tombol aplikasi bakal ganti dadi {language}."
+    "changeBaseLanguageDesc": "Menu lan tombol aplikasi bakal ganti dadi {language}.",
+    "activitySavedTo": "Aktivitas disimpen menyang {page}"
 }

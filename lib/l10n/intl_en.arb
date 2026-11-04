@@ -5846,6 +5846,15 @@
     },
     "learningObjective": "Learning Objective",
     "learningObjectives": "Learning Objectives",
+    "activitySavedTo": "Activity saved to {page}",
+    "@activitySavedTo": {
+        "description": "Line on a finished activity's end card, under \"All Finished!\", once the session is saved. {page} is the name of the Learning Objectives page (the learningObjectives string, in title case), shown as a link to the page that lists the session, so write the sentence around it as a page name.",
+        "placeholders": {
+            "page": {
+                "type": "String"
+            }
+        }
+    },
     "missionNofM": "Mission {index} of {count}",
     "@missionNofM": {
         "placeholders": {

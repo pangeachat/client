@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Bha an seisean seo fosgailte airson còrr is latha, agus mar sin ghabh Pangea Bot an cathair fhosgailte. Cuir teachdaireachd gus tòiseachadh.",
     "subscriptionGracePeriodEndsOn": "Dh'fhàillig am pàigheadh. Thig an ùine-ghràis gu crìch air {date}",
     "changeBaseLanguageTitle": "Atharraich bun-chànan?",
-    "changeBaseLanguageDesc": "Gluaisidh clàir-taice agus putanan an aplacaid gu {language}."
+    "changeBaseLanguageDesc": "Gluaisidh clàir-taice agus putanan an aplacaid gu {language}.",
+    "activitySavedTo": "Chaidh gnìomhachd a shàbhaladh gu {page}"
 }

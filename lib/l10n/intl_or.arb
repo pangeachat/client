@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "ଏହି ସେସନ୍ ଏକ ଦିନରୁ ଅଧିକ ସମୟ ପାଇଁ ଖୋଲା ଥିଲା, ତେଣୁ Pangea Bot ଖାଲି ସ୍ଥାନ ନେଇଛି। ଆରମ୍ଭ କରିବାକୁ ଏକ ବାର୍ତ୍ତା ପଠାନ୍ତୁ।",
     "subscriptionGracePeriodEndsOn": "ପେମେଣ୍ଟ ବିଫଳ ହୋଇଛି। ଅନୁଗ୍ରହ ଅବଧି {date} ରେ ଶେଷ ହେବ",
     "changeBaseLanguageTitle": "ମୂଳ ଭାଷା ପରିବର୍ତ୍ତନ କରିବେ କି?",
-    "changeBaseLanguageDesc": "ଆପ୍‌ର ମେନୁ ଏବଂ ବଟନ୍‌ଗୁଡ଼ିକ {language}କୁ ବଦଳିଯିବ।"
+    "changeBaseLanguageDesc": "ଆପ୍‌ର ମେନୁ ଏବଂ ବଟନ୍‌ଗୁଡ଼ିକ {language}କୁ ବଦଳିଯିବ।",
+    "activitySavedTo": "କାର୍ଯ୍ୟକଳାପ {page} ରେ ସେଭ୍ କରାଯାଇଛି"
 }

@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Kipindi hiki kilikuwa wazi kwa zaidi ya siku moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi. Tuma ujumbe ili kuanza.",
     "subscriptionGracePeriodEndsOn": "Malipo yameshindwa. Muda wa ziada unaisha tarehe {date}",
     "changeBaseLanguageTitle": "Badilisha lugha ya msingi?",
-    "changeBaseLanguageDesc": "Menyu na vitufe vya programu vitabadilika kuwa {language}."
+    "changeBaseLanguageDesc": "Menyu na vitufe vya programu vitabadilika kuwa {language}.",
+    "activitySavedTo": "Shughuli imehifadhiwa kwenye {page}"
 }

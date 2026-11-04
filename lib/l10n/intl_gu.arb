@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "આ સત્ર એક દિવસથી વધુ સમય માટે ખુલ્લું હતું, તેથી Pangea Botએ ખાલી જગ્યા લીધી. શરૂ કરવા માટે સંદેશ મોકલો.",
     "subscriptionGracePeriodEndsOn": "ચુકવણી નિષ્ફળ. ગ્રેસ અવધિ {date} ના રોજ સમાપ્ત થાય છે",
     "changeBaseLanguageTitle": "મૂળ ભાષા બદલવી છે?",
-    "changeBaseLanguageDesc": "એપ્લિકેશનના મેનુ અને બટનો {language} માં બદલાઈ જશે."
+    "changeBaseLanguageDesc": "એપ્લિકેશનના મેનુ અને બટનો {language} માં બદલાઈ જશે.",
+    "activitySavedTo": "પ્રવૃત્તિ {page} માં સાચવવામાં આવી"
 }

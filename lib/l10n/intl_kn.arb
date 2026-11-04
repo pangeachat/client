@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "ಈ ಸೆಷನ್ ಒಂದು ದಿನಕ್ಕಿಂತ ಹೆಚ್ಚು ಸಮಯ ತೆರೆದಿತ್ತು, ಆದ್ದರಿಂದ Pangea Bot ಖಾಲಿ ಜಾಗವನ್ನು ತೆಗೆದುಕೊಂಡಿತು. ಪ್ರಾರಂಭಿಸಲು ಸಂದೇಶ ಕಳುಹಿಸಿ.",
     "subscriptionGracePeriodEndsOn": "ಪಾವತಿ ವಿಫಲವಾಗಿದೆ. ರಿಯಾಯಿತಿ ಅವಧಿ {date} ರಂದು ಕೊನೆಗೊಳ್ಳುತ್ತದೆ",
     "changeBaseLanguageTitle": "ಮೂಲ ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸುವುದೇ?",
-    "changeBaseLanguageDesc": "ಅಪ್ಲಿಕೇಶನ್‌ನ ಮೆನುಗಳು ಮತ್ತು ಬಟನ್‌ಗಳು {language} ಗೆ ಬದಲಾಗುತ್ತವೆ."
+    "changeBaseLanguageDesc": "ಅಪ್ಲಿಕೇಶನ್‌ನ ಮೆನುಗಳು ಮತ್ತು ಬಟನ್‌ಗಳು {language} ಗೆ ಬದಲಾಗುತ್ತವೆ.",
+    "activitySavedTo": "ಚಟುವಟಿಕೆಯನ್ನು {page} ಗೆ ಉಳಿಸಲಾಗಿದೆ"
 }

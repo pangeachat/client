@@ -10048,5 +10048,6 @@
     "botTookSeatAfterADay": "Esta sesión estivo aberta durante máis dun día, así que o Pangea Bot ocupou o asento libre. Envía unha mensaxe para comezar.",
     "subscriptionGracePeriodEndsOn": "O pago fallou. O período de gracia remata o {date}",
     "changeBaseLanguageTitle": "Cambiar idioma base?",
-    "changeBaseLanguageDesc": "Os menús e botóns da aplicación cambiarán a {language}."
+    "changeBaseLanguageDesc": "Os menús e botóns da aplicación cambiarán a {language}.",
+    "activitySavedTo": "Actividade gardada en {page}"
 }

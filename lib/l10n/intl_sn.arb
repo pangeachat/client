@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Chikamu ichi chaive chakavhurika kwezuva rose, saka Pangea Bot yakatora chigaro chisina munhu. Tumira meseji kuti utange.",
     "subscriptionGracePeriodEndsOn": "Kubhadhara kwakakundikana. Nguva yenyasha inopera musi wa {date}",
     "changeBaseLanguageTitle": "Chinja mutauro wekutanga here?",
-    "changeBaseLanguageDesc": "Mamenu nemabhatani eapp achachinja kuita {language}."
+    "changeBaseLanguageDesc": "Mamenu nemabhatani eapp achachinja kuita {language}.",
+    "activitySavedTo": "Chiitiko chachengetwa ku {page}"
 }

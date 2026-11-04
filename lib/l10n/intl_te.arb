@@ -10995,5 +10995,6 @@
     "botTookSeatAfterADay": "ఈ సెషన్ ఒక రోజుకు పైగా తెరిచి ఉంది, కాబట్టి పాంగియా బాట్ ఖాళీ స్థానాన్ని తీసుకుంది. ప్రారంభించడానికి సందేశం పంపండి.",
     "subscriptionGracePeriodEndsOn": "చెల్లింపు విఫలమైంది. గ్రేస్ పీరియడ్ {date}న ముగుస్తుంది",
     "changeBaseLanguageTitle": "ప్రాథమిక భాషను మార్చాలా?",
-    "changeBaseLanguageDesc": "యాప్ మెనూలు మరియు బటన్‌లు {language}కి మారుతాయి."
+    "changeBaseLanguageDesc": "యాప్ మెనూలు మరియు బటన్‌లు {language}కి మారుతాయి.",
+    "activitySavedTo": "కార్యకలాపం {page}లో సేవ్ చేయబడింది"
 }

@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Dës Sessioun war iwwer een Dag laang op, dofir huet de Pangea Bot de fräie Sëtz geholl. Schéckt eng Noriicht fir unzefänken.",
     "subscriptionGracePeriodEndsOn": "Bezuelung net gelongen. D'Schonnzäit endet den {date}",
     "changeBaseLanguageTitle": "Basisssprooch änneren?",
-    "changeBaseLanguageDesc": "D'Menüen an d'Knäppercher vun der App wiesselen op {language}."
+    "changeBaseLanguageDesc": "D'Menüen an d'Knäppercher vun der App wiesselen op {language}.",
+    "activitySavedTo": "Aktivitéit gespäichert op {page}"
 }

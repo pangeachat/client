@@ -10136,5 +10136,6 @@
     "botTookSeatAfterADay": "این جلسه بیش از یک روز باز بود، بنابراین ربات Pangea جای خالی را پر کرد. برای شروع یک پیام ارسال کنید.",
     "subscriptionGracePeriodEndsOn": "پرداخت ناموفق بود. دوره ارفاق در {date} به پایان می‌رسد",
     "changeBaseLanguageTitle": "تغییر زبان پایه؟",
-    "changeBaseLanguageDesc": "منوها و دکمه‌های برنامه به {language} تغییر خواهند کرد."
+    "changeBaseLanguageDesc": "منوها و دکمه‌های برنامه به {language} تغییر خواهند کرد.",
+    "activitySavedTo": "فعالیت در {page} ذخیره شد"
 }

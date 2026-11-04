@@ -10677,5 +10677,6 @@
     "botTookSeatAfterADay": "यह सत्र एक दिन से अधिक समय से खुला था, इसलिए पंगिया बॉट ने खाली सीट ले ली। शुरू करने के लिए एक संदेश भेजें।",
     "subscriptionGracePeriodEndsOn": "भुगतान विफल रहा। रियायती अवधि {date} को समाप्त होती है",
     "changeBaseLanguageTitle": "आधार भाषा बदलें?",
-    "changeBaseLanguageDesc": "ऐप के मेनू और बटन {language} में बदल जाएंगे।"
+    "changeBaseLanguageDesc": "ऐप के मेनू और बटन {language} में बदल जाएंगे।",
+    "activitySavedTo": "गतिविधि {page} में सहेजी गई"
 }

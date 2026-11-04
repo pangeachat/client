@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Þessi lota var opin í yfir sólarhring, svo Pangea Bot tók lausa sætið. Sendu skilaboð til að byrja.",
     "subscriptionGracePeriodEndsOn": "Greiðsla mistókst. Frestur rennur út {date}",
     "changeBaseLanguageTitle": "Breyta grunn tungumáli?",
-    "changeBaseLanguageDesc": "Valmyndir og hnappar forritsins munu skipta yfir í {language}."
+    "changeBaseLanguageDesc": "Valmyndir og hnappar forritsins munu skipta yfir í {language}.",
+    "activitySavedTo": "Virkni vistuð á {page}"
 }

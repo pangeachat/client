@@ -10677,5 +10677,6 @@
     "botTookSeatAfterADay": "This session was open for over a day, so Pangea Bot took the open seat. Send a message to start.",
     "subscriptionGracePeriodEndsOn": "Theip ar an íocaíocht. Críochnaíonn an tréimhse cairde ar {date}",
     "changeBaseLanguageTitle": "Athraigh buntheanga?",
-    "changeBaseLanguageDesc": "Athróidh biachláir agus cnaipí an aip go {language}."
+    "changeBaseLanguageDesc": "Athróidh biachláir agus cnaipí an aip go {language}.",
+    "activitySavedTo": "Activity saved to {page}"
 }

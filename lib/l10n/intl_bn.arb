@@ -10673,5 +10673,6 @@
     "botTookSeatAfterADay": "এই সেশনটি একদিনের বেশি সময় ধরে খোলা ছিল, তাই প্যানগিয়া বট খালি আসনটি নিয়েছে। শুরু করতে একটি বার্তা পাঠান।",
     "subscriptionGracePeriodEndsOn": "পেমেন্ট ব্যর্থ হয়েছে। গ্রেস পিরিয়ড শেষ হবে {date}-এ",
     "changeBaseLanguageTitle": "বেস ভাষা পরিবর্তন করবেন?",
-    "changeBaseLanguageDesc": "অ্যাপের মেনু এবং বোতামগুলি {language}-এ পরিবর্তিত হবে।"
+    "changeBaseLanguageDesc": "অ্যাপের মেনু এবং বোতামগুলি {language}-এ পরিবর্তিত হবে।",
+    "activitySavedTo": "অ্যাক্টিভিটি {page}-এ সেভ করা হয়েছে"
 }

@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Bu sessiya bir gündən çox açıq idi, buna görə Pangea Bot boş yeri tutdu. Başlamaq üçün mesaj göndərin.",
     "subscriptionGracePeriodEndsOn": "Ödəniş uğursuz oldu. Güzəşt müddəti {date} tarixində bitir",
     "changeBaseLanguageTitle": "Əsas dili dəyişdirilsin?",
-    "changeBaseLanguageDesc": "Tətbiqin menyuları və düymələri {language} dilinə keçəcək."
+    "changeBaseLanguageDesc": "Tətbiqin menyuları və düymələri {language} dilinə keçəcək.",
+    "activitySavedTo": "Fəaliyyət {page} səhifəsinə yadda saxlanıldı"
 }

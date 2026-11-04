@@ -10826,5 +10826,6 @@
     "botTookSeatAfterADay": "Ši sesija buvo atidaryta ilgiau nei dieną, todėl Pangea Bot užėmė laisvą vietą. Norėdami pradėti, atsiųskite žinutę.",
     "subscriptionGracePeriodEndsOn": "Mokėjimas nepavyko. Lengvatinis laikotarpis baigiasi {date}",
     "changeBaseLanguageTitle": "Pakeisti pagrindinę kalbą?",
-    "changeBaseLanguageDesc": "Programėlės meniu ir mygtukai persijungs į {language}."
+    "changeBaseLanguageDesc": "Programėlės meniu ir mygtukai persijungs į {language}.",
+    "activitySavedTo": "Veikla išsaugota {page}"
 }

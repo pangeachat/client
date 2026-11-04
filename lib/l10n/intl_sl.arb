@@ -10990,5 +10990,6 @@
     "botTookSeatAfterADay": "Ta seja je bila odprta več kot en dan, zato je Pangea Bot zasedel prosto mesto. Pošljite sporočilo za začetek.",
     "subscriptionGracePeriodEndsOn": "Plačilo ni uspelo. Prehodno obdobje se konča {date}",
     "changeBaseLanguageTitle": "Spremeniti osnovni jezik?",
-    "changeBaseLanguageDesc": "Meniji in gumbi aplikacije se bodo preklopili na {language}."
+    "changeBaseLanguageDesc": "Meniji in gumbi aplikacije se bodo preklopili na {language}.",
+    "activitySavedTo": "Dejavnost shranjena v {page}"
 }

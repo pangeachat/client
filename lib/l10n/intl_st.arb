@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Thuto ena e ne e butswe ho feta letsatsi, kahoo Pangea Bot e nkile setulo se se nang motho. Romela molaetsa ho qala.",
     "subscriptionGracePeriodEndsOn": "Tefo e hlotsoe. Nako ea mohau e fela ka {date}",
     "changeBaseLanguageTitle": "Fetola puo ea motheo?",
-    "changeBaseLanguageDesc": "Limenu le likonopo tsa app li tla fetohela ho {language}."
+    "changeBaseLanguageDesc": "Limenu le likonopo tsa app li tla fetohela ho {language}.",
+    "activitySavedTo": "Mosebetsi o bolokiloe ho {page}"
 }

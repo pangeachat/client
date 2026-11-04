@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Qhov kev sib tham no qhib tau ntau tshaj ib hnub, yog li Pangea Bot tau zaum. Xa lus los pib.",
     "subscriptionGracePeriodEndsOn": "Kev them nyiaj tsis ua haujlwm. Lub sijhawm pub dawb yuav xaus rau {date}",
     "changeBaseLanguageTitle": "Hloov hom lus?",
-    "changeBaseLanguageDesc": "Cov ntawv qhia thiab cov nyees khawm hauv app yuav hloov mus rau {language}."
+    "changeBaseLanguageDesc": "Cov ntawv qhia thiab cov nyees khawm hauv app yuav hloov mus rau {language}.",
+    "activitySavedTo": "Kev ua ub no tau raug cawm rau {page}"
 }

@@ -10965,5 +10965,6 @@
     "botTookSeatAfterADay": "Denne session var åben i over et døgn, så Pangea Bot tog den ledige plads. Send en besked for at starte.",
     "subscriptionGracePeriodEndsOn": "Betaling mislykkedes. Udsættelsesperiode slutter den {date}",
     "changeBaseLanguageTitle": "Skift grundsprog?",
-    "changeBaseLanguageDesc": "Appens menuer og knapper skifter til {language}."
+    "changeBaseLanguageDesc": "Appens menuer og knapper skifter til {language}.",
+    "activitySavedTo": "Aktivitet gemt i {page}"
 }

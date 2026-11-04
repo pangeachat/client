@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Энэ хуралдаан нэг өдрөөс илүү нээлттэй байсан тул Pangea Bot сул суудалд суусан. Эхлүүлэхийн тулд мессеж илгээнэ үү.",
     "subscriptionGracePeriodEndsOn": "Төлбөр амжилтгүй боллоо. Хөнгөлөлтийн хугацаа {date}-нд дуусна",
     "changeBaseLanguageTitle": "Үндсэн хэлийг өөрчлөх үү?",
-    "changeBaseLanguageDesc": "Аппын цэс болон товчлуурууд {language} хэл рүү шилжинэ."
+    "changeBaseLanguageDesc": "Аппын цэс болон товчлуурууд {language} хэл рүү шилжинэ.",
+    "activitySavedTo": "Үйл ажиллагааг {page} руу хадгаллаа"
 }

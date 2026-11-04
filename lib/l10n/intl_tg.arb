@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Ин сессия зиёда аз як рӯз боз кушода буд, аз ин рӯ Pangea Bot ҷои холиро ишғол кард. Барои оғоз паём фиристед.",
     "subscriptionGracePeriodEndsOn": "Пардохт ноком шуд. Мӯҳлати имтиёзнок дар {date} ба охир мерасад",
     "changeBaseLanguageTitle": "Забони асосиро иваз кунед?",
-    "changeBaseLanguageDesc": "Менюҳо ва тугмаҳои барнома ба {language} иваз карда мешаванд."
+    "changeBaseLanguageDesc": "Менюҳо ва тугмаҳои барнома ба {language} иваз карда мешаванд.",
+    "activitySavedTo": "Фаъолият ба {page} захира шуд"
 }

@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "ਇਹ ਸੈਸ਼ਨ ਇੱਕ ਦਿਨ ਤੋਂ ਵੱਧ ਸਮੇਂ ਲਈ ਖੁੱਲ੍ਹਾ ਸੀ, ਇਸ ਲਈ ਪੈਂਗੇਆ ਬੋਟ ਨੇ ਖਾਲੀ ਸੀਟ ਲੈ ਲਈ। ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੱਕ ਸੁਨੇਹਾ ਭੇਜੋ।",
     "subscriptionGracePeriodEndsOn": "ਭੁਗਤਾਨ ਅਸਫਲ ਰਿਹਾ। ਗ੍ਰੇਸ ਪੀਰੀਅਡ {date} ਨੂੰ ਖਤਮ ਹੁੰਦਾ ਹੈ",
     "changeBaseLanguageTitle": "ਮੂਲ ਭਾਸ਼ਾ ਬਦਲਣੀ ਹੈ?",
-    "changeBaseLanguageDesc": "ਐਪ ਦੇ ਮੀਨੂ ਅਤੇ ਬਟਨ {language} ਵਿੱਚ ਬਦਲ ਜਾਣਗੇ।"
+    "changeBaseLanguageDesc": "ਐਪ ਦੇ ਮੀਨੂ ਅਤੇ ਬਟਨ {language} ਵਿੱਚ ਬਦਲ ਜਾਣਗੇ।",
+    "activitySavedTo": "ਗਤੀਵਿਧੀ {page} ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਕੀਤੀ ਗਈ"
 }

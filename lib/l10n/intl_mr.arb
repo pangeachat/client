@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "हे सत्र एका दिवसापेक्षा जास्त काळ खुले होते, त्यामुळे पँजिया बॉटने रिकामी जागा घेतली. सुरू करण्यासाठी संदेश पाठवा.",
     "subscriptionGracePeriodEndsOn": "पैसे भरण्यात अयशस्वी. सवलतीचा कालावधी {date} रोजी संपेल",
     "changeBaseLanguageTitle": "मूळ भाषा बदलायची?",
-    "changeBaseLanguageDesc": "अ‍ॅपचे मेनू आणि बटणे {language} मध्ये बदलतील."
+    "changeBaseLanguageDesc": "अ‍ॅपचे मेनू आणि बटणे {language} मध्ये बदलतील.",
+    "activitySavedTo": "अ‍ॅक्टिव्हिटी {page} मध्ये सेव्ह केली"
 }

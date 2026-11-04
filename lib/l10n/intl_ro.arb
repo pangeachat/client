@@ -10777,5 +10777,6 @@
     "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe.",
     "subscriptionGracePeriodEndsOn": "Plata a eșuat. Perioada de grație se încheie pe {date}",
     "changeBaseLanguageTitle": "Schimbi limba de bază?",
-    "changeBaseLanguageDesc": "Meniurile și butoanele aplicației vor trece la {language}."
+    "changeBaseLanguageDesc": "Meniurile și butoanele aplicației vor trece la {language}.",
+    "activitySavedTo": "Activitate salvată în {page}"
 }

@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Dis seshɔn bin opin fɔ pas wan de, so Pangea Bot tek di ples we bin fri. Send mɛsej fɔ stat.",
     "subscriptionGracePeriodEndsOn": "Peimɛnt fɛl. Grɛs piriod de ɛnd ɔn {date}",
     "changeBaseLanguageTitle": "Chenj bɛs langwej?",
-    "changeBaseLanguageDesc": "Di app in menyu ɛn bɔtin dɛn go chenj to {language}."
+    "changeBaseLanguageDesc": "Di app in menyu ɛn bɔtin dɛn go chenj to {language}.",
+    "activitySavedTo": "Aktiviti dɔn sev to {page}"
 }

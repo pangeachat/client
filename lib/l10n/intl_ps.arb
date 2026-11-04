@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "دا ناسته د یوې ورځې څخه زیاته خلاصه وه، نو Pangea Bot خالي څوکۍ ونیوله. د پیل کولو لپاره یو پیغام واستوئ.",
     "subscriptionGracePeriodEndsOn": "تادیه ناکامه شوه. د مهلت موده په {date} پای ته رسیږي",
     "changeBaseLanguageTitle": "بنسټیزه ژبه بدله کړو؟",
-    "changeBaseLanguageDesc": "د اپلیکیشن مینو او بټنونه به {language} ته بدل شي."
+    "changeBaseLanguageDesc": "د اپلیکیشن مینو او بټنونه به {language} ته بدل شي.",
+    "activitySavedTo": "فعالیت په {page} کې خوندي شو"
 }

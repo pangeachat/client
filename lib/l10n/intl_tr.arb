@@ -10346,5 +10346,6 @@
     "botTookSeatAfterADay": "Bu oturum bir günden fazla açıktı, bu yüzden Pangea Bot boş koltuğu aldı. Başlamak için bir mesaj gönderin.",
     "subscriptionGracePeriodEndsOn": "Ödeme başarısız oldu. Ödemesiz dönem {date} tarihinde sona eriyor",
     "changeBaseLanguageTitle": "Temel dili değiştir?",
-    "changeBaseLanguageDesc": "Uygulamanın menüleri ve düğmeleri {language} diline geçecektir."
+    "changeBaseLanguageDesc": "Uygulamanın menüleri ve düğmeleri {language} diline geçecektir.",
+    "activitySavedTo": "Etkinlik şuraya kaydedildi: {page}"
 }

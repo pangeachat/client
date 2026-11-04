@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Din is-sessjoni kienet miftuħa għal aktar minn ġurnata, allura Pangea Bot ħa s-siġġu vojt. Ibgħat messaġġ biex tibda.",
     "subscriptionGracePeriodEndsOn": "Il-ħlas falla. Il-perjodu ta' grazzja jintemm fi {date}",
     "changeBaseLanguageTitle": "Tibdel il-lingwa bażika?",
-    "changeBaseLanguageDesc": "Il-menus u l-buttuni tal-app se jinbidlu għal {language}."
+    "changeBaseLanguageDesc": "Il-menus u l-buttuni tal-app se jinbidlu għal {language}.",
+    "activitySavedTo": "Attività ssejvjata f'{page}'"
 }

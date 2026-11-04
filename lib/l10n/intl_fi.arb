@@ -10085,5 +10085,6 @@
     "botTookSeatAfterADay": "Tämä istunto oli auki yli päivän, joten Pangea Bot otti avoimen paikan. Aloita lähettämällä viesti.",
     "subscriptionGracePeriodEndsOn": "Maksu epäonnistui. Armonaika päättyy {date}",
     "changeBaseLanguageTitle": "Vaihda peruskieli?",
-    "changeBaseLanguageDesc": "Sovelluksen valikot ja painikkeet vaihtuvat kielelle {language}."
+    "changeBaseLanguageDesc": "Sovelluksen valikot ja painikkeet vaihtuvat kielelle {language}.",
+    "activitySavedTo": "Aktiviteetti tallennettu kohteeseen {page}"
 }

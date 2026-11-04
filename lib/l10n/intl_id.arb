@@ -10121,5 +10121,6 @@
     "botTookSeatAfterADay": "Sesi ini terbuka selama lebih dari sehari, jadi Pangea Bot mengambil kursi kosong. Kirim pesan untuk memulai.",
     "subscriptionGracePeriodEndsOn": "Pembayaran gagal. Masa tenggang berakhir pada {date}",
     "changeBaseLanguageTitle": "Ganti bahasa dasar?",
-    "changeBaseLanguageDesc": "Menu dan tombol aplikasi akan beralih ke {language}."
+    "changeBaseLanguageDesc": "Menu dan tombol aplikasi akan beralih ke {language}.",
+    "activitySavedTo": "Aktivitas disimpan ke {page}"
 }

@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "بۇ يىغىن بىر كۈندىن ئارتۇق ئوچۇق بولغاچقا، Pangea Bot بوش ئورۇننى ئالدى. باشلاش ئۈچۈن ئۇچۇر ئەۋەتىڭ.",
     "subscriptionGracePeriodEndsOn": "تۆلەم مەغلۇپ بولدى. مۆھلەت {date} دە ئاخىرلىشىدۇ",
     "changeBaseLanguageTitle": "ئاساسىي تىلنى ئۆزگەرتەمسىز؟",
-    "changeBaseLanguageDesc": "ئەپنىڭ تىزىملىكى ۋە كۇنۇپكىلىرى {language} غا ئۆزگىرىدۇ."
+    "changeBaseLanguageDesc": "ئەپنىڭ تىزىملىكى ۋە كۇنۇپكىلىرى {language} غا ئۆزگىرىدۇ.",
+    "activitySavedTo": "پائالىيەت {page} غا ساقلاندى"
 }

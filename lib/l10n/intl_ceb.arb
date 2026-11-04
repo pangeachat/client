@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Bukas kini nga sesyon sulod sa kapin sa usa ka adlaw, busa ang Pangea Bot milingkod sa bakanteng lingkoranan. Pagpadala og mensahe aron magsugod.",
     "subscriptionGracePeriodEndsOn": "Napakyas ang pagbayad. Ang grace period matapos sa {date}",
     "changeBaseLanguageTitle": "Usbon ang base nga pinulongan?",
-    "changeBaseLanguageDesc": "Ang mga menu ug buton sa app mobalhin sa {language}."
+    "changeBaseLanguageDesc": "Ang mga menu ug buton sa app mobalhin sa {language}.",
+    "activitySavedTo": "Ang kalihokan na-save sa {page}"
 }

@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "די סעסיע איז געווען אָפן פֿאַר איבער אַ טאָג, אַזוי פּאַנגעאַ באָט האָט גענומען דעם ליידיקן פּלאַץ. שיק אַ מעסעדזש צו אָנהייבן.",
     "subscriptionGracePeriodEndsOn": "צאָלונג ניט געראָטן. חן־פּעריאָד ענדיקט זיך דעם {date}",
     "changeBaseLanguageTitle": "ענדערן באַזע שפּראַך?",
-    "changeBaseLanguageDesc": "די מעניוז און קנעפּלעך פון דער אַפּ וועלן זיך טוישן צו {language}."
+    "changeBaseLanguageDesc": "די מעניוז און קנעפּלעך פון דער אַפּ וועלן זיך טוישן צו {language}.",
+    "activitySavedTo": "טעטיקייט געראטעוועט צו {page}"
 }

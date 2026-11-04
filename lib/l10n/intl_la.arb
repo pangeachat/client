@@ -2518,5 +2518,6 @@
     "botTookSeatAfterADay": "Haec sessio per diem apertior erat, ergo Pangea Bot sedem liberam cepit. Mitte nuntium ut incipias.",
     "subscriptionGracePeriodEndsOn": "Solutio defecit. Tempus gratiae desinit die {date}",
     "changeBaseLanguageTitle": "Mutare linguam fundamentalem?",
-    "changeBaseLanguageDesc": "Menu et bullae applicationis ad {language} mutabuntur."
+    "changeBaseLanguageDesc": "Menu et bullae applicationis ad {language} mutabuntur.",
+    "activitySavedTo": "Actio servata ad {page}"
 }

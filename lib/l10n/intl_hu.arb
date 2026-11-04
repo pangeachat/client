@@ -10151,5 +10151,6 @@
     "botTookSeatAfterADay": "Ez a munkamenet több mint egy napja nyitva volt, ezért a Pangea Bot elfoglalta a szabad helyet. Üzenj a kezdéshez.",
     "subscriptionGracePeriodEndsOn": "Sikertelen fizetés. A türelmi időszak ekkor jár le: {date}",
     "changeBaseLanguageTitle": "Alapnyelv módosítása?",
-    "changeBaseLanguageDesc": "Az alkalmazás menüi és gombjai átváltanak a következő nyelvre: {language}."
+    "changeBaseLanguageDesc": "Az alkalmazás menüi és gombjai átváltanak a következő nyelvre: {language}.",
+    "activitySavedTo": "Tevékenység mentve ide: {page}"
 }
