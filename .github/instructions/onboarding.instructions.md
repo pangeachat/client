@@ -15,7 +15,7 @@ Onboarding is a series of pages:
 
 1. **Profile.** A display name and an avatar. The avatar starts as a random pick from a preset list; they can choose another or upload a picture.
 2. **Role.** Learner or teacher.
-3. **Class code.** Asks the user if they have a code. Yes opens a field; No moves on. Someone who opened a class link before signing up is joined to that course instead and skips this page; if that join fails, they see this page with no code filled in.
+3. **Class code.** Asks the user if they have a code. Yes opens a field; No moves on. If someone opened a class link before signing up, and that join succeeds, they skip this page.
 4. **Languages.** The language they learn or teach, and the one they already speak, which starts on the device's language. The two must differ. Skipped when a joined course supplies them.
 5. **Level.** Their CEFR level, or the level they teach. Skipped when a joined course supplies it.
 6. **Then it branches:**
