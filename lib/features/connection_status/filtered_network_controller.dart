@@ -51,6 +51,7 @@ class FilteredNetworkController {
   final Map<NetworkHostCategory, DateTime> _firstBlockedAt = {};
   final Map<NetworkHostCategory, DateTime> _lastCheckedAt = {};
   final Map<NetworkHostCategory, Future<NetworkVerdict?>> _inFlight = {};
+  final Set<NetworkHostCategory> _recheckPending = {};
   StreamSubscription<List<ConnectivityResult>>? _networkChanges;
 
   @visibleForTesting
@@ -135,6 +136,30 @@ class FilteredNetworkController {
         data: {},
       );
     }
+  }
+
+  /// Re-checks a blocked [category], at most once per [recheckAfter], after an
+  /// answer a cache may have given — a map tile on the web, which the browser
+  /// serves from its cache even on a network that blocks the host.
+  void recheckIfBlocked(NetworkHostCategory category) {
+    // Every map tile lands here; on a healthy network there is nothing to do.
+    if (!blocked.value.contains(category) && !_inFlight.containsKey(category)) {
+      return;
+    }
+    if (_recheckPending.add(category)) unawaited(_recheckWhenDue(category));
+  }
+
+  /// Waits out a check in flight, whose verdict may predate the answer, then
+  /// until the last check is [recheckAfter] old.
+  Future<void> _recheckWhenDue(NetworkHostCategory category) async {
+    await _inFlight[category];
+    final lastChecked = _lastCheckedAt[category];
+    if (blocked.value.contains(category) && lastChecked != null) {
+      final age = DateTime.now().difference(lastChecked);
+      if (age < recheckAfter) await wait(recheckAfter - age);
+    }
+    _recheckPending.remove(category);
+    if (blocked.value.contains(category)) await check(category);
   }
 
   void onRequestFailed(Uri url) {
@@ -331,6 +356,7 @@ class FilteredNetworkController {
     _firstBlockedAt.clear();
     _lastCheckedAt.clear();
     _inFlight.clear();
+    _recheckPending.clear();
     unawaited(_networkChanges?.cancel());
     _networkChanges = null;
     probe = NetworkProbe.probe;

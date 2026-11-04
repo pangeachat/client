@@ -49,7 +49,7 @@ Nothing a check sees while the app is in the background counts, for the same rea
 
 A slow answer is never a block, the same rule the sign-in check uses. A web browser hides who answered a request, so on the web only a refused connection counts, and a filter that serves its own block page is missed there.
 
-The verdict clears as soon as a request to the blocked host succeeds, and the check runs again when the device changes network. A user who switches to mobile data carries on without restarting the app.
+The verdict clears as soon as a request to the blocked host succeeds, and the check runs again when the device changes network. A user who switches to mobile data carries on without restarting the app. The map is the exception: the browser shows a map tile it has seen before even on a network that blocks the map, so a tile cannot clear the verdict. Instead, a tile that loads while the map is marked blocked starts a check, at most once every 30 seconds.
 
 ## Losing the connection
 
