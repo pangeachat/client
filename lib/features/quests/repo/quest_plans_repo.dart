@@ -87,7 +87,7 @@ class QuestPlansRepo {
   }
 
   /// The quest's cover image, the fallback a course room with no
-  /// `m.room.avatar` shows (course-plans.instructions.md § Course avatar).
+  /// `m.room.avatar` shows (quests.instructions.md § Course avatar).
   /// Null means the quest has no cover, or the read failed; a failure is
   /// reported here and remembered for the session, so it is not read again
   /// until the app restarts. Concurrent calls share one read, and calls made
@@ -250,9 +250,7 @@ class QuestPlansRepo {
   }
 
   /// Load one quest-plans row as a synthesized [CoursePlanModel]. Used by
-  /// [CoursePlanProvider.loadCourse] as the fallback path when a course id
-  /// doesn't resolve in v1 ``course-plans`` (the id-space is shared, so an
-  /// id that 404s in v1 may still resolve in v3).
+  /// [CoursePlanProvider.loadCourse].
   ///
   /// Shares [QuestRepo.removedQuests] — both read the same ``quest-plans``
   /// collection by id, so a 404 either sees is the same fact. A remembered

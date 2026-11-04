@@ -150,6 +150,14 @@ The design — what a pin means, why it lives in course state and never the ques
 - Previews and non-joined contexts pass no pins — there is no learner progress to scope, and fail-open is the default everywhere.
 - The teacher editing surface is deferred to the admin panel ([admin-dash#30](https://github.com/pangeachat/admin-dash/issues/30)); until it ships, pins are written to course room state directly.
 
+## Course avatar
+
+A course room shows its own `m.room.avatar` when it has one. When it has none, it shows the cover image of the quest named in its `pangea.course_plan` event. Only a missing avatar falls back: an avatar an admin set always wins, and a course whose quest has no cover keeps the letter avatar.
+
+- **Why the client falls back.** The room avatar is copied from the quest cover once, when the course is created, and nothing reads the quest again. Courses made before quests had covers therefore have no avatar. Backfilling those rooms from the server would need an account with admin power in every course room, so the client reads the cover instead (#9264).
+- **One rule for every surface.** Every place that shows a course's image resolves it through [`CourseImageBuilder`](../../lib/pangea/common/widgets/course_image_builder.dart): the nav rail, the mobile course shortcut, the course lists and public browse, the course badge on chat-list rows, the "go to course" menu item, and the edit-course page. They cannot disagree about which image a course has.
+- **Loading.** [`QuestPlansRepo.cover`](../../lib/features/quests/repo/quest_plans_repo.dart) reads the cover once per quest per session, and any quest-plans read that already resolved the image fills the same cache. Covers asked for at the same moment, such as every course a list shows when it opens, are read together: one request for the courses and one for their images, rather than one of each per course. The letter shows while the cover loads. A failed read is reported and not retried for the rest of the session, because retrying it every time the avatar appeared sent a burst of reads at a CMS that was already slow (#9569). A failed shared read leaves every course in it on its letter. The letter shows instead until the app restarts (on the web, until the page is reloaded), or until another quest-plans read resolves the image, such as opening that course's page.
+
 ## Future Work
 
 File GitHub issues for these and link them here.
