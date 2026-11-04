@@ -286,6 +286,8 @@ void main() {
   // #9513 — practice that works offline, offered from the banner.
   group('the practice offer', () {
     const offerText = 'Practice vocab while you wait';
+    // By its name, which every layout gives it; only a wide screen shows it.
+    Finder offer() => find.bySemanticsLabel(offerText);
     final holder = PracticeSessionHolder.instance;
     late GoRouter router;
 
@@ -324,27 +326,27 @@ void main() {
     ) async {
       await tester.pumpWidget(routedApp());
       await tester.pumpAndSettle();
-      expect(find.text(offerText), findsNothing);
+      expect(offer(), findsNothing);
 
       status.value = ConnectionStatus.offline;
       await settle(tester);
       expect(find.text(offlineText), findsOneWidget);
-      expect(find.text(offerText), findsOneWidget);
+      expect(offer(), findsOneWidget);
 
       status.value = ConnectionStatus.unreachable;
       await settle(tester);
       expect(find.text(unreachableText), findsOneWidget);
-      expect(find.text(offerText), findsOneWidget);
+      expect(offer(), findsOneWidget);
 
       blocked.value = {NetworkHostCategory.pangeaApi};
       await settle(tester);
       expect(find.text(bannerText), findsOneWidget);
-      expect(find.text(offerText), findsOneWidget);
+      expect(offer(), findsOneWidget);
 
       blocked.value = {};
       status.value = ConnectionStatus.backOnline;
       await settle(tester);
-      expect(find.text(offerText), findsNothing);
+      expect(offer(), findsNothing);
     });
 
     testWidgets('is not made without a session\'s worth of saved meanings', (
@@ -357,7 +359,7 @@ void main() {
       status.value = ConnectionStatus.offline;
       await settle(tester);
       expect(find.text(offlineText), findsOneWidget);
-      expect(find.text(offerText), findsNothing);
+      expect(offer(), findsNothing);
     });
 
     testWidgets('dismisses the banner and opens vocab practice', (
@@ -368,7 +370,7 @@ void main() {
       status.value = ConnectionStatus.offline;
       await settle(tester);
 
-      await tester.tap(find.text(offerText));
+      await tester.tap(offer());
       await tester.pumpAndSettle();
 
       expect(find.text(offlineText), findsNothing);
@@ -391,7 +393,7 @@ void main() {
       status.value = ConnectionStatus.offline;
       await settle(tester);
       expect(find.text(offlineText), findsOneWidget);
-      expect(find.text(offerText), findsNothing);
+      expect(offer(), findsNothing);
     });
 
     testWidgets('waits while a practice session is in progress', (
@@ -433,11 +435,49 @@ void main() {
       status.value = ConnectionStatus.offline;
       await settle(tester);
       expect(find.text(offlineText), findsOneWidget);
-      expect(find.text(offerText), findsNothing);
+      expect(offer(), findsNothing);
 
       holder.end();
       await settle(tester);
+      expect(offer(), findsOneWidget);
+    });
+
+    // #9570 — on a phone the banner floats over the strip above a sheet that
+    // can rise to just below the top bar, so the offer must not add a row.
+    Future<void> showOfflineAt(WidgetTester tester, Size size) async {
+      tester.view.devicePixelRatio = 1;
+      tester.view.physicalSize = size;
+      addTearDown(tester.view.reset);
+      await tester.pumpWidget(routedApp());
+      await tester.pumpAndSettle();
+      status.value = ConnectionStatus.offline;
+      await settle(tester);
+    }
+
+    testWidgets('on a phone, is the practice icon on the message\'s row', (
+      tester,
+    ) async {
+      await showOfflineAt(tester, const Size(390, 844));
+
+      expect(find.text(offerText), findsNothing);
+      expect(
+        tester.getCenter(offer()).dy,
+        tester.getCenter(find.bySemanticsLabel('Close')).dy,
+      );
+    });
+
+    testWidgets('on a wide screen, has a labelled row under the message', (
+      tester,
+    ) async {
+      await showOfflineAt(tester, const Size(1280, 800));
+
       expect(find.text(offerText), findsOneWidget);
+      expect(
+        tester.getTopLeft(offer()).dy,
+        greaterThanOrEqualTo(
+          tester.getBottomLeft(find.bySemanticsLabel('Close')).dy,
+        ),
+      );
     });
   });
 

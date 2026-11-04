@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
 import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
@@ -192,6 +193,8 @@ class _ConnectionBannerState extends State<ConnectionBanner> {
     // after the user dismissed it.
     if (blocked.contains(NetworkHostCategory.chatServer)) return null;
 
+    // Where a sheet can rise to just below the top bar (#9570).
+    final compact = !FluffyThemes.isColumnMode(context);
     if (!status.isLost) _connectionDismissedFor = null;
     switch (status) {
       case ConnectionStatus.connected:
@@ -201,6 +204,7 @@ class _ConnectionBannerState extends State<ConnectionBanner> {
           icon: Icons.wifi,
           text: l10n.connectionBackOnline,
           positive: true,
+          compact: compact,
         );
       case ConnectionStatus.offline:
       case ConnectionStatus.unreachable:
@@ -212,6 +216,7 @@ class _ConnectionBannerState extends State<ConnectionBanner> {
           text: offline ? l10n.connectionOffline : l10n.connectionUnreachable,
           onPractice: _practiceOffer(dismiss),
           onClose: dismiss,
+          compact: compact,
         );
     }
   }
@@ -223,12 +228,17 @@ class _BannerCard extends StatelessWidget {
   final String? actionLabel;
   final VoidCallback? onAction;
 
-  /// Starts offline vocab practice, on a row of its own under the message.
+  /// Starts offline vocab practice: a row of its own under the message, or
+  /// the practice icon on the message's row when [compact].
   final VoidCallback? onPractice;
   final VoidCallback? onClose;
 
   /// A good-news banner, in the calmer colours.
   final bool positive;
+
+  /// One tight row, so the banner stays above a full-height sheet and clears
+  /// its drag handle, even with a long translation of the message.
+  final bool compact;
 
   const _BannerCard({
     required this.icon,
@@ -238,6 +248,7 @@ class _BannerCard extends StatelessWidget {
     this.onPractice,
     this.onClose,
     this.positive = false,
+    this.compact = false,
   });
 
   @override
@@ -252,10 +263,10 @@ class _BannerCard extends StatelessWidget {
     final message = Row(
       children: [
         Icon(icon, color: ink),
-        const SizedBox(width: 12),
+        SizedBox(width: compact ? 8 : 12),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
+            padding: EdgeInsets.symmetric(vertical: compact ? 0 : 8),
             child: ExcludeSemantics(
               child: Text(
                 text,
@@ -282,19 +293,19 @@ class _BannerCard extends StatelessWidget {
               ),
             ),
           ),
+        if (compact && onPractice != null)
+          _BannerIconButton(
+            icon: Symbols.fitness_center,
+            label: l10n.connectionPracticeVocab,
+            color: ink,
+            onTap: onPractice,
+          ),
         if (onClose != null)
-          Semantics(
-            container: true,
-            button: true,
+          _BannerIconButton(
+            icon: Icons.close,
             label: l10n.close,
-            child: InkWell(
-              customBorder: const CircleBorder(),
-              onTap: onClose,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Icon(Icons.close, size: 20, color: ink),
-              ),
-            ),
+            color: ink,
+            onTap: onClose,
           ),
       ],
     );
@@ -310,8 +321,20 @@ class _BannerCard extends StatelessWidget {
         color: positive ? colors.primaryContainer : colors.errorContainer,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 8, onClose == null ? 16 : 8, 8),
-          child: onPractice == null
+          padding: EdgeInsets.fromLTRB(
+            16,
+            compact ? 4 : 8,
+            onClose == null ? 16 : 8,
+            compact ? 4 : 8,
+          ),
+          child: compact
+              ? ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minHeight: _BannerIconButton.extent,
+                  ),
+                  child: message,
+                )
+              : onPractice == null
               ? message
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -356,4 +379,36 @@ class _BannerCard extends StatelessWidget {
       ),
     );
   }
+}
+
+/// A round button on the banner's message row, named for screen readers.
+class _BannerIconButton extends StatelessWidget {
+  static const double extent = 36;
+
+  final IconData icon;
+  final String label;
+  final Color color;
+  final VoidCallback onTap;
+
+  const _BannerIconButton({
+    required this.icon,
+    required this.label,
+    required this.color,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    container: true,
+    button: true,
+    label: label,
+    child: InkWell(
+      customBorder: const CircleBorder(),
+      onTap: onTap,
+      child: SizedBox.square(
+        dimension: extent,
+        child: Icon(icon, size: 20, color: color),
+      ),
+    ),
+  );
 }
