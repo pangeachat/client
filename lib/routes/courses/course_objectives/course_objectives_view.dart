@@ -564,7 +564,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
         context,
       ).client.discussionStandingFor(ref.activityId).room;
       if (own != null) {
-        _openSession(own.id);
+        _openSession(own.id, missionId);
         return;
       }
     }
