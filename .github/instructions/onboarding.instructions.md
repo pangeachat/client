@@ -29,7 +29,7 @@ They land in their course if they joined one; otherwise on the world map, where 
 
 ### What onboarding reads and saves
 
-Choices are maintained across pages, every page reads them from there, and unsaved choices are lost if the person leaves. Saved ones stay on their account.
+Choices carry over from page to page, so a later page can use an earlier one. Unsaved choices are lost if the person leaves; saved ones stay on their account.
 
 #### What it reads
 
