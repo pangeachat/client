@@ -85,7 +85,10 @@ extension BotClientExtension on Client {
   bool get hasBotDM => rooms.any((r) => r.isBotDM);
   Room? get botDM => rooms.firstWhereOrNull((r) => r.isBotDM);
 
-  // All 2-member rooms with the bot
+  // All 2-member rooms with the bot, except activity rooms, which manage their
+  // own options. A room's activity state outlives the activity, so a room that
+  // once held one stays skipped; the bot DM is updated separately in
+  // [updateBotOptions] so that it is always covered.
   List<Room> get _targetBotChats => rooms.where((r) {
     return
     // bot settings exist
@@ -117,6 +120,10 @@ extension BotClientExtension on Client {
     ],
   );
 
+  /// Brings each bot chat's options in line with [userSettings]. The bot reads
+  /// the learner's settings from its room's [PangeaEventTypes.botOptions]
+  /// state, and keeping that state current is the client's job
+  /// (profile.instructions.md, "Saving and syncing").
   Future<void> updateBotOptions(UserSettings userSettings) async {
     final dm = botDM;
     Future<void> Function()? dmUpdate;

@@ -15,7 +15,10 @@ import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.
 import 'package:fluffychat/widgets/matrix.dart';
 import '../languages/language_model.dart';
 
-/// The user's settings learning settings.
+/// The learner's learning settings: target and base language, self-reported
+/// level, gender, voice, country and bio. Private to the learner, apart from
+/// country and bio, which [UserController.updatePublicProfile] copies to the
+/// public profile (profile.instructions.md, "Public vs. private").
 class UserSettings {
   final DateTime? dateOfBirth;
   final DateTime? createdAt;
@@ -481,6 +484,11 @@ class UserToolSettings {
 
 /// A wrapper around the matrix account data for the user profile.
 /// Enables easy access to the profile data and saving new data.
+///
+/// Saved as one blob under one account-data key, so its fields are written
+/// together and can never race each other, and Matrix sync carries it to every
+/// device the learner is signed in on with no infrastructure of our own
+/// (profile.instructions.md, "Saving and syncing").
 class Profile {
   final UserSettings userSettings;
   final UserToolSettings toolSettings;
@@ -531,6 +539,10 @@ class Profile {
 
   /// Migrate data from the old matrix account data
   /// format to the new matrix account data format.
+  ///
+  /// Legacy accounts stored each setting under its own account-data key.
+  /// [UserController.profile] re-saves what this reads in the unified format,
+  /// so the upgrade happens once and costs nothing after it.
   static Profile? migrateFromAccountData() {
     final userSettings = UserSettings.migrateFromAccountData();
     if (userSettings == null) return null;
