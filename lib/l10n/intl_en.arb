@@ -5404,6 +5404,14 @@
             }
         }
     },
+    "subscriptionGracePeriodEndsOn": "Payment failed. Grace period ends on {date}",
+    "@subscriptionGracePeriodEndsOn": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
     "promoSubscription": "Promotional Subscription",
     "seatSubscription": "Institutional Seat",
     "lifetimeSubscription": "Lifetime subscription",
