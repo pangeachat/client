@@ -21,7 +21,7 @@ Onboarding is a series of pages:
 6. **Then it branches:**
    - Someone who joined a course sees a welcome page for it.
    - A teacher in no course can request a course built on their textbook, or skip.
-7. **Trial.** For an account inside its trial window, a last page says their free trial is running, once. Its button just closes the page; the trial needs no action and no card.
+7. **Trial.** For an account inside its [trial window](subscriptions.instructions.md#trial-window), a last page says their free trial is running, once. Its button just closes the page; the trial needs no action and no card.
 
 They land in their course if they joined one; otherwise on the world map, where the first tutorial starts, rather than the chat list, which would show a new person an empty list.
 
@@ -29,26 +29,28 @@ They land in their course if they joined one; otherwise on the world map, where 
 
 ### What onboarding reads and saves
 
-Choices are kept for the run as soon as they are made, and every page reads them from there. Unsaved choices are lost if the person leaves onboarding; saved ones stay on their account, on any device.
+Choices are maintained across pages, every page reads them from there, and unsaved choices are lost if the person leaves. Saved ones stay on their account.
 
 #### What it reads
 
-Besides the person's choices, onboarding reads:
+Besides the user's input, onboarding reads:
 
-- The device's language: the languages page first selects it as their L1, and it becomes their L1 when a joined course's content does not load.
-- Their account's saved role, languages and level, which those pages show when the run has none, and display name and avatar, which the profile page shows. If the name and avatar cannot be read when Next is pressed, the page shows the error.
+- The device's language to determine the user's initial L1 (unless it is set by a joined course).
+- Their account's saved role, languages, level, name, and avatar, which the pages show initially before the user makes changes.
 
 #### What it saves
 
-Each page saves its choices to the person's account when they move on. The class-code page saves nothing to the account; it joins the user to a course, and the code is kept on this device ([joining-courses § Route 2 — Class Code](joining-courses.instructions.md#route-2--class-code)). A course joined during onboarding saves the languages it supplies, and its level when its content loads, right after the join. Course requests are not saved to the account either; they are saved on our servers to be fulfilled.
+The name, avatar, role, languages and level, including any a joined course supplies, are saved to the person's account when they move forward, as is whether the trial page was shown. A class code is kept on this device ([joining-courses § Route 2 — Class Code](joining-courses.instructions.md#route-2--class-code)), and a course request goes to our servers to be fulfilled.
 
 When a save fails, the page shows the error and stays where it is until Next works; the class-code and course request pages can also be skipped, and Setup has its own way out (below). The profile, role and trial pages are the exceptions: a failed save there does not stop the person, the old name or picture stays, and the role is saved again with their languages.
 
-A signed-in account with no L2 is sent to onboarding, whatever link it opened, and saving the L2 marks onboarding as done. Someone who leaves before then starts a new run, with only what was saved to their account. The profile page fills in their saved display name and avatar, and the role page their saved role.
+A signed-in account with no L2 is sent to onboarding, whatever link it opened, and saving the L2 marks onboarding as done. Someone who leaves before then starts a new run, with only what was saved to their account.
 
 ### Setup
 
-Before the profile page, a loading page sets the account up. The account can get its free trial only in a set number of days after its creation date, its trial window. The app asks the server for the trial if the account can still get one ([subscriptions](subscriptions.instructions.md)); if that request fails, onboarding goes on without a trial, and the app asks again each time it opens inside the window. If the creation date cannot be saved, the page says setup did not finish: Try again repeats it, and Log out signs the person out so they can come back later.
+Before the profile page, a loading page sets the account up. This page adds a creation date to the user's account if not already set. It also requests the user’s free trial if they are eligible.
+
+If the creation date cannot be saved, the page says setup did not finish: Try again repeats it, and Log out signs the person out so they can come back later.
 
 ### Joining a course during onboarding
 
@@ -58,10 +60,10 @@ Onboarding takes the user's L1, L2 and CEFR level from the joined course's conte
 
 ### The course request
 
-A teacher gives their name, institution, and textbook or curriculum. Submitting files the same request as the [website's educator form](../../../website/.github/instructions/course-request.instructions.md), which the team builds and delivers. Skip for now moves on without a request.
+A teacher gives their name, institution, and textbook or curriculum. Submitting files the same request as the [website's educator form](../../../website/.github/instructions/course-request.instructions.md), which the team builds and delivers.
 
 ## Open questions
 
-- Someone who leaves once their L2 is saved skips the rest: the level, course request and trial pages. Should onboarding resume where they left off?
-- Some older or corrupted accounts have no role. When and how should they be asked to set it?
-- Repeated save failures, for example offline, leave the person with only Next and an often unclear error. Should onboarding let them move on and save later, explain connection problems, or offer a way out like Setup's Log out?
+- Someone who leaves once their L2 is saved skips the rest. Should onboarding resume where they left off?
+- Some old or corrupted accounts have no role. When and how should they be asked to set it?
+- Repeated save failures leave users unable to move forward, with an unclear error. How should onboarding handle this?
