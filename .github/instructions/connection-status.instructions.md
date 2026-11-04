@@ -34,22 +34,16 @@ On the web, the app cannot see a filter's block page, so it misses filters that 
 
 ## What the user sees
 
-Connection issues reach users in two places: a note or error in the view they affect, or a banner at the top of the page. Two different banners share that slot at the top of every page, and only one shows at a time:
+Two banners share the top of every page, and only one shows at a time:
 
-- The connection banner says the device is offline, or that the app can't reach Pangea Chat, and "Back online" when the connection returns. It follows only the chat server and the device's own network report, not the Pangea API or any other server.
-- The filtered-network banner says this network is blocking Pangea Chat, with a button that opens the guidance. It shows when the network blocks the chat server or the Pangea API, and it wins over the connection banner, because the user can act on it.
+- The connection banner says the device is offline or the app can't reach Pangea Chat, then "Back online" when the connection returns. It follows only the chat server and the device's network status.
+- The filtered-network banner says this network is blocking Pangea Chat. It shows when the network blocks the chat server or the Pangea API, and wins over the connection banner, because the user can act on it.
 
-Either banner can be dismissed, and comes back when its news changes. An outage of any other server shows only that feature's own error.
+Both offer offline vocab practice to users who qualify ([practice-exercises](practice-exercises.instructions.md#offline-practice)). Either can be dismissed, and comes back when its news changes.
 
-### A blocked network
+When the image server, YouTube or the map is blocked, a note takes that feature's place and the rest of the screen works. On the web, a blocked Google or Apple sign-in offers email sign-up instead ([signup-and-login](signup-and-login.instructions.md)). An outage of any server but the chat server shows only the feature's own error.
 
-The guidance tells a user on a phone (the iOS and Android apps, and phone browsers) to turn off Wi-Fi and use mobile data, and a user on any other device to use a phone's hotspot. A section for everyone gives IT staff the domains to allow, so the app need not know who is a teacher.
-
-When only another server is blocked, its feature shows a short note in its place, in an activity or on the world map, that opens the same guidance, and the rest of the screen works. On the web, a blocked Google or Apple sign-in shows a dialog that offers email sign-up instead ([signup-and-login](signup-and-login.instructions.md)).
-
-### Practice while you wait
-
-Both banners offer vocab practice, which runs offline ([practice-exercises](practice-exercises.instructions.md#offline-practice)), to a signed-in learner the app does not know to be unsubscribed, with a full session's worth of words whose meanings are saved on the device, unless practice is in progress or open.
+The filtered-network banner's button and each note open the same guidance: on a phone, in the app or its browser, switch from Wi-Fi to mobile data; on any other device, use a phone's hotspot. It also lists the domains for IT staff to allow, shown to everyone so the app need not know who is a teacher.
 
 ## Repair
 
