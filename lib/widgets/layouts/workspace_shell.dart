@@ -40,6 +40,7 @@ import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/workspace_right_panel.dart';
+import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/routes/world/world_analytics_bar.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_map_mobile_filters.dart';
@@ -317,10 +318,17 @@ class WorkspaceShell extends StatelessWidget {
     required this.sideView,
   });
 
-  /// The column-mode reservation at the viewport's right edge, the mirror of
-  /// the rail's on the left: the cluster's [_ShellLayout.chromeMargin] inset,
-  /// its width, and one more margin before the panels, so a right panel sits
-  /// as far from the cluster as a left panel from the rail (#9778).
+  /// The column-mode reservation at the viewport's left edge: the rail pill's
+  /// [_ShellLayout.chromeMargin] inset, its drawn width (the rail and its
+  /// dock's border on each side), and one more margin before the panels.
+  static const double railGutter =
+      _ShellLayout.chromeMargin * 2 +
+      _ShellLayout.railWidth +
+      WorkspaceDock.borderWidth * 2;
+
+  /// The mirror of [railGutter] at the right edge: the cluster's inset, its
+  /// width, and one more margin before the panels, so a right panel sits as
+  /// far from the cluster as a left panel from the rail (#9778).
   static const double clusterGutter =
       _ShellLayout.chromeMargin * 2 + WorldUserCluster.minWidth;
 
@@ -485,7 +493,7 @@ class WorkspaceShell extends StatelessWidget {
                               child: SpacesNavigationRail(
                                 state: state,
                                 showNavRail: l.navRail,
-                                naviRailWidth: FluffyThemes.navRailWidth + 1.0,
+                                naviRailWidth: _ShellLayout.railWidth,
                                 activeSpaceId: activeSpaceIdFor(state.uri),
                               ),
                             ),
@@ -1293,6 +1301,9 @@ class _ShellLayout {
   /// top-right cluster), so they inset from the viewport identically.
   static const double chromeMargin = 12.0;
 
+  /// The column-mode rail's width inside its dock's border.
+  static const double railWidth = FluffyThemes.navRailWidth + 1.0;
+
   /// Height reserved for the narrow analytics bar when placing content below
   /// it: the bar's top margin ([chromeMargin]) plus its real rendered height
   /// ([WorldAnalyticsBar.expandedHeight]). Derived, not guessed — an earlier
@@ -1497,13 +1508,9 @@ class _ShellLayout {
     // world_v2: the rail is vertical-left in column mode and a bottom bar in
     // narrow mode, so it only offsets the canvas in column mode. The left inset
     // is just the rail now — there is no route-driven left card to reserve for.
-    final railWidth = isColumnMode && navRail
-        ? (FluffyThemes.navRailWidth + 1.0)
+    final columnWidth = isColumnMode && navRail
+        ? WorkspaceShell.railGutter
         : 0.0;
-    // The rail floats over the map in its dock pill, inset by [chromeMargin] on
-    // each side; reserve that margin so left panels and the camera padding clear
-    // it.
-    final columnWidth = railWidth == 0 ? 0.0 : railWidth + chromeMargin * 2;
 
     final activeSpaceId = activeSpaceIdFor(state.uri);
 
