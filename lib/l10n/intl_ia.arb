@@ -1287,13 +1287,11 @@
     "editCourseLater": "Tu pote modificar le titulo del curso, descriptiones, e imagine del curso postea.",
     "createCourse": "Create un curso",
     "stats": "Statisticas",
-    "createGroupChat": "Create un chat de grupo",
     "editCourse": "Modificar le curso",
     "inviteDesc": "Per nomine de usator, per codice o ligamine",
     "editCourseDesc": "Ici tu pote modificar le titulo del curso, description, etc.",
     "permissionsDesc": "Configura le permissiones como qui pote invitar usatores, mandar message, crear chats, etc.",
     "accessDesc": "Tu pote face tu curso aperte al mundo! O, face tu curso private e secure.",
-    "createGroupChatDesc": "Dove le sessiones de activitate comencia e termina, le chats de grupo remanera aperte pro communication routine.",
     "deleteDesc": "Solo le administratores pote delere un curso. Iste es un action destructive que remove tote le usatores e delere tote le chats selectate in le curso. Procede con cautela.",
     "whatNow": "Que face ora?",
     "chooseNextActivity": "Selige tu proxime activitate!",
@@ -6830,10 +6828,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6851,10 +6845,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

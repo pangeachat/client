@@ -3491,13 +3491,11 @@
     "editCourseLater": "Sie können den Titel, die Beschreibungen und das Kursbild später bearbeiten.",
     "createCourse": "Kurs erstellen",
     "stats": "Statistiken",
-    "createGroupChat": "Gruppenchats erstellen",
     "editCourse": "Kurs bearbeiten",
     "inviteDesc": "Per Benutzername, Code oder Link",
     "editCourseDesc": "Hier können Sie den Kurstitel, die Beschreibung usw. bearbeiten.",
     "permissionsDesc": "Berechtigungen festlegen, z. B. wer Einladungen senden, Nachrichten schicken, Chats erstellen kann usw.",
     "accessDesc": "Sie können Ihren Kurs für die Welt öffnen! Oder machen Sie Ihren Kurs privat und sicher.",
-    "createGroupChatDesc": "Während Aktivitätssitzungen starten und enden, bleiben Gruppenchats für die routinemäßige Kommunikation offen.",
     "deleteDesc": "Nur Administratoren können einen Kurs löschen. Dies ist eine zerstörerische Aktion, die alle Benutzer entfernt und alle ausgewählten Chats im Kurs löscht. Bitte vorsichtig vorgehen.",
     "whatNow": "Was jetzt?",
     "chooseNextActivity": "Wählen Sie Ihre nächste Aktivität!",
@@ -6098,10 +6096,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6119,10 +6113,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

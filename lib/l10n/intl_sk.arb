@@ -2316,13 +2316,11 @@
     "editCourseLater": "Môžete neskôr upraviť názov kurzu, popisy a obrázok kurzu.",
     "createCourse": "Vytvoriť kurz",
     "stats": "Štatistiky",
-    "createGroupChat": "Vytvoriť skupinový chat",
     "editCourse": "Upraviť kurz",
     "inviteDesc": "Podľa používateľského mena, kódu alebo odkazu",
     "editCourseDesc": "Tu môžete upraviť názov kurzu, popis atď.",
     "permissionsDesc": "Nastavte oprávnenia, ako kto môže pozvať používateľov, posielať správy, vytvárať chaty atď.",
     "accessDesc": "Môžete spraviť svoj kurz otvorený svetu! Alebo, urobiť svoj kurz súkromným a zabezpečeným.",
-    "createGroupChatDesc": "Kde začínajú a končia aktivity, skupinové chaty zostanú otvorené na bežnú komunikáciu.",
     "deleteDesc": "Iba správcovia môžu vymazať kurz. Ide o deštruktívnu akciu, ktorá odstráni všetkých používateľov a vymaže všetky vybrané chaty v kurze. Postupujte opatrne.",
     "whatNow": "Čo teraz?",
     "chooseNextActivity": "Vyberte svoju ďalšiu aktivitu!",
@@ -6839,10 +6837,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6860,10 +6854,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

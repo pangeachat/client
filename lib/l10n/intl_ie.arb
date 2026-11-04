@@ -3014,13 +3014,11 @@
     "editCourseLater": "Tu pote editar le titulo, descriptiones e imagine del cors plus tarde.",
     "createCourse": "Createar cors",
     "stats": "Statisticas",
-    "createGroupChat": "Createar chat de gruppo",
     "editCourse": "Editar cors",
     "inviteDesc": "Per nomine de usator, per codice o ligamine",
     "editCourseDesc": "Ici tu pote editar le titulo, description, etc. de le cors.",
     "permissionsDesc": "Stabilir permissiones como qui pote invitar usatores, mandar messages, crear chats, etc.",
     "accessDesc": "Tu pote face tu cors aperta al mundo! O, face tu cors private e secur.",
-    "createGroupChatDesc": "Dum que le sessiones de activitate comencia e termina, le chat de gruppo remanera aperta pro communication routine.",
     "deleteDesc": "Solmen administratores pote deletar un cors. Iste es un action destructive que remove tote usatores e delete tote le chats selectate in le cors. Procede con cautela.",
     "whatNow": "Que ora?",
     "chooseNextActivity": "Selige tu proxime activitate!",
@@ -6526,10 +6524,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6547,10 +6541,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
