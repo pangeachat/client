@@ -5,7 +5,7 @@ import 'package:fluffychat/pangea/common/utils/map_tiles.dart';
 
 /// A host, or group of hosts, the app needs to reach. A network filter blocks
 /// the app one category at a time. See connection-status.instructions.md,
-/// "Hosts the app needs".
+/// "Servers the app needs".
 ///
 /// When the app starts to depend on a new host, add it to a category here, so
 /// the check covers it and the domain list shown to IT staff names it.

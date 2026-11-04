@@ -14,7 +14,7 @@ import 'package:fluffychat/features/connection_status/network_verdict.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// What the connection banner says. See connection-status.instructions.md,
-/// "Losing the connection".
+/// "What the user sees" and "Reconnecting".
 enum ConnectionStatus {
   connected,
 
