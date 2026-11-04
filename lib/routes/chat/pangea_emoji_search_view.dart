@@ -1,20 +1,107 @@
 import 'package:flutter/material.dart';
 
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+import 'package:emoji_picker_flutter/locales/default_emoji_set_locale.dart';
+
+import 'package:fluffychat/features/languages/language_model.dart';
 
 class PangeaEmojiSearchView extends SearchView {
   const PangeaEmojiSearchView(
     super.config,
     super.state,
     super.showEmojiView, {
+    required this.targetLanguage,
     super.key,
   });
+
+  /// Search also matches emojis by their keywords in this language.
+  final LanguageModel? targetLanguage;
 
   @override
   PangeaEmojiSearchViewState createState() => PangeaEmojiSearchViewState();
 }
 
-class PangeaEmojiSearchViewState extends SearchViewState {
+class PangeaEmojiSearchViewState
+    extends SearchViewState<PangeaEmojiSearchView> {
+  /// The language [getDefaultEmojiLocale] answers with for a language it has
+  /// no keywords in.
+  static const _fallbackKeywordsLanguageCode = 'en';
+
+  String? _targetKeywordsLanguageCode;
+  Map<String, Set<String>> _targetKeywordsByEmoji = const {};
+
+  /// Not [EmojiPickerUtils.searchEmoji]: it keeps the first emoji set it is
+  /// given for the session, so no second or changed language reaches it.
+  @override
+  void onTextInputChanged(String text) {
+    final matches = _search(text);
+    setState(() {
+      links.clear();
+      results
+        ..clear()
+        ..addAll(matches);
+    });
+  }
+
+  /// The picker's emojis, once each and in picker order, that are [text] or
+  /// have a keyword starting with each word of it, in either language.
+  List<Emoji> _search(String text) {
+    final searchWords = text
+        .toLowerCase()
+        .split(RegExp(r'\s+'))
+        .where((word) => word.isNotEmpty)
+        .toSet();
+    if (searchWords.isEmpty) return [];
+
+    final targetKeywordsByEmoji = _targetKeywords();
+    final matchedEmojis = <String>{};
+    final matches = <Emoji>[];
+    for (final category in widget.state.categoryEmoji) {
+      if (category.category == Category.RECENT) continue;
+      for (final emoji in category.emoji) {
+        final keywords = {
+          ...emoji.keywords.map((keyword) => keyword.toLowerCase()),
+          ...?targetKeywordsByEmoji[emoji.emoji],
+        };
+        final isMatch =
+            emoji.emoji == text.trim() ||
+            searchWords.every(
+              (word) => keywords.any((keyword) => keyword.startsWith(word)),
+            );
+        if (isMatch && matchedEmojis.add(emoji.emoji)) matches.add(emoji);
+      }
+    }
+    return matches;
+  }
+
+  Map<String, Set<String>> _targetKeywords() {
+    final locale = widget.targetLanguage?.locale;
+    if (locale?.languageCode != _targetKeywordsLanguageCode) {
+      _targetKeywordsLanguageCode = locale?.languageCode;
+      _targetKeywordsByEmoji = locale == null
+          ? const {}
+          : _keywordsByEmoji(locale);
+    }
+    return _targetKeywordsByEmoji;
+  }
+
+  /// The package's keywords in [locale]'s language, by emoji. A language it
+  /// has no keywords in adds none, rather than its English fallback.
+  static Map<String, Set<String>> _keywordsByEmoji(Locale locale) {
+    final emojiSet = getDefaultEmojiLocale(locale);
+    if (identical(emojiSet, emojiSetEnglish) &&
+        locale.languageCode != _fallbackKeywordsLanguageCode) {
+      return const {};
+    }
+    return {
+      for (final category in emojiSet)
+        for (final emoji in category.emoji)
+          emoji.emoji: emoji.keywords
+              .map((keyword) => keyword.toLowerCase())
+              .toSet(),
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
