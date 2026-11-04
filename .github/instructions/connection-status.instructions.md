@@ -9,6 +9,8 @@ When the app cannot reach a server it needs, it tells the user the cause, and wh
 
 ## Servers the app needs
 
+Without each server, this stops working:
+
 - The chat server: everything, from sign-in to chat and courses.
 - The Pangea API, which includes the CMS: the language tools, activities and subscriptions.
 - The image server: activity and course images.
@@ -20,22 +22,15 @@ Without the chat server or the Pangea API the app stops; without any other serve
 
 ## Telling the causes apart
 
-The app tells three problems apart: the device is offline, the network blocks a server the app needs, or the server itself is down.
+To tell the causes apart, the app uses an address that phones and computers use to check that they are online, which filters let through.
 
-When the phone, computer or browser reports that the device is not connected to any network, the app shows that it is offline at once.
+The device is offline when the phone, computer or browser says it has no network, or when that address fails too. When messages stop arriving from the chat server but that address works, the app treats the chat server as down.
 
-Otherwise, when a request fails, the app checks the server it was meant for:
+A server is blocked when it refuses the connection, or another site answers in its place, while that address works. A server that answers at all, even with an error, or is only slow, is not blocked. Our own servers, the chat server and the Pangea API, refuse connections for a minute or more while we update them, so a refusal from either counts as a block only after three minutes.
 
-- If the server replies, even with an error, or does not reply within a few seconds, the network is not blocking it.
-- If the server refuses the connection, or another site replies in its place, the app asks a neutral address that filters let through. If that fails too, the device is offline. If it replies, the network is blocking the server.
+On the web, the app cannot see a filter's block page, so it misses filters that show one instead of refusing the connection.
 
-Our own servers, the chat server and the Pangea API, are the exception. A deploy makes them refuse connections for a minute or more, as a filter does. So when one of them refuses, the app first treats it as an outage and asks again every 30 seconds. If the server still refuses after three minutes, the app concludes that the network is blocking it.
-
-When messages stop arriving from the chat server, the app also asks the neutral address. If it replies, the banner says the app can't reach Pangea Chat. If not, it says the device is offline.
-
-While the app is in the background, out of sight, nothing it sees counts, because the device pauses its requests and they fail as if refused. On the web, the browser hides who answered, so only a refused connection counts as a block, and a filter that shows its own block page is missed.
-
-**Before sign-in.** With no messages to watch, the banner relies on whether the device is connected to a network and on the check a failed sign-in starts. A failed sign-in that cannot reach the chat server says so at once, so nobody waits three minutes to learn that something is wrong; the sign-in form still shows its own error.
+**Before sign-in.** With no messages to watch, the banner relies on the device's network status and on failed sign-ins. It says at once when a sign-in cannot reach the chat server, so nobody waits three minutes to learn that something is wrong; the sign-in form still shows its own error.
 
 ## What the user sees
 
@@ -48,24 +43,24 @@ Either banner can be dismissed, and comes back when its news changes. An outage 
 
 ### A blocked network
 
-The guidance tells a user on a phone (the iOS and Android apps, and phone browsers) to turn off Wi-Fi and use mobile data, and a user on any other device to use a phone's hotspot. A section for everyone, so the app need not know who is a teacher, gives IT staff the domains to allowlist, with a copy button.
+The guidance tells a user on a phone (the iOS and Android apps, and phone browsers) to turn off Wi-Fi and use mobile data, and a user on any other device to use a phone's hotspot. A section for everyone gives IT staff the domains to allow, so the app need not know who is a teacher.
 
 When only another server is blocked, its feature shows a short note in its place, in an activity or on the world map, that opens the same guidance, and the rest of the screen works. On the web, a blocked Google or Apple sign-in shows a dialog that offers email sign-up instead ([signup-and-login](signup-and-login.instructions.md)).
 
 ### Practice while you wait
 
-Both banners offers vocab practice, which runs offline ([practice-exercises](practice-exercises.instructions.md#offline-practice)), to a signed-in learner the app does not know to be unsubscribed, with a full session's worth of words whose meanings are saved on the device, unless practice is in progress or open.
+Both banners offer vocab practice, which runs offline ([practice-exercises](practice-exercises.instructions.md#offline-practice)), to a signed-in learner the app does not know to be unsubscribed, with a full session's worth of words whose meanings are saved on the device, unless practice is in progress or open.
 
 ## Repair
 
 ### Reconnecting
 
-When the connection to the chat server returns, the connection banner says "Back online" for a few seconds. A block clears once a request to its server succeeds, and a network change runs the check again, so a user who switches to mobile data carries on without restarting. The map is the exception: the browser can show a saved tile on a network that blocks the map, so a tile that loads starts a check instead.
+When the connection to the chat server returns, the connection banner says "Back online" for a few seconds. A block clears once a request to its server succeeds, and a network change runs the check again, so a user who switches to mobile data carries on without restarting. The map is the exception: a tile that loads may come from the browser's saved copy, so it starts a check instead.
 
 ### Reporting to the team
 
-**Asking Pangea for help.** The guidance ends with the user's email, filled in from the account when the app has one, and an **Ask Pangea for help** button. The request reaches support@pangea.chat as a CMS form submission ([form-submissions](../../../cms/.github/instructions/form-submissions.instructions.md#network-help-requests) lists what it carries). The team is emailed about a block only when someone asks, which keeps the volume low. Each account can send at most one a day.
+**Asking Pangea for help.** The guidance ends with an **Ask Pangea for help** button, with the user's email filled in when the app knows it. The request reaches support@pangea.chat through the CMS ([form-submissions](../../../cms/.github/instructions/form-submissions.instructions.md#network-help-requests) lists what it carries). Only these requests email the team, which keeps the volume low, and each account can send one a day.
 
-When the CMS is blocked too, the request waits on the device for the next good connection, and the user sees it waiting, then sent. If the CMS answers with an error, the guidance asks the user to email support@pangea.chat. The request stays on the device, and the app tries to send it once more the next time it starts.
+If the CMS is blocked too, the request waits on the device until it can be sent, and the user sees it waiting, then sent. If the CMS answers with an error, the user is asked to email support@pangea.chat, and the app tries to send the request once more the next time it starts.
 
-**Sentry.** Each block the app finds reports one Sentry error per server per session, tagged with the user's courses, so one class's reports gather under its course, which leads to its teacher. It adds no personal data beyond what every client event carries (the account ID and, on the web, the IP address), and not the network's name. A lost connection on an online device reports one Sentry warning per session; an offline device reports nothing, because there is nothing for us to fix.
+**Sentry.** The app reports each blocked server to Sentry once per session, tagged with the user's courses, so a class's reports lead to its teacher. It adds no personal data beyond the account ID and, on the web, the IP address that every report carries, and not the network's name. A lost connection on an online device is reported once per session; an offline device reports nothing, because there is nothing for us to fix.
