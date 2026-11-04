@@ -28,6 +28,7 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import '../activity_session_fixtures.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
 import 'course_missions_fixtures.dart';
@@ -73,7 +74,11 @@ void main() {
         );
     await GetStorage.init('env_override');
     dotenv.testLoad(
-      mergeWith: {'SYNAPSE_URL': 'https://fakeServer.notExisting'},
+      mergeWith: {
+        'SYNAPSE_URL': 'https://fakeServer.notExisting',
+        // A discussion room is one the bot created.
+        'BOT_NAME': testDiscussionBotId,
+      },
     );
     SharedPreferences.setMockInitialValues({});
     store = await AppSettings.init(loadWebConfigFile: false);
@@ -109,8 +114,9 @@ void main() {
 
   LearningObjective lo(String id) => LearningObjective(id: id, objective: id);
 
-  /// A joined two-Mission course: lo-1 → a1, lo-2 → b1.
-  Room stubCourse() {
+  /// A joined two-Mission course: lo-1 → a1, lo-2 → b1. [discussionB1]
+  /// makes b1 a discussion.
+  Room stubCourse({bool discussionB1 = false}) {
     QuestRepo.resetOutlineCacheForTest();
     QuestRepo.debugBuildOutline = (id, {courseRoomId}) async => Result.value(
       QuestOutline(
@@ -131,7 +137,14 @@ void main() {
           ),
           QuestObjectiveGroup(
             objective: lo('lo-2'),
-            activities: [QuestActivity(activityId: 'b1', plan: plan('b1'))],
+            activities: [
+              QuestActivity(
+                activityId: 'b1',
+                plan: discussionB1
+                    ? discussionActivityPlan(activityId: 'b1')
+                    : plan('b1'),
+              ),
+            ],
           ),
         ],
       ),
@@ -162,12 +175,13 @@ void main() {
     required String location,
     required bool missionCard,
     String? missionId,
+    bool discussionB1 = false,
   }) async {
     tester.view.physicalSize = const Size(1280, 1600);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
-    final room = stubCourse();
+    final room = stubCourse(discussionB1: discussionB1);
     final loader = QuestObjectivesLoader(client: client);
     addTearDown(loader.dispose);
     router = GoRouter(
@@ -269,5 +283,28 @@ void main() {
     expect(activityInfoFor(uri)?.fromCourseCard, isTrue);
     expect(activityInfoFor(uri)?.fromCoursePlan, isTrue);
     expect(selectedMissionIdFor(uri), 'lo-2');
+  });
+
+  testWidgets('a discussion the learner has joined opens its room, with its '
+      'Mission in the URL', (tester) async {
+    final discussion = discussionRoom(
+      client,
+      activityId: 'b1',
+      seats: [discussionSeat(client.userID!)],
+    );
+    client.rooms.add(discussion);
+    await pumpList(
+      tester,
+      location: '/?$course&mission=lo-2',
+      missionCard: true,
+      missionId: 'lo-2',
+      discussionB1: true,
+    );
+
+    final uri = await tapActivity(tester, 'The Market');
+    expect(activeRoomIdFromPanels(uri), discussion.id);
+    expect(activityInfoFor(uri), isNull);
+    expect(selectedMissionIdFor(uri), 'lo-2');
+    expect(activeSpaceIdFor(uri), spaceId);
   });
 }
