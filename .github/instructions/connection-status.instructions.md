@@ -11,26 +11,22 @@ When the app cannot reach a server it needs, it tells the user the cause, and wh
 
 Without each server, this stops working:
 
-- The chat server: everything, from sign-in to chat and courses.
-- The Pangea API, which includes the CMS: the language tools, activities and subscriptions.
-- The image server: activity and course images.
+- Chat server: everything, from sign-in to chat and courses.
+- Pangea API, which includes the CMS: the language tools, activities and subscriptions.
+- Image server: activity and course images.
 - YouTube: activity videos.
-- The map server: the world map.
-- Google or Apple sign-in ([signup-and-login](signup-and-login.instructions.md)): signing in that way; email sign-in still works.
-
-Without the chat server or the Pangea API the app stops; without any other server, only its feature breaks.
+- Map server: the world map.
+- SSO sign-in ([signup-and-login](signup-and-login.instructions.md)): signing in that way; email sign-in still works.
 
 ## Telling the causes apart
 
-To tell the causes apart, the app uses an address that phones and computers use to check that they are online, which filters let through.
+The device is offline when the phone, computer or browser says it has no network, or when a request to a neutral address fails too. When messages stop arriving from the chat server, but the neutral address works, the app treats the chat server as down.
 
-The device is offline when the phone, computer or browser says it has no network, or when that address fails too. When messages stop arriving from the chat server but that address works, the app treats the chat server as down.
-
-A server is blocked when it refuses the connection, or another site answers in its place, while that address works. A server that answers at all, even with an error, or is only slow, is not blocked. Our own servers, the chat server and the Pangea API, refuse connections for a minute or more while we update them, so a refusal from either counts as a block only after three minutes.
+A server is blocked when it refuses the connection, or another site answers in its place, while the neutral address works. A server that answers at all, even with an error, or is only slow, is not blocked. Our own servers, the chat server and the Pangea API, refuse connections for a minute or more while we update them, so a refusal from either counts as a block only after three minutes.
 
 On the web, the app cannot see a filter's block page, so it misses filters that show one instead of refusing the connection.
 
-**Before sign-in.** With no messages to watch, the banner relies on the device's network status and on failed sign-ins. It says at once when a sign-in cannot reach the chat server, so nobody waits three minutes to learn that something is wrong; the sign-in form still shows its own error.
+**Before sign-in.** With no messages to watch, the banner relies on the device's network status and on failed sign-ins. It says at once when a sign-in cannot reach the chat server, so nobody waits three minutes to learn that something is wrong.
 
 ## What the user sees
 
