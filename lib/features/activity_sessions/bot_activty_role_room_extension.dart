@@ -32,6 +32,18 @@ bool isTwoPersonBotSession(
   String botUserId,
 ) => roleCount == 2 && botHoldsLiveSeat(assignedRoles, botUserId);
 
+/// Whether [e] is the homeserver refusing to invite [botUserId] because the
+/// bot has already joined. A session started with the bot can invite it twice:
+/// the launcher's invite runs behind the chat (#9297), so the play-with-bot
+/// dialog can find no bot yet and invite it as well. Whichever invite lands
+/// second is refused this way, and the refusal means the bot is in, which is
+/// what both invites were for (CLIENT-F12, CLIENT-F37). Synapse marks it only
+/// by this message: the errcode is M_FORBIDDEN, as for a real refusal.
+bool isBotAlreadyJoinedRefusal(Object e, String botUserId) =>
+    e is MatrixException &&
+    e.error == MatrixError.M_FORBIDDEN &&
+    e.errorMessage == '$botUserId is already in the room.';
+
 /// pangea-bot takes a waiting session's last open seat this long after the
 /// session was created, and only in sessions younger than [botFillMaxAge]
 /// (OPEN_SEAT_TIMEOUT_MS and MAX_SESSION_AGE_MS in its open-session sweep).

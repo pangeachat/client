@@ -135,6 +135,14 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     // that instrumented listening and heard none has to say it was watching, or
     // its zero cannot be told apart from an unknown.
     _audioBuffer?.start();
+    final exposure = ListeningExposureBuffer.forAccount(_accountUserId);
+    exposure?.onAudioEntry = () {
+      final lang = _l2OrNull;
+      // Off the playback path. With no L2 yet the entry waits for a later drain.
+      if (lang != null) unawaited(Future(() => _storeAudioEntries(lang)));
+    };
+    // Whatever was recorded before this service started.
+    exposure?.onAudioEntry?.call();
     _periodicTimer?.cancel();
     _periodicTimer = Timer.periodic(const Duration(minutes: 5), (_) {
       // Heartbeat flush of any open engagement span (no-op when none / dark).
@@ -314,6 +322,36 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     }
   }
 
+  /// The audio store in progress. Each store runs after the last, so a caller
+  /// that awaits one has every earlier entry on disk: the pre-logout save would
+  /// otherwise find the buffer empty mid-write and let the store be deleted.
+  Future<void> _audioStore = Future.value();
+
+  /// Moves held audio entries into the local store.
+  Future<void> _storeAudioEntries(LanguageModel language) =>
+      _audioStore = _audioStore.then((_) => _storeHeldAudioEntries(language));
+
+  /// Never throws, or it would break the chain above: a failed write leaves the
+  /// entries held for the next drain.
+  Future<void> _storeHeldAudioEntries(LanguageModel language) async {
+    final buffer = ListeningExposureBuffer.forAccount(_accountUserId);
+    if (buffer == null) return;
+    final entries = buffer.drainAudioEntries();
+    if (entries.isEmpty) return;
+    try {
+      await dataService.storeAudioEntries(entries, language.langCodeShort);
+    } catch (err, s) {
+      buffer.restoreAudioEntries(entries);
+      ErrorHandler.logErrorOnce(
+        key: "audio-entries-store-failed",
+        e: err,
+        s: s,
+        data: {"rows": entries.length},
+        level: SentryLevel.warning,
+      );
+    }
+  }
+
   /// Moves any buffered listening exposure into the local store.
   ///
   /// Deliberately called from [sendLocalAnalyticsToAnalyticsRoom] rather than
@@ -322,6 +360,7 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   /// the one that matters most, the pre-logout save in `p_logout`, which is the
   /// last moment a valid bearer exists before the store is deleted.
   Future<void> _drainListeningExposure(LanguageModel language) async {
+    await _storeAudioEntries(language);
     final buffer = ListeningExposureBuffer.forAccount(_accountUserId);
     if (buffer == null || buffer.isEmpty) return;
     // Only this language's rows. The buffer may be holding exposure in others —

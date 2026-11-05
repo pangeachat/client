@@ -2888,13 +2888,11 @@
     "editCourseLater": "Vėliau galite redaguoti šablono pavadinimą, aprašymus ir kurso vaizdą.",
     "createCourse": "Sukurti kursą",
     "stats": "Statistika",
-    "createGroupChat": "Sukurti grupinį pokalbį",
     "editCourse": "Redaguoti kursą",
     "inviteDesc": "Per vartotojo vardą, kodą ar nuorodą",
     "editCourseDesc": "Čia galite redaguoti kurso pavadinimą, aprašymą ir kt.",
     "permissionsDesc": "Nustatykite leidimus, pvz., kas gali pakviesti naudotojus, siųsti žinutes, kurti pokalbius ir kt.",
     "accessDesc": "Galite padaryti savo kursą atvirą visiems! Arba, padaryti jį privačiu ir saugiu.",
-    "createGroupChatDesc": "Nors veiklos sesijos prasideda ir baigiasi, grupiniai pokalbiai liks atviri kasdieniam bendravimui.",
     "deleteDesc": "Tik tik administratori gali ištrinti kursą. Tai yra destruktyvus veiksmas, kuris pašalina visus naudotojus ir ištrina visus pasirinktus pokalbius kurse. Būkite atsargūs.",
     "whatNow": "Kas dabar?",
     "chooseNextActivity": "Pasirinkite savo kitą veiklą!",
@@ -6675,10 +6673,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6696,10 +6690,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

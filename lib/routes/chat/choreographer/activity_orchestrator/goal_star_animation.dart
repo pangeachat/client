@@ -30,7 +30,7 @@ class GoalStarAnimation extends StatefulWidget {
     required String endTarget,
     required VoidCallback onClose,
   }) {
-    OverlayUtil.showOverlay(
+    final shown = OverlayUtil.showOverlay(
       context: context,
       child: GoalStarAnimation(
         overlayKey: overlayKey,
@@ -45,6 +45,9 @@ class GoalStarAnimation extends StatefulWidget {
         overlayKey: overlayKey,
       ),
     );
+    // A refused star (a tutorial is up, or the last star is still flying)
+    // never mounts, so its dispose never calls onClose.
+    if (!shown) onClose();
   }
 }
 

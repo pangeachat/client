@@ -1177,13 +1177,11 @@
     "editCourseLater": "你可以稍後編輯模板標題、描述同課程圖片。",
     "createCourse": "建立課程",
     "stats": "統計數據",
-    "createGroupChat": "建立群組聊天",
     "editCourse": "編輯課程",
     "inviteDesc": "按用戶名、代碼或連結邀請",
     "editCourseDesc": "喺呢度你可以編輯課程標題、描述等。",
     "permissionsDesc": "設定權限，例如邊個可以邀請用戶、發送訊息、建立聊天等。",
     "accessDesc": "你可以將課程開放畀全世界！或者，將課程設為私密同安全。",
-    "createGroupChatDesc": "活動會議開始同結束，但群組聊天會保持開放，用於日常溝通。",
     "deleteDesc": "只有管理員可以刪除課程。呢個係破壞性操作，會移除所有用戶同刪除課程內所有選擇嘅聊天。請小心操作。",
     "whatNow": "而家點？",
     "chooseNextActivity": "揀你下一個活動！",
@@ -6482,10 +6480,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6503,10 +6497,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

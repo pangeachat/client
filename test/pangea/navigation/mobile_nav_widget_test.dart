@@ -444,6 +444,48 @@ void main() {
     );
 
     testWidgets(
+      'a course reopened after a session started from its activity comes '
+      'back expanded (#9632)',
+      (tester) async {
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityContextId: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        final peek = cavityHeightOf(tester);
+
+        await tester.tap(find.text('Course card'));
+        await tester.pumpAndSettle();
+        final expanded = cavityHeightOf(tester);
+        expect(expanded, greaterThan(peek));
+
+        // The activity takes the course's cavity, then the session's chat
+        // covers everything and drops the widget; closing the session seats
+        // the course card again under the same context.
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Activity plan'),
+          cavityKey: 'activity-x',
+          cavityContextId: 'course-a',
+        );
+        await unmountNav(tester);
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityContextId: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        expect(cavityHeightOf(tester), closeTo(expanded, 1.0));
+      },
+    );
+
+    testWidgets(
       'a course genuinely closed reopens at peek, not its last height (#7609)',
       (tester) async {
         await pumpNav(

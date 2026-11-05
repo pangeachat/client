@@ -10,6 +10,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/bot/bot_client_extension.dart';
+import 'package:fluffychat/features/connection_status/network_help_repo.dart';
 import 'package:fluffychat/features/keyboards/keyboard_prompt_local_store.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
@@ -124,6 +125,9 @@ class PangeaController {
     // one's XP and records, and its progress record would be written from them
     // (#9681).
     MissionXpCache.instance.clear();
+    // And the help-request limit is one a day per account, so the next
+    // account can ask for help with a filtered network (#9592).
+    unawaited(NetworkHelpRepo.onSignOut());
     _languageSubscription?.cancel();
     _settingsSubscription?.cancel();
     _joinSpaceSubscription?.cancel();

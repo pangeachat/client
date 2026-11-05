@@ -85,19 +85,18 @@ extension QuestsClientExtension on Client {
     return sessions;
   }
 
-  /// The activities of the learner's saved sessions whose language can't be
-  /// decided yet ([CourseLanguageScope.savedSessionAwaitingPlan]): their XP
-  /// joins [savedSessionsByActivity] once their plans load.
+  /// The activities of the learner's saved sessions whose plan hasn't loaded,
+  /// or expired from the cache and is reloading. Until it lands, the session's
+  /// goals count no XP ([sessionXp] reads them from the plan), and one not
+  /// filed under a language counts none at all
+  /// ([CourseLanguageScope.savedSessionInTargetLanguage]).
   Set<String> get savedSessionActivitiesAwaitingPlan {
-    final inLanguage = CourseLanguageScope.savedSessionIdsInTargetLanguage(
-      this,
-    );
     final awaiting = <String>{};
     for (final room in rooms) {
       final activityId = room.activityId;
       if (activityId == null ||
           !room.hasArchivedActivity ||
-          !CourseLanguageScope.savedSessionAwaitingPlan(room, inLanguage)) {
+          room.activityPlan != null) {
         continue;
       }
       awaiting.add(activityId);

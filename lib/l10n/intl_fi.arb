@@ -3448,13 +3448,11 @@
     "editCourseLater": "Voit muokata mallin otsikkoa, kuvauksia ja kurssikuvaa myöhemmin.",
     "createCourse": "Luo kurssi",
     "stats": "Tilastot",
-    "createGroupChat": "Luo ryhmäkeskustelu",
     "editCourse": "Muokkaa kurssia",
     "inviteDesc": "Kutsulla käyttäjänimellä, koodilla tai linkillä",
     "editCourseDesc": "Täällä voit muokata kurssin otsikkoa, kuvausta jne.",
     "permissionsDesc": "Aseta oikeudet, kuten kuka voi kutsua käyttäjiä, lähettää viestejä, luoda keskusteluja jne.",
     "accessDesc": "Voit tehdä kurssistasi avoimen maailmalle! Tai tehdä siitä yksityisen ja turvallisen.",
-    "createGroupChatDesc": "Sillä aikaa kun aktiviteettisessiot alkavat ja päättyvät, ryhmäkeskustelut pysyvät avoimina säännöllistä viestintää varten.",
     "deleteDesc": "Vain ylläpitäjät voivat poistaa kurssin. Tämä on tuhoava toimenpide, joka poistaa kaikki käyttäjät ja poistaa kaikki valitut keskustelut kurssin sisällä. Toimi varoen.",
     "whatNow": "Mitä nyt?",
     "chooseNextActivity": "Valitse seuraava toimintosi!",
@@ -6065,10 +6063,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6086,10 +6080,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

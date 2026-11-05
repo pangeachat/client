@@ -147,6 +147,13 @@ void main() {
         SessionPanelToken(RoomTokenParam.parse('!room')).screenName,
         'session',
       );
+      // A Mission's session names the same screen as the usual one.
+      expect(
+        AnalyticsPracticePanelToken(
+          AnalyticsPracticeTokenParam.parse('vocab/lo-1'),
+        ).screenName,
+        'practice:vocab',
+      );
     });
   });
 

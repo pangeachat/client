@@ -3470,13 +3470,11 @@
     "editCourseLater": "Eman dezakezu geroago txantiloiaren izena, deskribapenak eta ikastaroaren irudia editatzeko.",
     "createCourse": "Sortu ikastaroa",
     "stats": "Datuak",
-    "createGroupChat": "Sortu talde txat bat",
     "editCourse": "Editatu ikastaroa",
     "inviteDesc": "Erabiltzaile-izena, kodea edo esteka bidez",
     "editCourseDesc": "Hemen ikastaroaren izena, deskribapena, eta abar editatu ditzakezu",
     "permissionsDesc": "Ezarri baimenak, hala nola nor gonbidatu dezakeen erabiltzaileak, mezularitza bidali, txateak sortu, eta abar",
     "accessDesc": "Zure ikastaroa mundu osoari irekita egin dezakezu! Edo, ikastaroa pribatua eta segurua egin",
-    "createGroupChatDesc": "Ekintza saioak hasten eta bukatzen diren bitartean, talde txat hauek komunikazio erregularrerako irekita egongo dira",
     "deleteDesc": "Administratzaileek bakarrik ezabatu dezakete ikastaroa. Hau ekintza suntsitzailea da, erabiltzaile guztiak ezabatzen ditu eta ikastaroaren barruan aukeratutako txat guztiak ezabatzen ditu. Kontuz ibili",
     "whatNow": "Zer orain?",
     "chooseNextActivity": "Hurrengo jarduera aukeratu!",
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

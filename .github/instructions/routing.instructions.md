@@ -30,13 +30,16 @@ Learners use panels that open over one world map, on any screen size. Outside li
 ### Panels are independent
 
 - Chats and courses open to the left, analytics and settings to the right, so a chat stays open beside analytics. Gabby.
+- Analytics, practice and settings take the right side one at a time, so a learner sees what they just opened.
 - Closing one panel leaves the others open, so a learner can uncover the map and keep their chat. Choosing from the rail replaces only the left side. Gabby.
 - A detail opens beside its list and covers it only when space runs out, so nothing closes to make room. Gabby.
+- A right panel sits about as far from the cluster as a left panel sits from the rail, so neither side looks squeezed; a long count in the cluster can narrow that gap a little.
 - One live chat at a time, because two open copies of a chat overwrite each other. Gabby.
 
 ### Closing a panel: X or back arrow
 
 - A back arrow goes up one level; an X closes to reveal what is underneath. Will.
+- Closing or leaving a session started from an activity on the course card's Mission card or full plan reopens the card on that activity's Mission, because the activity took the card's place and the session took the activity's. A session opened any other way just reveals what is underneath.
 - The course never closes: a chevron moves it between card and bar without moving its neighbor, so the map always names its course. Gabby.
 - On a phone the chevron points where the sheet slides; on a wide screen, where nothing slides, down opens and up closes. Gabby.
 

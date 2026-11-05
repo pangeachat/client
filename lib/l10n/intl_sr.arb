@@ -2659,13 +2659,11 @@
     "editCourseLater": "Možete kasnije izmeniti naslov šablona, opise i sliku kursa.",
     "createCourse": "Kreiraj kurs",
     "stats": "Statistika",
-    "createGroupChat": "Kreiraj grupni chat",
     "editCourse": "Izmeni kurs",
     "inviteDesc": "Po korisničkom imenu, po kodu ili linku",
     "editCourseDesc": "Ovde možete izmeniti naslov kursa, opis, itd.",
     "permissionsDesc": "Postavite dozvole kao što su ko može pozvati korisnike, slati poruke, kreirati chatove, itd.",
     "accessDesc": "Možete učiniti svoj kurs otvorenim za sve! Ili, učiniti ga privatnim i sigurnim.",
-    "createGroupChatDesc": "Dok sesije aktivnosti počinju i završavaju, grupni chatovi će ostati otvoreni za rutinsku komunikaciju.",
     "deleteDesc": "Samo administratori mogu obrisati kurs. Ovo je destruktivna radnja koja uklanja sve korisnike i briše sve odabrane chatove unutar kursa. Budite oprezni.",
     "whatNow": "Шта сада?",
     "chooseNextActivity": "Изаберите следећу активност!",
@@ -6843,10 +6841,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6864,10 +6858,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

@@ -38,6 +38,7 @@ void main() {
       viewport: vp,
       isColumnMode: columnMode,
       railWidth: columnMode ? 105.0 : PanelAllocator.defaultRailWidth,
+      clusterGutter: WorkspaceShell.clusterGutter,
       left: [for (final t in lists.left) t.type.def],
       right: [for (final t in lists.right) t.type.def],
       focusHint: fh,

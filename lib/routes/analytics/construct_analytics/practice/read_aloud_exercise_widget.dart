@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics/listening_exposure_declaration.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/language_semantics.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/read_aloud_match.dart';
@@ -267,6 +268,7 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
                 roomId: exercise.roomId ?? '',
                 autoplay: _autoplayReference,
                 playbackSpeedController: widget.playbackSpeedController,
+                listeningCategory: DosageListeningCategory.practiceAudio,
                 exposure: ListeningExposureDeclaration.ofTokens(
                   exercise.exampleTokens,
                   langCode: exercise.langCode,
@@ -289,7 +291,9 @@ class _ReadAloudExerciseWidgetState extends State<ReadAloudExerciseWidget> {
                   roomId: exercise.roomId ?? '',
                   autoplay: false,
                   playbackSpeedController: widget.playbackSpeedController,
-                  // The learner's own voice is not exposure to the words.
+                  // The learner's own voice is not exposure to the words, and
+                  // no listening category: hearing a take back is not listening,
+                  // like replaying one's own voice message.
                   exposure: const ListeningExposureDeclaration.exempt(
                     'the learner hearing their own read-aloud recording',
                   ),
@@ -365,6 +369,7 @@ class _ReadAloudPlayer extends StatelessWidget {
   final String roomId;
   final bool autoplay;
   final AudioPlaybackSpeedController playbackSpeedController;
+  final DosageListeningCategory? listeningCategory;
   final ListeningExposureDeclaration exposure;
   final String? heardTranscript;
 
@@ -377,6 +382,7 @@ class _ReadAloudPlayer extends StatelessWidget {
     required this.autoplay,
     required this.playbackSpeedController,
     required this.exposure,
+    this.listeningCategory,
     this.heardTranscript,
   });
 
@@ -402,8 +408,7 @@ class _ReadAloudPlayer extends StatelessWidget {
             matrixFile: file,
             autoplay: autoplay,
             playbackSpeedController: playbackSpeedController,
-            // No listening category, like the listening exercise's player: the
-            // shared-player practice surfaces stay dark until #8411 lands.
+            listeningCategory: listeningCategory,
             exposure: exposure,
           ),
         ),

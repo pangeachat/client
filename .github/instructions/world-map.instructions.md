@@ -47,6 +47,7 @@ Before any search or filter, the map shows **my L2, in the current viewport, col
 
 - Preferences joinable sessions across the learner's languages — their L1 and L2. (Support for multiple L1s and L2s is future work.)
 - Setting any pill or searching refines it; a one-tap **reset** returns every pill to "All".
+- Changing the target language in settings returns the map to this default for the new language: the search text clears and every pill goes back to "All", since they were chosen for the old language's activities. A level change in settings leaves them as they are.
 - When the view is empty, offer a **widen** affordance (zoom out, or clear any pills the learner set back to _All_) so it never dead-ends. Language is fixed by the learner's settings, so it is never a widen lever.
 
 ## Pin display

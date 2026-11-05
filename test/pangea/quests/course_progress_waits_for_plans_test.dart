@@ -15,6 +15,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
+import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
@@ -22,7 +23,6 @@ import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.d
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/quests/can_do_progress.dart';
-import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/course_progress_event.dart';
 import 'package:fluffychat/features/quests/course_progress_writer.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
@@ -33,6 +33,7 @@ import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
@@ -42,11 +43,11 @@ import '../analytics_data/analytics_fixtures.dart';
 import '../get_test_client.dart';
 
 /// The course progress check while a saved session's plan is loading
-/// (ADMIN-DASH-API-1W). A session the learner saved before saves were filed
-/// by language counts once its plan loads, and a loaded plan leaves the cache
-/// after an hour; a check in between saw its Missions without its XP and
-/// wrote that, and the check after the plan came back wrote it back, every
-/// hour the app stayed open.
+/// (ADMIN-DASH-API-1W). A saved session's goals come from its plan, and so
+/// does the language of one saved before saves were filed by language; a
+/// loaded plan leaves the cache after an hour, so a check in between saw its
+/// Missions without that XP and wrote that, and the check after the plan came
+/// back wrote it back, every hour the app stayed open.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -181,9 +182,10 @@ void main() {
     client.rooms.add(space);
   }
 
-  /// A saved session from before saves were filed by language: its state
-  /// holds only a reference to its plan, which loads from the backend.
-  void registerUnfiledSession() {
+  /// A saved session whose state holds only a reference to its plan, which
+  /// loads from the backend. Whether it is filed under a language is the
+  /// analytics room's ([analyticsRoomWithRecord]).
+  void registerSavedSession() {
     final room = Room(
       id: sessionId,
       client: client,
@@ -224,9 +226,33 @@ void main() {
     client.rooms.add(room);
   }
 
-  /// The learner's analytics room, holding the course's record at [xp].
-  Room analyticsRoomWithRecord(int xp) {
-    final room = Room(id: analyticsRoomId, client: client);
+  /// The learner's Spanish analytics room, holding the course's record at
+  /// [xp], and filing the session under Spanish when [filesSession].
+  Room analyticsRoomWithRecord(int xp, {bool filesSession = false}) {
+    final room = Room(
+      id: analyticsRoomId,
+      client: client,
+      membership: Membership.join,
+    );
+    room.setState(
+      stateEvent(
+        room,
+        type: EventTypes.RoomCreate,
+        content: {'type': PangeaRoomTypes.analytics, ModelKey.langCode: 'es'},
+      ),
+    );
+    if (filesSession) {
+      room.setState(
+        stateEvent(
+          room,
+          type: PangeaEventTypes.activityRoomIds,
+          content: {
+            AnalyticsConstants.roomIds: [sessionId],
+          },
+        ),
+      );
+    }
+    client.rooms.add(room);
     room.setState(
       stateEvent(
         room,
@@ -268,21 +294,21 @@ void main() {
     (path) => path.contains('/state/${PangeaEventTypes.courseProgress}'),
   );
 
-  test('the session waits for its plan, which the check knows', () async {
-    registerUnfiledSession();
+  test('the session waits for its plan, filed or not', () async {
+    registerSavedSession();
     expect(client.savedSessionActivitiesAwaitingPlan, {activityId});
-    final session = client.getRoomById(sessionId)!;
+    analyticsRoomWithRecord(0, filesSession: true);
     expect(
-      CourseLanguageScope.savedSessionAwaitingPlan(session, {sessionId}),
-      isFalse,
-      reason: 'a session filed under the language needs no plan',
+      client.savedSessionActivitiesAwaitingPlan,
+      {activityId},
+      reason: 'a filed session still has its goals in its plan',
     );
   });
 
   test('a lower figure is not written while the plan loads', () async {
     stubOutline();
     registerCourse();
-    registerUnfiledSession();
+    registerSavedSession();
     await readXp();
     // Written while the plan was loaded: the session's 300 and the word's 50.
     final analyticsRoom = analyticsRoomWithRecord(350);
@@ -294,10 +320,30 @@ void main() {
     expect(progressWrites(), isEmpty);
   });
 
+  test('a filed session\'s goals hold a lower figure too', () async {
+    stubOutline();
+    registerCourse();
+    registerSavedSession();
+    await readXp();
+    // Written while the plan was loaded: the session's 300, the word's 50, and
+    // two goals the plan lists for the learner's role. Filed, the session
+    // still counts while its plan reloads, but its goals don't.
+    final analyticsRoom = analyticsRoomWithRecord(
+      350 + 2 * kGoalXp,
+      filesSession: true,
+    );
+
+    await CourseProgressWriter(
+      readUses: (_) async => const [],
+    ).update(analyticsRoom, 'es');
+
+    expect(progressWrites(), isEmpty);
+  });
+
   test('a higher figure is written while the plan loads', () async {
     stubOutline();
     registerCourse();
-    registerUnfiledSession();
+    registerSavedSession();
     await readXp();
     final analyticsRoom = analyticsRoomWithRecord(20);
 

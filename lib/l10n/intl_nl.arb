@@ -3469,13 +3469,11 @@
     "editCourseLater": "U kunt de titel, beschrijvingen en cursusafbeelding later bewerken.",
     "createCourse": "Cursus maken",
     "stats": "Statistieken",
-    "createGroupChat": "Groepschat maken",
     "editCourse": "Cursus bewerken",
     "inviteDesc": "Door gebruikersnaam, code of link",
     "editCourseDesc": "Hier kunt u de cursusnaam, beschrijving, enz. bewerken.",
     "permissionsDesc": "Stel machtigingen in zoals wie gebruikers kan uitnodigen, berichten kan sturen, chats kan maken, enz.",
     "accessDesc": "U kunt uw cursus openstellen voor de wereld! Of, maak uw cursus privé en veilig.",
-    "createGroupChatDesc": "Aangezien activiteitensessies starten en eindigen, blijven groepschats open voor routinematige communicatie.",
     "deleteDesc": "Alleen beheerders kunnen een cursus verwijderen. Dit is een destructieve actie die alle gebruikers verwijdert en alle geselecteerde chats binnen de cursus verwijdert. Ga voorzichtig te werk.",
     "whatNow": "Wat nu?",
     "chooseNextActivity": "Kies je volgende activiteit!",
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

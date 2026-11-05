@@ -12,6 +12,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/languages/context_language_switch_target.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -174,6 +175,11 @@ class ActivitySessionStartView extends StatelessWidget {
                             controller.widget.roomId,
                           );
                           if (close != null) {
+                            // A session the course card opened reopens the
+                            // card, which claims focus (#9632).
+                            if (closeReopensCourseCard(uri, close)) {
+                              PanelEntryIntent.instance.armForSwap();
+                            }
                             GoRouter.of(context).go(close);
                           } else if (Navigator.of(context).canPop()) {
                             Navigator.of(context).pop();

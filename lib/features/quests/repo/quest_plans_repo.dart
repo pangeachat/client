@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/course_plans/courses/course_filter.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
@@ -61,6 +63,16 @@ class QuestPlansRepo {
   /// which [cover] checks first, so it replaces the failure.
   static final Set<String> _failedCovers = {};
 
+  /// Quests [cover] was asked for since the last cover read went out. They
+  /// are read together on the next microtask, so the avatars one frame builds
+  /// share one quest-plans read and one media read (#9569).
+  static final Set<String> _queuedCovers = {};
+  static Future<void>? _queuedCoverRead;
+
+  /// The most quests one cover read names. Each id adds about 70 characters
+  /// to the read's URL, and 50 keeps it under 4 KB.
+  static const int _coversPerRead = 50;
+
   /// The cover [cover] already knows for [questId], or null. Lets a widget
   /// paint a known cover on its first frame instead of after a future.
   static Uri? cachedCover(String questId) => _covers[questId];
@@ -70,27 +82,78 @@ class QuestPlansRepo {
     _covers.clear();
     _coverRequests.clear();
     _failedCovers.clear();
+    _queuedCovers.clear();
+    _queuedCoverRead = null;
   }
 
   /// The quest's cover image, the fallback a course room with no
   /// `m.room.avatar` shows (course-plans.instructions.md § Course avatar).
   /// Null means the quest has no cover, or the read failed; a failure is
   /// reported here and remembered for the session, so it is not read again
-  /// until the app restarts. Concurrent calls share one read.
+  /// until the app restarts. Concurrent calls share one read, and calls made
+  /// together are read together ([_queuedCovers]).
   static Future<Uri?> cover(String questId) {
     if (_covers.containsKey(questId)) return Future.value(_covers[questId]);
     if (_failedCovers.contains(questId)) return Future.value(null);
     // Block body on purpose: `remove` returns this very future, and a
     // whenComplete callback that returns a future is awaited — a self-wait.
-    return _coverRequests[questId] ??= _fetchCover(questId).whenComplete(() {
+    return _coverRequests[questId] ??= _queueCover(questId).whenComplete(() {
       _coverRequests.remove(questId);
     });
   }
 
-  static Future<Uri?> _fetchCover(String questId) async {
-    if (await QuestRepo.removedQuests.contains(questId)) {
-      return _covers[questId] = null;
+  static Future<Uri?> _queueCover(String questId) async {
+    _queuedCovers.add(questId);
+    await (_queuedCoverRead ??= Future.microtask(_readQueuedCovers));
+    return _covers[questId];
+  }
+
+  static Future<void> _readQueuedCovers() async {
+    final questIds = _queuedCovers.toList();
+    _queuedCovers.clear();
+    _queuedCoverRead = null;
+    final toRead = <String>[];
+    for (final questId in questIds) {
+      if (await QuestRepo.removedQuests.contains(questId)) {
+        _covers[questId] = null;
+      } else {
+        toRead.add(questId);
+      }
     }
+    await Future.wait(toRead.slices(_coversPerRead).map(_readCovers));
+  }
+
+  /// Fills [_covers] or [_failedCovers] for every quest in [questIds].
+  static Future<void> _readCovers(List<String> questIds) async {
+    final List<Map<String, dynamic>> docs;
+    try {
+      docs = await _findByIds(questIds);
+    } catch (e, s) {
+      _coverReadFailed(questIds, e, s);
+      return;
+    }
+    final imageUrls = await _resolveImageUrls(docs);
+    final listed = <String>{};
+    for (final json in docs) {
+      final questId = json['id'] as String?;
+      if (questId == null) continue;
+      listed.add(questId);
+      final uploadId = _imageUploadId(json);
+      // _resolveImageUrls reported its own failure (imageUrls null).
+      if (imageUrls == null && uploadId != null) {
+        _failedCovers.add(questId);
+      } else {
+        _covers[questId] = imageUrls?[uploadId];
+      }
+    }
+    // A course made before quests names a course-plan id, which the CMS maps
+    // to its quest on a read by id only, so a list read never returns it.
+    await Future.wait(
+      questIds.where((id) => !listed.contains(id)).map(_readCoverById),
+    );
+  }
+
+  static Future<void> _readCoverById(String questId) async {
     try {
       final json = await _client().findById<Map<String, dynamic>>(
         _collection,
@@ -98,27 +161,31 @@ class QuestPlansRepo {
         (json) => json,
       );
       final uploadId = _imageUploadId(json);
-      final url = uploadId == null
+      _covers[questId] = uploadId == null
           ? null
           : (await _resolveUploadIds([uploadId]))[uploadId];
-      return _covers[questId] = url;
     } catch (e, s) {
       if (PangeaHttpException.statusCodeOf(e) == 404) {
         // A removed quest has no cover: the letter avatar is the right
         // result, and QuestRepo.quest owns the one report of the removal.
         QuestRepo.removedQuests.mark(questId);
-        return _covers[questId] = null;
+        _covers[questId] = null;
+        return;
       }
-      ErrorHandler.logErrorOnce(
-        key: 'quest-cover:$questId',
-        e: e,
-        s: s,
-        data: {'quest_id': questId},
-        level: PangeaHttpException.severityOf(e),
-      );
-      _failedCovers.add(questId);
-      return null;
+      _coverReadFailed([questId], e, s);
     }
+  }
+
+  /// Reports one failed cover read and remembers its quests as failed.
+  static void _coverReadFailed(List<String> questIds, Object e, StackTrace s) {
+    ErrorHandler.logErrorOnce(
+      key: 'quest-cover:${questIds.join(',')}',
+      e: e,
+      s: s,
+      data: {'quest_ids': questIds},
+      level: PangeaHttpException.severityOf(e),
+    );
+    _failedCovers.addAll(questIds);
   }
 
   /// Translate a v1-style [CourseFilter] into a v3 quest-plans `where` clause.
@@ -227,6 +294,25 @@ class QuestPlansRepo {
     bool requireMissions = true,
   }) async {
     if (questIds.isEmpty) return const {};
+    final docs = await _findByIds(questIds);
+    final imageUrls = await _resolveImageUrls(docs);
+    final result = <String, CoursePlanModel>{};
+    for (final json in docs) {
+      final plan = _fromQuestPlanJson(
+        json,
+        requireMissions: requireMissions,
+        imageUrls: imageUrls,
+      );
+      if (plan != null) result[plan.uuid] = plan;
+    }
+    return result;
+  }
+
+  /// The rows of [questIds], in one read. A read whose `where` names ids
+  /// returns hidden quests too; the CMS drops them only from discovery reads.
+  static Future<List<Map<String, dynamic>>> _findByIds(
+    List<String> questIds,
+  ) async {
     final resp = await _client().find<Map<String, dynamic>>(
       _collection,
       (json) => json,
@@ -236,17 +322,7 @@ class QuestPlansRepo {
       },
       depth: 0,
     );
-    final imageUrls = await _resolveImageUrls(resp.docs);
-    final result = <String, CoursePlanModel>{};
-    for (final json in resp.docs) {
-      final plan = _fromQuestPlanJson(
-        json,
-        requireMissions: requireMissions,
-        imageUrls: imageUrls,
-      );
-      if (plan != null) result[plan.uuid] = plan;
-    }
-    return result;
+    return resp.docs;
   }
 
   /// The row's `image.upload_id`: a top-level field, a sibling of req/res.
