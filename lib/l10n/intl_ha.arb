@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-11-04 10:19:29.564294",
+    "@@last_modified": "2026-11-04 15:02:43.717915",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2517,5 +2517,7 @@
     "botTookSeatAfterAnHour": "Wannan zaman ya kasance a buɗe na awa ɗaya, don haka Pangea Bot ya shiga.",
     "botTookSeatAfterADay": "Wannan zaman ya kasance a buɗe fiye da kwana ɗaya, don haka Pangea Bot ya shiga. Aika saƙo don farawa.",
     "subscriptionGracePeriodEndsOn": "Biyan kuɗi bai yi nasara ba. Lokacin alheri ya ƙare a ranar {date}",
+    "changeBaseLanguageTitle": "Canza harshen asali?",
+    "changeBaseLanguageDesc": "Za a canza menu da maɓallan manhajar zuwa {language}.",
     "accountSetupFailedHelp": "Mun kasa kammala saita asusunka. Duba haɗinka kuma sake gwadawa, ko fita daga asusunka ka shiga daga baya."
 }

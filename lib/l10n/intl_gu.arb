@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-11-04 10:19:29.334088",
+    "@@last_modified": "2026-11-04 15:02:43.207441",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2517,5 +2517,7 @@
     "botTookSeatAfterAnHour": "આ સત્ર એક કલાક માટે ખુલ્લું હતું, તેથી Pangea Botએ ખાલી જગ્યા લીધી.",
     "botTookSeatAfterADay": "આ સત્ર એક દિવસથી વધુ સમય માટે ખુલ્લું હતું, તેથી Pangea Botએ ખાલી જગ્યા લીધી. શરૂ કરવા માટે સંદેશ મોકલો.",
     "subscriptionGracePeriodEndsOn": "ચુકવણી નિષ્ફળ. ગ્રેસ અવધિ {date} ના રોજ સમાપ્ત થાય છે",
+    "changeBaseLanguageTitle": "મૂળ ભાષા બદલવી છે?",
+    "changeBaseLanguageDesc": "એપ્લિકેશનના મેનુ અને બટનો {language} માં બદલાઈ જશે.",
     "accountSetupFailedHelp": "અમે તમારું એકાઉન્ટ સેટઅપ કરવાનું પૂર્ણ કરી શક્યા નથી. તમારું કનેક્શન તપાસો અને ફરી પ્રયાસ કરો અથવા લોગ આઉટ કરો અને પછીથી સાઇન ઇન કરો."
 }

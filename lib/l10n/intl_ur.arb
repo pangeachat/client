@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-11-04 10:19:36.590649",
+    "@@last_modified": "2026-11-04 15:02:52.190339",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2517,5 +2517,7 @@
     "botTookSeatAfterAnHour": "یہ سیشن ایک گھنٹے کے لیے کھلا تھا، لہذا پینجیا بوٹ نے خالی سیٹ لے لی۔",
     "botTookSeatAfterADay": "یہ سیشن ایک دن سے زیادہ کے لیے کھلا تھا، لہذا پینجیا بوٹ نے خالی سیٹ لے لی۔ شروع کرنے کے لیے ایک پیغام بھیجیں۔",
     "subscriptionGracePeriodEndsOn": "ادائیگی ناکام ہو گئی۔ رعایت کی مدت {date} کو ختم ہو رہی ہے",
+    "changeBaseLanguageTitle": "بنیادی زبان تبدیل کریں؟",
+    "changeBaseLanguageDesc": "ایپ کے مینیو اور بٹن {language} میں تبدیل ہو جائیں گے۔",
     "accountSetupFailedHelp": "ہم آپ کا اکاؤنٹ سیٹ اپ مکمل نہیں کر سکے۔ اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں، یا لاگ آؤٹ کر کے بعد میں سائن ان کریں۔"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-11-04 10:19:30.774923",
+    "@@last_modified": "2026-11-04 15:02:44.401534",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10813,5 +10813,7 @@
     "botTookSeatAfterAnHour": "このセッションは1時間開いていたため、Pangea Botが空席に着きました。",
     "botTookSeatAfterADay": "このセッションは1日以上開いていたため、Pangea Botが空席に着きました。メッセージを送信して開始してください。",
     "subscriptionGracePeriodEndsOn": "お支払いに失敗しました。猶予期間は{date}に終了します",
+    "changeBaseLanguageTitle": "ベース言語を変更しますか？",
+    "changeBaseLanguageDesc": "アプリのメニューとボタンが{language}に切り替わります。",
     "accountSetupFailedHelp": "アカウント設定を完了できませんでした。接続を確認して再試行するか、ログアウトして後でサインインしてください。"
 }

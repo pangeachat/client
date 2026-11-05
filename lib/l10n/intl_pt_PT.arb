@@ -2550,7 +2550,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-11-04 10:19:34.505263",
+    "@@last_modified": "2026-11-04 15:02:49.209923",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10961,5 +10961,7 @@
     "botTookSeatAfterAnHour": "Esta sessão esteve aberta durante uma hora, por isso o Pangea Bot ocupou o lugar vago.",
     "botTookSeatAfterADay": "Esta sessão esteve aberta por mais de um dia, por isso o Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar.",
     "subscriptionGracePeriodEndsOn": "Pagamento falhou. Período de carência termina em {date}",
+    "changeBaseLanguageTitle": "Alterar idioma base?",
+    "changeBaseLanguageDesc": "Os menus e botões da aplicação mudarão para {language}.",
     "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique a sua ligação e tente novamente, ou termine a sessão e inicie-a mais tarde."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-11-04 10:19:33.318590",
+    "@@last_modified": "2026-11-04 15:02:48.011524",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2517,5 +2517,7 @@
     "botTookSeatAfterAnHour": "Din is-sessjoni kienet miftuħa għal siegħa, allura Pangea Bot ħa s-siġġu vojt.",
     "botTookSeatAfterADay": "Din is-sessjoni kienet miftuħa għal aktar minn ġurnata, allura Pangea Bot ħa s-siġġu vojt. Ibgħat messaġġ biex tibda.",
     "subscriptionGracePeriodEndsOn": "Il-ħlas falla. Il-perjodu ta' grazzja jintemm fi {date}",
+    "changeBaseLanguageTitle": "Tibdel il-lingwa bażika?",
+    "changeBaseLanguageDesc": "Il-menus u l-buttuni tal-app se jinbidlu għal {language}.",
     "accountSetupFailedHelp": "Ma stajniex inlesti s-setup tal-kont tiegħek. Iċċekkja l-konnessjoni tiegħek u erġa' pprova, jew idħol u illoggja aktar tard."
 }

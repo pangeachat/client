@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 10:19:34.106015",
+    "@@last_modified": "2026-11-04 15:02:49.606969",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10047,5 +10047,7 @@
     "botTookSeatAfterAnHour": "Esta sessão ficou aberta por uma hora, então Pangea Bot ocupou o lugar vago.",
     "botTookSeatAfterADay": "Esta sessão ficou aberta por mais de um dia, então Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar.",
     "subscriptionGracePeriodEndsOn": "Pagamento falhou. O período de carência termina em {date}",
+    "changeBaseLanguageTitle": "Mudar idioma base?",
+    "changeBaseLanguageDesc": "Os menus e botões do aplicativo mudarão para {language}.",
     "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique sua conexão e tente novamente, ou saia e faça login mais tarde."
 }

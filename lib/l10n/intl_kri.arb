@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-11-04 10:19:31.704643",
+    "@@last_modified": "2026-11-04 15:02:46.120444",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2517,5 +2517,7 @@
     "botTookSeatAfterAnHour": "Dis seshɔn bin opin fɔ wan awa, so Pangea Bot tek di ples we bin fri.",
     "botTookSeatAfterADay": "Dis seshɔn bin opin fɔ pas wan de, so Pangea Bot tek di ples we bin fri. Send mɛsej fɔ stat.",
     "subscriptionGracePeriodEndsOn": "Peimɛnt fɛl. Grɛs piriod de ɛnd ɔn {date}",
+    "changeBaseLanguageTitle": "Chenj bɛs langwej?",
+    "changeBaseLanguageDesc": "Di app in menyu ɛn bɔtin dɛn go chenj to {language}.",
     "accountSetupFailedHelp": "Wi nɔ ebul fɔ dɔn sɛt yu akawnt. Chɛk yu kɔnɛkshɔn ɛn tray bak, ɔ lɔg awt ɛn lɔg in bak leta."
 }

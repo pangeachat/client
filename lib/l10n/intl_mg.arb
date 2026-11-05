@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-11-04 10:19:32.410229",
+    "@@last_modified": "2026-11-04 15:02:47.233384",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2517,5 +2517,7 @@
     "botTookSeatAfterAnHour": "Adiny iray no nisokafan'ity fivoriana ity, ka nalain'ny Pangea Bot ny toerana malalaka.",
     "botTookSeatAfterADay": "Nisokatra nandritra ny iray andro mahery ity fivoriana ity, ka nalain'ny Pangea Bot ny toerana malalaka. Mandefasa hafatra hanombohana.",
     "subscriptionGracePeriodEndsOn": "Tsy nahomby ny fandoavam-bola. Tapitra ny fe-potoana fanomezan-danja amin'ny {date}",
+    "changeBaseLanguageTitle": "Hanova ny fiteny fototra?",
+    "changeBaseLanguageDesc": "Hivadika ho amin'ny {language} ny menio sy ny bokotra rehetra ao amin'ny fampiharana.",
     "accountSetupFailedHelp": "Tsy afaka namita ny fananganana ny kaontinao izahay. Hamarino ny fifandraisanao ary andramo indray, na mivoaha ary midira indray any aoriana."
 }

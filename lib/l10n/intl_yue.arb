@@ -1254,7 +1254,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-11-04 10:19:36.852100",
+    "@@last_modified": "2026-11-04 15:02:52.524417",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11001,5 +11001,7 @@
     "botTookSeatAfterAnHour": "呢個環節開咗一個鐘，所以Pangea機械人加入咗。",
     "botTookSeatAfterADay": "呢個環節開咗超過一日，所以Pangea機械人加入咗。傳送訊息嚟開始啦。",
     "subscriptionGracePeriodEndsOn": "付款失敗。寬限期將於 {date} 結束",
+    "changeBaseLanguageTitle": "更改基礎語言？",
+    "changeBaseLanguageDesc": "應用程式嘅選單同按鈕將會轉為{language}。",
     "accountSetupFailedHelp": "我哋完成唔到你嘅帳戶設定。請檢查你嘅連線，然後再試一次，或者登出之後再登入。"
 }

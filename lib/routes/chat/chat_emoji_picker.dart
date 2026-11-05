@@ -101,10 +101,22 @@ class ChatEmojiPicker extends StatelessWidget {
                                     Config config,
                                     EmojiViewState state,
                                     VoidCallback showEmojiView,
-                                  ) => PangeaEmojiSearchView(
-                                    config,
-                                    state,
-                                    showEmojiView,
+                                  ) => StreamBuilder(
+                                    stream: controller
+                                        .pangeaController
+                                        .userController
+                                        .languageStream
+                                        .stream,
+                                    builder: (context, _) =>
+                                        PangeaEmojiSearchView(
+                                          config,
+                                          state,
+                                          showEmojiView,
+                                          targetLanguage: controller
+                                              .pangeaController
+                                              .userController
+                                              .userL2,
+                                        ),
                                   ),
                             ),
                             // Pangea#

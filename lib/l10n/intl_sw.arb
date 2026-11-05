@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-11-04 10:19:35.846838",
+    "@@last_modified": "2026-11-04 15:02:50.898259",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2517,5 +2517,7 @@
     "botTookSeatAfterAnHour": "Kipindi hiki kilikuwa wazi kwa saa moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi.",
     "botTookSeatAfterADay": "Kipindi hiki kilikuwa wazi kwa zaidi ya siku moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi. Tuma ujumbe ili kuanza.",
     "subscriptionGracePeriodEndsOn": "Malipo yameshindwa. Muda wa ziada unaisha tarehe {date}",
+    "changeBaseLanguageTitle": "Badilisha lugha ya msingi?",
+    "changeBaseLanguageDesc": "Menyu na vitufe vya programu vitabadilika kuwa {language}.",
     "accountSetupFailedHelp": "Hatukuweza kumaliza kusanidi akaunti yako. Angalia muunganisho wako na ujaribu tena, au ingia na uingie baadaye."
 }

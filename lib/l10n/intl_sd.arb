@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-11-04 10:19:35.195240",
+    "@@last_modified": "2026-11-04 15:02:50.277032",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2517,5 +2517,7 @@
     "botTookSeatAfterAnHour": "هي سيشن هڪ ڪلاڪ لاءِ کليل هو، تنهنڪري پينگيا بوٽ خالي جاءِ ورتي.",
     "botTookSeatAfterADay": "هي سيشن هڪ ڏينهن کان وڌيڪ عرصي لاءِ کليل هو، تنهنڪري پينگيا بوٽ خالي جاءِ ورتي. شروع ڪرڻ لاءِ پيغام موڪليو.",
     "subscriptionGracePeriodEndsOn": "ادائگي ناڪام ٿي وئي. رعايتي مدت {date} تي ختم ٿيندي",
+    "changeBaseLanguageTitle": "بنيادي ٻولي تبديل ڪريو؟",
+    "changeBaseLanguageDesc": "ايپ جا مينيو ۽ بٽڻ {language} ۾ تبديل ٿي ويندا.",
     "accountSetupFailedHelp": "اسان توهان جو اڪائونٽ سيٽ اپ نه ڪري سگهياسين. پنهنجو ڪنيڪشن چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو، يا لاگ آئوٽ ڪريو ۽ بعد ۾ سائن ان ڪريو."
 }

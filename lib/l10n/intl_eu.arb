@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-11-04 10:19:29.041171",
+    "@@last_modified": "2026-11-04 15:02:41.917740",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10047,5 +10047,7 @@
     "botTookSeatAfterAnHour": "Saio hau ordubetez egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du.",
     "botTookSeatAfterADay": "Saio hau egun bat baino gehiagoz egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du. Bidali mezu bat hasteko.",
     "subscriptionGracePeriodEndsOn": "Ordainketak huts egin du. Tolerantzia-epea {date}an amaituko da",
+    "changeBaseLanguageTitle": "Oinarrizko hizkuntza aldatu?",
+    "changeBaseLanguageDesc": "Aplikazioaren menuak eta botoiak {language} hizkuntzara aldatuko dira.",
     "accountSetupFailedHelp": "Ezin izan dugu zure kontua konfiguratzen amaitu. Egiaztatu konexioa eta saiatu berriro, edo itxi saioa eta hasi geroago."
 }

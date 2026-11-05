@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-11-04 10:19:27.105386",
+    "@@last_modified": "2026-11-04 15:02:40.448025",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10350,5 +10350,7 @@
     "botTookSeatAfterAnHour": "كانت هذه الجلسة مفتوحة لمدة ساعة، لذا شغل بوت بانجيا المقعد الشاغر.",
     "botTookSeatAfterADay": "كانت هذه الجلسة مفتوحة لأكثر من يوم، لذا شغل بوت بانجيا المقعد الشاغر. أرسل رسالة للبدء.",
     "subscriptionGracePeriodEndsOn": "فشل الدفع. تنتهي فترة السماح في {date}",
+    "changeBaseLanguageTitle": "تغيير اللغة الأساسية؟",
+    "changeBaseLanguageDesc": "ستتحول قوائم التطبيق وأزراره إلى {language}.",
     "accountSetupFailedHelp": "تعذر علينا إنهاء إعداد حسابك. تحقق من اتصالك وحاول مرة أخرى، أو قم بتسجيل الخروج وسجل الدخول لاحقًا."
 }

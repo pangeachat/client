@@ -57,6 +57,12 @@ class UserSettings {
     this.selfIdentifiedRole,
   });
 
+  /// The language the app's menus and buttons are shown in: the target
+  /// language while [appLanguageIsTarget] is on and one is set, otherwise the
+  /// source language. Null leaves them in the system language.
+  String? get appLanguage =>
+      appLanguageIsTarget ? (targetLanguage ?? sourceLanguage) : sourceLanguage;
+
   factory UserSettings.fromJson(Map<String, dynamic> json) => UserSettings(
     dateOfBirth: json[UserConstants.userDateOfBirth] != null
         ? DateTime.parse(json[UserConstants.userDateOfBirth])

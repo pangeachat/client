@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 10:19:35.557150",
+    "@@last_modified": "2026-11-04 15:02:51.337183",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10562,5 +10562,7 @@
     "botTookSeatAfterAnHour": "Den här sessionen var öppen i en timme, så Pangea Bot tog den lediga platsen.",
     "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja.",
     "subscriptionGracePeriodEndsOn": "Betalningen misslyckades. Anståndsperioden slutar {date}",
+    "changeBaseLanguageTitle": "Byta basspråk?",
+    "changeBaseLanguageDesc": "Appens menyer och knappar kommer att byta till {language}.",
     "accountSetupFailedHelp": "Vi kunde inte slutföra installationen av ditt konto. Kontrollera din anslutning och försök igen, eller logga ut och logga in senare."
 }

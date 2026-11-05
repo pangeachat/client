@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/features/user/user_model.dart, lib/features/user/user_controller.dart, lib/features/user/public_profile_model.dart, lib/features/user/analytics_profile_model.dart, lib/features/bot/bot_client_extension.dart, lib/features/bot/bot_options_model.dart, lib/features/bot/bot_room_extension.dart, lib/features/bot/widgets/bot_chat_settings_dialog.dart, lib/routes/settings/settings_learning/**, lib/pangea/common/controllers/pangea_controller.dart"
+applyTo: "lib/features/user/user_model.dart, lib/features/user/user_controller.dart, lib/features/user/public_profile_model.dart, lib/features/user/analytics_profile_model.dart, lib/features/bot/bot_client_extension.dart, lib/features/bot/bot_options_model.dart, lib/features/bot/bot_room_extension.dart, lib/features/bot/widgets/bot_chat_settings_dialog.dart, lib/routes/settings/settings_learning/**, lib/routes/onboarding/onboarding_step_views/pick_language_step_view.dart, lib/pangea/common/controllers/pangea_controller.dart"
 ---
 
 # Profile Settings — Architecture & Contracts
@@ -41,6 +41,10 @@ A separate **`PublicProfileModel`** (in [public_profile_model.dart](../../lib/fe
 4. **Analytics language indicator** — modal dialog from the language-pair chip (e.g. "EN → ES") on the learning progress widget
 
 All four use the same `SettingsLearning` widget and the same save flow: write to account data → wait for sync round-trip → stream dispatch → side-effects.
+
+### Changing the base language
+
+The app's menus and buttons are shown in the base language, so a new base language that would switch them asks first: "Change base language?", naming the language they will switch to, with Cancel and Change. Nothing changes until the learner taps Change. Learning settings and the onboarding language step both ask, and only when the menus would actually switch, so not while the app is shown in the target language. A target-language switch still takes effect at once ([Switching from context](#switching-from-context)).
 
 ### Per-room bot settings
 

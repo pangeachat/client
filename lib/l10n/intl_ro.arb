@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 10:19:34.082350",
+    "@@last_modified": "2026-11-04 15:02:49.232827",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10776,5 +10776,7 @@
     "botTookSeatAfterAnHour": "Această sesiune a fost deschisă timp de o oră, așa că Pangea Bot a ocupat locul liber.",
     "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe.",
     "subscriptionGracePeriodEndsOn": "Plata a eșuat. Perioada de grație se încheie pe {date}",
+    "changeBaseLanguageTitle": "Schimbi limba de bază?",
+    "changeBaseLanguageDesc": "Meniurile și butoanele aplicației vor trece la {language}.",
     "accountSetupFailedHelp": "Nu am putut finaliza configurarea contului tău. Verifică-ți conexiunea și încearcă din nou, sau deconectează-te și conectează-te mai târziu."
 }

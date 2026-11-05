@@ -143,6 +143,15 @@ class ActivityPlanRepo
   Future<bool> isConfirmedRemoved(String activityId) =>
       _confirmedRemoved.contains(activityId);
 
+  /// Whether a read of this plan, keyed as [cachedPlan] keys it, is queued or
+  /// in flight: accepted by [ensure] and not finished, whatever it finds. A
+  /// read that fails or is dropped ends it without notifying listeners, so a
+  /// caller waiting on one checks again rather than waiting for a notice.
+  bool isHydrating(String activityId, {String? l1, String? version}) {
+    final request = _request(activityId, l1, version: version);
+    return request != null && _hydrating.contains(request.storageKey);
+  }
+
   /// Earliest wall-clock time [ensure] may re-attempt a key.
   ///
   /// Set **before** the fetch is issued, and cleared only on success. That
