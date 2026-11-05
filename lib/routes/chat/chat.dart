@@ -1349,6 +1349,13 @@ class ChatController extends State<ChatPageWithRoom>
 
   Future<void>? _setReadMarkerFuture;
 
+  /// Whether opening the chat has anything for a read receipt to mark.
+  @visibleForTesting
+  static bool needsReadMarker(Room room, Iterable<Event> events) =>
+      room.hasNewMessages ||
+      room.notificationCount != 0 ||
+      events.any((event) => event.isUnreadRealizedNotice);
+
   void setReadMarker({String? eventId}) {
     // #Pangea
     if (room.client.userID == null ||
@@ -1365,8 +1372,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (scrollUpBannerEventId != null) return;
 
     if (eventId == null &&
-        !room.hasNewMessages &&
-        room.notificationCount == 0) {
+        !needsReadMarker(room, this.timeline?.events ?? const [])) {
       return;
     }
 
