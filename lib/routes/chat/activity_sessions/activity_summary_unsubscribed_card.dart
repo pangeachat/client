@@ -34,8 +34,8 @@ class ActivitySummaryUnsubscribedCard extends StatelessWidget {
   /// skeleton whose shape carries information.
   final int roleCount;
 
-  /// The line saying the session was saved, above the skeleton: what the
-  /// summary card shows under its heading (#9418). Nothing is locked about it.
+  /// The line saying the session was saved, under the skeleton: the same
+  /// foot the summary card has (#9418). Nothing is locked about it.
   final Widget? savedNotice;
 
   const ActivitySummaryUnsubscribedCard({
@@ -90,7 +90,6 @@ class ActivitySummaryUnsubscribedCard extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  ?savedNotice,
                   Stack(
                     alignment: Alignment.center,
                     children: [
@@ -186,6 +185,7 @@ class ActivitySummaryUnsubscribedCard extends StatelessWidget {
                       ),
                     ],
                   ),
+                  ?savedNotice,
                 ],
               ),
             ),

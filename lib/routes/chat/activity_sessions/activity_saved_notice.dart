@@ -66,23 +66,28 @@ class ActivitySavedNotice extends StatelessWidget {
       // The whole line is the one control; the page's name in it is drawn as
       // the link.
       final parts = l10n.activitySavedTo(page).split(page);
-      final textStyle = TextStyle(
-        color: Theme.of(context).colorScheme.onSurface,
-      );
+      final scheme = Theme.of(context).colorScheme;
+      // A quiet foot to the card, under the feedback, so the card's text
+      // doesn't stack into one block.
       return TextButton(
         onPressed: () => _openLearningObjectives(context),
         child: Text.rich(
           TextSpan(
+            style: Theme.of(context).textTheme.labelMedium,
             children: [
               for (final (index, part) in parts.indexed) ...[
                 if (index > 0)
                   TextSpan(
                     text: page,
-                    style: const TextStyle(
+                    style: TextStyle(
+                      color: scheme.primary,
                       decoration: TextDecoration.underline,
                     ),
                   ),
-                TextSpan(text: part, style: textStyle),
+                TextSpan(
+                  text: part,
+                  style: TextStyle(color: scheme.onSurfaceVariant),
+                ),
               ],
             ],
           ),

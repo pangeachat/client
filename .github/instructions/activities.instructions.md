@@ -47,7 +47,7 @@ How learners find and start activities, and the record they leave. What an activ
 ## The Learning Objectives page
 
 - One tile per Mission in the current language's joined courses, in course order; a shared Mission is one tile, and the open tile gets a border. No activity count, which was busy, and no Practice.
-- Saved sessions outside the tiles close the list under Other activities, so a learner in no course keeps a record.
+- Saved sessions outside the tiles close the list under Other activities, so a learner in no course keeps a record. The session open in a chat is picked out there and scrolled into view.
 - A Mission's page names the course it was opened from, shimmers until its XP is in, and shows finished activities only; what comes next is the Mission card's job. Its vocab opens word cards in place.
 - Practice is primary there, its main action, and secondary on the Mission card.
 - A Mission only in another language shows its language and the switch.

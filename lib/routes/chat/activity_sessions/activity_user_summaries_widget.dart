@@ -130,7 +130,6 @@ class _SummaryCard extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(L10n.of(context).activityFinishedMessage),
-                      ActivitySavedNotice(room: controller.room),
                       Text(summary.summary, textAlign: TextAlign.center),
                       if (updateFailed)
                         Text(
@@ -145,6 +144,7 @@ class _SummaryCard extends StatelessWidget {
                   summary: summary,
                   controller: controller,
                 ),
+                ActivitySavedNotice(room: controller.room),
               ],
             ),
           ),

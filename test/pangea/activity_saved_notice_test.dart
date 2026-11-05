@@ -268,7 +268,7 @@ void main() {
   }
 
   testWidgets('the end card says the activity was saved once it is, and not '
-      'before, under "All Finished!"', (tester) async {
+      'before, at its foot under the feedback', (tester) async {
     final room = finishedSession(saved: false);
     await pumpEndCard(tester, room, subscribed: true);
 
@@ -283,8 +283,8 @@ void main() {
     final heading = tester.getRect(find.text('All Finished!'));
     final line = tester.getRect(find.text(savedLine));
     final summary = tester.getRect(find.text('Well played.'));
-    expect(line.top, greaterThanOrEqualTo(heading.bottom));
-    expect(line.bottom, lessThanOrEqualTo(summary.top));
+    expect(summary.top, greaterThanOrEqualTo(heading.bottom));
+    expect(line.top, greaterThanOrEqualTo(summary.bottom));
   });
 
   testWidgets('an unsubscribed learner\'s end card says so too', (
@@ -339,14 +339,21 @@ void main() {
     );
   });
 
-  testWidgets('for any other activity, the link opens the list itself', (
-    tester,
-  ) async {
-    await pumpEndCard(tester, finishedSession(saved: true), subscribed: false);
+  testWidgets('for any other activity, the link opens the list itself with '
+      'the session still open, which the list picks out under Other '
+      'activities', (tester) async {
+    final room = finishedSession(saved: true);
+    await pumpEndCard(
+      tester,
+      room,
+      subscribed: false,
+      location: WorkspaceNav.openRoomById(Uri.parse('/'), room.id),
+    );
 
     final uri = await tapSavedLine(tester);
 
     expect(activeObjectiveDetailFor(uri), isNull);
+    expect(activeRoomIdFromPanels(uri), room.id);
     final right = parseOpenPanels(uri).right.map((t) => t.param).toList();
     expect(
       right.whereType<AnalyticsTokenParam>().single.subpage,

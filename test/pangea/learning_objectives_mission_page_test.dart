@@ -6,6 +6,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/features/navigation/token_params/objective_token.dart';
+import 'package:fluffychat/features/quests/activity_family.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
@@ -123,6 +124,27 @@ void main() {
     expect(
       pageFor(courses, 'a1'),
       const ObjectiveTokenParam(missionId: 'lo-2', courseId: '!b:x'),
+    );
+  });
+
+  test('a session of an activity the course shows a copy of is on the '
+      'Mission that shows the copy', () {
+    final copy = mission('lo-1', ['a1-copy']);
+    final courses = [
+      course('!a:x', [
+        QuestObjectiveGroup(
+          objective: copy.objective,
+          activities: copy.activities,
+          credit: const CourseCredit(
+            family: {'a1': 'a1-copy', 'a1-copy': 'a1-copy'},
+          ),
+        ),
+      ]),
+    ];
+
+    expect(
+      pageFor(courses, 'a1'),
+      const ObjectiveTokenParam(missionId: 'lo-1', courseId: '!a:x'),
     );
   });
 
