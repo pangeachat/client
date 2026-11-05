@@ -97,4 +97,24 @@ void main() {
       expect(room.canInviteMembers, room.canInvite);
     },
   );
+
+  // CLIENT-F5S / EPA / ERZ / EMF (#9806): the chat view's input check.
+  test('canSendMessages is false for a signed-out account', () async {
+    final client = await signedOutClient();
+    addTearDown(client.dispose);
+
+    expect(Room(id: roomId, client: client).canSendMessages, isFalse);
+  });
+
+  test(
+    'canSendMessages follows canSendDefaultMessages for the signed-in account',
+    () async {
+      final client = await getTestClient();
+      addTearDown(client.dispose);
+      final room = Room(id: roomId, client: client);
+
+      expect(room.canSendMessages, isTrue, reason: 'precondition');
+      expect(room.canSendMessages, room.canSendDefaultMessages);
+    },
+  );
 }
