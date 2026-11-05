@@ -3513,7 +3513,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-27 14:57:18.614958",
+    "@@last_modified": "2026-11-04 15:02:46.973052",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10045,5 +10045,8 @@
     "playWithBotNowMessage": "Neviens vēl nav pievienojies. Pangea Bots var ieņemt brīvo vietu tagad, vai arī jūs varat turpināt gaidīt.",
     "keepWaiting": "Turpināt gaidīt",
     "botTookSeatAfterAnHour": "Šī sesija bija atvērta stundu, tāpēc Pangea Bots ieņēma brīvo vietu.",
-    "botTookSeatAfterADay": "Šī sesija bija atvērta vairāk nekā dienu, tāpēc Pangea Bots ieņēma brīvo vietu. Nosūtiet ziņu, lai sāktu."
+    "botTookSeatAfterADay": "Šī sesija bija atvērta vairāk nekā dienu, tāpēc Pangea Bots ieņēma brīvo vietu. Nosūtiet ziņu, lai sāktu.",
+    "subscriptionGracePeriodEndsOn": "Maksājums neizdevās. Atliktais periods beidzas {date}",
+    "changeBaseLanguageTitle": "Mainīt pamatvalodu?",
+    "changeBaseLanguageDesc": "Lietotnes izvēlnes un pogas pārslēgsies uz {language}."
 }

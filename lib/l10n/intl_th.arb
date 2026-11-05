@@ -3080,7 +3080,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-10-27 14:57:22.737339",
+    "@@last_modified": "2026-11-04 15:02:51.608057",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10674,5 +10674,8 @@
     "playWithBotNowMessage": "ยังไม่มีใครเข้าร่วม Pangea Bot สามารถเข้าร่วมตอนนี้ได้เลย หรือคุณจะรอต่อไปก็ได้",
     "keepWaiting": "รอต่อไป",
     "botTookSeatAfterAnHour": "เซสชันนี้เปิดมาหนึ่งชั่วโมงแล้ว Pangea Bot จึงเข้าร่วม",
-    "botTookSeatAfterADay": "เซสชันนี้เปิดมานานกว่าหนึ่งวันแล้ว Pangea Bot จึงเข้าร่วม ส่งข้อความเพื่อเริ่มต้น"
+    "botTookSeatAfterADay": "เซสชันนี้เปิดมานานกว่าหนึ่งวันแล้ว Pangea Bot จึงเข้าร่วม ส่งข้อความเพื่อเริ่มต้น",
+    "subscriptionGracePeriodEndsOn": "การชำระเงินล้มเหลว ระยะเวลาผ่อนผันสิ้นสุดวันที่ {date}",
+    "changeBaseLanguageTitle": "เปลี่ยนภาษาหลักใช่ไหม",
+    "changeBaseLanguageDesc": "เมนูและปุ่มต่างๆ ของแอปจะเปลี่ยนเป็นภาษา{language}"
 }

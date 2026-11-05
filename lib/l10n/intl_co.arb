@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-10-27 14:57:13.588945",
+    "@@last_modified": "2026-11-04 15:02:40.934293",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2515,5 +2515,8 @@
     "playWithBotNowMessage": "Nimu s'hè ancu unitu. U Bot Pangea pò piglià u postu liberu avà, o pudete cuntinuà à aspittà.",
     "keepWaiting": "Cuntinuà à aspittà",
     "botTookSeatAfterAnHour": "Sta sessione hè stata aperta per un'ora, cusì u Bot Pangea hà pigliatu u postu liberu.",
-    "botTookSeatAfterADay": "Sta sessione hè stata aperta per più di un ghjornu, cusì u Bot Pangea hà pigliatu u postu liberu. Mandate un messagiu per principià."
+    "botTookSeatAfterADay": "Sta sessione hè stata aperta per più di un ghjornu, cusì u Bot Pangea hà pigliatu u postu liberu. Mandate un messagiu per principià.",
+    "subscriptionGracePeriodEndsOn": "U pagamentu hà fiascatu. U periodu di grazia finisce u {date}",
+    "changeBaseLanguageTitle": "Cambia a lingua di basa?",
+    "changeBaseLanguageDesc": "I menu è i buttoni di l'app cambieranu in {language}."
 }

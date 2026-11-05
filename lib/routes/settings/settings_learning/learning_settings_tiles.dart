@@ -6,6 +6,7 @@ import 'package:fluffychat/routes/chat/chat_details/language_level_dropdown.dart
 import 'package:fluffychat/routes/settings/settings_learning/app_language_settings_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/audio_settings_section.dart';
 import 'package:fluffychat/routes/settings/settings_learning/autocorrect_settings_tile.dart';
+import 'package:fluffychat/routes/settings/settings_learning/base_language_change_dialog.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_settings_switch_list_tile.dart';
@@ -48,6 +49,14 @@ class LearningSettingsTiles extends StatelessWidget {
                           onChange: (lang) => viewModel.setSelectedLanguage(
                             sourceLanguage: lang,
                           ),
+                          confirmChange: (lang) async =>
+                              !viewModel.baseLanguageSwitchesAppLanguage(
+                                lang,
+                              ) ||
+                              await BaseLanguageChangeDialog.confirm(
+                                context,
+                                lang,
+                              ),
                           initialLanguage:
                               viewModel.selectedSourceLanguage ??
                               LanguageModel.unknown,

@@ -53,3 +53,5 @@ The client tracks potential subscription changes via the [SubscriptionManagement
 ## Managing a subscription
 
 Settings shows the current plan and billing history natively, cancels in the app, and opens a Stripe-hosted page only to change the payment card. This is account management, shown on every platform. Seat-sponsored learners (Group or Institution tier) see who sponsors their access in place of a paywall.
+
+When a renewal payment fails, because the card was declined or because there is no card on file, the plan card shows when the grace period ends instead of a renewal date: "Payment failed. Grace period ends on {date}". Access lasts until then unless a payment goes through.

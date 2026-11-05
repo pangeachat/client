@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-10-27 14:57:19.230887",
+    "@@last_modified": "2026-11-04 15:02:47.347381",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2515,5 +2515,8 @@
     "playWithBotNowMessage": "Kāore anō kia uru mai tētahi. Ka taea e Pangea Bot te tango i te tūru wātea ināianei, ka taea rānei e koe te tatari tonu.",
     "keepWaiting": "Me tatari tonu",
     "botTookSeatAfterAnHour": "I wātea tēnei hui mō te hāora, nō reira i tangohia e Pangea Bot te tūru wātea.",
-    "botTookSeatAfterADay": "I wātea tēnei hui mō te rā kotahi, nō reira i tangohia e Pangea Bot te tūru wātea. Tukuna he karere kia tīmata ai."
+    "botTookSeatAfterADay": "I wātea tēnei hui mō te rā kotahi, nō reira i tangohia e Pangea Bot te tūru wātea. Tukuna he karere kia tīmata ai.",
+    "subscriptionGracePeriodEndsOn": "Kua rahua te utu. Ka mutu te wā āwhina ā-utu hei te {date}",
+    "changeBaseLanguageTitle": "Huri reo tūāpapa?",
+    "changeBaseLanguageDesc": "Ka huri ngā tahua me ngā pātene o te taupānga ki te {language}."
 }

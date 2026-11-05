@@ -21,6 +21,7 @@ import 'package:fluffychat/features/course_plans/courses/course_missions_event.d
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -1020,8 +1021,15 @@ class WorldMapController extends State<WorldMap>
 
   /// Fly to a search result and focus it (the Maps-style result tap): open its
   /// detail panel, which glides the camera onto its pin via the focus fit. One
-  /// step — a deliberate tap goes straight to focus, no peek.
-  void flyTo(QuestActivityCard card) => openActivity(card);
+  /// step — a deliberate tap goes straight to focus, no peek. The search
+  /// leaves the slot while the activity is open (#9402), taking the picked row
+  /// with it, so the panel that mounts takes keyboard focus rather than
+  /// dropping it to the page root (accessibility.instructions.md, "Focus after
+  /// an in-place content swap").
+  void flyTo(QuestActivityCard card) {
+    PanelEntryIntent.instance.armForSwap();
+    openActivity(card);
+  }
 
   /// Glide back to the whole-world view. Pins and search only ever zoom the
   /// camera IN, so this is the one explicit "zoom out to everything"

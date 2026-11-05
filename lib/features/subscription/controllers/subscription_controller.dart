@@ -226,6 +226,14 @@ class SubscriptionController {
       );
     }
 
+    if (response.hasGracePeriodWithoutEnd) {
+      ErrorHandler.logError(
+        e: Exception("v2 entitlement in a grace period has no grace_ends_at"),
+        s: StackTrace.current,
+        data: {},
+      );
+    }
+
     _state.value = SubscriptionState.fromSubscriptionStatus(response);
   }
 }

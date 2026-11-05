@@ -22,14 +22,18 @@ import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../get_test_client.dart';
 
-/// #9729 — a progress check reads each course's outline, then writes the
-/// course's record. A learner who logged out during the read left the write
-/// to run on a client with no session, which threw (CLIENT-F5M).
+/// A progress check reads each course's outline, then writes the course's
+/// record: a learner who logs out during the read (#9729, CLIENT-F5M), and a
+/// read that fails or is slower than the check waits for (#9774, CLIENT-ERW).
 void main() {
+  // A reported timeout asks the binding whether the app is in the foreground.
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   late Client client;
   late _ProgressServer server;
   late Room analyticsRoom;
@@ -65,6 +69,7 @@ void main() {
     client = await getTestClient(httpClient: server);
     QuestRepo.resetOutlineCacheForTest();
     QuestRepo.debugDisplayL1 = 'en';
+    ErrorHandler.resetReportedOnceKeysForTest();
     errors = [];
     debugPrint = (message, {wrapWidth}) {
       if (message != null && message.startsWith('error message:')) {
@@ -134,8 +139,14 @@ void main() {
     ],
   );
 
-  CourseProgressWriter writer() =>
-      CourseProgressWriter(readUses: (_) async => const []);
+  CourseProgressWriter writer({
+    Duration outlineReadTimeout = const Duration(seconds: 5),
+  }) => CourseProgressWriter(
+    readUses: (_) async => const [],
+    outlineReadTimeout: outlineReadTimeout,
+  );
+
+  const reportKey = 'course-progress-outline:$courseRoomId';
 
   test('a course with no record gets one written', () async {
     QuestRepo.debugBuildOutline = (id, {courseRoomId}) async =>
@@ -165,6 +176,78 @@ void main() {
     expect(server.progressWrites, 0);
     expect(errors, isEmpty);
   });
+
+  test('a failed outline read is reported, and the course is not read again '
+      'until its retry', () async {
+    var reads = 0;
+    QuestRepo.debugBuildOutline = (id, {courseRoomId}) async {
+      reads++;
+      return Result.error(Exception('outline read failed'));
+    };
+    final progress = writer();
+
+    await progress.update(analyticsRoom, 'de');
+    await progress.update(analyticsRoom, 'de');
+
+    expect(reads, 1);
+    expect(server.progressWrites, 0);
+    expect(ErrorHandler.reportedOnceKeysForTest, {reportKey});
+  });
+
+  group('an outline read slower than the check waits for', () {
+    late Completer<Result<QuestOutline>> read;
+    late int reads;
+
+    setUp(() {
+      read = Completer();
+      reads = 0;
+      QuestRepo.debugBuildOutline = (id, {courseRoomId}) {
+        reads++;
+        return read.future;
+      };
+    });
+
+    test('is not reported, and the course is written once it lands', () async {
+      await writer(
+        outlineReadTimeout: Duration.zero,
+      ).update(analyticsRoom, 'de');
+
+      expect(errors, isEmpty);
+      expect(server.progressWrites, 0);
+
+      read.complete(Result.value(outline()));
+      await _until(() => server.progressWrites == 1);
+      await pumpEventQueue();
+
+      expect(reads, 1);
+      expect(errors, isEmpty);
+      expect(ErrorHandler.reportedOnceKeysForTest, isEmpty);
+    });
+
+    test('that then fails is reported once, and the course waits for its '
+        'retry', () async {
+      final progress = writer(outlineReadTimeout: Duration.zero);
+      await progress.update(analyticsRoom, 'de');
+
+      read.complete(Result.error(Exception('outline read failed')));
+      await pumpEventQueue();
+      await progress.update(analyticsRoom, 'de');
+
+      expect(reads, 1);
+      expect(server.progressWrites, 0);
+      expect(errors, [contains('outline read failed')]);
+      expect(ErrorHandler.reportedOnceKeysForTest, {reportKey});
+    });
+  });
+}
+
+/// Waits for work a check started on its own, such as the check that runs
+/// when a slow outline read lands, to make [done] true.
+Future<void> _until(bool Function() done) async {
+  for (var i = 0; i < 100 && !done(); i++) {
+    await Future<void>.delayed(const Duration(milliseconds: 10));
+  }
+  expect(done(), isTrue, reason: 'the check never got there');
 }
 
 /// Answers the progress record's state write itself and counts it; everything

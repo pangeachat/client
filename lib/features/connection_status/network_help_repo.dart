@@ -18,7 +18,8 @@ enum NetworkHelpStatus {
   /// Saved on the device until the CMS can be reached.
   waiting,
 
-  /// Sent today. The app sends at most one a day from each device.
+  /// Sent today, and nobody has signed out since. The app sends at most one a
+  /// day from each account.
   sent,
 
   /// The CMS refused it. The request stays saved, and the next session tries
@@ -68,6 +69,14 @@ abstract final class NetworkHelpRepo {
         : prefs.getString(_lastSentDayKey) == _today
         ? NetworkHelpStatus.sent
         : NetworkHelpStatus.none;
+  }
+
+  /// Clears the day's mark, so the next account can send its own request. A
+  /// waiting request stays and goes out: it is the earlier account's ask.
+  static Future<void> onSignOut() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_lastSentDayKey);
+    await refreshStatus();
   }
 
   /// Saves [request] and tries to send it. Does nothing when a request is

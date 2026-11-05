@@ -5404,6 +5404,14 @@
             }
         }
     },
+    "subscriptionGracePeriodEndsOn": "Payment failed. Grace period ends on {date}",
+    "@subscriptionGracePeriodEndsOn": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
     "promoSubscription": "Promotional Subscription",
     "seatSubscription": "Institutional Seat",
     "lifetimeSubscription": "Lifetime subscription",
@@ -6347,5 +6355,19 @@
     "roleplayLabel": "Roleplay",
     "@roleplayLabel": {
         "description": "Mode tag on an activity card for a roleplay: learners take roles and work toward goals in a structured conversation."
+    },
+    "changeBaseLanguageTitle": "Change base language?",
+    "@changeBaseLanguageTitle": {
+        "description": "Title of the confirmation shown before a new base language switches the language of the app's menus and buttons."
+    },
+    "changeBaseLanguageDesc": "The app's menus and buttons will switch to {language}.",
+    "@changeBaseLanguageDesc": {
+        "description": "Confirmation message before a new base language switches the language of the app's menus and buttons. {language} is the name of the new base language.",
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:24.391341",
+    "@@last_modified": "2026-11-04 15:02:53.101270",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10151,5 +10151,8 @@
     "playWithBotNowMessage": "還沒有人加入。Pangea Bot 現在可以加入，或者您可以繼續等待。",
     "keepWaiting": "繼續等待",
     "botTookSeatAfterAnHour": "此會話已開放一小時，Pangea Bot 已加入。",
-    "botTookSeatAfterADay": "此會話已開放超過一天，Pangea Bot 已加入。發送訊息即可開始。"
+    "botTookSeatAfterADay": "此會話已開放超過一天，Pangea Bot 已加入。發送訊息即可開始。",
+    "subscriptionGracePeriodEndsOn": "付款失敗。寬限期於 {date} 結束",
+    "changeBaseLanguageTitle": "更改基礎語言？",
+    "changeBaseLanguageDesc": "應用程式的選單和按鈕將切換為{language}。"
 }

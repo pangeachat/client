@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-10-27 14:57:16.038351",
+    "@@last_modified": "2026-11-04 15:02:43.393057",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2515,5 +2515,8 @@
     "playWithBotNowMessage": "ʻAʻohe mea i hui pū mai. Hiki iā Pangea Bot ke noho i ka noho hakahaka i kēia manawa, a i ʻole hiki iā ʻoe ke hoʻomau i ke kali.",
     "keepWaiting": "E hoʻomau i ke kali",
     "botTookSeatAfterAnHour": "Ua hāmama kēia kau no hoʻokahi hola, no laila ua noho ʻo Pangea Bot i ka noho hakahaka.",
-    "botTookSeatAfterADay": "Ua hāmama kēia kau no ka ʻoi aku ma mua o hoʻokahi lā, no laila ua noho ʻo Pangea Bot i ka noho hakahaka. E hoʻouna i kahi leka e hoʻomaka."
+    "botTookSeatAfterADay": "Ua hāmama kēia kau no ka ʻoi aku ma mua o hoʻokahi lā, no laila ua noho ʻo Pangea Bot i ka noho hakahaka. E hoʻouna i kahi leka e hoʻomaka.",
+    "subscriptionGracePeriodEndsOn": "ʻAʻole i kūleʻa ka uku. E pau ana ka manawa hoʻopaneʻe ma {date}",
+    "changeBaseLanguageTitle": "E hoʻololi i ka ʻōlelo kumu?",
+    "changeBaseLanguageDesc": "E hoʻololi nā papa kuhikuhi a me nā pihi o ka polokalamu i ka {language}."
 }

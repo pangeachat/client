@@ -4,6 +4,7 @@ import 'package:fluffychat/features/subscription/enums/manage_account_kind_enum.
 import 'package:fluffychat/features/subscription/enums/subscription_access_level_enum.dart';
 import 'package:fluffychat/features/subscription/enums/subscription_type_enum.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
+import 'package:fluffychat/l10n/l10n_en.dart';
 
 /// Real-shaped `/subscription/status` fixtures matching choreo
 /// `SubscriptionStatusResponseResponse` (status_v2_schema.py). JSON keys mirror the
@@ -243,5 +244,57 @@ void main() {
         expect(snake.winning!.entitlementRef, "ent_win");
       },
     );
+  });
+
+  group('paymentPeriodDescription during a grace period', () {
+    final l10n = L10nEn();
+
+    SubscriptionEntitlement paid({
+      String status = "active",
+      String? graceEndsAt,
+    }) => SubscriptionEntitlement.fromJson({
+      "entitlementRef": "ent_123",
+      "type": "paid",
+      "provider": "stripe",
+      "cancelable": true,
+      "status": status,
+      "ends_at": "2026-08-13T00:00:00+00:00",
+      "grace_ends_at": graceEndsAt,
+      "planId": "month",
+    });
+
+    test('an active plan shows its renewal date', () {
+      expect(
+        paid().paymentPeriodDescription(l10n),
+        l10n.subscriptionRenewsOn("2026-08-13"),
+      );
+    });
+
+    for (final status in ["past_due", "grace"]) {
+      test('a $status plan shows when its grace period ends', () {
+        expect(
+          paid(
+            status: status,
+            graceEndsAt: "2026-08-27T00:00:00+00:00",
+          ).paymentPeriodDescription(l10n),
+          l10n.subscriptionGracePeriodEndsOn("2026-08-27"),
+        );
+      });
+    }
+
+    test('without a grace end, the grace line uses the end date', () {
+      final entitlement = paid(status: "past_due");
+      expect(
+        entitlement.paymentPeriodDescription(l10n),
+        l10n.subscriptionGracePeriodEndsOn("2026-08-13"),
+      );
+      expect(
+        SubscriptionStatusResponse(
+          accessLevel: SubscriptionAccessLevel.full,
+          entitlements: [entitlement],
+        ).hasGracePeriodWithoutEnd,
+        isTrue,
+      );
+    });
   });
 }

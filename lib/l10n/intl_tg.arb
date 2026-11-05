@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-10-27 14:57:22.742790",
+    "@@last_modified": "2026-11-04 15:02:51.297817",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2515,5 +2515,8 @@
     "playWithBotNowMessage": "Ҳанӯз касе ҳамроҳ нашудааст. Pangea Bot метавонад ҳозир ҷои холиро ишғол кунад, ё шумо метавонед интизор шавед.",
     "keepWaiting": "Интизор шавед",
     "botTookSeatAfterAnHour": "Ин сессия як соат боз кушода буд, аз ин рӯ Pangea Bot ҷои холиро ишғол кард.",
-    "botTookSeatAfterADay": "Ин сессия зиёда аз як рӯз боз кушода буд, аз ин рӯ Pangea Bot ҷои холиро ишғол кард. Барои оғоз паём фиристед."
+    "botTookSeatAfterADay": "Ин сессия зиёда аз як рӯз боз кушода буд, аз ин рӯ Pangea Bot ҷои холиро ишғол кард. Барои оғоз паём фиристед.",
+    "subscriptionGracePeriodEndsOn": "Пардохт ноком шуд. Мӯҳлати имтиёзнок дар {date} ба охир мерасад",
+    "changeBaseLanguageTitle": "Забони асосиро иваз кунед?",
+    "changeBaseLanguageDesc": "Менюҳо ва тугмаҳои барнома ба {language} иваз карда мешаванд."
 }

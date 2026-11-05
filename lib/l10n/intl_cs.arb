@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-10-27 14:57:13.850855",
+    "@@last_modified": "2026-11-04 15:02:41.142084",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10536,5 +10536,8 @@
     "playWithBotNowMessage": "Ještě se nikdo nepřipojil. Pangea Bot může obsadit volné místo hned teď, nebo můžete dál čekat.",
     "keepWaiting": "Pokračovat v čekání",
     "botTookSeatAfterAnHour": "Tato relace byla otevřená hodinu, takže Pangea Bot obsadil volné místo.",
-    "botTookSeatAfterADay": "Tato relace byla otevřená déle než den, takže Pangea Bot obsadil volné místo. Pošlete zprávu pro zahájení."
+    "botTookSeatAfterADay": "Tato relace byla otevřená déle než den, takže Pangea Bot obsadil volné místo. Pošlete zprávu pro zahájení.",
+    "subscriptionGracePeriodEndsOn": "Platba se nezdařila. Ochranná lhůta končí {date}",
+    "changeBaseLanguageTitle": "Změnit základní jazyk?",
+    "changeBaseLanguageDesc": "Nabídky a tlačítka aplikace se přepnou do jazyka {language}."
 }

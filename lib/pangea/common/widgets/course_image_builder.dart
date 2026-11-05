@@ -6,7 +6,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
 
 /// Builds with the image a course shows: its own [avatar] when it has one,
-/// otherwise its quest's cover (course-plans.instructions.md § Course avatar).
+/// otherwise its quest's cover (quests.instructions.md § Course avatar).
 /// [builder] gets null while the cover loads, when there is none, and when its
 /// read failed this session, so the letter avatar shows in each case.
 ///

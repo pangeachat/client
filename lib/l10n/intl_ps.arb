@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-10-27 14:57:20.411576",
+    "@@last_modified": "2026-11-04 15:02:49.318560",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2515,5 +2515,8 @@
     "playWithBotNowMessage": "تر اوسه هیڅوک نه دي شامل شوي. Pangea Bot اوس خالي څوکۍ نیولی شي، یا تاسو انتظار کولی شئ.",
     "keepWaiting": "انتظار وکړئ",
     "botTookSeatAfterAnHour": "دا ناسته د یو ساعت لپاره خلاصه وه، نو Pangea Bot خالي څوکۍ ونیوله.",
-    "botTookSeatAfterADay": "دا ناسته د یوې ورځې څخه زیاته خلاصه وه، نو Pangea Bot خالي څوکۍ ونیوله. د پیل کولو لپاره یو پیغام واستوئ."
+    "botTookSeatAfterADay": "دا ناسته د یوې ورځې څخه زیاته خلاصه وه، نو Pangea Bot خالي څوکۍ ونیوله. د پیل کولو لپاره یو پیغام واستوئ.",
+    "subscriptionGracePeriodEndsOn": "تادیه ناکامه شوه. د مهلت موده په {date} پای ته رسیږي",
+    "changeBaseLanguageTitle": "بنسټیزه ژبه بدله کړو؟",
+    "changeBaseLanguageDesc": "د اپلیکیشن مینو او بټنونه به {language} ته بدل شي."
 }

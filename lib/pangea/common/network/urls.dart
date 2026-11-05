@@ -158,12 +158,7 @@ class PApiUrls {
   static String grammarConstructMeaning =
       "${PApiUrls._choreoRoute}/grammar_constructs/meaning";
 
-  ///--------------------------- course translations ---------------------------
-  static String getLocalizedCourse =
-      "${PApiUrls._choreoRoute}/course_plans/localize";
-  static String getLocalizedTopic = "${PApiUrls._choreoRoute}/topics/localize";
-  static String getLocalizedActivity =
-      "${PApiUrls._choreoRoute}/activity_plan/localize";
+  ///--------------------------- custom course requests ------------------------
   static String requestCustomCourse =
       "${PApiUrls._choreoRoute}/courses/request";
 

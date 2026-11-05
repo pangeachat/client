@@ -54,10 +54,11 @@ class MobileSearchBar extends StatefulWidget {
   /// live (greyed below it).
   final bool Function()? canZoomOut;
 
-  /// The live Level-pill filter ([WorldMapController.filter]) — a builder for
-  /// the same reason the others are — read only for the level-fallback notice
+  /// The live map filter ([WorldMapController.filter]) — a builder for the
+  /// same reason the others are — read for the level-fallback notice
   /// ([WorldMapLevelFallbackNotice]): whether the map is standing a
-  /// neighbouring level in for the one the learner chose. Null in a scope
+  /// neighbouring level in for the one the learner chose; and on each
+  /// [viewRevision] tick, for a query cleared outside the bar. Null in a scope
   /// without the notice.
   final WorldMapFilter Function()? filter;
 
@@ -125,7 +126,13 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
   }
 
   void _onViewRevision() {
-    if (mounted) setState(() {});
+    if (!mounted) return;
+    // A reset or a target-language change clears the map's query without
+    // rebuilding this bar, so didUpdateWidget never sees it. The bar's own
+    // typing already matches the live query, so this never moves the caret.
+    final query = widget.filter?.call().query;
+    if (query != null && query != _controller.text) _controller.text = query;
+    setState(() {});
   }
 
   @override

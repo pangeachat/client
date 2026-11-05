@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-10-27 14:57:19.288192",
+    "@@last_modified": "2026-11-04 15:02:48.248633",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2515,5 +2515,8 @@
     "playWithBotNowMessage": "Kanadasu houjik faoba yaodri. Pangea Bot na houjik khongpham louba yai, nattraga nangna ngairaga leiba yai.",
     "keepWaiting": "Ngairaga leiyu",
     "botTookSeatAfterAnHour": "Seesion asi pung ama muk hangkhre, aduna Pangea Bot na khongpham lourabani.",
-    "botTookSeatAfterADay": "Seesion asi numit ama muk hangkhre, aduna Pangea Bot na khongpham lourabani. Haurunaba wahei amata thabiyu."
+    "botTookSeatAfterADay": "Seesion asi numit ama muk hangkhre, aduna Pangea Bot na khongpham lourabani. Haurunaba wahei amata thabiyu.",
+    "subscriptionGracePeriodEndsOn": "শেন্থোক ফেইল তৌরবনি। গ্রেস পিরিয়ড {date} দা লোইগনি।",
+    "changeBaseLanguageTitle": "ꯃୂଳ ꯂꯣꯟ ꯑꯣꯟꯊꯣꯛꯀꯗ꯭ꯔꯥ?",
+    "changeBaseLanguageDesc": "ꯑꯦꯞꯄꯀꯤ ꯃꯦꯅꯨ ꯑꯃꯁꯨꯡ ꯕꯇꯟꯁꯤꯡ ꯑꯁꯤ {language} ꯗꯥ ꯑꯣꯟꯊꯣꯛꯀꯅꯤ."
 }

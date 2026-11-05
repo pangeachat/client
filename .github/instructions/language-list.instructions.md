@@ -46,6 +46,7 @@ The `l2` getter on [`LanguageModel`](../../lib/features/languages/language_model
 - Regional variants show `localeEmoji` in place of parenthesized region: "Portuguese 🇧🇷" instead of "Portuguese (Brazil)"
 - `langCodeShort` strips the territory: `en-US` → `en`
 - RTL detection uses a hardcoded list in `LanguageConstants.rtlLanguageCodes`
+- The app loads each flag from a URL with a query string that the website does not use: the website shows the same flag files as plain images, which S3 sends without CORS headers, and the browser shares that copy across pangea.chat, where the app's request for it fails and shows the globe. Keep the query string, and load the app's flag URL only with CORS.
 
 ## Future Work
 
