@@ -11,6 +11,7 @@ import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_summary_goals.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/goal_header_session_xp.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'activity_session_fixtures.dart';
@@ -124,6 +125,11 @@ void main() {
 
     expect(find.text(sessionXp), findsOneWidget);
     expect(find.text('goal 1'), findsOneWidget);
+    // Centred on the card, like the heading above it.
+    expect(
+      tester.getCenter(find.byType(GoalHeaderSessionXp)).dx,
+      moreOrLessEquals(tester.getCenter(find.byType(Scaffold)).dx),
+    );
   });
 
   testWidgets('another player\'s card shows their goals and no XP', (

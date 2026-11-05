@@ -9,7 +9,7 @@ import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orche
 
 /// The goals of the participant whose summary card is up, shown in place of
 /// the goal header once the summary lands (#8289). On the viewer's own card
-/// the session XP the header showed tops the list (#9696); another player's
+/// the session XP the header showed sits centred above the list (#9696); another player's
 /// card shows none.
 class ActivitySummaryGoals extends StatelessWidget {
   final Room room;
@@ -33,8 +33,9 @@ class ActivitySummaryGoals extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Centred like the heading and the picker above it.
         if (participantId == room.client.userID)
-          GoalHeaderSessionXp(room: room),
+          Center(child: GoalHeaderSessionXp(room: room)),
         for (final goal in role.allGoals)
           GoalStatusWidget(
             goal: goal,
