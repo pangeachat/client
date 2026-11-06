@@ -9,6 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart' hide Profile;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
@@ -116,6 +117,10 @@ void main() {
     // Loading a translation is real async work, which a test body's fake
     // clock never runs.
     await lookupL10n(const Locale('en'));
+    // The dialog's bot face falls back to a cached network image, whose cache
+    // keeps its index in sqflite. Set here so this file behaves the same
+    // alone as in a CI shard where another test already set it.
+    databaseFactory = databaseFactoryFfi;
   });
 
   setUp(() async {
@@ -176,6 +181,8 @@ void main() {
 
   Future<void> closeApp(WidgetTester tester) async {
     await tester.pumpWidget(const SizedBox());
+    // The dialog's image cache schedules a cleanup ten seconds out.
+    await tester.pump(const Duration(seconds: 11));
   }
 
   Future<void> tapAndSettle(WidgetTester tester, String text) async {
@@ -207,6 +214,7 @@ void main() {
           .selfIdentifiedRole,
       UserType.teacher,
     );
+    await closeApp(tester);
   });
 
   testWidgets('an account that has a role is not asked', (tester) async {
@@ -227,6 +235,7 @@ void main() {
       await closeApp(tester);
       await openApp(tester);
       expect(find.byType(UserTypePromptDialog), findsNothing);
+      await closeApp(tester);
     },
   );
 
