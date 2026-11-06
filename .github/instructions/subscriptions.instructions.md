@@ -1,57 +1,54 @@
 ---
 applyTo: "lib/features/subscription/**,lib/routes/settings/settings_subscription/**"
-description: "Client subscription module — entitlement display from the choreographer, storefront-gated purchase steering, and in-app discount and management."
+description: "How the client reflects a learner's subscription, takes them to checkout, redeems discount codes and gift links, refreshes their status, and shows and manages their plan."
 ---
 
-# Subscription Module — Client
+# Subscriptions — Client
 
-Client-side subscription UI and purchase flow. For the cross-repo architecture — the web-only rationale, the entitlement model, and the platform policy — see [subscriptions.instructions.md](../../../.github/.github/instructions/subscriptions.instructions.md).
+The client shows a learner whether they have paid AI access, takes them to checkout where the platform allows it, and lets them manage their plan. It holds no payment state: it reflects what the choreographer reports and hands payment to Stripe on the web. The cross-repo design (why purchase is web-only, the entitlement model, platform policy) is in [subscriptions.instructions.md](../../../.github/.github/instructions/subscriptions.instructions.md).
 
-The client holds no payment state. It reads entitlement status from the choreographer, renders the purchase surface defined by the subscription design, and hands off to Stripe on the web for the actual payment.
+## The experience
 
-## Entitlement state
+1. When the app starts, it checks the learner's subscription and starts a free trial for a new learner in their trial window.
+2. An unsubscribed learner outside the trial window finds paid features locked, and sees the paywall unless they have dismissed it.
+3. They choose a plan, with a discount code if they have one, and pay on Stripe's checkout page.
+4. Back in the app, the purchase is picked up at once.
 
-[`SubscriptionController`](../../lib/features/subscription/controllers/subscription_controller.dart) resolves the user's status from the choreographer on startup — returning from web checkout must feel immediate, and server-side grants (seats, trials, comps) appear the same way. There is no in-app purchase SDK and no store-package merging: entitlement is a choreographer-served record that the app reflects, never unlocks. Paid features gate on `showSubscriptionGatedContent`; the paywall surfaces only when the user is unsubscribed outside the trial window and hasn't dismissed it.
+## Where entitlement comes from
 
-## Purchase surface
+Entitlement is a record the choreographer serves; the app reflects it and never unlocks anything itself. There is no in-app purchase. Server-side grants (seats, trials, comps) show up like a purchase. Which plans, prices and checkout a device shows is the org doc's [Platform policy](../../../.github/.github/instructions/subscriptions.instructions.md#platform-policy); the client renders it and does not decide it.
 
-Which purchase surface the client renders — the plans, prices, discount field, and whether checkout is offered — is defined by the org doc's [Platform policy](../../../.github/.github/instructions/subscriptions.instructions.md). The client renders that design; it does not decide it.
+## Checkout and discount codes
 
-## Star background
+Checkout opens in the system browser, and returning counts as a purchase once the subscription shows up.
 
-The subscription surfaces — the settings paywall, the selected-plan page, the discount-code page and the billing history — paint the star art full bleed behind their content.
+A discount code is checked first, so a bad code shows its error in the app and a good one reaches Stripe already applied. The button to the discount-code page appears only where the paywall may appear, and never on iOS, where App Review rejected it.
 
-**The background is decorative, and only cards occlude it.** The content is not wrapped in a surface of its own, so the stars show through the gaps between and around the cards. Cards covering part of the art, the star with the two characters included, is expected; a slab down the middle of the page that blanks it out is the bug (#8751).
+## Gift links
 
-The other half of that rule is that no text sits directly on the image. Anything the wrapper used to supply a background for carries its own: the framed cards already did, and everything else — status and trial lines, the "Select Your Plan" heading, error messages, the store notices, the discount-code field — is wrapped in [`SubscriptionCard`](../../lib/features/subscription/widgets/subscription_card.dart) or fills its own container. New content on these surfaces needs a background before it needs anything else.
+A promo code can arrive as a link, which opens the discount page with the code, on web and in the app, iOS included, and a signed-out visitor's link survives login, signup and onboarding ([routing.instructions.md § A signed-out visitor's destination](routing.instructions.md#a-signed-out-visitors-destination)).
 
-## Purchase flow
+Signed in, the page checks the code at once and opens on the plans with the discount applied. A code that fails (invalid, expired, or already used, since each works once) shows the usual error with the field on every platform, so the learner can correct it. The code is never logged or reported: analytics and error reports name the page without it ([google-analytics.instructions.md](google-analytics.instructions.md)).
 
-Selecting a plan requests a checkout URL from the choreographer and opens it in the system browser ([`PaymentPageMixin`](../../lib/routes/settings/settings_subscription/payment_page_mixin.dart)). A `beganPayment` flag survives the round-trip, so returning to the app is recognized as a completed purchase and the entitlement refresh runs. The discount-code field validates the code server-side before checkout, so an error surfaces in the app and the code reaches Stripe pre-applied; the button that opens the discount-code page appears only where the paywall may appear ([`allowsInAppDiscountCode`](../../lib/features/subscription/utils/storefront_gate.dart)), and never on iOS, where App Review rejected it (Apple 3.1.1, #9316). The page itself still opens on iOS from a link, so a learner who was sent one can use it.
+## When status refreshes
 
-## Gift link
-
-A promo code can arrive by link instead of being typed: `https://app.pangea.chat/gift/<code>`, the button in a conference or campaign email. Like the course link, the bare path is the app URL on web and native, and [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds it into the subscription discount page token carrying the code before anything renders, so a signed-out visitor's link survives login, signup and onboarding the way every workspace location does ([routing.instructions.md § A signed-out visitor's destination](routing.instructions.md#a-signed-out-visitors-destination)).
-
-Signed in, the discount page validates the link's code with the choreographer at once and opens on the plans with the discount applied and the Continue button to checkout, so the field is not the first thing shown. A code that fails validation (invalid, expired, or already used; the codes are single-use in Stripe) shows the usual error with the field, on every platform including iOS, so the learner can correct it; reopening a spent link therefore grants nothing. The app still only reflects the entitlement Stripe grants ([org platform policy](../../../.github/.github/instructions/subscriptions.instructions.md#platform-policy)). The code is part of the destination and is never logged or reported: the GA screen name and Sentry breadcrumbs name the page without it ([google-analytics.instructions.md](google-analytics.instructions.md)).
-
-## Refreshing subscription info
-
-Subscription info is initially fetched on session startup, and cached in the [SubscriptionController](../../lib/features/subscription/controllers/subscription_controller.dart) until explicitly reset. The client much refresh the cached subscription status info when it changes. All refreshes go through the SubscriptionController's [_updateCurrentSubscription](../../lib/features/subscription/controllers/subscription_controller.dart) function, which force-refreshes the cached value. The SubscriptionController calls this internally on startup ([_initialize](../../lib/features/subscription/controllers/subscription_controller.dart)), when a free trial is activated ([_activateNewUserTrial](../../lib/features/subscription/controllers/subscription_controller.dart)), and when the controller is explicitly reinitialized ([reinitialize](../../lib/features/subscription/controllers/subscription_controller.dart)). 
-
-The settings page pulls subscription status from the SubscriptionController instead of fetching that info itself, and rebuilds automatically when updates are made in the SubscriptionController.
-
-The client called reinitialize when:
-1. A new user logs in ([PangeaController._onLogin](../../lib/pangea/common/controllers/pangea_controller.dart))
-2. After a user creates an account, to trigger free trial activation
-3. When a checkout request fails because the user already has a subscription. This is a fallback to account for the cache not being updated for a user with a subscription, so the UI allows them to start the checkout flow.
-4. After a user cancels their subscription via the "Cancel" button in the [SubscriptionHistory](../../lib/routes/settings/settings_subscription/subscription_history.dart) page
-5. When a refresh button is pressed in the errored-out subscription settings view
-
-The client tracks potential subscription changes via the [SubscriptionManagementRepo](../../lib/features/subscription/repo_v2/subscription_management_repo.dart). It tracks if the user has started a payment and if the user has launched their billing portal, which can be used to cancel or restart subscriptions. The client uses with info the the [didChangeAppLifecycleState](../../lib/widgets/matrix.dart) override in [Matrix](../../lib/widgets/matrix.dart) to poll for refreshes to the subscription status when the user returns to the app. The polling has an exponential backoff, with a maximum of 5 calls to the status endpoint.
+The app fetches status at startup and keeps it until something may change it. It fetches again when a learner logs in; when a new account is created, so the free trial can start; when checkout is refused because the learner already has a subscription (the app's copy was out of date); when the learner cancels; and when the learner taps refresh after the page failed to load. After a return from checkout or the Stripe billing page, it checks a few times, waiting longer each time. Settings always shows the current copy.
 
 ## Managing a subscription
 
-Settings shows the current plan and billing history natively, cancels in the app, and opens a Stripe-hosted page only to change the payment card. This is account management, shown on every platform. Seat-sponsored learners (Group or Institution tier) see who sponsors their access in place of a paywall.
+Settings shows the plan and billing history, cancels in the app, and opens a Stripe-hosted page only to change the payment card. This is account management, shown on every platform. Seat-sponsored learners (Group or Institution tier) see who sponsors their access in place of a paywall.
 
-When a renewal payment fails, because the card was declined or because there is no card on file, the plan card shows when the grace period ends instead of a renewal date: "Payment failed. Grace period ends on {date}". Access lasts until then unless a payment goes through.
+## The plan card
+
+The plan card, on Subscription Management and its Manage page, tells the learner what their next payment costs, until when, and what happens after. With a discount, the full price is struck through beside what they will pay, and a payment that costs nothing shows as free. The line beneath changes only for what will change: when a discount ends and the full price starts; when the plan will end because no card is on file, with a prompt to add one; or, after a renewal payment fails, when the grace period ends, shown as an error. Access lasts until then unless a payment goes through. A cancelled plan shows its end date. Without discount or card information, it shows the plain renewal date rather than guess.
+
+For each subscription the choreographer sends the discount (a percentage or amount off), the date of the first full-price payment, and whether a card is on file, so the app works out no billing dates itself.
+
+## Star background
+
+The subscription pages show the star art full bleed. It is decorative and only cards cover it, so the stars show between and around them; a solid panel blanking out the middle is a bug. No text sits directly on the art: every line, heading, error, notice and field sits on a card or its own background.
+
+## Open questions
+
+1. Paywall in the trial window. This doc hides the paywall during the trial window, but the code may show it to an unsubscribed learner then. Which is intended?
+2. Sponsor display. No display of a seat-sponsored learner's sponsor was found in the client. Planned or dropped?

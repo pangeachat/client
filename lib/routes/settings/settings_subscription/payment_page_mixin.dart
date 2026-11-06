@@ -30,6 +30,9 @@ mixin PaymentPageMixin<T extends StatefulWidget> on State<T> {
     await _launchPaymentLink(paymentLink, request.planId);
   }
 
+  // A conflict means the cached status missed an existing subscription (that
+  // is what let checkout start), so refetch it (subscriptions.instructions.md
+  // § When status refreshes).
   Future<void> _refreshOnCheckoutException(Object exception) async {
     if (exception is! ConflictCheckoutException) return;
     await MatrixState.pangeaController.subscriptionController.reinitialize(

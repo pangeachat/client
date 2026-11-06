@@ -200,6 +200,9 @@ class SubscriptionController {
     );
   }
 
+  /// The one path that refreshes the cached status: every refresh goes
+  /// through here and bypasses the cache (subscriptions.instructions.md
+  /// § When status refreshes).
   Future<void> _updateCurrentSubscription(String userID) async {
     final result = await SubscriptionStatusRepo.instance.get(
       SubscriptionStatusRequest(userID: userID),
