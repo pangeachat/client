@@ -166,6 +166,8 @@ class PangeaController {
     );
   }
 
+  /// Profile side effects (the bot's options, the public profile) are run from
+  /// here rather than from [UserController], which stays about the data.
   void _registerSubscriptions() {
     _languageSubscription?.cancel();
     _languageSubscription = userController.languageStream.stream.listen(

@@ -41,6 +41,10 @@ class LanguageUpdate {
 
 /// Controller that manages saving and reading of user/profile information
 class UserController {
+  /// A changed base or target language, kept apart from [settingsUpdateStream]
+  /// because a language change also clears caches, which no other settings
+  /// change needs. [PangeaController] subscribes to both and runs every side
+  /// effect, so this controller stays about the data.
   final StreamController<LanguageUpdate> languageStream =
       StreamController.broadcast();
   final StreamController<Profile> settingsUpdateStream =
@@ -172,6 +176,14 @@ class UserController {
   }
 
   /// Updates the user's profile with the given [update] function and saves it.
+  ///
+  /// Every path that changes settings writes through here, the language chip
+  /// and switcher included, however far they sit from the settings page. The
+  /// write comes back in a sync, which fires [languageStream] or
+  /// [settingsUpdateStream], and those streams are the one trigger for
+  /// updating the bot and the public profile; only the bot settings dialog
+  /// also updates the bot directly (profile.instructions.md, "Where settings
+  /// are changed", 5).
   Future<void> updateProfile(
     Profile Function(Profile) update, {
     waitForDataInSync = false,
@@ -498,6 +510,10 @@ class UserController {
       // Bounded, because every later publish queues behind this one: the Matrix
       // profile PUT has no timeout of its own, so a request that stalls rather
       // than fails would wedge the chain for the rest of the session.
+      // Abandoning a stalled write does not recall it, so in that one case it
+      // can still land after a later one; the alternative was a queue that
+      // stops forever. Nothing retries, so the published profile can sit
+      // behind what the app holds until the next change or the next startup.
       await client
           .setUserProfile(
             client.userID!,
