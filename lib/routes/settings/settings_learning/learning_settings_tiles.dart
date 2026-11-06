@@ -12,6 +12,7 @@ import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown
 import 'package:fluffychat/routes/settings/settings_learning/p_settings_switch_list_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/shared_analytics_section.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/user_type_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LearningSettingsTiles extends StatelessWidget {
@@ -103,6 +104,16 @@ class LearningSettingsTiles extends StatelessWidget {
                   child: LanguageLevelDropdown(
                     initialLevel: viewModel.cefrLevel,
                     onChanged: viewModel.setCefrLevel,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 16.0,
+                  ),
+                  child: UserTypeDropdown(
+                    userType: viewModel.userType,
+                    onChanged: viewModel.setUserType,
                   ),
                 ),
               ],

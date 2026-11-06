@@ -33,6 +33,7 @@ import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/friend_dm_prompt.dart';
+import 'package:fluffychat/routes/settings/settings_learning/user_type_prompt.dart';
 import 'package:fluffychat/routes/world/course_context_bar.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
@@ -399,6 +400,10 @@ class WorkspaceShell extends StatelessWidget {
                 /// blank page, is what a slow first sync shows). Zero-size; it
                 /// is a shell resident so it exists exactly when logged in.
                 DmInviteFerryConsumer(uri: state.uri),
+
+                /// Headless: asks an account with no role for one, once the
+                /// shell is up, so never during onboarding.
+                const UserTypePrompt(),
 
                 /// Under a narrow full-screen surface (a live room / session,
                 /// the DM picker) the only map left showing is the safe-area

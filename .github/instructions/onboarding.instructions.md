@@ -46,6 +46,8 @@ When a save fails, the page shows the error and stays where it is until Next wor
 
 A signed-in account with no L2 is sent to onboarding, whatever link it opened, and saving the L2 marks onboarding as done. Someone who leaves before then starts a new run, with only what was saved to their account.
 
+An account with no role, such as one that signed up before onboarding asked for it, is asked for one when the app opens, and any account can change its role in learning settings ([profile](profile.instructions.md)).
+
 ### Setup
 
 Before the profile page, a loading page sets the account up. This page adds a creation date to the user's account if not already set. It also requests the user’s free trial if they are eligible.
@@ -65,5 +67,4 @@ A teacher gives their name, institution, and textbook or curriculum. Submitting 
 ## Open questions
 
 - Someone who leaves once their L2 is saved skips the rest. Should onboarding resume where they left off?
-- Some old or corrupted accounts have no role. When and how should they be asked to set it?
 - Repeated save failures leave users unable to move forward, with an unclear error. How should onboarding handle this?
