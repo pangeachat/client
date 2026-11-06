@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
@@ -27,11 +28,18 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
       throw StateError("Pick cefr level step is not fully set up");
     }
 
-    await state.accountUpdater.updateProfile((profile) {
-      return profile.copyWith(
-        userSettings: profile.userSettings.copyWith(cefrLevel: level),
-      );
-    });
+    // A failed save doesn't stop onboarding: an unfinished run resumes on this
+    // page, so stopping here could keep the person out of the app on every
+    // open (onboarding.instructions.md § What onboarding reads and saves).
+    try {
+      await state.accountUpdater.updateProfile((profile) {
+        return profile.copyWith(
+          userSettings: profile.userSettings.copyWith(cefrLevel: level),
+        );
+      });
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'level': level.string});
+    }
 
     // A joined course ends onboarding on the joined-course page, and for a
     // teacher it takes the place of the course request — they already have a

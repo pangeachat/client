@@ -20,13 +20,55 @@ extension OnboardingClientExtension on Client {
 
   bool get showedTrialPage => _onboardingSettingsModel.showedTrialPage;
 
-  /// The role this account chose in an earlier onboarding, so a restarted
-  /// onboarding resumes on the same path. Read from this client's own
-  /// account data rather than the process-wide profile cache, which belongs
-  /// to whichever account is foregrounded.
-  UserType? get selfIdentifiedRole => Profile.fromAccountData(
+  /// This account's saved settings, read from this client's own account data
+  /// rather than the process-wide profile cache, which belongs to whichever
+  /// account is foregrounded.
+  UserSettings? get savedUserSettings => Profile.fromAccountData(
     accountData[UserConstants.userProfile]?.content,
-  )?.userSettings.selfIdentifiedRole;
+  )?.userSettings;
+
+  /// The role this account chose in an earlier onboarding, so a restarted
+  /// onboarding resumes on the same path.
+  UserType? get selfIdentifiedRole => savedUserSettings?.selfIdentifiedRole;
+
+  Map<String, Object?> get _progress =>
+      accountData[PangeaEventTypes.onboardingProgress]?.content ?? const {};
+
+  /// The account whose onboarding reached its end on this client in this
+  /// session, whether or not the finished mark has saved yet.
+  static final Expando<String> _finishedHere = Expando();
+
+  /// Whether this account started an onboarding run and has not finished it,
+  /// so it is sent back to onboarding. An account with neither mark predates
+  /// the marks and counts as finished (onboarding.instructions.md § What
+  /// onboarding reads and saves).
+  bool get onboardingUnfinished =>
+      _progress['started'] == true &&
+      _progress['finished'] != true &&
+      _finishedHere[this] != userID;
+
+  /// Marks a run started, for an account with no marks and no L2. An account
+  /// that saved its L2 before the marks existed finished onboarding then.
+  Future<void> markOnboardingStarted() async {
+    if (_progress.isNotEmpty || savedUserSettings?.targetLanguage != null) {
+      return;
+    }
+    await setAccountData(userID!, PangeaEventTypes.onboardingProgress, {
+      ..._progress,
+      'started': true,
+    });
+  }
+
+  /// Marks the run finished. The person is let into the app at once, before
+  /// the write lands or even if it fails, so a failed save never keeps them in
+  /// onboarding; an unsaved mark resumes it on the next app open.
+  Future<void> markOnboardingFinished() async {
+    _finishedHere[this] = userID;
+    await setAccountData(userID!, PangeaEventTypes.onboardingProgress, {
+      ..._progress,
+      'finished': true,
+    });
+  }
 
   Future<void> _setOnboardingSettings(OnboardingSettingsModel update) async {
     await setAccountData(

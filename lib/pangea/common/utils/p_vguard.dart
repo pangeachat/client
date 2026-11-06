@@ -29,10 +29,8 @@ class PAuthGaurd {
     ).widget.clients.any((client) => client.isLogged());
     if (!isLogged) return null;
 
-    // If user hasn't set their L2,
-    // and their URL doesn’t include ‘course,’ redirect
-    final bool hasSetL2 = await pController!.userController.isUserL2Set;
-    return !hasSetL2 ? '/registration' : PRoutes.world;
+    final finished = await pController!.userController.finishedOnboarding;
+    return !finished ? '/registration' : PRoutes.world;
   }
 
   /// The logged-in-only guard on the world root `/`. Logged out, it is the
@@ -54,10 +52,8 @@ class PAuthGaurd {
       return _loginBounce(state);
     }
 
-    // If user hasn't set their L2,
-    // and their URL doesn’t include ‘course,’ redirect
-    final bool hasSetL2 = await pController!.userController.isUserL2Set;
-    if (!hasSetL2) return '/registration';
+    final finished = await pController!.userController.finishedOnboarding;
+    if (!finished) return '/registration';
     return consumeCachedDestination(state.uri);
   }
 
@@ -165,14 +161,14 @@ class PAuthGaurd {
   /// the one they asked for, and the router's own guards ([roomsRedirect])
   /// already vet it.
   ///
-  /// [current] is the location the app is on; [isL2Set] whether the account
-  /// has chosen a language to learn — until it has, registration outranks
+  /// [current] is the location the app is on; [finishedOnboarding] whether
+  /// the account is past onboarding — until it is, registration outranks
   /// everything, exactly as [roomsRedirect] enforces on every landing.
   static String? loggedInLanding({
     required Uri current,
-    required bool isL2Set,
+    required bool finishedOnboarding,
   }) {
-    if (!isL2Set) return '/registration';
+    if (!finishedOnboarding) return '/registration';
     return isEntryLocation(current) ? PRoutes.world : null;
   }
 

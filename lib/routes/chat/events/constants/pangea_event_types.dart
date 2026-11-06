@@ -107,6 +107,13 @@ class PangeaEventTypes {
 
   static const onboardingSettings = "org.pangea.onboarding_settings";
 
+  /// Whether this account's onboarding started and finished, so an unfinished
+  /// one resumes (onboarding.instructions.md). Kept apart from
+  /// [onboardingSettings]: the finished mark is written right after the trial
+  /// page's flag, and writing it there from this device's older copy would
+  /// undo that flag.
+  static const onboardingProgress = "org.pangea.onboarding_progress";
+
   /// The learner's journey steps and app-ask history, read by the engagement
   /// system (engagement analytics.instructions.md, Journey-checklist
   /// state). Its own event so older clients, which rewrite the profile event
