@@ -10050,5 +10050,6 @@
     "changeBaseLanguageTitle": "Oinarrizko hizkuntza aldatu?",
     "changeBaseLanguageDesc": "Aplikazioaren menuak eta botoiak {language} hizkuntzara aldatuko dira.",
     "accountSetupFailedHelp": "Ezin izan dugu zure kontua konfiguratzen amaitu. Egiaztatu konexioa eta saiatu berriro, edo itxi saioa eta hasi geroago.",
-    "onboardingOfflineError": "Lineaz kanpo zaude. Saiatu berriro konektatuta zaudenean."
+    "onboardingOfflineError": "Lineaz kanpo zaude. Saiatu berriro konektatuta zaudenean.",
+    "activitySavedTo": "Jarduera {page} honetan gorde da"
 }

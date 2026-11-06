@@ -10123,5 +10123,6 @@
     "changeBaseLanguageTitle": "Ganti bahasa dasar?",
     "changeBaseLanguageDesc": "Menu dan tombol aplikasi akan beralih ke {language}.",
     "accountSetupFailedHelp": "Kami tidak dapat menyelesaikan penyiapan akun Anda. Periksa koneksi Anda dan coba lagi, atau keluar dan masuk nanti.",
-    "onboardingOfflineError": "Anda sedang offline. Coba lagi setelah Anda online."
+    "onboardingOfflineError": "Anda sedang offline. Coba lagi setelah Anda online.",
+    "activitySavedTo": "Aktivitas disimpan ke {page}"
 }

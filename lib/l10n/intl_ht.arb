@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Chanje lang debaz?",
     "changeBaseLanguageDesc": "Meni ak bouton aplikasyon an ap chanje an {language}.",
     "accountSetupFailedHelp": "Nou pa t' kapab fini konfigirasyon kont ou. Tcheke koneksyon ou epi eseye ankò, oswa dekonekte epi konekte pita.",
-    "onboardingOfflineError": "Ou dekonekte. Eseye ankò lè ou rekonekte."
+    "onboardingOfflineError": "Ou dekonekte. Eseye ankò lè ou rekonekte.",
+    "activitySavedTo": "Aktivite sove nan {page}"
 }

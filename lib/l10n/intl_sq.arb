@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Ndrysho gjuhën bazë?",
     "changeBaseLanguageDesc": "Menytë dhe butonat e aplikacionit do të kalojnë në {language}.",
     "accountSetupFailedHelp": "Nuk mundëm të përfundonim konfigurimin e llogarisë suaj. Kontrolloni lidhjen tuaj dhe provoni përsëri, ose dilni dhe kyçuni më vonë.",
-    "onboardingOfflineError": "Je jashtë linje. Provo sërish pasi të jesh online."
+    "onboardingOfflineError": "Je jashtë linje. Provo sërish pasi të jesh online.",
+    "activitySavedTo": "Aktiviteti u ruajt te {page}"
 }

@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Chinja mutauro wekutanga here?",
     "changeBaseLanguageDesc": "Mamenu nemabhatani eapp achachinja kuita {language}.",
     "accountSetupFailedHelp": "Hatina kukwanisa kupedza kuseta account yako. Tarisa network yako woedza zvakare, kana kuti log out wozoedza zvakare gare gare gare.",
-    "onboardingOfflineError": "Hauziko paIndaneti. Edza zvakare kana wadzoka paIndaneti."
+    "onboardingOfflineError": "Hauziko paIndaneti. Edza zvakare kana wadzoka paIndaneti.",
+    "activitySavedTo": "Chiitiko chachengetwa ku {page}"
 }

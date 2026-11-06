@@ -11004,5 +11004,6 @@
     "changeBaseLanguageTitle": "更改基礎語言？",
     "changeBaseLanguageDesc": "應用程式嘅選單同按鈕將會轉為{language}。",
     "accountSetupFailedHelp": "我哋完成唔到你嘅帳戶設定。請檢查你嘅連線，然後再試一次，或者登出之後再登入。",
-    "onboardingOfflineError": "你已離線。請喺上線之後再試過。"
+    "onboardingOfflineError": "你已離線。請喺上線之後再試過。",
+    "activitySavedTo": "活動已儲存到{page}"
 }

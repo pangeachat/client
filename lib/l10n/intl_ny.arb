@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Musinthe chilankhulo choyambira?",
     "changeBaseLanguageDesc": "Mamenyu ndi mabatani a pulogalamuyi asinthira ku {language}.",
     "accountSetupFailedHelp": "Sitakwanitse kumaliza kukonza akaunti yanu. Chongani intaneti yanu ndikuyesanso, kapena tulukani ndikulowanso pambuyo pake.",
-    "onboardingOfflineError": "Mulibe intaneti. Yesaninso mukadzakhala ndi intaneti."
+    "onboardingOfflineError": "Mulibe intaneti. Yesaninso mukadzakhala ndi intaneti.",
+    "activitySavedTo": "Zochitika zasungidwa ku {page}"
 }

@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Canza harshen asali?",
     "changeBaseLanguageDesc": "Za a canza menu da maɓallan manhajar zuwa {language}.",
     "accountSetupFailedHelp": "Mun kasa kammala saita asusunka. Duba haɗinka kuma sake gwadawa, ko fita daga asusunka ka shiga daga baya.",
-    "onboardingOfflineError": "Baka da intanet. Kuma gwada idan ka dawo kan layi."
+    "onboardingOfflineError": "Baka da intanet. Kuma gwada idan ka dawo kan layi.",
+    "activitySavedTo": "An adana aiki zuwa {page}"
 }

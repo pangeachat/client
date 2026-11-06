@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Usbon ang base nga pinulongan?",
     "changeBaseLanguageDesc": "Ang mga menu ug buton sa app mobalhin sa {language}.",
     "accountSetupFailedHelp": "Dili namo mahuman ang pag-set up sa imong account. Susiha ang imong koneksyon ug sulayi pag-usab, o pag-log out ug pag-sign in unya.",
-    "onboardingOfflineError": "Offline ka. Sulayi pag-usab kung online na ka."
+    "onboardingOfflineError": "Offline ka. Sulayi pag-usab kung online na ka.",
+    "activitySavedTo": "Ang kalihokan na-save sa {page}"
 }

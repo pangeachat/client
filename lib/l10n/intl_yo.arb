@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Ṣe o fẹ́ yí èdè ìpìlẹ̀ padà?",
     "changeBaseLanguageDesc": "Àwọn àtòjọ àti àwọn bọtini inú app yóò yí sí èdè {language}.",
     "accountSetupFailedHelp": "A kò le pari siseto àkọọlẹ rẹ. Ṣayẹwo asopọ rẹ ki o tun gbiyanju, tabi jade ki o wọle nigbamii.",
-    "onboardingOfflineError": "O wà ní àìfojúkojú. Gbìyànjú lẹ́ẹ̀kan sí nígbà tí o bá ti padà sórí ìkànnì."
+    "onboardingOfflineError": "O wà ní àìfojúkojú. Gbìyànjú lẹ́ẹ̀kan sí nígbà tí o bá ti padà sórí ìkànnì.",
+    "activitySavedTo": "A ti fi iṣẹ́ pamọ́ sí {page}"
 }

@@ -10177,5 +10177,6 @@
     "changeBaseLanguageTitle": "Canviar idioma base?",
     "changeBaseLanguageDesc": "Els menús i botons de l'aplicació canviaran a {language}.",
     "accountSetupFailedHelp": "No hem pogut acabar de configurar el teu compte. Comprova la teva connexió i torna-ho a provar, o tanca la sessió i torna a iniciar-la més tard.",
-    "onboardingOfflineError": "No tens connexió. Torna-ho a provar quan estiguis en línia."
+    "onboardingOfflineError": "No tens connexió. Torna-ho a provar quan estiguis en línia.",
+    "activitySavedTo": "Activitat desada a {page}"
 }

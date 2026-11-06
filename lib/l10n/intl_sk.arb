@@ -10992,5 +10992,6 @@
     "changeBaseLanguageTitle": "Zmeniť základný jazyk?",
     "changeBaseLanguageDesc": "Ponuky a tlačidlá aplikácie sa prepnú na jazyk {language}.",
     "accountSetupFailedHelp": "Nepodarilo sa nám dokončiť nastavenie vášho účtu. Skontrolujte pripojenie a skúste to znova, alebo sa odhláste a prihláste sa neskôr.",
-    "onboardingOfflineError": "Ste offline. Skúste to znova, keď budete online."
+    "onboardingOfflineError": "Ste offline. Skúste to znova, keď budete online.",
+    "activitySavedTo": "Aktivita uložená do {page}"
 }

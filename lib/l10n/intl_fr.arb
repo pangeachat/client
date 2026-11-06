@@ -10402,5 +10402,6 @@
     "changeBaseLanguageTitle": "Changer la langue de base ?",
     "changeBaseLanguageDesc": "Les menus et les boutons de l'application passeront en {language}.",
     "accountSetupFailedHelp": "Nous n'avons pas pu terminer la configuration de votre compte. Vérifiez votre connexion et réessayez, ou déconnectez-vous et connectez-vous plus tard.",
-    "onboardingOfflineError": "Vous êtes hors ligne. Réessayez une fois que vous serez de nouveau connecté."
+    "onboardingOfflineError": "Vous êtes hors ligne. Réessayez une fois que vous serez de nouveau connecté.",
+    "activitySavedTo": "Activité enregistrée dans {page}"
 }

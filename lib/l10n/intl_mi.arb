@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Huri reo tūāpapa?",
     "changeBaseLanguageDesc": "Ka huri ngā tahua me ngā pātene o te taupānga ki te {language}.",
     "accountSetupFailedHelp": "Kāore i oti i a mātou te whakarite i tō pūkete. Tirohia tō hononga ka ngana anō, takiuru atu rānei ka takiuru mai anō ā muri ake.",
-    "onboardingOfflineError": "Kua tuimotu koe. Ngana anō ina hoki mai anō koe ki te ipurangi."
+    "onboardingOfflineError": "Kua tuimotu koe. Ngana anō ina hoki mai anō koe ki te ipurangi.",
+    "activitySavedTo": "Kua tiakina te mahi ki {page}"
 }

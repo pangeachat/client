@@ -217,15 +217,23 @@ extension AnalyticsClientExtension on Client {
 
       bool spaceRefused = false;
       for (final analyticsRoom in roomsNotAdded) {
-        if (userID == null) return;
         if (sinceRest >= batchRooms) {
           await Future.delayed(batchRest);
           sinceRest = 0;
         }
+        // After the rest, not before it: a sign-out does not wait for the
+        // pass, and the rest is long enough to span one (#9806).
+        if (userID == null) return;
         sinceRest++;
         try {
           await space.setSpaceChild(analyticsRoom.id);
         } catch (e, s) {
+          // A sign-out between the two writes setSpaceChild makes fails the
+          // second on the cleared homeserver. Like a request built after
+          // sign-out (NotLoggedInException), it is not a bug, and the next
+          // sign-in runs the pass again.
+          // silent-ok: the account this pass wrote for has signed out
+          if (userID == null) return;
           final rateLimited =
               e is MatrixException && e.error == MatrixError.M_LIMIT_EXCEEDED;
           ErrorHandler.logError(

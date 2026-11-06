@@ -10983,5 +10983,6 @@
     "changeBaseLanguageTitle": "Cambiar lingua de base?",
     "changeBaseLanguageDesc": "Le menus e buttones del app cambiara a {language}.",
     "accountSetupFailedHelp": "Nos non poteva completar le configuration de tu conto. Verifica tu connexion e reprova, o disconecta e reconnecta plus tarde.",
-    "onboardingOfflineError": "Tu es offline. Reprova quando tu es de nove connectite."
+    "onboardingOfflineError": "Tu es offline. Reprova quando tu es de nove connectite.",
+    "activitySavedTo": "Activitate salvate a {page}"
 }

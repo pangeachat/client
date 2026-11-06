@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Mutare linguam fundamentalem?",
     "changeBaseLanguageDesc": "Menu et bullae applicationis ad {language} mutabuntur.",
     "accountSetupFailedHelp": "Rationem tuam constituere non potuimus. Coniunctionem tuam inspice et iterum conare, aut exi et postea inscribe.",
-    "onboardingOfflineError": "Non es in linea. Conare iterum cum in linea eris."
+    "onboardingOfflineError": "Non es in linea. Conare iterum cum in linea eris.",
+    "activitySavedTo": "Actio servata ad {page}"
 }
