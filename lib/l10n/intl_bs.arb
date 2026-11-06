@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-11-04 15:02:40.616267",
+    "@@last_modified": "2026-11-06 13:10:57.389985",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2518,5 +2518,7 @@
     "botTookSeatAfterADay": "Ova sesija je bila otvorena više od jednog dana, tako da je Pangea Bot zauzeo slobodno mjesto. Pošaljite poruku za početak.",
     "subscriptionGracePeriodEndsOn": "Plaćanje nije uspjelo. Grejs period se završava {date}",
     "changeBaseLanguageTitle": "Promijeniti osnovni jezik?",
-    "changeBaseLanguageDesc": "Meniji i dugmad aplikacije će se prebaciti na {language}."
+    "changeBaseLanguageDesc": "Meniji i dugmad aplikacije će se prebaciti na {language}.",
+    "accountSetupFailedHelp": "Nismo uspjeli dovršiti postavljanje vašeg računa. Provjerite vezu i pokušajte ponovo, ili se odjavite i prijavite kasnije.",
+    "onboardingOfflineError": "Niste povezani. Pokušajte ponovo kada budete online."
 }

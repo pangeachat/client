@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-11-04 15:02:43.148548",
+    "@@last_modified": "2026-11-06 13:11:00.076379",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2518,5 +2518,7 @@
     "botTookSeatAfterADay": "Bha an seisean seo fosgailte airson còrr is latha, agus mar sin ghabh Pangea Bot an cathair fhosgailte. Cuir teachdaireachd gus tòiseachadh.",
     "subscriptionGracePeriodEndsOn": "Dh'fhàillig am pàigheadh. Thig an ùine-ghràis gu crìch air {date}",
     "changeBaseLanguageTitle": "Atharraich bun-chànan?",
-    "changeBaseLanguageDesc": "Gluaisidh clàir-taice agus putanan an aplacaid gu {language}."
+    "changeBaseLanguageDesc": "Gluaisidh clàir-taice agus putanan an aplacaid gu {language}.",
+    "accountSetupFailedHelp": "Cha b' urrainn dhuinn crìoch a chur air do chunntas a stèidheachadh. Thoir sùil air a' cheangal agad agus feuch a-rithist, no log a-mach agus clàraich a-steach nas fhaide air adhart.",
+    "onboardingOfflineError": "Tha thu far-loidhne. Feuch ris a-rithist nuair a bhios tu air-loidhne."
 }

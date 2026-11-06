@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-11-04 15:02:44.863704",
+    "@@last_modified": "2026-11-06 13:11:00.981233",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2518,5 +2518,7 @@
     "botTookSeatAfterADay": "Այս նիստը բաց էր մեկ օրից ավելի, ուստի Pangea Bot-ը զբաղեցրեց ազատ տեղը։ Սկսելու համար ուղարկեք հաղորդագրություն։",
     "subscriptionGracePeriodEndsOn": "Վճարումը ձախողվեց։ Արտոնյալ ժամկետը լրանում է {date}-ին",
     "changeBaseLanguageTitle": "Փոխե՞լ հիմնական լեզուն",
-    "changeBaseLanguageDesc": "Հավելվածի մենյուներն ու կոճակները կփոխվեն {language} լեզվի:"
+    "changeBaseLanguageDesc": "Հավելվածի մենյուներն ու կոճակները կփոխվեն {language} լեզվի:",
+    "accountSetupFailedHelp": "Չհաջողվեց ավարտել Ձեր հաշվի կարգավորումը։ Ստուգեք Ձեր կապը և նորից փորձեք, կամ դուրս եկեք և մուտք գործեք ավելի ուշ։",
+    "onboardingOfflineError": "Դուք անցանց եք։ Կրկին փորձեք, երբ առցանց լինեք։"
 }

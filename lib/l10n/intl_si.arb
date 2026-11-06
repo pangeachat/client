@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-11-04 15:02:50.087737",
+    "@@last_modified": "2026-11-06 13:11:05.724724",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2518,5 +2518,7 @@
     "botTookSeatAfterADay": "මෙම සැසිය දවසකට වඩා විවෘතව තිබූ නිසා, Pangea Bot හිස් ආසනය ගත්තේය. ආරම්භ කිරීමට පණිවිඩයක් යවන්න.",
     "subscriptionGracePeriodEndsOn": "ගෙවීම අසාර්ථක විය. සහන කාලය {date} දිනෙන් අවසන් වේ",
     "changeBaseLanguageTitle": "මූලික භාෂාව වෙනස් කරන්නද?",
-    "changeBaseLanguageDesc": "යෙදුමේ මෙනු සහ බොත්තම් {language} වෙත මාරු වනු ඇත."
+    "changeBaseLanguageDesc": "යෙදුමේ මෙනු සහ බොත්තම් {language} වෙත මාරු වනු ඇත.",
+    "accountSetupFailedHelp": "ඔබගේ ගිණුම සැකසීම අපට අවසන් කිරීමට නොහැකි විය. ඔබගේ සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න, නැතහොත් ලොග් අවුට් වී පසුව නැවත ලොග් වන්න.",
+    "onboardingOfflineError": "ඔබ නොබැඳිව සිටී. ඔබ නැවත සබැඳි වූ පසු නැවත උත්සාහ කරන්න."
 }

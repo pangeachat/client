@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-11-04 15:02:49.318560",
+    "@@last_modified": "2026-11-06 13:11:04.564739",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2518,5 +2518,7 @@
     "botTookSeatAfterADay": "دا ناسته د یوې ورځې څخه زیاته خلاصه وه، نو Pangea Bot خالي څوکۍ ونیوله. د پیل کولو لپاره یو پیغام واستوئ.",
     "subscriptionGracePeriodEndsOn": "تادیه ناکامه شوه. د مهلت موده په {date} پای ته رسیږي",
     "changeBaseLanguageTitle": "بنسټیزه ژبه بدله کړو؟",
-    "changeBaseLanguageDesc": "د اپلیکیشن مینو او بټنونه به {language} ته بدل شي."
+    "changeBaseLanguageDesc": "د اپلیکیشن مینو او بټنونه به {language} ته بدل شي.",
+    "accountSetupFailedHelp": "موږ ونه شو کړای چې ستاسو حساب جوړ کړو. خپله اړیکه وګورئ او بیا هڅه وکړئ، یا لاګ آوټ شئ او وروسته بیا ننوتل وکړئ.",
+    "onboardingOfflineError": "تاسو آفلاین یاست. یوځل بیا هڅه وکړئ کله چې تاسو آنلاین شئ."
 }

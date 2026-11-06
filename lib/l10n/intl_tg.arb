@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-11-04 15:02:51.297817",
+    "@@last_modified": "2026-11-06 13:11:06.679478",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2518,5 +2518,7 @@
     "botTookSeatAfterADay": "Ин сессия зиёда аз як рӯз боз кушода буд, аз ин рӯ Pangea Bot ҷои холиро ишғол кард. Барои оғоз паём фиристед.",
     "subscriptionGracePeriodEndsOn": "Пардохт ноком шуд. Мӯҳлати имтиёзнок дар {date} ба охир мерасад",
     "changeBaseLanguageTitle": "Забони асосиро иваз кунед?",
-    "changeBaseLanguageDesc": "Менюҳо ва тугмаҳои барнома ба {language} иваз карда мешаванд."
+    "changeBaseLanguageDesc": "Менюҳо ва тугмаҳои барнома ба {language} иваз карда мешаванд.",
+    "accountSetupFailedHelp": "Мо натавонистем сабти ҳисоби шуморо ба итмом расонем. Пайвасти худро тафтиш кунед ва дубора кӯшиш кунед, ё хориҷ шавед ва баъдтар ворид шавед.",
+    "onboardingOfflineError": "Шумо офлайн ҳастед. Вақте ки онлайн шудед, дубора кӯшиш кунед."
 }

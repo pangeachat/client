@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-11-04 15:02:49.478530",
+    "@@last_modified": "2026-11-06 13:11:04.765671",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2518,5 +2518,7 @@
     "botTookSeatAfterADay": "ଏହି ସେସନ୍ ଏକ ଦିନରୁ ଅଧିକ ସମୟ ପାଇଁ ଖୋଲା ଥିଲା, ତେଣୁ Pangea Bot ଖାଲି ସ୍ଥାନ ନେଇଛି। ଆରମ୍ଭ କରିବାକୁ ଏକ ବାର୍ତ୍ତା ପଠାନ୍ତୁ।",
     "subscriptionGracePeriodEndsOn": "ପେମେଣ୍ଟ ବିଫଳ ହୋଇଛି। ଅନୁଗ୍ରହ ଅବଧି {date} ରେ ଶେଷ ହେବ",
     "changeBaseLanguageTitle": "ମୂଳ ଭାଷା ପରିବର୍ତ୍ତନ କରିବେ କି?",
-    "changeBaseLanguageDesc": "ଆପ୍‌ର ମେନୁ ଏବଂ ବଟନ୍‌ଗୁଡ଼ିକ {language}କୁ ବଦଳିଯିବ।"
+    "changeBaseLanguageDesc": "ଆପ୍‌ର ମେନୁ ଏବଂ ବଟନ୍‌ଗୁଡ଼ିକ {language}କୁ ବଦଳିଯିବ।",
+    "accountSetupFailedHelp": "ଆମେ ଆପଣଙ୍କ ଆକାଉଣ୍ଟ ସେଟ୍ ଅପ୍ ଶେଷ କରିପାରିଲୁ ନାହିଁ। ଆପଣଙ୍କ ସଂଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ ଏବଂ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ, କିମ୍ବା ଲଗ୍ ଆଉଟ୍ କରି ପରେ ସାଇନ୍ ଇନ୍ କରନ୍ତୁ।",
+    "onboardingOfflineError": "ଆପଣ ଅଫଲାଇନ୍ ଅଛନ୍ତି। ଅନଲାଇନ୍ ହେବା ପରେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"
 }

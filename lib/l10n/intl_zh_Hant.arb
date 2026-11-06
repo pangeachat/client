@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 15:02:53.101270",
+    "@@last_modified": "2026-11-06 13:11:07.579401",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10154,5 +10154,7 @@
     "botTookSeatAfterADay": "此會話已開放超過一天，Pangea Bot 已加入。發送訊息即可開始。",
     "subscriptionGracePeriodEndsOn": "付款失敗。寬限期於 {date} 結束",
     "changeBaseLanguageTitle": "更改基礎語言？",
-    "changeBaseLanguageDesc": "應用程式的選單和按鈕將切換為{language}。"
+    "changeBaseLanguageDesc": "應用程式的選單和按鈕將切換為{language}。",
+    "accountSetupFailedHelp": "我們無法完成您的帳號設定。請檢查您的連線並再試一次，或登出並稍後再登入。",
+    "onboardingOfflineError": "您已離線。請在連線後再試一次。"
 }

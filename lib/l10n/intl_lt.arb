@@ -2954,7 +2954,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-11-04 15:02:46.853893",
+    "@@last_modified": "2026-11-06 13:11:02.361688",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10826,5 +10826,7 @@
     "botTookSeatAfterADay": "Ši sesija buvo atidaryta ilgiau nei dieną, todėl Pangea Bot užėmė laisvą vietą. Norėdami pradėti, atsiųskite žinutę.",
     "subscriptionGracePeriodEndsOn": "Mokėjimas nepavyko. Lengvatinis laikotarpis baigiasi {date}",
     "changeBaseLanguageTitle": "Pakeisti pagrindinę kalbą?",
-    "changeBaseLanguageDesc": "Programėlės meniu ir mygtukai persijungs į {language}."
+    "changeBaseLanguageDesc": "Programėlės meniu ir mygtukai persijungs į {language}.",
+    "accountSetupFailedHelp": "Nepavyko užbaigti paskyros nustatymo. Patikrinkite ryšį ir bandykite dar kartą arba atsijunkite ir prisijunkite vėliau.",
+    "onboardingOfflineError": "Esate neprisijungę. Bandykite dar kartą, kai vėl prisijungsite."
 }

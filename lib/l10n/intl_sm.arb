@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-11-04 15:02:50.338560",
+    "@@last_modified": "2026-11-06 13:11:05.762530",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2518,5 +2518,7 @@
     "botTookSeatAfterADay": "Na tatala lenei sauniga mo le silia ma le aso, o lea na nofo ai le Pangea Bot i le nofoa avanoa. Auina mai se fe'au e amata ai.",
     "subscriptionGracePeriodEndsOn": "Ua lē taulau le totogi. E muta le vaitaimi fa'aopoopo i le aso {date}",
     "changeBaseLanguageTitle": "Suia le gagana autū?",
-    "changeBaseLanguageDesc": "O menus ma fa'amau o le app o le a sui i le {language}."
+    "changeBaseLanguageDesc": "O menus ma fa'amau o le app o le a sui i le {language}.",
+    "accountSetupFailedHelp": "E leʻi mafai ona matou faʻamaeʻaina le faʻatulagaina o lau teugatupe. Siaki lau fesoʻotaʻiga ma toe taumafai, pe alu ese ma saini i totonu mulimuli ane.",
+    "onboardingOfflineError": "Ua e tuusao. Toe taumafai pe a e toe i luga ole laiga."
 }

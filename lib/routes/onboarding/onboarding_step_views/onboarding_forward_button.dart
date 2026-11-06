@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/connection_status/connection_status_controller.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 
@@ -36,7 +38,14 @@ class OnboardingForwardButton extends StatelessWidget {
       children: [
         if (error != null)
           ErrorIndicator(
-            message: error.toLocalizedString(context),
+            // Offline, the failure itself says little; tell the person what
+            // to do instead (onboarding.instructions.md § What onboarding
+            // reads and saves).
+            message:
+                ConnectionStatusController.instance.status.value ==
+                    ConnectionStatus.offline
+                ? L10n.of(context).onboardingOfflineError
+                : error.toLocalizedString(context),
             error: error,
           ),
         ElevatedButton(

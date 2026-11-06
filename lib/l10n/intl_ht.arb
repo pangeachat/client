@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-11-04 15:02:43.639512",
+    "@@last_modified": "2026-11-06 13:11:00.463020",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2518,5 +2518,7 @@
     "botTookSeatAfterADay": "Sesyon sa a te ouvè pandan plis pase yon jou, kidonk Pangea Bot te pran plas ki vid la. Voye yon mesaj pou kòmanse.",
     "subscriptionGracePeriodEndsOn": "Peman an echwe. Peryòd gras la fini sou {date}",
     "changeBaseLanguageTitle": "Chanje lang debaz?",
-    "changeBaseLanguageDesc": "Meni ak bouton aplikasyon an ap chanje an {language}."
+    "changeBaseLanguageDesc": "Meni ak bouton aplikasyon an ap chanje an {language}.",
+    "accountSetupFailedHelp": "Nou pa t' kapab fini konfigirasyon kont ou. Tcheke koneksyon ou epi eseye ankò, oswa dekonekte epi konekte pita.",
+    "onboardingOfflineError": "Ou dekonekte. Eseye ankò lè ou rekonekte."
 }

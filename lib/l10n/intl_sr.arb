@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 15:02:50.545992",
+    "@@last_modified": "2026-11-06 13:11:05.886846",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10994,5 +10994,7 @@
     "botTookSeatAfterADay": "Ova sesija je bila otvorena više od jednog dana, tako da je Pangea Bot zauzeo slobodno mesto. Pošaljite poruku da započnete.",
     "subscriptionGracePeriodEndsOn": "Plaćanje nije uspelo. Grejs period se završava {date}",
     "changeBaseLanguageTitle": "Promeniti osnovni jezik?",
-    "changeBaseLanguageDesc": "Meniji i dugmad aplikacije će se prebaciti na {language}."
+    "changeBaseLanguageDesc": "Meniji i dugmad aplikacije će se prebaciti na {language}.",
+    "accountSetupFailedHelp": "Nismo uspeli da završimo podešavanje vašeg naloga. Proverite vezu i pokušajte ponovo, ili se odjavite i prijavite kasnije.",
+    "onboardingOfflineError": "Niste povezani. Pokušajte ponovo kada budete na mreži."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-11-04 15:02:40.297780",
+    "@@last_modified": "2026-11-06 13:10:57.331334",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2518,5 +2518,7 @@
     "botTookSeatAfterADay": "Hierdie sessie was vir meer as 'n dag oop, so Pangea Bot het die oop plek ingeneem. Stuur 'n boodskap om te begin.",
     "subscriptionGracePeriodEndsOn": "Betaling het misluk. Grasietydperk eindig op {date}",
     "changeBaseLanguageTitle": "Verander basistaal?",
-    "changeBaseLanguageDesc": "Die toepassing se spyskaarte en knoppies sal na {language} verander."
+    "changeBaseLanguageDesc": "Die toepassing se spyskaarte en knoppies sal na {language} verander.",
+    "accountSetupFailedHelp": "Ons kon nie jou rekening opstel nie. Gaan jou verbinding na en probeer weer, of meld af en meld later aan.",
+    "onboardingOfflineError": "Jy is vanlyn. Probeer weer sodra jy aanlyn is."
 }

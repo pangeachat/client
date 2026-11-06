@@ -17,7 +17,7 @@ import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_language_onbo
 /// be joined while its quest does not resolve — so a join is never presented
 /// as no join. Onboarding asks the user for whatever the quest could not
 /// supply and finishes on the joined-course page either way. See
-/// `joining-courses.instructions.md`.
+/// `onboarding.instructions.md`.
 mixin CourseJoinStep on OnboardingStep {
   Future<OnboardingStep> stepAfterJoin(String roomId) async {
     state.setJoinedRoomId(roomId);
@@ -42,22 +42,37 @@ mixin CourseJoinStep on OnboardingStep {
       LanguageService.systemLanguage ??
       PLanguageStore.byLangCode(LanguageKeys.defaultLanguage);
 
-  /// The quest resolved, so it supplies both languages and the level and there
-  /// is nothing left to ask.
+  /// The quest resolved, so it supplies the target language and the level. The
+  /// language the person already speaks is the device's, never the course's
+  /// language of instruction; a course that teaches the device's language
+  /// leaves the language step to ask (onboarding.instructions.md § Joining a
+  /// course during onboarding).
   Future<OnboardingStep> _stepAfterQuest(CoursePlanModel course) async {
     state.setJoinedCoursePlan(course);
-    state.setTargetLanguage(PLanguageStore.byLangCode(course.targetLanguage));
-    state.setBaseLanguage(
-      PLanguageStore.byLangCode(course.languageOfInstructions),
-    );
     state.setLanguageLevel(course.cefrLevel);
+    final baseLanguage = _deviceLanguage;
+    final courseLanguage = PLanguageStore.byLangCode(course.targetLanguage);
+    state.setTargetLanguage(courseLanguage);
 
+    if (!canUseCourseLanguage(courseLanguage, baseLanguage)) {
+      return PickLanguageOnboardingStep(
+        client: client,
+        state: state,
+        maxRemainingSteps: 2,
+      );
+    }
+    state.setBaseLanguage(baseLanguage);
+
+    // The role rides along in case its own save failed: saving the language
+    // marks onboarding done (onboarding.instructions.md § What onboarding reads
+    // and saves).
     await state.accountUpdater.updateProfile((profile) {
       return profile.copyWith(
         userSettings: profile.userSettings.copyWith(
           targetLanguage: course.targetLanguage,
-          sourceLanguage: course.languageOfInstructions,
+          sourceLanguage: baseLanguage!.langCode,
           cefrLevel: course.cefrLevel,
+          selfIdentifiedRole: state.userType,
         ),
       );
     });
@@ -92,6 +107,7 @@ mixin CourseJoinStep on OnboardingStep {
         userSettings: profile.userSettings.copyWith(
           targetLanguage: courseLanguage!.langCode,
           sourceLanguage: baseLanguage!.langCode,
+          selfIdentifiedRole: state.userType,
         ),
       );
     });

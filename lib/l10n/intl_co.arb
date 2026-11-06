@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-11-04 15:02:40.934293",
+    "@@last_modified": "2026-11-06 13:10:58.435102",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2518,5 +2518,7 @@
     "botTookSeatAfterADay": "Sta sessione hè stata aperta per più di un ghjornu, cusì u Bot Pangea hà pigliatu u postu liberu. Mandate un messagiu per principià.",
     "subscriptionGracePeriodEndsOn": "U pagamentu hà fiascatu. U periodu di grazia finisce u {date}",
     "changeBaseLanguageTitle": "Cambia a lingua di basa?",
-    "changeBaseLanguageDesc": "I menu è i buttoni di l'app cambieranu in {language}."
+    "changeBaseLanguageDesc": "I menu è i buttoni di l'app cambieranu in {language}.",
+    "accountSetupFailedHelp": "Ùn avemu pussutu compie a cunfigurazione di u vostru contu. Verificate a vostra cunnessione è riprovate, o disconnettatevi è cunnettatevi più tardi.",
+    "onboardingOfflineError": "Sì scunnessu. Pruvate torna quandu sì cunnessu."
 }

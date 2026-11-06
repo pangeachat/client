@@ -40,8 +40,15 @@ class OnboardingStateController {
   LanguageLevelTypeEnum? _languageLevel;
 
   String? _courseCode;
+  String? _joinedCode;
+  String? _linkJoinedRoomId;
   CoursePlanModel? _joinedCoursePlan;
   String? _joinedRoomId;
+
+  String? _courseRequestName;
+  String? _courseRequestInstitution;
+  String? _courseRequestGoals;
+  String? _sentCourseRequestKey;
 
   AvatarInfo? get avatarInfo => _avatarInfo;
   String? get displayName => _displayName;
@@ -53,27 +60,48 @@ class OnboardingStateController {
   LanguageLevelTypeEnum? get languageLevel => _languageLevel;
 
   String? get courseCode => _courseCode;
+
+  /// The class code the person last joined a course with, so moving forward
+  /// again over the class-code page with the same code doesn't join again.
+  String? get joinedCode => _joinedCode;
+
+  /// The course joined from a class link. The link's code is used up by the
+  /// join, so going back to the role page and forward again continues from
+  /// this course rather than asking for a code.
+  String? get linkJoinedRoomId => _linkJoinedRoomId;
+
   CoursePlanModel? get joinedCoursePlan => _joinedCoursePlan;
   String? get joinedRoomId => _joinedRoomId;
+
+  String? get courseRequestName => _courseRequestName;
+  String? get courseRequestInstitution => _courseRequestInstitution;
+  String? get courseRequestGoals => _courseRequestGoals;
+
+  /// The course request already sent in this run, so moving forward again
+  /// with nothing changed doesn't send a second one.
+  String? get sentCourseRequestKey => _sentCourseRequestKey;
 
   void setAvatarInfo(AvatarInfo info) => _avatarInfo = info;
   void setDisplayName(String displayName) => _displayName = displayName;
 
-  void setUserType(UserType type) {
-    // Switching teacher <-> learner starts the CEFR pick over: the level is a
-    // single shared field, so without this a teacher-picked level leaks onto
-    // the learner's CEFR page — nothing highlighted, yet Next enabled (#7583).
-    // Re-tapping the same role keeps the existing pick.
-    if (_userType != type) _languageLevel = null;
-    _userType = type;
-  }
+  /// Switching role keeps the level, like every other choice; the level page
+  /// shows whatever is in memory selected.
+  void setUserType(UserType type) => _userType = type;
 
   void setBaseLanguage(LanguageModel? lang) => _baseLanguage = lang;
   void setTargetLanguage(LanguageModel? lang) => _targetLanguage = lang;
   void setLanguageLevel(LanguageLevelTypeEnum? level) => _languageLevel = level;
 
   void setCourseCode(String courseCode) => _courseCode = courseCode;
+  void setJoinedCode(String code) => _joinedCode = code;
+  void setLinkJoinedRoomId(String roomId) => _linkJoinedRoomId = roomId;
   void setJoinedCoursePlan(CoursePlanModel coursePlan) =>
       _joinedCoursePlan = coursePlan;
   void setJoinedRoomId(String roomId) => _joinedRoomId = roomId;
+
+  void setCourseRequestName(String name) => _courseRequestName = name;
+  void setCourseRequestInstitution(String institution) =>
+      _courseRequestInstitution = institution;
+  void setCourseRequestGoals(String goals) => _courseRequestGoals = goals;
+  void setSentCourseRequestKey(String key) => _sentCourseRequestKey = key;
 }

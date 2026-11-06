@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-11-04 15:02:41.944239",
+    "@@last_modified": "2026-11-06 13:10:59.215466",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10045,5 +10045,7 @@
     "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum.",
     "subscriptionGracePeriodEndsOn": "Makse ebaõnnestus. Ajapikendus lõpeb {date}",
     "changeBaseLanguageTitle": "Muuda baaskeelt?",
-    "changeBaseLanguageDesc": "Rakenduse menüüd ja nupud lülituvad keelele {language}."
+    "changeBaseLanguageDesc": "Rakenduse menüüd ja nupud lülituvad keelele {language}.",
+    "accountSetupFailedHelp": "Me ei saanud teie konto seadistamist lõpule viia. Kontrollige oma ühendust ja proovige uuesti või logige välja ja proovige hiljem uuesti sisse logida.",
+    "onboardingOfflineError": "Oled võrguühenduseta. Proovi uuesti, kui oled võrgus tagasi."
 }

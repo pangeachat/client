@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-11-04 15:02:42.876766",
+    "@@last_modified": "2026-11-06 13:11:00.022480",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10048,5 +10048,7 @@
     "botTookSeatAfterADay": "Esta sesión estivo aberta durante máis dun día, así que o Pangea Bot ocupou o asento libre. Envía unha mensaxe para comezar.",
     "subscriptionGracePeriodEndsOn": "O pago fallou. O período de gracia remata o {date}",
     "changeBaseLanguageTitle": "Cambiar idioma base?",
-    "changeBaseLanguageDesc": "Os menús e botóns da aplicación cambiarán a {language}."
+    "changeBaseLanguageDesc": "Os menús e botóns da aplicación cambiarán a {language}.",
+    "accountSetupFailedHelp": "Non puidemos rematar de configurar a túa conta. Comproba a túa conexión e téntao de novo, ou pecha a sesión e inicia sesión máis tarde.",
+    "onboardingOfflineError": "Non tes conexión. Téntao de novo cando volvas ter conexión."
 }
