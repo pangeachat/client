@@ -159,11 +159,10 @@ extension ActivityRolesRoomExtension on Room {
   /// has left the room. There is no stored "ended" field; this is computed
   /// from role state and membership. Waiting for every human is deliberate,
   /// so one learner cannot end the activity for the room. It gates the
-  /// summary request and the automatic save (org activities.instructions.md,
-  /// "Saving and goals"; activity-session.instructions.md, "Completion saves
-  /// itself"). Today's summary waits on this, so it appears once every player
-  /// is done; the org design makes each learner's summary when they finish
-  /// ([ActivityUserSummaries]; not yet built here).
+  /// automatic save (org activities.instructions.md, "Saving and goals";
+  /// activity-session.instructions.md, "Completion saves itself") and the
+  /// summary's whole-room parts, the header leaving and the "1st" marks; each
+  /// learner's own card shows when they finish ([ActivityUserSummaries]).
   bool get isActivityFinished {
     final roles = activityRoles?.roles.values.where(
       (r) => r.userId != BotName.byEnvironment,
