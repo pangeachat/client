@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:async/async.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' show Client;
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -27,6 +26,7 @@ import 'package:fluffychat/routes/onboarding/trial_info_provider.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import '../get_test_client.dart';
+import 'seed_language_store.dart';
 
 /// Going back and then forward again keeps every page's choices and repeats
 /// no join or course request that nothing changed. See
@@ -37,7 +37,7 @@ void main() {
   late Client client;
 
   setUpAll(() async {
-    SharedPreferences.setMockInitialValues({});
+    await seedLanguageStore();
     // BotFace falls back to a CachedNetworkImage, whose cache manager needs
     // path_provider; stub the channel to a temp dir.
     final tempDir = Directory.systemTemp.createTempSync('back_and_forward');

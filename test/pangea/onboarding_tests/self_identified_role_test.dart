@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' hide Profile, Result;
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/user_constants.dart';
@@ -29,6 +28,7 @@ import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../get_test_client.dart';
+import 'seed_language_store.dart';
 
 /// #9445 — the onboarding teacher/student choice is stored in the `profile`
 /// account-data event as `user_settings.self_identified_role`, where outreach
@@ -50,6 +50,7 @@ void main() {
     UserConstants.instructionsSettings: <String, Object?>{},
   };
 
+  setUpAll(seedLanguageStore);
   setUp(ErrorHandler.resetReportedOnceKeysForTest);
 
   group('UserSettings.selfIdentifiedRole', () {
@@ -271,7 +272,6 @@ void main() {
     late Client client;
 
     setUpAll(() async {
-      SharedPreferences.setMockInitialValues({});
       client = await getTestClient(name: 'view_client');
       MatrixState.pangeaController = PangeaController(
         matrixState: _FakeMatrixState(client),

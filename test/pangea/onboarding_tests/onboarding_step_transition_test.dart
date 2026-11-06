@@ -15,11 +15,13 @@ import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import '../get_test_client.dart';
 import 'get_initial_onboarding_step.dart';
+import 'seed_language_store.dart';
 
 void main() {
   late final Client client;
 
   setUpAll(() async {
+    await seedLanguageStore();
     client = await getTestClient();
   });
 
