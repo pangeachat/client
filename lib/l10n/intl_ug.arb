@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-11-04 15:02:52.063334",
+    "@@last_modified": "2026-11-06 13:11:07.156302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2519,5 +2519,6 @@
     "subscriptionGracePeriodEndsOn": "تۆلەم مەغلۇپ بولدى. مۆھلەت {date} دە ئاخىرلىشىدۇ",
     "changeBaseLanguageTitle": "ئاساسىي تىلنى ئۆزگەرتەمسىز؟",
     "changeBaseLanguageDesc": "ئەپنىڭ تىزىملىكى ۋە كۇنۇپكىلىرى {language} غا ئۆزگىرىدۇ.",
-    "accountSetupFailedHelp": "بىز ھېساباتىڭىزنى تەڭشەپ بولالمىدۇق. ئۇلىنىشىڭىزنى تەكشۈرۈپ قايتا سىناڭ ياكى چىقىپ كېيىن كىرىڭ."
+    "accountSetupFailedHelp": "بىز ھېساباتىڭىزنى تەڭشەپ بولالمىدۇق. ئۇلىنىشىڭىزنى تەكشۈرۈپ قايتا سىناڭ ياكى چىقىپ كېيىن كىرىڭ.",
+    "onboardingOfflineError": "تورغا ئۇلانمىدىڭىز. تورغا ئۇلانغاندىن كېيىن قايتا سىناڭ."
 }

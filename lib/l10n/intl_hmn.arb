@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-11-04 15:02:43.700179",
+    "@@last_modified": "2026-11-06 13:11:00.477923",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2519,5 +2519,6 @@
     "subscriptionGracePeriodEndsOn": "Kev them nyiaj tsis ua haujlwm. Lub sijhawm pub dawb yuav xaus rau {date}",
     "changeBaseLanguageTitle": "Hloov hom lus?",
     "changeBaseLanguageDesc": "Cov ntawv qhia thiab cov nyees khawm hauv app yuav hloov mus rau {language}.",
-    "accountSetupFailedHelp": "Peb tsis tuaj yeem teeb tsa koj tus account kom tiav. Txheeb xyuas koj qhov kev sib txuas thiab sim dua, lossis tawm hauv thiab nkag mus tom qab."
+    "accountSetupFailedHelp": "Peb tsis tuaj yeem teeb tsa koj tus account kom tiav. Txheeb xyuas koj qhov kev sib txuas thiab sim dua, lossis tawm hauv thiab nkag mus tom qab.",
+    "onboardingOfflineError": "Koj offline lawm. Sim dua thaum koj online."
 }

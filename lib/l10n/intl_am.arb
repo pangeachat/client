@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-11-04 15:02:40.531427",
+    "@@last_modified": "2026-11-06 13:10:57.358452",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2519,5 +2519,6 @@
     "subscriptionGracePeriodEndsOn": "ክፍያ አልተሳካም። የቅናሽ ጊዜ የሚያበቃው በ{date} ነው።",
     "changeBaseLanguageTitle": "መሰረታዊ ቋንቋ ይቀየር?",
     "changeBaseLanguageDesc": "የመተግበሪያው ምናሌዎች እና አዝራሮች ወደ {language} ይቀየራሉ።",
-    "accountSetupFailedHelp": "መለያዎን ማዋቀር አልቻልንም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ፣ ወይም ይውጡ እና በኋላ ይግቡ።"
+    "accountSetupFailedHelp": "መለያዎን ማዋቀር አልቻልንም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ፣ ወይም ይውጡ እና በኋላ ይግቡ።",
+    "onboardingOfflineError": "ከመስመር ውጪ ነዎት። በመስመር ላይ ሲሆኑ እንደገና ይሞክሩ።"
 }

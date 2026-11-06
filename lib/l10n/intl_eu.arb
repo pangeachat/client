@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-11-04 15:02:41.917740",
+    "@@last_modified": "2026-11-06 13:10:58.891344",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10049,5 +10049,6 @@
     "subscriptionGracePeriodEndsOn": "Ordainketak huts egin du. Tolerantzia-epea {date}an amaituko da",
     "changeBaseLanguageTitle": "Oinarrizko hizkuntza aldatu?",
     "changeBaseLanguageDesc": "Aplikazioaren menuak eta botoiak {language} hizkuntzara aldatuko dira.",
-    "accountSetupFailedHelp": "Ezin izan dugu zure kontua konfiguratzen amaitu. Egiaztatu konexioa eta saiatu berriro, edo itxi saioa eta hasi geroago."
+    "accountSetupFailedHelp": "Ezin izan dugu zure kontua konfiguratzen amaitu. Egiaztatu konexioa eta saiatu berriro, edo itxi saioa eta hasi geroago.",
+    "onboardingOfflineError": "Lineaz kanpo zaude. Saiatu berriro konektatuta zaudenean."
 }

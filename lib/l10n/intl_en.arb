@@ -6333,5 +6333,9 @@
     "accountSetupFailedHelp": "We couldn't finish setting up your account. Check your connection and try again, or log out and sign in later.",
     "@accountSetupFailedHelp": {
         "description": "Shown under the error on the loading page before onboarding, when setting up a new account fails. The page offers Try again and Log out buttons."
+    },
+    "onboardingOfflineError": "You're offline. Try again once you're back online.",
+    "@onboardingOfflineError": {
+        "description": "Shown above the forward button in onboarding when saving a page fails because the device is offline."
     }
 }

@@ -2071,7 +2071,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-11-04 15:02:42.557134",
+    "@@last_modified": "2026-11-06 13:10:59.335185",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10906,5 +10906,6 @@
     "subscriptionGracePeriodEndsOn": "Nabigo ang pagbabayad. Matatapos ang grace period sa {date}",
     "changeBaseLanguageTitle": "Palitan ang base language?",
     "changeBaseLanguageDesc": "Ang mga menu at button ng app ay lilipat sa {language}.",
-    "accountSetupFailedHelp": "Hindi namin matapos ang pag-set up ng iyong account. Suriin ang iyong koneksyon at subukang muli, o mag-log out at mag-sign in mamaya."
+    "accountSetupFailedHelp": "Hindi namin matapos ang pag-set up ng iyong account. Suriin ang iyong koneksyon at subukang muli, o mag-log out at mag-sign in mamaya.",
+    "onboardingOfflineError": "Offline ka. Subukang muli kapag online ka na."
 }

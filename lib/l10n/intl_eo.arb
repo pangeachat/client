@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 15:02:41.712252",
+    "@@last_modified": "2026-11-06 13:10:58.553229",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10991,5 +10991,6 @@
     "subscriptionGracePeriodEndsOn": "Pago malsukcesis. Tolerema periodo finiĝas je {date}",
     "changeBaseLanguageTitle": "Ĉu ŝanĝi bazan lingvon?",
     "changeBaseLanguageDesc": "La menuoj kaj butonoj de la aplikaĵo ŝanĝiĝos al {language}.",
-    "accountSetupFailedHelp": "Ni ne povis fini agordi vian konton. Kontrolu vian konekton kaj reprovu, aŭ elsalutu kaj ensalutu poste."
+    "accountSetupFailedHelp": "Ni ne povis fini agordi vian konton. Kontrolu vian konekton kaj reprovu, aŭ elsalutu kaj ensalutu poste.",
+    "onboardingOfflineError": "Vi estas eksterrete. Provu denove kiam vi estos konektita."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-11-04 15:02:41.142084",
+    "@@last_modified": "2026-11-06 13:11:03.633052",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10540,5 +10540,6 @@
     "subscriptionGracePeriodEndsOn": "Platba se nezdařila. Ochranná lhůta končí {date}",
     "changeBaseLanguageTitle": "Změnit základní jazyk?",
     "changeBaseLanguageDesc": "Nabídky a tlačítka aplikace se přepnou do jazyka {language}.",
-    "accountSetupFailedHelp": "Nepodařilo se nám dokončit nastavení vašeho účtu. Zkontrolujte připojení a zkuste to znovu, nebo se odhlaste a přihlaste se později."
+    "accountSetupFailedHelp": "Nepodařilo se nám dokončit nastavení vašeho účtu. Zkontrolujte připojení a zkuste to znovu, nebo se odhlaste a přihlaste se později.",
+    "onboardingOfflineError": "Jste offline. Zkuste to znovu, až budete online."
 }

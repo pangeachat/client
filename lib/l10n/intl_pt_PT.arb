@@ -2550,7 +2550,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-11-04 15:02:49.209923",
+    "@@last_modified": "2026-11-06 13:11:04.864921",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10963,5 +10963,6 @@
     "subscriptionGracePeriodEndsOn": "Pagamento falhou. Período de carência termina em {date}",
     "changeBaseLanguageTitle": "Alterar idioma base?",
     "changeBaseLanguageDesc": "Os menus e botões da aplicação mudarão para {language}.",
-    "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique a sua ligação e tente novamente, ou termine a sessão e inicie-a mais tarde."
+    "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique a sua ligação e tente novamente, ou termine a sessão e inicie-a mais tarde.",
+    "onboardingOfflineError": "Está offline. Tente novamente quando estiver online."
 }

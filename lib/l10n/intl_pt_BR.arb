@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 15:02:49.606969",
+    "@@last_modified": "2026-11-06 13:11:04.579630",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -10049,5 +10049,6 @@
     "subscriptionGracePeriodEndsOn": "Pagamento falhou. O período de carência termina em {date}",
     "changeBaseLanguageTitle": "Mudar idioma base?",
     "changeBaseLanguageDesc": "Os menus e botões do aplicativo mudarão para {language}.",
-    "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique sua conexão e tente novamente, ou saia e faça login mais tarde."
+    "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique sua conexão e tente novamente, ou saia e faça login mais tarde.",
+    "onboardingOfflineError": "Você está offline. Tente novamente quando estiver online."
 }

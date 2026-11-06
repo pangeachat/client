@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 15:02:43.647796",
+    "@@last_modified": "2026-11-06 13:10:59.810650",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10960,5 +10960,6 @@
     "subscriptionGracePeriodEndsOn": "התשלום נכשל. תקופת החסד מסתיימת ב-{date}",
     "changeBaseLanguageTitle": "לשנות שפת בסיס?",
     "changeBaseLanguageDesc": "התפריטים והלחצנים של האפליקציה יעברו ל{language}.",
-    "accountSetupFailedHelp": "לא הצלחנו לסיים את הגדרת החשבון שלך. בדוק את החיבור שלך ונסה שוב, או התנתק והתחבר מאוחר יותר."
+    "accountSetupFailedHelp": "לא הצלחנו לסיים את הגדרת החשבון שלך. בדוק את החיבור שלך ונסה שוב, או התנתק והתחבר מאוחר יותר.",
+    "onboardingOfflineError": "אתה במצב לא מקוון. נסה שוב כשתהיה מחובר."
 }

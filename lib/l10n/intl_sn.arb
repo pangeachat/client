@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-11-04 15:02:50.519292",
+    "@@last_modified": "2026-11-06 13:11:05.893794",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2519,5 +2519,6 @@
     "subscriptionGracePeriodEndsOn": "Kubhadhara kwakakundikana. Nguva yenyasha inopera musi wa {date}",
     "changeBaseLanguageTitle": "Chinja mutauro wekutanga here?",
     "changeBaseLanguageDesc": "Mamenu nemabhatani eapp achachinja kuita {language}.",
-    "accountSetupFailedHelp": "Hatina kukwanisa kupedza kuseta account yako. Tarisa network yako woedza zvakare, kana kuti log out wozoedza zvakare gare gare gare."
+    "accountSetupFailedHelp": "Hatina kukwanisa kupedza kuseta account yako. Tarisa network yako woedza zvakare, kana kuti log out wozoedza zvakare gare gare gare.",
+    "onboardingOfflineError": "Hauziko paIndaneti. Edza zvakare kana wadzoka paIndaneti."
 }

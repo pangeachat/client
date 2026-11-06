@@ -3080,7 +3080,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-11-04 15:02:43.550652",
+    "@@last_modified": "2026-11-06 13:11:00.226748",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10678,5 +10678,6 @@
     "subscriptionGracePeriodEndsOn": "भुगतान विफल रहा। रियायती अवधि {date} को समाप्त होती है",
     "changeBaseLanguageTitle": "आधार भाषा बदलें?",
     "changeBaseLanguageDesc": "ऐप के मेनू और बटन {language} में बदल जाएंगे।",
-    "accountSetupFailedHelp": "हम आपका खाता सेट अप नहीं कर पाए। अपना कनेक्शन जांचें और फिर से कोशिश करें, या लॉग आउट करके बाद में साइन इन करें।"
+    "accountSetupFailedHelp": "हम आपका खाता सेट अप नहीं कर पाए। अपना कनेक्शन जांचें और फिर से कोशिश करें, या लॉग आउट करके बाद में साइन इन करें।",
+    "onboardingOfflineError": "आप ऑफ़लाइन हैं। ऑनलाइन होने पर फिर से कोशिश करें।"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-11-04 15:02:45.614467",
+    "@@last_modified": "2026-11-06 13:11:01.690463",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2519,5 +2519,6 @@
     "subscriptionGracePeriodEndsOn": "Pembayaran gagal. Masa tenggang rampung ing {date}",
     "changeBaseLanguageTitle": "Ganti basa dhasar?",
     "changeBaseLanguageDesc": "Menu lan tombol aplikasi bakal ganti dadi {language}.",
-    "accountSetupFailedHelp": "Kita ora bisa ngrampungake nyetel akun sampeyan. Priksa sambungan sampeyan banjur coba maneh, utawa metu banjur mlebu mengko."
+    "accountSetupFailedHelp": "Kita ora bisa ngrampungake nyetel akun sampeyan. Priksa sambungan sampeyan banjur coba maneh, utawa metu banjur mlebu mengko.",
+    "onboardingOfflineError": "Kowe lagi offline. Coba maneh yen wis online."
 }
