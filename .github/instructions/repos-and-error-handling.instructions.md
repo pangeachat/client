@@ -28,9 +28,11 @@ This is not a style preference. A thrown `http.Response` has no `toString()` ove
 - **Never put a response body in the exception.** Only the `detail` field, length-capped. Bodies carry learner content; Sentry is not where that belongs.
 - Paths are normalized (opaque id segments → `{id}`) so titles group and read cleanly.
 - `UnsubscribedException` keeps its own type — it is control flow, not an error, and is never reported.
-- A request built after the learner has logged out has no access token, and fails with `NotLoggedInException` before it is sent. It is not reported: a read still running when the learner logs out fails this way, and nothing in code can prevent that. The caller still receives the error.
+- A request built after the learner has logged out has no access token, and fails with `NotLoggedInException` before it is sent. It is not reported: a read still running when the learner logs out fails this way, and nothing in code can prevent that. The same holds for a read of the on-device analytics store that logging out deletes while the read runs. A store closed by anything else, such as another tab or the browser, is still reported. The caller still receives the error.
 
 The rule lives in `Requests` alone. A second copy of it anywhere else drifts.
+
+Background work that is still running when the learner logs out, and does not go through `Requests`, stops without a report when it finds the learner logged out.
 
 ## Build identity on every event
 
