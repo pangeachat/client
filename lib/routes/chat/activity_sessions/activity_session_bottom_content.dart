@@ -454,7 +454,9 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                           child: Column(
                             spacing: 8.0,
                             children: [
-                              if (textSummary != null) Text(textSummary),
+                              // Per-learner cards carry no group text.
+                              if (textSummary != null && textSummary.isNotEmpty)
+                                Text(textSummary),
                               if (analytics != null)
                                 Row(
                                   spacing: 8.0,

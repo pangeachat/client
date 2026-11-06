@@ -29,13 +29,14 @@ class _ActivitySummaryCacheItem {
 class ActivitySummaryRepo {
   static final Map<String, _ActivitySummaryCacheItem> _cache = {};
 
-  /// The viewer sees the loading state for the whole wait, so a translation
-  /// that never answers must end in the summary as written, not a spinner.
+  /// The viewer sees the card loading for the whole wait, so a translation
+  /// that never answers must end in the card as written, not a spinner.
   @visibleForTesting
   static Duration timeout = const Duration(seconds: 60);
 
-  /// One translation per source row and target language: a regenerated
-  /// summary is a new row, so it is translated afresh.
+  /// One translation per source row and target language. Each card is its
+  /// own row, and a regenerated card is a new one, so it is translated
+  /// afresh.
   static String _storageKey(
     String roomId,
     ActivitySummaryRequestModel request,

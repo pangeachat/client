@@ -24,49 +24,51 @@ void main() {
   final carol = participant('@carol:example.com');
   final summaries = [alice, bob, carol];
 
-  group('selectedParticipantSummary', () {
+  final ids = [for (final s in summaries) s.participantId];
+
+  group('selectedParticipantId', () {
     test('shows the viewer their own feedback before they pick anyone', () {
       expect(
-        selectedParticipantSummary(
-          summaries: summaries,
+        selectedParticipantId(
+          participantIds: ids,
           highlightedUserId: null,
           ownUserId: bob.participantId,
         ),
-        bob,
+        bob.participantId,
       );
     });
 
     test('a picked participant wins over the viewer\'s own', () {
       expect(
-        selectedParticipantSummary(
-          summaries: summaries,
+        selectedParticipantId(
+          participantIds: ids,
           highlightedUserId: carol.participantId,
           ownUserId: bob.participantId,
         ),
-        carol,
+        carol.participantId,
       );
     });
 
     test('an observer with no feedback of their own still sees a card', () {
       expect(
-        selectedParticipantSummary(
-          summaries: summaries,
+        selectedParticipantId(
+          participantIds: ids,
           highlightedUserId: null,
           ownUserId: '@dave:example.com',
         ),
-        alice,
+        alice.participantId,
       );
     });
 
     test('a pick that no longer has a summary falls back to the viewer\'s '
         'own, not to an empty card', () {
       expect(
-        selectedParticipantSummary(
-          summaries: summaries,
+        selectedParticipantId(
+          participantIds: ids,
           highlightedUserId: '@dave:example.com',
           ownUserId: bob.participantId,
         ),
-        bob,
+        bob.participantId,
       );
     });
   });

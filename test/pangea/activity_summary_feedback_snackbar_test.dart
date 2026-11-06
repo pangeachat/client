@@ -71,7 +71,8 @@ void main() {
               icon: const Icon(Icons.flag_outlined),
               onPressed: () => controller.regenerateSummaryWithFeedback(
                 context,
-                'Too generic',
+                userId: userId,
+                feedback: 'Too generic',
               ),
             ),
           ),

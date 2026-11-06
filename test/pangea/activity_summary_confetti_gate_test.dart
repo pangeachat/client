@@ -79,14 +79,21 @@ void main() {
         type: PangeaEventTypes.activitySummary,
         content: ActivitySummaryModel(
           summary: ActivitySummaryResponseModel(
-            participants: const [],
-            summary: 'Well played.',
+            participants: [
+              ParticipantSummaryModel(
+                participantId: userId,
+                feedback: 'Well played.',
+                cefrLevel: 'A2',
+                superlatives: const [],
+              ),
+            ],
+            summary: '',
           ),
         ).toJson(),
         senderId: BotName.byEnvironment,
         eventId: '\$summary',
         originServerTs: DateTime.utc(2026, 1, 1, 14),
-        stateKey: ActivitySummaryStateKeys.canonical,
+        stateKey: ActivitySummaryStateKeys.card(userId),
         room: room,
       ),
     );
@@ -98,7 +105,7 @@ void main() {
         senderId: userId,
         eventId: '\$analytics',
         originServerTs: DateTime.utc(2026, 1, 1, 14),
-        stateKey: ActivitySummaryStateKeys.analytics,
+        stateKey: ActivitySummaryStateKeys.learnerAnalytics(userId),
         room: room,
       ),
     );
