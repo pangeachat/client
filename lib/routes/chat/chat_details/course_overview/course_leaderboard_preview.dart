@@ -139,7 +139,7 @@ class CourseLeaderboardPreview extends StatelessWidget {
                               room: room,
                               rovingId: 'rank:${entry.user.id}',
                             ),
-                          if (board.ranked.length <= 1 && room.canInvite)
+                          if (board.ranked.length <= 1 && room.canInviteMembers)
                             LeaderboardInviteRow(onTap: onInvite),
                         ],
                       ),

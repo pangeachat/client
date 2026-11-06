@@ -32,6 +32,8 @@ This is not a style preference. A thrown `http.Response` has no `toString()` ove
 
 The rule lives in `Requests` alone. A second copy of it anywhere else drifts.
 
+Background work that is still running when the learner logs out, and does not go through `Requests`, stops without a report when it finds the learner logged out.
+
 ## Build identity on every event
 
 Every Sentry event the client reports carries three tags saying **which build produced it**. Without them a local build and a deployed one are indistinguishable: the SDK's default release is `<package>@<pubspec version>+<build number>`, and pubspec's `+N` is hand-bumped, so every locally-built app reports the same release string for months at a time. Triage twice could not answer "does the build that produced this event contain the fix?" and had to reason from event timestamps instead.
