@@ -10353,5 +10353,6 @@
     "changeBaseLanguageTitle": "تغيير اللغة الأساسية؟",
     "changeBaseLanguageDesc": "ستتحول قوائم التطبيق وأزراره إلى {language}.",
     "accountSetupFailedHelp": "تعذر علينا إنهاء إعداد حسابك. تحقق من اتصالك وحاول مرة أخرى، أو قم بتسجيل الخروج وسجل الدخول لاحقًا.",
-    "onboardingOfflineError": "أنت غير متصل بالإنترنت. حاول مرة أخرى عندما تكون متصلاً."
+    "onboardingOfflineError": "أنت غير متصل بالإنترنت. حاول مرة أخرى عندما تكون متصلاً.",
+    "activitySavedTo": "تم حفظ النشاط في {page}"
 }

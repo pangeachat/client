@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Newid iaith sylfaen?",
     "changeBaseLanguageDesc": "Bydd dewislenni a botymau'r ap yn newid i {language}.",
     "accountSetupFailedHelp": "Ni allem orffen sefydlu eich cyfrif. Gwiriwch eich cysylltiad a rhowch gynnig arall arni, neu allgofnodwch a mewngofnodwch yn ddiweddarach.",
-    "onboardingOfflineError": "Rydych chi all-lein. Rhowch gynnig arall arni unwaith y byddwch chi ar-lein eto."
+    "onboardingOfflineError": "Rydych chi all-lein. Rhowch gynnig arall arni unwaith y byddwch chi ar-lein eto.",
+    "activitySavedTo": "Gweithgaredd wedi'i gadw i {page}"
 }

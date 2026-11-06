@@ -10061,5 +10061,6 @@
     "changeBaseLanguageTitle": "Athraigh an bhuntheanga?",
     "changeBaseLanguageDesc": "Athróidh biachláir agus cnaipí an aip go {language}.",
     "accountSetupFailedHelp": "Níorbh fhéidir linn do chuntas a shocrú. Seiceáil do nasc agus bain triail eile as, nó logáil amach agus sínigh isteach níos déanaí.",
-    "onboardingOfflineError": "Tá tú as líne. Bain triail eile as nuair a bheidh tú ar líne arís."
+    "onboardingOfflineError": "Tá tú as líne. Bain triail eile as nuair a bheidh tú ar líne arís.",
+    "activitySavedTo": "Gníomhaíocht sábháilte chuig {page}"
 }

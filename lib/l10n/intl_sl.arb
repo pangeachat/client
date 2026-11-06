@@ -10992,5 +10992,6 @@
     "changeBaseLanguageTitle": "Spremeniti osnovni jezik?",
     "changeBaseLanguageDesc": "Meniji in gumbi aplikacije se bodo preklopili na {language}.",
     "accountSetupFailedHelp": "Nastavitve vašega računa niso bile dokončane. Preverite povezavo in poskusite znova ali se odjavite in prijavite pozneje.",
-    "onboardingOfflineError": "Brez povezave ste. Poskusite znova, ko boste spet povezani."
+    "onboardingOfflineError": "Brez povezave ste. Poskusite znova, ko boste spet povezani.",
+    "activitySavedTo": "Dejavnost shranjena v {page}"
 }

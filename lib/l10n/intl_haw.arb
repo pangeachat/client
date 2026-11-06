@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "E hoʻololi i ka ʻōlelo kumu?",
     "changeBaseLanguageDesc": "E hoʻololi nā papa kuhikuhi a me nā pihi o ka polokalamu i ka {language}.",
     "accountSetupFailedHelp": "ʻAʻole hiki iā mākou ke hoʻopau i ka hoʻonohonoho ʻana i kāu moʻokāki. E nānā i kāu pili a e hoʻāʻo hou, a i ʻole e haʻalele a e komo hou ma hope.",
-    "onboardingOfflineError": "Aia ʻoe ma waho pūnaewele. E hoʻāʻo hou ke hoʻi mai ʻoe i ka pūnaewele."
+    "onboardingOfflineError": "Aia ʻoe ma waho pūnaewele. E hoʻāʻo hou ke hoʻi mai ʻoe i ka pūnaewele.",
+    "activitySavedTo": "Ua mālama ʻia ka hana ma {page}"
 }

@@ -10050,5 +10050,6 @@
     "changeBaseLanguageTitle": "Mainīt pamatvalodu?",
     "changeBaseLanguageDesc": "Lietotnes izvēlnes un pogas pārslēgsies uz {language}.",
     "accountSetupFailedHelp": "Mēs nevarējām pabeigt jūsu konta iestatīšanu. Pārbaudiet savienojumu un mēģiniet vēlreiz, vai izrakstieties un pierakstieties vēlāk.",
-    "onboardingOfflineError": "Jūs esat bezsaistē. Mēģiniet vēlreiz, kad būsiet tiešsaistē."
+    "onboardingOfflineError": "Jūs esat bezsaistē. Mēģiniet vēlreiz, kad būsiet tiešsaistē.",
+    "activitySavedTo": "Aktivitāte saglabāta mapē {page}"
 }

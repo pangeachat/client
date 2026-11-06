@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Hanova ny fiteny fototra?",
     "changeBaseLanguageDesc": "Hivadika ho amin'ny {language} ny menio sy ny bokotra rehetra ao amin'ny fampiharana.",
     "accountSetupFailedHelp": "Tsy afaka namita ny fananganana ny kaontinao izahay. Hamarino ny fifandraisanao ary andramo indray, na mivoaha ary midira indray any aoriana.",
-    "onboardingOfflineError": "Tsy mifandray amin'ny aterineto ianao. Andramo indray rehefa tafaverina amin'ny aterineto."
+    "onboardingOfflineError": "Tsy mifandray amin'ny aterineto ianao. Andramo indray rehefa tafaverina amin'ny aterineto.",
+    "activitySavedTo": "Voatahiry ao amin'ny {page} ny asa"
 }

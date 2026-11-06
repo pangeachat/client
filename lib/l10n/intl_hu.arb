@@ -10153,5 +10153,6 @@
     "changeBaseLanguageTitle": "Alapnyelv módosítása?",
     "changeBaseLanguageDesc": "Az alkalmazás menüi és gombjai átváltanak a következő nyelvre: {language}.",
     "accountSetupFailedHelp": "Nem sikerült befejezni a fiók beállítását. Ellenőrizze az internetkapcsolatát, és próbálja újra, vagy jelentkezzen ki, majd később jelentkezzen be.",
-    "onboardingOfflineError": "Offline vagy. Próbáld újra, ha visszatértél az internetre."
+    "onboardingOfflineError": "Offline vagy. Próbáld újra, ha visszatértél az internetre.",
+    "activitySavedTo": "Tevékenység mentve ide: {page}"
 }

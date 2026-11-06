@@ -10828,5 +10828,6 @@
     "changeBaseLanguageTitle": "Pakeisti pagrindinę kalbą?",
     "changeBaseLanguageDesc": "Programėlės meniu ir mygtukai persijungs į {language}.",
     "accountSetupFailedHelp": "Nepavyko užbaigti paskyros nustatymo. Patikrinkite ryšį ir bandykite dar kartą arba atsijunkite ir prisijunkite vėliau.",
-    "onboardingOfflineError": "Esate neprisijungę. Bandykite dar kartą, kai vėl prisijungsite."
+    "onboardingOfflineError": "Esate neprisijungę. Bandykite dar kartą, kai vėl prisijungsite.",
+    "activitySavedTo": "Veikla išsaugota {page}"
 }

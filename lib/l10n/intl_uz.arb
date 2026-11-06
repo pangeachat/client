@@ -10054,5 +10054,6 @@
     "changeBaseLanguageTitle": "Asosiy tilni oʻzgartirish?",
     "changeBaseLanguageDesc": "Ilovaning menyulari va tugmalari {language} tiliga oʻzgaradi.",
     "accountSetupFailedHelp": "Hisobingizni sozlashni yakunlay olmadik. Ulanishingizni tekshiring va qayta urinib ko'ring yoki tizimdan chiqib, keyinroq kiring.",
-    "onboardingOfflineError": "Siz oflaynsiz. Tarmoqqa ulangandan so‘ng qayta urinib ko‘ring."
+    "onboardingOfflineError": "Siz oflaynsiz. Tarmoqqa ulangandan so‘ng qayta urinib ko‘ring.",
+    "activitySavedTo": "Faoliyat {page} ga saqlandi"
 }

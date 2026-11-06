@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Beddel luqadda aasaasiga ah?",
     "changeBaseLanguageDesc": "Liisaska iyo badhamada abka waxay u wareegi doonaan {language}.",
     "accountSetupFailedHelp": "Ma aanu dhammaystiri karin dejinta akoonkaaga. Hubi isku xidhkaaga oo isku day mar kale, ama ka bax oo soo gal mar dambe.",
-    "onboardingOfflineError": "Kamaad online ahayn. Isku day mar kale marka aad online noqoto."
+    "onboardingOfflineError": "Kamaad online ahayn. Isku day mar kale marka aad online noqoto.",
+    "activitySavedTo": "Hawsha waxa lagu kaydiyay {page}"
 }

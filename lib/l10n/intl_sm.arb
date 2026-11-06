@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Suia le gagana autū?",
     "changeBaseLanguageDesc": "O menus ma fa'amau o le app o le a sui i le {language}.",
     "accountSetupFailedHelp": "E leʻi mafai ona matou faʻamaeʻaina le faʻatulagaina o lau teugatupe. Siaki lau fesoʻotaʻiga ma toe taumafai, pe alu ese ma saini i totonu mulimuli ane.",
-    "onboardingOfflineError": "Ua e tuusao. Toe taumafai pe a e toe i luga ole laiga."
+    "onboardingOfflineError": "Ua e tuusao. Toe taumafai pe a e toe i luga ole laiga.",
+    "activitySavedTo": "Gaoioiga ua sefe i le {page}"
 }

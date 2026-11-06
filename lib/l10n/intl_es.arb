@@ -8279,5 +8279,6 @@
     "changeBaseLanguageTitle": "¿Cambiar idioma base?",
     "changeBaseLanguageDesc": "Los menús y botones de la aplicación cambiarán a {language}.",
     "accountSetupFailedHelp": "No pudimos terminar de configurar tu cuenta. Revisa tu conexión e inténtalo de nuevo, o cierra sesión y vuelve a iniciarla más tarde.",
-    "onboardingOfflineError": "Estás desconectado. Inténtalo de nuevo cuando tengas conexión."
+    "onboardingOfflineError": "Estás desconectado. Inténtalo de nuevo cuando tengas conexión.",
+    "activitySavedTo": "Actividad guardada en {page}"
 }

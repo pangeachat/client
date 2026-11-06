@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Basisssprooch änneren?",
     "changeBaseLanguageDesc": "D'Menüen an d'Knäppercher vun der App wiesselen op {language}.",
     "accountSetupFailedHelp": "Mir konnten Äre Kont net fäerdeg astellen. Kontrolléiert Är Verbindung a probéiert et nach eng Kéier, oder mellt Iech of a mellt Iech méi spéit un.",
-    "onboardingOfflineError": "Dir sidd offline. Probéiert et nach eng Kéier wann Dir erëm online sidd."
+    "onboardingOfflineError": "Dir sidd offline. Probéiert et nach eng Kéier wann Dir erëm online sidd.",
+    "activitySavedTo": "Aktivitéit gespäichert op {page}"
 }

@@ -7357,5 +7357,6 @@
     "changeBaseLanguageTitle": "Đổi ngôn ngữ cơ sở?",
     "changeBaseLanguageDesc": "Các menu và nút của ứng dụng sẽ chuyển sang tiếng {language}.",
     "accountSetupFailedHelp": "Chúng tôi không thể hoàn tất việc thiết lập tài khoản của bạn. Vui lòng kiểm tra kết nối và thử lại, hoặc đăng xuất và đăng nhập sau.",
-    "onboardingOfflineError": "Bạn đang ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng."
+    "onboardingOfflineError": "Bạn đang ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng.",
+    "activitySavedTo": "Hoạt động đã lưu vào {page}"
 }

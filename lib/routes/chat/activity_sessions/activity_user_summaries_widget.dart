@@ -15,6 +15,7 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_room_exte
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_indicator.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_saved_notice.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_summary_goals.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_summary_unsubscribed_card.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -56,7 +57,10 @@ class ActivityUserSummaries extends StatelessWidget {
         .subscriptionController
         .showSubscriptionGatedContent) {
       return room.isActivityFinished
-          ? ActivitySummaryUnsubscribedCard(roleCount: _skeletonRoleCount)
+          ? ActivitySummaryUnsubscribedCard(
+              roleCount: _skeletonRoleCount,
+              savedNotice: ActivitySavedNotice(room: room),
+            )
           : const SizedBox.shrink();
     }
 
@@ -139,6 +143,7 @@ class _SummaryCard extends StatelessWidget {
                   summary: summary,
                   controller: controller,
                 ),
+                ActivitySavedNotice(room: controller.room),
               ],
             ),
           ),

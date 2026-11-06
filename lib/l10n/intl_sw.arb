@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Badilisha lugha ya msingi?",
     "changeBaseLanguageDesc": "Menyu na vitufe vya programu vitabadilika kuwa {language}.",
     "accountSetupFailedHelp": "Hatukuweza kumaliza kusanidi akaunti yako. Angalia muunganisho wako na ujaribu tena, au ingia na uingie baadaye.",
-    "onboardingOfflineError": "Hauna intaneti. Jaribu tena ukiwa mtandaoni."
+    "onboardingOfflineError": "Hauna intaneti. Jaribu tena ukiwa mtandaoni.",
+    "activitySavedTo": "Shughuli imehifadhiwa kwenye {page}"
 }

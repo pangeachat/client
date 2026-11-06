@@ -10679,5 +10679,6 @@
     "changeBaseLanguageTitle": "Athraigh buntheanga?",
     "changeBaseLanguageDesc": "Athróidh biachláir agus cnaipí an aip go {language}.",
     "accountSetupFailedHelp": "Non puvim completar li arangeament de vor conto. Controla vor conexion e prova denov, o deslogga e logga plu tard.",
-    "onboardingOfflineError": "Tá tú as líne. Bain triail eile as nuair a bheidh tú ar líne arís."
+    "onboardingOfflineError": "Tá tú as líne. Bain triail eile as nuair a bheidh tú ar líne arís.",
+    "activitySavedTo": "Activity saved to {page}"
 }

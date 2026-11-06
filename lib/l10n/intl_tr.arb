@@ -10348,5 +10348,6 @@
     "changeBaseLanguageTitle": "Temel dili değiştir?",
     "changeBaseLanguageDesc": "Uygulamanın menüleri ve düğmeleri {language} diline geçecektir.",
     "accountSetupFailedHelp": "Hesabınızı kurmayı tamamlayamadık. Bağlantınızı kontrol edin ve tekrar deneyin veya çıkış yapıp daha sonra tekrar giriş yapın.",
-    "onboardingOfflineError": "Çevrimdışısın. İnternete bağlandığında tekrar dene."
+    "onboardingOfflineError": "Çevrimdışısın. İnternete bağlandığında tekrar dene.",
+    "activitySavedTo": "Etkinlik şuraya kaydedildi: {page}"
 }

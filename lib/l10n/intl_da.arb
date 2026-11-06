@@ -10967,5 +10967,6 @@
     "changeBaseLanguageTitle": "Skift grundsprog?",
     "changeBaseLanguageDesc": "Appens menuer og knapper skifter til {language}.",
     "accountSetupFailedHelp": "Vi kunne ikke færdiggøre opsætningen af din konto. Tjek din forbindelse, og prøv igen, eller log ud, og log ind senere.",
-    "onboardingOfflineError": "Du er offline. Prøv igen, når du er online."
+    "onboardingOfflineError": "Du er offline. Prøv igen, når du er online.",
+    "activitySavedTo": "Aktivitet gemt i {page}"
 }

@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Verander basistaal?",
     "changeBaseLanguageDesc": "Die toepassing se spyskaarte en knoppies sal na {language} verander.",
     "accountSetupFailedHelp": "Ons kon nie jou rekening opstel nie. Gaan jou verbinding na en probeer weer, of meld af en meld later aan.",
-    "onboardingOfflineError": "Jy is vanlyn. Probeer weer sodra jy aanlyn is."
+    "onboardingOfflineError": "Jy is vanlyn. Probeer weer sodra jy aanlyn is.",
+    "activitySavedTo": "Aktiwiteit gestoor na {page}"
 }
