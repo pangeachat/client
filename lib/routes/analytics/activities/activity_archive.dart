@@ -19,6 +19,7 @@ import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
@@ -336,17 +337,24 @@ class AnalyticsActivityItem extends StatelessWidget {
     final analytics = room.activitySummaryAnalytics;
     final stats = summary == null || analytics == null || userId == null
         ? null
-        : _ActivitySessionStats(
-            xp: analytics.xpForUser(userId),
-            vocab: analytics.uniqueConstructCountForUser(
-              userId,
-              ConstructTypeEnum.vocab,
+        // The XP is re-read as it lands, as the goal header's is.
+        : ListenableBuilder(
+            listenable: MissionXpCache.instance,
+            builder: (context, _) => _ActivitySessionStats(
+              xp: room.client.sessionXp(
+                room,
+                MissionXpCache.instance.creditedXpByRoom,
+              ),
+              vocab: analytics.uniqueConstructCountForUser(
+                userId,
+                ConstructTypeEnum.vocab,
+              ),
+              grammar: analytics.uniqueConstructCountForUser(
+                userId,
+                ConstructTypeEnum.morph,
+              ),
+              onSelectedFill: selected,
             ),
-            grammar: analytics.uniqueConstructCountForUser(
-              userId,
-              ConstructTypeEnum.morph,
-            ),
-            onSelectedFill: selected,
           );
 
     final theme = Theme.of(context);
@@ -430,13 +438,14 @@ class AnalyticsActivityItem extends StatelessWidget {
   }
 }
 
-/// The learner's own numbers from a saved session: the XP they earned, and how
-/// many distinct vocabulary and grammar items they used. All three come from
-/// the summary saved with the session, so the row can never disagree with the
-/// end-of-activity card (activities.instructions.md, "The Learning Objectives
-/// page"). The counts are of items used, not items new to the learner: the
-/// saved summary does not record which were new, and the row never shows a
-/// number the summary cannot back.
+/// The learner's own numbers from a saved session: the XP it paid them, the
+/// session XP its end card shows (#9696), and how many distinct vocabulary
+/// and grammar items they used, from the summary saved with the session. So
+/// the row never disagrees with the end-of-activity card
+/// (activities.instructions.md, "The Learning Objectives page"). The counts
+/// are of items used, not items new to the learner: the saved summary does
+/// not record which were new, and the row never shows a number the summary
+/// cannot back.
 class _ActivitySessionStats extends StatelessWidget {
   final int xp;
   final int vocab;
