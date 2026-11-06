@@ -452,7 +452,7 @@ class ChatView extends StatelessWidget {
                       //             ),
                       //     ),
                       //   ),
-                      else if (controller.room.canSendDefaultMessages &&
+                      else if (controller.room.canSendMessages &&
                           controller.room.membership == Membership.join &&
                           (controller.room.activityPlan == null ||
                               !controller.room.showActivityChatUI ||
