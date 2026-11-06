@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
@@ -60,6 +61,9 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (!(controller.widget.activity?.activityMode.listsOpenSessions ?? true)) {
+      return const SizedBox.shrink();
+    }
     if (controller.subPage.visibleStatuses.isEmpty) {
       return const SizedBox.shrink();
     }

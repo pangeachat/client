@@ -456,14 +456,14 @@ class ChatView extends StatelessWidget {
                           controller.room.membership == Membership.join &&
                           (controller.room.activityPlan == null ||
                               !controller.room.showActivityChatUI ||
-                              controller.room.isActiveInActivity))
+                              controller.room.writesInActivity))
                         ChatInputBar(
                           controller: controller,
                           padding: bottomSheetPadding,
                         )
                       else if (controller.room.activityPlan != null &&
                           controller.room.showActivityChatUI &&
-                          !controller.room.isActiveInActivity) ...[
+                          !controller.room.writesInActivity) ...[
                         // Post-play rating prompt (#7194) — pinned above the
                         // finished-status bar; manages its own visibility
                         // (finished role, not yet rated, not dismissed).

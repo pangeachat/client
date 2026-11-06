@@ -9,6 +9,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
@@ -18,6 +19,7 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -1766,6 +1768,13 @@ class WorldMapController extends State<WorldMap>
     // from the join decision. Guards every tap funnel.
     if (MapContextController.notifier.value is CoursePreviewMapContext) return;
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+    if (card.activityMode.opensSharedRoom) {
+      final own = client?.discussionStandingFor(card.activityId).room;
+      if (own != null) {
+        context.go(WorkspaceNav.openRoomById(uri, own.id));
+        return;
+      }
+    }
     // Seat the activity as the sole left token via the nav helper — no raw
     // query surgery in feature code (routing.instructions.md). The course
     // context is kept: a pin on a course-scoped map closes back to the course,

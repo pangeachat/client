@@ -3,12 +3,15 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/course_plan_return.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
@@ -37,6 +40,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart'
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_live_state_room_extension.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objective_circles.dart';
+import 'package:fluffychat/routes/courses/course_objectives/discussion_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
@@ -468,11 +472,20 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   /// the same live state the cards render. `recency` stays 0: open sessions
   /// reach this surface through the discovery cache, which carries no
   /// per-session start time. See [rankSuggestedActivities].
+  /// [discussionStandings] is read once per build
+  /// ([DiscussionClientExtension.discussionStandings]), not per activity.
   PinSignals _signalsFor(
     String activityId,
     Map<String, MissionXpBreakdown> xpByActivity,
+    Map<String, DiscussionStanding> discussionStandings,
   ) => PinSignals(
-    state: _liveStateFor(activityId).state ?? ActivityPinState.available,
+    state:
+        switch (discussionStandings[activityId]) {
+          final standing? => DiscussionCard.stateOf(standing),
+          null => null,
+        } ??
+        _liveStateFor(activityId).state ??
+        ActivityPinState.available,
     completionFraction: _finished(xpByActivity, activityId) ? 1.0 : 0.0,
     pinged: activityId == _pingedActivityId,
   );
@@ -546,6 +559,15 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   /// course plan.
   void _openActivity(QuestActivity ref, String missionId) {
     if (widget.readOnly) return;
+    if (ref.plan.activityMode.opensSharedRoom) {
+      final own = Matrix.of(
+        context,
+      ).client.discussionStandingFor(ref.activityId).room;
+      if (own != null) {
+        _openSession(own.id, missionId);
+        return;
+      }
+    }
     final room = widget.room;
     // The activity takes the card's slot, and the pressed card goes with it,
     // so the activity panel that mounts claims focus
@@ -638,6 +660,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                 ]),
                 builder: (context, _) {
                   final xpByActivity = _xpByActivity();
+                  final discussionStandings =
+                      widget.objectivesProvider.client.discussionStandings;
                   if (widget.suggestedOnly) {
                     // The course page's Mission card and its activities
                     // (#9437), ordered by the same Priority matrix the map
@@ -657,7 +681,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       groups: [current],
                       missionGradient:
                           widget.objectivesProvider.missionGradient,
-                      signalsFor: (id) => _signalsFor(id, xpByActivity),
+                      signalsFor: (id) =>
+                          _signalsFor(id, xpByActivity, discussionStandings),
                       cap: null,
                       includeOngoing: true,
                       includeCompleted: true,
@@ -670,7 +695,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         roles: activity.plan.req.numberOfParticipants,
                       ),
                     );
-                    final activities = [
+                    final ranked = [
                       for (final suggestion in suggested) suggestion.activity,
                     ];
                     // Play opens the row's first card, and that card carries a
@@ -684,8 +709,20 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // course can't fill yet. Each Mission keeps to its own
                     // activities: a session from another Mission resumes from
                     // that Mission's card or Chats.
-                    final inRow = activities.firstOrNull;
-                    final playTarget = inRow ?? current.activities.firstOrNull;
+                    final inRow = ranked
+                        .where((a) => a.plan.activityMode.offeredByPlay)
+                        .firstOrNull;
+                    // Play sits on the row's first card, so the card it opens
+                    // leads the row even where a joined discussion, which
+                    // Play never opens, ranks above it.
+                    final activities = inRow == null || ranked.first == inRow
+                        ? ranked
+                        : [inRow, ...ranked.where((a) => a != inRow)];
+                    final playTarget =
+                        inRow ??
+                        current.activities
+                            .where((a) => a.plan.activityMode.offeredByPlay)
+                            .firstOrNull;
                     final ongoingRoomId = inRow == null
                         ? null
                         : widget.room?.activeActivityRoomId(inRow.activityId);

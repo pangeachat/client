@@ -391,7 +391,7 @@ class AnalyticsActivityItem extends StatelessWidget {
                           earned:
                               room
                                   .orchestratorAwardedGoals
-                                  .awards[room.ownRoleState?.id]
+                                  .awards[room.ownAwardKey]
                                   ?.length ??
                               0,
                           iconSize: 22.0,

@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_pin_shape.dart';
@@ -182,7 +183,7 @@ void main() {
       );
     });
 
-    testWidgets('the plus glyph stays white in the dark theme', (tester) async {
+    testWidgets('the mode glyph stays white in the dark theme', (tester) async {
       await pump(
         tester,
         brightness: Brightness.dark,
@@ -190,17 +191,17 @@ void main() {
         tier: PinTier.mid,
       );
 
-      final icon = tester.widget<Icon>(find.byIcon(Icons.add));
+      final icon = tester.widget<Icon>(find.byIcon(ActivityMode.roleplay.icon));
       expect(
         icon.color,
         Colors.white,
         reason:
             'in the dark theme the deep primaryContainer fill carries a white '
-            'plus, so the glyph stays white there',
+            'glyph, so it stays white there',
       );
     });
 
-    testWidgets('the plus glyph is dark in the light theme (#8243)', (
+    testWidgets('the mode glyph is dark in the light theme (#8243)', (
       tester,
     ) async {
       await pump(
@@ -210,14 +211,14 @@ void main() {
         tier: PinTier.mid,
       );
 
-      final icon = tester.widget<Icon>(find.byIcon(Icons.add));
+      final icon = tester.widget<Icon>(find.byIcon(ActivityMode.roleplay.icon));
       expect(
         icon.color,
         Theme.of(
           tester.element(find.byType(Scaffold)),
         ).pangea.onActivityAvailable,
         reason:
-            'the light-purple fill is too pale for a white plus, so in light '
+            'the light-purple fill is too pale for a white glyph, so in light '
             'mode the glyph takes the pin\'s dark-purple label colour — which '
             '#8968 now resolves through the theme',
       );

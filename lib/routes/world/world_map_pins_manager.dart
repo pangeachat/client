@@ -4,12 +4,14 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
@@ -26,6 +28,7 @@ import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/trailing_throttle.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/courses/course_objectives/discussion_card.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -290,9 +293,12 @@ class WorldMapPinsManager {
   /// Whether [card] wears the completed stamp: the learner has finished it
   /// ([savedActivityIds]). A set lookup, never a rooms rescan.
   ActivityStarLevel starLevelOf(QuestActivityCard card) =>
-      _savedActivityIds.contains(card.activityId)
-      ? ActivityStarLevel.star
-      : ActivityStarLevel.none;
+      switch (card.activityMode.completionMark) {
+        CompletionMark.stamp when _savedActivityIds.contains(card.activityId) =>
+          ActivityStarLevel.star,
+        CompletionMark.stamp ||
+        CompletionMark.xpBadge => ActivityStarLevel.none,
+      };
 
   /// The activity's resolved display [ActivityPinState]: a live-session state
   /// (from [_signals]) wins the colour, else a saved session layers in
@@ -589,7 +595,18 @@ class WorldMapPinsManager {
     // current, and the map re-resolves when it changes.
     MissionXpCache.instance.ensureWired();
 
-    _signals = signals;
+    final withDiscussions = {...signals};
+    for (final MapEntry(key: id, value: standing)
+        in client.discussionStandings.entries) {
+      final state = DiscussionCard.stateOf(standing);
+      if (state == null) continue;
+      withDiscussions[id] = PinSignals(
+        state: state,
+        completionFraction: signals[id]?.completionFraction ?? 0,
+        pinged: signals[id]?.pinged ?? false,
+      );
+    }
+    _signals = withDiscussions;
     _userStars = userStars;
     _client = client;
     _xpByActivity = client.userXpByActivity(
@@ -793,6 +810,12 @@ class WorldMapPinsManager {
     // viewport, and the next camera settle refetches. Only a successful empty
     // list means the viewport is genuinely empty, and that still clears.
     if (pins == null) return;
-    _pins = pins;
+    // A discussion is a course's activity: it shows on a course's map, never
+    // the world map. The bbox read leaves discussions out too; this keeps the
+    // rule if an older server sends one.
+    _pins = [
+      for (final pin in pins)
+        if (pin.activityMode != ActivityMode.discussion) pin,
+    ];
   }
 }

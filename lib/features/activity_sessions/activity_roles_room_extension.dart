@@ -6,12 +6,14 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_filled_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/discussions/discussion_room_repo.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -125,6 +127,20 @@ extension ActivityRolesRoomExtension on Room {
     return userId == null ? null : activityRoles?.role(userId);
   }
 
+  /// The key the orchestrator files the learner's own awards (and any
+  /// per-seat output) under: their role id in a roleplay, and in a
+  /// discussion, where every student holds the same role, their seat's key
+  /// in `pangea.activity_roles` (`participant:<user id>`). Every reader of
+  /// the learner's own awards goes through it.
+  String? get ownAwardKey {
+    if (activityMode != ActivityMode.discussion) return ownRoleState?.id;
+    final userId = client.userID;
+    if (userId == null) return null;
+    return activityRoles?.roles.entries
+        .firstWhereOrNull((e) => e.value.userId == userId)
+        ?.key;
+  }
+
   ActivityRole? get ownRole {
     final role = ownRoleState;
     if (role == null || activityPlan == null) return null;
@@ -149,11 +165,15 @@ extension ActivityRolesRoomExtension on Room {
   bool get showsActivityStartPage =>
       isActivitySession && activityId != null && !isActivityStarted;
 
-  bool get isActivityStarted => activityStartedGate(
-    finished: isActivityFinished,
-    planRoleCount: activityPlan?.roles.length,
-    assignedRoleCount: assignedRoles?.length ?? 0,
-  );
+  /// A discussion has started once it has had a seat: students who leave
+  /// don't send the room back to its start page for those still reading it.
+  bool get isActivityStarted => (activityMode?.endsPerSeat ?? false)
+      ? (activityRoles?.roles.isNotEmpty ?? false)
+      : activityStartedGate(
+          finished: isActivityFinished,
+          planRoleCount: activityPlan?.roles.length,
+          assignedRoleCount: assignedRoles?.length ?? 0,
+        );
 
   /// The session has ended: every non-bot role has finished or its occupant
   /// has left the room. There is no stored "ended" field; this is computed
@@ -164,7 +184,11 @@ extension ActivityRolesRoomExtension on Room {
   /// itself"). Today's summary waits on this, so it appears once every player
   /// is done; the org design makes each learner's summary when they finish
   /// ([ActivityUserSummaries]; not yet built here).
+  ///
+  /// A discussion never ends as a whole: each student ends their own seat
+  /// ([ActivityMode.endsPerSeat]), so this is always false there.
   bool get isActivityFinished {
+    if (activityMode?.endsPerSeat ?? false) return false;
     final roles = activityRoles?.roles.values.where(
       (r) => r.userId != BotName.byEnvironment,
     );
@@ -202,6 +226,13 @@ extension ActivityRolesRoomExtension on Room {
   }
 
   bool get isActiveInActivity => hasPickedRole && !hasCompletedRole;
+
+  /// Whether the learner can write in this session's chat: they hold a seat
+  /// they haven't finished, or they are a course admin reading a discussion
+  /// without a seat, who reads and posts like any member but never counts.
+  bool get writesInActivity =>
+      isActiveInActivity ||
+      (activityMode == ActivityMode.discussion && !hasPickedRole);
 
   /// The Chats-list mirror of the map's `ongoingActive` pin state: the learner
   /// holds a seat, every seat is filled so the chat has really started, and
@@ -285,6 +316,7 @@ extension ActivityRolesRoomExtension on Room {
   }
 
   Future<void> continueActivity() async {
+    if (activityMode?.endsPerSeat ?? false) return _setOwnSeatEnded(false);
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     final role = ownRoleState;
     if (role == null || !role.isFinished) return;
@@ -300,6 +332,7 @@ extension ActivityRolesRoomExtension on Room {
   }
 
   Future<void> finishActivity() async {
+    if (activityMode?.endsPerSeat ?? false) return _setOwnSeatEnded(true);
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     final role = ownRoleState;
     if (role == null || role.isFinished) return;
@@ -314,7 +347,11 @@ extension ActivityRolesRoomExtension on Room {
     );
   }
 
+  /// Never offered in a discussion, where each student ends their own seat.
   Future<void> finishActivityForAll() async {
+    if (activityMode?.endsPerSeat ?? false) {
+      throw StateError('A discussion has no End for all');
+    }
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     currentRoles.finishAll();
     await client.setRoomStateWithKey(
@@ -340,6 +377,16 @@ extension ActivityRolesRoomExtension on Room {
   /// would end up disagreeing with the dosage outcome already emitted against
   /// it.
   Future<DateTime?> archiveActivity({DateTime? at}) async {
+    // The server archives a discussion seat on "I'm done"; a client never
+    // writes a discussion's roles.
+    if (activityMode?.endsPerSeat ?? false) {
+      ErrorHandler.logError(
+        e: 'archiveActivity called for a discussion',
+        data: {'roomId': id},
+        level: SentryLevel.warning,
+      );
+      return ownRoleState?.archivedAt;
+    }
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     final role = ownRoleState;
     if (role == null || !role.isFinished) return null;
@@ -358,5 +405,34 @@ extension ActivityRolesRoomExtension on Room {
       currentRoles.toJson(),
     );
     return archivedAt;
+  }
+
+  /// "I'm done" ([ended]) or "Wait, I'm not done" in a discussion. The server
+  /// writes the seat (`finished_at` and `archived_at` together), so another
+  /// student's seat can never be lost to a stale copy; then the room is muted
+  /// for the learner while ended, and notifies again once they are back. Its
+  /// leaving Chats follows from the archived seat ([isHiddenRoom]).
+  Future<void> _setOwnSeatEnded(bool ended) async {
+    if (ownRoleState == null) {
+      ErrorHandler.logError(
+        e: StateError('No own seat to ${ended ? 'end' : 'continue'}'),
+        data: {'roomId': id},
+        level: SentryLevel.warning,
+      );
+      return;
+    }
+    final result = await DiscussionRoomRepo.setSeatEnded(
+      client,
+      roomId: id,
+      ended: ended,
+    );
+    if (result.isError) throw result.asError!.error;
+    try {
+      await setPushRuleState(
+        ended ? PushRuleState.dontNotify : PushRuleState.notify,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'roomId': id, 'ended': ended});
+    }
   }
 }

@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
@@ -47,6 +48,9 @@ class ActivityUserSummaries extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (!(room.activityMode?.showsSummary ?? true)) {
+      return const SizedBox.shrink();
+    }
     // The subscription gate stands HERE, in the summary's own place, rather
     // than as a line in the finished-status bar — a gate that fills the space
     // the feature would have filled is the pattern every other one follows

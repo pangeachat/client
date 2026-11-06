@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
+import 'package:fluffychat/routes/courses/course_objectives/discussion_card.dart';
 import 'package:fluffychat/routes/world/world_map_card_dismiss_button.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -88,24 +90,38 @@ class WorldMapActivityCard extends StatelessWidget {
 
     final body = plan == null
         ? _PlainCard(title: title, live: _live, selected: isFocused)
-        : ActivitySuggestionCard(
-            activity: plan,
-            width: PinSize.mapCardWidth,
-            height: PinSize.mapCardHeight,
-            imageHeight: PinSize.mapCardImageHeight,
-            fontSize: 12.0,
-            fontSizeSmall: 9.0,
-            iconSize: 9.0,
-            pinState: _live ? state : null,
-            openSessions: openSessions,
-            participants: participants,
-            openSlots: openSlots,
-            pinged: pinged && _live,
-            frameWhenResting: true,
-            selected: isFocused,
-            timesCompleted: played ? 1 : 0,
-            xpEarned: played ? xpEarned : 0,
-          );
+        : switch (card.activityMode.cardStyle) {
+            ActivityCardStyle.discussion => DiscussionCard(
+              plan: plan,
+              width: PinSize.mapCardWidth,
+              height: PinSize.mapCardHeight,
+              imageHeight: PinSize.mapCardImageHeight,
+              fontSize: 12.0,
+              fontSizeSmall: 9.0,
+              iconSize: 9.0,
+              xpEarned: xpEarned,
+              frameWhenResting: true,
+              selected: isFocused,
+            ),
+            ActivityCardStyle.activity => ActivitySuggestionCard(
+              activity: plan,
+              width: PinSize.mapCardWidth,
+              height: PinSize.mapCardHeight,
+              imageHeight: PinSize.mapCardImageHeight,
+              fontSize: 12.0,
+              fontSizeSmall: 9.0,
+              iconSize: 9.0,
+              pinState: _live ? state : null,
+              openSessions: openSessions,
+              participants: participants,
+              openSlots: openSlots,
+              pinged: pinged && _live,
+              frameWhenResting: true,
+              selected: isFocused,
+              timesCompleted: played ? 1 : 0,
+              xpEarned: played ? xpEarned : 0,
+            ),
+          };
 
     final cardWithTail = Column(
       mainAxisSize: MainAxisSize.min,

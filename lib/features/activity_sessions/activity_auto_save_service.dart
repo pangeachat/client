@@ -4,9 +4,12 @@ import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
+import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/dosage/dosage_session_outcome.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
@@ -191,6 +194,10 @@ class ActivityAutoSaveService {
 
   Future<void> _maybeSave(Room? room) async {
     if (_disposed || room == null || !room.isActivitySession) return;
+    if (room.activityMode?.endsPerSeat ?? false) {
+      await _fileEndedDiscussion(room);
+      return;
+    }
     if (!activityAutoSaveGate(
       isActivityFinished: room.isActivityFinished,
       hasCompletedRole: room.hasCompletedRole,
@@ -256,6 +263,57 @@ class ActivityAutoSaveService {
           fallbackCause: plan.fallbackCause,
         );
       }
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'roomId': room.id});
+    } finally {
+      _saving.remove(room.id);
+    }
+  }
+
+  /// A discussion's "I'm done" is saved by the server, which stamps the
+  /// learner's own seat finished and archived together (synapse
+  /// `discussion_room`), so this never writes the room's roles. What is left
+  /// to the client is what the roleplay save does besides archiving: file the
+  /// session in the learner's analytics room for its language, and emit the
+  /// completion signals. The analytics room's list is the durable record that
+  /// this happened, so ending again after "Wait, I'm not done" files and
+  /// counts nothing twice.
+  Future<void> _fileEndedDiscussion(Room room) async {
+    final archivedAt = room.ownRoleState?.archivedAt;
+    if (archivedAt == null || !room.hasCompletedRole) return;
+
+    final plan = room.activityPlan;
+    if (plan == null) return;
+    final lang = PLanguageStore.byLangCode(
+      plan.req.targetLanguage.split("-").first,
+    );
+    if (lang == null) return;
+
+    bool filed() =>
+        client
+            .ownAnalyticsRoomLocal(lang: lang)
+            ?.activityRoomIds
+            .contains(room.id) ??
+        false;
+    if (filed()) return;
+
+    if (!_saving.add(room.id)) return;
+    try {
+      await analyticsService.updateService.sendActivityAnalytics(room.id, lang);
+      if (!filed()) {
+        ErrorHandler.logError(
+          e: StateError('An ended discussion was not filed in analytics'),
+          data: {'roomId': room.id, 'lang': lang.langCode},
+        );
+        return;
+      }
+      _emitDosageSessionOutcome(room, archivedAt);
+      GoogleAnalytics.completeActivity(
+        plan.activityId,
+        room.id,
+        versionPinHonored: !plan.usedFallbackVersion,
+        fallbackCause: plan.fallbackCause,
+      );
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'roomId': room.id});
     } finally {
