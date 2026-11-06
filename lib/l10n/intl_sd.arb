@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-11-04 15:02:50.277032",
+    "@@last_modified": "2026-11-06 13:11:05.482868",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "ادائگي ناڪام ٿي وئي. رعايتي مدت {date} تي ختم ٿيندي",
     "changeBaseLanguageTitle": "بنيادي ٻولي تبديل ڪريو؟",
     "changeBaseLanguageDesc": "ايپ جا مينيو ۽ بٽڻ {language} ۾ تبديل ٿي ويندا.",
+    "accountSetupFailedHelp": "اسان توهان جو اڪائونٽ سيٽ اپ نه ڪري سگهياسين. پنهنجو ڪنيڪشن چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو، يا لاگ آئوٽ ڪريو ۽ بعد ۾ سائن ان ڪريو.",
+    "onboardingOfflineError": "توهان آف لائن آهيو. جڏهن توهان آن لائن ٿيو ته ٻيهر ڪوشش ڪريو.",
     "activitySavedTo": "سرگرمي {page} ۾ محفوظ ڪئي وئي"
 }

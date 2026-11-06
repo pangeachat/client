@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-11-04 15:02:53.081690",
+    "@@last_modified": "2026-11-06 13:11:07.851385",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "Intlawulo ayiphumelelanga. Ixesha lesisa liphela ngo-{date}",
     "changeBaseLanguageTitle": "Guqula ulwimi olusisiseko?",
     "changeBaseLanguageDesc": "Iimenyu zosetyenziso namaqhosha aya kutshintshela kwisi-{language}.",
+    "accountSetupFailedHelp": "Asikwazanga ukugqiba ukuseta iakhawunti yakho. Jonga uqhagamshelo lwakho uze uzame kwakhona, okanye phuma uze ungene kamva.",
+    "onboardingOfflineError": "Awukho kwi-intanethi. Zama kwakhona xa sele ukwi-intanethi.",
     "activitySavedTo": "Umsebenzi ugcinwe ku-{page}"
 }

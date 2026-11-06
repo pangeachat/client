@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-11-04 15:02:48.248633",
+    "@@last_modified": "2026-11-06 13:11:03.698337",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "শেন্থোক ফেইল তৌরবনি। গ্রেস পিরিয়ড {date} দা লোইগনি।",
     "changeBaseLanguageTitle": "ꯃୂଳ ꯂꯣꯟ ꯑꯣꯟꯊꯣꯛꯀꯗ꯭ꯔꯥ?",
     "changeBaseLanguageDesc": "ꯑꯦꯞꯄꯀꯤ ꯃꯦꯅꯨ ꯑꯃꯁꯨꯡ ꯕꯇꯟꯁꯤꯡ ꯑꯁꯤ {language} ꯗꯥ ꯑꯣꯟꯊꯣꯛꯀꯅꯤ.",
+    "accountSetupFailedHelp": "ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯑꯦꯀꯥꯎꯟꯇ ꯁꯦꯠ ꯑꯄ ꯇꯧꯕꯥ ꯂꯣꯏꯁꯤꯟꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫ ꯅꯍꯥꯛꯀꯤ ꯀꯅꯦꯛꯁꯟ ꯆꯦꯛ ꯇꯧꯕꯤꯌꯨ ꯑꯃꯁꯨꯡ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯊꯕꯛ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯠꯔꯒꯥ ꯂꯣꯒ ꯑꯥꯎꯠ ꯇꯧꯔꯒꯥ ꯃꯇꯨꯡꯗꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ꯫",
+    "onboardingOfflineError": "ꯑꯣꯅꯂꯥꯏꯟ ꯂꯩꯇꯔꯦ꯫ ꯑꯣꯅꯂꯥꯏꯟ ꯍꯟꯅ ꯂꯩꯔꯒ ꯍꯟꯅ ꯊꯤꯡꯖꯧ꯫",
     "activitySavedTo": "Activity {page} da save toukhre"
 }

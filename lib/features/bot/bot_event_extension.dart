@@ -20,13 +20,23 @@ extension BotEventExtension on Event {
 
   bool get isBotNotice => type == PangeaEventTypes.botNotice;
 
+  bool get _isBotDMNotice =>
+      isBotNotice && senderId == BotName.byEnvironment && room.isBotDM;
+
+  bool get _isRealizedNotice =>
+      content.tryGet<String>(noticeCheckInTypeKey) == _realizedNoticeType;
+
   /// Whether the bot DM shows this notice as the bot's message.
   bool get isShownBotNotice =>
-      isBotNotice &&
-      senderId == BotName.byEnvironment &&
-      room.isBotDM &&
-      content.tryGet<String>(noticeCheckInTypeKey) != _realizedNoticeType &&
-      noticeBody != null;
+      _isBotDMNotice && !_isRealizedNotice && noticeBody != null;
+
+  /// A hidden notice the user has not read. Nothing else makes the chat send
+  /// the read receipt pangea-bot waits for (notices.instructions.md).
+  bool get isUnreadRealizedNotice =>
+      _isBotDMNotice &&
+      _isRealizedNotice &&
+      (room.receiptState.global.latestOwnReceipt?.ts ?? 0) <
+          originServerTs.millisecondsSinceEpoch;
 
   String? get noticeBody {
     final body = content.tryGet<String>('body');

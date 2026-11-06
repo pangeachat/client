@@ -11,14 +11,7 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
     required super.client,
     required super.state,
     required super.maxRemainingSteps,
-  }) {
-    final info = state.avatarInfo;
-    if (info == null || (info.avatarBytes == null && info.avatarUrl == null)) {
-      state.setAvatarInfo(
-        AvatarInfo(avatarUrl: state.avatarProvider.getRandomAvatarUrl()),
-      );
-    }
-  }
+  });
 
   void setDisplayName(String name) => state.setDisplayName(name);
 
@@ -34,12 +27,24 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
     if (avatarBytes != null && avatarUrl == null) {
       try {
         avatarUrl = await client.uploadContent(avatarBytes);
+        // Kept as the uploaded address, so moving forward again doesn't upload
+        // the same picture a second time.
+        state.setAvatarInfo(AvatarInfo(avatarUrl: avatarUrl));
       } catch (e, s) {
         ErrorHandler.logError(e: e, s: s, data: {});
       }
     }
 
     final currentProfile = await client.fetchOwnProfile();
+
+    // Next can come before the page has loaded the profile and picked an
+    // avatar; an account with none still gets a random preset.
+    if (avatarUrl == null &&
+        avatarBytes == null &&
+        currentProfile.avatarUrl == null) {
+      avatarUrl = state.avatarProvider.getRandomAvatarUrl();
+      state.setAvatarInfo(AvatarInfo(avatarUrl: avatarUrl));
+    }
 
     try {
       if (avatarUrl != null && avatarUrl != currentProfile.avatarUrl) {

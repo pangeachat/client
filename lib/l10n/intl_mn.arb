@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-11-04 15:02:48.021147",
+    "@@last_modified": "2026-11-06 13:11:03.343046",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "Төлбөр амжилтгүй боллоо. Хөнгөлөлтийн хугацаа {date}-нд дуусна",
     "changeBaseLanguageTitle": "Үндсэн хэлийг өөрчлөх үү?",
     "changeBaseLanguageDesc": "Аппын цэс болон товчлуурууд {language} хэл рүү шилжинэ.",
+    "accountSetupFailedHelp": "Таны бүртгэлийг үүсгэж чадсангүй. Холболтоо шалгаад дахин оролдоно уу, эсвэл гарч, дараа дахин нэвтэрнэ үү.",
+    "onboardingOfflineError": "Та офлайн байна. Онлайн болсны дараа дахин оролдоно уу.",
     "activitySavedTo": "Үйл ажиллагааг {page} руу хадгаллаа"
 }

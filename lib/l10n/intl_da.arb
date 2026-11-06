@@ -1325,7 +1325,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-11-04 15:02:41.476234",
+    "@@last_modified": "2026-11-06 13:10:58.014027",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10966,5 +10966,7 @@
     "subscriptionGracePeriodEndsOn": "Betaling mislykkedes. Udsættelsesperiode slutter den {date}",
     "changeBaseLanguageTitle": "Skift grundsprog?",
     "changeBaseLanguageDesc": "Appens menuer og knapper skifter til {language}.",
+    "accountSetupFailedHelp": "Vi kunne ikke færdiggøre opsætningen af din konto. Tjek din forbindelse, og prøv igen, eller log ud, og log ind senere.",
+    "onboardingOfflineError": "Du er offline. Prøv igen, når du er online.",
     "activitySavedTo": "Aktivitet gemt i {page}"
 }

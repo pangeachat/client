@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-11-04 15:02:42.537154",
+    "@@last_modified": "2026-11-06 13:10:59.345577",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "Betelling mislearre. Betellingsfrije perioade einiget op {date}",
     "changeBaseLanguageTitle": "Basistaal feroarje?",
     "changeBaseLanguageDesc": "De menu's en knoppen fan de app sille oerskeakelje nei {language}.",
+    "accountSetupFailedHelp": "Wy koene jo akkount net ynstelle. Kontrolearje jo ferbining en besykje it opnij, of meld jo ôf en meld jo letter wer oan.",
+    "onboardingOfflineError": "Jo binne offline. Besykje it opnij as jo wer online binne.",
     "activitySavedTo": "Aktiviteit bewarre yn {page}"
 }

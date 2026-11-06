@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-11-04 15:02:46.196142",
+    "@@last_modified": "2026-11-06 13:11:02.455709",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "Solutio defecit. Tempus gratiae desinit die {date}",
     "changeBaseLanguageTitle": "Mutare linguam fundamentalem?",
     "changeBaseLanguageDesc": "Menu et bullae applicationis ad {language} mutabuntur.",
+    "accountSetupFailedHelp": "Rationem tuam constituere non potuimus. Coniunctionem tuam inspice et iterum conare, aut exi et postea inscribe.",
+    "onboardingOfflineError": "Non es in linea. Conare iterum cum in linea eris.",
     "activitySavedTo": "Actio servata ad {page}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-11-04 15:02:46.489537",
+    "@@last_modified": "2026-11-06 13:11:02.913288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "Bezuelung net gelongen. D'Schonnzäit endet den {date}",
     "changeBaseLanguageTitle": "Basisssprooch änneren?",
     "changeBaseLanguageDesc": "D'Menüen an d'Knäppercher vun der App wiesselen op {language}.",
+    "accountSetupFailedHelp": "Mir konnten Äre Kont net fäerdeg astellen. Kontrolléiert Är Verbindung a probéiert et nach eng Kéier, oder mellt Iech of a mellt Iech méi spéit un.",
+    "onboardingOfflineError": "Dir sidd offline. Probéiert et nach eng Kéier wann Dir erëm online sidd.",
     "activitySavedTo": "Aktivitéit gespäichert op {page}"
 }

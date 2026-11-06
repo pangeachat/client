@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-11-04 15:02:51.199615",
+    "@@last_modified": "2026-11-06 13:11:06.577618",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "Tefo e hlotsoe. Nako ea mohau e fela ka {date}",
     "changeBaseLanguageTitle": "Fetola puo ea motheo?",
     "changeBaseLanguageDesc": "Limenu le likonopo tsa app li tla fetohela ho {language}.",
+    "accountSetupFailedHelp": "Re hlotsoe ho qeta ho hloma ak'haonte ea hau. Lekola khokahano ea hau ebe u leka hape, kapa u tsoe ebe u kena hape hamorao.",
+    "onboardingOfflineError": "Ha o inthaneteng. Leka hape ha o se o inthaneteng.",
     "activitySavedTo": "Mosebetsi o bolokiloe ho {page}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-11-04 15:02:50.898259",
+    "@@last_modified": "2026-11-06 13:11:06.621444",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "Malipo yameshindwa. Muda wa ziada unaisha tarehe {date}",
     "changeBaseLanguageTitle": "Badilisha lugha ya msingi?",
     "changeBaseLanguageDesc": "Menyu na vitufe vya programu vitabadilika kuwa {language}.",
+    "accountSetupFailedHelp": "Hatukuweza kumaliza kusanidi akaunti yako. Angalia muunganisho wako na ujaribu tena, au ingia na uingie baadaye.",
+    "onboardingOfflineError": "Hauna intaneti. Jaribu tena ukiwa mtandaoni.",
     "activitySavedTo": "Shughuli imehifadhiwa kwenye {page}"
 }

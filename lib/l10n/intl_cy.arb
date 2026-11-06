@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-11-04 15:02:41.288052",
+    "@@last_modified": "2026-11-06 13:10:58.354215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "Methodd taliad. Daw'r cyfnod gras i ben ar {date}",
     "changeBaseLanguageTitle": "Newid iaith sylfaen?",
     "changeBaseLanguageDesc": "Bydd dewislenni a botymau'r ap yn newid i {language}.",
+    "accountSetupFailedHelp": "Ni allem orffen sefydlu eich cyfrif. Gwiriwch eich cysylltiad a rhowch gynnig arall arni, neu allgofnodwch a mewngofnodwch yn ddiweddarach.",
+    "onboardingOfflineError": "Rydych chi all-lein. Rhowch gynnig arall arni unwaith y byddwch chi ar-lein eto.",
     "activitySavedTo": "Gweithgaredd wedi'i gadw i {page}"
 }

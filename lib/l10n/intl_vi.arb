@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 15:02:52.160985",
+    "@@last_modified": "2026-11-06 13:11:07.566893",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7356,5 +7356,7 @@
     "subscriptionGracePeriodEndsOn": "Thanh toán không thành công. Thời gian gia hạn kết thúc vào {date}",
     "changeBaseLanguageTitle": "Đổi ngôn ngữ cơ sở?",
     "changeBaseLanguageDesc": "Các menu và nút của ứng dụng sẽ chuyển sang tiếng {language}.",
+    "accountSetupFailedHelp": "Chúng tôi không thể hoàn tất việc thiết lập tài khoản của bạn. Vui lòng kiểm tra kết nối và thử lại, hoặc đăng xuất và đăng nhập sau.",
+    "onboardingOfflineError": "Bạn đang ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng.",
     "activitySavedTo": "Hoạt động đã lưu vào {page}"
 }

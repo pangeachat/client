@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-11-04 15:02:50.429054",
+    "@@last_modified": "2026-11-06 13:11:06.008927",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "Pagesa dështoi. Periudha e tolerancës përfundon më {date}",
     "changeBaseLanguageTitle": "Ndrysho gjuhën bazë?",
     "changeBaseLanguageDesc": "Menytë dhe butonat e aplikacionit do të kalojnë në {language}.",
+    "accountSetupFailedHelp": "Nuk mundëm të përfundonim konfigurimin e llogarisë suaj. Kontrolloni lidhjen tuaj dhe provoni përsëri, ose dilni dhe kyçuni më vonë.",
+    "onboardingOfflineError": "Je jashtë linje. Provo sërish pasi të jesh online.",
     "activitySavedTo": "Aktiviteti u ruajt te {page}"
 }

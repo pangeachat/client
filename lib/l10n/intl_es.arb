@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-11-04 15:02:41.694620",
+    "@@last_modified": "2026-11-06 13:10:59.084234",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8278,5 +8278,7 @@
     "subscriptionGracePeriodEndsOn": "Error de pago. El período de gracia termina el {date}",
     "changeBaseLanguageTitle": "¿Cambiar idioma base?",
     "changeBaseLanguageDesc": "Los menús y botones de la aplicación cambiarán a {language}.",
+    "accountSetupFailedHelp": "No pudimos terminar de configurar tu cuenta. Revisa tu conexión e inténtalo de nuevo, o cierra sesión y vuelve a iniciarla más tarde.",
+    "onboardingOfflineError": "Estás desconectado. Inténtalo de nuevo cuando tengas conexión.",
     "activitySavedTo": "Actividad guardada en {page}"
 }

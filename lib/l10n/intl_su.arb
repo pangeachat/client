@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-11-04 15:02:51.366631",
+    "@@last_modified": "2026-11-06 13:11:06.355689",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "Pamayaran gagal. Mangsa tenggang réngsé dina {date}",
     "changeBaseLanguageTitle": "Ganti basa dasar?",
     "changeBaseLanguageDesc": "Ménu jeung tombol aplikasi bakal robah jadi basa {language}.",
+    "accountSetupFailedHelp": "Kami henteu tiasa ngarengsekeun panyetélan akun anjeun. Pariksa sambungan anjeun teras cobian deui, atanapi kaluar teras asup deui engké.",
+    "onboardingOfflineError": "Anjeun nuju offline. Cobi deui saatos anjeun online deui.",
     "activitySavedTo": "Aktivitas disimpen ka {page}"
 }

@@ -335,6 +335,28 @@ void main() {
     },
   );
 
+  // CLIENT-F0M / F1F (#9806). The course page still builds through a sign-out
+  // (#9019), and the invite row read the SDK's `canInvite`, which needs
+  // `client.userID!`.
+  testWidgets('after a sign-out the preview rebuilds without the invite row', (
+    tester,
+  ) async {
+    final room = courseRoom(members: 2);
+    await pumpPreview(tester, room);
+    expect(
+      find.byType(LeaderboardInviteRow),
+      findsOneWidget,
+      reason: 'precondition',
+    );
+
+    await tester.runAsync(client.clear);
+    expect(client.userID, isNull, reason: 'precondition');
+    await pumpPreview(tester, room);
+
+    expect(tester.takeException(), isNull);
+    expect(find.byType(LeaderboardInviteRow), findsNothing);
+  });
+
   testWidgets('the bot is neither an admin nor ranked', (tester) async {
     await pumpPreview(tester, courseRoom(members: 3, withBot: true));
 

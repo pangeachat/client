@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -25,6 +26,10 @@ import 'sentry_capture_harness.dart';
 /// rate-limits anyway (`M_LIMIT_EXCEEDED`) is a warning followed by a rest,
 /// not an error followed by the next write. A space the learner cannot write
 /// to is skipped, and the pass goes on to the others (#9203).
+///
+/// A sign-out does not wait for the pass. The writes it can no longer make
+/// end the pass without a report, as a request built after sign-out does
+/// (#9806, CLIENT-EZM / EW2 / EYY / EVQ).
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -39,8 +44,10 @@ void main() {
 
   final counter = SentryEventCounter();
   late Client client;
+  late _ParkedChildWrite transport;
   late FakeMatrixApi api;
   late Map<String, int> writes;
+  late Map<String, int> parentWrites;
   late Map<String, List<DateTime>> writeTimes;
 
   /// The key [FakeMatrixApi] files a state write under: the path after
@@ -110,6 +117,7 @@ void main() {
     Map<String, dynamic> Function(int nth) response,
   ) {
     final counts = writes;
+    final parents = parentWrites;
     final times = writeTimes;
     for (final childId in analyticsRoomIds) {
       api.api['PUT']![stateAction(
@@ -122,8 +130,14 @@ void main() {
         (times[spaceId] ??= []).add(DateTime.now());
         return response(nth);
       };
-      api.api['PUT']![stateAction(childId, EventTypes.SpaceParent, spaceId)] =
-          (_) => {'event_id': '\$parent'};
+      api.api['PUT']![stateAction(
+        childId,
+        EventTypes.SpaceParent,
+        spaceId,
+      )] = (_) {
+        parents[spaceId] = (parents[spaceId] ?? 0) + 1;
+        return {'event_id': '\$parent'};
+      };
     }
   }
 
@@ -141,9 +155,11 @@ void main() {
 
   setUp(() async {
     await counter.init();
-    client = await getTestClient();
+    transport = _ParkedChildWrite();
+    client = await getTestClient(httpClient: transport);
     api = FakeMatrixApi.currentApi!;
     writes = {};
+    parentWrites = {};
     writeTimes = {};
     // The spaces are visited in this order, so the second one is only reached
     // if whatever happens in the first leaves the rest of the pass alone.
@@ -161,11 +177,17 @@ void main() {
 
   Map<String, dynamic> accepted(int _) => {'event_id': '\$child'};
 
-  /// Waits until [spaceId] has seen [count] child writes. The pass is never
-  /// awaited: it rests for up to ten seconds after each space it wrote to.
-  Future<void> untilWrites(String spaceId, int count) async {
+  /// Waits until [spaceId] has seen [count] child writes, or [of] another
+  /// count. The pass is never awaited: it rests for up to ten seconds after
+  /// each space it wrote to.
+  Future<void> untilWrites(
+    String spaceId,
+    int count, {
+    Map<String, int>? of,
+  }) async {
+    final counts = of ?? writes;
     final deadline = DateTime.now().add(const Duration(seconds: 20));
-    while ((writes[spaceId] ?? 0) < count &&
+    while ((counts[spaceId] ?? 0) < count &&
         DateTime.now().isBefore(deadline)) {
       await pumpEventQueue();
     }
@@ -249,4 +271,88 @@ void main() {
       expect(counter.events, 0);
     },
   );
+
+  /// For a test that asserts NOTHING was reported: a count of zero cannot
+  /// tell "none" from "not arrived yet" (testing.instructions.md).
+  Future<SentryCaptureHarness> noReportHarness() async {
+    await counter.close();
+    final sentry = SentryCaptureHarness();
+    await sentry.init();
+    addTearDown(sentry.close);
+    return sentry;
+  }
+
+  test(
+    'a sign-out during a rest ends the pass with no write and no report',
+    () async {
+      final sentry = await noReportHarness();
+      stubSpace(firstSpaceId, accepted);
+      stubSpace(secondSpaceId, accepted);
+
+      await sentry.expectNoReport(() async {
+        final pass = client.addAnalyticsRoomsToSpaces(
+          batchRooms: 1,
+          batchRest: const Duration(seconds: 1),
+        );
+        // The first room is fully written; the pass is now resting.
+        await untilWrites(firstSpaceId, 1, of: parentWrites);
+        await client.clear();
+        expect(client.userID, isNull, reason: 'precondition');
+        await pass;
+      });
+
+      expect(writes[firstSpaceId], 1);
+      expect(writes[secondSpaceId], isNull);
+    },
+  );
+
+  test('a write that a sign-out cuts off is not reported', () async {
+    final sentry = await noReportHarness();
+    stubSpace(firstSpaceId, accepted);
+    stubSpace(secondSpaceId, accepted);
+    transport.hold();
+
+    await sentry.expectNoReport(() async {
+      final pass = client.addAnalyticsRoomsToSpaces();
+      await transport.parked;
+      await client.clear();
+      transport.release();
+      await pass;
+    });
+
+    // The child write was sent before the sign-out; the parent write after
+    // it could not be built.
+    expect(writes[firstSpaceId], 1);
+    expect(parentWrites[firstSpaceId], isNull);
+    expect(writes[secondSpaceId], isNull);
+  });
+}
+
+/// Forwards every request to a [FakeMatrixApi], except that after [hold] it
+/// parks the next space-child write until [release]. That is the window in
+/// which a sign-out lands between the two writes `setSpaceChild` makes.
+class _ParkedChildWrite extends http.BaseClient {
+  final _api = FakeMatrixApi();
+  final _reached = Completer<void>();
+  Completer<void>? _gate;
+
+  /// Completes when a write is parked.
+  Future<void> get parked => _reached.future;
+
+  void hold() => _gate = Completer<void>();
+
+  void release() => _gate?.complete();
+
+  @override
+  Future<http.StreamedResponse> send(http.BaseRequest request) async {
+    final gate = _gate;
+    if (gate != null &&
+        !_reached.isCompleted &&
+        request.method == 'PUT' &&
+        request.url.path.contains(EventTypes.SpaceChild)) {
+      _reached.complete();
+      await gate.future;
+    }
+    return _api.send(request);
+  }
 }

@@ -49,6 +49,9 @@ class CustomCourseStepViewState extends State<CustomCourseStepView> {
     _step = widget.step;
     _enabledNotifier.value = _step.enableGoForward;
 
+    _nameController.text = _step.state.courseRequestName ?? '';
+    _institutionController.text = _step.state.courseRequestInstitution ?? '';
+    _goalsController.text = _step.state.courseRequestGoals ?? '';
     _nameController.addListener(_setName);
     _institutionController.addListener(_setInstitution);
     _goalsController.addListener(_setGoals);

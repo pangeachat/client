@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-11-04 15:02:52.190339",
+    "@@last_modified": "2026-11-06 13:11:07.146937",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "ادائیگی ناکام ہو گئی۔ رعایت کی مدت {date} کو ختم ہو رہی ہے",
     "changeBaseLanguageTitle": "بنیادی زبان تبدیل کریں؟",
     "changeBaseLanguageDesc": "ایپ کے مینیو اور بٹن {language} میں تبدیل ہو جائیں گے۔",
+    "accountSetupFailedHelp": "ہم آپ کا اکاؤنٹ سیٹ اپ مکمل نہیں کر سکے۔ اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں، یا لاگ آؤٹ کر کے بعد میں سائن ان کریں۔",
+    "onboardingOfflineError": "آپ آف لائن ہیں۔ ایک بار جب آپ آن لائن ہو جائیں تو دوبارہ کوشش کریں۔",
     "activitySavedTo": "سرگرمی {page} میں محفوظ ہو گئی"
 }

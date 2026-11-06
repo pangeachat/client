@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-11-04 15:02:48.011524",
+    "@@last_modified": "2026-11-06 13:11:03.940615",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2519,5 +2519,7 @@
     "subscriptionGracePeriodEndsOn": "Il-ħlas falla. Il-perjodu ta' grazzja jintemm fi {date}",
     "changeBaseLanguageTitle": "Tibdel il-lingwa bażika?",
     "changeBaseLanguageDesc": "Il-menus u l-buttuni tal-app se jinbidlu għal {language}.",
+    "accountSetupFailedHelp": "Ma stajniex inlesti s-setup tal-kont tiegħek. Iċċekkja l-konnessjoni tiegħek u erġa' pprova, jew idħol u illoggja aktar tard.",
+    "onboardingOfflineError": "M'intix online. Erġa' pprova meta terġa' tkun online.",
     "activitySavedTo": "Attività ssejvjata f'{page}'"
 }
