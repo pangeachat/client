@@ -65,7 +65,7 @@ What a learner sees while playing a conversation activity and when it ends. Find
 ## Downloading the transcript
 
 - Any member can download, since it shows only what they can read; web only until the native path is tested.
-- The menu also has Search, Chat details and admin-only Delete. Invite leaves once the session ends for everyone; End activity shows while the learner holds an unfinished role in a started session, Leave until they take a role in one.
+- The menu also has Search, Chat details and admin-only Delete. Invite leaves once the session ends for everyone, and a discussion room never offers it, since Join is the only way in and it keeps the room's seats and count; End activity shows while the learner holds an unfinished role in a started session, Leave until they take a role in one.
 
 ## Open questions
 
