@@ -118,8 +118,6 @@ The spine of the product. The expensive bugs live at these seams (the LO-lock ga
 - [ ] Wide viewport, left panel + right companion open: select a different section (Chats/Courses) in the rail — **Expect:** the rail selection REPLACES open left-column panels with that section; right-column companions stay open. _(routing.instructions.md)_
 - [ ] Wide viewport, live chat open on left: open a course from a pin/tile (not a rail button) — **Expect:** keeps the open chat and swaps only the course (content nav, not a section switch). _(routing.instructions.md)_
 - [ ] Click the Courses icon in the nav rail (≥1 joined course) — **Expect:** a left-column master with a flat list of joined-course tiles (image, name, participants, level, modules) + add-course options (start-my-own / browse / enter-code) below; URL carries the left token over `/`, not a `/courses` path. _(routing.instructions.md; routes.dart)_
-- [ ] As admin, open Invite-by-Email from the course card More menu, enter emails, submit — **Expect:** calls the Synapse invite*by_email endpoint with `{room_id, emails, message?}` using the teacher's token; toast confirmation (fire-and-forget); response `{emailed, errors}`. *(invite-by-email.instructions.md; [gated] [staging-only])\_
-- [ ] As a non-admin (power < 100), attempt Invite-by-Email — **Expect:** the action is gated to admins (power 100); a non-admin cannot successfully invite. _(invite-by-email.instructions.md; [gated])_
 - [ ] As admin on a wide layout, open a course management page (invite/edit/access) from the card — **Expect:** opens as a coexisting detail BESIDE the card (a `coursepage` token; card is master), not replacing it; closing reveals the card. Under width pressure it folds to a push (back arrow reopens card). _(routing.instructions.md; [recently-changed])_
 - [ ] Open a course management page on a narrow screen — **Expect:** single-column shows one panel: management page is a push over the card with a back arrow that reopens the card (master one step away, never discarded). _(routing.instructions.md; [recently-changed])_
 - [ ] Navigate directly to a legacy course path `/courses/!spaceid` — **Expect:** redirected to `/?m=course:!spaceid&left=course` at the router redirect before render; the map never double-rebuilds (a visible world↔course flicker is itself a failure). `/courses/!spaceid/!roomid` adds the room as a left token beside the course. _(legacy_redirects.dart; routing.instructions.md; [recently-changed])_
@@ -371,7 +369,7 @@ Read before judging a finding — most are false-negative traps where correct be
 - **Doc path drift.** Subscriptions instructions reference `lib/pangea/subscription/**` but code lives under `lib/features/subscription/**`; toolbar surfaces are token-driven overlays over `/` (there is no `/analytics`, `/settings`, `/chats` render route) — assert via tokens/UI, not path navigation. The reading toolbar / word card never change the URL.
 - **Grammar/practice content can degrade legitimately.** Grammar-error practice fails to materialize when the original room isn't loaded (left room → `getRoomById` null); the toolbar scorer and the standalone simple-recency sort use different prioritization — don't assume identical target ordering. Empty/degraded grammar-error sessions are an expected branch.
 - **Auth redirect race.** `PAuthGaurd` resolves `hasSetL2` asynchronously; on a cold load before `pController` is wired the guard uses only `client.isLogged()`. Tests hitting `/` or `/home` very early may see a transient login/world redirect before the L2-based `/registration` redirect resolves.
-- **Staging auth + seeded data.** Live-app discovery, progression, knock/invite, analytics-room, invite_by_email, and subscription flows need a valid staging session + seeded joined-course progression / live sessions. Mark these staging-only; without seeded progression the gate fails open and pins may all appear unlocked.
+- **Staging auth + seeded data.** Live-app discovery, progression, knock/invite, analytics-room, and subscription flows need a valid staging session + seeded joined-course progression / live sessions. Mark these staging-only; without seeded progression the gate fails open and pins may all appear unlocked.
 
 ---
 
@@ -394,7 +392,7 @@ Agents own exploration + recently-changed areas (the unknown unknowns). Once a f
 
 **Keep agent-only for now (live, nondeterministic, or staging-seeded):**
 
-- Anything `[staging-only]` requiring a real Synapse round-trip: knock/approve/auto-join (KnockTracker sync timing), invite_by_email, analytics-room access, cross-device KnockTracker.
+- Anything `[staging-only]` requiring a real Synapse round-trip: knock/approve/auto-join (KnockTracker sync timing), analytics-room access, cross-device KnockTracker.
 - Star rollup → next-Mission unlock and teacher-overridden thresholds (needs seeded joined-course progression + awarded-goal room state + debounced re-gate).
 - Joinable/green session pins (time-sensitive open sessions, only in joined courses).
 - Writing-assistance match content + span-card choices (live LLM nondeterminism, debounce, Future-Work animations).
