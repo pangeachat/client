@@ -17,10 +17,10 @@ import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 /// page whose data isn't saved to the account, with what is saved in [state]
 /// (onboarding.instructions.md § What onboarding reads and saves).
 ///
-/// The profile and class-code pages save nothing that tells them apart from
-/// a fresh account, so the role and the languages decide. The level has a
-/// default and always reads as saved, so a run with its languages saved opens
-/// on the level page with the saved level selected.
+/// The profile page is told apart by its own mark, since sign-up already sets
+/// a name. The class-code page saves nothing to the account, so the languages
+/// decide. The level has a default and always reads as saved, so a run with
+/// its languages saved opens on the level page with the saved level selected.
 List<OnboardingStep> resumedOnboardingPath(
   Client client,
   OnboardingStateController state,
@@ -30,13 +30,22 @@ List<OnboardingStep> resumedOnboardingPath(
     state: state,
     maxRemainingSteps: 5,
   );
+  if (!client.onboardingUnfinished) return [profile];
+
+  final roleStep = UserTypeOnboardingStep(
+    client: client,
+    state: state,
+    maxRemainingSteps: 4,
+  );
   final role = state.userType;
-  if (!client.onboardingUnfinished || role == null) return [profile];
+  if (role == null) {
+    return client.onboardingProfileSaved ? [profile, roleStep] : [profile];
+  }
 
   final teacher = role == UserType.teacher;
   final codePath = [
     profile,
-    UserTypeOnboardingStep(client: client, state: state, maxRemainingSteps: 4),
+    roleStep,
     CourseCodeOnboardingStep(
       client: client,
       state: state,

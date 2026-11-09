@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart' hide Profile;
 
 import 'package:fluffychat/features/user/user_constants.dart';
@@ -106,6 +109,51 @@ void main() {
         expect(client.onboardingUnfinished, isFalse);
       },
     );
+
+    test('the profile mark carries the started mark', () async {
+      await client.markOnboardingProfileSaved();
+      expect(client.onboardingProfileSaved, isTrue);
+      expect(client.accountData[PangeaEventTypes.onboardingProgress]?.content, {
+        'started': true,
+        'profile_saved': true,
+      });
+    });
+
+    test('an account with an L2 and no marks gets no profile mark', () async {
+      saveSettings({'target_language': 'es', 'source_language': 'en'});
+      await client.markOnboardingProfileSaved();
+      expect(client.accountData[PangeaEventTypes.onboardingProgress], isNull);
+    });
+  });
+
+  group('pressing Next on the profile page', () {
+    ProfileSetupOnboardingStep profileStep(Client on) =>
+        ProfileSetupOnboardingStep(
+          client: on,
+          state: newState(),
+          maxRemainingSteps: 5,
+        );
+
+    test('marks it saved once its name and picture are saved', () async {
+      await profileStep(client).execute();
+      expect(client.onboardingProfileSaved, isTrue);
+    });
+
+    test('leaves it unmarked when the picture fails to save', () async {
+      final failing = await getTestClient(
+        name: 'failing_avatar',
+        httpClient: _FailingAvatarApi(),
+      );
+      addTearDown(failing.dispose);
+      // A wrong mark would come back in sync, so its absence means something.
+      FakeMatrixApi.client = failing;
+
+      expect(
+        await profileStep(failing).execute(),
+        isA<UserTypeOnboardingStep>(),
+      );
+      expect(failing.accountData[PangeaEventTypes.onboardingProgress], isNull);
+    });
   });
 
   group('a resumed run opens on the first page with nothing saved', () {
@@ -119,10 +167,19 @@ void main() {
       expect(path.single, isA<ProfileSetupOnboardingStep>());
     });
 
-    test('with no role saved, on the profile page', () {
+    test('with nothing saved, on the profile page', () {
       saveProgress({'started': true});
       final path = resumedOnboardingPath(client, newState());
       expect(path.single, isA<ProfileSetupOnboardingStep>());
+    });
+
+    test('with the profile page saved and no role, on the role page', () {
+      saveProgress({'started': true, 'profile_saved': true});
+      final path = resumedOnboardingPath(client, newState());
+      expect(path.map((s) => s.runtimeType), [
+        ProfileSetupOnboardingStep,
+        UserTypeOnboardingStep,
+      ]);
     });
 
     test('with a role and no languages, on the class-code page', () {
@@ -203,6 +260,19 @@ void main() {
       expect(await nav.forward(), isA<ReachedEndNavigationResult>());
     });
   });
+}
+
+class _FailingAvatarApi extends FakeMatrixApi {
+  @override
+  Future<http.StreamedResponse> send(http.BaseRequest request) async {
+    if (request.method == 'PUT' && request.url.path.endsWith('/avatar_url')) {
+      return http.StreamedResponse(
+        Stream.value(utf8.encode('{"errcode":"M_UNKNOWN","error":"failed"}')),
+        500,
+      );
+    }
+    return super.send(request);
+  }
 }
 
 class _FailingUpdater implements AccountUpdater {

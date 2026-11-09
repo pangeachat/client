@@ -59,6 +59,26 @@ extension OnboardingClientExtension on Client {
     });
   }
 
+  /// Whether this run's name and picture are saved, so a resumed run opens
+  /// past the profile page.
+  bool get onboardingProfileSaved => _progress['profile_saved'] == true;
+
+  /// Marks the profile page saved. Carries the started mark: Next can come
+  /// before that write is back in sync, and this write would overwrite it. An
+  /// account that saved its L2 before the marks existed is not in a marked run.
+  Future<void> markOnboardingProfileSaved() async {
+    if (onboardingProfileSaved) return;
+    if (_progress['started'] != true &&
+        savedUserSettings?.targetLanguage != null) {
+      return;
+    }
+    await setAccountData(userID!, PangeaEventTypes.onboardingProgress, {
+      ..._progress,
+      'started': true,
+      'profile_saved': true,
+    });
+  }
+
   /// Marks the run finished. The person is let into the app at once, before
   /// the write lands or even if it fails, so a failed save never keeps them in
   /// onboarding; an unsaved mark resumes it on the next app open.
