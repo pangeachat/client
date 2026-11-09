@@ -341,6 +341,18 @@ class _IncomingCallBannerState extends State<IncomingCallBanner>
     }
     if (choice == true) _answerOnCallScreen(screenRing, ring);
     if (choice == false) _decline(ring);
+    unawaited(_syncWhileOnCallScreen(account, ring));
+  }
+
+  /// Syncs [account] until [ring] leaves the call screen: outside the
+  /// foreground nothing else tells the app a ring is over.
+  Future<void> _syncWhileOnCallScreen(
+    matrix.Client account,
+    IncomingCallNotification ring,
+  ) async {
+    while (_serving(account) && _ringing?.event.eventId == ring.event.eventId) {
+      await _callScreen.oneShotSync(account);
+    }
   }
 
   /// The ring a call screen push names, from the account's own copy of the

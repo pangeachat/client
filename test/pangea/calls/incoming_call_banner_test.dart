@@ -77,7 +77,24 @@ class _AnsweredCall extends ChangeNotifier implements call_ui.CallSession {
 /// Stands in for the iOS call screen: rings are fed in through [receive], and
 /// what the app asks of the call screen is recorded.
 class _FakeCallScreen extends IosCallScreen {
-  _FakeCallScreen() : super.forTesting();
+  _FakeCallScreen({this.realSyncs = false}) : super.forTesting();
+
+  /// Whether the prompt's syncs reach the fake server. Off by default: most
+  /// tests end with the ring still up, and real syncs would run on past them.
+  final bool realSyncs;
+
+  /// The syncs the prompt asked for, each open until a test completes it.
+  final syncs = <Completer<void>>[];
+
+  @override
+  Future<void> oneShotSync(Client account) {
+    // In the root zone: a transaction opened on the test's fake clock is one
+    // the client's disposal in tearDown would wait for forever.
+    if (realSyncs) return Zone.root.run(() => super.oneShotSync(account));
+    final sync = Completer<void>();
+    syncs.add(sync);
+    return sync.future;
+  }
 
   /// `uuid:reason` for each call the app took off the call screen.
   final ended = <String>[];
@@ -157,7 +174,10 @@ void main() {
   });
 
   setUp(() async {
-    client = await getTestClient();
+    // As in the app, where a ring is decided against call membership.
+    client = await getTestClient(
+      importantStateEvents: {EventTypes.GroupCallMember},
+    );
   });
 
   tearDown(() async {
@@ -205,6 +225,27 @@ void main() {
     room: room,
   );
 
+  Event callerMembershipEvent(
+    Room room, {
+    required bool present,
+    String id = r'$mem',
+    DateTime? at,
+  }) => Event(
+    type: EventTypes.GroupCallMember,
+    content: {
+      'memberships': present
+          ? [
+              {'call_id': 'call-id', 'device_id': 'CALLERDEVICE'},
+            ]
+          : <Map<String, dynamic>>[],
+    },
+    senderId: caller,
+    eventId: id,
+    originServerTs: at ?? DateTime.now(),
+    room: room,
+    stateKey: caller,
+  );
+
   /// Writes the caller's call membership into room state, or empties it.
   ///
   /// Emptying is exactly what a caller who gives up does: there is no explicit
@@ -214,25 +255,9 @@ void main() {
     required bool present,
     String id = r'$mem',
     DateTime? at,
-  }) {
-    room.setState(
-      Event(
-        type: EventTypes.GroupCallMember,
-        content: {
-          'memberships': present
-              ? [
-                  {'call_id': 'call-id', 'device_id': 'CALLERDEVICE'},
-                ]
-              : <Map<String, dynamic>>[],
-        },
-        senderId: caller,
-        eventId: id,
-        originServerTs: at ?? DateTime.now(),
-        room: room,
-        stateKey: caller,
-      ),
-    );
-  }
+  }) => room.setState(
+    callerMembershipEvent(room, present: present, id: id, at: at),
+  );
 
   /// Pumped twice: the banner subscribes in a post-frame callback, so nothing
   /// sent before that frame has run would reach it.
@@ -666,8 +691,12 @@ void main() {
 
     /// The ring is read through the account: its database, which takes real
     /// time, and the fake server, which answers on a fake-clock timer.
-    Future<void> settleRead(WidgetTester tester) async {
-      for (var i = 0; i < 20; i++) {
+    Future<void> settleRead(
+      WidgetTester tester, {
+      int rounds = 20,
+      bool Function()? until,
+    }) async {
+      for (var i = 0; i < rounds && !(until?.call() ?? false); i++) {
         await tester.runAsync(
           () => Future<void>.delayed(const Duration(milliseconds: 10)),
         );
@@ -690,6 +719,33 @@ void main() {
         ),
       );
       await settleRead(tester);
+    }
+
+    /// Makes the server's answer to the account's next sync the call starting
+    /// and the caller hanging up: what an app that has not synced has missed.
+    void serveHangUpOnNextSync(Room room) {
+      final sync =
+          '/client/v3/sync?filter=${client.syncFilterId}'
+          '&since=${client.prevBatch}';
+      FakeMatrixApi.currentApi!.api['GET']![sync] = (_) => {
+        'next_batch': 'after_hang_up',
+        'rooms': {
+          'join': {
+            roomId: {
+              'timeline': {
+                'events': [
+                  callerMembershipEvent(room, present: true).toJson(),
+                  callerMembershipEvent(
+                    room,
+                    present: false,
+                    id: r'$mem2',
+                  ).toJson(),
+                ],
+              },
+            },
+          },
+        },
+      };
     }
 
     testWidgets('shows no card of its own', (tester) async {
@@ -715,6 +771,48 @@ void main() {
       callerMembership(room, present: false, id: r'$mem2');
       await tester.pumpAndSettle();
       expect(screen.ended, ['CALL-1:remoteEnded']);
+    });
+
+    // Outside the foreground the app does not sync, and neither does this
+    // client, so the hang-up has only the call screen's own syncs to arrive by.
+    testWidgets('hears the caller give up with nothing else syncing', (
+      tester,
+    ) async {
+      final room = heldChat();
+      serveHangUpOnNextSync(room);
+      final screen = _FakeCallScreen(realSyncs: true);
+      await pumpBanner(tester, callScreen: screen);
+      await showOnCallScreen(tester, screen);
+
+      // Long enough for the SDK's retry delay to pass before its first sync,
+      // and for that sync to finish before the client is disposed.
+      await settleRead(
+        tester,
+        rounds: 1000,
+        until: () => screen.ended.isNotEmpty && !client.syncPending,
+      );
+      expect(screen.ended, ['CALL-1:remoteEnded']);
+    });
+
+    testWidgets('syncs until the ring is over, and no longer', (tester) async {
+      final room = heldChat();
+      callerMembership(room, present: true);
+      final screen = _FakeCallScreen();
+      await pumpBanner(tester, callScreen: screen);
+      await showOnCallScreen(tester, screen);
+      expect(screen.syncs, hasLength(1));
+
+      screen.syncs.last.complete();
+      await tester.pump();
+      expect(screen.syncs, hasLength(2), reason: 'the ring is still up');
+
+      callerMembership(room, present: false, id: r'$mem2');
+      await tester.pumpAndSettle();
+      expect(screen.ended, ['CALL-1:remoteEnded']);
+
+      screen.syncs.last.complete();
+      await tester.pump();
+      expect(screen.syncs, hasLength(2), reason: 'the ring is over');
     });
 
     // A closed app woken by the push has not synced: it still holds the

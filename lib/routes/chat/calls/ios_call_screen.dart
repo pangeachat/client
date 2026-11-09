@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:livekit_client/livekit_client.dart';
+import 'package:matrix/matrix.dart' show Client;
 import 'package:permission_handler/permission_handler.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -155,6 +156,9 @@ class IosCallScreen {
   /// not say whether the call is video.
   Future<void> setVideo(String uuid, bool video) =>
       _channel.invokeMethod<void>('update', {'uuid': uuid, 'video': video});
+
+  /// One sync for [account]. Here so tests can stand in for the network.
+  Future<void> oneShotSync(Client account) => account.oneShotSync();
 
   /// Leaves the audio session to the call screen, for a call answered there.
   /// iOS turns it on for the call and off when the call ends, and LiveKit

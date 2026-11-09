@@ -69,6 +69,7 @@ Decision; reason. Who re-decides is unassigned throughout.
 
 - A closed phone rings only when an open app would, for ninety seconds at most.
 - On iOS the system call screen is the ring; the microphone is asked for before the first ring.
+- A ringing phone stops when it sees the caller has gone or another device took the call, so an iPhone keeps checking the server while it rings, even in the background. The missed-call push covers only unanswered calls and can be delayed.
 - Android asks for notifications, then for full-screen calls, each when a call needs it.
 - No permission ask interrupts a call.
 - On the web only open tabs ring.
@@ -77,6 +78,5 @@ Decision; reason. Who re-decides is unassigned throughout.
 
 - Should a device with no microphone get a listen-only call?
 - History records a busy decline as "Call declined", not "busy". Intended?
-- The old doc said the missed-call push stops a closed phone ringing; the code stops it by watching the caller. Which?
 - Recording-based turns still drop punctuation, yet [#9303](https://github.com/pangeachat/client/issues/9303) is closed. Accepted?
 - The old doc called live-fallback chunks short; they run 45 to 90 seconds. Short enough?
