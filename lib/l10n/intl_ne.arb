@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-11-06 13:11:04.121223",
+    "@@last_modified": "2026-11-09 14:56:02.782703",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "एपका मेनु र बटनहरू {language} मा परिवर्तन हुनेछन्।",
     "accountSetupFailedHelp": "हामीले तपाईंको खाता सेटअप गर्न सकेनौं। आफ्नो जडान जाँच गर्नुहोस् र फेरि प्रयास गर्नुहोस्, वा लगआउट गरेर पछि साइन इन गर्नुहोस्।",
     "onboardingOfflineError": "तपाईं अफलाइन हुनुहुन्छ। तपाईं अनलाइन भएपछि फेरि प्रयास गर्नुहोस्।",
-    "activitySavedTo": "गतिविधि {page} मा सुरक्षित गरियो"
+    "activitySavedTo": "गतिविधि {page} मा सुरक्षित गरियो",
+    "sessionFinished": "धेरै ढिलो भयो! यो गतिविधि समाप्त भयो।"
 }

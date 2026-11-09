@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-11-06 13:11:06.904652",
+    "@@last_modified": "2026-11-09 14:56:05.367061",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10347,5 +10347,6 @@
     "changeBaseLanguageDesc": "Uygulamanın menüleri ve düğmeleri {language} diline geçecektir.",
     "accountSetupFailedHelp": "Hesabınızı kurmayı tamamlayamadık. Bağlantınızı kontrol edin ve tekrar deneyin veya çıkış yapıp daha sonra tekrar giriş yapın.",
     "onboardingOfflineError": "Çevrimdışısın. İnternete bağlandığında tekrar dene.",
-    "activitySavedTo": "Etkinlik şuraya kaydedildi: {page}"
+    "activitySavedTo": "Etkinlik şuraya kaydedildi: {page}",
+    "sessionFinished": "Çok geç! Bu etkinlik sona erdi."
 }

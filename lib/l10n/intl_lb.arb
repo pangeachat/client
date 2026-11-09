@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-11-06 13:11:02.913288",
+    "@@last_modified": "2026-11-09 14:56:01.493522",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "D'Menüen an d'Knäppercher vun der App wiesselen op {language}.",
     "accountSetupFailedHelp": "Mir konnten Äre Kont net fäerdeg astellen. Kontrolléiert Är Verbindung a probéiert et nach eng Kéier, oder mellt Iech of a mellt Iech méi spéit un.",
     "onboardingOfflineError": "Dir sidd offline. Probéiert et nach eng Kéier wann Dir erëm online sidd.",
-    "activitySavedTo": "Aktivitéit gespäichert op {page}"
+    "activitySavedTo": "Aktivitéit gespäichert op {page}",
+    "sessionFinished": "Ze spéit! Dës Aktivitéit ass eriwwer."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-11-06 13:11:04.608373",
+    "@@last_modified": "2026-11-09 14:56:03.604638",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10134,5 +10134,6 @@
     "changeBaseLanguageDesc": "Menu i przyciski aplikacji przełączą się na język {language}.",
     "accountSetupFailedHelp": "Nie udało nam się dokończyć konfiguracji Twojego konta. Sprawdź połączenie i spróbuj ponownie, lub wyloguj się i zaloguj później.",
     "onboardingOfflineError": "Jesteś offline. Spróbuj ponownie, gdy będziesz online.",
-    "activitySavedTo": "Aktywność zapisana w {page}"
+    "activitySavedTo": "Aktywność zapisana w {page}",
+    "sessionFinished": "Za późno! Ta aktywność została zakończona."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-11-06 13:11:03.940615",
+    "@@last_modified": "2026-11-09 14:56:02.587532",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Il-menus u l-buttuni tal-app se jinbidlu għal {language}.",
     "accountSetupFailedHelp": "Ma stajniex inlesti s-setup tal-kont tiegħek. Iċċekkja l-konnessjoni tiegħek u erġa' pprova, jew idħol u illoggja aktar tard.",
     "onboardingOfflineError": "M'intix online. Erġa' pprova meta terġa' tkun online.",
-    "activitySavedTo": "Attività ssejvjata f'{page}'"
+    "activitySavedTo": "Attività ssejvjata f'{page}'",
+    "sessionFinished": "Tard wisq! Din l-attività spiċċat."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-11-06 13:11:03.343046",
+    "@@last_modified": "2026-11-09 14:56:02.318819",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Аппын цэс болон товчлуурууд {language} хэл рүү шилжинэ.",
     "accountSetupFailedHelp": "Таны бүртгэлийг үүсгэж чадсангүй. Холболтоо шалгаад дахин оролдоно уу, эсвэл гарч, дараа дахин нэвтэрнэ үү.",
     "onboardingOfflineError": "Та офлайн байна. Онлайн болсны дараа дахин оролдоно уу.",
-    "activitySavedTo": "Үйл ажиллагааг {page} руу хадгаллаа"
+    "activitySavedTo": "Үйл ажиллагааг {page} руу хадгаллаа",
+    "sessionFinished": "Хэтэрхий оройтлоо! Энэ үйл ажиллагаа дууссан байна."
 }

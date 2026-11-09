@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-11-06 13:11:08.103693",
+    "@@last_modified": "2026-11-09 14:56:06.046810",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Àwọn àtòjọ àti àwọn bọtini inú app yóò yí sí èdè {language}.",
     "accountSetupFailedHelp": "A kò le pari siseto àkọọlẹ rẹ. Ṣayẹwo asopọ rẹ ki o tun gbiyanju, tabi jade ki o wọle nigbamii.",
     "onboardingOfflineError": "O wà ní àìfojúkojú. Gbìyànjú lẹ́ẹ̀kan sí nígbà tí o bá ti padà sórí ìkànnì.",
-    "activitySavedTo": "A ti fi iṣẹ́ pamọ́ sí {page}"
+    "activitySavedTo": "A ti fi iṣẹ́ pamọ́ sí {page}",
+    "sessionFinished": "Pẹ́ ju! Iṣẹ́ yìí ti parí."
 }

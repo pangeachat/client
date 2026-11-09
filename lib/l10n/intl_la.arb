@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-11-06 13:11:02.455709",
+    "@@last_modified": "2026-11-09 14:56:01.837591",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Menu et bullae applicationis ad {language} mutabuntur.",
     "accountSetupFailedHelp": "Rationem tuam constituere non potuimus. Coniunctionem tuam inspice et iterum conare, aut exi et postea inscribe.",
     "onboardingOfflineError": "Non es in linea. Conare iterum cum in linea eris.",
-    "activitySavedTo": "Actio servata ad {page}"
+    "activitySavedTo": "Actio servata ad {page}",
+    "sessionFinished": "Sero! Haec actio perfecta est."
 }

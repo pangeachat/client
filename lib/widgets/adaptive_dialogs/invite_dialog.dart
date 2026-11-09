@@ -7,10 +7,14 @@ class InviteDialogAction<T> {
   final String label;
   final T value;
   final bool destructive;
+
+  /// Drawn without a fill: a choice the prompt offers but does not recommend.
+  final bool quiet;
   const InviteDialogAction({
     required this.label,
     required this.value,
     this.destructive = false,
+    this.quiet = false,
   });
 }
 
@@ -70,22 +74,29 @@ Future<T?> showInviteDialog<T>(
                         padding: const EdgeInsets.symmetric(vertical: 2),
                         child: SizedBox(
                           width: double.infinity,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: theme.colorScheme.surfaceBright,
-                              foregroundColor: action.destructive
-                                  ? theme.colorScheme.error
-                                  : theme.colorScheme.primary,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  AppConfig.borderRadius,
+                          child: action.quiet
+                              ? TextButton(
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(action.value),
+                                  child: Text(action.label),
+                                )
+                              : ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        theme.colorScheme.surfaceBright,
+                                    foregroundColor: action.destructive
+                                        ? theme.colorScheme.error
+                                        : theme.colorScheme.primary,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        AppConfig.borderRadius,
+                                      ),
+                                    ),
+                                  ),
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(action.value),
+                                  child: Text(action.label),
                                 ),
-                              ),
-                            ),
-                            onPressed: () =>
-                                Navigator.of(context).pop(action.value),
-                            child: Text(action.label),
-                          ),
                         ),
                       ),
                   ],

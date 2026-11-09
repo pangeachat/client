@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-11-06 13:11:00.247350",
+    "@@last_modified": "2026-11-09 14:55:58.689229",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Za a canza menu da maɓallan manhajar zuwa {language}.",
     "accountSetupFailedHelp": "Mun kasa kammala saita asusunka. Duba haɗinka kuma sake gwadawa, ko fita daga asusunka ka shiga daga baya.",
     "onboardingOfflineError": "Baka da intanet. Kuma gwada idan ka dawo kan layi.",
-    "activitySavedTo": "An adana aiki zuwa {page}"
+    "activitySavedTo": "An adana aiki zuwa {page}",
+    "sessionFinished": "Ya yi latti! Wannan aikin ya ƙare."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-11-06 13:10:59.298863",
+    "@@last_modified": "2026-11-09 14:55:58.162294",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10401,5 +10401,6 @@
     "changeBaseLanguageDesc": "Les menus et les boutons de l'application passeront en {language}.",
     "accountSetupFailedHelp": "Nous n'avons pas pu terminer la configuration de votre compte. Vérifiez votre connexion et réessayez, ou déconnectez-vous et connectez-vous plus tard.",
     "onboardingOfflineError": "Vous êtes hors ligne. Réessayez une fois que vous serez de nouveau connecté.",
-    "activitySavedTo": "Activité enregistrée dans {page}"
+    "activitySavedTo": "Activité enregistrée dans {page}",
+    "sessionFinished": "Trop tard ! Cette activité est terminée."
 }

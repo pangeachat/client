@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-11-06 13:11:06.621444",
+    "@@last_modified": "2026-11-09 14:56:05.376668",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Menyu na vitufe vya programu vitabadilika kuwa {language}.",
     "accountSetupFailedHelp": "Hatukuweza kumaliza kusanidi akaunti yako. Angalia muunganisho wako na ujaribu tena, au ingia na uingie baadaye.",
     "onboardingOfflineError": "Hauna intaneti. Jaribu tena ukiwa mtandaoni.",
-    "activitySavedTo": "Shughuli imehifadhiwa kwenye {page}"
+    "activitySavedTo": "Shughuli imehifadhiwa kwenye {page}",
+    "sessionFinished": "Umechelewa! Shughuli hii imekwisha."
 }

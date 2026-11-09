@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-11-06 13:11:02.914599",
+    "@@last_modified": "2026-11-09 14:56:01.468399",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "مێنو و دوگمەکانی ئەپەکە دەگۆڕدرێن بۆ {language}.",
     "accountSetupFailedHelp": "نەمانتوانی دانانی هەژمارەکەت تەواو بکەین. پەیوەندییەکەت بپشکنە و دووبارە هەوڵبدەوە، یان بچۆرە دەرەوە و دواتر بچۆرە ژوورەوە.",
     "onboardingOfflineError": "تۆ ئۆفلاینیت. دووبارە هەوڵبدەوە کاتێک گەڕایتەوە سەر هێڵ.",
-    "activitySavedTo": "چالاکی پاشەکەوت کرا بۆ {page}"
+    "activitySavedTo": "چالاکی پاشەکەوت کرا بۆ {page}",
+    "sessionFinished": "درەنگ کەوتیت! ئەم چالاکییە تەواو بوو."
 }

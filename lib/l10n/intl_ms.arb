@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-11-06 13:11:03.396211",
+    "@@last_modified": "2026-11-09 14:56:02.462911",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Menu dan butang aplikasi akan bertukar kepada {language}.",
     "accountSetupFailedHelp": "Kami tidak dapat menyelesaikan persediaan akaun anda. Semak sambungan anda dan cuba lagi, atau log keluar dan daftar masuk kemudian.",
     "onboardingOfflineError": "Anda di luar talian. Cuba lagi setelah anda kembali dalam talian.",
-    "activitySavedTo": "Aktiviti disimpan ke {page}"
+    "activitySavedTo": "Aktiviti disimpan ke {page}",
+    "sessionFinished": "Terlambat! Aktiviti ini telah tamat."
 }

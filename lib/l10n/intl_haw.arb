@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-11-06 13:11:00.289913",
+    "@@last_modified": "2026-11-09 14:56:03.593751",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "E hoʻololi nā papa kuhikuhi a me nā pihi o ka polokalamu i ka {language}.",
     "accountSetupFailedHelp": "ʻAʻole hiki iā mākou ke hoʻopau i ka hoʻonohonoho ʻana i kāu moʻokāki. E nānā i kāu pili a e hoʻāʻo hou, a i ʻole e haʻalele a e komo hou ma hope.",
     "onboardingOfflineError": "Aia ʻoe ma waho pūnaewele. E hoʻāʻo hou ke hoʻi mai ʻoe i ka pūnaewele.",
-    "activitySavedTo": "Ua mālama ʻia ka hana ma {page}"
+    "activitySavedTo": "Ua mālama ʻia ka hana ma {page}",
+    "sessionFinished": "Ua lohi! Ua pau kēia hana."
 }

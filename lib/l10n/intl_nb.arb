@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:03.742442",
+    "@@last_modified": "2026-11-09 14:56:02.788591",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10106,5 +10106,6 @@
     "changeBaseLanguageDesc": "Appens menyer og knapper vil bytte til {language}.",
     "accountSetupFailedHelp": "Vi kunne ikke fullføre oppsettet av kontoen din. Sjekk tilkoblingen din og prøv igjen, eller logg ut og logg inn senere.",
     "onboardingOfflineError": "Du er frakoblet. Prøv igjen når du er på nett.",
-    "activitySavedTo": "Aktivitet lagret i {page}"
+    "activitySavedTo": "Aktivitet lagret i {page}",
+    "sessionFinished": "For sent! Denne aktiviteten er avsluttet."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-11-06 13:11:01.262480",
+    "@@last_modified": "2026-11-09 14:56:00.388726",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10815,5 +10815,6 @@
     "changeBaseLanguageDesc": "アプリのメニューとボタンが{language}に切り替わります。",
     "accountSetupFailedHelp": "アカウント設定を完了できませんでした。接続を確認して再試行するか、ログアウトして後でサインインしてください。",
     "onboardingOfflineError": "オフラインです。オンラインに戻ってからもう一度お試しください。",
-    "activitySavedTo": "アクティビティを{page}に保存しました"
+    "activitySavedTo": "アクティビティを{page}に保存しました",
+    "sessionFinished": "手遅れです！このアクティビティは終了しました。"
 }

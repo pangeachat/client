@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-11-06 13:11:01.690463",
+    "@@last_modified": "2026-11-09 14:56:00.578318",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Menu lan tombol aplikasi bakal ganti dadi {language}.",
     "accountSetupFailedHelp": "Kita ora bisa ngrampungake nyetel akun sampeyan. Priksa sambungan sampeyan banjur coba maneh, utawa metu banjur mlebu mengko.",
     "onboardingOfflineError": "Kowe lagi offline. Coba maneh yen wis online.",
-    "activitySavedTo": "Aktivitas disimpen menyang {page}"
+    "activitySavedTo": "Aktivitas disimpen menyang {page}",
+    "sessionFinished": "Kasep! Kagiyatan iki wis rampung."
 }

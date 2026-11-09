@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-11-06 13:11:01.479814",
+    "@@last_modified": "2026-11-09 14:56:00.093405",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Nchịkọta nhọrọ na bọtịnụ ngwa ahụ ga-agbanwe gaa na {language}.",
     "accountSetupFailedHelp": "Anyị enweghị ike ịmechaa nhazi akaụntụ gị. Lelee njikọ gị wee nwaa ọzọ, ma ọ bụ pụọ wee banye ọzọ ma emechaa.",
     "onboardingOfflineError": "Ị nọghị n'ịntanetị. Gbalịa ọzọ ozugbo ị nọ n'ịntanetị.",
-    "activitySavedTo": "Echekwara ọrụ na {page}"
+    "activitySavedTo": "Echekwara ọrụ na {page}",
+    "sessionFinished": "Oge agafeela! Ihe omume a agwụla."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-11-06 13:10:58.435102",
+    "@@last_modified": "2026-11-09 14:55:57.540761",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "I menu è i buttoni di l'app cambieranu in {language}.",
     "accountSetupFailedHelp": "Ùn avemu pussutu compie a cunfigurazione di u vostru contu. Verificate a vostra cunnessione è riprovate, o disconnettatevi è cunnettatevi più tardi.",
     "onboardingOfflineError": "Sì scunnessu. Pruvate torna quandu sì cunnessu.",
-    "activitySavedTo": "Attività salvata in {page}"
+    "activitySavedTo": "Attività salvata in {page}",
+    "sessionFinished": "Troppu tardi! Sta attività hè finita."
 }

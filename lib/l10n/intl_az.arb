@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-11-06 13:10:57.585792",
+    "@@last_modified": "2026-11-09 14:55:56.843770",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Tətbiqin menyuları və düymələri {language} dilinə keçəcək.",
     "accountSetupFailedHelp": "Hesabınızı qura bilmədik. Bağlantınızı yoxlayın və yenidən cəhd edin, yaxud çıxış edib sonra daxil olun.",
     "onboardingOfflineError": "Oflaynsınız. Onlayn olduqdan sonra yenidən cəhd edin.",
-    "activitySavedTo": "Fəaliyyət {page} səhifəsinə yadda saxlanıldı"
+    "activitySavedTo": "Fəaliyyət {page} səhifəsinə yadda saxlanıldı",
+    "sessionFinished": "Çox gecdir! Bu fəaliyyət bitdi."
 }

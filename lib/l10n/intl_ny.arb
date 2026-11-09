@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-11-06 13:11:04.756012",
+    "@@last_modified": "2026-11-09 14:56:03.190556",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Mamenyu ndi mabatani a pulogalamuyi asinthira ku {language}.",
     "accountSetupFailedHelp": "Sitakwanitse kumaliza kukonza akaunti yanu. Chongani intaneti yanu ndikuyesanso, kapena tulukani ndikulowanso pambuyo pake.",
     "onboardingOfflineError": "Mulibe intaneti. Yesaninso mukadzakhala ndi intaneti.",
-    "activitySavedTo": "Zochitika zasungidwa ku {page}"
+    "activitySavedTo": "Zochitika zasungidwa ku {page}",
+    "sessionFinished": "Kwachedwa! Ntchito iyi yatha."
 }

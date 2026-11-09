@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-11-06 13:11:07.980894",
+    "@@last_modified": "2026-11-09 14:56:06.557402",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10049,5 +10049,6 @@
     "changeBaseLanguageDesc": "应用的菜单和按钮将切换为{language}。",
     "accountSetupFailedHelp": "我们无法完成您的账户设置。请检查您的网络连接，然后重试，或者退出并稍后登录。",
     "onboardingOfflineError": "您已离线。请在联网后重试。",
-    "activitySavedTo": "活动已保存到 {page}"
+    "activitySavedTo": "活动已保存到 {page}",
+    "sessionFinished": "太晚了！此活动已结束。"
 }

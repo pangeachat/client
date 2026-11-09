@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-11-06 13:10:57.389985",
+    "@@last_modified": "2026-11-09 14:55:56.877215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Meniji i dugmad aplikacije će se prebaciti na {language}.",
     "accountSetupFailedHelp": "Nismo uspjeli dovršiti postavljanje vašeg računa. Provjerite vezu i pokušajte ponovo, ili se odjavite i prijavite kasnije.",
     "onboardingOfflineError": "Niste povezani. Pokušajte ponovo kada budete online.",
-    "activitySavedTo": "Aktivnost sačuvana u {page}"
+    "activitySavedTo": "Aktivnost sačuvana u {page}",
+    "sessionFinished": "Prekasno! Ova aktivnost je završena."
 }

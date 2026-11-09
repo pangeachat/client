@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-11-06 13:10:57.331334",
+    "@@last_modified": "2026-11-09 14:55:56.882686",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Die toepassing se spyskaarte en knoppies sal na {language} verander.",
     "accountSetupFailedHelp": "Ons kon nie jou rekening opstel nie. Gaan jou verbinding na en probeer weer, of meld af en meld later aan.",
     "onboardingOfflineError": "Jy is vanlyn. Probeer weer sodra jy aanlyn is.",
-    "activitySavedTo": "Aktiwiteit gestoor na {page}"
+    "activitySavedTo": "Aktiwiteit gestoor na {page}",
+    "sessionFinished": "Te laat! Hierdie aktiwiteit is verby."
 }

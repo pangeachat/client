@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:10:58.134053",
+    "@@last_modified": "2026-11-09 14:55:57.457163",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10176,5 +10176,6 @@
     "changeBaseLanguageDesc": "Els menús i botons de l'aplicació canviaran a {language}.",
     "accountSetupFailedHelp": "No hem pogut acabar de configurar el teu compte. Comprova la teva connexió i torna-ho a provar, o tanca la sessió i torna a iniciar-la més tard.",
     "onboardingOfflineError": "No tens connexió. Torna-ho a provar quan estiguis en línia.",
-    "activitySavedTo": "Activitat desada a {page}"
+    "activitySavedTo": "Activitat desada a {page}",
+    "sessionFinished": "Massa tard! Aquesta activitat ha finalitzat."
 }

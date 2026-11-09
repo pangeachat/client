@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-11-06 13:11:08.258075",
+    "@@last_modified": "2026-11-09 14:56:06.457806",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Amamenyu nezinkinobho zohlelo lokusebenza kuzoshintshela ku-{language}.",
     "accountSetupFailedHelp": "Asikwazanga ukuqeda ukusetha i-akhawunti yakho. Hlola uxhumano lwakho bese uzama futhi, noma phuma bese ungena ngemvume kamuva.",
     "onboardingOfflineError": "Awuxhunyiwe ku-inthanethi. Zama futhi uma usubuyele ku-inthanethi.",
-    "activitySavedTo": "Umsebenzi ulondolozwe ku-{page}"
+    "activitySavedTo": "Umsebenzi ulondolozwe ku-{page}",
+    "sessionFinished": "Sekwephuze kakhulu! Lo msebenzi usuphelile."
 }

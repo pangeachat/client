@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-11-06 13:11:00.981233",
+    "@@last_modified": "2026-11-09 14:55:59.896235",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Հավելվածի մենյուներն ու կոճակները կփոխվեն {language} լեզվի:",
     "accountSetupFailedHelp": "Չհաջողվեց ավարտել Ձեր հաշվի կարգավորումը։ Ստուգեք Ձեր կապը և նորից փորձեք, կամ դուրս եկեք և մուտք գործեք ավելի ուշ։",
     "onboardingOfflineError": "Դուք անցանց եք։ Կրկին փորձեք, երբ առցանց լինեք։",
-    "activitySavedTo": "Գործունեությունը պահպանվել է {page}-ում"
+    "activitySavedTo": "Գործունեությունը պահպանվել է {page}-ում",
+    "sessionFinished": "Ուշ է։ Այս ակտիվությունն ավարտվել է։"
 }

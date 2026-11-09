@@ -3541,7 +3541,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-11-06 13:10:59.222716",
+    "@@last_modified": "2026-11-09 14:55:59.084738",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10060,5 +10060,6 @@
     "changeBaseLanguageDesc": "Athróidh biachláir agus cnaipí an aip go {language}.",
     "accountSetupFailedHelp": "Níorbh fhéidir linn do chuntas a shocrú. Seiceáil do nasc agus bain triail eile as, nó logáil amach agus sínigh isteach níos déanaí.",
     "onboardingOfflineError": "Tá tú as líne. Bain triail eile as nuair a bheidh tú ar líne arís.",
-    "activitySavedTo": "Gníomhaíocht sábháilte chuig {page}"
+    "activitySavedTo": "Gníomhaíocht sábháilte chuig {page}",
+    "sessionFinished": "Ró-dhéanach! Tá an ghníomhaíocht seo críochnaithe."
 }

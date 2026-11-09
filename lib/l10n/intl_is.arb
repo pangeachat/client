@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-11-06 13:11:01.269773",
+    "@@last_modified": "2026-11-09 14:55:59.851051",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Valmyndir og hnappar forritsins munu skipta yfir í {language}.",
     "accountSetupFailedHelp": "Við gátum ekki lokið við að setja upp reikninginn þinn. Athugaðu tenginguna þína og reyndu aftur, eða skráðu þig út og inn aftur síðar.",
     "onboardingOfflineError": "Þú ert ótengdur. Reyndu aftur þegar þú ert kominn aftur á netið.",
-    "activitySavedTo": "Virkni vistuð á {page}"
+    "activitySavedTo": "Virkni vistuð á {page}",
+    "sessionFinished": "Of seint! Þessari virkni er lokið."
 }

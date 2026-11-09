@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-11-06 13:10:59.215466",
+    "@@last_modified": "2026-11-09 14:55:58.090458",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,6 @@
     "changeBaseLanguageDesc": "Rakenduse menüüd ja nupud lülituvad keelele {language}.",
     "accountSetupFailedHelp": "Me ei saanud teie konto seadistamist lõpule viia. Kontrollige oma ühendust ja proovige uuesti või logige välja ja proovige hiljem uuesti sisse logida.",
     "onboardingOfflineError": "Oled võrguühenduseta. Proovi uuesti, kui oled võrgus tagasi.",
-    "activitySavedTo": "Tegevus salvestatud asukohta {page}"
+    "activitySavedTo": "Tegevus salvestatud asukohta {page}",
+    "sessionFinished": "Liiga hilja! See tegevus on lõppenud."
 }

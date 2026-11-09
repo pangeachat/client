@@ -3514,7 +3514,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-11-06 13:10:59.205891",
+    "@@last_modified": "2026-11-09 14:55:58.176607",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10086,5 +10086,6 @@
     "changeBaseLanguageDesc": "Sovelluksen valikot ja painikkeet vaihtuvat kielelle {language}.",
     "accountSetupFailedHelp": "Emme saaneet tiliäsi valmiiksi. Tarkista yhteytesi ja yritä uudelleen, tai kirjaudu ulos ja sisään myöhemmin.",
     "onboardingOfflineError": "Olet offline-tilassa. Yritä uudelleen, kun olet taas online-tilassa.",
-    "activitySavedTo": "Aktiviteetti tallennettu kohteeseen {page}"
+    "activitySavedTo": "Aktiviteetti tallennettu kohteeseen {page}",
+    "sessionFinished": "Liian myöhäistä! Tämä aktiviteetti on päättynyt."
 }

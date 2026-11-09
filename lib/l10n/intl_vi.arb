@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:07.566893",
+    "@@last_modified": "2026-11-09 14:56:06.181412",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7356,5 +7356,6 @@
     "changeBaseLanguageDesc": "Các menu và nút của ứng dụng sẽ chuyển sang tiếng {language}.",
     "accountSetupFailedHelp": "Chúng tôi không thể hoàn tất việc thiết lập tài khoản của bạn. Vui lòng kiểm tra kết nối và thử lại, hoặc đăng xuất và đăng nhập sau.",
     "onboardingOfflineError": "Bạn đang ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng.",
-    "activitySavedTo": "Hoạt động đã lưu vào {page}"
+    "activitySavedTo": "Hoạt động đã lưu vào {page}",
+    "sessionFinished": "Quá muộn! Hoạt động này đã kết thúc."
 }

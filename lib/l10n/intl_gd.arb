@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-11-06 13:11:00.076379",
+    "@@last_modified": "2026-11-09 14:55:59.106737",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Gluaisidh clàir-taice agus putanan an aplacaid gu {language}.",
     "accountSetupFailedHelp": "Cha b' urrainn dhuinn crìoch a chur air do chunntas a stèidheachadh. Thoir sùil air a' cheangal agad agus feuch a-rithist, no log a-mach agus clàraich a-steach nas fhaide air adhart.",
     "onboardingOfflineError": "Tha thu far-loidhne. Feuch ris a-rithist nuair a bhios tu air-loidhne.",
-    "activitySavedTo": "Chaidh gnìomhachd a shàbhaladh gu {page}"
+    "activitySavedTo": "Chaidh gnìomhachd a shàbhaladh gu {page}",
+    "sessionFinished": "Rò fhadalach! Tha an gnìomhachd seo deiseil."
 }

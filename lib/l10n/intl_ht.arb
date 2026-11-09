@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-11-06 13:11:00.463020",
+    "@@last_modified": "2026-11-09 14:56:03.185608",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Meni ak bouton aplikasyon an ap chanje an {language}.",
     "accountSetupFailedHelp": "Nou pa t' kapab fini konfigirasyon kont ou. Tcheke koneksyon ou epi eseye ankò, oswa dekonekte epi konekte pita.",
     "onboardingOfflineError": "Ou dekonekte. Eseye ankò lè ou rekonekte.",
-    "activitySavedTo": "Aktivite sove nan {page}"
+    "activitySavedTo": "Aktivite sove nan {page}",
+    "sessionFinished": "Twò ta! Aktivite sa a fini."
 }

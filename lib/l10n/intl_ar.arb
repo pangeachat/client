@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-11-06 13:10:57.291290",
+    "@@last_modified": "2026-11-09 14:55:56.827481",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10352,5 +10352,6 @@
     "changeBaseLanguageDesc": "ستتحول قوائم التطبيق وأزراره إلى {language}.",
     "accountSetupFailedHelp": "تعذر علينا إنهاء إعداد حسابك. تحقق من اتصالك وحاول مرة أخرى، أو قم بتسجيل الخروج وسجل الدخول لاحقًا.",
     "onboardingOfflineError": "أنت غير متصل بالإنترنت. حاول مرة أخرى عندما تكون متصلاً.",
-    "activitySavedTo": "تم حفظ النشاط في {page}"
+    "activitySavedTo": "تم حفظ النشاط في {page}",
+    "sessionFinished": "فات الأوان! انتهى هذا النشاط."
 }

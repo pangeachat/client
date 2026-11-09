@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-11-06 13:11:05.469512",
+    "@@last_modified": "2026-11-09 14:56:03.884385",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10991,5 +10991,6 @@
     "changeBaseLanguageDesc": "Ponuky a tlačidlá aplikácie sa prepnú na jazyk {language}.",
     "accountSetupFailedHelp": "Nepodarilo sa nám dokončiť nastavenie vášho účtu. Skontrolujte pripojenie a skúste to znova, alebo sa odhláste a prihláste sa neskôr.",
     "onboardingOfflineError": "Ste offline. Skúste to znova, keď budete online.",
-    "activitySavedTo": "Aktivita uložená do {page}"
+    "activitySavedTo": "Aktivita uložená do {page}",
+    "sessionFinished": "Príliš neskoro! Táto aktivita sa skončila."
 }

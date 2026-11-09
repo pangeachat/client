@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:01.837895",
+    "@@last_modified": "2026-11-09 14:56:00.715292",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10242,5 +10242,6 @@
     "changeBaseLanguageDesc": "앱 메뉴와 버튼이 {language}로 변경됩니다.",
     "accountSetupFailedHelp": "계정을 설정할 수 없습니다. 연결 상태를 확인하고 다시 시도하거나, 로그아웃한 후 나중에 다시 로그인해 주세요.",
     "onboardingOfflineError": "오프라인 상태입니다. 온라인 상태가 되면 다시 시도해 주세요.",
-    "activitySavedTo": "활동이 {page}에 저장되었습니다"
+    "activitySavedTo": "활동이 {page}에 저장되었습니다",
+    "sessionFinished": "너무 늦었어요! 이 활동은 종료되었습니다."
 }

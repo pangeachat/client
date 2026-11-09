@@ -5,12 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/space_room_token_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/features/notifications/notification_tap_utils.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -99,21 +102,24 @@ class _LeftPanelRoomSubpageState extends State<LeftPanelRoomSubpage> {
     _roomArrivalTimeout = null;
   }
 
-  /// The space token this panel last replaced, so a rebuild never replaces it
-  /// twice.
-  String? _replacedSpaceToken;
+  /// The token this panel last replaced, so a rebuild never replaces it twice.
+  String? _replacedToken;
 
-  void _replaceSpaceToken(Room space, String? eventId) {
-    final token = '${space.id}/$eventId';
-    if (_replacedSpaceToken == token) return;
-    _replacedSpaceToken = token;
+  void _replaceSpaceToken(Room space, String? eventId) => _replaceToken(
+    '${space.id}/$eventId',
+    (current) => space.spaceTokenReplacement(current, eventId: eventId),
+  );
+
+  void _replaceToken(
+    String token,
+    FutureOr<String> Function(Uri current) replacement,
+  ) {
+    if (_replacedToken == token) return;
+    _replacedToken = token;
     final router = GoRouter.of(context);
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final current = router.routeInformationProvider.value.uri;
-      final location = await space.spaceTokenReplacement(
-        current,
-        eventId: eventId,
-      );
+      final location = await replacement(current);
       // The learner may have navigated while the event loaded.
       if (!mounted || router.routeInformationProvider.value.uri != current) {
         return;
@@ -219,6 +225,23 @@ class _LeftPanelRoomSubpageState extends State<LeftPanelRoomSubpage> {
             closeButton: closeButton,
           );
       }
+    }
+
+    // An invite email links straight to the room, and the chat below would
+    // accept the invite as it builds. A session's invite is answered on its
+    // activity page, the same place a tapped push opens
+    // (joining-courses.instructions.md, "Tapping an invite notification").
+    final invitedActivityId = room.isPendingInvite ? room.activityId : null;
+    if (invitedActivityId != null) {
+      _replaceToken(
+        roomId,
+        (current) => client.activitySessionLocation(
+          current,
+          sessionRoomId: roomId,
+          activityId: invitedActivityId,
+        ),
+      );
+      return loadingPage;
     }
 
     // The chat: thread the jump-to-message `e/<eventId>` field (RoomToken) and

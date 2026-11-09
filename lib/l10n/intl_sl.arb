@@ -1793,7 +1793,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-11-06 13:11:05.811646",
+    "@@last_modified": "2026-11-09 14:56:04.553016",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10991,5 +10991,6 @@
     "changeBaseLanguageDesc": "Meniji in gumbi aplikacije se bodo preklopili na {language}.",
     "accountSetupFailedHelp": "Nastavitve vašega računa niso bile dokončane. Preverite povezavo in poskusite znova ali se odjavite in prijavite pozneje.",
     "onboardingOfflineError": "Brez povezave ste. Poskusite znova, ko boste spet povezani.",
-    "activitySavedTo": "Dejavnost shranjena v {page}"
+    "activitySavedTo": "Dejavnost shranjena v {page}",
+    "sessionFinished": "Prepozno! Ta dejavnost je končana."
 }

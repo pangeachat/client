@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:06.293182",
+    "@@last_modified": "2026-11-09 14:56:05.471114",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10564,5 +10564,6 @@
     "changeBaseLanguageDesc": "Appens menyer och knappar kommer att byta till {language}.",
     "accountSetupFailedHelp": "Vi kunde inte slutföra installationen av ditt konto. Kontrollera din anslutning och försök igen, eller logga ut och logga in senare.",
     "onboardingOfflineError": "Du är offline. Försök igen när du är online igen.",
-    "activitySavedTo": "Aktivitet sparad i {page}"
+    "activitySavedTo": "Aktivitet sparad i {page}",
+    "sessionFinished": "För sent! Den här aktiviteten är avslutad."
 }

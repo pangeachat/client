@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-11-06 13:11:05.893794",
+    "@@last_modified": "2026-11-09 14:56:04.669871",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "Mamenu nemabhatani eapp achachinja kuita {language}.",
     "accountSetupFailedHelp": "Hatina kukwanisa kupedza kuseta account yako. Tarisa network yako woedza zvakare, kana kuti log out wozoedza zvakare gare gare gare.",
     "onboardingOfflineError": "Hauziko paIndaneti. Edza zvakare kana wadzoka paIndaneti.",
-    "activitySavedTo": "Chiitiko chachengetwa ku {page}"
+    "activitySavedTo": "Chiitiko chachengetwa ku {page}",
+    "sessionFinished": "Kunonoka! Chiitiko ichi chapera."
 }

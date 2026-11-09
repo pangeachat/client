@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-11-06 13:10:57.358452",
+    "@@last_modified": "2026-11-09 14:55:57.306606",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "የመተግበሪያው ምናሌዎች እና አዝራሮች ወደ {language} ይቀየራሉ።",
     "accountSetupFailedHelp": "መለያዎን ማዋቀር አልቻልንም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ፣ ወይም ይውጡ እና በኋላ ይግቡ።",
     "onboardingOfflineError": "ከመስመር ውጪ ነዎት። በመስመር ላይ ሲሆኑ እንደገና ይሞክሩ።",
-    "activitySavedTo": "እንቅስቃሴ ወደ {page} ተቀምጧል"
+    "activitySavedTo": "እንቅስቃሴ ወደ {page} ተቀምጧል",
+    "sessionFinished": "በጣም ዘግይቷል! ይህ እንቅስቃሴ ተጠናቋል።"
 }

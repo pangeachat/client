@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:01.226323",
+    "@@last_modified": "2026-11-09 14:55:59.641391",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10122,5 +10122,6 @@
     "changeBaseLanguageDesc": "Menu dan tombol aplikasi akan beralih ke {language}.",
     "accountSetupFailedHelp": "Kami tidak dapat menyelesaikan penyiapan akun Anda. Periksa koneksi Anda dan coba lagi, atau keluar dan masuk nanti.",
     "onboardingOfflineError": "Anda sedang offline. Coba lagi setelah Anda online.",
-    "activitySavedTo": "Aktivitas disimpan ke {page}"
+    "activitySavedTo": "Aktivitas disimpan ke {page}",
+    "sessionFinished": "Terlambat! Aktivitas ini sudah selesai."
 }

@@ -1254,7 +1254,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-11-06 13:11:07.716833",
+    "@@last_modified": "2026-11-09 14:56:06.029101",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11003,5 +11003,6 @@
     "changeBaseLanguageDesc": "應用程式嘅選單同按鈕將會轉為{language}。",
     "accountSetupFailedHelp": "我哋完成唔到你嘅帳戶設定。請檢查你嘅連線，然後再試一次，或者登出之後再登入。",
     "onboardingOfflineError": "你已離線。請喺上線之後再試過。",
-    "activitySavedTo": "活動已儲存到{page}"
+    "activitySavedTo": "活動已儲存到{page}",
+    "sessionFinished": "太遲喇！呢個活動已經完咗。"
 }

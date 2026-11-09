@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-11-06 13:11:03.616434",
+    "@@last_modified": "2026-11-09 14:56:02.277101",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "अ‍ॅपचे मेनू आणि बटणे {language} मध्ये बदलतील.",
     "accountSetupFailedHelp": "आम्ही तुमचे खाते सेट करणे पूर्ण करू शकलो नाही. तुमचे कनेक्शन तपासा आणि पुन्हा प्रयत्न करा किंवा लॉग आउट करून नंतर साइन इन करा.",
     "onboardingOfflineError": "तुम्ही ऑफलाइन आहात. ऑनलाइन आल्यावर पुन्हा प्रयत्न करा.",
-    "activitySavedTo": "अ‍ॅक्टिव्हिटी {page} मध्ये सेव्ह केली"
+    "activitySavedTo": "अ‍ॅक्टिव्हिटी {page} मध्ये सेव्ह केली",
+    "sessionFinished": "खूप उशीर झाला! ही ॲक्टिव्हिटी संपली आहे."
 }

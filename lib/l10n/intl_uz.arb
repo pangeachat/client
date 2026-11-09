@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-11-06 13:11:07.524965",
+    "@@last_modified": "2026-11-09 14:56:06.076248",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10053,5 +10053,6 @@
     "changeBaseLanguageDesc": "Ilovaning menyulari va tugmalari {language} tiliga oʻzgaradi.",
     "accountSetupFailedHelp": "Hisobingizni sozlashni yakunlay olmadik. Ulanishingizni tekshiring va qayta urinib ko'ring yoki tizimdan chiqib, keyinroq kiring.",
     "onboardingOfflineError": "Siz oflaynsiz. Tarmoqqa ulangandan so‘ng qayta urinib ko‘ring.",
-    "activitySavedTo": "Faoliyat {page} ga saqlandi"
+    "activitySavedTo": "Faoliyat {page} ga saqlandi",
+    "sessionFinished": "Juda kech! Bu mashg'ulot tugadi."
 }

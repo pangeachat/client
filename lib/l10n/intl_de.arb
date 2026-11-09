@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-11-06 13:10:58.115315",
+    "@@last_modified": "2026-11-09 14:55:57.546832",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10036,5 +10036,6 @@
     "changeBaseLanguageDesc": "Die Menüs und Schaltflächen der App werden auf {language} umgestellt.",
     "accountSetupFailedHelp": "Wir konnten Ihr Konto nicht einrichten. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut, oder melden Sie sich ab und später wieder an.",
     "onboardingOfflineError": "Du bist offline. Versuche es erneut, sobald du wieder online bist.",
-    "activitySavedTo": "Aktivität gespeichert in {page}"
+    "activitySavedTo": "Aktivität gespeichert in {page}",
+    "sessionFinished": "Zu spät! Diese Aktivität ist beendet."
 }

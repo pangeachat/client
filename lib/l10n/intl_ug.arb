@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-11-06 13:11:07.156302",
+    "@@last_modified": "2026-11-09 14:56:05.855658",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "ئەپنىڭ تىزىملىكى ۋە كۇنۇپكىلىرى {language} غا ئۆزگىرىدۇ.",
     "accountSetupFailedHelp": "بىز ھېساباتىڭىزنى تەڭشەپ بولالمىدۇق. ئۇلىنىشىڭىزنى تەكشۈرۈپ قايتا سىناڭ ياكى چىقىپ كېيىن كىرىڭ.",
     "onboardingOfflineError": "تورغا ئۇلانمىدىڭىز. تورغا ئۇلانغاندىن كېيىن قايتا سىناڭ.",
-    "activitySavedTo": "پائالىيەت {page} غا ساقلاندى"
+    "activitySavedTo": "پائالىيەت {page} غا ساقلاندى",
+    "sessionFinished": "كېچىكىپ قالدىڭىز! بۇ پائالىيەت ئاخىرلاشتى."
 }

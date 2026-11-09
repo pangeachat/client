@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:10:59.810650",
+    "@@last_modified": "2026-11-09 14:55:58.788629",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10960,5 +10960,6 @@
     "changeBaseLanguageDesc": "התפריטים והלחצנים של האפליקציה יעברו ל{language}.",
     "accountSetupFailedHelp": "לא הצלחנו לסיים את הגדרת החשבון שלך. בדוק את החיבור שלך ונסה שוב, או התנתק והתחבר מאוחר יותר.",
     "onboardingOfflineError": "אתה במצב לא מקוון. נסה שוב כשתהיה מחובר.",
-    "activitySavedTo": "הפעילות נשמרה ב{page}"
+    "activitySavedTo": "הפעילות נשמרה ב{page}",
+    "sessionFinished": "מאוחר מדי! הפעילות הזו הסתיימה."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-11-06 13:11:03.698337",
+    "@@last_modified": "2026-11-09 14:56:02.505190",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "ꯑꯦꯞꯄꯀꯤ ꯃꯦꯅꯨ ꯑꯃꯁꯨꯡ ꯕꯇꯟꯁꯤꯡ ꯑꯁꯤ {language} ꯗꯥ ꯑꯣꯟꯊꯣꯛꯀꯅꯤ.",
     "accountSetupFailedHelp": "ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯑꯦꯀꯥꯎꯟꯇ ꯁꯦꯠ ꯑꯄ ꯇꯧꯕꯥ ꯂꯣꯏꯁꯤꯟꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫ ꯅꯍꯥꯛꯀꯤ ꯀꯅꯦꯛꯁꯟ ꯆꯦꯛ ꯇꯧꯕꯤꯌꯨ ꯑꯃꯁꯨꯡ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯊꯕꯛ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯠꯔꯒꯥ ꯂꯣꯒ ꯑꯥꯎꯠ ꯇꯧꯔꯒꯥ ꯃꯇꯨꯡꯗꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ꯫",
     "onboardingOfflineError": "ꯑꯣꯅꯂꯥꯏꯟ ꯂꯩꯇꯔꯦ꯫ ꯑꯣꯅꯂꯥꯏꯟ ꯍꯟꯅ ꯂꯩꯔꯒ ꯍꯟꯅ ꯊꯤꯡꯖꯧ꯫",
-    "activitySavedTo": "Activity {page} da save toukhre"
+    "activitySavedTo": "Activity {page} da save toukhre",
+    "sessionFinished": "হাওবা থোকখ্রে! হায়রিবা থবক অসি লোইখ্রে।"
 }

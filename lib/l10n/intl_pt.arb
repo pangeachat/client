@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:04.771861",
+    "@@last_modified": "2026-11-09 14:56:03.270176",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10990,5 +10990,6 @@
     "changeBaseLanguageDesc": "Os menus e botões do aplicativo mudarão para {language}.",
     "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique sua conexão e tente novamente, ou saia e faça login mais tarde.",
     "onboardingOfflineError": "Você está offline. Tente novamente quando estiver online.",
-    "activitySavedTo": "Atividade salva em {page}"
+    "activitySavedTo": "Atividade salva em {page}",
+    "sessionFinished": "Tarde demais! Esta atividade terminou."
 }

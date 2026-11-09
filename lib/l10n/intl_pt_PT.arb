@@ -2550,7 +2550,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-11-06 13:11:04.864921",
+    "@@last_modified": "2026-11-09 14:56:03.725362",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10963,5 +10963,6 @@
     "changeBaseLanguageDesc": "Os menus e botões da aplicação mudarão para {language}.",
     "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique a sua ligação e tente novamente, ou termine a sessão e inicie-a mais tarde.",
     "onboardingOfflineError": "Está offline. Tente novamente quando estiver online.",
-    "activitySavedTo": "Atividade guardada em {page}"
+    "activitySavedTo": "Atividade guardada em {page}",
+    "sessionFinished": "Demasiado tarde! Esta atividade terminou."
 }

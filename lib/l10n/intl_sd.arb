@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-11-06 13:11:05.482868",
+    "@@last_modified": "2026-11-09 14:56:03.692788",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2519,5 +2519,6 @@
     "changeBaseLanguageDesc": "ايپ جا مينيو ۽ بٽڻ {language} ۾ تبديل ٿي ويندا.",
     "accountSetupFailedHelp": "اسان توهان جو اڪائونٽ سيٽ اپ نه ڪري سگهياسين. پنهنجو ڪنيڪشن چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو، يا لاگ آئوٽ ڪريو ۽ بعد ۾ سائن ان ڪريو.",
     "onboardingOfflineError": "توهان آف لائن آهيو. جڏهن توهان آن لائن ٿيو ته ٻيهر ڪوشش ڪريو.",
-    "activitySavedTo": "سرگرمي {page} ۾ محفوظ ڪئي وئي"
+    "activitySavedTo": "سرگرمي {page} ۾ محفوظ ڪئي وئي",
+    "sessionFinished": "گهڻو دير ٿي وئي! هي سرگرمي ختم ٿي چڪي آهي."
 }

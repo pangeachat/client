@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-11-06 13:11:00.762127",
+    "@@last_modified": "2026-11-09 14:55:59.539841",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10152,5 +10152,6 @@
     "changeBaseLanguageDesc": "Az alkalmazás menüi és gombjai átváltanak a következő nyelvre: {language}.",
     "accountSetupFailedHelp": "Nem sikerült befejezni a fiók beállítását. Ellenőrizze az internetkapcsolatát, és próbálja újra, vagy jelentkezzen ki, majd később jelentkezzen be.",
     "onboardingOfflineError": "Offline vagy. Próbáld újra, ha visszatértél az internetre.",
-    "activitySavedTo": "Tevékenység mentve ide: {page}"
+    "activitySavedTo": "Tevékenység mentve ide: {page}",
+    "sessionFinished": "Túl késő! Ez a tevékenység befejeződött."
 }
