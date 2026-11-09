@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-27 14:57:23.579355",
+    "@@last_modified": "2026-11-06 13:11:07.524965",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3474,13 +3474,11 @@
     "editCourseLater": "Siz shablon sarlavhasi, tavsiflar va kurs rasmini keyinchalik tahrirlashingiz mumkin.",
     "createCourse": "Kurs yaratish",
     "stats": "Statistika",
-    "createGroupChat": "Guruh chatini yaratish",
     "editCourse": "Kursni tahrirlash",
     "inviteDesc": "Foydalanuvchi nomi, kod yoki havola orqali",
     "editCourseDesc": "Bu yerda siz kurs nomi, tavsifi va boshqalarni tahrirlashingiz mumkin.",
     "permissionsDesc": "Kimlar foydalanuvchilarni taklif qilish, xabar yuborish, chatlar yaratish va boshqalar kabi ruxsatlarni belgilash.",
     "accessDesc": "Kursingizni dunyo uchun ochishingiz mumkin! Yoki, kursingizni shaxsiy va xavfsiz qiling.",
-    "createGroupChatDesc": "Faoliyat sessiyalari boshlanib va tugagan joyda, guruh chatlari muntazam muloqot uchun ochiq qoladi.",
     "deleteDesc": "Faqat administratorlar kursni o‘chirishi mumkin. Bu xavfli harakat bo‘lib, barcha foydalanuvchilarni olib tashlaydi va kurs ichidagi barcha tanlangan chatlarni o‘chiradi. Ehtiyot bo‘ling.",
     "whatNow": "Endi nima qilish kerak?",
     "chooseNextActivity": "Keyingi faoliyatingizni tanlang!",
@@ -6450,10 +6448,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6471,10 +6465,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10041,9 +10031,7 @@
     "readAloudTake": "{number} qabul qiling",
     "videoWontPlayHere": "Bu video bu yerda ijro etilmaydi.",
     "watchOnYoutube": "YouTube'da tomosha qiling",
-    "createMyOwnCourse": "Oʻz kursimni yaratish",
     "xpTowardMission": "Ushbu missiya uchun {xp} XP",
-    "centralCourseMembersSeeYou": "Ushbu kurs aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
     "practiceStartWordCount": "{count, plural, =1{mashq qilish uchun soʻz} other{mashq qilish uchun soʻzlar}}",
     "practiceStartGrammarCount": "{count, plural, =1{mashq qilish uchun grammatika qoidasi} other{mashq qilish uchun grammatika qoidalari}}",
     "practiceStartExerciseTypes": "Mashq turlari",
@@ -10054,9 +10042,6 @@
     "sharedAnalyticsOthersTitle": "Taraqqiyotingizni koʻra oladigan boshqalar",
     "removeAnalyticsAccess": "Kirishni olib tashlash",
     "removeAnalyticsAccessDesc": "{name} endi oʻquv taraqqiyotingizni koʻra olmaydi.",
-    "centralCourseOfferBody": "Bu Pangeaning {language} oʻrganuvchilari uchun kursi. Uning aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
-    "centralCourseOfferTitle": "{course}ga qo‘shilasizmi?",
-    "makeMyOwnCourseInstead": "Buning o‘rniga o‘zimning kursimni yarataman",
     "suggestMobileSignInSameAccount": "Keyin ushbu hisob bilan ilovaga kiring.",
     "botJoinsIn": "Pangea Bot {duration} ichida qo‘shiladi",
     "botIsJoining": "Pangea Bot qo‘shilmoqda…",
@@ -10064,5 +10049,11 @@
     "playWithBotNowMessage": "Hali hech kim qo‘shilmadi. Pangea Bot hozir bo‘sh o‘rinni egallashi mumkin yoki kutishda davom etishingiz mumkin.",
     "keepWaiting": "Kutishda davom etish",
     "botTookSeatAfterAnHour": "Bu sessiya bir soat davomida ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi.",
-    "botTookSeatAfterADay": "Bu sessiya bir kundan ortiq ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi. Boshlash uchun xabar yuboring."
+    "botTookSeatAfterADay": "Bu sessiya bir kundan ortiq ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi. Boshlash uchun xabar yuboring.",
+    "subscriptionGracePeriodEndsOn": "Toʻlov amalga oshmadi. Imtiyozli davr {date} kuni tugaydi",
+    "changeBaseLanguageTitle": "Asosiy tilni oʻzgartirish?",
+    "changeBaseLanguageDesc": "Ilovaning menyulari va tugmalari {language} tiliga oʻzgaradi.",
+    "accountSetupFailedHelp": "Hisobingizni sozlashni yakunlay olmadik. Ulanishingizni tekshiring va qayta urinib ko'ring yoki tizimdan chiqib, keyinroq kiring.",
+    "onboardingOfflineError": "Siz oflaynsiz. Tarmoqqa ulangandan so‘ng qayta urinib ko‘ring.",
+    "activitySavedTo": "Faoliyat {page} ga saqlandi"
 }

@@ -68,7 +68,12 @@ class Requests {
         statusCode: response.statusCode,
       ),
     );
-    Sentry.addBreadcrumb(Breadcrumb(data: {"body": body}));
+    // The field names only: the values carry what the learner wrote (message
+    // text, words, phonemes), which a report never holds
+    // (repos-and-error-handling.instructions.md).
+    Sentry.addBreadcrumb(
+      Breadcrumb(data: {"body_keys": body?.keys.map((k) => '$k').toList()}),
+    );
   }
 
   void _handleError(
@@ -122,4 +127,16 @@ class Requests {
 class UnsubscribedException implements Exception {
   @override
   String toString() => 'UnsubscribedException: no active subscription (401)';
+}
+
+/// A request was built with no access token, which means the client is logged
+/// out. Thrown by `UserController.accessToken`; [ErrorHandler.shouldReport]
+/// keeps it out of Sentry. A read already queued when the learner logs out
+/// lands here, and nothing in code can fix that race (CLIENT-ESE, #9738).
+class NotLoggedInException implements Exception {
+  const NotLoggedInException();
+
+  @override
+  String toString() =>
+      'NotLoggedInException: no access token, the client is logged out';
 }

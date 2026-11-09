@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-27 14:57:15.339998",
+    "@@last_modified": "2026-11-06 13:11:00.022480",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3470,13 +3470,11 @@
     "editCourseLater": "Podes editar o título da plantilla, as descricións e a imaxe do curso máis tarde.",
     "createCourse": "Crear curso",
     "stats": "Estadísticas",
-    "createGroupChat": "Crear chat de grupo",
     "editCourse": "Editar curso",
     "inviteDesc": "Por nome de usuario, por código ou ligazón",
     "editCourseDesc": "Aquí podes editar o título do curso, a descrición, etc.",
     "permissionsDesc": "Establece permisos como quen pode invitar usuarios, enviar mensaxes, crear chats, etc.",
     "accessDesc": "Podes facer que o teu curso sexa aberto ao mundo! Ou, facer que o teu curso sexa privado e seguro.",
-    "createGroupChatDesc": "Mentres as sesións de actividade comezan e rematan, os chats de grupo permanecerán abertos para comunicación de rutina.",
     "deleteDesc": "Só os administradores poden eliminar un curso. Esta é unha acción destructiva que elimina a todos os usuarios e elimina todos os chats seleccionados dentro do curso. Procede con precaución.",
     "whatNow": "E agora?",
     "chooseNextActivity": "Elixe a túa próxima actividade!",
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10037,9 +10027,7 @@
     "readAloudTake": "Toma {number}",
     "videoWontPlayHere": "Este vídeo non se pode reproducir aquí.",
     "watchOnYoutube": "Ver en YouTube",
-    "createMyOwnCourse": "Crear o meu propio curso",
     "xpTowardMission": "{xp} XP para esta Misión",
-    "centralCourseMembersSeeYou": "Os membros deste curso poden ver o teu nome e perfil.",
     "practiceStartWordCount": "{count, plural, =1{palabra para practicar} other{palabras para practicar}}",
     "practiceStartGrammarCount": "{count, plural, =1{punto gramatical para practicar} other{puntos gramaticais para practicar}}",
     "practiceStartExerciseTypes": "Tipos de exercicios",
@@ -10050,9 +10038,6 @@
     "sharedAnalyticsOthersTitle": "Outros que poden ver o teu progreso",
     "removeAnalyticsAccess": "Eliminar acceso",
     "removeAnalyticsAccessDesc": "{name} xa non poderá ver o teu progreso de aprendizaxe.",
-    "centralCourseOfferBody": "É o curso de Pangea para estudantes de {language}. Os seus membros poden ver o teu nome e perfil.",
-    "centralCourseOfferTitle": "Unirte a {course}?",
-    "makeMyOwnCourseInstead": "Crear o meu propio curso",
     "suggestMobileSignInSameAccount": "Despois inicia sesión na aplicación con esta conta.",
     "botJoinsIn": "O Pangea Bot únese en {duration}",
     "botIsJoining": "O Pangea Bot estase unindo…",
@@ -10060,5 +10045,11 @@
     "playWithBotNowMessage": "Aínda ninguén se uniu. O Pangea Bot pode ocupar o asento libre agora, ou podes seguir esperando.",
     "keepWaiting": "Seguir esperando",
     "botTookSeatAfterAnHour": "Esta sesión estivo aberta durante unha hora, así que o Pangea Bot ocupou o asento libre.",
-    "botTookSeatAfterADay": "Esta sesión estivo aberta durante máis dun día, así que o Pangea Bot ocupou o asento libre. Envía unha mensaxe para comezar."
+    "botTookSeatAfterADay": "Esta sesión estivo aberta durante máis dun día, así que o Pangea Bot ocupou o asento libre. Envía unha mensaxe para comezar.",
+    "subscriptionGracePeriodEndsOn": "O pago fallou. O período de gracia remata o {date}",
+    "changeBaseLanguageTitle": "Cambiar idioma base?",
+    "changeBaseLanguageDesc": "Os menús e botóns da aplicación cambiarán a {language}.",
+    "accountSetupFailedHelp": "Non puidemos rematar de configurar a túa conta. Comproba a túa conexión e téntao de novo, ou pecha a sesión e inicia sesión máis tarde.",
+    "onboardingOfflineError": "Non tes conexión. Téntao de novo cando volvas ter conexión.",
+    "activitySavedTo": "Actividade gardada en {page}"
 }

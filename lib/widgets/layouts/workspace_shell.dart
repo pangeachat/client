@@ -40,6 +40,7 @@ import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/workspace_right_panel.dart';
+import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/routes/world/world_analytics_bar.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_map_mobile_filters.dart';
@@ -317,6 +318,20 @@ class WorkspaceShell extends StatelessWidget {
     required this.sideView,
   });
 
+  /// The column-mode reservation at the viewport's left edge: the rail pill's
+  /// [_ShellLayout.chromeMargin] inset, its drawn width (the rail and its
+  /// dock's border on each side), and one more margin before the panels.
+  static const double railGutter =
+      _ShellLayout.chromeMargin * 2 +
+      _ShellLayout.railWidth +
+      WorkspaceDock.borderWidth * 2;
+
+  /// The mirror of [railGutter] at the right edge: the cluster's inset, its
+  /// width, and one more margin before the panels, so a right panel sits as
+  /// far from the cluster as a left panel from the rail (#9778).
+  static const double clusterGutter =
+      _ShellLayout.chromeMargin * 2 + WorldUserCluster.minWidth;
+
   @override
   Widget build(BuildContext context) {
     final l = _ShellLayout.resolve(context, state: state, sideView: sideView);
@@ -478,7 +493,7 @@ class WorkspaceShell extends StatelessWidget {
                               child: SpacesNavigationRail(
                                 state: state,
                                 showNavRail: l.navRail,
-                                naviRailWidth: FluffyThemes.navRailWidth + 1.0,
+                                naviRailWidth: _ShellLayout.railWidth,
                                 activeSpaceId: activeSpaceIdFor(state.uri),
                               ),
                             ),
@@ -586,7 +601,7 @@ class WorkspaceShell extends StatelessWidget {
                         ],
 
                         /// The right column's entry point. In column mode: the persistent
-                        /// top-right vertical cluster, in the gutter the allocator reserves.
+                        /// top-right vertical cluster, in [WorkspaceShell.clusterGutter].
                         /// On narrow: the horizontal ANALYTICS NAV BAR pinned to the top
                         /// safe area — full form only, on the surfaces where it IS
                         /// navigation (the map/cavity ground and the right panels it
@@ -713,11 +728,14 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   void initState() {
     super.initState();
     // The activity plan's minimized rest (its opening stop — there is no
-    // taller mid-level) fits the CTA area the start page measures
+    // taller mid-level: its only extra over minimized was a sliver of the
+    // media, not worth a stop) fits the CTA area the start page measures
     // ([ActivitySheetCtaHeight.minimizedSheetHeight]), so rebuild when it
-    // changes. It stays below `kActivityCompactMaxHeight` in
-    // activity_sessions_start_view.dart, which tells the body to drop its
-    // content. See activity-start-page.instructions.md.
+    // changes. It reuses the cavity's half stop, so nothing sits between it
+    // and full, and collapsed stays the drag-down dismissal. It stays below
+    // `kActivityCompactMaxHeight` in activity_sessions_start_view.dart, which
+    // tells the body to drop its content. See
+    // activity-start-page.instructions.md, "The sheet and its container".
     ActivitySheetCtaHeight.notifier.addListener(_onCtaHeightChanged);
   }
 
@@ -1130,8 +1148,8 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             // subpages open at full (their content is unrelated to the map,
             // #8659) — except the single-course preview they push, which
             // rests low (#7826); other sections and the activity plan open at
-            // half (the plan keeps its pin visible above — the Google Maps
-            // UX).
+            // the half stop (for the plan that stop is its minimized rest, so
+            // its pin stays visible above — the Google Maps UX).
             cavityDefaultsToPeek: cavityToken?.type.defaultCavityToPeek == true,
             cavityDefaultsToFull:
                 cavityToken?.type.defaultCavityToFull == true &&
@@ -1200,22 +1218,21 @@ bool _tokenIsCoursePreview(PanelToken token) {
 }
 
 /// The plan uuid the map should PREVIEW-scope to, or null when no course
-/// preview is open (#7826) — a previewed course's plan via
-/// [CoursePreviewPlans] once its room summary lands (null until then);
-/// otherwise own's picked quest, from the token.
+/// preview is open (#7826) — own: from the token; browse: via
+/// [CoursePreviewPlans] once the room summary lands (null until then).
 String? _previewPlanIdFor(List<PanelToken> leftTokens) {
   for (final token in leftTokens) {
     if (!_tokenIsCoursePreview(token)) continue;
     final param = token.param;
     if (param is! AddCoursePageTokenParam) continue;
-    final roomId = param.previewRoomId;
-    if (roomId != null) {
-      return CoursePreviewPlans.planIdFor(shortRoomId(roomId));
-    }
     switch (param.subpage) {
       case AddCourseSubpageEnum.own:
         return param.createCourseId;
       case AddCourseSubpageEnum.browse:
+        final roomId = param.previewRoomId;
+        return roomId == null
+            ? null
+            : CoursePreviewPlans.planIdFor(shortRoomId(roomId));
       case AddCourseSubpageEnum.private:
         return null;
     }
@@ -1284,6 +1301,9 @@ class _ShellLayout {
   /// top-right cluster), so they inset from the viewport identically.
   static const double chromeMargin = 12.0;
 
+  /// The column-mode rail's width inside its dock's border.
+  static const double railWidth = FluffyThemes.navRailWidth + 1.0;
+
   /// Height reserved for the narrow analytics bar when placing content below
   /// it: the bar's top margin ([chromeMargin]) plus its real rendered height
   /// ([WorldAnalyticsBar.expandedHeight]). Derived, not guessed — an earlier
@@ -1338,7 +1358,8 @@ class _ShellLayout {
   /// Index into [leftTokens] of the panel hosted in the nav widget's expandable
   /// **cavity** on a narrow screen — the chat list, the Courses/add-course hub,
   /// the course family (card + coursepage detail), or the activity plan (a
-  /// half-open sheet with the camera on its pin — the Google Maps UX). Null
+  /// sheet resting minimized, with the camera on its pin — the Google Maps UX).
+  /// Null
   /// when nothing cavity-hosted is the narrow focus; [hasCavity] is its
   /// presence. Full-screen surfaces (a room, a session, any right panel) never
   /// ride the cavity. See `routing.instructions.md` → Single-column bottom nav.
@@ -1487,13 +1508,9 @@ class _ShellLayout {
     // world_v2: the rail is vertical-left in column mode and a bottom bar in
     // narrow mode, so it only offsets the canvas in column mode. The left inset
     // is just the rail now — there is no route-driven left card to reserve for.
-    final railWidth = isColumnMode && navRail
-        ? (FluffyThemes.navRailWidth + 1.0)
+    final columnWidth = isColumnMode && navRail
+        ? WorkspaceShell.railGutter
         : 0.0;
-    // The rail floats over the map in its dock pill, inset by [chromeMargin] on
-    // each side; reserve that margin so left panels and the camera padding clear
-    // it.
-    final columnWidth = railWidth == 0 ? 0.0 : railWidth + chromeMargin * 2;
 
     final activeSpaceId = activeSpaceIdFor(state.uri);
 
@@ -1531,6 +1548,7 @@ class _ShellLayout {
       left: leftDefs,
       right: rightDefs,
       railWidth: columnWidth,
+      clusterGutter: WorkspaceShell.clusterGutter,
       focusHint: focusHint,
     );
 
@@ -1584,7 +1602,7 @@ class _ShellLayout {
     final hasCavity = cavityIndex != null;
 
     // The floating nav widget shows wherever the narrow chrome does — the bare
-    // map or a cavity surface (which includes the activity plan's half-open
+    // map or a cavity surface (which includes the activity plan's minimized
     // sheet, #7530) — and is covered by a focused full-screen surface (a
     // room/session, a center-detail page, or a right panel expanding over it).
     final navWidgetVisible =
@@ -1645,8 +1663,9 @@ class _ShellLayout {
     // the band the left/right overlays don't model. Pad the camera's bottom by
     // the sheet's minimized rest (the height it opens at) so a focused pin
     // lands in the exposed map ABOVE the sheet instead of behind it (#7640;
-    // activities doc — "the plan keeps its pin visible above", the Google Maps
-    // target UX). The band is the minimized cavity height plus the bottom safe
+    // world-map.instructions.md: focusing an activity pans its pin into the
+    // exposed map, the Google Maps UX). The band is the minimized cavity
+    // height plus the bottom safe
     // area and a margin of breathing room; the sheet carries no rail. An
     // estimate of the resting sheet, deliberately not live-tracked: dragging
     // the sheet (or maximizing it) must not yank the camera. It takes the

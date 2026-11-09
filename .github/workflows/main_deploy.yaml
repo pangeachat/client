@@ -116,6 +116,11 @@ jobs:
         with:
           name: web
           path: build/web
+          # Only the deploy jobs of this run read it. The 90-day default kept ~27 GB
+          # of web builds billed as Actions storage; re-running failed jobs works
+          # within 24 hours of the upload (a later re-run needs the whole workflow,
+          # which rebuilds it).
+          retention-days: 1
 
   deploy_web:
     runs-on: ubuntu-latest

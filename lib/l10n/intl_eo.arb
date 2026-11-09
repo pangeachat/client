@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:13.856170",
+    "@@last_modified": "2026-11-06 13:10:58.553229",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2726,13 +2726,11 @@
     "editCourseLater": "Vi povas redakti la titolon, priskribojn, kaj bildon de la kurso poste.",
     "createCourse": "Krei kurson",
     "stats": "Statistikoj",
-    "createGroupChat": "Krei grupan babiladon",
     "editCourse": "Redakti kurson",
     "inviteDesc": "Per uzantnomo, per kodo aŭ ligilo",
     "editCourseDesc": "Ĉi tie vi povas redakti la titolon, priskribon, ktp. de la kurso.",
     "permissionsDesc": "Agordi permesojn kiel kiu povas inviti uzantojn, sendi mesaĝojn, krei babilejojn, ktp.",
     "accessDesc": "Vi povas fari vian kurson malfermita al la mondo! Aŭ, fari vian kurson private kaj sekura.",
-    "createGroupChatDesc": "Dum agado-sesioj komenciĝas kaj finiĝas, grupaj babilejoj restos malfermita por regula komunikado.",
     "deleteDesc": "Nur administrantoj povas forigi kurson. Ĉi tio estas detrua ago kiu forigas ĉiujn uzantojn kaj forigas ĉiujn elektitajn babilejojn ene de la kurso. Estu singarda.",
     "whatNow": "Kio nun?",
     "chooseNextActivity": "Elektu vian sekvan agadon!",
@@ -6839,10 +6837,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6860,10 +6854,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10979,9 +10969,7 @@
     "readAloudTake": "Provo {number}",
     "videoWontPlayHere": "Ĉi tiu video ne ludos ĉi tie.",
     "watchOnYoutube": "Spektu en YouTube",
-    "createMyOwnCourse": "Krei mian propran kurson",
     "xpTowardMission": "{xp} XP al ĉi tiu Misio",
-    "centralCourseMembersSeeYou": "Membroj de ĉi tiu kurso povas vidi vian nomon kaj profilon.",
     "practiceStartWordCount": "{count, plural, =1{vorto por ekzerci} other{vortoj por ekzerci}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatikpunkto por ekzerci} other{gramatikpunktoj por ekzerci}}",
     "practiceStartExerciseTypes": "Ekzercotipoj",
@@ -10992,9 +10980,6 @@
     "sharedAnalyticsOthersTitle": "Aliaj, kiuj povas vidi vian progreson",
     "removeAnalyticsAccess": "Forigi aliron",
     "removeAnalyticsAccessDesc": "{name} ne plu povos vidi vian lernan progreson.",
-    "centralCourseOfferBody": "Ĝi estas la kurso de Pangea por lernantoj de la {language} lingvo. Ĝiaj membroj povas vidi vian nomon kaj profilon.",
-    "centralCourseOfferTitle": "Ĉu aliĝi al {course}?",
-    "makeMyOwnCourseInstead": "Krei mian propran kurson anstataŭe",
     "suggestMobileSignInSameAccount": "Poste ensalutu al la apo per ĉi tiu konto.",
     "botJoinsIn": "Pangea Bot aliĝas post {duration}",
     "botIsJoining": "Pangea Bot aliĝas…",
@@ -11002,5 +10987,11 @@
     "playWithBotNowMessage": "Neniu ankoraŭ aliĝis. Pangea Bot povas okupi la liberan lokon nun, aŭ vi povas plu atendi.",
     "keepWaiting": "Plu atendi",
     "botTookSeatAfterAnHour": "Ĉi tiu sesio estis malfermita dum unu horo, do Pangea Bot okupis la liberan lokon.",
-    "botTookSeatAfterADay": "Ĉi tiu sesio estis malfermita dum pli ol unu tago, do Pangea Bot okupis la liberan lokon. Sendu mesaĝon por komenci."
+    "botTookSeatAfterADay": "Ĉi tiu sesio estis malfermita dum pli ol unu tago, do Pangea Bot okupis la liberan lokon. Sendu mesaĝon por komenci.",
+    "subscriptionGracePeriodEndsOn": "Pago malsukcesis. Tolerema periodo finiĝas je {date}",
+    "changeBaseLanguageTitle": "Ĉu ŝanĝi bazan lingvon?",
+    "changeBaseLanguageDesc": "La menuoj kaj butonoj de la aplikaĵo ŝanĝiĝos al {language}.",
+    "accountSetupFailedHelp": "Ni ne povis fini agordi vian konton. Kontrolu vian konekton kaj reprovu, aŭ elsalutu kaj ensalutu poste.",
+    "onboardingOfflineError": "Vi estas eksterrete. Provu denove kiam vi estos konektita.",
+    "activitySavedTo": "Agado konservita al {page}"
 }

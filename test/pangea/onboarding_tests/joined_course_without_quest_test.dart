@@ -1,14 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' hide Result;
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/language_service.dart';
-import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
@@ -29,12 +25,13 @@ import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import '../get_test_client.dart';
 import 'get_initial_onboarding_step.dart';
+import 'seed_language_store.dart';
 
 /// #8593 — a class link joined the course and then asked the new user for a
 /// class code. The join had succeeded; loading the course's quest had not, and
 /// onboarding treated the pair as one outcome. A joined course now always
 /// finishes on the joined-course page, and the user is asked only for what the
-/// quest could not supply. See `joining-courses.instructions.md`.
+/// quest could not supply. See `onboarding.instructions.md`.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -50,27 +47,7 @@ void main() {
   late final String otherLanguage;
 
   setUpAll(() async {
-    // The steps resolve language codes through the store, so seed it rather
-    // than let it fetch.
-    SharedPreferences.setMockInitialValues({
-      PrefKey.lastFetched: DateTime.now().toIso8601String(),
-      PrefKey.languagesKey: jsonEncode({
-        PrefKey.languagesKey: [
-          {'language_code': 'en', 'language_name': 'English'},
-          {
-            'language_code': 'de',
-            'language_name': 'German',
-            'l2_support': 'full',
-          },
-          {
-            'language_code': 'es',
-            'language_name': 'Spanish',
-            'l2_support': 'full',
-          },
-        ],
-      }),
-    });
-    await PLanguageStore.initialize();
+    await seedLanguageStore();
 
     baseLanguage = LanguageService.systemLanguage?.langCodeShort ?? 'en';
     otherLanguage = baseLanguage == 'de' ? 'es' : 'de';

@@ -12,6 +12,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/languages/context_language_switch_target.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -51,7 +52,14 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// minimized sheet ([ActivitySheetCtaHeight.maxSheetHeight]) and below
 /// where the full layout's footer still fits beside the info row, so neither
 /// layout overflows mid-drag. The app is portrait-only, so a full sheet always
-/// clears it. See activity-start-page.instructions.md.
+/// clears it.
+///
+/// Dropping the content, as the course card's compact peek does
+/// (`_kCompactCardMaxHeight`), is what spares the sheet any scroll-versus-grow
+/// coordination: with nothing to scroll at the minimized rest, an upward drag
+/// can only grow the sheet, and the content mounts and scrolls once it is
+/// full. See activity-start-page.instructions.md, "The sheet and its
+/// container".
 const double kActivityCompactMaxHeight = 340.0;
 
 class ActivitySessionStartView extends StatelessWidget {
@@ -167,6 +175,11 @@ class ActivitySessionStartView extends StatelessWidget {
                             controller.widget.roomId,
                           );
                           if (close != null) {
+                            // A session the course card opened reopens the
+                            // card, which claims focus (#9632).
+                            if (closeReopensCourseCard(uri, close)) {
+                              PanelEntryIntent.instance.armForSwap();
+                            }
                             GoRouter.of(context).go(close);
                           } else if (Navigator.of(context).canPop()) {
                             Navigator.of(context).pop();
@@ -178,13 +191,13 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
-              // While a confirmed session waits to fill, the "…" menu stands in
-              // for share on web and is a net-new action on mobile — so nobody
-              // confuses sharing the activity with inviting people into the
-              // room. See activity-start-page.instructions.md.
+              // While a confirmed session waits to fill, the "…" menu takes
+              // share's place at every size, so nobody confuses sharing the
+              // activity with inviting people into the room. See
+              // activity-start-page.instructions.md, "The waiting room".
               if (controller.activityRoom case final room?
                   when controller.isPendingSession)
-                _WaitingRoomMenuButton(room)
+                _WaitingRoomMenuButton(room, page: controller)
               // Share sits in the app bar, left of focus, at every size.
               else
                 IconButton(
@@ -203,9 +216,10 @@ class ActivitySessionStartView extends StatelessWidget {
           ),
           body: controller.loading
               ? const Center(child: CircularProgressIndicator.adaptive())
-              // Transient fetch failure — retryable, never the archived view
-              // or the "no longer supported" notice (the fallback ladder in
-              // activities.instructions.md engages only on a confirmed 404).
+              // Transient fetch failure — an error, never the archived view or
+              // the "no longer supported" notice: the fallback ladder in
+              // activity-start-page.instructions.md, "When the activity can't
+              // be fetched", engages only on a confirmed 404; no retry button.
               : controller.error != null
               ? Center(
                   child: Padding(
@@ -326,7 +340,12 @@ class ActivitySessionStartView extends StatelessWidget {
                                                 ),
                                               ),
                                               // The flag rides the top-right of
-                                              // the text content at every size.
+                                              // the text content at every size:
+                                              // out of the buttons, which hold
+                                              // only the choices, and on the
+                                              // main page alone, since the
+                                              // Completed subpage has no
+                                              // description to anchor it.
                                               IconButton(
                                                 tooltip: L10n.of(
                                                   context,
@@ -391,11 +410,18 @@ class ActivitySessionStartView extends StatelessWidget {
 
 /// The waiting-room "…" menu in the app bar: the same actions the session's
 /// chat-list row offers, from the same list, surfaced while a confirmed session
-/// waits to fill. See activity-start-page.instructions.md.
+/// waits to fill. It carries none of the chat header's extras: invite is
+/// already a waiting-room button, and there is no chat yet to search. See
+/// activity-start-page.instructions.md, "The waiting room".
 class _WaitingRoomMenuButton extends StatelessWidget {
   final Room room;
 
-  const _WaitingRoomMenuButton(this.room);
+  /// The start page this menu sits on. A leave or delete closes the panel
+  /// from the page, not from this button: when the leave lands in sync, the
+  /// page is no longer a waiting room and removes the button (#9417).
+  final ActivitySessionStartState page;
+
+  const _WaitingRoomMenuButton(this.room, {required this.page});
 
   @override
   Widget build(BuildContext context) {
@@ -411,7 +437,7 @@ class _WaitingRoomMenuButton extends StatelessWidget {
       onSelected: (action) => handleChatContextAction(
         action,
         context: context,
-        outerContext: context,
+        outerContext: page.context,
         room: room,
         space: space,
         source: ChatMenuSource.startPage,
@@ -425,7 +451,7 @@ class _WaitingRoomMenuButton extends StatelessWidget {
 /// the scrollable body so a map explorer sees the essentials without expanding
 /// the sheet. The creator is the plan's own owner — Pangea's name and logo
 /// only for content Pangea genuinely owns ([ContentCreatorChip]), never for a
-/// teacher's. See activity-start-page.instructions.md.
+/// teacher's. See activity-start-page.instructions.md, "The top of the page".
 class _ActivityStartInfoRow extends StatelessWidget {
   final ActivityPlanModel activity;
 
@@ -450,7 +476,8 @@ class _ActivityStartInfoRow extends StatelessWidget {
           // Never empty: the flag when the language resolves to one, else a
           // langcode chip (shared with the analytics cluster's flag). Doubles
           // as the switch to that language when it isn't the learner's
-          // target (activity-start-page.instructions.md).
+          // target (activity-start-page.instructions.md, "The top of the
+          // page").
           ContextLanguageSwitchTarget(
             contentLanguage: language,
             builder: (context, canSwitch) => LanguageFlagChip(
@@ -517,8 +544,10 @@ class _IconLabel extends StatelessWidget {
 }
 
 /// Archived body for a removed activity with no plan recoverable from room
-/// state (the last rung of the fallback ladder in activities.instructions.md):
-/// the "no longer supported" notice, plus whatever the room itself holds —
+/// state (the last rung of the fallback ladder in
+/// activity-start-page.instructions.md, "When the activity can't be
+/// fetched"): the "no longer supported" notice, plus whatever the room itself
+/// holds —
 /// each recorded role's occupant, role name, earned star count, and finished
 /// status — so past progress stays reviewable.
 class _ArchivedSessionFallbackBody extends StatelessWidget {

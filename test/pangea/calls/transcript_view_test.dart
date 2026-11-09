@@ -11,6 +11,9 @@ import 'package:just_audio/just_audio.dart';
 import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics/listening_exposure_buffer.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/subscription/widgets/locked_preview_banner.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -2474,6 +2477,15 @@ void main() {
         [_me, _me, _peer]..sort(),
         reason: 'each player is wired to whichever device recorded it',
       );
+      for (final player in players) {
+        expect(
+          player.listeningCategory,
+          player.senderId == _peer
+              ? DosageListeningCategory.callRecording
+              : isNull,
+          reason: "the other person's side is listening, your own is not",
+        );
+      }
 
       // The VISIBLE label, not just the wiring. No `atMs` above, so the
       // timeline is not eligible and both halves render as their own
@@ -4077,6 +4089,89 @@ void main() {
 
     MatrixFile emptyMergedFile() =>
         MatrixFile(bytes: Uint8List(0), name: 'm.wav', mimeType: 'audio/wav');
+
+    testWidgets(
+      'the Full-call recording counts what was heard, once, and no pause',
+      (tester) async {
+        ListeningExposureBuffer.debugResetAccounts();
+        addTearDown(ListeningExposureBuffer.debugResetAccounts);
+        final meAudio = audioEvent(_me);
+        final peerAudio = audioEvent(_peer);
+        final fake = _FakeAudioPlayer();
+        final loader = Completer<MatrixFile>();
+        final testRoom = room();
+        await pumpWithRecordings(
+          tester,
+          testRoom,
+          serving(karaokeFixture(meAudio, peerAudio)),
+          audioPlayerFactory: () => fake,
+          mergedFileLoader: (_) => loader.future,
+        );
+        Future<void> wait(int ms) => tester.runAsync(
+          () => Future<void>.delayed(Duration(milliseconds: ms)),
+        );
+        List<OneConstructUse> entries() => ListeningExposureBuffer.forAccount(
+          testRoom.client.userID!,
+        )!.drainAudioEntries();
+
+        await tester.tap(find.byIcon(Icons.play_circle));
+        await tester.pump();
+        fake.emitPlaying(true);
+        await tester.pump();
+        await wait(30);
+        fake.emitPlaying(false);
+        await tester.pump();
+        await wait(300);
+        expect(entries(), isEmpty, reason: 'a pause closes nothing');
+
+        fake.emitPlaying(true);
+        await tester.pump();
+        await wait(30);
+        fake.emitCompleted();
+        await tester.pump();
+
+        final entry = entries().single;
+        expect(entry.category, 'call_recording');
+        expect(entry.durMs, inInclusiveRange(30, 250));
+
+        await tester.pumpWidget(const SizedBox());
+        expect(entries(), isEmpty, reason: 'closing the screen adds nothing');
+      },
+    );
+
+    testWidgets('closing the screen mid-play counts what was heard', (
+      tester,
+    ) async {
+      ListeningExposureBuffer.debugResetAccounts();
+      addTearDown(ListeningExposureBuffer.debugResetAccounts);
+      final meAudio = audioEvent(_me);
+      final peerAudio = audioEvent(_peer);
+      final fake = _FakeAudioPlayer();
+      final loader = Completer<MatrixFile>();
+      final testRoom = room();
+      await pumpWithRecordings(
+        tester,
+        testRoom,
+        serving(karaokeFixture(meAudio, peerAudio)),
+        audioPlayerFactory: () => fake,
+        mergedFileLoader: (_) => loader.future,
+      );
+
+      await tester.tap(find.byIcon(Icons.play_circle));
+      await tester.pump();
+      fake.emitPlaying(true);
+      await tester.pump();
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 20)),
+      );
+      await tester.pumpWidget(const SizedBox());
+
+      final entry = ListeningExposureBuffer.forAccount(
+        testRoom.client.userID!,
+      )!.drainAudioEntries().single;
+      expect(entry.category, 'call_recording');
+      expect(entry.durMs, greaterThanOrEqualTo(20));
+    });
 
     testWidgets(
       'pressing the Full-call card play drives the karaoke highlight, and '

@@ -895,9 +895,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 _loginClientCandidate = null;
                 // #Pangea
                 // FluffyChatApp.router.go('/backup');
-                final isL2Set =
-                    await pangeaController.userController.isUserL2Set;
-                if (!isL2Set) {
+                final finished =
+                    await pangeaController.userController.finishedOnboarding;
+                if (!finished) {
                   // A new user's onboarding joins with any join code in the
                   // destination cached across the login bounce and clears it
                   // at completion (user_type_onboarding_step.dart); any other
@@ -1068,17 +1068,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   void setAppLanguage() {
     if (!mounted) return;
     try {
-      final settings = pangeaController.userController.profile.userSettings;
-      // Immersion: show the app in the target language when the user opts in,
-      // otherwise their source/native language. Falls back to source (then
-      // system) if the target isn't set.
-      final appLanguage = settings.appLanguageIsTarget
-          ? (settings.targetLanguage ?? settings.sourceLanguage)
-          : settings.sourceLanguage;
-      Provider.of<LocaleProvider>(
-        context,
-        listen: false,
-      ).setLocale(appLanguage);
+      Provider.of<LocaleProvider>(context, listen: false).setLocale(
+        pangeaController.userController.profile.userSettings.appLanguage,
+      );
     } catch (e, s) {
       Logs().e('Error setting app language', e);
       ErrorHandler.logError(e: e, s: s, data: {});
@@ -1244,14 +1236,15 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           if (identical(backgroundPush?.client, c)) {
             unawaited(backgroundPush?.setupPush());
           }
-          final isL2Set = await pangeaController.userController.isUserL2Set;
+          final finished =
+              await pangeaController.userController.finishedOnboarding;
           // Not unconditionally the world map. This state also means "the
           // session finished restoring", which on a cold start lands AFTER the
           // app has resolved the URL the user opened — and going to the map
           // then throws that URL away. See [PAuthGaurd.loggedInLanding].
           final landing = PAuthGaurd.loggedInLanding(
             current: FluffyChatApp.router.routeInformationProvider.value.uri,
-            isL2Set: isL2Set,
+            finishedOnboarding: finished,
           );
           if (landing != null) FluffyChatApp.router.go(landing);
         } else {

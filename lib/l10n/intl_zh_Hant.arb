@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:24.391341",
+    "@@last_modified": "2026-11-06 13:11:07.579401",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -3360,13 +3360,11 @@
     "editCourseLater": "您可以稍後編輯課程標題、描述和課程圖片。",
     "createCourse": "創建課程",
     "stats": "統計數據",
-    "createGroupChat": "創建群聊",
     "editCourse": "編輯課程",
     "inviteDesc": "通過用戶名、代碼或鏈接邀請",
     "editCourseDesc": "在此處您可以編輯課程標題、描述等。",
     "permissionsDesc": "設置權限，例如誰可以邀請用戶、發送消息、創建聊天等。",
     "accessDesc": "您可以讓您的課程向全世界開放！或者，將您的課程設為私有且安全。",
-    "createGroupChatDesc": "活動會話開始和結束，而群聊將保持開放以進行日常交流。",
     "deleteDesc": "只有管理員可以刪除課程。這是一個破壞性操作，會刪除所有用戶並刪除課程內所有選擇的聊天。請謹慎操作。",
     "whatNow": "接下來怎麼辦？",
     "chooseNextActivity": "選擇您的下一個活動！",
@@ -6014,10 +6012,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6035,10 +6029,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10143,9 +10133,7 @@
     "readAloudTake": "第 {number} 次錄音",
     "videoWontPlayHere": "此處無法播放此影片。",
     "watchOnYoutube": "在 YouTube 上觀看",
-    "createMyOwnCourse": "建立我的課程",
     "xpTowardMission": "此任務的 {xp} 經驗值",
-    "centralCourseMembersSeeYou": "本課程的成員可以看到您的姓名和個人資料。",
     "practiceStartWordCount": "{count, plural, =1{個單字要練習} other{個單字要練習}}",
     "practiceStartGrammarCount": "{count, plural, =1{個文法點要練習} other{個文法點要練習}}",
     "practiceStartExerciseTypes": "練習類型",
@@ -10156,9 +10144,6 @@
     "sharedAnalyticsOthersTitle": "其他可查看您進度的人",
     "removeAnalyticsAccess": "移除存取權",
     "removeAnalyticsAccessDesc": "{name} 將無法再查看您的學習進度。",
-    "centralCourseOfferBody": "這是 Pangea 專為 {language} 學習者開設的課程。課程成員可以看到您的姓名和個人資料。",
-    "centralCourseOfferTitle": "加入{course}？",
-    "makeMyOwnCourseInstead": "改為建立我的課程",
     "suggestMobileSignInSameAccount": "然後用此帳號登入應用程式。",
     "botJoinsIn": "Pangea Bot 將在 {duration} 後加入",
     "botIsJoining": "Pangea Bot 正在加入…",
@@ -10166,5 +10151,11 @@
     "playWithBotNowMessage": "還沒有人加入。Pangea Bot 現在可以加入，或者您可以繼續等待。",
     "keepWaiting": "繼續等待",
     "botTookSeatAfterAnHour": "此會話已開放一小時，Pangea Bot 已加入。",
-    "botTookSeatAfterADay": "此會話已開放超過一天，Pangea Bot 已加入。發送訊息即可開始。"
+    "botTookSeatAfterADay": "此會話已開放超過一天，Pangea Bot 已加入。發送訊息即可開始。",
+    "subscriptionGracePeriodEndsOn": "付款失敗。寬限期於 {date} 結束",
+    "changeBaseLanguageTitle": "更改基礎語言？",
+    "changeBaseLanguageDesc": "應用程式的選單和按鈕將切換為{language}。",
+    "accountSetupFailedHelp": "我們無法完成您的帳號設定。請檢查您的連線並再試一次，或登出並稍後再登入。",
+    "onboardingOfflineError": "您已離線。請在連線後再試一次。",
+    "activitySavedTo": "活動已儲存至{page}"
 }

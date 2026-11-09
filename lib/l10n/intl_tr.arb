@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-10-27 14:57:23.318667",
+    "@@last_modified": "2026-11-06 13:11:06.904652",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -3289,13 +3289,11 @@
     "editCourseLater": "Şablon başlığı, açıklamalar ve kurs resmi daha sonra düzenleyebilirsiniz.",
     "createCourse": "Kurs Oluştur",
     "stats": "İstatistikler",
-    "createGroupChat": "Grup sohbeti oluştur",
     "editCourse": "Kursu düzenle",
     "inviteDesc": "Kullanıcı adı, kod veya bağlantı ile",
     "editCourseDesc": "Burada kurs başlığını, açıklamasını vb. düzenleyebilirsiniz.",
     "permissionsDesc": "Kimin kullanıcı davet edebileceği, mesaj gönderebileceği, sohbet oluşturabileceği gibi izinleri ayarlayın.",
     "accessDesc": "Kursunuzu dünyaya açık hale getirebilirsiniz! Ya da, kursunuzu özel ve güvenli yapabilirsiniz.",
-    "createGroupChatDesc": "Etkinlik oturumları başlar ve biterken, grup sohbetleri rutin iletişim için açık kalacaktır.",
     "deleteDesc": "Sadece yöneticiler kursu silebilir. Bu, tüm kullanıcıları kaldıran ve kurs içindeki tüm seçili sohbetleri silen yıkıcı bir işlemdir. Dikkatli ilerleyin.",
     "whatNow": "Şimdi ne olacak?",
     "chooseNextActivity": "Bir sonraki etkinliğinizi seçin!",
@@ -6195,10 +6193,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6216,10 +6210,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10335,9 +10325,7 @@
     "readAloudTake": "Alıştırma {number}",
     "videoWontPlayHere": "Bu video burada oynatılamaz.",
     "watchOnYoutube": "YouTube'da İzle",
-    "createMyOwnCourse": "Kendi kursumu oluştur",
     "xpTowardMission": "Bu Görev için {xp} XP",
-    "centralCourseMembersSeeYou": "Bu kursun üyeleri adını ve profilini görebilir.",
     "practiceStartWordCount": "{count, plural, =1{pratik yapılacak kelime} other{pratik yapılacak kelime}}",
     "practiceStartGrammarCount": "{count, plural, =1{pratik yapılacak dil bilgisi konusu} other{pratik yapılacak dil bilgisi konusu}}",
     "practiceStartExerciseTypes": "Alıştırma türleri",
@@ -10348,9 +10336,6 @@
     "sharedAnalyticsOthersTitle": "İlerlemenizi görebilen diğerleri",
     "removeAnalyticsAccess": "Erişimi kaldır",
     "removeAnalyticsAccessDesc": "{name} artık öğrenme ilerlemenizi göremeyecek.",
-    "centralCourseOfferBody": "Bu, Pangea'nın {language} öğrenenler için kursu. Üyeleri adını ve profilini görebilir.",
-    "centralCourseOfferTitle": "{course} kursuna katılmak ister misin?",
-    "makeMyOwnCourseInstead": "Bunun yerine kendi kursumu oluştur",
     "suggestMobileSignInSameAccount": "Ardından bu hesapla uygulamaya giriş yapın.",
     "botJoinsIn": "Pangea Bot {duration} içinde katılıyor",
     "botIsJoining": "Pangea Bot katılıyor…",
@@ -10358,5 +10343,11 @@
     "playWithBotNowMessage": "Henüz kimse katılmadı. Pangea Bot şimdi boş koltuğu alabilir veya beklemeye devam edebilirsiniz.",
     "keepWaiting": "Beklemeye devam et",
     "botTookSeatAfterAnHour": "Bu oturum bir saat boyunca açıktı, bu yüzden Pangea Bot boş koltuğu aldı.",
-    "botTookSeatAfterADay": "Bu oturum bir günden fazla açıktı, bu yüzden Pangea Bot boş koltuğu aldı. Başlamak için bir mesaj gönderin."
+    "botTookSeatAfterADay": "Bu oturum bir günden fazla açıktı, bu yüzden Pangea Bot boş koltuğu aldı. Başlamak için bir mesaj gönderin.",
+    "subscriptionGracePeriodEndsOn": "Ödeme başarısız oldu. Ödemesiz dönem {date} tarihinde sona eriyor",
+    "changeBaseLanguageTitle": "Temel dili değiştir?",
+    "changeBaseLanguageDesc": "Uygulamanın menüleri ve düğmeleri {language} diline geçecektir.",
+    "accountSetupFailedHelp": "Hesabınızı kurmayı tamamlayamadık. Bağlantınızı kontrol edin ve tekrar deneyin veya çıkış yapıp daha sonra tekrar giriş yapın.",
+    "onboardingOfflineError": "Çevrimdışısın. İnternete bağlandığında tekrar dene.",
+    "activitySavedTo": "Etkinlik şuraya kaydedildi: {page}"
 }

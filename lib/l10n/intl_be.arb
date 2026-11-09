@@ -3460,13 +3460,11 @@
     "editCourseLater": "Вы можаце рэдагаваць назву шаблона, апісанні і выяву курса пазней.",
     "createCourse": "Стварыць курс",
     "stats": "Статыстыка",
-    "createGroupChat": "Стварыць групавы чат",
     "editCourse": "Рэдагаваць курс",
     "inviteDesc": "Запрашэнне па імя карыстальніка, па кодзе або спасылцы",
     "editCourseDesc": "Тут вы можаце рэдагаваць назву курса, апісанне і г.д.",
     "permissionsDesc": "Усталюйце дазволы, такія як хто можа запрашаць карыстальнікаў, адпраўляць паведамленні, ствараць чаты і г.д.",
     "accessDesc": "Вы можаце зрабіць свой курс адкрытым для свету! Або зрабіць яго прыватным і бяспечным.",
-    "createGroupChatDesc": "У той час як пачынаюцца і заканчваюцца сесіі дзейнасці, групавыя чаты застануцца адкрытымі для звычайнай камунікацыі.",
     "deleteDesc": "Толькі адміністратары могуць выдаліць курс. Гэта деструктыўная дзея, якая выдаляе ўсіх карыстальнікаў і ўсе выбраныя чаты ў межах курса. Выконвайце асцярожна.",
     "whatNow": "Што цяпер?",
     "chooseNextActivity": "Выберыце сваю наступную дзейнасць!",
@@ -3528,7 +3526,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-10-27 14:57:13.039284",
+    "@@last_modified": "2026-11-06 13:10:57.274526",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10051,9 +10041,7 @@
     "readAloudTake": "Спроба {number}",
     "videoWontPlayHere": "Гэта відэа тут не прайграецца.",
     "watchOnYoutube": "Глядзець на YouTube",
-    "createMyOwnCourse": "Стварыць свой курс",
     "xpTowardMission": "{xp} XP да гэтай місіі",
-    "centralCourseMembersSeeYou": "Удзельнікі гэтага курса могуць бачыць ваша імя і профіль.",
     "practiceStartWordCount": "{count, plural, =1{слова для практыкі} other{слоў для практыкі}}",
     "practiceStartGrammarCount": "{count, plural, =1{граматычны пункт для практыкі} other{граматычных пунктаў для практыкі}}",
     "practiceStartExerciseTypes": "Тыпы практыкаванняў",
@@ -10064,9 +10052,6 @@
     "sharedAnalyticsOthersTitle": "Іншыя, хто бачыць ваш прагрэс",
     "removeAnalyticsAccess": "Выдаліць доступ",
     "removeAnalyticsAccessDesc": "{name} больш не зможа бачыць ваш прагрэс у навучанні.",
-    "centralCourseOfferBody": "Гэта курс Pangea для тых, хто вывучае {language}. Яго ўдзельнікі могуць бачыць ваша імя і профіль.",
-    "centralCourseOfferTitle": "Далучыцца да {course}?",
-    "makeMyOwnCourseInstead": "Замест гэтага стварыць свой уласны курс",
     "suggestMobileSignInSameAccount": "Затым увайдзіце ў праграму з дапамогай гэтага ўліковага запісу.",
     "botJoinsIn": "Бот Pangea далучыцца праз {duration}",
     "botIsJoining": "Бот Pangea далучаецца…",
@@ -10074,5 +10059,11 @@
     "playWithBotNowMessage": "Пакуль ніхто не далучыўся. Бот Pangea можа заняць свабоднае месца зараз, або вы можаце працягнуць чакаць.",
     "keepWaiting": "Працягнуць чакаць",
     "botTookSeatAfterAnHour": "Гэтая сесія была адкрыта гадзіну, таму бот Pangea заняў свабоднае месца.",
-    "botTookSeatAfterADay": "Гэтая сесія была адкрыта больш за дзень, таму бот Pangea заняў свабоднае месца. Адпраўце паведамленне, каб пачаць."
+    "botTookSeatAfterADay": "Гэтая сесія была адкрыта больш за дзень, таму бот Pangea заняў свабоднае месца. Адпраўце паведамленне, каб пачаць.",
+    "subscriptionGracePeriodEndsOn": "Аплата не прайшла. Льготны перыяд заканчваецца {date}",
+    "changeBaseLanguageTitle": "Змяніць асноўную мову?",
+    "changeBaseLanguageDesc": "Меню і кнопкі праграмы пераключацца на {language}.",
+    "accountSetupFailedHelp": "Нам не ўдалося завяршыць наладжванне вашага ўліковага запісу. Праверце злучэнне і паспрабуйце яшчэ раз, або выйдзіце і ўвайдзіце пазней.",
+    "onboardingOfflineError": "Вы па-за сеткай. Паспрабуйце яшчэ раз, калі зноў будзеце ў сетцы.",
+    "activitySavedTo": "Дзейнасць захавана ў {page}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:14.613217",
+    "@@last_modified": "2026-11-06 13:10:59.019468",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -3378,13 +3378,11 @@
     "editCourseLater": "می‌توانید بعداً عنوان، توضیحات و تصویر دوره را ویرایش کنید.",
     "createCourse": "ایجاد دوره",
     "stats": "آمار",
-    "createGroupChat": "ایجاد چت گروهی",
     "editCourse": "ویرایش دوره",
     "inviteDesc": "با نام کاربری، با کد یا لینک",
     "editCourseDesc": "در اینجا می‌توانید عنوان، توضیحات و موارد دیگر دوره را ویرایش کنید.",
     "permissionsDesc": "مجوزها را تنظیم کنید، مانند اینکه چه کسی می‌تواند کاربران را دعوت کند، پیام ارسال کند، چت ایجاد کند و غیره.",
     "accessDesc": "می‌توانید دوره خود را برای جهان باز کنید! یا، دوره خود را خصوصی و امن کنید.",
-    "createGroupChatDesc": "در حالی که جلسات فعالیت شروع و پایان می‌یابند، چت‌های گروهی برای ارتباط روتین باقی خواهند ماند.",
     "deleteDesc": "فقط مدیران می‌توانند دوره را حذف کنند. این یک اقدام مخرب است که تمام کاربران را حذف می‌کند و تمام چت‌های انتخاب شده درون دوره را حذف می‌کند. با احتیاط اقدام کنید.",
     "whatNow": "حالا چه؟",
     "chooseNextActivity": "انتخاب فعالیت بعدی شما!",
@@ -5990,10 +5988,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6011,10 +6005,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10125,9 +10115,7 @@
     "readAloudTake": "برداشت {number}",
     "videoWontPlayHere": "این ویدئو اینجا پخش نمی‌شود.",
     "watchOnYoutube": "در یوتیوب تماشا کنید",
-    "createMyOwnCourse": "دوره خودم را بسازم",
     "xpTowardMission": "{xp} امتیاز تجربه برای این مأموریت",
-    "centralCourseMembersSeeYou": "اعضای این دوره می‌توانند نام و نمایه شما را ببینند.",
     "practiceStartWordCount": "{count, plural, =1{کلمه برای تمرین} other{کلمه برای تمرین}}",
     "practiceStartGrammarCount": "{count, plural, =1{نکته گرامری برای تمرین} other{نکته گرامری برای تمرین}}",
     "practiceStartExerciseTypes": "انواع تمرین",
@@ -10138,9 +10126,6 @@
     "sharedAnalyticsOthersTitle": "دیگران که می‌توانند پیشرفت شما را ببینند",
     "removeAnalyticsAccess": "حذف دسترسی",
     "removeAnalyticsAccessDesc": "{name} دیگر قادر به دیدن پیشرفت یادگیری شما نخواهد بود.",
-    "centralCourseOfferBody": "این دوره پانگه‌آ برای زبان‌آموزان {language} است. اعضای آن می‌توانند نام و نمایه شما را ببینند.",
-    "centralCourseOfferTitle": "به {course} بپیوندید؟",
-    "makeMyOwnCourseInstead": "به جای آن، دوره خودم را بسازم",
     "suggestMobileSignInSameAccount": "سپس با همین حساب وارد برنامه شوید.",
     "botJoinsIn": "ربات Pangea در {duration} به شما ملحق می‌شود",
     "botIsJoining": "ربات Pangea در حال پیوستن است…",
@@ -10148,5 +10133,11 @@
     "playWithBotNowMessage": "هنوز کسی به شما ملحق نشده است. ربات Pangea می‌تواند اکنون جای خالی را پر کند، یا می‌توانید منتظر بمانید.",
     "keepWaiting": "منتظر بمانید",
     "botTookSeatAfterAnHour": "این جلسه به مدت یک ساعت باز بود، بنابراین ربات Pangea جای خالی را پر کرد.",
-    "botTookSeatAfterADay": "این جلسه بیش از یک روز باز بود، بنابراین ربات Pangea جای خالی را پر کرد. برای شروع یک پیام ارسال کنید."
+    "botTookSeatAfterADay": "این جلسه بیش از یک روز باز بود، بنابراین ربات Pangea جای خالی را پر کرد. برای شروع یک پیام ارسال کنید.",
+    "subscriptionGracePeriodEndsOn": "پرداخت ناموفق بود. دوره ارفاق در {date} به پایان می‌رسد",
+    "changeBaseLanguageTitle": "تغییر زبان پایه؟",
+    "changeBaseLanguageDesc": "منوها و دکمه‌های برنامه به {language} تغییر خواهند کرد.",
+    "accountSetupFailedHelp": "ما نتوانستیم راه‌اندازی حساب شما را به پایان برسانیم. اتصال خود را بررسی کنید و دوباره امتحان کنید، یا از سیستم خارج شوید و بعداً وارد شوید.",
+    "onboardingOfflineError": "شما آفلاین هستید. وقتی آنلاین شدید دوباره امتحان کنید.",
+    "activitySavedTo": "فعالیت در {page} ذخیره شد"
 }

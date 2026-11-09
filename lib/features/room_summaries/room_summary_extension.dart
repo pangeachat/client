@@ -270,8 +270,7 @@ class RoomSummaryResponse {
     ActivityPlanModel? plan;
     // v3 rooms store a thin { activity_id, version_id } reference (no `req`);
     // only an embedded plan can be parsed here. References are resolved lazily
-    // by consumers, so the summary's plan stays null. See
-    // activities.instructions.md.
+    // by consumers, so the summary's plan stays null.
     if (planEntry is Map<String, dynamic> &&
         planEntry[ActivitySessionConstants.activityPlanRequest] != null) {
       plan = ActivityPlanModel.fromJson(planEntry);

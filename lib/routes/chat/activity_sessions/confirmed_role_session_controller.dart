@@ -47,6 +47,10 @@ class ConfirmedRoleSession extends StatefulWidget {
 
 class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
     implements ActivitySessionStateController {
+  /// The once-a-minute limit on pinging the course, against spam. Held in
+  /// memory on this page, so it limits this device only and resets if the
+  /// learner leaves the page and comes back. See
+  /// activity-start-page.instructions.md, "The waiting room".
   Timer? _pingCooldown;
   final _goalsHandler = GoalsSubscriptionHandler();
 

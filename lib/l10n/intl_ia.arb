@@ -1287,13 +1287,11 @@
     "editCourseLater": "Tu pote modificar le titulo del curso, descriptiones, e imagine del curso postea.",
     "createCourse": "Create un curso",
     "stats": "Statisticas",
-    "createGroupChat": "Create un chat de grupo",
     "editCourse": "Modificar le curso",
     "inviteDesc": "Per nomine de usator, per codice o ligamine",
     "editCourseDesc": "Ici tu pote modificar le titulo del curso, description, etc.",
     "permissionsDesc": "Configura le permissiones como qui pote invitar usatores, mandar message, crear chats, etc.",
     "accessDesc": "Tu pote face tu curso aperte al mundo! O, face tu curso private e secure.",
-    "createGroupChatDesc": "Dove le sessiones de activitate comencia e termina, le chats de grupo remanera aperte pro communication routine.",
     "deleteDesc": "Solo le administratores pote delere un curso. Iste es un action destructive que remove tote le usatores e delere tote le chats selectate in le curso. Procede con cautela.",
     "whatNow": "Que face ora?",
     "chooseNextActivity": "Selige tu proxime activitate!",
@@ -1355,7 +1353,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-27 14:57:16.427929",
+    "@@last_modified": "2026-11-06 13:11:00.838340",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6830,10 +6828,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6851,10 +6845,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10970,9 +10960,7 @@
     "readAloudTake": "Prende {number}",
     "videoWontPlayHere": "Iste video non va reproducer hic.",
     "watchOnYoutube": "Regardar in YouTube",
-    "createMyOwnCourse": "Crear mi proprie curso",
     "xpTowardMission": "{xp} XP verso iste Mission",
-    "centralCourseMembersSeeYou": "Membros de iste curso pote vider tu nomine e profilo.",
     "practiceStartWordCount": "{count, plural, =1{parola a practicar} other{parolas a practicar}}",
     "practiceStartGrammarCount": "{count, plural, =1{puncto grammatical a practicar} other{punctos grammatical a practicar}}",
     "practiceStartExerciseTypes": "Typos de exercitios",
@@ -10983,9 +10971,6 @@
     "sharedAnalyticsOthersTitle": "Alteres qui pote vider tu progresso",
     "removeAnalyticsAccess": "Remover accesso",
     "removeAnalyticsAccessDesc": "{name} non plus pote vider tu progresso de apprendimento.",
-    "centralCourseOfferBody": "Illo es le curso de Pangea pro apprededores de {language}. Su membros pote vider tu nomine e profilo.",
-    "centralCourseOfferTitle": "Unir te a {course}?",
-    "makeMyOwnCourseInstead": "Crear mi proprie curso in vice",
     "suggestMobileSignInSameAccount": "Postea aperi un session in le app con iste conto.",
     "botJoinsIn": "Pangea Bot se junge in {duration}",
     "botIsJoining": "Pangea Bot se junge…",
@@ -10993,5 +10978,11 @@
     "playWithBotNowMessage": "Nemo ha ancora jungite. Pangea Bot pote prender le sede vacante ora, o tu pote continuar a attender.",
     "keepWaiting": "Continuar a attender",
     "botTookSeatAfterAnHour": "Iste session esseva aperte pro un hora, dunque Pangea Bot prendeva le sede vacante.",
-    "botTookSeatAfterADay": "Iste session esseva aperte pro plus de un die, dunque Pangea Bot prendeva le sede vacante. Invia un message pro initiar."
+    "botTookSeatAfterADay": "Iste session esseva aperte pro plus de un die, dunque Pangea Bot prendeva le sede vacante. Invia un message pro initiar.",
+    "subscriptionGracePeriodEndsOn": "Pagamento fallite. Periodo de gratia fini le {date}",
+    "changeBaseLanguageTitle": "Cambiar lingua de base?",
+    "changeBaseLanguageDesc": "Le menus e buttones del app cambiara a {language}.",
+    "accountSetupFailedHelp": "Nos non poteva completar le configuration de tu conto. Verifica tu connexion e reprova, o disconecta e reconnecta plus tarde.",
+    "onboardingOfflineError": "Tu es offline. Reprova quando tu es de nove connectite.",
+    "activitySavedTo": "Activitate salvate a {page}"
 }

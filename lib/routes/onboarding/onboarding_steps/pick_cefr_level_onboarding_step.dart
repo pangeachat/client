@@ -1,5 +1,4 @@
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/routes/onboarding/onboarding_steps/central_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
@@ -29,22 +28,31 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
       throw StateError("Pick cefr level step is not fully set up");
     }
 
-    await state.accountUpdater.updateProfile((profile) {
-      return profile.copyWith(
-        userSettings: profile.userSettings.copyWith(cefrLevel: level),
-      );
-    });
-
-    // A joined course ends onboarding on the joined-course page, and for a
-    // teacher it takes the place of the course request — they already have a
-    // course. See joining-courses.instructions.md.
-    if (state.joinedRoomId != null) {
-      return JoinedCourseOnboardingStep.next(client: client, state: state);
+    // A failed save doesn't stop onboarding: an unfinished run resumes on this
+    // page, so stopping here could keep the person out of the app on every
+    // open (onboarding.instructions.md § What onboarding reads and saves).
+    try {
+      await state.accountUpdater.updateProfile((profile) {
+        return profile.copyWith(
+          userSettings: profile.userSettings.copyWith(cefrLevel: level),
+        );
+      });
+      await markLevelSaved();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'level': level.string});
     }
 
-    if (type == UserType.student) {
-      final central = await _centralCourseStep();
-      if (central != null) return central;
+    return nextStep(type);
+  }
+
+  /// The page after this one, or null when onboarding ends here. A resumed run
+  /// asks too, to open past a level that is already saved.
+  OnboardingStep? nextStep(UserType type) {
+    // A joined course ends onboarding on the joined-course page, and for a
+    // teacher it takes the place of the course request — they already have a
+    // course. See onboarding.instructions.md.
+    if (state.joinedRoomId != null) {
+      return JoinedCourseOnboardingStep.next(client: client, state: state);
     }
 
     return switch (type) {
@@ -56,43 +64,13 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
                 maxRemainingSteps: maxRemainingSteps,
               )
             : null,
+      // The trial page can follow, so the request's button says Next then.
       UserType.teacher => CustomCourseOnboardingStep(
         client: client,
         state: state,
-        maxRemainingSteps: 0,
+        maxRemainingSteps: state.trialInfoProvider.shouldShowTrialPage ? 1 : 0,
       ),
     };
-  }
-
-  /// A learner who didn't join with a class code is offered their language's
-  /// central course next. With none, or a failed lookup, they get a course of
-  /// their own with no plan, which a later app open repairs; it has nothing
-  /// to show yet, so onboarding still ends on the map. See
-  /// joining-courses.instructions.md § The central course.
-  Future<OnboardingStep?> _centralCourseStep() async {
-    final language = state.targetLanguage?.langCodeShort;
-    if (language == null) return null;
-    final central = await state.courseProvider.centralCourseFor(language);
-    if (central != null) {
-      return CentralCourseOnboardingStep(
-        client: client,
-        state: state,
-        central: central,
-        plan: await state.courseProvider.getCourse(central.courseId),
-        language: language,
-        maxRemainingSteps: state.trialInfoProvider.shouldShowTrialPage ? 1 : 0,
-      );
-    }
-    if (state.ownCourseRoomId != null) return null;
-    try {
-      state.setOwnCourseRoomId(
-        await state.courseProvider.createOwnCourse(language: language),
-      );
-    } catch (e, s) {
-      // Onboarding goes on; the app-open check makes the course instead.
-      ErrorHandler.logError(e: e, s: s, data: {'target_language': language});
-    }
-    return null;
   }
 
   @override

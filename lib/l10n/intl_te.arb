@@ -1249,13 +1249,11 @@
     "editCourseLater": "మీరు టెంప్లేట్ శీర్షిక, వివరణలు, మరియు కోర్సు చిత్రాన్ని తర్వాత సవరించవచ్చు.",
     "createCourse": "కోర్సు సృష్టించండి",
     "stats": "గణాంకాలు",
-    "createGroupChat": "గుంపు చాట్ సృష్టించండి",
     "editCourse": "కోర్సును సవరించండి",
     "inviteDesc": "యూజర్‌నేమ్, కోడ్ లేదా లింక్ ద్వారా",
     "editCourseDesc": "ఇక్కడ మీరు కోర్సు శీర్షిక, వివరణ, మొదలైనవి సవరించవచ్చు.",
     "permissionsDesc": "అనుమతులను సెట్ చేయండి, ఉదాహరణకు ఎవరు యూజర్లను ఆహ్వానించగలరు, సందేశాలు పంపగలరు, చాట్‌లు సృష్టించగలరు, మొదలైనవి.",
     "accessDesc": "మీ కోర్సును ప్రపంచానికి తెరవవచ్చు! లేదా, మీ కోర్సును ప్రైవేట్ చేసి భద్రపరచవచ్చు.",
-    "createGroupChatDesc": "అభ్యాస సెషన్లు ప్రారంభమై ముగిసే సమయంలో, గుంపు చాట్‌లు సాధారణ కమ్యూనికేషన్ కోసం తెరవబడతాయి.",
     "deleteDesc": "కేవలం అడ్మిన్లు మాత్రమే కోర్సును తొలగించగలరు. ఇది ఒక ధ్వంసక చర్యగా ఉంటుంది, ఇది అన్ని వినియోగదారులను తొలగిస్తుంది మరియు కోర్సులోని అన్ని ఎంపిక చేసిన చాట్‌లను డిలీట్ చేస్తుంది. జాగ్రత్తగా ముందుకు పోవండి.",
     "whatNow": "ఇప్పుడు ఏమి చేయాలి?",
     "chooseNextActivity": "మీ తదుపరి కార్యకలాపాన్ని ఎంచుకోండి!",
@@ -1317,7 +1315,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-10-27 14:57:22.552803",
+    "@@last_modified": "2026-11-06 13:11:06.610862",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6844,10 +6842,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6865,10 +6859,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10984,9 +10974,7 @@
     "readAloudTake": "టేక్ {number}",
     "videoWontPlayHere": "ఈ వీడియో ఇక్కడ ప్లే అవదు.",
     "watchOnYoutube": "YouTubeలో చూడండి",
-    "createMyOwnCourse": "నా స్వంత కోర్సును సృష్టించండి",
     "xpTowardMission": "ఈ మిషన్ కోసం {xp} XP",
-    "centralCourseMembersSeeYou": "ఈ కోర్సు సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
     "practiceStartWordCount": "{count, plural, =1{అభ్యాసం చేయడానికి పదం} other{అభ్యాసం చేయడానికి పదాలు}}",
     "practiceStartGrammarCount": "{count, plural, =1{అభ్యాసం చేయడానికి వ్యాకరణ అంశం} other{అభ్యాసం చేయడానికి వ్యాకరణ అంశాలు}}",
     "practiceStartExerciseTypes": "అభ్యాస రకాలు",
@@ -10997,9 +10985,6 @@
     "sharedAnalyticsOthersTitle": "మీ పురోగతిని చూడగలిగే ఇతరులు",
     "removeAnalyticsAccess": "యాక్సెస్‌ను తీసివేయండి",
     "removeAnalyticsAccessDesc": "{name} మీ అభ్యాస పురోగతిని ఇకపై చూడలేరు.",
-    "centralCourseOfferBody": "ఇది {language} నేర్చుకునే వారి కోసం పాంగేయా కోర్సు. దీని సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
-    "centralCourseOfferTitle": "{course}లో చేరతారా?",
-    "makeMyOwnCourseInstead": "బదులుగా నా స్వంత కోర్సును సృష్టించు",
     "suggestMobileSignInSameAccount": "ఆపై ఈ ఖాతాతో యాప్‌లోకి సైన్ ఇన్ చేయండి.",
     "botJoinsIn": "పాంగియా బాట్ {duration}లో చేరుతుంది",
     "botIsJoining": "పాంగియా బాట్ చేరుతోంది…",
@@ -11007,5 +10992,11 @@
     "playWithBotNowMessage": "ఇంకా ఎవరూ చేరలేదు. పాంగియా బాట్ ఇప్పుడు ఖాళీ స్థానాన్ని తీసుకోవచ్చు లేదా మీరు వేచి ఉండవచ్చు.",
     "keepWaiting": "వేచి ఉండండి",
     "botTookSeatAfterAnHour": "ఈ సెషన్ ఒక గంట పాటు తెరిచి ఉంది, కాబట్టి పాంగియా బాట్ ఖాళీ స్థానాన్ని తీసుకుంది.",
-    "botTookSeatAfterADay": "ఈ సెషన్ ఒక రోజుకు పైగా తెరిచి ఉంది, కాబట్టి పాంగియా బాట్ ఖాళీ స్థానాన్ని తీసుకుంది. ప్రారంభించడానికి సందేశం పంపండి."
+    "botTookSeatAfterADay": "ఈ సెషన్ ఒక రోజుకు పైగా తెరిచి ఉంది, కాబట్టి పాంగియా బాట్ ఖాళీ స్థానాన్ని తీసుకుంది. ప్రారంభించడానికి సందేశం పంపండి.",
+    "subscriptionGracePeriodEndsOn": "చెల్లింపు విఫలమైంది. గ్రేస్ పీరియడ్ {date}న ముగుస్తుంది",
+    "changeBaseLanguageTitle": "ప్రాథమిక భాషను మార్చాలా?",
+    "changeBaseLanguageDesc": "యాప్ మెనూలు మరియు బటన్‌లు {language}కి మారుతాయి.",
+    "accountSetupFailedHelp": "మేము మీ ఖాతాను సెటప్ చేయలేకపోయాము. మీ కనెక్షన్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి లేదా లాగ్ అవుట్ చేసి తర్వాత సైన్ ఇన్ చేయండి.",
+    "onboardingOfflineError": "మీరు ఆఫ్‌లైన్‌లో ఉన్నారు. ఆన్‌లైన్‌లోకి వచ్చిన తర్వాత మళ్లీ ప్రయత్నించండి.",
+    "activitySavedTo": "కార్యకలాపం {page}లో సేవ్ చేయబడింది"
 }

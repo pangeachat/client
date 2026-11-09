@@ -10,7 +10,8 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_video_keyboard
 /// carousel cell. The timeline's [EventVideoPlayer] is bound to a Matrix event
 /// and downloads/decrypts its bytes; an activity-media block instead carries a
 /// plain resolved URL, so this takes a URL and exposes [autoPlay]/[muted] for
-/// the deep-link "start muted, tap to unmute" case.
+/// the deep-link "start muted, tap to unmute" case, which no surface reaches
+/// today (`ActivityMediaCarousel.autoplayIndex`).
 ///
 /// Each instance holds a live decoder, so only the carousel's active page
 /// should mount one — siblings stay thumbnails.

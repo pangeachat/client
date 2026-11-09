@@ -9,6 +9,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_shared_player_tracker.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/subscription/widgets/locked_preview_banner.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -293,6 +295,11 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   StreamController<Duration>? _positionBridge;
   StreamController<bool>? _playingBridge;
   AudioPlayer? _observedPlayer;
+
+  /// The listening measurement of the merged recording, alive as long as the
+  /// observation of its player. Merged playback does not go through an
+  /// [AudioPlayerWidget], so it measures here, on the same tracker.
+  DosageSharedPlayerTracker? _mergedListening;
   StreamSubscription<Duration>? _observedPositionSub;
   StreamSubscription<PlayerState>? _observedStateSub;
 
@@ -1360,9 +1367,37 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     _observedPositionSub = player.positionStream.listen(
       (position) => _positionBridge?.add(position),
     );
-    _observedStateSub = player.playerStateStream.listen(
-      (state) => _playingBridge?.add(state.playing),
-    );
+    final matrix = _matrix;
+    final owner = matrix?.voiceMessageEventId.value;
+    final listening = _mergedListening = matrix == null || owner == null
+        ? null
+        : DosageSharedPlayerTracker(
+            category: DosageListeningCategory.callRecording,
+            roomId: widget.room.id,
+            ownerId: owner,
+            userId: () => widget.room.client.userID,
+            accessToken: () => widget.room.client.accessToken,
+          );
+    matrix?.voiceMessageEventId.addListener(_onMergedListeningOwnership);
+    _observedStateSub = player.playerStateStream.listen((state) {
+      _playingBridge?.add(state.playing);
+      listening?.update(
+        playing: state.playing,
+        completed: state.processingState == ProcessingState.completed,
+        currentOwnerId: matrix?.voiceMessageEventId.value,
+      );
+    });
+  }
+
+  /// Ends the merged recording's measurement when another surface takes the
+  /// shared player. Registered with the observation, because it has to hold with
+  /// no [CallPlaybackController], whose own listener is [_onVoiceOwnershipChanged].
+  void _onMergedListeningOwnership() {
+    final listening = _mergedListening;
+    if (listening == null) return;
+    if (_matrix?.voiceMessageEventId.value != listening.ownerId) {
+      listening.close();
+    }
   }
 
   void _detachObservation() {
@@ -1371,6 +1406,9 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     _observedStateSub?.cancel();
     _observedStateSub = null;
     _observedPlayer = null;
+    _matrix?.voiceMessageEventId.removeListener(_onMergedListeningOwnership);
+    _mergedListening?.close();
+    _mergedListening = null;
   }
 
   /// Claims the shared player for the merged recording and loads its source
@@ -2213,6 +2251,10 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
           eventId: recording.eventId,
           roomId: widget.room.id,
           senderId: recording.senderId,
+          listeningCategory: DosageListeningCategory.forCallRecording(
+            senderId: recording.senderId,
+            ownUserId: widget.room.client.userID,
+          ),
         ),
         const SizedBox(height: 12),
       ],

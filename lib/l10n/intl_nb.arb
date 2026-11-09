@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:20.054852",
+    "@@last_modified": "2026-11-06 13:11:03.742442",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3370,13 +3370,11 @@
     "editCourseLater": "Du kan redigere malens tittel, beskrivelser og kursbilde senere.",
     "createCourse": "Opprett kurs",
     "stats": "Statistikk",
-    "createGroupChat": "Opprett gruppechat",
     "editCourse": "Rediger kurs",
     "inviteDesc": "Med brukernavn, kode eller lenke",
     "editCourseDesc": "Her kan du redigere kursnavn, beskrivelse, osv.",
     "permissionsDesc": "Sett tillatelser som hvem som kan invitere brukere, sende meldinger, opprette chatter, osv.",
     "accessDesc": "Du kan gjøre kurset ditt åpent for alle! Eller, gjør kurset ditt privat og sikkert.",
-    "createGroupChatDesc": "Mens aktivitetsøkter starter og slutter, vil gruppechatter forbli åpne for rutinemessig kommunikasjon.",
     "deleteDesc": "Bare administratorer kan slette et kurs. Dette er en ødeleggende handling som fjerner alle brukere og sletter alle valgte chatter innen kurset. Vær forsiktig.",
     "whatNow": "Hva nå?",
     "chooseNextActivity": "Velg din neste aktivitet!",
@@ -6133,10 +6131,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6154,10 +6148,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10094,9 +10084,7 @@
     "readAloudTake": "Opptak {number}",
     "videoWontPlayHere": "Denne videoen kan ikke spilles av her.",
     "watchOnYoutube": "Se på YouTube",
-    "createMyOwnCourse": "Lag mitt eget kurs",
     "xpTowardMission": "{xp} XP mot dette oppdraget",
-    "centralCourseMembersSeeYou": "Medlemmer av dette kurset kan se navnet og profilen din.",
     "practiceStartWordCount": "{count, plural, =1{ord å øve på} other{ord å øve på}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatikkpunkt å øve på} other{grammatikkpunkter å øve på}}",
     "practiceStartExerciseTypes": "Øvelsestyper",
@@ -10107,9 +10095,6 @@
     "sharedAnalyticsOthersTitle": "Andre som kan se fremgangen din",
     "removeAnalyticsAccess": "Fjern tilgang",
     "removeAnalyticsAccessDesc": "{name} vil ikke lenger kunne se læringsfremgangen din.",
-    "centralCourseOfferBody": "Det er Pangeas kurs for {language}-elever. Medlemmene kan se navnet og profilen din.",
-    "centralCourseOfferTitle": "Bli med på {course}?",
-    "makeMyOwnCourseInstead": "Lag mitt eget kurs i stedet",
     "suggestMobileSignInSameAccount": "Logg deretter på appen med denne kontoen.",
     "botJoinsIn": "Pangea Bot blir med om {duration}",
     "botIsJoining": "Pangea Bot blir med…",
@@ -10117,5 +10102,11 @@
     "playWithBotNowMessage": "Ingen har blitt med ennå. Pangea Bot kan ta den ledige plassen nå, eller du kan fortsette å vente.",
     "keepWaiting": "Fortsett å vente",
     "botTookSeatAfterAnHour": "Denne økten var åpen i en time, så Pangea Bot tok den ledige plassen.",
-    "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea Bot tok den ledige plassen. Send en melding for å starte."
+    "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea Bot tok den ledige plassen. Send en melding for å starte.",
+    "subscriptionGracePeriodEndsOn": "Betaling mislyktes. Utsatt betalingsperiode avsluttes {date}",
+    "changeBaseLanguageTitle": "Endre grunnspråk?",
+    "changeBaseLanguageDesc": "Appens menyer og knapper vil bytte til {language}.",
+    "accountSetupFailedHelp": "Vi kunne ikke fullføre oppsettet av kontoen din. Sjekk tilkoblingen din og prøv igjen, eller logg ut og logg inn senere.",
+    "onboardingOfflineError": "Du er frakoblet. Prøv igjen når du er på nett.",
+    "activitySavedTo": "Aktivitet lagret i {page}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-10-27 14:57:14.586310",
+    "@@last_modified": "2026-11-06 13:10:59.084234",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3933,13 +3933,11 @@
     "editCourseLater": "Puedes editar el título, las descripciones y la imagen del curso más tarde.",
     "createCourse": "Crear curso",
     "stats": "Estadísticas",
-    "createGroupChat": "Crear chat grupal",
     "editCourse": "Editar curso",
     "inviteDesc": "Por nombre de usuario, por código o enlace",
     "editCourseDesc": "Aquí puedes editar el título, la descripción, etc., del curso.",
     "permissionsDesc": "Configura permisos como quién puede invitar usuarios, enviar mensajes, crear chats, etc.",
     "accessDesc": "¡Puedes hacer que tu curso sea abierto al mundo! O, hacer que tu curso sea privado y seguro.",
-    "createGroupChatDesc": "Mientras que las sesiones de actividad comienzan y terminan, los chats grupales permanecerán abiertos para la comunicación rutinaria.",
     "deleteDesc": "Solo los administradores pueden eliminar un curso. Esta es una acción destructiva que elimina a todos los usuarios y elimina todos los chats seleccionados dentro del curso. Procede con precaución.",
     "whatNow": "¿Y ahora?",
     "chooseNextActivity": "¡Elige tu próxima actividad!",
@@ -4185,10 +4183,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -4206,10 +4200,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8266,9 +8256,7 @@
     "readAloudTake": "Toma {number}",
     "videoWontPlayHere": "Este video no se puede reproducir aquí.",
     "watchOnYoutube": "Ver en YouTube",
-    "createMyOwnCourse": "Crear mi propio curso",
     "xpTowardMission": "{xp} XP para esta misión",
-    "centralCourseMembersSeeYou": "Los miembros de este curso pueden ver tu nombre y perfil.",
     "practiceStartWordCount": "{count, plural, =1{palabra para practicar} other{palabras para practicar}}",
     "practiceStartGrammarCount": "{count, plural, =1{punto gramatical para practicar} other{puntos gramaticales para practicar}}",
     "practiceStartExerciseTypes": "Tipos de ejercicio",
@@ -8279,9 +8267,6 @@
     "sharedAnalyticsOthersTitle": "Otros que pueden ver tu progreso",
     "removeAnalyticsAccess": "Quitar acceso",
     "removeAnalyticsAccessDesc": "{name} ya no podrá ver tu progreso de aprendizaje.",
-    "centralCourseOfferBody": "Es el curso de Pangea para estudiantes de {language}. Sus miembros pueden ver tu nombre y perfil.",
-    "centralCourseOfferTitle": "¿Unirse a {course}?",
-    "makeMyOwnCourseInstead": "Crear mi propio curso",
     "suggestMobileSignInSameAccount": "Luego inicia sesión en la aplicación con esta cuenta.",
     "botJoinsIn": "Pangea Bot se une en {duration}",
     "botIsJoining": "Pangea Bot se está uniendo…",
@@ -8289,5 +8274,11 @@
     "playWithBotNowMessage": "Nadie se ha unido todavía. Pangea Bot puede ocupar el asiento ahora, o puedes seguir esperando.",
     "keepWaiting": "Seguir esperando",
     "botTookSeatAfterAnHour": "Esta sesión estuvo abierta durante una hora, así que Pangea Bot ocupó el asiento.",
-    "botTookSeatAfterADay": "Esta sesión estuvo abierta durante más de un día, así que Pangea Bot ocupó el asiento. Envía un mensaje para empezar."
+    "botTookSeatAfterADay": "Esta sesión estuvo abierta durante más de un día, así que Pangea Bot ocupó el asiento. Envía un mensaje para empezar.",
+    "subscriptionGracePeriodEndsOn": "Error de pago. El período de gracia termina el {date}",
+    "changeBaseLanguageTitle": "¿Cambiar idioma base?",
+    "changeBaseLanguageDesc": "Los menús y botones de la aplicación cambiarán a {language}.",
+    "accountSetupFailedHelp": "No pudimos terminar de configurar tu cuenta. Revisa tu conexión e inténtalo de nuevo, o cierra sesión y vuelve a iniciarla más tarde.",
+    "onboardingOfflineError": "Estás desconectado. Inténtalo de nuevo cuando tengas conexión.",
+    "activitySavedTo": "Actividad guardada en {page}"
 }

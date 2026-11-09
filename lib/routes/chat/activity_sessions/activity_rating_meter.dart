@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
-/// The activity plan page's rating indicator, top-right of the header per the
-/// #7194/#7993 designs: a NEW pill while the activity has fewer than
-/// [kNewRatingThreshold] ratings, then a pill carrying a thumbs-up icon and the
-/// up-percentage, tinted between the scheme's error container (all thumbs down)
-/// and its secondary container (all thumbs up) — light red to light purple under
-/// the default seed. The thumb — not a ring or dial — is what reads as "share of
-/// thumbs up" (#8088): a ring at 0% looked like an empty progress meter rather
-/// than an all-negative rating. This is the ONLY surface that shows the
-/// badge/meter — map pins and cards carry neither (the rating enters the map
-/// solely as a score term; world-map.instructions.md).
+/// The activity plan page's rating indicator, at the end of the start page's
+/// info row (`_ActivityStartInfoRow`), per the #7194/#7993 designs: a NEW pill
+/// while the activity has fewer than [kNewRatingThreshold] ratings, then a pill
+/// carrying a thumbs-up icon and the up-percentage, tinted between the scheme's
+/// error container (all thumbs down) and its secondary container (all thumbs
+/// up) — light red to light purple under the default seed. The thumb — not a
+/// ring or dial — is what reads as "share of thumbs up" (#8088): a ring at 0%
+/// looked like an empty progress meter rather than an all-negative rating. This
+/// is the ONLY surface that shows the badge/meter — map pins and cards carry
+/// neither (the rating enters the map solely as a score term;
+/// activity-start-page.instructions.md, "The top of the page").
 class ActivityRatingMeter extends StatelessWidget {
   /// Up-fraction 0..1, null when the read path didn't carry it.
   final double? average;

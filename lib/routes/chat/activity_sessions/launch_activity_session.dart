@@ -8,6 +8,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
+import 'package:fluffychat/features/activity_sessions/bot_activty_role_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -108,8 +109,8 @@ extension LaunchActivitySession on Client {
         initialState: [
           // Thin reference, not the embedded plan: the body stays canonical in
           // CMS and is fetched live per-viewer. Pin the version at creation so
-          // scoring is stable against later owner edits. See
-          // activities.instructions.md.
+          // scoring is stable against later owner edits. See org
+          // activities.instructions.md, "Editing semantics".
           StateEvent(
             type: PangeaEventTypes.activityPlan,
             content: {
@@ -258,12 +259,16 @@ extension LaunchActivitySession on Client {
     try {
       await inviteUser(roomID, BotName.byEnvironment);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'roomId': roomID},
-        level: SentryLevel.warning,
-      );
+      // silent-ok: a refusal because the bot already joined (the play-with-bot
+      // dialog invited it first) means the invite's work is done.
+      if (!isBotAlreadyJoinedRefusal(e, BotName.byEnvironment)) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {'roomId': roomID},
+          level: SentryLevel.warning,
+        );
+      }
     }
   }
 }

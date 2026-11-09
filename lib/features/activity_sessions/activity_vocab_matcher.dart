@@ -1,8 +1,8 @@
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 
 /// Where an activity's target vocab appears in one message — the one rule the
-/// gold highlight and the used-vocab chips share (activities.instructions.md,
-/// "Target vocab in the conversation").
+/// gold highlight and the used-vocab chips share
+/// (activity-session.instructions.md, "Target vocab in the conversation").
 ///
 /// [vocabLemmas] is the plan's lower-cased entry set (`vocabLemmas` on the
 /// activity plan); an entry containing whitespace is a phrase. A single-word

@@ -200,12 +200,9 @@ abstract class WorkspaceNav {
     }, (right) => right.where((t) => !_areSiblings(token, t)).toList());
   }
 
-  /// Open a vocab/grammar construct detail (the `detail` group): drops the
-  /// other construct detail and any `session`, ensures its pinned `analytics`
-  /// summary master exists (seated at [summaryTab] from a cold start), and
-  /// appends the detail after it — master-first canonical order, with the
-  /// renderer blooming the detail to the left of the edge-justified master. See
-  /// `routing.instructions.md`.
+  /// Open a vocab/grammar construct detail beside its `analytics` summary
+  /// master, seated on [view]'s tab from a cold start. See
+  /// [_openAnalyticsDetail].
   static String openConstructDetail(
     Uri current,
     ConstructTypeEnum view, {
@@ -218,26 +215,7 @@ abstract class WorkspaceNav {
         : GrammarAnalyticsPanelToken(
             GrammarAnalyticsTokenParam(constructId: constructId),
           );
-
-    return _mutateBoth(
-      current,
-      (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
-      (right) {
-        final next = right
-            .where((t) => t != detail && !_areSiblings(detail, t))
-            .toList();
-
-        if (!next.any((t) => t.type == PanelTypesEnum.analytics)) {
-          next.insert(
-            0,
-            AnalyticsPanelToken(AnalyticsTokenParam(subpage: view.indicator)),
-          );
-        }
-
-        next.add(detail);
-        return next;
-      },
-    );
+    return _openAnalyticsDetail(current, detail, masterTab: view.indicator);
   }
 
   /// Pick the Mission the course card, its collapsed header and the course
@@ -250,44 +228,64 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(current.path, parts);
   }
 
-  /// Open a Learning Objective's detail beside the Learning Objectives list —
-  /// [openConstructDetail]'s twin: drops any other detail across columns,
-  /// seats the list (the analytics `activities` master) on a cold start, and
-  /// appends `objective:<missionId>` after it. [courseId] is the course it
-  /// was opened from, so the detail shows that course's numbers (#9559).
+  /// Open a Learning Objective's detail beside the Learning Objectives list
+  /// (the analytics `activities` master). [courseId] is the course it was
+  /// opened from, so the detail shows that course's numbers (#9559). See
+  /// [_openAnalyticsDetail].
   static String openObjectiveDetail(
     Uri current,
     String missionId, {
     String? courseId,
-  }) {
-    final PanelToken detail = ObjectivePanelToken(
+  }) => _openAnalyticsDetail(
+    current,
+    ObjectivePanelToken(
       ObjectiveTokenParam(missionId: missionId, courseId: courseId),
-    );
-    return _mutateBoth(
-      current,
-      (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
-      (right) {
-        final next = right
-            .where((t) => t != detail && !_areSiblings(detail, t))
-            .toList();
-        if (!next.any((t) => t.type == PanelTypesEnum.analytics)) {
-          next.insert(
-            0,
-            const AnalyticsPanelToken(
-              AnalyticsTokenParam(subpage: ProgressIndicatorEnum.activities),
-            ),
-          );
-        }
-        next.add(detail);
-        return next;
-      },
-    );
-  }
+    ),
+    masterTab: ProgressIndicatorEnum.activities,
+  );
+
+  /// Open [detail] after its `analytics` master as the one "zoom" detail
+  /// across columns: drops every sibling (another construct or Mission
+  /// detail, practice, a left `session` review), seats the master on
+  /// [masterTab] from a cold start, and appends the detail — master-first
+  /// canonical order, with the renderer blooming it to the left of the
+  /// edge-justified master. It also closes an open settings menu or page:
+  /// analytics and settings take turns on the right, as [openSettings] closes
+  /// analytics (#9639). See `routing.instructions.md`.
+  static String _openAnalyticsDetail(
+    Uri current,
+    PanelToken detail, {
+    required ProgressIndicatorEnum masterTab,
+  }) => _mutateBoth(
+    current,
+    (left) => left.where((t) => !_areSiblings(detail, t)).toList(),
+    (right) {
+      final next = right
+          .where(
+            (t) =>
+                t != detail &&
+                !_areSiblings(detail, t) &&
+                !t.type.isSettingsPanel,
+          )
+          .toList();
+      if (!next.any((t) => t.type == PanelTypesEnum.analytics)) {
+        next.insert(
+          0,
+          AnalyticsPanelToken(AnalyticsTokenParam(subpage: masterTab)),
+        );
+      }
+      next.add(detail);
+      return next;
+    },
+  );
 
   /// Open a practice session as a right-column panel that **takes over the
   /// analytics surface**: it clears the analytics master and any vocab/grammar
   /// detail on the right (and a left `session` review — practice shares the one
   /// "detail" slot across columns), then seats `practice:<type>` at the front.
+  /// It also closes an open settings menu or page, the mirror of [openSettings]
+  /// closing practice: left open, settings would fold the new practice panel
+  /// behind it (#9639).
   /// While practice is open no vocab/grammar list or detail can be viewed —
   /// opening one drops practice (the registry `detail` group), and tapping the
   /// cluster's analytics replaces the whole right column. Practice is a normal
@@ -304,7 +302,9 @@ abstract class WorkspaceNav {
     current,
     (left) => left.where((t) => t.type != PanelTypesEnum.session).toList(),
     (right) {
-      final next = right.where((t) => !t.type.isAnalyticsPanel).toList();
+      final next = right
+          .where((t) => !t.type.isAnalyticsPanel && !t.type.isSettingsPanel)
+          .toList();
       next.insert(
         0,
         AnalyticsPracticePanelToken(
@@ -398,6 +398,8 @@ abstract class WorkspaceNav {
       // Single-column: a rail section closes an open right panel (peers in
       // the same slot — see setSection's clearRight).
       if (clearRight) 'right',
+      // As in [openCourse]: another course opens on its own current Mission.
+      if (current.queryParameters['c'] != shortRoomId(spaceId)) 'mission',
     });
     final query = <String>[
       'c=${Uri.encodeComponent(shortRoomId(spaceId))}',
@@ -489,11 +491,14 @@ abstract class WorkspaceNav {
   /// starting the session (which opens a `room` token) drops the activity in
   /// turn. The surviving context keeps the plan's close a back-arrow that
   /// reopens the card. [launch] skips the lobby straight to role selection;
-  /// [roomId] reopens/rejoins a specific session room; [autoplay] autostarts
-  /// the plan's hero media (muted, block 0); [fromCoursePlan] marks an open
-  /// from the card's full course plan, so the back-arrow reopens that page —
-  /// all four ride as fields of the activity token's param
-  /// ([ActivityTokenParam]), never as loose query params.
+  /// [roomId] reopens/rejoins a specific session room; [autoplay] asks for
+  /// the hero media (block 0) to start muted, a field nothing reads today
+  /// (see [ActivityTokenParam]); [fromCoursePlan] marks an open
+  /// from the card's full course plan, so the back-arrow reopens that page;
+  /// [fromCourseCard] marks any open from the card, so a session started from
+  /// it closes back to the card (#9632) — all five ride as fields of the
+  /// activity token's param ([ActivityTokenParam]), never as loose query
+  /// params.
   ///
   /// Inbound `/courses/:id?activity=` external links and the standalone
   /// `/<uuid>` link map to this same token form through `legacy_redirects`. The
@@ -506,6 +511,7 @@ abstract class WorkspaceNav {
     String? roomId,
     bool autoplay = false,
     bool fromCoursePlan = false,
+    bool fromCourseCard = false,
   }) {
     final token = ActivityPanelToken(
       ActivityTokenParam(
@@ -514,6 +520,7 @@ abstract class WorkspaceNav {
         launch: launch,
         autoplay: autoplay ? 0 : null,
         fromCoursePlan: fromCoursePlan,
+        fromCourseCard: fromCourseCard,
       ),
     );
 
@@ -523,6 +530,32 @@ abstract class WorkspaceNav {
     ];
 
     return WorkspaceQuery.location(PRoutes.world, parts);
+  }
+
+  /// Start [activityId]'s session from its open plan in course [spaceId]:
+  /// [openCourseActivity] with launch, keeping where the plan was opened from
+  /// and the Mission picked in that course, so the plan's back arrow and the
+  /// session's close still return there (#9632; quests.instructions.md, "The
+  /// Mission on show").
+  static String launchCourseActivity(
+    Uri current,
+    String spaceId,
+    String activityId,
+  ) {
+    final opened = activityInfoFor(current);
+    final launch = openCourseActivity(
+      spaceId,
+      activityId,
+      launch: true,
+      fromCoursePlan: opened?.fromCoursePlan ?? false,
+      fromCourseCard: opened?.fromCourseCard ?? false,
+    );
+    final missionId = current.queryParameters['c'] == shortRoomId(spaceId)
+        ? selectedMissionIdFor(current)
+        : null;
+    return missionId == null
+        ? launch
+        : selectMission(Uri.parse(launch), missionId);
   }
 
   /// Seat [activityId] as the SOLE left `activity:` token over the current
@@ -562,8 +595,8 @@ abstract class WorkspaceNav {
   /// Open session [roomId] of [activityId] INSIDE the activity panel — the
   /// token keeps the activity and binds the room — so a session viewed from
   /// the join list closes with a back arrow to that list rather than an X.
-  /// The course context, if any, is kept, and so is an open from the full
-  /// course plan (#9367).
+  /// The course context, if any, is kept, and so is where the activity was
+  /// opened from (#9367, #9632).
   static String openActivitySession(
     Uri current,
     String activityId,
@@ -577,6 +610,7 @@ abstract class WorkspaceNav {
           activityId: activityId,
           roomId: roomId,
           fromCoursePlan: activityInfoFor(current)?.fromCoursePlan ?? false,
+          fromCourseCard: activityInfoFor(current)?.fromCourseCard ?? false,
           fromJoinList: true,
         ),
       ),
@@ -584,8 +618,8 @@ abstract class WorkspaceNav {
   );
 
   /// Back out of a session viewed inside [activityId]'s panel to the activity
-  /// itself, keeping the course context and an open from the full course plan
-  /// (#9367), so the activity's own back arrow still returns there.
+  /// itself, keeping the course context and where the activity was opened
+  /// from (#9367, #9632), so the activity's own back arrow still returns there.
   static String closeActivitySession(Uri current, String activityId) => _mutate(
     current,
     'left',
@@ -594,6 +628,7 @@ abstract class WorkspaceNav {
         ActivityTokenParam(
           activityId: activityId,
           fromCoursePlan: activityInfoFor(current)?.fromCoursePlan ?? false,
+          fromCourseCard: activityInfoFor(current)?.fromCourseCard ?? false,
         ),
       ),
     ],
@@ -707,6 +742,24 @@ abstract class WorkspaceNav {
 
   static String closeLeft(Uri current, PanelToken token) =>
       _mutate(current, 'left', (tokens) => _remove(tokens, token));
+
+  /// Close the open left room panel [token], dropping only it — unless it is
+  /// a session the course card opened ([RoomTokenParam.fromCourseCard]) and
+  /// the column's only panel. The session took the card's place, so the card
+  /// takes it back, over the surviving `?c=` and on the Mission riding
+  /// `?mission=` (routing.instructions.md → Closing a panel: X or back arrow;
+  /// #9632).
+  static String closeLeftRoom(Uri current, PanelToken token) {
+    final param = token.param;
+    final reopensCourseCard =
+        param is RoomTokenParam &&
+        param.fromCourseCard &&
+        activeSpaceIdFor(current) != null &&
+        parseOpenPanels(current).left.every((t) => t == token);
+    return reopensCourseCard
+        ? setLeft(current, const [CoursePanelToken()])
+        : closeLeft(current, token);
+  }
 
   /// Close a *section* left panel (a course, the chat list, the add-course
   /// wizard), dropping its token while **keeping the map filter** and the rest of

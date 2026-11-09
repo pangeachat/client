@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:22.985551",
+    "@@last_modified": "2026-11-06 13:11:06.293182",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3113,13 +3113,11 @@
     "editCourseLater": "Du kan redigera mallens titel, beskrivningar och kursbild senare.",
     "createCourse": "Skapa kurs",
     "stats": "Statistik",
-    "createGroupChat": "Skapa gruppchatt",
     "editCourse": "Redigera kurs",
     "inviteDesc": "Via användarnamn, kod eller länk",
     "editCourseDesc": "Här kan du redigera kursens titel, beskrivning, etc.",
     "permissionsDesc": "Ställ in behörigheter som vem som kan bjuda in användare, skicka meddelanden, skapa chattar, etc.",
     "accessDesc": "Du kan göra din kurs öppen för världen! Eller, gör din kurs privat och säker.",
-    "createGroupChatDesc": "Medan aktivitetsessioner startar och slutar, förblir gruppchattar öppna för rutinkommunikation.",
     "deleteDesc": "Endast administratörer kan radera en kurs. Detta är en destruktiv åtgärd som tar bort alla användare och raderar alla valda chattar inom kursen. Fortsätt med försiktighet.",
     "whatNow": "Vad nu?",
     "chooseNextActivity": "Välj din nästa aktivitet!",
@@ -6412,10 +6410,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6433,10 +6427,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10552,9 +10542,7 @@
     "readAloudTake": "Ta {number}",
     "videoWontPlayHere": "Den här videon kan inte spelas upp här.",
     "watchOnYoutube": "Titta på YouTube",
-    "createMyOwnCourse": "Skapa min egen kurs",
     "xpTowardMission": "{xp} XP mot detta uppdrag",
-    "centralCourseMembersSeeYou": "Medlemmar i den här kursen kan se ditt namn och din profil.",
     "practiceStartWordCount": "{count, plural, =1{ord att öva} other{ord att öva}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatikpunkt att öva} other{grammatikpunkter att öva}}",
     "practiceStartExerciseTypes": "Övningstyper",
@@ -10565,9 +10553,6 @@
     "sharedAnalyticsOthersTitle": "Andra som kan se dina framsteg",
     "removeAnalyticsAccess": "Ta bort åtkomst",
     "removeAnalyticsAccessDesc": "{name} kommer inte längre att kunna se dina inlärningsframsteg.",
-    "centralCourseOfferBody": "Det är Pangeas kurs för {language}-elever. Dess medlemmar kan se ditt namn och din profil.",
-    "centralCourseOfferTitle": "Gå med i {course}?",
-    "makeMyOwnCourseInstead": "Skapa min egen kurs istället",
     "suggestMobileSignInSameAccount": "Logga sedan in i appen med det här kontot.",
     "botJoinsIn": "Pangea Bot ansluter om {duration}",
     "botIsJoining": "Pangea Bot ansluter…",
@@ -10575,5 +10560,11 @@
     "playWithBotNowMessage": "Ingen har anslutit än. Pangea Bot kan ta den lediga platsen nu, eller så kan du fortsätta vänta.",
     "keepWaiting": "Fortsätt vänta",
     "botTookSeatAfterAnHour": "Den här sessionen var öppen i en timme, så Pangea Bot tog den lediga platsen.",
-    "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja."
+    "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja.",
+    "subscriptionGracePeriodEndsOn": "Betalningen misslyckades. Anståndsperioden slutar {date}",
+    "changeBaseLanguageTitle": "Byta basspråk?",
+    "changeBaseLanguageDesc": "Appens menyer och knappar kommer att byta till {language}.",
+    "accountSetupFailedHelp": "Vi kunde inte slutföra installationen av ditt konto. Kontrollera din anslutning och försök igen, eller logga ut och logga in senare.",
+    "onboardingOfflineError": "Du är offline. Försök igen när du är online igen.",
+    "activitySavedTo": "Aktivitet sparad i {page}"
 }

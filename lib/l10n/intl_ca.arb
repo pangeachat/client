@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:13.560671",
+    "@@last_modified": "2026-11-06 13:10:58.134053",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3353,13 +3353,11 @@
     "editCourseLater": "Pots editar el títol de la plantilla, les descripcions i la imatge del curs més tard.",
     "createCourse": "Crear curs",
     "stats": "Estadístiques",
-    "createGroupChat": "Crear xat de grup",
     "editCourse": "Editar curs",
     "inviteDesc": "Per nom d'usuari, per codi o enllaç",
     "editCourseDesc": "Aquí pots editar el títol del curs, la descripció, etc.",
     "permissionsDesc": "Estableix permisos com qui pot convidar usuaris, enviar missatges, crear xats, etc.",
     "accessDesc": "Pots fer que el teu curs sigui obert al món! O bé, fer que el teu curs sigui privat i segur.",
-    "createGroupChatDesc": "Mentre que les sessions d'activitat comencen i acaben, els xats de grup romandran oberts per a la comunicació rutinària.",
     "deleteDesc": "Només els administradors poden eliminar un curs. Aquesta és una acció destructiva que elimina tots els usuaris i elimina tots els xats seleccionats dins del curs. Procedeix amb precaució.",
     "whatNow": "I ara què?",
     "chooseNextActivity": "Tria la teva propera activitat!",
@@ -6024,10 +6022,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6045,10 +6039,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10164,9 +10154,7 @@
     "readAloudTake": "Presa {number}",
     "videoWontPlayHere": "Aquest vídeo no es pot reproduir aquí.",
     "watchOnYoutube": "Mira'l a YouTube",
-    "createMyOwnCourse": "Crear el meu propi curs",
     "xpTowardMission": "{xp} XP per a aquesta missió",
-    "centralCourseMembersSeeYou": "Els membres d'aquest curs poden veure el teu nom i perfil.",
     "practiceStartWordCount": "{count, plural, =1{paraula per practicar} other{paraules per practicar}}",
     "practiceStartGrammarCount": "{count, plural, =1{punt gramatical per practicar} other{punts gramaticals per practicar}}",
     "practiceStartExerciseTypes": "Tipus d'exercici",
@@ -10177,9 +10165,6 @@
     "sharedAnalyticsOthersTitle": "Altres que poden veure el teu progrés",
     "removeAnalyticsAccess": "Eliminar accés",
     "removeAnalyticsAccessDesc": "{name} ja no podrà veure el teu progrés d'aprenentatge.",
-    "centralCourseOfferBody": "És el curs de Pangea per a aprenents de {language}. Els seus membres poden veure el teu nom i perfil.",
-    "centralCourseOfferTitle": "Unir-me a {course}?",
-    "makeMyOwnCourseInstead": "Crear el meu propi curs",
     "suggestMobileSignInSameAccount": "Després, inicia sessió a l'aplicació amb aquest compte.",
     "botJoinsIn": "El bot Pangea s'uneix en {duration}",
     "botIsJoining": "El bot Pangea s'està unint…",
@@ -10187,5 +10172,11 @@
     "playWithBotNowMessage": "Encara no s'ha unit ningú. El bot Pangea pot ocupar el seient lliure ara, o pots seguir esperant.",
     "keepWaiting": "Seguir esperant",
     "botTookSeatAfterAnHour": "Aquesta sessió ha estat oberta durant una hora, així que el bot Pangea ha ocupat el seient lliure.",
-    "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar."
+    "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar.",
+    "subscriptionGracePeriodEndsOn": "El pagament ha fallat. El període de gràcia finalitza el {date}",
+    "changeBaseLanguageTitle": "Canviar idioma base?",
+    "changeBaseLanguageDesc": "Els menús i botons de l'aplicació canviaran a {language}.",
+    "accountSetupFailedHelp": "No hem pogut acabar de configurar el teu compte. Comprova la teva connexió i torna-ho a provar, o tanca la sessió i torna a iniciar-la més tard.",
+    "onboardingOfflineError": "No tens connexió. Torna-ho a provar quan estiguis en línia.",
+    "activitySavedTo": "Activitat desada a {page}"
 }

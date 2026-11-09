@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-27 14:57:14.663799",
+    "@@last_modified": "2026-11-06 13:10:58.891344",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3470,13 +3470,11 @@
     "editCourseLater": "Eman dezakezu geroago txantiloiaren izena, deskribapenak eta ikastaroaren irudia editatzeko.",
     "createCourse": "Sortu ikastaroa",
     "stats": "Datuak",
-    "createGroupChat": "Sortu talde txat bat",
     "editCourse": "Editatu ikastaroa",
     "inviteDesc": "Erabiltzaile-izena, kodea edo esteka bidez",
     "editCourseDesc": "Hemen ikastaroaren izena, deskribapena, eta abar editatu ditzakezu",
     "permissionsDesc": "Ezarri baimenak, hala nola nor gonbidatu dezakeen erabiltzaileak, mezularitza bidali, txateak sortu, eta abar",
     "accessDesc": "Zure ikastaroa mundu osoari irekita egin dezakezu! Edo, ikastaroa pribatua eta segurua egin",
-    "createGroupChatDesc": "Ekintza saioak hasten eta bukatzen diren bitartean, talde txat hauek komunikazio erregularrerako irekita egongo dira",
     "deleteDesc": "Administratzaileek bakarrik ezabatu dezakete ikastaroa. Hau ekintza suntsitzailea da, erabiltzaile guztiak ezabatzen ditu eta ikastaroaren barruan aukeratutako txat guztiak ezabatzen ditu. Kontuz ibili",
     "whatNow": "Zer orain?",
     "chooseNextActivity": "Hurrengo jarduera aukeratu!",
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10037,9 +10027,7 @@
     "readAloudTake": "{number}. saiakera",
     "videoWontPlayHere": "Bideo hau ez da hemen erreproduzituko.",
     "watchOnYoutube": "Ikusi YouTuben",
-    "createMyOwnCourse": "Nire ikastaroa sortu",
     "xpTowardMission": "{xp} esperientzia puntu misio honetarako",
-    "centralCourseMembersSeeYou": "Ikastaro honetako kideek zure izena eta profila ikus ditzakete.",
     "practiceStartWordCount": "{count, plural, =1{praktikatzeko hitza} other{praktikatzeko hitzak}}",
     "practiceStartGrammarCount": "{count, plural, =1{praktikatzeko gramatika-puntua} other{praktikatzeko gramatika-puntuak}}",
     "practiceStartExerciseTypes": "Ariketa motak",
@@ -10050,9 +10038,6 @@
     "sharedAnalyticsOthersTitle": "Zure aurrerapena ikus dezaketen beste batzuk",
     "removeAnalyticsAccess": "Kendu sarbidea",
     "removeAnalyticsAccessDesc": "{name}ek ezingo du zure ikaskuntza-aurrerapena ikusi gehiago.",
-    "centralCourseOfferBody": "Pangearen ikastaroa da {language} ikasleentzat. Bertako kideek zure izena eta profila ikus ditzakete.",
-    "centralCourseOfferTitle": "{course} ikastaroan sartu?",
-    "makeMyOwnCourseInstead": "Nire ikastaroa sortu ordez",
     "suggestMobileSignInSameAccount": "Ondoren, hasi saioa aplikazioan kontu honekin.",
     "botJoinsIn": "Pangea Bot {duration} barruan elkartuko da",
     "botIsJoining": "Pangea Bot elkartzen ari da…",
@@ -10060,5 +10045,11 @@
     "playWithBotNowMessage": "Oraindik inor ez da elkartu. Pangea Bot-ek libre dagoen lekua har dezake orain, edo zuk itxaroten jarrai dezakezu.",
     "keepWaiting": "Itxaroten jarraitu",
     "botTookSeatAfterAnHour": "Saio hau ordubetez egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du.",
-    "botTookSeatAfterADay": "Saio hau egun bat baino gehiagoz egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du. Bidali mezu bat hasteko."
+    "botTookSeatAfterADay": "Saio hau egun bat baino gehiagoz egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du. Bidali mezu bat hasteko.",
+    "subscriptionGracePeriodEndsOn": "Ordainketak huts egin du. Tolerantzia-epea {date}an amaituko da",
+    "changeBaseLanguageTitle": "Oinarrizko hizkuntza aldatu?",
+    "changeBaseLanguageDesc": "Aplikazioaren menuak eta botoiak {language} hizkuntzara aldatuko dira.",
+    "accountSetupFailedHelp": "Ezin izan dugu zure kontua konfiguratzen amaitu. Egiaztatu konexioa eta saiatu berriro, edo itxi saioa eta hasi geroago.",
+    "onboardingOfflineError": "Lineaz kanpo zaude. Saiatu berriro konektatuta zaudenean.",
+    "activitySavedTo": "Jarduera {page} honetan gorde da"
 }

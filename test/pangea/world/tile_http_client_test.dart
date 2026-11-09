@@ -8,6 +8,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
+import 'package:fluffychat/features/connection_status/network_probe.dart';
+import 'package:fluffychat/pangea/common/utils/map_tiles.dart';
 import 'package:fluffychat/routes/world/tile_http_client.dart';
 
 /// flutter_test's binding stubs every dart:io `HttpClient` to answer 400
@@ -188,6 +192,53 @@ void main() {
       expect(response.statusCode, 200);
       expect(response.headers['cache-control'], 'max-age=60');
       expect(await response.stream.toBytes(), [1, 2, 3]);
+    });
+  });
+
+  // #9777 — a blocked map's note stayed up after the tiles loaded again,
+  // because no tile answer ever reached the filtered-network check.
+  group('TileHttpClient and a blocked map (#9777)', () {
+    final controller = FilteredNetworkController.instance;
+    late List<String> probedHosts;
+
+    setUp(() {
+      probedHosts = [];
+      controller.probe = (url) async {
+        probedHosts.add(url.host);
+        return NetworkProbeResult.answered;
+      };
+      controller.wait = (_) async {};
+    });
+
+    tearDown(controller.resetForTest);
+
+    test('an answer re-checks the map, which clears it', () async {
+      controller.blocked.value = {NetworkHostCategory.map};
+      final client = TileHttpClient(
+        inner: MockClient((_) async => Response.bytes(const [1], 200)),
+      );
+
+      await client.send(Request('GET', uri));
+      await pumpEventQueue();
+
+      expect(probedHosts, [MapTiles.host]);
+      expect(controller.blocked.value, isEmpty);
+    });
+
+    test('a failed tile re-checks nothing here', () async {
+      controller.blocked.value = {NetworkHostCategory.map};
+      final client = TileHttpClient(
+        inner: MockClient((_) => throw ClientException('Load failed')),
+      );
+
+      await expectLater(
+        client.send(Request('GET', uri)),
+        throwsA(isA<TileConnectionException>()),
+      );
+      await pumpEventQueue();
+
+      expect(probedHosts, isEmpty);
+      expect(controller.blocked.value, {NetworkHostCategory.map});
     });
   });
 }

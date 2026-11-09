@@ -60,7 +60,7 @@ void main() {
         // This suite is about buffering/retry/anchoring MECHANICS, not about
         // which capability flags are on, so the voice-messages capability
         // defaults on here — the steady state once every server ships #150 —
-        // so `voice_send` behaves like the other six categories throughout
+        // so `voice_send` behaves like the other categories throughout
         // and every test below can focus on what it actually probes. Whether
         // `voice_send` coverage is correctly WITHHELD when this capability is
         // off is its own concern, pinned in
@@ -100,6 +100,7 @@ void main() {
           'toolbar_read',
           'word_audio',
           'practice_audio',
+          'call_recording',
           'voice_send',
         });
         expect((bodies.single['events'] as List), isEmpty);
@@ -112,7 +113,7 @@ void main() {
 
     test('a period EXTENDS across flushes rather than minting a new one', () async {
       // The defect this replaced: a fresh period_start every seal banked one new
-      // row per category per flush — seven categories × twelve heartbeats is
+      // row per category per flush — eight categories × twelve heartbeats is
       // eighty-four an hour — and walked into the server's per-day coverage cap
       // within a couple of hours of app-open time, after which the learner's
       // listening counters withheld for the rest of the UTC day.
@@ -130,7 +131,7 @@ void main() {
 
       expect(bodies, hasLength(6));
       // The server banks one row per (category, period_start). Six flushes of
-      // seven categories must still be seven rows, not forty-two.
+      // eight categories must still be eight rows, not forty-eight.
       final rows = bodies
           .expand((b) => (b['coverage'] as List).cast<Map<String, dynamic>>())
           .map((c) => '${c['category']}@${c['period_start']}')
@@ -333,7 +334,7 @@ void main() {
     test('a PARTIAL write does not extend anything either', () async {
       // The count is an aggregate — rows written, not which ones. The server drops
       // individual declarations that hit its per-day coverage cap, so a batch of
-      // seven that reports one written leaves six unaccounted for. Banking on that
+      // eight that reports one written leaves seven unaccounted for. Banking on that
       // would anchor rows the server does not hold.
       final bodies = <Map<String, dynamic>>[];
       final buffer = DosageAudioBuffer(
@@ -346,7 +347,7 @@ void main() {
             jsonEncode({
               'status': 'accepted',
               'playbacks': (body['events'] as List).length,
-              // One of the seven landed; the rest hit the daily cap.
+              // One of the eight landed; the rest hit the daily cap.
               'coverage': declared > 1 ? 1 : declared,
             }),
             202,
@@ -585,6 +586,7 @@ void main() {
         'toolbar_read',
         'word_audio',
         'practice_audio',
+        'call_recording',
       });
       expect(
         declared,
@@ -642,6 +644,7 @@ void main() {
             'toolbar_read',
             'word_audio',
             'practice_audio',
+            'call_recording',
             'voice_send',
           },
         );
@@ -687,7 +690,7 @@ void main() {
       // its declaration landed would have the server serve an undercount as a
       // confident total.
       expect((bodies.single['events'] as List), hasLength(1));
-      expect((bodies.single['coverage'] as List), hasLength(7));
+      expect((bodies.single['coverage'] as List), hasLength(8));
     });
   });
 
@@ -941,7 +944,7 @@ void main() {
       // licensed them. The server then sees an undeclared period and withholds,
       // rather than serving the surviving events as a total.
       for (final batch in buffer.pendingBatches) {
-        expect(batch.coverage, hasLength(7));
+        expect(batch.coverage, hasLength(8));
       }
     });
 
@@ -1233,6 +1236,165 @@ void main() {
           reason: '$status is undelivered, so the batch is retried',
         );
       }
+    });
+
+    group('a server that predates call_recording', () {
+      setUp(DosageSignalsRepo.resetCallRecordingRefusal);
+      tearDown(DosageSignalsRepo.resetCallRecordingRefusal);
+
+      bool mentions(http.Request req) => req.body.contains('call_recording');
+
+      /// An old server's closed vocabulary: the one category 422s the batch.
+      MockClient oldServer(List<Map<String, dynamic>> accepted) =>
+          MockClient((req) async {
+            if (mentions(req)) return http.Response('', 422);
+            final body = jsonDecode(req.body) as Map<String, dynamic>;
+            accepted.add(body);
+            return http.Response(
+              jsonEncode({'coverage': (body['coverage'] as List).length}),
+              202,
+            );
+          });
+
+      test('loses no other category: the body goes again without it', () async {
+        final accepted = <Map<String, dynamic>>[];
+        final result = await DosageSignalsRepo.postAudioSignals(
+          events: [playback(), playback(DosageListeningCategory.callRecording)],
+          coverage: const [],
+          accessToken: token,
+          client: oldServer(accepted),
+        );
+
+        expect(result.delivered, isTrue);
+        expect(accepted.single['events'], hasLength(1));
+        expect((accepted.single['events'] as List).single['category'], 'peer');
+      });
+
+      test('costs one extra POST, not one per heartbeat', () async {
+        var posts = 0;
+        final accepted = <Map<String, dynamic>>[];
+        final server = oldServer(accepted);
+        final counted = MockClient((req) async {
+          posts++;
+          return server.post(req.url, headers: req.headers, body: req.body);
+        });
+        for (var i = 0; i < 3; i++) {
+          await DosageSignalsRepo.postAudioSignals(
+            events: [playback(DosageListeningCategory.callRecording)],
+            coverage: const [],
+            accessToken: token,
+            client: counted,
+          );
+        }
+        expect(
+          posts,
+          1,
+          reason: 'an events-only batch has nothing else to send',
+        );
+        expect(accepted, isEmpty);
+      });
+
+      test('a mixed body is refused once, then goes without it', () async {
+        var posts = 0;
+        final server = oldServer([]);
+        final counted = MockClient((req) async {
+          posts++;
+          return server.post(req.url, headers: req.headers, body: req.body);
+        });
+        for (var i = 0; i < 2; i++) {
+          await DosageSignalsRepo.postAudioSignals(
+            events: [
+              playback(),
+              playback(DosageListeningCategory.callRecording),
+            ],
+            coverage: const [],
+            accessToken: token,
+            client: counted,
+          );
+        }
+        expect(posts, 3, reason: 'refused, sent without it, sent without it');
+      });
+
+      test('a batch of only call recordings is done, not retried', () async {
+        final result = await DosageSignalsRepo.postAudioSignals(
+          events: [playback(DosageListeningCategory.callRecording)],
+          coverage: const [],
+          accessToken: token,
+          client: oldServer([]),
+        );
+        expect(result.delivered, isTrue, reason: 'the room row holds the play');
+      });
+
+      test('a 422 for any other reason refuses nothing', () async {
+        final seen = <String>[];
+        final result = await DosageSignalsRepo.postAudioSignals(
+          events: [playback(), playback(DosageListeningCategory.callRecording)],
+          coverage: const [],
+          accessToken: token,
+          client: MockClient((req) async {
+            seen.add(req.body);
+            return http.Response('', 422);
+          }),
+        );
+        expect(result.delivered, isFalse);
+
+        await DosageSignalsRepo.postAudioSignals(
+          events: [playback(DosageListeningCategory.callRecording)],
+          coverage: const [],
+          accessToken: token,
+          client: MockClient((req) async {
+            seen.add(req.body);
+            return http.Response('', 202);
+          }),
+        );
+        expect(
+          seen.last,
+          contains('call_recording'),
+          reason: 'it was never shown to be the category, so it still goes',
+        );
+      });
+
+      test('a server that knows it takes the whole body', () async {
+        final bodies = <String>[];
+        await DosageSignalsRepo.postAudioSignals(
+          events: [playback(DosageListeningCategory.callRecording)],
+          coverage: const [],
+          accessToken: token,
+          client: MockClient((req) async {
+            bodies.add(req.body);
+            return http.Response('', 202);
+          }),
+        );
+        expect(bodies.single, contains('call_recording'));
+      });
+
+      test(
+        'coverage still extends: every other category keeps its one row',
+        () async {
+          // The count back is short of the batch by the held category. Compared
+          // with the batch, nothing would ever bank, and an old server would be
+          // sent a fresh coverage row per category per heartbeat.
+          final accepted = <Map<String, dynamic>>[];
+          final buffer = DosageAudioBuffer(
+            now: () => clock,
+            httpClient: oldServer(accepted),
+          );
+          buffer.start();
+          for (var i = 0; i < 3; i++) {
+            clock = clock.add(const Duration(minutes: 5));
+            await buffer.flush(accessToken: token);
+          }
+
+          expect(accepted, hasLength(3));
+          final starts = _periodsFor(
+            accepted,
+            'peer',
+          ).map((p) => p.start).toSet();
+          expect(starts, hasLength(1), reason: 'one row, lengthened');
+          expect(_periodsFor(accepted, 'call_recording'), isEmpty);
+          expect(buffer.pendingBatches, isEmpty);
+        },
+      );
     });
 
     test('the written-row count is read off the accepted response', () async {

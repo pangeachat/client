@@ -2473,13 +2473,11 @@
     "editCourseLater": "Pode editar o título do modelo, descrições e imagem do curso mais tarde.",
     "createCourse": "Criar curso",
     "stats": "Estatísticas",
-    "createGroupChat": "Criar chat de grupo",
     "editCourse": "Editar curso",
     "inviteDesc": "Por nome de utilizador, por código ou link",
     "editCourseDesc": "Aqui pode editar o título do curso, descrição, etc.",
     "permissionsDesc": "Defina permissões como quem pode convidar utilizadores, enviar mensagens, criar chats, etc.",
     "accessDesc": "Pode tornar o seu curso aberto ao mundo! Ou, tornar o seu curso privado e seguro.",
-    "createGroupChatDesc": "Enquanto as sessões de atividade começam e terminam, os chats de grupo permanecerão abertos para comunicação de rotina.",
     "deleteDesc": "Apenas administradores podem eliminar um curso. Esta é uma ação destrutiva que remove todos os utilizadores e elimina todos os chats selecionados dentro do curso. Proceda com cautela.",
     "whatNow": "E agora?",
     "chooseNextActivity": "Escolha a sua próxima atividade!",
@@ -2552,7 +2550,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-10-27 14:57:20.798329",
+    "@@last_modified": "2026-11-06 13:11:04.864921",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6822,10 +6820,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6843,10 +6837,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10951,9 +10941,7 @@
     "readAloudTake": "Tentativa {number}",
     "videoWontPlayHere": "Este vídeo não será reproduzido aqui.",
     "watchOnYoutube": "Ver no YouTube",
-    "createMyOwnCourse": "Criar o meu próprio curso",
     "xpTowardMission": "{xp} XP para esta Missão",
-    "centralCourseMembersSeeYou": "Os membros deste curso podem ver o teu nome e perfil.",
     "practiceStartWordCount": "{count, plural, =1{palavra para praticar} other{palavras para praticar}}",
     "practiceStartGrammarCount": "{count, plural, =1{ponto gramatical para praticar} other{pontos gramaticais para praticar}}",
     "practiceStartExerciseTypes": "Tipos de exercício",
@@ -10964,9 +10952,6 @@
     "sharedAnalyticsOthersTitle": "Outros que podem ver o seu progresso",
     "removeAnalyticsAccess": "Remover acesso",
     "removeAnalyticsAccessDesc": "{name} deixará de poder ver o seu progresso de aprendizagem.",
-    "centralCourseOfferBody": "É o curso da Pangea para alunos de {language}. Os membros podem ver o teu nome e perfil.",
-    "centralCourseOfferTitle": "Aderir a {course}?",
-    "makeMyOwnCourseInstead": "Criar o meu próprio curso",
     "suggestMobileSignInSameAccount": "Depois, inicie sessão na aplicação com esta conta.",
     "botJoinsIn": "O Pangea Bot junta-se em {duration}",
     "botIsJoining": "O Pangea Bot está a juntar-se…",
@@ -10974,5 +10959,11 @@
     "playWithBotNowMessage": "Ninguém se juntou ainda. O Pangea Bot pode ocupar o lugar vago agora, ou pode continuar à espera.",
     "keepWaiting": "Continuar à espera",
     "botTookSeatAfterAnHour": "Esta sessão esteve aberta durante uma hora, por isso o Pangea Bot ocupou o lugar vago.",
-    "botTookSeatAfterADay": "Esta sessão esteve aberta por mais de um dia, por isso o Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar."
+    "botTookSeatAfterADay": "Esta sessão esteve aberta por mais de um dia, por isso o Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar.",
+    "subscriptionGracePeriodEndsOn": "Pagamento falhou. Período de carência termina em {date}",
+    "changeBaseLanguageTitle": "Alterar idioma base?",
+    "changeBaseLanguageDesc": "Os menus e botões da aplicação mudarão para {language}.",
+    "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique a sua ligação e tente novamente, ou termine a sessão e inicie-a mais tarde.",
+    "onboardingOfflineError": "Está offline. Tente novamente quando estiver online.",
+    "activitySavedTo": "Atividade guardada em {page}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:23.785091",
+    "@@last_modified": "2026-11-06 13:11:07.566893",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -2884,13 +2884,11 @@
     "editCourseLater": "Bạn có thể chỉnh sửa tiêu đề mẫu, mô tả và hình ảnh khóa học sau.",
     "createCourse": "Tạo khóa học",
     "stats": "Thống kê",
-    "createGroupChat": "Tạo nhóm trò chuyện",
     "editCourse": "Chỉnh sửa khóa học",
     "inviteDesc": "Bằng tên người dùng, mã hoặc liên kết",
     "editCourseDesc": "Tại đây bạn có thể chỉnh sửa tiêu đề, mô tả của khóa học, v.v.",
     "permissionsDesc": "Thiết lập quyền như ai có thể mời người dùng, gửi tin nhắn, tạo cuộc trò chuyện, v.v.",
     "accessDesc": "Bạn có thể làm cho khóa học của mình mở cho thế giới! Hoặc, làm cho khóa học của bạn riêng tư và an toàn.",
-    "createGroupChatDesc": "Trong khi các phiên hoạt động bắt đầu và kết thúc, nhóm trò chuyện sẽ luôn mở để giao tiếp định kỳ.",
     "deleteDesc": "Chỉ quản trị viên mới có thể xóa khóa học. Đây là hành động phá hủy, sẽ xóa tất cả người dùng và tất cả các cuộc trò chuyện đã chọn trong khóa học. Hãy cẩn thận khi thực hiện.",
     "whatNow": "Bây giờ làm gì?",
     "chooseNextActivity": "Chọn hoạt động tiếp theo của bạn!",
@@ -3180,10 +3178,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -3201,10 +3195,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7344,9 +7334,7 @@
     "readAloudTake": "Lượt {number}",
     "videoWontPlayHere": "Video này sẽ không phát ở đây.",
     "watchOnYoutube": "Xem trên YouTube",
-    "createMyOwnCourse": "Tạo khóa học của riêng tôi",
     "xpTowardMission": "{xp} XP cho Nhiệm vụ này",
-    "centralCourseMembersSeeYou": "Các thành viên của khóa học này có thể xem tên và hồ sơ của bạn.",
     "practiceStartWordCount": "{count, plural, =1{từ để luyện tập} other{từ để luyện tập}}",
     "practiceStartGrammarCount": "{count, plural, =1{điểm ngữ pháp để luyện tập} other{điểm ngữ pháp để luyện tập}}",
     "practiceStartExerciseTypes": "Các dạng bài tập",
@@ -7357,9 +7345,6 @@
     "sharedAnalyticsOthersTitle": "Những người khác có thể xem tiến độ của bạn",
     "removeAnalyticsAccess": "Xóa quyền truy cập",
     "removeAnalyticsAccessDesc": "{name} sẽ không còn có thể xem tiến độ học tập của bạn.",
-    "centralCourseOfferBody": "Đây là khóa học của Pangea dành cho người học tiếng {language}. Các thành viên có thể xem tên và hồ sơ của bạn.",
-    "centralCourseOfferTitle": "Tham gia {course}?",
-    "makeMyOwnCourseInstead": "Tự tạo khóa học của riêng tôi",
     "suggestMobileSignInSameAccount": "Sau đó đăng nhập vào ứng dụng bằng tài khoản này.",
     "botJoinsIn": "Pangea Bot tham gia sau {duration}",
     "botIsJoining": "Pangea Bot đang tham gia…",
@@ -7367,5 +7352,11 @@
     "playWithBotNowMessage": "Chưa có ai tham gia. Pangea Bot có thể nhận chỗ trống ngay bây giờ, hoặc bạn có thể tiếp tục chờ đợi.",
     "keepWaiting": "Tiếp tục chờ đợi",
     "botTookSeatAfterAnHour": "Phiên này đã mở được một giờ, vì vậy Pangea Bot đã nhận chỗ trống.",
-    "botTookSeatAfterADay": "Phiên này đã mở hơn một ngày, vì vậy Pangea Bot đã nhận chỗ trống. Gửi tin nhắn để bắt đầu."
+    "botTookSeatAfterADay": "Phiên này đã mở hơn một ngày, vì vậy Pangea Bot đã nhận chỗ trống. Gửi tin nhắn để bắt đầu.",
+    "subscriptionGracePeriodEndsOn": "Thanh toán không thành công. Thời gian gia hạn kết thúc vào {date}",
+    "changeBaseLanguageTitle": "Đổi ngôn ngữ cơ sở?",
+    "changeBaseLanguageDesc": "Các menu và nút của ứng dụng sẽ chuyển sang tiếng {language}.",
+    "accountSetupFailedHelp": "Chúng tôi không thể hoàn tất việc thiết lập tài khoản của bạn. Vui lòng kiểm tra kết nối và thử lại, hoặc đăng xuất và đăng nhập sau.",
+    "onboardingOfflineError": "Bạn đang ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng.",
+    "activitySavedTo": "Hoạt động đã lưu vào {page}"
 }

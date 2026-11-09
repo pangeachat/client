@@ -282,4 +282,39 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(WorldMapEmptyViewCard), findsOneWidget);
   });
+
+  testWidgets('a viewRevision tick pulls a cleared query into the field', (
+    tester,
+  ) async {
+    // The filter row's reset and a target-language change (#9406) clear the
+    // map's query without rebuilding this shell-built bar; the tick is the
+    // only signal it gets.
+    var filter = const WorldMapFilter();
+    final revision = ValueNotifier(0);
+    addTearDown(revision.dispose);
+    await pumpBar(
+      tester,
+      onQueryChanged: (q) {
+        filter = filter.copyWith(query: q);
+        revision.value++;
+      },
+      viewRevision: revision,
+      filter: () => filter,
+    );
+    await tester.enterText(find.byType(TextField), 'plaza');
+    await tester.pump();
+    final field = tester.widget<TextField>(find.byType(TextField)).controller!;
+    expect(field.text, 'plaza');
+    expect(
+      field.selection,
+      const TextSelection.collapsed(offset: 5),
+      reason: 'a tick from its own typing must not re-seat the caret',
+    );
+
+    filter = filter.copyWith(query: '');
+    revision.value++;
+    await tester.pump();
+    expect(field.text, isEmpty);
+    expect(find.byIcon(Icons.close), findsNothing);
+  });
 }

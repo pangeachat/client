@@ -15,7 +15,8 @@ import 'get_test_client.dart';
 /// #8097 — the waiting room offered "Ping course participants" for a session
 /// launched from the world map. Launching shares the session into EVERY eligible
 /// joined course as an `m.space.child` while only the launched-from course is
-/// pinned as `source_course_id` (activities.instructions.md), so `courseParent`
+/// pinned as `source_course_id` (activities.instructions.md, "A running
+/// activity is a chat room"), so `courseParent`
 /// picks up a course the session was never launched from and the button both
 /// showed and would have broadcast into that course's room.
 void main() {

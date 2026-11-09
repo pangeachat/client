@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/courses/course_objectives/mission_xp_ring.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
+import 'package:fluffychat/routes/courses/course_objectives/objective_section_scroll_arrow.dart';
 
 /// The Mission circles (#9420): a gold star for a complete Mission, the
 /// current one tinted and numbered, the rest numbered; each carries its state
@@ -34,6 +36,7 @@ void main() {
     void Function(int)? onTap,
     List<ObjectiveCircleData> items = items,
     bool showSelectedLabel = false,
+    bool reserveClassLocation = false,
   }) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -44,6 +47,7 @@ void main() {
             items: items,
             onTap: onTap,
             showSelectedLabel: showSelectedLabel,
+            reserveClassLocation: reserveClassLocation,
           ),
         ),
       ),
@@ -144,5 +148,95 @@ void main() {
       find.bySemanticsLabel(RegExp('Mission 2 of 2, Pinged')),
       findsOneWidget,
     );
+  });
+
+  // Twelve Missions at phone width: the row scrolls, with an arrow over each
+  // end it can still move toward (#9602).
+  group('a row wider than the screen', () {
+    Future<void> pumpNarrow(
+      WidgetTester tester, {
+      required int selected,
+      bool classLocation = true,
+      bool bar = false,
+    }) async {
+      tester.view.physicalSize = const Size(360.0, 640.0);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+      await pump(
+        tester,
+        showSelectedLabel: bar,
+        reserveClassLocation: bar,
+        items: [
+          for (var i = 1; i <= 12; i++)
+            ObjectiveCircleData(
+              index: i,
+              statement: 'Mission $i.',
+              state: ObjectiveCircleState.later,
+              selected: i == selected,
+              classLocation: classLocation && i == selected,
+            ),
+        ],
+      );
+    }
+
+    Rect circle(WidgetTester tester, int index) => tester.getRect(
+      find.ancestor(
+        of: find.text('$index'),
+        matching: find.byType(MissionXpRing),
+      ),
+    );
+
+    Finder arrow(ArrowDirection direction) => find.byWidgetPredicate(
+      (w) => w is ObjectiveSectionScrollArrow && w.direction == direction,
+    );
+
+    for (final (name, bar, classLocation) in [
+      ('on the course page', false, false),
+      ('on the course page with a class location', false, true),
+      ('in the course bar', true, true),
+    ]) {
+      testWidgets(
+        'an arrow covers the whole row, its chevron level with the circles, '
+        '$name',
+        (tester) async {
+          await pumpNarrow(
+            tester,
+            selected: 9,
+            bar: bar,
+            classLocation: classLocation,
+          );
+          final row = tester.getRect(find.byType(ObjectiveProgressCircles));
+          final circleCentre = circle(tester, 9).center.dy;
+          for (final direction in ArrowDirection.values) {
+            final strip = tester.getRect(arrow(direction));
+            expect(strip.top, row.top, reason: 'over the class location');
+            expect(strip.bottom, row.bottom, reason: 'over pointer and label');
+            expect(
+              tester.getCenter(find.byIcon(direction.icon)).dy,
+              circleCentre,
+            );
+          }
+        },
+      );
+    }
+
+    // Mission 9 starts off the end; Mission 7 starts on screen, but where the
+    // forward arrow sits.
+    for (final selected in [7, 9]) {
+      testWidgets('it opens with Mission $selected clear of the arrows', (
+        tester,
+      ) async {
+        await pumpNarrow(tester, selected: selected, bar: true);
+        final picked = circle(tester, selected);
+        final row = tester.getRect(find.byType(ObjectiveProgressCircles));
+        expect(picked.left, greaterThanOrEqualTo(row.left));
+        expect(picked.right, lessThanOrEqualTo(row.right));
+        for (final direction in ArrowDirection.values) {
+          final strip = arrow(direction);
+          if (strip.evaluate().isEmpty) continue;
+          expect(picked.overlaps(tester.getRect(strip)), isFalse);
+        }
+      });
+    }
   });
 }

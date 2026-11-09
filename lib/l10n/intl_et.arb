@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-27 14:57:14.550178",
+    "@@last_modified": "2026-11-06 13:10:59.215466",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -5887,13 +5887,11 @@
     "editCourseLater": "Saate hiljem redigeerida mallide pealkirju, kirjelduid ja kursuse pilti.",
     "createCourse": "Loo kursus",
     "stats": "Statistika",
-    "createGroupChat": "Loo grupivestlus",
     "editCourse": "Redigeeri kursust",
     "inviteDesc": "Kasutajanime, koodi või lingi kaudu",
     "editCourseDesc": "Siin saate redigeerida kursuse pealkirja, kirjelduid jne.",
     "permissionsDesc": "Seadke õigused, näiteks kes saab kutsuda kasutajaid, saata sõnumeid, luua vestlusi jne.",
     "accessDesc": "Saate teha oma kursuse avatud maailmale! Või muuda oma kursus privaatseks ja turvaliseks.",
-    "createGroupChatDesc": "Kuna tegevussessioonid algavad ja lõpevad, jäävad grupivestlused avatuks regulaarseks suhtlemiseks.",
     "deleteDesc": "Ainult administraatorid saavad kursust kustutada. See on hävitav tegevus, mis eemaldab kõik kasutajad ja kustutab kõik valitud vestlused kursuse sees. Olge ettevaatlik.",
     "whatNow": "Mis nüüd?",
     "chooseNextActivity": "Valige oma järgmine tegevus!",
@@ -6088,10 +6086,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6109,10 +6103,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10034,9 +10024,7 @@
     "readAloudTake": "Võte {number}",
     "videoWontPlayHere": "Seda videot ei saa siin esitada.",
     "watchOnYoutube": "Vaata YouTube'is",
-    "createMyOwnCourse": "Loo oma kursus",
     "xpTowardMission": "{xp} XP selle missiooni suunas",
-    "centralCourseMembersSeeYou": "Selle kursuse liikmed näevad sinu nime ja profiili.",
     "practiceStartWordCount": "{count, plural, =1{sõna harjutamiseks} other{sõna harjutamiseks}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatikapunkt harjutamiseks} other{grammatikapunkti harjutamiseks}}",
     "practiceStartExerciseTypes": "Harjutuste tüübid",
@@ -10047,9 +10035,6 @@
     "sharedAnalyticsOthersTitle": "Teised, kes näevad sinu edusamme",
     "removeAnalyticsAccess": "Eemalda ligipääs",
     "removeAnalyticsAccessDesc": "{name} ei näe enam sinu õppimise edusamme.",
-    "centralCourseOfferBody": "See on Pangea kursus {language} õppijatele. Selle liikmed näevad sinu nime ja profiili.",
-    "centralCourseOfferTitle": "Liituda kursusega {course}?",
-    "makeMyOwnCourseInstead": "Looma oma kursuse",
     "suggestMobileSignInSameAccount": "Seejärel logi selle kontoga rakendusse sisse.",
     "botJoinsIn": "Pangea Bot liitub {duration} pärast",
     "botIsJoining": "Pangea Bot liitub…",
@@ -10057,5 +10042,11 @@
     "playWithBotNowMessage": "Keegi pole veel liitunud. Pangea Bot saab nüüd vaba koha võtta või võite oodata.",
     "keepWaiting": "Jätka ootamist",
     "botTookSeatAfterAnHour": "See seanss oli tund aega avatud, nii et Pangea Bot võttis vaba koha.",
-    "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum."
+    "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum.",
+    "subscriptionGracePeriodEndsOn": "Makse ebaõnnestus. Ajapikendus lõpeb {date}",
+    "changeBaseLanguageTitle": "Muuda baaskeelt?",
+    "changeBaseLanguageDesc": "Rakenduse menüüd ja nupud lülituvad keelele {language}.",
+    "accountSetupFailedHelp": "Me ei saanud teie konto seadistamist lõpule viia. Kontrollige oma ühendust ja proovige uuesti või logige välja ja proovige hiljem uuesti sisse logida.",
+    "onboardingOfflineError": "Oled võrguühenduseta. Proovi uuesti, kui oled võrgus tagasi.",
+    "activitySavedTo": "Tegevus salvestatud asukohta {page}"
 }

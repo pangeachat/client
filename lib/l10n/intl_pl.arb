@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-10-27 14:57:20.616682",
+    "@@last_modified": "2026-11-06 13:11:04.608373",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -3381,13 +3381,11 @@
     "editCourseLater": "Możesz edytować tytuł szablonu, opisy i obraz kursu później.",
     "createCourse": "Utwórz kurs",
     "stats": "Statystyki",
-    "createGroupChat": "Utwórz czat grupowy",
     "editCourse": "Edytuj kurs",
     "inviteDesc": "Przez nazwę użytkownika, kod lub link",
     "editCourseDesc": "Tutaj możesz edytować tytuł kursu, opis itp.",
     "permissionsDesc": "Ustaw uprawnienia, takie jak kto może zapraszać użytkowników, wysyłać wiadomości, tworzyć czaty itp.",
     "accessDesc": "Możesz uczynić swój kurs otwartym dla świata! Lub, uczynić go prywatnym i bezpiecznym.",
-    "createGroupChatDesc": "Podczas gdy sesje aktywności zaczynają się i kończą, czaty grupowe pozostaną otwarte do rutynowej komunikacji.",
     "deleteDesc": "Tylko administratorzy mogą usunąć kurs. To działanie destrukcyjne, które usuwa wszystkich użytkowników i kasuje wszystkie wybrane czaty w kursie. Postępuj ostrożnie.",
     "whatNow": "Co teraz?",
     "chooseNextActivity": "Wybierz swoją następną aktywność!",
@@ -5992,10 +5990,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6013,10 +6007,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10122,9 +10112,7 @@
     "readAloudTake": "Podejście {number}",
     "videoWontPlayHere": "Ten film nie będzie odtwarzany tutaj.",
     "watchOnYoutube": "Obejrzyj na YouTube",
-    "createMyOwnCourse": "Stwórz mój własny kurs",
     "xpTowardMission": "{xp} PD do tej misji",
-    "centralCourseMembersSeeYou": "Członkowie tego kursu widzą Twoje imię i profil.",
     "practiceStartWordCount": "{count, plural, =1{słowo do ćwiczenia} other{słów do ćwiczenia}}",
     "practiceStartGrammarCount": "{count, plural, =1{zagadnienie gramatyczne do ćwiczenia} other{zagadnienia gramatyczne do ćwiczenia}}",
     "practiceStartExerciseTypes": "Typy ćwiczeń",
@@ -10135,9 +10123,6 @@
     "sharedAnalyticsOthersTitle": "Inni, którzy widzą Twoje postępy",
     "removeAnalyticsAccess": "Usuń dostęp",
     "removeAnalyticsAccessDesc": "{name} nie będzie już widzieć Twoich postępów w nauce.",
-    "centralCourseOfferBody": "To kurs Pangea dla uczących się języka {language}. Członkowie kursu widzą Twoje imię i profil.",
-    "centralCourseOfferTitle": "Dołączyć do kursu {course}?",
-    "makeMyOwnCourseInstead": "Zamiast tego stwórz mój własny kurs",
     "suggestMobileSignInSameAccount": "Następnie zaloguj się do aplikacji za pomocą tego konta.",
     "botJoinsIn": "Pangea Bot dołącza za {duration}",
     "botIsJoining": "Pangea Bot dołącza…",
@@ -10145,5 +10130,11 @@
     "playWithBotNowMessage": "Nikt jeszcze nie dołączył. Pangea Bot może zająć wolne miejsce teraz, albo możesz poczekać.",
     "keepWaiting": "Czekaj dalej",
     "botTookSeatAfterAnHour": "Ta sesja była otwarta przez godzinę, więc Pangea Bot zajął wolne miejsce.",
-    "botTookSeatAfterADay": "Ta sesja była otwarta przez ponad dzień, więc Pangea Bot zajął wolne miejsce. Wyślij wiadomość, aby rozpocząć."
+    "botTookSeatAfterADay": "Ta sesja była otwarta przez ponad dzień, więc Pangea Bot zajął wolne miejsce. Wyślij wiadomość, aby rozpocząć.",
+    "subscriptionGracePeriodEndsOn": "Płatność nie powiodła się. Okres prolongaty kończy się {date}",
+    "changeBaseLanguageTitle": "Zmienić język podstawowy?",
+    "changeBaseLanguageDesc": "Menu i przyciski aplikacji przełączą się na język {language}.",
+    "accountSetupFailedHelp": "Nie udało nam się dokończyć konfiguracji Twojego konta. Sprawdź połączenie i spróbuj ponownie, lub wyloguj się i zaloguj później.",
+    "onboardingOfflineError": "Jesteś offline. Spróbuj ponownie, gdy będziesz online.",
+    "activitySavedTo": "Aktywność zapisana w {page}"
 }

@@ -1862,13 +1862,11 @@
     "editCourseLater": "შეგიძლიათ მოგვიანებით შეცვალოთ ტემპლეტის სათაური, აღწერები და კურსის სურათი.",
     "createCourse": "შექმენით კურსი",
     "stats": "სტატისტიკა",
-    "createGroupChat": "შექმენით ჯგუფური ჩათი",
     "editCourse": "შეცვალეთ კურსი",
     "inviteDesc": "მომხმარებლის სახელით, კოდით ან ლინკით",
     "editCourseDesc": "აქ შეგიძლიათ შეცვალოთ კურსის სათაური, აღწერა და სხვა.",
     "permissionsDesc": "დააყენეთ დაშვებები, როგორიცაა ვინ შეუძლია მოწვევა, მესიჯების გაგზავნა, ჩატების შექმნა და სხვა.",
     "accessDesc": "თქვენ შეგიძლიათ გახსნათ თქვენი კურსი მსოფლიოისთვის! ან, გახადოთ თქვენი კურსი პირადი და უსაფრთხო.",
-    "createGroupChatDesc": "სადაც იწყება და მთავრდება აქტივობის სესია, ჯგუფური ჩატები დარჩება ღია რეგულარული კომუნიკაციისთვის.",
     "deleteDesc": "მხოლოდ ადმინისტრატორებს შეუძლიათ კურსის წაშლა. ეს არის განადგურების მოქმედება, რომელიც წაშლის ყველა მომხმარებელს და ყველა არჩეულ ჩატს კურსის ფარგლებში. გთხოვთ, გამოიჩინოთ სიფრთხილე.",
     "whatNow": "ახლა რა?",
     "chooseNextActivity": "აირჩიეთ თქვენი შემდეგი აქტივობა!",
@@ -1930,7 +1928,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-27 14:57:17.251683",
+    "@@last_modified": "2026-11-06 13:11:01.684809",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6794,10 +6792,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6815,10 +6809,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10934,9 +10924,7 @@
     "readAloudTake": "მიღება {number}",
     "videoWontPlayHere": "ეს ვიდეო აქ არ იმუშავებს.",
     "watchOnYoutube": "უყურეთ YouTube-ზე",
-    "createMyOwnCourse": "შექმენი ჩემი კურსი",
     "xpTowardMission": "{xp} XP ამ მისიისთვის",
-    "centralCourseMembersSeeYou": "ამ კურსის წევრებს შეუძლიათ ნახონ თქვენი სახელი და პროფილი.",
     "practiceStartWordCount": "{count, plural, =1{სავარჯიშო სიტყვა} other{სავარჯიშო სიტყვა}}",
     "practiceStartGrammarCount": "{count, plural, =1{სავარჯიშო გრამატიკის საკითხი} other{სავარჯიშო გრამატიკის საკითხი}}",
     "practiceStartExerciseTypes": "სავარჯიშოების ტიპები",
@@ -10947,9 +10935,6 @@
     "sharedAnalyticsOthersTitle": "სხვები, ვინც ხედავს თქვენს პროგრესს",
     "removeAnalyticsAccess": "წვდომის წაშლა",
     "removeAnalyticsAccessDesc": "{name} ვეღარ შეძლებს თქვენი სწავლის პროგრესის ნახვას.",
-    "centralCourseOfferBody": "ეს არის Pangea-ს კურსი {language} ენის შემსწავლელებისთვის. მისი წევრები ხედავენ თქვენს სახელსა და პროფილს.",
-    "centralCourseOfferTitle": "შეუერთდეთ {course}-ს?",
-    "makeMyOwnCourseInstead": "სამაგიეროდ შევქმნა ჩემი კურსი",
     "suggestMobileSignInSameAccount": "შემდეგ შედით აპლიკაციაში ამ ანგარიშით.",
     "botJoinsIn": "Pangea Bot შემოგიერთდებათ {duration}-ში",
     "botIsJoining": "Pangea Bot გიერთდებათ…",
@@ -10957,5 +10942,11 @@
     "playWithBotNowMessage": "ჯერ არავინ შემოგვიერთდა. Pangea Bot-ს შეუძლია დაიკავოს თავისუფალი ადგილი ახლავე, ან შეგიძლიათ გააგრძელოთ ლოდინი.",
     "keepWaiting": "გააგრძელეთ ლოდინი",
     "botTookSeatAfterAnHour": "ეს სესია ერთი საათის განმავლობაში ღია იყო, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი.",
-    "botTookSeatAfterADay": "ეს სესია ერთ დღეზე მეტხანს იყო ღია, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი. გასააქტიურებლად გაგზავნეთ შეტყობინება."
+    "botTookSeatAfterADay": "ეს სესია ერთ დღეზე მეტხანს იყო ღია, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი. გასააქტიურებლად გაგზავნეთ შეტყობინება.",
+    "subscriptionGracePeriodEndsOn": "გადახდა ვერ განხორციელდა. საშეღავათო პერიოდი სრულდება {date}-ზე",
+    "changeBaseLanguageTitle": "ძირითადი ენის შეცვლა?",
+    "changeBaseLanguageDesc": "აპლიკაციის მენიუები და ღილაკები შეიცვლება {language}-ზე.",
+    "accountSetupFailedHelp": "თქვენი ანგარიშის დაყენება ვერ დავასრულეთ. შეამოწმეთ კავშირი და სცადეთ ხელახლა, ან გამოდით სისტემიდან და მოგვიანებით შეხვიდეთ.",
+    "onboardingOfflineError": "თქვენ ხართ ხაზგარეშე. სცადეთ ხელახლა, როდესაც ონლაინ იქნებით.",
+    "activitySavedTo": "აქტივობა შენახულია: {page}"
 }

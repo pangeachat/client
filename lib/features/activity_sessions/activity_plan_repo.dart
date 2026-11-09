@@ -43,8 +43,10 @@ enum ActivityPlanLookupStatus {
   found,
 
   /// The backend confirmed the activity no longer exists (HTTP 404).
-  /// Consumers fall back per the removed-activity ladder in the activities
-  /// instructions doc (embedded state plan → archived view).
+  /// Consumers fall back per the removed-activity ladder
+  /// (activity-start-page.instructions.md, "When the activity can't be
+  /// fetched"): embedded state plan → archived view, walked by the start
+  /// page's `_loadActivity`, not here.
   removed,
 
   /// Transient failure (network, timeout, 5xx); retrying may succeed. Never
@@ -140,6 +142,15 @@ class ActivityPlanRepo
   /// otherwise re-fetch a known-dead id.
   Future<bool> isConfirmedRemoved(String activityId) =>
       _confirmedRemoved.contains(activityId);
+
+  /// Whether a read of this plan, keyed as [cachedPlan] keys it, is queued or
+  /// in flight: accepted by [ensure] and not finished, whatever it finds. A
+  /// read that fails or is dropped ends it without notifying listeners, so a
+  /// caller waiting on one checks again rather than waiting for a notice.
+  bool isHydrating(String activityId, {String? l1, String? version}) {
+    final request = _request(activityId, l1, version: version);
+    return request != null && _hydrating.contains(request.storageKey);
+  }
 
   /// Earliest wall-clock time [ensure] may re-attempt a key.
   ///

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:16.335972",
+    "@@last_modified": "2026-11-06 13:11:01.226323",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3388,13 +3388,11 @@
     "editCourseLater": "Anda dapat mengedit judul template, deskripsi, dan gambar kursus nanti.",
     "createCourse": "Buat kursus",
     "stats": "Statistik",
-    "createGroupChat": "Buat obrolan grup",
     "editCourse": "Edit kursus",
     "inviteDesc": "Undang dengan nama pengguna, kode, atau tautan",
     "editCourseDesc": "Di sini Anda dapat mengedit judul kursus, deskripsi, dll.",
     "permissionsDesc": "Atur izin seperti siapa yang dapat mengundang pengguna, mengirim pesan, membuat obrolan, dll.",
     "accessDesc": "Anda dapat membuat kursus Anda terbuka untuk dunia! Atau, buat kursus Anda pribadi dan aman.",
-    "createGroupChatDesc": "Sedangkan sesi aktivitas dimulai dan berakhir, obrolan grup akan tetap terbuka untuk komunikasi rutin.",
     "deleteDesc": "Hanya admin yang dapat menghapus kursus. Ini adalah tindakan destruktif yang menghapus semua pengguna dan menghapus semua obrolan yang dipilih dalam kursus. Lanjutkan dengan hati-hati.",
     "whatNow": "Apa sekarang?",
     "chooseNextActivity": "Pilih aktivitas berikutnya!",
@@ -6000,10 +5998,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6021,10 +6015,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10110,9 +10100,7 @@
     "readAloudTake": "Ambil {number}",
     "videoWontPlayHere": "Video ini tidak dapat diputar di sini.",
     "watchOnYoutube": "Tonton di YouTube",
-    "createMyOwnCourse": "Buat kursus saya sendiri",
     "xpTowardMission": "{xp} XP untuk Misi ini",
-    "centralCourseMembersSeeYou": "Anggota kursus ini dapat melihat nama dan profil Anda.",
     "practiceStartWordCount": "{count, plural, =1{kata untuk dilatih} other{kata untuk dilatih}}",
     "practiceStartGrammarCount": "{count, plural, =1{poin tata bahasa untuk dilatih} other{poin tata bahasa untuk dilatih}}",
     "practiceStartExerciseTypes": "Jenis latihan",
@@ -10123,9 +10111,6 @@
     "sharedAnalyticsOthersTitle": "Orang lain yang dapat melihat progres Anda",
     "removeAnalyticsAccess": "Hapus akses",
     "removeAnalyticsAccessDesc": "{name} tidak akan lagi dapat melihat progres belajar Anda.",
-    "centralCourseOfferBody": "Ini adalah kursus Pangea untuk pembelajar {language}. Anggotanya dapat melihat nama dan profil Anda.",
-    "centralCourseOfferTitle": "Gabung {course}?",
-    "makeMyOwnCourseInstead": "Buat kursus saya sendiri saja",
     "suggestMobileSignInSameAccount": "Lalu masuk ke aplikasi dengan akun ini.",
     "botJoinsIn": "Pangea Bot bergabung dalam {duration}",
     "botIsJoining": "Pangea Bot bergabung…",
@@ -10133,5 +10118,11 @@
     "playWithBotNowMessage": "Belum ada yang bergabung. Pangea Bot bisa mengisi kursi kosong sekarang, atau Anda bisa terus menunggu.",
     "keepWaiting": "Terus menunggu",
     "botTookSeatAfterAnHour": "Sesi ini terbuka selama satu jam, jadi Pangea Bot mengambil kursi kosong.",
-    "botTookSeatAfterADay": "Sesi ini terbuka selama lebih dari sehari, jadi Pangea Bot mengambil kursi kosong. Kirim pesan untuk memulai."
+    "botTookSeatAfterADay": "Sesi ini terbuka selama lebih dari sehari, jadi Pangea Bot mengambil kursi kosong. Kirim pesan untuk memulai.",
+    "subscriptionGracePeriodEndsOn": "Pembayaran gagal. Masa tenggang berakhir pada {date}",
+    "changeBaseLanguageTitle": "Ganti bahasa dasar?",
+    "changeBaseLanguageDesc": "Menu dan tombol aplikasi akan beralih ke {language}.",
+    "accountSetupFailedHelp": "Kami tidak dapat menyelesaikan penyiapan akun Anda. Periksa koneksi Anda dan coba lagi, atau keluar dan masuk nanti.",
+    "onboardingOfflineError": "Anda sedang offline. Coba lagi setelah Anda online.",
+    "activitySavedTo": "Aktivitas disimpan ke {page}"
 }

@@ -2888,13 +2888,11 @@
     "editCourseLater": "Vėliau galite redaguoti šablono pavadinimą, aprašymus ir kurso vaizdą.",
     "createCourse": "Sukurti kursą",
     "stats": "Statistika",
-    "createGroupChat": "Sukurti grupinį pokalbį",
     "editCourse": "Redaguoti kursą",
     "inviteDesc": "Per vartotojo vardą, kodą ar nuorodą",
     "editCourseDesc": "Čia galite redaguoti kurso pavadinimą, aprašymą ir kt.",
     "permissionsDesc": "Nustatykite leidimus, pvz., kas gali pakviesti naudotojus, siųsti žinutes, kurti pokalbius ir kt.",
     "accessDesc": "Galite padaryti savo kursą atvirą visiems! Arba, padaryti jį privačiu ir saugiu.",
-    "createGroupChatDesc": "Nors veiklos sesijos prasideda ir baigiasi, grupiniai pokalbiai liks atviri kasdieniam bendravimui.",
     "deleteDesc": "Tik tik administratori gali ištrinti kursą. Tai yra destruktyvus veiksmas, kuris pašalina visus naudotojus ir ištrina visus pasirinktus pokalbius kurse. Būkite atsargūs.",
     "whatNow": "Kas dabar?",
     "chooseNextActivity": "Pasirinkite savo kitą veiklą!",
@@ -2956,7 +2954,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-27 14:57:18.329201",
+    "@@last_modified": "2026-11-06 13:11:02.361688",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6675,10 +6673,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6696,10 +6690,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10815,9 +10805,7 @@
     "readAloudTake": "Paimkite {number}",
     "videoWontPlayHere": "Šis vaizdo įrašas čia nebus leidžiamas.",
     "watchOnYoutube": "Žiūrėti „YouTube“",
-    "createMyOwnCourse": "Sukurti savo kursą",
     "xpTowardMission": "{xp} XP šiai misijai",
-    "centralCourseMembersSeeYou": "Šio kurso nariai gali matyti jūsų vardą ir profilį.",
     "practiceStartWordCount": "{count, plural, =1{žodis praktikai} other{žodžiai praktikai}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatikos punktas praktikai} other{gramatikos punktai praktikai}}",
     "practiceStartExerciseTypes": "Pratimų tipai",
@@ -10828,9 +10816,6 @@
     "sharedAnalyticsOthersTitle": "Kiti, kurie gali matyti jūsų pažangą",
     "removeAnalyticsAccess": "Pašalinti prieigą",
     "removeAnalyticsAccessDesc": "{name} nebegalės matyti jūsų mokymosi pažangos.",
-    "centralCourseOfferBody": "Tai „Pangea“ kursas, skirtas {language} besimokantiems. Jo nariai gali matyti jūsų vardą ir profilį.",
-    "centralCourseOfferTitle": "Prisijungti prie {course}?",
-    "makeMyOwnCourseInstead": "Vietoj to sukurti savo kursą",
     "suggestMobileSignInSameAccount": "Tada prisijunkite prie programėlės naudodami šią paskyrą.",
     "botJoinsIn": "Pangea Bot prisijungs po {duration}",
     "botIsJoining": "Pangea Bot jungiasi…",
@@ -10838,5 +10823,11 @@
     "playWithBotNowMessage": "Dar niekas neprisijungė. Pangea Bot gali užimti laisvą vietą dabar, arba galite toliau laukti.",
     "keepWaiting": "Laukti toliau",
     "botTookSeatAfterAnHour": "Ši sesija buvo atidaryta valandą, todėl Pangea Bot užėmė laisvą vietą.",
-    "botTookSeatAfterADay": "Ši sesija buvo atidaryta ilgiau nei dieną, todėl Pangea Bot užėmė laisvą vietą. Norėdami pradėti, atsiųskite žinutę."
+    "botTookSeatAfterADay": "Ši sesija buvo atidaryta ilgiau nei dieną, todėl Pangea Bot užėmė laisvą vietą. Norėdami pradėti, atsiųskite žinutę.",
+    "subscriptionGracePeriodEndsOn": "Mokėjimas nepavyko. Lengvatinis laikotarpis baigiasi {date}",
+    "changeBaseLanguageTitle": "Pakeisti pagrindinę kalbą?",
+    "changeBaseLanguageDesc": "Programėlės meniu ir mygtukai persijungs į {language}.",
+    "accountSetupFailedHelp": "Nepavyko užbaigti paskyros nustatymo. Patikrinkite ryšį ir bandykite dar kartą arba atsijunkite ir prisijunkite vėliau.",
+    "onboardingOfflineError": "Esate neprisijungę. Bandykite dar kartą, kai vėl prisijungsite.",
+    "activitySavedTo": "Veikla išsaugota {page}"
 }

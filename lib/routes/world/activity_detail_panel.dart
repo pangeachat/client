@@ -23,9 +23,15 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// remounts a second map. Closing drops the activity token, returning to the
 /// course-scoped map (or the bare map).
 ///
+/// The one start page serves both hosts — the phone's nav-cavity sheet and
+/// the wide screen's floating card — so the platform difference lives in the
+/// host, never in the page (activity-start-page.instructions.md, "The sheet
+/// and its container").
+///
 /// The parent course is the active course space when one is selected;
-/// otherwise the first joined course whose plan includes the activity (or none
-/// — you no longer need a course to play).
+/// otherwise the one joined course that lists the activity, or none when
+/// several do or the match is incomplete — you no longer need a course to play
+/// (activities.instructions.md, "A running activity is a chat room").
 class LeftPanelActivityDetailsSubpage extends StatefulWidget {
   final ActivityTokenParam param;
   final String? parentSpaceId;

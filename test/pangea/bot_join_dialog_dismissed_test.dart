@@ -8,6 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
@@ -187,18 +188,76 @@ void main() {
       expect(find.text('play with bot'), findsOneWidget);
     },
   );
+
+  // CLIENT-F12: the participant list can miss a bot that the launcher's own
+  // invite brings in, so the dialog invites it too and Synapse refuses because
+  // the bot has joined. The bot being in is what the invite was for, so that
+  // refusal is not reported; any other one still is.
+  group('when the participant list misses the bot', () {
+    const invite = '/client/v3/rooms/!1234%3AfakeServer.notExisting/invite';
+
+    setUp(() {
+      room = _SeatedBotRoom(
+        id: roomId,
+        client: client,
+        botId: botId,
+        botListed: false,
+      );
+    });
+
+    void refuseInvite(String error) =>
+        FakeMatrixApi.currentApi!.api['POST']![invite] = (_) => {
+          'errcode': 'M_FORBIDDEN',
+          'error': error,
+        };
+
+    testWidgets('a refusal because the bot already joined is not reported', (
+      tester,
+    ) async {
+      refuseInvite('$botId is already in the room.');
+      await pumpPage(tester);
+      await tester.runAsync(() async {
+        await sentry.expectNoReport(() async {
+          await openDialog(tester);
+          await seatBot(tester);
+        });
+      });
+      expect(FakeMatrixApi.calledEndpoints[invite], hasLength(1));
+      expect(tester.takeException(), isNull);
+      expect(find.byType(PlayWithBotLoadingDialog), findsNothing);
+    });
+
+    testWidgets('any other refusal is still reported', (tester) async {
+      refuseInvite("You don't have permission to invite users");
+      await pumpPage(tester);
+      late SentryEvent event;
+      await tester.runAsync(() async {
+        final reported = sentry.capture(() {});
+        await openDialog(tester);
+        event = await reported;
+        await seatBot(tester);
+      });
+      expect(event.level, SentryLevel.warning);
+      expect(event.throwable, isA<MatrixException>());
+      expect(tester.takeException(), isNull);
+      expect(find.byType(PlayWithBotLoadingDialog), findsNothing);
+    });
+  });
 }
 
-/// A session room whose bot is already a joined member, so the dialog's
-/// re-invite guard is a no-op and the only thing it waits on is the seat.
+/// A session room whose bot is already a joined member. While [botListed],
+/// the participant list shows it, so the dialog's re-invite guard is a no-op
+/// and the only thing it waits on is the seat.
 class _SeatedBotRoom extends Room {
   _SeatedBotRoom({
     required super.id,
     required super.client,
     required this.botId,
+    this.botListed = true,
   });
 
   final String botId;
+  final bool botListed;
 
   /// Completes the first time the dialog checks membership — the last step
   /// of its join flow before it settles in to wait on `/sync`.
@@ -215,6 +274,6 @@ class _SeatedBotRoom extends Room {
     bool? cache,
   ]) async {
     if (!participantsRequested.isCompleted) participantsRequested.complete();
-    return [User(botId, membership: 'join', room: this)];
+    return [if (botListed) User(botId, membership: 'join', room: this)];
   }
 }

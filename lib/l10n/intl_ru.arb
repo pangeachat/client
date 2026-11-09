@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-10-27 14:57:20.964185",
+    "@@last_modified": "2026-11-06 13:11:05.425673",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -4077,13 +4077,11 @@
     "editCourseLater": "Вы сможете отредактировать название шаблона, описания и изображение курса позже.",
     "createCourse": "Создать курс",
     "stats": "Статистика",
-    "createGroupChat": "Создать групповой чат",
     "editCourse": "Редактировать курс",
     "inviteDesc": "По имени пользователя, по коду или ссылке",
     "editCourseDesc": "Здесь вы можете редактировать название курса, описание и т.д.",
     "permissionsDesc": "Настройте разрешения: кто может приглашать пользователей, отправлять сообщения, создавать чаты и т.д.",
     "accessDesc": "Вы можете сделать ваш курс открытым для всех! Или сделать его приватным и безопасным.",
-    "createGroupChatDesc": "В отличие от заданий, которые имеют начало и конец, групповые чаты остаются открытыми для повседневного общения.",
     "deleteDesc": "Только администраторы могут удалить курс. Это разрушительное действие, которое удаляет всех пользователей и удаляет все выбранные чаты внутри курса. Будьте осторожны.",
     "directMessages": "Личные сообщения",
     "whatNow": "Что дальше?",
@@ -6920,10 +6918,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6941,10 +6935,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -11009,9 +10999,7 @@
     "readAloudTake": "Попытка {number}",
     "videoWontPlayHere": "Это видео здесь не воспроизводится.",
     "watchOnYoutube": "Смотреть на YouTube",
-    "createMyOwnCourse": "Создать свой курс",
     "xpTowardMission": "{xp} XP для этой миссии",
-    "centralCourseMembersSeeYou": "Участники этого курса могут видеть ваше имя и профиль.",
     "practiceStartWordCount": "{count, plural, =1{слово для практики} other{слов для практики}}",
     "practiceStartGrammarCount": "{count, plural, =1{грамматическая тема для практики} other{грамматических тем для практики}}",
     "practiceStartExerciseTypes": "Типы упражнений",
@@ -11022,9 +11010,6 @@
     "sharedAnalyticsOthersTitle": "Другие пользователи, которые видят ваш прогресс",
     "removeAnalyticsAccess": "Удалить доступ",
     "removeAnalyticsAccessDesc": "{name} больше не сможет видеть ваш прогресс в обучении.",
-    "centralCourseOfferBody": "Это курс Pangea для изучающих {language}. Участники курса могут видеть ваше имя и профиль.",
-    "centralCourseOfferTitle": "Присоединиться к {course}?",
-    "makeMyOwnCourseInstead": "Создать свой курс",
     "suggestMobileSignInSameAccount": "Затем войдите в приложение с этой учетной записью.",
     "botJoinsIn": "Бот Pangea присоединится через {duration}",
     "botIsJoining": "Бот Pangea присоединяется…",
@@ -11032,5 +11017,11 @@
     "playWithBotNowMessage": "Пока никто не присоединился. Бот Pangea может занять свободное место сейчас, или вы можете продолжить ждать.",
     "keepWaiting": "Продолжить ждать",
     "botTookSeatAfterAnHour": "Эта сессия была открыта в течение часа, поэтому бот Pangea занял свободное место.",
-    "botTookSeatAfterADay": "Эта сессия была открыта более суток, поэтому бот Pangea занял свободное место. Отправьте сообщение, чтобы начать."
+    "botTookSeatAfterADay": "Эта сессия была открыта более суток, поэтому бот Pangea занял свободное место. Отправьте сообщение, чтобы начать.",
+    "subscriptionGracePeriodEndsOn": "Платёж не прошёл. Льготный период заканчивается {date}",
+    "changeBaseLanguageTitle": "Изменить базовый язык?",
+    "changeBaseLanguageDesc": "Меню и кнопки приложения переключатся на {language}.",
+    "accountSetupFailedHelp": "Не удалось завершить настройку вашей учетной записи. Проверьте подключение и повторите попытку, либо выйдите из системы и войдите позже.",
+    "onboardingOfflineError": "Вы не в сети. Повторите попытку, когда снова будете в сети.",
+    "activitySavedTo": "Занятие сохранено в разделе «{page}»"
 }

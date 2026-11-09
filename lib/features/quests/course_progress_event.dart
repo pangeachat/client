@@ -96,6 +96,16 @@ class CourseProgressEvent {
       stored == null ||
       !const DeepCollectionEquality().equals(stored._figures, _figures);
 
+  /// Whether this record lowers a Mission's XP below [stored]'s while the XP
+  /// that completes one is unchanged, which the teacher dashboard reports as
+  /// a regression (ADMIN-DASH-API-1W).
+  bool lowersXpOf(CourseProgressEvent? stored) {
+    if (stored == null || stored.xpToComplete != xpToComplete) return false;
+    return canDos.entries.any(
+      (entry) => entry.value.xp < (stored.canDos[entry.key]?.xp ?? 0),
+    );
+  }
+
   /// The Missions whose date is to be replayed from history
   /// ([CanDoProgress.awaitsReplay]).
   List<String> get awaitingReplay => [

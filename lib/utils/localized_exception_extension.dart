@@ -8,6 +8,7 @@ import 'package:matrix/encryption.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/authentication/delete_account_exception.dart';
+import 'package:fluffychat/features/authentication/email_link_not_clicked.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -93,6 +94,11 @@ extension LocalizedExceptionExtension on Object {
         // #Pangea
         case MatrixError.M_THREEPID_AUTH_FAILED:
           return L10n.of(context).emailVerificationFailed;
+        // Synapse's answer when the emailed link has not been clicked yet:
+        // tell the learner to click it, not the server's wording.
+        case MatrixError.M_UNAUTHORIZED
+            when (this as MatrixException).isEmailLinkNotYetClicked:
+          return L10n.of(context).clickOnEmailLinkDesc;
         case MatrixError.M_BAD_STATE:
           if ((this as MatrixException).errorMessage.contains(
             "user who was banned",

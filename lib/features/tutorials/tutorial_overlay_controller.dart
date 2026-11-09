@@ -338,6 +338,16 @@ class TutorialOverlayController {
       return;
     }
 
+    // Already done before it could show: end the sequence before an overlay
+    // exists, whose first build would find nothing to show (CLIENT-EN9,
+    // #9760). Last step only: a later one needs a relaunch, and this runs
+    // inside one.
+    final arming = tutorial.dataAt(_state.model.stepIndex).arming;
+    if (!_state.canGoForward && arming != null && arming.isSatisfied()) {
+      forwardTutorial();
+      return;
+    }
+
     final opened = _openTutorialOverlay(context);
     if (!opened) {
       _closeOverlay();

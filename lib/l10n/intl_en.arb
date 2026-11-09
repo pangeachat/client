@@ -4255,15 +4255,12 @@
     },
     "editCourseLater": "You can edit template title, descriptions, and course image later.",
     "createCourse": "Create course",
-    "createMyOwnCourse": "Create my own course",
     "stats": "Stats",
-    "createGroupChat": "Create group chat",
     "editCourse": "Edit course",
     "inviteDesc": "By username, by code or link",
     "editCourseDesc": "Here you can edit course title, description, etc.",
     "permissionsDesc": "Set permissions such as who can invite users, send messages, create chats, etc.",
     "accessDesc": "You can make your course open to the world! Or, make your course private and secure.",
-    "createGroupChatDesc": "Whereas activity sessions start and end, group chats will stay open for routine communication.",
     "deleteDesc": "Only admins can delete a course. This is a destructive action which removes all users and deletes all selected chats within the course. Proceed with caution.",
     "whatNow": "What now?",
     "chooseNextActivity": "Choose your next activity!",
@@ -5407,6 +5404,14 @@
             }
         }
     },
+    "subscriptionGracePeriodEndsOn": "Payment failed. Grace period ends on {date}",
+    "@subscriptionGracePeriodEndsOn": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
     "promoSubscription": "Promotional Subscription",
     "seatSubscription": "Institutional Seat",
     "lifetimeSubscription": "Lifetime subscription",
@@ -5841,6 +5846,15 @@
     },
     "learningObjective": "Learning Objective",
     "learningObjectives": "Learning Objectives",
+    "activitySavedTo": "Activity saved to {page}",
+    "@activitySavedTo": {
+        "description": "Line on a finished activity's end card, under \"All Finished!\", once the session is saved. {page} is the name of the Learning Objectives page (the learningObjectives string, in title case), shown as a link to the page that lists the session, so write the sentence around it as a page name.",
+        "placeholders": {
+            "page": {
+                "type": "String"
+            }
+        }
+    },
     "missionNofM": "Mission {index} of {count}",
     "@missionNofM": {
         "placeholders": {
@@ -6271,10 +6285,6 @@
             }
         }
     },
-    "centralCourseMembersSeeYou": "Members of this course can see your name and profile.",
-    "@centralCourseMembersSeeYou": {
-        "description": "Line on the onboarding page offering a new learner the Pangea-run course for their target language, before they choose to join it."
-    },
     "analyticsSharedOnJoin": "Your teachers in {course} can now see your learning progress.",
     "@analyticsSharedOnJoin": {
         "description": "Snackbar after a learner joins a course that requires sharing analytics; its action opens Learning settings.",
@@ -6315,26 +6325,26 @@
             }
         }
     },
-    "centralCourseOfferBody": "It's Pangea's course for {language} learners. Its members can see your name and profile.",
-    "@centralCourseOfferBody": {
-        "description": "Body of the popup and onboarding page offering a learner the Pangea-run course for their target language; they can join it or make a course of their own.",
+    "changeBaseLanguageTitle": "Change base language?",
+    "@changeBaseLanguageTitle": {
+        "description": "Title of the confirmation shown before a new base language switches the language of the app's menus and buttons."
+    },
+    "changeBaseLanguageDesc": "The app's menus and buttons will switch to {language}.",
+    "@changeBaseLanguageDesc": {
+        "description": "Confirmation message before a new base language switches the language of the app's menus and buttons. {language} is the name of the new base language.",
+        "type": "String",
         "placeholders": {
             "language": {
                 "type": "String"
             }
         }
     },
-    "centralCourseOfferTitle": "Join {course}?",
-    "@centralCourseOfferTitle": {
-        "description": "Title of the popup and onboarding page offering a learner the Pangea-run course for their target language.",
-        "placeholders": {
-            "course": {
-                "type": "String"
-            }
-        }
+    "accountSetupFailedHelp": "We couldn't finish setting up your account. Check your connection and try again, or log out and sign in later.",
+    "@accountSetupFailedHelp": {
+        "description": "Shown under the error on the loading page before onboarding, when setting up a new account fails. The page offers Try again and Log out buttons."
     },
-    "makeMyOwnCourseInstead": "Make my own course instead",
-    "@makeMyOwnCourseInstead": {
-        "description": "Secondary choice when a learner is offered the Pangea-run course for their language: instead, the app makes them a private course of their own."
+    "onboardingOfflineError": "You're offline. Try again once you're back online.",
+    "@onboardingOfflineError": {
+        "description": "Shown above the forward button in onboarding when saving a page fails because the device is offline."
     }
 }

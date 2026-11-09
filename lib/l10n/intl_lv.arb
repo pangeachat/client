@@ -3447,13 +3447,11 @@
     "requestSummaries": "Pieprasīt kopsavilkumus",
     "requestAccessTitle": "Pieprasīt analītikas piekļuvi?",
     "requestAccessDesc": "Vai vēlaties pieprasīt piekļuvi, lai skatītu dalībnieku analītiku?\n\nJa dalībnieki piekrīt, šīs kursa administratori varēs skatīt viņu:\n    • kopējo vārdu krājumu\n    • kopējo gramatikas jēdzienu skaitu\n    • kopējo aktivitāšu sesiju skaitu\n    • konkrētus izmantotos, pareizi un nepareizi, gramatikas jēdzienus\n\nViņi nevarēs skatīt viņu:\n    • ziņojumus ārpus kursa čatos\n    • vārdu krājuma sarakstu",
-    "createGroupChat": "Izveidot grupu čatu",
     "editCourse": "Rediģēt kursu",
     "inviteDesc": "Ar lietotājvārdu, ar kodu vai saiti",
     "editCourseDesc": "Šeit jūs varat rediģēt kursa nosaukumu, aprakstu utt.",
     "permissionsDesc": "Iestatiet atļaujas, piemēram, kas var uzaicināt lietotājus, sūtīt ziņojumus, veidot čatus utt.",
     "accessDesc": "Jūs varat padarīt savu kursu atvērtu pasaulei! Vai arī padarīt kursu privātu un drošu.",
-    "createGroupChatDesc": "Kamēr aktivitāšu sesijas sākas un beidzas, grupu čati paliks atvērti ikdienas saziņai.",
     "deleteDesc": "Tikai administratori var dzēst kursu. Šī ir postoša darbība, kas izdzēš visus lietotājus un dzēš visus atlasītos čatus kursā. Esiet uzmanīgs.",
     "whatNow": "Kas tagad?",
     "chooseNextActivity": "Izvēlies nākamo aktivitāti!",
@@ -3515,7 +3513,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-10-27 14:57:18.614958",
+    "@@last_modified": "2026-11-06 13:11:02.411550",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10037,9 +10027,7 @@
     "readAloudTake": "Paņemiet {number}",
     "videoWontPlayHere": "Šo video šeit nevar atskaņot.",
     "watchOnYoutube": "Skatīties pakalpojumā YouTube",
-    "createMyOwnCourse": "Izveidot savu kursu",
     "xpTowardMission": "{xp} XP šai misijai",
-    "centralCourseMembersSeeYou": "Šī kursa dalībnieki var redzēt jūsu vārdu un profilu.",
     "practiceStartWordCount": "{count, plural, =1{vārds, ko praktizēt} other{vārdi, ko praktizēt}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatikas punkts, ko praktizēt} other{gramatikas punkti, ko praktizēt}}",
     "practiceStartExerciseTypes": "Vingrinājumu veidi",
@@ -10050,9 +10038,6 @@
     "sharedAnalyticsOthersTitle": "Citi, kas var redzēt jūsu progresu",
     "removeAnalyticsAccess": "Noņemt piekļuvi",
     "removeAnalyticsAccessDesc": "{name} vairs nevarēs redzēt jūsu mācību progresu.",
-    "centralCourseOfferBody": "Tas ir Pangea kurss valodu apguvējiem {language}. Tā dalībnieki var redzēt jūsu vārdu un profilu.",
-    "centralCourseOfferTitle": "Pievienoties kursam {course}?",
-    "makeMyOwnCourseInstead": "Tā vietā izveidot savu kursu",
     "suggestMobileSignInSameAccount": "Pēc tam pierakstieties lietotnē ar šo kontu.",
     "botJoinsIn": "Pangea Bots pievienosies pēc {duration}",
     "botIsJoining": "Pangea Bots pievienojas…",
@@ -10060,5 +10045,11 @@
     "playWithBotNowMessage": "Neviens vēl nav pievienojies. Pangea Bots var ieņemt brīvo vietu tagad, vai arī jūs varat turpināt gaidīt.",
     "keepWaiting": "Turpināt gaidīt",
     "botTookSeatAfterAnHour": "Šī sesija bija atvērta stundu, tāpēc Pangea Bots ieņēma brīvo vietu.",
-    "botTookSeatAfterADay": "Šī sesija bija atvērta vairāk nekā dienu, tāpēc Pangea Bots ieņēma brīvo vietu. Nosūtiet ziņu, lai sāktu."
+    "botTookSeatAfterADay": "Šī sesija bija atvērta vairāk nekā dienu, tāpēc Pangea Bots ieņēma brīvo vietu. Nosūtiet ziņu, lai sāktu.",
+    "subscriptionGracePeriodEndsOn": "Maksājums neizdevās. Atliktais periods beidzas {date}",
+    "changeBaseLanguageTitle": "Mainīt pamatvalodu?",
+    "changeBaseLanguageDesc": "Lietotnes izvēlnes un pogas pārslēgsies uz {language}.",
+    "accountSetupFailedHelp": "Mēs nevarējām pabeigt jūsu konta iestatīšanu. Pārbaudiet savienojumu un mēģiniet vēlreiz, vai izrakstieties un pierakstieties vēlāk.",
+    "onboardingOfflineError": "Jūs esat bezsaistē. Mēģiniet vēlreiz, kad būsiet tiešsaistē.",
+    "activitySavedTo": "Aktivitāte saglabāta mapē {page}"
 }

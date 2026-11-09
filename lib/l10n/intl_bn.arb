@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:23.646048",
+    "@@last_modified": "2026-11-06 13:10:57.451916",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -3018,13 +3018,11 @@
     "editCourseLater": "আপনি পরে টেমপ্লেট শিরোনাম, বিবরণ, এবং কোর্স ছবি সম্পাদনা করতে পারেন।",
     "createCourse": "কোর্স তৈরি করুন",
     "stats": "পরিসংখ্যান",
-    "createGroupChat": "গ্রুপ চ্যাট তৈরি করুন",
     "editCourse": "কোর্স সম্পাদনা করুন",
     "inviteDesc": "ব্যবহারকারীর নাম, কোড বা লিঙ্কের মাধ্যমে",
     "editCourseDesc": "এখানে আপনি কোর্সের শিরোনাম, বিবরণ ইত্যাদি সম্পাদনা করতে পারেন।",
     "permissionsDesc": "অনুমতিসমূহ সেট করুন যেমন কারা আমন্ত্রণ জানাতে পারে, বার্তা পাঠাতে পারে, চ্যাট তৈরি করতে পারে, ইত্যাদি।",
     "accessDesc": "আপনি আপনার কোর্সকে বিশ্বব্যাপী উন্মুক্ত করতে পারেন! অথবা, আপনার কোর্সকে ব্যক্তিগত এবং নিরাপদ করে তুলুন।",
-    "createGroupChatDesc": "যেখানে কার্যকলাপ সেশন শুরু হয় এবং শেষ হয়, সেখানে গ্রুপ চ্যাটগুলি রুটিন যোগাযোগের জন্য খোলা থাকবে।",
     "deleteDesc": "শুধুমাত্র অ্যাডমিনরা কোর্স মুছে দিতে পারেন। এটি একটি ধ্বংসাত্মক ক্রিয়া যা সমস্ত ব্যবহারকারীকে সরিয়ে দেয় এবং কোর্সের মধ্যে নির্বাচিত সমস্ত চ্যাট মুছে দেয়। সাবধানতার সাথে এগিয়ে যান।",
     "whatNow": "এখন কি?",
     "chooseNextActivity": "আপনার পরবর্তী কার্যকলাপ নির্বাচন করুন!",
@@ -6522,10 +6520,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6543,10 +6537,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10662,9 +10652,7 @@
     "readAloudTake": "নিন {number}",
     "videoWontPlayHere": "এই ভিডিওটি এখানে চলবে না।",
     "watchOnYoutube": "ইউটিউবে দেখুন",
-    "createMyOwnCourse": "আমার নিজের কোর্স তৈরি করুন",
     "xpTowardMission": "এই মিশনে {xp} XP",
-    "centralCourseMembersSeeYou": "এই কোর্সের সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।",
     "practiceStartWordCount": "{count, plural, =1{অনুশীলনের জন্য শব্দ} other{অনুশীলনের জন্য শব্দ}}",
     "practiceStartGrammarCount": "{count, plural, =1{অনুশীলনের জন্য ব্যাকরণ বিষয়} other{অনুশীলনের জন্য ব্যাকরণ বিষয়}}",
     "practiceStartExerciseTypes": "অনুশীলনের প্রকারভেদ",
@@ -10675,9 +10663,6 @@
     "sharedAnalyticsOthersTitle": "অন্যান্য যারা আপনার অগ্রগতি দেখতে পারে",
     "removeAnalyticsAccess": "অ্যাক্সেস সরান",
     "removeAnalyticsAccessDesc": "{name} আর আপনার শেখার অগ্রগতি দেখতে পারবে না।",
-    "centralCourseOfferBody": "এটি {language} শিক্ষার্থীদের জন্য প্যানজিয়ার কোর্স। এর সদস্যরা আপনার নাম ও প্রোফাইল দেখতে পাবে।",
-    "centralCourseOfferTitle": "{course}-এ যোগ দেবেন?",
-    "makeMyOwnCourseInstead": "এর বদলে আমার নিজের কোর্স তৈরি করি",
     "suggestMobileSignInSameAccount": "তারপর এই অ্যাকাউন্ট দিয়ে অ্যাপে সাইন ইন করুন।",
     "botJoinsIn": "{duration}-এর মধ্যে প্যানগিয়া বট যোগ দেবে",
     "botIsJoining": "প্যানগিয়া বট যোগ দিচ্ছে…",
@@ -10685,5 +10670,11 @@
     "playWithBotNowMessage": "এখনও কেউ যোগ দেয়নি। প্যানগিয়া বট এখন খালি আসনে বসতে পারে, অথবা আপনি অপেক্ষা করতে পারেন।",
     "keepWaiting": "অপেক্ষা করুন",
     "botTookSeatAfterAnHour": "এই সেশনটি এক ঘন্টার জন্য খোলা ছিল, তাই প্যানগিয়া বট খালি আসনটি নিয়েছে।",
-    "botTookSeatAfterADay": "এই সেশনটি একদিনের বেশি সময় ধরে খোলা ছিল, তাই প্যানগিয়া বট খালি আসনটি নিয়েছে। শুরু করতে একটি বার্তা পাঠান।"
+    "botTookSeatAfterADay": "এই সেশনটি একদিনের বেশি সময় ধরে খোলা ছিল, তাই প্যানগিয়া বট খালি আসনটি নিয়েছে। শুরু করতে একটি বার্তা পাঠান।",
+    "subscriptionGracePeriodEndsOn": "পেমেন্ট ব্যর্থ হয়েছে। গ্রেস পিরিয়ড শেষ হবে {date}-এ",
+    "changeBaseLanguageTitle": "বেস ভাষা পরিবর্তন করবেন?",
+    "changeBaseLanguageDesc": "অ্যাপের মেনু এবং বোতামগুলি {language}-এ পরিবর্তিত হবে।",
+    "accountSetupFailedHelp": "আমরা আপনার অ্যাকাউন্ট সেট আপ করা শেষ করতে পারিনি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন, অথবা লগ আউট করুন এবং পরে সাইন ইন করুন।",
+    "onboardingOfflineError": "আপনি অফলাইন আছেন। অনলাইন হওয়ার পর আবার চেষ্টা করুন।",
+    "activitySavedTo": "অ্যাক্টিভিটি {page}-এ সেভ করা হয়েছে"
 }
