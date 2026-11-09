@@ -1,9 +1,12 @@
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
@@ -98,6 +101,20 @@ extension WorldMapClientExtension on Client {
   /// Aliases the shared [ActivitySessionDiscovery.joinedCourseSpaces] so the map
   /// and the activity start page share one definition.
   List<Room> get joinedCourseRooms => joinedCourseSpaces;
+
+  /// The joined course space a course-scoped map is showing, or null on the
+  /// world map and under a course the learner has not joined (a preview). The
+  /// space the scope came from names it outright — two joined courses can
+  /// share a plan (#9026); a scope with no space falls back to the plan.
+  Room? joinedCourseFor(MapContext mapContext) {
+    if (mapContext is! CourseMapContext) return null;
+    final spaceId = mapContext.spaceId;
+    return joinedCourseRooms.firstWhereOrNull(
+      (r) => spaceId != null
+          ? r.id == spaceId
+          : r.coursePlan?.uuid == mapContext.coursePlanId,
+    );
+  }
 
   /// True once the learner has **finished** at least one activity. Its negation,
   /// "no finished activity yet," is the new-learner condition for the

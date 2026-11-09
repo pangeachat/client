@@ -236,7 +236,10 @@ void main() {
       final room = discussionRoom(client, seats: [discussionSeat(me)]);
       client.rooms.add(room);
 
-      final standing = client.discussionStandingFor(testSessionActivityId);
+      final standing = client.discussionStandingFor(
+        testSessionActivityId,
+        courseId: testDiscussionCourseId,
+      );
       expect(standing.joined, isTrue);
       expect(standing.answered, isFalse);
       expect(standing.room?.id, room.id);
@@ -250,7 +253,10 @@ void main() {
       );
       client.rooms.add(room);
 
-      final standing = client.discussionStandingFor(testSessionActivityId);
+      final standing = client.discussionStandingFor(
+        testSessionActivityId,
+        courseId: testDiscussionCourseId,
+      );
       expect(standing.joined, isFalse);
       expect(standing.answered, isTrue);
       expect(standing.room?.id, room.id);
@@ -266,9 +272,12 @@ void main() {
         ),
       );
 
-      final standing = client.discussionStandingFor(testSessionActivityId);
+      final standing = client.discussionStandingFor(
+        testSessionActivityId,
+        courseId: testDiscussionCourseId,
+      );
       expect(standing.room, isNull);
-      expect(client.discussionStandings, isEmpty);
+      expect(client.discussionStandingsIn(testDiscussionCourseId), isEmpty);
     });
 
     test('a learner who left the room has no standing', () {
@@ -279,7 +288,7 @@ void main() {
           membership: Membership.leave,
         ),
       );
-      expect(client.discussionStandings, isEmpty);
+      expect(client.discussionStandingsIn(testDiscussionCourseId), isEmpty);
     });
 
     test('a roleplay session is no discussion standing', () {
@@ -289,7 +298,92 @@ void main() {
           roles: {'r1': ActivityRoleModel(id: 'r1', userId: me)},
         ),
       );
-      expect(client.discussionStandings, isEmpty);
+      expect(client.discussionStandingsIn(testDiscussionCourseId), isEmpty);
+    });
+  });
+
+  group('standings belong to one course', () {
+    const otherCourseId = '!other-course:fakeServer.notExisting';
+
+    test('a seat in another course is not this course\'s standing', () {
+      final there = discussionRoom(
+        client,
+        courseId: otherCourseId,
+        seats: [discussionSeat(me)],
+      );
+      client.rooms.add(there);
+
+      expect(
+        client
+            .discussionStandingFor(
+              testSessionActivityId,
+              courseId: testDiscussionCourseId,
+            )
+            .room,
+        isNull,
+        reason:
+            'two courses that list the same discussion have their own '
+            'rooms; a seat in one must not open or mark the other',
+      );
+      expect(client.discussionStandingsIn(testDiscussionCourseId), isEmpty);
+      expect(
+        client
+            .discussionStandingFor(
+              testSessionActivityId,
+              courseId: otherCourseId,
+            )
+            .room
+            ?.id,
+        there.id,
+      );
+    });
+
+    test('each course sees only its own room', () {
+      final here = discussionRoom(
+        client,
+        roomId: '!here:fakeServer.notExisting',
+        seats: [discussionSeat(me, finishedAt: ended, archivedAt: ended)],
+      );
+      final there = discussionRoom(
+        client,
+        roomId: '!there:fakeServer.notExisting',
+        courseId: otherCourseId,
+        seats: [discussionSeat(me)],
+      );
+      client.rooms.addAll([here, there]);
+
+      final standing = client.discussionStandingFor(
+        testSessionActivityId,
+        courseId: testDiscussionCourseId,
+      );
+      expect(standing.answered, isTrue);
+      expect(standing.room?.id, here.id);
+    });
+
+    test('no course (a preview) has no standing', () {
+      client.rooms.add(discussionRoom(client, seats: [discussionSeat(me)]));
+
+      expect(
+        client
+            .discussionStandingFor(testSessionActivityId, courseId: null)
+            .room,
+        isNull,
+      );
+      expect(client.discussionStandingsIn(null), isEmpty);
+    });
+
+    test('the learner\'s history reads their room in any course', () {
+      final there = discussionRoom(
+        client,
+        courseId: otherCourseId,
+        seats: [discussionSeat(me)],
+      );
+      client.rooms.add(there);
+
+      expect(
+        client.discussionStandingInAnyCourse(testSessionActivityId).room?.id,
+        there.id,
+      );
     });
   });
 

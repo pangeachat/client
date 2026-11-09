@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
@@ -18,7 +17,6 @@ import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
@@ -500,20 +498,10 @@ class WorldMapController extends State<WorldMap>
 
   bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
 
-  /// The joined course space a course-scoped map is showing, or null on the
-  /// world map and under a course the learner has not joined (a preview). The
-  /// space the scope came from names it outright — two joined courses can
-  /// share a plan (#9026); a scope with no space falls back to the plan.
-  Room? get courseRoom {
-    final mapContext = MapContextController.notifier.value;
-    if (mapContext is! CourseMapContext) return null;
-    final spaceId = mapContext.spaceId;
-    return _client?.joinedCourseRooms.firstWhereOrNull(
-      (r) => spaceId != null
-          ? r.id == spaceId
-          : r.coursePlan?.uuid == mapContext.coursePlanId,
-    );
-  }
+  /// The joined course space a course-scoped map is showing
+  /// ([WorldMapClientExtension.joinedCourseFor]).
+  Room? get courseRoom =>
+      _client?.joinedCourseFor(MapContextController.notifier.value);
 
   /// The id of the activity the detail panel is focused on, or null. Focus is
   /// the persistent "I'm working with this one" state (its panel is open and the
@@ -1769,7 +1757,9 @@ class WorldMapController extends State<WorldMap>
     if (MapContextController.notifier.value is CoursePreviewMapContext) return;
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
     if (card.activityMode.opensSharedRoom) {
-      final own = client?.discussionStandingFor(card.activityId).room;
+      final own = client
+          ?.discussionStandingFor(card.activityId, courseId: courseRoom?.id)
+          .room;
       if (own != null) {
         context.go(WorkspaceNav.openRoomById(uri, own.id));
         return;

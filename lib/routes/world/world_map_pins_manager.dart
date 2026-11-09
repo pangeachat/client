@@ -597,7 +597,7 @@ class WorldMapPinsManager {
 
     final withDiscussions = {...signals};
     for (final MapEntry(key: id, value: standing)
-        in client.discussionStandings.entries) {
+        in client.discussionStandingsIn(course?.id).entries) {
       final state = DiscussionCard.stateOf(standing);
       if (state == null) continue;
       withDiscussions[id] = PinSignals(

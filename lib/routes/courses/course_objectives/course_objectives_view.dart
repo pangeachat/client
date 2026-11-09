@@ -472,8 +472,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   /// the same live state the cards render. `recency` stays 0: open sessions
   /// reach this surface through the discovery cache, which carries no
   /// per-session start time. See [rankSuggestedActivities].
-  /// [discussionStandings] is read once per build
-  /// ([DiscussionClientExtension.discussionStandings]), not per activity.
+  /// [discussionStandings] is read once per build, for this course
+  /// ([DiscussionClientExtension.discussionStandingsIn]), not per activity.
   PinSignals _signalsFor(
     String activityId,
     Map<String, MissionXpBreakdown> xpByActivity,
@@ -560,9 +560,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   void _openActivity(QuestActivity ref, String missionId) {
     if (widget.readOnly) return;
     if (ref.plan.activityMode.opensSharedRoom) {
-      final own = Matrix.of(
-        context,
-      ).client.discussionStandingFor(ref.activityId).room;
+      final own = Matrix.of(context).client
+          .discussionStandingFor(ref.activityId, courseId: widget.room?.id)
+          .room;
       if (own != null) {
         _openSession(own.id, missionId);
         return;
@@ -660,8 +660,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                 ]),
                 builder: (context, _) {
                   final xpByActivity = _xpByActivity();
-                  final discussionStandings =
-                      widget.objectivesProvider.client.discussionStandings;
+                  final discussionStandings = widget.objectivesProvider.client
+                      .discussionStandingsIn(widget.room?.id);
                   if (widget.suggestedOnly) {
                     // The course page's Mission card and its activities
                     // (#9437), ordered by the same Priority matrix the map
@@ -839,6 +839,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                                   ? null
                                   : inRow?.activityId,
                               interactive: !widget.readOnly,
+                              courseId: widget.room?.id,
                             ),
                     );
                   }
@@ -928,6 +929,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         liveStateByActivity: _liveStateFor,
                         availableParticipants: _availableParticipants,
                         interactive: !widget.readOnly,
+                        courseId: widget.room?.id,
                       );
                     },
                   );

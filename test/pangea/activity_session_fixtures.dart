@@ -136,6 +136,9 @@ const testDiscussionBotId = '@bot:fakeServer.notExisting';
 
 const testDiscussionRoomId = '!discussion:fakeServer.notExisting';
 
+/// The course the discussion fixtures' rooms are made for.
+const testDiscussionCourseId = '!course:fakeServer.notExisting';
+
 /// A discussion plan: mode "Discussion" and the one shared `participant`
 /// role, whose goals are the questions.
 ActivityPlanModel discussionActivityPlan({
@@ -191,6 +194,7 @@ Room discussionRoom(
   Client client, {
   String roomId = testDiscussionRoomId,
   String activityId = testSessionActivityId,
+  String courseId = testDiscussionCourseId,
   Iterable<ActivityRoleModel> seats = const [],
   Map<String, List<String>> awarded = const {},
   String creator = testDiscussionBotId,
@@ -208,7 +212,7 @@ Room discussionRoom(
         'type': '${PangeaRoomTypes.activitySession}:$activityId',
         if (marked)
           'pangea.discussion': {
-            'course_id': '!course:fakeServer.notExisting',
+            'course_id': courseId,
             'activity_id': activityId,
           },
       },

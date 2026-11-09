@@ -75,6 +75,9 @@ class ObjectiveSection extends StatelessWidget {
   /// Passed through to [ActivityCarousel.interactive].
   final bool interactive;
 
+  /// The course this section belongs to, for its discussion cards.
+  final String? courseId;
+
   const ObjectiveSection({
     super.key,
     required this.group,
@@ -94,6 +97,7 @@ class ObjectiveSection extends StatelessWidget {
     this.cardWidth,
     this.cardHeight,
     this.interactive = true,
+    required this.courseId,
   });
 
   bool get _collapsible => onToggleCollapsed != null;
@@ -271,6 +275,7 @@ class ObjectiveSection extends StatelessWidget {
               cardWidth: cardWidth,
               cardHeight: cardHeight,
               interactive: interactive,
+              courseId: courseId,
             ),
         ],
       ),

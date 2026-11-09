@@ -199,6 +199,17 @@ extension RoomActivityModeExtension on Room {
         create.senderId == BotName.byEnvironment;
   }
 
+  /// The course a discussion room was made for, from its creation marker;
+  /// null for every other room. Two courses sharing a discussion never share
+  /// a room, so this is what tells a learner's room in one apart from the
+  /// other.
+  String? get discussionCourseId {
+    if (!isDiscussionRoom) return null;
+    final marker = getState(EventTypes.RoomCreate)?.content[_discussionMarker];
+    final courseId = marker is Map ? marker['course_id'] : null;
+    return courseId is String ? courseId : null;
+  }
+
   /// The mode of the activity this room is a session of; null for a room
   /// that is not one. Known without the plan.
   ActivityMode? get activityMode => !isActivitySession

@@ -70,6 +70,12 @@ class ActivityCarousel extends StatefulWidget {
   /// click that does nothing.
   final bool interactive;
 
+  /// The course the row lists, for its discussion cards ([DiscussionCard.courseId]).
+  final String? courseId;
+
+  /// The learner's history across courses ([DiscussionCard.anyCourse]).
+  final bool discussionsInAnyCourse;
+
   const ActivityCarousel({
     super.key,
     required this.activities,
@@ -84,6 +90,8 @@ class ActivityCarousel extends StatefulWidget {
     this.cardWidth,
     this.cardHeight,
     this.interactive = true,
+    required this.courseId,
+    this.discussionsInAnyCourse = false,
   });
 
   /// Whether the learner can start an activity now — what a card dims on
@@ -248,6 +256,8 @@ class _ActivityCarouselState extends State<ActivityCarousel> {
                   final framed = switch (ref.plan.activityMode.cardStyle) {
                     ActivityCardStyle.discussion => DiscussionCard(
                       plan: ref.plan,
+                      courseId: widget.courseId,
+                      anyCourse: widget.discussionsInAnyCourse,
                       width: _cardWidth,
                       height: _cardHeight,
                       fontSize: _isColumnMode ? 16.0 : 12.0,

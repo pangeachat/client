@@ -5,10 +5,13 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/discussion_card.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_card_dismiss_button.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 /// A large map pin drawn as the activity's own card (under
 /// [kMapActivityCards]): the course plan's [ActivitySuggestionCard] with a
@@ -93,6 +96,9 @@ class WorldMapActivityCard extends StatelessWidget {
         : switch (card.activityMode.cardStyle) {
             ActivityCardStyle.discussion => DiscussionCard(
               plan: plan,
+              courseId: Matrix.of(
+                context,
+              ).client.joinedCourseFor(MapContextController.notifier.value)?.id,
               width: PinSize.mapCardWidth,
               height: PinSize.mapCardHeight,
               imageHeight: PinSize.mapCardImageHeight,

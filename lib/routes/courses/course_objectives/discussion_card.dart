@@ -28,9 +28,20 @@ class DiscussionCard extends StatelessWidget {
   final bool frameWhenResting;
   final bool selected;
 
+  /// The course this card shows the discussion in: its Joined and Answered
+  /// pills and unread bubble come from the learner's room in that course
+  /// only. Null with [anyCourse] false (a course preview) shows none.
+  final String? courseId;
+
+  /// The learner's own history, across their courses: the pills come from
+  /// their room in whichever course it is.
+  final bool anyCourse;
+
   const DiscussionCard({
     super.key,
     required this.plan,
+    required this.courseId,
+    this.anyCourse = false,
     required this.width,
     required this.height,
     this.imageHeight,
@@ -53,7 +64,9 @@ class DiscussionCard extends StatelessWidget {
     return StreamBuilder(
       stream: client.onSync.stream,
       builder: (context, _) {
-        final standing = client.discussionStandingFor(plan.activityId);
+        final standing = anyCourse
+            ? client.discussionStandingInAnyCourse(plan.activityId)
+            : client.discussionStandingFor(plan.activityId, courseId: courseId);
         final room = standing.activeRoom;
         final l10n = L10n.of(context);
         final theme = Theme.of(context);

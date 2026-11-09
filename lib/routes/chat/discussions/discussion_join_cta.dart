@@ -144,7 +144,10 @@ class _DiscussionJoinCtaState extends State<DiscussionJoinCta> {
     setState(() => _joining = true);
     try {
       final roomId =
-          course.client.discussionStandingFor(widget.activityId).room?.id ??
+          course.client
+              .discussionStandingFor(widget.activityId, courseId: course.id)
+              .room
+              ?.id ??
           await _placeInRoom(course);
       if (roomId == null || !mounted) return;
       NavigationUtil.goToSpaceRoute(roomId, [], context);
