@@ -109,7 +109,7 @@ class TestRoster extends CallRoster {
   bool get roomConnected => connected;
 
   @override
-  bool get roomRecovering => !connected && recovering;
+  bool get roomRecovering => !connected && recovering && !roomGaveUp;
 }
 
 /// Reads the real room state, unlike [TestRoster].
@@ -162,6 +162,48 @@ void main() {
 
       expect(real.recovering, isFalse);
     });
+
+    void giveUp() => room.events.streamCtrl.add(
+      lk.RoomDisconnectedEvent(
+        reason: lk.DisconnectReason.reconnectAttemptsExceeded,
+      ),
+    );
+
+    // Still ringing alone: recovery starts with nobody in the picture, so only
+    // the recovery itself changes when the room gives up. A listener waiting
+    // on recovery must still hear it.
+    test('giving up from an empty call is heard', () async {
+      roster.connected = false;
+      roster.recompute();
+      expect(roster.isRecovering, isTrue);
+      final before = notifications;
+
+      giveUp();
+      await pumpEventQueue();
+
+      expect(roster.isRecovering, isFalse);
+      expect(notifications, greaterThan(before));
+    });
+
+    test(
+      'the picture is kept while recovering and cleared on giving up',
+      () async {
+        roster.identities = {'$peer:THEIRPHONE'};
+        roster.recompute();
+        roster.connected = false;
+        roster.recompute();
+        expect(roster.isRecovering, isTrue);
+        expect(roster.hasPeer, isTrue, reason: 'kept while it comes back');
+        final before = notifications;
+
+        giveUp();
+        await pumpEventQueue();
+
+        expect(roster.isRecovering, isFalse);
+        expect(roster.hasPeer, isFalse, reason: 'gone for good');
+        expect(notifications, greaterThan(before));
+      },
+    );
   });
 
   group('reading who is in the call', () {
