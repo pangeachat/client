@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:fluffychat/features/user/own_profile_client_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_client_extension.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/user_type_onboarding_step.dart';
@@ -24,6 +25,7 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
   Future<OnboardingStep?> execute() async {
     Uri? avatarUrl = state.avatarInfo?.avatarUrl;
     final avatarBytes = state.avatarInfo?.avatarBytes;
+    var saved = true;
     if (avatarBytes != null && avatarUrl == null) {
       try {
         avatarUrl = await client.uploadContent(avatarBytes);
@@ -31,6 +33,7 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
         // the same picture a second time.
         state.setAvatarInfo(AvatarInfo(avatarUrl: avatarUrl));
       } catch (e, s) {
+        saved = false;
         ErrorHandler.logError(e: e, s: s, data: {});
       }
     }
@@ -51,6 +54,7 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
         await client.setOwnAvatarUrl(avatarUrl);
       }
     } catch (e, s) {
+      saved = false;
       ErrorHandler.logError(e: e, s: s, data: {});
     }
 
@@ -60,7 +64,20 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
         await client.setOwnDisplayName(displayName);
       }
     } catch (e, s) {
+      saved = false;
       ErrorHandler.logError(e: e, s: s, data: {});
+    }
+
+    // Awaited so that reaching the role page means a resumed run opens there
+    // (onboarding.instructions.md § What onboarding reads and saves). Left
+    // unmarked after a failed save, or if this write fails, the run resumes on
+    // this page.
+    if (saved) {
+      try {
+        await client.markOnboardingProfileSaved();
+      } catch (e, s) {
+        ErrorHandler.logError(e: e, s: s, data: {'mark': 'profile_saved'});
+      }
     }
 
     return UserTypeOnboardingStep(

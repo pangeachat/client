@@ -2,6 +2,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_client_extension.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
 
 abstract class OnboardingStep {
@@ -49,6 +51,17 @@ abstract class OnboardingStep {
   String nextStepText(L10n l10n) => l10n.next;
 
   String lastStepText(L10n l10n) => l10n.letsGo;
+
+  /// Marks the level saved, once it is. Awaited so that reaching the next page
+  /// means a resumed run opens there. A failed mark is reported and doesn't
+  /// stop the person; the run then resumes on the level page.
+  Future<void> markLevelSaved() async {
+    try {
+      await client.markOnboardingLevelSaved();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'mark': 'level_saved'});
+    }
+  }
 
   Future<OnboardingStep?> execute();
 
