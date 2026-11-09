@@ -18,10 +18,10 @@ Onboarding is a series of pages:
 3. **Class code.** Asks the user if they have a code. Yes opens a field; No moves on. If someone opened a class link before signing up, and that join succeeds, they skip this page.
 4. **Languages.** The language they learn or teach, and the one they already speak, which starts on the device's language. The two must differ. Skipped when a joined course supplies them.
 5. **Level.** Their CEFR level, or the level they teach. Skipped when a joined course supplies it.
-6. **Then it branches:**
+6. **Course:**
    - Someone who joined a course sees a welcome page for it.
    - A teacher in no course can request a course built on their textbook, or skip.
-7. **Trial.** For an account inside its [trial window](subscriptions.instructions.md#trial-window), a last page says their free trial is running, once. Its button just closes the page; the trial needs no action and no card.
+7. **Trial.** For an account inside its [trial window](subscriptions.instructions.md#trial-window), a last page says their free trial is running and, at the top, that no credit card is required. It shows once, and its button just closes the page.
 
 They land in their course if they joined one; otherwise on the world map, where the first tutorial starts, rather than the chat list, which would show a new person an empty list.
 
@@ -35,16 +35,16 @@ Choices carry over from page to page, so a later page can use an earlier one. Un
 
 Besides the user's input, onboarding reads:
 
-- The device's language to determine the user's initial L1 (unless it is set by a joined course).
+- The device's language, which is always the user's initial L1, including after a course join.
 - Their account's saved role, languages, level, name, and avatar, which the pages show initially before the user makes changes.
 
 #### What it saves
 
 The name, avatar, role, languages and level, including any a joined course supplies, are saved to the person's account when they move forward, as is whether the trial page was shown. A class code is kept on this device ([joining-courses § Route 2 — Class Code](joining-courses.instructions.md#route-2--class-code)), and a course request goes to our servers to be fulfilled.
 
-When a save fails, the page shows the error and stays where it is until Next works; the class-code and course request pages can also be skipped, and Setup has its own way out (below). The profile, role and trial pages are the exceptions: a failed save there does not stop the person, the old name or picture stays, and the role is saved again with their languages.
+When a save fails, the page shows the error and stays where it is until the Next button works; offline, the error says so and asks them to try again once they're back online. The class-code and course request pages can also be skipped, and Setup has its own way out (below). The profile, role and trial pages are the exceptions: a failed save there does not stop the person, the old name or picture stays, and the role is saved again with their languages.
 
-A signed-in account with no L2 is sent to onboarding, whatever link it opened, and saving the L2 marks onboarding as done. Someone who leaves before then starts a new run, with only what was saved to their account.
+Saving the L2 marks onboarding as done. A signed-in account with no L2 is always sent to onboarding. Someone who leaves before then starts a new run, with only what was saved to their account.
 
 ### Setup
 
@@ -56,14 +56,19 @@ If the creation date cannot be saved, the page says setup did not finish: Try ag
 
 Joining a course and loading its content are separate outcomes: a course can be joined while its content fails to load.
 
-Onboarding takes the user's L1, L2 and CEFR level from the joined course's content. When the content fails to load, the level page is shown, and the L2 comes from the course's own record, with the device's language as the L1; if the course records no language, or teaches the device's language, the languages page is shown too. The welcome page then shows only the course's name, picture and teacher.
+Onboarding takes the user's L2 and CEFR level from the joined course's content, and their L1 from the device, never from the course. When the content fails to load, the L2 comes from the course's own record, the level page is shown, and the welcome page shows only the course's name, picture and teacher. Either way, if the course records no L2 or teaches the device's language (because a user's L1 and L2 cannot match), the languages and level pages are shown.
 
 ### The course request
 
-A teacher gives their name, institution, and textbook or curriculum. Submitting files the same request as the [website's educator form](../../../website/.github/instructions/course-request.instructions.md), which the team builds and delivers.
+A teacher gives their name, institution, and textbook or curriculum. Submitting it files the same request as the [website's educator form](../../../website/.github/instructions/course-request.instructions.md).
 
 ## Open questions
 
-- Someone who leaves once their L2 is saved skips the rest. Should onboarding resume where they left off?
-- Some old or corrupted accounts have no role. When and how should they be asked to set it?
-- Repeated save failures leave users unable to move forward, with an unclear error. How should onboarding handle this?
+- Can the choreographer allow a user's L1 and L2 to match?
+
+## Future work
+
+- Resume an unfinished onboarding from what's saved to the account, for runs that start after this ships, and never trap the person in onboarding when a save fails.
+- A role option in learning settings, and a popup on app open for an account with no role until it chooses one.
+- Keep choices on the device when a save fails offline, and save them to the account once back online.
+- Offer a learner with no class code or link their L2's central course, or a course of their own if they decline, so every learner lands in a course. Teachers aren't offered one.
