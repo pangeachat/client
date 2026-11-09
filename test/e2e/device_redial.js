@@ -34,8 +34,15 @@ const notified = async () => {
   const start = dump.indexOf('Notification List:');
   if (start === -1) throw new Error('dumpsys notification had no Notification List; cannot tell');
   const end = dump.indexOf('\n  mArchive=', start);
-  const posted = dump.slice(start, end === -1 ? undefined : end);
-  return posted.split('\n').some((l) => l.includes(`pkg=${d.PKG}`) && l.includes('pangea_ongoing_call'));
+  if (end === -1) throw new Error('dumpsys notification had no archive after its list; cannot bound the posted notifications');
+  const posted = dump.slice(start, end);
+  // Exactly this app's ongoing-call notification: the package and the channel
+  // compared whole, never as a prefix or substring of another.
+  return posted.split('\n').some((l) => {
+    const pkg = (l.match(/\bpkg=(\S+)/) || [])[1];
+    const channel = (l.match(/Notification\(channel=([^\s)]+)/) || [])[1];
+    return pkg === d.PKG && channel === 'pangea_ongoing_call';
+  });
 };
 
 /// Waits for it to go, rather than sampling once: teardown has to reach the

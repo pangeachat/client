@@ -78,6 +78,11 @@ async function busy(A, ms) {
   console.log('[5] the phone ends the call; every frame of the summary is kept');
   const elapsed = Math.round((Date.now() - startedAt) / 1000);
   console.log(`   the call is about ${elapsed}s old (${Math.floor(elapsed / 60)}:${String(elapsed % 60).padStart(2, '0')})`);
+  // One tap, and it has to work: the app is brought to the front and given a
+  // moment to settle first, so the panel is up when the tap lands. A retry here
+  // would turn a real failed hang-up into a pass.
+  await d.ensureAwakeAndForeground();
+  await wait(2000);
   await d.tapControl('hangup');
   const frames = [];
   for (let i = 0; i < 12; i++) {
@@ -86,11 +91,7 @@ async function busy(A, ms) {
     frames.push(p);
     await wait(900);
   }
-  // Re-tapped only while the PHONE is still in the call: a tap that missed is
-  // retried, and one that landed is never followed by a stray tap on the
-  // summary underneath.
-  const ended = await h.actUntil('end',
-    async () => { if (await mx.hasMembership(P.token, ROOM_ID, P.userId)) await d.tapControl('hangup'); },
+  const ended = await h.actUntil('end', async () => {},
     async () => !(await mx.hasMembership(A.token, ROOM_ID, A.userId)), { tries: 8, gap: 3000 });
   h.check('phone', 'ending on the phone ended it for the laptop too', ended, 'the laptop was still in the call');
   console.log(`   ${frames.length} summary frames: ${shotsDir}/RS-SUM-*.png`);
