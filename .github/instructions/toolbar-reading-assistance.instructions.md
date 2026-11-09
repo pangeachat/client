@@ -98,10 +98,10 @@ The design insiration is from Zelda's spin slash of grass to uncover rupees.
 In audio mode, the toolbar plays the full sentence with word-by-word highlighting:
 
 - Each word highlights as it's being spoken (driven by TTS timing data)
-- The user can tap individual words to hear them in isolation
+- Tapping a word jumps the sentence audio to that word and plays on from there
 - Highlighted tokens follow the TTS playback position in real time
 
-For audio messages (voice notes), the toolbar provides transcription with the same word-level interaction — tap any word in the transcript to hear it, see its meaning, or practice it.
+For audio messages (voice notes), the toolbar provides transcription with the same word-level interaction — tap any word in the transcript to hear it or see its meaning.
 
 ## Emoji Associations
 
@@ -147,7 +147,7 @@ This is especially important for mixed-language and polysemous inputs where the 
 - **Lazy loading.** Translation, TTS, and transcription are fetched only when the user activates the corresponding mode. Nothing is prefetched on message tap.
 - **L1 output honors the learner's script.** Translate and Speech Translation request and cache by the learner's full L1 code, so a Traditional Chinese learner never gets Simplified text. A regional variant that writes like its base language (English (US)) shares cached translations with it.
 - **Token-centric.** All assistance features require the message to have a tokenized representation. If tokens aren't available (message still loading, unsupported language), the toolbar shows limited functionality.
-- **First-click-only analytics.** Tapping the same word repeatedly doesn't keep earning XP. Only the first interaction with a word per session counts, preventing XP gaming.
+- **First-click-only analytics.** Tapping the same word repeatedly doesn't keep earning XP. Only the first tap the learner ever makes on a new word counts, preventing XP gaming.
 - **Deferred setState.** Because the overlay lives in the compositing layer alongside the chat, setState calls must be phase-aware to avoid "setState during build" errors. All state updates check the scheduler phase and defer if necessary.
 
 ## Future Work

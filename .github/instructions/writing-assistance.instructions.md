@@ -39,7 +39,7 @@ The current `StartIGCButton` is updated to display a **segmented ring**, indicat
 - Each segment's **color** corresponds to its match's `ReplacementTypeEnum` color category.
 - Segments have two opacity states:
   - **Bright (full opacity)** — match not yet viewed.
-  - **Muted (low opacity)** — match has been viewed (or was auto-applied).
+  - **Muted (low opacity)** — match has been viewed.
 - **AutocorrectPopup retained** — when surface corrections are auto-applied, the existing `AutocorrectPopup` briefly appears to draw attention to the change. This ensures auto-applied edits aren't silently swallowed. The popup is the same toast-like overlay currently used.
 - The ring is a **status indicator only** — tapping it does not navigate between matches. Users navigate by tapping highlighted text in the input field.
 
@@ -105,10 +105,6 @@ One slot sits above the message input field, and the span card and the suggestio
 
 A single, persistent popup that changes content as the user taps different highlighted matches. No open/close animation between matches — the card stays in place and its content transitions smoothly.
 
-### Positioning
-
-The card positions itself relative to the currently selected match's highlighted text. When the user taps a different match, the card **animates smoothly** to the new position (slide + content crossfade) rather than jumping. The animation should feel fluid and natural — not snapping or teleporting. If the message is short and all highlights are close together, the movement will be subtle. For long messages where highlights are far apart, the card glides to follow.
-
 ### Layout
 
 ```
@@ -138,7 +134,7 @@ The card positions itself relative to the currently selected match's highlighted
 
 ```
 ┌─────────────────────────────────┐
-│  ✕       Edit Category Title   🚩 │
+│  ✕       Edit Category Title    ⋮ │
 │                                 │
 │  🤖  Hint text                   │
 │                                 │
@@ -149,9 +145,9 @@ The card positions itself relative to the currently selected match's highlighted
 ### Interaction Model
 
 1. **User taps highlighted text** → Span card appears (or updates content if already open) showing that match's hint and choices.
-2. **User reads the suggestion** → Once they navigate away (tap different text, tap close, or tap outside), the match is marked **viewed**. Its highlight and ring segment become bright.
+2. **User reads the suggestion** → Once they navigate away (tap different text, tap close, or tap outside), the match is marked **viewed**. Its highlight and ring segment become muted.
 3. **User taps a choice** → If the choice is the best replacement, the text is replaced, the match is marked **accepted**, and the card advances to the next unviewed match (or closes if none remain). If not, the choice is marked as selected and the user gets the feedback of the color change of the choice. They can click it again to do it anyway. "alt" choices should appear as a lighter green. "distractors" should appear as red.
-4. **User taps the undo action** → Reverts to the original text for that match. The match returns to `viewed` status (bright, but choices shown again instead of diff view). Undo is available per-match (not just most-recent) because **spans never overlap** — each match targets a unique, non-overlapping substring.
+4. **User taps the undo action** → Reverts to the original text for that match. The match moves to `undo` status (muted, but choices shown again instead of diff view). Undo is available per-match (not just most-recent) because **spans never overlap** — each match targets a unique, non-overlapping substring.
 5. **User taps an already-accepted match's text** → Span card reopens showing `original → replacement` with an undo icon, instead of the choices row. Tapping undo reverts the text and restores the full choices view. This is identical for auto-applied matches — tapping a bright auto-applied highlight opens the same diff view with undo.
 6. **User taps close (✕)** → Card closes. Match is marked viewed.
 
@@ -163,7 +159,7 @@ The card positions itself relative to the currently selected match's highlighted
 
 Learners who know a language by ear before they know its script cannot tell the choices apart on sight, and the only way to hear one is to tap it — which also answers with it. **Listen First** is the mode that separates the two. While it is on, one tap on a choice plays it and changes nothing; a second tap on the **same** choice, inside the platform double-tap window, selects it. With it off, a tap selects as it always has.
 
-The mode is an icon-only toggle in the card header, next to the flag — on or off, no third state, off until the learner turns it on.
+The mode is an icon-only toggle in the card header, next to the `⋮` menu — on or off, no third state, off until the learner turns it on.
 
 - **It is remembered, per learner, across matches and sessions.** Knowing a language by ear is a property of the learner, not of one correction; resetting it per match made them re-arm it on every highlighted word. The visible header toggle is what keeps a remembered mode from being an invisible one.
 - **Only the same choice arms.** The second tap has to land on the choice the first one played — tapping a different choice plays that one instead and arms nothing — and a tap after the window has closed replays rather than selects. Both failures cost a replay, never a wrong word in the message, which is the direction this mode exists to fail in.
@@ -186,7 +182,7 @@ The menu holds, in order:
 | Entry | Kind |
 | --- | --- |
 | **Listen first** | Mode, checked when on — present only when it has folded in from the header, and only on a match that has choices |
-| **Autocheck on send** | Mode, checked when on — the same `autoIGC` toggle learning settings owns, so a learner handed a card they did not want can stop it from where they are |
+| **Autocheck on send** | Mode, checked when on — the same `autoIGC` toggle learning settings owns, which also gates the check that runs when typing pauses, so a learner handed a card they did not want can stop it from where they are |
 | **Report content issue** | Action — the feedback dialog |
 | **Learning settings** | Action — opens the learning settings page |
 
@@ -208,7 +204,7 @@ The trigger is the measured width of this title in this card at this text scale,
 - Close button (✕)
 - Bot face icon (now left-aligned next to hint text)
 - Edit category as header title (e.g. "Verb Conjugation", "Word Choice")
-- Flag button (feedback)
+- Feedback (**Report content issue** in the `⋮` menu)
 - Choices array (with responsive horizontal/vertical layout)
 - Hint/explanation text
 
@@ -221,10 +217,10 @@ Matches no longer require explicit accept/ignore. The lifecycle simplifies to:
 | Status      | Meaning                                                 | Ring/Highlight        |
 | ----------- | ------------------------------------------------------- | --------------------- |
 | `automatic` | Auto-applied on arrival (punct, diacritics, spell, cap) | Bright immediately    |
-| `open`      | Server-returned, not yet viewed                         | Muted                 |
-| `viewed`    | User opened the span card and navigated away            | Bright                |
+| `open`      | Server-returned, not yet viewed                         | Bright                |
+| `viewed`    | User opened the span card and navigated away            | Muted                 |
 | `accepted`  | User tapped a choice, text replaced                     | Bright                |
-| `undone`    | User reverted an accepted match                         | Bright (still viewed) |
+| `undo`      | User reverted an accepted match                         | Muted (still viewed)  |
 
 The `ignored` status is removed — viewing is sufficient. The message is sendable at any point regardless of match status.
 
@@ -243,7 +239,7 @@ The user can send at any time. There is no gate on unresolved matches.
 
 ## Feedback System
 
-Unchanged from current design. When the user taps the flag (🚩) on the span card:
+Unchanged from current design. When the user picks **Report content issue** from the span card's `⋮` menu:
 
 - They can submit feedback text and a score (thumbs up/down maps to 10/0).
 - The server audits the suggestion, escalates the model if rejected, and persists the judgment for fine-tuning.
@@ -284,11 +280,11 @@ Choreographer (ChangeNotifier)
 
 ### Flow Summary
 
-1. User types → debounce → `/grammar_v2` request
+1. User pauses typing → debounce → `/grammar_v2` request, while Autocheck on send is on
 2. Response returns matches → auto-apply surface corrections, display the rest
-3. Ring segments and text highlights appear (muted)
+3. Ring segments and text highlights appear (bright)
 4. User taps highlights to view suggestions, optionally accepts choices
-5. Viewed matches become bright
+5. Viewed matches become muted
 6. User sends when ready — no gate on unresolved matches
 7. On send: tokenize final text, save `ChoreoRecordModel` with match history
 
@@ -327,9 +323,6 @@ Two things deliberately survive it. Messages sent before the cutover still carry
 
 - **Cycling placeholder text** in the input bar ("Type in English or Spanish…") to teach users they can write in L1 ([#5653](https://github.com/pangeachat/client/issues/5653))
 - **Color palette finalization** — exact hue/opacity values for each match category
-- **Ring animate in/out** — entrance animation when segments appear, exit when input cleared
-- **Ring segment muted→bright transition** — per-segment animation when a match is viewed
-- **Span card slide animation** — fluid positional slide + content crossfade when switching between matches
 - **Accessibility badge** — small unviewed-count badge on the Pangea Chat icon
 - **Analytics events** — track span card views, choice selections, and undo actions in Firebase Analytics
 - **`to_replace` migration** — the current offset-based span targeting is more brittle than the server's unique `to_replace` substring system. Consider migrating the client to identify spans by `to_replace` text rather than character offsets. This is a large change because legacy span data stored in saved JSON events would need `fromJson` migration.

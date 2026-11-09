@@ -64,7 +64,7 @@ Choosing a level is answering one question: *would we ever force someone onto th
 
 These definitions are analogous to the SemVer standard definitions for these version numbers, except defined in terms of the need for user-side forced updates instead of in terms of backwards compatibility.
 
-**Bumping is a judgment call, not a per-PR obligation** — most PRs need none. Raise it when a PR is the thing a future floor-raise would target, or when a release is being cut. A release must still bump `+N`, so the tag is unique and the version the app reports matches the release it came from — but because the release cutter now creates the tag rather than the workflow, a reused version collides loudly at that point instead of silently producing no tag and no deploy.
+**Bumping is a judgment call, not a per-PR obligation** — most PRs need none. Raise it when a PR is the thing a future floor-raise would target, or when a release is being cut. A release must still bump `+N`, so the tag is unique — but because the release cutter now creates the tag rather than the workflow, a reused version collides loudly at that point instead of silently producing no tag and no deploy.
 
 ## Environment Config (`.env`)
 
@@ -118,7 +118,7 @@ When a bug must be fixed on production before the next full sync from `main`:
 3. **PR to `production`** — open a PR targeting `production`, not `main`.
 4. **Bump the version** in `pubspec.yaml` — see [Versioning](#versioning). A hotfix is a patch: increment the build number (e.g., `4.1.18+6` → `4.1.18+7`).
 5. **Publish a release to deploy** — merging the PR to `production` deploys nothing. Once the fix is on the branch, cut a release targeting it; publishing runs [`release.yaml`](../../.github/workflows/release.yaml). See [release-process](https://github.com/pangeachat/.github/blob/main/.github/instructions/release-process.instructions.md) for the gates and the release-body contract.
-6. **Forward-port to `main`** — after the hotfix is confirmed working on production, ensure the fix also exists on `main` (via the original PR, a separate PR, or the next sync merge). Otherwise the fix regresses on the next production sync.
+6. **Forward-port to `main`** — after the hotfix is confirmed working on production, ensure the fix also exists on `main` (via the original PR or a separate PR). Otherwise the fix regresses on the next production sync.
 
 ### Key risks
 

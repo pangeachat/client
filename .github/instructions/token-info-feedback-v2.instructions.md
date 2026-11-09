@@ -8,7 +8,7 @@ Migrate the token info feedback flow to use the v2 endpoint and v2 phonetic tran
 
 ## Context
 
-Token info feedback lets users flag incorrect token data (POS, language, phonetics, lemma). The server evaluates the feedback via LLM, conditionally calls sub-handlers, and returns updated fields. The client applies the updates to local caches and optionally edits the Matrix message.
+Token info feedback lets users flag incorrect token data (POS, language, phonetics, lemma). The server evaluates the feedback via LLM, conditionally calls sub-handlers, and returns updated fields. The client applies the updates to local caches and, when tokens or language changed, sends a correction event rather than editing the Matrix message ([events-and-tokens](events-and-tokens.instructions.md#correcting-tokens-after-the-fact)).
 
 **Why migrate**: The phonetics field currently sends a plain `String` and receives a `PhoneticTranscriptionResponse` (v1 nested types). The v2 endpoint expects `PTRequest` + `PTResponse` and returns `PTResponse` (flat v2 types). This aligns token feedback with the broader PT v2 migration.
 

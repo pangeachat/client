@@ -24,13 +24,13 @@ The section is headed **Leaderboard** with the group icon. Its header actions ar
 Below the header:
 
 1. **The admin line** — every admin as a card wearing the Admin badge, with no stats, smaller than a chat's member card so the podium stays the section's largest thing. One line, cut to the cards that fit the width, so a teacher is easy to find before the ranking starts.
-2. **The podium** — the top three as full-width rows: a medal ring (gold, silver, bronze) around the avatar with the rank on a badge, a crown on first place, the name, then the star count and the level. Each row is tinted in its medal's colour.
+2. **The podium** — the top three as full-width rows: a medal ring (gold, silver, bronze) around the avatar with the rank on a badge, a crown on first place, the name, then the goal count and the level. Each row is tinted in its medal's colour.
 3. **A ranking of one or none ends in an Invite row** when the viewer may invite, below the one ranked row or straight under the admin line: a leaderboard that short says what the next step is. A viewer who cannot invite sees only what is there.
 
 ## The full page (See all)
 
-The dismissable hint banner, then the admin line wrapped rather than cut, the same podium, then **fourth place onward as compact tiles** — rank number, avatar, name, stars and level — in two columns when the page is wide enough and one when it is not. Pending members follow as cards, and an Invite row closes the page when the viewer may invite.
+The dismissable hint banner, then the admin line wrapped rather than cut, the same podium, then **fourth place onward as compact tiles** — rank number, avatar, name, goal count and level — in two columns when the page is wide enough and one when it is not. Pending members follow as cards, and an Invite row closes the page when the viewer may invite.
 
 ## Reaching a member
 
-**Tapping anywhere on a row or tile opens the member actions menu** (start a conversation, view the profile, and the admin actions), not only the avatar: on a full-width row a 56px hot spot would be a guessing game. Every list is one Tab stop with the arrow keys inside it ([accessibility.instructions.md](accessibility.instructions.md), "One Tab stop per list"), and a row is one node, announced as its rank, name, stars and level.
+**Tapping anywhere on a row or tile opens the member actions menu** (start a conversation, view the profile, and the admin actions), not only the avatar: on a full-width row a 56px hot spot would be a guessing game. Every list is one Tab stop with the arrow keys inside it ([accessibility.instructions.md](accessibility.instructions.md), "One Tab stop per list"), and a row is one node, announced as its rank, name, goal count and level.

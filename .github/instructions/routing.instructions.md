@@ -40,7 +40,7 @@ Learners use panels that open over one world map, on any screen size. Outside li
 
 - A back arrow goes up one level; an X closes to reveal what is underneath. Will.
 - Closing or leaving a session started from an activity on the course card's Mission card or full plan reopens the card on that activity's Mission, because the activity took the card's place and the session took the activity's. A session opened any other way just reveals what is underneath.
-- The course never closes: a chevron moves it between card and bar without moving its neighbor, so the map always names its course. Gabby.
+- The course never closes: a chevron moves it between card and bar without moving its neighbor. The bar names the course on the map; with another panel open the collapsed course has no bar ([world-map](world-map.instructions.md#the-course-context-bar)). Gabby.
 - On a phone the chevron points where the sheet slides; on a wide screen, where nothing slides, down opens and up closes. Gabby.
 
 ### Every panel is a named group to assistive tech
@@ -83,7 +83,7 @@ Learners use panels that open over one world map, on any screen size. Outside li
 ## Open questions
 
 - Does a pushed page show X or back arrow (this doc) or both (the code)?
-- Pin taps: this doc opened the plan on any tap and cleared focus on an empty-map tap; [world-map](world-map.instructions.md) disagrees on both.
+- Empty-map taps: this doc cleared focus on one; [world-map](world-map.instructions.md) keeps it.
 - This doc counted four outside link shapes; is the gift link a fifth?
 - This doc derived the two-column breakpoint from panel widths; the code fixes it.
 - Does the phone's search bar shrink while the map scrolls? Only its filter bar does in the code.

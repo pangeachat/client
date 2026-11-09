@@ -4,7 +4,7 @@ applyTo: "lib/routes/chat/toolbar/practice_exercises/**,lib/routes/chat/toolbar/
 
 # Practice Exercises
 
-Practice exercises are short solo exercises that reinforce vocabulary and grammar from real conversations: multiple-choice items, and a read-aloud item for speaking. There are no disconnected flashcard decks — every practice item traces back to a message the user sent or received.
+Practice exercises are short solo exercises that reinforce vocabulary and grammar from real conversations: multiple-choice items, and a read-aloud item for speaking. There are no disconnected flashcard decks — every practice item traces back to a message the user sent or received, except the Mission words a learner has not used yet ([Objective practice](#objective-practice)).
 
 For **conversation activities**, see [activities.instructions.md](activities.instructions.md).
 
@@ -37,8 +37,8 @@ The scope rides the URL token so it survives a panel swap and can be linked to, 
 
 1. **Spaced repetition without the UI**: Users never configure schedules. The system silently prioritizes words they haven't seen recently and content words over function words.
 2. **Multi-modal learning**: Each word can be practiced through listening, speaking, meaning, emoji association, and grammar analysis — hitting visual, auditory, semantic and spoken learning channels.
-3. **Completion, not perfection**: Wrong answers still contribute (at reduced XP), keeping the experience encouraging.
-4. **Always from real messages**: Every practice target traces back to a token from a real conversation message.
+3. **Completion, not perfection**: A wrong answer costs only a small amount of XP and the session carries on, keeping the experience encouraging.
+4. **From real messages**: Every practice target traces back to a token from a real conversation message, except the Mission words a learner has not used yet ([Objective practice](#objective-practice)).
 
 ---
 
@@ -88,7 +88,7 @@ The current scoring only considers **recency** and **content-word status**. It i
 | Tier | Who goes here | Practice priority |
 |---|---|---|
 | **Suppressed** | Lemmas whose most recent chat use is `wa` (writing assistance ran, message correct) or `unk` (no writing assistance run) AND no subsequent incorrect practice | **0** — skip entirely |
-| **Active** | Lemmas encountered through `ta` (interactive translation) or `ga` (grammar correction / IGC), OR lemmas with a recent incorrect practice answer (`incXX`) | **High** — prioritize these |
+| **Active** | Lemmas encountered through `ta` (a translation match) or `ga` (grammar correction / IGC), OR lemmas with a recent incorrect practice answer (`incXX`) | **High** — prioritize these |
 | **Maintenance** | Everything else — correctly practiced but aging | **Normal** — standard recency-based |
 
 **Tier transitions:**
@@ -100,11 +100,11 @@ The current scoring only considers **recency** and **content-word status**. It i
 
 **Within each tier**, the existing scoring formula applies: `daysSinceLastUsed × (isContentWord ? 10 : 7)`. Active-tier words get an additional multiplier (e.g., ×2) so they always appear before maintenance words of similar age.
 
-**Key principle**: Words the user needed help with (interactive translation or grammar correction) should be practiced **much more** than words they already produce correctly (`wa`/`unk`). Such a word should only re-enter practice if the user later gets it wrong.
+**Key principle**: Words the user needed help with (a translation match or grammar correction) should be practiced **much more** than words they already produce correctly (`wa`/`unk`). Such a word should only re-enter practice if the user later gets it wrong.
 
 **Example scenario:**
 1. User types "gato" correctly with no correction needed → `unk` (or `wa` if writing assistance ran and passed) → Suppressed. Won't appear in practice.
-2. User uses IT to translate "mariposa" → `ta` → Active. High priority for practice.
+2. User accepts a translation match for "mariposa" → `ta` → Active. High priority for practice.
 3. User practices "mariposa" and gets it wrong → `incLM` → stays Active, priority boosted.
 4. User practices "mariposa" correctly 3 times → Active → Maintenance.
 5. Two weeks pass with no interaction → Maintenance, but high recency score → likely to appear.
@@ -204,10 +204,7 @@ badge, and the same-section analytics block — live in
   the current exercise. The holder is in-memory only — a refresh or app
   restart starts fresh.
 - **One session at a time**, across vocab and grammar. Starting a new session while a live one is held confirms first, then replaces it; one still on its start page is replaced without asking.
-- **A session ends five ways**: finishing all exercises (completion view,
-  XP awarded), the explicit **End session** control (confirms, discards
-  progress), being replaced by a newly started session (confirms), by automatically closing after [AnalyticsPracticeConstants.idleTimeout](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart) inactivity, or by the account logging out — a session belongs to one learner and never carries into the next account. Ending
-  clears the holder and the cluster badge.
+- **A session ends five ways**: finishing all exercises (completion view, session bonuses awarded), the explicit **End session** control (confirms, drops the remaining exercises and the bonuses, while answers already given keep their XP), being replaced by a newly started session (confirms), by automatically closing after [AnalyticsPracticeConstants.idleTimeout](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart) inactivity, or by the account logging out — a session belongs to one learner and never carries into the next account. Ending clears the holder and the cluster badge.
 - **Elapsed time is wall-clock from the first exercise appearing** (see [Loading & Generation Sequencing](#loading--generation-sequencing)), not time-on-screen. The timer keeps counting while the panel is closed — an anti-cheat mechanism in its own right: leaving mid-session to consult a dictionary or an AI costs the clock, so the speed bonus rewards finishing unaided in one sitting. The cluster badge shows the same running clock.
 
 ### Offline Practice
@@ -246,7 +243,7 @@ Speaking practice is not a session of its own: it is the **read-aloud exercise**
 - **Recording** starts on a tap, never on its own. The mic says what it is doing: *getting ready* from the tap until the microphone is live (permission asked, and the relay opened where the language streams), then *listening*; nothing is recorded before it says so, so a learner who starts reading on the tap is told to wait rather than cut off. As the learner reads, the live transcript shows under the sentence as it settles, as it does while recording a voice message, and each reference word fills in as the transcript settles it, in order, so the sentence completes under their voice; a settled word changes weight as well as colour, and the mic's accessible name says how many words are still unheard, so colour is never the only carrier. Recording ends on a second tap, when every word has settled, or at the voice message's maximum length; **Start over**, under the mic while recording, discards the recording in progress and begins a fresh one without spending a take. The reference and the mic never run together: the mic opens only once playback ends, and a tap on the mic during playback stops the playback first.
 - **Compare.** When the recording ends, the item shows the reference player over every take the learner has made, up to the three allowed, each with the volume bars every recording in the app shows and the transcript heard from it, so the shapes compare as well as the sounds and a retry can be set against the take before it. A retry keeps the last take's marks: the words it missed stay marked while the next take is recorded, until that take settles them, so the learner knows what to fix; a playtester lost the previous take and its misses on the mic tap and could not tell what to improve (2026-10-21). The learner's recordings stay on the device for the item and go nowhere but to transcription.
 - **What counts.** The item is correct when the target word was heard, and the target alone decides that: it earns the read-aloud use, correct or not, as the target does in every other exercise. Every other word heard in the recorded take earns what a spoken word in a voice message earns, the voice-message vocabulary use with its points, because a read-aloud is a voice message of a known sentence and the learner did say those words; a word not heard earns nothing and is never recorded as a miss, so a slip elsewhere in the sentence cannot cost the accuracy bonus. The session's bonuses count those uses as they count any correct use. A long sentence is worth more than a short one only through the words actually heard, and a word the tokenizer keeps out of vocabulary earns nothing here either (playtest ask, 2026-10-22).
-- **Not heard is a retry, not a wrong answer.** A missed word is as likely the recognizer's miss as the learner's: recognition pinned to the target language is forgiving by design and reports whether a word was intelligible, not whether it sounded native. A word counts as heard whatever its case or vowel accents, since a recognizer drops a stress mark as readily as it writes one. A miss leaves the missed words unfilled and offers another go, three recordings per item: enough to fix a slip, few enough that a word the recognizer will never hear does not trap the learner. The item is recorded once, correct on the first full pass or incorrect when the tries run out. **Skip** sits beside Continue the whole time, not only after a failure, since a learner may be somewhere they cannot speak or the recognizer may not be taking their recording; it records only the usual skip, so the word is not chosen again soon. The copy says what was heard, never that a word was pronounced well or badly, and there is no score: the filled sentence is the feedback.
+- **Not heard is a retry, not a wrong answer.** A missed word is as likely the recognizer's miss as the learner's: recognition pinned to the target language is forgiving by design and reports whether a word was intelligible, not whether it sounded native. A word counts as heard whatever its case or vowel accents, since a recognizer drops a stress mark as readily as it writes one. A miss leaves the missed words unfilled and offers another go, three recordings per item: enough to fix a slip, few enough that a word the recognizer will never hear does not trap the learner. The item is recorded once, correct on the first take that hears the target or incorrect when the tries run out. **Skip** sits beside Continue the whole time, not only after a failure, since a learner may be somewhere they cannot speak or the recognizer may not be taking their recording; it records only the usual skip, so the word is not chosen again soon. The copy says what was heard, never that a word was pronounced well or badly, and there is no score: the filled sentence is the feedback.
 
 **Transcription.** An item uses the live streaming route voice messages use ([streaming-stt](../../../2-step-choreographer/.github/instructions/streaming-stt.instructions.md)) wherever the learner's target language is routed for streaming, and the judge is the settled final. Where the language is not routed, the recorder's batch path runs instead and the words fill in together after the recording ends. The recording is not sent through the batch route as well: a known reference makes the match far easier than open transcription, and a second transcription per item would double the cost. On both routes the sentence goes along as the expected-text hint ([speech-to-text](../../../2-step-choreographer/.github/instructions/speech-to-text.instructions.md#expected-text-hint)), so recognition is biased toward what the learner was asked to read: a fair attempt comes back matching, which is the point; the same bias can turn a real slip into the expected word, which is one more reason the item reports what was heard and never judges pronunciation. This is the one consumer that records a use from a streamed final; the streaming design otherwise keeps streamed text out of analytics, and names this consumer as its one exception. Read-aloud minutes count against the streaming monthly cap and are metered apart from voice messages, so the two can be told apart when the cap is reviewed. A recording no route can transcribe shows a connection message, keeps the mic for another try, and is never recorded as a miss.
 

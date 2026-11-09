@@ -21,15 +21,13 @@ Every widget that participates in a tested flow must surface a stable, accessibl
 - **`GestureDetector` / `InkWell` used as a button** must be wrapped in `Semantics(label: '...', button: true, child: ...)`. Bare gesture detectors are invisible to the accessibility tree.
 - **Decorative images** declare `excludeFromSemantics: true`. **Meaningful images** declare `semanticLabel: '...'`. Default-shaped images leak as unlabelled `role=img` violations.
 
-Pangea-specific code outside `lib/pangea/` requires `// #Pangea` / `// Pangea#` markers around any semantic-fix changes; inside `lib/pangea/`, markers are not required (the whole tree is ours).
-
 ## Bypassing paid backend calls — `mock=true`
 
 The choreographer supports a per-request `mock` field. When set, the handler runs its full path — auth, CMS, metering, audits, retries — but every paid third-party call (OpenAI, Anthropic, embeddings, image-gen, Google TTS, Whisper / Google STT, Deepgram) is swapped for a canned, schema-shaped response. This is what makes Playwright runs economically feasible against the real backend.
 
 Contract (full version at [`pangeachat/.github/instructions/testing.instructions.md` § Mocking paid third-party calls](https://github.com/pangeachat/.github/blob/main/.github/instructions/testing.instructions.md#mocking-paid-third-party-calls)):
 
-- **The flag does not auto-propagate.** Add `mock=true` on the client's choreo requests when the Playwright run wants mocked responses.
+- **The Playwright fixture sets the flag.** [`e2e/fixtures.ts`](../../e2e/fixtures.ts) adds `mock=true` to every choreo request a spec sends, so no request class has to.
 - **Mock latency is a choreo environment variable, not a request field.** The default mock profile mimics real-LLM latency for load testing; the staging/test deployment zeroes it via the env knob so Playwright runs aren't needlessly slow. There is no per-request latency-override field for the client to send.
 - **Mocked responses are deterministic but obviously bogus** — WA returns one double-spaced edit, image-gen returns `mock.pangea.chat/transparent-1x1.png`. Assert on shape, not content.
 - **If a route triggers a 500 error code under `mock=true`, the handler likely lacks a registered mock producer.** The mock-LLM registry's `default_structured_mock(schema)` falls through to `schema()`, which fails for any schema with required fields lacking Pydantic defaults. Check `app/handlers/<h>/mock.py` in `pangeachat/2-step-choreographer`; if absent, file a bug there (`#2485` is the canonical example). The fix is a small per-handler module; do not work around it on the client side.
@@ -64,4 +62,4 @@ Axe assertions are **zero-tolerance**: `violations.toHaveLength(0)`. Fix the wid
 
 ## Diff-triggered CI
 
-[`e2e/trigger-map.json`](../../e2e/trigger-map.json) maps Dart-source glob patterns to spec files. On a per-deploy run, only the specs whose triggers match the changed files run; the full suite runs nightly. Adding a new spec without wiring `trigger-map.json` means the spec never runs in pre-deploy CI — every new spec must declare its triggers.
+[`e2e/trigger-map.json`](../../e2e/trigger-map.json) maps Dart-source glob patterns to spec files. On a per-deploy run, only the specs whose triggers match the changed files run; the full suite runs nightly. Adding a new spec without wiring `trigger-map.json` means the spec never runs in post-deploy CI — every new spec must declare its triggers.

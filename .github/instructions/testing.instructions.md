@@ -58,7 +58,7 @@ Unit tests in `choreo_endpoint_test.dart` directly send mock requests to the sta
 
 Every choreographer endpoint accessed by client has an individual unit test. Emulate the structure of existing tests, with endpoint-specific values substituted in as needed. Add optional `mock` members to relevant Request classes, so sent requests always have `mock: true`.
 
-Env vars required (add to `client/.env` or export before running): 
+Env vars required (set in the env profile `scripts/use-env.sh` copies to `.env` ([matrix-auth](matrix-auth.instructions.md)), or export before running): 
 - `TEST_MATRIX_USERNAME` / `TEST_MATRIX_PASSWORD` — staging test account (same as browser specs)
 
 ### Endpoint tests — `synapse_endpoint_test.dart`, `cms_endpoint_test.dart`
@@ -67,7 +67,7 @@ Same idea as the choreo endpoint tests, for the other two backends the client ca
 
 The contract that differs from choreo: Synapse and CMS are **internal** services with no paid third-party API, so there is **no `mock: true`** — the calls run for real. Choreo needs the mock seam only because it reaches paid LLMs. These need a reachable server, so they are local-only / not a hard PR gate; tests skip (not fail) when their env vars are absent.
 
-All three endpoint suites resolve their target URLs through one helper, [`endpoint_test_env.dart`](../../test/pangea/endpoint_test_env.dart) (the `.env` layer of `Environment`, minus the GetStorage-backed runtime override), so they always point at the **same** environment. `.env` is a switched copy of an env profile (`scripts/use-env.sh`, [matrix-auth.instructions.md](matrix-auth.instructions.md)), which is what keeps `SYNAPSE_URL` / `CHOREO_API` / `CMS_API` — and the `TEST_MATRIX_*` credentials the suites log in with — aimed at one environment together; a hand-edited mix (one env's homeserver, the other's credentials) makes these suites 403 on login. There's no single base URL because locally the three services use different ports while staging/prod share `api.staging.pangea.chat`. Pointing the suite at the local stack will surface any endpoint your local choreo/CMS can't serve that staging can — that's the harness working, not a client bug.
+All three endpoint suites resolve their target URLs through one helper, [`endpoint_test_env.dart`](../../test/pangea/endpoint_test_env.dart) (the `.env` layer of `Environment`, minus the GetStorage-backed runtime override), so they always point at the **same** environment. `.env` is a switched copy of an env profile (`scripts/use-env.sh`, [matrix-auth.instructions.md](matrix-auth.instructions.md)), which is what keeps `SYNAPSE_URL` / `CHOREO_API` / `CMS_API` — and the `TEST_MATRIX_*` credentials the suites log in with — aimed at one environment together; a hand-edited mix (one env's homeserver, the other's credentials) makes these suites 403 on login. There's no single base URL because locally the three services use different ports, and on staging and production Synapse has its own `matrix.` host while the choreographer and CMS share `api.`. Pointing the suite at the local stack will surface any endpoint your local choreo/CMS can't serve that staging can — that's the harness working, not a client bug.
 
 `synapse_endpoint_test.dart` also doubles as a local seeding tool: with `TEST_COURSE_CODE` + `SEED_USERS` set in `.env`, its seed test registers (best-effort) and joins several learners to a course via the real `knock_with_code` call, so you can see a multi-user course locally. Creating brand-new accounts still needs the operator path (`register_new_matrix_user`) when open registration is off.
 
@@ -129,9 +129,9 @@ When Playwright is run, all choreo requests are intercepted, and `mock: true` is
 
 ```bash
 # Unit/widget tests (Dart)
-flutter test                           # Run all
-flutter test test/pangea/              # Run only Pangea tests
-flutter test --name "test description" # Run a specific test by name
+fvm flutter test                           # Run all
+fvm flutter test test/pangea/              # Run only Pangea tests
+fvm flutter test --name "test description" # Run a specific test by name
 
 # Playwright browser specs (UI flows)
 npm install && npx playwright install chromium           # One-time setup
@@ -144,7 +144,7 @@ BASE_URL=https://app.staging.pangea.chat npx playwright test --config e2e/playwr
 
 - **Device testing**: `flutter run` on physical device or emulator for full app flows
 - **Responsiveness**: check anything a learner taps or waits on against [interaction-latency.instructions.md](interaction-latency.instructions.md) in a profile build on a throttled network.
-- **Playwright MCP**: Interactive browser exploration of the Flutter web build via Playwright MCP tools. Uses accessibility snapshots (`browser_snapshot`) to interact with Flutter's CanvasKit-rendered UI. Useful for authoring new specs and debugging semantics gaps. See [playwright-testing.instructions.md](playwright-testing.instructions.md) for the MCP interaction guide (login flow, navigation, accessibility enabling, tips)
+- **Playwright MCP**: Interactive browser exploration of the Flutter web build via Playwright MCP tools. Uses accessibility snapshots (`browser_snapshot`) to interact with Flutter's CanvasKit-rendered UI. Useful for authoring new specs and debugging semantics gaps.
 - **Agent browser QA**: An AI agent drives the live web client through the Claude-in-Chrome extension (not scripted Playwright, not Playwright MCP) for exploratory bug-finding against local or staging. The canvas semantics-tree wake recipe and round structure live in the [`agent-browser-qa`](../skills/agent-browser-qa/SKILL.md) skill; local env / staging switch via [`run-flutter-web-local`](../skills/run-flutter-web-local/SKILL.md).
 
 ## Future Work

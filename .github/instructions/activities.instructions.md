@@ -19,7 +19,7 @@ How learners find and start activities, and the record they leave. What an activ
 
 ## Cards and pins
 
-- Cards and pins show the activity's first media item and load the whole activity before opening. A screen over the read budget fills in over seconds, not blanking for a minute.
+- Cards show the activity's first media item, and cards and pins load the whole activity before opening. A screen over the read budget fills in over seconds, not blanking for a minute.
 
 ## A running activity is a chat room
 
