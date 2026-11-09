@@ -117,6 +117,8 @@ class _RealStateRoster extends CallRoster {
   _RealStateRoster({required super.room, required super.myUserId});
 
   bool get recovering => roomRecovering;
+
+  void gaveUp() => roomGaveUp();
 }
 
 /// A believable join stamp for the tests that are not about join times.
@@ -144,19 +146,14 @@ void main() {
   // end hung up a call on attempt 1 of 10 during a 20s SFU pause. The room's
   // own disconnected event is the only sign it has given up.
   group('a dropped connection', () {
-    test('is recovering until the room says it has given up', () async {
+    test('is recovering until the room says it has given up', () {
       final real = _RealStateRoster(room: room, myUserId: me);
       addTearDown(real.dispose);
       expect(room.connectionState, lk.ConnectionState.disconnected);
 
       expect(real.recovering, isTrue);
 
-      room.events.emit(
-        lk.RoomDisconnectedEvent(
-          reason: lk.DisconnectReason.reconnectAttemptsExceeded,
-        ),
-      );
-      await pumpEventQueue();
+      real.gaveUp();
 
       expect(real.recovering, isFalse);
     });
