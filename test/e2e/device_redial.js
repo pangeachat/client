@@ -23,14 +23,19 @@ const serviceState = async () => {
 };
 /// Whether the ongoing-call notification is LIVE right now.
 ///
-/// Counted from the platform's own posted/removed record rather than by
-/// grepping the whole dumpsys, which also carries history -- that read the
-/// notification as still up long after Android had removed it.
+/// Read from the platform's list of POSTED notifications only: the section of
+/// `dumpsys notification` before its archive. The whole dump also carries
+/// history, which read the notification as up long after Android had removed
+/// it; and the logcat posted/removed lines this used to count are not written
+/// on every phone (none on this Pixel's release build), which read a live
+/// notification as missing.
 const notified = async () => {
-  const log = await d.adb('logcat', '-d', '-v', 'time').catch(() => '');
-  const events = (log.match(/onNotification(Posted|Removed)[^\n]*pangea_ongoing_call/g) || []);
-  const last = events[events.length - 1] ?? '';
-  return /onNotificationPosted/.test(last);
+  const dump = await d.adb('shell', 'dumpsys', 'notification', '--noredact').catch(() => '');
+  const start = dump.indexOf('Notification List:');
+  if (start === -1) throw new Error('dumpsys notification had no Notification List; cannot tell');
+  const end = dump.indexOf('\n  mArchive=', start);
+  const posted = dump.slice(start, end === -1 ? undefined : end);
+  return posted.split('\n').some((l) => l.includes(`pkg=${d.PKG}`) && l.includes('pangea_ongoing_call'));
 };
 
 /// Waits for it to go, rather than sampling once: teardown has to reach the

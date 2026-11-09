@@ -86,7 +86,11 @@ async function busy(A, ms) {
     frames.push(p);
     await wait(900);
   }
-  const ended = await h.actUntil('end', async () => {},
+  // Re-tapped only while the PHONE is still in the call: a tap that missed is
+  // retried, and one that landed is never followed by a stray tap on the
+  // summary underneath.
+  const ended = await h.actUntil('end',
+    async () => { if (await mx.hasMembership(P.token, ROOM_ID, P.userId)) await d.tapControl('hangup'); },
     async () => !(await mx.hasMembership(A.token, ROOM_ID, A.userId)), { tries: 8, gap: 3000 });
   h.check('phone', 'ending on the phone ended it for the laptop too', ended, 'the laptop was still in the call');
   console.log(`   ${frames.length} summary frames: ${shotsDir}/RS-SUM-*.png`);
