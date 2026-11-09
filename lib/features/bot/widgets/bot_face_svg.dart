@@ -81,8 +81,10 @@ class BotFaceState extends State<BotFace> {
   /// memory on every animated frame, so a face left animating filled the
   /// 2 GiB heap in under an hour and aborted the tab (#9286, CLIENT-EWG).
   /// Long enough for Enter, the idle re-fire at [_enterSettle], and the
-  /// emote to land.
-  static const _webAnimateFor = Duration(seconds: 3);
+  /// emote to land. Timed for the middle of the idle loop's still stretch
+  /// between its blinks at 3.05s and 4.55s: a hold at 3s froze faces mid-blink.
+  @visibleForTesting
+  static const webAnimateFor = Duration(milliseconds: 3850);
 
   File? _file;
   RiveWidgetController? _controller;
@@ -253,7 +255,7 @@ class BotFaceState extends State<BotFace> {
     _viewModel?.trigger(widget.expression.trigger)?.trigger();
   }
 
-  /// On web, lets the face animate for [_webAnimateFor], then holds its
+  /// On web, lets the face animate for [webAnimateFor], then holds its
   /// current frame. An inactive controller stops its ticker but still paints,
   /// so the face stays drawn; colour changes land on the next repaint.
   void _animateBriefly() {
@@ -261,7 +263,7 @@ class BotFaceState extends State<BotFace> {
     if (!kIsWeb || controller == null) return;
     controller.active = true;
     _holdTimer?.cancel();
-    _holdTimer = Timer(_webAnimateFor, () {
+    _holdTimer = Timer(webAnimateFor, () {
       if (mounted) _controller?.active = false;
     });
   }
