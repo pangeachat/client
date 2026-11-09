@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 10:19:30.674724",
+    "@@last_modified": "2026-11-06 13:11:01.226323",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9943,9 +9943,7 @@
     "practiceMeaningPrompt": "Apa arti '{word}'?",
     "practiceEmojiPrompt": "Pilih emoji untuk '{word}'",
     "practiceStepProgress": "{done} dari {total}",
-    "leaderboard": "Papan Peringkat",
-    "leaderboardRank": "Peringkat {rank}",
-    "courseLeaderboardTooltip": "Semua orang di kursus ini, diberi peringkat berdasarkan bintang mereka dalam bahasa tersebut. Ketuk anggota dan pilih “Mulai percakapan” untuk mengirimi mereka DM.",
+    "courseParticipantTooltip": "Ini adalah semua orang di kursus ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
     "goalReportTitle": "Laporkan bintang ini",
     "goalReportOverAwardPrompt": "Jika Anda tidak seharusnya mendapatkan bintang ini, mohon jelaskan alasannya.",
     "goalReportUnderAwardPrompt": "Jika menurut Anda seharusnya mendapatkan bintang ini, mengapa?",
@@ -10119,5 +10117,10 @@
     "keepWaiting": "Terus menunggu",
     "botTookSeatAfterAnHour": "Sesi ini terbuka selama satu jam, jadi Pangea Bot mengambil kursi kosong.",
     "botTookSeatAfterADay": "Sesi ini terbuka selama lebih dari sehari, jadi Pangea Bot mengambil kursi kosong. Kirim pesan untuk memulai.",
-    "subscriptionGracePeriodEndsOn": "Pembayaran gagal. Masa tenggang berakhir pada {date}"
+    "subscriptionGracePeriodEndsOn": "Pembayaran gagal. Masa tenggang berakhir pada {date}",
+    "changeBaseLanguageTitle": "Ganti bahasa dasar?",
+    "changeBaseLanguageDesc": "Menu dan tombol aplikasi akan beralih ke {language}.",
+    "accountSetupFailedHelp": "Kami tidak dapat menyelesaikan penyiapan akun Anda. Periksa koneksi Anda dan coba lagi, atau keluar dan masuk nanti.",
+    "onboardingOfflineError": "Anda sedang offline. Coba lagi setelah Anda online.",
+    "activitySavedTo": "Aktivitas disimpan ke {page}"
 }

@@ -56,7 +56,7 @@ AnalyticsProfileModel _model(int stars) => AnalyticsProfileModel(
   languageAnalytics: {'es': LanguageAnalyticsProfileEntry(2, 0, stars: stars)},
 );
 
-/// #9465: the course Leaderboard reads every joined member's profile in one
+/// #9465: the participant list reads every joined member's profile in one
 /// request (member-analytics-profiles.instructions.md, synapse-pangea-chat)
 /// and fetches one at a time only the members that read lacks.
 void main() {

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-11-04 10:19:33.931217",
+    "@@last_modified": "2026-11-06 13:11:04.323692",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Hva betyr «{word}»?",
     "practiceEmojiPrompt": "Velg en emoji for «{word}»",
     "practiceStepProgress": "{done} av {total}",
-    "leaderboard": "Poengtavle",
-    "leaderboardRank": "Rangering {rank}",
-    "courseLeaderboardTooltip": "Alle i dette kurset, rangert etter stjerner i språket. Trykk på et medlem og velg «Start samtale» for å sende dem en direktemelding.",
+    "courseParticipantTooltip": "Dette er alle i dette kurset. Klikk på en brukers avatar og «start samtale» for å sende en direktemelding.",
     "goalReportTitle": "Rapporter denne stjernen",
     "goalReportOverAwardPrompt": "Hvis du ikke skulle ha fått denne stjernen, forklar hvorfor.",
     "goalReportUnderAwardPrompt": "Hvis du mener du skulle ha fått denne stjernen, hvorfor?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Fortsett å vente",
     "botTookSeatAfterAnHour": "Denne økten var åpen i en time, så Pangea-boten tok den ledige plassen.",
     "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea-boten tok den ledige plassen. Send en melding for å starte.",
-    "subscriptionGracePeriodEndsOn": "Betaling mislyktes. Utsatt betalingsfrist utløper {date}"
+    "subscriptionGracePeriodEndsOn": "Betaling mislyktes. Utsatt betalingsfrist utløper {date}",
+    "changeBaseLanguageTitle": "Endre grunnspråk?",
+    "changeBaseLanguageDesc": "Appens menyer og knapper vil bytte til {language}.",
+    "accountSetupFailedHelp": "Vi kunne ikke fullføre kontooppsettet. Sjekk tilkoblingen din og prøv igjen, eller logg ut og logg på senere.",
+    "onboardingOfflineError": "Du er frakoblet. Prøv igjen når du er på nett.",
+    "activitySavedTo": "Aktivitet lagret til {page}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 10:19:33.154124",
+    "@@last_modified": "2026-11-06 13:11:03.742442",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9927,9 +9927,7 @@
     "practiceMeaningPrompt": "Hva betyr «{word}»?",
     "practiceEmojiPrompt": "Velg en emoji for «{word}»",
     "practiceStepProgress": "{done} av {total}",
-    "leaderboard": "Poengtavle",
-    "leaderboardRank": "Rangering {rank}",
-    "courseLeaderboardTooltip": "Alle i dette kurset, rangert etter stjerner i språket. Trykk på et medlem og velg «Start samtale» for å sende dem en direktemelding.",
+    "courseParticipantTooltip": "Dette er alle i dette kurset. Klikk på hvilken som helst brukers avatar og \"start samtale\" for å sende en DM.",
     "goalReportTitle": "Rapporter denne stjernen",
     "goalReportOverAwardPrompt": "Hvis du ikke skulle ha fått denne stjernen, forklar hvorfor.",
     "goalReportUnderAwardPrompt": "Hvis du mener du skulle ha fått denne stjernen, hvorfor?",
@@ -10103,5 +10101,10 @@
     "keepWaiting": "Fortsett å vente",
     "botTookSeatAfterAnHour": "Denne økten var åpen i en time, så Pangea Bot tok den ledige plassen.",
     "botTookSeatAfterADay": "Denne økten var åpen i over et døgn, så Pangea Bot tok den ledige plassen. Send en melding for å starte.",
-    "subscriptionGracePeriodEndsOn": "Betaling mislyktes. Utsatt betalingsperiode avsluttes {date}"
+    "subscriptionGracePeriodEndsOn": "Betaling mislyktes. Utsatt betalingsperiode avsluttes {date}",
+    "changeBaseLanguageTitle": "Endre grunnspråk?",
+    "changeBaseLanguageDesc": "Appens menyer og knapper vil bytte til {language}.",
+    "accountSetupFailedHelp": "Vi kunne ikke fullføre oppsettet av kontoen din. Sjekk tilkoblingen din og prøv igjen, eller logg ut og logg inn senere.",
+    "onboardingOfflineError": "Du er frakoblet. Prøv igjen når du er på nett.",
+    "activitySavedTo": "Aktivitet lagret i {page}"
 }

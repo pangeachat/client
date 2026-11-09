@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-11-04 10:19:32.225577",
+    "@@last_modified": "2026-11-06 13:11:02.913288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Wat bedeit ‘{word}’?",
     "practiceEmojiPrompt": "Wiel en Emoji fir ‘{word}’",
     "practiceStepProgress": "{done} vun {total}",
-    "leaderboard": "Leaderboard",
-    "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Jiddereen an dësem Cours, no hire Stären an hirer Sprooch klasséiert. Tippt op e Member a wielt „Gespréich ufänken“ fir hinnen eng DM ze schécken.",
+    "courseParticipantTooltip": "Dëst sinn all d'Participanten an dësem Cours. Klickt op den Avatar vun engem Benotzer an dann op „Gespréich starten“ fir eng Direktnoriicht ze schécken.",
     "goalReportTitle": "Dëse Stär mellen",
     "goalReportOverAwardPrompt": "Wann Dir dëse Stär net sollt kréien, erkläert w.e.g. firwat.",
     "goalReportUnderAwardPrompt": "Wann Dir mengt, Dir hätt dëse Stär solle kréien, firwat?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Weider waarden",
     "botTookSeatAfterAnHour": "Dës Sessioun war eng Stonn laang op, dofir huet de Pangea Bot de fräie Sëtz geholl.",
     "botTookSeatAfterADay": "Dës Sessioun war iwwer een Dag laang op, dofir huet de Pangea Bot de fräie Sëtz geholl. Schéckt eng Noriicht fir unzefänken.",
-    "subscriptionGracePeriodEndsOn": "Bezuelung net gelongen. D'Schonnzäit endet den {date}"
+    "subscriptionGracePeriodEndsOn": "Bezuelung net gelongen. D'Schonnzäit endet den {date}",
+    "changeBaseLanguageTitle": "Basisssprooch änneren?",
+    "changeBaseLanguageDesc": "D'Menüen an d'Knäppercher vun der App wiesselen op {language}.",
+    "accountSetupFailedHelp": "Mir konnten Äre Kont net fäerdeg astellen. Kontrolléiert Är Verbindung a probéiert et nach eng Kéier, oder mellt Iech of a mellt Iech méi spéit un.",
+    "onboardingOfflineError": "Dir sidd offline. Probéiert et nach eng Kéier wann Dir erëm online sidd.",
+    "activitySavedTo": "Aktivitéit gespäichert op {page}"
 }

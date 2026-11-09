@@ -16,6 +16,7 @@ import 'package:fluffychat/routes/chat/choreographer/choreographer.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/routes/chat/composer_keyboard_context.dart';
+import 'package:fluffychat/routes/chat/emoji_keywords.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/utils/markdown_context_menu.dart';
 import 'package:fluffychat/utils/text_editing_value_caret_extension.dart';
@@ -140,26 +141,11 @@ class InputBar extends StatelessWidget {
       }
 
       // aside of emote packs, also propose normal (tm) unicode emojis
-      final matchingUnicodeEmojis = suggestionEmojis
-          .where((emoji) => emoji.name.toLowerCase().contains(emoteSearch))
-          .toList();
-
-      // sort by the index of the search term in the name in order to have
-      // best matches first
-      // (thanks for the hint by github.com/nextcloud/circles devs)
-      matchingUnicodeEmojis.sort((a, b) {
-        final indexA = a.name.indexOf(emoteSearch);
-        final indexB = b.name.indexOf(emoteSearch);
-        if (indexA == -1 || indexB == -1) {
-          if (indexA == indexB) return 0;
-          if (indexA == -1) {
-            return 1;
-          } else {
-            return 0;
-          }
-        }
-        return indexA.compareTo(indexB);
-      });
+      final matchingUnicodeEmojis = EmojiKeywords.suggestionsFor(
+        emoteSearch,
+        appLanguageEmojis: suggestionEmojis,
+        targetLanguage: MatrixState.pangeaController.userController.userL2,
+      );
       for (final emoji in matchingUnicodeEmojis) {
         ret.add({
           'type': 'emoji',

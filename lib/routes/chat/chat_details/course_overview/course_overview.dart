@@ -15,7 +15,7 @@ import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_creator_row.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_knock_requests.dart';
-import 'package:fluffychat/routes/chat/chat_details/course_overview/course_leaderboard_preview.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_button.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
@@ -28,7 +28,7 @@ import 'package:fluffychat/routes/courses/course_objectives/course_objectives_vi
 import 'package:fluffychat/widgets/expandable_text.dart';
 
 /// The single scrollable course page (#8357, replacing the tab row): Course
-/// plan / Chats / Leaderboard / More as divider-separated sections, each with
+/// plan / Chats / Participants / More as divider-separated sections, each with
 /// its highlight inline and a link to its full subpage. The Catch up card
 /// (knocks, analytics-access requests, unread rollups) rides at the top and
 /// self-hides when empty. A section in the course token's param scrolls the
@@ -41,7 +41,7 @@ class CourseOverview extends StatefulWidget {
   /// enabled rows inline; the All settings subpage shows them all (#8578).
   final List<ButtonDetails> moreButtons;
 
-  /// Opens the invite flow — the Leaderboard section header's action.
+  /// Opens the invite flow — the Participants section header's action.
   final VoidCallback onInvite;
 
   /// The section from the course token to scroll to, or null for the page top.
@@ -293,7 +293,7 @@ class _CourseOverviewState extends State<CourseOverview> {
                   // offers "See all" turns on what the full page holds beyond
                   // the preview, which only the preview knows (#8578, #8744,
                   // #9212).
-                  CourseLeaderboardPreview(
+                  CourseParticipantsPreview(
                     room: room,
                     onShowAll: () =>
                         _openSubpage(SpaceSettingsTabs.participants),

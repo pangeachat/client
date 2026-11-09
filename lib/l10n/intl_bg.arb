@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-11-04 10:19:27.001953",
+    "@@last_modified": "2026-11-06 13:10:57.342563",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Какво означава „{word}“?",
     "practiceEmojiPrompt": "Изберете емоджи за „{word}“",
     "practiceStepProgress": "{done} от {total}",
-    "leaderboard": "Класация",
-    "leaderboardRank": "Ранг {rank}",
-    "courseLeaderboardTooltip": "Всички в този курс, класирани по техните звезди в езика му. Докоснете член и изберете „Започни разговор“, за да му изпратите лично съобщение.",
+    "courseParticipantTooltip": "Това са всички участници в този курс. Кликнете върху аватара на всеки потребител и „започнете разговор“, за да изпратите лично съобщение.",
     "goalReportTitle": "Докладвай тази звезда",
     "goalReportOverAwardPrompt": "Ако не е трябвало да получите тази звезда, моля, обяснете защо.",
     "goalReportUnderAwardPrompt": "Ако смятате, че е трябвало да получите тази звезда, защо?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Продължи да чакаш",
     "botTookSeatAfterAnHour": "Тази сесия беше отворена за един час, така че ботът на Pangea зае свободното място.",
     "botTookSeatAfterADay": "Тази сесия беше отворена за повече от един ден, така че ботът на Pangea зае свободното място. Изпратете съобщение, за да започнете.",
-    "subscriptionGracePeriodEndsOn": "Неуспешно плащане. Гратисният период изтича на {date}"
+    "subscriptionGracePeriodEndsOn": "Неуспешно плащане. Гратисният период изтича на {date}",
+    "changeBaseLanguageTitle": "Да сменя основния език?",
+    "changeBaseLanguageDesc": "Менютата и бутоните на приложението ще преминат на {language}.",
+    "accountSetupFailedHelp": "Не успяхме да завършим настройката на акаунта ви. Проверете връзката си и опитайте отново, или излезте и влезте по-късно.",
+    "onboardingOfflineError": "Нямате връзка. Опитайте отново, когато сте онлайн.",
+    "activitySavedTo": "Дейността е запазена в {page}"
 }

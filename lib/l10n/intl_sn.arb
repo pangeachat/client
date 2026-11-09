@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-11-04 10:19:35.251461",
+    "@@last_modified": "2026-11-06 13:11:05.893794",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ zvinorevei?",
     "practiceEmojiPrompt": "Sarudza emoji ye ‘{word}’",
     "practiceStepProgress": "{done} pa {total}",
-    "leaderboard": "Chikwata chepamusoro",
-    "leaderboardRank": "Chinzvimbo {rank}",
-    "courseLeaderboardTooltip": "Wese ari muchikamu chino, akaiswa pachinzvimbo zvichienderana nenyeredzi dzake mumutauro wacho. Dzvanya panhengo wosarudza “Tanga hurukuro” kuti umutumire DM.",
+    "courseParticipantTooltip": "Ava ndivo vese vari mukosi iyi. Dzvanya paavatar yemushandisi chero upi zvake uye “tanga hurukuro” kuti utumire DM.",
     "goalReportTitle": "Shuma nyenyedzi iyi",
     "goalReportOverAwardPrompt": "Kana wanga usingafaniri kuwana nyenyedzi iyi, tsanangura kuti sei.",
     "goalReportUnderAwardPrompt": "Kana uchifunga kuti waifanira kuwana nyenyedzi iyi, sei?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Ramba wakamirira",
     "botTookSeatAfterAnHour": "Chikamu ichi chaive chakavhurika kweawa, saka Pangea Bot yakatora chigaro chisina munhu.",
     "botTookSeatAfterADay": "Chikamu ichi chaive chakavhurika kwezuva rose, saka Pangea Bot yakatora chigaro chisina munhu. Tumira meseji kuti utange.",
-    "subscriptionGracePeriodEndsOn": "Kubhadhara kwakakundikana. Nguva yenyasha inopera musi wa {date}"
+    "subscriptionGracePeriodEndsOn": "Kubhadhara kwakakundikana. Nguva yenyasha inopera musi wa {date}",
+    "changeBaseLanguageTitle": "Chinja mutauro wekutanga here?",
+    "changeBaseLanguageDesc": "Mamenu nemabhatani eapp achachinja kuita {language}.",
+    "accountSetupFailedHelp": "Hatina kukwanisa kupedza kuseta account yako. Tarisa network yako woedza zvakare, kana kuti log out wozoedza zvakare gare gare gare.",
+    "onboardingOfflineError": "Hauziko paIndaneti. Edza zvakare kana wadzoka paIndaneti.",
+    "activitySavedTo": "Chiitiko chachengetwa ku {page}"
 }

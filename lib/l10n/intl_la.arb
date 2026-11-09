@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-11-04 10:19:31.767977",
+    "@@last_modified": "2026-11-06 13:11:02.455709",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Quid significat ‘{word}’?",
     "practiceEmojiPrompt": "Elige emoji pro ‘{word}’",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Tabula Ducum",
-    "leaderboardRank": "Ordo {rank}",
-    "courseLeaderboardTooltip": "Omnes in hoc cursu, secundum stellas in lingua sua ordinati. Tange membrum et elige \"Incipe sermonem\" ut nuntium privatum mittas.",
+    "courseParticipantTooltip": "Hi sunt omnes in hoc cursu. Preme imaginem cuiusvis usoris et \"incipe colloquium\" ut nuntium privatum mittas.",
     "goalReportTitle": "Hanc stellam renuntia",
     "goalReportOverAwardPrompt": "Si hanc stellam accipere non debuisti, quaeso explica cur.",
     "goalReportUnderAwardPrompt": "Si hanc stellam accipere debuisse putas, cur?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Manere",
     "botTookSeatAfterAnHour": "Haec sessio per horam aperta erat, ergo Pangea Bot sedem liberam cepit.",
     "botTookSeatAfterADay": "Haec sessio per diem apertior erat, ergo Pangea Bot sedem liberam cepit. Mitte nuntium ut incipias.",
-    "subscriptionGracePeriodEndsOn": "Solutio defecit. Tempus gratiae desinit die {date}"
+    "subscriptionGracePeriodEndsOn": "Solutio defecit. Tempus gratiae desinit die {date}",
+    "changeBaseLanguageTitle": "Mutare linguam fundamentalem?",
+    "changeBaseLanguageDesc": "Menu et bullae applicationis ad {language} mutabuntur.",
+    "accountSetupFailedHelp": "Rationem tuam constituere non potuimus. Coniunctionem tuam inspice et iterum conare, aut exi et postea inscribe.",
+    "onboardingOfflineError": "Non es in linea. Conare iterum cum in linea eris.",
+    "activitySavedTo": "Actio servata ad {page}"
 }

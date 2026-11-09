@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-11-04 10:19:30.044295",
+    "@@last_modified": "2026-11-06 13:11:00.463020",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Kisa ‘{word}’ vle di?",
     "practiceEmojiPrompt": "Chwazi yon emoji pou ‘{word}’",
     "practiceStepProgress": "{done} sou {total}",
-    "leaderboard": "Klasman",
-    "leaderboardRank": "Pozisyon {rank}",
-    "courseLeaderboardTooltip": "Tout moun nan kou sa a, klase selon kantite zetwal yo genyen nan lang lan. Tape sou yon manm epi chwazi “Kòmanse konvèsasyon” pou voye yon mesaj dirèk ba yo.",
+    "courseParticipantTooltip": "Sa a se tout moun nan kou sa a. Klike sou avata nenpòt itilizatè epi “kòmanse konvèsasyon” pou voye yon DM.",
     "goalReportTitle": "Rapòte zetwal sa a",
     "goalReportOverAwardPrompt": "Si ou pa t sipoze jwenn zetwal sa a, tanpri eksplike poukisa.",
     "goalReportUnderAwardPrompt": "Si ou panse ou te sipoze jwenn zetwal sa a, poukisa?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Kontinye tann",
     "botTookSeatAfterAnHour": "Sesyon sa a te ouvè pandan inèdtan, kidonk Pangea Bot te pran plas ki vid la.",
     "botTookSeatAfterADay": "Sesyon sa a te ouvè pandan plis pase yon jou, kidonk Pangea Bot te pran plas ki vid la. Voye yon mesaj pou kòmanse.",
-    "subscriptionGracePeriodEndsOn": "Peman an echwe. Peryòd gras la fini sou {date}"
+    "subscriptionGracePeriodEndsOn": "Peman an echwe. Peryòd gras la fini sou {date}",
+    "changeBaseLanguageTitle": "Chanje lang debaz?",
+    "changeBaseLanguageDesc": "Meni ak bouton aplikasyon an ap chanje an {language}.",
+    "accountSetupFailedHelp": "Nou pa t' kapab fini konfigirasyon kont ou. Tcheke koneksyon ou epi eseye ankò, oswa dekonekte epi konekte pita.",
+    "onboardingOfflineError": "Ou dekonekte. Eseye ankò lè ou rekonekte.",
+    "activitySavedTo": "Aktivite sove nan {page}"
 }

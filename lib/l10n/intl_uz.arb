@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-11-04 10:19:36.957336",
+    "@@last_modified": "2026-11-06 13:11:07.524965",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9874,9 +9874,7 @@
     "practiceMeaningPrompt": "„{word}“ nimani anglatadi?",
     "practiceEmojiPrompt": "„{word}“ uchun emojini tanlang",
     "practiceStepProgress": "{done} / {total}",
-    "leaderboard": "Yetakchilar jadvali",
-    "leaderboardRank": "Daraja {rank}",
-    "courseLeaderboardTooltip": "Ushbu kursdagi barcha ishtirokchilar til boʻyicha yulduzlari asosida tartiblangan. Aʼzoga xabar yuborish uchun uni bosing va “Suhbatni boshlash”ni tanlang.",
+    "courseParticipantTooltip": "Bu kursdagi hamma. Har qanday foydalanuvchining avatariga bosing va «muloqotni boshlash» ni tanlang, shunda DM yuborasiz.",
     "goalReportTitle": "Ushbu yulduz haqida xabar berish",
     "goalReportOverAwardPrompt": "Agar siz bu yulduzni olmasligingiz kerak bo'lsa, iltimos, sababini tushuntiring.",
     "goalReportUnderAwardPrompt": "Agar siz bu yulduzni olishingiz kerak deb hisoblasangiz, nima uchun?",
@@ -10050,5 +10048,10 @@
     "keepWaiting": "Kutishda davom etish",
     "botTookSeatAfterAnHour": "Bu sessiya bir soat davomida ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi.",
     "botTookSeatAfterADay": "Bu sessiya bir kundan ortiq ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi. Boshlash uchun xabar yuboring.",
-    "subscriptionGracePeriodEndsOn": "Toʻlov amalga oshmadi. Imtiyozli davr {date} kuni tugaydi"
+    "subscriptionGracePeriodEndsOn": "Toʻlov amalga oshmadi. Imtiyozli davr {date} kuni tugaydi",
+    "changeBaseLanguageTitle": "Asosiy tilni oʻzgartirish?",
+    "changeBaseLanguageDesc": "Ilovaning menyulari va tugmalari {language} tiliga oʻzgaradi.",
+    "accountSetupFailedHelp": "Hisobingizni sozlashni yakunlay olmadik. Ulanishingizni tekshiring va qayta urinib ko'ring yoki tizimdan chiqib, keyinroq kiring.",
+    "onboardingOfflineError": "Siz oflaynsiz. Tarmoqqa ulangandan so‘ng qayta urinib ko‘ring.",
+    "activitySavedTo": "Faoliyat {page} ga saqlandi"
 }

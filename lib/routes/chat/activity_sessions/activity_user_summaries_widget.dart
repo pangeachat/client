@@ -15,10 +15,10 @@ import 'package:fluffychat/features/activity_sessions/activity_summary_room_exte
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_indicator.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_saved_notice.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_summary_goals.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_summary_unsubscribed_card.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
-import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
-import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -57,7 +57,10 @@ class ActivityUserSummaries extends StatelessWidget {
         .subscriptionController
         .showSubscriptionGatedContent) {
       return room.isActivityFinished
-          ? ActivitySummaryUnsubscribedCard(roleCount: _skeletonRoleCount)
+          ? ActivitySummaryUnsubscribedCard(
+              roleCount: _skeletonRoleCount,
+              savedNotice: ActivitySavedNotice(room: room),
+            )
           : const SizedBox.shrink();
     }
 
@@ -140,6 +143,7 @@ class _SummaryCard extends StatelessWidget {
                   summary: summary,
                   controller: controller,
                 ),
+                ActivitySavedNotice(room: controller.room),
               ],
             ),
           ),
@@ -271,7 +275,6 @@ class ActivityParticipantSummaries extends StatelessWidget {
           assignedRoles: room.assignedRoles?.values ?? const [],
           participantId: selected.participantId,
         );
-        final awarded = room.orchestratorAwardedGoals;
         return Column(
           spacing: 12.0,
           mainAxisSize: MainAxisSize.min,
@@ -300,21 +303,10 @@ class ActivityParticipantSummaries extends StatelessWidget {
             // so a learner reading somebody else's card sees that person's
             // goals, not their own (#8672).
             if (selectedRole != null && selectedRole.allGoals.isNotEmpty)
-              Column(
-                spacing: 8.0,
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  for (final goal in selectedRole.allGoals)
-                    GoalStatusWidget(
-                      goal: goal,
-                      complete: awarded.isGoalCompletedForRole(
-                        selectedRole.id,
-                        goal.id,
-                        goalSlug: goal.goalSlug,
-                      ),
-                    ),
-                ],
+              ActivitySummaryGoals(
+                room: room,
+                role: selectedRole,
+                participantId: selected.participantId,
               ),
             _ParticipantSummaryCard(
               participant: selected,

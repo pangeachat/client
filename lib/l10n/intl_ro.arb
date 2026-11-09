@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 10:19:34.082350",
+    "@@last_modified": "2026-11-06 13:11:05.118439",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10599,9 +10599,7 @@
     "practiceMeaningPrompt": "Ce înseamnă „{word}”?",
     "practiceEmojiPrompt": "Alegeți un emoji pentru „{word}”",
     "practiceStepProgress": "{done} din {total}",
-    "leaderboard": "Clasament",
-    "leaderboardRank": "Locul {rank}",
-    "courseLeaderboardTooltip": "Toți participanții la acest curs, clasificați după numărul de stele obținute la limba respectivă. Atingeți un membru și alegeți „Începeți conversația” pentru a-i trimite un mesaj direct.",
+    "courseParticipantTooltip": "Aceasta este toată lumea din acest curs. Faceți clic pe avatarul oricărui utilizator și „începeți conversația” pentru a trimite un mesaj direct.",
     "goalReportTitle": "Raportează această stea",
     "goalReportOverAwardPrompt": "Dacă nu trebuia să primești această stea, te rugăm să explici de ce.",
     "goalReportUnderAwardPrompt": "Dacă crezi că trebuia să primești această stea, de ce?",
@@ -10775,5 +10773,10 @@
     "keepWaiting": "Continuă să aștepți",
     "botTookSeatAfterAnHour": "Această sesiune a fost deschisă timp de o oră, așa că Pangea Bot a ocupat locul liber.",
     "botTookSeatAfterADay": "Această sesiune a fost deschisă de peste o zi, așa că Pangea Bot a ocupat locul liber. Trimite un mesaj pentru a începe.",
-    "subscriptionGracePeriodEndsOn": "Plata a eșuat. Perioada de grație se încheie pe {date}"
+    "subscriptionGracePeriodEndsOn": "Plata a eșuat. Perioada de grație se încheie pe {date}",
+    "changeBaseLanguageTitle": "Schimbi limba de bază?",
+    "changeBaseLanguageDesc": "Meniurile și butoanele aplicației vor trece la {language}.",
+    "accountSetupFailedHelp": "Nu am putut finaliza configurarea contului tău. Verifică-ți conexiunea și încearcă din nou, sau deconectează-te și conectează-te mai târziu.",
+    "onboardingOfflineError": "Ești offline. Încearcă din nou când ești online.",
+    "activitySavedTo": "Activitate salvată în {page}"
 }

@@ -3080,7 +3080,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-11-04 10:19:30.923057",
+    "@@last_modified": "2026-11-06 13:11:00.903818",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10499,9 +10499,7 @@
     "practiceMeaningPrompt": "Cad a chiallaíonn ‘{word}’?",
     "practiceEmojiPrompt": "Roghnaigh emoji do ‘{word}’",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Clár Ceannairí",
-    "leaderboardRank": "Céim {rank}",
-    "courseLeaderboardTooltip": "Gach duine sa chúrsa seo, rangaithe de réir a gcuid réaltaí sa teanga. Beartaigh ar bhall agus roghnaigh “Tosaigh comhrá” chun teachtaireacht dhíreach a sheoladh chucu.",
+    "courseParticipantTooltip": "Isto é todo mundo neste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
     "goalReportTitle": "Reportáil an réalt seo",
     "goalReportOverAwardPrompt": "Mura raibh tú ceaptha an réalt seo a fháil, mínigh cén fáth.",
     "goalReportUnderAwardPrompt": "Má cheapann tú gur cheart duit an réalt seo a fháil, cén fáth?",
@@ -10675,5 +10673,10 @@
     "keepWaiting": "Keep waiting",
     "botTookSeatAfterAnHour": "This session was open for an hour, so Pangea Bot took the open seat.",
     "botTookSeatAfterADay": "This session was open for over a day, so Pangea Bot took the open seat. Send a message to start.",
-    "subscriptionGracePeriodEndsOn": "Theip ar an íocaíocht. Críochnaíonn an tréimhse cairde ar {date}"
+    "subscriptionGracePeriodEndsOn": "Theip ar an íocaíocht. Críochnaíonn an tréimhse cairde ar {date}",
+    "changeBaseLanguageTitle": "Athraigh buntheanga?",
+    "changeBaseLanguageDesc": "Athróidh biachláir agus cnaipí an aip go {language}.",
+    "accountSetupFailedHelp": "Non puvim completar li arangeament de vor conto. Controla vor conexion e prova denov, o deslogga e logga plu tard.",
+    "onboardingOfflineError": "Tá tú as líne. Bain triail eile as nuair a bheidh tú ar líne arís.",
+    "activitySavedTo": "Activity saved to {page}"
 }

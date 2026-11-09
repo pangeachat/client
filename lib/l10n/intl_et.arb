@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-11-04 10:19:28.727999",
+    "@@last_modified": "2026-11-06 13:10:59.215466",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9867,9 +9867,7 @@
     "practiceMeaningPrompt": "Mida tähendab „{word}“?",
     "practiceEmojiPrompt": "Vali emotikon sõnale „{word}“",
     "practiceStepProgress": "{done} / {total}",
-    "leaderboard": "Edetabel",
-    "leaderboardRank": "Koht {rank}",
-    "courseLeaderboardTooltip": "Kõik selle kursuse liikmed, järjestatud nende keele tähtede järgi. Puuduta liiget ja vali „Alusta vestlust”, et saata talle otsevestlus.",
+    "courseParticipantTooltip": "See on kõik, kes on selles kursuses. Klõpsake mis tahes kasutaja avatari ja valige \"alusta vestlust\", et saata DM.",
     "goalReportTitle": "Teata sellest tähest",
     "goalReportOverAwardPrompt": "Kui te ei oleks pidanud seda tähte saama, selgitage palun, miks.",
     "goalReportUnderAwardPrompt": "Kui arvate, et oleksite pidanud selle tähe saama, siis miks?",
@@ -10043,5 +10041,10 @@
     "keepWaiting": "Jätka ootamist",
     "botTookSeatAfterAnHour": "See seanss oli tund aega avatud, nii et Pangea Bot võttis vaba koha.",
     "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum.",
-    "subscriptionGracePeriodEndsOn": "Makse ebaõnnestus. Ajapikendus lõpeb {date}"
+    "subscriptionGracePeriodEndsOn": "Makse ebaõnnestus. Ajapikendus lõpeb {date}",
+    "changeBaseLanguageTitle": "Muuda baaskeelt?",
+    "changeBaseLanguageDesc": "Rakenduse menüüd ja nupud lülituvad keelele {language}.",
+    "accountSetupFailedHelp": "Me ei saanud teie konto seadistamist lõpule viia. Kontrollige oma ühendust ja proovige uuesti või logige välja ja proovige hiljem uuesti sisse logida.",
+    "onboardingOfflineError": "Oled võrguühenduseta. Proovi uuesti, kui oled võrgus tagasi.",
+    "activitySavedTo": "Tegevus salvestatud asukohta {page}"
 }

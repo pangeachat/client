@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-11-04 10:19:28.062648",
+    "@@last_modified": "2026-11-06 13:10:58.354215",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Beth mae ‘{word}’ yn ei olygu?",
     "practiceEmojiPrompt": "Dewiswch emoji ar gyfer ‘{word}’",
     "practiceStepProgress": "{done} o {total}",
-    "leaderboard": "Bwrdd Arweinwyr",
-    "leaderboardRank": "Safle {rank}",
-    "courseLeaderboardTooltip": "Pawb yn y cwrs hwn, wedi'u rhestru yn ôl eu sêr yn yr iaith honno. Tapiwch aelod a dewiswch “Dechrau sgwrs” i anfon neges uniongyrchol atynt.",
+    "courseParticipantTooltip": "Dyma bawb yn y cwrs hwn. Cliciwch ar avatar unrhyw ddefnyddiwr a “dechrau sgwrs” i anfon neges uniongyrchol.",
     "goalReportTitle": "Adrodd am y seren hon",
     "goalReportOverAwardPrompt": "Os na ddylech chi fod wedi cael y seren hon, esboniwch pam.",
     "goalReportUnderAwardPrompt": "Os ydych chi'n meddwl y dylech chi fod wedi cael y seren hon, pam?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Parhau i aros",
     "botTookSeatAfterAnHour": "Roedd y sesiwn hon ar agor am awr, felly cymerodd Bot Pangea y sedd wag.",
     "botTookSeatAfterADay": "Roedd y sesiwn hon ar agor am dros ddiwrnod, felly cymerodd Bot Pangea y sedd wag. Anfonwch neges i ddechrau.",
-    "subscriptionGracePeriodEndsOn": "Methodd taliad. Daw'r cyfnod gras i ben ar {date}"
+    "subscriptionGracePeriodEndsOn": "Methodd taliad. Daw'r cyfnod gras i ben ar {date}",
+    "changeBaseLanguageTitle": "Newid iaith sylfaen?",
+    "changeBaseLanguageDesc": "Bydd dewislenni a botymau'r ap yn newid i {language}.",
+    "accountSetupFailedHelp": "Ni allem orffen sefydlu eich cyfrif. Gwiriwch eich cysylltiad a rhowch gynnig arall arni, neu allgofnodwch a mewngofnodwch yn ddiweddarach.",
+    "onboardingOfflineError": "Rydych chi all-lein. Rhowch gynnig arall arni unwaith y byddwch chi ar-lein eto.",
+    "activitySavedTo": "Gweithgaredd wedi'i gadw i {page}"
 }

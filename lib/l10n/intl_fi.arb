@@ -3514,7 +3514,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-11-04 10:19:28.907069",
+    "@@last_modified": "2026-11-06 13:10:59.205891",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9907,9 +9907,7 @@
     "practiceMeaningPrompt": "Mitä ”{word}” tarkoittaa?",
     "practiceEmojiPrompt": "Valitse emoji sanalle ”{word}”",
     "practiceStepProgress": "{done}/{total}",
-    "leaderboard": "Tulostaulu",
-    "leaderboardRank": "Sija {rank}",
-    "courseLeaderboardTooltip": "Kaikki tällä kurssilla, järjestettynä heidän kielensä tähtien mukaan. Napauta jäsentä ja valitse ”Aloita keskustelu” lähettääksesi hänelle yksityisviestin.",
+    "courseParticipantTooltip": "Tässä ovat kaikki tämän kurssin osallistujat. Napsauta kenen tahansa käyttäjän avataria ja valitse \"aloita keskustelu\" lähettääksesi yksityisviestin.",
     "goalReportTitle": "Ilmoita tästä tähdestä",
     "goalReportOverAwardPrompt": "Jos sinun ei pitänyt saada tätä tähteä, selitä miksi.",
     "goalReportUnderAwardPrompt": "Jos mielestäsi sinun olisi pitänyt saada tämä tähti, miksi?",
@@ -10083,5 +10081,10 @@
     "keepWaiting": "Jatka odottamista",
     "botTookSeatAfterAnHour": "Tämä istunto oli auki tunnin, joten Pangea Bot otti avoimen paikan.",
     "botTookSeatAfterADay": "Tämä istunto oli auki yli päivän, joten Pangea Bot otti avoimen paikan. Aloita lähettämällä viesti.",
-    "subscriptionGracePeriodEndsOn": "Maksu epäonnistui. Armonaika päättyy {date}"
+    "subscriptionGracePeriodEndsOn": "Maksu epäonnistui. Armonaika päättyy {date}",
+    "changeBaseLanguageTitle": "Vaihda peruskieli?",
+    "changeBaseLanguageDesc": "Sovelluksen valikot ja painikkeet vaihtuvat kielelle {language}.",
+    "accountSetupFailedHelp": "Emme saaneet tiliäsi valmiiksi. Tarkista yhteytesi ja yritä uudelleen, tai kirjaudu ulos ja sisään myöhemmin.",
+    "onboardingOfflineError": "Olet offline-tilassa. Yritä uudelleen, kun olet taas online-tilassa.",
+    "activitySavedTo": "Aktiviteetti tallennettu kohteeseen {page}"
 }

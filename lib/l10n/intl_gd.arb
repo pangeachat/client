@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-11-04 10:19:29.897590",
+    "@@last_modified": "2026-11-06 13:11:00.076379",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Dè tha ‘{word}’ a’ ciallachadh?",
     "practiceEmojiPrompt": "Tagh emoji airson ‘{word}’",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Clàr-stiùiridh",
-    "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "A h-uile duine sa chùrsa seo, air an rangachadh a rèir nan rionnagan aca sa chànan aige. Tap air ball agus tagh “Tòisich còmhradh” gus DM a chuir thuca.",
+    "courseParticipantTooltip": "Seo a h-uile duine sa chùrsa seo. Cliog air avatar neach-cleachdaidh sam bith agus “tòisich còmhradh” gus teachdaireachd dhìreach a chuir.",
     "goalReportTitle": "Dèan aithris air an rionnag seo",
     "goalReportOverAwardPrompt": "Mura bu chòir dhut an rionnag seo fhaighinn, mìnich carson.",
     "goalReportUnderAwardPrompt": "Ma tha thu a’ smaoineachadh gum bu chòir dhut an rionnag seo fhaighinn, carson?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Cùm a' feitheamh",
     "botTookSeatAfterAnHour": "Bha an seisean seo fosgailte airson uair a thìde, agus mar sin ghabh Pangea Bot an cathair fhosgailte.",
     "botTookSeatAfterADay": "Bha an seisean seo fosgailte airson còrr is latha, agus mar sin ghabh Pangea Bot an cathair fhosgailte. Cuir teachdaireachd gus tòiseachadh.",
-    "subscriptionGracePeriodEndsOn": "Dh'fhàillig am pàigheadh. Thig an ùine-ghràis gu crìch air {date}"
+    "subscriptionGracePeriodEndsOn": "Dh'fhàillig am pàigheadh. Thig an ùine-ghràis gu crìch air {date}",
+    "changeBaseLanguageTitle": "Atharraich bun-chànan?",
+    "changeBaseLanguageDesc": "Gluaisidh clàir-taice agus putanan an aplacaid gu {language}.",
+    "accountSetupFailedHelp": "Cha b' urrainn dhuinn crìoch a chur air do chunntas a stèidheachadh. Thoir sùil air a' cheangal agad agus feuch a-rithist, no log a-mach agus clàraich a-steach nas fhaide air adhart.",
+    "onboardingOfflineError": "Tha thu far-loidhne. Feuch ris a-rithist nuair a bhios tu air-loidhne.",
+    "activitySavedTo": "Chaidh gnìomhachd a shàbhaladh gu {page}"
 }

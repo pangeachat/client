@@ -2550,7 +2550,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-11-04 10:19:34.505263",
+    "@@last_modified": "2026-11-06 13:11:04.864921",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10784,9 +10784,7 @@
     "practiceMeaningPrompt": "O que significa ‘{word}’?",
     "practiceEmojiPrompt": "Escolhe um emoji para ‘{word}’",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Classificação",
-    "leaderboardRank": "Classificação {rank}",
-    "courseLeaderboardTooltip": "Todos neste curso, classificados pelas suas estrelas no idioma. Toque num membro e escolha “Iniciar conversa” para enviar uma mensagem direta.",
+    "courseParticipantTooltip": "Estes são todos os participantes deste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
     "goalReportTitle": "Reportar esta estrela",
     "goalReportOverAwardPrompt": "Se não era suposto ter recebido esta estrela, por favor, explique porquê.",
     "goalReportUnderAwardPrompt": "Se acha que devia ter recebido esta estrela, porquê?",
@@ -10960,5 +10958,10 @@
     "keepWaiting": "Continuar à espera",
     "botTookSeatAfterAnHour": "Esta sessão esteve aberta durante uma hora, por isso o Pangea Bot ocupou o lugar vago.",
     "botTookSeatAfterADay": "Esta sessão esteve aberta por mais de um dia, por isso o Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar.",
-    "subscriptionGracePeriodEndsOn": "Pagamento falhou. Período de carência termina em {date}"
+    "subscriptionGracePeriodEndsOn": "Pagamento falhou. Período de carência termina em {date}",
+    "changeBaseLanguageTitle": "Alterar idioma base?",
+    "changeBaseLanguageDesc": "Os menus e botões da aplicação mudarão para {language}.",
+    "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique a sua ligação e tente novamente, ou termine a sessão e inicie-a mais tarde.",
+    "onboardingOfflineError": "Está offline. Tente novamente quando estiver online.",
+    "activitySavedTo": "Atividade guardada em {page}"
 }

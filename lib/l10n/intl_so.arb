@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-11-04 10:19:35.133099",
+    "@@last_modified": "2026-11-06 13:11:05.693580",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Maxay ka dhigan tahay ‘{word}’?",
     "practiceEmojiPrompt": "Dooro emoji u dhigma ‘{word}’",
     "practiceStepProgress": "{done} ka mid ah {total}",
-    "leaderboard": "Hogaamiye",
-    "leaderboardRank": "Darajada {rank}",
-    "courseLeaderboardTooltip": "Qof kasta oo koorsadan ku jira, oo lagu kala saaray xiddigahooda luqadda. Taabo xubin oo dooro “Bilow wada sheekaysiga” si aad fariin toos ah ugu dirto.",
+    "courseParticipantTooltip": "Kuwani waa qof kasta oo koorsadan ku jira. Guji sawirka isticmaale kasta iyo \"bilow wada sheekaysi\" si aad u dirto DM.",
     "goalReportTitle": "Warbixi xiddigtan",
     "goalReportOverAwardPrompt": "Haddii aanad ahayn inaad hesho xiddigtan, fadlan sharax sababta.",
     "goalReportUnderAwardPrompt": "Haddii aad u malaynayso inaad ahayd inaad hesho xiddigtan, maxay tahay sababtu?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Sii sug",
     "botTookSeatAfterAnHour": "Fadhigan wuxuu furnaa saacad, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan.",
     "botTookSeatAfterADay": "Fadhigan wuxuu furnaa in ka badan maalin, sidaa darteed Pangea Bot wuxuu qaatay kursiga bannaan. Fariin u dir si aad u bilowdo.",
-    "subscriptionGracePeriodEndsOn": "Lacag bixintu way fashilantay. Muddada dheeraadka ah waxay ku dhamaanaysaa {date}"
+    "subscriptionGracePeriodEndsOn": "Lacag bixintu way fashilantay. Muddada dheeraadka ah waxay ku dhamaanaysaa {date}",
+    "changeBaseLanguageTitle": "Beddel luqadda aasaasiga ah?",
+    "changeBaseLanguageDesc": "Liisaska iyo badhamada abka waxay u wareegi doonaan {language}.",
+    "accountSetupFailedHelp": "Ma aanu dhammaystiri karin dejinta akoonkaaga. Hubi isku xidhkaaga oo isku day mar kale, ama ka bax oo soo gal mar dambe.",
+    "onboardingOfflineError": "Kamaad online ahayn. Isku day mar kale marka aad online noqoto.",
+    "activitySavedTo": "Hawsha waxa lagu kaydiyay {page}"
 }

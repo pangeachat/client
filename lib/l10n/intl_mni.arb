@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-11-04 10:19:33.133418",
+    "@@last_modified": "2026-11-06 13:11:03.698337",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ হায়বসিগী অર્થ করিগুম্বা?",
     "practiceEmojiPrompt": "‘{word}’ হায়বসিগী ইমোজি অমা খল্লু",
     "practiceStepProgress": "{total} গী মনুংদা {done}",
-    "leaderboard": "லீடர் போர்ட்",
-    "leaderboardRank": "ரேங்க் {rank}",
-    "courseLeaderboardTooltip": "இந்த கோர்ஸ்-தா அদুனா, মখোயগী লোন-দা মখোயগী স্টারশিংগী মতুং ইন্னா র‍্যাঙ্ক তৌবা। মেম্বার অমদা ট্যাপ তৌদুনা অমসুং “Start conversation” খল্লগা মখোயদা DM থா।",
+    "courseParticipantTooltip": "এরা এই কোর্সের সবাই। যেকোনো ব্যবহারকারীর অবতারে ক্লিক করুন এবং একটি ডিএম পাঠাতে “কথোপকথন শুরু করুন”।",
     "goalReportTitle": "असी तारा असी रिपोर्ट तौ",
     "goalReportOverAwardPrompt": "असी तारा असी फंग्गद्रबदी, करिगै फंग्गद्रबगे हैबदो खंग्हनबीयू।",
     "goalReportUnderAwardPrompt": "असी तारा असी फंग्गबा तादबदी, करिगै फंग्गबा तादबगे हैबदो खंग्हनबीयू।",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Ngairaga leiyu",
     "botTookSeatAfterAnHour": "Seesion asi pung ama muk hangkhre, aduna Pangea Bot na khongpham lourabani.",
     "botTookSeatAfterADay": "Seesion asi numit ama muk hangkhre, aduna Pangea Bot na khongpham lourabani. Haurunaba wahei amata thabiyu.",
-    "subscriptionGracePeriodEndsOn": "শেন্থোক ফেইল তৌরবনি। গ্রেস পিরিয়ড {date} দা লোইগনি।"
+    "subscriptionGracePeriodEndsOn": "শেন্থোক ফেইল তৌরবনি। গ্রেস পিরিয়ড {date} দা লোইগনি।",
+    "changeBaseLanguageTitle": "ꯃୂଳ ꯂꯣꯟ ꯑꯣꯟꯊꯣꯛꯀꯗ꯭ꯔꯥ?",
+    "changeBaseLanguageDesc": "ꯑꯦꯞꯄꯀꯤ ꯃꯦꯅꯨ ꯑꯃꯁꯨꯡ ꯕꯇꯟꯁꯤꯡ ꯑꯁꯤ {language} ꯗꯥ ꯑꯣꯟꯊꯣꯛꯀꯅꯤ.",
+    "accountSetupFailedHelp": "ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯑꯦꯀꯥꯎꯟꯇ ꯁꯦꯠ ꯑꯄ ꯇꯧꯕꯥ ꯂꯣꯏꯁꯤꯟꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫ ꯅꯍꯥꯛꯀꯤ ꯀꯅꯦꯛꯁꯟ ꯆꯦꯛ ꯇꯧꯕꯤꯌꯨ ꯑꯃꯁꯨꯡ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯊꯕꯛ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯠꯔꯒꯥ ꯂꯣꯒ ꯑꯥꯎꯠ ꯇꯧꯔꯒꯥ ꯃꯇꯨꯡꯗꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ꯫",
+    "onboardingOfflineError": "ꯑꯣꯅꯂꯥꯏꯟ ꯂꯩꯇꯔꯦ꯫ ꯑꯣꯅꯂꯥꯏꯟ ꯍꯟꯅ ꯂꯩꯔꯒ ꯍꯟꯅ ꯊꯤꯡꯖꯧ꯫",
+    "activitySavedTo": "Activity {page} da save toukhre"
 }

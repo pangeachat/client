@@ -363,7 +363,7 @@ void main() {
       // only the LLM call, not the CMS fetch). Set TEST_ACTIVITY_ID in .env.
       final activityId = EndpointTestEnv.testActivityId;
       if (activityId == null) {
-        markTestSkipped('Set TEST_ACTIVITY_ID to a course-plan-activity id');
+        markTestSkipped('Set TEST_ACTIVITY_ID to an activities-v2 id');
         return;
       }
       // Send mock request
@@ -395,7 +395,7 @@ void main() {
       // reruns just overwrite this test user's opinion).
       final activityId = EndpointTestEnv.testActivityId;
       if (activityId == null) {
-        markTestSkipped('Set TEST_ACTIVITY_ID to a course-plan-activity id');
+        markTestSkipped('Set TEST_ACTIVITY_ID to an activities-v2 id');
         return;
       }
 

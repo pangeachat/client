@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import 'package:material_symbols_icons/symbols.dart';
-
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
@@ -119,8 +117,12 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
                                     spacing: 8.0,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(Icons.school_outlined, size: 24.0),
-                                      Text(L10n.of(context).teach),
+                                      Icon(UserType.teacher.icon, size: 24.0),
+                                      Text(
+                                        UserType.teacher.title(
+                                          L10n.of(context),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -154,8 +156,12 @@ class UserTypeStepViewState extends State<UserTypeStepView> {
                                     spacing: 8.0,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(Symbols.dictionary, size: 24.0),
-                                      Text(L10n.of(context).learn),
+                                      Icon(UserType.student.icon, size: 24.0),
+                                      Text(
+                                        UserType.student.title(
+                                          L10n.of(context),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),

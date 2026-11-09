@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 10:19:37.036810",
+    "@@last_modified": "2026-11-06 13:11:07.579401",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9976,9 +9976,7 @@
     "practiceMeaningPrompt": "「{word}」是什麼意思？",
     "practiceEmojiPrompt": "為「{word}」選擇一個表情符號",
     "practiceStepProgress": "{done}/{total}",
-    "leaderboard": "排行榜",
-    "leaderboardRank": "排名 {rank}",
-    "courseLeaderboardTooltip": "本課程的所有成員，依據他們在該語言中獲得的星星數進行排名。點擊成員並選擇「開始對話」即可向他們發送私訊。",
+    "courseParticipantTooltip": "這是這門課程中的所有人。點擊任何用戶的頭像並選擇「開始對話」以發送私信。",
     "goalReportTitle": "舉報此星",
     "goalReportOverAwardPrompt": "如果您不應該獲得此星，請解釋原因。",
     "goalReportUnderAwardPrompt": "如果您認為您應該獲得此星，請說明原因。",
@@ -10152,5 +10150,10 @@
     "keepWaiting": "繼續等待",
     "botTookSeatAfterAnHour": "此會話已開放一小時，Pangea Bot 已加入。",
     "botTookSeatAfterADay": "此會話已開放超過一天，Pangea Bot 已加入。發送訊息即可開始。",
-    "subscriptionGracePeriodEndsOn": "付款失敗。寬限期於 {date} 結束"
+    "subscriptionGracePeriodEndsOn": "付款失敗。寬限期於 {date} 結束",
+    "changeBaseLanguageTitle": "更改基礎語言？",
+    "changeBaseLanguageDesc": "應用程式的選單和按鈕將切換為{language}。",
+    "accountSetupFailedHelp": "我們無法完成您的帳號設定。請檢查您的連線並再試一次，或登出並稍後再登入。",
+    "onboardingOfflineError": "您已離線。請在連線後再試一次。",
+    "activitySavedTo": "活動已儲存至{page}"
 }

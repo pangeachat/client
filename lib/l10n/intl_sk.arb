@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-11-04 10:19:34.647251",
+    "@@last_modified": "2026-11-06 13:11:05.469512",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10812,9 +10812,7 @@
     "practiceMeaningPrompt": "Čo znamená „{word}“?",
     "practiceEmojiPrompt": "Vyberte emoji pre „{word}“",
     "practiceStepProgress": "{done} z {total}",
-    "leaderboard": "Rebríček",
-    "leaderboardRank": "Umiestnenie {rank}",
-    "courseLeaderboardTooltip": "Všetci v tomto kurze, zoradení podľa ich hviezdičiek v danom jazyku. Klepnite na člena a vyberte „Začať konverzáciu“, aby ste mu poslali správu.",
+    "courseParticipantTooltip": "Toto sú všetci účastníci tohto kurzu. Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“, aby ste poslali súkromnú správu.",
     "goalReportTitle": "Nahlásiť túto hviezdu",
     "goalReportOverAwardPrompt": "Ak ste nemali dostať túto hviezdu, vysvetlite prečo.",
     "goalReportUnderAwardPrompt": "Ak si myslíte, že ste mali dostať túto hviezdu, prečo?",
@@ -10988,5 +10986,10 @@
     "keepWaiting": "Pokračovať v čakaní",
     "botTookSeatAfterAnHour": "Táto relácia bola otvorená hodinu, takže Pangea Bot si sadol na voľné miesto.",
     "botTookSeatAfterADay": "Táto relácia bola otvorená viac ako deň, takže Pangea Bot si sadol na voľné miesto. Pošlite správu pre začatie.",
-    "subscriptionGracePeriodEndsOn": "Platba zlyhala. Tolerančné obdobie končí {date}"
+    "subscriptionGracePeriodEndsOn": "Platba zlyhala. Tolerančné obdobie končí {date}",
+    "changeBaseLanguageTitle": "Zmeniť základný jazyk?",
+    "changeBaseLanguageDesc": "Ponuky a tlačidlá aplikácie sa prepnú na jazyk {language}.",
+    "accountSetupFailedHelp": "Nepodarilo sa nám dokončiť nastavenie vášho účtu. Skontrolujte pripojenie a skúste to znova, alebo sa odhláste a prihláste sa neskôr.",
+    "onboardingOfflineError": "Ste offline. Skúste to znova, keď budete online.",
+    "activitySavedTo": "Aktivita uložená do {page}"
 }

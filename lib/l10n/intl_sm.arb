@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-11-04 10:19:34.953590",
+    "@@last_modified": "2026-11-06 13:11:05.762530",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "O le a le uiga o le ‘{word}’?",
     "practiceEmojiPrompt": "Filifili se emoji mo le ‘{word}’",
     "practiceStepProgress": "{done} mai le {total}",
-    "leaderboard": "Lisi o Ta'ita'i",
-    "leaderboardRank": "Tulaga {rank}",
-    "courseLeaderboardTooltip": "Tagata uma i lenei kosi, fa'atulagaina e a latou fetu i lana gagana. Pa'i i se sui ma filifili le “Amata talanoaga” e lafo ai se fe'au tuusa'o ia i latou.",
+    "courseParticipantTooltip": "O tagata uma ia o loʻo i lenei kosi. Kiliki i luga o le ata o soʻo se tagata faʻaoga ma “amata talanoaga” e lafo ai se DM.",
     "goalReportTitle": "Lipoti lenei fetu",
     "goalReportOverAwardPrompt": "Afai e le tatau ona e mauaina lenei fetu, faʻamolemole faʻamatala pe aisea.",
     "goalReportUnderAwardPrompt": "Afai e te manatu e tatau ona e mauaina lenei fetu, aisea?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Fa'atali pea",
     "botTookSeatAfterAnHour": "Na tatala lenei sauniga mo le itula, o lea na nofo ai le Pangea Bot i le nofoa avanoa.",
     "botTookSeatAfterADay": "Na tatala lenei sauniga mo le silia ma le aso, o lea na nofo ai le Pangea Bot i le nofoa avanoa. Auina mai se fe'au e amata ai.",
-    "subscriptionGracePeriodEndsOn": "Ua lē taulau le totogi. E muta le vaitaimi fa'aopoopo i le aso {date}"
+    "subscriptionGracePeriodEndsOn": "Ua lē taulau le totogi. E muta le vaitaimi fa'aopoopo i le aso {date}",
+    "changeBaseLanguageTitle": "Suia le gagana autū?",
+    "changeBaseLanguageDesc": "O menus ma fa'amau o le app o le a sui i le {language}.",
+    "accountSetupFailedHelp": "E leʻi mafai ona matou faʻamaeʻaina le faʻatulagaina o lau teugatupe. Siaki lau fesoʻotaʻiga ma toe taumafai, pe alu ese ma saini i totonu mulimuli ane.",
+    "onboardingOfflineError": "Ua e tuusao. Toe taumafai pe a e toe i luga ole laiga.",
+    "activitySavedTo": "Gaoioiga ua sefe i le {page}"
 }

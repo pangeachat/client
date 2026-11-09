@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-11-04 10:19:35.195240",
+    "@@last_modified": "2026-11-06 13:11:05.482868",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ جو ڇا مطلب آهي؟",
     "practiceEmojiPrompt": "‘{word}’ لاءِ هڪ ايموجي چونڊيو",
     "practiceStepProgress": "{total} مان {done}",
-    "leaderboard": "ليڊربورڊ",
-    "leaderboardRank": "درجو {rank}",
-    "courseLeaderboardTooltip": "هن ڪورس ۾ سڀئي، انهن جي ٻوليءَ ۾ ستارن جي لحاظ کان ترتيب ڏنل آهن. ڪنهن ميمبر تي ٽيپ ڪريو ۽ انهن کي سڌو پيغام موڪلڻ لاءِ ”ڳالهه ٻولهه شروع ڪريو“ چونڊيو.",
+    "courseParticipantTooltip": "هي هن ڪورس ۾ هرڪو آهي. ڪنهن به صارف جي اوتار تي ڪلڪ ڪريو ۽ DM موڪلڻ لاءِ ”گفتگو شروع ڪريو“.",
     "goalReportTitle": "هن اسٽار جي رپورٽ ڪريو",
     "goalReportOverAwardPrompt": "جيڪڏهن توهان کي هي اسٽار نه ملڻ گهرجي ها، مهرباني ڪري وضاحت ڪريو ڇو.",
     "goalReportUnderAwardPrompt": "جيڪڏهن توهان سمجهو ٿا ته توهان کي هي اسٽار ملڻ گهرجي ها، ڇو؟",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "انتظار ڪندا رهو",
     "botTookSeatAfterAnHour": "هي سيشن هڪ ڪلاڪ لاءِ کليل هو، تنهنڪري پينگيا بوٽ خالي جاءِ ورتي.",
     "botTookSeatAfterADay": "هي سيشن هڪ ڏينهن کان وڌيڪ عرصي لاءِ کليل هو، تنهنڪري پينگيا بوٽ خالي جاءِ ورتي. شروع ڪرڻ لاءِ پيغام موڪليو.",
-    "subscriptionGracePeriodEndsOn": "ادائگي ناڪام ٿي وئي. رعايتي مدت {date} تي ختم ٿيندي"
+    "subscriptionGracePeriodEndsOn": "ادائگي ناڪام ٿي وئي. رعايتي مدت {date} تي ختم ٿيندي",
+    "changeBaseLanguageTitle": "بنيادي ٻولي تبديل ڪريو؟",
+    "changeBaseLanguageDesc": "ايپ جا مينيو ۽ بٽڻ {language} ۾ تبديل ٿي ويندا.",
+    "accountSetupFailedHelp": "اسان توهان جو اڪائونٽ سيٽ اپ نه ڪري سگهياسين. پنهنجو ڪنيڪشن چيڪ ڪريو ۽ ٻيهر ڪوشش ڪريو، يا لاگ آئوٽ ڪريو ۽ بعد ۾ سائن ان ڪريو.",
+    "onboardingOfflineError": "توهان آف لائن آهيو. جڏهن توهان آن لائن ٿيو ته ٻيهر ڪوشش ڪريو.",
+    "activitySavedTo": "سرگرمي {page} ۾ محفوظ ڪئي وئي"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-11-04 10:19:32.271965",
+    "@@last_modified": "2026-11-06 13:11:02.580136",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ ໝາຍຄວາມວ່າແນວໃດ?",
     "practiceEmojiPrompt": "ເລືອກອີໂມຈິສຳລັບ ‘{word}’",
     "practiceStepProgress": "{done} ຈາກ {total}",
-    "leaderboard": "ກະດານຈັດອັນດັບ",
-    "leaderboardRank": "ອັນດັບທີ {rank}",
-    "courseLeaderboardTooltip": "ທຸກຄົນໃນຫຼັກສູດນີ້, ຈັດອັນດັບຕາມຈຳນວນດາວທີ່ໄດ້ຮັບໃນພາສານັ້ນ. ແຕະສະມາຊິກແລ້ວເລືອກ “ເລີ່ມການສົນທະນາ” ເພື່ອສົ່ງຂໍ້ຄວາມສ່ວນຕົວຫາເຂົາເຈົ້າ.",
+    "courseParticipantTooltip": "ນີ້ແມ່ນທຸກຄົນໃນຫຼັກສູດນີ້. ຄລິກທີ່ຮູບໂປຣໄຟລ໌ຂອງຜູ້ໃຊ້ໃດໜຶ່ງ ແລະ “ເລີ່ມການສົນທະນາ” ເພື່ອສົ່ງ DM.",
     "goalReportTitle": "ລາຍງານດາວນີ້",
     "goalReportOverAwardPrompt": "ຖ້າທ່ານບໍ່ຄວນໄດ້ຮັບດາວນີ້, ກະລຸນາອະທິບາຍວ່າເປັນຫຍັງ.",
     "goalReportUnderAwardPrompt": "ຖ້າທ່ານຄິດວ່າທ່ານຄວນໄດ້ຮັບດາວນີ້, ເປັນຫຍັງ?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "ລໍຖ້າຕໍ່ໄປ",
     "botTookSeatAfterAnHour": "ເຊສຊັນນີ້ເປີດມາໄດ້ໜຶ່ງຊົ່ວໂມງແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ.",
     "botTookSeatAfterADay": "ເຊສຊັນນີ້ເປີດມາໄດ້ຫຼາຍກວ່າໜຶ່ງມື້ແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ. ສົ່ງຂໍ້ຄວາມເພື່ອເລີ່ມຕົ້ນ.",
-    "subscriptionGracePeriodEndsOn": "ການຊໍາລະເງິນບໍ່ສໍາເລັດ. ໄລຍະຜ່ອນຜັນຈະສິ້ນສຸດໃນວັນທີ {date}"
+    "subscriptionGracePeriodEndsOn": "ການຊໍາລະເງິນບໍ່ສໍາເລັດ. ໄລຍະຜ່ອນຜັນຈະສິ້ນສຸດໃນວັນທີ {date}",
+    "changeBaseLanguageTitle": "ປ່ຽນພາສາຫຼັກບໍ?",
+    "changeBaseLanguageDesc": "ເມນູ ແລະ ປຸ່ມຕ່າງໆຂອງແອັບຈະປ່ຽນເປັນພາສາ {language}.",
+    "accountSetupFailedHelp": "ພວກເຮົາບໍ່ສາມາດຕັ້ງຄ່າບັນຊີຂອງທ່ານໃຫ້ສຳເລັດ. ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະ ລອງໃໝ່ອີກຄັ້ງ, ຫຼື ອອກຈາກລະບົບ ແລະ ເຂົ້າສູ່ລະບົບໃໝ່ພາຍຫຼັງ.",
+    "onboardingOfflineError": "ທ່ານກຳລັງອອບລາຍ. ລອງໃໝ່ອີກຄັ້ງເມື່ອທ່ານອອນລາຍແລ້ວ.",
+    "activitySavedTo": "ກິດຈະກຳຖືກບັນທຶກໄວ້ທີ່ {page}"
 }

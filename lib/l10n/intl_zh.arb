@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-11-04 10:19:37.299434",
+    "@@last_modified": "2026-11-06 13:11:07.980894",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9870,9 +9870,7 @@
     "practiceMeaningPrompt": "“{word}”是什么意思？",
     "practiceEmojiPrompt": "为“{word}”选择一个表情符号",
     "practiceStepProgress": "{done}/{total}",
-    "leaderboard": "排行榜",
-    "leaderboardRank": "排名 {rank}",
-    "courseLeaderboardTooltip": "本课程中所有成员按其在该语言中获得的星星数进行排名。点击成员并选择“开始对话”即可向他们发送私信。",
+    "courseParticipantTooltip": "这是本课程中的所有人。点击任何用户的头像并选择“开始对话”以发送私信。",
     "goalReportTitle": "举报此星",
     "goalReportOverAwardPrompt": "如果您不应该获得此星，请说明原因。",
     "goalReportUnderAwardPrompt": "如果您认为您应该获得此星，请说明原因。",
@@ -10046,5 +10044,10 @@
     "keepWaiting": "继续等待",
     "botTookSeatAfterAnHour": "此会话已开放一小时，Pangea Bot 已加入。",
     "botTookSeatAfterADay": "此会话已开放超过一天，Pangea Bot 已加入。发送消息即可开始。",
-    "subscriptionGracePeriodEndsOn": "支付失败。宽限期将于 {date} 结束"
+    "subscriptionGracePeriodEndsOn": "支付失败。宽限期将于 {date} 结束",
+    "changeBaseLanguageTitle": "更改基础语言？",
+    "changeBaseLanguageDesc": "应用的菜单和按钮将切换为{language}。",
+    "accountSetupFailedHelp": "我们无法完成您的账户设置。请检查您的网络连接，然后重试，或者退出并稍后登录。",
+    "onboardingOfflineError": "您已离线。请在联网后重试。",
+    "activitySavedTo": "活动已保存到 {page}"
 }

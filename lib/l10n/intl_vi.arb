@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 10:19:36.403875",
+    "@@last_modified": "2026-11-06 13:11:07.566893",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7177,9 +7177,7 @@
     "practiceMeaningPrompt": "‘{word}’ nghĩa là gì?",
     "practiceEmojiPrompt": "Chọn một biểu tượng cảm xúc cho ‘{word}’",
     "practiceStepProgress": "{done} trên {total}",
-    "leaderboard": "Bảng xếp hạng",
-    "leaderboardRank": "Hạng {rank}",
-    "courseLeaderboardTooltip": "Tất cả mọi người trong khóa học này, được xếp hạng theo số sao của họ trong ngôn ngữ đó. Nhấn vào một thành viên và chọn “Bắt đầu cuộc trò chuyện” để gửi tin nhắn trực tiếp cho họ.",
+    "courseParticipantTooltip": "Đây là tất cả mọi người trong khóa học này. Nhấp vào avatar của bất kỳ người dùng nào và \"bắt đầu cuộc trò chuyện\" để gửi tin nhắn trực tiếp.",
     "goalReportTitle": "Báo cáo sao này",
     "goalReportOverAwardPrompt": "Nếu bạn không đáng nhận sao này, vui lòng giải thích lý do.",
     "goalReportUnderAwardPrompt": "Nếu bạn nghĩ mình đáng nhận sao này, tại sao?",
@@ -7353,5 +7351,10 @@
     "keepWaiting": "Tiếp tục chờ đợi",
     "botTookSeatAfterAnHour": "Phiên này đã mở được một giờ, vì vậy Pangea Bot đã nhận chỗ trống.",
     "botTookSeatAfterADay": "Phiên này đã mở hơn một ngày, vì vậy Pangea Bot đã nhận chỗ trống. Gửi tin nhắn để bắt đầu.",
-    "subscriptionGracePeriodEndsOn": "Thanh toán không thành công. Thời gian gia hạn kết thúc vào {date}"
+    "subscriptionGracePeriodEndsOn": "Thanh toán không thành công. Thời gian gia hạn kết thúc vào {date}",
+    "changeBaseLanguageTitle": "Đổi ngôn ngữ cơ sở?",
+    "changeBaseLanguageDesc": "Các menu và nút của ứng dụng sẽ chuyển sang tiếng {language}.",
+    "accountSetupFailedHelp": "Chúng tôi không thể hoàn tất việc thiết lập tài khoản của bạn. Vui lòng kiểm tra kết nối và thử lại, hoặc đăng xuất và đăng nhập sau.",
+    "onboardingOfflineError": "Bạn đang ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng.",
+    "activitySavedTo": "Hoạt động đã lưu vào {page}"
 }

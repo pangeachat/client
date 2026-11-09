@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-11-04 10:19:31.614398",
+    "@@last_modified": "2026-11-06 13:11:01.533385",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "«{word}» нені білдіреді?",
     "practiceEmojiPrompt": "«{word}» үшін эмодзи таңдаңыз",
     "practiceStepProgress": "{total} ішінен {done}",
-    "leaderboard": "Көшбасшылар тақтасы",
-    "leaderboardRank": "Дәреже {rank}",
-    "courseLeaderboardTooltip": "Осы курстағы барлық қатысушылар тілдегі жұлдыздары бойынша рейтингтелген. Мүшеге хабарлама жіберу үшін оны түртіп, «Әңгіме бастау» опциясын таңдаңыз.",
+    "courseParticipantTooltip": "Бұл осы курстағы барлық адамдар. Кез келген пайдаланушының аватарын басып, жеке хабарлама жіберу үшін «әңгіме бастау» түймесін басыңыз.",
     "goalReportTitle": "Бұл жұлдыз туралы хабарлау",
     "goalReportOverAwardPrompt": "Егер сіз бұл жұлдызды алмауыңыз керек болса, неге екенін түсіндіріңіз.",
     "goalReportUnderAwardPrompt": "Егер сіз бұл жұлдызды алуыңыз керек деп ойласаңыз, неге?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Күте тұру",
     "botTookSeatAfterAnHour": "Бұл сессия бір сағат бойы ашық болды, сондықтан Pangea Bot бос орынды алды.",
     "botTookSeatAfterADay": "Бұл сессия бір күннен астам уақыт бойы ашық болды, сондықтан Pangea Bot бос орынды алды. Бастау үшін хабарлама жіберіңіз.",
-    "subscriptionGracePeriodEndsOn": "Төлем қатесі. Жеңілдік кезеңі {date} күні аяқталады"
+    "subscriptionGracePeriodEndsOn": "Төлем қатесі. Жеңілдік кезеңі {date} күні аяқталады",
+    "changeBaseLanguageTitle": "Негізгі тілді өзгерту ме?",
+    "changeBaseLanguageDesc": "Қолданба мәзірлері мен түймелері {language} тіліне ауыстырылады.",
+    "accountSetupFailedHelp": "Біз сіздің тіркелгіңізді орнатуды аяқтай алмадық. Байланысыңызды тексеріп, қайталап көріңіз немесе шығып, кейінірек кіріңіз.",
+    "onboardingOfflineError": "Сіз желіден тыссыз. Желіге қосылғаннан кейін қайталап көріңіз.",
+    "activitySavedTo": "Әрекет мына жерге сақталды: {page}"
 }

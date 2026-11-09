@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-11-04 10:19:35.846838",
+    "@@last_modified": "2026-11-06 13:11:06.621444",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ inamaanisha nini?",
     "practiceEmojiPrompt": "Chagua emoji ya ‘{word}’",
     "practiceStepProgress": "{done} kati ya {total}",
-    "leaderboard": "Ubao wa Wanaoongoza",
-    "leaderboardRank": "Nafasi {rank}",
-    "courseLeaderboardTooltip": "Kila mmoja katika kozi hii, amepangwa kwa nyota zao katika lugha yake. Gonga mwanachama na uchague “Anzisha mazungumzo” ili kumtumia DM.",
+    "courseParticipantTooltip": "Hawa ndio kila mtu katika kozi hii. Bofya kwenye avatar ya mtumiaji yeyote na “anza mazungumzo” kutuma DM.",
     "goalReportTitle": "Ripoti nyota hii",
     "goalReportOverAwardPrompt": "Ikiwa haukupaswa kupata nyota hii, tafadhali eleza kwa nini.",
     "goalReportUnderAwardPrompt": "Ikiwa unafikiri ulipaswa kupata nyota hii, kwa nini?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Endelea kusubiri",
     "botTookSeatAfterAnHour": "Kipindi hiki kilikuwa wazi kwa saa moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi.",
     "botTookSeatAfterADay": "Kipindi hiki kilikuwa wazi kwa zaidi ya siku moja, kwa hivyo Pangea Bot alichukua nafasi iliyo wazi. Tuma ujumbe ili kuanza.",
-    "subscriptionGracePeriodEndsOn": "Malipo yameshindwa. Muda wa ziada unaisha tarehe {date}"
+    "subscriptionGracePeriodEndsOn": "Malipo yameshindwa. Muda wa ziada unaisha tarehe {date}",
+    "changeBaseLanguageTitle": "Badilisha lugha ya msingi?",
+    "changeBaseLanguageDesc": "Menyu na vitufe vya programu vitabadilika kuwa {language}.",
+    "accountSetupFailedHelp": "Hatukuweza kumaliza kusanidi akaunti yako. Angalia muunganisho wako na ujaribu tena, au ingia na uingie baadaye.",
+    "onboardingOfflineError": "Hauna intaneti. Jaribu tena ukiwa mtandaoni.",
+    "activitySavedTo": "Shughuli imehifadhiwa kwenye {page}"
 }

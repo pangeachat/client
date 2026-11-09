@@ -104,6 +104,17 @@ extension QuestsClientExtension on Client {
     return awaiting;
   }
 
+  /// The activities of the learner's saved sessions whose plan is on its way
+  /// ([ActivityRoomExtension.activityPlanLoading]). Unlike
+  /// [savedSessionActivitiesAwaitingPlan], a plan whose read failed or whose
+  /// activity was removed is not listed, so a surface that shows a loading
+  /// state until these land can't show it for good.
+  Set<String> get savedSessionActivitiesLoadingPlan => {
+    for (final room in rooms)
+      if (room.hasArchivedActivity && room.activityPlanLoading)
+        ?room.activityId,
+  };
+
   /// The learner's activity XP per activity: every saved session of it
   /// ([savedSessionsByActivity]), each counting the XP credited to its room
   /// ([creditedXpByRoom] — the chat XP earned there plus practice credited

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-11-04 10:19:34.987584",
+    "@@last_modified": "2026-11-06 13:11:05.724724",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ යන්නෙහි තේරුම කුමක්ද?",
     "practiceEmojiPrompt": "‘{word}’ සඳහා ඉමොජියක් තෝරන්න",
     "practiceStepProgress": "{total}න් {done}",
-    "leaderboard": "ප්‍රමුඛ පුවරුව",
-    "leaderboardRank": "ශ්‍රේණිය {rank}",
-    "courseLeaderboardTooltip": "මෙම පාඨමාලාවේ සිටින සියලු දෙනා, ඔවුන්ගේ භාෂාවේ තරු අනුව ශ්‍රේණිගත කර ඇත. සාමාජිකයෙකු තට්ටු කර ඔවුන්ට DM එකක් යැවීමට “සංවාදය ආරම්භ කරන්න” තෝරන්න.",
+    "courseParticipantTooltip": "මෙය මෙම පාඨමාලාවේ සිටින සියලු දෙනායි. ඕනෑම පරිශීලකයෙකුගේ අවතාරය මත ක්ලික් කර DM එකක් යැවීමට “සංවාදය ආරම්භ කරන්න” ක්ලික් කරන්න.",
     "goalReportTitle": "මෙම තාරකාව වාර්තා කරන්න",
     "goalReportOverAwardPrompt": "ඔබට මෙම තාරකාව නොලැබිය යුතු නම්, කරුණාකර හේතුව පැහැදිලි කරන්න.",
     "goalReportUnderAwardPrompt": "ඔබට මෙම තාරකාව ලැබිය යුතු යැයි ඔබ සිතන්නේ නම්, ඇයි?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "බලා සිටින්න",
     "botTookSeatAfterAnHour": "මෙම සැසිය පැයක් විවෘතව තිබූ නිසා, Pangea Bot හිස් ආසනය ගත්තේය.",
     "botTookSeatAfterADay": "මෙම සැසිය දවසකට වඩා විවෘතව තිබූ නිසා, Pangea Bot හිස් ආසනය ගත්තේය. ආරම්භ කිරීමට පණිවිඩයක් යවන්න.",
-    "subscriptionGracePeriodEndsOn": "ගෙවීම අසාර්ථක විය. සහන කාලය {date} දිනෙන් අවසන් වේ"
+    "subscriptionGracePeriodEndsOn": "ගෙවීම අසාර්ථක විය. සහන කාලය {date} දිනෙන් අවසන් වේ",
+    "changeBaseLanguageTitle": "මූලික භාෂාව වෙනස් කරන්නද?",
+    "changeBaseLanguageDesc": "යෙදුමේ මෙනු සහ බොත්තම් {language} වෙත මාරු වනු ඇත.",
+    "accountSetupFailedHelp": "ඔබගේ ගිණුම සැකසීම අපට අවසන් කිරීමට නොහැකි විය. ඔබගේ සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න, නැතහොත් ලොග් අවුට් වී පසුව නැවත ලොග් වන්න.",
+    "onboardingOfflineError": "ඔබ නොබැඳිව සිටී. ඔබ නැවත සබැඳි වූ පසු නැවත උත්සාහ කරන්න.",
+    "activitySavedTo": "ක්‍රියාකාරකම {page} වෙත සුරැකිණි"
 }

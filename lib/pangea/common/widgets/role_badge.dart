@@ -50,7 +50,7 @@ enum RoleBadgeType {
 /// A permission or membership label: the badge across a participant card's
 /// avatar, and the Admin label on a Courses hub tile (#9207). Ringed in the
 /// surface color, like the avatar's presence dot, so it separates from an
-/// avatar image or leaderboard ring it overlaps.
+/// avatar image or top-3 ring it overlaps.
 class RoleBadge extends StatelessWidget {
   final RoleBadgeType type;
 

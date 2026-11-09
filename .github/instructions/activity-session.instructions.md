@@ -39,12 +39,13 @@ What a learner sees while playing a conversation activity and when it ends. Find
 ## The summary
 
 - Each learner's summary is made when they finish, in either mode, with no group blurb ([activity summary](../../../.github/.github/instructions/activity-summary.instructions.md)).
-- The summary replaces the header, showing the picked participant's goals, the viewer's own by default.
+- The summary replaces the header, showing the picked participant's goals, the viewer's own by default. Only the viewer's own card keeps the header's session XP.
 - A failed summary can be retried, and a learner can flag one to be regenerated. A failed regeneration keeps the old summary; a failed translation shows it as written.
 
 ## Completion saves itself
 
 - A finished session saves even if it finished while the learner was away.
+- Once saved, the end card says so, subscribed or not: "Activity saved to Learning Objectives", opening the [page that lists it](activities.instructions.md#the-learning-objectives-page).
 
 ## The bot's seat
 

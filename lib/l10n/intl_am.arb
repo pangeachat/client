@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-11-04 10:19:27.158528",
+    "@@last_modified": "2026-11-06 13:10:57.358452",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ ምን ማለት ነው?",
     "practiceEmojiPrompt": "ለ‘{word}’ ኢሞጂ ይምረጡ",
     "practiceStepProgress": "{total} ከ {done}",
-    "leaderboard": "የደረጃ ሰንጠረዥ",
-    "leaderboardRank": "ደረጃ {rank}",
-    "courseLeaderboardTooltip": "በዚህ ኮርስ ውስጥ ያሉ ሁሉም ሰው፣ በቋንቋው ባላቸው ኮከቦች ደረጃ የተሰጣቸው። ለአንድ አባል DM ለመላክ እሱን መታ ያድርጉና “ውይይት ጀምር” የሚለውን ይምረጡ።",
+    "courseParticipantTooltip": "በዚህ ኮርስ ውስጥ ያሉ ሁሉም ሰዎች ናቸው። የግል መልዕክት ለመላክ የማንኛውንም ተጠቃሚ አምሳያ ላይ ጠቅ ያድርጉ እና “ውይይት ጀምር” የሚለውን ይምረጡ።",
     "goalReportTitle": "ይህን ኮከብ ሪፖርት አድርግ",
     "goalReportOverAwardPrompt": "ይህን ኮከብ ማግኘት ባይገባህ ኖሮ፣ ለምን እንደሆነ አስረዳ።",
     "goalReportUnderAwardPrompt": "ይህን ኮከብ ማግኘት ይገባኛል ብለህ ካሰብክ፣ ለምን?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "መጠበቅ ይቀጥሉ",
     "botTookSeatAfterAnHour": "ይህ ክፍለ ጊዜ ለአንድ ሰዓት ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ።",
     "botTookSeatAfterADay": "ይህ ክፍለ ጊዜ ከአንድ ቀን በላይ ክፍት ስለነበር ፓንጋያ ቦት ክፍት ቦታውን ያዘ። ለመጀመር መልእክት ይላኩ።",
-    "subscriptionGracePeriodEndsOn": "ክፍያ አልተሳካም። የቅናሽ ጊዜ የሚያበቃው በ{date} ነው።"
+    "subscriptionGracePeriodEndsOn": "ክፍያ አልተሳካም። የቅናሽ ጊዜ የሚያበቃው በ{date} ነው።",
+    "changeBaseLanguageTitle": "መሰረታዊ ቋንቋ ይቀየር?",
+    "changeBaseLanguageDesc": "የመተግበሪያው ምናሌዎች እና አዝራሮች ወደ {language} ይቀየራሉ።",
+    "accountSetupFailedHelp": "መለያዎን ማዋቀር አልቻልንም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ፣ ወይም ይውጡ እና በኋላ ይግቡ።",
+    "onboardingOfflineError": "ከመስመር ውጪ ነዎት። በመስመር ላይ ሲሆኑ እንደገና ይሞክሩ።",
+    "activitySavedTo": "እንቅስቃሴ ወደ {page} ተቀምጧል"
 }

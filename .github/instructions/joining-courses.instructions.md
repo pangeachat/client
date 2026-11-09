@@ -4,12 +4,12 @@ applyTo: "lib/features/join_codes/**,lib/routes/chat_list/**,lib/routes/courses/
 
 # Joining Courses — Client Design
 
-> **Note:** "Course" here = a Matrix **course space** (group room), which survives the v1→v3 content migration. It is distinct from the retired CMS "course‑plan" content tree (now v3 Quests). The join/knock/code mechanics below are model-agnostic; only the course‑plans cross-link points at deprecated v1.
+> **Note:** "Course" here = a Matrix **course space** (group room), which survives the v1→v3 content migration. It is distinct from the retired CMS "course‑plan" content tree (now v3 Quests). The join/knock/code mechanics below are model-agnostic.
 
 How users join courses (Matrix spaces) through three routes: class link, class code, and knock-accept.
 
 - **Synapse module cleanup**: [synapse-pangea-chat PR #21](https://github.com/pangeachat/synapse-pangea-chat/pull/21)
-- **Course plans**: [course-plans.instructions.md](course-plans.instructions.md)
+- **Quests**: [quests.instructions.md](quests.instructions.md)
 
 ---
 
@@ -38,28 +38,7 @@ A course carries its own target language — the quest's, the same field its inf
 - A **course space**, or a **chat** inside a course (announcements, introductions): the course plan page. Joining a coded chat resolves to its joined parent course rather than dropping the learner into the chat; only a coded chat with no joined parent course opens directly.
 - An **activity session**: the activity page with that session bound (join/resume) — the invite means "come join my session", so it never lands on the parent course, and no course context is forced open alongside it (an invitee outside the course cannot load that course; forcing it open showed an endless spinner).
 
-**Pre-login**: a logged-out visitor is bounced to login, and the coded location survives the bounce the way every workspace location does ([routing.instructions.md § A signed-out visitor's destination](routing.instructions.md#a-signed-out-visitors-destination)): the `/` auth guard ([`PAuthGaurd`](../../lib/pangea/common/utils/p_vguard.dart)) stores the folded `left=addcourse:private/<code>` URL (`SpaceCodeRepo.destination`) before bouncing, and the same guard sends the next logged-in landing back to it, where the join page submits. While signed out, the login and signup screens tell the visitor the code was kept ([signup-and-login.instructions.md § Arriving with a class code](signup-and-login.instructions.md#arriving-with-a-class-code)). A brand-new user's onboarding reads the code out of the stored destination and joins with it instead (below). The shared activity link (`/<uuid>`) rides the same way. The DM invite link (`/invite_user/<id>`, [user_id_url.dart](../../lib/features/navigation/user_id_url.dart)) is different: the invite route never renders — its redirect caches the invited user id in its own entry (on every landing, not only the bounce) and lands the user on the world map with the chat list open — and the shell itself opens the DM from there, consuming the entry once the DM has actually opened (or definitively failed). It waits while a coded join is in progress on screen and takes its turn on the next workspace navigation. The invite entry is time-stamped and expires (`SpaceCodeRepo.cacheTTL`) like the destination, so a visitor who never logs in can't leave one that surprises a much later login.
-
-### Onboarding with a link-joined course
-
-A new user arriving by class link signs up before joining, so the join runs inside onboarding: after they choose learner or teacher, onboarding joins with the ferried code and then loads the quest behind the course, which supplies the course title, description, target language and level.
-
-**Joining and loading the quest are separate outcomes.** A course space can be joined while its quest does not resolve — the space points at a retired or v1 plan id, or the content service is briefly unavailable. Treating that as a failed join is what produced #8593: the user was already a member but was still asked for a class code, with the ferried code discarded so the field they were shown was empty.
-
-Once the user is a member, onboarding continues as a joined-course flow and the class-code step is not shown. It ends on the joined-course page for learners and teachers alike — for a teacher that page takes the place of the course-request step, since they already have a course. What comes before it depends on the quest:
-
-| Quest resolves | What the user does first |
-| --- | --- |
-| Yes | Nothing — the quest supplies target language, base language and level, and onboarding goes straight to the joined-course page with the full course card |
-| No | The user supplies what the quest could not, then lands on the joined-course page built from the space alone — its name, avatar and teacher, with no course card |
-
-**The space records its own target language,** in the `pangea.course_plan` state event next to the quest id ([`CoursePlanEvent`](../../lib/features/course_plans/courses/course_plan_event.dart)). When it is there, onboarding records it as the user's target language and their device language as their base language, and only the level is asked for. Onboarding always writes both languages to the profile, whether the user chose them or the course supplied them.
-
-The language step is still shown in two cases: the space records no language — spaces predate the field, and the old spaces are the ones whose quests fail — or the course teaches the user's own device language, since a course cannot be taught in the language it teaches.
-
-**Onboarding ends on the joined course itself,** not the world map — whatever the last page turns out to be. A new user is inside their trial window, so the trial page follows the joined-course page and is the page they finish on; the destination follows from having joined a course at all, not from which page is last (#8593).
-
-None of this repairs the quest: the space still points at an id the content service cannot return, so the course plan page fails the same way after onboarding.
+**Pre-login**: a logged-out visitor is bounced to login, and the coded location survives the bounce the way every workspace location does ([routing.instructions.md § A signed-out visitor's destination](routing.instructions.md#a-signed-out-visitors-destination)): the `/` auth guard ([`PAuthGaurd`](../../lib/pangea/common/utils/p_vguard.dart)) stores the folded `left=addcourse:private/<code>` URL (`SpaceCodeRepo.destination`) before bouncing, and the same guard sends the next logged-in landing back to it, where the join page submits. The saved link is used once, whether or not its join works, so a later sign-in on that device does not join the course by surprise. While signed out, the login and signup screens tell the visitor the code was kept ([signup-and-login.instructions.md § Arriving with a class code](signup-and-login.instructions.md#arriving-with-a-class-code)). A brand-new user joins inside onboarding instead ([onboarding § Joining a course during onboarding](onboarding.instructions.md#joining-a-course-during-onboarding)). The shared activity link (`/<uuid>`) rides the same way. The DM invite link (`/invite_user/<id>`, [user_id_url.dart](../../lib/features/navigation/user_id_url.dart)) is different: the invite route never renders — its redirect caches the invited user id in its own entry (on every landing, not only the bounce) and lands the user on the world map with the chat list open — and the shell itself opens the DM from there, consuming the entry once the DM has actually opened (or definitively failed). It waits while a coded join is in progress on screen and takes its turn on the next workspace navigation. The invite entry is time-stamped and expires (`SpaceCodeRepo.cacheTTL`) like the destination, so a visitor who never logs in can't leave one that surprises a much later login.
 
 **matrix.to links**: Standard Matrix links (`https://matrix.to/#/...`) go through a separate path. For knock-only rooms, this shows the public room bottom sheet with a code field and "Ask to Join" button.
 
@@ -69,7 +48,7 @@ None of this repairs the quest: the space still points at an id the content serv
 
 Three UI entry points (onboarding, in-app code page, public room bottom sheet) all converge on `SpaceCodeController.joinSpaceWithCode()`:
 
-1. Save code as `recentCode` (used for invite dedup in Route 3)
+1. Save the code on the device as the most recent code (`recentCode`), kept until the next code replaces it, so the invite the join produces is accepted without a prompt (Space invite priority, rule 2)
 2. `POST /_synapse/client/pangea/v1/knock_with_code` — Pangea-custom Synapse endpoint that validates the access code and invites the user
 3. Response contains `{ roomIds, alreadyJoined, rateLimited }`
 4. `joinRoomById(spaceId)` → wait for sync → navigate to space
@@ -96,7 +75,7 @@ Admin notices the knock in one of three places:
 
 - **Knock badge** — a red add-person mark on the course's avatar in the web nav rail, the courses list, and the mobile nav's course shortcut (#8139, #8246), clearing when the knock is accepted or denied. Red because a waiting person still has to catch the admin's eye, but an add-person glyph rather than the error "!" it once wore: a knock is someone asking to join, not something broken (#8939).
 - **Join-request card** at the top of the course page (#8462) — a gold attention card headed "Users are trying to join your course" under the same red add-person mark the badge wears, listing each knocking user with an Approve action that admits them on the spot — the same invite the member list's Approve sends, not a hop to the invite page to decide again (#8939) — updating in real time as knocks arrive or resolve (accepted → invite, denied → kick). Its bulk action denies every pending request. Separate from the "Catch up" card beneath it (#8357), which carries a course ping, analytics-access requests, and unread chats — in that order, the ping leading because it is the only row with a clock on it, and the card shows two rows before its expander (#8944). The ping row names the activity and the coursemate who sent it — either alone leaves the learner deciding blind — and opens that activity on the session the ping named; a learner's own ping never appears. The sender is resolved against the course's member list, not read out of the ping body, which is composed in the sender's locale. The nav rail's course avatar wears the same white bell on joinable green as the Catch up row, the course plan's card and a world-map pin, so one ping reads as one thing wherever it surfaces (#8484). **Nothing pending is dismissable as read** — a request is a decision, and "Mark all read" clears unread chat indicators only (#8462).
-- **Leaderboard page** — knocking users are not ranked; they sit at the bottom with the invited users, labeled "Knocking" ([course-leaderboard.instructions.md](course-leaderboard.instructions.md)).
+- **Participants page** — knocking users sit at the bottom with the invited users, labeled "Knocking" ([course-participants.instructions.md](course-participants.instructions.md)).
 
 Admin taps the knocking user → popup menu shows "Approve" (only visible for `Membership.knock`) → `room.invite(userId)`.
 

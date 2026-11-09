@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-11-04 10:19:31.568555",
+    "@@last_modified": "2026-11-06 13:11:02.421184",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "«{word}» эмнени билдирет?",
     "practiceEmojiPrompt": "«{word}» үчүн эмодзи тандаңыз",
     "practiceStepProgress": "{total} ичинен {done}",
-    "leaderboard": "Лидер тактасы",
-    "leaderboardRank": "Даража {rank}",
-    "courseLeaderboardTooltip": "Бул курстагы ар бир адам, алардын тилдеги жылдыздары боюнча орун алган. Аларга DM жөнөтүү үчүн мүчөнү таптап, “Маекти баштоо” дегенди тандаңыз.",
+    "courseParticipantTooltip": "Бул курстагы бардык катышуучулар. Каалаган колдонуучунун аватарын басып, жеке билдирүү жөнөтүү үчүн “маекти баштоо” баскычын басыңыз.",
     "goalReportTitle": "Бул жылдызча тууралуу билдирүү",
     "goalReportOverAwardPrompt": "Эгер бул жылдызчаны албашыңыз керек болсо, эмне үчүн экенин түшүндүрүңүз.",
     "goalReportUnderAwardPrompt": "Эгер бул жылдызчаны алышыңыз керек деп ойлосоңуз, эмне үчүн?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Күтө туруңуз",
     "botTookSeatAfterAnHour": "Бул сессия бир саат бою ачык болгондуктан, Pangea Bot бош орунду ээледи.",
     "botTookSeatAfterADay": "Бул сессия бир күндөн ашык ачык болгондуктан, Pangea Bot бош орунду ээледи. Баштоо үчүн билдирүү жөнөтүңүз.",
-    "subscriptionGracePeriodEndsOn": "Төлөм ишке ашкан жок. Жеңилдетилген мөөнөт {date} күнү аяктайт"
+    "subscriptionGracePeriodEndsOn": "Төлөм ишке ашкан жок. Жеңилдетилген мөөнөт {date} күнү аяктайт",
+    "changeBaseLanguageTitle": "Негизги тилди өзгөртөсүзбү?",
+    "changeBaseLanguageDesc": "Колдонмонун менюлары жана баскычтары {language} тилине которулат.",
+    "accountSetupFailedHelp": "Аккаунтуңузду орнотуу аягына чыккан жок. Байланышыңызды текшерип, кайра аракет кылыңыз, же чыгып, кийинчерээк кириңиз.",
+    "onboardingOfflineError": "Сиз оффлайнсыз. Интернетке кайра туташканыңызда кайра аракет кылыңыз.",
+    "activitySavedTo": "Иш-аракет {page} сакталды"
 }

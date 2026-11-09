@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-11-04 10:19:27.462069",
+    "@@last_modified": "2026-11-06 13:10:57.620794",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ মানে কি?",
     "practiceEmojiPrompt": "‘{word}’ ৰ বাবে এটা ইমোজি বাছক",
     "practiceStepProgress": "{total} ৰ ভিতৰত {done}",
-    "leaderboard": "লিডাৰব'ৰ্ড",
-    "leaderboardRank": "স্থান {rank}",
-    "courseLeaderboardTooltip": "এই পাঠ্যক্ৰমৰ সকলো সদস্য, তেওঁলোকৰ ভাষাৰ তাৰকাৰ দ্বাৰা স্থান নিৰ্ধাৰণ কৰা হৈছে। এজন সদস্যক টেপ কৰক আৰু তেওঁলৈ DM পঠাবলৈ “বাৰ্তালাপ আৰম্ভ কৰক” বাছনি কৰক।",
+    "courseParticipantTooltip": "এইসকল এই পাঠ্যক্ৰমৰ সকলো সদস্য। যিকোনো ব্যৱহাৰকাৰীৰ অৱতাৰত ক্লিক কৰক আৰু DM পঠিয়াবলৈ “কথাপাতি আৰম্ভ কৰক”ত ক্লিক কৰক।",
     "goalReportTitle": "এই তাৰকাটো ৰিপ'ৰ্ট কৰক",
     "goalReportOverAwardPrompt": "যদি আপুনি এই তাৰকাটো পাব নালাগিছিল, তেন্তে কিয় ব্যাখ্যা কৰক।",
     "goalReportUnderAwardPrompt": "যদি আপুনি ভাবে যে আপুনি এই তাৰকাটো পাব লাগিছিল, কিয়?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "অপেক্ষা কৰি থাকক",
     "botTookSeatAfterAnHour": "এই অধিবেশনটো এঘণ্টাৰ বাবে খোলা আছিল, সেয়েহে পেংগিয়া ব'টে খালী আসনখন ল'লে।",
     "botTookSeatAfterADay": "এই অধিবেশনটো এদিনতকৈও অধিক সময়ৰ বাবে খোলা আছিল, সেয়েহে পেংগিয়া ব'টে খালী আসনখন ল'লে। আৰম্ভ কৰিবলৈ এটা বাৰ্তা প্ৰেৰণ কৰক।",
-    "subscriptionGracePeriodEndsOn": "পেমেণ্ট বিফল হৈছে। গ্ৰেচ পিৰিয়ড {date} তাৰিখে শেষ হ'ব"
+    "subscriptionGracePeriodEndsOn": "পেমেণ্ট বিফল হৈছে। গ্ৰেচ পিৰিয়ড {date} তাৰিখে শেষ হ'ব",
+    "changeBaseLanguageTitle": "মূল ভাষা সলনি কৰিবনে?",
+    "changeBaseLanguageDesc": "এপৰ মেনু আৰু বুটামসমূহ {language} লৈ সলনি হ'ব।",
+    "accountSetupFailedHelp": "আমি আপোনাৰ একাউণ্ট ছেট আপ কৰিব নোৱাৰিলোঁ। আপোনাৰ সংযোগ পৰীক্ষা কৰক আৰু পুনৰ চেষ্টা কৰক, অথবা লগ আউট কৰি পিছত পুনৰ প্ৰৱেশ কৰক।",
+    "onboardingOfflineError": "আপুনি অফলাইন। আপুনি অনলাইন হোৱাৰ পিছত পুনৰ চেষ্টা কৰক।",
+    "activitySavedTo": "কাৰ্যকলাপ {page} লৈ সংৰক্ষিত হৈছে"
 }

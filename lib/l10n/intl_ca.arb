@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 10:19:27.863548",
+    "@@last_modified": "2026-11-06 13:10:58.134053",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9997,9 +9997,7 @@
     "practiceMeaningPrompt": "Què significa «{word}»?",
     "practiceEmojiPrompt": "Tria un emoji per a «{word}»",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Classificació",
-    "leaderboardRank": "Posició {rank}",
-    "courseLeaderboardTooltip": "Tots els participants d'aquest curs, classificats per les estrelles que tenen en el seu idioma. Toca un membre i tria \"Inicia una conversa\" per enviar-li un missatge directe.",
+    "courseParticipantTooltip": "Això és tothom en aquest curs. Feu clic a l'avatar de qualsevol usuari i \"comenceu la conversa\" per enviar un DM.",
     "goalReportTitle": "Informar d'aquesta estrella",
     "goalReportOverAwardPrompt": "Si se suposava que no havies de rebre aquesta estrella, explica per què.",
     "goalReportUnderAwardPrompt": "Si creus que hauries d'haver rebut aquesta estrella, per què?",
@@ -10173,5 +10171,10 @@
     "keepWaiting": "Seguir esperant",
     "botTookSeatAfterAnHour": "Aquesta sessió ha estat oberta durant una hora, així que el bot Pangea ha ocupat el seient lliure.",
     "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar.",
-    "subscriptionGracePeriodEndsOn": "El pagament ha fallat. El període de gràcia finalitza el {date}"
+    "subscriptionGracePeriodEndsOn": "El pagament ha fallat. El període de gràcia finalitza el {date}",
+    "changeBaseLanguageTitle": "Canviar idioma base?",
+    "changeBaseLanguageDesc": "Els menús i botons de l'aplicació canviaran a {language}.",
+    "accountSetupFailedHelp": "No hem pogut acabar de configurar el teu compte. Comprova la teva connexió i torna-ho a provar, o tanca la sessió i torna a iniciar-la més tard.",
+    "onboardingOfflineError": "No tens connexió. Torna-ho a provar quan estiguis en línia.",
+    "activitySavedTo": "Activitat desada a {page}"
 }

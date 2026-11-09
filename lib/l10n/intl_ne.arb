@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-11-04 10:19:33.087735",
+    "@@last_modified": "2026-11-06 13:11:04.121223",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ को अर्थ के हो?",
     "practiceEmojiPrompt": "‘{word}’ को लागि एउटा इमोजी छान्नुहोस्",
     "practiceStepProgress": "{total} मध्ये {done}",
-    "leaderboard": "लिडरबोर्ड",
-    "leaderboardRank": "रैंक {rank}",
-    "courseLeaderboardTooltip": "यस भाषामा उनीहरूको ताराहरूद्वारा श्रेणीबद्ध यस पाठ्यक्रममा सबैजना। सदस्यलाई DM पठाउनको लागि “कुराकानी सुरु गर्नुहोस्” मा ट्याप गर्नुहोस्।",
+    "courseParticipantTooltip": "यो यस पाठ्यक्रममा भएका सबैजना हुन्। कुनै पनि प्रयोगकर्ताको अवतारमा क्लिक गर्नुहोस् र DM पठाउन “कुराकानी सुरु गर्नुहोस्” मा क्लिक गर्नुहोस्।",
     "goalReportTitle": "यो तारा रिपोर्ट गर्नुहोस्",
     "goalReportOverAwardPrompt": "यदि तपाईंले यो तारा पाउनु पर्ने थिएन भने, कृपया कारण बताउनुहोस्।",
     "goalReportUnderAwardPrompt": "यदि तपाईंलाई यो तारा पाउनु पर्ने थियो जस्तो लाग्छ भने, किन?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "पर्खिरहनुहोस्",
     "botTookSeatAfterAnHour": "यो सत्र एक घण्टाको लागि खुला थियो, त्यसैले Pangea Bot ले खाली सिट लियो।",
     "botTookSeatAfterADay": "यो सत्र एक दिनभन्दा बढी समयदेखि खुला थियो, त्यसैले Pangea Bot ले खाली सिट लियो। सुरु गर्न सन्देश पठाउनुहोस्।",
-    "subscriptionGracePeriodEndsOn": "भुक्तानी असफल भयो। अनुग्रह अवधि {date} मा समाप्त हुन्छ"
+    "subscriptionGracePeriodEndsOn": "भुक्तानी असफल भयो। अनुग्रह अवधि {date} मा समाप्त हुन्छ",
+    "changeBaseLanguageTitle": "आधार भाषा परिवर्तन गर्ने?",
+    "changeBaseLanguageDesc": "एपका मेनु र बटनहरू {language} मा परिवर्तन हुनेछन्।",
+    "accountSetupFailedHelp": "हामीले तपाईंको खाता सेटअप गर्न सकेनौं। आफ्नो जडान जाँच गर्नुहोस् र फेरि प्रयास गर्नुहोस्, वा लगआउट गरेर पछि साइन इन गर्नुहोस्।",
+    "onboardingOfflineError": "तपाईं अफलाइन हुनुहुन्छ। तपाईं अनलाइन भएपछि फेरि प्रयास गर्नुहोस्।",
+    "activitySavedTo": "गतिविधि {page} मा सुरक्षित गरियो"
 }

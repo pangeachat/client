@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-11-04 10:19:27.974176",
+    "@@last_modified": "2026-11-06 13:10:58.192488",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Unsay gipasabot sa ‘{word}’?",
     "practiceEmojiPrompt": "Pagpili og emoji para sa ‘{word}’",
     "practiceStepProgress": "{done} sa {total}",
-    "leaderboard": "Leaderboard",
-    "leaderboardRank": "Ranggo {rank}",
-    "courseLeaderboardTooltip": "Ang tanan sa kini nga kurso, gi-ranggo pinaagi sa ilang mga bituon sa pinulongan niini. I-tap ang usa ka miyembro ug pilia ang “Sugdi ang panag-istoryahanay” aron ipadala sila og DM.",
+    "courseParticipantTooltip": "Kini ang tanan nga naa sa kini nga kurso. I-klik ang avatar sa bisan kinsang user ug \"sugdi ang panag-istoryahanay\" aron magpadala og DM.",
     "goalReportTitle": "I-report kini nga bituon",
     "goalReportOverAwardPrompt": "Kung dili ka unta makakuha niini nga bituon, palihug ipasabot kung ngano.",
     "goalReportUnderAwardPrompt": "Kung sa imong hunahuna kinahanglan ka makakuha niini nga bituon, ngano man?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Padayon sa paghulat",
     "botTookSeatAfterAnHour": "Bukas kini nga sesyon sulod sa usa ka oras, busa ang Pangea Bot milingkod sa bakanteng lingkoranan.",
     "botTookSeatAfterADay": "Bukas kini nga sesyon sulod sa kapin sa usa ka adlaw, busa ang Pangea Bot milingkod sa bakanteng lingkoranan. Pagpadala og mensahe aron magsugod.",
-    "subscriptionGracePeriodEndsOn": "Napakyas ang pagbayad. Ang grace period matapos sa {date}"
+    "subscriptionGracePeriodEndsOn": "Napakyas ang pagbayad. Ang grace period matapos sa {date}",
+    "changeBaseLanguageTitle": "Usbon ang base nga pinulongan?",
+    "changeBaseLanguageDesc": "Ang mga menu ug buton sa app mobalhin sa {language}.",
+    "accountSetupFailedHelp": "Dili namo mahuman ang pag-set up sa imong account. Susiha ang imong koneksyon ug sulayi pag-usab, o pag-log out ug pag-sign in unya.",
+    "onboardingOfflineError": "Offline ka. Sulayi pag-usab kung online na ka.",
+    "activitySavedTo": "Ang kalihokan na-save sa {page}"
 }

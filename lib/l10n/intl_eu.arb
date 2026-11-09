@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-11-04 10:19:29.041171",
+    "@@last_modified": "2026-11-06 13:10:58.891344",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9870,9 +9870,7 @@
     "practiceMeaningPrompt": "Zer esan nahi du ‘{word}’ hitzak?",
     "practiceEmojiPrompt": "Aukeratu emoji bat ‘{word}’ hitzarentzat",
     "practiceStepProgress": "{done}/{total}",
-    "leaderboard": "Sailkapena",
-    "leaderboardRank": "{rank}. postua",
-    "courseLeaderboardTooltip": "Ikastaro honetako guztiak, hizkuntza horretan lortutako izarren arabera sailkatuta. Sakatu kide bat eta aukeratu \"Hasi elkarrizketa\" mezu zuzen bat bidaltzeko.",
+    "courseParticipantTooltip": "Hau ikastaro honetan dauden guztiak dira. Egin klik edozein erabiltzaileen irudian eta \"hasieratu elkarrizketa\" DM bat bidaltzeko.",
     "goalReportTitle": "Izartxo honen berri eman",
     "goalReportOverAwardPrompt": "Izartxo hau jaso behar ez bazenuen, azaldu zergatik.",
     "goalReportUnderAwardPrompt": "Izartxo hau jaso behar zenuela uste baduzu, zergatik?",
@@ -10046,5 +10044,10 @@
     "keepWaiting": "Itxaroten jarraitu",
     "botTookSeatAfterAnHour": "Saio hau ordubetez egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du.",
     "botTookSeatAfterADay": "Saio hau egun bat baino gehiagoz egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du. Bidali mezu bat hasteko.",
-    "subscriptionGracePeriodEndsOn": "Ordainketak huts egin du. Tolerantzia-epea {date}an amaituko da"
+    "subscriptionGracePeriodEndsOn": "Ordainketak huts egin du. Tolerantzia-epea {date}an amaituko da",
+    "changeBaseLanguageTitle": "Oinarrizko hizkuntza aldatu?",
+    "changeBaseLanguageDesc": "Aplikazioaren menuak eta botoiak {language} hizkuntzara aldatuko dira.",
+    "accountSetupFailedHelp": "Ezin izan dugu zure kontua konfiguratzen amaitu. Egiaztatu konexioa eta saiatu berriro, edo itxi saioa eta hasi geroago.",
+    "onboardingOfflineError": "Lineaz kanpo zaude. Saiatu berriro konektatuta zaudenean.",
+    "activitySavedTo": "Jarduera {page} honetan gorde da"
 }

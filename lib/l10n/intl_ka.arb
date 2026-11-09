@@ -1928,7 +1928,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-11-04 10:19:31.462148",
+    "@@last_modified": "2026-11-06 13:11:01.684809",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10767,9 +10767,7 @@
     "practiceMeaningPrompt": "რას ნიშნავს „{word}“?",
     "practiceEmojiPrompt": "აირჩიეთ ემოჯი „{word}“-ისთვის",
     "practiceStepProgress": "{done} / {total}",
-    "leaderboard": "ლიდერბორდი",
-    "leaderboardRank": "ადგილი {rank}",
-    "courseLeaderboardTooltip": "ამ კურსის ყველა წევრი, რანჟირებული მათი ვარსკვლავების მიხედვით ამ ენაში. შეეხეთ წევრს და აირჩიეთ „საუბრის დაწყება“, რათა გაუგზავნოთ პირადი შეტყობინება.",
+    "courseParticipantTooltip": "ეს არის ყველა ადამიანი ამ კურსში. დააწკაპუნეთ ნებისმიერი მომხმარებლის ავატარზე და „დაიწყეთ საუბარი“, რომ მოიგზავნოთ პირადი შეტყობინება.",
     "goalReportTitle": "ამ ვარსკვლავის მოხსენება",
     "goalReportOverAwardPrompt": "თუ არ უნდა მიგეღოთ ეს ვარსკვლავი, გთხოვთ, აგვიხსნათ რატომ.",
     "goalReportUnderAwardPrompt": "თუ ფიქრობთ, რომ უნდა მიგეღოთ ეს ვარსკვლავი, რატომ?",
@@ -10943,5 +10941,10 @@
     "keepWaiting": "გააგრძელეთ ლოდინი",
     "botTookSeatAfterAnHour": "ეს სესია ერთი საათის განმავლობაში ღია იყო, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი.",
     "botTookSeatAfterADay": "ეს სესია ერთ დღეზე მეტხანს იყო ღია, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი. გასააქტიურებლად გაგზავნეთ შეტყობინება.",
-    "subscriptionGracePeriodEndsOn": "გადახდა ვერ განხორციელდა. საშეღავათო პერიოდი სრულდება {date}-ზე"
+    "subscriptionGracePeriodEndsOn": "გადახდა ვერ განხორციელდა. საშეღავათო პერიოდი სრულდება {date}-ზე",
+    "changeBaseLanguageTitle": "ძირითადი ენის შეცვლა?",
+    "changeBaseLanguageDesc": "აპლიკაციის მენიუები და ღილაკები შეიცვლება {language}-ზე.",
+    "accountSetupFailedHelp": "თქვენი ანგარიშის დაყენება ვერ დავასრულეთ. შეამოწმეთ კავშირი და სცადეთ ხელახლა, ან გამოდით სისტემიდან და მოგვიანებით შეხვიდეთ.",
+    "onboardingOfflineError": "თქვენ ხართ ხაზგარეშე. სცადეთ ხელახლა, როდესაც ონლაინ იქნებით.",
+    "activitySavedTo": "აქტივობა შენახულია: {page}"
 }

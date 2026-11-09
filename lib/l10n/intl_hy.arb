@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-11-04 10:19:30.330067",
+    "@@last_modified": "2026-11-06 13:11:00.981233",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Ի՞նչ է նշանակում «{word}» բառը։",
     "practiceEmojiPrompt": "Ընտրեք էմոջի «{word}» բառի համար",
     "practiceStepProgress": "{done}-ը՝ {total}-ից",
-    "leaderboard": "Առաջատարների ցուցակ",
-    "leaderboardRank": "Դիրքը՝ {rank}",
-    "courseLeaderboardTooltip": "Այս դասընթացի բոլոր մասնակիցները՝ դասակարգված ըստ իրենց աստղերի՝ ըստ լեզվի։ Հպեք մասնակցին և ընտրեք «Սկսել զրույցը»՝ նրան ուղիղ հաղորդագրություն ուղարկելու համար։",
+    "courseParticipantTooltip": "Սրանք այս դասընթացի բոլոր մասնակիցներն են։ Սեղմեք ցանկացած օգտատիրոջ ավատարի վրա և «սկսել զրույց»՝ անձնական հաղորդագրություն ուղարկելու համար։",
     "goalReportTitle": "Հաղորդել այս աստղի մասին",
     "goalReportOverAwardPrompt": "Եթե դուք չպետք է ստանայիք այս աստղը, խնդրում ենք բացատրել, թե ինչու։",
     "goalReportUnderAwardPrompt": "Եթե կարծում եք, որ պետք է ստանայիք այս աստղը, ապա ինչու՞։",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Շարունակել սպասել",
     "botTookSeatAfterAnHour": "Այս նիստը բաց էր մեկ ժամ, ուստի Pangea Bot-ը զբաղեցրեց ազատ տեղը։",
     "botTookSeatAfterADay": "Այս նիստը բաց էր մեկ օրից ավելի, ուստի Pangea Bot-ը զբաղեցրեց ազատ տեղը։ Սկսելու համար ուղարկեք հաղորդագրություն։",
-    "subscriptionGracePeriodEndsOn": "Վճարումը ձախողվեց։ Արտոնյալ ժամկետը լրանում է {date}-ին"
+    "subscriptionGracePeriodEndsOn": "Վճարումը ձախողվեց։ Արտոնյալ ժամկետը լրանում է {date}-ին",
+    "changeBaseLanguageTitle": "Փոխե՞լ հիմնական լեզուն",
+    "changeBaseLanguageDesc": "Հավելվածի մենյուներն ու կոճակները կփոխվեն {language} լեզվի:",
+    "accountSetupFailedHelp": "Չհաջողվեց ավարտել Ձեր հաշվի կարգավորումը։ Ստուգեք Ձեր կապը և նորից փորձեք, կամ դուրս եկեք և մուտք գործեք ավելի ուշ։",
+    "onboardingOfflineError": "Դուք անցանց եք։ Կրկին փորձեք, երբ առցանց լինեք։",
+    "activitySavedTo": "Գործունեությունը պահպանվել է {page}-ում"
 }

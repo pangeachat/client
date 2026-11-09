@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-11-04 10:19:34.210991",
+    "@@last_modified": "2026-11-06 13:11:04.765671",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ ର ଅର୍ଥ କଣ?",
     "practiceEmojiPrompt": "‘{word}’ ପାଇଁ ଏକ ଇମୋଜି ବାଛନ୍ତୁ",
     "practiceStepProgress": "{total} ରୁ {done}",
-    "leaderboard": "ଲିଡରବୋର୍ଡ",
-    "leaderboardRank": "ର‍୍ୟାଙ୍କ୍ {rank}",
-    "courseLeaderboardTooltip": "ଏହି କୋର୍ସରେ ଥିବା ସମସ୍ତେ, ସେମାନଙ୍କ ଭାଷାରେ ଥିବା ଷ୍ଟାର୍ ଅନୁଯାୟୀ ର‍୍ୟାଙ୍କ୍ ହୋଇଛନ୍ତି। ସେମାନଙ୍କୁ DM ପଠାଇବା ପାଇଁ ଜଣେ ସଦସ୍ୟଙ୍କ ଉପରେ ଟ୍ୟାପ୍ କରନ୍ତୁ ଏବଂ “କଥାବାର୍ତ୍ତା ଆରମ୍ଭ କରନ୍ତୁ” ବାଛନ୍ତୁ।",
+    "courseParticipantTooltip": "ଏହି ପାଠ୍ୟକ୍ରମରେ ଏମାନେ ସମସ୍ତେ ଅଛନ୍ତି। କୌଣସି ଉପଭୋକ୍ତାଙ୍କ ଆଭାଟାର ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ ଏବଂ DM ପଠାଇବାକୁ “ବାର୍ତ୍ତାଳାପ ଆରମ୍ଭ କରନ୍ତୁ” ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ।",
     "goalReportTitle": "ଏହି ଷ୍ଟାର୍ ବିଷୟରେ ଜଣାନ୍ତୁ",
     "goalReportOverAwardPrompt": "ଯଦି ଆପଣଙ୍କୁ ଏହି ଷ୍ଟାର୍ ମିଳିବା କଥା ନୁହେଁ, ତେବେ କାହିଁକି ନୁହେଁ ବୁଝାନ୍ତୁ।",
     "goalReportUnderAwardPrompt": "ଯଦି ଆପଣ ଭାବୁଛନ୍ତି ଯେ ଆପଣଙ୍କୁ ଏହି ଷ୍ଟାର୍ ମିଳିବା କଥା, ତେବେ କାହିଁକି?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "ଅପେକ୍ଷା କରନ୍ତୁ",
     "botTookSeatAfterAnHour": "ଏହି ସେସନ୍ ଏକ ଘଣ୍ଟା ପାଇଁ ଖୋଲା ଥିଲା, ତେଣୁ Pangea Bot ଖାଲି ସ୍ଥାନ ନେଇଛି।",
     "botTookSeatAfterADay": "ଏହି ସେସନ୍ ଏକ ଦିନରୁ ଅଧିକ ସମୟ ପାଇଁ ଖୋଲା ଥିଲା, ତେଣୁ Pangea Bot ଖାଲି ସ୍ଥାନ ନେଇଛି। ଆରମ୍ଭ କରିବାକୁ ଏକ ବାର୍ତ୍ତା ପଠାନ୍ତୁ।",
-    "subscriptionGracePeriodEndsOn": "ପେମେଣ୍ଟ ବିଫଳ ହୋଇଛି। ଅନୁଗ୍ରହ ଅବଧି {date} ରେ ଶେଷ ହେବ"
+    "subscriptionGracePeriodEndsOn": "ପେମେଣ୍ଟ ବିଫଳ ହୋଇଛି। ଅନୁଗ୍ରହ ଅବଧି {date} ରେ ଶେଷ ହେବ",
+    "changeBaseLanguageTitle": "ମୂଳ ଭାଷା ପରିବର୍ତ୍ତନ କରିବେ କି?",
+    "changeBaseLanguageDesc": "ଆପ୍‌ର ମେନୁ ଏବଂ ବଟନ୍‌ଗୁଡ଼ିକ {language}କୁ ବଦଳିଯିବ।",
+    "accountSetupFailedHelp": "ଆମେ ଆପଣଙ୍କ ଆକାଉଣ୍ଟ ସେଟ୍ ଅପ୍ ଶେଷ କରିପାରିଲୁ ନାହିଁ। ଆପଣଙ୍କ ସଂଯୋଗ ଯାଞ୍ଚ କରନ୍ତୁ ଏବଂ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ, କିମ୍ବା ଲଗ୍ ଆଉଟ୍ କରି ପରେ ସାଇନ୍ ଇନ୍ କରନ୍ତୁ।",
+    "onboardingOfflineError": "ଆପଣ ଅଫଲାଇନ୍ ଅଛନ୍ତି। ଅନଲାଇନ୍ ହେବା ପରେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
+    "activitySavedTo": "କାର୍ଯ୍ୟକଳାପ {page} ରେ ସେଭ୍ କରାଯାଇଛି"
 }

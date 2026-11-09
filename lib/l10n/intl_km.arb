@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-11-04 10:19:31.379685",
+    "@@last_modified": "2026-11-06 13:11:02.092598",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "តើ ‘{word}’ មានន័យដូចម្តេច?",
     "practiceEmojiPrompt": "ជ្រើសរើស Emoji សម្រាប់ ‘{word}’",
     "practiceStepProgress": "{done} នៃ {total}",
-    "leaderboard": "តារាងពិន្ទុ",
-    "leaderboardRank": "ចំណាត់ថ្នាក់ {rank}",
-    "courseLeaderboardTooltip": "អ្នករាល់គ្នានៅក្នុងវគ្គសិក្សានេះ ត្រូវបានចាត់ថ្នាក់តាមផ្កាយរបស់ពួកគេនៅក្នុងភាសារបស់វា។ ប៉ះលើសមាជិកម្នាក់ ហើយជ្រើសរើស “ចាប់ផ្ដើមការសន្ទនា” ដើម្បីផ្ញើសារផ្ទាល់ទៅពួកគេ។",
+    "courseParticipantTooltip": "នេះគឺជាមនុស្សគ្រប់រូបនៅក្នុងវគ្គសិក្សានេះ។ ចុចលើរូបតំណាងអ្នកប្រើប្រាស់ណាមួយ ហើយ «ចាប់ផ្ដើមការសន្ទនា» ដើម្បីផ្ញើសារផ្ទាល់។",
     "goalReportTitle": "រាយការណ៍ផ្កាយនេះ",
     "goalReportOverAwardPrompt": "ប្រសិនបើអ្នកមិនគួរទទួលបានផ្កាយនេះទេ សូមពន្យល់ពីមូលហេតុ។",
     "goalReportUnderAwardPrompt": "ប្រសិនបើអ្នកគិតថាអ្នកគួរទទួលបានផ្កាយនេះ តើដោយសារអ្វី?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "បន្តរង់ចាំ",
     "botTookSeatAfterAnHour": "វគ្គនេះបានបើករយៈពេលមួយម៉ោង ដូច្នេះ Pangea Bot បានចូលរួម។",
     "botTookSeatAfterADay": "វគ្គនេះបានបើករយៈពេលជាងមួយថ្ងៃ ដូច្នេះ Pangea Bot បានចូលរួម។ ផ្ញើសារដើម្បីចាប់ផ្តើម។",
-    "subscriptionGracePeriodEndsOn": "ការទូទាត់បរាជ័យ។ រយៈពេលអនុគ្រោះបញ្ចប់នៅថ្ងៃទី {date}"
+    "subscriptionGracePeriodEndsOn": "ការទូទាត់បរាជ័យ។ រយៈពេលអនុគ្រោះបញ្ចប់នៅថ្ងៃទី {date}",
+    "changeBaseLanguageTitle": "ប្ដូរភាសាមូលដ្ឋាន?",
+    "changeBaseLanguageDesc": "ម៉ឺនុយ និងប៊ូតុងរបស់កម្មវិធីនឹងប្ដូរទៅជាភាសា{language}។",
+    "accountSetupFailedHelp": "យើងមិនអាចបញ្ចប់ការដំឡើងគណនីរបស់អ្នកបានទេ។ សូមពិនិត្យមើលការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្ដងទៀត ឬចេញពីគណនី ហើយចូលនៅពេលក្រោយ។",
+    "onboardingOfflineError": "អ្នក​គ្មាន​អ៊ីនធឺណិត​ទេ។ សូម​ព្យាយាម​ម្ដង​ទៀត នៅ​ពេល​អ្នក​មាន​អ៊ីនធឺណិត​វិញ។",
+    "activitySavedTo": "សកម្មភាពបានរក្សាទុកទៅ {page}"
 }

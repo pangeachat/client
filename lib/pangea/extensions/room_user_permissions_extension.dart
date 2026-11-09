@@ -12,9 +12,14 @@ extension UserPermissionsRoomExtension on Room {
       ownPowerLevel >= SpaceConstants.powerLevelOfAdmin;
 
   /// False for a signed-out account: the SDK's [canInvite] reads
-  /// `client.userID!`, and the course page's leaderboard can still build
+  /// `client.userID!`, and the course page's participant list can still build
   /// through logout (CLIENT-F1F).
   bool get canInviteMembers => client.userID != null && canInvite;
+
+  /// False for a signed-out account: the SDK's [canSendDefaultMessages] reads
+  /// `client.userID!`, and the chat view can still build through logout
+  /// (#9806).
+  bool get canSendMessages => client.userID != null && canSendDefaultMessages;
 
   /// Whether the user may redact an event sent by [senderId].
   ///

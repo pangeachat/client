@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-11-04 10:19:35.796718",
+    "@@last_modified": "2026-11-06 13:11:06.355689",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Naon hartina ‘{word}’?",
     "practiceEmojiPrompt": "Pilih hiji emoji pikeun ‘{word}’",
     "practiceStepProgress": "{done} tina {total}",
-    "leaderboard": "Papan Peringkat",
-    "leaderboardRank": "Peringkat {rank}",
-    "courseLeaderboardTooltip": "Sadayana dina kursus ieu, diurutkeun dumasar béntangna dina basa éta. Ketok anggota teras pilih \"Mimitian paguneman\" pikeun ngirim DM ka aranjeunna.",
+    "courseParticipantTooltip": "Ieu sadayana anu aya dina kursus ieu. Pencét kana avatar pangguna mana waé teras \"mimitian paguneman\" pikeun ngirim DM.",
     "goalReportTitle": "Laporkeun béntang ieu",
     "goalReportOverAwardPrompt": "Upami anjeun henteu kedah nampi béntang ieu, punten jelaskeun kunaon.",
     "goalReportUnderAwardPrompt": "Upami anjeun nyangka anjeun kedah nampi béntang ieu, kunaon?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Teraskeun ngantosan",
     "botTookSeatAfterAnHour": "Sési ieu dibuka sajam, janten Pangea Bot nyandak korsi kosong.",
     "botTookSeatAfterADay": "Sési ieu dibuka langkung ti sadinten, janten Pangea Bot nyandak korsi kosong. Kirim pesen pikeun ngamimitian.",
-    "subscriptionGracePeriodEndsOn": "Pamayaran gagal. Mangsa tenggang réngsé dina {date}"
+    "subscriptionGracePeriodEndsOn": "Pamayaran gagal. Mangsa tenggang réngsé dina {date}",
+    "changeBaseLanguageTitle": "Ganti basa dasar?",
+    "changeBaseLanguageDesc": "Ménu jeung tombol aplikasi bakal robah jadi basa {language}.",
+    "accountSetupFailedHelp": "Kami henteu tiasa ngarengsekeun panyetélan akun anjeun. Pariksa sambungan anjeun teras cobian deui, atanapi kaluar teras asup deui engké.",
+    "onboardingOfflineError": "Anjeun nuju offline. Cobi deui saatos anjeun online deui.",
+    "activitySavedTo": "Aktivitas disimpen ka {page}"
 }

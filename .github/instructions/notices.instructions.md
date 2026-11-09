@@ -19,6 +19,7 @@ The client follows an app path only from the bot: the notice must be in the lear
 ## The notice in the bot DM
 
 - **Which notices show.** Every notice the bot sent into the bot DM shows, except `suggest_topic`. When the learner reads a `suggest_topic` notice, pangea-bot posts the topic as a normal bot message ([pangea-bot notices](../../../pangea-bot/.github/instructions/engagement.instructions.md)), so showing the notice as well would show the topic twice. Notices in other rooms stay hidden. Notices that pangea-bot sent before the engagement runner took over also show, in the DM's history at their original times. This is expected.
+- **Reading a hidden notice.** Opening the bot DM counts as reading a `suggest_topic` notice the learner has not read yet, from its push or not. The app sends a read receipt even though nothing new shows, because that receipt is what tells pangea-bot to post the topic. The receipt follows the learner's read-receipt setting, so a learner who keeps read receipts private does not get the topic.
 - **What it looks like.** The notice's `body` shows as a plain message from the bot ([`BotNoticeWidget`](../../lib/routes/chat/bot_notice_widget.dart)), with no toolbar, reading assistance or other message tools. A notice with a destination has an Open button under the text. Tapping it goes where the notice's push tap goes.
 - **Chat list.** A notice never becomes the DM's preview line in the chat list.
 

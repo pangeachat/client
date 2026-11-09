@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 10:19:30.692817",
+    "@@last_modified": "2026-11-06 13:11:01.514630",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9943,9 +9943,7 @@
     "practiceMeaningPrompt": "Cosa significa '{word}'?",
     "practiceEmojiPrompt": "Scegli un'emoji per '{word}'",
     "practiceStepProgress": "{done} di {total}",
-    "leaderboard": "Classifica",
-    "leaderboardRank": "Posizione {rank}",
-    "courseLeaderboardTooltip": "Tutti i partecipanti a questo corso, classificati in base alle stelle ottenute nella lingua del corso. Tocca un membro e scegli \"Avvia conversazione\" per inviargli un messaggio diretto.",
+    "courseParticipantTooltip": "Questa è tutta la gente in questo corso. Clicca sull'avatar di qualsiasi utente e \"inizia conversazione\" per inviare un DM.",
     "goalReportTitle": "Segnala questa stella",
     "goalReportOverAwardPrompt": "Se non avresti dovuto ricevere questa stella, spiega perché.",
     "goalReportUnderAwardPrompt": "Se pensi che avresti dovuto ricevere questa stella, perché?",
@@ -10119,5 +10117,10 @@
     "keepWaiting": "Continua ad aspettare",
     "botTookSeatAfterAnHour": "Questa sessione è rimasta aperta per un'ora, quindi Pangea Bot ha preso il posto libero.",
     "botTookSeatAfterADay": "Questa sessione è rimasta aperta per più di un giorno, quindi Pangea Bot ha preso il posto libero. Invia un messaggio per iniziare.",
-    "subscriptionGracePeriodEndsOn": "Pagamento fallito. Il periodo di grazia termina il {date}"
+    "subscriptionGracePeriodEndsOn": "Pagamento fallito. Il periodo di grazia termina il {date}",
+    "changeBaseLanguageTitle": "Cambiare lingua base?",
+    "changeBaseLanguageDesc": "I menu e i pulsanti dell'app passeranno a {language}.",
+    "accountSetupFailedHelp": "Non è stato possibile completare la configurazione del tuo account. Controlla la tua connessione e riprova, oppure disconnettiti e accedi più tardi.",
+    "onboardingOfflineError": "Sei offline. Riprova quando sarai di nuovo online.",
+    "activitySavedTo": "Attività salvata in {page}"
 }

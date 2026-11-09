@@ -13,6 +13,10 @@ class NetworkHelpRequest {
   /// The Matrix user ID, when the user is signed in.
   final String? accountId;
 
+  /// The courses the user had joined when they asked, the same IDs as the
+  /// filtered-network report. Empty when the user is signed out.
+  final List<String> courseIds;
+
   final List<NetworkHostCategory> blockedCategories;
   final String platform;
   final NetworkType networkType;
@@ -24,6 +28,7 @@ class NetworkHelpRequest {
   const NetworkHelpRequest({
     required this.email,
     required this.accountId,
+    required this.courseIds,
     required this.blockedCategories,
     required this.platform,
     required this.networkType,
@@ -42,6 +47,7 @@ class NetworkHelpRequest {
 
   Map<String, dynamic> get _details => {
     'accountId': accountId,
+    'courseIds': courseIds,
     'blockedCategories': [for (final c in blockedCategories) c.name],
     'platform': platform,
     'networkType': networkType.name,
@@ -54,6 +60,10 @@ class NetworkHelpRequest {
       NetworkHelpRequest(
         email: json['email'] as String,
         accountId: json['accountId'] as String?,
+        // A request an older build stored has no course IDs.
+        courseIds: [
+          for (final id in json['courseIds'] as List? ?? const []) id as String,
+        ],
         blockedCategories: [
           for (final name in json['blockedCategories'] as List)
             NetworkHostCategory.values.byName(name as String),

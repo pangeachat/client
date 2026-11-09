@@ -110,6 +110,7 @@ import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 import 'package:fluffychat/routes/chat/growth_animation.dart';
 import 'package:fluffychat/routes/chat/message_analytics_feedback.dart';
 import 'package:fluffychat/routes/chat/recording_view_model.dart';
+import 'package:fluffychat/routes/chat/scroll_target_move.dart';
 import 'package:fluffychat/routes/chat/send_refused_dialog.dart';
 import 'package:fluffychat/routes/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
@@ -1349,6 +1350,13 @@ class ChatController extends State<ChatPageWithRoom>
 
   Future<void>? _setReadMarkerFuture;
 
+  /// Whether opening the chat has anything for a read receipt to mark.
+  @visibleForTesting
+  static bool needsReadMarker(Room room, Iterable<Event> events) =>
+      room.hasNewMessages ||
+      room.notificationCount != 0 ||
+      events.any((event) => event.isUnreadRealizedNotice);
+
   void setReadMarker({String? eventId}) {
     // #Pangea
     if (room.client.userID == null ||
@@ -1365,8 +1373,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (scrollUpBannerEventId != null) return;
 
     if (eventId == null &&
-        !room.hasNewMessages &&
-        room.notificationCount == 0) {
+        !needsReadMarker(room, this.timeline?.events ?? const [])) {
       return;
     }
 
@@ -2575,6 +2582,35 @@ class ChatController extends State<ChatPageWithRoom>
               )
               .indexOf(foundEvent);
 
+    // #Pangea
+    // The event is loaded but filtered out of this view. Reloading around it
+    // cannot change that (it only reloaded three times and reported): open the
+    // view it belongs in, or stop when it is a kind the app never shows.
+    if (eventIndex == -1 && foundEvent != null) {
+      switch (scrollTargetMove(foundEvent, activeThreadId)) {
+        case ScrollTargetMove.none:
+          // Not shown by this app (isVisibleInPangeaGui): nothing to scroll to.
+          Sentry.addBreadcrumb(
+            Breadcrumb(
+              message: 'Scroll target is an event the chat never shows',
+            ),
+          );
+          return false;
+        case ScrollTargetMove.enterThread:
+          enterThread(foundEvent.threadRootId!);
+        case ScrollTargetMove.closeThread:
+          closeThread();
+      }
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        scrollToEventId(
+          eventId,
+          calls: calls + 1,
+          highlightEvent: highlightEvent,
+        );
+      });
+      return true;
+    }
+    // Pangea#
     if (eventIndex == -1) {
       setState(() {
         timeline = null;

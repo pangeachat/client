@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-11-04 10:19:27.150298",
+    "@@last_modified": "2026-11-06 13:10:57.585792",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ nə deməkdir?",
     "practiceEmojiPrompt": "‘{word}’ üçün bir emoji seçin",
     "practiceStepProgress": "{done} / {total}",
-    "leaderboard": "Liderlər lövhəsi",
-    "leaderboardRank": "Sıra {rank}",
-    "courseLeaderboardTooltip": "Bu kursdakı hər kəs, dilindəki ulduzlarına görə sıralanır. Bir üzvə toxunun və onlara birbaşa mesaj göndərmək üçün “Söhbətə başla” seçin.",
+    "courseParticipantTooltip": "Bunlar bu kursdakı hər kəsdir. İstənilən istifadəçinin avatarına klikləyin və şəxsi mesaj göndərmək üçün “söhbətə başla” seçin.",
     "goalReportTitle": "Bu ulduzu bildirin",
     "goalReportOverAwardPrompt": "Əgər bu ulduzu almamalı idinizsə, lütfən, səbəbini izah edin.",
     "goalReportUnderAwardPrompt": "Əgər bu ulduzu almalı olduğunuzu düşünürsünüzsə, niyə?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Gözləməyə davam et",
     "botTookSeatAfterAnHour": "Bu sessiya bir saat açıq idi, buna görə Pangea Bot boş yeri tutdu.",
     "botTookSeatAfterADay": "Bu sessiya bir gündən çox açıq idi, buna görə Pangea Bot boş yeri tutdu. Başlamaq üçün mesaj göndərin.",
-    "subscriptionGracePeriodEndsOn": "Ödəniş uğursuz oldu. Güzəşt müddəti {date} tarixində bitir"
+    "subscriptionGracePeriodEndsOn": "Ödəniş uğursuz oldu. Güzəşt müddəti {date} tarixində bitir",
+    "changeBaseLanguageTitle": "Əsas dili dəyişdirilsin?",
+    "changeBaseLanguageDesc": "Tətbiqin menyuları və düymələri {language} dilinə keçəcək.",
+    "accountSetupFailedHelp": "Hesabınızı qura bilmədik. Bağlantınızı yoxlayın və yenidən cəhd edin, yaxud çıxış edib sonra daxil olun.",
+    "onboardingOfflineError": "Oflaynsınız. Onlayn olduqdan sonra yenidən cəhd edin.",
+    "activitySavedTo": "Fəaliyyət {page} səhifəsinə yadda saxlanıldı"
 }

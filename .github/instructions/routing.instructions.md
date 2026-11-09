@@ -33,7 +33,7 @@ Learners use panels that open over one world map, on any screen size. Outside li
 - Analytics, practice and settings take the right side one at a time, so a learner sees what they just opened.
 - Closing one panel leaves the others open, so a learner can uncover the map and keep their chat. Choosing from the rail replaces only the left side. Gabby.
 - A detail opens beside its list and covers it only when space runs out, so nothing closes to make room. Gabby.
-- A right panel sits about as far from the cluster as a left panel sits from the rail, so neither side looks squeezed; a long count in the cluster can narrow that gap a little.
+- A right panel sits as far from the cluster as a left panel sits from the rail, so neither side looks squeezed; a long count in the cluster can narrow that gap a little.
 - One live chat at a time, because two open copies of a chat overwrite each other. Gabby.
 
 ### Closing a panel: X or back arrow
@@ -78,7 +78,7 @@ Learners use panels that open over one world map, on any screen size. Outside li
 
 ### A signed-out visitor's destination
 
-- A signed-out visitor's last link opens once after sign-in; it expires so a shared browser cannot pass it on, and is never logged or reported. Will.
+- A signed-out visitor's last link is kept on the device and opens once after sign-in; it expires an hour after it was opened, so a shared browser cannot pass it on, and is never logged or reported. Will.
 
 ## Open questions
 

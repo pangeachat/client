@@ -49,7 +49,7 @@ When the connection to the chat server returns, the connection banner says "Back
 
 ### Reporting to the team
 
-**Asking Pangea for help.** The guidance ends with an **Ask Pangea for help** button, with the user's email filled in when the app knows it. The request reaches support@pangea.chat through the CMS ([form-submissions](../../../cms/.github/instructions/form-submissions.instructions.md#network-help-requests) lists what it carries). Only these requests email the team, which keeps the volume low, and each account can send one a day.
+**Asking Pangea for help.** The guidance ends with an **Ask Pangea for help** button, with the user's email filled in when the app knows it. The request reaches support@pangea.chat through the CMS ([form-submissions](../../../cms/.github/instructions/form-submissions.instructions.md#network-help-requests) lists what it carries). It also carries the IDs of the user's courses, the same as the Sentry report, taken when the user asks. Only these requests email the team, which keeps the volume low, and each account can send one a day.
 
 If the CMS is blocked too, the request waits on the device until it can be sent, and the user sees it waiting, then sent. If the CMS answers with an error, the user is asked to email support@pangea.chat, and the app tries to send the request once more the next time it starts.
 

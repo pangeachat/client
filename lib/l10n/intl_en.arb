@@ -182,25 +182,7 @@
             }
         }
     },
-    "leaderboard": "Leaderboard",
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "leaderboardRank": "Rank {rank}",
-    "@leaderboardRank": {
-        "type": "String",
-        "placeholders": {
-            "rank": {
-                "type": "int"
-            }
-        }
-    },
-    "courseLeaderboardTooltip": "Everybody in this course, ranked by their stars in its language. Tap a member and choose “Start conversation” to send them a DM.",
-    "@courseLeaderboardTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
+    "courseParticipantTooltip": "This is everybody in this course. Click on any user’s avatar and “start conversation” to send a DM.",
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},
     "commandHint_googly": "Send some googly eyes",
@@ -5846,6 +5828,15 @@
     },
     "learningObjective": "Learning Objective",
     "learningObjectives": "Learning Objectives",
+    "activitySavedTo": "Activity saved to {page}",
+    "@activitySavedTo": {
+        "description": "Line on a finished activity's end card, under \"All Finished!\", once the session is saved. {page} is the name of the Learning Objectives page (the learningObjectives string, in title case), shown as a link to the page that lists the session, so write the sentence around it as a page name.",
+        "placeholders": {
+            "page": {
+                "type": "String"
+            }
+        }
+    },
     "missionNofM": "Mission {index} of {count}",
     "@missionNofM": {
         "placeholders": {
@@ -6315,5 +6306,27 @@
                 "type": "String"
             }
         }
+    },
+    "changeBaseLanguageTitle": "Change base language?",
+    "@changeBaseLanguageTitle": {
+        "description": "Title of the confirmation shown before a new base language switches the language of the app's menus and buttons."
+    },
+    "changeBaseLanguageDesc": "The app's menus and buttons will switch to {language}.",
+    "@changeBaseLanguageDesc": {
+        "description": "Confirmation message before a new base language switches the language of the app's menus and buttons. {language} is the name of the new base language.",
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "accountSetupFailedHelp": "We couldn't finish setting up your account. Check your connection and try again, or log out and sign in later.",
+    "@accountSetupFailedHelp": {
+        "description": "Shown under the error on the loading page before onboarding, when setting up a new account fails. The page offers Try again and Log out buttons."
+    },
+    "onboardingOfflineError": "You're offline. Try again once you're back online.",
+    "@onboardingOfflineError": {
+        "description": "Shown above the forward button in onboarding when saving a page fails because the device is offline."
     }
 }

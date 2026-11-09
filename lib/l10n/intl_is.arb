@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-11-04 10:19:31.046695",
+    "@@last_modified": "2026-11-06 13:11:01.269773",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Hvað þýðir „{word}“?",
     "practiceEmojiPrompt": "Veldu emoji fyrir „{word}“",
     "practiceStepProgress": "{done} af {total}",
-    "leaderboard": "Stigatöfla",
-    "leaderboardRank": "Sæti {rank}",
-    "courseLeaderboardTooltip": "Allir í þessu námskeiði, raðað eftir stjörnum í tungumálinu. Bankaðu á meðlim og veldu „Hefja samtal“ til að senda þeim bein skilaboð.",
+    "courseParticipantTooltip": "Þetta eru allir á þessu námskeiði. Smelltu á prófílmynd notanda og „hefja samtal“ til að senda beint skilaboð.",
     "goalReportTitle": "Tilkynna þessa stjörnu",
     "goalReportOverAwardPrompt": "Ef þú áttir ekki að fá þessa stjörnu, vinsamlegast útskýrðu hvers vegna.",
     "goalReportUnderAwardPrompt": "Ef þú telur að þú hafir átt að fá þessa stjörnu, hvers vegna?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Halda áfram að bíða",
     "botTookSeatAfterAnHour": "Þessi lota var opin í klukkutíma, svo Pangea Bot tók lausa sætið.",
     "botTookSeatAfterADay": "Þessi lota var opin í yfir sólarhring, svo Pangea Bot tók lausa sætið. Sendu skilaboð til að byrja.",
-    "subscriptionGracePeriodEndsOn": "Greiðsla mistókst. Frestur rennur út {date}"
+    "subscriptionGracePeriodEndsOn": "Greiðsla mistókst. Frestur rennur út {date}",
+    "changeBaseLanguageTitle": "Breyta grunn tungumáli?",
+    "changeBaseLanguageDesc": "Valmyndir og hnappar forritsins munu skipta yfir í {language}.",
+    "accountSetupFailedHelp": "Við gátum ekki lokið við að setja upp reikninginn þinn. Athugaðu tenginguna þína og reyndu aftur, eða skráðu þig út og inn aftur síðar.",
+    "onboardingOfflineError": "Þú ert ótengdur. Reyndu aftur þegar þú ert kominn aftur á netið.",
+    "activitySavedTo": "Virkni vistuð á {page}"
 }

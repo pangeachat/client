@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/onboarding/account_updater.dart';
 import 'package:fluffychat/routes/onboarding/avatar_provider.dart';
@@ -14,10 +17,10 @@ import 'package:fluffychat/routes/onboarding/onboarding_navigation_button_state.
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_result.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_page_group.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_resume.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_view.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
-import 'package:fluffychat/routes/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/trial_info_provider.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -57,15 +60,35 @@ class OnboardingController extends State<Onboarding> {
       userType: client.selfIdentifiedRole,
     );
 
-    final initialStep = ProfileSetupOnboardingStep(
-      client: client,
-      state: _state,
-      maxRemainingSteps: 5,
-    );
+    final path = resumedOnboardingPath(client, _state);
+    unawaited(_saveMark('started', client.markOnboardingStarted()));
 
-    _step = ValueNotifier(initialStep);
-    _navigation = OnboardingNavigationController(initialStep: initialStep);
+    _step = ValueNotifier(path.last);
+    _navigation = OnboardingNavigationController(
+      initialStep: path.last,
+      previousSteps: path.sublist(0, path.length - 1),
+    );
     _updateNavigationButton();
+  }
+
+  /// The marks never hold the person up: a failed one is reported, the start
+  /// mark's run then finishes with its L2 as runs before the marks did, and an
+  /// unsaved finished mark resumes onboarding on the next app open.
+  static Future<void> _saveMark(String mark, Future<void> write) async {
+    try {
+      await write;
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'mark': mark});
+    }
+  }
+
+  NavigationResult _finishAtEnd(NavigationResult result) {
+    if (result is ReachedEndNavigationResult) {
+      unawaited(
+        _saveMark('finished', _navigation.step.client.markOnboardingFinished()),
+      );
+    }
+    return result;
   }
 
   @override
@@ -89,10 +112,10 @@ class OnboardingController extends State<Onboarding> {
       _navigation.currentStepIndex,
     );
     _loading.value = true;
-    _dispatchNavigationResult(await _navigation.forward());
+    _dispatchNavigationResult(_finishAtEnd(await _navigation.forward()));
   }
 
-  void _skip() => _dispatchNavigationResult(_navigation.skip());
+  void _skip() => _dispatchNavigationResult(_finishAtEnd(_navigation.skip()));
 
   void _back() => _dispatchNavigationResult(_navigation.back());
 

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-11-04 10:19:29.545033",
+    "@@last_modified": "2026-11-06 13:11:00.022480",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9870,9 +9870,7 @@
     "practiceMeaningPrompt": "Que significa «{word}»?",
     "practiceEmojiPrompt": "Escolle un emoji para «{word}»",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Clasificación",
-    "leaderboardRank": "Posto {rank}",
-    "courseLeaderboardTooltip": "Todos os participantes neste curso, clasificados polas súas estrelas no idioma. Toca un membro e escolle \"Iniciar conversa\" para enviarlle unha mensaxe directa.",
+    "courseParticipantTooltip": "Isto é todo o mundo neste curso. Fai clic na avatar de calquera usuario e \"comeza a conversa\" para enviar un DM.",
     "goalReportTitle": "Informar desta estrela",
     "goalReportOverAwardPrompt": "Se non deberías ter conseguido esta estrela, explica por que.",
     "goalReportUnderAwardPrompt": "Se cres que deberías ter conseguido esta estrela, por que?",
@@ -10046,5 +10044,10 @@
     "keepWaiting": "Seguir esperando",
     "botTookSeatAfterAnHour": "Esta sesión estivo aberta durante unha hora, así que o Pangea Bot ocupou o asento libre.",
     "botTookSeatAfterADay": "Esta sesión estivo aberta durante máis dun día, así que o Pangea Bot ocupou o asento libre. Envía unha mensaxe para comezar.",
-    "subscriptionGracePeriodEndsOn": "O pago fallou. O período de gracia remata o {date}"
+    "subscriptionGracePeriodEndsOn": "O pago fallou. O período de gracia remata o {date}",
+    "changeBaseLanguageTitle": "Cambiar idioma base?",
+    "changeBaseLanguageDesc": "Os menús e botóns da aplicación cambiarán a {language}.",
+    "accountSetupFailedHelp": "Non puidemos rematar de configurar a túa conta. Comproba a túa conexión e téntao de novo, ou pecha a sesión e inicia sesión máis tarde.",
+    "onboardingOfflineError": "Non tes conexión. Téntao de novo cando volvas ter conexión.",
+    "activitySavedTo": "Actividade gardada en {page}"
 }

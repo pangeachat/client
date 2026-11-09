@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-11-04 10:19:37.535750",
+    "@@last_modified": "2026-11-06 13:11:08.103693",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Kí ni ‘{word}’ túmọ̀ sí?",
     "practiceEmojiPrompt": "Yan emoji kan fún ‘{word}’",
     "practiceStepProgress": "{done} nínú {total}",
-    "leaderboard": "Leaderboard",
-    "leaderboardRank": "Ipò {rank}",
-    "courseLeaderboardTooltip": "Gbogbo ènìyàn nínú kọ́ọ̀sì yìí, tí a tò nípa àwọn ìràwọ̀ wọn nínú èdè rẹ̀. Fọwọ́ kan ọmọ ẹgbẹ́ kan kí o sì yan “Bẹ̀rẹ̀ ìjíròrò” láti fi DM ránṣẹ́ sí wọn.",
+    "courseParticipantTooltip": "Gbogbo eniyan ninu ikẹkọ yii ni. Tẹ lori aworan olumulo eyikeyi ki o si “bẹrẹ ibaraẹnisọrọ” lati fi DM ranṣẹ.",
     "goalReportTitle": "Jabo irawọ yii",
     "goalReportOverAwardPrompt": "Ti o ko ba yẹ lati gba irawọ yii, jọwọ ṣalaye idi.",
     "goalReportUnderAwardPrompt": "Ti o ba ro pe o yẹ lati gba irawọ yii, kilode?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Tẹsiwaju lati duro",
     "botTookSeatAfterAnHour": "Aago kan ti kọja ti igba yii ti ṣ'i silẹ, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo.",
     "botTookSeatAfterADay": "Igba yii ti ṣ'i silẹ fun ọjọ kan ju, nitorinaa Pangea Bot gba ipo ti o ṣ'ofo. Fi ifiranṣẹ ranṣẹ lati bẹrẹ.",
-    "subscriptionGracePeriodEndsOn": "Ìsanwó kùnà. Àkókò oore-ọ̀fẹ́ parí ní {date}"
+    "subscriptionGracePeriodEndsOn": "Ìsanwó kùnà. Àkókò oore-ọ̀fẹ́ parí ní {date}",
+    "changeBaseLanguageTitle": "Ṣe o fẹ́ yí èdè ìpìlẹ̀ padà?",
+    "changeBaseLanguageDesc": "Àwọn àtòjọ àti àwọn bọtini inú app yóò yí sí èdè {language}.",
+    "accountSetupFailedHelp": "A kò le pari siseto àkọọlẹ rẹ. Ṣayẹwo asopọ rẹ ki o tun gbiyanju, tabi jade ki o wọle nigbamii.",
+    "onboardingOfflineError": "O wà ní àìfojúkojú. Gbìyànjú lẹ́ẹ̀kan sí nígbà tí o bá ti padà sórí ìkànnì.",
+    "activitySavedTo": "A ti fi iṣẹ́ pamọ́ sí {page}"
 }

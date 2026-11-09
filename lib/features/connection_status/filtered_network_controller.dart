@@ -67,7 +67,7 @@ class FilteredNetworkController {
   @visibleForTesting
   Future<void> Function(Duration) wait = Future<void>.delayed;
 
-  @visibleForTesting
+  /// The one list the report and a help request read. Replaced in tests.
   List<String> Function() joinedCourseIds = _joinedCourseIds;
 
   /// The longest value Sentry keeps in a tag.
@@ -336,8 +336,8 @@ class FilteredNetworkController {
           course.id,
       ]..sort();
     } catch (_) {
-      // silent-ok: no Matrix client yet; the report is still worth sending
-      // without its courses, and the help request carries the account.
+      // silent-ok: no Matrix client yet; a report or a help request is still
+      // worth sending without its courses.
       return const [];
     }
   }

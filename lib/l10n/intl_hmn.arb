@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-11-04 10:19:29.801619",
+    "@@last_modified": "2026-11-06 13:11:00.477923",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ txhais li cas?",
     "practiceEmojiPrompt": "Xaiv ib lub emoji rau ‘{word}’",
     "practiceStepProgress": "{done} ntawm {total}",
-    "leaderboard": "Cov Neeg Ua Tau Zoo Tshaj Plaws",
-    "leaderboardRank": "Qib {rank}",
-    "courseLeaderboardTooltip": "Txhua tus hauv chav kawm no, raws li lawv cov hnub qub hauv nws hom lus. Coj tus tswv cuab thiab xaiv “Pib sib tham” kom xa lawv ib tsab ntawv.",
+    "courseParticipantTooltip": "Nov yog txhua tus hauv chav kawm no. Nyem rau ntawm tus neeg siv tus avatar thiab “pib sib tham” kom xa DM.",
     "goalReportTitle": "Qhia txog lub hnub qub no",
     "goalReportOverAwardPrompt": "Yog tias koj tsis tsim nyog tau lub hnub qub no, thov piav qhia vim li cas.",
     "goalReportUnderAwardPrompt": "Yog tias koj xav tias koj tsim nyog tau lub hnub qub no, vim li cas?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Tos ntxiv",
     "botTookSeatAfterAnHour": "Qhov kev sib tham no qhib tau ib teev, yog li Pangea Bot tau zaum.",
     "botTookSeatAfterADay": "Qhov kev sib tham no qhib tau ntau tshaj ib hnub, yog li Pangea Bot tau zaum. Xa lus los pib.",
-    "subscriptionGracePeriodEndsOn": "Kev them nyiaj tsis ua haujlwm. Lub sijhawm pub dawb yuav xaus rau {date}"
+    "subscriptionGracePeriodEndsOn": "Kev them nyiaj tsis ua haujlwm. Lub sijhawm pub dawb yuav xaus rau {date}",
+    "changeBaseLanguageTitle": "Hloov hom lus?",
+    "changeBaseLanguageDesc": "Cov ntawv qhia thiab cov nyees khawm hauv app yuav hloov mus rau {language}.",
+    "accountSetupFailedHelp": "Peb tsis tuaj yeem teeb tsa koj tus account kom tiav. Txheeb xyuas koj qhov kev sib txuas thiab sim dua, lossis tawm hauv thiab nkag mus tom qab.",
+    "onboardingOfflineError": "Koj offline lawm. Sim dua thaum koj online.",
+    "activitySavedTo": "Kev ua ub no tau raug cawm rau {page}"
 }

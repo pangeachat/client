@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-11-04 10:19:33.800476",
+    "@@last_modified": "2026-11-06 13:11:04.561013",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "‘{word}’ ਦਾ ਕੀ ਅਰਥ ਹੈ?",
     "practiceEmojiPrompt": "‘{word}’ ਲਈ ਇੱਕ ਇਮੋਜੀ ਚੁਣੋ",
     "practiceStepProgress": "{total} ਵਿੱਚੋਂ {done}",
-    "leaderboard": "ਲੀਡਰਬੋਰਡ",
-    "leaderboardRank": "ਰੈਂਕ {rank}",
-    "courseLeaderboardTooltip": "ਇਸ ਕੋਰਸ ਵਿੱਚ ਹਰ ਕੋਈ, ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਆਪਣੇ ਸਿਤਾਰਿਆਂ ਦੁਆਰਾ ਦਰਜਾਬੰਦ ਕੀਤਾ ਗਿਆ ਹੈ। ਕਿਸੇ ਮੈਂਬਰ 'ਤੇ ਟੈਪ ਕਰੋ ਅਤੇ ਉਹਨਾਂ ਨੂੰ DM ਭੇਜਣ ਲਈ “ਗੱਲਬਾਤ ਸ਼ੁਰੂ ਕਰੋ” ਚੁਣੋ।",
+    "courseParticipantTooltip": "ਇਹ ਇਸ ਕੋਰਸ ਵਿੱਚ ਹਰ ਕੋਈ ਹੈ। ਕਿਸੇ ਵੀ ਉਪਭੋਗਤਾ ਦੇ ਅਵਤਾਰ 'ਤੇ ਕਲਿੱਕ ਕਰੋ ਅਤੇ ਇੱਕ DM ਭੇਜਣ ਲਈ \"ਗੱਲਬਾਤ ਸ਼ੁਰੂ ਕਰੋ\" 'ਤੇ ਕਲਿੱਕ ਕਰੋ।",
     "goalReportTitle": "ਇਸ ਸਟਾਰ ਦੀ ਰਿਪੋਰਟ ਕਰੋ",
     "goalReportOverAwardPrompt": "ਜੇਕਰ ਤੁਹਾਨੂੰ ਇਹ ਸਟਾਰ ਨਹੀਂ ਮਿਲਣਾ ਚਾਹੀਦਾ ਸੀ, ਤਾਂ ਕਿਰਪਾ ਕਰਕੇ ਦੱਸੋ ਕਿਉਂ।",
     "goalReportUnderAwardPrompt": "ਜੇਕਰ ਤੁਹਾਨੂੰ ਲੱਗਦਾ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਇਹ ਸਟਾਰ ਮਿਲਣਾ ਚਾਹੀਦਾ ਸੀ, ਤਾਂ ਕਿਉਂ?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "ਉਡੀਕ ਕਰਦੇ ਰਹੋ",
     "botTookSeatAfterAnHour": "ਇਹ ਸੈਸ਼ਨ ਇੱਕ ਘੰਟੇ ਲਈ ਖੁੱਲ੍ਹਾ ਸੀ, ਇਸ ਲਈ ਪੈਂਗੇਆ ਬੋਟ ਨੇ ਖਾਲੀ ਸੀਟ ਲੈ ਲਈ।",
     "botTookSeatAfterADay": "ਇਹ ਸੈਸ਼ਨ ਇੱਕ ਦਿਨ ਤੋਂ ਵੱਧ ਸਮੇਂ ਲਈ ਖੁੱਲ੍ਹਾ ਸੀ, ਇਸ ਲਈ ਪੈਂਗੇਆ ਬੋਟ ਨੇ ਖਾਲੀ ਸੀਟ ਲੈ ਲਈ। ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੱਕ ਸੁਨੇਹਾ ਭੇਜੋ।",
-    "subscriptionGracePeriodEndsOn": "ਭੁਗਤਾਨ ਅਸਫਲ ਰਿਹਾ। ਗ੍ਰੇਸ ਪੀਰੀਅਡ {date} ਨੂੰ ਖਤਮ ਹੁੰਦਾ ਹੈ"
+    "subscriptionGracePeriodEndsOn": "ਭੁਗਤਾਨ ਅਸਫਲ ਰਿਹਾ। ਗ੍ਰੇਸ ਪੀਰੀਅਡ {date} ਨੂੰ ਖਤਮ ਹੁੰਦਾ ਹੈ",
+    "changeBaseLanguageTitle": "ਮੂਲ ਭਾਸ਼ਾ ਬਦਲਣੀ ਹੈ?",
+    "changeBaseLanguageDesc": "ਐਪ ਦੇ ਮੀਨੂ ਅਤੇ ਬਟਨ {language} ਵਿੱਚ ਬਦਲ ਜਾਣਗੇ।",
+    "accountSetupFailedHelp": "ਅਸੀਂ ਤੁਹਾਡਾ ਖਾਤਾ ਸਥਾਪਤ ਕਰਨਾ ਪੂਰਾ ਨਹੀਂ ਕਰ ਸਕੇ। ਆਪਣਾ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਲੌਗ ਆਉਟ ਕਰੋ ਅਤੇ ਬਾਅਦ ਵਿੱਚ ਸਾਈਨ ਇਨ ਕਰੋ।",
+    "onboardingOfflineError": "ਤੁਸੀਂ ਔਫਲਾਈਨ ਹੋ। ਇੱਕ ਵਾਰ ਜਦੋਂ ਤੁਸੀਂ ਔਨਲਾਈਨ ਹੋ ਜਾਂਦੇ ਹੋ ਤਾਂ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+    "activitySavedTo": "ਗਤੀਵਿਧੀ {page} ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਕੀਤੀ ਗਈ"
 }

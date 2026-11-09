@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-11-04 10:19:29.932035",
+    "@@last_modified": "2026-11-06 13:11:00.289913",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "He aha ke ʻano o ‘{word}’?",
     "practiceEmojiPrompt": "E koho i kahi emoji no ‘{word}’",
     "practiceStepProgress": "{done} o {total}",
-    "leaderboard": "Papa Alakaʻi",
-    "leaderboardRank": "Kūlana {rank}",
-    "courseLeaderboardTooltip": "ʻO nā haumāna a pau o kēia papa, i hoʻonohonoho ʻia e ko lākou mau hōkū ma kāna ʻōlelo. E kaomi i kekahi lālā a koho i ka “Hoʻomaka kamaʻilio” e hoʻouna i leka pololei iā lākou.",
+    "courseParticipantTooltip": "ʻO nā poʻe a pau kēia o kēia papa. E kaomi ma luna o ke kiʻi o kekahi mea hoʻohana a me ka “hoʻomaka i ke kamaʻilio” no ka hoʻouna ʻana i leka pilikino.",
     "goalReportTitle": "Hōʻike i kēia hōkū",
     "goalReportOverAwardPrompt": "Inā ʻaʻole ʻoe i manaʻo e loaʻa kēia hōkū, e ʻoluʻolu e wehewehe i ke kumu.",
     "goalReportUnderAwardPrompt": "Inā manaʻo ʻoe e loaʻa iā ʻoe kēia hōkū, no ke aha?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "E hoʻomau i ke kali",
     "botTookSeatAfterAnHour": "Ua hāmama kēia kau no hoʻokahi hola, no laila ua noho ʻo Pangea Bot i ka noho hakahaka.",
     "botTookSeatAfterADay": "Ua hāmama kēia kau no ka ʻoi aku ma mua o hoʻokahi lā, no laila ua noho ʻo Pangea Bot i ka noho hakahaka. E hoʻouna i kahi leka e hoʻomaka.",
-    "subscriptionGracePeriodEndsOn": "ʻAʻole i kūleʻa ka uku. E pau ana ka manawa hoʻopaneʻe ma {date}"
+    "subscriptionGracePeriodEndsOn": "ʻAʻole i kūleʻa ka uku. E pau ana ka manawa hoʻopaneʻe ma {date}",
+    "changeBaseLanguageTitle": "E hoʻololi i ka ʻōlelo kumu?",
+    "changeBaseLanguageDesc": "E hoʻololi nā papa kuhikuhi a me nā pihi o ka polokalamu i ka {language}.",
+    "accountSetupFailedHelp": "ʻAʻole hiki iā mākou ke hoʻopau i ka hoʻonohonoho ʻana i kāu moʻokāki. E nānā i kāu pili a e hoʻāʻo hou, a i ʻole e haʻalele a e komo hou ma hope.",
+    "onboardingOfflineError": "Aia ʻoe ma waho pūnaewele. E hoʻāʻo hou ke hoʻi mai ʻoe i ka pūnaewele.",
+    "activitySavedTo": "Ua mālama ʻia ka hana ma {page}"
 }

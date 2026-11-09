@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-11-04 10:19:30.823506",
+    "@@last_modified": "2026-11-06 13:11:01.690463",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Apa tegese ‘{word}’?",
     "practiceEmojiPrompt": "Pilih emoji kanggo ‘{word}’",
     "practiceStepProgress": "{done} saka {total}",
-    "leaderboard": "Papan Peringkat",
-    "leaderboardRank": "Peringkat {rank}",
-    "courseLeaderboardTooltip": "Saben uwong ing kursus iki, diurutake miturut lintange ing basa kasebut. Tutul anggota lan pilih “Mulai obrolan” kanggo ngirim DM.",
+    "courseParticipantTooltip": "Iki kabeh wong ing kursus iki. Klik ing avatar pangguna lan “wiwiti obrolan” kanggo ngirim DM.",
     "goalReportTitle": "Laporake lintang iki",
     "goalReportOverAwardPrompt": "Menawa sampeyan ora kudune entuk lintang iki, tulung jlentrehake alasane.",
     "goalReportUnderAwardPrompt": "Menawa sampeyan rumangsa kudune entuk lintang iki, apa sebabe?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Terus ngenteni",
     "botTookSeatAfterAnHour": "Sesi iki wis mbukak sakjam, dadi Pangea Bot njupuk kursi sing kosong.",
     "botTookSeatAfterADay": "Sesi iki wis mbukak luwih saka sedina, dadi Pangea Bot njupuk kursi sing kosong. Kirim pesen kanggo miwiti.",
-    "subscriptionGracePeriodEndsOn": "Pembayaran gagal. Masa tenggang rampung ing {date}"
+    "subscriptionGracePeriodEndsOn": "Pembayaran gagal. Masa tenggang rampung ing {date}",
+    "changeBaseLanguageTitle": "Ganti basa dhasar?",
+    "changeBaseLanguageDesc": "Menu lan tombol aplikasi bakal ganti dadi {language}.",
+    "accountSetupFailedHelp": "Kita ora bisa ngrampungake nyetel akun sampeyan. Priksa sambungan sampeyan banjur coba maneh, utawa metu banjur mlebu mengko.",
+    "onboardingOfflineError": "Kowe lagi offline. Coba maneh yen wis online.",
+    "activitySavedTo": "Aktivitas disimpen menyang {page}"
 }

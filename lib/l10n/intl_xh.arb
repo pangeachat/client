@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-11-04 10:19:36.936150",
+    "@@last_modified": "2026-11-06 13:11:07.851385",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Ithetha ukuthini ‘{word}’?",
     "practiceEmojiPrompt": "Khetha i-emoji ye-‘{word}’",
     "practiceStepProgress": "{done} kweziyi-{total}",
-    "leaderboard": "Ibhodi yabaphambili",
-    "leaderboardRank": "Inqanaba {rank}",
-    "courseLeaderboardTooltip": "Wonke umntu okule khosi, uhlelwe ngokweenkwenkwezi zakhe kulwimi lwayo. Cofa ilungu kwaye ukhethe “Qala incoko” ukuze ulithumelele i-DM.",
+    "courseParticipantTooltip": "Lo ngumntu wonke kule khosi. Cofa kwi-avatar yomsebenzisi kwaye “uqalise incoko” ukuthumela i-DM.",
     "goalReportTitle": "Bika le nkwenkwezi",
     "goalReportOverAwardPrompt": "Ukuba ubungafanelanga ukuyifumana le nkwenkwezi, nceda ucacise isizathu.",
     "goalReportUnderAwardPrompt": "Ukuba ucinga ukuba ubufanele ukuyifumana le nkwenkwezi, kutheni?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Qhubeka ulindile",
     "botTookSeatAfterAnHour": "Le seshoni ibivulekile iyure, ngoko iPangea Bot ithathe isihlalo esivulekileyo.",
     "botTookSeatAfterADay": "Le seshoni ibivulekile ngaphezu kosuku, ngoko iPangea Bot ithathe isihlalo esivulekileyo. Thumela umyalezo ukuze uqale.",
-    "subscriptionGracePeriodEndsOn": "Intlawulo ayiphumelelanga. Ixesha lesisa liphela ngo-{date}"
+    "subscriptionGracePeriodEndsOn": "Intlawulo ayiphumelelanga. Ixesha lesisa liphela ngo-{date}",
+    "changeBaseLanguageTitle": "Guqula ulwimi olusisiseko?",
+    "changeBaseLanguageDesc": "Iimenyu zosetyenziso namaqhosha aya kutshintshela kwisi-{language}.",
+    "accountSetupFailedHelp": "Asikwazanga ukugqiba ukuseta iakhawunti yakho. Jonga uqhagamshelo lwakho uze uzame kwakhona, okanye phuma uze ungene kamva.",
+    "onboardingOfflineError": "Awukho kwi-intanethi. Zama kwakhona xa sele ukwi-intanethi.",
+    "activitySavedTo": "Umsebenzi ugcinwe ku-{page}"
 }

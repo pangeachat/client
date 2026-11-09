@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-11-04 10:19:28.011422",
+    "@@last_modified": "2026-11-06 13:10:58.435102",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Chì significheghja « {word} »?",
     "practiceEmojiPrompt": "Sceglite un emoji per « {word} »",
     "practiceStepProgress": "{done} di {total}",
-    "leaderboard": "Classifica",
-    "leaderboardRank": "Classifica {rank}",
-    "courseLeaderboardTooltip": "Tutti i membri di stu corsu, classificati secondu e so stelle in a lingua. Toccate un membru è sceglite «Principià a cunversazione» per mandà li un missaghju direttu.",
+    "courseParticipantTooltip": "Eccu tutti i participanti à stu corsu. Cliccate nant'à l'avatar d'un utilizatore è « principià a cunversazione » per mandà un messaghju direttu.",
     "goalReportTitle": "Signalà sta stella",
     "goalReportOverAwardPrompt": "S'è vo ùn duvite micca avè sta stella, spiegate per piacè perchè.",
     "goalReportUnderAwardPrompt": "S'è vo pensate chì duvite avè sta stella, perchè?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Cuntinuà à aspittà",
     "botTookSeatAfterAnHour": "Sta sessione hè stata aperta per un'ora, cusì u Bot Pangea hà pigliatu u postu liberu.",
     "botTookSeatAfterADay": "Sta sessione hè stata aperta per più di un ghjornu, cusì u Bot Pangea hà pigliatu u postu liberu. Mandate un messagiu per principià.",
-    "subscriptionGracePeriodEndsOn": "U pagamentu hà fiascatu. U periodu di grazia finisce u {date}"
+    "subscriptionGracePeriodEndsOn": "U pagamentu hà fiascatu. U periodu di grazia finisce u {date}",
+    "changeBaseLanguageTitle": "Cambia a lingua di basa?",
+    "changeBaseLanguageDesc": "I menu è i buttoni di l'app cambieranu in {language}.",
+    "accountSetupFailedHelp": "Ùn avemu pussutu compie a cunfigurazione di u vostru contu. Verificate a vostra cunnessione è riprovate, o disconnettatevi è cunnettatevi più tardi.",
+    "onboardingOfflineError": "Sì scunnessu. Pruvate torna quandu sì cunnessu.",
+    "activitySavedTo": "Attività salvata in {page}"
 }

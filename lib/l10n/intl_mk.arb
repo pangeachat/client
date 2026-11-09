@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-11-04 10:19:32.429153",
+    "@@last_modified": "2026-11-06 13:11:03.009313",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Што значи „{word}“?",
     "practiceEmojiPrompt": "Изберете емоџи за „{word}“",
     "practiceStepProgress": "{done} од {total}",
-    "leaderboard": "Табла на водачи",
-    "leaderboardRank": "Ранг {rank}",
-    "courseLeaderboardTooltip": "Сите во овој курс, рангирани според нивните ѕвезди на јазикот. Допрете член и изберете „Започни разговор“ за да му испратите директна порака.",
+    "courseParticipantTooltip": "Ова се сите во овој курс. Кликнете на аватарот на кој било корисник и „започнете разговор“ за да испратите директна порака.",
     "goalReportTitle": "Пријави ја оваа ѕвезда",
     "goalReportOverAwardPrompt": "Ако не требаше да ја добиеш оваа ѕвезда, објасни зошто.",
     "goalReportUnderAwardPrompt": "Ако мислиш дека требаше да ја добиеш оваа ѕвезда, зошто?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Продолжи да чекаш",
     "botTookSeatAfterAnHour": "Оваа сесија беше отворена еден час, па Pangea Bot го зазеде слободното место.",
     "botTookSeatAfterADay": "Оваа сесија беше отворена повеќе од еден ден, па Pangea Bot го зазеде слободното место. Испратете порака за да започнете.",
-    "subscriptionGracePeriodEndsOn": "Неуспешна уплата. Грејс периодот завршува на {date}"
+    "subscriptionGracePeriodEndsOn": "Неуспешна уплата. Грејс периодот завршува на {date}",
+    "changeBaseLanguageTitle": "Да се смени основниот јазик?",
+    "changeBaseLanguageDesc": "Менијата и копчињата на апликацијата ќе се префрлат на {language}.",
+    "accountSetupFailedHelp": "Не можевме да го завршиме поставувањето на вашата сметка. Проверете ја вашата врска и обидете се повторно, или одјавете се и најавете се подоцна.",
+    "onboardingOfflineError": "Не сте поврзани на интернет. Обидете се повторно откако ќе се поврзете.",
+    "activitySavedTo": "Активноста е зачувана во {page}"
 }

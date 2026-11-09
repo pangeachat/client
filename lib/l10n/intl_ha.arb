@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-11-04 10:19:29.564294",
+    "@@last_modified": "2026-11-06 13:11:00.247350",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2340,9 +2340,7 @@
     "practiceMeaningPrompt": "Menene ma'anar ‘{word}’?",
     "practiceEmojiPrompt": "Zaɓi emoji don ‘{word}’",
     "practiceStepProgress": "{done} na {total}",
-    "leaderboard": "Teburin Masu Kula",
-    "leaderboardRank": "Matsayi {rank}",
-    "courseLeaderboardTooltip": "Kowa a cikin wannan kwas, an jera su ta taurarinsu a cikin harshen. Danna wani memba kuma zaɓi “Fara tattaunawa” don aiko musu da DM.",
+    "courseParticipantTooltip": "Waɗannan su ne kowa da kowa a cikin wannan kwas. Danna kan hoton kowane mai amfani sannan ka danna \"fara hira\" don aika saƙon sirri.",
     "goalReportTitle": "Bayar da rahoton wannan tauraron",
     "goalReportOverAwardPrompt": "Idan bai kamata ka sami wannan tauraron ba, don Allah ka bayyana dalili.",
     "goalReportUnderAwardPrompt": "Idan kana ganin ya kamata ka sami wannan tauraron, me ya sa?",
@@ -2516,5 +2514,10 @@
     "keepWaiting": "Ci gaba da jira",
     "botTookSeatAfterAnHour": "Wannan zaman ya kasance a buɗe na awa ɗaya, don haka Pangea Bot ya shiga.",
     "botTookSeatAfterADay": "Wannan zaman ya kasance a buɗe fiye da kwana ɗaya, don haka Pangea Bot ya shiga. Aika saƙo don farawa.",
-    "subscriptionGracePeriodEndsOn": "Biyan kuɗi bai yi nasara ba. Lokacin alheri ya ƙare a ranar {date}"
+    "subscriptionGracePeriodEndsOn": "Biyan kuɗi bai yi nasara ba. Lokacin alheri ya ƙare a ranar {date}",
+    "changeBaseLanguageTitle": "Canza harshen asali?",
+    "changeBaseLanguageDesc": "Za a canza menu da maɓallan manhajar zuwa {language}.",
+    "accountSetupFailedHelp": "Mun kasa kammala saita asusunka. Duba haɗinka kuma sake gwadawa, ko fita daga asusunka ka shiga daga baya.",
+    "onboardingOfflineError": "Baka da intanet. Kuma gwada idan ka dawo kan layi.",
+    "activitySavedTo": "An adana aiki zuwa {page}"
 }

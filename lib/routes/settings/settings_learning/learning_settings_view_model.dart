@@ -7,9 +7,11 @@ import 'package:country_picker/country_picker.dart';
 import 'package:fluffychat/features/instructions/instruction_settings.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/language_service.dart';
+import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/gender_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
@@ -261,6 +263,17 @@ class LearningSettingsViewModel extends ChangeNotifier {
     _updateProfile(updated);
   }
 
+  /// Whether making [language] the base language would switch the language of
+  /// the app's menus, which stay in the target language while the app is
+  /// shown in it.
+  bool baseLanguageSwitchesAppLanguage(LanguageModel language) {
+    final settings = _updatedProfile.userSettings;
+    return LocaleProvider.localeFromLangCode(settings.appLanguage) !=
+        LocaleProvider.localeFromLangCode(
+          settings.copyWith(sourceLanguage: language.langCode).appLanguage,
+        );
+  }
+
   void setSelectedLanguage({
     LanguageModel? sourceLanguage,
     LanguageModel? targetLanguage,
@@ -331,6 +344,17 @@ class LearningSettingsViewModel extends ChangeNotifier {
     final updated = _updatedProfile.copyWith(
       userSettings: _updatedProfile.userSettings.copyWith(
         cefrLevel: cefrLevel ?? LanguageLevelTypeEnum.a1,
+      ),
+    );
+    _updateProfile(updated);
+  }
+
+  UserType? get userType => _updatedProfile.userSettings.selfIdentifiedRole;
+
+  void setUserType(UserType type) {
+    final updated = _updatedProfile.copyWith(
+      userSettings: _updatedProfile.userSettings.copyWith(
+        selfIdentifiedRole: type,
       ),
     );
     _updateProfile(updated);

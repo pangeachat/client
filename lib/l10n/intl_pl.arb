@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-11-04 10:19:34.013078",
+    "@@last_modified": "2026-11-06 13:11:04.608373",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9955,9 +9955,7 @@
     "practiceMeaningPrompt": "Co oznacza „{word}”?",
     "practiceEmojiPrompt": "Wybierz emoji dla „{word}”",
     "practiceStepProgress": "{done} z {total}",
-    "leaderboard": "Tablica wyników",
-    "leaderboardRank": "Ranga {rank}",
-    "courseLeaderboardTooltip": "Wszyscy uczestnicy tego kursu, uszeregowani według liczby gwiazdek zdobytych w danym języku. Stuknij członka i wybierz „Rozpocznij rozmowę”, aby wysłać mu wiadomość prywatną.",
+    "courseParticipantTooltip": "To są wszyscy uczestnicy tego kursu. Kliknij na avatar dowolnego użytkownika i wybierz „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
     "goalReportTitle": "Zgłoś tę gwiazdkę",
     "goalReportOverAwardPrompt": "Jeśli nie powinieneś/powinnaś otrzymać tej gwiazdki, wyjaśnij dlaczego.",
     "goalReportUnderAwardPrompt": "Jeśli uważasz, że powinieneś/powinnaś otrzymać tę gwiazdkę, dlaczego?",
@@ -10131,5 +10129,10 @@
     "keepWaiting": "Czekaj dalej",
     "botTookSeatAfterAnHour": "Ta sesja była otwarta przez godzinę, więc Pangea Bot zajął wolne miejsce.",
     "botTookSeatAfterADay": "Ta sesja była otwarta przez ponad dzień, więc Pangea Bot zajął wolne miejsce. Wyślij wiadomość, aby rozpocząć.",
-    "subscriptionGracePeriodEndsOn": "Płatność nie powiodła się. Okres prolongaty kończy się {date}"
+    "subscriptionGracePeriodEndsOn": "Płatność nie powiodła się. Okres prolongaty kończy się {date}",
+    "changeBaseLanguageTitle": "Zmienić język podstawowy?",
+    "changeBaseLanguageDesc": "Menu i przyciski aplikacji przełączą się na język {language}.",
+    "accountSetupFailedHelp": "Nie udało nam się dokończyć konfiguracji Twojego konta. Sprawdź połączenie i spróbuj ponownie, lub wyloguj się i zaloguj później.",
+    "onboardingOfflineError": "Jesteś offline. Spróbuj ponownie, gdy będziesz online.",
+    "activitySavedTo": "Aktywność zapisana w {page}"
 }
