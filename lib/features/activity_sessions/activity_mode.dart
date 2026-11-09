@@ -19,7 +19,7 @@ enum ActivityMode {
   roleplay,
 
   /// A course's shared room of students talking about one photo and a few
-  /// questions, with the bot facilitating (org discussions doc).
+  /// questions, with the bot facilitating (org activities doc, "Mode: Discussion").
   discussion;
 
   /// The plan `mode` value of a discussion, compared case-insensitively.

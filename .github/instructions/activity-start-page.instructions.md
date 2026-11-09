@@ -48,7 +48,7 @@ What a learner sees on tapping an activity, in every state. Its job is to start 
 
 ### A discussion
 
-A [discussion](../../../.github/.github/instructions/discussions.instructions.md)'s page has nothing to choose: no players count, role cards, open sessions, waiting room, too-few-members notice or Completed. Its questions fill the goal header from the start, open and collapsible. One filled Join the discussion; above it, "N classmates are in this discussion", counting the room Join would pick now and kept current while open, else "Be the first to start this discussion".
+A [discussion](../../../.github/.github/instructions/activities.instructions.md#mode-discussion)'s page has nothing to choose: no players count, role cards, open sessions, waiting room, too-few-members notice or Completed. Its questions fill the goal header from the start, open and collapsible. One filled Join the discussion; above it, "N classmates are in this discussion", counting the room Join would pick now and kept current while open, else "Be the first to start this discussion".
 
 ## The waiting room
 

@@ -30,7 +30,7 @@ How learners find and start activities, and the record they leave. What an activ
 
 ## Discussions
 
-- A room is a [discussion](../../../.github/.github/instructions/discussions.instructions.md)'s only when the server made it for one, so the app knows a discussion room before its plan loads and an older activity whose mode reads "Discussion" stays a roleplay.
+- A room is a [discussion](../../../.github/.github/instructions/activities.instructions.md#mode-discussion)'s only when the server made it for one, so the app knows a discussion room before its plan loads and an older activity whose mode reads "Discussion" stays a roleplay.
 - A learner with a seat in one of its rooms, done or not, goes straight to the chat; anyone else gets its [start page](activity-start-page.instructions.md#a-discussion), whose Join puts them in a room the server picks.
 - An admin who taps Join takes a seat and counts like a student. Admins joined to watch hold no seat, never count, and can read and post.
 - Its card shows "Joined" while the learner takes part, ranked as ongoing, and "Answered" once they have ended. It never takes the completed stamp; its XP shows once it is saved.
