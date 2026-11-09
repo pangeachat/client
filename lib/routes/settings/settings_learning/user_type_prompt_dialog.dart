@@ -28,8 +28,11 @@ class UserTypePromptDialog extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const ExcludeSemantics(
-                child: BotFace(width: 100, expression: BotExpression.idle),
+              // Centered so the column's stretch doesn't override its width.
+              const Center(
+                child: ExcludeSemantics(
+                  child: BotFace(width: 100, expression: BotExpression.idle),
+                ),
               ),
               Text(
                 l10n.userTypeTitle,

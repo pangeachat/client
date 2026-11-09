@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart' hide Profile;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
@@ -202,6 +203,12 @@ void main() {
     setRole(null);
     await openApp(tester);
     expect(find.byType(UserTypePromptDialog), findsOneWidget);
+    final face = find.byType(BotFace);
+    expect(
+      tester.getSize(face),
+      Size.square(tester.widget<BotFace>(face).width),
+      reason: 'the dialog must not stretch the face over its question',
+    );
 
     await tapAndSettle(tester, 'Teach');
     expect(find.byType(UserTypePromptDialog), findsNothing);
