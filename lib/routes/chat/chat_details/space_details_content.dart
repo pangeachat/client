@@ -16,8 +16,8 @@ import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_header_actions.dart';
-import 'package:fluffychat/routes/chat/chat_details/course_leaderboard_page.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_overview.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_participants_page.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_space_dialog.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
@@ -55,7 +55,7 @@ enum SpaceSettingsTabs {
   String title(BuildContext context) => switch (this) {
     SpaceSettingsTabs.course => L10n.of(context).coursePlan,
     SpaceSettingsTabs.chat => L10n.of(context).chats,
-    SpaceSettingsTabs.participants => L10n.of(context).leaderboard,
+    SpaceSettingsTabs.participants => L10n.of(context).participants,
     _ => L10n.of(context).more,
   };
 }
@@ -359,7 +359,7 @@ List<ButtonDetails> _courseSettingsButtons(
 
 /// A section's full subpage, pushed within the card (`<section>/all` in the
 /// course token): the full course plan, the complete chat list, the full
-/// leaderboard, or the full settings list. Its back control and section title are
+/// participant list, or the full settings list. Its back control and section title are
 /// the card's header ([SpaceDetailsHeader]) — this body renders no navigation
 /// of its own.
 class _CourseSectionSubpage extends StatelessWidget {
@@ -409,10 +409,10 @@ class _CourseSectionSubpage extends StatelessWidget {
           child: Column(
             children: [
               const InstructionsInlineTooltip(
-                instructionsEnum: InstructionsEnum.courseLeaderboardTooltip,
+                instructionsEnum: InstructionsEnum.courseParticipantTooltip,
                 padding: EdgeInsets.only(bottom: 16.0),
               ),
-              CourseLeaderboardPage(room: room),
+              CourseParticipantsPage(room: room),
             ],
           ),
         ),

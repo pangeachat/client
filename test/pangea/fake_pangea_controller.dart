@@ -34,7 +34,7 @@ class FakePangeaController implements PangeaController {
   final SubscriptionController subscriptionController;
 
   /// [analyticsProfiles] serves a public analytics profile per user id — the
-  /// course leaderboard ranks on these; anyone absent gets an empty profile.
+  /// participant cards read these; anyone absent gets an empty profile.
   /// [subscribed] answers `subscriptionController.showSubscriptionGatedContent`
   /// -- true by default, matching what the REAL controller answers before its
   /// own state resolves (`SubscriptionLoading`), so a test that never mentions

@@ -9,6 +9,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,7 +19,12 @@ import 'package:fluffychat/features/connection_status/network_host_category.dart
 import 'package:fluffychat/features/connection_status/network_probe.dart';
 import 'package:fluffychat/features/connection_status/network_type.dart';
 import 'package:fluffychat/features/connection_status/network_verdict.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import '../../utils/test_client.dart';
+import '../fake_pangea_controller.dart';
 import '../sentry_capture_harness.dart';
 
 /// #9434 — which host categories the network blocks, and when the app checks.
@@ -714,6 +720,41 @@ void main() {
 
       expect(event.tags, isNot(contains('course_ids')));
     });
+  });
+
+  /// #9453 — the help request reads the same list as the report, so it has
+  /// none once the user signs out.
+  test('a user who signs out has no courses', () async {
+    final client = await prepareTestClient(loggedIn: true);
+    addTearDown(client.dispose);
+    MatrixState.pangeaController = FakePangeaController(client: client);
+    final course = Room(
+      id: '!a:pangea.chat',
+      client: client,
+      membership: Membership.join,
+    );
+    void putState(String type, Map<String, dynamic> content) => course.setState(
+      Event(
+        type: type,
+        content: content,
+        stateKey: '',
+        senderId: client.userID!,
+        eventId: '\$$type',
+        originServerTs: DateTime.now(),
+        room: course,
+      ),
+    );
+    putState(EventTypes.RoomCreate, {'type': RoomCreationTypes.mSpace});
+    putState(
+      PangeaEventTypes.coursePlan,
+      CoursePlanEvent(uuid: 'quest-1').toJson(),
+    );
+    client.rooms.add(course);
+    expect(controller.joinedCourseIds(), ['!a:pangea.chat']);
+
+    await client.logout();
+
+    expect(controller.joinedCourseIds(), isEmpty);
   });
 
   test('a course tag drops whole IDs past Sentry\'s 200-character limit', () {

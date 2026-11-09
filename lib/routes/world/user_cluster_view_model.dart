@@ -188,7 +188,7 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   /// Stars are completed Missions (#9436), counted once per Mission across
   /// the JOINED courses in the learner's target language — never a course
   /// the map is only previewing (#9559). A course with no language recorded
-  /// counts, the same fallback the leaderboard uses.
+  /// counts, the same fallback a chat's member cards use.
   @override
   int get starsEarned {
     final userL2 = this.userL2;
