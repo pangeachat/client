@@ -69,6 +69,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
+import 'package:fluffychat/routes/chat/scroll_target_move.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_background.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_extension.dart';
@@ -2581,6 +2582,35 @@ class ChatController extends State<ChatPageWithRoom>
               )
               .indexOf(foundEvent);
 
+    // #Pangea
+    // The event is loaded but filtered out of this view. Reloading around it
+    // cannot change that (it only reloaded three times and reported): open the
+    // view it belongs in, or stop when it is a kind the app never shows.
+    if (eventIndex == -1 && foundEvent != null) {
+      switch (scrollTargetMove(foundEvent, activeThreadId)) {
+        case ScrollTargetMove.none:
+          // Not shown by this app (isVisibleInPangeaGui): nothing to scroll to.
+          Sentry.addBreadcrumb(
+            Breadcrumb(
+              message: 'Scroll target is an event the chat never shows',
+            ),
+          );
+          return false;
+        case ScrollTargetMove.enterThread:
+          enterThread(foundEvent.threadRootId!);
+        case ScrollTargetMove.closeThread:
+          closeThread();
+      }
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        scrollToEventId(
+          eventId,
+          calls: calls + 1,
+          highlightEvent: highlightEvent,
+        );
+      });
+      return true;
+    }
+    // Pangea#
     if (eventIndex == -1) {
       setState(() {
         timeline = null;
