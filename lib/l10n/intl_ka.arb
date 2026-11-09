@@ -182,7 +182,7 @@
             }
         }
     },
-    "createGroup": "ჯგუფის შექმნა",
+    "createGroup": "ჩატის შექმნა",
     "@createGroup": {},
     "deactivateAccountWarning": "ეს გააუქმებს თქვენს ანგარიშს. ამის გაუქმება შეუძლებელია. დარწმუნებული ხართ?",
     "@deactivateAccountWarning": {
@@ -1088,7 +1088,7 @@
     "noUsersFoundWithQuery": "სამწუხაროდ, ვერ მოიძებნა მომხმარებელი \"{query}\"-ით. გთხოვთ, გადაამოწმოთ შეცდომა.",
     "knocking": "საკაკუნო",
     "nothingFound": "არაფერი მოიძებნა...",
-    "groupName": "ჯგუფის სახელი",
+    "groupName": "ჩატის სახელი",
     "wrongRecoveryKey": "უკაცრავად... ეს არ ჩანს სწორი აღდგენის გასაღები.",
     "startConversation": "დაუწყეთ საუბარი",
     "commandHint_sendraw": "გაგზავნეთ ნედლი json",
@@ -1862,13 +1862,11 @@
     "editCourseLater": "შეგიძლიათ მოგვიანებით შეცვალოთ ტემპლეტის სათაური, აღწერები და კურსის სურათი.",
     "createCourse": "შექმენით კურსი",
     "stats": "სტატისტიკა",
-    "createGroupChat": "შექმენით ჯგუფური ჩათი",
     "editCourse": "შეცვალეთ კურსი",
     "inviteDesc": "მომხმარებლის სახელით, კოდით ან ლინკით",
     "editCourseDesc": "აქ შეგიძლიათ შეცვალოთ კურსის სათაური, აღწერა და სხვა.",
     "permissionsDesc": "დააყენეთ დაშვებები, როგორიცაა ვინ შეუძლია მოწვევა, მესიჯების გაგზავნა, ჩატების შექმნა და სხვა.",
     "accessDesc": "თქვენ შეგიძლიათ გახსნათ თქვენი კურსი მსოფლიოისთვის! ან, გახადოთ თქვენი კურსი პირადი და უსაფრთხო.",
-    "createGroupChatDesc": "სადაც იწყება და მთავრდება აქტივობის სესია, ჯგუფური ჩატები დარჩება ღია რეგულარული კომუნიკაციისთვის.",
     "deleteDesc": "მხოლოდ ადმინისტრატორებს შეუძლიათ კურსის წაშლა. ეს არის განადგურების მოქმედება, რომელიც წაშლის ყველა მომხმარებელს და ყველა არჩეულ ჩატს კურსის ფარგლებში. გთხოვთ, გამოიჩინოთ სიფრთხილე.",
     "whatNow": "ახლა რა?",
     "chooseNextActivity": "აირჩიეთ თქვენი შემდეგი აქტივობა!",
@@ -1930,7 +1928,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-10-22 09:50:17.011323",
+    "@@last_modified": "2026-11-06 13:11:01.684809",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6794,10 +6792,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6815,10 +6809,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10734,10 +10724,6 @@
     "contentCreatedBy": "შექმნილია",
     "coursePreview": "კურსის გადახედვა",
     "numActivities": "{count, plural, =1{1 აქტივობა} other{{count} აქტივობა}}",
-    "teacherAnalyticsRequestTitle": "მასწავლებელი ითხოვს თქვენს პროგრესს",
-    "teacherAnalyticsRequestDesc": "ისინი ნახავენ ყველა სიტყვას და გრამატიკას, რომელიც თქვენ გამოიყენეთ {targetLang}-ში, თქვენს დონესა და XP-ს, და კურსის აქტივობებში გაგზავნილ შეტყობინებებს. თქვენი 1-on-1 შეტყობინებები არ გაზიარდება. კურსზე გასაწევრიანებლად ანალიტიკის გაზიარება სავალდებულოა.",
-    "shareAndJoin": "გაზიარება და შეერთება",
-    "goBack": "უკან დაბრუნება",
     "emptyGroupsSearch": "ჯგუფები ვერ მოიძებნა. დარწმუნდით, რომ ძიება სწორად არის დაწერილი.",
     "emptyActivitiesSearch": "აქტივობები ვერ მოიძებნა. დარწმუნდით, რომ ძიება სწორად არის დაწერილი.",
     "chatListFiltersLabel": "ჩეთის ფილტრები",
@@ -10916,5 +10902,51 @@
     "otherCoursesSessions": "სხვა კურსები ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, მიღებულია {xp} XP",
-    "currentMission": "მიმდინარე მისია"
+    "currentMission": "მიმდინარე მისია",
+    "constructUseCorRADesc": "ხმამაღლა წაკითხული და მოსმენილი",
+    "constructUseIncRADesc": "ხმამაღლა წაკითხული, არ მოსმენილი",
+    "hearItFirstToolName": "ჯერ მოუსმინე",
+    "hearItFirstDescription": "ხმამაღლა კითხვის პრაქტიკაში, ჩაწერამდე მოუსმინეთ წინადადებას.",
+    "readAloudInstruction": "შეეხეთ მიკროფონს და ხმამაღლა წაიკითხეთ წინადადება",
+    "readAloudRecord": "ჩაწერა",
+    "readAloudMicLabel": "{count, plural, =1{ჩაწერა, 1 სიტყვა ჯერ არ მოსმენილა} other{ჩაწერა, {count} სიტყვა ჯერ არ მოსმენილა}}",
+    "readAloudStop": "ჩაწერის შეჩერება",
+    "readAloudHeardAll": "ყველა სიტყვა მოსმენილია!",
+    "readAloudNotHeard": "{count, plural, =1{1 სიტყვა არ მოსმენილა} other{{count} სიტყვა არ მოსმენილა}}",
+    "readAloudTriesLeft": "{count, plural, =1{დარჩა 1 მცდელობა} other{დარჩა {count} მცდელობა}}",
+    "readAloudHeardTranscript": "მოსმენილია: {transcript}",
+    "readAloudTranscribeFailed": "თქვენი ჩანაწერის ტრანსკრიბირება ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა.",
+    "readAloudMicUnavailable": "მიკროფონი მიუწვდომელია, ამიტომ ეს სიტყვა მნიშვნელობის სავარჯიშოა.",
+    "readAloudExample": "მაგალითი",
+    "readAloudStartOver": "თავიდან დაწყება",
+    "readAloudStarting": "მიკროფონის მომზადება…",
+    "readAloudListening": "ვუსმენ…",
+    "readAloudTake": "მიღება {number}",
+    "videoWontPlayHere": "ეს ვიდეო აქ არ იმუშავებს.",
+    "watchOnYoutube": "უყურეთ YouTube-ზე",
+    "xpTowardMission": "{xp} XP ამ მისიისთვის",
+    "practiceStartWordCount": "{count, plural, =1{სავარჯიშო სიტყვა} other{სავარჯიშო სიტყვა}}",
+    "practiceStartGrammarCount": "{count, plural, =1{სავარჯიშო გრამატიკის საკითხი} other{სავარჯიშო გრამატიკის საკითხი}}",
+    "practiceStartExerciseTypes": "სავარჯიშოების ტიპები",
+    "analyticsSharedOnJoin": "თქვენი მასწავლებლები {course}-ში ახლა ხედავენ თქვენს სასწავლო პროგრესს.",
+    "sharedAnalyticsTitle": "გაზიარებული სასწავლო პროგრესი",
+    "sharedAnalyticsDesc": "ამ კურსების მასწავლებლებს შეუძლიათ ნახონ თქვენი სასწავლო პროგრესი. გაზიარების შესაჩერებლად დატოვეთ კურსი.",
+    "sharedAnalyticsNone": "თქვენ არ აზიარებთ თქვენს სასწავლო პროგრესს არცერთ კურსთან.",
+    "sharedAnalyticsOthersTitle": "სხვები, ვინც ხედავს თქვენს პროგრესს",
+    "removeAnalyticsAccess": "წვდომის წაშლა",
+    "removeAnalyticsAccessDesc": "{name} ვეღარ შეძლებს თქვენი სწავლის პროგრესის ნახვას.",
+    "suggestMobileSignInSameAccount": "შემდეგ შედით აპლიკაციაში ამ ანგარიშით.",
+    "botJoinsIn": "Pangea Bot შემოგიერთდებათ {duration}-ში",
+    "botIsJoining": "Pangea Bot გიერთდებათ…",
+    "playWithBotNowTitle": "ითამაშებთ Pangea Bot-თან ახლავე?",
+    "playWithBotNowMessage": "ჯერ არავინ შემოგვიერთდა. Pangea Bot-ს შეუძლია დაიკავოს თავისუფალი ადგილი ახლავე, ან შეგიძლიათ გააგრძელოთ ლოდინი.",
+    "keepWaiting": "გააგრძელეთ ლოდინი",
+    "botTookSeatAfterAnHour": "ეს სესია ერთი საათის განმავლობაში ღია იყო, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი.",
+    "botTookSeatAfterADay": "ეს სესია ერთ დღეზე მეტხანს იყო ღია, ამიტომ Pangea Bot-მა დაიკავა თავისუფალი ადგილი. გასააქტიურებლად გაგზავნეთ შეტყობინება.",
+    "subscriptionGracePeriodEndsOn": "გადახდა ვერ განხორციელდა. საშეღავათო პერიოდი სრულდება {date}-ზე",
+    "changeBaseLanguageTitle": "ძირითადი ენის შეცვლა?",
+    "changeBaseLanguageDesc": "აპლიკაციის მენიუები და ღილაკები შეიცვლება {language}-ზე.",
+    "accountSetupFailedHelp": "თქვენი ანგარიშის დაყენება ვერ დავასრულეთ. შეამოწმეთ კავშირი და სცადეთ ხელახლა, ან გამოდით სისტემიდან და მოგვიანებით შეხვიდეთ.",
+    "onboardingOfflineError": "თქვენ ხართ ხაზგარეშე. სცადეთ ხელახლა, როდესაც ონლაინ იქნებით.",
+    "activitySavedTo": "აქტივობა შენახულია: {page}"
 }

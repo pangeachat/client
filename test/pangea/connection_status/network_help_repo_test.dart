@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -9,6 +10,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
+import 'package:matrix/matrix.dart' show Client, LoginState;
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
@@ -16,7 +19,12 @@ import 'package:fluffychat/features/connection_status/network_help_repo.dart';
 import 'package:fluffychat/features/connection_status/network_help_request.dart';
 import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/network_type.dart';
+import 'package:fluffychat/features/languages/locale_provider.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import '../../utils/test_client.dart';
 import '../sentry_capture_harness.dart';
 
 /// #9434 — "Ask Pangea for help": a CMS form submission the team is emailed,
@@ -107,7 +115,7 @@ void main() {
     expect(signedOut.toFormSubmission()['name'], 'teacher@school.example');
   });
 
-  test('a device sends one request a day', () async {
+  test('an account sends one request a day', () async {
     await withCms(created, () => NetworkHelpRepo.submit(request));
     NetworkHelpRepo.resetForTest();
     await withCms(created, () => NetworkHelpRepo.submit(request));
@@ -141,6 +149,87 @@ void main() {
     },
   );
 
+  /// #9592 — the limit is per account: the next account on a shared device
+  /// gets the form, and never sees "Sent" for a request it did not make.
+  group('signing out', () {
+    late Client client;
+
+    setUpAll(() async => client = await prepareTestClient());
+
+    tearDownAll(() => client.dispose());
+
+    test('lets the next account send its own request', () async {
+      await withCms(created, () => NetworkHelpRepo.submit(request));
+      await NetworkHelpRepo.onSignOut();
+      expect(NetworkHelpRepo.status.value, NetworkHelpStatus.none);
+
+      await withCms(created, () => NetworkHelpRepo.submit(request));
+      expect(posts, hasLength(2));
+      expect(NetworkHelpRepo.status.value, NetworkHelpStatus.sent);
+    });
+
+    test('keeps a waiting request, which goes out on the next good '
+        'connection', () async {
+      await withCms(
+        (r) => throw http.ClientException('Failed to fetch', r.url),
+        () => NetworkHelpRepo.submit(request),
+      );
+      await NetworkHelpRepo.onSignOut();
+      expect(NetworkHelpRepo.status.value, NetworkHelpStatus.waiting);
+
+      await withCms(created, NetworkHelpRepo.flush);
+      expect(posts, hasLength(2));
+      expect(NetworkHelpRepo.status.value, NetworkHelpStatus.sent);
+    });
+
+    testWidgets('clears the mark when the app signs an account out', (
+      tester,
+    ) async {
+      // A cached language list, so the controller fetches none.
+      SharedPreferences.setMockInitialValues({
+        PrefKey.lastFetched: DateTime.now().toIso8601String(),
+        PrefKey.languagesKey: jsonEncode({
+          PrefKey.languagesKey: [
+            {
+              'language_code': 'es',
+              'language_name': 'Spanish',
+              'l2_support': 'full',
+            },
+          ],
+        }),
+      });
+      late BuildContext context;
+      await tester.pumpWidget(
+        ChangeNotifierProvider(
+          create: (_) => LocaleProvider(),
+          child: Builder(
+            builder: (c) {
+              context = c;
+              return const SizedBox();
+            },
+          ),
+        ),
+      );
+      final controller = PangeaController(
+        matrixState: _FakeMatrixState(client),
+      );
+
+      await tester.runAsync(() async {
+        await withCms(created, () => NetworkHelpRepo.submit(request));
+        expect(NetworkHelpRepo.status.value, NetworkHelpStatus.sent);
+        await controller.handleLoginStateChange(
+          LoginState.loggedOut,
+          null,
+          context,
+        );
+        // The sign-out does not wait for the mark to clear.
+        await Future<void>.delayed(Duration.zero);
+      });
+
+      expect(NetworkHelpRepo.status.value, NetworkHelpStatus.none);
+    });
+  });
+
   group('a request the CMS refuses', () {
     late SentryCaptureHarness harness;
 
@@ -165,4 +254,13 @@ void main() {
       expect(posts, hasLength(1));
     });
   });
+}
+
+class _FakeMatrixState extends MatrixState {
+  _FakeMatrixState(this._client);
+
+  final Client _client;
+
+  @override
+  Client get client => _client;
 }

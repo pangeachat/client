@@ -11,7 +11,7 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/features/join_codes/joined_target.dart';
 import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
@@ -43,13 +43,13 @@ class SpaceCodeController {
   static final Map<String, Future<Result<JoinResponse>>> _inFlightJoins = {};
 
   /// The one post-join hop, shared by every code entry point (the coded-link
-  /// page, the public course preview): run the analytics-consent step where
+  /// page, the public course preview): run the analytics-access step where
   /// the room is available locally, then open the course. When sync hasn't
   /// surfaced the room yet the join is STILL done (the join API call
   /// succeeded), so resolve the landing from the room's state over HTTP
   /// instead of silently stranding the user on the join page as a secret
-  /// member of the course (#7579); the consent notice, skipped there,
-  /// resurfaces through the course-settings listener.
+  /// member of the course (#7579); the analytics-access step, skipped there,
+  /// runs once the room lands (`_loadRoom`).
   static Future<void> navigateAfterJoin(
     BuildContext context,
     Client client,
@@ -60,16 +60,14 @@ class SpaceCodeController {
     goToJoinedTarget(context, target);
   }
 
-  /// The async half of the post-join hop: run the analytics-consent step where
+  /// The async half of the post-join hop: run the analytics-access step where
   /// the room is available locally, and resolve where to land
-  /// ([JoinedTargetRoomExtension.joinedTarget]).
-  /// Null means the learner declined consent — don't navigate. When sync
-  /// hasn't surfaced the room yet the join is STILL done (the join API call
-  /// succeeded, and its bounded sync-wait already ran out — see `_loadRoom`),
-  /// so resolve the landing from the room's state over HTTP instead of
-  /// silently stranding the user on the join page as a secret member of the
-  /// course (#7579); the consent notice, skipped there, resurfaces through
-  /// the course-settings listener.
+  /// ([JoinedTargetRoomExtension.joinedTarget]). When sync hasn't surfaced the
+  /// room yet the join is STILL done (the join API call succeeded, and its
+  /// bounded sync-wait already ran out — see `_loadRoom`), so resolve the
+  /// landing from the room's state over HTTP instead of silently stranding the
+  /// user on the join page as a secret member of the course (#7579); the
+  /// analytics-access step, skipped there, runs once the room lands.
   static Future<JoinedTarget?> resolveJoinedTarget(
     BuildContext context,
     Client client,
@@ -83,19 +81,7 @@ class SpaceCodeController {
       return client.resolveUnsyncedJoinedTarget(joinResp.roomId);
     }
 
-    // Recompute the notice from the room as it stands NOW: when the join-time
-    // sync-wait timed out, [joinResp.shouldShowNotice] is a false fallback,
-    // and running the handler with it would record consent that was never
-    // asked for. The room may have landed in the meantime.
-    final handler = JoinRoomAnalyticsConsentHandler(
-      JoinResponse(
-        roomId: joinResp.roomId,
-        shouldShowNotice: room.shouldShowAnalyticsAccessNotice,
-      ),
-      room,
-    );
-    final joinedRoomId = await handler.handle(context);
-    if (joinedRoomId == null) return null;
+    await JoinRoomAnalyticsAccessHandler(joinResp, room).handle(context);
     return room.joinedTarget;
   }
 
@@ -297,10 +283,7 @@ class SpaceCodeController {
       for (final roomId in alreadyJoined) {
         final room = client.getRoomById(roomId);
         if (room?.membership == Membership.join) {
-          return JoinResponse(
-            roomId: roomId,
-            shouldShowNotice: room!.shouldShowAnalyticsAccessNotice,
-          );
+          return JoinResponse(roomId: roomId);
         } else if (room != null) {
           roomIdToJoin = roomId;
         }

@@ -54,8 +54,9 @@ class TutorialCopy {
   /// **with that language's own punctuation**: the Spanish inverted opening
   /// mark, the French space before the exclamation, the Japanese fullwidth one.
   /// A new key would have read as English for every learner until 116 locales
-  /// were translated. It is shared copy, so the ARB carries a note not to turn
-  /// it into a course-specific sentence.
+  /// were translated, and a runtime machine translation would pay an AI call
+  /// per learner to produce a constant no translator could review. See
+  /// tutorials.instructions.md § Decisions.
   ///
   /// Falls back to the app language — no bubble — when there is no target
   /// language, when the locale has no translation, or when tokenization fails.

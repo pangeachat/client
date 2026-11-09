@@ -14,7 +14,10 @@ import 'package:fluffychat/pangea/common/widgets/embed_pointer_shield.dart';
 /// the click (#9063). Shielded, the surface behaves like the rest of the page;
 /// engaged, the embed's own controls — scrub, volume, captions — work as they
 /// always did. The click that engages is absorbed by the shield, so [onEngage]
-/// spends it on play/pause, which is what clicking a video does anyway.
+/// spends it on play/pause, which is what clicking a video does anyway. The
+/// cost is that YouTube's hover bar needs that one click first. Moving the
+/// pointer off re-arms the shield; a touch screen has no pointer to move away,
+/// so after the first tap the embed keeps touches.
 ///
 /// Off web Flutter owns every pixel and the embed is engaged from the start.
 class EmbedClickToEngage extends StatefulWidget {

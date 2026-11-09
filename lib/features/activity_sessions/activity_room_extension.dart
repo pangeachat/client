@@ -49,6 +49,26 @@ extension ActivityRoomExtension on Room {
     }
   }
 
+  /// This session's reference plan is on its way: not in hand, and its read
+  /// queued or in flight ([ActivityPlanRepo.isHydrating]). False once it
+  /// lands, and once its read ends without it (failed, or the activity was
+  /// removed), so nothing waiting on it waits for good. A legacy room's plan
+  /// is in its state, so it is never loading.
+  bool get activityPlanLoading {
+    final content = getState(PangeaEventTypes.activityPlan)?.content;
+    if (content == null ||
+        content[ActivitySessionConstants.activityPlanRequest] != null ||
+        activityPlan != null) {
+      return false;
+    }
+    final referenceId = _referencePlanActivityId(content);
+    return referenceId != null &&
+        ActivityPlanRepo.instance.isHydrating(
+          referenceId,
+          version: content[ActivitySessionConstants.versionId] as String?,
+        );
+  }
+
   /// The content-signature this session pinned at creation (from the
   /// `pangea.activity_plan` state event), or null for a legacy/embedded room.
   String? get pinnedActivityVersionId =>
@@ -113,7 +133,8 @@ extension ActivityRoomExtension on Room {
   /// launched from the world map.
   ///
   /// Launching also shares the session into every other eligible joined course
-  /// as an `m.space.child` (see `activities.instructions.md`), so a
+  /// as an `m.space.child` (activities.instructions.md, "A running activity
+  /// is a chat room"), so a
   /// world-launched session collects course parents it was never "in" and
   /// [courseParent] picks an arbitrary one of them. Anything that acts ON the
   /// course — pinging its roster, offering it on the invite page — keys off this

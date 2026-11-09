@@ -12,6 +12,7 @@ enum ToolSetting {
   audioWords,
   audioChoices,
   listenFirst,
+  hearItFirst,
   audioOnNewMessage,
   audioOnMessageClick,
   enableAutocorrect;
@@ -34,6 +35,8 @@ enum ToolSetting {
         return L10n.of(context).audioChoicesToolName;
       case ToolSetting.listenFirst:
         return L10n.of(context).listenFirst;
+      case ToolSetting.hearItFirst:
+        return L10n.of(context).hearItFirstToolName;
       case ToolSetting.audioOnNewMessage:
         return L10n.of(context).audioOnNewMessageToolName;
       case ToolSetting.audioOnMessageClick:
@@ -62,6 +65,8 @@ enum ToolSetting {
         return L10n.of(context).audioChoicesDescription;
       case ToolSetting.listenFirst:
         return L10n.of(context).listenFirstDescription;
+      case ToolSetting.hearItFirst:
+        return L10n.of(context).hearItFirstDescription;
       case ToolSetting.audioOnNewMessage:
         return L10n.of(context).audioOnNewMessageDescription;
       case ToolSetting.audioOnMessageClick:
@@ -83,6 +88,7 @@ enum ToolSetting {
       case ToolSetting.audioWords:
       case ToolSetting.audioChoices:
       case ToolSetting.listenFirst:
+      case ToolSetting.hearItFirst:
       case ToolSetting.audioOnNewMessage:
       case ToolSetting.audioOnMessageClick:
         return true;
@@ -94,6 +100,7 @@ enum ToolSetting {
       case ToolSetting.audioWords:
       case ToolSetting.audioChoices:
       case ToolSetting.listenFirst:
+      case ToolSetting.hearItFirst:
       case ToolSetting.audioOnNewMessage:
       case ToolSetting.audioOnMessageClick:
         return true;

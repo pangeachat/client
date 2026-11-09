@@ -71,6 +71,11 @@ extension InvitationFiltersRoomExtension on Room {
   /// redundant there (#8097). Other rooms keep it; it is where the "N
   /// participants" button on the chat details page lands.
   bool get showInvitationParticipantsFilter => !isActivitySession;
+
+  /// Whether the invite page offers inviting all of [invitationCourseSpace].
+  /// Not in an activity session: it seats a few, and the rest would hold
+  /// invites to a session they can only watch (#9645).
+  bool get showInvitationInviteAll => !isActivitySession;
 }
 
 class PangeaInvitationSelection extends StatefulWidget {
@@ -203,7 +208,8 @@ class PangeaInvitationSelectionController
     final roomParticipants = participants;
     if (roomParticipants == null ||
         filter != InvitationFilter.space ||
-        spaceParent == null) {
+        spaceParent == null ||
+        _room?.showInvitationInviteAll != true) {
       return false;
     }
 

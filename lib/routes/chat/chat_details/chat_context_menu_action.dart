@@ -48,14 +48,20 @@ extension on ChatContextAction {
       case ChatContextAction.details:
         return source == ChatMenuSource.chatHeader;
       case ChatContextAction.invite:
-        // A session that has ended for everyone can no longer be joined.
+        // A session that has ended for everyone can no longer be joined. The
+        // gate is the session ending for all, not the learner's own role
+        // archiving, which comes only after the auto-save: an observer who
+        // never took a role is still looking at a session that has ended.
         return source == ChatMenuSource.chatHeader &&
             room.isActivitySession &&
             !room.isActivityFinished;
       case ChatContextAction.download:
-        // Any member may export a transcript. Web/desktop only for now — the
-        // native mobile download path is unvalidated. A regular chat exports
-        // from its details button row instead.
+        // Any member may export a transcript: it surfaces only what they can
+        // already read in the chat, so it is not gated behind power level.
+        // Web only for now, which leaves the native desktop apps out too —
+        // the native download path (storage permission, Downloads dir) has
+        // never shipped and is unvalidated. A regular chat exports from its
+        // details button row instead.
         return source == ChatMenuSource.chatHeader &&
             room.isActivitySession &&
             kIsWeb;

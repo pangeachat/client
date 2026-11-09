@@ -5,7 +5,7 @@ description: Learn a language while texting your friends.
 # Pangea#
 publish_to: none
 # On version bump also increase the build number for F-Droid
-version: 5.0.17+1
+version: 5.0.20+1
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -69,7 +69,12 @@ dependencies:
       # Pinned deliberately. The MatrixRTC/LiveKit call work depends on SDK VoIP
       # internals (LiveKitBackend, GroupCallSession, WebRTCDelegate); without a ref
       # this resolves to HEAD and can change under us on any `pub upgrade`.
-      ref: bc206b23b5d9d42e4a57d6339bb140bd791e0632
+      # Advance the ref only for a named, merged fix -- never as routine
+      # dependency hygiene or to pick up the fork's HEAD -- and do not restore
+      # the commented-out semver range above: that reopens the drift this pin
+      # prevents. test/pangea/calls/sdk_voip_surface_test.dart locks the SDK
+      # surface the calls depend on.
+      ref: 63cd20c0c8527769991dec52fe4032031c31e392
   # Pangea#
   mime: ^2.0.0
   opus_caf_converter_dart: ^1.0.1

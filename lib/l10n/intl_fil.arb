@@ -520,7 +520,7 @@
             }
         }
     },
-    "createGroup": "Gumawa ng grupo",
+    "createGroup": "Gumawa ng chat",
     "@createGroup": {},
     "currentlyActive": "Kasalukuyang aktibo",
     "@currentlyActive": {
@@ -1220,7 +1220,7 @@
     "noUsersFoundWithQuery": "Sa kasamaang palad, walang user na mahanap gamit ang \"{query}\". Mangyaring suriin kung nagkamali ka sa pag-type.",
     "knocking": "Nagtatanong",
     "nothingFound": "Walang nahanap...",
-    "groupName": "Pangalan ng grupo",
+    "groupName": "Pangalan ng chat",
     "wrongRecoveryKey": "Paumanhin... mukhang hindi ito ang tamang recovery key.",
     "startConversation": "Simulan ang pag-uusap",
     "commandHint_sendraw": "Magpadala ng raw json",
@@ -1994,13 +1994,11 @@
     "editCourseLater": "Maaari mong i-edit ang pamagat ng template, mga paglalarawan, at larawan ng kurso sa ibang pagkakataon.",
     "createCourse": "Lumikha ng kurso",
     "stats": "Mga Estadistika",
-    "createGroupChat": "Lumikha ng pangkat na usapan",
     "editCourse": "I-edit ang kurso",
     "inviteDesc": "Sa pamamagitan ng username, code, o link",
     "editCourseDesc": "Dito maaari mong i-edit ang pamagat ng kurso, paglalarawan, atbp.",
     "permissionsDesc": "Itakda ang mga pahintulot tulad ng kung sino ang maaaring mag-imbita ng mga user, magpadala ng mga mensahe, lumikha ng mga usapan, atbp.",
     "accessDesc": "Maaari mong gawing bukas ang iyong kurso sa buong mundo! O, gawing pribado at ligtas ang iyong kurso.",
-    "createGroupChatDesc": "Kung saan nagsisimula at nagtatapos ang mga sesyon ng aktibidad, mananatiling bukas ang mga pangkat na usapan para sa pang-araw-araw na komunikasyon.",
     "deleteDesc": "Tanging mga admin lamang ang maaaring magtanggal ng kurso. Ito ay isang mapanirang aksyon na nag-aalis ng lahat ng mga user at nagtatanggal ng lahat ng napiling usapan sa loob ng kurso. Mag-ingat sa pagproseso.",
     "whatNow": "Ano na ngayon?",
     "chooseNextActivity": "Piliin ang iyong susunod na aktibidad!",
@@ -2073,7 +2071,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-22 09:50:10.847143",
+    "@@last_modified": "2026-11-06 13:10:59.335185",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6765,10 +6763,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6786,10 +6780,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10694,10 +10684,6 @@
     "contentCreatedBy": "Ginawa ni",
     "coursePreview": "Preview ng kurso",
     "numActivities": "{count, plural, =1{1 aktibidad} other{{count} aktibidad}}",
-    "teacherAnalyticsRequestTitle": "Hinihingi ng guro ang iyong pag-usad sa pag-aaral",
-    "teacherAnalyticsRequestDesc": "Makikita nila ang lahat ng salita at grammar na ginamit mo sa {targetLang}, ang iyong level at XP, at ang mga mensaheng ipinadala sa mga aktibidad ng kurso. Hindi ibabahagi ang iyong mga 1-on-1 na mensahe. Kinakailangan ang pagbabahagi ng analytics para makasali sa kurso.",
-    "shareAndJoin": "Ibahagi at sumali",
-    "goBack": "Bumalik",
     "emptyGroupsSearch": "Walang nakitang grupo. Siguraduhin na tama ang baybay ng iyong hinahanap.",
     "emptyActivitiesSearch": "Walang nakitang aktibidad. Siguraduhin na tama ang baybay ng iyong hinahanap.",
     "chatListFiltersLabel": "Mga filter ng chat",
@@ -10876,5 +10862,51 @@
     "otherCoursesSessions": "Iba pang kurso ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP nakuha",
-    "currentMission": "Kasalukuyang misyon"
+    "currentMission": "Kasalukuyang misyon",
+    "constructUseCorRADesc": "Binasa nang malakas at narinig",
+    "constructUseIncRADesc": "Binasa nang malakas, hindi narinig",
+    "hearItFirstToolName": "Pakinggan muna",
+    "hearItFirstDescription": "Sa pagsasanay sa pagbasa nang malakas, i-play ang pangungusap bago ka mag-record.",
+    "readAloudInstruction": "I-tap ang mic at basahin nang malakas ang pangungusap",
+    "readAloudRecord": "I-record",
+    "readAloudMicLabel": "{count, plural, =1{I-record, 1 salita ang hindi pa naririnig} other{I-record, {count} salita ang hindi pa naririnig}}",
+    "readAloudStop": "Ihinto ang pagre-record",
+    "readAloudHeardAll": "Narinig ang bawat salita!",
+    "readAloudNotHeard": "{count, plural, =1{1 salita ang hindi narinig} other{{count} salita ang hindi narinig}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 subok na lang} other{{count} subok na lang}}",
+    "readAloudHeardTranscript": "Narinig: {transcript}",
+    "readAloudTranscribeFailed": "Hindi ma-transcribe ang iyong recording. Tingnan ang iyong koneksyon at subukang muli.",
+    "readAloudMicUnavailable": "Walang available na mikropono, kaya ang salitang ito ay isang pagsasanay sa kahulugan sa halip.",
+    "readAloudExample": "Halimbawa",
+    "readAloudStartOver": "Magsimula muli",
+    "readAloudStarting": "Inihahanda ang mikropono…",
+    "readAloudListening": "Nakikinig…",
+    "readAloudTake": "Kumuha ng {number}",
+    "videoWontPlayHere": "Hindi puwedeng i-play ang video na ito dito.",
+    "watchOnYoutube": "Panoorin sa YouTube",
+    "xpTowardMission": "{xp} XP para sa Misyon na ito",
+    "practiceStartWordCount": "{count, plural, =1{salita na isasanay} other{mga salita na isasanay}}",
+    "practiceStartGrammarCount": "{count, plural, =1{grammar point na isasanay} other{mga grammar point na isasanay}}",
+    "practiceStartExerciseTypes": "Mga uri ng ehersisyo",
+    "analyticsSharedOnJoin": "Makikita na ng iyong mga guro sa {course} ang iyong pag-unlad sa pag-aaral.",
+    "sharedAnalyticsTitle": "Naibahaging pag-unlad sa pag-aaral",
+    "sharedAnalyticsDesc": "Makikita ng mga guro sa mga kursong ito ang iyong pag-unlad sa pag-aaral. Umalis sa isang kurso para ihinto ang pagbabahagi.",
+    "sharedAnalyticsNone": "Hindi mo ibinabahagi ang iyong pag-unlad sa pag-aaral sa anumang kurso.",
+    "sharedAnalyticsOthersTitle": "Iba pa na makakakita ng iyong progreso",
+    "removeAnalyticsAccess": "Alisin ang access",
+    "removeAnalyticsAccessDesc": "Hindi na makikita ni {name} ang iyong progreso sa pag-aaral.",
+    "suggestMobileSignInSameAccount": "Pagkatapos, mag-sign in sa app gamit ang account na ito.",
+    "botJoinsIn": "Sasali si Pangea Bot sa loob ng {duration}",
+    "botIsJoining": "Sumasali si Pangea Bot…",
+    "playWithBotNowTitle": "Makipaglaro kay Pangea Bot ngayon?",
+    "playWithBotNowMessage": "Wala pang sumasali. Puwedeng umupo si Pangea Bot sa bakanteng upuan ngayon, o puwede kang maghintay pa.",
+    "keepWaiting": "Maghintay pa",
+    "botTookSeatAfterAnHour": "Isang oras nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan.",
+    "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula.",
+    "subscriptionGracePeriodEndsOn": "Nabigo ang pagbabayad. Matatapos ang grace period sa {date}",
+    "changeBaseLanguageTitle": "Palitan ang base language?",
+    "changeBaseLanguageDesc": "Ang mga menu at button ng app ay lilipat sa {language}.",
+    "accountSetupFailedHelp": "Hindi namin matapos ang pag-set up ng iyong account. Suriin ang iyong koneksyon at subukang muli, o mag-log out at mag-sign in mamaya.",
+    "onboardingOfflineError": "Offline ka. Subukang muli kapag online ka na.",
+    "activitySavedTo": "Na-save ang aktibidad sa {page}"
 }

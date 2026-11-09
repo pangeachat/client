@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
@@ -18,7 +19,9 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/objective_token.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
@@ -55,9 +58,14 @@ class CourseMissions {
     for (final room in client.joinedCourseRooms) {
       final questId = room.coursePlan?.uuid;
       if (questId == null) continue;
+      // Read as the course page reads it, with the course's own copy: a
+      // Can-Do a teacher added is only listed when asked for.
+      final rules = room.courseListRules;
       final outline = (await QuestRepo.outline(
         questId,
         courseRoomId: room.id,
+        courseLoIds: rules.missions?.allLoIds ?? const {},
+        copyRevision: rules.revision,
       )).result;
       // silent-ok: a course whose outline fails is reported where it loads
       // (reportCourseOutlineFailure, once per room per session); this page
@@ -66,20 +74,62 @@ class CourseMissions {
       courses.add(
         CourseMissions(
           room: room,
-          groups: objectiveGroupsWithActivities(outline.forCourse(room).groups),
+          groups: objectiveGroupsWithActivities(outline.forRules(rules).groups),
         ),
       );
     }
     return courses;
   }
+
+  /// [courses] as the page lists them: only those in the learner's current
+  /// language, since XP is kept per language and another language's Missions
+  /// have nothing to show (#9559), and each Mission once, from the first
+  /// course that carries it.
+  static List<CourseMissions> listed(List<CourseMissions> courses) {
+    final seen = <String>{};
+    return [
+      for (final course in courses)
+        if (CourseLanguageScope.courseInTargetLanguage(course.room))
+          CourseMissions(
+            room: course.room,
+            groups: [
+              for (final group in course.groups)
+                if (seen.add(group.objective.id)) group,
+            ],
+          ),
+    ];
+  }
+
+  /// The Mission page that lists a saved session of [activityId]: the first
+  /// of the [listed] Missions whose activities include it, or the copy of it
+  /// the course shows. Null when the page lists the session under "Other
+  /// activities" instead.
+  static ObjectiveTokenParam? missionPageFor(
+    List<CourseMissions> listed,
+    String? activityId,
+  ) {
+    if (activityId == null) return null;
+    for (final course in listed) {
+      for (final group in course.groups) {
+        final shown = group.credit.canonicalOf(activityId);
+        if (group.activities.any((a) => a.activityId == shown)) {
+          return ObjectiveTokenParam(
+            missionId: group.objective.id,
+            courseId: course.room.id,
+          );
+        }
+      }
+    }
+    return null;
+  }
 }
 
 /// The Learning Objectives page (#9436, formerly Stars): the learner's
-/// Missions across their joined courses, each a tile with its XP ring and a
-/// Practice button that opens its detail page. Sessions outside
-/// every joined course's plan close the list under "Other activities", so a
-/// learner in no course still sees their record. Design:
-/// activities.instructions.md, "The Learning Objectives list".
+/// Missions across their joined courses, each a tile with its XP ring that
+/// opens its detail page. Sessions outside every joined course's plan close
+/// the list under "Other activities", so a learner in no course still sees
+/// their record. Design:
+/// activities.instructions.md, "The Learning Objectives page".
 class ActivityArchive extends StatefulWidget {
   final Widget closeButton;
   const ActivityArchive({super.key, required this.closeButton});
@@ -107,9 +157,9 @@ class _ActivityArchiveState extends State<ActivityArchive> {
         final client = Matrix.of(context).client;
         final Room? analyticsRoom = client.ownAnalyticsRoomLocalByL2;
         final archive = analyticsRoom?.archivedActivities ?? [];
-        final selectedRoomId = GoRouterState.of(
-          context,
-        ).pathParameters['roomid'];
+        // The session open in a chat beside the list, as its end card's
+        // saved line leaves it.
+        final selectedRoomId = activeRoomIdFor(GoRouterState.of(context));
         final hasCourses = client.joinedCourseRooms.isNotEmpty;
         return Scaffold(
           appBar: AppBar(
@@ -180,12 +230,14 @@ class _ActivityArchiveState extends State<ActivityArchive> {
 }
 
 /// The page's list: one item per can-do across the learner's joined courses
-/// in their current language,
-/// in course order — a Mission two courses share is one item, read from the
-/// first — each collapsed to its statement and XP with the saved sessions that
-/// fed it behind a tap; then the sessions no joined course's plan accounts
-/// for, under "Other activities".
-class _ObjectiveList extends StatelessWidget {
+/// in their current language, in course order — a Mission two courses share
+/// is one item, read from the first — each a [MissionTile] whose tap opens
+/// the Mission's page with the sessions that fed it; then the sessions no
+/// joined course's plan accounts for, under "Other activities". A Mission's
+/// session from a second course or another language lands there too today (an
+/// open question in activities.instructions.md). The open session's row is
+/// brought into view, so a learner arriving from its end card sees it.
+class _ObjectiveList extends StatefulWidget {
   final List<CourseMissions> courses;
   final ProgressionResolution progression;
   final List<Room> archive;
@@ -199,33 +251,50 @@ class _ObjectiveList extends StatelessWidget {
   });
 
   @override
+  State<_ObjectiveList> createState() => _ObjectiveListState();
+}
+
+class _ObjectiveListState extends State<_ObjectiveList> {
+  final AutoScrollController _scroll = AutoScrollController();
+
+  /// The row last scrolled to. Scrolling again only when it moves (the
+  /// Missions above it landing) leaves a learner's own scrolling alone.
+  int? _revealedIndex;
+
+  @override
+  void dispose() {
+    _scroll.dispose();
+    super.dispose();
+  }
+
+  void _reveal(int? index) {
+    if (index == null || index == _revealedIndex) return;
+    _revealedIndex = index;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _scroll.scrollToIndex(index, preferPosition: AutoScrollPosition.middle);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final courses = widget.courses;
+    final progression = widget.progression;
+    final archive = widget.archive;
+    final selectedRoomId = widget.selectedRoomId;
     final l10n = L10n.of(context);
     final selectedMissionId = activeObjectiveDetailFor(
       GoRouterState.of(context).uri,
     );
     final client = Matrix.of(context).client;
     final xpByActivity = client.cachedXpBreakdownByActivity;
-    final placed = <String>{};
-    final seen = <String>{};
+    // Re-read on every resolution, which a language switch triggers.
+    final listed = CourseMissions.listed(courses);
     final children = <Widget>[];
-    for (final course in courses) {
-      // Only courses in the learner's current language: their XP is kept
-      // per language, so another language's Missions have nothing to show
-      // here (#9559). Re-read on every resolution, which a language switch
-      // triggers.
-      if (!CourseLanguageScope.courseInTargetLanguage(course.room)) continue;
+    for (final course in listed) {
       final quest = progression.forCourse(course.room.id);
       for (final group in course.groups) {
         final missionId = group.objective.id;
-        if (!seen.add(missionId)) continue;
-        // A session whose activity serves a Mission is that Mission's, not
-        // one of the "other activities" below.
-        final ids = {for (final a in group.activities) a.activityId};
-        placed.addAll([
-          for (final room in archive)
-            if (ids.contains(room.activityId)) room.id,
-        ]);
         children.add(
           MissionTile(
             group: group,
@@ -240,22 +309,34 @@ class _ObjectiveList extends StatelessWidget {
         );
       }
     }
+    // A session whose activity serves a Mission is that Mission's, not one of
+    // the "other activities" below.
     final other = [
       for (final room in archive)
-        if (!placed.contains(room.id)) room,
+        if (CourseMissions.missionPageFor(listed, room.activityId) == null)
+          room,
     ];
+    int? selectedIndex;
     if (other.isNotEmpty) {
       if (children.isNotEmpty) children.add(_Heading(l10n.otherActivities));
-      children.addAll(
-        other.map(
-          (room) => AnalyticsActivityItem(
-            room: room,
-            rovingId: room.id,
-            selected: room.id == selectedRoomId,
+      for (final room in other) {
+        final selected = room.id == selectedRoomId;
+        if (selected) selectedIndex = children.length;
+        children.add(
+          AutoScrollTag(
+            key: ValueKey(room.id),
+            controller: _scroll,
+            index: children.length,
+            child: AnalyticsActivityItem(
+              room: room,
+              rovingId: room.id,
+              selected: selected,
+            ),
           ),
-        ),
-      );
+        );
+      }
     }
+    _reveal(selectedIndex);
     return Semantics(
       label: l10n.starListLabel,
       container: true,
@@ -266,6 +347,7 @@ class _ObjectiveList extends StatelessWidget {
         selectedId: selectedRoomId,
         child: ListView(
           key: const PageStorageKey<String>('activity-archive'),
+          controller: _scroll,
           physics: const ClampingScrollPhysics(),
           children: children,
         ),
@@ -309,11 +391,13 @@ class AnalyticsActivityItem extends StatelessWidget {
         : RovingFocusGroup.nodeOf(context, rovingId);
 
     final activity = room.activityPlan;
-    // A v3 session's plan is hydrated from CMS, so it can be null (still
-    // loading, or gone from the backend) and can land with an empty title. The
-    // room was named after the activity at creation, so fall back to the room
-    // name rather than a blank row (#9033) — the same rung the start page's
-    // archived session lands on (activities.instructions.md).
+    // A v3 session's plan is hydrated through ActivityPlanRepo, so it can be
+    // null (still loading, or gone from the backend) and can land with an
+    // empty title. The room was named after the activity at creation, so fall
+    // back to the room name rather than a blank row (#9033) — the same rung
+    // the start page's archived session lands on
+    // (activity-start-page.instructions.md, "When the activity can't be
+    // fetched").
     final planTitle = activity?.title ?? '';
     final title = planTitle.isNotEmpty
         ? planTitle
@@ -328,21 +412,29 @@ class AnalyticsActivityItem extends StatelessWidget {
 
     // The level and the stats come and go together: a session with no
     // generated summary keeps its title and stars and shows neither, rather
-    // than a half-filled row (activities.instructions.md, "The Stars list").
+    // than a half-filled row (activities.instructions.md, "The Learning
+    // Objectives page").
     final analytics = room.activitySummaryAnalytics;
     final stats = summary == null || analytics == null || userId == null
         ? null
-        : _ActivitySessionStats(
-            xp: analytics.xpForUser(userId),
-            vocab: analytics.uniqueConstructCountForUser(
-              userId,
-              ConstructTypeEnum.vocab,
+        // The XP is re-read as it lands, as the goal header's is.
+        : ListenableBuilder(
+            listenable: MissionXpCache.instance,
+            builder: (context, _) => _ActivitySessionStats(
+              xp: room.client.sessionXp(
+                room,
+                MissionXpCache.instance.creditedXpByRoom,
+              ),
+              vocab: analytics.uniqueConstructCountForUser(
+                userId,
+                ConstructTypeEnum.vocab,
+              ),
+              grammar: analytics.uniqueConstructCountForUser(
+                userId,
+                ConstructTypeEnum.morph,
+              ),
+              onSelectedFill: selected,
             ),
-            grammar: analytics.uniqueConstructCountForUser(
-              userId,
-              ConstructTypeEnum.morph,
-            ),
-            onSelectedFill: selected,
           );
 
     final theme = Theme.of(context);
@@ -426,10 +518,14 @@ class AnalyticsActivityItem extends StatelessWidget {
   }
 }
 
-/// The learner's own numbers from a saved session: the XP they earned, and how
-/// many distinct vocabulary and grammar items they used. All three come from
-/// the summary saved with the session, so the row can never disagree with the
-/// end-of-activity card (activities.instructions.md, "The Stars list").
+/// The learner's own numbers from a saved session: the XP it paid them, the
+/// session XP its end card shows (#9696), and how many distinct vocabulary
+/// and grammar items they used, from the summary saved with the session. So
+/// the row never disagrees with the end-of-activity card
+/// (activities.instructions.md, "The Learning Objectives page"). The counts
+/// are of items used, not items new to the learner: the saved summary does
+/// not record which were new, and the row never shows a number the summary
+/// cannot back.
 class _ActivitySessionStats extends StatelessWidget {
   final int xp;
   final int vocab;
@@ -480,7 +576,9 @@ class _ActivitySessionStats extends StatelessWidget {
 }
 
 /// One count on the stats line: the analytics bar's icon for that kind of
-/// item, the number, and the spoken [label] the number alone can't carry.
+/// item, the number, and the spoken [label] the number alone can't carry. A
+/// count of zero still shows as zero rather than dropping the stat, so the
+/// rows stay aligned down the list.
 class _ActivitySessionStat extends StatelessWidget {
   final IconData icon;
   final int count;

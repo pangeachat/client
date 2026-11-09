@@ -453,7 +453,8 @@ void main() {
     });
 
     test('a change to ONLY pangea_chosen notifies listeners', () {
-      // The guard against doc:209: the claim is inside the change-detection
+      // The guard against a claim landing unnoticed
+      // (CallRoster.chosenAttribute): the claim is inside the change-detection
       // tuple, so a sibling flipping its ownership claim wakes the arbiter. If
       // the field were left out of CallParticipant.state, this claim would land
       // in silence and a prompt would sit stale.

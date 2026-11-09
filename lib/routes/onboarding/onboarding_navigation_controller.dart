@@ -14,11 +14,18 @@ import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_p
 class OnboardingNavigationController {
   late OnboardingStep _currentStep;
 
-  OnboardingNavigationController({required OnboardingStep initialStep}) {
+  /// [previousSteps] are the pages behind Back when onboarding opens part-way,
+  /// as a resumed run does.
+  OnboardingNavigationController({
+    required OnboardingStep initialStep,
+    List<OnboardingStep> previousSteps = const [],
+  }) {
     _currentStep = initialStep;
+    _prevSteps.addAll(previousSteps);
+    _currentStepIndex = previousSteps.length + 1;
   }
 
-  int _currentStepIndex = 1;
+  late int _currentStepIndex;
 
   int get currentStepIndex => _currentStepIndex;
 

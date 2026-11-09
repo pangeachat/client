@@ -15,6 +15,7 @@ import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
+import 'tutorials/fake_tutorial_progress.dart';
 
 // Sequences used across tests.
 // readingAssistance: 1 step  |  selectModeButtons: 4 steps  |  writingAssistance: 1 step
@@ -37,33 +38,6 @@ TutorialModel _model(TutorialEnum type) => TutorialModel(
 TutorialModel _readingModel() => _model(TutorialEnum.readingAssistance);
 
 TutorialModel _selectModel() => _model(TutorialEnum.selectModeButtons);
-
-/// Stands in for the learner's profile: every tutorial unseen unless named in
-/// [seen], resuming at whatever [resumeSteps] says.
-class _FakeProgress extends TutorialProgressSource {
-  final Set<TutorialEnum> seen;
-  final Map<TutorialEnum, int> resumeSteps;
-
-  /// Records what the controller persisted, when observing writes matters.
-  /// A tutorial saved at its step count was marked seen.
-  final Map<TutorialEnum, int>? progressLog;
-
-  const _FakeProgress({
-    this.seen = const {},
-    this.resumeSteps = const {},
-    this.progressLog,
-  });
-
-  @override
-  bool isEnabled(TutorialEnum tutorial) => !seen.contains(tutorial);
-
-  @override
-  int resumeStep(TutorialEnum tutorial) => resumeSteps[tutorial] ?? 0;
-
-  @override
-  void saveProgress(TutorialEnum tutorial, int stepIndex) =>
-      progressLog?[tutorial] = stepIndex;
-}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -458,6 +432,76 @@ void main() {
   });
 
   // ===========================================================================
+  // The catalog as the design lays it out: which tutorials teach the app, how
+  // long each run is, and how the greeting comes once ever. See
+  // tutorials.instructions.md § The experience.
+  // ===========================================================================
+  group('the catalog', () {
+    test('the chat tools are the only feature tutorials — everything else '
+        'teaches the app', () {
+      expect(
+        TutorialEnum.values.where((t) => !t.isOrientation).toSet(),
+        TutorialSequences.chatTutorialSequence.toSet(),
+      );
+    });
+
+    test('each orientation tutorial runs the length the design names — the '
+        'tour reads 1/6 through 6/6 because its offer counts', () {
+      expect(
+        {
+          for (final t in TutorialEnum.values.where((t) => t.isOrientation))
+            t: t.stepCount,
+        },
+        {
+          TutorialEnum.welcome: 1,
+          TutorialEnum.worldMap: 2,
+          TutorialEnum.coursePlan: 1,
+          TutorialEnum.appTour: 6,
+          TutorialEnum.openSessions: 1,
+          TutorialEnum.activityRoles: 1,
+        },
+      );
+    });
+
+    test('the tour opens on its offer, the only branch step, with a way in '
+        'and a way out', () {
+      final offer = TutorialEnum.appTour.stepTemplates.first;
+      expect(offer.choices.map((c) => c.outcome).toSet(), {
+        TutorialChoiceOutcome.advance,
+        TutorialChoiceOutcome.decline,
+      });
+      for (final tutorial in TutorialEnum.values) {
+        for (var i = 0; i < tutorial.stepCount; i++) {
+          if (tutorial == TutorialEnum.appTour && i == 0) continue;
+          expect(
+            tutorial.stepTemplates[i].choices,
+            isEmpty,
+            reason: '$tutorial step $i',
+          );
+        }
+      }
+    });
+
+    test('both orientation sequences open with the greeting, so a learner '
+        'who has seen it starts straight at the second surface', () {
+      expect(
+        TutorialSequences.worldOrientationSequence.first,
+        TutorialEnum.welcome,
+      );
+      expect(
+        TutorialSequences.courseOrientationSequence.first,
+        TutorialEnum.welcome,
+      );
+      final c = TutorialOverlayController(
+        progress: const FakeTutorialProgress(seen: {TutorialEnum.welcome}),
+      );
+      c.requestSequence(TutorialSequences.courseOrientationSequence);
+      expect(c.state.tutorialType, TutorialEnum.coursePlan);
+      expect(c.state.totalStepsInSequence, TutorialEnum.coursePlan.stepCount);
+    });
+  });
+
+  // ===========================================================================
   // App-scoped controller: one sequence at a time, the rest queued
   // ===========================================================================
   group('TutorialOverlayController — sequences', () {
@@ -468,7 +512,9 @@ void main() {
     const other = [TutorialEnum.writingAssistance];
 
     test('no sequence active before one is requested', () {
-      final c = TutorialOverlayController(progress: const _FakeProgress());
+      final c = TutorialOverlayController(
+        progress: const FakeTutorialProgress(),
+      );
       expect(c.hasActiveSequence, false);
       expect(c.state.tutorialType, isNull);
       // Reads safely with nothing running rather than needing a null check.
@@ -477,7 +523,9 @@ void main() {
     });
 
     test('requesting a sequence arms its first enabled tutorial', () {
-      final c = TutorialOverlayController(progress: const _FakeProgress());
+      final c = TutorialOverlayController(
+        progress: const FakeTutorialProgress(),
+      );
       expect(c.requestSequence(chat), true);
       expect(c.hasActiveSequence, true);
       expect(c.state.tutorialType, TutorialEnum.readingAssistance);
@@ -485,7 +533,9 @@ void main() {
 
     test('already-seen tutorials are left out of the counter', () {
       final c = TutorialOverlayController(
-        progress: const _FakeProgress(seen: {TutorialEnum.readingAssistance}),
+        progress: const FakeTutorialProgress(
+          seen: {TutorialEnum.readingAssistance},
+        ),
       );
       c.requestSequence(chat);
       expect(c.state.tutorialType, TutorialEnum.selectModeButtons);
@@ -497,7 +547,7 @@ void main() {
 
     test('a fully-seen sequence does not start', () {
       final c = TutorialOverlayController(
-        progress: const _FakeProgress(
+        progress: const FakeTutorialProgress(
           seen: {
             TutorialEnum.readingAssistance,
             TutorialEnum.selectModeButtons,
@@ -510,7 +560,7 @@ void main() {
 
     test('resumes at the saved step', () {
       final c = TutorialOverlayController(
-        progress: const _FakeProgress(
+        progress: const FakeTutorialProgress(
           seen: {TutorialEnum.readingAssistance},
           resumeSteps: {TutorialEnum.selectModeButtons: 2},
         ),
@@ -520,7 +570,9 @@ void main() {
     });
 
     test('re-requesting the active sequence is a no-op', () {
-      final c = TutorialOverlayController(progress: const _FakeProgress());
+      final c = TutorialOverlayController(
+        progress: const FakeTutorialProgress(),
+      );
       c.requestSequence(chat);
       expect(c.requestSequence(chat), false);
       expect(c.state.tutorialType, TutorialEnum.readingAssistance);
@@ -529,7 +581,9 @@ void main() {
     testWidgets(
       'a second sequence is queued, not dropped, and starts on release',
       (tester) async {
-        final c = TutorialOverlayController(progress: const _FakeProgress());
+        final c = TutorialOverlayController(
+          progress: const FakeTutorialProgress(),
+        );
         c.requestSequence(chat);
         expect(c.requestSequence(other), false);
         expect(c.state.tutorialType, TutorialEnum.readingAssistance);
@@ -547,7 +601,9 @@ void main() {
     test(
       'releasing a queued sequence removes it without disturbing the active one',
       () {
-        final c = TutorialOverlayController(progress: const _FakeProgress());
+        final c = TutorialOverlayController(
+          progress: const FakeTutorialProgress(),
+        );
         c.requestSequence(chat);
         c.requestSequence(other);
         c.releaseSequence(other);
@@ -560,7 +616,9 @@ void main() {
       'a queued sequence with nothing left to show is skipped on drain',
       (tester) async {
         final c = TutorialOverlayController(
-          progress: const _FakeProgress(seen: {TutorialEnum.writingAssistance}),
+          progress: const FakeTutorialProgress(
+            seen: {TutorialEnum.writingAssistance},
+          ),
         );
         c.requestSequence(chat);
         c.requestSequence(other);
@@ -571,7 +629,9 @@ void main() {
     );
 
     test('sequence identity is by content, not list instance', () {
-      final c = TutorialOverlayController(progress: const _FakeProgress());
+      final c = TutorialOverlayController(
+        progress: const FakeTutorialProgress(),
+      );
       c.requestSequence(TutorialSequences.chatTutorialSequence);
       // A fresh list with the same tutorials is the same sequence.
       expect(c.requestSequence(TutorialSequences.chatTutorialSequence), false);
@@ -587,7 +647,7 @@ void main() {
     test('marks every unseen tutorial in the requested sequence seen', () {
       final log = <TutorialEnum, int>{};
       final c = TutorialOverlayController(
-        progress: _FakeProgress(progressLog: log),
+        progress: FakeTutorialProgress(progressLog: log),
       );
       c.requestSequence(_full);
       c.skipCurrentSequence();
@@ -610,7 +670,7 @@ void main() {
       () {
         final log = <TutorialEnum, int>{};
         final c = TutorialOverlayController(
-          progress: _FakeProgress(progressLog: log),
+          progress: FakeTutorialProgress(progressLog: log),
         );
         c.requestSequence(_full);
         expect(c.state.tutorialType, TutorialEnum.readingAssistance);
@@ -623,7 +683,7 @@ void main() {
     test('already-seen tutorials in the sequence are not re-marked', () {
       final log = <TutorialEnum, int>{};
       final c = TutorialOverlayController(
-        progress: _FakeProgress(
+        progress: FakeTutorialProgress(
           seen: {TutorialEnum.readingAssistance},
           progressLog: log,
         ),
@@ -637,7 +697,7 @@ void main() {
 
     testWidgets('a queued sequence still starts after a skip', (tester) async {
       final c = TutorialOverlayController(
-        progress: _FakeProgress(progressLog: {}),
+        progress: FakeTutorialProgress(progressLog: {}),
       );
       c.requestSequence(_full);
       c.requestSequence(const [TutorialEnum.appTour]);
@@ -649,7 +709,7 @@ void main() {
     test('a skip with nothing running is a no-op', () {
       final log = <TutorialEnum, int>{};
       final c = TutorialOverlayController(
-        progress: _FakeProgress(progressLog: log),
+        progress: FakeTutorialProgress(progressLog: log),
       );
       c.skipCurrentSequence();
       expect(log, isEmpty);
@@ -714,7 +774,9 @@ void main() {
     });
 
     test('activeSequenceKind names the running sequence', () {
-      final c = TutorialOverlayController(progress: const _FakeProgress());
+      final c = TutorialOverlayController(
+        progress: const FakeTutorialProgress(),
+      );
       expect(c.activeSequenceKind, isNull);
       c.requestSequence(TutorialSequences.chatTutorialSequence);
       expect(c.activeSequenceKind, TutorialSequenceKind.chat);
@@ -735,7 +797,7 @@ void main() {
     test('activeSequenceKind survives the seen-filter dropping a tutorial — '
         'identity is the REQUESTED sequence, not the filtered one', () {
       final c = TutorialOverlayController(
-        progress: const _FakeProgress(seen: {TutorialEnum.welcome}),
+        progress: const FakeTutorialProgress(seen: {TutorialEnum.welcome}),
       );
       c.requestSequence(TutorialSequences.worldOrientationSequence);
       expect(c.state.tutorialType, TutorialEnum.worldMap);
@@ -754,7 +816,9 @@ void main() {
 
     test('the armed tutorial\'s launcher runs when the sequence starts', () {
       final calls = <TutorialEnum>[];
-      final c = TutorialOverlayController(progress: const _FakeProgress());
+      final c = TutorialOverlayController(
+        progress: const FakeTutorialProgress(),
+      );
       c.registerLauncher(TutorialEnum.readingAssistance, () async {
         calls.add(TutorialEnum.readingAssistance);
       });
@@ -766,7 +830,9 @@ void main() {
       'a host registering while its tutorial waits is the launch trigger',
       (tester) async {
         final calls = <TutorialEnum>[];
-        final c = TutorialOverlayController(progress: const _FakeProgress());
+        final c = TutorialOverlayController(
+          progress: const FakeTutorialProgress(),
+        );
         c.requestSequence(chat);
         expect(calls, isEmpty, reason: 'nothing registered yet');
 
@@ -782,7 +848,9 @@ void main() {
       'registering a tutorial that is not waiting does not launch it',
       (tester) async {
         final calls = <TutorialEnum>[];
-        final c = TutorialOverlayController(progress: const _FakeProgress());
+        final c = TutorialOverlayController(
+          progress: const FakeTutorialProgress(),
+        );
         c.requestSequence(chat);
         c.registerLauncher(TutorialEnum.selectModeButtons, () async {
           calls.add(TutorialEnum.selectModeButtons);
@@ -794,7 +862,9 @@ void main() {
 
     test('an owner wins over an opener for the same tutorial', () {
       final calls = <String>[];
-      final c = TutorialOverlayController(progress: const _FakeProgress());
+      final c = TutorialOverlayController(
+        progress: const FakeTutorialProgress(),
+      );
       c.registerLauncher(
         TutorialEnum.readingAssistance,
         () async => calls.add('opener'),
@@ -812,7 +882,9 @@ void main() {
       tester,
     ) async {
       final calls = <String>[];
-      final c = TutorialOverlayController(progress: const _FakeProgress());
+      final c = TutorialOverlayController(
+        progress: const FakeTutorialProgress(),
+      );
       // The opener's whole job: make the owner exist. Mirrors the chat opening
       // its toolbar so SelectModeButtons can mount.
       c.registerLauncher(TutorialEnum.readingAssistance, () async {
@@ -831,7 +903,9 @@ void main() {
       'the owner mounting mid-preparation does not launch underneath it',
       (tester) async {
         final calls = <String>[];
-        final c = TutorialOverlayController(progress: const _FakeProgress());
+        final c = TutorialOverlayController(
+          progress: const FakeTutorialProgress(),
+        );
         c.registerLauncher(TutorialEnum.readingAssistance, () async {
           c.registerLauncher(
             TutorialEnum.readingAssistance,
@@ -849,7 +923,9 @@ void main() {
 
     test('unregistering falls back to the opener', () {
       final calls = <String>[];
-      final c = TutorialOverlayController(progress: const _FakeProgress());
+      final c = TutorialOverlayController(
+        progress: const FakeTutorialProgress(),
+      );
       Future<void> opener() async => calls.add('opener');
       Future<void> owner() async => calls.add('owner');
       c.registerLauncher(
@@ -868,7 +944,9 @@ void main() {
       // fires on the map or a course plan). The one that left must not take the
       // current registration with it.
       final calls = <String>[];
-      final c = TutorialOverlayController(progress: const _FakeProgress());
+      final c = TutorialOverlayController(
+        progress: const FakeTutorialProgress(),
+      );
       Future<void> first() async => calls.add('first');
       Future<void> second() async => calls.add('second');
       c.registerLauncher(TutorialEnum.readingAssistance, first);
@@ -881,7 +959,9 @@ void main() {
     test(
       'a sequence with no registered host stays armed rather than failing',
       () {
-        final c = TutorialOverlayController(progress: const _FakeProgress());
+        final c = TutorialOverlayController(
+          progress: const FakeTutorialProgress(),
+        );
         expect(c.requestSequence(chat), true);
         expect(c.state.tutorialType, TutorialEnum.readingAssistance);
         expect(c.state.model.activeTutorial, isNull);
@@ -1065,8 +1145,8 @@ void main() {
 
   // Which cards carry the sequence-wide Skip control. The interesting case is
   // the one-step run: skipping there is the same act as finishing, which a tap
-  // anywhere already performs. See tutorials.instructions.md, "A one-step run
-  // carries no Skip".
+  // anywhere already performs. See tutorials.instructions.md, "No Skip on a
+  // single-card run".
   group('TutorialOverlayWidget.showsSkip', () {
     const plain = TutorialStepStyle(tooltip: 'x', tooltipSize: Size(1, 1));
     const branch = TutorialStepStyle(

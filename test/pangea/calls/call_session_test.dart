@@ -1,13 +1,17 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart' show AppLifecycleState;
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' as matrix;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
@@ -603,6 +607,18 @@ void main() {
           (methodCall) async => null,
         );
   }
+
+  // Every finished call asks the dosage flags, which read the app's stored
+  // config overrides, so the box has to exist.
+  setUpAll(() async {
+    final dir = await Directory.systemTemp.createTemp('call_session');
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+          const MethodChannel('plugins.flutter.io/path_provider'),
+          (_) async => dir.path,
+        );
+    await GetStorage.init('env_override');
+  });
 
   // The session builds a sink on the process-wide upload gate, and one test
   // here leaves a transcription that never answers. See call_record_test.
@@ -1528,6 +1544,86 @@ void main() {
         expect(released.length, lessThanOrEqualTo(1));
       },
     );
+  });
+
+  group('a finished call reports its connected time', () {
+    Future<(DosageAudioBuffer, CallSession)> up({
+      required bool answered,
+      Map<String, String> flags = const {
+        'ANALYTICS_DUAL_WRITE_ENABLED': 'true',
+        'DOSAGE_SIGNALS_ENABLED': 'true',
+        'DOSAGE_VOICE_MESSAGES_ENABLED': 'true',
+        'TEACHER_BFF_API': 'https://bff.test.example',
+      },
+    }) async {
+      dotenv.testLoad(mergeWith: flags);
+      final client = await _bareClient();
+      final buffer = DosageAudioBuffer();
+      DosageAudioBuffer.debugPutAccount(client.userID!, buffer);
+      final media = _FakeMedia();
+      final session = CallSession.start(
+        room: matrix.Room(id: '!dm:server', client: client),
+        video: false,
+        callService: _FakeCalls(client),
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: (_) {},
+        mediaOverride: media,
+        captureOverride: CallCaptureService(sink: _NullSink()),
+        recordOverride: _SpyRecord(),
+      );
+      await pumpEventQueue();
+      if (answered) {
+        final roster = media.fakeRoster!;
+        roster.identities = {'@friend:fakeServer.notExisting:FRIENDDEV'};
+        roster.recompute();
+        await pumpEventQueue();
+      }
+      await Future<void>.delayed(const Duration(milliseconds: 5));
+      session.endCall();
+      await pumpEventQueue();
+      await Future<void>.delayed(const Duration(milliseconds: 50));
+      await pumpEventQueue();
+      return (buffer, session);
+    }
+
+    tearDown(DosageAudioBuffer.debugResetAccounts);
+
+    test('an answered call writes one signal, in its own room', () async {
+      final (buffer, session) = await up(answered: true);
+      final call = buffer.bufferedCalls.single;
+      expect(call.roomId, '!dm:server');
+      expect(call.connectedMs, session.call.talkDuration.inMilliseconds);
+      expect(call.connectedMs, greaterThan(0));
+      session.dispose();
+      await pumpEventQueue();
+      expect(
+        buffer.bufferedCalls,
+        hasLength(1),
+        reason: 'and dispose adds none',
+      );
+    });
+
+    test('a call nobody answered reports nothing', () async {
+      final (buffer, _) = await up(answered: false);
+      expect(buffer.bufferedCalls, isEmpty);
+    });
+
+    test('with the flag off nothing is kept', () async {
+      final (buffer, _) = await up(
+        answered: true,
+        flags: const {
+          'ANALYTICS_DUAL_WRITE_ENABLED': 'true',
+          'DOSAGE_SIGNALS_ENABLED': 'true',
+          'DOSAGE_VOICE_MESSAGES_ENABLED': 'false',
+          'TEACHER_BFF_API': 'https://bff.test.example',
+        },
+      );
+      expect(buffer.bufferedCalls, isEmpty);
+    });
   });
 
   group('a finished call always leaves a card', () {
@@ -2557,7 +2653,7 @@ void main() {
           reason: 'a device that did not carry on leaves no card',
         );
         expect(room.sent, isEmpty, reason: 'nor a transcript half');
-        expect(analytics(), 0, reason: 'nor any analytics (doc:236)');
+        expect(analytics(), 0, reason: 'nor any analytics (keeps nothing)');
       });
 
       // The bug this pins: `_onCallChanged` correctly routes a non-carrying
@@ -2585,24 +2681,25 @@ void main() {
           expect(
             room.sent,
             isEmpty,
-            reason: 'nor a transcript half, even from dispose() (doc:236)',
+            reason:
+                'nor a transcript half, even from dispose() (keeps nothing)',
           );
           expect(
             analytics(),
             0,
-            reason: 'nor any analytics, even from dispose() (doc:236)',
+            reason: 'nor any analytics, even from dispose() (keeps nothing)',
           );
         },
       );
 
-      // The second way of not carrying on (doc:236): nobody has chosen yet.
-      // Reaching the ACTUAL 20s give-up timer needs real wall-clock time this
-      // suite has no seam to fake, but the defect lives entirely downstream
-      // of `carriedOn` being false -- how it got there does not matter to
-      // `_finishRecording`. A device the ownership arbiter is holding, torn
-      // down (logout, app teardown) before the ambiguity ever resolves, is
-      // the same "ended while held, nobody chose" shape the timer itself
-      // would eventually produce, reached without waiting for it.
+      // The second way of not carrying on (doc "keeps nothing"): nobody has
+      // chosen yet. Reaching the ACTUAL 20s give-up timer needs real wall-clock
+      // time this suite has no seam to fake, but the defect lives entirely
+      // downstream of `carriedOn` being false -- how it got there does not
+      // matter to `_finishRecording`. A device the ownership arbiter is
+      // holding, torn down (logout, app teardown) before the ambiguity ever
+      // resolves, is the same "ended while held, nobody chose" shape the timer
+      // itself would eventually produce, reached without waiting for it.
       test('a device still held -- nobody has chosen -- writes nothing if torn '
           'down before it resolves', () async {
         final client = await _bareClient();
@@ -2660,7 +2757,7 @@ void main() {
         expect(
           analyticsCalls,
           0,
-          reason: 'nor any analytics -- it never carried on (doc:236)',
+          reason: 'nor any analytics -- it never carried on (keeps nothing)',
         );
       });
     },

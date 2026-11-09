@@ -7,10 +7,19 @@ import 'package:fluffychat/features/navigation/token_params/token_param.dart';
 /// Field 0 is the activity id; optional session-binding fields follow, each
 /// tagged by its first character: `r<roomid>` (the learner's bound session
 /// room, bare localpart), `l` (launch the session on arrival), `a<index>`
-/// (autoplay the plan's media at that carousel index), `p` (opened from the
-/// course card's full course plan, so the back arrow returns there — #9367),
+/// (a request to autoplay that carousel index; see below), `p` (opened from
+/// the course card's full course plan, so the back arrow returns there —
+/// #9367),
+/// `c` (opened from the course card — its Mission card or full course plan —
+/// so a session started from it closes back to the card, #9632),
 /// `j` (the bound session was opened from the activity's join list, so its
 /// back arrow returns to that list — #9333).
+/// `a` is written but not consumed today: the one reader, `ActivitySummary`,
+/// ignores it in chat, the only place it renders. It would re-fire on
+/// refresh, as autoplay does anywhere on the web: the URL says how the panel
+/// opens, so a shared link opens the same way for its recipient. Internal
+/// navigation rebuilds the token from state, so a flag drops on the next
+/// in-panel navigation rather than lingering.
 /// These fields replaced
 /// the loose `?roomid=` / `?launch=` / `?autoplay=` query params — everything
 /// a panel needs rides in its token (routing.instructions.md); the loose
@@ -21,6 +30,7 @@ class ActivityTokenParam extends TokenParam {
   final bool launch;
   final int? autoplay;
   final bool fromCoursePlan;
+  final bool fromCourseCard;
   final bool fromJoinList;
 
   const ActivityTokenParam({
@@ -29,6 +39,7 @@ class ActivityTokenParam extends TokenParam {
     this.launch = false,
     this.autoplay,
     this.fromCoursePlan = false,
+    this.fromCourseCard = false,
     this.fromJoinList = false,
   });
 
@@ -39,6 +50,7 @@ class ActivityTokenParam extends TokenParam {
     if (launch) 'l',
     if (autoplay != null) 'a$autoplay',
     if (fromCoursePlan) 'p',
+    if (fromCourseCard) 'c',
     if (fromJoinList) 'j',
   ]);
 
@@ -50,12 +62,15 @@ class ActivityTokenParam extends TokenParam {
     var launch = false;
     int? autoplay;
     var fromCoursePlan = false;
+    var fromCourseCard = false;
     var fromJoinList = false;
     for (final field in fields.skip(1)) {
       if (field == 'l') {
         launch = true;
       } else if (field == 'p') {
         fromCoursePlan = true;
+      } else if (field == 'c') {
+        fromCourseCard = true;
       } else if (field == 'j') {
         fromJoinList = true;
       } else if (field.length > 1 && field.startsWith('r')) {
@@ -70,6 +85,7 @@ class ActivityTokenParam extends TokenParam {
       launch: launch,
       autoplay: autoplay,
       fromCoursePlan: fromCoursePlan,
+      fromCourseCard: fromCourseCard,
       fromJoinList: fromJoinList,
     );
   }
@@ -82,6 +98,7 @@ class ActivityTokenParam extends TokenParam {
       other.launch == launch &&
       other.autoplay == autoplay &&
       other.fromCoursePlan == fromCoursePlan &&
+      other.fromCourseCard == fromCourseCard &&
       other.fromJoinList == fromJoinList;
 
   @override
@@ -91,6 +108,7 @@ class ActivityTokenParam extends TokenParam {
     launch,
     autoplay,
     fromCoursePlan,
+    fromCourseCard,
     fromJoinList,
   );
 }

@@ -13,6 +13,8 @@ import 'package:fluffychat/features/navigation/token_params/course_details_token
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
+import 'package:fluffychat/features/tutorials/tutorial_seen_backfill.dart';
+import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -85,6 +87,14 @@ class SpaceDetailsController extends State<SpaceDetails> {
 
   String? get _questId => room.coursePlan?.uuid;
 
+  /// The notifications dialog gives way to a tutorial on this visit and stays
+  /// unseen, so a later visit offers it again (get-the-app.instructions.md).
+  bool get _tutorialRunningOrAboutToStart {
+    final tutorials = MatrixState.tutorialOverlayController;
+    return tutorials.hasActiveSequence ||
+        TutorialSequences.courseOrientationSequence.any(tutorials.isPending);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -101,7 +111,10 @@ class SpaceDetailsController extends State<SpaceDetails> {
       if (!mounted) return;
       await SpaceGoneGate.maybeShowDialog(context, room.id);
 
-      if (!mounted) return;
+      // What the course tutorial's own trigger waits for: until then every
+      // tutorial reads as already seen.
+      await TutorialSeenBackfill.instance.ensureResolved();
+      if (!mounted || _tutorialRunningOrAboutToStart) return;
       Matrix.of(context).showEnableNotificationsDialog(context);
     });
 

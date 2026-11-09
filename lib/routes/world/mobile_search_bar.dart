@@ -9,7 +9,9 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 /// The single-column floating search bar riding above the nav widget
 /// (routing.instructions.md → Single-column search bar): ONE persistent bar for
 /// the map's activity search. It rides the nav widget's expansion for free
-/// by rendering in the widget's `topAttachment` slot.
+/// by rendering in the widget's `topAttachment` slot. Figma:
+/// [default](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44560),
+/// [minimized](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=13126-44562).
 ///
 /// Mounted over the bare WORLD map only, mirroring the web overlay
 /// ([WorldMapSearchOverlay]): a selected course takes this slot with the
@@ -52,10 +54,11 @@ class MobileSearchBar extends StatefulWidget {
   /// live (greyed below it).
   final bool Function()? canZoomOut;
 
-  /// The live Level-pill filter ([WorldMapController.filter]) — a builder for
-  /// the same reason the others are — read only for the level-fallback notice
+  /// The live map filter ([WorldMapController.filter]) — a builder for the
+  /// same reason the others are — read for the level-fallback notice
   /// ([WorldMapLevelFallbackNotice]): whether the map is standing a
-  /// neighbouring level in for the one the learner chose. Null in a scope
+  /// neighbouring level in for the one the learner chose; and on each
+  /// [viewRevision] tick, for a query cleared outside the bar. Null in a scope
   /// without the notice.
   final WorldMapFilter Function()? filter;
 
@@ -123,7 +126,13 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
   }
 
   void _onViewRevision() {
-    if (mounted) setState(() {});
+    if (!mounted) return;
+    // A reset or a target-language change clears the map's query without
+    // rebuilding this bar, so didUpdateWidget never sees it. The bar's own
+    // typing already matches the live query, so this never moves the caret.
+    final query = widget.filter?.call().query;
+    if (query != null && query != _controller.text) _controller.text = query;
+    setState(() {});
   }
 
   @override

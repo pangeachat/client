@@ -42,7 +42,7 @@ A user's usage of each construct is tracked as `ConstructUses`, which accumulate
 
 Source of truth for the per-language inventory is the `grammar-constructs` CMS collection: one row per target_language, holding the audited (feature, value) bundle with `display`, `sequence_position`, and a worked `example` per value. The client fetches via `POST /choreo/grammar_constructs/canonical` (single canonical inventory) or `POST /choreo/grammar_constructs` (joined: canonical + L1 strings in one call — the recommended consumer surface). Sort order is driven by `sequence_position` on each value; the legacy `morphFeatureSortOrder` constant is superseded.
 
-The client refreshes the grammar labels for a language pair once a day. It keeps the last labels it fetched until new ones arrive, and uses them, whatever their age, while a refresh runs, when a fetch fails, and while the app cannot reach Pangea. While the app cannot reach Pangea, it does not try to fetch. Only when this device has never fetched labels for the pair does it use the built-in English labels, written for an English target (`default_grammar_constructs_response.dart`).
+The client refreshes the grammar labels for a language pair once a day. It keeps the last labels it fetched until new ones arrive, and uses them, whatever their age, while a refresh runs, when a fetch fails, and while the app cannot reach Pangea. While the app cannot reach Pangea, it does not try to fetch. After a fetch for a pair fails, it does not try that pair again for an hour; the saved labels stand in meanwhile. Only when this device has never fetched labels for the pair does it use the built-in English labels, written for an English target (`default_grammar_constructs_response.dart`).
 
 ### Human-readable descriptions
 

@@ -264,7 +264,13 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
     if (!PracticeSessionHolder.instance.blocksAnalytics(type)) return false;
     _open(
       context,
-      WorkspaceNav.openPractice(GoRouterState.of(context).uri, type),
+      // With the session's Mission, or the panel claims an unscoped session
+      // and replaces the live one.
+      WorkspaceNav.openPractice(
+        GoRouterState.of(context).uri,
+        type,
+        missionId: PracticeSessionHolder.instance.liveMissionId,
+      ),
     );
     return true;
   }

@@ -9,19 +9,18 @@ class CustomCourseOnboardingStep extends OnboardingStep {
     required super.maxRemainingSteps,
   });
 
-  String? _name;
-  String? _institution;
-  String? _goals;
-
-  void setName(String name) => _name = name;
-  void setInstitution(String institution) => _institution = institution;
-  void setGoals(String goals) => _goals = goals;
+  // Kept in the onboarding state, like every other page's choices, so going
+  // back and forward again keeps what was typed.
+  void setName(String name) => state.setCourseRequestName(name);
+  void setInstitution(String institution) =>
+      state.setCourseRequestInstitution(institution);
+  void setGoals(String goals) => state.setCourseRequestGoals(goals);
 
   @override
   bool get enableGoForward =>
-      _name?.isNotEmpty == true &&
-      _institution?.isNotEmpty == true &&
-      _goals?.isNotEmpty == true;
+      state.courseRequestName?.isNotEmpty == true &&
+      state.courseRequestInstitution?.isNotEmpty == true &&
+      state.courseRequestGoals?.isNotEmpty == true;
 
   @override
   Future<OnboardingStep?> execute() async {
@@ -35,9 +34,9 @@ class CustomCourseOnboardingStep extends OnboardingStep {
       throw StateError("Custom course onboarding step is not fully set up");
     }
 
-    final name = _name;
-    final institution = _institution;
-    final goals = _goals;
+    final name = state.courseRequestName;
+    final institution = state.courseRequestInstitution;
+    final goals = state.courseRequestGoals;
     if (name == null || institution == null || goals == null) {
       throw StateError(
         "Cannot request custom course without name, institution, and goals",
@@ -55,22 +54,33 @@ class CustomCourseOnboardingStep extends OnboardingStep {
       goals: goals,
     );
 
-    final resp = await state.courseProvider.requestCustomCourse(request);
-    if (resp.isError) {
-      throw resp.asError!;
+    // Moving forward again with nothing changed doesn't send a second request.
+    if (request.storageKey != state.sentCourseRequestKey) {
+      final resp = await state.courseProvider.requestCustomCourse(request);
+      if (resp.isError) {
+        throw resp.asError!;
+      }
+      state.setSentCourseRequestKey(request.storageKey);
     }
 
     if (state.trialInfoProvider.shouldShowTrialPage) {
       return FreeTrialOnboardingStep(
         client: client,
         state: state,
-        maxRemainingSteps: maxRemainingSteps,
+        maxRemainingSteps: 0,
       );
     }
 
     return null;
   }
 
+  /// Skipping the request still leads to the trial page, as submitting does.
   @override
-  OnboardingStep? skip() => null;
+  OnboardingStep? skip() => state.trialInfoProvider.shouldShowTrialPage
+      ? FreeTrialOnboardingStep(
+          client: client,
+          state: state,
+          maxRemainingSteps: 0,
+        )
+      : null;
 }

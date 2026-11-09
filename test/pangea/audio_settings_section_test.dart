@@ -150,16 +150,17 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  testWidgets('renders the section header and five toggles', (tester) async {
+  testWidgets('renders the section header and six toggles', (tester) async {
     await pumpSection(tester, makeViewModel());
 
     expect(find.text('Audio'), findsOneWidget);
     expect(find.text('Words'), findsOneWidget);
     expect(find.text('Choices'), findsOneWidget);
     expect(find.text('Listen first'), findsOneWidget);
+    expect(find.text('Hear it first'), findsOneWidget);
     expect(find.text('On new message'), findsOneWidget);
     expect(find.text('On message click'), findsOneWidget);
-    expect(find.byType(SwitchListTile), findsNWidgets(5));
+    expect(find.byType(SwitchListTile), findsNWidgets(6));
 
     // The retired single message-audio toggle is gone (#8264), and the
     // no-voice note only renders when the gate fails (#8664).

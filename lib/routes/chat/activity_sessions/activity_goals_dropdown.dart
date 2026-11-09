@@ -15,7 +15,7 @@ class ActivityGoalsDropdown extends StatefulWidget {
   final Set<String> completedGoalIds;
   final bool startCollapsed;
 
-  /// Whether earned goals carry their "+100": only for a session in the
+  /// Whether earned goals carry their "+50": only for a session in the
   /// learner's current language, where its XP counts (#9559).
   final bool showGoalXp;
 
@@ -77,7 +77,7 @@ class _ActivityGoalsDropdownState extends State<ActivityGoalsDropdown>
     final active = firstIncompleteGoal(goals, _isGoalCompleted);
     final allComplete = goals.isNotEmpty && active == null;
     // A goal pays its XP into the session it is earned in; once any is
-    // earned here, each earned diamond carries its "+100". A page with none
+    // earned here, each earned diamond carries its "+50". A page with none
     // earned (a session not yet started) keeps the plain row.
     final goalXp = widget.showGoalXp && goals.any(_isGoalCompleted)
         ? kGoalXp

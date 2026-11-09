@@ -4172,14 +4172,15 @@ void main() {
         // and stop-anyway would stop a recorder the latest election wants
         // running. This is the invariant this test owns.
         //
-        // Adapted for two-devices-one-call (doc:261-263): a sibling in the call
-        // now HOLDS this device -- the recorder is muted while the sibling is
-        // present -- so the sequence runs alone -> sibling appears (which both
-        // displaces the recorder AND holds it) -> sibling leaves (which both
-        // reinstates and RESOLVES ownership, making this device the survivor).
-        // Run CONTINUITY across the sibling's presence is deliberately gone (the
-        // hold muted this device meanwhile); the preserved invariant is that the
-        // parked reconcile obeyed the reversal and left the survivor RECORDING.
+        // Adapted for two-devices-one-call (doc "The learner's choice"): a
+        // sibling in the call now HOLDS this device -- the recorder is muted
+        // while the sibling is present -- so the sequence runs alone -> sibling
+        // appears (which both displaces the recorder AND holds it) -> sibling
+        // leaves (which both reinstates and RESOLVES ownership, making this
+        // device the survivor). Run CONTINUITY across the sibling's presence is
+        // deliberately gone (the hold muted this device meanwhile); the
+        // preserved invariant is that the parked reconcile obeyed the reversal
+        // and left the survivor RECORDING.
         final (call, calls, _, capture) = await buildElection();
         calls.roster!.myJoin = (true, joinedAt);
         calls.remotePresent = true;

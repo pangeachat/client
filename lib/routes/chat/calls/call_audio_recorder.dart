@@ -334,7 +334,9 @@ class _AudioRecordingCanceled implements Exception {
 
 /// Records this device's own outbound call audio into ONE valid WAV
 /// container, and publishes it as a `pangea.call_audio` half at the end of
-/// the call -- the sibling `writeCallTranscript` produces for text.
+/// the call -- the sibling `writeCallTranscript` produces for text. Audio
+/// only, never video: the saved audio is what transcription runs against, and
+/// a video call saves the same audio half a voice call does.
 ///
 /// LOCAL PROTOTYPE, deliberately narrower than the transcript path it sits
 /// beside:

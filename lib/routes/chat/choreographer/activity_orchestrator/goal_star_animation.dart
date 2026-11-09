@@ -30,7 +30,7 @@ class GoalStarAnimation extends StatefulWidget {
     required String endTarget,
     required VoidCallback onClose,
   }) {
-    OverlayUtil.showOverlay(
+    final shown = OverlayUtil.showOverlay(
       context: context,
       child: GoalStarAnimation(
         overlayKey: overlayKey,
@@ -45,6 +45,9 @@ class GoalStarAnimation extends StatefulWidget {
         overlayKey: overlayKey,
       ),
     );
+    // A refused star (a tutorial is up, or the last star is still flying)
+    // never mounts, so its dispose never calls onClose.
+    if (!shown) onClose();
   }
 }
 
@@ -146,7 +149,9 @@ class GoalStarAnimationState extends State<GoalStarAnimation>
     // Decoration, so it keeps the bright [PangeaColors.goldFixedDim] rather than
     // the readable [PangeaColors.goldGraphic] its siblings took (#8983): this
     // star pops, arcs and fades over whatever is behind the overlay, and the
-    // state it celebrates is carried persistently by the goal star it flies to.
+    // state it celebrates is carried persistently by the header's diamonds.
+    // It flies to the active goal's slot, which need not be the goal earned
+    // (activity-session.instructions.md, "The goal header").
     final iconColor = Theme.of(context).pangea.goldFixedDim;
 
     return IgnorePointer(

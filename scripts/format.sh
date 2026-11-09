@@ -9,23 +9,10 @@
 #
 # Import sorting is a separate CI check; run `fvm dart run import_sorter:main --no-comments`
 # for that (it resolves packages, so it can touch pubspec.lock).
-#
-# Locates fvm even when ~/.pub-cache/bin isn't on PATH — the common reason editor and
-# Claude Code sessions "can't find fvm" despite it being installed.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-fvm_bin="$(command -v fvm || true)"
-if [ -z "$fvm_bin" ]; then
-  for cand in "$HOME/.pub-cache/bin/fvm" /opt/homebrew/bin/fvm /usr/local/bin/fvm; do
-    [ -x "$cand" ] && fvm_bin="$cand" && break
-  done
-fi
-if [ -z "$fvm_bin" ]; then
-  echo "error: fvm not found. Install it — 'brew install fvm', or 'dart pub global activate fvm'" >&2
-  echo "       then add ~/.pub-cache/bin to your PATH. See CONTRIBUTING.md#flutter-version-fvm." >&2
-  exit 1
-fi
+source scripts/lib/fvm.sh
 
 if [ "${1:-}" = "--check" ]; then
   exec "$fvm_bin" dart format lib/ test/ --set-exit-if-changed

@@ -1,37 +1,68 @@
 import 'dart:math';
 
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/quests/can_do_progress.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/features/quests/saved_session_xp.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
+/// One value per activity from its sessions' [(activityId, stars)] pairs: the
+/// best session's. The per-member reduction every stars reader applies before
+/// crediting a family (activity_family.dart).
+Map<String, int> bestStarsByActivity(
+  Iterable<({String activityId, int stars})> sessions,
+) {
+  final best = <String, int>{};
+  for (final session in sessions) {
+    best[session.activityId] = max(
+      best[session.activityId] ?? 0,
+      session.stars,
+    );
+  }
+  return best;
+}
+
+/// One value per activity from its saved sessions' [(activityId, xp)] pairs:
+/// every session with XP summed (XP is effort, so repeats accumulate). The per-member
+/// reduction the XP readers apply before crediting a family
+/// (activity_family.dart).
+Map<String, int> sumXpByActivity(
+  Iterable<({String activityId, int xp})> sessions,
+) {
+  final xp = <String, int>{};
+  for (final session in sessions) {
+    // A session that earned nothing leaves no entry.
+    if (session.xp <= 0) continue;
+    xp[session.activityId] = (xp[session.activityId] ?? 0) + session.xp;
+  }
+  return xp;
+}
+
 extension QuestsClientExtension on Client {
   /// The learner's goal checkmarks per activity: their best single session's
   /// orchestrator-awarded goals. What the map's ranking reserves trail slots
   /// for; cards and Missions read XP ([userXpByActivity]).
-  Map<String, int> get userStarsByActivity {
-    final stars = <String, int>{};
-    for (final room in rooms) {
-      final activityId = room.activityId;
-      if (activityId == null) continue;
-
-      final current = stars[activityId] ?? 0;
-      final collected = room.ownCompletedGoals.length;
-      stars[activityId] = max(current, collected);
-    }
-    return stars;
-  }
+  /// Raw per member: readers that answer for a course credit it across the
+  /// activity's copies ([CourseCredit], activity_family.dart).
+  Map<String, int> get userStarsByActivity => bestStarsByActivity([
+    for (final room in rooms)
+      if (room.activityId != null)
+        (activityId: room.activityId!, stars: room.ownCompletedGoals.length),
+  ]);
 
   /// The learner's saved sessions per activity, in their current language
   /// ([CourseLanguageScope.savedSessionInTargetLanguage]) — the sessions
@@ -54,25 +85,67 @@ extension QuestsClientExtension on Client {
     return sessions;
   }
 
+  /// The activities of the learner's saved sessions whose plan hasn't loaded,
+  /// or expired from the cache and is reloading. Until it lands, the session's
+  /// goals count no XP ([sessionXp] reads them from the plan), and one not
+  /// filed under a language counts none at all
+  /// ([CourseLanguageScope.savedSessionInTargetLanguage]).
+  Set<String> get savedSessionActivitiesAwaitingPlan {
+    final awaiting = <String>{};
+    for (final room in rooms) {
+      final activityId = room.activityId;
+      if (activityId == null ||
+          !room.hasArchivedActivity ||
+          room.activityPlan != null) {
+        continue;
+      }
+      awaiting.add(activityId);
+    }
+    return awaiting;
+  }
+
+  /// The activities of the learner's saved sessions whose plan is on its way
+  /// ([ActivityRoomExtension.activityPlanLoading]). Unlike
+  /// [savedSessionActivitiesAwaitingPlan], a plan whose read failed or whose
+  /// activity was removed is not listed, so a surface that shows a loading
+  /// state until these land can't show it for good.
+  Set<String> get savedSessionActivitiesLoadingPlan => {
+    for (final room in rooms)
+      if (room.hasArchivedActivity && room.activityPlanLoading)
+        ?room.activityId,
+  };
+
   /// The learner's activity XP per activity: every saved session of it
   /// ([savedSessionsByActivity]), each counting the XP credited to its room
   /// ([creditedXpByRoom] — the chat XP earned there plus practice credited
   /// to it, MissionXpCache) and a flat [kGoalXp] per goal the learner was
   /// awarded in it. Repeat sessions accumulate — XP is effort — and a
   /// session counts only once it is saved, so finishing is what banks it
-  /// (org activities doc, "Activity XP" and "Saving"; quests.instructions.md,
-  /// "What fills a Mission").
-  Map<String, int> userXpByActivity(Map<String, int> creditedXpByRoom) {
-    final xp = <String, int>{};
-    for (final entry in savedSessionsByActivity.entries) {
-      var sum = 0;
-      for (final room in entry.value) {
-        sum += sessionXp(room, creditedXpByRoom);
-      }
-      if (sum > 0) xp[entry.key] = sum;
-    }
-    return xp;
-  }
+  /// (quests.instructions.md, "What fills a Mission"; org
+  /// activities.instructions.md, "Saving and goals").
+  ///
+  /// Raw per member: readers that answer for a course credit it across the
+  /// activity's copies ([CourseCredit.creditedBy]).
+  Map<String, int> userXpByActivity(Map<String, int> creditedXpByRoom) =>
+      sumXpByActivity([
+        for (final entry in savedSessionsByActivity.entries)
+          for (final room in entry.value)
+            (activityId: entry.key, xp: sessionXp(room, creditedXpByRoom)),
+      ]);
+
+  /// Every saved session [userXpByActivity] counts, with when it was saved,
+  /// for replaying Mission XP over time (`MissionCompletionReplay`).
+  List<SavedSessionXp> get savedSessionXp => [
+    for (final entry in savedSessionsByActivity.entries)
+      for (final room in entry.value)
+        if (room.ownRoleState?.archivedAt case final savedAt?)
+          SavedSessionXp(
+            activityId: entry.key,
+            roomId: room.id,
+            savedAt: savedAt,
+            goalXp: kGoalXp * room.ownCompletedGoals.length,
+          ),
+  ];
 
   /// [userXpByActivity] split by source: the same saved sessions, with each
   /// room's chat, speaking and practice XP kept apart and the goal checkmarks
@@ -121,14 +194,106 @@ extension QuestsClientExtension on Client {
     final perActivity = byActivity ?? cachedXpBreakdownByActivity;
     var sum = MissionXpBreakdown(
       practice: MissionXpBreakdown.practiceFor(
-        group.lemmas,
+        group.creditedLemmas,
         MissionXpCache.instance.practiceXpByLemma,
       ),
     );
-    for (final activity in group.activities) {
-      sum = sum + (perActivity[activity.activityId] ?? MissionXpBreakdown.zero);
+    for (final id in _creditedActivityIds(group, perActivity.keys)) {
+      sum = sum + (perActivity[id] ?? MissionXpBreakdown.zero);
     }
     return sum;
+  }
+
+  /// The activities out of [activityIds] whose XP counts toward [group]: its
+  /// own, or with a course copy every member of an activity's family, which
+  /// counts toward the member the course shows, hidden activities included
+  /// (activity_family.dart).
+  static Set<String> _creditedActivityIds(
+    QuestObjectiveGroup group,
+    Iterable<String> activityIds,
+  ) {
+    final credit = group.credit;
+    if (credit.isEmpty) return {for (final a in group.activities) a.activityId};
+    final ids = {
+      for (final a in group.activities) credit.canonicalOf(a.activityId),
+      for (final id
+          in credit.removedByLo[group.objective.id] ?? const <String>[])
+        credit.canonicalOf(id),
+    };
+    return {
+      for (final id in activityIds)
+        if (credit.family.containsKey(id) &&
+            ids.contains(credit.canonicalOf(id)))
+          id,
+    };
+  }
+
+  /// [outline]'s Missions for the course's progress record (client#9643):
+  /// each one's XP as its ring shows it, the split its meter shows, and
+  /// whether it shows as complete. A Mission the course shows no activity for
+  /// is included and never complete, since the course page gives it no star.
+  /// [outline] is the course's own ([QuestOutlineForCourse.forCourse]);
+  /// [xpByActivity] ([userXpByActivity]) and [byActivity]
+  /// ([cachedXpBreakdownByActivity]) are passed so several courses walk the
+  /// rooms once. [recorded] is the course's stored record entries, whose
+  /// recorded completions stay complete.
+  Map<String, CanDoProgress> canDoProgress(
+    QuestOutline outline, {
+    required int xpToComplete,
+    required Map<String, int> xpByActivity,
+    required Map<String, MissionXpBreakdown> byActivity,
+    Map<String, CanDoProgress> recorded = const {},
+  }) {
+    final courseOutline = outline.toCourseLoOutline(xpToComplete: xpToComplete);
+    final rollup =
+        resolveProgression(
+          outlines: [courseOutline],
+          xpByActivity: xpByActivity,
+          practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
+          recordedByCourse: {courseOutline.courseId: recorded},
+        ).quests.firstOrNull?.rollup ??
+        const {};
+    final sessions = savedSessionsByActivity;
+    return {
+      for (final group in outline.groups)
+        group.objective.id: _canDoProgress(
+          group,
+          rollup[group.objective.id],
+          byActivity,
+          sessions,
+        ),
+    };
+  }
+
+  CanDoProgress _canDoProgress(
+    QuestObjectiveGroup group,
+    MissionProgress? progress,
+    Map<String, MissionXpBreakdown> byActivity,
+    Map<String, List<Room>> sessionsByActivity,
+  ) {
+    final breakdown = missionXpBreakdown(group, byActivity: byActivity);
+    // The split reads the resolver's inputs, so they only part on a bug; the
+    // record keeps the ring's figure, which is what the learner sees.
+    if (progress != null && progress.xp != breakdown.total) {
+      ErrorHandler.logErrorOnce(
+        key: 'mission-split-mismatch:${group.objective.id}',
+        e: 'A Mission\'s ring and its split disagree',
+        data: {
+          'missionId': group.objective.id,
+          'ringXp': progress.xp,
+          'splitXp': breakdown.total,
+        },
+        level: SentryLevel.warning,
+      );
+    }
+    return CanDoProgress(
+      xp: progress?.xp ?? breakdown.total,
+      breakdown: breakdown,
+      completed: progress?.satisfied ?? false,
+      skills: CanDoProgress.skillsOf(
+        missionSkillXp(group, sessionsByActivity: sessionsByActivity),
+      ),
+    );
   }
 
   /// [group]'s XP by the skill it exercised — writing, speaking, listening,
@@ -136,18 +301,21 @@ extension QuestsClientExtension on Client {
   /// saved sessions and practice outside any session on its words. Goals are
   /// no skill and are not in it (their XP is [MissionXpBreakdown.goals]).
   /// Listening counts listening exercises only: hearing a message read aloud
-  /// earns no XP.
-  Map<LearningSkillsEnum, int> missionSkillXp(QuestObjectiveGroup group) {
+  /// earns no XP. Pass [sessionsByActivity] ([savedSessionsByActivity]) when
+  /// reading several Missions at once, so the rooms are walked once.
+  Map<LearningSkillsEnum, int> missionSkillXp(
+    QuestObjectiveGroup group, {
+    Map<String, List<Room>>? sessionsByActivity,
+  }) {
     final cache = MissionXpCache.instance;
-    final activityIds = {for (final a in group.activities) a.activityId};
     final xp = <LearningSkillsEnum, int>{};
-    final sessions = savedSessionsByActivity;
-    for (final activityId in activityIds) {
+    final sessions = sessionsByActivity ?? savedSessionsByActivity;
+    for (final activityId in _creditedActivityIds(group, sessions.keys)) {
       for (final room in sessions[activityId] ?? const <Room>[]) {
         _addSkills(xp, cache.skillXpByRoom[room.id]);
       }
     }
-    for (final lemma in group.lemmas) {
+    for (final lemma in group.creditedLemmas) {
       _addSkills(xp, cache.skillXpByLemma[lemma]);
     }
     return xp;
@@ -190,7 +358,7 @@ extension QuestsClientExtension on Client {
 
   /// One session's XP: the XP credited to its room plus its goal checkmarks.
   /// What [userXpByActivity] banks once the session is saved, and what the
-  /// goal header's ring shows while it runs.
+  /// goal header's number shows while it runs.
   int sessionXp(Room room, Map<String, int> creditedXpByRoom) =>
       (creditedXpByRoom[room.id] ?? 0) +
       kGoalXp * room.ownCompletedGoals.length;

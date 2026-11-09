@@ -102,6 +102,7 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
                       isMobile: isMobile,
                       imageUrls: imageUrls,
                       labels: _labels,
+                      brandLine: L10n.of(context).learnLanguageWhileTexting,
                       onPageChange: (index) {
                         if (mounted) {
                           setState(() => _currentIndex = index);
@@ -205,6 +206,10 @@ class _LoginCarousel extends StatelessWidget {
   final bool isMobile;
   final List<String> imageUrls;
   final List<String?> labels;
+
+  /// The text slide 1 draws inside its image. A headline names its slide's
+  /// image for screen readers; slide 1 has none, so this names it instead.
+  final String brandLine;
   final Function(int) onPageChange;
   final CarouselSliderController controller;
 
@@ -212,6 +217,7 @@ class _LoginCarousel extends StatelessWidget {
     required this.isMobile,
     required this.imageUrls,
     required this.labels,
+    required this.brandLine,
     required this.onPageChange,
     required this.controller,
   });
@@ -248,12 +254,15 @@ class _LoginCarousel extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: CachedNetworkImage(
-                            imageUrl: imageUrl,
-                            width: double.infinity,
-                            fit: BoxFit.contain,
-                            errorWidget: (context, url, error) =>
-                                Center(child: PangeaLogoSvg(width: 128.0)),
+                          child: Semantics(
+                            label: labels[index] == null ? brandLine : null,
+                            child: CachedNetworkImage(
+                              imageUrl: imageUrl,
+                              width: double.infinity,
+                              fit: BoxFit.contain,
+                              errorWidget: (context, url, error) =>
+                                  Center(child: PangeaLogoSvg(width: 128.0)),
+                            ),
                           ),
                         ),
                       ],
@@ -284,12 +293,15 @@ class _LoginCarousel extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: CachedNetworkImage(
-                      imageUrl: imageUrl,
-                      width: double.infinity,
-                      fit: BoxFit.contain,
-                      errorWidget: (context, url, error) =>
-                          Center(child: PangeaLogoSvg(width: 256.0)),
+                    child: Semantics(
+                      label: labels[index] == null ? brandLine : null,
+                      child: CachedNetworkImage(
+                        imageUrl: imageUrl,
+                        width: double.infinity,
+                        fit: BoxFit.contain,
+                        errorWidget: (context, url, error) =>
+                            Center(child: PangeaLogoSvg(width: 256.0)),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 24.0),

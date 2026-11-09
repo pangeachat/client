@@ -53,6 +53,11 @@ class RtcFocus {
   /// unencrypted rooms. We also transcribe the call by design, so encrypting media we
   /// hold the keys to would be theatre. Inheriting the default here would produce a
   /// call that is encrypted-in-name against a plaintext room.
+  ///
+  /// Transcription does not depend on this either way -- each device
+  /// transcribes its own outbound audio -- so turning encryption on later is a
+  /// change to how rooms are created, not to this flag
+  /// (voice-video-calls.instructions.md, "The call").
   LiveKitBackend backendForRoom(String roomId) => LiveKitBackend(
     livekitServiceUrl: serviceUrl,
     livekitAlias: roomId,

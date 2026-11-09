@@ -57,6 +57,12 @@ class UserSettings {
     this.selfIdentifiedRole,
   });
 
+  /// The language the app's menus and buttons are shown in: the target
+  /// language while [appLanguageIsTarget] is on and one is set, otherwise the
+  /// source language. Null leaves them in the system language.
+  String? get appLanguage =>
+      appLanguageIsTarget ? (targetLanguage ?? sourceLanguage) : sourceLanguage;
+
   factory UserSettings.fromJson(Map<String, dynamic> json) => UserSettings(
     dateOfBirth: json[UserConstants.userDateOfBirth] != null
         ? DateTime.parse(json[UserConstants.userDateOfBirth])
@@ -271,6 +277,12 @@ class UserToolSettings {
   /// See writing-assistance.instructions.md.
   final bool listenFirst;
 
+  /// Read-aloud practice plays the example sentence before the learner
+  /// records. On by default: listen-then-repeat is the loop teachers asked
+  /// for, and it keeps a learner from guessing at a sentence they cannot yet
+  /// read (practice-exercises.instructions.md, "Speaking practice").
+  final bool hearItFirst;
+
   /// The user's explicit autocorrect choice, or null when they have never
   /// touched the toggle. Kept unresolved in storage so each device applies its
   /// own [enableAutocorrectPlatformDefault] — resolving at write time would
@@ -291,6 +303,7 @@ class UserToolSettings {
     bool? enableAutocorrect,
     this.showDeveloperOptions = false,
     this.listenFirst = false,
+    this.hearItFirst = false,
   }) : enableAutocorrectChoice = enableAutocorrect;
 
   /// Device autocorrect defaults on only where the composer can tell the
@@ -333,6 +346,7 @@ class UserToolSettings {
     enableAutocorrect: json["enableAutocorrect"] as bool?,
     showDeveloperOptions: json["showDeveloperOptions"] ?? false,
     listenFirst: json["listenFirst"] ?? false,
+    hearItFirst: json["hearItFirst"] ?? false,
   );
 
   Map<String, dynamic> toJson() {
@@ -351,6 +365,7 @@ class UserToolSettings {
     }
     data["showDeveloperOptions"] = showDeveloperOptions;
     data["listenFirst"] = listenFirst;
+    data["hearItFirst"] = hearItFirst;
     return data;
   }
 
@@ -404,6 +419,7 @@ class UserToolSettings {
     bool setEnableAutocorrectNull = false,
     bool? showDeveloperOptions,
     bool? listenFirst,
+    bool? hearItFirst,
   }) {
     return UserToolSettings(
       interactiveTranslator:
@@ -421,6 +437,7 @@ class UserToolSettings {
           : (enableAutocorrect ?? enableAutocorrectChoice),
       showDeveloperOptions: showDeveloperOptions ?? this.showDeveloperOptions,
       listenFirst: listenFirst ?? this.listenFirst,
+      hearItFirst: hearItFirst ?? this.hearItFirst,
     );
   }
 
@@ -440,7 +457,8 @@ class UserToolSettings {
         other.audioOnMessageClick == audioOnMessageClick &&
         other.enableAutocorrectChoice == enableAutocorrectChoice &&
         other.showDeveloperOptions == showDeveloperOptions &&
-        other.listenFirst == listenFirst;
+        other.listenFirst == listenFirst &&
+        other.hearItFirst == hearItFirst;
   }
 
   @override
@@ -457,6 +475,7 @@ class UserToolSettings {
     enableAutocorrectChoice.hashCode,
     showDeveloperOptions.hashCode,
     listenFirst.hashCode,
+    hearItFirst.hashCode,
   ]);
 }
 

@@ -28,10 +28,12 @@ import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/notifications/nse_session.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -299,6 +301,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   /// The one call this app is in, if any. Panels and tiles listen here; the
   /// session itself owns the call's lifecycle, so navigation never touches it.
+  ///
+  /// Held here, above the router, rather than by a page: a page that owned the
+  /// call hung it up when the page was disposed, which made leaving the chat
+  /// during a call impossible (voice-video-calls.instructions.md, "The call").
   final ValueNotifier<call_ui.CallSession?> activeCall = ValueNotifier(null);
 
   /// The standing offer to return to a call a reload interrupted.
@@ -733,6 +739,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // Nothing below this widget rebuilds on an active-account change (see
       // [accounts]), so anything holding per-account state has to be told.
       _accountsChanged();
+      // The Mission XP cache holds one account's XP and records; it rewires
+      // to this one, or drops the old read until this one's analytics start.
+      MissionXpCache.instance.ensureWired();
       // Pangea#
     } else {
       Logs().w('Tried to set an unknown client ${cl!.userID} as active');
@@ -865,9 +874,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 _loginClientCandidate = null;
                 // #Pangea
                 // FluffyChatApp.router.go('/backup');
-                final isL2Set =
-                    await pangeaController.userController.isUserL2Set;
-                if (!isL2Set) {
+                final finished =
+                    await pangeaController.userController.finishedOnboarding;
+                if (!finished) {
                   // A new user's onboarding joins with any join code in the
                   // destination cached across the login bounce and clears it
                   // at completion (user_type_onboarding_step.dart); any other
@@ -928,29 +937,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     });
   }
 
-  String? get activeRoomId {
-    final route = FluffyChatApp.router.routeInformationProvider.value.uri.path;
-    // #Pangea
-    // world_v2: open chats also live under /courses/:spaceid/:roomid and
-    // /analytics/activities/:roomid.
-    if (!route.startsWith('/rooms/') &&
-        !route.startsWith('/courses/') &&
-        !route.startsWith('/analytics/activities/')) {
-      return null;
-    }
-    // if (!route.startsWith('/rooms/')) return null;
-    // Pangea#
-    // #Pangea
-    // return route.split('/')[2];
-    // world_v2 URLs carry a bare localpart; re-attach the home server_name so
-    // this matches full event room ids (e.g. notification suppression).
-    final roomId = FluffyChatApp.router.state.pathParameters['roomid'];
-    if (roomId == null || roomId.contains(':')) return roomId;
-    final userId = client.userID;
-    final sep = userId?.indexOf(':') ?? -1;
-    return sep == -1 ? roomId : '$roomId:${userId!.substring(sep + 1)}';
-    // Pangea#
-  }
+  /// The chat open on screen, which gets no notification for its own messages.
+  /// The workspace URL carries it as a `room:` panel token, not a path
+  /// segment (#9666).
+  String? get activeRoomId => activeRoomIdFromPanels(
+    FluffyChatApp.router.routeInformationProvider.value.uri,
+  );
 
   final linuxNotifications = PlatformInfos.isLinux
       ? NotificationsClient()
@@ -1052,17 +1044,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   void setAppLanguage() {
     if (!mounted) return;
     try {
-      final settings = pangeaController.userController.profile.userSettings;
-      // Immersion: show the app in the target language when the user opts in,
-      // otherwise their source/native language. Falls back to source (then
-      // system) if the target isn't set.
-      final appLanguage = settings.appLanguageIsTarget
-          ? (settings.targetLanguage ?? settings.sourceLanguage)
-          : settings.sourceLanguage;
-      Provider.of<LocaleProvider>(
-        context,
-        listen: false,
-      ).setLocale(appLanguage);
+      Provider.of<LocaleProvider>(context, listen: false).setLocale(
+        pangeaController.userController.profile.userSettings.appLanguage,
+      );
     } catch (e, s) {
       Logs().e('Error setting app language', e);
       ErrorHandler.logError(e: e, s: s, data: {});
@@ -1228,14 +1212,15 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           if (identical(backgroundPush?.client, c)) {
             unawaited(backgroundPush?.setupPush());
           }
-          final isL2Set = await pangeaController.userController.isUserL2Set;
+          final finished =
+              await pangeaController.userController.finishedOnboarding;
           // Not unconditionally the world map. This state also means "the
           // session finished restoring", which on a cold start lands AFTER the
           // app has resolved the URL the user opened — and going to the map
           // then throws that URL away. See [PAuthGaurd.loggedInLanding].
           final landing = PAuthGaurd.loggedInLanding(
             current: FluffyChatApp.router.routeInformationProvider.value.uri,
-            isL2Set: isL2Set,
+            finishedOnboarding: finished,
           );
           if (landing != null) FluffyChatApp.router.go(landing);
         } else {

@@ -191,6 +191,8 @@ fvm dart format lib/ test/
 Or just run [`scripts/format.sh`](scripts/format.sh) — it formats `lib/` and `test/` with the
 pinned SDK, locates fvm even when it isn't on your PATH, and runs `fvm install` on first use.
 
+Scripts that run Flutter locally (`scripts/format.sh`, `scripts/add-firebase-messaging.sh`) find fvm through [`scripts/lib/fvm.sh`](scripts/lib/fvm.sh) and stop with install instructions if it is missing. In CI (`CI=true`), `add-firebase-messaging.sh` uses the Flutter that `subosito/flutter-action` installed instead.
+
 This repo's tracked [`.vscode/settings.json`](.vscode/settings.json) points the Dart/Flutter
 extension at `.fvm/flutter_sdk`, so once you've run `fvm install`, VS Code's format-on-save and
 analyzer use the pinned version automatically. To bump the version, change it in **both**

@@ -1,18 +1,30 @@
 import 'package:flutter/material.dart';
 
+import 'package:uuid/uuid.dart';
+
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
+import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
 
 class ExampleMessageInfo {
   final List<InlineSpan> exampleMessage;
 
-  const ExampleMessageInfo({required this.exampleMessage});
+  /// The message offset of the first character of the spans' text (the
+  /// ellipsis markers aside), so a token's offset maps to an index into that
+  /// text as `offset - textOffset`. The slice starts at the message start
+  /// when nothing was trimmed before the target, whatever the first token's
+  /// offset is: a message may open with characters no token covers.
+  final int textOffset;
+
+  const ExampleMessageInfo({required this.exampleMessage, this.textOffset = 0});
 
   Map<String, dynamic> toJson() {
     final segments = <Map<String, dynamic>>[];
@@ -26,7 +38,7 @@ class ExampleMessageInfo {
       }
     }
 
-    return {'segments': segments};
+    return {'segments': segments, 'text_offset': textOffset};
   }
 
   factory ExampleMessageInfo.fromJson(Map<String, dynamic> json) {
@@ -45,7 +57,10 @@ class ExampleMessageInfo {
       );
     }
 
-    return ExampleMessageInfo(exampleMessage: spans);
+    return ExampleMessageInfo(
+      exampleMessage: spans,
+      textOffset: json['text_offset'] as int? ?? 0,
+    );
   }
 }
 
@@ -113,6 +128,39 @@ class AnalyticsPracticeTarget {
       );
 }
 
+/// One word a vocab session practices, picked once when its start page opens,
+/// with the exercise types that can be made for it. The start page's chips
+/// only decide which of those it gets (practice-exercises.instructions.md,
+/// "Start page").
+class PracticeWord {
+  final PangeaToken token;
+  final Set<LearningSkillsEnum> skills;
+
+  /// Wrong answers for its meaning exercise, for a word from a Mission plan.
+  final List<ConstructIdentifier> distractorCandidates;
+
+  const PracticeWord({
+    required this.token,
+    required this.skills,
+    this.distractorCandidates = const [],
+  });
+
+  AnalyticsPracticeTarget targetFor(LearningSkillsEnum skill) =>
+      AnalyticsPracticeTarget(
+        target: PracticeTarget(
+          tokens: [token],
+          exerciseType: switch (skill) {
+            LearningSkillsEnum.hearing => PracticeExerciseTypeEnum.lemmaAudio,
+            LearningSkillsEnum.speaking => PracticeExerciseTypeEnum.readAloud,
+            _ => PracticeExerciseTypeEnum.lemmaMeaning,
+          },
+          distractorCandidates: skill == LearningSkillsEnum.reading
+              ? distractorCandidates
+              : const [],
+        ),
+      );
+}
+
 class AnalyticsPracticeSessionModel {
   /// Wall-clock zero, stamped by [markStarted] when the first exercise is on
   /// screen — NOT when the session's targets were picked. Null until then, so
@@ -136,9 +184,28 @@ class AnalyticsPracticeSessionModel {
   /// practice-exercises.instructions.md, "Offline Practice".
   final bool offline;
 
+  /// The exercise types this vocab session practices, and those this device
+  /// had words for when it was picked, for the start page's chips; both
+  /// empty for grammar. See practice-exercises.instructions.md, "Start page".
+  final Set<LearningSkillsEnum> skills;
+  final Set<LearningSkillsEnum> availableSkills;
+
+  /// A vocab session's words, in the order picked; empty for grammar.
+  final List<PracticeWord> words;
+
+  /// How many exercises the session plans to show, when fewer than
+  /// [AnalyticsPracticeConstants.practiceGroupSize] because some of its words
+  /// have no exercise among the start page's chips.
+  final int? plannedSize;
+
+  /// Written on every use this session records, so a teacher's view can
+  /// group them without guessing from their times.
+  final String id;
+
   AnalyticsPracticeSessionState state;
 
   AnalyticsPracticeSessionModel({
+    String? id,
     this.startedAt,
     required this.type,
     required this.practiceTargets,
@@ -147,18 +214,113 @@ class AnalyticsPracticeSessionModel {
     this.missionId,
     this.missionLabel,
     this.offline = false,
+    this.skills = const {},
+    this.availableSkills = const {},
+    this.words = const [],
+    this.plannedSize,
     AnalyticsPracticeSessionState? state,
-  }) : state = state ?? const AnalyticsPracticeSessionState();
+  }) : id = id ?? const Uuid().v4(),
+       state = state ?? const AnalyticsPracticeSessionState();
+
+  /// A vocab session over [words]: the first
+  /// [AnalyticsPracticeConstants.practiceGroupSize] are the ones it plans to
+  /// show and the rest are spares. It practices the [skills] its planned
+  /// words can take, or all of those when none of [skills] can be. A word
+  /// left with no exercise drops out, and no spare takes its place.
+  factory AnalyticsPracticeSessionModel.vocab({
+    required List<PracticeWord> words,
+    required Set<LearningSkillsEnum> skills,
+    required String userL1,
+    required String userL2,
+    String? missionId,
+    String? missionLabel,
+    bool offline = false,
+  }) {
+    final groupSize = AnalyticsPracticeConstants.practiceGroupSize;
+    final available = {
+      for (final word in words.take(groupSize)) ...word.skills,
+    };
+    var practiced = skills.intersection(available);
+    if (practiced.isEmpty) practiced = available;
+    final planned = [
+      for (final word in words.take(groupSize))
+        if (word.skills.any(practiced.contains)) word,
+    ];
+    final spares = [
+      for (final word in words.skip(groupSize))
+        if (word.skills.any(practiced.contains)) word,
+    ];
+    return AnalyticsPracticeSessionModel(
+      type: ConstructTypeEnum.vocab,
+      practiceTargets: dealSkills([...planned, ...spares], practiced),
+      userL1: userL1,
+      userL2: userL2,
+      missionId: missionId,
+      missionLabel: missionLabel,
+      offline: offline,
+      skills: practiced,
+      availableSkills: available,
+      words: words,
+      plannedSize: planned.length,
+    );
+  }
+
+  /// The same words dealt for other start page chips.
+  AnalyticsPracticeSessionModel withSkills(Set<LearningSkillsEnum> skills) =>
+      AnalyticsPracticeSessionModel.vocab(
+        words: words,
+        skills: skills,
+        userL1: userL1,
+        userL2: userL2,
+        missionId: missionId,
+        missionLabel: missionLabel,
+        offline: offline,
+      );
+
+  /// Listening first on a tie, then speaking, so the two take turns.
+  static const List<LearningSkillsEnum> _dealOrder = [
+    LearningSkillsEnum.hearing,
+    LearningSkillsEnum.speaking,
+    LearningSkillsEnum.reading,
+  ];
+
+  /// One exercise per word: each gets the type among [skills] it can take
+  /// that has been dealt least so far. An even share keeps speaking in every
+  /// session that has it on without an item that needs a microphone and the
+  /// network dominating it (practice-exercises.instructions.md, "Speaking
+  /// practice").
+  @visibleForTesting
+  static List<AnalyticsPracticeTarget> dealSkills(
+    List<PracticeWord> words,
+    Set<LearningSkillsEnum> skills,
+  ) {
+    final dealt = <LearningSkillsEnum, int>{};
+    final targets = <AnalyticsPracticeTarget>[];
+    for (final word in words) {
+      LearningSkillsEnum? pick;
+      for (final skill in _dealOrder) {
+        if (!skills.contains(skill) || !word.skills.contains(skill)) continue;
+        if (pick == null || (dealt[skill] ?? 0) < (dealt[pick] ?? 0)) {
+          pick = skill;
+        }
+      }
+      if (pick == null) continue;
+      dealt[pick] = (dealt[pick] ?? 0) + 1;
+      targets.add(word.targetFor(pick));
+    }
+    return targets;
+  }
 
   // Maximum activities to attempt (including skips)
   int get _maxAttempts => AnalyticsPracticeConstants.targetsToGenerate
       .clamp(0, practiceTargets.length)
       .toInt();
 
-  int get _completionGoal => AnalyticsPracticeConstants.practiceGroupSize.clamp(
-    0,
-    practiceTargets.length,
-  );
+  int get _completionGoal =>
+      (plannedSize ?? AnalyticsPracticeConstants.practiceGroupSize).clamp(
+        0,
+        practiceTargets.length,
+      );
 
   // Total attempted so far (completed + skipped)
   int get _totalAttempted => state.currentIndex + state.skippedActivities;
@@ -172,6 +334,22 @@ class AnalyticsPracticeSessionModel {
   }
 
   bool get loadFailed => isComplete && state.currentIndex == 0;
+
+  /// The distinct words (vocab) or grammar points among the exercises the
+  /// session plans to show, which the start page counts. A spare standing in
+  /// for a failed or skipped exercise can change them a little.
+  List<PracticeTarget> get plannedPoints {
+    final seen = <Object>{};
+    return [
+      for (final planned in practiceTargets.take(_completionGoal))
+        if (seen.add(
+          type == ConstructTypeEnum.vocab
+              ? planned.target.tokens.first.vocabConstructID
+              : planned.target,
+        ))
+          planned.target,
+    ];
+  }
 
   double get progress {
     final possibleCompletions =
@@ -202,7 +380,7 @@ class AnalyticsPracticeSessionModel {
   /// Returns congratulations message based on performance
   String getCompletionMessage(BuildContext context) {
     final hasTimeBonus =
-        state.elapsedSeconds <= AnalyticsPracticeConstants.timeForBonus;
+        state.bonusClockSeconds <= AnalyticsPracticeConstants.timeForBonus;
     final hintsUsed = state.hintsUsed;
 
     final bool perfectAccuracy = state.accuracy == 100;
@@ -235,7 +413,17 @@ class AnalyticsPracticeSessionModel {
   void setElapsedSeconds(int seconds) =>
       state = state.copyWith(elapsedSeconds: seconds);
 
-  void finishSession() => state = state.copyWith(finished: true);
+  /// Time a read-aloud item was on screen. It stays on the displayed clock but
+  /// is taken off the speed bonus, because rushing a read defeats the point
+  /// (practice-exercises.instructions.md, "Scoring").
+  void addReadAloudSeconds(int seconds) => state = state.copyWith(
+    readAloudSeconds: state.readAloudSeconds + seconds,
+  );
+
+  /// Ends the session and fixes its bonus uses, so the ones recorded are the
+  /// ones the completion view measures.
+  void finishSession() =>
+      state = state.copyWith(finished: true, bonusUses: state.earnedBonusUses);
 
   void completeExercise() =>
       state = state.copyWith(currentIndex: state.currentIndex + 1);
@@ -246,10 +434,24 @@ class AnalyticsPracticeSessionModel {
   void submitAnswer(List<OneConstructUse> uses) =>
       state = state.copyWith(completedUses: [...state.completedUses, ...uses]);
 
+  /// [uses] carrying this session's [id].
+  List<OneConstructUse> ownUses(List<OneConstructUse> uses) => [
+    for (final use in uses)
+      use.copyWith(
+        metadata: ConstructUseMetaData(
+          eventId: use.metadata.eventId,
+          roomId: use.metadata.roomId,
+          timeStamp: use.metadata.timeStamp,
+          sessionId: id,
+        ),
+      ),
+  ];
+
   void useHint() => state = state.copyWith(hintsUsed: state.hintsUsed + 1);
 
   factory AnalyticsPracticeSessionModel.fromJson(Map<String, dynamic> json) {
     return AnalyticsPracticeSessionModel(
+      id: json['id'] as String?,
       startedAt: json['startedAt'] != null
           ? DateTime.parse(json['startedAt'] as String)
           : null,
@@ -272,6 +474,7 @@ class AnalyticsPracticeSessionModel {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'startedAt': startedAt?.toIso8601String(),
       'type': type.name,
       'practiceTargets': practiceTargets.map((e) => e.toJson()).toList(),
@@ -294,6 +497,12 @@ class AnalyticsPracticeSessionState {
   final int elapsedSeconds;
   final int skippedActivities;
 
+  /// Seconds spent on read-aloud items, excluded from the speed bonus.
+  final int readAloudSeconds;
+
+  /// The bonus uses recorded when the session finished; empty until then.
+  final List<OneConstructUse> bonusUses;
+
   const AnalyticsPracticeSessionState({
     this.completedUses = const [],
     this.currentIndex = 0,
@@ -301,9 +510,16 @@ class AnalyticsPracticeSessionState {
     this.hintsUsed = 0,
     this.elapsedSeconds = 0,
     this.skippedActivities = 0,
+    this.readAloudSeconds = 0,
+    this.bonusUses = const [],
   });
 
-  int get totalXpGained => completedUses.fold(0, (sum, use) => sum + use.xp);
+  /// The clock the speed bonus is judged on: elapsed time less the time
+  /// read-aloud items were on screen.
+  int get bonusClockSeconds => elapsedSeconds - readAloudSeconds;
+
+  /// Every use the session recorded: its answers, then its bonuses.
+  List<OneConstructUse> get recordedUses => [...completedUses, ...bonusUses];
 
   double get accuracy {
     if (completedUses.isEmpty) return 0.0;
@@ -315,9 +531,7 @@ class AnalyticsPracticeSessionState {
   bool get _giveAccuracyBonus => accuracy >= 100.0;
 
   bool get _giveTimeBonus =>
-      elapsedSeconds <= AnalyticsPracticeConstants.timeForBonus;
-
-  int get bonusXP => accuracyBonusXP + timeBonusXP;
+      bonusClockSeconds <= AnalyticsPracticeConstants.timeForBonus;
 
   int get accuracyBonusXP => _giveAccuracyBonus ? _bonusXP : 0;
 
@@ -325,12 +539,12 @@ class AnalyticsPracticeSessionState {
 
   int get _bonusXP => _bonusUses.fold(0, (sum, use) => sum + use.xp);
 
-  int get allXPGained => totalXpGained + bonusXP;
-
   List<OneConstructUse> get _bonusUses =>
       completedUses.where((use) => use.xp > 0).map(_bonusUse).toList();
 
-  List<OneConstructUse> get allBonusUses => [
+  /// The bonus uses the answers so far earn, freshly stamped on each read;
+  /// [AnalyticsPracticeSessionModel.finishSession] fixes them as [bonusUses].
+  List<OneConstructUse> get earnedBonusUses => [
     if (_giveAccuracyBonus) ..._bonusUses,
     if (_giveTimeBonus) ..._bonusUses,
   ];
@@ -341,6 +555,7 @@ class AnalyticsPracticeSessionState {
     metadata: ConstructUseMetaData(
       roomId: originalUse.metadata.roomId,
       timeStamp: DateTime.now(),
+      sessionId: originalUse.metadata.sessionId,
     ),
     category: originalUse.category,
     lemma: originalUse.lemma,
@@ -355,6 +570,8 @@ class AnalyticsPracticeSessionState {
     int? hintsUsed,
     int? elapsedSeconds,
     int? skippedActivities,
+    int? readAloudSeconds,
+    List<OneConstructUse>? bonusUses,
   }) {
     return AnalyticsPracticeSessionState(
       completedUses: completedUses ?? this.completedUses,
@@ -363,6 +580,8 @@ class AnalyticsPracticeSessionState {
       hintsUsed: hintsUsed ?? this.hintsUsed,
       elapsedSeconds: elapsedSeconds ?? this.elapsedSeconds,
       skippedActivities: skippedActivities ?? this.skippedActivities,
+      readAloudSeconds: readAloudSeconds ?? this.readAloudSeconds,
+      bonusUses: bonusUses ?? this.bonusUses,
     );
   }
 
@@ -374,22 +593,28 @@ class AnalyticsPracticeSessionState {
       'hintsUsed': hintsUsed,
       'elapsedSeconds': elapsedSeconds,
       'skippedActivities': skippedActivities,
+      'readAloudSeconds': readAloudSeconds,
+      'bonusUses': bonusUses.map((e) => e.toJson()).toList(),
     };
   }
 
   factory AnalyticsPracticeSessionState.fromJson(Map<String, dynamic> json) {
     return AnalyticsPracticeSessionState(
-      completedUses:
-          (json['completedUses'] as List<dynamic>?)
-              ?.map((e) => OneConstructUse.fromJson(e))
-              .whereType<OneConstructUse>()
-              .toList() ??
-          [],
+      completedUses: _usesFromJson(json['completedUses']),
       currentIndex: json['currentIndex'] as int? ?? 0,
       finished: json['finished'] as bool? ?? false,
       hintsUsed: json['hintsUsed'] as int? ?? 0,
       elapsedSeconds: json['elapsedSeconds'] as int? ?? 0,
       skippedActivities: json['skippedActivities'] as int? ?? 0,
+      readAloudSeconds: json['readAloudSeconds'] as int? ?? 0,
+      bonusUses: _usesFromJson(json['bonusUses']),
     );
   }
+
+  static List<OneConstructUse> _usesFromJson(Object? json) =>
+      (json as List<dynamic>?)
+          ?.map((e) => OneConstructUse.fromJson(e))
+          .whereType<OneConstructUse>()
+          .toList() ??
+      [];
 }

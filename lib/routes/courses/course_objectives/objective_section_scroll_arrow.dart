@@ -20,12 +20,21 @@ enum ArrowDirection {
 }
 
 class ObjectiveSectionScrollArrow extends StatelessWidget {
+  /// How wide the strip is: the chevron and its padding.
+  static const double width = 40.0;
+
   final ArrowDirection direction;
   final VoidCallback onTap;
+
+  /// Narrows the band the chevron centres in, for a strip that covers more
+  /// than the content it scrolls past (the Mission circles' row, #9602).
+  final EdgeInsets chevronInsets;
+
   const ObjectiveSectionScrollArrow({
     super.key,
     required this.direction,
     required this.onTap,
+    this.chevronInsets = EdgeInsets.zero,
   });
 
   @override
@@ -54,7 +63,8 @@ class ObjectiveSectionScrollArrow extends StatelessWidget {
           behavior: HitTestBehavior.opaque,
           onTap: onTap,
           child: Container(
-            padding: const EdgeInsets.all(8.0),
+            width: width,
+            padding: const EdgeInsets.all(8.0) + chevronInsets,
             decoration: BoxDecoration(color: theme.colorScheme.surface),
             child: Center(child: Icon(direction.icon)),
           ),

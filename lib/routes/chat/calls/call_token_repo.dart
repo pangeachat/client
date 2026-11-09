@@ -14,6 +14,14 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 /// fail, and the failure is invisible from the SFU's side: the siblings simply
 /// never hear anything, which reads exactly like a device that has nothing to
 /// say.
+///
+/// That calls work is no evidence the permission is present: the election
+/// degrades silently and safely without it. The two-devices arbiter
+/// (call-device-ownership.instructions.md) degrades loudly instead: no
+/// `pangea_chosen` lands, every sibling reads as an older build, and every
+/// two-device call shows the older-version prompt for the wrong reason. Safe,
+/// because it yields silence rather than duplicate credit; not acceptable as a
+/// steady state.
 enum MetadataGrant {
   /// The video grant carries `canUpdateOwnMetadata`.
   granted,

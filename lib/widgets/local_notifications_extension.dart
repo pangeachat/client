@@ -105,7 +105,12 @@ extension LocalNotificationsExtension on MatrixState {
       // #Pangea
       _audioPlayer.volume = AppSettings.volume.value;
       // Pangea#
-      _audioPlayer.play();
+      // silent-ok: the browser refuses the sound until the learner has
+      // interacted with the page, and older Safari cannot play .ogg; the
+      // notification below still shows (#9666).
+      _audioPlayer.play().catchError((Object e) {
+        Logs().d('Notification sound refused by the browser', e);
+      });
 
       html.Notification(
         title,

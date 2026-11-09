@@ -228,11 +228,13 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   /// Whether THIS list instance is the one that runs the course tutorial.
   ///
-  /// The course page's Activities row and its pushed full-plan subpage can both
-  /// be mounted — so exactly one is allowed to claim the carousel target and
-  /// drive the sequence. The Activities row wins: it is what a learner sees when
-  /// they open the course. A preview of an unjoined plan teaches nothing and is
-  /// excluded by having no room.
+  /// The course page and its full-plan subpage, pushed within the card, can
+  /// both be mounted — so exactly one is allowed to drive the sequence. The
+  /// course page wins: it is what a learner sees when they open the course. A
+  /// preview of an unjoined plan runs nothing — there is no learner progress to
+  /// explain — and is excluded by having no room. See
+  /// tutorials.instructions.md § Decisions, "The course card shows only on a
+  /// joined course's page".
   bool get _hostsTutorial => widget.suggestedOnly && widget.room != null;
 
   void _registerTutorialLaunchers() {
@@ -316,9 +318,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       tutorial: TutorialModel(
         tutorialType: TutorialEnum.coursePlan,
         stepsData: [
-          // Lights the whole course panel — header, progress and plan — so the
-          // step is plainly about THIS course. A full-height target leaves no
-          // room beside it, so the card is seated at the bottom of the panel.
+          // Lights the whole course panel — header, Mission circles and Mission
+          // card together — so the step is plainly about THIS course. A
+          // full-height target leaves no room beside it, so the card is seated
+          // at the bottom of the panel.
           TutorialStepData.single(
             targetKey: TutorialTargetIds.coursePanel,
             canShowNextStep: () => true,
@@ -408,6 +411,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   Future<void> _loadAvailableParticipants() async {
     final room = widget.room;
     if (room == null) return; // A preview has no members — nothing to dim.
+    // Nor does a course the learner hasn't joined: the server refuses its
+    // member list, and an unknown count dims nothing, as on the map (#9707).
+    if (room.membership != Membership.join) return;
     final available = await room.availableActivityParticipants();
     // Rebuild only on a real change — the sync handler calls this frequently.
     if (!mounted || available == _availableParticipants) return;
@@ -522,14 +528,23 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   void _practiceMission(String missionId) =>
       startPractice(context, ConstructTypeEnum.vocab, missionId: missionId);
 
-  void _openSession(String roomId) {
+  /// Reopen session [roomId] from [missionId]'s card, which rides the URL so
+  /// the course comes back on it (quests.instructions.md, "The Mission on
+  /// show").
+  void _openSession(String roomId, String missionId) {
     PanelEntryIntent.instance.armForSwap();
+    final uri = GoRouterState.of(context).uri;
     context.go(
-      WorkspaceNav.openRoomById(GoRouterState.of(context).uri, roomId),
+      WorkspaceNav.openRoomById(
+        Uri.parse(WorkspaceNav.selectMission(uri, missionId)),
+        roomId,
+      ),
     );
   }
 
-  void _openActivity(QuestActivity ref) {
+  /// Open [ref], listed under [missionId] on the Mission card or the full
+  /// course plan.
+  void _openActivity(QuestActivity ref, String missionId) {
     if (widget.readOnly) return;
     final room = widget.room;
     // The activity takes the card's slot, and the pressed card goes with it,
@@ -549,17 +564,25 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       return;
     }
     // Immersive in-course open: the token producer drops the `left=course`
-    // card (and any right panel) and keeps the `?m=course:` scope, so the plan
-    // takes the card's slot and backs out to it. A video hero autostarts
-    // (muted).
+    // card (and any right panel) and keeps the `?c=` scope, so the plan takes
+    // the card's slot and backs out to it, and a session started from it
+    // closes back to the card. The activity's Mission rides the URL, so the
+    // card comes back on it (#9632). A video hero sets the token's autoplay
+    // field, which nothing reads today, so nothing plays until tapped.
     context.go(
-      WorkspaceNav.openCourseActivity(
-        room.id,
-        ref.activityId,
-        autoplay:
-            ref.plan.heroBlock?.isVideo == true ||
-            ref.plan.heroBlock?.isYoutube == true,
-        fromCoursePlan: _isFullCoursePlan,
+      WorkspaceNav.selectMission(
+        Uri.parse(
+          WorkspaceNav.openCourseActivity(
+            room.id,
+            ref.activityId,
+            autoplay:
+                ref.plan.heroBlock?.isVideo == true ||
+                ref.plan.heroBlock?.isYoutube == true,
+            fromCoursePlan: _isFullCoursePlan,
+            fromCourseCard: true,
+          ),
+        ),
+        missionId,
       ),
     );
   }
@@ -709,8 +732,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       onPlay: widget.readOnly || playTarget == null
                           ? null
                           : ongoingRoomId != null
-                          ? () => _openSession(ongoingRoomId)
-                          : () => _openActivity(playTarget),
+                          ? () => _openSession(ongoingRoomId, missionId)
+                          : () => _openActivity(playTarget, missionId),
                       playLabel: ongoingRoomId != null
                           ? l10n.missionContinueActivity
                           : replay
@@ -765,9 +788,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                                 final ongoingId = widget.room
                                     ?.activeActivityRoomId(activity.activityId);
                                 if (ongoingId != null) {
-                                  _openSession(ongoingId);
+                                  _openSession(ongoingId, missionId);
                                 } else {
-                                  _openActivity(activity);
+                                  _openActivity(activity, missionId);
                                 }
                               },
                               xpByActivity: (id) =>
@@ -862,7 +885,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                                 group.objective.id,
                               )
                             : null,
-                        onTap: _openActivity,
+                        onTap: (activity) =>
+                            _openActivity(activity, group.objective.id),
                         xpByActivity: (id) => xpByActivity[id]?.total ?? 0,
                         liveStateByActivity: _liveStateFor,
                         availableParticipants: _availableParticipants,

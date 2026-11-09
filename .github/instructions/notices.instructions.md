@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/features/notifications/notification_tap_utils.dart,lib/features/bot/bot_event_extension.dart,lib/routes/chat/bot_notice_widget.dart"
+applyTo: "lib/features/notifications/notification_tap_utils.dart,lib/features/notifications/open_session_notice.dart,lib/features/bot/bot_event_extension.dart,lib/routes/chat/bot_notice_widget.dart"
 description: "How the client opens an engagement notice, from its push or from the notice in the bot DM, and how a notice shows in the bot DM."
 ---
 
@@ -12,12 +12,14 @@ A notice is a message the engagement runner sends a learner under the bot's iden
 - **A notice that names a session** opens that session if the learner is still in it. If they have left it, the activity's page opens with that session attached. No course opens, because the notice names no course.
 - **A notice with an app path** opens that path the same way a URL typed in the address bar opens. So a short link such as `/<activityId>` becomes its activity token in the same way.
 - **A notice with neither** has a destination outside the app, so its push opens the bot DM, where the notice shows.
+- **The open-session notice** opens its session like any notice that names one, and the waiting room then offers Play with Pangea Bot ([activities](activities.instructions.md#the-start-page-mirrors-the-room)).
 
 The client follows an app path only from the bot: the notice must be in the learner's bot DM (`isBotDM`), and its sender must be the bot account. This is because some paths do more than open a page (a join-code link submits the join), and any Matrix user can put these keys into an event they send. `isBotDM` alone is not enough. It also accepts a room whose bot settings say direct chat, and any member who can change that room's settings can write that. The client ignores a path from any other sender or room, and the tap opens the room as usual.
 
 ## The notice in the bot DM
 
 - **Which notices show.** Every notice the bot sent into the bot DM shows, except `suggest_topic`. When the learner reads a `suggest_topic` notice, pangea-bot posts the topic as a normal bot message ([pangea-bot notices](../../../pangea-bot/.github/instructions/engagement.instructions.md)), so showing the notice as well would show the topic twice. Notices in other rooms stay hidden. Notices that pangea-bot sent before the engagement runner took over also show, in the DM's history at their original times. This is expected.
+- **Reading a hidden notice.** Opening the bot DM counts as reading a `suggest_topic` notice the learner has not read yet, from its push or not. The app sends a read receipt even though nothing new shows, because that receipt is what tells pangea-bot to post the topic. The receipt follows the learner's read-receipt setting, so a learner who keeps read receipts private does not get the topic.
 - **What it looks like.** The notice's `body` shows as a plain message from the bot ([`BotNoticeWidget`](../../lib/routes/chat/bot_notice_widget.dart)), with no toolbar, reading assistance or other message tools. A notice with a destination has an Open button under the text. Tapping it goes where the notice's push tap goes.
 - **Chat list.** A notice never becomes the DM's preview line in the chat list.
 

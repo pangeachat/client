@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
+import 'package:fluffychat/routes/chat_list/chat_list_search.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 /// The chat list's search FIELD row, extracted so two hosts can render it:
@@ -11,7 +12,7 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 /// [autofocus] so opening search lands the keyboard in the field, and
 /// [onClose] so the field's close control also collapses the row).
 class PangeaChatListSearchField extends StatefulWidget {
-  final ChatListController controller;
+  final ChatListSearch controller;
   final bool autofocus;
   final VoidCallback? onClose;
 

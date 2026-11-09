@@ -2,6 +2,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/quests/can_do_progress.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
@@ -46,12 +47,20 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 /// per course room would multiply one suppression event by however many
 /// joined courses race the rebuild — exactly the volume this function's
 /// per-room throttle exists to prevent for every other error.
+///
+/// The course progress check (`CourseProgressWriter`) reads outlines too and
+/// reports through here for the same skips, under its own [keyPrefix] and
+/// [tags]: its failure skips a record write, not a rebuild, and sharing the
+/// rebuilds' key hid it whenever a surface had already reported the course
+/// (#9681).
 Future<bool> reportCourseOutlineFailure(
   String roomId,
   String questId,
   Object error,
-  StackTrace stack,
-) {
+  StackTrace stack, {
+  String keyPrefix = 'course-outline-resolve',
+  Map<String, String>? tags,
+}) {
   if (error is RateLimitedException) return Future.value(false);
   // A missing quest is reported by the repo itself — once per quest id per
   // session at the actual fetch (`quest-plan-404:<id>`), with real fetches
@@ -62,11 +71,12 @@ Future<bool> reportCourseOutlineFailure(
   // dead quest (#8691).
   if (error is MissingQuestException) return Future.value(false);
   return ErrorHandler.logErrorOnce(
-    key: 'course-outline-resolve:$roomId',
+    key: '$keyPrefix:$roomId',
     e: error,
     s: stack,
     data: {'courseRoomId': roomId, 'questId': questId},
     level: courseOutlineErrorLevel(error),
+    tags: tags,
   );
 }
 
@@ -104,11 +114,14 @@ class JoinedObjectiveCache {
   /// [inScope] keeps only the courses whose progress counts — the app passes
   /// [CourseLanguageScope.courseInTargetLanguage], so a course in another
   /// language resolves no progress at all rather than its goals without its XP
-  /// (#9559). Null resolves every outline.
+  /// (#9559). Null resolves every outline. [recordedByCourse] is the
+  /// learner's progress record per joined course, which keeps a recorded
+  /// completion complete.
   ProgressionResolution resolution(
     Map<String, int> xpByActivity, {
     Iterable<CourseLoOutline> extraOutlines = const [],
     Map<String, int> practiceXpByLemma = const {},
+    Map<String, Map<String, CanDoProgress>> recordedByCourse = const {},
     bool Function(String courseId)? inScope,
   }) => resolveProgression(
     outlines: [
@@ -117,7 +130,28 @@ class JoinedObjectiveCache {
     ],
     xpByActivity: xpByActivity,
     practiceXpByLemma: practiceXpByLemma,
+    recordedByCourse: recordedByCourse,
   );
+
+  /// [starsByActivity] with each course's shown activities credited across
+  /// their copies, for the pins the map draws by activity id. Raw stars are
+  /// kept for every other activity; a credited one takes the larger of its own
+  /// and the credited sum, across the in-scope courses.
+  Map<String, int> creditedStars(
+    Map<String, int> starsByActivity, {
+    Iterable<CourseLoOutline> extraOutlines = const [],
+  }) {
+    var out = starsByActivity;
+    for (final outline in [..._outlines, ...extraOutlines]) {
+      if (outline.credit.isEmpty) continue;
+      final overlaid = outline.credit.overlayOn(starsByActivity);
+      if (identical(out, starsByActivity)) out = {...starsByActivity};
+      for (final entry in overlaid.entries) {
+        if (entry.value > (out[entry.key] ?? 0)) out[entry.key] = entry.value;
+      }
+    }
+    return out;
+  }
 
   /// Rebuild from the joined courses' quest outlines. [outlineOf] resolves a
   /// course key to its outline (defaults to the v3 quest read layer, which
@@ -155,6 +189,7 @@ class JoinedObjectiveCache {
               lemmasByLo: o.lemmasByLo,
               xpToComplete:
                   xpToCompleteOf?.call(key) ?? kDefaultXpToCompleteObjective,
+              credit: o.credit,
             ),
           );
         } catch (e, s) {
@@ -205,8 +240,8 @@ class JoinedObjectiveCache {
       questIdByRoom.keys.toList(),
       // A joined member's outline read carries the course room id, so the
       // quest owner's private activities are included (membership-verified
-      // server-side; activities.instructions.md § Ownership, visibility, and
-      // removal).
+      // server-side; pangeachat/.github activities.instructions.md
+      // § Ownership, visibility, and removal).
       outlineOf: (roomId) => _outlineFromQuest(
         questIdByRoom[roomId]!,
         rules: rules[roomId] ?? CourseListRules.none,
@@ -228,6 +263,8 @@ class JoinedObjectiveCache {
     final outlineResult = await QuestRepo.outline(
       uuid,
       courseRoomId: courseRoomId,
+      courseLoIds: rules.missions?.allLoIds ?? const {},
+      copyRevision: rules.revision,
     );
     final outline = outlineResult.result;
     if (outline == null) {

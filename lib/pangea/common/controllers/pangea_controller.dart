@@ -10,10 +10,12 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/bot/bot_client_extension.dart';
+import 'package:fluffychat/features/connection_status/network_help_repo.dart';
 import 'package:fluffychat/features/keyboards/keyboard_prompt_local_store.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/notifications/notifications_client_extension.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/features/user/pangea_push_rules_extension.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
@@ -119,6 +121,13 @@ class PangeaController {
     // account's first discovery pass — which never runs while it has no course
     // (#8895).
     DiscoveredSessionsCache.instance.clear();
+    // And the Mission XP cache: the next account's surfaces would show this
+    // one's XP and records, and its progress record would be written from them
+    // (#9681).
+    MissionXpCache.instance.clear();
+    // And the help-request limit is one a day per account, so the next
+    // account can ask for help with a filtered network (#9592).
+    unawaited(NetworkHelpRepo.onSignOut());
     _languageSubscription?.cancel();
     _settingsSubscription?.cancel();
     _joinSpaceSubscription?.cancel();
@@ -228,11 +237,25 @@ class PangeaController {
       cefrLevel: userController.profile.userSettings.cefrLevel.string,
     );
 
+    await _clearCache(exclude: cachesKeptOnLanguageUpdate(update));
+    await matrixState.client.updateBotOptions(
+      userController.profile.userSettings,
+    );
+    await userController.updatePublicProfile();
+  }
+
+  /// The storage boxes a language change leaves alone.
+  @visibleForTesting
+  static List<String> cachesKeptOnLanguageUpdate(LanguageUpdate update) {
     final exclude = [
       'course_location_media_storage',
       'course_location_storage',
       'course_media_storage',
       'grammar_constructs_storage',
+      // Keyed by display language and pinned version, so no language change
+      // can serve a stale plan. Erasing it blanked every saved session's
+      // goals until its plan was fetched again (#9683).
+      'activity_plan_storage',
     ];
 
     // only clear course data if the base language has changed
@@ -243,12 +266,7 @@ class PangeaController {
         'course_activity_storage',
       ]);
     }
-
-    await _clearCache(exclude: exclude);
-    await matrixState.client.updateBotOptions(
-      userController.profile.userSettings,
-    );
-    await userController.updatePublicProfile();
+    return exclude;
   }
 
   void registerStorageKey(String key) => _storageKeyRegistry.add(key);
@@ -286,5 +304,6 @@ class PangeaController {
     'notifications_request_storage',
     'subscription_app_ids_storage',
     'all_products_storage',
+    'practice_skills_storage',
   ];
 }

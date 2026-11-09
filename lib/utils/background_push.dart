@@ -442,7 +442,8 @@ class BackgroundPush {
       // '.data_message', which still gets visible notifications: flipping that
       // one would leave every build that hasn't updated with no notification at
       // all while closed. Re-registering under this ID drops the old pusher,
-      // since it shares the pushkey.
+      // since it shares the pushkey. Calls need nothing more on Android: rings
+      // arrive through this same pusher, with no change on the gateway.
       appId += '.data_only';
     }
     if (!useDeviceSpecificAppId &&
@@ -542,6 +543,9 @@ class BackgroundPush {
       ? 'ios'
       : null;
 
+  /// Mobile only. On the web an open tab rings through the in-app banner;
+  /// ringing a closed browser needs web push, a later phase
+  /// (voice-video-calls.instructions.md, "Ringing when the app is closed").
   Future<void> setupPush() async {
     Logs().d("SetupPush");
     if (client.onLoginStateChanged.value != LoginState.loggedIn ||

@@ -7,6 +7,8 @@ import 'package:http/http.dart' show ClientException;
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/analytics_data/analytics_database.dart';
+import 'package:fluffychat/features/authentication/email_link_not_clicked.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
@@ -114,10 +116,22 @@ class ErrorHandler {
   /// copied per call site drifts; a rule with one home cannot.
   static bool shouldReport(Object? e) {
     if (e is UnsubscribedException) return false;
+    // silent-ok: no access token means the client is logged out. Reads that
+    // run during logout land here, and nothing in code can fix that (#9738).
+    if (e is NotLoggedInException) return false;
+    // silent-ok: sign-out deleted the analytics store under a read that was
+    // still running, the same race as above (#9802). A store closed by
+    // anything else is still reported.
+    if (e is AnalyticsDatabaseClosedException && e.closedBySignOut) {
+      return false;
+    }
     // A request timeout while the app is not resumed describes the device's
     // sleep, not the network: the OS suspends the socket and every pending
     // timer fires together on wake (severity table, Timeout row; #9132).
     if (e is TimeoutException && _appNotResumed) return false;
+    // silent-ok: the learner confirmed an emailed link before clicking it.
+    // The dialog tells them to click it; nothing in code can fix it.
+    if (e is MatrixException && e.isEmailLinkNotYetClicked) return false;
     return true;
   }
 

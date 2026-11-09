@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-22 09:50:22.221021",
+    "@@last_modified": "2026-11-06 13:11:04.076903",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -2133,7 +2133,7 @@
             }
         }
     },
-    "createGroup": "Groep aanmaken",
+    "createGroup": "Chat aanmaken",
     "@createGroup": {},
     "optionalRedactReason": "(Optioneel) Reden voor aanpassing van dit bericht...",
     "@optionalRedactReason": {},
@@ -2266,7 +2266,7 @@
     "@spaces": {},
     "unread": "Ongelezen",
     "@unread": {},
-    "groupName": "Groepsnaam",
+    "groupName": "Chatnaam",
     "@groupName": {},
     "changeGeneralChatSettings": "Algemene chat instellingen wijzigen",
     "@changeGeneralChatSettings": {},
@@ -3469,13 +3469,11 @@
     "editCourseLater": "U kunt de titel, beschrijvingen en cursusafbeelding later bewerken.",
     "createCourse": "Cursus maken",
     "stats": "Statistieken",
-    "createGroupChat": "Groepschat maken",
     "editCourse": "Cursus bewerken",
     "inviteDesc": "Door gebruikersnaam, code of link",
     "editCourseDesc": "Hier kunt u de cursusnaam, beschrijving, enz. bewerken.",
     "permissionsDesc": "Stel machtigingen in zoals wie gebruikers kan uitnodigen, berichten kan sturen, chats kan maken, enz.",
     "accessDesc": "U kunt uw cursus openstellen voor de wereld! Of, maak uw cursus privé en veilig.",
-    "createGroupChatDesc": "Aangezien activiteitensessies starten en eindigen, blijven groepschats open voor routinematige communicatie.",
     "deleteDesc": "Alleen beheerders kunnen een cursus verwijderen. Dit is een destructieve actie die alle gebruikers verwijdert en alle geselecteerde chats binnen de cursus verwijdert. Ga voorzichtig te werk.",
     "whatNow": "Wat nu?",
     "chooseNextActivity": "Kies je volgende activiteit!",
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9837,10 +9827,6 @@
     "contentCreatedBy": "Gemaakt door",
     "coursePreview": "Cursusvoorbeeld",
     "numActivities": "{count, plural, =1{1 activiteit} other{{count} activiteiten}}",
-    "teacherAnalyticsRequestTitle": "Docent vraagt om je leerprogressie",
-    "teacherAnalyticsRequestDesc": "Ze zien alle woorden en grammatica die je hebt gebruikt in {targetLang}, je niveau en XP, en de berichten die zijn verzonden in cursusactiviteiten. Je 1-op-1-berichten worden niet gedeeld. Het delen van analyses is vereist om deel te nemen aan de cursus.",
-    "shareAndJoin": "Delen en deelnemen",
-    "goBack": "Terug",
     "emptyGroupsSearch": "Geen groepen gevonden. Controleer de spelling van je zoekopdracht.",
     "emptyActivitiesSearch": "Geen activiteiten gevonden. Controleer de spelling van je zoekopdracht.",
     "chatListFiltersLabel": "Chatfilters",
@@ -10019,5 +10005,51 @@
     "otherCoursesSessions": "Andere cursussen ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP verdiend",
-    "currentMission": "Huidige missie"
+    "currentMission": "Huidige missie",
+    "constructUseCorRADesc": "Hardop gelezen en gehoord",
+    "constructUseIncRADesc": "Hardop gelezen, niet gehoord",
+    "hearItFirstToolName": "Hoor het eerst",
+    "hearItFirstDescription": "Speel de zin af voordat je opneemt tijdens de hardop-leesoefening.",
+    "readAloudInstruction": "Tik op de microfoon en lees de zin hardop voor",
+    "readAloudRecord": "Opnemen",
+    "readAloudMicLabel": "{count, plural, =1{Opnemen, 1 woord nog niet gehoord} other{Opnemen, {count} woorden nog niet gehoord}}",
+    "readAloudStop": "Opname stoppen",
+    "readAloudHeardAll": "Elk woord gehoord!",
+    "readAloudNotHeard": "{count, plural, =1{1 woord niet gehoord} other{{count} woorden niet gehoord}}",
+    "readAloudTriesLeft": "{count, plural, =1{1 poging over} other{{count} pogingen over}}",
+    "readAloudHeardTranscript": "Gehoord: {transcript}",
+    "readAloudTranscribeFailed": "Kon je opname niet transcriberen. Controleer je verbinding en probeer het opnieuw.",
+    "readAloudMicUnavailable": "Er is geen microfoon beschikbaar, dus dit woord is in plaats daarvan een betekenisoefening.",
+    "readAloudExample": "Voorbeeld",
+    "readAloudStartOver": "Opnieuw beginnen",
+    "readAloudStarting": "Microfoon wordt klaargemaakt…",
+    "readAloudListening": "Aan het luisteren…",
+    "readAloudTake": "Poging {number}",
+    "videoWontPlayHere": "Deze video kan hier niet worden afgespeeld.",
+    "watchOnYoutube": "Bekijk op YouTube",
+    "xpTowardMission": "{xp} XP voor deze missie",
+    "practiceStartWordCount": "{count, plural, =1{woord om te oefenen} other{woorden om te oefenen}}",
+    "practiceStartGrammarCount": "{count, plural, =1{grammaticapunt om te oefenen} other{grammaticapunten om te oefenen}}",
+    "practiceStartExerciseTypes": "Oefeningstypes",
+    "analyticsSharedOnJoin": "Je docenten in {course} kunnen nu je leerprogressie zien.",
+    "sharedAnalyticsTitle": "Gedeelde leerprogressie",
+    "sharedAnalyticsDesc": "Docenten in deze cursussen kunnen je leerprogressie zien. Verlaat een cursus om het delen te stoppen.",
+    "sharedAnalyticsNone": "Je deelt je leerprogressie met geen enkele cursus.",
+    "sharedAnalyticsOthersTitle": "Anderen die je voortgang kunnen zien",
+    "removeAnalyticsAccess": "Toegang verwijderen",
+    "removeAnalyticsAccessDesc": "{name} kan je leervoortgang niet langer zien.",
+    "suggestMobileSignInSameAccount": "Meld je vervolgens met dit account aan bij de app.",
+    "botJoinsIn": "Pangea Bot doet mee over {duration}",
+    "botIsJoining": "Pangea Bot doet mee…",
+    "playWithBotNowTitle": "Nu met Pangea Bot spelen?",
+    "playWithBotNowMessage": "Niemand heeft zich nog aangesloten. Pangea Bot kan nu de open plek innemen, of je kunt blijven wachten.",
+    "keepWaiting": "Blijven wachten",
+    "botTookSeatAfterAnHour": "Deze sessie was een uur open, dus Pangea Bot heeft de open plek ingenomen.",
+    "botTookSeatAfterADay": "Deze sessie was langer dan een dag open, dus Pangea Bot heeft de open plek ingenomen. Stuur een bericht om te beginnen.",
+    "subscriptionGracePeriodEndsOn": "Betaling mislukt. Respijtperiode eindigt op {date}",
+    "changeBaseLanguageTitle": "Basistaal wijzigen?",
+    "changeBaseLanguageDesc": "De menu's en knoppen van de app worden gewijzigd naar {language}.",
+    "accountSetupFailedHelp": "We konden je account niet instellen. Controleer je verbinding en probeer het opnieuw, of log uit en meld je later aan.",
+    "onboardingOfflineError": "Je bent offline. Probeer het opnieuw zodra je weer online bent.",
+    "activitySavedTo": "Activiteit opgeslagen in {page}"
 }

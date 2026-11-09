@@ -49,8 +49,12 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
     future: () => saveFlushAndLogout(
       // before wiping out locally cached construct data, save it to the server —
       // the CAPTURED account's service, not the active-client getter.
+      // No course progress check: it reads outlines over the network, and
+      // the save is time-boxed ahead of the logout.
       saveAnalytics: () =>
-          analytics?.updateService.sendLocalAnalyticsToAnalyticsRoom() ??
+          analytics?.updateService.sendLocalAnalyticsToAnalyticsRoom(
+            checkCourseProgress: false,
+          ) ??
           Future.value(),
       // NON-destructive flush of the final dosage span while the bearer is still
       // valid; the loggedOut listener disposes the services once logout lands.

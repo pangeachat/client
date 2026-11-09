@@ -47,8 +47,10 @@ class _AudioRequest {
     this.morph,
   });
 
-  Map<String, dynamic> toJson() => {
-    'text': text,
+  /// For debug lines only, which reach Sentry as breadcrumbs: the length of
+  /// the text, never the text (repos-and-error-handling.instructions.md).
+  Map<String, dynamic> toLogFields() => {
+    'chars': text.length,
     'langCode': langCode,
     'pos': pos,
     'morph': morph,
@@ -258,7 +260,7 @@ class TtsController {
     );
     if (_currentRequest != null && _currentRequest != request) {
       _log(
-        'Stop called with different request than current: stopRequest=${request.toJson()} currentRequest=${_currentRequest?.toJson()}',
+        'Stop called with different request than current: stopRequest=${request.toLogFields()} currentRequest=${_currentRequest?.toLogFields()}',
         'stop-${DateTime.now().millisecondsSinceEpoch}',
       );
       return;
@@ -326,7 +328,7 @@ class TtsController {
       ),
     );
     _log(
-      '_resolveTtsPhonemeFromCache: text="${request.text}" lang=${request.langCode} cached=${ptResponse != null} count=${ptResponse?.pronunciations.length ?? 0} pos=${request.pos} morph=${request.morph}',
+      '_resolveTtsPhonemeFromCache: chars=${request.text.length} lang=${request.langCode} cached=${ptResponse != null} count=${ptResponse?.pronunciations.length ?? 0} pos=${request.pos} morph=${request.morph}',
       tid,
     );
     if (ptResponse == null || ptResponse.pronunciations.length <= 1) {
@@ -472,7 +474,7 @@ class TtsController {
     final explicitPhoneme = ttsPhoneme;
     ttsPhoneme ??= _resolveTtsPhonemeFromCache(request, tid: transactionId);
     _log(
-      'tryToSpeak: text="${request.text}" explicitPhoneme=$explicitPhoneme resolvedPhoneme=$ttsPhoneme pos=${request.pos} morph=${request.morph}',
+      'tryToSpeak: chars=${request.text.length} explicitPhoneme=${explicitPhoneme != null} resolvedPhoneme=${ttsPhoneme != null} pos=${request.pos} morph=${request.morph}',
       transactionId,
     );
 
@@ -630,7 +632,7 @@ class TtsController {
         'tryToSpeak: route=${useBackend ? "backend" : "device"} '
         'knownGood=${selection.isKnownGood} hasVoice=${selection.hasVoice} '
         'voice=${selection.voice?['name']} subscribed=$isSubscribed '
-        'phoneme=$ttsPhoneme',
+        'phoneme=${ttsPhoneme != null}',
         tid,
       );
 
@@ -790,7 +792,7 @@ class TtsController {
     final utterance = TtsDeviceUtterance(startTimeout: deviceStartTimeout);
     try {
       _log(
-        'Speaking from device: $text, langCode: $langCode, voice: ${voice?['name']}',
+        'Speaking from device: ${text.length} chars, langCode: $langCode, voice: ${voice?['name']}',
         tid,
       );
       if (voice != null && (voice['name']?.isNotEmpty ?? false)) {
@@ -804,7 +806,11 @@ class TtsController {
           final speedRange = await _tts.getSpeechRateValidRange;
           setSpeed = speed * speedRange.normal;
         } catch (e, s) {
-          error_handler.ErrorHandler.logError(e: e, s: s, data: {'text': text});
+          error_handler.ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {'text_length': text.length},
+          );
         }
       }
       _tts.setSpeechRate(setSpeed);
@@ -840,7 +846,7 @@ class TtsController {
             error_handler.ErrorHandler.logError(
               e: e,
               s: s,
-              data: {'text': text},
+              data: {'text_length': text.length},
             );
             utterance.onSpeakThrew();
           },
@@ -876,7 +882,11 @@ class TtsController {
     } catch (e, s) {
       _log('Error playing audio from device: $e', tid);
       debugger(when: kDebugMode);
-      error_handler.ErrorHandler.logError(e: e, s: s, data: {'text': text});
+      error_handler.ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'text_length': text.length},
+      );
       return TtsDeviceOutcome.failed;
     } finally {
       utterance.dispose();
@@ -901,7 +911,10 @@ class TtsController {
     /// and then be cut off while still reporting success.
     VoidCallback? onPlaybackCompleted,
   }) async {
-    _log('_speakFromChoreo: text="$text" ttsPhoneme=$ttsPhoneme', tid);
+    _log(
+      '_speakFromChoreo: chars=${text.length} ttsPhoneme=${ttsPhoneme != null}',
+      tid,
+    );
     TextToSpeechResponseModel? ttsRes;
     AudioPlayer? requestPlayer;
 
@@ -924,7 +937,7 @@ class TtsController {
       error_handler.ErrorHandler.logError(
         e: 'Error in TTS API call',
         s: s,
-        data: {'text': text, 'error': e.toString()},
+        data: {'text_length': text.length, 'error': e.toString()},
       );
       return false;
     } finally {
@@ -932,7 +945,10 @@ class TtsController {
     }
 
     try {
-      _log('Speaking from choreo: $text, langCode: $langCode', tid);
+      _log(
+        'Speaking from choreo: ${text.length} chars, langCode: $langCode',
+        tid,
+      );
       if (!_isCurrentRequestId(requestId)) {
         _log('Skipping choreo playback for superseded request', tid);
         return false;
@@ -990,7 +1006,7 @@ class TtsController {
       error_handler.ErrorHandler.logError(
         e: 'Error playing audio',
         s: s,
-        data: {'error': e.toString(), 'text': text},
+        data: {'error': e.toString(), 'text_length': text.length},
       );
       return false;
     } finally {

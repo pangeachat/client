@@ -32,13 +32,23 @@ class AnalyticsNavigationUtil {
     // construct details are off-limits (no peeking at definitions
     // mid-exercise) — the tap resumes the session instead. See
     // routing.instructions.md § Practice is a persistent background session.
+    // A word card tapped in a chat message still opens definitions: a known,
+    // accepted gap, not a guarded path.
     if (const {
       ProgressIndicatorEnum.wordsUsed,
       ProgressIndicatorEnum.morphsUsed,
     }.contains(view)) {
       final constructType = view!.constructType;
       if (PracticeSessionHolder.instance.blocksAnalytics(constructType)) {
-        context.go(WorkspaceNav.openPractice(uri, constructType));
+        // With the session's Mission, or the panel claims an unscoped session
+        // and replaces the live one.
+        context.go(
+          WorkspaceNav.openPractice(
+            uri,
+            constructType,
+            missionId: PracticeSessionHolder.instance.liveMissionId,
+          ),
+        );
         return;
       }
     }

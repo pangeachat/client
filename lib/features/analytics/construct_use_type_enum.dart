@@ -99,6 +99,11 @@ enum ConstructUseTypeEnum {
   corLA,
   incLA,
 
+  /// read-aloud practice exercise: the target word was heard, or was not
+  /// heard once the tries ran out
+  corRA,
+  incRA,
+
   // grammar category activity
   corGC,
   incGC,
@@ -111,7 +116,12 @@ enum ConstructUseTypeEnum {
   /// receptive exposure, worth 0 XP: the count is the data. Bucketed rather
   /// than stored one row per event - see [OneConstructUse.count] and
   /// analytics-system.instructions.md.
-  hrd;
+  hrd,
+
+  /// Not a use of any word: one play, voice message or call, carrying its
+  /// duration to the analytics room. See [DosageAudioEntry]. Worth 0 XP and read
+  /// by no app.
+  aud;
 
   static ConstructUseTypeEnum fromString(String value) {
     return ConstructUseTypeEnum.values.firstWhere(
@@ -191,6 +201,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.bonus:
         return L10n.of(context).constructUseBonus;
       case ConstructUseTypeEnum.nan:
+      case ConstructUseTypeEnum.aud:
         return L10n.of(context).constructUseNanDesc;
       case ConstructUseTypeEnum.corLM:
         return L10n.of(context).constructUseCorLMDesc;
@@ -200,6 +211,10 @@ enum ConstructUseTypeEnum {
         return L10n.of(context).constructUseCorLADesc;
       case ConstructUseTypeEnum.incLA:
         return L10n.of(context).constructUseIncLADesc;
+      case ConstructUseTypeEnum.corRA:
+        return L10n.of(context).constructUseCorRADesc;
+      case ConstructUseTypeEnum.incRA:
+        return L10n.of(context).constructUseIncRADesc;
       case ConstructUseTypeEnum.corGC:
         return L10n.of(context).constructUseCorGCDesc;
       case ConstructUseTypeEnum.incGC:
@@ -239,6 +254,9 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corLA:
       case ConstructUseTypeEnum.incLA:
         return PracticeExerciseTypeEnum.wordFocusListening.icon;
+      case ConstructUseTypeEnum.corRA:
+      case ConstructUseTypeEnum.incRA:
+        return PracticeExerciseTypeEnum.readAloud.icon;
       case ConstructUseTypeEnum.incHWL:
       case ConstructUseTypeEnum.ignHWL:
       case ConstructUseTypeEnum.corHWL:
@@ -266,6 +284,7 @@ enum ConstructUseTypeEnum {
         return Icons.mic;
       case ConstructUseTypeEnum.unk:
       case ConstructUseTypeEnum.nan:
+      case ConstructUseTypeEnum.aud:
         return Icons.help;
       case ConstructUseTypeEnum.click:
         return Icons.format_color_text;
@@ -291,6 +310,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corM:
       case ConstructUseTypeEnum.corLM:
       case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.corRA:
       case ConstructUseTypeEnum.corGC:
       case ConstructUseTypeEnum.corGE:
         return 5;
@@ -331,6 +351,11 @@ enum ConstructUseTypeEnum {
       // answer anything, so paying XP for it would inflate every word they
       // happen to have heard.
       case ConstructUseTypeEnum.hrd:
+      case ConstructUseTypeEnum.aud:
+      // A read-aloud miss is as likely the recognizer's as the learner's, and
+      // there is no guessing a read, so it costs nothing — unlike a wrong
+      // multiple-choice pick (practice-exercises.instructions.md, "Scoring").
+      case ConstructUseTypeEnum.incRA:
         return 0;
 
       case ConstructUseTypeEnum.incMM:
@@ -393,6 +418,8 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incLM:
       case ConstructUseTypeEnum.corLA:
       case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.corRA:
+      case ConstructUseTypeEnum.incRA:
       case ConstructUseTypeEnum.bonus:
       case ConstructUseTypeEnum.corGC:
       case ConstructUseTypeEnum.incGC:
@@ -401,6 +428,7 @@ enum ConstructUseTypeEnum {
       // Heard, not produced. Keeping exposure out of here is what keeps it out
       // of the turn and target-language-word counters downstream.
       case ConstructUseTypeEnum.hrd:
+      case ConstructUseTypeEnum.aud:
         return false;
     }
   }
@@ -453,9 +481,12 @@ enum ConstructUseTypeEnum {
         return LearningSkillsEnum.reading;
       case ConstructUseTypeEnum.pvm:
       case ConstructUseTypeEnum.pvc:
+      case ConstructUseTypeEnum.corRA:
+      case ConstructUseTypeEnum.incRA:
         return LearningSkillsEnum.speaking;
       case ConstructUseTypeEnum.bonus:
       case ConstructUseTypeEnum.nan:
+      case ConstructUseTypeEnum.aud:
         return LearningSkillsEnum.other;
     }
   }
@@ -481,6 +512,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corMM:
       case ConstructUseTypeEnum.corLM:
       case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.corRA:
       case ConstructUseTypeEnum.corGC:
       case ConstructUseTypeEnum.corGE:
       case ConstructUseTypeEnum.sug:
@@ -496,6 +528,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incMM:
       case ConstructUseTypeEnum.incLM:
       case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.incRA:
       case ConstructUseTypeEnum.incGC:
       case ConstructUseTypeEnum.incGE:
         return SpaceAnalyticsSummaryEnum.numChoicesIncorrect;
@@ -514,6 +547,7 @@ enum ConstructUseTypeEnum {
       // Exposure is neither a correct nor an incorrect answer, and it is not a
       // typed word. It belongs in none of the summary buckets.
       case ConstructUseTypeEnum.hrd:
+      case ConstructUseTypeEnum.aud:
         return null;
     }
   }
@@ -568,6 +602,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incIGC:
       case ConstructUseTypeEnum.incLM:
       case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.incRA:
       case ConstructUseTypeEnum.incGC:
       case ConstructUseTypeEnum.incGE:
         return true;

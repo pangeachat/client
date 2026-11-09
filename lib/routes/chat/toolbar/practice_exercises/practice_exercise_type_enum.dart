@@ -16,7 +16,8 @@ enum PracticeExerciseTypeEnum {
   lemmaMeaning,
   lemmaAudio,
   grammarCategory,
-  grammarError;
+  grammarError,
+  readAloud;
 
   bool get includeTTSOnClick {
     switch (this) {
@@ -25,6 +26,8 @@ enum PracticeExerciseTypeEnum {
       case PracticeExerciseTypeEnum.emoji:
       case PracticeExerciseTypeEnum.morphId:
       case PracticeExerciseTypeEnum.messageMeaning:
+      // The item has its own player for the reference audio.
+      case PracticeExerciseTypeEnum.readAloud:
         return false;
       case PracticeExerciseTypeEnum.wordFocusListening:
       case PracticeExerciseTypeEnum.hiddenWordListening:
@@ -73,6 +76,9 @@ enum PracticeExerciseTypeEnum {
       case 'grammar_error':
       case 'grammarError':
         return PracticeExerciseTypeEnum.grammarError;
+      case 'read_aloud':
+      case 'readAloud':
+        return PracticeExerciseTypeEnum.readAloud;
       default:
         throw Exception('Unknown exercise type: $split');
     }
@@ -126,6 +132,8 @@ enum PracticeExerciseTypeEnum {
         return [ConstructUseTypeEnum.corGC, ConstructUseTypeEnum.incGC];
       case PracticeExerciseTypeEnum.grammarError:
         return [ConstructUseTypeEnum.corGE, ConstructUseTypeEnum.incGE];
+      case PracticeExerciseTypeEnum.readAloud:
+        return [ConstructUseTypeEnum.corRA, ConstructUseTypeEnum.incRA];
     }
   }
 
@@ -153,6 +161,8 @@ enum PracticeExerciseTypeEnum {
         return ConstructUseTypeEnum.corGC;
       case PracticeExerciseTypeEnum.grammarError:
         return ConstructUseTypeEnum.corGE;
+      case PracticeExerciseTypeEnum.readAloud:
+        return ConstructUseTypeEnum.corRA;
     }
   }
 
@@ -180,6 +190,8 @@ enum PracticeExerciseTypeEnum {
         return ConstructUseTypeEnum.incGC;
       case PracticeExerciseTypeEnum.grammarError:
         return ConstructUseTypeEnum.incGE;
+      case PracticeExerciseTypeEnum.readAloud:
+        return ConstructUseTypeEnum.incRA;
     }
   }
 
@@ -202,6 +214,8 @@ enum PracticeExerciseTypeEnum {
       case PracticeExerciseTypeEnum.grammarCategory:
       case PracticeExerciseTypeEnum.grammarError:
         return Icons.star; // TODO: Add to L10n
+      case PracticeExerciseTypeEnum.readAloud:
+        return Icons.mic;
     }
   }
 
@@ -221,6 +235,7 @@ enum PracticeExerciseTypeEnum {
       case PracticeExerciseTypeEnum.lemmaAudio:
       case PracticeExerciseTypeEnum.grammarCategory:
       case PracticeExerciseTypeEnum.grammarError:
+      case PracticeExerciseTypeEnum.readAloud:
         return 1;
     }
   }
@@ -235,6 +250,7 @@ enum PracticeExerciseTypeEnum {
   static List<PracticeExerciseTypeEnum> get _vocabPracticeTypes => [
     PracticeExerciseTypeEnum.lemmaMeaning,
     PracticeExerciseTypeEnum.lemmaAudio,
+    PracticeExerciseTypeEnum.readAloud,
   ];
 
   static List<PracticeExerciseTypeEnum> get _grammarPracticeTypes => [

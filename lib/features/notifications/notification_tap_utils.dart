@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_target_event_name_enum.dart';
@@ -16,6 +16,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/notifications/open_session_notice.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
@@ -225,11 +226,10 @@ class NotificationTapUtil {
       // here means the invite was accepted without asking.
       final joinResp = await SpaceTapUtil.onInviteTap(context, room);
       if (joinResp == null || !context.mounted) return;
-      final joinedRoomId = await JoinRoomAnalyticsConsentHandler(
+      final joinedRoomId = await JoinRoomAnalyticsAccessHandler(
         joinResp,
         room,
       ).handle(context);
-      if (joinedRoomId == null) return;
       router.go(
         WorkspaceNav.openCourse(
           router.routeInformationProvider.value.uri,
@@ -282,6 +282,9 @@ class NotificationTapUtil {
         sessionRoomId.isNotEmpty &&
         activityId != null &&
         activityId.isNotEmpty) {
+      if (notification?[_checkInTypeKey] == OpenSessionNotice.checkInType) {
+        OpenSessionNotice.offerBotIn.value = sessionRoomId;
+      }
       _navigateToActivitySession(
         router: router,
         room: room,

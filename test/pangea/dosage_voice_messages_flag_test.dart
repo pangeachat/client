@@ -181,9 +181,10 @@ void main() {
               DosageCoverageCategory.toolbarRead,
               DosageCoverageCategory.wordAudio,
               DosageCoverageCategory.practiceAudio,
+              DosageCoverageCategory.callRecording,
             },
             reason:
-                'suppression is scoped to voice_send alone — the six '
+                'suppression is scoped to voice_send alone — the seven '
                 'listening categories this build DOES instrument still '
                 'declare, unconditionally, exactly as before',
           );
@@ -215,7 +216,7 @@ void main() {
                 'a build that CAN report must still declare it — the fix '
                 'must not silently disable the counter altogether',
           );
-          expect(declared, hasLength(7));
+          expect(declared, hasLength(8));
         },
       );
     },

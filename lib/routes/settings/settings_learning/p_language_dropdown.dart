@@ -22,6 +22,10 @@ class PLanguageDropdown extends StatefulWidget {
   final List<LanguageModel> languages;
   final LanguageModel? initialLanguage;
   final Function(LanguageModel) onChange;
+
+  /// Asked before [onChange] with the picked language. Resolving false keeps
+  /// the language the dropdown was given.
+  final Future<bool> Function(LanguageModel)? confirmChange;
   final bool isL2List;
   final String? decorationText;
   final String? error;
@@ -34,6 +38,7 @@ class PLanguageDropdown extends StatefulWidget {
     required this.languages,
     required this.onChange,
     required this.initialLanguage,
+    this.confirmChange,
     this.decorationText,
     this.isL2List = false,
     this.error,
@@ -48,6 +53,7 @@ class PLanguageDropdown extends StatefulWidget {
 
 class PLanguageDropdownState extends State<PLanguageDropdown> {
   final TextEditingController _searchController = TextEditingController();
+  final _fieldKey = GlobalKey<FormFieldState<LanguageModel>>();
 
   // dropdown_button2 sizes every item to this height by default
   // (kMinInteractiveDimension) unless customHeights is supplied; an analytics
@@ -60,6 +66,16 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
   void dispose() {
     _searchController.dispose();
     super.dispose();
+  }
+
+  Future<void> _onChanged(LanguageModel language) async {
+    final confirmChange = widget.confirmChange;
+    if (confirmChange != null && !await confirmChange(language)) {
+      // The field already took the declined pick.
+      _fieldKey.currentState?.reset();
+      return;
+    }
+    if (mounted) widget.onChange(language);
   }
 
   @override
@@ -132,6 +148,7 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
             return Semantics(
               container: true,
               child: DropdownButtonFormField2<LanguageModel>(
+                key: _fieldKey,
                 customButton:
                     widget.initialLanguage != null &&
                         sortedLanguages.contains(widget.initialLanguage)
@@ -227,7 +244,7 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
                   ],
                 ],
                 onChanged: widget.enabled
-                    ? (value) => widget.onChange(value!)
+                    ? (value) => _onChanged(value!)
                     : null,
                 value: widget.initialLanguage,
                 dropdownSearchData: DropdownSearchData(

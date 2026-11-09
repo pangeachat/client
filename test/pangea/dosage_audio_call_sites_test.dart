@@ -95,7 +95,10 @@ void main() {
     test('practice audio is named ONLY by drill surfaces', () {
       expect(callersOf('DosageListeningCategory.practiceAudio'), [
         'lib/pangea/common/widgets/choice_array.dart',
+        'lib/routes/analytics/construct_analytics/practice/analytics_practice_content_widget.dart',
         'lib/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart',
+        'lib/routes/analytics/construct_analytics/practice/read_aloud_exercise_widget.dart',
+        'lib/routes/chat/toolbar/message_practice/message_audio_card.dart',
         'lib/routes/chat/toolbar/message_practice/practice_controller.dart',
         'lib/routes/chat/toolbar/message_practice/practice_match_item.dart',
       ]);
@@ -228,6 +231,16 @@ void main() {
       expect(
         source.contains('DosageListeningCategory? listeningCategory'),
         isTrue,
+      );
+    });
+
+    test('a practice item with no room is roomless, not dropped', () {
+      // The read-aloud reference passes an empty room when the exercise has
+      // none, and an empty room is dropped as malformed, so the player has to
+      // say null for it or those plays vanish silently.
+      expect(
+        read('lib/routes/chat/audio_player.dart'),
+        contains('widget.roomId.isEmpty ? null : widget.roomId'),
       );
     });
 
@@ -539,24 +552,62 @@ void main() {
     });
   });
 
-  group('the shared-player practice surfaces are still dark', () {
-    test('neither practice call site passes a category', () {
-      // These two are the AudioPlayerWidget half of the same gap: both are
-      // message-scoped and one is paid, so both COULD be counted, and the
-      // decision is now that they SHOULD be. Neither the vocabulary nor the
-      // room blocks them any more — what keeps them dark is that they come
-      // through a different entry point, wired differently, and are their own
-      // change (#8411). This assertion holds until that one lands.
+  group('the shared-player practice surfaces emit', () {
+    test('both exercise players pass the practice category', () {
       for (final path in [
         'lib/routes/chat/toolbar/message_practice/message_audio_card.dart',
         'lib/routes/analytics/construct_analytics/practice/analytics_practice_content_widget.dart',
       ]) {
         expect(
-          read(path).contains('listeningCategory'),
-          isFalse,
-          reason: '$path is a practice surface and must emit nothing',
+          memberRef(
+            'listeningCategory:\\s*DosageListeningCategory',
+            'practiceAudio',
+          ).hasMatch(read(path)),
+          isTrue,
+          reason: '$path plays drill audio, so it is practice listening',
         );
       }
+    });
+
+    test(
+      'a read-aloud reference clip counts, and a take played back does not',
+      () {
+        final source = read(
+          'lib/routes/analytics/construct_analytics/practice/read_aloud_exercise_widget.dart',
+        );
+        final reference = source.indexOf("read_aloud_reference_");
+        final take = source.indexOf("read_aloud_take_");
+        expect(reference, isNonNegative);
+        expect(take, greaterThan(reference));
+        expect(
+          source.substring(reference, take),
+          contains('listeningCategory: DosageListeningCategory.practiceAudio'),
+        );
+        // The take's player is built from the same widget, and its arguments end
+        // at the transcript under it.
+        final takeArguments = source.substring(
+          take,
+          source.indexOf('heardTranscript:', take),
+        );
+        expect(takeArguments, isNot(contains('listeningCategory:')));
+      },
+    );
+  });
+
+  group('a saved call is listening, a live one is not', () {
+    test('call recordings are named ONLY by the transcript', () {
+      expect(callersOf('DosageListeningCategory.callRecording'), [
+        'lib/routes/chat/calls/transcript_view.dart',
+      ]);
+      expect(callersOf('DosageListeningCategory.forCallRecording'), [
+        'lib/routes/chat/calls/transcript_view.dart',
+      ]);
+    });
+
+    test('nothing in a live call measures listening', () {
+      final source = read('lib/routes/chat/calls/call_session.dart');
+      expect(source, isNot(contains('DosageListeningCategory')));
+      expect(source, isNot(contains('recordPlayback')));
     });
   });
 

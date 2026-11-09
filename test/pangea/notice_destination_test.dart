@@ -18,8 +18,10 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/notifications/notification_tap_utils.dart';
+import 'package:fluffychat/features/notifications/open_session_notice.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/bot_notice_widget.dart';
+import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 import 'get_test_client.dart';
@@ -251,6 +253,27 @@ void main() {
       expect(activeSpaceIdFor(uri), isNull);
     });
 
+    testWidgets('the open-session notice offers the bot in its session, and '
+        'other notices do not', (tester) async {
+      addTearDown(() => OpenSessionNotice.offerBotIn.value = null);
+      final session = {
+        'sender': botId,
+        'content_pangea.activity.id': activityId,
+        'content_pangea.activity.session_room_id': joinedSessionId,
+      };
+      await tap(tester, botDmId, {
+        ...session,
+        'content_check_in_type': 'do_activity',
+      });
+      expect(OpenSessionNotice.offerBotIn.value, isNull);
+      final uri = await tap(tester, botDmId, {
+        ...session,
+        'content_check_in_type': OpenSessionNotice.checkInType,
+      });
+      expect(openedRoomId(uri), joinedSessionId);
+      expect(OpenSessionNotice.offerBotIn.value, joinedSessionId);
+    });
+
     testWidgets('a course ping still opens its activity in its course', (
       tester,
     ) async {
@@ -276,6 +299,76 @@ void main() {
       );
       expect(topic.isShownBotNotice, isFalse);
       expect([topic].filterByVisibleInGui(), isEmpty);
+    });
+
+    /// The learner's own read receipt in the bot DM, as sync delivers it.
+    Future<void> readBotDmAt(DateTime ts) => client.handleSync(
+      SyncUpdate(
+        nextBatch: 'receipt${ts.millisecondsSinceEpoch}',
+        rooms: RoomsUpdate(
+          join: {
+            botDmId: JoinedRoomUpdate(
+              ephemeral: [
+                BasicEvent(
+                  type: 'm.receipt',
+                  content: {
+                    '\$read': {
+                      'm.read': {
+                        client.userID!: {'ts': ts.millisecondsSinceEpoch},
+                      },
+                    },
+                  },
+                ),
+              ],
+            ),
+          },
+        ),
+      ),
+    );
+
+    test('opening the DM sends a read receipt for an unread suggest_topic '
+        'notice, which pangea-bot waits for to post the topic', () async {
+      final room = client.getRoomById(botDmId)!;
+      final topic = notice(
+        botDmId,
+        content: {'check_in_type': 'suggest_topic'},
+      );
+      // Hidden, so it is never the DM's last event and counts no notification.
+      expect(room.hasNewMessages, isFalse);
+      expect(room.notificationCount, 0);
+      expect(ChatController.needsReadMarker(room, [topic]), isTrue);
+
+      await readBotDmAt(DateTime.now().subtract(const Duration(hours: 1)));
+      expect(ChatController.needsReadMarker(room, [topic]), isTrue);
+
+      await readBotDmAt(DateTime.now().add(const Duration(hours: 1)));
+      expect(ChatController.needsReadMarker(room, [topic]), isFalse);
+    });
+
+    test('a shown notice, or a suggest_topic notice outside the bot DM, '
+        'sends no read receipt by itself', () {
+      expect(
+        ChatController.needsReadMarker(client.getRoomById(botDmId)!, [
+          notice(botDmId),
+        ]),
+        isFalse,
+      );
+      expect(
+        ChatController.needsReadMarker(client.getRoomById(groupId)!, [
+          notice(groupId, content: {'check_in_type': 'suggest_topic'}),
+        ]),
+        isFalse,
+      );
+      expect(
+        ChatController.needsReadMarker(client.getRoomById(fakeBotDmId)!, [
+          notice(
+            fakeBotDmId,
+            senderId: strangerId,
+            content: {'check_in_type': 'suggest_topic'},
+          ),
+        ]),
+        isFalse,
+      );
     });
 
     test('hides a notice from anyone else, from another room, or with no '

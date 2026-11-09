@@ -1,7 +1,15 @@
+import 'dart:convert';
+
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/languages/language_constants.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_repo.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_request_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -50,10 +58,18 @@ class AnalyticsPracticeDataService {
   }
 
   PangeaAudioFile? getAudioFile(MultipleChoicePracticeExerciseModel exercise) {
+    if (exercise is ReadAloudPracticeExerciseModel) {
+      return _audioFiles[_readAloudKey(exercise)];
+    }
     if (exercise is! VocabAudioPracticeExerciseModel) return null;
     if (exercise.eventId == null) return null;
     return _audioFiles[exercise.eventId];
   }
+
+  /// Keyed apart from the listening exercise's audio: that one is the whole
+  /// message, this one is the sentence as shown.
+  String _readAloudKey(ReadAloudPracticeExerciseModel exercise) =>
+      'read_aloud_${exercise.storageKey}';
 
   String? getAudioTranslation(MultipleChoicePracticeExerciseModel exercise) {
     if (exercise is! VocabAudioPracticeExerciseModel) return null;
@@ -146,6 +162,62 @@ class AnalyticsPracticeDataService {
     // Prefetch audio for audio activities before marking ready
     if (exercise is VocabAudioPracticeExerciseModel) {
       await _prefetchAudioInfo(exercise);
+    }
+
+    if (exercise is ReadAloudPracticeExerciseModel) {
+      await _prefetchReadAloudAudio(exercise);
+    }
+  }
+
+  /// The reference audio for a read-aloud item: the sentence as shown, read
+  /// by the generated voice and cached per sentence by the TTS repo. The
+  /// listening exercise's message audio is not reused because it reads the
+  /// whole message, and a trimmed example would not match what is on screen.
+  Future<void> _prefetchReadAloudAudio(
+    ReadAloudPracticeExerciseModel exercise,
+  ) async {
+    final userController = MatrixState.pangeaController.userController;
+    final request = TextToSpeechRequestModel(
+      text: exercise.referenceText,
+      tokens: [for (final token in exercise.exampleTokens) token.text],
+      langCode: exercise.langCode,
+      userL1: userController.userL1?.langCode ?? LanguageKeys.unknownLanguage,
+      userL2: userController.userL2?.langCode ?? LanguageKeys.unknownLanguage,
+      voice: userController.voice,
+    );
+    try {
+      final result = await TextToSpeechRepo.instance.get(request);
+      if (result.isError) {
+        Error.throwWithStackTrace(
+          result.asError!.error,
+          result.asError!.stackTrace,
+        );
+      }
+      final response = result.result!;
+      final key = _readAloudKey(exercise);
+      _audioFiles[key] = PangeaAudioFile(
+        bytes: base64.decode(response.audioContent),
+        name: '$key.${response.fileExtension}',
+        mimeType: response.mimeType,
+        duration: response.durationMillis,
+        waveform: response.waveform,
+        tokens: response.ttsTokens,
+      );
+    } catch (e, s) {
+      // A failed prefetch drops the item from the session without a trace
+      // otherwise, so say so once; the item is then skipped as any other
+      // failed generation is.
+      await ErrorHandler.logErrorOnce(
+        key: 'read_aloud_reference_audio',
+        e: e,
+        s: s,
+        data: {
+          'lemma': exercise.tokens.first.lemma.text,
+          'textLength': exercise.referenceText.length,
+        },
+        level: SentryLevel.warning,
+      );
+      rethrow;
     }
   }
 

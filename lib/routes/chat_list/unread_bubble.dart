@@ -62,7 +62,12 @@ class UnreadBubble extends StatelessWidget {
             ? theme.colorScheme.primary
             : theme.colorScheme.primaryContainer,
         shape: BoxShape.circle,
-        border: borderColor != null
+        // An empty bubble has no border: BoxDecoration insets the fill by half
+        // an opaque border, and on a 0×0 box that inset turns the rect inside
+        // out, so the fill still painted a dot as wide as the border (#9416).
+        // The decoration itself stays, because AnimatedContainer swaps to a
+        // null decoration at once and the bubble would vanish, not shrink.
+        border: borderColor != null && unreadBubbleSize > 0
             ? Border.all(color: borderColor!, width: borderWidth)
             : null,
       ),

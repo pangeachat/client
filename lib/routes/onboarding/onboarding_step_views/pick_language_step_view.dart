@@ -19,6 +19,7 @@ import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_st
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_language_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/base_language_change_dialog.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -153,6 +154,15 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
       Future.delayed(Duration(milliseconds: 500), () => _setAppLanguage(lang));
     }
   }
+
+  /// This step shows the app in its base language, so a pick that would
+  /// switch it is confirmed before it is made.
+  Future<bool> _confirmBaseLanguage(LanguageModel lang) async =>
+      LocaleProvider.localeFromLangCode(
+            _selectedBaseLanguage.value?.langCode,
+          ) ==
+          LocaleProvider.localeFromLangCode(lang.langCode) ||
+      await BaseLanguageChangeDialog.confirm(context, lang);
 
   void _setAppLanguage(LanguageModel language) {
     try {
@@ -337,6 +347,7 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                                   child: PLanguageDropdown(
                                     languages: _languages,
                                     onChange: _setBaseLanguage,
+                                    confirmChange: _confirmBaseLanguage,
                                     initialLanguage:
                                         _selectedBaseLanguage.value,
                                     decorationText: L10n.of(

@@ -400,8 +400,11 @@ class LanguageModel {
     return _textDirection ?? _defaultTextDirection;
   }
 
+  /// Keep the query string: the website loads the bare URL without CORS, and
+  /// browsers share that cached copy with the app, whose fetch then fails
+  /// (#9720, language-list.instructions.md § Conventions).
   Uri get svgUrl =>
-      Uri.parse("${AppConfig.assetsBaseURL}/language-flags/$langCode.svg");
+      Uri.parse("${AppConfig.assetsBaseURL}/language-flags/$langCode.svg?v=1");
 
   LanguageModel get unlocalized =>
       PLanguageStore.byLangCode(langCodeShort) ?? this;

@@ -3,8 +3,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
+import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 
 void main() {
+  // The shell's real right-edge reservation, so every threshold below is the
+  // one production lays out with.
+  const gutter = WorkspaceShell.clusterGutter;
+
   WorkspaceLayout run({
     double viewport = 1600,
     bool isColumnMode = true,
@@ -16,6 +21,7 @@ void main() {
     isColumnMode: isColumnMode,
     left: left.map((t) => t.def).toList(),
     right: right.map((t) => t.def).toList(),
+    clusterGutter: gutter,
     focusHint: focusHint,
   );
 
@@ -41,8 +47,8 @@ void main() {
         // The tool-family ideal (#7572) — one width for the whole right column.
         const w = PanelWidths.toolIdeal;
         expect(l.right.single.width, w);
-        expect(l.right.single.left, 1600 - 88 - w);
-        expect(l.mapRightOverlay, w + 88); // card + gutter
+        expect(l.right.single.left, 1600 - gutter - w);
+        expect(l.mapRightOverlay, w + gutter); // card + gutter
         expect(l.mapLeftOverlay, 73); // rail only, no left panel
         expect(l.clusterVisible, isTrue);
       },
@@ -66,10 +72,16 @@ void main() {
       const w = PanelWidths.toolIdeal;
       expect(l.right[0].width, w);
       expect(l.right[1].width, w);
-      expect(l.right[0].left, 1600 - 88 - w); // summary (master) at the edge
-      expect(l.right[1].left, 1600 - 88 - w - 16 - w); // detail to its left
+      expect(
+        l.right[0].left,
+        1600 - gutter - w,
+      ); // summary (master) at the edge
+      expect(l.right[1].left, 1600 - gutter - w - 16 - w); // detail to its left
       expectNoOverlap(l);
-      expect(l.mapRightOverlay, w * 2 + 16 + 88); // both cards + gap + gutter
+      expect(
+        l.mapRightOverlay,
+        w * 2 + 16 + gutter,
+      ); // both cards + gap + gutter
     });
   });
 
@@ -229,6 +241,7 @@ void main() {
         isColumnMode: true,
         left: [hi],
         right: [lo],
+        clusterGutter: gutter,
       );
 
       expect(rightLo.right.single.vis, PanelVis.hidden); // lo (right) yields
@@ -239,6 +252,7 @@ void main() {
         isColumnMode: true,
         left: [lo],
         right: [hi],
+        clusterGutter: gutter,
       );
 
       expect(leftLo.left.single.vis, PanelVis.hidden); // lo (left) yields
@@ -260,6 +274,7 @@ void main() {
         isColumnMode: true,
         left: [hi],
         right: [lo],
+        clusterGutter: gutter,
         focusHint: 1,
       );
       expect(l.right.single.vis, PanelVis.full); // lo kept (focused)
@@ -291,11 +306,8 @@ void main() {
       final l = run(viewport: 860, left: [PanelTypesEnum.course]);
       expect(l.clusterVisible, isTrue);
       expect(l.left.single.left, 73);
-      expect(l.left.single.width, 860 - 73 - 88); // 699, not ideal 720
-      expect(
-        l.left.single.left + l.left.single.width,
-        860 - PanelAllocator.clusterGutter,
-      );
+      expect(l.left.single.width, 860 - 73 - gutter); // not the ideal 720
+      expect(l.left.single.left + l.left.single.width, 860 - gutter);
       expect(l.mapRightOverlay, 0); // camera overlay stays panel-only
     });
 
@@ -319,7 +331,7 @@ void main() {
           for (final s in l.left.where((s) => s.vis == PanelVis.full)) {
             expect(
               s.left + s.width,
-              lessThanOrEqualTo(viewport - PanelAllocator.clusterGutter + 0.01),
+              lessThanOrEqualTo(viewport - gutter + 0.01),
               reason: '$left at $viewport crosses the cluster gutter',
             );
           }
@@ -329,7 +341,7 @@ void main() {
 
     test('the fold band includes the gutter: chats+room folds where the pair '
         'would otherwise reach under the cluster', () {
-      // 950 - 73 - 88 = 789 of content < the pair's reasonable need (836),
+      // 950 - 73 - gutter of content < the pair's reasonable need (836),
       // so the master folds — without the reservation they would coexist
       // with the room flush against the viewport edge, burying the cluster.
       final l = run(
@@ -427,6 +439,7 @@ void main() {
         isColumnMode: false,
         left: [parent, child],
         right: const [],
+        clusterGutter: gutter,
       );
       expect(l.left[1].vis, PanelVis.full); // child, despite priority 10
       expect(l.left[0].vis, PanelVis.hidden); // parent, despite priority 99
@@ -512,7 +525,7 @@ void main() {
   });
 
   group('the fold is positional, not registry-linked (#9030)', () {
-    // routing.instructions.md: "When a column's two panels are not a registry
+    // The rule this pins: "When a column's two panels are not a registry
     // master/detail pair (a course card with a live room beside it), the same
     // rule applies positionally — the first token folds behind the second."
     // `course` has no parent and `room`'s parent is `chats`, so before #9030

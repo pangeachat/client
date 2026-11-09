@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -12,9 +13,7 @@ import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_client_extension.dart';
-import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
-import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_access_handler.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
@@ -31,6 +30,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat_list/app_version_util.dart';
 import 'package:fluffychat/routes/chat_list/chat_invite_dialog.dart';
+import 'package:fluffychat/routes/chat_list/chat_list_search.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_view.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -93,6 +93,7 @@ class ChatList extends StatefulWidget {
   /// When non-null, the panel header's search toggle drives whether the
   /// in-list search field row renders (expanding on demand; the field
   /// autofocuses when it appears, and its close control flips this back).
+  /// Turning it off, from either control, ends the search ([ChatListSearch]).
   /// Null keeps the legacy always-on-when-long behavior. See
   /// routing.instructions.md → Single-column bottom nav.
   final ValueNotifier<bool>? searchFieldVisibility;
@@ -113,7 +114,7 @@ class ChatList extends StatefulWidget {
 }
 
 class ChatListController extends State<ChatList>
-    with TickerProviderStateMixin, RouteAware {
+    with TickerProviderStateMixin, RouteAware, ChatListSearch<ChatList> {
   StreamSubscription? _intentDataStreamSubscription;
 
   StreamSubscription? _intentFileStreamSubscription;
@@ -245,31 +246,9 @@ class ChatListController extends State<ChatList>
     context,
   ).client.rooms.where(getRoomFilterByActiveFilter(activeFilter)).toList();
 
-  /// Search filters the learner's own rooms only; it makes no server request
-  /// (#9431).
-  bool isSearchMode = false;
-
-  final TextEditingController searchController = TextEditingController();
-  final FocusNode searchFocusNode = FocusNode();
-
-  void onSearchEnter(String text) {
-    if (text.isEmpty) {
-      cancelSearch(unfocus: false);
-      return;
-    }
-
-    setState(() {
-      isSearchMode = true;
-    });
-  }
-
-  void cancelSearch({bool unfocus = true}) {
-    setState(() {
-      searchController.clear();
-      isSearchMode = false;
-    });
-    if (unfocus) searchFocusNode.unfocus();
-  }
+  @override
+  ValueListenable<bool>? get searchFieldVisibility =>
+      widget.searchFieldVisibility;
 
   BoxConstraints? snappingSheetContainerSize;
 
@@ -295,8 +274,8 @@ class ChatListController extends State<ChatList>
   /// Opening the header's search toggle mounts the field at the top of the
   /// list; bring the top back into view so the user can actually use it
   /// (#7941). Closing search leaves the scroll position alone.
-  void _onSearchFieldVisibilityChanged() {
-    if (widget.searchFieldVisibility?.value != true) return;
+  @override
+  void onSearchFieldOpened() {
     if (!scrollController.hasClients || scrollController.position.pixels <= 0) {
       return;
     }
@@ -407,9 +386,6 @@ class ChatListController extends State<ChatList>
     // Pangea#
 
     scrollController.addListener(_onScroll);
-    // #Pangea
-    widget.searchFieldVisibility?.addListener(_onSearchFieldVisibilityChanged);
-    // Pangea#
     _waitForFirstSync();
     _hackyWebRTCFixForWeb();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -437,7 +413,6 @@ class ChatListController extends State<ChatList>
         .addListener(_onSubscribe);
 
     final client = Matrix.of(context).client;
-    _handlePendingCourseAnalyticsAccessRequests(client);
 
     // listen for room join events and leave room if over capacity
     // _roomCapacitySubscription?.cancel();
@@ -512,7 +487,7 @@ class ChatListController extends State<ChatList>
       if (joinResp == null) continue;
 
       if (!mounted) return;
-      final handler = JoinRoomAnalyticsConsentHandler(joinResp, space);
+      final handler = JoinRoomAnalyticsAccessHandler(joinResp, space);
       await handler.handle(context);
     }
   }
@@ -538,7 +513,7 @@ class ChatListController extends State<ChatList>
           final joinResp = await room.joinKnockedRoom();
           if (joinResp == null) continue;
 
-          final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+          final handler = JoinRoomAnalyticsAccessHandler(joinResp, room);
           await handler.handle(context);
         } catch (err, s) {
           ErrorHandler.logError(e: err, s: s, data: {"roomId": room.id});
@@ -555,9 +530,8 @@ class ChatListController extends State<ChatList>
         final joinResp = await SpaceTapUtil.onInviteTap(context, room);
         if (joinResp == null) continue;
 
-        final handler = JoinRoomAnalyticsConsentHandler(joinResp, room);
+        final handler = JoinRoomAnalyticsAccessHandler(joinResp, room);
         final joinedRoomId = await handler.handle(context);
-        if (joinedRoomId == null) continue;
 
         context.go(
           WorkspaceNav.openCourse(GoRouterState.of(context).uri, joinedRoomId),
@@ -577,9 +551,6 @@ class ChatListController extends State<ChatList>
     _roomCapacitySubscription?.cancel();
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
         .removeListener(_onSubscribe);
-    widget.searchFieldVisibility?.removeListener(
-      _onSearchFieldVisibilityChanged,
-    );
     //Pangea#
     scrollController.removeListener(_onScroll);
     super.dispose();
@@ -966,28 +937,6 @@ class ChatListController extends State<ChatList>
     // }
     // Pangea#
   }
-
-  // #Pangea
-  Future<void> _handlePendingCourseAnalyticsAccessRequests(
-    Client client,
-  ) async {
-    final pending = client.pendingAccessNoticeCourseIds;
-    for (final courseId in pending) {
-      final course = client.getRoomById(courseId);
-      if (course == null || !course.isSpace) continue;
-      if (JoinRoomAnalyticsConsentHandler.currentRoomId == courseId) continue;
-
-      final handler = JoinRoomAnalyticsConsentHandler(
-        JoinResponse(
-          roomId: course.id,
-          shouldShowNotice: course.shouldShowAnalyticsAccessNotice,
-        ),
-        course,
-      );
-      await handler.handle(context);
-    }
-  }
-  // Pangea#
 
   void setActiveFilter(ActiveFilter filter) {
     setState(() {

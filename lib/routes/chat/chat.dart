@@ -69,6 +69,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_background.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_chat_extension.dart';
 import 'package:fluffychat/routes/chat/chat_view.dart';
@@ -109,6 +110,7 @@ import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 import 'package:fluffychat/routes/chat/growth_animation.dart';
 import 'package:fluffychat/routes/chat/message_analytics_feedback.dart';
 import 'package:fluffychat/routes/chat/recording_view_model.dart';
+import 'package:fluffychat/routes/chat/scroll_target_move.dart';
 import 'package:fluffychat/routes/chat/send_refused_dialog.dart';
 import 'package:fluffychat/routes/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
@@ -118,6 +120,7 @@ import 'package:fluffychat/routes/chat/voice_analytics_feedback.dart';
 import 'package:fluffychat/routes/settings/settings_learning/disable_language_tools_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_repo.dart';
+import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -155,6 +158,10 @@ class _TimelineUpdateNotifier extends ChangeNotifier {
 /// same frame; running two `room.getTimeline` calls at once is unsafe because
 /// `getTimeline` overwrites the shared `room.timeline`. Each controller awaits
 /// any in-flight load before starting its own. See `routing.instructions.md`.
+///
+/// The shared timeline is also why only one live view of a room is open at a
+/// time. Folding the choreographer controller into the chat controller would
+/// give rooms their own session state and could lift that limit.
 Completer<void>? _getTimelineGate;
 // Pangea#
 
@@ -369,6 +376,12 @@ class ChatController extends State<ChatPageWithRoom>
       _scrolledUp || timeline?.allowNewEvent == false;
 
   bool get selectMode => selectedEvents.isNotEmpty;
+
+  /// Whether the learner's wallpaper is drawn behind this chat: they have one,
+  /// and the activity image isn't replacing it.
+  bool get showWallpaper =>
+      room.client.applicationAccountConfig.wallpaperUrl != null &&
+      !ActivityChatBackground.replacesWallpaper(room.activityPlan?.ownImageURL);
 
   final int _loadHistoryCount = 100;
 
@@ -715,10 +728,11 @@ class ChatController extends State<ChatPageWithRoom>
   /// tutorial sequence. Every clause reads state that arrives asynchronously —
   /// the profile, the message's language analysis, the analytics service that
   /// answers "is this word new" — so a "no" here only ever means "not yet",
-  /// and each of those arrivals re-asks (tutorials.instructions.md). The old
-  /// shape evaluated once per sync event and dropped the message for good on
-  /// any transient "no", which is why the sequence sometimes never fired on
-  /// the learner's first qualifying message.
+  /// and each of those arrivals re-asks
+  /// ([TutorialOverlayController.isPending]). The old shape evaluated once per
+  /// sync event and dropped the message for good on any transient "no", which
+  /// is why the sequence sometimes never fired on the learner's first
+  /// qualifying message.
   void _checkChatTutorialSequence() {
     if (!mounted) return;
     // An unloaded profile reports every tutorial as already seen.
@@ -770,7 +784,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   /// Registers what this chat can put on screen. Each launcher owns its own
   /// preparation, so the controller never has to know which host does what and
-  /// this class grows no per-tutorial switch. See tutorials.instructions.md.
+  /// this class grows no per-tutorial switch. See [TutorialLauncher].
   void _registerTutorialLaunchers() {
     tutorialOverlayController
       ..registerLauncher(
@@ -916,11 +930,16 @@ class ChatController extends State<ChatPageWithRoom>
 
     await completer.future.timeout(
       Duration(seconds: 15),
-      onTimeout: () => ErrorHandler.logError(
-        e: "Goal completion star animation timeout",
-        data: {},
-        level: SentryLevel.warning,
-      ),
+      onTimeout: () {
+        // silent-ok: with frames off (a hidden tab or a backgrounded app) the
+        // star can't fly until the learner comes back, so the wait is expected.
+        if (!WidgetsBinding.instance.framesEnabled) return;
+        ErrorHandler.logError(
+          e: "Goal completion star animation timeout",
+          data: {},
+          level: SentryLevel.warning,
+        );
+      },
     );
 
     activeGoalNotifier.value = room.currentGoal;
@@ -1331,6 +1350,13 @@ class ChatController extends State<ChatPageWithRoom>
 
   Future<void>? _setReadMarkerFuture;
 
+  /// Whether opening the chat has anything for a read receipt to mark.
+  @visibleForTesting
+  static bool needsReadMarker(Room room, Iterable<Event> events) =>
+      room.hasNewMessages ||
+      room.notificationCount != 0 ||
+      events.any((event) => event.isUnreadRealizedNotice);
+
   void setReadMarker({String? eventId}) {
     // #Pangea
     if (room.client.userID == null ||
@@ -1347,8 +1373,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (scrollUpBannerEventId != null) return;
 
     if (eventId == null &&
-        !room.hasNewMessages &&
-        room.notificationCount == 0) {
+        !needsReadMarker(room, this.timeline?.events ?? const [])) {
       return;
     }
 
@@ -2557,6 +2582,35 @@ class ChatController extends State<ChatPageWithRoom>
               )
               .indexOf(foundEvent);
 
+    // #Pangea
+    // The event is loaded but filtered out of this view. Reloading around it
+    // cannot change that (it only reloaded three times and reported): open the
+    // view it belongs in, or stop when it is a kind the app never shows.
+    if (eventIndex == -1 && foundEvent != null) {
+      switch (scrollTargetMove(foundEvent, activeThreadId)) {
+        case ScrollTargetMove.none:
+          // Not shown by this app (isVisibleInPangeaGui): nothing to scroll to.
+          Sentry.addBreadcrumb(
+            Breadcrumb(
+              message: 'Scroll target is an event the chat never shows',
+            ),
+          );
+          return false;
+        case ScrollTargetMove.enterThread:
+          enterThread(foundEvent.threadRootId!);
+        case ScrollTargetMove.closeThread:
+          closeThread();
+      }
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        scrollToEventId(
+          eventId,
+          calls: calls + 1,
+          highlightEvent: highlightEvent,
+        );
+      });
+      return true;
+    }
+    // Pangea#
     if (eventIndex == -1) {
       setState(() {
         timeline = null;

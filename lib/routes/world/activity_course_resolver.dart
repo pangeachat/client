@@ -51,8 +51,11 @@ class ActivityCourseResolver {
   /// A direct LO intersection: one thin read for the activity's LO refs, then
   /// one light quest read per joined course — not the full quest outline (which
   /// also fetches every LO-matching activity plan + media and caps at 200).
-  /// Same eligibility the map's per-course ranking assumes. See
-  /// activities.instructions.md.
+  /// Same eligibility the map's per-course ranking assumes. A course without
+  /// its own copy matches by this Mission overlap, and per-course pins are not
+  /// consulted here, although activities.instructions.md, "A running activity
+  /// is a chat room", says a course lists an activity by its pins, not by
+  /// Mission overlap: a doc-versus-code conflict awaiting an owner decision.
   static Future<CourseMatches> matchingCourseSpaces(
     Client client,
     String activityId,

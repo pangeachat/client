@@ -9,8 +9,7 @@ typedef ResolvedMedia = ({String url, String? thumbnailUrl, String? mediumUrl});
 /// CMS `media` collection directly (Matrix Bearer auth), the same client-side
 /// resolution courses use (`CourseMediaRepo`). Choreo deliberately does NOT
 /// resolve `upload_id`→URL on the v2 activity path — it returns raw ids — so
-/// the consumer owns this hop. See
-/// `.github/.github/instructions/activities.instructions.md`.
+/// the consumer owns this hop. See org architecture.instructions.md.
 ///
 /// `upload_id` is a plain text field on `activities-v2` (not a Payload
 /// relationship), so a CMS read at any `depth` returns the id only; this is the

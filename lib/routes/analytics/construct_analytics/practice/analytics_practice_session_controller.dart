@@ -5,11 +5,16 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_xp.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_skills_store.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_generation_repo.dart';
@@ -33,14 +38,20 @@ class PracticeSessionController {
 
   final Queue<_PracticeQueueEntry> _queue = Queue();
 
+  /// Bumped whenever the session's words are picked again, so a pick or an
+  /// exercise load still in flight for the words it replaced is dropped
+  /// rather than landing in the new session.
+  int _generation = 0;
+
   void clear() {
+    _generation++;
     _queue.clear();
   }
 
   List<MessagePracticeExerciseRequest> get exerciseRequests =>
       session?.exerciseRequests ?? [];
 
-  List<OneConstructUse> get bonusUses => session?.state.allBonusUses ?? [];
+  List<OneConstructUse> get bonusUses => session?.state.bonusUses ?? [];
 
   int get hintsUsed => session?.state.hintsUsed ?? 0;
 
@@ -70,37 +81,104 @@ class PracticeSessionController {
     session?.incrementSkippedActivities();
   }
 
+  List<OneConstructUse> ownUses(List<OneConstructUse> uses) =>
+      session?.ownUses(uses) ?? uses;
+
   void submitAnswer(List<OneConstructUse> uses) {
     session?.submitAnswer(uses);
   }
 
-  Future<void> startSession(ConstructTypeEnum type, {String? missionId}) async {
+  /// Pick the session's words. Returns false when a later pick superseded
+  /// this one.
+  Future<bool> startSession(
+    ConstructTypeEnum type, {
+    String? missionId,
+    Set<LearningSkillsEnum> skills = PracticeSkillsStore.vocabSkills,
+  }) async {
+    clear();
+    final generation = _generation;
     try {
       isLoadingSession = true;
       sessionError = null;
       session = null;
+      earnedXp = null;
 
       final l1 = MatrixState.pangeaController.userController.userL1;
       final l2 = MatrixState.pangeaController.userController.userL2;
       if (l1 == null || l2 == null) throw Exception('Languages not set');
-      session = await AnalyticsPracticeSessionRepo.get(
+      final picked = await AnalyticsPracticeSessionRepo.get(
         type,
         l1,
         l2,
         missionId: missionId,
+        skills: skills,
       );
+      if (generation != _generation) return false;
+      session = picked;
     } catch (e, s) {
+      // silent-ok: a later pick replaced this one; its error is moot.
+      if (generation != _generation) return false;
       if (e is! UnsubscribedException && e is! InsufficientDataException) {
         ErrorHandler.logError(e: e, s: s, data: {});
       }
+      session = null;
       sessionError = e;
     } finally {
-      isLoadingSession = false;
+      if (generation == _generation) isLoadingSession = false;
     }
+    return true;
+  }
+
+  /// Deal the session's words for other start page chips. The words stay;
+  /// only their exercises change, so any exercise already loading is dropped.
+  void dealSkills(Set<LearningSkillsEnum> skills) {
+    final current = session;
+    if (current == null) return;
+    clear();
+    session = current.withSkills(skills);
   }
 
   Future<void> completeSession() async {
     session?.finishSession();
+  }
+
+  /// What the finished session's XP did; null until [measureEarnedXp] runs.
+  Future<PracticeSessionXp>? earnedXp;
+
+  /// Reads back what the finished session earned. Call once every use it
+  /// recorded, bonuses included, has been written to [analytics].
+  void measureEarnedXp(AnalyticsDataService analytics, String language) {
+    final session = this.session;
+    if (session == null) return;
+    earnedXp = _measureEarnedXp(analytics, language, session);
+  }
+
+  Future<PracticeSessionXp> _measureEarnedXp(
+    AnalyticsDataService analytics,
+    String language,
+    AnalyticsPracticeSessionModel session,
+  ) async {
+    try {
+      final missionId = session.missionId;
+      // A Mission no joined course carries any more (one since left) has no
+      // meter to have moved, so it gets no Mission line.
+      final mission = missionId == null
+          ? null
+          : await MatrixState.pangeaController.matrixState.client
+                .joinedMissionGroup(missionId);
+      return PracticeSessionXp.measure(
+        sessionUses: session.state.recordedUses,
+        learnerUses: await analytics.getUses(language),
+        missionLemmas: mission?.creditedLemmas,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'language': language, 'missionId': session.missionId},
+      );
+      rethrow;
+    }
   }
 
   Future<MultipleChoicePracticeExerciseModel?> _initExerciseData(
@@ -108,13 +186,19 @@ class PracticeSessionController {
     Future Function(MultipleChoicePracticeExerciseModel) onFetch,
   ) async {
     final requests = exerciseRequests;
+    final generation = _generation;
     for (var i = 0; i < requests.length; i++) {
       try {
         final req = requests[i];
         final res = await _fetchExercise(req, onFetch);
+        // The words were picked again while this loaded; the new pick fills
+        // the queue with its own.
+        if (generation != _generation) return null;
         _fillExerciseQueue(requests.skip(i + 1).toList(), onSkip, onFetch);
         return res;
       } catch (e) {
+        // silent-ok: a skip would count against the session that replaced it.
+        if (generation != _generation) return null;
         await onSkip(requests[i].target);
         // Try next request
         continue;
@@ -128,6 +212,7 @@ class PracticeSessionController {
     Future Function(PracticeTarget) onSkip,
     Future Function(MultipleChoicePracticeExerciseModel) onFetch,
   ) async {
+    final generation = _generation;
     for (final request in requests) {
       final completer = Completer<MultipleChoicePracticeExerciseModel?>();
       _queue.add(_PracticeQueueEntry(request: request, completer: completer));
@@ -139,7 +224,8 @@ class PracticeSessionController {
           })
           .catchError((e, s) async {
             completer.complete(null);
-            await onSkip(request.target);
+            // A skip would count against the session that replaced this one.
+            if (generation == _generation) await onSkip(request.target);
             return null;
           });
     }

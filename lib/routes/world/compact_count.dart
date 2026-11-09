@@ -1,9 +1,11 @@
 /// Abbreviates a tracker count for width-bounded display: counts above 999
 /// render as `1.2k` / `12k` / `999k` / `1.2M` so the cluster's powerups pill
 /// (and the narrow analytics bar reusing the same tracker button) never grows
-/// past the allocator's fixed `clusterGutter` — raw 4-5 digit vocab counts
-/// overlapped the right column's card (#7508). The displayed string never
-/// exceeds 4 characters for any count a learner can reach.
+/// into the right column's card — raw 4-5 digit vocab counts overlapped it
+/// (#7508). The shell's cluster gutter holds the pill at its narrowest plus a
+/// margin, and a count's overhang past its icon only narrows that margin. The
+/// displayed string never exceeds 4 characters for any count a learner can
+/// reach.
 ///
 /// Deliberately NOT locale-aware (`NumberFormat.compact` renders e.g. Spanish
 /// `1,2 mil`, which is wider than the raw digits and defeats the width bound);
