@@ -12,7 +12,7 @@ extension UserPermissionsRoomExtension on Room {
       ownPowerLevel >= SpaceConstants.powerLevelOfAdmin;
 
   /// False for a signed-out account: the SDK's [canInvite] reads
-  /// `client.userID!`, and the course page's leaderboard can still build
+  /// `client.userID!`, and the course page's participant list can still build
   /// through logout (CLIENT-F1F).
   bool get canInviteMembers => client.userID != null && canInvite;
 

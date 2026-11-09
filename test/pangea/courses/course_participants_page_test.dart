@@ -9,18 +9,18 @@ import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
-import 'package:fluffychat/routes/chat/chat_details/course_leaderboard_page.dart';
-import 'package:fluffychat/routes/chat/chat_details/leaderboard_row.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_participants_page.dart';
 import 'package:fluffychat/routes/chat/chat_details/participant_card.dart';
+import 'package:fluffychat/routes/chat/chat_details/room_participants_widget.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/users/course_member_stats.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
-import '../settle_leaderboard.dart';
+import '../settle_participants.dart';
 
 class _TestMatrixState extends MatrixState {
   @override
@@ -39,9 +39,9 @@ class _TestMatrix extends Matrix {
   MatrixState createState() => _TestMatrixState();
 }
 
-/// Coverage for #9212's full page (course-leaderboard.instructions.md): the
-/// podium, then fourth place onward as tiles in two columns on a wide page
-/// and one on a narrow one, then the pending members as cards, then invite.
+/// Coverage for #9776's full page (course-participants.instructions.md): every
+/// member as a card without stats, admins first, pending members last, then
+/// the invite tile.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -49,10 +49,9 @@ void main() {
   late SharedPreferences store;
 
   const userId = '@test:fakeServer.notExisting';
-  const language = 'es';
 
   setUpAll(() async {
-    final tempDir = await Directory.systemTemp.createTemp('leaderboard_page');
+    final tempDir = await Directory.systemTemp.createTemp('participants_page');
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(
           const MethodChannel('plugins.flutter.io/path_provider'),
@@ -71,6 +70,7 @@ void main() {
 
   setUp(() async {
     client = await getTestClient();
+    MatrixState.pangeaController = FakePangeaController();
   });
 
   tearDown(() async {
@@ -97,22 +97,9 @@ void main() {
 
   String memberId(int i) => '@member$i:fakeServer.notExisting';
 
-  /// A course the viewer administers with [members] joined (the viewer
-  /// included), [invited] invitees and [knocking] knockers; Member i holds
-  /// i stars, so the ranking runs Member 5, 4, 3, 2, 1 — the viewer, Testy,
-  /// is the admin and is not ranked.
+  /// A course the viewer, Testy, administers with [members] joined (the viewer
+  /// included), [invited] invitees and [knocking] knockers.
   Room courseRoom({required int members, int invited = 0, int knocking = 0}) {
-    MatrixState.pangeaController = FakePangeaController(
-      analyticsProfiles: {
-        for (var i = 1; i < members; i++)
-          memberId(i): AnalyticsProfileModel(
-            targetLanguage: language,
-            languageAnalytics: {
-              language: LanguageAnalyticsProfileEntry(1, 0, stars: i),
-            },
-          ),
-      },
-    );
     final room = Room(
       id: '!course:fakeServer.notExisting',
       client: client,
@@ -127,7 +114,7 @@ void main() {
     setStateEvent(
       room,
       PangeaEventTypes.coursePlan,
-      content: {'uuid': 'plan', 'l2': language},
+      content: {'uuid': 'plan', 'l2': 'es'},
     );
     setStateEvent(
       room,
@@ -175,91 +162,51 @@ void main() {
             body: SingleChildScrollView(
               child: SizedBox(
                 width: width,
-                child: CourseLeaderboardPage(room: room),
+                child: CourseParticipantsPage(room: room),
               ),
             ),
           ),
         ),
       ),
     );
-    await settle(tester, find.byType(CourseLeaderboardPage));
+    await settle(tester, find.byType(CourseParticipantsPage));
   }
 
-  List<int> tileRanks(WidgetTester tester) => tester
-      .widgetList<LeaderboardTile>(find.byType(LeaderboardTile))
-      .map((t) => t.entry.rank)
-      .toList();
-
-  testWidgets('podium, then tiles in two columns on a wide page', (
+  testWidgets('admins first, members by name, pending last, then invite', (
     tester,
   ) async {
     await pumpPage(
       tester,
-      courseRoom(members: 7),
-      width: CourseLeaderboardPage.twoColumnMinWidth,
+      courseRoom(members: 4, invited: 1, knocking: 1),
+      width: 400,
     );
 
-    expect(find.byType(LeaderboardRow), findsNWidgets(3));
-    expect(tileRanks(tester), [4, 5, 6]);
-    // Ranks 4 and 5 share a line; 6 starts the next.
-    final tiles = find.byType(LeaderboardTile);
-    expect(
-      tester.getTopLeft(tiles.at(0)).dy,
-      tester.getTopLeft(tiles.at(1)).dy,
-    );
-    expect(
-      tester.getTopLeft(tiles.at(2)).dy,
-      greaterThan(tester.getTopLeft(tiles.at(1)).dy),
-    );
-    expect(
-      tester.getTopLeft(tiles.at(0)).dy,
-      greaterThan(tester.getBottomLeft(find.byType(LeaderboardRow).last).dy),
-    );
+    final cards = tester
+        .widgetList<ParticipantCard>(find.byType(ParticipantCard))
+        .toList();
+    expect(cards.map((c) => c.user.displayName), [
+      'Testy',
+      'Member 1',
+      'Member 2',
+      'Member 3',
+      'Invitee 1',
+      'Knocker 1',
+    ]);
+    expect(find.text('Admin'), findsOneWidget);
+    expect(find.text('Invited'), findsOneWidget);
+    expect(find.text('Knocking'), findsOneWidget);
+    expect(find.byType(ParticipantsInviteTile), findsOneWidget);
+    expect(find.text('Invite'), findsOneWidget);
   });
 
-  testWidgets('one column on a narrow page', (tester) async {
-    await pumpPage(
-      tester,
-      courseRoom(members: 6),
-      width: CourseLeaderboardPage.twoColumnMinWidth - 1,
-    );
+  testWidgets('no card shows stats or a ring', (tester) async {
+    await pumpPage(tester, courseRoom(members: 5), width: 400);
 
-    final tiles = find.byType(LeaderboardTile);
-    expect(
-      tester.getTopLeft(tiles.at(1)).dy,
-      greaterThan(tester.getTopLeft(tiles.at(0)).dy),
+    final cards = tester.widgetList<ParticipantCard>(
+      find.byType(ParticipantCard),
     );
+    expect(cards, hasLength(5));
+    expect(cards.every((c) => !c.showStats && c.gradient == null), isTrue);
+    expect(find.byType(CourseMemberStats), findsNothing);
   });
-
-  testWidgets(
-    'pending members sit below the ranking, unranked, before invite',
-    (tester) async {
-      await pumpPage(
-        tester,
-        courseRoom(members: 3, invited: 1, knocking: 1),
-        width: 400,
-      );
-
-      expect(find.byType(LeaderboardRow), findsNWidgets(2));
-      expect(find.byType(LeaderboardTile), findsNothing);
-      // The admin line's card, then the two pending cards.
-      final cards = tester
-          .widgetList<ParticipantCard>(find.byType(ParticipantCard))
-          .toList();
-      expect(cards.map((c) => c.user.displayName), [
-        'Testy',
-        'Invitee 1',
-        'Knocker 1',
-      ]);
-      expect(cards.every((c) => !c.showStats), isTrue);
-      expect(find.text('Invited'), findsOneWidget);
-      expect(find.text('Knocking'), findsOneWidget);
-
-      final lastRow = tester.getBottomLeft(find.byType(LeaderboardRow).last).dy;
-      final invitee = tester.getTopLeft(find.text('Invitee 1')).dy;
-      final invite = tester.getTopLeft(find.byType(LeaderboardInviteRow)).dy;
-      expect(invitee, greaterThan(lastRow));
-      expect(invite, greaterThan(invitee));
-    },
-  );
 }
