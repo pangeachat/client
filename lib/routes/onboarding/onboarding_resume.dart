@@ -17,10 +17,11 @@ import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 /// page whose data isn't saved to the account, with what is saved in [state]
 /// (onboarding.instructions.md § What onboarding reads and saves).
 ///
-/// The profile page is told apart by its own mark, since sign-up already sets
-/// a name. The class-code page saves nothing to the account, so the languages
-/// decide. The level has a default and always reads as saved, so a run with
-/// its languages saved opens on the level page with the saved level selected.
+/// The profile and level pages are told apart by their own marks, since
+/// sign-up already sets a name and the profile has a default level. The
+/// class-code page saves nothing to the account, so the languages decide. With
+/// the level saved and no page left after it, the run opens on the level page,
+/// whose Next ends onboarding.
 List<OnboardingStep> resumedOnboardingPath(
   Client client,
   OnboardingStateController state,
@@ -61,17 +62,23 @@ List<OnboardingStep> resumedOnboardingPath(
   state
     ..setBaseLanguage(base)
     ..setTargetLanguage(target);
-  return [
+  final level = PickCefrLevelOnboardingStep(
+    client: client,
+    state: state,
+    maxRemainingSteps: teacher ? 1 : 0,
+  );
+  final levelPath = [
     ...codePath,
     PickLanguageOnboardingStep(
       client: client,
       state: state,
       maxRemainingSteps: teacher ? 2 : 1,
     ),
-    PickCefrLevelOnboardingStep(
-      client: client,
-      state: state,
-      maxRemainingSteps: teacher ? 1 : 0,
-    ),
+    level,
   ];
+  if (!client.onboardingLevelSaved) return levelPath;
+
+  state.setLanguageLevel(settings?.cefrLevel);
+  final next = level.nextStep(role);
+  return next == null ? levelPath : [...levelPath, next];
 }

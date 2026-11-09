@@ -17,6 +17,8 @@ import 'package:fluffychat/routes/onboarding/onboarding_resume.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/free_trial_step.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_cefr_level_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_language_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
@@ -59,14 +61,16 @@ void main() {
         content: {UserConstants.userSettings: settings},
       );
 
-  OnboardingStateController newState({AccountUpdater? updater}) =>
-      OnboardingStateController(
-        accountUpdater: updater ?? MockAccountUpdater(),
-        courseProvider: MockCourseProvider(),
-        avatarProvider: MockAvatarProvider(),
-        trialInfoProvider: MockTrialInfoProvider(),
-        userType: client.selfIdentifiedRole,
-      );
+  OnboardingStateController newState({
+    AccountUpdater? updater,
+    TrialInfoProvider? trial,
+  }) => OnboardingStateController(
+    accountUpdater: updater ?? MockAccountUpdater(),
+    courseProvider: MockCourseProvider(),
+    avatarProvider: MockAvatarProvider(),
+    trialInfoProvider: trial ?? MockTrialInfoProvider(),
+    userType: client.selfIdentifiedRole,
+  );
 
   group('the marks', () {
     test('an account with no marks is not resumed', () {
@@ -116,6 +120,19 @@ void main() {
       expect(client.accountData[PangeaEventTypes.onboardingProgress]?.content, {
         'started': true,
         'profile_saved': true,
+      });
+    });
+
+    test('the level mark needs a started run', () async {
+      await client.markOnboardingLevelSaved();
+      expect(client.accountData[PangeaEventTypes.onboardingProgress], isNull);
+
+      saveProgress({'started': true});
+      await client.markOnboardingLevelSaved();
+      expect(client.onboardingLevelSaved, isTrue);
+      expect(client.accountData[PangeaEventTypes.onboardingProgress]?.content, {
+        'started': true,
+        'level_saved': true,
       });
     });
 
@@ -236,6 +253,85 @@ void main() {
     });
   });
 
+  group('the level is marked saved', () {
+    PickCefrLevelOnboardingStep levelStep({AccountUpdater? updater}) =>
+        PickCefrLevelOnboardingStep(
+          client: client,
+          state: newState(updater: updater)
+            ..setUserType(UserType.student)
+            ..setLanguageLevel(LanguageLevelTypeEnum.b2),
+          maxRemainingSteps: 0,
+        );
+
+    test('by Next on the level page', () async {
+      saveProgress({'started': true});
+      await levelStep().execute();
+      expect(client.onboardingLevelSaved, isTrue);
+    });
+
+    test('but not when its save fails', () async {
+      saveProgress({'started': true});
+      await levelStep(updater: _FailingUpdater()).execute();
+      expect(client.onboardingLevelSaved, isFalse);
+    });
+
+    test('by a joined course that supplies it', () async {
+      saveProgress({'started': true});
+      final code = CourseCodeOnboardingStep(
+        client: client,
+        state: newState()..setUserType(UserType.student),
+        maxRemainingSteps: 2,
+      )..setCourseCode('abc1234');
+      expect(await code.execute(), isA<JoinedCourseOnboardingStep>());
+      expect(client.onboardingLevelSaved, isTrue);
+    });
+  });
+
+  group('with the level saved, a resumed run opens past it', () {
+    void saveThroughLevel(String role) {
+      saveProgress({
+        'started': true,
+        'profile_saved': true,
+        'level_saved': true,
+      });
+      saveSettings({
+        UserConstants.selfIdentifiedRole: role,
+        'target_language': 'es',
+        'source_language': 'en',
+        UserConstants.cefrLevel: 'B1',
+      });
+    }
+
+    test('a learner on the trial page', () {
+      saveThroughLevel('student');
+      final path = resumedOnboardingPath(
+        client,
+        newState(trial: _ShowsTrialPage()),
+      );
+      expect(path.last, isA<FreeTrialOnboardingStep>());
+      expect(path[path.length - 2], isA<PickCefrLevelOnboardingStep>());
+    });
+
+    test('a teacher on the course request, ready to send', () async {
+      saveThroughLevel('teacher');
+      final state = newState()
+        ..setCourseRequestName('Ana')
+        ..setCourseRequestInstitution('Lincoln High')
+        ..setCourseRequestGoals('Avancemos 1');
+      final path = resumedOnboardingPath(client, state);
+      expect(path.last, isA<CustomCourseOnboardingStep>());
+      expect(state.languageLevel, LanguageLevelTypeEnum.b1);
+      // It throws if the saved languages and level aren't carried over.
+      await path.last.execute();
+    });
+
+    test('on the level page when no page follows it', () {
+      saveThroughLevel('student');
+      final path = resumedOnboardingPath(client, newState());
+      expect(path.last, isA<PickCefrLevelOnboardingStep>());
+    });
+  });
+
   group('a failed level save moves on', () {
     PickCefrLevelOnboardingStep levelStep(UserType role) =>
         PickCefrLevelOnboardingStep(
@@ -273,6 +369,14 @@ class _FailingAvatarApi extends FakeMatrixApi {
     }
     return super.send(request);
   }
+}
+
+class _ShowsTrialPage implements TrialInfoProvider {
+  @override
+  bool get shouldShowTrialPage => true;
+
+  @override
+  Future<void> setShowedTrialPage() async {}
 }
 
 class _FailingUpdater implements AccountUpdater {

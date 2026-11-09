@@ -76,6 +76,7 @@ mixin CourseJoinStep on OnboardingStep {
         ),
       );
     });
+    await markLevelSaved();
 
     return JoinedCourseOnboardingStep.next(client: client, state: state);
   }

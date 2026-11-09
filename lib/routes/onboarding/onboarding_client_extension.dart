@@ -79,6 +79,20 @@ extension OnboardingClientExtension on Client {
     });
   }
 
+  /// Whether this run's level is saved, so a resumed run opens past the level
+  /// page.
+  bool get onboardingLevelSaved => _progress['level_saved'] == true;
+
+  /// Marks the level saved, for a run that has started. The profile has a
+  /// default level, so the level itself can't say whether one was chosen.
+  Future<void> markOnboardingLevelSaved() async {
+    if (onboardingLevelSaved || _progress['started'] != true) return;
+    await setAccountData(userID!, PangeaEventTypes.onboardingProgress, {
+      ..._progress,
+      'level_saved': true,
+    });
+  }
+
   /// Marks the run finished. The person is let into the app at once, before
   /// the write lands or even if it fails, so a failed save never keeps them in
   /// onboarding; an unsaved mark resumes it on the next app open.

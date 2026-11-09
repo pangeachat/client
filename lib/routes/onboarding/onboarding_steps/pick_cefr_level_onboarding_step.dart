@@ -37,10 +37,17 @@ class PickCefrLevelOnboardingStep extends OnboardingStep {
           userSettings: profile.userSettings.copyWith(cefrLevel: level),
         );
       });
+      await markLevelSaved();
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'level': level.string});
     }
 
+    return nextStep(type);
+  }
+
+  /// The page after this one, or null when onboarding ends here. A resumed run
+  /// asks too, to open past a level that is already saved.
+  OnboardingStep? nextStep(UserType type) {
     // A joined course ends onboarding on the joined-course page, and for a
     // teacher it takes the place of the course request — they already have a
     // course. See onboarding.instructions.md.
