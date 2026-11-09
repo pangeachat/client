@@ -24,7 +24,7 @@ void main() {
         expect(
           PAuthGaurd.loggedInLanding(
             current: Uri.parse(deepLink),
-            isL2Set: true,
+            finishedOnboarding: true,
           ),
           isNull,
         );
@@ -35,7 +35,7 @@ void main() {
       expect(
         PAuthGaurd.loggedInLanding(
           current: Uri.parse(PRoutes.world),
-          isL2Set: true,
+          finishedOnboarding: true,
         ),
         isNull,
       );
@@ -51,7 +51,7 @@ void main() {
         expect(
           PAuthGaurd.loggedInLanding(
             current: Uri.parse(location),
-            isL2Set: true,
+            finishedOnboarding: true,
           ),
           isNull,
           reason: location,
@@ -75,7 +75,7 @@ void main() {
         expect(
           PAuthGaurd.loggedInLanding(
             current: Uri.parse(location),
-            isL2Set: true,
+            finishedOnboarding: true,
           ),
           PRoutes.world,
           reason: location,
@@ -88,7 +88,7 @@ void main() {
         expect(
           PAuthGaurd.loggedInLanding(
             current: Uri.parse(location),
-            isL2Set: false,
+            finishedOnboarding: false,
           ),
           '/registration',
           reason: location,
@@ -105,7 +105,7 @@ void main() {
           expect(
             PAuthGaurd.loggedInLanding(
               current: Uri.parse(location),
-              isL2Set: true,
+              finishedOnboarding: true,
             ),
             isNull,
             reason: location,
