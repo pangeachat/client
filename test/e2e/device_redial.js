@@ -105,9 +105,18 @@ async function callAndAnswer(A, P, label) {
 
   await d.ensureAwakeAndForeground().catch(() => {});
   await ui.clickPanel(A.page, 'hangup').catch(() => {});
-  await wait(6000);
+  // The call has to have ended before its notification can be expected gone;
+  // without this a missed hang-up click read as a notification that outlived
+  // its call.
+  const ended = await h.actUntil('end', async () => {},
+    async () => !(await mx.hasMembership(P.token, ROOM_ID, P.userId)), { tries: 8, gap: 3000 });
+  console.log('   after the laptop hang-up: laptop in call', await mx.hasMembership(A.token, ROOM_ID, A.userId),
+    '| phone in call', await mx.hasMembership(P.token, ROOM_ID, P.userId));
+  if (!ended) await d.screenshot(shot('RD-not-ended-phone.png')).catch(() => {});
+  if (!ended) await A.page.screenshot({ path: shot('RD-not-ended-laptop.png') }).catch(() => {});
+  h.check('redial', 'the laptop hanging up ends the redial', ended, 'the phone was still in the call');
   h.check('redial', 'and the notification goes when it ends',
-    await notificationGone(), 'the notification outlived the redial');
+    ended && await notificationGone(), ended ? 'the notification outlived the redial' : 'the call never ended');
 
   await A.browser.close();
   process.exit(h.report() === 0 ? 0 : 1);
