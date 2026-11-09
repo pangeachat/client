@@ -5,7 +5,7 @@ description: "Client-side next-Mission resolver — the one shared answer to 'wh
 
 # Quests & Learning-Objective Progression (Client)
 
-A **Quest** is the learner's ordered journey through **Learning Objectives** (learner-facing label: **Missions**). The cross-repo model — what a Mission is, and the rule that progression is **soft** (an ordered suggestion that only *ranks* content, never locks it) — lives in the org doc [`quests-and-learning-objectives`](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md). This doc owns the **client-side resolver**: how the app computes, from data it already holds, each quest's **next Mission** — the single ranking input the world map and other surfaces preference toward — and what the learner sees of it on the course page.
+A **Quest** is the learner's ordered journey through **Learning Objectives** (learner-facing label: **Missions**). The shared quest plan and intended progression live in the org doc [`quests-and-learning-objectives`](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md). The current resolver ranks content without locking it; intended scheduled or student-paced unlocking is not yet implemented. This doc owns the **client-side resolver**: how the app computes, from data it already holds, each quest's **next Mission** — the single ranking input the world map and other surfaces preference toward — and what the learner sees of it on the course page.
 
 ## Stars and goal diamonds
 
@@ -141,14 +141,17 @@ The Mission the teacher's due dates put the class on also carries a **"Class loc
 
 ## Per-course activity pinning
 
-The design — what a pin means, why it lives in course state and never the quest plan, attribution-level semantics — is the org doc's [Per-course activity pinning](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md#per-course-activity-pinning). This doc records the client mechanics ([client#7748](https://github.com/pangeachat/client/issues/7748)):
+The [shared quest plan](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md#each-entry-in-the-can-do-sequence) owns plan entries and selection semantics. Course-space selections are independently editable; the client must render the selected content for the plan or course being viewed.
 
-- The pin travels on the course space's teacher-mode state (`TeacherModeModel.pinnedActivitiesByObjective`: Mission id → pinned `activity_id` content ids). Null, a missing Mission key, or an empty list all mean unrestricted.
-- Restriction is a **pure copy** at the outline boundary (`QuestOutline.restrictedTo`) — never a mutation of the quest-outline cache, which is shared across courses referencing the same quest; that copy is what lets the same quest run restricted in one course and open in another.
-- **One rule, one home**: `effectivePinnedActivityIds` carries the fail-open rule (no pin, empty pin, or an all-stale pin → unrestricted, so a pin can never make a Mission uncompletable). Both the outline restriction and the course-scoped map's marker filter call it. The world-scoped map is deliberately never filtered — everything stays playable everywhere.
-- The resolver is **pin-unaware by construction**: XP attribution and a Mission's vocabulary both derive from the outline's per-Mission activity sets, so a filtered outline scopes both with no resolver changes. This holds only because totals are per course (above) — a cross-course rollup would re-admit the very activities the pin excluded ([client#7771](https://github.com/pangeachat/client/issues/7771)).
-- Previews and non-joined contexts pass no pins — there is no learner progress to scope, and fail-open is the default everywhere.
-- The teacher editing surface is deferred to the admin panel ([admin-dash#30](https://github.com/pangeachat/admin-dash/issues/30)); until it ships, pins are written to course room state directly.
+**Not yet implemented:** the following replaces the legacy pin behavior described below.
+
+- New courses inherit the plan's selected activities and notes. Existing course selections and educator edits are preserved by the migration; reading a changed plan must not overwrite them.
+- Multiple entries may reference the same Can-Do ID. The outline, selected-entry navigation, notes, activity filters and corresponding course dates preserve those entries separately; the Can-Do ID alone cannot identify an entry. This does not create a separate learner-account progress model or change the XP rules above.
+- Unset selections may use defaults. Explicitly empty selections remain empty and must not expand to all activities. Course outlines and course-map filters use the same interpretation; neither silently replaces selected content with the whole catalog when selected activities are unavailable.
+- Plan previews show the plan's selected activities and notes without learner progress. A course view shows that course's selections. Absence of progress does not mean absence of content selection.
+- Course-specific filtering does not mutate the shared outline cache. The world's catalog is independent of course selections.
+
+**Current implementation limitation:** `TeacherModeModel.pinnedActivitiesByObjective` stores selections by Can-Do ID. Null, missing, empty and all-stale pins are currently treated as unrestricted by `effectivePinnedActivityIds`, and previews pass no pins. These are legacy mechanics to replace, not exceptions to the intended behavior above. `QuestOutline.restrictedTo` currently produces the course-specific copy; activity XP and practice vocabulary derive from that outline's activity sets. Update consumers together so displayed selections and the content used for progress and practice agree.
 
 ## Course avatar
 
@@ -163,6 +166,6 @@ A course room shows its own `m.room.avatar` when it has one. When it has none, i
 File GitHub issues for these and link them here.
 
 - A persisted per-Mission XP total (server-side rollup) once reading every session room and the local analytics database client-side becomes too costly at catalog scale.
-- Teacher-set **hard** restrictions (an opt-in gate on top of the soft default), if classroom demand appears — deliberately not built today (see the org doc). Distinct from per-course activity pinning (above), which is built and restricts *which activities count*, not *when Missions are reachable*.
+- Implement scheduled or student-paced unlocking under the shared quest design. This remains unimplemented and is distinct from selecting which activities belong to an entry.
 - Implement the joinable/open activity card design — [pangeachat/client#7669](https://github.com/pangeachat/client/issues/7669).
 - Design hint indicating an activity needs more people to start — [pangeachat/client#6810](https://github.com/pangeachat/client/issues/6810).
