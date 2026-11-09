@@ -369,20 +369,15 @@ class CallRoster extends ChangeNotifier {
   }) : _room = room {
     _room.addListener(recompute);
     _roomEvents = _room.createListener()
-      ..on<lk.RoomDisconnectedEvent>((_) => roomGaveUp());
+      ..on<lk.RoomDisconnectedEvent>((_) {
+        _roomGaveUp = true;
+        recompute();
+      });
     recompute();
   }
 
   late final lk.EventsListener<lk.RoomEvent> _roomEvents;
   bool _roomGaveUp = false;
-
-  /// The room has stopped trying to reconnect. Called by its disconnected
-  /// event; a test calls it directly, as an unconnected room raises none.
-  @protected
-  void roomGaveUp() {
-    _roomGaveUp = true;
-    recompute();
-  }
 
   /// EVERYTHING this reads off the SFU, in one snapshot per recompute.
   ///
