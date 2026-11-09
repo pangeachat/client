@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics_data/analytics_database.dart';
+import 'package:fluffychat/features/authentication/email_link_not_clicked.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
@@ -128,6 +129,9 @@ class ErrorHandler {
     // sleep, not the network: the OS suspends the socket and every pending
     // timer fires together on wake (severity table, Timeout row; #9132).
     if (e is TimeoutException && _appNotResumed) return false;
+    // silent-ok: the learner confirmed an emailed link before clicking it.
+    // The dialog tells them to click it; nothing in code can fix it.
+    if (e is MatrixException && e.isEmailLinkNotYetClicked) return false;
     return true;
   }
 
