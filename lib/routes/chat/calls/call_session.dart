@@ -1388,9 +1388,25 @@ class CallSession extends ChangeNotifier {
     _recordingFinished = true;
     final finishingKey = _callIdentity.key;
     if (finishingKey != null) CallHalfInFlight.finishing.add(finishingKey);
+    final hangingUp = call.hangUp();
+    // The call's minutes, now: hang-up has already closed the talk time, and
+    // the rest of it waits on speech-to-text, which an app closed in that
+    // window never sees (#9724). Same rule as everything this device writes:
+    // nothing from a device that did not carry on with the call.
+    final talkStartedAt = call.talkStartedAt;
+    if (talkStartedAt != null && (call.carriedOn || call.isPredecessor)) {
+      DosageAudioSignals.recordCall(
+        roomId: room.id,
+        callKey: _callIdentity.key,
+        deviceId: room.client.deviceID,
+        talkStartedAt: talkStartedAt,
+        connected: call.talkDuration,
+        userId: room.client.userID,
+        accessToken: room.client.accessToken,
+      );
+    }
     unawaited(
-      call
-          .hangUp()
+      hangingUp
           .whenComplete(() async {
             try {
               await call.settled;
@@ -1408,20 +1424,6 @@ class CallSession extends ChangeNotifier {
             // guard each one.
             if (!call.carriedOn && !call.isPredecessor) return;
             final identity = _callIdentity;
-            // Ahead of everything awaited below: transcription can take minutes,
-            // and an app killed during it must not lose the call's time.
-            final talkStartedAt = call.talkStartedAt;
-            if (talkStartedAt != null) {
-              DosageAudioSignals.recordCall(
-                roomId: room.id,
-                callKey: identity.key,
-                deviceId: room.client.deviceID,
-                talkStartedAt: talkStartedAt,
-                connected: call.talkDuration,
-                userId: room.client.userID,
-                accessToken: room.client.accessToken,
-              );
-            }
             // The card is normally already in the timeline by now (written the
             // moment the call ended); this call credits the transcripts against
             // it, and writes the card itself only if that earlier attempt had

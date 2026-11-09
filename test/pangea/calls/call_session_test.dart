@@ -1597,6 +1597,8 @@ void main() {
   group('a finished call reports its connected time', () {
     Future<(DosageAudioBuffer, CallSession)> up({
       required bool answered,
+      CallCaptureService? capture,
+      bool siblingCarriesOn = false,
       Map<String, String> flags = const {
         'ANALYTICS_DUAL_WRITE_ENABLED': 'true',
         'DOSAGE_SIGNALS_ENABLED': 'true',
@@ -1620,7 +1622,7 @@ void main() {
         analytics: (eventId, uses, language) async {},
         onReleased: (_) {},
         mediaOverride: media,
-        captureOverride: CallCaptureService(sink: _NullSink()),
+        captureOverride: capture ?? CallCaptureService(sink: _NullSink()),
         recordOverride: _SpyRecord(),
       );
       await pumpEventQueue();
@@ -1631,6 +1633,18 @@ void main() {
         await pumpEventQueue();
       }
       await Future<void>.delayed(const Duration(milliseconds: 5));
+      if (siblingCarriesOn) {
+        // One of this account's other devices claims the call: this one is
+        // chosen against and leaves.
+        final roster = media.fakeRoster!;
+        final sib = '${client.userID}:SIBLINGDEV';
+        roster.identities = {...roster.identities, sib};
+        roster.attributes = {
+          sib: {CallRoster.chosenAttribute: 'yes'},
+        };
+        roster.recompute();
+        await pumpEventQueue();
+      }
       session.endCall();
       await pumpEventQueue();
       await Future<void>.delayed(const Duration(milliseconds: 50));
@@ -1653,6 +1667,30 @@ void main() {
         hasLength(1),
         reason: 'and dispose adds none',
       );
+    });
+
+    // The minutes used to wait on hang-up's teardown, which waits on
+    // speech-to-text: an app closed in that window lost the call (#9724).
+    test('the time is written at hang-up, not after transcription', () async {
+      final (buffer, session) = await up(
+        answered: true,
+        capture: _HangingCapture(),
+      );
+      expect(buffer.bufferedCalls, hasLength(1));
+      expect(
+        buffer.bufferedCalls.single.connectedMs,
+        session.call.talkDuration.inMilliseconds,
+      );
+    });
+
+    test('a device that did not carry on writes no time', () async {
+      final (buffer, session) = await up(
+        answered: true,
+        siblingCarriesOn: true,
+      );
+      expect(session.call.talkStartedAt, isNotNull, reason: 'it did talk');
+      expect(session.call.carriedOn, isFalse);
+      expect(buffer.bufferedCalls, isEmpty);
     });
 
     test('a call nobody answered reports nothing', () async {
