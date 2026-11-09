@@ -93,7 +93,7 @@ A lost connection where the device is online but the chat server is not answerin
 
 ## Asking Pangea for help
 
-The guidance ends with a short form: the user's email address, filled in from the account when the app has one, and an **Ask Pangea for help** button. The help request carries that email, the account ID when signed in, the blocked categories, the platform, the network type and the time the block was first seen.
+The guidance ends with a short form: the user's email address, filled in from the account when the app has one, and an **Ask Pangea for help** button. The help request carries that email, the account ID when signed in, the IDs of the courses the user has joined (the same IDs as the Sentry report, taken when the user asks), the blocked categories, the platform, the network type and the time the block was first seen.
 
 The team hears about a block only when someone asks. The user chooses what is sent, and the volume stays low: a class of 30 behind one filter sends a request only from whoever taps the button, usually the teacher. The app sends at most one help request a day from each account. Signing out lifts the limit, so the next account on a shared device can send its own. A request still waiting at sign-out stays and goes out on the next good connection: it is the earlier account's request. A limit per school network is not possible, because the device cannot learn which network it is on without reaching our servers, and a waiting request reaches us from a different network.
 
