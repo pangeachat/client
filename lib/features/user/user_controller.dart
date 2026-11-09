@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/named_timeout.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_client_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
@@ -374,13 +375,16 @@ class UserController {
     return token;
   }
 
-  /// Checks if user data is available and the user's l2 is set.
-  Future<bool> get isUserL2Set async {
+  /// Whether the account is past onboarding: its L2 is saved and no onboarding
+  /// run is left unfinished (onboarding.instructions.md § What onboarding
+  /// reads and saves).
+  Future<bool> get finishedOnboarding async {
     try {
       // the function fetchUserModel() uses a completer, so it shouldn't
       // re-call the endpoint if it has already been called
       await initialize();
-      return profile.userSettings.targetLanguage != null;
+      return profile.userSettings.targetLanguage != null &&
+          !client.onboardingUnfinished;
     } catch (err, s) {
       ErrorHandler.logError(e: err, s: s, data: {});
       return false;

@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Ganti basa dhasar?",
     "changeBaseLanguageDesc": "Menu lan tombol aplikasi bakal ganti dadi {language}.",
     "accountSetupFailedHelp": "Kita ora bisa ngrampungake nyetel akun sampeyan. Priksa sambungan sampeyan banjur coba maneh, utawa metu banjur mlebu mengko.",
-    "onboardingOfflineError": "Kowe lagi offline. Coba maneh yen wis online."
+    "onboardingOfflineError": "Kowe lagi offline. Coba maneh yen wis online.",
+    "activitySavedTo": "Aktivitas disimpen menyang {page}"
 }

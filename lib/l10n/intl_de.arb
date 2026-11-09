@@ -10037,5 +10037,6 @@
     "changeBaseLanguageTitle": "Basissprache ändern?",
     "changeBaseLanguageDesc": "Die Menüs und Schaltflächen der App werden auf {language} umgestellt.",
     "accountSetupFailedHelp": "Wir konnten Ihr Konto nicht einrichten. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut, oder melden Sie sich ab und später wieder an.",
-    "onboardingOfflineError": "Du bist offline. Versuche es erneut, sobald du wieder online bist."
+    "onboardingOfflineError": "Du bist offline. Versuche es erneut, sobald du wieder online bist.",
+    "activitySavedTo": "Aktivität gespeichert in {page}"
 }

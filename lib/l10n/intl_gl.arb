@@ -10050,5 +10050,6 @@
     "changeBaseLanguageTitle": "Cambiar idioma base?",
     "changeBaseLanguageDesc": "Os menús e botóns da aplicación cambiarán a {language}.",
     "accountSetupFailedHelp": "Non puidemos rematar de configurar a túa conta. Comproba a túa conexión e téntao de novo, ou pecha a sesión e inicia sesión máis tarde.",
-    "onboardingOfflineError": "Non tes conexión. Téntao de novo cando volvas ter conexión."
+    "onboardingOfflineError": "Non tes conexión. Téntao de novo cando volvas ter conexión.",
+    "activitySavedTo": "Actividade gardada en {page}"
 }

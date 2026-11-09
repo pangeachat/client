@@ -10816,5 +10816,6 @@
     "changeBaseLanguageTitle": "ベース言語を変更しますか？",
     "changeBaseLanguageDesc": "アプリのメニューとボタンが{language}に切り替わります。",
     "accountSetupFailedHelp": "アカウント設定を完了できませんでした。接続を確認して再試行するか、ログアウトして後でサインインしてください。",
-    "onboardingOfflineError": "オフラインです。オンラインに戻ってからもう一度お試しください。"
+    "onboardingOfflineError": "オフラインです。オンラインに戻ってからもう一度お試しください。",
+    "activitySavedTo": "アクティビティを{page}に保存しました"
 }

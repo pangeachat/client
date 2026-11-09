@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Fetola puo ea motheo?",
     "changeBaseLanguageDesc": "Limenu le likonopo tsa app li tla fetohela ho {language}.",
     "accountSetupFailedHelp": "Re hlotsoe ho qeta ho hloma ak'haonte ea hau. Lekola khokahano ea hau ebe u leka hape, kapa u tsoe ebe u kena hape hamorao.",
-    "onboardingOfflineError": "Ha o inthaneteng. Leka hape ha o se o inthaneteng."
+    "onboardingOfflineError": "Ha o inthaneteng. Leka hape ha o se o inthaneteng.",
+    "activitySavedTo": "Mosebetsi o bolokiloe ho {page}"
 }

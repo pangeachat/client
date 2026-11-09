@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Chenj bɛs langwej?",
     "changeBaseLanguageDesc": "Di app in menyu ɛn bɔtin dɛn go chenj to {language}.",
     "accountSetupFailedHelp": "Wi nɔ ebul fɔ dɔn sɛt yu akawnt. Chɛk yu kɔnɛkshɔn ɛn tray bak, ɔ lɔg awt ɛn lɔg in bak leta.",
-    "onboardingOfflineError": "Yu nɔ de ɔnlayn. Tray bak wɛn yu kɔmɔt ɔf-layn."
+    "onboardingOfflineError": "Yu nɔ de ɔnlayn. Tray bak wɛn yu kɔmɔt ɔf-layn.",
+    "activitySavedTo": "Aktiviti dɔn sev to {page}"
 }

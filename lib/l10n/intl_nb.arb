@@ -10107,5 +10107,6 @@
     "changeBaseLanguageTitle": "Endre grunnspråk?",
     "changeBaseLanguageDesc": "Appens menyer og knapper vil bytte til {language}.",
     "accountSetupFailedHelp": "Vi kunne ikke fullføre oppsettet av kontoen din. Sjekk tilkoblingen din og prøv igjen, eller logg ut og logg inn senere.",
-    "onboardingOfflineError": "Du er frakoblet. Prøv igjen når du er på nett."
+    "onboardingOfflineError": "Du er frakoblet. Prøv igjen når du er på nett.",
+    "activitySavedTo": "Aktivitet lagret i {page}"
 }

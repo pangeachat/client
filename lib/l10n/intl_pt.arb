@@ -10991,5 +10991,6 @@
     "changeBaseLanguageTitle": "Mudar idioma base?",
     "changeBaseLanguageDesc": "Os menus e botões do aplicativo mudarão para {language}.",
     "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique sua conexão e tente novamente, ou saia e faça login mais tarde.",
-    "onboardingOfflineError": "Você está offline. Tente novamente quando estiver online."
+    "onboardingOfflineError": "Você está offline. Tente novamente quando estiver online.",
+    "activitySavedTo": "Atividade salva em {page}"
 }

@@ -10047,5 +10047,6 @@
     "changeBaseLanguageTitle": "Muuda baaskeelt?",
     "changeBaseLanguageDesc": "Rakenduse menüüd ja nupud lülituvad keelele {language}.",
     "accountSetupFailedHelp": "Me ei saanud teie konto seadistamist lõpule viia. Kontrollige oma ühendust ja proovige uuesti või logige välja ja proovige hiljem uuesti sisse logida.",
-    "onboardingOfflineError": "Oled võrguühenduseta. Proovi uuesti, kui oled võrgus tagasi."
+    "onboardingOfflineError": "Oled võrguühenduseta. Proovi uuesti, kui oled võrgus tagasi.",
+    "activitySavedTo": "Tegevus salvestatud asukohta {page}"
 }

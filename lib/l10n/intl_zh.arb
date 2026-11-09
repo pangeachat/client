@@ -10050,5 +10050,6 @@
     "changeBaseLanguageTitle": "更改基础语言？",
     "changeBaseLanguageDesc": "应用的菜单和按钮将切换为{language}。",
     "accountSetupFailedHelp": "我们无法完成您的账户设置。请检查您的网络连接，然后重试，或者退出并稍后登录。",
-    "onboardingOfflineError": "您已离线。请在联网后重试。"
+    "onboardingOfflineError": "您已离线。请在联网后重试。",
+    "activitySavedTo": "活动已保存到 {page}"
 }

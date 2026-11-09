@@ -42,9 +42,11 @@ Besides the user's input, onboarding reads:
 
 The name, avatar, role, languages and level, including any a joined course supplies, are saved to the person's account when they move forward, as is whether the trial page was shown. A class code is kept on this device ([joining-courses § Route 2 — Class Code](joining-courses.instructions.md#route-2--class-code)), and a course request goes to our servers to be fulfilled.
 
-When a save fails, the page shows the error and stays where it is until Next works; the class-code and course request pages can also be skipped, and Setup has its own way out (below). The profile, role and trial pages are the exceptions: a failed save there does not stop the person, the old name or picture stays, and the role is saved again with their languages.
+When a save fails, the page shows the error and stays where it is until Next works; the class-code and course request pages can also be skipped, and Setup has its own way out (below). The profile, role, level and trial pages are the exceptions: a failed save there does not stop the person, the old name, picture or level stays, and the role is saved again with their languages.
 
-A signed-in account with no L2 is sent to onboarding, whatever link it opened, and saving the L2 marks onboarding as done. Someone who leaves before then starts a new run, with only what was saved to their account.
+The account is marked when an onboarding run starts, when its name and picture are saved, when its level is saved, and when it ends. A run that started and did not end resumes the next time the app opens, on the first page whose choices are not saved: the profile page when nothing is saved yet, the role page with no role, the class-code page with no languages, the level page with no level, and otherwise the page after it, with the earlier pages behind Back. Choices that are not saved to the account do not come back: a teacher sees the course request again, and someone who joined a course lands on the map. If the end mark fails to save, the person still goes into the app, and onboarding resumes next time.
+
+A signed-in account with no L2 is sent to onboarding, whatever link it opened. An account that saved its L2 before the marks existed has neither mark and counts as finished.
 
 An account with no role, such as one that signed up before onboarding asked for it, is asked for one when the app opens, and any account can change its role in learning settings ([profile](profile.instructions.md)).
 
@@ -66,5 +68,4 @@ A teacher gives their name, institution, and textbook or curriculum. Submitting 
 
 ## Open questions
 
-- Someone who leaves once their L2 is saved skips the rest. Should onboarding resume where they left off?
 - Repeated save failures leave users unable to move forward, with an unclear error. How should onboarding handle this?

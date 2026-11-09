@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Shintsha ulimi oluyisisekelo?",
     "changeBaseLanguageDesc": "Amamenyu nezinkinobho zohlelo lokusebenza kuzoshintshela ku-{language}.",
     "accountSetupFailedHelp": "Asikwazanga ukuqeda ukusetha i-akhawunti yakho. Hlola uxhumano lwakho bese uzama futhi, noma phuma bese ungena ngemvume kamuva.",
-    "onboardingOfflineError": "Awuxhunyiwe ku-inthanethi. Zama futhi uma usubuyele ku-inthanethi."
+    "onboardingOfflineError": "Awuxhunyiwe ku-inthanethi. Zama futhi uma usubuyele ku-inthanethi.",
+    "activitySavedTo": "Umsebenzi ulondolozwe ku-{page}"
 }

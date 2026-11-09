@@ -10483,5 +10483,6 @@
     "changeBaseLanguageTitle": "Promijeniti osnovni jezik?",
     "changeBaseLanguageDesc": "Izbornici i gumbi aplikacije prebacit će se na {language}.",
     "accountSetupFailedHelp": "Nismo uspjeli dovršiti postavljanje vašeg računa. Provjerite vezu i pokušajte ponovno ili se odjavite i prijavite kasnije.",
-    "onboardingOfflineError": "Izvan mreže ste. Pokušajte ponovno kada se vratite na mrežu."
+    "onboardingOfflineError": "Izvan mreže ste. Pokušajte ponovno kada se vratite na mrežu.",
+    "activitySavedTo": "Aktivnost spremljena u {page}"
 }

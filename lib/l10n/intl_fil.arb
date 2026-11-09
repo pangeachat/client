@@ -10907,5 +10907,6 @@
     "changeBaseLanguageTitle": "Palitan ang base language?",
     "changeBaseLanguageDesc": "Ang mga menu at button ng app ay lilipat sa {language}.",
     "accountSetupFailedHelp": "Hindi namin matapos ang pag-set up ng iyong account. Suriin ang iyong koneksyon at subukang muli, o mag-log out at mag-sign in mamaya.",
-    "onboardingOfflineError": "Offline ka. Subukang muli kapag online ka na."
+    "onboardingOfflineError": "Offline ka. Subukang muli kapag online ka na.",
+    "activitySavedTo": "Na-save ang aktibidad sa {page}"
 }

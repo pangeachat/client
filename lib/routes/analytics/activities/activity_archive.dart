@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
@@ -18,6 +19,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/objective_token.dart';
 import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/quest_objectives_loader.dart';
@@ -56,9 +58,14 @@ class CourseMissions {
     for (final room in client.joinedCourseRooms) {
       final questId = room.coursePlan?.uuid;
       if (questId == null) continue;
+      // Read as the course page reads it, with the course's own copy: a
+      // Can-Do a teacher added is only listed when asked for.
+      final rules = room.courseListRules;
       final outline = (await QuestRepo.outline(
         questId,
         courseRoomId: room.id,
+        courseLoIds: rules.missions?.allLoIds ?? const {},
+        copyRevision: rules.revision,
       )).result;
       // silent-ok: a course whose outline fails is reported where it loads
       // (reportCourseOutlineFailure, once per room per session); this page
@@ -67,11 +74,53 @@ class CourseMissions {
       courses.add(
         CourseMissions(
           room: room,
-          groups: objectiveGroupsWithActivities(outline.forCourse(room).groups),
+          groups: objectiveGroupsWithActivities(outline.forRules(rules).groups),
         ),
       );
     }
     return courses;
+  }
+
+  /// [courses] as the page lists them: only those in the learner's current
+  /// language, since XP is kept per language and another language's Missions
+  /// have nothing to show (#9559), and each Mission once, from the first
+  /// course that carries it.
+  static List<CourseMissions> listed(List<CourseMissions> courses) {
+    final seen = <String>{};
+    return [
+      for (final course in courses)
+        if (CourseLanguageScope.courseInTargetLanguage(course.room))
+          CourseMissions(
+            room: course.room,
+            groups: [
+              for (final group in course.groups)
+                if (seen.add(group.objective.id)) group,
+            ],
+          ),
+    ];
+  }
+
+  /// The Mission page that lists a saved session of [activityId]: the first
+  /// of the [listed] Missions whose activities include it, or the copy of it
+  /// the course shows. Null when the page lists the session under "Other
+  /// activities" instead.
+  static ObjectiveTokenParam? missionPageFor(
+    List<CourseMissions> listed,
+    String? activityId,
+  ) {
+    if (activityId == null) return null;
+    for (final course in listed) {
+      for (final group in course.groups) {
+        final shown = group.credit.canonicalOf(activityId);
+        if (group.activities.any((a) => a.activityId == shown)) {
+          return ObjectiveTokenParam(
+            missionId: group.objective.id,
+            courseId: course.room.id,
+          );
+        }
+      }
+    }
+    return null;
   }
 }
 
@@ -108,9 +157,9 @@ class _ActivityArchiveState extends State<ActivityArchive> {
         final client = Matrix.of(context).client;
         final Room? analyticsRoom = client.ownAnalyticsRoomLocalByL2;
         final archive = analyticsRoom?.archivedActivities ?? [];
-        final selectedRoomId = GoRouterState.of(
-          context,
-        ).pathParameters['roomid'];
+        // The session open in a chat beside the list, as its end card's
+        // saved line leaves it.
+        final selectedRoomId = activeRoomIdFor(GoRouterState.of(context));
         final hasCourses = client.joinedCourseRooms.isNotEmpty;
         return Scaffold(
           appBar: AppBar(
@@ -186,8 +235,9 @@ class _ActivityArchiveState extends State<ActivityArchive> {
 /// the Mission's page with the sessions that fed it; then the sessions no
 /// joined course's plan accounts for, under "Other activities". A Mission's
 /// session from a second course or another language lands there too today (an
-/// open question in activities.instructions.md).
-class _ObjectiveList extends StatelessWidget {
+/// open question in activities.instructions.md). The open session's row is
+/// brought into view, so a learner arriving from its end card sees it.
+class _ObjectiveList extends StatefulWidget {
   final List<CourseMissions> courses;
   final ProgressionResolution progression;
   final List<Room> archive;
@@ -201,33 +251,50 @@ class _ObjectiveList extends StatelessWidget {
   });
 
   @override
+  State<_ObjectiveList> createState() => _ObjectiveListState();
+}
+
+class _ObjectiveListState extends State<_ObjectiveList> {
+  final AutoScrollController _scroll = AutoScrollController();
+
+  /// The row last scrolled to. Scrolling again only when it moves (the
+  /// Missions above it landing) leaves a learner's own scrolling alone.
+  int? _revealedIndex;
+
+  @override
+  void dispose() {
+    _scroll.dispose();
+    super.dispose();
+  }
+
+  void _reveal(int? index) {
+    if (index == null || index == _revealedIndex) return;
+    _revealedIndex = index;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _scroll.scrollToIndex(index, preferPosition: AutoScrollPosition.middle);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final courses = widget.courses;
+    final progression = widget.progression;
+    final archive = widget.archive;
+    final selectedRoomId = widget.selectedRoomId;
     final l10n = L10n.of(context);
     final selectedMissionId = activeObjectiveDetailFor(
       GoRouterState.of(context).uri,
     );
     final client = Matrix.of(context).client;
     final xpByActivity = client.cachedXpBreakdownByActivity;
-    final placed = <String>{};
-    final seen = <String>{};
+    // Re-read on every resolution, which a language switch triggers.
+    final listed = CourseMissions.listed(courses);
     final children = <Widget>[];
-    for (final course in courses) {
-      // Only courses in the learner's current language: their XP is kept
-      // per language, so another language's Missions have nothing to show
-      // here (#9559). Re-read on every resolution, which a language switch
-      // triggers.
-      if (!CourseLanguageScope.courseInTargetLanguage(course.room)) continue;
+    for (final course in listed) {
       final quest = progression.forCourse(course.room.id);
       for (final group in course.groups) {
         final missionId = group.objective.id;
-        if (!seen.add(missionId)) continue;
-        // A session whose activity serves a Mission is that Mission's, not
-        // one of the "other activities" below.
-        final ids = {for (final a in group.activities) a.activityId};
-        placed.addAll([
-          for (final room in archive)
-            if (ids.contains(room.activityId)) room.id,
-        ]);
         children.add(
           MissionTile(
             group: group,
@@ -242,22 +309,34 @@ class _ObjectiveList extends StatelessWidget {
         );
       }
     }
+    // A session whose activity serves a Mission is that Mission's, not one of
+    // the "other activities" below.
     final other = [
       for (final room in archive)
-        if (!placed.contains(room.id)) room,
+        if (CourseMissions.missionPageFor(listed, room.activityId) == null)
+          room,
     ];
+    int? selectedIndex;
     if (other.isNotEmpty) {
       if (children.isNotEmpty) children.add(_Heading(l10n.otherActivities));
-      children.addAll(
-        other.map(
-          (room) => AnalyticsActivityItem(
-            room: room,
-            rovingId: room.id,
-            selected: room.id == selectedRoomId,
+      for (final room in other) {
+        final selected = room.id == selectedRoomId;
+        if (selected) selectedIndex = children.length;
+        children.add(
+          AutoScrollTag(
+            key: ValueKey(room.id),
+            controller: _scroll,
+            index: children.length,
+            child: AnalyticsActivityItem(
+              room: room,
+              rovingId: room.id,
+              selected: selected,
+            ),
           ),
-        ),
-      );
+        );
+      }
     }
+    _reveal(selectedIndex);
     return Semantics(
       label: l10n.starListLabel,
       container: true,
@@ -268,6 +347,7 @@ class _ObjectiveList extends StatelessWidget {
         selectedId: selectedRoomId,
         child: ListView(
           key: const PageStorageKey<String>('activity-archive'),
+          controller: _scroll,
           physics: const ClampingScrollPhysics(),
           children: children,
         ),

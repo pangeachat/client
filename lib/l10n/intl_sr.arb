@@ -10996,5 +10996,6 @@
     "changeBaseLanguageTitle": "Promeniti osnovni jezik?",
     "changeBaseLanguageDesc": "Meniji i dugmad aplikacije će se prebaciti na {language}.",
     "accountSetupFailedHelp": "Nismo uspeli da završimo podešavanje vašeg naloga. Proverite vezu i pokušajte ponovo, ili se odjavite i prijavite kasnije.",
-    "onboardingOfflineError": "Niste povezani. Pokušajte ponovo kada budete na mreži."
+    "onboardingOfflineError": "Niste povezani. Pokušajte ponovo kada budete na mreži.",
+    "activitySavedTo": "Aktivnost sačuvana u {page}"
 }

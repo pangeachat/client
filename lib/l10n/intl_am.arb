@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "መሰረታዊ ቋንቋ ይቀየር?",
     "changeBaseLanguageDesc": "የመተግበሪያው ምናሌዎች እና አዝራሮች ወደ {language} ይቀየራሉ።",
     "accountSetupFailedHelp": "መለያዎን ማዋቀር አልቻልንም። ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ፣ ወይም ይውጡ እና በኋላ ይግቡ።",
-    "onboardingOfflineError": "ከመስመር ውጪ ነዎት። በመስመር ላይ ሲሆኑ እንደገና ይሞክሩ።"
+    "onboardingOfflineError": "ከመስመር ውጪ ነዎት። በመስመር ላይ ሲሆኑ እንደገና ይሞክሩ።",
+    "activitySavedTo": "እንቅስቃሴ ወደ {page} ተቀምጧል"
 }

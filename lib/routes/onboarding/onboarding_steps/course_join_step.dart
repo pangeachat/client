@@ -63,9 +63,9 @@ mixin CourseJoinStep on OnboardingStep {
     }
     state.setBaseLanguage(baseLanguage);
 
-    // The role rides along in case its own save failed: saving the language
-    // marks onboarding done (onboarding.instructions.md § What onboarding reads
-    // and saves).
+    // The role rides along in case its own save failed: onboarding can't move
+    // past this save, so the role is saved before it ends
+    // (onboarding.instructions.md § What onboarding reads and saves).
     await state.accountUpdater.updateProfile((profile) {
       return profile.copyWith(
         userSettings: profile.userSettings.copyWith(
@@ -76,6 +76,7 @@ mixin CourseJoinStep on OnboardingStep {
         ),
       );
     });
+    await markLevelSaved();
 
     return JoinedCourseOnboardingStep.next(client: client, state: state);
   }

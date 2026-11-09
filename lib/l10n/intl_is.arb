@@ -2520,5 +2520,6 @@
     "changeBaseLanguageTitle": "Breyta grunn tungumáli?",
     "changeBaseLanguageDesc": "Valmyndir og hnappar forritsins munu skipta yfir í {language}.",
     "accountSetupFailedHelp": "Við gátum ekki lokið við að setja upp reikninginn þinn. Athugaðu tenginguna þína og reyndu aftur, eða skráðu þig út og inn aftur síðar.",
-    "onboardingOfflineError": "Þú ert ótengdur. Reyndu aftur þegar þú ert kominn aftur á netið."
+    "onboardingOfflineError": "Þú ert ótengdur. Reyndu aftur þegar þú ert kominn aftur á netið.",
+    "activitySavedTo": "Virkni vistuð á {page}"
 }

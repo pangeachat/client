@@ -48,9 +48,9 @@ class PickLanguageOnboardingStep extends OnboardingStep {
       throw IdenticalLanguageException();
     }
 
-    // The role rides along in case its own save failed: this save is what marks
-    // onboarding done (onboarding.instructions.md § What onboarding reads and
-    // saves).
+    // The role rides along in case its own save failed: onboarding can't move
+    // past this save, so the role is saved before it ends
+    // (onboarding.instructions.md § What onboarding reads and saves).
     await state.accountUpdater.updateProfile((profile) {
       return profile.copyWith(
         userSettings: profile.userSettings.copyWith(
