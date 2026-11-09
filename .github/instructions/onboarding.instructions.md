@@ -48,6 +48,8 @@ The account is marked when an onboarding run starts, when its name and picture a
 
 A signed-in account with no L2 is always sent to onboarding. An account that saved its L2 before the marks existed has neither mark and counts as finished.
 
+An account with no role, such as one that signed up before onboarding asked for it, is asked for one when the app opens, and any account can change its role in learning settings ([profile](profile.instructions.md)).
+
 ### Setup
 
 Before the profile page, a loading page sets the account up. This page adds a creation date to the user's account if not already set. It also requests the user’s free trial if they are eligible.
@@ -70,6 +72,5 @@ A teacher gives their name, institution, and textbook or curriculum. Submitting 
 
 ## Future work
 
-- A role option in learning settings, and a popup on app open for an account with no role until it chooses one.
 - Keep choices on the device when a save fails offline, and save them to the account once back online.
 - Offer a learner with no class code or link their L2's central course, or a course of their own if they decline, so every learner lands in a course. Teachers aren't offered one.

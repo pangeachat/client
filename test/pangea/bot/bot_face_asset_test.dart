@@ -60,6 +60,23 @@ int _changedChannels(List<int> a, List<int> b) {
 /// and an unchanged face moves none.
 const _visibleChange = 500;
 
+/// Near-white pixels in the eye's part of a 120px render.
+int _whiteInEye(List<int> pixels) {
+  var white = 0;
+  for (var y = 20; y < 70; y++) {
+    for (var x = 35; x < 85; x++) {
+      final i = (y * 120 + x) * 4;
+      if (pixels[i] > 200 && pixels[i + 1] > 200 && pixels[i + 2] > 200) {
+        white++;
+      }
+    }
+  }
+  return white;
+}
+
+/// Floor for an open eye: mid-blink, [_whiteInEye] falls below this.
+const _blinkingEyeWhite = 500;
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -111,6 +128,31 @@ void main() {
           'the artboard must not paint its own background; '
           'only ${(clearRatio * 100).toStringAsFixed(1)}% of the frame is clear',
     );
+    machine.dispose();
+  });
+
+  test('a web face holds with its eye open', () async {
+    final artboard = file.artboard('BotIconArtboard')!;
+    final machine = artboard.stateMachine(_stateMachineName)!;
+    final viewModel = file
+        .viewModelByName(_viewModelName)!
+        .createDefaultInstance()!;
+    machine.bindViewModelInstance(viewModel);
+    viewModel.color('botColor')!.value = const Color(0xFF8560E0);
+
+    // The hold runs on a timer and the animation on frames, so the frame it
+    // lands on can sit either side of the planned moment.
+    const toleranceFrames = 24;
+    final holdFrame = BotFaceState.webAnimateFor.inMilliseconds * 60 ~/ 1000;
+    for (var frame = 1; frame <= holdFrame + toleranceFrames; frame++) {
+      machine.advanceAndApply(1 / 60);
+      if (frame < holdFrame - toleranceFrames) continue;
+      expect(
+        _whiteInEye(await _pixels(await _render(artboard))),
+        greaterThan(_blinkingEyeWhite),
+        reason: 'the eye is closing at frame $frame',
+      );
+    }
     machine.dispose();
   });
 
