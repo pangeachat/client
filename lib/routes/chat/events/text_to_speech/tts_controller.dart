@@ -474,7 +474,7 @@ class TtsController {
     final explicitPhoneme = ttsPhoneme;
     ttsPhoneme ??= _resolveTtsPhonemeFromCache(request, tid: transactionId);
     _log(
-      'tryToSpeak: chars=${request.text.length} explicitPhoneme=$explicitPhoneme resolvedPhoneme=$ttsPhoneme pos=${request.pos} morph=${request.morph}',
+      'tryToSpeak: chars=${request.text.length} explicitPhoneme=${explicitPhoneme != null} resolvedPhoneme=${ttsPhoneme != null} pos=${request.pos} morph=${request.morph}',
       transactionId,
     );
 
@@ -632,7 +632,7 @@ class TtsController {
         'tryToSpeak: route=${useBackend ? "backend" : "device"} '
         'knownGood=${selection.isKnownGood} hasVoice=${selection.hasVoice} '
         'voice=${selection.voice?['name']} subscribed=$isSubscribed '
-        'phoneme=$ttsPhoneme',
+        'phoneme=${ttsPhoneme != null}',
         tid,
       );
 
@@ -911,7 +911,10 @@ class TtsController {
     /// and then be cut off while still reporting success.
     VoidCallback? onPlaybackCompleted,
   }) async {
-    _log('_speakFromChoreo: chars=${text.length} ttsPhoneme=$ttsPhoneme', tid);
+    _log(
+      '_speakFromChoreo: chars=${text.length} ttsPhoneme=${ttsPhoneme != null}',
+      tid,
+    );
     TextToSpeechResponseModel? ttsRes;
     AudioPlayer? requestPlayer;
 
