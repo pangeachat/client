@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-11-04 15:02:41.181288",
+    "@@last_modified": "2026-11-06 13:10:58.115315",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10035,5 +10035,8 @@
     "botTookSeatAfterADay": "Diese Sitzung war über einen Tag lang offen, daher hat Pangea Bot den freien Platz eingenommen. Sende eine Nachricht, um zu beginnen.",
     "subscriptionGracePeriodEndsOn": "Zahlung fehlgeschlagen. Kulanzzeitraum endet am {date}",
     "changeBaseLanguageTitle": "Basissprache ändern?",
-    "changeBaseLanguageDesc": "Die Menüs und Schaltflächen der App werden auf {language} umgestellt."
+    "changeBaseLanguageDesc": "Die Menüs und Schaltflächen der App werden auf {language} umgestellt.",
+    "accountSetupFailedHelp": "Wir konnten Ihr Konto nicht einrichten. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut, oder melden Sie sich ab und später wieder an.",
+    "onboardingOfflineError": "Du bist offline. Versuche es erneut, sobald du wieder online bist.",
+    "activitySavedTo": "Aktivität gespeichert in {page}"
 }

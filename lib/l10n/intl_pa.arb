@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-11-04 15:02:49.632612",
+    "@@last_modified": "2026-11-06 13:11:04.561013",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2518,5 +2518,8 @@
     "botTookSeatAfterADay": "ਇਹ ਸੈਸ਼ਨ ਇੱਕ ਦਿਨ ਤੋਂ ਵੱਧ ਸਮੇਂ ਲਈ ਖੁੱਲ੍ਹਾ ਸੀ, ਇਸ ਲਈ ਪੈਂਗੇਆ ਬੋਟ ਨੇ ਖਾਲੀ ਸੀਟ ਲੈ ਲਈ। ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੱਕ ਸੁਨੇਹਾ ਭੇਜੋ।",
     "subscriptionGracePeriodEndsOn": "ਭੁਗਤਾਨ ਅਸਫਲ ਰਿਹਾ। ਗ੍ਰੇਸ ਪੀਰੀਅਡ {date} ਨੂੰ ਖਤਮ ਹੁੰਦਾ ਹੈ",
     "changeBaseLanguageTitle": "ਮੂਲ ਭਾਸ਼ਾ ਬਦਲਣੀ ਹੈ?",
-    "changeBaseLanguageDesc": "ਐਪ ਦੇ ਮੀਨੂ ਅਤੇ ਬਟਨ {language} ਵਿੱਚ ਬਦਲ ਜਾਣਗੇ।"
+    "changeBaseLanguageDesc": "ਐਪ ਦੇ ਮੀਨੂ ਅਤੇ ਬਟਨ {language} ਵਿੱਚ ਬਦਲ ਜਾਣਗੇ।",
+    "accountSetupFailedHelp": "ਅਸੀਂ ਤੁਹਾਡਾ ਖਾਤਾ ਸਥਾਪਤ ਕਰਨਾ ਪੂਰਾ ਨਹੀਂ ਕਰ ਸਕੇ। ਆਪਣਾ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਜਾਂ ਲੌਗ ਆਉਟ ਕਰੋ ਅਤੇ ਬਾਅਦ ਵਿੱਚ ਸਾਈਨ ਇਨ ਕਰੋ।",
+    "onboardingOfflineError": "ਤੁਸੀਂ ਔਫਲਾਈਨ ਹੋ। ਇੱਕ ਵਾਰ ਜਦੋਂ ਤੁਸੀਂ ਔਨਲਾਈਨ ਹੋ ਜਾਂਦੇ ਹੋ ਤਾਂ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+    "activitySavedTo": "ਗਤੀਵਿਧੀ {page} ਵਿੱਚ ਸੁਰੱਖਿਅਤ ਕੀਤੀ ਗਈ"
 }

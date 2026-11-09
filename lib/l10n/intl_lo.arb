@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-11-04 15:02:46.694203",
+    "@@last_modified": "2026-11-06 13:11:02.580136",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2518,5 +2518,8 @@
     "botTookSeatAfterADay": "ເຊສຊັນນີ້ເປີດມາໄດ້ຫຼາຍກວ່າໜຶ່ງມື້ແລ້ວ, ສະນັ້ນ Pangea Bot ຈຶ່ງໄດ້ເຂົ້າຮ່ວມ. ສົ່ງຂໍ້ຄວາມເພື່ອເລີ່ມຕົ້ນ.",
     "subscriptionGracePeriodEndsOn": "ການຊໍາລະເງິນບໍ່ສໍາເລັດ. ໄລຍະຜ່ອນຜັນຈະສິ້ນສຸດໃນວັນທີ {date}",
     "changeBaseLanguageTitle": "ປ່ຽນພາສາຫຼັກບໍ?",
-    "changeBaseLanguageDesc": "ເມນູ ແລະ ປຸ່ມຕ່າງໆຂອງແອັບຈະປ່ຽນເປັນພາສາ {language}."
+    "changeBaseLanguageDesc": "ເມນູ ແລະ ປຸ່ມຕ່າງໆຂອງແອັບຈະປ່ຽນເປັນພາສາ {language}.",
+    "accountSetupFailedHelp": "ພວກເຮົາບໍ່ສາມາດຕັ້ງຄ່າບັນຊີຂອງທ່ານໃຫ້ສຳເລັດ. ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະ ລອງໃໝ່ອີກຄັ້ງ, ຫຼື ອອກຈາກລະບົບ ແລະ ເຂົ້າສູ່ລະບົບໃໝ່ພາຍຫຼັງ.",
+    "onboardingOfflineError": "ທ່ານກຳລັງອອບລາຍ. ລອງໃໝ່ອີກຄັ້ງເມື່ອທ່ານອອນລາຍແລ້ວ.",
+    "activitySavedTo": "ກິດຈະກຳຖືກບັນທຶກໄວ້ທີ່ {page}"
 }

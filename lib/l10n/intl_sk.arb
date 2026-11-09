@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-11-04 15:02:50.343630",
+    "@@last_modified": "2026-11-06 13:11:05.469512",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10990,5 +10990,8 @@
     "botTookSeatAfterADay": "Táto relácia bola otvorená viac ako deň, takže Pangea Bot si sadol na voľné miesto. Pošlite správu pre začatie.",
     "subscriptionGracePeriodEndsOn": "Platba zlyhala. Tolerančné obdobie končí {date}",
     "changeBaseLanguageTitle": "Zmeniť základný jazyk?",
-    "changeBaseLanguageDesc": "Ponuky a tlačidlá aplikácie sa prepnú na jazyk {language}."
+    "changeBaseLanguageDesc": "Ponuky a tlačidlá aplikácie sa prepnú na jazyk {language}.",
+    "accountSetupFailedHelp": "Nepodarilo sa nám dokončiť nastavenie vášho účtu. Skontrolujte pripojenie a skúste to znova, alebo sa odhláste a prihláste sa neskôr.",
+    "onboardingOfflineError": "Ste offline. Skúste to znova, keď budete online.",
+    "activitySavedTo": "Aktivita uložená do {page}"
 }

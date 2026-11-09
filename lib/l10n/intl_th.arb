@@ -3080,7 +3080,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-11-04 15:02:51.608057",
+    "@@last_modified": "2026-11-06 13:11:06.651648",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10677,5 +10677,8 @@
     "botTookSeatAfterADay": "เซสชันนี้เปิดมานานกว่าหนึ่งวันแล้ว Pangea Bot จึงเข้าร่วม ส่งข้อความเพื่อเริ่มต้น",
     "subscriptionGracePeriodEndsOn": "การชำระเงินล้มเหลว ระยะเวลาผ่อนผันสิ้นสุดวันที่ {date}",
     "changeBaseLanguageTitle": "เปลี่ยนภาษาหลักใช่ไหม",
-    "changeBaseLanguageDesc": "เมนูและปุ่มต่างๆ ของแอปจะเปลี่ยนเป็นภาษา{language}"
+    "changeBaseLanguageDesc": "เมนูและปุ่มต่างๆ ของแอปจะเปลี่ยนเป็นภาษา{language}",
+    "accountSetupFailedHelp": "เราไม่สามารถตั้งค่าบัญชีของคุณให้เสร็จสมบูรณ์ได้ โปรดตรวจสอบการเชื่อมต่อของคุณแล้วลองอีกครั้ง หรือออกจากระบบแล้วลงชื่อเข้าใช้ในภายหลัง",
+    "onboardingOfflineError": "คุณออฟไลน์อยู่ ลองอีกครั้งเมื่อคุณออนไลน์แล้ว",
+    "activitySavedTo": "กิจกรรมบันทึกแล้วใน {page}"
 }

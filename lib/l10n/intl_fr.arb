@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-11-04 15:02:42.491455",
+    "@@last_modified": "2026-11-06 13:10:59.298863",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10400,5 +10400,8 @@
     "botTookSeatAfterADay": "Cette session est restée ouverte pendant plus d'une journée, alors le bot Pangea a pris la place libre. Envoyez un message pour commencer.",
     "subscriptionGracePeriodEndsOn": "Le paiement a échoué. La période de grâce se termine le {date}",
     "changeBaseLanguageTitle": "Changer la langue de base ?",
-    "changeBaseLanguageDesc": "Les menus et les boutons de l'application passeront en {language}."
+    "changeBaseLanguageDesc": "Les menus et les boutons de l'application passeront en {language}.",
+    "accountSetupFailedHelp": "Nous n'avons pas pu terminer la configuration de votre compte. Vérifiez votre connexion et réessayez, ou déconnectez-vous et connectez-vous plus tard.",
+    "onboardingOfflineError": "Vous êtes hors ligne. Réessayez une fois que vous serez de nouveau connecté.",
+    "activitySavedTo": "Activité enregistrée dans {page}"
 }

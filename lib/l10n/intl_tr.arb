@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-11-04 15:02:51.864513",
+    "@@last_modified": "2026-11-06 13:11:06.904652",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10346,5 +10346,8 @@
     "botTookSeatAfterADay": "Bu oturum bir günden fazla açıktı, bu yüzden Pangea Bot boş koltuğu aldı. Başlamak için bir mesaj gönderin.",
     "subscriptionGracePeriodEndsOn": "Ödeme başarısız oldu. Ödemesiz dönem {date} tarihinde sona eriyor",
     "changeBaseLanguageTitle": "Temel dili değiştir?",
-    "changeBaseLanguageDesc": "Uygulamanın menüleri ve düğmeleri {language} diline geçecektir."
+    "changeBaseLanguageDesc": "Uygulamanın menüleri ve düğmeleri {language} diline geçecektir.",
+    "accountSetupFailedHelp": "Hesabınızı kurmayı tamamlayamadık. Bağlantınızı kontrol edin ve tekrar deneyin veya çıkış yapıp daha sonra tekrar giriş yapın.",
+    "onboardingOfflineError": "Çevrimdışısın. İnternete bağlandığında tekrar dene.",
+    "activitySavedTo": "Etkinlik şuraya kaydedildi: {page}"
 }

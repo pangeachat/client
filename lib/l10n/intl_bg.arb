@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-11-04 15:02:40.453044",
+    "@@last_modified": "2026-11-06 13:10:57.342563",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2518,5 +2518,8 @@
     "botTookSeatAfterADay": "Тази сесия беше отворена за повече от един ден, така че ботът на Pangea зае свободното място. Изпратете съобщение, за да започнете.",
     "subscriptionGracePeriodEndsOn": "Неуспешно плащане. Гратисният период изтича на {date}",
     "changeBaseLanguageTitle": "Да сменя основния език?",
-    "changeBaseLanguageDesc": "Менютата и бутоните на приложението ще преминат на {language}."
+    "changeBaseLanguageDesc": "Менютата и бутоните на приложението ще преминат на {language}.",
+    "accountSetupFailedHelp": "Не успяхме да завършим настройката на акаунта ви. Проверете връзката си и опитайте отново, или излезте и влезте по-късно.",
+    "onboardingOfflineError": "Нямате връзка. Опитайте отново, когато сте онлайн.",
+    "activitySavedTo": "Дейността е запазена в {page}"
 }

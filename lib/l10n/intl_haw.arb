@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-11-04 15:02:43.393057",
+    "@@last_modified": "2026-11-06 13:11:00.289913",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2518,5 +2518,8 @@
     "botTookSeatAfterADay": "Ua hāmama kēia kau no ka ʻoi aku ma mua o hoʻokahi lā, no laila ua noho ʻo Pangea Bot i ka noho hakahaka. E hoʻouna i kahi leka e hoʻomaka.",
     "subscriptionGracePeriodEndsOn": "ʻAʻole i kūleʻa ka uku. E pau ana ka manawa hoʻopaneʻe ma {date}",
     "changeBaseLanguageTitle": "E hoʻololi i ka ʻōlelo kumu?",
-    "changeBaseLanguageDesc": "E hoʻololi nā papa kuhikuhi a me nā pihi o ka polokalamu i ka {language}."
+    "changeBaseLanguageDesc": "E hoʻololi nā papa kuhikuhi a me nā pihi o ka polokalamu i ka {language}.",
+    "accountSetupFailedHelp": "ʻAʻole hiki iā mākou ke hoʻopau i ka hoʻonohonoho ʻana i kāu moʻokāki. E nānā i kāu pili a e hoʻāʻo hou, a i ʻole e haʻalele a e komo hou ma hope.",
+    "onboardingOfflineError": "Aia ʻoe ma waho pūnaewele. E hoʻāʻo hou ke hoʻi mai ʻoe i ka pūnaewele.",
+    "activitySavedTo": "Ua mālama ʻia ka hana ma {page}"
 }

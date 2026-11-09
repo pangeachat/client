@@ -5846,6 +5846,15 @@
     },
     "learningObjective": "Learning Objective",
     "learningObjectives": "Learning Objectives",
+    "activitySavedTo": "Activity saved to {page}",
+    "@activitySavedTo": {
+        "description": "Line on a finished activity's end card, under \"All Finished!\", once the session is saved. {page} is the name of the Learning Objectives page (the learningObjectives string, in title case), shown as a link to the page that lists the session, so write the sentence around it as a page name.",
+        "placeholders": {
+            "page": {
+                "type": "String"
+            }
+        }
+    },
     "missionNofM": "Mission {index} of {count}",
     "@missionNofM": {
         "placeholders": {
@@ -6369,5 +6378,13 @@
                 "type": "String"
             }
         }
+    },
+    "accountSetupFailedHelp": "We couldn't finish setting up your account. Check your connection and try again, or log out and sign in later.",
+    "@accountSetupFailedHelp": {
+        "description": "Shown under the error on the loading page before onboarding, when setting up a new account fails. The page offers Try again and Log out buttons."
+    },
+    "onboardingOfflineError": "You're offline. Try again once you're back online.",
+    "@onboardingOfflineError": {
+        "description": "Shown above the forward button in onboarding when saving a page fails because the device is offline."
     }
 }

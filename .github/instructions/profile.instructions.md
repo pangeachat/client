@@ -11,6 +11,8 @@ How profile settings are structured, stored, propagated, and surfaced to other u
 `Profile` (in [user_model.dart](../../lib/features/user/user_model.dart)) is the top-level container. It wraps three sub-models:
 
 - **`UserSettings`** — learning prefs: target/source language, CEFR level, gender, voice, country, about, etc.
+  - **The self-identified role, teacher or learner, is chosen in onboarding ([onboarding](onboarding.instructions.md)), and any account can set or change it in learning settings.** Outreach outside the app reads it to tell teachers from learners, so an account that did not choose one has no role rather than counting as a learner.
+  - **When the app opens, an account with no role is asked for one, at most once a day, until it picks one.** Skip for now waits until the next day. The question is never asked during onboarding, and it waits for the world-map greeting if that is still to come; an app open where it waits does not count as that day's question.
 - **`UserToolSettings`** — per-tool on/off toggles (interactive translator, grammar, immersion mode, definitions, auto-WA, autocorrect, and per-surface audio: words, choices, incoming messages).
   - **Device autocorrect default is platform-conditional**: on for Android, where the composer also passes the target language to the keyboard (`hintLocales`) so corrections land in the L2; off on iOS until the keyboard language can be targeted there ([#8465](https://github.com/pangeachat/client/issues/8465)); off on web, where a phone or tablet browser still lets the learner turn it on and desktop web keeps it off and locked ([target-language-keyboard.instructions.md](target-language-keyboard.instructions.md#when-autocorrect-turns-on)). The stored value stays unset until the user touches the toggle, so each device resolves its own default and an explicit choice, once made, syncs to every device. Profiles saved before the default flipped keep their stored value ([#8466](https://github.com/pangeachat/client/issues/8466)).
 - **`InstructionSettings`** — which instructional tooltips the user has dismissed.
@@ -131,7 +133,7 @@ The activity-plan filter uses state event presence, but Matrix state events pers
 | Side-effect subscriptions | [lib/pangea/common/controllers/pangea_controller.dart](../../lib/pangea/common/controllers/pangea_controller.dart) |
 | Bot option propagation | [lib/features/bot/bot_client_extension.dart](../../lib/features/bot/bot_client_extension.dart) |
 | BotOptionsModel | [lib/features/bot/bot_options_model.dart](../../lib/features/bot/bot_options_model.dart) |
-| Language mismatch popup + rate limiter | [lib/routes/settings/settings_learning/](../../lib/routes/settings/settings_learning/) |
+| Language mismatch popup, role prompt, and their rate limiters | [lib/routes/settings/settings_learning/](../../lib/routes/settings/settings_learning/) |
 | Public profile model | [lib/features/user/public_profile_model.dart](../../lib/features/user/public_profile_model.dart) |
 | Public profile display (about, level, country) | [lib/widgets/users/](../../lib/widgets/users/) |
 | Analytics-room grant that reads the public profile | [lib/features/analytics_access/join_room_analytics_access_extension.dart](../../lib/features/analytics_access/join_room_analytics_access_extension.dart) |

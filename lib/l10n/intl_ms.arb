@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-11-04 15:02:47.824951",
+    "@@last_modified": "2026-11-06 13:11:03.396211",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2518,5 +2518,8 @@
     "botTookSeatAfterADay": "Sesi ini dibuka selama lebih sehari, jadi Pangea Bot mengambil tempat kosong. Hantar mesej untuk bermula.",
     "subscriptionGracePeriodEndsOn": "Pembayaran gagal. Tempoh tangguh berakhir pada {date}",
     "changeBaseLanguageTitle": "Tukar bahasa asas?",
-    "changeBaseLanguageDesc": "Menu dan butang aplikasi akan bertukar kepada {language}."
+    "changeBaseLanguageDesc": "Menu dan butang aplikasi akan bertukar kepada {language}.",
+    "accountSetupFailedHelp": "Kami tidak dapat menyelesaikan persediaan akaun anda. Semak sambungan anda dan cuba lagi, atau log keluar dan daftar masuk kemudian.",
+    "onboardingOfflineError": "Anda di luar talian. Cuba lagi setelah anda kembali dalam talian.",
+    "activitySavedTo": "Aktiviti disimpan ke {page}"
 }

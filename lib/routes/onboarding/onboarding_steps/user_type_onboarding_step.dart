@@ -22,23 +22,31 @@ class UserTypeOnboardingStep extends OnboardingStep with CourseJoinStep {
       throw StateError("Must set user type to move to next step");
     }
 
-    // Stored before the course join, so a failed write stops the step before
-    // anything else happens: the navigation controller reports it, the view
-    // shows it, and the same button retries.
-    await state.accountUpdater.updateProfile(
-      (profile) => profile.copyWith(
-        userSettings: profile.userSettings.copyWith(selfIdentifiedRole: type),
-      ),
-    );
+    // A failed save doesn't stop onboarding: the role stays in the onboarding
+    // state and is saved again with the person's language, which onboarding
+    // can't finish without (onboarding.instructions.md § What onboarding reads
+    // and saves).
+    try {
+      await state.accountUpdater.updateProfile(
+        (profile) => profile.copyWith(
+          userSettings: profile.userSettings.copyWith(selfIdentifiedRole: type),
+        ),
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'user_type': type.name});
+    }
+
+    // Back on this page after a class-link join: the link's code is used up,
+    // so carry on from the course it joined, as the first pass did.
+    final linkRoomId = state.linkJoinedRoomId;
+    if (linkRoomId != null) return stepAfterJoin(linkRoomId);
 
     final courseCode = state.courseProvider.getCachedJoinCode();
     if (courseCode != null) {
+      String? roomId;
       try {
-        final roomId = await state.courseProvider.joinSpaceWithCode(courseCode);
-        // Only a failed JOIN falls through to the code step. A joined course
-        // whose quest doesn't resolve continues as a joined-course flow
-        // (#8593) — see joining-courses.instructions.md.
-        return await stepAfterJoin(roomId);
+        roomId = await state.courseProvider.joinSpaceWithCode(courseCode);
+        state.setLinkJoinedRoomId(roomId);
       } catch (e, s) {
         ErrorHandler.logError(
           e: e,
@@ -51,6 +59,12 @@ class UserTypeOnboardingStep extends OnboardingStep with CourseJoinStep {
         // leftover would surprise-join a later login (#7524).
         await state.courseProvider.clearCachedJoinCode();
       }
+      // Only a failed JOIN falls through to the code step. Anything after a
+      // successful join that fails, such as saving the course's languages,
+      // throws: this page shows it, and Next retries from the joined course.
+      // A joined course whose quest doesn't resolve continues as a
+      // joined-course flow (#8593) — see onboarding.instructions.md.
+      if (roomId != null) return stepAfterJoin(roomId);
     }
 
     final maxRemainingSteps = switch (state.userType) {

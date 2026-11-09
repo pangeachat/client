@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-04 15:02:42.658240",
+    "@@last_modified": "2026-11-06 13:10:59.019468",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10136,5 +10136,8 @@
     "botTookSeatAfterADay": "این جلسه بیش از یک روز باز بود، بنابراین ربات Pangea جای خالی را پر کرد. برای شروع یک پیام ارسال کنید.",
     "subscriptionGracePeriodEndsOn": "پرداخت ناموفق بود. دوره ارفاق در {date} به پایان می‌رسد",
     "changeBaseLanguageTitle": "تغییر زبان پایه؟",
-    "changeBaseLanguageDesc": "منوها و دکمه‌های برنامه به {language} تغییر خواهند کرد."
+    "changeBaseLanguageDesc": "منوها و دکمه‌های برنامه به {language} تغییر خواهند کرد.",
+    "accountSetupFailedHelp": "ما نتوانستیم راه‌اندازی حساب شما را به پایان برسانیم. اتصال خود را بررسی کنید و دوباره امتحان کنید، یا از سیستم خارج شوید و بعداً وارد شوید.",
+    "onboardingOfflineError": "شما آفلاین هستید. وقتی آنلاین شدید دوباره امتحان کنید.",
+    "activitySavedTo": "فعالیت در {page} ذخیره شد"
 }

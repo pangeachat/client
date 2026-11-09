@@ -68,7 +68,12 @@ class Requests {
         statusCode: response.statusCode,
       ),
     );
-    Sentry.addBreadcrumb(Breadcrumb(data: {"body": body}));
+    // The field names only: the values carry what the learner wrote (message
+    // text, words, phonemes), which a report never holds
+    // (repos-and-error-handling.instructions.md).
+    Sentry.addBreadcrumb(
+      Breadcrumb(data: {"body_keys": body?.keys.map((k) => '$k').toList()}),
+    );
   }
 
   void _handleError(
