@@ -17,12 +17,12 @@ import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/chat/chat_details/course_overview/course_leaderboard_preview.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
 import '../get_test_client.dart';
-import '../settle_leaderboard.dart';
+import '../settle_participants.dart';
 import '../tutorials/fake_tutorial_progress.dart';
 
 /// #9695 — the course tutorial and the notifications dialog opened together
@@ -163,7 +163,7 @@ void main() {
         ),
       ),
     );
-    await settle(tester, find.byType(CourseLeaderboardPreview));
+    await settle(tester, find.byType(CourseParticipantsPreview));
     // The permission check and the storage read run on real time.
     for (var i = 0; i < 5; i++) {
       await tester.runAsync(

@@ -182,25 +182,7 @@
             }
         }
     },
-    "leaderboard": "Leaderboard",
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "leaderboardRank": "Rank {rank}",
-    "@leaderboardRank": {
-        "type": "String",
-        "placeholders": {
-            "rank": {
-                "type": "int"
-            }
-        }
-    },
-    "courseLeaderboardTooltip": "Everybody in this course, ranked by their stars in its language. Tap a member and choose “Start conversation” to send them a DM.",
-    "@courseLeaderboardTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
+    "courseParticipantTooltip": "This is everybody in this course. Click on any user’s avatar and “start conversation” to send a DM.",
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},
     "commandHint_googly": "Send some googly eyes",

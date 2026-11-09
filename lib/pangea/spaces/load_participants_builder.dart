@@ -7,7 +7,7 @@ import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/member_analytics_profiles_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/spaces/course_leaderboard.dart';
+import 'package:fluffychat/pangea/spaces/course_participants.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LoadParticipantsBuilder extends StatefulWidget {
@@ -171,15 +171,9 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
     return _levelsCache[userId];
   }
 
-  /// The course page's ranking over the loaded members and profiles.
-  /// Meaningful once [loading] is false — before that the profiles are not in
-  /// yet and everyone ranks as nothing earned.
-  CourseLeaderboard leaderboard({required String? langCode}) =>
-      CourseLeaderboard.rank(
-        participants,
-        langCode: langCode,
-        profileOf: getAnalyticsProfile,
-      );
+  /// The course page's list over the loaded members.
+  CourseParticipants get courseParticipants =>
+      CourseParticipants.from(participants);
 
   @override
   Widget build(BuildContext context) {
