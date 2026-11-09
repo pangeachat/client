@@ -368,8 +368,16 @@ class CallRoster extends ChangeNotifier {
     this.metadataGrant = MetadataGrant.unknown,
   }) : _room = room {
     _room.addListener(recompute);
+    _roomEvents = _room.createListener()
+      ..on<lk.RoomDisconnectedEvent>((_) {
+        _roomGaveUp = true;
+        recompute();
+      });
     recompute();
   }
+
+  late final lk.EventsListener<lk.RoomEvent> _roomEvents;
+  bool _roomGaveUp = false;
 
   /// EVERYTHING this reads off the SFU, in one snapshot per recompute.
   ///
@@ -444,12 +452,12 @@ class CallRoster extends ChangeNotifier {
 
   /// Whether the connection is coming back, as opposed to gone.
   ///
-  /// The SDK reports reconnecting while it is trying and disconnected once it
-  /// has given up. Only the first is worth holding a picture for.
+  /// Gone only once the room says so. Its connection state is no answer:
+  /// LiveKit tears each attempt's socket down before the next, so it reads
+  /// `disconnected` between attempts while it is still trying.
   @protected
   bool get roomRecovering =>
-      _room.connectionState == lk.ConnectionState.connecting ||
-      _room.connectionState == lk.ConnectionState.reconnecting;
+      _room.connectionState != lk.ConnectionState.connected && !_roomGaveUp;
 
   /// Publishes attributes for this device, and answers whether they went.
   ///
@@ -986,6 +994,7 @@ class CallRoster extends ChangeNotifier {
   @override
   void dispose() {
     _room.removeListener(recompute);
+    unawaited(_roomEvents.dispose());
     super.dispose();
   }
 }

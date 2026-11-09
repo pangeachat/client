@@ -112,6 +112,13 @@ class TestRoster extends CallRoster {
   bool get roomRecovering => !connected && recovering;
 }
 
+/// Reads the real room state, unlike [TestRoster].
+class _RealStateRoster extends CallRoster {
+  _RealStateRoster({required super.room, required super.myUserId});
+
+  bool get recovering => roomRecovering;
+}
+
 /// A believable join stamp for the tests that are not about join times.
 final _defaultJoin = DateTime.utc(2026, 8, 29, 12);
 
@@ -131,6 +138,29 @@ void main() {
   });
 
   tearDown(() => roster.dispose());
+
+  // Between reconnect attempts LiveKit reports `disconnected` while it is still
+  // trying: each attempt tears the old socket down first. Reading that as the
+  // end hung up a call on attempt 1 of 10 during a 20s SFU pause. The room's
+  // own disconnected event is the only sign it has given up.
+  group('a dropped connection', () {
+    test('is recovering until the room says it has given up', () async {
+      final real = _RealStateRoster(room: room, myUserId: me);
+      addTearDown(real.dispose);
+      expect(room.connectionState, lk.ConnectionState.disconnected);
+
+      expect(real.recovering, isTrue);
+
+      room.events.emit(
+        lk.RoomDisconnectedEvent(
+          reason: lk.DisconnectReason.reconnectAttemptsExceeded,
+        ),
+      );
+      await pumpEventQueue();
+
+      expect(real.recovering, isFalse);
+    });
+  });
 
   group('reading who is in the call', () {
     test('sees a peer who was already here before this device joined', () {
