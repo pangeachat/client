@@ -19,7 +19,7 @@ One record per account, kept with the learner's Matrix account and seen only by 
 - **Voice.** The voice that words and messages are read aloud in.
 - **Teacher or learner role**, chosen by the person (see [The teacher or learner role](#the-teacher-or-learner-role)).
 - **Country and bio**, shown on their profile page and copied to the public profile.
-- **Find me in search.** The "Allow my profile to be found in search" switch on the profile page.
+- **Find me in search.** The "Allow my profile to be found in search" switch on the profile page. When it is off, or was never set, the account appears in other people's name searches, for a new chat or an invite, only if they already share a room with it ([finding-people.instructions.md](finding-people.instructions.md#who-is-findable-under-public)). It is separate from the public profile: it decides who can find the account, not what they see.
 - **The date the account was created**, which sets the free-trial window.
 - **Tool settings:**
   - Check a message for mistakes on send; when off, the learner taps the writing-assistance button to check.
@@ -100,11 +100,12 @@ The public profile is a copy the app publishes from the learner's own settings a
 
 Only the learner sees their private settings. Anyone who shares a room with them can read the whole public profile: their level and XP in each language, their banked goal total, their country and bio, their current languages and their analytics room ids. The level is the one computed from their activity, never the self-reported one.
 
+Someone who does not share a room with the learner can find them by name, to start a chat or send an invite, only if the learner turned on find me in search.
+
 ## Open questions
 
 - **Entry points 1, 3 and 4 no longer match the app.** All three now open the Learning page in the settings panel; only entry point 2, the long press, still opens a dialog. The interactive translation bar has no gear icon, and the writing-assistance card's menu opens learning settings instead. The progress widget's chip shows the target language's flag, not "EN → ES". Which should this doc say?
 - **The reading toolbar's button** reads "Click here to update your target language", not "Learn".
-- **Find me in search does nothing.** The switch is saved, but nothing in the app or the server reads it. Wire it up, or remove it?
 - **Stored settings with no switch.** Interactive translation, interactive grammar, definitions and immersion mode are still saved in every profile, but settings shows no switch for them. Translation and grammar keep whatever was last saved (on, for anyone who never turned them off), immersion is always read back as off, and nothing reads definitions. Keep them stored, or drop them?
 - **Where country and bio live.** They are the only settings that cross from private to public, through a copy that has to stay exact. Keeping them only in the public profile, edited there, would remove the copy and make the boundary explicit.
 - **A self-reported level per language.** It is one value while the earned level is per language, so a switch leaves a level asserted for a language the learner never claimed, more often the more we encourage switching.
