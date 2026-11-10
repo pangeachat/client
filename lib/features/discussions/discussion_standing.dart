@@ -71,12 +71,22 @@ extension DiscussionClientExtension on Client {
 
   /// [discussionStandingFor] every discussion the learner holds a seat in
   /// within [courseId], by activity id, from one pass over their rooms.
-  Map<String, DiscussionStanding> discussionStandingsIn(String? courseId) {
-    if (courseId == null) return const {};
+  Map<String, DiscussionStanding> discussionStandingsIn(String? courseId) =>
+      courseId == null
+      ? const {}
+      : _standingsBy((room) => room.discussionCourseId == courseId);
+
+  /// [discussionStandingInAnyCourse] every discussion the learner holds a
+  /// seat in, by activity id, from one pass over their rooms: for their own
+  /// history, which lists activities from all their courses.
+  Map<String, DiscussionStanding> discussionStandingsInAnyCourse() =>
+      _standingsBy((_) => true);
+
+  Map<String, DiscussionStanding> _standingsBy(bool Function(Room) inScope) {
     final standings = <String, DiscussionStanding>{};
     for (final room in rooms) {
       final id = room._seatedDiscussionId;
-      if (id == null || room.discussionCourseId != courseId) continue;
+      if (id == null || !inScope(room)) continue;
       standings[id] = (standings[id] ?? const DiscussionStanding())._including(
         room,
       );

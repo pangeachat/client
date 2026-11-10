@@ -503,6 +503,20 @@ class WorldMapController extends State<WorldMap>
   Room? get courseRoom =>
       _client?.joinedCourseFor(MapContextController.notifier.value);
 
+  /// The learner's own live room for [activityId] on this map: a
+  /// discussion's from their standing in the course on show
+  /// ([courseRoom]), else their own session room
+  /// ([WorldMapClientExtension.activeActivityInstance], which skips discussion
+  /// rooms). What an ongoing pin's card, row and unread bubble read.
+  Room? ownLiveRoom(String activityId) {
+    final client = _client;
+    if (client == null) return null;
+    return client
+            .discussionStandingFor(activityId, courseId: courseRoom?.id)
+            .activeRoom ??
+        client.activeActivityInstance(activityId);
+  }
+
   /// The id of the activity the detail panel is focused on, or null. Focus is
   /// the persistent "I'm working with this one" state (its panel is open and the
   /// camera settled on it); it drives a distinct focus marker on the pin at
@@ -1756,14 +1770,20 @@ class WorldMapController extends State<WorldMap>
     // from the join decision. Guards every tap funnel.
     if (MapContextController.notifier.value is CoursePreviewMapContext) return;
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+    // A discussion opens from the learner's standing in the course on show
+    // only, since rooms are per course; with no seat there, its start page
+    // and Join. Never another course's room, or a room an admin was joined
+    // to without a seat.
     if (card.activityMode.opensSharedRoom) {
       final own = client
           ?.discussionStandingFor(card.activityId, courseId: courseRoom?.id)
           .room;
-      if (own != null) {
-        context.go(WorkspaceNav.openRoomById(uri, own.id));
-        return;
-      }
+      context.go(
+        own != null
+            ? WorkspaceNav.openRoomById(uri, own.id)
+            : WorkspaceNav.openActivity(uri, card.activityId),
+      );
+      return;
     }
     // Seat the activity as the sole left token via the nav helper — no raw
     // query surgery in feature code (routing.instructions.md). The course

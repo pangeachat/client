@@ -6343,6 +6343,14 @@
     "@discussionStartIt": {
         "description": "Above the Join button when the learner will open a new, empty discussion room."
     },
+    "discussionRemoved": "You can't join this discussion.",
+    "@discussionRemoved": {
+        "description": "On a discussion's start page, in place of the Join button, when the learner was removed or banned from the discussion's chat and the server will not let them back in."
+    },
+    "discussionJoinArriving": "You're in! The discussion will open as soon as it arrives.",
+    "@discussionJoinArriving": {
+        "description": "Shown after tapping Join on a discussion when the learner was placed in its chat but the chat has not reached their device yet; it opens by itself once it does."
+    },
     "roleplayLabel": "Roleplay",
     "@roleplayLabel": {
         "description": "Mode tag on an activity card for a roleplay: learners take roles and work toward goals in a structured conversation."

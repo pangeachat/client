@@ -541,18 +541,18 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   void _practiceMission(String missionId) =>
       startPractice(context, ConstructTypeEnum.vocab, missionId: missionId);
 
-  /// Reopen session [roomId] from [missionId]'s card, which rides the URL so
-  /// the course comes back on it (quests.instructions.md, "The Mission on
-  /// show").
+  /// Reopen session [roomId] from [missionId]'s card or its full plan. The
+  /// session takes the card's place, as one started from it does, and the
+  /// Mission rides the URL, so closing it reopens the card on that Mission
+  /// (quests.instructions.md, "The Mission on show"; routing.instructions.md,
+  /// "Closing a panel").
   void _openSession(String roomId, String missionId) {
     PanelEntryIntent.instance.armForSwap();
     final uri = GoRouterState.of(context).uri;
-    context.go(
-      WorkspaceNav.openRoomById(
-        Uri.parse(WorkspaceNav.selectMission(uri, missionId)),
-        roomId,
-      ),
-    );
+    final location = widget.room == null
+        ? WorkspaceNav.openRoomById(uri, roomId)
+        : WorkspaceNav.openCourseSession(uri, roomId);
+    context.go(WorkspaceNav.selectMission(Uri.parse(location), missionId));
   }
 
   /// Open [ref], listed under [missionId] on the Mission card or the full
@@ -701,31 +701,24 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     // Play opens the row's first card, and that card carries a
                     // small "Up next" in Play's colour (#9559), so the two are
                     // one thing. The row leads with a session the learner is
-                    // already in — Play reads "Continue activity" and reopens
-                    // it, so a started activity gets finished before a new one
-                    // starts — then a coursemate's open session, then the best
-                    // unfinished activity ("Next activity"), then a finished
-                    // one for another round ("Play again"), then what the
-                    // course can't fill yet. Each Mission keeps to its own
-                    // activities: a session from another Mission resumes from
-                    // that Mission's card or Chats.
-                    final inRow = ranked
-                        .where((a) => a.plan.activityMode.offeredByPlay)
-                        .firstOrNull;
-                    // Play sits on the row's first card, so the card it opens
-                    // leads the row even where a joined discussion, which
-                    // Play never opens, ranks above it.
-                    final activities = inRow == null || ranked.first == inRow
-                        ? ranked
-                        : [inRow, ...ranked.where((a) => a != inRow)];
+                    // already in, a roleplay's or a discussion's alike — Play
+                    // reads "Continue activity" and reopens it, so a started
+                    // activity gets finished before a new one starts — then a
+                    // coursemate's open session, then the best unfinished
+                    // activity ("Next activity"), then a finished one for
+                    // another round ("Play again"), then what the course can't
+                    // fill yet. The row is never reordered by mode. Each
+                    // Mission keeps to its own activities: a session from
+                    // another Mission resumes from that Mission's card or
+                    // Chats.
+                    final activities = ranked;
                     final playTarget =
-                        inRow ??
-                        current.activities
-                            .where((a) => a.plan.activityMode.offeredByPlay)
-                            .firstOrNull;
-                    final ongoingRoomId = inRow == null
+                        ranked.firstOrNull ?? current.activities.firstOrNull;
+                    final ongoingRoomId = playTarget == null
                         ? null
-                        : widget.room?.activeActivityRoomId(inRow.activityId);
+                        : widget.room?.activeActivityRoomId(
+                            playTarget.activityId,
+                          );
                     final replay =
                         playTarget != null &&
                         ongoingRoomId == null &&
@@ -837,7 +830,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                               pingedActivityId: _pingedActivityId,
                               highlightedActivityId: widget.readOnly
                                   ? null
-                                  : inRow?.activityId,
+                                  : playTarget?.activityId,
                               interactive: !widget.readOnly,
                               courseId: widget.room?.id,
                             ),

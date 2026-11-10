@@ -33,6 +33,18 @@ extension SavedAnalyticsExtension on Room {
 
   int get archivedActivitiesCount => activityRoomIds.length;
 
+  /// Takes [roomId] off the saved list: a discussion the learner reopened
+  /// ("Wait, I'm not done") is no longer saved.
+  Future<void> removeActivityRoomId(String roomId) async {
+    final activityRoomIds = this.activityRoomIds;
+    if (!activityRoomIds.contains(roomId)) return;
+    final syncFuture = client.waitForRoomInSync(id, join: true);
+    await _setActivityRoomIds(
+      activityRoomIds.where((id) => id != roomId).toList(),
+    );
+    await syncFuture;
+  }
+
   Future<void> addActivityRoomIds(Set<String> roomIds) async {
     final activityRoomIds = List.from(this.activityRoomIds);
     final currentIds = {...activityRoomIds};

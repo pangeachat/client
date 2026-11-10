@@ -31,11 +31,11 @@ How learners find and start activities, and the record they leave. What an activ
 ## Discussions
 
 - A room is a [discussion](../../../.github/.github/instructions/activities.instructions.md#mode-discussion)'s only when the server made it for one, so the app knows a discussion room before its plan loads and an older activity whose mode reads "Discussion" stays a roleplay.
-- A learner with a seat in one of its rooms, done or not, goes straight to the chat; anyone else gets its [start page](activity-start-page.instructions.md#a-discussion), whose Join puts them in a room the server picks.
-- An admin who taps Join takes a seat and counts like a student. Admins joined to watch hold no seat, never count, and can read and post.
+- Rooms are per course. A learner with a seat in the course's room, done or not, goes straight to the chat, from the course page or the course's map; anyone else gets its [start page](activity-start-page.instructions.md#a-discussion), whose Join puts them in a room the server picks. A seat in another course's room never opens or marks this course's discussion.
+- An admin who taps Join takes a seat and counts like a student. Admins joined to watch hold no seat, never count, and can read and post. A student in a room without a seat there gets Join in place of the composer, since only a seat counts them.
 - Its card shows "Joined" while the learner takes part, ranked as ongoing, and "Answered" once they have ended. It never takes the completed stamp; its XP shows once it is saved.
 - In the chat, students' arrivals show, since they come over hours or days, but not admins' or the bot's; names carry no role. There are no suggestions.
-- "I'm done" ends only the learner's own seat: the server finishes and saves it, it leaves their Chats and is muted for them, and only then does it count as finished. "Wait, I'm not done" undoes all of it. There is no "End for all" and no summary yet; the summary waits on the per-learner summary.
+- "I'm done" ends only the learner's own seat: the server finishes and saves it, it leaves their Chats and is muted for them, and only then does it count as finished. "Wait, I'm not done" undoes all of it, the saved record on the Learning Objectives page included, and gives back the notification setting the learner had before ending, so a room they had muted stays muted. There is no "End for all" and no summary yet; the summary waits on the per-learner summary.
 
 ## Activity session chat list rows
 

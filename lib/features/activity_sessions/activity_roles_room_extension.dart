@@ -13,9 +13,10 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart'
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_filled_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
-import 'package:fluffychat/features/discussions/discussion_room_repo.dart';
+import 'package:fluffychat/features/discussions/discussion_seat_room_extension.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 /// Whether the session counts as started: finished sessions always are;
@@ -230,9 +231,22 @@ extension ActivityRolesRoomExtension on Room {
   /// Whether the learner can write in this session's chat: they hold a seat
   /// they haven't finished, or they are a course admin reading a discussion
   /// without a seat, who reads and posts like any member but never counts.
+  /// The server mirrors a course's admins into its discussion rooms as
+  /// moderators; a student in one without a seat (invited some other way)
+  /// gets Join instead ([seatlessStudentInDiscussion]).
   bool get writesInActivity =>
-      isActiveInActivity ||
-      (activityMode == ActivityMode.discussion && !hasPickedRole);
+      isActiveInActivity || (_seatlessInDiscussion && _moderates);
+
+  /// A student who is in a discussion room without a seat in it: Join is the
+  /// only way to take part, so it is offered in place of the composer.
+  bool get seatlessStudentInDiscussion => _seatlessInDiscussion && !_moderates;
+
+  bool get _seatlessInDiscussion =>
+      activityMode == ActivityMode.discussion && !hasPickedRole;
+
+  bool get _moderates =>
+      client.userID != null &&
+      ownPowerLevel >= SpaceConstants.powerLevelOfModerator;
 
   /// The Chats-list mirror of the map's `ongoingActive` pin state: the learner
   /// holds a seat, every seat is filled so the chat has really started, and
@@ -316,7 +330,7 @@ extension ActivityRolesRoomExtension on Room {
   }
 
   Future<void> continueActivity() async {
-    if (activityMode?.endsPerSeat ?? false) return _setOwnSeatEnded(false);
+    if (activityMode?.endsPerSeat ?? false) return setOwnSeatEnded(false);
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     final role = ownRoleState;
     if (role == null || !role.isFinished) return;
@@ -332,7 +346,7 @@ extension ActivityRolesRoomExtension on Room {
   }
 
   Future<void> finishActivity() async {
-    if (activityMode?.endsPerSeat ?? false) return _setOwnSeatEnded(true);
+    if (activityMode?.endsPerSeat ?? false) return setOwnSeatEnded(true);
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     final role = ownRoleState;
     if (role == null || role.isFinished) return;
@@ -405,34 +419,5 @@ extension ActivityRolesRoomExtension on Room {
       currentRoles.toJson(),
     );
     return archivedAt;
-  }
-
-  /// "I'm done" ([ended]) or "Wait, I'm not done" in a discussion. The server
-  /// writes the seat (`finished_at` and `archived_at` together), so another
-  /// student's seat can never be lost to a stale copy; then the room is muted
-  /// for the learner while ended, and notifies again once they are back. Its
-  /// leaving Chats follows from the archived seat ([isHiddenRoom]).
-  Future<void> _setOwnSeatEnded(bool ended) async {
-    if (ownRoleState == null) {
-      ErrorHandler.logError(
-        e: StateError('No own seat to ${ended ? 'end' : 'continue'}'),
-        data: {'roomId': id},
-        level: SentryLevel.warning,
-      );
-      return;
-    }
-    final result = await DiscussionRoomRepo.setSeatEnded(
-      client,
-      roomId: id,
-      ended: ended,
-    );
-    if (result.isError) throw result.asError!.error;
-    try {
-      await setPushRuleState(
-        ended ? PushRuleState.dontNotify : PushRuleState.notify,
-      );
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {'roomId': id, 'ended': ended});
-    }
   }
 }

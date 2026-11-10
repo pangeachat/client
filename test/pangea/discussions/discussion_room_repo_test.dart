@@ -10,6 +10,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_join_exceptions.dart';
+import 'package:fluffychat/features/discussions/discussion_preview.dart';
 import 'package:fluffychat/features/discussions/discussion_room_repo.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -71,7 +73,8 @@ void main() {
         courseId: courseId,
         activityId: activityId,
       );
-      expect(result.asValue?.value, 3);
+      expect(result.asValue?.value.access, DiscussionAccess.open);
+      expect(result.asValue?.value.students, 3);
       expect(sent.single.method, 'GET');
       expect(sent.single.url.queryParameters, {
         'course_id': courseId,
@@ -88,8 +91,19 @@ void main() {
         courseId: courseId,
         activityId: activityId,
       );
-      expect(notListed.isValue, isTrue);
-      expect(notListed.asValue!.value, isNull);
+      expect(notListed.asValue?.value.access, DiscussionAccess.notListed);
+      expect(notListed.asValue?.value.students, isNull);
+      expect(ErrorHandler.reportedOnceKeysForTest, isNot(contains(key)));
+
+      // Removed from its room: an answer the page shows, not a failure.
+      answer = (_) =>
+          json({'errcode': DiscussionRemovedException.errcode}, 403);
+      final removed = await DiscussionRoomRepo.previewStudents(
+        client,
+        courseId: courseId,
+        activityId: activityId,
+      );
+      expect(removed.asValue?.value.access, DiscussionAccess.removed);
       expect(ErrorHandler.reportedOnceKeysForTest, isNot(contains(key)));
 
       answer = (_) => json({'errcode': 'M_UNKNOWN'}, 500);
@@ -157,6 +171,46 @@ void main() {
         activityId: activityId,
       );
       expect(result.asError?.error, isA<FormatException>());
+    });
+
+    test(
+      'a learner removed from its room is refused, as its own error',
+      () async {
+        answer = (_) =>
+            json({'errcode': DiscussionRemovedException.errcode}, 403);
+        final result = await DiscussionRoomRepo.join(
+          client,
+          courseId: courseId,
+          activityId: activityId,
+        );
+        expect(result.asError?.error, isA<DiscussionRemovedException>());
+      },
+    );
+
+    test('any other 403 is a plain failure', () async {
+      answer = (_) => json({'errcode': 'M_FORBIDDEN'}, 403);
+      final result = await DiscussionRoomRepo.join(
+        client,
+        courseId: courseId,
+        activityId: activityId,
+      );
+      expect(PangeaHttpException.statusCodeOf(result.asError!.error), 403);
+    });
+
+    test('a placement whose room never syncs is an error naming the room, '
+        'never a success', () async {
+      final wait = DiscussionRoomRepo.syncTimeout;
+      DiscussionRoomRepo.syncTimeout = const Duration(milliseconds: 10);
+      addTearDown(() => DiscussionRoomRepo.syncTimeout = wait);
+      answer = (_) => json({'room_id': roomId});
+      final result = await DiscussionRoomRepo.join(
+        client,
+        courseId: courseId,
+        activityId: activityId,
+      );
+      final error = result.asError?.error;
+      expect(error, isA<DiscussionRoomNotArrivedException>());
+      expect((error as DiscussionRoomNotArrivedException).roomId, roomId);
     });
   });
 
@@ -242,6 +296,48 @@ void main() {
       );
     });
 
+    test('"I\'m done" keeps the learner\'s own setting, and "Wait, I\'m not '
+        'done" puts it back', () async {
+      final room = discussionRoom(
+        client,
+        roomId: roomId,
+        seats: [discussionSeat(testSessionUserId)],
+      );
+      await room.finishActivity();
+      expect(server.accountDataWrites.single, {
+        'state': PushRuleState.notify.name,
+      });
+
+      // A learner who had muted the room before ending it.
+      room.roomAccountData[PangeaEventTypes.discussionPushRuleBeforeEnd] =
+          BasicEvent(
+            type: PangeaEventTypes.discussionPushRuleBeforeEnd,
+            content: {'state': PushRuleState.dontNotify.name},
+          );
+      server.pushRuleWrites.clear();
+      await room.continueActivity();
+      // Muted again, rather than notified: the mute rule is written.
+      expect(server.pushRuleWrites.map((r) => r.method), ['PUT']);
+      expect(
+        server.pushRuleWrites.single.url.path,
+        contains('/pushrules/global/override/'),
+      );
+    });
+
+    test('a failed mute is shown, and the seat\'s end is undone', () async {
+      final room = discussionRoom(
+        client,
+        roomId: roomId,
+        seats: [discussionSeat(testSessionUserId)],
+      );
+      server.failPushRules = true;
+      await expectLater(room.finishActivity(), throwsA(anything));
+      expect(sent.map((r) => jsonDecode(r.body)), [
+        {'room_id': roomId, 'action': 'end'},
+        {'room_id': roomId, 'action': 'continue'},
+      ]);
+    });
+
     test('without a seat nothing is sent', () async {
       final room = discussionRoom(
         client,
@@ -267,6 +363,13 @@ class _DiscussionRoomServer extends http.BaseClient {
   /// The room's notification changes: muting it on "I'm done".
   final List<http.BaseRequest> pushRuleWrites = [];
 
+  /// Answers every notification change with a 500.
+  bool failPushRules = false;
+
+  /// The learner's setting kept on "I'm done", as written to the room's
+  /// account data.
+  final List<Object?> accountDataWrites = [];
+
   _DiscussionRoomServer(this.path, this.handle);
 
   @override
@@ -275,6 +378,23 @@ class _DiscussionRoomServer extends http.BaseClient {
       '/state/${PangeaEventTypes.activityRole}',
     );
     final isPushRule = request.url.path.contains('/pushrules/');
+    if (isPushRule && failPushRules) {
+      return http.StreamedResponse(
+        Stream.value(utf8.encode(jsonEncode({'errcode': 'M_UNKNOWN'}))),
+        500,
+        headers: {'content-type': 'application/json'},
+      );
+    }
+    if (request.url.path.contains(
+      '/account_data/${PangeaEventTypes.discussionPushRuleBeforeEnd}',
+    )) {
+      accountDataWrites.add(jsonDecode((request as http.Request).body));
+      return http.StreamedResponse(
+        Stream.value(utf8.encode('{}')),
+        200,
+        headers: {'content-type': 'application/json'},
+      );
+    }
     if (isRoleWrite || isPushRule) {
       (isRoleWrite ? roleWrites : pushRuleWrites).add(request);
       return http.StreamedResponse(

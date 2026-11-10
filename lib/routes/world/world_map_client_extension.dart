@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
@@ -55,12 +56,18 @@ extension WorldMapClientExtension on Client {
   /// *another* learner's open session): here we resolve "my started/joined
   /// session" so a map-pin tap reopens it (binding the overlay via `roomid=`)
   /// instead of spawning a fresh instance (#7257).
+  ///
+  /// Never a discussion room: rooms are per course there, and a seat is found
+  /// through the course's own standing (`discussionStandingFor`), so a
+  /// room the learner holds in another course, or one an admin was joined to
+  /// without a seat, never opens for this one.
   Room? activeActivityInstance(String activityId) {
     Room? best;
     var bestHasRole = false;
     for (final r in rooms) {
       if (r.activityId != activityId) continue;
       if (r.membership != Membership.join) continue;
+      if (r.isDiscussionRoom) continue;
 
       final ownRole = r.ownRoleState;
       final hasRole = ownRole != null;
@@ -149,10 +156,15 @@ extension WorldMapClientExtension on Client {
     return WorldMapSignalUtils.reduceActivityCompletions(facts);
   }
 
+  /// A discussion room gives no fact here: its pin's state comes from the
+  /// learner's standing in the course on show only
+  /// (`discussionStandingsIn`), since a seat in
+  /// another course's room is not one in this course's.
   List<ActivitySessionFacts> get _activitySessionFacts => rooms
       .map((r) {
         final activityId = r.activityId;
         if (activityId == null) return null;
+        if (r.isDiscussionRoom) return null;
         // Joined rooms only. An invited room's stripped state carries no
         // pangea.activity_roles, so a locally-derived fact would report every
         // seat free — a phantom joinable that skips the finished/full/presence

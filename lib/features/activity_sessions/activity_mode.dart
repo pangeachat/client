@@ -28,6 +28,14 @@ enum ActivityMode {
   /// A discussion's one shared role; every student's seat is on it.
   static const String discussionRoleId = 'participant';
 
+  /// Whether [key] in a room's `pangea.activity_roles` is a discussion seat:
+  /// synapse keys each student's seat on the shared role by student
+  /// (`participant:<user id>`), where a roleplay keys a seat by its role id.
+  /// Every discussion room has one from its creation, so this tells a
+  /// discussion's preview from a roleplay's before its plan loads.
+  static bool isDiscussionSeatKey(String key) =>
+      key.startsWith('$discussionRoleId:');
+
   /// A plan's mode from its shape: a discussion only when its mode is
   /// "discussion" AND its roles are exactly the one shared `participant`
   /// role. The v1 planner took free-text modes, so a roleplay-shaped plan
@@ -95,13 +103,6 @@ enum ActivityMode {
     discussion => false,
   };
 
-  /// The course page's Play button may open it. A discussion opens only from
-  /// its own card.
-  bool get offeredByPlay => switch (this) {
-    roleplay => true,
-    discussion => false,
-  };
-
   /// Opened by joining the course's shared room for it, which the server
   /// picks: its start page offers one Join instead of the play choices, and
   /// a learner already in its room goes straight to the chat.
@@ -124,6 +125,13 @@ enum ActivityMode {
   bool get endsPerSeat => switch (this) {
     roleplay => false,
     discussion => true,
+  };
+
+  /// The orchestrator suggests the learner's next line. A discussion's bot
+  /// facilitates the room instead, and offers no suggestions.
+  bool get offersSuggestions => switch (this) {
+    roleplay => true,
+    discussion => false,
   };
 
   /// A finished session shows the per-learner summary cards. A discussion's
@@ -172,8 +180,16 @@ enum ActivityCardStyle {
 enum CompletionMark { stamp, xpBadge }
 
 extension ActivityPlanModeExtension on ActivityPlanModel {
+  /// The mode from the plan's shape alone: for a card or a start page, where
+  /// there is no session room yet.
   ActivityMode get activityMode =>
       ActivityMode.fromShape(mode: req.mode, roleIds: roles.keys);
+
+  /// The mode a session of it in [room] plays: the room's own marker
+  /// ([RoomActivityModeExtension.activityMode]) whenever there is a room, so
+  /// a room made before discussions existed stays a roleplay whatever its
+  /// plan says; the plan's shape only while there is none.
+  ActivityMode modeIn(Room? room) => room?.activityMode ?? activityMode;
 }
 
 extension QuestActivityCardModeExtension on QuestActivityCard {

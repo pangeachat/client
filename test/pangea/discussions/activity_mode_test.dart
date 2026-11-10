@@ -112,4 +112,21 @@ void main() {
       expect(card(mode: 'Discussion').activityMode, ActivityMode.roleplay);
     });
   });
+
+  group('what each mode offers', () {
+    test('a discussion offers no suggestions; a roleplay does', () {
+      expect(ActivityMode.discussion.offersSuggestions, isFalse);
+      expect(ActivityMode.roleplay.offersSuggestions, isTrue);
+    });
+
+    test('a seat keyed by student is a discussion seat; one keyed by role '
+        'is not', () {
+      expect(
+        ActivityMode.isDiscussionSeatKey(discussionSeatKey('@a:server')),
+        isTrue,
+      );
+      expect(ActivityMode.isDiscussionSeatKey('participant'), isFalse);
+      expect(ActivityMode.isDiscussionSeatKey('r1'), isFalse);
+    });
+  });
 }

@@ -5,12 +5,12 @@ import 'package:flutter/foundation.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
-import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/discussions/discussion_record.dart';
 import 'package:fluffychat/features/dosage/dosage_session_outcome.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
@@ -102,6 +102,17 @@ class ActivityAutoSaveService {
   /// intra-run outcome guard; a restart can't double-emit because the synced
   /// `archived_at` closes the gate before the sweep runs).
   final Set<String> _emittedOutcomes = {};
+
+  /// Discussion rooms whose completion this run reported, so ending one again
+  /// after "Wait, I'm not done" reports it once.
+  final Set<String> _completedThisRun = {};
+
+  /// Files and unfiles the learner's discussion seats ([DiscussionRecord]).
+  late final DiscussionRecord _discussionRecord = DiscussionRecord(
+    file: analyticsService.updateService.sendActivityAnalytics,
+    unfile: analyticsService.updateService.removeActivityAnalytics,
+    onCompleted: _reportDiscussionCompleted,
+  );
   bool _disposed = false;
 
   Future<void> start() async {
@@ -195,7 +206,7 @@ class ActivityAutoSaveService {
   Future<void> _maybeSave(Room? room) async {
     if (_disposed || room == null || !room.isActivitySession) return;
     if (room.activityMode?.endsPerSeat ?? false) {
-      await _fileEndedDiscussion(room);
+      await _discussionRecord.sync(room);
       return;
     }
     if (!activityAutoSaveGate(
@@ -270,55 +281,21 @@ class ActivityAutoSaveService {
     }
   }
 
-  /// A discussion's "I'm done" is saved by the server, which stamps the
-  /// learner's own seat finished and archived together (synapse
-  /// `discussion_room`), so this never writes the room's roles. What is left
-  /// to the client is what the roleplay save does besides archiving: file the
-  /// session in the learner's analytics room for its language, and emit the
-  /// completion signals. The analytics room's list is the durable record that
-  /// this happened, so ending again after "Wait, I'm not done" files and
-  /// counts nothing twice.
-  Future<void> _fileEndedDiscussion(Room room) async {
-    final archivedAt = room.ownRoleState?.archivedAt;
-    if (archivedAt == null || !room.hasCompletedRole) return;
-
-    final plan = room.activityPlan;
-    if (plan == null) return;
-    final lang = PLanguageStore.byLangCode(
-      plan.req.targetLanguage.split("-").first,
+  /// A discussion's completion, once its record is filed: the dosage outcome
+  /// and the GA completion, each once per room this run.
+  void _reportDiscussionCompleted(
+    Room room,
+    ActivityPlanModel plan,
+    DateTime archivedAt,
+  ) {
+    _emitDosageSessionOutcome(room, archivedAt);
+    if (!_completedThisRun.add(room.id)) return;
+    GoogleAnalytics.completeActivity(
+      plan.activityId,
+      room.id,
+      versionPinHonored: !plan.usedFallbackVersion,
+      fallbackCause: plan.fallbackCause,
     );
-    if (lang == null) return;
-
-    bool filed() =>
-        client
-            .ownAnalyticsRoomLocal(lang: lang)
-            ?.activityRoomIds
-            .contains(room.id) ??
-        false;
-    if (filed()) return;
-
-    if (!_saving.add(room.id)) return;
-    try {
-      await analyticsService.updateService.sendActivityAnalytics(room.id, lang);
-      if (!filed()) {
-        ErrorHandler.logError(
-          e: StateError('An ended discussion was not filed in analytics'),
-          data: {'roomId': room.id, 'lang': lang.langCode},
-        );
-        return;
-      }
-      _emitDosageSessionOutcome(room, archivedAt);
-      GoogleAnalytics.completeActivity(
-        plan.activityId,
-        room.id,
-        versionPinHonored: !plan.usedFallbackVersion,
-        fallbackCause: plan.fallbackCause,
-      );
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {'roomId': room.id});
-    } finally {
-      _saving.remove(room.id);
-    }
   }
 
   /// Fire-and-forget the best-effort dosage session-outcome signal at the

@@ -10,7 +10,6 @@ import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dar
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/completed_stamp.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 /// A discussion's card (#9647): the activity card in three states. Plain
 /// until the learner joins; the Ongoing frame, a "Joined" pill and the
@@ -28,20 +27,17 @@ class DiscussionCard extends StatelessWidget {
   final bool frameWhenResting;
   final bool selected;
 
-  /// The course this card shows the discussion in: its Joined and Answered
-  /// pills and unread bubble come from the learner's room in that course
-  /// only. Null with [anyCourse] false (a course preview) shows none.
-  final String? courseId;
-
-  /// The learner's own history, across their courses: the pills come from
-  /// their room in whichever course it is.
-  final bool anyCourse;
+  /// Where the learner stands in the discussion, in the course this card
+  /// shows it in (or across their courses, on their own history): its Joined
+  /// and Answered pills and unread bubble. The parent reads every card's
+  /// standing in one pass over the rooms
+  /// ([DiscussionClientExtension.discussionStandingsIn]) and rebuilds on sync.
+  final DiscussionStanding standing;
 
   const DiscussionCard({
     super.key,
     required this.plan,
-    required this.courseId,
-    this.anyCourse = false,
+    required this.standing,
     required this.width,
     required this.height,
     this.imageHeight,
@@ -60,60 +56,51 @@ class DiscussionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final client = Matrix.of(context).client;
-    return StreamBuilder(
-      stream: client.onSync.stream,
-      builder: (context, _) {
-        final standing = anyCourse
-            ? client.discussionStandingInAnyCourse(plan.activityId)
-            : client.discussionStandingFor(plan.activityId, courseId: courseId);
-        final room = standing.activeRoom;
-        final l10n = L10n.of(context);
-        final theme = Theme.of(context);
-        return Stack(
-          clipBehavior: Clip.none,
-          children: [
-            ActivitySuggestionCard(
-              activity: plan,
-              width: width,
-              height: height,
-              imageHeight: imageHeight,
-              fontSize: fontSize,
-              fontSizeSmall: fontSizeSmall,
-              iconSize: iconSize,
-              pinState: stateOf(standing),
-              statePill: standing.joined
-                  ? ActivityCardStatePill(
-                      label: l10n.discussionJoined,
-                      icon: ActivityMode.discussion.icon,
-                    )
-                  : standing.answered
-                  // The XP badge's gold on its scrim, so what the learner
-                  // has done reads as one family of pills.
-                  ? ActivityCardStatePill(
-                      label: l10n.discussionAnswered,
-                      fill: CompletedStamp.scrimOf(theme),
-                      onFill: theme.pangea.gold,
-                    )
-                  : null,
-              xpEarned: xpEarned,
-              frameWhenResting: frameWhenResting,
-              selected: selected,
+    final room = standing.activeRoom;
+    final l10n = L10n.of(context);
+    final theme = Theme.of(context);
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        ActivitySuggestionCard(
+          activity: plan,
+          width: width,
+          height: height,
+          imageHeight: imageHeight,
+          fontSize: fontSize,
+          fontSizeSmall: fontSizeSmall,
+          iconSize: iconSize,
+          pinState: stateOf(standing),
+          statePill: standing.joined
+              ? ActivityCardStatePill(
+                  label: l10n.discussionJoined,
+                  icon: ActivityMode.discussion.icon,
+                )
+              : standing.answered
+              // The XP badge's gold on its scrim, so what the learner
+              // has done reads as one family of pills.
+              ? ActivityCardStatePill(
+                  label: l10n.discussionAnswered,
+                  fill: CompletedStamp.scrimOf(theme),
+                  onFill: theme.pangea.gold,
+                )
+              : null,
+          xpEarned: xpEarned,
+          frameWhenResting: frameWhenResting,
+          selected: selected,
+        ),
+        if (room != null)
+          Positioned(
+            top: -6.0,
+            right: -6.0,
+            // Rings the bubble off the card it overlaps, in the card's
+            // own surface colour.
+            child: UnreadBubble(
+              room: room,
+              borderColor: theme.colorScheme.surface,
             ),
-            if (room != null)
-              Positioned(
-                top: -6.0,
-                right: -6.0,
-                // Rings the bubble off the card it overlaps, in the card's
-                // own surface colour.
-                child: UnreadBubble(
-                  room: room,
-                  borderColor: theme.colorScheme.surface,
-                ),
-              ),
-          ],
-        );
-      },
+          ),
+      ],
     );
   }
 }

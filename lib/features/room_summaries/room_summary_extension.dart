@@ -253,11 +253,20 @@ class RoomSummaryResponse {
     // attempting it errors. The preview's membership summary keeps role-holders
     // who left (value "leave"), so presence — not map emptiness — is the test.
     if (!hasPresentNonBotMember) return false;
+    if (isDiscussionRoom) return false;
     if (resolvedActivityPlan?.activityMode.listsOpenSessions == false) {
       return false;
     }
     return !isStarted;
   }
+
+  /// A discussion's room, known from its seats before its plan loads: the
+  /// preview carries no create event, but every discussion room holds a
+  /// student's seat from its creation, keyed by student
+  /// ([ActivityMode.isDiscussionSeatKey]). A discussion lists no open
+  /// sessions, so its room is never one to join from the map.
+  bool get isDiscussionRoom =>
+      activityRoles?.roles.keys.any(ActivityMode.isDiscussionSeatKey) ?? false;
 
   bool isCompleteByUserId(String userID) =>
       activityRoles?.roles.values.any(

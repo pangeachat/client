@@ -138,6 +138,22 @@ void main() {
       expect(summary.isActivityOpenToJoin, isTrue);
     });
 
+    test('a discussion\'s room is never open to join, known from its seats '
+        'before its plan hydrates', () {
+      final summary = RoomSummaryResponse(
+        membershipSummary: {ana: 'join', bot: 'join'},
+        activityId: 'act-1',
+        activityPlan: null,
+        activityRoles: ActivityRolesModel({
+          // Synapse keys a discussion seat by student.
+          'participant:$ana': ActivityRoleModel(id: 'participant', userId: ana),
+        }),
+      );
+
+      expect(summary.isDiscussionRoom, isTrue);
+      expect(summary.isActivityOpenToJoin, isFalse);
+    });
+
     test('a thin-ref session whose plan has not hydrated stays open: seats '
         'unknown → permissive, so the seat check never hides a possibly-'
         'joinable v3 session before its plan lands', () {

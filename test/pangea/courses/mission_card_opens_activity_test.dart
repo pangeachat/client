@@ -16,6 +16,8 @@ import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
+import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/models/learning_objective_model.dart';
 import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
@@ -26,6 +28,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
+import 'package:fluffychat/routes/courses/course_objectives/mission_play_button.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../activity_session_fixtures.dart';
@@ -115,8 +118,13 @@ void main() {
   LearningObjective lo(String id) => LearningObjective(id: id, objective: id);
 
   /// A joined two-Mission course: lo-1 → a1, lo-2 → b1. [discussionB1]
-  /// makes b1 a discussion.
-  Room stubCourse({bool discussionB1 = false}) {
+  /// makes b1 a discussion; [roleplayB2] lists a roleplay, b2, ahead of b1
+  /// under lo-2.
+  Room stubCourse({
+    bool discussionB1 = false,
+    bool roleplayB2 = false,
+    List<String> sessionRoomIds = const [],
+  }) {
     QuestRepo.resetOutlineCacheForTest();
     QuestRepo.debugBuildOutline = (id, {courseRoomId}) async => Result.value(
       QuestOutline(
@@ -138,6 +146,7 @@ void main() {
           QuestObjectiveGroup(
             objective: lo('lo-2'),
             activities: [
+              if (roleplayB2) QuestActivity(activityId: 'b2', plan: plan('b2')),
               QuestActivity(
                 activityId: 'b1',
                 plan: discussionB1
@@ -165,6 +174,19 @@ void main() {
       PangeaEventTypes.coursePlan,
       CoursePlanEvent(uuid: 'quest-1', l2: 'es').toJson(),
     );
+    // The session rooms the course lists, as synapse makes a discussion's.
+    for (final id in sessionRoomIds) {
+      room.setState(
+        activitySessionStateEvent(
+          room,
+          type: EventTypes.SpaceChild,
+          stateKey: id,
+          content: {
+            'via': ['fakeServer.notExisting'],
+          },
+        ),
+      );
+    }
     return room;
   }
 
@@ -176,12 +198,18 @@ void main() {
     required bool missionCard,
     String? missionId,
     bool discussionB1 = false,
+    bool roleplayB2 = false,
+    List<String> sessionRoomIds = const [],
   }) async {
     tester.view.physicalSize = const Size(1280, 1600);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
-    final room = stubCourse(discussionB1: discussionB1);
+    final room = stubCourse(
+      discussionB1: discussionB1,
+      roleplayB2: roleplayB2,
+      sessionRoomIds: sessionRoomIds,
+    );
     final loader = QuestObjectivesLoader(client: client);
     addTearDown(loader.dispose);
     router = GoRouter(
@@ -306,5 +334,46 @@ void main() {
     expect(activityInfoFor(uri), isNull);
     expect(selectedMissionIdFor(uri), 'lo-2');
     expect(activeSpaceIdFor(uri), spaceId);
+  });
+
+  testWidgets('a joined discussion leads the Mission\'s row like any session '
+      'the learner is in: Play continues it, and its close returns to the '
+      'card', (tester) async {
+    final discussion = discussionRoom(
+      client,
+      activityId: 'b1',
+      seats: [discussionSeat(client.userID!)],
+    );
+    client.rooms.add(discussion);
+    await pumpList(
+      tester,
+      location: '/?$course&mission=lo-2',
+      missionCard: true,
+      missionId: 'lo-2',
+      discussionB1: true,
+      roleplayB2: true,
+      sessionRoomIds: [discussion.id],
+    );
+
+    final cards = find.byType(ActivitySuggestionCard);
+    expect(cards, findsNWidgets(2));
+    expect(find.text('Continue activity'), findsOneWidget);
+    // The joined discussion first, then the roleplay listed ahead of it.
+    expect(
+      tester.getTopLeft(find.text('The Market')).dx,
+      lessThan(tester.getTopLeft(find.text('b2')).dx),
+    );
+
+    await tester.tap(find.byType(MissionPlayButton));
+    // The pressable plays its press before it calls Play.
+    await tester.pump(const Duration(milliseconds: 500));
+    await tester.pump(const Duration(milliseconds: 500));
+    final uri = router.routerDelegate.currentConfiguration.uri;
+    expect(activeRoomIdFromPanels(uri), discussion.id);
+    expect(selectedMissionIdFor(uri), 'lo-2');
+    final closed = Uri.parse(roomTokenCloseLocation(uri, discussion.id)!);
+    expect(parseOpenPanels(closed).left.map((t) => t.type), [
+      PanelTypesEnum.course,
+    ]);
   });
 }

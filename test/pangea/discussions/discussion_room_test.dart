@@ -13,8 +13,10 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_client_extension.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/routes/courses/course_objectives/discussion_card.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 import '../activity_session_fixtures.dart';
@@ -76,6 +78,17 @@ void main() {
       expect(room.activityMode, ActivityMode.roleplay);
     });
 
+    test('a session shows the room\'s mode, whatever its plan says', () {
+      // An older room whose plan happens to read "Discussion".
+      final marked = discussionRoom(client, marked: false);
+      expect(marked.activityPlan!.activityMode, ActivityMode.discussion);
+      expect(marked.activityPlan!.modeIn(marked), ActivityMode.roleplay);
+      final room = discussionRoom(client);
+      expect(room.activityPlan!.modeIn(room), ActivityMode.discussion);
+      // With no room yet, the plan's shape is all there is.
+      expect(discussionActivityPlan().modeIn(null), ActivityMode.discussion);
+    });
+
     test('a room that is no activity session has no mode', () {
       final room = Room(
         id: '!plain:fakeServer.notExisting',
@@ -131,6 +144,27 @@ void main() {
       );
       expect(room.ownAwardKey, 'r1');
       expect(room.ownCompletedGoals.map((g) => g.id), ['g1']);
+    });
+
+    test('the goals scan reads the learner\'s seat in each discussion '
+        'room, as the archived and confirmed views ask it', () {
+      final room = discussionRoom(
+        client,
+        seats: [discussionSeat(me), discussionSeat(classmate)],
+        awarded: {
+          discussionSeatKey(me): ['slug-2'],
+          discussionSeatKey(classmate): ['slug-1'],
+        },
+      );
+      client.rooms.add(room);
+      expect(
+        client.scanCompletedGoalIds(
+          activityId: testSessionActivityId,
+          activity: discussionActivityPlan(),
+          roleId: ActivityMode.discussionRoleId,
+        ),
+        {'g2'},
+      );
     });
 
     test('a learner without a seat has no awards', () {
@@ -189,13 +223,14 @@ void main() {
 
     test('an admin without a seat reads and writes; an ended student does '
         'not write', () {
-      expect(
-        discussionRoom(
-          client,
-          seats: [discussionSeat(classmate)],
-        ).writesInActivity,
-        isTrue,
+      // The server mirrors a course's admins in as moderators.
+      final watching = discussionRoom(
+        client,
+        seats: [discussionSeat(classmate)],
+        powerLevels: {me: 50, testDiscussionBotId: 100},
       );
+      expect(watching.writesInActivity, isTrue);
+      expect(watching.seatlessStudentInDiscussion, isFalse);
       expect(
         discussionRoom(
           client,
@@ -205,6 +240,25 @@ void main() {
       );
       // A roleplay's seatless member does not write.
       expect(activitySessionRoom(client).writesInActivity, isFalse);
+    });
+
+    test('a student in the room without a seat does not write, and is '
+        'offered Join', () {
+      final seatless = discussionRoom(
+        client,
+        seats: [discussionSeat(classmate)],
+        powerLevels: {testDiscussionBotId: 100},
+      );
+      expect(seatless.writesInActivity, isFalse);
+      expect(seatless.seatlessStudentInDiscussion, isTrue);
+      // Once seated, they write and are no longer offered Join.
+      final seated = discussionRoom(
+        client,
+        seats: [discussionSeat(me)],
+        powerLevels: {testDiscussionBotId: 100},
+      );
+      expect(seated.writesInActivity, isTrue);
+      expect(seated.seatlessStudentInDiscussion, isFalse);
     });
 
     test('it counts as saved only once the learner has ended it', () {
@@ -335,6 +389,33 @@ void main() {
             .room
             ?.id,
         there.id,
+      );
+    });
+
+    test('the map reads no discussion room as the learner\'s own session '
+        'or as a live signal: its pins read the course\'s standing only', () {
+      client.rooms.addAll([
+        // Their seat in another course's room.
+        discussionRoom(
+          client,
+          roomId: '!there:fakeServer.notExisting',
+          courseId: otherCourseId,
+          seats: [discussionSeat(me)],
+        ),
+        // A room of this course an admin was joined to, without a seat.
+        discussionRoom(
+          client,
+          seats: [discussionSeat(classmate)],
+          powerLevels: {me: 50, testDiscussionBotId: 100},
+        ),
+      ]);
+
+      expect(client.activeActivityInstance(testSessionActivityId), isNull);
+      expect(
+        client.deriveActivitySignals(
+          pingedActivityIds: const {},
+        )[testSessionActivityId],
+        isNull,
       );
     });
 

@@ -173,7 +173,7 @@ class ActivitySummary extends StatelessWidget {
                       onOpen: (link) =>
                           UrlLauncher(context, link.url).launchUrl(),
                     ),
-                    if (activity.activityMode.listsQuestions &&
+                    if (activity.modeIn(room).listsQuestions &&
                         activity.discussionQuestions.isNotEmpty)
                       DiscussionQuestionList(
                         questions: activity.discussionQuestions,

@@ -48,7 +48,7 @@ What a learner sees on tapping an activity, in every state. Its job is to start 
 
 ### A discussion
 
-A [discussion](../../../.github/.github/instructions/activities.instructions.md#mode-discussion)'s page has nothing to choose: no players count, role cards, open sessions, waiting room, too-few-members notice or Completed. Its questions fill the goal header from the start, open and collapsible. One filled Join the discussion; above it, "N classmates are in this discussion", counting the room Join would pick now and kept current while open, else "Be the first to start this discussion".
+A [discussion](../../../.github/.github/instructions/activities.instructions.md#mode-discussion)'s page has nothing to choose: no players count, role cards, open sessions, waiting room, too-few-members notice or Completed. Its questions fill the goal header from the start, open and collapsible. One filled Join the discussion; above it, "N classmates are in this discussion", counting the room Join would pick now, else "Be the first to start this discussion". The count is re-read every few seconds only while the page is on screen and the app in front, and less often while the server is rate-limiting. A page opened outside a course uses the course holding the learner's seat, else the first of their courses that lists the discussion, and looks again when their courses change. A learner removed or banned from the course's room reads "You can't join this discussion." in place of Join. When Join placed the learner but the room hasn't reached the device yet, the page says so and opens the chat when it arrives.
 
 ## The waiting room
 

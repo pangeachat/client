@@ -166,8 +166,9 @@ class Message extends StatelessWidget {
               assignedRoles: event.room.hasArchivedActivity
                   ? event.room.activityRoles?.roles ?? {}
                   : event.room.assignedRoles ?? {},
-              showRoleCards:
-                  event.room.activityPlan!.activityMode.showsRoleCards,
+              showRoleCards: event.room.activityPlan!
+                  .modeIn(event.room)
+                  .showsRoleCards,
               showInstructions: show,
               toggleInstructions:
                   controller.activityController.toggleShowInstructions,

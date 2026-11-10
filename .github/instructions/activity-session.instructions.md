@@ -46,7 +46,7 @@ What a learner sees while playing a conversation activity and when it ends. Find
 ## Completion saves itself
 
 - A finished session saves even if it finished while the learner was away.
-- A discussion saves when the learner taps "I'm done": the server finishes and archives their seat, and the app files the session and mutes the room.
+- A discussion saves when the learner taps "I'm done": the server finishes and archives their seat, and the app files the session and mutes the room. If muting fails, the seat's end is undone and the learner sees the failure, so nothing is left half done; they tap again. "Wait, I'm not done" takes the session off the saved list. Its completion is counted once, when the filing is written, never lost to the analytics room syncing late.
 - Once saved, the end card says so, subscribed or not: "Activity saved to Learning Objectives", opening the [page that lists it](activities.instructions.md#the-learning-objectives-page).
 
 ## The bot's seat

@@ -170,6 +170,28 @@ void main() {
   });
 
   group('closing a session', () {
+    test('one reopened from the card\'s full plan reopens the card, on its '
+        'Mission, not the plan underneath', () {
+      final reopened = u(
+        WorkspaceNav.selectMission(
+          u(
+            WorkspaceNav.openCourseSession(
+              u('/?c=!s&left=course,coursepage:plan&right=analytics:vocab'),
+              '!sess',
+            ),
+          ),
+          'lo-2',
+        ),
+      );
+      expect(leftTypes(reopened), [PanelTypesEnum.room]);
+      expect(reopened.queryParameters['right'], 'analytics:vocab');
+
+      final closed = u(roomTokenCloseLocation(reopened, '!sess')!);
+      expect(leftTypes(closed), [PanelTypesEnum.course]);
+      expect(selectedMissionIdFor(closed), 'lo-2');
+      expect(activeSpaceIdFor(closed), '!s');
+    });
+
     test('one the card opened reopens the card, on its Mission', () {
       final closed = u(roomTokenCloseLocation(u(sessionFromCard), '!sess')!);
       expect(leftTypes(closed), [PanelTypesEnum.course]);

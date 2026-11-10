@@ -1,10 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:async/async.dart';
 import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart' show Client, Membership;
+import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/discussions/discussion_join_exceptions.dart';
+import 'package:fluffychat/features/discussions/discussion_preview.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
@@ -27,8 +32,9 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 ///   other seat can be lost. 403 when the caller has no seat there.
 ///
 /// The first two answer 404 when the activity is not a discussion that
-/// course's Missions list. Rooms are per course: two courses sharing a
-/// discussion never share a room.
+/// course's Missions list, and 403 `PANGEA_DISCUSSION_REMOVED` to a student
+/// removed or banned from the course's room for it. Rooms are per course: two
+/// courses sharing a discussion never share a room.
 abstract class DiscussionRoomRepo {
   static const String _path = '/_synapse/client/pangea/v1/discussion_room';
 
@@ -38,14 +44,16 @@ abstract class DiscussionRoomRepo {
 
   /// How long Join waits for the room to reach this client after the server
   /// placed the learner. Running out is sync lag, not a failed join: the
-  /// learner is placed, and the room opens once it lands.
-  static const Duration _syncTimeout = Duration(seconds: 10);
+  /// learner is placed, and the caller opens the room once it lands.
+  @visibleForTesting
+  static Duration syncTimeout = const Duration(seconds: 10);
 
-  /// How many classmates are in the room Join would put the learner in. Null
-  /// when [courseId] doesn't list [activityId] as a discussion: an answer, so not
-  /// reported. A start page polls this, so a failure is reported once per
-  /// session.
-  static Future<Result<int?>> previewStudents(
+  /// The room Join would put the learner in: how many classmates are in it,
+  /// or that [courseId] doesn't list [activityId] as a discussion (404), or
+  /// that the learner was removed from its room ([DiscussionRemovedException.errcode]).
+  /// Those two are answers, so not reported. A start page polls this, so a
+  /// failure is reported once per session.
+  static Future<Result<DiscussionPreview>> previewStudents(
     Client client, {
     required String courseId,
     required String activityId,
@@ -60,14 +68,20 @@ abstract class DiscussionRoomRepo {
         );
       } on PangeaHttpException catch (e) {
         // silent-ok: 404 is "this course doesn't list that discussion", an answer
-        if (e.statusCode == 404) return Result.value(null);
+        if (e.statusCode == 404) {
+          return Result.value(const DiscussionPreview.notListed());
+        }
+        // silent-ok: the learner was removed from its room, an answer the page shows
+        if (_isRemoved(e)) {
+          return Result.value(const DiscussionPreview.removed());
+        }
         rethrow;
       }
       final students = json['students'];
       if (students is! int) {
         throw const FormatException('discussion_room preview without students');
       }
-      return Result.value(students);
+      return Result.value(DiscussionPreview.open(students));
     } catch (e, s) {
       ErrorHandler.logErrorOnce(
         key: 'discussion_room_preview',
@@ -83,14 +97,22 @@ abstract class DiscussionRoomRepo {
   /// its id once their join has reached this client. The room keeps the
   /// default notifications: a learner in a discussion hears every message
   /// until they end it.
+  ///
+  /// Errors the caller shows: [DiscussionRemovedException] when the server
+  /// refuses a learner removed from its room, and
+  /// [DiscussionRoomNotArrivedException] when the learner was placed but the
+  /// room had not synced after [syncTimeout], so the caller can keep waiting
+  /// for it rather than open a room this client doesn't have yet.
   static Future<Result<String>> join(
     Client client, {
     required String courseId,
     required String activityId,
     String? versionId,
   }) async {
+    final data = {'courseId': courseId, 'activityId': activityId};
+    final Map<String, Object?> json;
     try {
-      final json = await _send(
+      json = await _send(
         client,
         'POST',
         body: {
@@ -99,33 +121,60 @@ abstract class DiscussionRoomRepo {
           'version_id': ?versionId,
         },
       );
-      final roomId = json['room_id'];
-      if (roomId is! String) {
-        throw const FormatException('discussion_room answered without room_id');
-      }
-      // The server can answer with a room the learner is already in (their
-      // own, when this client didn't know it yet); it then writes nothing,
-      // so no sync would come to wait for.
-      if (client.getRoomById(roomId)?.membership != Membership.join) {
-        try {
-          await client
-              .waitForRoomInSync(roomId, join: true)
-              .timeout(_syncTimeout);
-        } on TimeoutException {
-          // silent-ok: sync lag after a successful placement; the room opens
-          // once it lands
-        }
-      }
-      return Result.value(roomId);
-    } catch (e, s) {
+    } on PangeaHttpException catch (e, s) {
+      if (!_isRemoved(e)) return _failed(e, s, data);
+      const removed = DiscussionRemovedException();
+      // The preview said Join was open; the learner was removed since.
       ErrorHandler.logError(
-        e: e,
+        e: removed,
         s: s,
-        data: {'courseId': courseId, 'activityId': activityId},
+        data: data,
+        level: SentryLevel.info,
       );
-      return Result.error(e, s);
+      return Result.error(removed, s);
+    } catch (e, s) {
+      return _failed(e, s, data);
+    }
+    final roomId = json['room_id'];
+    if (roomId is! String) {
+      return _failed(
+        const FormatException('discussion_room answered without room_id'),
+        StackTrace.current,
+        data,
+      );
+    }
+    // The server can answer with a room the learner is already in (their
+    // own, when this client didn't know it yet); it then writes nothing,
+    // so no sync would come to wait for.
+    if (client.getRoomById(roomId)?.membership == Membership.join) {
+      return Result.value(roomId);
+    }
+    try {
+      await client.waitForRoomInSync(roomId, join: true).timeout(syncTimeout);
+      return Result.value(roomId);
+    } on TimeoutException catch (_, s) {
+      final late = DiscussionRoomNotArrivedException(roomId);
+      ErrorHandler.logError(
+        e: late,
+        s: s,
+        data: {...data, 'roomId': roomId},
+        level: SentryLevel.warning,
+      );
+      return Result.error(late, s);
     }
   }
+
+  static Result<String> _failed(
+    Object e,
+    StackTrace s,
+    Map<String, Object?> data,
+  ) {
+    ErrorHandler.logError(e: e, s: s, data: data);
+    return Result.error(e, s);
+  }
+
+  static bool _isRemoved(PangeaHttpException e) =>
+      e.statusCode == 403 && e.detail == DiscussionRemovedException.errcode;
 
   /// Ends ([ended]) or reopens the learner's own seat in discussion room
   /// [roomId]. Mutes and Chats follow in the caller.
