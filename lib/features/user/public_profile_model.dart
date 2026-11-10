@@ -7,7 +7,7 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 /// The part of a learner's profile that other people can read: their level
 /// and XP in each language, banked goal total, country and bio. Stored on the
 /// Matrix user profile, which anyone sharing a room can read, not in account
-/// data like [Profile] (profile.instructions.md, "Public vs. private").
+/// data like [Profile] (profile.instructions.md, "What other people can see").
 class PublicProfileModel {
   final AnalyticsProfileModel analytics;
   final String? country;

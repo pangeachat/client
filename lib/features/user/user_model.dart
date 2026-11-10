@@ -18,7 +18,7 @@ import '../languages/language_model.dart';
 /// The learner's learning settings: target and base language, self-reported
 /// level, gender, voice, country and bio. Private to the learner, apart from
 /// country and bio, which [UserController.updatePublicProfile] copies to the
-/// public profile (profile.instructions.md, "Public vs. private").
+/// public profile (profile.instructions.md, "What other people can see").
 class UserSettings {
   final DateTime? dateOfBirth;
   final DateTime? createdAt;
