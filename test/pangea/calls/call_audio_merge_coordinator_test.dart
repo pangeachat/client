@@ -965,6 +965,15 @@ void main() {
   group('the merged upload is kept, never abandoned (client#9825)', () {
     const uploaded = 'mxc://example.com/merged_upload';
 
+    // What the harness mix reports about its bytes: what a reused upload's
+    // event must still say, since no mix runs on reuse.
+    void expectMixFields(Map<String, dynamic> fields, {required String shape}) {
+      expect(fields['size'], 16);
+      expect(fields[shape == 'event' ? 'duration_ms' : 'durationMs'], 30000);
+      expect(fields[shape == 'event' ? 'sample_rate' : 'sampleRate'], 48000);
+      expect(fields['channels'], 1);
+    }
+
     Future<_Harness> aliceHarness(
       _Scheduler scheduler,
       _Backend backend, {
@@ -1030,6 +1039,10 @@ void main() {
       h.gateUpload!.complete();
       await _pump();
       expect(h.sendCalls, isEmpty, reason: 'no send after disposal');
+      final kept = (await h.entry(_callKey))!['upload'] as Map<String, dynamic>;
+      expect(kept['url'], uploaded);
+      expect(kept['coverage'], [_aliceEvent, _bobEvent]);
+      expectMixFields(kept, shape: 'entry');
 
       final next = await aliceHarness(
         scheduler,
@@ -1045,6 +1058,7 @@ void main() {
       expect(next.uploadCalls, isEmpty, reason: 'the landed upload is reused');
       expect(next.sendCalls, hasLength(1));
       expect(next.sendCalls.single.content['url'], uploaded);
+      expectMixFields(next.sendCalls.single.content, shape: 'event');
       expect(await next.entry(_callKey), isNull, reason: 'sent and retired');
     });
 
@@ -1071,6 +1085,7 @@ void main() {
       expect(h.sendCalls, hasLength(3));
       for (final send in h.sendCalls) {
         expect(send.content['url'], uploaded);
+        expectMixFields(send.content, shape: 'event');
       }
       expect(await h.entry(_callKey), isNull, reason: 'sent and retired');
     });

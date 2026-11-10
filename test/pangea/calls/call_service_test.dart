@@ -3676,6 +3676,34 @@ void main() {
       expect(refreshed, 1, reason: 'a fresh token is left alone');
       await service.dispose();
     });
+
+    test('waits for the refresh before the upload starts', () async {
+      final refreshGate = Completer<void>();
+      final client = _ExpiringClient(
+        expiresIn: const Duration(minutes: 3),
+        database: (await bareClient()).database,
+        onRefresh: () {},
+        refreshGate: refreshGate.future,
+      );
+      final service = CallService(client);
+
+      final upload = service.mergeCoordinator.upload(
+        Uint8List(1),
+        filename: 'call_audio_merged.wav',
+        contentType: 'audio/wav',
+      );
+      await pumpEventQueue();
+      expect(
+        client.uploads,
+        0,
+        reason: 'the upload must not start on the old token',
+      );
+
+      refreshGate.complete();
+      expect((await upload).toString(), 'mxc://server/audio');
+      expect(client.uploads, 1);
+      await service.dispose();
+    });
   });
 }
 
@@ -3685,9 +3713,17 @@ class _ExpiringClient extends Client {
     required this.expiresIn,
     required super.database,
     required void Function() onRefresh,
-  }) : super('expiring', onSoftLogout: (_) async => onRefresh());
+    Future<void>? refreshGate,
+  }) : super(
+         'expiring',
+         onSoftLogout: (_) async {
+           onRefresh();
+           await refreshGate;
+         },
+       );
 
   Duration expiresIn;
+  int uploads = 0;
 
   @override
   DateTime? get accessTokenExpiresAt => DateTime.now().add(expiresIn);
@@ -3697,7 +3733,10 @@ class _ExpiringClient extends Client {
     Uint8List file, {
     String? filename,
     String? contentType,
-  }) async => Uri.parse('mxc://server/audio');
+  }) async {
+    uploads++;
+    return Uri.parse('mxc://server/audio');
+  }
 }
 
 /// A room that accepts any send and remembers the transaction ids used.
