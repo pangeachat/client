@@ -1847,9 +1847,11 @@ void main() {
         var reqRate = 0;
         String? reqL1;
         String? reqL2;
+        var reqAllowL1 = false;
         final r = recorder(
           transcribe: (req) async {
             called = true;
+            reqAllowL1 = req.allowSpeakerL1;
             reqBytes = req.audioContent.length;
             reqTimings = req.includeWordTimings;
             reqRate = req.config.sampleRateHertz;
@@ -1875,6 +1877,9 @@ void main() {
         expect(reqRate, 16000);
         expect(reqL1, 'en');
         expect(reqL2, 'es');
+        // The recording path (own half, and a peer's via the same code)
+        // accepts the speaker's L1 back, untranslated (#3351).
+        expect(reqAllowL1, isTrue);
         // The audio half still uploaded and sent -- transcription is additive.
         expect(uploads, hasLength(1));
         expect(sent, hasLength(1));

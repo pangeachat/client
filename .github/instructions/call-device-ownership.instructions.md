@@ -27,7 +27,8 @@ A learner signed in on a phone and a laptop can end up in one call on both. The 
 - **Waits match the call server's own window** for how long it still lists a device that left. Engineer.
 - **An older-version device is never waited on; this device stays muted.** Unmuting would recreate the duplicate; lost credit is recoverable, invented credit is not. The learner pays: they cannot speak until they deal with the other device, and the newer device always drops out. Unassigned.
 - **A device that does not carry on keeps nothing** (no transcript, no analytics): the chosen device captured the same opening seconds. Unassigned.
-- **A device the call was moved away from keeps what it captured**, because nobody else has that stretch. Timing tells a move from two answers to one ring; when unsure, it is treated as two answers. Unassigned.
+- **A device the call was moved away from keeps what it captured**, because nobody else has that stretch. Timing, against the ring's real length, tells a move from two answers to one ring; when unsure, it is two answers. Unassigned.
+- **A device joining mid-call trusts which devices are live**, not one message; those are replaced constantly. Unassigned.
 - **Each device's transcript is kept and merged as one speaker**, because keyed by account one silently replaced the other. No per-device label: it is one person. Unassigned.
 - **The transcript reader counts transcripts assembled from several devices**, without naming devices, so duplicate credit is countable. Unassigned.
 - **The learner's choice replaces the automatic choice of which device records.** A chosen device with a broken microphone leaves the call unrecorded; the recourse is choosing the other. Unassigned.
@@ -37,6 +38,6 @@ A learner signed in on a phone and a laptop can end up in one call on both. The 
 
 ## Open questions
 
-- Do staging and production call tokens carry the permission to publish a device's choice? Without it every two-device call shows the older-version prompt, wrongly. The old doc called this unverified and blocking.
+- Do staging and production call tokens let a device publish its choice? Without that, every two-device call wrongly shows the older-version prompt.
 - The case against a credit backstop assumed v1 cannot move a call; moves now exist and credit both devices. Does it still hold?
-- [voice-video-calls.instructions.md](voice-video-calls.instructions.md) still says the recording device is elected among an account's devices and a transcript is one event per speaker; this doc changes both. Which should say it?
+- [voice-video-calls.instructions.md](voice-video-calls.instructions.md) and this doc disagree on which device records and how transcripts are stored. Which should say it?

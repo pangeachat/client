@@ -21,7 +21,9 @@ import 'package:fluffychat/pangea/common/widgets/shimmer_box.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_pending_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_repo.dart';
+import 'package:fluffychat/routes/chat/calls/call_half_in_flight.dart';
 import 'package:fluffychat/routes/chat/calls/call_recordings_load.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_event.dart';
@@ -2281,6 +2283,7 @@ void main() {
       // picker's language list with plain fake seams.
       WholeCallTranscriber? transcriber,
       List<LanguageModel>? pickerLanguages,
+      CallAudioPendingStore? pendingStore,
       // Injected only by the tests that read a peer-produced half, which
       // resolve its source recording without a homeserver.
       AudioEventFetcher? audioFetcher,
@@ -2322,6 +2325,7 @@ void main() {
               now: now,
               transcriber: transcriber,
               pickerLanguages: pickerLanguages,
+              pendingStore: pendingStore ?? InMemoryCallAudioPendingStore(),
             ),
           ),
         ),
@@ -6052,53 +6056,179 @@ void main() {
         },
       );
 
-      testWidgets(
-        'timeline: a peer half refused for no subscription offers Transcribe',
-        (tester) async {
-          // The QA scenario: the viewer's turns are placed, so the timeline is
-          // drawn and the peer's note sits below it. Mutation proof: dropping
-          // the offer from the timeline notes leaves only the note -> RED.
+      // #9485: the recording is here and the reader is subscribed, so there is
+      // nothing to ask. The note and the button are what is left when the
+      // attempt comes to nothing.
+      for (final placed in [true, false]) {
+        final shape = placed ? 'timeline' : 'per speaker';
+        testWidgets('$shape: a refused peer half transcribes itself, showing a '
+            'loading row and no note', (tester) async {
+          MatrixState.pangeaController = FakePangeaController(subscribed: true);
+          final languages = Completer<({String? l1, String? l2})>();
+          await pumpWithRecordings(
+            tester,
+            room(),
+            servingByType([
+              half(
+                _me,
+                texts: const ['hola'],
+                atMs: placed ? [_callStart] : null,
+              ),
+              refusedHalf(_peer),
+              audioEvent(_peer),
+            ]),
+            transcriber: buildFakeTranscriber(
+              resolvePeerLanguages: (_) => languages.future,
+              post:
+                  ({
+                    required callKey,
+                    required spokenBy,
+                    required sourceAudioEventId,
+                    required deviceId,
+                    required langCode,
+                    required clockAnchor,
+                    required segments,
+                  }) async {},
+            ),
+          );
+
+          expect(find.textContaining('Still transcribing'), findsOneWidget);
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsNothing,
+          );
+          expect(find.text('Transcribe'), findsNothing);
+
+          languages.complete((l1: null, l2: null));
+          await tester.pumpAndSettle();
+          expect(find.byType(SimpleDialog), findsNothing, reason: 'unasked');
+          expect(find.text('Transcribe'), findsOneWidget);
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsOneWidget,
+          );
+        });
+      }
+
+      // Partial words and a recording: if filling it in comes to nothing, the
+      // reader can still ask, in either shape of the screen.
+      for (final placed in [true, false]) {
+        final shape = placed ? 'timeline' : 'per speaker';
+        testWidgets('$shape: a half with partial words still offers Transcribe '
+            'once the automatic attempt has failed', (tester) async {
           MatrixState.pangeaController = FakePangeaController(subscribed: true);
           await pumpWithRecordings(
             tester,
             room(),
             servingByType([
-              half(_me, texts: const ['hola'], atMs: [_callStart]),
-              refusedHalf(_peer),
+              half(
+                _me,
+                texts: const ['hola'],
+                atMs: placed ? [_callStart] : null,
+              ),
+              half(
+                _peer,
+                texts: const ['que'],
+                atMs: placed ? [_callStart + 2000] : null,
+                captured: 2,
+                transcribed: 1,
+                lost: 1,
+              ),
               audioEvent(_peer),
             ]),
+            transcriber: buildFakeTranscriber(
+              resolvePeerLanguages: (_) async => (l1: null, l2: null),
+              post:
+                  ({
+                    required callKey,
+                    required spokenBy,
+                    required sourceAudioEventId,
+                    required deviceId,
+                    required langCode,
+                    required clockAnchor,
+                    required segments,
+                  }) async {},
+            ),
           );
 
-          expect(find.byType(TurnTimeline), findsOneWidget);
-          expect(
-            find.textContaining('did not have a subscription'),
-            findsOneWidget,
-          );
           expect(find.text('Transcribe'), findsOneWidget);
-        },
-      );
+        });
+      }
 
-      testWidgets('per speaker: a peer half refused for no subscription offers '
-          'Transcribe', (tester) async {
-        // Mutation proof: offering the button only for an ABSENT half leaves
-        // this section with the note alone -> RED.
+      testWidgets('timeline: an absent peer half offers Transcribe', (
+        tester,
+      ) async {
+        // The gap #9452 left: the per-speaker view offered it, the notes under
+        // the timeline did not.
         MatrixState.pangeaController = FakePangeaController(subscribed: true);
         await pumpWithRecordings(
           tester,
           room(),
           servingByType([
-            half(_me, texts: const ['hola']),
-            refusedHalf(_peer),
+            half(_me, texts: const ['hola'], atMs: [_callStart]),
             audioEvent(_peer),
           ]),
         );
 
-        expect(find.byType(TurnTimeline), findsNothing);
-        expect(
-          find.textContaining('did not have a subscription'),
-          findsOneWidget,
-        );
+        expect(find.byType(TurnTimeline), findsOneWidget);
         expect(find.text('Transcribe'), findsOneWidget);
+      });
+
+      // A slow connection parks this device's own recording. The room has none
+      // yet, and saying so was false (#3379).
+      testWidgets('a call this device is still finishing reads as being '
+          'prepared', (tester) async {
+        MatrixState.pangeaController = FakePangeaController(subscribed: true);
+        CallHalfInFlight.finishing.add(_callKey);
+        addTearDown(() => CallHalfInFlight.finishing.remove(_callKey));
+        await pumpWithRecordings(tester, room(), servingByType(const []));
+        await tester.runAsync(() => Future<void>.delayed(Duration.zero));
+        await tester.pump();
+
+        expect(find.text('Preparing the full recording…'), findsOneWidget);
+        expect(
+          find.textContaining('No recording of the full call'),
+          findsNothing,
+        );
+        expect(find.textContaining('Still transcribing'), findsOneWidget);
+      });
+
+      testWidgets('a recording still waiting here reads as being prepared', (
+        tester,
+      ) async {
+        MatrixState.pangeaController = FakePangeaController(subscribed: true);
+        final pending = InMemoryCallAudioPendingStore();
+        await pending.persist(
+          PendingCallAudio.create(
+            audioTxnId: 'txn',
+            transcriptTxnId: null,
+            roomId: '!room:fakeServer.notExisting',
+            owner: _me,
+            deviceId: null,
+            generationId: 'gen',
+            callKey: _callKey,
+            expectedBytes: 4,
+            contentSha256: 'hash',
+            audioContent: const {},
+          ),
+          Uint8List(4),
+        );
+        await pumpWithRecordings(
+          tester,
+          room(),
+          servingByType([
+            half(_me, texts: const ['hola']),
+          ]),
+          pendingStore: pending,
+        );
+        await tester.runAsync(() => Future<void>.delayed(Duration.zero));
+        await tester.pump();
+
+        expect(find.text('Preparing the full recording…'), findsOneWidget);
+        expect(
+          find.textContaining('No recording of the full call'),
+          findsNothing,
+        );
       });
 
       testWidgets(
@@ -6173,8 +6303,384 @@ void main() {
         },
       );
 
+      // r06 (#9485): the screen opened before the merged recording landed. The
+      // first auto-fill found no manifest, and the half showed the note and
+      // the button until the device's own fill arrived.
+      Future<
+        ({
+          List<String> posted,
+          List<int> downloads,
+          List<int> discovers,
+          void Function() land,
+          DateTime openedAt,
+        })
+      >
+      openBeforeTheMerge(
+        WidgetTester tester, {
+        required int openedAtMs,
+        // Holds the first discover open, so the merge can land mid-call.
+        Future<void>? holdFirstDiscover,
+        // The merge is on screen from the start, yet the manifest stays
+        // unresolved: a fill must not spin on it.
+        bool mergeShownButUnresolved = false,
+        // The merge has landed before the screen opens, and every download is
+        // held until this completes: a fill in flight across redraws.
+        Future<void>? holdDownloads,
+        // The screen's first read of the merged recording is held until this
+        // completes, and the merge is in the room by then: a fill goes
+        // pending first, and the merge arrives with that first read.
+        Future<void>? holdFirstMergedRead,
+      }) async {
+        MatrixState.pangeaController = FakePangeaController(subscribed: true);
+        final openedAt = tester.binding.clock.now();
+        final events = [
+          half(_me, texts: const ['hola'], atMs: [_callStart]),
+          refusedHalf(_peer),
+          audioEvent(_me),
+          audioEvent(_peer),
+          if (mergeShownButUnresolved || holdDownloads != null)
+            mergedEvent(_me),
+        ];
+        var merged = holdDownloads != null;
+        final posted = <String>[];
+        final downloads = <int>[];
+        final discovers = <int>[];
+        final resolvedManifest = WholeCallManifest(
+          resolved: true,
+          recordings: [
+            CallAudioRecording(
+              eventId: r'$audio-peer-',
+              senderId: _peer,
+              originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
+              content: CallAudioContent(
+                callKey: _callKey,
+                url: 'mxc://fakeServer.notExisting/AUDIO',
+                mimetype: 'audio/wav',
+                codec: kCallAudioCodec,
+                size: 1000,
+                durationMs: 4000,
+                sampleRate: 16000,
+                channels: 1,
+              ),
+            ),
+          ],
+        );
+        final fake = buildFakeTranscriber(
+          discover: (_) async {
+            discovers.add(discovers.length);
+            if (discovers.length == 1 && holdFirstDiscover != null) {
+              await holdFirstDiscover;
+              return WholeCallManifest.absent;
+            }
+            return merged ? resolvedManifest : WholeCallManifest.absent;
+          },
+          download: (uri) async {
+            downloads.add(downloads.length);
+            if (holdDownloads != null) await holdDownloads;
+            return Uint8List.fromList(const [1, 2, 3, 4]);
+          },
+          post:
+              ({
+                required callKey,
+                required spokenBy,
+                required sourceAudioEventId,
+                required deviceId,
+                required langCode,
+                required clockAnchor,
+                required segments,
+              }) async {
+                posted.add(spokenBy);
+                events.removeWhere(
+                  (e) =>
+                      e.type == CallTranscriptContent.relType &&
+                      e.senderId == _peer,
+                );
+                events.add(
+                  half(
+                    _peer,
+                    texts: const ['que tal'],
+                    atMs: [_callStart + 2000],
+                  ),
+                );
+              },
+        );
+        final serve = servingByType(events);
+        var mergedReads = 0;
+        await pumpWithRecordings(
+          tester,
+          room(),
+          ({
+            required String roomId,
+            required String eventId,
+            required String relType,
+            String? from,
+          }) async {
+            if (relType == CallAudioMergedContent.relType &&
+                mergedReads++ == 0 &&
+                holdFirstMergedRead != null) {
+              await holdFirstMergedRead;
+            }
+            return serve(
+              roomId: roomId,
+              eventId: eventId,
+              relType: relType,
+              from: from,
+            );
+          },
+          transcriber: fake,
+          // Moves with the test's fake time, so a deadline is measured on the
+          // same clock the timers run on.
+          now: () => DateTime.fromMillisecondsSinceEpoch(
+            openedAtMs,
+          ).add(tester.binding.clock.now().difference(openedAt)),
+        );
+        await tester.pump();
+        return (
+          posted: posted,
+          downloads: downloads,
+          discovers: discovers,
+          openedAt: openedAt,
+          land: () {
+            merged = true;
+            events.add(mergedEvent(_me));
+          },
+        );
+      }
+
       testWidgets(
-        'timeline: tapping Transcribe on a refused peer half fills it in',
+        'a fill that found no merge yet shows loading and retries on the next '
+        'sync',
+        (tester) async {
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+          );
+          await tester.pumpAndSettle();
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsNothing,
+          );
+          expect(find.text('Transcribe'), findsNothing);
+
+          open.land();
+          client.onSync.add(SyncUpdate(nextBatch: 's1'));
+          await tester.pumpAndSettle();
+
+          expect(open.posted, [_peer]);
+          expect(open.downloads, hasLength(1));
+          expect(find.textContaining('que tal'), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'a merge that never lands falls back to the note and button at the '
+        'window deadline',
+        (tester) async {
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+          );
+          // Zero-length pumps only: the screen's clock is fixed at opening, so
+          // fake time must not move before the deadline is measured.
+          for (var i = 0; i < 5; i++) {
+            await tester.pump();
+          }
+          expect(open.discovers, hasLength(1));
+          expect(find.text('Transcribe'), findsNothing);
+
+          // Opened a minute after the recording: the deadline is 4 minutes
+          // after opening, not 5. Still loading just before it, no sync at all.
+          final elapsed = tester.binding.clock.now().difference(open.openedAt);
+          await tester.pump(
+            const Duration(minutes: 4) - elapsed - const Duration(seconds: 1),
+          );
+          expect(find.text('Transcribe'), findsNothing);
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsNothing,
+          );
+
+          await tester.pump(const Duration(seconds: 1));
+          await tester.pump();
+
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsOneWidget,
+          );
+          expect(find.text('Transcribe'), findsOneWidget);
+          expect(open.discovers, hasLength(1));
+          expect(open.downloads, isEmpty);
+        },
+      );
+
+      testWidgets(
+        'a merge already shown with an unresolved manifest is not asked again '
+        'until the deadline',
+        (tester) async {
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+            mergeShownButUnresolved: true,
+          );
+          for (var i = 0; i < 10; i++) {
+            await tester.pump(const Duration(milliseconds: 100));
+          }
+          expect(open.discovers, hasLength(1));
+
+          await tester.pump(const Duration(minutes: 5));
+          await tester.pumpAndSettle();
+          expect(find.text('Transcribe'), findsOneWidget);
+          expect(open.discovers, hasLength(1));
+        },
+      );
+
+      testWidgets('redraws while a half waits on its merge ask nothing again', (
+        tester,
+      ) async {
+        final open = await openBeforeTheMerge(
+          tester,
+          openedAtMs: 1000 + 60 * 1000,
+          mergeShownButUnresolved: true,
+        );
+        await tester.pumpAndSettle();
+        expect(open.discovers, hasLength(1));
+
+        // Opening and closing the card's device rows redraws the screen.
+        for (var i = 0; i < 3; i++) {
+          await tester.tap(find.byIcon(Icons.expand_more));
+          await tester.pumpAndSettle();
+          await tester.tap(find.byIcon(Icons.expand_less));
+          await tester.pumpAndSettle();
+        }
+        expect(open.discovers, hasLength(1));
+      });
+
+      testWidgets(
+        'a fill already transcribing is not started again by redraws',
+        (tester) async {
+          final hold = Completer<void>();
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+            holdDownloads: hold.future,
+          );
+          await tester.pump();
+          await tester.pump();
+          expect(open.downloads, hasLength(1));
+
+          for (var i = 0; i < 2; i++) {
+            await tester.tap(find.byIcon(Icons.expand_more));
+            await tester.pump();
+            await tester.tap(find.byIcon(Icons.expand_less));
+            await tester.pump();
+            client.onSync.add(SyncUpdate(nextBatch: 's$i'));
+            await tester.pump();
+          }
+          expect(open.downloads, hasLength(1));
+          expect(open.posted, isEmpty);
+
+          hold.complete();
+          await tester.pumpAndSettle();
+          expect(open.downloads, hasLength(1));
+          expect(open.posted, [_peer]);
+        },
+      );
+
+      testWidgets(
+        'a merge that comes with the first read after a fill went pending is '
+        'retried once',
+        (tester) async {
+          final hold = Completer<void>();
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+            holdFirstMergedRead: hold.future,
+          );
+          for (var i = 0; i < 5; i++) {
+            await tester.pump();
+          }
+          expect(open.discovers, hasLength(1));
+          expect(open.posted, isEmpty);
+
+          // The merge is in the room when the held first read returns.
+          open.land();
+          hold.complete();
+          await tester.pumpAndSettle();
+
+          expect(open.discovers, hasLength(2));
+          expect(open.posted, [_peer]);
+          expect(find.textContaining('que tal'), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'syncs that change nothing while a half waits ask nothing again',
+        (tester) async {
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+          );
+          await tester.pumpAndSettle();
+          expect(open.discovers, hasLength(1));
+
+          for (var i = 0; i < 3; i++) {
+            client.onSync.add(SyncUpdate(nextBatch: 'unchanged$i'));
+            await tester.pumpAndSettle();
+          }
+          expect(open.discovers, hasLength(1));
+          expect(open.posted, isEmpty);
+        },
+      );
+
+      testWidgets(
+        'a merge that lands while the fill is still asking is retried once',
+        (tester) async {
+          final hold = Completer<void>();
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+            holdFirstDiscover: hold.future,
+          );
+          await tester.pump();
+
+          // The merge lands and redraws while the first fill is in flight.
+          open.land();
+          client.onSync.add(SyncUpdate(nextBatch: 's1'));
+          await tester.pump();
+          await tester.pump();
+          expect(open.discovers, hasLength(1));
+
+          hold.complete();
+          await tester.pumpAndSettle();
+
+          expect(open.discovers, hasLength(2));
+          expect(open.posted, [_peer]);
+          expect(open.downloads, hasLength(1));
+          expect(find.textContaining('que tal'), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'past the transcribing window a missing merge leaves the note and '
+        'button',
+        (tester) async {
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 6 * 60 * 1000,
+          );
+          await tester.pumpAndSettle();
+          final posted = open.posted;
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsOneWidget,
+          );
+          expect(find.text('Transcribe'), findsOneWidget);
+          expect(posted, isEmpty);
+        },
+      );
+
+      testWidgets(
+        'timeline: a refused peer half fills itself in, with nothing tapped',
         (tester) async {
           MatrixState.pangeaController = FakePangeaController(subscribed: true);
           final events = [
@@ -6216,8 +6722,6 @@ void main() {
             servingByType(events),
             transcriber: fake,
           );
-
-          await tester.tap(find.text('Transcribe'));
           await tester.pumpAndSettle();
 
           expect(posted, [_peer]);

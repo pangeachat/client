@@ -202,6 +202,13 @@ class ActiveCall extends ChangeNotifier {
 
   bool _placed = false;
 
+  /// Whether this device came into a call already under way -- a second
+  /// device of the same learner, a rejoin, a tap on the call button while the
+  /// call is live -- rather than placing it or answering its ring. Such a
+  /// device arrives long after the other person's membership was written,
+  /// which [CallService.callFloorFrom] has to allow for.
+  bool _joinedUnderWay = false;
+
   /// Whether this device started the call rather than joining one.
   ///
   /// Decides which side writes the call to the timeline. Both sides run the
@@ -328,6 +335,7 @@ class ActiveCall extends ChangeNotifier {
 
   void _settleGlare(IncomingCallNotification ring) {
     _peerAlsoPlaced = true;
+    _peerRingLifetime = ring.lifetime;
     // The ring that made this glare reached us no later than this; a ring we
     // never timed is bounded by now, which is later still.
     final arrived =
@@ -485,6 +493,7 @@ class ActiveCall extends ChangeNotifier {
     /// fixed at a decision the real arbiter reaches, so the election can be
     /// pinned in that state without replaying the whole ownership exchange.
     @visibleForTesting CallOwnership? ownership,
+    this.answeredRingLifetime,
   }) : _foreground = foreground,
        _ownership = ownership ?? CallOwnership() {
     // Wired here rather than at connect, so a tap that dies during the very
@@ -1372,7 +1381,10 @@ class ActiveCall extends ChangeNotifier {
     if (cached != null) return cached;
     final written = calls.membershipWrittenAt(room, anchor);
     if (written == null) return null;
-    return _stateFloorAt = CallService.callFloorFrom(written);
+    return _stateFloorAt = CallService.callFloorFrom(
+      written,
+      joinedUnderWay: _joinedUnderWay,
+    );
   }
 
   DateTime? _stateFloorAt;
@@ -1686,7 +1698,19 @@ class ActiveCall extends ChangeNotifier {
     talkedBeforeFirstSibling: _ownership.talkedBeforeFirstSibling,
     siblingFirstJoinSfuMs: _ownership.siblingFirstJoinSfuMs,
     ringUpperSfuMs: _ringUpperSfuMs,
+    ringLifetime: CallPredecessor.ringLifetimeOf([
+      if (_placed) CallNotification.lifetime,
+      if (_peerAlsoPlaced) _peerRingLifetime,
+      answeredRingLifetime,
+    ]),
   );
+
+  /// The lifetime of the ring this device answered, when it answered one.
+  /// Handed in by whoever started the call; null otherwise.
+  final Duration? answeredRingLifetime;
+
+  /// The lifetime of the peer's ring that made this call glare.
+  Duration? _peerRingLifetime;
 
   int? get _ringUpperSfuMs {
     final start = _connectStartMono;
@@ -2399,6 +2423,7 @@ class ActiveCall extends ChangeNotifier {
       final placing =
           !answering && rejoinAnchor == null && roster.participants.isEmpty;
       _placed = placing;
+      _joinedUnderWay = !placing && !answering;
 
       // Read before anything is awaited. A peer who was already here can leave
       // while the first handover settles, and reading afterwards would have this

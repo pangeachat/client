@@ -2,22 +2,27 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:async/async.dart';
 import 'package:flutter/services.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:matrix/matrix.dart';
+import 'package:matrix/matrix.dart' hide Result;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+import 'package:fluffychat/routes/chat/calls/call_audio_merged_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_timeouts.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_outbox.dart';
+import 'package:fluffychat/routes/chat/calls/recording_transcription.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 
 /// Covers what CallService decides before any network or SDK object is involved:
 /// whether calling is offered at all, and that constructing the service does not
@@ -1678,6 +1683,105 @@ void main() {
       expect(await service.rejoinOffers(), isEmpty);
     });
 
+    // client#9173: the SDK rewrites a device's membership every two minutes
+    // to push its expiry forward, and every rewrite is a NEW state event. A
+    // device stays in the call across that; the question asked of it must too.
+    test('a device stays live across the two-minute membership refresh, '
+        'though the event it first wrote is no longer current', () async {
+      final client = await clientWithOwnMembership(live: true);
+      final service = CallService(client);
+      final room = client.getRoomById(roomId)!;
+      expect(service.deviceHoldsLiveMembership(room, me, 'GHTYAJCE'), isTrue);
+
+      // The refresh: same device, same state key, new expiry, new event id.
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch2',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                state: [
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: {
+                      'memberships': [
+                        {
+                          'call_id': 'call-id',
+                          'device_id': 'GHTYAJCE',
+                          'expires_ts': DateTime.now()
+                              .add(const Duration(minutes: 7))
+                              .millisecondsSinceEpoch,
+                        },
+                      ],
+                    },
+                    senderId: me,
+                    eventId: r'$own-membership-refreshed',
+                    originServerTs: DateTime.now(),
+                    stateKey: 'GHTYAJCE_$me',
+                  ),
+                ],
+              ),
+            },
+          ),
+        ),
+      );
+
+      // The premise: this device's state now carries the refreshed event, so
+      // the id it first wrote (what a record or ring names) is not current.
+      expect(
+        (room.states[EventTypes.GroupCallMember]!['GHTYAJCE_$me']! as Event)
+            .eventId,
+        r'$own-membership-refreshed',
+      );
+      expect(
+        service.deviceHoldsLiveMembership(room, me, 'GHTYAJCE'),
+        isTrue,
+        reason: 'the device is still in the call',
+      );
+      expect(service.deviceHoldsLiveMembership(room, me, 'OTHERDEV'), isFalse);
+    });
+
+    test('an expired or retracted membership is not live', () {
+      final now = DateTime.now().millisecondsSinceEpoch;
+      StrippedStateEvent member(List<Map<String, Object?>> memberships) =>
+          StrippedStateEvent(
+            type: EventTypes.GroupCallMember,
+            content: {'memberships': memberships},
+            senderId: me,
+            stateKey: 'DEV_$me',
+          );
+      expect(
+        CallService.liveMembershipIn(
+          [
+            member([
+              {'device_id': 'DEV', 'expires_ts': now - 1},
+            ]),
+          ],
+          me,
+          'DEV',
+          nowMs: now,
+        ),
+        isFalse,
+      );
+      expect(
+        CallService.liveMembershipIn([member(const [])], me, 'DEV', nowMs: now),
+        isFalse,
+      );
+      expect(
+        CallService.liveMembershipIn(
+          [
+            member([
+              {'device_id': 'DEV', 'expires_ts': now + 60000},
+            ]),
+          ],
+          '@someone-else:s',
+          'DEV',
+          nowMs: now,
+        ),
+        isFalse,
+      );
+    });
+
     test('a ring is live only for the exact state event it names', () async {
       // A sender can hold several membership state keys (per-device and
       // legacy shapes). The discriminator must match the ring's OWN event,
@@ -2028,6 +2132,60 @@ void main() {
           ),
           PeerPresence.live,
           reason: 'the departure floor must not hide their presence',
+        );
+      },
+    );
+
+    // client#9173: a device that JOINS a call already under way (a learner
+    // moving the call to another device, a rejoin) arrives long after the
+    // other person's membership was written -- the SDK only rewrites it every
+    // two minutes. The one-ring floor skipped it, presence fell to "cannot
+    // see", the remembered sighting made that "gone", and the joiner hung up
+    // two seconds after joining. Their state here is written now; we "join"
+    // 100 s later, so it is 100 s older than our join.
+    test(
+      'a joiner still sees a peer whose membership is 100 s older than its join',
+      () async {
+        final (service, room) = await withPeerState([
+          {'call_id': 'this-call', 'expires_ts': inFuture()},
+        ]);
+        service.adoptCallIdForTest('this-call');
+        final weJoined = DateTime.now().add(const Duration(seconds: 100));
+        expect(
+          service.peerPresenceInCurrentCall(
+            room,
+            peer,
+            notBefore: CallService.callFloorFrom(
+              weJoined,
+              joinedUnderWay: true,
+            ),
+            goneAfter: weJoined,
+          ),
+          PeerPresence.live,
+        );
+      },
+    );
+
+    // The tighter floor stays wherever a ring invited us: there, nobody can
+    // have joined more than one ring before we did, and a membership that old
+    // is a leftover of an earlier call.
+    test(
+      'a placed or answered call still screens a membership 100 s older than '
+      'its join',
+      () async {
+        final (service, room) = await withPeerState([
+          {'call_id': 'this-call', 'expires_ts': inFuture()},
+        ]);
+        service.adoptCallIdForTest('this-call');
+        final weJoined = DateTime.now().add(const Duration(seconds: 100));
+        expect(
+          service.peerPresenceInCurrentCall(
+            room,
+            peer,
+            notBefore: CallService.callFloorFrom(weJoined),
+            goneAfter: weJoined,
+          ),
+          PeerPresence.unknown,
         );
       },
     );
@@ -3607,32 +3765,150 @@ void main() {
       },
     );
 
+    test('replays on the first sync after launch, not on every sync', () async {
+      final store = _CountingPendingCallTranscriptStore();
+      final client = await bareClient();
+      CallService(
+        client,
+        transcriptOutbox: CallTranscriptOutbox(store: store),
+        recordingTranscriptEnabled: true,
+      );
+
+      // Spaced so the first sync's fire-and-forget replay fully completes
+      // (its re-entrancy guard released) before the second arrives -- so this
+      // pins the throttle, not merely that guard.
+      await client.handleSync(SyncUpdate(nextBatch: 'one'));
+      await Future.delayed(const Duration(milliseconds: 10));
+      await client.handleSync(SyncUpdate(nextBatch: 'two'));
+      await Future.delayed(const Duration(milliseconds: 10));
+
+      expect(store.reads, 1, reason: 'two syncs in a row are one replay');
+    });
+
+    // The run at call end has long given up by the time a parked recording
+    // lands, so the full recording arriving is what fills the other half in.
     test(
-      'replays once on the first sync after launch, not on every sync',
+      'a full recording landing asks for the halves to be filled in',
       () async {
-        final store = _CountingPendingCallTranscriptStore();
         final client = await bareClient();
-        CallService(
-          client,
-          transcriptOutbox: CallTranscriptOutbox(store: store),
-          recordingTranscriptEnabled: true,
+        final asked = <String>[];
+        final service = CallService(client)
+          ..fillPeerHalves = (room, callKey) => asked.add(callKey);
+        final room = Room(id: '!merged:server', client: client);
+        client.rooms.add(room);
+        addTearDown(() => client.rooms.remove(room));
+
+        service.handleSync(
+          SyncUpdate(
+            nextBatch: 'one',
+            rooms: RoomsUpdate(
+              join: {
+                room.id: JoinedRoomUpdate(
+                  timeline: TimelineUpdate(
+                    events: [
+                      MatrixEvent(
+                        type: CallAudioMergedContent.relType,
+                        content: {'call_key': r'$call'},
+                        senderId: '@a:server',
+                        eventId: r'$merged',
+                        originServerTs: DateTime.now(),
+                      ),
+                    ],
+                  ),
+                ),
+              },
+            ),
+          ),
         );
 
-        // Spaced so the first sync's fire-and-forget replay fully completes
-        // (its re-entrancy guard released) before the second arrives -- so this
-        // pins the once-latch, not merely that guard.
-        await client.handleSync(SyncUpdate(nextBatch: 'one'));
-        await Future.delayed(const Duration(milliseconds: 10));
-        await client.handleSync(SyncUpdate(nextBatch: 'two'));
-        await Future.delayed(const Duration(milliseconds: 10));
-
-        expect(
-          store.reads,
-          1,
-          reason: 'the startup replay is latched to the first sync',
-        );
+        expect(asked, [r'$call']);
       },
     );
+
+    // The homeserver reads the token once the whole body has arrived, so a
+    // slow upload needs one that outlasts it (#3379).
+    test('a recording uploads on a token that will outlast it', () async {
+      var refreshed = 0;
+      final client = _ExpiringClient(
+        expiresIn: const Duration(minutes: 3),
+        database: (await bareClient()).database,
+        onRefresh: () => refreshed++,
+      );
+      final uri = await CallService(client).uploadCallAudio(
+        Uint8List(1),
+        filename: 'call_audio.wav',
+        contentType: 'audio/wav',
+      );
+      expect(refreshed, 1);
+      expect(uri.toString(), 'mxc://server/audio');
+
+      client.expiresIn = const Duration(minutes: 5);
+      await CallService(client).uploadCallAudio(
+        Uint8List(1),
+        filename: 'call_audio.wav',
+        contentType: 'audio/wav',
+      );
+      expect(refreshed, 1, reason: 'a fresh token is left alone');
+    });
+
+    // One way into speech-to-text, so no caller can miss the token refresh: the
+    // transcript screen had its own copy and did (#3379).
+    test('call speech-to-text runs on a token that will outlast it', () async {
+      var refreshed = 0;
+      final client = _ExpiringClient(
+        expiresIn: const Duration(seconds: 90),
+        database: (await bareClient()).database,
+        onRefresh: () => refreshed++,
+      );
+      final transcribe = callAudioTranscriberFor(
+        client,
+        speechToText: (_) async =>
+            Result.value(SpeechToTextResponseModel(results: const [])),
+      );
+      await transcribe(_sttRequest());
+      expect(refreshed, 1);
+    });
+
+    test('a failed speech-to-text is a throw, as the sink expects', () async {
+      final transcribe = callAudioTranscriberFor(
+        await bareClient(),
+        speechToText: (_) async => Result.error(StateError('no')),
+      );
+      expect(transcribe(_sttRequest()), throwsStateError);
+    });
+
+    test('nothing reaches call speech-to-text around that one way', () {
+      for (final path in [
+        'lib/routes/chat/calls/transcript_view.dart',
+        'lib/widgets/matrix.dart',
+      ]) {
+        expect(
+          File(path).readAsStringSync().contains('SpeechToTextRepo.instance'),
+          isFalse,
+          reason: path,
+        );
+      }
+    });
+
+    // A parked half used to wait for a launch or a foreground, neither of which
+    // comes to a page that simply stays open (#3379).
+    test('tries again on a later sync, so a parked half recovers', () async {
+      final store = _CountingPendingCallTranscriptStore();
+      final client = await bareClient();
+      final service = CallService(
+        client,
+        transcriptOutbox: CallTranscriptOutbox(store: store),
+        recordingTranscriptEnabled: true,
+      )..flushEvery = Duration.zero;
+
+      await client.handleSync(SyncUpdate(nextBatch: 'one'));
+      await Future.delayed(const Duration(milliseconds: 10));
+      await client.handleSync(SyncUpdate(nextBatch: 'two'));
+      await Future.delayed(const Duration(milliseconds: 10));
+
+      expect(store.reads, 2);
+      expect(service.flushEvery, Duration.zero);
+    });
   });
 
   group('the merged recording upload (client#9825)', () {
@@ -3738,6 +4014,16 @@ class _ExpiringClient extends Client {
     return Uri.parse('mxc://server/audio');
   }
 }
+
+SpeechToTextRequestModel _sttRequest() => SpeechToTextRequestModel(
+  audioContent: Uint8List(2),
+  config: SpeechToTextAudioConfigModel(
+    encoding: AudioEncodingEnum.linear16,
+    sampleRateHertz: 16000,
+    userL1: 'en',
+    userL2: 'es',
+  ),
+);
 
 /// A room that accepts any send and remembers the transaction ids used.
 class _TxidRoom extends Room {

@@ -55,6 +55,16 @@ CallAudioRecording _rec({
   content: content ?? _content(),
 );
 
+Future<WholeCallManifest> _ownOnly(String _) async =>
+    WholeCallManifest(resolved: true, recordings: [_ownRec()]);
+
+/// This device's own recording.
+CallAudioRecording _ownRec() => _rec(
+  eventId: r'$own_audio',
+  senderId: _self,
+  content: _content(deviceId: 'DEV'),
+);
+
 CallAudioMergedRecording _manifest({
   required String eventId,
   required List<String> sourceEventIds,
@@ -148,6 +158,25 @@ CallTranscript _transcript({
     provenance: provenance,
   );
 }
+
+CallTranscript _ownPartial({int lost = 1}) => assembleTranscript(
+  candidates: [
+    TranscriptCandidate(
+      senderId: _self,
+      eventId: '\$t_own',
+      deviceId: 'DEV',
+      originServerTs: 1500,
+      segments: [_seg('some of it')],
+      accounting: HalfAccounting(
+        declared: true,
+        chunksCaptured: 2,
+        chunksTranscribed: 2 - lost,
+        chunksLost: lost,
+      ),
+    ),
+  ],
+  expectedSenders: const [_self, _peer],
+);
 
 /// One posted peer half, captured for assertions.
 class _Posted {
@@ -271,6 +300,8 @@ class _Harness {
 }
 
 void main() {
+  setUp(WholeCallTranscriber.forgetRunsInFlight);
+
   group('gating', () {
     test('disabled (flag off or unsubscribed) produces nothing', () async {
       // Mutation proof: dropping the run-time gate makes a disabled call wait the
@@ -369,6 +400,26 @@ void main() {
       },
     );
 
+    // A bad connection loses some chunks to timeouts and has the rest refused,
+    // and the half is just as empty: its recording can still fill it (#3379).
+    test(
+      'an empty half that also timed out is produced from the recording',
+      () async {
+        const refusedAndTimedOut = HalfAccounting(
+          declared: true,
+          chunksCaptured: 2,
+          chunksTranscribed: 0,
+          chunksLost: 2,
+          chunksRefusedUnsubscribed: 1,
+        );
+        final h = _Harness()
+          ..readTranscript = (_) async =>
+              _transcript(peerEmptyOwnHalf: refusedAndTimedOut);
+        await h.build().transcribeAtCallEnd(_callKey);
+        expect(h.posts, hasLength(1));
+      },
+    );
+
     test('on demand, the same half is produced rather than refused', () async {
       final h = _Harness()
         ..readTranscript = (_) async =>
@@ -394,10 +445,10 @@ void main() {
     });
 
     test(
-      'an empty own-half that LOST audio another way is still skipped',
+      'an empty own-half with a gap beyond lost chunks is still skipped',
       () async {
-        // Only the no-subscription reason is reclassified. A half that also lost
-        // a chunk for some other reason keeps its old behaviour.
+        // Audio dropped at capture is not in the recording either, so the
+        // recording cannot be read as the whole of what was said.
         final h = _Harness()
           ..readTranscript = (_) async => _transcript(
             peerEmptyOwnHalf: const HalfAccounting(
@@ -405,6 +456,7 @@ void main() {
               chunksCaptured: 3,
               chunksLost: 3,
               chunksRefusedUnsubscribed: 2,
+              captureDroppedMs: 500,
             ),
           );
         await h.build().transcribeAtCallEnd(_callKey);
@@ -635,6 +687,95 @@ void main() {
       await Future.wait([a, b]);
       expect(h.transcribeCalls, 1);
       expect(h.posts, hasLength(1));
+    });
+
+    test('a second instance joins the run instead of starting one', () async {
+      // The call-end run and the transcript screen are separate instances. The
+      // screen joining it is what lets it hold its loading row to the end.
+      final gate = Completer<void>();
+      final h = _Harness();
+      h.transcribe =
+          (
+            bytes, {
+            required String l1,
+            required String l2,
+            required int startedAtMs,
+            required int durationMs,
+          }) async {
+            h.transcribeCalls++;
+            await gate.future;
+            return [_seg('hola', startedAtMs)];
+          };
+      final a = h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      final b = h.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      await Future<void>.delayed(Duration.zero);
+      gate.complete();
+      expect(await Future.wait([a, b]), [
+        OnDemandTranscriptionResult.produced,
+        OnDemandTranscriptionResult.produced,
+      ]);
+      expect(h.transcribeCalls, 1);
+      expect(h.posts, hasLength(1));
+    });
+
+    test('two accounts on one device never share a run', () async {
+      final gate = Completer<void>();
+      Future<List<TranscriptSegment>> held(
+        Uint8List bytes, {
+        required String l1,
+        required String l2,
+        required int startedAtMs,
+        required int durationMs,
+      }) async {
+        await gate.future;
+        return [_seg('hola', startedAtMs)];
+      }
+
+      final mine = _Harness()..transcribe = held;
+      final theirs = _Harness()
+        ..transcribe = held
+        ..selfUserId = '@second:server'
+        ..participants = const {'@second:server', _peer};
+      final a = mine.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      final b = theirs.build().transcribeHalfOnDemand(
+        callKey: _callKey,
+        speakerId: _peer,
+      );
+      await Future<void>.delayed(Duration.zero);
+      gate.complete();
+      await Future.wait([a, b]);
+      expect(mine.posts, hasLength(1));
+      expect(theirs.posts, hasLength(1));
+    });
+
+    // A whole-recording transcription that timed out leaves partial live
+    // words on this device's own half (#3379). Once the recording is in the
+    // room, the same backfill finishes the job.
+    test('its own partial half is retried from its own recording', () async {
+      final h = _Harness()
+        ..selfDeviceId = 'DEV'
+        ..discover = _ownOnly
+        ..readTranscript = (_) async => _ownPartial();
+      await h.build().transcribeAtCallEnd(_callKey);
+      expect(h.posts.single.spokenBy, _self);
+    });
+
+    test('a complete own half is left alone', () async {
+      final h = _Harness()
+        ..selfDeviceId = 'DEV'
+        ..discover = _ownOnly
+        ..readTranscript = (_) async => _ownPartial(lost: 0);
+      await h.build().transcribeAtCallEnd(_callKey);
+      expect(h.posts, isEmpty);
     });
 
     test(

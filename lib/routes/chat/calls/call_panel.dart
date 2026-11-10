@@ -223,6 +223,8 @@ class _CallPanelState extends State<CallPanel> {
                           Text(
                             session.movedToOtherDevice
                                 ? l10n.callContinuingElsewhere
+                                : session.wasDeclined
+                                ? callStatusLine(l10n, session)
                                 : l10n.callEnded,
                             textAlign: TextAlign.center,
                             style: theme.textTheme.titleMedium?.copyWith(
@@ -230,8 +232,10 @@ class _CallPanelState extends State<CallPanel> {
                             ),
                           ),
                           // A moved call is not over for the learner, so it
-                          // shows no duration -- only that it continues.
-                          if (!session.movedToOtherDevice) ...[
+                          // shows no duration -- only that it continues. Nor
+                          // does a declined call: nobody talked.
+                          if (!session.movedToOtherDevice &&
+                              session.hadPeer) ...[
                             const SizedBox(height: 6),
                             Text(
                               formatCallDuration(session.callDuration),
@@ -502,6 +506,9 @@ class _CallPanelState extends State<CallPanel> {
 /// so no two surfaces can disagree about the same call.
 String callStatusLine(L10n l10n, CallSession session) {
   if (session.isFailed) return callFailureLine(l10n, session.error);
+  // Read off the outcome, not the stage: the stage only says so once teardown
+  // has finished, and the screen is showing the reason while it runs.
+  if (session.wasDeclined) return _declinedLine(l10n, session);
   // A call that is OVER outranks anything it was doing on the way out. The
   // reconnecting flags used to be read first, so a call that ended while a
   // peer's grace was open still read "reconnecting" -- on a phone, minutes
@@ -511,10 +518,7 @@ String callStatusLine(L10n l10n, CallSession session) {
     case CallStage.ended:
       return l10n.callEnded;
     case CallStage.declined:
-      if (session.peerWasBusy) {
-        return l10n.callPeerBusy(session.peer?.calcDisplayname() ?? l10n.user);
-      }
-      return l10n.callDeclinedByPeer;
+      return _declinedLine(l10n, session);
     case CallStage.failed:
       return callFailureLine(l10n, session.error);
     case CallStage.connecting:
@@ -542,12 +546,13 @@ String callStatusLine(L10n l10n, CallSession session) {
     case CallStage.ended:
       return l10n.callEnded;
     case CallStage.declined:
-      if (session.peerWasBusy) {
-        return l10n.callPeerBusy(session.peer?.calcDisplayname() ?? l10n.user);
-      }
-      return l10n.callDeclinedByPeer;
+      return _declinedLine(l10n, session);
   }
 }
+
+String _declinedLine(L10n l10n, CallSession session) => session.peerWasBusy
+    ? l10n.callPeerBusy(session.peer?.calcDisplayname() ?? l10n.user)
+    : l10n.callDeclinedByPeer;
 
 /// What went wrong, specifically. One generic string for every failure made
 /// no-focus, a refused token, an unreachable SFU and being already in a call
