@@ -27,8 +27,8 @@ The choreographer supports a per-request `mock` field. When set, the handler run
 
 Contract (full version at [`pangeachat/.github/instructions/testing.instructions.md` § Mocking paid third-party calls](https://github.com/pangeachat/.github/blob/main/.github/instructions/testing.instructions.md#mocking-paid-third-party-calls)):
 
-- **The fixture sends the flag as a header, which choreo does not read.** [`e2e/fixtures.ts`](../../e2e/fixtures.ts) adds `mock: true` as an HTTP header on choreo requests, but choreo reads `mock` from the request body, so Playwright runs do not reach the mock path today.
-- **Mock latency is a choreo environment variable, not a request field.** The default mock profile mimics real-LLM latency for load testing; the staging/test deployment zeroes it via the env knob so Playwright runs aren't needlessly slow. There is no per-request latency-override field for the client to send.
+- **The Playwright fixture sets the flag.** [`e2e/fixtures.ts`](../../e2e/fixtures.ts) adds `mock: true` to the JSON body of every choreo POST a spec sends, where choreo reads it, so no request class has to. A GET carries no body and runs for real.
+- **Mock latency defaults to realistic, and Playwright zeroes it per request.** The default mock profile mimics real-LLM latency for load testing; the fixture also sends `mock_llm_latency_override_s: 0` in the body so Playwright runs aren't needlessly slow.
 - **Mocked responses are deterministic but obviously bogus** — WA returns one double-spaced edit, image-gen returns `mock.pangea.chat/transparent-1x1.png`. Assert on shape, not content.
 - **If a route triggers a 500 error code under `mock=true`, the handler likely lacks a registered mock producer.** The mock-LLM registry's `default_structured_mock(schema)` falls through to `schema()`, which fails for any schema with required fields lacking Pydantic defaults. Check `app/handlers/<h>/mock.py` in `pangeachat/2-step-choreographer`; if absent, file a bug there (`#2485` is the canonical example). The fix is a small per-handler module; do not work around it on the client side.
 
