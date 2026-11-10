@@ -8,5 +8,7 @@ runStandardCall({
   sub: { A: true, B: false },
   network: { mode: 'throttled' },
   wavA: R.fixture('learner'), wavB: R.fixture('peer'),
-  talkS: 50, settleS: 420,
+  // At 50/25 KB/s the throttled half's upload and the merge it gates land
+  // ~500 s after hang-up (measured); 600 s leaves margin. Owner-approved.
+  talkS: 50, settleS: 600,
 });
