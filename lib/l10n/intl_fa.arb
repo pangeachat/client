@@ -2775,8 +2775,6 @@
     "holdForInfo": "برای اطلاعات کلمه نگه دارید.",
     "gaTooltip": "استفاده از L2 با کمک گرامر",
     "taTooltip": "استفاده از L2 با کمک ترجمه",
-    "interactiveTranslatorSliderHeader": "مترجم تعاملی",
-    "interactiveGrammarSliderHeader": "بررسیگر گرامر تعاملی",
     "waTooltip": "استفاده از L2 بدون کمک",
     "interactiveTranslator": "کمک ترجمه",
     "noIdenticalLanguages": "لطفاً زبان پایه و هدف را متفاوت انتخاب کنید",
@@ -2832,17 +2830,11 @@
     "paymentHistory": "تاریخچه پرداخت",
     "emptyChatDownloadWarning": "امکان دانلود چت خالی وجود ندارد",
     "update": "به‌روزرسانی",
-    "toggleImmersionMode": "حالت غوطه‌وری",
-    "toggleImmersionModeDesc": "وقتی فعال باشد، تمام پیام‌ها به زبان هدف شما نمایش داده می‌شوند. این تنظیم در تبادل‌های زبانی بیشترین کاربرد را دارد.",
-    "itToggleDescription": "این ابزار یادگیری زبان، کلمات در زبان پایه شما را شناسایی می‌کند و به شما در ترجمه آن‌ها به زبان هدف کمک می‌کند. هرچند نادر است، هوش مصنوعی ممکن است در ترجمه خطا کند.",
-    "igcToggleDescription": "این ابزار یادگیری زبان، اشتباهات رایج در املا، گرامر و نقطه‌گذاری در پیام شما را شناسایی و اصلاحات پیشنهادی ارائه می‌دهد. هرچند نادر است، هوش مصنوعی ممکن است در اصلاحات خطا کند.",
     "originalMessage": "پیام اصلی",
     "sentMessage": "پیام ارسال‌شده",
     "useType": "نوع استفاده",
     "notAvailable": "در دسترس نیست",
     "taAndGaTooltip": "استفاده از سطح ۲ با کمک ترجمه و کمک گرامر",
-    "definitionsToolName": "تعاریف کلمات",
-    "definitionsToolDescription": "وقتی فعال باشد، کلمات زیر خط آبی قابل کلیک برای مشاهده تعاریف هستند. برای دسترسی به تعاریف، پیام‌ها را کلیک کنید.",
     "welcomeBack": "خوش آمدید! اگر بخشی از آزمایش ۲۰۲۳-۲۰۲۴ بودید، لطفاً برای اشتراک ویژه آزمایشی با ما تماس بگیرید. اگر معلم هستید و یا مؤسسه‌تان مجوزهای آموزشی خریداری کرده است، برای اشتراک معلم با ما تماس بگیرید.",
     "promotionalSubscriptionDesc": "در حال حاضر اشتراک تبلیغاتی دائمی دارید. برای کمک به تغییر اشتراک خود با support@pangea.chat تماس بگیرید.",
     "originalSubscriptionPlatform": "اشتراک از طریق {purchasePlatform} خریداری شده است",
@@ -3467,14 +3459,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3699,22 +3683,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3732,14 +3700,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

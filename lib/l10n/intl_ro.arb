@@ -2341,8 +2341,6 @@
     "holdForInfo": "Ține apăsat pentru informații despre cuvânt.",
     "gaTooltip": "L2 utilizare cu asistență gramaticală",
     "taTooltip": "L2 utilizare cu asistență de traducere",
-    "interactiveTranslatorSliderHeader": "Traducător Interactiv",
-    "interactiveGrammarSliderHeader": "Verificator Gramatică Interactiv",
     "waTooltip": "L2 utilizare fără asistență",
     "interactiveTranslator": "Asistență pentru traducere",
     "noIdenticalLanguages": "Te rog să alegi limbi de bază și țintă diferite",
@@ -2398,17 +2396,11 @@
     "paymentHistory": "Istoricul plăților",
     "emptyChatDownloadWarning": "Nu se poate descărca chat gol",
     "update": "Actualizează",
-    "toggleImmersionMode": "Comutare Mod Imersiune",
-    "toggleImmersionModeDesc": "Când este activat, toate mesajele sunt afișate în limba țintă. Această setare este cel mai util în schimburile de limbi.",
-    "itToggleDescription": "Acest instrument de învățare a limbilor va identifica cuvintele în limba de bază și vă va ajuta să le traduceți în limba țintă. Deși rar, AI poate face greșeli de traducere.",
-    "igcToggleDescription": "Acest instrument de învățare a limbilor va identifica greșelile comune de ortografie, gramatică și punctuație din mesajul dvs. și va sugera corecturi. Deși rar, AI poate face greșeli de corectare.",
     "originalMessage": "Mesaj Original",
     "sentMessage": "Mesaj Trimis",
     "useType": "Utilizare Tip",
     "notAvailable": "Indisponibil",
     "taAndGaTooltip": "Utilizare L2 cu asistență de traducere și asistență gramaticală",
-    "definitionsToolName": "Definiții Cuvinte",
-    "definitionsToolDescription": "Când este activat, cuvintele subliniate în albastru pot fi făcute clic pentru definiții. Faceți clic pe mesaje pentru a accesa definițiile.",
     "welcomeBack": "Bine ai revenit! Dacă ai fost parte din pilotul 2023-2024, te rugăm să ne contactezi pentru abonamentul tău special de pilot. Dacă ești profesor care a achiziționat (sau instituția ta a achiziționat) licențe pentru clasa ta, contactează-ne pentru abonamentul tău de profesor.",
     "promotionalSubscriptionDesc": "În prezent ai un abonament promoțional pe viață. Trimite un mesaj la support@pangea.chat pentru ajutor în schimbarea abonamentului tău.",
     "originalSubscriptionPlatform": "Abonament achiziționat prin {purchasePlatform}",
@@ -4103,14 +4095,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4335,22 +4319,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4368,14 +4336,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

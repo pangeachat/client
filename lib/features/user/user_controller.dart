@@ -742,14 +742,6 @@ class UserController {
 
   bool userToolSetting(ToolSetting setting) {
     switch (setting) {
-      case ToolSetting.interactiveTranslator:
-        return profile.toolSettings.interactiveTranslator;
-      case ToolSetting.interactiveGrammar:
-        return profile.toolSettings.interactiveGrammar;
-      case ToolSetting.immersionMode:
-        return profile.toolSettings.immersionMode;
-      case ToolSetting.definitions:
-        return profile.toolSettings.definitions;
       case ToolSetting.autoIGC:
         return profile.toolSettings.autoIGC;
       case ToolSetting.enableAutocorrect:

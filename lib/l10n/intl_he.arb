@@ -1680,8 +1680,6 @@
     "holdForInfo": "לחץ והחזק למידע על המילה.",
     "gaTooltip": "שימוש ב-L2 עם סיוע דקדוקי",
     "taTooltip": "שימוש ב-L2 עם סיוע תרגום",
-    "interactiveTranslatorSliderHeader": "מתרגם אינטראקטיבי",
-    "interactiveGrammarSliderHeader": "בודק דקדוק אינטראקטיבי",
     "waTooltip": "שימוש ב-L2 ללא סיוע",
     "interactiveTranslator": "סיוע בתרגום",
     "noIdenticalLanguages": "אנא בחר שפות בסיסיות ומטרה שונות",
@@ -1737,17 +1735,11 @@
     "paymentHistory": "היסטוריית תשלומים",
     "emptyChatDownloadWarning": "לא ניתן להוריד שיחה ריקה",
     "update": "עדכון",
-    "toggleImmersionMode": "מצב הטמעה",
-    "toggleImmersionModeDesc": "כאשר מופעל, כל ההודעות מוצגות בשפת היעד שלך. הגדרה זו שימושית במיוחד בהחלפות שפות.",
-    "itToggleDescription": "כלי זה ללימוד שפות יזהה מילים בשפת הבסיס שלך ויעזור לתרגמן לשפת היעד שלך. לעיתים נדירות, ה-AI עלול לטעות בתרגום.",
-    "igcToggleDescription": "כלי זה ללימוד שפות יזהה שגיאות כתיב, דקדוק ופיסוק נפוצות בהודעה שלך ויציע תיקונים. לעיתים נדירות, ה-AI עלול לטעות בתיקונים.",
     "originalMessage": "הודעה מקורית",
     "sentMessage": "הודעה שנשלחה",
     "useType": "סוג שימוש",
     "notAvailable": "לא זמין",
     "taAndGaTooltip": "שימוש ב-L2 עם סיוע בתרגום וסיוע בדקדוק",
-    "definitionsToolName": "הגדרות מילים",
-    "definitionsToolDescription": "כאשר מופעל, מילים שמודגשות בכחול ניתנות ללחיצה לקבלת הגדרות. לחץ על ההודעות כדי לגשת להגדרות.",
     "welcomeBack": "ברוכים השבים! אם היית חלק מניסוי 2023-2024, אנא צור איתנו קשר לקבלת המנוי המיוחד שלך לניסוי. אם אתה מורה שרכש (או המוסד שלך רכש) רישיונות לכיתה שלך, צור איתנו קשר למנוי המורה שלך.",
     "promotionalSubscriptionDesc": "יש לך כרגע מנוי קידום מכירות לכל החיים. שלח הודעה ל-support@pangea.chat לעזרה בשינוי המנוי שלך.",
     "originalSubscriptionPlatform": "המנוי נרכש דרך {purchasePlatform}",
@@ -4285,14 +4277,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4517,22 +4501,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4550,14 +4518,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

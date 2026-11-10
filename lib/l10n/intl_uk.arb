@@ -2868,8 +2868,6 @@
     "holdForInfo": "Натисніть і утримуйте для інформації про слово.",
     "gaTooltip": "Використання L2 з граматичною допомогою",
     "taTooltip": "Використання L2 з перекладацькою допомогою",
-    "interactiveTranslatorSliderHeader": "Інтерактивний перекладач",
-    "interactiveGrammarSliderHeader": "Інтерактивний перевірник граматики",
     "waTooltip": "Використання L2 без допомоги",
     "interactiveTranslator": "Допомога з перекладом",
     "noIdenticalLanguages": "Будь ласка, оберіть різні мови для бази та цілі",
@@ -2924,17 +2922,11 @@
     "paymentHistory": "Історія платежів",
     "emptyChatDownloadWarning": "Не можна завантажити порожній чат",
     "update": "Оновити",
-    "toggleImmersionMode": "Режим занурення",
-    "toggleImmersionModeDesc": "Коли він увімкнений, всі повідомлення відображаються вашою цільовою мовою. Ця налаштування найбільш корисна під час мовних обмінів.",
-    "itToggleDescription": "Цей інструмент для вивчення мов визначатиме слова у вашій базовій мові та допомагатиме перекладати їх на вашу цільову мову. Хоча рідко, AI може робити помилки перекладу.",
-    "igcToggleDescription": "Цей інструмент для вивчення мов визначатиме поширені орфографічні, граматичні та пунктуаційні помилки у вашому повідомленні та пропонуватиме виправлення. Хоча рідко, AI може робити помилки у виправленнях.",
     "originalMessage": "Оригінальне повідомлення",
     "sentMessage": "Відправлене повідомлення",
     "useType": "Тип використання",
     "notAvailable": "Недоступно",
     "taAndGaTooltip": "Використання L2 з допомогою перекладу та граматики",
-    "definitionsToolName": "Визначення слів",
-    "definitionsToolDescription": "Коли активовано, слова підкреслені синім можна натиснути для перегляду визначень. Натискайте повідомлення для доступу до визначень.",
     "welcomeBack": "Ласкаво просимо назад! Якщо ви були учасником пілотного проекту 2023-2024 років, будь ласка, зв’яжіться з нами для отримання вашої спеціальної підписки на пілотний проект. Якщо ви вчитель, який (або ваша установа) придбав ліцензії для вашого класу, зв’яжіться з нами для отримання підписки вчителя.",
     "promotionalSubscriptionDesc": "У вас наразі безстрокова промо-підписка. Напишіть support@pangea.chat для допомоги у зміні підписки.",
     "originalSubscriptionPlatform": "Підписка, придбана через {purchasePlatform}",
@@ -3558,14 +3550,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3786,22 +3770,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3819,14 +3787,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

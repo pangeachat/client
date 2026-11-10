@@ -1391,8 +1391,6 @@
     "holdForInfo": "Pindutin at hawakan para sa impormasyon ng salita.",
     "gaTooltip": "L2 gamitin kasama ang tulong sa gramatika",
     "taTooltip": "L2 gamitin kasama ang tulong sa pagsasalin",
-    "interactiveTranslatorSliderHeader": "Interaktibong Tagasalin",
-    "interactiveGrammarSliderHeader": "Interaktibong Tagasuri ng Gramatika",
     "waTooltip": "L2 gamitin nang walang tulong",
     "interactiveTranslator": "Tulong sa Pagsasalin",
     "noIdenticalLanguages": "Mangyaring pumili ng iba't ibang pangunahing at target na mga wika",
@@ -1448,17 +1446,11 @@
     "paymentHistory": "Kasaysayan ng Bayad",
     "emptyChatDownloadWarning": "Hindi maaaring i-download ang walang laman na chat",
     "update": "I-update",
-    "toggleImmersionMode": "Mode ng Paglubog",
-    "toggleImmersionModeDesc": "Kapag naka-enable, lahat ng mensahe ay ipinapakita sa iyong target na wika. Ang setting na ito ay pinaka-kapaki-pakinabang sa mga palitan ng wika.",
-    "itToggleDescription": "Ang kasangkapang ito sa pag-aaral ng wika ay tutukoy sa mga salita sa iyong pangunahing wika at tutulungan kang isalin ang mga ito sa iyong target na wika. Bagamat bihira, maaaring magkamali ang AI sa pagsasalin.",
-    "igcToggleDescription": "Ang kasangkapang ito sa pag-aaral ng wika ay tutukoy sa mga karaniwang mali sa pagbabaybay, gramatika, at bantas sa iyong mensahe at magmumungkahi ng mga pagwawasto. Bagamat bihira, maaaring magkamali ang AI sa mga pagwawasto.",
     "originalMessage": "Orihinal na Mensahe",
     "sentMessage": "Ipinadalang Mensahe",
     "useType": "Gamitin ang Uri",
     "notAvailable": "Hindi Available",
     "taAndGaTooltip": "Gamitin ang L2 na may tulong sa pagsasalin at gramatika",
-    "definitionsToolName": "Mga Kahulugan ng Salita",
-    "definitionsToolDescription": "Kapag naka-enable, ang mga salitang naka-underline sa asul ay maaaring i-click para sa mga kahulugan. I-click ang mga mensahe upang ma-access ang mga kahulugan.",
     "welcomeBack": "Maligayang pagbabalik! Kung ikaw ay bahagi ng pilot noong 2023-2024, makipag-ugnayan sa amin para sa iyong espesyal na pilot na subscription. Kung ikaw ay isang guro na bumili ng mga lisensya para sa iyong klase (o ang iyong institusyon ay bumili), makipag-ugnayan sa amin para sa iyong guro na subscription.",
     "promotionalSubscriptionDesc": "Sa kasalukuyan ay mayroon kang panghabang-buhay na promosyonal na subscription. Makipag-ugnayan sa support@pangea.chat para sa tulong sa pagbabago ng iyong subscription.",
     "originalSubscriptionPlatform": "Subscription na binili sa pamamagitan ng {purchasePlatform}",
@@ -4242,14 +4234,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4474,22 +4458,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4507,14 +4475,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

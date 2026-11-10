@@ -158,14 +158,6 @@ class LearningSettingsViewModel extends ChangeNotifier {
   bool getToolSetting(ToolSetting toolSetting) {
     final toolSettings = _updatedProfile.toolSettings;
     switch (toolSetting) {
-      case ToolSetting.interactiveTranslator:
-        return toolSettings.interactiveTranslator;
-      case ToolSetting.interactiveGrammar:
-        return toolSettings.interactiveGrammar;
-      case ToolSetting.immersionMode:
-        return toolSettings.immersionMode;
-      case ToolSetting.definitions:
-        return toolSettings.definitions;
       case ToolSetting.autoIGC:
         return toolSettings.autoIGC;
       case ToolSetting.audioWords:
@@ -217,14 +209,6 @@ class LearningSettingsViewModel extends ChangeNotifier {
     // turn a never-chosen null into this device's platform default.
     final toolSettings = _updatedProfile.toolSettings;
     final updatedToolSettings = switch (toolSetting) {
-      ToolSetting.interactiveTranslator => toolSettings.copyWith(
-        interactiveTranslator: value,
-      ),
-      ToolSetting.interactiveGrammar => toolSettings.copyWith(
-        interactiveGrammar: value,
-      ),
-      ToolSetting.immersionMode => toolSettings.copyWith(immersionMode: value),
-      ToolSetting.definitions => toolSettings.copyWith(definitions: value),
       ToolSetting.autoIGC => toolSettings.copyWith(autoIGC: value),
       ToolSetting.audioWords => toolSettings.copyWith(audioWords: value),
       ToolSetting.audioChoices => toolSettings.copyWith(audioChoices: value),

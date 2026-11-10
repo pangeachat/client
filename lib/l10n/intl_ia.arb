@@ -684,8 +684,6 @@
     "holdForInfo": "Clicca e tenea pro information de parola.",
     "gaTooltip": "L2 usance con adjuta grammatical",
     "taTooltip": "L2 usance con adjuta de traduction",
-    "interactiveTranslatorSliderHeader": "Traductor Interactive",
-    "interactiveGrammarSliderHeader": "Verificador de Grammatica Interactive",
     "waTooltip": "L2 usance sin adjuta",
     "interactiveTranslator": "Assistente de translation",
     "noIdenticalLanguages": "Per favor, selige linguas de base e de destino differente",
@@ -741,17 +739,11 @@
     "paymentHistory": "Historico de pagamento",
     "emptyChatDownloadWarning": "Non pote descargar chat vacue",
     "update": "Actualisar",
-    "toggleImmersionMode": "Modo d'Immersion",
-    "toggleImmersionModeDesc": "Quando activate, tote le messages es monstrate in tu lingua de destino. Iste configuration es le plus utile in exchanges linguistic.",
-    "itToggleDescription": "Iste instrumento de studio de linguas identificara le parolas in tu lingua de base e adjutara te a traducer los a tu lingua de destino. Quoque rare, le AI pote facer errores de translation.",
-    "igcToggleDescription": "Iste instrumento de studio de linguas identificara errores commun de ortographia, grammatica e puntuacion in tu message e suggerera correctiones. Quoque rare, le AI pote facer errores de correction.",
     "originalMessage": "Message Original",
     "sentMessage": "Message Misse",
     "useType": "Usar Tipo",
     "notAvailable": "Non Disponibile",
     "taAndGaTooltip": "L2 usance con adjutamento de translation e adjutamento grammatical",
-    "definitionsToolName": "Definitiones de Parolas",
-    "definitionsToolDescription": "Quando activate, le parolas sublineate in azul pote esser cliccabile pro definitiones. Clicca super messages pro accedere a le definitiones.",
     "welcomeBack": "Ben retornate! Si tu ha essite parte del pilot 2023-2024, per favor contacta nos pro tu subscription special de pilot. Si tu es un professor qui ha (o que su institution ha) comprate licentias pro tu classe, contacta nos pro tu subscription de professor.",
     "promotionalSubscriptionDesc": "Tu ha actualmente un subscription promotional de vita. Mesage supporto@pangea.chat pro adjutar te a cambiar tu subscription.",
     "originalSubscriptionPlatform": "Subscription comprate per medio de {purchasePlatform}",
@@ -4307,14 +4299,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4539,22 +4523,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4572,14 +4540,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

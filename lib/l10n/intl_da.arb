@@ -656,8 +656,6 @@
     "holdForInfo": "Klik og hold for ordinfo.",
     "gaTooltip": "L2 brug med grammatikassistance",
     "taTooltip": "L2 brug med oversættelsesassistance",
-    "interactiveTranslatorSliderHeader": "Interaktiv Oversætter",
-    "interactiveGrammarSliderHeader": "Interaktiv Grammatik Tjekker",
     "waTooltip": "L2 brug uden assistance",
     "interactiveTranslator": "Oversættelsesassistance",
     "noIdenticalLanguages": "Vælg venligst forskellige base- og målsprog",
@@ -713,17 +711,11 @@
     "paymentHistory": "Betalingshistorik",
     "emptyChatDownloadWarning": "Kan ikke downloade tom chat",
     "update": "Opdater",
-    "toggleImmersionMode": "Immersionsindstilling",
-    "toggleImmersionModeDesc": "Når den er aktiveret, vises alle beskeder på dit målsprog. Denne indstilling er mest nyttig i sprogudvekslinger.",
-    "itToggleDescription": "Dette sprogindlæringsværktøj vil identificere ord på dit grundsprog og hjælpe dig med at oversætte dem til dit målsprog. Selvom det er sjældent, kan AI lave oversættelsesfejl.",
-    "igcToggleDescription": "Dette sprogindlæringsværktøj vil identificere almindelige stave-, grammatik- og tegnsætningsfejl i din besked og foreslå rettelser. Selvom det er sjældent, kan AI lave fejl i rettelser.",
     "originalMessage": "Original besked",
     "sentMessage": "Sendt besked",
     "useType": "Brug type",
     "notAvailable": "Ikke tilgængelig",
     "taAndGaTooltip": "L2 brug med oversættelsesassistance og grammatikassistance",
-    "definitionsToolName": "Orddefinitioner",
-    "definitionsToolDescription": "Når den er aktiveret, kan ord understreget med blåt klikkes for definitioner. Klik på beskeder for at få adgang til definitioner.",
     "welcomeBack": "Velkommen tilbage! Hvis du var en del af pilotprojektet 2023-2024, bedes du kontakte os for dit særlige pilotabonnement. Hvis du er lærer, der har (eller din institution har) købt licenser til din klasse, kontakt os for dit lærerabonnement.",
     "promotionalSubscriptionDesc": "Du har i øjeblikket et livstids kampagnetilbud. Send en besked til support@pangea.chat for hjælp til at ændre dit abonnement.",
     "originalSubscriptionPlatform": "Abonnement købt via {purchasePlatform}",
@@ -4291,14 +4283,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4523,22 +4507,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4556,14 +4524,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

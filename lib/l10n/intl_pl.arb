@@ -2778,8 +2778,6 @@
     "holdForInfo": "Kliknij i przytrzymaj, aby uzyskać informacje o słowie.",
     "gaTooltip": "L2 użycie z pomocą gramatyczną",
     "taTooltip": "L2 użycie z pomocą tłumaczeniową",
-    "interactiveTranslatorSliderHeader": "Interaktywny Tłumacz",
-    "interactiveGrammarSliderHeader": "Interaktywny Sprawdzacz Gramatyczny",
     "waTooltip": "L2 użycie bez pomocy",
     "interactiveTranslator": "Wspomaganie tłumaczenia",
     "noIdenticalLanguages": "Proszę wybrać różne języki bazowe i docelowe",
@@ -2835,17 +2833,11 @@
     "paymentHistory": "Historia płatności",
     "emptyChatDownloadWarning": "Nie można pobrać pustego czatu",
     "update": "Aktualizuj",
-    "toggleImmersionMode": "Tryb zanurzenia",
-    "toggleImmersionModeDesc": "Po włączeniu wszystkie wiadomości będą wyświetlane w Twoim języku docelowym. To ustawienie jest najbardziej przydatne podczas wymiany językowej.",
-    "itToggleDescription": "To narzędzie do nauki języków zidentyfikuje słowa w Twoim języku podstawowym i pomoże Ci je przetłumaczyć na język docelowy. Chociaż rzadko, AI może popełnić błędy w tłumaczeniu.",
-    "igcToggleDescription": "To narzędzie do nauki języków zidentyfikuje powszechne błędy ortograficzne, gramatyczne i interpunkcyjne w Twojej wiadomości i zasugeruje poprawki. Chociaż rzadko, AI może popełnić błędy korekcyjne.",
     "originalMessage": "Oryginalna wiadomość",
     "sentMessage": "Wysłana wiadomość",
     "useType": "Typ użycia",
     "notAvailable": "Niedostępne",
     "taAndGaTooltip": "Użycie L2 z pomocą tłumaczenia i gramatyki",
-    "definitionsToolName": "Definicje słów",
-    "definitionsToolDescription": "Po włączeniu słowa podkreślone na niebiesko można kliknąć, aby zobaczyć definicje. Kliknij wiadomości, aby uzyskać dostęp do definicji.",
     "welcomeBack": "Witamy ponownie! Jeśli brałeś udział w pilotażu 2023-2024, skontaktuj się z nami, aby uzyskać specjalną subskrypcję pilotażową. Jeśli jesteś nauczycielem, który (lub Twoja instytucja) zakupił licencje dla Twojej klasy, skontaktuj się z nami w sprawie subskrypcji nauczyciela.",
     "promotionalSubscriptionDesc": "Obecnie masz dożywotnią subskrypcję promocyjną. Skontaktuj się z support@pangea.chat, aby uzyskać pomoc w zmianie subskrypcji.",
     "originalSubscriptionPlatform": "Subskrypcja zakupiona przez {purchasePlatform}",
@@ -3469,14 +3461,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3701,22 +3685,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3734,14 +3702,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

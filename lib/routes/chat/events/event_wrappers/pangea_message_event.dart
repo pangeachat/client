@@ -38,7 +38,6 @@ import 'package:fluffychat/routes/chat/events/translation/full_text_translation_
 import 'package:fluffychat/routes/chat/events/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/routes/chat/events/translation/full_text_translation_response_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_audio_card.dart';
-import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../../features/languages/language_constants.dart';
 import '../../../../pangea/common/utils/error_handler.dart';
@@ -324,13 +323,7 @@ class PangeaMessageEvent {
       return stt.langCode;
     }
 
-    final bool immersionMode = MatrixState.pangeaController.userController
-        .isToolEnabled(ToolSetting.immersionMode);
-
-    final String? sentLangCode = correctedSent?.langCode;
-
-    final String? langCode = immersionMode ? _l2Code : sentLangCode;
-    return langCode ?? LanguageKeys.unknownLanguage;
+    return correctedSent?.langCode ?? LanguageKeys.unknownLanguage;
   }
 
   RepresentationEvent? get messageDisplayRepresentation =>

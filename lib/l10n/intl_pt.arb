@@ -2732,8 +2732,6 @@
     "holdForInfo": "Clique e segure para informações da palavra.",
     "gaTooltip": "L2 usar com assistência gramatical",
     "taTooltip": "L2 com assistência de tradução",
-    "interactiveTranslatorSliderHeader": "Tradutor Interativo",
-    "interactiveGrammarSliderHeader": "Verificador de Gramática Interativo",
     "waTooltip": "L2 sem assistência",
     "interactiveTranslator": "Assistência de tradução",
     "noIdenticalLanguages": "Por favor, escolha idiomas base e alvo diferentes",
@@ -2789,17 +2787,11 @@
     "paymentHistory": "Histórico de Pagamentos",
     "emptyChatDownloadWarning": "Não é possível baixar chat vazio",
     "update": "Atualizar",
-    "toggleImmersionMode": "Modo de Imersão",
-    "toggleImmersionModeDesc": "Quando ativado, todas as mensagens são exibidas no seu idioma de destino. Esta configuração é mais útil em trocas de idiomas.",
-    "itToggleDescription": "Esta ferramenta de aprendizado de idiomas identificará palavras no seu idioma base e ajudará você a traduzi-las para o seu idioma de destino. Embora raro, a IA pode cometer erros de tradução.",
-    "igcToggleDescription": "Esta ferramenta de aprendizado de idiomas identificará erros comuns de ortografia, gramática e pontuação em sua mensagem e sugerirá correções. Embora raro, a IA pode cometer erros de correção.",
     "originalMessage": "Mensagem Original",
     "sentMessage": "Mensagem Enviada",
     "useType": "Tipo de Uso",
     "notAvailable": "Indisponível",
     "taAndGaTooltip": "L2 use com assistência de tradução e assistência gramatical",
-    "definitionsToolName": "Definições de Palavras",
-    "definitionsToolDescription": "Quando ativado, palavras sublinhadas em azul podem ser clicadas para obter definições. Clique nas mensagens para acessar definições.",
     "welcomeBack": "Bem-vindo de volta! Se você fez parte do piloto de 2023-2024, entre em contato conosco para sua assinatura piloto especial. Se você é um professor que possui (ou cuja instituição possui) licenças para sua turma, entre em contato conosco para sua assinatura de professor.",
     "promotionalSubscriptionDesc": "Você atualmente possui uma assinatura promocional vitalícia. Envie uma mensagem para support@pangea.chat para ajuda na alteração da sua assinatura.",
     "originalSubscriptionPlatform": "Assinatura adquirida através de {purchasePlatform}",
@@ -4315,14 +4307,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4547,22 +4531,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4580,14 +4548,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

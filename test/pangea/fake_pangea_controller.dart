@@ -172,10 +172,8 @@ class _FakeUserController implements UserController {
   @override
   Completer<void> initCompleter = Completer<void>();
 
-  /// Tool toggles read as off — the fresh-profile default. The message render
-  /// path reads `isToolEnabled(ToolSetting.immersionMode)`
-  /// ([PangeaMessageEvent.messageDisplayLangCode]), where the `noSuchMethod`
-  /// null would throw `Null is not a subtype of bool`.
+  /// Tool toggles read as off. Callers that read a toggle would otherwise get
+  /// the `noSuchMethod` null and throw `Null is not a subtype of bool`.
   @override
   bool isToolEnabled(ToolSetting setting) => false;
 

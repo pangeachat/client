@@ -2776,8 +2776,6 @@
     "holdForInfo": "வார்த்தை தகவலுக்கு கிளிக் செய்து பிடிக்கவும்.",
     "gaTooltip": "வியக்கருடன் இலக்கண உதவியுடன் பயன்படுத்தவும்",
     "taTooltip": "மொழிபெயர்ப்பு உதவியுடன் பயன்படுத்தவும்",
-    "interactiveTranslatorSliderHeader": "இணைய செயலாக்க மொழிபெயர்ப்பாளர்",
-    "interactiveGrammarSliderHeader": "இணைய இலக்கண சரிபார்ப்பான்",
     "waTooltip": "உதவியுடன் இல்லாமல் பயன்படுத்தவும்",
     "interactiveTranslator": "பெயர்ப்பு உதவி",
     "noIdenticalLanguages": "தயவுசெய்து வேறுபட்ட அடிப்படை மற்றும் இலக்கு மொழிகளை தேர்ந்தெடுக்கவும்",
@@ -2833,17 +2831,11 @@
     "paymentHistory": "பணம் செலுத்தும் வரலாறு",
     "emptyChatDownloadWarning": "காலியான உரையாடலை பதிவிறக்கம் செய்ய முடியாது",
     "update": "புதுப்பிப்பு",
-    "toggleImmersionMode": "முழுமையான முறையை மாற்றவும்",
-    "toggleImmersionModeDesc": "செயலாக்கப்பட்டால், அனைத்து செய்திகளும் உங்கள் இலக்கு மொழியில் காட்டப்படும். இந்த அமைப்பு மொழி பரிமாற்றங்களில் மிகவும் பயனுள்ளதாகும்.",
-    "itToggleDescription": "இந்த மொழி கற்றல் கருவி உங்கள் அடிப்படை மொழியில் உள்ள வார்த்தைகளை அடையாளம் காண்பதற்கும் அவற்றை உங்கள் இலக்கு மொழிக்கு மொழிபெயர்க்க உதவுவதற்கும் பயன்படும். அரிதானபோது, AI மொழிபெயர்ப்பு பிழைகள் செய்யலாம்.",
-    "igcToggleDescription": "இந்த மொழி கற்றல் கருவி உங்கள் செய்தியில் பொதுவான எழுத்துப்பிழைகள், இலக்கண பிழைகள் மற்றும் புண்ணிய பிழைகளை அடையாளம் காண்பதற்கும் திருத்தங்களை பரிந்துரைக்கவும் பயன்படும். அரிதானபோது, AI திருத்த பிழைகள் செய்யலாம்.",
     "originalMessage": "முதலீடு செய்தி",
     "sentMessage": "அனுப்பிய செய்தி",
     "useType": "வகை பயன்படுத்தவும்",
     "notAvailable": "கிடைக்கவில்லை",
     "taAndGaTooltip": "மொழிபெயர்ப்பு உதவி மற்றும் இலக்கண உதவியுடன் L2 பயன்படுத்தவும்",
-    "definitionsToolName": "வார்த்தை வரையறைகள்",
-    "definitionsToolDescription": "செயலாக்கப்பட்டால், நீல நிறத்தில் கீழே உள்ள வார்த்தைகளை கிளிக் செய்து வரையறைகளைப் பெறலாம். வரையறைகளை அணுகுவதற்காக செய்திகள் மீது கிளிக் செய்யவும்.",
     "welcomeBack": "மீண்டும் வரவேற்கிறோம்! நீங்கள் 2023-2024 பைலட் பகுதியாக இருந்தால், உங்கள் சிறப்பு பைலட் சந்தாவுக்காக எங்களை தொடர்பு கொள்ளவும். நீங்கள் ஆசிரியராக இருந்தால் (அல்லது உங்கள் நிறுவனம் உங்கள் வகுப்புக்கான உரிமங்களை வாங்கியிருந்தால்), ஆசிரியர் சந்தாவுக்காக எங்களை தொடர்பு கொள்ளவும்.",
     "promotionalSubscriptionDesc": "நீங்கள் தற்போது வாழ்நாள் விளம்பர சந்தாவை பெற்றுள்ளீர்கள். உங்கள் சந்தாவை மாற்ற உதவிக்கு support@pangea.chat க்கு செய்தி அனுப்பவும்.",
     "originalSubscriptionPlatform": "கொள்முதல் செய்யப்பட்ட சந்தா {purchasePlatform} மூலம்",
@@ -3476,14 +3468,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3708,22 +3692,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3741,14 +3709,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

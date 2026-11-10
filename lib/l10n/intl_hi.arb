@@ -2411,8 +2411,6 @@
     "holdForInfo": "शब्द जानकारी के लिए क्लिक करें और होल्ड करें।",
     "gaTooltip": "व्याकरण सहायता के साथ L2 का उपयोग करें",
     "taTooltip": "अनुवाद सहायता के साथ L2 का उपयोग करें",
-    "interactiveTranslatorSliderHeader": "इंटरैक्टिव अनुवादक",
-    "interactiveGrammarSliderHeader": "इंटरैक्टिव व्याकरण जांचक",
     "waTooltip": "बिना सहायता के L2 उपयोग",
     "interactiveTranslator": "अनुवाद सहायता",
     "noIdenticalLanguages": "कृपया अलग आधार और लक्ष्य भाषाएँ चुनें",
@@ -2468,17 +2466,11 @@
     "paymentHistory": "भुगतान इतिहास",
     "emptyChatDownloadWarning": "खाली चैट डाउनलोड नहीं कर सकते",
     "update": "अपडेट करें",
-    "toggleImmersionMode": "इमर्शन मोड",
-    "toggleImmersionModeDesc": "जब सक्षम किया जाता है, तो सभी संदेश आपके लक्षित भाषा में दिखाए जाते हैं। यह सेटिंग भाषा विनिमय में सबसे अधिक उपयोगी है।",
-    "itToggleDescription": "यह भाषा सीखने का उपकरण आपके मूल भाषा के शब्दों की पहचान करेगा और उन्हें आपके लक्षित भाषा में अनुवाद करने में मदद करेगा। हालांकि दुर्लभ है, AI अनुवाद में त्रुटि कर सकता है।",
-    "igcToggleDescription": "यह भाषा सीखने का उपकरण आपके संदेश में सामान्य वर्तनी, व्याकरण और विराम चिह्न की त्रुटियों की पहचान करेगा और सुधार सुझाएगा। हालांकि दुर्लभ है, AI सुधार में त्रुटि कर सकता है।",
     "originalMessage": "मूल संदेश",
     "sentMessage": "भेजा गया संदेश",
     "useType": "प्रयोग प्रकार",
     "notAvailable": "उपलब्ध नहीं",
     "taAndGaTooltip": "अनुवाद सहायता और व्याकरण सहायता के साथ L2 उपयोग",
-    "definitionsToolName": "शब्द परिभाषाएँ",
-    "definitionsToolDescription": "जब सक्षम किया जाता है, तो नीले रंग में रेखांकित शब्दों पर क्लिक करके परिभाषाएँ देखी जा सकती हैं। परिभाषाएँ देखने के लिए संदेश पर क्लिक करें।",
     "welcomeBack": "वापस स्वागत है! यदि आप 2023-2024 पायलट का हिस्सा थे, तो कृपया अपनी विशेष पायलट सदस्यता के लिए हमसे संपर्क करें। यदि आप एक शिक्षक हैं जिन्होंने (या जिनके संस्थान ने) अपनी कक्षा के लिए लाइसेंस खरीदे हैं, तो कृपया अपनी शिक्षक सदस्यता के लिए हमसे संपर्क करें।",
     "promotionalSubscriptionDesc": "आपके पास वर्तमान में एक जीवनकाल प्रचार सदस्यता है। अपनी सदस्यता बदलने में मदद के लिए support@pangea.chat पर संदेश भेजें।",
     "originalSubscriptionPlatform": "खरीदी गई सदस्यता {purchasePlatform} के माध्यम से",
@@ -4003,14 +3995,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4235,22 +4219,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4268,14 +4236,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

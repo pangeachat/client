@@ -2416,8 +2416,6 @@
     "holdForInfo": "শব্দের তথ্যের জন্য ক্লিক ও ধরে রাখুন।",
     "gaTooltip": "ব্যাকরণ সহায়তার জন্য L2 ব্যবহার করুন",
     "taTooltip": "অনুবাদ সহায়তার জন্য L2 ব্যবহার করুন",
-    "interactiveTranslatorSliderHeader": "ইন্টারেক্টিভ অনুবাদক",
-    "interactiveGrammarSliderHeader": "ইন্টারেক্টিভ ব্যাকরণ চেকার",
     "waTooltip": "সহায়তা ছাড়াই L2 ব্যবহার",
     "interactiveTranslator": "অনুবাদ সহায়তা",
     "noIdenticalLanguages": "অনুগ্রহ করে ভিন্ন ভিত্তি এবং লক্ষ্য ভাষা নির্বাচন করুন",
@@ -2473,17 +2471,11 @@
     "paymentHistory": "পেমেন্ট ইতিহাস",
     "emptyChatDownloadWarning": "খালি চ্যাট ডাউনলোড করা যাবে না",
     "update": "আপডেট",
-    "toggleImmersionMode": "ইমার্শন মোড",
-    "toggleImmersionModeDesc": "সক্ষম করলে, সব বার্তা আপনার লক্ষ্য ভাষায় প্রদর্শিত হবে। এই সেটিংটি ভাষা বিনিময়ে সবচেয়ে বেশি উপকারী।",
-    "itToggleDescription": "এই ভাষা শেখার টুলটি আপনার মূল ভাষার শব্দগুলি চিহ্নিত করবে এবং আপনাকে সেগুলি আপনার লক্ষ্য ভাষায় অনুবাদ করতে সাহায্য করবে। যদিও বিরল, AI কিছু অনুবাদ ত্রুটি করতে পারে।",
-    "igcToggleDescription": "এই ভাষা শেখার টুলটি আপনার বার্তায় সাধারণ বানান, ব্যাকরণ এবং বিরামচিহ্নের ত্রুটি চিহ্নিত করবে এবং সংশোধনের পরামর্শ দেবে। যদিও বিরল, AI কিছু সংশোধনী ত্রুটি করতে পারে।",
     "originalMessage": "মূল বার্তা",
     "sentMessage": "প্রেরিত বার্তা",
     "useType": "ব্যবহার ধরণ",
     "notAvailable": "উপলব্ধ নয়",
     "taAndGaTooltip": "অনুবাদ সহায়তা এবং ব্যাকরণ সহায়তার জন্য L2 ব্যবহার",
-    "definitionsToolName": "শব্দের সংজ্ঞা",
-    "definitionsToolDescription": "সক্রিয় হলে, নীল রঙে আন্ডারলাইন করা শব্দগুলিতে ক্লিক করে সংজ্ঞা দেখা যায়। বার্তাগুলিতে ক্লিক করে সংজ্ঞা অ্যাক্সেস করুন।",
     "welcomeBack": "ফিরে আসায় স্বাগতম! আপনি যদি ২০২৩-২০২৪ পাইলটের অংশ হয়ে থাকেন, তবে আমাদের সাথে যোগাযোগ করুন আপনার বিশেষ পাইলট সাবস্ক্রিপশনের জন্য। আপনি যদি একজন শিক্ষক হন যিনি (অথবা আপনার প্রতিষ্ঠান) আপনার ক্লাসের জন্য লাইসেন্স কিনেছেন, তবে আমাদের সাথে যোগাযোগ করুন আপনার শিক্ষক সাবস্ক্রিপশনের জন্য।",
     "promotionalSubscriptionDesc": "আপনার বর্তমানে একটি আজীবন প্রচারমূলক সাবস্ক্রিপশন রয়েছে। আপনার সাবস্ক্রিপশন পরিবর্তনের জন্য support@pangea.chat এ বার্তা পাঠান।",
     "originalSubscriptionPlatform": "{purchasePlatform} এর মাধ্যমে কেনা সাবস্ক্রিপশন",
@@ -3999,14 +3991,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4231,22 +4215,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4264,14 +4232,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

@@ -260,10 +260,6 @@ class UserToolSettings {
   // profiles seed the words/choices audio toggles.
   static const _legacyEnableTTSKey = 'ToolSetting.enableTTS';
 
-  final bool interactiveTranslator;
-  final bool interactiveGrammar;
-  final bool immersionMode;
-  final bool definitions;
   final bool autoIGC;
   final bool audioWords;
   final bool audioChoices;
@@ -294,10 +290,6 @@ class UserToolSettings {
   final bool showDeveloperOptions;
 
   const UserToolSettings({
-    this.interactiveTranslator = true,
-    this.interactiveGrammar = true,
-    this.immersionMode = false,
-    this.definitions = true,
     this.autoIGC = true,
     this.audioWords = true,
     this.audioChoices = true,
@@ -329,11 +321,6 @@ class UserToolSettings {
   factory UserToolSettings.fromJson(
     Map<String, dynamic> json,
   ) => UserToolSettings(
-    interactiveTranslator:
-        json[ToolSetting.interactiveTranslator.toString()] ?? true,
-    interactiveGrammar: json[ToolSetting.interactiveGrammar.toString()] ?? true,
-    immersionMode: false,
-    definitions: json[ToolSetting.definitions.toString()] ?? true,
     autoIGC: json[UserConstants.autoIGC] ?? true,
     audioWords: json["audioWords"] ?? json[_legacyEnableTTSKey] ?? true,
     audioChoices: json["audioChoices"] ?? json[_legacyEnableTTSKey] ?? true,
@@ -354,10 +341,6 @@ class UserToolSettings {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data[ToolSetting.interactiveTranslator.toString()] = interactiveTranslator;
-    data[ToolSetting.interactiveGrammar.toString()] = interactiveGrammar;
-    data[ToolSetting.immersionMode.toString()] = immersionMode;
-    data[ToolSetting.definitions.toString()] = definitions;
     data[UserConstants.autoIGC] = autoIGC;
     data["audioWords"] = audioWords;
     data["audioChoices"] = audioChoices;
@@ -376,23 +359,6 @@ class UserToolSettings {
     final accountData =
         MatrixState.pangeaController.matrixState.client.accountData;
     return UserToolSettings(
-      interactiveTranslator:
-          (accountData[ToolSetting.interactiveTranslator.toString()]
-                  ?.content[ToolSetting.interactiveTranslator.toString()]
-              as bool?) ??
-          true,
-      interactiveGrammar:
-          (accountData[ToolSetting.interactiveGrammar.toString()]
-                  ?.content[ToolSetting.interactiveGrammar.toString()]
-              as bool?) ??
-          true,
-      immersionMode: false,
-      definitions:
-          (accountData[ToolSetting.definitions.toString()]?.content[ToolSetting
-                  .definitions
-                  .toString()]
-              as bool?) ??
-          true,
       autoIGC:
           (accountData[ToolSetting.autoIGC.toString()]?.content[ToolSetting
                   .autoIGC
@@ -403,10 +369,6 @@ class UserToolSettings {
   }
 
   UserToolSettings copyWith({
-    bool? interactiveTranslator,
-    bool? interactiveGrammar,
-    bool? immersionMode,
-    bool? definitions,
     bool? autoIGC,
     bool? audioWords,
     bool? audioChoices,
@@ -425,11 +387,6 @@ class UserToolSettings {
     bool? hearItFirst,
   }) {
     return UserToolSettings(
-      interactiveTranslator:
-          interactiveTranslator ?? this.interactiveTranslator,
-      interactiveGrammar: interactiveGrammar ?? this.interactiveGrammar,
-      immersionMode: immersionMode ?? this.immersionMode,
-      definitions: definitions ?? this.definitions,
       autoIGC: autoIGC ?? this.autoIGC,
       audioWords: audioWords ?? this.audioWords,
       audioChoices: audioChoices ?? this.audioChoices,
@@ -449,10 +406,6 @@ class UserToolSettings {
     if (identical(this, other)) return true;
 
     return other is UserToolSettings &&
-        other.interactiveTranslator == interactiveTranslator &&
-        other.interactiveGrammar == interactiveGrammar &&
-        other.immersionMode == immersionMode &&
-        other.definitions == definitions &&
         other.autoIGC == autoIGC &&
         other.audioWords == audioWords &&
         other.audioChoices == audioChoices &&
@@ -466,10 +419,6 @@ class UserToolSettings {
 
   @override
   int get hashCode => Object.hashAll([
-    interactiveTranslator.hashCode,
-    interactiveGrammar.hashCode,
-    immersionMode.hashCode,
-    definitions.hashCode,
     autoIGC.hashCode,
     audioWords.hashCode,
     audioChoices.hashCode,

@@ -2770,8 +2770,6 @@
     "holdForInfo": "Kattints és tartsd lenyomva a szó információjáért.",
     "gaTooltip": "L2 használata nyelvtani segítséggel",
     "taTooltip": "L2 használata fordítási segítséggel",
-    "interactiveTranslatorSliderHeader": "Interaktív Fordító",
-    "interactiveGrammarSliderHeader": "Interaktív Nyelvtani Ellenőrző",
     "waTooltip": "L2 segítség nélkül",
     "interactiveTranslator": "Fordítási segítség",
     "noIdenticalLanguages": "Kérjük, válasszon különböző alap- és célnyelvet",
@@ -2827,17 +2825,11 @@
     "paymentHistory": "Fizetési előzmények",
     "emptyChatDownloadWarning": "Üres beszélgetés nem tölthető le",
     "update": "Frissítés",
-    "toggleImmersionMode": "Merülés mód",
-    "toggleImmersionModeDesc": "Bekapcsolva minden üzenet a célnyelven jelenik meg. Ez a beállítás különösen hasznos nyelvi csere során.",
-    "itToggleDescription": "Ez a nyelvtanulási eszköz felismeri a bázisnyelved szavait, és segít lefordítani azokat a célnyelvedre. Bár ritka, az AI hibázhat a fordításban.",
-    "igcToggleDescription": "Ez a nyelvtanulási eszköz felismeri a gyakori helyesírási, nyelvtani és írásjelezési hibákat az üzenetedben, és javaslatokat tesz a javításukra. Bár ritka, az AI hibázhat a javításokban.",
     "originalMessage": "Eredeti üzenet",
     "sentMessage": "Küldött üzenet",
     "useType": "Használat típusa",
     "notAvailable": "Nem elérhető",
     "taAndGaTooltip": "L2 használat fordítási és nyelvtani segítséggel",
-    "definitionsToolName": "Szódefiníciók",
-    "definitionsToolDescription": "Amikor be van kapcsolva, a kék színnel aláhúzott szavakat kattintással lehet megtekinteni definícióikat. Kattints az üzenetekre a definíciók eléréséhez.",
     "welcomeBack": "Üdvözlünk vissza! Ha részt vettél a 2023-2024-es pilot programban, kérjük, vedd fel velünk a kapcsolatot a különleges pilot előfizetésedért. Ha te vagy az oktató, aki (vagy az intézményed) vásárolt licencet az osztályod számára, kérjük, vedd fel velünk a kapcsolatot az oktatói előfizetésedért.",
     "promotionalSubscriptionDesc": "Jelenleg életre szóló promóciós előfizetésed van. Segítségért írj az support@pangea.chat címre az előfizetés módosításához.",
     "originalSubscriptionPlatform": "Előfizetés a {purchasePlatform} platformon vásárolva",
@@ -3477,14 +3469,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3709,22 +3693,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3742,14 +3710,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

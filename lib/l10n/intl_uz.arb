@@ -2872,8 +2872,6 @@
     "holdForInfo": "So'z ma'lumotlari uchun bosib turing.",
     "gaTooltip": "Grammatika yordamida L2 bilan foydalanish",
     "taTooltip": "L2 tarjima yordamida foydalanish",
-    "interactiveTranslatorSliderHeader": "Interaktiv tarjimon",
-    "interactiveGrammarSliderHeader": "Interaktiv grammatik tekshiruvchi",
     "waTooltip": "Yordam bilan L2 foydalanish",
     "interactiveTranslator": "Tarjimaga yordam",
     "noIdenticalLanguages": "Iltimos, asosiy va maqsad tillarini farqlang",
@@ -2928,17 +2926,11 @@
     "paymentHistory": "To'lov tarixi",
     "emptyChatDownloadWarning": "Bo'sh suhbatni yuklab bo'lmaydi",
     "update": "Yangilash",
-    "toggleImmersionMode": "Cho'milish rejimi",
-    "toggleImmersionModeDesc": "Faollashtirilganda, barcha xabarlar sizning maqsad tilingizda ko'rsatiladi. Bu sozlama til almashinuvi uchun eng foydalidir.",
-    "itToggleDescription": "Ushbu til o'rganish vositasi sizning asosiy tilingizdagi so'zlarni aniqlaydi va ularni maqsad tilingizga tarjima qilishga yordam beradi. Nadir hollarda, AI tarjima xatolarini qilishi mumkin.",
-    "igcToggleDescription": "Ushbu til o'rganish vositasi sizning xabaringizdagi umumiy yozilish, grammatik va punktuatsiya xatolarini aniqlaydi va tuzatish taklif qiladi. Nadir hollarda, AI tuzatish xatolarini qilishi mumkin.",
     "originalMessage": "Asl xabar",
     "sentMessage": "Yuborilgan xabar",
     "useType": "Foydalanish turi",
     "notAvailable": "Mavjud emas",
     "taAndGaTooltip": "Tarjimaga yordam berish va grammatik yordam bilan L2 foydalanish",
-    "definitionsToolName": "So'zlarning ta'rifi",
-    "definitionsToolDescription": "Faollashtirilganda, ko'k chiziq bilan belgilangan so'zlarni bosish orqali ta'riflarni ko'rish mumkin. Ta'riflarni olish uchun xabarlarni bosing.",
     "welcomeBack": "Qaytganingiz uchun xush kelibsiz! Agar siz 2023-2024 yilgi pilot dasturining bir qismi bo'lgan bo'lsangiz, iltimos, maxsus pilot obunangiz uchun biz bilan bog'laning. Agar siz o'qituvchi bo'lsangiz (yoki o'quv muassasangiz) sinfingiz uchun litsenziyalar sotib olgan bo'lsa, o'qituvchi obunangiz uchun biz bilan bog'laning.",
     "promotionalSubscriptionDesc": "Hozirda sizda umrboqiy reklama obunasi mavjud. Obunangizni o'zgartirish uchun support@pangea.chat ga xabar yuboring.",
     "originalSubscriptionPlatform": "Obuna {purchasePlatform} orqali sotib olingan",
@@ -3931,14 +3923,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4159,22 +4143,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4192,14 +4160,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

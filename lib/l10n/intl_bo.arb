@@ -2310,8 +2310,6 @@
     "holdForInfo": "ཚིག་ཚིག་ལ་ལོག་ལོག་བཟོ་བའི་སྟེང་ལ་ལོག་ལོག་བྱེད་པ།",
     "gaTooltip": "L2 ལུས་སྤྱོད་ནས་སྒྲོམ་བཅོས་རྟགས་སྤྱོད",
     "taTooltip": "L2 ལུས་སྤྱོད་ནས་སྒྲོམ་བཅོས་རྟགས་སྤྱོད",
-    "interactiveTranslatorSliderHeader": "རང་སྤྱོད་སྒྲོམ་བཅོས་",
-    "interactiveGrammarSliderHeader": "རང་སྤྱོད་སྒྲོམ་བཅོས་བརྗེ་སྤྱོད",
     "waTooltip": "L2 ལུས་སྤྱོད་མི་སྤྱོད་སྤྱོད",
     "interactiveTranslator": "རང་སྤྱོད་སྒྲོམ་བཅོས་",
     "noIdenticalLanguages": "བརྗེད་ཡོད་པའི་སྐད་ཡིག་དང་སྤྱོད་ལུགས་ལ་འབྱོར་བ་མི་འདུག",
@@ -2367,10 +2365,6 @@
     "paymentHistory": "དབྱེ་བའི་ཧེང་སྐོར།",
     "emptyChatDownloadWarning": "ལེན་འདི་ལ་ལེན་འབད་མི་ཚུལ།",
     "update": "རིམ་ལུགས།",
-    "toggleImmersionMode": "འཁོར་ལོག་སྤྱོད་ལམ།",
-    "toggleImmersionModeDesc": "འདི་ལུས་སྤྱོད་ལམ་ལ་སྤྱོད་ལམ་ལ་སྤྱོད་ལོག་བརྗེ་བ་ཡོད། འདི་ནི་སྤྱོད་ལམ་ལ་སྤྱོད་ལམ་ལ་སྤྱོད་ལོག་བརྗེ་བ་ལས་སྤྱོད་ལོག་བརྗེ་བ་ཡོད།",
-    "itToggleDescription": "འདི་ལུས་སྤྱོད་ལམ་ལ་སྤྱོད་ལམ་ལ་སྤྱོད་ལོག་བརྗེ་བ་ཡོད། འདི་ནི་སྤྱོད་ལམ་ལ་སྤྱོད་ལོག་བརྗེ་བ་ལས་སྤྱོད་ལོག་བརྗེ་བ་ལས་སྤྱོད་ལོག་བརྗེ་བ་ཡོད།",
-    "igcToggleDescription": "འདི་ལུས་སྤྱོད་ལམ་ལ་སྤྱོད་ལོག་བརྗེ་བ་ཡོད། འདི་ནི་སྤྱོད་ལམ་ལ་སྤྱོད་ལོག་བརྗེ་བ་ལས་སྤྱོད་ལོག་བརྗེ་བ་ལས་སྤྱོད་ལོག་བརྗེ་བ་ཡོད།",
     "originalMessage": "མིང་འབྲེལ་བའི་ཚིག་གཅིག",
     "oneWeekTrial": "གཅིག་ཕྱིར་སྤྱིར་བཏང་ཚོད་གཅིག",
     "wwCountryDisplayName": "འཛམ་གླིང་ཆེན་པོ།",
@@ -3618,14 +3612,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3843,22 +3829,6 @@
         "placeholders": {}
     },
     "@update": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -6553,8 +6523,6 @@
     "useType": "ལས་ཀ་དབང་",
     "notAvailable": "མེད་པ",
     "taAndGaTooltip": "L2 ལག་ལེན་ནས་སྒྲིག་སྟེང་དང་རྒྱུན་རིམ་ལས་ལེན་",
-    "definitionsToolName": "ཡིག་ཚགས་བཟོ་བཅོས",
-    "definitionsToolDescription": "འདི་ལས་འགོད་ནས་སྤྱི་ཚེས་སྟོན་པའི་སྒྲོམ་སྒྲིག་ལུས་སྟེང་ལ་ལོག་འབད་ནི་ཡིན། ཚེས་གྲངས་ལ་ལོག་འབད་ནས་སྒྲོམ་སྒྲིག་ལ་འགྱོ་ནི་ཡིན།",
     "welcomeBack": "བཀྲ་ཤིས་བཀྲ་ཤིས། ཁྱེད་ཀྱིས 2023-2024 ལོའི སྤོབས་ལམ་ལས་སྤྱོད་བྱེད་ཡོད་མི་རེད་པའི་སྤྱི་ཚེས་ལས་འབྲེལ་བ་བྱེད་རོགས་གནང་གི་ཡོད་མི་སྤྱི་ཚེས་ལ་འབྲེལ་བ་བྱེད་རོགས་གནང་གི་ཡོད། ཁྱེད་ཀྱིས་རྒྱལ་ཁབ་སློབ་ཚོགས་ལ་ལོག་འབད་ཡོད་པའི་སྤྱི་ཚེས་ལ་འབྲེལ་བ་བྱེད་རོགས་གནང་གི་ཡོད།",
     "promotionalSubscriptionDesc": "ཁྱེད་ཀྱིས་ད་ལྟ་ལ་ལོ་རྒྱལ་ཁབ་ལ་ལོག་འབད་ཡོད་པའི་སྤྱི་ཚེས་ལ་ལོག་འབད་ཡོད། ཁྱེད་ཀྱིས་འབྲེལ་བ་བྱེད་ལས་སྤྱོད་ལེན་ལ་བསྐུར་གནང་བའི་ལས་ཁེར་ལ་འདེམས་སོ།",
     "originalSubscriptionPlatform": "ལོག་འབད་ཚུལ་ཁང་ {purchasePlatform} ལས་འབྲེལ་བ་བྱེད་ཡོད།",
@@ -6693,14 +6661,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

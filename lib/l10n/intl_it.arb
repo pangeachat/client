@@ -2785,8 +2785,6 @@
     "holdForInfo": "Tieni premuto per informazioni sulla parola.",
     "gaTooltip": "L2 utilizzo con assistenza grammaticale",
     "taTooltip": "L2 utilizzo con assistenza alla traduzione",
-    "interactiveTranslatorSliderHeader": "Traduttore Interattivo",
-    "interactiveGrammarSliderHeader": "Controllo Grammaticale Interattivo",
     "waTooltip": "L2 utilizzo senza assistenza",
     "interactiveTranslator": "Assistenza alla traduzione",
     "noIdenticalLanguages": "Per favore scegli lingue di base e di destinazione diverse",
@@ -2842,17 +2840,11 @@
     "paymentHistory": "Storico pagamenti",
     "emptyChatDownloadWarning": "Impossibile scaricare chat vuota",
     "update": "Aggiorna",
-    "toggleImmersionMode": "Modalità Immersione",
-    "toggleImmersionModeDesc": "Quando attivata, tutti i messaggi vengono visualizzati nella tua lingua di destinazione. Questa impostazione è particolarmente utile negli scambi linguistici.",
-    "itToggleDescription": "Questo strumento di apprendimento delle lingue identificherà le parole nella tua lingua di base e ti aiuterà a tradurle nella tua lingua di destinazione. Sebbene raro, l'IA può commettere errori di traduzione.",
-    "igcToggleDescription": "Questo strumento di apprendimento delle lingue identificherà errori comuni di ortografia, grammatica e punteggiatura nel tuo messaggio e suggerirà correzioni. Sebbene raro, l'IA può commettere errori di correzione.",
     "originalMessage": "Messaggio Originale",
     "sentMessage": "Messaggio Inviato",
     "useType": "Usa Tipo",
     "notAvailable": "Non Disponibile",
     "taAndGaTooltip": "L2 utilizzo con assistenza alla traduzione e assistenza grammaticale",
-    "definitionsToolName": "Definizioni delle Parole",
-    "definitionsToolDescription": "Quando attivo, le parole sottolineate in blu possono essere cliccate per le definizioni. Clicca sui messaggi per accedere alle definizioni.",
     "welcomeBack": "Bentornato! Se hai partecipato al progetto pilota 2023-2024, contattaci per il tuo abbonamento speciale. Se sei un insegnante che ha (o la tua istituzione ha) acquistato licenze per la tua classe, contattaci per il tuo abbonamento insegnante.",
     "promotionalSubscriptionDesc": "Attualmente hai un abbonamento promozionale a vita. Contatta support@pangea.chat per assistenza nella modifica del tuo abbonamento.",
     "originalSubscriptionPlatform": "Abbonamento acquistato tramite {purchasePlatform}",
@@ -3477,14 +3469,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3709,22 +3693,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3742,14 +3710,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

@@ -2785,8 +2785,6 @@
     "holdForInfo": "Klik dan tahan untuk info kata.",
     "gaTooltip": "Penggunaan L2 dengan bantuan tata bahasa",
     "taTooltip": "Penggunaan L2 dengan bantuan terjemahan",
-    "interactiveTranslatorSliderHeader": "Penerjemah Interaktif",
-    "interactiveGrammarSliderHeader": "Pemeriksa Tata Bahasa Interaktif",
     "waTooltip": "Penggunaan L2 tanpa bantuan",
     "interactiveTranslator": "Bantuan Terjemahan",
     "noIdenticalLanguages": "Harap pilih bahasa dasar dan target yang berbeda",
@@ -2842,17 +2840,11 @@
     "paymentHistory": "Riwayat Pembayaran",
     "emptyChatDownloadWarning": "Tidak dapat mengunduh obrolan kosong",
     "update": "Perbarui",
-    "toggleImmersionMode": "Mode Imersi",
-    "toggleImmersionModeDesc": "Ketika diaktifkan, semua pesan ditampilkan dalam bahasa target Anda. Pengaturan ini paling berguna dalam pertukaran bahasa.",
-    "itToggleDescription": "Alat pembelajaran bahasa ini akan mengidentifikasi kata dalam bahasa dasar Anda dan membantu Anda menerjemahkannya ke bahasa target Anda. Meskipun jarang, AI dapat membuat kesalahan terjemahan.",
-    "igcToggleDescription": "Alat pembelajaran bahasa ini akan mengidentifikasi kesalahan ejaan, tata bahasa, dan tanda baca umum dalam pesan Anda dan menyarankan koreksi. Meskipun jarang, AI dapat membuat kesalahan koreksi.",
     "originalMessage": "Pesan Asli",
     "sentMessage": "Pesan Terkirim",
     "useType": "Jenis Penggunaan",
     "notAvailable": "Tidak Tersedia",
     "taAndGaTooltip": "Penggunaan L2 dengan bantuan terjemahan dan bantuan tata bahasa",
-    "definitionsToolName": "Definisi Kata",
-    "definitionsToolDescription": "Ketika diaktifkan, kata yang digarisbawahi berwarna biru dapat diklik untuk melihat definisi. Klik pesan untuk mengakses definisi.",
     "welcomeBack": "Selamat datang kembali! Jika Anda bagian dari pilot 2023-2024, silakan hubungi kami untuk langganan pilot khusus Anda. Jika Anda seorang guru yang telah (atau institusi Anda telah) membeli lisensi untuk kelas Anda, hubungi kami untuk langganan guru.",
     "promotionalSubscriptionDesc": "Anda saat ini memiliki langganan promosi seumur hidup. Pesan ke support@pangea.chat untuk bantuan mengubah langganan Anda.",
     "originalSubscriptionPlatform": "Langganan dibeli melalui {purchasePlatform}",
@@ -3477,14 +3469,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3709,22 +3693,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3742,14 +3710,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

@@ -2889,8 +2889,6 @@
     "holdForInfo": "Klicken und halten für Wortinformationen.",
     "gaTooltip": "L2 Verwendung mit Grammatikhilfe",
     "taTooltip": "L2 Verwendung mit Übersetzungshilfe",
-    "interactiveTranslatorSliderHeader": "Interaktiver Übersetzer",
-    "interactiveGrammarSliderHeader": "Interaktiver Grammatikprüfer",
     "waTooltip": "L2 Verwendung ohne Hilfe",
     "interactiveTranslator": "Übersetzungshilfe",
     "noIdenticalLanguages": "Bitte wählen Sie unterschiedliche Ausgangs- und Zielsprache",
@@ -2945,17 +2943,11 @@
     "paymentHistory": "Zahlungsverlauf",
     "emptyChatDownloadWarning": "Leeren Chat können nicht heruntergeladen werden",
     "update": "Aktualisieren",
-    "toggleImmersionMode": "Immersionsmodus",
-    "toggleImmersionModeDesc": "Wenn aktiviert, werden alle Nachrichten in Ihrer Zielsprache angezeigt. Diese Einstellung ist in Sprachaustauschen am nützlichsten.",
-    "itToggleDescription": "Dieses Werkzeug zum Sprachenlernen erkennt Wörter in Ihrer Ausgangssprache und hilft Ihnen, sie in Ihre Zielsprache zu übersetzen. Obwohl selten, kann die KI Übersetzungsfehler machen.",
-    "igcToggleDescription": "Dieses Werkzeug zum Sprachenlernen erkennt häufige Rechtschreib-, Grammatik- und Interpunktionsfehler in Ihrer Nachricht und schlägt Korrekturen vor. Obwohl selten, kann die KI Korrekturfehler machen.",
     "originalMessage": "Originalnachricht",
     "sentMessage": "Gesendete Nachricht",
     "useType": "Verwendungstyp",
     "notAvailable": "Nicht verfügbar",
     "taAndGaTooltip": "L2-Nutzung mit Übersetzungs- und Grammatikhilfe",
-    "definitionsToolName": "Wortdefinitionen",
-    "definitionsToolDescription": "Wenn aktiviert, können Wörter, die blau unterstrichen sind, angeklickt werden, um Definitionen anzuzeigen. Klicken Sie auf Nachrichten, um Definitionen zu erhalten.",
     "welcomeBack": "Willkommen zurück! Wenn Sie Teil des Pilotprojekts 2023-2024 waren, kontaktieren Sie uns bitte für Ihr spezielles Pilotabonnement. Wenn Sie Lehrer sind, der (oder dessen Institution) Lizenzen für Ihre Klasse gekauft hat, kontaktieren Sie uns für Ihr Lehrerausweis.",
     "promotionalSubscriptionDesc": "Sie haben derzeit ein lebenslanges Aktionsabonnement. Kontaktieren Sie support@pangea.chat, um Hilfe bei der Änderung Ihres Abonnements zu erhalten.",
     "originalSubscriptionPlatform": "Abonnement gekauft über {purchasePlatform}",
@@ -3579,14 +3571,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3807,22 +3791,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3840,14 +3808,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

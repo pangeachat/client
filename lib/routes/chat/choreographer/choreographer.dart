@@ -236,14 +236,6 @@ class Choreographer extends ChangeNotifier {
       return;
     }
 
-    if (!ToolSetting.interactiveGrammar.enabled &&
-        !ToolSetting.interactiveTranslator.enabled) {
-      Logs().w(
-        "Both Interactive Grammar and Interactive Translator are disabled",
-      );
-      return;
-    }
-
     if (!manual) {
       if (!ToolSetting.autoIGC.enabled) {
         Logs().w("Auto IGC is disabled");

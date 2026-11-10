@@ -2768,8 +2768,6 @@
     "holdForInfo": "Klikk og hold for ordinformasjon.",
     "gaTooltip": "L2 bruk med grammatikkhjelp",
     "taTooltip": "L2 bruk med oversettelseshjelp",
-    "interactiveTranslatorSliderHeader": "Interaktiv oversetter",
-    "interactiveGrammarSliderHeader": "Interaktiv grammatikkontroll",
     "waTooltip": "L2 bruk uten hjelp",
     "interactiveTranslator": "Oversettelseshjelp",
     "noIdenticalLanguages": "Vennligst velg ulike grunn- og målspråk",
@@ -2824,17 +2822,11 @@
     "paymentHistory": "Betalingshistorikk",
     "emptyChatDownloadWarning": "Kan ikke laste ned tom chat",
     "update": "Oppdater",
-    "toggleImmersionMode": "Nedsenkingsmodus",
-    "toggleImmersionModeDesc": "Når den er aktivert, vises alle meldinger på målspråket ditt. Denne innstillingen er mest nyttig i språkutvekslinger.",
-    "itToggleDescription": "Dette språklæringsverktøyet vil identifisere ord i ditt grunnleggende språk og hjelpe deg med å oversette dem til målspråket. Selv om det er sjeldent, kan AI gjøre oversettelsesfeil.",
-    "igcToggleDescription": "Dette språklæringsverktøyet vil identifisere vanlige stave-, grammatikk- og tegnsettingsfeil i meldingen din og foreslå korrigeringer. Selv om det er sjeldent, kan AI gjøre korrigeringsfeil.",
     "originalMessage": "Originalmelding",
     "sentMessage": "Sendt melding",
     "useType": "Brukstype",
     "notAvailable": "Ikke tilgjengelig",
     "taAndGaTooltip": "L2 bruk med oversettelseshjelp og grammatikkhjelp",
-    "definitionsToolName": "Orddefinisjoner",
-    "definitionsToolDescription": "Når det er aktivert, kan ord understreket i blått klikkes for definisjoner. Klikk på meldinger for å få tilgang til definisjoner.",
     "welcomeBack": "Velkommen tilbake! Hvis du var en del av pilotprosjektet 2023-2024, kontakt oss for din spesielle pilotabonnement. Hvis du er lærer som har (eller institusjonen din har) kjøpt lisenser for klassen din, kontakt oss for ditt lærerabonnement.",
     "promotionalSubscriptionDesc": "Du har for øyeblikket et livstids kampanjeabonnement. Send en melding til support@pangea.chat for hjelp med å endre abonnementet ditt.",
     "originalSubscriptionPlatform": "Abonnement kjøpt via {purchasePlatform}",
@@ -3614,14 +3606,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3842,22 +3826,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3875,14 +3843,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

@@ -2411,8 +2411,6 @@
     "holdForInfo": "คลิกและกดค้างเพื่อดูข้อมูลคำ",
     "gaTooltip": "ใช้ L2 พร้อมความช่วยเหลือด้านไวยากรณ์",
     "taTooltip": "ใช้ L2 พร้อมความช่วยเหลือด้านการแปล",
-    "interactiveTranslatorSliderHeader": "นักแปลแบบโต้ตอบ",
-    "interactiveGrammarSliderHeader": "เครื่องตรวจสอบไวยากรณ์แบบโต้ตอบ",
     "waTooltip": "ใช้ L2 โดยไม่ต้องความช่วยเหลือ",
     "interactiveTranslator": "ความช่วยเหลือในการแปล",
     "noIdenticalLanguages": "โปรดเลือกภาษาพื้นฐานและภาษาปลายทางที่แตกต่างกัน",
@@ -2468,17 +2466,11 @@
     "paymentHistory": "ประวัติการชำระเงิน",
     "emptyChatDownloadWarning": "ไม่สามารถดาวน์โหลดแชทว่างเปล่า",
     "update": "อัปเดต",
-    "toggleImmersionMode": "โหมดการจมอยู่",
-    "toggleImmersionModeDesc": "เมื่อเปิดใช้งาน ข้อความทั้งหมดจะแสดงในภาษาที่คุณตั้งเป้าหมายไว้ การตั้งค่านี้มีประโยชน์มากที่สุดในการแลกเปลี่ยนภาษา",
-    "itToggleDescription": "เครื่องมือนี้จะระบุคำในภาษาพื้นฐานของคุณและช่วยแปลเป็นภาษาที่คุณตั้งเป้าหมายไว้ แม้จะพบได้น้อย แต่ AI อาจทำผิดพลาดในการแปล",
-    "igcToggleDescription": "เครื่องมือนี้จะระบุข้อผิดพลาดในการสะกด คำไวยากรณ์ และเครื่องหมายวรรคตอนในข้อความของคุณและแนะนำการแก้ไข แม้จะพบได้น้อย แต่ AI อาจทำผิดพลาดในการแก้ไข",
     "originalMessage": "ข้อความต้นฉบับ",
     "sentMessage": "ข้อความที่ส่งแล้ว",
     "useType": "ใช้ประเภท",
     "notAvailable": "ไม่พร้อมใช้งาน",
     "taAndGaTooltip": "ใช้ L2 พร้อมความช่วยเหลือด้านการแปลและไวยากรณ์",
-    "definitionsToolName": "คำจำกัดความของคำ",
-    "definitionsToolDescription": "เมื่อเปิดใช้งาน คำที่ขีดเส้นใต้เป็นสีน้ำเงินสามารถคลิกเพื่อดูคำจำกัดความ คลิกที่ข้อความเพื่อเข้าถึงคำจำกัดความ",
     "welcomeBack": "ยินดีต้อนรับกลับ! หากคุณเป็นส่วนหนึ่งของโครงการนำร่อง 2023-2024 กรุณาติดต่อเราเพื่อรับการสมัครสมาชิกพิเศษ หากคุณเป็นครูที่ได้ซื้อใบอนุญาตสำหรับชั้นเรียนของคุณ ติดต่อเราเพื่อรับสมัครสมาชิกครู",
     "promotionalSubscriptionDesc": "คุณมีการสมัครสมาชิกโปรโมชั่นตลอดชีพในปัจจุบัน ติดต่อ support@pangea.chat เพื่อขอความช่วยเหลือในการเปลี่ยนแปลงการสมัครสมาชิกของคุณ",
     "originalSubscriptionPlatform": "การสมัครสมาชิกที่ซื้อผ่าน {purchasePlatform}",
@@ -4003,14 +3995,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4235,22 +4219,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4268,14 +4236,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },
