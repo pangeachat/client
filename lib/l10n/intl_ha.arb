@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-11-11 11:38:44.369278",
+    "@@last_modified": "2026-11-12 09:12:28.588866",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Ka fara wannan tattaunawar",
     "discussionRemoved": "Ba za ka iya shiga wannan tattaunawar ba.",
     "discussionJoinArriving": "Ka shiga! Tattaunawar za ta buɗe da zarar ta iso.",
-    "roleplayLabel": "Wasan kwaikwayo"
+    "roleplayLabel": "Wasan kwaikwayo",
+    "scanQrCodeCameraDenied": "Pangea Chat ba zai iya amfani da kyamararka ba. Rubuta lambar ka a maimakon haka, ko kuma ka ba da damar shiga kyamara a cikin saitunan wayarka."
 }

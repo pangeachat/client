@@ -3,11 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
+import 'package:fluffychat/features/join_codes/qr_code_scan.dart';
 import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_forward_button.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_step_views/onboarding_step_body.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 
 class CourseCodeStepView extends StatefulWidget {
   final CourseCodeOnboardingStep step;
@@ -41,6 +43,10 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
 
   final ValueNotifier<bool> _showCodeInput = ValueNotifier(false);
 
+  /// A scanned QR code that holds no course code. Shown as the step's
+  /// not-found error until the learner types or scans again.
+  Object? _scanError;
+
   @override
   void initState() {
     super.initState();
@@ -63,6 +69,7 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
   }
 
   void _setCourseCode() {
+    if (_scanError != null) setState(() => _scanError = null);
     _debounce?.cancel();
     _debounce = Timer(Duration(milliseconds: 300), () {
       _step.setCourseCode(_codeController.text);
@@ -72,10 +79,33 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
     });
   }
 
+  /// A course code read from the camera joins at once, with no extra confirm;
+  /// anything else shows the not-found error and the step stays put.
+  Future<void> _scanQrCode() async {
+    final result = await QrCodeScan.open(context);
+    if (!mounted || result == null) return;
+    final scanned = result.code;
+    if (result.cameraDenied || scanned == null) {
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
+        SnackBar(content: Text(L10n.of(context).scanQrCodeCameraDenied)),
+      );
+      return;
+    }
+    final code = QrCodeScan.courseCode(scanned);
+    if (code == null) {
+      setState(() => _scanError = NotFoundException());
+      return;
+    }
+    _codeController.text = code;
+    _debounce?.cancel();
+    _step.setCourseCode(code);
+    widget.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final error = widget.error;
+    final error = _scanError ?? widget.error;
     final title = error != null
         ? SpaceCodeController.joinErrorMessage(
             context,
@@ -107,9 +137,7 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
                       title,
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: widget.error != null
-                            ? theme.colorScheme.error
-                            : null,
+                        color: error != null ? theme.colorScheme.error : null,
                       ),
                     ),
                   ),
@@ -117,7 +145,7 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
                     valueListenable: _showCodeInput,
                     builder: (context, showInput, _) {
                       if (showInput) {
-                        return Semantics(
+                        final field = Semantics(
                           container: true,
                           child: TextField(
                             controller: _codeController,
@@ -125,8 +153,8 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
                               hintText: L10n.of(context).courseCodeStepHint,
                               helperText:
                                   '', // reserves the error space permanently
-                              errorText: widget.error != null ? '' : null,
-                              suffixIcon: widget.error != null
+                              errorText: error != null ? '' : null,
+                              suffixIcon: error != null
                                   ? Icon(
                                       Icons.error,
                                       color: theme.colorScheme.error,
@@ -134,6 +162,18 @@ class CourseCodeStepViewState extends State<CourseCodeStepView> {
                                   : null,
                             ),
                           ),
+                        );
+                        if (!QrCodeScan.available) return field;
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            field,
+                            OutlinedButton.icon(
+                              onPressed: widget.loading ? null : _scanQrCode,
+                              icon: const Icon(Icons.qr_code_scanner_outlined),
+                              label: Text(L10n.of(context).scanQrCode),
+                            ),
+                          ],
                         );
                       }
 

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-11-11 11:38:41.143262",
+    "@@last_modified": "2026-11-12 09:12:26.986751",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10046,5 +10046,6 @@
     "discussionStartIt": "Sei der Erste, der diese Diskussion startet",
     "discussionRemoved": "Du kannst dieser Diskussion nicht beitreten.",
     "discussionJoinArriving": "Du bist dabei! Die Diskussion wird geöffnet, sobald sie eintrifft.",
-    "roleplayLabel": "Rollenspiel"
+    "roleplayLabel": "Rollenspiel",
+    "scanQrCodeCameraDenied": "Pangea Chat kann Ihre Kamera nicht verwenden. Geben Sie stattdessen Ihren Code ein oder erlauben Sie den Kamerazugriff in den Einstellungen Ihres Telefons."
 }

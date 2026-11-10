@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-11-11 11:38:42.359973",
+    "@@last_modified": "2026-11-12 09:12:27.811293",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10056,5 +10056,6 @@
     "discussionStartIt": "Ole esimene, kes selle arutelu algatab",
     "discussionRemoved": "Te ei saa selle aruteluga liituda.",
     "discussionJoinArriving": "Olete sees! Arutelu avaneb kohe, kui see saabub.",
-    "roleplayLabel": "Rollimäng"
+    "roleplayLabel": "Rollimäng",
+    "scanQrCodeCameraDenied": "Pangea Chat ei saa teie kaamerat kasutada. Sisestage kood käsitsi või lubage kaamera juurdepääs telefoni seadetes."
 }

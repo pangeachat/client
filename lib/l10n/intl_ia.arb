@@ -1353,7 +1353,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-11-11 11:38:45.522314",
+    "@@last_modified": "2026-11-12 09:12:29.725238",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10992,5 +10992,6 @@
     "discussionStartIt": "Sii le prime a initiar iste discussion",
     "discussionRemoved": "Tu non pote participar a iste discussion.",
     "discussionJoinArriving": "Tu es intra! Le discussion se aperira tosto que illo arriva.",
-    "roleplayLabel": "Joco de rolos"
+    "roleplayLabel": "Joco de rolos",
+    "scanQrCodeCameraDenied": "Pangea Chat non pote usar tu camera. Scribe tu codice in vice, o permitte le accesso al camera in le configurationes de tu telephono."
 }

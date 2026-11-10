@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-11-11 11:39:03.556032",
+    "@@last_modified": "2026-11-12 09:12:37.593219",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Yiba ngowokuqala ukuqala le ngxoxo",
     "discussionRemoved": "Awukwazi ukuyijoyina le ngxoxo.",
     "discussionJoinArriving": "Ungaphakathi! Ingxoxo izovulwa nje yakufika.",
-    "roleplayLabel": "Ukulinganisa indima"
+    "roleplayLabel": "Ukulinganisa indima",
+    "scanQrCodeCameraDenied": "IPangea Chat ayikwazi ukusebenzisa ikhamera yakho. Thayipha ikhowudi yakho endaweni yoko, okanye vumela ukufikelela kwikhamera kuseto lwefowuni yakho."
 }

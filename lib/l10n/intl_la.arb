@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-11-11 11:38:48.714202",
+    "@@last_modified": "2026-11-12 09:12:31.777008",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Primus hanc disceptationem incipe",
     "discussionRemoved": "Hac disceptatione iungere non potes.",
     "discussionJoinArriving": "Intra! Disceptatio mox aperietur.",
-    "roleplayLabel": "Partes agere"
+    "roleplayLabel": "Partes agere",
+    "scanQrCodeCameraDenied": "Pangea Chat camera tua uti non potest. Codicem tuum potius inscribe, aut aditum camerae in uncinis telephoni tui permitte."
 }

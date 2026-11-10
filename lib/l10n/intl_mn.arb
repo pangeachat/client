@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-11-11 11:38:52.244080",
+    "@@last_modified": "2026-11-12 09:12:33.230005",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Энэ хэлэлцүүлгийг эхлүүлсэн анхны хүн болоорой",
     "discussionRemoved": "Та энэ хэлэлцүүлэгт нэгдэх боломжгүй.",
     "discussionJoinArriving": "Та нэгдлээ! Хэлэлцүүлэг ирмэгц нээгдэнэ.",
-    "roleplayLabel": "Дүрд тоглох"
+    "roleplayLabel": "Дүрд тоглох",
+    "scanQrCodeCameraDenied": "Pangea Chat таны камерыг ашиглах боломжгүй байна. Оронд нь кодоо бичнэ үү, эсвэл утасныхаа тохиргооноос камер ашиглахыг зөвшөөрнө үү."
 }

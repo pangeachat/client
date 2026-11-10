@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-11-11 11:38:44.954854",
+    "@@last_modified": "2026-11-12 09:12:29.131137",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Se ou menm ki pou kòmanse diskisyon sa a an premye",
     "discussionRemoved": "Ou pa ka antre nan diskisyon sa a.",
     "discussionJoinArriving": "Ou antre! Diskisyon an ap ouvri le pli vit ke li rive.",
-    "roleplayLabel": "Jwèt wòl"
+    "roleplayLabel": "Jwèt wòl",
+    "scanQrCodeCameraDenied": "Pangea Chat pa ka itilize kamera w. Tape kòd ou pito, oubyen pèmèt aksè kamera nan paramèt telefòn ou."
 }

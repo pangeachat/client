@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-11-11 11:38:54.101637",
+    "@@last_modified": "2026-11-12 09:12:33.576952",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Khalani woyamba kuyambitsa zokambiranazi",
     "discussionRemoved": "Simungathe kulowa nawo pazokambiranazi.",
     "discussionJoinArriving": "Mwalowa! Zokambirana zidzatsegulidwa zikangofika.",
-    "roleplayLabel": "Kusewera"
+    "roleplayLabel": "Kusewera",
+    "scanQrCodeCameraDenied": "Pangea Chat singagwiritse ntchito kamera yanu. Lembani nambala yanu m'malo mwake, kapena lolani kamera kugwiritsidwa ntchito mu zoikamo za foni yanu."
 }

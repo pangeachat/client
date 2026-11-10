@@ -1387,6 +1387,10 @@
     "@shareInviteLink": {},
     "scanQrCode": "Scan QR code",
     "@scanQrCode": {},
+    "scanQrCodeCameraDenied": "Pangea Chat can't use your camera. Type your code instead, or allow camera access in your phone's settings.",
+    "@scanQrCodeCameraDenied": {
+        "description": "Shown on the onboarding course-code step when the learner taps Scan QR code and the camera permission is refused."
+    },
     "none": "None",
     "@none": {
         "type": "String",

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-11-11 11:39:06.730017",
+    "@@last_modified": "2026-11-12 09:12:37.998493",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Jẹ́ ẹni àkọ́kọ́ láti bẹ̀rẹ̀ ìjíròrò yìí",
     "discussionRemoved": "O kò lè darapọ̀ mọ́ ìjíròrò yìí.",
     "discussionJoinArriving": "O ti wọlé! Ìjíròrò náà yóò ṣí ní kété tí ó bá dé.",
-    "roleplayLabel": "Ìṣeré-ipá"
+    "roleplayLabel": "Ìṣeré-ipá",
+    "scanQrCodeCameraDenied": "Pangea Chat kò lè lo kámẹ́rà rẹ. Tẹ koodu rẹ dípò, tàbí fún àyè sí kámẹ́rà nínú àwọn ètò fóònù rẹ."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-11-11 11:39:08.049691",
+    "@@last_modified": "2026-11-12 09:12:36.169141",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Kuwa wa kwanza kuanzisha majadiliano haya",
     "discussionRemoved": "Huwezi kujiunga na majadiliano haya.",
     "discussionJoinArriving": "Umeingia! Majadiliano yatafunguliwa pindi yatakapofika.",
-    "roleplayLabel": "Kuigiza"
+    "roleplayLabel": "Kuigiza",
+    "scanQrCodeCameraDenied": "Pangea Chat haiwezi kutumia kamera yako. Andika msimbo wako badala yake, au ruhusu ufikiaji wa kamera katika mipangilio ya simu yako."
 }

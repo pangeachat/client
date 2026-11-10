@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:48.077584",
+    "@@last_modified": "2026-11-12 09:12:30.529203",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10252,5 +10252,6 @@
     "discussionStartIt": "가장 먼저 토론을 시작해 보세요",
     "discussionRemoved": "이 토론에 참여할 수 없습니다.",
     "discussionJoinArriving": "참여 완료! 토론이 시작되면 바로 열립니다.",
-    "roleplayLabel": "역할극"
+    "roleplayLabel": "역할극",
+    "scanQrCodeCameraDenied": "Pangea Chat에서 카메라를 사용할 수 없습니다. 대신 코드를 입력하거나 휴대폰 설정에서 카메라 접근을 허용하세요."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-11-11 11:38:54.538658",
+    "@@last_modified": "2026-11-12 09:12:33.888522",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "ਇਸ ਚਰਚਾ ਨੂੰ ਸ਼ੁਰੂ ਕਰਨ ਵਾਲੇ ਪਹਿਲੇ ਵਿਅਕਤੀ ਬਣੋ",
     "discussionRemoved": "ਤੁਸੀਂ ਇਸ ਚਰਚਾ ਵਿੱਚ ਸ਼ਾਮਲ ਨਹੀਂ ਹੋ ਸਕਦੇ।",
     "discussionJoinArriving": "ਤੁਸੀਂ ਅੰਦਰ ਹੋ! ਚਰਚਾ ਆਉਂਦੇ ਹੀ ਖੁੱਲ੍ਹ ਜਾਵੇਗੀ।",
-    "roleplayLabel": "ਰੋਲਪਲੇ"
+    "roleplayLabel": "ਰੋਲਪਲੇ",
+    "scanQrCodeCameraDenied": "Pangea Chat ਤੁਹਾਡੇ ਕੈਮਰੇ ਦੀ ਵਰਤੋਂ ਨਹੀਂ ਕਰ ਸਕਦਾ। ਇਸਦੀ ਬਜਾਏ ਆਪਣਾ ਕੋਡ ਟਾਈਪ ਕਰੋ, ਜਾਂ ਆਪਣੇ ਫ਼ੋਨ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਕੈਮਰੇ ਦੀ ਪਹੁੰਚ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ।"
 }

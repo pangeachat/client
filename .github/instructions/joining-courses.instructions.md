@@ -18,7 +18,7 @@ How users join courses (Matrix spaces) through three routes: class link, class c
 | Route            | Entry Point          | Mechanism                                                  | User Interaction                  |
 | ---------------- | -------------------- | ---------------------------------------------------------- | --------------------------------- |
 | **Class link**   | Deep link URL        | Extracts class code from URL → knock_with_code → join      | None after click (auto-join)      |
-| **Class code**   | Manual text input    | knock_with_code → join                                     | Enter code only                   |
+| **Class code**   | Manual text input, or a QR scan in onboarding (phones) | knock_with_code → join                                     | Enter or scan code only           |
 | **Knock-accept** | "Ask to Join" button | Matrix knock → admin approves → invite → client auto-joins | Knock button; then wait for admin |
 
 All three routes converge on the user becoming a `Membership.join` member of the course space. Child rooms (announcements, introductions, activity chats) are joined separately afterward.
@@ -54,6 +54,8 @@ Three UI entry points (onboarding, in-app code page, public room bottom sheet) a
 4. `joinRoomById(spaceId)` → wait for sync → navigate to space
 
 This is NOT a standard Matrix knock — the Synapse module handles the invite directly.
+
+**QR scan (onboarding, iOS and Android only).** The onboarding code step offers Scan QR code under its field. The scan reads a course link (`https://app.pangea.chat/<code>`, the link a course's QR code encodes) or a bare code, and joins at once with no extra confirm. Anything else shows the step's not-found error without being sent to the server, because a QR code can hold anything (a Wi-Fi password, for example); the learner can scan again or type. A refused camera shows a short message and the field keeps working. The web build has no scan button and does not include the scanner: the camera plugin is set up for phones only.
 
 ---
 

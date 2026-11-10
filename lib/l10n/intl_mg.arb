@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-11-11 11:38:51.223296",
+    "@@last_modified": "2026-11-12 09:12:31.530601",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Aoka ianao no ho voalohany hanomboka ity dinika ity",
     "discussionRemoved": "Tsy afaka miditra amin'ity dinika ity ianao.",
     "discussionJoinArriving": "Tafiditra ianao! Hisokatra ny dinika raha vao tonga izany.",
-    "roleplayLabel": "Filalaovana anjara"
+    "roleplayLabel": "Filalaovana anjara",
+    "scanQrCodeCameraDenied": "Tsy afaka mampiasa ny fakantsarinao ny Pangea Chat. Soraty kosa ny kaodinao, na avelao ny fidirana amin'ny fakantsary ao amin'ny firafitry ny findainao."
 }

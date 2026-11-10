@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-11-11 11:38:55.247848",
+    "@@last_modified": "2026-11-12 09:12:33.872057",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10144,5 +10144,6 @@
     "discussionStartIt": "Bądź pierwszą osobą, która rozpocznie tę dyskusję",
     "discussionRemoved": "Nie możesz dołączyć do tej dyskusji.",
     "discussionJoinArriving": "Jesteś w środku! Dyskusja rozpocznie się, gdy tylko nadejdzie.",
-    "roleplayLabel": "Odgrywanie ról"
+    "roleplayLabel": "Odgrywanie ról",
+    "scanQrCodeCameraDenied": "Pangea Chat nie może użyć Twojej kamery. Wpisz kod ręcznie lub zezwól na dostęp do kamery w ustawieniach telefonu."
 }

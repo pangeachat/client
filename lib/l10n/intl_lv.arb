@@ -3513,7 +3513,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-11-11 11:38:50.060289",
+    "@@last_modified": "2026-11-12 09:12:31.668754",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10059,5 +10059,6 @@
     "discussionStartIt": "Esi pirmais, kurš uzsāk šo diskusiju",
     "discussionRemoved": "Jūs nevarat pievienoties šai diskusijai.",
     "discussionJoinArriving": "Jūs esat iekšā! Diskusija sāksies, tiklīdz tā būs pieejama.",
-    "roleplayLabel": "Lomu spēle"
+    "roleplayLabel": "Lomu spēle",
+    "scanQrCodeCameraDenied": "Pangea Chat nevar izmantot jūsu kameru. Tā vietā ievadiet kodu vai atļaujiet piekļuvi kamerai tālruņa iestatījumos."
 }

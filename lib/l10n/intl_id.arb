@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:45.828898",
+    "@@last_modified": "2026-11-12 09:12:29.208543",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10132,5 +10132,6 @@
     "discussionStartIt": "Jadilah yang pertama memulai diskusi ini",
     "discussionRemoved": "Anda tidak dapat bergabung dengan diskusi ini.",
     "discussionJoinArriving": "Anda masuk! Diskusi akan dibuka segera setelah tiba.",
-    "roleplayLabel": "Permainan Peran"
+    "roleplayLabel": "Permainan Peran",
+    "scanQrCodeCameraDenied": "Pangea Chat tidak dapat menggunakan kamera Anda. Ketik kode Anda, atau izinkan akses kamera di pengaturan ponsel Anda."
 }

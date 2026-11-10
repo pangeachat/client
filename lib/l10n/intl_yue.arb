@@ -1254,7 +1254,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-11-11 11:39:03.751954",
+    "@@last_modified": "2026-11-12 09:12:37.222653",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11013,5 +11013,6 @@
     "discussionStartIt": "成為第一個開始此討論的人",
     "discussionRemoved": "你無法加入此討論。",
     "discussionJoinArriving": "你已加入！討論一到就會開啟。",
-    "roleplayLabel": "角色扮演"
+    "roleplayLabel": "角色扮演",
+    "scanQrCodeCameraDenied": "Pangea Chat無法使用你的相機。請改為輸入你的代碼，或在手機設定中允許相機存取權限。"
 }

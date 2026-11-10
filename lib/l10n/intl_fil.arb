@@ -2071,7 +2071,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-11-11 11:38:43.067318",
+    "@@last_modified": "2026-11-12 09:12:27.885262",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10916,5 +10916,6 @@
     "discussionStartIt": "Ikaw ang unang magsimula ng talakayang ito",
     "discussionRemoved": "Hindi ka makakasali sa talakayang ito.",
     "discussionJoinArriving": "Nakasali ka na! Magbubukas ang talakayan pagdating nito.",
-    "roleplayLabel": "Roleplay"
+    "roleplayLabel": "Roleplay",
+    "scanQrCodeCameraDenied": "Hindi magamit ng Pangea Chat ang iyong camera. I-type na lang ang iyong code, o payagan ang access sa camera sa mga setting ng iyong telepono."
 }

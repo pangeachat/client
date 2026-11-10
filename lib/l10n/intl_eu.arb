@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-11-11 11:38:43.273646",
+    "@@last_modified": "2026-11-12 09:12:27.597210",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10059,5 +10059,6 @@
     "discussionStartIt": "Izan zaitez eztabaida hau hasten lehena",
     "discussionRemoved": "Ezin zara eztabaida honetan sartu.",
     "discussionJoinArriving": "Barruan zaude! Eztabaida iritsi bezain laster irekiko da.",
-    "roleplayLabel": "Rol-jokoa"
+    "roleplayLabel": "Rol-jokoa",
+    "scanQrCodeCameraDenied": "Pangea Chat-ek ezin du zure kamera erabili. Idatzi zure kodea, edo baimendu kameraren sarbidea telefonoaren ezarpenetan."
 }

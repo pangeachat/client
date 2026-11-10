@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-11-11 11:38:39.616050",
+    "@@last_modified": "2026-11-12 09:12:25.849074",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Бъдете първият, който ще започне тази дискусия",
     "discussionRemoved": "Не можете да се присъедините към тази дискусия.",
     "discussionJoinArriving": "Вътре сте! Дискусията ще започне веднага щом пристигне.",
-    "roleplayLabel": "Ролева игра"
+    "roleplayLabel": "Ролева игра",
+    "scanQrCodeCameraDenied": "Pangea Chat не може да използва камерата ви. Въведете кода си ръчно или разрешете достъп до камерата в настройките на телефона си."
 }

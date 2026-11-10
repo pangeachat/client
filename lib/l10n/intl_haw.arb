@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-11-11 11:38:44.203292",
+    "@@last_modified": "2026-11-12 09:12:28.698978",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "E lilo ʻoe i mea mua e hoʻomaka i kēia kūkākūkā",
     "discussionRemoved": "ʻAʻole hiki iā ʻoe ke hui i kēia kūkākūkā.",
     "discussionJoinArriving": "Ua komo ʻoe! E wehe ʻia ke kūkākūkā ke hōʻea mai.",
-    "roleplayLabel": "Pāʻani Kuleana"
+    "roleplayLabel": "Pāʻani Kuleana",
+    "scanQrCodeCameraDenied": "ʻAʻole hiki iā Pangea Chat ke hoʻohana i kāu pahupaʻi kiʻi. E kikokiko i kāu code, a i ʻole e ʻae i ke komo ʻana o ka pahupaʻi kiʻi ma nā hoʻonohonoho o kāu kelepona."
 }

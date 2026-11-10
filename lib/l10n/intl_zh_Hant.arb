@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:39:04.887357",
+    "@@last_modified": "2026-11-12 09:12:37.580582",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10165,5 +10165,6 @@
     "discussionStartIt": "成為第一個開始此討論的人",
     "discussionRemoved": "您無法加入此討論。",
     "discussionJoinArriving": "您已加入！討論一開始就會開放。",
-    "roleplayLabel": "角色扮演"
+    "roleplayLabel": "角色扮演",
+    "scanQrCodeCameraDenied": "Pangea Chat 無法使用您的相機。請改為輸入代碼，或在手機設定中允許相機存取。"
 }

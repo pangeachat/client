@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:58.992409",
+    "@@last_modified": "2026-11-12 09:12:35.750807",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -11005,5 +11005,6 @@
     "discussionStartIt": "Budite prvi koji će započeti ovu diskusiju",
     "discussionRemoved": "Ne možete se pridružiti ovoj diskusiji.",
     "discussionJoinArriving": "Ušli ste! Diskusija će se otvoriti čim stigne.",
-    "roleplayLabel": "Igranje uloga"
+    "roleplayLabel": "Igranje uloga",
+    "scanQrCodeCameraDenied": "Pangea Chat ne može da koristi vašu kameru. Umesto toga, ukucajte svoj kod ili dozvolite pristup kameri u podešavanjima telefona."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-11-11 11:38:45.317056",
+    "@@last_modified": "2026-11-12 09:12:29.028318",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10162,5 +10162,6 @@
     "discussionStartIt": "Légy te az első, aki elindítja ezt a beszélgetést",
     "discussionRemoved": "Nem csatlakozhatsz ehhez a beszélgetéshez.",
     "discussionJoinArriving": "Bent vagy! A beszélgetés azonnal megnyílik, amint megérkezik.",
-    "roleplayLabel": "Szerepjáték"
+    "roleplayLabel": "Szerepjáték",
+    "scanQrCodeCameraDenied": "A Pangea Chat nem tudja használni a kamerát. Írja be a kódot, vagy engedélyezze a kamera hozzáférését a telefon beállításaiban."
 }

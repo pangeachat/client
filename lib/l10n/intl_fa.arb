@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:42.679012",
+    "@@last_modified": "2026-11-12 09:12:27.403813",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10147,5 +10147,6 @@
     "discussionStartIt": "اولین نفری باشید که این بحث را شروع می‌کند",
     "discussionRemoved": "نمی‌توانید به این بحث بپیوندید.",
     "discussionJoinArriving": "شما وارد شدید! بحث به محض رسیدن باز می‌شود.",
-    "roleplayLabel": "نقش‌آفرینی"
+    "roleplayLabel": "نقش‌آفرینی",
+    "scanQrCodeCameraDenied": "Pangea Chat نمی‌تواند از دوربین شما استفاده کند. به جای آن کد خود را تایپ کنید، یا در تنظیمات گوشی خود اجازه دسترسی به دوربین را بدهید."
 }

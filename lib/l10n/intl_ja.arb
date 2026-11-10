@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-11-11 11:38:46.299937",
+    "@@last_modified": "2026-11-12 09:12:30.416321",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10825,5 +10825,6 @@
     "discussionStartIt": "このディスカッションを最初に始めましょう",
     "discussionRemoved": "このディスカッションには参加できません。",
     "discussionJoinArriving": "参加しました！到着次第、ディスカッションが開始されます。",
-    "roleplayLabel": "ロールプレイ"
+    "roleplayLabel": "ロールプレイ",
+    "scanQrCodeCameraDenied": "Pangea Chatはカメラを使用できません。代わりにコードを入力するか、スマートフォンの設定でカメラへのアクセスを許可してください。"
 }

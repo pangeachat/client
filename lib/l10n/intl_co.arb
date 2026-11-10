@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-11-11 11:38:41.292371",
+    "@@last_modified": "2026-11-12 09:12:26.643285",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Siate u primu à principià sta discussione",
     "discussionRemoved": "Ùn pudete micca unisce à sta discussione.",
     "discussionJoinArriving": "Site drentu! A discussione s'aprirà appena ghjunghje.",
-    "roleplayLabel": "Ghjocu di rollu"
+    "roleplayLabel": "Ghjocu di rollu",
+    "scanQrCodeCameraDenied": "Pangea Chat ùn pò micca aduprà a vostra camera. Scrivite u vostru codice invece, o permettite l'accessu à a camera in i paràmetri di u vostru telefunu."
 }

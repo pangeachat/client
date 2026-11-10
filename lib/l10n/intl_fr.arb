@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-11-11 11:38:42.714895",
+    "@@last_modified": "2026-11-12 09:12:28.130561",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10411,5 +10411,6 @@
     "discussionStartIt": "Soyez le premier à lancer cette discussion",
     "discussionRemoved": "Vous ne pouvez pas rejoindre cette discussion.",
     "discussionJoinArriving": "Vous êtes là ! La discussion s’ouvrira dès qu’elle arrivera.",
-    "roleplayLabel": "Jeu de rôle"
+    "roleplayLabel": "Jeu de rôle",
+    "scanQrCodeCameraDenied": "Pangea Chat ne peut pas utiliser votre appareil photo. Saisissez votre code à la place ou autorisez l'accès à l'appareil photo dans les réglages de votre téléphone."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-11-11 11:38:57.503061",
+    "@@last_modified": "2026-11-12 09:12:35.210024",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Iva wekutanga kutanga hurukuro iyi",
     "discussionRemoved": "Haugone kupinda muhurukuro iyi.",
     "discussionJoinArriving": "Wapinda! Hurukuro ichavhurwa kana yangosvika.",
-    "roleplayLabel": "Kutamba chinzvimbo"
+    "roleplayLabel": "Kutamba chinzvimbo",
+    "scanQrCodeCameraDenied": "Pangea Chat haigoni kushandisa kamera yako. Nyora kodhi yako panzvimbo, kana bvumira kamera kuti ishande muzvirongwa zvefoni yako."
 }

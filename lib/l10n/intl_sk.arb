@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-11-11 11:39:05.089216",
+    "@@last_modified": "2026-11-12 09:12:34.984296",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -11001,5 +11001,6 @@
     "discussionStartIt": "Buďte prvý, kto začne túto diskusiu",
     "discussionRemoved": "Nemôžete sa zapojiť do tejto diskusie.",
     "discussionJoinArriving": "Ste dnu! Diskusia sa otvorí hneď, ako dorazí.",
-    "roleplayLabel": "Hranie rolí"
+    "roleplayLabel": "Hranie rolí",
+    "scanQrCodeCameraDenied": "Pangea Chat nemôže používať váš fotoaparát. Zadajte kód namiesto toho, alebo povoľte prístup k fotoaparátu v nastaveniach telefónu."
 }
