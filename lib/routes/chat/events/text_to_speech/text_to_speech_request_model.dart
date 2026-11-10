@@ -9,7 +9,6 @@ class TextToSpeechRequestModel extends BaseRequest {
   String userL1;
   String userL2;
   List<PangeaTokenText> tokens;
-  String? voice;
   String? ttsPhoneme;
   double speakingRate;
   bool? mock;
@@ -20,14 +19,13 @@ class TextToSpeechRequestModel extends BaseRequest {
     required this.userL1,
     required this.userL2,
     required this.tokens,
-    this.voice,
     this.ttsPhoneme,
     this.speakingRate = 0.85,
     this.mock,
   });
 
   @override
-  String get storageKey => '$text|$langCode|$voice|$ttsPhoneme';
+  String get storageKey => '$text|$langCode|$ttsPhoneme';
 
   @override
   Map<String, dynamic> toJson() => {
@@ -36,7 +34,6 @@ class TextToSpeechRequestModel extends BaseRequest {
     ModelKey.userL1: userL1,
     ModelKey.userL2: userL2,
     ModelKey.tokens: tokens.map((token) => token.toJson()).toList(),
-    'voice': voice,
     if (ttsPhoneme != null) 'tts_phoneme': ttsPhoneme,
     'speaking_rate': speakingRate,
     if (mock != null) ModelKey.mock: mock,
@@ -49,11 +46,9 @@ class TextToSpeechRequestModel extends BaseRequest {
     return other is TextToSpeechRequestModel &&
         other.text == text &&
         other.langCode == langCode &&
-        other.voice == voice &&
         other.ttsPhoneme == ttsPhoneme;
   }
 
   @override
-  int get hashCode =>
-      text.hashCode ^ langCode.hashCode ^ voice.hashCode ^ ttsPhoneme.hashCode;
+  int get hashCode => text.hashCode ^ langCode.hashCode ^ ttsPhoneme.hashCode;
 }

@@ -16,7 +16,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../languages/language_model.dart';
 
 /// The learner's learning settings: target and base language, self-reported
-/// level, gender, voice, country and bio. Private to the learner, apart from
+/// level, gender, country and bio. Private to the learner, apart from
 /// country and bio, which [UserController.updatePublicProfile] copies to the
 /// public profile (profile.instructions.md, "What other people can see").
 class UserSettings {
@@ -34,7 +34,6 @@ class UserSettings {
   final String? country;
   final String? about;
   final LanguageLevelTypeEnum cefrLevel;
-  final String? voice;
 
   /// The role the person chose in onboarding, or null when they never chose
   /// one, as on accounts that onboarded before it was stored (#9445).
@@ -56,7 +55,6 @@ class UserSettings {
     this.country,
     this.about,
     this.cefrLevel = LanguageLevelTypeEnum.a1,
-    this.voice,
     this.selfIdentifiedRole,
   });
 
@@ -85,7 +83,6 @@ class UserSettings {
     cefrLevel: json[UserConstants.cefrLevel] is String
         ? LanguageLevelTypeEnum.fromString(json[UserConstants.cefrLevel])
         : LanguageLevelTypeEnum.a1,
-    voice: json[ModelKey.voice],
     selfIdentifiedRole: _parseSelfIdentifiedRole(
       json[UserConstants.selfIdentifiedRole],
     ),
@@ -118,7 +115,6 @@ class UserSettings {
     data[UserConstants.userCountry] = country;
     data[UserConstants.userAbout] = about;
     data[UserConstants.cefrLevel] = cefrLevel.string;
-    data[ModelKey.voice] = voice;
     // Left out rather than written as null: a missing field is the
     // "unspecified" every reader of it already handles.
     if (selfIdentifiedRole != null) {
@@ -198,8 +194,6 @@ class UserSettings {
     String? country,
     String? about,
     LanguageLevelTypeEnum? cefrLevel,
-    String? voice,
-    bool setVoiceNull = false,
     UserType? selfIdentifiedRole,
   }) {
     return UserSettings(
@@ -213,7 +207,6 @@ class UserSettings {
       country: country ?? this.country,
       about: about ?? this.about,
       cefrLevel: cefrLevel ?? this.cefrLevel,
-      voice: setVoiceNull ? null : (voice ?? this.voice),
       selfIdentifiedRole: selfIdentifiedRole ?? this.selfIdentifiedRole,
     );
   }
@@ -233,7 +226,6 @@ class UserSettings {
         other.country == country &&
         other.about == about &&
         other.cefrLevel == cefrLevel &&
-        other.voice == voice &&
         other.selfIdentifiedRole == selfIdentifiedRole;
   }
 
@@ -249,7 +241,6 @@ class UserSettings {
     country.hashCode,
     about.hashCode,
     cefrLevel.hashCode,
-    voice.hashCode,
     selfIdentifiedRole.hashCode,
   ]);
 }

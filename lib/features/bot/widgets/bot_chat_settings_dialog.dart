@@ -139,8 +139,6 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
         return model.copyWith(
           userSettings: model.userSettings.copyWith(
             targetLanguage: lang.langCode,
-            voice: null,
-            setVoiceNull: true,
           ),
         );
       },

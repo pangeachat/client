@@ -42,16 +42,11 @@ class TextToSpeechResponseModel extends BaseResponse {
     "tts_tokens": List<dynamic>.from(ttsTokens.map((x) => x.toJson())),
   };
 
-  PangeaAudioEventData toPangeaAudioEventData(
-    String text,
-    String langCode,
-    String? voice,
-  ) {
+  PangeaAudioEventData toPangeaAudioEventData(String text, String langCode) {
     return PangeaAudioEventData(
       text: text,
       langCode: langCode,
       tokens: ttsTokens,
-      voice: voice,
     );
   }
 }
@@ -93,13 +88,11 @@ class PangeaAudioEventData {
   final String text;
   final String langCode;
   final List<TTSToken> tokens;
-  final String? voice;
 
   PangeaAudioEventData({
     required this.text,
     required this.langCode,
     required this.tokens,
-    this.voice,
   });
 
   factory PangeaAudioEventData.fromJson(dynamic json) => PangeaAudioEventData(
@@ -110,7 +103,6 @@ class PangeaAudioEventData {
           .map((x) => TTSToken.fromJson(x))
           .toList(),
     ),
-    voice: json[ModelKey.voice] as String?,
   );
 
   Map<String, dynamic> toJson() => {
@@ -119,6 +111,5 @@ class PangeaAudioEventData {
     ModelKey.tokens: List<Map<String, dynamic>>.from(
       tokens.map((x) => x.toJson()),
     ),
-    if (voice != null) ModelKey.voice: voice,
   };
 }

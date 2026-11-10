@@ -27,7 +27,6 @@ BotOptionsModel? buildUpdatedBotOptions({
 }) {
   final botOptions = currentOptions ?? const BotOptionsModel();
 
-  final voice = userSettings.voice;
   final gender = userSettings.gender;
   final languageLevel = userSettings.cefrLevel;
 
@@ -38,7 +37,6 @@ BotOptionsModel? buildUpdatedBotOptions({
 
   if (botOptions.targetLanguage == targetLanguage &&
       botOptions.languageLevel == languageLevel &&
-      botOptions.targetVoice == voice &&
       botOptions.userGenders[userId] == gender) {
     return null;
   }
@@ -51,7 +49,6 @@ BotOptionsModel? buildUpdatedBotOptions({
   return botOptions.copyWith(
     targetLanguage: targetLanguage,
     languageLevel: languageLevel,
-    targetVoice: voice,
     userGenders: updatedGenders,
   );
 }

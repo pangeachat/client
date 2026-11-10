@@ -24,7 +24,6 @@ class BotOptionsModel {
   final String? customTriggerReactionKey;
   final String? textAdventureGameMasterInstructions;
   final String? targetLanguage;
-  final String? targetVoice;
   final Map<String, GenderEnum> userGenders;
 
   const BotOptionsModel({
@@ -37,7 +36,6 @@ class BotOptionsModel {
     this.safetyModeration = true,
     this.mode = BotMode.discussion,
     this.targetLanguage,
-    this.targetVoice,
     this.userGenders = const {},
 
     ////////////////////////////////////////////////////////////////////////////
@@ -90,7 +88,6 @@ class BotOptionsModel {
       safetyModeration: json[BotConstants.safetyModeration] ?? true,
       mode: json[BotConstants.mode] ?? BotMode.discussion,
       targetLanguage: json[ModelKey.targetLanguage],
-      targetVoice: json[BotConstants.targetVoice],
       userGenders: targetGenders,
 
       //////////////////////////////////////////////////////////////////////////
@@ -133,7 +130,6 @@ class BotOptionsModel {
       data[BotConstants.safetyModeration] = safetyModeration;
       data[BotConstants.mode] = mode;
       data[ModelKey.targetLanguage] = targetLanguage;
-      data[BotConstants.targetVoice] = targetVoice;
       data[BotConstants.discussionTopic] = discussionTopic;
       data[BotConstants.discussionKeywords] = discussionKeywords;
       data[BotConstants.discussionTriggerReactionEnabled] =
@@ -171,7 +167,6 @@ class BotOptionsModel {
     String? customTriggerReactionKey,
     String? textAdventureGameMasterInstructions,
     String? targetLanguage,
-    String? targetVoice,
     Map<String, GenderEnum>? userGenders,
   }) {
     return BotOptionsModel(
@@ -196,7 +191,6 @@ class BotOptionsModel {
           textAdventureGameMasterInstructions ??
           this.textAdventureGameMasterInstructions,
       targetLanguage: targetLanguage ?? this.targetLanguage,
-      targetVoice: targetVoice ?? this.targetVoice,
       userGenders: userGenders ?? this.userGenders,
     );
   }

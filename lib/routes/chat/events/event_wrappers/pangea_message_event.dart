@@ -466,7 +466,7 @@ class PangeaMessageEvent {
         a.langCode.split('-').first == b.langCode.split('-').first;
   }
 
-  Event? _getTextToSpeechLocal(String langCode, String text, String? voice) {
+  Event? _getTextToSpeechLocal(String langCode, String text) {
     for (final audio in ttsEvents) {
       final dataMap = audio.content.tryGetMap(MessageConstants.transcription);
       if (dataMap == null || !dataMap.containsKey(ModelKey.tokens)) continue;
@@ -476,9 +476,7 @@ class PangeaMessageEvent {
           dataMap as dynamic,
         );
 
-        if (audioData.langCode == langCode &&
-            audioData.text == text &&
-            audioData.voice == voice) {
+        if (audioData.langCode == langCode && audioData.text == text) {
           return audio;
         }
       } catch (e, s) {
@@ -627,11 +625,8 @@ class PangeaMessageEvent {
     );
   }
 
-  Future<PangeaAudioFile> requestTextToSpeech(
-    String langCode,
-    String? voice,
-  ) async {
-    final local = _getTextToSpeechLocal(langCode, messageDisplayText, voice);
+  Future<PangeaAudioFile> requestTextToSpeech(String langCode) async {
+    final local = _getTextToSpeechLocal(langCode, messageDisplayText);
     if (local != null) {
       final file = await local.getPangeaAudioFile();
       if (file != null) return file;
@@ -645,7 +640,6 @@ class PangeaMessageEvent {
       langCode: langCode,
       userL1: _l1Code ?? LanguageKeys.unknownLanguage,
       userL2: _l2Code ?? LanguageKeys.unknownLanguage,
-      voice: voice,
     );
 
     final result = await TextToSpeechRepo.instance.get(request);
@@ -687,7 +681,7 @@ class PangeaMessageEvent {
           'waveform': response.waveform,
         },
         MessageConstants.transcription: response
-            .toPangeaAudioEventData(rep?.text ?? body, langCode, voice)
+            .toPangeaAudioEventData(rep?.text ?? body, langCode)
             .toJson(),
         "m.relates_to": {
           "rel_type": PangeaEventTypes.textToSpeech,

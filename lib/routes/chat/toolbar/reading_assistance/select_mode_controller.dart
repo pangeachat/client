@@ -70,7 +70,6 @@ class _AudioLoader extends AsyncLoader<PangeaAudioFile> {
   Future<PangeaAudioFile> fetch() async {
     return messageEvent.requestTextToSpeech(
       messageEvent.messageDisplayLangCode,
-      MatrixState.pangeaController.userController.voice,
     );
   }
 }

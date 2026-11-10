@@ -16,7 +16,6 @@ One record per account, kept with the learner's Matrix account and seen only by 
 - **Target language** (what they are learning) and **base language** (what they already speak). The base language is also the language of the app's menus and buttons, unless **app in target language** is on, which shows the menus in the target language instead.
 - **Self-reported level.** The bot and the AI tools pitch their language to it.
 - **Gender.** The bot and the AI tools use it to address the learner correctly.
-- **Voice.** The voice that words and messages are read aloud in.
 - **Teacher or learner role**, chosen by the person (see [The teacher or learner role](#the-teacher-or-learner-role)).
 - **Country and bio**, shown on their profile page and copied to the public profile.
 - **Find me in search.** The "Allow my profile to be found in search" switch on the profile page. When it is off, or was never set, the account appears in other people's name searches, for a new chat or an invite, only if they already share a room with it ([finding-people.instructions.md](finding-people.instructions.md#who-is-findable-under-public)). It is separate from the public profile: it decides who can find the account, not what they see.

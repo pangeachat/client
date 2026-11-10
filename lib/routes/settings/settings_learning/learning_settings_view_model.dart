@@ -139,8 +139,6 @@ class LearningSettingsViewModel extends ChangeNotifier {
 
   LanguageLevelTypeEnum get cefrLevel => _updatedProfile.userSettings.cefrLevel;
 
-  String? get selectedVoice => _updatedProfile.userSettings.voice;
-
   Country? get country =>
       CountryService().findByName(_updatedProfile.userSettings.country);
 
@@ -289,8 +287,6 @@ class LearningSettingsViewModel extends ChangeNotifier {
       updated = _updatedProfile.copyWith(
         userSettings: _updatedProfile.userSettings.copyWith(
           targetLanguage: targetLanguage.langCode,
-          voice: null,
-          setVoiceNull: true,
         ),
         toolSettings: _updatedProfile.toolSettings.copyWith(
           audioWords: true,
@@ -340,13 +336,6 @@ class LearningSettingsViewModel extends ChangeNotifier {
       userSettings: _updatedProfile.userSettings.copyWith(
         selfIdentifiedRole: type,
       ),
-    );
-    _updateProfile(updated);
-  }
-
-  void setVoice(String? voice) {
-    final updated = _updatedProfile.copyWith(
-      userSettings: _updatedProfile.userSettings.copyWith(voice: voice),
     );
     _updateProfile(updated);
   }

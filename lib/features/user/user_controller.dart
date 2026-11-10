@@ -853,8 +853,6 @@ class UserController {
 
   DateTime? get createdAt => profile.userSettings.createdAt;
 
-  String? get voice => profile.userSettings.voice;
-
   bool get showDeveloperOptions => profile.toolSettings.showDeveloperOptions;
 
   bool get languagesSet =>
