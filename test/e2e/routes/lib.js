@@ -993,7 +993,8 @@ async function clockOf(p, tag = 'clock') {
   const r = spawnSync('tesseract', [f, '-', '--psm', '11'], { encoding: 'utf8' });
   const text = String(r.stdout || '');
   save(path.basename(f).replace(/\.png$/, '.txt'), text);
-  const found = [...new Set([...text.matchAll(/\b(\d{1,2}):(\d{2})\b/g)].map((m) => Number(m[1]) * 60 + Number(m[2])))];
+  // Every match counted, duplicates too: two of the same is still not one.
+  const found = [...text.matchAll(/\b(\d{1,2}):(\d{2})\b/g)].map((m) => Number(m[1]) * 60 + Number(m[2]));
   return found.length === 1 ? found[0] : null;
 }
 
