@@ -1,6 +1,7 @@
 import 'dart:ui' as ui show SemanticsHitTestBehavior;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
@@ -196,6 +197,38 @@ void main() {
       tester.getSemantics(find.bySemanticsLabel('Dismiss')).hitTestBehavior,
       ui.SemanticsHitTestBehavior.defer,
     );
+
+    semantics.dispose();
+  });
+
+  // #9594: the overlay's parts used to be siblings of the page's node, so the
+  // framework's position sort could reorder the page on open and close. On web
+  // that resets every scroller in the page. A widget test has no DOM, so this
+  // pins the property that prevents it.
+  testWidgets('an overlay is one node, apart from the page behind it', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    await tester.pumpWidget(
+      buildHarness(blockPointerThrough: false, ignorePointer: false),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('open'));
+    await tester.pumpAndSettle();
+
+    final overlayNode = tester
+        .getSemantics(find.bySemanticsLabel('Dismiss'))
+        .parent!;
+    expect(
+      overlayNode.rect.size,
+      tester.view.physicalSize / tester.view.devicePixelRatio,
+    );
+
+    SemanticsNode? pageNode = tester.getSemantics(find.text('open'));
+    while (pageNode != null) {
+      expect(identical(pageNode, overlayNode), isFalse);
+      pageNode = pageNode.parent;
+    }
 
     semantics.dispose();
   });
