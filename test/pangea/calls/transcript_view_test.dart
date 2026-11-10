@@ -6303,6 +6303,122 @@ void main() {
         },
       );
 
+      // r06 (#9485): the screen opened before the merged recording landed. The
+      // first auto-fill found no manifest, and the half showed the note and
+      // the button until the device's own fill arrived.
+      Future<List<String>> openBeforeTheMerge(
+        WidgetTester tester, {
+        required int openedAtMs,
+      }) async {
+        MatrixState.pangeaController = FakePangeaController(subscribed: true);
+        final events = [
+          half(_me, texts: const ['hola'], atMs: [_callStart]),
+          refusedHalf(_peer),
+          audioEvent(_me),
+          audioEvent(_peer),
+        ];
+        var merged = false;
+        final posted = <String>[];
+        final resolvedManifest = WholeCallManifest(
+          resolved: true,
+          recordings: [
+            CallAudioRecording(
+              eventId: r'$audio-peer-',
+              senderId: _peer,
+              originServerTs: DateTime.fromMillisecondsSinceEpoch(1000),
+              content: CallAudioContent(
+                callKey: _callKey,
+                url: 'mxc://fakeServer.notExisting/AUDIO',
+                mimetype: 'audio/wav',
+                codec: kCallAudioCodec,
+                size: 1000,
+                durationMs: 4000,
+                sampleRate: 16000,
+                channels: 1,
+              ),
+            ),
+          ],
+        );
+        final fake = buildFakeTranscriber(
+          discover: (_) async =>
+              merged ? resolvedManifest : WholeCallManifest.absent,
+          post:
+              ({
+                required callKey,
+                required spokenBy,
+                required sourceAudioEventId,
+                required deviceId,
+                required langCode,
+                required clockAnchor,
+                required segments,
+              }) async {
+                posted.add(spokenBy);
+                events.removeWhere(
+                  (e) =>
+                      e.type == CallTranscriptContent.relType &&
+                      e.senderId == _peer,
+                );
+                events.add(
+                  half(
+                    _peer,
+                    texts: const ['que tal'],
+                    atMs: [_callStart + 2000],
+                  ),
+                );
+              },
+        );
+        await pumpWithRecordings(
+          tester,
+          room(),
+          servingByType(events),
+          transcriber: fake,
+          now: () => DateTime.fromMillisecondsSinceEpoch(openedAtMs),
+        );
+        await tester.pumpAndSettle();
+        merged = true;
+        events.add(mergedEvent(_me));
+        return posted;
+      }
+
+      testWidgets(
+        'a fill that found no merge yet shows loading and retries on the next '
+        'sync',
+        (tester) async {
+          final posted = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+          );
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsNothing,
+          );
+          expect(find.text('Transcribe'), findsNothing);
+
+          client.onSync.add(SyncUpdate(nextBatch: 's1'));
+          await tester.pumpAndSettle();
+
+          expect(posted, [_peer]);
+          expect(find.textContaining('que tal'), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'past the transcribing window a missing merge leaves the note and '
+        'button',
+        (tester) async {
+          final posted = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 6 * 60 * 1000,
+          );
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsOneWidget,
+          );
+          expect(find.text('Transcribe'), findsOneWidget);
+          expect(posted, isEmpty);
+        },
+      );
+
       testWidgets(
         'timeline: a refused peer half fills itself in, with nothing tapped',
         (tester) async {

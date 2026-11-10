@@ -502,13 +502,15 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
 
   /// Fills in [half] from its recording, unasked, the first time it is drawn.
   /// Marked in flight at once so the note and the button never flash up first.
-  void _autoFill(TranscriptHalf half) {
+  /// While [recent], a fill that finds the merge not yet landed stays loading
+  /// and runs again on the next redraw, which the merge's sync brings.
+  void _autoFill(TranscriptHalf half, {required bool recent}) {
     final speaker = half.senderId;
     if (!_autoFilled.add(speaker)) return;
     _onDemandInFlight.add(speaker);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      unawaited(_transcribeHalf(speaker, ask: false));
+      unawaited(_transcribeHalf(speaker, ask: false, retryOnPending: recent));
     });
   }
 
@@ -1127,7 +1129,12 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   /// [ask] is whether the learner pressed the button: only then may this put a
   /// language picker in front of them. Unasked, an unresolved pair just leaves
   /// the button.
-  Future<void> _transcribeHalf(String speakerId, {required bool ask}) async {
+  Future<void> _transcribeHalf(
+    String speakerId, {
+    required bool ask,
+    bool retryOnPending = false,
+  }) async {
+    var awaitingMerge = false;
     try {
       final resolved = await _transcriber.resolvePeerLanguages(speakerId);
       String? language;
@@ -1162,8 +1169,13 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         // speaker, or the gate was not satisfied on this entry. Left RETRYABLE:
         // the ordinary button reappears rather than locking into a terminal note
         // over what a later tap may resolve.
-        case OnDemandTranscriptionResult.downloadFailed:
+        //
+        // An unasked fill that found the merge not yet landed stays loading and
+        // is tried again on the next redraw (#9485), within [retryOnPending].
         case OnDemandTranscriptionResult.manifestPending:
+          awaitingMerge = retryOnPending;
+          if (awaitingMerge) _autoFilled.remove(speakerId);
+        case OnDemandTranscriptionResult.downloadFailed:
         case OnDemandTranscriptionResult.noRecording:
         case OnDemandTranscriptionResult.disabled:
           break;
@@ -1178,7 +1190,9 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       // a terminal note over what may only be transient.
       Logs().w('On-demand call transcription failed for $speakerId', e, s);
     } finally {
-      if (mounted) setState(() => _onDemandInFlight.remove(speakerId));
+      if (mounted && !awaitingMerge) {
+        setState(() => _onDemandInFlight.remove(speakerId));
+      }
     }
   }
 
@@ -2072,7 +2086,14 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
 
     // Nothing left for the reader to do about these: their recording is here.
     for (final half in transcript.halves) {
-      if (half.waitsOnItsRecording && hasRecording(half)) _autoFill(half);
+      if (half.waitsOnItsRecording && hasRecording(half)) {
+        _autoFill(
+          half,
+          recent:
+              now.difference(recordingTimes[half.senderId]!) <
+              transcribingWindow,
+        );
+      }
     }
 
     return Column(
