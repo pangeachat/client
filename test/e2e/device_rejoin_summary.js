@@ -78,6 +78,11 @@ async function busy(A, ms) {
   console.log('[5] the phone ends the call; every frame of the summary is kept');
   const elapsed = Math.round((Date.now() - startedAt) / 1000);
   console.log(`   the call is about ${elapsed}s old (${Math.floor(elapsed / 60)}:${String(elapsed % 60).padStart(2, '0')})`);
+  // One tap, and it has to work: the app is brought to the front and given a
+  // moment to settle first, so the panel is up when the tap lands. A retry here
+  // would turn a real failed hang-up into a pass.
+  await d.ensureAwakeAndForeground();
+  await wait(2000);
   await d.tapControl('hangup');
   const frames = [];
   for (let i = 0; i < 12; i++) {

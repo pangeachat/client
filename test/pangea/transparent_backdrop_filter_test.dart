@@ -1,3 +1,5 @@
+import 'dart:ui' show Tristate;
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -48,5 +50,34 @@ void main() {
       find.descendant(of: filter, matching: find.byType(InkWell)),
       findsOneWidget,
     );
+  });
+
+  // #9594: merged into the node above it, the backdrop turned that node, and
+  // everything under it, into one "Dismiss" button.
+  testWidgets('the backdrop never merges into the node above it', (
+    tester,
+  ) async {
+    final semantics = tester.ensureSemantics();
+    const parent = Key('parent');
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: L10n.localizationsDelegates,
+        supportedLocales: L10n.supportedLocales,
+        home: Semantics(
+          key: parent,
+          container: true,
+          child: const TransparentBackdrop(),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    final node = tester.getSemantics(find.byKey(parent));
+    expect(node.label, isEmpty);
+    expect(node.flagsCollection.isButton, isNot(Tristate.isTrue));
+    expect(find.bySemanticsLabel('Dismiss'), findsOneWidget);
+
+    semantics.dispose();
   });
 }

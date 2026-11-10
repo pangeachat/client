@@ -23,14 +23,26 @@ const serviceState = async () => {
 };
 /// Whether the ongoing-call notification is LIVE right now.
 ///
-/// Counted from the platform's own posted/removed record rather than by
-/// grepping the whole dumpsys, which also carries history -- that read the
-/// notification as still up long after Android had removed it.
+/// Read from the platform's list of POSTED notifications only: the section of
+/// `dumpsys notification` before its archive. The whole dump also carries
+/// history, which read the notification as up long after Android had removed
+/// it; and the logcat posted/removed lines this used to count are not written
+/// on every phone (none on this Pixel's release build), which read a live
+/// notification as missing.
 const notified = async () => {
-  const log = await d.adb('logcat', '-d', '-v', 'time').catch(() => '');
-  const events = (log.match(/onNotification(Posted|Removed)[^\n]*pangea_ongoing_call/g) || []);
-  const last = events[events.length - 1] ?? '';
-  return /onNotificationPosted/.test(last);
+  const dump = await d.adb('shell', 'dumpsys', 'notification', '--noredact').catch(() => '');
+  const start = dump.indexOf('Notification List:');
+  if (start === -1) throw new Error('dumpsys notification had no Notification List; cannot tell');
+  const end = dump.indexOf('\n  mArchive=', start);
+  if (end === -1) throw new Error('dumpsys notification had no archive after its list; cannot bound the posted notifications');
+  const posted = dump.slice(start, end);
+  // Exactly this app's ongoing-call notification: the package and the channel
+  // compared whole, never as a prefix or substring of another.
+  return posted.split('\n').some((l) => {
+    const pkg = (l.match(/\bpkg=(\S+)/) || [])[1];
+    const channel = (l.match(/Notification\(channel=([^\s)]+)/) || [])[1];
+    return pkg === d.PKG && channel === 'pangea_ongoing_call';
+  });
 };
 
 /// Waits for it to go, rather than sampling once: teardown has to reach the
@@ -93,9 +105,18 @@ async function callAndAnswer(A, P, label) {
 
   await d.ensureAwakeAndForeground().catch(() => {});
   await ui.clickPanel(A.page, 'hangup').catch(() => {});
-  await wait(6000);
+  // The call has to have ended before its notification can be expected gone;
+  // without this a missed hang-up click read as a notification that outlived
+  // its call.
+  const ended = await h.actUntil('end', async () => {},
+    async () => !(await mx.hasMembership(P.token, ROOM_ID, P.userId)), { tries: 8, gap: 3000 });
+  console.log('   after the laptop hang-up: laptop in call', await mx.hasMembership(A.token, ROOM_ID, A.userId),
+    '| phone in call', await mx.hasMembership(P.token, ROOM_ID, P.userId));
+  if (!ended) await d.screenshot(shot('RD-not-ended-phone.png')).catch(() => {});
+  if (!ended) await A.page.screenshot({ path: shot('RD-not-ended-laptop.png') }).catch(() => {});
+  h.check('redial', 'the laptop hanging up ends the redial', ended, 'the phone was still in the call');
   h.check('redial', 'and the notification goes when it ends',
-    await notificationGone(), 'the notification outlived the redial');
+    ended && await notificationGone(), ended ? 'the notification outlived the redial' : 'the call never ended');
 
   await A.browser.close();
   process.exit(h.report() === 0 ? 0 : 1);

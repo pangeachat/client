@@ -100,6 +100,13 @@ class SpeechToTextRequestModel extends BaseRequest {
 
   static const int maxExpectedTextChars = 500;
 
+  /// When true, the transcript may come back in the speaker's L1 as well as
+  /// their L2 -- set only by the call transcript paths, where a learner speaks
+  /// both (#3351). Voice messages leave it false and stay pinned to the L2.
+  /// Like [includeWordTimings] it is omitted when false and is part of
+  /// [storageKey]: the two answers can differ for the same audio.
+  final bool allowSpeakerL1;
+
   SpeechToTextRequestModel({
     required this.audioContent,
     required this.config,
@@ -107,6 +114,7 @@ class SpeechToTextRequestModel extends BaseRequest {
     this.mock,
     this.skipTokenize = false,
     this.includeWordTimings = false,
+    this.allowSpeakerL1 = false,
     String? expectedText,
   }) : expectedText = (expectedText?.trim().isEmpty ?? true)
            ? null
@@ -123,7 +131,7 @@ class SpeechToTextRequestModel extends BaseRequest {
   @override
   String get storageKey =>
       '$_audioDigest|${jsonEncode(config.toJson())}'
-      '|$skipTokenize|$includeWordTimings'
+      '|$skipTokenize|$includeWordTimings|$allowSpeakerL1'
       '${expectedText == null ? '' : '|$expectedText'}';
 
   @override
@@ -140,6 +148,7 @@ class SpeechToTextRequestModel extends BaseRequest {
     // a with-timings response into a without-timings slot.
     if (includeWordTimings) "include_word_timings": true,
     if (expectedText != null) "expected_text": expectedText,
+    if (allowSpeakerL1) "allow_speaker_l1": true,
     if (mock != null) ModelKey.mock: mock,
   };
 
@@ -152,7 +161,8 @@ class SpeechToTextRequestModel extends BaseRequest {
         config == other.config &&
         skipTokenize == other.skipTokenize &&
         includeWordTimings == other.includeWordTimings &&
-        expectedText == other.expectedText;
+        expectedText == other.expectedText &&
+        allowSpeakerL1 == other.allowSpeakerL1;
   }
 
   @override
@@ -162,6 +172,7 @@ class SpeechToTextRequestModel extends BaseRequest {
     skipTokenize,
     includeWordTimings,
     expectedText,
+    allowSpeakerL1,
   );
 }
 
