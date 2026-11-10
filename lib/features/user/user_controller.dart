@@ -342,7 +342,10 @@ class UserController {
       );
     }
 
-    await updatePublicProfile();
+    // Not awaited: publishes are serialized, so waiting here would hold up
+    // startup, analytics included, behind a slow profile write. Its errors are
+    // logged inside the publish chain.
+    unawaited(updatePublicProfile());
 
     // Do not await. This function pulls level from analytics,
     // so it waits for analytics to finish initializing. Analytics waits for user controller to
@@ -670,6 +673,12 @@ class UserController {
     await _savePublicProfileUpdate();
   }
 
+  /// Copies country and bio from [UserSettings] to the public profile.
+  ///
+  /// They are kept in the private settings and copied here, rather than
+  /// living only in the public profile, so the settings page saves everything
+  /// through one path (profile.instructions.md, "How the public profile stays
+  /// in sync").
   Future<void> updatePublicProfile() async {
     final current = publicProfile;
     if (current == null || !_publicProfileIsOwn) return;

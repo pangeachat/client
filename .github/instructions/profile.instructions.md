@@ -47,10 +47,10 @@ Signing up creates the profile, and onboarding fills in the languages, level and
 
 Learning settings open from four places, each showing the same settings and saving them the same way:
 
-1. **Settings → Learning**, as a full page.
-2. **A long press on the writing-assistance button**, as a dialog.
-3. **The gear icon on the interactive translation bar**, as a dialog.
-4. **The language-pair chip** ("EN → ES") on the learning progress widget, as a dialog.
+1. **Settings → Learning**, the Learning page in the settings panel.
+2. **A long press on the writing-assistance button**, which opens the settings as a dialog.
+3. **Learning settings in the writing-assistance card's ⋮ menu**, which opens the same settings-panel page.
+4. **The target-language flag beside the learner's avatar on the map**, which opens the same settings-panel page.
 
 Inside a room, one more place changes the same profile:
 
@@ -75,7 +75,7 @@ Course and activity content is language-specific, but the learner's language is 
 6. **The language chip is the switch.** Every surface that shows its content's language (the activity start page, a joined or previewed course's info chips, and a running session's [goal header](activity-session.instructions.md#the-goal-header)) draws it as a chip. When it differs from the learner's target, the chip is tinted in the warning colour, caution rather than achievement or failure, and tapping it opens the switcher. Nothing opens unasked: these panels reopen on nearly every move, so an automatic offer would be a notification the learner cannot turn off.
 7. **The language switcher** is the same list of every target language that learning settings uses, so it behaves the same wherever it opens. The chip's language and the languages the learner has progress in come first, so the few they move between need no scrolling or search. Picking one switches at once.
 8. **The send-time popup** is the backstop. Sending a message in an activity whose language differs from the learner's target offers to switch, at most once per 30 minutes per room so it does not nag, and confirming switches and sends the message. It stays because the chip is deliberately quiet: only this reaches a learner who never noticed the mismatch.
-9. **The reading toolbar.** Tapping a message in another language when the chosen mode cannot work there shows a snackbar whose "Learn" button switches to that language.
+9. **The reading toolbar.** Tapping a message in another language when the chosen mode cannot work there shows a snackbar saying learning tools are off for messages not in the target language, with a "Click here to update your target language" link that switches to that language. The link is left out when the message is in the learner's base language.
 
 **Switching to the learner's base language is refused, not attempted.** Every offer knows before it asks, so none of them offers the base language.
 
@@ -93,7 +93,7 @@ The public profile is a copy the app publishes from the learner's own settings a
 
 - **INVARIANT: NEVER publish a profile under an account other than the one it was loaded for.**
 - **Country and bio** are copied on every settings change, exactly: clearing one removes it.
-- **Level** is published for a language when the learner earns XP in it, and nothing republishes it at startup. A level left wrong by an earlier bug therefore stays wrong until the learner next earns XP in that language, a gap accepted deliberately. A level belongs to the language, not to a regional variant: every variant of French shares French's one level, shown on French's row only, since a level beside each variant would read as separate progress the learner does not have.
+- **Level** is published for a language when the learner earns XP in it. The one exception is startup: when the published copy has no level data, the current language's level is worked out on this device and published. Otherwise nothing republishes a level at startup, so a level left wrong by an earlier bug stays wrong until the learner next earns XP in that language, a gap accepted deliberately. A level belongs to the language, not to a regional variant: every variant of French shares French's one level, shown on French's row only, since a level beside each variant would read as separate progress the learner does not have.
 - **The banked goal total** counts activity goals, drawn as a goal diamond ([quests.instructions.md](quests.instructions.md#stars-and-goal-diamonds)): each activity's best saved run, in the language it was played in. It is not a course total, because what a course total means depends on the course. It is republished for the language being studied; the others stay as they are until the learner studies them again. It only rises, so a count that comes out low on one device never lowers it. It also keeps the stars from a session room the learner has left, so classmates can see more than the learner's own count. That is accepted: the app offers no way to leave one, and those stars were earned.
 
 ## What other people can see
@@ -104,9 +104,4 @@ Someone who does not share a room with the learner can find them by name, to sta
 
 ## Open questions
 
-- **Entry points 1, 3 and 4 no longer match the app.** All three now open the Learning page in the settings panel; only entry point 2, the long press, still opens a dialog. The interactive translation bar has no gear icon, and the writing-assistance card's menu opens learning settings instead. The progress widget's chip shows the target language's flag, not "EN → ES". Which should this doc say?
-- **The reading toolbar's button** reads "Click here to update your target language", not "Learn".
-- **Where country and bio live.** They are the only settings that cross from private to public, through a copy that has to stay exact. Keeping them only in the public profile, edited there, would remove the copy and make the boundary explicit.
-- **A self-reported level per language.** It is one value while the earned level is per language, so a switch leaves a level asserted for a language the learner never claimed, more often the more we encourage switching.
-- **A word on the first switch.** A switch into a language with no history behaves like any other. We may want to say once that it starts at level 1 and the previous language keeps its progress, so an empty progress screen never reads as lost work.
-- **Public learning stats.** Vocabulary, grammar progress and completed activities on a public profile would show classmates and teachers what a learner has learned, not just their level.
+- **The startup level publish.** The published copy counts as having no level data when it lacks the learner's base or target language, even if levels are already published, so the startup publish can replace a real level with one from this device, which may have incomplete data. Should it publish only when that language truly has no level?

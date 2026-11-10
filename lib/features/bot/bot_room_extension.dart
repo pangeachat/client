@@ -40,10 +40,13 @@ extension BotRoomExtension on Room {
       return;
     }
 
+    // One attempt, then up to three retries with exponential backoff: 5 s,
+    // 10 s, then 20 s.
     const maxRetries = 3;
+    const maxAttempts = maxRetries + 1;
     Duration retryDelay = const Duration(seconds: 5);
 
-    for (int attempt = 1; attempt <= maxRetries; attempt++) {
+    for (int attempt = 1; attempt <= maxAttempts; attempt++) {
       try {
         if (attempt > 1) {
           await Future.delayed(retryDelay);
@@ -67,7 +70,7 @@ extension BotRoomExtension on Room {
           data: {'roomId': id, 'options': options.toJson(), 'attempt': attempt},
         );
 
-        if (attempt == maxRetries) {
+        if (attempt == maxAttempts) {
           rethrow;
         }
       }
