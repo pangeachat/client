@@ -971,17 +971,30 @@ function repetition(text) {
 
 // ----------------------------------------------------------------- the clock
 
-/// The on-screen call clock, if the semantics tree carries it ("m:ss").
+/// The call panel's clock ("m:ss"), read by OCR of the panel only.
+///
+/// The clock is drawn on the canvas, never in the semantics tree, while every
+/// call card in the chat behind the panel IS there with its own "m:ss". Taking
+/// any m:ss on the page read a card's length (#9173 compared 197 with 197, two
+/// cards). So: locate the panel by its own controls -- minimize at the top,
+/// hang up at the bottom -- and read only between them. One m:ss there is the
+/// clock; none or several is "could not read", never a guess.
 async function clockOf(p, tag = 'clock') {
-  const l = await ui.labels(p.page).catch(() => []);
-  let c = l.map((x) => /(?:^|\s)(\d{1,2}):(\d{2})(?:\s|$)/.exec(x)).filter(Boolean)
-    .map((m) => Number(m[1]) * 60 + Number(m[2]));
-  if (!c.length) {
-    // The call panel draws its clock on the canvas: read it by OCR.
-    const t = await ocr(p, `${tag}-${Date.now()}`);
-    c = [...t.matchAll(/\b(\d{1,2}):(\d{2})\b(?!\s?[AaPp]\.?[Mm])/g)].map((m) => Number(m[1]) * 60 + Number(m[2]));
-  }
-  return c.length ? Math.max(...c) : null;
+  const nodes = await ui.scan(p.page).catch(() => []);
+  const at = (key) => nodes.find((n) => n.onScreen && n.names.some((x) => labels.candidates(key).includes(x)));
+  const top = at('minimize');
+  const bottom = at('hangup');
+  if (!top || !bottom || bottom.y <= top.y) return null;
+  const half = Math.abs(bottom.x - top.x) + 20;
+  const clip = { x: Math.max(0, bottom.x - half), y: top.y, width: 2 * half, height: bottom.y - top.y };
+  const { spawnSync } = require('child_process');
+  const f = path.join(evidenceDir(), `ocr-${p.name}-${tag}-${Date.now()}.png`);
+  try { await p.page.screenshot({ path: f, clip }); } catch (e) { return null; }
+  const r = spawnSync('tesseract', [f, '-', '--psm', '11'], { encoding: 'utf8' });
+  const text = String(r.stdout || '');
+  save(path.basename(f).replace(/\.png$/, '.txt'), text);
+  const found = [...new Set([...text.matchAll(/\b(\d{1,2}):(\d{2})\b/g)].map((m) => Number(m[1]) * 60 + Number(m[2])))];
+  return found.length === 1 ? found[0] : null;
 }
 
 // ----------------------------------------------------------------- finish

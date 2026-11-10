@@ -119,6 +119,7 @@ const KEYS = {
   answer: 'callAnswer',
   decline: 'callDecline',
   hangup: 'callHangUp',
+  minimize: 'callMinimize',
   mute: 'callMute',
   ret: 'callReturn',
   busy: 'callFailedBusy',
