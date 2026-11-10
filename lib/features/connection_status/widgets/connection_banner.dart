@@ -37,7 +37,9 @@ class ConnectionBanner extends StatefulWidget {
 
   const ConnectionBanner({required this.child, this.router, super.key});
 
-  /// Whether this device can run an offline vocab session. Replaced in tests.
+  /// Whether this device can run an offline vocab session. Vocab only: a
+  /// grammar check would read saved messages on every lost connection.
+  /// Replaced in tests.
   @visibleForTesting
   static Future<bool> Function() canPracticeOffline =
       AnalyticsPracticeSessionRepo.canStartOffline;
@@ -230,7 +232,8 @@ class _BannerCard extends StatelessWidget {
   final VoidCallback? onAction;
 
   /// Starts offline vocab practice: a row of its own under the message, or
-  /// the practice icon on the message's row when [compact].
+  /// the practice icon on the message's row when [compact], unlabeled
+  /// because a label does not fit there in long translations (#9570).
   final VoidCallback? onPractice;
   final VoidCallback? onClose;
 

@@ -214,6 +214,8 @@ badge, and the same-section analytics block — live in
 
 A practice session that starts while the app cannot reach Pangea ([connection-status](connection-status.instructions.md)) is an **offline session**, whichever button started it. It uses only what the device already has, and it has as many exercises as that allows, up to the usual 10. When the device has nothing to practice, the page says "Not enough is saved on this device to practice offline. Try again when you're back online."
 
+**Who is offered it.** Both banners in [connection-status](connection-status.instructions.md#what-the-user-sees) offer offline vocab practice to a signed-in learner the app does not know to be unsubscribed, with a full session's worth of words whose meanings are saved on the device, unless practice is already in progress or open.
+
 **Vocab.**
 
 - It uses meaning exercises only, because audio exercises need an example message and speech audio from the network, and read-aloud exercises need transcription from it.
