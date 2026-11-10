@@ -942,12 +942,17 @@ function assertScreens(s, screens, { subscribed, unsubscribed, anySubscribed, ca
       'no "Unlock call transcript" / subscribe placeholder');
     h.check(s, `${sc.name} (unsubscribed) is offered no Transcribe button`, !l.includes('Transcribe') && !(sc.text != null && /(^|\s)transcribe(\s|$)/.test(norm(sc.text))), 'a Transcribe button is offered (label or OCR)');
   }
+  // Nobody subscribed: the locked banner replaces the whole transcript body,
+  // the per-half notes included (transcript_view.dart's paywall), so the
+  // screen says it is locked and says nothing about either half.
   if (!anySubscribed) {
     for (const sc of unsubscribed) {
-      if (!sc.opened || (sc.text == null && !looked(sc))) { h.skipped(s, `${sc.name} sees "no transcript" text`, 'screen not read'); continue; }
-      h.check(s, `${sc.name} sees "no transcript" text`, anyLabel(sc.labels, 'callTranscriptNotSubscribed') || anyLabel(sc.labels, 'callTranscriptNone')
-        || ocrHas(sc.text, 'did not have a subscription') || ocrHas(sc.text, 'No transcript'),
-        `neither "did not have a subscription" nor "No transcript from" on screen (OCR: ${norm(sc.text || '').slice(0, 160)})`);
+      if (!sc.opened || sc.text == null || !looked(sc)) { h.skipped(s, `${sc.name} sees the locked transcript and no per-half note`, 'screen not read'); continue; }
+      const locked = anyLabel(sc.labels, 'unlockCallTranscript') || ocrHas(sc.text, 'Unlock call transcript');
+      const note = anyLabel(sc.labels, 'callTranscriptNotSubscribed') || anyLabel(sc.labels, 'callTranscriptNone')
+        || ocrHas(sc.text, 'did not have a subscription') || ocrHas(sc.text, 'No transcript');
+      h.check(s, `${sc.name} sees the locked transcript and no per-half note`, locked && !note,
+        locked ? `a per-half note shows behind the lock (OCR: ${norm(sc.text).slice(0, 160)})` : 'no "Unlock call transcript" banner');
     }
   }
 }
