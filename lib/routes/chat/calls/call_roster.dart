@@ -368,8 +368,21 @@ class CallRoster extends ChangeNotifier {
     this.metadataGrant = MetadataGrant.unknown,
   }) : _room = room {
     _room.addListener(recompute);
+    _roomEvents = _room.createListener()
+      ..on<lk.RoomDisconnectedEvent>((_) {
+        _roomGaveUp = true;
+        recompute();
+      });
     recompute();
   }
+
+  late final lk.EventsListener<lk.RoomEvent> _roomEvents;
+  bool _roomGaveUp = false;
+  bool _wasRecovering = false;
+
+  /// Whether the room has said it stopped trying to reconnect.
+  @protected
+  bool get roomGaveUp => _roomGaveUp;
 
   /// EVERYTHING this reads off the SFU, in one snapshot per recompute.
   ///
@@ -444,12 +457,12 @@ class CallRoster extends ChangeNotifier {
 
   /// Whether the connection is coming back, as opposed to gone.
   ///
-  /// The SDK reports reconnecting while it is trying and disconnected once it
-  /// has given up. Only the first is worth holding a picture for.
+  /// Gone only once the room says so. Its connection state is no answer:
+  /// LiveKit tears each attempt's socket down before the next, so it reads
+  /// `disconnected` between attempts while it is still trying.
   @protected
   bool get roomRecovering =>
-      _room.connectionState == lk.ConnectionState.connecting ||
-      _room.connectionState == lk.ConnectionState.reconnecting;
+      _room.connectionState != lk.ConnectionState.connected && !roomGaveUp;
 
   /// Publishes attributes for this device, and answers whether they went.
   ///
@@ -583,6 +596,10 @@ class CallRoster extends ChangeNotifier {
     final connected = roomConnected;
     final wasConnected = _connected;
     _connected = connected;
+    // Every change of [isRecovering] is heard, including a recovery that began
+    // with nobody in the picture and then gave up: nothing else changes then.
+    final recoveringChanged = isRecovering != _wasRecovering;
+    _wasRecovering = isRecovering;
 
     // While the connection is coming back the participant list is not evidence
     // of anything — it is emptied on a full restart and refilled afterwards, so
@@ -593,11 +610,13 @@ class CallRoster extends ChangeNotifier {
     // conversation that finished when the connection did.
     if (!connected) {
       if (roomRecovering) {
-        if (wasConnected) notifyListeners();
+        if (wasConnected || recoveringChanged) notifyListeners();
         return;
       }
       if (wasConnected || _picture.participants.isNotEmpty) {
         _picture = _RosterPicture.empty;
+        notifyListeners();
+      } else if (recoveringChanged) {
         notifyListeners();
       }
       return;
@@ -631,7 +650,7 @@ class CallRoster extends ChangeNotifier {
     //
     // Notified on reconnection even when nothing else changed, because the
     // frozen window ended and listeners gated on connectedness need to know.
-    final changed = !wasConnected || next != _picture;
+    final changed = !wasConnected || recoveringChanged || next != _picture;
     // Stored whether or not anyone is told, so a skipped notification cannot
     // leave the comparison arguing against a picture nobody holds any more.
     _picture = next;
@@ -986,6 +1005,7 @@ class CallRoster extends ChangeNotifier {
   @override
   void dispose() {
     _room.removeListener(recompute);
+    unawaited(_roomEvents.dispose());
     super.dispose();
   }
 }

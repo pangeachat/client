@@ -118,8 +118,14 @@ class CallHalfResumer {
     required this.outbox,
     this.onAudioPosted,
     this.uploadSessionBudget = kCallAudioUploadSessionBudget,
-    this.uploadAttemptBound = callAudioUploadAttemptBound,
+    this.uploadAttemptBound = _theWholeBudget,
   });
+
+  /// A resume runs behind the learner's back with nothing else waiting on it,
+  /// so one slow upload may take the whole budget. Cut off at the live finish's
+  /// bound, a link that cannot manage that bound never landed the half at all:
+  /// every pass abandoned its upload, and the blob arrived with no event.
+  static Duration _theWholeBudget(int bytes) => kCallAudioUploadSessionBudget;
 
   Future<void>? _inFlight;
 
