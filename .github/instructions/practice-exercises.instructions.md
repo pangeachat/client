@@ -88,12 +88,12 @@ The current scoring only considers **recency** and **content-word status**. It i
 | Tier | Who goes here | Practice priority |
 |---|---|---|
 | **Suppressed** | Lemmas whose most recent chat use is `wa` (writing assistance ran, message correct) or `unk` (no writing assistance run) AND no subsequent incorrect practice | **0** — skip entirely |
-| **Active** | Lemmas encountered through `ta` (a translation match) or `ga` (grammar correction / IGC), OR lemmas with a recent incorrect practice answer (`incXX`) | **High** — prioritize these |
+| **Active** | Lemmas encountered through `corIt`/`incIt` (a translation match; `ta` on messages from the retired interactive-translation flow) or `ga` (grammar correction / IGC), OR lemmas with a recent incorrect practice answer (`incXX`) | **High** — prioritize these |
 | **Maintenance** | Everything else — correctly practiced but aging | **Normal** — standard recency-based |
 
 **Tier transitions:**
 - A `wa` or `unk` use → moves to Suppressed (user produced the word correctly, no help needed)
-- A `ta` or `ga` use → moves to Active (user needed help)
+- A `corIt`, `incIt`, `ta` or `ga` use → moves to Active (user needed help)
 - An incorrect practice answer → moves to Active (user struggled)
 - N consecutive correct practice answers → Active → Maintenance (learning is sticking)
 - Time passes without interaction → Maintenance words naturally bubble up via recency
@@ -104,7 +104,7 @@ The current scoring only considers **recency** and **content-word status**. It i
 
 **Example scenario:**
 1. User types "gato" correctly with no correction needed → `unk` (or `wa` if writing assistance ran and passed) → Suppressed. Won't appear in practice.
-2. User accepts a translation match for "mariposa" → `ta` → Active. High priority for practice.
+2. User accepts a translation match for "mariposa" → `corIt` → Active. High priority for practice.
 3. User practices "mariposa" and gets it wrong → `incLM` → stays Active, priority boosted.
 4. User practices "mariposa" correctly 3 times → Active → Maintenance.
 5. Two weeks pass with no interaction → Maintenance, but high recency score → likely to appear.

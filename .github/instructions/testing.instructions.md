@@ -50,7 +50,7 @@ The PR runner (`flutter test` via `integrate.yaml`) is a plain ubuntu-latest wit
 | Goal | Location | CI gate | Mock mechanism |
 |---|---|---|---|
 | Client-side logic: request serialization, response parsing, error handling | `test/pangea/` | Every PR | `http.MockClient` in Dart intercepts `Requests.post`/`.get`, returns a canned JSON fixture. No network. |
-| End-to-end UI flows that trigger choreo | `e2e/scripts/` | Post-deploy + nightly | Choreo requests are intercepted by Playwright specs and `mock: true` is inserted. |
+| End-to-end UI flows that trigger choreo | `e2e/scripts/` | Post-deploy + nightly | Playwright adds a `mock: true` header to choreo requests, which choreo does not read yet. |
 
 ### Endpoint tests — `test/pangea/choreo_endpoint_test.dart`
 
@@ -121,7 +121,7 @@ Use `SentryCaptureHarness.expectNoReport(work)` instead of a bare `isEmpty`. It 
 
 ## Mock mode — bypassing paid choreo/CMS calls
 
-When Playwright is run, all choreo requests are intercepted, and `mock: true` is injected. This tells the choreographer to run the full handler path but swap every paid third-party call for a canned response. No individual request class needs to be modified.
+When Playwright is run, the fixture adds a `mock: true` header to every choreo request. `mock: true` tells the choreographer to run the full handler path but swap every paid third-party call for a canned response; choreo reads it from the request body, so the header does not reach it yet ([playwright-testing](playwright-testing.instructions.md#bypassing-paid-backend-calls---mocktrue)).
 
 **Scope**: CMS reads use `Requests.get` and do not send `mock`; CMS doesn't have paid third-party calls so this is fine. If a choreo route returns 500 under `mock=true`, the handler likely lacks a registered mock producer — see the [playwright-testing instructions § Bypassing paid backend calls](playwright-testing.instructions.md#bypassing-paid-backend-calls---mocktrue) for how to file and fix.
 
