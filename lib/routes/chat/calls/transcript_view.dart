@@ -502,16 +502,43 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
 
   /// Fills in [half] from its recording, unasked, the first time it is drawn.
   /// Marked in flight at once so the note and the button never flash up first.
-  /// While [recent], a fill that finds the merge not yet landed stays loading
-  /// and runs again on the next redraw, which the merge's sync brings.
-  void _autoFill(TranscriptHalf half, {required bool recent}) {
+  /// Before [deadline], a fill that finds the merge not yet landed stays
+  /// loading until the merge shows (it is tried again) or the deadline passes
+  /// (the note and the button), whichever comes first (#9485).
+  void _autoFill(TranscriptHalf half, {required DateTime? deadline}) {
     final speaker = half.senderId;
     if (!_autoFilled.add(speaker)) return;
     _onDemandInFlight.add(speaker);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      unawaited(_transcribeHalf(speaker, ask: false, retryOnPending: recent));
+      unawaited(
+        _transcribeHalf(speaker, ask: false, awaitMergeUntil: deadline),
+      );
     });
+  }
+
+  /// One per half waiting on its merge: ends the wait at its deadline.
+  final Map<String, Timer> _mergeDeadlines = {};
+
+  /// Waits for the merge, never past [until]. [mergeAppeared] is a merge that
+  /// showed while the fill was asking: its own redraw found the fill busy and
+  /// passed it over, so this one redraws for it.
+  void _awaitMerge(
+    String speaker,
+    DateTime until, {
+    required bool mergeAppeared,
+  }) {
+    final now = (widget.now ?? DateTime.now)();
+    _mergeDeadlines[speaker] ??= Timer(until.difference(now), () {
+      _mergeDeadlines.remove(speaker);
+      // A fill still running answers for itself.
+      if (!mounted || _autoFilled.contains(speaker)) return;
+      setState(() {
+        _autoFilled.add(speaker);
+        _onDemandInFlight.remove(speaker);
+      });
+    });
+    if (mergeAppeared) setState(() {});
   }
 
   /// Whether this device has not finished sending this call yet. The room
@@ -1132,9 +1159,10 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
   Future<void> _transcribeHalf(
     String speakerId, {
     required bool ask,
-    bool retryOnPending = false,
+    DateTime? awaitMergeUntil,
   }) async {
     var awaitingMerge = false;
+    final mergeShownAtStart = _shownHasMerge;
     try {
       final resolved = await _transcriber.resolvePeerLanguages(speakerId);
       String? language;
@@ -1170,11 +1198,18 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         // the ordinary button reappears rather than locking into a terminal note
         // over what a later tap may resolve.
         //
-        // An unasked fill that found the merge not yet landed stays loading and
-        // is tried again on the next redraw (#9485), within [retryOnPending].
+        // An unasked fill that found the merge not yet landed stays loading
+        // until the merge shows or [awaitMergeUntil] passes (#9485).
         case OnDemandTranscriptionResult.manifestPending:
-          awaitingMerge = retryOnPending;
-          if (awaitingMerge) _autoFilled.remove(speakerId);
+          if (awaitMergeUntil != null) {
+            awaitingMerge = true;
+            _autoFilled.remove(speakerId);
+            _awaitMerge(
+              speakerId,
+              awaitMergeUntil,
+              mergeAppeared: _shownHasMerge && !mergeShownAtStart,
+            );
+          }
         case OnDemandTranscriptionResult.downloadFailed:
         case OnDemandTranscriptionResult.noRecording:
         case OnDemandTranscriptionResult.disabled:
@@ -1190,6 +1225,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       // a terminal note over what may only be transient.
       Logs().w('On-demand call transcription failed for $speakerId', e, s);
     } finally {
+      if (!awaitingMerge) _mergeDeadlines.remove(speakerId)?.cancel();
       if (mounted && !awaitingMerge) {
         setState(() => _onDemandInFlight.remove(speakerId));
       }
@@ -1222,6 +1258,9 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     _disposePlayback();
     _loadController.dispose();
     _stillSendingCheck?.cancel();
+    for (final timer in _mergeDeadlines.values) {
+      timer.cancel();
+    }
     super.dispose();
   }
 
@@ -2087,12 +2126,8 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     // Nothing left for the reader to do about these: their recording is here.
     for (final half in transcript.halves) {
       if (half.waitsOnItsRecording && hasRecording(half)) {
-        _autoFill(
-          half,
-          recent:
-              now.difference(recordingTimes[half.senderId]!) <
-              transcribingWindow,
-        );
+        final deadline = recordingTimes[half.senderId]!.add(transcribingWindow);
+        _autoFill(half, deadline: now.isBefore(deadline) ? deadline : null);
       }
     }
 

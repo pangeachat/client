@@ -6306,9 +6306,22 @@ void main() {
       // r06 (#9485): the screen opened before the merged recording landed. The
       // first auto-fill found no manifest, and the half showed the note and
       // the button until the device's own fill arrived.
-      Future<List<String>> openBeforeTheMerge(
+      Future<
+        ({
+          List<String> posted,
+          List<int> downloads,
+          List<int> discovers,
+          void Function() land,
+        })
+      >
+      openBeforeTheMerge(
         WidgetTester tester, {
         required int openedAtMs,
+        // Holds the first discover open, so the merge can land mid-call.
+        Future<void>? holdFirstDiscover,
+        // The merge is on screen from the start, yet the manifest stays
+        // unresolved: a fill must not spin on it.
+        bool mergeShownButUnresolved = false,
       }) async {
         MatrixState.pangeaController = FakePangeaController(subscribed: true);
         final events = [
@@ -6316,9 +6329,12 @@ void main() {
           refusedHalf(_peer),
           audioEvent(_me),
           audioEvent(_peer),
+          if (mergeShownButUnresolved) mergedEvent(_me),
         ];
         var merged = false;
         final posted = <String>[];
+        final downloads = <int>[];
+        final discovers = <int>[];
         final resolvedManifest = WholeCallManifest(
           resolved: true,
           recordings: [
@@ -6340,8 +6356,18 @@ void main() {
           ],
         );
         final fake = buildFakeTranscriber(
-          discover: (_) async =>
-              merged ? resolvedManifest : WholeCallManifest.absent,
+          discover: (_) async {
+            discovers.add(discovers.length);
+            if (discovers.length == 1 && holdFirstDiscover != null) {
+              await holdFirstDiscover;
+              return WholeCallManifest.absent;
+            }
+            return merged ? resolvedManifest : WholeCallManifest.absent;
+          },
+          download: (uri) async {
+            downloads.add(downloads.length);
+            return Uint8List.fromList(const [1, 2, 3, 4]);
+          },
           post:
               ({
                 required callKey,
@@ -6374,30 +6400,111 @@ void main() {
           transcriber: fake,
           now: () => DateTime.fromMillisecondsSinceEpoch(openedAtMs),
         );
-        await tester.pumpAndSettle();
-        merged = true;
-        events.add(mergedEvent(_me));
-        return posted;
+        await tester.pump();
+        return (
+          posted: posted,
+          downloads: downloads,
+          discovers: discovers,
+          land: () {
+            merged = true;
+            events.add(mergedEvent(_me));
+          },
+        );
       }
 
       testWidgets(
         'a fill that found no merge yet shows loading and retries on the next '
         'sync',
         (tester) async {
-          final posted = await openBeforeTheMerge(
+          final open = await openBeforeTheMerge(
             tester,
             openedAtMs: 1000 + 60 * 1000,
           );
+          await tester.pumpAndSettle();
           expect(
             find.textContaining('did not have a subscription'),
             findsNothing,
           );
           expect(find.text('Transcribe'), findsNothing);
 
+          open.land();
           client.onSync.add(SyncUpdate(nextBatch: 's1'));
           await tester.pumpAndSettle();
 
-          expect(posted, [_peer]);
+          expect(open.posted, [_peer]);
+          expect(open.downloads, hasLength(1));
+          expect(find.textContaining('que tal'), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'a merge that never lands falls back to the note and button at the '
+        'window deadline',
+        (tester) async {
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+          );
+          await tester.pumpAndSettle();
+          expect(find.text('Transcribe'), findsNothing);
+
+          // Crossed while loading, with no sync at all.
+          await tester.pump(const Duration(minutes: 5));
+          await tester.pumpAndSettle();
+
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsOneWidget,
+          );
+          expect(find.text('Transcribe'), findsOneWidget);
+          expect(open.discovers, hasLength(1));
+          expect(open.downloads, isEmpty);
+        },
+      );
+
+      testWidgets(
+        'a merge already shown with an unresolved manifest is not asked again '
+        'until the deadline',
+        (tester) async {
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+            mergeShownButUnresolved: true,
+          );
+          for (var i = 0; i < 10; i++) {
+            await tester.pump(const Duration(milliseconds: 100));
+          }
+          expect(open.discovers, hasLength(1));
+
+          await tester.pump(const Duration(minutes: 5));
+          await tester.pumpAndSettle();
+          expect(find.text('Transcribe'), findsOneWidget);
+          expect(open.discovers, hasLength(1));
+        },
+      );
+
+      testWidgets(
+        'a merge that lands while the fill is still asking is retried once',
+        (tester) async {
+          final hold = Completer<void>();
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+            holdFirstDiscover: hold.future,
+          );
+          await tester.pump();
+
+          // The merge lands and redraws while the first fill is in flight.
+          open.land();
+          client.onSync.add(SyncUpdate(nextBatch: 's1'));
+          await tester.pump();
+          await tester.pump();
+
+          hold.complete();
+          await tester.pumpAndSettle();
+
+          expect(open.posted, [_peer]);
+          expect(open.downloads, hasLength(1));
           expect(find.textContaining('que tal'), findsOneWidget);
         },
       );
@@ -6406,10 +6513,12 @@ void main() {
         'past the transcribing window a missing merge leaves the note and '
         'button',
         (tester) async {
-          final posted = await openBeforeTheMerge(
+          final open = await openBeforeTheMerge(
             tester,
             openedAtMs: 1000 + 6 * 60 * 1000,
           );
+          await tester.pumpAndSettle();
+          final posted = open.posted;
           expect(
             find.textContaining('did not have a subscription'),
             findsOneWidget,
