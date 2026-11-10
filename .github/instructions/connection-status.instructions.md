@@ -18,8 +18,6 @@ What each server provides:
 - Map server: the world map.
 - Google and Apple sign-in ([signup-and-login](signup-and-login.instructions.md)): signing in that way; email sign-in still works.
 
-Without either of the first two, the app stops.
-
 ## Telling the causes apart
 
 The app compares the server it needs with a neutral address: one that phones and computers use to check that they are online, which filters let through. It checks after a request gets no response, when messages stop arriving, when an activity video opens, and before Google or Apple sign-in on the web.
