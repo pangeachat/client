@@ -266,8 +266,7 @@ class CallService {
     coordinator = CallAudioMergeCoordinator(
       relationsFetch: relationsFetcherFor(client),
       download: callAudioDownloaderFor(client),
-      upload: (bytes, {required filename, required contentType}) => client
-          .uploadContent(bytes, filename: filename, contentType: contentType),
+      upload: uploadCallAudio,
       // Room-aware: one coordinator sends the merges of calls across many rooms,
       // so the target room travels with each send. A room the client no longer
       // knows yields null, exactly as the per-device sender's own null.
@@ -300,6 +299,10 @@ class CallService {
     unawaited(_activateMergeCoordinator());
     return coordinator;
   }
+
+  /// The merge coordinator, brought up on first use, for tests of its wiring.
+  @visibleForTesting
+  CallAudioMergeCoordinator get mergeCoordinator => _ensureMergeCoordinator();
 
   /// Forwards one [trigger] to the merge coordinator, bringing the subsystem up
   /// on first use.
@@ -541,6 +544,24 @@ class CallService {
       _flushingTranscripts = false;
     }
   }
+
+  /// A recording's upload on a fresh token. The homeserver reads the token once
+  /// the whole body has arrived, and sync only refreshes one with a minute left,
+  /// so an upload slower than that came back 401 after all those minutes.
+  Future<Uri> uploadCallAudio(
+    Uint8List bytes, {
+    required String filename,
+    required String contentType,
+  }) async {
+    await client.ensureNotSoftLoggedOut(slowUploadWindow);
+    return client.uploadContent(
+      bytes,
+      filename: filename,
+      contentType: contentType,
+    );
+  }
+
+  static const slowUploadWindow = Duration(minutes: 4);
 
   /// Deletes every call recording this account left waiting on this device.
   /// Run when the account signs out: a recording is the learner's, and the
