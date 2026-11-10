@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/features/connection_status/**"
-description: "How the app tells the user it cannot reach a server it needs, what it tells them to do, and how the team hears about it."
+description: "How the app tells the user it cannot reach a server it needs, what it shows them, and how the team hears about it."
 ---
 
 # Connection status
@@ -24,9 +24,11 @@ The device is offline when the phone, computer or browser says it has no network
 
 A server is blocked when it refuses the connection, or another site answers in its place, while the neutral address works. A server that answers at all, even with an error, or is only slow, is not blocked. Our own servers, the chat server and the Pangea API, refuse connections for a minute or more while we update them, so a refusal from either counts as a block only after three minutes.
 
+The app checks a server after a request to it gets no response, when messages stop arriving, when an activity video opens, because the app cannot see the video player's failures, and before Google or Apple sign-in on the web. Nothing counts while the app is out of sight, because the device may pause it, so coming back never raises a false alarm.
+
 On the web, the app cannot see a filter's block page, so it misses filters that show one instead of refusing the connection.
 
-**Before sign-in.** With no messages to watch, the banner relies on the device's network status and on failed sign-ins. It says at once when a sign-in cannot reach the chat server, so nobody waits three minutes to learn that something is wrong.
+**Before sign-in.** With no messages to watch, the banner relies on the device's network status and on failed sign-ins. It says at once when a sign-in cannot reach the chat server, so nobody waits three minutes to learn that something is wrong; the sign-in form still shows its own error.
 
 ## What the user sees
 
@@ -35,7 +37,7 @@ Two banners share the top of every page, and only one shows at a time:
 - The connection banner says the device is offline or the app can't reach Pangea Chat, then "Back online" when the connection returns. It follows only the chat server and the device's network status.
 - The filtered-network banner says this network is blocking Pangea Chat. It shows when the network blocks the chat server or the Pangea API, and wins over the connection banner, because the user can act on it.
 
-Both offer offline vocab practice to users who qualify ([practice-exercises](practice-exercises.instructions.md#offline-practice)). Either can be dismissed, and comes back when its news changes.
+Both offer offline vocab practice to users who qualify ([practice-exercises](practice-exercises.instructions.md#offline-practice)). Either can be dismissed, and comes back when its news changes. In the single-column layout ([routing](routing.instructions.md)) each is one compact row, with practice as an unlabeled icon beside the close button, so it clears the handle of a full-height sheet and the sheet does not move.
 
 When the image server, YouTube or the map is blocked, a note takes that feature's place and the rest of the screen works. On the web, a blocked Google or Apple sign-in offers email sign-up instead ([signup-and-login](signup-and-login.instructions.md)). An outage of any server but the chat server shows only the feature's own error.
 
@@ -45,11 +47,11 @@ The filtered-network banner's button and each note open the same guidance: on a 
 
 ### Reconnecting
 
-When the connection to the chat server returns, the connection banner says "Back online" for a few seconds. A block clears once a request to its server succeeds, and a network change runs the check again, so a user who switches to mobile data carries on without restarting. The map is the exception: a tile that loads may come from the browser's saved copy, so it starts a check instead.
+When the connection to the chat server returns, the connection banner says "Back online" for a few seconds. A block on the chat server or the Pangea API clears once a request to it succeeds. Any other block clears only when a later check finds the server reachable: after the next failure there, the next video opening or sign-in, or a network change. A network change checks every blocked server again, so a user who switches to mobile data carries on without restarting. A map tile that loads also starts a check, since it may come from the browser's saved copy. Images get no such check, because their note takes their place, so an image block usually lasts until the network changes.
 
 ### Reporting to the team
 
-**Asking Pangea for help.** The guidance ends with an **Ask Pangea for help** button, with the user's email filled in when the app knows it. The request reaches support@pangea.chat through the CMS ([form-submissions](../../../cms/.github/instructions/form-submissions.instructions.md#network-help-requests) lists what it carries). It also carries the IDs of the user's courses, the same as the Sentry report, taken when the user asks. Only these requests email the team, which keeps the volume low, and each account can send one a day.
+**Asking Pangea for help.** The guidance ends with an **Ask Pangea for help** button, with the user's email filled in when the app knows it. The request reaches support@pangea.chat through the CMS ([form-submissions](../../../cms/.github/instructions/form-submissions.instructions.md#network-help-requests) lists what it carries). It also carries the IDs of the user's courses, the same as the Sentry report, taken when the user asks. Only these requests email the team, which keeps the volume low, and each account can send one a day. Signing out lifts the limit for the next account on a shared device; a request still waiting goes out as the earlier account's.
 
 If the CMS is blocked too, the request waits on the device until it can be sent, and the user sees it waiting, then sent. If the CMS answers with an error, the user is asked to email support@pangea.chat, and the app tries to send the request once more the next time it starts.
 
