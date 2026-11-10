@@ -536,6 +536,15 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     });
   }
 
+  /// Records whether the merge is shown. The one place a merge appearing is
+  /// noticed, from the first read or a later one: halves waiting on it ask
+  /// once more, after the caller's own update.
+  void _setMergeShown(bool shown) {
+    final appeared = shown && !_shownHasMerge;
+    _shownHasMerge = shown;
+    if (appeared) scheduleMicrotask(_retryWaitingFills);
+  }
+
   /// The merge has just shown: every half waiting on it asks once more.
   void _retryWaitingFills() {
     final waiting = Map.of(_waitingOnMerge);
@@ -773,7 +782,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       // only swaps (and rebuilds) on a material change (see that method).
       _shownHalfCount = recs.length;
       _shownRecordings = recs;
-      _shownHasMerge = mergedRow != null;
+      _setMergeShown(mergedRow != null);
       // The initial reads have fed the machine; live refreshes may now run.
       _initialReadsSettled = true;
       // Kick the first drain if a sync armed a request while the reads were in
@@ -973,9 +982,8 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
           _shownRecordings = recs;
         }
         _merged = SynchronousFuture(mergedList);
-        _shownHasMerge = mergedRow != null;
+        _setMergeShown(mergedRow != null);
       });
-      if (mergeAppeared) _retryWaitingFills();
     }
   }
 

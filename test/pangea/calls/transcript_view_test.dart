@@ -6326,6 +6326,10 @@ void main() {
         // The merge has landed before the screen opens, and every download is
         // held until this completes: a fill in flight across redraws.
         Future<void>? holdDownloads,
+        // The screen's first read of the merged recording is held until this
+        // completes, and the merge is in the room by then: a fill goes
+        // pending first, and the merge arrives with that first read.
+        Future<void>? holdFirstMergedRead,
       }) async {
         MatrixState.pangeaController = FakePangeaController(subscribed: true);
         final openedAt = tester.binding.clock.now();
@@ -6400,10 +6404,29 @@ void main() {
                 );
               },
         );
+        final serve = servingByType(events);
+        var mergedReads = 0;
         await pumpWithRecordings(
           tester,
           room(),
-          servingByType(events),
+          ({
+            required String roomId,
+            required String eventId,
+            required String relType,
+            String? from,
+          }) async {
+            if (relType == CallAudioMergedContent.relType &&
+                mergedReads++ == 0 &&
+                holdFirstMergedRead != null) {
+              await holdFirstMergedRead;
+            }
+            return serve(
+              roomId: roomId,
+              eventId: eventId,
+              relType: relType,
+              from: from,
+            );
+          },
           transcriber: fake,
           // Moves with the test's fake time, so a deadline is measured on the
           // same clock the timers run on.
@@ -6560,6 +6583,52 @@ void main() {
           await tester.pumpAndSettle();
           expect(open.downloads, hasLength(1));
           expect(open.posted, [_peer]);
+        },
+      );
+
+      testWidgets(
+        'a merge that comes with the first read after a fill went pending is '
+        'retried once',
+        (tester) async {
+          final hold = Completer<void>();
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+            holdFirstMergedRead: hold.future,
+          );
+          for (var i = 0; i < 5; i++) {
+            await tester.pump();
+          }
+          expect(open.discovers, hasLength(1));
+          expect(open.posted, isEmpty);
+
+          // The merge is in the room when the held first read returns.
+          open.land();
+          hold.complete();
+          await tester.pumpAndSettle();
+
+          expect(open.discovers, hasLength(2));
+          expect(open.posted, [_peer]);
+          expect(find.textContaining('que tal'), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'syncs that change nothing while a half waits ask nothing again',
+        (tester) async {
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+          );
+          await tester.pumpAndSettle();
+          expect(open.discovers, hasLength(1));
+
+          for (var i = 0; i < 3; i++) {
+            client.onSync.add(SyncUpdate(nextBatch: 'unchanged$i'));
+            await tester.pumpAndSettle();
+          }
+          expect(open.discovers, hasLength(1));
+          expect(open.posted, isEmpty);
         },
       );
 
