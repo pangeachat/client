@@ -1002,7 +1002,10 @@ async function finish(s, participants, extraInfo = {}) {
     checks: h.results, skipped: h.inconclusive,
     failing: failed.map((f) => `${f.name}: ${f.detail}`),
   });
-  for (const p of participants) await p?.browser?.close().catch(() => {});
+  // Bounded: a browser that never finishes closing held r07 past its result
+  // to the route timeout. Every check is already recorded, and run_all kills
+  // any Chrome left on a suite profile before the next route.
+  for (const p of participants) await Promise.race([p?.browser?.close().catch(() => {}), wait(15000)]);
   process.exit(unproven === 0 ? 0 : 1);
 }
 
