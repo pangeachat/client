@@ -517,28 +517,34 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
     });
   }
 
-  /// One per half waiting on its merge: ends the wait at its deadline.
+  /// Halves waiting on their merge, each with its deadline. A waiting half
+  /// stays in [_autoFilled], so a redraw never asks again: only the merge
+  /// showing does ([_retryWaitingFills]), or the deadline ends the wait.
+  final Map<String, DateTime> _waitingOnMerge = {};
+
+  /// One per half that has waited on its merge: ends the wait at its deadline.
   final Map<String, Timer> _mergeDeadlines = {};
 
-  /// Waits for the merge, never past [until]. [mergeAppeared] is a merge that
-  /// showed while the fill was asking: its own redraw found the fill busy and
-  /// passed it over, so this one redraws for it.
-  void _awaitMerge(
-    String speaker,
-    DateTime until, {
-    required bool mergeAppeared,
-  }) {
+  void _awaitMerge(String speaker, DateTime until) {
+    _waitingOnMerge[speaker] = until;
     final now = (widget.now ?? DateTime.now)();
     _mergeDeadlines[speaker] ??= Timer(until.difference(now), () {
       _mergeDeadlines.remove(speaker);
-      // A fill still running answers for itself.
-      if (!mounted || _autoFilled.contains(speaker)) return;
-      setState(() {
-        _autoFilled.add(speaker);
-        _onDemandInFlight.remove(speaker);
-      });
+      // A fill running now answers for itself when it comes back.
+      if (!mounted || _waitingOnMerge.remove(speaker) == null) return;
+      setState(() => _onDemandInFlight.remove(speaker));
     });
-    if (mergeAppeared) setState(() {});
+  }
+
+  /// The merge has just shown: every half waiting on it asks once more.
+  void _retryWaitingFills() {
+    final waiting = Map.of(_waitingOnMerge);
+    _waitingOnMerge.clear();
+    waiting.forEach(
+      (speaker, until) => unawaited(
+        _transcribeHalf(speaker, ask: false, awaitMergeUntil: until),
+      ),
+    );
   }
 
   /// Whether this device has not finished sending this call yet. The room
@@ -969,6 +975,7 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         _merged = SynchronousFuture(mergedList);
         _shownHasMerge = mergedRow != null;
       });
+      if (mergeAppeared) _retryWaitingFills();
     }
   }
 
@@ -1201,14 +1208,18 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
         // An unasked fill that found the merge not yet landed stays loading
         // until the merge shows or [awaitMergeUntil] passes (#9485).
         case OnDemandTranscriptionResult.manifestPending:
-          if (awaitMergeUntil != null) {
+          final until = awaitMergeUntil;
+          if (until != null && (widget.now ?? DateTime.now)().isBefore(until)) {
             awaitingMerge = true;
-            _autoFilled.remove(speakerId);
-            _awaitMerge(
-              speakerId,
-              awaitMergeUntil,
-              mergeAppeared: _shownHasMerge && !mergeShownAtStart,
-            );
+            if (_shownHasMerge && !mergeShownAtStart) {
+              // The merge showed while this fill was asking, when nothing was
+              // waiting for it to retry: ask again now.
+              unawaited(
+                _transcribeHalf(speakerId, ask: false, awaitMergeUntil: until),
+              );
+            } else {
+              _awaitMerge(speakerId, until);
+            }
           }
         case OnDemandTranscriptionResult.downloadFailed:
         case OnDemandTranscriptionResult.noRecording:
@@ -1225,7 +1236,10 @@ class _CallTranscriptViewState extends State<CallTranscriptView> {
       // a terminal note over what may only be transient.
       Logs().w('On-demand call transcription failed for $speakerId', e, s);
     } finally {
-      if (!awaitingMerge) _mergeDeadlines.remove(speakerId)?.cancel();
+      if (!awaitingMerge) {
+        _waitingOnMerge.remove(speakerId);
+        _mergeDeadlines.remove(speakerId)?.cancel();
+      }
       if (mounted && !awaitingMerge) {
         setState(() => _onDemandInFlight.remove(speakerId));
       }

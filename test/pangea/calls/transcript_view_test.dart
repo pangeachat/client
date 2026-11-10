@@ -6312,6 +6312,7 @@ void main() {
           List<int> downloads,
           List<int> discovers,
           void Function() land,
+          DateTime openedAt,
         })
       >
       openBeforeTheMerge(
@@ -6322,16 +6323,21 @@ void main() {
         // The merge is on screen from the start, yet the manifest stays
         // unresolved: a fill must not spin on it.
         bool mergeShownButUnresolved = false,
+        // The merge has landed before the screen opens, and every download is
+        // held until this completes: a fill in flight across redraws.
+        Future<void>? holdDownloads,
       }) async {
         MatrixState.pangeaController = FakePangeaController(subscribed: true);
+        final openedAt = tester.binding.clock.now();
         final events = [
           half(_me, texts: const ['hola'], atMs: [_callStart]),
           refusedHalf(_peer),
           audioEvent(_me),
           audioEvent(_peer),
-          if (mergeShownButUnresolved) mergedEvent(_me),
+          if (mergeShownButUnresolved || holdDownloads != null)
+            mergedEvent(_me),
         ];
-        var merged = false;
+        var merged = holdDownloads != null;
         final posted = <String>[];
         final downloads = <int>[];
         final discovers = <int>[];
@@ -6366,6 +6372,7 @@ void main() {
           },
           download: (uri) async {
             downloads.add(downloads.length);
+            if (holdDownloads != null) await holdDownloads;
             return Uint8List.fromList(const [1, 2, 3, 4]);
           },
           post:
@@ -6398,13 +6405,18 @@ void main() {
           room(),
           servingByType(events),
           transcriber: fake,
-          now: () => DateTime.fromMillisecondsSinceEpoch(openedAtMs),
+          // Moves with the test's fake time, so a deadline is measured on the
+          // same clock the timers run on.
+          now: () => DateTime.fromMillisecondsSinceEpoch(
+            openedAtMs,
+          ).add(tester.binding.clock.now().difference(openedAt)),
         );
         await tester.pump();
         return (
           posted: posted,
           downloads: downloads,
           discovers: discovers,
+          openedAt: openedAt,
           land: () {
             merged = true;
             events.add(mergedEvent(_me));
@@ -6445,12 +6457,28 @@ void main() {
             tester,
             openedAtMs: 1000 + 60 * 1000,
           );
-          await tester.pumpAndSettle();
+          // Zero-length pumps only: the screen's clock is fixed at opening, so
+          // fake time must not move before the deadline is measured.
+          for (var i = 0; i < 5; i++) {
+            await tester.pump();
+          }
+          expect(open.discovers, hasLength(1));
           expect(find.text('Transcribe'), findsNothing);
 
-          // Crossed while loading, with no sync at all.
-          await tester.pump(const Duration(minutes: 5));
-          await tester.pumpAndSettle();
+          // Opened a minute after the recording: the deadline is 4 minutes
+          // after opening, not 5. Still loading just before it, no sync at all.
+          final elapsed = tester.binding.clock.now().difference(open.openedAt);
+          await tester.pump(
+            const Duration(minutes: 4) - elapsed - const Duration(seconds: 1),
+          );
+          expect(find.text('Transcribe'), findsNothing);
+          expect(
+            find.textContaining('did not have a subscription'),
+            findsNothing,
+          );
+
+          await tester.pump(const Duration(seconds: 1));
+          await tester.pump();
 
           expect(
             find.textContaining('did not have a subscription'),
@@ -6483,6 +6511,58 @@ void main() {
         },
       );
 
+      testWidgets('redraws while a half waits on its merge ask nothing again', (
+        tester,
+      ) async {
+        final open = await openBeforeTheMerge(
+          tester,
+          openedAtMs: 1000 + 60 * 1000,
+          mergeShownButUnresolved: true,
+        );
+        await tester.pumpAndSettle();
+        expect(open.discovers, hasLength(1));
+
+        // Opening and closing the card's device rows redraws the screen.
+        for (var i = 0; i < 3; i++) {
+          await tester.tap(find.byIcon(Icons.expand_more));
+          await tester.pumpAndSettle();
+          await tester.tap(find.byIcon(Icons.expand_less));
+          await tester.pumpAndSettle();
+        }
+        expect(open.discovers, hasLength(1));
+      });
+
+      testWidgets(
+        'a fill already transcribing is not started again by redraws',
+        (tester) async {
+          final hold = Completer<void>();
+          final open = await openBeforeTheMerge(
+            tester,
+            openedAtMs: 1000 + 60 * 1000,
+            holdDownloads: hold.future,
+          );
+          await tester.pump();
+          await tester.pump();
+          expect(open.downloads, hasLength(1));
+
+          for (var i = 0; i < 2; i++) {
+            await tester.tap(find.byIcon(Icons.expand_more));
+            await tester.pump();
+            await tester.tap(find.byIcon(Icons.expand_less));
+            await tester.pump();
+            client.onSync.add(SyncUpdate(nextBatch: 's$i'));
+            await tester.pump();
+          }
+          expect(open.downloads, hasLength(1));
+          expect(open.posted, isEmpty);
+
+          hold.complete();
+          await tester.pumpAndSettle();
+          expect(open.downloads, hasLength(1));
+          expect(open.posted, [_peer]);
+        },
+      );
+
       testWidgets(
         'a merge that lands while the fill is still asking is retried once',
         (tester) async {
@@ -6499,10 +6579,12 @@ void main() {
           client.onSync.add(SyncUpdate(nextBatch: 's1'));
           await tester.pump();
           await tester.pump();
+          expect(open.discovers, hasLength(1));
 
           hold.complete();
           await tester.pumpAndSettle();
 
+          expect(open.discovers, hasLength(2));
           expect(open.posted, [_peer]);
           expect(open.downloads, hasLength(1));
           expect(find.textContaining('que tal'), findsOneWidget);
