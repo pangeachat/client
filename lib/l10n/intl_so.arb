@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-11-06 13:11:05.693580",
+    "@@last_modified": "2026-11-10 13:06:19.306539",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Waxaan diyaarinaynaa duubista oo dhan…",
     "callTranscriptNoRecording": "Ma jirto duubis wicitaanka oo dhan.",
     "callTranscriptNotSubscribed": "{name} ma lahayn rukumo intii uu socday wicitaankan, sidaa darteed waxa la yidhi lama qorin.",
-    "joinYourCourse": "Ku biir koorsadaada",
-    "courseCodeJoinExplanation": "Soo gal ama isdiiwaangeli, waxaanan isticmaali doonaa koodhka koorsadaada si aan si toos ah kuugu darno koorsadaada.",
-    "courseCodeLabel": "Koodhka koorsada",
-    "courseCodeSaved": "Koodhka koorsada {code} waa la keydiyay",
-    "courseCodeSavedExplanation": "Isdiiwaangeli ama soo gal waxaanan kugu dari doonaa koorsadaada.",
     "moderationRefusedContactDetails": "Fariintaada lama dirin. Shaandheeye otomaatig ah ayaa helay faahfaahin xiriir, sida nambar taleefan. Fadlan ka saar oo mar kale isku day.",
     "moderationRefusedProfanity": "Fariintaada lama dirin. Shaandheeye otomaatig ah ayaa helay eray aanan u oggolaanayn sheekaysiga. Fadlan beddel oo mar kale isku day.",
     "callTranscriptTranscribeButton": "Qor",
@@ -2519,5 +2514,10 @@
     "changeBaseLanguageDesc": "Liisaska iyo badhamada abka waxay u wareegi doonaan {language}.",
     "accountSetupFailedHelp": "Ma aanu dhammaystiri karin dejinta akoonkaaga. Hubi isku xidhkaaga oo isku day mar kale, ama ka bax oo soo gal mar dambe.",
     "onboardingOfflineError": "Kamaad online ahayn. Isku day mar kale marka aad online noqoto.",
-    "activitySavedTo": "Hawsha waxa lagu kaydiyay {page}"
+    "activitySavedTo": "Hawsha waxa lagu kaydiyay {page}",
+    "joinWithYourCode": "Ku biir koodhkaaga",
+    "joinCodeJoinExplanation": "Soo gal ama isdiiwaangeli, waxaanan isticmaali doonaa koodhkaaga si aan si toos ah kuugu darno.",
+    "joinCodeLabel": "Koodh",
+    "joinCodeSaved": "Koodhka {code} waa la keydiyay",
+    "joinCodeSavedExplanation": "Isdiiwaangeli ama soo gal, waana ku dari doonaa."
 }

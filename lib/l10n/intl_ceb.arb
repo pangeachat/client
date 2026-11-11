@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-11-06 13:10:58.192488",
+    "@@last_modified": "2026-11-10 13:06:08.981585",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Giandam ang tibuok recording…",
     "callTranscriptNoRecording": "Walay recording sa tibuok tawag.",
     "callTranscriptNotSubscribed": "Walay subscription si {name} atol niini nga tawag, mao nga wala gi-transcribe ang gisulti.",
-    "joinYourCourse": "Apil sa imong kurso",
-    "courseCodeJoinExplanation": "Pag-log in o pag-sign up, ug gamiton namo ang imong course code aron awtomatikong idugang ka sa imong kurso.",
-    "courseCodeLabel": "Course code",
-    "courseCodeSaved": "Na-save ang course code nga {code}",
-    "courseCodeSavedExplanation": "Pag-sign up o pag-log in ug idugang ka namo sa imong kurso.",
     "moderationRefusedContactDetails": "Wala gipadala ang imong mensahe. Nakakita ang usa ka awtomatikong filter og mga detalye sa kontak, sama sa numero sa telepono. Palihug kuhaa kini ug sulayi pag-usab.",
     "moderationRefusedProfanity": "Wala gipadala ang imong mensahe. Nakakita ang usa ka awtomatikong filter og pulong nga dili namo gitugotan sa chat. Palihug usba kini ug sulayi pag-usab.",
     "callTranscriptTranscribeButton": "I-transcribe",
@@ -2519,5 +2514,10 @@
     "changeBaseLanguageDesc": "Ang mga menu ug buton sa app mobalhin sa {language}.",
     "accountSetupFailedHelp": "Dili namo mahuman ang pag-set up sa imong account. Susiha ang imong koneksyon ug sulayi pag-usab, o pag-log out ug pag-sign in unya.",
     "onboardingOfflineError": "Offline ka. Sulayi pag-usab kung online na ka.",
-    "activitySavedTo": "Ang kalihokan na-save sa {page}"
+    "activitySavedTo": "Ang kalihokan na-save sa {page}",
+    "joinWithYourCode": "Apil gamit ang imong code",
+    "joinCodeJoinExplanation": "Pag-log in o pag-sign up, ug gamiton namo ang imong code aron awtomatikong idugang ka.",
+    "joinCodeLabel": "Code",
+    "joinCodeSaved": "Ang code nga {code} na-save",
+    "joinCodeSavedExplanation": "Pag-sign up o pag-log in ug idugang ka namo."
 }

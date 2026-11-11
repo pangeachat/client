@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-11-06 13:11:01.262480",
+    "@@last_modified": "2026-11-10 13:06:12.545334",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10655,11 +10655,6 @@
     "callTranscriptPreparingRecording": "通話全体の録音を準備中です…",
     "callTranscriptNoRecording": "通話全体の録音はありません。",
     "callTranscriptNotSubscribed": "{name}は通話中にサブスクリプションに登録していなかったため、会話は書き起こされませんでした。",
-    "joinYourCourse": "コースに参加",
-    "courseCodeJoinExplanation": "ログインまたはサインアップすると、コースコードを使用してコースに自動的に追加されます。",
-    "courseCodeLabel": "コースコード",
-    "courseCodeSaved": "コースコード {code} が保存されました",
-    "courseCodeSavedExplanation": "サインアップまたはログインすると、コースに追加されます。",
     "moderationRefusedContactDetails": "メッセージは送信されませんでした。自動フィルターが電話番号などの連絡先の詳細を検出しました。削除してもう一度お試しください。",
     "moderationRefusedProfanity": "メッセージは送信されませんでした。自動フィルターがチャットで許可されていない単語を検出しました。変更してもう一度お試しください。",
     "callTranscriptTranscribeButton": "文字起こし",
@@ -10815,5 +10810,10 @@
     "changeBaseLanguageDesc": "アプリのメニューとボタンが{language}に切り替わります。",
     "accountSetupFailedHelp": "アカウント設定を完了できませんでした。接続を確認して再試行するか、ログアウトして後でサインインしてください。",
     "onboardingOfflineError": "オフラインです。オンラインに戻ってからもう一度お試しください。",
-    "activitySavedTo": "アクティビティを{page}に保存しました"
+    "activitySavedTo": "アクティビティを{page}に保存しました",
+    "joinWithYourCode": "コードで参加",
+    "joinCodeJoinExplanation": "ログインまたはサインアップすると、コードを使って自動的に追加されます。",
+    "joinCodeLabel": "コード",
+    "joinCodeSaved": "コード {code} を保存しました",
+    "joinCodeSavedExplanation": "サインアップまたはログインすると、追加されます。"
 }

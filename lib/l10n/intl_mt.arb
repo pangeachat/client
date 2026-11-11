@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-11-06 13:11:03.940615",
+    "@@last_modified": "2026-11-10 13:06:15.969479",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Qed titħejja r-reġistrazzjoni sħiħa…",
     "callTranscriptNoRecording": "L-ebda reġistrazzjoni tas-sejħa sħiħa.",
     "callTranscriptNotSubscribed": "{name} ma kellux abbonament waqt din is-sejħa, għalhekk dak li ntqal ma ġiex traskritt.",
-    "joinYourCourse": "Ingħaqad mal-kors tiegħek",
-    "courseCodeJoinExplanation": "Idħol jew irreġistra, u aħna nużaw il-kodiċi tal-kors tiegħek biex inżiduk mal-kors tiegħek awtomatikament.",
-    "courseCodeLabel": "Kodiċi tal-kors",
-    "courseCodeSaved": "Kodiċi tal-kors {code} salvat",
-    "courseCodeSavedExplanation": "Irreġistra jew idħol u aħna nżiduk mal-kors tiegħek.",
     "moderationRefusedContactDetails": "Il-messaġġ tiegħek ma ntbagħatx. Filtru awtomatiku sab dettalji ta' kuntatt, bħal numru tat-telefon. Neħħihom u erġa' pprova.",
     "moderationRefusedProfanity": "Il-messaġġ tiegħek ma ntbagħatx. Filtru awtomatiku sab kelma li ma nippermettux fiċ-chat. Ibdelha u erġa' pprova.",
     "callTranscriptTranscribeButton": "Traskrivi",
@@ -2519,5 +2514,10 @@
     "changeBaseLanguageDesc": "Il-menus u l-buttuni tal-app se jinbidlu għal {language}.",
     "accountSetupFailedHelp": "Ma stajniex inlesti s-setup tal-kont tiegħek. Iċċekkja l-konnessjoni tiegħek u erġa' pprova, jew idħol u illoggja aktar tard.",
     "onboardingOfflineError": "M'intix online. Erġa' pprova meta terġa' tkun online.",
-    "activitySavedTo": "Attività ssejvjata f'{page}'"
+    "activitySavedTo": "Attività ssejvjata f'{page}'",
+    "joinWithYourCode": "Ingħaqad bil-kodiċi tiegħek",
+    "joinCodeJoinExplanation": "Idħol jew irreġistra, u aħna nużaw il-kodiċi tiegħek biex inżiduk awtomatikament.",
+    "joinCodeLabel": "Kodiċi",
+    "joinCodeSaved": "Kodiċi {code} salvat",
+    "joinCodeSavedExplanation": "Irreġistra jew idħol u aħna nżiduk."
 }
