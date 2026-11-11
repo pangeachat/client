@@ -129,6 +129,11 @@ run just took the room away. `scenarios.js`, `rejoin_ui.js`, `device_four.js`,
 `device_redial.js`, `device_rejoin_summary.js` and `device_video.js` refuse to
 start while another run is alive; the rest do not check yet.
 
+`merge_slow_link.js` slows the merging browser's upload (`MERGE_UPLOAD_BPS`,
+default 24000 B/s; `0` for an unthrottled run) after hang-up and checks that the
+merged recording is uploaded once and posted. It closes the other device so it
+cannot post its own merge, and needs `CALL_ROOM` set to the two accounts' DM.
+
 `transcript_two_devices.js` needs both learner fixtures and, on a machine whose
 device ids land the wrong way round, a say-so about which device leaves at the
 handover:
