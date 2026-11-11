@@ -69,19 +69,27 @@ class MissingQuestException implements Exception {
 SentryLevel courseOutlineErrorLevel(Object error) =>
     error is MissingQuestException ? SentryLevel.warning : SentryLevel.error;
 
-/// The single home of the per-course activity-pin rule (org quests doc,
-/// client#7748): which of a Mission's [available] activity ids count when the
-/// course pins [pinned] for it. Fail-open by design — no pin, an empty pin, or
-/// a pin whose ids are all stale (no intersection) yields [available]
-/// unchanged, so a pin can never make a Mission unsatisfiable. Consumers:
+/// The single home of the rule for which of a Mission's [available] activity
+/// ids a course without its own copy shows (org quests doc, client#7748): the
+/// course's [pinned] ids, else the plan's [selected] ids (the quest entry's
+/// `activity_ids`), else [available] unchanged. Each applies only when it
+/// names an activity in [available]: no pin, an empty pin, or a pin whose ids
+/// are all stale falls through to the plan's selection, and the selection
+/// likewise, so neither can make a Mission unsatisfiable. Pinned ids keep
+/// [available]'s order; selected ids keep the selection's. Consumers:
 /// [QuestOutline.restrictedTo] and the course-scoped map's marker filter.
 Set<String> effectivePinnedActivityIds(
   Set<String> available,
-  List<String>? pinned,
-) {
-  if (pinned == null || pinned.isEmpty) return available;
-  final intersection = available.intersection(pinned.toSet());
-  return intersection.isEmpty ? available : intersection;
+  List<String>? pinned, {
+  List<String>? selected,
+}) {
+  final byPin = available.intersection({...?pinned});
+  if (byPin.isNotEmpty) return byPin;
+  final bySelection = {
+    for (final id in selected ?? const <String>[])
+      if (available.contains(id)) id,
+  };
+  return bySelection.isEmpty ? available : bySelection;
 }
 
 /// An activity in a quest outline: its id plus the full plan, so the card
@@ -111,8 +119,9 @@ class QuestObjectiveGroup {
   final LearningObjective objective;
   final List<QuestActivity> activities;
 
-  /// The course's note and due date for this Mission; null when the course
-  /// has no copy or set neither.
+  /// The course's note and due date for this Mission, from its copy; for the
+  /// shared quest and a course without a copy, the plan's note. Null when
+  /// there is neither.
   final MissionPacing? pacing;
 
   /// What the course credits to this Mission beyond [activities]: family
@@ -203,22 +212,25 @@ class QuestOutline {
     credit: credit ?? this.credit,
   );
 
-  /// A copy with each pinned Mission's activities filtered to its pinned set —
-  /// per-course activity pinning (org quests doc; client#7748). A PURE COPY:
-  /// the outline cache is shared across courses referencing the same quest, so
-  /// the same quest can run restricted in one course and open in another only
-  /// because this never mutates the source.
-  ///
-  /// Fail-open rules (a pin can never make a Mission unsatisfiable): a Mission
-  /// with no pin entry or an empty pinned list is unrestricted; pinned ids are
-  /// intersected with the Mission's actual activities, and an intersection
-  /// that comes up empty (all pins stale) falls back to unrestricted.
+  /// A copy with each Mission's activities filtered to the course's pins for
+  /// it, else to the plan's selection for it — per-course activity pinning and
+  /// the plan's selected activities (org quests doc; client#7748), by the
+  /// fail-open rule in [effectivePinnedActivityIds]. A PURE COPY: the outline
+  /// cache is shared across courses referencing the same quest, so the same
+  /// quest can run restricted in one course and open in another only because
+  /// this never mutates the source.
   QuestOutline restrictedTo(Map<String, List<String>>? pinnedByObjective) {
-    if (pinnedByObjective == null || pinnedByObjective.isEmpty) return this;
+    final pins = pinnedByObjective ?? const <String, List<String>>{};
+    final selections = quest.activitySelections;
+    if (pins.isEmpty && selections.isEmpty) return this;
     return withCourse(
       groups: [
         for (final group in groups)
-          _restrictGroup(group, pinnedByObjective[group.objective.id]),
+          _restrictGroup(
+            group,
+            pins[group.objective.id],
+            selections[group.objective.id],
+          ),
       ],
     );
   }
@@ -226,15 +238,19 @@ class QuestOutline {
   static QuestObjectiveGroup _restrictGroup(
     QuestObjectiveGroup group,
     List<String>? pinned,
+    List<String>? selected,
   ) {
-    final available = group.activities.map((a) => a.activityId).toSet();
-    final allowed = effectivePinnedActivityIds(available, pinned);
-    if (allowed.length == available.length) return group;
+    final byId = {for (final a in group.activities) a.activityId: a};
+    final allowed = effectivePinnedActivityIds(
+      byId.keys.toSet(),
+      pinned,
+      selected: selected,
+    );
+    final shown = [for (final id in allowed) byId[id]!];
+    if (listEquals(shown, group.activities)) return group;
     return QuestObjectiveGroup(
       objective: group.objective,
-      activities: group.activities
-          .where((a) => allowed.contains(a.activityId))
-          .toList(),
+      activities: shown,
       pacing: group.pacing,
       credit: group.credit,
       hiddenActivities: group.hiddenActivities,
@@ -915,12 +931,14 @@ class QuestRepo {
 
       // Step order is the quest row's; the text is the outline read's. A
       // Mission the server left out keeps the bare step (id, no text) so the
-      // group still exists and its activities still count.
+      // group still exists and its activities still count. The plan's note
+      // shows until a course's own copy replaces it ([forRules]).
       final groups = quest.sequence
           .map(
             (step) => QuestObjectiveGroup(
               objective: read.missions[step.objective.id] ?? step.objective,
               activities: byLo[step.objective.id] ?? const [],
+              pacing: step.note == null ? null : MissionPacing(note: step.note),
             ),
           )
           .toList();

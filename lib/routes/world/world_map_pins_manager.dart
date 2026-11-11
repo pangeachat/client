@@ -733,9 +733,10 @@ class WorldMapPinsManager {
       return;
     }
     try {
+      // Not joined: the shared quest with the plan's selections.
       final outline = (await QuestRepo.outline(
         coursePlanId,
-      )).result?.toCourseLoOutline();
+      )).result?.forRules(CourseListRules.none).toCourseLoOutline();
       // A re-scope may have raced ahead; only apply if still the active scope.
       if (_scopedCourseOutlineId != coursePlanId) return;
       _scopedCourseOutline = outline;
@@ -760,17 +761,19 @@ class WorldMapPinsManager {
     // server-side. [courseRoomId] admits the quest owner's private activities
     // when this learner is a joined member of the course.
     // A copy that adds a Can-Do the quest does not carry is asked for by id,
-    // so its activities get pins too. The outline read is cached by the course
-    // panel; a failed one only means no extras.
+    // so its activities get pins too; without a copy, the quest's selections
+    // filter the pins. The outline read is cached by the course panel; a
+    // failed one only means no extras and no selections.
     final copyLoIds = rules.missions?.allLoIds ?? const <String>{};
+    final questRead = QuestRepo.outline(
+      courseId,
+      courseRoomId: courseRoomId,
+      courseLoIds: copyLoIds,
+      copyRevision: rules.revision,
+    );
     final questLoIds = copyLoIds.isEmpty
         ? const <String>[]
-        : ((await QuestRepo.outline(
-                courseId,
-                courseRoomId: courseRoomId,
-                courseLoIds: copyLoIds,
-                copyRevision: rules.revision,
-              )).result?.quest.learningObjectiveIds ??
+        : ((await questRead).result?.quest.learningObjectiveIds ??
               const <String>[]);
     final activityCardsResult = await QuestRepo.questActivityCards(
       courseId,
@@ -788,9 +791,15 @@ class WorldMapPinsManager {
     }
 
     // The course's own list: its copy's per-Mission activities, else the
-    // fail-open per-Mission pins (client#7748). Not joined → no rules → every
-    // card; the WORLD-scoped map is deliberately never filtered.
-    _pins = restrictCardsForCourse(activityCards, rules);
+    // fail-open per-Mission pins (client#7748), else the plan's selections
+    // (not joined: the selections alone). The WORLD-scoped map is deliberately
+    // never filtered.
+    _pins = restrictCardsForCourse(
+      activityCards,
+      rules,
+      selections:
+          (await questRead).result?.quest.activitySelections ?? const {},
+    );
   }
 
   Future<void> loadWorldScopedPins({
