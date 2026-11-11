@@ -90,13 +90,18 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
     final userID = client.userID!;
     final profile = await client.fetchOwnProfile();
 
+    // A random preset only for an account with no avatar yet: onboarding
+    // restarted before the learning language was saved keeps the saved one.
     final avatarInfo = _step.state.avatarInfo;
     final avatarBytes = avatarInfo?.avatarBytes;
-    final avatarUrl = avatarInfo?.avatarUrl ?? profile.avatarUrl;
+    final avatarUrl =
+        avatarInfo?.avatarUrl ??
+        profile.avatarUrl ??
+        _step.state.avatarProvider.getRandomAvatarUrl();
 
     if (avatarBytes != null) {
       _setAvatarBytes(avatarBytes);
-    } else if (avatarUrl != null) {
+    } else {
       _setAvatarUrl(avatarUrl);
     }
 

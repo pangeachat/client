@@ -16,7 +16,9 @@ import 'package:fluffychat/routes/home/login_or_signup_view.dart';
 /// #9277: a signed-out visitor who opened a class link is told the code was
 /// kept (signup-and-login.instructions.md § Arriving with a class code) — a
 /// dialog on arrival at the landing, a card on the signup and login pages —
-/// and nothing here uses the code up.
+/// and nothing here uses the code up. #9527: an activity session's link
+/// carries the same kind of code, and the code can't be looked up before
+/// sign-in, so neither says the code is a course's.
 void main() {
   const code = 'k7m2qa9';
 
@@ -58,8 +60,12 @@ void main() {
     await tester.tap(find.text('open'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Join your course'), findsOneWidget);
+    expect(find.text('Join with your code'), findsOneWidget);
     expect(find.text(code), findsOneWidget);
+    expect(
+      find.textContaining(RegExp('course', caseSensitive: false)),
+      findsNothing,
+    );
 
     await tester.tap(find.text('Got it!'));
     await tester.pumpAndSettle();
@@ -71,7 +77,11 @@ void main() {
       app(const Scaffold(body: ClassCodeNotice(code: code))),
     );
     await tester.pumpAndSettle();
-    expect(find.text('Course code $code saved'), findsOneWidget);
+    expect(find.text('Code $code saved'), findsOneWidget);
+    expect(
+      find.textContaining(RegExp('course', caseSensitive: false)),
+      findsNothing,
+    );
   });
 
   group('the landing screen', () {

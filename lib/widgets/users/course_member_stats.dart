@@ -90,9 +90,7 @@ class _CourseMemberStatsState extends State<CourseMemberStats> {
 
 /// The two numbers as a row: a star and its count, then the level shield and
 /// its number, each carrying its meaning in a tooltip and its accessible name.
-/// Draws nothing for a member with neither number, unless [showZeroStars]
-/// asks for the zero — a leaderboard row with no count would read as broken,
-/// where a card just has nothing to say.
+/// Draws nothing for a member with neither number.
 class MemberStatsRow extends StatelessWidget {
   final int? stars;
   final int? level;
@@ -101,7 +99,6 @@ class MemberStatsRow extends StatelessWidget {
   final String langCode;
   final TextStyle? textStyle;
   final double iconSize;
-  final bool showZeroStars;
 
   const MemberStatsRow({
     required this.stars,
@@ -109,14 +106,13 @@ class MemberStatsRow extends StatelessWidget {
     required this.langCode,
     this.textStyle,
     this.iconSize = 16.0,
-    this.showZeroStars = false,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     final stars = this.stars ?? 0;
-    final showStars = stars > 0 || showZeroStars;
+    final showStars = stars > 0;
     if (!showStars && level == null) return const SizedBox.shrink();
 
     // The count is a bare number, so what it MEANS is carried by the tooltip

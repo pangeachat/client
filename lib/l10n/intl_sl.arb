@@ -1717,12 +1717,10 @@
     "editCourseLater": "Lahko kasneje uredite naslov predloge, opise in sliko tečaja.",
     "createCourse": "Ustvari tečaj",
     "stats": "Statistika",
-    "createGroupChat": "Ustvari skupinski klepet",
     "editCourse": "Uredi tečaj",
     "inviteDesc": "Po uporabniškem imenu, po kodi ali povezavi",
     "editCourseDesc": "Tukaj lahko uredite naslov tečaja, opis itd.",
     "permissionsDesc": "Nastavite dovoljenja, kot so kdo lahko povabi uporabnike, pošlje sporočila, ustvari klepete itd.",
-    "createGroupChatDesc": "Medtem ko se aktivnosti začnejo in končajo, bodo skupinski klepeti ostali odprti za rutinsko komunikacijo.",
     "deleteDesc": "Samo skrbniki lahko izbrišejo tečaj. To je uničujoča dejanje, ki odstrani vse uporabnike in izbriše vse izbrane klepete znotraj tečaja. Bodite previdni.",
     "whatNow": "Kaj zdaj?",
     "chooseNextActivity": "Izberi svojo naslednjo dejavnost!",
@@ -1784,7 +1782,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-10-27 14:57:21.509856",
+    "@@last_modified": "2026-11-10 13:06:18.583176",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6788,10 +6786,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6805,10 +6799,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10752,9 +10742,7 @@
     "practiceMeaningPrompt": "Kaj pomeni »{word}«?",
     "practiceEmojiPrompt": "Izberite emoji za »{word}«",
     "practiceStepProgress": "{done} od {total}",
-    "leaderboard": "Lestvica najboljših",
-    "leaderboardRank": "Uvrstitev {rank}",
-    "courseLeaderboardTooltip": "Vsi v tem tečaju, razvrščeni po številu zvezdic v jeziku tečaja. Dotaknite se člana in izberite »Začni pogovor«, da mu pošljete zasebno sporočilo.",
+    "courseParticipantTooltip": "To so vsi v tem tečaju. Kliknite na avatar katerega koli uporabnika in \"začnite pogovor\", da pošljete DM.",
     "goalReportTitle": "Prijavi to zvezdico",
     "goalReportOverAwardPrompt": "Če te zvezdice ne bi smeli dobiti, prosimo, pojasnite zakaj.",
     "goalReportUnderAwardPrompt": "Če menite, da bi morali dobiti to zvezdico, zakaj?",
@@ -10773,11 +10761,6 @@
     "callTranscriptPreparingRecording": "Pripravljam celoten posnetek…",
     "callTranscriptNoRecording": "Ni posnetka celotnega klica.",
     "callTranscriptNotSubscribed": "{name} med tem klicem ni imel naročnine, zato izgovorjeno ni bilo prepisano.",
-    "joinYourCourse": "Pridružite se svojemu tečaju",
-    "courseCodeJoinExplanation": "Prijavite se ali se registrirajte in s kodo tečaja vas bomo samodejno dodali v tečaj.",
-    "courseCodeLabel": "Koda tečaja",
-    "courseCodeSaved": "Koda tečaja {code} je shranjena",
-    "courseCodeSavedExplanation": "Prijavite se ali se registrirajte in dodali vas bomo v tečaj.",
     "moderationRefusedContactDetails": "Vaše sporočilo ni bilo poslano. Samodejni filter je zaznal podatke za stik, kot je telefonska številka. Odstranite jih in poskusite znova.",
     "moderationRefusedProfanity": "Vaše sporočilo ni bilo poslano. Samodejni filter je zaznal besedo, ki je v klepetu ne dovoljujemo. Prosimo, spremenite jo in poskusite znova.",
     "callTranscriptTranscribeButton": "Prepiši",
@@ -10928,6 +10911,17 @@
     "keepWaiting": "Nadaljuj čakanje",
     "botTookSeatAfterAnHour": "Ta seja je bila odprta eno uro, zato je Pangea Bot zasedel prosto mesto.",
     "botTookSeatAfterADay": "Ta seja je bila odprta več kot en dan, zato je Pangea Bot zasedel prosto mesto. Pošljite sporočilo za začetek.",
+    "subscriptionGracePeriodEndsOn": "Plačilo ni uspelo. Prehodno obdobje se konča {date}",
+    "changeBaseLanguageTitle": "Spremeniti osnovni jezik?",
+    "changeBaseLanguageDesc": "Meniji in gumbi aplikacije se bodo preklopili na {language}.",
+    "accountSetupFailedHelp": "Nastavitve vašega računa niso bile dokončane. Preverite povezavo in poskusite znova ali se odjavite in prijavite pozneje.",
+    "onboardingOfflineError": "Brez povezave ste. Poskusite znova, ko boste spet povezani.",
+    "activitySavedTo": "Dejavnost shranjena v {page}",
+    "joinWithYourCode": "Pridruži se s svojo kodo",
+    "joinCodeJoinExplanation": "Prijavite se ali se registrirajte, in uporabili bomo vašo kodo za samodejno dodajanje.",
+    "joinCodeLabel": "Koda",
+    "joinCodeSaved": "Koda {code} shranjena",
+    "joinCodeSavedExplanation": "Registrirajte se ali se prijavite in dodali vas bomo.",
     "whoCanJoin": "Kdo se lahko pridruži?",
     "approvalRequired": "Potrebna odobritev",
     "courseAccessPublicDesc": "Vsakdo lahko najde in se pridruži temu tečaju.",

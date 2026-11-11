@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/analytics/listening_exposure_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_entry.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_event.dart';
+import 'package:fluffychat/features/dosage/dosage_call_time.dart';
 import 'package:fluffychat/features/dosage/dosage_signal_identity.dart';
 import 'package:fluffychat/features/dosage/dosage_voice_message.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -84,6 +87,14 @@ class DosageAudioSignals {
       if (durationMs < 0 || durationMs > DosageVoiceMessage.maxDurationMs) {
         return;
       }
+      final ts = (sentAt ?? DateTime.now()).toUtc();
+      _writeEntry(
+        id: msgId,
+        category: DosageAudioEntry.voiceCategory,
+        durMs: durationMs,
+        ts: ts,
+        userId: userId,
+      );
       // An unknown account has no buffer to attribute this to; dropping it is
       // right for the same reason a playback is dropped there.
       final target = buffer ?? DosageAudioBuffer.forAccount(userId ?? "");
@@ -93,7 +104,7 @@ class DosageAudioSignals {
           msgId: msgId,
           roomId: roomId,
           durationMs: durationMs,
-          ts: (sentAt ?? DateTime.now()).toUtc(),
+          ts: ts,
         ),
         accessToken: accessToken,
       );
@@ -110,6 +121,76 @@ class DosageAudioSignals {
         ).catchError((_) {}),
       );
     }
+  }
+
+  /// Records a finished call's connected time, so speaking minutes can count it.
+  ///
+  /// Synchronous and allocation-only, like [recordVoiceMessage]: the call's
+  /// teardown waits on none of it, and delivery rides the analytics heartbeat.
+  /// Never throws.
+  static void recordCall({
+    required String roomId,
+    required String? callKey,
+    required String? deviceId,
+    required DateTime talkStartedAt,
+    required Duration connected,
+    required String? userId,
+    required String? accessToken,
+    DateTime? endedAt,
+    DosageAudioBuffer? buffer,
+  }) {
+    try {
+      final call = DosageCallTime(
+        callId: DosageCallTime.idFor(
+          roomId: roomId,
+          callKey: callKey,
+          deviceId: deviceId,
+          talkStartedAt: talkStartedAt,
+        ),
+        roomId: roomId,
+        connectedMs: connected.inMilliseconds,
+        ts: (endedAt ?? DateTime.now()).toUtc(),
+      );
+      _writeEntry(
+        id: DosageAudioEntry.callId(call.callId),
+        category: DosageAudioEntry.callCategory,
+        durMs: call.connectedMs,
+        ts: call.ts,
+        userId: userId,
+      );
+      final target = buffer ?? DosageAudioBuffer.forAccount(userId ?? "");
+      if (target == null) return;
+      target.recordCall(call, accessToken: accessToken);
+    } catch (e, s) {
+      unawaited(
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          level: SentryLevel.warning,
+          data: const {"signal": "call-time"},
+        ).catchError((_) {}),
+      );
+    }
+  }
+
+  /// Holds this audio's durable row for the analytics room. The caller's guard
+  /// covers a throw. Ahead of the POST and past its flags on purpose: the row
+  /// must not depend on that lane, which keeps running beside it for coverage.
+  static void _writeEntry({
+    required String id,
+    required String category,
+    required int durMs,
+    required DateTime ts,
+    required String? userId,
+  }) {
+    final entry = DosageAudioEntry.use(
+      id: id,
+      category: category,
+      durMs: durMs,
+      ts: ts,
+    );
+    if (entry == null) return;
+    ListeningExposureBuffer.forAccount(userId ?? "")?.recordAudioEntry(entry);
   }
 
   /// Records one finished playback against [category].
@@ -139,22 +220,27 @@ class DosageAudioSignals {
     try {
       if (roomId != null && roomId.isEmpty) return;
       if (elapsed <= Duration.zero) return;
+      final event = DosageAudioEvent.fromPlayback(
+        playbackId: DosageSignalIdentity.uuidV4(),
+        roomId: roomId,
+        category: category,
+        elapsed: elapsed,
+        endedAt: endedAt ?? DateTime.now(),
+      );
+      _writeEntry(
+        id: event.playbackId,
+        category: category.wireName,
+        durMs: event.elapsedMs,
+        ts: event.ts,
+        userId: userId,
+      );
       // An unknown account has no buffer to attribute this to. Dropping it is
       // right: attributing a playback to the wrong account is worse than losing
       // it, and coverage makes the loss visible as a withheld period rather than
       // a short total.
       final target = buffer ?? DosageAudioBuffer.forAccount(userId ?? "");
       if (target == null) return;
-      target.record(
-        DosageAudioEvent.fromPlayback(
-          playbackId: DosageSignalIdentity.uuidV4(),
-          roomId: roomId,
-          category: category,
-          elapsed: elapsed,
-          endedAt: endedAt ?? DateTime.now(),
-        ),
-        accessToken: accessToken,
-      );
+      target.record(event, accessToken: accessToken);
     } catch (e, s) {
       // Even the error report is best-effort: ErrorHandler.logError is async, so
       // a Sentry failure surfaces as a REJECTED future that a synchronous

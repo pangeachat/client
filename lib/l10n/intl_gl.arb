@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-10-27 14:57:15.339998",
+    "@@last_modified": "2026-11-10 13:06:10.898149",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3459,12 +3459,10 @@
     "editCourseLater": "Podes editar o título da plantilla, as descricións e a imaxe do curso máis tarde.",
     "createCourse": "Crear curso",
     "stats": "Estadísticas",
-    "createGroupChat": "Crear chat de grupo",
     "editCourse": "Editar curso",
     "inviteDesc": "Por nome de usuario, por código ou ligazón",
     "editCourseDesc": "Aquí podes editar o título do curso, a descrición, etc.",
     "permissionsDesc": "Establece permisos como quen pode invitar usuarios, enviar mensaxes, crear chats, etc.",
-    "createGroupChatDesc": "Mentres as sesións de actividade comezan e rematan, os chats de grupo permanecerán abertos para comunicación de rutina.",
     "deleteDesc": "Só os administradores poden eliminar un curso. Esta é unha acción destructiva que elimina a todos os usuarios e elimina todos os chats seleccionados dentro do curso. Procede con precaución.",
     "whatNow": "E agora?",
     "chooseNextActivity": "Elixe a túa próxima actividade!",
@@ -6029,10 +6027,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6046,10 +6040,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9813,9 +9803,7 @@
     "practiceMeaningPrompt": "Que significa «{word}»?",
     "practiceEmojiPrompt": "Escolle un emoji para «{word}»",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Clasificación",
-    "leaderboardRank": "Posto {rank}",
-    "courseLeaderboardTooltip": "Todos os participantes neste curso, clasificados polas súas estrelas no idioma. Toca un membro e escolle \"Iniciar conversa\" para enviarlle unha mensaxe directa.",
+    "courseParticipantTooltip": "Isto é todo o mundo neste curso. Fai clic na avatar de calquera usuario e \"comeza a conversa\" para enviar un DM.",
     "goalReportTitle": "Informar desta estrela",
     "goalReportOverAwardPrompt": "Se non deberías ter conseguido esta estrela, explica por que.",
     "goalReportUnderAwardPrompt": "Se cres que deberías ter conseguido esta estrela, por que?",
@@ -9834,11 +9822,6 @@
     "callTranscriptPreparingRecording": "Preparando a gravación completa…",
     "callTranscriptNoRecording": "Non hai gravación da chamada completa.",
     "callTranscriptNotSubscribed": "{name} non tiña unha subscrición durante esta chamada, polo que o que se dixo non foi transcrito.",
-    "joinYourCourse": "Únete ao teu curso",
-    "courseCodeJoinExplanation": "Inicia sesión ou rexístrate, e usaremos o teu código de curso para engadirte ao teu curso automaticamente.",
-    "courseCodeLabel": "Código do curso",
-    "courseCodeSaved": "Código do curso {code} gardado",
-    "courseCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste ao teu curso.",
     "moderationRefusedContactDetails": "A túa mensaxe non foi enviada. Un filtro automático atopou detalles de contacto, como un número de teléfono. Elimínaos e téntao de novo.",
     "moderationRefusedProfanity": "A túa mensaxe non foi enviada. Un filtro automático atopou unha palabra que non permitimos no chat. Cámbiaa e téntao de novo.",
     "callTranscriptTranscribeButton": "Transcribir",
@@ -9989,6 +9972,17 @@
     "keepWaiting": "Seguir esperando",
     "botTookSeatAfterAnHour": "Esta sesión estivo aberta durante unha hora, así que o Pangea Bot ocupou o asento libre.",
     "botTookSeatAfterADay": "Esta sesión estivo aberta durante máis dun día, así que o Pangea Bot ocupou o asento libre. Envía unha mensaxe para comezar.",
+    "subscriptionGracePeriodEndsOn": "O pago fallou. O período de gracia remata o {date}",
+    "changeBaseLanguageTitle": "Cambiar idioma base?",
+    "changeBaseLanguageDesc": "Os menús e botóns da aplicación cambiarán a {language}.",
+    "accountSetupFailedHelp": "Non puidemos rematar de configurar a túa conta. Comproba a túa conexión e téntao de novo, ou pecha a sesión e inicia sesión máis tarde.",
+    "onboardingOfflineError": "Non tes conexión. Téntao de novo cando volvas ter conexión.",
+    "activitySavedTo": "Actividade gardada en {page}",
+    "joinWithYourCode": "Unirse co teu código",
+    "joinCodeJoinExplanation": "Inicia sesión ou rexístrate, e usaremos o teu código para engadirte automaticamente.",
+    "joinCodeLabel": "Código",
+    "joinCodeSaved": "Código {code} gardado",
+    "joinCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste.",
     "whoCanJoin": "Quen pode unirse?",
     "approvalRequired": "Aprobación requirida",
     "courseAccessPublicDesc": "Calquera pode atopar e unirse a este curso.",

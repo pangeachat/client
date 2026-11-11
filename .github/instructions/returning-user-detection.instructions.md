@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/features/authentication/**,lib/routes/registration/**,lib/routes/onboarding/**"
+applyTo: "lib/features/authentication/**,lib/routes/registration/**"
 ---
 
 # Returning User Detection — Preventing Duplicate Accounts

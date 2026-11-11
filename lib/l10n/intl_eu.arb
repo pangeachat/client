@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-10-27 14:57:14.663799",
+    "@@last_modified": "2026-11-10 13:06:10.030098",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3459,12 +3459,10 @@
     "editCourseLater": "Eman dezakezu geroago txantiloiaren izena, deskribapenak eta ikastaroaren irudia editatzeko.",
     "createCourse": "Sortu ikastaroa",
     "stats": "Datuak",
-    "createGroupChat": "Sortu talde txat bat",
     "editCourse": "Editatu ikastaroa",
     "inviteDesc": "Erabiltzaile-izena, kodea edo esteka bidez",
     "editCourseDesc": "Hemen ikastaroaren izena, deskribapena, eta abar editatu ditzakezu",
     "permissionsDesc": "Ezarri baimenak, hala nola nor gonbidatu dezakeen erabiltzaileak, mezularitza bidali, txateak sortu, eta abar",
-    "createGroupChatDesc": "Ekintza saioak hasten eta bukatzen diren bitartean, talde txat hauek komunikazio erregularrerako irekita egongo dira",
     "deleteDesc": "Administratzaileek bakarrik ezabatu dezakete ikastaroa. Hau ekintza suntsitzailea da, erabiltzaile guztiak ezabatzen ditu eta ikastaroaren barruan aukeratutako txat guztiak ezabatzen ditu. Kontuz ibili",
     "whatNow": "Zer orain?",
     "chooseNextActivity": "Hurrengo jarduera aukeratu!",
@@ -6029,10 +6027,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6046,10 +6040,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9813,9 +9803,7 @@
     "practiceMeaningPrompt": "Zer esan nahi du ‘{word}’ hitzak?",
     "practiceEmojiPrompt": "Aukeratu emoji bat ‘{word}’ hitzarentzat",
     "practiceStepProgress": "{done}/{total}",
-    "leaderboard": "Sailkapena",
-    "leaderboardRank": "{rank}. postua",
-    "courseLeaderboardTooltip": "Ikastaro honetako guztiak, hizkuntza horretan lortutako izarren arabera sailkatuta. Sakatu kide bat eta aukeratu \"Hasi elkarrizketa\" mezu zuzen bat bidaltzeko.",
+    "courseParticipantTooltip": "Hau ikastaro honetan dauden guztiak dira. Egin klik edozein erabiltzaileen irudian eta \"hasieratu elkarrizketa\" DM bat bidaltzeko.",
     "goalReportTitle": "Izartxo honen berri eman",
     "goalReportOverAwardPrompt": "Izartxo hau jaso behar ez bazenuen, azaldu zergatik.",
     "goalReportUnderAwardPrompt": "Izartxo hau jaso behar zenuela uste baduzu, zergatik?",
@@ -9834,11 +9822,6 @@
     "callTranscriptPreparingRecording": "Grabazio osoa prestatzen…",
     "callTranscriptNoRecording": "Dei osoaren grabaziorik ez.",
     "callTranscriptNotSubscribed": "{name} erabiltzaileak ez zuen harpidetzarik dei honetan, beraz, esandakoa ez zen transkribatu.",
-    "joinYourCourse": "Sartu zure ikastaroan",
-    "courseCodeJoinExplanation": "Hasi saioa edo eman izena, eta zure ikastaro-kodea erabiliko dugu automatikoki zure ikastarora gehitzeko.",
-    "courseCodeLabel": "Ikastaro-kodea",
-    "courseCodeSaved": "{code} ikastaro-kodea gordeta",
-    "courseCodeSavedExplanation": "Eman izena edo hasi saioa eta zure ikastarora gehituko zaitugu.",
     "moderationRefusedContactDetails": "Zure mezua ez da bidali. Iragazki automatiko batek harremanetarako datuak aurkitu ditu, hala nola telefono-zenbaki bat. Mesedez, kendu itzazu eta saiatu berriro.",
     "moderationRefusedProfanity": "Zure mezua ez da bidali. Iragazki automatiko batek txatean onartzen ez dugun hitz bat aurkitu du. Mesedez, aldatu eta saiatu berriro.",
     "callTranscriptTranscribeButton": "Transkribatu",
@@ -9989,6 +9972,17 @@
     "keepWaiting": "Itxaroten jarraitu",
     "botTookSeatAfterAnHour": "Saio hau ordubetez egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du.",
     "botTookSeatAfterADay": "Saio hau egun bat baino gehiagoz egon da irekita, beraz, Pangea Bot-ek libre zegoen lekua hartu du. Bidali mezu bat hasteko.",
+    "subscriptionGracePeriodEndsOn": "Ordainketak huts egin du. Tolerantzia-epea {date}an amaituko da",
+    "changeBaseLanguageTitle": "Oinarrizko hizkuntza aldatu?",
+    "changeBaseLanguageDesc": "Aplikazioaren menuak eta botoiak {language} hizkuntzara aldatuko dira.",
+    "accountSetupFailedHelp": "Ezin izan dugu zure kontua konfiguratzen amaitu. Egiaztatu konexioa eta saiatu berriro, edo itxi saioa eta hasi geroago.",
+    "onboardingOfflineError": "Lineaz kanpo zaude. Saiatu berriro konektatuta zaudenean.",
+    "activitySavedTo": "Jarduera {page} honetan gorde da",
+    "joinWithYourCode": "Sartu zure kodearekin",
+    "joinCodeJoinExplanation": "Hasi saioa edo eman izena, eta zure kodea erabiliko dugu automatikoki gehitzeko.",
+    "joinCodeLabel": "Kodea",
+    "joinCodeSaved": "{code} kodea gordeta",
+    "joinCodeSavedExplanation": "Eman izena edo hasi saioa eta gehituko zaitugu.",
     "whoCanJoin": "Nork har dezake parte?",
     "approvalRequired": "Onarpena behar da",
     "courseAccessPublicDesc": "Edonork aurki dezake ikastaro hau eta parte hartu.",

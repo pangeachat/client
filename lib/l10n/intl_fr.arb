@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-10-27 14:57:14.603077",
+    "@@last_modified": "2026-11-10 13:06:10.042141",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -3263,12 +3263,10 @@
     "editCourseLater": "Vous pouvez modifier le titre du modèle, les descriptions et l'image du cours plus tard.",
     "createCourse": "Créer un cours",
     "stats": "Statistiques",
-    "createGroupChat": "Créer un chat de groupe",
     "editCourse": "Modifier le cours",
     "inviteDesc": "Par nom d'utilisateur, par code ou lien",
     "editCourseDesc": "Ici, vous pouvez modifier le titre du cours, la description, etc.",
     "permissionsDesc": "Définissez les autorisations telles que qui peut inviter des utilisateurs, envoyer des messages, créer des discussions, etc.",
-    "createGroupChatDesc": "Alors que les sessions d'activité commencent et se terminent, les discussions de groupe resteront ouvertes pour la communication de routine.",
     "deleteDesc": "Seuls les administrateurs peuvent supprimer un cours. Il s'agit d'une action destructive qui supprime tous les utilisateurs et supprime toutes les discussions sélectionnées dans le cours. Proceed with caution.",
     "whatNow": "Et maintenant ?",
     "chooseNextActivity": "Choisissez votre prochaine activité !",
@@ -6216,10 +6214,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6233,10 +6227,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10165,9 +10155,7 @@
     "practiceMeaningPrompt": "Que signifie « {word} » ?",
     "practiceEmojiPrompt": "Choisissez un émoji pour « {word} »",
     "practiceStepProgress": "{done} sur {total}",
-    "leaderboard": "Classement",
-    "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Tous les membres de ce cours, classés selon leurs étoiles dans cette langue. Touchez un membre et choisissez « Démarrer une conversation » pour lui envoyer un message direct.",
+    "courseParticipantTooltip": "Voici tout le monde dans ce cours. Cliquez sur l'avatar de n'importe quel utilisateur et \"démarrer une conversation\" pour envoyer un DM.",
     "goalReportTitle": "Signaler cette étoile",
     "goalReportOverAwardPrompt": "Si vous n'auriez pas dû recevoir cette étoile, veuillez expliquer pourquoi.",
     "goalReportUnderAwardPrompt": "Si vous pensez que vous auriez dû recevoir cette étoile, pourquoi ?",
@@ -10186,11 +10174,6 @@
     "callTranscriptPreparingRecording": "Préparation de l'enregistrement complet…",
     "callTranscriptNoRecording": "Aucun enregistrement de l'appel complet.",
     "callTranscriptNotSubscribed": "{name} n'avait pas d'abonnement pendant cet appel, donc ce qui a été dit n'a pas été transcrit.",
-    "joinYourCourse": "Rejoignez votre cours",
-    "courseCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code de cours pour vous ajouter automatiquement à votre cours.",
-    "courseCodeLabel": "Code de cours",
-    "courseCodeSaved": "Code de cours {code} enregistré",
-    "courseCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons à votre cours.",
     "moderationRefusedContactDetails": "Votre message n'a pas été envoyé. Un filtre automatique a détecté des coordonnées, comme un numéro de téléphone. Veuillez les supprimer et réessayer.",
     "moderationRefusedProfanity": "Votre message n'a pas été envoyé. Un filtre automatique a détecté un mot que nous n'autorisons pas dans le chat. Veuillez le modifier et réessayer.",
     "callTranscriptTranscribeButton": "Transcrire",
@@ -10341,6 +10324,17 @@
     "keepWaiting": "Continuer à attendre",
     "botTookSeatAfterAnHour": "Cette session est restée ouverte pendant une heure, alors le bot Pangea a pris la place libre.",
     "botTookSeatAfterADay": "Cette session est restée ouverte pendant plus d'une journée, alors le bot Pangea a pris la place libre. Envoyez un message pour commencer.",
+    "subscriptionGracePeriodEndsOn": "Le paiement a échoué. La période de grâce se termine le {date}",
+    "changeBaseLanguageTitle": "Changer la langue de base ?",
+    "changeBaseLanguageDesc": "Les menus et les boutons de l'application passeront en {language}.",
+    "accountSetupFailedHelp": "Nous n'avons pas pu terminer la configuration de votre compte. Vérifiez votre connexion et réessayez, ou déconnectez-vous et connectez-vous plus tard.",
+    "onboardingOfflineError": "Vous êtes hors ligne. Réessayez une fois que vous serez de nouveau connecté.",
+    "activitySavedTo": "Activité enregistrée dans {page}",
+    "joinWithYourCode": "Rejoindre avec votre code",
+    "joinCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code pour vous ajouter automatiquement.",
+    "joinCodeLabel": "Code",
+    "joinCodeSaved": "Code {code} enregistré",
+    "joinCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons.",
     "whoCanJoin": "Qui peut s'inscrire ?",
     "approvalRequired": "Approbation requise",
     "courseAccessPublicDesc": "Tout le monde peut trouver et rejoindre ce cours.",

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -9,37 +10,27 @@ import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/pangea/common/widgets/role_badge.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
-import 'package:fluffychat/pangea/spaces/course_leaderboard.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/users/course_member_stats.dart';
 import 'package:fluffychat/widgets/users/level_display_name.dart';
 import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 
-/// One participant's member card: avatar (with the top-3 leaderboard ring),
+/// One participant's member card: avatar (with a chat's top-3 ring),
 /// the permission/membership badge across the avatar's top edge, name, and —
 /// unless [showStats] is off — the member's stars and level in the course's
 /// language. A space with no course language recorded — anything created
 /// before it was written to room state — falls back to the learner chip
 /// ([LevelDisplayName]), which shows their own language pair. Tapping the
 /// avatar opens the member actions menu. Shared by a chat's full participant
-/// list (RoomParticipantsSection) and the course Leaderboard's admin line and
-/// pending members (course-leaderboard.instructions.md), where the stats are
-/// off: an admin's stats sit on their ranked row, and a pending member has
-/// none to show.
+/// list (RoomParticipantsSection) and the course's Participants section
+/// (course-participants.instructions.md), where the stats are off.
 class ParticipantCard extends StatelessWidget {
-  /// A chat's member card.
-  static const double defaultWidth = 100.0;
-
-  /// The leaderboard's admin line and pending members: smaller than a chat's
-  /// card so the podium below stays the section's largest thing.
-  static const double compactWidth = 80.0;
+  static const double width = 100.0;
 
   final User user;
   final Room room;
 
-  final double width;
-
-  /// The top-3 leaderboard ring, resolved by the surrounding list via
+  /// A chat's top-3 ring, resolved by the surrounding list via
   /// [leaderboardGradientFor].
   final LinearGradient? gradient;
 
@@ -57,7 +48,6 @@ class ParticipantCard extends StatelessWidget {
     this.gradient,
     this.rovingId,
     this.showStats = true,
-    this.width = defaultWidth,
     super.key,
   });
 
@@ -101,7 +91,19 @@ class ParticipantCard extends StatelessWidget {
     final leaderIndex = leaders.indexOf(user);
     if (leaderIndex == -1) return null;
     if (user.id == BotName.byEnvironment || !hasLevel) return null;
-    return LeaderboardMedal.forRank(leaderIndex + 1)?.ring(Theme.of(context));
+    final theme = Theme.of(context);
+    final color = switch (leaderIndex) {
+      0 => theme.pangea.goldFixedDim,
+      1 => Colors.grey[400]!,
+      2 => Colors.brown[400]!,
+      _ => null,
+    };
+    if (color == null) return null;
+    return LinearGradient(
+      colors: [color, Colors.white, color],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    );
   }
 
   @override
@@ -149,7 +151,7 @@ class ParticipantCard extends StatelessWidget {
                       builder: (context) {
                         // Focusable and Enter/Space-activatable, where a bare
                         // GestureDetector took a mouse only (#9154). The ring
-                        // hugs the avatar. Over a leaderboard ring it is
+                        // hugs the avatar. Over a top-3 ring it is
                         // two-tone, because gold cannot show against gold.
                         return FocusRingTapTarget(
                           onTap: () => showMemberActionsPopupMenu(

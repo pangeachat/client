@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-10-27 14:57:16.198656",
+    "@@last_modified": "2026-11-10 13:06:11.870265",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -3362,12 +3362,10 @@
     "editCourseLater": "Később szerkesztheti a sablon címet, leírásokat és a tanfolyam képét.",
     "createCourse": "Tanfolyam létrehozása",
     "stats": "Statisztika",
-    "createGroupChat": "Csoportos beszélgetés létrehozása",
     "editCourse": "Kurzus szerkesztése",
     "inviteDesc": "Felhasználónév, kód vagy link alapján",
     "editCourseDesc": "Itt szerkesztheted a kurzus címét, leírását stb.",
     "permissionsDesc": "Állíts be jogosultságokat, például ki küldhet meghívókat, üzeneteket, csoportokat hozhat létre stb.",
-    "createGroupChatDesc": "Míg az aktivitási ülések kezdete és vége, a csoportos beszélgetések nyitva maradnak a rutinszerű kommunikációhoz.",
     "deleteDesc": "Csak az adminok törölhetnek kurzust. Ez egy destruktív művelet, amely minden felhasználót eltávolít és törli az összes kiválasztott csoportot a kurzuson belül. Légy óvatos.",
     "whatNow": "Most mi?",
     "chooseNextActivity": "Válaszd ki a következő tevékenységet!",
@@ -5952,10 +5950,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -5969,10 +5963,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9916,9 +9906,7 @@
     "practiceMeaningPrompt": "Mit jelent az, hogy „{word}”?",
     "practiceEmojiPrompt": "Válassz egy emojit a „{word}” szóhoz",
     "practiceStepProgress": "{done}/{total}",
-    "leaderboard": "Ranglista",
-    "leaderboardRank": "{rank}. helyezés",
-    "courseLeaderboardTooltip": "A kurzus összes résztvevője, a nyelvi csillagaik alapján rangsorolva. Koppints egy tagra, és válaszd a „Beszélgetés indítása” lehetőséget, hogy közvetlen üzenetet küldj neki.",
+    "courseParticipantTooltip": "Ez mindenki, aki ebben a kurzusban részt vesz. Kattints bármelyik felhasználó avatarjára, és válaszd a „beszélgetés indítása” lehetőséget, hogy közvetlen üzenetet küldj.",
     "goalReportTitle": "Jelentés erről a csillagról",
     "goalReportOverAwardPrompt": "Ha nem kellett volna megkapnod ezt a csillagot, kérjük, magyarázd el, miért.",
     "goalReportUnderAwardPrompt": "Ha úgy gondolod, meg kellett volna kapnod ezt a csillagot, miért?",
@@ -9937,11 +9925,6 @@
     "callTranscriptPreparingRecording": "A teljes felvétel előkészítése…",
     "callTranscriptNoRecording": "Nincs felvétel a teljes hívásról.",
     "callTranscriptNotSubscribed": "{name} nem rendelkezett előfizetéssel a hívás során, így a beszélgetés nem került átírásra.",
-    "joinYourCourse": "Csatlakozás a kurzushoz",
-    "courseCodeJoinExplanation": "Jelentkezz be vagy regisztrálj, és a kurzuskódod segítségével automatikusan hozzáadunk a kurzushoz.",
-    "courseCodeLabel": "Kurzuskód",
-    "courseCodeSaved": "A(z) {code} kurzuskód elmentve",
-    "courseCodeSavedExplanation": "Regisztrálj vagy jelentkezz be, és hozzáadunk a kurzusodhoz.",
     "moderationRefusedContactDetails": "Az üzenet nem került elküldésre. Az automatikus szűrő elérhetőségi adatokat, például telefonszámot talált. Kérjük, távolítsa el ezeket, és próbálja újra.",
     "moderationRefusedProfanity": "Az üzenet nem került elküldésre. Az automatikus szűrő olyan szót talált, amelyet nem engedélyezünk a csevegésben. Kérjük, módosítsa, és próbálja újra.",
     "callTranscriptTranscribeButton": "Átírás",
@@ -10092,6 +10075,17 @@
     "keepWaiting": "Tovább várok",
     "botTookSeatAfterAnHour": "Ez a munkamenet egy órája nyitva volt, ezért a Pangea Bot elfoglalta a szabad helyet.",
     "botTookSeatAfterADay": "Ez a munkamenet több mint egy napja nyitva volt, ezért a Pangea Bot elfoglalta a szabad helyet. Üzenj a kezdéshez.",
+    "subscriptionGracePeriodEndsOn": "Sikertelen fizetés. A türelmi időszak ekkor jár le: {date}",
+    "changeBaseLanguageTitle": "Alapnyelv módosítása?",
+    "changeBaseLanguageDesc": "Az alkalmazás menüi és gombjai átváltanak a következő nyelvre: {language}.",
+    "accountSetupFailedHelp": "Nem sikerült befejezni a fiók beállítását. Ellenőrizze az internetkapcsolatát, és próbálja újra, vagy jelentkezzen ki, majd később jelentkezzen be.",
+    "onboardingOfflineError": "Offline vagy. Próbáld újra, ha visszatértél az internetre.",
+    "activitySavedTo": "Tevékenység mentve ide: {page}",
+    "joinWithYourCode": "Csatlakozás a kódoddal",
+    "joinCodeJoinExplanation": "Jelentkezz be vagy regisztrálj, és a kódod segítségével automatikusan hozzáadunk.",
+    "joinCodeLabel": "Kód",
+    "joinCodeSaved": "Kód {code} elmentve",
+    "joinCodeSavedExplanation": "Regisztrálj vagy jelentkezz be, és hozzáadunk.",
     "whoCanJoin": "Ki csatlakozhat?",
     "approvalRequired": "Jóváhagyás szükséges",
     "courseAccessPublicDesc": "Bárki megtalálhatja és csatlakozhat ehhez a kurzushoz.",

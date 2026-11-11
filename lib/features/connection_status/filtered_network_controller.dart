@@ -51,6 +51,7 @@ class FilteredNetworkController {
   final Map<NetworkHostCategory, DateTime> _firstBlockedAt = {};
   final Map<NetworkHostCategory, DateTime> _lastCheckedAt = {};
   final Map<NetworkHostCategory, Future<NetworkVerdict?>> _inFlight = {};
+  final Set<NetworkHostCategory> _recheckPending = {};
   StreamSubscription<List<ConnectivityResult>>? _networkChanges;
 
   @visibleForTesting
@@ -66,7 +67,7 @@ class FilteredNetworkController {
   @visibleForTesting
   Future<void> Function(Duration) wait = Future<void>.delayed;
 
-  @visibleForTesting
+  /// The one list the report and a help request read. Replaced in tests.
   List<String> Function() joinedCourseIds = _joinedCourseIds;
 
   /// The longest value Sentry keeps in a tag.
@@ -137,6 +138,30 @@ class FilteredNetworkController {
     }
   }
 
+  /// Re-checks a blocked [category], at most once per [recheckAfter], after an
+  /// answer a cache may have given — a map tile on the web, which the browser
+  /// serves from its cache even on a network that blocks the host.
+  void recheckIfBlocked(NetworkHostCategory category) {
+    // Every map tile lands here; on a healthy network there is nothing to do.
+    if (!blocked.value.contains(category) && !_inFlight.containsKey(category)) {
+      return;
+    }
+    if (_recheckPending.add(category)) unawaited(_recheckWhenDue(category));
+  }
+
+  /// Waits out a check in flight, whose verdict may predate the answer, then
+  /// until the last check is [recheckAfter] old.
+  Future<void> _recheckWhenDue(NetworkHostCategory category) async {
+    await _inFlight[category];
+    final lastChecked = _lastCheckedAt[category];
+    if (blocked.value.contains(category) && lastChecked != null) {
+      final age = DateTime.now().difference(lastChecked);
+      if (age < recheckAfter) await wait(recheckAfter - age);
+    }
+    _recheckPending.remove(category);
+    if (blocked.value.contains(category)) await check(category);
+  }
+
   void onRequestFailed(Uri url) {
     final category = NetworkHostCategory.ofRequest(url);
     if (category != null) unawaited(checkIfStale(category));
@@ -170,6 +195,8 @@ class FilteredNetworkController {
     if (tellsConnection) {
       ConnectionStatusController.instance.onChatServerChecked(verdict);
     }
+    // Only our own servers are held: a deploy restarts no other host, and a
+    // sign-in cannot wait.
     if (verdict == NetworkVerdict.filtered &&
         needed == NetworkProbeResult.refused &&
         category.isOurServer) {
@@ -225,7 +252,8 @@ class FilteredNetworkController {
 
   /// A backgrounded app's requests fail because the OS paused them, so
   /// nothing a check sees there is a verdict. The banner's own signal, so
-  /// the two agree on when the app is in the background.
+  /// the two agree on when the app is in the background. Coming back starts
+  /// no check; the next failed request does.
   bool get _inForeground =>
       ConnectionStatusController.instance.isAppInForeground();
 
@@ -266,6 +294,10 @@ class FilteredNetworkController {
     unawaited(NetworkHelpRepo.flush());
   }
 
+  /// The "no response" warning (repos-and-error-handling.instructions.md)
+  /// still fires; this event says why. An event the phone apps cannot send
+  /// waits for the next good connection; the web app has no such store, so
+  /// there the help request is the user's way to reach us.
   Future<void> _report(
     NetworkHostCategory category,
     NetworkProbeResult needed,
@@ -304,8 +336,8 @@ class FilteredNetworkController {
           course.id,
       ]..sort();
     } catch (_) {
-      // silent-ok: no Matrix client yet; the report is still worth sending
-      // without its courses, and the help request carries the account.
+      // silent-ok: no Matrix client yet; a report or a help request is still
+      // worth sending without its courses.
       return const [];
     }
   }
@@ -331,6 +363,7 @@ class FilteredNetworkController {
     _firstBlockedAt.clear();
     _lastCheckedAt.clear();
     _inFlight.clear();
+    _recheckPending.clear();
     unawaited(_networkChanges?.cancel());
     _networkChanges = null;
     probe = NetworkProbe.probe;

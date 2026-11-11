@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-10-27 14:57:14.550178",
+    "@@last_modified": "2026-11-10 13:06:09.798679",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -5840,12 +5840,10 @@
     "editCourseLater": "Saate hiljem redigeerida mallide pealkirju, kirjelduid ja kursuse pilti.",
     "createCourse": "Loo kursus",
     "stats": "Statistika",
-    "createGroupChat": "Loo grupivestlus",
     "editCourse": "Redigeeri kursust",
     "inviteDesc": "Kasutajanime, koodi või lingi kaudu",
     "editCourseDesc": "Siin saate redigeerida kursuse pealkirja, kirjelduid jne.",
     "permissionsDesc": "Seadke õigused, näiteks kes saab kutsuda kasutajaid, saata sõnumeid, luua vestlusi jne.",
-    "createGroupChatDesc": "Kuna tegevussessioonid algavad ja lõpevad, jäävad grupivestlused avatuks regulaarseks suhtlemiseks.",
     "deleteDesc": "Ainult administraatorid saavad kursust kustutada. See on hävitav tegevus, mis eemaldab kõik kasutajad ja kustutab kõik valitud vestlused kursuse sees. Olge ettevaatlik.",
     "whatNow": "Mis nüüd?",
     "chooseNextActivity": "Valige oma järgmine tegevus!",
@@ -6040,10 +6038,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6057,10 +6051,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9810,9 +9800,7 @@
     "practiceMeaningPrompt": "Mida tähendab „{word}“?",
     "practiceEmojiPrompt": "Vali emotikon sõnale „{word}“",
     "practiceStepProgress": "{done} / {total}",
-    "leaderboard": "Edetabel",
-    "leaderboardRank": "Koht {rank}",
-    "courseLeaderboardTooltip": "Kõik selle kursuse liikmed, järjestatud nende keele tähtede järgi. Puuduta liiget ja vali „Alusta vestlust”, et saata talle otsevestlus.",
+    "courseParticipantTooltip": "See on kõik, kes on selles kursuses. Klõpsake mis tahes kasutaja avatari ja valige \"alusta vestlust\", et saata DM.",
     "goalReportTitle": "Teata sellest tähest",
     "goalReportOverAwardPrompt": "Kui te ei oleks pidanud seda tähte saama, selgitage palun, miks.",
     "goalReportUnderAwardPrompt": "Kui arvate, et oleksite pidanud selle tähe saama, siis miks?",
@@ -9831,11 +9819,6 @@
     "callTranscriptPreparingRecording": "Kogu salvestise ettevalmistamine…",
     "callTranscriptNoRecording": "Kogu kõnest puudub salvestis.",
     "callTranscriptNotSubscribed": "{name} ei olnud selle kõne ajal tellimust, seega öeldut ei transkribeeritud.",
-    "joinYourCourse": "Liitu oma kursusega",
-    "courseCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu kursuse koodi, et sind automaatselt kursusele lisada.",
-    "courseCodeLabel": "Kursuse kood",
-    "courseCodeSaved": "Kursuse kood {code} salvestatud",
-    "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele.",
     "moderationRefusedContactDetails": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas kontaktandmed, näiteks telefoninumbri. Palun eemalda need ja proovi uuesti.",
     "moderationRefusedProfanity": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas sõna, mida me vestluses ei luba. Palun muuda seda ja proovi uuesti.",
     "callTranscriptTranscribeButton": "Transkribeeri",
@@ -9986,6 +9969,17 @@
     "keepWaiting": "Jätka ootamist",
     "botTookSeatAfterAnHour": "See seanss oli tund aega avatud, nii et Pangea Bot võttis vaba koha.",
     "botTookSeatAfterADay": "See seanss oli avatud üle päeva, nii et Pangea Bot võttis vaba koha. Alustamiseks saatke sõnum.",
+    "subscriptionGracePeriodEndsOn": "Makse ebaõnnestus. Ajapikendus lõpeb {date}",
+    "changeBaseLanguageTitle": "Muuda baaskeelt?",
+    "changeBaseLanguageDesc": "Rakenduse menüüd ja nupud lülituvad keelele {language}.",
+    "accountSetupFailedHelp": "Me ei saanud teie konto seadistamist lõpule viia. Kontrollige oma ühendust ja proovige uuesti või logige välja ja proovige hiljem uuesti sisse logida.",
+    "onboardingOfflineError": "Oled võrguühenduseta. Proovi uuesti, kui oled võrgus tagasi.",
+    "activitySavedTo": "Tegevus salvestatud asukohta {page}",
+    "joinWithYourCode": "Liitu oma koodiga",
+    "joinCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu koodi, et sind automaatselt lisada.",
+    "joinCodeLabel": "Kood",
+    "joinCodeSaved": "Kood {code} salvestatud",
+    "joinCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind.",
     "whoCanJoin": "Kes saab liituda?",
     "approvalRequired": "Vajalik on heakskiit",
     "courseAccessPublicDesc": "Igaüks saab selle kursuse leida ja sellega liituda.",

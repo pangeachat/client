@@ -2855,7 +2855,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-10-27 14:57:23.579355",
+    "@@last_modified": "2026-11-10 13:06:20.754705",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3463,12 +3463,10 @@
     "editCourseLater": "Siz shablon sarlavhasi, tavsiflar va kurs rasmini keyinchalik tahrirlashingiz mumkin.",
     "createCourse": "Kurs yaratish",
     "stats": "Statistika",
-    "createGroupChat": "Guruh chatini yaratish",
     "editCourse": "Kursni tahrirlash",
     "inviteDesc": "Foydalanuvchi nomi, kod yoki havola orqali",
     "editCourseDesc": "Bu yerda siz kurs nomi, tavsifi va boshqalarni tahrirlashingiz mumkin.",
     "permissionsDesc": "Kimlar foydalanuvchilarni taklif qilish, xabar yuborish, chatlar yaratish va boshqalar kabi ruxsatlarni belgilash.",
-    "createGroupChatDesc": "Faoliyat sessiyalari boshlanib va tugagan joyda, guruh chatlari muntazam muloqot uchun ochiq qoladi.",
     "deleteDesc": "Faqat administratorlar kursni o‘chirishi mumkin. Bu xavfli harakat bo‘lib, barcha foydalanuvchilarni olib tashlaydi va kurs ichidagi barcha tanlangan chatlarni o‘chiradi. Ehtiyot bo‘ling.",
     "whatNow": "Endi nima qilish kerak?",
     "chooseNextActivity": "Keyingi faoliyatingizni tanlang!",
@@ -6401,10 +6399,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6418,10 +6412,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9817,9 +9807,7 @@
     "practiceMeaningPrompt": "„{word}“ nimani anglatadi?",
     "practiceEmojiPrompt": "„{word}“ uchun emojini tanlang",
     "practiceStepProgress": "{done} / {total}",
-    "leaderboard": "Yetakchilar jadvali",
-    "leaderboardRank": "Daraja {rank}",
-    "courseLeaderboardTooltip": "Ushbu kursdagi barcha ishtirokchilar til boʻyicha yulduzlari asosida tartiblangan. Aʼzoga xabar yuborish uchun uni bosing va “Suhbatni boshlash”ni tanlang.",
+    "courseParticipantTooltip": "Bu kursdagi hamma. Har qanday foydalanuvchining avatariga bosing va «muloqotni boshlash» ni tanlang, shunda DM yuborasiz.",
     "goalReportTitle": "Ushbu yulduz haqida xabar berish",
     "goalReportOverAwardPrompt": "Agar siz bu yulduzni olmasligingiz kerak bo'lsa, iltimos, sababini tushuntiring.",
     "goalReportUnderAwardPrompt": "Agar siz bu yulduzni olishingiz kerak deb hisoblasangiz, nima uchun?",
@@ -9838,11 +9826,6 @@
     "callTranscriptPreparingRecording": "Toʻliq yozuv tayyorlanmoqda...",
     "callTranscriptNoRecording": "Toʻliq qoʻngʻiroq yozuvi yoʻq.",
     "callTranscriptNotSubscribed": "{name} ushbu qo‘ng‘iroq paytida obunaga ega bo‘lmagan, shuning uchun aytilganlar transkripsiya qilinmadi.",
-    "joinYourCourse": "Kursga qoʻshiling",
-    "courseCodeJoinExplanation": "Tizimga kiring yoki roʻyxatdan oʻting, biz sizning kurs kodingizdan avtomatik ravishda kursingizga qoʻshish uchun foydalanamiz.",
-    "courseCodeLabel": "Kurs kodi",
-    "courseCodeSaved": "Kurs kodi {code} saqlandi",
-    "courseCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring va biz sizni kursingizga qoʻshamiz.",
     "moderationRefusedContactDetails": "Xabaringiz yuborilmadi. Avtomatik filtr telefon raqami kabi aloqa ma'lumotlarini topdi. Iltimos, ularni olib tashlang va qayta urinib ko'ring.",
     "moderationRefusedProfanity": "Xabaringiz yuborilmadi. Avtomatik filtr chatda ruxsat etilmagan so'zni topdi. Iltimos, uni o'zgartiring va qayta urinib ko'ring.",
     "callTranscriptTranscribeButton": "Transkripsiya qilish",
@@ -9993,6 +9976,17 @@
     "keepWaiting": "Kutishda davom etish",
     "botTookSeatAfterAnHour": "Bu sessiya bir soat davomida ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi.",
     "botTookSeatAfterADay": "Bu sessiya bir kundan ortiq ochiq edi, shuning uchun Pangea Bot bo‘sh o‘rinni egalladi. Boshlash uchun xabar yuboring.",
+    "subscriptionGracePeriodEndsOn": "Toʻlov amalga oshmadi. Imtiyozli davr {date} kuni tugaydi",
+    "changeBaseLanguageTitle": "Asosiy tilni oʻzgartirish?",
+    "changeBaseLanguageDesc": "Ilovaning menyulari va tugmalari {language} tiliga oʻzgaradi.",
+    "accountSetupFailedHelp": "Hisobingizni sozlashni yakunlay olmadik. Ulanishingizni tekshiring va qayta urinib ko'ring yoki tizimdan chiqib, keyinroq kiring.",
+    "onboardingOfflineError": "Siz oflaynsiz. Tarmoqqa ulangandan so‘ng qayta urinib ko‘ring.",
+    "activitySavedTo": "Faoliyat {page} ga saqlandi",
+    "joinWithYourCode": "Kodingiz bilan qoʻshiling",
+    "joinCodeJoinExplanation": "Tizimga kiring yoki roʻyxatdan oʻting, biz sizni avtomatik ravishda qoʻshish uchun kodingizdan foydalanamiz.",
+    "joinCodeLabel": "Kod",
+    "joinCodeSaved": "Kod {code} saqlandi",
+    "joinCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring, biz sizni qoʻshamiz.",
     "whoCanJoin": "Kimlar qoʻshila oladi?",
     "approvalRequired": "Tasdiqlash talab qilinadi",
     "courseAccessPublicDesc": "Har kim bu kursni topishi va unga qoʻshilishi mumkin.",

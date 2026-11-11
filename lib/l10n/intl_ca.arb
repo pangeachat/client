@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:13.560671",
+    "@@last_modified": "2026-11-10 13:06:08.602651",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3342,12 +3342,10 @@
     "editCourseLater": "Pots editar el títol de la plantilla, les descripcions i la imatge del curs més tard.",
     "createCourse": "Crear curs",
     "stats": "Estadístiques",
-    "createGroupChat": "Crear xat de grup",
     "editCourse": "Editar curs",
     "inviteDesc": "Per nom d'usuari, per codi o enllaç",
     "editCourseDesc": "Aquí pots editar el títol del curs, la descripció, etc.",
     "permissionsDesc": "Estableix permisos com qui pot convidar usuaris, enviar missatges, crear xats, etc.",
-    "createGroupChatDesc": "Mentre que les sessions d'activitat comencen i acaben, els xats de grup romandran oberts per a la comunicació rutinària.",
     "deleteDesc": "Només els administradors poden eliminar un curs. Aquesta és una acció destructiva que elimina tots els usuaris i elimina tots els xats seleccionats dins del curs. Procedeix amb precaució.",
     "whatNow": "I ara què?",
     "chooseNextActivity": "Tria la teva propera activitat!",
@@ -5976,10 +5974,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -5993,10 +5987,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9940,9 +9930,7 @@
     "practiceMeaningPrompt": "Què significa «{word}»?",
     "practiceEmojiPrompt": "Tria un emoji per a «{word}»",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Classificació",
-    "leaderboardRank": "Posició {rank}",
-    "courseLeaderboardTooltip": "Tots els participants d'aquest curs, classificats per les estrelles que tenen en el seu idioma. Toca un membre i tria \"Inicia una conversa\" per enviar-li un missatge directe.",
+    "courseParticipantTooltip": "Això és tothom en aquest curs. Feu clic a l'avatar de qualsevol usuari i \"comenceu la conversa\" per enviar un DM.",
     "goalReportTitle": "Informar d'aquesta estrella",
     "goalReportOverAwardPrompt": "Si se suposava que no havies de rebre aquesta estrella, explica per què.",
     "goalReportUnderAwardPrompt": "Si creus que hauries d'haver rebut aquesta estrella, per què?",
@@ -9961,11 +9949,6 @@
     "callTranscriptPreparingRecording": "S'està preparant l'enregistrament complet…",
     "callTranscriptNoRecording": "No hi ha enregistrament de la trucada completa.",
     "callTranscriptNotSubscribed": "{name} no tenia una subscripció durant aquesta trucada, així que el que es va dir no es va transcriure.",
-    "joinYourCourse": "Uneix-te al teu curs",
-    "courseCodeJoinExplanation": "Inicia sessió o registra't, i utilitzarem el teu codi de curs per afegir-te al teu curs automàticament.",
-    "courseCodeLabel": "Codi de curs",
-    "courseCodeSaved": "Codi de curs {code} desat",
-    "courseCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem al teu curs.",
     "moderationRefusedContactDetails": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat dades de contacte, com ara un número de telèfon. Si us plau, elimina-les i torna-ho a provar.",
     "moderationRefusedProfanity": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat una paraula que no permetem al xat. Si us plau, canvia-la i torna-ho a provar.",
     "callTranscriptTranscribeButton": "Transcriure",
@@ -10116,6 +10099,17 @@
     "keepWaiting": "Seguir esperant",
     "botTookSeatAfterAnHour": "Aquesta sessió ha estat oberta durant una hora, així que el bot Pangea ha ocupat el seient lliure.",
     "botTookSeatAfterADay": "Aquesta sessió ha estat oberta durant més d'un dia, així que el bot Pangea ha ocupat el seient lliure. Envia un missatge per començar.",
+    "subscriptionGracePeriodEndsOn": "El pagament ha fallat. El període de gràcia finalitza el {date}",
+    "changeBaseLanguageTitle": "Canviar idioma base?",
+    "changeBaseLanguageDesc": "Els menús i botons de l'aplicació canviaran a {language}.",
+    "accountSetupFailedHelp": "No hem pogut acabar de configurar el teu compte. Comprova la teva connexió i torna-ho a provar, o tanca la sessió i torna a iniciar-la més tard.",
+    "onboardingOfflineError": "No tens connexió. Torna-ho a provar quan estiguis en línia.",
+    "activitySavedTo": "Activitat desada a {page}",
+    "joinWithYourCode": "Uneix-te amb el teu codi",
+    "joinCodeJoinExplanation": "Inicia sessió o registra't, i utilitzarem el teu codi per afegir-te automàticament.",
+    "joinCodeLabel": "Codi",
+    "joinCodeSaved": "Codi {code} desat",
+    "joinCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem.",
     "whoCanJoin": "Qui es pot unir?",
     "approvalRequired": "Aprovació necessària",
     "courseAccessPublicDesc": "Qualsevol pot trobar i unir-se a aquest curs.",

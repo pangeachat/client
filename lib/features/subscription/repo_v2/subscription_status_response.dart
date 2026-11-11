@@ -86,6 +86,12 @@ class SubscriptionStatusResponse extends BaseResponse {
         winning.type?.isBillable == true;
   }
 
+  /// An entitlement in its grace period without a grace end. The server
+  /// lists a grace-period entitlement only while that date is ahead, so this
+  /// is an anomaly; the plan card then falls back to the end date.
+  bool get hasGracePeriodWithoutEnd =>
+      entitlements.any((e) => e.isInGracePeriod && e.graceEndsAt == null);
+
   bool get onlyActiveEntitlementIsTrial {
     final activeEntitlements = entitlements.where((e) => e.isActive);
     return activeEntitlements.length == 1 &&
@@ -193,9 +199,14 @@ class SubscriptionEntitlement {
   final bool cancelable;
   final String status;
   final DateTime? endsAt;
+  final DateTime? graceEndsAt;
   final ManageAction? manageAction;
   final String? planId;
   final bool cancelAtPeriodEnd;
+
+  /// The statuses the server gives a subscription whose renewal payment
+  /// failed: access lasts until [graceEndsAt] unless a payment goes through.
+  static const _gracePeriodStatuses = {'past_due', 'grace'};
 
   const SubscriptionEntitlement({
     required this.entitlementRef,
@@ -205,6 +216,7 @@ class SubscriptionEntitlement {
     required this.cancelable,
     required this.status,
     this.endsAt,
+    this.graceEndsAt,
     this.manageAction,
     this.planId,
     this.cancelAtPeriodEnd = false,
@@ -226,6 +238,9 @@ class SubscriptionEntitlement {
       endsAt: json['ends_at'] != null
           ? DateTime.tryParse(json['ends_at'] as String)
           : null,
+      graceEndsAt: json['grace_ends_at'] != null
+          ? DateTime.tryParse(json['grace_ends_at'] as String)
+          : null,
       cancelAtPeriodEnd: json['cancel_at_period_end'] as bool? ?? false,
     );
   }
@@ -241,9 +256,12 @@ class SubscriptionEntitlement {
       'status': status,
       'manage_action': manageAction?.toJson(),
       'ends_at': endsAt?.toIso8601String(),
+      'grace_ends_at': graceEndsAt?.toIso8601String(),
       'cancel_at_period_end': cancelAtPeriodEnd,
     };
   }
+
+  bool get isInGracePeriod => _gracePeriodStatuses.contains(status);
 
   bool get isActive {
     if (status != 'active') return false;
@@ -270,6 +288,13 @@ class SubscriptionEntitlement {
     switch (type) {
       case SubscriptionType.paid:
       case SubscriptionType.seat:
+        if (isInGracePeriod) {
+          final graceEndsAt = this.graceEndsAt ?? endsAt;
+          if (graceEndsAt == null) return null;
+          return l10n.subscriptionGracePeriodEndsOn(
+            DateFormatter.format(graceEndsAt),
+          );
+        }
         if (endsAt == null) return null;
         return cancelAtPeriodEnd
             ? l10n.subscriptionEndsOn(DateFormatter.format(endsAt))

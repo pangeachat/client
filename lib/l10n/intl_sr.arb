@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:21.827460",
+    "@@last_modified": "2026-11-10 13:06:19.029905",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -2649,12 +2649,10 @@
     "editCourseLater": "Možete kasnije izmeniti naslov šablona, opise i sliku kursa.",
     "createCourse": "Kreiraj kurs",
     "stats": "Statistika",
-    "createGroupChat": "Kreiraj grupni chat",
     "editCourse": "Izmeni kurs",
     "inviteDesc": "Po korisničkom imenu, po kodu ili linku",
     "editCourseDesc": "Ovde možete izmeniti naslov kursa, opis, itd.",
     "permissionsDesc": "Postavite dozvole kao što su ko može pozvati korisnike, slati poruke, kreirati chatove, itd.",
-    "createGroupChatDesc": "Dok sesije aktivnosti počinju i završavaju, grupni chatovi će ostati otvoreni za rutinsku komunikaciju.",
     "deleteDesc": "Samo administratori mogu obrisati kurs. Ovo je destruktivna radnja koja uklanja sve korisnike i briše sve odabrane chatove unutar kursa. Budite oprezni.",
     "whatNow": "Шта сада?",
     "chooseNextActivity": "Изаберите следећу активност!",
@@ -6792,10 +6790,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6809,10 +6803,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10756,9 +10746,7 @@
     "practiceMeaningPrompt": "Šta znači „{word}“?",
     "practiceEmojiPrompt": "Izaberite emodži za „{word}“",
     "practiceStepProgress": "{done} od {total}",
-    "leaderboard": "Tabela rezultata",
-    "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Svi na ovom kursu, rangirani po broju zvezdica u jeziku kursa. Dodirnite člana i odaberite „Započni razgovor“ da biste mu poslali direktnu poruku.",
+    "courseParticipantTooltip": "Ovo su svi u ovom kursu. Kliknite na avatar bilo kog korisnika i “počnite razgovor” da pošaljete DM.",
     "goalReportTitle": "Prijavi ovu zvezdicu",
     "goalReportOverAwardPrompt": "Ako nisi trebalo da dobiješ ovu zvezdicu, molimo te objasni zašto.",
     "goalReportUnderAwardPrompt": "Ako misliš da je trebalo da dobiješ ovu zvezdicu, zašto?",
@@ -10777,11 +10765,6 @@
     "callTranscriptPreparingRecording": "Pripremam ceo snimak…",
     "callTranscriptNoRecording": "Nema snimka celog poziva.",
     "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano.",
-    "joinYourCourse": "Pridružite se svom kursu",
-    "courseCodeJoinExplanation": "Prijavite se ili se registrujte, a mi ćemo koristiti vaš kod kursa da vas automatski dodamo na vaš kurs.",
-    "courseCodeLabel": "Kod kursa",
-    "courseCodeSaved": "Kod kursa {code} sačuvan",
-    "courseCodeSavedExplanation": "Registrujte se ili se prijavite i mi ćemo vas dodati na vaš kurs.",
     "moderationRefusedContactDetails": "Vaša poruka nije poslata. Automatski filter je pronašao detalje za kontakt, kao što je broj telefona. Uklonite ih i pokušajte ponovo.",
     "moderationRefusedProfanity": "Vaša poruka nije poslata. Automatski filter je pronašao reč koju ne dozvoljavamo u ćaskanju. Promenite je i pokušajte ponovo.",
     "callTranscriptTranscribeButton": "Prepiši",
@@ -10932,6 +10915,17 @@
     "keepWaiting": "Nastavi čekati",
     "botTookSeatAfterAnHour": "Ova sesija je bila otvorena sat vremena, tako da je Pangea Bot zauzeo slobodno mesto.",
     "botTookSeatAfterADay": "Ova sesija je bila otvorena više od jednog dana, tako da je Pangea Bot zauzeo slobodno mesto. Pošaljite poruku da započnete.",
+    "subscriptionGracePeriodEndsOn": "Plaćanje nije uspelo. Grejs period se završava {date}",
+    "changeBaseLanguageTitle": "Promeniti osnovni jezik?",
+    "changeBaseLanguageDesc": "Meniji i dugmad aplikacije će se prebaciti na {language}.",
+    "accountSetupFailedHelp": "Nismo uspeli da završimo podešavanje vašeg naloga. Proverite vezu i pokušajte ponovo, ili se odjavite i prijavite kasnije.",
+    "onboardingOfflineError": "Niste povezani. Pokušajte ponovo kada budete na mreži.",
+    "activitySavedTo": "Aktivnost sačuvana u {page}",
+    "joinWithYourCode": "Pridružite se sa svojim kodom",
+    "joinCodeJoinExplanation": "Prijavite se ili registrujte, a mi ćemo koristiti vaš kod da vas automatski dodamo.",
+    "joinCodeLabel": "Kod",
+    "joinCodeSaved": "Kod {code} sačuvan",
+    "joinCodeSavedExplanation": "Registrujte se ili prijavite i mi ćemo vas dodati.",
     "whoCanJoin": "Ko se može pridružiti?",
     "approvalRequired": "Potrebno odobrenje",
     "courseAccessPublicDesc": "Svako može pronaći i pridružiti se ovom kursu.",

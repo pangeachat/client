@@ -764,9 +764,19 @@ class CallRecord {
       }
       Logs().i('Call transcript half source: $reason');
     }
-    final segments = recorded.isNotEmpty ? recorded : transcripts.segments;
-    final chunksCaptured = transcripts.chunksCaptured;
-    final chunksTranscribed = transcripts.chunksTranscribed;
+    final fromRecording = recorded.isNotEmpty;
+    final segments = fromRecording ? recorded : transcripts.segments;
+    // Nothing says how much of the call a recording covers: a dead tap or a call
+    // moved to another device leaves a short one. So what the live chunks
+    // declared stays declared, and a recording only ever adds itself, as one
+    // chunk captured and transcribed, when no live chunk yielded words. Without
+    // that its words read as impossible. A false gap is better than a hidden one.
+    final recordingCounts = fromRecording && transcripts.chunksTranscribed == 0;
+    final chunksCaptured =
+        transcripts.chunksCaptured + (recordingCounts ? 1 : 0);
+    final chunksTranscribed = recordingCounts
+        ? 1
+        : transcripts.chunksTranscribed;
     final chunksLost = transcripts.chunksLost;
     final chunksRefusedUnsubscribed = transcripts.chunksRefusedUnsubscribed;
     final chunksSuppressed = transcripts.chunksSuppressed;

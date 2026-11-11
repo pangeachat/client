@@ -1249,12 +1249,10 @@
     "editCourseLater": "Du kan redigere skabelonens titel, beskrivelser og kursusbillede senere.",
     "createCourse": "Opret kursus",
     "stats": "Statistikker",
-    "createGroupChat": "Opret gruppechat",
     "editCourse": "Rediger kursus",
     "inviteDesc": "Efter brugernavn, kode eller link",
     "editCourseDesc": "Her kan du redigere kursustitel, beskrivelse osv.",
     "permissionsDesc": "Indstil tilladelser såsom hvem der kan invitere brugere, sende beskeder, oprette chats osv.",
-    "createGroupChatDesc": "Mens aktivitetsessioner starter og slutter, forbliver gruppechats åbne for rutinemæssig kommunikation.",
     "deleteDesc": "Kun administratorer kan slette et kursus. Dette er en destruktiv handling, der fjerner alle brugere og sletter alle valgte chats inden for kurset. Vær forsigtig.",
     "whatNow": "Hvad nu?",
     "chooseNextActivity": "Vælg din næste aktivitet!",
@@ -1316,7 +1314,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-10-27 14:57:13.870146",
+    "@@last_modified": "2026-11-10 13:06:09.205270",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -6763,10 +6761,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6780,10 +6774,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10727,9 +10717,7 @@
     "practiceMeaningPrompt": "Hvad betyder '{word}'?",
     "practiceEmojiPrompt": "Vælg en emoji for '{word}'",
     "practiceStepProgress": "{done} af {total}",
-    "leaderboard": "Rangliste",
-    "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Alle på dette kursus, rangeret efter deres stjerner i sproget. Tryk på et medlem og vælg \"Start samtale\" for at sende dem en direkte besked.",
+    "courseParticipantTooltip": "Dette er alle i dette kursus. Klik på enhver brugers avatar og \"start samtale\" for at sende en DM.",
     "goalReportTitle": "Rapportér denne stjerne",
     "goalReportOverAwardPrompt": "Hvis du ikke skulle have haft denne stjerne, forklar venligst hvorfor.",
     "goalReportUnderAwardPrompt": "Hvis du mener, du skulle have haft denne stjerne, hvorfor?",
@@ -10748,11 +10736,6 @@
     "callTranscriptPreparingRecording": "Forbereder hele optagelsen…",
     "callTranscriptNoRecording": "Ingen optagelse af hele opkaldet.",
     "callTranscriptNotSubscribed": "{name} havde ikke et abonnement under dette opkald, så det, der blev sagt, blev ikke transskriberet.",
-    "joinYourCourse": "Tilmeld dig dit kursus",
-    "courseCodeJoinExplanation": "Log ind eller tilmeld dig, så bruger vi din kursuskode til automatisk at tilføje dig til dit kursus.",
-    "courseCodeLabel": "Kursuskode",
-    "courseCodeSaved": "Kursuskode {code} gemt",
-    "courseCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig til dit kursus.",
     "moderationRefusedContactDetails": "Din besked blev ikke sendt. Et automatisk filter fandt kontaktoplysninger, f.eks. et telefonnummer. Fjern dem, og prøv igen.",
     "moderationRefusedProfanity": "Din besked blev ikke sendt. Et automatisk filter fandt et ord, vi ikke tillader i chatten. Ret det, og prøv igen.",
     "callTranscriptTranscribeButton": "Transskriber",
@@ -10903,6 +10886,17 @@
     "keepWaiting": "Fortsæt med at vente",
     "botTookSeatAfterAnHour": "Denne session var åben i en time, så Pangea Bot tog den ledige plads.",
     "botTookSeatAfterADay": "Denne session var åben i over et døgn, så Pangea Bot tog den ledige plads. Send en besked for at starte.",
+    "subscriptionGracePeriodEndsOn": "Betaling mislykkedes. Udsættelsesperiode slutter den {date}",
+    "changeBaseLanguageTitle": "Skift grundsprog?",
+    "changeBaseLanguageDesc": "Appens menuer og knapper skifter til {language}.",
+    "accountSetupFailedHelp": "Vi kunne ikke færdiggøre opsætningen af din konto. Tjek din forbindelse, og prøv igen, eller log ud, og log ind senere.",
+    "onboardingOfflineError": "Du er offline. Prøv igen, når du er online.",
+    "activitySavedTo": "Aktivitet gemt i {page}",
+    "joinWithYourCode": "Tilmeld dig med din kode",
+    "joinCodeJoinExplanation": "Log ind eller tilmeld dig, så bruger vi din kode til automatisk at tilføje dig.",
+    "joinCodeLabel": "Kode",
+    "joinCodeSaved": "Kode {code} gemt",
+    "joinCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig.",
     "whoCanJoin": "Hvem kan deltage?",
     "approvalRequired": "Godkendelse påkrævet",
     "courseAccessPublicDesc": "Alle kan finde og deltage i dette kursus.",

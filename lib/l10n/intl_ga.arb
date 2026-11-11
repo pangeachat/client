@@ -3464,12 +3464,10 @@
     "editCourseLater": "Is féidir leat teideal an phlean, cur síos, agus íomhá an chúrsa a chur in eagar níos déanaí.",
     "createCourse": "Cruthaigh cúrsa",
     "stats": "Staitisticí",
-    "createGroupChat": "Cruthaigh comhrá grúpa",
     "editCourse": "Cuir in eagar an cúrsa",
     "inviteDesc": "Glaoigh ar ainm úsáideora, cód nó nasc",
     "editCourseDesc": "Anseo is féidir leat teideal na cúrsa, cur síos, srl. a chur in eagar",
     "permissionsDesc": "Socraigh ceadanna mar cé a d'fhéadfadh cuireadh a thabhairt do dhaoine, teachtaireachtaí a sheoladh, comhráite a chruthú, srl.",
-    "createGroupChatDesc": "De réir mar a thosaíonn agus a chríochnaíonn seisiúin gníomhaíochta, fanfaidh comhráite grúpa oscailte le haghaidh cumarsáide rialta.",
     "deleteDesc": "Ní féidir le haon riarthóirí cúrsa a scriosadh ach amháin. Is gníomh díobhálach é seo a bhaint go léir na húsáideoirí agus a scriosadh na comhráite uile roghnaithe laistigh den chúrsa. Bí cúramach le do thoil.",
     "whatNow": "Cad atá le déanamh anois?",
     "chooseNextActivity": "Roghnaigh do chéad ghníomhaíocht eile!",
@@ -3531,7 +3529,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-10-27 14:57:15.332844",
+    "@@last_modified": "2026-11-10 13:06:10.581832",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -6036,10 +6034,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6053,10 +6047,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9824,9 +9814,7 @@
     "practiceMeaningPrompt": "Cad a chiallaíonn ‘{word}’?",
     "practiceEmojiPrompt": "Roghnaigh emoji do ‘{word}’",
     "practiceStepProgress": "{done} as {total}",
-    "leaderboard": "Clár Ceannródaithe",
-    "leaderboardRank": "Céim {rank}",
-    "courseLeaderboardTooltip": "Gach duine sa chúrsa seo, rangaithe de réir a gcuid réaltaí sa teanga. Beartaigh ar bhall agus roghnaigh “Tosaigh comhrá” chun teachtaireacht dhíreach a sheoladh chucu.",
+    "courseParticipantTooltip": "Is é seo gach duine sa chúrsa seo. Cliceáil ar avatar aon úsáideora agus \"tús a chur le comhrá\" chun DM a sheoladh.",
     "goalReportTitle": "Tuairiscigh an réalta seo",
     "goalReportOverAwardPrompt": "Mura raibh tú ceaptha an réalta seo a fháil, mínigh cén fáth.",
     "goalReportUnderAwardPrompt": "Má cheapann tú gur cheart duit an réalta seo a fháil, cén fáth?",
@@ -9845,11 +9833,6 @@
     "callTranscriptPreparingRecording": "Ag ullmhú an taifeadta iomláin…",
     "callTranscriptNoRecording": "Níl aon taifeadadh den ghlao iomlán.",
     "callTranscriptNotSubscribed": "Ní raibh síntiús ag {name} le linn an ghlao seo, mar sin níor tras-scríobhadh an méid a dúradh.",
-    "joinYourCourse": "Bí páirteach i do chúrsa",
-    "courseCodeJoinExplanation": "Logáil isteach nó cláraigh, agus úsáidfimid do chód cúrsa chun tú a chur le do chúrsa go huathoibríoch.",
-    "courseCodeLabel": "Cód cúrsa",
-    "courseCodeSaved": "Cód cúrsa {code} sábháilte",
-    "courseCodeSavedExplanation": "Cláraigh nó logáil isteach agus cuirfimid le do chúrsa thú.",
     "moderationRefusedContactDetails": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch sonraí teagmhála, cosúil le huimhir theileafóin. Bain iad le do thoil agus bain triail eile as.",
     "moderationRefusedProfanity": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch focal nach gceadaímid sa chomhrá. Athraigh é le do thoil agus bain triail eile as.",
     "callTranscriptTranscribeButton": "Trascríobh",
@@ -10000,6 +9983,17 @@
     "keepWaiting": "Fanacht",
     "botTookSeatAfterAnHour": "Bhí an seisiún seo ar oscailt ar feadh uaire an chloig, mar sin thóg Pangea Bot an suíochán folamh.",
     "botTookSeatAfterADay": "Bhí an seisiún seo ar oscailt ar feadh níos mó ná lá, mar sin thóg Pangea Bot an suíochán folamh. Seol teachtaireacht chun tús a chur leis.",
+    "subscriptionGracePeriodEndsOn": "Theip ar an íocaíocht. Críochnaíonn an tréimhse cairde ar {date}",
+    "changeBaseLanguageTitle": "Athraigh an bhuntheanga?",
+    "changeBaseLanguageDesc": "Athróidh biachláir agus cnaipí an aip go {language}.",
+    "accountSetupFailedHelp": "Níorbh fhéidir linn do chuntas a shocrú. Seiceáil do nasc agus bain triail eile as, nó logáil amach agus sínigh isteach níos déanaí.",
+    "onboardingOfflineError": "Tá tú as líne. Bain triail eile as nuair a bheidh tú ar líne arís.",
+    "activitySavedTo": "Gníomhaíocht sábháilte chuig {page}",
+    "joinWithYourCode": "Bí páirteach le do chód",
+    "joinCodeJoinExplanation": "Logáil isteach nó cláraigh, agus úsáidfimid do chód chun tú a chur leis go huathoibríoch.",
+    "joinCodeLabel": "Cód",
+    "joinCodeSaved": "Cód {code} sábháilte",
+    "joinCodeSavedExplanation": "Cláraigh nó logáil isteach agus cuirfimid thú.",
     "whoCanJoin": "Cé atá in ann páirt a ghlacadh?",
     "approvalRequired": "Ceadaítear iarratais",
     "courseAccessPublicDesc": "Is féidir le duine ar bith an cúrsa seo a aimsiú agus páirt a ghlacadh ann.",

@@ -48,17 +48,21 @@ class PickLanguageOnboardingStep extends OnboardingStep {
       throw IdenticalLanguageException();
     }
 
+    // The role rides along in case its own save failed: onboarding can't move
+    // past this save, so the role is saved before it ends
+    // (onboarding.instructions.md § What onboarding reads and saves).
     await state.accountUpdater.updateProfile((profile) {
       return profile.copyWith(
         userSettings: profile.userSettings.copyWith(
           targetLanguage: target.langCode,
           sourceLanguage: base.langCode,
+          selfIdentifiedRole: state.userType,
         ),
       );
     });
 
     // A joined course adds the joined-course page after the level step, for
-    // learners and teachers alike — see joining-courses.instructions.md.
+    // learners and teachers alike — see onboarding.instructions.md.
     final maxRemainingSteps = state.joinedRoomId != null
         ? 1
         : switch (state.userType) {

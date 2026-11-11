@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/authentication/p_logout.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -85,6 +86,13 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
                   ErrorIndicator(
                     message: L10n.of(context).oopsSomethingWentWrong,
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Text(
+                      L10n.of(context).accountSetupFailedHelp,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                   Row(
                     spacing: 8.0,
                     mainAxisSize: MainAxisSize.min,
@@ -93,9 +101,12 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
                         onPressed: _createUserInPangea,
                         child: Text(L10n.of(context).tryAgain),
                       ),
+                      // Nothing is behind this page, and an account without
+                      // an L2 is routed back here, so logging out is the
+                      // only other way out.
                       TextButton(
-                        onPressed: Navigator.of(context).pop,
-                        child: Text(L10n.of(context).cancel),
+                        onPressed: () => pLogoutAction(context),
+                        child: Text(L10n.of(context).logout),
                       ),
                     ],
                   ),

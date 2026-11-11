@@ -3437,12 +3437,10 @@
     "editCourseLater": "Voit muokata mallin otsikkoa, kuvauksia ja kurssikuvaa myöhemmin.",
     "createCourse": "Luo kurssi",
     "stats": "Tilastot",
-    "createGroupChat": "Luo ryhmäkeskustelu",
     "editCourse": "Muokkaa kurssia",
     "inviteDesc": "Kutsulla käyttäjänimellä, koodilla tai linkillä",
     "editCourseDesc": "Täällä voit muokata kurssin otsikkoa, kuvausta jne.",
     "permissionsDesc": "Aseta oikeudet, kuten kuka voi kutsua käyttäjiä, lähettää viestejä, luoda keskusteluja jne.",
-    "createGroupChatDesc": "Sillä aikaa kun aktiviteettisessiot alkavat ja päättyvät, ryhmäkeskustelut pysyvät avoimina säännöllistä viestintää varten.",
     "deleteDesc": "Vain ylläpitäjät voivat poistaa kurssin. Tämä on tuhoava toimenpide, joka poistaa kaikki käyttäjät ja poistaa kaikki valitut keskustelut kurssin sisällä. Toimi varoen.",
     "whatNow": "Mitä nyt?",
     "chooseNextActivity": "Valitse seuraava toimintosi!",
@@ -3504,7 +3502,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-10-27 14:57:14.694714",
+    "@@last_modified": "2026-11-10 13:06:10.119247",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -6017,10 +6015,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6034,10 +6028,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9850,9 +9840,7 @@
     "practiceMeaningPrompt": "Mitä ”{word}” tarkoittaa?",
     "practiceEmojiPrompt": "Valitse emoji sanalle ”{word}”",
     "practiceStepProgress": "{done}/{total}",
-    "leaderboard": "Tulostaulu",
-    "leaderboardRank": "Sija {rank}",
-    "courseLeaderboardTooltip": "Kaikki tällä kurssilla, järjestettynä heidän kielensä tähtien mukaan. Napauta jäsentä ja valitse ”Aloita keskustelu” lähettääksesi hänelle yksityisviestin.",
+    "courseParticipantTooltip": "Tässä ovat kaikki tämän kurssin osallistujat. Napsauta kenen tahansa käyttäjän avataria ja valitse \"aloita keskustelu\" lähettääksesi yksityisviestin.",
     "goalReportTitle": "Ilmoita tästä tähdestä",
     "goalReportOverAwardPrompt": "Jos sinun ei pitänyt saada tätä tähteä, selitä miksi.",
     "goalReportUnderAwardPrompt": "Jos mielestäsi sinun olisi pitänyt saada tämä tähti, miksi?",
@@ -9871,11 +9859,6 @@
     "callTranscriptPreparingRecording": "Valmistelen koko tallennetta…",
     "callTranscriptNoRecording": "Koko puhelusta ei ole tallennetta.",
     "callTranscriptNotSubscribed": "{name} ei ollut tilannut palvelua tämän puhelun aikana, joten puhetta ei litteroitu.",
-    "joinYourCourse": "Liity kurssillesi",
-    "courseCodeJoinExplanation": "Kirjaudu sisään tai rekisteröidy, niin lisäämme sinut kurssillesi automaattisesti kurssikoodisi avulla.",
-    "courseCodeLabel": "Kurssikoodi",
-    "courseCodeSaved": "Kurssikoodi {code} tallennettu",
-    "courseCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut kurssillesi.",
     "moderationRefusedContactDetails": "Viestisi ei lähetetty. Automaattinen suodatin löysi yhteystietoja, kuten puhelinnumeron. Poista ne ja yritä uudelleen.",
     "moderationRefusedProfanity": "Viestisi ei lähetetty. Automaattinen suodatin löysi sanan, jota emme salli chatissa. Muuta sitä ja yritä uudelleen.",
     "callTranscriptTranscribeButton": "Transkriboi",
@@ -10026,6 +10009,17 @@
     "keepWaiting": "Jatka odottamista",
     "botTookSeatAfterAnHour": "Tämä istunto oli auki tunnin, joten Pangea Bot otti avoimen paikan.",
     "botTookSeatAfterADay": "Tämä istunto oli auki yli päivän, joten Pangea Bot otti avoimen paikan. Aloita lähettämällä viesti.",
+    "subscriptionGracePeriodEndsOn": "Maksu epäonnistui. Armonaika päättyy {date}",
+    "changeBaseLanguageTitle": "Vaihda peruskieli?",
+    "changeBaseLanguageDesc": "Sovelluksen valikot ja painikkeet vaihtuvat kielelle {language}.",
+    "accountSetupFailedHelp": "Emme saaneet tiliäsi valmiiksi. Tarkista yhteytesi ja yritä uudelleen, tai kirjaudu ulos ja sisään myöhemmin.",
+    "onboardingOfflineError": "Olet offline-tilassa. Yritä uudelleen, kun olet taas online-tilassa.",
+    "activitySavedTo": "Aktiviteetti tallennettu kohteeseen {page}",
+    "joinWithYourCode": "Liity koodillasi",
+    "joinCodeJoinExplanation": "Kirjaudu sisään tai rekisteröidy, niin lisäämme sinut automaattisesti koodillasi.",
+    "joinCodeLabel": "Koodi",
+    "joinCodeSaved": "Koodi {code} tallennettu",
+    "joinCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut.",
     "whoCanJoin": "Kuka voi liittyä?",
     "approvalRequired": "Hyväksyntä vaaditaan",
     "courseAccessPublicDesc": "Kuka tahansa voi löytää ja liittyä tälle kurssille.",

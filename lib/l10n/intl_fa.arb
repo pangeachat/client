@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:14.613217",
+    "@@last_modified": "2026-11-10 13:06:10.074785",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -3367,12 +3367,10 @@
     "editCourseLater": "می‌توانید بعداً عنوان، توضیحات و تصویر دوره را ویرایش کنید.",
     "createCourse": "ایجاد دوره",
     "stats": "آمار",
-    "createGroupChat": "ایجاد چت گروهی",
     "editCourse": "ویرایش دوره",
     "inviteDesc": "با نام کاربری، با کد یا لینک",
     "editCourseDesc": "در اینجا می‌توانید عنوان، توضیحات و موارد دیگر دوره را ویرایش کنید.",
     "permissionsDesc": "مجوزها را تنظیم کنید، مانند اینکه چه کسی می‌تواند کاربران را دعوت کند، پیام ارسال کند، چت ایجاد کند و غیره.",
-    "createGroupChatDesc": "در حالی که جلسات فعالیت شروع و پایان می‌یابند، چت‌های گروهی برای ارتباط روتین باقی خواهند ماند.",
     "deleteDesc": "فقط مدیران می‌توانند دوره را حذف کنند. این یک اقدام مخرب است که تمام کاربران را حذف می‌کند و تمام چت‌های انتخاب شده درون دوره را حذف می‌کند. با احتیاط اقدام کنید.",
     "whatNow": "حالا چه؟",
     "chooseNextActivity": "انتخاب فعالیت بعدی شما!",
@@ -5942,10 +5940,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -5959,10 +5953,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9901,9 +9891,7 @@
     "practiceMeaningPrompt": "«{word}» به چه معناست؟",
     "practiceEmojiPrompt": "یک ایموجی برای «{word}» انتخاب کنید",
     "practiceStepProgress": "{done} از {total}",
-    "leaderboard": "جدول امتیازات",
-    "leaderboardRank": "رتبه {rank}",
-    "courseLeaderboardTooltip": "همه افراد در این دوره، بر اساس ستاره‌هایشان در زبان مربوطه رتبه‌بندی شده‌اند. برای ارسال پیام مستقیم به یک عضو، روی او ضربه بزنید و «شروع مکالمه» را انتخاب کنید.",
+    "courseParticipantTooltip": "این همه افرادی هستند که در این دوره حضور دارند. بر روی آواتار هر کاربر کلیک کنید و \"شروع گفتگو\" را بزنید تا یک پیام مستقیم ارسال کنید.",
     "goalReportTitle": "گزارش این ستاره",
     "goalReportOverAwardPrompt": "اگر قرار نبود این ستاره را بگیرید، لطفاً دلیل آن را توضیح دهید.",
     "goalReportUnderAwardPrompt": "اگر فکر می‌کنید قرار بود این ستاره را بگیرید، چرا؟",
@@ -9922,11 +9910,6 @@
     "callTranscriptPreparingRecording": "در حال آماده‌سازی ضبط کامل...",
     "callTranscriptNoRecording": "هیچ ضبطی از مکالمه کامل وجود ندارد.",
     "callTranscriptNotSubscribed": "{name} در طول این تماس اشتراک نداشت، بنابراین آنچه گفته شد رونویسی نشد.",
-    "joinYourCourse": "به دوره خود بپیوندید",
-    "courseCodeJoinExplanation": "وارد شوید یا ثبت‌نام کنید، و ما از کد دوره شما برای افزودن خودکار شما به دوره استفاده خواهیم کرد.",
-    "courseCodeLabel": "کد دوره",
-    "courseCodeSaved": "کد دوره {code} ذخیره شد",
-    "courseCodeSavedExplanation": "ثبت‌نام کنید یا وارد شوید و ما شما را به دوره شما اضافه خواهیم کرد.",
     "moderationRefusedContactDetails": "پیام شما ارسال نشد. یک فیلتر خودکار جزئیات تماس، مانند شماره تلفن، را پیدا کرد. لطفاً آن‌ها را حذف کرده و دوباره تلاش کنید.",
     "moderationRefusedProfanity": "پیام شما ارسال نشد. یک فیلتر خودکار کلمه‌ای را پیدا کرد که ما در چت مجاز نمی‌دانیم. لطفاً آن را تغییر داده و دوباره تلاش کنید.",
     "callTranscriptTranscribeButton": "رونویسی",
@@ -10077,6 +10060,17 @@
     "keepWaiting": "منتظر بمانید",
     "botTookSeatAfterAnHour": "این جلسه به مدت یک ساعت باز بود، بنابراین ربات Pangea جای خالی را پر کرد.",
     "botTookSeatAfterADay": "این جلسه بیش از یک روز باز بود، بنابراین ربات Pangea جای خالی را پر کرد. برای شروع یک پیام ارسال کنید.",
+    "subscriptionGracePeriodEndsOn": "پرداخت ناموفق بود. دوره ارفاق در {date} به پایان می‌رسد",
+    "changeBaseLanguageTitle": "تغییر زبان پایه؟",
+    "changeBaseLanguageDesc": "منوها و دکمه‌های برنامه به {language} تغییر خواهند کرد.",
+    "accountSetupFailedHelp": "ما نتوانستیم راه‌اندازی حساب شما را به پایان برسانیم. اتصال خود را بررسی کنید و دوباره امتحان کنید، یا از سیستم خارج شوید و بعداً وارد شوید.",
+    "onboardingOfflineError": "شما آفلاین هستید. وقتی آنلاین شدید دوباره امتحان کنید.",
+    "activitySavedTo": "فعالیت در {page} ذخیره شد",
+    "joinWithYourCode": "با کد خود بپیوندید",
+    "joinCodeJoinExplanation": "وارد شوید یا ثبت‌نام کنید، و ما از کد شما برای افزودن خودکار شما استفاده خواهیم کرد.",
+    "joinCodeLabel": "کد",
+    "joinCodeSaved": "کد {code} ذخیره شد",
+    "joinCodeSavedExplanation": "ثبت‌نام کنید یا وارد شوید و ما شما را اضافه خواهیم کرد.",
     "whoCanJoin": "چه کسی می‌تواند بپیوندد؟",
     "approvalRequired": "نیاز به تأیید",
     "courseAccessPublicDesc": "هر کسی می‌تواند این دوره را پیدا کرده و به آن بپیوندد.",

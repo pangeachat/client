@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:20.774230",
+    "@@last_modified": "2026-11-10 13:06:17.306282",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -3325,12 +3325,10 @@
     "editCourseLater": "Você pode editar o título do modelo, descrições e imagem do curso posteriormente.",
     "createCourse": "Criar curso",
     "stats": "Estatísticas",
-    "createGroupChat": "Criar chat em grupo",
     "editCourse": "Editar curso",
     "inviteDesc": "Por nome de usuário, por código ou link",
     "editCourseDesc": "Aqui você pode editar o título do curso, descrição, etc.",
     "permissionsDesc": "Defina permissões como quem pode convidar usuários, enviar mensagens, criar chats, etc.",
-    "createGroupChatDesc": "Enquanto sessões de atividade começam e terminam, os chats em grupo permanecerão abertos para comunicação rotineira.",
     "deleteDesc": "Somente administradores podem excluir um curso. Esta é uma ação destrutiva que remove todos os usuários e exclui todos os chats selecionados dentro do curso. Proceda com cautela.",
     "whatNow": "E agora?",
     "chooseNextActivity": "Escolha sua próxima atividade!",
@@ -6787,10 +6785,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6804,10 +6798,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10751,9 +10741,7 @@
     "practiceMeaningPrompt": "O que ‘{word}’ significa?",
     "practiceEmojiPrompt": "Escolha um emoji para ‘{word}’",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Classificação",
-    "leaderboardRank": "Classificação {rank}",
-    "courseLeaderboardTooltip": "Todos neste curso, classificados pelas estrelas que ganharam no idioma. Toque em um membro e escolha “Iniciar conversa” para enviar uma mensagem direta.",
+    "courseParticipantTooltip": "Este é todo mundo neste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
     "goalReportTitle": "Reportar esta estrela",
     "goalReportOverAwardPrompt": "Se você não deveria ter recebido esta estrela, por favor, explique o porquê.",
     "goalReportUnderAwardPrompt": "Se você acha que deveria ter recebido esta estrela, por quê?",
@@ -10772,11 +10760,6 @@
     "callTranscriptPreparingRecording": "Preparando a gravação completa…",
     "callTranscriptNoRecording": "Nenhuma gravação da chamada completa.",
     "callTranscriptNotSubscribed": "{name} não tinha uma assinatura durante esta chamada, então o que foi dito não foi transcrito.",
-    "joinYourCourse": "Entrar no seu curso",
-    "courseCodeJoinExplanation": "Faça login ou cadastre-se, e usaremos seu código de curso para adicioná-lo ao seu curso automaticamente.",
-    "courseCodeLabel": "Código do curso",
-    "courseCodeSaved": "Código do curso {code} salvo",
-    "courseCodeSavedExplanation": "Cadastre-se ou faça login e nós o adicionaremos ao seu curso.",
     "moderationRefusedContactDetails": "Sua mensagem não foi enviada. Um filtro automático encontrou detalhes de contato, como um número de telefone. Remova-os e tente novamente.",
     "moderationRefusedProfanity": "Sua mensagem não foi enviada. Um filtro automático encontrou uma palavra que não permitimos no chat. Por favor, altere-a e tente novamente.",
     "callTranscriptTranscribeButton": "Transcrever",
@@ -10927,6 +10910,17 @@
     "keepWaiting": "Continuar esperando",
     "botTookSeatAfterAnHour": "Esta sessão ficou aberta por uma hora, então Pangea Bot ocupou o lugar vago.",
     "botTookSeatAfterADay": "Esta sessão ficou aberta por mais de um dia, então Pangea Bot ocupou o lugar vago. Envie uma mensagem para começar.",
+    "subscriptionGracePeriodEndsOn": "Pagamento falhou. Período de carência termina em {date}",
+    "changeBaseLanguageTitle": "Mudar idioma base?",
+    "changeBaseLanguageDesc": "Os menus e botões do aplicativo mudarão para {language}.",
+    "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique sua conexão e tente novamente, ou saia e faça login mais tarde.",
+    "onboardingOfflineError": "Você está offline. Tente novamente quando estiver online.",
+    "activitySavedTo": "Atividade salva em {page}",
+    "joinWithYourCode": "Entrar com seu código",
+    "joinCodeJoinExplanation": "Faça login ou cadastre-se, e usaremos seu código para adicioná-lo automaticamente.",
+    "joinCodeLabel": "Código",
+    "joinCodeSaved": "Código {code} salvo",
+    "joinCodeSavedExplanation": "Cadastre-se ou faça login e nós o adicionaremos.",
     "whoCanJoin": "Quem pode entrar?",
     "approvalRequired": "Aprovação necessária",
     "courseAccessPublicDesc": "Qualquer pessoa pode encontrar e entrar neste curso.",

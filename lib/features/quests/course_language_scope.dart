@@ -21,7 +21,7 @@ class CourseLanguageScope {
   /// Whether [course] is in the learner's current target language — the
   /// scope every Mission meter, the Learning Objectives list and the
   /// analytics bar's star count read. A course with no language recorded
-  /// counts, as the star count and the leaderboard always have.
+  /// counts, as the star count always has.
   static bool courseInTargetLanguage(Room? course) =>
       _inTargetLanguage(course?.coursePlan?.l2);
 
@@ -62,15 +62,6 @@ class CourseLanguageScope {
     final planLanguage = session.activityPlan?.req.targetLanguage;
     return planLanguage != null && _inTargetLanguage(planLanguage);
   }
-
-  /// Whether [savedSessionInTargetLanguage] can't decide [session] yet: it
-  /// isn't filed under the current language and its plan hasn't loaded, so
-  /// its XP counts nowhere until the plan lands. A loaded plan that expired
-  /// from the cache reads this way again while it reloads.
-  static bool savedSessionAwaitingPlan(
-    Room session,
-    Set<String> savedInLanguage,
-  ) => !savedInLanguage.contains(session.id) && session.activityPlan == null;
 
   /// [course]'s language, or null when none is recorded or the store doesn't
   /// know it.

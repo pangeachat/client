@@ -7,14 +7,15 @@ import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/chat_details/participant_card.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 
 /// A chat's full participant list: every member as a [ParticipantCard] in a
-/// centered wrap, with a trailing invite tile. A course ranks its members
-/// instead — CourseLeaderboardPage.
+/// centered wrap, with a trailing invite tile. A course lists its own —
+/// CourseParticipantsPage.
 class RoomParticipantsSection extends StatelessWidget {
   final Room room;
 
@@ -63,7 +64,7 @@ class RoomParticipantsSection extends StatelessWidget {
                     ),
                   ),
                 ),
-                _InviteTile(room: room),
+                ParticipantsInviteTile(room: room),
               ],
             ),
           );
@@ -73,16 +74,16 @@ class RoomParticipantsSection extends StatelessWidget {
   }
 }
 
-/// The wrap's trailing invite tile, sized like a member card. Hidden when the
-/// user can't invite (or in a DM).
-class _InviteTile extends StatelessWidget {
+/// A participant wrap's trailing invite tile, sized like a member card. Hidden
+/// when the user can't invite (or in a DM).
+class ParticipantsInviteTile extends StatelessWidget {
   final Room room;
 
-  const _InviteTile({required this.room});
+  const ParticipantsInviteTile({required this.room, super.key});
 
   @override
   Widget build(BuildContext context) {
-    if (!room.canInvite || room.isDirectChat) return const SizedBox();
+    if (!room.canInviteMembers || room.isDirectChat) return const SizedBox();
 
     // Focusable, named and ringed, where a bare GestureDetector took a mouse
     // only (#9154). The tile keeps its own hover fill, so the ink's is off.
@@ -106,7 +107,7 @@ class _InviteTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             padding: const EdgeInsets.symmetric(vertical: 12.0),
-            width: ParticipantCard.defaultWidth,
+            width: ParticipantCard.width,
             child: Semantics(
               container: true,
               child: Column(

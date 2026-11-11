@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:17.703488",
+    "@@last_modified": "2026-11-10 13:06:13.609730",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -3312,12 +3312,10 @@
     "editCourseLater": "템플릿 제목, 설명, 과정 이미지는 나중에 편집할 수 있습니다.",
     "createCourse": "과정 생성",
     "stats": "통계",
-    "createGroupChat": "단체 채팅 만들기",
     "editCourse": "코스 편집",
     "inviteDesc": "사용자 이름, 코드 또는 링크로 초대",
     "editCourseDesc": "여기서 코스 제목, 설명 등을 편집할 수 있습니다.",
     "permissionsDesc": "초대할 수 있는 사용자, 메시지 보내기, 채팅 만들기 등의 권한을 설정하세요.",
-    "createGroupChatDesc": "활동 세션이 시작되고 종료되는 동안, 그룹 채팅은 일상적인 소통을 위해 열려 있습니다.",
     "deleteDesc": "코스는 관리자만 삭제할 수 있습니다. 이는 모든 사용자와 선택된 채팅을 삭제하는 파괴적인 작업입니다. 신중히 진행하세요.",
     "whatNow": "이제 무엇을 할까요?",
     "chooseNextActivity": "다음 활동을 선택하세요!",
@@ -6042,10 +6040,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6059,10 +6053,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10006,9 +9996,7 @@
     "practiceMeaningPrompt": "‘{word}’는 무슨 뜻인가요?",
     "practiceEmojiPrompt": "‘{word}’에 맞는 이모티콘을 선택하세요",
     "practiceStepProgress": "{done}/{total}",
-    "leaderboard": "리더보드",
-    "leaderboardRank": "순위 {rank}",
-    "courseLeaderboardTooltip": "이 코스에 있는 모든 사람을 해당 언어의 별 개수로 순위를 매겼습니다. 멤버를 탭하고 “대화 시작”을 선택하여 DM을 보내세요.",
+    "courseParticipantTooltip": "이것은 이 과정의 모든 사람입니다. 사용자의 아바타를 클릭하고 \"대화 시작\"을 클릭하여 DM을 보내세요.",
     "goalReportTitle": "이 별 신고하기",
     "goalReportOverAwardPrompt": "이 별을 받지 말았어야 했다면, 이유를 설명해주세요.",
     "goalReportUnderAwardPrompt": "이 별을 받았어야 했다고 생각한다면, 그 이유는 무엇인가요?",
@@ -10027,11 +10015,6 @@
     "callTranscriptPreparingRecording": "전체 녹음 준비 중…",
     "callTranscriptNoRecording": "전체 통화 녹음이 없습니다.",
     "callTranscriptNotSubscribed": "{name}님은 이 통화 중에 구독하지 않으셨으므로, 대화 내용이 기록되지 않았습니다.",
-    "joinYourCourse": "코스 참여하기",
-    "courseCodeJoinExplanation": "로그인 또는 가입하시면 코스 코드를 사용하여 자동으로 코스에 추가해 드립니다.",
-    "courseCodeLabel": "코스 코드",
-    "courseCodeSaved": "코스 코드 {code} 저장됨",
-    "courseCodeSavedExplanation": "가입하거나 로그인하시면 코스에 추가해 드립니다.",
     "moderationRefusedContactDetails": "메시지가 전송되지 않았습니다. 자동 필터에서 전화번호와 같은 연락처 정보를 감지했습니다. 해당 정보를 삭제하고 다시 시도해 주세요.",
     "moderationRefusedProfanity": "메시지가 전송되지 않았습니다. 자동 필터에서 채팅에서 허용되지 않는 단어를 감지했습니다. 해당 단어를 변경하고 다시 시도해 주세요.",
     "callTranscriptTranscribeButton": "텍스트 변환",
@@ -10182,6 +10165,17 @@
     "keepWaiting": "계속 기다리기",
     "botTookSeatAfterAnHour": "이 세션은 한 시간 동안 열려 있었으므로 판게아 봇이 빈자리에 참여했습니다.",
     "botTookSeatAfterADay": "이 세션은 하루 이상 열려 있었으므로 판게아 봇이 빈자리에 참여했습니다. 메시지를 보내 시작하세요.",
+    "subscriptionGracePeriodEndsOn": "결제에 실패했습니다. 유예 기간은 {date}에 종료됩니다.",
+    "changeBaseLanguageTitle": "기본 언어를 변경하시겠습니까?",
+    "changeBaseLanguageDesc": "앱 메뉴와 버튼이 {language}로 변경됩니다.",
+    "accountSetupFailedHelp": "계정을 설정할 수 없습니다. 연결 상태를 확인하고 다시 시도하거나, 로그아웃한 후 나중에 다시 로그인해 주세요.",
+    "onboardingOfflineError": "오프라인 상태입니다. 온라인 상태가 되면 다시 시도해 주세요.",
+    "activitySavedTo": "활동이 {page}에 저장되었습니다",
+    "joinWithYourCode": "코드로 참여하기",
+    "joinCodeJoinExplanation": "로그인 또는 가입하시면 회원님의 코드를 사용하여 자동으로 추가해 드립니다.",
+    "joinCodeLabel": "코드",
+    "joinCodeSaved": "코드 {code} 저장됨",
+    "joinCodeSavedExplanation": "가입하거나 로그인하시면 회원님을 추가해 드립니다.",
     "whoCanJoin": "누가 참여할 수 있나요?",
     "approvalRequired": "승인 필요",
     "courseAccessPublicDesc": "누구나 이 코스를 찾아 참여할 수 있습니다.",

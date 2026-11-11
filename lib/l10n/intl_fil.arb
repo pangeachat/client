@@ -1984,12 +1984,10 @@
     "editCourseLater": "Maaari mong i-edit ang pamagat ng template, mga paglalarawan, at larawan ng kurso sa ibang pagkakataon.",
     "createCourse": "Lumikha ng kurso",
     "stats": "Mga Estadistika",
-    "createGroupChat": "Lumikha ng pangkat na usapan",
     "editCourse": "I-edit ang kurso",
     "inviteDesc": "Sa pamamagitan ng username, code, o link",
     "editCourseDesc": "Dito maaari mong i-edit ang pamagat ng kurso, paglalarawan, atbp.",
     "permissionsDesc": "Itakda ang mga pahintulot tulad ng kung sino ang maaaring mag-imbita ng mga user, magpadala ng mga mensahe, lumikha ng mga usapan, atbp.",
-    "createGroupChatDesc": "Kung saan nagsisimula at nagtatapos ang mga sesyon ng aktibidad, mananatiling bukas ang mga pangkat na usapan para sa pang-araw-araw na komunikasyon.",
     "deleteDesc": "Tanging mga admin lamang ang maaaring magtanggal ng kurso. Ito ay isang mapanirang aksyon na nag-aalis ng lahat ng mga user at nagtatanggal ng lahat ng napiling usapan sa loob ng kurso. Mag-ingat sa pagproseso.",
     "whatNow": "Ano na ngayon?",
     "chooseNextActivity": "Piliin ang iyong susunod na aktibidad!",
@@ -2062,7 +2060,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-10-27 14:57:14.597760",
+    "@@last_modified": "2026-11-10 13:06:10.319737",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6714,10 +6712,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6731,10 +6725,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10667,9 +10657,7 @@
     "practiceMeaningPrompt": "Ano ang ibig sabihin ng ‘{word}’?",
     "practiceEmojiPrompt": "Pumili ng emoji para sa ‘{word}’",
     "practiceStepProgress": "{done} sa {total}",
-    "leaderboard": "Leaderboard",
-    "leaderboardRank": "Ranggo {rank}",
-    "courseLeaderboardTooltip": "Lahat ng nasa kursong ito, niraranggo ayon sa kanilang mga bituin sa wika nito. I-tap ang isang miyembro at piliin ang “Simulan ang pag-uusap” para magpadala sa kanila ng DM.",
+    "courseParticipantTooltip": "Ito ang lahat ng tao sa kursong ito. I-click ang avatar ng sinumang user at \"magsimula ng pag-uusap\" upang magpadala ng DM.",
     "goalReportTitle": "Iulat ang bituing ito",
     "goalReportOverAwardPrompt": "Kung hindi mo dapat nakuha ang bituing ito, mangyaring ipaliwanag kung bakit.",
     "goalReportUnderAwardPrompt": "Kung sa tingin mo ay dapat mong nakuha ang bituing ito, bakit?",
@@ -10688,11 +10676,6 @@
     "callTranscriptPreparingRecording": "Inihahanda ang buong recording...",
     "callTranscriptNoRecording": "Walang recording ng buong tawag.",
     "callTranscriptNotSubscribed": "Walang subscription si {name} noong tawag na ito, kaya hindi na-transcribe ang sinabi.",
-    "joinYourCourse": "Sumali sa iyong kurso",
-    "courseCodeJoinExplanation": "Mag-log in o mag-sign up, at gagamitin namin ang iyong course code para awtomatiko kang maidagdag sa iyong kurso.",
-    "courseCodeLabel": "Course code",
-    "courseCodeSaved": "Na-save ang course code na {code}",
-    "courseCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin sa iyong kurso.",
     "moderationRefusedContactDetails": "Hindi naipadala ang iyong mensahe. Nakakita ang awtomatikong filter ng mga detalye sa pakikipag-ugnayan, tulad ng numero ng telepono. Pakialisin ang mga ito at subukang muli.",
     "moderationRefusedProfanity": "Hindi naipadala ang iyong mensahe. Nakakita ang awtomatikong filter ng salitang hindi namin pinapayagan sa chat. Pakipalitan ito at subukang muli.",
     "callTranscriptTranscribeButton": "I-transcribe",
@@ -10843,6 +10826,17 @@
     "keepWaiting": "Maghintay pa",
     "botTookSeatAfterAnHour": "Isang oras nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan.",
     "botTookSeatAfterADay": "Mahigit isang araw nang bukas ang session na ito, kaya umupo si Pangea Bot sa bakanteng upuan. Magpadala ng mensahe para magsimula.",
+    "subscriptionGracePeriodEndsOn": "Nabigo ang pagbabayad. Matatapos ang grace period sa {date}",
+    "changeBaseLanguageTitle": "Palitan ang base language?",
+    "changeBaseLanguageDesc": "Ang mga menu at button ng app ay lilipat sa {language}.",
+    "accountSetupFailedHelp": "Hindi namin matapos ang pag-set up ng iyong account. Suriin ang iyong koneksyon at subukang muli, o mag-log out at mag-sign in mamaya.",
+    "onboardingOfflineError": "Offline ka. Subukang muli kapag online ka na.",
+    "activitySavedTo": "Na-save ang aktibidad sa {page}",
+    "joinWithYourCode": "Sumali gamit ang iyong code",
+    "joinCodeJoinExplanation": "Mag-log in o mag-sign up, at gagamitin namin ang iyong code para awtomatiko kang idagdag.",
+    "joinCodeLabel": "Code",
+    "joinCodeSaved": "Na-save ang code na {code}",
+    "joinCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin.",
     "whoCanJoin": "Sino ang puwedeng sumali?",
     "approvalRequired": "Kailangan ng pag-apruba",
     "courseAccessPublicDesc": "Kahit sino ay puwedeng makahanap at makasali sa kursong ito.",

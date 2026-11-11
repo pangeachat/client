@@ -2878,12 +2878,10 @@
     "editCourseLater": "Vėliau galite redaguoti šablono pavadinimą, aprašymus ir kurso vaizdą.",
     "createCourse": "Sukurti kursą",
     "stats": "Statistika",
-    "createGroupChat": "Sukurti grupinį pokalbį",
     "editCourse": "Redaguoti kursą",
     "inviteDesc": "Per vartotojo vardą, kodą ar nuorodą",
     "editCourseDesc": "Čia galite redaguoti kurso pavadinimą, aprašymą ir kt.",
     "permissionsDesc": "Nustatykite leidimus, pvz., kas gali pakviesti naudotojus, siųsti žinutes, kurti pokalbius ir kt.",
-    "createGroupChatDesc": "Nors veiklos sesijos prasideda ir baigiasi, grupiniai pokalbiai liks atviri kasdieniam bendravimui.",
     "deleteDesc": "Tik tik administratori gali ištrinti kursą. Tai yra destruktyvus veiksmas, kuris pašalina visus naudotojus ir ištrina visus pasirinktus pokalbius kurse. Būkite atsargūs.",
     "whatNow": "Kas dabar?",
     "chooseNextActivity": "Pasirinkite savo kitą veiklą!",
@@ -2945,7 +2943,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-10-27 14:57:18.329201",
+    "@@last_modified": "2026-11-10 13:06:14.737651",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6624,10 +6622,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6641,10 +6635,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10588,9 +10578,7 @@
     "practiceMeaningPrompt": "Ką reiškia „{word}“?",
     "practiceEmojiPrompt": "Pasirinkite jaustuką žodžiui „{word}“",
     "practiceStepProgress": "{done} iš {total}",
-    "leaderboard": "Lyderių lentelė",
-    "leaderboardRank": "Vieta {rank}",
-    "courseLeaderboardTooltip": "Visi šio kurso dalyviai, suskirstyti pagal jų žvaigždutes šia kalba. Bakstelėkite narį ir pasirinkite „Pradėti pokalbį“, kad išsiųstumėte jam tiesioginę žinutę.",
+    "courseParticipantTooltip": "Tai yra visi šio kurso dalyviai. Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad siųstumėte DM.",
     "goalReportTitle": "Pranešti apie šią žvaigždutę",
     "goalReportOverAwardPrompt": "Jei neturėjote gauti šios žvaigždutės, paaiškinkite kodėl.",
     "goalReportUnderAwardPrompt": "Jei manote, kad turėjote gauti šią žvaigždutę, kodėl?",
@@ -10609,11 +10597,6 @@
     "callTranscriptPreparingRecording": "Ruošiamas visas įrašas…",
     "callTranscriptNoRecording": "Nėra viso pokalbio įrašo.",
     "callTranscriptNotSubscribed": "{name} neturėjo prenumeratos šio skambučio metu, todėl tai, kas buvo pasakyta, nebuvo transkribuota.",
-    "joinYourCourse": "Prisijunkite prie savo kurso",
-    "courseCodeJoinExplanation": "Prisijunkite arba užsiregistruokite, ir mes naudosime jūsų kurso kodą, kad automatiškai jus pridėtume prie jūsų kurso.",
-    "courseCodeLabel": "Kurso kodas",
-    "courseCodeSaved": "Kurso kodas {code} išsaugotas",
-    "courseCodeSavedExplanation": "Užsiregistruokite arba prisijunkite ir mes jus pridėsime prie jūsų kurso.",
     "moderationRefusedContactDetails": "Jūsų žinutė nebuvo išsiųsta. Automatinis filtras aptiko kontaktinius duomenis, pvz., telefono numerį. Pašalinkite juos ir bandykite dar kartą.",
     "moderationRefusedProfanity": "Jūsų žinutė nebuvo išsiųsta. Automatinis filtras aptiko žodį, kurio neleidžiame naudoti pokalbyje. Pakeiskite jį ir bandykite dar kartą.",
     "callTranscriptTranscribeButton": "Transkribuoti",
@@ -10764,6 +10747,17 @@
     "keepWaiting": "Laukti toliau",
     "botTookSeatAfterAnHour": "Ši sesija buvo atidaryta valandą, todėl Pangea Bot užėmė laisvą vietą.",
     "botTookSeatAfterADay": "Ši sesija buvo atidaryta ilgiau nei dieną, todėl Pangea Bot užėmė laisvą vietą. Norėdami pradėti, atsiųskite žinutę.",
+    "subscriptionGracePeriodEndsOn": "Mokėjimas nepavyko. Lengvatinis laikotarpis baigiasi {date}",
+    "changeBaseLanguageTitle": "Pakeisti pagrindinę kalbą?",
+    "changeBaseLanguageDesc": "Programėlės meniu ir mygtukai persijungs į {language}.",
+    "accountSetupFailedHelp": "Nepavyko užbaigti paskyros nustatymo. Patikrinkite ryšį ir bandykite dar kartą arba atsijunkite ir prisijunkite vėliau.",
+    "onboardingOfflineError": "Esate neprisijungę. Bandykite dar kartą, kai vėl prisijungsite.",
+    "activitySavedTo": "Veikla išsaugota {page}",
+    "joinWithYourCode": "Prisijunkite naudodami savo kodą",
+    "joinCodeJoinExplanation": "Prisijunkite arba užsiregistruokite, ir mes automatiškai jus pridėsime naudodami jūsų kodą.",
+    "joinCodeLabel": "Kodas",
+    "joinCodeSaved": "Kodas {code} išsaugotas",
+    "joinCodeSavedExplanation": "Užsiregistruokite arba prisijunkite, ir mes jus pridėsime.",
     "whoCanJoin": "Kas gali prisijungti?",
     "approvalRequired": "Reikalingas patvirtinimas",
     "courseAccessPublicDesc": "Kiekvienas gali rasti ir prisijungti prie šio kurso.",

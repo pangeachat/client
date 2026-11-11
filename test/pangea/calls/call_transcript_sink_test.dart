@@ -144,6 +144,8 @@ void main() {
       expect(sent.single.config.sampleRateHertz, 16000);
       expect(sent.single.config.userL1, 'en');
       expect(sent.single.config.userL2, 'es');
+      // A call accepts the speaker's L1 back, untranslated (#3351).
+      expect(sent.single.allowSpeakerL1, isTrue);
       expect(
         String.fromCharCodes(sent.single.audioContent.sublist(0, 4)),
         'RIFF',

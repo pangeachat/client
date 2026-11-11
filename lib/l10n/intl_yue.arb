@@ -1167,12 +1167,10 @@
     "editCourseLater": "你可以稍後編輯模板標題、描述同課程圖片。",
     "createCourse": "建立課程",
     "stats": "統計數據",
-    "createGroupChat": "建立群組聊天",
     "editCourse": "編輯課程",
     "inviteDesc": "按用戶名、代碼或連結邀請",
     "editCourseDesc": "喺呢度你可以編輯課程標題、描述等。",
     "permissionsDesc": "設定權限，例如邊個可以邀請用戶、發送訊息、建立聊天等。",
-    "createGroupChatDesc": "活動會議開始同結束，但群組聊天會保持開放，用於日常溝通。",
     "deleteDesc": "只有管理員可以刪除課程。呢個係破壞性操作，會移除所有用戶同刪除課程內所有選擇嘅聊天。請小心操作。",
     "whatNow": "而家點？",
     "chooseNextActivity": "揀你下一個活動！",
@@ -1245,7 +1243,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-10-27 14:57:24.431960",
+    "@@last_modified": "2026-11-10 13:06:21.594180",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -6431,10 +6429,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6448,10 +6442,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10764,9 +10754,7 @@
     "practiceMeaningPrompt": "「{word}」係咩意思？",
     "practiceEmojiPrompt": "為「{word}」揀個表情符號",
     "practiceStepProgress": "{done} / {total}",
-    "leaderboard": "排行榜",
-    "leaderboardRank": "排名 {rank}",
-    "courseLeaderboardTooltip": "此課程中的所有成員，按其語言星數排名。點擊成員並選擇「開始對話」即可向他們發送私訊。",
+    "courseParticipantTooltip": "這是這個課程中的所有人。點擊任何用戶的頭像並選擇「開始對話」來發送私信。",
     "goalReportTitle": "舉報此星章",
     "goalReportOverAwardPrompt": "如果你不應該獲得此星章，請解釋原因。",
     "goalReportUnderAwardPrompt": "如果你認為你應該獲得此星章，請解釋原因。",
@@ -10785,11 +10773,6 @@
     "callTranscriptPreparingRecording": "正在準備完整錄音…",
     "callTranscriptNoRecording": "沒有完整通話錄音。",
     "callTranscriptNotSubscribed": "{name} 喺呢次通話期間冇訂閱，所以冇轉錄到對話內容。",
-    "joinYourCourse": "加入你的課程",
-    "courseCodeJoinExplanation": "登入或註冊，我們會使用你的課程代碼自動將你加入課程。",
-    "courseCodeLabel": "課程代碼",
-    "courseCodeSaved": "課程代碼 {code} 已儲存",
-    "courseCodeSavedExplanation": "註冊或登入，我們會將你加入課程。",
     "moderationRefusedContactDetails": "訊息未能送出。自動篩選器偵測到聯絡資料，例如電話號碼。請移除後再試一次。",
     "moderationRefusedProfanity": "訊息未能送出。自動篩選器偵測到聊天室不允許使用的字詞。請更改後再試一次。",
     "callTranscriptTranscribeButton": "轉錄",
@@ -10940,6 +10923,17 @@
     "keepWaiting": "繼續等",
     "botTookSeatAfterAnHour": "呢個環節開咗一個鐘，所以Pangea機械人加入咗。",
     "botTookSeatAfterADay": "呢個環節開咗超過一日，所以Pangea機械人加入咗。傳送訊息嚟開始啦。",
+    "subscriptionGracePeriodEndsOn": "付款失敗。寬限期將於 {date} 結束",
+    "changeBaseLanguageTitle": "更改基礎語言？",
+    "changeBaseLanguageDesc": "應用程式嘅選單同按鈕將會轉為{language}。",
+    "accountSetupFailedHelp": "我哋完成唔到你嘅帳戶設定。請檢查你嘅連線，然後再試一次，或者登出之後再登入。",
+    "onboardingOfflineError": "你已離線。請喺上線之後再試過。",
+    "activitySavedTo": "活動已儲存到{page}",
+    "joinWithYourCode": "用你的代碼加入",
+    "joinCodeJoinExplanation": "登入或註冊，我哋會用你嘅代碼自動將你加入。",
+    "joinCodeLabel": "代碼",
+    "joinCodeSaved": "代碼 {code} 已儲存",
+    "joinCodeSavedExplanation": "註冊或登入，我哋會將你加入。",
     "whoCanJoin": "誰可以加入？",
     "approvalRequired": "需要批准",
     "courseAccessPublicDesc": "任何人都可以找到並加入此課程。",

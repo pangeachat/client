@@ -1277,12 +1277,10 @@
     "editCourseLater": "Tu pote modificar le titulo del curso, descriptiones, e imagine del curso postea.",
     "createCourse": "Create un curso",
     "stats": "Statisticas",
-    "createGroupChat": "Create un chat de grupo",
     "editCourse": "Modificar le curso",
     "inviteDesc": "Per nomine de usator, per codice o ligamine",
     "editCourseDesc": "Ici tu pote modificar le titulo del curso, description, etc.",
     "permissionsDesc": "Configura le permissiones como qui pote invitar usatores, mandar message, crear chats, etc.",
-    "createGroupChatDesc": "Dove le sessiones de activitate comencia e termina, le chats de grupo remanera aperte pro communication routine.",
     "deleteDesc": "Solo le administratores pote delere un curso. Iste es un action destructive que remove tote le usatores e delere tote le chats selectate in le curso. Procede con cautela.",
     "whatNow": "Que face ora?",
     "chooseNextActivity": "Selige tu proxime activitate!",
@@ -1344,7 +1342,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-10-27 14:57:16.427929",
+    "@@last_modified": "2026-11-10 13:06:12.385469",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6779,10 +6777,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6796,10 +6790,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10743,9 +10733,7 @@
     "practiceMeaningPrompt": "Que significa ‘{word}’?",
     "practiceEmojiPrompt": "Selige un emoji pro ‘{word}’",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Tabella de classification",
-    "leaderboardRank": "Rango {rank}",
-    "courseLeaderboardTooltip": "Totes in iste curso, classificate per lor stellas in su lingua. Tappa un membro e selige “Comenciar conversation” pro inviar les un DM.",
+    "courseParticipantTooltip": "Ita est omnes in hoc cursu. Clicca in cuiuslibet usoris avatar et \"initium colloquii\" ad mittendum DM.",
     "goalReportTitle": "Reportar iste stella",
     "goalReportOverAwardPrompt": "Si tu non debeva reciper iste stella, per favor explica proque.",
     "goalReportUnderAwardPrompt": "Si tu pensa que tu debeva reciper iste stella, proque?",
@@ -10764,11 +10752,6 @@
     "callTranscriptPreparingRecording": "Preparante le registration complete…",
     "callTranscriptNoRecording": "Nulle registration del appello complete.",
     "callTranscriptNotSubscribed": "{name} non habeva un subscription durante iste appello, ergo lo que esseva dicite non esseva transcribite.",
-    "joinYourCourse": "Junger a tu curso",
-    "courseCodeJoinExplanation": "Aperir session o registrar se, e nos usara tu codice de curso pro adder te a tu curso automaticamente.",
-    "courseCodeLabel": "Codice de curso",
-    "courseCodeSaved": "Codice de curso {code} salvate",
-    "courseCodeSavedExplanation": "Registra te o aperi session e nos te addera a tu curso.",
     "moderationRefusedContactDetails": "Tu message non esseva inviate. Un filtro automatic trovava datos de contacto, como un numero de telephono. Per favor, remove los e reprova.",
     "moderationRefusedProfanity": "Tu message non esseva inviate. Un filtro automatic trovava un parola que nos non permitte in le chat. Per favor, cambia lo e reprova.",
     "callTranscriptTranscribeButton": "Transcriber",
@@ -10919,6 +10902,17 @@
     "keepWaiting": "Continuar a attender",
     "botTookSeatAfterAnHour": "Iste session esseva aperte pro un hora, dunque Pangea Bot prendeva le sede vacante.",
     "botTookSeatAfterADay": "Iste session esseva aperte pro plus de un die, dunque Pangea Bot prendeva le sede vacante. Invia un message pro initiar.",
+    "subscriptionGracePeriodEndsOn": "Pagamento fallite. Periodo de gratia fini le {date}",
+    "changeBaseLanguageTitle": "Cambiar lingua de base?",
+    "changeBaseLanguageDesc": "Le menus e buttones del app cambiara a {language}.",
+    "accountSetupFailedHelp": "Nos non poteva completar le configuration de tu conto. Verifica tu connexion e reprova, o disconecta e reconnecta plus tarde.",
+    "onboardingOfflineError": "Tu es offline. Reprova quando tu es de nove connectite.",
+    "activitySavedTo": "Activitate salvate a {page}",
+    "joinWithYourCode": "Unir te con tu codice",
+    "joinCodeJoinExplanation": "Aperir session o registrar te, e nos usara tu codice pro adder te automaticamente.",
+    "joinCodeLabel": "Codice",
+    "joinCodeSaved": "Codice {code} salvate",
+    "joinCodeSavedExplanation": "Registra te o aperi session e nos te addera.",
     "whoCanJoin": "Qui pote adherer?",
     "approvalRequired": "Approbation requirite",
     "courseAccessPublicDesc": "Qualcunque persona pote trovar e adherer a iste curso.",

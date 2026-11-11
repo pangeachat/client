@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-10-27 14:57:24.669356",
+    "@@last_modified": "2026-11-10 13:06:21.445773",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -3459,12 +3459,10 @@
     "editCourseLater": "您可以稍后编辑模板标题、描述和课程图片。",
     "createCourse": "创建课程",
     "stats": "统计",
-    "createGroupChat": "创建群聊",
     "editCourse": "编辑课程",
     "inviteDesc": "通过用户名、代码或链接",
     "editCourseDesc": "在这里你可以编辑课程标题、描述等。",
     "permissionsDesc": "设置权限，例如谁可以邀请用户、发送消息、创建聊天等。",
-    "createGroupChatDesc": "活动会话开始和结束，而群聊将保持开放以进行日常沟通。",
     "deleteDesc": "只有管理员可以删除课程。这是一个破坏性操作，会删除所有用户和课程内的所有选定聊天。请谨慎操作。",
     "whatNow": "接下来怎么办？",
     "chooseNextActivity": "选择你的下一个活动！",
@@ -6029,10 +6027,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6046,10 +6040,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9813,9 +9803,7 @@
     "practiceMeaningPrompt": "“{word}”是什么意思？",
     "practiceEmojiPrompt": "为“{word}”选择一个表情符号",
     "practiceStepProgress": "{done}/{total}",
-    "leaderboard": "排行榜",
-    "leaderboardRank": "排名 {rank}",
-    "courseLeaderboardTooltip": "本课程中所有成员按其在该语言中获得的星星数进行排名。点击成员并选择“开始对话”即可向他们发送私信。",
+    "courseParticipantTooltip": "这是本课程中的所有人。点击任何用户的头像并选择“开始对话”以发送私信。",
     "goalReportTitle": "举报此星",
     "goalReportOverAwardPrompt": "如果您不应该获得此星，请说明原因。",
     "goalReportUnderAwardPrompt": "如果您认为您应该获得此星，请说明原因。",
@@ -9834,11 +9822,6 @@
     "callTranscriptPreparingRecording": "正在准备完整录音…",
     "callTranscriptNoRecording": "没有完整通话的录音。",
     "callTranscriptNotSubscribed": "{name} 在通话期间没有订阅，因此通话内容未被转录。",
-    "joinYourCourse": "加入您的课程",
-    "courseCodeJoinExplanation": "登录或注册后，我们将使用您的课程代码自动将您添加到课程中。",
-    "courseCodeLabel": "课程代码",
-    "courseCodeSaved": "课程代码 {code} 已保存",
-    "courseCodeSavedExplanation": "注册或登录后，我们会将您添加到您的课程中。",
     "moderationRefusedContactDetails": "您的消息未能发送。自动过滤器检测到联系方式，例如电话号码。请删除后重试。",
     "moderationRefusedProfanity": "您的消息未能发送。自动过滤器检测到聊天中不允许使用的词语。请修改后重试。",
     "callTranscriptTranscribeButton": "转录",
@@ -9989,6 +9972,17 @@
     "keepWaiting": "继续等待",
     "botTookSeatAfterAnHour": "此会话已开放一小时，Pangea Bot 已加入。",
     "botTookSeatAfterADay": "此会话已开放超过一天，Pangea Bot 已加入。发送消息即可开始。",
+    "subscriptionGracePeriodEndsOn": "支付失败。宽限期将于 {date} 结束",
+    "changeBaseLanguageTitle": "更改基础语言？",
+    "changeBaseLanguageDesc": "应用的菜单和按钮将切换为{language}。",
+    "accountSetupFailedHelp": "我们无法完成您的账户设置。请检查您的网络连接，然后重试，或者退出并稍后登录。",
+    "onboardingOfflineError": "您已离线。请在联网后重试。",
+    "activitySavedTo": "活动已保存到 {page}",
+    "joinWithYourCode": "使用您的代码加入",
+    "joinCodeJoinExplanation": "登录或注册，我们将使用您的代码自动添加您。",
+    "joinCodeLabel": "代码",
+    "joinCodeSaved": "代码 {code} 已保存",
+    "joinCodeSavedExplanation": "注册或登录，我们将添加您。",
     "whoCanJoin": "谁可以加入？",
     "approvalRequired": "需要批准",
     "courseAccessPublicDesc": "任何人都可以找到并加入此课程。",

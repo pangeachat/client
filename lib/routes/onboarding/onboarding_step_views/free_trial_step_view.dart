@@ -31,6 +31,10 @@ class FreeTrialStepView extends StatelessWidget {
         ? theme.textTheme.displayMedium
         : theme.textTheme.headlineMedium;
 
+    final noCardTextStyle = isColumnMode
+        ? theme.textTheme.titleLarge
+        : theme.textTheme.titleMedium;
+
     return OnboardingPageGroup(
       label: L10n.of(context).pageLabel(L10n.of(context).freeTrial),
       child: Scaffold(
@@ -75,7 +79,7 @@ class FreeTrialStepView extends StatelessWidget {
                       child: Center(
                         child: OnboardingStepBody(
                           label:
-                              '${L10n.of(context).thanksForSigningUp} ${L10n.of(context).sevenDaysFree}',
+                              '${L10n.of(context).thanksForSigningUp} ${L10n.of(context).sevenDaysFree} ${L10n.of(context).noCreditCardRequired}',
                           scrollable: true,
                           child: Column(
                             children: [
@@ -104,6 +108,17 @@ class FreeTrialStepView extends StatelessWidget {
                                             style: largeTextStyle?.copyWith(
                                               color: theme.pangea.gold,
                                               fontWeight: FontWeight.w900,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          // Up top and large, so nobody reads
+                                          // the trial as asking for payment.
+                                          Text(
+                                            L10n.of(
+                                              context,
+                                            ).noCreditCardRequired,
+                                            style: noCardTextStyle?.copyWith(
+                                              fontWeight: FontWeight.bold,
                                             ),
                                             textAlign: TextAlign.center,
                                           ),
@@ -147,14 +162,6 @@ class FreeTrialStepView extends StatelessWidget {
                       child: OnboardingForwardButton(
                         onPressed: forward,
                         label: L10n.of(context).claimTrial,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Semantics(
-                      container: true,
-                      child: Text(
-                        L10n.of(context).noCreditCardRequired,
-                        style: mediumTextStyle,
                       ),
                     ),
                   ],

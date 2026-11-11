@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-10-27 14:57:13.907049",
+    "@@last_modified": "2026-11-10 13:06:09.062957",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -3480,12 +3480,10 @@
     "editCourseLater": "Sie können den Titel, die Beschreibungen und das Kursbild später bearbeiten.",
     "createCourse": "Kurs erstellen",
     "stats": "Statistiken",
-    "createGroupChat": "Gruppenchats erstellen",
     "editCourse": "Kurs bearbeiten",
     "inviteDesc": "Per Benutzername, Code oder Link",
     "editCourseDesc": "Hier können Sie den Kurstitel, die Beschreibung usw. bearbeiten.",
     "permissionsDesc": "Berechtigungen festlegen, z. B. wer Einladungen senden, Nachrichten schicken, Chats erstellen kann usw.",
-    "createGroupChatDesc": "Während Aktivitätssitzungen starten und enden, bleiben Gruppenchats für die routinemäßige Kommunikation offen.",
     "deleteDesc": "Nur Administratoren können einen Kurs löschen. Dies ist eine zerstörerische Aktion, die alle Benutzer entfernt und alle ausgewählten Chats im Kurs löscht. Bitte vorsichtig vorgehen.",
     "whatNow": "Was jetzt?",
     "chooseNextActivity": "Wählen Sie Ihre nächste Aktivität!",
@@ -6050,10 +6048,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6067,10 +6061,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9800,9 +9790,7 @@
     "practiceMeaningPrompt": "Was bedeutet „{word}“?",
     "practiceEmojiPrompt": "Wähle ein Emoji für „{word}“",
     "practiceStepProgress": "{done} von {total}",
-    "leaderboard": "Bestenliste",
-    "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Alle Teilnehmenden dieses Kurses, nach Sternen in der jeweiligen Sprache geordnet. Tippe auf ein Mitglied und wähle „Unterhaltung starten“, um eine Direktnachricht zu senden.",
+    "courseParticipantTooltip": "Das sind alle in diesem Kurs. Klicken Sie auf das Avatar eines Benutzers und \"Gespräch starten\", um eine DM zu senden.",
     "goalReportTitle": "Diesen Stern melden",
     "goalReportOverAwardPrompt": "Wenn du diesen Stern nicht hättest bekommen sollen, erkläre bitte, warum.",
     "goalReportUnderAwardPrompt": "Wenn du denkst, du hättest diesen Stern bekommen sollen, warum?",
@@ -9821,11 +9809,6 @@
     "callTranscriptPreparingRecording": "Die vollständige Aufnahme wird vorbereitet…",
     "callTranscriptNoRecording": "Keine Aufnahme des gesamten Anrufs vorhanden.",
     "callTranscriptNotSubscribed": "{name} hatte während dieses Anrufs kein Abonnement, daher wurde das Gesagte nicht transkribiert.",
-    "joinYourCourse": "Treten Sie Ihrem Kurs bei",
-    "courseCodeJoinExplanation": "Melden Sie sich an oder registrieren Sie sich, und wir verwenden Ihren Kurscode, um Sie automatisch zu Ihrem Kurs hinzuzufügen.",
-    "courseCodeLabel": "Kurscode",
-    "courseCodeSaved": "Kurscode {code} gespeichert",
-    "courseCodeSavedExplanation": "Registrieren Sie sich oder melden Sie sich an, und wir fügen Sie Ihrem Kurs hinzu.",
     "moderationRefusedContactDetails": "Ihre Nachricht wurde nicht gesendet. Ein automatischer Filter hat Kontaktdaten wie eine Telefonnummer gefunden. Bitte entfernen Sie diese und versuchen Sie es erneut.",
     "moderationRefusedProfanity": "Ihre Nachricht wurde nicht gesendet. Ein automatischer Filter hat ein Wort gefunden, das wir im Chat nicht erlauben. Bitte ändern Sie es und versuchen Sie es erneut.",
     "callTranscriptTranscribeButton": "Transkribieren",
@@ -9976,6 +9959,17 @@
     "keepWaiting": "Weiter warten",
     "botTookSeatAfterAnHour": "Diese Sitzung war eine Stunde lang offen, daher hat Pangea Bot den freien Platz eingenommen.",
     "botTookSeatAfterADay": "Diese Sitzung war über einen Tag lang offen, daher hat Pangea Bot den freien Platz eingenommen. Sende eine Nachricht, um zu beginnen.",
+    "subscriptionGracePeriodEndsOn": "Zahlung fehlgeschlagen. Kulanzzeitraum endet am {date}",
+    "changeBaseLanguageTitle": "Basissprache ändern?",
+    "changeBaseLanguageDesc": "Die Menüs und Schaltflächen der App werden auf {language} umgestellt.",
+    "accountSetupFailedHelp": "Wir konnten Ihr Konto nicht einrichten. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut, oder melden Sie sich ab und später wieder an.",
+    "onboardingOfflineError": "Du bist offline. Versuche es erneut, sobald du wieder online bist.",
+    "activitySavedTo": "Aktivität gespeichert in {page}",
+    "joinWithYourCode": "Mit deinem Code beitreten",
+    "joinCodeJoinExplanation": "Melde dich an oder registriere dich, und wir verwenden deinen Code, um dich automatisch hinzuzufügen.",
+    "joinCodeLabel": "Code",
+    "joinCodeSaved": "Code {code} gespeichert",
+    "joinCodeSavedExplanation": "Registriere dich oder melde dich an, und wir fügen dich hinzu.",
     "whoCanJoin": "Wer kann beitreten?",
     "approvalRequired": "Genehmigung erforderlich",
     "courseAccessPublicDesc": "Jeder kann diesen Kurs finden und beitreten.",

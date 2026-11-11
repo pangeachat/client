@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:15.481767",
+    "@@last_modified": "2026-11-10 13:06:11.102660",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2273,12 +2273,10 @@
     "editCourseLater": "אתה יכול לערוך את כותרת התבנית, תיאורים ותמונת הקורס מאוחר יותר.",
     "createCourse": "צור קורס",
     "stats": "סטטיסטיקות",
-    "createGroupChat": "צור שיחת קבוצתית",
     "editCourse": "ערוך קורס",
     "inviteDesc": "על ידי שם משתמש, קוד או קישור",
     "editCourseDesc": "כאן תוכל לערוך את כותרת הקורס, תיאור ועוד.",
     "permissionsDesc": "הגדר הרשאות כגון מי יכול להזמין משתמשים, לשלוח הודעות, ליצור שיחות, ועוד.",
-    "createGroupChatDesc": "בעוד שמפגשי הפעילות מתחילים ומסתיימים, שיחות קבוצתיות יישארו פתוחות לתקשורת שוטפת.",
     "deleteDesc": "רק מנהלים יכולים למחוק קורס. זוהי פעולה הרסנית שמסירה את כל המשתמשים ומוחקת את כל השיחות שנבחרו בתוך הקורס. המשך בזהירות.",
     "whatNow": "מה עכשיו?",
     "chooseNextActivity": "בחר את הפעילות הבאה שלך!",
@@ -6757,10 +6755,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6774,10 +6768,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10721,9 +10711,7 @@
     "practiceMeaningPrompt": "מה פירוש '{word}'?",
     "practiceEmojiPrompt": "בחר אימוג'י עבור '{word}'",
     "practiceStepProgress": "{done} מתוך {total}",
-    "leaderboard": "טבלת הישגים",
-    "leaderboardRank": "דירוג {rank}",
-    "courseLeaderboardTooltip": "כל המשתתפים בקורס זה, מדורגים לפי כוכביהם בשפה. הקש על משתמש ובחר ״התחל שיחה״ כדי לשלוח לו הודעה פרטית.",
+    "courseParticipantTooltip": "אלה כולם בקורס הזה. לחץ על התמונה של כל משתמש ו\"התחל שיחה\" כדי לשלוח הודעה פרטית.",
     "goalReportTitle": "דווח על כוכב זה",
     "goalReportOverAwardPrompt": "אם לא היית אמור לקבל את הכוכב הזה, אנא הסבר מדוע.",
     "goalReportUnderAwardPrompt": "אם לדעתך היית אמור לקבל את הכוכב הזה, מדוע?",
@@ -10742,11 +10730,6 @@
     "callTranscriptPreparingRecording": "מכין את ההקלטה המלאה…",
     "callTranscriptNoRecording": "אין הקלטה של השיחה המלאה.",
     "callTranscriptNotSubscribed": "{name} לא היה מנוי במהלך השיחה הזו, ולכן מה שנאמר לא תומלל.",
-    "joinYourCourse": "הצטרף לקורס שלך",
-    "courseCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד הקורס שלך כדי להוסיף אותך לקורס באופן אוטומטי.",
-    "courseCodeLabel": "קוד קורס",
-    "courseCodeSaved": "קוד קורס {code} נשמר",
-    "courseCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך לקורס שלך.",
     "moderationRefusedContactDetails": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה פרטי התקשרות, כמו מספר טלפון. אנא הסר אותם ונסה שוב.",
     "moderationRefusedProfanity": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה מילה שאנו לא מאפשרים בצ'אט. אנא שנה אותה ונסה שוב.",
     "callTranscriptTranscribeButton": "תמלול",
@@ -10897,6 +10880,17 @@
     "keepWaiting": "המשך לחכות",
     "botTookSeatAfterAnHour": "השיחה הזו הייתה פתוחה במשך שעה, אז בוט Pangea תפס את המקום הפנוי.",
     "botTookSeatAfterADay": "השיחה הזו הייתה פתוחה למעלה מיום, אז בוט Pangea תפס את המקום הפנוי. שלח הודעה כדי להתחיל.",
+    "subscriptionGracePeriodEndsOn": "התשלום נכשל. תקופת החסד מסתיימת ב-{date}",
+    "changeBaseLanguageTitle": "לשנות שפת בסיס?",
+    "changeBaseLanguageDesc": "התפריטים והלחצנים של האפליקציה יעברו ל{language}.",
+    "accountSetupFailedHelp": "לא הצלחנו לסיים את הגדרת החשבון שלך. בדוק את החיבור שלך ונסה שוב, או התנתק והתחבר מאוחר יותר.",
+    "onboardingOfflineError": "אתה במצב לא מקוון. נסה שוב כשתהיה מחובר.",
+    "activitySavedTo": "הפעילות נשמרה ב{page}",
+    "joinWithYourCode": "הצטרף עם הקוד שלך",
+    "joinCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד שלך כדי להוסיף אותך אוטומטית.",
+    "joinCodeLabel": "קוד",
+    "joinCodeSaved": "הקוד {code} נשמר",
+    "joinCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך.",
     "whoCanJoin": "מי יכול להצטרף?",
     "approvalRequired": "נדרש אישור",
     "courseAccessPublicDesc": "כל אחד יכול למצוא ולהצטרף לקורס זה.",

@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/features/user/user_model.dart, lib/features/user/user_controller.dart, lib/features/user/public_profile_model.dart, lib/features/user/analytics_profile_model.dart, lib/features/bot/bot_client_extension.dart, lib/features/bot/bot_options_model.dart, lib/features/bot/bot_room_extension.dart, lib/features/bot/widgets/bot_chat_settings_dialog.dart, lib/routes/settings/settings_learning/**, lib/pangea/common/controllers/pangea_controller.dart"
+applyTo: "lib/features/user/user_model.dart, lib/features/user/user_controller.dart, lib/features/user/public_profile_model.dart, lib/features/user/analytics_profile_model.dart, lib/features/bot/bot_client_extension.dart, lib/features/bot/bot_options_model.dart, lib/features/bot/bot_room_extension.dart, lib/features/bot/widgets/bot_chat_settings_dialog.dart, lib/routes/settings/settings_learning/**, lib/routes/onboarding/onboarding_step_views/pick_language_step_view.dart, lib/pangea/common/controllers/pangea_controller.dart"
 ---
 
 # Profile Settings — Architecture & Contracts
@@ -11,6 +11,8 @@ How profile settings are structured, stored, propagated, and surfaced to other u
 `Profile` (in [user_model.dart](../../lib/features/user/user_model.dart)) is the top-level container. It wraps three sub-models:
 
 - **`UserSettings`** — learning prefs: target/source language, CEFR level, gender, voice, country, about, etc.
+  - **The self-identified role, teacher or learner, is chosen in onboarding ([onboarding](onboarding.instructions.md)), and any account can set or change it in learning settings.** Outreach outside the app reads it to tell teachers from learners, so an account that did not choose one has no role rather than counting as a learner.
+  - **When the app opens, an account with no role is asked for one, at most once a day, until it picks one.** Skip for now waits until the next day. The question is never asked during onboarding, and it waits for the world-map greeting if that is still to come; an app open where it waits does not count as that day's question.
 - **`UserToolSettings`** — per-tool on/off toggles (interactive translator, grammar, immersion mode, definitions, auto-WA, autocorrect, and per-surface audio: words, choices, incoming messages).
   - **Device autocorrect default is platform-conditional**: on for Android, where the composer also passes the target language to the keyboard (`hintLocales`) so corrections land in the L2; off on iOS until the keyboard language can be targeted there ([#8465](https://github.com/pangeachat/client/issues/8465)); off on web, where a phone or tablet browser still lets the learner turn it on and desktop web keeps it off and locked ([target-language-keyboard.instructions.md](target-language-keyboard.instructions.md#when-autocorrect-turns-on)). The stored value stays unset until the user touches the toggle, so each device resolves its own default and an explicit choice, once made, syncs to every device. Profiles saved before the default flipped keep their stored value ([#8466](https://github.com/pangeachat/client/issues/8466)).
 - **`InstructionSettings`** — which instructional tooltips the user has dismissed.
@@ -40,6 +42,10 @@ A separate **`PublicProfileModel`** (in [public_profile_model.dart](../../lib/fe
 4. **Analytics language indicator** — modal dialog from the language-pair chip (e.g. "EN → ES") on the learning progress widget
 
 All four use the same `SettingsLearning` widget and the same save flow: write to account data → wait for sync round-trip → stream dispatch → side-effects.
+
+### Changing the base language
+
+The app's menus and buttons are shown in the base language, so a new base language that would switch them asks first: "Change base language?", naming the language they will switch to, with Cancel and Change. Nothing changes until the learner taps Change. Learning settings and the onboarding language step both ask, and only when the menus would actually switch, so not while the app is shown in the target language. A target-language switch still takes effect at once ([Switching from context](#switching-from-context)).
 
 ### Per-room bot settings
 
@@ -116,7 +122,7 @@ The activity-plan filter uses state event presence, but Matrix state events pers
 - **One publish at a time, and never on the startup path.** The whole profile goes up as a single object from several places at once, and concurrent writes are last-one-wins on the server — overlapping them let an older copy land after a newer one and undo it. Publishes are therefore serialized, and a publish still waiting carries any change made while it waited rather than repeating the request. Because they are serialized, nothing that starts the app may *wait* on one: a single slow request would otherwise hold up everything queued behind it, including analytics starting at all.
 - **A publish that never answers is abandoned after 30 seconds** so it cannot hold up every publish behind it for the rest of the session. Abandoning it does not recall it, so in that one case a stalled write can still arrive after a later one; the alternative was a queue that stops forever. Nothing retries, so the published profile can sit behind what the app holds until the next change or the next startup.
 - **A change is announced the moment it is made, not when its write lands.** Surfaces read the level through the profile stream, and holding the announcement until the write returned would leave them showing the old value for the length of a request — the staleness the stream exists to remove.
-- An `analytics_room_id` in the blob must name a room the owning user created. It is not decoration: [join_room_analytics_access_extension.dart](../../lib/features/analytics_access/join_room_analytics_access_extension.dart) reads it to choose the room instructors are granted into, and Synapse refuses a room the caller did not create — so a foreign id leaks nothing, but silently leaves that student's instructors with no analytics access. Ids naming rooms this user does not own are dropped when the profile is loaded; the level beside them is not verifiable and is left to the normal analytics update.
+- An `analytics_room_id` in the blob must name a room the owning user created. The teacher dashboard reads it to find a student's analytics room, and the instructor-access grant uses it only until the student's own room reaches this device; Synapse refuses a room the caller did not create, so a foreign id leaks nothing but points both at the wrong room. Ids naming rooms this user does not own are dropped when the profile is loaded, even on an account with no analytics room; the level beside them is unverifiable and left to the normal analytics update.
 
 ## Key Files
 
@@ -127,7 +133,7 @@ The activity-plan filter uses state event presence, but Matrix state events pers
 | Side-effect subscriptions | [lib/pangea/common/controllers/pangea_controller.dart](../../lib/pangea/common/controllers/pangea_controller.dart) |
 | Bot option propagation | [lib/features/bot/bot_client_extension.dart](../../lib/features/bot/bot_client_extension.dart) |
 | BotOptionsModel | [lib/features/bot/bot_options_model.dart](../../lib/features/bot/bot_options_model.dart) |
-| Language mismatch popup + rate limiter | [lib/routes/settings/settings_learning/](../../lib/routes/settings/settings_learning/) |
+| Language mismatch popup, role prompt, and their rate limiters | [lib/routes/settings/settings_learning/](../../lib/routes/settings/settings_learning/) |
 | Public profile model | [lib/features/user/public_profile_model.dart](../../lib/features/user/public_profile_model.dart) |
 | Public profile display (about, level, country) | [lib/widgets/users/](../../lib/widgets/users/) |
 | Analytics-room grant that reads the public profile | [lib/features/analytics_access/join_room_analytics_access_extension.dart](../../lib/features/analytics_access/join_room_analytics_access_extension.dart) |

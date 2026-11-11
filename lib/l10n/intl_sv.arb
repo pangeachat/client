@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-10-27 14:57:22.985551",
+    "@@last_modified": "2026-11-10 13:06:19.683823",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3103,12 +3103,10 @@
     "editCourseLater": "Du kan redigera mallens titel, beskrivningar och kursbild senare.",
     "createCourse": "Skapa kurs",
     "stats": "Statistik",
-    "createGroupChat": "Skapa gruppchatt",
     "editCourse": "Redigera kurs",
     "inviteDesc": "Via användarnamn, kod eller länk",
     "editCourseDesc": "Här kan du redigera kursens titel, beskrivning, etc.",
     "permissionsDesc": "Ställ in behörigheter som vem som kan bjuda in användare, skicka meddelanden, skapa chattar, etc.",
-    "createGroupChatDesc": "Medan aktivitetsessioner startar och slutar, förblir gruppchattar öppna för rutinkommunikation.",
     "deleteDesc": "Endast administratörer kan radera en kurs. Detta är en destruktiv åtgärd som tar bort alla användare och raderar alla valda chattar inom kursen. Fortsätt med försiktighet.",
     "whatNow": "Vad nu?",
     "chooseNextActivity": "Välj din nästa aktivitet!",
@@ -6361,10 +6359,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6378,10 +6372,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10325,9 +10315,7 @@
     "practiceMeaningPrompt": "Vad betyder ”{word}”?",
     "practiceEmojiPrompt": "Välj en emoji för ”{word}”",
     "practiceStepProgress": "{done} av {total}",
-    "leaderboard": "Topplista",
-    "leaderboardRank": "Rank {rank}",
-    "courseLeaderboardTooltip": "Alla i den här kursen, rankade efter deras stjärnor i språket. Tryck på en medlem och välj ”Starta konversation” för att skicka ett DM.",
+    "courseParticipantTooltip": "Detta är alla i den här kursen. Klicka på vilken användares avatar som helst och \"starta konversation\" för att skicka ett DM.",
     "goalReportTitle": "Rapportera denna stjärna",
     "goalReportOverAwardPrompt": "Om du inte skulle ha fått denna stjärna, förklara varför.",
     "goalReportUnderAwardPrompt": "Om du tycker att du skulle ha fått denna stjärna, varför?",
@@ -10346,11 +10334,6 @@
     "callTranscriptPreparingRecording": "Förbereder hela inspelningen…",
     "callTranscriptNoRecording": "Ingen inspelning av hela samtalet.",
     "callTranscriptNotSubscribed": "{name} hade ingen prenumeration under det här samtalet, så det som sades transkriberades inte.",
-    "joinYourCourse": "Gå med i din kurs",
-    "courseCodeJoinExplanation": "Logga in eller registrera dig, så använder vi din kurskod för att automatiskt lägga till dig i din kurs.",
-    "courseCodeLabel": "Kurskod",
-    "courseCodeSaved": "Kurskod {code} sparad",
-    "courseCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig i din kurs.",
     "moderationRefusedContactDetails": "Ditt meddelande skickades inte. Ett automatiskt filter hittade kontaktuppgifter, som ett telefonnummer. Ta bort dem och försök igen.",
     "moderationRefusedProfanity": "Ditt meddelande skickades inte. Ett automatiskt filter hittade ett ord som vi inte tillåter i chatten. Ändra det och försök igen.",
     "callTranscriptTranscribeButton": "Transkribera",
@@ -10501,6 +10484,17 @@
     "keepWaiting": "Fortsätt vänta",
     "botTookSeatAfterAnHour": "Den här sessionen var öppen i en timme, så Pangea Bot tog den lediga platsen.",
     "botTookSeatAfterADay": "Den här sessionen var öppen i över ett dygn, så Pangea Bot tog den lediga platsen. Skicka ett meddelande för att börja.",
+    "subscriptionGracePeriodEndsOn": "Betalningen misslyckades. Anståndsperioden slutar {date}",
+    "changeBaseLanguageTitle": "Byta basspråk?",
+    "changeBaseLanguageDesc": "Appens menyer och knappar kommer att byta till {language}.",
+    "accountSetupFailedHelp": "Vi kunde inte slutföra installationen av ditt konto. Kontrollera din anslutning och försök igen, eller logga ut och logga in senare.",
+    "onboardingOfflineError": "Du är offline. Försök igen när du är online igen.",
+    "activitySavedTo": "Aktivitet sparad i {page}",
+    "joinWithYourCode": "Gå med med din kod",
+    "joinCodeJoinExplanation": "Logga in eller registrera dig, så använder vi din kod för att lägga till dig automatiskt.",
+    "joinCodeLabel": "Kod",
+    "joinCodeSaved": "Kod {code} sparad",
+    "joinCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig.",
     "whoCanJoin": "Vem kan gå med?",
     "approvalRequired": "Godkännande krävs",
     "courseAccessPublicDesc": "Vem som helst kan hitta och gå med i den här kursen.",

@@ -50,9 +50,9 @@ class AudioPlayerWidget extends StatefulWidget {
   /// fields discriminates them: [senderId] is the learner's own mxid for the
   /// practice widget's TTS audio, and [eventId] is a string-mangled key
   /// (`_overlay`, `_practice`, `_button` suffixes), not a Matrix event id.
-  /// Instrumenting on those would produce an uncategorisable signal, so only the
-  /// timeline passes a category and the practice surfaces stay out of scope by
-  /// passing nothing.
+  /// Instrumenting on those would produce an uncategorisable signal, so each
+  /// caller names its own, and a playback that is not listening, such as a
+  /// learner hearing their own recording back, passes nothing.
   final DosageListeningCategory? listeningCategory;
 
   /// The lemmas this audio covers, for listening exposure.
@@ -572,7 +572,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     if (listeningCategory != null) {
       _listeningTracker = DosageSharedPlayerTracker(
         category: listeningCategory,
-        roomId: widget.roomId,
+        // A practice item with no room passes an empty one: to a listening
+        // signal that is a surface with no room, which is a null.
+        roomId: widget.roomId.isEmpty ? null : widget.roomId,
         ownerId: widget.eventId,
         // Read live at emit time, not captured here: an account switch or a
         // token refresh mid-playback must not post under a stale identity.

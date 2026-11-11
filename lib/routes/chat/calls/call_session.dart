@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart' show AppLifecycleListener;
 import 'package:matrix/matrix.dart' show Logs, MatrixEvent;
 import 'package:permission_handler/permission_handler.dart';
 
+import 'package:fluffychat/features/dosage/dosage_audio_signals.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
@@ -14,6 +15,7 @@ import 'package:fluffychat/routes/chat/calls/call_audio_pending_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_recorder.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_upload_state_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
+import 'package:fluffychat/routes/chat/calls/call_half_in_flight.dart';
 import 'package:fluffychat/routes/chat/calls/call_key_clock.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
@@ -238,6 +240,10 @@ class CallSession extends ChangeNotifier {
     String? rejoinAnchor,
     DateTime? rejoinSince,
     String? callerMembershipEventId,
+
+    /// The lifetime of the ring this call answers, when it answers one: how
+    /// long a sibling could have kept ringing for the same call.
+    Duration? answeredRingLifetime,
     ({String mute, String channel})? platformLabels,
 
     /// Whether the call covers the whole app from its first frame. See
@@ -286,7 +292,7 @@ class CallSession extends ChangeNotifier {
       // `transcript_writer.dart`'s own `encrypted` parameter for the
       // precedent), so there is no attached-file key to produce and nothing
       // downstream ever needs to decrypt this.
-      upload: room.client.uploadContent,
+      upload: callService.uploadCallAudio,
       send: (content, txid) =>
           room.sendEvent(content, type: CallAudioContent.relType, txid: txid),
       // Read FRESH at finish, never latched at run start: the anchor is
@@ -311,8 +317,8 @@ class CallSession extends ChangeNotifier {
       userL1: recordingTranscript ? userL1 : null,
       userL2: recordingTranscript ? userL2 : null,
       // On the recording-based path the finished WAV is kept on disk (in
-      // memory on the web) until its half is sent, so an app kill or a parked
-      // upload resumes on the next launch or foreground instead of losing it.
+      // IndexedDB on the web) until its half is sent, so an app kill or a
+      // parked upload resumes instead of losing it.
       // Off, the recording stays in memory exactly as before.
       pendingStore: recordingTranscript
           ? pendingCallAudioStoreForPlatform()
@@ -626,6 +632,7 @@ class CallSession extends ChangeNotifier {
             (!kIsWeb && Platform.isAndroid
                 ? const CallForegroundControl()
                 : null),
+        answeredRingLifetime: answeredRingLifetime,
       ),
       record: record,
       myUserId: callService.client.userID,
@@ -731,6 +738,7 @@ class CallSession extends ChangeNotifier {
   void leaveForOtherDevice() => call.leaveForOtherDevice();
   bool get peerWasBusy => call.peerWasBusy;
   bool get hadPeer => call.hadPeer;
+  bool get wasDeclined => call.wasDeclined;
   bool get placedCall => call.placedCall;
   DateTime? get talkStartedAt => call.talkStartedAt;
   DateTime? get callStartedAt => call.callStartedAt;
@@ -1117,10 +1125,13 @@ class CallSession extends ChangeNotifier {
     }
     if (outcome == CallOutcome.ended || outcome == CallOutcome.declined) {
       _finishRecording();
-      // An ended conversation earns a moment on screen; everything else --
-      // declined, missed, torn down unanswered -- goes at once, as it always
-      // did. Teardown itself is never held by any of this.
-      if (outcome == CallOutcome.ended && call.hadPeer) {
+      // An ended conversation earns a moment on screen, and so does a declined
+      // call: the caller is owed the reason, and "<name> is on another call"
+      // has nowhere else to be read. Everything else -- missed, torn down
+      // unanswered -- goes at once. Teardown itself is never held by any of
+      // this.
+      if (outcome == CallOutcome.declined ||
+          (outcome == CallOutcome.ended && call.hadPeer)) {
         _finishWithSummary();
       } else {
         _release();
@@ -1375,9 +1386,27 @@ class CallSession extends ChangeNotifier {
   void _finishRecording() {
     if (_recordingFinished) return;
     _recordingFinished = true;
+    final finishingKey = _callIdentity.key;
+    if (finishingKey != null) CallHalfInFlight.finishing.add(finishingKey);
+    final hangingUp = call.hangUp();
+    // The call's minutes, now: hang-up has already closed the talk time, and
+    // the rest of it waits on speech-to-text, which an app closed in that
+    // window never sees (#9724). Same rule as everything this device writes:
+    // nothing from a device that did not carry on with the call.
+    final talkStartedAt = call.talkStartedAt;
+    if (talkStartedAt != null && (call.carriedOn || call.isPredecessor)) {
+      DosageAudioSignals.recordCall(
+        roomId: room.id,
+        callKey: _callIdentity.key,
+        deviceId: room.client.deviceID,
+        talkStartedAt: talkStartedAt,
+        connected: call.talkDuration,
+        userId: room.client.userID,
+        accessToken: room.client.accessToken,
+      );
+    }
     unawaited(
-      call
-          .hangUp()
+      hangingUp
           .whenComplete(() async {
             try {
               await call.settled;
@@ -1394,12 +1423,11 @@ class CallSession extends ChangeNotifier {
             // here is covered by the same check rather than by remembering to
             // guard each one.
             if (!call.carriedOn && !call.isPredecessor) return;
+            final identity = _callIdentity;
             // The card is normally already in the timeline by now (written the
             // moment the call ended); this call credits the transcripts against
             // it, and writes the card itself only if that earlier attempt had
             // failed outright.
-
-            final identity = _callIdentity;
             _halfLinks.value ??= await _resolveHalfLinks(identity.key);
             // Handed to the recorder BEFORE the record finishes: finishing
             // first makes the recording durable (an app kill resumes it from
@@ -1462,6 +1490,9 @@ class CallSession extends ChangeNotifier {
           })
           .catchError((Object e, StackTrace s) {
             Logs().e('Could not finish the call recording', e, s);
+          })
+          .whenComplete(() {
+            CallHalfInFlight.finishing.remove(finishingKey);
           }),
     );
   }
@@ -1552,10 +1583,12 @@ class CallSession extends ChangeNotifier {
         myUserId: me,
         myDeviceId: device,
         siblingDeviceIds: call.siblingDeviceIds,
-        ownMembershipCurrent: call.calls.membershipEventIsCurrent(
+        // The device, not the announce's event id: the SDK's periodic
+        // membership refresh mints a new id (see deviceHoldsLiveMembership).
+        ownMembershipCurrent: call.calls.deviceHoldsLiveMembership(
           room,
           me,
-          membership,
+          device,
         ),
       ),
       epochSfuMs: () => call.callEpochFromSfuJoins,
@@ -1577,8 +1610,8 @@ class CallSession extends ChangeNotifier {
         CallInProgress.accepts(
           data: data,
           siblingDeviceIdsInSfu: call.siblingDeviceIds,
-          isCurrentOwnMembership: (id) =>
-              call.calls.membershipEventIsCurrent(room, me, id),
+          writerDeviceLive: (device) =>
+              call.calls.deviceHoldsLiveMembership(room, me, device),
           myDeviceId: room.client.deviceID,
           rejoinAnchor: call.rejoinedCall ? call.callAnchorId : null,
         )) {
@@ -1597,7 +1630,8 @@ class CallSession extends ChangeNotifier {
       if (_joinerKey != null || _over || _disposing) return;
       final found = keyFromCurrentRing(
         events,
-        (sender, id) => call.calls.membershipEventIsCurrent(room, sender, id),
+        (sender, device) =>
+            call.calls.deviceHoldsLiveMembership(room, sender, device),
       );
       if (found == null) {
         Logs().i('Joined a call under way with no key: nothing names it');
@@ -1850,10 +1884,11 @@ class CallSession extends ChangeNotifier {
   }
 
   /// Ends the session but keeps the screen for a moment: avatar, name, "call
-  /// ended", how long it was. Only for a call that WAS a conversation --
+  /// ended", how long it was. For a call that WAS a conversation --
   /// [ActiveCall.hadPeer], the code's real somebody-was-here latch, never the
-  /// stage, which reads connected while still waiting for an answer.
-  /// Declined, failed and missed calls release at once, exactly as before.
+  /// stage, which reads connected while still waiting for an answer -- and for
+  /// a declined call, whose screen says why instead. Failed and missed calls
+  /// release at once.
   void _finishWithSummary() {
     if (_over) return;
     _finish();

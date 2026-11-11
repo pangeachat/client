@@ -91,13 +91,6 @@ class WorkspaceLayout {
 /// is the viewport, and a surface that must hold the screen alone could mark
 /// itself exclusive, collapsing the others, though no surface needs that today.
 abstract class PanelAllocator {
-  /// Right margin reserved for the top-right cluster on EVERY column-mode
-  /// layout. The cluster is persistent chrome drawn whenever the column
-  /// workspace shows (only an exclusive panel hides it), so the budget must
-  /// clear it even when the right column is empty — otherwise a left panel
-  /// compressing toward the viewport's right edge slides under it.
-  static const double clusterGutter = 88.0;
-
   /// Gap between two adjacent panels in the same column.
   static const double panelGap = 16.0;
 
@@ -108,11 +101,19 @@ abstract class PanelAllocator {
   /// Default nav-rail width in column mode (caller may override).
   static const double defaultRailWidth = 73.0;
 
+  /// [railWidth] and [clusterGutter] are the chrome the caller reserves at the
+  /// viewport's left and right edges in column mode. The gutter holds the
+  /// top-right cluster on EVERY column-mode layout: the cluster is persistent
+  /// chrome drawn whenever the column workspace shows (only an exclusive panel
+  /// hides it), so the budget must clear it even when the right column is
+  /// empty — otherwise a left panel compressing toward the viewport's right
+  /// edge slides under it.
   static WorkspaceLayout allocate({
     required double viewport,
     required bool isColumnMode,
     required List<PanelDef> left,
     required List<PanelDef> right,
+    required double clusterGutter,
     double railWidth = defaultRailWidth,
     int? focusHint,
   }) {
@@ -192,8 +193,7 @@ abstract class PanelAllocator {
     // open — a left-only layout must compress/fold at the gutter instead of
     // sliding under the cluster. The map camera overlay stays panel-only (the
     // cluster has always floated over the bare map without padding the camera).
-    const gutter = clusterGutter;
-    final content = math.max(0.0, viewport - railWidth - gutter);
+    final content = math.max(0.0, viewport - railWidth - clusterGutter);
 
     // One gap between adjacent panels within each column, for whatever set is
     // actually shown.
@@ -317,8 +317,9 @@ abstract class PanelAllocator {
     double widthOf(_Entry e) => widths[e] ?? 0.0;
 
     // Position: left column fills from the rail rightward; right column is
-    // right-justified (its group ends at viewport - gutter). Folded panels are
-    // skipped — not drawn, no gap reserved — order otherwise preserved.
+    // right-justified (its group ends at viewport - clusterGutter). Folded
+    // panels are skipped — not drawn, no gap reserved — order otherwise
+    // preserved.
     // A surviving panel is "folded over" when a panel BENEATH it in the same
     // column was folded away above — closing it reveals that panel (a
     // back-step), so its close control becomes `←`. Positional, matching the
@@ -351,8 +352,8 @@ abstract class PanelAllocator {
     final rightTotal =
         rights.fold(0.0, (s, e) => s + widthOf(e)) +
         math.max(0, rights.length - 1) * panelGap;
-    final rightStart = viewport - gutter - rightTotal;
-    var rEdge = viewport - gutter;
+    final rightStart = viewport - clusterGutter - rightTotal;
+    var rEdge = viewport - clusterGutter;
     for (final e in rights) {
       final w = widthOf(e);
       placement[e] = PanelSlot(
