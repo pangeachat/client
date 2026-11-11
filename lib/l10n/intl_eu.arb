@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-11-10 13:06:10.030098",
+    "@@last_modified": "2026-11-11 11:38:43.273646",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10049,5 +10049,15 @@
     "joinCodeJoinExplanation": "Hasi saioa edo eman izena, eta zure kodea erabiliko dugu automatikoki gehitzeko.",
     "joinCodeLabel": "Kodea",
     "joinCodeSaved": "{code} kodea gordeta",
-    "joinCodeSavedExplanation": "Eman izena edo hasi saioa eta gehituko zaitugu."
+    "joinCodeSavedExplanation": "Eman izena edo hasi saioa eta gehituko zaitugu.",
+    "discussionLabel": "Eztabaida",
+    "discussionCardSemantics": "Eztabaida: {title}",
+    "discussionJoined": "Sartuta",
+    "discussionAnswered": "Erantzunda",
+    "joinTheDiscussion": "Sartu eztabaidan",
+    "discussionClassmatesInRoom": "{count, plural, =1{ikasle 1 dago eztabaida honetan} other{{count} ikasle daude eztabaida honetan}}",
+    "discussionStartIt": "Izan zaitez eztabaida hau hasten lehena",
+    "discussionRemoved": "Ezin zara eztabaida honetan sartu.",
+    "discussionJoinArriving": "Barruan zaude! Eztabaida iritsi bezain laster irekiko da.",
+    "roleplayLabel": "Rol-jokoa"
 }

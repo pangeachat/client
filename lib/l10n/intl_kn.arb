@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-11-10 13:06:13.448351",
+    "@@last_modified": "2026-11-11 11:38:47.912699",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "ಲಾಗ್ ಇನ್ ಮಾಡಿ ಅಥವಾ ಸೈನ್ ಅಪ್ ಮಾಡಿ, ಮತ್ತು ನಿಮ್ಮನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸೇರಿಸಲು ನಾವು ನಿಮ್ಮ ಕೋಡ್ ಅನ್ನು ಬಳಸುತ್ತೇವೆ.",
     "joinCodeLabel": "ಕೋಡ್",
     "joinCodeSaved": "ಕೋಡ್ {code} ಉಳಿಸಲಾಗಿದೆ",
-    "joinCodeSavedExplanation": "ಸೈನ್ ಅಪ್ ಮಾಡಿ ಅಥವಾ ಲಾಗ್ ಇನ್ ಮಾಡಿ ಮತ್ತು ನಾವು ನಿಮ್ಮನ್ನು ಸೇರಿಸುತ್ತೇವೆ."
+    "joinCodeSavedExplanation": "ಸೈನ್ ಅಪ್ ಮಾಡಿ ಅಥವಾ ಲಾಗ್ ಇನ್ ಮಾಡಿ ಮತ್ತು ನಾವು ನಿಮ್ಮನ್ನು ಸೇರಿಸುತ್ತೇವೆ.",
+    "discussionLabel": "ಚರ್ಚೆ",
+    "discussionCardSemantics": "ಚರ್ಚೆ: {title}",
+    "discussionJoined": "ಸೇರಿಕೊಂಡಿದೆ",
+    "discussionAnswered": "ಉತ್ತರಿಸಲಾಗಿದೆ",
+    "joinTheDiscussion": "ಚರ್ಚೆಗೆ ಸೇರಿಕೊಳ್ಳಿ",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 ಸಹಪಾಠಿ ಈ ಚರ್ಚೆಯಲ್ಲಿದ್ದಾರೆ} other{{count} ಸಹಪಾಠಿಗಳು ಈ ಚರ್ಚೆಯಲ್ಲಿದ್ದಾರೆ}}",
+    "discussionStartIt": "ಈ ಚರ್ಚೆಯನ್ನು ಪ್ರಾರಂಭಿಸುವವರಲ್ಲಿ ಮೊದಲಿಗರಾಗಿರಿ",
+    "discussionRemoved": "ನೀವು ಈ ಚರ್ಚೆಗೆ ಸೇರಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+    "discussionJoinArriving": "ನೀವು ಸೇರಿಕೊಂಡಿದ್ದೀರಿ! ಚರ್ಚೆ ಬಂದ ತಕ್ಷಣ ತೆರೆಯುತ್ತದೆ.",
+    "roleplayLabel": "ಪಾತ್ರಾಭಿನಯ"
 }

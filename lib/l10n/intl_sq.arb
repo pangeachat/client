@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-11-10 13:06:19.644664",
+    "@@last_modified": "2026-11-11 11:39:06.120908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Hyni ose regjistrohuni, dhe ne do të përdorim kodin tuaj për t'ju shtuar automatikisht.",
     "joinCodeLabel": "Kodi",
     "joinCodeSaved": "Kodi {code} u ruajt",
-    "joinCodeSavedExplanation": "Regjistrohuni ose hyni dhe ne do t'ju shtojmë."
+    "joinCodeSavedExplanation": "Regjistrohuni ose hyni dhe ne do t'ju shtojmë.",
+    "discussionLabel": "Diskutim",
+    "discussionCardSemantics": "Diskutim: {title}",
+    "discussionJoined": "U bashkua",
+    "discussionAnswered": "U përgjigj",
+    "joinTheDiscussion": "Bashkohuni në diskutim",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 shok klase është në këtë diskutim} other{{count} shokë klase janë në këtë diskutim}}",
+    "discussionStartIt": "Bëhu i pari që fillon këtë diskutim",
+    "discussionRemoved": "Nuk mund t'i bashkoheni këtij diskutimi.",
+    "discussionJoinArriving": "Jeni brenda! Diskutimi do të hapet sapo të mbërrijë.",
+    "roleplayLabel": "Rolet"
 }

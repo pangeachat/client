@@ -3514,7 +3514,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-11-10 13:06:10.119247",
+    "@@last_modified": "2026-11-11 11:38:42.667674",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10086,5 +10086,15 @@
     "joinCodeJoinExplanation": "Kirjaudu sisään tai rekisteröidy, niin lisäämme sinut automaattisesti koodillasi.",
     "joinCodeLabel": "Koodi",
     "joinCodeSaved": "Koodi {code} tallennettu",
-    "joinCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut."
+    "joinCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut.",
+    "discussionLabel": "Keskustelu",
+    "discussionCardSemantics": "Keskustelu: {title}",
+    "discussionJoined": "Liitytty",
+    "discussionAnswered": "Vastattu",
+    "joinTheDiscussion": "Liity keskusteluun",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 luokkatoveri on tässä keskustelussa} other{{count} luokkatoveria on tässä keskustelussa}}",
+    "discussionStartIt": "Aloita tämä keskustelu ensimmäisenä",
+    "discussionRemoved": "Et voi liittyä tähän keskusteluun.",
+    "discussionJoinArriving": "Olet mukana! Keskustelu avautuu heti, kun se saapuu.",
+    "roleplayLabel": "Roolipeli"
 }

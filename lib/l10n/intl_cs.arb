@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-11-10 13:06:08.835331",
+    "@@last_modified": "2026-11-11 11:38:41.241078",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10540,5 +10540,15 @@
     "joinCodeJoinExplanation": "Přihlaste se nebo se zaregistrujte a my váš kód použijeme k automatickému přidání.",
     "joinCodeLabel": "Kód",
     "joinCodeSaved": "Kód {code} uložen",
-    "joinCodeSavedExplanation": "Zaregistrujte se nebo se přihlaste a my vás přidáme."
+    "joinCodeSavedExplanation": "Zaregistrujte se nebo se přihlaste a my vás přidáme.",
+    "discussionLabel": "Diskuze",
+    "discussionCardSemantics": "Diskuze: {title}",
+    "discussionJoined": "Připojeno",
+    "discussionAnswered": "Zodpovězeno",
+    "joinTheDiscussion": "Zapojit se do diskuze",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 spolužák je v této diskuzi} other{{count} spolužáků je v této diskuzi}}",
+    "discussionStartIt": "Buďte první, kdo zahájí tuto diskuzi",
+    "discussionRemoved": "Nemůžete se připojit k této diskuzi.",
+    "discussionJoinArriving": "Jste tam! Diskuze se otevře, jakmile dorazí.",
+    "roleplayLabel": "Hraní rolí"
 }

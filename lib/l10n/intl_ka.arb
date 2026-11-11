@@ -1928,7 +1928,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-11-10 13:06:13.473901",
+    "@@last_modified": "2026-11-11 11:38:56.218001",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10946,5 +10946,15 @@
     "joinCodeJoinExplanation": "შედით ან დარეგისტრირდით და ჩვენ გამოვიყენებთ თქვენს კოდს, რათა ავტომატურად დაგამატოთ.",
     "joinCodeLabel": "კოდი",
     "joinCodeSaved": "კოდი {code} შენახულია",
-    "joinCodeSavedExplanation": "დარეგისტრირდით ან შედით სისტემაში და ჩვენ დაგამატებთ."
+    "joinCodeSavedExplanation": "დარეგისტრირდით ან შედით სისტემაში და ჩვენ დაგამატებთ.",
+    "discussionLabel": "დისკუსია",
+    "discussionCardSemantics": "დისკუსია: {title}",
+    "discussionJoined": "შემოუერთდა",
+    "discussionAnswered": "უპასუხა",
+    "joinTheDiscussion": "შემოუერთდით დისკუსიას",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 თანაკლასელი ამ დისკუსიაშია} other{{count} თანაკლასელი ამ დისკუსიაშია}}",
+    "discussionStartIt": "იყავით პირველი, ვინც დაიწყებს ამ დისკუსიას",
+    "discussionRemoved": "თქვენ არ შეგიძლიათ ამ დისკუსიაში გაწევრიანება.",
+    "discussionJoinArriving": "თქვენ შიგნით ხართ! დისკუსია გაიხსნება, როგორც კი მოვა.",
+    "roleplayLabel": "როლური თამაში"
 }

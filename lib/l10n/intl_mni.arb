@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-11-10 13:06:16.841213",
+    "@@last_modified": "2026-11-11 11:38:52.115727",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "ꯂꯣꯒꯏꯟ ꯇꯧ ꯅꯠꯔꯒꯥ ꯁꯥꯏꯟ ꯑꯞ ꯇꯧ, ꯑꯃꯁꯨꯡ ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯀꯣꯗ ꯁꯤꯖꯤꯟꯅꯗꯨꯅꯥ ꯅꯍꯥꯛꯄꯨ ꯑꯣꯇꯣꯃꯦꯇꯤꯛ ꯑꯣꯏꯅꯥ ꯍꯥꯞꯆꯤꯟꯒꯅꯤ꯫",
     "joinCodeLabel": "ꯀꯣꯗ",
     "joinCodeSaved": "ꯀꯣꯗ {code} ꯁꯦꯚ ꯇꯧꯔꯦ",
-    "joinCodeSavedExplanation": "ꯁꯥꯏꯟ ꯑꯞ ꯇꯧ ꯅꯠꯔꯒꯥ ꯂꯣꯒꯏꯟ ꯇꯧ ꯑꯃꯁꯨꯡ ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯄꯨ ꯍꯥꯞꯆꯤꯟꯒꯅꯤ꯫"
+    "joinCodeSavedExplanation": "ꯁꯥꯏꯟ ꯑꯞ ꯇꯧ ꯅꯠꯔꯒꯥ ꯂꯣꯒꯏꯟ ꯇꯧ ꯑꯃꯁꯨꯡ ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯄꯨ ꯍꯥꯞꯆꯤꯟꯒꯅꯤ꯫",
+    "discussionLabel": "খন্ন-নৈনবা",
+    "discussionCardSemantics": "খন্ন-নৈনবা: {title}",
+    "discussionJoined": "শরুক য়াখ্রে",
+    "discussionAnswered": "পাউখুম পিখ্রে",
+    "joinTheDiscussion": "খন্ন-নৈনবা অসিদা শরুক য়াবীয়ু",
+    "discussionClassmatesInRoom": "{count, plural, =1{লাইশঙদা ক্লাসমেট ১না খন্ন-নৈনবা অসিদা শরুক য়াখি} other{{count} ক্লাসমেটশিংনা খন্ন-নৈনবা অসিদা শরুক য়াখি}}",
+    "discussionStartIt": "খন্ন-নৈনবা অসি হৌবগী অহানবা ওইবীয়ু",
+    "discussionRemoved": "নখোইনা খন্ন-নৈনবা অসিদা শরুক য়াবা ঙম্লোই.",
+    "discussionJoinArriving": "নখোইনা শরুক য়াখ্রে! খন্ন-নৈনবা অসি লাকপগা হাংদোক্কনি.",
+    "roleplayLabel": "রোলপ্লে"
 }

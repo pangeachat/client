@@ -2906,7 +2906,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-11-10 13:06:08.677151",
+    "@@last_modified": "2026-11-11 11:38:40.184466",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9657,5 +9657,15 @@
     "joinCodeJoinExplanation": "ནང་འཛུལ་བྱེད་པ་དང་ཡང་ན་ཐོ་འགོད་བྱེད་པ། དེ་ནས་ང་ཚོས་ཁྱེད་ཀྱི་ཨང་ཀི་སྤྱད་ནས་ཁྱེད་རང་རང་འགུལ་ངང་ཁ་སྣོན་བྱ་རྒྱུ་ཡིན།",
     "joinCodeLabel": "ཨང་ཀི།",
     "joinCodeSaved": "ཨང་ཀི་ {code} ཉར་ཚགས་བྱས་ཟིན།",
-    "joinCodeSavedExplanation": "ཐོ་འགོད་བྱེད་པ་དང་ཡང་ན་ནང་འཛུལ་བྱེད་པ། དེ་ནས་ང་ཚོས་ཁྱེད་རང་ཁ་སྣོན་བྱ་རྒྱུ་ཡིན།"
+    "joinCodeSavedExplanation": "ཐོ་འགོད་བྱེད་པ་དང་ཡང་ན་ནང་འཛུལ་བྱེད་པ། དེ་ནས་ང་ཚོས་ཁྱེད་རང་ཁ་སྣོན་བྱ་རྒྱུ་ཡིན།",
+    "discussionLabel": "གྲོས་མོལ།",
+    "discussionCardSemantics": "གྲོས་མོལ།: {title}",
+    "discussionJoined": "མཉམ་ཞུགས་བྱས་ཟིན།",
+    "discussionAnswered": "ལན་བཏབ་ཟིན།",
+    "joinTheDiscussion": "གྲོས་མོལ་ནང་མཉམ་ཞུགས་བྱེད་པ།",
+    "discussionClassmatesInRoom": "{count, plural, =1{སློབ་གྲོགས་གཅིག་གྲོས་མོལ་འདིའི་ནང་ཡོད།} other{སློབ་གྲོགས་ {count} གྲོས་མོལ་འདིའི་ནང་ཡོད།}}",
+    "discussionStartIt": "གྲོས་མོལ་འདི་འགོ་འཛུགས་མཁན་དང་པོ་བྱེད་པ།",
+    "discussionRemoved": "ཁྱེད་ཀྱིས་གྲོས་མོལ་འདིའི་ནང་མཉམ་ཞུགས་བྱེད་མི་ཐུབ།",
+    "discussionJoinArriving": "ཁྱེད་ནང་དུ་ཡོད། གྲོས་མོལ་འདི་འབྱོར་མ་ཐག་ཏུ་འགོ་འཛུགས་བྱ་རྒྱུ་རེད།",
+    "roleplayLabel": "འཁྲབ་སྟོན།"
 }

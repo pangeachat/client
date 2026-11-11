@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-11-10 13:06:15.763139",
+    "@@last_modified": "2026-11-11 11:38:56.202234",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "ចូល ឬ ចុះឈ្មោះ ហើយយើងនឹងប្រើកូដរបស់អ្នកដើម្បីបន្ថែមអ្នកដោយស្វ័យប្រវត្តិ។",
     "joinCodeLabel": "កូដ",
     "joinCodeSaved": "កូដ {code} ត្រូវបានរក្សាទុក",
-    "joinCodeSavedExplanation": "ចុះឈ្មោះ ឬ ចូល ហើយយើងនឹងបន្ថែមអ្នក។"
+    "joinCodeSavedExplanation": "ចុះឈ្មោះ ឬ ចូល ហើយយើងនឹងបន្ថែមអ្នក។",
+    "discussionLabel": "ការពិភាក្សា",
+    "discussionCardSemantics": "ការពិភាក្សា៖ {title}",
+    "discussionJoined": "បានចូលរួម",
+    "discussionAnswered": "បានឆ្លើយ",
+    "joinTheDiscussion": "ចូលរួមការពិភាក្សា",
+    "discussionClassmatesInRoom": "{count, plural, =1{មិត្តរួមថ្នាក់ ១ នាក់កំពុងពិភាក្សានេះ} other{មិត្តរួមថ្នាក់ {count} នាក់កំពុងពិភាក្សានេះ}}",
+    "discussionStartIt": "ក្លាយជាអ្នកដំបូងដែលចាប់ផ្តើមការពិភាក្សានេះ",
+    "discussionRemoved": "អ្នកមិនអាចចូលរួមការពិភាក្សានេះបានទេ។",
+    "discussionJoinArriving": "អ្នកបានចូលហើយ! ការពិភាក្សានឹងបើកភ្លាមៗនៅពេលវាទៅដល់។",
+    "roleplayLabel": "ដើរតួ"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:11.102660",
+    "@@last_modified": "2026-11-11 11:38:44.314129",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10960,5 +10960,15 @@
     "joinCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד שלך כדי להוסיף אותך אוטומטית.",
     "joinCodeLabel": "קוד",
     "joinCodeSaved": "הקוד {code} נשמר",
-    "joinCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך."
+    "joinCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך.",
+    "discussionLabel": "דיון",
+    "discussionCardSemantics": "דיון: {title}",
+    "discussionJoined": "הצטרפת",
+    "discussionAnswered": "נענה",
+    "joinTheDiscussion": "הצטרף לדיון",
+    "discussionClassmatesInRoom": "{count, plural, =1{חבר לכיתה אחד נמצא בדיון הזה} other{{count} חברים לכיתה נמצאים בדיון הזה}}",
+    "discussionStartIt": "היה הראשון להתחיל את הדיון הזה",
+    "discussionRemoved": "אינך יכול/ה להצטרף לדיון זה.",
+    "discussionJoinArriving": "אתה בפנים! הדיון ייפתח ברגע שהוא יגיע.",
+    "roleplayLabel": "משחק תפקידים"
 }

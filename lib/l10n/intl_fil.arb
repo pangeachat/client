@@ -2071,7 +2071,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-11-10 13:06:10.319737",
+    "@@last_modified": "2026-11-11 11:38:43.067318",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10906,5 +10906,15 @@
     "joinCodeJoinExplanation": "Mag-log in o mag-sign up, at gagamitin namin ang iyong code para awtomatiko kang idagdag.",
     "joinCodeLabel": "Code",
     "joinCodeSaved": "Na-save ang code na {code}",
-    "joinCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin."
+    "joinCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin.",
+    "discussionLabel": "Talakayan",
+    "discussionCardSemantics": "Talakayan: {title}",
+    "discussionJoined": "Sumali",
+    "discussionAnswered": "Nasagot",
+    "joinTheDiscussion": "Sumali sa talakayan",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 kaklase ang nasa talakayang ito} other{{count} kaklase ang nasa talakayang ito}}",
+    "discussionStartIt": "Ikaw ang unang magsimula ng talakayang ito",
+    "discussionRemoved": "Hindi ka makakasali sa talakayang ito.",
+    "discussionJoinArriving": "Nakasali ka na! Magbubukas ang talakayan pagdating nito.",
+    "roleplayLabel": "Roleplay"
 }

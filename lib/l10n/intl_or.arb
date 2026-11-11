@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-11-10 13:06:17.578801",
+    "@@last_modified": "2026-11-11 11:38:54.725372",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "ଲଗ୍ ଇନ୍ କରନ୍ତୁ କିମ୍ବା ସାଇନ୍ ଅପ୍ କରନ୍ତୁ, ଏବଂ ଆମେ ଆପଣଙ୍କୁ ସ୍ୱୟଂଚାଳିତ ଭାବରେ ଯୋଡିବା ପାଇଁ ଆପଣଙ୍କ କୋଡ୍ ବ୍ୟବହାର କରିବୁ।",
     "joinCodeLabel": "କୋଡ୍",
     "joinCodeSaved": "କୋଡ୍ {code} ସେଭ୍ ହୋଇଛି",
-    "joinCodeSavedExplanation": "ସାଇନ୍ ଅପ୍ କରନ୍ତୁ କିମ୍ବା ଲଗ୍ ଇନ୍ କରନ୍ତୁ ଏବଂ ଆମେ ଆପଣଙ୍କୁ ଯୋଡିବୁ।"
+    "joinCodeSavedExplanation": "ସାଇନ୍ ଅପ୍ କରନ୍ତୁ କିମ୍ବା ଲଗ୍ ଇନ୍ କରନ୍ତୁ ଏବଂ ଆମେ ଆପଣଙ୍କୁ ଯୋଡିବୁ।",
+    "discussionLabel": "ଆଲୋଚନା",
+    "discussionCardSemantics": "ଆଲୋଚନା: {title}",
+    "discussionJoined": "ଯୋଗ ଦେଇଛନ୍ତି",
+    "discussionAnswered": "ଉତ୍ତର ଦେଇଛନ୍ତି",
+    "joinTheDiscussion": "ଆଲୋଚନାରେ ଯୋଗ ଦିଅନ୍ତୁ",
+    "discussionClassmatesInRoom": "{count, plural, =1{ଜଣେ ସହପାଠୀ ଏହି ଆଲୋଚନାରେ ଅଛନ୍ତି} other{{count} ଜଣ ସହପାଠୀ ଏହି ଆଲୋଚନାରେ ଅଛନ୍ତି}}",
+    "discussionStartIt": "ଏହି ଆଲୋଚନା ଆରମ୍ଭ କରିବାରେ ପ୍ରଥମ ହୁଅନ୍ତୁ",
+    "discussionRemoved": "ଆପଣ ଏହି ଆଲୋଚନାରେ ଯୋଗ ଦେଇପାରିବେ ନାହିଁ।",
+    "discussionJoinArriving": "ଆପଣ ଭିତରେ ଅଛନ୍ତି! ଆଲୋଚନା ଆସିବା ମାତ୍ରେ ଖୋଲିଯିବ।",
+    "roleplayLabel": "ଭୂମିକା ଅଭିନୟ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-11-10 13:06:09.062957",
+    "@@last_modified": "2026-11-11 11:38:41.143262",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10036,5 +10036,15 @@
     "joinCodeJoinExplanation": "Melde dich an oder registriere dich, und wir verwenden deinen Code, um dich automatisch hinzuzufügen.",
     "joinCodeLabel": "Code",
     "joinCodeSaved": "Code {code} gespeichert",
-    "joinCodeSavedExplanation": "Registriere dich oder melde dich an, und wir fügen dich hinzu."
+    "joinCodeSavedExplanation": "Registriere dich oder melde dich an, und wir fügen dich hinzu.",
+    "discussionLabel": "Diskussion",
+    "discussionCardSemantics": "Diskussion: {title}",
+    "discussionJoined": "Beigetreten",
+    "discussionAnswered": "Beantwortet",
+    "joinTheDiscussion": "An der Diskussion teilnehmen",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 Klassenkamerad ist in dieser Diskussion} other{{count} Klassenkameraden sind in dieser Diskussion}}",
+    "discussionStartIt": "Sei der Erste, der diese Diskussion startet",
+    "discussionRemoved": "Du kannst dieser Diskussion nicht beitreten.",
+    "discussionJoinArriving": "Du bist dabei! Die Diskussion wird geöffnet, sobald sie eintrifft.",
+    "roleplayLabel": "Rollenspiel"
 }

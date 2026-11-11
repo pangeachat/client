@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-11-10 13:06:12.399974",
+    "@@last_modified": "2026-11-11 11:38:54.902963",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Մուտք գործեք կամ գրանցվեք, և մենք կօգտագործենք Ձեր կոդը՝ Ձեզ ավտոմատ կերպով ավելացնելու համար։",
     "joinCodeLabel": "Կոդ",
     "joinCodeSaved": "Կոդը {code} պահպանված է",
-    "joinCodeSavedExplanation": "Գրանցվեք կամ մուտք գործեք, և մենք Ձեզ կավելացնենք։"
+    "joinCodeSavedExplanation": "Գրանցվեք կամ մուտք գործեք, և մենք Ձեզ կավելացնենք։",
+    "discussionLabel": "Քննարկում",
+    "discussionCardSemantics": "Քննարկում: {title}",
+    "discussionJoined": "Միացել է",
+    "discussionAnswered": "Պատասխանել է",
+    "joinTheDiscussion": "Միանալ քննարկմանը",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 դասընկեր այս քննարկման մեջ է} other{{count} դասընկեր այս քննարկման մեջ են}}",
+    "discussionStartIt": "Եղեք առաջինը, ով կսկսի այս քննարկումը",
+    "discussionRemoved": "Դուք չեք կարող միանալ այս քննարկմանը։",
+    "discussionJoinArriving": "Դուք ներսում եք։ Քննարկումը կբացվի հենց որ այն հասնի։",
+    "roleplayLabel": "Դերախաղ"
 }

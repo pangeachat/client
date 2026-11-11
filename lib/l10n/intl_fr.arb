@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-11-10 13:06:10.042141",
+    "@@last_modified": "2026-11-11 11:38:42.714895",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10401,5 +10401,15 @@
     "joinCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code pour vous ajouter automatiquement.",
     "joinCodeLabel": "Code",
     "joinCodeSaved": "Code {code} enregistré",
-    "joinCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons."
+    "joinCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons.",
+    "discussionLabel": "Discussion",
+    "discussionCardSemantics": "Discussion : {title}",
+    "discussionJoined": "Rejointe",
+    "discussionAnswered": "Répondu",
+    "joinTheDiscussion": "Rejoindre la discussion",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 camarade est dans cette discussion} other{{count} camarades sont dans cette discussion}}",
+    "discussionStartIt": "Soyez le premier à lancer cette discussion",
+    "discussionRemoved": "Vous ne pouvez pas rejoindre cette discussion.",
+    "discussionJoinArriving": "Vous êtes là ! La discussion s’ouvrira dès qu’elle arrivera.",
+    "roleplayLabel": "Jeu de rôle"
 }

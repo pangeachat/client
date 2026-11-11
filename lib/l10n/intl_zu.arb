@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-11-10 13:06:21.891846",
+    "@@last_modified": "2026-11-11 11:39:06.085164",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Ngena noma bhalisa, bese sizosebenzisa ikhodi yakho ukukufaka ngokuzenzakalelayo.",
     "joinCodeLabel": "Ikhodi",
     "joinCodeSaved": "Ikhodi {code} igciniwe",
-    "joinCodeSavedExplanation": "Bhalisa noma ngena bese sizokufaka."
+    "joinCodeSavedExplanation": "Bhalisa noma ngena bese sizokufaka.",
+    "discussionLabel": "Ingxoxo",
+    "discussionCardSemantics": "Ingxoxo: {title}",
+    "discussionJoined": "Ujoyinile",
+    "discussionAnswered": "Uphenduliwe",
+    "joinTheDiscussion": "Joyina ingxoxo",
+    "discussionClassmatesInRoom": "{count, plural, =1{Umfundi ofunda naye oyedwa ukule ngxoxo} other{Abafundi abafunda naye abangu-{count} bakule ngxoxo}}",
+    "discussionStartIt": "Yiba ngowokuqala ukuqala le ngxoxo",
+    "discussionRemoved": "Awukwazi ukuyijoyina le ngxoxo.",
+    "discussionJoinArriving": "Usuphakathi! Ingxoxo izovulwa ngokushesha nje lapho ifika.",
+    "roleplayLabel": "Ukulingisa indima"
 }

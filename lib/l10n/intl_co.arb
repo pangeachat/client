@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-11-10 13:06:09.624360",
+    "@@last_modified": "2026-11-11 11:38:41.292371",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Cunnettatevi o iscrivetevi, è useremu u vostru codice per aghjunghjevi automaticamente.",
     "joinCodeLabel": "Codice",
     "joinCodeSaved": "Codice {code} salvatu",
-    "joinCodeSavedExplanation": "Iscrivetevi o cunnettatevi è vi aghjunghjeremu."
+    "joinCodeSavedExplanation": "Iscrivetevi o cunnettatevi è vi aghjunghjeremu.",
+    "discussionLabel": "Discussione",
+    "discussionCardSemantics": "Discussione: {title}",
+    "discussionJoined": "Aderitu",
+    "discussionAnswered": "Rispostu",
+    "joinTheDiscussion": "Unisciti à a discussione",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 cumpagnu di scola hè in sta discussione} other{{count} cumpagni di scola sò in sta discussione}}",
+    "discussionStartIt": "Siate u primu à principià sta discussione",
+    "discussionRemoved": "Ùn pudete micca unisce à sta discussione.",
+    "discussionJoinArriving": "Site drentu! A discussione s'aprirà appena ghjunghje.",
+    "roleplayLabel": "Ghjocu di rollu"
 }

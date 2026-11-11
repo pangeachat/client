@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-11-10 13:06:14.746627",
+    "@@last_modified": "2026-11-11 11:38:48.755362",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Mell dech un oder registréier dech, a mir benotzen däi Code fir dech automatesch dobäizefügen.",
     "joinCodeLabel": "Code",
     "joinCodeSaved": "Code {code} gespäichert",
-    "joinCodeSavedExplanation": "Registréier dech oder mell dech un a mir fügen dech dobäi."
+    "joinCodeSavedExplanation": "Registréier dech oder mell dech un a mir fügen dech dobäi.",
+    "discussionLabel": "Diskussioun",
+    "discussionCardSemantics": "Diskussioun: {title}",
+    "discussionJoined": "Derbäi",
+    "discussionAnswered": "Beäntwert",
+    "joinTheDiscussion": "Maach mat bei der Diskussioun",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 Klassekomerod ass an dëser Diskussioun} other{{count} Klassekomeroden sinn an dëser Diskussioun}}",
+    "discussionStartIt": "Sief deen éischten, deen dës Diskussioun ufänkt",
+    "discussionRemoved": "Du kanns net bei dës Diskussioun derbäi kommen.",
+    "discussionJoinArriving": "Du bass derbäi! D'Diskussioun geet op soubal se ukënnt.",
+    "roleplayLabel": "Rollenspill"
 }

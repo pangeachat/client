@@ -2550,7 +2550,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-11-10 13:06:17.807647",
+    "@@last_modified": "2026-11-11 11:38:56.228014",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10963,5 +10963,15 @@
     "joinCodeJoinExplanation": "Inicie sessão ou registe-se, e usaremos o seu código para o adicionar automaticamente.",
     "joinCodeLabel": "Código",
     "joinCodeSaved": "Código {code} guardado",
-    "joinCodeSavedExplanation": "Registe-se ou inicie sessão e nós adicionamo-lo."
+    "joinCodeSavedExplanation": "Registe-se ou inicie sessão e nós adicionamo-lo.",
+    "discussionLabel": "Discussão",
+    "discussionCardSemantics": "Discussão: {title}",
+    "discussionJoined": "Aderiu",
+    "discussionAnswered": "Respondido",
+    "joinTheDiscussion": "Aderir à discussão",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 colega está nesta discussão} other{{count} colegas estão nesta discussão}}",
+    "discussionStartIt": "Sê o primeiro a iniciar esta discussão",
+    "discussionRemoved": "Não podes aderir a esta discussão.",
+    "discussionJoinArriving": "Entraste! A discussão abrirá assim que chegar.",
+    "roleplayLabel": "Roleplay"
 }

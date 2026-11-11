@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:21.793321",
+    "@@last_modified": "2026-11-11 11:39:04.887357",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10155,5 +10155,15 @@
     "joinCodeJoinExplanation": "登入或註冊，我們將使用您的代碼自動將您加入。",
     "joinCodeLabel": "代碼",
     "joinCodeSaved": "代碼 {code} 已儲存",
-    "joinCodeSavedExplanation": "註冊或登入，我們將會將您加入。"
+    "joinCodeSavedExplanation": "註冊或登入，我們將會將您加入。",
+    "discussionLabel": "討論",
+    "discussionCardSemantics": "討論：{title}",
+    "discussionJoined": "已加入",
+    "discussionAnswered": "已回答",
+    "joinTheDiscussion": "加入討論",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 位同學正在參與此討論} other{{count} 位同學正在參與此討論}}",
+    "discussionStartIt": "成為第一個開始此討論的人",
+    "discussionRemoved": "您無法加入此討論。",
+    "discussionJoinArriving": "您已加入！討論一開始就會開放。",
+    "roleplayLabel": "角色扮演"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-11-10 13:06:16.809169",
+    "@@last_modified": "2026-11-11 11:38:52.860400",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "ဝင်ရောက်ပါ သို့မဟုတ် စာရင်းသွင်းပါ၊ ထို့နောက် သင့်ကုဒ်ကို အသုံးပြု၍ သင့်ကို အလိုအလျောက် ထည့်သွင်းပေးပါမည်။",
     "joinCodeLabel": "ကုဒ်",
     "joinCodeSaved": "ကုဒ် {code} ကို သိမ်းဆည်းပြီးပါပြီ",
-    "joinCodeSavedExplanation": "စာရင်းသွင်းပါ သို့မဟုတ် ဝင်ရောက်ပါ၊ ထို့နောက် သင့်ကို ထည့်သွင်းပေးပါမည်။"
+    "joinCodeSavedExplanation": "စာရင်းသွင်းပါ သို့မဟုတ် ဝင်ရောက်ပါ၊ ထို့နောက် သင့်ကို ထည့်သွင်းပေးပါမည်။",
+    "discussionLabel": "ဆွေးနွေးခန်း",
+    "discussionCardSemantics": "ဆွေးနွေးခန်း- {title}",
+    "discussionJoined": "ပူးပေါင်းပြီး",
+    "discussionAnswered": "ဖြေပြီး",
+    "joinTheDiscussion": "ဆွေးနွေးခန်းတွင် ပါဝင်ပါ",
+    "discussionClassmatesInRoom": "{count, plural, =1{ကျောင်းသားတစ်ဦးသည် ဤဆွေးနွေးခန်းတွင် ရှိသည်} other{{count} ဦးသော ကျောင်းသားများသည် ဤဆွေးနွေးခန်းတွင် ရှိသည်}}",
+    "discussionStartIt": "ဤဆွေးနွေးခန်းကို စတင်သူ ပထမဆုံးလူ ဖြစ်ပါစေ",
+    "discussionRemoved": "ဤဆွေးနွေးခန်းတွင် သင် ပါဝင်၍မရပါ။",
+    "discussionJoinArriving": "သင် ပါဝင်ပြီးပါပြီ။ ဆွေးနွေးခန်း ရောက်သည်နှင့် ဖွင့်ပါမည်။",
+    "roleplayLabel": "အခန်းကဏ္ဍသရုပ်ဆောင်ခြင်း"
 }
