@@ -1,11 +1,9 @@
 ---
 applyTo: "lib/routes/world/**"
-description: "Planned, not built. What the map shows inside a course: the course's cities along its route, its ship, the activities at a city, how the camera moves, and the preview before joining."
+description: "What the map shows inside a course: the course's cities along its route, its ship, the activities at a city, how the camera moves, and the preview before joining."
 ---
 
 # Course View
-
-**Intended — not yet implemented.** Today the map inside a course shows the same thing as the map outside one ([world map](world-map.instructions.md)). Nothing below exists yet.
 
 ## Purpose
 
@@ -13,17 +11,16 @@ The course view is what the map shows when the learner is inside a course. It sh
 
 ## The experience
 
-1. When the learner chooses a course, the map changes to that course's view. It shows the course's cities joined by a route, the course's ship, and which cities are open. The map fades to the city where the ship is.
+1. When the learner chooses a course, the map changes to that course's view and fades to the city where the ship is.
 2. The activities of the Mission the learner is looking at appear at that Mission's city. When the learner picks another Mission, the map fades to that Mission's city.
 3. Zoomed into a city, the map shows its activities. The ones the learner has played have a gold stamp.
-4. When the learner taps a city that is not open yet, the app offers to let them in early, for a cost.
+4. When the learner taps an activity in a city that is not open yet, the app says when it opens.
 5. When someone previews a course before joining, the map fades to show the whole route. Nothing on the map can be opened in a preview.
 
 ## What the map shows
 
 - Only this course's cities and activities are shown, so everything the learner plays belongs to the course they chose.
 - In a course the learner has joined, only the activities of the Mission they are looking at are shown. The rest of the route is shown as cities.
-- The route shows every city, open or not, so the learner sees the whole trip ahead.
 
 ## How the camera moves
 
@@ -41,3 +38,10 @@ The course view is what the map shows when the learner is inside a course. It sh
 
 - In a preview nothing on the map can be opened, because opening an activity would take the person away from deciding whether to join.
 - Choosing a trip before a course exists happens on the planner's map in the educator dashboard ([teacher onboarding](../../../.github/.github/instructions/teacher-onboarding.instructions.md)). It is not this view.
+
+## Not built yet
+
+**Intended — not yet implemented:**
+
+- The course's cities joined by a route, with its ship and which cities are open. The route shows every city, open or not, so the learner sees the whole trip ahead.
+- Entering a city early, for a cost. The offer is built behind a setting that is off, because the cost is not decided.
