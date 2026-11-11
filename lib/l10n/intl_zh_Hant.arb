@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:21.793321",
+    "@@last_modified": "2026-11-11 14:11:30.942815",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10093,7 +10093,9 @@
     "approvalRequired": "需要核准",
     "courseAccessPublicDesc": "任何人都可以找到並加入此課程。",
     "courseAccessApprovalRequiredDesc": "任何人都可以找到此課程並請求加入。您需要核准每個請求。",
-    "courseAccessPrivateDesc": "只有收到您的邀請或課程代碼的人才能加入。此課程不會出現在搜尋結果中。",
     "courseAccessCodeNote": "無論您選擇哪種方式，擁有您的課程代碼或邀請的學生都可以立即加入。",
-    "requireAnalyticsAccessSummary": "學生加入時會與您分享他們的學習進度。"
+    "requireAnalyticsAccessSummary": "學生加入時會與您分享他們的學習進度。",
+    "courseAccessPrivateDesc": "此課程不會顯示在搜尋結果中。人們可透過您的邀請或課程代碼加入。",
+    "courseAccessProtected": "受保護",
+    "courseAccessProtectedDesc": "供教育者自己的學生使用。課程會管理他們的帳戶。從教育者儀表板設定。"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-11-10 13:06:10.747167",
+    "@@last_modified": "2026-11-11 14:11:17.071357",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Goedkarring fereaske",
     "courseAccessPublicDesc": "Elkenien kin dizze kursus fine en meidwaan.",
     "courseAccessApprovalRequiredDesc": "Elkenien kin dizze kursus fine en freegje om mei te dwaan. Jo goedkarre elk fersyk.",
-    "courseAccessPrivateDesc": "Allinnich minsken mei jo útnoeging of kursuskoade kinne meidwaan. De kursus ferskynt net yn sykresultaten.",
     "courseAccessCodeNote": "Studinten mei jo kursuskoade of in útnoeging kinne fuortendaliks meidwaan, wat jo ek kieze.",
-    "requireAnalyticsAccessSummary": "Studinten diele harren learfoarútgong mei jo as se meidogge."
+    "requireAnalyticsAccessSummary": "Studinten diele harren learfoarútgong mei jo as se meidogge.",
+    "courseAccessPrivateDesc": "De kursus ferskynt net yn sykresultaten. Minsken dogge mei fia dyn útnoeging of kursuskoade.",
+    "courseAccessProtected": "Beskerme",
+    "courseAccessProtectedDesc": "Foar de eigen studinten fan in learaar. De kursus beheart harren akkounts. Ynstelle fia it learaardashboard."
 }

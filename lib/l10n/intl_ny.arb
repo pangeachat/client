@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-11-10 13:06:17.195557",
+    "@@last_modified": "2026-11-11 14:11:24.991118",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Kuvomerezedwa kofunikira",
     "courseAccessPublicDesc": "Aliyense angapeze ndi kulowa maphunzirowa.",
     "courseAccessApprovalRequiredDesc": "Aliyense angapeze maphunzirowa ndikupempha kulowa. Inu mumavomereza pempho lililonse.",
-    "courseAccessPrivateDesc": "Anthu okhawo omwe ali ndi kuitana kwanu kapena nambala ya maphunzirowa ndi omwe angalowe. Maphunzirowa saonekera pakufufuza.",
     "courseAccessCodeNote": "Ophunzira omwe ali ndi nambala yanu ya maphunziro kapena kuitana angalowe nthawi yomweyo, ziribe kanthu zomwe mwasankha.",
-    "requireAnalyticsAccessSummary": "Ophunzira amagawana nanu momwe akupitira patsogolo pakuphunzira akalowa nawo."
+    "requireAnalyticsAccessSummary": "Ophunzira amagawana nanu momwe akupitira patsogolo pakuphunzira akalowa nawo.",
+    "courseAccessPrivateDesc": "Maphunzirowa sapezeka mukafufuza. Anthu amalowa ndi kuitana kwanu kapena nambala ya maphunziro.",
+    "courseAccessProtected": "Otetezedwa",
+    "courseAccessProtectedDesc": "Kwa ophunzira a mphunzitsi. Maphunzirowa amayang'anira maakaunti awo. Konzani kuchokera pa dashboard ya mphunzitsi."
 }

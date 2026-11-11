@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-11-10 13:06:14.851220",
+    "@@last_modified": "2026-11-11 14:11:22.142980",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Ilaina ny fankatoavana",
     "courseAccessPublicDesc": "Afaka mahita sy miditra amin'ity taranja ity ny rehetra.",
     "courseAccessApprovalRequiredDesc": "Afaka mahita ity taranja ity ny rehetra ary mangataka hiditra. Ianao no mankatoa ny fangatahana tsirairay.",
-    "courseAccessPrivateDesc": "Ireo olona manana fanasana na kaody taranja avy aminao ihany no afaka miditra. Tsy hiseho amin'ny fikarohana ity taranja ity.",
     "courseAccessCodeNote": "Afaka miditra avy hatrany ny mpianatra manana ny kaody taranjao na fanasana, na inona na inona safidinao.",
-    "requireAnalyticsAccessSummary": "Mizara ny fivoaran'ny fianarany aminao ny mpianatra rehefa miditra."
+    "requireAnalyticsAccessSummary": "Mizara ny fivoaran'ny fianarany aminao ny mpianatra rehefa miditra.",
+    "courseAccessPrivateDesc": "Tsy miseho amin'ny fikarohana ilay taranja. Miditra amin'ny alalan'ny fanasanao na kaody taranja ny olona.",
+    "courseAccessProtected": "Voaaro",
+    "courseAccessProtectedDesc": "Ho an'ny mpianatry ny mpampianatra manokana. Ny taranja no mitantana ny kaontiny. Apetraka avy amin'ny dashboard an'ny mpampianatra."
 }

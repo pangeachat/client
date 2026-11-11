@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:19.029905",
+    "@@last_modified": "2026-11-11 14:11:26.604053",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10930,7 +10930,9 @@
     "approvalRequired": "Potrebno odobrenje",
     "courseAccessPublicDesc": "Svako može pronaći i pridružiti se ovom kursu.",
     "courseAccessApprovalRequiredDesc": "Svako može pronaći ovaj kurs i zatražiti pridruživanje. Vi odobravate svaki zahtev.",
-    "courseAccessPrivateDesc": "Samo ljudi sa vašom pozivnicom ili kodom kursa mogu se pridružiti. Kurs se ne pojavljuje u pretrazi.",
     "courseAccessCodeNote": "Studenti sa vašim kodom kursa ili pozivnicom mogu se odmah pridružiti, bez obzira na vaš izbor.",
-    "requireAnalyticsAccessSummary": "Učenici dele svoj napredak u učenju sa vama kada se pridruže."
+    "requireAnalyticsAccessSummary": "Učenici dele svoj napredak u učenju sa vama kada se pridruže.",
+    "courseAccessPrivateDesc": "Kurs se ne pojavljuje u pretrazi. Ljudi se pridružuju putem vaše pozivnice ili koda kursa.",
+    "courseAccessProtected": "Zaštićeno",
+    "courseAccessProtectedDesc": "Za učenike edukatora. Kurs upravlja njihovim nalozima. Podešava se sa kontrolne table edukatora."
 }

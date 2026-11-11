@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-11-10 13:06:07.944442",
+    "@@last_modified": "2026-11-11 14:11:13.884136",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Goedkeuring benodig",
     "courseAccessPublicDesc": "Enigeen kan hierdie kursus vind en aansluit.",
     "courseAccessApprovalRequiredDesc": "Enigeen kan hierdie kursus vind en vra om aan te sluit. Jy keur elke versoek goed.",
-    "courseAccessPrivateDesc": "Slegs mense met jou uitnodiging of kursuskode kan aansluit. Die kursus verskyn nie in soektogte nie.",
     "courseAccessCodeNote": "Studente met jou kursuskode of 'n uitnodiging kan dadelik aansluit, wat jy ook al kies.",
-    "requireAnalyticsAccessSummary": "Studente deel hul leervordering met jou wanneer hulle aansluit."
+    "requireAnalyticsAccessSummary": "Studente deel hul leervordering met jou wanneer hulle aansluit.",
+    "courseAccessPrivateDesc": "Die kursus verskyn nie in soektogte nie. Mense sluit aan met jou uitnodiging of kursuskode.",
+    "courseAccessProtected": "Beskermd",
+    "courseAccessProtectedDesc": "Vir 'n opvoeder se eie studente. Die kursus bestuur hul rekeninge. Stel op vanaf die opvoeder-kontroleskerm."
 }

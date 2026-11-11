@@ -2855,7 +2855,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-11-10 13:06:20.754705",
+    "@@last_modified": "2026-11-11 14:11:28.586724",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9991,7 +9991,9 @@
     "approvalRequired": "Tasdiqlash talab qilinadi",
     "courseAccessPublicDesc": "Har kim bu kursni topishi va unga qoʻshilishi mumkin.",
     "courseAccessApprovalRequiredDesc": "Har kim bu kursni topishi va qoʻshilishni soʻrashi mumkin. Har bir soʻrovni siz tasdiqlaysiz.",
-    "courseAccessPrivateDesc": "Faqat sizning taklifnomangiz yoki kurs kodingizga ega boʻlganlar qoʻshila oladi. Kurs qidiruvda koʻrinmaydi.",
     "courseAccessCodeNote": "Kurs kodingiz yoki taklifnomangizga ega boʻlgan talabalar, nima tanlashingizdan qatʼi nazar, darhol qoʻshila oladilar.",
-    "requireAnalyticsAccessSummary": "O‘quvchilar qo‘shilganlarida o‘rganish jarayonlarini siz bilan bo‘lishadilar."
+    "requireAnalyticsAccessSummary": "O‘quvchilar qo‘shilganlarida o‘rganish jarayonlarini siz bilan bo‘lishadilar.",
+    "courseAccessPrivateDesc": "Kurs qidiruvda ko‘rinmaydi. Odamlar sizning taklifnomangiz yoki kurs kodi orqali qo‘shiladi.",
+    "courseAccessProtected": "Himoyalangan",
+    "courseAccessProtectedDesc": "O‘qituvchining o‘z o‘quvchilari uchun. Kurs ularning hisoblarini boshqaradi. O‘qituvchi boshqaruv panelidan sozlanadi."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:09.128939",
+    "@@last_modified": "2026-11-11 14:11:15.752825",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10926,7 +10926,9 @@
     "approvalRequired": "Aprobo necesa",
     "courseAccessPublicDesc": "Ĉiu povas trovi kaj aliĝi al ĉi tiu kurso.",
     "courseAccessApprovalRequiredDesc": "Ĉiu povas trovi ĉi tiun kurson kaj peti aliĝon. Vi aprobas ĉiun peton.",
-    "courseAccessPrivateDesc": "Nur homoj kun via invito aŭ kurskodo povas aliĝi. La kurso ne aperas en serĉo.",
     "courseAccessCodeNote": "Studentoj kun via kurskodo aŭ invito povas aliĝi tuj, kion ajn vi elektas.",
-    "requireAnalyticsAccessSummary": "Studentoj kunhavigas sian lernan progreson kun vi kiam ili aliĝas."
+    "requireAnalyticsAccessSummary": "Studentoj kunhavigas sian lernan progreson kun vi kiam ili aliĝas.",
+    "courseAccessPrivateDesc": "La kurso ne aperas en serĉo. Homoj aliĝas per via invito aŭ kurskodo.",
+    "courseAccessProtected": "Protektita",
+    "courseAccessProtectedDesc": "Por la propraj studentoj de edukisto. La kurso administras iliajn kontojn. Agordu el la edukista panelo."
 }

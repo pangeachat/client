@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:11.102660",
+    "@@last_modified": "2026-11-11 14:11:17.483497",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10895,7 +10895,9 @@
     "approvalRequired": "נדרש אישור",
     "courseAccessPublicDesc": "כל אחד יכול למצוא ולהצטרף לקורס זה.",
     "courseAccessApprovalRequiredDesc": "כל אחד יכול למצוא את הקורס הזה ולבקש להצטרף. אתה מאשר כל בקשה.",
-    "courseAccessPrivateDesc": "רק אנשים עם ההזמנה או קוד הקורס שלך יכולים להצטרף. הקורס לא יופיע בחיפוש.",
     "courseAccessCodeNote": "תלמידים עם קוד הקורס שלך או הזמנה יכולים להצטרף מיד, לא משנה מה תבחר.",
-    "requireAnalyticsAccessSummary": "סטודנטים משתפים איתך את התקדמות הלמידה שלהם כשהם מצטרפים."
+    "requireAnalyticsAccessSummary": "סטודנטים משתפים איתך את התקדמות הלמידה שלהם כשהם מצטרפים.",
+    "courseAccessPrivateDesc": "הקורס לא מופיע בחיפוש. אנשים מצטרפים עם ההזמנה או קוד הקורס שלך.",
+    "courseAccessProtected": "מוגן",
+    "courseAccessProtectedDesc": "לתלמידים של מחנך. הקורס מנהל את החשבונות שלהם. הגדרה מלוח המחוונים של המחנך."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-11-10 13:06:07.773436",
+    "@@last_modified": "2026-11-11 14:11:13.488705",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10290,7 +10290,9 @@
     "approvalRequired": "الموافقة مطلوبة",
     "courseAccessPublicDesc": "يمكن لأي شخص العثور على هذه الدورة والانضمام إليها.",
     "courseAccessApprovalRequiredDesc": "يمكن لأي شخص العثور على هذه الدورة وطلب الانضمام. أنت توافق على كل طلب.",
-    "courseAccessPrivateDesc": "يمكن فقط للأشخاص الذين لديهم دعوتك أو رمز الدورة الانضمام. لا تظهر الدورة في البحث.",
     "courseAccessCodeNote": "يمكن للطلاب الذين لديهم رمز الدورة أو دعوة الانضمام على الفور، بغض النظر عن اختيارك.",
-    "requireAnalyticsAccessSummary": "يشارك الطلاب تقدمهم التعليمي معك عند انضمامهم."
+    "requireAnalyticsAccessSummary": "يشارك الطلاب تقدمهم التعليمي معك عند انضمامهم.",
+    "courseAccessPrivateDesc": "لا يظهر المقرر الدراسي في البحث. ينضم الأشخاص باستخدام دعوتك أو رمز المقرر الدراسي.",
+    "courseAccessProtected": "محمي",
+    "courseAccessProtectedDesc": "لطلاب المعلم الخاصين. يدير المقرر الدراسي حساباتهم. يتم الإعداد من لوحة تحكم المعلم."
 }

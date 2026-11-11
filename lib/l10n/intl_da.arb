@@ -1314,7 +1314,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-11-10 13:06:09.205270",
+    "@@last_modified": "2026-11-11 14:11:15.093479",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10901,7 +10901,9 @@
     "approvalRequired": "Godkendelse påkrævet",
     "courseAccessPublicDesc": "Alle kan finde og deltage i dette kursus.",
     "courseAccessApprovalRequiredDesc": "Alle kan finde dette kursus og anmode om at deltage. Du godkender hver anmodning.",
-    "courseAccessPrivateDesc": "Kun personer med din invitation eller kursuskode kan deltage. Kurset vises ikke i søgninger.",
     "courseAccessCodeNote": "Studerende med din kursuskode eller en invitation kan deltage med det samme, uanset hvad du vælger.",
-    "requireAnalyticsAccessSummary": "Elever deler deres læringsfremskridt med dig, når de tilmelder sig."
+    "requireAnalyticsAccessSummary": "Elever deler deres læringsfremskridt med dig, når de tilmelder sig.",
+    "courseAccessPrivateDesc": "Kurset vises ikke i søgeresultater. Folk tilmelder sig med din invitation eller kursuskode.",
+    "courseAccessProtected": "Beskyttet",
+    "courseAccessProtectedDesc": "For en undervisers egne elever. Kurset administrerer deres konti. Opsætning sker fra underviserens dashboard."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-11-10 13:06:09.605759",
+    "@@last_modified": "2026-11-11 14:11:15.424451",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Cymeradwyaeth yn ofynnol",
     "courseAccessPublicDesc": "Gall unrhyw un ddod o hyd i'r cwrs hwn ac ymuno ag ef.",
     "courseAccessApprovalRequiredDesc": "Gall unrhyw un ddod o hyd i'r cwrs hwn a gofyn i ymuno. Rydych chi'n cymeradwyo pob cais.",
-    "courseAccessPrivateDesc": "Dim ond pobl sydd â'ch gwahoddiad neu god cwrs all ymuno. Nid yw'r cwrs yn ymddangos mewn chwiliad.",
     "courseAccessCodeNote": "Gall myfyrwyr sydd â'ch cod cwrs neu wahoddiad ymuno ar unwaith, beth bynnag a ddewiswch.",
-    "requireAnalyticsAccessSummary": "Mae myfyrwyr yn rhannu eu cynnydd dysgu gyda chi pan fyddant yn ymuno."
+    "requireAnalyticsAccessSummary": "Mae myfyrwyr yn rhannu eu cynnydd dysgu gyda chi pan fyddant yn ymuno.",
+    "courseAccessPrivateDesc": "Nid yw'r cwrs yn ymddangos mewn chwiliadau. Mae pobl yn ymuno â'ch gwahoddiad neu god cwrs.",
+    "courseAccessProtected": "Wedi'i Ddiogelu",
+    "courseAccessProtectedDesc": "Ar gyfer myfyrwyr addysgwr ei hun. Mae'r cwrs yn rheoli eu cyfrifon. Sefydlwch o ddangosfwrdd yr addysgwr."
 }

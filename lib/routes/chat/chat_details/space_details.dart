@@ -251,7 +251,10 @@ class SpaceDetailsController extends State<SpaceDetails> {
       context: context,
       future: () => room.setCourseAccess(chosen),
     );
-    if (result.isError || !mounted) return;
+    if (!mounted) return;
+    // A failed apply may have written the join rule and not the listing, so
+    // the row shows what the server now holds rather than the old setting.
+    if (result.isError) return _loadCourseAccess();
     setState(() => courseAccess = chosen);
   }
 

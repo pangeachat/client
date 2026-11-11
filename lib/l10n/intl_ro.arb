@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:17.931287",
+    "@@last_modified": "2026-11-11 14:11:25.429391",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10713,7 +10713,9 @@
     "approvalRequired": "Este necesară aprobarea",
     "courseAccessPublicDesc": "Oricine poate găsi și se poate alătura acestui curs.",
     "courseAccessApprovalRequiredDesc": "Oricine poate găsi acest curs și poate cere să se alăture. Tu aprobi fiecare cerere.",
-    "courseAccessPrivateDesc": "Doar persoanele cu invitația sau codul tău de curs se pot alătura. Cursul nu apare în căutări.",
     "courseAccessCodeNote": "Studenții cu codul cursului tău sau o invitație se pot alătura imediat, indiferent ce alegi.",
-    "requireAnalyticsAccessSummary": "Elevii îți partajează progresul lor de învățare atunci când se alătură."
+    "requireAnalyticsAccessSummary": "Elevii îți partajează progresul lor de învățare atunci când se alătură.",
+    "courseAccessPrivateDesc": "Cursul nu apare în căutări. Oamenii se alătură cu invitația sau codul tău de curs.",
+    "courseAccessProtected": "Protejat",
+    "courseAccessProtectedDesc": "Pentru studenții proprii ai unui educator. Cursul le gestionează conturile. Se configurează din tabloul de bord al educatorului."
 }

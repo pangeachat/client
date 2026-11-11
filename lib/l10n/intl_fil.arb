@@ -2060,7 +2060,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-11-10 13:06:10.319737",
+    "@@last_modified": "2026-11-11 14:11:16.771379",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10841,7 +10841,9 @@
     "approvalRequired": "Kailangan ng pag-apruba",
     "courseAccessPublicDesc": "Kahit sino ay puwedeng makahanap at makasali sa kursong ito.",
     "courseAccessApprovalRequiredDesc": "Kahit sino ay puwedeng makahanap ng kursong ito at humiling na sumali. Ikaw ang mag-aapruba sa bawat kahilingan.",
-    "courseAccessPrivateDesc": "Tanging ang mga taong may imbitasyon o course code mo lang ang puwedeng sumali. Hindi lalabas ang kurso sa paghahanap.",
     "courseAccessCodeNote": "Ang mga estudyanteng may course code mo o imbitasyon ay puwedeng sumali kaagad, anuman ang piliin mo.",
-    "requireAnalyticsAccessSummary": "Ibinabahagi sa iyo ng mga mag-aaral ang kanilang pag-unlad sa pag-aaral kapag sumali sila."
+    "requireAnalyticsAccessSummary": "Ibinabahagi sa iyo ng mga mag-aaral ang kanilang pag-unlad sa pag-aaral kapag sumali sila.",
+    "courseAccessPrivateDesc": "Hindi lumalabas ang kurso sa paghahanap. Sumasali ang mga tao gamit ang iyong imbitasyon o code ng kurso.",
+    "courseAccessProtected": "Protektado",
+    "courseAccessProtectedDesc": "Para sa sariling estudyante ng isang edukador. Pinamamahalaan ng kurso ang kanilang mga account. I-set up mula sa dashboard ng edukador."
 }

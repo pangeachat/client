@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:16.071331",
+    "@@last_modified": "2026-11-11 14:11:23.975921",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10044,7 +10044,9 @@
     "approvalRequired": "Godkjenning kreves",
     "courseAccessPublicDesc": "Alle kan finne og bli med på dette kurset.",
     "courseAccessApprovalRequiredDesc": "Alle kan finne dette kurset og be om å bli med. Du godkjenner hver forespørsel.",
-    "courseAccessPrivateDesc": "Bare personer med din invitasjon eller kurskode kan bli med. Kurset vises ikke i søk.",
     "courseAccessCodeNote": "Studenter med din kurskode eller en invitasjon kan bli med med en gang, uansett hva du velger.",
-    "requireAnalyticsAccessSummary": "Elevene deler læringsfremgangen sin med deg når de blir med."
+    "requireAnalyticsAccessSummary": "Elevene deler læringsfremgangen sin med deg når de blir med.",
+    "courseAccessPrivateDesc": "Kurset vises ikke i søk. Folk blir med via invitasjon eller kurskode.",
+    "courseAccessProtected": "Beskyttet",
+    "courseAccessProtectedDesc": "For en lærers egne elever. Kurset administrerer kontoene deres. Sett opp fra lærerens dashbord."
 }

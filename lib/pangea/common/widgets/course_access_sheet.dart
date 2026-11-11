@@ -81,6 +81,32 @@ class _CourseAccessSheetState extends State<CourseAccessSheet> {
                         ),
                       ),
                     ),
+                  // Protected is chosen on the educator dashboard, never here.
+                  // It has Private's listing and join rule, so it is not a
+                  // CourseAccess value.
+                  ListTile(
+                    enabled: false,
+                    leading: CircleAvatar(
+                      backgroundColor:
+                          theme.colorScheme.surfaceContainerHighest,
+                      foregroundColor: theme.colorScheme.onSurfaceVariant,
+                      child: const Icon(Icons.shield_outlined),
+                    ),
+                    title: Text(
+                      l10n.courseAccessProtected,
+                      style: theme.textTheme.titleMedium,
+                    ),
+                    subtitle: Text(l10n.courseAccessProtectedDesc),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.borderRadius / 2,
+                      ),
+                      side: BorderSide(
+                        width: 2.0,
+                        color: theme.colorScheme.outlineVariant,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

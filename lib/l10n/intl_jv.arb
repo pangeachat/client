@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-11-10 13:06:13.348548",
+    "@@last_modified": "2026-11-11 14:11:20.133380",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Butuh persetujuan",
     "courseAccessPublicDesc": "Sapa wae bisa nemokake lan gabung kursus iki.",
     "courseAccessApprovalRequiredDesc": "Sapa wae bisa nemokake kursus iki lan njaluk gabung. Sampeyan nyetujoni saben panjaluk.",
-    "courseAccessPrivateDesc": "Mung wong sing duwe undhangan utawa kode kursus sampeyan sing bisa gabung. Kursus iki ora katon ing panelusuran.",
     "courseAccessCodeNote": "Siswa sing duwe kode kursus utawa undhangan sampeyan bisa langsung gabung, apa wae sing sampeyan pilih.",
-    "requireAnalyticsAccessSummary": "Siswa nuduhake kemajuan sinau karo sampeyan nalika gabung."
+    "requireAnalyticsAccessSummary": "Siswa nuduhake kemajuan sinau karo sampeyan nalika gabung.",
+    "courseAccessPrivateDesc": "Kursus ora katon ing panelusuran. Wong-wong gabung nganggo undhangan utawa kode kursus sampeyan.",
+    "courseAccessProtected": "Dilindungi",
+    "courseAccessProtectedDesc": "Kanggo siswa pendidik dhewe. Kursus ngatur akun-akun kasebut. Disiyapake saka dasbor pendidik."
 }

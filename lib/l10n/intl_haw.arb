@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-11-10 13:06:11.546730",
+    "@@last_modified": "2026-11-11 14:11:17.285616",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Pono ka ʻae ʻana",
     "courseAccessPublicDesc": "Hiki i kekahi ke loaʻa a komo i kēia papa.",
     "courseAccessApprovalRequiredDesc": "Hiki i kekahi ke loaʻa i kēia papa a noi e komo. Nāu e ʻae i kēlā me kēia noi.",
-    "courseAccessPrivateDesc": "ʻO ka poʻe wale nō me kāu kono a i ʻole code papa e hiki ke komo. ʻAʻole e hōʻike ʻia ka papa ma ka huli ʻana.",
     "courseAccessCodeNote": "Hiki i nā haumāna me kāu code papa a i ʻole he kono ke komo koke, ʻoiai ke koho āu.",
-    "requireAnalyticsAccessSummary": "Kaʻana like nā haumāna i ko lākou holomua aʻo me ʻoe ke komo lākou."
+    "requireAnalyticsAccessSummary": "Kaʻana like nā haumāna i ko lākou holomua aʻo me ʻoe ke komo lākou.",
+    "courseAccessPrivateDesc": "ʻAʻole ʻike ʻia ka papa ma ka huli. Hoʻohui ka poʻe me kāu kono a i ʻole code papa.",
+    "courseAccessProtected": "Mālama ʻia",
+    "courseAccessProtectedDesc": "No nā haumāna ponoʻī o ke kumu aʻo. Hoʻokele ka papa i kā lākou moʻokāki. Hoʻonohonoho mai ka dashboard o ke kumu aʻo."
 }

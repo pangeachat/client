@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-11-10 13:06:19.306539",
+    "@@last_modified": "2026-11-11 14:11:27.066832",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Oggolaansho ayaa loo baahan yahay",
     "courseAccessPublicDesc": "Qof kastaa wuu heli karaa oo ku soo biiri karaa koorsadan.",
     "courseAccessApprovalRequiredDesc": "Qof kastaa wuu heli karaa koorsadan oo wuxuu codsan karaa inuu ku soo biiro. Adiga ayaa ansixinaya codsi kasta.",
-    "courseAccessPrivateDesc": "Kaliya dadka leh martiqaadkaaga ama koodhka koorsada ayaa ku soo biiri kara. Koorsadu kama soo muuqato raadinta.",
     "courseAccessCodeNote": "Ardayda leh koodhka koorsadaada ama martiqaadku waxay isla markiiba ku soo biiri karaan, wax kasta oo aad doorato.",
-    "requireAnalyticsAccessSummary": "Ardaydu waxay kula wadaagaan horumarkooda waxbarasho marka ay ku soo biiraan."
+    "requireAnalyticsAccessSummary": "Ardaydu waxay kula wadaagaan horumarkooda waxbarasho marka ay ku soo biiraan.",
+    "courseAccessPrivateDesc": "Koorsada kama soo muuqato raadinta. Dadku waxay ku soo biiraan martiqaadkaaga ama koodhka koorsada.",
+    "courseAccessProtected": "La ilaaliyay",
+    "courseAccessProtectedDesc": "Ardayda macallinka. Koorsadu waxay maamushaa xisaabaadkooda. Ka samee dashboardka macallinka."
 }

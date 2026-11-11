@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:12.791265",
+    "@@last_modified": "2026-11-11 14:11:19.376449",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10060,7 +10060,9 @@
     "approvalRequired": "Approvazione richiesta",
     "courseAccessPublicDesc": "Chiunque può trovare e unirsi a questo corso.",
     "courseAccessApprovalRequiredDesc": "Chiunque può trovare questo corso e chiedere di partecipare. Tu approvi ogni richiesta.",
-    "courseAccessPrivateDesc": "Solo le persone con il tuo invito o codice corso possono partecipare. Il corso non appare nella ricerca.",
     "courseAccessCodeNote": "Gli studenti con il tuo codice corso o un invito possono partecipare immediatamente, qualunque sia la tua scelta.",
-    "requireAnalyticsAccessSummary": "Gli studenti condividono i loro progressi di apprendimento con te quando si uniscono."
+    "requireAnalyticsAccessSummary": "Gli studenti condividono i loro progressi di apprendimento con te quando si uniscono.",
+    "courseAccessPrivateDesc": "Il corso non appare nella ricerca. Le persone si uniscono con il tuo invito o codice corso.",
+    "courseAccessProtected": "Protetto",
+    "courseAccessProtectedDesc": "Per gli studenti di un educatore. Il corso gestisce i loro account. Configura dalla dashboard dell'educatore."
 }

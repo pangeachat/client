@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-11-10 13:06:18.764734",
+    "@@last_modified": "2026-11-11 14:11:25.478425",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "منظوري گهربل",
     "courseAccessPublicDesc": "ڪو به هي ڪورس ڳولي سگهي ٿو ۽ شامل ٿي سگهي ٿو.",
     "courseAccessApprovalRequiredDesc": "ڪو به هي ڪورس ڳولي سگهي ٿو ۽ شامل ٿيڻ لاءِ پڇي سگهي ٿو. توهان هر درخواست جي منظوري ڏيندا.",
-    "courseAccessPrivateDesc": "صرف اهي ماڻهو شامل ٿي سگهن ٿا جن وٽ توهان جي دعوت يا ڪورس ڪوڊ آهي. ڪورس ڳولا ۾ ظاهر نه ٿيندو.",
     "courseAccessCodeNote": "توهان جي ڪورس ڪوڊ يا دعوت سان شاگرد فوري طور تي شامل ٿي سگهن ٿا، جيڪو به توهان چونڊيو.",
-    "requireAnalyticsAccessSummary": "شاگرد جڏهن شامل ٿيندا آهن ته توهان سان پنهنجي سکيا جي ترقي شيئر ڪندا آهن."
+    "requireAnalyticsAccessSummary": "شاگرد جڏهن شامل ٿيندا آهن ته توهان سان پنهنجي سکيا جي ترقي شيئر ڪندا آهن.",
+    "courseAccessPrivateDesc": "ڪورس ڳولا ۾ ظاهر نه ٿيندو. ماڻهو توهان جي دعوت يا ڪورس ڪوڊ سان شامل ٿيندا.",
+    "courseAccessProtected": "محفوظ",
+    "courseAccessProtectedDesc": "هڪ استاد جي پنهنجي شاگردن لاءِ. ڪورس انهن جي اڪائونٽس کي منظم ڪري ٿو. استاد جي ڊيش بورڊ تان سيٽ اپ ڪريو."
 }

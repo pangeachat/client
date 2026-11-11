@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-11-10 13:06:15.289997",
+    "@@last_modified": "2026-11-11 14:11:23.335645",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Me whakaae",
     "courseAccessPublicDesc": "Ka taea e te tangata te kimi me te uru mai ki tēnei akoranga.",
     "courseAccessApprovalRequiredDesc": "Ka taea e te tangata te kimi i tēnei akoranga me te tono kia uru mai. Māu e whakaae ia tono.",
-    "courseAccessPrivateDesc": "Ko ngā tāngata anake kei a rātou tō pōwhiri, tō waehere akoranga rānei ka uru mai. Kāore te akoranga e puta i te rapunga.",
     "courseAccessCodeNote": "Ka taea e ngā ākonga kei a rātou tō waehere akoranga, tō pōwhiri rānei te uru mai tonu, ahakoa te mea ka kōwhiria e koe.",
-    "requireAnalyticsAccessSummary": "Ka tohatoha ngā ākonga i ō rātou tūnga ako ki a koe ina uru mai rātou."
+    "requireAnalyticsAccessSummary": "Ka tohatoha ngā ākonga i ō rātou tūnga ako ki a koe ina uru mai rātou.",
+    "courseAccessPrivateDesc": "Kāore te akoranga e puta i te rapu. Ka uru mai ngā tāngata mā tō pōwhiri, mā te waehere akoranga rānei.",
+    "courseAccessProtected": "Tiakina",
+    "courseAccessProtectedDesc": "Mō ngā ākonga a te kaiwhakaako ake. Mā te akoranga e whakahaere ā rātou pūkete. Whakaritea mai i te papatohu kaiwhakaako."
 }

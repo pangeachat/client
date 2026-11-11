@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-11-10 13:06:15.770996",
+    "@@last_modified": "2026-11-11 14:11:23.194251",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Kelulusan diperlukan",
     "courseAccessPublicDesc": "Sesiapa sahaja boleh mencari dan menyertai kursus ini.",
     "courseAccessApprovalRequiredDesc": "Sesiapa sahaja boleh mencari kursus ini dan meminta untuk menyertai. Anda meluluskan setiap permintaan.",
-    "courseAccessPrivateDesc": "Hanya orang yang mempunyai jemputan atau kod kursus anda boleh menyertai. Kursus ini tidak muncul dalam carian.",
     "courseAccessCodeNote": "Pelajar dengan kod kursus anda atau jemputan boleh menyertai serta-merta, walau apa pun yang anda pilih.",
-    "requireAnalyticsAccessSummary": "Pelajar berkongsi kemajuan pembelajaran mereka dengan anda apabila mereka menyertai."
+    "requireAnalyticsAccessSummary": "Pelajar berkongsi kemajuan pembelajaran mereka dengan anda apabila mereka menyertai.",
+    "courseAccessPrivateDesc": "Kursus ini tidak muncul dalam carian. Orang ramai menyertai dengan jemputan atau kod kursus anda.",
+    "courseAccessProtected": "Dilindungi",
+    "courseAccessProtectedDesc": "Untuk pelajar pendidik sendiri. Kursus ini menguruskan akaun mereka. Sediakan dari papan pemuka pendidik."
 }

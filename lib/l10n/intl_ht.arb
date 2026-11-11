@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-11-10 13:06:11.916698",
+    "@@last_modified": "2026-11-11 14:11:17.867601",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Apwobasyon obligatwa",
     "courseAccessPublicDesc": "Nenpòt moun ka jwenn epi antre nan kou sa a.",
     "courseAccessApprovalRequiredDesc": "Nenpòt moun ka jwenn kou sa a epi mande pou antre. Ou apwouve chak demann.",
-    "courseAccessPrivateDesc": "Se sèlman moun ki gen envitasyon w oswa kòd kou a ki ka antre. Kou a pa parèt nan rechèch.",
     "courseAccessCodeNote": "Elèv ki gen kòd kou w la oswa yon envitasyon ka antre touswit, kèlkeswa sa w chwazi.",
-    "requireAnalyticsAccessSummary": "Elèv yo pataje pwogrè aprantisaj yo avèk ou lè yo rantre."
+    "requireAnalyticsAccessSummary": "Elèv yo pataje pwogrè aprantisaj yo avèk ou lè yo rantre.",
+    "courseAccessPrivateDesc": "Kou a pa parèt nan rechèch. Moun yo antre ak envitasyon w oswa kòd kou a.",
+    "courseAccessProtected": "Pwoteje",
+    "courseAccessProtectedDesc": "Pou pwòp elèv yon edikatè. Kou a jere kont yo. Mete sou pye nan tablodbò edikatè a."
 }

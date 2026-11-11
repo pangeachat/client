@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-11-10 13:06:11.596839",
+    "@@last_modified": "2026-11-11 14:11:18.245744",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Yuav tsum tau kev tso cai",
     "courseAccessPublicDesc": "Leej twg los nrhiav tau thiab koom tau qhov kev kawm no.",
     "courseAccessApprovalRequiredDesc": "Leej twg los nrhiav tau qhov kev kawm no thiab thov koom tau. Koj yuav tsum tso cai rau txhua tus thov.",
-    "courseAccessPrivateDesc": "Tsuas yog cov neeg uas muaj koj daim ntawv caw lossis tus lej kawm thiaj koom tau. Qhov kev kawm no yuav tsis tshwm sim hauv kev tshawb nrhiav.",
     "courseAccessCodeNote": "Cov tub ntxhais kawm uas muaj koj tus lej kawm lossis daim ntawv caw tuaj yeem koom tau tam sim ntawd, txawm koj xaiv dab tsi los xij.",
-    "requireAnalyticsAccessSummary": "Cov tub kawm ntawv qhia lawv txoj kev kawm rau koj thaum lawv koom nrog."
+    "requireAnalyticsAccessSummary": "Cov tub kawm ntawv qhia lawv txoj kev kawm rau koj thaum lawv koom nrog.",
+    "courseAccessPrivateDesc": "Cov hoob kawm tsis tshwm sim hauv kev tshawb nrhiav. Tib neeg koom nrog koj qhov kev caw lossis tus lej hoob kawm.",
+    "courseAccessProtected": "Tiv Thaiv",
+    "courseAccessProtectedDesc": "Rau tus kws qhia ntawv cov tub ntxhais kawm. Cov hoob kawm tswj hwm lawv cov nyiaj. Teem los ntawm tus kws qhia ntawv lub dashboard."
 }

@@ -2943,7 +2943,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-11-10 13:06:14.737651",
+    "@@last_modified": "2026-11-11 14:11:21.523811",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10762,7 +10762,9 @@
     "approvalRequired": "Reikalingas patvirtinimas",
     "courseAccessPublicDesc": "Kiekvienas gali rasti ir prisijungti prie šio kurso.",
     "courseAccessApprovalRequiredDesc": "Kiekvienas gali rasti šį kursą ir paprašyti prisijungti. Jūs patvirtinate kiekvieną užklausą.",
-    "courseAccessPrivateDesc": "Tik žmonės, turintys jūsų kvietimą arba kurso kodą, gali prisijungti. Kursas nerodomas paieškoje.",
     "courseAccessCodeNote": "Studentai, turintys jūsų kurso kodą arba kvietimą, gali prisijungti iš karto, kad ir ką pasirinktumėte.",
-    "requireAnalyticsAccessSummary": "Mokiniai prisijungę dalijasi su jumis savo mokymosi pažanga."
+    "requireAnalyticsAccessSummary": "Mokiniai prisijungę dalijasi su jumis savo mokymosi pažanga.",
+    "courseAccessPrivateDesc": "Kursas nerodomas paieškoje. Žmonės prisijungia naudodami jūsų kvietimą arba kurso kodą.",
+    "courseAccessProtected": "Apsaugotas",
+    "courseAccessProtectedDesc": "Skirta pedagogo studentams. Kursas tvarko jų paskyras. Nustatoma pedagogo prietaisų skydelyje."
 }

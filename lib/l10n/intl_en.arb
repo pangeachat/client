@@ -6330,9 +6330,17 @@
     "@courseAccessApprovalRequiredDesc": {
         "description": "Description of the Approval required course access setting, shown to the teacher choosing it."
     },
-    "courseAccessPrivateDesc": "Only people with your invite or course code can join. The course doesn't appear in search.",
+    "courseAccessPrivateDesc": "The course doesn't appear in search. People join with your invite or course code.",
     "@courseAccessPrivateDesc": {
         "description": "Description of the Private course access setting, shown to the teacher choosing it."
+    },
+    "courseAccessProtected": "Protected",
+    "@courseAccessProtected": {
+        "description": "Name of the course access setting for an educator's own students, whose accounts the course manages. Shown in the Who can join? sheet but not selectable there: it is set from the educator dashboard."
+    },
+    "courseAccessProtectedDesc": "For an educator's own students. The course manages their accounts. Set up from the educator dashboard.",
+    "@courseAccessProtectedDesc": {
+        "description": "Description of the Protected course access setting, shown under its name in the Who can join? sheet, where it cannot be selected."
     },
     "courseAccessCodeNote": "Students with your course code or an invite can join right away, whatever you choose.",
     "@courseAccessCodeNote": {

@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-11-10 13:06:08.981585",
+    "@@last_modified": "2026-11-11 14:11:14.722815",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Kinahanglan ang pag-uyon",
     "courseAccessPublicDesc": "Bisan kinsa makakita ug makaapil niini nga kurso.",
     "courseAccessApprovalRequiredDesc": "Bisan kinsa makakita niini nga kurso ug makapangayo nga moapil. Ikaw ang mo-aprubar sa matag hangyo.",
-    "courseAccessPrivateDesc": "Ang mga tawo lang nga adunay imong imbitasyon o course code ang makaapil. Ang kurso dili makita sa search.",
     "courseAccessCodeNote": "Ang mga estudyante nga adunay imong course code o imbitasyon makaapil dayon, bisan unsa pa ang imong pilion.",
-    "requireAnalyticsAccessSummary": "Ang mga estudyante mopaambit sa ilang pag-uswag sa pagkat-on kanimo kon sila moapil."
+    "requireAnalyticsAccessSummary": "Ang mga estudyante mopaambit sa ilang pag-uswag sa pagkat-on kanimo kon sila moapil.",
+    "courseAccessPrivateDesc": "Ang kurso dili makita sa pagpangita. Ang mga tawo moapil gamit ang imong imbitasyon o code sa kurso.",
+    "courseAccessProtected": "Giprotektahan",
+    "courseAccessProtectedDesc": "Para sa kaugalingong mga estudyante sa usa ka magtutudlo. Ang kurso nagdumala sa ilang mga account. I-set up gikan sa dashboard sa magtutudlo."
 }

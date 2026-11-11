@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-11-10 13:06:12.545334",
+    "@@last_modified": "2026-11-11 14:11:19.667292",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10750,7 +10750,9 @@
     "approvalRequired": "承認が必要",
     "courseAccessPublicDesc": "誰でもこのコースを見つけて参加できます。",
     "courseAccessApprovalRequiredDesc": "誰でもこのコースを見つけて参加をリクエストできます。各リクエストを承認してください。",
-    "courseAccessPrivateDesc": "招待またはコースコードを持つ人のみが参加できます。このコースは検索に表示されません。",
     "courseAccessCodeNote": "選択内容にかかわらず、コースコードまたは招待状を持つ生徒はすぐに参加できます。",
-    "requireAnalyticsAccessSummary": "生徒が参加すると、学習の進捗状況があなたと共有されます。"
+    "requireAnalyticsAccessSummary": "生徒が参加すると、学習の進捗状況があなたと共有されます。",
+    "courseAccessPrivateDesc": "このコースは検索に表示されません。招待またはコースコードを使って参加します。",
+    "courseAccessProtected": "保護",
+    "courseAccessProtectedDesc": "教育者の生徒向け。コースがアカウントを管理します。教育者ダッシュボードから設定してください。"
 }

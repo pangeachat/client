@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-11-10 13:06:11.618807",
+    "@@last_modified": "2026-11-11 14:11:18.304434",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10420,7 +10420,9 @@
     "approvalRequired": "Potrebno odobrenje",
     "courseAccessPublicDesc": "Svatko može pronaći i pridružiti se ovom tečaju.",
     "courseAccessApprovalRequiredDesc": "Svatko može pronaći ovaj tečaj i zatražiti pridruživanje. Vi odobravate svaki zahtjev.",
-    "courseAccessPrivateDesc": "Samo se osobe s vašom pozivnicom ili kodom tečaja mogu pridružiti. Tečaj se ne pojavljuje u pretraživanju.",
     "courseAccessCodeNote": "Studenti s vašim kodom tečaja ili pozivnicom mogu se odmah pridružiti, bez obzira na vaš odabir.",
-    "requireAnalyticsAccessSummary": "Učenici dijele svoj napredak u učenju s vama kada se pridruže."
+    "requireAnalyticsAccessSummary": "Učenici dijele svoj napredak u učenju s vama kada se pridruže.",
+    "courseAccessPrivateDesc": "Tečaj se ne prikazuje u pretraživanju. Ljudi se pridružuju putem vaše pozivnice ili koda tečaja.",
+    "courseAccessProtected": "Zaštićeno",
+    "courseAccessProtectedDesc": "Za učenike edukatora. Tečaj upravlja njihovim računima. Postavlja se s nadzorne ploče edukatora."
 }

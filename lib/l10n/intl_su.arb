@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-11-10 13:06:19.642863",
+    "@@last_modified": "2026-11-11 14:11:27.302542",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Persetujuan diperyogikeun",
     "courseAccessPublicDesc": "Saha waé tiasa milarian sareng ngagabung kana kursus ieu.",
     "courseAccessApprovalRequiredDesc": "Saha waé tiasa milarian kursus ieu sareng nyuhunkeun ngagabung. Anjeun nyatujuan unggal paménta.",
-    "courseAccessPrivateDesc": "Ngan jalma anu gaduh uleman atanapi kode kursus anjeun anu tiasa ngagabung. Kursus ieu henteu muncul dina pamilarian.",
     "courseAccessCodeNote": "Murid anu gaduh kode kursus anjeun atanapi uleman tiasa langsung ngagabung, naon waé anu anjeun pilih.",
-    "requireAnalyticsAccessSummary": "Murid ngabagikeun kamajuan diajarna ka anjeun nalika aranjeunna ngagabung."
+    "requireAnalyticsAccessSummary": "Murid ngabagikeun kamajuan diajarna ka anjeun nalika aranjeunna ngagabung.",
+    "courseAccessPrivateDesc": "Kursus ieu moal muncul dina pamilarian. Jalma-jalma ngagabung nganggo uleman anjeun atanapi kode kursus.",
+    "courseAccessProtected": "Ditangtayungan",
+    "courseAccessProtectedDesc": "Pikeun murid-murid pangajar. Kursus ieu ngatur akun maranéhanana. Atur ti dasbor pangajar."
 }

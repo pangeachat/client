@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-11-10 13:06:21.445773",
+    "@@last_modified": "2026-11-11 14:11:29.127507",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9987,7 +9987,9 @@
     "approvalRequired": "需要批准",
     "courseAccessPublicDesc": "任何人都可以找到并加入此课程。",
     "courseAccessApprovalRequiredDesc": "任何人都可以找到此课程并申请加入。您需要批准每个请求。",
-    "courseAccessPrivateDesc": "只有收到您的邀请或课程代码的人才能加入。此课程不会出现在搜索结果中。",
     "courseAccessCodeNote": "无论您选择什么，拥有您的课程代码或邀请的学生都可以立即加入。",
-    "requireAnalyticsAccessSummary": "学生加入时会与您分享他们的学习进度。"
+    "requireAnalyticsAccessSummary": "学生加入时会与您分享他们的学习进度。",
+    "courseAccessPrivateDesc": "课程不会出现在搜索结果中。人们通过您的邀请或课程代码加入。",
+    "courseAccessProtected": "受保护",
+    "courseAccessProtectedDesc": "供教育工作者自己的学生使用。课程管理他们的帐户。从教育工作者仪表板设置。"
 }

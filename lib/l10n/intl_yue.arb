@@ -1243,7 +1243,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-11-10 13:06:21.594180",
+    "@@last_modified": "2026-11-11 14:11:29.039029",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10938,7 +10938,9 @@
     "approvalRequired": "需要批准",
     "courseAccessPublicDesc": "任何人都可以找到並加入此課程。",
     "courseAccessApprovalRequiredDesc": "任何人都可以找到此課程並請求加入。您需要批准每個請求。",
-    "courseAccessPrivateDesc": "只有收到您的邀請或課程代碼的人才能加入。此課程不會出現在搜尋結果中。",
     "courseAccessCodeNote": "無論您選擇哪種方式，擁有您的課程代碼或邀請的學生都可以立即加入。",
-    "requireAnalyticsAccessSummary": "學生加入時會同你分享佢哋嘅學習進度。"
+    "requireAnalyticsAccessSummary": "學生加入時會同你分享佢哋嘅學習進度。",
+    "courseAccessPrivateDesc": "課程不會喺搜尋結果中顯示。其他人可以透過你嘅邀請或課程代碼加入。",
+    "courseAccessProtected": "受保護",
+    "courseAccessProtectedDesc": "適用於教育工作者嘅學生。課程會管理佢哋嘅帳戶。請喺教育工作者儀表板設定。"
 }

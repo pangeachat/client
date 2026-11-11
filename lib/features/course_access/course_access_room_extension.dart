@@ -12,14 +12,16 @@ extension CourseAccessRoomExtension on Room {
   );
 
   /// Applies [access]. The join rule goes through [setCustomJoinRules] so the
-  /// course keeps its join code.
+  /// course keeps its join code. It is written before the directory listing,
+  /// so if the second write fails, a course going from Private to Public is
+  /// not listed in search with a join rule the teacher did not choose.
   Future<void> setCourseAccess(CourseAccess access) async {
+    if (joinRules != access.joinRule) {
+      await setCustomJoinRules(access.joinRule);
+    }
     await client.setRoomVisibilityOnDirectory(
       id,
       visibility: access.visibility,
     );
-    if (joinRules != access.joinRule) {
-      await setCustomJoinRules(access.joinRule);
-    }
   }
 }

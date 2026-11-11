@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-11-10 13:06:10.017487",
+    "@@last_modified": "2026-11-11 14:11:15.581511",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8216,7 +8216,9 @@
     "approvalRequired": "Se requiere aprobación",
     "courseAccessPublicDesc": "Cualquiera puede encontrar y unirse a este curso.",
     "courseAccessApprovalRequiredDesc": "Cualquiera puede encontrar este curso y solicitar unirse. Tú apruebas cada solicitud.",
-    "courseAccessPrivateDesc": "Solo las personas con tu invitación o código de curso pueden unirse. El curso no aparece en las búsquedas.",
     "courseAccessCodeNote": "Los estudiantes con tu código de curso o una invitación pueden unirse de inmediato, elijas lo que elijas.",
-    "requireAnalyticsAccessSummary": "Los estudiantes comparten su progreso de aprendizaje contigo cuando se unen."
+    "requireAnalyticsAccessSummary": "Los estudiantes comparten su progreso de aprendizaje contigo cuando se unen.",
+    "courseAccessPrivateDesc": "El curso no aparece en las búsquedas. Los usuarios se unen con tu invitación o código de curso.",
+    "courseAccessProtected": "Protegido",
+    "courseAccessProtectedDesc": "Para los propios estudiantes de un educador. El curso gestiona sus cuentas. Se configura desde el panel del educador."
 }

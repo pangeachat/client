@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-11-10 13:06:13.816834",
+    "@@last_modified": "2026-11-11 14:11:21.187942",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Approbatione opus est",
     "courseAccessPublicDesc": "Quilibet hunc cursum invenire et iungere potest.",
     "courseAccessApprovalRequiredDesc": "Quilibet hunc cursum invenire et iungere petere potest. Tuam approbationem cuique petitioni dabis.",
-    "courseAccessPrivateDesc": "Solum homines cum tua invitatione vel codice cursus iungere possunt. Cursus in quaestionibus non apparet.",
     "courseAccessCodeNote": "Discipuli cum codice cursus tui vel invitatione statim iungere possunt, quidquid elegeris.",
-    "requireAnalyticsAccessSummary": "Discipuli suum profectum discendi tecum communicant cum iungunt."
+    "requireAnalyticsAccessSummary": "Discipuli suum profectum discendi tecum communicant cum iungunt.",
+    "courseAccessPrivateDesc": "Cursus in quaestionibus non apparet. Homines per invitationem tuam vel codicem cursūs iungunt.",
+    "courseAccessProtected": "Munitus",
+    "courseAccessProtectedDesc": "Discipulis educatoris propriis. Cursus eorum rationes administrat. Ex tabula educatoris constituitur."
 }

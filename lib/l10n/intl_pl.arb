@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-11-10 13:06:18.405132",
+    "@@last_modified": "2026-11-11 14:11:24.453832",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10072,7 +10072,9 @@
     "approvalRequired": "Wymagana zgoda",
     "courseAccessPublicDesc": "Każdy może znaleźć ten kurs i dołączyć do niego.",
     "courseAccessApprovalRequiredDesc": "Każdy może znaleźć ten kurs i poprosić o dołączenie. Ty zatwierdzasz każde zgłoszenie.",
-    "courseAccessPrivateDesc": "Tylko osoby z Twoim zaproszeniem lub kodem kursu mogą dołączyć. Kurs nie pojawia się w wyszukiwarce.",
     "courseAccessCodeNote": "Uczniowie z Twoim kodem kursu lub zaproszeniem mogą dołączyć od razu, niezależnie od Twojego wyboru.",
-    "requireAnalyticsAccessSummary": "Uczniowie udostępniają Ci swoje postępy w nauce, gdy dołączają."
+    "requireAnalyticsAccessSummary": "Uczniowie udostępniają Ci swoje postępy w nauce, gdy dołączają.",
+    "courseAccessPrivateDesc": "Kurs nie pojawia się w wyszukiwarce. Użytkownicy dołączają za pomocą Twojego zaproszenia lub kodu kursu.",
+    "courseAccessProtected": "Chroniony",
+    "courseAccessProtectedDesc": "Dla uczniów danego nauczyciela. Kurs zarządza ich kontami. Konfiguracja z panelu nauczyciela."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-11-10 13:06:09.062957",
+    "@@last_modified": "2026-11-11 14:11:15.125186",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9974,7 +9974,9 @@
     "approvalRequired": "Genehmigung erforderlich",
     "courseAccessPublicDesc": "Jeder kann diesen Kurs finden und beitreten.",
     "courseAccessApprovalRequiredDesc": "Jeder kann diesen Kurs finden und eine Beitrittsanfrage senden. Du genehmigst jede Anfrage.",
-    "courseAccessPrivateDesc": "Nur Personen mit deiner Einladung oder deinem Kurscode können beitreten. Der Kurs erscheint nicht in der Suche.",
     "courseAccessCodeNote": "Schüler mit deinem Kurscode oder einer Einladung können sofort beitreten, egal was du wählst.",
-    "requireAnalyticsAccessSummary": "Schüler teilen ihren Lernfortschritt mit dir, wenn sie beitreten."
+    "requireAnalyticsAccessSummary": "Schüler teilen ihren Lernfortschritt mit dir, wenn sie beitreten.",
+    "courseAccessPrivateDesc": "Der Kurs erscheint nicht in der Suche. Teilnehmer treten mit deiner Einladung oder deinem Kurscode bei.",
+    "courseAccessProtected": "Geschützt",
+    "courseAccessProtectedDesc": "Für die eigenen Schüler eines Lehrers. Der Kurs verwaltet ihre Konten. Einrichtung über das Lehrer-Dashboard."
 }

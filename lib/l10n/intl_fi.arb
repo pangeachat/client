@@ -3502,7 +3502,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-11-10 13:06:10.119247",
+    "@@last_modified": "2026-11-11 14:11:16.099471",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10024,7 +10024,9 @@
     "approvalRequired": "Hyväksyntä vaaditaan",
     "courseAccessPublicDesc": "Kuka tahansa voi löytää ja liittyä tälle kurssille.",
     "courseAccessApprovalRequiredDesc": "Kuka tahansa voi löytää tämän kurssin ja pyytää liittymistä. Hyväksyt jokaisen pyynnön.",
-    "courseAccessPrivateDesc": "Vain henkilöt, joilla on kutsusi tai kurssikoodisi, voivat liittyä. Kurssi ei näy haussa.",
     "courseAccessCodeNote": "Opiskelijat, joilla on kurssikoodisi tai kutsu, voivat liittyä heti, riippumatta valinnastasi.",
-    "requireAnalyticsAccessSummary": "Oppilaat jakavat oppimisen edistymisensä kanssasi liittyessään."
+    "requireAnalyticsAccessSummary": "Oppilaat jakavat oppimisen edistymisensä kanssasi liittyessään.",
+    "courseAccessPrivateDesc": "Kurssi ei näy haussa. Ihmiset liittyvät kutsullasi tai kurssikoodillasi.",
+    "courseAccessProtected": "Suojattu",
+    "courseAccessProtectedDesc": "Opettajan omille opiskelijoille. Kurssi hallinnoi heidän tilejään. Määritä opettajan hallintapaneelista."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-11-10 13:06:09.624360",
+    "@@last_modified": "2026-11-11 14:11:15.061217",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Appruvazione necessaria",
     "courseAccessPublicDesc": "Qualsiasi persona pò truvà è unisce à stu corsu.",
     "courseAccessApprovalRequiredDesc": "Qualsiasi persona pò truvà stu corsu è dumandà d'unisce. Voi appruvate ogni dumanda.",
-    "courseAccessPrivateDesc": "Solu e persone cù u vostru invitu o codice di corsu ponu unisce. U corsu ùn apparisce micca in a ricerca.",
     "courseAccessCodeNote": "I studienti cù u vostru codice di corsu o un invitu ponu unisce subitu, qualunque sia a vostra scelta.",
-    "requireAnalyticsAccessSummary": "I studienti sparteranu i so prugressi d'apprendimentu cun voi quandu si uniscenu."
+    "requireAnalyticsAccessSummary": "I studienti sparteranu i so prugressi d'apprendimentu cun voi quandu si uniscenu.",
+    "courseAccessPrivateDesc": "U corsu ùn cumparisce micca in a ricerca. A ghjente si unisce cù u vostru invitu o codice di corsu.",
+    "courseAccessProtected": "Prutettu",
+    "courseAccessProtectedDesc": "Per i studienti di un educatore. U corsu gestisce i so conti. Cunfigurate da u dashboard di l'educatore."
 }

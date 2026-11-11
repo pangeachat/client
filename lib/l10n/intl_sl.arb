@@ -1782,7 +1782,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-11-10 13:06:18.583176",
+    "@@last_modified": "2026-11-11 14:11:25.977834",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10926,7 +10926,9 @@
     "approvalRequired": "Potrebna odobritev",
     "courseAccessPublicDesc": "Vsakdo lahko najde in se pridruži temu tečaju.",
     "courseAccessApprovalRequiredDesc": "Vsakdo lahko najde ta tečaj in prosi za pridružitev. Vsako zahtevo odobrite vi.",
-    "courseAccessPrivateDesc": "Pridružijo se lahko samo osebe z vašim povabilom ali kodo tečaja. Tečaj se ne prikaže v iskanju.",
     "courseAccessCodeNote": "Študenti z vašo kodo tečaja ali povabilom se lahko pridružijo takoj, ne glede na vašo izbiro.",
-    "requireAnalyticsAccessSummary": "Učenci delijo svoj napredek pri učenju z vami, ko se pridružijo."
+    "requireAnalyticsAccessSummary": "Učenci delijo svoj napredek pri učenju z vami, ko se pridružijo.",
+    "courseAccessPrivateDesc": "Tečaj se ne prikaže v iskanju. Ljudje se pridružijo z vašim povabilom ali kodo tečaja.",
+    "courseAccessProtected": "Zaščiteno",
+    "courseAccessProtectedDesc": "Za študente izobraževalca. Tečaj upravlja njihove račune. Nastavite na nadzorni plošči izobraževalca."
 }

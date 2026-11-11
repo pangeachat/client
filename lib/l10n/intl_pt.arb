@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:17.306282",
+    "@@last_modified": "2026-11-11 14:11:25.167974",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10925,7 +10925,9 @@
     "approvalRequired": "Aprovação necessária",
     "courseAccessPublicDesc": "Qualquer pessoa pode encontrar e entrar neste curso.",
     "courseAccessApprovalRequiredDesc": "Qualquer pessoa pode encontrar este curso e pedir para entrar. Você aprova cada pedido.",
-    "courseAccessPrivateDesc": "Apenas pessoas com seu convite ou código do curso podem entrar. O curso não aparece na pesquisa.",
     "courseAccessCodeNote": "Alunos com seu código do curso ou um convite podem entrar imediatamente, independentemente da sua escolha.",
-    "requireAnalyticsAccessSummary": "Os alunos partilham o seu progresso de aprendizagem consigo quando aderem."
+    "requireAnalyticsAccessSummary": "Os alunos partilham o seu progresso de aprendizagem consigo quando aderem.",
+    "courseAccessPrivateDesc": "O curso não aparece na pesquisa. As pessoas entram com seu convite ou código do curso.",
+    "courseAccessProtected": "Protegido",
+    "courseAccessProtectedDesc": "Para os próprios alunos de um educador. O curso gerencia suas contas. Configure a partir do painel do educador."
 }

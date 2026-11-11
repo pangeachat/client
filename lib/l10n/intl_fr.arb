@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-11-10 13:06:10.042141",
+    "@@last_modified": "2026-11-11 14:11:16.229396",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10339,7 +10339,9 @@
     "approvalRequired": "Approbation requise",
     "courseAccessPublicDesc": "Tout le monde peut trouver et rejoindre ce cours.",
     "courseAccessApprovalRequiredDesc": "Tout le monde peut trouver ce cours et demander à le rejoindre. Vous approuvez chaque demande.",
-    "courseAccessPrivateDesc": "Seules les personnes disposant de votre invitation ou du code du cours peuvent s'inscrire. Le cours n'apparaît pas dans les résultats de recherche.",
     "courseAccessCodeNote": "Les étudiants disposant de votre code de cours ou d'une invitation peuvent s'inscrire immédiatement, quel que soit votre choix.",
-    "requireAnalyticsAccessSummary": "Les élèves partagent leurs progrès d'apprentissage avec vous lorsqu'ils rejoignent."
+    "requireAnalyticsAccessSummary": "Les élèves partagent leurs progrès d'apprentissage avec vous lorsqu'ils rejoignent.",
+    "courseAccessPrivateDesc": "Le cours n'apparaît pas dans les recherches. Les gens le rejoignent avec votre invitation ou votre code de cours.",
+    "courseAccessProtected": "Protégé",
+    "courseAccessProtectedDesc": "Pour les propres élèves d'un éducateur. Le cours gère leurs comptes. À configurer depuis le tableau de bord de l'éducateur."
 }

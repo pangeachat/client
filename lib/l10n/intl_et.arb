@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-11-10 13:06:09.798679",
+    "@@last_modified": "2026-11-11 14:11:16.216128",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9984,7 +9984,9 @@
     "approvalRequired": "Vajalik on heakskiit",
     "courseAccessPublicDesc": "Igaüks saab selle kursuse leida ja sellega liituda.",
     "courseAccessApprovalRequiredDesc": "Igaüks saab selle kursuse leida ja liitumist paluda. Teie kinnitate iga taotluse.",
-    "courseAccessPrivateDesc": "Ainult teie kutse või kursuse koodiga inimesed saavad liituda. Kursus ei ilmu otsingutulemustes.",
     "courseAccessCodeNote": "Õpilased, kellel on teie kursuse kood või kutse, saavad kohe liituda, olenemata teie valikust.",
-    "requireAnalyticsAccessSummary": "Õpilased jagavad sinuga oma õppimise edenemist, kui nad liituvad."
+    "requireAnalyticsAccessSummary": "Õpilased jagavad sinuga oma õppimise edenemist, kui nad liituvad.",
+    "courseAccessPrivateDesc": "Kursus ei ilmu otsingus. Inimesed liituvad sinu kutse või kursuse koodiga.",
+    "courseAccessProtected": "Kaitstud",
+    "courseAccessProtectedDesc": "Õpetaja enda õpilastele. Kursus haldab nende kontosid. Seadistatakse õpetaja juhtpaneelilt."
 }

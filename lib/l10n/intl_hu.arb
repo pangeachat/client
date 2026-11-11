@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-11-10 13:06:11.870265",
+    "@@last_modified": "2026-11-11 14:11:18.111357",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10090,7 +10090,9 @@
     "approvalRequired": "Jóváhagyás szükséges",
     "courseAccessPublicDesc": "Bárki megtalálhatja és csatlakozhat ehhez a kurzushoz.",
     "courseAccessApprovalRequiredDesc": "Bárki megtalálhatja ezt a kurzust, és kérheti a csatlakozást. Ön hagyja jóvá az egyes kéréseket.",
-    "courseAccessPrivateDesc": "Csak azok csatlakozhatnak, akiknek van meghívójuk vagy kurzuskódjuk. A kurzus nem jelenik meg a keresésben.",
     "courseAccessCodeNote": "A kurzuskóddal vagy meghívóval rendelkező diákok azonnal csatlakozhatnak, bármit is választ.",
-    "requireAnalyticsAccessSummary": "A diákok megosztják veled a tanulási folyamatukat, amikor csatlakoznak."
+    "requireAnalyticsAccessSummary": "A diákok megosztják veled a tanulási folyamatukat, amikor csatlakoznak.",
+    "courseAccessPrivateDesc": "A kurzus nem jelenik meg a keresésben. Az emberek a meghívóddal vagy a kurzuskódoddal csatlakoznak.",
+    "courseAccessProtected": "Védett",
+    "courseAccessProtectedDesc": "Oktató saját diákjai számára. A kurzus kezeli a fiókjaikat. Beállítás az oktatói irányítópultról."
 }

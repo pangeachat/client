@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-11-10 13:06:20.441898",
+    "@@last_modified": "2026-11-11 14:11:27.929642",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10285,7 +10285,9 @@
     "approvalRequired": "Onay gerekli",
     "courseAccessPublicDesc": "Herkes bu kursu bulabilir ve katılabilir.",
     "courseAccessApprovalRequiredDesc": "Herkes bu kursu bulabilir ve katılma isteği gönderebilir. Her isteği siz onaylarsınız.",
-    "courseAccessPrivateDesc": "Sadece davetiyeniz veya kurs kodunuz olan kişiler katılabilir. Kurs aramalarda görünmez.",
     "courseAccessCodeNote": "Kurs kodunuz veya davetiyeniz olan öğrenciler, ne seçerseniz seçin, hemen katılabilirler.",
-    "requireAnalyticsAccessSummary": "Öğrenciler katıldıklarında öğrenme ilerlemelerini sizinle paylaşır."
+    "requireAnalyticsAccessSummary": "Öğrenciler katıldıklarında öğrenme ilerlemelerini sizinle paylaşır.",
+    "courseAccessPrivateDesc": "Kurs aramalarda görünmez. Kişiler davetiyenizle veya kurs kodunuzla katılır.",
+    "courseAccessProtected": "Korumalı",
+    "courseAccessProtectedDesc": "Bir eğitimcinin kendi öğrencileri için. Kurs, hesaplarını yönetir. Eğitimci panosundan ayarlanır."
 }

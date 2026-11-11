@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-11-10 13:06:15.969479",
+    "@@last_modified": "2026-11-11 14:11:23.610233",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Approvazzjoni meħtieġa",
     "courseAccessPublicDesc": "Kulħadd jista' jsib u jingħaqad ma' dan il-kors.",
     "courseAccessApprovalRequiredDesc": "Kulħadd jista' jsib dan il-kors u jitlob biex jingħaqad. Inti tapprova kull talba.",
-    "courseAccessPrivateDesc": "Nies biss bl-istedina tiegħek jew bil-kodiċi tal-kors jistgħu jingħaqdu. Il-kors ma jidhirx fit-tfittxija.",
     "courseAccessCodeNote": "Studenti bil-kodiċi tal-kors tiegħek jew stedina jistgħu jingħaqdu minnufih, tkun xi tkun tagħżel.",
-    "requireAnalyticsAccessSummary": "L-istudenti jaqsmu l-progress tagħhom fit-tagħlim miegħek meta jingħaqdu."
+    "requireAnalyticsAccessSummary": "L-istudenti jaqsmu l-progress tagħhom fit-tagħlim miegħek meta jingħaqdu.",
+    "courseAccessPrivateDesc": "Il-kors ma jidhirx fit-tfittxija. In-nies jingħaqdu bl-istedina jew bil-kodiċi tal-kors tiegħek.",
+    "courseAccessProtected": "Protett",
+    "courseAccessProtectedDesc": "Għall-istudenti tal-edukatur stess. Il-kors jimmaniġġja l-kontijiet tagħhom. Issettja mid-dashboard tal-edukatur."
 }

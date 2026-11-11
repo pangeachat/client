@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-11-10 13:06:14.140685",
+    "@@last_modified": "2026-11-11 14:11:20.808259",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Fɔs dɛn fɔ agri",
     "courseAccessPublicDesc": "Ɛnibɔdi kin fɛn ɛn jɔyn dis kos.",
     "courseAccessApprovalRequiredDesc": "Ɛnibɔdi kin fɛn dis kos ɛn aks fɔ jɔyn. Yu go agri ɔl di rɛkwɛst dɛn.",
-    "courseAccessPrivateDesc": "Na pɔsin dɛn we gɛt yu invayt ɔ kos kod nɔmɔ kin jɔyn. Di kos nɔ de sho insay sach.",
     "courseAccessCodeNote": "Student dɛn we gɛt yu kos kod ɔ invayt kin jɔyn wantɛm, ilɛk wetin yu pik.",
-    "requireAnalyticsAccessSummary": "Di studɛnt dɛn kin shɛb dɛn lanin prɔgrɛs wit yu we dɛn jɔyn."
+    "requireAnalyticsAccessSummary": "Di studɛnt dɛn kin shɛb dɛn lanin prɔgrɛs wit yu we dɛn jɔyn.",
+    "courseAccessPrivateDesc": "Di kos nɔ de sho insaid di saych. Pipo de jɔyn wit yu invayt ɔ kos kod.",
+    "courseAccessProtected": "Protektɛd",
+    "courseAccessProtectedDesc": "Fɔ wan ticha in yon studɛnt dɛn. Di kos de manej dɛn akaunt dɛn. Sɛt-ɔp frɔm di ticha in dashbod."
 }

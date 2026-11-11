@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-11-10 13:06:07.833947",
+    "@@last_modified": "2026-11-11 14:11:13.753097",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Potrebno odobrenje",
     "courseAccessPublicDesc": "Svako može pronaći i pridružiti se ovom kursu.",
     "courseAccessApprovalRequiredDesc": "Svako može pronaći ovaj kurs i zatražiti pridruživanje. Vi odobravate svaki zahtjev.",
-    "courseAccessPrivateDesc": "Samo se osobe s vašom pozivnicom ili kodom kursa mogu pridružiti. Kurs se ne pojavljuje u pretrazi.",
     "courseAccessCodeNote": "Studenti s vašim kodom kursa ili pozivnicom mogu se odmah pridružiti, bez obzira na vaš izbor.",
-    "requireAnalyticsAccessSummary": "Učenici dijele svoj napredak u učenju s vama kada se pridruže."
+    "requireAnalyticsAccessSummary": "Učenici dijele svoj napredak u učenju s vama kada se pridruže.",
+    "courseAccessPrivateDesc": "Kurs se ne pojavljuje u pretrazi. Ljudi se pridružuju putem vaše pozivnice ili koda kursa.",
+    "courseAccessProtected": "Zaštićeno",
+    "courseAccessProtectedDesc": "Za vlastite učenike edukatora. Kurs upravlja njihovim računima. Postavlja se sa kontrolne table edukatora."
 }

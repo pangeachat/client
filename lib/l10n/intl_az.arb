@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-11-10 13:06:08.011773",
+    "@@last_modified": "2026-11-11 14:11:13.615574",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Təsdiq tələb olunur",
     "courseAccessPublicDesc": "Hər kəs bu kursu tapa və ona qoşula bilər.",
     "courseAccessApprovalRequiredDesc": "Hər kəs bu kursu tapa və qoşulmaq üçün sorğu göndərə bilər. Hər bir sorğunu siz təsdiq edirsiniz.",
-    "courseAccessPrivateDesc": "Yalnız sizin dəvətiniz və ya kurs kodunuz olan şəxslər qoşula bilər. Kurs axtarışda görünmür.",
     "courseAccessCodeNote": "Kurs kodunuz və ya dəvətiniz olan tələbələr, nə seçməyinizdən asılı olmayaraq, dərhal qoşula bilərlər.",
-    "requireAnalyticsAccessSummary": "Tələbələr qoşulduqda öyrənmə tərəqqilərini sizinlə bölüşürlər."
+    "requireAnalyticsAccessSummary": "Tələbələr qoşulduqda öyrənmə tərəqqilərini sizinlə bölüşürlər.",
+    "courseAccessPrivateDesc": "Kurs axtarışda görünmür. İnsanlar sizin dəvətinizlə və ya kurs kodu ilə qoşulurlar.",
+    "courseAccessProtected": "Qorunur",
+    "courseAccessProtectedDesc": "Müəllimin öz tələbələri üçün. Kurs onların hesablarını idarə edir. Müəllim panelindən quraşdırın."
 }

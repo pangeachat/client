@@ -119,6 +119,34 @@ void main() {
       await tester.pumpAndSettle();
       expect(tester.widget<FilledButton>(done).onPressed, isNotNull);
     });
+
+    testWidgets('Protected is shown below Private and cannot be picked', (
+      tester,
+    ) async {
+      await openSheet(tester, CourseAccess.approvalRequired);
+
+      final protected = find.widgetWithText(ListTile, 'Protected');
+      expect(protected, findsOneWidget);
+      expect(tester.widget<ListTile>(protected).enabled, isFalse);
+      expect(
+        find.text(
+          "For an educator's own students. The course manages their "
+          'accounts. Set up from the educator dashboard.',
+        ),
+        findsOneWidget,
+      );
+      expect(
+        tester.getTopLeft(find.text('Protected')).dy,
+        greaterThan(tester.getTopLeft(find.text('Private')).dy),
+      );
+
+      await tester.tap(find.text('Protected'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Done'));
+      await tester.pumpAndSettle();
+
+      expect(result, CourseAccess.approvalRequired);
+    });
   });
 
   group('the create-course preview', () {

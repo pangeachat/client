@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:11.949580",
+    "@@last_modified": "2026-11-11 14:11:18.436657",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10060,7 +10060,9 @@
     "approvalRequired": "Persetujuan diperlukan",
     "courseAccessPublicDesc": "Siapa pun dapat menemukan dan bergabung dengan kursus ini.",
     "courseAccessApprovalRequiredDesc": "Siapa pun dapat menemukan kursus ini dan meminta untuk bergabung. Anda menyetujui setiap permintaan.",
-    "courseAccessPrivateDesc": "Hanya orang dengan undangan atau kode kursus Anda yang dapat bergabung. Kursus ini tidak muncul dalam pencarian.",
     "courseAccessCodeNote": "Siswa dengan kode kursus atau undangan Anda dapat langsung bergabung, apa pun pilihan Anda.",
-    "requireAnalyticsAccessSummary": "Siswa membagikan progres belajar mereka kepada Anda saat mereka bergabung."
+    "requireAnalyticsAccessSummary": "Siswa membagikan progres belajar mereka kepada Anda saat mereka bergabung.",
+    "courseAccessPrivateDesc": "Kursus tidak muncul di pencarian. Orang-orang bergabung dengan undangan atau kode kursus Anda.",
+    "courseAccessProtected": "Terlindungi",
+    "courseAccessProtectedDesc": "Untuk siswa pengajar sendiri. Kursus mengelola akun mereka. Atur dari dasbor pengajar."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-11-10 13:06:18.477595",
+    "@@last_modified": "2026-11-11 14:11:25.932687",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10926,7 +10926,9 @@
     "approvalRequired": "Vyžaduje sa schválenie",
     "courseAccessPublicDesc": "Ktokoľvek môže nájsť a pripojiť sa k tomuto kurzu.",
     "courseAccessApprovalRequiredDesc": "Ktokoľvek môže nájsť tento kurz a požiadať o pripojenie. Každú žiadosť schvaľujete vy.",
-    "courseAccessPrivateDesc": "Pripojiť sa môžu iba ľudia s vašou pozvánkou alebo kódom kurzu. Kurz sa nezobrazuje vo vyhľadávaní.",
     "courseAccessCodeNote": "Študenti s kódom kurzu alebo pozvánkou sa môžu pripojiť okamžite, bez ohľadu na to, čo si vyberiete.",
-    "requireAnalyticsAccessSummary": "Študenti s vami zdieľajú svoj pokrok v učení, keď sa pripoja."
+    "requireAnalyticsAccessSummary": "Študenti s vami zdieľajú svoj pokrok v učení, keď sa pripoja.",
+    "courseAccessPrivateDesc": "Kurz sa nezobrazuje vo vyhľadávaní. Ľudia sa pripoja pomocou vašej pozvánky alebo kódu kurzu.",
+    "courseAccessProtected": "Chránené",
+    "courseAccessProtectedDesc": "Pre vlastných študentov pedagóga. Kurz spravuje ich účty. Nastavte z panela pedagóga."
 }

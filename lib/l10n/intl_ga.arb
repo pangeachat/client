@@ -3529,7 +3529,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-11-10 13:06:10.581832",
+    "@@last_modified": "2026-11-11 14:11:22.946229",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9998,7 +9998,9 @@
     "approvalRequired": "Ceadaítear iarratais",
     "courseAccessPublicDesc": "Is féidir le duine ar bith an cúrsa seo a aimsiú agus páirt a ghlacadh ann.",
     "courseAccessApprovalRequiredDesc": "Is féidir le duine ar bith an cúrsa seo a aimsiú agus iarratas a dhéanamh chun páirt a ghlacadh. Ceadaíonn tú gach iarratas.",
-    "courseAccessPrivateDesc": "Ní féidir ach le daoine a bhfuil do chuireadh nó cód cúrsa acu páirt a ghlacadh. Ní thaispeántar an cúrsa sa chuardach.",
     "courseAccessCodeNote": "Is féidir le mic léinn a bhfuil do chód cúrsa nó cuireadh acu páirt a ghlacadh láithreach, is cuma cad a roghnaíonn tú.",
-    "requireAnalyticsAccessSummary": "Roinneann mic léinn a ndul chun cinn foghlama leat nuair a thagann siad isteach."
+    "requireAnalyticsAccessSummary": "Roinneann mic léinn a ndul chun cinn foghlama leat nuair a thagann siad isteach.",
+    "courseAccessPrivateDesc": "Ní thaispeántar an cúrsa sa chuardach. Tagann daoine isteach le do chuireadh nó le cód cúrsa.",
+    "courseAccessProtected": "Cosanta",
+    "courseAccessProtectedDesc": "Do mhic léinn an oideachasóra féin. Bainistíonn an cúrsa a gcuntais. Socraigh é ó phainéal an oideachasóra."
 }

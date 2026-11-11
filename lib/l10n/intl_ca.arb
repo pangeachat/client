@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:08.602651",
+    "@@last_modified": "2026-11-11 14:11:14.478452",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10114,7 +10114,9 @@
     "approvalRequired": "Aprovació necessària",
     "courseAccessPublicDesc": "Qualsevol pot trobar i unir-se a aquest curs.",
     "courseAccessApprovalRequiredDesc": "Qualsevol pot trobar aquest curs i demanar unir-s'hi. Tu aproves cada sol·licitud.",
-    "courseAccessPrivateDesc": "Només les persones amb la teva invitació o codi de curs es poden unir. El curs no apareix a la cerca.",
     "courseAccessCodeNote": "Els estudiants amb el teu codi de curs o una invitació es poden unir de seguida, sigui quina sigui la teva elecció.",
-    "requireAnalyticsAccessSummary": "Els estudiants comparteixen el seu progrés d'aprenentatge amb tu quan s'uneixen."
+    "requireAnalyticsAccessSummary": "Els estudiants comparteixen el seu progrés d'aprenentatge amb tu quan s'uneixen.",
+    "courseAccessPrivateDesc": "El curs no apareix a la cerca. La gent s'hi uneix amb la teva invitació o codi de curs.",
+    "courseAccessProtected": "Protegit",
+    "courseAccessProtectedDesc": "Per als estudiants d'un educador. El curs gestiona els seus comptes. Es configura des del panell de control de l'educador."
 }

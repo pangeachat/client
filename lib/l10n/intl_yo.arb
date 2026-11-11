@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-11-10 13:06:21.903633",
+    "@@last_modified": "2026-11-11 14:11:29.116139",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Ìfọwọ́sí nílò",
     "courseAccessPublicDesc": "Ẹnikẹ́ni lè rí, kí ó sì darapọ̀ mọ́ ìkẹ́kọ̀ọ́ yìí.",
     "courseAccessApprovalRequiredDesc": "Ẹnikẹ́ni lè rí ìkẹ́kọ̀ọ́ yìí, kí ó sì béèrè láti darapọ̀. Ìwọ yóò fọwọ́sí gbogbo ìbéèrè.",
-    "courseAccessPrivateDesc": "Àwọn ènìyàn tí ó ní ìwé ìkésíni rẹ tàbí koodu ìkẹ́kọ̀ọ́ nìkan ló lè darapọ̀. Ìkẹ́kọ̀ọ́ náà kò ní hàn nínú àwárí.",
     "courseAccessCodeNote": "Àwọn akẹ́kọ̀ọ́ tí ó ní koodu ìkẹ́kọ̀ọ́ rẹ tàbí ìwé ìkésíni lè darapọ̀ lẹ́sẹ̀kẹsẹ̀, ohunkóhun tí o bá yàn.",
-    "requireAnalyticsAccessSummary": "Àwọn akẹ́kọ̀ọ́ máa ń pín ìtẹ̀síwájú ẹ̀kọ́ wọn pẹ̀lú rẹ nígbà tí wọ́n bá darapọ̀."
+    "requireAnalyticsAccessSummary": "Àwọn akẹ́kọ̀ọ́ máa ń pín ìtẹ̀síwájú ẹ̀kọ́ wọn pẹ̀lú rẹ nígbà tí wọ́n bá darapọ̀.",
+    "courseAccessPrivateDesc": "Ẹkọ naa ko han ninu wiwa. Awọn eniyan darapọ pẹlu ifiwepe rẹ tabi koodu ẹkọ.",
+    "courseAccessProtected": "Dabobo",
+    "courseAccessProtectedDesc": "Fun awọn ọmọ ile-iwe olukọni. Ẹkọ naa n ṣakoso awọn akọọlẹ wọn. Ṣeto lati dasibodu olukọni."
 }

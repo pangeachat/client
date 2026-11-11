@@ -5,9 +5,12 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 
-/// Who can find and join a course — joining-courses.instructions.md § Course
-/// access. Each setting is a pair of Matrix settings: the course's listing in
-/// the room directory that course search reads, and its join rule.
+/// The kinds of course an admin can pick in the app —
+/// joining-courses.instructions.md § Course access. Each is a pair of Matrix
+/// settings: the course's listing in the room directory that course search
+/// reads, and its join rule. Protected is not a value: it has Private's pair
+/// and differs only in managing its students' accounts, which the app does
+/// not read yet.
 enum CourseAccess {
   public(Visibility.public, JoinRules.public),
   approvalRequired(Visibility.public, JoinRules.knock),

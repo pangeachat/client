@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-11-10 13:06:10.030098",
+    "@@last_modified": "2026-11-11 14:11:15.742599",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9987,7 +9987,9 @@
     "approvalRequired": "Onarpena behar da",
     "courseAccessPublicDesc": "Edonork aurki dezake ikastaro hau eta parte hartu.",
     "courseAccessApprovalRequiredDesc": "Edonork aurki dezake ikastaro hau eta parte hartzeko eskatu. Eskaera bakoitza zuk onartzen duzu.",
-    "courseAccessPrivateDesc": "Zure gonbidapena edo ikastaro-kodea dutenek bakarrik har dezakete parte. Ikastaroa ez da bilaketan agertzen.",
     "courseAccessCodeNote": "Zure ikastaro-kodea edo gonbidapena duten ikasleek berehala har dezakete parte, zuk aukeratzen duzuna edozein dela ere.",
-    "requireAnalyticsAccessSummary": "Ikasleek haien ikaskuntza-aurrerapena zurekin partekatzen dute bat egiten dutenean."
+    "requireAnalyticsAccessSummary": "Ikasleek haien ikaskuntza-aurrerapena zurekin partekatzen dute bat egiten dutenean.",
+    "courseAccessPrivateDesc": "Ikastaroa ez da bilaketan agertzen. Jendea zure gonbidapenarekin edo ikastaro-kodearekin sartzen da.",
+    "courseAccessProtected": "Babestua",
+    "courseAccessProtectedDesc": "Hezitzaile baten ikasleentzat. Ikastaroak haien kontuak kudeatzen ditu. Hezitzailearen paneletik konfiguratu."
 }

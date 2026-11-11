@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:19.683823",
+    "@@last_modified": "2026-11-11 14:11:27.146214",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10499,7 +10499,9 @@
     "approvalRequired": "Godkännande krävs",
     "courseAccessPublicDesc": "Vem som helst kan hitta och gå med i den här kursen.",
     "courseAccessApprovalRequiredDesc": "Vem som helst kan hitta den här kursen och be om att få gå med. Du godkänner varje förfrågan.",
-    "courseAccessPrivateDesc": "Endast personer med din inbjudan eller kurskod kan gå med. Kursen visas inte i sökresultaten.",
     "courseAccessCodeNote": "Elever med din kurskod eller en inbjudan kan gå med direkt, oavsett vad du väljer.",
-    "requireAnalyticsAccessSummary": "Elever delar sina framsteg med dig när de går med."
+    "requireAnalyticsAccessSummary": "Elever delar sina framsteg med dig när de går med.",
+    "courseAccessPrivateDesc": "Kursen visas inte i sökresultat. Användare går med via din inbjudan eller kurskod.",
+    "courseAccessProtected": "Skyddad",
+    "courseAccessProtectedDesc": "För en lärares egna elever. Kursen hanterar deras konton. Ställ in från lärarens kontrollpanel."
 }

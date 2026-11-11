@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-11-10 13:06:20.545075",
+    "@@last_modified": "2026-11-11 14:11:26.749496",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "E mana'omia le fa'atagaga",
     "courseAccessPublicDesc": "E mafai e so'o se tasi ona su'e ma auai i lenei kosi.",
     "courseAccessApprovalRequiredDesc": "E mafai e so'o se tasi ona su'e lenei kosi ma talosaga e auai. E te fa'atagaina talosaga ta'itasi.",
-    "courseAccessPrivateDesc": "Na'o tagata e iai lau vala'aulia po'o le code o le kosi e mafai ona auai. E le aliali mai le kosi i su'esu'ega.",
     "courseAccessCodeNote": "E mafai e tamaiti a'oga e iai lau code o le kosi po'o se vala'aulia ona auai loa, po'o le a lava lau filifiliga.",
-    "requireAnalyticsAccessSummary": "E faʻasoa e tamaiti aʻoga a latou alualu i luma aʻoaʻoga ia te oe pe a latou auai."
+    "requireAnalyticsAccessSummary": "E faʻasoa e tamaiti aʻoga a latou alualu i luma aʻoaʻoga ia te oe pe a latou auai.",
+    "courseAccessPrivateDesc": "E lē o aliali mai le kosi i le su'esu'ega. E auai tagata i lau valaaulia po'o le code o le kosi.",
+    "courseAccessProtected": "Puipuia",
+    "courseAccessProtectedDesc": "Mo tamaiti a'oga a se faia'oga. E pulea e le kosi a latou teugatupe. Fa'atulaga mai le dashboard a le faia'oga."
 }

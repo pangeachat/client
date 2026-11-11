@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-11-10 13:06:21.891846",
+    "@@last_modified": "2026-11-11 14:11:29.885561",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Kudingeka imvume",
     "courseAccessPublicDesc": "Noma ubani angathola futhi ajoyine le khosi.",
     "courseAccessApprovalRequiredDesc": "Noma ubani angathola le khosi futhi acele ukuyijoyina. Uvumela isicelo ngasinye.",
-    "courseAccessPrivateDesc": "Abantu abanesimemo sakho noma ikhodi yekhosi kuphela abangajoyina. Ikhosi ayiveli ekusesheni.",
     "courseAccessCodeNote": "Abafundi abanekhodi yekhosi yakho noma isimemo bangajoyina ngokushesha, noma ngabe ukhetha ini.",
-    "requireAnalyticsAccessSummary": "Abafundi babelana ngenqubekelaphambili yabo yokufunda nawe uma bejoyina."
+    "requireAnalyticsAccessSummary": "Abafundi babelana ngenqubekelaphambili yabo yokufunda nawe uma bejoyina.",
+    "courseAccessPrivateDesc": "Le khosi ayiveli ekusesheni. Abantu bajoyina ngesimemo sakho noma ikhodi yekhosi.",
+    "courseAccessProtected": "Ivikeliwe",
+    "courseAccessProtectedDesc": "Okwabafundi bomfundisi. Ikhosi iphethe ama-akhawunti abo. Setha kusuka kudeshibhodi yomfundisi."
 }

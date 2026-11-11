@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-11-10 13:06:08.003149",
+    "@@last_modified": "2026-11-11 14:11:13.610487",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "ማጽደቅ ያስፈልጋል",
     "courseAccessPublicDesc": "ማንኛውም ሰው ይህን ኮርስ ማግኘት እና መቀላቀል ይችላል።",
     "courseAccessApprovalRequiredDesc": "ማንኛውም ሰው ይህን ኮርስ ማግኘት እና ለመቀላቀል መጠየቅ ይችላል። እያንዳንዱን ጥያቄ እርስዎ ያጸድቃሉ።",
-    "courseAccessPrivateDesc": "የእርስዎ ግብዣ ወይም የኮርስ ኮድ ያላቸው ሰዎች ብቻ መቀላቀል ይችላሉ። ኮርሱ በፍለጋ ውስጥ አይታይም።",
     "courseAccessCodeNote": "የእርስዎን የኮርስ ኮድ ወይም ግብዣ ያላቸው ተማሪዎች፣ ምንም ቢመርጡ ወዲያውኑ መቀላቀል ይችላሉ።",
-    "requireAnalyticsAccessSummary": "ተማሪዎች ሲቀላቀሉ የመማር ሂደታቸውን ለእርስዎ ያጋራሉ።"
+    "requireAnalyticsAccessSummary": "ተማሪዎች ሲቀላቀሉ የመማር ሂደታቸውን ለእርስዎ ያጋራሉ።",
+    "courseAccessPrivateDesc": "ኮርሱ በፍለጋ ውስጥ አይታይም። ሰዎች በእርስዎ ግብዣ ወይም የኮርስ ኮድ ይቀላቀላሉ።",
+    "courseAccessProtected": "የተጠበቀ",
+    "courseAccessProtectedDesc": "ለአስተማሪ ተማሪዎች። ኮርሱ መለያዎቻቸውን ያስተዳድራል። ከአስተማሪ ዳሽቦርድ ያዋቅሩ።"
 }

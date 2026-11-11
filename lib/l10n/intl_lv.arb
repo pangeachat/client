@@ -3501,7 +3501,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-11-10 13:06:15.189001",
+    "@@last_modified": "2026-11-11 14:11:22.380815",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9987,7 +9987,9 @@
     "approvalRequired": "Nepieciešams apstiprinājums",
     "courseAccessPublicDesc": "Ikviens var atrast un pievienoties šim kursam.",
     "courseAccessApprovalRequiredDesc": "Ikviens var atrast šo kursu un lūgt pievienoties. Jūs apstiprināt katru pieprasījumu.",
-    "courseAccessPrivateDesc": "Tikai personas ar jūsu ielūgumu vai kursa kodu var pievienoties. Kurss neparādās meklēšanā.",
     "courseAccessCodeNote": "Studenti ar jūsu kursa kodu vai ielūgumu var pievienoties nekavējoties, neatkarīgi no jūsu izvēles.",
-    "requireAnalyticsAccessSummary": "Studenti kopīgo ar jums savu mācību progresu, kad viņi pievienojas."
+    "requireAnalyticsAccessSummary": "Studenti kopīgo ar jums savu mācību progresu, kad viņi pievienojas.",
+    "courseAccessPrivateDesc": "Kurss neparādās meklēšanā. Cilvēki pievienojas ar jūsu ielūgumu vai kursa kodu.",
+    "courseAccessProtected": "Aizsargāts",
+    "courseAccessProtectedDesc": "Pedagoga paša studentiem. Kurss pārvalda viņu kontus. Iestatāms no pedagoga informācijas paneļa."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-11-10 13:06:18.565338",
+    "@@last_modified": "2026-11-11 14:11:26.732539",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Kubvumidzwa kunodiwa",
     "courseAccessPublicDesc": "Chero ani zvake anogona kuwana nekujoina kosi iyi.",
     "courseAccessApprovalRequiredDesc": "Chero ani zvake anogona kuwana kosi iyi uye kukumbira kujoina. Iwe unobvumidza chikumbiro chimwe nechimwe.",
-    "courseAccessPrivateDesc": "Vanhu chete vane kokero yako kana kodhi yekosi ndivo vanogona kujoina. Kosi yacho haioneke mukutsvaga.",
     "courseAccessCodeNote": "Vadzidzi vane kodhi yako yekosi kana kokero vanogona kujoina ipapo ipapo, chero chaunosarudza.",
-    "requireAnalyticsAccessSummary": "Vadzidzi vanogovana newe kufambira mberi kwavo pakudzidza pavanopinda."
+    "requireAnalyticsAccessSummary": "Vadzidzi vanogovana newe kufambira mberi kwavo pakudzidza pavanopinda.",
+    "courseAccessPrivateDesc": "Kosi yacho haiwanikwe pakutsvaga. Vanhu vanobatana nekukoka kwako kana kodhi yekosi.",
+    "courseAccessProtected": "Yakachengetedzwa",
+    "courseAccessProtectedDesc": "Yevadzidzi vemudzidzisi. Kosi inotonga maakaunti avo. Gadza kubva kudeshibhodhi remudzidzisi."
 }

@@ -2539,7 +2539,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-11-10 13:06:17.807647",
+    "@@last_modified": "2026-11-11 14:11:24.998113",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10898,7 +10898,9 @@
     "approvalRequired": "Aprovação necessária",
     "courseAccessPublicDesc": "Qualquer pessoa pode encontrar e aderir a este curso.",
     "courseAccessApprovalRequiredDesc": "Qualquer pessoa pode encontrar este curso e pedir para aderir. Irá aprovar cada pedido.",
-    "courseAccessPrivateDesc": "Apenas pessoas com o seu convite ou código de curso podem aderir. O curso não aparece na pesquisa.",
     "courseAccessCodeNote": "Os alunos com o seu código de curso ou um convite podem aderir de imediato, independentemente da sua escolha.",
-    "requireAnalyticsAccessSummary": "Os alunos partilham o seu progresso de aprendizagem consigo quando aderem."
+    "requireAnalyticsAccessSummary": "Os alunos partilham o seu progresso de aprendizagem consigo quando aderem.",
+    "courseAccessPrivateDesc": "O curso não aparece na pesquisa. As pessoas entram com o seu convite ou código do curso.",
+    "courseAccessProtected": "Protegido",
+    "courseAccessProtectedDesc": "Para os próprios alunos de um educador. O curso gere as suas contas. Configurado a partir do painel do educador."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-11-10 13:06:19.837074",
+    "@@last_modified": "2026-11-11 14:11:27.666661",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Ho hlokahala tumello",
     "courseAccessPublicDesc": "Mang kapa mang a ka fumana le ho kenela thupelo ena.",
     "courseAccessApprovalRequiredDesc": "Mang kapa mang a ka fumana thupelo ena mme a kopa ho kenela. O amohela kopo ka 'ngoe.",
-    "courseAccessPrivateDesc": "Ke batho ba nang le memo kapa khoutu ea thupelo ea hau feela ba ka kenelang. Thupelo ha e hlahe lipatlisisong.",
     "courseAccessCodeNote": "Baithuti ba nang le khoutu ea thupelo ea hau kapa memo ba ka kenela hang-hang, ho sa tsotellehe hore na u khetha eng.",
-    "requireAnalyticsAccessSummary": "Baithuti ba arolelana tsoelo-pele ea bona ea ho ithuta le uena ha ba kena."
+    "requireAnalyticsAccessSummary": "Baithuti ba arolelana tsoelo-pele ea bona ea ho ithuta le uena ha ba kena.",
+    "courseAccessPrivateDesc": "Thupelo ha e hlahe lipatlisisong. Batho ba kenela ka memo ea hau kapa khoutu ea thupelo.",
+    "courseAccessProtected": "E Sirelelitsoe",
+    "courseAccessProtectedDesc": "Bakeng sa baithuti ba mosuoe. Thupelo e laola liakhaonto tsa bona. E hlophisoa ho tsoa ho dashboard ea mosuoe."
 }

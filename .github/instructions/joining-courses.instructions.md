@@ -29,19 +29,14 @@ A course carries its own target language — the quest's, the same field its inf
 
 ## Course access
 
-A teacher chooses who can find and join their course from three settings ([`CourseAccess`](../../lib/features/course_access/course_access.dart), #9359). Each setting is a pair of Matrix settings: whether the course is listed in the directory that course search reads, and the course's join rule.
+The kinds of course are defined in the org courses doc ([kinds of course](../../../.github/.github/instructions/course-spaces.instructions.md#kinds-of-course)). In the app an admin picks Public, Approval required or Private ([`CourseAccess`](../../lib/features/course_access/course_access.dart), #9359). Protected is shown and cannot be picked, because only a verified educator makes a course Protected, on the educator dashboard.
 
-| Setting | In course search | Join rule | Someone without an invite or code can… |
-| --- | --- | --- | --- |
-| **Public** | Listed | `public` | find it and join straight away |
-| **Approval required** | Listed | `knock` | find it and ask to join (Route 3) |
-| **Private** | Not listed | `knock` | do nothing |
-
-- A class link, a class code (Routes 1 and 2) and an admin's invite work under every setting and never wait for approval, because the server admits a valid code without a knock. The sheet says so, so a teacher who picks Approval required knows their own students are not held up.
-- New courses start on Approval required.
-- The teacher sets access in the "Who can join?" sheet ([`CourseAccessSheet`](../../lib/pangea/common/widgets/course_access_sheet.dart)), the only place the three descriptions appear. Two rows open it, each showing the current setting: one above Create course on the create-course preview ([course-preview.instructions.md § The page](course-preview.instructions.md#the-page)), and one in the course's More section, which replaces the old Access page.
-- Done commits the choice; dismissing the sheet changes nothing. From the settings row, Done applies the change straight away.
-- A course whose pair matches none of the three — for example one that is unlisted but has the `public` join rule, which the old Access page allowed — shows no setting selected until the teacher picks one.
+- The admin picks in the "Who can join?" sheet ([`CourseAccessSheet`](../../lib/pangea/common/widgets/course_access_sheet.dart)), the only place the kinds are described. Two rows open it, each showing the current kind: one above Create course on the create-course preview ([course-preview.instructions.md § The page](course-preview.instructions.md#the-page)), and one in the course's More section.
+- The sheet says that a class code or an invitation lets a student in without approval, whatever the kind.
+- Done commits the choice, and dismissing the sheet changes nothing. From the More section, Done applies the change at once. If applying fails, the row shows the kind the course has now.
+- A course whose settings match none of the kinds, for example one that is unlisted but has the `public` join rule, shows no kind selected until the admin picks one.
+- A course made in the app starts as Approval required. Whether it should start Private, as a course made on the dashboard does, is not decided.
+- **Intended — not yet implemented.** Once the app reads whether a course manages accounts, a Protected course shows Protected as its kind, and the other three cannot be picked.
 
 ---
 

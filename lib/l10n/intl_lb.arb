@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-11-10 13:06:14.746627",
+    "@@last_modified": "2026-11-11 14:11:21.583785",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2510,7 +2510,9 @@
     "approvalRequired": "Zoustëmmung néideg",
     "courseAccessPublicDesc": "Jidderee kann dëse Cours fannen a matmaachen.",
     "courseAccessApprovalRequiredDesc": "Jidderee kann dëse Cours fannen a froen, fir matzemaachen. Dir stëmmt all Ufro zou.",
-    "courseAccessPrivateDesc": "Nëmme Leit mat Ärer Invitatioun oder Ärem Cours-Code kënne matmaachen. De Cours erschéngt net an der Sich.",
     "courseAccessCodeNote": "Studente mat Ärem Cours-Code oder enger Invitatioun kënne direkt matmaachen, egal wat Dir wielt.",
-    "requireAnalyticsAccessSummary": "D'Studente deelen hire Léierfortschrëtt mat Iech, wann se bäitrieden."
+    "requireAnalyticsAccessSummary": "D'Studente deelen hire Léierfortschrëtt mat Iech, wann se bäitrieden.",
+    "courseAccessPrivateDesc": "De Cours erschéngt net an der Sich. D'Leit trieden iwwer Är Invitatioun oder de Cours-Code bäi.",
+    "courseAccessProtected": "Geschützt",
+    "courseAccessProtectedDesc": "Fir d'Studente vun engem Educateur. De Cours geréiert hir Konten. Ariichten iwwer den Educateur-Dashboard."
 }

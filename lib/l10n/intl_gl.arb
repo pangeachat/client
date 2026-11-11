@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-11-10 13:06:10.898149",
+    "@@last_modified": "2026-11-11 14:11:16.660450",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9987,7 +9987,9 @@
     "approvalRequired": "Aprobación requirida",
     "courseAccessPublicDesc": "Calquera pode atopar e unirse a este curso.",
     "courseAccessApprovalRequiredDesc": "Calquera pode atopar este curso e solicitar unirse. Ti aprobas cada solicitude.",
-    "courseAccessPrivateDesc": "Só as persoas coa túa invitación ou código de curso poden unirse. O curso non aparece na busca.",
     "courseAccessCodeNote": "Os estudantes co teu código de curso ou unha invitación poden unirse de inmediato, elixas o que elixas.",
-    "requireAnalyticsAccessSummary": "Os estudantes comparten o seu progreso de aprendizaxe contigo cando se unen."
+    "requireAnalyticsAccessSummary": "Os estudantes comparten o seu progreso de aprendizaxe contigo cando se unen.",
+    "courseAccessPrivateDesc": "O curso non aparece na busca. A xente únese coa túa invitación ou código de curso.",
+    "courseAccessProtected": "Protexido",
+    "courseAccessProtectedDesc": "Para os propios estudantes dun educador. O curso xestiona as súas contas. Configúrase desde o panel do educador."
 }
