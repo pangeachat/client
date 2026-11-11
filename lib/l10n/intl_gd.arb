@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-11-10 13:06:10.820039",
+    "@@last_modified": "2026-11-11 11:38:43.689497",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Log a-steach no clàraich, agus cleachdaidh sinn do chòd gus do chur ris gu fèin-obrachail.",
     "joinCodeLabel": "Còd",
     "joinCodeSaved": "Còd {code} air a shàbhaladh",
-    "joinCodeSavedExplanation": "Clàraich no log a-steach agus cuiridh sinn thu ris."
+    "joinCodeSavedExplanation": "Clàraich no log a-steach agus cuiridh sinn thu ris.",
+    "discussionLabel": "Còmhradh",
+    "discussionCardSemantics": "Còmhradh: {title}",
+    "discussionJoined": "Thàinig thu a-steach",
+    "discussionAnswered": "Fhreagair",
+    "joinTheDiscussion": "Gabh pàirt sa chòmhradh",
+    "discussionClassmatesInRoom": "{count, plural, =1{Tha 1 co-oileanach sa chòmhradh seo} other{Tha {count} co-oileanaich sa chòmhradh seo}}",
+    "discussionStartIt": "Bi mar a’ chiad fhear a thòisicheas an còmhradh seo",
+    "discussionRemoved": "Chan urrainn dhut a dhol a-steach don chòmhradh seo.",
+    "discussionJoinArriving": "Tha thu a-staigh! Fosglaidh an còmhradh cho luath ‘s a ruigeas e.",
+    "roleplayLabel": "Cluich-dhreuchd"
 }

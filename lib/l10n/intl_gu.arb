@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-11-10 13:06:11.072275",
+    "@@last_modified": "2026-11-11 11:38:43.954090",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "લોગ ઇન કરો અથવા સાઇન અપ કરો, અને અમે તમને આપમેળે ઉમેરવા માટે તમારા કોડનો ઉપયોગ કરીશું.",
     "joinCodeLabel": "કોડ",
     "joinCodeSaved": "કોડ {code} સાચવવામાં આવ્યો",
-    "joinCodeSavedExplanation": "સાઇન અપ કરો અથવા લોગ ઇન કરો અને અમે તમને ઉમેરીશું."
+    "joinCodeSavedExplanation": "સાઇન અપ કરો અથવા લોગ ઇન કરો અને અમે તમને ઉમેરીશું.",
+    "discussionLabel": "ચર્ચા",
+    "discussionCardSemantics": "ચર્ચા: {title}",
+    "discussionJoined": "જોડાયા",
+    "discussionAnswered": "જવાબ આપ્યો",
+    "joinTheDiscussion": "ચર્ચામાં જોડાઓ",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 સહપાઠી આ ચર્ચામાં છે} other{{count} સહપાઠીઓ આ ચર્ચામાં છે}}",
+    "discussionStartIt": "આ ચર્ચા શરૂ કરનાર પ્રથમ બનો",
+    "discussionRemoved": "તમે આ ચર્ચામાં જોડાઈ શકતા નથી.",
+    "discussionJoinArriving": "તમે અંદર છો! ચર્ચા આવતાની સાથે જ ખુલશે.",
+    "roleplayLabel": "ભૂમિકા ભજવો"
 }

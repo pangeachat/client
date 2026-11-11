@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:17.931287",
+    "@@last_modified": "2026-11-11 11:38:56.113312",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10778,5 +10778,15 @@
     "joinCodeJoinExplanation": "Conectează-te sau înregistrează-te, iar noi vom folosi codul tău pentru a te adăuga automat.",
     "joinCodeLabel": "Cod",
     "joinCodeSaved": "Codul {code} a fost salvat",
-    "joinCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga."
+    "joinCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga.",
+    "discussionLabel": "Discuție",
+    "discussionCardSemantics": "Discuție: {title}",
+    "discussionJoined": "Alăturat",
+    "discussionAnswered": "Răspuns",
+    "joinTheDiscussion": "Alătură-te discuției",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 coleg de clasă este în această discuție} other{{count} colegi de clasă sunt în această discuție}}",
+    "discussionStartIt": "Fii primul care începe această discuție",
+    "discussionRemoved": "Nu te poți alătura acestei discuții.",
+    "discussionJoinArriving": "Ai intrat! Discuția se va deschide imediat ce sosește.",
+    "roleplayLabel": "Joc de rol"
 }

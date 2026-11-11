@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pass_through_tooltip.dart';
@@ -122,6 +123,11 @@ class _WorldMapDotState extends State<WorldMapDot>
   @override
   Widget build(BuildContext context) {
     final isDot = widget.tier.isDot(widget.state);
+    final l10n = L10n.of(context);
+    final mode = widget.card.activityMode;
+    final stateLabel =
+        (widget.state.isOngoing ? mode.joinedLabel(l10n) : null) ??
+        widget.state.label(l10n);
     return ScaleTransition(
       scale: CurvedAnimation(
         parent: _ctrl,
@@ -141,7 +147,7 @@ class _WorldMapDotState extends State<WorldMapDot>
             button: !widget.dying,
             label: widget.dying
                 ? ''
-                : "${L10n.of(context).activityLabel(widget.card.title)}, ${widget.state.label(L10n.of(context))}",
+                : "${mode.titleLabel(l10n, widget.card.title)}, $stateLabel",
             // excludeSemantics drops the DESCENDANT tree — including the
             // GestureDetector's implicit tap action — so this node must carry
             // its own onTap, or assistive tech can name the pin but never
@@ -179,6 +185,10 @@ class _WorldMapDotState extends State<WorldMapDot>
                               state: widget.state,
                               pinged: widget.pinged,
                               unreadRoom: widget.unreadRoom,
+                              glyphIcon: mode.midPinGlyph(
+                                available:
+                                    widget.state == ActivityPinState.available,
+                              ),
                               participantsFilled: widget.participantsFilled,
                               participantsTotal: widget.participantsTotal,
                               starLevel: widget.starLevel,
@@ -276,6 +286,9 @@ String? _participantLabel(ActivityPinState state, int? filled, int? total) {
 
 class _MediumDotContent extends StatelessWidget {
   final ActivityPinState state;
+
+  /// Null draws the state's own glyph.
+  final IconData? glyphIcon;
   final bool pinged;
   final Room? unreadRoom;
   final int? participantsFilled;
@@ -283,8 +296,14 @@ class _MediumDotContent extends StatelessWidget {
   final ActivityStarLevel starLevel;
   final bool isFocused;
 
+  /// The glyph fills most of the head; beside a seat count it is smaller, so
+  /// the two still fit inside it.
+  static const double _glyphSize = 20.0;
+  static const double _glyphSizeBesideCount = 18.0;
+
   const _MediumDotContent({
     required this.state,
+    this.glyphIcon,
     required this.pinged,
     this.unreadRoom,
     this.participantsFilled,
@@ -313,12 +332,16 @@ class _MediumDotContent extends StatelessWidget {
     // together as a single glyph inside the circular head, rather than the
     // count sitting in its own reserved row below the pin — so the pin reads
     // as one compact marker (world-map Figma).
-    final glyph = switch (_mediumGlyph(state)) {
+    final glyph = switch (glyphIcon ?? _mediumGlyph(state)) {
       null => null,
       final icon => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 16, color: glyphColor),
+          Icon(
+            icon,
+            size: label == null ? _glyphSize : _glyphSizeBesideCount,
+            color: glyphColor,
+          ),
           if (label != null)
             Text(
               label,

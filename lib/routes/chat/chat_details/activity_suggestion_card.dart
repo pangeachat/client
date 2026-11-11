@@ -3,10 +3,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/activity_participant_row.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_video_tag.dart';
+import 'package:fluffychat/routes/chat/chat_details/activity_card_state_pill.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
 import 'package:fluffychat/widgets/completed_stamp.dart';
@@ -66,6 +68,8 @@ class ActivitySuggestionCard extends StatelessWidget {
   /// activity cards squash it so the card reads squarer.
   final double? imageHeight;
 
+  final ActivityCardStatePill? statePill;
+
   static const double _frameWidth = 2.0;
 
   const ActivitySuggestionCard({
@@ -86,6 +90,7 @@ class ActivitySuggestionCard extends StatelessWidget {
     this.frameWhenResting = false,
     this.selected = false,
     this.imageHeight,
+    this.statePill,
   });
 
   @override
@@ -102,10 +107,12 @@ class ActivitySuggestionCard extends StatelessWidget {
     // family of pills — what is live top-left, what the learner earned
     // bottom-right — and only a live card adds a thin frame in its state's
     // hue, matching the map's pins.
-    final stateColor = pinState?.bodyColor(context);
-    final onState = pinState?.onBodyColor(context);
+    final liveColor = pinState?.bodyColor(context);
+    final stateColor = statePill?.fill ?? liveColor;
+    final onState = statePill?.onFill ?? pinState?.onBodyColor(context);
+    final stateIcon = statePill?.icon ?? pinState?.icon;
     final restingFrame =
-        stateColor ??
+        liveColor ??
         (frameWhenResting
             ? ActivityPinState.available.bodyColor(context)
             : null);
@@ -186,14 +193,24 @@ class ActivitySuggestionCard extends StatelessWidget {
                         bottom: 6.0,
                         child: AnimatedSwitcher(
                           duration: FluffyThemes.animationDuration,
-                          child: timesCompleted > 0
-                              ? CompletedStamp(
-                                  key: const ValueKey('stamp'),
-                                  size: (width / 8).clamp(14.0, 18.0),
-                                  times: timesCompleted,
-                                  xp: xpEarned,
-                                )
-                              : const SizedBox.shrink(),
+                          child: switch (activity.activityMode.completionMark) {
+                            CompletionMark.xpBadge when xpEarned > 0 =>
+                              CompletedStamp(
+                                key: const ValueKey('xp'),
+                                size: CompletedStamp.cardSizeFor(width),
+                                xp: xpEarned,
+                                showCoin: false,
+                              ),
+                            CompletionMark.stamp when timesCompleted > 0 =>
+                              CompletedStamp(
+                                key: const ValueKey('stamp'),
+                                size: CompletedStamp.cardSizeFor(width),
+                                times: timesCompleted,
+                                xp: xpEarned,
+                              ),
+                            CompletionMark.xpBadge ||
+                            CompletionMark.stamp => const SizedBox.shrink(),
+                          },
                         ),
                       ),
                     ],
@@ -224,40 +241,54 @@ class ActivitySuggestionCard extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             spacing: 8.0,
                             children: [
-                              if (activity.req.mode.isNotEmpty)
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Text(
-                                      activity.req.mode,
-                                      style: labelStyle,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ),
-                              Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  spacing: 4.0,
-                                  children: [
-                                    Icon(
-                                      Icons.group_outlined,
-                                      size: iconSize ?? 12.0,
-                                    ),
-                                    Semantics(
-                                      label:
-                                          "${L10n.of(context).participants}: ${activity.req.numberOfParticipants}",
-                                      child: ExcludeSemantics(
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Row(
+                                    spacing: 4.0,
+                                    children: [
+                                      Icon(
+                                        activity.activityMode.icon,
+                                        size: iconSize ?? 12.0,
+                                      ),
+                                      Flexible(
                                         child: Text(
-                                          "${activity.req.numberOfParticipants}",
+                                          activity.activityMode.label(
+                                            L10n.of(context),
+                                          ),
                                           style: labelStyle,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
+                              if (activity.activityMode.showsPlayerCount)
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    spacing: 4.0,
+                                    children: [
+                                      Icon(
+                                        Icons.group_outlined,
+                                        size: iconSize ?? 12.0,
+                                      ),
+                                      Semantics(
+                                        label:
+                                            "${L10n.of(context).participants}: ${activity.req.numberOfParticipants}",
+                                        child: ExcludeSemantics(
+                                          child: Text(
+                                            "${activity.req.numberOfParticipants}",
+                                            style: labelStyle,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                             ],
                           ),
                         ],
@@ -283,7 +314,7 @@ class ActivitySuggestionCard extends StatelessWidget {
             ),
           // ...and named in a pill at the photo's top-left, with the Waiting
           // state's roster just under it.
-          if (pinState != null && stateColor != null)
+          if (stateColor != null)
             Positioned(
               top: 6.0,
               left: 6.0,
@@ -320,14 +351,19 @@ class ActivitySuggestionCard extends StatelessWidget {
                             // The shared status glyph, matching the map pin —
                             // or the ping's bell, folded into the pill so a card
                             // carries one badge for what is live (#9559).
-                            Icon(
-                              pinged
-                                  ? Icons.notifications_outlined
-                                  : pinState!.icon,
-                              size: (fontSizeSmall ?? 11.0) + 3.0,
-                              color: onState,
-                            ),
-                            const SizedBox(width: 4.0),
+                            if (pinged || stateIcon != null)
+                              Padding(
+                                padding: const EdgeInsetsDirectional.only(
+                                  end: 4.0,
+                                ),
+                                child: Icon(
+                                  pinged
+                                      ? Icons.notifications_outlined
+                                      : stateIcon,
+                                  size: (fontSizeSmall ?? 11.0) + 3.0,
+                                  color: onState,
+                                ),
+                              ),
                             Flexible(
                               child: Text(
                                 _stateLabel(context),
@@ -365,7 +401,10 @@ class ActivitySuggestionCard extends StatelessWidget {
     );
   }
 
-  String _stateLabel(BuildContext context) => switch (pinState!) {
+  String _stateLabel(BuildContext context) =>
+      statePill?.label ?? _pinStateLabel(context);
+
+  String _pinStateLabel(BuildContext context) => switch (pinState!) {
     ActivityPinState.ongoingActive => L10n.of(context).ongoing,
     ActivityPinState.ongoingPending => L10n.of(context).mapStatusWaiting,
     // The count of open sessions to choose from, on the course page and the

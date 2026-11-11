@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
@@ -17,7 +17,7 @@ import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
-import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
@@ -498,19 +498,23 @@ class WorldMapController extends State<WorldMap>
 
   bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
 
-  /// The joined course space a course-scoped map is showing, or null on the
-  /// world map and under a course the learner has not joined (a preview). The
-  /// space the scope came from names it outright — two joined courses can
-  /// share a plan (#9026); a scope with no space falls back to the plan.
-  Room? get courseRoom {
-    final mapContext = MapContextController.notifier.value;
-    if (mapContext is! CourseMapContext) return null;
-    final spaceId = mapContext.spaceId;
-    return _client?.joinedCourseRooms.firstWhereOrNull(
-      (r) => spaceId != null
-          ? r.id == spaceId
-          : r.coursePlan?.uuid == mapContext.coursePlanId,
-    );
+  /// The joined course space a course-scoped map is showing
+  /// ([WorldMapClientExtension.joinedCourseFor]).
+  Room? get courseRoom =>
+      _client?.joinedCourseFor(MapContextController.notifier.value);
+
+  /// The learner's own live room for [activityId] on this map: a
+  /// discussion's from their standing in the course on show
+  /// ([courseRoom]), else their own session room
+  /// ([WorldMapClientExtension.activeActivityInstance], which skips discussion
+  /// rooms). What an ongoing pin's card, row and unread bubble read.
+  Room? ownLiveRoom(String activityId) {
+    final client = _client;
+    if (client == null) return null;
+    return client
+            .discussionStandingFor(activityId, courseId: courseRoom?.id)
+            .activeRoom ??
+        client.activeActivityInstance(activityId);
   }
 
   /// The id of the activity the detail panel is focused on, or null. Focus is
@@ -1766,6 +1770,21 @@ class WorldMapController extends State<WorldMap>
     // from the join decision. Guards every tap funnel.
     if (MapContextController.notifier.value is CoursePreviewMapContext) return;
     final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+    // A discussion opens from the learner's standing in the course on show
+    // only, since rooms are per course; with no seat there, its start page
+    // and Join. Never another course's room, or a room an admin was joined
+    // to without a seat.
+    if (card.activityMode.opensSharedRoom) {
+      final own = client
+          ?.discussionStandingFor(card.activityId, courseId: courseRoom?.id)
+          .room;
+      context.go(
+        own != null
+            ? WorkspaceNav.openRoomById(uri, own.id)
+            : WorkspaceNav.openActivity(uri, card.activityId),
+      );
+      return;
+    }
     // Seat the activity as the sole left token via the nav helper — no raw
     // query surgery in feature code (routing.instructions.md). The course
     // context is kept: a pin on a course-scoped map closes back to the course,

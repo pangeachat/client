@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-11-10 13:06:12.627926",
+    "@@last_modified": "2026-11-11 11:38:46.358870",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Banye ma ọ bụ debanye aha, anyị ga-eji koodu gị tinye gị na-akpaghị aka.",
     "joinCodeLabel": "Koodu",
     "joinCodeSaved": "Echekwara koodu {code}",
-    "joinCodeSavedExplanation": "Debanye aha ma ọ bụ banye ma anyị ga-agbakwunye gị."
+    "joinCodeSavedExplanation": "Debanye aha ma ọ bụ banye ma anyị ga-agbakwunye gị.",
+    "discussionLabel": "Mkparịta ụka",
+    "discussionCardSemantics": "Mkparịta ụka: {title}",
+    "discussionJoined": "Esonyeela",
+    "discussionAnswered": "Azala",
+    "joinTheDiscussion": "Soro na mkparịta ụka",
+    "discussionClassmatesInRoom": "{count, plural, =1{Otu nwa akwụkwọ nọ na mkparịta ụka a} other{{count} ụmụ akwụkwọ nọ na mkparịta ụka a}}",
+    "discussionStartIt": "Bụrụ onye mbụ ga-amalite mkparịta ụka a",
+    "discussionRemoved": "Ị nweghị ike isonye na mkparịta ụka a.",
+    "discussionJoinArriving": "Ị nọ n'ime! Mkparịta ụka ga-emeghe ozugbo ọ bịarutere.",
+    "roleplayLabel": "Ịme ihe nkiri"
 }

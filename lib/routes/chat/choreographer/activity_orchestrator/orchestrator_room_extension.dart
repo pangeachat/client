@@ -19,35 +19,41 @@ extension OrchestratorRoomExtension on Room {
     }
   }
 
+  /// Whether the orchestrator has awarded the learner [goalId] in this room.
+  /// Read under [ActivityRolesRoomExtension.ownAwardKey], so a discussion's
+  /// per-seat awards count like a roleplay's per-role ones.
+  bool _isOwnGoalAwarded(
+    OrchestratorAwardedGoals awarded,
+    String goalId, {
+    String? goalSlug,
+  }) {
+    final key = ownAwardKey;
+    if (key == null) return false;
+    return awarded.isGoalCompletedForRole(key, goalId, goalSlug: goalSlug);
+  }
+
   ActivityRoleGoal? get currentGoal {
-    final ownRole = this.ownRole;
     final goals = ownRole?.allGoals;
-    if (ownRole == null || goals == null || goals.isEmpty) return null;
+    if (goals == null || goals.isEmpty) return null;
 
     final awarded = orchestratorAwardedGoals;
     return goals.firstWhereOrNull(
-      (g) => !awarded.isGoalCompletedForRole(
-        ownRole.id,
-        g.id,
-        goalSlug: g.goalSlug,
-      ),
+      (g) => !_isOwnGoalAwarded(awarded, g.id, goalSlug: g.goalSlug),
     );
   }
 
   bool isOwnGoalCompleted(String id, {String? goalSlug}) {
-    final ownRole = this.ownRole;
     if (ownRole == null) return false;
-    return orchestratorAwardedGoals.isGoalCompletedForRole(
-      ownRole.id,
-      id,
-      goalSlug: goalSlug,
-    );
+    return _isOwnGoalAwarded(orchestratorAwardedGoals, id, goalSlug: goalSlug);
   }
 
   bool get hasCompletedOwnGoals {
-    final ownRole = this.ownRole;
-    if (ownRole == null) return false;
-    return hasCompletedGoalsByRoleId(ownRole.id);
+    final goals = ownRole?.allGoals;
+    if (goals == null) return false;
+    final awarded = orchestratorAwardedGoals;
+    return goals.every(
+      (g) => _isOwnGoalAwarded(awarded, g.id, goalSlug: g.goalSlug),
+    );
   }
 
   bool hasCompletedGoalsByRoleId(String roleId) {
@@ -61,19 +67,12 @@ extension OrchestratorRoomExtension on Room {
   }
 
   List<ActivityRoleGoal> get ownCompletedGoals {
-    final ownRole = this.ownRole;
-    if (ownRole == null) return [];
+    final ownGoals = ownRole?.allGoals;
+    if (ownGoals == null) return [];
 
-    final ownGoals = ownRole.allGoals;
     final awarded = orchestratorAwardedGoals;
     return ownGoals
-        .where(
-          (g) => awarded.isGoalCompletedForRole(
-            ownRole.id,
-            g.id,
-            goalSlug: g.goalSlug,
-          ),
-        )
+        .where((g) => _isOwnGoalAwarded(awarded, g.id, goalSlug: g.goalSlug))
         .toList();
   }
 

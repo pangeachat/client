@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-11-10 13:06:14.553635",
+    "@@last_modified": "2026-11-11 11:38:50.072339",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "ເຂົ້າສູ່ລະບົບ ຫຼື ລົງທະບຽນ, ແລະພວກເຮົາຈະໃຊ້ລະຫັດຂອງທ່ານເພື່ອເພີ່ມທ່ານໂດຍອັດຕະໂນມັດ.",
     "joinCodeLabel": "ລະຫັດ",
     "joinCodeSaved": "ລະຫັດ {code} ຖືກບັນທຶກແລ້ວ",
-    "joinCodeSavedExplanation": "ລົງທະບຽນ ຫຼື ເຂົ້າສູ່ລະບົບ ແລະພວກເຮົາຈະເພີ່ມທ່ານ."
+    "joinCodeSavedExplanation": "ລົງທະບຽນ ຫຼື ເຂົ້າສູ່ລະບົບ ແລະພວກເຮົາຈະເພີ່ມທ່ານ.",
+    "discussionLabel": "ສົນທະນາ",
+    "discussionCardSemantics": "ສົນທະນາ: {title}",
+    "discussionJoined": "ເຂົ້າຮ່ວມແລ້ວ",
+    "discussionAnswered": "ຕອບແລ້ວ",
+    "joinTheDiscussion": "ເຂົ້າຮ່ວມການສົນທະນາ",
+    "discussionClassmatesInRoom": "{count, plural, =1{ໝູ່ຮ່ວມຫ້ອງ 1 ຄົນຢູ່ໃນການສົນທະນານີ້} other{ໝູ່ຮ່ວມຫ້ອງ {count} ຄົນຢູ່ໃນການສົນທະນານີ້}}",
+    "discussionStartIt": "ເປັນຄົນທຳອິດທີ່ເລີ່ມການສົນທະນານີ້",
+    "discussionRemoved": "ທ່ານບໍ່ສາມາດເຂົ້າຮ່ວມການສົນທະນານີ້ໄດ້.",
+    "discussionJoinArriving": "ທ່ານເຂົ້າຮ່ວມແລ້ວ! ການສົນທະນາຈະເປີດທັນທີທີ່ມັນມາຮອດ.",
+    "roleplayLabel": "ຫຼິ້ນບົດບາດ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-11-10 13:06:18.565338",
+    "@@last_modified": "2026-11-11 11:38:57.503061",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Pinda kana kunyoresa, uye tichashandisa kodhi yako kukuwedzera otomatiki.",
     "joinCodeLabel": "Kodhi",
     "joinCodeSaved": "Kodhi {code} yachengetwa",
-    "joinCodeSavedExplanation": "Nyoresa kana kupinda uye tichakuwedzera."
+    "joinCodeSavedExplanation": "Nyoresa kana kupinda uye tichakuwedzera.",
+    "discussionLabel": "Hurukuro",
+    "discussionCardSemantics": "Hurukuro: {title}",
+    "discussionJoined": "Wapinda",
+    "discussionAnswered": "Wapindura",
+    "joinTheDiscussion": "Pinda muhurukuro",
+    "discussionClassmatesInRoom": "{count, plural, =1{Mudzidzi 1 ari muhurukuro iyi} other{Vadzidzi {count} vari muhurukuro iyi}}",
+    "discussionStartIt": "Iva wekutanga kutanga hurukuro iyi",
+    "discussionRemoved": "Haugone kupinda muhurukuro iyi.",
+    "discussionJoinArriving": "Wapinda! Hurukuro ichavhurwa kana yangosvika.",
+    "roleplayLabel": "Kutamba chinzvimbo"
 }

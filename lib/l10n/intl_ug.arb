@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-11-10 13:06:20.883511",
+    "@@last_modified": "2026-11-11 11:39:02.447977",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "تىزىملىتىڭ ياكى كىرىڭ، بىز سىزنىڭ كودىڭىز ئارقىلىق سىزنى ئاپتوماتىك قوشىمىز.",
     "joinCodeLabel": "كود",
     "joinCodeSaved": "{code} كود ساقلاندى",
-    "joinCodeSavedExplanation": "تىزىملىتىڭ ياكى كىرىڭ، بىز سىزنى قوشىمىز."
+    "joinCodeSavedExplanation": "تىزىملىتىڭ ياكى كىرىڭ، بىز سىزنى قوشىمىز.",
+    "discussionLabel": "مۇنازىرە",
+    "discussionCardSemantics": "مۇنازىرە: {title}",
+    "discussionJoined": "قاتناشتى",
+    "discussionAnswered": "جاۋاب بەردى",
+    "joinTheDiscussion": "مۇنازىرىگە قاتنىشىڭ",
+    "discussionClassmatesInRoom": "{count, plural, =1{بۇ مۇنازىرىدە 1 ساۋاقدىشىڭىز بار} other{بۇ مۇنازىرىدە {count} ساۋاقداش بار}}",
+    "discussionStartIt": "بۇ مۇنازىرىنى تۇنجى باشلىغۇچى بولۇڭ",
+    "discussionRemoved": "بۇ مۇنازىرىگە قاتنىشالمايسىز.",
+    "discussionJoinArriving": "سىز كىردىڭىز! مۇنازىرە يېتىپ كەلگەندىن كېيىنلا ئېچىلىدۇ.",
+    "roleplayLabel": "رول ئېلىش"
 }

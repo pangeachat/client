@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-11-10 13:06:19.837074",
+    "@@last_modified": "2026-11-11 11:38:58.816021",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Kena kapa ingolise, 'me re tla sebelisa khoutu ea hau ho u kenyelletsa ka bo eona.",
     "joinCodeLabel": "Khoutu",
     "joinCodeSaved": "Khoutu {code} e bolokiloe",
-    "joinCodeSavedExplanation": "Ingolise kapa u kene 'me re tla u kenyelletsa."
+    "joinCodeSavedExplanation": "Ingolise kapa u kene 'me re tla u kenyelletsa.",
+    "discussionLabel": "Puisano",
+    "discussionCardSemantics": "Puisano: {title}",
+    "discussionJoined": "O kene",
+    "discussionAnswered": "Ho arabiloe",
+    "joinTheDiscussion": "Kena puisano",
+    "discussionClassmatesInRoom": "{count, plural, =1{Seithuti se le 1 se puisano ena} other{Baithuti ba {count} ba puisano ena}}",
+    "discussionStartIt": "Eba oa pele ho qala puisano ena",
+    "discussionRemoved": "Ha o kgone ho kena puisano ena.",
+    "discussionJoinArriving": "O kene! Puisano e tla bula hang ha e fihla.",
+    "roleplayLabel": "Ho bapala karolo"
 }

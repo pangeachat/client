@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:16.311840",
+    "@@last_modified": "2026-11-11 11:39:00.880051",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10049,5 +10049,15 @@
     "joinCodeJoinExplanation": "Log in of meld je aan, en we gebruiken je code om je automatisch toe te voegen.",
     "joinCodeLabel": "Code",
     "joinCodeSaved": "Code {code} opgeslagen",
-    "joinCodeSavedExplanation": "Meld je aan of log in en we voegen je toe."
+    "joinCodeSavedExplanation": "Meld je aan of log in en we voegen je toe.",
+    "discussionLabel": "Discussie",
+    "discussionCardSemantics": "Discussie: {title}",
+    "discussionJoined": "Deelgenomen",
+    "discussionAnswered": "Beantwoord",
+    "joinTheDiscussion": "Neem deel aan de discussie",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 klasgenoot neemt deel aan deze discussie} other{{count} klasgenoten nemen deel aan deze discussie}}",
+    "discussionStartIt": "Wees de eerste die deze discussie start",
+    "discussionRemoved": "Je kunt niet deelnemen aan deze discussie.",
+    "discussionJoinArriving": "Je bent erbij! De discussie begint zodra deze arriveert.",
+    "roleplayLabel": "Rollenspel"
 }

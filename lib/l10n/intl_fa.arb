@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:10.074785",
+    "@@last_modified": "2026-11-11 11:38:42.679012",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10137,5 +10137,15 @@
     "joinCodeJoinExplanation": "وارد شوید یا ثبت‌نام کنید، و ما از کد شما برای افزودن خودکار شما استفاده خواهیم کرد.",
     "joinCodeLabel": "کد",
     "joinCodeSaved": "کد {code} ذخیره شد",
-    "joinCodeSavedExplanation": "ثبت‌نام کنید یا وارد شوید و ما شما را اضافه خواهیم کرد."
+    "joinCodeSavedExplanation": "ثبت‌نام کنید یا وارد شوید و ما شما را اضافه خواهیم کرد.",
+    "discussionLabel": "بحث",
+    "discussionCardSemantics": "بحث: {title}",
+    "discussionJoined": "پیوستید",
+    "discussionAnswered": "پاسخ داده شد",
+    "joinTheDiscussion": "به بحث بپیوندید",
+    "discussionClassmatesInRoom": "{count, plural, =1{۱ همکلاسی در این بحث حضور دارد} other{{count} همکلاسی در این بحث حضور دارند}}",
+    "discussionStartIt": "اولین نفری باشید که این بحث را شروع می‌کند",
+    "discussionRemoved": "نمی‌توانید به این بحث بپیوندید.",
+    "discussionJoinArriving": "شما وارد شدید! بحث به محض رسیدن باز می‌شود.",
+    "roleplayLabel": "نقش‌آفرینی"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-11-10 13:06:22.086719",
+    "@@last_modified": "2026-11-11 11:39:03.698447",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "לאָגיר זיך אָדער רעגיסטריר זיך, און מיר וועלן ניצן דיין קאָד צו דיך אויטאָמאַטיש צולייגן.",
     "joinCodeLabel": "קאָד",
     "joinCodeSaved": "קאָד {code} געראַטעוועט",
-    "joinCodeSavedExplanation": "רעגיסטריר זיך אָדער לאָגיר זיך און מיר וועלן דיך צולייגן."
+    "joinCodeSavedExplanation": "רעגיסטריר זיך אָדער לאָגיר זיך און מיר וועלן דיך צולייגן.",
+    "discussionLabel": "דיסקוסיע",
+    "discussionCardSemantics": "דיסקוסיע: {title}",
+    "discussionJoined": "בייגעטרעטן",
+    "discussionAnswered": "געענטפערט",
+    "joinTheDiscussion": "בייטרעטן די דיסקוסיע",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 קלאַסמייט איז אין דער דיסקוסיע} other{{count} קלאַסמייטן זענען אין דער דיסקוסיע}}",
+    "discussionStartIt": "זייט דער ערשטער צו אָנהייבן די דיסקוסיע",
+    "discussionRemoved": "איר קענט נישט בייטרעטן די דיסקוסיע.",
+    "discussionJoinArriving": "איר זענט אינעווייניק! די דיסקוסיע וועט זיך עפֿענען ווי נאָר זי קומט אָן.",
+    "roleplayLabel": "ראָלעשפּיל"
 }

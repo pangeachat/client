@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:08.602651",
+    "@@last_modified": "2026-11-11 11:38:40.825243",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10176,5 +10176,15 @@
     "joinCodeJoinExplanation": "Inicia sessió o registra't, i utilitzarem el teu codi per afegir-te automàticament.",
     "joinCodeLabel": "Codi",
     "joinCodeSaved": "Codi {code} desat",
-    "joinCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem."
+    "joinCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem.",
+    "discussionLabel": "Discussió",
+    "discussionCardSemantics": "Discussió: {title}",
+    "discussionJoined": "Unit",
+    "discussionAnswered": "Respost",
+    "joinTheDiscussion": "Uneix-te a la discussió",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 company està en aquesta discussió} other{{count} companys estan en aquesta discussió}}",
+    "discussionStartIt": "Sigues el primer a iniciar aquesta discussió",
+    "discussionRemoved": "No pots unir-te a aquesta discussió.",
+    "discussionJoinArriving": "Ja hi ets! La discussió s'obrirà tan aviat com arribi.",
+    "roleplayLabel": "Joc de rol"
 }

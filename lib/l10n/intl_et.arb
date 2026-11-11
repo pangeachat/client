@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-11-10 13:06:09.798679",
+    "@@last_modified": "2026-11-11 11:38:42.359973",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,15 @@
     "joinCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu koodi, et sind automaatselt lisada.",
     "joinCodeLabel": "Kood",
     "joinCodeSaved": "Kood {code} salvestatud",
-    "joinCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind."
+    "joinCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind.",
+    "discussionLabel": "Arutelu",
+    "discussionCardSemantics": "Arutelu: {title}",
+    "discussionJoined": "Liitutud",
+    "discussionAnswered": "Vastatud",
+    "joinTheDiscussion": "Liitu aruteluga",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 klassikaaslane on selles arutelus} other{{count} klassikaaslast on selles arutelus}}",
+    "discussionStartIt": "Ole esimene, kes selle arutelu algatab",
+    "discussionRemoved": "Te ei saa selle aruteluga liituda.",
+    "discussionJoinArriving": "Olete sees! Arutelu avaneb kohe, kui see saabub.",
+    "roleplayLabel": "Rollimäng"
 }

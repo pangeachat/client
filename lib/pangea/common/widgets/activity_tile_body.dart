@@ -68,6 +68,9 @@ class ActivityTileBody extends StatelessWidget {
             mxContent: sender?.avatarUrl,
             name: sender?.localizedDisplayname(L10n.of(context)),
             size: avatarSize,
+            // Lets the bot's message show the bot's face, as it does
+            // everywhere else.
+            userId: lastEvent?.senderId,
           ),
           const SizedBox(width: 8),
           Expanded(child: previewChild),
