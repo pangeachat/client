@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-11-09 14:56:04.564203",
+    "@@last_modified": "2026-11-10 13:06:19.837074",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Ho lokisoa rekoto e felletseng…",
     "callTranscriptNoRecording": "Ha ho rekoto ea puisano e felletseng.",
     "callTranscriptNotSubscribed": "{name} o ne a se na peeletso nakong ya mohala ona, kahoo se ileng sa buuwa ha sea ka sa ngolwa.",
-    "joinYourCourse": "Kena thupelong ea hau",
-    "courseCodeJoinExplanation": "Kena kapa ingolise, 'me re tla sebelisa khoutu ea thupelo ea hau ho u kenya thupelong ea hau ka bo eona.",
-    "courseCodeLabel": "Khoutu ea thupelo",
-    "courseCodeSaved": "Khoutu ea thupelo {code} e bolokiloe",
-    "courseCodeSavedExplanation": "Ingolise kapa u kene 'me re tla u kenya thupelong ea hau.",
     "moderationRefusedContactDetails": "Molaetsa wa hao ha o a romelwa. Sesefa sa boitsebiso se fumane dintlha tsa ho ikopanya, jwalo ka nomoro ya mohala. Ka kopo di tlose mme o leke hape.",
     "moderationRefusedProfanity": "Molaetsa wa hao ha o a romelwa. Sesefa sa boitsebiso se fumane lentswe leo re sa le dumelleng moqoqong. Ka kopo le fetole mme o leke hape.",
     "callTranscriptTranscribeButton": "Ngola",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "Re hlotsoe ho qeta ho hloma ak'haonte ea hau. Lekola khokahano ea hau ebe u leka hape, kapa u tsoe ebe u kena hape hamorao.",
     "onboardingOfflineError": "Ha o inthaneteng. Leka hape ha o se o inthaneteng.",
     "activitySavedTo": "Mosebetsi o bolokiloe ho {page}",
+    "joinWithYourCode": "Kena ka khoutu ea hau",
+    "joinCodeJoinExplanation": "Kena kapa ingolise, 'me re tla sebelisa khoutu ea hau ho u kenyelletsa ka bo eona.",
+    "joinCodeLabel": "Khoutu",
+    "joinCodeSaved": "Khoutu {code} e bolokiloe",
+    "joinCodeSavedExplanation": "Ingolise kapa u kene 'me re tla u kenyelletsa.",
     "sessionFinished": "Ho se ho le morao! Mosebetsi ona o felile."
 }

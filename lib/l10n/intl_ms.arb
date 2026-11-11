@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-11-09 14:56:02.462911",
+    "@@last_modified": "2026-11-10 13:06:15.770996",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Menyediakan rakaman penuh…",
     "callTranscriptNoRecording": "Tiada rakaman panggilan penuh.",
     "callTranscriptNotSubscribed": "{name} tidak mempunyai langganan semasa panggilan ini, jadi apa yang dikatakan tidak ditranskripsi.",
-    "joinYourCourse": "Sertai kursus anda",
-    "courseCodeJoinExplanation": "Log masuk atau daftar, dan kami akan menggunakan kod kursus anda untuk menambahkan anda ke kursus anda secara automatik.",
-    "courseCodeLabel": "Kod kursus",
-    "courseCodeSaved": "Kod kursus {code} disimpan",
-    "courseCodeSavedExplanation": "Daftar atau log masuk dan kami akan menambahkan anda ke kursus anda.",
     "moderationRefusedContactDetails": "Mesej anda tidak dihantar. Penapis automatik menemui butiran hubungan, seperti nombor telefon. Sila alih keluar dan cuba lagi.",
     "moderationRefusedProfanity": "Mesej anda tidak dihantar. Penapis automatik menemui perkataan yang tidak kami benarkan dalam sembang. Sila ubah dan cuba lagi.",
     "callTranscriptTranscribeButton": "Transkripsi",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "Kami tidak dapat menyelesaikan persediaan akaun anda. Semak sambungan anda dan cuba lagi, atau log keluar dan daftar masuk kemudian.",
     "onboardingOfflineError": "Anda di luar talian. Cuba lagi setelah anda kembali dalam talian.",
     "activitySavedTo": "Aktiviti disimpan ke {page}",
+    "joinWithYourCode": "Sertai dengan kod anda",
+    "joinCodeJoinExplanation": "Log masuk atau daftar, dan kami akan menggunakan kod anda untuk menambahkan anda secara automatik.",
+    "joinCodeLabel": "Kod",
+    "joinCodeSaved": "Kod {code} disimpan",
+    "joinCodeSavedExplanation": "Daftar atau log masuk dan kami akan menambahkan anda.",
     "sessionFinished": "Terlambat! Aktiviti ini telah tamat."
 }

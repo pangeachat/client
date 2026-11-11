@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-11-09 14:56:04.693784",
+    "@@last_modified": "2026-11-10 13:06:20.545075",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "O loʻo saunia le puʻeina atoa…",
     "callTranscriptNoRecording": "Leai se puʻeina o le valaʻau atoa.",
     "callTranscriptNotSubscribed": "E le'i lesitala {name} i le taimi o lenei valaau, o lea e le'i tusia ai mea na fai mai.",
-    "joinYourCourse": "Auai i lau kosi",
-    "courseCodeJoinExplanation": "Saini i totonu pe saini i luga, ma o le a matou fa'aogaina lau code kosi e fa'aopoopo otometi ai oe i lau kosi.",
-    "courseCodeLabel": "Code kosi",
-    "courseCodeSaved": "Code kosi {code} ua sefe",
-    "courseCodeSavedExplanation": "Saini i luga pe saini i totonu ma o le a matou fa'aopoopoina oe i lau kosi.",
     "moderationRefusedContactDetails": "E leʻi lafoina lau feʻau. Na maua e se faamama otometi faʻamatalaga faʻafesoʻotaʻi, e pei o se numera telefoni. Faʻamolemole aveese ma toe taumafai.",
     "moderationRefusedProfanity": "E leʻi lafoina lau feʻau. Na maua e se faamama otometi se upu matou te le faʻatagaina i talanoaga. Faʻamolemole sui ma toe taumafai.",
     "callTranscriptTranscribeButton": "Fa'aliliu",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "E leʻi mafai ona matou faʻamaeʻaina le faʻatulagaina o lau teugatupe. Siaki lau fesoʻotaʻiga ma toe taumafai, pe alu ese ma saini i totonu mulimuli ane.",
     "onboardingOfflineError": "Ua e tuusao. Toe taumafai pe a e toe i luga ole laiga.",
     "activitySavedTo": "Gaoioiga ua sefe i le {page}",
+    "joinWithYourCode": "Auai i lau code",
+    "joinCodeJoinExplanation": "Saini i totonu pe resitala, ona matou faʻaaogaina lea o lau code e faʻaopoopo otometi ai oe.",
+    "joinCodeLabel": "Code",
+    "joinCodeSaved": "Code {code} ua sefe",
+    "joinCodeSavedExplanation": "Resitala pe saini i totonu ona matou faʻaopoopoina lea o oe.",
     "sessionFinished": "Ua tuai tele! Ua uma lenei gaioiga."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-11-09 14:55:58.162294",
+    "@@last_modified": "2026-11-10 13:06:10.042141",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10241,11 +10241,6 @@
     "callTranscriptPreparingRecording": "Préparation de l'enregistrement complet…",
     "callTranscriptNoRecording": "Aucun enregistrement de l'appel complet.",
     "callTranscriptNotSubscribed": "{name} n'avait pas d'abonnement pendant cet appel, donc ce qui a été dit n'a pas été transcrit.",
-    "joinYourCourse": "Rejoignez votre cours",
-    "courseCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code de cours pour vous ajouter automatiquement à votre cours.",
-    "courseCodeLabel": "Code de cours",
-    "courseCodeSaved": "Code de cours {code} enregistré",
-    "courseCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons à votre cours.",
     "moderationRefusedContactDetails": "Votre message n'a pas été envoyé. Un filtre automatique a détecté des coordonnées, comme un numéro de téléphone. Veuillez les supprimer et réessayer.",
     "moderationRefusedProfanity": "Votre message n'a pas été envoyé. Un filtre automatique a détecté un mot que nous n'autorisons pas dans le chat. Veuillez le modifier et réessayer.",
     "callTranscriptTranscribeButton": "Transcrire",
@@ -10402,5 +10397,10 @@
     "accountSetupFailedHelp": "Nous n'avons pas pu terminer la configuration de votre compte. Vérifiez votre connexion et réessayez, ou déconnectez-vous et connectez-vous plus tard.",
     "onboardingOfflineError": "Vous êtes hors ligne. Réessayez une fois que vous serez de nouveau connecté.",
     "activitySavedTo": "Activité enregistrée dans {page}",
+    "joinWithYourCode": "Rejoindre avec votre code",
+    "joinCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code pour vous ajouter automatiquement.",
+    "joinCodeLabel": "Code",
+    "joinCodeSaved": "Code {code} enregistré",
+    "joinCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons.",
     "sessionFinished": "Trop tard ! Cette activité est terminée."
 }

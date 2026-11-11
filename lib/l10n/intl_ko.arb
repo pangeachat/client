@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-09 14:56:00.715292",
+    "@@last_modified": "2026-11-10 13:06:13.609730",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10082,11 +10082,6 @@
     "callTranscriptPreparingRecording": "전체 녹음 준비 중…",
     "callTranscriptNoRecording": "전체 통화 녹음이 없습니다.",
     "callTranscriptNotSubscribed": "{name}님은 이 통화 중에 구독하지 않으셨으므로, 대화 내용이 기록되지 않았습니다.",
-    "joinYourCourse": "코스 참여하기",
-    "courseCodeJoinExplanation": "로그인 또는 가입하시면 코스 코드를 사용하여 자동으로 코스에 추가해 드립니다.",
-    "courseCodeLabel": "코스 코드",
-    "courseCodeSaved": "코스 코드 {code} 저장됨",
-    "courseCodeSavedExplanation": "가입하거나 로그인하시면 코스에 추가해 드립니다.",
     "moderationRefusedContactDetails": "메시지가 전송되지 않았습니다. 자동 필터에서 전화번호와 같은 연락처 정보를 감지했습니다. 해당 정보를 삭제하고 다시 시도해 주세요.",
     "moderationRefusedProfanity": "메시지가 전송되지 않았습니다. 자동 필터에서 채팅에서 허용되지 않는 단어를 감지했습니다. 해당 단어를 변경하고 다시 시도해 주세요.",
     "callTranscriptTranscribeButton": "텍스트 변환",
@@ -10243,5 +10238,10 @@
     "accountSetupFailedHelp": "계정을 설정할 수 없습니다. 연결 상태를 확인하고 다시 시도하거나, 로그아웃한 후 나중에 다시 로그인해 주세요.",
     "onboardingOfflineError": "오프라인 상태입니다. 온라인 상태가 되면 다시 시도해 주세요.",
     "activitySavedTo": "활동이 {page}에 저장되었습니다",
+    "joinWithYourCode": "코드로 참여하기",
+    "joinCodeJoinExplanation": "로그인 또는 가입하시면 회원님의 코드를 사용하여 자동으로 추가해 드립니다.",
+    "joinCodeLabel": "코드",
+    "joinCodeSaved": "코드 {code} 저장됨",
+    "joinCodeSavedExplanation": "가입하거나 로그인하시면 회원님을 추가해 드립니다.",
     "sessionFinished": "너무 늦었어요! 이 활동은 종료되었습니다."
 }

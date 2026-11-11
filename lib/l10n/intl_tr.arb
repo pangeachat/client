@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-11-09 14:56:05.367061",
+    "@@last_modified": "2026-11-10 13:06:20.441898",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10187,11 +10187,6 @@
     "callTranscriptPreparingRecording": "Tüm kayıt hazırlanıyor…",
     "callTranscriptNoRecording": "Tüm aramanın kaydı yok.",
     "callTranscriptNotSubscribed": "{name} bu arama sırasında bir aboneliğe sahip değildi, bu nedenle konuşulanlar yazıya dökülmedi.",
-    "joinYourCourse": "Kursunuza katılın",
-    "courseCodeJoinExplanation": "Giriş yapın veya kaydolun, kurs kodunuzu kullanarak sizi otomatik olarak kursunuza ekleyeceğiz.",
-    "courseCodeLabel": "Kurs kodu",
-    "courseCodeSaved": "{code} kurs kodu kaydedildi",
-    "courseCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi kursunuza ekleyeceğiz.",
     "moderationRefusedContactDetails": "Mesajınız gönderilemedi. Otomatik bir filtre telefon numarası gibi iletişim bilgileri buldu. Lütfen bunları kaldırın ve tekrar deneyin.",
     "moderationRefusedProfanity": "Mesajınız gönderilemedi. Otomatik bir filtre sohbette izin vermediğimiz bir kelime buldu. Lütfen bunu değiştirin ve tekrar deneyin.",
     "callTranscriptTranscribeButton": "Metne Çevir",
@@ -10348,5 +10343,10 @@
     "accountSetupFailedHelp": "Hesabınızı kurmayı tamamlayamadık. Bağlantınızı kontrol edin ve tekrar deneyin veya çıkış yapıp daha sonra tekrar giriş yapın.",
     "onboardingOfflineError": "Çevrimdışısın. İnternete bağlandığında tekrar dene.",
     "activitySavedTo": "Etkinlik şuraya kaydedildi: {page}",
+    "joinWithYourCode": "Kodunuzla katılın",
+    "joinCodeJoinExplanation": "Giriş yapın veya kaydolun, kodunuzu kullanarak sizi otomatik olarak ekleyeceğiz.",
+    "joinCodeLabel": "Kod",
+    "joinCodeSaved": "{code} kodu kaydedildi",
+    "joinCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi ekleyeceğiz.",
     "sessionFinished": "Çok geç! Bu etkinlik sona erdi."
 }

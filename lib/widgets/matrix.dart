@@ -43,13 +43,15 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/routes/chat/calls/call_audio_pending_store.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_ringing_ask.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
 import 'package:fluffychat/routes/chat/calls/ios_call_screen.dart';
-import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
+import 'package:fluffychat/routes/chat/calls/recording_transcription.dart';
+import 'package:fluffychat/routes/chat/calls/whole_call_transcriber.dart';
 import 'package:fluffychat/routes/chat/events/utils/pending_reports.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -64,6 +66,9 @@ import '../routes/settings/settings_device/key_verification_dialog.dart';
 import '../utils/account_bundles.dart';
 import '../utils/background_push.dart';
 import 'local_notifications_extension.dart';
+
+import 'package:fluffychat/routes/chat/calls/call_leave_guard_stub.dart'
+    if (dart.library.js_interop) 'package:fluffychat/routes/chat/calls/call_leave_guard_web.dart';
 
 // #Pangea
 // Pangea#
@@ -257,7 +262,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// [disposeAccountServices] removes the entry, and a service created after
   /// that point owns nothing that could outlive the account.
   CallService callServiceFor(String clientName) =>
-      _callServices[clientName] ??= CallService(
+      _callServices[clientName] ??= _newCallService(
         // The same last-resort the [client] getter keeps: a single-account
         // logout empties `clients` while widgets are still building against
         // it, and a service that throws `Bad state: No element` from a
@@ -267,8 +272,35 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           (c) => c.clientName == clientName,
           orElse: () => client,
         ),
-        recordingTranscriptEnabled: Environment.callRecordingTranscript,
       );
+
+  CallService _newCallService(Client client) => CallService(
+    client,
+    recordingTranscriptEnabled: Environment.callRecordingTranscript,
+  )..fillPeerHalves = _fillPeerHalves;
+
+  void _fillPeerHalves(Room room, String callKey) {
+    if (!Environment.callRecordingTranscript) return;
+    unawaited(
+      WholeCallTranscriber.forCall(
+        room: room,
+        transcribe: callAudioTranscriberFor(room.client),
+        isSubscribed: _isSubscribed,
+        peerLanguages: _peerCallLanguages,
+      ).transcribeAtCallEnd(callKey).catchError((Object e, StackTrace s) {
+        Logs().w('Could not fill in a call transcript', e, s);
+      }),
+    );
+  }
+
+  bool _isSubscribed() =>
+      pangeaController.subscriptionController.showSubscriptionGatedContent;
+
+  Future<({String? l1, String? l2})> _peerCallLanguages(String userId) async {
+    final profile = await pangeaController.userController
+        .getPublicAnalyticsProfile(userId);
+    return (l1: profile.baseLanguage, l2: profile.targetLanguage);
+  }
 
   // #Pangea
   /// The calling service for a SPECIFIC client OBJECT.
@@ -292,10 +324,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   CallService callServiceForClient(Client client) {
     final existing = _callServices[client.clientName];
     if (existing != null && identical(existing.client, client)) return existing;
-    return _callServices[client.clientName] = CallService(
-      client,
-      recordingTranscriptEnabled: Environment.callRecordingTranscript,
-    );
+    return _callServices[client.clientName] = _newCallService(client);
   }
   // Pangea#
 
@@ -350,6 +379,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     String? rejoinMembershipEventId,
     DateTime? rejoinSince,
     String? callerMembershipEventId,
+
+    /// The lifetime of the ring being answered (see
+    /// [call_ui.CallSession.start]).
+    Duration? answeredRingLifetime,
 
     /// Whether the call covers the whole app from its first frame, rather than
     /// waiting to be presented inside its own chat. Only a call answered on an
@@ -412,6 +445,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       rejoinAnchor: rejoinMembershipEventId,
       rejoinSince: rejoinSince,
       callerMembershipEventId: callerMembershipEventId,
+      answeredRingLifetime: answeredRingLifetime,
       // By the room's client OBJECT, not its name: the name-keyed getter
       // falls back to the ACTIVE account, and this is the call's own service
       // for its whole life. Resolving it the same way the incoming-call
@@ -430,29 +464,15 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         mute: L10n.of(context).callMute,
         channel: L10n.of(context).callOngoingChannel,
       ),
-      // The repo answers with a Result; the sink's contract is a value or a
-      // throw, and it already treats a throw as "this chunk's words are lost".
-      transcribe: (request) async {
-        final result = await SpeechToTextRepo.instance.get(request);
-        final value = result.asValue;
-        if (value == null) {
-          throw result.asError?.error ?? StateError('speech-to-text failed');
-        }
-        return value.value;
-      },
+      transcribe: callAudioTranscriberFor(room.client),
       userL1: languages.l1 ?? LanguageKeys.unknownLanguage,
       userL2: languages.l2 ?? LanguageKeys.unknownLanguage,
       // The whole-call transcriber's controller seams (#8792), supplied here
       // because this is where the controllers live. Both are read at run time,
       // never cached: `isSubscribed` is the invoker's LIVE entitlement, and the
       // peer languages come from the peer's public analytics profile.
-      isSubscribed: () =>
-          pangeaController.subscriptionController.showSubscriptionGatedContent,
-      peerLanguages: (userId) async {
-        final profile = await pangeaController.userController
-            .getPublicAnalyticsProfile(userId);
-        return (l1: profile.baseLanguage, l2: profile.targetLanguage);
-      },
+      isSubscribed: _isSubscribed,
+      peerLanguages: _peerCallLanguages,
       // Bound to the account that OWNS this call, captured now. Both of
       // these used to be read through the active-account getters at the
       // moment the recording finished, which is minutes later and after the
@@ -526,6 +546,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // The caller's own membership, named by their ring: the call's SHARED
         // identity, which every card for this call is stamped with.
         callerMembershipEventId: ring.membershipEventId,
+        answeredRingLifetime: ring.lifetime,
         fullscreen: !onActiveAccount,
       );
     } on AlreadyInACall {
@@ -953,6 +974,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    activeCall.addListener(_guardLeaving);
+    callAudioWaitingToSend.addListener(_guardLeaving);
+    _guardLeaving();
     initMatrix();
     // #Pangea
     Sentry.configureScope(
@@ -1423,17 +1447,47 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
   }
 
+  /// On the web, closing the tab asks first while it would end a call or leave
+  /// a recording behind.
+  void _guardLeaving() => setCallLeaveGuard(
+    activeCall.value != null || callAudioWaitingToSend.value,
+  );
+
+  /// Whether an account syncs in [state]: only in the foreground, unless a ring
+  /// is on the iOS call screen. The ring ends through sync -- the caller
+  /// hanging up only retracts their membership -- so with sync off the phone
+  /// rang out its whole lifetime after the caller had gone (#9558).
+  static bool syncsIn(AppLifecycleState? state, {required bool ringing}) =>
+      ringing ||
+      (state != AppLifecycleState.inactive &&
+          state != AppLifecycleState.paused);
+
+  /// The accounts with a ring on the iOS call screen.
+  @visibleForTesting
+  final Set<Client> syncKeptForRing = {};
+
+  /// Keeps [client] syncing while a ring is on the iOS call screen.
+  void keepSyncingForRing(Client client, {required bool ringing}) {
+    ringing ? syncKeptForRing.add(client) : syncKeptForRing.remove(client);
+    if (!PlatformInfos.isMobile) return;
+    client.backgroundSync = syncsIn(
+      WidgetsBinding.instance.lifecycleState,
+      ringing: ringing,
+    );
+  }
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    final foreground =
-        state != AppLifecycleState.inactive &&
-        state != AppLifecycleState.paused;
+    final foreground = syncsIn(state, ringing: false);
     for (final client in widget.clients) {
       client.syncPresence = state == AppLifecycleState.resumed
           ? null
           : PresenceType.unavailable;
       if (PlatformInfos.isMobile) {
-        client.backgroundSync = foreground;
+        client.backgroundSync = syncsIn(
+          state,
+          ringing: syncKeptForRing.contains(client),
+        );
         client.requestHistoryOnLimitedTimeline = !foreground;
         Logs().v('Set background sync to', foreground);
       }
@@ -1456,6 +1510,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    activeCall.removeListener(_guardLeaving);
+    callAudioWaitingToSend.removeListener(_guardLeaving);
+    setCallLeaveGuard(false);
 
     // #Pangea
     // A call must never outlive the account UI that owns it. Disposing the

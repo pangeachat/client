@@ -195,6 +195,8 @@ class FilteredNetworkController {
     if (tellsConnection) {
       ConnectionStatusController.instance.onChatServerChecked(verdict);
     }
+    // Only our own servers are held: a deploy restarts no other host, and a
+    // sign-in cannot wait.
     if (verdict == NetworkVerdict.filtered &&
         needed == NetworkProbeResult.refused &&
         category.isOurServer) {
@@ -250,7 +252,8 @@ class FilteredNetworkController {
 
   /// A backgrounded app's requests fail because the OS paused them, so
   /// nothing a check sees there is a verdict. The banner's own signal, so
-  /// the two agree on when the app is in the background.
+  /// the two agree on when the app is in the background. Coming back starts
+  /// no check; the next failed request does.
   bool get _inForeground =>
       ConnectionStatusController.instance.isAppInForeground();
 
@@ -291,6 +294,10 @@ class FilteredNetworkController {
     unawaited(NetworkHelpRepo.flush());
   }
 
+  /// The "no response" warning (repos-and-error-handling.instructions.md)
+  /// still fires; this event says why. An event the phone apps cannot send
+  /// waits for the next good connection; the web app has no such store, so
+  /// there the help request is the user's way to reach us.
   Future<void> _report(
     NetworkHostCategory category,
     NetworkProbeResult needed,

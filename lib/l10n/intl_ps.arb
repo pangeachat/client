@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-11-09 14:56:03.387799",
+    "@@last_modified": "2026-11-10 13:06:17.323065",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "د بشپړ ریکارډ چمتو کول…",
     "callTranscriptNoRecording": "د بشپړ زنګ هیڅ ریکارډ نشته.",
     "callTranscriptNotSubscribed": "{name} د دې زنګ پر مهال ګډون نه درلود، نو هغه څه چې ویل شوي وو نه دي لیکل شوي.",
-    "joinYourCourse": "خپل کورس سره یوځای شئ",
-    "courseCodeJoinExplanation": "ننوتل یا نوم لیکنه وکړئ، او موږ به ستاسو د کورس کوډ وکاروو ترڅو تاسو په اتوماتيک ډول ستاسو کورس ته اضافه کړو.",
-    "courseCodeLabel": "د کورس کوډ",
-    "courseCodeSaved": "د کورس کوډ {code} خوندي شو",
-    "courseCodeSavedExplanation": "نوم لیکنه وکړئ یا ننوتل او موږ به تاسو خپل کورس ته اضافه کړو.",
     "moderationRefusedContactDetails": "ستاسو پیغام ونه لیږدول شو. یو اتوماتیک فلټر د اړیکو معلومات وموندل، لکه د تلیفون شمیره. مهرباني وکړئ هغه لرې کړئ او بیا هڅه وکړئ.",
     "moderationRefusedProfanity": "ستاسو پیغام ونه لیږدول شو. یو اتوماتیک فلټر یوه کلمه وموندله چې موږ یې په چیټ کې اجازه نه ورکوو. مهرباني وکړئ هغه بدله کړئ او بیا هڅه وکړئ.",
     "callTranscriptTranscribeButton": "ژباړه",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "موږ ونه شو کړای چې ستاسو حساب جوړ کړو. خپله اړیکه وګورئ او بیا هڅه وکړئ، یا لاګ آوټ شئ او وروسته بیا ننوتل وکړئ.",
     "onboardingOfflineError": "تاسو آفلاین یاست. یوځل بیا هڅه وکړئ کله چې تاسو آنلاین شئ.",
     "activitySavedTo": "فعالیت په {page} کې خوندي شو",
+    "joinWithYourCode": "د خپل کوډ سره یوځای شئ",
+    "joinCodeJoinExplanation": "ننوتل یا نوم لیکنه وکړئ، او موږ به ستاسو کوډ په اتوماتيک ډول د اضافه کولو لپاره وکاروو.",
+    "joinCodeLabel": "کوډ",
+    "joinCodeSaved": "کوډ {code} خوندي شو",
+    "joinCodeSavedExplanation": "نوم لیکنه وکړئ یا ننوتل او موږ به تاسو اضافه کړو.",
     "sessionFinished": "ډېر ناوخته! دا فعالیت پای ته رسیدلی دی."
 }

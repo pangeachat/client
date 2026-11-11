@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-11-09 14:56:01.493522",
+    "@@last_modified": "2026-11-10 13:06:14.746627",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Déi ganz Opnam gëtt virbereet …",
     "callTranscriptNoRecording": "Keng Opnam vum ganze Gespréich.",
     "callTranscriptNotSubscribed": "{name} hat während dësem Uruff keen Abonnement, dofir gouf dat Gesotent net transkribéiert.",
-    "joinYourCourse": "Maach bei dengem Cours mat",
-    "courseCodeJoinExplanation": "Mell dech un oder registréier dech, a mir benotzen däi Cours-Code fir dech automatesch zu dengem Cours dobäizesetzen.",
-    "courseCodeLabel": "Cours-Code",
-    "courseCodeSaved": "Cours-Code {code} gespäichert",
-    "courseCodeSavedExplanation": "Mell dech un oder registréier dech a mir setzen dech zu dengem Cours dobäi.",
     "moderationRefusedContactDetails": "Äre Message gouf net geschéckt. En automatesche Filter huet Kontaktdetailer, wéi eng Telefonsnummer, fonnt. Huelt se w.e.g. ewech a probéiert et nach eng Kéier.",
     "moderationRefusedProfanity": "Äre Message gouf net geschéckt. En automatesche Filter huet e Wuert fonnt, dat mir am Chat net erlaben. Ännert et w.e.g. a probéiert et nach eng Kéier.",
     "callTranscriptTranscribeButton": "Transkribéieren",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "Mir konnten Äre Kont net fäerdeg astellen. Kontrolléiert Är Verbindung a probéiert et nach eng Kéier, oder mellt Iech of a mellt Iech méi spéit un.",
     "onboardingOfflineError": "Dir sidd offline. Probéiert et nach eng Kéier wann Dir erëm online sidd.",
     "activitySavedTo": "Aktivitéit gespäichert op {page}",
+    "joinWithYourCode": "Mat dengem Code bäitrieden",
+    "joinCodeJoinExplanation": "Mell dech un oder registréier dech, a mir benotzen däi Code fir dech automatesch dobäizefügen.",
+    "joinCodeLabel": "Code",
+    "joinCodeSaved": "Code {code} gespäichert",
+    "joinCodeSavedExplanation": "Registréier dech oder mell dech un a mir fügen dech dobäi.",
     "sessionFinished": "Ze spéit! Dës Aktivitéit ass eriwwer."
 }

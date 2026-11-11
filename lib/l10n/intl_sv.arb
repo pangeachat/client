@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-09 14:56:05.471114",
+    "@@last_modified": "2026-11-10 13:06:19.683823",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10404,11 +10404,6 @@
     "callTranscriptPreparingRecording": "Förbereder hela inspelningen…",
     "callTranscriptNoRecording": "Ingen inspelning av hela samtalet.",
     "callTranscriptNotSubscribed": "{name} hade ingen prenumeration under det här samtalet, så det som sades transkriberades inte.",
-    "joinYourCourse": "Gå med i din kurs",
-    "courseCodeJoinExplanation": "Logga in eller registrera dig, så använder vi din kurskod för att automatiskt lägga till dig i din kurs.",
-    "courseCodeLabel": "Kurskod",
-    "courseCodeSaved": "Kurskod {code} sparad",
-    "courseCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig i din kurs.",
     "moderationRefusedContactDetails": "Ditt meddelande skickades inte. Ett automatiskt filter hittade kontaktuppgifter, som ett telefonnummer. Ta bort dem och försök igen.",
     "moderationRefusedProfanity": "Ditt meddelande skickades inte. Ett automatiskt filter hittade ett ord som vi inte tillåter i chatten. Ändra det och försök igen.",
     "callTranscriptTranscribeButton": "Transkribera",
@@ -10565,5 +10560,10 @@
     "accountSetupFailedHelp": "Vi kunde inte slutföra installationen av ditt konto. Kontrollera din anslutning och försök igen, eller logga ut och logga in senare.",
     "onboardingOfflineError": "Du är offline. Försök igen när du är online igen.",
     "activitySavedTo": "Aktivitet sparad i {page}",
+    "joinWithYourCode": "Gå med med din kod",
+    "joinCodeJoinExplanation": "Logga in eller registrera dig, så använder vi din kod för att lägga till dig automatiskt.",
+    "joinCodeLabel": "Kod",
+    "joinCodeSaved": "Kod {code} sparad",
+    "joinCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig.",
     "sessionFinished": "För sent! Den här aktiviteten är avslutad."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-11-09 14:55:58.502947",
+    "@@last_modified": "2026-11-10 13:06:10.898149",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9889,11 +9889,6 @@
     "callTranscriptPreparingRecording": "Preparando a gravación completa…",
     "callTranscriptNoRecording": "Non hai gravación da chamada completa.",
     "callTranscriptNotSubscribed": "{name} non tiña unha subscrición durante esta chamada, polo que o que se dixo non foi transcrito.",
-    "joinYourCourse": "Únete ao teu curso",
-    "courseCodeJoinExplanation": "Inicia sesión ou rexístrate, e usaremos o teu código de curso para engadirte ao teu curso automaticamente.",
-    "courseCodeLabel": "Código do curso",
-    "courseCodeSaved": "Código do curso {code} gardado",
-    "courseCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste ao teu curso.",
     "moderationRefusedContactDetails": "A túa mensaxe non foi enviada. Un filtro automático atopou detalles de contacto, como un número de teléfono. Elimínaos e téntao de novo.",
     "moderationRefusedProfanity": "A túa mensaxe non foi enviada. Un filtro automático atopou unha palabra que non permitimos no chat. Cámbiaa e téntao de novo.",
     "callTranscriptTranscribeButton": "Transcribir",
@@ -10050,5 +10045,10 @@
     "accountSetupFailedHelp": "Non puidemos rematar de configurar a túa conta. Comproba a túa conexión e téntao de novo, ou pecha a sesión e inicia sesión máis tarde.",
     "onboardingOfflineError": "Non tes conexión. Téntao de novo cando volvas ter conexión.",
     "activitySavedTo": "Actividade gardada en {page}",
+    "joinWithYourCode": "Unirse co teu código",
+    "joinCodeJoinExplanation": "Inicia sesión ou rexístrate, e usaremos o teu código para engadirte automaticamente.",
+    "joinCodeLabel": "Código",
+    "joinCodeSaved": "Código {code} gardado",
+    "joinCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste.",
     "sessionFinished": "Demasiado tarde! Esta actividade rematou."
 }

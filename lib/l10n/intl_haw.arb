@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-11-09 14:56:03.593751",
+    "@@last_modified": "2026-11-10 13:06:11.546730",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Ke hoʻomākaukau ʻia nei ka hoʻopaʻa leo piha…",
     "callTranscriptNoRecording": "ʻAʻohe hoʻopaʻa leo o ke kāhea piha.",
     "callTranscriptNotSubscribed": "ʻAʻohe kau inoa o {name} i ka wā o kēia kelepona ʻana, no laila, ʻaʻole i kākau ʻia ka mea i ʻōlelo ʻia.",
-    "joinYourCourse": "E hui pū me kāu papa",
-    "courseCodeJoinExplanation": "E ʻeʻe a i ʻole e kau inoa, a e hoʻohana mākou i kāu code papa e hoʻohui aunoa iā ʻoe i kāu papa.",
-    "courseCodeLabel": "Code papa",
-    "courseCodeSaved": "Ua mālama ʻia ke code papa {code}",
-    "courseCodeSavedExplanation": "E kau inoa a i ʻole e ʻeʻe a e hoʻohui mākou iā ʻoe i kāu papa.",
     "moderationRefusedContactDetails": "ʻAʻole i hoʻouna ʻia kāu leka. Ua loaʻa i kahi kānana ʻakomi nā kikoʻī pili, e like me ka helu kelepona. E ʻoluʻolu e wehe a hoʻāʻo hou.",
     "moderationRefusedProfanity": "ʻAʻole i hoʻouna ʻia kāu leka. Ua loaʻa i kahi kānana ʻakomi kahi huaʻōlelo a mākou e ʻae ʻole ai ma ke kamaʻilio. E ʻoluʻolu e hoʻololi a hoʻāʻo hou.",
     "callTranscriptTranscribeButton": "Kākau",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "ʻAʻole hiki iā mākou ke hoʻopau i ka hoʻonohonoho ʻana i kāu moʻokāki. E nānā i kāu pili a e hoʻāʻo hou, a i ʻole e haʻalele a e komo hou ma hope.",
     "onboardingOfflineError": "Aia ʻoe ma waho pūnaewele. E hoʻāʻo hou ke hoʻi mai ʻoe i ka pūnaewele.",
     "activitySavedTo": "Ua mālama ʻia ka hana ma {page}",
+    "joinWithYourCode": "E hui me kāu code",
+    "joinCodeJoinExplanation": "E ʻeʻe a i ʻole e kau inoa, a e hoʻohana mākou i kāu code e hoʻohui aunoa iā ʻoe.",
+    "joinCodeLabel": "Code",
+    "joinCodeSaved": "Ua mālama ʻia ke code {code}",
+    "joinCodeSavedExplanation": "E kau inoa a i ʻole e ʻeʻe a e hoʻohui mākou iā ʻoe.",
     "sessionFinished": "Ua lohi! Ua pau kēia hana."
 }

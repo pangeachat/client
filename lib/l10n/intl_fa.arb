@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-09 14:55:58.102248",
+    "@@last_modified": "2026-11-10 13:06:10.074785",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9977,11 +9977,6 @@
     "callTranscriptPreparingRecording": "در حال آماده‌سازی ضبط کامل...",
     "callTranscriptNoRecording": "هیچ ضبطی از مکالمه کامل وجود ندارد.",
     "callTranscriptNotSubscribed": "{name} در طول این تماس اشتراک نداشت، بنابراین آنچه گفته شد رونویسی نشد.",
-    "joinYourCourse": "به دوره خود بپیوندید",
-    "courseCodeJoinExplanation": "وارد شوید یا ثبت‌نام کنید، و ما از کد دوره شما برای افزودن خودکار شما به دوره استفاده خواهیم کرد.",
-    "courseCodeLabel": "کد دوره",
-    "courseCodeSaved": "کد دوره {code} ذخیره شد",
-    "courseCodeSavedExplanation": "ثبت‌نام کنید یا وارد شوید و ما شما را به دوره شما اضافه خواهیم کرد.",
     "moderationRefusedContactDetails": "پیام شما ارسال نشد. یک فیلتر خودکار جزئیات تماس، مانند شماره تلفن، را پیدا کرد. لطفاً آن‌ها را حذف کرده و دوباره تلاش کنید.",
     "moderationRefusedProfanity": "پیام شما ارسال نشد. یک فیلتر خودکار کلمه‌ای را پیدا کرد که ما در چت مجاز نمی‌دانیم. لطفاً آن را تغییر داده و دوباره تلاش کنید.",
     "callTranscriptTranscribeButton": "رونویسی",
@@ -10138,5 +10133,10 @@
     "accountSetupFailedHelp": "ما نتوانستیم راه‌اندازی حساب شما را به پایان برسانیم. اتصال خود را بررسی کنید و دوباره امتحان کنید، یا از سیستم خارج شوید و بعداً وارد شوید.",
     "onboardingOfflineError": "شما آفلاین هستید. وقتی آنلاین شدید دوباره امتحان کنید.",
     "activitySavedTo": "فعالیت در {page} ذخیره شد",
+    "joinWithYourCode": "با کد خود بپیوندید",
+    "joinCodeJoinExplanation": "وارد شوید یا ثبت‌نام کنید، و ما از کد شما برای افزودن خودکار شما استفاده خواهیم کرد.",
+    "joinCodeLabel": "کد",
+    "joinCodeSaved": "کد {code} ذخیره شد",
+    "joinCodeSavedExplanation": "ثبت‌نام کنید یا وارد شوید و ما شما را اضافه خواهیم کرد.",
     "sessionFinished": "دیر شد! این فعالیت به پایان رسیده است."
 }

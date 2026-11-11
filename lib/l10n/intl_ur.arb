@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-11-09 14:56:06.192418",
+    "@@last_modified": "2026-11-10 13:06:20.888956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "مکمل ریکارڈنگ تیار کی جا رہی ہے…",
     "callTranscriptNoRecording": "مکمل کال کی کوئی ریکارڈنگ نہیں ہے۔",
     "callTranscriptNotSubscribed": "{name} کے پاس اس کال کے دوران کوئی سبسکرپشن نہیں تھی، لہذا جو کچھ کہا گیا اسے نقل نہیں کیا گیا۔",
-    "joinYourCourse": "اپنے کورس میں شامل ہوں",
-    "courseCodeJoinExplanation": "لاگ ان کریں یا سائن اپ کریں، اور ہم آپ کو آپ کے کورس کوڈ کا استعمال کرتے ہوئے خود بخود آپ کے کورس میں شامل کر دیں گے۔",
-    "courseCodeLabel": "کورس کوڈ",
-    "courseCodeSaved": "کورس کوڈ {code} محفوظ ہو گیا",
-    "courseCodeSavedExplanation": "سائن اپ کریں یا لاگ ان کریں اور ہم آپ کو آپ کے کورس میں شامل کر دیں گے۔",
     "moderationRefusedContactDetails": "آپ کا پیغام نہیں بھیجا گیا۔ ایک خودکار فلٹر نے رابطے کی تفصیلات، جیسے کہ فون نمبر، پایا ہے۔ براہ کرم انہیں ہٹا دیں اور دوبارہ کوشش کریں۔",
     "moderationRefusedProfanity": "آپ کا پیغام نہیں بھیجا گیا۔ ایک خودکار فلٹر نے ایک ایسا لفظ پایا ہے جس کی ہم چیٹ میں اجازت نہیں دیتے۔ براہ کرم اسے تبدیل کریں اور دوبارہ کوشش کریں۔",
     "callTranscriptTranscribeButton": "ٹرانسکرائب کریں",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "ہم آپ کا اکاؤنٹ سیٹ اپ مکمل نہیں کر سکے۔ اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں، یا لاگ آؤٹ کر کے بعد میں سائن ان کریں۔",
     "onboardingOfflineError": "آپ آف لائن ہیں۔ ایک بار جب آپ آن لائن ہو جائیں تو دوبارہ کوشش کریں۔",
     "activitySavedTo": "سرگرمی {page} میں محفوظ ہو گئی",
+    "joinWithYourCode": "اپنے کوڈ کے ساتھ شامل ہوں",
+    "joinCodeJoinExplanation": "لاگ ان کریں یا سائن اپ کریں، اور ہم آپ کو خود بخود شامل کرنے کے لیے آپ کا کوڈ استعمال کریں گے۔",
+    "joinCodeLabel": "کوڈ",
+    "joinCodeSaved": "کوڈ {code} محفوظ ہو گیا",
+    "joinCodeSavedExplanation": "سائن اپ کریں یا لاگ ان کریں اور ہم آپ کو شامل کر لیں گے۔",
     "sessionFinished": "بہت دیر ہو گئی! یہ سرگرمی ختم ہو گئی ہے۔"
 }

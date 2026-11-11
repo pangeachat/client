@@ -109,7 +109,14 @@ class TestRoster extends CallRoster {
   bool get roomConnected => connected;
 
   @override
-  bool get roomRecovering => !connected && recovering;
+  bool get roomRecovering => !connected && recovering && !roomGaveUp;
+}
+
+/// Reads the real room state, unlike [TestRoster].
+class _RealStateRoster extends CallRoster {
+  _RealStateRoster({required super.room, required super.myUserId});
+
+  bool get recovering => roomRecovering;
 }
 
 /// A believable join stamp for the tests that are not about join times.
@@ -131,6 +138,73 @@ void main() {
   });
 
   tearDown(() => roster.dispose());
+
+  // Between reconnect attempts LiveKit reports `disconnected` while it is still
+  // trying: each attempt tears the old socket down first. Reading that as the
+  // end hung up a call on attempt 1 of 10 during a 20s SFU pause. The room's
+  // own disconnected event is the only sign it has given up.
+  group('a dropped connection', () {
+    test('is recovering until the room says it has given up', () async {
+      final real = _RealStateRoster(room: room, myUserId: me);
+      addTearDown(real.dispose);
+      expect(room.connectionState, lk.ConnectionState.disconnected);
+
+      expect(real.recovering, isTrue);
+
+      // What the room raises when its reconnect attempts run out. Its public
+      // stream, as an unconnected room raises no such event of its own.
+      room.events.streamCtrl.add(
+        lk.RoomDisconnectedEvent(
+          reason: lk.DisconnectReason.reconnectAttemptsExceeded,
+        ),
+      );
+      await pumpEventQueue();
+
+      expect(real.recovering, isFalse);
+    });
+
+    void giveUp() => room.events.streamCtrl.add(
+      lk.RoomDisconnectedEvent(
+        reason: lk.DisconnectReason.reconnectAttemptsExceeded,
+      ),
+    );
+
+    // Still ringing alone: recovery starts with nobody in the picture, so only
+    // the recovery itself changes when the room gives up. A listener waiting
+    // on recovery must still hear it.
+    test('giving up from an empty call is heard', () async {
+      roster.connected = false;
+      roster.recompute();
+      expect(roster.isRecovering, isTrue);
+      final before = notifications;
+
+      giveUp();
+      await pumpEventQueue();
+
+      expect(roster.isRecovering, isFalse);
+      expect(notifications, greaterThan(before));
+    });
+
+    test(
+      'the picture is kept while recovering and cleared on giving up',
+      () async {
+        roster.identities = {'$peer:THEIRPHONE'};
+        roster.recompute();
+        roster.connected = false;
+        roster.recompute();
+        expect(roster.isRecovering, isTrue);
+        expect(roster.hasPeer, isTrue, reason: 'kept while it comes back');
+        final before = notifications;
+
+        giveUp();
+        await pumpEventQueue();
+
+        expect(roster.isRecovering, isFalse);
+        expect(roster.hasPeer, isFalse, reason: 'gone for good');
+        expect(notifications, greaterThan(before));
+      },
+    );
+  });
 
   group('reading who is in the call', () {
     test('sees a peer who was already here before this device joined', () {

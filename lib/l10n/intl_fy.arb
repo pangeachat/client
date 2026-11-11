@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-11-09 14:55:58.523558",
+    "@@last_modified": "2026-11-10 13:06:10.747167",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "De folsleine opname wurdt taret…",
     "callTranscriptNoRecording": "Gjin opname fan de folsleine oprop.",
     "callTranscriptNotSubscribed": "{name} hie gjin abonnemint tidens dit petear, dus wat sein waard is net transkribearre.",
-    "joinYourCourse": "Doch mei oan dyn kursus",
-    "courseCodeJoinExplanation": "Meld dy oan of registrearje dy, en wy sille dyn kursuskoade brûke om dy automatysk oan dyn kursus ta te foegjen.",
-    "courseCodeLabel": "Kursuskoade",
-    "courseCodeSaved": "Kursuskoade {code} bewarre",
-    "courseCodeSavedExplanation": "Meld dy oan of registrearje dy en wy sille dy tafoegje oan dyn kursus.",
     "moderationRefusedContactDetails": "Jo berjocht is net ferstjoerd. In automatysk filter hat kontaktgegevens, lykas in telefoannûmer, fûn. Ferwiderje dy en besykje it opnij.",
     "moderationRefusedProfanity": "Jo berjocht is net ferstjoerd. In automatysk filter hat in wurd fûn dat wy net tastean yn de chat. Feroarje it en besykje it opnij.",
     "callTranscriptTranscribeButton": "Transkriberje",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "Wy koene jo akkount net ynstelle. Kontrolearje jo ferbining en besykje it opnij, of meld jo ôf en meld jo letter wer oan.",
     "onboardingOfflineError": "Jo binne offline. Besykje it opnij as jo wer online binne.",
     "activitySavedTo": "Aktiviteit bewarre yn {page}",
+    "joinWithYourCode": "Meidwaan mei dyn koade",
+    "joinCodeJoinExplanation": "Meld dy oan of registrearje dy, en wy sille dyn koade brûke om dy automatysk ta te foegjen.",
+    "joinCodeLabel": "Koade",
+    "joinCodeSaved": "Koade {code} bewarre",
+    "joinCodeSavedExplanation": "Meld dy oan of registrearje dy en wy sille dy tafoegje.",
     "sessionFinished": "Te let! Dizze aktiviteit is dien."
 }

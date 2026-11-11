@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-11-09 14:55:59.851051",
+    "@@last_modified": "2026-11-10 13:06:12.851621",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Undirbý alla upptökuna…",
     "callTranscriptNoRecording": "Engin upptaka af öllu símtalinu.",
     "callTranscriptNotSubscribed": "{name} var ekki með áskrift í þessu símtali, svo það sem sagt var var ekki umritað.",
-    "joinYourCourse": "Skráðu þig í námskeiðið þitt",
-    "courseCodeJoinExplanation": "Skráðu þig inn eða stofnaðu aðgang og við munum nota námskeiðskóðann þinn til að bæta þér sjálfkrafa við námskeiðið þitt.",
-    "courseCodeLabel": "Námskeiðskóði",
-    "courseCodeSaved": "Námskeiðskóði {code} vistaður",
-    "courseCodeSavedExplanation": "Skráðu þig eða skráðu þig inn og við munum bæta þér við námskeiðið þitt.",
     "moderationRefusedContactDetails": "Skilaboðin þín voru ekki send. Sjálfvirk sía fann samskiptaupplýsingar, eins og símanúmer. Vinsamlegast fjarlægðu þær og reyndu aftur.",
     "moderationRefusedProfanity": "Skilaboðin þín voru ekki send. Sjálfvirk sía fann orð sem við leyfum ekki í spjalli. Vinsamlegast breyttu því og reyndu aftur.",
     "callTranscriptTranscribeButton": "Umrita",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "Við gátum ekki lokið við að setja upp reikninginn þinn. Athugaðu tenginguna þína og reyndu aftur, eða skráðu þig út og inn aftur síðar.",
     "onboardingOfflineError": "Þú ert ótengdur. Reyndu aftur þegar þú ert kominn aftur á netið.",
     "activitySavedTo": "Virkni vistuð á {page}",
+    "joinWithYourCode": "Skráðu þig með kóðanum þínum",
+    "joinCodeJoinExplanation": "Skráðu þig inn eða stofnaðu aðgang og við notum kóðann þinn til að bæta þér sjálfkrafa við.",
+    "joinCodeLabel": "Kóði",
+    "joinCodeSaved": "Kóði {code} vistaður",
+    "joinCodeSavedExplanation": "Skráðu þig inn eða stofnaðu aðgang og við bætum þér við.",
     "sessionFinished": "Of seint! Þessari virkni er lokið."
 }

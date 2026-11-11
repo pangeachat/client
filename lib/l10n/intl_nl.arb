@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-09 14:56:02.942637",
+    "@@last_modified": "2026-11-10 13:06:16.311840",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9889,11 +9889,6 @@
     "callTranscriptPreparingRecording": "De volledige opname wordt voorbereid…",
     "callTranscriptNoRecording": "Geen opname van het volledige gesprek.",
     "callTranscriptNotSubscribed": "{name} had geen abonnement tijdens dit gesprek, dus wat er werd gezegd, is niet getranscribeerd.",
-    "joinYourCourse": "Deelnemen aan je cursus",
-    "courseCodeJoinExplanation": "Log in of meld je aan, en we gebruiken je cursuscode om je automatisch aan je cursus toe te voegen.",
-    "courseCodeLabel": "Cursuscode",
-    "courseCodeSaved": "Cursuscode {code} opgeslagen",
-    "courseCodeSavedExplanation": "Meld je aan of log in en we voegen je toe aan je cursus.",
     "moderationRefusedContactDetails": "Je bericht is niet verzonden. Een automatisch filter heeft contactgegevens, zoals een telefoonnummer, gedetecteerd. Verwijder deze en probeer het opnieuw.",
     "moderationRefusedProfanity": "Je bericht is niet verzonden. Een automatisch filter heeft een woord gedetecteerd dat we niet toestaan in de chat. Wijzig dit en probeer het opnieuw.",
     "callTranscriptTranscribeButton": "Transcripteren",
@@ -10050,5 +10045,10 @@
     "accountSetupFailedHelp": "We konden je account niet instellen. Controleer je verbinding en probeer het opnieuw, of log uit en meld je later aan.",
     "onboardingOfflineError": "Je bent offline. Probeer het opnieuw zodra je weer online bent.",
     "activitySavedTo": "Activiteit opgeslagen in {page}",
+    "joinWithYourCode": "Deelnemen met je code",
+    "joinCodeJoinExplanation": "Log in of meld je aan, en we gebruiken je code om je automatisch toe te voegen.",
+    "joinCodeLabel": "Code",
+    "joinCodeSaved": "Code {code} opgeslagen",
+    "joinCodeSavedExplanation": "Meld je aan of log in en we voegen je toe.",
     "sessionFinished": "Te laat! Deze activiteit is afgelopen."
 }

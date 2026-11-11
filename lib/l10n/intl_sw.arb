@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-11-09 14:56:05.376668",
+    "@@last_modified": "2026-11-10 13:06:19.534358",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Tunatayarisha rekodi kamili…",
     "callTranscriptNoRecording": "Hakuna rekodi ya simu nzima.",
     "callTranscriptNotSubscribed": "{name} hakuwa na usajili wakati wa simu hii, kwa hivyo yaliyosemwa hayakuandikwa.",
-    "joinYourCourse": "Jiunge na kozi yako",
-    "courseCodeJoinExplanation": "Ingia au jisajili, na tutatumia msimbo wako wa kozi kukuongeza kwenye kozi yako kiotomatiki.",
-    "courseCodeLabel": "Msimbo wa kozi",
-    "courseCodeSaved": "Msimbo wa kozi {code} umefanikiwa kuhifadhiwa",
-    "courseCodeSavedExplanation": "Jisajili au ingia na tutakuongeza kwenye kozi yako.",
     "moderationRefusedContactDetails": "Ujumbe wako haukutumwa. Kichujio otomatiki kimepata maelezo ya mawasiliano, kama namba ya simu. Tafadhali yatoe na ujaribu tena.",
     "moderationRefusedProfanity": "Ujumbe wako haukutumwa. Kichujio otomatiki kimepata neno tusiloruhusu kwenye gumzo. Tafadhali libadilishe na ujaribu tena.",
     "callTranscriptTranscribeButton": "Nakili",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "Hatukuweza kumaliza kusanidi akaunti yako. Angalia muunganisho wako na ujaribu tena, au ingia na uingie baadaye.",
     "onboardingOfflineError": "Hauna intaneti. Jaribu tena ukiwa mtandaoni.",
     "activitySavedTo": "Shughuli imehifadhiwa kwenye {page}",
+    "joinWithYourCode": "Jiunge na msimbo wako",
+    "joinCodeJoinExplanation": "Ingia au jisajili, na tutatumia msimbo wako kukujumuisha kiotomatiki.",
+    "joinCodeLabel": "Msimbo",
+    "joinCodeSaved": "Msimbo {code} umefungwa",
+    "joinCodeSavedExplanation": "Jisajili au ingia na tutakujumuisha.",
     "sessionFinished": "Umechelewa! Shughuli hii imekwisha."
 }

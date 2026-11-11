@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-11-09 14:56:06.457806",
+    "@@last_modified": "2026-11-10 13:06:21.891846",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Kulungiselelwa okurekhodiwe okuphelele…",
     "callTranscriptNoRecording": "Akukho okurekhodiwe kocingo lonke.",
     "callTranscriptNotSubscribed": "{name} ubengabhalisile ngesikhathi socingo, ngakho-ke lokho okwashiwo akuzange kubhalwe.",
-    "joinYourCourse": "Joyina ikhosi lakho",
-    "courseCodeJoinExplanation": "Ngena noma bhalisa, futhi sizosebenzisa ikhodi yekhosi lakho ukukufaka ngokuzenzakalelayo ekosini lakho.",
-    "courseCodeLabel": "Ikhodi yekhosi",
-    "courseCodeSaved": "Ikhodi yekhosi {code} ilondoloziwe",
-    "courseCodeSavedExplanation": "Bhalisa noma ungene futhi sizokufaka ekosini lakho.",
     "moderationRefusedContactDetails": "Umlayezo wakho awuthunyelwanga. Isihlungi esizenzakalelayo sithole imininingwane yokuxhumana, njengenombolo yocingo. Sicela uyisuse bese uzama futhi.",
     "moderationRefusedProfanity": "Umlayezo wakho awuthunyelwanga. Isihlungi esizenzakalelayo sithole igama esingalivumi engxoxweni. Sicela ulishintshe bese uzama futhi.",
     "callTranscriptTranscribeButton": "Guqula ube umbhalo",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "Asikwazanga ukuqeda ukusetha i-akhawunti yakho. Hlola uxhumano lwakho bese uzama futhi, noma phuma bese ungena ngemvume kamuva.",
     "onboardingOfflineError": "Awuxhunyiwe ku-inthanethi. Zama futhi uma usubuyele ku-inthanethi.",
     "activitySavedTo": "Umsebenzi ulondolozwe ku-{page}",
+    "joinWithYourCode": "Joyina ngekhodi yakho",
+    "joinCodeJoinExplanation": "Ngena noma bhalisa, bese sizosebenzisa ikhodi yakho ukukufaka ngokuzenzakalelayo.",
+    "joinCodeLabel": "Ikhodi",
+    "joinCodeSaved": "Ikhodi {code} igciniwe",
+    "joinCodeSavedExplanation": "Bhalisa noma ngena bese sizokufaka.",
     "sessionFinished": "Sekwephuze kakhulu! Lo msebenzi usuphelile."
 }

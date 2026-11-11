@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-11-09 14:56:02.505190",
+    "@@last_modified": "2026-11-10 13:06:16.841213",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Pumba recording adu sem-sari...",
     "callTranscriptNoRecording": "Pumba call adugi recording leite.",
     "callTranscriptNotSubscribed": "{name} ना खলগী মতমদা subscription লৈরম্বদগী, ৱা ঙাংলিবশিং অদু transcribe তৌদ্রি।",
-    "joinYourCourse": "ನಾಲೈ-ನಾಲೈ কোর্সತಾ য়াও",
-    "courseCodeJoinExplanation": "ಲಾಗಿನ್ ತೌ ಅಥವ ಸೈನ್ ಅಪ್ ತೌ, ಅದুগಾ ನಾಲೈ-ನಾಲೈ কোর্স কোড শিজিন্নদুনা নঙবু নಾಲೈ-ನಾಲೈ কোর্সತಾ অটোমেটিক ওইনা য়াওহনগನಿ.",
-    "courseCodeLabel": "ಕোর্স ಕೋಡ್",
-    "courseCodeSaved": "ಕোর্স ಕೋಡ್ {code} ಸೇভ ತೌರೆ",
-    "courseCodeSavedExplanation": "ಸೈನ್ ಅಪ್ ಅಥವ ಲಾಗಿನ್ ತೌ ಅದুগಾ ನঙಬು ನಾಲೈ-ನಾಲೈ কোর্সತಾ য়াওহনগনি.",
     "moderationRefusedContactDetails": "ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯋꯥꯍꯪ ꯊꯥꯗꯦ꯫ ꯑꯣꯇꯣꯃꯦꯇꯤꯛ ꯐꯤꯜꯇꯔ ꯑꯃꯅꯥ ꯐꯣꯟ ꯅꯝꯕꯔ ꯑꯃꯒꯨꯝꯕꯥ ꯀꯟꯇꯦꯛ ꯗꯤꯇꯦꯜꯁ ꯐꯪꯈꯤ꯫ ꯀꯔꯤꯒꯨꯝꯕꯥ ꯅꯍꯥꯛꯅꯥ ꯃꯈꯣꯌꯕꯨ ꯂꯧꯊꯣꯛꯂꯒꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯕꯤꯌꯨ꯫",
     "moderationRefusedProfanity": "ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯋꯥꯍꯪ ꯊꯥꯗꯦ꯫ ꯑꯣꯇꯣꯃꯦꯇꯤꯛ ꯐꯤꯜꯇꯔ ꯑꯃꯅꯥ ꯑꯩꯈꯣꯌꯅꯥ ꯆꯦꯠꯇꯥ ꯌꯥꯔꯣꯏꯗꯕꯥ ꯋꯥꯍꯩ ꯑꯃꯥ ꯐꯪꯈꯤ꯫ ꯀꯔꯤꯒꯨꯝꯕꯥ ꯅꯍꯥꯛꯅꯥ ꯃꯗꯨ ꯍꯣꯡꯗꯣꯛꯂꯒꯥ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯍꯣꯠꯅꯕꯤꯌꯨ꯫",
     "callTranscriptTranscribeButton": "ট্রান্সক্রাইব তৌবীয়ু",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯑꯦꯀꯥꯎꯟꯇ ꯁꯦꯠ ꯑꯄ ꯇꯧꯕꯥ ꯂꯣꯏꯁꯤꯟꯕꯥ ꯉꯃꯈꯤꯗꯦ꯫ ꯅꯍꯥꯛꯀꯤ ꯀꯅꯦꯛꯁꯟ ꯆꯦꯛ ꯇꯧꯕꯤꯌꯨ ꯑꯃꯁꯨꯡ ꯑꯃꯨꯛ ꯍꯟꯅꯥ ꯊꯕꯛ ꯇꯧꯕꯤꯌꯨ, ꯅꯠꯠꯔꯒꯥ ꯂꯣꯒ ꯑꯥꯎꯠ ꯇꯧꯔꯒꯥ ꯃꯇꯨꯡꯗꯥ ꯁꯥꯏꯟ ꯏꯟ ꯇꯧꯕꯤꯌꯨ꯫",
     "onboardingOfflineError": "ꯑꯣꯅꯂꯥꯏꯟ ꯂꯩꯇꯔꯦ꯫ ꯑꯣꯅꯂꯥꯏꯟ ꯍꯟꯅ ꯂꯩꯔꯒ ꯍꯟꯅ ꯊꯤꯡꯖꯧ꯫",
     "activitySavedTo": "Activity {page} da save toukhre",
+    "joinWithYourCode": "ꯑꯩꯈꯣꯌꯒꯤ ꯀꯣꯗꯇꯥ ꯆꯦꯟꯅꯕꯥ",
+    "joinCodeJoinExplanation": "ꯂꯣꯒꯏꯟ ꯇꯧ ꯅꯠꯔꯒꯥ ꯁꯥꯏꯟ ꯑꯞ ꯇꯧ, ꯑꯃꯁꯨꯡ ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯀꯣꯗ ꯁꯤꯖꯤꯟꯅꯗꯨꯅꯥ ꯅꯍꯥꯛꯄꯨ ꯑꯣꯇꯣꯃꯦꯇꯤꯛ ꯑꯣꯏꯅꯥ ꯍꯥꯞꯆꯤꯟꯒꯅꯤ꯫",
+    "joinCodeLabel": "ꯀꯣꯗ",
+    "joinCodeSaved": "ꯀꯣꯗ {code} ꯁꯦꯚ ꯇꯧꯔꯦ",
+    "joinCodeSavedExplanation": "ꯁꯥꯏꯟ ꯑꯞ ꯇꯧ ꯅꯠꯔꯒꯥ ꯂꯣꯒꯏꯟ ꯇꯧ ꯑꯃꯁꯨꯡ ꯑꯩꯈꯣꯌꯅꯥ ꯅꯍꯥꯛꯄꯨ ꯍꯥꯞꯆꯤꯟꯒꯅꯤ꯫",
     "sessionFinished": "হাওবা থোকখ্রে! হায়রিবা থবক অসি লোইখ্রে।"
 }

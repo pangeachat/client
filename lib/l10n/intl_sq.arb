@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-11-09 14:56:04.419242",
+    "@@last_modified": "2026-11-10 13:06:19.644664",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Po përgatitet regjistrimi i plotë…",
     "callTranscriptNoRecording": "Nuk ka regjistrim të telefonatës së plotë.",
     "callTranscriptNotSubscribed": "{name} nuk kishte një abonim gjatë kësaj thirrjeje, kështu që ajo që u tha nuk u transkriptua.",
-    "joinYourCourse": "Bashkohuni kursit tuaj",
-    "courseCodeJoinExplanation": "Identifikohuni ose regjistrohuni, dhe ne do të përdorim kodin tuaj të kursit për t'ju shtuar automatikisht në kursin tuaj.",
-    "courseCodeLabel": "Kodi i kursit",
-    "courseCodeSaved": "Kodi i kursit {code} u ruajt",
-    "courseCodeSavedExplanation": "Regjistrohuni ose identifikohuni dhe ne do t'ju shtojmë në kursin tuaj.",
     "moderationRefusedContactDetails": "Mesazhi juaj nuk u dërgua. Një filtër automatik gjeti detaje kontakti, si numër telefoni. Ju lutemi, hiqini ato dhe provoni sërish.",
     "moderationRefusedProfanity": "Mesazhi juaj nuk u dërgua. Një filtër automatik gjeti një fjalë që ne nuk e lejojmë në bisedë. Ju lutemi, ndryshojeni dhe provoni sërish.",
     "callTranscriptTranscribeButton": "Transkripto",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "Nuk mundëm të përfundonim konfigurimin e llogarisë suaj. Kontrolloni lidhjen tuaj dhe provoni përsëri, ose dilni dhe kyçuni më vonë.",
     "onboardingOfflineError": "Je jashtë linje. Provo sërish pasi të jesh online.",
     "activitySavedTo": "Aktiviteti u ruajt te {page}",
+    "joinWithYourCode": "Bashkohu me kodin tënd",
+    "joinCodeJoinExplanation": "Hyni ose regjistrohuni, dhe ne do të përdorim kodin tuaj për t'ju shtuar automatikisht.",
+    "joinCodeLabel": "Kodi",
+    "joinCodeSaved": "Kodi {code} u ruajt",
+    "joinCodeSavedExplanation": "Regjistrohuni ose hyni dhe ne do t'ju shtojmë.",
     "sessionFinished": "Shumë vonë! Ky aktivitet ka përfunduar."
 }

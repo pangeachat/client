@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-11-09 14:55:56.877215",
+    "@@last_modified": "2026-11-10 13:06:07.833947",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Pripremam cijeli snimak…",
     "callTranscriptNoRecording": "Nema snimka cijelog poziva.",
     "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano.",
-    "joinYourCourse": "Pridružite se svom kursu",
-    "courseCodeJoinExplanation": "Prijavite se ili registrujte, a mi ćemo koristiti vaš kod kursa da vas automatski dodamo na vaš kurs.",
-    "courseCodeLabel": "Kod kursa",
-    "courseCodeSaved": "Kod kursa {code} sačuvan",
-    "courseCodeSavedExplanation": "Registrujte se ili prijavite i mi ćemo vas dodati na vaš kurs.",
     "moderationRefusedContactDetails": "Vaša poruka nije poslana. Automatski filter je pronašao detalje za kontakt, poput broja telefona. Uklonite ih i pokušajte ponovo.",
     "moderationRefusedProfanity": "Vaša poruka nije poslana. Automatski filter je pronašao riječ koju ne dozvoljavamo u chatu. Promijenite je i pokušajte ponovo.",
     "callTranscriptTranscribeButton": "Prepiši",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "Nismo uspjeli dovršiti postavljanje vašeg računa. Provjerite vezu i pokušajte ponovo, ili se odjavite i prijavite kasnije.",
     "onboardingOfflineError": "Niste povezani. Pokušajte ponovo kada budete online.",
     "activitySavedTo": "Aktivnost sačuvana u {page}",
+    "joinWithYourCode": "Pridružite se sa svojim kodom",
+    "joinCodeJoinExplanation": "Prijavite se ili registrujte, a mi ćemo koristiti vaš kod da vas automatski dodamo.",
+    "joinCodeLabel": "Kod",
+    "joinCodeSaved": "Kod {code} sačuvan",
+    "joinCodeSavedExplanation": "Registrujte se ili prijavite i mi ćemo vas dodati.",
     "sessionFinished": "Prekasno! Ova aktivnost je završena."
 }

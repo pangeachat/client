@@ -12,6 +12,7 @@ import 'package:matrix/matrix.dart' as matrix;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
+import 'package:fluffychat/l10n/l10n_en.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_audio_event.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
@@ -19,6 +20,7 @@ import 'package:fluffychat/routes/chat/calls/call_key_clock.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_ownership.dart';
+import 'package:fluffychat/routes/chat/calls/call_panel.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
@@ -174,20 +176,10 @@ class _UnjoinableCalls extends _FakeCalls {
       throw StateError('the SFU refused this join');
 }
 
-/// A service whose answer to "is this membership current" the test states.
+/// The ordinary fake service; liveness is read by the REAL code from the
+/// room state a joiner test writes (see `liveDevices`).
 class _JoinerCalls extends _FakeCalls {
   _JoinerCalls(super.client);
-
-  /// Current memberships, as `userId|eventId`: the account matters, because
-  /// a sibling's record must be checked against THIS account's memberships.
-  Set<String> current = {};
-
-  @override
-  bool membershipEventIsCurrent(
-    matrix.Room room,
-    String userId,
-    String eventId,
-  ) => current.contains('$userId|$eventId');
 }
 
 class _FakeRoster extends CallRoster {
@@ -277,6 +269,30 @@ class _SpyRecord extends CallRecord {
       video: video,
     ));
   }
+}
+
+/// Someone turning the placed call down.
+class _DecliningCalls extends _FakeCalls {
+  _DecliningCalls(super.client);
+
+  final _declines = StreamController<matrix.Event>.broadcast();
+
+  void peerDeclines({String? reason}) => _declines.add(
+    matrix.Event(
+      type: PangeaEventTypes.callDecline,
+      content: {CallService.declineReasonField: ?reason},
+      senderId: '@friend:fakeServer.notExisting',
+      eventId: r'$decline',
+      originServerTs: DateTime.now(),
+      room: matrix.Room(id: '!r:server', client: client),
+    ),
+  );
+
+  @override
+  Stream<matrix.Event> declinesIn(matrix.Room room) => _declines.stream;
+
+  @override
+  String? declineTarget(matrix.Event event) => r'$notification';
 }
 
 class _FakeMedia extends CallMedia {
@@ -1508,6 +1524,38 @@ void main() {
       expect(session.showingSummary, isFalse);
     });
 
+    // The caller is owed the reason. The status line had it all along, but a
+    // declined call released at once, so it was never on screen: a busy line
+    // read as the plain "Call declined" card in the chat behind it.
+    test('a declined call stays on screen long enough to say why', () async {
+      final client = await _bareClient();
+      final calls = _DecliningCalls(client);
+      final released = <CallSession>[];
+      final session = CallSession.start(
+        room: _RecordingRoom(id: '!r:server', client: client),
+        video: false,
+        callService: calls,
+        transcribe: (request) async =>
+            SpeechToTextResponseModel(results: const []),
+        userL1: 'en',
+        userL2: 'es',
+        analytics: (eventId, uses, language) async {},
+        onReleased: released.add,
+        mediaOverride: _FakeMedia(),
+        captureOverride: CallCaptureService(sink: _NullSink()),
+      );
+      await pumpEventQueue();
+      calls.peerDeclines(reason: CallService.declineBusy);
+      await Future<void>.delayed(const Duration(milliseconds: 1600));
+      await pumpEventQueue();
+      expect(session.showingSummary, isTrue);
+      expect(released, isEmpty);
+      expect(callStatusLine(L10nEn(), session), contains('on another call'));
+      session.dismissSummary();
+      await pumpEventQueue();
+      expect(released, hasLength(1));
+    });
+
     test('a call nobody answered releases at once, as before', () async {
       final client = await _bareClient();
       final released = <CallSession>[];
@@ -1549,6 +1597,8 @@ void main() {
   group('a finished call reports its connected time', () {
     Future<(DosageAudioBuffer, CallSession)> up({
       required bool answered,
+      CallCaptureService? capture,
+      bool siblingCarriesOn = false,
       Map<String, String> flags = const {
         'ANALYTICS_DUAL_WRITE_ENABLED': 'true',
         'DOSAGE_SIGNALS_ENABLED': 'true',
@@ -1572,7 +1622,7 @@ void main() {
         analytics: (eventId, uses, language) async {},
         onReleased: (_) {},
         mediaOverride: media,
-        captureOverride: CallCaptureService(sink: _NullSink()),
+        captureOverride: capture ?? CallCaptureService(sink: _NullSink()),
         recordOverride: _SpyRecord(),
       );
       await pumpEventQueue();
@@ -1583,6 +1633,18 @@ void main() {
         await pumpEventQueue();
       }
       await Future<void>.delayed(const Duration(milliseconds: 5));
+      if (siblingCarriesOn) {
+        // One of this account's other devices claims the call: this one is
+        // chosen against and leaves.
+        final roster = media.fakeRoster!;
+        final sib = '${client.userID}:SIBLINGDEV';
+        roster.identities = {...roster.identities, sib};
+        roster.attributes = {
+          sib: {CallRoster.chosenAttribute: 'yes'},
+        };
+        roster.recompute();
+        await pumpEventQueue();
+      }
       session.endCall();
       await pumpEventQueue();
       await Future<void>.delayed(const Duration(milliseconds: 50));
@@ -1605,6 +1667,30 @@ void main() {
         hasLength(1),
         reason: 'and dispose adds none',
       );
+    });
+
+    // The minutes used to wait on hang-up's teardown, which waits on
+    // speech-to-text: an app closed in that window lost the call (#9724).
+    test('the time is written at hang-up, not after transcription', () async {
+      final (buffer, session) = await up(
+        answered: true,
+        capture: _HangingCapture(),
+      );
+      expect(buffer.bufferedCalls, hasLength(1));
+      expect(
+        buffer.bufferedCalls.single.connectedMs,
+        session.call.talkDuration.inMilliseconds,
+      );
+    });
+
+    test('a device that did not carry on writes no time', () async {
+      final (buffer, session) = await up(
+        answered: true,
+        siblingCarriesOn: true,
+      );
+      expect(session.call.talkStartedAt, isNotNull, reason: 'it did talk');
+      expect(session.call.carriedOn, isFalse);
+      expect(buffer.bufferedCalls, isEmpty);
     });
 
     test('a call nobody answered reports nothing', () async {
@@ -3097,7 +3183,11 @@ void main() {
     >
     join({
       CallInProgress? record,
-      Set<String> current = const {},
+      // Devices holding a live membership, as `userId|deviceId`. Written as
+      // REFRESHED state events -- ids that differ from anything a record or a
+      // ring names -- because two minutes into a call that is what room state
+      // holds (client#9173).
+      Set<String> liveDevices = const {},
       List<matrix.Event> Function(matrix.Room room)? timeline,
       List<matrix.MatrixEvent> clocks = const [],
       Map<String, matrix.Event> Function(matrix.Room room)? memberships,
@@ -3110,9 +3200,31 @@ void main() {
           content: record.toJson(),
         );
       }
-      final calls = _JoinerCalls(client)
-        ..current = current
-        ..adoptCallIdForTest('!r:server');
+      for (final entry in liveDevices) {
+        final [user, device] = entry.split('|');
+        room.setState(
+          matrix.Event(
+            type: matrix.EventTypes.GroupCallMember,
+            content: {
+              'memberships': [
+                {
+                  'call_id': '!r:server',
+                  'device_id': device,
+                  'expires_ts': DateTime.now()
+                      .add(const Duration(minutes: 4))
+                      .millisecondsSinceEpoch,
+                },
+              ],
+            },
+            senderId: user,
+            eventId: '\$refreshed-$device',
+            originServerTs: DateTime.now(),
+            room: room,
+            stateKey: '${device}_$user',
+          ),
+        );
+      }
+      final calls = _JoinerCalls(client)..adoptCallIdForTest('!r:server');
       final media = _FakeMedia(
         now: () => DateTime.fromMillisecondsSinceEpoch(1000000500),
       );
@@ -3161,7 +3273,7 @@ void main() {
           writerDeviceId: 'SIBLINGDEV',
           writerMembershipEventId: r'$sibling-membership',
         ),
-        current: {'@test:fakeServer.notExisting|\$sibling-membership'},
+        liveDevices: {'@test:fakeServer.notExisting|SIBLINGDEV'},
       );
       expect(t.session.placedCall, isFalse, reason: 'a joiner');
       expect(t.recorded, isNotEmpty);
@@ -3182,15 +3294,21 @@ void main() {
           writerDeviceId: 'GONEDEV',
           writerMembershipEventId: r'$gone-membership',
         ),
-        current: {
-          '@test:fakeServer.notExisting|\$gone-membership',
-          '$friendId|$callerMembership',
+        // GONEDEV's membership is live but it is not in the SFU; the ring's
+        // device is live.
+        liveDevices: {
+          '@test:fakeServer.notExisting|GONEDEV',
+          '$friendId|FRIENDDEV',
         },
         timeline: (room) => [
           matrix.Event(
             type: PangeaEventTypes.callNotification,
             content: {
-              'application': {'type': 'm.call', 'notification_type': 'ring'},
+              'application': {
+                'type': 'm.call',
+                'notification_type': 'ring',
+                'device_id': 'FRIENDDEV',
+              },
               'm.relates_to': {
                 'rel_type': 'm.reference',
                 'event_id': callerMembership,
@@ -3225,7 +3343,7 @@ void main() {
           writerDeviceId: 'SIBLINGDEV',
           writerMembershipEventId: r'$sibling-membership',
         ),
-        current: {'@test:fakeServer.notExisting|\$sibling-membership'},
+        liveDevices: {'@test:fakeServer.notExisting|SIBLINGDEV'},
         clocks: [
           matrix.MatrixEvent(
             type: CallClockContent.type,

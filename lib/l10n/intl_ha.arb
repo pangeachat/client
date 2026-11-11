@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-11-09 14:55:58.689229",
+    "@@last_modified": "2026-11-10 13:06:11.302580",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Ana shirya cikakken rikodin…",
     "callTranscriptNoRecording": "Babu rikodin cikakken kiran.",
     "callTranscriptNotSubscribed": "{name} ba shi da biyan kuɗi a lokacin wannan kiran, don haka ba a rubuta abin da aka faɗa ba.",
-    "joinYourCourse": "Shiga ajinka",
-    "courseCodeJoinExplanation": "Shiga ko yi rajista, kuma za mu yi amfani da lambar ajinka don ƙara ka a ajinka kai tsaye.",
-    "courseCodeLabel": "Lambar aji",
-    "courseCodeSaved": "An adana lambar aji {code}",
-    "courseCodeSavedExplanation": "Yi rajista ko shiga kuma za mu ƙara ka a ajinka.",
     "moderationRefusedContactDetails": "Ba a aika saƙonka ba. Wani tace-saƙo ta atomatik ya gano bayanan tuntuɓa, kamar lambar waya. Da fatan za a cire su sannan a sake gwadawa.",
     "moderationRefusedProfanity": "Ba a aika saƙonka ba. Wani tace-saƙo ta atomatik ya gano wata kalma da ba mu yarda da ita a cikin taɗi ba. Da fatan za a canza ta sannan a sake gwadawa.",
     "callTranscriptTranscribeButton": "Fassara",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "Mun kasa kammala saita asusunka. Duba haɗinka kuma sake gwadawa, ko fita daga asusunka ka shiga daga baya.",
     "onboardingOfflineError": "Baka da intanet. Kuma gwada idan ka dawo kan layi.",
     "activitySavedTo": "An adana aiki zuwa {page}",
+    "joinWithYourCode": "Shiga da lambar ka",
+    "joinCodeJoinExplanation": "Shiga ko yi rajista, kuma za mu yi amfani da lambar ka don ƙara ka kai tsaye.",
+    "joinCodeLabel": "Lamba",
+    "joinCodeSaved": "An adana lambar {code}",
+    "joinCodeSavedExplanation": "Yi rajista ko shiga kuma za mu ƙara ka.",
     "sessionFinished": "Ya yi latti! Wannan aikin ya ƙare."
 }

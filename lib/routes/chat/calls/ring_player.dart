@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:matrix/matrix.dart' show Logs;
 
+import 'package:fluffychat/utils/platform_infos.dart';
+
 /// A minimal seam over audioplayers' [AudioPlayer], so the ring lifecycle --
 /// configure, play, stop, playback-completion, dispose -- can be driven in a
 /// unit test without a platform audio plugin. The default is a thin wrapper
@@ -56,6 +58,11 @@ class _AudioPlayersRing implements RingAudio {
   @override
   Future<void> dispose() => _player.dispose();
 }
+
+/// [asset] as this platform can play it: AVPlayer cannot open Ogg Vorbis, so iOS
+/// gets the mp3 beside it.
+String playableCueAsset(String asset, {required bool isIOS}) =>
+    isIOS ? asset.replaceFirst(RegExp(r'\.ogg$'), '.mp3') : asset;
 
 /// The sound behind a keyed ring lifecycle, seamed so the lifecycle can be
 /// tested without a platform audio plugin.
@@ -132,18 +139,15 @@ class AssetRingSound implements RingSound {
   /// caller's call-cue sound is call signalling.
   final AndroidUsageType _usage;
 
-  /// The iOS audio session every cue from this sound plays under. Per-sound for
-  /// the same reason as [_usage].
-  final AudioContextIOS _iosSession;
-
-  /// The session a live call runs in on iOS: LiveKit's own category and
+  /// The session every cue plays under on iOS: LiveKit's own category and
   /// options for a call (playAndRecord, Bluetooth and AirPlay allowed).
   ///
   /// On iOS audioplayers applies a player's context to the app's ONE shared
   /// AVAudioSession, so the default `playback` switched a call that was
   /// connecting or reconnecting to a category that cannot record -- the likely
   /// cause of a silent ringback on iPad (#9166). Keeping the call's category
-  /// means a cue never takes recording away from the call. `defaultToSpeaker`
+  /// means no cue takes recording away from a call, and that holds for the ring
+  /// too: it is the session a call starts from. `defaultToSpeaker`
   /// is the one option LiveKit does not set: it covers a ringback that starts
   /// before LiveKit has put the call on the speaker, which would otherwise play
   /// from an iPhone's earpiece.
@@ -159,20 +163,25 @@ class AssetRingSound implements RingSound {
 
   AssetRingSound({
     AndroidUsageType usage = AndroidUsageType.notificationRingtone,
-    AudioContextIOS? iosSession,
     @visibleForTesting RingAudio Function()? audioFactory,
+    @visibleForTesting bool? isIOS,
   }) : _usage = usage,
-       _iosSession = iosSession ?? AudioContextIOS(),
-       _audioFactory = audioFactory ?? (() => _AudioPlayersRing());
+       _audioFactory = audioFactory ?? (() => _AudioPlayersRing()),
+       _isIOSOverride = isIOS;
+
+  final bool? _isIOSOverride;
+
+  /// [asset] in a format this platform can play. The one place a cue reaches a
+  /// player from, so no cue can pick its format and miss this.
+  String _playable(String asset) =>
+      playableCueAsset(asset, isIOS: _isIOSOverride ?? PlatformInfos.isIOS);
 
   /// A caller's own call cues (#8807), played under the call-signalling usage so
-  /// the caller hears them even with ringtones silenced, and on iOS under the
-  /// call's own session so a cue never reconfigures the call's audio.
+  /// the caller hears them even with ringtones silenced.
   AssetRingSound.callSignalling({
     @visibleForTesting RingAudio Function()? audioFactory,
   }) : this(
          usage: AndroidUsageType.voiceCommunicationSignalling,
-         iosSession: callSessionIOS,
          audioFactory: audioFactory,
        );
 
@@ -182,7 +191,7 @@ class AssetRingSound implements RingSound {
       contentType: AndroidContentType.sonification,
       audioFocus: AndroidAudioFocus.gainTransient,
     ),
-    iOS: _iosSession,
+    iOS: callSessionIOS,
   );
 
   /// Configure the loop player exactly once. [_configured] flips true only
@@ -231,7 +240,7 @@ class AssetRingSound implements RingSound {
         // too; re-check before committing the player to a loop.
         if (generation != _generation) return;
         reachedPlayForTest = true;
-        await _player.play(asset);
+        await _player.play(_playable(asset));
       } catch (e) {
         // Autoplay refused (web without a gesture), or no audio device. The cue
         // is an enhancement, not the mechanism.
@@ -308,7 +317,7 @@ class AssetRingSound implements RingSound {
         if (i > 0) {
           await Future<void>.delayed(Duration(milliseconds: gapMs));
         }
-        await beeper.play(asset);
+        await beeper.play(_playable(asset));
         // Wait for THIS note to finish before the next one -- or the teardown --
         // so a cue longer than any fixed guess is never cut off. Bounded, so a
         // completion event that never arrives cannot wedge the cue for ever;

@@ -717,6 +717,59 @@ void main() {
       expect(screen.ended, ['CALL-1:remoteEnded']);
     });
 
+    // A phone not in the app has its sync off, and the caller hanging up
+    // reaches this device only through sync: the ring went on until its
+    // lifetime ran out, long after the missed-call notification (#9558).
+    testWidgets('keeps the account syncing until the ring is over', (
+      tester,
+    ) async {
+      final room = heldChat();
+      callerMembership(room, present: true);
+      final screen = _FakeCallScreen();
+      await pumpBanner(tester, callScreen: screen);
+      final matrix = tester.state<MatrixState>(find.byType(_TestMatrix));
+      expect(matrix.syncKeptForRing, isEmpty);
+
+      await showOnCallScreen(tester, screen);
+      expect(matrix.syncKeptForRing, {client});
+
+      callerMembership(room, present: false, id: r'$mem2');
+      await tester.pumpAndSettle();
+      expect(matrix.syncKeptForRing, isEmpty);
+    });
+
+    testWidgets('lets the account stop syncing if the prompt goes away', (
+      tester,
+    ) async {
+      final room = heldChat();
+      callerMembership(room, present: true);
+      final screen = _FakeCallScreen();
+      await pumpBanner(tester, callScreen: screen);
+      final matrix = tester.state<MatrixState>(find.byType(_TestMatrix));
+      await showOnCallScreen(tester, screen);
+      expect(matrix.syncKeptForRing, {client});
+
+      await tester.pumpWidget(
+        _TestMatrix(
+          clients: [client],
+          store: store,
+          child: const SizedBox.shrink(),
+        ),
+      );
+      expect(matrix.syncKeptForRing, isEmpty);
+    });
+
+    test('a ring keeps a background app syncing, and only a ring does', () {
+      bool syncs(AppLifecycleState? state, {required bool ringing}) =>
+          MatrixState.syncsIn(state, ringing: ringing);
+      expect(syncs(AppLifecycleState.paused, ringing: true), isTrue);
+      expect(syncs(AppLifecycleState.inactive, ringing: true), isTrue);
+      expect(syncs(AppLifecycleState.paused, ringing: false), isFalse);
+      expect(syncs(AppLifecycleState.inactive, ringing: false), isFalse);
+      expect(syncs(AppLifecycleState.resumed, ringing: false), isTrue);
+      expect(syncs(null, ringing: false), isTrue);
+    });
+
     // A closed app woken by the push has not synced: it still holds the
     // caller's last call, ended. That must not read as this call being over.
     testWidgets('stays up over the caller\'s last call, still unsynced', (

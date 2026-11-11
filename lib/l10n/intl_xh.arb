@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-11-09 14:56:06.026073",
+    "@@last_modified": "2026-11-10 13:06:21.421260",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Kulungiselelwa okurekhodiweyo okupheleleyo…",
     "callTranscriptNoRecording": "Akukho kurekhodwa komfowunelwano opheleleyo.",
     "callTranscriptNotSubscribed": "U-{name} ebengekafaki isicelo ngexesha lale fowuni, ngoko ke oko kuthethweyo akubhalwanga.",
-    "joinYourCourse": "Joyina ikhosi yakho",
-    "courseCodeJoinExplanation": "Ngena okanye ubhalise, kwaye siza kusebenzisa ikhowudi yekhosi yakho ukukongeza kwikhosi yakho ngokuzenzekelayo.",
-    "courseCodeLabel": "Ikhowudi yekhosi",
-    "courseCodeSaved": "Ikhowudi yekhosi {code} igciniwe",
-    "courseCodeSavedExplanation": "Bhalisa okanye ungene kwaye siza kukongeza kwikhosi yakho.",
     "moderationRefusedContactDetails": "Umyalezo wakho awuthunyelwanga. Isihluzi esizenzekelayo sifumene iinkcukacha zoqhagamshelwano, njengenombolo yefowuni. Nceda uzisuse uze uphinde uzame.",
     "moderationRefusedProfanity": "Umyalezo wakho awuthunyelwanga. Isihluzi esizenzekelayo sifumene igama esingalivumeli kwincoko. Nceda ulitshintshe uze uphinde uzame.",
     "callTranscriptTranscribeButton": "Bhala phantsi",
@@ -2520,5 +2515,10 @@
     "accountSetupFailedHelp": "Asikwazanga ukugqiba ukuseta iakhawunti yakho. Jonga uqhagamshelo lwakho uze uzame kwakhona, okanye phuma uze ungene kamva.",
     "onboardingOfflineError": "Awukho kwi-intanethi. Zama kwakhona xa sele ukwi-intanethi.",
     "activitySavedTo": "Umsebenzi ugcinwe ku-{page}",
+    "joinWithYourCode": "Joyina ngekhowudi yakho",
+    "joinCodeJoinExplanation": "Ngena okanye ubhalise, kwaye siza kusebenzisa ikhowudi yakho ukukongeza ngokuzenzekelayo.",
+    "joinCodeLabel": "Ikhowudi",
+    "joinCodeSaved": "Ikhowudi {code} igciniwe",
+    "joinCodeSavedExplanation": "Bhalisa okanye ungene kwaye siza kukongeza.",
     "sessionFinished": "Kudala! Lo msebenzi uphelile."
 }

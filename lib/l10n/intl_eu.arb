@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-11-09 14:55:58.189636",
+    "@@last_modified": "2026-11-10 13:06:10.030098",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9889,11 +9889,6 @@
     "callTranscriptPreparingRecording": "Grabazio osoa prestatzen…",
     "callTranscriptNoRecording": "Dei osoaren grabaziorik ez.",
     "callTranscriptNotSubscribed": "{name} erabiltzaileak ez zuen harpidetzarik dei honetan, beraz, esandakoa ez zen transkribatu.",
-    "joinYourCourse": "Sartu zure ikastaroan",
-    "courseCodeJoinExplanation": "Hasi saioa edo eman izena, eta zure ikastaro-kodea erabiliko dugu automatikoki zure ikastarora gehitzeko.",
-    "courseCodeLabel": "Ikastaro-kodea",
-    "courseCodeSaved": "{code} ikastaro-kodea gordeta",
-    "courseCodeSavedExplanation": "Eman izena edo hasi saioa eta zure ikastarora gehituko zaitugu.",
     "moderationRefusedContactDetails": "Zure mezua ez da bidali. Iragazki automatiko batek harremanetarako datuak aurkitu ditu, hala nola telefono-zenbaki bat. Mesedez, kendu itzazu eta saiatu berriro.",
     "moderationRefusedProfanity": "Zure mezua ez da bidali. Iragazki automatiko batek txatean onartzen ez dugun hitz bat aurkitu du. Mesedez, aldatu eta saiatu berriro.",
     "callTranscriptTranscribeButton": "Transkribatu",
@@ -10050,5 +10045,10 @@
     "accountSetupFailedHelp": "Ezin izan dugu zure kontua konfiguratzen amaitu. Egiaztatu konexioa eta saiatu berriro, edo itxi saioa eta hasi geroago.",
     "onboardingOfflineError": "Lineaz kanpo zaude. Saiatu berriro konektatuta zaudenean.",
     "activitySavedTo": "Jarduera {page} honetan gorde da",
+    "joinWithYourCode": "Sartu zure kodearekin",
+    "joinCodeJoinExplanation": "Hasi saioa edo eman izena, eta zure kodea erabiliko dugu automatikoki gehitzeko.",
+    "joinCodeLabel": "Kodea",
+    "joinCodeSaved": "{code} kodea gordeta",
+    "joinCodeSavedExplanation": "Eman izena edo hasi saioa eta gehituko zaitugu.",
     "sessionFinished": "Beranduegi! Jarduera hau amaitu da."
 }
