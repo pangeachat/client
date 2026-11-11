@@ -146,7 +146,7 @@ The [shared quest plan](../../../.github/.github/instructions/quests-and-learnin
 **Not yet implemented:** the following replaces the legacy pin behavior described below.
 
 - New courses inherit the plan's selected activities and notes. Existing course selections and educator edits are preserved by the migration; reading a changed plan must not overwrite them.
-- Multiple entries may reference the same Can-Do ID. The outline, selected-entry navigation, notes, activity filters and corresponding course dates preserve those entries separately; the Can-Do ID alone cannot identify an entry. This does not create a separate learner-account progress model or change the XP rules above.
+- A Can-Do appears once in a quest, so its ID identifies its entry in the outline, navigation, notes, activity filters and course dates.
 - Unset selections may use defaults. Explicitly empty selections remain empty and must not expand to all activities. Course outlines and course-map filters use the same interpretation; neither silently replaces selected content with the whole catalog when selected activities are unavailable.
 - Plan previews show the plan's selected activities and notes without learner progress. A course view shows that course's selections. Absence of progress does not mean absence of content selection.
 - Course-specific filtering does not mutate the shared outline cache. The world's catalog is independent of course selections.
