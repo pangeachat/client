@@ -245,8 +245,18 @@ class SpaceDetailsController extends State<SpaceDetails> {
   }
 
   Future<void> chooseCourseAccess() async {
-    final chosen = await CourseAccessSheet.show(context, courseAccess);
-    if (chosen == null || chosen == courseAccess || !mounted) return;
+    // The row was read when the page opened, and another admin or device may
+    // have changed the course since, so the sheet opens on the course's
+    // setting now and Done is compared with that, not with the row.
+    final read = await showFutureLoadingDialog(
+      context: context,
+      future: room.fetchCourseAccess,
+    );
+    if (!mounted || read.isError) return;
+    final current = read.result;
+    setState(() => courseAccess = current);
+    final chosen = await CourseAccessSheet.show(context, current);
+    if (chosen == null || chosen == current || !mounted) return;
     final result = await showFutureLoadingDialog(
       context: context,
       future: () => room.setCourseAccess(chosen),
