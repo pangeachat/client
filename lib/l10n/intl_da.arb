@@ -1325,7 +1325,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-11-06 13:10:58.014027",
+    "@@last_modified": "2026-11-10 13:06:09.205270",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10806,11 +10806,6 @@
     "callTranscriptPreparingRecording": "Forbereder hele optagelsen…",
     "callTranscriptNoRecording": "Ingen optagelse af hele opkaldet.",
     "callTranscriptNotSubscribed": "{name} havde ikke et abonnement under dette opkald, så det, der blev sagt, blev ikke transskriberet.",
-    "joinYourCourse": "Tilmeld dig dit kursus",
-    "courseCodeJoinExplanation": "Log ind eller tilmeld dig, så bruger vi din kursuskode til automatisk at tilføje dig til dit kursus.",
-    "courseCodeLabel": "Kursuskode",
-    "courseCodeSaved": "Kursuskode {code} gemt",
-    "courseCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig til dit kursus.",
     "moderationRefusedContactDetails": "Din besked blev ikke sendt. Et automatisk filter fandt kontaktoplysninger, f.eks. et telefonnummer. Fjern dem, og prøv igen.",
     "moderationRefusedProfanity": "Din besked blev ikke sendt. Et automatisk filter fandt et ord, vi ikke tillader i chatten. Ret det, og prøv igen.",
     "callTranscriptTranscribeButton": "Transskriber",
@@ -10966,5 +10961,10 @@
     "changeBaseLanguageDesc": "Appens menuer og knapper skifter til {language}.",
     "accountSetupFailedHelp": "Vi kunne ikke færdiggøre opsætningen af din konto. Tjek din forbindelse, og prøv igen, eller log ud, og log ind senere.",
     "onboardingOfflineError": "Du er offline. Prøv igen, når du er online.",
-    "activitySavedTo": "Aktivitet gemt i {page}"
+    "activitySavedTo": "Aktivitet gemt i {page}",
+    "joinWithYourCode": "Tilmeld dig med din kode",
+    "joinCodeJoinExplanation": "Log ind eller tilmeld dig, så bruger vi din kode til automatisk at tilføje dig.",
+    "joinCodeLabel": "Kode",
+    "joinCodeSaved": "Kode {code} gemt",
+    "joinCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig."
 }

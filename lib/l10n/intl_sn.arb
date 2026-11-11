@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-11-06 13:11:05.893794",
+    "@@last_modified": "2026-11-10 13:06:18.565338",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Kugadzirira kunyora kwese…",
     "callTranscriptNoRecording": "Hapana chinyorwa chekufona kwese.",
     "callTranscriptNotSubscribed": "{name} anga asina kunyoresa panguva yekufona uku, saka zvakataurwa hazvina kunyorwa.",
-    "joinYourCourse": "Joinha kosi yako",
-    "courseCodeJoinExplanation": "Pinda kana kusaina, uye tichashandisa kodhi yekosi yako kuti tikuwedzere kukosi yako otomatiki.",
-    "courseCodeLabel": "Kodhi yekosi",
-    "courseCodeSaved": "Kodhi yekosi {code} yachengetwa",
-    "courseCodeSavedExplanation": "Saina kana kupinda uye tichakuwedzera kukosi yako.",
     "moderationRefusedContactDetails": "Meseji yako haina kutumirwa. Sisitimu yedu yakawana ruzivo rwekuonana, senge nhamba dzerunhare. Ndokumbira ubvise izvi woedza zvakare.",
     "moderationRefusedProfanity": "Meseji yako haina kutumirwa. Sisitimu yedu yakawana izwi ratisingabvumidze muchat. Ndokumbira urichinje woedza zvakare.",
     "callTranscriptTranscribeButton": "Nyora",
@@ -2519,5 +2514,10 @@
     "changeBaseLanguageDesc": "Mamenu nemabhatani eapp achachinja kuita {language}.",
     "accountSetupFailedHelp": "Hatina kukwanisa kupedza kuseta account yako. Tarisa network yako woedza zvakare, kana kuti log out wozoedza zvakare gare gare gare.",
     "onboardingOfflineError": "Hauziko paIndaneti. Edza zvakare kana wadzoka paIndaneti.",
-    "activitySavedTo": "Chiitiko chachengetwa ku {page}"
+    "activitySavedTo": "Chiitiko chachengetwa ku {page}",
+    "joinWithYourCode": "Pinda nekodhi yako",
+    "joinCodeJoinExplanation": "Pinda kana kunyoresa, uye tichashandisa kodhi yako kukuwedzera otomatiki.",
+    "joinCodeLabel": "Kodhi",
+    "joinCodeSaved": "Kodhi {code} yachengetwa",
+    "joinCodeSavedExplanation": "Nyoresa kana kupinda uye tichakuwedzera."
 }

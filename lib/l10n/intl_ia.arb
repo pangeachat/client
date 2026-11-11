@@ -1353,7 +1353,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-11-06 13:11:00.838340",
+    "@@last_modified": "2026-11-10 13:06:12.385469",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10822,11 +10822,6 @@
     "callTranscriptPreparingRecording": "Preparante le registration complete…",
     "callTranscriptNoRecording": "Nulle registration del appello complete.",
     "callTranscriptNotSubscribed": "{name} non habeva un subscription durante iste appello, ergo lo que esseva dicite non esseva transcribite.",
-    "joinYourCourse": "Junger a tu curso",
-    "courseCodeJoinExplanation": "Aperir session o registrar se, e nos usara tu codice de curso pro adder te a tu curso automaticamente.",
-    "courseCodeLabel": "Codice de curso",
-    "courseCodeSaved": "Codice de curso {code} salvate",
-    "courseCodeSavedExplanation": "Registra te o aperi session e nos te addera a tu curso.",
     "moderationRefusedContactDetails": "Tu message non esseva inviate. Un filtro automatic trovava datos de contacto, como un numero de telephono. Per favor, remove los e reprova.",
     "moderationRefusedProfanity": "Tu message non esseva inviate. Un filtro automatic trovava un parola que nos non permitte in le chat. Per favor, cambia lo e reprova.",
     "callTranscriptTranscribeButton": "Transcriber",
@@ -10982,5 +10977,10 @@
     "changeBaseLanguageDesc": "Le menus e buttones del app cambiara a {language}.",
     "accountSetupFailedHelp": "Nos non poteva completar le configuration de tu conto. Verifica tu connexion e reprova, o disconecta e reconnecta plus tarde.",
     "onboardingOfflineError": "Tu es offline. Reprova quando tu es de nove connectite.",
-    "activitySavedTo": "Activitate salvate a {page}"
+    "activitySavedTo": "Activitate salvate a {page}",
+    "joinWithYourCode": "Unir te con tu codice",
+    "joinCodeJoinExplanation": "Aperir session o registrar te, e nos usara tu codice pro adder te automaticamente.",
+    "joinCodeLabel": "Codice",
+    "joinCodeSaved": "Codice {code} salvate",
+    "joinCodeSavedExplanation": "Registra te o aperi session e nos te addera."
 }

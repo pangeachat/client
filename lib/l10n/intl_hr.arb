@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-11-06 13:11:00.327311",
+    "@@last_modified": "2026-11-10 13:06:11.618807",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10322,11 +10322,6 @@
     "callTranscriptPreparingRecording": "Priprema se cijela snimka…",
     "callTranscriptNoRecording": "Nema snimke cijelog poziva.",
     "callTranscriptNotSubscribed": "{name} nije imao pretplatu tijekom ovog poziva, tako da izgovoreno nije transkribirano.",
-    "joinYourCourse": "Pridružite se svom tečaju",
-    "courseCodeJoinExplanation": "Prijavite se ili registrirajte, a mi ćemo upotrijebiti vaš kod tečaja kako bismo vas automatski dodali na vaš tečaj.",
-    "courseCodeLabel": "Kod tečaja",
-    "courseCodeSaved": "Kod tečaja {code} spremljen",
-    "courseCodeSavedExplanation": "Registrirajte se ili prijavite i dodat ćemo vas na vaš tečaj.",
     "moderationRefusedContactDetails": "Vaša poruka nije poslana. Automatski filtar pronašao je podatke za kontakt, poput telefonskog broja. Uklonite ih i pokušajte ponovno.",
     "moderationRefusedProfanity": "Vaša poruka nije poslana. Automatski filtar pronašao je riječ koju ne dopuštamo u chatu. Promijenite je i pokušajte ponovno.",
     "callTranscriptTranscribeButton": "Prepiši",
@@ -10482,5 +10477,10 @@
     "changeBaseLanguageDesc": "Izbornici i gumbi aplikacije prebacit će se na {language}.",
     "accountSetupFailedHelp": "Nismo uspjeli dovršiti postavljanje vašeg računa. Provjerite vezu i pokušajte ponovno ili se odjavite i prijavite kasnije.",
     "onboardingOfflineError": "Izvan mreže ste. Pokušajte ponovno kada se vratite na mrežu.",
-    "activitySavedTo": "Aktivnost spremljena u {page}"
+    "activitySavedTo": "Aktivnost spremljena u {page}",
+    "joinWithYourCode": "Pridružite se svojim kodom",
+    "joinCodeJoinExplanation": "Prijavite se ili registrirajte, a mi ćemo upotrijebiti vaš kod da vas automatski dodamo.",
+    "joinCodeLabel": "Kod",
+    "joinCodeSaved": "Kod {code} spremljen",
+    "joinCodeSavedExplanation": "Registrirajte se ili prijavite i mi ćemo vas dodati."
 }
