@@ -9,7 +9,7 @@ description: "Planned, not built. What the map shows when the learner is not ins
 
 ## Purpose
 
-The world view is what the map shows when the learner is not inside a course. It is where a learner finds courses to join and people to play with. Each course appears as a ship. Activities are shown inside a course, on the [course view](course-view.instructions.md). What a city is, and how a course moves from city to city, are defined in the org [quests doc](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md#a-course-is-a-trip).
+The world view is what the map shows when the learner is not inside a course. It is where a learner finds courses to join and people to play with. Each course appears as a ship. Activities are shown inside a course, on the [course view](course-view.instructions.md). What a city is, and how a course moves from city to city, are defined in the org [quests doc](../../../.github/.github/instructions/quests.instructions.md#a-course-is-a-trip).
 
 ## The experience
 
@@ -32,7 +32,7 @@ The world view is what the map shows when the learner is not inside a course. It
 ## Ships
 
 - Each course has one ship, drawn as an airship with no label. The course's name is on its card.
-- A ship sits at the city its course has reached ([progression](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md#progression)). When the course moves to the next city, the ship is drawn travelling there for about a day, so the class can see that it moved. Activities stay playable while the ship travels.
+- A ship sits at the city its course has reached ([progression](../../../.github/.github/instructions/quests.instructions.md#progression)). When the course moves to the next city, the ship is drawn travelling there for about a day, so the class can see that it moved. Activities stay playable while the ship travels.
 - A private course also appears as a ship. Tapping it shows only the word "Private". This does reveal that a class exists near that place.
 - Join on a ship's card opens the course's preview first. The preview offers Join for a Public course and Ask to join for an Approval required course.
 - "Who runs it" on a ship's card lists the course's human admins and never the bot.
@@ -42,7 +42,7 @@ The world view is what the map shows when the learner is not inside a course. It
 - A city appears only when the ranking picks it.
 - A city's icon has no label, because the base map already names the city. Its name is in its tooltip and is read by screen readers.
 - The map zooms fully into a city only if one of the learner's courses has a Mission there. Only those cities' cards offer Explore.
-- A city shows a lock when its Missions are not yet open to the learner in their course ([progression](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md#progression)).
+- A city shows a lock when its Missions are not yet open to the learner in their course ([progression](../../../.github/.github/instructions/quests.instructions.md#progression)).
 - A city's icon grows as the learner earns XP in that city's activities, up to a limit, so that no city hides its neighbours.
 
 ## Stamps

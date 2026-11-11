@@ -9,7 +9,7 @@ description: "Planned, not built. What the map shows inside a course: the course
 
 ## Purpose
 
-The course view is what the map shows when the learner is inside a course. It shows that course's trip: its cities in order, the route between them, the course's ship, and the activities at the city the learner is working in. The same view is used to preview a course before joining. The map outside a course is the [world view](world-view.instructions.md). Which cities are open to a learner is defined in the org [quests doc](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md#progression).
+The course view is what the map shows when the learner is inside a course. It shows that course's trip: its cities in order, the route between them, the course's ship, and the activities at the city the learner is working in. The same view is used to preview a course before joining. The map outside a course is the [world view](world-view.instructions.md). Which cities are open to a learner is defined in the org [quests doc](../../../.github/.github/instructions/quests.instructions.md#progression).
 
 ## The experience
 
@@ -35,7 +35,7 @@ The course view is what the map shows when the learner is inside a course. It sh
 
 ## Entering a city early
 
-- A learner can enter a city before it opens, by paying a cost. This applies whether the course opens cities by date or by each student's progress, so no learner is locked out of a city. The org quests doc owns this rule and has not yet decided what the cost is ([progression](../../../.github/.github/instructions/quests-and-learning-objectives.instructions.md#progression)).
+- A learner can enter a city before it opens, by paying a cost. This applies whether the course opens cities by date or by each student's progress, so no learner is locked out of a city. The org quests doc owns this rule and has not yet decided what the cost is ([progression](../../../.github/.github/instructions/quests.instructions.md#progression)).
 
 ## The preview
 
