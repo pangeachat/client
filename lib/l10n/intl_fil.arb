@@ -1266,7 +1266,6 @@
     "unreadChatsInApp": "{appname}: {unread} hindi nabasang usapan",
     "noDatabaseEncryption": "Hindi sinusuportahan ang encryption ng database sa platform na ito",
     "thereAreCountUsersBlocked": "Sa kasalukuyan, may {count} na naka-block na mga user.",
-    "restricted": "Pinagkaitan",
     "knockRestricted": "Pinagkaitan sa pagtapik",
     "goToSpace": "Pumunta sa space: {space}",
     "markAsUnread": "Itag as unread",
@@ -1930,17 +1929,8 @@
     "introductions": "Mga Panimula",
     "announcements": "Mga Anunsyo",
     "activities": "Mga Gawain",
-    "access": "Access",
-    "howSpaceCanBeFound": "Paano mahanap ang kursong ito",
     "private": "Pribado",
-    "cannotBeFoundInSearch": "Hindi mahanap sa paghahanap",
     "public": "Pampubliko",
-    "visibleToCommunity": "Makikita sa mas malawak na komunidad ng Pangea Chat sa pamamagitan ng \"Hanapin ang isang kurso\"",
-    "howSpaceCanBeJoined": "Paano maisasali ang kursong ito",
-    "canBeFoundVia": "Maaaring mahanap sa pamamagitan ng:",
-    "canBeFoundViaInvitation": "• imbitasyon",
-    "canBeFoundViaCodeOrLink": "• code o link",
-    "canBeFoundViaKnock": "• kahilingan na sumali at pag-apruba ng admin",
     "sendActivities": "Magpadala ng mga aktibidad",
     "directMessage": "Direktang Mensahe",
     "newDirectMessage": "Bagong direktang mensahe",
@@ -1998,7 +1988,6 @@
     "inviteDesc": "Sa pamamagitan ng username, code, o link",
     "editCourseDesc": "Dito maaari mong i-edit ang pamagat ng kurso, paglalarawan, atbp.",
     "permissionsDesc": "Itakda ang mga pahintulot tulad ng kung sino ang maaaring mag-imbita ng mga user, magpadala ng mga mensahe, lumikha ng mga usapan, atbp.",
-    "accessDesc": "Maaari mong gawing bukas ang iyong kurso sa buong mundo! O, gawing pribado at ligtas ang iyong kurso.",
     "deleteDesc": "Tanging mga admin lamang ang maaaring magtanggal ng kurso. Ito ay isang mapanirang aksyon na nag-aalis ng lahat ng mga user at nagtatanggal ng lahat ng napiling usapan sa loob ng kurso. Mag-ingat sa pagproseso.",
     "whatNow": "Ano na ngayon?",
     "chooseNextActivity": "Piliin ang iyong susunod na aktibidad!",
@@ -2071,7 +2060,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-11-10 13:06:10.319737",
+    "@@last_modified": "2026-11-11 14:11:16.771379",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -3694,10 +3683,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6469,47 +6454,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6776,10 +6725,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8551,11 +8496,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Sa default, ang mga kurso ay pampublikong searchable at nangangailangan ng pag-apruba ng admin upang sumali. Maaari mong i-edit ang mga setting na ito anumang oras.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Anong wika ang iyong pinag-aaralan?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9435,11 +9375,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Payagan ang iba na maghanap para sa iyong kurso",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Huwag palampasin ang anumang chat!",
     "enableNotificationsDesc": "Payagan ang mga notification para sa Pangea Chat at manatiling konektado sa iyong mga kaibigan sa wika!",
     "enableNotifications": "Payagan ang mga notification",
@@ -9532,7 +9467,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Pumili ng mga salita upang matuto pa tungkol sa mga ito",
     "requireAnalyticsAccessTitle": "Kailangan ng access sa analytics upang sumali",
-    "requireAnalyticsAccessDesc": "Dapat bigyan ng access ng mga kalahok ang kanilang learning analytics upang makasali sa kursong ito",
     "analyticsAccessNoticeTitle": "Kinakailangan ang Access sa Analytics",
     "analyticsAccessNoticeDesc": "Sa pagsali sa kursong ito, sumasang-ayon kang bigyan ng access ang mga admin sa iyong learning analytics.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9540,10 +9474,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10906,5 +10836,14 @@
     "joinCodeJoinExplanation": "Mag-log in o mag-sign up, at gagamitin namin ang iyong code para awtomatiko kang idagdag.",
     "joinCodeLabel": "Code",
     "joinCodeSaved": "Na-save ang code na {code}",
-    "joinCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin."
+    "joinCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin.",
+    "whoCanJoin": "Sino ang puwedeng sumali?",
+    "approvalRequired": "Kailangan ng pag-apruba",
+    "courseAccessPublicDesc": "Kahit sino ay puwedeng makahanap at makasali sa kursong ito.",
+    "courseAccessApprovalRequiredDesc": "Kahit sino ay puwedeng makahanap ng kursong ito at humiling na sumali. Ikaw ang mag-aapruba sa bawat kahilingan.",
+    "courseAccessCodeNote": "Ang mga estudyanteng may course code mo o imbitasyon ay puwedeng sumali kaagad, anuman ang piliin mo.",
+    "requireAnalyticsAccessSummary": "Ibinabahagi sa iyo ng mga mag-aaral ang kanilang pag-unlad sa pag-aaral kapag sumali sila.",
+    "courseAccessPrivateDesc": "Hindi lumalabas ang kurso sa paghahanap. Sumasali ang mga tao gamit ang iyong imbitasyon o code ng kurso.",
+    "courseAccessProtected": "Protektado",
+    "courseAccessProtectedDesc": "Para sa sariling estudyante ng isang edukador. Pinamamahalaan ng kurso ang kanilang mga account. I-set up mula sa dashboard ng edukador."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:17.931287",
+    "@@last_modified": "2026-11-11 14:11:25.429391",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -2218,7 +2218,6 @@
     "unreadChatsInApp": "{appname}: {unread} conversații necitite",
     "noDatabaseEncryption": "Criptarea bazei de date nu este suportată pe această platformă",
     "thereAreCountUsersBlocked": "În acest moment există {count} utilizatori blocați.",
-    "restricted": "Restricționat",
     "knockRestricted": "Restricție la bătaie",
     "goToSpace": "Mergi la spațiu: {space}",
     "markAsUnread": "Marchează ca necitit",
@@ -2880,17 +2879,8 @@
     "introductions": "Introduceri",
     "announcements": "Anunțuri",
     "activities": "Activități",
-    "access": "Acces",
-    "howSpaceCanBeFound": "Cum poate fi găsit acest curs",
     "private": "Privat",
-    "cannotBeFoundInSearch": "Nu poate fi găsit în căutare",
     "public": "Public",
-    "visibleToCommunity": "Vizibil pentru comunitatea mai largă Pangea Chat prin \"Găsește un curs\"",
-    "howSpaceCanBeJoined": "Cum poate fi aderat acest curs",
-    "canBeFoundVia": "Poate fi găsit prin:",
-    "canBeFoundViaInvitation": "• invitație",
-    "canBeFoundViaCodeOrLink": "• cod sau link",
-    "canBeFoundViaKnock": "• cerere de aderare și aprobare de administrator",
     "sendActivities": "Trimite activități",
     "directMessage": "Mesaj direct",
     "newDirectMessage": "Mesaj direct nou",
@@ -2948,7 +2938,6 @@
     "inviteDesc": "Prin nume de utilizator, cod sau link",
     "editCourseDesc": "Aici poți edita titlul, descrierea și altele ale cursului.",
     "permissionsDesc": "Setează permisiuni precum cine poate invita utilizatori, trimite mesaje, crea chat-uri etc.",
-    "accessDesc": "Poți face cursul tău deschis lumii! Sau, îl poți face privat și sigur.",
     "deleteDesc": "Doar administratorii pot șterge un curs. Aceasta este o acțiune distructivă care elimină toți utilizatorii și șterge toate chat-urile selectate din curs. Procedează cu precauție.",
     "whatNow": "Ce urmează?",
     "chooseNextActivity": "Alege următoarea activitate!",
@@ -3563,10 +3552,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6330,47 +6315,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6637,10 +6586,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8428,11 +8373,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "În mod implicit, cursurile sunt căutabile public și necesită aprobată de administrator pentru a se alătura. Puteți edita aceste setări în orice moment.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Ce limbă înveți?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9307,11 +9247,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Permite altora să caute cursul tău",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Nu rata niciun chat!",
     "enableNotificationsDesc": "Permite notificările pentru Pangea Chat și rămâi conectat cu prietenii tăi de limbă!",
     "enableNotifications": "Permite notificările",
@@ -9404,7 +9339,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selectați cuvintele pentru a învăța mai multe despre ele",
     "requireAnalyticsAccessTitle": "Necesită acces la analize pentru a se alătura",
-    "requireAnalyticsAccessDesc": "Participanții trebuie să acorde acces la analizele lor de învățare pentru a se alătura acestui curs",
     "analyticsAccessNoticeTitle": "Acces la analize necesar",
     "analyticsAccessNoticeDesc": "Prin alăturarea acestui curs, sunteți de acord să acordați administratorilor acces la analizele dumneavoastră de învățare.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9412,10 +9346,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10778,5 +10708,14 @@
     "joinCodeJoinExplanation": "Conectează-te sau înregistrează-te, iar noi vom folosi codul tău pentru a te adăuga automat.",
     "joinCodeLabel": "Cod",
     "joinCodeSaved": "Codul {code} a fost salvat",
-    "joinCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga."
+    "joinCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga.",
+    "whoCanJoin": "Cine se poate alătura?",
+    "approvalRequired": "Este necesară aprobarea",
+    "courseAccessPublicDesc": "Oricine poate găsi și se poate alătura acestui curs.",
+    "courseAccessApprovalRequiredDesc": "Oricine poate găsi acest curs și poate cere să se alăture. Tu aprobi fiecare cerere.",
+    "courseAccessCodeNote": "Studenții cu codul cursului tău sau o invitație se pot alătura imediat, indiferent ce alegi.",
+    "requireAnalyticsAccessSummary": "Elevii îți partajează progresul lor de învățare atunci când se alătură.",
+    "courseAccessPrivateDesc": "Cursul nu apare în căutări. Oamenii se alătură cu invitația sau codul tău de curs.",
+    "courseAccessProtected": "Protejat",
+    "courseAccessProtectedDesc": "Pentru studenții proprii ai unui educator. Cursul le gestionează conturile. Se configurează din tabloul de bord al educatorului."
 }

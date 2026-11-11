@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-11-10 13:06:11.618807",
+    "@@last_modified": "2026-11-11 14:11:18.304434",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -2365,8 +2365,6 @@
             }
         }
     },
-    "restricted": "Ograničeni",
-    "@restricted": {},
     "roomUpgradeDescription": "Razgovor će se tada ponovo stvoriti s novom verzijom sobe. Svi sudionici će biti obaviješteni da se moraju prebaciti na novi razgovor. Više o verzijama soba možeš saznati na https://spec.matrix.org/latest/rooms/",
     "@roomUpgradeDescription": {},
     "verifyOtherDeviceDescription": "Kada potvrdiš jedan drugi uređaj, ti uređaji mogu razmjenjivati ključeve, povećavajući tvoju ukupnu sigurnost. 💪 Kada pokreneš provjeru, pojavit će se skočni prozor u aplikaciji na oba uređaja. Tamo ćeš tada vidjeti niz emojija ili brojeve koje moraš međusobno usporediti. Najbolje je imati oba uređaja pri ruci prije nego što započneš provjeru. 🤳",
@@ -3122,17 +3120,8 @@
     "introductions": "Uvodne informacije",
     "announcements": "Obavijesti",
     "activities": "Aktivnosti",
-    "access": "Pristup",
-    "howSpaceCanBeFound": "Kako se može pronaći ovaj tečaj",
     "private": "Privatno",
-    "cannotBeFoundInSearch": "Ne može se pronaći u pretraživanju",
     "public": "Javno",
-    "visibleToCommunity": "Vidljivo široj zajednici Pangea Chata putem \"Pronađi tečaj\"",
-    "howSpaceCanBeJoined": "Kako se može pridružiti ovom tečaju",
-    "canBeFoundVia": "Može se pronaći putem:",
-    "canBeFoundViaInvitation": "• pozivnice",
-    "canBeFoundViaCodeOrLink": "• koda ili linka",
-    "canBeFoundViaKnock": "• zahtjeva za pridruživanje i odobrenja administratora",
     "sendActivities": "Pošalji aktivnosti",
     "directMessage": "Izravna poruka",
     "newDirectMessage": "Nova izravna poruka",
@@ -3190,7 +3179,6 @@
     "inviteDesc": "Po korisničkom imenu, po kodu ili linku",
     "editCourseDesc": "Ovdje možete urediti naslov tečaja, opis itd.",
     "permissionsDesc": "Postavite dopuštenja poput tko može pozvati korisnike, slati poruke, stvarati chatove itd.",
-    "accessDesc": "Možete učiniti svoj tečaj otvorenim za svijet! Ili, učiniti svoj tečaj privatnim i sigurnim.",
     "deleteDesc": "Samo administratori mogu izbrisati tečaj. Ovo je destruktivna radnja koja uklanja sve korisnike i briše sve odabrane chatove unutar tečaja. Budite oprezni.",
     "whatNow": "Što sada?",
     "chooseNextActivity": "Odaberite svoju sljedeću aktivnost!",
@@ -6034,47 +6022,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6341,10 +6293,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8132,11 +8080,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Prema zadanim postavkama, tečajevi su javno pretraživi i zahtijevaju odobrenje administratora za pridruživanje. Ove postavke možete urediti u bilo kojem trenutku.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Koji jezik učite?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9011,11 +8954,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Dopusti drugima da pretražuju tvoj tečaj",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Nikada ne propustite razgovor!",
     "enableNotificationsDesc": "Dopustite obavijesti za Pangea Chat i ostanite povezani sa svojim jezičnim prijateljima!",
     "enableNotifications": "Dopustite obavijesti",
@@ -9108,7 +9046,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Odaberite riječi kako biste saznali više o njima",
     "requireAnalyticsAccessTitle": "Zahtijeva pristup analitici za pridruživanje",
-    "requireAnalyticsAccessDesc": "Sudionici moraju odobriti pristup svojim analitikama učenja kako bi se pridružili ovom tečaju",
     "analyticsAccessNoticeTitle": "Potrebna analitika",
     "analyticsAccessNoticeDesc": "Pridruživanjem ovom tečaju, slažete se da administratorima omogućite pristup vašim analitikama učenja.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9116,10 +9053,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10482,5 +10415,14 @@
     "joinCodeJoinExplanation": "Prijavite se ili registrirajte, a mi ćemo upotrijebiti vaš kod da vas automatski dodamo.",
     "joinCodeLabel": "Kod",
     "joinCodeSaved": "Kod {code} spremljen",
-    "joinCodeSavedExplanation": "Registrirajte se ili prijavite i mi ćemo vas dodati."
+    "joinCodeSavedExplanation": "Registrirajte se ili prijavite i mi ćemo vas dodati.",
+    "whoCanJoin": "Tko se može pridružiti?",
+    "approvalRequired": "Potrebno odobrenje",
+    "courseAccessPublicDesc": "Svatko može pronaći i pridružiti se ovom tečaju.",
+    "courseAccessApprovalRequiredDesc": "Svatko može pronaći ovaj tečaj i zatražiti pridruživanje. Vi odobravate svaki zahtjev.",
+    "courseAccessCodeNote": "Studenti s vašim kodom tečaja ili pozivnicom mogu se odmah pridružiti, bez obzira na vaš odabir.",
+    "requireAnalyticsAccessSummary": "Učenici dijele svoj napredak u učenju s vama kada se pridruže.",
+    "courseAccessPrivateDesc": "Tečaj se ne prikazuje u pretraživanju. Ljudi se pridružuju putem vaše pozivnice ili koda tečaja.",
+    "courseAccessProtected": "Zaštićeno",
+    "courseAccessProtectedDesc": "Za učenike edukatora. Tečaj upravlja njihovim računima. Postavlja se s nadzorne ploče edukatora."
 }

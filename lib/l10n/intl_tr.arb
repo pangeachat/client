@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-11-10 13:06:20.441898",
+    "@@last_modified": "2026-11-11 14:11:27.929642",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -2413,8 +2413,6 @@
     "@files": {},
     "knockRestricted": "Tıklatma kısıtlı",
     "@knockRestricted": {},
-    "restricted": "Kısıtlı",
-    "@restricted": {},
     "swipeRightToLeftToReply": "Yanıtlamak için sağdan sola kaydır",
     "@swipeRightToLeftToReply": {},
     "alwaysUse24HourFormat": "false",
@@ -3225,17 +3223,8 @@
     "introductions": "Tanıtımlar",
     "announcements": "Duyurular",
     "activities": "Aktiviteler",
-    "access": "Erişim",
-    "howSpaceCanBeFound": "Bu kurs nasıl bulunabilir",
     "private": "Özel",
-    "cannotBeFoundInSearch": "Aramada bulunamaz",
     "public": "Genel",
-    "visibleToCommunity": "\"Bir kurs bul\" aracılığıyla Pangea Chat topluluğuna görünür",
-    "howSpaceCanBeJoined": "Bu kurs nasıl katılabilir",
-    "canBeFoundVia": "Şu yollarla bulunabilir:",
-    "canBeFoundViaInvitation": "• davet",
-    "canBeFoundViaCodeOrLink": "• kod veya bağlantı",
-    "canBeFoundViaKnock": "• katılma isteği ve yönetici onayı",
     "sendActivities": "Aktiviteleri gönder",
     "directMessage": "Özel Mesaj",
     "newDirectMessage": "Yeni özel mesaj",
@@ -3293,7 +3282,6 @@
     "inviteDesc": "Kullanıcı adı, kod veya bağlantı ile",
     "editCourseDesc": "Burada kurs başlığını, açıklamasını vb. düzenleyebilirsiniz.",
     "permissionsDesc": "Kimin kullanıcı davet edebileceği, mesaj gönderebileceği, sohbet oluşturabileceği gibi izinleri ayarlayın.",
-    "accessDesc": "Kursunuzu dünyaya açık hale getirebilirsiniz! Ya da, kursunuzu özel ve güvenli yapabilirsiniz.",
     "deleteDesc": "Sadece yöneticiler kursu silebilir. Bu, tüm kullanıcıları kaldıran ve kurs içindeki tüm seçili sohbetleri silen yıkıcı bir işlemdir. Dikkatli ilerleyin.",
     "whatNow": "Şimdi ne olacak?",
     "chooseNextActivity": "Bir sonraki etkinliğinizi seçin!",
@@ -5899,47 +5887,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6206,10 +6158,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7997,11 +7945,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Varsayılan olarak, kurslar herkese açık olarak aranabilir ve katılmak için yönetici onayı gerektirir. Bu ayarları istediğiniz zaman düzenleyebilirsiniz.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Hangi dili öğreniyorsunuz?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8876,11 +8819,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Diğerlerinin kursunuzu aramasına izin ver",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Sohbeti asla kaçırmayın!",
     "enableNotificationsDesc": "Pangea Sohbeti için bildirimlere izin verin ve dil arkadaşlarınızla bağlantıda kalın!",
     "enableNotifications": "Bildirimlere izin ver",
@@ -8973,7 +8911,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Daha fazla bilgi edinmek için kelimeleri seçin",
     "requireAnalyticsAccessTitle": "Katılmak için analiz erişimi gereklidir",
-    "requireAnalyticsAccessDesc": "Katılımcıların bu kursa katılmak için öğrenme analizlerine erişim izni vermesi gerekmektedir",
     "analyticsAccessNoticeTitle": "Analiz Erişimi Gereklidir",
     "analyticsAccessNoticeDesc": "Bu kursa katılarak, yöneticilere öğrenme analizlerinize erişim izni vermeyi kabul edersiniz.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8981,10 +8918,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10347,5 +10280,14 @@
     "joinCodeJoinExplanation": "Giriş yapın veya kaydolun, kodunuzu kullanarak sizi otomatik olarak ekleyeceğiz.",
     "joinCodeLabel": "Kod",
     "joinCodeSaved": "{code} kodu kaydedildi",
-    "joinCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi ekleyeceğiz."
+    "joinCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi ekleyeceğiz.",
+    "whoCanJoin": "Kimler katılabilir?",
+    "approvalRequired": "Onay gerekli",
+    "courseAccessPublicDesc": "Herkes bu kursu bulabilir ve katılabilir.",
+    "courseAccessApprovalRequiredDesc": "Herkes bu kursu bulabilir ve katılma isteği gönderebilir. Her isteği siz onaylarsınız.",
+    "courseAccessCodeNote": "Kurs kodunuz veya davetiyeniz olan öğrenciler, ne seçerseniz seçin, hemen katılabilirler.",
+    "requireAnalyticsAccessSummary": "Öğrenciler katıldıklarında öğrenme ilerlemelerini sizinle paylaşır.",
+    "courseAccessPrivateDesc": "Kurs aramalarda görünmez. Kişiler davetiyenizle veya kurs kodunuzla katılır.",
+    "courseAccessProtected": "Korumalı",
+    "courseAccessProtectedDesc": "Bir eğitimcinin kendi öğrencileri için. Kurs, hesaplarını yönetir. Eğitimci panosundan ayarlanır."
 }

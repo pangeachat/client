@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-11-10 13:06:10.898149",
+    "@@last_modified": "2026-11-11 14:11:16.660450",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -2413,8 +2413,6 @@
     "@files": {},
     "knockRestricted": "Peta á porta",
     "@knockRestricted": {},
-    "restricted": "Non accesible",
-    "@restricted": {},
     "swipeRightToLeftToReply": "Despraza hacia a esquerda para responder",
     "@swipeRightToLeftToReply": {},
     "alwaysUse24HourFormat": "falso",
@@ -3406,17 +3404,8 @@
     "introductions": "Presentacións",
     "announcements": "Anuncios",
     "activities": "Actividades",
-    "access": "Acceso",
-    "howSpaceCanBeFound": "Como se pode atopar este curso",
     "private": "Privado",
-    "cannotBeFoundInSearch": "Non se pode atopar na busca",
     "public": "Público",
-    "visibleToCommunity": "Visible para a comunidade máis ampla de Pangea Chat a través de \"Atopar un curso\"",
-    "howSpaceCanBeJoined": "Como se pode unirse a este curso",
-    "canBeFoundVia": "Pódese atopar a través de:",
-    "canBeFoundViaInvitation": "• invitación",
-    "canBeFoundViaCodeOrLink": "• código ou enlace",
-    "canBeFoundViaKnock": "• solicitude para unirse e aprobación do administrador",
     "sendActivities": "Enviar actividades",
     "directMessage": "Mensaxe directa",
     "newDirectMessage": "Nova mensaxe directa",
@@ -3474,7 +3463,6 @@
     "inviteDesc": "Por nome de usuario, por código ou ligazón",
     "editCourseDesc": "Aquí podes editar o título do curso, a descrición, etc.",
     "permissionsDesc": "Establece permisos como quen pode invitar usuarios, enviar mensaxes, crear chats, etc.",
-    "accessDesc": "Podes facer que o teu curso sexa aberto ao mundo! Ou, facer que o teu curso sexa privado e seguro.",
     "deleteDesc": "Só os administradores poden eliminar un curso. Esta é unha acción destructiva que elimina a todos os usuarios e elimina todos os chats seleccionados dentro do curso. Procede con precaución.",
     "whatNow": "E agora?",
     "chooseNextActivity": "Elixe a túa próxima actividade!",
@@ -5781,47 +5769,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6088,10 +6040,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7879,11 +7827,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Por defecto, os cursos son buscables públicamente e requiren aprobación do administrador para unirse. Podes editar estas configuracións en calquera momento.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Que idioma estás aprendendo?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8578,11 +8521,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Permitir que outros busquen o teu curso",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "¡Nunca perdas unha charla!",
     "enableNotificationsDesc": "Permite notificacións para Pangea Chat e mantente conectado cos teus compañeiros de idioma!",
     "enableNotifications": "Permitir notificacións",
@@ -8675,7 +8613,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selecciona palabras para aprender máis sobre elas",
     "requireAnalyticsAccessTitle": "Require acceso á analítica para unirse",
-    "requireAnalyticsAccessDesc": "Os participantes deben conceder acceso á súa analítica de aprendizaxe para unirse a este curso",
     "analyticsAccessNoticeTitle": "Acceso á analítica requirido",
     "analyticsAccessNoticeDesc": "Ao unirte a este curso, aceptas conceder acceso aos administradores á túa analítica de aprendizaxe.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8683,10 +8620,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10049,5 +9982,14 @@
     "joinCodeJoinExplanation": "Inicia sesión ou rexístrate, e usaremos o teu código para engadirte automaticamente.",
     "joinCodeLabel": "Código",
     "joinCodeSaved": "Código {code} gardado",
-    "joinCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste."
+    "joinCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste.",
+    "whoCanJoin": "Quen pode unirse?",
+    "approvalRequired": "Aprobación requirida",
+    "courseAccessPublicDesc": "Calquera pode atopar e unirse a este curso.",
+    "courseAccessApprovalRequiredDesc": "Calquera pode atopar este curso e solicitar unirse. Ti aprobas cada solicitude.",
+    "courseAccessCodeNote": "Os estudantes co teu código de curso ou unha invitación poden unirse de inmediato, elixas o que elixas.",
+    "requireAnalyticsAccessSummary": "Os estudantes comparten o seu progreso de aprendizaxe contigo cando se unen.",
+    "courseAccessPrivateDesc": "O curso non aparece na busca. A xente únese coa túa invitación ou código de curso.",
+    "courseAccessProtected": "Protexido",
+    "courseAccessProtectedDesc": "Para os propios estudantes dun educador. O curso xestiona as súas contas. Configúrase desde o panel do educador."
 }

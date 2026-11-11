@@ -139,7 +139,7 @@ class AddCourseTile extends StatelessWidget {
                                 Padding(
                                   padding: .only(left: 8),
                                   child: Tooltip(
-                                    message: L10n.of(context).restricted,
+                                    message: L10n.of(context).approvalRequired,
                                     child: Icon(Icons.lock_outlined, size: 18),
                                   ),
                                 ),

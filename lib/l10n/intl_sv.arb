@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:19.683823",
+    "@@last_modified": "2026-11-11 14:11:27.146214",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -2387,7 +2387,6 @@
     "unreadChatsInApp": "{appname}: {unread} olästa chattar",
     "noDatabaseEncryption": "Databas-kryptering stöds inte på denna plattform",
     "thereAreCountUsersBlocked": "Just nu är {count} användare blockerade.",
-    "restricted": "Begränsad",
     "knockRestricted": "Knackbegränsad",
     "goToSpace": "Gå till utrymme: {space}",
     "markAsUnread": "Markera som oläst",
@@ -3049,17 +3048,8 @@
     "introductions": "Introduktioner",
     "announcements": "Meddelanden",
     "activities": "Aktiviteter",
-    "access": "Åtkomst",
-    "howSpaceCanBeFound": "Hur denna kurs kan hittas",
     "private": "Privat",
-    "cannotBeFoundInSearch": "Kan inte hittas i sökningen",
     "public": "Offentlig",
-    "visibleToCommunity": "Synlig för det bredare Pangea Chat-samhället via \"Hitta en kurs\"",
-    "howSpaceCanBeJoined": "Hur denna kurs kan anslutas",
-    "canBeFoundVia": "Kan hittas via:",
-    "canBeFoundViaInvitation": "• inbjudan",
-    "canBeFoundViaCodeOrLink": "• kod eller länk",
-    "canBeFoundViaKnock": "• begär att gå med och administratörsgodkännande",
     "sendActivities": "Skicka aktiviteter",
     "directMessage": "Direktmeddelande",
     "newDirectMessage": "Nytt direktmeddelande",
@@ -3117,7 +3107,6 @@
     "inviteDesc": "Via användarnamn, kod eller länk",
     "editCourseDesc": "Här kan du redigera kursens titel, beskrivning, etc.",
     "permissionsDesc": "Ställ in behörigheter som vem som kan bjuda in användare, skicka meddelanden, skapa chattar, etc.",
-    "accessDesc": "Du kan göra din kurs öppen för världen! Eller, gör din kurs privat och säker.",
     "deleteDesc": "Endast administratörer kan radera en kurs. Detta är en destruktiv åtgärd som tar bort alla användare och raderar alla valda chattar inom kursen. Fortsätt med försiktighet.",
     "whatNow": "Vad nu?",
     "chooseNextActivity": "Välj din nästa aktivitet!",
@@ -3349,10 +3338,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6116,47 +6101,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6423,10 +6372,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8214,11 +8159,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Som standard är kurser offentligt sökbara och kräver administratörsgodkännande för att gå med. Du kan redigera dessa inställningar när som helst.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Vilket språk lär du dig?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9093,11 +9033,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Tillåt andra att söka efter din kurs",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Missa aldrig en chatt!",
     "enableNotificationsDesc": "Tillåt aviseringar för Pangea Chat och håll kontakten med dina språkkompisar!",
     "enableNotifications": "Tillåt aviseringar",
@@ -9190,7 +9125,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Välj ord för att lära dig mer om dem",
     "requireAnalyticsAccessTitle": "Kräv analysåtkomst för att delta",
-    "requireAnalyticsAccessDesc": "Deltagare måste ge åtkomst till sina lärandeanalyser för att delta i den här kursen",
     "analyticsAccessNoticeTitle": "Analysåtkomst krävs",
     "analyticsAccessNoticeDesc": "Genom att delta i den här kursen godkänner du att ge administratörer åtkomst till dina lärandeanalyser.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9198,10 +9132,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10564,5 +10494,14 @@
     "joinCodeJoinExplanation": "Logga in eller registrera dig, så använder vi din kod för att lägga till dig automatiskt.",
     "joinCodeLabel": "Kod",
     "joinCodeSaved": "Kod {code} sparad",
-    "joinCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig."
+    "joinCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig.",
+    "whoCanJoin": "Vem kan gå med?",
+    "approvalRequired": "Godkännande krävs",
+    "courseAccessPublicDesc": "Vem som helst kan hitta och gå med i den här kursen.",
+    "courseAccessApprovalRequiredDesc": "Vem som helst kan hitta den här kursen och be om att få gå med. Du godkänner varje förfrågan.",
+    "courseAccessCodeNote": "Elever med din kurskod eller en inbjudan kan gå med direkt, oavsett vad du väljer.",
+    "requireAnalyticsAccessSummary": "Elever delar sina framsteg med dig när de går med.",
+    "courseAccessPrivateDesc": "Kursen visas inte i sökresultat. Användare går med via din inbjudan eller kurskod.",
+    "courseAccessProtected": "Skyddad",
+    "courseAccessProtectedDesc": "För en lärares egna elever. Kursen hanterar deras konton. Ställ in från lärarens kontrollpanel."
 }

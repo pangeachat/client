@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-11-10 13:06:09.798679",
+    "@@last_modified": "2026-11-11 14:11:16.216128",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -2409,8 +2409,6 @@
     "@searchMore": {},
     "knockRestricted": "Koputa piiratud ligipääsuga jututoa uksele",
     "@knockRestricted": {},
-    "restricted": "Piiratud",
-    "@restricted": {},
     "gallery": "Galerii",
     "@gallery": {},
     "files": "Failid",
@@ -3416,17 +3414,8 @@
     "introductions": "Tutvustused",
     "announcements": "Teated",
     "activities": "Tegevused",
-    "access": "Juhtimine",
-    "howSpaceCanBeFound": "Kuidas seda ruumi leida",
     "private": "Privaatne",
-    "cannotBeFoundInSearch": "Ei leia otsingus",
     "public": "Avalik",
-    "visibleToCommunity": "Nähtav laiemale Pangea Chat kogukonnale \"Leia oma inimesed\" kaudu",
-    "howSpaceCanBeJoined": "Kuidas seda ruumi saab liituda",
-    "canBeFoundVia": "Leida saab läbi:",
-    "canBeFoundViaInvitation": "• kutse",
-    "canBeFoundViaCodeOrLink": "• kood või link",
-    "canBeFoundViaKnock": "• taotlus liitumiseks ja administraatori nõusolek",
     "sendActivities": "Saada tegevusi",
     "directMessage": "Otse sõnum",
     "newDirectMessage": "Uus otse sõnum",
@@ -5696,47 +5685,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -5891,7 +5844,6 @@
     "inviteDesc": "Kasutajanime, koodi või lingi kaudu",
     "editCourseDesc": "Siin saate redigeerida kursuse pealkirja, kirjelduid jne.",
     "permissionsDesc": "Seadke õigused, näiteks kes saab kutsuda kasutajaid, saata sõnumeid, luua vestlusi jne.",
-    "accessDesc": "Saate teha oma kursuse avatud maailmale! Või muuda oma kursus privaatseks ja turvaliseks.",
     "deleteDesc": "Ainult administraatorid saavad kursust kustutada. See on hävitav tegevus, mis eemaldab kõik kasutajad ja kustutab kõik valitud vestlused kursuse sees. Olge ettevaatlik.",
     "whatNow": "Mis nüüd?",
     "chooseNextActivity": "Valige oma järgmine tegevus!",
@@ -6099,10 +6051,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7890,11 +7838,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Vaikimisi on kursused avalikult otsitavad ja liitumiseks on vajalik administraatori heakskiit. Sa saad neid seadeid igal ajal muuta.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Millist keelt sa õpid?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8575,11 +8518,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Luba teistel otsida sinu kursust",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Ära jäta vestlust vahele!",
     "enableNotificationsDesc": "Luba teavitused Pangea Chati jaoks ja püsige ühenduses oma keelekaaslastega!",
     "enableNotifications": "Luba teavitused",
@@ -8672,7 +8610,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Vali sõnad, et neist rohkem teada saada",
     "requireAnalyticsAccessTitle": "Nõua analüütika juurdepääsu liitumiseks",
-    "requireAnalyticsAccessDesc": "Osalejad peavad andma juurdepääsu oma õpikogemuse analüütikale, et liituda selle kursusega",
     "analyticsAccessNoticeTitle": "Nõutav analüütika juurdepääs",
     "analyticsAccessNoticeDesc": "Liitudes selle kursusega, nõustute andma administraatoritele juurdepääsu oma õpikogemuse analüütikale.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8680,10 +8617,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10046,5 +9979,14 @@
     "joinCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu koodi, et sind automaatselt lisada.",
     "joinCodeLabel": "Kood",
     "joinCodeSaved": "Kood {code} salvestatud",
-    "joinCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind."
+    "joinCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind.",
+    "whoCanJoin": "Kes saab liituda?",
+    "approvalRequired": "Vajalik on heakskiit",
+    "courseAccessPublicDesc": "Igaüks saab selle kursuse leida ja sellega liituda.",
+    "courseAccessApprovalRequiredDesc": "Igaüks saab selle kursuse leida ja liitumist paluda. Teie kinnitate iga taotluse.",
+    "courseAccessCodeNote": "Õpilased, kellel on teie kursuse kood või kutse, saavad kohe liituda, olenemata teie valikust.",
+    "requireAnalyticsAccessSummary": "Õpilased jagavad sinuga oma õppimise edenemist, kui nad liituvad.",
+    "courseAccessPrivateDesc": "Kursus ei ilmu otsingus. Inimesed liituvad sinu kutse või kursuse koodiga.",
+    "courseAccessProtected": "Kaitstud",
+    "courseAccessProtectedDesc": "Õpetaja enda õpilastele. Kursus haldab nende kontosid. Seadistatakse õpetaja juhtpaneelilt."
 }

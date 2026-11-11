@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/features/join_codes/**,lib/routes/chat_list/**,lib/routes/courses/**,lib/routes/onboarding/**,lib/pangea/spaces/**,lib/utils/url_launcher.dart,lib/config/routes.dart,web/index.html,ios/Runner/Runner.entitlements,android/app/src/main/AndroidManifest.xml"
+applyTo: "lib/features/join_codes/**,lib/features/course_access/**,lib/pangea/common/widgets/course_access_sheet.dart,lib/routes/chat_list/**,lib/routes/courses/**,lib/routes/onboarding/**,lib/pangea/spaces/**,lib/utils/url_launcher.dart,lib/config/routes.dart,web/index.html,ios/Runner/Runner.entitlements,android/app/src/main/AndroidManifest.xml"
 ---
 
 # Joining Courses — Client Design
@@ -24,6 +24,19 @@ How users join courses (Matrix spaces) through three routes: class link, class c
 All three routes converge on the user becoming a `Membership.join` member of the course space. Child rooms (announcements, introductions, activity chats) are joined separately afterward.
 
 A course carries its own target language — the quest's, the same field its info chips show — and a learner whose learning language differs can switch from the course's language chip, before joining and after. That behavior is [Switching from context](profile.instructions.md#switching-from-context); joining a course never changes what the learner is learning on its own.
+
+---
+
+## Course access
+
+The kinds of course are defined in the org courses doc ([kinds of course](../../../.github/.github/instructions/course-spaces.instructions.md#kinds-of-course)). In the app an admin picks Public, Approval required or Private ([`CourseAccess`](../../lib/features/course_access/course_access.dart), #9359). Protected is shown and cannot be picked, because only a verified educator makes a course Protected, on the educator dashboard.
+
+- The admin picks in the "Who can join?" sheet ([`CourseAccessSheet`](../../lib/pangea/common/widgets/course_access_sheet.dart)), the only place the kinds are described. Two rows open it, each showing the current kind: one above Create course on the create-course preview ([course-preview.instructions.md § The page](course-preview.instructions.md#the-page)), and one in the course's More section.
+- The sheet says that a class code or an invitation lets a student in without approval, whatever the kind.
+- Done commits the choice, and dismissing the sheet changes nothing. From the More section, Done applies the change at once. If applying fails, the row shows the kind the course has now.
+- A course whose settings match none of the kinds, for example one that is unlisted but has the `public` join rule, shows no kind selected until the admin picks one.
+- A course made in the app starts as Approval required. Whether it should start Private, as a course made on the dashboard does, is not decided.
+- **Intended — not yet implemented.** Once the app reads whether a course manages accounts, a Protected course shows Protected as its kind, and the other three cannot be picked.
 
 ---
 

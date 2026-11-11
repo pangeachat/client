@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:16.311840",
+    "@@last_modified": "2026-11-11 14:11:24.156737",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -2270,8 +2270,6 @@
     "@groupName": {},
     "changeGeneralChatSettings": "Algemene chat instellingen wijzigen",
     "@changeGeneralChatSettings": {},
-    "restricted": "Beperkt",
-    "@restricted": {},
     "searchForUsers": "Zoek @personen...",
     "@searchForUsers": {},
     "searchMore": "Zoek meer...",
@@ -3405,17 +3403,8 @@
     "introductions": "Introducties",
     "announcements": "Aankondigingen",
     "activities": "Activiteiten",
-    "access": "Toegang",
-    "howSpaceCanBeFound": "Hoe deze cursus gevonden kan worden",
     "private": "Privé",
-    "cannotBeFoundInSearch": "Kan niet gevonden worden in zoekopdrachten",
     "public": "Openbaar",
-    "visibleToCommunity": "Zichtbaar voor de bredere Pangea Chat-gemeenschap via \"Vind een cursus\"",
-    "howSpaceCanBeJoined": "Hoe deze cursus kan worden aangesloten",
-    "canBeFoundVia": "Kan gevonden worden via:",
-    "canBeFoundViaInvitation": "• uitnodiging",
-    "canBeFoundViaCodeOrLink": "• code of link",
-    "canBeFoundViaKnock": "• verzoek om lid te worden en goedkeuring door beheerder",
     "sendActivities": "Verzend activiteiten",
     "directMessage": "Direct bericht",
     "newDirectMessage": "Nieuw direct bericht",
@@ -3473,7 +3462,6 @@
     "inviteDesc": "Door gebruikersnaam, code of link",
     "editCourseDesc": "Hier kunt u de cursusnaam, beschrijving, enz. bewerken.",
     "permissionsDesc": "Stel machtigingen in zoals wie gebruikers kan uitnodigen, berichten kan sturen, chats kan maken, enz.",
-    "accessDesc": "U kunt uw cursus openstellen voor de wereld! Of, maak uw cursus privé en veilig.",
     "deleteDesc": "Alleen beheerders kunnen een cursus verwijderen. Dit is een destructieve actie die alle gebruikers verwijdert en alle geselecteerde chats binnen de cursus verwijdert. Ga voorzichtig te werk.",
     "whatNow": "Wat nu?",
     "chooseNextActivity": "Kies je volgende activiteit!",
@@ -5781,47 +5769,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6088,10 +6040,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7879,11 +7827,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Standaard zijn cursussen openbaar doorzoekbaar en is goedkeuring van de beheerder vereist om deel te nemen. Je kunt deze instellingen op elk moment bewerken.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Welke taal ben je aan het leren?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8578,11 +8521,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Sta anderen toe om naar je cursus te zoeken",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Mis nooit een chat!",
     "enableNotificationsDesc": "Sta meldingen toe voor Pangea Chat en blijf verbonden met je taalkameraadjes!",
     "enableNotifications": "Sta meldingen toe",
@@ -8675,7 +8613,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Selecteer woorden om er meer over te leren",
     "requireAnalyticsAccessTitle": "Analytics-toegang vereist om deel te nemen",
-    "requireAnalyticsAccessDesc": "Deelnemers moeten toegang tot hun leeranalyses verlenen om aan deze cursus deel te nemen",
     "analyticsAccessNoticeTitle": "Analytics-toegang vereist",
     "analyticsAccessNoticeDesc": "Door deel te nemen aan deze cursus stem je ermee in dat beheerders toegang krijgen tot je leeranalyses.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8683,10 +8620,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10049,5 +9982,14 @@
     "joinCodeJoinExplanation": "Log in of meld je aan, en we gebruiken je code om je automatisch toe te voegen.",
     "joinCodeLabel": "Code",
     "joinCodeSaved": "Code {code} opgeslagen",
-    "joinCodeSavedExplanation": "Meld je aan of log in en we voegen je toe."
+    "joinCodeSavedExplanation": "Meld je aan of log in en we voegen je toe.",
+    "whoCanJoin": "Wie kan deelnemen?",
+    "approvalRequired": "Goedkeuring vereist",
+    "courseAccessPublicDesc": "Iedereen kan deze cursus vinden en eraan deelnemen.",
+    "courseAccessApprovalRequiredDesc": "Iedereen kan deze cursus vinden en vragen om deel te nemen. Jij keurt elk verzoek goed.",
+    "courseAccessCodeNote": "Studenten met jouw cursuscode of een uitnodiging kunnen direct deelnemen, wat je ook kiest.",
+    "requireAnalyticsAccessSummary": "Studenten delen hun leerproces met je wanneer ze meedoen.",
+    "courseAccessPrivateDesc": "De cursus verschijnt niet in zoekresultaten. Mensen kunnen deelnemen met jouw uitnodiging of cursuscode.",
+    "courseAccessProtected": "Beschermd",
+    "courseAccessProtectedDesc": "Voor de eigen studenten van een docent. De cursus beheert hun accounts. Instellen via het docentendashboard."
 }

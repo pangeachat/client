@@ -1134,7 +1134,6 @@
     "unreadChatsInApp": "{appname}: {unread} წაკითხული ჩატი",
     "noDatabaseEncryption": "მონაცემთა ბაზის დაშიფვრა ამ პლატფორმაზე არ არის მხარდაჭერილი",
     "thereAreCountUsersBlocked": "ამჟამად ბლოკირებულია {count} მომხმარებელი.",
-    "restricted": "შეზღუდული",
     "knockRestricted": "შეზღუდული დარეკვა",
     "goToSpace": "გადადი სივრცეში: {space}",
     "markAsUnread": "ჩაწერე წაკითხულად",
@@ -1798,17 +1797,8 @@
     "introductions": "შესავალი",
     "announcements": "შეტყობინებები",
     "activities": "აქტივობები",
-    "access": "წვდომა",
-    "howSpaceCanBeFound": "როგორ შეიძლება ამ კურსის მოძებნა",
     "private": "პირადი",
-    "cannotBeFoundInSearch": "ძებნაში ვერ მოიძებნება",
     "public": "საჯარო",
-    "visibleToCommunity": "ხილვადი პანგეა ჩატ საზოგადოებისთვის \"კურსის მოძებნა\" მეშვეობით",
-    "howSpaceCanBeJoined": "როგორ შეიძლება შეუერთდე ამ კურსს",
-    "canBeFoundVia": "შეიძლება იპოვოთ მეშვეობით:",
-    "canBeFoundViaInvitation": "• მოწვევა",
-    "canBeFoundViaCodeOrLink": "• კოდი ან ლინკი",
-    "canBeFoundViaKnock": "• მოთხოვნა შეუერთების და ადმინისტრატორის დამტკიცება",
     "sendActivities": "გაგზავნეთ აქტივობები",
     "directMessage": "მხოლოდ შეტყობინება",
     "newDirectMessage": "ახალი პირდაპირი შეტყობინება",
@@ -1866,7 +1856,6 @@
     "inviteDesc": "მომხმარებლის სახელით, კოდით ან ლინკით",
     "editCourseDesc": "აქ შეგიძლიათ შეცვალოთ კურსის სათაური, აღწერა და სხვა.",
     "permissionsDesc": "დააყენეთ დაშვებები, როგორიცაა ვინ შეუძლია მოწვევა, მესიჯების გაგზავნა, ჩატების შექმნა და სხვა.",
-    "accessDesc": "თქვენ შეგიძლიათ გახსნათ თქვენი კურსი მსოფლიოისთვის! ან, გახადოთ თქვენი კურსი პირადი და უსაფრთხო.",
     "deleteDesc": "მხოლოდ ადმინისტრატორებს შეუძლიათ კურსის წაშლა. ეს არის განადგურების მოქმედება, რომელიც წაშლის ყველა მომხმარებელს და ყველა არჩეულ ჩატს კურსის ფარგლებში. გთხოვთ, გამოიჩინოთ სიფრთხილე.",
     "whatNow": "ახლა რა?",
     "chooseNextActivity": "აირჩიეთ თქვენი შემდეგი აქტივობა!",
@@ -1928,7 +1917,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-11-10 13:06:13.473901",
+    "@@last_modified": "2026-11-11 14:11:20.311467",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3723,10 +3712,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6498,47 +6483,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6805,10 +6754,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8596,11 +8541,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "ნაგულისხმევად, კურსები საჯაროდ საძიებელია და საჭიროებს ადმინისტრატორის დამტკიცებას გაწვდვისთვის. შეგიძლიათ ამ პარამეტრების რედაქტირება ნებისმიერ დროს.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "რომელი ენა სწავლობთ?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9475,11 +9415,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "დართეთ სხვებს თქვენი კურსის ძიება",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "არასდროს გამოტოვოთ საუბარი!",
     "enableNotificationsDesc": "გთხოვთ, დაუშვათ შეტყობინებები Pangea Chat-ისთვის და დარჩეთ დაკავშირებული თქვენს ენასთან მეგობრებთან!",
     "enableNotifications": "დაუშვით შეტყობინებები",
@@ -9572,7 +9507,6 @@
     },
     "readingAssistanceTutorialCollectToken": "აირჩიეთ სიტყვები, რომ მეტი გაიგოთ მათზე",
     "requireAnalyticsAccessTitle": "ანალიტიკის წვდომა საჭიროა გაწვდისთვის",
-    "requireAnalyticsAccessDesc": "მონაწილეებს უნდა მიაწვდონ წვდომა თავიანთი სასწავლო ანალიტიკაზე, რომ ამ კურსში გაწვდონ",
     "analyticsAccessNoticeTitle": "ანალიტიკის წვდომა საჭიროა",
     "analyticsAccessNoticeDesc": "ამ კურსში გაწვდით, თქვენ თანხმდებით, რომ ადმინისტრატორებს მიაწვდონ წვდომა თქვენს სასწავლო ანალიტიკაზე.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9580,10 +9514,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10946,5 +10876,14 @@
     "joinCodeJoinExplanation": "შედით ან დარეგისტრირდით და ჩვენ გამოვიყენებთ თქვენს კოდს, რათა ავტომატურად დაგამატოთ.",
     "joinCodeLabel": "კოდი",
     "joinCodeSaved": "კოდი {code} შენახულია",
-    "joinCodeSavedExplanation": "დარეგისტრირდით ან შედით სისტემაში და ჩვენ დაგამატებთ."
+    "joinCodeSavedExplanation": "დარეგისტრირდით ან შედით სისტემაში და ჩვენ დაგამატებთ.",
+    "whoCanJoin": "ვინ შეიძლება შემოუერთდეს?",
+    "approvalRequired": "დადასტურებაა საჭირო",
+    "courseAccessPublicDesc": "ნებისმიერს შეუძლია ამ კურსის პოვნა და შემოერთება.",
+    "courseAccessApprovalRequiredDesc": "ნებისმიერს შეუძლია ამ კურსის პოვნა და შემოერთების მოთხოვნა. თქვენ ადასტურებთ თითოეულ მოთხოვნას.",
+    "courseAccessCodeNote": "სტუდენტებს თქვენი კურსის კოდით ან მოწვევით შეუძლიათ დაუყოვნებლივ შემოერთება, რასაც არ უნდა აირჩევთ.",
+    "requireAnalyticsAccessSummary": "მოსწავლეები გიზიარებენ თავიანთ პროგრესს, როდესაც ისინი უერთდებიან.",
+    "courseAccessPrivateDesc": "კურსი არ ჩანს ძიებაში. ხალხი უერთდება თქვენი მოწვევით ან კურსის კოდით.",
+    "courseAccessProtected": "დაცული",
+    "courseAccessProtectedDesc": "განკუთვნილია მასწავლებლის მოსწავლეებისთვის. კურსი მართავს მათ ანგარიშებს. დაყენება ხდება მასწავლებლის დაფის მეშვეობით."
 }

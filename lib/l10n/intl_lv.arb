@@ -2401,8 +2401,6 @@
     "@gallery": {},
     "files": "Datnes",
     "@files": {},
-    "restricted": "Ierobežots",
-    "@restricted": {},
     "knockRestricted": "Pieklauvēt ierobežotajiem",
     "@knockRestricted": {},
     "sendCanceled": "Sūtīšana atcelta",
@@ -3396,17 +3394,8 @@
     "introductions": "Ievads",
     "announcements": "Paziņojumi",
     "activities": "Aktivitātes",
-    "access": "Piekļuve",
-    "howSpaceCanBeFound": "Kā šī kursa var atrast",
     "private": "Privāts",
-    "cannotBeFoundInSearch": "Nevar atrast meklēšanā",
     "public": "Publisks",
-    "visibleToCommunity": "Redzams plašākajai Pangea Chat kopienai caur \"Atrodi kursu\"",
-    "howSpaceCanBeJoined": "Kā šis kurss var tikt pievienots",
-    "canBeFoundVia": "Var atrast caur:",
-    "canBeFoundViaInvitation": "• ielūgums",
-    "canBeFoundViaCodeOrLink": "• kods vai saite",
-    "canBeFoundViaKnock": "• pieprasījums pievienoties un administratora apstiprinājums",
     "sendActivities": "Sūtīt aktivitātes",
     "directMessage": "Tiešā ziņa",
     "newDirectMessage": "Jauna tiešā ziņa",
@@ -3451,7 +3440,6 @@
     "inviteDesc": "Ar lietotājvārdu, ar kodu vai saiti",
     "editCourseDesc": "Šeit jūs varat rediģēt kursa nosaukumu, aprakstu utt.",
     "permissionsDesc": "Iestatiet atļaujas, piemēram, kas var uzaicināt lietotājus, sūtīt ziņojumus, veidot čatus utt.",
-    "accessDesc": "Jūs varat padarīt savu kursu atvērtu pasaulei! Vai arī padarīt kursu privātu un drošu.",
     "deleteDesc": "Tikai administratori var dzēst kursu. Šī ir postoša darbība, kas izdzēš visus lietotājus un dzēš visus atlasītos čatus kursā. Esiet uzmanīgs.",
     "whatNow": "Kas tagad?",
     "chooseNextActivity": "Izvēlies nākamo aktivitāti!",
@@ -3513,7 +3501,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-11-10 13:06:15.189001",
+    "@@last_modified": "2026-11-11 14:11:22.380815",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -5781,47 +5769,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6088,10 +6040,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -7879,11 +7827,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Pēc noklusējuma kursi ir publiski meklējami un prasa administratora apstiprinājumu pievienošanai. Jūs varat rediģēt šos iestatījumus jebkurā laikā.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Kuru valodu tu mācies?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -8578,11 +8521,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Atļaut citiem meklēt jūsu kursu",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Nekad nepalaid garām sarunu!",
     "enableNotificationsDesc": "Atļaut paziņojumus par Pangea Chat un palikt saistītam ar saviem valodas draugiem!",
     "enableNotifications": "Atļaut paziņojumus",
@@ -8675,7 +8613,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Izvēlieties vārdus, lai uzzinātu vairāk par tiem",
     "requireAnalyticsAccessTitle": "Nepieciešama analītikas piekļuve, lai pievienotos",
-    "requireAnalyticsAccessDesc": "Dalībniekiem jāpiešķir piekļuve viņu mācību analītikai, lai pievienotos šim kursam",
     "analyticsAccessNoticeTitle": "Nepieciešama analītikas piekļuve",
     "analyticsAccessNoticeDesc": "Pievienojoties šim kursam, jūs piekrītat piešķirt administratoriem piekļuvi jūsu mācību analītikai.",
     "@readingAssistanceTutorialCollectToken": {
@@ -8683,10 +8620,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10049,5 +9982,14 @@
     "joinCodeJoinExplanation": "Piesakieties vai reģistrējieties, un mēs izmantosim jūsu kodu, lai jūs automātiski pievienotu.",
     "joinCodeLabel": "Kods",
     "joinCodeSaved": "Kods {code} saglabāts",
-    "joinCodeSavedExplanation": "Reģistrējieties vai piesakieties, un mēs jūs pievienosim."
+    "joinCodeSavedExplanation": "Reģistrējieties vai piesakieties, un mēs jūs pievienosim.",
+    "whoCanJoin": "Kas var pievienoties?",
+    "approvalRequired": "Nepieciešams apstiprinājums",
+    "courseAccessPublicDesc": "Ikviens var atrast un pievienoties šim kursam.",
+    "courseAccessApprovalRequiredDesc": "Ikviens var atrast šo kursu un lūgt pievienoties. Jūs apstiprināt katru pieprasījumu.",
+    "courseAccessCodeNote": "Studenti ar jūsu kursa kodu vai ielūgumu var pievienoties nekavējoties, neatkarīgi no jūsu izvēles.",
+    "requireAnalyticsAccessSummary": "Studenti kopīgo ar jums savu mācību progresu, kad viņi pievienojas.",
+    "courseAccessPrivateDesc": "Kurss neparādās meklēšanā. Cilvēki pievienojas ar jūsu ielūgumu vai kursa kodu.",
+    "courseAccessProtected": "Aizsargāts",
+    "courseAccessProtectedDesc": "Pedagoga paša studentiem. Kurss pārvalda viņu kontus. Iestatāms no pedagoga informācijas paneļa."
 }

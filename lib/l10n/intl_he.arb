@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:11.102660",
+    "@@last_modified": "2026-11-11 14:11:17.483497",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -1557,7 +1557,6 @@
     "unreadChatsInApp": "{appname}: {unread} שיחות שלא נקראו",
     "noDatabaseEncryption": "הצפנת מסד הנתונים אינה נתמכת בפלטפורמה זו",
     "thereAreCountUsersBlocked": "כרגע יש {count} משתמשים חסומים.",
-    "restricted": "מוגבל",
     "knockRestricted": "הקשה מוגבלת",
     "goToSpace": "עבור לחלל: {space}",
     "markAsUnread": "סמן כלא נקרא",
@@ -2219,17 +2218,8 @@
     "introductions": "הקדמות",
     "announcements": "הודעות",
     "activities": "פעילויות",
-    "access": "גישה",
-    "howSpaceCanBeFound": "איך ניתן למצוא את הקורס הזה",
     "private": "פרטי",
-    "cannotBeFoundInSearch": "לא ניתן למצוא בחיפוש",
     "public": "ציבורי",
-    "visibleToCommunity": "נראה לקהילת פאנגיאה צ'אט הרחבה באמצעות \"מצא קורס\"",
-    "howSpaceCanBeJoined": "איך ניתן להצטרף למרחב זה",
-    "canBeFoundVia": "ניתן למצוא באמצעות:",
-    "canBeFoundViaInvitation": "• הזמנה",
-    "canBeFoundViaCodeOrLink": "• קוד או קישור",
-    "canBeFoundViaKnock": "• בקשה להצטרף ואישור מנהל",
     "sendActivities": "שלח פעילויות",
     "directMessage": "הודעה ישירה",
     "newDirectMessage": "הודעה ישירה חדשה",
@@ -2287,7 +2277,6 @@
     "inviteDesc": "על ידי שם משתמש, קוד או קישור",
     "editCourseDesc": "כאן תוכל לערוך את כותרת הקורס, תיאור ועוד.",
     "permissionsDesc": "הגדר הרשאות כגון מי יכול להזמין משתמשים, לשלוח הודעות, ליצור שיחות, ועוד.",
-    "accessDesc": "אתה יכול להפוך את הקורס שלך לגלוי לעולם! או, להפוך את הקורס לפרטי ומאובטח.",
     "deleteDesc": "רק מנהלים יכולים למחוק קורס. זוהי פעולה הרסנית שמסירה את כל המשתמשים ומוחקת את כל השיחות שנבחרו בתוך הקורס. המשך בזהירות.",
     "whatNow": "מה עכשיו?",
     "chooseNextActivity": "בחר את הפעילות הבאה שלך!",
@@ -3745,10 +3734,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6512,47 +6497,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6819,10 +6768,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8610,11 +8555,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "ברירת מחדל, קורסים ניתנים לחיפוש ציבורי ודורשים אישור מנהל כדי להצטרף. אתה יכול לערוך את ההגדרות הללו בכל עת.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "איזו שפה אתה לומד?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9489,11 +9429,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "אפשר לאחרים לחפש את הקורס שלך",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "אל תפספס שיחה לעולם!",
     "enableNotificationsDesc": "אפשר התראות עבור Pangea Chat והישאר מחובר עם חברי השפה שלך!",
     "enableNotifications": "אפשר התראות",
@@ -9586,7 +9521,6 @@
     },
     "readingAssistanceTutorialCollectToken": "בחר מילים כדי ללמוד עליהן יותר",
     "requireAnalyticsAccessTitle": "דרוש גישה לניתוחי נתונים כדי להצטרף",
-    "requireAnalyticsAccessDesc": "משתתפים חייבים להעניק גישה לניתוחי הלמידה שלהם כדי להצטרף לקורס זה",
     "analyticsAccessNoticeTitle": "דרושה גישה לניתוחי נתונים",
     "analyticsAccessNoticeDesc": "בהצטרפות לקורס זה, אתה מסכים להעניק למנהלים גישה לניתוחי הלמידה שלך.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9594,10 +9528,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10960,5 +10890,14 @@
     "joinCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד שלך כדי להוסיף אותך אוטומטית.",
     "joinCodeLabel": "קוד",
     "joinCodeSaved": "הקוד {code} נשמר",
-    "joinCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך."
+    "joinCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך.",
+    "whoCanJoin": "מי יכול להצטרף?",
+    "approvalRequired": "נדרש אישור",
+    "courseAccessPublicDesc": "כל אחד יכול למצוא ולהצטרף לקורס זה.",
+    "courseAccessApprovalRequiredDesc": "כל אחד יכול למצוא את הקורס הזה ולבקש להצטרף. אתה מאשר כל בקשה.",
+    "courseAccessCodeNote": "תלמידים עם קוד הקורס שלך או הזמנה יכולים להצטרף מיד, לא משנה מה תבחר.",
+    "requireAnalyticsAccessSummary": "סטודנטים משתפים איתך את התקדמות הלמידה שלהם כשהם מצטרפים.",
+    "courseAccessPrivateDesc": "הקורס לא מופיע בחיפוש. אנשים מצטרפים עם ההזמנה או קוד הקורס שלך.",
+    "courseAccessProtected": "מוגן",
+    "courseAccessProtectedDesc": "לתלמידים של מחנך. הקורס מנהל את החשבונות שלהם. הגדרה מלוח המחוונים של המחנך."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-11-10 13:06:08.835331",
+    "@@last_modified": "2026-11-11 14:11:14.918757",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -2358,7 +2358,6 @@
     "unreadChatsInApp": "{appname}: {unread} nepřečtených chatů",
     "noDatabaseEncryption": "Šifrování databáze není na této platformě podporováno",
     "thereAreCountUsersBlocked": "Právě je zablokováno {count} uživatelů.",
-    "restricted": "Omezeno",
     "knockRestricted": "Omezené klepnutí",
     "goToSpace": "Přejít do prostoru: {space}",
     "markAsUnread": "Označit jako nepřečtené",
@@ -3020,17 +3019,8 @@
     "introductions": "Představení",
     "announcements": "Oznámení",
     "activities": "Aktivity",
-    "access": "Přístup",
-    "howSpaceCanBeFound": "Jak lze tento kurz najít",
     "private": "Soukromé",
-    "cannotBeFoundInSearch": "Nelze najít ve vyhledávání",
     "public": "Veřejné",
-    "visibleToCommunity": "Viditelné pro širší komunitu Pangea Chat prostřednictvím \"Najít kurz\"",
-    "howSpaceCanBeJoined": "Jak se lze do tohoto kurzu připojit",
-    "canBeFoundVia": "Lze najít přes:",
-    "canBeFoundViaInvitation": "• pozvánka",
-    "canBeFoundViaCodeOrLink": "• kód nebo odkaz",
-    "canBeFoundViaKnock": "• žádost o připojení a schválení správce",
     "sendActivities": "Odeslat aktivity",
     "directMessage": "Přímá zpráva",
     "newDirectMessage": "Nová přímá zpráva",
@@ -3088,7 +3078,6 @@
     "inviteDesc": "Podle uživatelského jména, kódu nebo odkazu",
     "editCourseDesc": "Zde můžete upravit název kurzu, popis atd.",
     "permissionsDesc": "Nastavte oprávnění, například kdo může zvát uživatele, posílat zprávy, vytvářet chaty atd.",
-    "accessDesc": "Můžete udělat svůj kurz otevřený pro celý svět! Nebo ho udělat soukromým a zabezpečeným.",
     "deleteDesc": "Pouze správci mohou smazat kurz. Jedná se o destruktivní akci, která odstraní všechny uživatele a smaže všechny vybrané chaty v kurzu. Postupujte opatrně.",
     "whatNow": "Co teď?",
     "chooseNextActivity": "Vyberte si další aktivitu!",
@@ -3339,10 +3328,6 @@
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
-    },
-    "@restricted": {
-        "type": "String",
-        "placeholders": {}
     },
     "@knockRestricted": {
         "type": "String",
@@ -6106,47 +6091,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeFound": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@private": {
         "type": "String",
         "placeholders": {}
     },
-    "@cannotBeFoundInSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@public": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibleToCommunity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@howSpaceCanBeJoined": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundVia": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaCodeOrLink": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@canBeFoundViaKnock": {
         "type": "String",
         "placeholders": {}
     },
@@ -6413,10 +6362,6 @@
         "placeholders": {}
     },
     "@permissionsDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8204,11 +8149,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "newCourseAccess": "Ve výchozím nastavení jsou kurzy veřejně vyhledatelné a vyžadují schválení administrátora pro připojení. Tyto nastavení můžete kdykoli upravit.",
-    "@newCourseAccess": {
-        "type": "String",
-        "placeholders": {}
-    },
     "onboardingLanguagesTitle": "Jaký jazyk se učíte?",
     "@onboardingLanguagesTitle": {
         "type": "String",
@@ -9069,11 +9009,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "visibilityToggleTitle": "Povolit ostatním vyhledávat váš kurz",
-    "@visibilityToggleTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableNotificationsTitle": "Nikdy nezmeškejte chat!",
     "enableNotificationsDesc": "Povolte oznámení pro Pangea Chat a zůstaňte v kontaktu se svými jazykovými kamarády!",
     "enableNotifications": "Povolte oznámení",
@@ -9166,7 +9101,6 @@
     },
     "readingAssistanceTutorialCollectToken": "Vyberte slova, abyste se o nich dozvěděli více",
     "requireAnalyticsAccessTitle": "Vyžadovat přístup k analytice pro připojení",
-    "requireAnalyticsAccessDesc": "Účastníci musí udělit přístup k jejich analytice učení, aby se mohli připojit k tomuto kurzu",
     "analyticsAccessNoticeTitle": "Vyžaduje se přístup k analytice",
     "analyticsAccessNoticeDesc": "Připojením k tomuto kurzu souhlasíte s tím, že udělíte administrátorům přístup k vaší analytice učení.",
     "@readingAssistanceTutorialCollectToken": {
@@ -9174,10 +9108,6 @@
         "placeholders": {}
     },
     "@requireAnalyticsAccessTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@requireAnalyticsAccessDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10540,5 +10470,14 @@
     "joinCodeJoinExplanation": "Přihlaste se nebo se zaregistrujte a my váš kód použijeme k automatickému přidání.",
     "joinCodeLabel": "Kód",
     "joinCodeSaved": "Kód {code} uložen",
-    "joinCodeSavedExplanation": "Zaregistrujte se nebo se přihlaste a my vás přidáme."
+    "joinCodeSavedExplanation": "Zaregistrujte se nebo se přihlaste a my vás přidáme.",
+    "whoCanJoin": "Kdo se může připojit?",
+    "approvalRequired": "Vyžadováno schválení",
+    "courseAccessPublicDesc": "Kdokoli může tento kurz najít a připojit se k němu.",
+    "courseAccessApprovalRequiredDesc": "Kdokoli může tento kurz najít a požádat o připojení. Každou žádost schválíte.",
+    "courseAccessCodeNote": "Studenti s kódem kurzu nebo pozvánkou se mohou připojit okamžitě, bez ohledu na to, co si vyberete.",
+    "requireAnalyticsAccessSummary": "Studenti s vámi sdílí svůj pokrok v učení, když se připojí.",
+    "courseAccessPrivateDesc": "Kurz se nezobrazuje ve vyhledávání. Lidé se připojí pomocí vaší pozvánky nebo kódu kurzu.",
+    "courseAccessProtected": "Chráněno",
+    "courseAccessProtectedDesc": "Pro vlastní studenty pedagoga. Kurz spravuje jejich účty. Nastavte z panelu pedagoga."
 }
