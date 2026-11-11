@@ -28,14 +28,14 @@ class ClassCodeDialog extends StatelessWidget {
             children: [
               const Center(child: JoinCourseBadge(size: 56.0)),
               Text(
-                l10n.joinYourCourse,
+                l10n.joinWithYourCode,
                 textAlign: TextAlign.center,
                 style: theme.textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
               ),
               Text(
-                l10n.courseCodeJoinExplanation,
+                l10n.joinCodeJoinExplanation,
                 textAlign: TextAlign.center,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,
@@ -84,7 +84,7 @@ class _ClassCodeChip extends StatelessWidget {
           spacing: 8.0,
           children: [
             Text(
-              L10n.of(context).courseCodeLabel,
+              L10n.of(context).joinCodeLabel,
               style: theme.textTheme.bodySmall?.copyWith(
                 color: theme.colorScheme.onSecondaryContainer,
               ),

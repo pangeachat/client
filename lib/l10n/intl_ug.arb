@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-11-06 13:11:07.156302",
+    "@@last_modified": "2026-11-10 13:06:20.883511",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "تولۇق خاتىرىنى تەييارلاۋاتىدۇ…",
     "callTranscriptNoRecording": "تولۇق تېلېفوننىڭ خاتىرىسى يوق.",
     "callTranscriptNotSubscribed": "{name}نىڭ بۇ تېلېفون سۆھبىتى جەريانىدا مۇشتەرىلىكى يوق ئىدى، شۇڭا سۆزلەنگەنلەر خاتىرىلەنمىدى.",
-    "joinYourCourse": "كۇرسىڭىزغا قاتناشقان",
-    "courseCodeJoinExplanation": "كىرىڭ ياكى تىزىملىتىڭ، بىز سىزنىڭ كۇرس كودىڭىزنى ئىشلىتىپ سىزنى ئاپتوماتىك ھالدا كۇرسىڭىزغا قوشىمىز.",
-    "courseCodeLabel": "كۇرس كودى",
-    "courseCodeSaved": "كۇرس كودى {code} ساقلاندى",
-    "courseCodeSavedExplanation": "تىزىملىتىڭ ياكى كىرىڭ، بىز سىزنى كۇرسىڭىزغا قوشىمىز.",
     "moderationRefusedContactDetails": "ئۇچۇرىڭىز ئەۋەتىلمىدى. ئاپتوماتىك سۈزگۈچ تېلېفون نومۇرىغا ئوخشاش ئالاقىلىشىش ئۇچۇرلىرىنى بايقىدى. ئۇلارنى ئۆچۈرۈپ قايتا سىناڭ.",
     "moderationRefusedProfanity": "ئۇچۇرىڭىز ئەۋەتىلمىدى. ئاپتوماتىك سۈزگۈچ پاراڭدا يول قويمايدىغان سۆزنى بايقىدى. ئۇنى ئۆزگەرتىپ قايتا سىناڭ.",
     "callTranscriptTranscribeButton": "تەرجىمە قىلىش",
@@ -2519,5 +2514,10 @@
     "changeBaseLanguageDesc": "ئەپنىڭ تىزىملىكى ۋە كۇنۇپكىلىرى {language} غا ئۆزگىرىدۇ.",
     "accountSetupFailedHelp": "بىز ھېساباتىڭىزنى تەڭشەپ بولالمىدۇق. ئۇلىنىشىڭىزنى تەكشۈرۈپ قايتا سىناڭ ياكى چىقىپ كېيىن كىرىڭ.",
     "onboardingOfflineError": "تورغا ئۇلانمىدىڭىز. تورغا ئۇلانغاندىن كېيىن قايتا سىناڭ.",
-    "activitySavedTo": "پائالىيەت {page} غا ساقلاندى"
+    "activitySavedTo": "پائالىيەت {page} غا ساقلاندى",
+    "joinWithYourCode": "كودىڭىز ئارقىلىق قاتناشقۇسىز",
+    "joinCodeJoinExplanation": "تىزىملىتىڭ ياكى كىرىڭ، بىز سىزنىڭ كودىڭىز ئارقىلىق سىزنى ئاپتوماتىك قوشىمىز.",
+    "joinCodeLabel": "كود",
+    "joinCodeSaved": "{code} كود ساقلاندى",
+    "joinCodeSavedExplanation": "تىزىملىتىڭ ياكى كىرىڭ، بىز سىزنى قوشىمىز."
 }

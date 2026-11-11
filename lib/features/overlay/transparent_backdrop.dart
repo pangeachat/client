@@ -49,6 +49,10 @@ class TransparentBackdrop extends StatelessWidget {
           color: Color.lerp(Colors.transparent, targetColor, t),
           clipBehavior: Clip.antiAlias,
           child: Semantics(
+            // Its own node, always. Otherwise its label and button flag merge
+            // into the node above it, which then reads as one "Dismiss" button
+            // holding everything under it (#9594).
+            container: true,
             label: L10n.of(context).dismiss,
             button: true,
             hitTestBehavior: ignoresPointer

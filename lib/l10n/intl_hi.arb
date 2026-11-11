@@ -3080,7 +3080,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-11-06 13:11:00.226748",
+    "@@last_modified": "2026-11-10 13:06:11.210535",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10518,11 +10518,6 @@
     "callTranscriptPreparingRecording": "पूरी रिकॉर्डिंग तैयार की जा रही है…",
     "callTranscriptNoRecording": "पूरी कॉल की कोई रिकॉर्डिंग नहीं है।",
     "callTranscriptNotSubscribed": "{name} के पास इस कॉल के दौरान सदस्यता नहीं थी, इसलिए जो कहा गया उसे ट्रांसक्रिप्ट नहीं किया गया।",
-    "joinYourCourse": "अपने कोर्स में शामिल हों",
-    "courseCodeJoinExplanation": "लॉग इन करें या साइन अप करें, और हम आपको आपके कोर्स में स्वचालित रूप से जोड़ने के लिए आपके कोर्स कोड का उपयोग करेंगे।",
-    "courseCodeLabel": "कोर्स कोड",
-    "courseCodeSaved": "कोर्स कोड {code} सहेजा गया",
-    "courseCodeSavedExplanation": "साइन अप करें या लॉग इन करें और हम आपको आपके कोर्स में जोड़ देंगे।",
     "moderationRefusedContactDetails": "आपका संदेश नहीं भेजा गया। एक स्वचालित फ़िल्टर को संपर्क विवरण, जैसे फ़ोन नंबर मिला। कृपया उन्हें हटा दें और पुनः प्रयास करें।",
     "moderationRefusedProfanity": "आपका संदेश नहीं भेजा गया। एक स्वचालित फ़िल्टर को एक ऐसा शब्द मिला जिसकी हम चैट में अनुमति नहीं देते हैं। कृपया इसे बदलें और पुनः प्रयास करें।",
     "callTranscriptTranscribeButton": "लिप्यंतरित करें",
@@ -10678,5 +10673,10 @@
     "changeBaseLanguageDesc": "ऐप के मेनू और बटन {language} में बदल जाएंगे।",
     "accountSetupFailedHelp": "हम आपका खाता सेट अप नहीं कर पाए। अपना कनेक्शन जांचें और फिर से कोशिश करें, या लॉग आउट करके बाद में साइन इन करें।",
     "onboardingOfflineError": "आप ऑफ़लाइन हैं। ऑनलाइन होने पर फिर से कोशिश करें।",
-    "activitySavedTo": "गतिविधि {page} में सहेजी गई"
+    "activitySavedTo": "गतिविधि {page} में सहेजी गई",
+    "joinWithYourCode": "अपने कोड से जुड़ें",
+    "joinCodeJoinExplanation": "लॉग इन करें या साइन अप करें, और हम आपको स्वचालित रूप से जोड़ने के लिए आपके कोड का उपयोग करेंगे।",
+    "joinCodeLabel": "कोड",
+    "joinCodeSaved": "कोड {code} सहेजा गया",
+    "joinCodeSavedExplanation": "साइन अप करें या लॉग इन करें और हम आपको जोड़ देंगे।"
 }

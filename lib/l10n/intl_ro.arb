@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:05.118439",
+    "@@last_modified": "2026-11-10 13:06:17.931287",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10618,11 +10618,6 @@
     "callTranscriptPreparingRecording": "Se pregătește înregistrarea completă…",
     "callTranscriptNoRecording": "Nu există nicio înregistrare a apelului complet.",
     "callTranscriptNotSubscribed": "{name} nu a avut un abonament în timpul acestui apel, așa că ceea ce s-a spus nu a fost transcris.",
-    "joinYourCourse": "Alătură-te cursului tău",
-    "courseCodeJoinExplanation": "Conectează-te sau înregistrează-te, iar noi vom folosi codul tău de curs pentru a te adăuga automat la cursul tău.",
-    "courseCodeLabel": "Codul cursului",
-    "courseCodeSaved": "Codul cursului {code} a fost salvat",
-    "courseCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga la cursul tău.",
     "moderationRefusedContactDetails": "Mesajul tău nu a fost trimis. Un filtru automat a detectat detalii de contact, cum ar fi un număr de telefon. Te rugăm să le elimini și să încerci din nou.",
     "moderationRefusedProfanity": "Mesajul tău nu a fost trimis. Un filtru automat a detectat un cuvânt pe care nu-l permitem în chat. Te rugăm să-l modifici și să încerci din nou.",
     "callTranscriptTranscribeButton": "Transcrie",
@@ -10778,5 +10773,10 @@
     "changeBaseLanguageDesc": "Meniurile și butoanele aplicației vor trece la {language}.",
     "accountSetupFailedHelp": "Nu am putut finaliza configurarea contului tău. Verifică-ți conexiunea și încearcă din nou, sau deconectează-te și conectează-te mai târziu.",
     "onboardingOfflineError": "Ești offline. Încearcă din nou când ești online.",
-    "activitySavedTo": "Activitate salvată în {page}"
+    "activitySavedTo": "Activitate salvată în {page}",
+    "joinWithYourCode": "Alătură-te cu codul tău",
+    "joinCodeJoinExplanation": "Conectează-te sau înregistrează-te, iar noi vom folosi codul tău pentru a te adăuga automat.",
+    "joinCodeLabel": "Cod",
+    "joinCodeSaved": "Codul {code} a fost salvat",
+    "joinCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga."
 }

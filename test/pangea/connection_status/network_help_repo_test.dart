@@ -19,8 +19,10 @@ import 'package:fluffychat/features/connection_status/network_help_repo.dart';
 import 'package:fluffychat/features/connection_status/network_help_request.dart';
 import 'package:fluffychat/features/connection_status/network_host_category.dart';
 import 'package:fluffychat/features/connection_status/network_type.dart';
+import 'package:fluffychat/features/connection_status/widgets/filtered_network_dialog.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -35,6 +37,7 @@ void main() {
   final request = NetworkHelpRequest(
     email: 'teacher@school.example',
     accountId: '@teacher:pangea.chat',
+    courseIds: const ['!a:pangea.chat', '!b:pangea.chat'],
     blockedCategories: const [
       NetworkHostCategory.pangeaApi,
       NetworkHostCategory.video,
@@ -88,6 +91,10 @@ void main() {
   Future<http.Response> created(http.Request _) async =>
       http.Response('{}', 201);
 
+  Map<String, dynamic> dataOf(http.Request post) =>
+      (jsonDecode(post.body) as Map<String, dynamic>)['data']
+          as Map<String, dynamic>;
+
   test('a request reaches the CMS as a network-help form submission', () async {
     await withCms(created, () => NetworkHelpRepo.submit(request));
 
@@ -100,6 +107,7 @@ void main() {
     expect(body['email'], 'teacher@school.example');
     expect(body['data'], {
       'accountId': '@teacher:pangea.chat',
+      'courseIds': ['!a:pangea.chat', '!b:pangea.chat'],
       'blockedCategories': ['pangeaApi', 'video'],
       'platform': 'web',
       'networkType': 'wifi',
@@ -148,6 +156,96 @@ void main() {
       expect(FilteredNetworkController.instance.isWatchingNetwork, isFalse);
     },
   );
+
+  /// #9453 — the courses go out as they stood when the user asked.
+  test('a waiting request keeps the courses it was made with', () async {
+    await withCms(
+      (r) => throw http.ClientException('Failed to fetch', r.url),
+      () => NetworkHelpRepo.submit(request),
+    );
+
+    // A new session reads the request back from the device, and the user has
+    // joined another course since.
+    NetworkHelpRepo.resetForTest();
+    await NetworkHelpRepo.refreshStatus();
+    FilteredNetworkController.instance.joinedCourseIds = () => const [
+      '!later:pangea.chat',
+    ];
+    await withCms(created, NetworkHelpRepo.flush);
+
+    expect(dataOf(posts.last)['courseIds'], [
+      '!a:pangea.chat',
+      '!b:pangea.chat',
+    ]);
+  });
+
+  /// The JSON a build from before #9453 left on the device, written out
+  /// rather than derived from toJson, which no longer produces this shape.
+  test(
+    'a request an older build stored, with no courses, still goes out',
+    () async {
+      SharedPreferences.setMockInitialValues({
+        'filtered_network_help_request': jsonEncode({
+          'email': 'teacher@school.example',
+          'accountId': '@teacher:pangea.chat',
+          'blockedCategories': ['pangeaApi'],
+          'platform': 'web',
+          'networkType': 'wifi',
+          'firstBlockedAt': '2026-10-08T14:30:00.000Z',
+        }),
+      });
+      await NetworkHelpRepo.refreshStatus();
+
+      await withCms(created, NetworkHelpRepo.flush);
+
+      expect(NetworkHelpRepo.status.value, NetworkHelpStatus.sent);
+      expect(dataOf(posts.single)['courseIds'], isEmpty);
+    },
+  );
+
+  group('the guidance\'s form', () {
+    const connectivity = MethodChannel(
+      'dev.fluttercommunity.plus/connectivity',
+    );
+
+    late Client client;
+
+    setUpAll(() async => client = await prepareTestClient());
+
+    tearDownAll(() => client.dispose());
+
+    testWidgets('sends the courses the Sentry report names', (tester) async {
+      final messenger = tester.binding.defaultBinaryMessenger;
+      messenger.setMockMethodCallHandler(connectivity, (_) async => ['wifi']);
+      addTearDown(() => messenger.setMockMethodCallHandler(connectivity, null));
+      final controller = FilteredNetworkController.instance;
+      controller.blocked.value = {NetworkHostCategory.pangeaApi};
+      controller.joinedCourseIds = () => const ['!a:pangea.chat'];
+
+      await tester.pumpWidget(
+        Provider<MatrixState>.value(
+          value: _FakeMatrixState(client),
+          child: MaterialApp(
+            locale: const Locale('en'),
+            localizationsDelegates: L10n.localizationsDelegates,
+            supportedLocales: L10n.supportedLocales,
+            home: const FilteredNetworkDialog(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(TextField), 'teacher@school.example');
+
+      final ask = find.widgetWithText(FilledButton, 'Ask Pangea for help');
+      await withCms(created, () async {
+        await tester.ensureVisible(ask);
+        await tester.tap(ask);
+        await tester.pumpAndSettle();
+      });
+
+      expect(dataOf(posts.single)['courseIds'], ['!a:pangea.chat']);
+    });
+  });
 
   /// #9592 — the limit is per account: the next account on a shared device
   /// gets the form, and never sees "Sent" for a request it did not make.

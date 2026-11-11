@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:05.886846",
+    "@@last_modified": "2026-11-10 13:06:19.029905",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10835,11 +10835,6 @@
     "callTranscriptPreparingRecording": "Pripremam ceo snimak…",
     "callTranscriptNoRecording": "Nema snimka celog poziva.",
     "callTranscriptNotSubscribed": "{name} nije imao pretplatu tokom ovog poziva, tako da izgovoreno nije transkribovano.",
-    "joinYourCourse": "Pridružite se svom kursu",
-    "courseCodeJoinExplanation": "Prijavite se ili se registrujte, a mi ćemo koristiti vaš kod kursa da vas automatski dodamo na vaš kurs.",
-    "courseCodeLabel": "Kod kursa",
-    "courseCodeSaved": "Kod kursa {code} sačuvan",
-    "courseCodeSavedExplanation": "Registrujte se ili se prijavite i mi ćemo vas dodati na vaš kurs.",
     "moderationRefusedContactDetails": "Vaša poruka nije poslata. Automatski filter je pronašao detalje za kontakt, kao što je broj telefona. Uklonite ih i pokušajte ponovo.",
     "moderationRefusedProfanity": "Vaša poruka nije poslata. Automatski filter je pronašao reč koju ne dozvoljavamo u ćaskanju. Promenite je i pokušajte ponovo.",
     "callTranscriptTranscribeButton": "Prepiši",
@@ -10995,5 +10990,10 @@
     "changeBaseLanguageDesc": "Meniji i dugmad aplikacije će se prebaciti na {language}.",
     "accountSetupFailedHelp": "Nismo uspeli da završimo podešavanje vašeg naloga. Proverite vezu i pokušajte ponovo, ili se odjavite i prijavite kasnije.",
     "onboardingOfflineError": "Niste povezani. Pokušajte ponovo kada budete na mreži.",
-    "activitySavedTo": "Aktivnost sačuvana u {page}"
+    "activitySavedTo": "Aktivnost sačuvana u {page}",
+    "joinWithYourCode": "Pridružite se sa svojim kodom",
+    "joinCodeJoinExplanation": "Prijavite se ili registrujte, a mi ćemo koristiti vaš kod da vas automatski dodamo.",
+    "joinCodeLabel": "Kod",
+    "joinCodeSaved": "Kod {code} sačuvan",
+    "joinCodeSavedExplanation": "Registrujte se ili prijavite i mi ćemo vas dodati."
 }

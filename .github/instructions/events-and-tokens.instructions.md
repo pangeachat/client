@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/pangea/events/**,lib/pangea/extensions/**"
+applyTo: "lib/routes/chat/events/**,lib/pangea/extensions/**"
 ---
 
 # Events & Tokens — Matrix Event Data Model
@@ -18,9 +18,11 @@ Custom events are either embedded within the content of the original `m.room.mes
 3. **SpeechToText** (`pangea.translation`): Speech-to-text transcription of the message, usually embedded in original message contet, but can be sent as a child event of message.
 4. **SttTranslation** (`pangea.stt_translation`): Translation of speech-to-text transcription, stored as a child event.
 
+In a room where the user's power level does not allow them, such as a course's Announcements chat for a learner, the client sends no representation, tokens, text-to-speech audio or speech-to-text translation, because the server would refuse them. A representation, its tokens or a token correction the toolbar needs is kept in memory for that user instead (see Token-centric in [toolbar-reading-assistance](toolbar-reading-assistance.instructions.md#key-contracts)).
+
 ## Other Custom Event Types (`PangeaEventTypes`)
 
-Defined in `lib/pangea/events/constants/pangea_event_types.dart`:
+Defined in `lib/routes/chat/events/constants/pangea_event_types.dart`:
 
 ### Activities
 

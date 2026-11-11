@@ -3514,7 +3514,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-11-06 13:10:59.205891",
+    "@@last_modified": "2026-11-10 13:06:10.119247",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9926,11 +9926,6 @@
     "callTranscriptPreparingRecording": "Valmistelen koko tallennetta…",
     "callTranscriptNoRecording": "Koko puhelusta ei ole tallennetta.",
     "callTranscriptNotSubscribed": "{name} ei ollut tilannut palvelua tämän puhelun aikana, joten puhetta ei litteroitu.",
-    "joinYourCourse": "Liity kurssillesi",
-    "courseCodeJoinExplanation": "Kirjaudu sisään tai rekisteröidy, niin lisäämme sinut kurssillesi automaattisesti kurssikoodisi avulla.",
-    "courseCodeLabel": "Kurssikoodi",
-    "courseCodeSaved": "Kurssikoodi {code} tallennettu",
-    "courseCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut kurssillesi.",
     "moderationRefusedContactDetails": "Viestisi ei lähetetty. Automaattinen suodatin löysi yhteystietoja, kuten puhelinnumeron. Poista ne ja yritä uudelleen.",
     "moderationRefusedProfanity": "Viestisi ei lähetetty. Automaattinen suodatin löysi sanan, jota emme salli chatissa. Muuta sitä ja yritä uudelleen.",
     "callTranscriptTranscribeButton": "Transkriboi",
@@ -10086,5 +10081,10 @@
     "changeBaseLanguageDesc": "Sovelluksen valikot ja painikkeet vaihtuvat kielelle {language}.",
     "accountSetupFailedHelp": "Emme saaneet tiliäsi valmiiksi. Tarkista yhteytesi ja yritä uudelleen, tai kirjaudu ulos ja sisään myöhemmin.",
     "onboardingOfflineError": "Olet offline-tilassa. Yritä uudelleen, kun olet taas online-tilassa.",
-    "activitySavedTo": "Aktiviteetti tallennettu kohteeseen {page}"
+    "activitySavedTo": "Aktiviteetti tallennettu kohteeseen {page}",
+    "joinWithYourCode": "Liity koodillasi",
+    "joinCodeJoinExplanation": "Kirjaudu sisään tai rekisteröidy, niin lisäämme sinut automaattisesti koodillasi.",
+    "joinCodeLabel": "Koodi",
+    "joinCodeSaved": "Koodi {code} tallennettu",
+    "joinCodeSavedExplanation": "Rekisteröidy tai kirjaudu sisään, niin lisäämme sinut."
 }

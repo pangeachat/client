@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:10:58.553229",
+    "@@last_modified": "2026-11-10 13:06:09.128939",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10831,11 +10831,6 @@
     "callTranscriptPreparingRecording": "Preparas la plenan registraĵon…",
     "callTranscriptNoRecording": "Neniu registraĵo de la plena voko.",
     "callTranscriptNotSubscribed": "{name} ne havis abonon dum ĉi tiu voko, do tio, kio estis dirita, ne estis transskribita.",
-    "joinYourCourse": "Aliĝu al via kurso",
-    "courseCodeJoinExplanation": "Ensalutu aŭ registriĝu, kaj ni uzos vian kurskodon por aŭtomate aldoni vin al via kurso.",
-    "courseCodeLabel": "Kurskodo",
-    "courseCodeSaved": "Kurskodo {code} konservita",
-    "courseCodeSavedExplanation": "Registriĝu aŭ ensalutu kaj ni aldonos vin al via kurso.",
     "moderationRefusedContactDetails": "Via mesaĝo ne estis sendita. Aŭtomata filtrilo trovis kontaktajn detalojn, kiel telefonnumeron. Bonvolu forigi ilin kaj reprovi.",
     "moderationRefusedProfanity": "Via mesaĝo ne estis sendita. Aŭtomata filtrilo trovis vorton, kiun ni ne permesas en la babilejo. Bonvolu ŝanĝi ĝin kaj reprovi.",
     "callTranscriptTranscribeButton": "Transskribi",
@@ -10991,5 +10986,10 @@
     "changeBaseLanguageDesc": "La menuoj kaj butonoj de la aplikaĵo ŝanĝiĝos al {language}.",
     "accountSetupFailedHelp": "Ni ne povis fini agordi vian konton. Kontrolu vian konekton kaj reprovu, aŭ elsalutu kaj ensalutu poste.",
     "onboardingOfflineError": "Vi estas eksterrete. Provu denove kiam vi estos konektita.",
-    "activitySavedTo": "Agado konservita al {page}"
+    "activitySavedTo": "Agado konservita al {page}",
+    "joinWithYourCode": "Aliĝu per via kodo",
+    "joinCodeJoinExplanation": "Ensalutu aŭ registriĝu, kaj ni uzos vian kodon por aldoni vin aŭtomate.",
+    "joinCodeLabel": "Kodo",
+    "joinCodeSaved": "Kodo {code} konservita",
+    "joinCodeSavedExplanation": "Registriĝu aŭ ensalutu kaj ni aldonos vin."
 }

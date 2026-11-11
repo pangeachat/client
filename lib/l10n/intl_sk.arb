@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-11-06 13:11:05.469512",
+    "@@last_modified": "2026-11-10 13:06:18.477595",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10831,11 +10831,6 @@
     "callTranscriptPreparingRecording": "Pripravujem celú nahrávku…",
     "callTranscriptNoRecording": "Žiadna nahrávka celého hovoru.",
     "callTranscriptNotSubscribed": "{name} nemal počas tohto hovoru predplatné, takže to, čo bolo povedané, nebolo prepísané.",
-    "joinYourCourse": "Pripojte sa k svojmu kurzu",
-    "courseCodeJoinExplanation": "Prihláste sa alebo sa zaregistrujte a my použijeme váš kód kurzu na automatické pridanie do kurzu.",
-    "courseCodeLabel": "Kód kurzu",
-    "courseCodeSaved": "Kód kurzu {code} uložený",
-    "courseCodeSavedExplanation": "Zaregistrujte sa alebo sa prihláste a my vás pridáme do vášho kurzu.",
     "moderationRefusedContactDetails": "Vaša správa nebola odoslaná. Automatický filter našiel kontaktné údaje, napríklad telefónne číslo. Odstráňte ich a skúste to znova.",
     "moderationRefusedProfanity": "Vaša správa nebola odoslaná. Automatický filter našiel slovo, ktoré v chate nepovoľujeme. Zmeňte ho a skúste to znova.",
     "callTranscriptTranscribeButton": "Prepis",
@@ -10991,5 +10986,10 @@
     "changeBaseLanguageDesc": "Ponuky a tlačidlá aplikácie sa prepnú na jazyk {language}.",
     "accountSetupFailedHelp": "Nepodarilo sa nám dokončiť nastavenie vášho účtu. Skontrolujte pripojenie a skúste to znova, alebo sa odhláste a prihláste sa neskôr.",
     "onboardingOfflineError": "Ste offline. Skúste to znova, keď budete online.",
-    "activitySavedTo": "Aktivita uložená do {page}"
+    "activitySavedTo": "Aktivita uložená do {page}",
+    "joinWithYourCode": "Pripojiť sa pomocou kódu",
+    "joinCodeJoinExplanation": "Prihláste sa alebo sa zaregistrujte a my použijeme váš kód na automatické pridanie.",
+    "joinCodeLabel": "Kód",
+    "joinCodeSaved": "Kód {code} uložený",
+    "joinCodeSavedExplanation": "Zaregistrujte sa alebo sa prihláste a my vás pridáme."
 }

@@ -66,48 +66,59 @@ class OverlayUtil {
       final OverlayEntry entry = OverlayEntry(
         builder: (_) => BlockSemantics(
           blocking: displayDetails.blockSemantics,
-          child: Stack(
-            children: [
-              if (displayDetails.backDropToDismiss)
-                IgnorePointer(
-                  ignoring: displayDetails.ignorePointer,
-                  // IgnorePointer covers Flutter's hit test and strips the
-                  // backdrop's semantic tap, but not the DOM: see
-                  // TransparentBackdrop.ignoresPointer (#8903).
-                  child: TransparentBackdrop(
-                    backgroundColor: displayDetails.backgroundColor,
-                    onDismiss: displayDetails.onDismiss,
-                    blurBackground: displayDetails.blurBackground,
-                    ignoresPointer: displayDetails.ignorePointer,
+          // One full-screen node for the whole overlay. Left loose, its parts
+          // become siblings of the page's node and the framework sorts them
+          // together by position, which can reorder the page's node on open
+          // or close. On web that moves its DOM element; the browser zeroes
+          // the scrollTop of every scroller inside, and a scrolled list's
+          // click areas sit one scroll offset out of place (#9594).
+          child: Semantics(
+            container: true,
+            child: Stack(
+              children: [
+                if (displayDetails.backDropToDismiss)
+                  IgnorePointer(
+                    ignoring: displayDetails.ignorePointer,
+                    // IgnorePointer covers Flutter's hit test and strips the
+                    // backdrop's semantic tap, but not the DOM: see
+                    // TransparentBackdrop.ignoresPointer (#8903).
+                    child: TransparentBackdrop(
+                      backgroundColor: displayDetails.backgroundColor,
+                      onDismiss: displayDetails.onDismiss,
+                      blurBackground: displayDetails.blurBackground,
+                      ignoresPointer: displayDetails.ignorePointer,
+                    ),
                   ),
-                ),
-              // Above the backdrop, below the content — see
-              // OverlayDisplayDetails.aboveBackdrop.
-              if (displayDetails.aboveBackdrop != null)
-                displayDetails.aboveBackdrop!,
-              switch (displayDetails) {
-                TransformOverlayDisplayDetails(
-                  transformTargetId: final targetId,
-                  targetAnchor: final targetAnchor,
-                  followerAnchor: final followerAnchor,
-                  offset: final offset,
-                ) =>
-                  CompositedTransformFollower(
-                    targetAnchor: targetAnchor,
-                    followerAnchor: followerAnchor,
-                    link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
-                    showWhenUnlinked: false,
-                    offset: offset ?? Offset.zero,
+                // Above the backdrop, below the content — see
+                // OverlayDisplayDetails.aboveBackdrop.
+                if (displayDetails.aboveBackdrop != null)
+                  displayDetails.aboveBackdrop!,
+                switch (displayDetails) {
+                  TransformOverlayDisplayDetails(
+                    transformTargetId: final targetId,
+                    targetAnchor: final targetAnchor,
+                    followerAnchor: final followerAnchor,
+                    offset: final offset,
+                  ) =>
+                    CompositedTransformFollower(
+                      targetAnchor: targetAnchor,
+                      followerAnchor: followerAnchor,
+                      link: MatrixState.pAnyState
+                          .layerLinkAndKey(targetId)
+                          .link,
+                      showWhenUnlinked: false,
+                      offset: offset ?? Offset.zero,
+                      child: positionedChild,
+                    ),
+                  CenteredOverlayDisplayDetails() => CenteredOverlayWidget(
                     child: positionedChild,
                   ),
-                CenteredOverlayDisplayDetails() => CenteredOverlayWidget(
-                  child: positionedChild,
-                ),
-                TopOverlayDisplayDetails() => TopOverlayWidget(
-                  child: positionedChild,
-                ),
-              },
-            ],
+                  TopOverlayDisplayDetails() => TopOverlayWidget(
+                    child: positionedChild,
+                  ),
+                },
+              ],
+            ),
           ),
         ),
       );
