@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/languages/context_language_switch_target.dart';
@@ -498,12 +499,14 @@ class _ActivityStartInfoRow extends StatelessWidget {
             label: activity.req.cefrLevel.string,
             color: onVariant,
           ),
-          const SizedBox(width: 12.0),
-          _IconLabel(
-            icon: Icons.group_outlined,
-            label: '${activity.req.numberOfParticipants}',
-            color: onVariant,
-          ),
+          if (activity.activityMode.showsPlayerCount) ...[
+            const SizedBox(width: 12.0),
+            _IconLabel(
+              icon: Icons.group_outlined,
+              label: '${activity.req.numberOfParticipants}',
+              color: onVariant,
+            ),
+          ],
           const SizedBox(width: 8.0),
           ActivityRatingMeter(
             average: activity.ratingAverage,
@@ -561,7 +564,7 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
     final room = controller.activityRoom;
     // All recorded roles — not just currently-joined members — so a learner
     // who left the room still shows in the review.
-    final roles = room?.activityRoles?.roles.values.toList() ?? [];
+    final seats = room?.activityRoles?.roles.entries.toList() ?? [];
     final awards = room?.orchestratorAwardedGoals;
 
     return Center(
@@ -593,9 +596,15 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
               ),
               const SizedBox(height: 16.0),
             ],
-            ...roles.map((role) {
+            ...seats.map((seat) {
+              final role = seat.value;
               final user = room!.unsafeGetUserFromMemoryOrFallback(role.userId);
-              final stars = awards?.awards[role.id]?.length ?? 0;
+              // Awards are filed per role in a roleplay, per seat in a
+              // discussion (`participant:<user id>`).
+              final awardKey = room.activityMode == ActivityMode.discussion
+                  ? seat.key
+                  : role.id;
+              final stars = awards?.awards[awardKey]?.length ?? 0;
               return ListTile(
                 leading: Avatar(
                   mxContent: user.avatarUrl,

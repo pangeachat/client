@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-11-10 13:06:12.851621",
+    "@@last_modified": "2026-11-11 11:38:46.897666",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Skráðu þig inn eða stofnaðu aðgang og við notum kóðann þinn til að bæta þér sjálfkrafa við.",
     "joinCodeLabel": "Kóði",
     "joinCodeSaved": "Kóði {code} vistaður",
-    "joinCodeSavedExplanation": "Skráðu þig inn eða stofnaðu aðgang og við bætum þér við."
+    "joinCodeSavedExplanation": "Skráðu þig inn eða stofnaðu aðgang og við bætum þér við.",
+    "discussionLabel": "Umræða",
+    "discussionCardSemantics": "Umræða: {title}",
+    "discussionJoined": "Genginn í",
+    "discussionAnswered": "Svarað",
+    "joinTheDiscussion": "Taktu þátt í umræðunni",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 bekkjarfélagi er í þessari umræðu} other{{count} bekkjarfélagar eru í þessari umræðu}}",
+    "discussionStartIt": "Vertu fyrst/ur til að hefja þessa umræðu",
+    "discussionRemoved": "Þú getur ekki tekið þátt í þessari umræðu.",
+    "discussionJoinArriving": "Þú ert komin/n inn! Umræðan opnast um leið og hún kemur.",
+    "roleplayLabel": "Hlutverkaleikur"
 }

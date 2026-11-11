@@ -3080,7 +3080,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-11-10 13:06:12.576227",
+    "@@last_modified": "2026-11-11 11:38:46.526609",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10678,5 +10678,15 @@
     "joinCodeJoinExplanation": "Intra o registra vos, e nos va usar vostre codice pro adjunger vos automaticamente.",
     "joinCodeLabel": "Codice",
     "joinCodeSaved": "Codice {code} salvate",
-    "joinCodeSavedExplanation": "Registra vos o entra e nos va adjunger vos."
+    "joinCodeSavedExplanation": "Registra vos o entra e nos va adjunger vos.",
+    "discussionLabel": "Plé",
+    "discussionCardSemantics": "Plé: {title}",
+    "discussionJoined": "Glactha",
+    "discussionAnswered": "Freagartha",
+    "joinTheDiscussion": "Glac páirt sa phlé",
+    "discussionClassmatesInRoom": "{count, plural, =1{Tá 1 comhghleacaí ranga sa phlé seo} other{Tá {count} comhghleacaí ranga sa phlé seo}}",
+    "discussionStartIt": "Bí ar an gcéad duine a chuirfidh tús leis an bplé seo",
+    "discussionRemoved": "Ní féidir leat páirt a ghlacadh sa phlé seo.",
+    "discussionJoinArriving": "Tá tú istigh! Osclófar an plé a luaithe a thiocfaidh sé.",
+    "roleplayLabel": "Rólghlacadh"
 }

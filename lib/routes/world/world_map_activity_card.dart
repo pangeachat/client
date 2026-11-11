@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
+import 'package:fluffychat/routes/courses/course_objectives/discussion_card.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_card_dismiss_button.dart';
+import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 /// A large map pin drawn as the activity's own card (under
 /// [kMapActivityCards]): the course plan's [ActivitySuggestionCard] with a
@@ -88,24 +94,54 @@ class WorldMapActivityCard extends StatelessWidget {
 
     final body = plan == null
         ? _PlainCard(title: title, live: _live, selected: isFocused)
-        : ActivitySuggestionCard(
-            activity: plan,
-            width: PinSize.mapCardWidth,
-            height: PinSize.mapCardHeight,
-            imageHeight: PinSize.mapCardImageHeight,
-            fontSize: 12.0,
-            fontSizeSmall: 9.0,
-            iconSize: 9.0,
-            pinState: _live ? state : null,
-            openSessions: openSessions,
-            participants: participants,
-            openSlots: openSlots,
-            pinged: pinged && _live,
-            frameWhenResting: true,
-            selected: isFocused,
-            timesCompleted: played ? 1 : 0,
-            xpEarned: played ? xpEarned : 0,
-          );
+        // The loaded plan's mode: the thin card's projection can lack the
+        // mode or roles and read a discussion as a roleplay.
+        : switch (plan.activityMode.cardStyle) {
+            // Its pills and unread bubble follow the learner's room in the
+            // course on show, so it rebuilds on sync.
+            ActivityCardStyle.discussion => StreamBuilder(
+              stream: Matrix.of(context).client.onSync.stream,
+              builder: (context, _) {
+                final client = Matrix.of(context).client;
+                return DiscussionCard(
+                  plan: plan,
+                  standing: client.discussionStandingFor(
+                    plan.activityId,
+                    courseId: client
+                        .joinedCourseFor(MapContextController.notifier.value)
+                        ?.id,
+                  ),
+                  width: PinSize.mapCardWidth,
+                  height: PinSize.mapCardHeight,
+                  imageHeight: PinSize.mapCardImageHeight,
+                  fontSize: 12.0,
+                  fontSizeSmall: 9.0,
+                  iconSize: 9.0,
+                  xpEarned: xpEarned,
+                  frameWhenResting: true,
+                  selected: isFocused,
+                );
+              },
+            ),
+            ActivityCardStyle.activity => ActivitySuggestionCard(
+              activity: plan,
+              width: PinSize.mapCardWidth,
+              height: PinSize.mapCardHeight,
+              imageHeight: PinSize.mapCardImageHeight,
+              fontSize: 12.0,
+              fontSizeSmall: 9.0,
+              iconSize: 9.0,
+              pinState: _live ? state : null,
+              openSessions: openSessions,
+              participants: participants,
+              openSlots: openSlots,
+              pinged: pinged && _live,
+              frameWhenResting: true,
+              selected: isFocused,
+              timesCompleted: played ? 1 : 0,
+              xpEarned: played ? xpEarned : 0,
+            ),
+          };
 
     final cardWithTail = Column(
       mainAxisSize: MainAxisSize.min,

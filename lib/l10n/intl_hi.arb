@@ -3080,7 +3080,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-11-10 13:06:11.210535",
+    "@@last_modified": "2026-11-11 11:38:44.293387",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10678,5 +10678,15 @@
     "joinCodeJoinExplanation": "लॉग इन करें या साइन अप करें, और हम आपको स्वचालित रूप से जोड़ने के लिए आपके कोड का उपयोग करेंगे।",
     "joinCodeLabel": "कोड",
     "joinCodeSaved": "कोड {code} सहेजा गया",
-    "joinCodeSavedExplanation": "साइन अप करें या लॉग इन करें और हम आपको जोड़ देंगे।"
+    "joinCodeSavedExplanation": "साइन अप करें या लॉग इन करें और हम आपको जोड़ देंगे।",
+    "discussionLabel": "चर्चा",
+    "discussionCardSemantics": "चर्चा: {title}",
+    "discussionJoined": "शामिल हुए",
+    "discussionAnswered": "जवाब दिया",
+    "joinTheDiscussion": "चर्चा में शामिल हों",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 सहपाठी इस चर्चा में है} other{{count} सहपाठी इस चर्चा में हैं}}",
+    "discussionStartIt": "इस चर्चा को शुरू करने वाले पहले व्यक्ति बनें",
+    "discussionRemoved": "आप इस चर्चा में शामिल नहीं हो सकते।",
+    "discussionJoinArriving": "आप अंदर हैं! चर्चा आते ही खुल जाएगी।",
+    "roleplayLabel": "भूमिका निभाना"
 }

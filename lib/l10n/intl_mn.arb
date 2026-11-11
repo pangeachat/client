@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-11-10 13:06:15.766538",
+    "@@last_modified": "2026-11-11 11:38:52.244080",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Нэвтрэх эсвэл бүртгүүлэх үед таны кодыг ашиглан автоматаар нэмэгдэнэ.",
     "joinCodeLabel": "Код",
     "joinCodeSaved": "Код {code} хадгалагдсан",
-    "joinCodeSavedExplanation": "Бүртгүүлэх эсвэл нэвтрэх үед таныг нэмнэ."
+    "joinCodeSavedExplanation": "Бүртгүүлэх эсвэл нэвтрэх үед таныг нэмнэ.",
+    "discussionLabel": "Хэлэлцүүлэг",
+    "discussionCardSemantics": "Хэлэлцүүлэг: {title}",
+    "discussionJoined": "Нэгдсэн",
+    "discussionAnswered": "Хариулсан",
+    "joinTheDiscussion": "Хэлэлцүүлэгт нэгдэх",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 ангийн сурагч энэ хэлэлцүүлэгт байна} other{{count} ангийн сурагчид энэ хэлэлцүүлэгт байна}}",
+    "discussionStartIt": "Энэ хэлэлцүүлгийг эхлүүлсэн анхны хүн болоорой",
+    "discussionRemoved": "Та энэ хэлэлцүүлэгт нэгдэх боломжгүй.",
+    "discussionJoinArriving": "Та нэгдлээ! Хэлэлцүүлэг ирмэгц нээгдэнэ.",
+    "roleplayLabel": "Дүрд тоглох"
 }

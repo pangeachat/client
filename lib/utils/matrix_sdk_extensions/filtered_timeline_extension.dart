@@ -1,8 +1,11 @@
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/bot_seat_note.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -65,22 +68,26 @@ extension IsStateExtension on Event {
     EventTypes.Encrypted,
   }.contains(type);
 
-  bool get isCollapsedState => !{
-    EventTypes.Message,
-    EventTypes.Sticker,
-    EventTypes.Encrypted,
-    EventTypes.RoomCreate,
-    EventTypes.RoomTombstone,
-    // A call is the record of something that happened, not routine room
-    // bookkeeping. Collapsing it behind "more events" would hide the only
-    // trace a missed call leaves.
-    PangeaEventTypes.call,
-    // A notice reads as the bot's message (notices.instructions.md).
-    PangeaEventTypes.botNotice,
-    // The note where the bot took the open seat explains it, so it isn't
-    // folded away (activity-session.instructions.md, "The bot's seat").
-    PangeaEventTypes.botParticipant,
-  }.contains(type);
+  bool get isCollapsedState =>
+      // Never folded into "more events" with the seat the server writes
+      // beside it.
+      !isAnnouncedArrival &&
+      !{
+        EventTypes.Message,
+        EventTypes.Sticker,
+        EventTypes.Encrypted,
+        EventTypes.RoomCreate,
+        EventTypes.RoomTombstone,
+        // A call is the record of something that happened, not routine room
+        // bookkeeping. Collapsing it behind "more events" would hide the only
+        // trace a missed call leaves.
+        PangeaEventTypes.call,
+        // A notice reads as the bot's message (notices.instructions.md).
+        PangeaEventTypes.botNotice,
+        // The note where the bot took the open seat explains it, so it isn't
+        // folded away (activity-session.instructions.md, "The bot's seat").
+        PangeaEventTypes.botParticipant,
+      }.contains(type);
 
   bool get isKnownHiddenStates =>
       {PollEventContent.responseType}.contains(type) ||
@@ -93,8 +100,27 @@ extension IsStateExtension on Event {
           (roomMemberChangeType != RoomMemberChangeType.avatar &&
               roomMemberChangeType != RoomMemberChangeType.other);
     }
+    if (type == EventTypes.RoomMember &&
+        (room.activityMode?.announcesArrivals ?? false)) {
+      return isAnnouncedArrival;
+    }
 
     return type != EventTypes.RoomMember;
+  }
+
+  /// A student joining a room whose mode announces arrivals (#9647). The
+  /// course's admins are joined to every session automatically and the bot
+  /// is no arrival, so neither is announced. In a discussion room students
+  /// are the only members at power 0 (admins 50, the bot 100).
+  bool get isAnnouncedArrival {
+    final userId = stateKey;
+    return type == EventTypes.RoomMember &&
+        roomMemberChangeType == RoomMemberChangeType.join &&
+        (room.activityMode?.announcesArrivals ?? false) &&
+        userId != null &&
+        userId != BotName.byEnvironment &&
+        room.getPowerLevelByUserId(userId) <
+            SpaceConstants.powerLevelOfModerator;
   }
 
   bool get pangeaIsEventTypeKnown =>

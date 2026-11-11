@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-11-10 13:06:15.842384",
+    "@@last_modified": "2026-11-11 11:38:58.947427",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "लॉग इन करा किंवा साइन अप करा आणि आम्ही तुम्हाला आपोआप जोडण्यासाठी तुमचा कोड वापरू.",
     "joinCodeLabel": "कोड",
     "joinCodeSaved": "कोड {code} सेव्ह केला",
-    "joinCodeSavedExplanation": "साइन अप करा किंवा लॉग इन करा आणि आम्ही तुम्हाला जोडू."
+    "joinCodeSavedExplanation": "साइन अप करा किंवा लॉग इन करा आणि आम्ही तुम्हाला जोडू.",
+    "discussionLabel": "चर्चा",
+    "discussionCardSemantics": "चर्चा: {title}",
+    "discussionJoined": "सामील झाले",
+    "discussionAnswered": "उत्तर दिले",
+    "joinTheDiscussion": "चर्चेत सामील व्हा",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 वर्गमित्र या चर्चेत आहे} other{{count} वर्गमित्र या चर्चेत आहेत}}",
+    "discussionStartIt": "या चर्चेला सुरुवात करणारे पहिले व्हा",
+    "discussionRemoved": "तुम्ही या चर्चेत सामील होऊ शकत नाही.",
+    "discussionJoinArriving": "तुम्ही सामील झाला आहात! चर्चा सुरू होताच ती उघडेल.",
+    "roleplayLabel": "भूमिका निभावणे"
 }

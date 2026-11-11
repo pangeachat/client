@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:17.306282",
+    "@@last_modified": "2026-11-11 11:38:55.645875",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10990,5 +10990,15 @@
     "joinCodeJoinExplanation": "Faça login ou cadastre-se, e usaremos seu código para adicioná-lo automaticamente.",
     "joinCodeLabel": "Código",
     "joinCodeSaved": "Código {code} salvo",
-    "joinCodeSavedExplanation": "Cadastre-se ou faça login e nós o adicionaremos."
+    "joinCodeSavedExplanation": "Cadastre-se ou faça login e nós o adicionaremos.",
+    "discussionLabel": "Discussão",
+    "discussionCardSemantics": "Discussão: {title}",
+    "discussionJoined": "Participando",
+    "discussionAnswered": "Respondido",
+    "joinTheDiscussion": "Participar da discussão",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 colega de classe está nesta discussão} other{{count} colegas de classe estão nesta discussão}}",
+    "discussionStartIt": "Seja o primeiro a iniciar esta discussão",
+    "discussionRemoved": "Você não pode participar desta discussão.",
+    "discussionJoinArriving": "Você está dentro! A discussão será aberta assim que chegar.",
+    "roleplayLabel": "Roleplay"
 }

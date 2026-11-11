@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-11-10 13:06:15.969479",
+    "@@last_modified": "2026-11-11 11:38:52.425746",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Idħol jew irreġistra, u aħna nużaw il-kodiċi tiegħek biex inżiduk awtomatikament.",
     "joinCodeLabel": "Kodiċi",
     "joinCodeSaved": "Kodiċi {code} salvat",
-    "joinCodeSavedExplanation": "Irreġistra jew idħol u aħna nżiduk."
+    "joinCodeSavedExplanation": "Irreġistra jew idħol u aħna nżiduk.",
+    "discussionLabel": "Diskussjoni",
+    "discussionCardSemantics": "Diskussjoni: {title}",
+    "discussionJoined": "Parteċipajt",
+    "discussionAnswered": "Imwieġba",
+    "joinTheDiscussion": "Ħu sehem fid-diskussjoni",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 sieħeb tal-klassi jinsab f'din id-diskussjoni} other{{count} sħab tal-klassi jinsabu f'din id-diskussjoni}}",
+    "discussionStartIt": "Kun l-ewwel li tibda din id-diskussjoni",
+    "discussionRemoved": "Ma tistax tingħaqad ma' din id-diskussjoni.",
+    "discussionJoinArriving": "Dħalt! Id-diskussjoni se tiftaħ malli tasal.",
+    "roleplayLabel": "Roleplay"
 }

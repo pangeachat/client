@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-11-10 13:06:08.011773",
+    "@@last_modified": "2026-11-11 11:38:40.003076",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Daxil olun və ya qeydiyyatdan keçin, biz sizi avtomatik əlavə etmək üçün kodunuzdan istifadə edəcəyik.",
     "joinCodeLabel": "Kod",
     "joinCodeSaved": "Kod {code} yadda saxlanıldı",
-    "joinCodeSavedExplanation": "Qeydiyyatdan keçin və ya daxil olun, biz sizi əlavə edəcəyik."
+    "joinCodeSavedExplanation": "Qeydiyyatdan keçin və ya daxil olun, biz sizi əlavə edəcəyik.",
+    "discussionLabel": "Müzakirə",
+    "discussionCardSemantics": "Müzakirə: {title}",
+    "discussionJoined": "Qoşuldu",
+    "discussionAnswered": "Cavablandırıldı",
+    "joinTheDiscussion": "Müzakirəyə qoşulun",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 sinif yoldaşı bu müzakirədədir} other{{count} sinif yoldaşı bu müzakirədədir}}",
+    "discussionStartIt": "Bu müzakirəni ilk başlayan siz olun",
+    "discussionRemoved": "Bu müzakirəyə qoşula bilməzsiniz.",
+    "discussionJoinArriving": "Siz içəridəsiniz! Müzakirə gələn kimi açılacaq.",
+    "roleplayLabel": "Rolların ifası"
 }

@@ -1315,7 +1315,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-11-10 13:06:20.002613",
+    "@@last_modified": "2026-11-11 11:39:00.407143",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10996,5 +10996,15 @@
     "joinCodeJoinExplanation": "లాగిన్ చేయండి లేదా సైన్ అప్ చేయండి, మరియు మిమ్మల్ని స్వయంచాలకంగా జోడించడానికి మేము మీ కోడ్‌ను ఉపయోగిస్తాము.",
     "joinCodeLabel": "కోడ్",
     "joinCodeSaved": "కోడ్ {code} సేవ్ చేయబడింది",
-    "joinCodeSavedExplanation": "సైన్ అప్ చేయండి లేదా లాగిన్ చేయండి మరియు మేము మిమ్మల్ని జోడిస్తాము."
+    "joinCodeSavedExplanation": "సైన్ అప్ చేయండి లేదా లాగిన్ చేయండి మరియు మేము మిమ్మల్ని జోడిస్తాము.",
+    "discussionLabel": "చర్చ",
+    "discussionCardSemantics": "చర్చ: {title}",
+    "discussionJoined": "చేరారు",
+    "discussionAnswered": "సమాధానం ఇచ్చారు",
+    "joinTheDiscussion": "చర్చలో చేరండి",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 క్లాస్‌మేట్ ఈ చర్చలో ఉన్నారు} other{{count} క్లాస్‌మేట్స్ ఈ చర్చలో ఉన్నారు}}",
+    "discussionStartIt": "ఈ చర్చను ప్రారంభించిన మొదటి వ్యక్తి మీరే అవ్వండి",
+    "discussionRemoved": "మీరు ఈ చర్చలో చేరలేరు.",
+    "discussionJoinArriving": "మీరు లోపల ఉన్నారు! చర్చ వచ్చిన వెంటనే తెరవబడుతుంది.",
+    "roleplayLabel": "రోల్‌ప్లే"
 }

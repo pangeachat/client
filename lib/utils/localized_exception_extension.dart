@@ -9,6 +9,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/authentication/delete_account_exception.dart';
 import 'package:fluffychat/features/authentication/email_link_not_clicked.dart';
+import 'package:fluffychat/features/discussions/discussion_join_exceptions.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -37,6 +38,14 @@ extension LocalizedExceptionExtension on Object {
     ExceptionContext? exceptionContext,
   ]) {
     // #Pangea
+    if (this is DiscussionRemovedException) {
+      return L10n.of(context).discussionRemoved;
+    }
+
+    if (this is DiscussionRoomNotArrivedException) {
+      return L10n.of(context).discussionJoinArriving;
+    }
+
     if (this is UnsubscribedException) {
       return L10n.of(context).unsubscribedResponseError;
     }

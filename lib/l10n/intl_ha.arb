@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-11-10 13:06:11.302580",
+    "@@last_modified": "2026-11-11 11:38:44.369278",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Shiga ko yi rajista, kuma za mu yi amfani da lambar ka don ƙara ka kai tsaye.",
     "joinCodeLabel": "Lamba",
     "joinCodeSaved": "An adana lambar {code}",
-    "joinCodeSavedExplanation": "Yi rajista ko shiga kuma za mu ƙara ka."
+    "joinCodeSavedExplanation": "Yi rajista ko shiga kuma za mu ƙara ka.",
+    "discussionLabel": "Tattaunawa",
+    "discussionCardSemantics": "Tattaunawa: {title}",
+    "discussionJoined": "An shiga",
+    "discussionAnswered": "An amsa",
+    "joinTheDiscussion": "Shiga tattaunawar",
+    "discussionClassmatesInRoom": "{count, plural, =1{dalibi 1 yana cikin wannan tattaunawar} other{{count} dalibai suna cikin wannan tattaunawar}}",
+    "discussionStartIt": "Ka fara wannan tattaunawar",
+    "discussionRemoved": "Ba za ka iya shiga wannan tattaunawar ba.",
+    "discussionJoinArriving": "Ka shiga! Tattaunawar za ta buɗe da zarar ta iso.",
+    "roleplayLabel": "Wasan kwaikwayo"
 }

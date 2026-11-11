@@ -3513,7 +3513,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-11-10 13:06:15.189001",
+    "@@last_modified": "2026-11-11 11:38:50.060289",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10049,5 +10049,15 @@
     "joinCodeJoinExplanation": "Piesakieties vai reģistrējieties, un mēs izmantosim jūsu kodu, lai jūs automātiski pievienotu.",
     "joinCodeLabel": "Kods",
     "joinCodeSaved": "Kods {code} saglabāts",
-    "joinCodeSavedExplanation": "Reģistrējieties vai piesakieties, un mēs jūs pievienosim."
+    "joinCodeSavedExplanation": "Reģistrējieties vai piesakieties, un mēs jūs pievienosim.",
+    "discussionLabel": "Diskusija",
+    "discussionCardSemantics": "Diskusija: {title}",
+    "discussionJoined": "Pievienojies",
+    "discussionAnswered": "Atbildēts",
+    "joinTheDiscussion": "Pievienoties diskusijai",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 klasesbiedrs piedalās šajā diskusijā} other{{count} klasesbiedri piedalās šajā diskusijā}}",
+    "discussionStartIt": "Esi pirmais, kurš uzsāk šo diskusiju",
+    "discussionRemoved": "Jūs nevarat pievienoties šai diskusijai.",
+    "discussionJoinArriving": "Jūs esat iekšā! Diskusija sāksies, tiklīdz tā būs pieejama.",
+    "roleplayLabel": "Lomu spēle"
 }

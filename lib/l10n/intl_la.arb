@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-11-10 13:06:13.816834",
+    "@@last_modified": "2026-11-11 11:38:48.714202",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2519,5 +2519,15 @@
     "joinCodeJoinExplanation": "Coniunge vel subsigna, et codice tuo utemur ut te sponte addamus.",
     "joinCodeLabel": "Codex",
     "joinCodeSaved": "Codex {code} servatus",
-    "joinCodeSavedExplanation": "Subsigna vel coniunge et te addemus."
+    "joinCodeSavedExplanation": "Subsigna vel coniunge et te addemus.",
+    "discussionLabel": "Disceptatio",
+    "discussionCardSemantics": "Disceptatio: {title}",
+    "discussionJoined": "Adiunctus",
+    "discussionAnswered": "Responsus",
+    "joinTheDiscussion": "Disceptationi iunge",
+    "discussionClassmatesInRoom": "{count, plural, =1{Unus condiscipulus in hac disceptatione est} other{{count} condiscipuli in hac disceptatione sunt}}",
+    "discussionStartIt": "Primus hanc disceptationem incipe",
+    "discussionRemoved": "Hac disceptatione iungere non potes.",
+    "discussionJoinArriving": "Intra! Disceptatio mox aperietur.",
+    "roleplayLabel": "Partes agere"
 }
