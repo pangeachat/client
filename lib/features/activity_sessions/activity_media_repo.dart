@@ -41,7 +41,8 @@ class ActivityMediaRepo {
 
     final payload = PayloadClient(
       baseUrl: Environment.cmsApi,
-      accessToken: MatrixState.pangeaController.userController.accessToken,
+      accessToken: await MatrixState.pangeaController.userController
+          .renewedAccessToken(),
     );
     final resp = await payload.find<Map<String, dynamic>>(
       _slug,

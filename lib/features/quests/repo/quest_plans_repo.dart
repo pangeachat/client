@@ -44,9 +44,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 class QuestPlansRepo {
   static const String _collection = 'quest-plans';
 
-  static PayloadClient _client() => PayloadClient(
+  static Future<PayloadClient> _client() async => PayloadClient(
     baseUrl: Environment.cmsApi,
-    accessToken: MatrixState.pangeaController.userController.accessToken,
+    accessToken: await MatrixState.pangeaController.userController
+        .renewedAccessToken(),
   );
 
   /// Each quest's cover image, by quest id: a URL, or null for a quest known to
@@ -155,7 +156,8 @@ class QuestPlansRepo {
 
   static Future<void> _readCoverById(String questId) async {
     try {
-      final json = await _client().findById<Map<String, dynamic>>(
+      final cms = await _client();
+      final json = await cms.findById<Map<String, dynamic>>(
         _collection,
         questId,
         (json) => json,
@@ -233,7 +235,8 @@ class QuestPlansRepo {
     int page = 1,
     int limit = 10,
   }) async {
-    final resp = await _client().find<Map<String, dynamic>>(
+    final cms = await _client();
+    final resp = await cms.find<Map<String, dynamic>>(
       _collection,
       (json) => json,
       page: page,
@@ -260,7 +263,8 @@ class QuestPlansRepo {
   static Future<CoursePlanModel?> get(String questId) async {
     if (await QuestRepo.removedQuests.contains(questId)) return null;
     try {
-      final json = await _client().findById<Map<String, dynamic>>(
+      final cms = await _client();
+      final json = await cms.findById<Map<String, dynamic>>(
         _collection,
         questId,
         (json) => json,
@@ -311,7 +315,8 @@ class QuestPlansRepo {
   static Future<List<Map<String, dynamic>>> _findByIds(
     List<String> questIds,
   ) async {
-    final resp = await _client().find<Map<String, dynamic>>(
+    final cms = await _client();
+    final resp = await cms.find<Map<String, dynamic>>(
       _collection,
       (json) => json,
       limit: questIds.length,

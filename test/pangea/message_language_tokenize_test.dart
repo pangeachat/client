@@ -159,7 +159,7 @@ class _ReaderUserController implements UserController {
   LanguageModel? get userL2 => PLanguageStore.byLangCode(_l2);
 
   @override
-  String get accessToken => 'syt_test_token';
+  Future<String> renewedAccessToken() async => 'syt_test_token';
 
   @override
   dynamic noSuchMethod(Invocation invocation) => null;

@@ -11,6 +11,9 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 class PApiUrls {
   static const String _choreoPrefix = "/choreo";
   static const String _subscriptionPrefix = "/subscription";
+  static const String _synapseModulePrefix = "/_synapse/client/pangea";
+  static const String _synapseUnstableModulePrefix =
+      "/_synapse/client/unstable/org.pangea";
 
   static String get _choreoRoute =>
       "${Environment.choreoApi}${PApiUrls._choreoPrefix}";
@@ -19,6 +22,13 @@ class PApiUrls {
 
   ///  ---------------------- Util --------------------------------------
   static String appVersion = "${PApiUrls._choreoRoute}/version";
+
+  /// Whether [path] is an endpoint of the homeserver's Pangea module, under
+  /// either prefix: the versioned `/_synapse/client/pangea/v1/…` or the
+  /// unstable `/_synapse/client/unstable/org.pangea/…`.
+  static bool isSynapseModulePath(String path) =>
+      path.startsWith(_synapseModulePrefix) ||
+      path.startsWith(_synapseUnstableModulePrefix);
 
   ///   ---------------------- Languages --------------------------------------
   /// CMS REST API endpoint for languages (public, no auth required)

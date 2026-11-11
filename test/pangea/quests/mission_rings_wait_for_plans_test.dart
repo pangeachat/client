@@ -389,7 +389,7 @@ class _Users implements UserController {
   String? get userL1Code => 'en';
 
   @override
-  String get accessToken => 'test-token';
+  Future<String> renewedAccessToken() async => 'test-token';
 
   @override
   final StreamController<LanguageUpdate> languageStream =

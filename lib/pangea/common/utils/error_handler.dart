@@ -13,6 +13,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
 class ErrorHandler {
@@ -177,8 +178,7 @@ class ErrorHandler {
     if (e.statusCode == 403) return _isCmsReadDenied(e);
     if (e.statusCode != 401) return false;
     return (e.detail?.contains('Matrix WhoAmI non-200 (401)') ?? false) ||
-        e.path.startsWith('/_synapse/client/pangea') ||
-        e.path.startsWith('/_synapse/client/unstable/org.pangea');
+        PApiUrls.isSynapseModulePath(e.path);
   }
 
   /// Whether [e] is a CMS read denied with Payload's generic 403. The CMS

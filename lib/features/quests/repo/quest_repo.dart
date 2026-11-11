@@ -505,7 +505,8 @@ class QuestRepo {
         },
       );
       final response = await Requests(
-        accessToken: MatrixState.pangeaController.userController.accessToken,
+        accessToken: await MatrixState.pangeaController.userController
+            .renewedAccessToken(),
       ).get(url: uri.toString());
       if (response.statusCode != 200) {
         return Result.error(
@@ -543,9 +544,10 @@ class QuestRepo {
     ];
   }
 
-  static PayloadClient _client() => PayloadClient(
+  static Future<PayloadClient> _client() async => PayloadClient(
     baseUrl: Environment.cmsApi,
-    accessToken: MatrixState.pangeaController.userController.accessToken,
+    accessToken: await MatrixState.pangeaController.userController
+        .renewedAccessToken(),
   );
 
   /// The quest with its ordered Learning Objective ids (one read). LO text is
@@ -565,7 +567,8 @@ class QuestRepo {
       return Result.error(MissingQuestException());
     }
     try {
-      final quest = await _client().findById(
+      final cms = await _client();
+      final quest = await cms.findById(
         _questPlansKey,
         questId,
         (json) => QuestPlan.fromJson(json),
@@ -615,7 +618,8 @@ class QuestRepo {
     }
     try {
       final response = await Requests(
-        accessToken: MatrixState.pangeaController.userController.accessToken,
+        accessToken: await MatrixState.pangeaController.userController
+            .renewedAccessToken(),
       ).get(url: PApiUrls.activityById(activityId));
       // A removed activity reads as "no refs", matching the previous
       // CMS-direct empty-find behavior.

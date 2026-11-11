@@ -49,7 +49,8 @@ class AppVersionUtil {
     final currentVersion = packageInfo.version;
     final currentBuildNumber = packageInfo.buildNumber;
 
-    final accessToken = MatrixState.pangeaController.userController.accessToken;
+    final accessToken = await MatrixState.pangeaController.userController
+        .renewedAccessToken();
 
     AppVersionResponse? resp;
     try {

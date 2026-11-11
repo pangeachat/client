@@ -85,7 +85,8 @@ class GrammarMeaningFeedbackRepo {
     required String feedback,
   }) async {
     final Requests req = Requests(
-      accessToken: MatrixState.pangeaController.userController.accessToken,
+      accessToken: await MatrixState.pangeaController.userController
+          .renewedAccessToken(),
     );
 
     final Response res = await req.post(

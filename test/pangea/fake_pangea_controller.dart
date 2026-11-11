@@ -162,7 +162,7 @@ class _FakeUserController implements UserController {
   /// Mirrors the real controller, which throws rather than serving a null token
   /// when nobody is logged in.
   @override
-  String get accessToken =>
+  Future<String> renewedAccessToken() async =>
       _accessToken ?? (throw const NotLoggedInException());
 
   /// Left uncompleted, which is what the real controller looks like before the

@@ -24,7 +24,8 @@ class ActivityRatingRepo {
     ActivityRatingRequest request,
   ) async {
     final Requests req = Requests(
-      accessToken: MatrixState.pangeaController.userController.accessToken,
+      accessToken: await MatrixState.pangeaController.userController
+          .renewedAccessToken(),
     );
 
     try {

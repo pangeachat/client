@@ -32,13 +32,13 @@ class ImageByUrl extends StatelessWidget {
   });
 
   /// CMS-hosted images need the learner's token; other hosts get no headers.
-  static Map<String, String> requestHeaders(Uri imageUrl) =>
-      imageUrl.toString().contains(Environment.cmsApi)
-      ? {
-          'Authorization':
-              'Bearer ${MatrixState.pangeaController.userController.accessToken}',
-        }
-      : {};
+  /// Read while the widget builds, so it is not renewed first.
+  static Map<String, String> requestHeaders(Uri imageUrl) {
+    if (!imageUrl.toString().contains(Environment.cmsApi)) return {};
+    final token =
+        MatrixState.pangeaController.userController.client.accessToken;
+    return token == null ? {} : {'Authorization': 'Bearer $token'};
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -18,7 +18,8 @@ class ActivityFeedbackRepo {
     ActivityFeedbackRequest request,
   ) async {
     final Requests req = Requests(
-      accessToken: MatrixState.pangeaController.userController.accessToken,
+      accessToken: await MatrixState.pangeaController.userController
+          .renewedAccessToken(),
     );
 
     final Response res = await req.post(

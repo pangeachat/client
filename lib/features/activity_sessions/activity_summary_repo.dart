@@ -74,7 +74,8 @@ class ActivitySummaryRepo {
   ) async {
     try {
       final Requests req = Requests(
-        accessToken: MatrixState.pangeaController.userController.accessToken,
+        accessToken: await MatrixState.pangeaController.userController
+            .renewedAccessToken(),
       );
 
       final Response res = await req

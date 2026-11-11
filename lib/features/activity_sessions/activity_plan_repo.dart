@@ -1020,7 +1020,8 @@ class ActivityPlanRepo
         },
       );
       try {
-        final res = await createRequests()
+        final requests = await createRequests();
+        final res = await requests
             .post(
               url: PApiUrls.activityBatch,
               body: request.toJson(),

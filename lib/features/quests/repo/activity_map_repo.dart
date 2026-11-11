@@ -81,7 +81,8 @@ class ActivityMapRepo {
         PApiUrls.activitiesBbox,
       ).replace(queryParameters: params);
       final response = await Requests(
-        accessToken: MatrixState.pangeaController.userController.accessToken,
+        accessToken: await MatrixState.pangeaController.userController
+            .renewedAccessToken(),
       ).get(url: uri.toString());
       if (response.statusCode != 200) return Result.value(const []);
 

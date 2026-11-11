@@ -115,8 +115,9 @@ abstract class BaseRepo<
   /// drive [get] without booting [MatrixState].
   @protected
   @visibleForTesting
-  Requests createRequests() => Requests(
-    accessToken: MatrixState.pangeaController.userController.accessToken,
+  Future<Requests> createRequests() async => Requests(
+    accessToken: await MatrixState.pangeaController.userController
+        .renewedAccessToken(),
   );
 
   /// Sentry level for a fetch failure — the shared severity table
@@ -192,7 +193,7 @@ abstract class BaseRepo<
 
   Future<Result<TResponse>> _fetch(TRequest request) async {
     try {
-      final Requests req = createRequests();
+      final Requests req = await createRequests();
 
       // No ≥400 check here: [fetch] goes through [Requests], which already
       // threw a typed error for any failing status.

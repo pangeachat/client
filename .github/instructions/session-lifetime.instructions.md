@@ -1,21 +1,23 @@
 ---
-applyTo: "lib/utils/client_manager.dart,lib/utils/init_with_restore.dart,lib/features/authentication/change_password_extension.dart"
-description: "How a learner's session lasts: day-long access tokens renewed in the background, renewal before the app's first requests, the one condition that signs a learner out, and keeping the session through a password change."
+applyTo: "lib/utils/client_manager.dart,lib/utils/init_with_restore.dart,lib/features/authentication/change_password_extension.dart,lib/features/authentication/token_renewal_extension.dart,lib/features/authentication/module_token_renewal_client.dart"
+description: "How a learner's session lasts: day-long access tokens renewed in the background, renewal before every request, the one condition that signs a learner out, and keeping the session through a password change."
 ---
 
 # Staying Signed In — Session Lifetime and Renewal
 
 ## Goal
 
-A learner who signs in stays signed in until one of these happens: they sign out themselves, the session is ended for them, or the server rejects it. Poor connectivity never signs a learner out. Opening the app after several days away works the same as opening it after a few minutes.
+A learner who signs in stays signed in until one of these happens: they sign out themselves, the session is ended for them, or the server rejects it. Poor connectivity never signs a learner out. Opening the app, or bringing it back from the background, after several days away works the same as after a few minutes.
 
 ## How a session lasts
 
-The homeserver issues access tokens that expire after 24 hours (`refreshable_access_token_lifetime`, security#51), together with a refresh token. The app trades the refresh token for a new access token before the old one runs out, and the learner never sees it happen. A learner who opens the app less than once a day starts almost every visit with an expired access token, so renewal is part of the normal startup path, not an edge case.
+The homeserver issues access tokens that expire after 24 hours (`refreshable_access_token_lifetime`, security#51), together with a refresh token. The app trades the refresh token for a new access token before the old one runs out, and the learner never sees it happen. A learner who opens the app less than once a day, or leaves it in the background or in an open browser tab for a day, comes back to an expired access token, so renewal is part of the normal path, not an edge case.
 
-## Renew before the first requests
+## Renew before every request
 
-When the app starts, it renews an expired or expiring access token before it sends any request that needs one. That covers the Pangea services, profile writes and the homeserver's Pangea module calls. A request sent with a token the app already knows has expired fails, and the surface that asked for it stays empty or shows an error. In September 2026 that left the world map without pins and course pages on an error. If renewal hasn't finished after 10 seconds, for example because the device is offline, the app carries on starting and renewal is retried when the server is reachable.
+Before the app sends a request that needs the access token, it renews the token if it has expired or is about to. That covers the Pangea services, profile writes and the homeserver's Pangea module calls, at startup and after it, including the first requests after the app comes back from the background or a browser tab wakes up. A request sent with a token the app already knows has expired fails, and the surface that asked for it stays empty or shows an error: the world map without pins, or a course page that does not load ([#9835](https://github.com/pangeachat/client/issues/9835)). Requests that arrive together wait for one shared renewal. If renewal hasn't finished after 10 seconds, for example because the device is offline, the request goes out with the token it has, and renewal is retried when the server is reachable. At startup the app also waits for the renewal before it goes on, so the homeserver's own first requests carry the new token too.
+
+CMS images, the live speech-to-text connection, and the background analytics and dosage uploads take the token before their request goes out, when the screen is drawn or the event is recorded, so they are not renewed first.
 
 ## Sign out only when the server says so
 

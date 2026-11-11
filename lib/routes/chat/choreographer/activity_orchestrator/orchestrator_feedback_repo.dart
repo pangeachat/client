@@ -37,7 +37,8 @@ class OrchestratorFeedbackRepo {
     required String comment,
   }) async {
     final requests = Requests(
-      accessToken: MatrixState.pangeaController.userController.accessToken,
+      accessToken: await MatrixState.pangeaController.userController
+          .renewedAccessToken(),
     );
     try {
       await requests.post(

@@ -674,7 +674,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       streamingSessionFactory: buildStreamingSessionFactory(
         flagEnabled: Environment.liveStreamingSttEnabled,
         messageLangCodeShort: _l2?.langCodeShort,
-        accessToken: userController.accessToken,
+        accessToken: userController.client.accessToken,
         wsUrl: readAloudRelayUrl(
           PApiUrls.speechToTextStream,
           expectedText: hint,

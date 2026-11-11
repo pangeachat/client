@@ -59,7 +59,8 @@ class _CountingRepo extends BaseRepo<_Req, _Resp> {
       );
 
   @override
-  Requests createRequests() => Requests(accessToken: 'test-token');
+  Future<Requests> createRequests() async =>
+      Requests(accessToken: 'test-token');
 
   @override
   Future<Response> fetch(Requests req, _Req request) async {

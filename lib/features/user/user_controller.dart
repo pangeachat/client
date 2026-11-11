@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart' as matrix;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
+import 'package:fluffychat/features/authentication/token_renewal_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/keyboards/keyboard_prompt_local_store.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
@@ -368,8 +369,10 @@ class UserController {
     await initialize();
   }
 
-  /// Retrieves matrix access token.
-  String get accessToken {
+  /// The access token for a Pangea request, renewed first if it has expired or
+  /// is about to (session-lifetime.instructions.md).
+  Future<String> renewedAccessToken() async {
+    await client.renewExpiredToken();
     final token = client.accessToken;
     if (token == null) throw const NotLoggedInException();
     return token;
@@ -499,6 +502,10 @@ class UserController {
 
     final content = publicProfile!.toJson();
     try {
+      await client.renewExpiredToken();
+      // A renewal the homeserver refuses signs the learner out, and a
+      // signed-out account has no profile to write to.
+      if (!client.isLogged()) return;
       // Bounded, because every later publish queues behind this one: the Matrix
       // profile PUT has no timeout of its own, so a request that stalls rather
       // than fails would wedge the chain for the rest of the session.

@@ -38,7 +38,6 @@ class PracticeRepo {
   }) async {
     try {
       final MessagePracticeExerciseResponse res = await _routePracticeExercise(
-        accessToken: MatrixState.pangeaController.userController.accessToken,
         req: req,
         messageInfo: messageInfo,
       );
@@ -59,11 +58,13 @@ class PracticeRepo {
     }
   }
 
-  static Future<MessagePracticeExerciseResponse> _fetch({
-    required String accessToken,
-    required MessagePracticeExerciseRequest requestModel,
-  }) async {
-    final Requests request = Requests(accessToken: accessToken);
+  static Future<MessagePracticeExerciseResponse> _fetch(
+    MessagePracticeExerciseRequest requestModel,
+  ) async {
+    final Requests request = Requests(
+      accessToken: await MatrixState.pangeaController.userController
+          .renewedAccessToken(),
+    );
     final Response res = await request.post(
       url: PApiUrls.messagePracticeExerciseGeneration,
       body: requestModel.toJson(),
@@ -78,7 +79,6 @@ class PracticeRepo {
   }
 
   static Future<MessagePracticeExerciseResponse> _routePracticeExercise({
-    required String accessToken,
     required MessagePracticeExerciseRequest req,
     required Map<String, dynamic> messageInfo,
   }) async {
@@ -116,7 +116,7 @@ class PracticeRepo {
       case PracticeExerciseTypeEnum.wordFocusListening:
         return WordAudioPracticeExerciseGenerator.get(req);
       case PracticeExerciseTypeEnum.hiddenWordListening:
-        return _fetch(accessToken: accessToken, requestModel: req);
+        return _fetch(req);
     }
   }
 }

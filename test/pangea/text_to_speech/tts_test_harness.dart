@@ -92,7 +92,7 @@ class _EnabledUserController implements UserController {
   /// A token, so a backend request gets past `BaseRepo` and reaches whatever
   /// `http.Client` the test installed.
   @override
-  String get accessToken => 'test-token';
+  Future<String> renewedAccessToken() async => 'test-token';
 
   @override
   Completer<void> initCompleter = Completer<void>();

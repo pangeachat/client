@@ -245,7 +245,7 @@ class _ReaderSettings implements UserController {
 
   /// Not logged in, so a new translation fetch fails inside the repo.
   @override
-  String get accessToken => throw 'not logged in';
+  Future<String> renewedAccessToken() async => throw 'not logged in';
 
   @override
   dynamic noSuchMethod(Invocation invocation) => null;
