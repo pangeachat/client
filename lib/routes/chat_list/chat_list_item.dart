@@ -206,7 +206,7 @@ class ChatListItem extends StatelessWidget {
                             name: space.getLocalizedDisplayname(),
                             // #Pangea
                             userId: space.directChatMatrixID,
-                            useRive: true,
+                            animate: true,
                             // Pangea#
                           ),
                         ),
