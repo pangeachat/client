@@ -42,6 +42,10 @@ class ObjectiveCircleData {
   /// place of its ring and fill, so it doesn't fill and then jump (#9559).
   final bool loading;
 
+  /// The Mission's city is not open to the learner yet (org quests doc,
+  /// "Progression"): drawn faded, named "not yet open".
+  final bool closed;
+
   const ObjectiveCircleData({
     required this.index,
     required this.statement,
@@ -50,6 +54,7 @@ class ObjectiveCircleData {
     this.xp,
     this.selected = false,
     this.classLocation = false,
+    this.closed = false,
     this.pinged = false,
     this.loading = false,
   });

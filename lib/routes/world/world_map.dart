@@ -16,6 +16,7 @@ import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -24,6 +25,8 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/quests/course_itinerary.dart';
+import 'package:fluffychat/features/quests/course_language_scope.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
@@ -37,6 +40,9 @@ import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
@@ -47,6 +53,9 @@ import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_view.dart';
+import 'package:fluffychat/routes/world/world_view_cards.dart';
+import 'package:fluffychat/routes/world/world_view_items.dart';
+import 'package:fluffychat/routes/world/world_view_markers.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -247,6 +256,22 @@ class WorldMapController extends State<WorldMap>
   /// the change — so it stays independent of the filter state itself. Column
   /// mode ignores it (its filter bar is always open).
   final ValueNotifier<int> mapPanTick = ValueNotifier(0);
+
+  /// The canvas is veiled while the camera is set in one step: the fade the
+  /// map makes instead of a pan or a zoom to another city (org course-view
+  /// doc). Read by the view's veil.
+  final ValueNotifier<bool> mapVeiled = ValueNotifier(false);
+
+  /// How long the veil takes to come and go.
+  static const Duration fadeDuration = Duration(milliseconds: 180);
+
+  /// The course and Mission the map last faded to, so a course coming into
+  /// context and a Mission picked fade once each, not on every rebuild.
+  String? _fadedMissionKey;
+
+  /// The context before the current one, to tell a Mission pick inside a
+  /// course from a hop between courses.
+  MapContext _lastContext = MapContextController.notifier.value;
 
   /// Ticks whenever the filtered view could have changed — a filter/query
   /// mutation or a completed pin load — so the shell-built narrow search bar
@@ -479,6 +504,7 @@ class WorldMapController extends State<WorldMap>
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     MapCameraFocusRequests.notifier.removeListener(_onCameraFocusRequest);
+    mapVeiled.dispose();
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
     DiscoveredSessionsCache.instance.removeListener(
       _onDiscoveredPreviewsChanged,
@@ -497,6 +523,292 @@ class WorldMapController extends State<WorldMap>
   MapController get mapController => widget.controller ?? _ownController;
 
   bool get isWorld => MapContextController.notifier.value is! CourseMapContext;
+
+  /// Whether the world view is zoomed into a city ([WorldMapConstants.cityZoom]),
+  /// where its open sessions and the learner's played activities show.
+  bool get zoomedIntoCity {
+    try {
+      return mapController.camera.zoom >= WorldMapConstants.cityZoom;
+    } catch (_) {
+      return false; // camera not laid out yet: the world overview
+    }
+  }
+
+  /// The world view proper: outside any course and above the cities, where
+  /// the map shows cities and ships, and nothing else (org world-view doc).
+  bool get worldOverview => isWorld && !zoomedIntoCity;
+
+  /// Whether the last camera settle was inside a city, to rebuild when the
+  /// view crosses [WorldMapConstants.cityZoom].
+  bool _wasZoomedIntoCity = false;
+  double _lastWorldMaxZoom = WorldMapConstants.maxZoom;
+
+  /// The learner's joined courses in their selected target language, as the
+  /// world view reads them: a city shows only with activities in that
+  /// language, so a course in another language puts nothing on the world view
+  /// (world-map.instructions.md, "What appears on the map").
+  List<CourseTripView> get _joinedTrips {
+    final now = DateTime.now();
+    return [
+      for (final room in _client?.joinedCourseRooms ?? const <Room>[])
+        if (CourseLanguageScope.courseInTargetLanguage(room))
+          CourseTripView(
+            roomId: room.id,
+            name: room.getLocalizedDisplayname(),
+            copy: room.courseMissions,
+            position: room.coursePosition,
+            openMissionIds: _openMissionIdsFor(room, now),
+          ),
+    ];
+  }
+
+  /// The Missions open to the learner on [room]'s trip, by the course page's
+  /// own rule from the record and the shared progression (null: nothing is
+  /// closed, or progress is not known yet, so nothing locks on a guess).
+  Set<String>? _openMissionIdsFor(Room room, DateTime now) {
+    final copy = room.courseMissions;
+    if (copy == null) return null;
+    final progress = _pinsManager.progression.forCourse(room.id);
+    final userId = _client?.userID;
+    return CourseItinerary.openMissionIdsOf(
+      copy: copy,
+      now: now,
+      progressResolved: progress != null,
+      anchorId: progress?.anchorMissionId,
+      completedIds: {
+        if (progress != null)
+          for (final entry in progress.rollup.entries)
+            if (entry.value.satisfied) entry.key,
+      },
+      reopenedIds: userId == null ? const {} : room.missionsOpenedFor(userId),
+    );
+  }
+
+  /// How far the world map zooms (org world-view doc): to just under the
+  /// city zoom anywhere, and all the way in only over a city where the
+  /// learner has a course. A course-scoped map is not capped.
+  double get worldMaxZoom {
+    if (!isWorld) return WorldMapConstants.maxZoom;
+    final LatLng center;
+    try {
+      center = mapController.camera.center;
+    } catch (_) {
+      return WorldMapConstants.worldZoomCap;
+    }
+    for (final city in (_lastWorldView ?? worldView).cities) {
+      if (!city.aboard) continue;
+      if (const Distance().as(LengthUnit.Kilometer, center, city.point) <=
+          WorldMapConstants.ownCityRadiusKm) {
+        return WorldMapConstants.maxZoom;
+      }
+    }
+    return WorldMapConstants.worldZoomCap;
+  }
+
+  /// The public catalog's courses in the learner's target language, as
+  /// ships beside their own (org world-view doc). Read in pages of 100 and
+  /// kept until the language changes or it is a minute old; a failed read
+  /// is reported and keeps the last list, so the world view never loses its
+  /// ships to one bad request.
+  List<CourseTripView> _publicTrips = const [];
+  Map<String, PublicCoursesChunk> _publicCoursesByRoom = const {};
+  String? _publicTripsL2;
+  DateTime? _publicTripsAt;
+  Future<void>? _publicTripsLoad;
+  static const _publicTripsMaxAge = Duration(minutes: 1);
+
+  void _ensurePublicTripsFresh() {
+    final client = _client;
+    final l2 = MatrixState.pangeaController.userController.userL2Code;
+    if (client == null || l2 == null || _publicTripsLoad != null) return;
+    final fresh =
+        _publicTripsL2 == l2 &&
+        _publicTripsAt != null &&
+        DateTime.now().difference(_publicTripsAt!) < _publicTripsMaxAge;
+    if (fresh) return;
+    _publicTripsLoad = client
+        .allPublicCourses(l2)
+        .then((courses) {
+          _publicCoursesByRoom = {
+            for (final course in courses) course.room.roomId: course,
+          };
+          _publicTrips = [
+            for (final course in courses)
+              CourseTripView(
+                roomId: course.room.roomId,
+                name: course.room.name ?? '',
+                copy: course.courseMissions,
+                position: course.coursePosition,
+                aboard: false,
+              ),
+          ];
+          _publicTripsL2 = l2;
+          _publicTripsAt = DateTime.now();
+          if (mounted) setState(() {});
+        })
+        .catchError((Object e, StackTrace s) {
+          ErrorHandler.logError(e: e, s: s, data: {'target_language': l2});
+          _publicTripsAt = DateTime.now();
+          _publicTripsL2 = l2;
+        })
+        .whenComplete(() => _publicTripsLoad = null);
+  }
+
+  /// Every course the world view draws: the learner's own, then the public
+  /// catalog's, one ship per room ([mergeTrips]).
+  List<CourseTripView> get _courseTrips {
+    _ensurePublicTripsFresh();
+    return mergeTrips(_joinedTrips, _publicTrips);
+  }
+
+  /// The learner's courses and the public catalog's as ships at the city
+  /// each trip has reached, and the cities along those trips, sized by the
+  /// XP earned there and stamped where they have played; read once per
+  /// build.
+  ({List<WorldShip> ships, List<WorldCity> cities}) get worldView =>
+      _lastWorldView = worldViewOf(
+        _courseTrips,
+        _pinsManager.xpByActivity,
+        DateTime.now(),
+      );
+
+  /// The world view's ships matching the search, by the course search's
+  /// one match and order ([rankCoursesByName]); empty with no query.
+  List<WorldShip> get worldShipMatches {
+    final query = filter.query.trim();
+    if (query.isEmpty) return const [];
+    return rankCoursesByName(
+      (_lastWorldView ?? worldView).ships,
+      query,
+      name: (ship) => ship.name,
+      members: (ship) =>
+          _client?.getRoomById(ship.roomId)?.summary.mJoinedMemberCount ??
+          _publicCoursesByRoom[ship.roomId]?.room.numJoinedMembers ??
+          0,
+      joinRule: (ship) => _publicCoursesByRoom[ship.roomId]?.room.joinRule,
+    );
+  }
+
+  /// The world view as drawn: a search narrows the ships to the courses it
+  /// matches, as it narrows the pins in a course; the cities stay, since
+  /// they are the map, not the results.
+  ({List<WorldShip> ships, List<WorldCity> cities}) get worldViewShown {
+    final view = worldView;
+    if (filter.query.trim().isEmpty) return view;
+    final matching = {for (final ship in worldShipMatches) ship.roomId};
+    return (
+      ships: [
+        for (final ship in view.ships)
+          if (matching.contains(ship.roomId)) ship,
+      ],
+      cities: view.cities,
+    );
+  }
+
+  /// The last [worldView] built. [worldMaxZoom] runs on every frame of a pan,
+  /// and building the view there would parse every course's record per
+  /// frame; the cities a learner can zoom into change only with what a build
+  /// already reads.
+  ({List<WorldShip> ships, List<WorldCity> cities})? _lastWorldView;
+
+  /// The world view's one open card: a city's or a ship's (org world-view
+  /// doc). Tapping a city or ship opens its card; the X, or opening another,
+  /// closes it. Leaving the world view drops it.
+  WorldCity? selectedWorldCity;
+  WorldShip? selectedWorldShip;
+
+  void selectWorldCity(WorldCity city) {
+    setState(() {
+      selectedWorldCity = city;
+      selectedWorldShip = null;
+    });
+    _bringCardIntoView(city.point);
+  }
+
+  void selectWorldShip(WorldShip ship) {
+    setState(() {
+      selectedWorldShip = ship;
+      selectedWorldCity = null;
+    });
+    _bringCardIntoView(ship.point);
+  }
+
+  /// A card stands above its point, so the point glides to where the card
+  /// fits under the top chrome: a pure pan at the current zoom, like the
+  /// focus glide for an activity.
+  void _bringCardIntoView(LatLng point) {
+    final padding = _exposedCanvasPadding;
+    _animateFit(
+      CameraFit.coordinates(
+        coordinates: [point],
+        padding: padding.copyWith(
+          top: padding.top + WorldViewCardFrame.height + WorldShipMarker.height,
+          left: padding.left + WorldViewCardFrame.width / 2,
+          right: padding.right + WorldViewCardFrame.width / 2,
+        ),
+        maxZoom: mapController.camera.zoom,
+      ),
+      anchor: point,
+    );
+  }
+
+  void dismissWorldCard() => setState(() {
+    selectedWorldCity = null;
+    selectedWorldShip = null;
+  });
+
+  /// The activities the city card shows for [city] ([activityIdsAtCity]).
+  List<String> activityIdsAt(WorldCity city) =>
+      activityIdsAtCity(_courseTrips, city.key);
+
+  /// What [ship]'s card says: from the joined room when the learner is
+  /// aboard, else from the public catalog's entry.
+  WorldShipInfo shipInfo(WorldShip ship) {
+    final chunk = _publicCoursesByRoom[ship.roomId];
+    final room = _client?.getRoomById(ship.roomId);
+    if (ship.aboard && room != null) {
+      final admins = [
+        for (final user in room.getParticipants())
+          if (user.membership == Membership.join &&
+              user.powerLevel >= SpaceConstants.powerLevelOfAdmin &&
+              user.id != BotName.byEnvironment)
+            user.calcDisplayname(),
+      ];
+      return WorldShipInfo(
+        name: ship.name,
+        cityName: ship.cityName,
+        admins: admins,
+        institution: (room.courseInstitution ?? chunk?.institution)?.name,
+        members: room.summary.mJoinedMemberCount,
+        description: room.topic,
+        aboard: true,
+        joinOutright: true,
+      );
+    }
+    return WorldShipInfo(
+      name: ship.name,
+      cityName: ship.cityName,
+      admins: chunk?.adminNames ?? const [],
+      institution: chunk?.institution?.name,
+      members: chunk?.room.numJoinedMembers,
+      description: chunk?.room.topic,
+      aboard: false,
+      joinOutright: chunk?.room.joinRule == JoinRules.public.name,
+    );
+  }
+
+  /// Brings the world view down into [city] with a fade, where its sessions
+  /// and the learner's played activities show.
+  void fadeToCity(WorldCity city) {
+    dismissWorldCard();
+    _fadeFit(
+      CameraFit.coordinates(
+        coordinates: [city.point],
+        padding: _exposedCanvasPadding,
+        maxZoom: WorldMapConstants.cityFocusZoom,
+      ),
+    );
+  }
 
   /// The joined course space a course-scoped map is showing, or null on the
   /// world map and under a course the learner has not joined (a preview). The
@@ -576,6 +888,10 @@ class WorldMapController extends State<WorldMap>
   /// scope-dependent term is the settings-fixed language, applied on the world
   /// map only; see [WorldMapFilterState.include].
   List<QuestActivityCard> get visiblePins {
+    // Outside any course the map shows cities and ships, not activities
+    // (org world-view doc); zoomed into a city it shows the city's open
+    // sessions and the activities the learner has played there.
+    if (worldOverview) return const [];
     final filtered = _pinsManager.filteredPins(
       (c) => _filterState.include(
         c,
@@ -583,6 +899,12 @@ class WorldMapController extends State<WorldMap>
         applyLanguage: isWorld,
       ),
     );
+    if (isWorld) {
+      return [
+        for (final c in filtered)
+          if (_pinsManager.displayStateOf(c) != ActivityPinState.available) c,
+      ];
+    }
     final mission = selectedMissionId;
     if (mission == null) return filtered;
     // The Mission scope: a joined course's map shows only the Mission on
@@ -644,7 +966,7 @@ class WorldMapController extends State<WorldMap>
   /// coordinates count anywhere here: a match that can never render can't be
   /// revealed by any remedy the card offers.
   MapEmptyVerdict get emptyVerdict {
-    if (loadingPins) return MapEmptyVerdict.none;
+    if (loadingPins || worldOverview) return MapEmptyVerdict.none;
     final loaded = visiblePins.where((c) => c.point != null).toList();
     if (loaded.isNotEmpty) {
       // Matches exist under the current filters/query — the verdict is about
@@ -741,6 +1063,13 @@ class WorldMapController extends State<WorldMap>
     if (client == null) return;
     _pinsManager.recomputeProgress(client, course: courseRoom);
     if (mounted) setState(() {});
+    // The Mission on show may only now be known (the course's progression
+    // resolved) or have moved (a Mission completed opens the next).
+    try {
+      _fadeToMissionOnShow();
+    } catch (_) {
+      // Camera not laid out yet; the context fit fades when it is.
+    }
   }
 
   /// Refresh the course participant count that dims `available` pins: course
@@ -764,7 +1093,15 @@ class WorldMapController extends State<WorldMap>
 
   Future<void> _rebuildObjectiveCache(Client client) async {
     await _pinsManager.rebuildObjectiveCache(client);
-    if (mounted) setState(() {});
+    if (!mounted) return;
+    setState(() {});
+    // A just-joined course's progression resolves here first, so its map
+    // fades to the Mission on show now rather than at the next sync.
+    try {
+      _fadeToMissionOnShow();
+    } catch (_) {
+      // Camera not laid out yet; the context fit fades when it is.
+    }
   }
 
   Future<void> _maybeRebuildObjectiveCache(Client client) async {
@@ -805,7 +1142,17 @@ class WorldMapController extends State<WorldMap>
     // Reset the map-pin global and reload pins when the map re-scopes (e.g.
     // entering a course), then refit. The camera fit is debounced so clicking
     // through courses doesn't snap the camera on every hop — it glides only after
-    // you've settled on one.
+    // you've settled on one. Picking a Mission inside the same course is one
+    // deliberate act, so its fade is not held back (org course-view doc).
+    final previous = _lastContext;
+    final next = MapContextController.notifier.value;
+    _lastContext = next;
+    final missionPick =
+        previous is CourseMapContext &&
+        next is CourseMapContext &&
+        previous.coursePlanId == next.coursePlanId &&
+        previous.spaceId == next.spaceId &&
+        previous.missionId != next.missionId;
     if (mounted) {
       WorldMapPinsManager.set(false);
     }
@@ -813,7 +1160,28 @@ class WorldMapController extends State<WorldMap>
     // re-derive the signals now rather than on the next sync tick — entering a
     // course must not flash another course's session as joinable first.
     _recomputeProgress();
-    _loadForContext(debounceFit: true);
+    _loadForContext(debounceFit: !missionPick);
+    // Leaving a course for the world fades back out to the whole world (Will,
+    // 2026-10-29): the same view the reset button gives, under the veil.
+    if (previous is CourseMapContext && next is WorldMapContext) {
+      _fadeToWorld();
+    }
+  }
+
+  /// Fades the map out to the world view ([resetToWorld]'s target) instead of
+  /// gliding there from a city.
+  void _fadeToWorld() {
+    _dropGlideInFlight();
+    mapVeiled.value = true;
+    Future<void>.delayed(fadeDuration, () {
+      if (!mounted) return;
+      try {
+        mapController.move(_worldResetCenter(), minZoom);
+      } catch (_) {
+        // Camera not laid out yet; the world load places it.
+      }
+      mapVeiled.value = false;
+    });
   }
 
   /// Load the pins for the active map context. A selected course shows that
@@ -860,6 +1228,7 @@ class WorldMapController extends State<WorldMap>
         }
         return;
       case WorldMapContext():
+        _fadedMissionKey = null;
         _pinsManager.resetScopedCourseOutline();
         _pinsManager.clearCourseAvailableParticipants();
         loadWorldPins();
@@ -881,7 +1250,10 @@ class WorldMapController extends State<WorldMap>
   /// CEFR band, completion, and text search are applied client-side over the
   /// result via [visiblePins].
   Future<void> loadWorldPins() async {
-    if (!isWorld) return;
+    // The world overview draws cities and ships, never activity pins (org
+    // world-view doc), so it reads none: pins are read once the view is in a
+    // city, where its sessions and played activities show.
+    if (!isWorld || worldOverview) return;
     final LatLngBounds bounds;
     try {
       bounds = mapController.camera.visibleBounds;
@@ -1173,12 +1545,13 @@ class WorldMapController extends State<WorldMap>
           return;
         }
 
-        // A course coming into context moves the camera NOT AT ALL (#7616):
-        // neither the old zoomful bounds fit nor the pan-to-top-pin tried
-        // after it read as intentional — there is no single right place to
-        // point at, and any auto-move was disorienting. The scope change
-        // speaks through the pins; the camera goes to the course only via
-        // the explicit focus button ([_onCameraFocusRequest]).
+        // A joined course fades to the Mission on show's city: its ship's
+        // city when the course opens, a picked Mission's city after (org
+        // course-view doc, "The camera"; pangeachat/.github#780). Before
+        // courses were trips no one place fit a course, so the camera stayed
+        // still (#7616); the ship's city now fits. Nothing moves until the
+        // Mission on show is known and has a place.
+        _fadeToMissionOnShow();
       } catch (_) {
         // Controller/camera not ready yet; the next change will refit.
       }
@@ -1221,25 +1594,118 @@ class WorldMapController extends State<WorldMap>
       }
 
       if (MapContextController.notifier.value is! CourseMapContext) return;
-      _fitCourseBounds();
+      // Focus on the Mission on show (the Mission card's Focus, the course
+      // header's): the map fades to its city, never pans or zooms (org
+      // course-view doc; pangeachat/.github#780). A preview, or a course
+      // whose Mission is not known yet, fades to the whole route.
+      if (!_fadeToMissionOnShow(force: true)) _fitCourseBounds(fade: true);
     } catch (_) {
       // Controller/camera not ready yet; the button can simply be pressed again.
     }
   }
 
-  /// Zoom+pan-fit the scoped course's activity pins into the exposed canvas —
-  /// shared by the course focus button and the preview's fit-on-scope-in
-  /// (#7826).
-  void _fitCourseBounds() {
-    final points = _pinsManager.focusPoints;
-    if (points.isEmpty) return;
-    _animateFit(
+  /// Fades the map to the Mission on show's city (org course-view doc,
+  /// "The camera": choosing a course fades to its ship's city, picking a
+  /// Mission fades to its city): the Mission's shown activities' bounds, else
+  /// the city the course record names for it. Fades once per course and
+  /// Mission unless [force]d (the Focus button). Returns whether there was a
+  /// place to fade to; a preview, or a course whose Mission on show is not
+  /// known yet, has none here.
+  bool _fadeToMissionOnShow({bool force = false}) {
+    final mapContext = MapContextController.notifier.value;
+    if (mapContext is! CourseMapContext ||
+        mapContext is CoursePreviewMapContext) {
+      return false;
+    }
+    // Focus ([force]) goes to the Mission the card shows. Entering the
+    // course goes to the Mission picked in the URL; else, on a trip, the
+    // ship's stop from the record itself (no progression needed, so a course
+    // in another language fades too); else the course's current Mission.
+    final courseRoom = this.courseRoom;
+    final copy = courseRoom?.courseMissions;
+    String? mission = force ? selectedMissionId : mapContext.missionId;
+    if (mission == null && copy != null) {
+      final stop = CourseItinerary.shipStopOf(
+        copy,
+        courseRoom?.coursePosition,
+        DateTime.now(),
+      );
+      if (stop != null) mission = copy.missions[stop].loId;
+    }
+    mission ??= selectedMissionId;
+    if (mission == null) return false;
+    final key = '${mapContext.spaceId ?? mapContext.coursePlanId}/$mission';
+    if (!force && key == _fadedMissionKey) return true;
+    final targets = missionFadeTargets(
+      pins: _pinsManager.filteredPins((_) => true),
+      missionId: mission,
+      recordedCity: copy?.missions
+          .firstWhereOrNull((m) => m.loId == mission)
+          ?.city
+          ?.point,
+    );
+    if (targets.isEmpty) return false;
+    _fadedMissionKey = key;
+    _fadeFit(
       CameraFit.bounds(
-        bounds: LatLngBounds.fromPoints(points),
+        bounds: LatLngBounds.fromPoints(targets),
         padding: _exposedCanvasPadding,
         maxZoom: WorldMapConstants.courseFitMaxZoom,
       ),
     );
+    return true;
+  }
+
+  /// Where a Mission's fade lands: the placed [pins] that serve [missionId],
+  /// else the [recordedCity] the course record names for it, else nowhere.
+  /// Pure, so the rule is testable without a map.
+  static List<LatLng> missionFadeTargets({
+    required List<QuestActivityCard> pins,
+    required String missionId,
+    LatLng? recordedCity,
+  }) {
+    final points = [
+      for (final card in pins)
+        if (card.learningObjectiveRefs.contains(missionId)) ?card.point,
+    ];
+    if (points.isNotEmpty) return points;
+    return [?recordedCity];
+  }
+
+  /// Fit the scoped course's activity pins into the exposed canvas — shared
+  /// by the course focus button and the preview's fit-on-scope-in (#7826).
+  /// With [fade] the camera is set in one step under the veil
+  /// ([_fadeFit]); otherwise it glides.
+  void _fitCourseBounds({bool fade = false}) {
+    final points = _pinsManager.focusPoints;
+    if (points.isEmpty) return;
+    final fit = CameraFit.bounds(
+      bounds: LatLngBounds.fromPoints(points),
+      padding: _exposedCanvasPadding,
+      maxZoom: WorldMapConstants.courseFitMaxZoom,
+    );
+    if (fade) {
+      _fadeFit(fit);
+    } else {
+      _animateFit(fit);
+    }
+  }
+
+  /// Fades the map to where [fit] places it (org course-view doc: a pan or
+  /// zoom fetches tiles for every view it passes through and is jarring):
+  /// the canvas veils, the camera is set in one step, the canvas unveils.
+  void _fadeFit(CameraFit fit) {
+    _dropGlideInFlight();
+    mapVeiled.value = true;
+    Future<void>.delayed(fadeDuration, () {
+      if (!mounted) return;
+      try {
+        mapController.fitCamera(fit);
+      } catch (_) {
+        // Camera not laid out yet; the next request will land.
+      }
+      mapVeiled.value = false;
+    });
   }
 
   /// Glide the camera to where [fit] would place it (instead of snapping via
@@ -1355,6 +1821,15 @@ class WorldMapController extends State<WorldMap>
     // frame of a pan, but the surface no-ops once already collapsed.
     if (hasGesture) mapPanTick.value++;
     if (!isWorld) return;
+    // Crossing the city zoom swaps the world's cities and ships for the
+    // city's own items, so the layers rebuild on that frame.
+    final inCity = zoomedIntoCity;
+    final cap = worldMaxZoom;
+    if (inCity != _wasZoomedIntoCity || cap != _lastWorldMaxZoom) {
+      _wasZoomedIntoCity = inCity;
+      _lastWorldMaxZoom = cap;
+      if (mounted) setState(() {});
+    }
     _refetchDebounce?.cancel();
     _refetchDebounce = Timer(
       const Duration(milliseconds: 500),

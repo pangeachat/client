@@ -10,6 +10,8 @@ import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_filter_bar.dart';
 import 'package:fluffychat/routes/world/world_map_level_fallback_notice.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/routes/world/world_view_items.dart';
+import 'package:fluffychat/routes/world/world_view_markers.dart';
 import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
@@ -43,6 +45,11 @@ class WorldMapSearchOverlay extends StatefulWidget {
   final List<QuestActivityCard> results;
   final Function(QuestActivityCard) onResultTap;
 
+  /// The courses matching the search outside any course (the world view's
+  /// ships), shown in place of [results]; a tap opens the course's card.
+  final List<WorldShip> courseResults;
+  final ValueChanged<WorldShip>? onCourseResultTap;
+
   /// The controller's diagnosis of why the view shows no matches
   /// ([WorldMapController.emptyVerdict]) — drives the [WorldMapEmptyViewCard]
   /// whenever the results dropdown has no rows to offer instead.
@@ -64,6 +71,8 @@ class WorldMapSearchOverlay extends StatefulWidget {
     required this.setStatus,
     required this.results,
     required this.onResultTap,
+    this.courseResults = const [],
+    this.onCourseResultTap,
     required this.onReset,
     required this.emptyVerdict,
     required this.canZoomOut,
@@ -173,7 +182,46 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
               // view — searching with no matches OR filters emptying the
               // viewport — shows the ONE unified card instead (formerly two
               // separate popups with a text-only no-matches state).
-              if (searching && widget.results.isNotEmpty) ...[
+              if (searching && widget.courseResults.isNotEmpty) ...[
+                const SizedBox(height: 8),
+                Material(
+                  elevation: 4,
+                  borderRadius: BorderRadius.circular(12),
+                  color: theme.colorScheme.surface,
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxHeight: 320),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemCount: widget.courseResults.length > _maxResults
+                          ? _maxResults
+                          : widget.courseResults.length,
+                      itemBuilder: (context, i) {
+                        final ship = widget.courseResults[i];
+                        return ListTile(
+                          focusNode: i == 0 ? _firstResultFocus : null,
+                          dense: true,
+                          leading: AirshipIcon(
+                            size: 18,
+                            color: theme.colorScheme.primary,
+                          ),
+                          title: Text(
+                            ship.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          subtitle: Text(
+                            l10n.worldShipAtCity(ship.cityName),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          onTap: () => widget.onCourseResultTap?.call(ship),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ] else if (searching && widget.results.isNotEmpty) ...[
                 const SizedBox(height: 8),
                 Material(
                   elevation: 4,
