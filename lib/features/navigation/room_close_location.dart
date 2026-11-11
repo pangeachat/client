@@ -2,7 +2,9 @@ import 'package:flutter/widgets.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
@@ -12,8 +14,11 @@ import 'package:fluffychat/utils/navigation_util.dart';
 /// The location that closes an open room-panel token for [roomId]: it drops
 /// ONLY that token, so the rest of the workspace — notably the chat list —
 /// survives. Closing an activity plan (#7156) and leaving a chat (#7561) must
-/// not also clear the chat list. Returns null when no such token is open (e.g.
-/// the standalone `/<activityId>` route) — the caller pops or falls back.
+/// not also clear the chat list. A session the course card opened, left alone
+/// in its column, gives its place back to the card instead
+/// ([WorkspaceNav.closeLeftRoom], #9632). Returns null when no such token is
+/// open (e.g. the standalone `/<activityId>` route) — the caller pops or falls
+/// back.
 String? roomTokenCloseLocation(Uri uri, String? roomId) {
   if (roomId == null || roomId.isEmpty) return null;
 
@@ -28,7 +33,7 @@ String? roomTokenCloseLocation(Uri uri, String? roomId) {
   final panels = parseOpenPanels(uri);
 
   for (final t in panels.left) {
-    if (matches(t)) return WorkspaceNav.closeLeft(uri, t);
+    if (matches(t)) return WorkspaceNav.closeLeftRoom(uri, t);
   }
 
   for (final t in panels.right) {
@@ -37,6 +42,16 @@ String? roomTokenCloseLocation(Uri uri, String? roomId) {
 
   return null;
 }
+
+/// Whether [close], a room close from [uri], reopens the course card — the
+/// card then mounts where the pressed control was, so it claims focus
+/// (routing.instructions.md, "Every panel is a named group to assistive
+/// tech").
+bool closeReopensCourseCard(Uri uri, String close) =>
+    !_hasCourseCard(uri) && _hasCourseCard(Uri.parse(close));
+
+bool _hasCourseCard(Uri uri) =>
+    parseOpenPanels(uri).left.any((t) => t.type == PanelTypesEnum.course);
 
 /// Close the open room panel for [roomId] after leaving or deleting it from a
 /// surface that is NOT the room itself — a chat-list (or course-chat-list) row's
@@ -58,8 +73,12 @@ void closeRoomPanelFromList(BuildContext context, String roomId) {
 /// isn't a token panel (a legacy pushed route), so the user is never stranded on
 /// the surface of the room they just left. See `routing.instructions.md`.
 void closeOwnRoomPanel(BuildContext context, String roomId) {
-  final close = roomTokenCloseLocation(GoRouterState.of(context).uri, roomId);
+  final uri = GoRouterState.of(context).uri;
+  final close = roomTokenCloseLocation(uri, roomId);
   if (close != null) {
+    if (closeReopensCourseCard(uri, close)) {
+      PanelEntryIntent.instance.armForSwap();
+    }
     context.go(close);
   } else {
     NavigationUtil.goToSpaceRoute(null, const [], context);

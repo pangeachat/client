@@ -37,6 +37,13 @@ import 'package:fluffychat/widgets/users/level_ribbon.dart';
 class WorldUserCluster extends StatelessWidget {
   const WorldUserCluster({super.key});
 
+  /// The cluster's width while every tracker's count fits under its icon: its
+  /// powerups pill, the widest of its rows, at its narrowest. A wider count or
+  /// a running practice timer widens the pill by that overhang, which
+  /// [compactCount] keeps to a few px. The shell reserves this width at the
+  /// right edge ([WorkspaceShell.clusterGutter]).
+  static const double minWidth = _PowerupsPill.minWidth;
+
   @override
   Widget build(BuildContext context) {
     // Which analytics panel is open — chrome-level derivation from the URL, so
@@ -173,6 +180,14 @@ class _PowerupsPill extends StatelessWidget {
   static const double _xpStroke = 5.0;
   static const double _innerRadius = 20.0;
 
+  /// The white field's inset around the trackers.
+  static const double _fieldPadding = 4.0;
+
+  /// The XP ring and the field's inset on each side of the narrowest tracker.
+  static const double minWidth =
+      2 * (_xpStroke + XpBorderPainter.trackExtra + _fieldPadding) +
+      ClusterTrackerButton.minWidth;
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -226,7 +241,7 @@ class _PowerupsPill extends StatelessWidget {
                             borderRadius: BorderRadius.circular(_innerRadius),
                           ),
                           clipBehavior: Clip.antiAlias,
-                          padding: EdgeInsets.all(4.0),
+                          padding: const EdgeInsets.all(_fieldPadding),
                           child: Material(
                             type: MaterialType.transparency,
                             child: Column(
@@ -320,8 +335,8 @@ class _PowerupsPill extends StatelessWidget {
 /// inner field. Tapping opens that metric's analytics tab. Public so
 /// [WorldAnalyticsBar] can lay the same three trackers out horizontally.
 /// The displayed count abbreviates above 999 ([compactCount]) so the pill
-/// never outgrows the allocator's fixed cluster gutter; the semantics label
-/// carries the exact count.
+/// never grows into the right column's card; the semantics label carries the
+/// exact count.
 class ClusterTrackerButton extends StatefulWidget {
   final ProgressIndicatorEnum indicator;
   final int count;
@@ -353,13 +368,20 @@ class ClusterTrackerButton extends StatefulWidget {
     required this.count,
     required this.onTap,
     this.selected = false,
-    this.horizontalPadding = 16,
-    this.iconSize = 24,
+    this.horizontalPadding = _defaultHorizontalPadding,
+    this.iconSize = _defaultIconSize,
     this.fontSize = 16,
     this.tutorialTargetId,
     this.loading = false,
     super.key,
   });
+
+  static const double _defaultHorizontalPadding = 16.0;
+  static const double _defaultIconSize = 24.0;
+
+  /// A default-size tracker's width while its count fits under its icon.
+  static const double minWidth =
+      2 * _defaultHorizontalPadding + _defaultIconSize;
 
   @override
   State<ClusterTrackerButton> createState() => _ClusterTrackerButtonState();

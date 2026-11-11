@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/compact_count.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
+import '../navigation/mock_user_cluster_view_model.dart';
 
-/// Pins the width contract that keeps the world user cluster's powerups pill
-/// inside the allocator's fixed `PanelAllocator.clusterGutter` (#7508): raw
-/// 4-5 digit tracker counts grew the pill past the gutter and under the right
-/// column's card, so [ClusterTrackerButton] displays [compactCount]'s
-/// abbreviation (never more than 4 glyphs) while its semantics label keeps
-/// the exact count for assistive tech.
+/// Pins the width contract between the world user cluster and the gutter the
+/// shell reserves for it (`WorkspaceShell.clusterGutter`): the reservation is
+/// [WorldUserCluster.minWidth], so the cluster must render at exactly that
+/// width (#9778), and raw 4-5 digit tracker counts grew the pill under the
+/// right column's card (#7508), so [ClusterTrackerButton] displays
+/// [compactCount]'s abbreviation (never more than 4 glyphs) while its
+/// semantics label keeps the exact count for assistive tech.
 void main() {
   group('compactCount', () {
     test('passes counts below 1000 through exactly', () {
@@ -85,7 +88,7 @@ void main() {
         threeDigitWidth,
         reason:
             'abbreviation ("99k") must keep a 5-digit count at 3 glyphs, so '
-            'the pill stays inside PanelAllocator.clusterGutter',
+            'the pill stays clear of a right panel',
       );
     });
 
@@ -96,8 +99,8 @@ void main() {
       // font's digits aren't exactly 1em wide), then cap every abbreviated
       // count at four advances — the widest string compactCount can emit.
       // Production fonts render '.'/'k' narrower than digits, so real widths
-      // sit below this cap, inside the gutter budget (88 clusterGutter - 12
-      // chrome margin - 18 pill chrome around the widest tracker).
+      // sit below this cap, and the widest count's overhang past its icon
+      // stays inside the margin between the cluster and a right panel.
       await pumpTracker(tester, 99);
       final twoGlyphs = trackerWidth(tester);
       await pumpTracker(tester, 999);
@@ -131,6 +134,40 @@ void main() {
       );
 
       semantics.dispose();
+    });
+  });
+
+  group('WorldUserCluster.minWidth', () {
+    // `Avatar` resolves the bot name from the environment at build time.
+    setUpAll(() => dotenv.testLoad(fileInput: 'BOT_NAME=@bot:example.org'));
+
+    testWidgets('is the width the cluster renders at while its counts fit '
+        'under their icons', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+          home: Scaffold(
+            body: Align(
+              alignment: Alignment.topRight,
+              // Zero counts, and no L2: the real flag chip loads a network
+              // SVG, and at 52px it is narrower than the pill anyway.
+              child: WorldUserClusterInternal(
+                viewModel: MockUserClusterViewModel(hasL2: false),
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(
+        tester.getSize(find.byType(WorldUserClusterInternal)).width,
+        WorldUserCluster.minWidth,
+        reason:
+            'the shell reserves exactly this width for the cluster, so a '
+            'wider cluster eats into the gap a right panel keeps from it',
+      );
     });
   });
 }

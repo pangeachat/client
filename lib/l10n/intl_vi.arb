@@ -2884,13 +2884,11 @@
     "editCourseLater": "Bạn có thể chỉnh sửa tiêu đề mẫu, mô tả và hình ảnh khóa học sau.",
     "createCourse": "Tạo khóa học",
     "stats": "Thống kê",
-    "createGroupChat": "Tạo nhóm trò chuyện",
     "editCourse": "Chỉnh sửa khóa học",
     "inviteDesc": "Bằng tên người dùng, mã hoặc liên kết",
     "editCourseDesc": "Tại đây bạn có thể chỉnh sửa tiêu đề, mô tả của khóa học, v.v.",
     "permissionsDesc": "Thiết lập quyền như ai có thể mời người dùng, gửi tin nhắn, tạo cuộc trò chuyện, v.v.",
     "accessDesc": "Bạn có thể làm cho khóa học của mình mở cho thế giới! Hoặc, làm cho khóa học của bạn riêng tư và an toàn.",
-    "createGroupChatDesc": "Trong khi các phiên hoạt động bắt đầu và kết thúc, nhóm trò chuyện sẽ luôn mở để giao tiếp định kỳ.",
     "deleteDesc": "Chỉ quản trị viên mới có thể xóa khóa học. Đây là hành động phá hủy, sẽ xóa tất cả người dùng và tất cả các cuộc trò chuyện đã chọn trong khóa học. Hãy cẩn thận khi thực hiện.",
     "whatNow": "Bây giờ làm gì?",
     "chooseNextActivity": "Chọn hoạt động tiếp theo của bạn!",
@@ -3180,10 +3178,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -3201,10 +3195,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

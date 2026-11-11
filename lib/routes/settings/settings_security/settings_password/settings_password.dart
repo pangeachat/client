@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/authentication/change_password_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
@@ -81,10 +82,16 @@ class SettingsPasswordController extends State<SettingsPassword> {
       }
     } catch (e) {
       setState(() {
-        newPassword2Error = e.toLocalizedString(
+        final error = e.toLocalizedString(
           context,
           ExceptionContext.changePassword,
         );
+        // The server refuses a wrong current password with M_FORBIDDEN.
+        if (e is MatrixException && e.error == MatrixError.M_FORBIDDEN) {
+          oldPasswordError = error;
+        } else {
+          newPassword2Error = error;
+        }
       });
     } finally {
       setState(() {

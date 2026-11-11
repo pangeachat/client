@@ -853,6 +853,20 @@ class AnalyticsDataService {
     return events;
   }
 
+  /// Saves audio entries ([DosageAudioEntry]) with the pending batches, for the
+  /// next upload. Past [updateLocalAnalytics] on purpose: an entry is no use of
+  /// a word, so it has no XP, level or new-word step to run.
+  Future<void> storeAudioEntries(
+    List<OneConstructUse> entries,
+    String language,
+  ) async {
+    await _ensureInitialized();
+    await _analyticsClientGetter.database.updateLocalAnalytics(
+      entries,
+      language,
+    );
+  }
+
   Future<void> updateServerAnalytics(
     List<ConstructAnalyticsEvent> events,
     String language,

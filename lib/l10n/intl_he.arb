@@ -2283,13 +2283,11 @@
     "editCourseLater": "אתה יכול לערוך את כותרת התבנית, תיאורים ותמונת הקורס מאוחר יותר.",
     "createCourse": "צור קורס",
     "stats": "סטטיסטיקות",
-    "createGroupChat": "צור שיחת קבוצתית",
     "editCourse": "ערוך קורס",
     "inviteDesc": "על ידי שם משתמש, קוד או קישור",
     "editCourseDesc": "כאן תוכל לערוך את כותרת הקורס, תיאור ועוד.",
     "permissionsDesc": "הגדר הרשאות כגון מי יכול להזמין משתמשים, לשלוח הודעות, ליצור שיחות, ועוד.",
     "accessDesc": "אתה יכול להפוך את הקורס שלך לגלוי לעולם! או, להפוך את הקורס לפרטי ומאובטח.",
-    "createGroupChatDesc": "בעוד שמפגשי הפעילות מתחילים ומסתיימים, שיחות קבוצתיות יישארו פתוחות לתקשורת שוטפת.",
     "deleteDesc": "רק מנהלים יכולים למחוק קורס. זוהי פעולה הרסנית שמסירה את כל המשתמשים ומוחקת את כל השיחות שנבחרו בתוך הקורס. המשך בזהירות.",
     "whatNow": "מה עכשיו?",
     "chooseNextActivity": "בחר את הפעילות הבאה שלך!",
@@ -6808,10 +6806,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6829,10 +6823,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },

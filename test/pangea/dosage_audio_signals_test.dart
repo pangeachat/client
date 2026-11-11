@@ -64,7 +64,33 @@ void main() {
         'toolbar_read',
         'word_audio',
         'practice_audio',
+        'call_recording',
       ]);
+    });
+
+    test('a call side is listening only when it is the other person', () {
+      expect(
+        DosageListeningCategory.forCallRecording(
+          senderId: '@peer:x',
+          ownUserId: '@me:x',
+        ),
+        DosageListeningCategory.callRecording,
+      );
+      expect(
+        DosageListeningCategory.forCallRecording(
+          senderId: '@me:x',
+          ownUserId: '@me:x',
+        ),
+        isNull,
+        reason: 'hearing yourself back is not listening',
+      );
+      expect(
+        DosageListeningCategory.forCallRecording(
+          senderId: '@peer:x',
+          ownUserId: null,
+        ),
+        isNull,
+      );
     });
 
     test('word and drill audio are their OWN categories, not message ones', () {
@@ -123,7 +149,7 @@ void main() {
       );
     });
 
-    test('coverage has SEVEN categories — voiceSend is not a listening one', () {
+    test('coverage has EIGHT categories — voiceSend is not a listening one', () {
       // Speaking's magnitude is derived server-side, so there is no speaking
       // playback event; but the server only learns a voice message exists from a
       // client row, so its DENOMINATOR still needs a declaration (D-V2-15).
@@ -134,6 +160,7 @@ void main() {
         'toolbar_read',
         'word_audio',
         'practice_audio',
+        'call_recording',
         'voice_send',
       ]);
       // The type system, not a convention, is what stops a listening event being
@@ -555,6 +582,24 @@ void main() {
     });
 
     void advance(Duration d) => clock = clock.add(d);
+
+    test('a surface with no room still emits, with a null room', () {
+      final t = DosageSharedPlayerTracker(
+        category: DosageListeningCategory.practiceAudio,
+        roomId: null,
+        ownerId: 'reference',
+        userId: () => mxid,
+        accessToken: () => token,
+        now: () => clock,
+        buffer: buffer,
+      );
+      t.update(playing: true, completed: false, currentOwnerId: 'reference');
+      advance(const Duration(seconds: 4));
+      t.close();
+
+      expect(buffer.bufferedEvents.single.roomId, isNull);
+      expect(buffer.bufferedEvents.single.elapsedMs, 4000);
+    });
 
     test('a completed playback emits its category once', () {
       final t = tracker(

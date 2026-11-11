@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui' as ui show SemanticsHitTestBehavior;
 
 import 'package:flutter/material.dart';
 
@@ -237,6 +238,49 @@ void main() {
       await setStatus(tester, ConnectionStatus.unreachable);
       expect(find.text(unreachableText), findsOneWidget);
     });
+  });
+
+  // #9584 — on web with the semantics tree on, clicks go by the semantics
+  // DOM, which a widget test does not have, so this pins what that DOM is
+  // built from: the banner's own node takes the clicks, and it still carries
+  // the message its live region announces.
+  testWidgets('every banner takes the clicks that land on it', (tester) async {
+    final semantics = tester.ensureSemantics();
+    var taps = 0;
+    await tester.pumpWidget(
+      app(
+        SizedBox.expand(
+          child: TextButton(onPressed: () => taps++, child: const SizedBox()),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byType(TextButton));
+    expect(taps, 1);
+
+    Future<void> expectTakesClicks(String text) async {
+      final banner = tester.getSemantics(find.text(text));
+      expect(banner.label, text);
+      expect(banner.flagsCollection.isLiveRegion, isTrue, reason: text);
+      expect(
+        banner.hitTestBehavior,
+        ui.SemanticsHitTestBehavior.opaque,
+        reason: text,
+      );
+      await tester.tap(find.text(text));
+      expect(taps, 1, reason: text);
+    }
+
+    await setStatus(tester, ConnectionStatus.offline);
+    await expectTakesClicks(offlineText);
+    await setStatus(tester, ConnectionStatus.unreachable);
+    await expectTakesClicks(unreachableText);
+    await setStatus(tester, ConnectionStatus.backOnline);
+    await expectTakesClicks('Back online');
+    await block(tester, {NetworkHostCategory.chatServer});
+    await expectTakesClicks(bannerText);
+
+    semantics.dispose();
   });
 
   // #9513 — practice that works offline, offered from the banner.
