@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-11-01 09:54:14.811785",
+    "@@last_modified": "2026-11-10 13:06:20.754705",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3474,13 +3474,11 @@
     "editCourseLater": "Siz shablon sarlavhasi, tavsiflar va kurs rasmini keyinchalik tahrirlashingiz mumkin.",
     "createCourse": "Kurs yaratish",
     "stats": "Statistika",
-    "createGroupChat": "Guruh chatini yaratish",
     "editCourse": "Kursni tahrirlash",
     "inviteDesc": "Foydalanuvchi nomi, kod yoki havola orqali",
     "editCourseDesc": "Bu yerda siz kurs nomi, tavsifi va boshqalarni tahrirlashingiz mumkin.",
     "permissionsDesc": "Kimlar foydalanuvchilarni taklif qilish, xabar yuborish, chatlar yaratish va boshqalar kabi ruxsatlarni belgilash.",
     "accessDesc": "Kursingizni dunyo uchun ochishingiz mumkin! Yoki, kursingizni shaxsiy va xavfsiz qiling.",
-    "createGroupChatDesc": "Faoliyat sessiyalari boshlanib va tugagan joyda, guruh chatlari muntazam muloqot uchun ochiq qoladi.",
     "deleteDesc": "Faqat administratorlar kursni o‘chirishi mumkin. Bu xavfli harakat bo‘lib, barcha foydalanuvchilarni olib tashlaydi va kurs ichidagi barcha tanlangan chatlarni o‘chiradi. Ehtiyot bo‘ling.",
     "whatNow": "Endi nima qilish kerak?",
     "chooseNextActivity": "Keyingi faoliyatingizni tanlang!",
@@ -6450,10 +6448,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6471,10 +6465,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8991,6 +8981,7 @@
     "addCourseBrowsePublic": "Ommaviy kurslarni ko'ring",
     "browsePublicCourses": "Ommaviy kurslarni ko'ring",
     "editProfile": "Profilni tahrirlash",
+    "mapSearchHint": "Ommaviy kurslarni qidirish",
     "mapFilterAllLanguages": "Barcha tillar",
     "mapFilterNotStarted": "Boshlanmagan",
     "mapFilterInProgress": "Jarayonda",
@@ -9883,9 +9874,7 @@
     "practiceMeaningPrompt": "„{word}“ nimani anglatadi?",
     "practiceEmojiPrompt": "„{word}“ uchun emojini tanlang",
     "practiceStepProgress": "{done} / {total}",
-    "leaderboard": "Yetakchilar jadvali",
-    "leaderboardRank": "Daraja {rank}",
-    "courseLeaderboardTooltip": "Ushbu kursdagi barcha ishtirokchilar til boʻyicha yulduzlari asosida tartiblangan. Aʼzoga xabar yuborish uchun uni bosing va “Suhbatni boshlash”ni tanlang.",
+    "courseParticipantTooltip": "Bu kursdagi hamma. Har qanday foydalanuvchining avatariga bosing va «muloqotni boshlash» ni tanlang, shunda DM yuborasiz.",
     "goalReportTitle": "Ushbu yulduz haqida xabar berish",
     "goalReportOverAwardPrompt": "Agar siz bu yulduzni olmasligingiz kerak bo'lsa, iltimos, sababini tushuntiring.",
     "goalReportUnderAwardPrompt": "Agar siz bu yulduzni olishingiz kerak deb hisoblasangiz, nima uchun?",
@@ -9904,11 +9893,6 @@
     "callTranscriptPreparingRecording": "Toʻliq yozuv tayyorlanmoqda...",
     "callTranscriptNoRecording": "Toʻliq qoʻngʻiroq yozuvi yoʻq.",
     "callTranscriptNotSubscribed": "{name} ushbu qo‘ng‘iroq paytida obunaga ega bo‘lmagan, shuning uchun aytilganlar transkripsiya qilinmadi.",
-    "joinYourCourse": "Kursga qoʻshiling",
-    "courseCodeJoinExplanation": "Tizimga kiring yoki roʻyxatdan oʻting, biz sizning kurs kodingizdan avtomatik ravishda kursingizga qoʻshish uchun foydalanamiz.",
-    "courseCodeLabel": "Kurs kodi",
-    "courseCodeSaved": "Kurs kodi {code} saqlandi",
-    "courseCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring va biz sizni kursingizga qoʻshamiz.",
     "moderationRefusedContactDetails": "Xabaringiz yuborilmadi. Avtomatik filtr telefon raqami kabi aloqa ma'lumotlarini topdi. Iltimos, ularni olib tashlang va qayta urinib ko'ring.",
     "moderationRefusedProfanity": "Xabaringiz yuborilmadi. Avtomatik filtr chatda ruxsat etilmagan so'zni topdi. Iltimos, uni o'zgartiring va qayta urinib ko'ring.",
     "callTranscriptTranscribeButton": "Transkripsiya qilish",
@@ -10040,9 +10024,7 @@
     "readAloudTake": "{number} qabul qiling",
     "videoWontPlayHere": "Bu video bu yerda ijro etilmaydi.",
     "watchOnYoutube": "YouTube'da tomosha qiling",
-    "createMyOwnCourse": "Oʻz kursimni yaratish",
     "xpTowardMission": "Ushbu missiya uchun {xp} XP",
-    "centralCourseMembersSeeYou": "Ushbu kurs aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
     "practiceStartWordCount": "{count, plural, =1{mashq qilish uchun soʻz} other{mashq qilish uchun soʻzlar}}",
     "practiceStartGrammarCount": "{count, plural, =1{mashq qilish uchun grammatika qoidasi} other{mashq qilish uchun grammatika qoidalari}}",
     "practiceStartExerciseTypes": "Mashq turlari",
@@ -10053,9 +10035,6 @@
     "sharedAnalyticsOthersTitle": "Taraqqiyotingizni koʻra oladigan boshqalar",
     "removeAnalyticsAccess": "Kirishni olib tashlash",
     "removeAnalyticsAccessDesc": "{name} endi oʻquv taraqqiyotingizni koʻra olmaydi.",
-    "centralCourseOfferBody": "Bu Pangeaning {language} oʻrganuvchilari uchun kursi. Uning aʼzolari ismingiz va profilingizni koʻrishlari mumkin.",
-    "centralCourseOfferTitle": "{course}ga qo‘shilasizmi?",
-    "makeMyOwnCourseInstead": "Buning o‘rniga o‘zimning kursimni yarataman",
     "suggestMobileSignInSameAccount": "Keyin ushbu hisob bilan ilovaga kiring.",
     "focusMission": "Ushbu missiya faoliyatiga e'tibor qarating",
     "missionNotYetOpen": "Hali ochilmagan",
@@ -10084,10 +10063,19 @@
     "worldExploreCity": "Kashf etish",
     "worldShipAtCity": "{city}da",
     "worldShipRunBy": "{admins} tomonidan boshqariladi",
-    "worldShipRunByPangea": "Pangea tomonidan boshqariladi",
     "worldShipMembers": "{count, plural, =1{1 aʼzo} other{{count} aʼzo}}",
     "worldShipOpenCourse": "Ochiq kurs",
     "worldCityLockedLabel": "{city}, siz uchun hali ochiq emas",
     "worldCityNoCourseHere": "Uni kashf qilish uchun bu yerda kursga qoʻshiling",
-    "mapSearchHint": "Ommaviy kurslarni qidirish"
+    "subscriptionGracePeriodEndsOn": "Toʻlov amalga oshmadi. Imtiyozli davr {date} kuni tugaydi",
+    "changeBaseLanguageTitle": "Asosiy tilni oʻzgartirish?",
+    "changeBaseLanguageDesc": "Ilovaning menyulari va tugmalari {language} tiliga oʻzgaradi.",
+    "accountSetupFailedHelp": "Hisobingizni sozlashni yakunlay olmadik. Ulanishingizni tekshiring va qayta urinib ko'ring yoki tizimdan chiqib, keyinroq kiring.",
+    "onboardingOfflineError": "Siz oflaynsiz. Tarmoqqa ulangandan so‘ng qayta urinib ko‘ring.",
+    "activitySavedTo": "Faoliyat {page} ga saqlandi",
+    "joinWithYourCode": "Kodingiz bilan qoʻshiling",
+    "joinCodeJoinExplanation": "Tizimga kiring yoki roʻyxatdan oʻting, biz sizni avtomatik ravishda qoʻshish uchun kodingizdan foydalanamiz.",
+    "joinCodeLabel": "Kod",
+    "joinCodeSaved": "Kod {code} saqlandi",
+    "joinCodeSavedExplanation": "Roʻyxatdan oʻting yoki tizimga kiring, biz sizni qoʻshamiz."
 }

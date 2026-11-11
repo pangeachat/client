@@ -3460,13 +3460,11 @@
     "editCourseLater": "Вы можаце рэдагаваць назву шаблона, апісанні і выяву курса пазней.",
     "createCourse": "Стварыць курс",
     "stats": "Статыстыка",
-    "createGroupChat": "Стварыць групавы чат",
     "editCourse": "Рэдагаваць курс",
     "inviteDesc": "Запрашэнне па імя карыстальніка, па кодзе або спасылцы",
     "editCourseDesc": "Тут вы можаце рэдагаваць назву курса, апісанне і г.д.",
     "permissionsDesc": "Усталюйце дазволы, такія як хто можа запрашаць карыстальнікаў, адпраўляць паведамленні, ствараць чаты і г.д.",
     "accessDesc": "Вы можаце зрабіць свой курс адкрытым для свету! Або зрабіць яго прыватным і бяспечным.",
-    "createGroupChatDesc": "У той час як пачынаюцца і заканчваюцца сесіі дзейнасці, групавыя чаты застануцца адкрытымі для звычайнай камунікацыі.",
     "deleteDesc": "Толькі адміністратары могуць выдаліць курс. Гэта деструктыўная дзея, якая выдаляе ўсіх карыстальнікаў і ўсе выбраныя чаты ў межах курса. Выконвайце асцярожна.",
     "whatNow": "Што цяпер?",
     "chooseNextActivity": "Выберыце сваю наступную дзейнасць!",
@@ -3528,7 +3526,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-11-01 09:54:06.310696",
+    "@@last_modified": "2026-11-10 13:06:07.919052",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9001,6 +8991,7 @@
     "addCourseBrowsePublic": "Прагляд публічных курсаў",
     "browsePublicCourses": "Прагляд публічных курсаў",
     "editProfile": "Рэдагаваць профіль",
+    "mapSearchHint": "Пошук публічных курсаў",
     "mapFilterAllLanguages": "Усе мовы",
     "mapFilterNotStarted": "Не пачата",
     "mapFilterInProgress": "У працэсе",
@@ -9893,9 +9884,7 @@
     "practiceMeaningPrompt": "Што азначае «{word}»?",
     "practiceEmojiPrompt": "Выберыце эмодзі для «{word}»",
     "practiceStepProgress": "{done} з {total}",
-    "leaderboard": "Табліца лідараў",
-    "leaderboardRank": "Месца {rank}",
-    "courseLeaderboardTooltip": "Усе ўдзельнікі гэтага курса, ранжыраваныя па колькасці зорак у вывучаемай мове. Націсніце на ўдзельніка і выберыце «Пачаць размову», каб адправіць яму асабістае паведамленне.",
+    "courseParticipantTooltip": "Гэта ўсе ўдзельнікі гэтага курса. Націсніце на аватар любога карыстальніка і выберыце «пачаць размову», каб адправіць асабістае паведамленне.",
     "goalReportTitle": "Паведаміць пра гэтую зорку",
     "goalReportOverAwardPrompt": "Калі вы не павінны былі атрымаць гэтую зорку, калі ласка, растлумачце, чаму.",
     "goalReportUnderAwardPrompt": "Калі вы лічыце, што павінны былі атрымаць гэтую зорку, чаму?",
@@ -9914,11 +9903,6 @@
     "callTranscriptPreparingRecording": "Падрыхтоўка поўнага запісу…",
     "callTranscriptNoRecording": "Няма запісу поўнага званка.",
     "callTranscriptNotSubscribed": "У {name} не было падпіскі падчас гэтага званка, таму сказанае не было расшыфравана.",
-    "joinYourCourse": "Далучайцеся да свайго курса",
-    "courseCodeJoinExplanation": "Увайдзіце або зарэгіструйцеся, і мы выкарыстаем ваш код курса, каб аўтаматычна дадаць вас да яго.",
-    "courseCodeLabel": "Код курса",
-    "courseCodeSaved": "Код курса {code} захаваны",
-    "courseCodeSavedExplanation": "Зарэгіструйцеся або ўвайдзіце, і мы дададзім вас да вашага курса.",
     "moderationRefusedContactDetails": "Вашае паведамленне не было адпраўлена. Аўтаматычны фільтр знайшоў кантактныя дадзеныя, напрыклад, нумар тэлефона. Калі ласка, выдаліце іх і паспрабуйце яшчэ раз.",
     "moderationRefusedProfanity": "Вашае паведамленне не было адпраўлена. Аўтаматычны фільтр знайшоў слова, якое мы не дазваляем у чаце. Калі ласка, змяніце яго і паспрабуйце яшчэ раз.",
     "callTranscriptTranscribeButton": "Транскрыбаваць",
@@ -10050,9 +10034,7 @@
     "readAloudTake": "Спроба {number}",
     "videoWontPlayHere": "Гэта відэа тут не прайграецца.",
     "watchOnYoutube": "Глядзець на YouTube",
-    "createMyOwnCourse": "Стварыць свой курс",
     "xpTowardMission": "{xp} XP да гэтай місіі",
-    "centralCourseMembersSeeYou": "Удзельнікі гэтага курса могуць бачыць ваша імя і профіль.",
     "practiceStartWordCount": "{count, plural, =1{слова для практыкі} other{слоў для практыкі}}",
     "practiceStartGrammarCount": "{count, plural, =1{граматычны пункт для практыкі} other{граматычных пунктаў для практыкі}}",
     "practiceStartExerciseTypes": "Тыпы практыкаванняў",
@@ -10063,9 +10045,6 @@
     "sharedAnalyticsOthersTitle": "Іншыя, хто бачыць ваш прагрэс",
     "removeAnalyticsAccess": "Выдаліць доступ",
     "removeAnalyticsAccessDesc": "{name} больш не зможа бачыць ваш прагрэс у навучанні.",
-    "centralCourseOfferBody": "Гэта курс Pangea для тых, хто вывучае {language}. Яго ўдзельнікі могуць бачыць ваша імя і профіль.",
-    "centralCourseOfferTitle": "Далучыцца да {course}?",
-    "makeMyOwnCourseInstead": "Замест гэтага стварыць свой уласны курс",
     "suggestMobileSignInSameAccount": "Затым увайдзіце ў праграму з дапамогай гэтага ўліковага запісу.",
     "focusMission": "Засяродзьцеся на дзейнасці гэтай місіі",
     "missionNotYetOpen": "Пакуль не адкрыта",
@@ -10094,10 +10073,19 @@
     "worldExploreCity": "Даследаваць",
     "worldShipAtCity": "У {city}",
     "worldShipRunBy": "Кіруецца {admins}",
-    "worldShipRunByPangea": "Кіруецца Pangea",
     "worldShipMembers": "{count, plural, one{1 удзельнік} few{{count} удзельнікі} many{{count} удзельнікаў} other{{count} удзельнікаў}}",
     "worldShipOpenCourse": "Адкрыты курс",
     "worldCityLockedLabel": "{city}, пакуль для вас закрыты",
     "worldCityNoCourseHere": "Далучайцеся да курсу тут, каб даследаваць яго",
-    "mapSearchHint": "Пошук публічных курсаў"
+    "subscriptionGracePeriodEndsOn": "Аплата не прайшла. Льготны перыяд заканчваецца {date}",
+    "changeBaseLanguageTitle": "Змяніць асноўную мову?",
+    "changeBaseLanguageDesc": "Меню і кнопкі праграмы пераключацца на {language}.",
+    "accountSetupFailedHelp": "Нам не ўдалося завяршыць наладжванне вашага ўліковага запісу. Праверце злучэнне і паспрабуйце яшчэ раз, або выйдзіце і ўвайдзіце пазней.",
+    "onboardingOfflineError": "Вы па-за сеткай. Паспрабуйце яшчэ раз, калі зноў будзеце ў сетцы.",
+    "activitySavedTo": "Дзейнасць захавана ў {page}",
+    "joinWithYourCode": "Далучыцца па вашым кодзе",
+    "joinCodeJoinExplanation": "Увайдзіце або зарэгіструйцеся, і мы выкарыстаем ваш код, каб аўтаматычна дадаць вас.",
+    "joinCodeLabel": "Код",
+    "joinCodeSaved": "Код {code} захаваны",
+    "joinCodeSavedExplanation": "Зарэгіструйцеся або ўвайдзіце, і мы дададзім вас."
 }

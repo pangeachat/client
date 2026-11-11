@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-11-01 09:54:12.974567",
+    "@@last_modified": "2026-11-10 13:06:18.059154",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -4077,13 +4077,11 @@
     "editCourseLater": "Вы сможете отредактировать название шаблона, описания и изображение курса позже.",
     "createCourse": "Создать курс",
     "stats": "Статистика",
-    "createGroupChat": "Создать групповой чат",
     "editCourse": "Редактировать курс",
     "inviteDesc": "По имени пользователя, по коду или ссылке",
     "editCourseDesc": "Здесь вы можете редактировать название курса, описание и т.д.",
     "permissionsDesc": "Настройте разрешения: кто может приглашать пользователей, отправлять сообщения, создавать чаты и т.д.",
     "accessDesc": "Вы можете сделать ваш курс открытым для всех! Или сделать его приватным и безопасным.",
-    "createGroupChatDesc": "В отличие от заданий, которые имеют начало и конец, групповые чаты остаются открытыми для повседневного общения.",
     "deleteDesc": "Только администраторы могут удалить курс. Это разрушительное действие, которое удаляет всех пользователей и удаляет все выбранные чаты внутри курса. Будьте осторожны.",
     "directMessages": "Личные сообщения",
     "whatNow": "Что дальше?",
@@ -6920,10 +6918,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6941,10 +6935,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9959,6 +9949,7 @@
     "addCourseBrowsePublic": "Просмотреть публичные курсы",
     "browsePublicCourses": "Просмотреть публичные курсы",
     "editProfile": "Редактировать профиль",
+    "mapSearchHint": "Искать публичные курсы",
     "mapFilterAllLanguages": "Все языки",
     "mapFilterNotStarted": "Не начато",
     "mapFilterInProgress": "В процессе",
@@ -10851,9 +10842,7 @@
     "practiceMeaningPrompt": "Что означает «{word}»?",
     "practiceEmojiPrompt": "Выберите эмодзи для «{word}»",
     "practiceStepProgress": "{done} из {total}",
-    "leaderboard": "Таблица лидеров",
-    "leaderboardRank": "Место {rank}",
-    "courseLeaderboardTooltip": "Все участники этого курса, отсортированные по количеству звёзд в изучаемом языке. Нажмите на участника и выберите «Начать беседу», чтобы отправить ему личное сообщение.",
+    "courseParticipantTooltip": "Это все участники этого курса. Нажмите на аватар любого пользователя и выберите «начать разговор», чтобы отправить личное сообщение.",
     "goalReportTitle": "Пожаловаться на эту звезду",
     "goalReportOverAwardPrompt": "Если вы не должны были получить эту звезду, объясните, почему.",
     "goalReportUnderAwardPrompt": "Если вы считаете, что должны были получить эту звезду, то почему?",
@@ -10872,11 +10861,6 @@
     "callTranscriptPreparingRecording": "Подготовка полной записи…",
     "callTranscriptNoRecording": "Нет записи всего звонка.",
     "callTranscriptNotSubscribed": "У {name} не было подписки во время этого звонка, поэтому сказанное не было расшифровано.",
-    "joinYourCourse": "Присоединиться к курсу",
-    "courseCodeJoinExplanation": "Войдите или зарегистрируйтесь, и мы автоматически добавим вас к вашему курсу, используя ваш код курса.",
-    "courseCodeLabel": "Код курса",
-    "courseCodeSaved": "Код курса {code} сохранен",
-    "courseCodeSavedExplanation": "Зарегистрируйтесь или войдите, и мы добавим вас к вашему курсу.",
     "moderationRefusedContactDetails": "Ваше сообщение не было отправлено. Автоматический фильтр обнаружил контактные данные, например, номер телефона. Пожалуйста, удалите их и попробуйте снова.",
     "moderationRefusedProfanity": "Ваше сообщение не было отправлено. Автоматический фильтр обнаружил слово, которое мы не разрешаем использовать в чате. Пожалуйста, измените его и попробуйте снова.",
     "callTranscriptTranscribeButton": "Расшифровать",
@@ -11008,9 +10992,7 @@
     "readAloudTake": "Попытка {number}",
     "videoWontPlayHere": "Это видео здесь не воспроизводится.",
     "watchOnYoutube": "Смотреть на YouTube",
-    "createMyOwnCourse": "Создать свой курс",
     "xpTowardMission": "{xp} XP для этой миссии",
-    "centralCourseMembersSeeYou": "Участники этого курса могут видеть ваше имя и профиль.",
     "practiceStartWordCount": "{count, plural, =1{слово для практики} other{слов для практики}}",
     "practiceStartGrammarCount": "{count, plural, =1{грамматическая тема для практики} other{грамматических тем для практики}}",
     "practiceStartExerciseTypes": "Типы упражнений",
@@ -11021,9 +11003,6 @@
     "sharedAnalyticsOthersTitle": "Другие пользователи, которые видят ваш прогресс",
     "removeAnalyticsAccess": "Удалить доступ",
     "removeAnalyticsAccessDesc": "{name} больше не сможет видеть ваш прогресс в обучении.",
-    "centralCourseOfferBody": "Это курс Pangea для изучающих {language}. Участники курса могут видеть ваше имя и профиль.",
-    "centralCourseOfferTitle": "Присоединиться к {course}?",
-    "makeMyOwnCourseInstead": "Создать свой курс",
     "suggestMobileSignInSameAccount": "Затем войдите в приложение с этой учетной записью.",
     "focusMission": "Сосредоточьтесь на заданиях этой миссии",
     "missionNotYetOpen": "Ещё не открыто",
@@ -11052,10 +11031,19 @@
     "worldExploreCity": "Исследовать",
     "worldShipAtCity": "В {city}",
     "worldShipRunBy": "Организатор: {admins}",
-    "worldShipRunByPangea": "Организатор: Pangea",
     "worldShipMembers": "{count, plural, one{1 участник} few{{count} участника} many{{count} участников} other{{count} участника}}",
     "worldShipOpenCourse": "Открытый курс",
     "worldCityLockedLabel": "{city}, пока не открыт для вас",
     "worldCityNoCourseHere": "Присоединитесь к курсу здесь, чтобы исследовать его",
-    "mapSearchHint": "Искать публичные курсы"
+    "subscriptionGracePeriodEndsOn": "Платёж не прошёл. Льготный период заканчивается {date}",
+    "changeBaseLanguageTitle": "Изменить базовый язык?",
+    "changeBaseLanguageDesc": "Меню и кнопки приложения переключатся на {language}.",
+    "accountSetupFailedHelp": "Не удалось завершить настройку вашей учетной записи. Проверьте подключение и повторите попытку, либо выйдите из системы и войдите позже.",
+    "onboardingOfflineError": "Вы не в сети. Повторите попытку, когда снова будете в сети.",
+    "activitySavedTo": "Занятие сохранено в разделе «{page}»",
+    "joinWithYourCode": "Присоединиться по коду",
+    "joinCodeJoinExplanation": "Войдите или зарегистрируйтесь, и мы автоматически добавим вас по вашему коду.",
+    "joinCodeLabel": "Код",
+    "joinCodeSaved": "Код {code} сохранен",
+    "joinCodeSavedExplanation": "Зарегистрируйтесь или войдите, и мы добавим вас."
 }

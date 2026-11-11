@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-11-01 09:54:14.363603",
+    "@@last_modified": "2026-11-10 13:06:20.708595",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -3470,13 +3470,11 @@
     "editCourseLater": "Ви можете редагувати назву шаблону, описи та зображення курсу пізніше.",
     "createCourse": "Створити курс",
     "stats": "Статистика",
-    "createGroupChat": "Створити груповий чат",
     "editCourse": "Редагувати курс",
     "inviteDesc": "За ім'ям користувача, за кодом або посиланням",
     "editCourseDesc": "Тут ви можете редагувати назву курсу, опис тощо.",
     "permissionsDesc": "Встановіть дозволи, такі як хто може запрошувати користувачів, надсилати повідомлення, створювати чати тощо.",
     "accessDesc": "Ви можете зробити свій курс відкритим для світу! Або зробити його приватним і захищеним.",
-    "createGroupChatDesc": "Оскільки сесії активності починаються і закінчуються, групові чати залишаться відкритими для рутинного спілкування.",
     "deleteDesc": "Тільки адміністратори можуть видалити курс. Це руйнівна дія, яка видаляє всіх користувачів і всі обрані чати в межах курсу. Дійте обережно.",
     "whatNow": "Що далі?",
     "chooseNextActivity": "Обирайте свою наступну активність!",
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8987,6 +8977,7 @@
     "addCourseBrowsePublic": "Переглянути публічні курси",
     "browsePublicCourses": "Переглянути публічні курси",
     "editProfile": "Редагувати профіль",
+    "mapSearchHint": "Шукати публічні курси",
     "mapFilterAllLanguages": "Усі мови",
     "mapFilterNotStarted": "Не розпочато",
     "mapFilterInProgress": "В процесі",
@@ -9879,9 +9870,7 @@
     "practiceMeaningPrompt": "Що означає «{word}»?",
     "practiceEmojiPrompt": "Виберіть емодзі для «{word}»",
     "practiceStepProgress": "{done} з {total}",
-    "leaderboard": "Таблиця лідерів",
-    "leaderboardRank": "Ранг {rank}",
-    "courseLeaderboardTooltip": "Усі учасники цього курсу, відсортовані за кількістю зірок, отриманих у цій мові. Натисніть на учасника та виберіть «Розпочати розмову», щоб надіслати йому особисте повідомлення.",
+    "courseParticipantTooltip": "Це всі учасники цього курсу. Натисніть на аватар будь-якого користувача та виберіть \"почати розмову\", щоб надіслати особисте повідомлення.",
     "goalReportTitle": "Повідомити про цю зірку",
     "goalReportOverAwardPrompt": "Якщо ви не повинні були отримати цю зірку, поясніть, чому.",
     "goalReportUnderAwardPrompt": "Якщо ви вважаєте, що повинні були отримати цю зірку, чому?",
@@ -9900,11 +9889,6 @@
     "callTranscriptPreparingRecording": "Підготовка повного запису…",
     "callTranscriptNoRecording": "Немає запису повного дзвінка.",
     "callTranscriptNotSubscribed": "Під час цього дзвінка {name} не мав підписки, тому розмова не була розшифрована.",
-    "joinYourCourse": "Приєднатися до курсу",
-    "courseCodeJoinExplanation": "Увійдіть або зареєструйтеся, і ми використаємо ваш код курсу, щоб автоматично додати вас до нього.",
-    "courseCodeLabel": "Код курсу",
-    "courseCodeSaved": "Код курсу {code} збережено",
-    "courseCodeSavedExplanation": "Зареєструйтеся або увійдіть, і ми додамо вас до вашого курсу.",
     "moderationRefusedContactDetails": "Ваше повідомлення не було надіслано. Автоматичний фільтр виявив контактні дані, наприклад номер телефону. Видаліть їх і спробуйте ще раз.",
     "moderationRefusedProfanity": "Ваше повідомлення не було надіслано. Автоматичний фільтр виявив слово, яке ми не дозволяємо в чаті. Змініть його і спробуйте ще раз.",
     "callTranscriptTranscribeButton": "Транскрибувати",
@@ -10036,9 +10020,7 @@
     "readAloudTake": "Спроба {number}",
     "videoWontPlayHere": "Це відео тут не відтворюватиметься.",
     "watchOnYoutube": "Дивитися на YouTube",
-    "createMyOwnCourse": "Створити власний курс",
     "xpTowardMission": "{xp} XP до цієї місії",
-    "centralCourseMembersSeeYou": "Учасники цього курсу бачитимуть ваше ім’я та профіль.",
     "practiceStartWordCount": "{count, plural, =1{слово для практики} other{слів для практики}}",
     "practiceStartGrammarCount": "{count, plural, =1{граматична тема для практики} other{граматичних тем для практики}}",
     "practiceStartExerciseTypes": "Типи вправ",
@@ -10049,9 +10031,6 @@
     "sharedAnalyticsOthersTitle": "Інші, хто може бачити ваш прогрес",
     "removeAnalyticsAccess": "Видалити доступ",
     "removeAnalyticsAccessDesc": "{name} більше не зможе бачити ваш прогрес у навчанні.",
-    "centralCourseOfferBody": "Це курс Pangea для тих, хто вивчає {language}. Учасники курсу бачитимуть ваше ім’я та профіль.",
-    "centralCourseOfferTitle": "Приєднатися до курсу «{course}»?",
-    "makeMyOwnCourseInstead": "Натомість створити власний курс",
     "suggestMobileSignInSameAccount": "Потім увійдіть у програму за допомогою цього облікового запису.",
     "focusMission": "Зосередьтеся на завданнях цієї Місії",
     "missionNotYetOpen": "Ще не відкрито",
@@ -10080,10 +10059,19 @@
     "worldExploreCity": "Дослідити",
     "worldShipAtCity": "У {city}",
     "worldShipRunBy": "Керується {admins}",
-    "worldShipRunByPangea": "Керується Pangea",
     "worldShipMembers": "{count, plural, =1{1 учасник} other{{count} учасників}}",
     "worldShipOpenCourse": "Відкритий курс",
     "worldCityLockedLabel": "{city}, ще не відкрито для вас",
     "worldCityNoCourseHere": "Приєднайтеся до курсу тут, щоб дослідити його",
-    "mapSearchHint": "Шукати публічні курси"
+    "subscriptionGracePeriodEndsOn": "Платіж не пройшов. Пільговий період закінчується {date}",
+    "changeBaseLanguageTitle": "Змінити базову мову?",
+    "changeBaseLanguageDesc": "Меню та кнопки програми переключаться на {language}.",
+    "accountSetupFailedHelp": "Нам не вдалося завершити налаштування вашого облікового запису. Перевірте з’єднання та спробуйте ще раз, або вийдіть із системи та увійдіть пізніше.",
+    "onboardingOfflineError": "Ви офлайн. Спробуйте ще раз, коли з’явиться підключення до мережі.",
+    "activitySavedTo": "Активність збережено до {page}",
+    "joinWithYourCode": "Приєднатися за допомогою коду",
+    "joinCodeJoinExplanation": "Увійдіть або зареєструйтесь, і ми автоматично додамо вас за вашим кодом.",
+    "joinCodeLabel": "Код",
+    "joinCodeSaved": "Код {code} збережено",
+    "joinCodeSavedExplanation": "Зареєструйтесь або увійдіть, і ми вас додамо."
 }

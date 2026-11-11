@@ -2888,13 +2888,11 @@
     "editCourseLater": "Vėliau galite redaguoti šablono pavadinimą, aprašymus ir kurso vaizdą.",
     "createCourse": "Sukurti kursą",
     "stats": "Statistika",
-    "createGroupChat": "Sukurti grupinį pokalbį",
     "editCourse": "Redaguoti kursą",
     "inviteDesc": "Per vartotojo vardą, kodą ar nuorodą",
     "editCourseDesc": "Čia galite redaguoti kurso pavadinimą, aprašymą ir kt.",
     "permissionsDesc": "Nustatykite leidimus, pvz., kas gali pakviesti naudotojus, siųsti žinutes, kurti pokalbius ir kt.",
     "accessDesc": "Galite padaryti savo kursą atvirą visiems! Arba, padaryti jį privačiu ir saugiu.",
-    "createGroupChatDesc": "Nors veiklos sesijos prasideda ir baigiasi, grupiniai pokalbiai liks atviri kasdieniam bendravimui.",
     "deleteDesc": "Tik tik administratori gali ištrinti kursą. Tai yra destruktyvus veiksmas, kuris pašalina visus naudotojus ir ištrina visus pasirinktus pokalbius kurse. Būkite atsargūs.",
     "whatNow": "Kas dabar?",
     "chooseNextActivity": "Pasirinkite savo kitą veiklą!",
@@ -2956,7 +2954,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-11-01 09:54:10.420166",
+    "@@last_modified": "2026-11-10 13:06:14.737651",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6675,10 +6673,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6696,10 +6690,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9765,6 +9755,7 @@
     "addCourseBrowsePublic": "Naršyti viešus kursus",
     "browsePublicCourses": "Naršyti viešus kursus",
     "editProfile": "Redaguoti profilį",
+    "mapSearchHint": "Ieškoti viešų kursų",
     "mapFilterAllLanguages": "Visos kalbos",
     "mapFilterNotStarted": "Nepradėta",
     "mapFilterInProgress": "Vyksta",
@@ -10657,9 +10648,7 @@
     "practiceMeaningPrompt": "Ką reiškia „{word}“?",
     "practiceEmojiPrompt": "Pasirinkite jaustuką žodžiui „{word}“",
     "practiceStepProgress": "{done} iš {total}",
-    "leaderboard": "Lyderių lentelė",
-    "leaderboardRank": "Vieta {rank}",
-    "courseLeaderboardTooltip": "Visi šio kurso dalyviai, suskirstyti pagal jų žvaigždutes šia kalba. Bakstelėkite narį ir pasirinkite „Pradėti pokalbį“, kad išsiųstumėte jam tiesioginę žinutę.",
+    "courseParticipantTooltip": "Tai yra visi šio kurso dalyviai. Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad siųstumėte DM.",
     "goalReportTitle": "Pranešti apie šią žvaigždutę",
     "goalReportOverAwardPrompt": "Jei neturėjote gauti šios žvaigždutės, paaiškinkite kodėl.",
     "goalReportUnderAwardPrompt": "Jei manote, kad turėjote gauti šią žvaigždutę, kodėl?",
@@ -10678,11 +10667,6 @@
     "callTranscriptPreparingRecording": "Ruošiamas visas įrašas…",
     "callTranscriptNoRecording": "Nėra viso pokalbio įrašo.",
     "callTranscriptNotSubscribed": "{name} neturėjo prenumeratos šio skambučio metu, todėl tai, kas buvo pasakyta, nebuvo transkribuota.",
-    "joinYourCourse": "Prisijunkite prie savo kurso",
-    "courseCodeJoinExplanation": "Prisijunkite arba užsiregistruokite, ir mes naudosime jūsų kurso kodą, kad automatiškai jus pridėtume prie jūsų kurso.",
-    "courseCodeLabel": "Kurso kodas",
-    "courseCodeSaved": "Kurso kodas {code} išsaugotas",
-    "courseCodeSavedExplanation": "Užsiregistruokite arba prisijunkite ir mes jus pridėsime prie jūsų kurso.",
     "moderationRefusedContactDetails": "Jūsų žinutė nebuvo išsiųsta. Automatinis filtras aptiko kontaktinius duomenis, pvz., telefono numerį. Pašalinkite juos ir bandykite dar kartą.",
     "moderationRefusedProfanity": "Jūsų žinutė nebuvo išsiųsta. Automatinis filtras aptiko žodį, kurio neleidžiame naudoti pokalbyje. Pakeiskite jį ir bandykite dar kartą.",
     "callTranscriptTranscribeButton": "Transkribuoti",
@@ -10814,9 +10798,7 @@
     "readAloudTake": "Paimkite {number}",
     "videoWontPlayHere": "Šis vaizdo įrašas čia nebus leidžiamas.",
     "watchOnYoutube": "Žiūrėti „YouTube“",
-    "createMyOwnCourse": "Sukurti savo kursą",
     "xpTowardMission": "{xp} XP šiai misijai",
-    "centralCourseMembersSeeYou": "Šio kurso nariai gali matyti jūsų vardą ir profilį.",
     "practiceStartWordCount": "{count, plural, =1{žodis praktikai} other{žodžiai praktikai}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatikos punktas praktikai} other{gramatikos punktai praktikai}}",
     "practiceStartExerciseTypes": "Pratimų tipai",
@@ -10827,9 +10809,6 @@
     "sharedAnalyticsOthersTitle": "Kiti, kurie gali matyti jūsų pažangą",
     "removeAnalyticsAccess": "Pašalinti prieigą",
     "removeAnalyticsAccessDesc": "{name} nebegalės matyti jūsų mokymosi pažangos.",
-    "centralCourseOfferBody": "Tai „Pangea“ kursas, skirtas {language} besimokantiems. Jo nariai gali matyti jūsų vardą ir profilį.",
-    "centralCourseOfferTitle": "Prisijungti prie {course}?",
-    "makeMyOwnCourseInstead": "Vietoj to sukurti savo kursą",
     "suggestMobileSignInSameAccount": "Tada prisijunkite prie programėlės naudodami šią paskyrą.",
     "focusMission": "Sutelkti dėmesį į šios misijos veiklas",
     "missionNotYetOpen": "Dar neatidaryta",
@@ -10858,10 +10837,19 @@
     "worldExploreCity": "Naršyti",
     "worldShipAtCity": "Mieste {city}",
     "worldShipRunBy": "Valdo {admins}",
-    "worldShipRunByPangea": "Valdo Pangea",
     "worldShipMembers": "{count, plural, =1{1 narys} other{{count} nariai}}",
     "worldShipOpenCourse": "Atviras kursas",
     "worldCityLockedLabel": "{city}, jums dar nepasiekiama",
     "worldCityNoCourseHere": "Prisijunkite prie kurso čia, kad jį ištyrinėtumėte",
-    "mapSearchHint": "Ieškoti viešų kursų"
+    "subscriptionGracePeriodEndsOn": "Mokėjimas nepavyko. Lengvatinis laikotarpis baigiasi {date}",
+    "changeBaseLanguageTitle": "Pakeisti pagrindinę kalbą?",
+    "changeBaseLanguageDesc": "Programėlės meniu ir mygtukai persijungs į {language}.",
+    "accountSetupFailedHelp": "Nepavyko užbaigti paskyros nustatymo. Patikrinkite ryšį ir bandykite dar kartą arba atsijunkite ir prisijunkite vėliau.",
+    "onboardingOfflineError": "Esate neprisijungę. Bandykite dar kartą, kai vėl prisijungsite.",
+    "activitySavedTo": "Veikla išsaugota {page}",
+    "joinWithYourCode": "Prisijunkite naudodami savo kodą",
+    "joinCodeJoinExplanation": "Prisijunkite arba užsiregistruokite, ir mes automatiškai jus pridėsime naudodami jūsų kodą.",
+    "joinCodeLabel": "Kodas",
+    "joinCodeSaved": "Kodas {code} išsaugotas",
+    "joinCodeSavedExplanation": "Užsiregistruokite arba prisijunkite, ir mes jus pridėsime."
 }

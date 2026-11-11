@@ -48,12 +48,26 @@ function fakeAudio(wav) {
     + 'anything.');
 }
 
+/// CALL_QUIET=1: no window, no sound, for a run on a laptop someone is working
+/// on. Same media path and fake devices, in a headless Chrome for Testing named
+/// by CHROME. Refuses the person's own Chrome rather than falling back to it.
+const quiet = process.env.CALL_QUIET === '1';
+
+function quietChromePath() {
+  const chrome = chromePath();
+  if (!/Google Chrome for Testing/.test(chrome)) {
+    throw new Error(`CALL_QUIET needs CHROME set to Chrome for Testing, not ${chrome}`);
+  }
+  return chrome;
+}
+
 async function launch({ userDataDir, wav, port }) {
   const browser = await puppeteer.launch({
-    executablePath: chromePath(),
-    headless: false,
+    executablePath: quiet ? quietChromePath() : chromePath(),
+    headless: quiet,
     userDataDir,
     args: [
+      ...(quiet ? ['--mute-audio'] : []),
       // Grant the microphone without a prompt, and make it a file rather than
       // a real device: a scenario cannot answer a permission dialog, and a
       // laptop's real microphone would put the room's own audio back into it.

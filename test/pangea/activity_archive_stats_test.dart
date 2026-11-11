@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
+import 'package:fluffychat/features/quests/mission_xp_cache.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
@@ -12,10 +13,11 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'fake_pangea_controller.dart';
 import 'get_test_client.dart';
 
-/// #9075 — a saved session's row carries the learner's own numbers from the
-/// summary saved with the session: the XP they earned and how many distinct
-/// vocabulary and grammar items they used (activities.instructions.md, "The
-/// Learning Objectives page").
+/// #9075 — a saved session's row carries the learner's own numbers: the XP
+/// the session paid them, which is the figure its end card shows (#9696), and
+/// how many distinct vocabulary and grammar items they used, from the summary
+/// saved with the session (activities.instructions.md, "The Learning
+/// Objectives page").
 void main() {
   late Client client;
 
@@ -32,8 +34,12 @@ void main() {
 
   setUp(() async {
     client = await getTestClient();
+    // The XP credited to the session's room. The room holds no plan, so no
+    // goal XP is added to it.
+    MissionXpCache.instance.seed(xpByRoom: {roomId: 40});
   });
   tearDown(() async {
+    MissionXpCache.instance.seed();
     await client.dispose();
   });
 
@@ -45,8 +51,8 @@ void main() {
   };
 
   /// A session room holding a generated summary: the learner used three vocab
-  /// items and two grammar items, for 50 XP, and a coursemate's own items are
-  /// in the same event without counting toward the learner's row.
+  /// items and two grammar items, 50 uses in all, and a coursemate's own items
+  /// are in the same event without counting toward the learner's row.
   Room makeRoom({bool withSummary = true}) {
     final room = Room(id: roomId, client: client);
     room.setState(
@@ -120,7 +126,8 @@ void main() {
   ) async {
     await pump(tester, makeRoom());
 
-    expect(find.text('50 XP'), findsOneWidget);
+    // The XP the session paid, not the summary's 50 word uses.
+    expect(find.text('40 XP'), findsOneWidget);
     // The learner's three vocab and two grammar items — the coursemate's item
     // belongs to their row, not this one.
     expect(find.text('3'), findsOneWidget);
@@ -140,6 +147,17 @@ void main() {
     semantics.dispose();
   });
 
+  testWidgets('the XP follows the session\'s XP as it lands', (tester) async {
+    await pump(tester, makeRoom());
+    expect(find.text('40 XP'), findsOneWidget);
+
+    MissionXpCache.instance.seed(xpByRoom: {roomId: 70});
+    // The cache notifies on a microtask, so the rebuild is a frame later.
+    await tester.pumpAndSettle();
+
+    expect(find.text('70 XP'), findsOneWidget);
+  });
+
   testWidgets('a session with no summary shows no stats and no level', (
     tester,
   ) async {
@@ -155,14 +173,14 @@ void main() {
     (tester) async {
       await pump(tester, makeRoom(), selected: true);
 
-      final context = tester.element(find.text('50 XP'));
+      final context = tester.element(find.text('40 XP'));
       final theme = Theme.of(context);
       expect(
-        tester.widget<Text>(find.text('50 XP')).style?.color,
+        tester.widget<Text>(find.text('40 XP')).style?.color,
         theme.colorScheme.onSurface,
       );
       expect(
-        tester.widget<Text>(find.text('50 XP')).style?.color,
+        tester.widget<Text>(find.text('40 XP')).style?.color,
         isNot(theme.pangea.gold),
       );
     },

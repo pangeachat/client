@@ -182,25 +182,7 @@
             }
         }
     },
-    "leaderboard": "Leaderboard",
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "leaderboardRank": "Rank {rank}",
-    "@leaderboardRank": {
-        "type": "String",
-        "placeholders": {
-            "rank": {
-                "type": "int"
-            }
-        }
-    },
-    "courseLeaderboardTooltip": "Everybody in this course, ranked by their stars in its language. Tap a member and choose “Start conversation” to send them a DM.",
-    "@courseLeaderboardTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
+    "courseParticipantTooltip": "This is everybody in this course. Click on any user’s avatar and “start conversation” to send a DM.",
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},
     "commandHint_googly": "Send some googly eyes",
@@ -4255,15 +4237,12 @@
     },
     "editCourseLater": "You can edit template title, descriptions, and course image later.",
     "createCourse": "Create course",
-    "createMyOwnCourse": "Create my own course",
     "stats": "Stats",
-    "createGroupChat": "Create group chat",
     "editCourse": "Edit course",
     "inviteDesc": "By username, by code or link",
     "editCourseDesc": "Here you can edit course title, description, etc.",
     "permissionsDesc": "Set permissions such as who can invite users, send messages, create chats, etc.",
     "accessDesc": "You can make your course open to the world! Or, make your course private and secure.",
-    "createGroupChatDesc": "Whereas activity sessions start and end, group chats will stay open for routine communication.",
     "deleteDesc": "Only admins can delete a course. This is a destructive action which removes all users and deletes all selected chats within the course. Proceed with caution.",
     "whatNow": "What now?",
     "chooseNextActivity": "Choose your next activity!",
@@ -5407,6 +5386,14 @@
             }
         }
     },
+    "subscriptionGracePeriodEndsOn": "Payment failed. Grace period ends on {date}",
+    "@subscriptionGracePeriodEndsOn": {
+        "placeholders": {
+            "date": {
+                "type": "String"
+            }
+        }
+    },
     "promoSubscription": "Promotional Subscription",
     "seatSubscription": "Institutional Seat",
     "lifetimeSubscription": "Lifetime subscription",
@@ -5814,33 +5801,42 @@
     "@watchOnYoutube": {
         "description": "Button beside the note that an activity video won't play here. It opens the video in the YouTube app or the browser. YouTube is a brand name; keep it as is."
     },
-    "joinYourCourse": "Join your course",
-    "@joinYourCourse": {
-        "description": "Title of the dialog a signed-out visitor sees on the welcome screen after opening a course join link."
+    "joinWithYourCode": "Join with your code",
+    "@joinWithYourCode": {
+        "description": "Title of the dialog a signed-out visitor sees on the welcome screen after opening a join link. The code may be for a course or for an activity, and the app can't tell which before sign-in, so don't name either."
     },
-    "courseCodeJoinExplanation": "Log in or sign up, and we'll use your course code to add you to your course automatically.",
-    "@courseCodeJoinExplanation": {
-        "description": "Body of the dialog a signed-out visitor sees after opening a course join link, telling them the saved code will join them once they sign in."
+    "joinCodeJoinExplanation": "Log in or sign up, and we'll use your code to add you automatically.",
+    "@joinCodeJoinExplanation": {
+        "description": "Body of the dialog a signed-out visitor sees after opening a join link, telling them the saved code will join them once they sign in. The code may be for a course or for an activity, so don't name either."
     },
-    "courseCodeLabel": "Course code",
-    "@courseCodeLabel": {
-        "description": "Label shown before the course join code itself (a short code like k7m2qa9) in the welcome dialog."
+    "joinCodeLabel": "Code",
+    "@joinCodeLabel": {
+        "description": "Label shown before the join code itself (a short code like k7m2qa9) in the welcome dialog."
     },
-    "courseCodeSaved": "Course code {code} saved",
-    "@courseCodeSaved": {
-        "description": "Heading of the card on the sign-up and login pages telling a signed-out visitor their course join code was kept.",
+    "joinCodeSaved": "Code {code} saved",
+    "@joinCodeSaved": {
+        "description": "Heading of the card on the sign-up and login pages telling a signed-out visitor their join code was kept. The code may be for a course or for an activity, so don't name either.",
         "placeholders": {
             "code": {
                 "type": "String"
             }
         }
     },
-    "courseCodeSavedExplanation": "Sign up or log in and we'll add you to your course.",
-    "@courseCodeSavedExplanation": {
-        "description": "Line under the saved-course-code card on the sign-up and login pages."
+    "joinCodeSavedExplanation": "Sign up or log in and we'll add you.",
+    "@joinCodeSavedExplanation": {
+        "description": "Line under the saved-code card on the sign-up and login pages. The code may be for a course or for an activity, so don't name either."
     },
     "learningObjective": "Learning Objective",
     "learningObjectives": "Learning Objectives",
+    "activitySavedTo": "Activity saved to {page}",
+    "@activitySavedTo": {
+        "description": "Line on a finished activity's end card, under \"All Finished!\", once the session is saved. {page} is the name of the Learning Objectives page (the learningObjectives string, in title case), shown as a link to the page that lists the session, so write the sentence around it as a page name.",
+        "placeholders": {
+            "page": {
+                "type": "String"
+            }
+        }
+    },
     "missionNofM": "Mission {index} of {count}",
     "@missionNofM": {
         "placeholders": {
@@ -6133,48 +6129,98 @@
     "@worldShipLabel": {
         "description": "World map: a ship marker, one course at the city its trip has reached; tapping opens the course.",
         "placeholders": {
-            "course": {"type": "String"},
-            "city": {"type": "String"}
+            "course": {
+                "type": "String"
+            },
+            "city": {
+                "type": "String"
+            }
         }
     },
     "worldPublicShipLabel": "{course}, a public course at {city}, open to join",
     "@worldPublicShipLabel": {
         "placeholders": {
-            "course": {"type": "String"},
-            "city": {"type": "String"}
+            "course": {
+                "type": "String"
+            },
+            "city": {
+                "type": "String"
+            }
         }
     },
     "worldCardClose": "Close the {name} card",
-    "@worldCardClose": {"placeholders": {"name": {"type": "String"}}},
+    "@worldCardClose": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
     "worldCardSlide": "{index} of {count}",
-    "@worldCardSlide": {"placeholders": {"index": {"type": "int"}, "count": {"type": "int"}}},
+    "@worldCardSlide": {
+        "placeholders": {
+            "index": {
+                "type": "int"
+            },
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "worldCardPrevious": "Previous activity",
     "worldCardNext": "Next activity",
     "worldCityNothingHere": "Nothing here for this language yet.",
     "worldExploreCity": "Explore",
     "worldShipAtCity": "At {city}",
-    "@worldShipAtCity": {"placeholders": {"city": {"type": "String"}}},
+    "@worldShipAtCity": {
+        "placeholders": {
+            "city": {
+                "type": "String"
+            }
+        }
+    },
     "worldShipRunBy": "Run by {admins}",
-    "@worldShipRunBy": {"placeholders": {"admins": {"type": "String"}}},
-    "worldShipRunByPangea": "Run by Pangea",
+    "@worldShipRunBy": {
+        "placeholders": {
+            "admins": {
+                "type": "String"
+            }
+        }
+    },
     "worldShipMembers": "{count, plural, =1{1 member} other{{count} members}}",
-    "@worldShipMembers": {"placeholders": {"count": {"type": "int"}}},
+    "@worldShipMembers": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "worldShipOpenCourse": "Open course",
     "worldCityLockedLabel": "{city}, not open to you yet",
-    "@worldCityLockedLabel": {"placeholders": {"city": {"type": "String"}}},
+    "@worldCityLockedLabel": {
+        "placeholders": {
+            "city": {
+                "type": "String"
+            }
+        }
+    },
     "worldCityNoCourseHere": "Join a course here to explore it",
     "worldCityLabel": "{city}",
     "@worldCityLabel": {
         "description": "World map: a city marker on one of the learner's trips; tapping zooms into the city.",
         "placeholders": {
-            "city": {"type": "String"}
+            "city": {
+                "type": "String"
+            }
         }
     },
     "worldCityVisitedLabel": "{city}, visited",
     "@worldCityVisitedLabel": {
         "description": "World map: a city marker wearing the gold stamp because the learner finished an activity there.",
         "placeholders": {
-            "city": {"type": "String"}
+            "city": {
+                "type": "String"
+            }
         }
     },
     "focusMission": "Focus on this Mission's activities",
@@ -6361,10 +6407,6 @@
             }
         }
     },
-    "centralCourseMembersSeeYou": "Members of this course can see your name and profile.",
-    "@centralCourseMembersSeeYou": {
-        "description": "Line on the onboarding page offering a new learner the Pangea-run course for their target language, before they choose to join it."
-    },
     "analyticsSharedOnJoin": "Your teachers in {course} can now see your learning progress.",
     "@analyticsSharedOnJoin": {
         "description": "Snackbar after a learner joins a course that requires sharing analytics; its action opens Learning settings.",
@@ -6405,26 +6447,26 @@
             }
         }
     },
-    "centralCourseOfferBody": "It's Pangea's course for {language} learners. Its members can see your name and profile.",
-    "@centralCourseOfferBody": {
-        "description": "Body of the popup and onboarding page offering a learner the Pangea-run course for their target language; they can join it or make a course of their own.",
+    "changeBaseLanguageTitle": "Change base language?",
+    "@changeBaseLanguageTitle": {
+        "description": "Title of the confirmation shown before a new base language switches the language of the app's menus and buttons."
+    },
+    "changeBaseLanguageDesc": "The app's menus and buttons will switch to {language}.",
+    "@changeBaseLanguageDesc": {
+        "description": "Confirmation message before a new base language switches the language of the app's menus and buttons. {language} is the name of the new base language.",
+        "type": "String",
         "placeholders": {
             "language": {
                 "type": "String"
             }
         }
     },
-    "centralCourseOfferTitle": "Join {course}?",
-    "@centralCourseOfferTitle": {
-        "description": "Title of the popup and onboarding page offering a learner the Pangea-run course for their target language.",
-        "placeholders": {
-            "course": {
-                "type": "String"
-            }
-        }
+    "accountSetupFailedHelp": "We couldn't finish setting up your account. Check your connection and try again, or log out and sign in later.",
+    "@accountSetupFailedHelp": {
+        "description": "Shown under the error on the loading page before onboarding, when setting up a new account fails. The page offers Try again and Log out buttons."
     },
-    "makeMyOwnCourseInstead": "Make my own course instead",
-    "@makeMyOwnCourseInstead": {
-        "description": "Secondary choice when a learner is offered the Pangea-run course for their language: instead, the app makes them a private course of their own."
+    "onboardingOfflineError": "You're offline. Try again once you're back online.",
+    "@onboardingOfflineError": {
+        "description": "Shown above the forward button in onboarding when saving a page fails because the device is offline."
     }
 }

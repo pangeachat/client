@@ -2473,13 +2473,11 @@
     "editCourseLater": "Pode editar o título do modelo, descrições e imagem do curso mais tarde.",
     "createCourse": "Criar curso",
     "stats": "Estatísticas",
-    "createGroupChat": "Criar chat de grupo",
     "editCourse": "Editar curso",
     "inviteDesc": "Por nome de utilizador, por código ou link",
     "editCourseDesc": "Aqui pode editar o título do curso, descrição, etc.",
     "permissionsDesc": "Defina permissões como quem pode convidar utilizadores, enviar mensagens, criar chats, etc.",
     "accessDesc": "Pode tornar o seu curso aberto ao mundo! Ou, tornar o seu curso privado e seguro.",
-    "createGroupChatDesc": "Enquanto as sessões de atividade começam e terminam, os chats de grupo permanecerão abertos para comunicação de rotina.",
     "deleteDesc": "Apenas administradores podem eliminar um curso. Esta é uma ação destrutiva que remove todos os utilizadores e elimina todos os chats selecionados dentro do curso. Proceda com cautela.",
     "whatNow": "E agora?",
     "chooseNextActivity": "Escolha a sua próxima atividade!",
@@ -2552,7 +2550,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-11-01 09:54:12.268302",
+    "@@last_modified": "2026-11-10 13:06:17.807647",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6822,10 +6820,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6843,10 +6837,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9901,6 +9891,7 @@
     "addCourseBrowsePublic": "Navegar por cursos públicos",
     "browsePublicCourses": "Navegar por cursos públicos",
     "editProfile": "Editar perfil",
+    "mapSearchHint": "Procurar cursos públicos",
     "mapFilterAllLanguages": "Todos os idiomas",
     "mapFilterNotStarted": "Não iniciado",
     "mapFilterInProgress": "Em andamento",
@@ -10793,9 +10784,7 @@
     "practiceMeaningPrompt": "O que significa ‘{word}’?",
     "practiceEmojiPrompt": "Escolhe um emoji para ‘{word}’",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Classificação",
-    "leaderboardRank": "Classificação {rank}",
-    "courseLeaderboardTooltip": "Todos neste curso, classificados pelas suas estrelas no idioma. Toque num membro e escolha “Iniciar conversa” para enviar uma mensagem direta.",
+    "courseParticipantTooltip": "Estes são todos os participantes deste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
     "goalReportTitle": "Reportar esta estrela",
     "goalReportOverAwardPrompt": "Se não era suposto ter recebido esta estrela, por favor, explique porquê.",
     "goalReportUnderAwardPrompt": "Se acha que devia ter recebido esta estrela, porquê?",
@@ -10814,11 +10803,6 @@
     "callTranscriptPreparingRecording": "A preparar a gravação completa…",
     "callTranscriptNoRecording": "Nenhuma gravação da chamada completa.",
     "callTranscriptNotSubscribed": "{name} não tinha uma subscrição durante esta chamada, por isso o que foi dito não foi transcrito.",
-    "joinYourCourse": "Aceder ao seu curso",
-    "courseCodeJoinExplanation": "Inicie sessão ou registe-se, e usaremos o seu código de curso para adicioná-lo automaticamente ao seu curso.",
-    "courseCodeLabel": "Código do curso",
-    "courseCodeSaved": "Código do curso {code} guardado",
-    "courseCodeSavedExplanation": "Registe-se ou inicie sessão e adicioná-lo-emos ao seu curso.",
     "moderationRefusedContactDetails": "A sua mensagem não foi enviada. Um filtro automático detetou detalhes de contacto, como um número de telefone. Por favor, remova-os e tente novamente.",
     "moderationRefusedProfanity": "A sua mensagem não foi enviada. Um filtro automático detetou uma palavra que não permitimos no chat. Por favor, altere-a e tente novamente.",
     "callTranscriptTranscribeButton": "Transcrever",
@@ -10950,9 +10934,7 @@
     "readAloudTake": "Tentativa {number}",
     "videoWontPlayHere": "Este vídeo não será reproduzido aqui.",
     "watchOnYoutube": "Ver no YouTube",
-    "createMyOwnCourse": "Criar o meu próprio curso",
     "xpTowardMission": "{xp} XP para esta Missão",
-    "centralCourseMembersSeeYou": "Os membros deste curso podem ver o teu nome e perfil.",
     "practiceStartWordCount": "{count, plural, =1{palavra para praticar} other{palavras para praticar}}",
     "practiceStartGrammarCount": "{count, plural, =1{ponto gramatical para praticar} other{pontos gramaticais para praticar}}",
     "practiceStartExerciseTypes": "Tipos de exercício",
@@ -10963,9 +10945,6 @@
     "sharedAnalyticsOthersTitle": "Outros que podem ver o seu progresso",
     "removeAnalyticsAccess": "Remover acesso",
     "removeAnalyticsAccessDesc": "{name} deixará de poder ver o seu progresso de aprendizagem.",
-    "centralCourseOfferBody": "É o curso da Pangea para alunos de {language}. Os membros podem ver o teu nome e perfil.",
-    "centralCourseOfferTitle": "Aderir a {course}?",
-    "makeMyOwnCourseInstead": "Criar o meu próprio curso",
     "suggestMobileSignInSameAccount": "Depois, inicie sessão na aplicação com esta conta.",
     "focusMission": "Focar nas atividades desta Missão",
     "missionNotYetOpen": "Ainda não está aberta",
@@ -10994,10 +10973,19 @@
     "worldExploreCity": "Explorar",
     "worldShipAtCity": "Em {city}",
     "worldShipRunBy": "Gerido por {admins}",
-    "worldShipRunByPangea": "Gerido pela Pangea",
     "worldShipMembers": "{count, plural, =1{1 membro} other{{count} membros}}",
     "worldShipOpenCourse": "Curso aberto",
     "worldCityLockedLabel": "{city}, ainda não está aberto para si",
     "worldCityNoCourseHere": "Junte-se a um curso aqui para o explorar",
-    "mapSearchHint": "Procurar cursos públicos"
+    "subscriptionGracePeriodEndsOn": "Pagamento falhou. Período de carência termina em {date}",
+    "changeBaseLanguageTitle": "Alterar idioma base?",
+    "changeBaseLanguageDesc": "Os menus e botões da aplicação mudarão para {language}.",
+    "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique a sua ligação e tente novamente, ou termine a sessão e inicie-a mais tarde.",
+    "onboardingOfflineError": "Está offline. Tente novamente quando estiver online.",
+    "activitySavedTo": "Atividade guardada em {page}",
+    "joinWithYourCode": "Aderir com o seu código",
+    "joinCodeJoinExplanation": "Inicie sessão ou registe-se, e usaremos o seu código para o adicionar automaticamente.",
+    "joinCodeLabel": "Código",
+    "joinCodeSaved": "Código {code} guardado",
+    "joinCodeSavedExplanation": "Registe-se ou inicie sessão e nós adicionamo-lo."
 }

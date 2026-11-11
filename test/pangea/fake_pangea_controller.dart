@@ -6,12 +6,14 @@ import 'package:matrix/matrix.dart' show Client;
 
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -32,22 +34,25 @@ class FakePangeaController implements PangeaController {
   final SubscriptionController subscriptionController;
 
   /// [analyticsProfiles] serves a public analytics profile per user id — the
-  /// course leaderboard ranks on these; anyone absent gets an empty profile.
+  /// participant cards read these; anyone absent gets an empty profile.
   /// [subscribed] answers `subscriptionController.showSubscriptionGatedContent`
   /// -- true by default, matching what the REAL controller answers before its
   /// own state resolves (`SubscriptionLoading`), so a test that never mentions
   /// subscriptions keeps seeing gated content exactly as it did before this
   /// field existed (#8792). [client] is what `matrixState.client` answers, for
   /// a widget that reads the signed-in client through here — the course plan
-  /// does, via `TutorialSeenBackfill`.
+  /// does, via `TutorialSeenBackfill`. [userL2] is the learner's target
+  /// language; none by default.
   FakePangeaController({
     String? userL1Code = 'en',
+    LanguageModel? userL2,
     String? accessToken,
     Map<String, AnalyticsProfileModel> analyticsProfiles = const {},
     bool subscribed = true,
     Client? client,
   }) : userController = _FakeUserController(
          userL1Code,
+         userL2,
          accessToken,
          analyticsProfiles,
        ),
@@ -138,23 +143,27 @@ class _FakeSubscriptionController implements SubscriptionController {
 class _FakeUserController implements UserController {
   _FakeUserController(
     this._userL1Code,
+    this._userL2,
     this._accessToken,
     this._analyticsProfiles,
   );
 
   final String? _userL1Code;
+  final LanguageModel? _userL2;
   final String? _accessToken;
   final Map<String, AnalyticsProfileModel> _analyticsProfiles;
 
   @override
   String? get userL1Code => _userL1Code;
 
+  @override
+  LanguageModel? get userL2 => _userL2;
+
   /// Mirrors the real controller, which throws rather than serving a null token
   /// when nobody is logged in.
   @override
   String get accessToken =>
-      _accessToken ??
-      (throw "Trying to get accessToken with null token. User is not logged in.");
+      _accessToken ?? (throw const NotLoggedInException());
 
   /// Left uncompleted, which is what the real controller looks like before the
   /// profile lands. Callers that read it — `InstructionsEnum.isToggledOff`, for

@@ -61,7 +61,6 @@ import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_view_cards.dart';
 import 'package:fluffychat/routes/world/world_view_markers.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/layouts/workspace_shell.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -205,6 +204,18 @@ class WorldMapView extends StatefulWidget {
   final WorldMapController controller;
 
   const WorldMapView(this.controller, {super.key});
+
+  /// Whether an open activity takes the world search out of the wide map's
+  /// top-left slot: one does while its plan or its session chat is open, which
+  /// is what [WorldMapController.focusedActivityId] resolves. The learner is
+  /// working with that activity, and the search's pills read as settings for
+  /// it (world-map.instructions.md, "An open activity hides the search").
+  /// The query and pills stay set on the map, so the search comes back as it
+  /// was when the activity closes. Pure so the rule is unit-testable without
+  /// pumping the map.
+  @visibleForTesting
+  static bool activityHidesSearch(String? focusedActivityId) =>
+      focusedActivityId != null;
 
   @override
   State<WorldMapView> createState() => _WorldMapViewState();
@@ -1383,7 +1394,7 @@ class _WorldMapViewState extends State<WorldMapView>
           searchLeft -
           math.max(
             widget.controller.widget.rightOverlayWidth,
-            PanelAllocator.clusterGutter,
+            WorkspaceShell.clusterGutter,
           ) -
           PanelCard.margin.right,
     );
@@ -1571,6 +1582,8 @@ class _WorldMapViewState extends State<WorldMapView>
                   // without it an emptied course map has no visible lever back
                   // (#8401's dead end). Naming the course is the course
                   // panel's own job now, in either of its states (#9037).
+                  // On the world map an open activity takes the search away
+                  // too (#9402); the map keeps its query and pills meanwhile.
                   child: courseScopeSpaceId != null
                       ? SafeArea(
                           top: courseBarRect == null,
@@ -1586,6 +1599,10 @@ class _WorldMapViewState extends State<WorldMapView>
                                   onZoomOut: widget.controller.resetToWorld,
                                 ),
                         )
+                      : WorldMapView.activityHidesSearch(
+                          widget.controller.focusedActivityId,
+                        )
+                      ? const SizedBox.shrink()
                       : WorldMapSearchOverlay(
                           filter: widget.controller.filter,
                           updateQuery: widget.controller.setQuery,

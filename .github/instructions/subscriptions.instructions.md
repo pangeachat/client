@@ -11,7 +11,11 @@ The client holds no payment state. It reads entitlement status from the choreogr
 
 ## Entitlement state
 
-[`SubscriptionController`](../../lib/features/subscription/controllers/subscription_controller.dart) resolves the user's status from the choreographer on startup — returning from web checkout must feel immediate, and server-side grants (seats, trials, comps) appear the same way. There is no in-app purchase SDK and no store-package merging: entitlement is a choreographer-served record that the app reflects, never unlocks. Paid features gate on `showSubscriptionGatedContent`; the paywall surfaces only when the user is unsubscribed outside the trial window and hasn't dismissed it.
+[`SubscriptionController`](../../lib/features/subscription/controllers/subscription_controller.dart) resolves the user's status from the choreographer on startup — returning from web checkout must feel immediate, and server-side grants (seats, trials, comps) appear the same way. There is no in-app purchase SDK and no store-package merging: entitlement is a choreographer-served record that the app reflects, never unlocks. Paid features gate on `showSubscriptionGatedContent`; the paywall surfaces only when the user is unsubscribed outside the [trial window](#trial-window) and hasn't dismissed it.
+
+## Trial window
+
+An account's trial window is the first days after its creation date, for as long as the free trial lasts ([business model](../../../business/.github/instructions/business-model.instructions.md)). While an account is inside it, has no subscription and has not had a trial, the app asks the choreographer for the free trial each time it starts.
 
 ## Purchase surface
 
@@ -53,3 +57,5 @@ The client tracks potential subscription changes via the [SubscriptionManagement
 ## Managing a subscription
 
 Settings shows the current plan and billing history natively, cancels in the app, and opens a Stripe-hosted page only to change the payment card. This is account management, shown on every platform. Seat-sponsored learners (Group or Institution tier) see who sponsors their access in place of a paywall.
+
+When a renewal payment fails, because the card was declined or because there is no card on file, the plan card shows when the grace period ends instead of a renewal date: "Payment failed. Grace period ends on {date}". Access lasts until then unless a payment goes through.

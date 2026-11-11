@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-11-01 09:54:07.541939",
+    "@@last_modified": "2026-11-10 13:06:10.042141",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -3274,13 +3274,11 @@
     "editCourseLater": "Vous pouvez modifier le titre du modèle, les descriptions et l'image du cours plus tard.",
     "createCourse": "Créer un cours",
     "stats": "Statistiques",
-    "createGroupChat": "Créer un chat de groupe",
     "editCourse": "Modifier le cours",
     "inviteDesc": "Par nom d'utilisateur, par code ou lien",
     "editCourseDesc": "Ici, vous pouvez modifier le titre du cours, la description, etc.",
     "permissionsDesc": "Définissez les autorisations telles que qui peut inviter des utilisateurs, envoyer des messages, créer des discussions, etc.",
     "accessDesc": "Vous pouvez rendre votre cours accessible au monde entier ! Ou, rendre votre cours privé et sécurisé.",
-    "createGroupChatDesc": "Alors que les sessions d'activité commencent et se terminent, les discussions de groupe resteront ouvertes pour la communication de routine.",
     "deleteDesc": "Seuls les administrateurs peuvent supprimer un cours. Il s'agit d'une action destructive qui supprime tous les utilisateurs et supprime toutes les discussions sélectionnées dans le cours. Proceed with caution.",
     "whatNow": "Et maintenant ?",
     "chooseNextActivity": "Choisissez votre prochaine activité !",
@@ -6264,10 +6262,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6285,10 +6279,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9339,6 +9329,7 @@
     "addCourseBrowsePublic": "Parcourir les cours publics",
     "browsePublicCourses": "Parcourir les cours publics",
     "editProfile": "Modifier le profil",
+    "mapSearchHint": "Rechercher des cours publics",
     "mapFilterAllLanguages": "Toutes les langues",
     "mapFilterNotStarted": "Pas commencé",
     "mapFilterInProgress": "En cours",
@@ -10231,9 +10222,7 @@
     "practiceMeaningPrompt": "Que signifie « {word} » ?",
     "practiceEmojiPrompt": "Choisissez un émoji pour « {word} »",
     "practiceStepProgress": "{done} sur {total}",
-    "leaderboard": "Classement",
-    "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Tous les membres de ce cours, classés selon leurs étoiles dans cette langue. Touchez un membre et choisissez « Démarrer une conversation » pour lui envoyer un message direct.",
+    "courseParticipantTooltip": "Voici tout le monde dans ce cours. Cliquez sur l'avatar de n'importe quel utilisateur et \"démarrer une conversation\" pour envoyer un DM.",
     "goalReportTitle": "Signaler cette étoile",
     "goalReportOverAwardPrompt": "Si vous n'auriez pas dû recevoir cette étoile, veuillez expliquer pourquoi.",
     "goalReportUnderAwardPrompt": "Si vous pensez que vous auriez dû recevoir cette étoile, pourquoi ?",
@@ -10252,11 +10241,6 @@
     "callTranscriptPreparingRecording": "Préparation de l'enregistrement complet…",
     "callTranscriptNoRecording": "Aucun enregistrement de l'appel complet.",
     "callTranscriptNotSubscribed": "{name} n'avait pas d'abonnement pendant cet appel, donc ce qui a été dit n'a pas été transcrit.",
-    "joinYourCourse": "Rejoignez votre cours",
-    "courseCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code de cours pour vous ajouter automatiquement à votre cours.",
-    "courseCodeLabel": "Code de cours",
-    "courseCodeSaved": "Code de cours {code} enregistré",
-    "courseCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons à votre cours.",
     "moderationRefusedContactDetails": "Votre message n'a pas été envoyé. Un filtre automatique a détecté des coordonnées, comme un numéro de téléphone. Veuillez les supprimer et réessayer.",
     "moderationRefusedProfanity": "Votre message n'a pas été envoyé. Un filtre automatique a détecté un mot que nous n'autorisons pas dans le chat. Veuillez le modifier et réessayer.",
     "callTranscriptTranscribeButton": "Transcrire",
@@ -10388,9 +10372,7 @@
     "readAloudTake": "Prendre {number}",
     "videoWontPlayHere": "Cette vidéo ne peut pas être lue ici.",
     "watchOnYoutube": "Regarder sur YouTube",
-    "createMyOwnCourse": "Créer mon propre cours",
     "xpTowardMission": "{xp} XP pour cette mission",
-    "centralCourseMembersSeeYou": "Les membres de ce cours peuvent voir votre nom et votre profil.",
     "practiceStartWordCount": "{count, plural, =1{mot à pratiquer} other{mots à pratiquer}}",
     "practiceStartGrammarCount": "{count, plural, =1{point de grammaire à pratiquer} other{points de grammaire à pratiquer}}",
     "practiceStartExerciseTypes": "Types d'exercices",
@@ -10401,9 +10383,6 @@
     "sharedAnalyticsOthersTitle": "Autres personnes qui peuvent voir votre progression",
     "removeAnalyticsAccess": "Supprimer l'accès",
     "removeAnalyticsAccessDesc": "{name} ne pourra plus voir votre progression d'apprentissage.",
-    "centralCourseOfferBody": "C'est le cours Pangea pour les apprenants de {language}. Ses membres peuvent voir votre nom et votre profil.",
-    "centralCourseOfferTitle": "Rejoindre {course} ?",
-    "makeMyOwnCourseInstead": "Créer mon propre cours à la place",
     "suggestMobileSignInSameAccount": "Connectez-vous ensuite à l'application avec ce compte.",
     "focusMission": "Se concentrer sur les activités de cette mission",
     "missionNotYetOpen": "Pas encore ouvert",
@@ -10432,10 +10411,19 @@
     "worldExploreCity": "Explorer",
     "worldShipAtCity": "À {city}",
     "worldShipRunBy": "Géré par {admins}",
-    "worldShipRunByPangea": "Géré par Pangea",
     "worldShipMembers": "{count, plural, =1{1 membre} other{{count} membres}}",
     "worldShipOpenCourse": "Cours ouvert",
     "worldCityLockedLabel": "{city}, pas encore ouvert pour vous",
     "worldCityNoCourseHere": "Rejoignez un cours ici pour l'explorer",
-    "mapSearchHint": "Rechercher des cours publics"
+    "subscriptionGracePeriodEndsOn": "Le paiement a échoué. La période de grâce se termine le {date}",
+    "changeBaseLanguageTitle": "Changer la langue de base ?",
+    "changeBaseLanguageDesc": "Les menus et les boutons de l'application passeront en {language}.",
+    "accountSetupFailedHelp": "Nous n'avons pas pu terminer la configuration de votre compte. Vérifiez votre connexion et réessayez, ou déconnectez-vous et connectez-vous plus tard.",
+    "onboardingOfflineError": "Vous êtes hors ligne. Réessayez une fois que vous serez de nouveau connecté.",
+    "activitySavedTo": "Activité enregistrée dans {page}",
+    "joinWithYourCode": "Rejoindre avec votre code",
+    "joinCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code pour vous ajouter automatiquement.",
+    "joinCodeLabel": "Code",
+    "joinCodeSaved": "Code {code} enregistré",
+    "joinCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons."
 }

@@ -122,6 +122,7 @@ class _FilteredNetworkDialogState extends State<FilteredNetworkDialog> {
       NetworkHelpRequest(
         email: email,
         accountId: client.isLogged() ? client.userID : null,
+        courseIds: controller.joinedCourseIds(),
         blockedCategories: controller.blocked.value.toList(),
         platform: FilteredNetworkController.platformName,
         networkType: await NetworkType.current(),

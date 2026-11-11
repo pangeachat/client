@@ -17,10 +17,10 @@ import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
-import 'package:fluffychat/features/central_courses/central_course_extension.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -45,7 +45,6 @@ import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
-import 'package:fluffychat/routes/world/central_course_offer_dialog.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
@@ -341,8 +340,6 @@ class WorldMapController extends State<WorldMap>
       (_) => _scheduleOrientationCheck(),
     );
 
-    _offerCentralCourseIfDue();
-
     // Rebuild when a featured large card's full plan hydrates (image + goals),
     // and when the discovered-session previews change under the pins — the
     // start page's revalidate-on-view rewrites them (#8150); both re-gate which
@@ -359,10 +356,6 @@ class WorldMapController extends State<WorldMap>
     _languageSubscription = user.languageStream.stream.listen((update) {
       if (update.targetLang != _filterState.filter.l2) {
         _setL2(update.targetLang);
-      }
-      if (update.prevTargetLang?.langCodeShort !=
-          update.targetLang.langCodeShort) {
-        _offerCentralCourseIfDue();
       }
       // L1 (base-language) change → open the shimmer window (see [_warmingL1]).
       if (update.prevBaseLang != update.baseLang) {
@@ -786,7 +779,6 @@ class WorldMapController extends State<WorldMap>
         cityName: ship.cityName,
         admins: admins,
         institution: (room.courseInstitution ?? chunk?.institution)?.name,
-        central: chunk?.central ?? false,
         members: room.summary.mJoinedMemberCount,
         description: room.topic,
         aboard: true,
@@ -798,7 +790,6 @@ class WorldMapController extends State<WorldMap>
       cityName: ship.cityName,
       admins: chunk?.adminNames ?? const [],
       institution: chunk?.institution?.name,
-      central: chunk?.central ?? false,
       members: chunk?.room.numJoinedMembers,
       description: chunk?.room.topic,
       aboard: false,
@@ -1400,8 +1391,15 @@ class WorldMapController extends State<WorldMap>
 
   /// Fly to a search result and focus it (the Maps-style result tap): open its
   /// detail panel, which glides the camera onto its pin via the focus fit. One
-  /// step — a deliberate tap goes straight to focus, no peek.
-  void flyTo(QuestActivityCard card) => openActivity(card);
+  /// step — a deliberate tap goes straight to focus, no peek. The search
+  /// leaves the slot while the activity is open (#9402), taking the picked row
+  /// with it, so the panel that mounts takes keyboard focus rather than
+  /// dropping it to the page root (accessibility.instructions.md, "Focus after
+  /// an in-place content swap").
+  void flyTo(QuestActivityCard card) {
+    PanelEntryIntent.instance.armForSwap();
+    openActivity(card);
+  }
 
   /// Glide back to the whole-world view. Pins and search only ever zoom the
   /// camera IN, so this is the one explicit "zoom out to everything"
@@ -1908,26 +1906,6 @@ class WorldMapController extends State<WorldMap>
   /// Always post-frame, and at most one pending: this is published from the
   /// view's build and fired again on every route change, and the check itself
   /// can open an overlay — which must never happen mid-frame.
-  /// The map is mounted for every signed-in learner, so it runs the app-open
-  /// central-course offer (joining-courses.instructions.md § The central
-  /// course).
-  Future<void> _offerCentralCourseIfDue() async {
-    final client = MatrixState.pangeaController.matrixState.client;
-    final central = await CentralCourseOffer.dueOnOpen(client);
-    final language = MatrixState.pangeaController.userController.userL2;
-    if (central == null || language == null || !mounted) return;
-    await showAdaptiveDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => CentralCourseOfferDialog(
-        client: client,
-        central: central,
-        language: language.langCodeShort,
-        languageName: language.getDisplayName(L10n.of(context)),
-      ),
-    );
-  }
-
   void _scheduleOrientationCheck() {
     if (_orientationCheckScheduled) return;
     _orientationCheckScheduled = true;

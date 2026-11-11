@@ -2860,13 +2860,11 @@
     "editCourseLater": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
     "createCourse": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
     "stats": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
-    "createGroupChat": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
     "editCourse": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
     "inviteDesc": "མིང་ཚིགས་ལུས་པ། ལུས་པ་ལས་གནང་། ལུས་པ་ལས་འབད།",
     "editCourseDesc": "འདིའི་ནང་ཁུངས་སྤྱོད་ལེན་འབད་ནས་སློབ་ཚན་མཐོ་རིང་བསྐྱར་བསྐྱར་བཟོ།",
     "permissionsDesc": "གནད་སྡེའི་གནད་སྡེ་ལས་འགན་ཁུངས་སྤྱོད་ལེན་འབད། ལུས་པ་ལས་འབད་མི་ཚོའི་ལས་འགན་ལས་འགན་ཁུངས་ལ་འགྱོ།",
     "accessDesc": "ཁྱེད་རང་གི་སློབ་ཚན་ལ་འགྱོ་བ་ལུས་པ་ལས་འབད་ནས་འབད་རོགས། ຫོད་ན་ཁྱེད་རང་གི་སློབ་ཚན་གང་འདི་ལས་འགན་ལས་འབད་ན་གནང་བ།",
-    "createGroupChatDesc": "འདི་ནས་ལས་འགན་སྐར་མ་ལོག་བརྗེ་བ་ལས་འགན་ལས་འབད་ནས་ལོག་བརྗེ་བ་ལས་འགན་ལས་འབད།",
     "deleteDesc": "གནད་སྡེ་ལས་འགན་ལས་འབད་ན་དགོས། འདི་ནས་ལས་འགན་ལས་འབད་ན་སྤྱོད་ལེན་འབད་མི་ཚོའི་ལས་འགན་ལས་འབད་ན་ལས་འགན་ལས་འབད།",
     "whatNow": "ད་ལྟ་ག་རེ་ཡོད།",
     "chooseNextActivity": "ཁྱེད་རང་གི་ཤེས་ཡོད་ལུས་པ་ཚུ་གནང་བ།",
@@ -2908,7 +2906,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-11-01 09:54:06.170372",
+    "@@last_modified": "2026-11-10 13:06:08.677151",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5913,10 +5911,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -5934,10 +5928,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8595,6 +8585,7 @@
     "addCourseBrowsePublic": "Shfletoni kurset publike",
     "browsePublicCourses": "Shfletoni kurset publike",
     "editProfile": "Redaktoni profilin",
+    "mapSearchHint": "སྤྱི་བའི་སློབ་ཚན་འཚོལ་བ།",
     "mapFilterAllLanguages": "Të gjitha gjuhët",
     "mapFilterNotStarted": "Nuk ka filluar",
     "mapFilterInProgress": "Në proces",
@@ -9487,9 +9478,7 @@
     "practiceMeaningPrompt": "‘{word}’ ལ་དོན་ཅི་ཞིག་ཡོད།",
     "practiceEmojiPrompt": "‘{word}’ ལ་ཨི་མོ་ཇི་ཞིག་འདེམས་རོགས།",
     "practiceStepProgress": "{total} ནང་ནས་ {done}",
-    "leaderboard": "ལེགས་གྲུབ་བྱུང་བའི་ཐོ་གཞུང་།",
-    "leaderboardRank": "གོ་རིམ་ {rank}",
-    "courseLeaderboardTooltip": "སློབ་ཚན་འདིའི་ནང་གི་མི་ཚང་མ་སྐར་མ་བརྒྱབ་ནས་གོ་རིམ་བསྒྲིགས་ཡོད། ཁྱེད་ཀྱིས་ཚོགས་མི་ཞིག་ལ་རེག་ནས་“སྐད་ཆ་ཤོད་པ་འགོ་འཛུགས་”ཞེས་པ་བདམས་ཏེ་དེ་ཚོར་ཐད་ཀར་འཕྲིན་ཡིག་གཏོང་ཆོག",
+    "courseParticipantTooltip": "Ita ne boma in this course. Click on any user’s avatar and “start conversation” to send a DM.",
     "goalReportTitle": "སྐར་མ་འདི་སྙན་སེང་ཞུས་",
     "goalReportOverAwardPrompt": "གལ་ཏེ་ཁྱེད་རང་ལ་སྐར་མ་འདི་ཐོབ་མི་རུང་བ་ཡིན་ན། རྒྱུ་མཚན་གསལ་བཤད་གནང་རོགས།",
     "goalReportUnderAwardPrompt": "གལ་ཏེ་ཁྱེད་རང་ལ་སྐར་མ་འདི་ཐོབ་དགོས་པ་ཡིན་པར་འདོད་ན། རྒྱུ་མཚན་གང་ཡིན།",
@@ -9508,11 +9497,6 @@
     "callTranscriptPreparingRecording": "བསྐྱར་ཟློས་ཆ་ཚང་གྲ་སྒྲིག་བྱེད་བཞིན་པ།",
     "callTranscriptNoRecording": "བསྐྱར་ཟློས་ཆ་ཚང་མེད།",
     "callTranscriptNotSubscribed": "འདི་ཉིད་སྐད་ཆ་ཤོད་རེས་བྱེད་སྐབས་ {name} ལ་ཐོ་འགོད་བྱས་མེད་པས། བཤད་པའི་སྐད་ཆ་དེ་དག་ཡིག་ཐོག་ཏུ་ཕབ་མེད།",
-    "joinYourCourse": "သင်တန်းသို့ဝင်ရောက်ပါ",
-    "courseCodeJoinExplanation": "အကောင့်ဝင်ပါ သို့မဟုတ် စာရင်းသွင်းပါ၊ သင်၏သင်တန်းကုဒ်ကို အသုံးပြု၍ သင့်ကို သင်တန်းသို့ အလိုအလျောက်ထည့်သွင်းပေးပါမည်။",
-    "courseCodeLabel": "သင်တန်းကုဒ်",
-    "courseCodeSaved": "သင်တန်းကုဒ် {code} သိမ်းဆည်းပြီးပါပြီ",
-    "courseCodeSavedExplanation": "စာရင်းသွင်းပါ သို့မဟုတ် အကောင့်ဝင်ပါ၊ သင့်ကို သင်တန်းသို့ ထည့်သွင်းပေးပါမည်။",
     "moderationRefusedContactDetails": "ཁྱེད་ཀྱི་འཕྲིན་ཐུང་བསྐུར་མེད། རང་འགུལ་ཚགས་འདོན་མ་ལག་གིས་ཁ་པར་ཨང་གྲངས་ལྟ་བུའི་འབྲེལ་གཏུག་གི་ཞིབ་ཕྲ་རྙེད་སོང་། དེ་དག་བསུབ་ནས་བསྐྱར་དུ་ཚོད་ལྟ་གནང་རོགས།",
     "moderationRefusedProfanity": "ཁྱེད་ཀྱི་འཕྲིན་ཐུང་བསྐུར་མེད། རང་འགུལ་ཚགས་འདོན་མ་ལག་གིས་ང་ཚོས་ཁ་བརྡའི་ནང་དུ་བཀག་པའི་ཚིག་ཅིག་རྙེད་སོང་། དེ་བསྒྱུར་ནས་བསྐྱར་དུ་ཚོད་ལྟ་གནང་རོགས།",
     "callTranscriptTranscribeButton": "ถอดความ",
@@ -9644,9 +9628,7 @@
     "readAloudTake": "ལེན་ {number}",
     "videoWontPlayHere": "བརྙན་འདི་འདིར་འཁྲབ་མི་ཐུབ།",
     "watchOnYoutube": "YouTube ཐོག་ཏུ་ལྟ་བ།",
-    "createMyOwnCourse": "ངའི་སློབ་ཚན་བཟོ་བ།",
     "xpTowardMission": "འདིའི་ལས་འགན་ལ་ {xp} ཉམས་མྱོང་",
-    "centralCourseMembersSeeYou": "སློབ་ཚན་འདིའི་ཁོངས་མི་ཚོས་ཁྱེད་ཀྱི་མིང་དང་མི་སྒེར་གྱི་ཆ་འཕྲིན་མཐོང་ཐུབ།",
     "practiceStartWordCount": "{count, plural, =1{སྦྱོང་བརྡར་བྱེད་རྒྱུའི་ཚིག་} other{སྦྱོང་བརྡར་བྱེད་རྒྱུའི་ཚིག་}}",
     "practiceStartGrammarCount": "{count, plural, =1{སྦྱོང་བརྡར་བྱེད་རྒྱུའི་བརྡ་སྤྲོད་} other{སྦྱོང་བརྡར་བྱེད་རྒྱུའི་བརྡ་སྤྲོད་}}",
     "practiceStartExerciseTypes": "སྦྱོང་ཚན་གྱི་རྣམ་གྲངས་",
@@ -9657,9 +9639,6 @@
     "sharedAnalyticsOthersTitle": "ཁྱེད་ཀྱི་ཡར་རྒྱས་མཐོང་ཐུབ་མཁན་གཞན་དག",
     "removeAnalyticsAccess": "འཛུལ་སྤྱོད་མེད་པ་བཟོ་བ།",
     "removeAnalyticsAccessDesc": "{name} གྱིས་ཁྱེད་ཀྱི་སློབ་སྦྱོང་ཡར་རྒྱས་མཐོང་མི་ཐུབ།",
-    "centralCourseOfferBody": "འདི་ནི་Pangeaཡི་{language}སློབ་གཉེར་བར་ཆེད་དུ་བཟོས་པའི་སློབ་ཚན་ཞིག་ཡིན། དེའི་ཁོངས་མི་ཚོས་ཁྱེད་ཀྱི་མིང་དང་མི་སྒེར་གྱི་ཆ་འཕྲིན་མཐོང་ཐུབ།",
-    "centralCourseOfferTitle": "{course} ནང་ཞུགས་པ།",
-    "makeMyOwnCourseInstead": "ང་རང་གི་སློབ་ཚན་བཟོ་བ།",
     "suggestMobileSignInSameAccount": "དེ་ནས་ཁྱེད་ཀྱི་ཐོ་ཁུངས་འདི་བེད་སྤྱོད་ནས་མཉེན་ཆས་ནང་དུ་ཐོ་འཇུག་བྱེད་དགོས།",
     "focusMission": "འདིའི་ལས་འགན་གྱི་བྱེད་སྒོ་ལ་དོ་སྣང་བྱེད་པ།",
     "missionNotYetOpen": "ད་དུང་མ་ཕྱེས།",
@@ -9688,10 +9667,19 @@
     "worldExploreCity": "འཚོལ་ཞིབ།",
     "worldShipAtCity": "གྲོང་ཁྱེར་{city}ནང་།",
     "worldShipRunBy": "{admins}ནས་གཉེར་བ།",
-    "worldShipRunByPangea": "Pangeaནས་གཉེར་བ།",
     "worldShipMembers": "{count, plural, =1{ཚོགས་མི་1} other{ཚོགས་མི་{count}}}",
     "worldShipOpenCourse": "སློབ་ཚན་ཁ་ཕྱེ་བ།",
     "worldCityLockedLabel": "གྲོང་ཁྱེར་{city}། ཁྱེད་ལ་ད་ལྟ་ཁ་ཕྱེ་མི་འདུག",
     "worldCityNoCourseHere": "འདིར་སློབ་ཚན་ཞིག་ལ་མཉམ་ཞུགས་བྱས་ནས་འཚོལ་ཞིབ་བྱེད་པ།",
-    "mapSearchHint": "སྤྱི་བའི་སློབ་ཚན་འཚོལ་བ།"
+    "subscriptionGracePeriodEndsOn": "གློག་འཕྲིན་གྱི་དངུལ་འབབ་མ་འབྱོར། བར་བརྒལ་གྱི་དུས་ཡུན་ཚར་བའི་ཉིན་གྲངས་ནི་ {date} ཡིན།",
+    "changeBaseLanguageTitle": "གཞི་རྩའི་སྐད་ཡིག་བསྒྱུར་རམ།",
+    "changeBaseLanguageDesc": "མཉེན་ཆས་ཀྱི་འདེམས་ཐོ་དང་ බොར་མར་ {language} ལ་བསྒྱུར་ངེས།",
+    "accountSetupFailedHelp": "ཁྱེད་ཀྱི་རྩིས་ཐོ་སྒྲིག་འཛུགས་བྱེད་མ་ཐུབ། དྲ་རྒྱའི་འབྲེལ་མཐུད་ཞིབ་བཤེར་བྱས་ནས་བསྐྱར་དུ་ཚོད་ལྟ་བྱེད་རོགས། ཡང་ན་ཕྱིར་ཐོན་ནས་རྗེས་སུ་ནང་འཛུལ་བྱེད་རོགས།",
+    "onboardingOfflineError": "ཁྱེད་རང་དྲ་རྒྱ་མེད་པར་གྱུར་འདུག དྲ་རྒྱ་སླར་གསོ་བྱུང་རྗེས་བསྐྱར་དུ་ཚོད་ལྟ་བྱེད་རོགས།",
+    "activitySavedTo": "བྱེད་སྒོ་འདི་ {page} ལ་ཉར་ཚགས་བྱས་ཟིན།",
+    "joinWithYourCode": "ཁྱེད་ཀྱི་ཨང་ཀི་དང་མཉམ་དུ་མཉམ་ཞུགས།",
+    "joinCodeJoinExplanation": "ནང་འཛུལ་བྱེད་པ་དང་ཡང་ན་ཐོ་འགོད་བྱེད་པ། དེ་ནས་ང་ཚོས་ཁྱེད་ཀྱི་ཨང་ཀི་སྤྱད་ནས་ཁྱེད་རང་རང་འགུལ་ངང་ཁ་སྣོན་བྱ་རྒྱུ་ཡིན།",
+    "joinCodeLabel": "ཨང་ཀི།",
+    "joinCodeSaved": "ཨང་ཀི་ {code} ཉར་ཚགས་བྱས་ཟིན།",
+    "joinCodeSavedExplanation": "ཐོ་འགོད་བྱེད་པ་དང་ཡང་ན་ནང་འཛུལ་བྱེད་པ། དེ་ནས་ང་ཚོས་ཁྱེད་རང་ཁ་སྣོན་བྱ་རྒྱུ་ཡིན།"
 }

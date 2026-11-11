@@ -392,6 +392,7 @@ class MissionXpCache extends ChangeNotifier {
   void seed({
     Map<String, int> xpByRoom = const {},
     Map<String, int> practiceXpByLemma = const {},
+    Map<String, Map<LearningSkillsEnum, int>> skillXpByRoom = const {},
   }) {
     // Seeded maps are the whole read: nothing is loading.
     _loading = false;
@@ -400,7 +401,7 @@ class MissionXpCache extends ChangeNotifier {
       const {},
       const {},
       practiceXpByLemma,
-      const {},
+      skillXpByRoom,
       const {},
     );
   }

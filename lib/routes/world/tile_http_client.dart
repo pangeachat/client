@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:http/http.dart';
 import 'package:http/retry.dart';
 
+import 'package:fluffychat/features/connection_status/filtered_network_controller.dart';
+import 'package:fluffychat/features/connection_status/network_host_category.dart';
+
 /// A tile request that failed on the learner's own connectivity, surfaced so
 /// the tile errors and [TileRetryQueue] picks it up.
 ///
@@ -41,6 +44,9 @@ class TileConnectionException implements Exception {
 /// recognise and so evicts and reports as an error. A
 /// [RequestAbortedException] (a pruned tile's request) also passes through:
 /// flutter_map handles it first, silently, as it should.
+///
+/// Every answer lets a blocked map re-check its host (#9777), so the
+/// filtered-network note goes once the network lets tiles through again.
 class TileHttpClient extends BaseClient {
   final Client _inner;
   bool _closed = false;
@@ -55,6 +61,9 @@ class TileHttpClient extends BaseClient {
     } on ClientException catch (error, stackTrace) {
       _rethrow(error, stackTrace);
     }
+    FilteredNetworkController.instance.recheckIfBlocked(
+      NetworkHostCategory.map,
+    );
     return StreamedResponse(
       response.stream.handleError(_rethrow),
       response.statusCode,

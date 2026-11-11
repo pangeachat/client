@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-11-01 09:54:14.747706",
+    "@@last_modified": "2026-11-10 13:06:21.445773",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -3470,13 +3470,11 @@
     "editCourseLater": "您可以稍后编辑模板标题、描述和课程图片。",
     "createCourse": "创建课程",
     "stats": "统计",
-    "createGroupChat": "创建群聊",
     "editCourse": "编辑课程",
     "inviteDesc": "通过用户名、代码或链接",
     "editCourseDesc": "在这里你可以编辑课程标题、描述等。",
     "permissionsDesc": "设置权限，例如谁可以邀请用户、发送消息、创建聊天等。",
     "accessDesc": "你可以让你的课程对全世界开放！或者，将你的课程设为私密且安全。",
-    "createGroupChatDesc": "活动会话开始和结束，而群聊将保持开放以进行日常沟通。",
     "deleteDesc": "只有管理员可以删除课程。这是一个破坏性操作，会删除所有用户和课程内的所有选定聊天。请谨慎操作。",
     "whatNow": "接下来怎么办？",
     "chooseNextActivity": "选择你的下一个活动！",
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8987,6 +8977,7 @@
     "addCourseBrowsePublic": "浏览公开课程",
     "browsePublicCourses": "浏览公开课程",
     "editProfile": "编辑个人资料",
+    "mapSearchHint": "搜索公开课程",
     "mapFilterAllLanguages": "所有语言",
     "mapFilterNotStarted": "未开始",
     "mapFilterInProgress": "进行中",
@@ -9879,9 +9870,7 @@
     "practiceMeaningPrompt": "“{word}”是什么意思？",
     "practiceEmojiPrompt": "为“{word}”选择一个表情符号",
     "practiceStepProgress": "{done}/{total}",
-    "leaderboard": "排行榜",
-    "leaderboardRank": "排名 {rank}",
-    "courseLeaderboardTooltip": "本课程中所有成员按其在该语言中获得的星星数进行排名。点击成员并选择“开始对话”即可向他们发送私信。",
+    "courseParticipantTooltip": "这是本课程中的所有人。点击任何用户的头像并选择“开始对话”以发送私信。",
     "goalReportTitle": "举报此星",
     "goalReportOverAwardPrompt": "如果您不应该获得此星，请说明原因。",
     "goalReportUnderAwardPrompt": "如果您认为您应该获得此星，请说明原因。",
@@ -9900,11 +9889,6 @@
     "callTranscriptPreparingRecording": "正在准备完整录音…",
     "callTranscriptNoRecording": "没有完整通话的录音。",
     "callTranscriptNotSubscribed": "{name} 在通话期间没有订阅，因此通话内容未被转录。",
-    "joinYourCourse": "加入您的课程",
-    "courseCodeJoinExplanation": "登录或注册后，我们将使用您的课程代码自动将您添加到课程中。",
-    "courseCodeLabel": "课程代码",
-    "courseCodeSaved": "课程代码 {code} 已保存",
-    "courseCodeSavedExplanation": "注册或登录后，我们会将您添加到您的课程中。",
     "moderationRefusedContactDetails": "您的消息未能发送。自动过滤器检测到联系方式，例如电话号码。请删除后重试。",
     "moderationRefusedProfanity": "您的消息未能发送。自动过滤器检测到聊天中不允许使用的词语。请修改后重试。",
     "callTranscriptTranscribeButton": "转录",
@@ -10036,9 +10020,7 @@
     "readAloudTake": "第 {number} 次录音",
     "videoWontPlayHere": "此视频无法在此处播放。",
     "watchOnYoutube": "在 YouTube 上观看",
-    "createMyOwnCourse": "创建我的课程",
     "xpTowardMission": "此任务的 {xp} 经验值",
-    "centralCourseMembersSeeYou": "本课程的成员可以看到您的姓名和个人资料。",
     "practiceStartWordCount": "{count, plural, =1{要练习的单词} other{要练习的单词}}",
     "practiceStartGrammarCount": "{count, plural, =1{要练习的语法点} other{要练习的语法点}}",
     "practiceStartExerciseTypes": "练习类型",
@@ -10049,9 +10031,6 @@
     "sharedAnalyticsOthersTitle": "其他可查看您进度的人",
     "removeAnalyticsAccess": "移除访问权限",
     "removeAnalyticsAccessDesc": "{name} 将无法再查看您的学习进度。",
-    "centralCourseOfferBody": "这是 Pangea 为{language}学习者开设的课程。课程成员可以看到您的姓名和个人资料。",
-    "centralCourseOfferTitle": "加入 {course}？",
-    "makeMyOwnCourseInstead": "改为创建我自己的课程",
     "suggestMobileSignInSameAccount": "然后用此账号登录应用。",
     "focusMission": "专注于此任务的活动",
     "missionNotYetOpen": "尚未开放",
@@ -10080,10 +10059,19 @@
     "worldExploreCity": "探索",
     "worldShipAtCity": "在 {city}",
     "worldShipRunBy": "由 {admins} 运营",
-    "worldShipRunByPangea": "由 Pangea 运营",
     "worldShipMembers": "{count, plural, =1{1 位成员} other{{count} 位成员}}",
     "worldShipOpenCourse": "开放课程",
     "worldCityLockedLabel": "{city}，尚未对您开放",
     "worldCityNoCourseHere": "在此加入课程以探索",
-    "mapSearchHint": "搜索公开课程"
+    "subscriptionGracePeriodEndsOn": "支付失败。宽限期将于 {date} 结束",
+    "changeBaseLanguageTitle": "更改基础语言？",
+    "changeBaseLanguageDesc": "应用的菜单和按钮将切换为{language}。",
+    "accountSetupFailedHelp": "我们无法完成您的账户设置。请检查您的网络连接，然后重试，或者退出并稍后登录。",
+    "onboardingOfflineError": "您已离线。请在联网后重试。",
+    "activitySavedTo": "活动已保存到 {page}",
+    "joinWithYourCode": "使用您的代码加入",
+    "joinCodeJoinExplanation": "登录或注册，我们将使用您的代码自动添加您。",
+    "joinCodeLabel": "代码",
+    "joinCodeSaved": "代码 {code} 已保存",
+    "joinCodeSavedExplanation": "注册或登录，我们将添加您。"
 }

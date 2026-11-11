@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-01 09:54:12.204362",
+    "@@last_modified": "2026-11-10 13:06:17.931287",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -2944,13 +2944,11 @@
     "editCourseLater": "Poți edita titlul, descrierile și imaginea cursului mai târziu.",
     "createCourse": "Creează curs",
     "stats": "Statistici",
-    "createGroupChat": "Creează chat de grup",
     "editCourse": "Editează cursul",
     "inviteDesc": "Prin nume de utilizator, cod sau link",
     "editCourseDesc": "Aici poți edita titlul, descrierea și altele ale cursului.",
     "permissionsDesc": "Setează permisiuni precum cine poate invita utilizatori, trimite mesaje, crea chat-uri etc.",
     "accessDesc": "Poți face cursul tău deschis lumii! Sau, îl poți face privat și sigur.",
-    "createGroupChatDesc": "În timp ce sesiunile de activitate încep și se termină, chat-urile de grup vor rămâne deschise pentru comunicare de rutină.",
     "deleteDesc": "Doar administratorii pot șterge un curs. Aceasta este o acțiune distructivă care elimină toți utilizatorii și șterge toate chat-urile selectate din curs. Procedează cu precauție.",
     "whatNow": "Ce urmează?",
     "chooseNextActivity": "Alege următoarea activitate!",
@@ -6626,10 +6624,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6647,10 +6641,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9716,6 +9706,7 @@
     "addCourseBrowsePublic": "Răsfoiți cursurile publice",
     "browsePublicCourses": "Răsfoiți cursurile publice",
     "editProfile": "Editează profilul",
+    "mapSearchHint": "Căutați cursuri publice",
     "mapFilterAllLanguages": "Toate limbile",
     "mapFilterNotStarted": "Nepornit",
     "mapFilterInProgress": "În desfășurare",
@@ -10608,9 +10599,7 @@
     "practiceMeaningPrompt": "Ce înseamnă „{word}”?",
     "practiceEmojiPrompt": "Alegeți un emoji pentru „{word}”",
     "practiceStepProgress": "{done} din {total}",
-    "leaderboard": "Clasament",
-    "leaderboardRank": "Locul {rank}",
-    "courseLeaderboardTooltip": "Toți participanții la acest curs, clasificați după numărul de stele obținute la limba respectivă. Atingeți un membru și alegeți „Începeți conversația” pentru a-i trimite un mesaj direct.",
+    "courseParticipantTooltip": "Aceasta este toată lumea din acest curs. Faceți clic pe avatarul oricărui utilizator și „începeți conversația” pentru a trimite un mesaj direct.",
     "goalReportTitle": "Raportează această stea",
     "goalReportOverAwardPrompt": "Dacă nu trebuia să primești această stea, te rugăm să explici de ce.",
     "goalReportUnderAwardPrompt": "Dacă crezi că trebuia să primești această stea, de ce?",
@@ -10629,11 +10618,6 @@
     "callTranscriptPreparingRecording": "Se pregătește înregistrarea completă…",
     "callTranscriptNoRecording": "Nu există nicio înregistrare a apelului complet.",
     "callTranscriptNotSubscribed": "{name} nu a avut un abonament în timpul acestui apel, așa că ceea ce s-a spus nu a fost transcris.",
-    "joinYourCourse": "Alătură-te cursului tău",
-    "courseCodeJoinExplanation": "Conectează-te sau înregistrează-te, iar noi vom folosi codul tău de curs pentru a te adăuga automat la cursul tău.",
-    "courseCodeLabel": "Codul cursului",
-    "courseCodeSaved": "Codul cursului {code} a fost salvat",
-    "courseCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga la cursul tău.",
     "moderationRefusedContactDetails": "Mesajul tău nu a fost trimis. Un filtru automat a detectat detalii de contact, cum ar fi un număr de telefon. Te rugăm să le elimini și să încerci din nou.",
     "moderationRefusedProfanity": "Mesajul tău nu a fost trimis. Un filtru automat a detectat un cuvânt pe care nu-l permitem în chat. Te rugăm să-l modifici și să încerci din nou.",
     "callTranscriptTranscribeButton": "Transcrie",
@@ -10765,9 +10749,7 @@
     "readAloudTake": "Preluare {number}",
     "videoWontPlayHere": "Acest videoclip nu va fi redat aici.",
     "watchOnYoutube": "Vizionează pe YouTube",
-    "createMyOwnCourse": "Creează-mi propriul curs",
     "xpTowardMission": "{xp} XP pentru această misiune",
-    "centralCourseMembersSeeYou": "Membrii acestui curs îți pot vedea numele și profilul.",
     "practiceStartWordCount": "{count, plural, =1{cuvânt de exersat} other{cuvinte de exersat}}",
     "practiceStartGrammarCount": "{count, plural, =1{punct gramatical de exersat} other{puncte gramaticale de exersat}}",
     "practiceStartExerciseTypes": "Tipuri de exerciții",
@@ -10778,9 +10760,6 @@
     "sharedAnalyticsOthersTitle": "Alții care îți pot vedea progresul",
     "removeAnalyticsAccess": "Revocă accesul",
     "removeAnalyticsAccessDesc": "{name} nu va mai putea să-ți vadă progresul de învățare.",
-    "centralCourseOfferBody": "Este cursul Pangea pentru cursanții de {language}. Membrii săi îți pot vedea numele și profilul.",
-    "centralCourseOfferTitle": "Te alături la {course}?",
-    "makeMyOwnCourseInstead": "Creez propriul curs",
     "suggestMobileSignInSameAccount": "Apoi conectați-vă la aplicație cu acest cont.",
     "focusMission": "Concentrează-te pe activitățile acestei Misiuni",
     "missionNotYetOpen": "Încă nu este deschisă",
@@ -10809,10 +10788,19 @@
     "worldExploreCity": "Explorează",
     "worldShipAtCity": "În {city}",
     "worldShipRunBy": "Administrat de {admins}",
-    "worldShipRunByPangea": "Administrat de Pangea",
     "worldShipMembers": "{count, plural, =1{1 membru} other{{count} membri}}",
     "worldShipOpenCourse": "Curs deschis",
     "worldCityLockedLabel": "{city}, încă nu este deschis pentru tine",
     "worldCityNoCourseHere": "Înscrie-te la un curs aici pentru a-l explora",
-    "mapSearchHint": "Căutați cursuri publice"
+    "subscriptionGracePeriodEndsOn": "Plata a eșuat. Perioada de grație se încheie pe {date}",
+    "changeBaseLanguageTitle": "Schimbi limba de bază?",
+    "changeBaseLanguageDesc": "Meniurile și butoanele aplicației vor trece la {language}.",
+    "accountSetupFailedHelp": "Nu am putut finaliza configurarea contului tău. Verifică-ți conexiunea și încearcă din nou, sau deconectează-te și conectează-te mai târziu.",
+    "onboardingOfflineError": "Ești offline. Încearcă din nou când ești online.",
+    "activitySavedTo": "Activitate salvată în {page}",
+    "joinWithYourCode": "Alătură-te cu codul tău",
+    "joinCodeJoinExplanation": "Conectează-te sau înregistrează-te, iar noi vom folosi codul tău pentru a te adăuga automat.",
+    "joinCodeLabel": "Cod",
+    "joinCodeSaved": "Codul {code} a fost salvat",
+    "joinCodeSavedExplanation": "Înregistrează-te sau conectează-te și te vom adăuga."
 }

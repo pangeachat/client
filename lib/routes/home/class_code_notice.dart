@@ -34,13 +34,13 @@ class ClassCodeNotice extends StatelessWidget {
                 spacing: 2.0,
                 children: [
                   Text(
-                    l10n.courseCodeSaved(code),
+                    l10n.joinCodeSaved(code),
                     style: theme.textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    l10n.courseCodeSavedExplanation,
+                    l10n.joinCodeSavedExplanation,
                     style: theme.textTheme.bodySmall?.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
                     ),

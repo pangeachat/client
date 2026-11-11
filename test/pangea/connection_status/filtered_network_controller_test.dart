@@ -9,6 +9,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,7 +19,12 @@ import 'package:fluffychat/features/connection_status/network_host_category.dart
 import 'package:fluffychat/features/connection_status/network_probe.dart';
 import 'package:fluffychat/features/connection_status/network_type.dart';
 import 'package:fluffychat/features/connection_status/network_verdict.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import '../../utils/test_client.dart';
+import '../fake_pangea_controller.dart';
 import '../sentry_capture_harness.dart';
 
 /// #9434 — which host categories the network blocks, and when the app checks.
@@ -506,6 +512,102 @@ void main() {
     expect(controller.blocked.value, isEmpty);
   });
 
+  // #9777 — a map tile that loads may come from the browser's cache, so it
+  // cannot clear a blocked map; it re-checks, and the probe decides.
+  group('a map tile answer while the map is blocked', () {
+    final tileHost = NetworkHostCategory.map.probeUrl.host;
+
+    Future<void> blockMap() async {
+      answers[tileHost] = NetworkProbeResult.refused;
+      expect(
+        await controller.check(NetworkHostCategory.map),
+        NetworkVerdict.filtered,
+      );
+      probedHosts.clear();
+    }
+
+    test('does nothing while the map is not blocked', () async {
+      controller.recheckIfBlocked(NetworkHostCategory.map);
+      await settle();
+
+      expect(probedHosts, isEmpty);
+      expect(waits, isEmpty);
+    });
+
+    test(
+      're-checks once the last check is 30 s old, and clears when the host answers',
+      () async {
+        await blockMap();
+        answers[tileHost] = NetworkProbeResult.answered;
+
+        controller.recheckIfBlocked(NetworkHostCategory.map);
+        await settle();
+
+        expect(waits, hasLength(1));
+        expect(
+          waits.single,
+          lessThanOrEqualTo(FilteredNetworkController.recheckAfter),
+        );
+        expect(
+          waits.single,
+          greaterThan(
+            FilteredNetworkController.recheckAfter - const Duration(seconds: 5),
+          ),
+        );
+        expect(probedHosts, [tileHost]);
+        expect(controller.blocked.value, isEmpty);
+      },
+    );
+
+    test('keeps the block while the host still refuses', () async {
+      await blockMap();
+
+      controller.recheckIfBlocked(NetworkHostCategory.map);
+      await settle();
+
+      expect(probedHosts.where((host) => host == tileHost), hasLength(1));
+      expect(controller.blocked.value, {NetworkHostCategory.map});
+    });
+
+    test('a burst of answers costs one re-check', () async {
+      await blockMap();
+      answers[tileHost] = NetworkProbeResult.answered;
+
+      for (var i = 0; i < 48; i++) {
+        controller.recheckIfBlocked(NetworkHostCategory.map);
+      }
+      await settle();
+
+      expect(waits, hasLength(1));
+      expect(probedHosts, [tileHost]);
+    });
+
+    test(
+      'an answer during the check that blocks the map re-checks after it',
+      () async {
+        final refusal = Completer<NetworkProbeResult>();
+        controller.probe = (url) async {
+          probedHosts.add(url.host);
+          if (url.host == tileHost && !refusal.isCompleted) {
+            return refusal.future;
+          }
+          return answers[url.host] ?? NetworkProbeResult.answered;
+        };
+
+        final blocking = controller.check(NetworkHostCategory.map);
+        controller.recheckIfBlocked(NetworkHostCategory.map);
+        refusal.complete(NetworkProbeResult.refused);
+
+        expect(await blocking, NetworkVerdict.filtered);
+        await settle();
+
+        expect(waits, hasLength(1));
+        expect(probedHosts.where((host) => host == tileHost), hasLength(2));
+        expect(controller.blocked.value, isEmpty);
+      },
+    );
+  });
+
   test(
     'observe passes a request with no response on, and checks its host',
     () async {
@@ -618,6 +720,41 @@ void main() {
 
       expect(event.tags, isNot(contains('course_ids')));
     });
+  });
+
+  /// #9453 — the help request reads the same list as the report, so it has
+  /// none once the user signs out.
+  test('a user who signs out has no courses', () async {
+    final client = await prepareTestClient(loggedIn: true);
+    addTearDown(client.dispose);
+    MatrixState.pangeaController = FakePangeaController(client: client);
+    final course = Room(
+      id: '!a:pangea.chat',
+      client: client,
+      membership: Membership.join,
+    );
+    void putState(String type, Map<String, dynamic> content) => course.setState(
+      Event(
+        type: type,
+        content: content,
+        stateKey: '',
+        senderId: client.userID!,
+        eventId: '\$$type',
+        originServerTs: DateTime.now(),
+        room: course,
+      ),
+    );
+    putState(EventTypes.RoomCreate, {'type': RoomCreationTypes.mSpace});
+    putState(
+      PangeaEventTypes.coursePlan,
+      CoursePlanEvent(uuid: 'quest-1').toJson(),
+    );
+    client.rooms.add(course);
+    expect(controller.joinedCourseIds(), ['!a:pangea.chat']);
+
+    await client.logout();
+
+    expect(controller.joinedCourseIds(), isEmpty);
   });
 
   test('a course tag drops whole IDs past Sentry\'s 200-character limit', () {

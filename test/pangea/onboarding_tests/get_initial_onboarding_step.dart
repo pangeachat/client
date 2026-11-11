@@ -8,15 +8,12 @@ import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.da
 import 'package:fluffychat/routes/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/trial_info_provider.dart';
 
-OnboardingStep getInitialOnboardingStep(
-  Client client, {
-  MockCourseProvider? courses,
-}) {
+OnboardingStep getInitialOnboardingStep(Client client) {
   return ProfileSetupOnboardingStep(
     client: client,
     state: OnboardingStateController(
       accountUpdater: MockAccountUpdater(),
-      courseProvider: courses ?? MockCourseProvider(),
+      courseProvider: MockCourseProvider(),
       avatarProvider: MockAvatarProvider(),
       trialInfoProvider: MockTrialInfoProvider(),
     ),

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-01 09:54:08.187856",
+    "@@last_modified": "2026-11-10 13:06:11.102660",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2283,13 +2283,11 @@
     "editCourseLater": "אתה יכול לערוך את כותרת התבנית, תיאורים ותמונת הקורס מאוחר יותר.",
     "createCourse": "צור קורס",
     "stats": "סטטיסטיקות",
-    "createGroupChat": "צור שיחת קבוצתית",
     "editCourse": "ערוך קורס",
     "inviteDesc": "על ידי שם משתמש, קוד או קישור",
     "editCourseDesc": "כאן תוכל לערוך את כותרת הקורס, תיאור ועוד.",
     "permissionsDesc": "הגדר הרשאות כגון מי יכול להזמין משתמשים, לשלוח הודעות, ליצור שיחות, ועוד.",
     "accessDesc": "אתה יכול להפוך את הקורס שלך לגלוי לעולם! או, להפוך את הקורס לפרטי ומאובטח.",
-    "createGroupChatDesc": "בעוד שמפגשי הפעילות מתחילים ומסתיימים, שיחות קבוצתיות יישארו פתוחות לתקשורת שוטפת.",
     "deleteDesc": "רק מנהלים יכולים למחוק קורס. זוהי פעולה הרסנית שמסירה את כל המשתמשים ומוחקת את כל השיחות שנבחרו בתוך הקורס. המשך בזהירות.",
     "whatNow": "מה עכשיו?",
     "chooseNextActivity": "בחר את הפעילות הבאה שלך!",
@@ -6808,10 +6806,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6829,10 +6823,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9898,6 +9888,7 @@
     "addCourseBrowsePublic": "עיין בקורסים ציבוריים",
     "browsePublicCourses": "עיין בקורסים ציבוריים",
     "editProfile": "ערוך פרופיל",
+    "mapSearchHint": "חיפוש קורסים ציבוריים",
     "mapFilterAllLanguages": "כל השפות",
     "mapFilterNotStarted": "לא התחיל",
     "mapFilterInProgress": "בתהליך",
@@ -10790,9 +10781,7 @@
     "practiceMeaningPrompt": "מה פירוש '{word}'?",
     "practiceEmojiPrompt": "בחר אימוג'י עבור '{word}'",
     "practiceStepProgress": "{done} מתוך {total}",
-    "leaderboard": "טבלת הישגים",
-    "leaderboardRank": "דירוג {rank}",
-    "courseLeaderboardTooltip": "כל המשתתפים בקורס זה, מדורגים לפי כוכביהם בשפה. הקש על משתמש ובחר ״התחל שיחה״ כדי לשלוח לו הודעה פרטית.",
+    "courseParticipantTooltip": "אלה כולם בקורס הזה. לחץ על התמונה של כל משתמש ו\"התחל שיחה\" כדי לשלוח הודעה פרטית.",
     "goalReportTitle": "דווח על כוכב זה",
     "goalReportOverAwardPrompt": "אם לא היית אמור לקבל את הכוכב הזה, אנא הסבר מדוע.",
     "goalReportUnderAwardPrompt": "אם לדעתך היית אמור לקבל את הכוכב הזה, מדוע?",
@@ -10811,11 +10800,6 @@
     "callTranscriptPreparingRecording": "מכין את ההקלטה המלאה…",
     "callTranscriptNoRecording": "אין הקלטה של השיחה המלאה.",
     "callTranscriptNotSubscribed": "{name} לא היה מנוי במהלך השיחה הזו, ולכן מה שנאמר לא תומלל.",
-    "joinYourCourse": "הצטרף לקורס שלך",
-    "courseCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד הקורס שלך כדי להוסיף אותך לקורס באופן אוטומטי.",
-    "courseCodeLabel": "קוד קורס",
-    "courseCodeSaved": "קוד קורס {code} נשמר",
-    "courseCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך לקורס שלך.",
     "moderationRefusedContactDetails": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה פרטי התקשרות, כמו מספר טלפון. אנא הסר אותם ונסה שוב.",
     "moderationRefusedProfanity": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה מילה שאנו לא מאפשרים בצ'אט. אנא שנה אותה ונסה שוב.",
     "callTranscriptTranscribeButton": "תמלול",
@@ -10947,9 +10931,7 @@
     "readAloudTake": "טייק {number}",
     "videoWontPlayHere": "הסרטון הזה לא יופעל כאן.",
     "watchOnYoutube": "צפה ב-YouTube",
-    "createMyOwnCourse": "צור קורס משלי",
     "xpTowardMission": "{xp} XP בדרך למשימה זו",
-    "centralCourseMembersSeeYou": "חברי הקורס הזה יכולים לראות את שמך ואת הפרופיל שלך.",
     "practiceStartWordCount": "{count, plural, =1{מילה לתרגול} other{מילים לתרגול}}",
     "practiceStartGrammarCount": "{count, plural, =1{נקודת דקדוק לתרגול} other{נקודות דקדוק לתרגול}}",
     "practiceStartExerciseTypes": "סוגי תרגילים",
@@ -10960,9 +10942,6 @@
     "sharedAnalyticsOthersTitle": "אחרים שיכולים לראות את ההתקדמות שלך",
     "removeAnalyticsAccess": "הסר גישה",
     "removeAnalyticsAccessDesc": "{name} לא יוכל/תוכל יותר לראות את התקדמות הלמידה שלך.",
-    "centralCourseOfferBody": "זהו הקורס של Pangea ללומדי {language}. חברי הקורס יכולים לראות את שמך ואת הפרופיל שלך.",
-    "centralCourseOfferTitle": "להצטרף ל{course}?",
-    "makeMyOwnCourseInstead": "ליצור קורס משלי במקום",
     "suggestMobileSignInSameAccount": "לאחר מכן היכנס לאפליקציה עם חשבון זה.",
     "focusMission": "התמקד/ה בפעילויות של משימה זו",
     "missionNotYetOpen": "טרם נפתח",
@@ -10991,10 +10970,19 @@
     "worldExploreCity": "חקור",
     "worldShipAtCity": "ב{city}",
     "worldShipRunBy": "מופעל על ידי {admins}",
-    "worldShipRunByPangea": "מופעל על ידי Pangea",
     "worldShipMembers": "{count, plural, =1{חבר אחד} other{{count} חברים}}",
     "worldShipOpenCourse": "קורס פתוח",
     "worldCityLockedLabel": "{city}, עדיין לא פתוח עבורך",
     "worldCityNoCourseHere": "הצטרף לקורס כאן כדי לחקור אותו",
-    "mapSearchHint": "חיפוש קורסים ציבוריים"
+    "subscriptionGracePeriodEndsOn": "התשלום נכשל. תקופת החסד מסתיימת ב-{date}",
+    "changeBaseLanguageTitle": "לשנות שפת בסיס?",
+    "changeBaseLanguageDesc": "התפריטים והלחצנים של האפליקציה יעברו ל{language}.",
+    "accountSetupFailedHelp": "לא הצלחנו לסיים את הגדרת החשבון שלך. בדוק את החיבור שלך ונסה שוב, או התנתק והתחבר מאוחר יותר.",
+    "onboardingOfflineError": "אתה במצב לא מקוון. נסה שוב כשתהיה מחובר.",
+    "activitySavedTo": "הפעילות נשמרה ב{page}",
+    "joinWithYourCode": "הצטרף עם הקוד שלך",
+    "joinCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד שלך כדי להוסיף אותך אוטומטית.",
+    "joinCodeLabel": "קוד",
+    "joinCodeSaved": "הקוד {code} נשמר",
+    "joinCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך."
 }

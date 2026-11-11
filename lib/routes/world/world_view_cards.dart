@@ -490,7 +490,7 @@ class _Dots extends StatelessWidget {
 }
 
 /// What a ship's card says about its course: its name, the city it is at,
-/// who runs it (its human admins; Pangea for a central course), how many
+/// who runs it (its human admins), how many
 /// people are in it, its affiliated institution when its teacher set one in
 /// the admin dashboard, and what the course says it is.
 class WorldShipInfo {
@@ -498,7 +498,6 @@ class WorldShipInfo {
   final String cityName;
   final List<String> admins;
   final String? institution;
-  final bool central;
   final int? members;
   final String? description;
   final bool aboard;
@@ -511,7 +510,6 @@ class WorldShipInfo {
     required this.cityName,
     required this.admins,
     this.institution,
-    required this.central,
     required this.members,
     required this.description,
     required this.aboard,
@@ -536,9 +534,7 @@ class WorldShipCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = L10n.of(context);
-    final runBy = info.central
-        ? l10n.worldShipRunByPangea
-        : info.admins.isEmpty
+    final runBy = info.admins.isEmpty
         ? null
         : l10n.worldShipRunBy(info.admins.join(', '));
     return WorldViewCardFrame(

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-01 09:54:09.688574",
+    "@@last_modified": "2026-11-10 13:06:13.609730",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -3323,13 +3323,11 @@
     "editCourseLater": "템플릿 제목, 설명, 과정 이미지는 나중에 편집할 수 있습니다.",
     "createCourse": "과정 생성",
     "stats": "통계",
-    "createGroupChat": "단체 채팅 만들기",
     "editCourse": "코스 편집",
     "inviteDesc": "사용자 이름, 코드 또는 링크로 초대",
     "editCourseDesc": "여기서 코스 제목, 설명 등을 편집할 수 있습니다.",
     "permissionsDesc": "초대할 수 있는 사용자, 메시지 보내기, 채팅 만들기 등의 권한을 설정하세요.",
     "accessDesc": "코스를 공개하거나 비공개로 안전하게 설정할 수 있습니다!",
-    "createGroupChatDesc": "활동 세션이 시작되고 종료되는 동안, 그룹 채팅은 일상적인 소통을 위해 열려 있습니다.",
     "deleteDesc": "코스는 관리자만 삭제할 수 있습니다. 이는 모든 사용자와 선택된 채팅을 삭제하는 파괴적인 작업입니다. 신중히 진행하세요.",
     "whatNow": "이제 무엇을 할까요?",
     "chooseNextActivity": "다음 활동을 선택하세요!",
@@ -6090,10 +6088,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6111,10 +6105,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9180,6 +9170,7 @@
     "addCourseBrowsePublic": "공개 과정 탐색",
     "browsePublicCourses": "공개 과정 탐색",
     "editProfile": "프로필 수정",
+    "mapSearchHint": "공개 코스 검색",
     "mapFilterAllLanguages": "모든 언어",
     "mapFilterNotStarted": "시작하지 않음",
     "mapFilterInProgress": "진행 중",
@@ -10072,9 +10063,7 @@
     "practiceMeaningPrompt": "‘{word}’는 무슨 뜻인가요?",
     "practiceEmojiPrompt": "‘{word}’에 맞는 이모티콘을 선택하세요",
     "practiceStepProgress": "{done}/{total}",
-    "leaderboard": "리더보드",
-    "leaderboardRank": "순위 {rank}",
-    "courseLeaderboardTooltip": "이 코스에 있는 모든 사람을 해당 언어의 별 개수로 순위를 매겼습니다. 멤버를 탭하고 “대화 시작”을 선택하여 DM을 보내세요.",
+    "courseParticipantTooltip": "이것은 이 과정의 모든 사람입니다. 사용자의 아바타를 클릭하고 \"대화 시작\"을 클릭하여 DM을 보내세요.",
     "goalReportTitle": "이 별 신고하기",
     "goalReportOverAwardPrompt": "이 별을 받지 말았어야 했다면, 이유를 설명해주세요.",
     "goalReportUnderAwardPrompt": "이 별을 받았어야 했다고 생각한다면, 그 이유는 무엇인가요?",
@@ -10093,11 +10082,6 @@
     "callTranscriptPreparingRecording": "전체 녹음 준비 중…",
     "callTranscriptNoRecording": "전체 통화 녹음이 없습니다.",
     "callTranscriptNotSubscribed": "{name}님은 이 통화 중에 구독하지 않으셨으므로, 대화 내용이 기록되지 않았습니다.",
-    "joinYourCourse": "코스 참여하기",
-    "courseCodeJoinExplanation": "로그인 또는 가입하시면 코스 코드를 사용하여 자동으로 코스에 추가해 드립니다.",
-    "courseCodeLabel": "코스 코드",
-    "courseCodeSaved": "코스 코드 {code} 저장됨",
-    "courseCodeSavedExplanation": "가입하거나 로그인하시면 코스에 추가해 드립니다.",
     "moderationRefusedContactDetails": "메시지가 전송되지 않았습니다. 자동 필터에서 전화번호와 같은 연락처 정보를 감지했습니다. 해당 정보를 삭제하고 다시 시도해 주세요.",
     "moderationRefusedProfanity": "메시지가 전송되지 않았습니다. 자동 필터에서 채팅에서 허용되지 않는 단어를 감지했습니다. 해당 단어를 변경하고 다시 시도해 주세요.",
     "callTranscriptTranscribeButton": "텍스트 변환",
@@ -10229,9 +10213,7 @@
     "readAloudTake": "{number}번째 시도",
     "videoWontPlayHere": "이 동영상은 여기에서 재생되지 않습니다.",
     "watchOnYoutube": "YouTube에서 시청",
-    "createMyOwnCourse": "나만의 코스 만들기",
     "xpTowardMission": "이번 미션으로 {xp} XP 획득",
-    "centralCourseMembersSeeYou": "이 코스의 멤버는 회원님의 이름과 프로필을 볼 수 있습니다.",
     "practiceStartWordCount": "{count, plural, =1{연습할 단어} other{연습할 단어}}",
     "practiceStartGrammarCount": "{count, plural, =1{연습할 문법 포인트} other{연습할 문법 포인트}}",
     "practiceStartExerciseTypes": "연습 유형",
@@ -10242,9 +10224,6 @@
     "sharedAnalyticsOthersTitle": "내 진행 상황을 볼 수 있는 다른 사람",
     "removeAnalyticsAccess": "액세스 제거",
     "removeAnalyticsAccessDesc": "{name}님은 더 이상 회원님의 학습 진행 상황을 볼 수 없습니다.",
-    "centralCourseOfferBody": "이 코스는 {language} 학습자를 위한 Pangea 코스입니다. 코스 멤버는 회원님의 이름과 프로필을 볼 수 있습니다.",
-    "centralCourseOfferTitle": "{course}에 참여하시겠어요?",
-    "makeMyOwnCourseInstead": "대신 나만의 코스 만들기",
     "suggestMobileSignInSameAccount": "그런 다음 이 계정으로 앱에 로그인하세요.",
     "focusMission": "이 미션 활동에 집중하기",
     "missionNotYetOpen": "아직 열리지 않음",
@@ -10273,10 +10252,19 @@
     "worldExploreCity": "탐색",
     "worldShipAtCity": "{city}에서",
     "worldShipRunBy": "{admins}에 의해 운영",
-    "worldShipRunByPangea": "Pangea에 의해 운영",
     "worldShipMembers": "{count, plural, =1{회원 1명} other{회원 {count}명}}",
     "worldShipOpenCourse": "공개 코스",
     "worldCityLockedLabel": "{city}, 아직 이용할 수 없습니다.",
     "worldCityNoCourseHere": "탐색하려면 여기에서 코스에 참여하세요.",
-    "mapSearchHint": "공개 코스 검색"
+    "subscriptionGracePeriodEndsOn": "결제에 실패했습니다. 유예 기간은 {date}에 종료됩니다.",
+    "changeBaseLanguageTitle": "기본 언어를 변경하시겠습니까?",
+    "changeBaseLanguageDesc": "앱 메뉴와 버튼이 {language}로 변경됩니다.",
+    "accountSetupFailedHelp": "계정을 설정할 수 없습니다. 연결 상태를 확인하고 다시 시도하거나, 로그아웃한 후 나중에 다시 로그인해 주세요.",
+    "onboardingOfflineError": "오프라인 상태입니다. 온라인 상태가 되면 다시 시도해 주세요.",
+    "activitySavedTo": "활동이 {page}에 저장되었습니다",
+    "joinWithYourCode": "코드로 참여하기",
+    "joinCodeJoinExplanation": "로그인 또는 가입하시면 회원님의 코드를 사용하여 자동으로 추가해 드립니다.",
+    "joinCodeLabel": "코드",
+    "joinCodeSaved": "코드 {code} 저장됨",
+    "joinCodeSavedExplanation": "가입하거나 로그인하시면 회원님을 추가해 드립니다."
 }

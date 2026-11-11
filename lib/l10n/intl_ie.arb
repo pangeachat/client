@@ -3014,13 +3014,11 @@
     "editCourseLater": "Tu pote editar le titulo, descriptiones e imagine del cors plus tarde.",
     "createCourse": "Createar cors",
     "stats": "Statisticas",
-    "createGroupChat": "Createar chat de gruppo",
     "editCourse": "Editar cors",
     "inviteDesc": "Per nomine de usator, per codice o ligamine",
     "editCourseDesc": "Ici tu pote editar le titulo, description, etc. de le cors.",
     "permissionsDesc": "Stabilir permissiones como qui pote invitar usatores, mandar messages, crear chats, etc.",
     "accessDesc": "Tu pote face tu cors aperta al mundo! O, face tu cors private e secur.",
-    "createGroupChatDesc": "Dum que le sessiones de activitate comencia e termina, le chat de gruppo remanera aperta pro communication routine.",
     "deleteDesc": "Solmen administratores pote deletar un cors. Iste es un action destructive que remove tote usatores e delete tote le chats selectate in le cors. Procede con cautela.",
     "whatNow": "Que ora?",
     "chooseNextActivity": "Selige tu proxime activitate!",
@@ -3082,7 +3080,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-11-01 09:54:09.137027",
+    "@@last_modified": "2026-11-10 13:06:12.576227",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6526,10 +6524,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6547,10 +6541,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9616,6 +9606,7 @@
     "addCourseBrowsePublic": "Parcourir les cours publics",
     "browsePublicCourses": "Parcourir les cours publics",
     "editProfile": "Modifier le profil",
+    "mapSearchHint": "Cuardaigh cúrsaí poiblí",
     "mapFilterAllLanguages": "Toutes les langues",
     "mapFilterNotStarted": "Pas commencé",
     "mapFilterInProgress": "En cours",
@@ -10508,9 +10499,7 @@
     "practiceMeaningPrompt": "Cad a chiallaíonn ‘{word}’?",
     "practiceEmojiPrompt": "Roghnaigh emoji do ‘{word}’",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Clár Ceannairí",
-    "leaderboardRank": "Céim {rank}",
-    "courseLeaderboardTooltip": "Gach duine sa chúrsa seo, rangaithe de réir a gcuid réaltaí sa teanga. Beartaigh ar bhall agus roghnaigh “Tosaigh comhrá” chun teachtaireacht dhíreach a sheoladh chucu.",
+    "courseParticipantTooltip": "Isto é todo mundo neste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
     "goalReportTitle": "Reportáil an réalt seo",
     "goalReportOverAwardPrompt": "Mura raibh tú ceaptha an réalt seo a fháil, mínigh cén fáth.",
     "goalReportUnderAwardPrompt": "Má cheapann tú gur cheart duit an réalt seo a fháil, cén fáth?",
@@ -10529,11 +10518,6 @@
     "callTranscriptPreparingRecording": "Ag ullmhú an taifeadta iomláin…",
     "callTranscriptNoRecording": "Níl aon taifeadadh den ghlao iomlán.",
     "callTranscriptNotSubscribed": "Ní raibh síntiús ag {name} le linn an ghlao seo, mar sin níor tras-scríobhadh an méid a dúradh.",
-    "joinYourCourse": "Glac páirt i do chúrsa",
-    "courseCodeJoinExplanation": "Logáil isteach nó cláraigh, agus úsáidfimid do chód cúrsa chun tú a chur le do chúrsa go huathoibríoch.",
-    "courseCodeLabel": "Cód cúrsa",
-    "courseCodeSaved": "Cód cúrsa {code} sábháilte",
-    "courseCodeSavedExplanation": "Cláraigh nó logáil isteach agus cuirfimid le do chúrsa thú.",
     "moderationRefusedContactDetails": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch sonraí teagmhála, cosúil le huimhir theileafóin. Bain iad le do thoil agus bain triail eile as.",
     "moderationRefusedProfanity": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch focal nach gceadaímid sa chomhrá. Athraigh é le do thoil agus bain triail eile as.",
     "callTranscriptTranscribeButton": "Trascríobh",
@@ -10665,9 +10649,7 @@
     "readAloudTake": "Glac {number}",
     "videoWontPlayHere": "Ní imreoidh an físeán seo anseo.",
     "watchOnYoutube": "Féach ar YouTube",
-    "createMyOwnCourse": "Cruthaigh mo chúrsa féin",
     "xpTowardMission": "{xp} XP i dtreo an Mhisiúin seo",
-    "centralCourseMembersSeeYou": "Is féidir le baill an chúrsa seo d'ainm agus do phróifíl a fheiceáil.",
     "practiceStartWordCount": "{count, plural, =1{focal a chleachtadh} other{focail a chleachtadh}}",
     "practiceStartGrammarCount": "{count, plural, =1{pointe gramadaí a chleachtadh} other{pointí gramadaí a chleachtadh}}",
     "practiceStartExerciseTypes": "Cineálacha cleachtaí",
@@ -10678,9 +10660,6 @@
     "sharedAnalyticsOthersTitle": "Daoine eile atá in ann d'fhorbairt a fheiceáil",
     "removeAnalyticsAccess": "Bain rochtain",
     "removeAnalyticsAccessDesc": "Ní bheidh {name} in ann d'fhorbairt foghlama a fheiceáil a thuilleadh.",
-    "centralCourseOfferBody": "Is é seo cúrsa Pangea do fhoghlaimeoirí {language}. Is féidir le baill d'ainm agus do phróifíl a fheiceáil.",
-    "centralCourseOfferTitle": "An bhfuil tú ag iarraidh a bheith páirteach i {course}?",
-    "makeMyOwnCourseInstead": "Cruthaigh mo chúrsa féin ina ionad",
     "suggestMobileSignInSameAccount": "Ansin sínigh isteach san aip leis an gcuntas seo.",
     "focusMission": "Dírigh ar ghníomhaíochtaí na Misean seo",
     "missionNotYetOpen": "Níl sé oscailte fós",
@@ -10709,10 +10688,19 @@
     "worldExploreCity": "Explore",
     "worldShipAtCity": "At {city}",
     "worldShipRunBy": "Run by {admins}",
-    "worldShipRunByPangea": "Run by Pangea",
     "worldShipMembers": "{count, plural, =1{1 member} other{{count} members}}",
     "worldShipOpenCourse": "Open course",
     "worldCityLockedLabel": "{city}, not open to you yet",
     "worldCityNoCourseHere": "Join a course here to explore it",
-    "mapSearchHint": "Cuardaigh cúrsaí poiblí"
+    "subscriptionGracePeriodEndsOn": "Theip ar an íocaíocht. Críochnaíonn an tréimhse cairde ar {date}",
+    "changeBaseLanguageTitle": "Athraigh buntheanga?",
+    "changeBaseLanguageDesc": "Athróidh biachláir agus cnaipí an aip go {language}.",
+    "accountSetupFailedHelp": "Non puvim completar li arangeament de vor conto. Controla vor conexion e prova denov, o deslogga e logga plu tard.",
+    "onboardingOfflineError": "Tá tú as líne. Bain triail eile as nuair a bheidh tú ar líne arís.",
+    "activitySavedTo": "Activity saved to {page}",
+    "joinWithYourCode": "Junge con su codice",
+    "joinCodeJoinExplanation": "Intra o registra vos, e nos va usar vostre codice pro adjunger vos automaticamente.",
+    "joinCodeLabel": "Codice",
+    "joinCodeSaved": "Codice {code} salvate",
+    "joinCodeSavedExplanation": "Registra vos o entra e nos va adjunger vos."
 }

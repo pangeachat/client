@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-11-01 09:54:08.480910",
+    "@@last_modified": "2026-11-10 13:06:11.618807",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -3186,13 +3186,11 @@
     "editCourseLater": "Možete kasnije urediti naslov predloška, opise i sliku tečaja.",
     "createCourse": "Stvori tečaj",
     "stats": "Statistike",
-    "createGroupChat": "Stvori grupni razgovor",
     "editCourse": "Uredi tečaj",
     "inviteDesc": "Po korisničkom imenu, po kodu ili linku",
     "editCourseDesc": "Ovdje možete urediti naslov tečaja, opis itd.",
     "permissionsDesc": "Postavite dopuštenja poput tko može pozvati korisnike, slati poruke, stvarati chatove itd.",
     "accessDesc": "Možete učiniti svoj tečaj otvorenim za svijet! Ili, učiniti svoj tečaj privatnim i sigurnim.",
-    "createGroupChatDesc": "Dok sesije aktivnosti počinju i završavaju, grupni chatovi će ostati otvoreni za rutinsku komunikaciju.",
     "deleteDesc": "Samo administratori mogu izbrisati tečaj. Ovo je destruktivna radnja koja uklanja sve korisnike i briše sve odabrane chatove unutar tečaja. Budite oprezni.",
     "whatNow": "Što sada?",
     "chooseNextActivity": "Odaberite svoju sljedeću aktivnost!",
@@ -6330,10 +6328,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6351,10 +6345,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9420,6 +9410,7 @@
     "addCourseBrowsePublic": "Pretraži javne tečajeve",
     "browsePublicCourses": "Pretraži javne tečajeve",
     "editProfile": "Uredi profil",
+    "mapSearchHint": "Pretražite javne tečajeve",
     "mapFilterAllLanguages": "Svi jezici",
     "mapFilterNotStarted": "Nije započeto",
     "mapFilterInProgress": "U tijeku",
@@ -10312,9 +10303,7 @@
     "practiceMeaningPrompt": "Što znači „{word}“?",
     "practiceEmojiPrompt": "Odaberite emoji za „{word}“",
     "practiceStepProgress": "{done} od {total}",
-    "leaderboard": "Ljestvica",
-    "leaderboardRank": "Rang {rank}",
-    "courseLeaderboardTooltip": "Svi na ovom tečaju, rangirani prema broju zvjezdica u jeziku tečaja. Dodirnite člana i odaberite „Započni razgovor” kako biste mu poslali izravnu poruku.",
+    "courseParticipantTooltip": "Ovo su svi u ovom tečaju. Kliknite na avatar bilo kojeg korisnika i \"započni razgovor\" da pošaljete DM.",
     "goalReportTitle": "Prijavi ovu zvjezdicu",
     "goalReportOverAwardPrompt": "Ako niste trebali dobiti ovu zvjezdicu, molimo objasnite zašto.",
     "goalReportUnderAwardPrompt": "Ako mislite da ste trebali dobiti ovu zvjezdicu, zašto?",
@@ -10333,11 +10322,6 @@
     "callTranscriptPreparingRecording": "Priprema se cijela snimka…",
     "callTranscriptNoRecording": "Nema snimke cijelog poziva.",
     "callTranscriptNotSubscribed": "{name} nije imao pretplatu tijekom ovog poziva, tako da izgovoreno nije transkribirano.",
-    "joinYourCourse": "Pridružite se svom tečaju",
-    "courseCodeJoinExplanation": "Prijavite se ili registrirajte, a mi ćemo upotrijebiti vaš kod tečaja kako bismo vas automatski dodali na vaš tečaj.",
-    "courseCodeLabel": "Kod tečaja",
-    "courseCodeSaved": "Kod tečaja {code} spremljen",
-    "courseCodeSavedExplanation": "Registrirajte se ili prijavite i dodat ćemo vas na vaš tečaj.",
     "moderationRefusedContactDetails": "Vaša poruka nije poslana. Automatski filtar pronašao je podatke za kontakt, poput telefonskog broja. Uklonite ih i pokušajte ponovno.",
     "moderationRefusedProfanity": "Vaša poruka nije poslana. Automatski filtar pronašao je riječ koju ne dopuštamo u chatu. Promijenite je i pokušajte ponovno.",
     "callTranscriptTranscribeButton": "Prepiši",
@@ -10469,9 +10453,7 @@
     "readAloudTake": "Pokušaj {number}",
     "videoWontPlayHere": "Ovaj se videozapis ovdje neće reproducirati.",
     "watchOnYoutube": "Gledaj na YouTubeu",
-    "createMyOwnCourse": "Izradi moj tečaj",
     "xpTowardMission": "{xp} XP za ovu misiju",
-    "centralCourseMembersSeeYou": "Članovi ovog tečaja mogu vidjeti vaše ime i profil.",
     "practiceStartWordCount": "{count, plural, =1{riječ za vježbanje} other{riječi za vježbanje}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatička točka za vježbanje} other{gramatičke točke za vježbanje}}",
     "practiceStartExerciseTypes": "Vrste vježbi",
@@ -10482,9 +10464,6 @@
     "sharedAnalyticsOthersTitle": "Ostali koji mogu vidjeti vaš napredak",
     "removeAnalyticsAccess": "Ukloni pristup",
     "removeAnalyticsAccessDesc": "{name} više neće moći vidjeti vaš napredak u učenju.",
-    "centralCourseOfferBody": "Ovo je Pangein tečaj za učenike {language} jezika. Njegovi članovi mogu vidjeti vaše ime i profil.",
-    "centralCourseOfferTitle": "Pridružiti se tečaju {course}?",
-    "makeMyOwnCourseInstead": "Umjesto toga, izradite vlastiti tečaj",
     "suggestMobileSignInSameAccount": "Zatim se prijavite u aplikaciju s ovim računom.",
     "focusMission": "Fokusirajte se na aktivnosti ove Misije",
     "missionNotYetOpen": "Još nije otvoreno",
@@ -10513,10 +10492,19 @@
     "worldExploreCity": "Istražite",
     "worldShipAtCity": "U {city}",
     "worldShipRunBy": "Vodi {admins}",
-    "worldShipRunByPangea": "Vodi Pangea",
     "worldShipMembers": "{count, plural, =1{1 član} other{{count} članova}}",
     "worldShipOpenCourse": "Otvoreni tečaj",
     "worldCityLockedLabel": "{city}, još vam nije otvoren",
     "worldCityNoCourseHere": "Pridružite se tečaju ovdje kako biste ga istražili",
-    "mapSearchHint": "Pretražite javne tečajeve"
+    "subscriptionGracePeriodEndsOn": "Plaćanje nije uspjelo. Poček istječe {date}",
+    "changeBaseLanguageTitle": "Promijeniti osnovni jezik?",
+    "changeBaseLanguageDesc": "Izbornici i gumbi aplikacije prebacit će se na {language}.",
+    "accountSetupFailedHelp": "Nismo uspjeli dovršiti postavljanje vašeg računa. Provjerite vezu i pokušajte ponovno ili se odjavite i prijavite kasnije.",
+    "onboardingOfflineError": "Izvan mreže ste. Pokušajte ponovno kada se vratite na mrežu.",
+    "activitySavedTo": "Aktivnost spremljena u {page}",
+    "joinWithYourCode": "Pridružite se svojim kodom",
+    "joinCodeJoinExplanation": "Prijavite se ili registrirajte, a mi ćemo upotrijebiti vaš kod da vas automatski dodamo.",
+    "joinCodeLabel": "Kod",
+    "joinCodeSaved": "Kod {code} spremljen",
+    "joinCodeSavedExplanation": "Registrirajte se ili prijavite i mi ćemo vas dodati."
 }

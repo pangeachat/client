@@ -87,6 +87,9 @@ class OneConstructUse {
   /// that mint one use per event keep meaning exactly what they meant.
   final int count;
 
+  /// How long the audio ran, on an [ConstructUseTypeEnum.aud] row only.
+  final int? durMs;
+
   OneConstructUse({
     required this.useType,
     required this.lemma,
@@ -97,6 +100,7 @@ class OneConstructUse {
     required this.xp,
     this.id,
     this.count = 1,
+    this.durMs,
   }) {
     if (category is MorphFeaturesEnum) {
       _category = category.name;
@@ -112,11 +116,13 @@ class OneConstructUse {
   factory OneConstructUse.fromJson(Map<String, dynamic> json) {
     debugger(when: kDebugMode && json['constructType'] == null);
 
-    final constructType = json['constructType'] != null
+    final useType = ConstructUseTypeEnum.fromString(json['useType']);
+
+    // An audio row's type is a marker, not a type; see [toJson].
+    final constructType =
+        json['constructType'] != null && useType != ConstructUseTypeEnum.aud
         ? ConstructTypeEnum.fromString(json['constructType'])
         : ConstructTypeEnum.vocab;
-
-    final useType = ConstructUseTypeEnum.fromString(json['useType']);
 
     return OneConstructUse(
       useType: useType,
@@ -129,11 +135,13 @@ class OneConstructUse {
         eventId: json['msgId'],
         roomId: json['chatId'],
         timeStamp: DateTime.parse(json['timeStamp']),
+        sessionId: json['sessionId'] is String ? json['sessionId'] : null,
       ),
       xp: json['xp'] ?? useType.pointValue,
       // Absent on every row written before bucketing existed, and on every row
       // an older client wrote, so a missing count is one occurrence.
       count: json['count'] as int? ?? 1,
+      durMs: json['durMs'] is int ? json['durMs'] : null,
     );
   }
 
@@ -148,7 +156,12 @@ class OneConstructUse {
     'form': form,
     'msgId': metadata.eventId,
     'lemma': lemma,
-    'constructType': constructType.string,
+    // [ConstructAnalyticsModel.fromJson] drops the deprecated `g` before
+    // parsing, in every app ever shipped, so an audio row reaches no figure on
+    // any of them. A local batch is read past that drop, so it can still upload.
+    'constructType': useType == ConstructUseTypeEnum.aud
+        ? 'g'
+        : constructType.string,
     'categories': category,
     'id': id,
     'xp': xp,
@@ -157,6 +170,9 @@ class OneConstructUse {
     // and these events are chunked against a hard Matrix size limit. Absent
     // reads back as 1.
     if (count != 1) 'count': count,
+    // Only a practice session's uses carry one. Older apps ignore the key.
+    if (metadata.sessionId != null) 'sessionId': metadata.sessionId,
+    if (durMs != null) 'durMs': durMs,
   };
 
   OneConstructUse copyWith({
@@ -169,6 +185,7 @@ class OneConstructUse {
     ConstructUseMetaData? metadata,
     int? xp,
     int? count,
+    int? durMs,
   }) {
     return OneConstructUse(
       lemma: lemma ?? this.lemma,
@@ -180,6 +197,7 @@ class OneConstructUse {
       metadata: metadata ?? this.metadata,
       xp: xp ?? this.xp,
       count: count ?? this.count,
+      durMs: durMs ?? this.durMs,
     );
   }
 
@@ -231,9 +249,14 @@ class ConstructUseMetaData {
   final String? roomId;
   final DateTime timeStamp;
 
+  /// The practice session this use came from; null outside practice and on
+  /// every use an older app wrote.
+  final String? sessionId;
+
   ConstructUseMetaData({
     required this.roomId,
     required this.timeStamp,
     this.eventId,
+    this.sessionId,
   });
 }

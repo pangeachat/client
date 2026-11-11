@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-01 09:54:08.771851",
+    "@@last_modified": "2026-11-10 13:06:11.949580",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3388,13 +3388,11 @@
     "editCourseLater": "Anda dapat mengedit judul template, deskripsi, dan gambar kursus nanti.",
     "createCourse": "Buat kursus",
     "stats": "Statistik",
-    "createGroupChat": "Buat obrolan grup",
     "editCourse": "Edit kursus",
     "inviteDesc": "Undang dengan nama pengguna, kode, atau tautan",
     "editCourseDesc": "Di sini Anda dapat mengedit judul kursus, deskripsi, dll.",
     "permissionsDesc": "Atur izin seperti siapa yang dapat mengundang pengguna, mengirim pesan, membuat obrolan, dll.",
     "accessDesc": "Anda dapat membuat kursus Anda terbuka untuk dunia! Atau, buat kursus Anda pribadi dan aman.",
-    "createGroupChatDesc": "Sedangkan sesi aktivitas dimulai dan berakhir, obrolan grup akan tetap terbuka untuk komunikasi rutin.",
     "deleteDesc": "Hanya admin yang dapat menghapus kursus. Ini adalah tindakan destruktif yang menghapus semua pengguna dan menghapus semua obrolan yang dipilih dalam kursus. Lanjutkan dengan hati-hati.",
     "whatNow": "Apa sekarang?",
     "chooseNextActivity": "Pilih aktivitas berikutnya!",
@@ -6000,10 +5998,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6021,10 +6015,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9060,6 +9050,7 @@
     "addCourseBrowsePublic": "Jelajahi kursus publik",
     "browsePublicCourses": "Jelajahi kursus publik",
     "editProfile": "Edit profil",
+    "mapSearchHint": "Cari kursus publik",
     "mapFilterAllLanguages": "Semua bahasa",
     "mapFilterNotStarted": "Belum dimulai",
     "mapFilterInProgress": "Sedang berlangsung",
@@ -9952,9 +9943,7 @@
     "practiceMeaningPrompt": "Apa arti '{word}'?",
     "practiceEmojiPrompt": "Pilih emoji untuk '{word}'",
     "practiceStepProgress": "{done} dari {total}",
-    "leaderboard": "Papan Peringkat",
-    "leaderboardRank": "Peringkat {rank}",
-    "courseLeaderboardTooltip": "Semua orang di kursus ini, diberi peringkat berdasarkan bintang mereka dalam bahasa tersebut. Ketuk anggota dan pilih “Mulai percakapan” untuk mengirimi mereka DM.",
+    "courseParticipantTooltip": "Ini adalah semua orang di kursus ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
     "goalReportTitle": "Laporkan bintang ini",
     "goalReportOverAwardPrompt": "Jika Anda tidak seharusnya mendapatkan bintang ini, mohon jelaskan alasannya.",
     "goalReportUnderAwardPrompt": "Jika menurut Anda seharusnya mendapatkan bintang ini, mengapa?",
@@ -9973,11 +9962,6 @@
     "callTranscriptPreparingRecording": "Mempersiapkan rekaman lengkap...",
     "callTranscriptNoRecording": "Tidak ada rekaman panggilan lengkap.",
     "callTranscriptNotSubscribed": "{name} tidak memiliki langganan selama panggilan ini, jadi apa yang dikatakan tidak ditranskripsikan.",
-    "joinYourCourse": "Gabung kursus Anda",
-    "courseCodeJoinExplanation": "Masuk atau daftar, dan kami akan menggunakan kode kursus Anda untuk menambahkan Anda ke kursus secara otomatis.",
-    "courseCodeLabel": "Kode kursus",
-    "courseCodeSaved": "Kode kursus {code} tersimpan",
-    "courseCodeSavedExplanation": "Daftar atau masuk dan kami akan menambahkan Anda ke kursus Anda.",
     "moderationRefusedContactDetails": "Pesan Anda tidak terkirim. Filter otomatis menemukan detail kontak, seperti nomor telepon. Harap hapus dan coba lagi.",
     "moderationRefusedProfanity": "Pesan Anda tidak terkirim. Filter otomatis menemukan kata yang tidak kami izinkan dalam obrolan. Harap ubah dan coba lagi.",
     "callTranscriptTranscribeButton": "Transkripsikan",
@@ -10109,9 +10093,7 @@
     "readAloudTake": "Ambil {number}",
     "videoWontPlayHere": "Video ini tidak dapat diputar di sini.",
     "watchOnYoutube": "Tonton di YouTube",
-    "createMyOwnCourse": "Buat kursus saya sendiri",
     "xpTowardMission": "{xp} XP untuk Misi ini",
-    "centralCourseMembersSeeYou": "Anggota kursus ini dapat melihat nama dan profil Anda.",
     "practiceStartWordCount": "{count, plural, =1{kata untuk dilatih} other{kata untuk dilatih}}",
     "practiceStartGrammarCount": "{count, plural, =1{poin tata bahasa untuk dilatih} other{poin tata bahasa untuk dilatih}}",
     "practiceStartExerciseTypes": "Jenis latihan",
@@ -10122,9 +10104,6 @@
     "sharedAnalyticsOthersTitle": "Orang lain yang dapat melihat progres Anda",
     "removeAnalyticsAccess": "Hapus akses",
     "removeAnalyticsAccessDesc": "{name} tidak akan lagi dapat melihat progres belajar Anda.",
-    "centralCourseOfferBody": "Ini adalah kursus Pangea untuk pembelajar {language}. Anggotanya dapat melihat nama dan profil Anda.",
-    "centralCourseOfferTitle": "Gabung {course}?",
-    "makeMyOwnCourseInstead": "Buat kursus saya sendiri saja",
     "suggestMobileSignInSameAccount": "Lalu masuk ke aplikasi dengan akun ini.",
     "focusMission": "Fokus pada aktivitas Misi ini",
     "missionNotYetOpen": "Belum dibuka",
@@ -10153,10 +10132,19 @@
     "worldExploreCity": "Jelajahi",
     "worldShipAtCity": "Di {city}",
     "worldShipRunBy": "Dijalankan oleh {admins}",
-    "worldShipRunByPangea": "Dijalankan oleh Pangea",
     "worldShipMembers": "{count, plural, =1{1 anggota} other{{count} anggota}}",
     "worldShipOpenCourse": "Buka kursus",
     "worldCityLockedLabel": "{city}, belum terbuka untuk Anda",
     "worldCityNoCourseHere": "Ikuti kursus di sini untuk menjelajahinya",
-    "mapSearchHint": "Cari kursus publik"
+    "subscriptionGracePeriodEndsOn": "Pembayaran gagal. Masa tenggang berakhir pada {date}",
+    "changeBaseLanguageTitle": "Ganti bahasa dasar?",
+    "changeBaseLanguageDesc": "Menu dan tombol aplikasi akan beralih ke {language}.",
+    "accountSetupFailedHelp": "Kami tidak dapat menyelesaikan penyiapan akun Anda. Periksa koneksi Anda dan coba lagi, atau keluar dan masuk nanti.",
+    "onboardingOfflineError": "Anda sedang offline. Coba lagi setelah Anda online.",
+    "activitySavedTo": "Aktivitas disimpan ke {page}",
+    "joinWithYourCode": "Gabung dengan kode Anda",
+    "joinCodeJoinExplanation": "Masuk atau daftar, dan kami akan menggunakan kode Anda untuk menambahkan Anda secara otomatis.",
+    "joinCodeLabel": "Kode",
+    "joinCodeSaved": "Kode {code} tersimpan",
+    "joinCodeSavedExplanation": "Daftar atau masuk dan kami akan menambahkan Anda."
 }

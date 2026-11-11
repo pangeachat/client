@@ -21,7 +21,7 @@ class CourseLanguageScope {
   /// Whether [course] is in the learner's current target language — the
   /// scope every Mission meter, the Learning Objectives list and the
   /// analytics bar's star count read. A course with no language recorded
-  /// counts, as the star count and the leaderboard always have.
+  /// counts, as the star count always has.
   static bool courseInTargetLanguage(Room? course) =>
       _inTargetLanguage(course?.coursePlan?.l2);
 

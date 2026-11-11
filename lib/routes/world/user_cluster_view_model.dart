@@ -188,7 +188,7 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   /// Stars are completed Missions (#9436), counted once per Mission across
   /// the JOINED courses in the learner's target language — never a course
   /// the map is only previewing (#9559). A course with no language recorded
-  /// counts, the same fallback the leaderboard uses.
+  /// counts, the same fallback a chat's member cards use.
   @override
   int get starsEarned {
     final userL2 = this.userL2;
@@ -264,7 +264,13 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
     if (!PracticeSessionHolder.instance.blocksAnalytics(type)) return false;
     _open(
       context,
-      WorkspaceNav.openPractice(GoRouterState.of(context).uri, type),
+      // With the session's Mission, or the panel claims an unscoped session
+      // and replaces the live one.
+      WorkspaceNav.openPractice(
+        GoRouterState.of(context).uri,
+        type,
+        missionId: PracticeSessionHolder.instance.liveMissionId,
+      ),
     );
     return true;
   }

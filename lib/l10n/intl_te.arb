@@ -1249,13 +1249,11 @@
     "editCourseLater": "మీరు టెంప్లేట్ శీర్షిక, వివరణలు, మరియు కోర్సు చిత్రాన్ని తర్వాత సవరించవచ్చు.",
     "createCourse": "కోర్సు సృష్టించండి",
     "stats": "గణాంకాలు",
-    "createGroupChat": "గుంపు చాట్ సృష్టించండి",
     "editCourse": "కోర్సును సవరించండి",
     "inviteDesc": "యూజర్‌నేమ్, కోడ్ లేదా లింక్ ద్వారా",
     "editCourseDesc": "ఇక్కడ మీరు కోర్సు శీర్షిక, వివరణ, మొదలైనవి సవరించవచ్చు.",
     "permissionsDesc": "అనుమతులను సెట్ చేయండి, ఉదాహరణకు ఎవరు యూజర్లను ఆహ్వానించగలరు, సందేశాలు పంపగలరు, చాట్‌లు సృష్టించగలరు, మొదలైనవి.",
     "accessDesc": "మీ కోర్సును ప్రపంచానికి తెరవవచ్చు! లేదా, మీ కోర్సును ప్రైవేట్ చేసి భద్రపరచవచ్చు.",
-    "createGroupChatDesc": "అభ్యాస సెషన్లు ప్రారంభమై ముగిసే సమయంలో, గుంపు చాట్‌లు సాధారణ కమ్యూనికేషన్ కోసం తెరవబడతాయి.",
     "deleteDesc": "కేవలం అడ్మిన్లు మాత్రమే కోర్సును తొలగించగలరు. ఇది ఒక ధ్వంసక చర్యగా ఉంటుంది, ఇది అన్ని వినియోగదారులను తొలగిస్తుంది మరియు కోర్సులోని అన్ని ఎంపిక చేసిన చాట్‌లను డిలీట్ చేస్తుంది. జాగ్రత్తగా ముందుకు పోవండి.",
     "whatNow": "ఇప్పుడు ఏమి చేయాలి?",
     "chooseNextActivity": "మీ తదుపరి కార్యకలాపాన్ని ఎంచుకోండి!",
@@ -1317,7 +1315,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-11-01 09:54:14.000414",
+    "@@last_modified": "2026-11-10 13:06:20.002613",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6844,10 +6842,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6865,10 +6859,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9934,6 +9924,7 @@
     "addCourseBrowsePublic": "ప్రజా కోర్సులను బ్రౌజ్ చేయండి",
     "browsePublicCourses": "ప్రజా కోర్సులను బ్రౌజ్ చేయండి",
     "editProfile": "ప్రొఫైల్ సవరించండి",
+    "mapSearchHint": "పబ్లిక్ కోర్సులను శోధించండి",
     "mapFilterAllLanguages": "అన్ని భాషలు",
     "mapFilterNotStarted": "ప్రారంభించలేదు",
     "mapFilterInProgress": "జరుగుతోంది",
@@ -10826,9 +10817,7 @@
     "practiceMeaningPrompt": "‘{word}’ అంటే ఏమిటి?",
     "practiceEmojiPrompt": "‘{word}’ కోసం ఒక ఎమోజీని ఎంచుకోండి",
     "practiceStepProgress": "{total}లో {done}",
-    "leaderboard": "లీడర్‌బోర్డ్",
-    "leaderboardRank": "ర్యాంక్ {rank}",
-    "courseLeaderboardTooltip": "ఈ కోర్సులోని ప్రతి ఒక్కరూ, వారి భాషలోని నక్షత్రాల ఆధారంగా ర్యాంక్ చేయబడ్డారు. వారికి DM పంపడానికి సభ్యుడిని నొక్కి, “సంభాషణను ప్రారంభించు” ఎంచుకోండి.",
+    "courseParticipantTooltip": "ఈ కోర్సులో ఉన్న అందరూ ఇక్కడ ఉన్నారు. ఏ వినియోగదారుడి అవతారంపై క్లిక్ చేసి \"సంభాషణ ప్రారంభించండి\" అని నేరుగా సందేశం పంపండి.",
     "goalReportTitle": "ఈ నక్షత్రాన్ని నివేదించండి",
     "goalReportOverAwardPrompt": "మీరు ఈ నక్షత్రాన్ని పొందకూడదనుకుంటే, దయచేసి ఎందుకు వివరించండి.",
     "goalReportUnderAwardPrompt": "మీరు ఈ నక్షత్రాన్ని పొందవలసిందని మీరు అనుకుంటే, ఎందుకు?",
@@ -10847,11 +10836,6 @@
     "callTranscriptPreparingRecording": "పూర్తి రికార్డింగ్‌ను సిద్ధం చేస్తున్నారు…",
     "callTranscriptNoRecording": "పూర్తి కాల్ రికార్డింగ్ లేదు.",
     "callTranscriptNotSubscribed": "ఈ కాల్ సమయంలో {name}కు సభ్యత్వం లేనందున, చెప్పినవి ట్రాన్స్‌క్రైబ్ చేయబడలేదు.",
-    "joinYourCourse": "మీ కోర్సులో చేరండి",
-    "courseCodeJoinExplanation": "లాగిన్ అవ్వండి లేదా సైన్ అప్ చేయండి, మరియు మీ కోర్సు కోడ్‌ని ఉపయోగించి మిమ్మల్ని మీ కోర్సులో ఆటోమేటిక్‌గా చేరుస్తాము.",
-    "courseCodeLabel": "కోర్సు కోడ్",
-    "courseCodeSaved": "కోర్సు కోడ్ {code} సేవ్ చేయబడింది",
-    "courseCodeSavedExplanation": "సైన్ అప్ చేయండి లేదా లాగిన్ అవ్వండి మరియు మిమ్మల్ని మీ కోర్సులో చేరుస్తాము.",
     "moderationRefusedContactDetails": "మీ సందేశం పంపబడలేదు. ఫోన్ నంబర్ వంటి సంప్రదింపు వివరాలను ఆటోమేటిక్ ఫిల్టర్ కనుగొంది. దయచేసి వాటిని తీసివేసి మళ్లీ ప్రయత్నించండి.",
     "moderationRefusedProfanity": "మీ సందేశం పంపబడలేదు. చాట్‌లో మేము అనుమతించని పదాన్ని ఆటోమేటిక్ ఫిల్టర్ కనుగొంది. దయచేసి దానిని మార్చి మళ్లీ ప్రయత్నించండి.",
     "callTranscriptTranscribeButton": "ట్రాన్స్‌క్రైబ్ చేయి",
@@ -10983,9 +10967,7 @@
     "readAloudTake": "టేక్ {number}",
     "videoWontPlayHere": "ఈ వీడియో ఇక్కడ ప్లే అవదు.",
     "watchOnYoutube": "YouTubeలో చూడండి",
-    "createMyOwnCourse": "నా స్వంత కోర్సును సృష్టించండి",
     "xpTowardMission": "ఈ మిషన్ కోసం {xp} XP",
-    "centralCourseMembersSeeYou": "ఈ కోర్సు సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
     "practiceStartWordCount": "{count, plural, =1{అభ్యాసం చేయడానికి పదం} other{అభ్యాసం చేయడానికి పదాలు}}",
     "practiceStartGrammarCount": "{count, plural, =1{అభ్యాసం చేయడానికి వ్యాకరణ అంశం} other{అభ్యాసం చేయడానికి వ్యాకరణ అంశాలు}}",
     "practiceStartExerciseTypes": "అభ్యాస రకాలు",
@@ -10996,9 +10978,6 @@
     "sharedAnalyticsOthersTitle": "మీ పురోగతిని చూడగలిగే ఇతరులు",
     "removeAnalyticsAccess": "యాక్సెస్‌ను తీసివేయండి",
     "removeAnalyticsAccessDesc": "{name} మీ అభ్యాస పురోగతిని ఇకపై చూడలేరు.",
-    "centralCourseOfferBody": "ఇది {language} నేర్చుకునే వారి కోసం పాంగేయా కోర్సు. దీని సభ్యులు మీ పేరు మరియు ప్రొఫైల్‌ను చూడగలరు.",
-    "centralCourseOfferTitle": "{course}లో చేరతారా?",
-    "makeMyOwnCourseInstead": "బదులుగా నా స్వంత కోర్సును సృష్టించు",
     "suggestMobileSignInSameAccount": "ఆపై ఈ ఖాతాతో యాప్‌లోకి సైన్ ఇన్ చేయండి.",
     "focusMission": "ఈ మిషన్ కార్యకలాపాలపై దృష్టి పెట్టండి",
     "missionNotYetOpen": "ఇంకా తెరవబడలేదు",
@@ -11027,10 +11006,19 @@
     "worldExploreCity": "అన్వేషించండి",
     "worldShipAtCity": "{city}లో",
     "worldShipRunBy": "{admins} ద్వారా నిర్వహించబడుతుంది",
-    "worldShipRunByPangea": "పాంగియా ద్వారా నిర్వహించబడుతుంది",
     "worldShipMembers": "{count, plural, =1{1 సభ్యుడు} other{{count} సభ్యులు}}",
     "worldShipOpenCourse": "కోర్సును తెరవండి",
     "worldCityLockedLabel": "{city}, మీకు ఇంకా అందుబాటులో లేదు",
     "worldCityNoCourseHere": "దీన్ని అన్వేషించడానికి ఇక్కడ ఒక కోర్సులో చేరండి",
-    "mapSearchHint": "పబ్లిక్ కోర్సులను శోధించండి"
+    "subscriptionGracePeriodEndsOn": "చెల్లింపు విఫలమైంది. గ్రేస్ పీరియడ్ {date}న ముగుస్తుంది",
+    "changeBaseLanguageTitle": "ప్రాథమిక భాషను మార్చాలా?",
+    "changeBaseLanguageDesc": "యాప్ మెనూలు మరియు బటన్‌లు {language}కి మారుతాయి.",
+    "accountSetupFailedHelp": "మేము మీ ఖాతాను సెటప్ చేయలేకపోయాము. మీ కనెక్షన్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి లేదా లాగ్ అవుట్ చేసి తర్వాత సైన్ ఇన్ చేయండి.",
+    "onboardingOfflineError": "మీరు ఆఫ్‌లైన్‌లో ఉన్నారు. ఆన్‌లైన్‌లోకి వచ్చిన తర్వాత మళ్లీ ప్రయత్నించండి.",
+    "activitySavedTo": "కార్యకలాపం {page}లో సేవ్ చేయబడింది",
+    "joinWithYourCode": "మీ కోడ్‌తో చేరండి",
+    "joinCodeJoinExplanation": "లాగిన్ చేయండి లేదా సైన్ అప్ చేయండి, మరియు మిమ్మల్ని స్వయంచాలకంగా జోడించడానికి మేము మీ కోడ్‌ను ఉపయోగిస్తాము.",
+    "joinCodeLabel": "కోడ్",
+    "joinCodeSaved": "కోడ్ {code} సేవ్ చేయబడింది",
+    "joinCodeSavedExplanation": "సైన్ అప్ చేయండి లేదా లాగిన్ చేయండి మరియు మేము మిమ్మల్ని జోడిస్తాము."
 }

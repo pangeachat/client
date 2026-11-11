@@ -1862,13 +1862,11 @@
     "editCourseLater": "შეგიძლიათ მოგვიანებით შეცვალოთ ტემპლეტის სათაური, აღწერები და კურსის სურათი.",
     "createCourse": "შექმენით კურსი",
     "stats": "სტატისტიკა",
-    "createGroupChat": "შექმენით ჯგუფური ჩათი",
     "editCourse": "შეცვალეთ კურსი",
     "inviteDesc": "მომხმარებლის სახელით, კოდით ან ლინკით",
     "editCourseDesc": "აქ შეგიძლიათ შეცვალოთ კურსის სათაური, აღწერა და სხვა.",
     "permissionsDesc": "დააყენეთ დაშვებები, როგორიცაა ვინ შეუძლია მოწვევა, მესიჯების გაგზავნა, ჩატების შექმნა და სხვა.",
     "accessDesc": "თქვენ შეგიძლიათ გახსნათ თქვენი კურსი მსოფლიოისთვის! ან, გახადოთ თქვენი კურსი პირადი და უსაფრთხო.",
-    "createGroupChatDesc": "სადაც იწყება და მთავრდება აქტივობის სესია, ჯგუფური ჩატები დარჩება ღია რეგულარული კომუნიკაციისთვის.",
     "deleteDesc": "მხოლოდ ადმინისტრატორებს შეუძლიათ კურსის წაშლა. ეს არის განადგურების მოქმედება, რომელიც წაშლის ყველა მომხმარებელს და ყველა არჩეულ ჩატს კურსის ფარგლებში. გთხოვთ, გამოიჩინოთ სიფრთხილე.",
     "whatNow": "ახლა რა?",
     "chooseNextActivity": "აირჩიეთ თქვენი შემდეგი აქტივობა!",
@@ -1930,7 +1928,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-11-01 09:54:09.697989",
+    "@@last_modified": "2026-11-10 13:06:13.473901",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6794,10 +6792,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6815,10 +6809,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9884,6 +9874,7 @@
     "addCourseBrowsePublic": "გადახედეთ საჯარო კურსებს",
     "browsePublicCourses": "გადახედეთ საჯარო კურსებს",
     "editProfile": "რედაქტირება პროფილში",
+    "mapSearchHint": "საჯარო კურსების ძიება",
     "mapFilterAllLanguages": "ყველა ენა",
     "mapFilterNotStarted": "არ დაწყებულა",
     "mapFilterInProgress": "მიმდინარეა",
@@ -10776,9 +10767,7 @@
     "practiceMeaningPrompt": "რას ნიშნავს „{word}“?",
     "practiceEmojiPrompt": "აირჩიეთ ემოჯი „{word}“-ისთვის",
     "practiceStepProgress": "{done} / {total}",
-    "leaderboard": "ლიდერბორდი",
-    "leaderboardRank": "ადგილი {rank}",
-    "courseLeaderboardTooltip": "ამ კურსის ყველა წევრი, რანჟირებული მათი ვარსკვლავების მიხედვით ამ ენაში. შეეხეთ წევრს და აირჩიეთ „საუბრის დაწყება“, რათა გაუგზავნოთ პირადი შეტყობინება.",
+    "courseParticipantTooltip": "ეს არის ყველა ადამიანი ამ კურსში. დააწკაპუნეთ ნებისმიერი მომხმარებლის ავატარზე და „დაიწყეთ საუბარი“, რომ მოიგზავნოთ პირადი შეტყობინება.",
     "goalReportTitle": "ამ ვარსკვლავის მოხსენება",
     "goalReportOverAwardPrompt": "თუ არ უნდა მიგეღოთ ეს ვარსკვლავი, გთხოვთ, აგვიხსნათ რატომ.",
     "goalReportUnderAwardPrompt": "თუ ფიქრობთ, რომ უნდა მიგეღოთ ეს ვარსკვლავი, რატომ?",
@@ -10797,11 +10786,6 @@
     "callTranscriptPreparingRecording": "მთლიანი ჩანაწერის მომზადება…",
     "callTranscriptNoRecording": "მთლიანი ზარის ჩანაწერი არ არის.",
     "callTranscriptNotSubscribed": "{name}-ს ამ ზარის განმავლობაში არ ჰქონდა გამოწერა, ამიტომ ნათქვამი არ ჩაიწერა.",
-    "joinYourCourse": "შეუერთდი შენს კურსს",
-    "courseCodeJoinExplanation": "შედი ან დარეგისტრირდი და ჩვენ გამოვიყენებთ შენს კურსის კოდს, რათა ავტომატურად დაგამატოთ კურსზე.",
-    "courseCodeLabel": "კურსის კოდი",
-    "courseCodeSaved": "კურსის კოდი {code} შენახულია",
-    "courseCodeSavedExplanation": "დარეგისტრირდი ან შედით სისტემაში და ჩვენ დაგამატებთ თქვენს კურსზე.",
     "moderationRefusedContactDetails": "თქვენი შეტყობინება არ გაიგზავნა. ავტომატურმა ფილტრმა აღმოაჩინა საკონტაქტო მონაცემები, მაგალითად, ტელეფონის ნომერი. გთხოვთ, წაშალოთ ისინი და სცადოთ ხელახლა.",
     "moderationRefusedProfanity": "თქვენი შეტყობინება არ გაიგზავნა. ავტომატურმა ფილტრმა აღმოაჩინა სიტყვა, რომლის გამოყენებაც ჩატში დაუშვებელია. გთხოვთ, შეცვალოთ ის და სცადოთ ხელახლა.",
     "callTranscriptTranscribeButton": "ტრანსკრიფცია",
@@ -10933,9 +10917,7 @@
     "readAloudTake": "მიღება {number}",
     "videoWontPlayHere": "ეს ვიდეო აქ არ იმუშავებს.",
     "watchOnYoutube": "უყურეთ YouTube-ზე",
-    "createMyOwnCourse": "შექმენი ჩემი კურსი",
     "xpTowardMission": "{xp} XP ამ მისიისთვის",
-    "centralCourseMembersSeeYou": "ამ კურსის წევრებს შეუძლიათ ნახონ თქვენი სახელი და პროფილი.",
     "practiceStartWordCount": "{count, plural, =1{სავარჯიშო სიტყვა} other{სავარჯიშო სიტყვა}}",
     "practiceStartGrammarCount": "{count, plural, =1{სავარჯიშო გრამატიკის საკითხი} other{სავარჯიშო გრამატიკის საკითხი}}",
     "practiceStartExerciseTypes": "სავარჯიშოების ტიპები",
@@ -10946,9 +10928,6 @@
     "sharedAnalyticsOthersTitle": "სხვები, ვინც ხედავს თქვენს პროგრესს",
     "removeAnalyticsAccess": "წვდომის წაშლა",
     "removeAnalyticsAccessDesc": "{name} ვეღარ შეძლებს თქვენი სწავლის პროგრესის ნახვას.",
-    "centralCourseOfferBody": "ეს არის Pangea-ს კურსი {language} ენის შემსწავლელებისთვის. მისი წევრები ხედავენ თქვენს სახელსა და პროფილს.",
-    "centralCourseOfferTitle": "შეუერთდეთ {course}-ს?",
-    "makeMyOwnCourseInstead": "სამაგიეროდ შევქმნა ჩემი კურსი",
     "suggestMobileSignInSameAccount": "შემდეგ შედით აპლიკაციაში ამ ანგარიშით.",
     "focusMission": "ფოკუსირება ამ მისიის აქტივობებზე",
     "missionNotYetOpen": "ჯერ არ არის გახსნილი",
@@ -10977,10 +10956,19 @@
     "worldExploreCity": "დათვალიერება",
     "worldShipAtCity": "{city}-ში",
     "worldShipRunBy": "მართავს {admins}",
-    "worldShipRunByPangea": "მართავს Pangea",
     "worldShipMembers": "{count, plural, =1{1 წევრი} other{{count} წევრი}}",
     "worldShipOpenCourse": "ღია კურსი",
     "worldCityLockedLabel": "{city}, ჯერ არ არის თქვენთვის ღია",
     "worldCityNoCourseHere": "შეუერთდით კურსს აქ მის დასათვალიერებლად",
-    "mapSearchHint": "საჯარო კურსების ძიება"
+    "subscriptionGracePeriodEndsOn": "გადახდა ვერ განხორციელდა. საშეღავათო პერიოდი სრულდება {date}-ზე",
+    "changeBaseLanguageTitle": "ძირითადი ენის შეცვლა?",
+    "changeBaseLanguageDesc": "აპლიკაციის მენიუები და ღილაკები შეიცვლება {language}-ზე.",
+    "accountSetupFailedHelp": "თქვენი ანგარიშის დაყენება ვერ დავასრულეთ. შეამოწმეთ კავშირი და სცადეთ ხელახლა, ან გამოდით სისტემიდან და მოგვიანებით შეხვიდეთ.",
+    "onboardingOfflineError": "თქვენ ხართ ხაზგარეშე. სცადეთ ხელახლა, როდესაც ონლაინ იქნებით.",
+    "activitySavedTo": "აქტივობა შენახულია: {page}",
+    "joinWithYourCode": "შემოუერთდით თქვენი კოდით",
+    "joinCodeJoinExplanation": "შედით ან დარეგისტრირდით და ჩვენ გამოვიყენებთ თქვენს კოდს, რათა ავტომატურად დაგამატოთ.",
+    "joinCodeLabel": "კოდი",
+    "joinCodeSaved": "კოდი {code} შენახულია",
+    "joinCodeSavedExplanation": "დარეგისტრირდით ან შედით სისტემაში და ჩვენ დაგამატებთ."
 }

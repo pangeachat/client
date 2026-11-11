@@ -3864,6 +3864,12 @@
       "pointValue": 0,
       "sentByUser": false,
       "summaryEnumType": null
+    },
+    {
+      "name": "aud",
+      "pointValue": 0,
+      "sentByUser": false,
+      "summaryEnumType": null
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-11-01 09:54:12.988470",
+    "@@last_modified": "2026-11-10 13:06:18.477595",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -2316,13 +2316,11 @@
     "editCourseLater": "Môžete neskôr upraviť názov kurzu, popisy a obrázok kurzu.",
     "createCourse": "Vytvoriť kurz",
     "stats": "Štatistiky",
-    "createGroupChat": "Vytvoriť skupinový chat",
     "editCourse": "Upraviť kurz",
     "inviteDesc": "Podľa používateľského mena, kódu alebo odkazu",
     "editCourseDesc": "Tu môžete upraviť názov kurzu, popis atď.",
     "permissionsDesc": "Nastavte oprávnenia, ako kto môže pozvať používateľov, posielať správy, vytvárať chaty atď.",
     "accessDesc": "Môžete spraviť svoj kurz otvorený svetu! Alebo, urobiť svoj kurz súkromným a zabezpečeným.",
-    "createGroupChatDesc": "Kde začínajú a končia aktivity, skupinové chaty zostanú otvorené na bežnú komunikáciu.",
     "deleteDesc": "Iba správcovia môžu vymazať kurz. Ide o deštruktívnu akciu, ktorá odstráni všetkých používateľov a vymaže všetky vybrané chaty v kurze. Postupujte opatrne.",
     "whatNow": "Čo teraz?",
     "chooseNextActivity": "Vyberte svoju ďalšiu aktivitu!",
@@ -6839,10 +6837,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6860,10 +6854,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9929,6 +9919,7 @@
     "addCourseBrowsePublic": "Prehľadávať verejné kurzy",
     "browsePublicCourses": "Prehľadávať verejné kurzy",
     "editProfile": "Upraviť profil",
+    "mapSearchHint": "Hľadať verejné kurzy",
     "mapFilterAllLanguages": "Všetky jazyky",
     "mapFilterNotStarted": "Nebol začatý",
     "mapFilterInProgress": "Prebieha",
@@ -10821,9 +10812,7 @@
     "practiceMeaningPrompt": "Čo znamená „{word}“?",
     "practiceEmojiPrompt": "Vyberte emoji pre „{word}“",
     "practiceStepProgress": "{done} z {total}",
-    "leaderboard": "Rebríček",
-    "leaderboardRank": "Umiestnenie {rank}",
-    "courseLeaderboardTooltip": "Všetci v tomto kurze, zoradení podľa ich hviezdičiek v danom jazyku. Klepnite na člena a vyberte „Začať konverzáciu“, aby ste mu poslali správu.",
+    "courseParticipantTooltip": "Toto sú všetci účastníci tohto kurzu. Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“, aby ste poslali súkromnú správu.",
     "goalReportTitle": "Nahlásiť túto hviezdu",
     "goalReportOverAwardPrompt": "Ak ste nemali dostať túto hviezdu, vysvetlite prečo.",
     "goalReportUnderAwardPrompt": "Ak si myslíte, že ste mali dostať túto hviezdu, prečo?",
@@ -10842,11 +10831,6 @@
     "callTranscriptPreparingRecording": "Pripravujem celú nahrávku…",
     "callTranscriptNoRecording": "Žiadna nahrávka celého hovoru.",
     "callTranscriptNotSubscribed": "{name} nemal počas tohto hovoru predplatné, takže to, čo bolo povedané, nebolo prepísané.",
-    "joinYourCourse": "Pripojte sa k svojmu kurzu",
-    "courseCodeJoinExplanation": "Prihláste sa alebo sa zaregistrujte a my použijeme váš kód kurzu na automatické pridanie do kurzu.",
-    "courseCodeLabel": "Kód kurzu",
-    "courseCodeSaved": "Kód kurzu {code} uložený",
-    "courseCodeSavedExplanation": "Zaregistrujte sa alebo sa prihláste a my vás pridáme do vášho kurzu.",
     "moderationRefusedContactDetails": "Vaša správa nebola odoslaná. Automatický filter našiel kontaktné údaje, napríklad telefónne číslo. Odstráňte ich a skúste to znova.",
     "moderationRefusedProfanity": "Vaša správa nebola odoslaná. Automatický filter našiel slovo, ktoré v chate nepovoľujeme. Zmeňte ho a skúste to znova.",
     "callTranscriptTranscribeButton": "Prepis",
@@ -10978,9 +10962,7 @@
     "readAloudTake": "Zobrať {number}",
     "videoWontPlayHere": "Toto video sa tu neprehrá.",
     "watchOnYoutube": "Pozrieť na YouTube",
-    "createMyOwnCourse": "Vytvoriť si vlastný kurz",
     "xpTowardMission": "{xp} XP k tejto misii",
-    "centralCourseMembersSeeYou": "Členovia tohto kurzu môžu vidieť vaše meno a profil.",
     "practiceStartWordCount": "{count, plural, =1{slovo na precvičenie} other{slov na precvičenie}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatický bod na precvičenie} other{gramatické body na precvičenie}}",
     "practiceStartExerciseTypes": "Typy cvičení",
@@ -10991,9 +10973,6 @@
     "sharedAnalyticsOthersTitle": "Ostatní, ktorí vidia váš pokrok",
     "removeAnalyticsAccess": "Odstrániť prístup",
     "removeAnalyticsAccessDesc": "{name} už nebude môcť vidieť váš pokrok v učení.",
-    "centralCourseOfferBody": "Je to kurz Pangea pre študentov jazyka {language}. Jeho členovia môžu vidieť vaše meno a profil.",
-    "centralCourseOfferTitle": "Pridať sa do kurzu {course}?",
-    "makeMyOwnCourseInstead": "Namiesto toho si vytvoriť vlastný kurz",
     "suggestMobileSignInSameAccount": "Potom sa prihláste do aplikácie pomocou tohto účtu.",
     "focusMission": "Zamerajte sa na aktivity tejto misie",
     "missionNotYetOpen": "Ešte nie je otvorené",
@@ -11022,10 +11001,19 @@
     "worldExploreCity": "Preskúmať",
     "worldShipAtCity": "V meste {city}",
     "worldShipRunBy": "Spravuje: {admins}",
-    "worldShipRunByPangea": "Spravuje: Pangea",
     "worldShipMembers": "{count, plural, =1{1 člen} other{{count} členov}}",
     "worldShipOpenCourse": "Otvorený kurz",
     "worldCityLockedLabel": "{city}, zatiaľ pre vás neprístupné",
     "worldCityNoCourseHere": "Ak ho chcete preskúmať, pripojte sa k nejakému kurzu",
-    "mapSearchHint": "Hľadať verejné kurzy"
+    "subscriptionGracePeriodEndsOn": "Platba zlyhala. Tolerančné obdobie končí {date}",
+    "changeBaseLanguageTitle": "Zmeniť základný jazyk?",
+    "changeBaseLanguageDesc": "Ponuky a tlačidlá aplikácie sa prepnú na jazyk {language}.",
+    "accountSetupFailedHelp": "Nepodarilo sa nám dokončiť nastavenie vášho účtu. Skontrolujte pripojenie a skúste to znova, alebo sa odhláste a prihláste sa neskôr.",
+    "onboardingOfflineError": "Ste offline. Skúste to znova, keď budete online.",
+    "activitySavedTo": "Aktivita uložená do {page}",
+    "joinWithYourCode": "Pripojiť sa pomocou kódu",
+    "joinCodeJoinExplanation": "Prihláste sa alebo sa zaregistrujte a my použijeme váš kód na automatické pridanie.",
+    "joinCodeLabel": "Kód",
+    "joinCodeSaved": "Kód {code} uložený",
+    "joinCodeSavedExplanation": "Zaregistrujte sa alebo sa prihláste a my vás pridáme."
 }

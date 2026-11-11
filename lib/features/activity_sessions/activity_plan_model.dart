@@ -173,9 +173,8 @@ class ActivityPlanModel {
 
   /// The hero image to render on a still surface (the live session's carousel
   /// pages through the rest). Resolution order: the first resolved image block
-  /// in the v2/v3 `media` list → the
-  /// legacy single `image_url` (the choreo `/activity_plan/localize` path) →
-  /// a deterministic placeholder when the activity genuinely has no image.
+  /// in the v2/v3 `media` list → the legacy single `image_url` → a
+  /// deterministic placeholder when the activity genuinely has no image.
   ///
   /// image-cdn cutover: both the resolved media URL and the legacy `image_url`
   /// are absolute CDN urls used as-is; `resolveMediaUrl` prepends the CMS origin

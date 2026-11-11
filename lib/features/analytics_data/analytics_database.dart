@@ -33,7 +33,18 @@ import 'package:matrix/src/database/indexeddb_box.dart'
 class AnalyticsDatabaseClosedException implements Exception {
   final String databaseName;
 
-  const AnalyticsDatabaseClosedException(this.databaseName);
+  /// Whether our own [AnalyticsDatabase.delete] closed the store. Only
+  /// account teardown calls it, at sign-out, and a read still running then
+  /// fails this way with nothing in code to prevent it, so
+  /// `ErrorHandler.shouldReport` drops it (#9802). A close made by anything
+  /// else, such as another tab or the browser, leaves this false and is
+  /// still reported.
+  final bool closedBySignOut;
+
+  const AnalyticsDatabaseClosedException(
+    this.databaseName, {
+    this.closedBySignOut = false,
+  });
 
   @override
   String toString() =>
@@ -128,6 +139,10 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
   bool _isClosed = false;
 
+  /// Whether [delete] (sign-out) is what closed the store, as opposed to a
+  /// close this instance only learned of from a failure.
+  bool _deleted = false;
+
   /// Whether this instance's store has been closed or deleted.
   ///
   /// Every box operation runs against a single cached connection — on web,
@@ -135,7 +150,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
   /// closes there is no per-call recovery: every subsequent operation throws.
   /// Callers read this instead of discovering it one exception at a time.
   ///
-  /// Set both by [delete] (a close we initiate) and by [_transaction] when it
+  /// Set both by [delete] (a close we initiate) and by [_guard] when it
   /// sees a closed-store failure (a close initiated elsewhere — see
   /// [_isClosedStoreError]).
   bool get isClosed => _isClosed;
@@ -185,6 +200,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     // delete is already doomed. Marking it up front turns that window into an
     // AnalyticsDatabaseClosedException instead of a raw store error.
     _isClosed = true;
+    _deleted = true;
     Sentry.addBreadcrumb(
       Breadcrumb(
         message: 'AnalyticsDatabase.delete: closing analytics store',
@@ -223,31 +239,41 @@ class AnalyticsDatabase with DatabaseFileStorage {
     _derivedStatsBox.clearQuickAccessCache();
   }
 
+  /// Writes: serialized on [_lock], with the closed-store check of [_guard].
+  Future<T> _transaction<T>(Future<T> Function() action) =>
+      _guard(() => _lock.synchronized(action));
+
   /// A closed store fails the same way for every caller, so the check and the
-  /// latch live here rather than at each call site.
-  Future<T> _transaction<T>(Future<T> Function() action) async {
-    if (_isClosed) throw AnalyticsDatabaseClosedException(name);
+  /// latch live here rather than at each call site. Reads call this directly,
+  /// without [_lock], so they never queue behind a write.
+  Future<T> _guard<T>(Future<T> Function() action) async {
+    if (_isClosed) {
+      throw AnalyticsDatabaseClosedException(name, closedBySignOut: _deleted);
+    }
 
     try {
-      return await _lock.synchronized(action);
+      return await action();
     } catch (e) {
       if (!_isClosedStoreError(e)) rethrow;
 
-      // A close we did not initiate — the store was still live as far as this
-      // instance knew. Latch it so the next caller fails fast instead of
-      // issuing another doomed request, and leave a breadcrumb recording that
-      // this instance learned about the close from a failure rather than from
-      // delete().
-      _isClosed = true;
-      Sentry.addBreadcrumb(
-        Breadcrumb(
-          message:
-              'AnalyticsDatabase: store closed externally; latched as closed',
-          data: {'database': name, 'error': e.toString()},
-          level: SentryLevel.warning,
-        ),
-      );
-      throw AnalyticsDatabaseClosedException(name);
+      // Still live as far as this instance knew, so the close was not ours.
+      // Latch it so the next caller fails fast instead of issuing another
+      // doomed request, and leave a breadcrumb recording that this instance
+      // learned about the close from a failure. A call that was already in
+      // flight when delete() or an earlier failure latched the store skips
+      // both: that close is already on record.
+      if (!_isClosed) {
+        _isClosed = true;
+        Sentry.addBreadcrumb(
+          Breadcrumb(
+            message:
+                'AnalyticsDatabase: store closed externally; latched as closed',
+            data: {'database': name, 'error': e.toString()},
+            level: SentryLevel.warning,
+          ),
+        );
+      }
+      throw AnalyticsDatabaseClosedException(name, closedBySignOut: _deleted);
     }
   }
 
@@ -279,38 +305,41 @@ class AnalyticsDatabase with DatabaseFileStorage {
   bool _isLanguageKey(String key, String language) =>
       key.startsWith('$language|');
 
-  Future<String?> getUserID() => _lastEventTimestampBox.get(ModelKey.userId);
+  Future<String?> getUserID() =>
+      _guard(() => _lastEventTimestampBox.get(ModelKey.userId));
 
-  Future<DateTime?> getLastUpdated(String language) async {
+  Future<DateTime?> getLastUpdated(String language) => _guard(() async {
     final entry = await _lastEventTimestampBox.get(
       _langKey('last_updated', language),
     );
     if (entry == null) return null;
     return DateTime.tryParse(entry);
-  }
+  });
 
-  Future<DateTime?> getLastEventTimestamp(String language) async {
+  Future<DateTime?> getLastEventTimestamp(String language) => _guard(() async {
     final timestampString = await _lastEventTimestampBox.get(
       _langKey('last_event_timestamp', language),
     );
     if (timestampString == null) return null;
     return DateTime.parse(timestampString);
-  }
+  });
 
-  Future<String?> getCurrentLanguage() async {
+  Future<String?> getCurrentLanguage() => _guard(() async {
     return _lastEventTimestampBox.get('current_language');
-  }
+  });
 
-  Future<String?> getAnalyticsRoomId() async {
+  Future<String?> getAnalyticsRoomId() => _guard(() async {
     return _lastEventTimestampBox.get('analytics_room_id');
-  }
+  });
 
-  Future<DerivedAnalyticsDataModel> getDerivedStats(String language) async {
+  Future<DerivedAnalyticsDataModel> getDerivedStats(
+    String language,
+  ) => _guard(() async {
     final raw = await _derivedStatsBox.get(_langKey('derived_stats', language));
     return raw == null
         ? DerivedAnalyticsDataModel()
         : DerivedAnalyticsDataModel.fromJson(Map<String, dynamic>.from(raw));
-  }
+  });
 
   /// Server event keys are `lang|eventId|originServerTs`. When [since] is
   /// set, keys whose event is older than `since - _sinceSkewAllowance` are
@@ -331,7 +360,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     String? roomId,
     DateTime? since,
     List<ConstructUseTypeEnum>? types,
-  }) async {
+  }) => _guard(() async {
     final stopwatch = Stopwatch()..start();
     final results = <OneConstructUse>[];
 
@@ -406,17 +435,17 @@ class AnalyticsDatabase with DatabaseFileStorage {
     stopwatch.stop();
     Logs().i("Get uses took ${stopwatch.elapsedMilliseconds} ms");
     return results;
-  }
+  });
 
   Future<List<OneConstructUse>> getLocalUses(String language) =>
-      _readLocalUses(language);
+      _guard(() => _readLocalUses(language));
 
   /// The pending (not-yet-uploaded) use batches for [language], keyed by
   /// their storage key — so a flush can later delete exactly the batches it
   /// uploaded ([clearLocalConstructData]) and no others.
   Future<Map<String, List<OneConstructUse>>> getLocalUseBatches(
     String language,
-  ) async {
+  ) => _guard(() async {
     final keys = (await _localConstructsBox.getAllKeys())
         .where((key) => _isLanguageKey(key, language))
         .toList();
@@ -426,14 +455,15 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return {
       for (var i = 0; i < keys.length; i++) keys[i]: _parseUses(values[i]),
     };
-  }
+  });
 
   /// The languages that have pending local batches, whatever the current L2.
-  Future<Set<String>> getLocalUseLanguages() async =>
-      (await _localConstructsBox.getAllKeys())
-          .where((key) => key.contains('|'))
-          .map((key) => key.split('|').first)
-          .toSet();
+  Future<Set<String>> getLocalUseLanguages() => _guard(
+    () async => (await _localConstructsBox.getAllKeys())
+        .where((key) => key.contains('|'))
+        .map((key) => key.split('|').first)
+        .toSet(),
+  );
 
   Future<List<OneConstructUse>> _readLocalUses(
     String language, {
@@ -453,8 +483,8 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return uses;
   }
 
-  Future<List<OneConstructUse>> getServerUses(String key) async =>
-      _parseUses(await _serverConstructsBox.get(key));
+  Future<List<OneConstructUse>> getServerUses(String key) =>
+      _guard(() async => _parseUses(await _serverConstructsBox.get(key)));
 
   /// Deserialize a stored uses list, applying the [roomId] / [types] filters
   /// on the raw JSON first so non-matching uses are never constructed. The
@@ -479,12 +509,12 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return uses;
   }
 
-  Future<int> getLocalConstructCount(String language) async {
+  Future<int> getLocalConstructCount(String language) => _guard(() async {
     final keys = (await _localConstructsBox.getAllKeys()).where(
       (key) => _isLanguageKey(key, language),
     );
     return keys.length;
-  }
+  });
 
   Future<ConstructUses> getConstructUse(
     List<ConstructIdentifier> ids,
@@ -501,7 +531,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
   Future<Map<ConstructIdentifier, ConstructUses>> getConstructUses(
     Map<ConstructIdentifier, List<ConstructIdentifier>> ids,
     String language,
-  ) async {
+  ) => _guard(() async {
     // Collect the storage keys needed from each of the four aggregate boxes.
     final wanted = <Box<Map>, Set<String>>{};
     for (final group in ids.values) {
@@ -552,7 +582,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
       results[entry.key] = construct;
     }
     return results;
-  }
+  });
 
   /// Deletes the uploaded local batches ([batchKeys], from
   /// [getLocalUseBatches]) and rebuilds [language]'s local aggregates from the
@@ -709,7 +739,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
   Future<List<({ConstructIdentifier id, int xp})>> getAggregateXPSums(
     ConstructTypeEnum type,
     String language,
-  ) async {
+  ) => _guard(() async {
     final results = <({ConstructIdentifier id, int xp})>[];
 
     Future<void> read(Box<Map> box) async {
@@ -729,7 +759,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
     await Future.wait([read(_aggBox(type, false)), read(_aggBox(type, true))]);
     return results;
-  }
+  });
 
   /// The identifier of every stored aggregate of [type] for [language] that
   /// has at least one use — server rows first in box order, then local-only
@@ -743,7 +773,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
   Future<List<ConstructIdentifier>> getAggregateIds(
     ConstructTypeEnum type,
     String language,
-  ) async {
+  ) => _guard(() async {
     // key → id when the row has uses, null placeholder to hold the server
     // row's position when only its local counterpart has uses.
     final byKey = <String, ConstructIdentifier?>{};
@@ -780,7 +810,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     await read(_aggBox(type, false), server: true);
     await read(_aggBox(type, true), server: false);
     return byKey.values.nonNulls.toList();
-  }
+  });
 
   /// Sum of `xp` over a raw `uses` JSON list, mirroring
   /// [OneConstructUse.fromJson]'s `xp ?? useType.pointValue` fallback.
@@ -804,7 +834,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
   Future<List<ConstructUses>> getAggregatedConstructs(
     ConstructTypeEnum type,
     String language,
-  ) async {
+  ) => _guard(() async {
     Map<String, ConstructUses> combined = {};
     final stopwatch = Stopwatch()..start();
 
@@ -853,7 +883,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     Logs().i("Combining aggregates took ${stopwatch.elapsedMilliseconds} ms");
 
     return combined.values.toList();
-  }
+  });
 
   Future<void> updateUserID(String userID) {
     return _transaction(() async {
@@ -907,9 +937,11 @@ class AnalyticsDatabase with DatabaseFileStorage {
   Future<void> updateDerivedStats(
     DerivedAnalyticsDataModel newStats,
     String language,
-  ) => _derivedStatsBox.put(
-    _langKey('derived_stats', language),
-    newStats.toJson(),
+  ) => _guard(
+    () => _derivedStatsBox.put(
+      _langKey('derived_stats', language),
+      newStats.toJson(),
+    ),
   );
 
   Future<void> updateServerAnalytics(

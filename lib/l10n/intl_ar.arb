@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-11-01 09:54:06.218854",
+    "@@last_modified": "2026-11-10 13:06:07.773436",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -3286,13 +3286,11 @@
     "editCourseLater": "يمكنك تعديل عنوان النموذج، الأوصاف، وصورة الدورة لاحقًا.",
     "createCourse": "إنشاء دورة",
     "stats": "إحصائيات",
-    "createGroupChat": "إنشاء دردشة جماعية",
     "editCourse": "تعديل الدورة",
     "inviteDesc": "عن طريق اسم المستخدم، أو الرمز، أو الرابط",
     "editCourseDesc": "هنا يمكنك تحرير عنوان الدورة، الوصف، إلخ.",
     "permissionsDesc": "حدد الأذونات مثل من يمكنه دعوة المستخدمين، إرسال الرسائل، إنشاء الدردشات، إلخ.",
     "accessDesc": "يمكنك جعل دورتك مفتوحة للعالم! أو، جعل دورتك خاصة وآمنة.",
-    "createGroupChatDesc": "بينما تبدأ وتنتهي جلسات النشاط، ستظل الدردشات الجماعية مفتوحة للتواصل الروتيني.",
     "deleteDesc": "يمكن للمسؤولين فقط حذف الدورة. هذا إجراء تدميري يزيل جميع المستخدمين ويحذف جميع الدردشات المختارة داخل الدورة. تابع بحذر.",
     "whatNow": "ماذا الآن؟",
     "chooseNextActivity": "اختر نشاطك التالي!",
@@ -6204,10 +6202,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6225,10 +6219,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9294,6 +9284,7 @@
     "addCourseBrowsePublic": "تصفح الدورات العامة",
     "browsePublicCourses": "تصفح الدورات العامة",
     "editProfile": "تعديل الملف الشخصي",
+    "mapSearchHint": "البحث عن الدورات التدريبية العامة",
     "mapFilterAllLanguages": "جميع اللغات",
     "mapFilterNotStarted": "لم يبدأ بعد",
     "mapFilterInProgress": "قيد التقدم",
@@ -10182,9 +10173,7 @@
     "practiceMeaningPrompt": "ماذا تعني '{word}'؟",
     "practiceEmojiPrompt": "اختر رمزًا تعبيريًا لـ '{word}'",
     "practiceStepProgress": "{done} من {total}",
-    "leaderboard": "لوحة الصدارة",
-    "leaderboardRank": "الترتيب {rank}",
-    "courseLeaderboardTooltip": "جميع المشاركين في هذه الدورة، مرتبين حسب نجومهم في لغتها. اضغط على عضو واختر \"بدء محادثة\" لإرسال رسالة مباشرة إليه.",
+    "courseParticipantTooltip": "هؤلاء هم جميع المشاركين في هذه الدورة. انقر على صورة أي مستخدم و\"ابدأ محادثة\" لإرسال رسالة مباشرة.",
     "goalReportTitle": "الإبلاغ عن هذه النجمة",
     "goalReportOverAwardPrompt": "إذا لم يكن من المفترض أن تحصل على هذه النجمة، فيرجى توضيح السبب.",
     "goalReportUnderAwardPrompt": "إذا كنت تعتقد أنه كان من المفترض أن تحصل على هذه النجمة، فلماذا؟",
@@ -10203,11 +10192,6 @@
     "callTranscriptPreparingRecording": "جارٍ إعداد التسجيل الكامل...",
     "callTranscriptNoRecording": "لا يوجد تسجيل للمكالمة كاملة.",
     "callTranscriptNotSubscribed": "لم يكن لدى {name} اشتراك خلال هذه المكالمة، لذلك لم يتم نسخ ما قيل.",
-    "joinYourCourse": "انضم إلى دورتك التدريبية",
-    "courseCodeJoinExplanation": "سجّل الدخول أو أنشئ حسابًا، وسنستخدم رمز دورتك التدريبية لإضافتك إلى دورتك تلقائيًا.",
-    "courseCodeLabel": "رمز الدورة التدريبية",
-    "courseCodeSaved": "تم حفظ رمز الدورة التدريبية {code}",
-    "courseCodeSavedExplanation": "سجّل أو سجّل الدخول وسنضيفك إلى دورتك التدريبية.",
     "moderationRefusedContactDetails": "لم يتم إرسال رسالتك. عثر فلتر تلقائي على تفاصيل اتصال، مثل رقم هاتف. يُرجى إزالتها والمحاولة مرة أخرى.",
     "moderationRefusedProfanity": "لم يتم إرسال رسالتك. عثر فلتر تلقائي على كلمة غير مسموح بها في الدردشة. يُرجى تغييرها والمحاولة مرة أخرى.",
     "callTranscriptTranscribeButton": "نسخ",
@@ -10339,9 +10323,7 @@
     "readAloudTake": "خذ {number}",
     "videoWontPlayHere": "لا يمكن تشغيل هذا الفيديو هنا.",
     "watchOnYoutube": "المشاهدة على يوتيوب",
-    "createMyOwnCourse": "إنشاء دورتي التدريبية الخاصة",
     "xpTowardMission": "{xp} نقطة خبرة نحو هذه المهمة",
-    "centralCourseMembersSeeYou": "يمكن لأعضاء هذه الدورة رؤية اسمك وملفك الشخصي.",
     "practiceStartWordCount": "{count, plural, =1{كلمة للتدرب} other{كلمات للتدرب}}",
     "practiceStartGrammarCount": "{count, plural, =1{نقطة نحوية للتدرب} other{نقاط نحوية للتدرب}}",
     "practiceStartExerciseTypes": "أنواع التمارين",
@@ -10352,9 +10334,6 @@
     "sharedAnalyticsOthersTitle": "الآخرون الذين يمكنهم رؤية تقدمك",
     "removeAnalyticsAccess": "إزالة الوصول",
     "removeAnalyticsAccessDesc": "لن يتمكن {name} بعد الآن من رؤية تقدمك في التعلم.",
-    "centralCourseOfferBody": "إنها دورة بانجيا لمتعلمي {language}. يمكن لأعضائها رؤية اسمك وملفك الشخصي.",
-    "centralCourseOfferTitle": "هل تريد الانضمام إلى {course}؟",
-    "makeMyOwnCourseInstead": "إنشاء دورتي التدريبية بدلاً من ذلك",
     "suggestMobileSignInSameAccount": "ثم سجّل الدخول إلى التطبيق باستخدام هذا الحساب.",
     "focusMission": "التركيز على أنشطة هذه المهمة",
     "missionNotYetOpen": "لم تفتح بعد",
@@ -10383,10 +10362,19 @@
     "worldExploreCity": "استكشاف",
     "worldShipAtCity": "في {city}",
     "worldShipRunBy": "بإدارة {admins}",
-    "worldShipRunByPangea": "بإدارة بانجيا",
     "worldShipMembers": "{count, plural, =1{عضو واحد} other{{count} أعضاء}}",
     "worldShipOpenCourse": "دورة مفتوحة",
     "worldCityLockedLabel": "{city}، ليست مفتوحة لك بعد",
     "worldCityNoCourseHere": "انضم إلى دورة هنا لاستكشافها",
-    "mapSearchHint": "البحث عن الدورات التدريبية العامة"
+    "subscriptionGracePeriodEndsOn": "فشل الدفع. تنتهي فترة السماح في {date}",
+    "changeBaseLanguageTitle": "تغيير اللغة الأساسية؟",
+    "changeBaseLanguageDesc": "ستتحول قوائم التطبيق وأزراره إلى {language}.",
+    "accountSetupFailedHelp": "تعذر علينا إنهاء إعداد حسابك. تحقق من اتصالك وحاول مرة أخرى، أو قم بتسجيل الخروج وسجل الدخول لاحقًا.",
+    "onboardingOfflineError": "أنت غير متصل بالإنترنت. حاول مرة أخرى عندما تكون متصلاً.",
+    "activitySavedTo": "تم حفظ النشاط في {page}",
+    "joinWithYourCode": "انضم باستخدام الرمز الخاص بك",
+    "joinCodeJoinExplanation": "سجّل الدخول أو أنشئ حسابًا، وسنستخدم الرمز الخاص بك لإضافتك تلقائيًا.",
+    "joinCodeLabel": "الرمز",
+    "joinCodeSaved": "تم حفظ الرمز {code}",
+    "joinCodeSavedExplanation": "سجّل الدخول أو أنشئ حسابًا وسنضيفك."
 }

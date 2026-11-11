@@ -2,10 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/routes/onboarding/course_provider.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_navigation_result.dart';
-import 'package:fluffychat/routes/onboarding/onboarding_steps/central_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/course_code_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/custom_course_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/joined_course_onboarding_step.dart';
@@ -17,11 +15,13 @@ import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import '../get_test_client.dart';
 import 'get_initial_onboarding_step.dart';
+import 'seed_language_store.dart';
 
 void main() {
   late final Client client;
 
   setUpAll(() async {
+    await seedLanguageStore();
     client = await getTestClient();
   });
 
@@ -203,110 +203,19 @@ void main() {
     },
   );
 
-  // A learner with no class code chooses, after the level step, between their
-  // language's central course and a private course of their own; with no
-  // central course they get their own course, repaired later
-  // (joining-courses.instructions.md § The central course).
-  Future<OnboardingNavigationController> toLevelStep(
-    UserType type,
-    MockCourseProvider courses,
-  ) async {
-    final state = OnboardingNavigationController(
-      initialStep: getInitialOnboardingStep(client, courses: courses),
-    );
-    await state.forward();
-    (state.step as UserTypeOnboardingStep).setUserType(type);
-    await state.forward();
-    state.skip();
-    (state.step as PickLanguageOnboardingStep)
-      ..selectBaseLanguage(
-        LanguageModel(langCode: "en", displayName: "English"),
-      )
-      ..selectTargetLanguage(
-        LanguageModel(langCode: "es", displayName: "Spanish"),
-      );
-    await state.forward();
-    (state.step as PickCefrLevelOnboardingStep).selectCefrLevel(
-      LanguageLevelTypeEnum.a1,
-    );
-    return state;
-  }
-
-  const central = '!central:staging.pangea.chat';
-
-  test("A learner who joins the central course lands on it", () async {
-    final courses = MockCourseProvider(centralCourseRoomId: central);
-    final state = await toLevelStep(UserType.student, courses);
-
-    expect(await state.forward(), isA<SuccessNavigationResult>());
-    expect(state.step, isA<CentralCourseOnboardingStep>());
-    (state.step as CentralCourseOnboardingStep).chooseOwnCourse(false);
-    expect(await state.forward(), isA<ReachedEndNavigationResult>());
-    expect(state.step.joinedCourseSpaceId, central);
-    expect(courses.ownCoursePlans, isEmpty);
-  });
-
-  test("A learner who declines gets their own course on its plan", () async {
-    final courses = MockCourseProvider(centralCourseRoomId: central);
-    final state = await toLevelStep(UserType.student, courses);
-
-    expect(await state.forward(), isA<SuccessNavigationResult>());
-    (state.step as CentralCourseOnboardingStep).chooseOwnCourse(true);
-    expect(await state.forward(), isA<ReachedEndNavigationResult>());
-    expect(state.step.joinedCourseSpaceId, MockCourseProvider.ownCourseRoomId);
-    expect(courses.ownCoursePlans, [MockCourseProvider.centralQuestId]);
-  });
-
-  test(
-    "With no central course, a learner gets a course with no plan",
-    () async {
-      final courses = MockCourseProvider();
-      final state = await toLevelStep(UserType.student, courses);
-
-      expect(await state.forward(), isA<ReachedEndNavigationResult>());
-      expect(courses.ownCoursePlans, [null]);
-      // A course with no plan has nothing to show yet, so they land on the map.
-      expect(state.step.joinedCourseSpaceId, isNull);
-    },
-  );
-
-  test(
-    "A teacher without a code is neither asked nor given a course",
-    () async {
-      final courses = MockCourseProvider(centralCourseRoomId: central);
-      final state = await toLevelStep(UserType.teacher, courses);
-
-      expect(await state.forward(), isA<SuccessNavigationResult>());
-      expect(state.step, isA<CustomCourseOnboardingStep>());
-      expect(state.step.joinedCourseSpaceId, isNull);
-      expect(courses.ownCoursePlans, isEmpty);
-    },
-  );
-
-  test("Switching role clears a stale CEFR selection (#7583)", () {
+  test("Switching role keeps the level selected, like every other choice", () {
     final state = getInitialOnboardingStep(client).state;
 
-    // Pick a CEFR level as a teacher.
     state.setUserType(UserType.teacher);
     state.setLanguageLevel(LanguageLevelTypeEnum.a1);
-    expect(state.languageLevel, LanguageLevelTypeEnum.a1);
-
-    // Switching to learner must NOT carry the teacher's level over — otherwise
-    // the learner CEFR page shows nothing selected while Next stays enabled.
     state.setUserType(UserType.student);
-    expect(state.languageLevel, isNull);
+    expect(state.languageLevel, LanguageLevelTypeEnum.a1);
 
     final levelStep = PickCefrLevelOnboardingStep(
       client: client,
       state: state,
       maxRemainingSteps: 0,
     );
-    expect(levelStep.enableGoForward, isFalse);
-
-    // Re-tapping the same role keeps a real selection.
-    state.setLanguageLevel(LanguageLevelTypeEnum.b1);
-    state.setUserType(UserType.student);
-    expect(state.languageLevel, LanguageLevelTypeEnum.b1);
     expect(levelStep.enableGoForward, isTrue);
   });
 }

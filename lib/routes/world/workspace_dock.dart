@@ -17,6 +17,10 @@ class WorkspaceDock extends StatelessWidget {
 
   const WorkspaceDock({super.key, required this.child});
 
+  /// The outline's width. It is drawn inside the dock, so the dock is this
+  /// much wider than its child on each side.
+  static const double borderWidth = 1.0;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -29,7 +33,10 @@ class WorkspaceDock extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-          border: Border.all(color: theme.colorScheme.outlineVariant, width: 1),
+          border: Border.all(
+            color: theme.colorScheme.outlineVariant,
+            width: borderWidth,
+          ),
         ),
         child: child,
       ),

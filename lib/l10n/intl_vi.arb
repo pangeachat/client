@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-01 09:54:14.496775",
+    "@@last_modified": "2026-11-10 13:06:20.678002",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -2884,13 +2884,11 @@
     "editCourseLater": "Bạn có thể chỉnh sửa tiêu đề mẫu, mô tả và hình ảnh khóa học sau.",
     "createCourse": "Tạo khóa học",
     "stats": "Thống kê",
-    "createGroupChat": "Tạo nhóm trò chuyện",
     "editCourse": "Chỉnh sửa khóa học",
     "inviteDesc": "Bằng tên người dùng, mã hoặc liên kết",
     "editCourseDesc": "Tại đây bạn có thể chỉnh sửa tiêu đề, mô tả của khóa học, v.v.",
     "permissionsDesc": "Thiết lập quyền như ai có thể mời người dùng, gửi tin nhắn, tạo cuộc trò chuyện, v.v.",
     "accessDesc": "Bạn có thể làm cho khóa học của mình mở cho thế giới! Hoặc, làm cho khóa học của bạn riêng tư và an toàn.",
-    "createGroupChatDesc": "Trong khi các phiên hoạt động bắt đầu và kết thúc, nhóm trò chuyện sẽ luôn mở để giao tiếp định kỳ.",
     "deleteDesc": "Chỉ quản trị viên mới có thể xóa khóa học. Đây là hành động phá hủy, sẽ xóa tất cả người dùng và tất cả các cuộc trò chuyện đã chọn trong khóa học. Hãy cẩn thận khi thực hiện.",
     "whatNow": "Bây giờ làm gì?",
     "chooseNextActivity": "Chọn hoạt động tiếp theo của bạn!",
@@ -3180,10 +3178,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -3201,10 +3195,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -6298,6 +6288,7 @@
     "addCourseBrowsePublic": "Duyệt các khóa học công khai",
     "browsePublicCourses": "Duyệt các khóa học công khai",
     "editProfile": "Chỉnh sửa hồ sơ",
+    "mapSearchHint": "Tìm kiếm khóa học công khai",
     "mapFilterAllLanguages": "Tất cả các ngôn ngữ",
     "mapFilterNotStarted": "Chưa bắt đầu",
     "mapFilterInProgress": "Đang tiến hành",
@@ -7186,9 +7177,7 @@
     "practiceMeaningPrompt": "‘{word}’ nghĩa là gì?",
     "practiceEmojiPrompt": "Chọn một biểu tượng cảm xúc cho ‘{word}’",
     "practiceStepProgress": "{done} trên {total}",
-    "leaderboard": "Bảng xếp hạng",
-    "leaderboardRank": "Hạng {rank}",
-    "courseLeaderboardTooltip": "Tất cả mọi người trong khóa học này, được xếp hạng theo số sao của họ trong ngôn ngữ đó. Nhấn vào một thành viên và chọn “Bắt đầu cuộc trò chuyện” để gửi tin nhắn trực tiếp cho họ.",
+    "courseParticipantTooltip": "Đây là tất cả mọi người trong khóa học này. Nhấp vào avatar của bất kỳ người dùng nào và \"bắt đầu cuộc trò chuyện\" để gửi tin nhắn trực tiếp.",
     "goalReportTitle": "Báo cáo sao này",
     "goalReportOverAwardPrompt": "Nếu bạn không đáng nhận sao này, vui lòng giải thích lý do.",
     "goalReportUnderAwardPrompt": "Nếu bạn nghĩ mình đáng nhận sao này, tại sao?",
@@ -7207,11 +7196,6 @@
     "callTranscriptPreparingRecording": "Đang chuẩn bị bản ghi âm đầy đủ…",
     "callTranscriptNoRecording": "Không có bản ghi âm toàn bộ cuộc gọi.",
     "callTranscriptNotSubscribed": "{name} không có gói đăng ký trong cuộc gọi này, vì vậy những gì đã nói không được phiên âm.",
-    "joinYourCourse": "Tham gia khóa học của bạn",
-    "courseCodeJoinExplanation": "Đăng nhập hoặc đăng ký, chúng tôi sẽ sử dụng mã khóa học của bạn để tự động thêm bạn vào khóa học.",
-    "courseCodeLabel": "Mã khóa học",
-    "courseCodeSaved": "Đã lưu mã khóa học {code}",
-    "courseCodeSavedExplanation": "Đăng ký hoặc đăng nhập và chúng tôi sẽ thêm bạn vào khóa học.",
     "moderationRefusedContactDetails": "Tin nhắn của bạn chưa được gửi. Bộ lọc tự động đã phát hiện thông tin liên hệ, như số điện thoại. Vui lòng xóa và thử lại.",
     "moderationRefusedProfanity": "Tin nhắn của bạn chưa được gửi. Bộ lọc tự động đã phát hiện một từ mà chúng tôi không cho phép trong cuộc trò chuyện. Vui lòng thay đổi và thử lại.",
     "callTranscriptTranscribeButton": "Chép lại",
@@ -7343,9 +7327,7 @@
     "readAloudTake": "Lượt {number}",
     "videoWontPlayHere": "Video này sẽ không phát ở đây.",
     "watchOnYoutube": "Xem trên YouTube",
-    "createMyOwnCourse": "Tạo khóa học của riêng tôi",
     "xpTowardMission": "{xp} XP cho Nhiệm vụ này",
-    "centralCourseMembersSeeYou": "Các thành viên của khóa học này có thể xem tên và hồ sơ của bạn.",
     "practiceStartWordCount": "{count, plural, =1{từ để luyện tập} other{từ để luyện tập}}",
     "practiceStartGrammarCount": "{count, plural, =1{điểm ngữ pháp để luyện tập} other{điểm ngữ pháp để luyện tập}}",
     "practiceStartExerciseTypes": "Các dạng bài tập",
@@ -7356,9 +7338,6 @@
     "sharedAnalyticsOthersTitle": "Những người khác có thể xem tiến độ của bạn",
     "removeAnalyticsAccess": "Xóa quyền truy cập",
     "removeAnalyticsAccessDesc": "{name} sẽ không còn có thể xem tiến độ học tập của bạn.",
-    "centralCourseOfferBody": "Đây là khóa học của Pangea dành cho người học tiếng {language}. Các thành viên có thể xem tên và hồ sơ của bạn.",
-    "centralCourseOfferTitle": "Tham gia {course}?",
-    "makeMyOwnCourseInstead": "Tự tạo khóa học của riêng tôi",
     "suggestMobileSignInSameAccount": "Sau đó đăng nhập vào ứng dụng bằng tài khoản này.",
     "focusMission": "Tập trung vào các hoạt động của Nhiệm vụ này",
     "missionNotYetOpen": "Chưa mở",
@@ -7387,10 +7366,19 @@
     "worldExploreCity": "Khám phá",
     "worldShipAtCity": "Tại {city}",
     "worldShipRunBy": "Điều hành bởi {admins}",
-    "worldShipRunByPangea": "Điều hành bởi Pangea",
     "worldShipMembers": "{count, plural, =1{1 thành viên} other{{count} thành viên}}",
     "worldShipOpenCourse": "Khóa học mở",
     "worldCityLockedLabel": "{city}, chưa mở cho bạn",
     "worldCityNoCourseHere": "Tham gia một khóa học ở đây để khám phá",
-    "mapSearchHint": "Tìm kiếm khóa học công khai"
+    "subscriptionGracePeriodEndsOn": "Thanh toán không thành công. Thời gian gia hạn kết thúc vào {date}",
+    "changeBaseLanguageTitle": "Đổi ngôn ngữ cơ sở?",
+    "changeBaseLanguageDesc": "Các menu và nút của ứng dụng sẽ chuyển sang tiếng {language}.",
+    "accountSetupFailedHelp": "Chúng tôi không thể hoàn tất việc thiết lập tài khoản của bạn. Vui lòng kiểm tra kết nối và thử lại, hoặc đăng xuất và đăng nhập sau.",
+    "onboardingOfflineError": "Bạn đang ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng.",
+    "activitySavedTo": "Hoạt động đã lưu vào {page}",
+    "joinWithYourCode": "Tham gia bằng mã của bạn",
+    "joinCodeJoinExplanation": "Đăng nhập hoặc đăng ký, chúng tôi sẽ dùng mã của bạn để tự động thêm bạn vào.",
+    "joinCodeLabel": "Mã",
+    "joinCodeSaved": "Đã lưu mã {code}",
+    "joinCodeSavedExplanation": "Đăng ký hoặc đăng nhập và chúng tôi sẽ thêm bạn vào."
 }

@@ -3014,13 +3014,11 @@
     "editCourseLater": "คุณสามารถแก้ไขชื่อเทมเพลต คำอธิบาย และภาพหลักสูตรในภายหลัง",
     "createCourse": "สร้างหลักสูตร",
     "stats": "สถิติ",
-    "createGroupChat": "สร้างกลุ่มแชท",
     "editCourse": "แก้ไขหลักสูตร",
     "inviteDesc": "เชิญโดยชื่อผู้ใช้ โดยรหัส หรือ ลิงก์",
     "editCourseDesc": "ที่นี่คุณสามารถแก้ไขชื่อคำอธิบายของหลักสูตร ฯลฯ",
     "permissionsDesc": "ตั้งค่าสิทธิ์ เช่น ใครสามารถเชิญผู้ใช้ ส่งข้อความ สร้างแชท ฯลฯ",
     "accessDesc": "คุณสามารถทำให้หลักสูตรของคุณเปิดสู่โลก หรือ ทำให้เป็นส่วนตัวและปลอดภัย",
-    "createGroupChatDesc": "ในขณะที่เซสชันกิจกรรมเริ่มและสิ้นสุด กลุ่มแชทจะเปิดอยู่เพื่อการสื่อสารประจำวัน",
     "deleteDesc": "เฉพาะผู้ดูแลระบบเท่านั้นที่สามารถลบหลักสูตรได้ นี่เป็นการดำเนินการที่ทำลายล้าง ซึ่งจะลบผู้ใช้ทั้งหมดและลบแชทที่เลือกภายในหลักสูตร โปรดดำเนินการด้วยความระมัดระวัง",
     "whatNow": "ตอนนี้ทำอะไรดี?",
     "chooseNextActivity": "เลือกกิจกรรมถัดไปของคุณ!",
@@ -3082,7 +3080,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-11-01 09:54:13.693833",
+    "@@last_modified": "2026-11-10 13:06:20.370311",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6526,10 +6524,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6547,10 +6541,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9616,6 +9606,7 @@
     "addCourseBrowsePublic": "เรียกดูหลักสูตรสาธารณะ",
     "browsePublicCourses": "เรียกดูหลักสูตรสาธารณะ",
     "editProfile": "แก้ไขโปรไฟล์",
+    "mapSearchHint": "ค้นหาคอร์สสาธารณะ",
     "mapFilterAllLanguages": "ทุกภาษา",
     "mapFilterNotStarted": "ยังไม่เริ่ม",
     "mapFilterInProgress": "กำลังดำเนินการ",
@@ -10508,9 +10499,7 @@
     "practiceMeaningPrompt": "'{word}' หมายความว่าอะไร?",
     "practiceEmojiPrompt": "เลือกอิโมจิสำหรับ '{word}'",
     "practiceStepProgress": "{done} จาก {total}",
-    "leaderboard": "กระดานผู้นำ",
-    "leaderboardRank": "อันดับที่ {rank}",
-    "courseLeaderboardTooltip": "ทุกคนในคอร์สนี้ จัดอันดับตามจำนวนดาวที่ได้ในภาษานั้นๆ แตะที่สมาชิกแล้วเลือก “เริ่มการสนทนา” เพื่อส่งข้อความส่วนตัวถึงพวกเขา",
+    "courseParticipantTooltip": "นี่คือทุกคนในหลักสูตรนี้ คลิกที่อวาตาร์ของผู้ใช้ใด ๆ และ \"เริ่มการสนทนา\" เพื่อส่งข้อความส่วนตัว",
     "goalReportTitle": "รายงานดาวดวงนี้",
     "goalReportOverAwardPrompt": "หากคุณไม่ควรได้รับดาวดวงนี้ โปรดอธิบายเหตุผล",
     "goalReportUnderAwardPrompt": "หากคุณคิดว่าคุณควรได้รับดาวดวงนี้ เพราะเหตุใด",
@@ -10529,11 +10518,6 @@
     "callTranscriptPreparingRecording": "กำลังเตรียมการบันทึกทั้งหมด…",
     "callTranscriptNoRecording": "ไม่มีการบันทึกการโทรทั้งหมด",
     "callTranscriptNotSubscribed": "{name} ไม่มีสิทธิ์การเป็นสมาชิกในระหว่างการโทรนี้ ดังนั้นสิ่งที่พูดจึงไม่ถูกถอดเสียง",
-    "joinYourCourse": "เข้าร่วมคอร์สของคุณ",
-    "courseCodeJoinExplanation": "เข้าสู่ระบบหรือลงทะเบียน แล้วเราจะใช้รหัสคอร์สของคุณเพื่อเพิ่มคุณเข้าสู่คอร์สโดยอัตโนมัติ",
-    "courseCodeLabel": "รหัสคอร์ส",
-    "courseCodeSaved": "บันทึกรหัสคอร์ส {code} แล้ว",
-    "courseCodeSavedExplanation": "ลงทะเบียนหรือเข้าสู่ระบบ แล้วเราจะเพิ่มคุณเข้าสู่คอร์ส",
     "moderationRefusedContactDetails": "ข้อความของคุณไม่ถูกส่ง ระบบคัดกรองอัตโนมัติพบรายละเอียดการติดต่อ เช่น หมายเลขโทรศัพท์ โปรดลบออกแล้วลองอีกครั้ง",
     "moderationRefusedProfanity": "ข้อความของคุณไม่ถูกส่ง ระบบคัดกรองอัตโนมัติพบคำที่ไม่ได้รับอนุญาตในแชท โปรดแก้ไขแล้วลองอีกครั้ง",
     "callTranscriptTranscribeButton": "ถอดเสียง",
@@ -10665,9 +10649,7 @@
     "readAloudTake": "ครั้งที่ {number}",
     "videoWontPlayHere": "วิดีโอนี้เล่นที่นี่ไม่ได้",
     "watchOnYoutube": "ดูบน YouTube",
-    "createMyOwnCourse": "สร้างคอร์สของฉันเอง",
     "xpTowardMission": "{xp} XP สำหรับภารกิจนี้",
-    "centralCourseMembersSeeYou": "สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
     "practiceStartWordCount": "{count, plural, =1{คำศัพท์ที่จะฝึก} other{คำศัพท์ที่จะฝึก}}",
     "practiceStartGrammarCount": "{count, plural, =1{หลักไวยากรณ์ที่จะฝึก} other{หลักไวยากรณ์ที่จะฝึก}}",
     "practiceStartExerciseTypes": "ประเภทแบบฝึกหัด",
@@ -10678,9 +10660,6 @@
     "sharedAnalyticsOthersTitle": "คนอื่น ๆ ที่สามารถเห็นความคืบหน้าของคุณ",
     "removeAnalyticsAccess": "ลบการเข้าถึง",
     "removeAnalyticsAccessDesc": "{name} จะไม่สามารถเห็นความคืบหน้าในการเรียนรู้ของคุณได้อีกต่อไป",
-    "centralCourseOfferBody": "นี่คือคอร์สของ Pangea สำหรับผู้เรียนภาษา {language} สมาชิกในคอร์สนี้สามารถเห็นชื่อและโปรไฟล์ของคุณได้",
-    "centralCourseOfferTitle": "เข้าร่วม {course} ไหม",
-    "makeMyOwnCourseInstead": "สร้างคอร์สของฉันเองดีกว่า",
     "suggestMobileSignInSameAccount": "จากนั้นลงชื่อเข้าใช้แอปด้วยบัญชีนี้",
     "focusMission": "มุ่งเน้นกิจกรรมของภารกิจนี้",
     "missionNotYetOpen": "ยังไม่เปิด",
@@ -10709,10 +10688,19 @@
     "worldExploreCity": "สำรวจ",
     "worldShipAtCity": "ที่ {city}",
     "worldShipRunBy": "ดำเนินการโดย {admins}",
-    "worldShipRunByPangea": "ดำเนินการโดย Pangea",
     "worldShipMembers": "{count, plural, =1{1 สมาชิก} other{{count} สมาชิก}}",
     "worldShipOpenCourse": "เปิดคอร์ส",
     "worldCityLockedLabel": "{city} ยังไม่เปิดให้คุณ",
     "worldCityNoCourseHere": "เข้าร่วมคอร์สที่นี่เพื่อสำรวจ",
-    "mapSearchHint": "ค้นหาคอร์สสาธารณะ"
+    "subscriptionGracePeriodEndsOn": "การชำระเงินล้มเหลว ระยะเวลาผ่อนผันสิ้นสุดวันที่ {date}",
+    "changeBaseLanguageTitle": "เปลี่ยนภาษาหลักใช่ไหม",
+    "changeBaseLanguageDesc": "เมนูและปุ่มต่างๆ ของแอปจะเปลี่ยนเป็นภาษา{language}",
+    "accountSetupFailedHelp": "เราไม่สามารถตั้งค่าบัญชีของคุณให้เสร็จสมบูรณ์ได้ โปรดตรวจสอบการเชื่อมต่อของคุณแล้วลองอีกครั้ง หรือออกจากระบบแล้วลงชื่อเข้าใช้ในภายหลัง",
+    "onboardingOfflineError": "คุณออฟไลน์อยู่ ลองอีกครั้งเมื่อคุณออนไลน์แล้ว",
+    "activitySavedTo": "กิจกรรมบันทึกแล้วใน {page}",
+    "joinWithYourCode": "เข้าร่วมด้วยรหัสของคุณ",
+    "joinCodeJoinExplanation": "เข้าสู่ระบบหรือลงทะเบียน แล้วเราจะใช้รหัสของคุณเพื่อเพิ่มคุณโดยอัตโนมัติ",
+    "joinCodeLabel": "รหัส",
+    "joinCodeSaved": "บันทึกรหัส {code} แล้ว",
+    "joinCodeSavedExplanation": "ลงทะเบียนหรือเข้าสู่ระบบ แล้วเราจะเพิ่มคุณ"
 }

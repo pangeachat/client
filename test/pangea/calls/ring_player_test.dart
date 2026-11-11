@@ -299,7 +299,7 @@ void main() {
     // On iOS audioplayers applies a player's context to the app's one shared
     // AVAudioSession, so a call cue configured as `playback` took recording
     // away from a live call.
-    test('a call cue keeps the call recording-capable', () async {
+    test('a call cue asks for the call session', () async {
       final loop = _FakeRingAudio();
       final oneShot = _FakeRingAudio();
       final players = [loop, oneShot];
@@ -321,17 +321,79 @@ void main() {
       }
     });
 
-    test('the incoming ring keeps the default session', () async {
+    // AVPlayer cannot open Ogg Vorbis: on an iPad simulator all three .ogg cues
+    // failed to load and their .mp3 twins played, so an iPhone or iPad got no
+    // in-app ring, no engaged tone and no reconnecting tone.
+    group('the asset a cue plays', () {
+      const cues = ['phone', 'notification', 'call'];
+
+      test('on iOS is the mp3, and that file exists', () {
+        for (final name in cues) {
+          final asset = playableCueAsset('sounds/$name.ogg', isIOS: true);
+          expect(asset, 'sounds/$name.mp3');
+          expect(File('assets/$asset').existsSync(), isTrue, reason: asset);
+        }
+      });
+
+      test('everywhere else is the ogg', () {
+        for (final name in cues) {
+          expect(
+            playableCueAsset('sounds/$name.ogg', isIOS: false),
+            'sounds/$name.ogg',
+          );
+        }
+      });
+
+      test('that is already an mp3 is left alone', () {
+        expect(
+          playableCueAsset('sounds/ringback.mp3', isIOS: true),
+          'sounds/ringback.mp3',
+        );
+      });
+    });
+
+    // Both playback paths, through the sound itself: a path that skipped the
+    // format choice plays the .ogg on iOS, which AVPlayer cannot read.
+    for (final (isIOS, extension) in const [(true, 'mp3'), (false, 'ogg')]) {
+      final platform = isIOS ? 'iOS' : 'other platforms';
+
+      test('the loop plays $extension on $platform', () async {
+        final player = _FakeRingAudio();
+        final sound = AssetRingSound(audioFactory: () => player, isIOS: isIOS);
+
+        await sound.start('sounds/phone.ogg');
+
+        expect(player.log.where((entry) => entry.startsWith('play:')), [
+          'play:sounds/phone.$extension',
+        ]);
+      });
+
+      test('a one-shot plays $extension on $platform', () async {
+        final player = _FakeRingAudio();
+        final sound = AssetRingSound(audioFactory: () => player, isIOS: isIOS);
+
+        final cue = sound.playOnce('sounds/notification.ogg');
+        await pumpEventQueue();
+        player.completeCurrentPlay();
+        await cue;
+
+        expect(player.log.where((entry) => entry.startsWith('play:')), [
+          'play:sounds/notification.$extension',
+        ]);
+      });
+    }
+
+    // The session the ring leaves is the one a call starts from. This checks the
+    // category and options handed over, and nothing about an answer itself.
+    test('the incoming ring asks for playAndRecord, on speaker', () async {
       final loop = _FakeRingAudio();
       final sound = AssetRingSound(audioFactory: () => loop);
 
       await sound.start('sounds/phone.ogg');
 
-      expect(
-        loop.contexts.single.iOS.category,
-        AVAudioSessionCategory.playback,
-        reason: 'it rings before any call exists, so it has no call to match',
-      );
+      final ios = loop.contexts.single.iOS;
+      expect(ios.category, AVAudioSessionCategory.playAndRecord);
+      expect(ios.options, contains(AVAudioSessionOptions.defaultToSpeaker));
     });
   });
 

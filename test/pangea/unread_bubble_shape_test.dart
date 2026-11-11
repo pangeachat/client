@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
+import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'get_test_client.dart';
 
 /// #8007 — the unread bubble is a fixed-size circle, not a pill that widens
@@ -32,22 +34,49 @@ void main() {
         highlightCount: highlightCount,
       );
 
-  Future<Size> pumpBubble(WidgetTester tester, Room room) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: ThemeData(splashFactory: NoSplash.splashFactory),
-        localizationsDelegates: L10n.localizationsDelegates,
-        supportedLocales: L10n.supportedLocales,
-        // Unconstrained so the bubble reports the size it asks for, not one a
-        // parent forced on it.
-        home: Scaffold(
-          body: Center(child: UnreadBubble(room: room)),
+  /// Builds [room]'s bubble without settling, so a test can step through its
+  /// animation.
+  Future<void> mountBubble(
+    WidgetTester tester,
+    Room room, {
+    Color? borderColor,
+  }) => tester.pumpWidget(
+    MaterialApp(
+      theme: ThemeData(splashFactory: NoSplash.splashFactory),
+      localizationsDelegates: L10n.localizationsDelegates,
+      supportedLocales: L10n.supportedLocales,
+      // Unconstrained so the bubble reports the size it asks for, not one a
+      // parent forced on it.
+      home: Scaffold(
+        body: Center(
+          child: UnreadBubble(room: room, borderColor: borderColor),
         ),
       ),
-    );
+    ),
+  );
+
+  Future<Size> pumpBubble(
+    WidgetTester tester,
+    Room room, {
+    Color? borderColor,
+  }) async {
+    await mountBubble(tester, room, borderColor: borderColor);
     await tester.pumpAndSettle();
     return tester.getSize(find.byType(UnreadBubble));
   }
+
+  /// Whether a canvas call puts a circle on screen: a stroked ring, or a
+  /// filled disc with a positive radius. A zero-radius fill covers no pixels.
+  bool isVisibleCircle(Symbol method, List<dynamic> arguments) =>
+      method == #drawCircle &&
+      ((arguments[1] as double) > 0 ||
+          (arguments[2] as Paint).style == PaintingStyle.stroke);
+
+  final paintsNoVisibleCircle = anyOf(
+    paintsNothing,
+    paints
+      ..everything((method, arguments) => !isVisibleCircle(method, arguments)),
+  );
 
   testWidgets('a one-digit count renders a circle', (tester) async {
     final size = await pumpBubble(tester, unreadRoom(notificationCount: 8));
@@ -101,6 +130,36 @@ void main() {
     expect(size, Size.zero);
   });
 
+  // #9416: the map pins and the large card ring the bubble in white, and the
+  // ringed bubble of a read room still painted a 1.5px dot in its fill colour.
+  testWidgets('a read room paints nothing, even with the map pins\' ring', (
+    tester,
+  ) async {
+    await pumpBubble(
+      tester,
+      unreadRoom(notificationCount: 0),
+      borderColor: PinSize.markRing,
+    );
+    expect(find.byType(UnreadBubble), paintsNoVisibleCircle);
+  });
+
+  testWidgets('reading a room shrinks its ringed bubble away to nothing', (
+    tester,
+  ) async {
+    final room = unreadRoom(notificationCount: 3);
+    await pumpBubble(tester, room, borderColor: PinSize.markRing);
+
+    room.notificationCount = 0;
+    await mountBubble(tester, room, borderColor: PinSize.markRing);
+    // Halfway through, the bubble is still on screen, closing rather than
+    // gone at once.
+    await tester.pump(FluffyThemes.animationDuration ~/ 2);
+    expect(find.byType(UnreadBubble), paints..something(isVisibleCircle));
+
+    await tester.pumpAndSettle();
+    expect(find.byType(UnreadBubble), paintsNoVisibleCircle);
+  });
+
   testWidgets('the count survives the open animation without overflowing', (
     tester,
   ) async {
@@ -111,16 +170,7 @@ void main() {
     await pumpBubble(tester, room);
 
     room.notificationCount = 999;
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: ThemeData(splashFactory: NoSplash.splashFactory),
-        localizationsDelegates: L10n.localizationsDelegates,
-        supportedLocales: L10n.supportedLocales,
-        home: Scaffold(
-          body: Center(child: UnreadBubble(room: room)),
-        ),
-      ),
-    );
+    await mountBubble(tester, room);
     // Step through the growth rather than settling straight to the end state.
     for (var i = 0; i < 5; i++) {
       await tester.pump(const Duration(milliseconds: 25));

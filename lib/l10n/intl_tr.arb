@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-11-01 09:54:14.072327",
+    "@@last_modified": "2026-11-10 13:06:20.441898",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -3289,13 +3289,11 @@
     "editCourseLater": "Şablon başlığı, açıklamalar ve kurs resmi daha sonra düzenleyebilirsiniz.",
     "createCourse": "Kurs Oluştur",
     "stats": "İstatistikler",
-    "createGroupChat": "Grup sohbeti oluştur",
     "editCourse": "Kursu düzenle",
     "inviteDesc": "Kullanıcı adı, kod veya bağlantı ile",
     "editCourseDesc": "Burada kurs başlığını, açıklamasını vb. düzenleyebilirsiniz.",
     "permissionsDesc": "Kimin kullanıcı davet edebileceği, mesaj gönderebileceği, sohbet oluşturabileceği gibi izinleri ayarlayın.",
     "accessDesc": "Kursunuzu dünyaya açık hale getirebilirsiniz! Ya da, kursunuzu özel ve güvenli yapabilirsiniz.",
-    "createGroupChatDesc": "Etkinlik oturumları başlar ve biterken, grup sohbetleri rutin iletişim için açık kalacaktır.",
     "deleteDesc": "Sadece yöneticiler kursu silebilir. Bu, tüm kullanıcıları kaldıran ve kurs içindeki tüm seçili sohbetleri silen yıkıcı bir işlemdir. Dikkatli ilerleyin.",
     "whatNow": "Şimdi ne olacak?",
     "chooseNextActivity": "Bir sonraki etkinliğinizi seçin!",
@@ -6195,10 +6193,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6216,10 +6210,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9285,6 +9275,7 @@
     "addCourseBrowsePublic": "Açık kursları göz atın",
     "browsePublicCourses": "Açık kursları göz atın",
     "editProfile": "Profili düzenle",
+    "mapSearchHint": "Herkese açık kurslarda ara",
     "mapFilterAllLanguages": "Tüm diller",
     "mapFilterNotStarted": "Başlamadı",
     "mapFilterInProgress": "Devam ediyor",
@@ -10177,9 +10168,7 @@
     "practiceMeaningPrompt": "‘{word}’ ne anlama geliyor?",
     "practiceEmojiPrompt": "‘{word}’ için bir emoji seçin",
     "practiceStepProgress": "{total} üzerinden {done}",
-    "leaderboard": "Liderlik Tablosu",
-    "leaderboardRank": "Sıra {rank}",
-    "courseLeaderboardTooltip": "Bu kurstaki herkes, dillerindeki yıldızlarına göre sıralanmıştır. Bir üyeye dokunarak onlara DM göndermek için \"Sohbet başlat\"ı seçin.",
+    "courseParticipantTooltip": "Bu kurstaki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneğini seçerek bir DM gönderin.",
     "goalReportTitle": "Bu yıldızı bildir",
     "goalReportOverAwardPrompt": "Bu yıldızı almanız gerekmiyorsa, lütfen nedenini açıklayın.",
     "goalReportUnderAwardPrompt": "Bu yıldızı almanız gerektiğini düşünüyorsanız, neden?",
@@ -10198,11 +10187,6 @@
     "callTranscriptPreparingRecording": "Tüm kayıt hazırlanıyor…",
     "callTranscriptNoRecording": "Tüm aramanın kaydı yok.",
     "callTranscriptNotSubscribed": "{name} bu arama sırasında bir aboneliğe sahip değildi, bu nedenle konuşulanlar yazıya dökülmedi.",
-    "joinYourCourse": "Kursunuza katılın",
-    "courseCodeJoinExplanation": "Giriş yapın veya kaydolun, kurs kodunuzu kullanarak sizi otomatik olarak kursunuza ekleyeceğiz.",
-    "courseCodeLabel": "Kurs kodu",
-    "courseCodeSaved": "{code} kurs kodu kaydedildi",
-    "courseCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi kursunuza ekleyeceğiz.",
     "moderationRefusedContactDetails": "Mesajınız gönderilemedi. Otomatik bir filtre telefon numarası gibi iletişim bilgileri buldu. Lütfen bunları kaldırın ve tekrar deneyin.",
     "moderationRefusedProfanity": "Mesajınız gönderilemedi. Otomatik bir filtre sohbette izin vermediğimiz bir kelime buldu. Lütfen bunu değiştirin ve tekrar deneyin.",
     "callTranscriptTranscribeButton": "Metne Çevir",
@@ -10334,9 +10318,7 @@
     "readAloudTake": "Alıştırma {number}",
     "videoWontPlayHere": "Bu video burada oynatılamaz.",
     "watchOnYoutube": "YouTube'da İzle",
-    "createMyOwnCourse": "Kendi kursumu oluştur",
     "xpTowardMission": "Bu Görev için {xp} XP",
-    "centralCourseMembersSeeYou": "Bu kursun üyeleri adını ve profilini görebilir.",
     "practiceStartWordCount": "{count, plural, =1{pratik yapılacak kelime} other{pratik yapılacak kelime}}",
     "practiceStartGrammarCount": "{count, plural, =1{pratik yapılacak dil bilgisi konusu} other{pratik yapılacak dil bilgisi konusu}}",
     "practiceStartExerciseTypes": "Alıştırma türleri",
@@ -10347,9 +10329,6 @@
     "sharedAnalyticsOthersTitle": "İlerlemenizi görebilen diğerleri",
     "removeAnalyticsAccess": "Erişimi kaldır",
     "removeAnalyticsAccessDesc": "{name} artık öğrenme ilerlemenizi göremeyecek.",
-    "centralCourseOfferBody": "Bu, Pangea'nın {language} öğrenenler için kursu. Üyeleri adını ve profilini görebilir.",
-    "centralCourseOfferTitle": "{course} kursuna katılmak ister misin?",
-    "makeMyOwnCourseInstead": "Bunun yerine kendi kursumu oluştur",
     "suggestMobileSignInSameAccount": "Ardından bu hesapla uygulamaya giriş yapın.",
     "focusMission": "Bu Görevin etkinliklerine odaklan",
     "missionNotYetOpen": "Henüz açık değil",
@@ -10378,10 +10357,19 @@
     "worldExploreCity": "Keşfet",
     "worldShipAtCity": "{city} şehrinde",
     "worldShipRunBy": "{admins} tarafından yönetiliyor",
-    "worldShipRunByPangea": "Pangea tarafından yönetiliyor",
     "worldShipMembers": "{count, plural, =1{1 üye} other{{count} üye}}",
     "worldShipOpenCourse": "Açık kurs",
     "worldCityLockedLabel": "{city}, henüz sizin için açık değil",
     "worldCityNoCourseHere": "Keşfetmek için buradaki bir kursa katılın",
-    "mapSearchHint": "Herkese açık kurslarda ara"
+    "subscriptionGracePeriodEndsOn": "Ödeme başarısız oldu. Ödemesiz dönem {date} tarihinde sona eriyor",
+    "changeBaseLanguageTitle": "Temel dili değiştir?",
+    "changeBaseLanguageDesc": "Uygulamanın menüleri ve düğmeleri {language} diline geçecektir.",
+    "accountSetupFailedHelp": "Hesabınızı kurmayı tamamlayamadık. Bağlantınızı kontrol edin ve tekrar deneyin veya çıkış yapıp daha sonra tekrar giriş yapın.",
+    "onboardingOfflineError": "Çevrimdışısın. İnternete bağlandığında tekrar dene.",
+    "activitySavedTo": "Etkinlik şuraya kaydedildi: {page}",
+    "joinWithYourCode": "Kodunuzla katılın",
+    "joinCodeJoinExplanation": "Giriş yapın veya kaydolun, kodunuzu kullanarak sizi otomatik olarak ekleyeceğiz.",
+    "joinCodeLabel": "Kod",
+    "joinCodeSaved": "{code} kodu kaydedildi",
+    "joinCodeSavedExplanation": "Kaydolun veya giriş yapın, sizi ekleyeceğiz."
 }

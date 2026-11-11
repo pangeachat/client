@@ -105,12 +105,13 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
     return _languageByCode(course?.targetLanguage);
   }
 
-  /// The student's OWN analytics room id for [lang] as recorded in their
-  /// server-side `pangea.analytics_profile` — the SAME source the teacher
-  /// dashboard reads to resolve a student's analytics room. Fetched fresh (no
-  /// cache) so it does NOT depend on the analytics room having surfaced in the
-  /// local sync. Matches both the short and full language-code keys the profile
-  /// may use. Null when the profile has no room for the language, or on error.
+  /// The analytics room id for [lang] recorded in the student's server-side
+  /// `pangea.analytics_profile` — the SAME source the teacher dashboard reads
+  /// to resolve a student's analytics room. Not checked to be a room they
+  /// created (see [grantInstructorsAnalyticsAccess]). Fetched fresh (no cache)
+  /// so it does NOT depend on the analytics room having surfaced in the local
+  /// sync. Matches both the short and full language-code keys the profile may
+  /// use. Null when the profile has no room for the language, or on error.
   Future<String?> _ownAnalyticsRoomIdFromPublicProfile(
     LanguageModel lang,
   ) async {
@@ -174,18 +175,20 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
       }
 
       // Resolve the analytics room to grant the instructor into. Prefer the
-      // SERVER-RECORDED id from the student's own analytics profile
-      // (`pangea.analytics_profile`) — the SAME source the teacher dashboard
-      // reads to decide granted-vs-pending, fetched fresh so it does NOT depend
-      // on the room having surfaced in the local sync yet. Fall back to the
-      // local canonical room. The old code used ONLY the local room, which on a
-      // required-course join (a fresh page load whose initial sync lags) was
-      // routinely still null, so the grant module was never called and the
-      // instructor stayed "pending"/"awaiting" on the dashboard forever, even
-      // after the student accepted (admin-dash#35, scenario 2).
+      // local canonical room: it is the room analytics writes to, and it is
+      // checked to be one this student created. The id recorded in their
+      // analytics profile (`pangea.analytics_profile`) is not — a profile can
+      // carry a room id copied from another account (#8531), and the server
+      // refuses a room the caller did not create, so preferring it left the
+      // instructors out of the student's own room (CLIENT-EFF). The recorded
+      // id, fetched fresh, is the fallback for a room that has not surfaced in
+      // the local sync yet: using ONLY the local room on a required-course
+      // join (a fresh page load whose initial sync lags) never called the
+      // grant module, and the instructor stayed "pending"/"awaiting" on the
+      // dashboard forever (admin-dash#35, scenario 2).
       final analyticsRoomId =
-          await _ownAnalyticsRoomIdFromPublicProfile(languageModel) ??
-          ownAnalyticsRoomLocal(lang: languageModel)?.id;
+          ownAnalyticsRoomLocal(lang: languageModel)?.id ??
+          await _ownAnalyticsRoomIdFromPublicProfile(languageModel);
       if (analyticsRoomId == null) {
         // Genuinely no analytics room for this language yet (the student has not
         // studied it). NOT the bug above: a later first-practice creates the

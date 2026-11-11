@@ -12,6 +12,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/languages/context_language_switch_target.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -174,6 +175,11 @@ class ActivitySessionStartView extends StatelessWidget {
                             controller.widget.roomId,
                           );
                           if (close != null) {
+                            // A session the course card opened reopens the
+                            // card, which claims focus (#9632).
+                            if (closeReopensCourseCard(uri, close)) {
+                              PanelEntryIntent.instance.armForSwap();
+                            }
                             GoRouter.of(context).go(close);
                           } else if (Navigator.of(context).canPop()) {
                             Navigator.of(context).pop();
@@ -191,7 +197,7 @@ class ActivitySessionStartView extends StatelessWidget {
               // activity-start-page.instructions.md, "The waiting room".
               if (controller.activityRoom case final room?
                   when controller.isPendingSession)
-                _WaitingRoomMenuButton(room)
+                _WaitingRoomMenuButton(room, page: controller)
               // Share sits in the app bar, left of focus, at every size.
               else
                 IconButton(
@@ -410,7 +416,12 @@ class ActivitySessionStartView extends StatelessWidget {
 class _WaitingRoomMenuButton extends StatelessWidget {
   final Room room;
 
-  const _WaitingRoomMenuButton(this.room);
+  /// The start page this menu sits on. A leave or delete closes the panel
+  /// from the page, not from this button: when the leave lands in sync, the
+  /// page is no longer a waiting room and removes the button (#9417).
+  final ActivitySessionStartState page;
+
+  const _WaitingRoomMenuButton(this.room, {required this.page});
 
   @override
   Widget build(BuildContext context) {
@@ -426,7 +437,7 @@ class _WaitingRoomMenuButton extends StatelessWidget {
       onSelected: (action) => handleChatContextAction(
         action,
         context: context,
-        outerContext: context,
+        outerContext: page.context,
         room: room,
         space: space,
         source: ChatMenuSource.startPage,

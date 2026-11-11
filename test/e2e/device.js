@@ -79,10 +79,12 @@ const BANNER = {
 const TAP = {
   // The Return-to-your-call offer, raised after the app is relaunched.
   returnToCall: { x: 784, y: 260 },
-  // Hang up on the phone's own in-call panel.
-  hangup: { x: 480, y: 1830 },
+  // Hang up on the phone's own in-call panel. Re-read 2026-11-09 off a frame
+  // of the panel (RS-SUM): the button's centre is lower and left of the old
+  // point, which sat on its edge and missed.
+  hangup: { x: 433, y: 1892 },
   // The camera toggle, to the right of Hang up on that same panel.
-  camera: { x: 665, y: 1830 },
+  camera: { x: 666, y: 1892 },
   // Hang up on the GLOBAL CALL TILE -- the minimised control that is what is
   // actually on screen once the call is behind another route. A different
   // layout entirely from the panel above, which is why guessing between them

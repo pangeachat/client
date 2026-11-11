@@ -6,8 +6,10 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_coverage.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_event.dart';
+import 'package:fluffychat/features/dosage/dosage_call_time.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_span.dart';
 import 'package:fluffychat/features/dosage/dosage_message_event.dart';
 import 'package:fluffychat/features/dosage/dosage_session_outcome.dart';
@@ -35,6 +37,7 @@ class DosageAudioPostResult {
   const DosageAudioPostResult({
     required this.delivered,
     required this.coverageWritten,
+    this.coverageSent,
   });
 
   /// The server took the body (2xx). False means keep the batch and retry.
@@ -44,6 +47,11 @@ class DosageAudioPostResult {
   /// no readable count. Null is treated as "not acknowledged" by the buffer, so
   /// an unreadable response costs an extra coverage row rather than a false one.
   final int? coverageWritten;
+
+  /// The declarations this POST really carried, when that is fewer than the
+  /// batch holds (see [DosageSignalsRepo.postAudioSignals]), so [coverageWritten]
+  /// is compared with what was sent. Null means all of them.
+  final List<DosageAudioCoverage>? coverageSent;
 
   static const DosageAudioPostResult undelivered = DosageAudioPostResult(
     delivered: false,
@@ -143,6 +151,13 @@ class DosageSignalsRepo {
   /// invariant, which the wire cannot trim without breaking event↔coverage
   /// co-travel (see [postAudioSignals]).
   static const int _maxBatchItems = 200;
+
+  /// Whether this server's closed vocabulary has refused `call_recording`, so it
+  /// is left off the body for the rest of the process. See [postAudioSignals].
+  static bool _callRecordingRefused = false;
+
+  @visibleForTesting
+  static void resetCallRecordingRefusal() => _callRecordingRefused = false;
 
   /// Best-effort POST of one or more message-envelope signals. Skips silently
   /// when disabled, when there is no access token, or when every event is
@@ -266,14 +281,40 @@ class DosageSignalsRepo {
     required List<DosageAudioEvent> events,
     required List<DosageAudioCoverage> coverage,
     List<DosageVoiceMessage> voiceMessages = const [],
+    List<DosageCallTime> calls = const [],
     required String? accessToken,
     http.Client? client,
   }) async {
     if (!_canPost(accessToken)) return DosageAudioPostResult.undelivered;
-    final validEvents = events
+    // `call_recording` has an older server's other hazard: the ingest's category
+    // vocabulary is closed, so one row of it 422s the whole batch, every other
+    // category included, and a batch's coverage always carries it. So a 422 on a
+    // body carrying it is answered by sending the body again without it, below,
+    // and a refusal that proves to be the cause keeps it off until the next
+    // launch rather than costing a second POST on every heartbeat. Nothing is
+    // lost: the room row holds the same play under the same id, the server counts
+    // it from there, and that row marks its bucket covered.
+    bool isHeld(DosageListeningCategory category) =>
+        category == DosageListeningCategory.callRecording;
+    bool isHeldCoverage(DosageCoverageCategory category) =>
+        category == DosageCoverageCategory.callRecording;
+    var validEvents = events
         .where((e) => e.hasWellFormedRoom && e.elapsedMs > 0)
         .toList();
-    final validCoverage = coverage.where((c) => c.isValid).toList();
+    var validCoverage = coverage.where((c) => c.isValid).toList();
+    var heldBack = false;
+    void holdBack() {
+      heldBack = true;
+      validEvents = validEvents.where((e) => !isHeld(e.category)).toList();
+      validCoverage = validCoverage
+          .where((c) => !isHeldCoverage(c.category))
+          .toList();
+    }
+
+    if (_callRecordingRefused) holdBack();
+    final bool carriesHeldCategory =
+        validEvents.any((e) => isHeld(e.category)) ||
+        validCoverage.any((c) => isHeldCoverage(c.category));
     // THE load-bearing old-server gate. This is the single place `voice_messages`
     // enters the wire, and gating it on [voiceMessagesEnabled] makes the ONE
     // safety-critical direction true by construction: the field is on the wire
@@ -305,31 +346,61 @@ class DosageSignalsRepo {
               .take(voiceRoom < 0 ? 0 : voiceRoom)
               .toList()
         : const <DosageVoiceMessage>[];
-    if (validEvents.isEmpty &&
+    // `calls` has `voice_messages`' old-server hazard, so it sits behind the same
+    // gate, shares its cap room and is stripped by the same 422 retry below.
+    final int callRoom = voiceRoom - validVoiceMessages.length;
+    final validCalls = voiceMessagesEnabled
+        ? calls
+              .where((c) => c.isValid)
+              .take(callRoom < 0 ? 0 : callRoom)
+              .toList()
+        : const <DosageCallTime>[];
+    bool nothingToSend() =>
+        validEvents.isEmpty &&
         validCoverage.isEmpty &&
-        validVoiceMessages.isEmpty) {
-      return DosageAudioPostResult.undelivered;
+        validVoiceMessages.isEmpty &&
+        validCalls.isEmpty;
+    // Everything in the batch was held back: its room rows have it, so the batch
+    // is done rather than one to retry.
+    const DosageAudioPostResult allInTheRoom = DosageAudioPostResult(
+      delivered: true,
+      coverageWritten: null,
+      coverageSent: [],
+    );
+    if (nothingToSend()) {
+      return heldBack ? allInTheRoom : DosageAudioPostResult.undelivered;
     }
-    final Map<String, dynamic> baseBody = {
+    Map<String, dynamic> baseBody() => {
       "events": validEvents.map((e) => e.toJson()).toList(),
       "coverage": validCoverage.map((c) => c.toJson()).toList(),
     };
-    http.Response? response = await _sendForDelivery(
+    Future<http.Response?> send() => _sendForDelivery(
       url: PApiUrls.dosageAudioSignals,
-      body: validVoiceMessages.isEmpty
-          ? baseBody
-          : {
-              ...baseBody,
-              "voice_messages": validVoiceMessages
-                  .map((v) => v.toJson())
-                  .toList(),
-            },
+      body: {
+        ...baseBody(),
+        if (validVoiceMessages.isNotEmpty)
+          "voice_messages": validVoiceMessages.map((v) => v.toJson()).toList(),
+        if (validCalls.isNotEmpty)
+          "calls": validCalls.map((c) => c.toJson()).toList(),
+      },
       accessToken: accessToken!,
       client: client,
       signal: "audio-signals",
       count:
-          validEvents.length + validCoverage.length + validVoiceMessages.length,
+          validEvents.length +
+          validCoverage.length +
+          validVoiceMessages.length +
+          validCalls.length,
     );
+    http.Response? response = await send();
+    if (carriesHeldCategory && response?.statusCode == 422) {
+      holdBack();
+      if (nothingToSend()) {
+        _callRecordingRefused = true;
+        return allInTheRoom;
+      }
+      response = await send();
+    }
     // Old-server safety net for the already-live lanes. A server that predates
     // the `voice_messages` field 422s the unknown key and drops the WHOLE batch,
     // listening included. The capability flag makes that unreachable in correct
@@ -339,14 +410,14 @@ class DosageSignalsRepo {
     // field, and only when there is a sibling lane to salvage — never for a
     // 404/5xx, which the buffer's own retry handles. This is belt-and-suspenders
     // on the siblings, never the primary gate, which stays the flag above.
-    if (validVoiceMessages.isNotEmpty &&
+    if ((validVoiceMessages.isNotEmpty || validCalls.isNotEmpty) &&
         (validEvents.isNotEmpty || validCoverage.isNotEmpty) &&
         response != null &&
         response.statusCode == 422) {
       response = await _sendForDelivery(
         url: PApiUrls.dosageAudioSignals,
-        body: baseBody,
-        accessToken: accessToken,
+        body: baseBody(),
+        accessToken: accessToken!,
         client: client,
         signal: "audio-signals",
         count: validEvents.length + validCoverage.length,
@@ -355,9 +426,11 @@ class DosageSignalsRepo {
     if (response == null || !_isDelivered(response.statusCode)) {
       return DosageAudioPostResult.undelivered;
     }
+    if (heldBack) _callRecordingRefused = true;
     return DosageAudioPostResult(
       delivered: true,
       coverageWritten: _coverageWritten(response),
+      coverageSent: heldBack ? validCoverage : null,
     );
   }
 

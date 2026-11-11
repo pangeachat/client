@@ -33,6 +33,7 @@ import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/friend_dm_prompt.dart';
+import 'package:fluffychat/routes/settings/settings_learning/user_type_prompt.dart';
 import 'package:fluffychat/routes/world/course_context_bar.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_courses_list_view.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
@@ -40,6 +41,7 @@ import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/routes/world/right_panel/workspace_right_panel.dart';
+import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/routes/world/world_analytics_bar.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_map_mobile_filters.dart';
@@ -317,6 +319,20 @@ class WorkspaceShell extends StatelessWidget {
     required this.sideView,
   });
 
+  /// The column-mode reservation at the viewport's left edge: the rail pill's
+  /// [_ShellLayout.chromeMargin] inset, its drawn width (the rail and its
+  /// dock's border on each side), and one more margin before the panels.
+  static const double railGutter =
+      _ShellLayout.chromeMargin * 2 +
+      _ShellLayout.railWidth +
+      WorkspaceDock.borderWidth * 2;
+
+  /// The mirror of [railGutter] at the right edge: the cluster's inset, its
+  /// width, and one more margin before the panels, so a right panel sits as
+  /// far from the cluster as a left panel from the rail (#9778).
+  static const double clusterGutter =
+      _ShellLayout.chromeMargin * 2 + WorldUserCluster.minWidth;
+
   @override
   Widget build(BuildContext context) {
     final l = _ShellLayout.resolve(context, state: state, sideView: sideView);
@@ -384,6 +400,10 @@ class WorkspaceShell extends StatelessWidget {
                 /// blank page, is what a slow first sync shows). Zero-size; it
                 /// is a shell resident so it exists exactly when logged in.
                 DmInviteFerryConsumer(uri: state.uri),
+
+                /// Headless: asks an account with no role for one, once the
+                /// shell is up, so never during onboarding.
+                const UserTypePrompt(),
 
                 /// Under a narrow full-screen surface (a live room / session,
                 /// the DM picker) the only map left showing is the safe-area
@@ -478,7 +498,7 @@ class WorkspaceShell extends StatelessWidget {
                               child: SpacesNavigationRail(
                                 state: state,
                                 showNavRail: l.navRail,
-                                naviRailWidth: FluffyThemes.navRailWidth + 1.0,
+                                naviRailWidth: _ShellLayout.railWidth,
                                 activeSpaceId: activeSpaceIdFor(state.uri),
                               ),
                             ),
@@ -586,7 +606,7 @@ class WorkspaceShell extends StatelessWidget {
                         ],
 
                         /// The right column's entry point. In column mode: the persistent
-                        /// top-right vertical cluster, in the gutter the allocator reserves.
+                        /// top-right vertical cluster, in [WorkspaceShell.clusterGutter].
                         /// On narrow: the horizontal ANALYTICS NAV BAR pinned to the top
                         /// safe area — full form only, on the surfaces where it IS
                         /// navigation (the map/cavity ground and the right panels it
@@ -1203,22 +1223,21 @@ bool _tokenIsCoursePreview(PanelToken token) {
 }
 
 /// The plan uuid the map should PREVIEW-scope to, or null when no course
-/// preview is open (#7826) — a previewed course's plan via
-/// [CoursePreviewPlans] once its room summary lands (null until then);
-/// otherwise own's picked quest, from the token.
+/// preview is open (#7826) — own: from the token; browse: via
+/// [CoursePreviewPlans] once the room summary lands (null until then).
 String? _previewPlanIdFor(List<PanelToken> leftTokens) {
   for (final token in leftTokens) {
     if (!_tokenIsCoursePreview(token)) continue;
     final param = token.param;
     if (param is! AddCoursePageTokenParam) continue;
-    final roomId = param.previewRoomId;
-    if (roomId != null) {
-      return CoursePreviewPlans.planIdFor(shortRoomId(roomId));
-    }
     switch (param.subpage) {
       case AddCourseSubpageEnum.own:
         return param.createCourseId;
       case AddCourseSubpageEnum.browse:
+        final roomId = param.previewRoomId;
+        return roomId == null
+            ? null
+            : CoursePreviewPlans.planIdFor(shortRoomId(roomId));
       case AddCourseSubpageEnum.private:
         return null;
     }
@@ -1286,6 +1305,9 @@ class _ShellLayout {
   /// One shared margin for every floating chrome edge (the rail pill and the
   /// top-right cluster), so they inset from the viewport identically.
   static const double chromeMargin = 12.0;
+
+  /// The column-mode rail's width inside its dock's border.
+  static const double railWidth = FluffyThemes.navRailWidth + 1.0;
 
   /// Height reserved for the narrow analytics bar when placing content below
   /// it: the bar's top margin ([chromeMargin]) plus its real rendered height
@@ -1491,13 +1513,9 @@ class _ShellLayout {
     // world_v2: the rail is vertical-left in column mode and a bottom bar in
     // narrow mode, so it only offsets the canvas in column mode. The left inset
     // is just the rail now — there is no route-driven left card to reserve for.
-    final railWidth = isColumnMode && navRail
-        ? (FluffyThemes.navRailWidth + 1.0)
+    final columnWidth = isColumnMode && navRail
+        ? WorkspaceShell.railGutter
         : 0.0;
-    // The rail floats over the map in its dock pill, inset by [chromeMargin] on
-    // each side; reserve that margin so left panels and the camera padding clear
-    // it.
-    final columnWidth = railWidth == 0 ? 0.0 : railWidth + chromeMargin * 2;
 
     final activeSpaceId = activeSpaceIdFor(state.uri);
 
@@ -1535,6 +1553,7 @@ class _ShellLayout {
       left: leftDefs,
       right: rightDefs,
       railWidth: columnWidth,
+      clusterGutter: WorkspaceShell.clusterGutter,
       focusHint: focusHint,
     );
 

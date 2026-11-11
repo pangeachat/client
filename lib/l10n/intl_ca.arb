@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-01 09:54:06.852250",
+    "@@last_modified": "2026-11-10 13:06:08.602651",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3353,13 +3353,11 @@
     "editCourseLater": "Pots editar el títol de la plantilla, les descripcions i la imatge del curs més tard.",
     "createCourse": "Crear curs",
     "stats": "Estadístiques",
-    "createGroupChat": "Crear xat de grup",
     "editCourse": "Editar curs",
     "inviteDesc": "Per nom d'usuari, per codi o enllaç",
     "editCourseDesc": "Aquí pots editar el títol del curs, la descripció, etc.",
     "permissionsDesc": "Estableix permisos com qui pot convidar usuaris, enviar missatges, crear xats, etc.",
     "accessDesc": "Pots fer que el teu curs sigui obert al món! O bé, fer que el teu curs sigui privat i segur.",
-    "createGroupChatDesc": "Mentre que les sessions d'activitat comencen i acaben, els xats de grup romandran oberts per a la comunicació rutinària.",
     "deleteDesc": "Només els administradors poden eliminar un curs. Aquesta és una acció destructiva que elimina tots els usuaris i elimina tots els xats seleccionats dins del curs. Procedeix amb precaució.",
     "whatNow": "I ara què?",
     "chooseNextActivity": "Tria la teva propera activitat!",
@@ -6024,10 +6022,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6045,10 +6039,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9114,6 +9104,7 @@
     "addCourseBrowsePublic": "Explora cursos públics",
     "browsePublicCourses": "Explora cursos públics",
     "editProfile": "Edita el perfil",
+    "mapSearchHint": "Cerca cursos públics",
     "mapFilterAllLanguages": "Totes les llengües",
     "mapFilterNotStarted": "No iniciat",
     "mapFilterInProgress": "En curs",
@@ -10006,9 +9997,7 @@
     "practiceMeaningPrompt": "Què significa «{word}»?",
     "practiceEmojiPrompt": "Tria un emoji per a «{word}»",
     "practiceStepProgress": "{done} de {total}",
-    "leaderboard": "Classificació",
-    "leaderboardRank": "Posició {rank}",
-    "courseLeaderboardTooltip": "Tots els participants d'aquest curs, classificats per les estrelles que tenen en el seu idioma. Toca un membre i tria \"Inicia una conversa\" per enviar-li un missatge directe.",
+    "courseParticipantTooltip": "Això és tothom en aquest curs. Feu clic a l'avatar de qualsevol usuari i \"comenceu la conversa\" per enviar un DM.",
     "goalReportTitle": "Informar d'aquesta estrella",
     "goalReportOverAwardPrompt": "Si se suposava que no havies de rebre aquesta estrella, explica per què.",
     "goalReportUnderAwardPrompt": "Si creus que hauries d'haver rebut aquesta estrella, per què?",
@@ -10027,11 +10016,6 @@
     "callTranscriptPreparingRecording": "S'està preparant l'enregistrament complet…",
     "callTranscriptNoRecording": "No hi ha enregistrament de la trucada completa.",
     "callTranscriptNotSubscribed": "{name} no tenia una subscripció durant aquesta trucada, així que el que es va dir no es va transcriure.",
-    "joinYourCourse": "Uneix-te al teu curs",
-    "courseCodeJoinExplanation": "Inicia sessió o registra't, i utilitzarem el teu codi de curs per afegir-te al teu curs automàticament.",
-    "courseCodeLabel": "Codi de curs",
-    "courseCodeSaved": "Codi de curs {code} desat",
-    "courseCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem al teu curs.",
     "moderationRefusedContactDetails": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat dades de contacte, com ara un número de telèfon. Si us plau, elimina-les i torna-ho a provar.",
     "moderationRefusedProfanity": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat una paraula que no permetem al xat. Si us plau, canvia-la i torna-ho a provar.",
     "callTranscriptTranscribeButton": "Transcriure",
@@ -10163,9 +10147,7 @@
     "readAloudTake": "Presa {number}",
     "videoWontPlayHere": "Aquest vídeo no es pot reproduir aquí.",
     "watchOnYoutube": "Mira'l a YouTube",
-    "createMyOwnCourse": "Crear el meu propi curs",
     "xpTowardMission": "{xp} XP per a aquesta missió",
-    "centralCourseMembersSeeYou": "Els membres d'aquest curs poden veure el teu nom i perfil.",
     "practiceStartWordCount": "{count, plural, =1{paraula per practicar} other{paraules per practicar}}",
     "practiceStartGrammarCount": "{count, plural, =1{punt gramatical per practicar} other{punts gramaticals per practicar}}",
     "practiceStartExerciseTypes": "Tipus d'exercici",
@@ -10176,9 +10158,6 @@
     "sharedAnalyticsOthersTitle": "Altres que poden veure el teu progrés",
     "removeAnalyticsAccess": "Eliminar accés",
     "removeAnalyticsAccessDesc": "{name} ja no podrà veure el teu progrés d'aprenentatge.",
-    "centralCourseOfferBody": "És el curs de Pangea per a aprenents de {language}. Els seus membres poden veure el teu nom i perfil.",
-    "centralCourseOfferTitle": "Unir-me a {course}?",
-    "makeMyOwnCourseInstead": "Crear el meu propi curs",
     "suggestMobileSignInSameAccount": "Després, inicia sessió a l'aplicació amb aquest compte.",
     "focusMission": "Centra't en les activitats d'aquesta missió",
     "missionNotYetOpen": "Encara no obert",
@@ -10207,10 +10186,19 @@
     "worldExploreCity": "Explora",
     "worldShipAtCity": "A {city}",
     "worldShipRunBy": "Gestionat per {admins}",
-    "worldShipRunByPangea": "Gestionat per Pangea",
     "worldShipMembers": "{count, plural, =1{1 membre} other{{count} membres}}",
     "worldShipOpenCourse": "Curs obert",
     "worldCityLockedLabel": "{city}, encara no obert per a tu",
     "worldCityNoCourseHere": "Uneix-te a un curs aquí per explorar-lo",
-    "mapSearchHint": "Cerca cursos públics"
+    "subscriptionGracePeriodEndsOn": "El pagament ha fallat. El període de gràcia finalitza el {date}",
+    "changeBaseLanguageTitle": "Canviar idioma base?",
+    "changeBaseLanguageDesc": "Els menús i botons de l'aplicació canviaran a {language}.",
+    "accountSetupFailedHelp": "No hem pogut acabar de configurar el teu compte. Comprova la teva connexió i torna-ho a provar, o tanca la sessió i torna a iniciar-la més tard.",
+    "onboardingOfflineError": "No tens connexió. Torna-ho a provar quan estiguis en línia.",
+    "activitySavedTo": "Activitat desada a {page}",
+    "joinWithYourCode": "Uneix-te amb el teu codi",
+    "joinCodeJoinExplanation": "Inicia sessió o registra't, i utilitzarem el teu codi per afegir-te automàticament.",
+    "joinCodeLabel": "Codi",
+    "joinCodeSaved": "Codi {code} desat",
+    "joinCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem."
 }

@@ -190,15 +190,19 @@ class AnalyticsProfileModel {
 
   /// Forgets every analytics room id naming a room outside [ownRoomIds] — the
   /// entry's level is kept, since only the room id's owner is knowable here.
-  void clearForeignAnalyticsRoomIds(Set<String> ownRoomIds) {
+  /// Returns whether any id was forgotten.
+  bool clearForeignAnalyticsRoomIds(Set<String> ownRoomIds) {
     final entries = languageAnalytics?.values;
-    if (entries == null) return;
+    if (entries == null) return false;
+    var cleared = false;
     for (final entry in entries) {
       final roomId = entry.analyticsRoomId;
       if (roomId != null && !ownRoomIds.contains(roomId)) {
         entry.analyticsRoomId = null;
+        cleared = true;
       }
     }
+    return cleared;
   }
 
   void addXPOffset(String langCode, int xpOffset, String? analyticsRoomId) {

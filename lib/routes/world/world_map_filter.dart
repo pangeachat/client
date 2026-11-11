@@ -235,7 +235,14 @@ class WorldMapFilterState {
 
   void setQuery(String q) => _filter = _filter.copyWith(query: q);
 
-  void setL2(LanguageModel? l2) => _filter = _filter.copyWith(l2: l2);
+  /// A new target language starts the map over: the query and every pill were
+  /// chosen against the old language's activities, so they go back to their
+  /// defaults (world-map.instructions.md, "The personalized default"). A
+  /// settings level change never reaches here.
+  void setL2(LanguageModel? l2) {
+    resetFilters();
+    _filter = _filter.copyWith(l2: l2);
+  }
 
   /// Set the Level pill: null clears it to "All levels"; otherwise filter to
   /// exactly [level].

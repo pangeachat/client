@@ -66,7 +66,7 @@ class ObjectiveCircleData {
 /// (drawn a little lighter), and a pointer under the one the Mission card
 /// shows. The row never wraps: it scrolls, with the activity row's arrows over
 /// whichever end it can still move toward, each tap moving it one circle. It
-/// opens scrolled so the picked circle is in view.
+/// opens scrolled so the picked circle is in view, clear of the arrows.
 class ObjectiveProgressCircles extends StatefulWidget {
   final List<ObjectiveCircleData> items;
 
@@ -151,7 +151,9 @@ class _ObjectiveProgressCirclesState extends State<ObjectiveProgressCircles> {
   }
 
   /// Once per pick, bring the picked circle into view (a cold open on
-  /// Mission 9 shouldn't hide it off the end).
+  /// Mission 9 shouldn't hide it off the end) — clear of the arrow over
+  /// either end, with room for its label, since an arrow covers whatever is
+  /// under it (#9602).
   void _revealSelected() {
     final selected = widget.items.indexWhere((item) => item.selected);
     if (selected < 0 || selected == _revealedIndex) return;
@@ -159,8 +161,10 @@ class _ObjectiveProgressCirclesState extends State<ObjectiveProgressCircles> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || !_controller.hasClients) return;
       final position = _controller.position;
-      final left = _labelInset + selected * _step;
-      final right = left + ObjectiveProgressCircles.diameter;
+      final circle = _labelInset + selected * _step;
+      final margin = _labelInset + ObjectiveSectionScrollArrow.width;
+      final left = circle - margin;
+      final right = circle + ObjectiveProgressCircles.diameter + margin;
       final viewport = position.viewportDimension;
       double? target;
       if (left < position.pixels) {
@@ -199,13 +203,22 @@ class _ObjectiveProgressCirclesState extends State<ObjectiveProgressCircles> {
     _revealSelected();
     final onTap = widget.onTap;
     final classStrip = _hasClassStrip;
-    final circleTop = classStrip
-        ? ObjectiveProgressCircles.classLocationHeight
-        : 0.0;
+    // The circles' band, between the class location strip and the pointer
+    // (and label) under them: the chevrons stay level with the circles.
+    final circleBand = EdgeInsets.only(
+      top: classStrip ? ObjectiveProgressCircles.classLocationHeight : 0.0,
+      bottom:
+          ObjectiveProgressCircles.pointerHeight +
+          (widget.showSelectedLabel
+              ? ObjectiveProgressCircles.labelHeight
+              : 0.0),
+    );
     // The activity row's arrows and behaviour (ActivityCarousel): each arrow
     // floats over its edge of the row and exists only while the row can still
     // move that way — never a hidden-but-present arrow, whose semantics node
-    // would swallow taps meant for the circle beneath it on web.
+    // would swallow taps meant for the circle beneath it on web. Each covers
+    // the row's full height, so a class location bubble, pointer or label is
+    // cut off with its circle rather than showing beside the arrow (#9602).
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -241,20 +254,22 @@ class _ObjectiveProgressCirclesState extends State<ObjectiveProgressCircles> {
         if (_canBack)
           Positioned(
             left: 0,
-            top: circleTop,
-            height: ObjectiveProgressCircles.diameter,
+            top: 0,
+            bottom: 0,
             child: ObjectiveSectionScrollArrow(
               direction: ArrowDirection.back,
+              chevronInsets: circleBand,
               onTap: () => _scrollBy(-1),
             ),
           ),
         if (_canForward)
           Positioned(
             right: 0,
-            top: circleTop,
-            height: ObjectiveProgressCircles.diameter,
+            top: 0,
+            bottom: 0,
             child: ObjectiveSectionScrollArrow(
               direction: ArrowDirection.forward,
+              chevronInsets: circleBand,
               onTap: () => _scrollBy(1),
             ),
           ),

@@ -146,6 +146,7 @@ class QuestObjectivesLoader {
     _displayLanguageSub?.cancel();
     MissionXpCache.instance.removeListener(_onXpChanged);
     _courseMissionsSub?.cancel();
+    _planRecheck?.cancel();
     _questLoader.dispose();
     // _progression is shared across loaders — never disposed with one of them.
     _disposed = true;
@@ -208,15 +209,17 @@ class QuestObjectivesLoader {
   bool get hasResolvedProgress => _scopedQuest != null;
 
   /// This course's progress is on its way (#9559): a joined course in the
-  /// learner's language whose resolution hasn't landed, or whose language's
-  /// XP is still being read (start-up, a language switch). Its circles and
-  /// Mission header shimmer meanwhile rather than show a meter that is about
-  /// to jump. False for a preview or a course in another language, which
-  /// show no progress at all.
+  /// learner's language whose resolution hasn't landed, whose language's XP
+  /// is still being read (start-up, a language switch), or whose resolution
+  /// was taken while the plan of a saved session it counts was still loading
+  /// (#9606). Its circles and Mission header shimmer meanwhile rather than
+  /// show a meter that is about to jump. False for a preview or a course in
+  /// another language, which show no progress at all.
   ///
   /// Never stuck: once this course's rebuild has finished, a course the
   /// resolution left out (its outline failed, it wasn't joined in time)
-  /// shows its empty meter rather than shimmering on.
+  /// shows its empty meter rather than shimmering on, and a plan whose read
+  /// fails stops being waited for.
   bool get progressLoading {
     final courseId = _courseId;
     final room = courseId == null ? null : client.getRoomById(courseId);
@@ -226,11 +229,40 @@ class QuestObjectivesLoader {
       return false;
     }
     if (MissionXpCache.instance.loading) return true;
-    return _scopedQuest == null && !_rebuildSettled;
+    if (_scopedQuest == null) return !_rebuildSettled;
+    // Until this loader resolves, the resolution it shows came from another
+    // loader or the map (the card and the context bar swap loaders, #8938),
+    // so the plans are asked directly.
+    return _plansAwaited ?? _countedPlanLoading;
   }
 
   /// This load's joined-course rebuild has finished, whatever it found.
   bool _rebuildSettled = false;
+
+  /// Whether this loader's last resolution was taken while a plan this course
+  /// counts was still loading ([_countedPlanLoading]): it lacks that plan's
+  /// XP. Set with each resolution it publishes, so the shimmer ends with the
+  /// publish that carries the XP. Null until this load's first.
+  bool? _plansAwaited;
+
+  /// A plan this course's rings count is on its way: a saved session of one
+  /// of its activities — or, with a course copy, of any member of their
+  /// families — whose plan read is queued or in flight. A session's goals
+  /// come from its plan, and so does whether one saved before saves were
+  /// filed by language counts at all, so a ring drawn without it grows once
+  /// it lands.
+  bool get _countedPlanLoading {
+    final loading = client.savedSessionActivitiesLoadingPlan;
+    return loading.isNotEmpty &&
+        filteredObjectiveGroups.any(
+          (group) =>
+              group.activities.any((a) => loading.contains(a.activityId)) ||
+              group.credit.family.keys.any(loading.contains),
+        );
+  }
+
+  /// Re-checks a plan wait while it lasts ([_recheckPlans]).
+  Timer? _planRecheck;
 
   /// The "Up next" Mission — the shared resolver's anchor — or null when there
   /// is no next step: before the resolution lands, and once every Mission in
@@ -333,22 +365,37 @@ class QuestObjectivesLoader {
   /// showing a denominator resolved from another course's cache.
   void _resolveProgression(int loadGen) {
     if (_disposed || _objectiveCache.outlines.isEmpty) return;
-    _updateProgression(
-      _objectiveCache.resolution(
-        client.userXpByActivity(MissionXpCache.instance.creditedXpByRoom),
-        practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
-        recordedByCourse: MissionXpCache.instance.recordedByCourse,
-        inScope: (courseId) => CourseLanguageScope.courseInTargetLanguage(
-          client.getRoomById(courseId),
-        ),
+    final resolution = _objectiveCache.resolution(
+      client.userXpByActivity(MissionXpCache.instance.creditedXpByRoom),
+      practiceXpByLemma: MissionXpCache.instance.practiceXpByLemma,
+      recordedByCourse: MissionXpCache.instance.recordedByCourse,
+      inScope: (courseId) => CourseLanguageScope.courseInTargetLanguage(
+        client.getRoomById(courseId),
       ),
-      loadGen,
     );
+    if (loadGen != _loadGeneration) return;
+    // Checked after the resolution, whose reads are what start reloading a
+    // plan that has just expired from the cache.
+    final plansAwaited = _countedPlanLoading;
+    _plansAwaited = plansAwaited;
+    if (plansAwaited) _recheckPlans();
+    _setShared(resolution);
   }
 
-  void _updateProgression(ProgressionResolution value, int loadGen) {
-    if (!_disposed && loadGen == _loadGeneration) _setShared(value);
+  /// While a plan this course counts is loading, checks every
+  /// [_planRecheckInterval] and re-resolves once none is (#9606). A read that
+  /// fails or is dropped notifies no listener, so the loader looks rather
+  /// than waits for a notice that may never come.
+  void _recheckPlans() {
+    _planRecheck ??= Timer.periodic(_planRecheckInterval, (timer) {
+      if (_countedPlanLoading) return;
+      timer.cancel();
+      _planRecheck = null;
+      _resolveProgression(_loadGeneration);
+    });
   }
+
+  static const _planRecheckInterval = Duration(milliseconds: 250);
 
   /// Re-read the outline when the resolved display language no longer matches
   /// the one the current outline was read in (#9151).
@@ -410,6 +457,7 @@ class QuestObjectivesLoader {
     final loadGen = _loadGeneration;
     _courseId = courseRoomId ?? questId;
     _rebuildSettled = false;
+    _plansAwaited = null;
     final rules = courseRoomId == null
         ? CourseListRules.none
         : client.getRoomById(courseRoomId)?.courseListRules ??

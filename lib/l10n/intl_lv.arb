@@ -3447,13 +3447,11 @@
     "requestSummaries": "Pieprasīt kopsavilkumus",
     "requestAccessTitle": "Pieprasīt analītikas piekļuvi?",
     "requestAccessDesc": "Vai vēlaties pieprasīt piekļuvi, lai skatītu dalībnieku analītiku?\n\nJa dalībnieki piekrīt, šīs kursa administratori varēs skatīt viņu:\n    • kopējo vārdu krājumu\n    • kopējo gramatikas jēdzienu skaitu\n    • kopējo aktivitāšu sesiju skaitu\n    • konkrētus izmantotos, pareizi un nepareizi, gramatikas jēdzienus\n\nViņi nevarēs skatīt viņu:\n    • ziņojumus ārpus kursa čatos\n    • vārdu krājuma sarakstu",
-    "createGroupChat": "Izveidot grupu čatu",
     "editCourse": "Rediģēt kursu",
     "inviteDesc": "Ar lietotājvārdu, ar kodu vai saiti",
     "editCourseDesc": "Šeit jūs varat rediģēt kursa nosaukumu, aprakstu utt.",
     "permissionsDesc": "Iestatiet atļaujas, piemēram, kas var uzaicināt lietotājus, sūtīt ziņojumus, veidot čatus utt.",
     "accessDesc": "Jūs varat padarīt savu kursu atvērtu pasaulei! Vai arī padarīt kursu privātu un drošu.",
-    "createGroupChatDesc": "Kamēr aktivitāšu sesijas sākas un beidzas, grupu čati paliks atvērti ikdienas saziņai.",
     "deleteDesc": "Tikai administratori var dzēst kursu. Šī ir postoša darbība, kas izdzēš visus lietotājus un dzēš visus atlasītos čatus kursā. Esiet uzmanīgs.",
     "whatNow": "Kas tagad?",
     "chooseNextActivity": "Izvēlies nākamo aktivitāti!",
@@ -3515,7 +3513,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-11-01 09:54:10.828611",
+    "@@last_modified": "2026-11-10 13:06:15.189001",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -6077,10 +6075,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createGroupChat": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editCourse": {
         "type": "String",
         "placeholders": {}
@@ -6098,10 +6092,6 @@
         "placeholders": {}
     },
     "@accessDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8987,6 +8977,7 @@
     "addCourseBrowsePublic": "Pārlūkot publiskos kursus",
     "browsePublicCourses": "Pārlūkot publiskos kursus",
     "editProfile": "Rediģēt profilu",
+    "mapSearchHint": "Meklēt publiskos kursus",
     "mapFilterAllLanguages": "Visas valodas",
     "mapFilterNotStarted": "Nav uzsākts",
     "mapFilterInProgress": "Norisinās",
@@ -9879,9 +9870,7 @@
     "practiceMeaningPrompt": "Ko nozīmē „{word}”?",
     "practiceEmojiPrompt": "Izvēlieties emocijzīmi vārdam „{word}”",
     "practiceStepProgress": "{done} no {total}",
-    "leaderboard": "Līderu saraksts",
-    "leaderboardRank": "Vieta {rank}",
-    "courseLeaderboardTooltip": "Visi šī kursa dalībnieki, sarindoti pēc zvaigznītēm attiecīgajā valodā. Pieskarieties dalībniekam un izvēlieties “Sākt sarunu”, lai nosūtītu viņam tiešu ziņojumu.",
+    "courseParticipantTooltip": "Šeit ir visi šī kursa dalībnieki. Noklikšķiniet uz jebkura lietotāja avatāra un izvēlieties \"sākt sarunu\", lai nosūtītu DM.",
     "goalReportTitle": "Ziņot par šo zvaigzni",
     "goalReportOverAwardPrompt": "Ja jums nevajadzēja saņemt šo zvaigzni, lūdzu, paskaidrojiet, kāpēc.",
     "goalReportUnderAwardPrompt": "Ja uzskatāt, ka jums vajadzēja saņemt šo zvaigzni, kāpēc?",
@@ -9900,11 +9889,6 @@
     "callTranscriptPreparingRecording": "Tiek sagatavots pilns ieraksts…",
     "callTranscriptNoRecording": "Nav pilna zvana ieraksta.",
     "callTranscriptNotSubscribed": "{name} nebija abonementa šī zvana laikā, tāpēc teiktais netika pārrakstīts.",
-    "joinYourCourse": "Pievienojies savam kursam",
-    "courseCodeJoinExplanation": "Piesakies vai reģistrējies, un mēs izmantosim tavu kursa kodu, lai automātiski tevi pievienotu kursam.",
-    "courseCodeLabel": "Kursa kods",
-    "courseCodeSaved": "Kursa kods {code} saglabāts",
-    "courseCodeSavedExplanation": "Reģistrējies vai piesakies, un mēs tevi pievienosim tavam kursam.",
     "moderationRefusedContactDetails": "Jūsu ziņojums netika nosūtīts. Automātiskais filtrs atrada kontaktinformāciju, piemēram, tālruņa numuru. Lūdzu, noņemiet to un mēģiniet vēlreiz.",
     "moderationRefusedProfanity": "Jūsu ziņojums netika nosūtīts. Automātiskais filtrs atrada vārdu, ko neatļaujam tērzēšanā. Lūdzu, mainiet to un mēģiniet vēlreiz.",
     "callTranscriptTranscribeButton": "Transkribēt",
@@ -10036,9 +10020,7 @@
     "readAloudTake": "Paņemiet {number}",
     "videoWontPlayHere": "Šo video šeit nevar atskaņot.",
     "watchOnYoutube": "Skatīties pakalpojumā YouTube",
-    "createMyOwnCourse": "Izveidot savu kursu",
     "xpTowardMission": "{xp} XP šai misijai",
-    "centralCourseMembersSeeYou": "Šī kursa dalībnieki var redzēt jūsu vārdu un profilu.",
     "practiceStartWordCount": "{count, plural, =1{vārds, ko praktizēt} other{vārdi, ko praktizēt}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatikas punkts, ko praktizēt} other{gramatikas punkti, ko praktizēt}}",
     "practiceStartExerciseTypes": "Vingrinājumu veidi",
@@ -10049,9 +10031,6 @@
     "sharedAnalyticsOthersTitle": "Citi, kas var redzēt jūsu progresu",
     "removeAnalyticsAccess": "Noņemt piekļuvi",
     "removeAnalyticsAccessDesc": "{name} vairs nevarēs redzēt jūsu mācību progresu.",
-    "centralCourseOfferBody": "Tas ir Pangea kurss valodu apguvējiem {language}. Tā dalībnieki var redzēt jūsu vārdu un profilu.",
-    "centralCourseOfferTitle": "Pievienoties kursam {course}?",
-    "makeMyOwnCourseInstead": "Tā vietā izveidot savu kursu",
     "suggestMobileSignInSameAccount": "Pēc tam pierakstieties lietotnē ar šo kontu.",
     "focusMission": "Koncentrēties uz šīs misijas aktivitātēm",
     "missionNotYetOpen": "Vēl nav atvērts",
@@ -10080,10 +10059,19 @@
     "worldExploreCity": "Izpētīt",
     "worldShipAtCity": "Pilsētā {city}",
     "worldShipRunBy": "Vada {admins}",
-    "worldShipRunByPangea": "Vada Pangea",
     "worldShipMembers": "{count, plural, =1{1 dalībnieks} other{{count} dalībnieki}}",
     "worldShipOpenCourse": "Atvērts kurss",
     "worldCityLockedLabel": "{city}, jums vēl nav atvērta",
     "worldCityNoCourseHere": "Pievienojieties kursam šeit, lai to izpētītu",
-    "mapSearchHint": "Meklēt publiskos kursus"
+    "subscriptionGracePeriodEndsOn": "Maksājums neizdevās. Atliktais periods beidzas {date}",
+    "changeBaseLanguageTitle": "Mainīt pamatvalodu?",
+    "changeBaseLanguageDesc": "Lietotnes izvēlnes un pogas pārslēgsies uz {language}.",
+    "accountSetupFailedHelp": "Mēs nevarējām pabeigt jūsu konta iestatīšanu. Pārbaudiet savienojumu un mēģiniet vēlreiz, vai izrakstieties un pierakstieties vēlāk.",
+    "onboardingOfflineError": "Jūs esat bezsaistē. Mēģiniet vēlreiz, kad būsiet tiešsaistē.",
+    "activitySavedTo": "Aktivitāte saglabāta mapē {page}",
+    "joinWithYourCode": "Pievienoties ar savu kodu",
+    "joinCodeJoinExplanation": "Piesakieties vai reģistrējieties, un mēs izmantosim jūsu kodu, lai jūs automātiski pievienotu.",
+    "joinCodeLabel": "Kods",
+    "joinCodeSaved": "Kods {code} saglabāts",
+    "joinCodeSavedExplanation": "Reģistrējieties vai piesakieties, un mēs jūs pievienosim."
 }
