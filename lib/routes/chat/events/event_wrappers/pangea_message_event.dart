@@ -687,6 +687,8 @@ class PangeaMessageEvent {
       tokens: response.ttsTokens,
     );
 
+    // Shared with the room only where the learner may post (#9833).
+    if (!room.canSendDefaultMessages) return file;
     room.sendFileEvent(
       file,
       extraContent: {

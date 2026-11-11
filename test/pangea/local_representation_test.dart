@@ -21,6 +21,9 @@ import 'package:fluffychat/routes/chat/events/repo/language_detection_request.da
 import 'package:fluffychat/routes/chat/events/repo/language_detection_response.dart';
 import 'package:fluffychat/routes/chat/events/repo/token_api_models.dart';
 import 'package:fluffychat/routes/chat/events/repo/tokens_repo.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_repo.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_request_model.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/routes/chat/events/translation/full_text_translation_repo.dart';
 import 'package:fluffychat/routes/chat/events/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/routes/chat/events/translation/full_text_translation_response_model.dart';
@@ -208,6 +211,35 @@ void main() {
     expect(homeserver.posts, isEmpty);
     expect(message.correctedSent?.content.isCorrection, isTrue);
     expect(words(message), ['Hola', 'a', 'todos']);
+  });
+
+  test('a learner who cannot post hears the message without sharing its '
+      'audio', () async {
+    final announcements = announcementsRoom();
+    final message = await announcement(announcements);
+    await TextToSpeechRepo.instance.setCached(
+      TextToSpeechRequestModel(
+        text: _text,
+        langCode: 'es',
+        userL1: 'en',
+        userL2: 'es',
+        tokens: const [],
+      ),
+      TextToSpeechResponseModel(
+        audioContent: base64Encode([1, 2, 3]),
+        mimeType: 'audio/mpeg',
+        durationMillis: 1000,
+        waveform: const [],
+        fileExtension: 'mp3',
+        ttsTokens: const [],
+      ),
+    );
+
+    final audio = await message.requestTextToSpeech('es', null);
+
+    expect(audio.bytes, [1, 2, 3]);
+    // A file send registers its placeholder before its first await.
+    expect(announcements.sendingFilePlaceholders, isEmpty);
   });
 
   test('no Pangea event is posted where the learner cannot post', () async {
