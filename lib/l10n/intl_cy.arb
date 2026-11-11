@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-11-06 13:10:58.354215",
+    "@@last_modified": "2026-11-10 13:06:09.605759",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Yn paratoi'r recordiad llawn…",
     "callTranscriptNoRecording": "Dim recordiad o'r alwad lawn.",
     "callTranscriptNotSubscribed": "Nid oedd gan {name} danysgrifiad yn ystod yr alwad hon, felly ni thrawsgrifiwyd yr hyn a ddywedwyd.",
-    "joinYourCourse": "Ymunwch â'ch cwrs",
-    "courseCodeJoinExplanation": "Mewngofnodwch neu gofrestrwch, a byddwn yn defnyddio'ch cod cwrs i'ch ychwanegu at eich cwrs yn awtomatig.",
-    "courseCodeLabel": "Cod cwrs",
-    "courseCodeSaved": "Cod cwrs {code} wedi'i gadw",
-    "courseCodeSavedExplanation": "Cofrestrwch neu mewngofnodwch a byddwn yn eich ychwanegu at eich cwrs.",
     "moderationRefusedContactDetails": "Ni chafodd eich neges ei hanfon. Canfu hidlydd awtomatig fanylion cyswllt, fel rhif ffôn. Tynnwch nhw a cheisiwch eto.",
     "moderationRefusedProfanity": "Ni chafodd eich neges ei hanfon. Canfu hidlydd awtomatig air nad ydym yn ei ganiatáu mewn sgwrs. Newidiwch ef a cheisiwch eto.",
     "callTranscriptTranscribeButton": "Trawsgrifio",
@@ -2519,5 +2514,10 @@
     "changeBaseLanguageDesc": "Bydd dewislenni a botymau'r ap yn newid i {language}.",
     "accountSetupFailedHelp": "Ni allem orffen sefydlu eich cyfrif. Gwiriwch eich cysylltiad a rhowch gynnig arall arni, neu allgofnodwch a mewngofnodwch yn ddiweddarach.",
     "onboardingOfflineError": "Rydych chi all-lein. Rhowch gynnig arall arni unwaith y byddwch chi ar-lein eto.",
-    "activitySavedTo": "Gweithgaredd wedi'i gadw i {page}"
+    "activitySavedTo": "Gweithgaredd wedi'i gadw i {page}",
+    "joinWithYourCode": "Ymunwch â'ch cod",
+    "joinCodeJoinExplanation": "Mewngofnodwch neu gofrestrwch, a byddwn yn defnyddio'ch cod i'ch ychwanegu'n awtomatig.",
+    "joinCodeLabel": "Cod",
+    "joinCodeSaved": "Cod {code} wedi'i gadw",
+    "joinCodeSavedExplanation": "Cofrestrwch neu mewngofnodwch a byddwn yn eich ychwanegu."
 }

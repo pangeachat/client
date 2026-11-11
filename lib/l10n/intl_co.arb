@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-11-06 13:10:58.435102",
+    "@@last_modified": "2026-11-10 13:06:09.624360",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Preparazione di a registrazione sana…",
     "callTranscriptNoRecording": "Nisuna registrazione di a chjama sana.",
     "callTranscriptNotSubscribed": "{name} ùn avia micca un abbunamentu durante sta chjama, cusì ciò chì hè statu dettu ùn hè statu trascrittu.",
-    "joinYourCourse": "Unisciti à u vostru corsu",
-    "courseCodeJoinExplanation": "Cunnettatevi o iscrivetevi, è useremu u vostru codice di corsu per aghjunghjevi automaticamente à u vostru corsu.",
-    "courseCodeLabel": "Codice di corsu",
-    "courseCodeSaved": "Codice di corsu {code} salvatu",
-    "courseCodeSavedExplanation": "Iscrivetevi o cunnettatevi è vi aghjunghjeremu à u vostru corsu.",
     "moderationRefusedContactDetails": "U vostru messagiu ùn hè statu mandatu. Un filtru automaticu hà trovu dati di cuntattu, cum'è un numeru di telefunu. Per piacè, cacciateli è riprovate.",
     "moderationRefusedProfanity": "U vostru messagiu ùn hè statu mandatu. Un filtru automaticu hà trovu una parolla chì ùn permettemu micca in chat. Per piacè, cambiatela è riprovate.",
     "callTranscriptTranscribeButton": "Trascribe",
@@ -2519,5 +2514,10 @@
     "changeBaseLanguageDesc": "I menu è i buttoni di l'app cambieranu in {language}.",
     "accountSetupFailedHelp": "Ùn avemu pussutu compie a cunfigurazione di u vostru contu. Verificate a vostra cunnessione è riprovate, o disconnettatevi è cunnettatevi più tardi.",
     "onboardingOfflineError": "Sì scunnessu. Pruvate torna quandu sì cunnessu.",
-    "activitySavedTo": "Attività salvata in {page}"
+    "activitySavedTo": "Attività salvata in {page}",
+    "joinWithYourCode": "Unisciti cù u vostru codice",
+    "joinCodeJoinExplanation": "Cunnettatevi o iscrivetevi, è useremu u vostru codice per aghjunghjevi automaticamente.",
+    "joinCodeLabel": "Codice",
+    "joinCodeSaved": "Codice {code} salvatu",
+    "joinCodeSavedExplanation": "Iscrivetevi o cunnettatevi è vi aghjunghjeremu."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-11-06 13:11:01.533385",
+    "@@last_modified": "2026-11-10 13:06:13.063261",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Толық жазба дайындалуда…",
     "callTranscriptNoRecording": "Толық қоңырау жазбасы жоқ.",
     "callTranscriptNotSubscribed": "{name} осы қоңырау кезінде жазылымда болмағандықтан, айтылған сөздер транскрипцияланбады.",
-    "joinYourCourse": "Курсыңызға қосылыңыз",
-    "courseCodeJoinExplanation": "Жүйеге кіріңіз немесе тіркеліңіз, сонда біз сіздің курс кодыңызды пайдаланып, сізді курсқа автоматты түрде қосамыз.",
-    "courseCodeLabel": "Курс коды",
-    "courseCodeSaved": "{code} курс коды сақталды",
-    "courseCodeSavedExplanation": "Тіркеліңіз немесе жүйеге кіріңіз, сонда біз сізді курсқа қосамыз.",
     "moderationRefusedContactDetails": "Хабар жіберілмеді. Автоматты сүзгі телефон нөмірі сияқты байланыс деректерін тапты. Оларды жойып, қайта көріңіз.",
     "moderationRefusedProfanity": "Хабар жіберілмеді. Автоматты сүзгі чатта рұқсат етілмеген сөзді тапты. Оны өзгертіп, қайта көріңіз.",
     "callTranscriptTranscribeButton": "Транскрипциялау",
@@ -2519,5 +2514,10 @@
     "changeBaseLanguageDesc": "Қолданба мәзірлері мен түймелері {language} тіліне ауыстырылады.",
     "accountSetupFailedHelp": "Біз сіздің тіркелгіңізді орнатуды аяқтай алмадық. Байланысыңызды тексеріп, қайталап көріңіз немесе шығып, кейінірек кіріңіз.",
     "onboardingOfflineError": "Сіз желіден тыссыз. Желіге қосылғаннан кейін қайталап көріңіз.",
-    "activitySavedTo": "Әрекет мына жерге сақталды: {page}"
+    "activitySavedTo": "Әрекет мына жерге сақталды: {page}",
+    "joinWithYourCode": "Кодыңызбен қосылыңыз",
+    "joinCodeJoinExplanation": "Кіріңіз немесе тіркеліңіз, сонда біз сіздің кодыңызды пайдаланып сізді автоматты түрде қосамыз.",
+    "joinCodeLabel": "Код",
+    "joinCodeSaved": "{code} коды сақталды",
+    "joinCodeSavedExplanation": "Тіркеліңіз немесе кіріңіз, сонда біз сізді қосамыз."
 }

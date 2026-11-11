@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-11-06 13:11:02.128797",
+    "@@last_modified": "2026-11-10 13:06:14.140685",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "De pripia di ful raykod…",
     "callTranscriptNoRecording": "No raykod fɔ di ful kɔl.",
     "callTranscriptNotSubscribed": "{name} nɔ bin gɛt sɔbskripshɔn dɛn dis kɔl, so wetin dɛn tɔk nɔ bin rayt dɔŋ.",
-    "joinYourCourse": "Jɔyn yu kɔs",
-    "courseCodeJoinExplanation": "Lɔg in ɔ sayn ap, ɛn wi go yuz yu kɔs kod fɔ ad yu to yu kɔs ɔtɔmatikali.",
-    "courseCodeLabel": "Kɔs kod",
-    "courseCodeSaved": "Kɔs kod {code} dɔn sev",
-    "courseCodeSavedExplanation": "Sayn ap ɔ lɔg in ɛn wi go ad yu to yu kɔs.",
     "moderationRefusedContactDetails": "Yu messej nɔ sen. Wan ɔtɔmatik finta bin fɛn kɔntakt ditel dɛn, lɛk fon nɔmba. Duya pul dɛn ɛn tray igen.",
     "moderationRefusedProfanity": "Yu messej nɔ sen. Wan ɔtɔmatik finta bin fɛn wan wɔd we wi nɔ alaw insay chat. Duya chenj am ɛn tray igen.",
     "callTranscriptTranscribeButton": "Transkrayb",
@@ -2519,5 +2514,10 @@
     "changeBaseLanguageDesc": "Di app in menyu ɛn bɔtin dɛn go chenj to {language}.",
     "accountSetupFailedHelp": "Wi nɔ ebul fɔ dɔn sɛt yu akawnt. Chɛk yu kɔnɛkshɔn ɛn tray bak, ɔ lɔg awt ɛn lɔg in bak leta.",
     "onboardingOfflineError": "Yu nɔ de ɔnlayn. Tray bak wɛn yu kɔmɔt ɔf-layn.",
-    "activitySavedTo": "Aktiviti dɔn sev to {page}"
+    "activitySavedTo": "Aktiviti dɔn sev to {page}",
+    "joinWithYourCode": "Jɔyn wit yu kɔd",
+    "joinCodeJoinExplanation": "Lɔg in ɔ sayn ɔp, ɛn wi go yuz yu kɔd fɔ ad yu ɔtɔmatikali.",
+    "joinCodeLabel": "Kɔd",
+    "joinCodeSaved": "Kɔd {code} dɔn sev",
+    "joinCodeSavedExplanation": "Sayn ɔp ɔ lɔg in ɛn wi go ad yu."
 }

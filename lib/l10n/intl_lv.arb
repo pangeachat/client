@@ -3513,7 +3513,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-11-06 13:11:02.411550",
+    "@@last_modified": "2026-11-10 13:06:15.189001",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9889,11 +9889,6 @@
     "callTranscriptPreparingRecording": "Tiek sagatavots pilns ieraksts…",
     "callTranscriptNoRecording": "Nav pilna zvana ieraksta.",
     "callTranscriptNotSubscribed": "{name} nebija abonementa šī zvana laikā, tāpēc teiktais netika pārrakstīts.",
-    "joinYourCourse": "Pievienojies savam kursam",
-    "courseCodeJoinExplanation": "Piesakies vai reģistrējies, un mēs izmantosim tavu kursa kodu, lai automātiski tevi pievienotu kursam.",
-    "courseCodeLabel": "Kursa kods",
-    "courseCodeSaved": "Kursa kods {code} saglabāts",
-    "courseCodeSavedExplanation": "Reģistrējies vai piesakies, un mēs tevi pievienosim tavam kursam.",
     "moderationRefusedContactDetails": "Jūsu ziņojums netika nosūtīts. Automātiskais filtrs atrada kontaktinformāciju, piemēram, tālruņa numuru. Lūdzu, noņemiet to un mēģiniet vēlreiz.",
     "moderationRefusedProfanity": "Jūsu ziņojums netika nosūtīts. Automātiskais filtrs atrada vārdu, ko neatļaujam tērzēšanā. Lūdzu, mainiet to un mēģiniet vēlreiz.",
     "callTranscriptTranscribeButton": "Transkribēt",
@@ -10049,5 +10044,10 @@
     "changeBaseLanguageDesc": "Lietotnes izvēlnes un pogas pārslēgsies uz {language}.",
     "accountSetupFailedHelp": "Mēs nevarējām pabeigt jūsu konta iestatīšanu. Pārbaudiet savienojumu un mēģiniet vēlreiz, vai izrakstieties un pierakstieties vēlāk.",
     "onboardingOfflineError": "Jūs esat bezsaistē. Mēģiniet vēlreiz, kad būsiet tiešsaistē.",
-    "activitySavedTo": "Aktivitāte saglabāta mapē {page}"
+    "activitySavedTo": "Aktivitāte saglabāta mapē {page}",
+    "joinWithYourCode": "Pievienoties ar savu kodu",
+    "joinCodeJoinExplanation": "Piesakieties vai reģistrējieties, un mēs izmantosim jūsu kodu, lai jūs automātiski pievienotu.",
+    "joinCodeLabel": "Kods",
+    "joinCodeSaved": "Kods {code} saglabāts",
+    "joinCodeSavedExplanation": "Reģistrējieties vai piesakieties, un mēs jūs pievienosim."
 }

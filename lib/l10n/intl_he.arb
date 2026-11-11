@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:10:59.810650",
+    "@@last_modified": "2026-11-10 13:06:11.102660",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10800,11 +10800,6 @@
     "callTranscriptPreparingRecording": "מכין את ההקלטה המלאה…",
     "callTranscriptNoRecording": "אין הקלטה של השיחה המלאה.",
     "callTranscriptNotSubscribed": "{name} לא היה מנוי במהלך השיחה הזו, ולכן מה שנאמר לא תומלל.",
-    "joinYourCourse": "הצטרף לקורס שלך",
-    "courseCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד הקורס שלך כדי להוסיף אותך לקורס באופן אוטומטי.",
-    "courseCodeLabel": "קוד קורס",
-    "courseCodeSaved": "קוד קורס {code} נשמר",
-    "courseCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך לקורס שלך.",
     "moderationRefusedContactDetails": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה פרטי התקשרות, כמו מספר טלפון. אנא הסר אותם ונסה שוב.",
     "moderationRefusedProfanity": "ההודעה שלך לא נשלחה. מסנן אוטומטי זיהה מילה שאנו לא מאפשרים בצ'אט. אנא שנה אותה ונסה שוב.",
     "callTranscriptTranscribeButton": "תמלול",
@@ -10960,5 +10955,10 @@
     "changeBaseLanguageDesc": "התפריטים והלחצנים של האפליקציה יעברו ל{language}.",
     "accountSetupFailedHelp": "לא הצלחנו לסיים את הגדרת החשבון שלך. בדוק את החיבור שלך ונסה שוב, או התנתק והתחבר מאוחר יותר.",
     "onboardingOfflineError": "אתה במצב לא מקוון. נסה שוב כשתהיה מחובר.",
-    "activitySavedTo": "הפעילות נשמרה ב{page}"
+    "activitySavedTo": "הפעילות נשמרה ב{page}",
+    "joinWithYourCode": "הצטרף עם הקוד שלך",
+    "joinCodeJoinExplanation": "התחבר או הירשם, ואנו נשתמש בקוד שלך כדי להוסיף אותך אוטומטית.",
+    "joinCodeLabel": "קוד",
+    "joinCodeSaved": "הקוד {code} נשמר",
+    "joinCodeSavedExplanation": "הירשם או התחבר ואנו נוסיף אותך."
 }

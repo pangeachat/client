@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:01.226323",
+    "@@last_modified": "2026-11-10 13:06:11.949580",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9962,11 +9962,6 @@
     "callTranscriptPreparingRecording": "Mempersiapkan rekaman lengkap...",
     "callTranscriptNoRecording": "Tidak ada rekaman panggilan lengkap.",
     "callTranscriptNotSubscribed": "{name} tidak memiliki langganan selama panggilan ini, jadi apa yang dikatakan tidak ditranskripsikan.",
-    "joinYourCourse": "Gabung kursus Anda",
-    "courseCodeJoinExplanation": "Masuk atau daftar, dan kami akan menggunakan kode kursus Anda untuk menambahkan Anda ke kursus secara otomatis.",
-    "courseCodeLabel": "Kode kursus",
-    "courseCodeSaved": "Kode kursus {code} tersimpan",
-    "courseCodeSavedExplanation": "Daftar atau masuk dan kami akan menambahkan Anda ke kursus Anda.",
     "moderationRefusedContactDetails": "Pesan Anda tidak terkirim. Filter otomatis menemukan detail kontak, seperti nomor telepon. Harap hapus dan coba lagi.",
     "moderationRefusedProfanity": "Pesan Anda tidak terkirim. Filter otomatis menemukan kata yang tidak kami izinkan dalam obrolan. Harap ubah dan coba lagi.",
     "callTranscriptTranscribeButton": "Transkripsikan",
@@ -10122,5 +10117,10 @@
     "changeBaseLanguageDesc": "Menu dan tombol aplikasi akan beralih ke {language}.",
     "accountSetupFailedHelp": "Kami tidak dapat menyelesaikan penyiapan akun Anda. Periksa koneksi Anda dan coba lagi, atau keluar dan masuk nanti.",
     "onboardingOfflineError": "Anda sedang offline. Coba lagi setelah Anda online.",
-    "activitySavedTo": "Aktivitas disimpan ke {page}"
+    "activitySavedTo": "Aktivitas disimpan ke {page}",
+    "joinWithYourCode": "Gabung dengan kode Anda",
+    "joinCodeJoinExplanation": "Masuk atau daftar, dan kami akan menggunakan kode Anda untuk menambahkan Anda secara otomatis.",
+    "joinCodeLabel": "Kode",
+    "joinCodeSaved": "Kode {code} tersimpan",
+    "joinCodeSavedExplanation": "Daftar atau masuk dan kami akan menambahkan Anda."
 }

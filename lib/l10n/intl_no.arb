@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-11-06 13:11:04.323692",
+    "@@last_modified": "2026-11-10 13:06:16.883230",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Forbereder hele opptaket…",
     "callTranscriptNoRecording": "Ingen opptak av hele samtalen.",
     "callTranscriptNotSubscribed": "{name} hadde ikke et abonnement under denne samtalen, så det som ble sagt ble ikke transkribert.",
-    "joinYourCourse": "Bli med på kurset ditt",
-    "courseCodeJoinExplanation": "Logg inn eller registrer deg, så bruker vi kurskoden din til å legge deg til kurset ditt automatisk.",
-    "courseCodeLabel": "Kurskode",
-    "courseCodeSaved": "Kurskode {code} lagret",
-    "courseCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til kurset ditt.",
     "moderationRefusedContactDetails": "Meldingen din ble ikke sendt. Et automatisk filter fant kontaktdetaljer, som et telefonnummer. Vennligst fjern dem og prøv igjen.",
     "moderationRefusedProfanity": "Meldingen din ble ikke sendt. Et automatisk filter fant et ord vi ikke tillater i chatten. Vennligst endre det og prøv igjen.",
     "callTranscriptTranscribeButton": "Transkriber",
@@ -2519,5 +2514,10 @@
     "changeBaseLanguageDesc": "Appens menyer og knapper vil bytte til {language}.",
     "accountSetupFailedHelp": "Vi kunne ikke fullføre kontooppsettet. Sjekk tilkoblingen din og prøv igjen, eller logg ut og logg på senere.",
     "onboardingOfflineError": "Du er frakoblet. Prøv igjen når du er på nett.",
-    "activitySavedTo": "Aktivitet lagret til {page}"
+    "activitySavedTo": "Aktivitet lagret til {page}",
+    "joinWithYourCode": "Bli med med koden din",
+    "joinCodeJoinExplanation": "Logg inn eller registrer deg, så bruker vi koden din til å legge deg til automatisk.",
+    "joinCodeLabel": "Kode",
+    "joinCodeSaved": "Koden {code} er lagret",
+    "joinCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til."
 }

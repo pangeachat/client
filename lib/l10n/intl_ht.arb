@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-11-06 13:11:00.463020",
+    "@@last_modified": "2026-11-10 13:06:11.916698",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2359,11 +2359,6 @@
     "callTranscriptPreparingRecording": "Ap prepare anrejistreman konplè a…",
     "callTranscriptNoRecording": "Pa gen anrejistreman apèl konplè a.",
     "callTranscriptNotSubscribed": "{name} pa t gen yon abònman pandan apèl sa a, kidonk sa ki te di a pa t transkri.",
-    "joinYourCourse": "Antre nan kou ou",
-    "courseCodeJoinExplanation": "Konekte oswa enskri, epi n ap itilize kòd kou ou a pou ajoute ou nan kou ou otomatikman.",
-    "courseCodeLabel": "Kòd kou",
-    "courseCodeSaved": "Kòd kou {code} anrejistre",
-    "courseCodeSavedExplanation": "Enskri oswa konekte epi n ap ajoute ou nan kou ou.",
     "moderationRefusedContactDetails": "Mesaj ou a pa t voye. Yon filtè otomatik detekte enfòmasyon kontak, tankou yon nimewo telefòn. Tanpri retire yo epi eseye ankò.",
     "moderationRefusedProfanity": "Mesaj ou a pa t voye. Yon filtè otomatik detekte yon mo nou pa pèmèt nan chat la. Tanpri chanje l epi eseye ankò.",
     "callTranscriptTranscribeButton": "Transkri",
@@ -2519,5 +2514,10 @@
     "changeBaseLanguageDesc": "Meni ak bouton aplikasyon an ap chanje an {language}.",
     "accountSetupFailedHelp": "Nou pa t' kapab fini konfigirasyon kont ou. Tcheke koneksyon ou epi eseye ankò, oswa dekonekte epi konekte pita.",
     "onboardingOfflineError": "Ou dekonekte. Eseye ankò lè ou rekonekte.",
-    "activitySavedTo": "Aktivite sove nan {page}"
+    "activitySavedTo": "Aktivite sove nan {page}",
+    "joinWithYourCode": "Antre ak kòd ou",
+    "joinCodeJoinExplanation": "Konekte oswa enskri, epi n ap itilize kòd ou a pou ajoute w otomatikman.",
+    "joinCodeLabel": "Kòd",
+    "joinCodeSaved": "Kòd {code} anrejistre",
+    "joinCodeSavedExplanation": "Enskri oswa konekte epi n ap ajoute w."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:10:58.134053",
+    "@@last_modified": "2026-11-10 13:06:08.602651",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10016,11 +10016,6 @@
     "callTranscriptPreparingRecording": "S'està preparant l'enregistrament complet…",
     "callTranscriptNoRecording": "No hi ha enregistrament de la trucada completa.",
     "callTranscriptNotSubscribed": "{name} no tenia una subscripció durant aquesta trucada, així que el que es va dir no es va transcriure.",
-    "joinYourCourse": "Uneix-te al teu curs",
-    "courseCodeJoinExplanation": "Inicia sessió o registra't, i utilitzarem el teu codi de curs per afegir-te al teu curs automàticament.",
-    "courseCodeLabel": "Codi de curs",
-    "courseCodeSaved": "Codi de curs {code} desat",
-    "courseCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem al teu curs.",
     "moderationRefusedContactDetails": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat dades de contacte, com ara un número de telèfon. Si us plau, elimina-les i torna-ho a provar.",
     "moderationRefusedProfanity": "El teu missatge no s'ha enviat. Un filtre automàtic ha detectat una paraula que no permetem al xat. Si us plau, canvia-la i torna-ho a provar.",
     "callTranscriptTranscribeButton": "Transcriure",
@@ -10176,5 +10171,10 @@
     "changeBaseLanguageDesc": "Els menús i botons de l'aplicació canviaran a {language}.",
     "accountSetupFailedHelp": "No hem pogut acabar de configurar el teu compte. Comprova la teva connexió i torna-ho a provar, o tanca la sessió i torna a iniciar-la més tard.",
     "onboardingOfflineError": "No tens connexió. Torna-ho a provar quan estiguis en línia.",
-    "activitySavedTo": "Activitat desada a {page}"
+    "activitySavedTo": "Activitat desada a {page}",
+    "joinWithYourCode": "Uneix-te amb el teu codi",
+    "joinCodeJoinExplanation": "Inicia sessió o registra't, i utilitzarem el teu codi per afegir-te automàticament.",
+    "joinCodeLabel": "Codi",
+    "joinCodeSaved": "Codi {code} desat",
+    "joinCodeSavedExplanation": "Registra't o inicia sessió i t'afegirem."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:07.579401",
+    "@@last_modified": "2026-11-10 13:06:21.793321",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9995,11 +9995,6 @@
     "callTranscriptPreparingRecording": "正在準備完整錄音…",
     "callTranscriptNoRecording": "沒有完整通話的錄音。",
     "callTranscriptNotSubscribed": "{name} 在通話期間沒有訂閱，因此通話內容沒有轉錄。",
-    "joinYourCourse": "加入您的課程",
-    "courseCodeJoinExplanation": "登入或註冊，我們將使用您的課程代碼自動將您加入課程。",
-    "courseCodeLabel": "課程代碼",
-    "courseCodeSaved": "課程代碼 {code} 已儲存",
-    "courseCodeSavedExplanation": "註冊或登入，我們將把您加入課程。",
     "moderationRefusedContactDetails": "您的訊息沒有送出。自動篩選器偵測到聯絡方式，例如電話號碼。請移除後再試一次。",
     "moderationRefusedProfanity": "您的訊息沒有送出。自動篩選器偵測到聊天中不允許的字詞。請修改後再試一次。",
     "callTranscriptTranscribeButton": "轉錄",
@@ -10155,5 +10150,10 @@
     "changeBaseLanguageDesc": "應用程式的選單和按鈕將切換為{language}。",
     "accountSetupFailedHelp": "我們無法完成您的帳號設定。請檢查您的連線並再試一次，或登出並稍後再登入。",
     "onboardingOfflineError": "您已離線。請在連線後再試一次。",
-    "activitySavedTo": "活動已儲存至{page}"
+    "activitySavedTo": "活動已儲存至{page}",
+    "joinWithYourCode": "使用您的代碼加入",
+    "joinCodeJoinExplanation": "登入或註冊，我們將使用您的代碼自動將您加入。",
+    "joinCodeLabel": "代碼",
+    "joinCodeSaved": "代碼 {code} 已儲存",
+    "joinCodeSavedExplanation": "註冊或登入，我們將會將您加入。"
 }
