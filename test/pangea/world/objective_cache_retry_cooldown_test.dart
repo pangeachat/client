@@ -101,8 +101,9 @@ void main() {
   });
 
   /// Content Studio — the world map rebuilds its joined-course outlines when a
-  /// course's own copy changes revision, not only when the joined set does.
-  group('a course copy revision change counts as a change', () {
+  /// course's own Can-Do list changes revision, not only when the joined set
+  /// does.
+  group('a course Can-Do list revision change counts as a change', () {
     late Client client;
 
     setUp(() async {

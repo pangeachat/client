@@ -178,8 +178,8 @@ class QuestOutline {
 
   /// Groups for Can-Dos the listing returned beyond the quest's own sequence
   /// (a Can-Do a teacher added to one course). Held apart from [groups] so
-  /// every reader of the shared quest is unchanged; only a course copy that
-  /// lists such a Can-Do ([forRules]) shows it.
+  /// every reader of the shared quest is unchanged; only a course whose
+  /// Can-Do list names such a Can-Do ([forRules]) shows it.
   final List<QuestObjectiveGroup> addedGroups;
 
   /// Each listed activity's family (`family_ids`: the root plus every copy,
@@ -504,11 +504,12 @@ class QuestRepo {
       final uri = Uri.parse(PApiUrls.questActivities(questId)).replace(
         queryParameters: {
           if (inCourse) 'course_room_id': courseRoomId,
-          // A member also gets the course's own copies of activities and the
-          // listing's Can-Dos beyond the quest's (the ones its record names),
-          // so the course's progress can be credited across every copy of an
-          // activity. Honoured only for a member; ignored otherwise.
-          if (inCourse) 'include_course_copies': '1',
+          // A member also gets the course's activity copies and the
+          // listing's Can-Dos beyond the quest's (the ones its Can-Do list
+          // names), so the course's progress can be credited across every
+          // copy of an activity. Honoured only for a member; ignored
+          // otherwise.
+          if (inCourse) 'include_activity_copies': '1',
           if (inCourse && extraLoIds.isNotEmpty) 'extra_lo_ids': extraLoIds,
           // Each Mission's statement comes back in this language (the
           // outline is a Mission's full tier, so the server translates on a

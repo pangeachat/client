@@ -169,10 +169,11 @@ void main() {
     });
   });
 
-  /// The course's own copy (content-studio): one pure transform every reader
-  /// goes through. With a copy the course reads only it — its Can-Dos, its
-  /// order, its activities; without one, behaviour is today's pin rule.
-  group('QuestOutline.forRules (course copy)', () {
+  /// The course's own Can-Do list (content-studio): one pure transform every
+  /// reader goes through. With a Can-Do list the course reads only it — its
+  /// Can-Dos, its order, its activities; without one, behaviour is today's pin
+  /// rule.
+  group('QuestOutline.forRules (course Can-Do list)', () {
     CourseListRules withCopy(
       Map<String, List<String>> missions, {
       Map<String, String> notes = const {},

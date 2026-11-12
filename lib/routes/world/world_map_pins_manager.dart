@@ -746,8 +746,8 @@ class WorldMapPinsManager {
     resolveProgression();
   }
 
-  /// The course copy revision the course-scoped pins were filtered with
-  /// (0 = no copy) — the world map re-loads them when it moves.
+  /// The course Can-Do list revision the course-scoped pins were filtered
+  /// with (0 = none) — the world map re-loads them when it moves.
   int get courseScopedCopyRevision => _courseScopedCopyRevision;
   int _courseScopedCopyRevision = 0;
 

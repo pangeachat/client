@@ -565,8 +565,8 @@ void main() {
     });
   });
 
-  /// The creator writes the new course's copy once the space exists.
-  group('writeNewCourseCopy (creation)', () {
+  /// The creator writes the new course's Can-Do list once the space exists.
+  group('writeNewCourseMissions (creation)', () {
     const self = '@test:fakeServer.notExisting';
     const spaceId = '!1234:fakeServer.notExisting';
     late Client client;
@@ -637,7 +637,7 @@ void main() {
 
     test('writes revision 1 from the course-scoped list, the quest owner\'s '
         'private activity included', () async {
-      await newSpace().writeNewCourseCopy('q1');
+      await newSpace().writeNewCourseMissions('q1');
       expect(scopes, [spaceId]);
       expect(jsonDecode(copyWrites().single as String), {
         'version': 1,
@@ -663,7 +663,7 @@ void main() {
         'users': {self: 100},
       }, sender: self);
       client.rooms.add(room);
-      await room.writeNewCourseCopy('q1');
+      await room.writeNewCourseMissions('q1');
       expect(scopes, [spaceId]);
       expect(copyWrites(), hasLength(1));
     });
@@ -673,7 +673,7 @@ void main() {
       () async {
         QuestRepo.debugBuildOutline = (id, {courseRoomId}) async =>
             Result<QuestOutline>.error('boom');
-        await newSpace().writeNewCourseCopy('q1');
+        await newSpace().writeNewCourseMissions('q1');
         expect(copyWrites(), isEmpty);
       },
     );
@@ -681,13 +681,13 @@ void main() {
     test(
       'a non-admin, or a course that already has a copy, writes nothing',
       () async {
-        await newSpace(ownLevel: 50).writeNewCourseCopy('q1');
+        await newSpace(ownLevel: 50).writeNewCourseMissions('q1');
         expect(copyWrites(), isEmpty);
         final room = newSpace();
         putCopy(room, {
           'lo-1': ['a1'],
         }, sender: self);
-        await room.writeNewCourseCopy('q1');
+        await room.writeNewCourseMissions('q1');
         expect(copyWrites(), isEmpty);
       },
     );

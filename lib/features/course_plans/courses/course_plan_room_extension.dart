@@ -56,9 +56,9 @@ extension CoursePlanRoomExtension on Room {
   /// it: a course space whose plan event carries no `l2` is excluded from every
   /// language-filtered browse, so attaching a quest without it hides the course.
   ///
-  /// When the actor is a course admin, the course's own copy (content-studio)
-  /// is written from the list this course shows its members once the plan is
-  /// attached — see [_writeCourseMissionsCopy].
+  /// When the actor is a course admin, the course's own Can-Do list
+  /// (content-studio) is written from the list this course shows its members
+  /// once the plan is attached — see [_writeCourseMissionsCopy].
   Future<void> addCourseToSpace(
     String courseId, {
     required String targetLanguage,
@@ -97,29 +97,30 @@ extension CoursePlanRoomExtension on Room {
         await future;
       }
     }
-    // After the plan, so no reader pairs the new copy with the old quest.
+    // After the plan, so no reader pairs the new Can-Do list with the old
+    // quest.
     await _writeCourseMissionsCopy(
       isRoomAdmin ? await courseScopedOutline(courseId, id) : null,
       planChanged: planChanged,
     );
   }
 
-  /// A new course's own copy for [questId], written by its creator right
-  /// after the space exists: snapshotted from the course-scoped list, which
-  /// only a member of the course can read with the quest owner's private
-  /// activities in it, so it cannot ride in the creation request. A failed or
-  /// slow read leaves the course without a copy (logged), reading the shared
-  /// quest as before.
+  /// A new course's own Can-Do list for [questId], written by its creator
+  /// right after the space exists: snapshotted from the course-scoped list,
+  /// which only a member of the course can read with the quest owner's
+  /// private activities in it, so it cannot ride in the creation request. A
+  /// failed or slow read leaves the course without a Can-Do list (logged),
+  /// reading the shared quest as before.
   ///
   /// [questId] comes from the creation itself: right after the space arrives
   /// in sync its state can hold only `m.room.create`, so the plan event may
   /// not be readable here yet.
-  Future<void> writeNewCourseCopy(String questId) async {
+  Future<void> writeNewCourseMissions(String questId) async {
     if (!isRoomAdmin || courseMissions != null) return;
     final outline = await courseScopedOutline(questId, id);
     if (outline == null) {
       ErrorHandler.logError(
-        e: 'Course created without its own Can-Do copy: outline not loaded',
+        e: 'Course created without its own Can-Do list: outline not loaded',
         data: {'room_id': id, 'quest_id': questId},
         level: SentryLevel.warning,
       );
@@ -128,16 +129,16 @@ extension CoursePlanRoomExtension on Room {
     await _writeCourseMissionsCopy(outline, planChanged: true);
   }
 
-  /// Write the course's own copy when attaching a plan: admin only (readers
-  /// ignore a copy whose sender is below power level 100 anyway). Written
-  /// when the space has no copy yet, or when the plan changes — an old copy
-  /// would name the previous quest's Can-Dos. The snapshot is the list the
-  /// course shows without a copy, so this space's pins apply, else the plan's
-  /// selections, with the plan's notes. A revision above any existing copy's
-  /// lets open surfaces refresh.
+  /// Write the course's own Can-Do list when attaching a plan: admin only
+  /// (readers ignore a Can-Do list whose sender is below power level 100
+  /// anyway). Written when the space has no Can-Do list yet, or when the plan
+  /// changes — an old one would name the previous quest's Can-Dos. The
+  /// snapshot is the list the course shows without a Can-Do list, so this
+  /// space's pins apply, else the plan's selections, with the plan's notes. A
+  /// revision above any existing Can-Do list's lets open surfaces refresh.
   ///
   /// A plan change with no snapshot to hand ([outline] null) clears the old
-  /// quest's copy with an empty record, so readers fall back to the new
+  /// quest's Can-Do list with an empty record, so readers fall back to the new
   /// shared quest rather than listing the old quest's Can-Dos.
   Future<void> _writeCourseMissionsCopy(
     QuestOutline? outline, {
@@ -149,7 +150,7 @@ extension CoursePlanRoomExtension on Room {
     if (outline == null) {
       if (existing == null) return;
       ErrorHandler.logError(
-        e: 'Plan replaced without a Can-Do snapshot; course copy cleared',
+        e: 'Plan replaced without a Can-Do snapshot; Can-Do list cleared',
         data: {'room_id': id},
         level: SentryLevel.warning,
       );
@@ -165,7 +166,7 @@ extension CoursePlanRoomExtension on Room {
     final longNotes = CourseMissionsEvent.longNoteLoIds(shown);
     if (longNotes.isNotEmpty) {
       ErrorHandler.logError(
-        e: 'Plan note too long for a course copy; left out of it',
+        e: 'Plan note too long for a Can-Do list; left out of it',
         data: {'room_id': id, 'lo_ids': longNotes},
         level: SentryLevel.warning,
       );
