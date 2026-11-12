@@ -5,6 +5,7 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 
 enum ProgressIndicatorEnum {
   level,
@@ -63,7 +64,7 @@ enum ProgressIndicatorEnum {
       case ProgressIndicatorEnum.stars:
         // A star is a completed Learning Objective (#9436), so the tracker
         // names what it counts.
-        return L10n.of(context).learningObjectives;
+        return CanDoTerm.plural;
     }
   }
 

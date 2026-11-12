@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:39.202337",
+    "@@last_modified": "2026-11-12 09:03:57.121089",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -6887,7 +6887,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "কোনও ডিএম বা চ্যাট পাওয়া যায়নি। নিশ্চিত করুন যে আপনার অনুসন্ধান সঠিকভাবে বানান করা হয়েছে।",
-    "activityAnalyticsTooltipBody": "এগুলি আপনার পর্যালোচনা এবং অনুশীলনের জন্য সংরক্ষিত কার্যক্রম।",
     "numSavedActivities": "সংরক্ষিত কার্যক্রমের সংখ্যা",
     "saveActivityTitle": "কার্যক্রম সংরক্ষণ করুন",
     "saveActivityDesc": "ভাল কাজ! পরবর্তী পর্যালোচনা এবং অনুশীলনের জন্য এই কার্যক্রমটি সংরক্ষণ করুন",
@@ -7122,10 +7121,6 @@
     "zhTWDisplayName": "চাইনিজ (প্রথাগত)",
     "zuDisplayName": "জুলু",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9903,7 +9898,6 @@
     },
     "pageLabel": "{title} পৃষ্ঠা",
     "closeHint": "বন্ধ করার ইঙ্গিত",
-    "starListLabel": "সংরক্ষিত কার্যক্রম এবং তারা",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9913,10 +9907,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10233,7 +10223,6 @@
     "selectImageLabel": "ছবি নির্বাচন করুন",
     "userSearchTagsLabel": "অনুসন্ধান করুন...",
     "courseDetails": "কোর্সের বিবরণ",
-    "objective": "উদ্দেশ্য",
     "pingedLabel": "পিং করা হয়েছে",
     "mapFilterPlayerCount": "{count} জন খেলোয়াড়",
     "practiceFeedbackButtonTooltip": "এই অনুশীলনে একটি সমস্যা রিপোর্ট করুন",
@@ -10534,17 +10523,9 @@
     "reportSent": "রিপোর্ট পাঠানো হয়েছে",
     "reportNotSent": "আপনার রিপোর্ট পাঠানো যায়নি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।",
     "reportPointerMessage": "{courseName}-এ একটি মেসেজ রিপোর্ট করা হয়েছে — সেফটি দেখুন",
-    "learningObjective": "শেখার উদ্দেশ্য",
-    "learningObjectives": "শেখার উদ্দেশ্যগুলি",
-    "missionNofM": "{count}টির মধ্যে {index} নম্বর মিশন",
-    "xpTowardObjective": "এই উদ্দেশ্যের জন্য {threshold} XP-এর মধ্যে {xp} XP",
     "xpOfThreshold": "{threshold} XP-এর মধ্যে {xp} XP",
     "courseComplete": "কোর্স সম্পূর্ণ!",
-    "courseCompleteDesc": "আপনি এই কোর্সের সব {count}টি উদ্দেশ্য সম্পন্ন করেছেন। যা শিখেছেন, তা ধরে রাখতে অনুশীলন চালিয়ে যান।",
-    "practiceObjective": "এই উদ্দেশ্যটি অনুশীলন করুন",
     "otherActivities": "অন্যান্য কার্যকলাপ",
-    "objectiveCircleComplete": "মিশন {index}: সম্পূর্ণ",
-    "objectiveCircleUpNext": "মিশন {index}: এরপর",
     "useActivityImageAsChatBackground": "চ্যাট ব্যাকগ্রাউন্ড হিসেবে অ্যাক্টিভিটি ইমেজ ব্যবহার করুন",
     "andCertifyIMeetTheMinimumAge": " এবং প্রত্যয়ন করি যে আমার বয়স কমপক্ষে ১৩ বছর, অথবা আমার দেশে প্রয়োজনীয় ন্যূনতম বয়স যদি তার বেশি হয়।",
     "filteredNetworkBlockedTitle": "এই নেটওয়ার্কটি প্যানগিয়া চ্যাট ব্লক করছে",
@@ -10594,7 +10575,6 @@
     "offlinePracticeNote": "অফলাইন। আপনি ফিরে এলে আপনার উত্তর আপলোড হবে।",
     "offlinePracticeSavedNote": "এই ডিভাইসে সংরক্ষিত। আপনি অনলাইনে ফিরে এলে আপনার XP আপলোড হবে।",
     "offlinePracticeNothingSaved": "অফলাইনে অনুশীলন করার জন্য এই ডিভাইসে পর্যাপ্ত ডেটা সেভ করা নেই। আপনি যখন আবার অনলাইন হবেন তখন আবার চেষ্টা করুন।",
-    "missionNumber": "মিশন {index}",
     "xpToYourStar": "আপনার তারার জন্য {xp} XP",
     "missionStarEarned": "তারা অর্জিত হয়েছে!",
     "xpFromChats": "চ্যাট {xp}",
@@ -10603,8 +10583,6 @@
     "playMission": "খেলুন",
     "wordCount": "{count, plural, =1{1টি শব্দ} other{{count}টি শব্দ}}",
     "continueActivity": "চালিয়ে যান",
-    "noObjectiveActivitiesYet": "আপনি এখনও এই লক্ষ্যের জন্য কোনো কার্যকলাপ সম্পন্ন করেননি। আপনার কোর্স থেকে একটি শুরু করুন।",
-    "objectiveNotInYourCourses": "এই লক্ষ্য আপনার কোনো কোর্সে নেই।",
     "objectiveActivityCount": "{count, plural, =0{এখনও কোনো কার্যকলাপ নেই} =1{1টি কার্যকলাপ খেলা হয়েছে} other{{count}টি কার্যকলাপ খেলা হয়েছে}}",
     "activityCompleted": "সম্পন্ন হয়েছে",
     "completedTimes": "{count} বার সম্পন্ন হয়েছে",
@@ -10612,8 +10590,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "কথোপকথন {xp}",
     "xpIncludingGoals": "লক্ষ্য থেকে {xp} সহ",
-    "missionOtherLanguageNotice": "এই মিশনটি {language} ভাষার একটি কোর্স থেকে নেওয়া হয়েছে। এতে আপনার অগ্রগতি শুধুমাত্র তখনই গণনা করা হবে যখন আপনি {language} শিখছেন।",
-    "missionLanguageMismatchDesc": "এই মিশনটি {language} ভাষার একটি কোর্স থেকে নেওয়া হয়েছে। আপনার লক্ষ্য ভাষা কি {language}-এ পরিবর্তন করবেন?",
     "xpBySkillTitle": "দক্ষতা অনুসারে",
     "missionNextActivity": "পরবর্তী কার্যকলাপ",
     "missionContinueActivity": "কার্যকলাপ চালিয়ে যান",
@@ -10623,7 +10599,6 @@
     "otherCoursesSessions": "অন্যান্য কোর্স ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP অর্জিত হয়েছে",
-    "currentMission": "বর্তমান মিশন",
     "constructUseCorRADesc": "উচ্চস্বরে পড়া হয়েছে এবং শোনা গেছে",
     "constructUseIncRADesc": "উচ্চস্বরে পড়া হয়েছে, কিন্তু শোনা যায়নি",
     "hearItFirstToolName": "প্রথমে শুনুন",
@@ -10645,7 +10620,6 @@
     "readAloudTake": "নিন {number}",
     "videoWontPlayHere": "এই ভিডিওটি এখানে চলবে না।",
     "watchOnYoutube": "ইউটিউবে দেখুন",
-    "xpTowardMission": "এই মিশনে {xp} XP",
     "practiceStartWordCount": "{count, plural, =1{অনুশীলনের জন্য শব্দ} other{অনুশীলনের জন্য শব্দ}}",
     "practiceStartGrammarCount": "{count, plural, =1{অনুশীলনের জন্য ব্যাকরণ বিষয়} other{অনুশীলনের জন্য ব্যাকরণ বিষয়}}",
     "practiceStartExerciseTypes": "অনুশীলনের প্রকারভেদ",
@@ -10685,5 +10659,20 @@
     "discussionRemoved": "আপনি এই আলোচনায় যোগ দিতে পারবেন না।",
     "discussionJoinArriving": "আপনি যোগ দিয়েছেন! আলোচনাটি আসার সাথে সাথেই খুলে যাবে।",
     "roleplayLabel": "ভূমিকাভিনয়",
+    "canDoAnalyticsTooltipBody": "প্রতিটি {canDo} তার কার্যকলাপ এবং অনুশীলন থেকে XP দিয়ে পূর্ণ হয়। একটি সম্পূর্ণ {canDo} একটি তারকা অর্জন করে।",
+    "canDoStarListLabel": "{canDos} এবং সংরক্ষিত কার্যকলাপ",
+    "canDoNofM": "{canDo} {count} এর মধ্যে {index}",
+    "xpOfThresholdTowardCanDo": "এই {canDo} এর জন্য {threshold} XP এর মধ্যে {xp} XP",
+    "courseCompleteCanDosDesc": "আপনি এই কোর্সের সমস্ত {count} {canDos} সম্পন্ন করেছেন। আপনি যা শিখেছেন তা ধরে রাখতে অনুশীলন চালিয়ে যান।",
+    "practiceCanDo": "এই {canDo} অনুশীলন করুন",
+    "canDoCircleComplete": "{canDo} {index}: সম্পূর্ণ",
+    "canDoCircleUpNext": "{canDo} {index}: এরপর",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "এই {canDo} {language} এর একটি কোর্স থেকে এসেছে। এটিতে আপনার অগ্রগতি শুধুমাত্র তখনই গণনা করা হবে যখন আপনি {language} শিখছেন।",
+    "canDoLanguageMismatchDesc": "এই {canDo} {language} এর একটি কোর্স থেকে এসেছে। আপনার লক্ষ্য ভাষা {language} এ পরিবর্তন করবেন?",
+    "noCanDoActivitiesYet": "আপনি এখনও এই {canDo} এর জন্য কোনো কার্যকলাপ সম্পন্ন করেননি। আপনার কোর্স থেকে একটি শুরু করুন।",
+    "canDoNotInYourCourses": "এই {canDo} আপনার কোনো কোর্সে নেই।",
+    "currentCanDo": "বর্তমান {canDo}",
+    "xpGainedTowardCanDo": "এই {canDo} এর জন্য {xp} XP",
     "sessionFinished": "অনেক দেরি হয়ে গেছে! এই কার্যকলাপটি শেষ হয়ে গেছে।"
 }

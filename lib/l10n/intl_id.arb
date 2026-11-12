@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:45.828898",
+    "@@last_modified": "2026-11-12 09:04:07.101730",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -6365,7 +6365,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Tidak ada DM atau obrolan yang ditemukan. Pastikan pencarian Anda dieja dengan benar.",
-    "activityAnalyticsTooltipBody": "Ini adalah aktivitas yang Anda simpan untuk ditinjau dan dipraktikkan.",
     "numSavedActivities": "Jumlah aktivitas yang disimpan",
     "saveActivityTitle": "Simpan aktivitas",
     "saveActivityDesc": "Kerja bagus! Simpan aktivitas ini untuk ditinjau dan dipraktikkan nanti",
@@ -6600,10 +6599,6 @@
     "zhTWDisplayName": "Cina (Tradisional)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9351,7 +9346,6 @@
     },
     "pageLabel": "halaman {title}",
     "closeHint": "Tutup petunjuk",
-    "starListLabel": "Aktivitas dan bintang yang disimpan",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9361,10 +9355,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9681,7 +9671,6 @@
     "selectImageLabel": "Pilih gambar",
     "userSearchTagsLabel": "Cari di...",
     "courseDetails": "Detail kursus",
-    "objective": "Tujuan",
     "pingedLabel": "Di-ping",
     "mapFilterPlayerCount": "{count} pemain",
     "practiceFeedbackButtonTooltip": "Laporkan masalah dengan latihan ini",
@@ -9982,17 +9971,9 @@
     "reportSent": "Laporan terkirim",
     "reportNotSent": "Laporan Anda tidak dapat dikirim. Periksa koneksi Anda dan coba lagi.",
     "reportPointerMessage": "Sebuah pesan dilaporkan di {courseName} — lihat Keamanan",
-    "learningObjective": "Tujuan Pembelajaran",
-    "learningObjectives": "Tujuan Pembelajaran",
-    "missionNofM": "Misi {index} dari {count}",
-    "xpTowardObjective": "{xp} dari {threshold} XP untuk tujuan ini",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Kursus selesai!",
-    "courseCompleteDesc": "Anda telah menyelesaikan semua {count} tujuan dalam kursus ini. Teruslah berlatih untuk mempertahankan apa yang telah Anda pelajari.",
-    "practiceObjective": "Latih tujuan ini",
     "otherActivities": "Aktivitas lain",
-    "objectiveCircleComplete": "Misi {index}: selesai",
-    "objectiveCircleUpNext": "Misi {index}: selanjutnya",
     "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
     "andCertifyIMeetTheMinimumAge": " dan menyatakan bahwa saya berusia minimal 13 tahun, atau usia minimum yang disyaratkan di negara saya jika lebih tinggi.",
     "filteredNetworkBlockedTitle": "Jaringan ini memblokir Pangea Chat",
@@ -10042,7 +10023,6 @@
     "offlinePracticeNote": "Offline. Jawaban Anda akan diunggah saat Anda kembali online.",
     "offlinePracticeSavedNote": "Tersimpan di perangkat ini. XP Anda akan diunggah saat Anda kembali online.",
     "offlinePracticeNothingSaved": "Tidak cukup data tersimpan di perangkat ini untuk berlatih secara offline. Coba lagi saat Anda kembali online.",
-    "missionNumber": "Misi {index}",
     "xpToYourStar": "{xp} XP untuk bintangmu",
     "missionStarEarned": "Bintang didapatkan!",
     "xpFromChats": "Obrolan {xp}",
@@ -10051,8 +10031,6 @@
     "playMission": "Main",
     "wordCount": "{count, plural, =1{1 kata} other{{count} kata}}",
     "continueActivity": "Lanjutkan",
-    "noObjectiveActivitiesYet": "Kamu belum menyelesaikan aktivitas untuk tujuan ini. Mulai salah satu dari kursusmu.",
-    "objectiveNotInYourCourses": "Tujuan ini tidak ada di kursusmu.",
     "objectiveActivityCount": "{count, plural, =0{Belum ada aktivitas} =1{1 aktivitas dimainkan} other{{count} aktivitas dimainkan}}",
     "activityCompleted": "Selesai",
     "completedTimes": "Selesai {count} kali",
@@ -10060,8 +10038,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Percakapan {xp}",
     "xpIncludingGoals": "termasuk {xp} dari sasaran",
-    "missionOtherLanguageNotice": "Misi ini berasal dari kursus dalam bahasa {language}. Kemajuan Anda hanya dihitung saat Anda mempelajari bahasa {language}.",
-    "missionLanguageMismatchDesc": "Misi ini berasal dari kursus dalam bahasa {language}. Ganti bahasa target Anda ke bahasa {language}?",
     "xpBySkillTitle": "Berdasarkan keahlian",
     "missionNextActivity": "Aktivitas berikutnya",
     "missionContinueActivity": "Lanjutkan aktivitas",
@@ -10071,7 +10047,6 @@
     "otherCoursesSessions": "Kursus lain ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP diperoleh",
-    "currentMission": "Misi saat ini",
     "constructUseCorRADesc": "Dibaca nyaring dan terdengar",
     "constructUseIncRADesc": "Dibaca nyaring, tidak terdengar",
     "hearItFirstToolName": "Dengar dulu",
@@ -10093,7 +10068,6 @@
     "readAloudTake": "Ambil {number}",
     "videoWontPlayHere": "Video ini tidak dapat diputar di sini.",
     "watchOnYoutube": "Tonton di YouTube",
-    "xpTowardMission": "{xp} XP untuk Misi ini",
     "practiceStartWordCount": "{count, plural, =1{kata untuk dilatih} other{kata untuk dilatih}}",
     "practiceStartGrammarCount": "{count, plural, =1{poin tata bahasa untuk dilatih} other{poin tata bahasa untuk dilatih}}",
     "practiceStartExerciseTypes": "Jenis latihan",
@@ -10133,5 +10107,20 @@
     "discussionRemoved": "Anda tidak dapat bergabung dengan diskusi ini.",
     "discussionJoinArriving": "Anda masuk! Diskusi akan dibuka segera setelah tiba.",
     "roleplayLabel": "Permainan Peran",
+    "canDoAnalyticsTooltipBody": "Setiap {canDo} terisi dengan XP dari aktivitas dan latihan. {canDo} yang penuh akan mendapatkan bintang.",
+    "canDoStarListLabel": "{canDos} dan aktivitas tersimpan",
+    "canDoNofM": "{canDo} {index} dari {count}",
+    "xpOfThresholdTowardCanDo": "{xp} dari {threshold} XP untuk {canDo} ini",
+    "courseCompleteCanDosDesc": "Kamu telah menyelesaikan semua {count} {canDos} di kursus ini. Teruslah berlatih untuk mempertahankan apa yang telah kamu pelajari.",
+    "practiceCanDo": "Latih {canDo} ini",
+    "canDoCircleComplete": "{canDo} {index}: selesai",
+    "canDoCircleUpNext": "{canDo} {index}: berikutnya",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "{canDo} ini berasal dari kursus dalam bahasa {language}. Kemajuanmu hanya akan dihitung saat kamu belajar bahasa {language}.",
+    "canDoLanguageMismatchDesc": "{canDo} ini berasal dari kursus dalam bahasa {language}. Ganti bahasa targetmu ke bahasa {language}?",
+    "noCanDoActivitiesYet": "Kamu belum menyelesaikan aktivitas untuk {canDo} ini. Mulai satu dari kursusmu.",
+    "canDoNotInYourCourses": "{canDo} ini tidak ada di kursusmu.",
+    "currentCanDo": "{canDo} saat ini",
+    "xpGainedTowardCanDo": "{xp} XP untuk {canDo} ini",
     "sessionFinished": "Terlambat! Aktivitas ini sudah selesai."
 }

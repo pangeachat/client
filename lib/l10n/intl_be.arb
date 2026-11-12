@@ -3526,7 +3526,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-11-11 11:38:39.878277",
+    "@@last_modified": "2026-11-12 09:03:57.392189",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -6442,7 +6442,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Не знойдзена асабістых паведамленняў або чатаў. Пераканайцеся, што ваш пошук напісаны правільна.",
-    "activityAnalyticsTooltipBody": "Гэта вашы захаваныя актыўнасці для агляду і практыкі.",
     "numSavedActivities": "Колькасць захаваных актыўнасцяў",
     "saveActivityTitle": "Захаваць актыўнасць",
     "saveActivityDesc": "Малайчына! Захавайце гэтую актыўнасць для далейшага агляду і практыкі",
@@ -6677,10 +6676,6 @@
     "zhTWDisplayName": "Кітайская (Традыцыйная)",
     "zuDisplayName": "Зулу",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9292,7 +9287,6 @@
     },
     "pageLabel": "{title} старонка",
     "closeHint": "Зачыніць падказку",
-    "starListLabel": "Захаваныя дзейнасці і зоркі",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9302,10 +9296,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9622,7 +9612,6 @@
     "selectImageLabel": "Выбраць выяву",
     "userSearchTagsLabel": "Шукаць у...",
     "courseDetails": "Дэталі курса",
-    "objective": "Мэта",
     "pingedLabel": "Пінг",
     "mapFilterPlayerCount": "{count} гульцоў",
     "practiceFeedbackButtonTooltip": "Паведаміць пра праблему з гэтым практыкаваннем",
@@ -9923,17 +9912,9 @@
     "reportSent": "Справаздача адпраўлена",
     "reportNotSent": "Ваша справаздача не можа быць адпраўлена. Праверце злучэнне і паспрабуйце зноў.",
     "reportPointerMessage": "Паведамленне было паведамлена ў {courseName} — глядзіце Бяспека",
-    "learningObjective": "Мэта навучання",
-    "learningObjectives": "Мэты навучання",
-    "missionNofM": "Місія {index} з {count}",
-    "xpTowardObjective": "{xp} з {threshold} XP да гэтай мэты",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Курс завершаны!",
-    "courseCompleteDesc": "Вы выканалі ўсе {count} мэты ў гэтым курсе. Працягвайце практыкавацца, каб захаваць тое, што вы вывучылі.",
-    "practiceObjective": "Практыкаваць гэтую мэту",
     "otherActivities": "Іншыя заняткі",
-    "objectiveCircleComplete": "Місія {index}: выканана",
-    "objectiveCircleUpNext": "Місія {index}: наступная",
     "useActivityImageAsChatBackground": "Выкарыстоўваць выяву актыўнасці як фон чата",
     "andCertifyIMeetTheMinimumAge": " і пацвярджаю, што мне не менш за 13 гадоў або мінімальны ўзрост, неабходны ў маёй краіне, калі ён вышэйшы.",
     "filteredNetworkBlockedTitle": "Гэтая сетка блакуе Pangea Chat",
@@ -9983,7 +9964,6 @@
     "offlinePracticeNote": "Па-за сеткай. Вашы адказы загрузяцца, калі вы вернецеся ў сетку.",
     "offlinePracticeSavedNote": "Захавана на гэтай прыладзе. Ваш XP загрузіцца, калі вы вернецеся ў сетку.",
     "offlinePracticeNothingSaved": "На гэтай прыладзе недастаткова захавана для практыкі ў аўтаномным рэжыме. Паспрабуйце яшчэ раз, калі вы будзеце ў сетцы.",
-    "missionNumber": "Місія {index}",
     "xpToYourStar": "{xp} XP да вашай зоркі",
     "missionStarEarned": "Зорка зароблена!",
     "xpFromChats": "Чаты {xp}",
@@ -9992,8 +9972,6 @@
     "playMission": "Гуляць",
     "wordCount": "{count, plural, =1{1 слова} other{{count} слоў}}",
     "continueActivity": "Працягнуць",
-    "noObjectiveActivitiesYet": "Вы яшчэ не выканалі заданне для гэтай мэты. Пачніце адно з вашага курсу.",
-    "objectiveNotInYourCourses": "Гэтая мэта адсутнічае ў вашых курсах.",
     "objectiveActivityCount": "{count, plural, =0{Пакуль няма заданняў} =1{1 заданне выканана} other{{count} заданняў выканана}}",
     "activityCompleted": "Выканана",
     "completedTimes": "Выканана {count} разоў",
@@ -10001,8 +9979,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Размова {xp}",
     "xpIncludingGoals": "уключаючы {xp} з мэтаў",
-    "missionOtherLanguageNotice": "Гэтая місія з курса на {language}. Ваш прагрэс па ёй залічваецца толькі падчас вывучэння {language}.",
-    "missionLanguageMismatchDesc": "Гэтая місія з курса на {language}. Пераключыць мэтавую мову на {language}?",
     "xpBySkillTitle": "Па навыках",
     "missionNextActivity": "Наступнае заданне",
     "missionContinueActivity": "Працягнуць заданне",
@@ -10012,7 +9988,6 @@
     "otherCoursesSessions": "Іншыя курсы ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, атрымана {xp} XP",
-    "currentMission": "Бягучая місія",
     "constructUseCorRADesc": "Прачытана ўслых і пачута",
     "constructUseIncRADesc": "Прачытана ўслых, не пачута",
     "hearItFirstToolName": "Спачатку паслухайце",
@@ -10034,7 +10009,6 @@
     "readAloudTake": "Спроба {number}",
     "videoWontPlayHere": "Гэта відэа тут не прайграецца.",
     "watchOnYoutube": "Глядзець на YouTube",
-    "xpTowardMission": "{xp} XP да гэтай місіі",
     "practiceStartWordCount": "{count, plural, =1{слова для практыкі} other{слоў для практыкі}}",
     "practiceStartGrammarCount": "{count, plural, =1{граматычны пункт для практыкі} other{граматычных пунктаў для практыкі}}",
     "practiceStartExerciseTypes": "Тыпы практыкаванняў",
@@ -10074,5 +10048,20 @@
     "discussionRemoved": "Вы не можаце далучыцца да гэтага абмеркавання.",
     "discussionJoinArriving": "Вы ўдзельнічаеце! Абмеркаванне пачнецца, як толькі яно з'явіцца.",
     "roleplayLabel": "Ролевая гульня",
+    "canDoAnalyticsTooltipBody": "Кожны {canDo} запаўняецца XP з яго дзейнасці і практыкі. Поўны {canDo} прыносіць зорку.",
+    "canDoStarListLabel": "{canDos} і захаваныя заняткі",
+    "canDoNofM": "{canDo} {index} з {count}",
+    "xpOfThresholdTowardCanDo": "{xp} з {threshold} XP да гэтага {canDo}",
+    "courseCompleteCanDosDesc": "Вы выканалі ўсе {count} {canDos} у гэтым курсе. Працягвайце практыкавацца, каб захаваць тое, што вы вывучылі.",
+    "practiceCanDo": "Практыкуйце гэты {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: завершана",
+    "canDoCircleUpNext": "{canDo} {index}: наступны",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Гэты {canDo} з курса на {language}. Ваш прагрэс па ім залічваецца толькі падчас вывучэння {language}.",
+    "canDoLanguageMismatchDesc": "Гэты {canDo} з курса на {language}. Пераключыць мэтавую мову на {language}?",
+    "noCanDoActivitiesYet": "Вы яшчэ не выканалі заданне для гэтага {canDo}. Пачніце адно са свайго курса.",
+    "canDoNotInYourCourses": "Гэтага {canDo} няма ні ў адным з вашых курсаў.",
+    "currentCanDo": "Бягучы {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP да гэтага {canDo}",
     "sessionFinished": "Занадта позна! Гэтае заданне скончылася."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-11-11 11:38:42.359973",
+    "@@last_modified": "2026-11-12 09:04:02.649389",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -6453,7 +6453,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "DM-e või vestlusi ei leitud. Veenduge, et teie otsing on õigesti kirjutatud.",
-    "activityAnalyticsTooltipBody": "Need on teie salvestatud tegevused ülevaatamiseks ja harjutamiseks.",
     "numSavedActivities": "Salvestatud tegevuste arv",
     "saveActivityTitle": "Salvesta tegevus",
     "saveActivityDesc": "Hea töö! Salvesta see tegevus hilisemaks ülevaatamiseks ja harjutamiseks",
@@ -6688,10 +6687,6 @@
     "zhTWDisplayName": "Hiina (Traditsiooniline)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9275,7 +9270,6 @@
     },
     "pageLabel": "{title} leht",
     "closeHint": "Sulge vihje",
-    "starListLabel": "Salvestatud tegevused ja tähed",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9285,10 +9279,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9605,7 +9595,6 @@
     "selectImageLabel": "Vali pilt",
     "userSearchTagsLabel": "Otsi asukohast...",
     "courseDetails": "Kursuse üksikasjad",
-    "objective": "Eesmärk",
     "pingedLabel": "Pingitud",
     "mapFilterPlayerCount": "{count} mängijat",
     "practiceFeedbackButtonTooltip": "Teata probleemist selle harjutusega",
@@ -9906,17 +9895,9 @@
     "reportSent": "Aruanne saadetud",
     "reportNotSent": "Teie aruannet ei saanud saata. Kontrollige oma ühendust ja proovige uuesti.",
     "reportPointerMessage": "Sõnumist teatati kursusel {courseName} – vaadake jaotist „Ohutus“",
-    "learningObjective": "Õpieesmärk",
-    "learningObjectives": "Õpieesmärgid",
-    "missionNofM": "Missioon {index} / {count}",
-    "xpTowardObjective": "{xp} / {threshold} XP selle eesmärgi suunas",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Kursus läbitud!",
-    "courseCompleteDesc": "Olete läbinud kõik {count} selle kursuse eesmärgid. Jätkake harjutamist, et õpitut meeles pidada.",
-    "practiceObjective": "Harjuta seda eesmärki",
     "otherActivities": "Muud tegevused",
-    "objectiveCircleComplete": "Missioon {index}: täidetud",
-    "objectiveCircleUpNext": "Missioon {index}: järgmine",
     "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
     "andCertifyIMeetTheMinimumAge": " ja kinnitan, et olen vähemalt 13-aastane või minu riigis nõutavast vanusest vanem, kui see on kõrgem.",
     "filteredNetworkBlockedTitle": "See võrk blokeerib Pangea Chati",
@@ -9966,7 +9947,6 @@
     "offlinePracticeNote": "Ühenduseta. Sinu vastused laaditakse üles, kui oled tagasi.",
     "offlinePracticeSavedNote": "Salvestatud sellesse seadmesse. Sinu XP laaditakse üles, kui oled jälle võrgus.",
     "offlinePracticeNothingSaved": "Sellesse seadmesse pole võrguühenduseta harjutamiseks piisavalt salvestatud. Proovi uuesti, kui oled võrgus tagasi.",
-    "missionNumber": "Missioon {index}",
     "xpToYourStar": "{xp} XP sinu täheni",
     "missionStarEarned": "Täht teenitud!",
     "xpFromChats": "Vestlused {xp}",
@@ -9975,8 +9955,6 @@
     "playMission": "Mängi",
     "wordCount": "{count, plural, =1{1 sõna} other{{count} sõna}}",
     "continueActivity": "Jätka",
-    "noObjectiveActivitiesYet": "Sa pole selle eesmärgi jaoks veel ühtegi tegevust lõpetanud. Alusta ühte oma kursuselt.",
-    "objectiveNotInYourCourses": "Seda eesmärki pole üheski sinu kursuses.",
     "objectiveActivityCount": "{count, plural, =0{Tegevusi veel pole} =1{1 tegevus mängitud} other{{count} tegevust mängitud}}",
     "activityCompleted": "Lõpetatud",
     "completedTimes": "Lõpetatud {count} korda",
@@ -9984,8 +9962,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Vestlus {xp}",
     "xpIncludingGoals": "sh {xp} eesmärkidest",
-    "missionOtherLanguageNotice": "See missioon on kursuselt keeles {language}. Sinu edusammud loevad ainult siis, kui õpid keelt {language}.",
-    "missionLanguageMismatchDesc": "See missioon on kursuselt keeles {language}. Kas soovid sihtkeeleks vahetada keele {language}?",
     "xpBySkillTitle": "Oskuste kaupa",
     "missionNextActivity": "Järgmine tegevus",
     "missionContinueActivity": "Jätka tegevust",
@@ -9995,7 +9971,6 @@
     "otherCoursesSessions": "Muud kursused ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, teenitud {xp} XP",
-    "currentMission": "Praegune missioon",
     "constructUseCorRADesc": "Valjusti loetud ja kuuldud",
     "constructUseIncRADesc": "Valjusti loetud, ei kuuldud",
     "hearItFirstToolName": "Kuula enne",
@@ -10017,7 +9992,6 @@
     "readAloudTake": "Võte {number}",
     "videoWontPlayHere": "Seda videot ei saa siin esitada.",
     "watchOnYoutube": "Vaata YouTube'is",
-    "xpTowardMission": "{xp} XP selle missiooni suunas",
     "practiceStartWordCount": "{count, plural, =1{sõna harjutamiseks} other{sõna harjutamiseks}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatikapunkt harjutamiseks} other{grammatikapunkti harjutamiseks}}",
     "practiceStartExerciseTypes": "Harjutuste tüübid",
@@ -10057,5 +10031,20 @@
     "discussionRemoved": "Te ei saa selle aruteluga liituda.",
     "discussionJoinArriving": "Olete sees! Arutelu avaneb kohe, kui see saabub.",
     "roleplayLabel": "Rollimäng",
+    "canDoAnalyticsTooltipBody": "Iga {canDo} täitub tegevustest ja harjutamisest saadud XP-ga. Täis {canDo} annab tähe.",
+    "canDoStarListLabel": "{canDos} ja salvestatud tegevused",
+    "canDoNofM": "{canDo} {index} / {count}",
+    "xpOfThresholdTowardCanDo": "{xp} / {threshold} XP selle {canDo} suunas",
+    "courseCompleteCanDosDesc": "Olete läbinud kõik {count} {canDos} sellel kursusel. Jätkake harjutamist, et õpitut meeles pidada.",
+    "practiceCanDo": "Harjuta seda {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: valmis",
+    "canDoCircleUpNext": "{canDo} {index}: järgmine",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "See {canDo} on kursuselt keeles {language}. Teie edusammud sellel loetakse ainult siis, kui õpite keelt {language}.",
+    "canDoLanguageMismatchDesc": "See {canDo} on kursuselt keeles {language}. Kas soovite vahetada sihtkeeleks {language}?",
+    "noCanDoActivitiesYet": "Te pole selle {canDo} jaoks veel ühtegi tegevust lõpetanud. Alustage ühte oma kursuselt.",
+    "canDoNotInYourCourses": "See {canDo} ei kuulu ühtegi teie kursusesse.",
+    "currentCanDo": "Praegune {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP selle {canDo} suunas",
     "sessionFinished": "Liiga hilja! See tegevus on lõppenud."
 }

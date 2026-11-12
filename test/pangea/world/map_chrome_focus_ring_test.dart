@@ -9,6 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/pangea/common/widgets/focus_ring_tap_target.dart';
 import 'package:fluffychat/routes/world/hex_level_badge.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
@@ -193,7 +194,7 @@ void main() {
         final semantics = tester.ensureSemantics();
         await pumpTrackers(tester);
         final l10n = L10n.of(tester.element(find.byType(Scaffold)));
-        expectOneNodeControl(tester, '${l10n.learningObjectives}: 3');
+        expectOneNodeControl(tester, '${CanDoTerm.plural}: 3');
         expectOneNodeControl(tester, '${l10n.grammar}: 3');
         expectOneNodeControl(tester, '${l10n.vocab}: 3');
         semantics.dispose();

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-11-11 11:39:07.754291",
+    "@@last_modified": "2026-11-12 09:04:27.569271",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -6560,7 +6560,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Hiç DM veya sohbet bulunamadı. Aramanızın doğru yazıldığından emin olun.",
-    "activityAnalyticsTooltipBody": "Bunlar gözden geçirmek ve pratik yapmak için kaydedilmiş aktivitelerinizdir.",
     "numSavedActivities": "Kaydedilen aktivitelerin sayısı",
     "saveActivityTitle": "Aktiviteyi kaydet",
     "saveActivityDesc": "İyi iş! Bu aktiviteyi daha sonra gözden geçirmek ve pratik yapmak için kaydedin",
@@ -6795,10 +6794,6 @@
     "zhTWDisplayName": "Çince (Geleneksel)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9576,7 +9571,6 @@
     },
     "pageLabel": "{title} sayfası",
     "closeHint": "Kapatma ipucu",
-    "starListLabel": "Kaydedilen etkinlikler ve yıldızlar",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9586,10 +9580,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9906,7 +9896,6 @@
     "selectImageLabel": "Resim seç",
     "userSearchTagsLabel": "Araştır...",
     "courseDetails": "Kurs detayları",
-    "objective": "Hedef",
     "pingedLabel": "Pinglendi",
     "mapFilterPlayerCount": "{count} oyuncu",
     "practiceFeedbackButtonTooltip": "Bu alıştırmayla ilgili bir sorun bildir",
@@ -10207,17 +10196,9 @@
     "reportSent": "Rapor gönderildi",
     "reportNotSent": "Raporunuz gönderilemedi. Bağlantınızı kontrol edip tekrar deneyin.",
     "reportPointerMessage": "{courseName} içinde bir mesaj bildirildi — Güvenlik bölümüne bakın",
-    "learningObjective": "Öğrenim Hedefi",
-    "learningObjectives": "Öğrenim Hedefleri",
-    "missionNofM": "{count} görevden {index}. görev",
-    "xpTowardObjective": "Bu hedefe yönelik {threshold} XP'den {xp} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Kurs tamamlandı!",
-    "courseCompleteDesc": "Bu kurstaki {count} hedefin tümünü tamamladın. Öğrendiklerini pekiştirmek için pratik yapmaya devam et.",
-    "practiceObjective": "Bu hedefi pratik et",
     "otherActivities": "Diğer aktiviteler",
-    "objectiveCircleComplete": "Görev {index}: tamamlandı",
-    "objectiveCircleUpNext": "Görev {index}: sırada",
     "useActivityImageAsChatBackground": "Etkinlik görselini sohbet arka planı olarak kullan",
     "andCertifyIMeetTheMinimumAge": " ve en az 13 yaşında olduğumu veya ülkemde daha yüksekse gereken minimum yaşta olduğumu onaylıyorum.",
     "filteredNetworkBlockedTitle": "Bu ağ Pangea Chat'i engelliyor",
@@ -10267,7 +10248,6 @@
     "offlinePracticeNote": "Çevrimdışı. Geri döndüğünüzde cevaplarınız yüklenecek.",
     "offlinePracticeSavedNote": "Bu cihaza kaydedildi. Çevrimiçi olduğunuzda XP'niz yüklenecek.",
     "offlinePracticeNothingSaved": "Çevrimdışı pratik yapmak için bu cihaza yeterli veri kaydedilmemiş. Tekrar çevrimiçi olduğunuzda deneyin.",
-    "missionNumber": "Görev {index}",
     "xpToYourStar": "Yıldızına {xp} XP kaldı",
     "missionStarEarned": "Yıldız kazanıldı!",
     "xpFromChats": "Sohbetler {xp}",
@@ -10276,8 +10256,6 @@
     "playMission": "Oyna",
     "wordCount": "{count, plural, =1{1 kelime} other{{count} kelime}}",
     "continueActivity": "Devam Et",
-    "noObjectiveActivitiesYet": "Bu hedef için henüz bir aktivite tamamlamadın. Kursundan birine başla.",
-    "objectiveNotInYourCourses": "Bu hedef kurslarından hiçbirinde yok.",
     "objectiveActivityCount": "{count, plural, =0{Henüz aktivite yok} =1{1 aktivite oynandı} other{{count} aktivite oynandı}}",
     "activityCompleted": "Tamamlandı",
     "completedTimes": "{count} kez tamamlandı",
@@ -10285,8 +10263,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Sohbet {xp}",
     "xpIncludingGoals": "hedeflerden gelen {xp} dahil",
-    "missionOtherLanguageNotice": "Bu Görev, {language} dilindeki bir kurstan. Bu görevdeki ilerlemeniz yalnızca {language} öğrenirken sayılır.",
-    "missionLanguageMismatchDesc": "Bu Görev, {language} dilindeki bir kurstan. Hedef dilinizi {language} olarak değiştireyim mi?",
     "xpBySkillTitle": "Becerilere göre",
     "missionNextActivity": "Sonraki etkinlik",
     "missionContinueActivity": "Etkinliğe devam et",
@@ -10296,7 +10272,6 @@
     "otherCoursesSessions": "Diğer kurslar ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP kazanıldı",
-    "currentMission": "Mevcut görev",
     "constructUseCorRADesc": "Sesli okundu ve duyuldu",
     "constructUseIncRADesc": "Sesli okundu, duyulmadı",
     "hearItFirstToolName": "Önce dinle",
@@ -10318,7 +10293,6 @@
     "readAloudTake": "Alıştırma {number}",
     "videoWontPlayHere": "Bu video burada oynatılamaz.",
     "watchOnYoutube": "YouTube'da İzle",
-    "xpTowardMission": "Bu Görev için {xp} XP",
     "practiceStartWordCount": "{count, plural, =1{pratik yapılacak kelime} other{pratik yapılacak kelime}}",
     "practiceStartGrammarCount": "{count, plural, =1{pratik yapılacak dil bilgisi konusu} other{pratik yapılacak dil bilgisi konusu}}",
     "practiceStartExerciseTypes": "Alıştırma türleri",
@@ -10358,5 +10332,20 @@
     "discussionRemoved": "Bu tartışmaya katılamazsın.",
     "discussionJoinArriving": "İçeridesin! Tartışma gelir gelmez açılacak.",
     "roleplayLabel": "Rol Yapma",
+    "canDoAnalyticsTooltipBody": "Her bir {canDo}, etkinliklerinden ve alıştırmalarından kazanılan DP ile dolar. Dolu bir {canDo} bir yıldız kazandırır.",
+    "canDoStarListLabel": "{canDos} ve kaydedilen etkinlikler",
+    "canDoNofM": "{count} üzerinden {index}. {canDo}",
+    "xpOfThresholdTowardCanDo": "Bu {canDo} için {threshold} DP'den {xp} DP",
+    "courseCompleteCanDosDesc": "Bu kurstaki tüm {count} {canDos} tamamladınız. Öğrendiklerinizi korumak için pratik yapmaya devam edin.",
+    "practiceCanDo": "Bu {canDo} üzerinde pratik yapın",
+    "canDoCircleComplete": "{canDo} {index}: tamamlandı",
+    "canDoCircleUpNext": "{canDo} {index}: sırada",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Bu {canDo}, {language} dilindeki bir kurstan. Üzerindeki ilerlemeniz yalnızca {language} öğrenirken sayılır.",
+    "canDoLanguageMismatchDesc": "Bu {canDo}, {language} dilindeki bir kurstan. Hedef dilinizi {language} olarak değiştireyim mi?",
+    "noCanDoActivitiesYet": "Bu {canDo} için henüz bir etkinlik tamamlamadınız. Kursunuzdan bir tane başlatın.",
+    "canDoNotInYourCourses": "Bu {canDo} kurslarınızın hiçbirinde değil.",
+    "currentCanDo": "Mevcut {canDo}",
+    "xpGainedTowardCanDo": "Bu {canDo} için {xp} DP kazanıldı",
     "sessionFinished": "Çok geç! Bu etkinlik sona erdi."
 }

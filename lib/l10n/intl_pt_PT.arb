@@ -2550,7 +2550,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-11-11 11:38:56.228014",
+    "@@last_modified": "2026-11-12 09:04:20.987850",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7171,7 +7171,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Nenhum DM ou chat encontrado. Certifique-se de que sua busca está escrita corretamente.",
-    "activityAnalyticsTooltipBody": "Estas são suas atividades salvas para revisão e prática.",
     "numSavedActivities": "Número de atividades salvas",
     "saveActivityTitle": "Salvar atividade",
     "saveActivityDesc": "Bom trabalho! Salve esta atividade para revisão e prática posterior",
@@ -7406,10 +7405,6 @@
     "zhTWDisplayName": "Chinês (Tradicional)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10192,7 +10187,6 @@
     },
     "pageLabel": "página {title}",
     "closeHint": "Dica de fechamento",
-    "starListLabel": "Atividades salvas e estrelas",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10202,10 +10196,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10522,7 +10512,6 @@
     "selectImageLabel": "Selecionar imagem",
     "userSearchTagsLabel": "Pesquisar em...",
     "courseDetails": "Detalhes do curso",
-    "objective": "Objetivo",
     "pingedLabel": "Notificado",
     "mapFilterPlayerCount": "{count} jogadores",
     "practiceFeedbackButtonTooltip": "Reportar um problema com este exercício",
@@ -10823,17 +10812,9 @@
     "reportSent": "Denúncia enviada",
     "reportNotSent": "Não foi possível enviar a sua denúncia. Verifique a sua ligação e tente novamente.",
     "reportPointerMessage": "Uma mensagem foi denunciada em {courseName} — ver Segurança",
-    "learningObjective": "Objetivo de Aprendizagem",
-    "learningObjectives": "Objetivos de Aprendizagem",
-    "missionNofM": "Missão {index} de {count}",
-    "xpTowardObjective": "{xp} de {threshold} XP para este objetivo",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Curso concluído!",
-    "courseCompleteDesc": "Concluíste todos os {count} objetivos deste curso. Continua a praticar para manteres o que aprendeste.",
-    "practiceObjective": "Praticar este objetivo",
     "otherActivities": "Outras atividades",
-    "objectiveCircleComplete": "Missão {index}: concluída",
-    "objectiveCircleUpNext": "Missão {index}: a seguir",
     "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat",
     "andCertifyIMeetTheMinimumAge": " e certifico que tenho pelo menos 13 anos de idade, ou a idade mínima exigida no meu país, se for superior.",
     "filteredNetworkBlockedTitle": "Esta rede está a bloquear o Pangea Chat",
@@ -10883,7 +10864,6 @@
     "offlinePracticeNote": "Offline. As suas respostas serão enviadas quando voltar a ter ligação.",
     "offlinePracticeSavedNote": "Guardado neste dispositivo. A sua XP será enviada quando voltar a ter ligação.",
     "offlinePracticeNothingSaved": "Não há conteúdo suficiente guardado neste dispositivo para praticar offline. Tente novamente quando estiver online.",
-    "missionNumber": "Missão {index}",
     "xpToYourStar": "{xp} XP para a sua estrela",
     "missionStarEarned": "Estrela ganha!",
     "xpFromChats": "Conversas {xp}",
@@ -10892,8 +10872,6 @@
     "playMission": "Jogar",
     "wordCount": "{count, plural, =1{1 palavra} other{{count} palavras}}",
     "continueActivity": "Continuar",
-    "noObjectiveActivitiesYet": "Ainda não concluiu uma atividade para este objetivo. Comece uma no seu curso.",
-    "objectiveNotInYourCourses": "Este objetivo não está em nenhum dos seus cursos.",
     "objectiveActivityCount": "{count, plural, =0{Nenhuma atividade ainda} =1{1 atividade jogada} other{{count} atividades jogadas}}",
     "activityCompleted": "Concluído",
     "completedTimes": "Concluído {count} vezes",
@@ -10901,8 +10879,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Conversa {xp}",
     "xpIncludingGoals": "incluindo {xp} de objetivos",
-    "missionOtherLanguageNotice": "Esta Missão é de um curso em {language}. O seu progresso só conta enquanto estiver a aprender {language}.",
-    "missionLanguageMismatchDesc": "Esta Missão é de um curso em {language}. Mudar a sua língua-alvo para {language}?",
     "xpBySkillTitle": "Por competência",
     "missionNextActivity": "Próxima atividade",
     "missionContinueActivity": "Continuar atividade",
@@ -10912,7 +10888,6 @@
     "otherCoursesSessions": "Outros cursos ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ganhos",
-    "currentMission": "Missão atual",
     "constructUseCorRADesc": "Lido em voz alta e ouvido",
     "constructUseIncRADesc": "Lido em voz alta, não ouvido",
     "hearItFirstToolName": "Ouvir primeiro",
@@ -10934,7 +10909,6 @@
     "readAloudTake": "Tentativa {number}",
     "videoWontPlayHere": "Este vídeo não será reproduzido aqui.",
     "watchOnYoutube": "Ver no YouTube",
-    "xpTowardMission": "{xp} XP para esta Missão",
     "practiceStartWordCount": "{count, plural, =1{palavra para praticar} other{palavras para praticar}}",
     "practiceStartGrammarCount": "{count, plural, =1{ponto gramatical para praticar} other{pontos gramaticais para praticar}}",
     "practiceStartExerciseTypes": "Tipos de exercício",
@@ -10974,5 +10948,20 @@
     "discussionRemoved": "Não podes aderir a esta discussão.",
     "discussionJoinArriving": "Entraste! A discussão abrirá assim que chegar.",
     "roleplayLabel": "Roleplay",
+    "canDoAnalyticsTooltipBody": "Cada {canDo} preenche-se com XP das suas atividades e prática. Um {canDo} completo ganha uma estrela.",
+    "canDoStarListLabel": "{canDos} e atividades guardadas",
+    "canDoNofM": "{canDo} {index} de {count}",
+    "xpOfThresholdTowardCanDo": "{xp} de {threshold} XP para este {canDo}",
+    "courseCompleteCanDosDesc": "Concluíste todos os {count} {canDos} neste curso. Continua a praticar para manteres o que aprendeste.",
+    "practiceCanDo": "Praticar este {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: completo",
+    "canDoCircleUpNext": "{canDo} {index}: a seguir",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Este {canDo} é de um curso em {language}. O teu progresso só conta enquanto estiveres a aprender {language}.",
+    "canDoLanguageMismatchDesc": "Este {canDo} é de um curso em {language}. Queres mudar a tua língua-alvo para {language}?",
+    "noCanDoActivitiesYet": "Ainda não concluíste uma atividade para este {canDo}. Começa uma no teu curso.",
+    "canDoNotInYourCourses": "Este {canDo} não está em nenhum dos teus cursos.",
+    "currentCanDo": "{canDo} atual",
+    "xpGainedTowardCanDo": "{xp} XP para este {canDo}",
     "sessionFinished": "Demasiado tarde! Esta atividade terminou."
 }

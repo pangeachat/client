@@ -3514,7 +3514,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-11-11 11:38:42.667674",
+    "@@last_modified": "2026-11-12 09:04:01.871687",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -6430,7 +6430,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Ei DM:itä tai keskusteluja löytynyt. Varmista, että hakusi on kirjoitettu oikein.",
-    "activityAnalyticsTooltipBody": "Nämä ovat tallennetut aktiviteettisi tarkistettavaksi ja harjoiteltavaksi.",
     "numSavedActivities": "Tallennettujen aktiviteettien määrä",
     "saveActivityTitle": "Tallenna aktiviteetti",
     "saveActivityDesc": "Hyvä työ! Tallenna tämä aktiviteetti myöhempää tarkistusta ja harjoittelua varten",
@@ -6665,10 +6664,6 @@
     "zhTWDisplayName": "Kiina (perinteinen)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9315,7 +9310,6 @@
     },
     "pageLabel": "{title} sivu",
     "closeHint": "Sulje vihje",
-    "starListLabel": "Tallennetut aktiviteetit ja tähdet",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9325,10 +9319,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9645,7 +9635,6 @@
     "selectImageLabel": "Valitse kuva",
     "userSearchTagsLabel": "Hae kohteesta...",
     "courseDetails": "Kurssin tiedot",
-    "objective": "Tavoite",
     "pingedLabel": "Pingattu",
     "mapFilterPlayerCount": "{count} pelaajaa",
     "practiceFeedbackButtonTooltip": "Ilmoita ongelmasta tässä harjoituksessa",
@@ -9946,17 +9935,9 @@
     "reportSent": "Ilmoitus lähetetty",
     "reportNotSent": "Ilmoitustasi ei voitu lähettää. Tarkista yhteytesi ja yritä uudelleen.",
     "reportPointerMessage": "Viestistä ilmoitettiin kurssilla {courseName} – katso Turvallisuus",
-    "learningObjective": "Oppimistavoite",
-    "learningObjectives": "Oppimistavoitteet",
-    "missionNofM": "Tehtävä {index} / {count}",
-    "xpTowardObjective": "{xp} / {threshold} XP tästä tavoitteesta",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Kurssi suoritettu!",
-    "courseCompleteDesc": "Olet suorittanut kaikki {count} tavoitetta tällä kurssilla. Jatka harjoittelua pitääksesi oppimasi mielessä.",
-    "practiceObjective": "Harjoittele tätä tavoitetta",
     "otherActivities": "Muut aktiviteetit",
-    "objectiveCircleComplete": "Tehtävä {index}: valmis",
-    "objectiveCircleUpNext": "Tehtävä {index}: seuraavana",
     "useActivityImageAsChatBackground": "Käytä aktiviteetin kuvaa chatin taustana",
     "andCertifyIMeetTheMinimumAge": " ja vakuutan olevani vähintään 13-vuotias tai maassani vaaditun korkeamman vähimmäisiän mukainen.",
     "filteredNetworkBlockedTitle": "Tämä verkko estää Pangea Chatin",
@@ -10006,7 +9987,6 @@
     "offlinePracticeNote": "Offline-tilassa. Vastauksesi lähetetään, kun olet taas online-tilassa.",
     "offlinePracticeSavedNote": "Tallennettu tälle laitteelle. XP-pisteesi lähetetään, kun olet taas online-tilassa.",
     "offlinePracticeNothingSaved": "Tälle laitteelle ei ole tallennettu tarpeeksi harjoiteltavaa offline-tilassa. Yritä uudelleen, kun olet taas online-tilassa.",
-    "missionNumber": "Tehtävä {index}",
     "xpToYourStar": "{xp} XP tähteesi",
     "missionStarEarned": "Tähti ansaittu!",
     "xpFromChats": "Keskustelut {xp}",
@@ -10015,8 +9995,6 @@
     "playMission": "Pelaa",
     "wordCount": "{count, plural, =1{1 sana} other{{count} sanaa}}",
     "continueActivity": "Jatka",
-    "noObjectiveActivitiesYet": "Et ole vielä suorittanut tähän tavoitteeseen liittyvää tehtävää. Aloita sellainen kurssiltasi.",
-    "objectiveNotInYourCourses": "Tämä tavoite ei sisälly mihinkään kursseistasi.",
     "objectiveActivityCount": "{count, plural, =0{Ei vielä tehtäviä} =1{1 tehtävä suoritettu} other{{count} tehtävää suoritettu}}",
     "activityCompleted": "Suoritettu",
     "completedTimes": "Suoritettu {count} kertaa",
@@ -10024,8 +10002,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Keskustelu {xp}",
     "xpIncludingGoals": "sisältäen {xp} tavoitteista",
-    "missionOtherLanguageNotice": "Tämä tehtävä on kurssilta kielellä {language}. Edistymisesi lasketaan vain, kun opiskelet kieltä {language}.",
-    "missionLanguageMismatchDesc": "Tämä tehtävä on kurssilta kielellä {language}. Vaihdetaanko kohdekieleksi {language}?",
     "xpBySkillTitle": "Taidon mukaan",
     "missionNextActivity": "Seuraava tehtävä",
     "missionContinueActivity": "Jatka tehtävää",
@@ -10035,7 +10011,6 @@
     "otherCoursesSessions": "Muut kurssit ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ansaittu",
-    "currentMission": "Nykyinen tehtävä",
     "constructUseCorRADesc": "Luettu ääneen ja kuultu",
     "constructUseIncRADesc": "Luettu ääneen, ei kuultu",
     "hearItFirstToolName": "Kuule ensin",
@@ -10057,7 +10032,6 @@
     "readAloudTake": "Ota {number}",
     "videoWontPlayHere": "Tätä videota ei voi toistaa täällä.",
     "watchOnYoutube": "Katso YouTubessa",
-    "xpTowardMission": "{xp} XP tähän tehtävään",
     "practiceStartWordCount": "{count, plural, =1{sana harjoiteltavana} other{sanaa harjoiteltavana}}",
     "practiceStartGrammarCount": "{count, plural, =1{kielioppikohta harjoiteltavana} other{kielioppikohtaa harjoiteltavana}}",
     "practiceStartExerciseTypes": "Harjoitustyypit",
@@ -10097,5 +10071,20 @@
     "discussionRemoved": "Et voi liittyä tähän keskusteluun.",
     "discussionJoinArriving": "Olet mukana! Keskustelu avautuu heti, kun se saapuu.",
     "roleplayLabel": "Roolipeli",
+    "canDoAnalyticsTooltipBody": "Jokainen {canDo} täyttyy XP:llä sen aktiviteeteista ja harjoittelusta. Täysi {canDo} ansaitsee tähden.",
+    "canDoStarListLabel": "{canDos} ja tallennetut aktiviteetit",
+    "canDoNofM": "{canDo} {index}/{count}",
+    "xpOfThresholdTowardCanDo": "{xp}/{threshold} XP kohti tätä {canDo}ta",
+    "courseCompleteCanDosDesc": "Olet suorittanut kaikki {count} {canDos} tässä kurssissa. Jatka harjoittelua pitääksesi kiinni oppimistasi asioista.",
+    "practiceCanDo": "Harjoittele tätä {canDo}ta",
+    "canDoCircleComplete": "{canDo} {index}: valmis",
+    "canDoCircleUpNext": "{canDo} {index}: seuraavana",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Tämä {canDo} on kurssilta kielellä {language}. Edistymisesi siinä lasketaan vain, kun opiskelet kieltä {language}.",
+    "canDoLanguageMismatchDesc": "Tämä {canDo} on kurssilta kielellä {language}. Vaihdetaanko kohdekieleksi {language}?",
+    "noCanDoActivitiesYet": "Et ole vielä suorittanut aktiviteettia tälle {canDo}lle. Aloita sellainen kurssiltasi.",
+    "canDoNotInYourCourses": "Tämä {canDo} ei ole millään kursseistasi.",
+    "currentCanDo": "Nykyinen {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP kohti tätä {canDo}ta",
     "sessionFinished": "Liian myöhäistä! Tämä aktiviteetti on päättynyt."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-11-11 11:38:39.483332",
+    "@@last_modified": "2026-11-12 09:03:56.518054",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -6569,7 +6569,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "لا توجد رسائل مباشرة أو محادثات. تأكد من أن بحثك مكتوب بشكل صحيح.",
-    "activityAnalyticsTooltipBody": "هذه هي أنشطتك المحفوظة للمراجعة والممارسة.",
     "numSavedActivities": "عدد الأنشطة المحفوظة",
     "saveActivityTitle": "احفظ النشاط",
     "saveActivityDesc": "عمل جيد! احفظ هذا النشاط للمراجعة والممارسة لاحقًا",
@@ -6804,10 +6803,6 @@
     "zhTWDisplayName": "صينية (تقليدية)",
     "zuDisplayName": "زولو",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9585,7 +9580,6 @@
     },
     "pageLabel": "صفحة {title}",
     "closeHint": "إغلاق التلميح",
-    "starListLabel": "الأنشطة المحفوظة والنجوم",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9595,10 +9589,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9911,7 +9901,6 @@
     "selectImageLabel": "تحديد صورة",
     "userSearchTagsLabel": "البحث في...",
     "courseDetails": "تفاصيل الدورة",
-    "objective": "الهدف",
     "pingedLabel": "تم التنبيه",
     "mapFilterPlayerCount": "{count} لاعبين",
     "practiceFeedbackButtonTooltip": "الإبلاغ عن مشكلة في هذا التمرين",
@@ -10212,17 +10201,9 @@
     "reportSent": "تم إرسال البلاغ",
     "reportNotSent": "تعذر إرسال بلاغك. تحقق من اتصالك وحاول مرة أخرى.",
     "reportPointerMessage": "تم الإبلاغ عن رسالة في {courseName} — راجع الأمان",
-    "learningObjective": "هدف التعلم",
-    "learningObjectives": "أهداف التعلم",
-    "missionNofM": "المهمة {index} من {count}",
-    "xpTowardObjective": "{xp} من {threshold} نقطة خبرة نحو هذا الهدف",
     "xpOfThreshold": "{xp} / {threshold} نقطة خبرة",
     "courseComplete": "اكتملت الدورة!",
-    "courseCompleteDesc": "لقد أكملت جميع الأهداف الـ {count} في هذه الدورة. استمر في التدريب للحفاظ على ما تعلمته.",
-    "practiceObjective": "تدرب على هذا الهدف",
     "otherActivities": "أنشطة أخرى",
-    "objectiveCircleComplete": "المهمة {index}: اكتملت",
-    "objectiveCircleUpNext": "المهمة {index}: التالية",
     "useActivityImageAsChatBackground": "استخدام صورة النشاط كخلفية للدردشة",
     "andCertifyIMeetTheMinimumAge": " وأقر بأن عمري لا يقل عن 13 عامًا، أو عن الحد الأدنى للسن المطلوب في بلدي إذا كان أعلى من ذلك.",
     "filteredNetworkBlockedTitle": "هذه الشبكة تحظر دردشة Pangea",
@@ -10272,7 +10253,6 @@
     "offlinePracticeNote": "غير متصل. سيتم تحميل إجاباتك عند عودتك.",
     "offlinePracticeSavedNote": "محفوظ على هذا الجهاز. سيتم تحميل نقاط XP الخاصة بك عند عودتك للاتصال بالإنترنت.",
     "offlinePracticeNothingSaved": "لم يتم حفظ ما يكفي على هذا الجهاز للتدرب دون اتصال. حاول مرة أخرى عندما تكون متصلاً بالإنترنت.",
-    "missionNumber": "المهمة {index}",
     "xpToYourStar": "{xp} نقطة خبرة لنجمتك",
     "missionStarEarned": "لقد ربحت نجمة!",
     "xpFromChats": "المحادثات {xp}",
@@ -10281,8 +10261,6 @@
     "playMission": "تشغيل",
     "wordCount": "{count, plural, =1{كلمة واحدة} other{{count} كلمات}}",
     "continueActivity": "متابعة",
-    "noObjectiveActivitiesYet": "لم تكمل أي نشاط لهذا الهدف بعد. ابدأ واحدًا من دورتك.",
-    "objectiveNotInYourCourses": "هذا الهدف ليس ضمن أي من دوراتك.",
     "objectiveActivityCount": "{count, plural, =0{لا توجد أنشطة بعد} =1{تم لعب نشاط واحد} other{تم لعب {count} أنشاط}}",
     "activityCompleted": "مكتمل",
     "completedTimes": "اكتمل {count} مرات",
@@ -10290,8 +10268,6 @@
     "xpThresholdSuffix": "/ {threshold} نقطة خبرة",
     "xpFromConversation": "محادثة {xp}",
     "xpIncludingGoals": "بما في ذلك {xp} من الأهداف",
-    "missionOtherLanguageNotice": "هذه المهمة من دورة في {language}. لا يتم احتساب تقدمك فيها إلا أثناء تعلمك {language}.",
-    "missionLanguageMismatchDesc": "هذه المهمة من دورة في {language}. هل تريد تبديل لغتك المستهدفة إلى {language}؟",
     "xpBySkillTitle": "حسب المهارة",
     "missionNextActivity": "النشاط التالي",
     "missionContinueActivity": "متابعة النشاط",
@@ -10301,7 +10277,6 @@
     "otherCoursesSessions": "دورات أخرى ({num})",
     "activityXpStamp": "{xp} نقطة خبرة",
     "activityCompletedWithXp": "{completed}، تم ربح {xp} نقطة خبرة",
-    "currentMission": "المهمة الحالية",
     "constructUseCorRADesc": "قُرِئت بصوت عالٍ وسُمِعت",
     "constructUseIncRADesc": "قُرِئت بصوت عالٍ ولم تُسمَع",
     "hearItFirstToolName": "اسمعها أولاً",
@@ -10323,7 +10298,6 @@
     "readAloudTake": "خذ {number}",
     "videoWontPlayHere": "لا يمكن تشغيل هذا الفيديو هنا.",
     "watchOnYoutube": "المشاهدة على يوتيوب",
-    "xpTowardMission": "{xp} نقطة خبرة نحو هذه المهمة",
     "practiceStartWordCount": "{count, plural, =1{كلمة للتدرب} other{كلمات للتدرب}}",
     "practiceStartGrammarCount": "{count, plural, =1{نقطة نحوية للتدرب} other{نقاط نحوية للتدرب}}",
     "practiceStartExerciseTypes": "أنواع التمارين",
@@ -10363,5 +10337,20 @@
     "discussionRemoved": "لا يمكنك الانضمام إلى هذه المناقشة.",
     "discussionJoinArriving": "لقد انضممت! ستفتح المناقشة حالما تصل.",
     "roleplayLabel": "لعب الأدوار",
+    "canDoAnalyticsTooltipBody": "كل {canDo} يمتلئ بنقاط الخبرة من أنشطته وممارسته. {canDo} الممتلئ يكسب نجمة.",
+    "canDoStarListLabel": "{canDos} والأنشطة المحفوظة",
+    "canDoNofM": "{canDo} {index} من {count}",
+    "xpOfThresholdTowardCanDo": "{xp} من {threshold} نقطة خبرة نحو هذا {canDo}",
+    "courseCompleteCanDosDesc": "لقد أكملت جميع {count} {canDos} في هذه الدورة. استمر في الممارسة للحفاظ على ما تعلمته.",
+    "practiceCanDo": "تدرب على هذا {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: مكتمل",
+    "canDoCircleUpNext": "{canDo} {index}: التالي",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "هذا {canDo} من دورة في {language}. تقدمك فيه يُحتسب فقط أثناء تعلمك {language}.",
+    "canDoLanguageMismatchDesc": "هذا {canDo} من دورة في {language}. هل تريد تبديل لغتك المستهدفة إلى {language}؟",
+    "noCanDoActivitiesYet": "لم تكمل أي نشاط لهذا {canDo} بعد. ابدأ واحدًا من دورتك.",
+    "canDoNotInYourCourses": "هذا {canDo} ليس في أي من دوراتك.",
+    "currentCanDo": "{canDo} الحالي",
+    "xpGainedTowardCanDo": "{xp} نقطة خبرة نحو هذا {canDo}",
     "sessionFinished": "فات الأوان! انتهى هذا النشاط."
 }

@@ -14,6 +14,10 @@ How the Flutter client's UI strings are stored, translated, and kept in sync. Fo
 - **Only the template carries `@`-metadata** (placeholder types, plural definitions). Locale files hold just `@@locale`, `@@last_modified`, and the translated key→value strings — gen-l10n reads placeholder metadata from the template.
 - Locale selection falls back to English for any key (or whole locale) not translated, so a missing translation degrades gracefully rather than breaking the UI.
 
+## Terms kept in English
+
+**Can-Do** (plural Can-Dos), the product's name for one thing a learner can do in the language ([glossary](../../../.github/.github/instructions/glossary.instructions.md)), shows in English in every locale (Will, 2026-11-12). Teachers know it from the NCSSFL-ACTFL Can-Do Statements, Japan's education ministry uses "CAN-DO" untranslated, and only German has a natural noun for it, so machine-translating it into every locale would name the same thing differently from one language to the next. The term is a code constant ([`CanDoTerm`](../../lib/pangea/common/constants/can_do_term.dart)), never an arb value. A string that puts other words around it keeps those words in the arb files and takes the term as a `{canDo}` or `{canDos}` placeholder, which the translator preserves like any other placeholder.
+
 ## Which language the app UI uses
 
 By default the app UI is shown in the user's **source/native language (L1)**. A learner can opt into **immersion** — showing the UI in their **target language (L2)** — via the `appLanguageIsTarget` flag in `UserSettings` (toggle on the learning settings page). This toggle is excluded from the locale update and always shows in the user's L1 so they can read it ([#8353](https://github.com/pangeachat/client/issues/8353)). [`MatrixState._setAppLanguage`](../../lib/widgets/matrix.dart) resolves the locale from that flag, falling back to L1 (then system) when L2 isn't set. Because it's a non-language setting, the change propagates on `settingsUpdateStream`, which `_setAppLanguage` also listens to so the toggle takes effect immediately. Untranslated L2 keys fall back to English like any other locale.

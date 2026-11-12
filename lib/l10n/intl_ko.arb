@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:48.077584",
+    "@@last_modified": "2026-11-12 09:04:11.286372",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -6455,7 +6455,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "DM이나 채팅이 없습니다. 검색어가 올바르게 입력되었는지 확인하세요.",
-    "activityAnalyticsTooltipBody": "이것은 검토 및 연습을 위한 저장된 활동입니다.",
     "numSavedActivities": "저장된 활동 수",
     "saveActivityTitle": "활동 저장",
     "saveActivityDesc": "잘했어요! 이 활동을 나중에 검토하고 연습하기 위해 저장하세요.",
@@ -6690,10 +6689,6 @@
     "zhTWDisplayName": "중국어 (번체)",
     "zuDisplayName": "줄루어",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9471,7 +9466,6 @@
     },
     "pageLabel": "{title} 페이지",
     "closeHint": "힌트 닫기",
-    "starListLabel": "저장된 활동 및 별",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9481,10 +9475,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9801,7 +9791,6 @@
     "selectImageLabel": "이미지 선택",
     "userSearchTagsLabel": "검색 위치...",
     "courseDetails": "코스 상세 정보",
-    "objective": "목표",
     "pingedLabel": "핑됨",
     "mapFilterPlayerCount": "{count}명",
     "practiceFeedbackButtonTooltip": "이 연습 문제에 대한 문제 보고",
@@ -10102,17 +10091,9 @@
     "reportSent": "신고가 전송되었습니다",
     "reportNotSent": "신고를 보낼 수 없습니다. 연결 상태를 확인하고 다시 시도해 주세요.",
     "reportPointerMessage": "{courseName}에서 메시지가 신고되었습니다. 안전을 참조하세요.",
-    "learningObjective": "학습 목표",
-    "learningObjectives": "학습 목표",
-    "missionNofM": "{count}개 중 {index}번째 미션",
-    "xpTowardObjective": "이 목표 달성까지 {threshold} XP 중 {xp} XP",
     "xpOfThreshold": "{threshold} XP 중 {xp} XP",
     "courseComplete": "코스 완료!",
-    "courseCompleteDesc": "이 코스의 {count}개 목표를 모두 완료했습니다. 배운 내용을 잊지 않도록 계속 연습하세요.",
-    "practiceObjective": "이 목표 연습하기",
     "otherActivities": "다른 활동",
-    "objectiveCircleComplete": "미션 {index}: 완료",
-    "objectiveCircleUpNext": "미션 {index}: 다음",
     "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용",
     "andCertifyIMeetTheMinimumAge": " 및 저는 13세 이상이거나, 해당 국가에서 요구하는 최소 연령(더 높은 경우) 이상임을 증명합니다.",
     "filteredNetworkBlockedTitle": "이 네트워크는 Pangea Chat을 차단하고 있습니다",
@@ -10162,7 +10143,6 @@
     "offlinePracticeNote": "오프라인입니다. 다시 연결되면 답변이 업로드됩니다.",
     "offlinePracticeSavedNote": "이 기기에 저장되었습니다. 다시 온라인 상태가 되면 XP가 업로드됩니다.",
     "offlinePracticeNothingSaved": "오프라인 연습을 할 만큼 이 기기에 저장된 내용이 충분하지 않습니다. 다시 온라인 상태가 되면 다시 시도해 주세요.",
-    "missionNumber": "미션 {index}",
     "xpToYourStar": "{xp} XP를 모아 별을 받으세요",
     "missionStarEarned": "별 획득!",
     "xpFromChats": "채팅 {xp}",
@@ -10171,8 +10151,6 @@
     "playMission": "플레이",
     "wordCount": "{count, plural, =1{단어 1개} other{단어 {count}개}}",
     "continueActivity": "계속하기",
-    "noObjectiveActivitiesYet": "이 목표에 대한 활동을 아직 완료하지 않았습니다. 코스에서 시작하세요.",
-    "objectiveNotInYourCourses": "이 목표는 회원님의 코스에 없습니다.",
     "objectiveActivityCount": "{count, plural, =0{아직 활동 없음} =1{활동 1개 플레이함} other{활동 {count}개 플레이함}}",
     "activityCompleted": "완료됨",
     "completedTimes": "{count}회 완료됨",
@@ -10180,8 +10158,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "대화 {xp}",
     "xpIncludingGoals": "목표에서 {xp} 포함",
-    "missionOtherLanguageNotice": "이 미션은 {language} 코스에서 진행됩니다. 이 미션 진행 상황은 {language}를 학습하는 동안에만 집계됩니다.",
-    "missionLanguageMismatchDesc": "이 미션은 {language} 코스에서 진행됩니다. 목표 언어를 {language}로 전환하시겠습니까?",
     "xpBySkillTitle": "기술별",
     "missionNextActivity": "다음 활동",
     "missionContinueActivity": "활동 계속하기",
@@ -10191,7 +10167,6 @@
     "otherCoursesSessions": "다른 코스 ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP 획득",
-    "currentMission": "현재 미션",
     "constructUseCorRADesc": "소리 내어 읽고 들음",
     "constructUseIncRADesc": "소리 내어 읽었지만 들리지 않음",
     "hearItFirstToolName": "먼저 듣기",
@@ -10213,7 +10188,6 @@
     "readAloudTake": "{number}번째 시도",
     "videoWontPlayHere": "이 동영상은 여기에서 재생되지 않습니다.",
     "watchOnYoutube": "YouTube에서 시청",
-    "xpTowardMission": "이번 미션으로 {xp} XP 획득",
     "practiceStartWordCount": "{count, plural, =1{연습할 단어} other{연습할 단어}}",
     "practiceStartGrammarCount": "{count, plural, =1{연습할 문법 포인트} other{연습할 문법 포인트}}",
     "practiceStartExerciseTypes": "연습 유형",
@@ -10253,5 +10227,20 @@
     "discussionRemoved": "이 토론에 참여할 수 없습니다.",
     "discussionJoinArriving": "참여 완료! 토론이 시작되면 바로 열립니다.",
     "roleplayLabel": "역할극",
+    "canDoAnalyticsTooltipBody": "각 {canDo}는 활동과 연습으로 얻은 XP로 채워집니다. {canDo}가 가득 차면 별을 얻습니다.",
+    "canDoStarListLabel": "{canDos} 및 저장된 활동",
+    "canDoNofM": "{canDo} {count}개 중 {index}개",
+    "xpOfThresholdTowardCanDo": "이 {canDo}를 위한 {threshold} XP 중 {xp} XP",
+    "courseCompleteCanDosDesc": "이 코스의 {count}개 {canDos}를 모두 완료했습니다. 배운 내용을 유지하려면 계속 연습하세요.",
+    "practiceCanDo": "이 {canDo} 연습하기",
+    "canDoCircleComplete": "{canDo} {index}: 완료",
+    "canDoCircleUpNext": "{canDo} {index}: 다음",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "이 {canDo}는 {language} 코스에서 가져온 것입니다. 이 {canDo}에 대한 진행 상황은 {language}를 학습하는 동안에만 계산됩니다.",
+    "canDoLanguageMismatchDesc": "이 {canDo}는 {language} 코스에서 가져온 것입니다. 목표 언어를 {language}로 전환하시겠습니까?",
+    "noCanDoActivitiesYet": "이 {canDo}에 대한 활동을 아직 완료하지 않았습니다. 코스에서 시작하세요.",
+    "canDoNotInYourCourses": "이 {canDo}는 회원님의 코스에 없습니다.",
+    "currentCanDo": "현재 {canDo}",
+    "xpGainedTowardCanDo": "이 {canDo}를 위한 {xp} XP",
     "sessionFinished": "너무 늦었어요! 이 활동은 종료되었습니다."
 }

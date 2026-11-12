@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-11-11 11:38:56.664161",
+    "@@last_modified": "2026-11-12 09:04:22.102416",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -7350,7 +7350,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Нет личных сообщений или чатов. Убедитесь, что ваш запрос написан правильно.",
-    "activityAnalyticsTooltipBody": "Здесь собраны сохранённые задания для повторения и практики.",
     "numSavedActivities": "Количество сохраненных заданий",
     "saveActivityTitle": "Сохранить задание",
     "saveActivityDesc": "Хорошая работа! Сохраните это задание для дальнейшего обзора и практики",
@@ -7585,10 +7584,6 @@
     "zhTWDisplayName": "Китайский (традиционный)",
     "zuDisplayName": "Зулу",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10250,7 +10245,6 @@
     },
     "pageLabel": "{title} страница",
     "closeHint": "Закрыть подсказку",
-    "starListLabel": "Сохраненные активности и звезды",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10260,10 +10254,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10580,7 +10570,6 @@
     "selectImageLabel": "Выбрать изображение",
     "userSearchTagsLabel": "Искать в...",
     "courseDetails": "Детали курса",
-    "objective": "Цель",
     "pingedLabel": "Упомянут",
     "mapFilterPlayerCount": "{count} игроков",
     "practiceFeedbackButtonTooltip": "Сообщить о проблеме с этим упражнением",
@@ -10881,17 +10870,9 @@
     "reportSent": "Жалоба отправлена",
     "reportNotSent": "Не удалось отправить жалобу. Проверьте подключение и повторите попытку.",
     "reportPointerMessage": "Сообщение было отправлено в {courseName} — см. раздел «Безопасность»",
-    "learningObjective": "Цель обучения",
-    "learningObjectives": "Цели обучения",
-    "missionNofM": "Миссия {index} из {count}",
-    "xpTowardObjective": "{xp} из {threshold} XP до цели",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Курс завершен!",
-    "courseCompleteDesc": "Вы выполнили все {count} цели этого курса. Продолжайте практиковаться, чтобы закрепить изученное.",
-    "practiceObjective": "Практиковать эту цель",
     "otherActivities": "Другие занятия",
-    "objectiveCircleComplete": "Миссия {index}: выполнена",
-    "objectiveCircleUpNext": "Миссия {index}: следующая",
     "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата",
     "andCertifyIMeetTheMinimumAge": " и подтверждаю, что мне не менее 13 лет или минимальный возраст, требуемый в моей стране, если он выше.",
     "filteredNetworkBlockedTitle": "Эта сеть блокирует Pangea Chat",
@@ -10941,7 +10922,6 @@
     "offlinePracticeNote": "Офлайн. Ваши ответы загрузятся, когда вы вернетесь в сеть.",
     "offlinePracticeSavedNote": "Сохранено на этом устройстве. Ваш опыт загрузится, когда вы снова будете онлайн.",
     "offlinePracticeNothingSaved": "На этом устройстве недостаточно сохранено для практики в автономном режиме. Повторите попытку, когда снова будете в сети.",
-    "missionNumber": "Миссия {index}",
     "xpToYourStar": "{xp} XP до вашей звезды",
     "missionStarEarned": "Звезда получена!",
     "xpFromChats": "Чаты {xp}",
@@ -10950,8 +10930,6 @@
     "playMission": "Играть",
     "wordCount": "{count, plural, =1{1 слово} few{{count} слова} many{{count} слов} other{{count} слов}}",
     "continueActivity": "Продолжить",
-    "noObjectiveActivitiesYet": "Вы еще не выполнили задание для этой цели. Начните его из своего курса.",
-    "objectiveNotInYourCourses": "Этой цели нет ни в одном из ваших курсов.",
     "objectiveActivityCount": "{count, plural, =0{Пока нет заданий} =1{Выполнено 1 задание} few{Выполнено {count} задания} many{Выполнено {count} заданий} other{Выполнено {count} заданий}}",
     "activityCompleted": "Выполнено",
     "completedTimes": "Выполнено {count} раз",
@@ -10959,8 +10937,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Разговор {xp}",
     "xpIncludingGoals": "включая {xp} за цели",
-    "missionOtherLanguageNotice": "Эта миссия из курса на {language}. Ваш прогресс по ней учитывается только при изучении {language}.",
-    "missionLanguageMismatchDesc": "Эта миссия из курса на {language}. Переключить целевой язык на {language}?",
     "xpBySkillTitle": "По навыкам",
     "missionNextActivity": "Следующее задание",
     "missionContinueActivity": "Продолжить задание",
@@ -10970,7 +10946,6 @@
     "otherCoursesSessions": "Другие курсы ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, получено {xp} XP",
-    "currentMission": "Текущая миссия",
     "constructUseCorRADesc": "Прочитано вслух и услышано",
     "constructUseIncRADesc": "Прочитано вслух, но не услышано",
     "hearItFirstToolName": "Сначала послушать",
@@ -10992,7 +10967,6 @@
     "readAloudTake": "Попытка {number}",
     "videoWontPlayHere": "Это видео здесь не воспроизводится.",
     "watchOnYoutube": "Смотреть на YouTube",
-    "xpTowardMission": "{xp} XP для этой миссии",
     "practiceStartWordCount": "{count, plural, =1{слово для практики} other{слов для практики}}",
     "practiceStartGrammarCount": "{count, plural, =1{грамматическая тема для практики} other{грамматических тем для практики}}",
     "practiceStartExerciseTypes": "Типы упражнений",
@@ -11032,5 +11006,20 @@
     "discussionRemoved": "Вы не можете присоединиться к этому обсуждению.",
     "discussionJoinArriving": "Вы внутри! Обсуждение начнется, как только оно появится.",
     "roleplayLabel": "Ролевая игра",
+    "canDoAnalyticsTooltipBody": "Каждый {canDo} заполняется очками опыта (XP) от его действий и практики. Полный {canDo} приносит звезду.",
+    "canDoStarListLabel": "{canDos} и сохраненные действия",
+    "canDoNofM": "{canDo} {index} из {count}",
+    "xpOfThresholdTowardCanDo": "{xp} из {threshold} XP для этого {canDo}",
+    "courseCompleteCanDosDesc": "Вы завершили все {count} {canDos} в этом курсе. Продолжайте практиковаться, чтобы сохранить то, что вы выучили.",
+    "practiceCanDo": "Практиковать этот {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: завершено",
+    "canDoCircleUpNext": "{canDo} {index}: далее",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Этот {canDo} из курса на {language}. Ваш прогресс по нему учитывается только тогда, когда вы изучаете {language}.",
+    "canDoLanguageMismatchDesc": "Этот {canDo} из курса на {language}. Переключить целевой язык на {language}?",
+    "noCanDoActivitiesYet": "Вы еще не выполнили ни одного действия для этого {canDo}. Начните одно из вашего курса.",
+    "canDoNotInYourCourses": "Этот {canDo} не входит ни в один из ваших курсов.",
+    "currentCanDo": "Текущий {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP для этого {canDo}",
     "sessionFinished": "Слишком поздно! Это занятие завершено."
 }

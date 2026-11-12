@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:39:02.735412",
+    "@@last_modified": "2026-11-12 09:04:28.421906",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -3573,7 +3573,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Không tìm thấy tin nhắn trực tiếp hoặc trò chuyện nào. Hãy chắc chắn rằng bạn đã đánh vần đúng tìm kiếm.",
-    "activityAnalyticsTooltipBody": "Đây là các hoạt động đã lưu của bạn để xem xét và thực hành.",
     "numSavedActivities": "Số lượng hoạt động đã lưu",
     "saveActivityTitle": "Lưu hoạt động",
     "saveActivityDesc": "Làm tốt lắm! Lưu hoạt động này để xem xét và thực hành sau.",
@@ -3808,10 +3807,6 @@
     "zhTWDisplayName": "Tiếng Trung (Phồn thể)",
     "zuDisplayName": "Tiếng Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6589,7 +6584,6 @@
     },
     "pageLabel": "Trang {title}",
     "closeHint": "Đóng gợi ý",
-    "starListLabel": "Các hoạt động và sao đã lưu",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -6599,10 +6593,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -6919,7 +6909,6 @@
     "selectImageLabel": "Chọn hình ảnh",
     "userSearchTagsLabel": "Tìm kiếm trong...",
     "courseDetails": "Chi tiết khóa học",
-    "objective": "Mục tiêu",
     "pingedLabel": "Đã được nhắc đến",
     "mapFilterPlayerCount": "{count} người chơi",
     "practiceFeedbackButtonTooltip": "Báo cáo sự cố với bài tập này",
@@ -7216,17 +7205,9 @@
     "reportSent": "Đã gửi báo cáo",
     "reportNotSent": "Không thể gửi báo cáo của bạn. Vui lòng kiểm tra kết nối và thử lại.",
     "reportPointerMessage": "Một tin nhắn đã được báo cáo trong {courseName} — xem mục An toàn",
-    "learningObjective": "Mục tiêu học tập",
-    "learningObjectives": "Các mục tiêu học tập",
-    "missionNofM": "Nhiệm vụ {index} trên {count}",
-    "xpTowardObjective": "{xp} trên {threshold} XP cho mục tiêu này",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Hoàn thành khóa học!",
-    "courseCompleteDesc": "Bạn đã hoàn thành tất cả {count} mục tiêu trong khóa học này. Hãy tiếp tục luyện tập để giữ vững những gì bạn đã học.",
-    "practiceObjective": "Luyện tập mục tiêu này",
     "otherActivities": "Các hoạt động khác",
-    "objectiveCircleComplete": "Nhiệm vụ {index}: hoàn thành",
-    "objectiveCircleUpNext": "Nhiệm vụ {index}: tiếp theo",
     "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
     "andCertifyIMeetTheMinimumAge": " và xác nhận tôi ít nhất 13 tuổi, hoặc độ tuổi tối thiểu được yêu cầu ở quốc gia của tôi nếu cao hơn.",
     "filteredNetworkBlockedTitle": "Mạng này đang chặn Pangea Chat",
@@ -7276,7 +7257,6 @@
     "offlinePracticeNote": "Ngoại tuyến. Câu trả lời của bạn sẽ được tải lên khi bạn trực tuyến trở lại.",
     "offlinePracticeSavedNote": "Đã lưu trên thiết bị này. XP của bạn sẽ được tải lên khi bạn trực tuyến trở lại.",
     "offlinePracticeNothingSaved": "Không có đủ dữ liệu được lưu trên thiết bị này để luyện tập ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng.",
-    "missionNumber": "Nhiệm vụ {index}",
     "xpToYourStar": "{xp} XP để đạt sao",
     "missionStarEarned": "Đã đạt sao!",
     "xpFromChats": "Trò chuyện {xp}",
@@ -7285,8 +7265,6 @@
     "playMission": "Chơi",
     "wordCount": "{count, plural, =1{1 từ} other{{count} từ}}",
     "continueActivity": "Tiếp tục",
-    "noObjectiveActivitiesYet": "Bạn chưa hoàn thành hoạt động nào cho mục tiêu này. Hãy bắt đầu một hoạt động từ khóa học của bạn.",
-    "objectiveNotInYourCourses": "Mục tiêu này không có trong bất kỳ khóa học nào của bạn.",
     "objectiveActivityCount": "{count, plural, =0{Chưa có hoạt động nào} =1{Đã chơi 1 hoạt động} other{Đã chơi {count} hoạt động}}",
     "activityCompleted": "Đã hoàn thành",
     "completedTimes": "Đã hoàn thành {count} lần",
@@ -7294,8 +7272,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Trò chuyện {xp}",
     "xpIncludingGoals": "bao gồm {xp} từ mục tiêu",
-    "missionOtherLanguageNotice": "Nhiệm vụ này thuộc khóa học {language}. Tiến độ của bạn chỉ được tính khi bạn đang học {language}.",
-    "missionLanguageMismatchDesc": "Nhiệm vụ này thuộc khóa học {language}. Chuyển ngôn ngữ mục tiêu của bạn sang {language}?",
     "xpBySkillTitle": "Theo kỹ năng",
     "missionNextActivity": "Hoạt động tiếp theo",
     "missionContinueActivity": "Tiếp tục hoạt động",
@@ -7305,7 +7281,6 @@
     "otherCoursesSessions": "Các khóa học khác ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, kiếm được {xp} XP",
-    "currentMission": "Nhiệm vụ hiện tại",
     "constructUseCorRADesc": "Đọc to và đã nghe",
     "constructUseIncRADesc": "Đọc to, chưa nghe",
     "hearItFirstToolName": "Nghe trước",
@@ -7327,7 +7302,6 @@
     "readAloudTake": "Lượt {number}",
     "videoWontPlayHere": "Video này sẽ không phát ở đây.",
     "watchOnYoutube": "Xem trên YouTube",
-    "xpTowardMission": "{xp} XP cho Nhiệm vụ này",
     "practiceStartWordCount": "{count, plural, =1{từ để luyện tập} other{từ để luyện tập}}",
     "practiceStartGrammarCount": "{count, plural, =1{điểm ngữ pháp để luyện tập} other{điểm ngữ pháp để luyện tập}}",
     "practiceStartExerciseTypes": "Các dạng bài tập",
@@ -7367,5 +7341,20 @@
     "discussionRemoved": "Bạn không thể tham gia cuộc thảo luận này.",
     "discussionJoinArriving": "Bạn đã vào! Cuộc thảo luận sẽ mở ngay khi đến.",
     "roleplayLabel": "Nhập vai",
+    "canDoAnalyticsTooltipBody": "Mỗi {canDo} được lấp đầy bằng XP từ các hoạt động và bài luyện tập. Một {canDo} đầy đủ sẽ kiếm được một ngôi sao.",
+    "canDoStarListLabel": "{canDos} và các hoạt động đã lưu",
+    "canDoNofM": "{canDo} {index} trên {count}",
+    "xpOfThresholdTowardCanDo": "{xp} trên {threshold} XP cho {canDo} này",
+    "courseCompleteCanDosDesc": "Bạn đã hoàn thành tất cả {count} {canDos} trong khóa học này. Hãy tiếp tục luyện tập để ghi nhớ những gì bạn đã học.",
+    "practiceCanDo": "Luyện tập {canDo} này",
+    "canDoCircleComplete": "{canDo} {index}: hoàn thành",
+    "canDoCircleUpNext": "{canDo} {index}: tiếp theo",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "{canDo} này thuộc khóa học tiếng {language}. Tiến độ của bạn chỉ được tính khi bạn đang học tiếng {language}.",
+    "canDoLanguageMismatchDesc": "{canDo} này thuộc khóa học tiếng {language}. Chuyển ngôn ngữ mục tiêu của bạn sang tiếng {language}?",
+    "noCanDoActivitiesYet": "Bạn chưa hoàn thành hoạt động nào cho {canDo} này. Hãy bắt đầu một hoạt động từ khóa học của bạn.",
+    "canDoNotInYourCourses": "{canDo} này không có trong bất kỳ khóa học nào của bạn.",
+    "currentCanDo": "{canDo} hiện tại",
+    "xpGainedTowardCanDo": "{xp} XP cho {canDo} này",
     "sessionFinished": "Quá muộn! Hoạt động này đã kết thúc."
 }

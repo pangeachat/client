@@ -104,10 +104,10 @@ void main() {
 
   testWidgets('names the Mission and its XP toward the star', (tester) async {
     await pump(tester, onPlay: () {});
-    expect(find.text('MISSION 2'), findsOneWidget);
+    expect(find.text('CAN-DO 2'), findsOneWidget);
     expect(find.text('Can greet.'), findsOneWidget);
     expect(
-      find.bySemanticsLabel('400 of 1,000 XP toward this objective'),
+      find.bySemanticsLabel('400 of 1,000 XP toward this Can-Do'),
       findsOneWidget,
     );
   });
@@ -145,7 +145,7 @@ void main() {
     );
     expect(find.textContaining('Conversation'), findsNothing);
     expect(
-      find.bySemanticsLabel('400 of 1,000 XP toward this objective'),
+      find.bySemanticsLabel('400 of 1,000 XP toward this Can-Do'),
       findsNothing,
     );
     await tester.tap(find.textContaining('French'));

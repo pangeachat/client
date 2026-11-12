@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:41.380169",
+    "@@last_modified": "2026-11-12 09:04:00.949951",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -7204,7 +7204,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Neniuj DMs aŭ konversacioj trovitaj. Certiĝu, ke via serĉo estas ĝuste literumita.",
-    "activityAnalyticsTooltipBody": "Jen viaj konservitaj aktivecoj por revizio kaj praktiko.",
     "numSavedActivities": "Nombro de konservitaj aktivecoj",
     "saveActivityTitle": "Konservi aktivecon",
     "saveActivityDesc": "Bonega laboro! Konservu ĉi tiun aktivecon por posta revizio kaj praktiko",
@@ -7439,10 +7438,6 @@
     "zhTWDisplayName": "Ĉina (Tradicia)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10220,7 +10215,6 @@
     },
     "pageLabel": "{title} paĝo",
     "closeHint": "Fermi konsilon",
-    "starListLabel": "Konservitaj aktivecoj kaj steloj",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10230,10 +10224,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10550,7 +10540,6 @@
     "selectImageLabel": "Elekti bildon",
     "userSearchTagsLabel": "Serĉi en...",
     "courseDetails": "Kursaj detaloj",
-    "objective": "Celo",
     "pingedLabel": "Pingita",
     "mapFilterPlayerCount": "{count} ludantoj",
     "practiceFeedbackButtonTooltip": "Raporti problemon pri ĉi tiu ekzerco",
@@ -10851,17 +10840,9 @@
     "reportSent": "Raporto sendita",
     "reportNotSent": "Via raporto ne povis esti sendita. Kontrolu vian konekton kaj reprovu.",
     "reportPointerMessage": "Mesaĝo estis raportita en {courseName} — vidu Sekurecon",
-    "learningObjective": "Lernocelo",
-    "learningObjectives": "Lernoceloj",
-    "missionNofM": "Misio {index} el {count}",
-    "xpTowardObjective": "{xp} el {threshold} XP por ĉi tiu celo",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Kurso finita!",
-    "courseCompleteDesc": "Vi plenumis ĉiujn {count} celojn en ĉi tiu kurso. Daŭre praktiku por konservi tion, kion vi lernis.",
-    "practiceObjective": "Praktiku ĉi tiun celon",
     "otherActivities": "Aliaj agadoj",
-    "objectiveCircleComplete": "Misio {index}: finita",
-    "objectiveCircleUpNext": "Misio {index}: sekva",
     "useActivityImageAsChatBackground": "Uzi agadan bildon kiel babilejan fonon",
     "andCertifyIMeetTheMinimumAge": " kaj mi certigas, ke mi aĝas almenaŭ 13 jarojn, aŭ la minimuman aĝon postulatan en mia lando se tio estas pli alta.",
     "filteredNetworkBlockedTitle": "Ĉi tiu reto blokas Pangea Chat",
@@ -10911,7 +10892,6 @@
     "offlinePracticeNote": "Senkonekta. Viaj respondoj alŝutiĝos kiam vi revenos.",
     "offlinePracticeSavedNote": "Konservita en ĉi tiu aparato. Viaj XP alŝutiĝos kiam vi revenos enretan.",
     "offlinePracticeNothingSaved": "Ne sufiĉas konservite en ĉi tiu aparato por ekzerci eksterrete. Provu denove kiam vi estos konektita.",
-    "missionNumber": "Misio {index}",
     "xpToYourStar": "{xp} SPertoj ĝis via stelo",
     "missionStarEarned": "Stelo gajnita!",
     "xpFromChats": "Babilejoj {xp}",
@@ -10920,8 +10900,6 @@
     "playMission": "Ludi",
     "wordCount": "{count, plural, =1{1 vorto} other{{count} vortoj}}",
     "continueActivity": "Daŭrigi",
-    "noObjectiveActivitiesYet": "Vi ankoraŭ ne kompletigis agadon por ĉi tiu celo. Komencu unu el via kurso.",
-    "objectiveNotInYourCourses": "Ĉi tiu celo ne estas en iu ajn el viaj kursoj.",
     "objectiveActivityCount": "{count, plural, =0{Ankoraŭ neniuj agadoj} =1{1 agado ludita} other{{count} agadoj luditaj}}",
     "activityCompleted": "Kompletigita",
     "completedTimes": "Kompletigita {count} fojojn",
@@ -10929,8 +10907,6 @@
     "xpThresholdSuffix": "/ {threshold} SPertoj",
     "xpFromConversation": "Konversacio {xp}",
     "xpIncludingGoals": "inkluzive {xp} de celoj",
-    "missionOtherLanguageNotice": "Ĉi tiu Misio estas de kurso en {language}. Via progreso pri ĝi validas nur dum vi lernas {language}.",
-    "missionLanguageMismatchDesc": "Ĉi tiu Misio estas de kurso en {language}. Ĉu ŝanĝi vian cellingvon al {language}?",
     "xpBySkillTitle": "Laŭ kapablo",
     "missionNextActivity": "Sekva agado",
     "missionContinueActivity": "Daŭrigi agadon",
@@ -10940,7 +10916,6 @@
     "otherCoursesSessions": "Aliaj kursoj ({num})",
     "activityXpStamp": "{xp} SPer",
     "activityCompletedWithXp": "{completed}, {xp} SPer gajnitaj",
-    "currentMission": "Nuna misio",
     "constructUseCorRADesc": "Laŭtlegita kaj aŭdita",
     "constructUseIncRADesc": "Laŭtlegita, ne aŭdita",
     "hearItFirstToolName": "Aŭdu unue",
@@ -10962,7 +10937,6 @@
     "readAloudTake": "Provo {number}",
     "videoWontPlayHere": "Ĉi tiu video ne ludos ĉi tie.",
     "watchOnYoutube": "Spektu en YouTube",
-    "xpTowardMission": "{xp} XP al ĉi tiu Misio",
     "practiceStartWordCount": "{count, plural, =1{vorto por ekzerci} other{vortoj por ekzerci}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatikpunkto por ekzerci} other{gramatikpunktoj por ekzerci}}",
     "practiceStartExerciseTypes": "Ekzercotipoj",
@@ -11002,5 +10976,20 @@
     "discussionRemoved": "Vi ne povas aliĝi al ĉi tiu diskuto.",
     "discussionJoinArriving": "Vi estas en! La diskuto malfermiĝos tuj kiam ĝi alvenos.",
     "roleplayLabel": "Roluludo",
+    "canDoAnalyticsTooltipBody": "Ĉiu {canDo} pleniĝas per SP el siaj agadoj kaj praktikado. Plena {canDo} gajnas stelon.",
+    "canDoStarListLabel": "{canDos} kaj konservitaj agadoj",
+    "canDoNofM": "{canDo} {index} el {count}",
+    "xpOfThresholdTowardCanDo": "{xp} el {threshold} SP al ĉi tiu {canDo}",
+    "courseCompleteCanDosDesc": "Vi kompletigis ĉiujn {count} {canDos} en ĉi tiu kurso. Daŭre praktiku por konservi tion, kion vi lernis.",
+    "practiceCanDo": "Praktiku ĉi tiun {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: kompleta",
+    "canDoCircleUpNext": "{canDo} {index}: sekva",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Ĉi tiu {canDo} estas el kurso en {language}. Via progreso pri ĝi validas nur dum vi lernas {language}.",
+    "canDoLanguageMismatchDesc": "Ĉi tiu {canDo} estas el kurso en {language}. Ĉu ŝanĝi vian celolingvon al {language}?",
+    "noCanDoActivitiesYet": "Vi ankoraŭ ne kompletigis agadon por ĉi tiu {canDo}. Komencu unu el via kurso.",
+    "canDoNotInYourCourses": "Ĉi tiu {canDo} ne estas en iu ajn el viaj kursoj.",
+    "currentCanDo": "Nuna {canDo}",
+    "xpGainedTowardCanDo": "{xp} SP al ĉi tiu {canDo}",
     "sessionFinished": "Tro malfrue! Ĉi tiu agado finiĝis."
 }

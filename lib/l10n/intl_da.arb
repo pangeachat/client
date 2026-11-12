@@ -1325,7 +1325,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-11-11 11:38:41.132540",
+    "@@last_modified": "2026-11-12 09:03:59.539681",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -7179,7 +7179,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Ingen DMs eller chats fundet. Sørg for, at din søgning er stavet korrekt.",
-    "activityAnalyticsTooltipBody": "Dette er dine gemte aktiviteter til gennemgang og øvelse.",
     "numSavedActivities": "Antal gemte aktiviteter",
     "saveActivityTitle": "Gem aktivitet",
     "saveActivityDesc": "Godt klaret! Gem denne aktivitet til senere gennemgang og øvelse",
@@ -7414,10 +7413,6 @@
     "zhTWDisplayName": "Kinesisk (Traditionelt)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10195,7 +10190,6 @@
     },
     "pageLabel": "{title} side",
     "closeHint": "Luk hint",
-    "starListLabel": "Gemte aktiviteter og stjerner",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10205,10 +10199,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10525,7 +10515,6 @@
     "selectImageLabel": "Vælg billede",
     "userSearchTagsLabel": "Søg i...",
     "courseDetails": "Kursusdetaljer",
-    "objective": "Mål",
     "pingedLabel": "Pinget",
     "mapFilterPlayerCount": "{count} spillere",
     "practiceFeedbackButtonTooltip": "Rapportér et problem med denne øvelse",
@@ -10826,17 +10815,9 @@
     "reportSent": "Rapport sendt",
     "reportNotSent": "Din rapport kunne ikke sendes. Tjek din forbindelse, og prøv igen.",
     "reportPointerMessage": "En besked blev rapporteret i {courseName} – se Sikkerhed",
-    "learningObjective": "Læringsmål",
-    "learningObjectives": "Læringsmål",
-    "missionNofM": "Mission {index} af {count}",
-    "xpTowardObjective": "{xp} af {threshold} XP mod dette mål",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Kursus fuldført!",
-    "courseCompleteDesc": "Du har fuldført alle {count} mål i dette kursus. Bliv ved med at øve dig for at bevare det, du har lært.",
-    "practiceObjective": "Øv dette mål",
     "otherActivities": "Andre aktiviteter",
-    "objectiveCircleComplete": "Mission {index}: gennemført",
-    "objectiveCircleUpNext": "Mission {index}: næste",
     "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
     "andCertifyIMeetTheMinimumAge": " og bekræfter, at jeg er mindst 13 år gammel, eller den minimumsalder, der kræves i mit land, hvis den er højere.",
     "filteredNetworkBlockedTitle": "Dette netværk blokerer Pangea Chat",
@@ -10886,7 +10867,6 @@
     "offlinePracticeNote": "Offline. Dine svar uploades, når du er tilbage.",
     "offlinePracticeSavedNote": "Gemt på denne enhed. Din XP uploades, når du er online igen.",
     "offlinePracticeNothingSaved": "Der er ikke gemt nok på denne enhed til at øve offline. Prøv igen, når du er online.",
-    "missionNumber": "Mission {index}",
     "xpToYourStar": "{xp} XP til din stjerne",
     "missionStarEarned": "Stjerne optjent!",
     "xpFromChats": "Chats {xp}",
@@ -10895,8 +10875,6 @@
     "playMission": "Spil",
     "wordCount": "{count, plural, =1{1 ord} other{{count} ord}}",
     "continueActivity": "Fortsæt",
-    "noObjectiveActivitiesYet": "Du har ikke gennemført en aktivitet for dette mål endnu. Start en fra dit kursus.",
-    "objectiveNotInYourCourses": "Dette mål er ikke i nogen af dine kurser.",
     "objectiveActivityCount": "{count, plural, =0{Ingen aktiviteter endnu} =1{1 aktivitet spillet} other{{count} aktiviteter spillet}}",
     "activityCompleted": "Gennemført",
     "completedTimes": "Gennemført {count} gange",
@@ -10904,8 +10882,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Samtale {xp}",
     "xpIncludingGoals": "inklusive {xp} fra mål",
-    "missionOtherLanguageNotice": "Denne mission er fra et kursus i {language}. Din fremgang tæller kun, når du lærer {language}.",
-    "missionLanguageMismatchDesc": "Denne mission er fra et kursus i {language}. Vil du skifte dit målsprog til {language}?",
     "xpBySkillTitle": "Efter færdighed",
     "missionNextActivity": "Næste aktivitet",
     "missionContinueActivity": "Fortsæt aktivitet",
@@ -10915,7 +10891,6 @@
     "otherCoursesSessions": "Andre kurser ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP optjent",
-    "currentMission": "Nuværende mission",
     "constructUseCorRADesc": "Læst højt og hørt",
     "constructUseIncRADesc": "Læst højt, ikke hørt",
     "hearItFirstToolName": "Hør det først",
@@ -10937,7 +10912,6 @@
     "readAloudTake": "Tag {number}",
     "videoWontPlayHere": "Denne video kan ikke afspilles her.",
     "watchOnYoutube": "Se på YouTube",
-    "xpTowardMission": "{xp} XP til denne mission",
     "practiceStartWordCount": "{count, plural, =1{ord at øve} other{ord at øve}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammatikpunkt at øve} other{grammatikpunkter at øve}}",
     "practiceStartExerciseTypes": "Øvelsestyper",
@@ -10977,5 +10951,20 @@
     "discussionRemoved": "Du kan ikke deltage i denne diskussion.",
     "discussionJoinArriving": "Du er med! Diskussionen åbnes, så snart den ankommer.",
     "roleplayLabel": "Rollespil",
+    "canDoAnalyticsTooltipBody": "Hver {canDo} fyldes med XP fra dens aktiviteter og øvelse. En fuld {canDo} giver en stjerne.",
+    "canDoStarListLabel": "{canDos} og gemte aktiviteter",
+    "canDoNofM": "{canDo} {index} af {count}",
+    "xpOfThresholdTowardCanDo": "{xp} af {threshold} XP mod denne {canDo}",
+    "courseCompleteCanDosDesc": "Du har gennemført alle {count} {canDos} i dette kursus. Bliv ved med at øve dig for at bevare det, du har lært.",
+    "practiceCanDo": "Øv denne {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: gennemført",
+    "canDoCircleUpNext": "{canDo} {index}: næste",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Denne {canDo} er fra et kursus i {language}. Dine fremskridt tæller kun, når du lærer {language}.",
+    "canDoLanguageMismatchDesc": "Denne {canDo} er fra et kursus i {language}. Vil du skifte dit målsprog til {language}?",
+    "noCanDoActivitiesYet": "Du har endnu ikke gennemført en aktivitet for denne {canDo}. Start en fra dit kursus.",
+    "canDoNotInYourCourses": "Denne {canDo} er ikke i nogen af dine kurser.",
+    "currentCanDo": "Nuværende {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP mod denne {canDo}",
     "sessionFinished": "For sent! Denne aktivitet er afsluttet."
 }

@@ -3387,7 +3387,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-11-11 11:38:41.580849",
+    "@@last_modified": "2026-11-12 09:03:59.851210",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -7134,7 +7134,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Δεν βρέθηκαν άμεσες μηνύματα ή συνομιλίες. Βεβαιωθείτε ότι η αναζήτησή σας είναι σωστά γραμμένη.",
-    "activityAnalyticsTooltipBody": "Αυτές είναι οι αποθηκευμένες δραστηριότητές σας για ανασκόπηση και πρακτική.",
     "numSavedActivities": "Αριθμός αποθηκευμένων δραστηριοτήτων",
     "saveActivityTitle": "Αποθήκευση δραστηριότητας",
     "saveActivityDesc": "Καλή δουλειά! Αποθηκεύστε αυτή τη δραστηριότητα για μελλοντική ανασκόπηση και πρακτική",
@@ -7369,10 +7368,6 @@
     "zhTWDisplayName": "Κινέζικα (Παραδοσιακά)",
     "zuDisplayName": "Ζουλού",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10150,7 +10145,6 @@
     },
     "pageLabel": "{title} σελίδα",
     "closeHint": "Κλείσιμο υποδείξεως",
-    "starListLabel": "Αποθηκευμένες δραστηριότητες και αστέρια",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10160,10 +10154,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10480,7 +10470,6 @@
     "selectImageLabel": "Επιλογή εικόνας",
     "userSearchTagsLabel": "Αναζήτηση σε...",
     "courseDetails": "Λεπτομέρειες μαθήματος",
-    "objective": "Στόχος",
     "pingedLabel": "Έγινε ping",
     "mapFilterPlayerCount": "{count} παίκτες",
     "practiceFeedbackButtonTooltip": "Αναφέρετε ένα πρόβλημα με αυτήν την άσκηση",
@@ -10781,17 +10770,9 @@
     "reportSent": "Η αναφορά στάλθηκε",
     "reportNotSent": "Η αναφορά σας δεν μπόρεσε να σταλεί. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
     "reportPointerMessage": "Αναφέρθηκε ένα μήνυμα στο {courseName} — δείτε την ενότητα Ασφάλεια",
-    "learningObjective": "Μαθησιακός Στόχος",
-    "learningObjectives": "Μαθησιακοί Στόχοι",
-    "missionNofM": "Αποστολή {index} από {count}",
-    "xpTowardObjective": "{xp} από {threshold} XP για αυτόν τον στόχο",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Το μάθημα ολοκληρώθηκε!",
-    "courseCompleteDesc": "Έχεις ολοκληρώσει και τους {count} στόχους σε αυτό το μάθημα. Συνέχισε να εξασκείσαι για να διατηρήσεις όσα έμαθες.",
-    "practiceObjective": "Εξάσκησε αυτόν τον στόχο",
     "otherActivities": "Άλλες δραστηριότητες",
-    "objectiveCircleComplete": "Αποστολή {index}: ολοκληρώθηκε",
-    "objectiveCircleUpNext": "Αποστολή {index}: επόμενη",
     "useActivityImageAsChatBackground": "Χρήση εικόνας δραστηριότητας ως φόντο συνομιλίας",
     "andCertifyIMeetTheMinimumAge": " και βεβαιώνω ότι είμαι τουλάχιστον 13 ετών ή της ελάχιστης απαιτούμενης ηλικίας στη χώρα μου, εάν αυτή είναι μεγαλύτερη.",
     "filteredNetworkBlockedTitle": "Αυτό το δίκτυο μπλοκάρει το Pangea Chat",
@@ -10841,7 +10822,6 @@
     "offlinePracticeNote": "Εκτός σύνδεσης. Οι απαντήσεις σου θα ανέβουν όταν συνδεθείς ξανά.",
     "offlinePracticeSavedNote": "Αποθηκεύτηκε σε αυτήν τη συσκευή. Το XP σου θα ανέβει όταν συνδεθείς ξανά.",
     "offlinePracticeNothingSaved": "Δεν έχουν αποθηκευτεί αρκετά σε αυτήν τη συσκευή για εξάσκηση εκτός σύνδεσης. Δοκιμάστε ξανά όταν συνδεθείτε στο διαδίκτυο.",
-    "missionNumber": "Αποστολή {index}",
     "xpToYourStar": "{xp} XP για το αστέρι σου",
     "missionStarEarned": "Κέρδισες αστέρι!",
     "xpFromChats": "Συνομιλίες {xp}",
@@ -10850,8 +10830,6 @@
     "playMission": "Παίξε",
     "wordCount": "{count, plural, =1{1 λέξη} other{{count} λέξεις}}",
     "continueActivity": "Συνέχεια",
-    "noObjectiveActivitiesYet": "Δεν έχεις ολοκληρώσει ακόμα κάποια δραστηριότητα για αυτόν τον στόχο. Ξεκίνα μία από το μάθημά σου.",
-    "objectiveNotInYourCourses": "Αυτός ο στόχος δεν περιλαμβάνεται σε κανένα από τα μαθήματά σου.",
     "objectiveActivityCount": "{count, plural, =0{Καμία δραστηριότητα ακόμα} =1{1 δραστηριότητα ολοκληρώθηκε} other{{count} δραστηριότητες ολοκληρώθηκαν}}",
     "activityCompleted": "Ολοκληρώθηκε",
     "completedTimes": "Ολοκληρώθηκε {count} φορές",
@@ -10859,8 +10837,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Συνομιλία {xp}",
     "xpIncludingGoals": "συμπεριλαμβανομένων {xp} από στόχους",
-    "missionOtherLanguageNotice": "Αυτή η αποστολή είναι από ένα μάθημα στα {language}. Η πρόοδός σας σε αυτήν μετράει μόνο όσο μαθαίνετε {language}.",
-    "missionLanguageMismatchDesc": "Αυτή η αποστολή είναι από ένα μάθημα στα {language}. Να αλλάξετε τη γλώσσα-στόχο σας σε {language};",
     "xpBySkillTitle": "Ανά δεξιότητα",
     "missionNextActivity": "Επόμενη δραστηριότητα",
     "missionContinueActivity": "Συνέχιση δραστηριότητας",
@@ -10870,7 +10846,6 @@
     "otherCoursesSessions": "Άλλα μαθήματα ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, κερδισμένα {xp} XP",
-    "currentMission": "Τρέχουσα αποστολή",
     "constructUseCorRADesc": "Διαβάστηκε δυνατά και ακούστηκε",
     "constructUseIncRADesc": "Διαβάστηκε δυνατά, δεν ακούστηκε",
     "hearItFirstToolName": "Άκουσέ το πρώτα",
@@ -10892,7 +10867,6 @@
     "readAloudTake": "Λήψη {number}",
     "videoWontPlayHere": "Αυτό το βίντεο δεν θα αναπαραχθεί εδώ.",
     "watchOnYoutube": "Παρακολουθήστε στο YouTube",
-    "xpTowardMission": "{xp} XP για αυτήν την αποστολή",
     "practiceStartWordCount": "{count, plural, =1{λέξη για εξάσκηση} other{λέξεις για εξάσκηση}}",
     "practiceStartGrammarCount": "{count, plural, =1{σημείο γραμματικής για εξάσκηση} other{σημεία γραμματικής για εξάσκηση}}",
     "practiceStartExerciseTypes": "Τύποι ασκήσεων",
@@ -10932,5 +10906,20 @@
     "discussionRemoved": "Δεν μπορείτε να συμμετάσχετε σε αυτή τη συζήτηση.",
     "discussionJoinArriving": "Είστε μέσα! Η συζήτηση θα ανοίξει μόλις φτάσει.",
     "roleplayLabel": "Παιχνίδι ρόλων",
+    "canDoAnalyticsTooltipBody": "Κάθε {canDo} γεμίζει με XP από τις δραστηριότητές του και την εξάσκηση. Ένα πλήρες {canDo} κερδίζει ένα αστέρι.",
+    "canDoStarListLabel": "{canDos} και αποθηκευμένες δραστηριότητες",
+    "canDoNofM": "{canDo} {index} από {count}",
+    "xpOfThresholdTowardCanDo": "{xp} από {threshold} XP για αυτό το {canDo}",
+    "courseCompleteCanDosDesc": "Έχεις ολοκληρώσει όλα τα {count} {canDos} σε αυτό το μάθημα. Συνέχισε να εξασκείσαι για να διατηρήσεις όσα έμαθες.",
+    "practiceCanDo": "Εξασκήσου σε αυτό το {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: ολοκληρώθηκε",
+    "canDoCircleUpNext": "{canDo} {index}: επόμενο",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Αυτό το {canDo} προέρχεται από ένα μάθημα στα {language}. Η πρόοδός σου σε αυτό μετράει μόνο όσο μαθαίνεις {language}.",
+    "canDoLanguageMismatchDesc": "Αυτό το {canDo} προέρχεται από ένα μάθημα στα {language}. Να αλλάξεις τη γλώσσα-στόχο σου σε {language};",
+    "noCanDoActivitiesYet": "Δεν έχεις ολοκληρώσει ακόμα κάποια δραστηριότητα για αυτό το {canDo}. Ξεκίνησε μία από το μάθημά σου.",
+    "canDoNotInYourCourses": "Αυτό το {canDo} δεν περιλαμβάνεται σε κανένα από τα μαθήματά σου.",
+    "currentCanDo": "Τρέχον {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP για αυτό το {canDo}",
     "sessionFinished": "Πολύ αργά! Αυτή η δραστηριότητα έχει τελειώσει."
 }

@@ -132,8 +132,9 @@ extension CoursePlanRoomExtension on Room {
   /// ignore a copy whose sender is below power level 100 anyway). Written
   /// when the space has no copy yet, or when the plan changes — an old copy
   /// would name the previous quest's Can-Dos. The snapshot is the list the
-  /// course shows without a copy, so this space's pins apply. A revision
-  /// above any existing copy's lets open surfaces refresh.
+  /// course shows without a copy, so this space's pins apply, else the plan's
+  /// selections, with the plan's notes. A revision above any existing copy's
+  /// lets open surfaces refresh.
   ///
   /// A plan change with no snapshot to hand ([outline] null) clears the old
   /// quest's copy with an empty record, so readers fall back to the new
@@ -160,8 +161,17 @@ extension CoursePlanRoomExtension on Room {
       );
       return;
     }
+    final shown = outline.restrictedTo(teacherMode.pinnedActivitiesByObjective);
+    final longNotes = CourseMissionsEvent.longNoteLoIds(shown);
+    if (longNotes.isNotEmpty) {
+      ErrorHandler.logError(
+        e: 'Plan note too long for a course copy; left out of it',
+        data: {'room_id': id, 'lo_ids': longNotes},
+        level: SentryLevel.warning,
+      );
+    }
     final snapshot = CourseMissionsEvent.snapshotOf(
-      outline.restrictedTo(teacherMode.pinnedActivitiesByObjective),
+      shown,
       revision: (existing?.revision ?? 0) + 1,
     );
     await client.setRoomStateWithKey(

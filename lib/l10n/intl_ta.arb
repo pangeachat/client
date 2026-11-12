@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:39:00.737808",
+    "@@last_modified": "2026-11-12 09:04:25.894897",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -6364,7 +6364,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "DMs அல்லது உரையாடல்கள் எதுவும் கிடைக்கவில்லை. உங்கள் தேடல் சரியாக எழுத்துப்பிழையின்றி உள்ளது என்பதை உறுதி செய்யவும்.",
-    "activityAnalyticsTooltipBody": "இவை உங்கள் மதிப்பீடு மற்றும் பயிற்சிக்கான சேமிக்கப்பட்ட செயல்பாடுகள்.",
     "numSavedActivities": "சேமிக்கப்பட்ட செயல்பாடுகளின் எண்ணிக்கை",
     "saveActivityTitle": "செயல்பாட்டை சேமிக்கவும்",
     "saveActivityDesc": "சிறந்த வேலை! இந்த செயல்பாட்டை பின்னர் மதிப்பீடு மற்றும் பயிற்சிக்காக சேமிக்கவும்",
@@ -6599,10 +6598,6 @@
     "zhTWDisplayName": "சீனம் (பாரம்பரிய)",
     "zuDisplayName": "ஜுலு",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9370,7 +9365,6 @@
     },
     "pageLabel": "{title} பக்கம்",
     "closeHint": "மூடு குறிப்பு",
-    "starListLabel": "சேமிக்கப்பட்ட செயல்கள் மற்றும் நட்சத்திரங்கள்",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9380,10 +9374,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9700,7 +9690,6 @@
     "selectImageLabel": "படத்தைத் தேர்ந்தெடுக்கவும்",
     "userSearchTagsLabel": "இதில் தேடவும்...",
     "courseDetails": "பாட விவரங்கள்",
-    "objective": "நோக்கம்",
     "pingedLabel": "பிங் செய்யப்பட்டது",
     "mapFilterPlayerCount": "{count} வீரர்கள்",
     "practiceFeedbackButtonTooltip": "இந்த பயிற்சியில் உள்ள சிக்கலைப் புகாரளிக்கவும்",
@@ -10001,17 +9990,9 @@
     "reportSent": "புகார் அனுப்பப்பட்டது",
     "reportNotSent": "உங்கள் புகாரை அனுப்ப முடியவில்லை. உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
     "reportPointerMessage": "{courseName} இல் ஒரு செய்தி புகாரளிக்கப்பட்டது — பாதுகாப்பைப் பார்க்கவும்",
-    "learningObjective": "கற்றல் நோக்கம்",
-    "learningObjectives": "கற்றல் நோக்கங்கள்",
-    "missionNofM": "{count} இல் {index} பணி",
-    "xpTowardObjective": "இந்த நோக்கத்திற்கான {threshold} XP இல் {xp}",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "பாடநெறி முடிந்தது!",
-    "courseCompleteDesc": "இந்த பாடத்திட்டத்தில் உள்ள {count} நோக்கங்களையும் நீங்கள் முடித்துவிட்டீர்கள். நீங்கள் கற்றுக்கொண்டதை தக்கவைத்துக்கொள்ள தொடர்ந்து பயிற்சி செய்யுங்கள்.",
-    "practiceObjective": "இந்த நோக்கத்தைப் பயிற்சி செய்யுங்கள்",
     "otherActivities": "பிற செயல்பாடுகள்",
-    "objectiveCircleComplete": "பணி {index}: முடிந்தது",
-    "objectiveCircleUpNext": "பணி {index}: அடுத்து",
     "useActivityImageAsChatBackground": "செயல்பாட்டுப் படத்தை அரட்டைப் பின்னணியாகப் பயன்படுத்து",
     "andCertifyIMeetTheMinimumAge": " மேலும் எனக்கு குறைந்தபட்சம் 13 வயது அல்லது எனது நாட்டில் தேவைப்படும் குறைந்தபட்ச வயது (அது அதிகமாக இருந்தால்) ஆகிறது என்பதை நான் சான்றளிக்கிறேன்.",
     "filteredNetworkBlockedTitle": "இந்த நெட்வொர்க் பான்ஜியா அரட்டையைத் தடுக்கிறது",
@@ -10061,7 +10042,6 @@
     "offlinePracticeNote": "ஆஃப்லைனில். நீங்கள் திரும்ப வரும்போது உங்கள் பதில்கள் பதிவேற்றப்படும்.",
     "offlinePracticeSavedNote": "இந்தச் சாதனத்தில் சேமிக்கப்பட்டது. நீங்கள் மீண்டும் ஆன்லைனில் வரும்போது உங்கள் XP பதிவேற்றப்படும்.",
     "offlinePracticeNothingSaved": "ஆஃப்லைனில் பயிற்சி செய்ய இந்தச் சாதனத்தில் போதுமான அளவு சேமிக்கப்படவில்லை. நீங்கள் மீண்டும் ஆன்லைனில் வரும்போது மீண்டும் முயற்சிக்கவும்.",
-    "missionNumber": "பணி {index}",
     "xpToYourStar": "உங்கள் நட்சத்திரத்திற்கு {xp} XP",
     "missionStarEarned": "நட்சத்திரம் கிடைத்தது!",
     "xpFromChats": "அரட்டைகள் {xp}",
@@ -10070,8 +10050,6 @@
     "playMission": "விளையாடு",
     "wordCount": "{count, plural, =1{1 வார்த்தை} other{{count} வார்த்தைகள்}}",
     "continueActivity": "தொடரவும்",
-    "noObjectiveActivitiesYet": "இந்த நோக்கத்திற்கான எந்தச் செயலையும் நீங்கள் இன்னும் முடிக்கவில்லை. உங்கள் பாடத்திட்டத்திலிருந்து ஒன்றைத் தொடங்குங்கள்.",
-    "objectiveNotInYourCourses": "இந்த நோக்கம் உங்கள் பாடத்திட்டங்களில் இல்லை.",
     "objectiveActivityCount": "{count, plural, =0{இதுவரை செயல்பாடுகள் இல்லை} =1{1 செயல்பாடு விளையாடப்பட்டது} other{{count} செயல்பாடுகள் விளையாடப்பட்டன}}",
     "activityCompleted": "முடிந்தது",
     "completedTimes": "{count} முறை முடிந்தது",
@@ -10079,8 +10057,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "உரையாடல் {xp}",
     "xpIncludingGoals": "இலக்குகளிலிருந்து {xp} உட்பட",
-    "missionOtherLanguageNotice": "இந்த மிஷன் {language} மொழியில் உள்ள ஒரு பாடத்திட்டத்திலிருந்து வந்தது. நீங்கள் {language} மொழியைக் கற்கும்போது மட்டுமே இதில் உங்கள் முன்னேற்றம் கணக்கிடப்படும்.",
-    "missionLanguageMismatchDesc": "இந்த மிஷன் {language} மொழியில் உள்ள ஒரு பாடத்திட்டத்திலிருந்து வந்தது. உங்கள் இலக்கு மொழியை {language} ஆக மாற்றவா?",
     "xpBySkillTitle": "திறமையின் அடிப்படையில்",
     "missionNextActivity": "அடுத்த செயல்பாடு",
     "missionContinueActivity": "செயல்பாட்டைத் தொடரவும்",
@@ -10090,7 +10066,6 @@
     "otherCoursesSessions": "பிற பாடத்திட்டங்கள் ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP பெறப்பட்டது",
-    "currentMission": "தற்போதைய மிஷன்",
     "constructUseCorRADesc": "சத்தமாகப் படித்துக் கேட்கப்பட்டது",
     "constructUseIncRADesc": "சத்தமாகப் படிக்கப்பட்டது, கேட்கப்படவில்லை",
     "hearItFirstToolName": "முதலில் கேளுங்கள்",
@@ -10112,7 +10087,6 @@
     "readAloudTake": "{number} எடு",
     "videoWontPlayHere": "இந்த வீடியோ இங்கே பிளே ஆகாது.",
     "watchOnYoutube": "YouTube-ல் பாருங்கள்",
-    "xpTowardMission": "இந்த மிஷனை நோக்கி {xp} XP",
     "practiceStartWordCount": "{count, plural, =1{பயிற்சி செய்ய ஒரு சொல்} other{பயிற்சி செய்ய சொற்கள்}}",
     "practiceStartGrammarCount": "{count, plural, =1{பயிற்சி செய்ய ஒரு இலக்கணப் புள்ளி} other{பயிற்சி செய்ய இலக்கணப் புள்ளிகள்}}",
     "practiceStartExerciseTypes": "பயிற்சி வகைகள்",
@@ -10152,5 +10126,20 @@
     "discussionRemoved": "இந்தக் கலந்துரையாடலில் நீங்கள் சேர முடியாது.",
     "discussionJoinArriving": "நீங்கள் உள்ளே வந்துவிட்டீர்கள்! கலந்துரையாடல் வந்தவுடன் திறக்கப்படும்.",
     "roleplayLabel": "பங்கு வகிக்கும் நாடகம்",
+    "canDoAnalyticsTooltipBody": "ஒவ்வொரு {canDo}வும் அதன் செயல்பாடுகள் மற்றும் பயிற்சியிலிருந்து XP மூலம் நிரப்பப்படுகிறது. ஒரு முழு {canDo} ஒரு நட்சத்திரத்தைப் பெறுகிறது.",
+    "canDoStarListLabel": "{canDos} மற்றும் சேமிக்கப்பட்ட செயல்பாடுகள்",
+    "canDoNofM": "{canDo} {count} இல் {index}",
+    "xpOfThresholdTowardCanDo": "இந்த {canDo}க்கு {threshold} XP இல் {xp} XP",
+    "courseCompleteCanDosDesc": "இந்த பாடத்திட்டத்தில் உள்ள அனைத்து {count} {canDos}ஐயும் நீங்கள் முடித்துவிட்டீர்கள். நீங்கள் கற்றுக்கொண்டதை தக்கவைக்க தொடர்ந்து பயிற்சி செய்யுங்கள்.",
+    "practiceCanDo": "இந்த {canDo}ஐப் பயிற்சி செய்யுங்கள்",
+    "canDoCircleComplete": "{canDo} {index}: முடிந்தது",
+    "canDoCircleUpNext": "{canDo} {index}: அடுத்து",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "இந்த {canDo} {language} இல் உள்ள ஒரு பாடத்திட்டத்திலிருந்து வந்தது. நீங்கள் {language}ஐக் கற்கும்போது மட்டுமே இதில் உங்கள் முன்னேற்றம் கணக்கிடப்படும்.",
+    "canDoLanguageMismatchDesc": "இந்த {canDo} {language} இல் உள்ள ஒரு பாடத்திட்டத்திலிருந்து வந்தது. உங்கள் இலக்கு மொழியை {language}க்கு மாற்றவா?",
+    "noCanDoActivitiesYet": "இந்த {canDo}க்கான எந்தச் செயலையும் நீங்கள் இன்னும் முடிக்கவில்லை. உங்கள் பாடத்திட்டத்திலிருந்து ஒன்றைத் தொடங்குங்கள்.",
+    "canDoNotInYourCourses": "இந்த {canDo} உங்கள் பாடத்திட்டங்களில் இல்லை.",
+    "currentCanDo": "தற்போதைய {canDo}",
+    "xpGainedTowardCanDo": "இந்த {canDo}க்கு {xp} XP",
     "sessionFinished": "மிகவும் தாமதம்! இந்தச் செயல்பாடு முடிந்துவிட்டது."
 }

@@ -32,6 +32,7 @@ import 'package:fluffychat/features/tutorials/tutorial_sequences.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_target_ids.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -521,7 +522,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
       () => LanguageMismatchPopup.show(
         context: context,
         targetId: _languageTargetId(missionId),
-        message: L10n.of(context).missionLanguageMismatchDesc(
+        message: L10n.of(context).canDoLanguageMismatchDesc(
+          CanDoTerm.singular,
           CourseLanguageScope.courseLanguageName(widget.room, L10n.of(context)),
         ),
         targetLanguage: language,
@@ -623,7 +625,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
     return Semantics(
       label: widget.suggestedOnly
-          ? L10n.of(context).learningObjective
+          ? CanDoTerm.singular
           : L10n.of(context).coursePlan,
       container: true,
       child: ValueListenableBuilder(

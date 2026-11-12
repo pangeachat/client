@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-11-11 11:39:01.762617",
+    "@@last_modified": "2026-11-12 09:04:28.640478",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -6442,7 +6442,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Не знайдено особистих повідомлень або чатів. Переконайтеся, що ваш запит написаний правильно.",
-    "activityAnalyticsTooltipBody": "Це ваші збережені активності для перегляду та практики.",
     "numSavedActivities": "Кількість збережених активностей",
     "saveActivityTitle": "Зберегти активність",
     "saveActivityDesc": "Добра робота! Збережіть цю активність для подальшого перегляду та практики",
@@ -6677,10 +6676,6 @@
     "zhTWDisplayName": "Китайська (Традиційна)",
     "zuDisplayName": "Зулу",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9278,7 +9273,6 @@
     },
     "pageLabel": "{title} сторінка",
     "closeHint": "Закрити підказку",
-    "starListLabel": "Збережені активності та зірки",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9288,10 +9282,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9608,7 +9598,6 @@
     "selectImageLabel": "Вибрати зображення",
     "userSearchTagsLabel": "Шукати в...",
     "courseDetails": "Деталі курсу",
-    "objective": "Мета",
     "pingedLabel": "Надіслано запит",
     "mapFilterPlayerCount": "{count} гравців",
     "practiceFeedbackButtonTooltip": "Повідомити про проблему з цією вправою",
@@ -9909,17 +9898,9 @@
     "reportSent": "Звіт надіслано",
     "reportNotSent": "Ваш звіт не вдалося надіслати. Перевірте з’єднання та спробуйте ще раз.",
     "reportPointerMessage": "Повідомлення було надіслано в {courseName} — дивіться Безпека",
-    "learningObjective": "Ціль навчання",
-    "learningObjectives": "Цілі навчання",
-    "missionNofM": "Місія {index} із {count}",
-    "xpTowardObjective": "{xp} із {threshold} XP до цієї цілі",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Курс завершено!",
-    "courseCompleteDesc": "Ви виконали всі {count} цілі в цьому курсі. Продовжуйте практикуватися, щоб зберегти те, що ви вивчили.",
-    "practiceObjective": "Практикувати цю ціль",
     "otherActivities": "Інші активності",
-    "objectiveCircleComplete": "Місія {index}: виконано",
-    "objectiveCircleUpNext": "Місія {index}: наступна",
     "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
     "andCertifyIMeetTheMinimumAge": " і підтверджую, що мені виповнилося 13 років, або мінімальний вік, встановлений у моїй країні, якщо він вищий.",
     "filteredNetworkBlockedTitle": "Ця мережа блокує Pangea Chat",
@@ -9969,7 +9950,6 @@
     "offlinePracticeNote": "Офлайн. Ваші відповіді завантажаться, коли ви повернетеся.",
     "offlinePracticeSavedNote": "Збережено на цьому пристрої. Ваш XP завантажиться, коли ви знову будете онлайн.",
     "offlinePracticeNothingSaved": "На цьому пристрої недостатньо збережених даних для офлайн-практики. Спробуйте ще раз, коли будете онлайн.",
-    "missionNumber": "Місія {index}",
     "xpToYourStar": "{xp} XP до вашої зірки",
     "missionStarEarned": "Зірку здобуто!",
     "xpFromChats": "Чати {xp}",
@@ -9978,8 +9958,6 @@
     "playMission": "Грати",
     "wordCount": "{count, plural, =1{1 слово} other{{count} слів}}",
     "continueActivity": "Продовжити",
-    "noObjectiveActivitiesYet": "Ви ще не виконали жодної вправи для цієї цілі. Розпочніть її зі свого курсу.",
-    "objectiveNotInYourCourses": "Цієї цілі немає в жодному з ваших курсів.",
     "objectiveActivityCount": "{count, plural, =0{Ще немає вправ} =1{Виконано 1 вправу} other{Виконано {count} вправ}}",
     "activityCompleted": "Завершено",
     "completedTimes": "Завершено {count} разів",
@@ -9987,8 +9965,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Розмова {xp}",
     "xpIncludingGoals": "включно з {xp} за цілі",
-    "missionOtherLanguageNotice": "Ця місія з курсу {language}. Ваш прогрес зараховується лише під час вивчення {language}.",
-    "missionLanguageMismatchDesc": "Ця місія з курсу {language}. Змінити цільову мову на {language}?",
     "xpBySkillTitle": "За навичками",
     "missionNextActivity": "Наступна вправа",
     "missionContinueActivity": "Продовжити вправу",
@@ -9998,7 +9974,6 @@
     "otherCoursesSessions": "Інші курси ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, зароблено {xp} XP",
-    "currentMission": "Поточна місія",
     "constructUseCorRADesc": "Прочитано вголос і почуто",
     "constructUseIncRADesc": "Прочитано вголос, не почуто",
     "hearItFirstToolName": "Спершу послухайте",
@@ -10020,7 +9995,6 @@
     "readAloudTake": "Спроба {number}",
     "videoWontPlayHere": "Це відео тут не відтворюватиметься.",
     "watchOnYoutube": "Дивитися на YouTube",
-    "xpTowardMission": "{xp} XP до цієї місії",
     "practiceStartWordCount": "{count, plural, =1{слово для практики} other{слів для практики}}",
     "practiceStartGrammarCount": "{count, plural, =1{граматична тема для практики} other{граматичних тем для практики}}",
     "practiceStartExerciseTypes": "Типи вправ",
@@ -10060,5 +10034,20 @@
     "discussionRemoved": "Ви не можете приєднатися до цього обговорення.",
     "discussionJoinArriving": "Ви приєдналися! Обговорення розпочнеться, щойно воно з'явиться.",
     "roleplayLabel": "Рольова гра",
+    "canDoAnalyticsTooltipBody": "Кожен {canDo} заповнюється досвідом від його діяльності та практики. Повний {canDo} приносить зірку.",
+    "canDoStarListLabel": "{canDos} та збережені дії",
+    "canDoNofM": "{canDo} {index} з {count}",
+    "xpOfThresholdTowardCanDo": "{xp} з {threshold} XP для цього {canDo}",
+    "courseCompleteCanDosDesc": "Ви виконали всі {count} {canDos} у цьому курсі. Продовжуйте практикуватися, щоб зберегти те, що ви вивчили.",
+    "practiceCanDo": "Практикуйте цей {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: виконано",
+    "canDoCircleUpNext": "{canDo} {index}: далі",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Цей {canDo} з курсу {language}. Ваш прогрес зараховується лише тоді, коли ви вивчаєте {language}.",
+    "canDoLanguageMismatchDesc": "Цей {canDo} з курсу {language}. Змінити цільову мову на {language}?",
+    "noCanDoActivitiesYet": "Ви ще не виконали жодної дії для цього {canDo}. Почніть одну зі свого курсу.",
+    "canDoNotInYourCourses": "Цього {canDo} немає в жодному з ваших курсів.",
+    "currentCanDo": "Поточний {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP для цього {canDo}",
     "sessionFinished": "Запізно! Ця вправа завершена."
 }

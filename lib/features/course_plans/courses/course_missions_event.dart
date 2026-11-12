@@ -67,8 +67,8 @@ class RemovedMission {
 /// The `pangea.course_missions` course-space state event: the course's own
 /// frozen copy of its Can-Do list (content-studio.instructions.md). When it is
 /// valid the course reads only this list; when it is absent or invalid every
-/// reader behaves exactly as before it existed (shared quest order plus the
-/// teacher-mode pins).
+/// reader behaves exactly as before it existed (shared quest order, with the
+/// teacher-mode pins, else the plan's selections).
 class CourseMissionsEvent {
   static const int schemaVersion = 1;
   static const int maxNoteLength = 280;
@@ -195,8 +195,10 @@ class CourseMissionsEvent {
 
   /// The copy a new course starts with: a snapshot of the list it shows
   /// without one — every Can-Do in order, each with the activities shown for
-  /// it. No time zone (dates show in the viewer's zone until the Studio's
-  /// first publish sets one).
+  /// it and the plan's note. A note longer than [maxNoteLength] is left out,
+  /// since it would make readers refuse the whole copy ([longNoteLoIds]). No
+  /// time zone (dates show in the viewer's zone until the Studio's first
+  /// publish sets one).
   static CourseMissionsEvent snapshotOf(
     QuestOutline outline, {
     int revision = 1,
@@ -207,9 +209,19 @@ class CourseMissionsEvent {
         CourseMission(
           loId: group.objective.id,
           activityIds: [for (final a in group.activities) a.activityId],
+          note: (group.pacing?.note?.length ?? 0) <= maxNoteLength
+              ? group.pacing?.note
+              : null,
         ),
     ],
   );
+
+  /// The Can-Dos of [outline] whose note [snapshotOf] leaves out. The CMS
+  /// refuses such a plan note, so any here is reported by the writer.
+  static List<String> longNoteLoIds(QuestOutline outline) => [
+    for (final group in outline.groups)
+      if ((group.pacing?.note?.length ?? 0) > maxNoteLength) group.objective.id,
+  ];
 
   /// The Mission ids this copy lists that [quest] still carries, in the
   /// copy's order — the effective Can-Do list for a reader that has only the
@@ -276,7 +288,7 @@ extension CourseMissionsRoomExtension on Room {
 extension QuestOutlineForCourse on QuestOutline {
   /// This outline as [room]'s course shows it — the one helper every reader of
   /// a course's Can-Dos goes through. Null [room] (previews, no joined course)
-  /// is the shared quest, unrestricted.
+  /// is the shared quest with the plan's selections and notes.
   QuestOutline forCourse(Room? room) =>
       forRules(room?.courseListRules ?? CourseListRules.none);
 
@@ -295,7 +307,7 @@ extension QuestOutlineForCourse on QuestOutline {
   /// ids the copy lists are shown. Everything the copy credits — shown,
   /// hidden, and in removed Can-Dos — is gathered into [QuestOutline.credit]
   /// so progress follows an activity across its copies.
-  /// Without a copy: exactly today's pin restriction.
+  /// Without a copy: the pins, else the plan's selections ([restrictedTo]).
   QuestOutline forRules(CourseListRules rules) {
     final copy = rules.missions;
     if (copy == null) return restrictedTo(rules.pins);
@@ -407,11 +419,13 @@ extension QuestOutlineForCourse on QuestOutline {
 
 /// The course-scoped map's marker filter: the cards [rules] lets this course
 /// show. With a copy, a card stays when a listed Can-Do it satisfies lists it;
-/// without one, today's fail-open pin rule ([effectivePinnedActivityIds]).
+/// without one, the fail-open rule over the pins and then the plan's
+/// [selections] ([QuestPlan.activitySelections], [effectivePinnedActivityIds]).
 List<QuestActivityCard> restrictCardsForCourse(
   List<QuestActivityCard> cards,
-  CourseListRules rules,
-) {
+  CourseListRules rules, {
+  Map<String, List<String>> selections = const {},
+}) {
   final copy = rules.missions;
   if (copy != null) {
     final allowedByLo = {
@@ -425,8 +439,8 @@ List<QuestActivityCard> restrictCardsForCourse(
         )
         .toList();
   }
-  final pinnedByObjective = rules.pins;
-  if (pinnedByObjective == null || pinnedByObjective.isEmpty) return cards;
+  final pinnedByObjective = rules.pins ?? const <String, List<String>>{};
+  if (pinnedByObjective.isEmpty && selections.isEmpty) return cards;
   final availableByLo = <String, Set<String>>{};
   for (final card in cards) {
     for (final loId in card.learningObjectiveRefs) {
@@ -438,6 +452,7 @@ List<QuestActivityCard> restrictCardsForCourse(
       entry.key: effectivePinnedActivityIds(
         entry.value,
         pinnedByObjective[entry.key],
+        selected: selections[entry.key],
       ),
   };
   return cards
