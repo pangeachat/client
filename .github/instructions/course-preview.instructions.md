@@ -28,7 +28,7 @@ A course is offered in either list only when its quest resolves **and** carries 
 
 - **Header**: the same course tile the learner tapped in the list (avatar, title, lock icon, member + info chips; no border, since it no longer navigates), with the back button to its left. At the minimized rest the title ellipsizes at one line — a wrapped title can overflow the short sheet; the tile's two-line wrap returns once expanded.
 - **Pinned CTA row** at the bottom ([`CourseCtaRow`](../../lib/routes/courses/course_cta_row.dart): a filled lead pill and quieter pills after it): Join, Knock, or Create course. A knock preview shows only the knock primary — class-code entry stays on its own page.
-- **Scrollable middle**, dropped entirely at the minimized rest (grow-before-scroll): the course description, its admins, and the read-only course plan ([`CourseObjectivesList`](../../lib/routes/courses/course_objectives/course_objectives_view.dart) in preview mode — Can-Dos with activity carousels, no completion overlay, no taps).
+- **Scrollable middle**, dropped entirely at the minimized rest (grow-before-scroll): the course description, its admins, and the read-only course plan ([`CourseObjectivesList`](../../lib/routes/courses/course_objectives/course_objectives_view.dart) in preview mode — Can-Dos with activity carousels, no taps; a card the learner earned XP from elsewhere wears its completed stamp).
 
 ## After creating (own flow)
 

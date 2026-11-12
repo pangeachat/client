@@ -23,7 +23,7 @@ Read these values from the file at runtime. **Never hardcode credentials in skil
 
 The web client renders its login form on a canvas, so a password manager can't fill it and browser-driving agents struggle to type into it — reaching a logged-in state is the slowest part of local QA. A debug-only shortcut signs the local build straight into the test account.
 
-Append `?devlogin=1` to the URL: `http://localhost:8090/?devlogin=1` (or inside a hash route, `http://localhost:8090/#/world?devlogin=1`).
+Append `?devlogin=1` to the URL: `http://localhost:8090/?devlogin=1`. A legacy hash-form URL (`http://localhost:8090/#/world?devlogin=1`) still opts in.
 
 - **Intentional, per load.** A normal load (`http://localhost:8090/`) shows the real login flow untouched, so that flow stays testable in debug. The bypass fires only when the param is present.
 - **Uses `TEST_MATRIX_USERNAME` / `TEST_MATRIX_PASSWORD` from `.env`** via the SDK's own password login, so the session is always valid (no stale-token problem a saved Playwright `storageState` has).

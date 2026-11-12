@@ -10,7 +10,7 @@ See also: [codebase-organization.instructions.md](codebase-organization.instruct
 
 ## Problem
 
-Three sign-in methods (Google SSO, Apple SSO, email/password) each create a **separate Matrix account** with a different localpart. Synapse blocks duplicate emails via `already_in_use.html`, but that page doesn't tell the user *which* method they used before. There is no client-side hint either.
+Three sign-in methods (Google SSO, Apple SSO, email/password) each create a **separate Matrix account** with a different localpart. Synapse blocks duplicate emails via `already_in_use.html`, but that page doesn't tell the user *which* method they used before.
 
 ## Strategy — Three Layers
 
@@ -25,7 +25,7 @@ Three sign-in methods (Google SSO, Apple SSO, email/password) each create a **se
 | **When to write** | Immediately after a successful `client.login()` call — both SSO and email/password paths | Single write point in both [`p_sso_button.dart`](../../lib/pangea/login/widgets/p_sso_button.dart) (SSO) and [`p_login.dart`](../../lib/pangea/authentication/p_login.dart) (email) |
 | **When to read** | On mount of [`SignupPageView`](../../lib/pangea/login/pages/signup_view.dart) and [`LoginOptionsView`](../../lib/pangea/login/pages/login_options_view.dart) | Read once, cache in controller state |
 | **UX when hint exists** | Show a banner or subtitle: "Welcome back! You previously signed in with Google." Visually emphasize the matching SSO button (e.g., outlined/highlighted). Other buttons remain available but de-emphasized. | Don't hide other methods — the user may intentionally want a different one. |
-| **UX when no hint** | Show all three options equally (current behavior) | First-time users or users who cleared Keychain |
+| **UX when no hint** | Show all three options equally | First-time users or users who cleared Keychain |
 | **Logout behavior** | Do NOT clear the stored hint on logout | The whole point is to remember the method after logout/uninstall |
 | **Multi-user devices** | Store only the most recent login. If a different user logs in, overwrite. | Simplest approach. Multi-user hint tracking adds complexity for a rare case. |
 

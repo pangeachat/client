@@ -284,7 +284,7 @@ in 20.3-22.0s start and 39.2-40.4s end. Raising the voicing threshold is what
 made them nearly irrelevant, which is why the design leans on periodicity rather
 than on the smoothing.
 
-Five of the twelve numbers are judgements rather than measurements. Four of them —
+Six of the twelve numbers are judgements rather than measurements. Four of them —
 `minTrimmable`, `keepWholeAbove`, `loudMultiple`, `quietFloor` — fail toward
 **sending more audio**: each is a threshold for *declining* to trim or skip, so being wrong about
 it costs a request, not a word.
@@ -293,6 +293,8 @@ it costs a request, not a word.
 boundary number whose error deletes speech: too small and an unvoiced onset or
 coda past 300ms is clipped off the front or back of a trimmed span. It does not
 fail safe, it is simply bounded — see Known gaps.
+
+`loudWindow` is the sixth, and which way it fails has not been worked through.
 
 ## Result on the recording
 
@@ -310,11 +312,7 @@ segments, all real content, with no fabricated `Hey.` and no repetition.
   `chunksLost` — it is not a failure — so it is published as `chunks_suppressed`
   instead, and a reader that wants to distrust this device's judgement has the
   number to do it with.
-- Normalised autocorrelation is invariant to **gain**, not to additive noise,
-  clipping, echo, periodic hum or codec artifacts. The claim it supports is only
-  that the decision needs no per-device *level* calibration; it is not a claim of
-  robustness to interference. Periodic interference produces false voicing, which
-  is the safe direction.
+- Normalised autocorrelation is invariant to **gain**, not to additive noise, clipping, echo, periodic hum or codec artifacts. The claim it supports is only that the decision needs no per-device *level* calibration; it is not a claim of robustness to interference. Periodic interference produces false voicing, which usually only widens the span; when it pins the span on the wrong sound, rule 4 bounds it.
 - Calibrated on one recording, one speaker, one room, one device.
 - The end-to-end gain is validated on Whisper and *inferred* for Deepgram from
   the brief's measurements. It was not re-measured against Deepgram, which is

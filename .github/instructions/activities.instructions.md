@@ -7,7 +7,7 @@ description: "How a learner finds and starts a conversation activity, its media,
 
 ## Purpose
 
-How learners find and start activities, and the record they leave. What an activity is belongs to the org [activities doc](../../../.github/.github/instructions/activities.instructions.md); the start page, with its waiting room, to [activity-start-page](activity-start-page.instructions.md); a running session to [activity-session](activity-session.instructions.md); Can-Dos, stars and XP to [quests](quests.instructions.md).
+How learners find and start activities, and the record they leave. What an activity is belongs to the org [activities doc](../../../.github/.github/instructions/activities.instructions.md); the start page, with its waiting room, to [activity-start-page](activity-start-page.instructions.md); a running session to [activity-session](activity-session.instructions.md); Can-Dos, stars and XP to [Can-Do progress](quests.instructions.md).
 
 ## The experience
 
@@ -17,35 +17,36 @@ How learners find and start activities, and the record they leave. What an activ
 4. After finishing, the learner is prompted to rate the activity and optionally comment, which affects its ranking for everyone.
 5. Once it ends, it leaves Chats, and the Can-Dos page keeps the record.
 
-## Cards and pins
+## Activity cards
 
-- Cards and pins show the activity's first media item and load the whole activity before opening. A screen over the read budget fills in over seconds, not blanking for a minute.
+- Every list of activities draws the same card: the activity's first media item, its name, its mode (Roleplay or Discussion) and its role count.
+- Cards and pins load the whole activity before opening. A screen over the read budget fills in over seconds, not blanking for a minute.
+- A card shows its activity's state as the map does ([pin state](world-map.instructions.md#pin-state), [understaffed pins](world-map.instructions.md#understaffed-pins)): a frame, and a pill on its photo that names the state, so it is never colour alone. The pill reads "Open (N)" for N open sessions the course lists, "Ongoing", or "Waiting" with its players while seats fill.
+- A finished activity wears a gold stamp with the learner's XP from it, beside any live state. Finished means XP from a saved session in the learner's current language, on every surface, so each shows the same number, the activity's XP [across every course](quests.instructions.md#what-fills-a-can-do). A course preview shows stamps too.
 
 ## A running activity is a chat room
 
-- A session is a chat room, so it reuses the chat app.
 - Activities belong to Can-Dos. A roleplay session is shared into every joined course that lists its activity, in the session's language, so coursemates can join. A course lists an activity by its own copy, else by its pins, not by Can-Do overlap, and shows only sessions it lists. The course it started from is always included.
 - The started-from course is where it was launched; a map launch records one only when exactly one joined course lists the activity.
-- A session's panel waits at most 10 seconds for its room.
 
 ## Discussions
 
-- A room is a [discussion](../../../.github/.github/instructions/activities.instructions.md#mode-discussion)'s only when the server made it for one, so the app knows a discussion room before its plan loads and an older activity whose mode reads "Discussion" stays a roleplay.
-- Rooms are per course. A learner with a seat in the course's room, done or not, goes straight to the chat, from the course page or the course's map; anyone else gets its [start page](activity-start-page.instructions.md#a-discussion), whose Join puts them in a room the server picks. A seat in another course's room never opens or marks this course's discussion.
-- An admin who taps Join takes a seat and counts like a student. Admins joined to watch hold no seat, never count, and can read and post. A student in a room without a seat there gets Join in place of the composer, since only a seat counts them.
+- The org doc owns what a [discussion](../../../.github/.github/instructions/activities.instructions.md#mode-discussion) is, who counts and how a room is picked. An older activity whose mode reads "Discussion" stays a roleplay.
+- A learner with a seat in the course's room, done or not, goes straight to the chat; anyone else gets its [start page](activity-start-page.instructions.md#a-discussion). A seat in another course's room never opens or marks this course's discussion.
+- Admins joined to watch can read and post. A student in a room without a seat gets Join in place of the composer.
 - Its card shows "Joined" while the learner takes part, ranked as ongoing, and "Answered" once they have ended. It never takes the completed stamp; its XP shows once it is saved.
 - In the chat, students' arrivals show, since they come over hours or days, but not admins' or the bot's; names carry no role. There are no suggestions.
-- "I'm done" ends only the learner's own seat: the server finishes and saves it, it leaves their Chats and is muted for them, and only then does it count as finished. "Wait, I'm not done" undoes all of it, the saved record on the Can-Dos page included, and gives back the notification setting the learner had before ending, so a room they had muted stays muted. There is no "End for all" and no summary yet; the summary waits on the per-learner summary.
+- "I'm done" ends only the learner's own seat, and "Wait, I'm not done" undoes it, the saved record on the Can-Dos page included. It gives back the notification setting the learner had before ending, so a room they had muted stays muted. There is no "End for all" and no summary yet; the summary waits on the per-learner summary.
 
 ## Activity session chat list rows
 
 - A session's row shows the activity's photo in its live color, with a course's avatar on it.
 - A session leaves Chats once ended for everyone or saved. A replay's row shows the completed stamp, without XP. No "live now" strip: rows carry the state.
-- A room a teacher joined only to review stays out of their lists until they take a role; links still open it, and leaving the course leaves it. New sessions already include the course's admins, so a teacher reads them without a dashboard join; the dashboard or homeserver mutes them.
+- A room a teacher joined only to review stays out of their lists until they take a role; links still open it, and leaving the course leaves it. New sessions already [include the course's admins](../../../synapse-pangea-chat/.github/instructions/course-session-admins.instructions.md), muted.
 
 ## Media is a carousel
 
-- An activity's media is a list. The live session pages through it; the plan page, cards and pins show the first item. Today's generator gives each activity one.
+- An activity's media is a list. The live session pages through it; the plan page, cards and pins show the first item.
 - Tapping the plan page's lead image shows it whole.
 - Nothing plays on its own; a video plays when tapped.
 - Phones play video full screen; an inline player breaks the sheet. YouTube is embedded, never downloaded, per its terms.

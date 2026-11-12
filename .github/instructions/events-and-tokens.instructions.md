@@ -134,8 +134,8 @@ Wraps a `pangea.record` event. Provides typed access to `ChoreoRecordModel` (edi
 ## Token Flow: Writing → Saving → Reading
 
 1. **Writing**: Choreographer gets tokens from `/tokenize` on send
-2. **Saving**: `PangeaMessageContentModel` bundles tokens + choreo record + representations → saved as Matrix child events
-3. **Reading**: `PangeaMessageEvent` loads child events → toolbar uses `PangeaToken` list for word cards, practice exercises, analytics
+2. **Saving**: `PangeaMessageContentModel` bundles tokens + choreo record + representations → embedded in the message's own content; later representations and corrections are saved as Matrix child events
+3. **Reading**: `PangeaMessageEvent` reads the embedded content and any child events → toolbar uses `PangeaToken` list for word cards, practice exercises, analytics
 
 ### Correcting tokens after the fact
 

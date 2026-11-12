@@ -32,7 +32,7 @@ For AI features, model latency is mostly outside the client's control. The targe
 
 **The developer**, before the PR, whenever a change affects something a learner taps or waits on. Run the flow in a profile or release build, since debug builds are too slow to judge. Throttle the network to a slow mobile connection and compare against the targets above. The PR template carries a checkbox for this.
 
-**The QA tester**, on every client issue. Each issue gets a standing responsiveness item next to its testing-platform checklist (see [qa-labeling](qa-labeling.instructions.md#the-responsiveness-item)). The tester checks it while running the TO TEST steps. Seeing any of the following is a failure, handled like any other failed TO TEST step:
+**The QA tester**, on every client issue that reaches testing. Each of those issues gets a standing responsiveness item next to its testing-platform checklist (see [qa-labeling](qa-labeling.instructions.md#the-responsiveness-item)). The tester checks it while running the TO TEST steps. Seeing any of the following is a failure, handled like any other failed TO TEST step:
 
 - a tap with no visible response
 - a blank or frozen screen with no loading indicator
