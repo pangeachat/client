@@ -44,7 +44,7 @@ What a learner sees on tapping an activity, in every state. Its job is to start 
 
 ### Completed sessions
 
-- Opens with the learner's total XP from the activity across courses, as their card's stamp ([what fills a Mission](quests.instructions.md#what-fills-a-mission)). Lists this course's sessions, then their others under Other courses, to match the total; an admin sees everyone's, own first. Each shows the XP it paid the viewer.
+- Opens with the learner's total XP from the activity across courses, as their card's stamp ([what fills a Can-Do](quests.instructions.md#what-fills-a-can-do)). Lists this course's sessions, then their others under Other courses, to match the total; an admin sees everyone's, own first. Each shows the XP it paid the viewer.
 
 ### A discussion
 

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:39:00.880051",
+    "@@last_modified": "2026-11-12 09:04:17.863976",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -6442,7 +6442,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Geen DM's of chats gevonden. Zorg ervoor dat je zoekopdracht correct is gespeld.",
-    "activityAnalyticsTooltipBody": "Dit zijn je opgeslagen activiteiten voor beoordeling en oefening.",
     "numSavedActivities": "Aantal opgeslagen activiteiten",
     "saveActivityTitle": "Activiteit opslaan",
     "saveActivityDesc": "Goed gedaan! Sla deze activiteit op voor latere beoordeling en oefening",
@@ -6677,10 +6676,6 @@
     "zhTWDisplayName": "Chinees (Traditioneel)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9278,7 +9273,6 @@
     },
     "pageLabel": "{title} pagina",
     "closeHint": "Sluit hint",
-    "starListLabel": "Opgeslagen activiteiten en sterren",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9288,10 +9282,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9608,7 +9598,6 @@
     "selectImageLabel": "Afbeelding selecteren",
     "userSearchTagsLabel": "Zoeken in...",
     "courseDetails": "Cursusdetails",
-    "objective": "Doelstelling",
     "pingedLabel": "Gepingd",
     "mapFilterPlayerCount": "{count} spelers",
     "practiceFeedbackButtonTooltip": "Meld een probleem met deze oefening",
@@ -9909,17 +9898,9 @@
     "reportSent": "Rapport verzonden",
     "reportNotSent": "Je rapport kon niet worden verzonden. Controleer je verbinding en probeer het opnieuw.",
     "reportPointerMessage": "Er is een bericht gerapporteerd in {courseName} — zie Veiligheid",
-    "learningObjective": "Leerdoel",
-    "learningObjectives": "Leerdoelen",
-    "missionNofM": "Missie {index} van {count}",
-    "xpTowardObjective": "{xp} van {threshold} XP voor dit doel",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Cursus voltooid!",
-    "courseCompleteDesc": "Je hebt alle {count} doelen in deze cursus voltooid. Blijf oefenen om te onthouden wat je hebt geleerd.",
-    "practiceObjective": "Oefen dit doel",
     "otherActivities": "Andere activiteiten",
-    "objectiveCircleComplete": "Missie {index}: voltooid",
-    "objectiveCircleUpNext": "Missie {index}: hierna",
     "useActivityImageAsChatBackground": "Gebruik activiteitsafbeelding als chatachtergrond",
     "andCertifyIMeetTheMinimumAge": " en bevestig dat ik ten minste 13 jaar oud ben, of de minimumleeftijd die in mijn land is vereist als die hoger is.",
     "filteredNetworkBlockedTitle": "Dit netwerk blokkeert Pangea Chat",
@@ -9969,7 +9950,6 @@
     "offlinePracticeNote": "Offline. Je antwoorden worden geüpload wanneer je weer online bent.",
     "offlinePracticeSavedNote": "Opgeslagen op dit apparaat. Je XP wordt geüpload wanneer je weer online bent.",
     "offlinePracticeNothingSaved": "Er is niet genoeg opgeslagen op dit apparaat om offline te oefenen. Probeer het opnieuw wanneer je weer online bent.",
-    "missionNumber": "Missie {index}",
     "xpToYourStar": "{xp} XP voor je ster",
     "missionStarEarned": "Ster verdiend!",
     "xpFromChats": "Chats {xp}",
@@ -9978,8 +9958,6 @@
     "playMission": "Spelen",
     "wordCount": "{count, plural, =1{1 woord} other{{count} woorden}}",
     "continueActivity": "Doorgaan",
-    "noObjectiveActivitiesYet": "Je hebt nog geen activiteit voor dit doel voltooid. Start er een vanuit je cursus.",
-    "objectiveNotInYourCourses": "Dit doel zit niet in een van je cursussen.",
     "objectiveActivityCount": "{count, plural, =0{Nog geen activiteiten} =1{1 activiteit gespeeld} other{{count} activiteiten gespeeld}}",
     "activityCompleted": "Voltooid",
     "completedTimes": "{count} keer voltooid",
@@ -9987,8 +9965,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Gesprek {xp}",
     "xpIncludingGoals": "inclusief {xp} van doelen",
-    "missionOtherLanguageNotice": "Deze missie komt uit een cursus in {language}. Je voortgang telt alleen mee als je {language} leert.",
-    "missionLanguageMismatchDesc": "Deze missie komt uit een cursus in {language}. Je doeltaal wijzigen naar {language}?",
     "xpBySkillTitle": "Per vaardigheid",
     "missionNextActivity": "Volgende activiteit",
     "missionContinueActivity": "Activiteit voortzetten",
@@ -9998,7 +9974,6 @@
     "otherCoursesSessions": "Andere cursussen ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP verdiend",
-    "currentMission": "Huidige missie",
     "constructUseCorRADesc": "Hardop gelezen en gehoord",
     "constructUseIncRADesc": "Hardop gelezen, niet gehoord",
     "hearItFirstToolName": "Hoor het eerst",
@@ -10020,7 +9995,6 @@
     "readAloudTake": "Poging {number}",
     "videoWontPlayHere": "Deze video kan hier niet worden afgespeeld.",
     "watchOnYoutube": "Bekijk op YouTube",
-    "xpTowardMission": "{xp} XP voor deze missie",
     "practiceStartWordCount": "{count, plural, =1{woord om te oefenen} other{woorden om te oefenen}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammaticapunt om te oefenen} other{grammaticapunten om te oefenen}}",
     "practiceStartExerciseTypes": "Oefeningstypes",
@@ -10059,5 +10033,20 @@
     "discussionStartIt": "Wees de eerste die deze discussie start",
     "discussionRemoved": "Je kunt niet deelnemen aan deze discussie.",
     "discussionJoinArriving": "Je bent erbij! De discussie begint zodra deze arriveert.",
-    "roleplayLabel": "Rollenspel"
+    "roleplayLabel": "Rollenspel",
+    "canDoAnalyticsTooltipBody": "Elke {canDo} vult zich met XP van de activiteiten en oefeningen. Een volle {canDo} levert een ster op.",
+    "canDoStarListLabel": "{canDos} en opgeslagen activiteiten",
+    "canDoNofM": "{canDo} {index} van {count}",
+    "xpOfThresholdTowardCanDo": "{xp} van {threshold} XP voor deze {canDo}",
+    "courseCompleteCanDosDesc": "Je hebt alle {count} {canDos} in deze cursus voltooid. Blijf oefenen om te onthouden wat je hebt geleerd.",
+    "practiceCanDo": "Oefen deze {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: voltooid",
+    "canDoCircleUpNext": "{canDo} {index}: hierna",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Deze {canDo} komt uit een cursus in {language}. Je voortgang telt alleen mee als je {language} leert.",
+    "canDoLanguageMismatchDesc": "Deze {canDo} komt uit een cursus in {language}. Je doeltaal wijzigen naar {language}?",
+    "noCanDoActivitiesYet": "Je hebt nog geen activiteit voor deze {canDo} voltooid. Start er een vanuit je cursus.",
+    "canDoNotInYourCourses": "Deze {canDo} zit niet in een van je cursussen.",
+    "currentCanDo": "Huidige {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP voor deze {canDo}"
 }

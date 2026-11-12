@@ -4220,11 +4220,11 @@
     "coursePlan": "Course Plan",
     "upNext": "Up next",
     "@upNext": {
-        "description": "Label on the course plan's next Mission (learning objective) header — the one the learner should work on next — and above the activity the Mission card's main button opens."
+        "description": "Label on the course plan's next Can-Do header — the one the learner should work on next — and above the activity the Can-Do card's main button opens."
     },
     "missionDueDate": "Due {date}, {time}",
     "@missionDueDate": {
-        "description": "Soft due date a teacher set on a Mission (learning objective), shown under its title on the course page, e.g. 'Due Oct 20, 5:00 PM'. Nothing is blocked after it.",
+        "description": "Soft due date a teacher set on a Can-Do, shown under its title on the course page, e.g. 'Due Oct 20, 5:00 PM'. Nothing is blocked after it.",
         "type": "String",
         "placeholders": {
             "date": {
@@ -4476,7 +4476,15 @@
     "addCourseEnterCode": "Enter code for private course",
     "addCourseBrowsePublic": "Browse public courses",
     "vocabLevelsDesc": "This is where vocab words will go once you’ve leveled them up!",
-    "activityAnalyticsTooltipBody": "Each objective fills with XP from its activities and practice. A full objective earns a star.",
+    "canDoAnalyticsTooltipBody": "Each {canDo} fills with XP from its activities and practice. A full {canDo} earns a star.",
+    "@canDoAnalyticsTooltipBody": {
+        "description": "canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
+        "placeholders": {
+            "canDo": {
+                "type": "String"
+            }
+        }
+    },
     "numSavedActivities": "Number of saved activities",
     "saveActivityTitle": "Save activity",
     "saveActivityDesc": "Good job! Save this activity for later review and practice",
@@ -5287,7 +5295,15 @@
         }
     },
     "closeHint": "Close hint",
-    "starListLabel": "Learning objectives and saved activities",
+    "canDoStarListLabel": "{canDos} and saved activities",
+    "@canDoStarListLabel": {
+        "description": "Accessible label of the saved-activities list. canDos is the product term Can-Dos (plural), inserted in English in every language; keep it as one noun in the sentence.",
+        "placeholders": {
+            "canDos": {
+                "type": "String"
+            }
+        }
+    },
     "customizePollLabel": "Customize poll",
     "navOptionsLabel": "Navigation options",
     "joinedCourseListLabel": "Joined course list",
@@ -5526,7 +5542,6 @@
     "noGroupChatsYet": "You aren't in any group chats yet.",
     "noActivitiesYet": "You aren't in any activities yet.",
     "courseDetails": "Course details",
-    "objective": "Objective",
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
     "exitVocabPracticeSession": "Your current vocab practice session progress won't be saved.",
     "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved.",
@@ -5826,26 +5841,29 @@
     "@joinCodeSavedExplanation": {
         "description": "Line under the saved-code card on the sign-up and login pages. The code may be for a course or for an activity, so don't name either."
     },
-    "learningObjective": "Learning Objective",
-    "learningObjectives": "Learning Objectives",
     "activitySavedTo": "Activity saved to {page}",
     "@activitySavedTo": {
-        "description": "Line on a finished activity's end card, under \"All Finished!\", once the session is saved. {page} is the name of the Learning Objectives page (the learningObjectives string, in title case), shown as a link to the page that lists the session, so write the sentence around it as a page name.",
+        "description": "Line on a finished activity's end card, under \"All Finished!\", once the session is saved. {page} is the name of the Can-Dos page, the product term Can-Dos kept in English in every language, shown as a link to the page that lists the session, so write the sentence around it as a page name.",
         "placeholders": {
             "page": {
                 "type": "String"
             }
         }
     },
-    "missionNofM": "Mission {index} of {count}",
-    "@missionNofM": {
+    "canDoNofM": "{canDo} {index} of {count}",
+    "@canDoNofM": {
+        "description": "canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
         "placeholders": {
+            "canDo": {
+                "type": "String"
+            },
             "index": {},
             "count": {}
         }
     },
-    "xpTowardObjective": "{xp} of {threshold} XP toward this objective",
-    "@xpTowardObjective": {
+    "xpOfThresholdTowardCanDo": "{xp} of {threshold} XP toward this {canDo}",
+    "@xpOfThresholdTowardCanDo": {
+        "description": "canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
         "placeholders": {
             "xp": {
                 "type": "int",
@@ -5854,6 +5872,9 @@
             "threshold": {
                 "type": "int",
                 "format": "decimalPattern"
+            },
+            "canDo": {
+                "type": "String"
             }
         }
     },
@@ -5871,13 +5892,25 @@
         }
     },
     "courseComplete": "Course complete!",
-    "courseCompleteDesc": "You've completed all {count} objectives in this course. Keep practicing to hold on to what you've learned.",
-    "@courseCompleteDesc": {
+    "courseCompleteCanDosDesc": "You've completed all {count} {canDos} in this course. Keep practicing to hold on to what you've learned.",
+    "@courseCompleteCanDosDesc": {
+        "description": "canDos is the product term Can-Dos (plural), inserted in English in every language; keep it as one noun in the sentence.",
         "placeholders": {
-            "count": {}
+            "count": {},
+            "canDos": {
+                "type": "String"
+            }
         }
     },
-    "practiceObjective": "Practice this objective",
+    "practiceCanDo": "Practice this {canDo}",
+    "@practiceCanDo": {
+        "description": "canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
+        "placeholders": {
+            "canDo": {
+                "type": "String"
+            }
+        }
+    },
     "otherActivities": "Other activities",
     "goalsCompletedOfTotal": "{earned} of {total} goals completed",
     "@goalsCompletedOfTotal": {
@@ -5892,15 +5925,23 @@
             "language": {}
         }
     },
-    "objectiveCircleComplete": "Mission {index}: complete",
-    "@objectiveCircleComplete": {
+    "canDoCircleComplete": "{canDo} {index}: complete",
+    "@canDoCircleComplete": {
+        "description": "canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
         "placeholders": {
+            "canDo": {
+                "type": "String"
+            },
             "index": {}
         }
     },
-    "objectiveCircleUpNext": "Mission {index}: up next",
-    "@objectiveCircleUpNext": {
+    "canDoCircleUpNext": "{canDo} {index}: up next",
+    "@canDoCircleUpNext": {
+        "description": "canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
         "placeholders": {
+            "canDo": {
+                "type": "String"
+            },
             "index": {}
         }
     },
@@ -5972,23 +6013,26 @@
     "@newCourseChat": {
         "description": "Label of the button in the course page's Chats section header that creates a new group chat in the course. Shown to course admins."
     },
-    "missionNumber": "Mission {index}",
-    "@missionNumber": {
-        "description": "Pill at the top of the course page's Mission card naming which Mission it shows.",
+    "canDoNumber": "{canDo} {index}",
+    "@canDoNumber": {
+        "description": "Pill at the top of the course page's Can-Do card naming which Can-Do it shows. canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
         "placeholders": {
+            "canDo": {
+                "type": "String"
+            },
             "index": {}
         }
     },
     "xpToYourStar": "{xp} XP to your star",
     "@xpToYourStar": {
-        "description": "Beside the Mission card's ring: how much more XP completes the Mission and earns its star.",
+        "description": "Beside the Can-Do card's ring: how much more XP completes the Can-Do and earns its star.",
         "placeholders": {
             "xp": {}
         }
     },
     "missionStarEarned": "Star earned!",
     "@missionStarEarned": {
-        "description": "Beside the Mission card's ring once the Mission is complete."
+        "description": "Beside the Can-Do card's ring once the Can-Do is complete."
     },
     "xpFromConversation": "Conversation {xp}",
     "@xpFromConversation": {
@@ -6002,29 +6046,37 @@
             "xp": {}
         }
     },
-    "missionOtherLanguageNotice": "This Mission is from a course in {language}. Your progress on it only counts while you're learning {language}.",
-    "@missionOtherLanguageNotice": {
+    "canDoOtherLanguageNotice": "This {canDo} is from a course in {language}. Your progress on it only counts while you're learning {language}.",
+    "@canDoOtherLanguageNotice": {
+        "description": "canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
         "placeholders": {
+            "canDo": {
+                "type": "String"
+            },
             "language": {}
         }
     },
-    "missionLanguageMismatchDesc": "This Mission is from a course in {language}. Switch your target language to {language}?",
-    "@missionLanguageMismatchDesc": {
+    "canDoLanguageMismatchDesc": "This {canDo} is from a course in {language}. Switch your target language to {language}?",
+    "@canDoLanguageMismatchDesc": {
+        "description": "canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
         "placeholders": {
+            "canDo": {
+                "type": "String"
+            },
             "language": {}
         }
     },
     "xpBySkillTitle": "By skill",
     "xpFromPractice": "Practice {xp}",
     "@xpFromPractice": {
-        "description": "Legend on a Mission's XP bar or ring: XP earned from practice exercises toward this Mission.",
+        "description": "Legend on a Can-Do's XP bar or ring: XP earned from practice exercises toward this Can-Do.",
         "placeholders": {
             "xp": {}
         }
     },
     "wordCount": "{count, plural, =1{1 word} other{{count} words}}",
     "@wordCount": {
-        "description": "Count of a Mission's target words, shown on its Practice words button.",
+        "description": "Count of a Can-Do's target words, shown on its Practice words button.",
         "placeholders": {
             "count": {
                 "type": "int"
@@ -6078,13 +6130,23 @@
             "xp": {}
         }
     },
-    "noObjectiveActivitiesYet": "You haven't completed an activity for this objective yet. Start one from your course.",
-    "@noObjectiveActivitiesYet": {
-        "description": "Shown on a Learning Objective's detail page when the learner has finished none of its activities."
+    "noCanDoActivitiesYet": "You haven't completed an activity for this {canDo} yet. Start one from your course.",
+    "@noCanDoActivitiesYet": {
+        "description": "Shown on a Can-Do's detail page when the learner has finished none of its activities. canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
+        "placeholders": {
+            "canDo": {
+                "type": "String"
+            }
+        }
     },
-    "objectiveNotInYourCourses": "This objective isn't in any of your courses.",
-    "@objectiveNotInYourCourses": {
-        "description": "Shown when a Learning Objective's detail page opens for an objective none of the learner's joined courses carries (an old link, or a course they left)."
+    "canDoNotInYourCourses": "This {canDo} isn't in any of your courses.",
+    "@canDoNotInYourCourses": {
+        "description": "Shown when a Can-Do's detail page opens for a Can-Do none of the learner's joined courses carries (an old link, or a course they left). canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
+        "placeholders": {
+            "canDo": {
+                "type": "String"
+            }
+        }
     },
     "activityCompleted": "Completed",
     "@activityCompleted": {
@@ -6120,14 +6182,22 @@
     "@connectionBackOnline": {
         "description": "Banner shown for a few seconds when the connection to Pangea Chat comes back after being lost."
     },
-    "currentMission": "Current mission",
+    "currentCanDo": "Current {canDo}",
+    "@currentCanDo": {
+        "description": "Label after the statement of the Can-Do the learner is on, in the full course plan. canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
+        "placeholders": {
+            "canDo": {
+                "type": "String"
+            }
+        }
+    },
     "classLocation": "Class location",
     "@classLocation": {
-        "description": "Above the Mission circle the teacher's due dates say the class is on now."
+        "description": "Above the Can-Do circle the teacher's due dates say the class is on now."
     },
     "xpThresholdSuffix": "/ {threshold} XP",
     "@xpThresholdSuffix": {
-        "description": "Under the XP count in the middle of a Mission's ring: the XP that completes it.",
+        "description": "Under the XP count in the middle of a Can-Do's ring: the XP that completes it.",
         "placeholders": {
             "threshold": {
                 "type": "int",
@@ -6257,12 +6327,15 @@
     "@readAloudStartOver": {
         "description": "Button under the mic while a read-aloud recording runs: discards the recording in progress and begins a fresh one, without spending a take."
     },
-    "xpTowardMission": "{xp} XP toward this Mission",
-    "@xpTowardMission": {
-        "description": "Under the XP total when a Mission's practice session ends: the XP that Mission gained. xp is a signed number such as '+ 65' or '− 3'.",
+    "xpGainedTowardCanDo": "{xp} XP toward this {canDo}",
+    "@xpGainedTowardCanDo": {
+        "description": "Under the XP total when a Can-Do's practice session ends: the XP that Can-Do gained. xp is a signed number such as '+ 65' or '− 3'. canDo is the product term Can-Do, inserted in English in every language; keep it as one noun in the sentence.",
         "type": "String",
         "placeholders": {
             "xp": {
+                "type": "String"
+            },
+            "canDo": {
                 "type": "String"
             }
         }

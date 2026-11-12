@@ -39,7 +39,7 @@ Learners use panels that open over one world map, on any screen size. Outside li
 ### Closing a panel: X or back arrow
 
 - A back arrow goes up one level; an X closes to reveal what is underneath. Will.
-- Closing or leaving a session started from an activity on the course card's Mission card or full plan, or reopened from them, reopens the card on that activity's Mission, because the activity took the card's place and the session took the activity's. A session opened any other way just reveals what is underneath.
+- Closing or leaving a session started from an activity on the course card's Can-Do card or full plan, or reopened from them, reopens the card on that activity's Can-Do, because the activity took the card's place and the session took the activity's. A session opened any other way just reveals what is underneath.
 - The course never closes: a chevron moves it between card and bar without moving its neighbor. The bar names the course on the map; with another panel open the collapsed course has no bar ([world-map](world-map.instructions.md#the-course-context-bar)). Gabby.
 - On a phone the chevron points where the sheet slides; on a wide screen, where nothing slides, down opens and up closes. Gabby.
 

@@ -2071,7 +2071,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-11-11 11:38:43.067318",
+    "@@last_modified": "2026-11-12 09:04:02.115830",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -7114,7 +7114,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Walang DMs o chat na natagpuan. Siguraduhing tama ang pagkakasulat ng iyong paghahanap.",
-    "activityAnalyticsTooltipBody": "Ito ang iyong mga nai-save na aktibidad para sa pagsusuri at pagsasanay.",
     "numSavedActivities": "Bilang ng mga nai-save na aktibidad",
     "saveActivityTitle": "I-save ang aktibidad",
     "saveActivityDesc": "Magandang trabaho! I-save ang aktibidad na ito para sa susunod na pagsusuri at pagsasanay",
@@ -7349,10 +7348,6 @@
     "zhTWDisplayName": "Tsino (Tradisyonal)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10135,7 +10130,6 @@
     },
     "pageLabel": "{title} pahina",
     "closeHint": "Isara ang pahiwatig",
-    "starListLabel": "Naka-save na mga aktibidad at bituin",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10145,10 +10139,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10465,7 +10455,6 @@
     "selectImageLabel": "Pumili ng larawan",
     "userSearchTagsLabel": "Maghanap sa...",
     "courseDetails": "Mga detalye ng kurso",
-    "objective": "Layunin",
     "pingedLabel": "Na-ping",
     "mapFilterPlayerCount": "{count} manlalaro",
     "practiceFeedbackButtonTooltip": "Mag-ulat ng problema sa pagsasanay na ito",
@@ -10766,17 +10755,9 @@
     "reportSent": "Naipadala ang ulat",
     "reportNotSent": "Hindi maipadala ang iyong ulat. Tingnan ang iyong koneksyon at subukang muli.",
     "reportPointerMessage": "May naiulat na mensahe sa {courseName} — tingnan ang Kaligtasan",
-    "learningObjective": "Layunin sa Pag-aaral",
-    "learningObjectives": "Mga Layunin sa Pag-aaral",
-    "missionNofM": "Misyon {index} ng {count}",
-    "xpTowardObjective": "{xp} sa {threshold} XP para sa layuning ito",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Kumpleto na ang kurso!",
-    "courseCompleteDesc": "Nakumpleto mo na ang lahat ng {count} layunin sa kursong ito. Magpatuloy sa pag-eensayo para mapanatili ang iyong natutunan.",
-    "practiceObjective": "Sanayin ang layuning ito",
     "otherActivities": "Iba pang aktibidad",
-    "objectiveCircleComplete": "Misyon {index}: kumpleto",
-    "objectiveCircleUpNext": "Misyon {index}: susunod",
     "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
     "andCertifyIMeetTheMinimumAge": " at pinapatunayan kong ako ay hindi bababa sa 13 taong gulang, o ang minimum na edad na kinakailangan sa aking bansa kung ito ay mas mataas.",
     "filteredNetworkBlockedTitle": "Hinarangan ng network na ito ang Pangea Chat",
@@ -10826,7 +10807,6 @@
     "offlinePracticeNote": "Offline. Maa-upload ang iyong mga sagot kapag online ka na ulit.",
     "offlinePracticeSavedNote": "Naka-save sa device na ito. Maa-upload ang iyong XP kapag online ka na ulit.",
     "offlinePracticeNothingSaved": "Hindi sapat ang na-save sa device na ito para mag-practice offline. Subukang muli kapag online ka na.",
-    "missionNumber": "Misyon {index}",
     "xpToYourStar": "{xp} XP para sa iyong bituin",
     "missionStarEarned": "Nakuha ang bituin!",
     "xpFromChats": "Mga chat {xp}",
@@ -10835,8 +10815,6 @@
     "playMission": "Maglaro",
     "wordCount": "{count, plural, =1{1 salita} other{{count} salita}}",
     "continueActivity": "Magpatuloy",
-    "noObjectiveActivitiesYet": "Hindi mo pa nakumpleto ang isang aktibidad para sa layuning ito. Magsimula ng isa mula sa iyong kurso.",
-    "objectiveNotInYourCourses": "Wala ang layuning ito sa alinman sa iyong mga kurso.",
     "objectiveActivityCount": "{count, plural, =0{Wala pang aktibidad} =1{1 aktibidad ang nilaro} other{{count} aktibidad ang nilaro}}",
     "activityCompleted": "Nakumpleto",
     "completedTimes": "Nakumpleto nang {count} beses",
@@ -10844,8 +10822,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Conversation {xp}",
     "xpIncludingGoals": "kasama ang {xp} mula sa mga layunin",
-    "missionOtherLanguageNotice": "Ang Misyon na ito ay mula sa kursong nasa {language}. Ang iyong pag-unlad dito ay mabibilang lamang habang ikaw ay nag-aaral ng {language}.",
-    "missionLanguageMismatchDesc": "Ang Misyon na ito ay mula sa kursong nasa {language}. Palitan ang iyong target na wika sa {language}?",
     "xpBySkillTitle": "Ayon sa kasanayan",
     "missionNextActivity": "Susunod na aktibidad",
     "missionContinueActivity": "Ipagpatuloy ang aktibidad",
@@ -10855,7 +10831,6 @@
     "otherCoursesSessions": "Iba pang kurso ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP nakuha",
-    "currentMission": "Kasalukuyang misyon",
     "constructUseCorRADesc": "Binasa nang malakas at narinig",
     "constructUseIncRADesc": "Binasa nang malakas, hindi narinig",
     "hearItFirstToolName": "Pakinggan muna",
@@ -10877,7 +10852,6 @@
     "readAloudTake": "Kumuha ng {number}",
     "videoWontPlayHere": "Hindi puwedeng i-play ang video na ito dito.",
     "watchOnYoutube": "Panoorin sa YouTube",
-    "xpTowardMission": "{xp} XP para sa Misyon na ito",
     "practiceStartWordCount": "{count, plural, =1{salita na isasanay} other{mga salita na isasanay}}",
     "practiceStartGrammarCount": "{count, plural, =1{grammar point na isasanay} other{mga grammar point na isasanay}}",
     "practiceStartExerciseTypes": "Mga uri ng ehersisyo",
@@ -10916,5 +10890,20 @@
     "discussionStartIt": "Ikaw ang unang magsimula ng talakayang ito",
     "discussionRemoved": "Hindi ka makakasali sa talakayang ito.",
     "discussionJoinArriving": "Nakasali ka na! Magbubukas ang talakayan pagdating nito.",
-    "roleplayLabel": "Roleplay"
+    "roleplayLabel": "Roleplay",
+    "canDoAnalyticsTooltipBody": "Ang bawat {canDo} ay napupuno ng XP mula sa mga aktibidad at pagsasanay nito. Ang isang buong {canDo} ay nakakakuha ng bituin.",
+    "canDoStarListLabel": "{canDos} at mga na-save na aktibidad",
+    "canDoNofM": "{canDo} {index} ng {count}",
+    "xpOfThresholdTowardCanDo": "{xp} ng {threshold} XP patungo sa {canDo} na ito",
+    "courseCompleteCanDosDesc": "Nakumpleto mo na ang lahat ng {count} {canDos} sa kursong ito. Patuloy na magsanay upang mapanatili ang iyong natutunan.",
+    "practiceCanDo": "Sanayin ang {canDo} na ito",
+    "canDoCircleComplete": "{canDo} {index}: kumpleto",
+    "canDoCircleUpNext": "{canDo} {index}: susunod",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Ang {canDo} na ito ay mula sa isang kurso sa {language}. Ang iyong pag-unlad dito ay mabibilang lamang habang ikaw ay nag-aaral ng {language}.",
+    "canDoLanguageMismatchDesc": "Ang {canDo} na ito ay mula sa isang kurso sa {language}. Palitan ang iyong target na wika sa {language}?",
+    "noCanDoActivitiesYet": "Hindi mo pa nakumpleto ang isang aktibidad para sa {canDo} na ito. Magsimula ng isa mula sa iyong kurso.",
+    "canDoNotInYourCourses": "Ang {canDo} na ito ay wala sa alinman sa iyong mga kurso.",
+    "currentCanDo": "Kasalukuyang {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP patungo sa {canDo} na ito"
 }

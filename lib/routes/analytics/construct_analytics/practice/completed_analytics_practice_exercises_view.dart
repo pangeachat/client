@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/offline_practice_note.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/percent_marker_bar.dart';
@@ -201,7 +202,9 @@ class _EarnedXp extends StatelessWidget {
             Text('${_signed(xp.counted)} XP', style: headline),
             if (missionGain != null)
               Text(
-                L10n.of(context).xpTowardMission(_signed(missionGain)),
+                L10n.of(
+                  context,
+                ).xpGainedTowardCanDo(_signed(missionGain), CanDoTerm.singular),
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,
                 ),
