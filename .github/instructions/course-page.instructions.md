@@ -39,7 +39,7 @@ The row holds every activity of the Can-Do, as [activity cards](activities.instr
 4. what they can't start yet, dimmed: more roles than the course can fill and no live session to join.
 
 - Within each group the row uses the world map's [priority matrix](world-map.instructions.md#priority-matrix), so the page and the map agree. The map's first-map, dismissal and recency terms do not apply: the course's author picked its activities, nothing is dismissed here, and the row should not reorder while a learner reads it.
-- A card whose session the learner is in reopens that chat; any other opens the activity's start page.
+- A card whose session the learner is in reopens that session, at its waiting room until the seats fill; any other opens the activity's start page.
 
 ## The full course plan
 
