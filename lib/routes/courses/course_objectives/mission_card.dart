@@ -6,6 +6,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/pangea/common/widgets/bold_tonal_button.dart';
 import 'package:fluffychat/pangea/common/widgets/pulsing_glow.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
@@ -126,7 +127,11 @@ class MissionCard extends StatelessWidget {
 
     final xpLabel = progress == null
         ? null
-        : l10n.xpTowardObjective(progress.xp, progress.threshold);
+        : l10n.xpOfThresholdTowardCanDo(
+            progress.xp,
+            progress.threshold,
+            CanDoTerm.singular,
+          );
     final bar = Semantics(
       label: xpLabel,
       child: ExcludeSemantics(
@@ -187,7 +192,7 @@ class MissionCard extends StatelessWidget {
                 children: [
                   if (index != null)
                     Text(
-                      l10n.missionNumber(index).toUpperCase(),
+                      l10n.canDoNumber(CanDoTerm.singular, index).toUpperCase(),
                       style: theme.textTheme.labelMedium?.copyWith(
                         color: scheme.primary,
                         fontWeight: FontWeight.w800,
@@ -355,7 +360,9 @@ class _SwitchLanguageLine extends StatelessWidget {
           Icon(Icons.translate, size: 16.0, color: ink),
           Expanded(
             child: Text(
-              L10n.of(context).missionOtherLanguageNotice(language),
+              L10n.of(
+                context,
+              ).canDoOtherLanguageNotice(CanDoTerm.singular, language),
               style: theme.textTheme.labelMedium?.copyWith(color: ink),
             ),
           ),

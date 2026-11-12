@@ -27,6 +27,7 @@ import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/pangea/common/widgets/roving_focus_group.dart';
 import 'package:fluffychat/routes/analytics/activities/mission_tile.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
@@ -147,7 +148,6 @@ class _ActivityArchiveState extends State<ActivityArchive> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = L10n.of(context);
     return StreamBuilder(
       stream: Matrix.of(
         context,
@@ -165,7 +165,7 @@ class _ActivityArchiveState extends State<ActivityArchive> {
           appBar: AppBar(
             leading: Center(child: widget.closeButton),
             title: Text(
-              l10n.learningObjectives,
+              CanDoTerm.plural,
               style: FluffyThemes.isColumnMode(context)
                   ? Theme.of(context).textTheme.titleLarge
                   : Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -338,7 +338,7 @@ class _ObjectiveListState extends State<_ObjectiveList> {
     }
     _reveal(selectedIndex);
     return Semantics(
-      label: l10n.starListLabel,
+      label: l10n.canDoStarListLabel(CanDoTerm.plural),
       container: true,
       // One Tab stop for the session list, arrow keys inside; Tab lands on
       // the open session (#8935).
