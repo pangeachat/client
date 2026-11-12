@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_feedback_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_feedback_request.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
@@ -313,9 +314,14 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
       : null;
 
   /// The session room, while the learner has not answered an invite to it.
+  /// Only a roleplay's: a discussion is entered through Join, never an invite.
   Room? get invitedRoom {
     final room = activityRoom;
-    return room != null && room.isPendingInvite ? room : null;
+    return room != null &&
+            room.isPendingInvite &&
+            room.activityMode == ActivityMode.roleplay
+        ? room
+        : null;
   }
 
   /// The preview hasn't said yet whether this learner's invite still has a

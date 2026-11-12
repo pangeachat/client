@@ -349,6 +349,41 @@ void main() {
       expect(find.text(l10n(tester).dismiss), findsOneWidget);
     });
 
+    testWidgets('an invite to a discussion keeps the normal prompt', (
+      tester,
+    ) async {
+      // A discussion is entered through Join, never an invite, and has no
+      // seats to fill: the server made the room, and marked it.
+      final discussion = Room(
+        id: '!discussion:fakeServer.notExisting',
+        client: client,
+        membership: Membership.invite,
+      );
+      discussion.setState(
+        Event(
+          type: EventTypes.RoomCreate,
+          content: {
+            'type': '${PangeaRoomTypes.activitySession}:$testSessionActivityId',
+            'pangea.discussion': {
+              'course_id': '!course:fakeServer.notExisting',
+              'activity_id': testSessionActivityId,
+            },
+          },
+          stateKey: '',
+          senderId: '@bot:fakeServer.notExisting',
+          eventId: '\$discussion',
+          originServerTs: DateTime.utc(2026, 1, 1, 12),
+          room: discussion,
+        ),
+      );
+      client.rooms.add(discussion);
+      server.preview = fullPreview;
+      await tapInvite(tester, invite: discussion);
+
+      expect(server.previewReads, 0);
+      expectNormalPrompt(tester);
+    });
+
     testWidgets('an invite to an ordinary chat reads no preview', (
       tester,
     ) async {

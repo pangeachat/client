@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
@@ -231,7 +232,10 @@ class _LeftPanelRoomSubpageState extends State<LeftPanelRoomSubpage> {
     // accept the invite as it builds. A session's invite is answered on its
     // activity page, the same place a tapped push opens
     // (joining-courses.instructions.md, "Tapping an invite notification").
-    final invitedActivityId = room.isPendingInvite ? room.activityId : null;
+    final invitedActivityId =
+        room.isPendingInvite && room.activityMode == ActivityMode.roleplay
+        ? room.activityId
+        : null;
     if (invitedActivityId != null) {
       _replaceToken(
         roomId,

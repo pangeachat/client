@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
-import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -132,7 +132,9 @@ class ChatInviteDialog {
     BuildContext context,
     Room room,
   ) async {
-    if (!room.isActivitySession) return null;
+    // Only a roleplay has seats that fill and a session that ends for
+    // everyone. A discussion is entered through Join, never an invite.
+    if (room.activityMode != ActivityMode.roleplay) return null;
     final l10n = L10n.of(context);
     final result = await showFutureLoadingDialog(
       context: context,
