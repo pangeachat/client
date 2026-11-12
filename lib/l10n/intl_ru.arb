@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-11-06 13:11:05.425673",
+    "@@last_modified": "2026-11-11 11:38:56.664161",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10861,11 +10861,6 @@
     "callTranscriptPreparingRecording": "Подготовка полной записи…",
     "callTranscriptNoRecording": "Нет записи всего звонка.",
     "callTranscriptNotSubscribed": "У {name} не было подписки во время этого звонка, поэтому сказанное не было расшифровано.",
-    "joinYourCourse": "Присоединиться к курсу",
-    "courseCodeJoinExplanation": "Войдите или зарегистрируйтесь, и мы автоматически добавим вас к вашему курсу, используя ваш код курса.",
-    "courseCodeLabel": "Код курса",
-    "courseCodeSaved": "Код курса {code} сохранен",
-    "courseCodeSavedExplanation": "Зарегистрируйтесь или войдите, и мы добавим вас к вашему курсу.",
     "moderationRefusedContactDetails": "Ваше сообщение не было отправлено. Автоматический фильтр обнаружил контактные данные, например, номер телефона. Пожалуйста, удалите их и попробуйте снова.",
     "moderationRefusedProfanity": "Ваше сообщение не было отправлено. Автоматический фильтр обнаружил слово, которое мы не разрешаем использовать в чате. Пожалуйста, измените его и попробуйте снова.",
     "callTranscriptTranscribeButton": "Расшифровать",
@@ -11021,5 +11016,20 @@
     "changeBaseLanguageDesc": "Меню и кнопки приложения переключатся на {language}.",
     "accountSetupFailedHelp": "Не удалось завершить настройку вашей учетной записи. Проверьте подключение и повторите попытку, либо выйдите из системы и войдите позже.",
     "onboardingOfflineError": "Вы не в сети. Повторите попытку, когда снова будете в сети.",
-    "activitySavedTo": "Занятие сохранено в разделе «{page}»"
+    "activitySavedTo": "Занятие сохранено в разделе «{page}»",
+    "joinWithYourCode": "Присоединиться по коду",
+    "joinCodeJoinExplanation": "Войдите или зарегистрируйтесь, и мы автоматически добавим вас по вашему коду.",
+    "joinCodeLabel": "Код",
+    "joinCodeSaved": "Код {code} сохранен",
+    "joinCodeSavedExplanation": "Зарегистрируйтесь или войдите, и мы добавим вас.",
+    "discussionLabel": "Обсуждение",
+    "discussionCardSemantics": "Обсуждение: {title}",
+    "discussionJoined": "Присоединились",
+    "discussionAnswered": "Ответили",
+    "joinTheDiscussion": "Присоединиться к обсуждению",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 одноклассник участвует в этом обсуждении} other{{count} одноклассников участвуют в этом обсуждении}}",
+    "discussionStartIt": "Будьте первым, кто начнет это обсуждение",
+    "discussionRemoved": "Вы не можете присоединиться к этому обсуждению.",
+    "discussionJoinArriving": "Вы внутри! Обсуждение начнется, как только оно появится.",
+    "roleplayLabel": "Ролевая игра"
 }

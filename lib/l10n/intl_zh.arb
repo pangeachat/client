@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-11-06 13:11:07.980894",
+    "@@last_modified": "2026-11-11 11:39:11.238351",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9889,11 +9889,6 @@
     "callTranscriptPreparingRecording": "正在准备完整录音…",
     "callTranscriptNoRecording": "没有完整通话的录音。",
     "callTranscriptNotSubscribed": "{name} 在通话期间没有订阅，因此通话内容未被转录。",
-    "joinYourCourse": "加入您的课程",
-    "courseCodeJoinExplanation": "登录或注册后，我们将使用您的课程代码自动将您添加到课程中。",
-    "courseCodeLabel": "课程代码",
-    "courseCodeSaved": "课程代码 {code} 已保存",
-    "courseCodeSavedExplanation": "注册或登录后，我们会将您添加到您的课程中。",
     "moderationRefusedContactDetails": "您的消息未能发送。自动过滤器检测到联系方式，例如电话号码。请删除后重试。",
     "moderationRefusedProfanity": "您的消息未能发送。自动过滤器检测到聊天中不允许使用的词语。请修改后重试。",
     "callTranscriptTranscribeButton": "转录",
@@ -10049,5 +10044,20 @@
     "changeBaseLanguageDesc": "应用的菜单和按钮将切换为{language}。",
     "accountSetupFailedHelp": "我们无法完成您的账户设置。请检查您的网络连接，然后重试，或者退出并稍后登录。",
     "onboardingOfflineError": "您已离线。请在联网后重试。",
-    "activitySavedTo": "活动已保存到 {page}"
+    "activitySavedTo": "活动已保存到 {page}",
+    "joinWithYourCode": "使用您的代码加入",
+    "joinCodeJoinExplanation": "登录或注册，我们将使用您的代码自动添加您。",
+    "joinCodeLabel": "代码",
+    "joinCodeSaved": "代码 {code} 已保存",
+    "joinCodeSavedExplanation": "注册或登录，我们将添加您。",
+    "discussionLabel": "讨论",
+    "discussionCardSemantics": "讨论：{title}",
+    "discussionJoined": "已加入",
+    "discussionAnswered": "已回答",
+    "joinTheDiscussion": "加入讨论",
+    "discussionClassmatesInRoom": "{count, plural, =1{1位同学正在参与此讨论} other{{count}位同学正在参与此讨论}}",
+    "discussionStartIt": "成为第一个开始此讨论的人",
+    "discussionRemoved": "您无法加入此讨论。",
+    "discussionJoinArriving": "您已加入！讨论将在到达后立即开始。",
+    "roleplayLabel": "角色扮演"
 }

@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
@@ -16,11 +17,10 @@ import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/common/widgets/embed_pointer_shield.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_header.dart';
-import 'package:fluffychat/routes/chat/activity_sessions/activity_goal_header_card.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_goal_header_overlay.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_label.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_session_xp.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_progress_mixin.dart';
@@ -59,8 +59,12 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
   bool get _showEndForMe =>
       !_activityComplete && room.hasPickedRole && !room.hasCompletedRole;
 
+  /// Never in a discussion, where each student ends their own seat.
   bool get _showEndForAll =>
-      !_activityComplete && room.isRoomAdmin && !room.isTwoPersonBotActivity;
+      !_activityComplete &&
+      room.isRoomAdmin &&
+      !room.isTwoPersonBotActivity &&
+      !(room.activityMode?.endsPerSeat ?? false);
 
   bool get _showDoneButtonHint => _showEndForMe && room.hasCompletedOwnGoals;
 
@@ -84,13 +88,27 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
     }
   }
 
+  /// "Wait, I'm not done": reopens this learner's own role. In a discussion
+  /// it is a server call, so it waits and shows a failure like ending does.
+  Future<void> _continueActivity(BuildContext context) async {
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: room.continueActivity,
+    );
+
+    if (!resp.isError) {
+      setShowDropdown(false);
+    }
+  }
+
   /// The report prompt behind a goal star (staging only, for the team).
   ///
   /// Null on any other build, and null when the learner holds no role: the
   /// report names the role whose star it is, and a role-less admin has none to
   /// name — nor any stars, since the list is their own goals.
   void Function(ActivityRoleGoal)? _onReportStar(BuildContext context) {
-    final roleId = room.ownRoleState?.id;
+    // The key the orchestrator awarded under: a discussion's seat key.
+    final roleId = room.ownAwardKey;
     if (!Environment.isStagingEnvironment || roleId == null) return null;
     return (goal) => showGoalReportDialog(
       context: context,
@@ -167,57 +185,31 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                     sessionXp: GoalHeaderSessionXp(room: room),
                   );
 
-            return Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: showDropdown ? 0 : null,
-              child: Stack(
-                children: [
-                  if (showDropdown) ...[
-                    // Same reason as the card's own shield (#9063): the dim
-                    // covers the timeline, and a tap on it over a live video
-                    // embed would otherwise reach the video instead of closing
-                    // the dropdown.
-                    const Positioned.fill(child: EmbedPointerShield()),
-                    Positioned.fill(
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () => setShowDropdown(false),
-                        child: ColoredBox(color: Colors.black.withAlpha(100)),
-                      ),
-                    ),
-                  ],
-                  ActivityGoalHeaderCard(
-                    showDropdown: showDropdown,
-                    isComplete: allComplete,
-                    collapsed: collapsed,
-                    expanded: ActivityDropdownContent(
-                      goals: goals,
-                      isGoalCompleted: _isGoalCompleted,
-                      onToggle: _toggleShowDropdown,
-                      title: goals.isEmpty
-                          ? L10n.of(context).activityActions
-                          : null,
-                      activeGoalId: active?.id,
-                      showEndForAll: _showEndForAll,
-                      showEndForMe: _showEndForMe,
-                      showWaitNotDone: _showWaitNotDone,
-                      hasCompletedOwnGoals: room.hasCompletedOwnGoals,
-                      haveAllRolesCompletedAllGoals:
-                          room.haveAllRolesCompletedAllGoals,
-                      finishActivityForAll: () =>
-                          _finishActivityForAll(context),
-                      finishActivityForMe: () => _finishActivityForMe(context),
-                      continueActivity: room.continueActivity,
-                      onReportStar: _onReportStar(context),
-                      goalXp: GoalHeaderSessionXp.shows(room) ? kGoalXp : null,
-                      sessionXp: goals.isEmpty
-                          ? null
-                          : GoalHeaderSessionXp(room: room),
-                    ),
-                  ),
-                ],
+            return ActivityGoalHeaderOverlay(
+              showDropdown: showDropdown,
+              isComplete: allComplete,
+              onDismiss: () => setShowDropdown(false),
+              collapsed: collapsed,
+              expanded: ActivityDropdownContent(
+                goals: goals,
+                isGoalCompleted: _isGoalCompleted,
+                onToggle: _toggleShowDropdown,
+                title: goals.isEmpty ? L10n.of(context).activityActions : null,
+                activeGoalId: active?.id,
+                showEndForAll: _showEndForAll,
+                showEndForMe: _showEndForMe,
+                showWaitNotDone: _showWaitNotDone,
+                hasCompletedOwnGoals: room.hasCompletedOwnGoals,
+                haveAllRolesCompletedAllGoals:
+                    room.haveAllRolesCompletedAllGoals,
+                finishActivityForAll: () => _finishActivityForAll(context),
+                finishActivityForMe: () => _finishActivityForMe(context),
+                continueActivity: () => _continueActivity(context),
+                onReportStar: _onReportStar(context),
+                goalXp: GoalHeaderSessionXp.shows(room) ? kGoalXp : null,
+                sessionXp: goals.isEmpty
+                    ? null
+                    : GoalHeaderSessionXp(room: room),
               ),
             );
           },

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-11-06 13:11:00.762127",
+    "@@last_modified": "2026-11-11 11:38:45.317056",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9992,11 +9992,6 @@
     "callTranscriptPreparingRecording": "A teljes felvétel előkészítése…",
     "callTranscriptNoRecording": "Nincs felvétel a teljes hívásról.",
     "callTranscriptNotSubscribed": "{name} nem rendelkezett előfizetéssel a hívás során, így a beszélgetés nem került átírásra.",
-    "joinYourCourse": "Csatlakozás a kurzushoz",
-    "courseCodeJoinExplanation": "Jelentkezz be vagy regisztrálj, és a kurzuskódod segítségével automatikusan hozzáadunk a kurzushoz.",
-    "courseCodeLabel": "Kurzuskód",
-    "courseCodeSaved": "A(z) {code} kurzuskód elmentve",
-    "courseCodeSavedExplanation": "Regisztrálj vagy jelentkezz be, és hozzáadunk a kurzusodhoz.",
     "moderationRefusedContactDetails": "Az üzenet nem került elküldésre. Az automatikus szűrő elérhetőségi adatokat, például telefonszámot talált. Kérjük, távolítsa el ezeket, és próbálja újra.",
     "moderationRefusedProfanity": "Az üzenet nem került elküldésre. Az automatikus szűrő olyan szót talált, amelyet nem engedélyezünk a csevegésben. Kérjük, módosítsa, és próbálja újra.",
     "callTranscriptTranscribeButton": "Átírás",
@@ -10152,5 +10147,20 @@
     "changeBaseLanguageDesc": "Az alkalmazás menüi és gombjai átváltanak a következő nyelvre: {language}.",
     "accountSetupFailedHelp": "Nem sikerült befejezni a fiók beállítását. Ellenőrizze az internetkapcsolatát, és próbálja újra, vagy jelentkezzen ki, majd később jelentkezzen be.",
     "onboardingOfflineError": "Offline vagy. Próbáld újra, ha visszatértél az internetre.",
-    "activitySavedTo": "Tevékenység mentve ide: {page}"
+    "activitySavedTo": "Tevékenység mentve ide: {page}",
+    "joinWithYourCode": "Csatlakozás a kódoddal",
+    "joinCodeJoinExplanation": "Jelentkezz be vagy regisztrálj, és a kódod segítségével automatikusan hozzáadunk.",
+    "joinCodeLabel": "Kód",
+    "joinCodeSaved": "Kód {code} elmentve",
+    "joinCodeSavedExplanation": "Regisztrálj vagy jelentkezz be, és hozzáadunk.",
+    "discussionLabel": "Beszélgetés",
+    "discussionCardSemantics": "Beszélgetés: {title}",
+    "discussionJoined": "Csatlakozva",
+    "discussionAnswered": "Megválaszolva",
+    "joinTheDiscussion": "Csatlakozás a beszélgetéshez",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 osztálytárs van ebben a beszélgetésben} other{{count} osztálytárs van ebben a beszélgetésben}}",
+    "discussionStartIt": "Légy te az első, aki elindítja ezt a beszélgetést",
+    "discussionRemoved": "Nem csatlakozhatsz ehhez a beszélgetéshez.",
+    "discussionJoinArriving": "Bent vagy! A beszélgetés azonnal megnyílik, amint megérkezik.",
+    "roleplayLabel": "Szerepjáték"
 }

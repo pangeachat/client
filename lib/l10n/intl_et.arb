@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-11-06 13:10:59.215466",
+    "@@last_modified": "2026-11-11 11:38:42.359973",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9886,11 +9886,6 @@
     "callTranscriptPreparingRecording": "Kogu salvestise ettevalmistamine…",
     "callTranscriptNoRecording": "Kogu kõnest puudub salvestis.",
     "callTranscriptNotSubscribed": "{name} ei olnud selle kõne ajal tellimust, seega öeldut ei transkribeeritud.",
-    "joinYourCourse": "Liitu oma kursusega",
-    "courseCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu kursuse koodi, et sind automaatselt kursusele lisada.",
-    "courseCodeLabel": "Kursuse kood",
-    "courseCodeSaved": "Kursuse kood {code} salvestatud",
-    "courseCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind kursusele.",
     "moderationRefusedContactDetails": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas kontaktandmed, näiteks telefoninumbri. Palun eemalda need ja proovi uuesti.",
     "moderationRefusedProfanity": "Sinu sõnumit ei saadetud. Automaatne filter tuvastas sõna, mida me vestluses ei luba. Palun muuda seda ja proovi uuesti.",
     "callTranscriptTranscribeButton": "Transkribeeri",
@@ -10046,5 +10041,20 @@
     "changeBaseLanguageDesc": "Rakenduse menüüd ja nupud lülituvad keelele {language}.",
     "accountSetupFailedHelp": "Me ei saanud teie konto seadistamist lõpule viia. Kontrollige oma ühendust ja proovige uuesti või logige välja ja proovige hiljem uuesti sisse logida.",
     "onboardingOfflineError": "Oled võrguühenduseta. Proovi uuesti, kui oled võrgus tagasi.",
-    "activitySavedTo": "Tegevus salvestatud asukohta {page}"
+    "activitySavedTo": "Tegevus salvestatud asukohta {page}",
+    "joinWithYourCode": "Liitu oma koodiga",
+    "joinCodeJoinExplanation": "Logi sisse või registreeru ja me kasutame sinu koodi, et sind automaatselt lisada.",
+    "joinCodeLabel": "Kood",
+    "joinCodeSaved": "Kood {code} salvestatud",
+    "joinCodeSavedExplanation": "Registreeru või logi sisse ja me lisame sind.",
+    "discussionLabel": "Arutelu",
+    "discussionCardSemantics": "Arutelu: {title}",
+    "discussionJoined": "Liitutud",
+    "discussionAnswered": "Vastatud",
+    "joinTheDiscussion": "Liitu aruteluga",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 klassikaaslane on selles arutelus} other{{count} klassikaaslast on selles arutelus}}",
+    "discussionStartIt": "Ole esimene, kes selle arutelu algatab",
+    "discussionRemoved": "Te ei saa selle aruteluga liituda.",
+    "discussionJoinArriving": "Olete sees! Arutelu avaneb kohe, kui see saabub.",
+    "roleplayLabel": "Rollimäng"
 }

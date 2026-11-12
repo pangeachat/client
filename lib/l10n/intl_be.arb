@@ -3526,7 +3526,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-11-06 13:10:57.274526",
+    "@@last_modified": "2026-11-11 11:38:39.878277",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9903,11 +9903,6 @@
     "callTranscriptPreparingRecording": "Падрыхтоўка поўнага запісу…",
     "callTranscriptNoRecording": "Няма запісу поўнага званка.",
     "callTranscriptNotSubscribed": "У {name} не было падпіскі падчас гэтага званка, таму сказанае не было расшыфравана.",
-    "joinYourCourse": "Далучайцеся да свайго курса",
-    "courseCodeJoinExplanation": "Увайдзіце або зарэгіструйцеся, і мы выкарыстаем ваш код курса, каб аўтаматычна дадаць вас да яго.",
-    "courseCodeLabel": "Код курса",
-    "courseCodeSaved": "Код курса {code} захаваны",
-    "courseCodeSavedExplanation": "Зарэгіструйцеся або ўвайдзіце, і мы дададзім вас да вашага курса.",
     "moderationRefusedContactDetails": "Вашае паведамленне не было адпраўлена. Аўтаматычны фільтр знайшоў кантактныя дадзеныя, напрыклад, нумар тэлефона. Калі ласка, выдаліце іх і паспрабуйце яшчэ раз.",
     "moderationRefusedProfanity": "Вашае паведамленне не было адпраўлена. Аўтаматычны фільтр знайшоў слова, якое мы не дазваляем у чаце. Калі ласка, змяніце яго і паспрабуйце яшчэ раз.",
     "callTranscriptTranscribeButton": "Транскрыбаваць",
@@ -10063,5 +10058,20 @@
     "changeBaseLanguageDesc": "Меню і кнопкі праграмы пераключацца на {language}.",
     "accountSetupFailedHelp": "Нам не ўдалося завяршыць наладжванне вашага ўліковага запісу. Праверце злучэнне і паспрабуйце яшчэ раз, або выйдзіце і ўвайдзіце пазней.",
     "onboardingOfflineError": "Вы па-за сеткай. Паспрабуйце яшчэ раз, калі зноў будзеце ў сетцы.",
-    "activitySavedTo": "Дзейнасць захавана ў {page}"
+    "activitySavedTo": "Дзейнасць захавана ў {page}",
+    "joinWithYourCode": "Далучыцца па вашым кодзе",
+    "joinCodeJoinExplanation": "Увайдзіце або зарэгіструйцеся, і мы выкарыстаем ваш код, каб аўтаматычна дадаць вас.",
+    "joinCodeLabel": "Код",
+    "joinCodeSaved": "Код {code} захаваны",
+    "joinCodeSavedExplanation": "Зарэгіструйцеся або ўвайдзіце, і мы дададзім вас.",
+    "discussionLabel": "Абмеркаванне",
+    "discussionCardSemantics": "Абмеркаванне: {title}",
+    "discussionJoined": "Далучыліся",
+    "discussionAnswered": "Адказалі",
+    "joinTheDiscussion": "Далучыцца да абмеркавання",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 аднакласнік у гэтым абмеркаванні} other{{count} аднакласнікаў у гэтым абмеркаванні}}",
+    "discussionStartIt": "Будзьце першым, хто пачне гэтае абмеркаванне",
+    "discussionRemoved": "Вы не можаце далучыцца да гэтага абмеркавання.",
+    "discussionJoinArriving": "Вы ўдзельнічаеце! Абмеркаванне пачнецца, як толькі яно з'явіцца.",
+    "roleplayLabel": "Ролевая гульня"
 }

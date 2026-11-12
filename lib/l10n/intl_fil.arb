@@ -2071,7 +2071,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-11-06 13:10:59.335185",
+    "@@last_modified": "2026-11-11 11:38:43.067318",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10746,11 +10746,6 @@
     "callTranscriptPreparingRecording": "Inihahanda ang buong recording...",
     "callTranscriptNoRecording": "Walang recording ng buong tawag.",
     "callTranscriptNotSubscribed": "Walang subscription si {name} noong tawag na ito, kaya hindi na-transcribe ang sinabi.",
-    "joinYourCourse": "Sumali sa iyong kurso",
-    "courseCodeJoinExplanation": "Mag-log in o mag-sign up, at gagamitin namin ang iyong course code para awtomatiko kang maidagdag sa iyong kurso.",
-    "courseCodeLabel": "Course code",
-    "courseCodeSaved": "Na-save ang course code na {code}",
-    "courseCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin sa iyong kurso.",
     "moderationRefusedContactDetails": "Hindi naipadala ang iyong mensahe. Nakakita ang awtomatikong filter ng mga detalye sa pakikipag-ugnayan, tulad ng numero ng telepono. Pakialisin ang mga ito at subukang muli.",
     "moderationRefusedProfanity": "Hindi naipadala ang iyong mensahe. Nakakita ang awtomatikong filter ng salitang hindi namin pinapayagan sa chat. Pakipalitan ito at subukang muli.",
     "callTranscriptTranscribeButton": "I-transcribe",
@@ -10906,5 +10901,20 @@
     "changeBaseLanguageDesc": "Ang mga menu at button ng app ay lilipat sa {language}.",
     "accountSetupFailedHelp": "Hindi namin matapos ang pag-set up ng iyong account. Suriin ang iyong koneksyon at subukang muli, o mag-log out at mag-sign in mamaya.",
     "onboardingOfflineError": "Offline ka. Subukang muli kapag online ka na.",
-    "activitySavedTo": "Na-save ang aktibidad sa {page}"
+    "activitySavedTo": "Na-save ang aktibidad sa {page}",
+    "joinWithYourCode": "Sumali gamit ang iyong code",
+    "joinCodeJoinExplanation": "Mag-log in o mag-sign up, at gagamitin namin ang iyong code para awtomatiko kang idagdag.",
+    "joinCodeLabel": "Code",
+    "joinCodeSaved": "Na-save ang code na {code}",
+    "joinCodeSavedExplanation": "Mag-sign up o mag-log in at idadagdag ka namin.",
+    "discussionLabel": "Talakayan",
+    "discussionCardSemantics": "Talakayan: {title}",
+    "discussionJoined": "Sumali",
+    "discussionAnswered": "Nasagot",
+    "joinTheDiscussion": "Sumali sa talakayan",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 kaklase ang nasa talakayang ito} other{{count} kaklase ang nasa talakayang ito}}",
+    "discussionStartIt": "Ikaw ang unang magsimula ng talakayang ito",
+    "discussionRemoved": "Hindi ka makakasali sa talakayang ito.",
+    "discussionJoinArriving": "Nakasali ka na! Magbubukas ang talakayan pagdating nito.",
+    "roleplayLabel": "Roleplay"
 }

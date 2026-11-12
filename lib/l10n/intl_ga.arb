@@ -3541,7 +3541,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-11-06 13:10:59.222716",
+    "@@last_modified": "2026-11-11 11:38:43.354956",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9900,11 +9900,6 @@
     "callTranscriptPreparingRecording": "Ag ullmhú an taifeadta iomláin…",
     "callTranscriptNoRecording": "Níl aon taifeadadh den ghlao iomlán.",
     "callTranscriptNotSubscribed": "Ní raibh síntiús ag {name} le linn an ghlao seo, mar sin níor tras-scríobhadh an méid a dúradh.",
-    "joinYourCourse": "Bí páirteach i do chúrsa",
-    "courseCodeJoinExplanation": "Logáil isteach nó cláraigh, agus úsáidfimid do chód cúrsa chun tú a chur le do chúrsa go huathoibríoch.",
-    "courseCodeLabel": "Cód cúrsa",
-    "courseCodeSaved": "Cód cúrsa {code} sábháilte",
-    "courseCodeSavedExplanation": "Cláraigh nó logáil isteach agus cuirfimid le do chúrsa thú.",
     "moderationRefusedContactDetails": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch sonraí teagmhála, cosúil le huimhir theileafóin. Bain iad le do thoil agus bain triail eile as.",
     "moderationRefusedProfanity": "Níor seoladh do theachtaireacht. Fuair scagaire uathoibríoch focal nach gceadaímid sa chomhrá. Athraigh é le do thoil agus bain triail eile as.",
     "callTranscriptTranscribeButton": "Trascríobh",
@@ -10060,5 +10055,20 @@
     "changeBaseLanguageDesc": "Athróidh biachláir agus cnaipí an aip go {language}.",
     "accountSetupFailedHelp": "Níorbh fhéidir linn do chuntas a shocrú. Seiceáil do nasc agus bain triail eile as, nó logáil amach agus sínigh isteach níos déanaí.",
     "onboardingOfflineError": "Tá tú as líne. Bain triail eile as nuair a bheidh tú ar líne arís.",
-    "activitySavedTo": "Gníomhaíocht sábháilte chuig {page}"
+    "activitySavedTo": "Gníomhaíocht sábháilte chuig {page}",
+    "joinWithYourCode": "Bí páirteach le do chód",
+    "joinCodeJoinExplanation": "Logáil isteach nó cláraigh, agus úsáidfimid do chód chun tú a chur leis go huathoibríoch.",
+    "joinCodeLabel": "Cód",
+    "joinCodeSaved": "Cód {code} sábháilte",
+    "joinCodeSavedExplanation": "Cláraigh nó logáil isteach agus cuirfimid thú.",
+    "discussionLabel": "Plé",
+    "discussionCardSemantics": "Plé: {title}",
+    "discussionJoined": "Glactha páirt",
+    "discussionAnswered": "Freagartha",
+    "joinTheDiscussion": "Glac páirt sa phlé",
+    "discussionClassmatesInRoom": "{count, plural, =1{Tá 1 comhghleacaí ranga sa phlé seo} other{Tá {count} comhghleacaí ranga sa phlé seo}}",
+    "discussionStartIt": "Bí ar an gcéad duine a chuirfidh tús leis an bplé seo",
+    "discussionRemoved": "Ní féidir leat páirt a ghlacadh sa phlé seo.",
+    "discussionJoinArriving": "Tá tú istigh! Osclófar an plé a luaithe is a thiocfaidh sé.",
+    "roleplayLabel": "Rólghlacadh"
 }

@@ -18,7 +18,7 @@ import 'package:fluffychat/routes/chat/calls/transcript_repo.dart';
 /// Injected so the coordinator's build/re-validate/send flow is testable
 /// without a homeserver, exactly as [CallAudioDownloader] is for the read side
 /// and [CallAudioMergedSender] is for the write side. The real implementation
-/// wraps `client.uploadContent`.
+/// is `CallService.uploadCallAudio`, an upload on a fresh token.
 typedef CallAudioMergeUploader =
     Future<Uri> Function(
       Uint8List bytes, {
@@ -86,6 +86,15 @@ typedef CallAudioMergeRoomSender =
 ///    transient) -- never a broad terminal catch. A global concurrency
 ///    semaphore caps in-flight passes; a permit is released only when the
 ///    underlying stage future SETTLES, so a hung stage keeps its permit.
+/// 8. **An upload is never abandoned, and never repeated (client#9825).** The
+///    upload is the one stage NOT raced against [stageTimeout]: the app cannot
+///    see its progress, so a slow link is indistinguishable from a hung one,
+///    and abandoning it only re-sends the same bytes. Its `mxc://` is kept in
+///    the call's index entry, keyed by coverage, as soon as it lands -- even
+///    when the attempt has since given up -- and a later pass for the same
+///    coverage sends it without downloading, mixing or uploading again. The
+///    pass awaits the upload inside its in-flight slot, so a call never has
+///    two uploads at once.
 class CallAudioMergeCoordinator {
   CallAudioMergeCoordinator({
     required RelationsFetcher relationsFetch,
@@ -165,9 +174,10 @@ class CallAudioMergeCoordinator {
   /// upload every startup.
   final int attemptCap;
 
-  /// The per-stage I/O deadline. Exceeding it is a TRANSIENT failure for
-  /// classification, but the underlying future keeps its concurrency permit
-  /// until it actually settles (rule 7, permit-until-settle).
+  /// The per-stage I/O deadline for every stage but the upload (rule 8).
+  /// Exceeding it is a TRANSIENT failure for classification, but the
+  /// underlying future keeps its concurrency permit until it actually settles
+  /// (rule 7, permit-until-settle).
   final Duration stageTimeout;
 
   /// How often the periodic drain re-evaluates backoff-elapsed index entries.
@@ -187,6 +197,11 @@ class CallAudioMergeCoordinator {
 
   final _Semaphore _sem;
 
+  /// The uploader this coordinator was built with, so a test can prove the
+  /// app wires the merged upload through the fresh-token path.
+  @visibleForTesting
+  CallAudioMergeUploader get upload => _upload;
+
   /// In-flight attempts only, one per `(roomId, callKey)`. Bounded by
   /// [maxConcurrent] running plus however many are parked on the semaphore
   /// (itself bounded by the distinct calls the index holds).
@@ -202,6 +217,7 @@ class CallAudioMergeCoordinator {
   static const _kAttemptCount = 'attemptCount';
   static const _kQuarantined = 'quarantined';
   static const _kNextRetryAt = 'nextRetryAt';
+  static const _kUpload = 'upload';
 
   // ---------------------------------------------------------------------------
   // Public surface (the wiring wave subscribes these; tests drive them).
@@ -275,7 +291,9 @@ class CallAudioMergeCoordinator {
   /// Bumps the disposal generation, cancels timers, and cancels in-flight
   /// delays. In-flight awaits observe the token and initiate no further
   /// upload/send. An upload/send already in flight at this instant may still
-  /// land (rule 6's honest guarantee).
+  /// land (rule 6's honest guarantee); an upload that does is still kept on
+  /// the call's entry (rule 8), so whichever coordinator next runs the call
+  /// sends it rather than uploading again.
   void dispose() {
     _disposed = true;
     _disposalGeneration++;
@@ -430,6 +448,24 @@ class CallAudioMergeCoordinator {
       if (!await _cancellableDelay(stagger, attempt)) return;
       if (_superseded(gen, attempt)) return;
 
+      // An earlier pass already uploaded this exact merge (rule 8): send that.
+      final kept = await _keptUpload(key, coverage);
+      if (_superseded(gen, attempt)) return;
+      if (kept != null) {
+        await _validateAndSend(
+          key,
+          roomId,
+          callKey,
+          mergeable,
+          kept,
+          myUserId,
+          myDeviceId,
+          tracker,
+          attempt,
+        );
+        return;
+      }
+
       // Step 3: download both halves' bytes.
       final sources = <CallAudioMergeSource>[];
       for (final half in coverHalves) {
@@ -500,69 +536,35 @@ class CallAudioMergeCoordinator {
       }
       if (_superseded(gen, attempt)) return;
 
-      // Step 6: upload. Disposal check immediately before (rule 6).
+      // Step 6: upload. Disposal check immediately before (rule 6). Not raced
+      // against the stage timeout, and kept the moment it lands (rule 8).
       if (_superseded(gen, attempt)) return;
-      final uploaded = await _stage(
-        _upload(
-          result.wav,
-          filename: 'call_audio_merged.wav',
-          contentType: 'audio/wav',
-        ),
-        tracker,
+      final url = await _upload(
+        result.wav,
+        filename: 'call_audio_merged.wav',
+        contentType: 'audio/wav',
       );
-      if (_superseded(gen, attempt)) return;
-
-      // Step 7: RE-VALIDATE again before send (rule 3), then the disposal check
-      // immediately before send (rule 6).
-      if (!await _stillMergeable(
-        roomId,
-        callKey,
-        coverage,
-        myUserId,
-        myDeviceId,
-        key,
-        tracker,
-        gen,
-        attempt,
-      )) {
-        return;
-      }
-      // The pre-send guard is _superseded (disposal / merged-event abort /
-      // generation), NOT `attempt.dirty`. A dirty trigger means "re-run after
-      // this pass," not "abort now": aborting the send on any dirty would let a
-      // busy room's benign re-notifications STARVE the send forever. The real
-      // check against a third half is the SEMANTIC _stillMergeable re-fetch just
-      // above; the irreducible re-fetch->send window is design-accepted (a rare
-      // stale post that P4 suppresses once it observes the third half), never a
-      // shown wrong result.
-      if (_superseded(gen, attempt)) return;
-
-      // Step 8: send. Non-null id -> retire; null -> the send did not land, a
-      // transient (the writer never returns null for our valid key+coverage
-      // except when send itself returned null).
-      final sentId = await writeCallAudioMergedEvent(
-        // Adapt the room-aware coordinator sender to the per-send seam the
-        // writer expects, binding THIS call's room so the merge lands where the
-        // call happened.
-        send: (content, txnId) => _send(roomId, content, txnId),
-        callKey: callKey,
-        url: uploaded.toString(),
-        mimetype: 'audio/wav',
+      final uploaded = (
+        url: url,
         size: result.wav.length,
         durationMs: result.durationMs,
         sampleRate: result.sampleRate,
         channels: result.channels,
-        sourceEventIds: coverage,
-        mergedStartSfuMs: mergeable.mergedStartSfuMs,
-        // Only a complete mix reaches here (an incomplete one is retired
-        // above), so this says what the bytes are.
-        complete: true,
       );
-      if (sentId == null) {
-        await _recordTransient(key);
-        return;
-      }
-      await _index.remove(key);
+      await _keepUpload(key, coverage, uploaded);
+      if (_superseded(gen, attempt)) return;
+
+      await _validateAndSend(
+        key,
+        roomId,
+        callKey,
+        mergeable,
+        uploaded,
+        myUserId,
+        myDeviceId,
+        tracker,
+        attempt,
+      );
     } on _StageTimeout {
       // Step 9: a hung stage. Transient; the permit stays held via the tracker.
       await _recordTransient(key);
@@ -582,6 +584,74 @@ class CallAudioMergeCoordinator {
         underlying.whenComplete(_sem.release);
       }
     }
+  }
+
+  /// Steps 7 and 8: re-validates, then sends [uploaded] as this call's merge
+  /// and retires the call, or records a transient when the send did not land.
+  Future<void> _validateAndSend(
+    String key,
+    String roomId,
+    String callKey,
+    Mergeable mergeable,
+    _MergedUpload uploaded,
+    String myUserId,
+    String? myDeviceId,
+    _StageTracker tracker,
+    _Attempt attempt,
+  ) async {
+    final gen = attempt.generation;
+    final coverage = mergeable.coverageEventIds;
+    // Step 7: RE-VALIDATE again before send (rule 3), then the disposal check
+    // immediately before send (rule 6).
+    if (!await _stillMergeable(
+      roomId,
+      callKey,
+      coverage,
+      myUserId,
+      myDeviceId,
+      key,
+      tracker,
+      gen,
+      attempt,
+    )) {
+      return;
+    }
+    // The pre-send guard is _superseded (disposal / merged-event abort /
+    // generation), NOT `attempt.dirty`. A dirty trigger means "re-run after
+    // this pass," not "abort now": aborting the send on any dirty would let a
+    // busy room's benign re-notifications STARVE the send forever. The real
+    // check against a third half is the SEMANTIC _stillMergeable re-fetch just
+    // above; the irreducible re-fetch->send window is design-accepted (a rare
+    // stale post that P4 suppresses once it observes the third half), never a
+    // shown wrong result.
+    if (_superseded(gen, attempt)) return;
+
+    // Step 8: send. Non-null id -> retire; null -> the send did not land, a
+    // transient (the writer never returns null for our valid key+coverage
+    // except when send itself returned null).
+    final sentId = await writeCallAudioMergedEvent(
+      // Adapt the room-aware coordinator sender to the per-send seam the
+      // writer expects, binding THIS call's room so the merge lands where the
+      // call happened.
+      send: (content, txnId) => _send(roomId, content, txnId),
+      callKey: callKey,
+      url: uploaded.url.toString(),
+      mimetype: 'audio/wav',
+      size: uploaded.size,
+      durationMs: uploaded.durationMs,
+      sampleRate: uploaded.sampleRate,
+      channels: uploaded.channels,
+      sourceEventIds: coverage,
+      mergedStartSfuMs: mergeable.mergedStartSfuMs,
+      // Only a complete mix is ever uploaded (an incomplete one is retired
+      // before upload), so this says what the bytes are.
+      complete: true,
+    );
+    if (sentId == null) {
+      await _recordTransient(key);
+      return;
+    }
+    await _index.remove(key);
   }
 
   /// Re-fetches merged + halves and returns whether the call is STILL
@@ -711,7 +781,14 @@ class CallAudioMergeCoordinator {
     final quarantined = attemptCount > attemptCap;
     final nextRetryAt = now.add(_backoff(attemptCount));
     unawaited(
-      _writeEntry(key, firstSeenAt, attemptCount, quarantined, nextRetryAt),
+      _writeEntry(
+        key,
+        firstSeenAt,
+        attemptCount,
+        quarantined,
+        nextRetryAt,
+        upload: existing[_kUpload],
+      ),
     );
   }
 
@@ -720,14 +797,76 @@ class CallAudioMergeCoordinator {
     DateTime firstSeenAt,
     int attemptCount,
     bool quarantined,
-    DateTime nextRetryAt,
-  ) {
+    DateTime nextRetryAt, {
+    Object? upload,
+  }) {
     return _index.write(key, {
       _kFirstSeenAt: firstSeenAt.toIso8601String(),
       _kAttemptCount: attemptCount,
       _kQuarantined: quarantined,
       _kNextRetryAt: nextRetryAt.toIso8601String(),
+      _kUpload: ?upload,
     });
+  }
+
+  /// Keeps a landed upload of the merge of [coverage] on the call's live
+  /// entry (rule 8). Like [_recordTransient], never resurrects a retired or
+  /// expired entry.
+  Future<void> _keepUpload(
+    String key,
+    List<String> coverage,
+    _MergedUpload uploaded,
+  ) async {
+    final existing = await _index.read(key);
+    if (existing == null) return;
+    final firstSeenAt = _dateOf(existing, _kFirstSeenAt);
+    if (firstSeenAt == null || _logicallyExpired(firstSeenAt, _clock())) {
+      return;
+    }
+    await _index.write(key, {
+      ...existing,
+      _kUpload: {
+        'url': uploaded.url.toString(),
+        'coverage': coverage,
+        'size': uploaded.size,
+        'durationMs': uploaded.durationMs,
+        'sampleRate': uploaded.sampleRate,
+        'channels': uploaded.channels,
+      },
+    });
+  }
+
+  /// The upload an earlier pass kept for exactly [coverage], or null. One
+  /// kept for other halves is a different merge and is ignored.
+  Future<_MergedUpload?> _keptUpload(String key, List<String> coverage) async {
+    final raw = (await _index.read(key))?[_kUpload];
+    if (raw is! Map) return null;
+    final url = raw['url'];
+    final kept = raw['coverage'];
+    final size = raw['size'];
+    final durationMs = raw['durationMs'];
+    final sampleRate = raw['sampleRate'];
+    final channels = raw['channels'];
+    if (url is! String ||
+        kept is! List ||
+        size is! int ||
+        durationMs is! int ||
+        sampleRate is! int ||
+        channels is! int) {
+      return null;
+    }
+    if (!_sameCoverage(kept.whereType<String>().toList(), coverage)) {
+      return null;
+    }
+    final uri = Uri.tryParse(url);
+    if (uri == null) return null;
+    return (
+      url: uri,
+      size: size,
+      durationMs: durationMs,
+      sampleRate: sampleRate,
+      channels: channels,
+    );
   }
 
   Future<void> _retire(String key, CallAudioMergeVerdict decided) async {
@@ -892,6 +1031,15 @@ class CallAudioMergeCoordinator {
   static Timer _realPeriodic(Duration d, void Function() cb) =>
       Timer.periodic(d, (_) => cb());
 }
+
+/// A landed merged upload and what the merged event says about its bytes.
+typedef _MergedUpload = ({
+  Uri url,
+  int size,
+  int durationMs,
+  int sampleRate,
+  int channels,
+});
 
 /// One in-flight attempt's mutable coordination state.
 class _Attempt {

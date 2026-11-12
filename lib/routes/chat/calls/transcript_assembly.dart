@@ -207,24 +207,14 @@ bool discardExplainsEmptiness(
   HalfAccounting accounting,
 ) => explainsEmptiness(MissingAudio.heldForASibling, segments, accounting);
 
-/// Whether an empty half is empty ONLY because its writer had no subscription:
-/// every chunk it lost was refused by the transcriber for that reason, and
-/// nothing else about the accounting is in doubt.
+/// Whether all a half lacks is chunks that never came back from the transcriber
+/// -- refused for no subscription, or lost to a timeout on a slow link -- with
+/// nothing else about the accounting in doubt.
 ///
-/// Such a half is not a record of what the speaker said; it is a record that
-/// nobody was paying to transcribe it from that device. A subscribed
-/// participant can still transcribe the speaker's saved recording (#8792), so
-/// this half counts as NOT produced: the backfill does not skip it, and a valid
-/// peer-produced half for the same unit wins over it in assembly. Any other
-/// loss or gap the writer admits (audio dropped at capture, a stretch handed to
-/// a sibling, words omitted to fit, an unfinished drain), an incoherent or
-/// undeclared accounting, or a refused microphone keeps the half exactly as it
-/// was.
-bool noSubscriptionExplainsEmptiness(
-  List<TranscriptSegment> segments,
-  HalfAccounting accounting,
-) =>
-    segments.isEmpty &&
+/// The speech is in the saved recording, so such a half is NOT the whole record
+/// of what was said: a transcription of that recording replaces it. Both causes
+/// at once is the ordinary shape on a bad connection.
+bool onlyChunksWereLost(HalfAccounting accounting) =>
     accounting.declared &&
     !accounting.incoherent &&
     !accounting.unreadableContent &&
@@ -235,8 +225,13 @@ bool noSubscriptionExplainsEmptiness(
     !accounting.truncated &&
     accounting.segmentsOmitted == 0 &&
     accounting.drainComplete &&
-    accounting.chunksLost > 0 &&
-    accounting.chunksRefusedUnsubscribed == accounting.chunksLost;
+    accounting.chunksLost > 0;
+
+/// [onlyChunksWereLost] about a half with no words left at all.
+bool lostChunksExplainEmptiness(
+  List<TranscriptSegment> segments,
+  HalfAccounting accounting,
+) => segments.isEmpty && onlyChunksWereLost(accounting);
 
 /// Whether [claim]'s audio is missing from the TRANSCRIPT -- gone from this
 /// half and from every other half of the same speaker in the same assembly.
@@ -1444,13 +1439,9 @@ class TranscriptHalf {
     discardWasCovered: discardWasCovered,
   );
 
-  /// Whether this half is empty only because its writer had no subscription,
-  /// so it still waits on a transcription of the speaker's saved recording.
-  /// See [noSubscriptionExplainsEmptiness]; asked through [issue] as well so
-  /// the screen, the backfill and the note all name the same cause.
-  bool get emptiedOnlyByNoSubscription =>
-      issue == HalfIssue.notSubscribed &&
-      noSubscriptionExplainsEmptiness(segments, accounting);
+  /// Whether all this half lacks is chunks that never came back, so the
+  /// speaker's saved recording can still complete it. See [onlyChunksWereLost].
+  bool get waitsOnItsRecording => onlyChunksWereLost(accounting);
 
   /// Whether this half is a person who was recorded and said nothing.
   ///
@@ -2409,6 +2400,7 @@ CallTranscript assembleTranscript({
   // two old builds still key alike, so one is still kept, and this change
   // reaches them only once one of the two devices is updated.
   final bySpeaker = <String, Map<String, TranscriptCandidate>>{};
+  final peerCopies = <String, Map<String, TranscriptCandidate>>{};
 
   for (final candidate in candidates) {
     final speaker = _effectiveSpeakerOf(candidate, provenance);
@@ -2416,17 +2408,37 @@ CallTranscript assembleTranscript({
     // It never enters a group, so it can neither be shown nor block the real
     // half -- and, held out rather than attributed, it is never its writer's.
     if (speaker == null) continue;
-    final byDevice = bySpeaker.putIfAbsent(speaker, () => {});
+    // ONE half per (effective speaker, device) unit. Authentic halves and
+    // peer-produced ones are each narrowed to their best first, and only those
+    // two are weighed: comparing across the kinds one event at a time is not a
+    // total order, so the winner came to depend on arrival order. Two authentic
+    // copies are chosen between by [_beats] (a resend or a buggy empty-first
+    // half) and two peer-produced ones by [_peerBeats], a stable writer lane so
+    // one writer cannot churn over another's by posting later. What is no
+    // longer treated as a duplicate is a second DEVICE's half.
+    final authentic = candidate.senderId == speaker;
     final key = candidate.deviceId ?? '';
-    final held = byDevice[key];
-    // ONE half per (effective speaker, device) unit, chosen by the total order
-    // in [_winsUnit]: an authentic half beats any peer-produced one, two
-    // authentic copies are chosen between exactly as before (a resend or a
-    // buggy empty-first half), and two peer-produced halves are ordered by a
-    // stable writer lane so one writer cannot churn over another's by posting
-    // later. What is no longer treated as a duplicate is a second DEVICE's half.
-    if (held == null || _winsUnit(candidate, held, speaker: speaker)) {
-      byDevice[key] = candidate;
+    final group = (authentic ? bySpeaker : peerCopies).putIfAbsent(
+      speaker,
+      () => {},
+    );
+    final held = group[key];
+    if (held == null ||
+        (authentic ? _beats(candidate, held) : _peerBeats(candidate, held))) {
+      group[key] = candidate;
+    }
+  }
+
+  // A peer-produced half fills a unit with no authentic half, and replaces one
+  // missing only chunks that never came back (#8792): a valid transcription of
+  // the whole recording is the better account of the speaker.
+  for (final MapEntry(key: speaker, value: copies) in peerCopies.entries) {
+    final byDevice = bySpeaker.putIfAbsent(speaker, () => {});
+    for (final MapEntry(key: device, value: copy) in copies.entries) {
+      final own = byDevice[device];
+      if (own == null || onlyChunksWereLost(own.accounting)) {
+        byDevice[device] = copy;
+      }
     }
   }
 
@@ -2675,59 +2687,6 @@ String? _effectiveSpeakerOf(
     ProvenanceState.unavailableTerminal => null,
     ProvenanceState.pendingTransient => null,
   };
-}
-
-/// Which of two halves the same (effective speaker, device) unit keeps.
-///
-/// The LANE-BASED TOTAL ORDER of the design's §2, layered over [_beats] so the
-/// legacy authentic-vs-authentic choice is exactly what it always was:
-///
-/// 1. AUTHENTIC beats peer-produced. "Authentic" is `sender == speaker` — a half
-///    the person themselves wrote (or an INVALID claim fallen back to its
-///    writer), as opposed to a VALID peer transcription of them. A speaker's own
-///    record of their words always wins over someone else's transcription of
-///    them, so a peer half can never override the real one.
-/// 2. Two AUTHENTIC halves are chosen between by [_beats] — a resend, or a
-///    buggy empty-first half against the real one — unchanged from before this
-///    feature, which is what makes every existing room read identically.
-/// 3. Two PEER-PRODUCED halves are ordered by [_peerBeats]: a stable WRITER LANE
-///    first, latest attempt within a lane. See there for why the lane, not the
-///    clock, is primary.
-///
-/// One exception to tier 1 (#8792): an authentic half emptied ONLY because its
-/// writer had no subscription ([noSubscriptionExplainsEmptiness]) ranks BELOW a
-/// peer-produced one. It is not the speaker's record of their words, only a
-/// record that nobody paid to transcribe them on that device, so a valid peer
-/// transcription of the same recording is the better account of the speaker.
-///
-/// Used as a running-max predicate: "does [candidate] rank strictly above
-/// [held]". The rank is compared first and each rank is a total order within
-/// itself, so the whole is a total order and the winner is independent of the
-/// order events arrived.
-bool _winsUnit(
-  TranscriptCandidate candidate,
-  TranscriptCandidate held, {
-  required String speaker,
-}) {
-  final candidateRank = _unitRank(candidate, speaker);
-  final heldRank = _unitRank(held, speaker);
-  if (candidateRank != heldRank) return candidateRank > heldRank;
-  return candidate.senderId == speaker
-      ? _beats(candidate, held)
-      : _peerBeats(candidate, held);
-}
-
-/// The tier [_winsUnit] compares first: an authentic half (2) over a
-/// peer-produced one (1) over an authentic half emptied only by the writer
-/// having no subscription (0).
-int _unitRank(TranscriptCandidate candidate, String speaker) {
-  if (candidate.senderId != speaker) return 1;
-  return noSubscriptionExplainsEmptiness(
-        candidate.segments,
-        candidate.accounting,
-      )
-      ? 0
-      : 2;
 }
 
 /// Which of two PEER-PRODUCED halves of one (speaker, device) unit to keep.

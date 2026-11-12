@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:04.579630",
+    "@@last_modified": "2026-11-11 11:38:55.683893",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9889,11 +9889,6 @@
     "callTranscriptPreparingRecording": "Preparando a gravação completa…",
     "callTranscriptNoRecording": "Nenhuma gravação da chamada completa.",
     "callTranscriptNotSubscribed": "{name} não tinha uma assinatura durante esta chamada, então o que foi dito não foi transcrito.",
-    "joinYourCourse": "Entrar no seu curso",
-    "courseCodeJoinExplanation": "Faça login ou cadastre-se, e usaremos seu código do curso para adicioná-lo automaticamente ao seu curso.",
-    "courseCodeLabel": "Código do curso",
-    "courseCodeSaved": "Código do curso {code} salvo",
-    "courseCodeSavedExplanation": "Cadastre-se ou faça login e nós o adicionaremos ao seu curso.",
     "moderationRefusedContactDetails": "Sua mensagem não foi enviada. Um filtro automático encontrou detalhes de contato, como um número de telefone. Remova-os e tente novamente.",
     "moderationRefusedProfanity": "Sua mensagem não foi enviada. Um filtro automático encontrou uma palavra que não permitimos no chat. Por favor, altere-a e tente novamente.",
     "callTranscriptTranscribeButton": "Transcrever",
@@ -10049,5 +10044,20 @@
     "changeBaseLanguageDesc": "Os menus e botões do aplicativo mudarão para {language}.",
     "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique sua conexão e tente novamente, ou saia e faça login mais tarde.",
     "onboardingOfflineError": "Você está offline. Tente novamente quando estiver online.",
-    "activitySavedTo": "Atividade salva em {page}"
+    "activitySavedTo": "Atividade salva em {page}",
+    "joinWithYourCode": "Entrar com seu código",
+    "joinCodeJoinExplanation": "Faça login ou cadastre-se, e usaremos seu código para adicioná-lo automaticamente.",
+    "joinCodeLabel": "Código",
+    "joinCodeSaved": "Código {code} salvo",
+    "joinCodeSavedExplanation": "Cadastre-se ou faça login e nós o adicionaremos.",
+    "discussionLabel": "Discussão",
+    "discussionCardSemantics": "Discussão: {title}",
+    "discussionJoined": "Participando",
+    "discussionAnswered": "Respondido",
+    "joinTheDiscussion": "Participar da discussão",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 colega de turma está nesta discussão} other{{count} colegas de turma estão nesta discussão}}",
+    "discussionStartIt": "Seja o primeiro a iniciar esta discussão",
+    "discussionRemoved": "Você não pode participar desta discussão.",
+    "discussionJoinArriving": "Você está dentro! A discussão será aberta assim que chegar.",
+    "roleplayLabel": "Roleplay"
 }

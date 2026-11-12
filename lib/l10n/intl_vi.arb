@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:07.566893",
+    "@@last_modified": "2026-11-11 11:39:02.735412",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7196,11 +7196,6 @@
     "callTranscriptPreparingRecording": "Đang chuẩn bị bản ghi âm đầy đủ…",
     "callTranscriptNoRecording": "Không có bản ghi âm toàn bộ cuộc gọi.",
     "callTranscriptNotSubscribed": "{name} không có gói đăng ký trong cuộc gọi này, vì vậy những gì đã nói không được phiên âm.",
-    "joinYourCourse": "Tham gia khóa học của bạn",
-    "courseCodeJoinExplanation": "Đăng nhập hoặc đăng ký, chúng tôi sẽ sử dụng mã khóa học của bạn để tự động thêm bạn vào khóa học.",
-    "courseCodeLabel": "Mã khóa học",
-    "courseCodeSaved": "Đã lưu mã khóa học {code}",
-    "courseCodeSavedExplanation": "Đăng ký hoặc đăng nhập và chúng tôi sẽ thêm bạn vào khóa học.",
     "moderationRefusedContactDetails": "Tin nhắn của bạn chưa được gửi. Bộ lọc tự động đã phát hiện thông tin liên hệ, như số điện thoại. Vui lòng xóa và thử lại.",
     "moderationRefusedProfanity": "Tin nhắn của bạn chưa được gửi. Bộ lọc tự động đã phát hiện một từ mà chúng tôi không cho phép trong cuộc trò chuyện. Vui lòng thay đổi và thử lại.",
     "callTranscriptTranscribeButton": "Chép lại",
@@ -7356,5 +7351,20 @@
     "changeBaseLanguageDesc": "Các menu và nút của ứng dụng sẽ chuyển sang tiếng {language}.",
     "accountSetupFailedHelp": "Chúng tôi không thể hoàn tất việc thiết lập tài khoản của bạn. Vui lòng kiểm tra kết nối và thử lại, hoặc đăng xuất và đăng nhập sau.",
     "onboardingOfflineError": "Bạn đang ngoại tuyến. Hãy thử lại khi bạn có kết nối mạng.",
-    "activitySavedTo": "Hoạt động đã lưu vào {page}"
+    "activitySavedTo": "Hoạt động đã lưu vào {page}",
+    "joinWithYourCode": "Tham gia bằng mã của bạn",
+    "joinCodeJoinExplanation": "Đăng nhập hoặc đăng ký, chúng tôi sẽ dùng mã của bạn để tự động thêm bạn vào.",
+    "joinCodeLabel": "Mã",
+    "joinCodeSaved": "Đã lưu mã {code}",
+    "joinCodeSavedExplanation": "Đăng ký hoặc đăng nhập và chúng tôi sẽ thêm bạn vào.",
+    "discussionLabel": "Thảo luận",
+    "discussionCardSemantics": "Thảo luận: {title}",
+    "discussionJoined": "Đã tham gia",
+    "discussionAnswered": "Đã trả lời",
+    "joinTheDiscussion": "Tham gia thảo luận",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 bạn học đang trong cuộc thảo luận này} other{{count} bạn học đang trong cuộc thảo luận này}}",
+    "discussionStartIt": "Hãy là người đầu tiên bắt đầu cuộc thảo luận này",
+    "discussionRemoved": "Bạn không thể tham gia cuộc thảo luận này.",
+    "discussionJoinArriving": "Bạn đã vào! Cuộc thảo luận sẽ mở ngay khi đến.",
+    "roleplayLabel": "Nhập vai"
 }

@@ -4,10 +4,13 @@ import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/discussions/discussion_record.dart';
 import 'package:fluffychat/features/dosage/dosage_session_outcome.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
@@ -99,6 +102,17 @@ class ActivityAutoSaveService {
   /// intra-run outcome guard; a restart can't double-emit because the synced
   /// `archived_at` closes the gate before the sweep runs).
   final Set<String> _emittedOutcomes = {};
+
+  /// Discussion rooms whose completion this run reported, so ending one again
+  /// after "Wait, I'm not done" reports it once.
+  final Set<String> _completedThisRun = {};
+
+  /// Files and unfiles the learner's discussion seats ([DiscussionRecord]).
+  late final DiscussionRecord _discussionRecord = DiscussionRecord(
+    file: analyticsService.updateService.sendActivityAnalytics,
+    unfile: analyticsService.updateService.removeActivityAnalytics,
+    onCompleted: _reportDiscussionCompleted,
+  );
   bool _disposed = false;
 
   Future<void> start() async {
@@ -191,6 +205,10 @@ class ActivityAutoSaveService {
 
   Future<void> _maybeSave(Room? room) async {
     if (_disposed || room == null || !room.isActivitySession) return;
+    if (room.activityMode?.endsPerSeat ?? false) {
+      await _discussionRecord.sync(room);
+      return;
+    }
     if (!activityAutoSaveGate(
       isActivityFinished: room.isActivityFinished,
       hasCompletedRole: room.hasCompletedRole,
@@ -261,6 +279,23 @@ class ActivityAutoSaveService {
     } finally {
       _saving.remove(room.id);
     }
+  }
+
+  /// A discussion's completion, once its record is filed: the dosage outcome
+  /// and the GA completion, each once per room this run.
+  void _reportDiscussionCompleted(
+    Room room,
+    ActivityPlanModel plan,
+    DateTime archivedAt,
+  ) {
+    _emitDosageSessionOutcome(room, archivedAt);
+    if (!_completedThisRun.add(room.id)) return;
+    GoogleAnalytics.completeActivity(
+      plan.activityId,
+      room.id,
+      versionPinHonored: !plan.usedFallbackVersion,
+      fallbackCause: plan.fallbackCause,
+    );
   }
 
   /// Fire-and-forget the best-effort dosage session-outcome signal at the

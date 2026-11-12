@@ -62,6 +62,7 @@ void main() {
     supportedLocales: L10n.supportedLocales,
     home: Scaffold(
       body: ObjectiveSection(
+        courseId: null,
         index: 1,
         missionCount: 1,
         group: QuestObjectiveGroup(
@@ -412,6 +413,7 @@ void main() {
         supportedLocales: L10n.supportedLocales,
         home: Scaffold(
           body: ObjectiveSection(
+            courseId: null,
             index: 1,
             missionCount: 1,
             group: QuestObjectiveGroup(

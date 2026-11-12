@@ -9,6 +9,11 @@ import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 
 extension OrchestratorClientExtension on Client {
+  /// The goals of role [roleId] the learner has been awarded in any of their
+  /// sessions of [activityId]. Each room's awards are read under the
+  /// learner's own award key there ([ActivityRolesRoomExtension.ownAwardKey]):
+  /// the role id in a roleplay, their seat in a discussion, where every
+  /// student holds the same role.
   Set<String> scanCompletedGoalIds({
     required String? activityId,
     required ActivityPlanModel? activity,
@@ -21,10 +26,12 @@ extension OrchestratorClientExtension on Client {
     for (final room in rooms) {
       if (room.activityId != activityId) continue;
       if (room.ownRoleState?.id != roleId) continue;
+      final awardKey = room.ownAwardKey;
+      if (awardKey == null) continue;
       final awarded = room.orchestratorAwardedGoals;
       for (final g in role.allGoals) {
         if (awarded.isGoalCompletedForRole(
-          roleId,
+          awardKey,
           g.id,
           goalSlug: g.goalSlug,
         )) {

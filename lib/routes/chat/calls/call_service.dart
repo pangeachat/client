@@ -63,7 +63,7 @@ class CallService {
   /// The startup replay runs once, on the first sync after launch. A foreground
   /// replay (see `MatrixState.didChangeAppLifecycleState`) is not latched -- a
   /// half dropped this session must still be picked up when the app comes back.
-  bool _flushedPendingTranscripts = false;
+  DateTime? _flushedPendingTranscriptsAt;
 
   /// One replay at a time: the first-sync and foreground triggers can land
   /// together, and a second concurrent pass would read the store mid-drain.
@@ -266,8 +266,7 @@ class CallService {
     coordinator = CallAudioMergeCoordinator(
       relationsFetch: relationsFetcherFor(client),
       download: callAudioDownloaderFor(client),
-      upload: (bytes, {required filename, required contentType}) => client
-          .uploadContent(bytes, filename: filename, contentType: contentType),
+      upload: uploadCallAudio,
       // Room-aware: one coordinator sends the merges of calls across many rooms,
       // so the target room travels with each send. A room the client no longer
       // knows yields null, exactly as the per-device sender's own null.
@@ -300,6 +299,10 @@ class CallService {
     unawaited(_activateMergeCoordinator());
     return coordinator;
   }
+
+  /// The merge coordinator, brought up on first use, for tests of its wiring.
+  @visibleForTesting
+  CallAudioMergeCoordinator get mergeCoordinator => _ensureMergeCoordinator();
 
   /// Forwards one [trigger] to the merge coordinator, bringing the subsystem up
   /// on first use.
@@ -439,27 +442,46 @@ class CallService {
   void handleSync(SyncUpdate update) {
     final userId = client.userID;
     if (userId != null) _lastUserId = userId;
-    // The first sync after launch is the reliable "client is up" signal, and
-    // the moment to replay a transcript half whose publish the app was killed
-    // before finishing. Latched to once (foreground handles later drops); a
-    // no-op when the feature is off.
-    _maybeFlushPendingTranscriptsOnce();
+    // A sync is the reliable "the network is up" signal, and the moment to
+    // replay what did not land: a transcript half the app was killed before
+    // publishing, a recording a slow connection parked. Launch and foreground
+    // alone left a parked half waiting for ever on a page that simply stays
+    // open (#3379). A no-op when the feature is off.
+    _maybeFlushPendingTranscripts();
     dispatchSyncedCallAudioEvents(
       update,
       onHalf: (roomId, callKey) => _driveMergeCoordinator(
         (coordinator) => coordinator.onSyncedCallAudio(roomId, callKey),
       ),
-      onMerged: (roomId, callKey) => _driveMergeCoordinator(
-        (coordinator) => coordinator.onSyncedMergedEvent(roomId, callKey),
-      ),
+      onMerged: (roomId, callKey) {
+        _driveMergeCoordinator(
+          (coordinator) => coordinator.onSyncedMergedEvent(roomId, callKey),
+        );
+        final room = client.getRoomById(roomId);
+        if (room != null) fillPeerHalves?.call(room, callKey);
+      },
     );
   }
 
-  void _maybeFlushPendingTranscriptsOnce() {
-    if (_flushedPendingTranscripts || !_recordingTranscriptEnabled) return;
-    _flushedPendingTranscripts = true;
+  /// Fills in whatever a call's recordings can still give, when they all land.
+  /// The run at call end gives up after seconds, and a recording a slow
+  /// connection parked lands minutes later (#3379). Supplied by the widget
+  /// layer, where the subscription and language controllers live.
+  void Function(Room room, String callKey)? fillPeerHalves;
+
+  void _maybeFlushPendingTranscripts() {
+    if (!_recordingTranscriptEnabled) return;
+    final now = DateTime.now();
+    final last = _flushedPendingTranscriptsAt;
+    if (last != null && now.difference(last) < flushEvery) return;
+    _flushedPendingTranscriptsAt = now;
     unawaited(flushPendingCallTranscripts());
   }
+
+  /// How often a sync may try again, so a phone on a bad connection is not
+  /// re-reading the room for a parked half on every sync.
+  @visibleForTesting
+  Duration flushEvery = const Duration(minutes: 1);
 
   /// Replays this device's own transcript halves whose hangup-time publish did
   /// not land -- dropped when the app backgrounded or was killed at hangup,
@@ -528,8 +550,7 @@ class CallService {
       final resumer = _halfResumer ??= CallHalfResumer(
         store: pendingCallAudioStoreForPlatform(),
         fetch: fetch,
-        upload: (bytes, {required filename, required contentType}) => client
-            .uploadContent(bytes, filename: filename, contentType: contentType),
+        upload: uploadCallAudio,
         send: (roomId, type, content, txnId) async => client
             .getRoomById(roomId)
             ?.sendEvent(content, type: type, txid: txnId),
@@ -541,6 +562,24 @@ class CallService {
       _flushingTranscripts = false;
     }
   }
+
+  /// A recording's upload on a fresh token. The homeserver reads the token once
+  /// the whole body has arrived, and sync only refreshes one with a minute left,
+  /// so an upload slower than that came back 401 after all those minutes.
+  Future<Uri> uploadCallAudio(
+    Uint8List bytes, {
+    required String filename,
+    required String contentType,
+  }) async {
+    await client.ensureNotSoftLoggedOut(slowUploadWindow);
+    return client.uploadContent(
+      bytes,
+      filename: filename,
+      contentType: contentType,
+    );
+  }
+
+  static const slowUploadWindow = Duration(minutes: 4);
 
   /// Deletes every call recording this account left waiting on this device.
   /// Run when the account signs out: a recording is the learner's, and the
@@ -1958,8 +1997,30 @@ class CallService {
   /// was sitting in the call waiting, as nobody, and withdrew the Return offer
   /// the moment it appeared. A ring cannot outlive its lifetime, so nothing
   /// older than that can belong to the call it invited us to.
-  static DateTime? callFloorFrom(DateTime? ourJoin) =>
-      ourJoin?.subtract(CallNotification.lifetime);
+  ///
+  /// A device that JOINS a call already under way ([joinedUnderWay]: a
+  /// learner moving the call to another device, a rejoin; client#9173) was not
+  /// invited by a ring, and the other person's membership is only rewritten
+  /// when the SDK refreshes it, every [membershipRefreshEvery] -- so it can be
+  /// nearly that old. A one-ring floor skipped it, read the person sitting in
+  /// the call as gone, and the device that had just joined hung up two seconds
+  /// later. Only that case reaches back one refresh plus slack; a placed or
+  /// answered call keeps the tighter ring floor, so a leftover of an earlier
+  /// call is still screened out there.
+  static DateTime? callFloorFrom(
+    DateTime? ourJoin, {
+    bool joinedUnderWay = false,
+  }) => ourJoin?.subtract(
+    joinedUnderWay
+        ? membershipRefreshEvery + _refreshSlack
+        : CallNotification.lifetime,
+  );
+
+  /// How often the SDK rewrites a device's call membership
+  /// (`VoipTimeouts.updateExpireTsTimerDuration`, which this app does not
+  /// override).
+  static const membershipRefreshEvery = Duration(minutes: 2);
+  static const _refreshSlack = Duration(seconds: 30);
 
   /// Whether anybody ELSE is still holding the call our membership belongs to.
   ///
@@ -2087,6 +2148,45 @@ class CallService {
       if (state.eventId != eventId) continue;
       final memberships = state.content['memberships'];
       if (memberships is List && memberships.isNotEmpty) return true;
+    }
+    return false;
+  }
+
+  /// Whether [userId]'s device [deviceId] holds a LIVE call membership in
+  /// [room] right now: a membership naming that device that has not expired.
+  ///
+  /// Asked of the DEVICE, not of one membership event (client#9173). The SDK
+  /// rewrites a device's membership every couple of minutes to push its
+  /// `expires_ts` forward, and each rewrite is a new state event with a new
+  /// id -- so "is THIS event id still current" stops being true two minutes
+  /// into every call, while the device is still in it. One live call per
+  /// direct chat, so a live membership in this room is this call's.
+  bool deviceHoldsLiveMembership(Room room, String userId, String deviceId) =>
+      liveMembershipIn(
+        room.states[EventTypes.GroupCallMember]?.values ?? const [],
+        userId,
+        deviceId,
+        nowMs: DateTime.now().millisecondsSinceEpoch,
+      );
+
+  /// The rule behind [deviceHoldsLiveMembership], pure for tests.
+  @visibleForTesting
+  static bool liveMembershipIn(
+    Iterable<StrippedStateEvent> memberStates,
+    String userId,
+    String deviceId, {
+    required int nowMs,
+  }) {
+    for (final state in memberStates) {
+      if (state.type != EventTypes.GroupCallMember) continue;
+      if (state.senderId != userId) continue;
+      final memberships = state.content['memberships'];
+      if (memberships is! List) continue;
+      for (final m in memberships) {
+        if (m is! Map || m['device_id'] != deviceId) continue;
+        final expires = m['expires_ts'];
+        if (expires is! int || expires > nowMs) return true;
+      }
     }
     return false;
   }

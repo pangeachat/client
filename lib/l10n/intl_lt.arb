@@ -2954,7 +2954,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-11-06 13:11:02.361688",
+    "@@last_modified": "2026-11-11 11:38:49.915205",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10667,11 +10667,6 @@
     "callTranscriptPreparingRecording": "Ruošiamas visas įrašas…",
     "callTranscriptNoRecording": "Nėra viso pokalbio įrašo.",
     "callTranscriptNotSubscribed": "{name} neturėjo prenumeratos šio skambučio metu, todėl tai, kas buvo pasakyta, nebuvo transkribuota.",
-    "joinYourCourse": "Prisijunkite prie savo kurso",
-    "courseCodeJoinExplanation": "Prisijunkite arba užsiregistruokite, ir mes naudosime jūsų kurso kodą, kad automatiškai jus pridėtume prie jūsų kurso.",
-    "courseCodeLabel": "Kurso kodas",
-    "courseCodeSaved": "Kurso kodas {code} išsaugotas",
-    "courseCodeSavedExplanation": "Užsiregistruokite arba prisijunkite ir mes jus pridėsime prie jūsų kurso.",
     "moderationRefusedContactDetails": "Jūsų žinutė nebuvo išsiųsta. Automatinis filtras aptiko kontaktinius duomenis, pvz., telefono numerį. Pašalinkite juos ir bandykite dar kartą.",
     "moderationRefusedProfanity": "Jūsų žinutė nebuvo išsiųsta. Automatinis filtras aptiko žodį, kurio neleidžiame naudoti pokalbyje. Pakeiskite jį ir bandykite dar kartą.",
     "callTranscriptTranscribeButton": "Transkribuoti",
@@ -10827,5 +10822,20 @@
     "changeBaseLanguageDesc": "Programėlės meniu ir mygtukai persijungs į {language}.",
     "accountSetupFailedHelp": "Nepavyko užbaigti paskyros nustatymo. Patikrinkite ryšį ir bandykite dar kartą arba atsijunkite ir prisijunkite vėliau.",
     "onboardingOfflineError": "Esate neprisijungę. Bandykite dar kartą, kai vėl prisijungsite.",
-    "activitySavedTo": "Veikla išsaugota {page}"
+    "activitySavedTo": "Veikla išsaugota {page}",
+    "joinWithYourCode": "Prisijunkite naudodami savo kodą",
+    "joinCodeJoinExplanation": "Prisijunkite arba užsiregistruokite, ir mes automatiškai jus pridėsime naudodami jūsų kodą.",
+    "joinCodeLabel": "Kodas",
+    "joinCodeSaved": "Kodas {code} išsaugotas",
+    "joinCodeSavedExplanation": "Užsiregistruokite arba prisijunkite, ir mes jus pridėsime.",
+    "discussionLabel": "Diskusija",
+    "discussionCardSemantics": "Diskusija: {title}",
+    "discussionJoined": "Prisijungėte",
+    "discussionAnswered": "Atsakyta",
+    "joinTheDiscussion": "Prisijunkite prie diskusijos",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 klasės draugas dalyvauja šioje diskusijoje} other{{count} klasės draugai dalyvauja šioje diskusijoje}}",
+    "discussionStartIt": "Būkite pirmas, pradėjęs šią diskusiją",
+    "discussionRemoved": "Negalite prisijungti prie šios diskusijos.",
+    "discussionJoinArriving": "Jūs prisijungėte! Diskusija prasidės, kai tik atsiras.",
+    "roleplayLabel": "Vaidmenų žaidimas"
 }

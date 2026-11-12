@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-11-06 13:10:57.291290",
+    "@@last_modified": "2026-11-11 11:38:39.483332",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10192,11 +10192,6 @@
     "callTranscriptPreparingRecording": "جارٍ إعداد التسجيل الكامل...",
     "callTranscriptNoRecording": "لا يوجد تسجيل للمكالمة كاملة.",
     "callTranscriptNotSubscribed": "لم يكن لدى {name} اشتراك خلال هذه المكالمة، لذلك لم يتم نسخ ما قيل.",
-    "joinYourCourse": "انضم إلى دورتك التدريبية",
-    "courseCodeJoinExplanation": "سجّل الدخول أو أنشئ حسابًا، وسنستخدم رمز دورتك التدريبية لإضافتك إلى دورتك تلقائيًا.",
-    "courseCodeLabel": "رمز الدورة التدريبية",
-    "courseCodeSaved": "تم حفظ رمز الدورة التدريبية {code}",
-    "courseCodeSavedExplanation": "سجّل أو سجّل الدخول وسنضيفك إلى دورتك التدريبية.",
     "moderationRefusedContactDetails": "لم يتم إرسال رسالتك. عثر فلتر تلقائي على تفاصيل اتصال، مثل رقم هاتف. يُرجى إزالتها والمحاولة مرة أخرى.",
     "moderationRefusedProfanity": "لم يتم إرسال رسالتك. عثر فلتر تلقائي على كلمة غير مسموح بها في الدردشة. يُرجى تغييرها والمحاولة مرة أخرى.",
     "callTranscriptTranscribeButton": "نسخ",
@@ -10352,5 +10347,20 @@
     "changeBaseLanguageDesc": "ستتحول قوائم التطبيق وأزراره إلى {language}.",
     "accountSetupFailedHelp": "تعذر علينا إنهاء إعداد حسابك. تحقق من اتصالك وحاول مرة أخرى، أو قم بتسجيل الخروج وسجل الدخول لاحقًا.",
     "onboardingOfflineError": "أنت غير متصل بالإنترنت. حاول مرة أخرى عندما تكون متصلاً.",
-    "activitySavedTo": "تم حفظ النشاط في {page}"
+    "activitySavedTo": "تم حفظ النشاط في {page}",
+    "joinWithYourCode": "انضم باستخدام الرمز الخاص بك",
+    "joinCodeJoinExplanation": "سجّل الدخول أو أنشئ حسابًا، وسنستخدم الرمز الخاص بك لإضافتك تلقائيًا.",
+    "joinCodeLabel": "الرمز",
+    "joinCodeSaved": "تم حفظ الرمز {code}",
+    "joinCodeSavedExplanation": "سجّل الدخول أو أنشئ حسابًا وسنضيفك.",
+    "discussionLabel": "المناقشة",
+    "discussionCardSemantics": "المناقشة: {title}",
+    "discussionJoined": "انضممت",
+    "discussionAnswered": "أجبت",
+    "joinTheDiscussion": "انضم إلى المناقشة",
+    "discussionClassmatesInRoom": "{count, plural, =1{طالب واحد في هذه المناقشة} other{{count} طلاب في هذه المناقشة}}",
+    "discussionStartIt": "كن أول من يبدأ هذه المناقشة",
+    "discussionRemoved": "لا يمكنك الانضمام إلى هذه المناقشة.",
+    "discussionJoinArriving": "لقد انضممت! ستفتح المناقشة حالما تصل.",
+    "roleplayLabel": "لعب الأدوار"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-11-06 13:11:00.022480",
+    "@@last_modified": "2026-11-11 11:38:42.769801",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9889,11 +9889,6 @@
     "callTranscriptPreparingRecording": "Preparando a gravación completa…",
     "callTranscriptNoRecording": "Non hai gravación da chamada completa.",
     "callTranscriptNotSubscribed": "{name} non tiña unha subscrición durante esta chamada, polo que o que se dixo non foi transcrito.",
-    "joinYourCourse": "Únete ao teu curso",
-    "courseCodeJoinExplanation": "Inicia sesión ou rexístrate, e usaremos o teu código de curso para engadirte ao teu curso automaticamente.",
-    "courseCodeLabel": "Código do curso",
-    "courseCodeSaved": "Código do curso {code} gardado",
-    "courseCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste ao teu curso.",
     "moderationRefusedContactDetails": "A túa mensaxe non foi enviada. Un filtro automático atopou detalles de contacto, como un número de teléfono. Elimínaos e téntao de novo.",
     "moderationRefusedProfanity": "A túa mensaxe non foi enviada. Un filtro automático atopou unha palabra que non permitimos no chat. Cámbiaa e téntao de novo.",
     "callTranscriptTranscribeButton": "Transcribir",
@@ -10049,5 +10044,20 @@
     "changeBaseLanguageDesc": "Os menús e botóns da aplicación cambiarán a {language}.",
     "accountSetupFailedHelp": "Non puidemos rematar de configurar a túa conta. Comproba a túa conexión e téntao de novo, ou pecha a sesión e inicia sesión máis tarde.",
     "onboardingOfflineError": "Non tes conexión. Téntao de novo cando volvas ter conexión.",
-    "activitySavedTo": "Actividade gardada en {page}"
+    "activitySavedTo": "Actividade gardada en {page}",
+    "joinWithYourCode": "Unirse co teu código",
+    "joinCodeJoinExplanation": "Inicia sesión ou rexístrate, e usaremos o teu código para engadirte automaticamente.",
+    "joinCodeLabel": "Código",
+    "joinCodeSaved": "Código {code} gardado",
+    "joinCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste.",
+    "discussionLabel": "Debate",
+    "discussionCardSemantics": "Debate: {title}",
+    "discussionJoined": "Unido",
+    "discussionAnswered": "Respondido",
+    "joinTheDiscussion": "Únete ao debate",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 compañeiro está neste debate} other{{count} compañeiros están neste debate}}",
+    "discussionStartIt": "Sé o primeiro en iniciar este debate",
+    "discussionRemoved": "Non podes unirte a este debate.",
+    "discussionJoinArriving": "Xa estás dentro! O debate abrirase en canto chegue.",
+    "roleplayLabel": "Roleplay"
 }

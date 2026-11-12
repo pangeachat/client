@@ -1793,7 +1793,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-11-06 13:11:05.811646",
+    "@@last_modified": "2026-11-11 11:38:57.556468",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10831,11 +10831,6 @@
     "callTranscriptPreparingRecording": "Pripravljam celoten posnetek…",
     "callTranscriptNoRecording": "Ni posnetka celotnega klica.",
     "callTranscriptNotSubscribed": "{name} med tem klicem ni imel naročnine, zato izgovorjeno ni bilo prepisano.",
-    "joinYourCourse": "Pridružite se svojemu tečaju",
-    "courseCodeJoinExplanation": "Prijavite se ali se registrirajte in s kodo tečaja vas bomo samodejno dodali v tečaj.",
-    "courseCodeLabel": "Koda tečaja",
-    "courseCodeSaved": "Koda tečaja {code} je shranjena",
-    "courseCodeSavedExplanation": "Prijavite se ali se registrirajte in dodali vas bomo v tečaj.",
     "moderationRefusedContactDetails": "Vaše sporočilo ni bilo poslano. Samodejni filter je zaznal podatke za stik, kot je telefonska številka. Odstranite jih in poskusite znova.",
     "moderationRefusedProfanity": "Vaše sporočilo ni bilo poslano. Samodejni filter je zaznal besedo, ki je v klepetu ne dovoljujemo. Prosimo, spremenite jo in poskusite znova.",
     "callTranscriptTranscribeButton": "Prepiši",
@@ -10991,5 +10986,20 @@
     "changeBaseLanguageDesc": "Meniji in gumbi aplikacije se bodo preklopili na {language}.",
     "accountSetupFailedHelp": "Nastavitve vašega računa niso bile dokončane. Preverite povezavo in poskusite znova ali se odjavite in prijavite pozneje.",
     "onboardingOfflineError": "Brez povezave ste. Poskusite znova, ko boste spet povezani.",
-    "activitySavedTo": "Dejavnost shranjena v {page}"
+    "activitySavedTo": "Dejavnost shranjena v {page}",
+    "joinWithYourCode": "Pridruži se s svojo kodo",
+    "joinCodeJoinExplanation": "Prijavite se ali se registrirajte, in uporabili bomo vašo kodo za samodejno dodajanje.",
+    "joinCodeLabel": "Koda",
+    "joinCodeSaved": "Koda {code} shranjena",
+    "joinCodeSavedExplanation": "Registrirajte se ali se prijavite in dodali vas bomo.",
+    "discussionLabel": "Razprava",
+    "discussionCardSemantics": "Razprava: {title}",
+    "discussionJoined": "Pridruženo",
+    "discussionAnswered": "Odgovorjeno",
+    "joinTheDiscussion": "Pridružite se razpravi",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 sošolec je v tej razpravi} other{{count} sošolcev je v tej razpravi}}",
+    "discussionStartIt": "Bodite prvi, ki bo začel to razpravo",
+    "discussionRemoved": "Ne morete se pridružiti tej razpravi.",
+    "discussionJoinArriving": "Ste notri! Razprava se bo odprla takoj, ko prispe.",
+    "roleplayLabel": "Igranje vlog"
 }

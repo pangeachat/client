@@ -3,12 +3,15 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/course_plan_return.dart';
 import 'package:fluffychat/features/navigation/panel_entry_intent.dart';
@@ -37,6 +40,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart'
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_live_state_room_extension.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objective_circles.dart';
+import 'package:fluffychat/routes/courses/course_objectives/discussion_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/courses/course_objectives/suggested_activities.dart';
@@ -468,11 +472,20 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   /// the same live state the cards render. `recency` stays 0: open sessions
   /// reach this surface through the discovery cache, which carries no
   /// per-session start time. See [rankSuggestedActivities].
+  /// [discussionStandings] is read once per build, for this course
+  /// ([DiscussionClientExtension.discussionStandingsIn]), not per activity.
   PinSignals _signalsFor(
     String activityId,
     Map<String, MissionXpBreakdown> xpByActivity,
+    Map<String, DiscussionStanding> discussionStandings,
   ) => PinSignals(
-    state: _liveStateFor(activityId).state ?? ActivityPinState.available,
+    state:
+        switch (discussionStandings[activityId]) {
+          final standing? => DiscussionCard.stateOf(standing),
+          null => null,
+        } ??
+        _liveStateFor(activityId).state ??
+        ActivityPinState.available,
     completionFraction: _finished(xpByActivity, activityId) ? 1.0 : 0.0,
     pinged: activityId == _pingedActivityId,
   );
@@ -528,24 +541,33 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   void _practiceMission(String missionId) =>
       startPractice(context, ConstructTypeEnum.vocab, missionId: missionId);
 
-  /// Reopen session [roomId] from [missionId]'s card, which rides the URL so
-  /// the course comes back on it (quests.instructions.md, "The Mission on
-  /// show").
+  /// Reopen session [roomId] from [missionId]'s card or its full plan. The
+  /// session takes the card's place, as one started from it does, and the
+  /// Mission rides the URL, so closing it reopens the card on that Mission
+  /// (quests.instructions.md, "The Mission on show"; routing.instructions.md,
+  /// "Closing a panel").
   void _openSession(String roomId, String missionId) {
     PanelEntryIntent.instance.armForSwap();
     final uri = GoRouterState.of(context).uri;
-    context.go(
-      WorkspaceNav.openRoomById(
-        Uri.parse(WorkspaceNav.selectMission(uri, missionId)),
-        roomId,
-      ),
-    );
+    final location = widget.room == null
+        ? WorkspaceNav.openRoomById(uri, roomId)
+        : WorkspaceNav.openCourseSession(uri, roomId);
+    context.go(WorkspaceNav.selectMission(Uri.parse(location), missionId));
   }
 
   /// Open [ref], listed under [missionId] on the Mission card or the full
   /// course plan.
   void _openActivity(QuestActivity ref, String missionId) {
     if (widget.readOnly) return;
+    if (ref.plan.activityMode.opensSharedRoom) {
+      final own = Matrix.of(context).client
+          .discussionStandingFor(ref.activityId, courseId: widget.room?.id)
+          .room;
+      if (own != null) {
+        _openSession(own.id, missionId);
+        return;
+      }
+    }
     final room = widget.room;
     // The activity takes the card's slot, and the pressed card goes with it,
     // so the activity panel that mounts claims focus
@@ -638,6 +660,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                 ]),
                 builder: (context, _) {
                   final xpByActivity = _xpByActivity();
+                  final discussionStandings = widget.objectivesProvider.client
+                      .discussionStandingsIn(widget.room?.id);
                   if (widget.suggestedOnly) {
                     // The course page's Mission card and its activities
                     // (#9437), ordered by the same Priority matrix the map
@@ -657,7 +681,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                       groups: [current],
                       missionGradient:
                           widget.objectivesProvider.missionGradient,
-                      signalsFor: (id) => _signalsFor(id, xpByActivity),
+                      signalsFor: (id) =>
+                          _signalsFor(id, xpByActivity, discussionStandings),
                       cap: null,
                       includeOngoing: true,
                       includeCompleted: true,
@@ -670,25 +695,30 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         roles: activity.plan.req.numberOfParticipants,
                       ),
                     );
-                    final activities = [
+                    final ranked = [
                       for (final suggestion in suggested) suggestion.activity,
                     ];
                     // Play opens the row's first card, and that card carries a
                     // small "Up next" in Play's colour (#9559), so the two are
                     // one thing. The row leads with a session the learner is
-                    // already in — Play reads "Continue activity" and reopens
-                    // it, so a started activity gets finished before a new one
-                    // starts — then a coursemate's open session, then the best
-                    // unfinished activity ("Next activity"), then a finished
-                    // one for another round ("Play again"), then what the
-                    // course can't fill yet. Each Mission keeps to its own
-                    // activities: a session from another Mission resumes from
-                    // that Mission's card or Chats.
-                    final inRow = activities.firstOrNull;
-                    final playTarget = inRow ?? current.activities.firstOrNull;
-                    final ongoingRoomId = inRow == null
+                    // already in, a roleplay's or a discussion's alike — Play
+                    // reads "Continue activity" and reopens it, so a started
+                    // activity gets finished before a new one starts — then a
+                    // coursemate's open session, then the best unfinished
+                    // activity ("Next activity"), then a finished one for
+                    // another round ("Play again"), then what the course can't
+                    // fill yet. The row is never reordered by mode. Each
+                    // Mission keeps to its own activities: a session from
+                    // another Mission resumes from that Mission's card or
+                    // Chats.
+                    final activities = ranked;
+                    final playTarget =
+                        ranked.firstOrNull ?? current.activities.firstOrNull;
+                    final ongoingRoomId = playTarget == null
                         ? null
-                        : widget.room?.activeActivityRoomId(inRow.activityId);
+                        : widget.room?.activeActivityRoomId(
+                            playTarget.activityId,
+                          );
                     final replay =
                         playTarget != null &&
                         ongoingRoomId == null &&
@@ -800,8 +830,9 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                               pingedActivityId: _pingedActivityId,
                               highlightedActivityId: widget.readOnly
                                   ? null
-                                  : inRow?.activityId,
+                                  : playTarget?.activityId,
                               interactive: !widget.readOnly,
+                              courseId: widget.room?.id,
                             ),
                     );
                   }
@@ -891,6 +922,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         liveStateByActivity: _liveStateFor,
                         availableParticipants: _availableParticipants,
                         interactive: !widget.readOnly,
+                        courseId: widget.room?.id,
                       );
                     },
                   );

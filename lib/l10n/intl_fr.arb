@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-11-06 13:10:59.298863",
+    "@@last_modified": "2026-11-11 11:38:42.714895",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10241,11 +10241,6 @@
     "callTranscriptPreparingRecording": "Préparation de l'enregistrement complet…",
     "callTranscriptNoRecording": "Aucun enregistrement de l'appel complet.",
     "callTranscriptNotSubscribed": "{name} n'avait pas d'abonnement pendant cet appel, donc ce qui a été dit n'a pas été transcrit.",
-    "joinYourCourse": "Rejoignez votre cours",
-    "courseCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code de cours pour vous ajouter automatiquement à votre cours.",
-    "courseCodeLabel": "Code de cours",
-    "courseCodeSaved": "Code de cours {code} enregistré",
-    "courseCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons à votre cours.",
     "moderationRefusedContactDetails": "Votre message n'a pas été envoyé. Un filtre automatique a détecté des coordonnées, comme un numéro de téléphone. Veuillez les supprimer et réessayer.",
     "moderationRefusedProfanity": "Votre message n'a pas été envoyé. Un filtre automatique a détecté un mot que nous n'autorisons pas dans le chat. Veuillez le modifier et réessayer.",
     "callTranscriptTranscribeButton": "Transcrire",
@@ -10401,5 +10396,20 @@
     "changeBaseLanguageDesc": "Les menus et les boutons de l'application passeront en {language}.",
     "accountSetupFailedHelp": "Nous n'avons pas pu terminer la configuration de votre compte. Vérifiez votre connexion et réessayez, ou déconnectez-vous et connectez-vous plus tard.",
     "onboardingOfflineError": "Vous êtes hors ligne. Réessayez une fois que vous serez de nouveau connecté.",
-    "activitySavedTo": "Activité enregistrée dans {page}"
+    "activitySavedTo": "Activité enregistrée dans {page}",
+    "joinWithYourCode": "Rejoindre avec votre code",
+    "joinCodeJoinExplanation": "Connectez-vous ou inscrivez-vous, et nous utiliserons votre code pour vous ajouter automatiquement.",
+    "joinCodeLabel": "Code",
+    "joinCodeSaved": "Code {code} enregistré",
+    "joinCodeSavedExplanation": "Inscrivez-vous ou connectez-vous et nous vous ajouterons.",
+    "discussionLabel": "Discussion",
+    "discussionCardSemantics": "Discussion : {title}",
+    "discussionJoined": "Rejointe",
+    "discussionAnswered": "Répondu",
+    "joinTheDiscussion": "Rejoindre la discussion",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 camarade est dans cette discussion} other{{count} camarades sont dans cette discussion}}",
+    "discussionStartIt": "Soyez le premier à lancer cette discussion",
+    "discussionRemoved": "Vous ne pouvez pas rejoindre cette discussion.",
+    "discussionJoinArriving": "Vous êtes là ! La discussion s’ouvrira dès qu’elle arrivera.",
+    "roleplayLabel": "Jeu de rôle"
 }

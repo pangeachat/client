@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:11:03.742442",
+    "@@last_modified": "2026-11-11 11:38:52.908055",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9946,11 +9946,6 @@
     "callTranscriptPreparingRecording": "Forbereder hele opptaket…",
     "callTranscriptNoRecording": "Ingen opptak av hele samtalen.",
     "callTranscriptNotSubscribed": "{name} hadde ikke et abonnement under denne samtalen, så det som ble sagt ble ikke transkribert.",
-    "joinYourCourse": "Bli med på kurset ditt",
-    "courseCodeJoinExplanation": "Logg inn eller registrer deg, så bruker vi kurskoden din til å legge deg til kurset automatisk.",
-    "courseCodeLabel": "Kurskode",
-    "courseCodeSaved": "Kurskode {code} lagret",
-    "courseCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til kurset ditt.",
     "moderationRefusedContactDetails": "Meldingen din ble ikke sendt. Et automatisk filter fant kontaktdetaljer, som et telefonnummer. Vennligst fjern dem og prøv igjen.",
     "moderationRefusedProfanity": "Meldingen din ble ikke sendt. Et automatisk filter fant et ord vi ikke tillater i chatten. Vennligst endre det og prøv igjen.",
     "callTranscriptTranscribeButton": "Transkriber",
@@ -10106,5 +10101,20 @@
     "changeBaseLanguageDesc": "Appens menyer og knapper vil bytte til {language}.",
     "accountSetupFailedHelp": "Vi kunne ikke fullføre oppsettet av kontoen din. Sjekk tilkoblingen din og prøv igjen, eller logg ut og logg inn senere.",
     "onboardingOfflineError": "Du er frakoblet. Prøv igjen når du er på nett.",
-    "activitySavedTo": "Aktivitet lagret i {page}"
+    "activitySavedTo": "Aktivitet lagret i {page}",
+    "joinWithYourCode": "Bli med med koden din",
+    "joinCodeJoinExplanation": "Logg inn eller registrer deg, så bruker vi koden din til å legge deg til automatisk.",
+    "joinCodeLabel": "Kode",
+    "joinCodeSaved": "Kode {code} lagret",
+    "joinCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til.",
+    "discussionLabel": "Diskusjon",
+    "discussionCardSemantics": "Diskusjon: {title}",
+    "discussionJoined": "Ble med",
+    "discussionAnswered": "Besvart",
+    "joinTheDiscussion": "Bli med i diskusjonen",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 klassekamerat er i denne diskusjonen} other{{count} klassekamerater er i denne diskusjonen}}",
+    "discussionStartIt": "Vær den første til å starte denne diskusjonen",
+    "discussionRemoved": "Du kan ikke bli med i denne diskusjonen.",
+    "discussionJoinArriving": "Du er med! Diskusjonen åpnes så snart den er klar.",
+    "roleplayLabel": "Rollespill"
 }

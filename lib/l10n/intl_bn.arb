@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-06 13:10:57.451916",
+    "@@last_modified": "2026-11-11 11:38:39.202337",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10514,11 +10514,6 @@
     "callTranscriptPreparingRecording": "সম্পূর্ণ রেকর্ডিং প্রস্তুত করা হচ্ছে…",
     "callTranscriptNoRecording": "সম্পূর্ণ কলের কোনো রেকর্ডিং নেই।",
     "callTranscriptNotSubscribed": "{name} এর এই কলে কোনো সাবস্ক্রিপশন ছিল না, তাই যা বলা হয়েছে তা প্রতিলিপি করা হয়নি।",
-    "joinYourCourse": "আপনার কোর্সে যোগ দিন",
-    "courseCodeJoinExplanation": "লগ ইন করুন অথবা সাইন আপ করুন, এবং আমরা আপনার কোর্স কোড ব্যবহার করে আপনাকে স্বয়ংক্রিয়ভাবে আপনার কোর্সে যোগ করব।",
-    "courseCodeLabel": "কোর্স কোড",
-    "courseCodeSaved": "কোর্স কোড {code} সংরক্ষণ করা হয়েছে",
-    "courseCodeSavedExplanation": "সাইন আপ করুন অথবা লগ ইন করুন এবং আমরা আপনাকে আপনার কোর্সে যোগ করব।",
     "moderationRefusedContactDetails": "আপনার বার্তা পাঠানো হয়নি। একটি স্বয়ংক্রিয় ফিল্টার যোগাযোগের বিবরণ, যেমন একটি ফোন নম্বর খুঁজে পেয়েছে। অনুগ্রহ করে সেগুলি সরিয়ে আবার চেষ্টা করুন৷",
     "moderationRefusedProfanity": "আপনার বার্তা পাঠানো হয়নি। একটি স্বয়ংক্রিয় ফিল্টার এমন একটি শব্দ খুঁজে পেয়েছে যা আমরা চ্যাটে অনুমতি দিই না। অনুগ্রহ করে এটি পরিবর্তন করে আবার চেষ্টা করুন।",
     "callTranscriptTranscribeButton": "ট্রান্সক্রাইব করুন",
@@ -10674,5 +10669,20 @@
     "changeBaseLanguageDesc": "অ্যাপের মেনু এবং বোতামগুলি {language}-এ পরিবর্তিত হবে।",
     "accountSetupFailedHelp": "আমরা আপনার অ্যাকাউন্ট সেট আপ করা শেষ করতে পারিনি। আপনার সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন, অথবা লগ আউট করুন এবং পরে সাইন ইন করুন।",
     "onboardingOfflineError": "আপনি অফলাইন আছেন। অনলাইন হওয়ার পর আবার চেষ্টা করুন।",
-    "activitySavedTo": "অ্যাক্টিভিটি {page}-এ সেভ করা হয়েছে"
+    "activitySavedTo": "অ্যাক্টিভিটি {page}-এ সেভ করা হয়েছে",
+    "joinWithYourCode": "আপনার কোড দিয়ে যোগ দিন",
+    "joinCodeJoinExplanation": "লগ ইন করুন অথবা সাইন আপ করুন, এবং আমরা আপনাকে স্বয়ংক্রিয়ভাবে যোগ করতে আপনার কোড ব্যবহার করব।",
+    "joinCodeLabel": "কোড",
+    "joinCodeSaved": "কোড {code} সংরক্ষিত হয়েছে",
+    "joinCodeSavedExplanation": "সাইন আপ করুন অথবা লগ ইন করুন এবং আমরা আপনাকে যোগ করব।",
+    "discussionLabel": "আলোচনা",
+    "discussionCardSemantics": "আলোচনা: {title}",
+    "discussionJoined": "যোগদান করেছেন",
+    "discussionAnswered": "উত্তর দেওয়া হয়েছে",
+    "joinTheDiscussion": "আলোচনায় যোগ দিন",
+    "discussionClassmatesInRoom": "{count, plural, =1{১ জন সহপাঠী এই আলোচনায় আছেন} other{{count} জন সহপাঠী এই আলোচনায় আছেন}}",
+    "discussionStartIt": "এই আলোচনা শুরু করার প্রথম ব্যক্তি হন",
+    "discussionRemoved": "আপনি এই আলোচনায় যোগ দিতে পারবেন না।",
+    "discussionJoinArriving": "আপনি যোগ দিয়েছেন! আলোচনাটি আসার সাথে সাথেই খুলে যাবে।",
+    "roleplayLabel": "ভূমিকাভিনয়"
 }

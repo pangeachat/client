@@ -177,9 +177,15 @@ class PangeaMessageEvent {
   );
 
   List<RepresentationEvent>? _representations;
+
+  /// Representations this learner could not post, kept for them alone,
+  /// newest first. [_representations] is reset on several paths, so they are
+  /// held apart from it (#9833).
+  final List<RepresentationEvent> _localRepresentations = [];
+
   List<RepresentationEvent> get representations {
     if (_representations != null) return _representations!;
-    _representations = [];
+    _representations = [..._localRepresentations];
     try {
       final tokens = _tokensSafe(
         _latestEdit.content[MessageConstants.tokensSent]
@@ -681,6 +687,8 @@ class PangeaMessageEvent {
       tokens: response.ttsTokens,
     );
 
+    // Shared with the room only where the learner may post (#9833).
+    if (!room.canSendDefaultMessages) return file;
     room.sendFileEvent(
       file,
       extraContent: {
@@ -846,7 +854,17 @@ class PangeaMessageEvent {
     return translation.translation;
   }
 
-  Future<String?> requestRepresentationByDetectedLanguage() async {
+  /// Gets tokens for the toolbar: for [messageDisplayRepresentation], or for
+  /// a new representation in the message's detected language when it has none.
+  Future<void> requestDisplayTokens() async {
+    final representation =
+        messageDisplayRepresentation ??
+        await _requestRepresentationByDetectedLanguage();
+    await representation?.requestTokens();
+  }
+
+  Future<RepresentationEvent?>
+  _requestRepresentationByDetectedLanguage() async {
     LanguageDetectionResponse? resp;
     final result = await LanguageDetectionRepo.instance.get(
       LanguageDetectionRequest(
@@ -861,9 +879,7 @@ class PangeaMessageEvent {
 
     final langCode = resp.detections.firstOrNull?.langCode;
     if (langCode == null) return null;
-    if (langCode == correctedSent?.langCode) {
-      return correctedSent?.event?.eventId;
-    }
+    if (langCode == correctedSent?.langCode) return correctedSent;
 
     final res = await _requestRepresentation(
       correctedSent?.content.text ?? _latestEdit.body,
@@ -873,7 +889,7 @@ class PangeaMessageEvent {
     );
 
     if (res.isError) return null;
-    return _sendRepresentationEvent(res.result!);
+    return _saveRepresentation(res.result!);
   }
 
   Future<FullTextTranslationResponseModel> requestTranslationByL1({
@@ -939,7 +955,7 @@ class PangeaMessageEvent {
     );
 
     if (resp.isError) throw resp.error!;
-    _sendRepresentationEvent(
+    _saveRepresentation(
       PangeaRepresentation(
         langCode: _l1Code!,
         text: resp.result!.bestTranslation,
@@ -988,7 +1004,7 @@ class PangeaMessageEvent {
   /// a third party cannot edit someone else's message (the read path discards
   /// such edits, spec-correctly), but anyone may relate a correction event,
   /// so this works on received messages too.
-  Future<Event?> sendTokenCorrection(
+  Future<RepresentationEvent?> sendTokenCorrection(
     String fullText,
     PangeaMessageTokens tokensSent,
   ) async {
@@ -999,11 +1015,7 @@ class PangeaMessageEvent {
     );
 
     _representations = null;
-    return room.sendPangeaEvent(
-      content: representation.toJson(),
-      parentEventId: _latestEdit.eventId,
-      type: PangeaEventTypes.representation,
-    );
+    return _saveRepresentation(representation);
   }
 
   /// Pure builder behind [sendTokenCorrection]: the correction's language
@@ -1027,15 +1039,35 @@ class PangeaMessageEvent {
     tokens: tokensSent,
   );
 
-  Future<String?> _sendRepresentationEvent(
+  /// Posts [representation] for everyone in the room. Where the learner may not
+  /// post one, as in a course's Announcements chat, it is kept for them alone.
+  Future<RepresentationEvent?> _saveRepresentation(
     PangeaRepresentation representation,
   ) async {
-    final repEvent = await room.sendPangeaEvent(
+    if (!room.canSendEvent(PangeaEventTypes.representation)) {
+      final local = RepresentationEvent(
+        parentMessageEvent: _latestEdit,
+        content: representation,
+        timeline: timeline,
+      );
+      _localRepresentations.insert(0, local);
+      if (_representations != null) {
+        _representations = [local, ..._representations!];
+      }
+      return local;
+    }
+
+    final event = await room.sendPangeaEvent(
       content: representation.toJson(),
       parentEventId: _latestEdit.eventId,
       type: PangeaEventTypes.representation,
     );
-    return repEvent?.eventId;
+    if (event == null) return null;
+    return RepresentationEvent(
+      event: event,
+      parentMessageEvent: _latestEdit,
+      timeline: timeline,
+    );
   }
 
   Future<Event?> _sendSttRepresentationEvent(

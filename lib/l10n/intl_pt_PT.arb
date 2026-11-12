@@ -2550,7 +2550,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-11-06 13:11:04.864921",
+    "@@last_modified": "2026-11-11 11:38:56.228014",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10803,11 +10803,6 @@
     "callTranscriptPreparingRecording": "A preparar a gravação completa…",
     "callTranscriptNoRecording": "Nenhuma gravação da chamada completa.",
     "callTranscriptNotSubscribed": "{name} não tinha uma subscrição durante esta chamada, por isso o que foi dito não foi transcrito.",
-    "joinYourCourse": "Aceder ao seu curso",
-    "courseCodeJoinExplanation": "Inicie sessão ou registe-se, e usaremos o seu código de curso para adicioná-lo automaticamente ao seu curso.",
-    "courseCodeLabel": "Código do curso",
-    "courseCodeSaved": "Código do curso {code} guardado",
-    "courseCodeSavedExplanation": "Registe-se ou inicie sessão e adicioná-lo-emos ao seu curso.",
     "moderationRefusedContactDetails": "A sua mensagem não foi enviada. Um filtro automático detetou detalhes de contacto, como um número de telefone. Por favor, remova-os e tente novamente.",
     "moderationRefusedProfanity": "A sua mensagem não foi enviada. Um filtro automático detetou uma palavra que não permitimos no chat. Por favor, altere-a e tente novamente.",
     "callTranscriptTranscribeButton": "Transcrever",
@@ -10963,5 +10958,20 @@
     "changeBaseLanguageDesc": "Os menus e botões da aplicação mudarão para {language}.",
     "accountSetupFailedHelp": "Não foi possível concluir a configuração da sua conta. Verifique a sua ligação e tente novamente, ou termine a sessão e inicie-a mais tarde.",
     "onboardingOfflineError": "Está offline. Tente novamente quando estiver online.",
-    "activitySavedTo": "Atividade guardada em {page}"
+    "activitySavedTo": "Atividade guardada em {page}",
+    "joinWithYourCode": "Aderir com o seu código",
+    "joinCodeJoinExplanation": "Inicie sessão ou registe-se, e usaremos o seu código para o adicionar automaticamente.",
+    "joinCodeLabel": "Código",
+    "joinCodeSaved": "Código {code} guardado",
+    "joinCodeSavedExplanation": "Registe-se ou inicie sessão e nós adicionamo-lo.",
+    "discussionLabel": "Discussão",
+    "discussionCardSemantics": "Discussão: {title}",
+    "discussionJoined": "Aderiu",
+    "discussionAnswered": "Respondido",
+    "joinTheDiscussion": "Aderir à discussão",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 colega está nesta discussão} other{{count} colegas estão nesta discussão}}",
+    "discussionStartIt": "Sê o primeiro a iniciar esta discussão",
+    "discussionRemoved": "Não podes aderir a esta discussão.",
+    "discussionJoinArriving": "Entraste! A discussão abrirá assim que chegar.",
+    "roleplayLabel": "Roleplay"
 }
