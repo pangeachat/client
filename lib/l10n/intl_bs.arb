@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-11-11 11:38:39.455007",
+    "@@last_modified": "2026-11-12 09:12:25.677487",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Budite prvi koji će započeti ovu diskusiju",
     "discussionRemoved": "Ne možete se pridružiti ovoj diskusiji.",
     "discussionJoinArriving": "Ušli ste! Diskusija će se otvoriti čim stigne.",
-    "roleplayLabel": "Igranje uloga"
+    "roleplayLabel": "Igranje uloga",
+    "scanQrCodeCameraDenied": "Pangea Chat ne može koristiti vašu kameru. Umjesto toga, unesite svoj kod ili dozvolite pristup kameri u postavkama telefona."
 }

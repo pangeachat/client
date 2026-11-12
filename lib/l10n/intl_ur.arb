@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-11-11 11:39:01.834294",
+    "@@last_modified": "2026-11-12 09:12:36.992252",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "اس گفتگو کو شروع کرنے والے پہلے فرد بنیں",
     "discussionRemoved": "آپ اس گفتگو میں شامل نہیں ہو سکتے۔",
     "discussionJoinArriving": "آپ اندر ہیں! گفتگو جیسے ہی پہنچے گی کھل جائے گی۔",
-    "roleplayLabel": "کردار ادا کرنا"
+    "roleplayLabel": "کردار ادا کرنا",
+    "scanQrCodeCameraDenied": "Pangea Chat آپ کا کیمرہ استعمال نہیں کر سکتا۔ اس کے بجائے اپنا کوڈ ٹائپ کریں، یا اپنے فون کی سیٹنگز میں کیمرے تک رسائی کی اجازت دیں۔"
 }

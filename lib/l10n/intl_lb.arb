@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-11-11 11:38:48.755362",
+    "@@last_modified": "2026-11-12 09:12:31.239567",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Sief deen éischten, deen dës Diskussioun ufänkt",
     "discussionRemoved": "Du kanns net bei dës Diskussioun derbäi kommen.",
     "discussionJoinArriving": "Du bass derbäi! D'Diskussioun geet op soubal se ukënnt.",
-    "roleplayLabel": "Rollenspill"
+    "roleplayLabel": "Rollenspill",
+    "scanQrCodeCameraDenied": "Pangea Chat kann Är Kamera net benotzen. Gitt Äre Code amplaz an, oder erlaabt de Kamerazougang an den Astellunge vun Ärem Telefon."
 }

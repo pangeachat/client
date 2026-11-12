@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:55.645875",
+    "@@last_modified": "2026-11-12 09:12:35.967379",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -11000,5 +11000,6 @@
     "discussionStartIt": "Seja o primeiro a iniciar esta discussão",
     "discussionRemoved": "Você não pode participar desta discussão.",
     "discussionJoinArriving": "Você está dentro! A discussão será aberta assim que chegar.",
-    "roleplayLabel": "Roleplay"
+    "roleplayLabel": "Roleplay",
+    "scanQrCodeCameraDenied": "O Pangea Chat não pode usar sua câmera. Digite seu código ou permita o acesso à câmera nas configurações do seu telefone."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:41.380169",
+    "@@last_modified": "2026-11-12 09:12:26.882535",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -11001,5 +11001,6 @@
     "discussionStartIt": "Estu la unua, kiu komencas ĉi tiun diskuton",
     "discussionRemoved": "Vi ne povas aliĝi al ĉi tiu diskuto.",
     "discussionJoinArriving": "Vi estas en! La diskuto malfermiĝos tuj kiam ĝi alvenos.",
-    "roleplayLabel": "Roluludo"
+    "roleplayLabel": "Roluludo",
+    "scanQrCodeCameraDenied": "Pangea Chat ne povas uzi vian fotilon. Tajpu vian kodon anstataŭe, aŭ permesu aliron al la fotilo en la agordoj de via telefono."
 }

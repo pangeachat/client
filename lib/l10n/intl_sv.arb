@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:59.465768",
+    "@@last_modified": "2026-11-12 09:12:35.860627",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10574,5 +10574,6 @@
     "discussionStartIt": "Bli först med att starta diskussionen",
     "discussionRemoved": "Du kan inte gå med i den här diskussionen.",
     "discussionJoinArriving": "Du är med! Diskussionen öppnas så snart den anländer.",
-    "roleplayLabel": "Rollspel"
+    "roleplayLabel": "Rollspel",
+    "scanQrCodeCameraDenied": "Pangea Chat kan inte använda din kamera. Skriv in din kod istället, eller tillåt kameraåtkomst i telefonens inställningar."
 }

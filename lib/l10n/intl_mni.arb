@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-11-11 11:38:52.115727",
+    "@@last_modified": "2026-11-12 09:12:32.907862",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "খন্ন-নৈনবা অসি হৌবগী অহানবা ওইবীয়ু",
     "discussionRemoved": "নখোইনা খন্ন-নৈনবা অসিদা শরুক য়াবা ঙম্লোই.",
     "discussionJoinArriving": "নখোইনা শরুক য়াখ্রে! খন্ন-নৈনবা অসি লাকপগা হাংদোক্কনি.",
-    "roleplayLabel": "রোলপ্লে"
+    "roleplayLabel": "রোলপ্লে",
+    "scanQrCodeCameraDenied": "Pangea Chat-na nanggi camera sijinnaba ngamde. Adudagi nanggi code type tou, nattraga nanggi phone-gi setting-ta camera sijinnaba yaba tou."
 }

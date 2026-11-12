@@ -2954,7 +2954,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-11-11 11:38:49.915205",
+    "@@last_modified": "2026-11-12 09:12:31.557247",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10837,5 +10837,6 @@
     "discussionStartIt": "Būkite pirmas, pradėjęs šią diskusiją",
     "discussionRemoved": "Negalite prisijungti prie šios diskusijos.",
     "discussionJoinArriving": "Jūs prisijungėte! Diskusija prasidės, kai tik atsiras.",
-    "roleplayLabel": "Vaidmenų žaidimas"
+    "roleplayLabel": "Vaidmenų žaidimas",
+    "scanQrCodeCameraDenied": "„Pangea Chat“ negali naudoti jūsų kameros. Įveskite kodą arba leiskite prieigą prie kameros telefono nustatymuose."
 }

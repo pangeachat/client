@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-11-11 11:38:47.274995",
+    "@@last_modified": "2026-11-12 09:12:30.664192",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Осы талқылауды бірінші болып бастаңыз",
     "discussionRemoved": "Бұл талқылауға қосыла алмайсыз.",
     "discussionJoinArriving": "Сіз кірдіңіз! Талқылау келгеннен кейін бірден ашылады.",
-    "roleplayLabel": "Рөлдік ойын"
+    "roleplayLabel": "Рөлдік ойын",
+    "scanQrCodeCameraDenied": "Pangea Chat камераңызды пайдалана алмайды. Оның орнына кодыңызды теріңіз немесе телефон параметрлерінде камераға рұқсат беріңіз."
 }

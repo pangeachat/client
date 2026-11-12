@@ -3541,7 +3541,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-11-11 11:38:43.354956",
+    "@@last_modified": "2026-11-12 09:12:28.029736",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -10070,5 +10070,6 @@
     "discussionStartIt": "Bí ar an gcéad duine a chuirfidh tús leis an bplé seo",
     "discussionRemoved": "Ní féidir leat páirt a ghlacadh sa phlé seo.",
     "discussionJoinArriving": "Tá tú istigh! Osclófar an plé a luaithe is a thiocfaidh sé.",
-    "roleplayLabel": "Rólghlacadh"
+    "roleplayLabel": "Rólghlacadh",
+    "scanQrCodeCameraDenied": "Ní féidir le Pangea Chat do cheamara a úsáid. Clóscríobh do chód ina ionad, nó ceadaigh rochtain ar an gceamara i socruithe do ghutháin."
 }

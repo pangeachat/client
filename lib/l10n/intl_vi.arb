@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:39:02.735412",
+    "@@last_modified": "2026-11-12 09:12:37.208514",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7366,5 +7366,6 @@
     "discussionStartIt": "Hãy là người đầu tiên bắt đầu cuộc thảo luận này",
     "discussionRemoved": "Bạn không thể tham gia cuộc thảo luận này.",
     "discussionJoinArriving": "Bạn đã vào! Cuộc thảo luận sẽ mở ngay khi đến.",
-    "roleplayLabel": "Nhập vai"
+    "roleplayLabel": "Nhập vai",
+    "scanQrCodeCameraDenied": "Pangea Chat không thể sử dụng camera của bạn. Vui lòng nhập mã thay thế hoặc cho phép truy cập camera trong cài đặt điện thoại của bạn."
 }

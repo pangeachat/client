@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:40.825243",
+    "@@last_modified": "2026-11-12 09:12:26.634232",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10186,5 +10186,6 @@
     "discussionStartIt": "Sigues el primer a iniciar aquesta discussió",
     "discussionRemoved": "No pots unir-te a aquesta discussió.",
     "discussionJoinArriving": "Ja hi ets! La discussió s'obrirà tan aviat com arribi.",
-    "roleplayLabel": "Joc de rol"
+    "roleplayLabel": "Joc de rol",
+    "scanQrCodeCameraDenied": "Pangea Chat no pot utilitzar la càmera. Escriviu el codi manualment o permeteu l'accés a la càmera a la configuració del telèfon."
 }

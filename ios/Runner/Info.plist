@@ -71,7 +71,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>Share calendar dates with your contacts in Pangea Chat.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Open the camera and take a picture to share them with your contacts on Pangea Chat.</string>
+	<string>Take pictures to share with your contacts on Pangea Chat, and scan a course QR code to join a course.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Share contacts with your contacts in Pangea Chat.</string>
 	<key>NSFaceIDUsageDescription</key>

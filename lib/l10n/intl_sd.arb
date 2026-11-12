@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-11-11 11:39:05.100907",
+    "@@last_modified": "2026-11-12 09:12:34.893885",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "هن بحث کي شروع ڪرڻ وارا پهريان بڻجو",
     "discussionRemoved": "توهان هن بحث ۾ شامل نٿا ٿي سگهو.",
     "discussionJoinArriving": "توهان اندر آهيو! بحث جلد ئي شروع ٿيندو.",
-    "roleplayLabel": "ڪردار ادا ڪرڻ"
+    "roleplayLabel": "ڪردار ادا ڪرڻ",
+    "scanQrCodeCameraDenied": "پينجيا چيٽ توهان جو ڪئميرا استعمال نٿو ڪري سگهي. ان جي بدران پنهنجو ڪوڊ ٽائپ ڪريو، يا پنهنجي فون جي سيٽنگز ۾ ڪئميرا تائين رسائي جي اجازت ڏيو."
 }

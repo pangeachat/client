@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-11-11 11:38:52.425746",
+    "@@last_modified": "2026-11-12 09:12:32.747498",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Kun l-ewwel li tibda din id-diskussjoni",
     "discussionRemoved": "Ma tistax tingħaqad ma' din id-diskussjoni.",
     "discussionJoinArriving": "Dħalt! Id-diskussjoni se tiftaħ malli tasal.",
-    "roleplayLabel": "Roleplay"
+    "roleplayLabel": "Roleplay",
+    "scanQrCodeCameraDenied": "Pangea Chat ma jistax juża l-kamera tiegħek. Daħħal il-kodiċi tiegħek minflok, jew ħalli l-aċċess għall-kamera fis-settings tat-telefon tiegħek."
 }

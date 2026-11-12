@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-11-11 11:38:46.897666",
+    "@@last_modified": "2026-11-12 09:12:29.972454",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Vertu fyrst/ur til að hefja þessa umræðu",
     "discussionRemoved": "Þú getur ekki tekið þátt í þessari umræðu.",
     "discussionJoinArriving": "Þú ert komin/n inn! Umræðan opnast um leið og hún kemur.",
-    "roleplayLabel": "Hlutverkaleikur"
+    "roleplayLabel": "Hlutverkaleikur",
+    "scanQrCodeCameraDenied": "Pangea Chat getur ekki notað myndavélina þína. Sláðu inn kóðann þinn í staðinn, eða leyfðu aðgang að myndavélinni í stillingum símans þíns."
 }

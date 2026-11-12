@@ -3080,7 +3080,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-11-11 11:39:00.382423",
+    "@@last_modified": "2026-11-12 09:12:36.503349",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10688,5 +10688,6 @@
     "discussionStartIt": "เป็นคนแรกที่เริ่มการสนทนานี้",
     "discussionRemoved": "คุณไม่สามารถเข้าร่วมการสนทนานี้ได้",
     "discussionJoinArriving": "คุณเข้าร่วมแล้ว! การสนทนาจะเปิดขึ้นทันทีที่มาถึง",
-    "roleplayLabel": "สวมบทบาท"
+    "roleplayLabel": "สวมบทบาท",
+    "scanQrCodeCameraDenied": "Pangea Chat ไม่สามารถใช้กล้องของคุณได้ โปรดพิมพ์รหัสแทน หรืออนุญาตการเข้าถึงกล้องในการตั้งค่าโทรศัพท์ของคุณ"
 }

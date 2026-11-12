@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-11-11 11:38:39.483332",
+    "@@last_modified": "2026-11-12 09:12:25.633531",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10362,5 +10362,6 @@
     "discussionStartIt": "كن أول من يبدأ هذه المناقشة",
     "discussionRemoved": "لا يمكنك الانضمام إلى هذه المناقشة.",
     "discussionJoinArriving": "لقد انضممت! ستفتح المناقشة حالما تصل.",
-    "roleplayLabel": "لعب الأدوار"
+    "roleplayLabel": "لعب الأدوار",
+    "scanQrCodeCameraDenied": "لا يمكن لتطبيق Pangea Chat استخدام الكاميرا. اكتب الرمز بدلاً من ذلك، أو اسمح بالوصول إلى الكاميرا في إعدادات هاتفك."
 }

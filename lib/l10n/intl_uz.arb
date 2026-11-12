@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-11-11 11:39:02.356856",
+    "@@last_modified": "2026-11-12 09:12:37.071897",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10063,5 +10063,6 @@
     "discussionStartIt": "Ushbu munozarani birinchi boʻlib boshlang",
     "discussionRemoved": "Siz ushbu munozaraga qoʻshila olmaysiz.",
     "discussionJoinArriving": "Siz kirdingiz! Munozara kelishi bilan ochiladi.",
-    "roleplayLabel": "Rolli oʻyin"
+    "roleplayLabel": "Rolli oʻyin",
+    "scanQrCodeCameraDenied": "Pangea Chat kamerangizdan foydalana olmaydi. Buning oʻrniga kodingizni tering yoki telefoningiz sozlamalarida kamera ruxsatini bering."
 }

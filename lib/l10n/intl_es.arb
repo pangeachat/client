@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-11-11 11:38:41.665064",
+    "@@last_modified": "2026-11-12 09:12:26.904124",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -8288,5 +8288,6 @@
     "discussionStartIt": "Sé el primero en iniciar este debate",
     "discussionRemoved": "No puedes unirte a este debate.",
     "discussionJoinArriving": "¡Ya estás dentro! El debate se abrirá en cuanto llegue.",
-    "roleplayLabel": "Juego de rol"
+    "roleplayLabel": "Juego de rol",
+    "scanQrCodeCameraDenied": "Pangea Chat no puede usar tu cámara. Escribe tu código o permite el acceso a la cámara en la configuración de tu teléfono."
 }

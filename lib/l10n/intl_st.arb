@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-11-11 11:38:58.816021",
+    "@@last_modified": "2026-11-12 09:12:35.770571",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Eba oa pele ho qala puisano ena",
     "discussionRemoved": "Ha o kgone ho kena puisano ena.",
     "discussionJoinArriving": "O kene! Puisano e tla bula hang ha e fihla.",
-    "roleplayLabel": "Ho bapala karolo"
+    "roleplayLabel": "Ho bapala karolo",
+    "scanQrCodeCameraDenied": "Pangea Chat e ke ke ea sebelisa khamera ea hau. Ngola khoutu ea hau, kapa lumella phihlello ea khamera litlhophisong tsa fono ea hau."
 }

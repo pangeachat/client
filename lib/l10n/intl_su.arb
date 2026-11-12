@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-11-11 11:38:58.963864",
+    "@@last_modified": "2026-11-12 09:12:35.998219",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Janten anu pangheulana ngamimitian diskusi ieu",
     "discussionRemoved": "Anjeun teu tiasa ngiringan diskusi ieu.",
     "discussionJoinArriving": "Anjeun lebet! Diskusi bakal dibuka pas sumping.",
-    "roleplayLabel": "Roleplay"
+    "roleplayLabel": "Roleplay",
+    "scanQrCodeCameraDenied": "Pangea Chat teu tiasa nganggo kaméra anjeun. Ketik kode anjeun waé, atanapi kéngingkeun aksés kaméra dina setélan telepon anjeun."
 }

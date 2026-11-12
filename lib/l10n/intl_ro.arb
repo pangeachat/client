@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:56.113312",
+    "@@last_modified": "2026-11-12 09:12:34.112284",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10788,5 +10788,6 @@
     "discussionStartIt": "Fii primul care începe această discuție",
     "discussionRemoved": "Nu te poți alătura acestei discuții.",
     "discussionJoinArriving": "Ai intrat! Discuția se va deschide imediat ce sosește.",
-    "roleplayLabel": "Joc de rol"
+    "roleplayLabel": "Joc de rol",
+    "scanQrCodeCameraDenied": "Pangea Chat nu poate folosi camera. Introdu codul manual sau permite accesul la cameră din setările telefonului."
 }

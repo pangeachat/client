@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-11-11 11:38:51.707142",
+    "@@last_modified": "2026-11-12 09:12:32.256080",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Jadilah yang pertama memulakan perbincangan ini",
     "discussionRemoved": "Anda tidak boleh menyertai perbincangan ini.",
     "discussionJoinArriving": "Anda sudah masuk! Perbincangan akan dibuka sebaik sahaja ia tiba.",
-    "roleplayLabel": "Main Peranan"
+    "roleplayLabel": "Main Peranan",
+    "scanQrCodeCameraDenied": "Pangea Chat tidak dapat menggunakan kamera anda. Taip kod anda sebaliknya, atau benarkan akses kamera dalam tetapan telefon anda."
 }

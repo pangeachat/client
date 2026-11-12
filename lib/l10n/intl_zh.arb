@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-11-11 11:39:11.238351",
+    "@@last_modified": "2026-11-12 09:12:37.367011",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10059,5 +10059,6 @@
     "discussionStartIt": "成为第一个开始此讨论的人",
     "discussionRemoved": "您无法加入此讨论。",
     "discussionJoinArriving": "您已加入！讨论将在到达后立即开始。",
-    "roleplayLabel": "角色扮演"
+    "roleplayLabel": "角色扮演",
+    "scanQrCodeCameraDenied": "Pangea Chat 无法使用您的相机。请改为输入您的代码，或在手机设置中允许相机访问。"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-11-11 11:38:44.818913",
+    "@@last_modified": "2026-11-12 09:12:29.764270",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Ua tus pib qhov sib tham no ua ntej",
     "discussionRemoved": "Koj tsis tuaj yeem koom qhov sib tham no.",
     "discussionJoinArriving": "Koj tuaj lawm! Qhov sib tham yuav qhib sai li sai tau thaum nws tuaj txog.",
-    "roleplayLabel": "Ua yeeb yam"
+    "roleplayLabel": "Ua yeeb yam",
+    "scanQrCodeCameraDenied": "Pangea Chat siv tsis tau koj lub koob yees duab. Sau koj tus lej es tsis txhob siv lub koob yees duab, los yog tso cai siv lub koob yees duab hauv koj lub xov tooj qhov chaw teeb tsa."
 }

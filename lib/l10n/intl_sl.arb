@@ -1793,7 +1793,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-11-11 11:38:57.556468",
+    "@@last_modified": "2026-11-12 09:12:35.057002",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -11001,5 +11001,6 @@
     "discussionStartIt": "Bodite prvi, ki bo začel to razpravo",
     "discussionRemoved": "Ne morete se pridružiti tej razpravi.",
     "discussionJoinArriving": "Ste notri! Razprava se bo odprla takoj, ko prispe.",
-    "roleplayLabel": "Igranje vlog"
+    "roleplayLabel": "Igranje vlog",
+    "scanQrCodeCameraDenied": "Pangea Chat ne more uporabljati vaše kamere. Namesto tega vnesite kodo ali dovolite dostop do kamere v nastavitvah telefona."
 }

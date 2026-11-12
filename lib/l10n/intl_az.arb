@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-11-11 11:38:40.003076",
+    "@@last_modified": "2026-11-12 09:12:25.789231",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Bu müzakirəni ilk başlayan siz olun",
     "discussionRemoved": "Bu müzakirəyə qoşula bilməzsiniz.",
     "discussionJoinArriving": "Siz içəridəsiniz! Müzakirə gələn kimi açılacaq.",
-    "roleplayLabel": "Rolların ifası"
+    "roleplayLabel": "Rolların ifası",
+    "scanQrCodeCameraDenied": "Pangea Chat kameranızdan istifadə edə bilmir. Bunun əvəzinə kodunuzu yazın və ya telefonunuzun parametrlərində kamera girişinə icazə verin."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-11-11 11:38:47.052190",
+    "@@last_modified": "2026-11-12 09:12:30.103541",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Dadi sing pertama miwiti diskusi iki",
     "discussionRemoved": "Sampeyan ora bisa gabung diskusi iki.",
     "discussionJoinArriving": "Sampeyan wis mlebu! Diskusi bakal dibukak sanalika teka.",
-    "roleplayLabel": "Dolanan Peran"
+    "roleplayLabel": "Dolanan Peran",
+    "scanQrCodeCameraDenied": "Pangea Chat ora bisa nggunakake kamera sampeyan. Ketik kode sampeyan, utawa ijini akses kamera ing setelan telpon sampeyan."
 }

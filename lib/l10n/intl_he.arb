@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:44.314129",
+    "@@last_modified": "2026-11-12 09:12:28.662487",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10970,5 +10970,6 @@
     "discussionStartIt": "היה הראשון להתחיל את הדיון הזה",
     "discussionRemoved": "אינך יכול/ה להצטרף לדיון זה.",
     "discussionJoinArriving": "אתה בפנים! הדיון ייפתח ברגע שהוא יגיע.",
-    "roleplayLabel": "משחק תפקידים"
+    "roleplayLabel": "משחק תפקידים",
+    "scanQrCodeCameraDenied": "Pangea Chat לא יכול להשתמש במצלמה שלך. הקלד את הקוד במקום זאת, או אפשר גישה למצלמה בהגדרות הטלפון שלך."
 }

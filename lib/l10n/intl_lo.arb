@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-11-11 11:38:50.072339",
+    "@@last_modified": "2026-11-12 09:12:31.591329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "ເປັນຄົນທຳອິດທີ່ເລີ່ມການສົນທະນານີ້",
     "discussionRemoved": "ທ່ານບໍ່ສາມາດເຂົ້າຮ່ວມການສົນທະນານີ້ໄດ້.",
     "discussionJoinArriving": "ທ່ານເຂົ້າຮ່ວມແລ້ວ! ການສົນທະນາຈະເປີດທັນທີທີ່ມັນມາຮອດ.",
-    "roleplayLabel": "ຫຼິ້ນບົດບາດ"
+    "roleplayLabel": "ຫຼິ້ນບົດບາດ",
+    "scanQrCodeCameraDenied": "Pangea Chat ບໍ່ສາມາດໃຊ້ກ້ອງຂອງທ່ານໄດ້. ພິມລະຫັດຂອງທ່ານແທນ, ຫຼືອະນຸຍາດການເຂົ້າເຖິງກ້ອງໃນການຕັ້ງຄ່າໂທລະສັບຂອງທ່ານ."
 }

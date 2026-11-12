@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-11-11 11:38:39.798710",
+    "@@last_modified": "2026-11-12 09:12:25.541397",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "ይህን ውይይት ለመጀመር የመጀመሪያው ይሁኑ",
     "discussionRemoved": "ይህን ውይይት መቀላቀል አይችሉም።",
     "discussionJoinArriving": "ገብተዋል! ውይይቱ እንደደረሰ ይከፈታል።",
-    "roleplayLabel": "የሚና ጨዋታ"
+    "roleplayLabel": "የሚና ጨዋታ",
+    "scanQrCodeCameraDenied": "Pangea Chat ካሜራዎን መጠቀም አይችልም። በምትኩ ኮድዎን ይተይቡ፣ ወይም በስልክዎ ቅንብሮች ውስጥ የካሜራ መዳረሻን ይፍቀዱ።"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-11-11 11:38:39.536891",
+    "@@last_modified": "2026-11-12 09:12:25.784236",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Wees die eerste om hierdie bespreking te begin",
     "discussionRemoved": "Jy kan nie by hierdie bespreking aansluit nie.",
     "discussionJoinArriving": "Jy is in! Die bespreking sal oopmaak sodra dit arriveer.",
-    "roleplayLabel": "Rolspel"
+    "roleplayLabel": "Rolspel",
+    "scanQrCodeCameraDenied": "Pangea Chat kan nie jou kamera gebruik nie. Tik eerder jou kode, of laat kameratoegang toe in jou foon se instellings."
 }

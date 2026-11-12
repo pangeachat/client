@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-11-11 11:38:46.445207",
+    "@@last_modified": "2026-11-12 09:12:28.102866",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "Wês de earste dy't dizze diskusje begjint",
     "discussionRemoved": "Jo kinne net meidwaan oan dizze diskusje.",
     "discussionJoinArriving": "Jo binne deryn! De diskusje sil iepenje sa gau as it oankomt.",
-    "roleplayLabel": "Rollespul"
+    "roleplayLabel": "Rollespul",
+    "scanQrCodeCameraDenied": "Pangea Chat kin jo kamera net brûke. Fier jo koade yn, of tastean tagong ta de kamera yn de ynstellings fan jo tillefoan."
 }

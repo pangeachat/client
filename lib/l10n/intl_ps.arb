@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-11-11 11:38:55.506127",
+    "@@last_modified": "2026-11-12 09:12:33.697174",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "د دې بحث پیل کوونکی شئ",
     "discussionRemoved": "تاسو په دې بحث کې ګډون نشئ کولی.",
     "discussionJoinArriving": "تاسو دننه یاست! بحث به ژر تر ژره پیل شي.",
-    "roleplayLabel": "رول پلی"
+    "roleplayLabel": "رول پلی",
+    "scanQrCodeCameraDenied": "Pangea Chat ستاسو کیمره نشي کارولی. پرځای یې خپل کوډ ولیکئ، یا د خپل تلیفون په ترتیباتو کې کیمرې ته لاسرسی ورکړئ."
 }

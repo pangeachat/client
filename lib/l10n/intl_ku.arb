@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-11-11 11:38:49.335866",
+    "@@last_modified": "2026-11-12 09:12:31.322128",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2529,5 +2529,6 @@
     "discussionStartIt": "یەکەم کەس بە کە ئەم گفتوگۆیە دەست پێدەکات",
     "discussionRemoved": "ناتوانیت بەژداری ئەم گفتوگۆیە بکەیت.",
     "discussionJoinArriving": "تۆ لەناویت! گفتوگۆکە بە زوویی دەست پێدەکات.",
-    "roleplayLabel": "ڕۆڵبینین"
+    "roleplayLabel": "ڕۆڵبینین",
+    "scanQrCodeCameraDenied": "Pangea Chat ناتوانێت کامێراکەت بەکاربهێنێت. لەبری ئەوە کۆدەکەت بنووسە، یان ڕێگە بە دەستگەیشتن بە کامێرا بدە لە ڕێکخستنەکانی مۆبایلەکەت."
 }
