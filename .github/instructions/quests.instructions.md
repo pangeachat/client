@@ -5,7 +5,7 @@ description: "Client-side next-Can-Do resolver — the one shared answer to 'whi
 
 # Quests & Learning-Objective Progression (Client)
 
-A **Quest** is the learner's ordered journey through **Can-Dos** (`learning-objectives` in the CMS). The cross-repo model — what a Can-Do is, and the rule that progression is **soft** (an ordered suggestion that only *ranks* content, never locks it) — lives in the org [quests](../../../.github/.github/instructions/quests.instructions.md) doc. This doc owns the **client-side resolver**: how the app computes, from data it already holds, each quest's **next Can-Do** — the single ranking input the world map and other surfaces preference toward — and what the learner sees of it on the course page.
+A **Quest** is the learner's ordered journey through **Can-Dos** (`learning-objectives` in the CMS). The shared quest plan and intended progression live in the org [quests](../../../.github/.github/instructions/quests.instructions.md) doc. The current resolver ranks content without locking it; intended scheduled or student-paced unlocking is not yet implemented. This doc owns the **client-side resolver**: how the app computes, from data it already holds, each quest's **next Can-Do** — the single ranking input the world map and other surfaces preference toward — and what the learner sees of it on the course page.
 
 ## Stars and goal diamonds
 
@@ -144,6 +144,7 @@ The Can-Do the teacher's due dates put the class on also carries a **"Class loca
 A course with its own Can-Do list shows that list's activities ([content lifecycle](../../../.github/.github/instructions/content-lifecycle.instructions.md#course-spaces)). Without one, each Can-Do shows the course's pins, else the plan's selected activities ([quests](../../../.github/.github/instructions/quests.instructions.md#each-entry-in-the-can-do-sequence)), else every activity. The client mechanics ([client#7748](https://github.com/pangeachat/client/issues/7748)):
 
 - Pins travel on the course space's teacher-mode state (`TeacherModeModel.pinnedActivitiesByObjective`: Can-Do id → pinned `activity_id` content ids), the plan's selection on the quest row's entry (`QuestObjectiveStep.activityIds`). Null, a missing Can-Do key, or an empty list select nothing.
+- A Can-Do appears once in a quest, so its ID identifies its entry in the outline, navigation, notes, activity filters and course dates.
 - Restriction is a **pure copy** at the outline boundary (`QuestOutline.restrictedTo`) — never a mutation of the quest-outline cache, which is shared across courses referencing the same quest; that copy is what lets the same quest run restricted in one course and open in another.
 - **One rule, one home**: `effectivePinnedActivityIds` carries the fail-open rule: pins that name a listed activity win, else a selection that names one (in the selection's order), else every activity, so neither can make a Can-Do uncompletable. Both the outline restriction and the course-scoped map's marker filter call it. The world-scoped map is deliberately never filtered — everything stays playable everywhere.
 - The resolver is **pin-unaware by construction**: XP attribution and a Can-Do's vocabulary both derive from the outline's per-Can-Do activity sets, so a filtered outline scopes both with no resolver changes. This holds only because totals are per course (above) — a cross-course rollup would re-admit the very activities the pin excluded ([client#7771](https://github.com/pangeachat/client/issues/7771)).
@@ -164,6 +165,6 @@ A course room shows its own `m.room.avatar` when it has one. When it has none, i
 File GitHub issues for these and link them here.
 
 - A persisted per-Can-Do XP total (server-side rollup) once reading every session room and the local analytics database client-side becomes too costly at catalog scale.
-- Teacher-set **hard** restrictions (an opt-in gate on top of the soft default), if classroom demand appears — deliberately not built today (see the org doc). Distinct from per-course activity pinning (above), which is built and restricts *which activities count*, not *when Can-Dos are reachable*.
+- Implement scheduled or student-paced unlocking under the shared quest design. This remains unimplemented and is distinct from selecting which activities belong to an entry.
 - Implement the joinable/open activity card design — [pangeachat/client#7669](https://github.com/pangeachat/client/issues/7669).
 - Design hint indicating an activity needs more people to start — [pangeachat/client#6810](https://github.com/pangeachat/client/issues/6810).
