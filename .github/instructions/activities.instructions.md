@@ -26,7 +26,7 @@ How learners find and start activities, and the record they leave. What an activ
 
 ## A running activity is a chat room
 
-- Activities belong to Can-Dos. A roleplay session is shared into every joined course that lists its activity, in the session's language, so coursemates can join. A course lists an activity by its own copy, else by its pins, not by Can-Do overlap, and shows only sessions it lists. The course it started from is always included.
+- Activities belong to Can-Dos. A session belongs to one course ([activities](../../../.github/.github/instructions/activities.instructions.md)). Not built yet for roleplays: a roleplay session is still shared into every joined course that lists its activity, in the session's language. A course lists an activity by its own copy, else by its pins, not by Can-Do overlap, and shows only sessions it lists. The course it started from is always included.
 - The started-from course is where it was launched; a map launch records one only when exactly one joined course lists the activity.
 
 ## Discussions
