@@ -130,7 +130,7 @@ class CourseCredit {
   String canonicalOf(String id) => family[id] ?? id;
 
   /// [perMember] (one value per activity, already reduced per member) summed
-  /// onto canonical ids. A no-op without a course copy.
+  /// onto canonical ids. A no-op without a course Can-Do list.
   ///
   /// The hook for XP: the per-Can-Do XP reader (client#9450) sums each
   /// member's sessions, then calls this.
@@ -186,7 +186,7 @@ num creditedForMission({
 
 /// The whole course's credited value: every distinct canonical id the course
 /// credits (shown, hidden, removed, and removed Can-Dos), once each. Without a
-/// course copy, just the [shownIds].
+/// course Can-Do list, just the [shownIds].
 num creditedForCourse({
   required Iterable<String> shownIds,
   required CourseCredit credit,

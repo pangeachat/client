@@ -205,9 +205,9 @@ extension QuestsClientExtension on Client {
   }
 
   /// The activities out of [activityIds] whose XP counts toward [group]: its
-  /// own, or with a course copy every member of an activity's family, which
-  /// counts toward the member the course shows, hidden activities included
-  /// (activity_family.dart).
+  /// own, or with a course Can-Do list every member of an activity's family,
+  /// which counts toward the member the course shows, hidden activities
+  /// included (activity_family.dart).
   static Set<String> _creditedActivityIds(
     QuestObjectiveGroup group,
     Iterable<String> activityIds,

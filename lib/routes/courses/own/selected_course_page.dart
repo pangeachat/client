@@ -118,7 +118,7 @@ class SelectedCourseController extends State<SelectedCourse>
     final client = Matrix.of(context).client;
     final Completer<String> completer = Completer<String>();
     // Navigation does not wait: the new-course page shows its own progress
-    // while the space creation and its copy (capped read) finish.
+    // while the space creation and its Can-Do list (capped read) finish.
     client
         .createPangeaSpace(
           name: course.title,
@@ -144,7 +144,7 @@ class SelectedCourseController extends State<SelectedCourse>
           spaceChild: 0,
         )
         .then<void>((spaceId) async {
-          await _writeNewCourseCopy(client, spaceId, courseId);
+          await _writeNewCanDoList(client, spaceId, courseId);
           completer.complete(spaceId);
         })
         .catchError((error) => completer.completeError(error));
@@ -160,10 +160,10 @@ class SelectedCourseController extends State<SelectedCourse>
     );
   }
 
-  /// The new course's own copy, from the list its members are shown. Never
-  /// fails the creation: an error is logged and the course reads the shared
-  /// quest until the Studio's first publish.
-  Future<void> _writeNewCourseCopy(
+  /// The new course's own Can-Do list, from the list its members are shown.
+  /// Never fails the creation: an error is logged and the course reads the
+  /// shared quest until the Studio's first publish.
+  Future<void> _writeNewCanDoList(
     sdk.Client client,
     String spaceId,
     String questId,
@@ -172,13 +172,13 @@ class SelectedCourseController extends State<SelectedCourse>
       final room = client.getRoomById(spaceId);
       if (room == null) {
         ErrorHandler.logError(
-          e: 'Course created without its own Can-Do copy: room not in sync',
+          e: 'Course created without its own Can-Do list: room not in sync',
           data: {'room_id': spaceId},
           level: SentryLevel.warning,
         );
         return;
       }
-      await room.writeNewCourseCopy(questId);
+      await room.writeNewCanDoList(questId);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
