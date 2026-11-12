@@ -3513,7 +3513,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-11-11 11:38:50.060289",
+    "@@last_modified": "2026-11-12 09:04:13.497437",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -6442,7 +6442,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Nav atrasti DMs vai čati. Pārliecinieties, ka jūsu meklējums ir pareizi uzrakstīts.",
-    "activityAnalyticsTooltipBody": "Šīs ir jūsu saglabātās aktivitātes pārskatīšanai un praksei.",
     "numSavedActivities": "Saglabāto aktivitāšu skaits",
     "saveActivityTitle": "Saglabāt aktivitāti",
     "saveActivityDesc": "Lielisks darbs! Saglabājiet šo aktivitāti turpmākai pārskatīšanai un praksei",
@@ -6677,10 +6676,6 @@
     "zhTWDisplayName": "Ķīniešu (Tradicionālā)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9278,7 +9273,6 @@
     },
     "pageLabel": "{title} lapa",
     "closeHint": "Aizvērt norādi",
-    "starListLabel": "Saglabātās aktivitātes un zvaigznes",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9288,10 +9282,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9608,7 +9598,6 @@
     "selectImageLabel": "Atlasīt attēlu",
     "userSearchTagsLabel": "Meklēt šeit...",
     "courseDetails": "Kursa detaļas",
-    "objective": "Mērķis",
     "pingedLabel": "Pingots",
     "mapFilterPlayerCount": "{count} spēlētāji",
     "practiceFeedbackButtonTooltip": "Ziņot par problēmu šajā uzdevumā",
@@ -9909,17 +9898,9 @@
     "reportSent": "Ziņojums nosūtīts",
     "reportNotSent": "Jūsu ziņojumu nevarēja nosūtīt. Pārbaudiet savienojumu un mēģiniet vēlreiz.",
     "reportPointerMessage": "Ziņojums tika ziņots kursā {courseName} — skatiet Drošība",
-    "learningObjective": "Mācību mērķis",
-    "learningObjectives": "Mācību mērķi",
-    "missionNofM": "Misija {index} no {count}",
-    "xpTowardObjective": "{xp} no {threshold} XP līdz šim mērķim",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Kurss pabeigts!",
-    "courseCompleteDesc": "Jūs esat pabeidzis visus {count} šī kursa mērķus. Turpiniet praktizēties, lai saglabātu apgūto.",
-    "practiceObjective": "Praktizēt šo mērķi",
     "otherActivities": "Citas aktivitātes",
-    "objectiveCircleComplete": "Misija {index}: pabeigta",
-    "objectiveCircleUpNext": "Misija {index}: nākamā",
     "useActivityImageAsChatBackground": "Izmantot aktivitātes attēlu kā tērzēšanas fonu",
     "andCertifyIMeetTheMinimumAge": " un apliecinu, ka esmu vismaz 13 gadus vecs vai sasniedzis minimālo vecumu, kas noteikts manā valstī, ja tas ir augstāks.",
     "filteredNetworkBlockedTitle": "Šis tīkls bloķē Pangea Chat",
@@ -9969,7 +9950,6 @@
     "offlinePracticeNote": "Bezsaistē. Tavas atbildes tiks augšupielādētas, kad būsi atpakaļ.",
     "offlinePracticeSavedNote": "Saglabāts šajā ierīcē. Tavs XP tiks augšupielādēts, kad būsi tiešsaistē.",
     "offlinePracticeNothingSaved": "Šajā ierīcē nav saglabāts pietiekami daudz, lai praktizētu bezsaistē. Mēģiniet vēlreiz, kad būsiet tiešsaistē.",
-    "missionNumber": "Misija {index}",
     "xpToYourStar": "{xp} XP līdz jūsu zvaigznei",
     "missionStarEarned": "Zvaigzne iegūta!",
     "xpFromChats": "Tērzēšanas {xp}",
@@ -9978,8 +9958,6 @@
     "playMission": "Spēlēt",
     "wordCount": "{count, plural, =1{1 vārds} other{{count} vārdi}}",
     "continueActivity": "Turpināt",
-    "noObjectiveActivitiesYet": "Jūs vēl neesat pabeidzis nevienu aktivitāti šim mērķim. Sāciet to no sava kursa.",
-    "objectiveNotInYourCourses": "Šis mērķis nav nevienā no jūsu kursiem.",
     "objectiveActivityCount": "{count, plural, =0{Vēl nav aktivitāšu} =1{1 aktivitāte pabeigta} other{{count} aktivitātes pabeigtas}}",
     "activityCompleted": "Pabeigts",
     "completedTimes": "Pabeigts {count} reizes",
@@ -9987,8 +9965,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Saruna {xp}",
     "xpIncludingGoals": "ieskaitot {xp} no mērķiem",
-    "missionOtherLanguageNotice": "Šī misija ir no kursa valodā {language}. Jūsu progress tajā tiks ieskaitīts tikai tad, ja mācīsities valodu {language}.",
-    "missionLanguageMismatchDesc": "Šī misija ir no kursa valodā {language}. Vai vēlaties mainīt mērķa valodu uz {language}?",
     "xpBySkillTitle": "Pēc prasmēm",
     "missionNextActivity": "Nākamā aktivitāte",
     "missionContinueActivity": "Turpināt aktivitāti",
@@ -9998,7 +9974,6 @@
     "otherCoursesSessions": "Citi kursi ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, iegūti {xp} XP",
-    "currentMission": "Pašreizējā misija",
     "constructUseCorRADesc": "Nolasīts skaļi un sadzirdēts",
     "constructUseIncRADesc": "Nolasīts skaļi, bet nav sadzirdēts",
     "hearItFirstToolName": "Vispirms noklausīties",
@@ -10020,7 +9995,6 @@
     "readAloudTake": "Paņemiet {number}",
     "videoWontPlayHere": "Šo video šeit nevar atskaņot.",
     "watchOnYoutube": "Skatīties pakalpojumā YouTube",
-    "xpTowardMission": "{xp} XP šai misijai",
     "practiceStartWordCount": "{count, plural, =1{vārds, ko praktizēt} other{vārdi, ko praktizēt}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatikas punkts, ko praktizēt} other{gramatikas punkti, ko praktizēt}}",
     "practiceStartExerciseTypes": "Vingrinājumu veidi",
@@ -10059,5 +10033,20 @@
     "discussionStartIt": "Esi pirmais, kurš uzsāk šo diskusiju",
     "discussionRemoved": "Jūs nevarat pievienoties šai diskusijai.",
     "discussionJoinArriving": "Jūs esat iekšā! Diskusija sāksies, tiklīdz tā būs pieejama.",
-    "roleplayLabel": "Lomu spēle"
+    "roleplayLabel": "Lomu spēle",
+    "canDoAnalyticsTooltipBody": "Katrs {canDo} piepildās ar XP no tā aktivitātēm un prakses. Pilns {canDo} nopelna zvaigzni.",
+    "canDoStarListLabel": "{canDos} un saglabātās aktivitātes",
+    "canDoNofM": "{canDo} {index} no {count}",
+    "xpOfThresholdTowardCanDo": "{xp} no {threshold} XP šim {canDo}",
+    "courseCompleteCanDosDesc": "Jūs esat pabeidzis visus {count} {canDos} šajā kursā. Turpiniet praktizēties, lai saglabātu apgūto.",
+    "practiceCanDo": "Praktizēt šo {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: pabeigts",
+    "canDoCircleUpNext": "{canDo} {index}: nākamais",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Šis {canDo} ir no kursa valodā {language}. Jūsu progress tajā tiek ieskaitīts tikai tad, ja mācāties valodu {language}.",
+    "canDoLanguageMismatchDesc": "Šis {canDo} ir no kursa valodā {language}. Vai pārslēgt mērķa valodu uz {language}?",
+    "noCanDoActivitiesYet": "Jūs vēl neesat pabeidzis nevienu aktivitāti šim {canDo}. Sāciet to no sava kursa.",
+    "canDoNotInYourCourses": "Šis {canDo} nav nevienā no jūsu kursiem.",
+    "currentCanDo": "Pašreizējais {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP šim {canDo}"
 }

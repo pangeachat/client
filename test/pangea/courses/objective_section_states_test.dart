@@ -28,7 +28,7 @@ void main() {
   });
 
   const objectiveText = 'Can ask for directions.';
-  const upNextLabel = 'Current mission';
+  const upNextLabel = 'Current Can-Do';
   const classLabel = 'Class location';
 
   ActivityPlanModel plan() => ActivityPlanModel(

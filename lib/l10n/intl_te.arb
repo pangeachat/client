@@ -1315,7 +1315,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-11-11 11:39:00.407143",
+    "@@last_modified": "2026-11-12 09:04:27.241095",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -7209,7 +7209,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "DMలు లేదా చాట్లు కనుగొనబడలేదు. మీ శోధన సరిగ్గా ఉచ్చరించబడిందని నిర్ధారించుకోండి.",
-    "activityAnalyticsTooltipBody": "ఇవి సమీక్ష మరియు అభ్యాసం కోసం మీ సేవ్ చేసిన కార్యకలాపాలు.",
     "numSavedActivities": "సేవ్ చేసిన కార్యకలాపాల సంఖ్య",
     "saveActivityTitle": "కార్యకలాపాన్ని సేవ్ చేయండి",
     "saveActivityDesc": "మంచి పని! ఈ కార్యకలాపాన్ని తరువాత సమీక్ష మరియు అభ్యాసం కోసం సేవ్ చేయండి",
@@ -7444,10 +7443,6 @@
     "zhTWDisplayName": "చైనీస్ (సాంప్రదాయ)",
     "zuDisplayName": "జులూ",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10225,7 +10220,6 @@
     },
     "pageLabel": "{title} పేజీ",
     "closeHint": "మూసివేయు సూచన",
-    "starListLabel": "సేవ్ చేసిన కార్యకలాపాలు మరియు నక్షత్రాలు",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10235,10 +10229,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10555,7 +10545,6 @@
     "selectImageLabel": "చిత్రాన్ని ఎంచుకోండి",
     "userSearchTagsLabel": "దీనిలో శోధించండి...",
     "courseDetails": "కోర్సు వివరాలు",
-    "objective": "లక్ష్యం",
     "pingedLabel": "పింగ్ చేయబడింది",
     "mapFilterPlayerCount": "{count} ఆటగాళ్ళు",
     "practiceFeedbackButtonTooltip": "ఈ అభ్యాసంలో సమస్యను నివేదించండి",
@@ -10856,17 +10845,9 @@
     "reportSent": "నివేదిక పంపబడింది",
     "reportNotSent": "మీ నివేదికను పంపలేకపోయాము. మీ కనెక్షన్‌ని తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.",
     "reportPointerMessage": "{courseName}లో ఒక సందేశం నివేదించబడింది — భద్రతను చూడండి",
-    "learningObjective": "అభ్యాస లక్ష్యం",
-    "learningObjectives": "అభ్యాస లక్ష్యాలు",
-    "missionNofM": "మిషన్ {index} / {count}",
-    "xpTowardObjective": "ఈ లక్ష్యం వైపు {threshold} XPలో {xp}",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "కోర్సు పూర్తయింది!",
-    "courseCompleteDesc": "మీరు ఈ కోర్సులోని {count} లక్ష్యాలన్నింటినీ పూర్తి చేసారు. మీరు నేర్చుకున్న వాటిని గుర్తుంచుకోవడానికి సాధన చేస్తూ ఉండండి.",
-    "practiceObjective": "ఈ లక్ష్యాన్ని సాధన చేయండి",
     "otherActivities": "ఇతర కార్యకలాపాలు",
-    "objectiveCircleComplete": "మిషన్ {index}: పూర్తయింది",
-    "objectiveCircleUpNext": "మిషన్ {index}: తర్వాత",
     "useActivityImageAsChatBackground": "యాక్టివిటీ చిత్రాన్ని చాట్ బ్యాక్‌గ్రౌండ్‌గా ఉపయోగించండి",
     "andCertifyIMeetTheMinimumAge": "మరియు నాకు కనీసం 13 సంవత్సరాలు లేదా నా దేశంలో అవసరమైన కనీస వయస్సు అంతకంటే ఎక్కువ ఉంటే, ఆ వయస్సు ఉందని నేను ధృవీకరిస్తున్నాను.",
     "filteredNetworkBlockedTitle": "ఈ నెట్‌వర్క్ పాంగియా చాట్‌ను బ్లాక్ చేస్తోంది",
@@ -10916,7 +10897,6 @@
     "offlinePracticeNote": "ఆఫ్‌లైన్. మీరు తిరిగి వచ్చినప్పుడు మీ సమాధానాలు అప్‌లోడ్ చేయబడతాయి.",
     "offlinePracticeSavedNote": "ఈ పరికరంలో సేవ్ చేయబడింది. మీరు ఆన్‌లైన్‌కి తిరిగి వచ్చినప్పుడు మీ XP అప్‌లోడ్ చేయబడుతుంది.",
     "offlinePracticeNothingSaved": "ఆఫ్‌లైన్‌లో ప్రాక్టీస్ చేయడానికి ఈ పరికరంలో తగినంత సేవ్ చేయబడలేదు. మీరు ఆన్‌లైన్‌లోకి వచ్చినప్పుడు మళ్లీ ప్రయత్నించండి.",
-    "missionNumber": "మిషన్ {index}",
     "xpToYourStar": "మీ స్టార్‌కు {xp} XP",
     "missionStarEarned": "స్టార్ సంపాదించారు!",
     "xpFromChats": "చాట్‌లు {xp}",
@@ -10925,8 +10905,6 @@
     "playMission": "ఆడండి",
     "wordCount": "{count, plural, =1{1 పదం} other{{count} పదాలు}}",
     "continueActivity": "కొనసాగించు",
-    "noObjectiveActivitiesYet": "మీరు ఇంకా ఈ లక్ష్యం కోసం ఒక కార్యాచరణను పూర్తి చేయలేదు. మీ కోర్సు నుండి ఒకదాన్ని ప్రారంభించండి.",
-    "objectiveNotInYourCourses": "ఈ లక్ష్యం మీ కోర్సులలో దేనిలోనూ లేదు.",
     "objectiveActivityCount": "{count, plural, =0{ఇంకా కార్యకలాపాలు లేవు} =1{1 కార్యాచరణ ఆడబడింది} other{{count} కార్యకలాపాలు ఆడబడ్డాయి}}",
     "activityCompleted": "పూర్తయింది",
     "completedTimes": "{count} సార్లు పూర్తయింది",
@@ -10934,8 +10912,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "సంభాషణ {xp}",
     "xpIncludingGoals": "లక్ష్యాల నుండి {xp} సహా",
-    "missionOtherLanguageNotice": "ఈ మిషన్ {language}లోని కోర్సు నుండి వచ్చింది. మీరు {language} నేర్చుకుంటున్నప్పుడు మాత్రమే దీనిపై మీ పురోగతి లెక్కించబడుతుంది.",
-    "missionLanguageMismatchDesc": "ఈ మిషన్ {language}లోని కోర్సు నుండి వచ్చింది. మీ లక్ష్య భాషను {language}కి మార్చాలా?",
     "xpBySkillTitle": "నైపుణ్యం ద్వారా",
     "missionNextActivity": "తదుపరి కార్యాచరణ",
     "missionContinueActivity": "కార్యాచరణను కొనసాగించు",
@@ -10945,7 +10921,6 @@
     "otherCoursesSessions": "ఇతర కోర్సులు ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP సంపాదించారు",
-    "currentMission": "ప్రస్తుత మిషన్",
     "constructUseCorRADesc": "బిగ్గరగా చదివి వినిపించింది",
     "constructUseIncRADesc": "బిగ్గరగా చదివారు, కానీ వినిపించలేదు",
     "hearItFirstToolName": "ముందు వినండి",
@@ -10967,7 +10942,6 @@
     "readAloudTake": "టేక్ {number}",
     "videoWontPlayHere": "ఈ వీడియో ఇక్కడ ప్లే అవదు.",
     "watchOnYoutube": "YouTubeలో చూడండి",
-    "xpTowardMission": "ఈ మిషన్ కోసం {xp} XP",
     "practiceStartWordCount": "{count, plural, =1{అభ్యాసం చేయడానికి పదం} other{అభ్యాసం చేయడానికి పదాలు}}",
     "practiceStartGrammarCount": "{count, plural, =1{అభ్యాసం చేయడానికి వ్యాకరణ అంశం} other{అభ్యాసం చేయడానికి వ్యాకరణ అంశాలు}}",
     "practiceStartExerciseTypes": "అభ్యాస రకాలు",
@@ -11006,5 +10980,20 @@
     "discussionStartIt": "ఈ చర్చను ప్రారంభించిన మొదటి వ్యక్తి మీరే అవ్వండి",
     "discussionRemoved": "మీరు ఈ చర్చలో చేరలేరు.",
     "discussionJoinArriving": "మీరు లోపల ఉన్నారు! చర్చ వచ్చిన వెంటనే తెరవబడుతుంది.",
-    "roleplayLabel": "రోల్‌ప్లే"
+    "roleplayLabel": "రోల్‌ప్లే",
+    "canDoAnalyticsTooltipBody": "ప్రతి {canDo} దాని కార్యకలాపాలు మరియు అభ్యాసం నుండి XPతో నిండుతుంది. పూర్తి {canDo} ఒక నక్షత్రాన్ని సంపాదిస్తుంది.",
+    "canDoStarListLabel": "{canDos} మరియు సేవ్ చేయబడిన కార్యకలాపాలు",
+    "canDoNofM": "{canDo} {count}లో {index}",
+    "xpOfThresholdTowardCanDo": "ఈ {canDo} కోసం {threshold} XPలో {xp} XP",
+    "courseCompleteCanDosDesc": "మీరు ఈ కోర్సులోని అన్ని {count} {canDos} పూర్తి చేసారు. మీరు నేర్చుకున్న వాటిని నిలుపుకోవడానికి సాధన చేస్తూ ఉండండి.",
+    "practiceCanDo": "ఈ {canDo}ని సాధన చేయండి",
+    "canDoCircleComplete": "{canDo} {index}: పూర్తయింది",
+    "canDoCircleUpNext": "{canDo} {index}: తదుపరి",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "ఈ {canDo} {language}లోని కోర్సు నుండి వచ్చింది. మీరు {language} నేర్చుకుంటున్నప్పుడు మాత్రమే దీనిపై మీ పురోగతి లెక్కించబడుతుంది.",
+    "canDoLanguageMismatchDesc": "ఈ {canDo} {language}లోని కోర్సు నుండి వచ్చింది. మీ లక్ష్య భాషను {language}కి మార్చాలా?",
+    "noCanDoActivitiesYet": "మీరు ఇంకా ఈ {canDo} కోసం ఒక కార్యాచరణను పూర్తి చేయలేదు. మీ కోర్సు నుండి ఒకదాన్ని ప్రారంభించండి.",
+    "canDoNotInYourCourses": "ఈ {canDo} మీ కోర్సులలో దేనిలోనూ లేదు.",
+    "currentCanDo": "ప్రస్తుత {canDo}",
+    "xpGainedTowardCanDo": "ఈ {canDo} కోసం {xp} XP"
 }

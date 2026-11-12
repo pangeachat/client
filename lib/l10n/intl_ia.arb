@@ -1353,7 +1353,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-11-11 11:38:45.522314",
+    "@@last_modified": "2026-11-12 09:04:06.834717",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7195,7 +7195,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Ningun DMs o chats trovados. Assicura che la tua ricerca sia scritta correttamente.",
-    "activityAnalyticsTooltipBody": "Questi sono i tuoi attività salvati per revisione e pratica.",
     "numSavedActivities": "Numero di attività salvate",
     "saveActivityTitle": "Salva attività",
     "saveActivityDesc": "Buon lavoro! Salva questa attività per revisione e pratica futura",
@@ -7430,10 +7429,6 @@
     "zhTWDisplayName": "Chinés (Tradicional)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10211,7 +10206,6 @@
     },
     "pageLabel": "{title} paĝo",
     "closeHint": "Fermi indikon",
-    "starListLabel": "Konservitaj agadoj kaj steloj",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10221,10 +10215,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10541,7 +10531,6 @@
     "selectImageLabel": "Selige imagine",
     "userSearchTagsLabel": "Cercar in...",
     "courseDetails": "Detalios del curso",
-    "objective": "Objectivo",
     "pingedLabel": "Pingeva",
     "mapFilterPlayerCount": "{count} jocatores",
     "practiceFeedbackButtonTooltip": "Reportar un problema con iste exercitio",
@@ -10842,17 +10831,9 @@
     "reportSent": "Reporto inviate",
     "reportNotSent": "Tu reporto non poteva esser inviate. Verifica tu connexion e reprova.",
     "reportPointerMessage": "Un message esseva reportate in {courseName} — vide Securitate",
-    "learningObjective": "Objectivo de Apprendimento",
-    "learningObjectives": "Objectivos de Apprendimento",
-    "missionNofM": "Mission {index} de {count}",
-    "xpTowardObjective": "{xp} de {threshold} XP verso iste objectivo",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Curso complete!",
-    "courseCompleteDesc": "Tu ha complite tote le {count} objectivos in iste curso. Continua a practicar pro retener lo que tu ha apprendite.",
-    "practiceObjective": "Practicar iste objectivo",
     "otherActivities": "Altere activitates",
-    "objectiveCircleComplete": "Mission {index}: complete",
-    "objectiveCircleUpNext": "Mission {index}: sequente",
     "useActivityImageAsChatBackground": "Usar imagine de activitate como fundo de chat",
     "andCertifyIMeetTheMinimumAge": " e certifica que io ha al minus 13 annos de etate, o le etate minimal requirite in mi pais si illo es plus alte.",
     "filteredNetworkBlockedTitle": "Iste rete bloca Pangea Chat",
@@ -10902,7 +10883,6 @@
     "offlinePracticeNote": "Offline. Tu responsas se cargara quando tu es de nove connectite.",
     "offlinePracticeSavedNote": "Salvate in iste apparato. Tu XP se cargara quando tu es de nove connectite.",
     "offlinePracticeNothingSaved": "Non satis es salvate in iste apparato pro practicar offline. Reprova quando tu es de nove in linea.",
-    "missionNumber": "Mission {index}",
     "xpToYourStar": "{xp} XP a tu stella",
     "missionStarEarned": "Stella ganiate!",
     "xpFromChats": "Conversas {xp}",
@@ -10911,8 +10891,6 @@
     "playMission": "Jocar",
     "wordCount": "{count, plural, =1{1 parola} other{{count} parolas}}",
     "continueActivity": "Continuar",
-    "noObjectiveActivitiesYet": "Tu non ha ancora completate un activitate pro iste objectivo. Comencia un de tu curso.",
-    "objectiveNotInYourCourses": "Iste objectivo non es in ulle de tu cursos.",
     "objectiveActivityCount": "{count, plural, =0{Nulle activitates ancora} =1{1 activitate jocate} other{{count} activitates jocate}}",
     "activityCompleted": "Completate",
     "completedTimes": "Completate {count} vices",
@@ -10920,8 +10898,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Conversation {xp}",
     "xpIncludingGoals": "includente {xp} de objectivos",
-    "missionOtherLanguageNotice": "Iste mission es de un curso in {language}. Tu progresso in illo conta solmente durante que tu apprende {language}.",
-    "missionLanguageMismatchDesc": "Iste mission es de un curso in {language}. Cambiar tu lingua de apprender a {language}?",
     "xpBySkillTitle": "Per habilitate",
     "missionNextActivity": "Proxime activitate",
     "missionContinueActivity": "Continuar activitate",
@@ -10931,7 +10907,6 @@
     "otherCoursesSessions": "Altere cursos ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP ganiate",
-    "currentMission": "Mission actual",
     "constructUseCorRADesc": "Legite a alte e audite",
     "constructUseIncRADesc": "Legite a alte, non audite",
     "hearItFirstToolName": "Audi lo primo",
@@ -10953,7 +10928,6 @@
     "readAloudTake": "Prende {number}",
     "videoWontPlayHere": "Iste video non va reproducer hic.",
     "watchOnYoutube": "Regardar in YouTube",
-    "xpTowardMission": "{xp} XP verso iste Mission",
     "practiceStartWordCount": "{count, plural, =1{parola a practicar} other{parolas a practicar}}",
     "practiceStartGrammarCount": "{count, plural, =1{puncto grammatical a practicar} other{punctos grammatical a practicar}}",
     "practiceStartExerciseTypes": "Typos de exercitios",
@@ -10992,5 +10966,20 @@
     "discussionStartIt": "Sii le prime a initiar iste discussion",
     "discussionRemoved": "Tu non pote participar a iste discussion.",
     "discussionJoinArriving": "Tu es intra! Le discussion se aperira tosto que illo arriva.",
-    "roleplayLabel": "Joco de rolos"
+    "roleplayLabel": "Joco de rolos",
+    "canDoAnalyticsTooltipBody": "Cata {canDo} se plenara con XP de su activitates e practica. Un {canDo} complete gania un stella.",
+    "canDoStarListLabel": "{canDos} e activitates salvate",
+    "canDoNofM": "{canDo} {index} de {count}",
+    "xpOfThresholdTowardCanDo": "{xp} de {threshold} XP verso iste {canDo}",
+    "courseCompleteCanDosDesc": "Tu ha completate tote le {count} {canDos} in iste curso. Continua a practicar pro retener lo que tu ha apprendite.",
+    "practiceCanDo": "Practicar iste {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: complete",
+    "canDoCircleUpNext": "{canDo} {index}: proxime",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Iste {canDo} es de un curso in {language}. Tu progresso in illo conta solmente dum tu apprende {language}.",
+    "canDoLanguageMismatchDesc": "Iste {canDo} es de un curso in {language}. Cambiar tu lingua de destination a {language}?",
+    "noCanDoActivitiesYet": "Tu non ha ancora completate un activitate pro iste {canDo}. Comencia un de tu curso.",
+    "canDoNotInYourCourses": "Iste {canDo} non es in ulle de tu cursos.",
+    "currentCanDo": "{canDo} actual",
+    "xpGainedTowardCanDo": "{xp} XP verso iste {canDo}"
 }

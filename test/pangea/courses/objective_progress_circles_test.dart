@@ -70,12 +70,9 @@ void main() {
     tester,
   ) async {
     await pump(tester);
-    expect(
-      find.bySemanticsLabel(RegExp('Mission 1: complete')),
-      findsOneWidget,
-    );
-    expect(find.bySemanticsLabel(RegExp('Mission 2: up next')), findsOneWidget);
-    expect(find.bySemanticsLabel(RegExp('Mission 3 of 3')), findsOneWidget);
+    expect(find.bySemanticsLabel(RegExp('Can-Do 1: complete')), findsOneWidget);
+    expect(find.bySemanticsLabel(RegExp('Can-Do 2: up next')), findsOneWidget);
+    expect(find.bySemanticsLabel(RegExp('Can-Do 3 of 3')), findsOneWidget);
     expect(
       find.byWidgetPredicate(
         (w) => w is Tooltip && w.message == 'Can order a coffee.',
@@ -95,7 +92,7 @@ void main() {
     final semantics = tester.ensureSemantics();
     int? tapped;
     await pump(tester, onTap: (i) => tapped = i);
-    tester.semantics.tap(find.semantics.byLabel(RegExp('Mission 2: up next')));
+    tester.semantics.tap(find.semantics.byLabel(RegExp('Can-Do 2: up next')));
     expect(tapped, 2);
     semantics.dispose();
   });
@@ -114,8 +111,8 @@ void main() {
           ),
       ],
     );
-    expect(find.text('Mission 3'), findsOneWidget);
-    expect(find.text('Mission 2'), findsNothing);
+    expect(find.text('Can-Do 3'), findsOneWidget);
+    expect(find.text('Can-Do 2'), findsNothing);
   });
 
   testWidgets('the class location and a ping are marked and announced', (
@@ -140,12 +137,12 @@ void main() {
     );
     expect(find.text('Class location'), findsOneWidget);
     expect(
-      find.bySemanticsLabel(RegExp('Mission 1: up next, Class location')),
+      find.bySemanticsLabel(RegExp('Can-Do 1: up next, Class location')),
       findsOneWidget,
     );
     expect(find.byIcon(Icons.notifications_outlined), findsOneWidget);
     expect(
-      find.bySemanticsLabel(RegExp('Mission 2 of 2, Pinged')),
+      find.bySemanticsLabel(RegExp('Can-Do 2 of 2, Pinged')),
       findsOneWidget,
     );
   });

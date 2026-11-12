@@ -14,6 +14,7 @@ import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/analytics/activities/objective_hero.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
@@ -104,7 +105,7 @@ class _ObjectiveDetailsViewState extends State<ObjectiveDetailsView> {
             appBar: AppBar(
               leading: Center(child: widget.closeButton),
               title: Text(
-                l10n.learningObjective,
+                CanDoTerm.singular,
                 style: FluffyThemes.isColumnMode(context)
                     ? theme.textTheme.titleLarge
                     : theme.textTheme.titleMedium?.copyWith(
@@ -120,7 +121,7 @@ class _ObjectiveDetailsViewState extends State<ObjectiveDetailsView> {
                 // aren't the learner's current language.
                 if (inLanguage)
                   Tooltip(
-                    message: l10n.practiceObjective,
+                    message: l10n.practiceCanDo(CanDoTerm.singular),
                     excludeFromSemantics: true,
                     child: FilledButton.icon(
                       onPressed: () => startPractice(
@@ -131,7 +132,7 @@ class _ObjectiveDetailsViewState extends State<ObjectiveDetailsView> {
                       icon: const Icon(Symbols.fitness_center, size: 18),
                       label: Text(
                         l10n.practice,
-                        semanticsLabel: l10n.practiceObjective,
+                        semanticsLabel: l10n.practiceCanDo(CanDoTerm.singular),
                       ),
                       style: FilledButton.styleFrom(
                         backgroundColor: theme.colorScheme.primary,
@@ -159,7 +160,7 @@ class _ObjectiveDetailsViewState extends State<ObjectiveDetailsView> {
                     child: Padding(
                       padding: const EdgeInsets.all(24.0),
                       child: Text(
-                        l10n.objectiveNotInYourCourses,
+                        l10n.canDoNotInYourCourses(CanDoTerm.singular),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -214,7 +215,7 @@ class _OtherLanguageNotice extends StatelessWidget {
               color: theme.colorScheme.onSurfaceVariant,
             ),
             Text(
-              l10n.missionOtherLanguageNotice(name),
+              l10n.canDoOtherLanguageNotice(CanDoTerm.singular, name),
               textAlign: TextAlign.center,
               style: theme.textTheme.bodyLarge,
             ),
@@ -297,7 +298,7 @@ class _ObjectiveDetailsBody extends StatelessWidget {
               title: l10n.completedActivitiesTitle(activities.length),
               child: activities.isEmpty
                   ? Text(
-                      l10n.noObjectiveActivitiesYet,
+                      l10n.noCanDoActivitiesYet(CanDoTerm.singular),
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
