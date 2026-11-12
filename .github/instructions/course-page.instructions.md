@@ -1,23 +1,68 @@
 ---
-applyTo: "lib/routes/chat/chat_details/space_details_content.dart,lib/routes/chat/chat_details/course_overview/course_overview.dart,lib/routes/chat/chat_details/course_overview/course_section_*.dart,lib/routes/chat/chat_details/course_overview/course_chats_preview.dart"
-description: "The course page's sections and their shared header (the title, See all, section shortcuts, and how the header fits a narrow screen), plus the Chats section and its New course chat button."
+applyTo: "lib/routes/chat/chat_details/space_details_content.dart,lib/routes/chat/chat_details/course_overview/**,lib/routes/courses/course_objectives/**"
+description: "What a learner sees on a course's page: the Can-Do circles, the Can-Do card and its activity row, the full course plan, the Chats section, the section header, the course's credit and its image."
 ---
 
 # Course Page
 
-The course page is the course card's main view. It opens on the course's **Can-Do circles** and the **Can-Do card** for the Can-Do on show, with no section header of their own, then a column of sections divided by full-width dividers: **Chats**, **Participants** and **More**. The circles and the Can-Do card, with the Can-Do's activities inside it and the quiet "See full course plan" link under it, are in [quests.instructions.md](quests.instructions.md) ("Progress display on the course page", "The Can-Do card"), and Participants is in [course-participants.instructions.md](course-participants.instructions.md).
+The course page is a course's main view. It opens on the **Can-Do circles** and the **Can-Do card**, then the sections **Chats**, [Participants](course-participants.instructions.md) and **More**. What its progress counts is [Can-Do progress](quests.instructions.md). This doc runs past 800 words because it covers the whole page, including the Can-Do circles and card that the Can-Do progress doc used to hold.
 
-## The section header
+## The Can-Do circles
 
-Every section starts with the same header ([`CourseSectionHeader`](../../lib/routes/chat/chat_details/course_overview/course_section_header.dart)): the section's icon, its title, and the section's actions.
+- One numbered circle per Can-Do that has activities, in course order. A gold ring shows its XP, a complete Can-Do shows its gold star, and the [next Can-Do](quests.instructions.md#the-next-can-do) is tinted. Its tooltip is its statement and its accessible name carries its state and XP, so colour is never the only carrier.
+- A tap shows that Can-Do. A pointer marks the **Can-Do on show**: the one the learner picked, else the next Can-Do. The [course's map](world-map.instructions.md#the-can-do-on-show) and the [collapsed course bar](world-map.instructions.md#the-course-context-bar) show the same one. Opening an activity sets it to that activity's Can-Do, so closing the session returns there.
+- **Class location:** a quiet grey bubble marks the circle the teacher's due dates put the class on: the first Can-Do still due, else the last dated one. A due date never blocks, hides or locks anything.
+- **A bell** marks a circle not on show when a coursemate has pinged one of its sessions and it is still open, because the map shows only the Can-Do on show.
+- While progress loads the circles shimmer, so nothing reads as zero. A course preview shows empty rings.
+- No activity count sits beside the progress: it read as a second requirement.
 
-- **See all** ([`CourseSectionButton`](../../lib/routes/chat/chat_details/course_overview/course_section_button.dart)) opens the section's full subpage inside the card. It shows only when the subpage holds more than the section does. Its visible label is always "See all". Its accessible name adds the section title, so a screen reader can tell the sections' buttons apart.
-- **A shortcut** ([`CourseSectionShortcut`](../../lib/routes/chat/chat_details/course_overview/course_section_shortcut.dart)) is the one action a section offers besides See all, placed before it. By default it is an icon, and its name is in the tooltip and accessible name. A shortcut that people miss as an icon also shows its name as a visible label beside the icon.
-- **Style.** See all and the shortcuts are the page's secondary actions, and they share one look with the Can-Do card's Practice ([`BoldTonalButton`](../../lib/pangea/common/widgets/bold_tonal_button.dart)): a light-purple `secondaryContainer` pill on a pressable lip with a bold label, so they read as buttons beside the card's solid Play rather than as flat chips. An icon-only shortcut is the same, as a circle. Every button on the page is one height — these, the Can-Do card's Practice and its Play ([client#9559](https://github.com/pangeachat/client/issues/9559)).
-- **Fit.** On a narrow screen, where the course opens as a bottom sheet, every section puts its actions on their own line under its title, so all sections match. On a wide screen the actions sit at the end of the title's line, and move under the title only when they don't fit.
+## The Can-Do card
+
+Top to bottom, for the Can-Do on show:
+
+1. The Can-Do's number, the teacher's due date, and **Practice** with the Can-Do's word count, which opens [practice on its words](practice-exercises.instructions.md#objective-practice). The course's note sits below.
+2. Its star and statement, linking to the Can-Do's detail page.
+3. The Conversation and Practice legend and a bar of XP toward the star.
+4. **Play**, the page's one solid button, pulsing while the Can-Do is unfinished. It opens the activity row's first card. Its label says whether it continues a session the learner is in, starts the next activity or replays a finished one.
+5. The activity row.
+
+- A course in another language shows [the switch](quests.instructions.md#progress-in-another-language) in place of progress.
+- When every Can-Do is complete and no circle is picked, a course complete card replaces it, with the count of Can-Dos done and Practice.
+
+## The activity row
+
+The row holds every activity of the Can-Do, as [activity cards](activities.instructions.md#activity-cards), in this order:
+
+1. a session the learner is in, whatever its mode, so a started activity is finished before a new one starts;
+2. what they can play now: an unfinished activity they can start, or any with a live session;
+3. what they have finished;
+4. what they can't start yet, dimmed: more roles than the course can fill and no live session to join.
+
+- Within each group the row uses the world map's [priority matrix](world-map.instructions.md#priority-matrix), so the page and the map agree. The map's first-map, dismissal and recency terms do not apply: the course's author picked its activities, nothing is dismissed here, and the row should not reorder while a learner reads it.
+- A card whose session the learner is in reopens that chat; any other opens the activity's start page.
+
+## The full course plan
+
+- A "See full course plan" link under the card lists every Can-Do with its circle, statement and activities. It is a text link because educators asked to read the course's shape; it is not for choosing what to do next.
+- Labels mark the next Can-Do as current and the class location. A complete Can-Do shows its star and muted text, and its activities stay playable. Each state is said in words, never by colour alone.
 
 ## The Chats section
 
-The section ([`CourseChatsPreview`](../../lib/routes/chat/chat_details/course_overview/course_chats_preview.dart)) shows the course chats the viewer has joined, then chats they can join, two at most. For a course admin, suggestions to create the Introductions and Announcements chats appear above them. Each chat is the Chats list's own row, so an activity session reads the same in both places — its photo and the course's avatar stacked on it ([activities.instructions.md](activities.instructions.md), "Sessions in Chats"). See all opens the full list. A student who has nothing to show sees no Chats section at all.
+- It shows the course chats the viewer has joined, then chats they can join, two at most, as [the Chats list's own rows](activities.instructions.md#activity-session-chat-list-rows). A student with nothing to show sees no Chats section.
+- A course admin sees suggestions to create the Introductions and Announcements chats, and a **New course chat** button with a visible label: as an icon, teachers in a pilot did not find it and made no group chats. It is the only way to create a course chat, and students never see it.
 
-A course admin who can add chats to the course gets a **New course chat** button in the header, with a visible label ([client#9492](https://github.com/pangeachat/client/issues/9492)). As an icon-only shortcut it went unnoticed: teachers in a pilot did not find it and made no group chats. Students never see it. It is the only way to create a course chat. The More section has no row for it, not even a greyed-out one for non-admins: that list was already long, and creating a chat belongs with the chats.
+## The section header
+
+- Every section starts with its icon, title and actions. On a narrow screen the actions sit on their own line under the title; on a wide screen they follow the title and drop under it only when they don't fit.
+- **See all** opens the section's full page, and shows only when that page holds more than the section. Its accessible name adds the section's title.
+- A section may offer one other action, before See all: an icon named in its tooltip, or with a visible label when people miss the icon.
+
+## Who made the course
+
+- The page credits the quest's owner, not the room's admins ([who is credited](../../../.github/.github/instructions/quests.instructions.md#who-is-credited)).
+- The name and avatar come from the owner's own profile, so a teacher controls their credit.
+- The credit is prominent while someone chooses a plan to build a course on, because who made it is part of that choice. On an existing course it sits in More: the page opens on the teacher's description of their class, and a credit above it read as a banner over their words.
+
+## The course's image
+
+A course shows the image its admin set, else its quest's cover, else a letter, the same on every surface. A cover that fails to load is not retried until the app restarts, because retries added load to an already slow server.
