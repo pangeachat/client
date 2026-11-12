@@ -122,11 +122,11 @@ void main() {
     });
   });
 
-  /// The cache reads each joined course as that course shows it: its own copy
-  /// (content-studio) when a course admin sent one, else today's pins. Two
-  /// rooms of one quest share one cached outline, so the copy must apply per
-  /// course and never leak into the shared cache.
-  group('JoinedObjectiveCache.rebuildFromJoinedCourses (course copy)', () {
+  /// The cache reads each joined course as that course shows it: its own
+  /// Can-Do list (content-studio) when a course admin sent one, else today's
+  /// pins. Two rooms of one quest share one cached outline, so the Can-Do list
+  /// must apply per course and never leak into the shared cache.
+  group('JoinedObjectiveCache.rebuildFromJoinedCourses (Can-Do list)', () {
     const questId = 'quest-1';
     late Client client;
 
