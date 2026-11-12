@@ -43,7 +43,7 @@ How a learner's progress through a course's Can-Dos is counted and shown. Org do
 
 - A course's next Can-Do is its first incomplete one in course order. A course with every Can-Do complete has none, because naming one sent a finished learner back to completed work.
 - Every surface reads the same answer, so they cannot disagree: the [world map](world-map.instructions.md#priority-matrix)'s ranking, the course page, the star count and the [Can-Dos page](activities.instructions.md#the-can-dos-page).
-- Nothing is locked: the order only ranks.
+- Today nothing is locked and the order only ranks. Locking is being brought back:
 
 **Intended — not yet implemented:** cities open by due date or by completing a Can-Do ([course progression](../../../.github/.github/instructions/course-spaces.instructions.md#progression)).
 
@@ -51,7 +51,7 @@ How a learner's progress through a course's Can-Dos is counted and shown. Org do
 
 ## Which activities a Can-Do shows
 
-- A course with its own Can-Do list shows that list's activities ([content lifecycle](../../../.github/.github/instructions/content-lifecycle.instructions.md#course-spaces)). Without one, each Can-Do shows the course's pins, else the plan's [selected activities](../../../.github/.github/instructions/quests.instructions.md#each-entry-in-the-can-do-sequence), else every activity. A course preview shows the plan's selection.
+- A course with its own Can-Do list shows that list's activities ([content lifecycle](../../../.github/.github/instructions/content-lifecycle.instructions.md#course-spaces)). A course never shows the quest in place of its own list. Not built yet ([pangeachat/client#9828](https://github.com/pangeachat/client/issues/9828)): a course with no list of its own, or one that cannot be read, still shows for each Can-Do the course's pins, else the plan's [selected activities](../../../.github/.github/instructions/quests.instructions.md#each-entry-in-the-can-do-sequence), else every activity. A course preview shows the plan's selection.
 - Pins or a selection naming none of the Can-Do's activities are ignored, so a Can-Do can always be completed.
 - A Can-Do's note is the course list's, or the plan's while the course has no list.
 - The course's map shows the same activities. The world map is never filtered by a course's choices.

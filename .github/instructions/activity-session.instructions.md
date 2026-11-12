@@ -29,7 +29,7 @@ What a learner sees while playing a conversation activity and when it ends. Find
 - A narrow window shrinks the header's padding, never the diamonds, because the header covers chat.
 - Diamonds keep the goals' order; the active goal, highlighted, is the first unfinished. An earned diamond flies up to the active goal's slot, except while a tutorial card is open: the diamond still fills, and the card has the learner's attention.
 - The header's left slot offers to switch to the session's language when the learner can switch to it.
-- The open list describes every goal. "I'm done!" works early and finishes the learner's own role; "Wait, I'm not done!" undoes it. Admins get "End for all", except in two-person bot sessions.
+- The open list describes every goal. "I'm done!" works early and finishes the learner's own role; "Wait, I'm not done!" undoes it. Each player ends an activity for themselves, never for the room ([activities](../../../.github/.github/instructions/activities.instructions.md)). Not built yet: in a roleplay, admins still get "End for all", except in two-person bot sessions.
 - A long goal is cut with Show more; one that fits is plain text, so nothing falsely looks tappable.
 - All diamonds earned turns the header gold, "I'm done!" replacing the goal.
 - With no goals it reads "Activity actions", so nobody is stranded.
@@ -60,7 +60,7 @@ What a learner sees while playing a conversation activity and when it ends. Find
 ## The rating card
 
 - It appears once the learner's role is finished, trusted as proof of play.
-- A submitted rating is final until a new version; dismissing hides it for this visit.
+- The card is not shown again after a rating, until the learner plays a new version of the activity; a new rating replaces the earlier one. Dismissing hides it for this visit.
 - A rejected comment keeps the card open; an owner's own rating closes it quietly.
 
 ## Downloading the transcript
@@ -70,6 +70,6 @@ What a learner sees while playing a conversation activity and when it ends. Find
 
 ## Open questions
 
-- The app still waits until every player is done and shows one shared summary with a group blurb. Per-learner summaries need the bot and choreographer changed first.
+- The app still waits until every player in a roleplay is done and shows one shared summary with a group blurb, and a discussion has no summary. Per-learner summaries need the bot and choreographer changed first.
 - Should research-study or minor-heavy rooms restrict exporting everyone's messages?
 - Should an archived session show its timeline and saved summary?

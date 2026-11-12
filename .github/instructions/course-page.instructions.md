@@ -11,7 +11,7 @@ The course page is a course's main view. It opens on the **Can-Do circles** and 
 
 - One numbered circle per Can-Do that has activities, in course order. A gold ring shows its XP, a complete Can-Do shows its gold star, and the [next Can-Do](quests.instructions.md#the-next-can-do) is tinted. Its tooltip is its statement and its accessible name carries its state and XP, so colour is never the only carrier.
 - A tap shows that Can-Do. A pointer marks the **Can-Do on show**: the one the learner picked, else the next Can-Do. The [course's map](world-map.instructions.md#the-can-do-on-show) and the [collapsed course bar](world-map.instructions.md#the-course-context-bar) show the same one. Opening an activity sets it to that activity's Can-Do, so closing the session returns there.
-- **Class location:** a quiet grey bubble marks the circle the teacher's due dates put the class on: the first Can-Do still due, else the last dated one. A due date never blocks, hides or locks anything.
+- **Class location:** a quiet grey bubble marks the circle the teacher's due dates put the class on: the first Can-Do still due, else the last dated one. Today a due date blocks, hides and locks nothing; locking is being brought back ([course progression](../../../.github/.github/instructions/course-spaces.instructions.md#progression)).
 - **A bell** marks a circle not on show when a coursemate has pinged one of its sessions and it is still open, because the map shows only the Can-Do on show.
 - While progress loads the circles shimmer, so nothing reads as zero. A course preview shows empty rings.
 - No activity count sits beside the progress: it read as a second requirement.
