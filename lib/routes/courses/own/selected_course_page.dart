@@ -144,7 +144,7 @@ class SelectedCourseController extends State<SelectedCourse>
           spaceChild: 0,
         )
         .then<void>((spaceId) async {
-          await _writeNewCourseMissions(client, spaceId, courseId);
+          await _writeNewCanDoList(client, spaceId, courseId);
           completer.complete(spaceId);
         })
         .catchError((error) => completer.completeError(error));
@@ -163,7 +163,7 @@ class SelectedCourseController extends State<SelectedCourse>
   /// The new course's own Can-Do list, from the list its members are shown.
   /// Never fails the creation: an error is logged and the course reads the
   /// shared quest until the Studio's first publish.
-  Future<void> _writeNewCourseMissions(
+  Future<void> _writeNewCanDoList(
     sdk.Client client,
     String spaceId,
     String questId,
@@ -178,7 +178,7 @@ class SelectedCourseController extends State<SelectedCourse>
         );
         return;
       }
-      await room.writeNewCourseMissions(questId);
+      await room.writeNewCanDoList(questId);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

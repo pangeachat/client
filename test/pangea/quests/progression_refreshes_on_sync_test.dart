@@ -332,10 +332,10 @@ void main() {
     expect(swapped.missionProgress(missionId)?.xp, 200);
   });
 
-  /// Content Studio — a teacher publishing the course's own Can-Do list
-  /// changes its Missions while the course page (or the context bar) is open.
-  /// The loader re-reads when the Can-Do list's revision moves, so the list
-  /// and the star totals follow without a reload.
+  /// Content Studio — a teacher publishing the course's Can-Do list changes its
+  /// Missions while the course page (or the context bar) is open. The loader
+  /// re-reads when its revision moves, so the list and the star totals
+  /// follow without a reload.
   group('course Can-Do list refresh', () {
     void stubTwoMissions() {
       LearningObjective lo(String id) =>

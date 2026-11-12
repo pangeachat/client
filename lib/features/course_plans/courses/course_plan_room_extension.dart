@@ -58,7 +58,7 @@ extension CoursePlanRoomExtension on Room {
   ///
   /// When the actor is a course admin, the course's own Can-Do list
   /// (content-studio) is written from the list this course shows its members
-  /// once the plan is attached — see [_writeCourseMissionsCopy].
+  /// once the plan is attached — see [_writeCanDoList].
   Future<void> addCourseToSpace(
     String courseId, {
     required String targetLanguage,
@@ -99,7 +99,7 @@ extension CoursePlanRoomExtension on Room {
     }
     // After the plan, so no reader pairs the new Can-Do list with the old
     // quest.
-    await _writeCourseMissionsCopy(
+    await _writeCanDoList(
       isRoomAdmin ? await courseScopedOutline(courseId, id) : null,
       planChanged: planChanged,
     );
@@ -115,7 +115,7 @@ extension CoursePlanRoomExtension on Room {
   /// [questId] comes from the creation itself: right after the space arrives
   /// in sync its state can hold only `m.room.create`, so the plan event may
   /// not be readable here yet.
-  Future<void> writeNewCourseMissions(String questId) async {
+  Future<void> writeNewCanDoList(String questId) async {
     if (!isRoomAdmin || courseMissions != null) return;
     final outline = await courseScopedOutline(questId, id);
     if (outline == null) {
@@ -126,7 +126,7 @@ extension CoursePlanRoomExtension on Room {
       );
       return;
     }
-    await _writeCourseMissionsCopy(outline, planChanged: true);
+    await _writeCanDoList(outline, planChanged: true);
   }
 
   /// Write the course's own Can-Do list when attaching a plan: admin only
@@ -140,7 +140,7 @@ extension CoursePlanRoomExtension on Room {
   /// A plan change with no snapshot to hand ([outline] null) clears the old
   /// quest's Can-Do list with an empty record, so readers fall back to the new
   /// shared quest rather than listing the old quest's Can-Dos.
-  Future<void> _writeCourseMissionsCopy(
+  Future<void> _writeCanDoList(
     QuestOutline? outline, {
     required bool planChanged,
   }) async {

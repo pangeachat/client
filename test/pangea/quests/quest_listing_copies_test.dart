@@ -18,8 +18,7 @@ import '../fake_pangea_controller.dart';
 /// The course listing with the course's activity copies (Content Studio v2): a
 /// member's read asks for them (`include_activity_copies`, `extra_lo_ids`),
 /// the per-activity `family_ids` come back into the outline, and a Can-Do the
-/// course's Can-Do list adds beyond the quest is shown from the listing's own
-/// missions.
+/// record added beyond the quest is shown from the listing's own missions.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
