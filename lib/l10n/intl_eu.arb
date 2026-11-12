@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-11-11 11:38:43.273646",
+    "@@last_modified": "2026-11-12 09:04:02.754172",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -6442,7 +6442,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Ez da DM edo txatirik aurkitu. Ziurtatu zure bilaketa ondo idatzita dagoela.",
-    "activityAnalyticsTooltipBody": "Hau zure gordeetako jarduerak dira berrikusteko eta praktikatzeko.",
     "numSavedActivities": "Gordetako jardueren kopurua",
     "saveActivityTitle": "Gorde jarduera",
     "saveActivityDesc": "Oso ondo! Gorde jarduera hau etorkizuneko berrikusteko eta praktikatzeko",
@@ -6677,10 +6676,6 @@
     "zhTWDisplayName": "Txinera (Tradizionala)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9278,7 +9273,6 @@
     },
     "pageLabel": "{title} orria",
     "closeHint": "Itxi iradokizuna",
-    "starListLabel": "Gordetako jarduerak eta izarrak",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9288,10 +9282,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9608,7 +9598,6 @@
     "selectImageLabel": "Hautatu irudia",
     "userSearchTagsLabel": "Bilatu hemen...",
     "courseDetails": "Ikastaroaren xehetasunak",
-    "objective": "Helburua",
     "pingedLabel": "Pingatuta",
     "mapFilterPlayerCount": "{count} jokalari",
     "practiceFeedbackButtonTooltip": "Ariketa honekin arazo bat dagoela jakinarazi",
@@ -9909,17 +9898,9 @@
     "reportSent": "Txostena bidali da",
     "reportNotSent": "Ezin izan da zure txostena bidali. Egiaztatu konexioa eta saiatu berriro.",
     "reportPointerMessage": "Mezu bat salatu da {courseName} ikastaroan — ikusi Segurtasuna",
-    "learningObjective": "Ikaskuntza-helburua",
-    "learningObjectives": "Ikaskuntza-helburuak",
-    "missionNofM": "{count} misiotik {index}. misioa",
-    "xpTowardObjective": "{threshold}eko helburu honetarako {xp} puntu",
     "xpOfThreshold": "{xp} / {threshold} puntu",
     "courseComplete": "Ikastaroa osatuta!",
-    "courseCompleteDesc": "Ikastaro honetako {count} helburu guztiak osatu dituzu. Jarraitu praktikatzen ikasitakoari eusteko.",
-    "practiceObjective": "Helburu hau praktikatu",
     "otherActivities": "Beste jarduera batzuk",
-    "objectiveCircleComplete": "Misioa {index}: osatuta",
-    "objectiveCircleUpNext": "Misioa {index}: hurrengoa",
     "useActivityImageAsChatBackground": "Erabili jardueraren irudia txataren atzeko plano gisa",
     "andCertifyIMeetTheMinimumAge": " eta ziurtatzen dut gutxienez 13 urte ditudala, edo nire herrialdean eskatzen den gutxieneko adina, hori handiagoa bada.",
     "filteredNetworkBlockedTitle": "Sare honek Pangea Chat blokeatzen du",
@@ -9969,7 +9950,6 @@
     "offlinePracticeNote": "Lineaz kanpo. Zure erantzunak igoko dira berriro konektatzen zarenean.",
     "offlinePracticeSavedNote": "Gailu honetan gordeta. Zure XP igoko da berriro konektatzen zarenean.",
     "offlinePracticeNothingSaved": "Ez dago nahikoa gordeta gailu honetan lineaz kanpo praktikatzeko. Saiatu berriro konektatuta zaudenean.",
-    "missionNumber": "Misioa {index}",
     "xpToYourStar": "{xp} XP zure izarrerako",
     "missionStarEarned": "Izarra irabazi da!",
     "xpFromChats": "Txatak {xp}",
@@ -9978,8 +9958,6 @@
     "playMission": "Jolastu",
     "wordCount": "{count, plural, =1{hitz 1} other{{count} hitz}}",
     "continueActivity": "Jarraitu",
-    "noObjectiveActivitiesYet": "Oraindik ez duzu helburu honetarako jarduerarik osatu. Hasi bat zure ikastaroan.",
-    "objectiveNotInYourCourses": "Helburu hau ez dago zure ikastaroetako batean ere.",
     "objectiveActivityCount": "{count, plural, =0{Oraindik jarduerarik ez} =1{jarduera 1 jokatu da} other{{count} jarduera jokatu dira}}",
     "activityCompleted": "Osatuta",
     "completedTimes": "{count} aldiz osatuta",
@@ -9987,8 +9965,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Elkarrizketa {xp}",
     "xpIncludingGoals": "helburuetatik {xp} barne",
-    "missionOtherLanguageNotice": "Misio hau {language} ikastaro batekoa da. Bertan egindako aurrerapenak {language} ikasten ari zaren bitartean bakarrik zenbatuko dira.",
-    "missionLanguageMismatchDesc": "Misio hau {language} ikastaro batekoa da. Aldatu zure xede-hizkuntza {language} hizkuntzara?",
     "xpBySkillTitle": "Trebetasunaren arabera",
     "missionNextActivity": "Hurrengo jarduera",
     "missionContinueActivity": "Jarraitu jarduerarekin",
@@ -9998,7 +9974,6 @@
     "otherCoursesSessions": "Beste ikastaro batzuk ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP irabazi dira",
-    "currentMission": "Uneko misioa",
     "constructUseCorRADesc": "Ozenki irakurri eta entzun da",
     "constructUseIncRADesc": "Ozenki irakurri, ez da entzun",
     "hearItFirstToolName": "Entzun lehenik",
@@ -10020,7 +9995,6 @@
     "readAloudTake": "{number}. saiakera",
     "videoWontPlayHere": "Bideo hau ez da hemen erreproduzituko.",
     "watchOnYoutube": "Ikusi YouTuben",
-    "xpTowardMission": "{xp} esperientzia puntu misio honetarako",
     "practiceStartWordCount": "{count, plural, =1{praktikatzeko hitza} other{praktikatzeko hitzak}}",
     "practiceStartGrammarCount": "{count, plural, =1{praktikatzeko gramatika-puntua} other{praktikatzeko gramatika-puntuak}}",
     "practiceStartExerciseTypes": "Ariketa motak",
@@ -10059,5 +10033,20 @@
     "discussionStartIt": "Izan zaitez eztabaida hau hasten lehena",
     "discussionRemoved": "Ezin zara eztabaida honetan sartu.",
     "discussionJoinArriving": "Barruan zaude! Eztabaida iritsi bezain laster irekiko da.",
-    "roleplayLabel": "Rol-jokoa"
+    "roleplayLabel": "Rol-jokoa",
+    "canDoAnalyticsTooltipBody": "«{canDo}» bakoitza XPz betetzen da bere jardueretatik eta praktikaldietatik. «{canDo}» oso batek izar bat irabazten du.",
+    "canDoStarListLabel": "{canDos} eta gordetako jarduerak",
+    "canDoNofM": "{canDo} {index}/{count}",
+    "xpOfThresholdTowardCanDo": "{xp}/{threshold} XP «{canDo}» honetarako",
+    "courseCompleteCanDosDesc": "Ikastaro honetako {count} {canDos} guztiak osatu dituzu. Jarraitu praktikatzen ikasitakoa mantentzeko.",
+    "practiceCanDo": "Praktikatu {canDo} hau",
+    "canDoCircleComplete": "{canDo} {index}: osatuta",
+    "canDoCircleUpNext": "{canDo} {index}: hurrengoa",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "{canDo} hau {language} ikastaro batekoa da. Bertan egindako aurrerapena {language} ikasten ari zaren bitartean bakarrik zenbatzen da.",
+    "canDoLanguageMismatchDesc": "{canDo} hau {language} ikastaro batekoa da. Aldatu zure xede-hizkuntza {language}ra?",
+    "noCanDoActivitiesYet": "Oraindik ez duzu jarduerarik osatu {canDo} honetarako. Hasi bat zure ikastarotik.",
+    "canDoNotInYourCourses": "{canDo} hau ez dago zure ikastaroetako batean ere.",
+    "currentCanDo": "Uneko {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP «{canDo}» honetarako"
 }

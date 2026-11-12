@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:42.679012",
+    "@@last_modified": "2026-11-12 09:04:01.692625",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -6355,7 +6355,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "هیچ پیام مستقیم یا چتی پیدا نشد. مطمئن شوید که جستجوی شما به درستی نوشته شده است.",
-    "activityAnalyticsTooltipBody": "اینها فعالیت‌های ذخیره‌شده شما برای مرور و تمرین هستند.",
     "numSavedActivities": "تعداد فعالیت‌های ذخیره‌شده",
     "saveActivityTitle": "ذخیره فعالیت",
     "saveActivityDesc": "کار خوبی کردی! این فعالیت را برای مرور و تمرین بعدی ذخیره کن",
@@ -6590,10 +6589,6 @@
     "zhTWDisplayName": "چینی (سنتی)",
     "zuDisplayName": "زولو",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9366,7 +9361,6 @@
     },
     "pageLabel": "{title} صفحه",
     "closeHint": "نکته را ببندید",
-    "starListLabel": "فعالیت‌ها و ستاره‌های ذخیره شده",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9376,10 +9370,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9696,7 +9686,6 @@
     "selectImageLabel": "انتخاب تصویر",
     "userSearchTagsLabel": "جستجو در...",
     "courseDetails": "جزئیات دوره",
-    "objective": "هدف",
     "pingedLabel": "پینگ شد",
     "mapFilterPlayerCount": "{count} بازیکن",
     "practiceFeedbackButtonTooltip": "گزارش مشکل در این تمرین",
@@ -9997,17 +9986,9 @@
     "reportSent": "گزارش ارسال شد",
     "reportNotSent": "گزارش شما ارسال نشد. اتصال خود را بررسی کرده و دوباره امتحان کنید.",
     "reportPointerMessage": "پیامی در {courseName} گزارش شد — به بخش ایمنی مراجعه کنید",
-    "learningObjective": "هدف یادگیری",
-    "learningObjectives": "اهداف یادگیری",
-    "missionNofM": "مأموریت {index} از {count}",
-    "xpTowardObjective": "{xp} از {threshold} امتیاز تجربه برای این هدف",
     "xpOfThreshold": "{xp} / {threshold} امتیاز تجربه",
     "courseComplete": "دوره کامل شد!",
-    "courseCompleteDesc": "شما تمام {count} هدف این دوره را تکمیل کرده‌اید. برای حفظ آموخته‌هایتان به تمرین ادامه دهید.",
-    "practiceObjective": "این هدف را تمرین کنید",
     "otherActivities": "فعالیت‌های دیگر",
-    "objectiveCircleComplete": "مأموریت {index}: تکمیل شد",
-    "objectiveCircleUpNext": "مأموریت {index}: بعدی",
     "useActivityImageAsChatBackground": "استفاده از تصویر فعالیت به عنوان پس‌زمینه چت",
     "andCertifyIMeetTheMinimumAge": " و تأیید می‌کنم که حداقل ۱۳ سال سن دارم، یا اگر در کشورم سن قانونی بالاتری لازم است، آن سن را دارم.",
     "filteredNetworkBlockedTitle": "این شبکه Pangea Chat را مسدود کرده است",
@@ -10057,7 +10038,6 @@
     "offlinePracticeNote": "آفلاین. پاسخ‌های شما پس از اتصال به اینترنت بارگذاری می‌شوند.",
     "offlinePracticeSavedNote": "در این دستگاه ذخیره شد. امتیاز XP شما پس از اتصال به اینترنت بارگذاری می‌شود.",
     "offlinePracticeNothingSaved": "به اندازه کافی در این دستگاه برای تمرین آفلاین ذخیره نشده است. وقتی آنلاین شدید دوباره امتحان کنید.",
-    "missionNumber": "مأموریت {index}",
     "xpToYourStar": "{xp} امتیاز برای ستاره شما",
     "missionStarEarned": "ستاره کسب شد!",
     "xpFromChats": "چت‌ها {xp}",
@@ -10066,8 +10046,6 @@
     "playMission": "بازی",
     "wordCount": "{count, plural, =1{۱ کلمه} other{{count} کلمه}}",
     "continueActivity": "ادامه",
-    "noObjectiveActivitiesYet": "هنوز فعالیتی برای این هدف تکمیل نکرده‌اید. یکی از دوره‌های خود را شروع کنید.",
-    "objectiveNotInYourCourses": "این هدف در هیچ یک از دوره‌های شما نیست.",
     "objectiveActivityCount": "{count, plural, =0{هنوز فعالیتی نیست} =1{۱ فعالیت انجام شد} other{{count} فعالیت انجام شد}}",
     "activityCompleted": "تکمیل شد",
     "completedTimes": "{count} بار تکمیل شد",
@@ -10075,8 +10053,6 @@
     "xpThresholdSuffix": "/ {threshold} امتیاز",
     "xpFromConversation": "مکالمه {xp}",
     "xpIncludingGoals": "شامل {xp} از اهداف",
-    "missionOtherLanguageNotice": "این مأموریت از یک دوره در {language} است. پیشرفت شما در آن فقط زمانی محاسبه می‌شود که در حال یادگیری {language} باشید.",
-    "missionLanguageMismatchDesc": "این مأموریت از یک دوره در {language} است. زبان هدف خود را به {language} تغییر دهید؟",
     "xpBySkillTitle": "بر اساس مهارت",
     "missionNextActivity": "فعالیت بعدی",
     "missionContinueActivity": "ادامه فعالیت",
@@ -10086,7 +10062,6 @@
     "otherCoursesSessions": "دوره‌های دیگر ({num})",
     "activityXpStamp": "{xp} امتیاز",
     "activityCompletedWithXp": "{completed}, {xp} امتیاز کسب شد",
-    "currentMission": "مأموریت فعلی",
     "constructUseCorRADesc": "با صدای بلند خوانده شد و شنیده شد",
     "constructUseIncRADesc": "با صدای بلند خوانده شد، شنیده نشد",
     "hearItFirstToolName": "اول بشنوید",
@@ -10108,7 +10083,6 @@
     "readAloudTake": "برداشت {number}",
     "videoWontPlayHere": "این ویدئو اینجا پخش نمی‌شود.",
     "watchOnYoutube": "در یوتیوب تماشا کنید",
-    "xpTowardMission": "{xp} امتیاز تجربه برای این مأموریت",
     "practiceStartWordCount": "{count, plural, =1{کلمه برای تمرین} other{کلمه برای تمرین}}",
     "practiceStartGrammarCount": "{count, plural, =1{نکته گرامری برای تمرین} other{نکته گرامری برای تمرین}}",
     "practiceStartExerciseTypes": "انواع تمرین",
@@ -10147,5 +10121,20 @@
     "discussionStartIt": "اولین نفری باشید که این بحث را شروع می‌کند",
     "discussionRemoved": "نمی‌توانید به این بحث بپیوندید.",
     "discussionJoinArriving": "شما وارد شدید! بحث به محض رسیدن باز می‌شود.",
-    "roleplayLabel": "نقش‌آفرینی"
+    "roleplayLabel": "نقش‌آفرینی",
+    "canDoAnalyticsTooltipBody": "هر {canDo} با XP فعالیت‌ها و تمرین‌هایش پر می‌شود. یک {canDo} کامل یک ستاره به دست می‌آورد.",
+    "canDoStarListLabel": "{canDos} و فعالیت‌های ذخیره‌شده",
+    "canDoNofM": "{canDo} {index} از {count}",
+    "xpOfThresholdTowardCanDo": "{xp} از {threshold} XP برای این {canDo}",
+    "courseCompleteCanDosDesc": "شما تمام {count} {canDos} این دوره را تکمیل کرده‌اید. برای حفظ آنچه یاد گرفته‌اید، به تمرین ادامه دهید.",
+    "practiceCanDo": "این {canDo} را تمرین کنید",
+    "canDoCircleComplete": "{canDo} {index}: تکمیل شد",
+    "canDoCircleUpNext": "{canDo} {index}: بعدی",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "این {canDo} از یک دوره در {language} است. پیشرفت شما در آن فقط زمانی محاسبه می‌شود که در حال یادگیری {language} باشید.",
+    "canDoLanguageMismatchDesc": "این {canDo} از یک دوره در {language} است. زبان هدف خود را به {language} تغییر می‌دهید؟",
+    "noCanDoActivitiesYet": "شما هنوز فعالیتی برای این {canDo} تکمیل نکرده‌اید. یکی را از دوره خود شروع کنید.",
+    "canDoNotInYourCourses": "این {canDo} در هیچ یک از دوره‌های شما نیست.",
+    "currentCanDo": "{canDo} فعلی",
+    "xpGainedTowardCanDo": "{xp} XP برای این {canDo}"
 }

@@ -1793,7 +1793,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-11-11 11:38:57.556468",
+    "@@last_modified": "2026-11-12 09:04:23.266255",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7204,7 +7204,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Ni neposrednih sporočil ali klepetov. Prepričajte se, da je vaše iskanje pravilno napisano.",
-    "activityAnalyticsTooltipBody": "To so vaše shranjene dejavnosti za pregled in vadbo.",
     "numSavedActivities": "Število shranjenih dejavnosti",
     "saveActivityTitle": "Shrani dejavnost",
     "saveActivityDesc": "Dobra opravljena! Shranite to dejavnost za kasnejši pregled in vadbo",
@@ -7439,10 +7438,6 @@
     "zhTWDisplayName": "Kitajščina (tradicionalna)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10220,7 +10215,6 @@
     },
     "pageLabel": "{title} stran",
     "closeHint": "Zapri namig",
-    "starListLabel": "Shranjene dejavnosti in zvezde",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10230,10 +10224,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10550,7 +10540,6 @@
     "selectImageLabel": "Izberi sliko",
     "userSearchTagsLabel": "Išči v...",
     "courseDetails": "Podrobnosti tečaja",
-    "objective": "Cilj",
     "pingedLabel": "Pingano",
     "mapFilterPlayerCount": "{count} igralcev",
     "practiceFeedbackButtonTooltip": "Prijavi težavo s to vajo",
@@ -10851,17 +10840,9 @@
     "reportSent": "Poročilo poslano",
     "reportNotSent": "Vašega poročila ni bilo mogoče poslati. Preverite povezavo in poskusite znova.",
     "reportPointerMessage": "Sporočilo je bilo prijavljeno v {courseName} – glejte Varnost",
-    "learningObjective": "Učni cilj",
-    "learningObjectives": "Učni cilji",
-    "missionNofM": "Misija {index} od {count}",
-    "xpTowardObjective": "{xp} od {threshold} XP za ta cilj",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Tečaj dokončan!",
-    "courseCompleteDesc": "Dokončali ste vseh {count} ciljev v tem tečaju. Nadaljujte z vadbo, da ohranite naučeno.",
-    "practiceObjective": "Vadite ta cilj",
     "otherActivities": "Druge dejavnosti",
-    "objectiveCircleComplete": "Naloga {index}: dokončana",
-    "objectiveCircleUpNext": "Naloga {index}: naslednja",
     "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta",
     "andCertifyIMeetTheMinimumAge": " in potrjujem, da sem star vsaj 13 let ali minimalno starost, ki je zahtevana v moji državi, če je ta višja.",
     "filteredNetworkBlockedTitle": "To omrežje blokira Pangea Chat",
@@ -10911,7 +10892,6 @@
     "offlinePracticeNote": "Brez povezave. Vaši odgovori se naložijo, ko se vrnete.",
     "offlinePracticeSavedNote": "Shranjeno v tej napravi. Vaš XP se naloži, ko ste spet povezani.",
     "offlinePracticeNothingSaved": "Na tej napravi ni dovolj shranjenega za vadbo brez povezave. Poskusite znova, ko boste spet povezani.",
-    "missionNumber": "Misija {index}",
     "xpToYourStar": "{xp} XP do tvoje zvezde",
     "missionStarEarned": "Zvezda pridobljena!",
     "xpFromChats": "Klepeti {xp}",
@@ -10920,8 +10900,6 @@
     "playMission": "Igraj",
     "wordCount": "{count, plural, =1{1 beseda} other{{count} besed}}",
     "continueActivity": "Nadaljuj",
-    "noObjectiveActivitiesYet": "Za ta cilj še niste dokončali nobene dejavnosti. Začnite eno iz svojega tečaja.",
-    "objectiveNotInYourCourses": "Ta cilj ni v nobenem od vaših tečajev.",
     "objectiveActivityCount": "{count, plural, =0{Še ni dejavnosti} =1{1 dejavnost odigrana} other{{count} dejavnosti odigranih}}",
     "activityCompleted": "Dokončano",
     "completedTimes": "Dokončano {count}-krat",
@@ -10929,8 +10907,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Pogovor {xp}",
     "xpIncludingGoals": "vključno z {xp} iz ciljev",
-    "missionOtherLanguageNotice": "Ta misija je iz tečaja v {language}. Tvoj napredek pri njej šteje le, ko se učiš {language}.",
-    "missionLanguageMismatchDesc": "Ta misija je iz tečaja v {language}. Želiš preklopiti na {language} kot ciljni jezik?",
     "xpBySkillTitle": "Po spretnostih",
     "missionNextActivity": "Naslednja aktivnost",
     "missionContinueActivity": "Nadaljuj aktivnost",
@@ -10940,7 +10916,6 @@
     "otherCoursesSessions": "Drugi tečaji ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, pridobljenih {xp} XP",
-    "currentMission": "Trenutna misija",
     "constructUseCorRADesc": "Prebrano na glas in slišano",
     "constructUseIncRADesc": "Prebrano na glas, ni slišano",
     "hearItFirstToolName": "Najprej poslušaj",
@@ -10962,7 +10937,6 @@
     "readAloudTake": "Vzemi {number}",
     "videoWontPlayHere": "Tega videoposnetka ni mogoče predvajati tukaj.",
     "watchOnYoutube": "Glej na YouTubu",
-    "xpTowardMission": "{xp} XP za to misijo",
     "practiceStartWordCount": "{count, plural, =1{beseda za vajo} other{besed za vajo}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatična točka za vajo} other{gramatičnih točk za vajo}}",
     "practiceStartExerciseTypes": "Vrste vaj",
@@ -11001,5 +10975,20 @@
     "discussionStartIt": "Bodite prvi, ki bo začel to razpravo",
     "discussionRemoved": "Ne morete se pridružiti tej razpravi.",
     "discussionJoinArriving": "Ste notri! Razprava se bo odprla takoj, ko prispe.",
-    "roleplayLabel": "Igranje vlog"
+    "roleplayLabel": "Igranje vlog",
+    "canDoAnalyticsTooltipBody": "Vsak {canDo} se napolni z XP-ji iz svojih dejavnosti in vadbe. Poln {canDo} prinese zvezdico.",
+    "canDoStarListLabel": "{canDos} in shranjene dejavnosti",
+    "canDoNofM": "{canDo} {index} od {count}",
+    "xpOfThresholdTowardCanDo": "{xp} od {threshold} XP-jev za ta {canDo}",
+    "courseCompleteCanDosDesc": "V tem tečaju ste dokončali vseh {count} {canDos}. Nadaljujte z vadbo, da ohranite naučeno.",
+    "practiceCanDo": "Vadite ta {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: dokončano",
+    "canDoCircleUpNext": "{canDo} {index}: naslednje",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Ta {canDo} je iz tečaja v {language}. Vaš napredek pri njem šteje le, dokler se učite {language}.",
+    "canDoLanguageMismatchDesc": "Ta {canDo} je iz tečaja v {language}. Želite preklopiti ciljni jezik na {language}?",
+    "noCanDoActivitiesYet": "Za ta {canDo} še niste dokončali nobene dejavnosti. Začnite eno iz svojega tečaja.",
+    "canDoNotInYourCourses": "Ta {canDo} ni v nobenem od vaših tečajev.",
+    "currentCanDo": "Trenutni {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP-jev za ta {canDo}"
 }

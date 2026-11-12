@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:56.113312",
+    "@@last_modified": "2026-11-12 09:04:21.888248",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -6991,7 +6991,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Nu s-au găsit mesaje directe sau chat-uri. Asigură-te că căutarea ta este scrisă corect.",
-    "activityAnalyticsTooltipBody": "Acestea sunt activitățile tale salvate pentru revizuire și practică.",
     "numSavedActivities": "Numărul de activități salvate",
     "saveActivityTitle": "Salvează activitatea",
     "saveActivityDesc": "Bravo! Salvează această activitate pentru revizuire și practică ulterioară",
@@ -7226,10 +7225,6 @@
     "zhTWDisplayName": "Chineză (Tradițională)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10007,7 +10002,6 @@
     },
     "pageLabel": "{title} pagină",
     "closeHint": "Închideți sugestia",
-    "starListLabel": "Activități salvate și stele",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10017,10 +10011,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10337,7 +10327,6 @@
     "selectImageLabel": "Selectează imaginea",
     "userSearchTagsLabel": "Căutare în...",
     "courseDetails": "Detalii curs",
-    "objective": "Obiectiv",
     "pingedLabel": "Notificat",
     "mapFilterPlayerCount": "{count} jucători",
     "practiceFeedbackButtonTooltip": "Raportează o problemă cu acest exercițiu",
@@ -10638,17 +10627,9 @@
     "reportSent": "Raport trimis",
     "reportNotSent": "Raportul tău nu a putut fi trimis. Verifică-ți conexiunea și încearcă din nou.",
     "reportPointerMessage": "Un mesaj a fost raportat în {courseName} — vezi Siguranță",
-    "learningObjective": "Obiectiv de învățare",
-    "learningObjectives": "Obiective de învățare",
-    "missionNofM": "Misiunea {index} din {count}",
-    "xpTowardObjective": "{xp} din {threshold} XP pentru acest obiectiv",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Curs finalizat!",
-    "courseCompleteDesc": "Ai finalizat toate cele {count} obiective din acest curs. Continuă să exersezi pentru a-ți menține cunoștințele.",
-    "practiceObjective": "Exersează acest obiectiv",
     "otherActivities": "Alte activități",
-    "objectiveCircleComplete": "Misiunea {index}: finalizată",
-    "objectiveCircleUpNext": "Misiunea {index}: urmează",
     "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal de chat",
     "andCertifyIMeetTheMinimumAge": " și certific că am cel puțin 13 ani, sau vârsta minimă cerută în țara mea dacă aceasta este mai mare.",
     "filteredNetworkBlockedTitle": "Această rețea blochează Pangea Chat",
@@ -10698,7 +10679,6 @@
     "offlinePracticeNote": "Ești offline. Răspunsurile tale se vor încărca atunci când vei fi din nou online.",
     "offlinePracticeSavedNote": "Salvat pe acest dispozitiv. XP-ul tău se va încărca atunci când vei fi din nou online.",
     "offlinePracticeNothingSaved": "Nu s-au salvat suficiente date pe acest dispozitiv pentru a exersa offline. Încearcă din nou când ești online.",
-    "missionNumber": "Misiunea {index}",
     "xpToYourStar": "{xp} XP până la steaua ta",
     "missionStarEarned": "Stea câștigată!",
     "xpFromChats": "Chaturi {xp}",
@@ -10707,8 +10687,6 @@
     "playMission": "Joacă",
     "wordCount": "{count, plural, =1{1 cuvânt} other{{count} cuvinte}}",
     "continueActivity": "Continuă",
-    "noObjectiveActivitiesYet": "Nu ai finalizat încă o activitate pentru acest obiectiv. Începe una din cursul tău.",
-    "objectiveNotInYourCourses": "Acest obiectiv nu se află în niciunul dintre cursurile tale.",
     "objectiveActivityCount": "{count, plural, =0{Nicio activitate încă} =1{1 activitate jucată} other{{count} activități jucate}}",
     "activityCompleted": "Finalizat",
     "completedTimes": "Finalizat de {count} ori",
@@ -10716,8 +10694,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Conversație {xp}",
     "xpIncludingGoals": "inclusiv {xp} din obiective",
-    "missionOtherLanguageNotice": "Această misiune este dintr-un curs în {language}. Progresul tău în ea contează doar în timp ce înveți {language}.",
-    "missionLanguageMismatchDesc": "Această misiune este dintr-un curs în {language}. Vrei să schimbi limba țintă în {language}?",
     "xpBySkillTitle": "Pe abilitate",
     "missionNextActivity": "Următoarea activitate",
     "missionContinueActivity": "Continuă activitatea",
@@ -10727,7 +10703,6 @@
     "otherCoursesSessions": "Alte cursuri ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP câștigate",
-    "currentMission": "Misiune curentă",
     "constructUseCorRADesc": "Citit cu voce tare și auzit",
     "constructUseIncRADesc": "Citit cu voce tare, neauzit",
     "hearItFirstToolName": "Auzi mai întâi",
@@ -10749,7 +10724,6 @@
     "readAloudTake": "Preluare {number}",
     "videoWontPlayHere": "Acest videoclip nu va fi redat aici.",
     "watchOnYoutube": "Vizionează pe YouTube",
-    "xpTowardMission": "{xp} XP pentru această misiune",
     "practiceStartWordCount": "{count, plural, =1{cuvânt de exersat} other{cuvinte de exersat}}",
     "practiceStartGrammarCount": "{count, plural, =1{punct gramatical de exersat} other{puncte gramaticale de exersat}}",
     "practiceStartExerciseTypes": "Tipuri de exerciții",
@@ -10788,5 +10762,20 @@
     "discussionStartIt": "Fii primul care începe această discuție",
     "discussionRemoved": "Nu te poți alătura acestei discuții.",
     "discussionJoinArriving": "Ai intrat! Discuția se va deschide imediat ce sosește.",
-    "roleplayLabel": "Joc de rol"
+    "roleplayLabel": "Joc de rol",
+    "canDoAnalyticsTooltipBody": "Fiecare {canDo} se umple cu XP din activitățile și exercițiile sale. Un {canDo} complet îți aduce o stea.",
+    "canDoStarListLabel": "{canDos} și activități salvate",
+    "canDoNofM": "{canDo} {index} din {count}",
+    "xpOfThresholdTowardCanDo": "{xp} din {threshold} XP pentru acest {canDo}",
+    "courseCompleteCanDosDesc": "Ai completat toate cele {count} {canDos} din acest curs. Continuă să exersezi pentru a-ți menține cunoștințele.",
+    "practiceCanDo": "Exersează acest {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: complet",
+    "canDoCircleUpNext": "{canDo} {index}: urmează",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Acest {canDo} provine dintr-un curs în {language}. Progresul tău la acesta contează doar în timp ce înveți {language}.",
+    "canDoLanguageMismatchDesc": "Acest {canDo} provine dintr-un curs în {language}. Vrei să schimbi limba țintă în {language}?",
+    "noCanDoActivitiesYet": "Nu ai finalizat încă nicio activitate pentru acest {canDo}. Începe una din cursul tău.",
+    "canDoNotInYourCourses": "Acest {canDo} nu se află în niciunul dintre cursurile tale.",
+    "currentCanDo": "{canDo} curent",
+    "xpGainedTowardCanDo": "{xp} XP pentru acest {canDo}"
 }

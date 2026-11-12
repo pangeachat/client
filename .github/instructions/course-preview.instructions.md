@@ -9,7 +9,7 @@ Tapping a course in the add-course lists (browse public / start my own) should s
 
 ## What the lists offer
 
-A course is offered in either list only when its quest resolves **and** carries at least one Mission. A quest with no Missions has no activities under it, so its card reads "0 activities" and there is nothing behind the card to open: browse used to list these while the preview refused them, which the learner saw as "Oops, something went wrong" (#9088). The same rule was first written for start-my-own alone (#7700) and is now applied once, wherever a course plan is resolved, so neither list can offer a card the preview will reject.
+A course is offered in either list only when its quest resolves **and** carries at least one Can-Do. A quest with no Can-Dos has no activities under it, so its card reads "0 activities" and there is nothing behind the card to open: browse used to list these while the preview refused them, which the learner saw as "Oops, something went wrong" (#9088). The same rule was first written for start-my-own alone (#7700) and is now applied once, wherever a course plan is resolved, so neither list can offer a card the preview will reject.
 
 **Browse filters by how a course is joined** (#9358). Under the language filter, the browse list shows three pills: **All** (the default), **Public** (courses anyone can join straight away, join rule `public`) and **Restricted** (courses where the learner asks to join and an admin lets them in, join rule `knock`). "Restricted" is the same word the lock icon on a course tile uses. A published course with any other join rule shows under All only. The pills combine with the language filter and the name search. The catalog does not filter by join rule ([public-courses.instructions.md](../../../synapse-pangea-chat/.github/instructions/public-courses.instructions.md)), so the list filters the pages it fetches and keeps fetching until a load adds a page of matching courses or the catalog runs out. Like the language filter, the choice survives opening a course's preview and coming back.
 
@@ -28,7 +28,7 @@ A course is offered in either list only when its quest resolves **and** carries 
 
 - **Header**: the same course tile the learner tapped in the list (avatar, title, lock icon, member + info chips; no border, since it no longer navigates), with the back button to its left. At the minimized rest the title ellipsizes at one line — a wrapped title can overflow the short sheet; the tile's two-line wrap returns once expanded.
 - **Pinned CTA row** at the bottom ([`CourseCtaRow`](../../lib/routes/courses/course_cta_row.dart): a filled lead pill and quieter pills after it): Join, Knock, or Create course. A knock preview shows only the knock primary — class-code entry stays on its own page.
-- **Scrollable middle**, dropped entirely at the minimized rest (grow-before-scroll): the course description, its admins, and the read-only course plan ([`CourseObjectivesList`](../../lib/routes/courses/course_objectives/course_objectives_view.dart) in preview mode — Missions with activity carousels, no completion overlay, no taps).
+- **Scrollable middle**, dropped entirely at the minimized rest (grow-before-scroll): the course description, its admins, and the read-only course plan ([`CourseObjectivesList`](../../lib/routes/courses/course_objectives/course_objectives_view.dart) in preview mode — Can-Dos with activity carousels, no completion overlay, no taps).
 
 ## After creating (own flow)
 

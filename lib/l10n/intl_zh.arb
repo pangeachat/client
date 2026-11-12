@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-11-11 11:39:11.238351",
+    "@@last_modified": "2026-11-12 09:04:30.748824",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -6442,7 +6442,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "未找到私信或聊天。请确保您的搜索拼写正确。",
-    "activityAnalyticsTooltipBody": "这些是您保存的活动，供回顾和练习。",
     "numSavedActivities": "保存的活动数量",
     "saveActivityTitle": "保存活动",
     "saveActivityDesc": "做得好！保存此活动以便稍后回顾和练习",
@@ -6677,10 +6676,6 @@
     "zhTWDisplayName": "中文（繁体）",
     "zuDisplayName": "祖鲁语",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9278,7 +9273,6 @@
     },
     "pageLabel": "{title} 页面",
     "closeHint": "关闭提示",
-    "starListLabel": "保存的活动和星标",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9288,10 +9282,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9608,7 +9598,6 @@
     "selectImageLabel": "选择图片",
     "userSearchTagsLabel": "搜索范围...",
     "courseDetails": "课程详情",
-    "objective": "目标",
     "pingedLabel": "已提醒",
     "mapFilterPlayerCount": "{count} 位玩家",
     "practiceFeedbackButtonTooltip": "报告此练习的问题",
@@ -9909,17 +9898,9 @@
     "reportSent": "举报已发送",
     "reportNotSent": "无法发送您的举报。请检查您的网络连接，然后重试。",
     "reportPointerMessage": "在 {courseName} 中举报了一条消息 — 请查看“安全”",
-    "learningObjective": "学习目标",
-    "learningObjectives": "学习目标",
-    "missionNofM": "任务 {index} / {count}",
-    "xpTowardObjective": "此目标已获得 {xp} / {threshold} XP",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "课程完成！",
-    "courseCompleteDesc": "您已完成本课程中的所有 {count} 个目标。继续练习以巩固所学知识。",
-    "practiceObjective": "练习此目标",
     "otherActivities": "其他活动",
-    "objectiveCircleComplete": "任务 {index}：已完成",
-    "objectiveCircleUpNext": "任务 {index}：即将开始",
     "useActivityImageAsChatBackground": "使用活动图片作为聊天背景",
     "andCertifyIMeetTheMinimumAge": "并证明我已年满13周岁，如果我的国家/地区要求更高的最低年龄，则以该年龄为准。",
     "filteredNetworkBlockedTitle": "此网络正在阻止 Pangea Chat",
@@ -9969,7 +9950,6 @@
     "offlinePracticeNote": "离线。您的答案将在您上线后上传。",
     "offlinePracticeSavedNote": "已保存到此设备。您的经验值将在您上线后上传。",
     "offlinePracticeNothingSaved": "此设备上没有足够的已保存内容可供离线练习。请在联网后重试。",
-    "missionNumber": "任务 {index}",
     "xpToYourStar": "距获得星星还差 {xp} XP",
     "missionStarEarned": "获得星星！",
     "xpFromChats": "聊天 {xp}",
@@ -9978,8 +9958,6 @@
     "playMission": "开始",
     "wordCount": "{count, plural, =1{1 个单词} other{{count} 个单词}}",
     "continueActivity": "继续",
-    "noObjectiveActivitiesYet": "您尚未完成此目标的任何活动。请从您的课程中开始一项。",
-    "objectiveNotInYourCourses": "此目标不在您的任何课程中。",
     "objectiveActivityCount": "{count, plural, =0{暂无活动} =1{已完成 1 项活动} other{已完成 {count} 项活动}}",
     "activityCompleted": "已完成",
     "completedTimes": "已完成 {count} 次",
@@ -9987,8 +9965,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "对话 {xp}",
     "xpIncludingGoals": "包括来自目标的 {xp}",
-    "missionOtherLanguageNotice": "此任务来自 {language} 课程。只有在学习 {language} 时，您的进度才会计入其中。",
-    "missionLanguageMismatchDesc": "此任务来自 {language} 课程。要将您的目标语言切换到 {language} 吗？",
     "xpBySkillTitle": "按技能",
     "missionNextActivity": "下一个活动",
     "missionContinueActivity": "继续活动",
@@ -9998,7 +9974,6 @@
     "otherCoursesSessions": "其他课程 ({num})",
     "activityXpStamp": "{xp} 经验值",
     "activityCompletedWithXp": "{completed}，获得 {xp} 经验值",
-    "currentMission": "当前任务",
     "constructUseCorRADesc": "朗读并已听到",
     "constructUseIncRADesc": "朗读但未听到",
     "hearItFirstToolName": "先听为快",
@@ -10020,7 +9995,6 @@
     "readAloudTake": "第 {number} 次录音",
     "videoWontPlayHere": "此视频无法在此处播放。",
     "watchOnYoutube": "在 YouTube 上观看",
-    "xpTowardMission": "此任务的 {xp} 经验值",
     "practiceStartWordCount": "{count, plural, =1{要练习的单词} other{要练习的单词}}",
     "practiceStartGrammarCount": "{count, plural, =1{要练习的语法点} other{要练习的语法点}}",
     "practiceStartExerciseTypes": "练习类型",
@@ -10059,5 +10033,20 @@
     "discussionStartIt": "成为第一个开始此讨论的人",
     "discussionRemoved": "您无法加入此讨论。",
     "discussionJoinArriving": "您已加入！讨论将在到达后立即开始。",
-    "roleplayLabel": "角色扮演"
+    "roleplayLabel": "角色扮演",
+    "canDoAnalyticsTooltipBody": "每个{canDo}都会通过活动和练习获得经验值。一个完整的{canDo}会获得一颗星。",
+    "canDoStarListLabel": "{canDos}和已保存的活动",
+    "canDoNofM": "{canDo} {index} / {count}",
+    "xpOfThresholdTowardCanDo": "此{canDo}的经验值：{xp} / {threshold}",
+    "courseCompleteCanDosDesc": "你已完成本课程中的所有{count}个{canDos}。继续练习以巩固所学知识。",
+    "practiceCanDo": "练习此{canDo}",
+    "canDoCircleComplete": "{canDo} {index}：已完成",
+    "canDoCircleUpNext": "{canDo} {index}：即将开始",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "此{canDo}来自{language}课程。只有在你学习{language}时，你的进度才会计入其中。",
+    "canDoLanguageMismatchDesc": "此{canDo}来自{language}课程。要将你的目标语言切换为{language}吗？",
+    "noCanDoActivitiesYet": "你尚未完成此{canDo}的任何活动。从你的课程中开始一个吧。",
+    "canDoNotInYourCourses": "此{canDo}不在你的任何课程中。",
+    "currentCanDo": "当前{canDo}",
+    "xpGainedTowardCanDo": "此{canDo}已获得{xp}经验值"
 }

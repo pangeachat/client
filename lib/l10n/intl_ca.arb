@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 11:38:40.825243",
+    "@@last_modified": "2026-11-12 09:03:59.264331",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -6389,7 +6389,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "No s'han trobat DMs ni xats. Assegura't que la teva cerca estigui escrita correctament.",
-    "activityAnalyticsTooltipBody": "Aquestes són les teves activitats desades per a revisió i pràctica.",
     "numSavedActivities": "Nombre d'activitats desades",
     "saveActivityTitle": "Desa l'activitat",
     "saveActivityDesc": "Bona feina! Desa aquesta activitat per a una revisió i pràctica posteriors",
@@ -6624,10 +6623,6 @@
     "zhTWDisplayName": "Xinès (Tradicional)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -9405,7 +9400,6 @@
     },
     "pageLabel": "{title} pàgina",
     "closeHint": "Tanca la pista",
-    "starListLabel": "Activitats i estrelles desades",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -9415,10 +9409,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9735,7 +9725,6 @@
     "selectImageLabel": "Selecciona una imatge",
     "userSearchTagsLabel": "Cerca a...",
     "courseDetails": "Detalls del curs",
-    "objective": "Objectiu",
     "pingedLabel": "Fet ping",
     "mapFilterPlayerCount": "{count} jugadors",
     "practiceFeedbackButtonTooltip": "Informar d'un problema amb aquest exercici",
@@ -10036,17 +10025,9 @@
     "reportSent": "Informe enviat",
     "reportNotSent": "No s'ha pogut enviar l'informe. Comprova la connexió i torna-ho a provar.",
     "reportPointerMessage": "S'ha informat d'un missatge a {courseName}; consulta Seguretat",
-    "learningObjective": "Objectiu d'aprenentatge",
-    "learningObjectives": "Objectius d'aprenentatge",
-    "missionNofM": "Missió {index} de {count}",
-    "xpTowardObjective": "{xp} de {threshold} XP per a aquest objectiu",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Curs completat!",
-    "courseCompleteDesc": "Has completat els {count} objectius d'aquest curs. Continua practicant per retenir el que has après.",
-    "practiceObjective": "Practica aquest objectiu",
     "otherActivities": "Altres activitats",
-    "objectiveCircleComplete": "Missió {index}: completada",
-    "objectiveCircleUpNext": "Missió {index}: següent",
     "useActivityImageAsChatBackground": "Utilitza la imatge de l'activitat com a fons del xat",
     "andCertifyIMeetTheMinimumAge": " i certifico que tinc almenys 13 anys, o l'edat mínima requerida al meu país si és superior.",
     "filteredNetworkBlockedTitle": "Aquesta xarxa està bloquejant Pangea Chat",
@@ -10096,7 +10077,6 @@
     "offlinePracticeNote": "Fora de línia. Les teves respostes es pujaran quan tornis a estar connectat.",
     "offlinePracticeSavedNote": "Guardat en aquest dispositiu. La teva XP es pujarà quan tornis a estar en línia.",
     "offlinePracticeNothingSaved": "No s'ha desat prou contingut en aquest dispositiu per practicar sense connexió. Torna-ho a provar quan tinguis connexió.",
-    "missionNumber": "Missió {index}",
     "xpToYourStar": "{xp} XP per a la teva estrella",
     "missionStarEarned": "Estrella aconseguida!",
     "xpFromChats": "Xats {xp}",
@@ -10105,8 +10085,6 @@
     "playMission": "Jugar",
     "wordCount": "{count, plural, =1{1 paraula} other{{count} paraules}}",
     "continueActivity": "Continuar",
-    "noObjectiveActivitiesYet": "Encara no has completat cap activitat per a aquest objectiu. Comença'n una des del teu curs.",
-    "objectiveNotInYourCourses": "Aquest objectiu no es troba en cap dels teus cursos.",
     "objectiveActivityCount": "{count, plural, =0{Encara no hi ha activitats} =1{1 activitat feta} other{{count} activitats fetes}}",
     "activityCompleted": "Completada",
     "completedTimes": "Completada {count} vegades",
@@ -10114,8 +10092,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Conversa {xp}",
     "xpIncludingGoals": "incloent {xp} d'objectius",
-    "missionOtherLanguageNotice": "Aquesta missió és d'un curs de {language}. El teu progrés només compta mentre aprens {language}.",
-    "missionLanguageMismatchDesc": "Aquesta missió és d'un curs de {language}. Vols canviar el teu idioma objectiu a {language}?",
     "xpBySkillTitle": "Per habilitat",
     "missionNextActivity": "Següent activitat",
     "missionContinueActivity": "Continuar activitat",
@@ -10125,7 +10101,6 @@
     "otherCoursesSessions": "Altres cursos ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP guanyats",
-    "currentMission": "Missió actual",
     "constructUseCorRADesc": "Llegit en veu alta i escoltat",
     "constructUseIncRADesc": "Llegit en veu alta, no escoltat",
     "hearItFirstToolName": "Escolta-ho primer",
@@ -10147,7 +10122,6 @@
     "readAloudTake": "Presa {number}",
     "videoWontPlayHere": "Aquest vídeo no es pot reproduir aquí.",
     "watchOnYoutube": "Mira'l a YouTube",
-    "xpTowardMission": "{xp} XP per a aquesta missió",
     "practiceStartWordCount": "{count, plural, =1{paraula per practicar} other{paraules per practicar}}",
     "practiceStartGrammarCount": "{count, plural, =1{punt gramatical per practicar} other{punts gramaticals per practicar}}",
     "practiceStartExerciseTypes": "Tipus d'exercici",
@@ -10186,5 +10160,20 @@
     "discussionStartIt": "Sigues el primer a iniciar aquesta discussió",
     "discussionRemoved": "No pots unir-te a aquesta discussió.",
     "discussionJoinArriving": "Ja hi ets! La discussió s'obrirà tan aviat com arribi.",
-    "roleplayLabel": "Joc de rol"
+    "roleplayLabel": "Joc de rol",
+    "canDoAnalyticsTooltipBody": "Cada {canDo} s'omple amb XP de les seves activitats i pràctiques. Un {canDo} complet guanya una estrella.",
+    "canDoStarListLabel": "{canDos} i activitats guardades",
+    "canDoNofM": "{canDo} {index} de {count}",
+    "xpOfThresholdTowardCanDo": "{xp} de {threshold} XP per a aquest {canDo}",
+    "courseCompleteCanDosDesc": "Has completat els {count} {canDos} d'aquest curs. Continua practicant per mantenir el que has après.",
+    "practiceCanDo": "Practica aquest {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: completat",
+    "canDoCircleUpNext": "{canDo} {index}: següent",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Aquest {canDo} és d'un curs en {language}. El teu progrés només compta mentre aprens {language}.",
+    "canDoLanguageMismatchDesc": "Aquest {canDo} és d'un curs en {language}. Vols canviar el teu idioma objectiu a {language}?",
+    "noCanDoActivitiesYet": "Encara no has completat cap activitat per a aquest {canDo}. Comença'n una des del teu curs.",
+    "canDoNotInYourCourses": "Aquest {canDo} no es troba en cap dels teus cursos.",
+    "currentCanDo": "{canDo} actual",
+    "xpGainedTowardCanDo": "{xp} XP per a aquest {canDo}"
 }

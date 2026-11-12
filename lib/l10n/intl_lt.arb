@@ -2954,7 +2954,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-11-11 11:38:49.915205",
+    "@@last_modified": "2026-11-12 09:04:12.712021",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7040,7 +7040,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Nerasta tiesioginių žinučių ar pokalbių. Įsitikinkite, kad jūsų paieška parašyta teisingai.",
-    "activityAnalyticsTooltipBody": "Tai jūsų išsaugotos veiklos peržiūrai ir praktikai.",
     "numSavedActivities": "Išsaugotų veiklų skaičius",
     "saveActivityTitle": "Išsaugoti veiklą",
     "saveActivityDesc": "Puikus darbas! Išsaugokite šią veiklą vėlesnei peržiūrai ir praktikai",
@@ -7275,10 +7274,6 @@
     "zhTWDisplayName": "Kinų (Tradiciška)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10056,7 +10051,6 @@
     },
     "pageLabel": "{title} puslapis",
     "closeHint": "Uždaryti užuominą",
-    "starListLabel": "Išsaugotos veiklos ir žvaigždės",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10066,10 +10060,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10386,7 +10376,6 @@
     "selectImageLabel": "Pasirinkti atvaizdą",
     "userSearchTagsLabel": "Ieškoti...",
     "courseDetails": "Kurso detalės",
-    "objective": "Tikslas",
     "pingedLabel": "Papingavo",
     "mapFilterPlayerCount": "{count} žaidėjų",
     "practiceFeedbackButtonTooltip": "Pranešti apie problemą su šiuo pratimu",
@@ -10687,17 +10676,9 @@
     "reportSent": "Pranešimas išsiųstas",
     "reportNotSent": "Nepavyko išsiųsti jūsų pranešimo. Patikrinkite ryšį ir bandykite dar kartą.",
     "reportPointerMessage": "Pranešta apie žinutę {courseName} – žr. Sauga",
-    "learningObjective": "Mokymosi tikslas",
-    "learningObjectives": "Mokymosi tikslai",
-    "missionNofM": "Misija {index} iš {count}",
-    "xpTowardObjective": "{xp} iš {threshold} XP link šio tikslo",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Kursas baigtas!",
-    "courseCompleteDesc": "Įvykdėte visus {count} šio kurso tikslus. Toliau praktikuokitės, kad išlaikytumėte tai, ką išmokote.",
-    "practiceObjective": "Praktikuoti šį tikslą",
     "otherActivities": "Kita veikla",
-    "objectiveCircleComplete": "Misija {index}: atlikta",
-    "objectiveCircleUpNext": "Misija {index}: toliau",
     "useActivityImageAsChatBackground": "Naudoti veiklos paveikslėlį kaip pokalbio foną",
     "andCertifyIMeetTheMinimumAge": " ir patvirtinu, kad man yra bent 13 metų arba mano šalyje reikalaujamas minimalus amžius, jei jis yra didesnis.",
     "filteredNetworkBlockedTitle": "Šis tinklas blokuoja „Pangea Chat“",
@@ -10747,7 +10728,6 @@
     "offlinePracticeNote": "Neprisijungus. Jūsų atsakymai bus įkelti, kai vėl prisijungsite.",
     "offlinePracticeSavedNote": "Išsaugota šiame įrenginyje. Jūsų XP bus įkelta, kai vėl prisijungsite.",
     "offlinePracticeNothingSaved": "Šiame įrenginyje nepakanka išsaugotų duomenų, kad galėtumėte praktikuotis neprisijungę. Bandykite dar kartą, kai vėl prisijungsite prie interneto.",
-    "missionNumber": "Misija {index}",
     "xpToYourStar": "{xp} XP iki tavo žvaigždės",
     "missionStarEarned": "Žvaigždė gauta!",
     "xpFromChats": "Pokalbiai {xp}",
@@ -10756,8 +10736,6 @@
     "playMission": "Žaisti",
     "wordCount": "{count, plural, =1{1 žodis} other{{count} žodžiai}}",
     "continueActivity": "Tęsti",
-    "noObjectiveActivitiesYet": "Dar neatlikai šio tikslo veiklos. Pradėk ją iš savo kurso.",
-    "objectiveNotInYourCourses": "Šio tikslo nėra nė viename iš tavo kursų.",
     "objectiveActivityCount": "{count, plural, =0{Dar nėra veiklų} =1{Atlikta 1 veikla} other{Atliktos {count} veiklos}}",
     "activityCompleted": "Atlikta",
     "completedTimes": "Atlikta {count} kartus",
@@ -10765,8 +10743,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Pokalbis {xp}",
     "xpIncludingGoals": "įskaitant {xp} iš tikslų",
-    "missionOtherLanguageNotice": "Ši misija yra iš {language} kurso. Jūsų pažanga bus skaičiuojama tik tada, kai mokysitės {language}.",
-    "missionLanguageMismatchDesc": "Ši misija yra iš {language} kurso. Perjungti tikslinę kalbą į {language}?",
     "xpBySkillTitle": "Pagal įgūdžius",
     "missionNextActivity": "Kita veikla",
     "missionContinueActivity": "Tęsti veiklą",
@@ -10776,7 +10752,6 @@
     "otherCoursesSessions": "Kiti kursai ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP uždirbta",
-    "currentMission": "Dabartinė misija",
     "constructUseCorRADesc": "Perskaityta garsiai ir išgirsta",
     "constructUseIncRADesc": "Perskaityta garsiai, neišgirsta",
     "hearItFirstToolName": "Pirmiausia išgirskite",
@@ -10798,7 +10773,6 @@
     "readAloudTake": "Paimkite {number}",
     "videoWontPlayHere": "Šis vaizdo įrašas čia nebus leidžiamas.",
     "watchOnYoutube": "Žiūrėti „YouTube“",
-    "xpTowardMission": "{xp} XP šiai misijai",
     "practiceStartWordCount": "{count, plural, =1{žodis praktikai} other{žodžiai praktikai}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatikos punktas praktikai} other{gramatikos punktai praktikai}}",
     "practiceStartExerciseTypes": "Pratimų tipai",
@@ -10837,5 +10811,20 @@
     "discussionStartIt": "Būkite pirmas, pradėjęs šią diskusiją",
     "discussionRemoved": "Negalite prisijungti prie šios diskusijos.",
     "discussionJoinArriving": "Jūs prisijungėte! Diskusija prasidės, kai tik atsiras.",
-    "roleplayLabel": "Vaidmenų žaidimas"
+    "roleplayLabel": "Vaidmenų žaidimas",
+    "canDoAnalyticsTooltipBody": "Kiekvienas {canDo} užpildomas XP iš jo veiklų ir praktikos. Pilnas {canDo} uždirba žvaigždę.",
+    "canDoStarListLabel": "{canDos} ir išsaugotos veiklos",
+    "canDoNofM": "{canDo} {index} iš {count}",
+    "xpOfThresholdTowardCanDo": "{xp} iš {threshold} XP link šio {canDo}",
+    "courseCompleteCanDosDesc": "Baigėte visus {count} {canDos} šiame kurse. Tęskite praktiką, kad išlaikytumėte tai, ką išmokote.",
+    "practiceCanDo": "Praktikuoti šį {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: baigta",
+    "canDoCircleUpNext": "{canDo} {index}: toliau",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Šis {canDo} yra iš kurso {language} kalba. Jūsų pažanga jame skaičiuojama tik tada, kai mokotės {language} kalbos.",
+    "canDoLanguageMismatchDesc": "Šis {canDo} yra iš kurso {language} kalba. Pakeisti tikslinę kalbą į {language}?",
+    "noCanDoActivitiesYet": "Dar neatlikote veiklos šiam {canDo}. Pradėkite vieną iš savo kurso.",
+    "canDoNotInYourCourses": "Šio {canDo} nėra nė viename iš jūsų kursų.",
+    "currentCanDo": "Dabartinis {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP link šio {canDo}"
 }

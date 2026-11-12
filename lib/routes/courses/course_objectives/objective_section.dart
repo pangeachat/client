@@ -4,6 +4,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/routes/courses/course_objectives/activity_carousel.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_pacing.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_circle.dart';
@@ -125,9 +126,11 @@ class ObjectiveSection extends StatelessWidget {
     final circle = Semantics(
       label: progress == null
           ? null
-          : L10n.of(
-              context,
-            ).xpTowardObjective(progress!.xp, progress!.threshold),
+          : L10n.of(context).xpOfThresholdTowardCanDo(
+              progress!.xp,
+              progress!.threshold,
+              CanDoTerm.singular,
+            ),
       child: ExcludeSemantics(
         child: ObjectiveCircle(
           item: ObjectiveCircleData(
@@ -160,7 +163,7 @@ class ObjectiveSection extends StatelessWidget {
             WidgetSpan(
               alignment: PlaceholderAlignment.middle,
               child: _SectionBadge(
-                label: L10n.of(context).currentMission,
+                label: L10n.of(context).currentCanDo(CanDoTerm.singular),
                 fill: theme.colorScheme.primary,
                 ink: theme.colorScheme.onPrimary,
               ),
@@ -221,7 +224,7 @@ class ObjectiveSection extends StatelessWidget {
       );
 
     return Semantics(
-      label: L10n.of(context).objective,
+      label: CanDoTerm.singular,
       container: true,
       // The emphasis lives in the header only. A band or an outline around the
       // whole section was tried and dropped: a tint shows the carousel's
