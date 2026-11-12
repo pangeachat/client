@@ -10133,5 +10133,6 @@
     "noCanDoActivitiesYet": "Nie ukończono jeszcze żadnej aktywności dla tego {canDo}. Rozpocznij jedną z kursu.",
     "canDoNotInYourCourses": "To {canDo} nie znajduje się w żadnym z Twoich kursów.",
     "currentCanDo": "Aktualne {canDo}",
-    "xpGainedTowardCanDo": "{xp} PD do tego {canDo}"
+    "xpGainedTowardCanDo": "{xp} PD do tego {canDo}",
+    "sessionFinished": "Za późno! Ta aktywność została zakończona."
 }

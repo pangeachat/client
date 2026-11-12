@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Simunachitepo chilichonse pa {canDo} iyi. Yambani imodzi kuchokera ku kosi yanu.",
     "canDoNotInYourCourses": "Izi {canDo} sizili mu kosi iliyonse mwa zanu.",
     "currentCanDo": "{canDo} yamakono",
-    "xpGainedTowardCanDo": "{xp} XP kupita ku {canDo} iyi"
+    "xpGainedTowardCanDo": "{xp} XP kupita ku {canDo} iyi",
+    "sessionFinished": "Kwachedwa! Ntchito iyi yatha."
 }

@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Awukayiqedi imisebenzi yale {canDo} okwamanje. Qala eyodwa esifundweni sakho.",
     "canDoNotInYourCourses": "Le {canDo} ayikho kunoma yiziphi izifundo zakho.",
     "currentCanDo": "I-{canDo} yamanje",
-    "xpGainedTowardCanDo": "{xp} XP kule {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP kule {canDo}",
+    "sessionFinished": "Sekwephuze kakhulu! Lo msebenzi usuphelile."
 }

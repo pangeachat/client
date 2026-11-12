@@ -10121,5 +10121,6 @@
     "noCanDoActivitiesYet": "Non hai ancora completato un'attività per questo {canDo}. Iniziane una dal tuo corso.",
     "canDoNotInYourCourses": "Questo {canDo} non è presente in nessuno dei tuoi corsi.",
     "currentCanDo": "{canDo} attuale",
-    "xpGainedTowardCanDo": "{xp} XP per questo {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP per questo {canDo}",
+    "sessionFinished": "Troppo tardi! Questa attività è terminata."
 }

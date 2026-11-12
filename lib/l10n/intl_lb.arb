@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Dir hutt nach keng Aktivitéit fir dësen {canDo} ofgeschloss. Start eng aus Ärem Cours.",
     "canDoNotInYourCourses": "Dësen {canDo} ass an kengem vun Äre Coursen.",
     "currentCanDo": "Aktuellen {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP fir dësen {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP fir dësen {canDo}",
+    "sessionFinished": "Ze spéit! Dës Aktivitéit ass eriwwer."
 }

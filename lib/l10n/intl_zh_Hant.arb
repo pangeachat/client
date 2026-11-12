@@ -10154,5 +10154,6 @@
     "noCanDoActivitiesYet": "您尚未完成此{canDo}的活動。請從您的課程中開始一個。",
     "canDoNotInYourCourses": "此{canDo}不在您的任何課程中。",
     "currentCanDo": "目前的{canDo}",
-    "xpGainedTowardCanDo": "此{canDo}已獲得{xp}經驗值"
+    "xpGainedTowardCanDo": "此{canDo}已獲得{xp}經驗值",
+    "sessionFinished": "太遲了！此活動已結束。"
 }

@@ -10814,5 +10814,6 @@
     "noCanDoActivitiesYet": "この{canDo}のアクティビティをまだ完了していません。コースから始めてください。",
     "canDoNotInYourCourses": "この{canDo}はあなたのコースにはありません。",
     "currentCanDo": "現在の{canDo}",
-    "xpGainedTowardCanDo": "この{canDo}に向けて{xp}XPを獲得"
+    "xpGainedTowardCanDo": "この{canDo}に向けて{xp}XPを獲得",
+    "sessionFinished": "手遅れです！このアクティビティは終了しました。"
 }

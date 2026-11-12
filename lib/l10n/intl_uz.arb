@@ -10052,5 +10052,6 @@
     "noCanDoActivitiesYet": "Siz hali ushbu {canDo} uchun hech qanday mashgʻulotni yakunlamadingiz. Kursingizdan birini boshlang.",
     "canDoNotInYourCourses": "Ushbu {canDo} kurslaringizning hech birida yoʻq.",
     "currentCanDo": "Joriy {canDo}",
-    "xpGainedTowardCanDo": "Ushbu {canDo} uchun {xp} XP"
+    "xpGainedTowardCanDo": "Ushbu {canDo} uchun {xp} XP",
+    "sessionFinished": "Juda kech! Bu mashg'ulot tugadi."
 }

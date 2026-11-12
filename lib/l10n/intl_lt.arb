@@ -10826,5 +10826,6 @@
     "noCanDoActivitiesYet": "Dar neatlikote veiklos šiam {canDo}. Pradėkite vieną iš savo kurso.",
     "canDoNotInYourCourses": "Šio {canDo} nėra nė viename iš jūsų kursų.",
     "currentCanDo": "Dabartinis {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP link šio {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP link šio {canDo}",
+    "sessionFinished": "Per vėlu! Ši veikla baigėsi."
 }

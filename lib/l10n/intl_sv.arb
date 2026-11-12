@@ -10563,5 +10563,6 @@
     "noCanDoActivitiesYet": "Du har inte slutfört någon aktivitet för detta {canDo} än. Starta en från din kurs.",
     "canDoNotInYourCourses": "Detta {canDo} finns inte i någon av dina kurser.",
     "currentCanDo": "Aktuellt {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP mot detta {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP mot detta {canDo}",
+    "sessionFinished": "För sent! Den här aktiviteten är avslutad."
 }

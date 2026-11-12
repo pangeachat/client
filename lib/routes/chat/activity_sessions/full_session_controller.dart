@@ -9,7 +9,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
+import 'package:fluffychat/routes/chat_list/chat_invite_dialog.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class FullSession extends StatefulWidget {
   final Room? course;
@@ -27,9 +29,13 @@ class FullSession extends StatefulWidget {
 class FullSessionController extends State<FullSession>
     implements ActivitySessionStateController {
   @override
-  String get descriptionText => L10n.of(context).sessionFull;
+  String get descriptionText => widget.controller.invitedSessionFinished
+      ? L10n.of(context).sessionFinished
+      : L10n.of(context).sessionFull;
 
   Room? get course => widget.course;
+
+  bool get isInvited => widget.controller.invitedRoom != null;
 
   @override
   bool isRoleSelected(String id) => false;
@@ -67,7 +73,34 @@ class FullSessionController extends State<FullSession>
   @override
   Set<String> get selectedRoleCompletedGoalIds => {};
 
+  /// Declines the invite, and leaves the way the return button would.
+  Future<void> dismissInvite() async {
+    final room = widget.controller.invitedRoom;
+    if (room == null) return;
+    final result = await showFutureLoadingDialog(
+      context: context,
+      future: room.leave,
+    );
+    if (result.isError) return;
+    returnFromFullSession();
+  }
+
+  /// Accepts the invite, for someone invited on purpose to see the session.
+  Future<void> openInvitedChat() async {
+    final room = widget.controller.invitedRoom;
+    if (room == null) return;
+    final page = widget.controller;
+    if (await ChatInviteDialog.join(context, room) && page.mounted) {
+      NavigationUtil.goToSpaceRoute(room.id, [], page.context);
+    }
+  }
+
   void returnFromFullSession() {
+    // The page's context: an answered invite can swap this view out when it
+    // syncs, and the page outlives the swap.
+    final page = widget.controller;
+    if (!page.mounted) return;
+    final context = page.context;
     final course = widget.course;
     if (course != null) {
       // world_v2: switch the workspace to this course's card (a token nav,

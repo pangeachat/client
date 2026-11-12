@@ -9660,5 +9660,6 @@
     "noCanDoActivitiesYet": "You haven't completed an activity for this {canDo} yet. Start one from your course.",
     "canDoNotInYourCourses": "This {canDo} isn't in any of your courses.",
     "currentCanDo": "Current {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP toward this {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP toward this {canDo}",
+    "sessionFinished": "ཧ་ཅང་འཕྱི་དྲགས་འདུག བྱེད་སྒོ་འདི་ཚར་ཚར་འདུག"
 }

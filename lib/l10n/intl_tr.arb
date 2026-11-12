@@ -10346,5 +10346,6 @@
     "noCanDoActivitiesYet": "Bu {canDo} için henüz bir etkinlik tamamlamadınız. Kursunuzdan bir tane başlatın.",
     "canDoNotInYourCourses": "Bu {canDo} kurslarınızın hiçbirinde değil.",
     "currentCanDo": "Mevcut {canDo}",
-    "xpGainedTowardCanDo": "Bu {canDo} için {xp} DP kazanıldı"
+    "xpGainedTowardCanDo": "Bu {canDo} için {xp} DP kazanıldı",
+    "sessionFinished": "Çok geç! Bu etkinlik sona erdi."
 }

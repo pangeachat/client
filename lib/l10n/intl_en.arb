@@ -4878,6 +4878,7 @@
     "courseNoLongerAvailableTitle": "Course unavailable",
     "courseDeletedDialogDesc": "This course has been deleted.",
     "sessionFull": "Too late! This activity is full.",
+    "sessionFinished": "Too late! This activity has finished.",
     "returnToCourse": "Return to course",
     "returnHome": "Return home",
     "translationFeedback": "Translation Feedback",

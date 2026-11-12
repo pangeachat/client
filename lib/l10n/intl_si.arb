@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "ඔබ තවමත් මෙම {canDo} සඳහා ක්‍රියාකාරකමක් සම්පූර්ණ කර නැත. ඔබේ පාඨමාලාවෙන් එකක් ආරම්භ කරන්න.",
     "canDoNotInYourCourses": "මෙම {canDo} ඔබේ කිසිදු පාඨමාලාවක නොමැත.",
     "currentCanDo": "වත්මන් {canDo}",
-    "xpGainedTowardCanDo": "මෙම {canDo} සඳහා {xp} XP"
+    "xpGainedTowardCanDo": "මෙම {canDo} සඳහා {xp} XP",
+    "sessionFinished": "ප්‍රමාද වැඩියි! මෙම ක්‍රියාකාරකම අවසන් වී ඇත."
 }

@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "تۆ هێشتا هیچ چالاکییەکت بۆ ئەم {canDo}یە تەواو نەکردووە. یەکێک لە خولەکەتەوە دەست پێ بکە.",
     "canDoNotInYourCourses": "ئەم {canDo}یە لە هیچ کام لە خولەکانتدا نییە.",
     "currentCanDo": "{canDo}ی ئێستا",
-    "xpGainedTowardCanDo": "{xp} XP بەرەو ئەم {canDo}یە"
+    "xpGainedTowardCanDo": "{xp} XP بەرەو ئەم {canDo}یە",
+    "sessionFinished": "درەنگ کەوتیت! ئەم چالاکییە تەواو بوو."
 }

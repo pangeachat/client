@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "អ្នកមិនទាន់បានបញ្ចប់សកម្មភាពសម្រាប់ {canDo} នេះនៅឡើយទេ។ ចាប់ផ្ដើមមួយពីវគ្គសិក្សារបស់អ្នក។",
     "canDoNotInYourCourses": "{canDo} នេះមិនមាននៅក្នុងវគ្គសិក្សាណាមួយរបស់អ្នកទេ។",
     "currentCanDo": "{canDo} បច្ចុប្បន្ន",
-    "xpGainedTowardCanDo": "{xp} XP ឆ្ពោះទៅរក {canDo} នេះ"
+    "xpGainedTowardCanDo": "{xp} XP ឆ្ពោះទៅរក {canDo} នេះ",
+    "sessionFinished": "យឺតពេលហើយ! សកម្មភាពនេះបានបញ្ចប់ហើយ។"
 }

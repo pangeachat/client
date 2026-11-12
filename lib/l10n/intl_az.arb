@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Bu {canDo} üçün hələ heç bir fəaliyyəti tamamlamamısınız. Kursunuzdan birinə başlayın.",
     "canDoNotInYourCourses": "Bu {canDo} kurslarınızın heç birində yoxdur.",
     "currentCanDo": "Cari {canDo}",
-    "xpGainedTowardCanDo": "Bu {canDo} üçün {xp} XP qazanıldı"
+    "xpGainedTowardCanDo": "Bu {canDo} üçün {xp} XP qazanıldı",
+    "sessionFinished": "Çox gecdir! Bu fəaliyyət bitdi."
 }

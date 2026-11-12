@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Ou poko fin fè yon aktivite pou {canDo} sa a. Kòmanse youn nan kou ou a.",
     "canDoNotInYourCourses": "{canDo} sa a pa nan okenn nan kou ou yo.",
     "currentCanDo": "{canDo} aktyèl",
-    "xpGainedTowardCanDo": "{xp} XP pou {canDo} sa a"
+    "xpGainedTowardCanDo": "{xp} XP pou {canDo} sa a",
+    "sessionFinished": "Twò ta! Aktivite sa a fini."
 }

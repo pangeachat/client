@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Ùn avete ancu cumplettatu una attività per stu {canDo}. Cuminciate una da u vostru corsu.",
     "canDoNotInYourCourses": "Stu {canDo} ùn hè micca in alcunu di i vostri corsi.",
     "currentCanDo": "{canDo} attuale",
-    "xpGainedTowardCanDo": "{xp} XP versu stu {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP versu stu {canDo}",
+    "sessionFinished": "Troppu tardi! Sta attività hè finita."
 }

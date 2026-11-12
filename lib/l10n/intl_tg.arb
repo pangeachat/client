@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Шумо ҳанӯз барои ин {canDo} ягон фаъолиятро анҷом надодаед. Якеро аз курси худ оғоз кунед.",
     "canDoNotInYourCourses": "Ин {canDo} дар ягон курси шумо нест.",
     "currentCanDo": "{canDo}-и ҷорӣ",
-    "xpGainedTowardCanDo": "{xp} XP ба ин {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP ба ин {canDo}",
+    "sessionFinished": "Дер шуд! Ин фаъолият ба охир расид."
 }

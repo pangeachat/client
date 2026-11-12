@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Anjeun teu acan ngarengsekeun kagiatan pikeun {canDo} ieu. Mimitian hiji tina kursus anjeun.",
     "canDoNotInYourCourses": "{canDo} ieu henteu aya dina kursus anjeun.",
     "currentCanDo": "{canDo} ayeuna",
-    "xpGainedTowardCanDo": "{xp} XP pikeun {canDo} ieu"
+    "xpGainedTowardCanDo": "{xp} XP pikeun {canDo} ieu",
+    "sessionFinished": "Kacida telat! Kagiatan ieu parantos réngsé."
 }

@@ -10777,5 +10777,6 @@
     "noCanDoActivitiesYet": "Nu ai finalizat încă nicio activitate pentru acest {canDo}. Începe una din cursul tău.",
     "canDoNotInYourCourses": "Acest {canDo} nu se află în niciunul dintre cursurile tale.",
     "currentCanDo": "{canDo} curent",
-    "xpGainedTowardCanDo": "{xp} XP pentru acest {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP pentru acest {canDo}",
+    "sessionFinished": "Prea târziu! Această activitate s-a încheiat."
 }

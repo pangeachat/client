@@ -10673,5 +10673,6 @@
     "noCanDoActivitiesYet": "আপনি এখনও এই {canDo} এর জন্য কোনো কার্যকলাপ সম্পন্ন করেননি। আপনার কোর্স থেকে একটি শুরু করুন।",
     "canDoNotInYourCourses": "এই {canDo} আপনার কোনো কোর্সে নেই।",
     "currentCanDo": "বর্তমান {canDo}",
-    "xpGainedTowardCanDo": "এই {canDo} এর জন্য {xp} XP"
+    "xpGainedTowardCanDo": "এই {canDo} এর জন্য {xp} XP",
+    "sessionFinished": "অনেক দেরি হয়ে গেছে! এই কার্যকলাপটি শেষ হয়ে গেছে।"
 }

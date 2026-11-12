@@ -10990,5 +10990,6 @@
     "noCanDoActivitiesYet": "Vi ankoraŭ ne kompletigis agadon por ĉi tiu {canDo}. Komencu unu el via kurso.",
     "canDoNotInYourCourses": "Ĉi tiu {canDo} ne estas en iu ajn el viaj kursoj.",
     "currentCanDo": "Nuna {canDo}",
-    "xpGainedTowardCanDo": "{xp} SP al ĉi tiu {canDo}"
+    "xpGainedTowardCanDo": "{xp} SP al ĉi tiu {canDo}",
+    "sessionFinished": "Tro malfrue! Ĉi tiu agado finiĝis."
 }

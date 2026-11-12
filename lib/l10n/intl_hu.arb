@@ -10151,5 +10151,6 @@
     "noCanDoActivitiesYet": "Még nem végeztél el tevékenységet ehhez a {canDo}-hoz. Kezdj egyet a kurzusodból.",
     "canDoNotInYourCourses": "Ez a {canDo} nincs egyik kurzusodban sem.",
     "currentCanDo": "Jelenlegi {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP ehhez a {canDo}-hoz"
+    "xpGainedTowardCanDo": "{xp} XP ehhez a {canDo}-hoz",
+    "sessionFinished": "Túl késő! Ez a tevékenység befejeződött."
 }

@@ -10959,5 +10959,6 @@
     "noCanDoActivitiesYet": "עדיין לא השלמת פעילות עבור {canDo} זה. התחל אחת מהקורס שלך.",
     "canDoNotInYourCourses": "{canDo} זה אינו נמצא באף אחד מהקורסים שלך.",
     "currentCanDo": "{canDo} נוכחי",
-    "xpGainedTowardCanDo": "{xp} נקודות XP לקראת {canDo} זה"
+    "xpGainedTowardCanDo": "{xp} נקודות XP לקראת {canDo} זה",
+    "sessionFinished": "מאוחר מדי! הפעילות הזו הסתיימה."
 }

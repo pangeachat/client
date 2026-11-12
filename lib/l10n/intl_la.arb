@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Nondum actionem pro hac {canDo} perfecisti. Incipe unam ex cursu tuo.",
     "canDoNotInYourCourses": "Haec {canDo} in nullo cursu tuo est.",
     "currentCanDo": "{canDo} praesens",
-    "xpGainedTowardCanDo": "{xp} XP ad hanc {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP ad hanc {canDo}",
+    "sessionFinished": "Sero! Haec actio perfecta est."
 }

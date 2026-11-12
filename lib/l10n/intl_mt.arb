@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Għadek ma lestejtx attività għal dan il-{canDo}. Ibda waħda mill-kors tiegħek.",
     "canDoNotInYourCourses": "Dan il-{canDo} mhuwiex f'xi wieħed mill-korsijiet tiegħek.",
     "currentCanDo": "{canDo} kurrenti",
-    "xpGainedTowardCanDo": "{xp} XP lejn dan il-{canDo}"
+    "xpGainedTowardCanDo": "{xp} XP lejn dan il-{canDo}",
+    "sessionFinished": "Tard wisq! Din l-attività spiċċat."
 }

@@ -176,7 +176,7 @@ class _SessionCTAButtons extends StatelessWidget {
     }
 
     if (controller is FullSessionController) {
-      return _FullSessionCTAButtons(controller);
+      return _FullSessionCTAButtons(controller, compact: compact);
     }
 
     if (controller is NotStartedSessionController) {
@@ -201,6 +201,11 @@ class _SelectRoleSessionCTAButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // A seat may not be there, so the choice can't be offered yet.
+    if (controller.widget.controller.awaitingInvitedSession) {
+      return const LinearProgressIndicator();
+    }
+
     return ActivitySessionCTAButton(
       L10n.of(context).confirm,
       controller.canConfirmRole ? controller.confirmRoleSelection : null,
@@ -210,10 +215,35 @@ class _SelectRoleSessionCTAButtons extends StatelessWidget {
 
 class _FullSessionCTAButtons extends StatelessWidget {
   final FullSessionController controller;
-  const _FullSessionCTAButtons(this.controller);
+
+  /// True at the minimized mobile rest, which drops the description above
+  /// these buttons.
+  final bool compact;
+  const _FullSessionCTAButtons(this.controller, {this.compact = false});
 
   @override
   Widget build(BuildContext context) {
+    if (controller.isInvited) {
+      return Column(
+        spacing: 16.0,
+        children: [
+          // Dismiss needs its reason in view, and the phone sheet opens
+          // minimized.
+          if (compact)
+            Text(controller.descriptionText, textAlign: TextAlign.center),
+          ActivitySessionCTAButton(
+            L10n.of(context).dismiss,
+            controller.dismissInvite,
+          ),
+          ActivitySessionCTAButton(
+            L10n.of(context).openChat,
+            controller.openInvitedChat,
+            secondary: true,
+          ),
+        ],
+      );
+    }
+
     return ActivitySessionCTAButton(
       controller.course != null
           ? L10n.of(context).returnToCourse

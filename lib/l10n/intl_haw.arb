@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "ʻAʻole ʻoe i hoʻopau i kahi hana no kēia {canDo}. E hoʻomaka i kekahi mai kāu papa.",
     "canDoNotInYourCourses": "ʻAʻole kēia {canDo} i kekahi o kāu mau papa.",
     "currentCanDo": "ʻO {canDo} o kēia manawa",
-    "xpGainedTowardCanDo": "{xp} XP no kēia {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP no kēia {canDo}",
+    "sessionFinished": "Ua lohi! Ua pau kēia hana."
 }

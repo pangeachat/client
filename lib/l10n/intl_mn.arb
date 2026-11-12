@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Та энэ {canDo}-д зориулсан үйл ажиллагааг хараахан дуусгаагүй байна. Хичээлээсээ эхлүүлээрэй.",
     "canDoNotInYourCourses": "Энэ {canDo} таны хичээлүүдийн алинд ч байхгүй байна.",
     "currentCanDo": "Одоогийн {canDo}",
-    "xpGainedTowardCanDo": "Энэ {canDo}-д хүрэхэд олсон {xp} XP"
+    "xpGainedTowardCanDo": "Энэ {canDo}-д хүрэхэд олсон {xp} XP",
+    "sessionFinished": "Хэтэрхий оройтлоо! Энэ үйл ажиллагаа дууссан байна."
 }

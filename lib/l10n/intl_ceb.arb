@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Wala pa nimo nahuman ang usa ka kalihokan alang niining {canDo}. Sugdi ang usa gikan sa imong kurso.",
     "canDoNotInYourCourses": "Kini nga {canDo} wala sa bisan asa sa imong mga kurso.",
     "currentCanDo": "Karon nga {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP padulong niining {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP padulong niining {canDo}",
+    "sessionFinished": "Ulahi na! Nahuman na kini nga kalihokan."
 }

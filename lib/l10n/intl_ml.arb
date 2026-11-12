@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "ഈ {canDo}-യ്‌ക്കായി നിങ്ങൾ ഇതുവരെ ഒരു പ്രവർത്തനം പൂർത്തിയാക്കിയിട്ടില്ല. നിങ്ങളുടെ കോഴ്സിൽ നിന്ന് ഒന്ന് ആരംഭിക്കുക.",
     "canDoNotInYourCourses": "ഈ {canDo} നിങ്ങളുടെ കോഴ്സുകളിലൊന്നിലുമില്ല.",
     "currentCanDo": "നിലവിലെ {canDo}",
-    "xpGainedTowardCanDo": "ഈ {canDo}-യിലേക്ക് {xp} XP"
+    "xpGainedTowardCanDo": "ഈ {canDo}-യിലേക്ക് {xp} XP",
+    "sessionFinished": "വളരെ വൈകി! ഈ പ്രവർത്തനം പൂർത്തിയായി."
 }

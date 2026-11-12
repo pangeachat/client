@@ -10048,5 +10048,6 @@
     "noCanDoActivitiesYet": "Jūs vēl neesat pabeidzis nevienu aktivitāti šim {canDo}. Sāciet to no sava kursa.",
     "canDoNotInYourCourses": "Šis {canDo} nav nevienā no jūsu kursiem.",
     "currentCanDo": "Pašreizējais {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP šim {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP šim {canDo}",
+    "sessionFinished": "Par vēlu! Šī aktivitāte ir beigusies."
 }

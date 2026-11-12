@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Nid ydych wedi cwblhau gweithgaredd ar gyfer y {canDo} hwn eto. Dechreuwch un o'ch cwrs.",
     "canDoNotInYourCourses": "Nid yw'r {canDo} hwn yn unrhyw un o'ch cyrsiau.",
     "currentCanDo": "Y {canDo} presennol",
-    "xpGainedTowardCanDo": "{xp} XP tuag at y {canDo} hwn"
+    "xpGainedTowardCanDo": "{xp} XP tuag at y {canDo} hwn",
+    "sessionFinished": "Rhy hwyr! Mae'r gweithgaredd hwn wedi dod i ben."
 }

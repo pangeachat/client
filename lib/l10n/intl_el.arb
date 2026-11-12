@@ -10920,5 +10920,6 @@
     "noCanDoActivitiesYet": "Δεν έχεις ολοκληρώσει ακόμα κάποια δραστηριότητα για αυτό το {canDo}. Ξεκίνησε μία από το μάθημά σου.",
     "canDoNotInYourCourses": "Αυτό το {canDo} δεν περιλαμβάνεται σε κανένα από τα μαθήματά σου.",
     "currentCanDo": "Τρέχον {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP για αυτό το {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP για αυτό το {canDo}",
+    "sessionFinished": "Πολύ αργά! Αυτή η δραστηριότητα έχει τελειώσει."
 }

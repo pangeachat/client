@@ -10981,5 +10981,6 @@
     "noCanDoActivitiesYet": "Tu non ha ancora completate un activitate pro iste {canDo}. Comencia un de tu curso.",
     "canDoNotInYourCourses": "Iste {canDo} non es in ulle de tu cursos.",
     "currentCanDo": "{canDo} actual",
-    "xpGainedTowardCanDo": "{xp} XP verso iste {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP verso iste {canDo}",
+    "sessionFinished": "Troppo tarde! Iste activitate ha finite."
 }

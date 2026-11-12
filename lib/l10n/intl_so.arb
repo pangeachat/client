@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Weli ma aadan dhammaystirin wax hawl ah oo ku saabsan {canDo}kan. Mid ka bilow koorsadaada.",
     "canDoNotInYourCourses": "{canDo}kan kuma jiro mid ka mid ah koorsooyinkaaga.",
     "currentCanDo": "{canDo}ka hadda jira",
-    "xpGainedTowardCanDo": "{xp} XP oo ku socda {canDo}kan"
+    "xpGainedTowardCanDo": "{xp} XP oo ku socda {canDo}kan",
+    "sessionFinished": "Waa goor dambe! Hawshan waa la dhammeeyay."
 }

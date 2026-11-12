@@ -10905,5 +10905,6 @@
     "noCanDoActivitiesYet": "Hindi mo pa nakumpleto ang isang aktibidad para sa {canDo} na ito. Magsimula ng isa mula sa iyong kurso.",
     "canDoNotInYourCourses": "Ang {canDo} na ito ay wala sa alinman sa iyong mga kurso.",
     "currentCanDo": "Kasalukuyang {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP patungo sa {canDo} na ito"
+    "xpGainedTowardCanDo": "{xp} XP patungo sa {canDo} na ito",
+    "sessionFinished": "Huli na! Tapos na ang aktibidad na ito."
 }
