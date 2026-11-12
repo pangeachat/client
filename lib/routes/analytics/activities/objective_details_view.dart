@@ -303,6 +303,9 @@ class _ObjectiveDetailsBody extends StatelessWidget {
                       ),
                     )
                   : ActivityCarousel(
+                      // The learner's own history, from every course.
+                      courseId: null,
+                      discussionsInAnyCourse: true,
                       activities: activities,
                       onTap: (activity) =>
                           AnalyticsNavigationUtil.navigateToAnalytics(

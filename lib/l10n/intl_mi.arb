@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-11-10 13:06:15.289997",
+    "@@last_modified": "2026-11-11 11:38:50.763643",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Waehere",
     "joinCodeSaved": "Kua tiakina te waehere {code}",
     "joinCodeSavedExplanation": "Rēhita, takiuru rānei, ā, mā mātou koe e tāpiri.",
+    "discussionLabel": "Matapaki",
+    "discussionCardSemantics": "Matapaki: {title}",
+    "discussionJoined": "Kua uru",
+    "discussionAnswered": "Kua whakautua",
+    "joinTheDiscussion": "Hono atu ki te matapaki",
+    "discussionClassmatesInRoom": "{count, plural, =1{Kotahi te hoa kura kei tēnei matapaki} other{E {count} ngā hoa kura kei tēnei matapaki}}",
+    "discussionStartIt": "Ko koe te tuatahi ki te tīmata i tēnei matapaki",
+    "discussionRemoved": "Kāore e taea e koe te uru ki tēnei matapaki.",
+    "discussionJoinArriving": "Kua uru koe! Ka tuwhera te matapaki ina tae mai.",
+    "roleplayLabel": "Tākaro tūranga",
     "sessionFinished": "Kua roa rawa! Kua mutu tēnei mahi."
 }

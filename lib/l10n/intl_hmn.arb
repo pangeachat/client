@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-11-10 13:06:11.596839",
+    "@@last_modified": "2026-11-11 11:38:44.818913",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Lej",
     "joinCodeSaved": "Lej {code} tau txais",
     "joinCodeSavedExplanation": "Sau npe lossis nkag mus thiab peb yuav ntxiv koj.",
+    "discussionLabel": "Sib tham",
+    "discussionCardSemantics": "Sib tham: {title}",
+    "discussionJoined": "Koom lawm",
+    "discussionAnswered": "Teb lawm",
+    "joinTheDiscussion": "Koom kev sib tham",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 tus phooj ywg kawm ntawv nyob hauv qhov sib tham no} other{{count} tus phooj ywg kawm ntawv nyob hauv qhov sib tham no}}",
+    "discussionStartIt": "Ua tus pib qhov sib tham no ua ntej",
+    "discussionRemoved": "Koj tsis tuaj yeem koom qhov sib tham no.",
+    "discussionJoinArriving": "Koj tuaj lawm! Qhov sib tham yuav qhib sai li sai tau thaum nws tuaj txog.",
+    "roleplayLabel": "Ua yeeb yam",
     "sessionFinished": "Lig dhau lawm! Qhov kev ua si no tau xaus lawm."
 }

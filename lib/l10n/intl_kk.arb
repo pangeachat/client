@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-11-10 13:06:13.063261",
+    "@@last_modified": "2026-11-11 11:38:47.274995",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Код",
     "joinCodeSaved": "{code} коды сақталды",
     "joinCodeSavedExplanation": "Тіркеліңіз немесе кіріңіз, сонда біз сізді қосамыз.",
+    "discussionLabel": "Талқылау",
+    "discussionCardSemantics": "Талқылау: {title}",
+    "discussionJoined": "Қосылды",
+    "discussionAnswered": "Жауап берілді",
+    "joinTheDiscussion": "Талқылауға қосылыңыз",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 сыныптас осы талқылауда} other{{count} сыныптас осы талқылауда}}",
+    "discussionStartIt": "Осы талқылауды бірінші болып бастаңыз",
+    "discussionRemoved": "Бұл талқылауға қосыла алмайсыз.",
+    "discussionJoinArriving": "Сіз кірдіңіз! Талқылау келгеннен кейін бірден ашылады.",
+    "roleplayLabel": "Рөлдік ойын",
     "sessionFinished": "Кеш қалдыңыз! Бұл әрекет аяқталды."
 }

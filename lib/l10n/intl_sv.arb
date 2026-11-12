@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:19.683823",
+    "@@last_modified": "2026-11-11 11:38:59.465768",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10565,5 +10565,15 @@
     "joinCodeLabel": "Kod",
     "joinCodeSaved": "Kod {code} sparad",
     "joinCodeSavedExplanation": "Registrera dig eller logga in så lägger vi till dig.",
+    "discussionLabel": "Diskussion",
+    "discussionCardSemantics": "Diskussion: {title}",
+    "discussionJoined": "Gick med",
+    "discussionAnswered": "Besvarad",
+    "joinTheDiscussion": "Gå med i diskussionen",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 klasskamrat är med i diskussionen} other{{count} klasskamrater är med i diskussionen}}",
+    "discussionStartIt": "Bli först med att starta diskussionen",
+    "discussionRemoved": "Du kan inte gå med i den här diskussionen.",
+    "discussionJoinArriving": "Du är med! Diskussionen öppnas så snart den anländer.",
+    "roleplayLabel": "Rollspel",
     "sessionFinished": "För sent! Den här aktiviteten är avslutad."
 }

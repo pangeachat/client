@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-11-10 13:06:18.477595",
+    "@@last_modified": "2026-11-11 11:39:05.089216",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10992,5 +10992,15 @@
     "joinCodeLabel": "Kód",
     "joinCodeSaved": "Kód {code} uložený",
     "joinCodeSavedExplanation": "Zaregistrujte sa alebo sa prihláste a my vás pridáme.",
+    "discussionLabel": "Diskusia",
+    "discussionCardSemantics": "Diskusia: {title}",
+    "discussionJoined": "Pripojené",
+    "discussionAnswered": "Zodpovedané",
+    "joinTheDiscussion": "Zapojte sa do diskusie",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 spolužiak je v tejto diskusii} other{{count} spolužiaci sú v tejto diskusii}}",
+    "discussionStartIt": "Buďte prvý, kto začne túto diskusiu",
+    "discussionRemoved": "Nemôžete sa zapojiť do tejto diskusie.",
+    "discussionJoinArriving": "Ste dnu! Diskusia sa otvorí hneď, ako dorazí.",
+    "roleplayLabel": "Hranie rolí",
     "sessionFinished": "Príliš neskoro! Táto aktivita sa skončila."
 }

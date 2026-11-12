@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-11-10 13:06:08.003149",
+    "@@last_modified": "2026-11-11 11:38:39.798710",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "ኮድ",
     "joinCodeSaved": "ኮድ {code} ተቀምጧል",
     "joinCodeSavedExplanation": "ይመዝገቡ ወይም ይግቡ እና እርስዎን እንጨምራለን።",
+    "discussionLabel": "ውይይት",
+    "discussionCardSemantics": "ውይይት: {title}",
+    "discussionJoined": "ተቀላቅሏል",
+    "discussionAnswered": "መልስ ተሰጥቷል",
+    "joinTheDiscussion": "ውይይቱን ይቀላቀሉ",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 የክፍል ጓደኛ በዚህ ውይይት ውስጥ አለ} other{{count} የክፍል ጓደኞች በዚህ ውይይት ውስጥ አሉ}}",
+    "discussionStartIt": "ይህን ውይይት ለመጀመር የመጀመሪያው ይሁኑ",
+    "discussionRemoved": "ይህን ውይይት መቀላቀል አይችሉም።",
+    "discussionJoinArriving": "ገብተዋል! ውይይቱ እንደደረሰ ይከፈታል።",
+    "roleplayLabel": "የሚና ጨዋታ",
     "sessionFinished": "በጣም ዘግይቷል! ይህ እንቅስቃሴ ተጠናቋል።"
 }

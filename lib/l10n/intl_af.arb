@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-11-10 13:06:07.944442",
+    "@@last_modified": "2026-11-11 11:38:39.536891",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Kode",
     "joinCodeSaved": "Kode {code} gestoor",
     "joinCodeSavedExplanation": "Registreer of meld aan en ons sal jou byvoeg.",
+    "discussionLabel": "Bespreking",
+    "discussionCardSemantics": "Bespreking: {title}",
+    "discussionJoined": "Aangesluit",
+    "discussionAnswered": "Beantwoord",
+    "joinTheDiscussion": "Neem deel aan die bespreking",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 klasmaat is in hierdie bespreking} other{{count} klasmaats is in hierdie bespreking}}",
+    "discussionStartIt": "Wees die eerste om hierdie bespreking te begin",
+    "discussionRemoved": "Jy kan nie by hierdie bespreking aansluit nie.",
+    "discussionJoinArriving": "Jy is in! Die bespreking sal oopmaak sodra dit arriveer.",
+    "roleplayLabel": "Rolspel",
     "sessionFinished": "Te laat! Hierdie aktiwiteit is verby."
 }

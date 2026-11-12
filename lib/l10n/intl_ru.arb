@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-11-10 13:06:18.059154",
+    "@@last_modified": "2026-11-11 11:38:56.664161",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11022,5 +11022,15 @@
     "joinCodeLabel": "Код",
     "joinCodeSaved": "Код {code} сохранен",
     "joinCodeSavedExplanation": "Зарегистрируйтесь или войдите, и мы добавим вас.",
+    "discussionLabel": "Обсуждение",
+    "discussionCardSemantics": "Обсуждение: {title}",
+    "discussionJoined": "Присоединились",
+    "discussionAnswered": "Ответили",
+    "joinTheDiscussion": "Присоединиться к обсуждению",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 одноклассник участвует в этом обсуждении} other{{count} одноклассников участвуют в этом обсуждении}}",
+    "discussionStartIt": "Будьте первым, кто начнет это обсуждение",
+    "discussionRemoved": "Вы не можете присоединиться к этому обсуждению.",
+    "discussionJoinArriving": "Вы внутри! Обсуждение начнется, как только оно появится.",
+    "roleplayLabel": "Ролевая игра",
     "sessionFinished": "Слишком поздно! Это занятие завершено."
 }

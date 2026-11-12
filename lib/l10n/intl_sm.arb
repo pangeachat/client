@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-11-10 13:06:20.545075",
+    "@@last_modified": "2026-11-11 11:38:58.030671",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Code",
     "joinCodeSaved": "Code {code} ua sefe",
     "joinCodeSavedExplanation": "Resitala pe saini i totonu ona matou faʻaopoopoina lea o oe.",
+    "discussionLabel": "Talanoaga",
+    "discussionCardSemantics": "Talanoaga: {title}",
+    "discussionJoined": "Auai",
+    "discussionAnswered": "Taliina",
+    "joinTheDiscussion": "Auai i le talanoaga",
+    "discussionClassmatesInRoom": "{count, plural, =1{E 1 le tamaititi aʻoga o loʻo i totonu o lenei talanoaga} other{E {count} tamaiti aʻoga o loʻo i totonu o lenei talanoaga}}",
+    "discussionStartIt": "Avea ma tagata muamua e amata lenei talanoaga",
+    "discussionRemoved": "E le mafai ona e auai i lenei talanoaga.",
+    "discussionJoinArriving": "Ua e i totonu! O le a tatala le talanoaga pe a taunuu.",
+    "roleplayLabel": "Faʻataʻitaʻiga",
     "sessionFinished": "Ua tuai tele! Ua uma lenei gaioiga."
 }

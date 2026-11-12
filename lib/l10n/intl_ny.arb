@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-11-10 13:06:17.195557",
+    "@@last_modified": "2026-11-11 11:38:54.101637",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Code",
     "joinCodeSaved": "Code {code} yasungidwa",
     "joinCodeSavedExplanation": "Lembetsani kapena lowani ndipo tidzakuphatikizani.",
+    "discussionLabel": "Zokambirana",
+    "discussionCardSemantics": "Zokambirana: {title}",
+    "discussionJoined": "Mwalowa",
+    "discussionAnswered": "Mwayankha",
+    "joinTheDiscussion": "Lowani nawo pazokambirana",
+    "discussionClassmatesInRoom": "{count, plural, =1{Wophunzira m'modzi ali pazokambiranazi} other{Ophunzira {count} ali pazokambiranazi}}",
+    "discussionStartIt": "Khalani woyamba kuyambitsa zokambiranazi",
+    "discussionRemoved": "Simungathe kulowa nawo pazokambiranazi.",
+    "discussionJoinArriving": "Mwalowa! Zokambirana zidzatsegulidwa zikangofika.",
+    "roleplayLabel": "Kusewera",
     "sessionFinished": "Kwachedwa! Ntchito iyi yatha."
 }

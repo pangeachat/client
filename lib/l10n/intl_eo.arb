@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:09.128939",
+    "@@last_modified": "2026-11-11 11:38:41.380169",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10992,5 +10992,15 @@
     "joinCodeLabel": "Kodo",
     "joinCodeSaved": "Kodo {code} konservita",
     "joinCodeSavedExplanation": "Registriĝu aŭ ensalutu kaj ni aldonos vin.",
+    "discussionLabel": "Diskuto",
+    "discussionCardSemantics": "Diskuto: {title}",
+    "discussionJoined": "Aliĝis",
+    "discussionAnswered": "Respondita",
+    "joinTheDiscussion": "Aliĝu al la diskuto",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 samklasano estas en ĉi tiu diskuto} other{{count} samklasanoj estas en ĉi tiu diskuto}}",
+    "discussionStartIt": "Estu la unua, kiu komencas ĉi tiun diskuton",
+    "discussionRemoved": "Vi ne povas aliĝi al ĉi tiu diskuto.",
+    "discussionJoinArriving": "Vi estas en! La diskuto malfermiĝos tuj kiam ĝi alvenos.",
+    "roleplayLabel": "Roluludo",
     "sessionFinished": "Tro malfrue! Ĉi tiu agado finiĝis."
 }

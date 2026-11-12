@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-11-10 13:06:11.618807",
+    "@@last_modified": "2026-11-11 11:38:45.017528",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10483,5 +10483,15 @@
     "joinCodeLabel": "Kod",
     "joinCodeSaved": "Kod {code} spremljen",
     "joinCodeSavedExplanation": "Registrirajte se ili prijavite i mi ćemo vas dodati.",
+    "discussionLabel": "Rasprava",
+    "discussionCardSemantics": "Rasprava: {title}",
+    "discussionJoined": "Pridruženo",
+    "discussionAnswered": "Odgovoreno",
+    "joinTheDiscussion": "Pridružite se raspravi",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 kolega je u ovoj raspravi} other{{count} kolega je u ovoj raspravi}}",
+    "discussionStartIt": "Budite prvi koji će započeti ovu raspravu",
+    "discussionRemoved": "Ne možete se pridružiti ovoj raspravi.",
+    "discussionJoinArriving": "Ušli ste! Rasprava će se otvoriti čim stigne.",
+    "roleplayLabel": "Igranje uloga",
     "sessionFinished": "Prekasno! Ova je aktivnost završila."
 }

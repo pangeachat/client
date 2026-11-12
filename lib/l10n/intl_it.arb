@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:12.791265",
+    "@@last_modified": "2026-11-11 11:38:46.562771",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -10123,5 +10123,15 @@
     "joinCodeLabel": "Codice",
     "joinCodeSaved": "Codice {code} salvato",
     "joinCodeSavedExplanation": "Registrati o accedi e ti aggiungeremo.",
+    "discussionLabel": "Discussione",
+    "discussionCardSemantics": "Discussione: {title}",
+    "discussionJoined": "Partecipato",
+    "discussionAnswered": "Risposto",
+    "joinTheDiscussion": "Partecipa alla discussione",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 compagno di classe è in questa discussione} other{{count} compagni di classe sono in questa discussione}}",
+    "discussionStartIt": "Sii il primo a iniziare questa discussione",
+    "discussionRemoved": "Non puoi partecipare a questa discussione.",
+    "discussionJoinArriving": "Ci sei! La discussione si aprirà non appena arriverà.",
+    "roleplayLabel": "Gioco di ruolo",
     "sessionFinished": "Troppo tardi! Questa attività è terminata."
 }

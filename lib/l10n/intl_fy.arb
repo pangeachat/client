@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-11-10 13:06:10.747167",
+    "@@last_modified": "2026-11-11 11:38:46.445207",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Koade",
     "joinCodeSaved": "Koade {code} bewarre",
     "joinCodeSavedExplanation": "Meld dy oan of registrearje dy en wy sille dy tafoegje.",
+    "discussionLabel": "Diskusje",
+    "discussionCardSemantics": "Diskusje: {title}",
+    "discussionJoined": "Meidien",
+    "discussionAnswered": "Beäntwurde",
+    "joinTheDiscussion": "Doch mei oan de diskusje",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 klasgenoat is yn dizze diskusje} other{{count} klasgenoaten binne yn dizze diskusje}}",
+    "discussionStartIt": "Wês de earste dy't dizze diskusje begjint",
+    "discussionRemoved": "Jo kinne net meidwaan oan dizze diskusje.",
+    "discussionJoinArriving": "Jo binne deryn! De diskusje sil iepenje sa gau as it oankomt.",
+    "roleplayLabel": "Rollespul",
     "sessionFinished": "Te let! Dizze aktiviteit is dien."
 }

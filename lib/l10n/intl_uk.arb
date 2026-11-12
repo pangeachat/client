@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-11-10 13:06:20.708595",
+    "@@last_modified": "2026-11-11 11:39:01.762617",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -10050,5 +10050,15 @@
     "joinCodeLabel": "Код",
     "joinCodeSaved": "Код {code} збережено",
     "joinCodeSavedExplanation": "Зареєструйтесь або увійдіть, і ми вас додамо.",
+    "discussionLabel": "Обговорення",
+    "discussionCardSemantics": "Обговорення: {title}",
+    "discussionJoined": "Приєднано",
+    "discussionAnswered": "Відповіли",
+    "joinTheDiscussion": "Приєднатися до обговорення",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 однокласник бере участь у цьому обговоренні} other{{count} однокласників беруть участь у цьому обговоренні}}",
+    "discussionStartIt": "Будьте першим, хто розпочне це обговорення",
+    "discussionRemoved": "Ви не можете приєднатися до цього обговорення.",
+    "discussionJoinArriving": "Ви приєдналися! Обговорення розпочнеться, щойно воно з'явиться.",
+    "roleplayLabel": "Рольова гра",
     "sessionFinished": "Запізно! Ця вправа завершена."
 }

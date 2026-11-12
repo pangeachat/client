@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-11-10 13:06:15.338702",
+    "@@last_modified": "2026-11-11 11:38:50.088663",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Код",
     "joinCodeSaved": "Кодот {code} е зачуван",
     "joinCodeSavedExplanation": "Регистрирај се или најави се и ние ќе те додадеме.",
+    "discussionLabel": "Дискусија",
+    "discussionCardSemantics": "Дискусија: {title}",
+    "discussionJoined": "Приклучен",
+    "discussionAnswered": "Одговорено",
+    "joinTheDiscussion": "Приклучи се на дискусијата",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 соученик е во оваа дискусија} other{{count} соученици се во оваа дискусија}}",
+    "discussionStartIt": "Биди прв што ќе ја започне оваа дискусија",
+    "discussionRemoved": "Не можете да се приклучите на оваа дискусија.",
+    "discussionJoinArriving": "Внатре сте! Дискусијата ќе се отвори веднаш штом ќе пристигне.",
+    "roleplayLabel": "Играње улоги",
     "sessionFinished": "Предоцна! Оваа активност е завршена."
 }

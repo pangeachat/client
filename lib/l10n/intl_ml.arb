@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-11-10 13:06:15.236335",
+    "@@last_modified": "2026-11-11 11:38:50.997437",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "കോഡ്",
     "joinCodeSaved": "കോഡ് {code} സംരക്ഷിച്ചു",
     "joinCodeSavedExplanation": "സൈൻ അപ്പ് ചെയ്യുക അല്ലെങ്കിൽ ലോഗിൻ ചെയ്യുക, ഞങ്ങൾ നിങ്ങളെ ചേർക്കും.",
+    "discussionLabel": "ചർച്ച",
+    "discussionCardSemantics": "ചർച്ച: {title}",
+    "discussionJoined": "ചേർന്നു",
+    "discussionAnswered": "ഉത്തരം നൽകി",
+    "joinTheDiscussion": "ചർച്ചയിൽ ചേരുക",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 സഹപാഠി ഈ ചർച്ചയിലുണ്ട്} other{{count} സഹപാഠികൾ ഈ ചർച്ചയിലുണ്ട്}}",
+    "discussionStartIt": "ഈ ചർച്ച ആരംഭിക്കുന്ന ആദ്യത്തെയാളാകൂ",
+    "discussionRemoved": "നിങ്ങൾക്ക് ഈ ചർച്ചയിൽ ചേരാൻ കഴിയില്ല.",
+    "discussionJoinArriving": "നിങ്ങൾ ചേർന്നു! ചർച്ച എത്തുമ്പോൾത്തന്നെ തുറക്കും.",
+    "roleplayLabel": "റോൾപ്ലേ",
     "sessionFinished": "വളരെ വൈകി! ഈ പ്രവർത്തനം പൂർത്തിയായി."
 }

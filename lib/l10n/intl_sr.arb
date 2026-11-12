@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:19.029905",
+    "@@last_modified": "2026-11-11 11:38:58.992409",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10996,5 +10996,15 @@
     "joinCodeLabel": "Kod",
     "joinCodeSaved": "Kod {code} sačuvan",
     "joinCodeSavedExplanation": "Registrujte se ili prijavite i mi ćemo vas dodati.",
+    "discussionLabel": "Diskusija",
+    "discussionCardSemantics": "Diskusija: {title}",
+    "discussionJoined": "Pridruženo",
+    "discussionAnswered": "Odgovoreno",
+    "joinTheDiscussion": "Pridružite se diskusiji",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 drug iz razreda je u ovoj diskusiji} other{{count} drugova iz razreda je u ovoj diskusiji}}",
+    "discussionStartIt": "Budite prvi koji će započeti ovu diskusiju",
+    "discussionRemoved": "Ne možete se pridružiti ovoj diskusiji.",
+    "discussionJoinArriving": "Ušli ste! Diskusija će se otvoriti čim stigne.",
+    "roleplayLabel": "Igranje uloga",
     "sessionFinished": "Prekasno! Ova aktivnost je završena."
 }

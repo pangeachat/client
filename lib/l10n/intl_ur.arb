@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-11-10 13:06:20.888956",
+    "@@last_modified": "2026-11-11 11:39:01.834294",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "کوڈ",
     "joinCodeSaved": "کوڈ {code} محفوظ ہو گیا",
     "joinCodeSavedExplanation": "سائن اپ کریں یا لاگ ان کریں اور ہم آپ کو شامل کر لیں گے۔",
+    "discussionLabel": "گفتگو",
+    "discussionCardSemantics": "گفتگو: {title}",
+    "discussionJoined": "شامل ہو گئے",
+    "discussionAnswered": "جواب دیا گیا",
+    "joinTheDiscussion": "گفتگو میں شامل ہوں",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 ہم جماعت اس گفتگو میں ہے} other{{count} ہم جماعت اس گفتگو میں ہیں}}",
+    "discussionStartIt": "اس گفتگو کو شروع کرنے والے پہلے فرد بنیں",
+    "discussionRemoved": "آپ اس گفتگو میں شامل نہیں ہو سکتے۔",
+    "discussionJoinArriving": "آپ اندر ہیں! گفتگو جیسے ہی پہنچے گی کھل جائے گی۔",
+    "roleplayLabel": "کردار ادا کرنا",
     "sessionFinished": "بہت دیر ہو گئی! یہ سرگرمی ختم ہو گئی ہے۔"
 }

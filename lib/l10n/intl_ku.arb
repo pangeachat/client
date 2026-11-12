@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-11-10 13:06:14.358695",
+    "@@last_modified": "2026-11-11 11:38:49.335866",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "کۆد",
     "joinCodeSaved": "کۆدی {code} پاشەکەوت کرا",
     "joinCodeSavedExplanation": "خۆت تۆمار بکە یان بچۆ ژوورەوە و ئێمە زیادمان دەکەین.",
+    "discussionLabel": "گفتوگۆ",
+    "discussionCardSemantics": "گفتوگۆ: {title}",
+    "discussionJoined": "بەژداربوو",
+    "discussionAnswered": "وەڵام درایەوە",
+    "joinTheDiscussion": "بەژداری گفتوگۆکە بکە",
+    "discussionClassmatesInRoom": "{count, plural, =1{یەک هاوپۆل لەم گفتوگۆیەدا بەژدارە} other{{count} هاوپۆل لەم گفتوگۆیەدا بەژدارن}}",
+    "discussionStartIt": "یەکەم کەس بە کە ئەم گفتوگۆیە دەست پێدەکات",
+    "discussionRemoved": "ناتوانیت بەژداری ئەم گفتوگۆیە بکەیت.",
+    "discussionJoinArriving": "تۆ لەناویت! گفتوگۆکە بە زوویی دەست پێدەکات.",
+    "roleplayLabel": "ڕۆڵبینین",
     "sessionFinished": "درەنگ کەوتیت! ئەم چالاکییە تەواو بوو."
 }

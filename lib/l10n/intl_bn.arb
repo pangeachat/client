@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:07.842028",
+    "@@last_modified": "2026-11-11 11:38:39.202337",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10675,5 +10675,15 @@
     "joinCodeLabel": "কোড",
     "joinCodeSaved": "কোড {code} সংরক্ষিত হয়েছে",
     "joinCodeSavedExplanation": "সাইন আপ করুন অথবা লগ ইন করুন এবং আমরা আপনাকে যোগ করব।",
+    "discussionLabel": "আলোচনা",
+    "discussionCardSemantics": "আলোচনা: {title}",
+    "discussionJoined": "যোগদান করেছেন",
+    "discussionAnswered": "উত্তর দেওয়া হয়েছে",
+    "joinTheDiscussion": "আলোচনায় যোগ দিন",
+    "discussionClassmatesInRoom": "{count, plural, =1{১ জন সহপাঠী এই আলোচনায় আছেন} other{{count} জন সহপাঠী এই আলোচনায় আছেন}}",
+    "discussionStartIt": "এই আলোচনা শুরু করার প্রথম ব্যক্তি হন",
+    "discussionRemoved": "আপনি এই আলোচনায় যোগ দিতে পারবেন না।",
+    "discussionJoinArriving": "আপনি যোগ দিয়েছেন! আলোচনাটি আসার সাথে সাথেই খুলে যাবে।",
+    "roleplayLabel": "ভূমিকাভিনয়",
     "sessionFinished": "অনেক দেরি হয়ে গেছে! এই কার্যকলাপটি শেষ হয়ে গেছে।"
 }

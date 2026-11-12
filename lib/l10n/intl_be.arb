@@ -3526,7 +3526,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-11-10 13:06:07.919052",
+    "@@last_modified": "2026-11-11 11:38:39.878277",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10064,5 +10064,15 @@
     "joinCodeLabel": "Код",
     "joinCodeSaved": "Код {code} захаваны",
     "joinCodeSavedExplanation": "Зарэгіструйцеся або ўвайдзіце, і мы дададзім вас.",
+    "discussionLabel": "Абмеркаванне",
+    "discussionCardSemantics": "Абмеркаванне: {title}",
+    "discussionJoined": "Далучыліся",
+    "discussionAnswered": "Адказалі",
+    "joinTheDiscussion": "Далучыцца да абмеркавання",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 аднакласнік у гэтым абмеркаванні} other{{count} аднакласнікаў у гэтым абмеркаванні}}",
+    "discussionStartIt": "Будзьце першым, хто пачне гэтае абмеркаванне",
+    "discussionRemoved": "Вы не можаце далучыцца да гэтага абмеркавання.",
+    "discussionJoinArriving": "Вы ўдзельнічаеце! Абмеркаванне пачнецца, як толькі яно з'явіцца.",
+    "roleplayLabel": "Ролевая гульня",
     "sessionFinished": "Занадта позна! Гэтае заданне скончылася."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-11-10 13:06:11.916698",
+    "@@last_modified": "2026-11-11 11:38:44.954854",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Kòd",
     "joinCodeSaved": "Kòd {code} anrejistre",
     "joinCodeSavedExplanation": "Enskri oswa konekte epi n ap ajoute w.",
+    "discussionLabel": "Diskisyon",
+    "discussionCardSemantics": "Diskisyon: {title}",
+    "discussionJoined": "Antre",
+    "discussionAnswered": "Reponn",
+    "joinTheDiscussion": "Antre nan diskisyon an",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 kamarad klas nan diskisyon sa a} other{{count} kamarad klas nan diskisyon sa a}}",
+    "discussionStartIt": "Se ou menm ki pou kòmanse diskisyon sa a an premye",
+    "discussionRemoved": "Ou pa ka antre nan diskisyon sa a.",
+    "discussionJoinArriving": "Ou antre! Diskisyon an ap ouvri le pli vit ke li rive.",
+    "roleplayLabel": "Jwèt wòl",
     "sessionFinished": "Twò ta! Aktivite sa a fini."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-11-10 13:06:21.445773",
+    "@@last_modified": "2026-11-11 11:39:11.238351",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10050,5 +10050,15 @@
     "joinCodeLabel": "代码",
     "joinCodeSaved": "代码 {code} 已保存",
     "joinCodeSavedExplanation": "注册或登录，我们将添加您。",
+    "discussionLabel": "讨论",
+    "discussionCardSemantics": "讨论：{title}",
+    "discussionJoined": "已加入",
+    "discussionAnswered": "已回答",
+    "joinTheDiscussion": "加入讨论",
+    "discussionClassmatesInRoom": "{count, plural, =1{1位同学正在参与此讨论} other{{count}位同学正在参与此讨论}}",
+    "discussionStartIt": "成为第一个开始此讨论的人",
+    "discussionRemoved": "您无法加入此讨论。",
+    "discussionJoinArriving": "您已加入！讨论将在到达后立即开始。",
+    "roleplayLabel": "角色扮演",
     "sessionFinished": "太晚了！此活动已结束。"
 }

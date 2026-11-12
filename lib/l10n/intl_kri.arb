@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-11-10 13:06:14.140685",
+    "@@last_modified": "2026-11-11 11:38:48.709726",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Kɔd",
     "joinCodeSaved": "Kɔd {code} dɔn sev",
     "joinCodeSavedExplanation": "Sayn ɔp ɔ lɔg in ɛn wi go ad yu.",
+    "discussionLabel": "Diskos",
+    "discussionCardSemantics": "Diskos: {title}",
+    "discussionJoined": "Yu dɔn jɔyn",
+    "discussionAnswered": "Dɔn ansa",
+    "joinTheDiscussion": "Jɔyn di diskos",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 pɔsin de insay dis diskos} other{{count} pipul de insay dis diskos}}",
+    "discussionStartIt": "Bi di fɔs pɔsin fɔ stat dis diskos",
+    "discussionRemoved": "Yu nɔ go ebul jɔyn dis diskos.",
+    "discussionJoinArriving": "Yu dɔn insay! Di diskos go opin as yu rich.",
+    "roleplayLabel": "Rul-ple",
     "sessionFinished": "I don late! Dis aktiviti don finish."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-11-10 13:06:16.387154",
+    "@@last_modified": "2026-11-11 11:38:53.672405",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "कोड",
     "joinCodeSaved": "कोड {code} सुरक्षित गरियो",
     "joinCodeSavedExplanation": "साइन अप गर्नुहोस् वा लग इन गर्नुहोस् र हामी तपाईंलाई थप्नेछौं।",
+    "discussionLabel": "छलफल",
+    "discussionCardSemantics": "छलफल: {title}",
+    "discussionJoined": "सामेल हुनुभयो",
+    "discussionAnswered": "जवाफ दिइयो",
+    "joinTheDiscussion": "छलफलमा सामेल हुनुहोस्",
+    "discussionClassmatesInRoom": "{count, plural, =1{१ सहपाठी यो छलफलमा हुनुहुन्छ} other{{count} सहपाठीहरू यो छलफलमा हुनुहुन्छ}}",
+    "discussionStartIt": "यो छलफल सुरु गर्ने पहिलो व्यक्ति बन्नुहोस्",
+    "discussionRemoved": "तपाईं यो छलफलमा सामेल हुन सक्नुहुन्न।",
+    "discussionJoinArriving": "तपाईं भित्र हुनुहुन्छ! छलफल आउने बित्तिकै खुल्नेछ।",
+    "roleplayLabel": "भूमिका खेल्नुहोस्",
     "sessionFinished": "धेरै ढिलो भयो! यो गतिविधि समाप्त भयो।"
 }

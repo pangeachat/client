@@ -1325,7 +1325,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-11-10 13:06:09.205270",
+    "@@last_modified": "2026-11-11 11:38:41.132540",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10967,5 +10967,15 @@
     "joinCodeLabel": "Kode",
     "joinCodeSaved": "Kode {code} gemt",
     "joinCodeSavedExplanation": "Tilmeld dig eller log ind, så tilføjer vi dig.",
+    "discussionLabel": "Diskussion",
+    "discussionCardSemantics": "Diskussion: {title}",
+    "discussionJoined": "Deltog",
+    "discussionAnswered": "Besvaret",
+    "joinTheDiscussion": "Deltag i diskussionen",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 klassekammerat er i denne diskussion} other{{count} klassekammerater er i denne diskussion}}",
+    "discussionStartIt": "Vær den første til at starte denne diskussion",
+    "discussionRemoved": "Du kan ikke deltage i denne diskussion.",
+    "discussionJoinArriving": "Du er med! Diskussionen åbnes, så snart den ankommer.",
+    "roleplayLabel": "Rollespil",
     "sessionFinished": "For sent! Denne aktivitet er afsluttet."
 }

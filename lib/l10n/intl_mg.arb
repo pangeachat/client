@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-11-10 13:06:14.851220",
+    "@@last_modified": "2026-11-11 11:38:51.223296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Kaody",
     "joinCodeSaved": "Kaody {code} voatahiry",
     "joinCodeSavedExplanation": "Misoratra anarana na midira dia hanampy anao izahay.",
+    "discussionLabel": "Dinika",
+    "discussionCardSemantics": "Dinika: {title}",
+    "discussionJoined": "Tafiditra",
+    "discussionAnswered": "Voavaly",
+    "joinTheDiscussion": "Midira amin'ny dinika",
+    "discussionClassmatesInRoom": "{count, plural, =1{Misy mpiara-mianatra 1 ato amin'ity dinika ity} other{Misy mpiara-mianatra {count} ato amin'ity dinika ity}}",
+    "discussionStartIt": "Aoka ianao no ho voalohany hanomboka ity dinika ity",
+    "discussionRemoved": "Tsy afaka miditra amin'ity dinika ity ianao.",
+    "discussionJoinArriving": "Tafiditra ianao! Hisokatra ny dinika raha vao tonga izany.",
+    "roleplayLabel": "Filalaovana anjara",
     "sessionFinished": "Tara loatra! Tapitra ity hetsika ity."
 }

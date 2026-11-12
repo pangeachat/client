@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -51,7 +52,12 @@ class OrchestratorController {
     goalCompletionStream.close();
   }
 
+  /// A room whose mode has no suggestions (a discussion, where every student
+  /// holds the same role) never looks one up.
+  bool get _offersSuggestions => room.activityMode?.offersSuggestions ?? true;
+
   Future<void> _setInitialSuggestion() async {
+    if (!_offersSuggestions) return;
     final timeline = await room.getTimeline();
     for (final event in timeline.events) {
       if (event.type == PangeaEventTypes.orchestratorOutput) {
@@ -85,6 +91,7 @@ class OrchestratorController {
   }
 
   Future<void> _onOrchestratorOutputEvent(MatrixEvent event) async {
+    if (!_offersSuggestions) return;
     try {
       final output = OrchestratorOutput.fromJson(event.content);
 

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-11-10 13:06:15.770996",
+    "@@last_modified": "2026-11-11 11:38:51.707142",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Kod",
     "joinCodeSaved": "Kod {code} disimpan",
     "joinCodeSavedExplanation": "Daftar atau log masuk dan kami akan menambahkan anda.",
+    "discussionLabel": "Perbincangan",
+    "discussionCardSemantics": "Perbincangan: {title}",
+    "discussionJoined": "Disertai",
+    "discussionAnswered": "Dijawab",
+    "joinTheDiscussion": "Sertai perbincangan",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 rakan sekelas berada dalam perbincangan ini} other{{count} rakan sekelas berada dalam perbincangan ini}}",
+    "discussionStartIt": "Jadilah yang pertama memulakan perbincangan ini",
+    "discussionRemoved": "Anda tidak boleh menyertai perbincangan ini.",
+    "discussionJoinArriving": "Anda sudah masuk! Perbincangan akan dibuka sebaik sahaja ia tiba.",
+    "roleplayLabel": "Main Peranan",
     "sessionFinished": "Terlambat! Aktiviti ini telah tamat."
 }

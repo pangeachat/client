@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-11-10 13:06:17.323065",
+    "@@last_modified": "2026-11-11 11:38:55.506127",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "کوډ",
     "joinCodeSaved": "کوډ {code} خوندي شو",
     "joinCodeSavedExplanation": "نوم لیکنه وکړئ یا ننوتل او موږ به تاسو اضافه کړو.",
+    "discussionLabel": "بحث",
+    "discussionCardSemantics": "بحث: {title}",
+    "discussionJoined": "ګډون وشو",
+    "discussionAnswered": "ځواب ورکړل شو",
+    "joinTheDiscussion": "په بحث کې ګډون وکړئ",
+    "discussionClassmatesInRoom": "{count, plural, =1{۱ ټولګیوال په دې بحث کې دی} other{{count} ټولګیوال په دې بحث کې دي}}",
+    "discussionStartIt": "د دې بحث پیل کوونکی شئ",
+    "discussionRemoved": "تاسو په دې بحث کې ګډون نشئ کولی.",
+    "discussionJoinArriving": "تاسو دننه یاست! بحث به ژر تر ژره پیل شي.",
+    "roleplayLabel": "رول پلی",
     "sessionFinished": "ډېر ناوخته! دا فعالیت پای ته رسیدلی دی."
 }

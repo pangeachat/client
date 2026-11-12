@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-11-10 13:06:21.421260",
+    "@@last_modified": "2026-11-11 11:39:03.556032",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Ikhowudi",
     "joinCodeSaved": "Ikhowudi {code} igciniwe",
     "joinCodeSavedExplanation": "Bhalisa okanye ungene kwaye siza kukongeza.",
+    "discussionLabel": "Ingxoxo",
+    "discussionCardSemantics": "Ingxoxo: {title}",
+    "discussionJoined": "Ujoyiniwe",
+    "discussionAnswered": "Uphenduliwe",
+    "joinTheDiscussion": "Joyina ingxoxo",
+    "discussionClassmatesInRoom": "{count, plural, =1{Umfundi om-1 ukule ngxoxo} other{Abafundi abali-{count} bakule ngxoxo}}",
+    "discussionStartIt": "Yiba ngowokuqala ukuqala le ngxoxo",
+    "discussionRemoved": "Awukwazi ukuyijoyina le ngxoxo.",
+    "discussionJoinArriving": "Ungaphakathi! Ingxoxo izovulwa nje yakufika.",
+    "roleplayLabel": "Ukulinganisa indima",
     "sessionFinished": "Kudala! Lo msebenzi uphelile."
 }

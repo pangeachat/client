@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-11-10 13:06:17.267001",
+    "@@last_modified": "2026-11-11 11:38:54.538658",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "ਕੋਡ",
     "joinCodeSaved": "ਕੋਡ {code} ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ",
     "joinCodeSavedExplanation": "ਸਾਈਨ ਅੱਪ ਕਰੋ ਜਾਂ ਲੌਗ ਇਨ ਕਰੋ ਅਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਸ਼ਾਮਲ ਕਰਾਂਗੇ।",
+    "discussionLabel": "ਚਰਚਾ",
+    "discussionCardSemantics": "ਚਰਚਾ: {title}",
+    "discussionJoined": "ਸ਼ਾਮਲ ਹੋਏ",
+    "discussionAnswered": "ਜਵਾਬ ਦਿੱਤਾ",
+    "joinTheDiscussion": "ਚਰਚਾ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 ਸਹਿਪਾਠੀ ਇਸ ਚਰਚਾ ਵਿੱਚ ਹੈ} other{{count} ਸਹਿਪਾਠੀ ਇਸ ਚਰਚਾ ਵਿੱਚ ਹਨ}}",
+    "discussionStartIt": "ਇਸ ਚਰਚਾ ਨੂੰ ਸ਼ੁਰੂ ਕਰਨ ਵਾਲੇ ਪਹਿਲੇ ਵਿਅਕਤੀ ਬਣੋ",
+    "discussionRemoved": "ਤੁਸੀਂ ਇਸ ਚਰਚਾ ਵਿੱਚ ਸ਼ਾਮਲ ਨਹੀਂ ਹੋ ਸਕਦੇ।",
+    "discussionJoinArriving": "ਤੁਸੀਂ ਅੰਦਰ ਹੋ! ਚਰਚਾ ਆਉਂਦੇ ਹੀ ਖੁੱਲ੍ਹ ਜਾਵੇਗੀ।",
+    "roleplayLabel": "ਰੋਲਪਲੇ",
     "sessionFinished": "ਬਹੁਤ ਦੇਰ ਹੋ ਗਈ! ਇਹ ਗਤੀਵਿਧੀ ਖਤਮ ਹੋ ਗਈ ਹੈ।"
 }

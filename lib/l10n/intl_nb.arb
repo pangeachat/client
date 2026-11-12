@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:16.071331",
+    "@@last_modified": "2026-11-11 11:38:52.908055",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10107,5 +10107,15 @@
     "joinCodeLabel": "Kode",
     "joinCodeSaved": "Kode {code} lagret",
     "joinCodeSavedExplanation": "Registrer deg eller logg inn, så legger vi deg til.",
+    "discussionLabel": "Diskusjon",
+    "discussionCardSemantics": "Diskusjon: {title}",
+    "discussionJoined": "Ble med",
+    "discussionAnswered": "Besvart",
+    "joinTheDiscussion": "Bli med i diskusjonen",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 klassekamerat er i denne diskusjonen} other{{count} klassekamerater er i denne diskusjonen}}",
+    "discussionStartIt": "Vær den første til å starte denne diskusjonen",
+    "discussionRemoved": "Du kan ikke bli med i denne diskusjonen.",
+    "discussionJoinArriving": "Du er med! Diskusjonen åpnes så snart den er klar.",
+    "roleplayLabel": "Rollespill",
     "sessionFinished": "For sent! Denne aktiviteten er avsluttet."
 }

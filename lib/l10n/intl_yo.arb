@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-11-10 13:06:21.903633",
+    "@@last_modified": "2026-11-11 11:39:06.730017",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Koodu",
     "joinCodeSaved": "Koodu {code} ti wà ní ìpamọ́",
     "joinCodeSavedExplanation": "Forúkọsílẹ̀ tàbí wọlé, a ó sì fi kún ọ.",
+    "discussionLabel": "Ìjíròrò",
+    "discussionCardSemantics": "Ìjíròrò: {title}",
+    "discussionJoined": "Dárapọ̀",
+    "discussionAnswered": "Dáhùn",
+    "joinTheDiscussion": "Dárapọ̀ mọ́ ìjíròrò",
+    "discussionClassmatesInRoom": "{count, plural, =1{Ọmọ kíláàsì kan wà nínú ìjíròrò yìí} other{{count} àwọn ọmọ kíláàsì wà nínú ìjíròrò yìí}}",
+    "discussionStartIt": "Jẹ́ ẹni àkọ́kọ́ láti bẹ̀rẹ̀ ìjíròrò yìí",
+    "discussionRemoved": "O kò lè darapọ̀ mọ́ ìjíròrò yìí.",
+    "discussionJoinArriving": "O ti wọlé! Ìjíròrò náà yóò ṣí ní kété tí ó bá dé.",
+    "roleplayLabel": "Ìṣeré-ipá",
     "sessionFinished": "Pẹ́ ju! Iṣẹ́ yìí ti parí."
 }

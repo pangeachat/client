@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-11-10 13:06:13.983458",
+    "@@last_modified": "2026-11-11 11:38:48.811265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Код",
     "joinCodeSaved": "{code} коду сакталды",
     "joinCodeSavedExplanation": "Катталыңыз же кириңиз, биз сизди кошо алабыз.",
+    "discussionLabel": "Талкуу",
+    "discussionCardSemantics": "Талкуу: {title}",
+    "discussionJoined": "Кошулду",
+    "discussionAnswered": "Жооп берилди",
+    "joinTheDiscussion": "Талкууга кошулуңуз",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 классташ бул талкууда} other{{count} классташ бул талкууда}}",
+    "discussionStartIt": "Бул талкууну биринчи баштаңыз",
+    "discussionRemoved": "Бул талкууга кошула албайсыз.",
+    "discussionJoinArriving": "Сиз кирдиңиз! Талкуу келээри менен ачылат.",
+    "roleplayLabel": "Ролдук оюн",
     "sessionFinished": "Кеч болуп калды! Бул иш-аракет аяктады."
 }

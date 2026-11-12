@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:19.652717",
+    "@@last_modified": "2026-11-11 11:39:00.737808",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10142,5 +10142,15 @@
     "joinCodeLabel": "குறியீடு",
     "joinCodeSaved": "குறியீடு {code} சேமிக்கப்பட்டது",
     "joinCodeSavedExplanation": "பதிவு செய்யவும் அல்லது உள்நுழையவும், நாங்கள் உங்களைச் சேர்ப்போம்.",
+    "discussionLabel": "கலந்துரையாடல்",
+    "discussionCardSemantics": "கலந்துரையாடல்: {title}",
+    "discussionJoined": "சேர்ந்துவிட்டது",
+    "discussionAnswered": "பதிலளிக்கப்பட்டது",
+    "joinTheDiscussion": "கலந்துரையாடலில் சேரவும்",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 வகுப்புத் தோழர் இந்தக் கலந்துரையாடலில் இருக்கிறார்} other{{count} வகுப்புத் தோழர்கள் இந்தக் கலந்துரையாடலில் இருக்கிறார்கள்}}",
+    "discussionStartIt": "இந்தக் கலந்துரையாடலைத் தொடங்கும் முதல் நபராக இருங்கள்",
+    "discussionRemoved": "இந்தக் கலந்துரையாடலில் நீங்கள் சேர முடியாது.",
+    "discussionJoinArriving": "நீங்கள் உள்ளே வந்துவிட்டீர்கள்! கலந்துரையாடல் வந்தவுடன் திறக்கப்படும்.",
+    "roleplayLabel": "பங்கு வகிக்கும் நாடகம்",
     "sessionFinished": "மிகவும் தாமதம்! இந்தச் செயல்பாடு முடிந்துவிட்டது."
 }

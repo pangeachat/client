@@ -103,6 +103,12 @@ class PangeaEventTypes {
   /// session chat list rows").
   static const adminReviewRooms = 'pangea.admin_review';
 
+  /// Room account data on a discussion room: the learner's own notification
+  /// setting for it from before they tapped "I'm done", which mutes it, so
+  /// "Wait, I'm not done" puts back what they had rather than a default.
+  static const discussionPushRuleBeforeEnd =
+      'pangea.discussion_push_rule_before_end';
+
   static const firstBotDMMessage = "pangea_first_bot_dm_message";
 
   static const onboardingSettings = "org.pangea.onboarding_settings";

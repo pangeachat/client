@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-11-10 13:06:10.898149",
+    "@@last_modified": "2026-11-11 11:38:42.769801",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10050,5 +10050,15 @@
     "joinCodeLabel": "Código",
     "joinCodeSaved": "Código {code} gardado",
     "joinCodeSavedExplanation": "Rexístrate ou inicia sesión e engadirémoste.",
+    "discussionLabel": "Debate",
+    "discussionCardSemantics": "Debate: {title}",
+    "discussionJoined": "Unido",
+    "discussionAnswered": "Respondido",
+    "joinTheDiscussion": "Únete ao debate",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 compañeiro está neste debate} other{{count} compañeiros están neste debate}}",
+    "discussionStartIt": "Sé o primeiro en iniciar este debate",
+    "discussionRemoved": "Non podes unirte a este debate.",
+    "discussionJoinArriving": "Xa estás dentro! O debate abrirase en canto chegue.",
+    "roleplayLabel": "Roleplay",
     "sessionFinished": "Demasiado tarde! Esta actividade rematou."
 }

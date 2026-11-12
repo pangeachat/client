@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-11-10 13:06:08.981585",
+    "@@last_modified": "2026-11-11 11:38:41.208086",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Code",
     "joinCodeSaved": "Ang code nga {code} na-save",
     "joinCodeSavedExplanation": "Pag-sign up o pag-log in ug idugang ka namo.",
+    "discussionLabel": "Diskasyon",
+    "discussionCardSemantics": "Diskasyon: {title}",
+    "discussionJoined": "Miapil",
+    "discussionAnswered": "Gitubag",
+    "joinTheDiscussion": "Apil sa diskasyon",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 ka klasmeyt anaa niini nga diskasyon} other{{count} ka klasmeyt anaa niini nga diskasyon}}",
+    "discussionStartIt": "Ikaw ang unang magsugod niini nga diskasyon",
+    "discussionRemoved": "Dili ka makaapil niini nga diskasyon.",
+    "discussionJoinArriving": "Naa ka na! Moabli ang diskasyon sa diha nga moabot na kini.",
+    "roleplayLabel": "Roleplay",
     "sessionFinished": "Ulahi na! Nahuman na kini nga kalihokan."
 }

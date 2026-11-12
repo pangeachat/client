@@ -1,9 +1,13 @@
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
+import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
@@ -52,12 +56,18 @@ extension WorldMapClientExtension on Client {
   /// *another* learner's open session): here we resolve "my started/joined
   /// session" so a map-pin tap reopens it (binding the overlay via `roomid=`)
   /// instead of spawning a fresh instance (#7257).
+  ///
+  /// Never a discussion room: rooms are per course there, and a seat is found
+  /// through the course's own standing (`discussionStandingFor`), so a
+  /// room the learner holds in another course, or one an admin was joined to
+  /// without a seat, never opens for this one.
   Room? activeActivityInstance(String activityId) {
     Room? best;
     var bestHasRole = false;
     for (final r in rooms) {
       if (r.activityId != activityId) continue;
       if (r.membership != Membership.join) continue;
+      if (r.isDiscussionRoom) continue;
 
       final ownRole = r.ownRoleState;
       final hasRole = ownRole != null;
@@ -99,6 +109,20 @@ extension WorldMapClientExtension on Client {
   /// and the activity start page share one definition.
   List<Room> get joinedCourseRooms => joinedCourseSpaces;
 
+  /// The joined course space a course-scoped map is showing, or null on the
+  /// world map and under a course the learner has not joined (a preview). The
+  /// space the scope came from names it outright — two joined courses can
+  /// share a plan (#9026); a scope with no space falls back to the plan.
+  Room? joinedCourseFor(MapContext mapContext) {
+    if (mapContext is! CourseMapContext) return null;
+    final spaceId = mapContext.spaceId;
+    return joinedCourseRooms.firstWhereOrNull(
+      (r) => spaceId != null
+          ? r.id == spaceId
+          : r.coursePlan?.uuid == mapContext.coursePlanId,
+    );
+  }
+
   /// True once the learner has **finished** at least one activity. Its negation,
   /// "no finished activity yet," is the new-learner condition for the
   /// multi-person deprioritize (#7435, narrowed by #7999 — the term used to
@@ -132,10 +156,15 @@ extension WorldMapClientExtension on Client {
     return WorldMapSignalUtils.reduceActivityCompletions(facts);
   }
 
+  /// A discussion room gives no fact here: its pin's state comes from the
+  /// learner's standing in the course on show only
+  /// (`discussionStandingsIn`), since a seat in
+  /// another course's room is not one in this course's.
   List<ActivitySessionFacts> get _activitySessionFacts => rooms
       .map((r) {
         final activityId = r.activityId;
         if (activityId == null) return null;
+        if (r.isDiscussionRoom) return null;
         // Joined rooms only. An invited room's stripped state carries no
         // pangea.activity_roles, so a locally-derived fact would report every
         // seat free — a phantom joinable that skips the finished/full/presence

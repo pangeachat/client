@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-11-10 13:06:12.545334",
+    "@@last_modified": "2026-11-11 11:38:46.299937",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10816,5 +10816,15 @@
     "joinCodeLabel": "コード",
     "joinCodeSaved": "コード {code} を保存しました",
     "joinCodeSavedExplanation": "サインアップまたはログインすると、追加されます。",
+    "discussionLabel": "ディスカッション",
+    "discussionCardSemantics": "ディスカッション: {title}",
+    "discussionJoined": "参加済み",
+    "discussionAnswered": "回答済み",
+    "joinTheDiscussion": "ディスカッションに参加",
+    "discussionClassmatesInRoom": "{count, plural, =1{1人のクラスメートがこのディスカッションに参加しています} other{{count}人のクラスメートがこのディスカッションに参加しています}}",
+    "discussionStartIt": "このディスカッションを最初に始めましょう",
+    "discussionRemoved": "このディスカッションには参加できません。",
+    "discussionJoinArriving": "参加しました！到着次第、ディスカッションが開始されます。",
+    "roleplayLabel": "ロールプレイ",
     "sessionFinished": "手遅れです！このアクティビティは終了しました。"
 }

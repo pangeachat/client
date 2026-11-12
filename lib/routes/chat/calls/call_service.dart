@@ -266,8 +266,7 @@ class CallService {
     coordinator = CallAudioMergeCoordinator(
       relationsFetch: relationsFetcherFor(client),
       download: callAudioDownloaderFor(client),
-      upload: (bytes, {required filename, required contentType}) => client
-          .uploadContent(bytes, filename: filename, contentType: contentType),
+      upload: uploadCallAudio,
       // Room-aware: one coordinator sends the merges of calls across many rooms,
       // so the target room travels with each send. A room the client no longer
       // knows yields null, exactly as the per-device sender's own null.
@@ -300,6 +299,10 @@ class CallService {
     unawaited(_activateMergeCoordinator());
     return coordinator;
   }
+
+  /// The merge coordinator, brought up on first use, for tests of its wiring.
+  @visibleForTesting
+  CallAudioMergeCoordinator get mergeCoordinator => _ensureMergeCoordinator();
 
   /// Forwards one [trigger] to the merge coordinator, bringing the subsystem up
   /// on first use.

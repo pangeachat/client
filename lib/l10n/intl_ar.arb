@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-11-10 13:06:07.773436",
+    "@@last_modified": "2026-11-11 11:38:39.483332",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10353,5 +10353,15 @@
     "joinCodeLabel": "الرمز",
     "joinCodeSaved": "تم حفظ الرمز {code}",
     "joinCodeSavedExplanation": "سجّل الدخول أو أنشئ حسابًا وسنضيفك.",
+    "discussionLabel": "المناقشة",
+    "discussionCardSemantics": "المناقشة: {title}",
+    "discussionJoined": "انضممت",
+    "discussionAnswered": "أجبت",
+    "joinTheDiscussion": "انضم إلى المناقشة",
+    "discussionClassmatesInRoom": "{count, plural, =1{طالب واحد في هذه المناقشة} other{{count} طلاب في هذه المناقشة}}",
+    "discussionStartIt": "كن أول من يبدأ هذه المناقشة",
+    "discussionRemoved": "لا يمكنك الانضمام إلى هذه المناقشة.",
+    "discussionJoinArriving": "لقد انضممت! ستفتح المناقشة حالما تصل.",
+    "roleplayLabel": "لعب الأدوار",
     "sessionFinished": "فات الأوان! انتهى هذا النشاط."
 }

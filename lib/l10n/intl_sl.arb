@@ -1793,7 +1793,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-11-10 13:06:18.583176",
+    "@@last_modified": "2026-11-11 11:38:57.556468",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10992,5 +10992,15 @@
     "joinCodeLabel": "Koda",
     "joinCodeSaved": "Koda {code} shranjena",
     "joinCodeSavedExplanation": "Registrirajte se ali se prijavite in dodali vas bomo.",
+    "discussionLabel": "Razprava",
+    "discussionCardSemantics": "Razprava: {title}",
+    "discussionJoined": "Pridruženo",
+    "discussionAnswered": "Odgovorjeno",
+    "joinTheDiscussion": "Pridružite se razpravi",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 sošolec je v tej razpravi} other{{count} sošolcev je v tej razpravi}}",
+    "discussionStartIt": "Bodite prvi, ki bo začel to razpravo",
+    "discussionRemoved": "Ne morete se pridružiti tej razpravi.",
+    "discussionJoinArriving": "Ste notri! Razprava se bo odprla takoj, ko prispe.",
+    "roleplayLabel": "Igranje vlog",
     "sessionFinished": "Prepozno! Ta dejavnost je končana."
 }

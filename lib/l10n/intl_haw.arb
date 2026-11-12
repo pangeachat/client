@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-11-10 13:06:11.546730",
+    "@@last_modified": "2026-11-11 11:38:44.203292",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Code",
     "joinCodeSaved": "Ua mālama ʻia ke code {code}",
     "joinCodeSavedExplanation": "E kau inoa a i ʻole e ʻeʻe a e hoʻohui mākou iā ʻoe.",
+    "discussionLabel": "Kūkākūkā",
+    "discussionCardSemantics": "Kūkākūkā: {title}",
+    "discussionJoined": "Ua Hui",
+    "discussionAnswered": "Ua Pane",
+    "joinTheDiscussion": "E Hui i ke Kūkākūkā",
+    "discussionClassmatesInRoom": "{count, plural, =1{Aia he haumāna papa hoʻokahi ma kēia kūkākūkā} other{Aia he {count} haumāna papa ma kēia kūkākūkā}}",
+    "discussionStartIt": "E lilo ʻoe i mea mua e hoʻomaka i kēia kūkākūkā",
+    "discussionRemoved": "ʻAʻole hiki iā ʻoe ke hui i kēia kūkākūkā.",
+    "discussionJoinArriving": "Ua komo ʻoe! E wehe ʻia ke kūkākūkā ke hōʻea mai.",
+    "roleplayLabel": "Pāʻani Kuleana",
     "sessionFinished": "Ua lohi! Ua pau kēia hana."
 }

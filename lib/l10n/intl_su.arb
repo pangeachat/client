@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-11-10 13:06:19.642863",
+    "@@last_modified": "2026-11-11 11:38:58.963864",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Kode",
     "joinCodeSaved": "Kode {code} disimpen",
     "joinCodeSavedExplanation": "Daptar atanapi asup sareng kami bakal nambihan anjeun.",
+    "discussionLabel": "Diskusi",
+    "discussionCardSemantics": "Diskusi: {title}",
+    "discussionJoined": "Gabung",
+    "discussionAnswered": "Dijawab",
+    "joinTheDiscussion": "Gabung kana diskusi",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 babaturan sakelas aya dina diskusi ieu} other{{count} babaturan sakelas aya dina diskusi ieu}}",
+    "discussionStartIt": "Janten anu pangheulana ngamimitian diskusi ieu",
+    "discussionRemoved": "Anjeun teu tiasa ngiringan diskusi ieu.",
+    "discussionJoinArriving": "Anjeun lebet! Diskusi bakal dibuka pas sumping.",
+    "roleplayLabel": "Roleplay",
     "sessionFinished": "Kacida telat! Kagiatan ieu parantos réngsé."
 }

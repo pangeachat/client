@@ -3080,7 +3080,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-11-10 13:06:20.370311",
+    "@@last_modified": "2026-11-11 11:39:00.382423",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10679,5 +10679,15 @@
     "joinCodeLabel": "รหัส",
     "joinCodeSaved": "บันทึกรหัส {code} แล้ว",
     "joinCodeSavedExplanation": "ลงทะเบียนหรือเข้าสู่ระบบ แล้วเราจะเพิ่มคุณ",
+    "discussionLabel": "การสนทนา",
+    "discussionCardSemantics": "การสนทนา: {title}",
+    "discussionJoined": "เข้าร่วมแล้ว",
+    "discussionAnswered": "ตอบแล้ว",
+    "joinTheDiscussion": "เข้าร่วมการสนทนา",
+    "discussionClassmatesInRoom": "{count, plural, =1{เพื่อนร่วมชั้น 1 คนกำลังอยู่ในการสนทนานี้} other{เพื่อนร่วมชั้น {count} คนกำลังอยู่ในการสนทนานี้}}",
+    "discussionStartIt": "เป็นคนแรกที่เริ่มการสนทนานี้",
+    "discussionRemoved": "คุณไม่สามารถเข้าร่วมการสนทนานี้ได้",
+    "discussionJoinArriving": "คุณเข้าร่วมแล้ว! การสนทนาจะเปิดขึ้นทันทีที่มาถึง",
+    "roleplayLabel": "สวมบทบาท",
     "sessionFinished": "สายเกินไป! กิจกรรมนี้สิ้นสุดลงแล้ว"
 }

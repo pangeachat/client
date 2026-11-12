@@ -616,11 +616,29 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     );
   }
 
-  Future<void> sendActivityAnalytics(String roomId, LanguageModel lang) async {
+  /// Files session [roomId] in the learner's analytics room for [lang]: the
+  /// saved list every activity XP figure reads. False when there is no
+  /// analytics room for [lang] to file it in; a failed write throws.
+  Future<bool> sendActivityAnalytics(String roomId, LanguageModel lang) async {
     final analyticsRoom = await _getAnalyticsRoom(l2Override: lang);
-    if (analyticsRoom == null) return;
+    if (analyticsRoom == null) return false;
 
     await analyticsRoom.addActivityRoomIds({roomId});
+    return true;
+  }
+
+  /// Takes session [roomId] off the saved list for [lang], the reverse of
+  /// [sendActivityAnalytics]. False when there is no analytics room for
+  /// [lang]; a failed write throws.
+  Future<bool> removeActivityAnalytics(
+    String roomId,
+    LanguageModel lang,
+  ) async {
+    final analyticsRoom = await _getAnalyticsRoom(l2Override: lang);
+    if (analyticsRoom == null) return false;
+
+    await analyticsRoom.removeActivityRoomId(roomId);
+    return true;
   }
 
   Future<void> blockConstructs(List<ConstructIdentifier> constructIds) async {

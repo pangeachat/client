@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-11-10 13:06:18.405132",
+    "@@last_modified": "2026-11-11 11:38:55.247848",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10135,5 +10135,15 @@
     "joinCodeLabel": "Kod",
     "joinCodeSaved": "Kod {code} zapisany",
     "joinCodeSavedExplanation": "Zarejestruj się lub zaloguj, a my Cię dodamy.",
+    "discussionLabel": "Dyskusja",
+    "discussionCardSemantics": "Dyskusja: {title}",
+    "discussionJoined": "Dołączono",
+    "discussionAnswered": "Odpowiedziano",
+    "joinTheDiscussion": "Dołącz do dyskusji",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 kolega z klasy jest w tej dyskusji} other{{count} kolegów z klasy jest w tej dyskusji}}",
+    "discussionStartIt": "Bądź pierwszą osobą, która rozpocznie tę dyskusję",
+    "discussionRemoved": "Nie możesz dołączyć do tej dyskusji.",
+    "discussionJoinArriving": "Jesteś w środku! Dyskusja rozpocznie się, gdy tylko nadejdzie.",
+    "roleplayLabel": "Odgrywanie ról",
     "sessionFinished": "Za późno! Ta aktywność została zakończona."
 }

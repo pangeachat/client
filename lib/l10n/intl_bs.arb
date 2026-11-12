@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-11-10 13:06:07.833947",
+    "@@last_modified": "2026-11-11 11:38:39.455007",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Kod",
     "joinCodeSaved": "Kod {code} sačuvan",
     "joinCodeSavedExplanation": "Registrujte se ili prijavite i mi ćemo vas dodati.",
+    "discussionLabel": "Diskusija",
+    "discussionCardSemantics": "Diskusija: {title}",
+    "discussionJoined": "Pridruženo",
+    "discussionAnswered": "Odgovoreno",
+    "joinTheDiscussion": "Pridružite se diskusiji",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 kolega je u ovoj diskusiji} other{{count} kolega je u ovoj diskusiji}}",
+    "discussionStartIt": "Budite prvi koji će započeti ovu diskusiju",
+    "discussionRemoved": "Ne možete se pridružiti ovoj diskusiji.",
+    "discussionJoinArriving": "Ušli ste! Diskusija će se otvoriti čim stigne.",
+    "roleplayLabel": "Igranje uloga",
     "sessionFinished": "Prekasno! Ova aktivnost je završena."
 }

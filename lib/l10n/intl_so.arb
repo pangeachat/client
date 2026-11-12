@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-11-10 13:06:19.306539",
+    "@@last_modified": "2026-11-11 11:38:58.496433",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "Koodh",
     "joinCodeSaved": "Koodhka {code} waa la keydiyay",
     "joinCodeSavedExplanation": "Isdiiwaangeli ama soo gal, waana ku dari doonaa.",
+    "discussionLabel": "Dood",
+    "discussionCardSemantics": "Dood: {title}",
+    "discussionJoined": "Ku biiray",
+    "discussionAnswered": "Laga jawaabay",
+    "joinTheDiscussion": "Ku biir dooda",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 arday ayaa ku jira dooda} other{{count} arday ayaa ku jira dooda}}",
+    "discussionStartIt": "Noqo qofka ugu horreeya ee bilaaba dooda",
+    "discussionRemoved": "Kuma biiri kartid dooda.",
+    "discussionJoinArriving": "Waad ku jirtaa! Dooddu way furmi doontaa isla marka ay timaado.",
+    "roleplayLabel": "Jilid",
     "sessionFinished": "Waa goor dambe! Hawshan waa la dhammeeyay."
 }

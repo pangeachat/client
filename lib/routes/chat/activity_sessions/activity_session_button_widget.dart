@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -13,6 +14,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
 import 'package:fluffychat/routes/chat/calls/call_panel.dart';
+import 'package:fluffychat/routes/chat/discussions/discussion_join_cta.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -258,6 +260,14 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final activity = controller.widget.activity;
+    if (activity?.activityMode.opensSharedRoom ?? false) {
+      return DiscussionJoinCta(
+        course: controller.course,
+        activityId: controller.widget.activityId,
+        activity: activity,
+      );
+    }
     // Other sub-pages show a single Back button.
     if (controller.subPage != NotStartedSubPage.main) {
       return ActivitySessionCTAButton(

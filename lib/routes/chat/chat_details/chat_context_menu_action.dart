@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
@@ -52,8 +53,12 @@ extension on ChatContextAction {
         // gate is the session ending for all, not the learner's own role
         // archiving, which comes only after the auto-save: an observer who
         // never took a role is still looking at a session that has ended.
+        // A discussion is entered only through Join, which seats the student
+        // and keeps the room's count: someone invited straight in would have
+        // no seat and would not be counted.
         return source == ChatMenuSource.chatHeader &&
             room.isActivitySession &&
+            !room.isDiscussionRoom &&
             !room.isActivityFinished;
       case ChatContextAction.download:
         // Any member may export a transcript: it surfaces only what they can

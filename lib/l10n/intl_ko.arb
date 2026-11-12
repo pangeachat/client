@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:13.609730",
+    "@@last_modified": "2026-11-11 11:38:48.077584",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -10243,5 +10243,15 @@
     "joinCodeLabel": "코드",
     "joinCodeSaved": "코드 {code} 저장됨",
     "joinCodeSavedExplanation": "가입하거나 로그인하시면 회원님을 추가해 드립니다.",
+    "discussionLabel": "토론",
+    "discussionCardSemantics": "토론: {title}",
+    "discussionJoined": "참여함",
+    "discussionAnswered": "답변함",
+    "joinTheDiscussion": "토론 참여하기",
+    "discussionClassmatesInRoom": "{count, plural, =1{1명의 급우가 이 토론에 참여 중입니다} other{{count}명의 급우가 이 토론에 참여 중입니다}}",
+    "discussionStartIt": "가장 먼저 토론을 시작해 보세요",
+    "discussionRemoved": "이 토론에 참여할 수 없습니다.",
+    "discussionJoinArriving": "참여 완료! 토론이 시작되면 바로 열립니다.",
+    "roleplayLabel": "역할극",
     "sessionFinished": "너무 늦었어요! 이 활동은 종료되었습니다."
 }

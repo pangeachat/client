@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-10 13:06:11.949580",
+    "@@last_modified": "2026-11-11 11:38:45.828898",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10123,5 +10123,15 @@
     "joinCodeLabel": "Kode",
     "joinCodeSaved": "Kode {code} tersimpan",
     "joinCodeSavedExplanation": "Daftar atau masuk dan kami akan menambahkan Anda.",
+    "discussionLabel": "Diskusi",
+    "discussionCardSemantics": "Diskusi: {title}",
+    "discussionJoined": "Bergabung",
+    "discussionAnswered": "Terjawab",
+    "joinTheDiscussion": "Gabung diskusi",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 teman sekelas ada di diskusi ini} other{{count} teman sekelas ada di diskusi ini}}",
+    "discussionStartIt": "Jadilah yang pertama memulai diskusi ini",
+    "discussionRemoved": "Anda tidak dapat bergabung dengan diskusi ini.",
+    "discussionJoinArriving": "Anda masuk! Diskusi akan dibuka segera setelah tiba.",
+    "roleplayLabel": "Permainan Peran",
     "sessionFinished": "Terlambat! Aktivitas ini sudah selesai."
 }

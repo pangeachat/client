@@ -2954,7 +2954,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-11-10 13:06:14.737651",
+    "@@last_modified": "2026-11-11 11:38:49.915205",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10828,5 +10828,15 @@
     "joinCodeLabel": "Kodas",
     "joinCodeSaved": "Kodas {code} išsaugotas",
     "joinCodeSavedExplanation": "Užsiregistruokite arba prisijunkite, ir mes jus pridėsime.",
+    "discussionLabel": "Diskusija",
+    "discussionCardSemantics": "Diskusija: {title}",
+    "discussionJoined": "Prisijungėte",
+    "discussionAnswered": "Atsakyta",
+    "joinTheDiscussion": "Prisijunkite prie diskusijos",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 klasės draugas dalyvauja šioje diskusijoje} other{{count} klasės draugai dalyvauja šioje diskusijoje}}",
+    "discussionStartIt": "Būkite pirmas, pradėjęs šią diskusiją",
+    "discussionRemoved": "Negalite prisijungti prie šios diskusijos.",
+    "discussionJoinArriving": "Jūs prisijungėte! Diskusija prasidės, kai tik atsiras.",
+    "roleplayLabel": "Vaidmenų žaidimas",
     "sessionFinished": "Per vėlu! Ši veikla baigėsi."
 }

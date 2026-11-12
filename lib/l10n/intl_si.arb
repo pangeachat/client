@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-11-10 13:06:18.728290",
+    "@@last_modified": "2026-11-11 11:38:57.308181",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2520,5 +2520,15 @@
     "joinCodeLabel": "කේතය",
     "joinCodeSaved": "කේතය {code} සුරැකිණි",
     "joinCodeSavedExplanation": "ලියාපදිංචි වන්න හෝ පිවිසෙන්න, එවිට අපි ඔබව එක් කරන්නෙමු.",
+    "discussionLabel": "සාකච්ඡාව",
+    "discussionCardSemantics": "සාකච්ඡාව: {title}",
+    "discussionJoined": "එක් විය",
+    "discussionAnswered": "පිළිතුරු දුන්නා",
+    "joinTheDiscussion": "සාකච්ඡාවට එක් වන්න",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 පන්තියේ මිතුරෙකු මෙම සාකච්ඡාවේ සිටී} other{{count} පන්තියේ මිතුරන් මෙම සාකච්ඡාවේ සිටී}}",
+    "discussionStartIt": "මෙම සාකච්ඡාව ආරම්භ කරන පළමු පුද්ගලයා වන්න",
+    "discussionRemoved": "ඔබට මෙම සාකච්ඡාවට එක් විය නොහැක.",
+    "discussionJoinArriving": "ඔබ ඇතුළත්! සාකච්ඡාව පැමිණි විගස විවෘත වනු ඇත.",
+    "roleplayLabel": "භූමිකා නිරූපණය",
     "sessionFinished": "ප්‍රමාද වැඩියි! මෙම ක්‍රියාකාරකම අවසන් වී ඇත."
 }
