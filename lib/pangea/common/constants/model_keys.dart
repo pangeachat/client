@@ -16,7 +16,5 @@ class ModelKey {
   static const String length = 'length';
   static const String lemma = 'lemma';
 
-  static const String voice = 'voice';
-
   static const String joinRule = 'join_rule';
 }

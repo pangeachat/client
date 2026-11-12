@@ -2868,8 +2868,6 @@
     "holdForInfo": "Klikatu eta eutsi hitzaren informazioarentzat.",
     "gaTooltip": "L2 gramatika laguntzarekin erabiltzeko",
     "taTooltip": "L2 itzulpen laguntzarekin erabiltzeko",
-    "interactiveTranslatorSliderHeader": "Interaktiboa Itzultzailea",
-    "interactiveGrammarSliderHeader": "Interaktiboa Gramatika Egiaztatzailea",
     "waTooltip": "Laguntzarik gabe erabiltzeko",
     "interactiveTranslator": "Itzulpen laguntza",
     "noIdenticalLanguages": "Mesedez, aukeratu hizkuntza oinarria eta helburua desberdinak izan daitezen",
@@ -2924,17 +2922,11 @@
     "paymentHistory": "Ordainketa Historia",
     "emptyChatDownloadWarning": "Ezin da hutsik dagoen chat-a deskargatu",
     "update": "Eguneratu",
-    "toggleImmersionMode": "Inguraketa Modua",
-    "toggleImmersionModeDesc": "Gaituta dagoenean, mezu guztiak zure hizkuntza helburuan erakusten dira. Ezarpen hau erabilgarria da hizkuntza trukeetan.",
-    "itToggleDescription": "Hizkuntza ikaskuntza tresna honek zure hizkuntza oinarrian hitzak identifikatuko ditu eta helburu hizkuntzara itzultzen lagunduko dizu. Nahiz eta oso gutxitan, AI-k akatsak egin ditzake itzulpenetan.",
-    "igcToggleDescription": "Hizkuntza ikaskuntza tresna honek zure mezua zuzenketa ortografiko, gramatikal eta puntuazio akats arruntak identifikatu eta zuzenketak proposatuko ditu. Nahiz eta oso gutxitan, AI-k akatsak egin ditzake zuzenketetan.",
     "originalMessage": "Mezu Originala",
     "sentMessage": "Bidalitako Mezua",
     "useType": "Erabiltzeko Mota",
     "notAvailable": "Ez Da Eskuragarri",
     "taAndGaTooltip": "L2 erabilera itzulpen laguntzarekin eta gramatika laguntzarekin",
-    "definitionsToolName": "Hitzaren Definizioak",
-    "definitionsToolDescription": "Gaituta dagoenean, urdinez azpimarratutako hitzak klik egin daitezke definizioak ikusteko. Klik egin mezuei definizioak ikusteko.",
     "welcomeBack": "Ongi etorri berriro! 2023-2024ko pilotuaren parte bazina, jarri gurekin harremanetan zure pilotu espezifikoaren harpidetza lortzeko. Zure klasearentzat lizentziak erosi dituen irakaslea bazara (edo zure erakundeak erosi baditu), jarri gurekin harremanetan irakaslearen harpidetza lortzeko.",
     "promotionalSubscriptionDesc": "Une honetan promozio-eskubide bizia duzu. Laguntza lortzeko, mezua bidali support@pangea.chat helbidera zure harpidetza aldatzeko.",
     "originalSubscriptionPlatform": "Harpidetza {purchasePlatform} bidez erosi da",
@@ -3558,14 +3550,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3786,22 +3770,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3819,14 +3787,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

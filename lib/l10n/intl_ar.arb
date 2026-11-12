@@ -2683,8 +2683,6 @@
     "holdForInfo": "انقر مع الاستمرار للحصول على معلومات الكلمة.",
     "gaTooltip": "استخدام المستوى 2 مع المساعدة في القواعد",
     "taTooltip": "استخدام المستوى 2 مع المساعدة في الترجمة",
-    "interactiveTranslatorSliderHeader": "مترجم تفاعلي",
-    "interactiveGrammarSliderHeader": "مدقق قواعد تفاعلي",
     "waTooltip": "استخدام المستوى 2 بدون مساعدة",
     "interactiveTranslator": "مساعدة في الترجمة",
     "noIdenticalLanguages": "يرجى اختيار لغتين أساسيتين مختلفتين",
@@ -2740,17 +2738,11 @@
     "paymentHistory": "سجل المدفوعات",
     "emptyChatDownloadWarning": "لا يمكن تنزيل دردشة فارغة",
     "update": "تحديث",
-    "toggleImmersionMode": "وضع الانغماس",
-    "toggleImmersionModeDesc": "عند التفعيل، يتم عرض جميع الرسائل بلغتك المستهدفة. هذا الإعداد مفيد جدًا في تبادلات اللغة.",
-    "itToggleDescription": "ستحدد أداة تعلم اللغة هذه الكلمات في لغتك الأساسية وتساعدك على ترجمتها إلى لغتك المستهدفة. على الرغم من ندرتها، يمكن أن ترتكب الذكاء الاصطناعي أخطاء في الترجمة.",
-    "igcToggleDescription": "ستحدد أداة تعلم اللغة هذه الأخطاء الشائعة في التهجئة والقواعد وعلامات الترقيم في رسالتك وتقترح تصحيحات. على الرغم من ندرتها، يمكن أن ترتكب الذكاء الاصطناعي أخطاء في التصحيح.",
     "originalMessage": "الرسالة الأصلية",
     "sentMessage": "تم إرسال الرسالة",
     "useType": "نوع الاستخدام",
     "notAvailable": "غير متوفر",
     "taAndGaTooltip": "استخدام المستوى 2 مع المساعدة في الترجمة والمساعدة في القواعد",
-    "definitionsToolName": "تعريفات الكلمات",
-    "definitionsToolDescription": "عند التفعيل، يمكن النقر على الكلمات المسطرة باللون الأزرق للحصول على تعريفاتها. انقر على الرسائل للوصول إلى التعريفات.",
     "welcomeBack": "مرحبًا بعودتك! إذا كنت جزءًا من تجربة 2023-2024، يرجى الاتصال بنا للحصول على اشتراك التجربة الخاص بك. إذا كنت معلمًا قام (أو مؤسستك قامت) بشراء تراخيص لفصلك، اتصل بنا للحصول على اشتراك المعلم.",
     "promotionalSubscriptionDesc": "لديك حاليًا اشتراك ترويجي مدى الحياة. راسل support@pangea.chat للمساعدة في تغيير اشتراكك.",
     "originalSubscriptionPlatform": "تم شراء الاشتراك عبر {purchasePlatform}",
@@ -3681,14 +3673,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3913,22 +3897,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3946,14 +3914,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

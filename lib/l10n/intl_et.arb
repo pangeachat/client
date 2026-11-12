@@ -2879,8 +2879,6 @@
     "holdForInfo": "Vajuta ja hoia sõna info saamiseks.",
     "gaTooltip": "L2 kasutamine grammatika abiga",
     "taTooltip": "L2 kasutamine tõlke abiga",
-    "interactiveTranslatorSliderHeader": "Interaktiivne tõlkija",
-    "interactiveGrammarSliderHeader": "Interaktiivne grammatika kontroll",
     "waTooltip": "L2 kasutamine ilma abita",
     "interactiveTranslator": "Tõlkeabi",
     "noIdenticalLanguages": "Palun vali erinevad baas- ja sihtkeeled",
@@ -2934,17 +2932,11 @@
     "paymentHistory": "Makse ajalugu",
     "emptyChatDownloadWarning": "Tühi vestlus ei saa alla laadida",
     "update": "Uuenda",
-    "toggleImmersionMode": "Sukeldumise režiim",
-    "toggleImmersionModeDesc": "Kui see on lubatud, kuvatakse kõik sõnumid teie sihtkeeles. See seade on kõige kasulikum keelevahetustes.",
-    "itToggleDescription": "See keeleõppe tööriist tuvastab teie baaskeeles sõnad ja aitab teil neid tõlkida sihtkeelde. Kuigi harva, võib AI teha tõlkimisel vigu.",
-    "igcToggleDescription": "See keeleõppe tööriist tuvastab teie sõnumis tavalised õigekirja-, grammatika- ja kirjavahemärgi vead ning soovitab parandusi. Kuigi harva, võib AI teha parandamisvigu.",
     "originalMessage": "Algne sõnum",
     "sentMessage": "Saadetud sõnum",
     "useType": "Kasutusviis",
     "notAvailable": "Pole saadaval",
     "taAndGaTooltip": "L2 kasutamine tõlkeabi ja grammatikaabi abil",
-    "definitionsToolName": "Sõnade definitsioonid",
-    "definitionsToolDescription": "Kui see on lubatud, saab sinise allajoonitud sõnu klõpsata definitsioonide saamiseks. Klõpsake sõnumeid, et pääseda definitsioonidele.",
     "welcomeBack": "Tere tulemast tagasi! Kui osalesite 2023-2024 pilootprogrammis, võtke meiega ühendust oma erilise pilootkuulutuse saamiseks. Kui olete õpetaja, kellel on (või kelle asutus on) ostnud litsentse oma klassile, võtke meiega ühendust oma õpetajapaketiks.",
     "promotionalSubscriptionDesc": "Teil on praegu eluaegne kampaania tellimus. Abi saamiseks saatke sõnum aadressile support@pangea.chat.",
     "originalSubscriptionPlatform": "Tellimus osteti {purchasePlatform} kaudu",
@@ -3477,14 +3469,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3701,22 +3685,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3734,14 +3702,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

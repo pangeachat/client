@@ -61,7 +61,7 @@ class _FakeMatrixState extends MatrixState {
 /// resolves whichever account is active now, so a profile loaded for one login
 /// must never be published under the next one — that is how a bio, a country
 /// and another learner's analytics room ids landed on users who had set none of
-/// them. See profile.instructions.md, "Ownership and mirroring".
+/// them. See profile.instructions.md, "How the public profile stays in sync".
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   sqfliteFfiInit();

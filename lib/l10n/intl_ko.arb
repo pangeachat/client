@@ -2720,8 +2720,6 @@
     "holdForInfo": "단어 정보를 위해 클릭하고 길게 누르세요.",
     "gaTooltip": "문법 도움말과 함께 L2 사용",
     "taTooltip": "번역 도움말과 함께 L2 사용",
-    "interactiveTranslatorSliderHeader": "인터랙티브 번역기",
-    "interactiveGrammarSliderHeader": "인터랙티브 문법 검사기",
     "waTooltip": "도움말 없이 L2 사용",
     "interactiveTranslator": "번역 지원",
     "noIdenticalLanguages": "기본 언어와 대상 언어를 다르게 선택하세요",
@@ -2777,17 +2775,11 @@
     "paymentHistory": "지불 내역",
     "emptyChatDownloadWarning": "빈 채팅은 다운로드할 수 없습니다",
     "update": "업데이트",
-    "toggleImmersionMode": "몰입 모드 전환",
-    "toggleImmersionModeDesc": "활성화하면 모든 메시지가 대상 언어로 표시됩니다. 이 설정은 언어 교환에 가장 유용합니다.",
-    "itToggleDescription": "이 언어 학습 도구는 기본 언어의 단어를 식별하고 대상 언어로 번역하는 데 도움을 줍니다. 드물게 AI가 번역 오류를 일으킬 수 있습니다.",
-    "igcToggleDescription": "이 언어 학습 도구는 메시지에서 일반적인 맞춤법, 문법 및 구두점 오류를 식별하고 수정 제안을 합니다. 드물게 AI가 수정 오류를 범할 수 있습니다.",
     "originalMessage": "원본 메시지",
     "sentMessage": "전송된 메시지",
     "useType": "사용 유형",
     "notAvailable": "사용 불가",
     "taAndGaTooltip": "번역 지원 및 문법 지원이 포함된 L2 사용",
-    "definitionsToolName": "단어 정의",
-    "definitionsToolDescription": "활성화하면 파란색 밑줄이 그어진 단어를 클릭하여 정의를 볼 수 있습니다. 메시지를 클릭하여 정의에 접근하세요.",
     "welcomeBack": "다시 오신 것을 환영합니다! 2023-2024 파일럿에 참여하셨다면, 특별 파일럿 구독을 위해 저희에게 연락하세요. 교사이거나 귀하의 기관이 수업용 라이선스를 구매한 경우, 교사 구독을 위해 저희에게 연락하세요.",
     "promotionalSubscriptionDesc": "현재 평생 프로모션 구독을 보유하고 있습니다. 구독 변경에 대한 도움을 원하시면 support@pangea.chat으로 메시지를 보내세요.",
     "originalSubscriptionPlatform": "구매 플랫폼: {purchasePlatform}",
@@ -3567,14 +3559,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3799,22 +3783,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3832,14 +3800,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

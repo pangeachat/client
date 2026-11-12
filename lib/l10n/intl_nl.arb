@@ -2867,8 +2867,6 @@
     "holdForInfo": "Klik en houd vast voor woordinformatie.",
     "gaTooltip": "L2 gebruik met grammatica hulp",
     "taTooltip": "L2 gebruik met vertaalhulp",
-    "interactiveTranslatorSliderHeader": "Interactieve Vertaler",
-    "interactiveGrammarSliderHeader": "Interactieve Grammatica Controle",
     "waTooltip": "L2 gebruik zonder hulp",
     "interactiveTranslator": "Vertaalhulp",
     "noIdenticalLanguages": "Kies alstublieft verschillende basis- en doeltalen",
@@ -2923,17 +2921,11 @@
     "paymentHistory": "Betalingsgeschiedenis",
     "emptyChatDownloadWarning": "Kan lege chat niet downloaden",
     "update": "Bijwerken",
-    "toggleImmersionMode": "Onderdompelingsmodus",
-    "toggleImmersionModeDesc": "Wanneer ingeschakeld, worden alle berichten weergegeven in je doeltaal. Deze instelling is het nuttigst bij taaluitwisselingen.",
-    "itToggleDescription": "Deze taalleerhulpmiddel identificeert woorden in je basis taal en helpt je ze naar je doeltaal te vertalen. Hoewel zeldzaam, kan de AI vertaalfouten maken.",
-    "igcToggleDescription": "Deze taalleerhulpmiddel identificeert veelvoorkomende spelling-, grammatica- en interpunctiefouten in je bericht en suggereert correcties. Hoewel zeldzaam, kan de AI correctiefouten maken.",
     "originalMessage": "Oorspronkelijk bericht",
     "sentMessage": "Verzonden bericht",
     "useType": "Gebruikstype",
     "notAvailable": "Niet beschikbaar",
     "taAndGaTooltip": "L2 gebruik met vertaalhulp en grammaticahulp",
-    "definitionsToolName": "Woordendefinities",
-    "definitionsToolDescription": "Wanneer ingeschakeld, kunnen woorden onderstreept in blauw worden aangeklikt voor definities. Klik op berichten om definities te openen.",
     "welcomeBack": "Welkom terug! Als je deel uitmaakte van de pilot 2023-2024, neem dan contact met ons op voor je speciale pilotabonnement. Als je een leraar bent die (of wiens instelling) licenties voor je klas heeft gekocht, neem dan contact met ons op voor je lerarenabonnement.",
     "promotionalSubscriptionDesc": "U hebt momenteel een levenslange promotie-abonnement. Stuur een bericht naar support@pangea.chat voor hulp bij het wijzigen van uw abonnement.",
     "originalSubscriptionPlatform": "Abonnement gekocht via {purchasePlatform}",
@@ -3558,14 +3550,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3786,22 +3770,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3819,14 +3787,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

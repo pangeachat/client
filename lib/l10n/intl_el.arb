@@ -2718,8 +2718,6 @@
     "holdForInfo": "Κάντε κλικ και κρατήστε πατημένο για πληροφορίες λέξης.",
     "gaTooltip": "L2 χρήση με βοήθεια γραμματικής",
     "taTooltip": "L2 χρήση με βοήθεια μετάφρασης",
-    "interactiveTranslatorSliderHeader": "Διαδραστικός Μεταφραστής",
-    "interactiveGrammarSliderHeader": "Διαδραστικός Έλεγχος Γραμματικής",
     "waTooltip": "Χρήση L2 χωρίς βοήθεια",
     "interactiveTranslator": "Βοήθεια μετάφρασης",
     "noIdenticalLanguages": "Παρακαλώ επιλέξτε διαφορετικές βασικές και στόχους γλώσσες",
@@ -2775,17 +2773,11 @@
     "paymentHistory": "Ιστορικό Πληρωμών",
     "emptyChatDownloadWarning": "Δεν είναι δυνατή η λήψη κενής συνομιλίας",
     "update": "Ενημέρωση",
-    "toggleImmersionMode": "Λειτουργία Εμβάπτισης",
-    "toggleImmersionModeDesc": "Όταν ενεργοποιείται, όλα τα μηνύματα εμφανίζονται στη γλώσσα στόχο σας. Αυτή η ρύθμιση είναι πιο χρήσιμη σε ανταλλαγές γλωσσών.",
-    "itToggleDescription": "Αυτό το εργαλείο εκμάθησης γλωσσών θα εντοπίζει λέξεις στη βασική σας γλώσσα και θα σας βοηθά να τις μεταφράσετε στη γλώσσα στόχο. Αν και σπάνιο, το AI μπορεί να κάνει λάθη στη μετάφραση.",
-    "igcToggleDescription": "Αυτό το εργαλείο εκμάθησης γλωσσών θα εντοπίζει κοινά ορθογραφικά, γραμματικά και σημεία στίξης λάθη στο μήνυμά σας και θα προτείνει διορθώσεις. Αν και σπάνιο, το AI μπορεί να κάνει λάθη στις διορθώσεις.",
     "originalMessage": "Αρχικό Μήνυμα",
     "sentMessage": "Αποσταλμένο Μήνυμα",
     "useType": "Χρησιμοποιήστε Τύπο",
     "notAvailable": "Δεν Διαθέσιμη",
     "taAndGaTooltip": "Χρήση L2 με βοήθεια μετάφρασης και γραμματικής",
-    "definitionsToolName": "Ορισμοί Λέξεων",
-    "definitionsToolDescription": "Όταν ενεργοποιείται, οι λέξεις με υπογράμμιση μπλε μπορούν να πατηθούν για ορισμούς. Πατήστε μηνύματα για πρόσβαση στους ορισμούς.",
     "welcomeBack": "Καλώς ήρθατε ξανά! Αν ήσασταν μέρος του πιλοτικού προγράμματος 2023-2024, παρακαλούμε επικοινωνήστε μαζί μας για τη ειδική σας συνδρομή πιλοτικού προγράμματος. Αν είστε εκπαιδευτικός που έχει αγοράσει (ή η εκπαιδευτική σας ιδιότητα έχει αγοράσει) άδειες για την τάξη σας, επικοινωνήστε μαζί μας για τη συνδρομή εκπαιδευτικού.",
     "promotionalSubscriptionDesc": "Έχετε επί του παρόντος μια συνδρομή προώθησης διάρκειας ζωής. Στείλτε μήνυμα στο support@pangea.chat για βοήθεια στην αλλαγή της συνδρομής σας.",
     "originalSubscriptionPlatform": "Συνδρομή αγοράστηκε μέσω {purchasePlatform}",
@@ -4246,14 +4238,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4478,22 +4462,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4511,14 +4479,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

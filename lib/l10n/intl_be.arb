@@ -2858,8 +2858,6 @@
     "holdForInfo": "Націсніце і ўтрымлівайце для інфармацыі пра слова.",
     "gaTooltip": "Выкарыстанне L2 з дапамогай граматычнай падтрымкі",
     "taTooltip": "Выкарыстанне L2 з дапамогай перакладчыцкай падтрымкі",
-    "interactiveTranslatorSliderHeader": "Інтэрактыўны перакладчык",
-    "interactiveGrammarSliderHeader": "Інтэрактыўны праверка граматыкі",
     "waTooltip": "Выкарыстанне L2 без дапамогі",
     "interactiveTranslator": "Дапамога з перакладам",
     "noIdenticalLanguages": "Калі ласка, выберыце розныя базавыя і мэтавыя мовы",
@@ -2914,17 +2912,11 @@
     "paymentHistory": "Гісторыя плацяжоў",
     "emptyChatDownloadWarning": "Немагчыма спампаваць пусты чат",
     "update": "Абнавіць",
-    "toggleImmersionMode": "Рэжым уцягвання",
-    "toggleImmersionModeDesc": "Калі ўключана, усе паведамленні адлюстроўваюцца на вашай мэтавай мове. Гэты рэжым найбольш карысны ў мовных абменах.",
-    "itToggleDescription": "Гэты інструмент вывучэння мовы вызначыць словы ў вашай базавай мове і дапаможа вам перакласці іх на вашу мэтавую мову. Хоць і рэдка, AI можа дапусціць памылкі ў перакладзе.",
-    "igcToggleDescription": "Гэты інструмент вывучэння мовы вызначыць распаўсюджаныя памылкі ў напісанні, граматыцы і пунктуацыі ў вашым паведамленні і прапануе карэкцыі. Хоць і рэдка, AI можа дапусціць памылкі ў карэкцыі.",
     "originalMessage": "Арыгінальнае паведамленне",
     "sentMessage": "Адпраўленае паведамленне",
     "useType": "Тып выкарыстання",
     "notAvailable": "Няма даступна",
     "taAndGaTooltip": "Выкарыстанне L2 з дапамогай перакладу і граматычнай дапамогі",
-    "definitionsToolName": "Вызначэнні слоў",
-    "definitionsToolDescription": "Калі ўключана, падкрэсленыя сінім словы можна націснуць для атрымання вызначэнняў. Націсніце на паведамленні, каб атрымаць доступ да вызначэнняў.",
     "welcomeBack": "Вітаем зноў! Калі вы ўдзельнічалі ў пілотным праекце 2023-2024 гадоў, звяжыцеся з намі для атрымання спецыяльнай пілотнай падпіскі. Калі вы настаўнік, які набыў (або яго ўстанова набыла) ліцэнзіі для вашага класа, звяжыцеся з намі для атрымання настаўніцкай падпіскі.",
     "promotionalSubscriptionDesc": "У вас цяпер бестэрміновая прамоцыйная падпіска. Пішыце support@pangea.chat для дапамогі ў змене вашай падпіскі.",
     "originalSubscriptionPlatform": "Падпіска, набытая праз {purchasePlatform}",
@@ -3558,14 +3550,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3786,22 +3770,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3819,14 +3787,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

@@ -2750,8 +2750,6 @@
     "holdForInfo": "Fes clic i mantén premut per obtenir informació de la paraula.",
     "gaTooltip": "L2 utilitza amb assistència gramatical",
     "taTooltip": "L2 utilitza amb assistència de traducció",
-    "interactiveTranslatorSliderHeader": "Traductor interactiu",
-    "interactiveGrammarSliderHeader": "Comprovador de gramàtica interactiu",
     "waTooltip": "Ús de L2 sense assistència",
     "interactiveTranslator": "Assistència de traducció",
     "noIdenticalLanguages": "Si us plau, tria idiomes base i de destinació diferents",
@@ -2807,17 +2805,11 @@
     "paymentHistory": "Historial de pagaments",
     "emptyChatDownloadWarning": "No es pot descarregar un xat buit",
     "update": "Actualitzar",
-    "toggleImmersionMode": "Mode d'immersió",
-    "toggleImmersionModeDesc": "Quan està activat, tots els missatges es mostren en la vostra llengua objectiu. Aquesta configuració és més útil en intercanvis de llengües.",
-    "itToggleDescription": "Aquesta eina d'aprenentatge de llengües identificarà paraules en la vostra llengua base i us ajudarà a traduir-les a la vostra llengua objectiu. Tot i que és rar, la IA pot cometre errors de traducció.",
-    "igcToggleDescription": "Aquesta eina d'aprenentatge de llengües identificarà errors comuns d'ortografia, gramàtica i puntuació en el vostre missatge i suggerirà correccions. Tot i que és rar, la IA pot cometre errors de correcció.",
     "originalMessage": "Missatge original",
     "sentMessage": "Missatge enviat",
     "useType": "Tipus d'ús",
     "notAvailable": "No disponible",
     "taAndGaTooltip": "L2 amb assistència de traducció i assistència gramatical",
-    "definitionsToolName": "Definicions de paraules",
-    "definitionsToolDescription": "Quan està activat, les paraules subratllades en blau es poden clicar per veure definicions. Fes clic als missatges per accedir a les definicions.",
     "welcomeBack": "Benvingut de nou! Si vau formar part del pilot 2023-2024, poseu-vos en contacte amb nosaltres per a la vostra subscripció especial de pilot. Si sou un professor que ha comprat (o la vostra institució ha comprat) llicències per a la vostra classe, poseu-vos en contacte amb nosaltres per a la vostra subscripció d'professor.",
     "promotionalSubscriptionDesc": "Actualment teniu una subscripció promocional de per vida. Envia un missatge a support@pangea.chat per ajudar-vos a canviar la vostra subscripció.",
     "originalSubscriptionPlatform": "Subscripció comprada a través de {purchasePlatform}",
@@ -3501,14 +3493,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3733,22 +3717,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3766,14 +3734,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

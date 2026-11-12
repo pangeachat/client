@@ -1259,8 +1259,6 @@
     "holdForInfo": "დააჭირეთ და შეინახეთ სიტყვების ინფორმაციისთვის.",
     "gaTooltip": "L2 გამოყენება გრამატიკის დახმარებით",
     "taTooltip": "L2 გამოყენება თარგმნის დახმარებით",
-    "interactiveTranslatorSliderHeader": "ინტერაქტიული თარგმნელი",
-    "interactiveGrammarSliderHeader": "ინტერაქტიული გრამატიკის შემოწმება",
     "waTooltip": "L2 გამოყენება დახმარების გარეშე",
     "interactiveTranslator": "თარგმნის დახმარება",
     "noIdenticalLanguages": "გთხოვთ, აირჩიოთ განსხვავებული საწყისი და სამიზნე ენები",
@@ -1316,17 +1314,11 @@
     "paymentHistory": "გადახდის ისტორია",
     "emptyChatDownloadWarning": "ცარიელი ჩატის ჩამოტვირთვა შეუძლებელია",
     "update": "განახლება",
-    "toggleImmersionMode": "ჩაშვების რეჟიმი",
-    "toggleImmersionModeDesc": "როდესაც ჩართულია, ყველა შეტყობინება გამოჩნდება თქვენს სამიზნე ენაზე. ეს პარამეტრი განსაკუთრებით სასარგებლოა ენის გაცვლის დროს.",
-    "itToggleDescription": "ეს ენის სწავლების ინსტრუმენტი იპოვის სიტყვებს თქვენს საწყის ენაზე და დაეხმარება მათ თარგმნაში თქვენს სამიზნე ენაზე. იშვიათად, AI შეიძლება დაუშვას თარგმნის შეცდომები.",
-    "igcToggleDescription": "ეს ენის სწავლების ინსტრუმენტი იპოვის საერთო spelling, გრამატიკის და პუნქტუაციის შეცდომებს თქვენს შეტყობინებაში და შემოგთავაზებთ გამოსწორებას. იშვიათად, AI შეიძლება დაუშვას კორექციის შეცდომები.",
     "originalMessage": "მოუწყობელი შეტყობინება",
     "sentMessage": "გაგზავნილი შეტყობინება",
     "useType": "გამოყენების ტიპი",
     "notAvailable": "ხელმისაწვდომი არაა",
     "taAndGaTooltip": "L2 გამოყენება თარგმნის და გრამატიკის დახმარებით",
-    "definitionsToolName": "სიტყვის განმარტებები",
-    "definitionsToolDescription": "როდესაც ჩართულია, ლურჯი ხაზით აღნიშნული სიტყვები შეიძლება დაწკაპუნებით იხილოთ განმარტებისთვის. დაწკაპუნეთ შეტყობინებებზე განმარტებების მისაღებად.",
     "welcomeBack": "კეთილი იყოს თქვენი დაბრუნება! თუ თქვენ მონაწილეობდით 2023-2024 წლის პილოტში, გთხოვთ დაგვიკავშირდეთ თქვენი სპეციალური პილოტის გამოწერისთვის. თუ თქვენ მასწავლებელი ხართ და გაქვთ (ან თქვენი დაწესებულება აქვს) ლიცენზიები თქვენი კლასი, გთხოვთ დაგვიკავშირდეთ თქვენი მასწავლებლის გამოწერისთვის.",
     "promotionalSubscriptionDesc": "ამჟამად გაქვთ სიცოცხლის ხანგრძლივობის პრომო გამოწერა. დახმარებისთვის დაუკავშირდით support@pangea.chat-ს, თქვენი გამოწერის შეცვლის მიზნით.",
     "originalSubscriptionPlatform": "გამოწერა შეძენილი {purchasePlatform}-დან",
@@ -4271,14 +4263,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4503,22 +4487,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4536,14 +4504,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

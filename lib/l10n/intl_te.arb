@@ -646,8 +646,6 @@
     "holdForInfo": "పద సమాచారం కోసం క్లిక్ చేసి ఉంచండి.",
     "gaTooltip": "వ్యాకరణ సహాయంతో L2 ఉపయోగించండి",
     "taTooltip": "అనువాద సహాయంతో L2 ఉపయోగించండి",
-    "interactiveTranslatorSliderHeader": "ఇంటరాక్టివ్ అనువాదకుడు",
-    "interactiveGrammarSliderHeader": "ఇంటరాక్టివ్ వ్యాకరణ తనిఖీ",
     "waTooltip": "సహాయం లేకుండా L2 ఉపయోగం",
     "interactiveTranslator": "అనువాద సహాయం",
     "noIdenticalLanguages": "దయచేసి వేర్వేరు బేస్ మరియు టార్గెట్ భాషలను ఎంచుకోండి",
@@ -703,17 +701,11 @@
     "paymentHistory": "చెల్లింపు చరిత్ర",
     "emptyChatDownloadWarning": "ఖాళీ చాట్‌ను డౌన్లోడ్ చేయలేరు",
     "update": "నవీకరణ",
-    "toggleImmersionMode": "అవగాహన మోడ్",
-    "toggleImmersionModeDesc": "సక్రియం చేస్తే, అన్ని సందేశాలు మీ లక్ష్య భాషలో ప్రదర్శించబడతాయి. ఈ సెట్టింగ్ భాష మార్పిడి సమయంలో అత్యంత ఉపయోగకరంగా ఉంటుంది.",
-    "itToggleDescription": "ఈ భాషా అభ్యాస సాధనం మీ బేస్ భాషలోని పదాలను గుర్తించి, వాటిని మీ లక్ష్య భాషకు అనువదించడంలో సహాయపడుతుంది. అరుదుగా, AI అనువాద లోపాలు చేయవచ్చు.",
-    "igcToggleDescription": "ఈ భాషా అభ్యాస సాధనం మీ సందేశంలో సాధారణ వ్రాతపరమైన, వ్యాకరణ, పంక్తి తప్పులను గుర్తించి, సవరించడాన్ని సూచిస్తుంది. అరుదుగా, AI సవరించడంలో తప్పులు చేయవచ్చు.",
     "originalMessage": "అసలు సందేశం",
     "sentMessage": "పంపిన సందేశం",
     "useType": "వినియోగ రకం",
     "notAvailable": "అందుబాటులో లేదు",
     "taAndGaTooltip": "అనువాద సహాయం మరియు వ్యాకరణ సహాయంతో L2 వినియోగం",
-    "definitionsToolName": "పదాల నిర్వచనాలు",
-    "definitionsToolDescription": "సక్రియం చేసినప్పుడు, నీలం రంగులో అండర్‌లైన్ చేయబడిన పదాలను నిర్వచనాల కోసం క్లిక్ చేయవచ్చు. నిర్వచనాలను పొందడానికి సందేశాలను క్లిక్ చేయండి.",
     "welcomeBack": "మళ్లీ స్వాగతం! మీరు 2023-2024 పైలట్‌లో భాగమైతే, మీ ప్రత్యేక పైలట్ సబ్‌స్క్రిప్షన్ కోసం మమ్మల్ని సంప్రదించండి. మీరు టీచర్ అయితే (లేదా మీ సంస్థ తరగతి కోసం లైసెన్సులు కొనుగోలు చేసిందైతే), మీ టీచర్ సబ్‌స్క్రిప్షన్ కోసం మమ్మల్ని సంప్రదించండి.",
     "promotionalSubscriptionDesc": "మీకు ప్రస్తుతం జీవితకాల ప్రచార సబ్‌స్క్రిప్షన్ ఉంది. మీ సబ్‌స్క్రిప్షన్ మార్చడానికి support@pangea.chat కు సందేశం పంపండి.",
     "originalSubscriptionPlatform": "{purchasePlatform} ద్వారా కొనుగోలు చేసిన సబ్‌స్క్రిప్షన్",
@@ -4321,14 +4313,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4553,22 +4537,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4586,14 +4554,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

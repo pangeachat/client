@@ -42,6 +42,10 @@ class LanguageUpdate {
 
 /// Controller that manages saving and reading of user/profile information
 class UserController {
+  /// A changed base or target language, kept apart from [settingsUpdateStream]
+  /// because a language change also clears caches, which no other settings
+  /// change needs. [PangeaController] subscribes to both and runs every side
+  /// effect, so this controller stays about the data.
   final StreamController<LanguageUpdate> languageStream =
       StreamController.broadcast();
   final StreamController<Profile> settingsUpdateStream =
@@ -173,6 +177,14 @@ class UserController {
   }
 
   /// Updates the user's profile with the given [update] function and saves it.
+  ///
+  /// Every path that changes settings writes through here, the language chip
+  /// and switcher included, however far they sit from the settings page. The
+  /// write comes back in a sync, which fires [languageStream] or
+  /// [settingsUpdateStream], and those streams are the one trigger for
+  /// updating the bot and the public profile; only the bot settings dialog
+  /// also updates the bot directly (profile.instructions.md, "Where settings
+  /// are changed", 5).
   Future<void> updateProfile(
     Profile Function(Profile) update, {
     waitForDataInSync = false,
@@ -330,7 +342,10 @@ class UserController {
       );
     }
 
-    await updatePublicProfile();
+    // Not awaited: publishes are serialized, so waiting here would hold up
+    // startup, analytics included, behind a slow profile write. Its errors are
+    // logged inside the publish chain.
+    unawaited(updatePublicProfile());
 
     // Do not await. This function pulls level from analytics,
     // so it waits for analytics to finish initializing. Analytics waits for user controller to
@@ -502,6 +517,10 @@ class UserController {
       // Bounded, because every later publish queues behind this one: the Matrix
       // profile PUT has no timeout of its own, so a request that stalls rather
       // than fails would wedge the chain for the rest of the session.
+      // Abandoning a stalled write does not recall it, so in that one case it
+      // can still land after a later one; the alternative was a queue that
+      // stops forever. Nothing retries, so the published profile can sit
+      // behind what the app holds until the next change or the next startup.
       await client
           .setUserProfile(
             client.userID!,
@@ -654,6 +673,12 @@ class UserController {
     await _savePublicProfileUpdate();
   }
 
+  /// Copies country and bio from [UserSettings] to the public profile.
+  ///
+  /// They are kept in the private settings and copied here, rather than
+  /// living only in the public profile, so the settings page saves everything
+  /// through one path (profile.instructions.md, "How the public profile stays
+  /// in sync").
   Future<void> updatePublicProfile() async {
     final current = publicProfile;
     if (current == null || !_publicProfileIsOwn) return;
@@ -726,14 +751,6 @@ class UserController {
 
   bool userToolSetting(ToolSetting setting) {
     switch (setting) {
-      case ToolSetting.interactiveTranslator:
-        return profile.toolSettings.interactiveTranslator;
-      case ToolSetting.interactiveGrammar:
-        return profile.toolSettings.interactiveGrammar;
-      case ToolSetting.immersionMode:
-        return profile.toolSettings.immersionMode;
-      case ToolSetting.definitions:
-        return profile.toolSettings.definitions;
       case ToolSetting.autoIGC:
         return profile.toolSettings.autoIGC;
       case ToolSetting.enableAutocorrect:
@@ -835,8 +852,6 @@ class UserController {
   LanguageLevelTypeEnum? get userCefrLevel => profile.userSettings.cefrLevel;
 
   DateTime? get createdAt => profile.userSettings.createdAt;
-
-  String? get voice => profile.userSettings.voice;
 
   bool get showDeveloperOptions => profile.toolSettings.showDeveloperOptions;
 

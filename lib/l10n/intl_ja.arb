@@ -2267,8 +2267,6 @@
     "holdForInfo": "クリックして長押しで単語情報。",
     "gaTooltip": "文法支援とともにL2を使用",
     "taTooltip": "翻訳支援とともにL2を使用",
-    "interactiveTranslatorSliderHeader": "インタラクティブ翻訳者",
-    "interactiveGrammarSliderHeader": "インタラクティブ文法チェッカー",
     "waTooltip": "支援なしでL2を使用",
     "interactiveTranslator": "翻訳支援",
     "noIdenticalLanguages": "異なる基礎言語とターゲット言語を選択してください",
@@ -2324,17 +2322,11 @@
     "paymentHistory": "支払い履歴",
     "emptyChatDownloadWarning": "空のチャットはダウンロードできません",
     "update": "更新",
-    "toggleImmersionMode": "没入モード",
-    "toggleImmersionModeDesc": "有効にすると、すべてのメッセージがターゲット言語で表示されます。この設定は言語交換に最も役立ちます。",
-    "itToggleDescription": "この言語学習ツールは、あなたの基本言語の単語を識別し、それらをターゲット言語に翻訳するのに役立ちます。稀に、AIが翻訳ミスをすることがあります。",
-    "igcToggleDescription": "この言語学習ツールは、あなたのメッセージ内の一般的なスペル、文法、句読点の誤りを識別し、修正案を提案します。稀に、AIが修正ミスをすることがあります。",
     "originalMessage": "オリジナルメッセージ",
     "sentMessage": "送信済みメッセージ",
     "useType": "使用タイプ",
     "notAvailable": "利用できません",
     "taAndGaTooltip": "翻訳支援と文法支援を伴うL2使用",
-    "definitionsToolName": "単語の定義",
-    "definitionsToolDescription": "有効にすると、青色の下線が引かれた単語をクリックして定義を確認できます。メッセージをクリックして定義にアクセスしてください。",
     "welcomeBack": "お帰りなさい！2023-2024年のパイロットに参加していた場合は、特別なパイロット購読のためにご連絡ください。あなたが教師で、あなたのクラスのためにライセンスを購入した（またはあなたの学校が購入した）場合は、教師購読のためにご連絡ください。",
     "promotionalSubscriptionDesc": "現在、あなたは生涯のプロモーション購読をしています。購読の変更についてはsupport@pangea.chatまでご連絡ください。",
     "originalSubscriptionPlatform": "{purchasePlatform}で購入した購読",
@@ -4140,14 +4132,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4372,22 +4356,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4405,14 +4373,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

@@ -62,6 +62,10 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
             const Duration(seconds: 15),
             'updateProfile: bot chat settings',
           );
+      // Updates the bot here as well, rather than waiting for the settings
+      // stream to do it, so the room the learner is looking at does not lag
+      // behind the change (profile.instructions.md, "Where settings are
+      // changed", 5).
       await Matrix.of(
         context,
       ).client.updateBotOptions(_userProfile.userSettings);
@@ -135,8 +139,6 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
         return model.copyWith(
           userSettings: model.userSettings.copyWith(
             targetLanguage: lang.langCode,
-            voice: null,
-            setVoiceNull: true,
           ),
         );
       },

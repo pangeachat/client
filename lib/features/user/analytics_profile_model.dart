@@ -10,7 +10,7 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 /// It is a mirror, never a source. The source of truth is the per-language
 /// local analytics partition and Matrix analytics room, neither of which other
 /// users can read — this exists so classmates and instructors can see a level
-/// at all (profile.instructions.md, "Ownership and mirroring").
+/// at all (profile.instructions.md, "How the public profile stays in sync").
 ///
 /// **Keyed per language, by short code** (`fr`, not `fr-CA`). Analytics rooms
 /// and local partitions are per language, so every regional variant of a

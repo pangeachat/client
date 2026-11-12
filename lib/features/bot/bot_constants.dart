@@ -16,6 +16,5 @@ class BotConstants {
   static const String textAdventureGameMasterInstructions =
       'text_adventure_game_master_instructions';
 
-  static const String targetVoice = 'target_voice';
   static const String targetGender = 'users_genders';
 }

@@ -14,7 +14,6 @@ void main() {
     final baseSettings = UserSettings(
       targetLanguage: 'es',
       cefrLevel: LanguageLevelTypeEnum.b1,
-      voice: 'voice_1',
       gender: GenderEnum.woman,
     );
 
@@ -24,7 +23,6 @@ void main() {
       final currentOptions = BotOptionsModel(
         targetLanguage: 'es',
         languageLevel: LanguageLevelTypeEnum.b1,
-        targetVoice: 'voice_1',
         userGenders: const {userId: GenderEnum.woman},
       );
 
@@ -41,7 +39,6 @@ void main() {
       final currentOptions = BotOptionsModel(
         targetLanguage: 'fr',
         languageLevel: LanguageLevelTypeEnum.b1,
-        targetVoice: 'voice_1',
         userGenders: const {userId: GenderEnum.woman},
       );
 
@@ -55,14 +52,12 @@ void main() {
       expect(result!.targetLanguage, 'es');
       // Other fields carried over
       expect(result.languageLevel, LanguageLevelTypeEnum.b1);
-      expect(result.targetVoice, 'voice_1');
     });
 
     test('returns updated model when languageLevel differs', () {
       final currentOptions = BotOptionsModel(
         targetLanguage: 'es',
         languageLevel: LanguageLevelTypeEnum.a1,
-        targetVoice: 'voice_1',
         userGenders: const {userId: GenderEnum.woman},
       );
 
@@ -76,29 +71,10 @@ void main() {
       expect(result!.languageLevel, LanguageLevelTypeEnum.b1);
     });
 
-    test('returns updated model when voice differs', () {
-      final currentOptions = BotOptionsModel(
-        targetLanguage: 'es',
-        languageLevel: LanguageLevelTypeEnum.b1,
-        targetVoice: 'voice_2',
-        userGenders: const {userId: GenderEnum.woman},
-      );
-
-      final result = buildUpdatedBotOptions(
-        currentOptions: currentOptions,
-        userSettings: baseSettings,
-        userId: userId,
-      );
-
-      expect(result, isNotNull);
-      expect(result!.targetVoice, 'voice_1');
-    });
-
     test('returns updated model when gender differs', () {
       final currentOptions = BotOptionsModel(
         targetLanguage: 'es',
         languageLevel: LanguageLevelTypeEnum.b1,
-        targetVoice: 'voice_1',
         userGenders: const {userId: GenderEnum.man},
       );
 
@@ -122,7 +98,6 @@ void main() {
       expect(result, isNotNull);
       expect(result!.targetLanguage, 'es');
       expect(result.languageLevel, LanguageLevelTypeEnum.b1);
-      expect(result.targetVoice, 'voice_1');
       expect(result.userGenders[userId], GenderEnum.woman);
     });
 
@@ -130,7 +105,6 @@ void main() {
       final currentOptions = BotOptionsModel(
         targetLanguage: 'fr', // different → triggers update
         languageLevel: LanguageLevelTypeEnum.b1,
-        targetVoice: 'voice_1',
         userGenders: const {
           '@other:server': GenderEnum.man,
           userId: GenderEnum.woman,

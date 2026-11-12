@@ -3432,8 +3432,6 @@
     "gaTooltip": "Использование L2 с грамматической помощью",
     "taTooltip": "Использование L2 с переводческой помощью",
     "unTooltip": "Другое",
-    "interactiveTranslatorSliderHeader": "Интерактивный переводчик",
-    "interactiveGrammarSliderHeader": "Интерактивная проверка грамматики",
     "interactiveTranslatorNotAllowed": "Отключено",
     "interactiveTranslatorAllowed": "Выбор студента",
     "notYetSet": "Ещё не установлено",
@@ -3496,18 +3494,12 @@
     "paymentHistory": "История платежей",
     "emptyChatDownloadWarning": "Невозможно скачать пустой чат",
     "update": "Обновить",
-    "toggleImmersionMode": "Режим погружения",
-    "toggleImmersionModeDesc": "При включении все сообщения отображаются на вашем целевом языке. Эта настройка особенно полезна при языковом обмене.",
-    "itToggleDescription": "Этот инструмент изучения языка определит слова на вашем базовом языке и поможет вам перевести их на целевой язык. Хотя это редкость, ИИ может допускать ошибки перевода.",
-    "igcToggleDescription": "Этот инструмент изучения языка определит распространённые орфографические, грамматические и пунктуационные ошибки в вашем сообщении и предложит исправления. Хотя это редкость, ИИ может допускать ошибки исправления.",
     "originalMessage": "Исходное сообщение",
     "sentMessage": "Отправленное сообщение",
     "useType": "Тип использования",
     "notAvailable": "Недоступно",
     "taAndGaTooltip": "Использование уровня 2 с помощью переводческой и грамматической помощи",
-    "definitionsToolName": "Определения слов",
     "messageTranslationsToolName": "Переводы сообщений",
-    "definitionsToolDescription": "При включении слова, подчеркнутые синим, можно щелкнуть для получения определений. Щелкните сообщение для доступа к определениям.",
     "translationsToolDescrption": "При включении щелкните сообщение и значок перевода, чтобы увидеть сообщение на вашем основном языке.",
     "welcomeBack": "С возвращением! Если вы участвовали в пилоте 2023-2024 годов, свяжитесь с нами для получения вашей специальной подписки пилота. Если вы учитель, у которого (или у вашей организации) есть лицензии для вашего класса, свяжитесь с нами для получения учительской подписки.",
     "promotionalSubscriptionDesc": "У вас в настоящее время пожизненная промо-подписка. Обратитесь в поддержку@pangea.chat для помощи в изменении вашей подписки.",
@@ -4205,14 +4197,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@interactiveTranslatorNotAllowed": {
         "type": "String",
         "placeholders": {}
@@ -4465,22 +4449,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4501,15 +4469,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@messageTranslationsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

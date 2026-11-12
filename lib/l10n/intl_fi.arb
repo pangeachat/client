@@ -2845,8 +2845,6 @@
     "holdForInfo": "Pidä painettuna sanan tiedoista.",
     "gaTooltip": "L2:n käyttö kielioppiavustuksella",
     "taTooltip": "L2:n käyttö käännösavustuksella",
-    "interactiveTranslatorSliderHeader": "Vuorovaikutteinen kääntäjä",
-    "interactiveGrammarSliderHeader": "Vuorovaikutteinen kielioppitarkistin",
     "waTooltip": "L2 ilman apua",
     "interactiveTranslator": "Käännöstuki",
     "noIdenticalLanguages": "Valitse eri perus- ja kohdekielet",
@@ -2902,17 +2900,11 @@
     "paymentHistory": "Maksuhistoria",
     "emptyChatDownloadWarning": "Tyhjää keskustelua ei voi ladata",
     "update": "Päivitä",
-    "toggleImmersionMode": "Immersiotila",
-    "toggleImmersionModeDesc": "Kun tämä on käytössä, kaikki viestit näytetään kohdekielelläsi. Tämä asetus on erityisen hyödyllinen kielivaihdoissa.",
-    "itToggleDescription": "Tämä kielten oppimistyökalu tunnistaa sanoja peruskielestäsi ja auttaa sinua kääntämään ne kohdekielelle. Vaikka harvinaista, tekoäly voi tehdä käännösvirheitä.",
-    "igcToggleDescription": "Tämä kielten oppimistyökalu tunnistaa yleisiä oikeinkirjoitus-, kielioppi- ja välimerkkivirheitä viestissäsi ja ehdottaa korjauksia. Vaikka harvinaista, tekoäly voi tehdä korjausvirheitä.",
     "originalMessage": "Alkuperäinen viesti",
     "sentMessage": "Lähetetty viesti",
     "useType": "Käytä tyyppiä",
     "notAvailable": "Ei saatavilla",
     "taAndGaTooltip": "L2 käyttö käännösavustuksen ja kielioppiavustuksen kanssa",
-    "definitionsToolName": "Sanojen määritelmät",
-    "definitionsToolDescription": "Kun tämä on käytössä, sininen alleviivatut sanat voidaan klikata määritelmiä varten. Klikkaa viestejä saadaksesi määritelmät.",
     "welcomeBack": "Tervetuloa takaisin! Jos olit osa pilottia vuosina 2023-2024, ota yhteyttä saadaksesi erityisen pilottitilauksesi. Jos olet opettaja, joka on ostanut (tai oppilaitoksesi on ostanut) lisenssejä luokkaasi varten, ota yhteyttä saadaksesi opettajatilauksesi.",
     "promotionalSubscriptionDesc": "Sinulla on tällä hetkellä elinikäinen kampanjatilaus. Lähetä viesti osoitteeseen support@pangea.chat saadaksesi apua tilauksesi muuttamiseen.",
     "originalSubscriptionPlatform": "Tilauksen ostit {purchasePlatform} kautta",
@@ -3542,14 +3534,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3774,22 +3758,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3807,14 +3775,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

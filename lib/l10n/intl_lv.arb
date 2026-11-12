@@ -2858,8 +2858,6 @@
     "holdForInfo": "Nospiediet un turiet, lai uzzinātu vārda informāciju.",
     "gaTooltip": "L2 lietošana ar gramatikas palīdzību",
     "taTooltip": "L2 lietošana ar tulkošanas palīdzību",
-    "interactiveTranslatorSliderHeader": "Interaktīvais tulkotājs",
-    "interactiveGrammarSliderHeader": "Interaktīvais gramatikas pārbaudītājs",
     "waTooltip": "L2 lietošana bez palīdzības",
     "interactiveTranslator": "Tulkotāja palīdzība",
     "noIdenticalLanguages": "Lūdzu, izvēlieties atšķirīgas pamata un mērķa valodas",
@@ -2914,17 +2912,11 @@
     "paymentHistory": "Apmaksu vēsture",
     "emptyChatDownloadWarning": "Nevar lejupielādēt tukšu sarunu",
     "update": "Atjaunināt",
-    "toggleImmersionMode": "Iegremdēšanās režīms",
-    "toggleImmersionModeDesc": "Kad tas ir ieslēgts, visas ziņas tiek rādītas jūsu mērķvalodā. Šis iestatījums ir visnoderīgākais valodu apmaiņās.",
-    "itToggleDescription": "Šis valodu mācību rīks identificēs vārdus jūsu pamata valodā un palīdzēs tos tulkot jūsu mērķvalodā. Lai arī tas ir reti, AI var radīt tulkošanas kļūdas.",
-    "igcToggleDescription": "Šī valodu mācīšanās rīks identificēs bieži sastopamās pareizrakstības, gramatikas un pieturzīmju kļūdas jūsu ziņojumā un ieteiks labojumus. Lai gan tas ir reti, AI var pieļaut labojuma kļūdas.",
     "originalMessage": "Oriģinālais ziņojums",
     "sentMessage": "Nosūtītais ziņojums",
     "useType": "Izmantot veidu",
     "notAvailable": "Nav pieejams",
     "taAndGaTooltip": "L2 lietošana ar tulkošanas un gramatikas palīdzību",
-    "definitionsToolName": "Vārdu definīcijas",
-    "definitionsToolDescription": "Kad ir ieslēgts, zili pasvītroti vārdi ir klikšķināmi, lai skatītu definīcijas. Klikšķiniet uz ziņojumiem, lai piekļūtu definīcijām.",
     "welcomeBack": "Laipni atpakaļ! Ja jūs bijāt 2023-2024. gada pilotprojektā, lūdzu, sazinieties ar mums par jūsu īpašo pilotabonementu. Ja jūs esat skolotājs, kurš ir (vai jūsu iestāde ir) iegādājies licenci jūsu klasei, sazinieties ar mums par jūsu skolotāja abonementu.",
     "promotionalSubscriptionDesc": "Jums pašlaik ir uz mūžu spēkā esoša reklāmas abonēšana. Sazinieties ar support@pangea.chat, lai saņemtu palīdzību ar abonēšanas maiņu.",
     "originalSubscriptionPlatform": "Abonēšana iegādāta caur {purchasePlatform}",
@@ -3558,14 +3550,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3786,22 +3770,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3819,14 +3787,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

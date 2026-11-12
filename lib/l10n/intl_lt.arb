@@ -2285,8 +2285,6 @@
     "holdForInfo": "Paspauskite ir palaikykite žodžio informacijai.",
     "gaTooltip": "L2 naudojimas su gramatikos pagalba",
     "taTooltip": "L2 naudojimas su vertimo pagalba",
-    "interactiveTranslatorSliderHeader": "Interaktyvus vertėjas",
-    "interactiveGrammarSliderHeader": "Interaktyvus gramatikos tikrintuvas",
     "waTooltip": "L2 naudojimas be pagalbos",
     "interactiveTranslator": "Vertimo pagalba",
     "noIdenticalLanguages": "Prašome pasirinkti skirtingas pagrindines ir tikslines kalbas",
@@ -2342,17 +2340,11 @@
     "paymentHistory": "Apmokėjimo istorija",
     "emptyChatDownloadWarning": "Negalima atsisiųsti tuščios pokalbio",
     "update": "Atnaujinti",
-    "toggleImmersionMode": "Įsitraukimo režimas",
-    "toggleImmersionModeDesc": "Įjungus, visi pranešimai rodomi jūsų tikslo kalba. Šis nustatymas yra ypač naudingas kalbų keitimuose.",
-    "itToggleDescription": "Šis kalbų mokymosi įrankis atpažins žodžius jūsų pagrindinėje kalboje ir padės juos išversti į jūsų tikslinę kalbą. Nors retai, dirbtinis intelektas gali padaryti vertimo klaidų.",
-    "igcToggleDescription": "Šis kalbų mokymosi įrankis atpažins dažnas rašybos, gramatikos ir skyrybos klaidas jūsų žinutėje ir pasiūlys pataisas. Nors retai, dirbtinis intelektas gali padaryti pataisų klaidų.",
     "originalMessage": "Originali žinutė",
     "sentMessage": "Išsiųsta žinutė",
     "useType": "Naudojimo tipas",
     "notAvailable": "Nepasiekiama",
     "taAndGaTooltip": "L2 naudojimas su vertimo ir gramatikos pagalba",
-    "definitionsToolName": "Žodžių apibrėžimai",
-    "definitionsToolDescription": "Įjungus, žodžiai pažymėti mėlyna spalva gali būti spustelėti norint gauti apibrėžimus. Spustelėkite žinutes, kad pasiektumėte apibrėžimus.",
     "welcomeBack": "Sveiki sugrįžę! Jei buvote 2023-2024 m. bandomojo projekto dalyvis, susisiekite su mumis dėl specialios bandomojo projekto prenumeratos. Jei esate mokytojas, kuris (arba jūsų įstaiga) įsigijo licencijas savo klasei, susisiekite su mumis dėl mokytojo prenumeratos.",
     "promotionalSubscriptionDesc": "Šiuo metu turite visam laikui galiojančią reklaminę prenumeratą. Susisiekite su support@pangea.chat dėl pagalbos keičiant prenumeratą.",
     "originalSubscriptionPlatform": "Prenumerata įsigyta per {purchasePlatform}",
@@ -4152,14 +4144,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4384,22 +4368,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4417,14 +4385,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

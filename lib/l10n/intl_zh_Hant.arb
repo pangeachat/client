@@ -2757,8 +2757,6 @@
     "holdForInfo": "點擊並長按以獲取單詞資訊。",
     "gaTooltip": "与语法辅助一起使用L2",
     "taTooltip": "与翻译辅助一起使用L2",
-    "interactiveTranslatorSliderHeader": "互动翻译器",
-    "interactiveGrammarSliderHeader": "互动语法检查器",
     "waTooltip": "无辅助使用L2",
     "interactiveTranslator": "翻譯協助",
     "noIdenticalLanguages": "請選擇不同的基礎語言和目標語言",
@@ -2814,17 +2812,11 @@
     "paymentHistory": "支付记录",
     "emptyChatDownloadWarning": "无法下载空聊天记录",
     "update": "更新",
-    "toggleImmersionMode": "沉浸模式",
-    "toggleImmersionModeDesc": "啟用後，所有訊息將以您的目標語言顯示。此設定在語言交流中特別有用。",
-    "itToggleDescription": "此語言學習工具將識別您基本語言中的單詞，並協助您將其翻譯成目標語言。雖然罕見，但AI可能會產生翻譯錯誤。",
-    "igcToggleDescription": "此語言學習工具將識別訊息中的常見拼寫、文法和標點錯誤，並建議修正。雖然罕見，但AI可能會產生修正錯誤。",
     "originalMessage": "原始訊息",
     "sentMessage": "已傳送訊息",
     "useType": "使用類型",
     "notAvailable": "不可用",
     "taAndGaTooltip": "使用L2，提供翻譯協助與文法協助",
-    "definitionsToolName": "單詞定義",
-    "definitionsToolDescription": "啟用後，藍色底線的單詞可以點擊查看定義。點擊訊息以存取定義。",
     "welcomeBack": "歡迎回來！如果您是2023-2024試點計畫的一部分，請聯繫我們以獲取您的特別試點訂閱。如果您是教師，且已為您的班級購買許可證（或您的機構已購買），請聯繫我們以獲取教師訂閱。",
     "promotionalSubscriptionDesc": "您目前擁有終身促銷訂閱。請聯繫 support@pangea.chat 以獲取更改訂閱的幫助。",
     "originalSubscriptionPlatform": "訂閱平台為 {purchasePlatform}",
@@ -3491,14 +3483,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3723,22 +3707,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3756,14 +3724,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

@@ -2123,8 +2123,6 @@
     "holdForInfo": "Klaku kaj teni por vorto-informoj.",
     "gaTooltip": "L2 uzi kun gramatika helpo",
     "taTooltip": "L2 uzi kun tradukada helpo",
-    "interactiveTranslatorSliderHeader": "Interaga Tradukilo",
-    "interactiveGrammarSliderHeader": "Interaga Gramatika Kontrolilo",
     "waTooltip": "Uzo sen helpo",
     "interactiveTranslator": "Tradukada subteno",
     "noIdenticalLanguages": "Bonvolu elekti malsamajn bazajn kaj celajn lingvojn",
@@ -2180,17 +2178,11 @@
     "paymentHistory": "Pago-Historio",
     "emptyChatDownloadWarning": "Ne povas elŝuti malplenan babiladon",
     "update": "Ĝisdatigi",
-    "toggleImmersionMode": "Malkovri Modo",
-    "toggleImmersionModeDesc": "Kiam ebligita, ĉiuj mesaĝoj estas montrataj en via cellingvo. Ĉi tiu agordo estas plej utila en lingva interŝanĝo.",
-    "itToggleDescription": "Ĉi tiu lingvolernilo identigos vortojn en via baza lingvo kaj helpos vin traduki ilin al via cellingvo. Kvankam malofta, la AI povas fari traduk-erarojn.",
-    "igcToggleDescription": "Ĉi tiu lingvolernilo identigos oftajn ortografio-, gramatiko- kaj interpunkcio-erarojn en via mesaĝo kaj sugestos korektojn. Kvankam malofta, la AI povas fari korekt-erarojn.",
     "originalMessage": "Origina Mesaĝo",
     "sentMessage": "Sendita Mesaĝo",
     "useType": "Uzi Tipo",
     "notAvailable": "Ne havebla",
     "taAndGaTooltip": "L2 uzo kun tradukado kaj gramatika helpo",
-    "definitionsToolName": "Vortaj Difinoj",
-    "definitionsToolDescription": "Kiam ebligita, vortoj substrekitaj en bluo povas esti klaketaj por difinoj. Klaku mesaĝojn por akiri difinojn.",
     "welcomeBack": "Bonvenon reen! Se vi partoprenis la pilotprogramon 2023-2024, bonvolu kontakti nin por via speciala piloto-abono. Se vi estas instruisto kiu aĉetis (aŭ via institucio aĉetis) permesilojn por via klaso, kontakti nin por via instruista abono.",
     "promotionalSubscriptionDesc": "Vi nuntempe havas vivdaŭran promocian abonadon. Sendu mesaĝon al support@pangea.chat por helpo pri ŝanĝo de via abonado.",
     "originalSubscriptionPlatform": "Abono aĉetita tra {purchasePlatform}",
@@ -4316,14 +4308,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4548,22 +4532,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4581,14 +4549,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

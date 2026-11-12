@@ -111,7 +111,7 @@ void main() {
       Object? thrown;
       await http.runWithClient(() async {
         try {
-          await messageWithBody(body).requestTextToSpeech('es', null);
+          await messageWithBody(body).requestTextToSpeech('es');
         } catch (e) {
           thrown = e;
         }

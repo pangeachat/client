@@ -2686,8 +2686,6 @@
     "holdForInfo": "Kelime bilgisi için tıklayıp basılı tut.",
     "gaTooltip": "Dilbilgisi yardımıyla L2 kullanımı",
     "taTooltip": "Çeviri yardımıyla L2 kullanımı",
-    "interactiveTranslatorSliderHeader": "Etkileşimli Çevirmen",
-    "interactiveGrammarSliderHeader": "Etkileşimli Dilbilgisi Denetleyici",
     "waTooltip": "Yardım olmadan L2 kullanımı",
     "interactiveTranslator": "Çeviri yardımı",
     "noIdenticalLanguages": "Lütfen farklı temel ve hedef diller seçin",
@@ -2743,17 +2741,11 @@
     "paymentHistory": "Ödeme Geçmişi",
     "emptyChatDownloadWarning": "Boş sohbet indirilemez",
     "update": "Güncelle",
-    "toggleImmersionMode": "Daldırma Modu",
-    "toggleImmersionModeDesc": "Etkinleştirildiğinde, tüm mesajlar hedef dilinizde gösterilir. Bu ayar dil değişimleri için en kullanışlıdır.",
-    "itToggleDescription": "Bu dil öğrenme aracı, temel dilinizdeki kelimeleri tanımlar ve onları hedef dilinize çevirmenize yardımcı olur. Nadiren de olsa, yapay zeka çeviri hataları yapabilir.",
-    "igcToggleDescription": "Bu dil öğrenme aracı, mesajınızdaki yaygın yazım, dilbilgisi ve noktalama hatalarını tanıyacak ve düzeltmeler önerecektir. Nadiren de olsa, yapay zeka düzeltme hataları yapabilir.",
     "originalMessage": "Orijinal Mesaj",
     "sentMessage": "Gönderilen Mesaj",
     "useType": "Kullanım Türü",
     "notAvailable": "Mevcut Değil",
     "taAndGaTooltip": "Çeviri yardımı ve dilbilgisi yardımı ile L2 kullanımı",
-    "definitionsToolName": "Kelime Tanımları",
-    "definitionsToolDescription": "Etkinleştirildiğinde, mavi ile altı çizili kelimelere tıklayarak tanımlarına ulaşabilirsiniz. Tanımlara erişmek için mesajlara tıklayın.",
     "welcomeBack": "Tekrar hoş geldiniz! 2023-2024 pilotunun bir parçasıysanız, lütfen özel pilot aboneliğiniz için bizimle iletişime geçin. Bir öğretmen veya kurumunuzun sınıfınız için lisans satın aldıysa, öğretmen aboneliğiniz için bizimle iletişime geçin.",
     "promotionalSubscriptionDesc": "Şu anda ömür boyu promosyon aboneliğiniz var. Aboneliğinizi değiştirmek için support@pangea.chat adresine mesaj gönderin.",
     "originalSubscriptionPlatform": "Abonelik {purchasePlatform} üzerinden satın alındı",
@@ -3672,14 +3664,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3904,22 +3888,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3937,14 +3905,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

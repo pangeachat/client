@@ -2481,8 +2481,6 @@
     "holdForInfo": "Klikněte a podržte pro informace o slově.",
     "gaTooltip": "L2 použití s gramatickou asistencí",
     "taTooltip": "L2 použití s překladatelskou asistencí",
-    "interactiveTranslatorSliderHeader": "Interaktivní překladač",
-    "interactiveGrammarSliderHeader": "Interaktivní kontrola gramatiky",
     "waTooltip": "Použití L2 bez pomoci",
     "interactiveTranslator": "Pomoc s překladem",
     "noIdenticalLanguages": "Prosím, vyberte různé základní a cílové jazyky",
@@ -2538,17 +2536,11 @@
     "paymentHistory": "Historie plateb",
     "emptyChatDownloadWarning": "Nelze stáhnout prázdný chat",
     "update": "Aktualizovat",
-    "toggleImmersionMode": "Režim ponoření",
-    "toggleImmersionModeDesc": "Když je aktivní, jsou všechny zprávy zobrazovány ve vašem cílovém jazyce. Toto nastavení je nejvíce užitečné při jazykových výměnách.",
-    "itToggleDescription": "Tento nástroj pro učení jazyků identifikuje slova ve vašem základním jazyce a pomáhá vám je přeložit do cílového jazyka. Ačkoliv vzácně, AI může udělat chyby v překladu.",
-    "igcToggleDescription": "Tento nástroj pro učení jazyků identifikuje běžné pravopisné, gramatické a interpunkční chyby ve vaší zprávě a navrhuje opravy. Ačkoliv vzácně, AI může udělat chyby v korekcích.",
     "originalMessage": "Původní zpráva",
     "sentMessage": "Odeslaná zpráva",
     "useType": "Typ použití",
     "notAvailable": "Není k dispozici",
     "taAndGaTooltip": "L2 použití s pomocí překladu a gramatické asistence",
-    "definitionsToolName": "Definice slov",
-    "definitionsToolDescription": "Když je povoleno, slova podtržená modře lze kliknutím zobrazit jejich definice. Klikněte na zprávy pro přístup k definicím.",
     "welcomeBack": "Vítejte zpět! Pokud jste byli součástí pilotního projektu 2023-2024, kontaktujte nás ohledně vaší speciální pilotní předplatného. Pokud jste učitel, který (nebo vaše instituce) zakoupil licence pro vaši třídu, kontaktujte nás ohledně vašeho učitelského předplatného.",
     "promotionalSubscriptionDesc": "Aktuálně máte doživotní promo předplatné. Kontaktujte support@pangea.chat pro pomoc s změnou předplatného.",
     "originalSubscriptionPlatform": "Předplatné zakoupeno přes {purchasePlatform}",
@@ -3879,14 +3871,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4111,22 +4095,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4144,14 +4112,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

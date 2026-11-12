@@ -2510,8 +2510,6 @@
     "holdForInfo": "Klicka och håll för ordinformation.",
     "gaTooltip": "L2 användning med grammatikhjälp",
     "taTooltip": "L2 användning med översättningshjälp",
-    "interactiveTranslatorSliderHeader": "Interaktiv översättare",
-    "interactiveGrammarSliderHeader": "Interaktiv grammatikkontroll",
     "waTooltip": "L2 användning utan hjälp",
     "interactiveTranslator": "Översättningshjälp",
     "noIdenticalLanguages": "Vänligen välj olika grund- och målspråk",
@@ -2567,17 +2565,11 @@
     "paymentHistory": "Betalningshistorik",
     "emptyChatDownloadWarning": "Kan inte ladda ner tom chat",
     "update": "Uppdatera",
-    "toggleImmersionMode": "Fördjupningsläge",
-    "toggleImmersionModeDesc": "När det är aktiverat visas alla meddelanden på ditt målspråk. Denna inställning är mest användbar vid språkutbyten.",
-    "itToggleDescription": "Detta språkinlärningsverktyg kommer att identifiera ord i ditt bask språk och hjälpa dig att översätta dem till ditt målspråk. Även om det är sällsynt kan AI göra översättningsfel.",
-    "igcToggleDescription": "Detta språkinlärningsverktyg kommer att identifiera vanliga stavnings-, grammatik- och skiljeteckenfel i ditt meddelande och föreslå korrigeringar. Även om det är sällsynt kan AI göra korrigeringsfel.",
     "originalMessage": "Originalmeddelande",
     "sentMessage": "Skickat meddelande",
     "useType": "Användningstyp",
     "notAvailable": "Finns inte tillgängligt",
     "taAndGaTooltip": "L2-användning med översättningshjälp och grammatikhjälp",
-    "definitionsToolName": "Ordboksdefinitioner",
-    "definitionsToolDescription": "När den är aktiverad kan ord understrukna i blått klickas för definitioner. Klicka på meddelanden för att få tillgång till definitioner.",
     "welcomeBack": "Välkommen tillbaka! Om du var en del av pilotprogrammet 2023-2024, kontakta oss för din specialpilotprenumeration. Om du är lärare som har (eller din institution har) köpt licenser för din klass, kontakta oss för din lärarprenumeration.",
     "promotionalSubscriptionDesc": "Du har för närvarande ett livstidskampanjabonnemang. Skicka ett meddelande till support@pangea.chat för hjälp med att ändra ditt abonnemang.",
     "originalSubscriptionPlatform": "Abonnemang köpt via {purchasePlatform}",
@@ -3889,14 +3881,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4121,22 +4105,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4154,14 +4122,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

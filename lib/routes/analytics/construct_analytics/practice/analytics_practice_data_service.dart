@@ -183,7 +183,6 @@ class AnalyticsPracticeDataService {
       langCode: exercise.langCode,
       userL1: userController.userL1?.langCode ?? LanguageKeys.unknownLanguage,
       userL2: userController.userL2?.langCode ?? LanguageKeys.unknownLanguage,
-      voice: userController.voice,
     );
     try {
       final result = await TextToSpeechRepo.instance.get(request);
@@ -254,10 +253,7 @@ class AnalyticsPracticeDataService {
     }
 
     // Prefetch the audio file
-    final audioFile = await pangeaEvent.requestTextToSpeech(
-      exercise.langCode,
-      MatrixState.pangeaController.userController.voice,
-    );
+    final audioFile = await pangeaEvent.requestTextToSpeech(exercise.langCode);
 
     if (audioFile.duration == null || audioFile.duration! <= 2000) {
       throw Exception("Audio file too short");

@@ -2583,8 +2583,6 @@
     "holdForInfo": "Kliknite i držite za informacije o riječi.",
     "gaTooltip": "L2 korištenje s gramatičkom pomoći",
     "taTooltip": "L2 korištenje s prijevodnom pomoći",
-    "interactiveTranslatorSliderHeader": "Interaktivni prevoditelj",
-    "interactiveGrammarSliderHeader": "Interaktivni provjerivač gramatike",
     "waTooltip": "L2 korištenje bez pomoći",
     "interactiveTranslator": "Pomoć pri prevođenju",
     "noIdenticalLanguages": "Molimo odaberite različite izvornu i ciljnu jezike",
@@ -2640,17 +2638,11 @@
     "paymentHistory": "Povijest plaćanja",
     "emptyChatDownloadWarning": "Ne možete preuzeti prazan chat",
     "update": "Ažuriraj",
-    "toggleImmersionMode": "Način uranjanja",
-    "toggleImmersionModeDesc": "Kad je uključen, sve poruke prikazuju se na vašem ciljanom jeziku. Ova postavka je najkorisnija u razmjenama jezika.",
-    "itToggleDescription": "Ovaj alat za učenje jezika identificirat će riječi u vašem osnovnom jeziku i pomoći vam da ih prevedete na ciljani jezik. Iako rijetko, AI može napraviti pogreške u prijevodu.",
-    "igcToggleDescription": "Ovaj alat za učenje jezika identificirat će uobičajene pogreške u pravopisu, gramatici i interpunkciji u vašoj poruci te predložiti ispravke. Iako rijetko, AI može napraviti pogreške u korekciji.",
     "originalMessage": "Original Message",
     "sentMessage": "Poslana poruka",
     "useType": "Vrsta korištenja",
     "notAvailable": "Nije dostupno",
     "taAndGaTooltip": "L2 korištenje s pomoćnikom za prijevod i pomoćnikom za gramatiku",
-    "definitionsToolName": "Definicije riječi",
-    "definitionsToolDescription": "Kad je omogućeno, riječi podvučene plavom bojom mogu se kliknuti za definicije. Kliknite na poruke za pristup definicijama.",
     "welcomeBack": "Dobro došli nazad! Ako ste sudjelovali u pilot projektu 2023-2024, kontaktirajte nas za vašu posebnu pilot pretplatu. Ako ste učitelj koji je (ili vaša institucija je) kupio licence za vašu razred, kontaktirajte nas za učiteljevu pretplatu.",
     "promotionalSubscriptionDesc": "Trenutno imate doživotnu promotivnu pretplatu. Pošaljite poruku na support@pangea.chat za pomoć pri promjeni pretplate.",
     "originalSubscriptionPlatform": "Pretplata kupljena putem {purchasePlatform}",
@@ -3807,14 +3799,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4039,22 +4023,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -4072,14 +4040,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },

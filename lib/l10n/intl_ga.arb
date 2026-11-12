@@ -2873,8 +2873,6 @@
     "holdForInfo": "Bain triail as agus coinnigh síos le haghaidh eolas faoin bhfocal.",
     "gaTooltip": "Úsáid L2 le cabhair gramadaí",
     "taTooltip": "Úsáid L2 le cabhair aistriúcháin",
-    "interactiveTranslatorSliderHeader": "Aistritheoir Idirghníomhach",
-    "interactiveGrammarSliderHeader": "Seiceáil Foghraíochta Idirghníomhach",
     "waTooltip": "Úsáid L2 gan chabhair",
     "interactiveTranslator": "Cabhair Aistriúcháin",
     "noIdenticalLanguages": "Roghnaigh le do thoil teangacha bunúsacha agus spriocdhírithe difriúla",
@@ -2929,17 +2927,11 @@
     "paymentHistory": "Stair Íocaíochta",
     "emptyChatDownloadWarning": "Ní féidir íoslódáil comhrá folamh",
     "update": "Nuashonraigh",
-    "toggleImmersionMode": "Mód Iomlánaithe",
-    "toggleImmersionModeDesc": "Nuair a bhíonn sé cumasaithe, léirítear gach teachtaireacht i do theanga sprioc. Tá an socrú seo an-úsáideach i malartuithe teangacha.",
-    "itToggleDescription": "Léireoidh an uirlis foghlama teanga seo focail i do theanga bhunúsach agus cabhróidh sé leat iad a aistriú go do theanga sprioc. Cé go bhfuil sé neamhchoitianta, d'fhéadfadh an AI botún a dhéanamh i d'aistriúchán.",
-    "igcToggleDescription": "Léireoidh an uirlis foghlama teanga seo botúin coitianta i litriú, gramadach agus poncaíocht i do theachtaireacht agus molfaidh sé ceartúcháin. Cé go bhfuil sé neamhchoitianta, d'fhéadfadh an AI botún a dhéanamh i gceartúcháin.",
     "originalMessage": "Teachtaireacht Bhunaidh",
     "sentMessage": "Seoladh Teachtaireacht",
     "useType": "Cineál Úsáide",
     "notAvailable": "Níl sé ar fáil",
     "taAndGaTooltip": "Úsáid L2 le cabhair aistriúcháin agus cabhair gramadála",
-    "definitionsToolName": "Sainmhínithe Focal",
-    "definitionsToolDescription": "Nuair a bhíonn sé cumasaithe, is féidir cliceáil ar fhocail faoi bhun línte gorma le haghaidh sainmhínithe. Cliceáil ar theachtaireachtaí chun rochtain a fháil ar shainmhínithe.",
     "welcomeBack": "Fáilte ar ais! Mura raibh tú rannpháirteach sa phainéal 2023-2024, déan teagmháil linn le haghaidh do shíntiús speisialta. Má tá tú múinteoir a cheannaigh ceadúnas do do rang, déan teagmháil linn le haghaidh do shíntiús múinteora.",
     "promotionalSubscriptionDesc": "Tá síntiús promóiseach saoil agat faoi láthair. Seol teachtaireacht chuig support@pangea.chat le haghaidh cabhrach maidir le do shíntiús a athrú.",
     "originalSubscriptionPlatform": "Síntiús ceannaíodh trí {purchasePlatform}",
@@ -3565,14 +3557,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@interactiveGrammarSliderHeader": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -3793,22 +3777,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@toggleImmersionMode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@toggleImmersionModeDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@itToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@igcToggleDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@originalMessage": {
         "type": "String",
         "placeholders": {}
@@ -3826,14 +3794,6 @@
         "placeholders": {}
     },
     "@taAndGaTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@definitionsToolDescription": {
         "type": "String",
         "placeholders": {}
     },
