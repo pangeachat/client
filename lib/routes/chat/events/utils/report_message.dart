@@ -7,6 +7,7 @@ import 'package:uuid/uuid.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/utils/pending_reports.dart';
@@ -335,7 +336,7 @@ Future<List<ReportRecipient<SpaceTeacher>>> _lookupCourseAdmins(
   if (!context.mounted) return const [];
   final result = await showFutureLoadingDialog<List<SpaceTeacher>>(
     context: context,
-    future: () => getReportTeachers(client, event.senderId),
+    future: () => getReportTeachers(client, event.room),
   );
   return (result.result ?? const <SpaceTeacher>[])
       .map((teacher) => ReportRecipient(teacher, teacher.courseName))
@@ -398,13 +399,9 @@ Future<CourseRoster> courseRosterFromServer(
   );
 }
 
-/// The non-bot admins of the courses a report about [subjectId] belongs to
-/// ([reportCourseIds]), excluding the reporter, each listed once with the
-/// first such course.
-Future<List<SpaceTeacher>> getReportTeachers(
-  Client client,
-  String subjectId,
-) async {
+/// The non-bot admins of the course that owns [chat] ([reportCourseIds]),
+/// excluding the reporter, each listed once with the first such course.
+Future<List<SpaceTeacher>> getReportTeachers(Client client, Room chat) async {
   final reporterId = client.userID;
   if (reporterId == null) return const [];
 
@@ -416,23 +413,28 @@ Future<List<SpaceTeacher>> getReportTeachers(
       )
       .toList();
 
+  final courseIds = reportCourseIds(
+    chatId: chat.id,
+    chatIsCourse: chat.getState(PangeaEventTypes.coursePlan) != null,
+    chatParentIds: chat.spaceParents
+        .map((parent) => parent.roomId)
+        .whereType<String>()
+        .toSet(),
+    courseChildIds: {for (final c in courses) c.id: c.spaceChildIds},
+  );
+
   // Read from the homeserver, not the local cache: an admin removed or
   // demoted moments ago must not be offered the pointer before /sync
   // catches up.
   final rosters = <String, CourseRoster>{};
-  for (final course in courses) {
-    rosters[course.id] = await courseRosterFromServer(client, course.id);
+  for (final courseId in courseIds) {
+    rosters[courseId] = await courseRosterFromServer(client, courseId);
   }
-
-  final courseIds = reportCourseIds(
-    subjectId: subjectId,
-    botId: BotName.byEnvironment,
-    courses: rosters.values.toList(),
-  );
 
   final teachers = <SpaceTeacher>[];
   for (final courseId in courseIds) {
-    final course = courses.firstWhere((room) => room.id == courseId);
+    final course = client.getRoomById(courseId);
+    if (course == null) continue;
     final admins = rosters[courseId]!.joinedPowerLevels.entries
         .where((m) => m.value >= 100 && m.key != BotName.byEnvironment)
         .map((m) => m.key);
