@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/features/activity_sessions/activity_media_enum.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
 import 'package:fluffychat/features/course_plans/courses/course_missions_event.dart';
@@ -19,6 +20,7 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import '../activity_session_fixtures.dart';
 import '../get_test_client.dart';
 import 'course_missions_fixtures.dart';
 
@@ -563,8 +565,8 @@ void main() {
     });
   });
 
-  /// The creator writes the new course's copy once the space exists.
-  group('writeNewCourseCopy (creation)', () {
+  /// The creator writes the new course's Can-Do list once the space exists.
+  group('writeNewCanDoList (creation)', () {
     const self = '@test:fakeServer.notExisting';
     const spaceId = '!1234:fakeServer.notExisting';
     late Client client;
@@ -635,7 +637,7 @@ void main() {
 
     test('writes revision 1 from the course-scoped list, the quest owner\'s '
         'private activity included', () async {
-      await newSpace().writeNewCourseCopy('q1');
+      await newSpace().writeNewCanDoList('q1');
       expect(scopes, [spaceId]);
       expect(jsonDecode(copyWrites().single as String), {
         'version': 1,
@@ -661,7 +663,7 @@ void main() {
         'users': {self: 100},
       }, sender: self);
       client.rooms.add(room);
-      await room.writeNewCourseCopy('q1');
+      await room.writeNewCanDoList('q1');
       expect(scopes, [spaceId]);
       expect(copyWrites(), hasLength(1));
     });
@@ -671,7 +673,7 @@ void main() {
       () async {
         QuestRepo.debugBuildOutline = (id, {courseRoomId}) async =>
             Result<QuestOutline>.error('boom');
-        await newSpace().writeNewCourseCopy('q1');
+        await newSpace().writeNewCanDoList('q1');
         expect(copyWrites(), isEmpty);
       },
     );
@@ -679,13 +681,13 @@ void main() {
     test(
       'a non-admin, or a course that already has a copy, writes nothing',
       () async {
-        await newSpace(ownLevel: 50).writeNewCourseCopy('q1');
+        await newSpace(ownLevel: 50).writeNewCanDoList('q1');
         expect(copyWrites(), isEmpty);
         final room = newSpace();
         putCopy(room, {
           'lo-1': ['a1'],
         }, sender: self);
-        await room.writeNewCourseCopy('q1');
+        await room.writeNewCanDoList('q1');
         expect(copyWrites(), isEmpty);
       },
     );
@@ -735,6 +737,97 @@ void main() {
         'b1',
         'c1',
       ]);
+    });
+
+    test('a discussion follows the same rules as any activity (#9647)', () {
+      final discussion = QuestActivityCard.fromJson({
+        'res': {
+          'plan': {
+            'activity_id': 'd1',
+            'mode': 'Discussion',
+            'roles': [
+              {'id': 'row-1', 'role_id': 'participant'},
+            ],
+          },
+        },
+        'learningObjectiveRefs': ['lo-a'],
+      });
+      expect(discussion.activityMode, ActivityMode.discussion);
+      final withDiscussion = [...cards, discussion];
+
+      // A copy that doesn't list it (a teacher hid it) leaves it out...
+      final hidden = CourseMissionsEvent.tryParse(
+        copyContent({
+          'lo-a': ['a1'],
+        }),
+      );
+      expect(
+        ids(
+          restrictCardsForCourse(
+            withDiscussion,
+            CourseListRules(missions: hidden),
+          ),
+        ),
+        ['a1'],
+      );
+      // ...one that lists it keeps it...
+      final listed = CourseMissionsEvent.tryParse(
+        copyContent({
+          'lo-a': ['a1', 'd1'],
+        }),
+      );
+      expect(
+        ids(
+          restrictCardsForCourse(
+            withDiscussion,
+            CourseListRules(missions: listed),
+          ),
+        ),
+        ['a1', 'd1'],
+      );
+      // ...and with no copy and no pins every Mission's listing shows it.
+      expect(
+        ids(restrictCardsForCourse(withDiscussion, CourseListRules.none)),
+        contains('d1'),
+      );
+    });
+
+    test('a hidden discussion stays hidden on the course page (#9647)', () {
+      final outline = QuestOutline(
+        quest: const QuestPlan(
+          id: 'q1',
+          name: '',
+          description: '',
+          targetLanguage: 'es',
+          sequence: [],
+        ),
+        groups: [
+          QuestObjectiveGroup(
+            objective: const LearningObjective(id: 'lo-a', objective: ''),
+            activities: [
+              QuestActivity(activityId: 'a1', plan: _plan('a1')),
+              QuestActivity(
+                activityId: 'd1',
+                plan: discussionActivityPlan(activityId: 'd1'),
+              ),
+            ],
+          ),
+        ],
+      );
+      final hidden = CourseMissionsEvent.tryParse(
+        copyContent({
+          'lo-a': ['a1'],
+        }),
+      );
+      expect(
+        outline
+            .forRules(CourseListRules(missions: hidden))
+            .groups
+            .single
+            .activities
+            .map((a) => a.activityId),
+        ['a1'],
+      );
     });
   });
 }

@@ -111,4 +111,4 @@ Absence of `kIsWeb` does not prove a change renders identically everywhere: Flut
 | Merge-time warning | [`qa_scope.yml`](../workflows/qa_scope.yml) — `pull_request: [opened, edited, reopened, synchronize]` |
 | Close-time mapping | [`issue_to_test_check.yaml`](../workflows/issue_to_test_check.yaml) — a `compute` job parses the section and passes the result to the reusable workflow's `needs_testing_labels` input |
 
-`qa_scope.yml` must always run and exit 0 when it does not apply; a job skipped by a job-level `if:` never reports its check, which would strand any PR if the check were ever promoted to required. The reusable workflow in `pangeachat/workflows` is unchanged — it applies whatever label list it is handed.
+`qa_scope.yml` must always run and exit 0 when it does not apply, rather than being path-filtered: a workflow that never starts leaves its check pending, which would strand any PR if the check were ever promoted to required. The reusable workflow in `pangeachat/workflows` is unchanged — it applies whatever label list it is handed.

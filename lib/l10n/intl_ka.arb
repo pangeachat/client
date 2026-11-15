@@ -1917,7 +1917,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-11-11 14:11:20.311467",
+    "@@last_modified": "2026-11-12 09:04:09.799060",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -7104,7 +7104,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "არ არის პირადი შეტყობინებები ან ჩეთები. დარწმუნდით, რომ თქვენი ძიება სწორად არის დაწერილი.",
-    "activityAnalyticsTooltipBody": "ეს არის თქვენი შენახული აქტივობები განხილვისა და პრაქტიკისთვის.",
     "numSavedActivities": "შენახული აქტივობების რაოდენობა",
     "saveActivityTitle": "აქტივობის შენახვა",
     "saveActivityDesc": "კარგი სამუშაო! შეინახეთ ეს აქტივობა შემდგომი განხილვისა და პრაქტიკისთვის",
@@ -7339,10 +7338,6 @@
     "zhTWDisplayName": "ჩინური (ტრადიციული)",
     "zuDisplayName": "ზულუ",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10105,7 +10100,6 @@
     },
     "pageLabel": "{title} გვერდი",
     "closeHint": "დახურვის რჩევა",
-    "starListLabel": "შენახული აქტივობები და ვარსკვლავები",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10115,10 +10109,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10435,7 +10425,6 @@
     "selectImageLabel": "სურათის არჩევა",
     "userSearchTagsLabel": "ძიება...",
     "courseDetails": "კურსის დეტალები",
-    "objective": "მიზანი",
     "pingedLabel": "დაპინგულია",
     "mapFilterPlayerCount": "{count} მოთამაშე",
     "practiceFeedbackButtonTooltip": "შეატყობინეთ პრობლემის შესახებ ამ სავარჯიშოში",
@@ -10736,17 +10725,9 @@
     "reportSent": "მოხსენება გაგზავნილია",
     "reportNotSent": "თქვენი მოხსენების გაგზავნა ვერ მოხერხდა. შეამოწმეთ კავშირი და სცადეთ ხელახლა.",
     "reportPointerMessage": "შეტყობინება მოხსენებულია {courseName}-ში — იხილეთ უსაფრთხოება",
-    "learningObjective": "სწავლის მიზანი",
-    "learningObjectives": "სწავლის მიზნები",
-    "missionNofM": "მისია {index} / {count}",
-    "xpTowardObjective": "{xp} / {threshold} XP ამ მიზნისკენ",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "კურსი დასრულებულია!",
-    "courseCompleteDesc": "თქვენ დაასრულეთ ყველა {count} მიზანი ამ კურსში. განაგრძეთ ვარჯიში, რათა შეინარჩუნოთ ნასწავლი.",
-    "practiceObjective": "ივარჯიშეთ ამ მიზანზე",
     "otherActivities": "სხვა აქტივობები",
-    "objectiveCircleComplete": "მისია {index}: დასრულებულია",
-    "objectiveCircleUpNext": "მისია {index}: შემდეგი",
     "useActivityImageAsChatBackground": "აქტივობის სურათის გამოყენება ჩეთის ფონად",
     "andCertifyIMeetTheMinimumAge": " და ვადასტურებ, რომ ვარ მინიმუმ 13 წლის, ან ჩემს ქვეყანაში მოთხოვნილი მინიმალური ასაკის, თუ ის უფრო მაღალია.",
     "filteredNetworkBlockedTitle": "ეს ქსელი ბლოკავს Pangea Chat-ს",
@@ -10796,7 +10777,6 @@
     "offlinePracticeNote": "ხაზგარეშე რეჟიმში ხარ. შენი პასუხები აიტვირთება, როცა დაბრუნდები.",
     "offlinePracticeSavedNote": "შენახულია ამ მოწყობილობაზე. შენი XP აიტვირთება, როცა ონლაინ რეჟიმში დაბრუნდები.",
     "offlinePracticeNothingSaved": "ამ მოწყობილობაზე საკმარისი არ არის შენახული ოფლაინ პრაქტიკისთვის. სცადეთ ხელახლა, როცა ონლაინ იქნებით.",
-    "missionNumber": "მისია {index}",
     "xpToYourStar": "{xp} XP თქვენს ვარსკვლავამდე",
     "missionStarEarned": "ვარსკვლავი მოპოვებულია!",
     "xpFromChats": "ჩეთები {xp}",
@@ -10805,8 +10785,6 @@
     "playMission": "თამაში",
     "wordCount": "{count, plural, =1{1 სიტყვა} other{{count} სიტყვა}}",
     "continueActivity": "გაგრძელება",
-    "noObjectiveActivitiesYet": "ამ მიზნისთვის აქტივობა ჯერ არ დაგისრულებიათ. დაიწყეთ თქვენი კურსიდან.",
-    "objectiveNotInYourCourses": "ეს მიზანი არ არის თქვენს არცერთ კურსში.",
     "objectiveActivityCount": "{count, plural, =0{აქტივობები ჯერ არ არის} =1{1 აქტივობა შესრულებულია} other{{count} აქტივობა შესრულებულია}}",
     "activityCompleted": "დასრულებულია",
     "completedTimes": "დასრულებულია {count} ჯერ",
@@ -10814,8 +10792,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "საუბარი {xp}",
     "xpIncludingGoals": "მათ შორის {xp} მიზნებიდან",
-    "missionOtherLanguageNotice": "ეს მისია {language} კურსიდანაა. მასზე თქვენი პროგრესი მხოლოდ მაშინ ჩაითვლება, თუ {language}-ს სწავლობთ.",
-    "missionLanguageMismatchDesc": "ეს მისია {language} კურსიდანაა. გსურთ, სამიზნე ენა {language}-ზე შეცვალოთ?",
     "xpBySkillTitle": "უნარების მიხედვით",
     "missionNextActivity": "შემდეგი აქტივობა",
     "missionContinueActivity": "აქტივობის გაგრძელება",
@@ -10825,7 +10801,6 @@
     "otherCoursesSessions": "სხვა კურსები ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, მიღებულია {xp} XP",
-    "currentMission": "მიმდინარე მისია",
     "constructUseCorRADesc": "ხმამაღლა წაკითხული და მოსმენილი",
     "constructUseIncRADesc": "ხმამაღლა წაკითხული, არ მოსმენილი",
     "hearItFirstToolName": "ჯერ მოუსმინე",
@@ -10847,7 +10822,6 @@
     "readAloudTake": "მიღება {number}",
     "videoWontPlayHere": "ეს ვიდეო აქ არ იმუშავებს.",
     "watchOnYoutube": "უყურეთ YouTube-ზე",
-    "xpTowardMission": "{xp} XP ამ მისიისთვის",
     "practiceStartWordCount": "{count, plural, =1{სავარჯიშო სიტყვა} other{სავარჯიშო სიტყვა}}",
     "practiceStartGrammarCount": "{count, plural, =1{სავარჯიშო გრამატიკის საკითხი} other{სავარჯიშო გრამატიკის საკითხი}}",
     "practiceStartExerciseTypes": "სავარჯიშოების ტიპები",
@@ -10885,5 +10859,30 @@
     "requireAnalyticsAccessSummary": "მოსწავლეები გიზიარებენ თავიანთ პროგრესს, როდესაც ისინი უერთდებიან.",
     "courseAccessPrivateDesc": "კურსი არ ჩანს ძიებაში. ხალხი უერთდება თქვენი მოწვევით ან კურსის კოდით.",
     "courseAccessProtected": "დაცული",
-    "courseAccessProtectedDesc": "განკუთვნილია მასწავლებლის მოსწავლეებისთვის. კურსი მართავს მათ ანგარიშებს. დაყენება ხდება მასწავლებლის დაფის მეშვეობით."
+    "courseAccessProtectedDesc": "განკუთვნილია მასწავლებლის მოსწავლეებისთვის. კურსი მართავს მათ ანგარიშებს. დაყენება ხდება მასწავლებლის დაფის მეშვეობით.",
+    "discussionLabel": "დისკუსია",
+    "discussionCardSemantics": "დისკუსია: {title}",
+    "discussionJoined": "შემოუერთდა",
+    "discussionAnswered": "უპასუხა",
+    "joinTheDiscussion": "შემოუერთდით დისკუსიას",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 თანაკლასელი ამ დისკუსიაშია} other{{count} თანაკლასელი ამ დისკუსიაშია}}",
+    "discussionStartIt": "იყავით პირველი, ვინც დაიწყებს ამ დისკუსიას",
+    "discussionRemoved": "თქვენ არ შეგიძლიათ ამ დისკუსიაში გაწევრიანება.",
+    "discussionJoinArriving": "თქვენ შიგნით ხართ! დისკუსია გაიხსნება, როგორც კი მოვა.",
+    "roleplayLabel": "როლური თამაში",
+    "canDoAnalyticsTooltipBody": "თითოეული {canDo} ივსება XP-ით თავისი აქტივობებიდან და პრაქტიკიდან. სრული {canDo} ვარსკვლავს იღებს.",
+    "canDoStarListLabel": "{canDos} და შენახული აქტივობები",
+    "canDoNofM": "{canDo} {index} {count}-დან",
+    "xpOfThresholdTowardCanDo": "{xp} {threshold} XP-დან ამ {canDo}-სკენ",
+    "courseCompleteCanDosDesc": "თქვენ დაასრულეთ ყველა {count} {canDos} ამ კურსში. გააგრძელეთ ვარჯიში, რათა შეინარჩუნოთ ის, რაც ისწავლეთ.",
+    "practiceCanDo": "ივარჯიშეთ ეს {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: დასრულებულია",
+    "canDoCircleUpNext": "{canDo} {index}: შემდეგი",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "ეს {canDo} არის კურსიდან {language} ენაზე. თქვენი პროგრესი მასზე მხოლოდ მაშინ ითვლება, როცა {language} ენას სწავლობთ.",
+    "canDoLanguageMismatchDesc": "ეს {canDo} არის კურსიდან {language} ენაზე. გადართოთ თქვენი სამიზნე ენა {language}-ზე?",
+    "noCanDoActivitiesYet": "თქვენ ჯერ არ დაგისრულებიათ აქტივობა ამ {canDo}-სთვის. დაიწყეთ ერთი თქვენი კურსიდან.",
+    "canDoNotInYourCourses": "ეს {canDo} არ არის თქვენს არცერთ კურსში.",
+    "currentCanDo": "მიმდინარე {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP ამ {canDo}-სკენ"
 }

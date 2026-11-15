@@ -97,7 +97,7 @@ void main() {
   const userId = '@test:fakeServer.notExisting';
   const activityId = 'a1';
   const courseId = '!course:fakeServer.notExisting';
-  const savedLine = 'Activity saved to Learning Objectives';
+  const savedLine = 'Activity saved to Can-Dos';
 
   late Client client;
   late GoRouter router;

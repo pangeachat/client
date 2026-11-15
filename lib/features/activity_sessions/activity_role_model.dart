@@ -30,8 +30,10 @@ class ActivityRoleModel {
   }) {
     // Only the transition into finished gets a timeline row. The automatic
     // save re-writes the same role state (adding archived_at), and rendering
-    // that write too would repeat the row on every completed session.
-    if (isFinished && !isArchived) {
+    // that write too would repeat the row on every completed session. A
+    // discussion's seat is finished and archived in one server write, so the
+    // previous entry, when known, is what tells the transition.
+    if (isFinished && (previous != null ? !previous.isFinished : !isArchived)) {
       return l10n.finishedTheActivity(displayName);
     }
     if (!isFinished && (previous?.isFinished ?? false)) {

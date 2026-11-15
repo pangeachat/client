@@ -56,6 +56,7 @@ void main() {
       body: SizedBox(
         width: 900.0,
         child: ActivityCarousel(
+          courseId: null,
           activities: activities,
           onTap: (_) {},
           xpByActivity: xpByActivity ?? (_) => 0,

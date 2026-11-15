@@ -5,6 +5,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/start_practice.dart';
 
 /// What the course page's Learning Objective section shows once every
@@ -48,7 +49,7 @@ class CourseCompleteCard extends StatelessWidget {
             ],
           ),
           Text(
-            l10n.courseCompleteDesc(objectiveCount),
+            l10n.courseCompleteCanDosDesc(objectiveCount, CanDoTerm.plural),
             style: theme.textTheme.bodySmall?.copyWith(
               color: theme.pangea.onSuccessContainer,
             ),

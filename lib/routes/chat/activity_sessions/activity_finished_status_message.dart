@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Bottom status bar for a session the user has finished: shows the waiting
@@ -72,7 +74,15 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
                             summarySection
                           else if (!finished)
                             _WaitSection(
-                              onContinue: controller.room.continueActivity,
+                              // A discussion never waits for others: each
+                              // student ends their own seat.
+                              waitsForOthers:
+                                  !(controller.room.activityMode?.endsPerSeat ??
+                                      false),
+                              onContinue: () => showFutureLoadingDialog(
+                                context: context,
+                                future: controller.room.continueActivity,
+                              ),
                             ),
                         ],
                       ),
@@ -122,9 +132,10 @@ class _SummarySection extends StatelessWidget {
 }
 
 class _WaitSection extends StatelessWidget {
+  final bool waitsForOthers;
   final VoidCallback onContinue;
 
-  const _WaitSection({required this.onContinue});
+  const _WaitSection({required this.waitsForOthers, required this.onContinue});
 
   @override
   Widget build(BuildContext context) {
@@ -133,11 +144,12 @@ class _WaitSection extends StatelessWidget {
     return Column(
       spacing: 12,
       children: [
-        Text(
-          L10n.of(context).waitingForOthersToFinish,
-          style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
-          textAlign: TextAlign.center,
-        ),
+        if (waitsForOthers)
+          Text(
+            L10n.of(context).waitingForOthersToFinish,
+            style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
+            textAlign: TextAlign.center,
+          ),
         ElevatedButton(
           onPressed: onContinue,
           style: ElevatedButton.styleFrom(

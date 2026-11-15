@@ -195,15 +195,20 @@ class RepresentationEvent {
 
     if (res.isError) return Result.error(res.error!);
 
-    if (_event != null) {
-      _event!.room.sendPangeaEvent(
-        content: PangeaMessageTokens(
-          tokens: res.result!.tokens,
-          detections: res.result!.detections,
-        ).toJson(),
-        parentEventId: _event!.eventId,
+    final messageTokens = PangeaMessageTokens(
+      tokens: res.result!.tokens,
+      detections: res.result!.detections,
+    );
+    final event = _event;
+    if (event != null && event.room.canSendEvent(PangeaEventTypes.tokens)) {
+      event.room.sendPangeaEvent(
+        content: messageTokens.toJson(),
+        parentEventId: event.eventId,
         type: PangeaEventTypes.tokens,
       );
+    } else {
+      // Tokens that cannot be posted stay with this representation (#9833).
+      _tokens = messageTokens;
     }
 
     return Result.value(res.result!.tokens);

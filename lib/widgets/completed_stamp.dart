@@ -23,13 +23,23 @@ class CompletedStamp extends StatelessWidget {
   /// the start page's total over its image — sets it.
   final double? labelSize;
 
+  /// False draws the XP tab alone, with a sparkle in the coin's place: the
+  /// XP from something that has no finish (a discussion, #9647), on the same
+  /// pill and in the same form ("12K XP" from five digits). Needs [xp].
+  final bool showCoin;
+
   const CompletedStamp({
     required this.size,
     this.times = 1,
     this.xp = 0,
     this.labelSize,
+    this.showCoin = true,
     super.key,
   });
+
+  /// The stamp's [size] on a card [cardWidth] wide.
+  static double cardSizeFor(double cardWidth) =>
+      (cardWidth / 8).clamp(14.0, 18.0);
 
   /// The XP from which the stamp's pill shortens the number ("12K XP").
   static const int _compactFrom = 10000;
@@ -58,7 +68,9 @@ class CompletedStamp extends StatelessWidget {
         ? l10n.completedTimes(times)
         : l10n.activityCompleted;
     final locale = Localizations.localeOf(context).toLanguageTag();
-    final label = xp > 0
+    final label = !showCoin
+        ? l10n.xpAmount(xp)
+        : xp > 0
         ? l10n.activityCompletedWithXp(
             completed,
             NumberFormat.decimalPattern(locale).format(xp),
@@ -73,10 +85,20 @@ class CompletedStamp extends StatelessWidget {
         : times > 1
         ? '×${NumberFormat.decimalPattern(locale).format(times)}'
         : null;
-    final coin = CustomPaint(
-      size: Size.square(size),
-      painter: _CompletedStampPainter(ink: inkOf(theme), paper: paperOf(theme)),
-    );
+    final fontSize = labelSize ?? (size * 0.75).clamp(10.0, 12.0);
+    final Widget coin = showCoin
+        ? CustomPaint(
+            size: Size.square(size),
+            painter: _CompletedStampPainter(
+              ink: inkOf(theme),
+              paper: paperOf(theme),
+            ),
+          )
+        : Icon(
+            Icons.auto_awesome,
+            size: fontSize + 2.0,
+            color: theme.pangea.gold,
+          );
     if (tab == null) {
       return Semantics(
         label: label,
@@ -105,7 +127,7 @@ class CompletedStamp extends StatelessWidget {
       child: ExcludeSemantics(
         child: Container(
           padding: EdgeInsetsDirectional.fromSTEB(
-            2.0,
+            showCoin ? 2.0 : 6.0,
             2.0,
             labelSize == null ? 7.0 : 10.0,
             2.0,
@@ -116,7 +138,7 @@ class CompletedStamp extends StatelessWidget {
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            spacing: 4.0,
+            spacing: showCoin ? 4.0 : 3.0,
             children: [
               coin,
               Text(
@@ -125,7 +147,7 @@ class CompletedStamp extends StatelessWidget {
                 softWrap: false,
                 style: TextStyle(
                   color: theme.pangea.gold,
-                  fontSize: labelSize ?? (size * 0.75).clamp(10.0, 12.0),
+                  fontSize: fontSize,
                   fontWeight: FontWeight.w800,
                   height: 1.1,
                 ),

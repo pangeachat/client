@@ -860,9 +860,7 @@ class _WorldMapViewState extends State<WorldMapView>
               0,
         );
       case ActivityPinState.ongoingPending:
-        final room =
-            liveRoom ??
-            widget.controller.client?.activeActivityInstance(activityId);
+        final room = liveRoom ?? widget.controller.ownLiveRoom(activityId);
         return (
           participants: room?.largeCardParticipantIds ?? const <String>[],
           openSlots: room?.numRemainingRoles ?? 0,
@@ -912,7 +910,7 @@ class _WorldMapViewState extends State<WorldMapView>
     // preview (world-map.instructions.md, "Pin state"). Resolved once here and
     // handed to [_sessionParticipants] so the pending row doesn't re-scan.
     final liveRoom = state.isOngoing
-        ? widget.controller.client?.activeActivityInstance(card.activityId)
+        ? widget.controller.ownLiveRoom(card.activityId)
         : null;
 
     // Participants + open seats from the shared resolver (the joinable lookup
@@ -1064,8 +1062,7 @@ class _WorldMapViewState extends State<WorldMapView>
               tierOf: render.tierOf,
               starLevelOf: render.starLevelOf,
               pingedOf: render.pingedOf,
-              activeActivityInstance:
-                  widget.controller.client?.activeActivityInstance,
+              activeActivityInstance: widget.controller.ownLiveRoom,
               markerBox: _markerBox,
               markerAlignment: _markerAlignment,
               sessionParticipants: (a, b) => _sessionParticipants(a, b),

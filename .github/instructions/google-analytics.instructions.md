@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/pangea/common/utils/firebase_analytics.dart,lib/features/navigation/**,lib/features/notifications/notification_tap_utils.dart"
-description: "Product analytics (GA4 via Firebase) relative to the workspace routing — token-derived screen names, history-step emission, attribution before the #, no raw URLs in reporting."
+description: "Product analytics (GA4 via Firebase) relative to the workspace routing — token-derived screen names, history-step emission, attribution in the query string, no raw URLs in reporting."
 ---
 
 # Google Analytics & the Workspace URL
@@ -14,10 +14,7 @@ event and its metadata are a separate cross-repo contract —
 — carried in Matrix event content, not URLs, so routing changes never affect
 it.
 
-This doc owns how analytics relates to the workspace routing model
-([routing.instructions.md](routing.instructions.md)), where the path is always
-`/` and what is on screen rides in the token lists. Discrete product events
-exist today; **screen tracking is the not-yet-built piece this doc specifies.**
+This doc owns how analytics relates to the workspace routing model ([routing.instructions.md](routing.instructions.md)), where the path is always `/` and what is on screen rides in the token lists. Discrete product events and screen tracking both exist today.
 
 GA is the **measurement layer, not the decision layer**: per-user re-engagement
 and onboarding decisions read first-party signals (persisted Matrix opened
@@ -165,11 +162,7 @@ the analytics layer, not the router.
 
 ## Migration guard
 
-Any GA report or exploration keyed on raw fragment URLs breaks as the grammar
-migrates (`?m=` to `?c=`, token spellings). Screen names above are the stable
-reporting key; before the routing cutover, sweep for fragment-URL dependence in
-pangea-bot's BigQuery queries first (they gate real notification sends), then
-dashboards and explorations.
+Any GA report or exploration keyed on raw URLs breaks when the URL grammar changes (token spellings). Screen names above are the stable reporting key; before changing the grammar, sweep for raw-URL dependence in pangea-bot's BigQuery queries first (they gate real notification sends), then dashboards and explorations.
 
 ## Testing
 

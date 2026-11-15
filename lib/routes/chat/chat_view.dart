@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
@@ -28,6 +29,7 @@ import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dar
 import 'package:fluffychat/routes/chat/chat_event_list.dart';
 import 'package:fluffychat/routes/chat/chat_floating_action_button.dart';
 import 'package:fluffychat/routes/chat/chat_input_bar.dart';
+import 'package:fluffychat/routes/chat/discussions/discussion_join_cta.dart';
 import 'package:fluffychat/routes/chat/pinned_events.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/world/analytics_header_avatar.dart';
@@ -456,19 +458,33 @@ class ChatView extends StatelessWidget {
                           controller.room.membership == Membership.join &&
                           (controller.room.activityPlan == null ||
                               !controller.room.showActivityChatUI ||
-                              controller.room.isActiveInActivity))
+                              controller.room.writesInActivity))
                         ChatInputBar(
                           controller: controller,
                           padding: bottomSheetPadding,
                         )
                       else if (controller.room.activityPlan != null &&
                           controller.room.showActivityChatUI &&
-                          !controller.room.isActiveInActivity) ...[
+                          !controller.room.writesInActivity) ...[
                         // Post-play rating prompt (#7194) — pinned above the
                         // finished-status bar; manages its own visibility
                         // (finished role, not yet rated, not dismissed).
                         ActivityRatingCard(room: controller.room),
                         ActivityFinishedStatusMessage(controller: controller),
+                        // A student in a discussion room without a seat in
+                        // it takes part only through Join.
+                        if (controller.room.seatlessStudentInDiscussion &&
+                            controller.room.activityId != null)
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: DiscussionJoinCta(
+                              course: controller.room.client.getRoomById(
+                                controller.room.discussionCourseId ?? '',
+                              ),
+                              activityId: controller.room.activityId!,
+                              activity: controller.room.activityPlan,
+                            ),
+                          ),
                       ],
                       // Pangea#
                     ],

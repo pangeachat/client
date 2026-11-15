@@ -3,6 +3,7 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 
 /// Every panel the workspace can open, one value per token type.
 ///
@@ -241,7 +242,7 @@ enum PanelTypesEnum {
       case PanelTypesEnum.grammar:
         return l10n.grammar;
       case PanelTypesEnum.objective:
-        return l10n.learningObjective;
+        return CanDoTerm.singular;
       case PanelTypesEnum.practice:
         return l10n.practice;
     }

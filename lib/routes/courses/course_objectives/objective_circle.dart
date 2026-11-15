@@ -4,6 +4,7 @@ import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/pangea_colors.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_xp_ring.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_progress_circles.dart';
@@ -41,17 +42,17 @@ class ObjectiveCircle extends StatelessWidget {
       ObjectiveCircleState.complete => (
         theme.pangea.goldContainer,
         theme.pangea.goldGraphic,
-        l10n.objectiveCircleComplete(item.index),
+        l10n.canDoCircleComplete(CanDoTerm.singular, item.index),
       ),
       ObjectiveCircleState.current => (
         theme.colorScheme.primaryContainer,
         theme.colorScheme.onPrimaryContainer,
-        l10n.objectiveCircleUpNext(item.index),
+        l10n.canDoCircleUpNext(CanDoTerm.singular, item.index),
       ),
       ObjectiveCircleState.later => (
         theme.colorScheme.surface,
         theme.colorScheme.onSurfaceVariant,
-        l10n.missionNofM(item.index, count),
+        l10n.canDoNofM(CanDoTerm.singular, item.index, count),
       ),
     };
     const inner =
@@ -205,7 +206,7 @@ class ObjectiveCircle extends StatelessWidget {
       if (item.loading)
         l10n.loadingPleaseWait
       else if (xp != null && !complete)
-        l10n.xpTowardObjective(xp.xp, xp.threshold),
+        l10n.xpOfThresholdTowardCanDo(xp.xp, xp.threshold, CanDoTerm.singular),
       if (item.classLocation) l10n.classLocation,
       if (item.pinged) l10n.pingedLabel,
     ].join(', ');
@@ -232,7 +233,7 @@ class ObjectiveCircle extends StatelessWidget {
                       ? OverflowBox(
                           maxWidth: 120.0,
                           child: Text(
-                            l10n.missionNumber(item.index),
+                            l10n.canDoNumber(CanDoTerm.singular, item.index),
                             maxLines: 1,
                             textAlign: TextAlign.center,
                             style: theme.textTheme.labelMedium?.copyWith(

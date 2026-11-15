@@ -17,7 +17,6 @@ import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_response_model.dart';
@@ -150,18 +149,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       if (pangeaMessageEvent.event.messageType != MessageTypes.Text) {
         return;
       }
-
-      RepresentationEvent? repEvent =
-          pangeaMessageEvent.messageDisplayRepresentation;
-
-      if (repEvent == null ||
-          (repEvent.event == null && repEvent.tokens == null)) {
-        repEvent = await _fetchNewRepEvent();
-      }
-
-      if (repEvent?.event != null) {
-        await repEvent!.requestTokens();
-      }
+      await pangeaMessageEvent.requestDisplayTokens();
     } catch (e, s) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
@@ -335,24 +323,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         ? null
         : textToSelect.map((t) => t.text).toList();
     setState(() {});
-  }
-
-  Future<RepresentationEvent?> _fetchNewRepEvent() async {
-    final RepresentationEvent? repEvent =
-        pangeaMessageEvent.messageDisplayRepresentation;
-
-    if (repEvent != null) return repEvent;
-    final eventID = await pangeaMessageEvent
-        .requestRepresentationByDetectedLanguage();
-
-    if (eventID == null) return null;
-    final event = await widget._event.room.getEventById(eventID);
-    if (event == null) return null;
-    return RepresentationEvent(
-      timeline: pangeaMessageEvent.timeline,
-      parentMessageEvent: pangeaMessageEvent.event,
-      event: event,
-    );
   }
 
   void onClickOverlayMessageToken(PangeaToken token) =>

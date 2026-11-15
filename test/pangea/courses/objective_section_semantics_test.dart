@@ -87,6 +87,7 @@ void main() {
           body: SizedBox(
             width: width,
             child: ObjectiveSection(
+              courseId: null,
               index: 1,
               missionCount: 1,
               group: objectiveGroup(),

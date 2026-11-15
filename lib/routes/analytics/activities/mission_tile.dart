@@ -6,6 +6,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_star.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_xp_ring.dart';
 
@@ -51,7 +52,11 @@ class MissionTile extends StatelessWidget {
         label: [
           group.objective.objective,
           if (progress != null)
-            l10n.xpTowardObjective(progress.xp, progress.threshold),
+            l10n.xpOfThresholdTowardCanDo(
+              progress.xp,
+              progress.threshold,
+              CanDoTerm.singular,
+            ),
         ].join(', '),
         child: Material(
           color: scheme.surface,

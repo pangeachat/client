@@ -28,7 +28,7 @@ void main() {
   });
 
   const objectiveText = 'Can ask for directions.';
-  const upNextLabel = 'Current mission';
+  const upNextLabel = 'Current Can-Do';
   const classLabel = 'Class location';
 
   ActivityPlanModel plan() => ActivityPlanModel(
@@ -62,6 +62,7 @@ void main() {
     supportedLocales: L10n.supportedLocales,
     home: Scaffold(
       body: ObjectiveSection(
+        courseId: null,
         index: 1,
         missionCount: 1,
         group: QuestObjectiveGroup(
@@ -412,6 +413,7 @@ void main() {
         supportedLocales: L10n.supportedLocales,
         home: Scaffold(
           body: ObjectiveSection(
+            courseId: null,
             index: 1,
             missionCount: 1,
             group: QuestObjectiveGroup(

@@ -962,6 +962,162 @@ void main() {
     });
   });
 
+  group('the merged upload is kept, never abandoned (client#9825)', () {
+    const uploaded = 'mxc://example.com/merged_upload';
+
+    // What the harness mix reports about its bytes: what a reused upload's
+    // event must still say, since no mix runs on reuse.
+    void expectMixFields(Map<String, dynamic> fields, {required String shape}) {
+      expect(fields['size'], 16);
+      expect(fields[shape == 'event' ? 'duration_ms' : 'durationMs'], 30000);
+      expect(fields[shape == 'event' ? 'sample_rate' : 'sampleRate'], 48000);
+      expect(fields['channels'], 1);
+    }
+
+    Future<_Harness> aliceHarness(
+      _Scheduler scheduler,
+      _Backend backend, {
+      String? boxName,
+      bool erase = true,
+    }) async => _Harness(
+      backend: backend,
+      scheduler: scheduler,
+      index: await _newIndex(scheduler, name: boxName, erase: erase),
+      myUserId: _alice,
+      myDeviceId: _deviceA,
+    );
+
+    _Backend twoHalves() => _Backend()
+      ..setHalves(_callKey, [
+        _half(_alice, _deviceA, eventId: _aliceEvent),
+        _half(_bob, _deviceB, eventId: _bobEvent),
+      ]);
+
+    test('an upload slower than several stage timeouts is waited for: one '
+        'upload, sent with its mxc, no transient retry', () async {
+      final scheduler = freshClock();
+      final backend = twoHalves();
+      final h = await aliceHarness(scheduler, backend)
+        ..gateUpload = Completer<void>();
+
+      h.coordinator.onCallFinished(_room, _callKey, _alice, _deviceA);
+      await _pump();
+      expect(h.uploadCalls, hasLength(1), reason: 'parked mid-upload');
+
+      await scheduler.elapse(_stageTimeout * 4);
+      expect(
+        (await h.entry(_callKey))!['attemptCount'],
+        0,
+        reason: 'a slow upload is not a failure',
+      );
+
+      h.gateUpload!.complete();
+      await _pump();
+
+      expect(h.uploadCalls, hasLength(1));
+      expect(h.downloadCalls, hasLength(2));
+      expect(h.mixCalls, hasLength(1));
+      expect(h.sendCalls, hasLength(1));
+      expect(h.sendCalls.single.content['url'], uploaded);
+      expect(await h.entry(_callKey), isNull, reason: 'sent and retired');
+    });
+
+    test('an upload landing after its attempt gave up is kept: the next pass '
+        'sends it without downloading, mixing or uploading again', () async {
+      final scheduler = freshClock();
+      const boxName = 'merge_coord_late_upload';
+      final backend = twoHalves();
+      final h = await aliceHarness(scheduler, backend, boxName: boxName)
+        ..gateUpload = Completer<void>();
+
+      h.coordinator.onCallFinished(_room, _callKey, _alice, _deviceA);
+      await _pump();
+      expect(h.uploadCalls, hasLength(1), reason: 'parked mid-upload');
+      // The attempt gives up (the service is torn down) while the upload is
+      // still on the wire; the upload then lands.
+      h.coordinator.dispose();
+      h.gateUpload!.complete();
+      await _pump();
+      expect(h.sendCalls, isEmpty, reason: 'no send after disposal');
+      final kept = (await h.entry(_callKey))!['upload'] as Map<String, dynamic>;
+      expect(kept['url'], uploaded);
+      expect(kept['coverage'], [_aliceEvent, _bobEvent]);
+      expectMixFields(kept, shape: 'entry');
+
+      final next = await aliceHarness(
+        scheduler,
+        backend,
+        boxName: boxName,
+        erase: false,
+      );
+      next.coordinator.start();
+      await _pump();
+
+      expect(next.downloadCalls, isEmpty, reason: 'no re-download');
+      expect(next.mixCalls, isEmpty, reason: 'no re-mix');
+      expect(next.uploadCalls, isEmpty, reason: 'the landed upload is reused');
+      expect(next.sendCalls, hasLength(1));
+      expect(next.sendCalls.single.content['url'], uploaded);
+      expectMixFields(next.sendCalls.single.content, shape: 'event');
+      expect(await next.entry(_callKey), isNull, reason: 'sent and retired');
+    });
+
+    test('a completed upload is never uploaded twice across retries', () async {
+      final scheduler = freshClock();
+      final backend = twoHalves();
+      final h = await aliceHarness(scheduler, backend)
+        ..sendReturnsNull = true;
+
+      // Two passes whose send does not land: each a counted transient.
+      for (var i = 0; i < 2; i++) {
+        h.coordinator.onSyncedCallAudio(_room, _callKey);
+        await _pump();
+      }
+      expect((await h.entry(_callKey))!['attemptCount'], 2);
+
+      h.sendReturnsNull = false;
+      h.coordinator.onSyncedCallAudio(_room, _callKey);
+      await _pump();
+
+      expect(h.uploadCalls, hasLength(1), reason: 'one upload in all');
+      expect(h.downloadCalls, hasLength(2), reason: 'downloaded once');
+      expect(h.mixCalls, hasLength(1), reason: 'mixed once');
+      expect(h.sendCalls, hasLength(3));
+      for (final send in h.sendCalls) {
+        expect(send.content['url'], uploaded);
+        expectMixFields(send.content, shape: 'event');
+      }
+      expect(await h.entry(_callKey), isNull, reason: 'sent and retired');
+    });
+
+    test('an upload kept for other halves is not reused', () async {
+      final scheduler = freshClock();
+      final backend = twoHalves();
+      final h = await aliceHarness(scheduler, backend)
+        ..sendReturnsNull = true;
+
+      h.coordinator.onSyncedCallAudio(_room, _callKey);
+      await _pump();
+      expect(h.uploadCalls, hasLength(1));
+
+      // Bob's half is now a different event: a different merge.
+      backend.setHalves(_callKey, [
+        _half(_alice, _deviceA, eventId: _aliceEvent),
+        _half(_bob, _deviceB, eventId: '\$bob_half_2:example.com'),
+      ]);
+      h.sendReturnsNull = false;
+      h.coordinator.onSyncedCallAudio(_room, _callKey);
+      await _pump();
+
+      expect(h.uploadCalls, hasLength(2), reason: 'new halves, new upload');
+      expect(h.mixCalls, hasLength(2));
+      expect(h.sendCalls.last.content['source_event_ids'], [
+        _aliceEvent,
+        '\$bob_half_2:example.com',
+      ]);
+    });
+  });
+
   group('attemptCap exhaustion', () {
     test('quarantines (no further posts) and survives a restart', () async {
       final scheduler = freshClock();

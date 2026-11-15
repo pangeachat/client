@@ -3,7 +3,7 @@
 /// The statement is read in the learner's resolved display language from
 /// choreo's course outline read ([fromOutlineJson]); the course outline is a
 /// Mission's full tier, so the server translates on a miss (org
-/// quests-and-learning-objectives doc § Content access and localization,
+/// quests doc § Content access and localization,
 /// #8577). [fromJson] parses a raw CMS `learning-objectives` row — canonical
 /// text — for the places a quest row still embeds one at depth ≥ 1.
 class LearningObjective {

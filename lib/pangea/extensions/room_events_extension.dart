@@ -58,6 +58,9 @@ extension EventsRoomExtension on Room {
     required String parentEventId,
     required String type,
   }) async {
+    // silent-ok: the server would refuse it, as in a course's Announcements
+    // chat; callers keep what the learner needs on the device (#9833).
+    if (!canSendEvent(type)) return null;
     final initialMembership = membership;
     try {
       Sentry.addBreadcrumb(Breadcrumb(data: content));

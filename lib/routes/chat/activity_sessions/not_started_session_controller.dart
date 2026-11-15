@@ -6,12 +6,14 @@ import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_repo.dart';
 import 'package:fluffychat/features/activity_sessions/play_with_bot_intent.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/discussions/discussion_extensions.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
@@ -185,13 +187,20 @@ class NotStartedSessionController extends State<NotStartedSession>
   );
 
   @override
-  bool get showRoleCards => _subPage == NotStartedSubPage.main;
+  bool get showRoleCards =>
+      _subPage == NotStartedSubPage.main &&
+      (widget.activity?.activityMode.showsRoleCards ?? true);
 
   @override
   bool get showDescriptionSection => _subPage == NotStartedSubPage.main;
 
+  /// A discussion has no role to pick, so its questions fill the goal header
+  /// from the start.
   @override
-  List<ActivityRoleGoal>? get selectedRoleGoals => null;
+  List<ActivityRoleGoal>? get selectedRoleGoals =>
+      (widget.activity?.activityMode.listsQuestions ?? false)
+      ? widget.activity!.discussionGoals
+      : null;
 
   @override
   Set<String> get selectedRoleCompletedGoalIds => {};

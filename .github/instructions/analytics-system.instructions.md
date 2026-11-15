@@ -26,7 +26,7 @@ Defined by [`ConstructTypeEnum`](../../lib/features/analytics/construct_type_enu
 | Vocab | "Vocabulary" | Individual words identified by lemma + part of speech | "run" (verb), "bank" (noun) |
 | Morph | "Grammar" | Morphological features of words (categories from [`MorphFeaturesEnum`](../../lib/pangea/morphs/morph_features_enum.dart)) | Tense=Past, Number=Plural |
 
-The user sees these as two tabs in their analytics view. Grammar constructs "unlock" when they reach the Green stage (50 XP), giving users a sense of discovery.
+The user sees these as two tabs in their analytics view. A grammar construct shows as locked until its first use, and the "unlock" celebration fires when it reaches the Green stage (50 XP), giving users a sense of discovery.
 
 ### What Earns XP
 
@@ -60,7 +60,7 @@ Receptive exposure per word is a variable language researchers design studies ar
 
 Every read-aloud surface mints it, not just whole messages: word taps and practice-choice audio are listening too. That deliberately overlaps `click` and the `corWL` / `corLA` family, which record the same moment for different reasons — one counts what was heard, the others what was looked up or answered. Exposure is minted only on a **completed** playback, because read-aloud holds a single slot and stops on drafting, selection and focus loss; minting at the start would bank words that were never spoken.
 
-An exposure use **never carries a source event id or room id.** The listening lane drops both at the point of collection on the grounds that a per-student record of which peers a learner attends to is a social-graph fact about a third party (see [`DosageAudioEvent`](../../lib/features/dosage/dosage_audio_event.dart)), and a lemma-level record derived from someone else's message would reintroduce exactly that, with content attached. Changing this is a privacy decision, not a schema decision.
+An exposure use **never carries a source event id or room id.** The listening lane drops the source event id and sender at the point of collection on the grounds that a per-student record of which peers a learner attends to is a social-graph fact about a third party (see [`DosageAudioEvent`](../../lib/features/dosage/dosage_audio_event.dart)), and a lemma-level record derived from someone else's message would reintroduce exactly that, with content attached. Changing this is a privacy decision, not a schema decision.
 
 Exposure is excluded from `sentByUser` and returns `null` from `summaryEnumType`, so it reaches neither the typed-words counter nor the correct/incorrect buckets: it is neither. The bucket split in [`SpaceAnalyticsSummaryModel`](../../lib/routes/chat/chat_details/space_analytics/space_analytics_summary_model.dart) keys on the sign of `xp` rather than on that enum, so it needs its own guard there — a 0-XP use otherwise lands in *incorrect*.
 
@@ -120,7 +120,7 @@ Total XP across all constructs determines the user's global level, computed in [
 
 $$\text{level} = \lfloor 1 + \sqrt{\frac{1 + 8 \cdot \text{totalXP} / 300}{2}} \rfloor$$
 
-Level-ups are **celebration moments**: the app shows [LevelUpBadgeCelebration](../../lib/routes/world/level_up_badge_celebration.dart) – a badge pulse plus a "Level N!" chip.
+Level-ups are **celebration moments**: the app shows [LevelUpBadgeCelebration](../../lib/routes/world/level_up_badge_celebration.dart) – a badge pulse, a "Level N!" chip and the level-up chime.
 
 > This formula is still being balanced to find the optimal sequence of effort and reward.
 
@@ -158,7 +158,7 @@ Because analytics are stored in Matrix rooms, they sync across devices automatic
 |-------|-------------|
 | [`XPGainedEvent`](../../lib/features/analytics_data/analytics_update_events.dart) | Floating "+N" animation anchored to the word the user interacted with |
 | [`ConstructLevelUpEvent`](../../lib/features/analytics_data/analytics_update_events.dart) | Growth animation on the word's token in the toolbar |
-| [`LevelUpEvent`](../../lib/features/analytics_data/analytics_update_events.dart) | Full-screen banner + chime + AI-generated learning summary |
+| [`LevelUpEvent`](../../lib/features/analytics_data/analytics_update_events.dart) | Badge pulse + "Level N!" chip + chime on the level badge |
 | [`MorphUnlockedEvent`](../../lib/features/analytics_data/analytics_update_events.dart) | Notification that a new grammar pattern has been discovered |
 | [`NewConstructsEvent`](../../lib/features/analytics_data/analytics_update_events.dart) | Subtle highlight (first-ever interaction with a word) |
 

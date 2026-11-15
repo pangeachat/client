@@ -532,6 +532,21 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(PRoutes.world, parts);
   }
 
+  /// Reopen session [roomId] from the open course card (a session the
+  /// learner is in, from its Mission card's Play or its card in the row or
+  /// the full plan). It is seated as a session started from the card is
+  /// ([openCourseActivity], then the room replacing the plan): the sole left
+  /// token, marked [RoomTokenParam.fromCourseCard], so closing it reopens the
+  /// card on the Mission riding `?mission=` ([closeLeftRoom]) rather than
+  /// uncovering the full plan it was opened over. The course scope and the
+  /// right column stay.
+  static String openCourseSession(Uri current, String roomId) =>
+      setLeft(current, [
+        RoomPanelToken(
+          RoomTokenParam(id: shortRoomId(roomId), fromCourseCard: true),
+        ),
+      ]);
+
   /// Start [activityId]'s session from its open plan in course [spaceId]:
   /// [openCourseActivity] with launch, keeping where the plan was opened from
   /// and the Mission picked in that course, so the plan's back arrow and the

@@ -246,11 +246,11 @@ class QuestObjectivesLoader {
   bool? _plansAwaited;
 
   /// A plan this course's rings count is on its way: a saved session of one
-  /// of its activities — or, with a course copy, of any member of their
-  /// families — whose plan read is queued or in flight. A session's goals
-  /// come from its plan, and so does whether one saved before saves were
-  /// filed by language counts at all, so a ring drawn without it grows once
-  /// it lands.
+  /// of its activities — or, with a course Can-Do list, of any member of
+  /// their families — whose plan read is queued or in flight. A session's
+  /// goals come from its plan, and so does whether one saved before saves
+  /// were filed by language counts at all, so a ring drawn without it grows
+  /// once it lands.
   bool get _countedPlanLoading {
     final loading = client.savedSessionActivitiesLoadingPlan;
     return loading.isNotEmpty &&
@@ -525,7 +525,7 @@ class _OutlineRequest {
   final String? courseRoomId;
   final String displayL1;
 
-  /// The course copy's revision the outline was built with (0 = no copy).
+  /// The course Can-Do list's revision the outline was built with (0 = none).
   final int copyRevision;
 }
 

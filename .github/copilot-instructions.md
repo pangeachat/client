@@ -44,6 +44,6 @@ See [codebase-organization.instructions.md](instructions/codebase-organization.i
 
 ### Conventions
 - Package imports use `package:fluffychat/...`
-- Feature modules follow pattern: `models/`, `repo/` (API calls), `widgets/`, `utils/`, `constants/`
+- Feature data and logic go in `lib/features/<domain>/`, flat until the domain grows; on-screen UI goes in `lib/routes/` (see the Placement Decision Tree)
 - API repo files pair with request/response models (e.g., `igc_repo.dart` + `igc_request_model.dart` + `igc_response_model.dart`)
 - Controllers extend `ChangeNotifier` or use `BaseController<T>` (stream-based)

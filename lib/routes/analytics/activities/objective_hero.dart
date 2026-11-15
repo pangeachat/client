@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_star.dart';
 import 'package:fluffychat/routes/courses/course_objectives/mission_xp_ring.dart';
@@ -79,7 +80,11 @@ class ObjectiveHero extends StatelessWidget {
             Semantics(
               label: progress == null
                   ? null
-                  : l10n.xpTowardObjective(progress.xp, progress.threshold),
+                  : l10n.xpOfThresholdTowardCanDo(
+                      progress.xp,
+                      progress.threshold,
+                      CanDoTerm.singular,
+                    ),
               child: ExcludeSemantics(
                 child: MissionXpRing(
                   size: 128.0,

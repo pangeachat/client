@@ -81,6 +81,7 @@ void main() {
               child: const Text('See all'),
             ),
             ActivityCarousel(
+              courseId: null,
               activities: activities,
               onTap: (a) => opened.add(a.activityId),
               xpByActivity: (_) => 0,

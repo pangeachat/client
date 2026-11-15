@@ -10,7 +10,7 @@ import 'package:fluffychat/features/quests/activity_family.dart';
 /// (#9420) when the course sets no override: the Standard preset. Lowered
 /// together with [kGoalXp] (#9601) to stay generally balanced. The instructor
 /// picks a preset or a custom value in the admin dashboard (org
-/// quests-and-learning-objectives doc, "XP per objective").
+/// admin-dash doc, "Teacher surfaces in the client").
 const int kDefaultXpToCompleteObjective = 1000;
 
 /// What one awarded activity goal — a checkmark — pays into the session's

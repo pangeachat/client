@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-11-11 14:11:25.932687",
+    "@@last_modified": "2026-11-12 09:04:22.882054",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -7149,7 +7149,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "Žiadne priame správy ani chaty nenájdené. Uistite sa, že je váš vyhľadávanie správne napísané.",
-    "activityAnalyticsTooltipBody": "Toto sú vaše uložené aktivity na preskúmanie a cvičenie.",
     "numSavedActivities": "Počet uložených aktivít",
     "saveActivityTitle": "Uložiť aktivitu",
     "saveActivityDesc": "Dobrá práca! Uložte túto aktivitu na neskoršie preskúmanie a cvičenie",
@@ -7384,10 +7383,6 @@
     "zhTWDisplayName": "Čínština (tradičná)",
     "zuDisplayName": "Zulu",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10150,7 +10145,6 @@
     },
     "pageLabel": "{title} stránka",
     "closeHint": "Zavrieť nápovedu",
-    "starListLabel": "Uložené aktivity a hviezdy",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10160,10 +10154,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10480,7 +10470,6 @@
     "selectImageLabel": "Vybrať obrázok",
     "userSearchTagsLabel": "Hľadať v...",
     "courseDetails": "Podrobnosti kurzu",
-    "objective": "Cieľ",
     "pingedLabel": "Pingnuté",
     "mapFilterPlayerCount": "{count} hráčov",
     "practiceFeedbackButtonTooltip": "Nahlásiť problém s týmto cvičením",
@@ -10781,17 +10770,9 @@
     "reportSent": "Nahlásenie odoslané",
     "reportNotSent": "Vaše nahlásenie sa nepodarilo odoslať. Skontrolujte pripojenie a skúste to znova.",
     "reportPointerMessage": "V kurze {courseName} bola nahlásená správa – pozrite si Bezpečnosť",
-    "learningObjective": "Vzdelávací cieľ",
-    "learningObjectives": "Vzdelávacie ciele",
-    "missionNofM": "Misia {index} z {count}",
-    "xpTowardObjective": "{xp} z {threshold} XP k tomuto cieľu",
     "xpOfThreshold": "{xp} / {threshold} XP",
     "courseComplete": "Kurz dokončený!",
-    "courseCompleteDesc": "Dokončili ste všetkých {count} cieľov v tomto kurze. Pokračujte v precvičovaní, aby ste si udržali to, čo ste sa naučili.",
-    "practiceObjective": "Precvičte si tento cieľ",
     "otherActivities": "Ďalšie aktivity",
-    "objectiveCircleComplete": "Misia {index}: dokončená",
-    "objectiveCircleUpNext": "Misia {index}: ďalšia v poradí",
     "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu",
     "andCertifyIMeetTheMinimumAge": " a potvrdzujem, že mám aspoň 13 rokov, alebo minimálny vek požadovaný v mojej krajine, ak je vyšší.",
     "filteredNetworkBlockedTitle": "Táto sieť blokuje Pangea Chat",
@@ -10841,7 +10822,6 @@
     "offlinePracticeNote": "Offline. Vaše odpovede sa nahrajú, keď budete späť online.",
     "offlinePracticeSavedNote": "Uložené v tomto zariadení. Vaše XP sa nahrá, keď budete opäť online.",
     "offlinePracticeNothingSaved": "Na tomto zariadení nie je uložené dostatočné množstvo obsahu na precvičovanie offline. Skúste to znova, keď budete online.",
-    "missionNumber": "Misia {index}",
     "xpToYourStar": "{xp} XP k tvojej hviezde",
     "missionStarEarned": "Hviezda získaná!",
     "xpFromChats": "Chaty {xp}",
@@ -10850,8 +10830,6 @@
     "playMission": "Hrať",
     "wordCount": "{count, plural, =1{1 slovo} other{{count} slov}}",
     "continueActivity": "Pokračovať",
-    "noObjectiveActivitiesYet": "Zatiaľ si nedokončil(a) žiadnu aktivitu pre tento cieľ. Začni jednu zo svojho kurzu.",
-    "objectiveNotInYourCourses": "Tento cieľ nie je v žiadnom z tvojich kurzov.",
     "objectiveActivityCount": "{count, plural, =0{Zatiaľ žiadne aktivity} =1{1 aktivita odohraná} other{{count} aktivít odohraných}}",
     "activityCompleted": "Dokončené",
     "completedTimes": "Dokončené {count}-krát",
@@ -10859,8 +10837,6 @@
     "xpThresholdSuffix": "/ {threshold} XP",
     "xpFromConversation": "Konverzácia {xp}",
     "xpIncludingGoals": "vrátane {xp} z cieľov",
-    "missionOtherLanguageNotice": "Táto misia je z kurzu v jazyku {language}. Váš pokrok sa do nej započítava iba vtedy, keď sa učíte jazyk {language}.",
-    "missionLanguageMismatchDesc": "Táto misia je z kurzu v jazyku {language}. Prepnúť cieľový jazyk na {language}?",
     "xpBySkillTitle": "Podľa zručnosti",
     "missionNextActivity": "Ďalšia aktivita",
     "missionContinueActivity": "Pokračovať v aktivite",
@@ -10870,7 +10846,6 @@
     "otherCoursesSessions": "Iné kurzy ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, získaných {xp} XP",
-    "currentMission": "Aktuálna misia",
     "constructUseCorRADesc": "Prečítané nahlas a vypočuté",
     "constructUseIncRADesc": "Prečítané nahlas, ale nepočuté",
     "hearItFirstToolName": "Najprv si to vypočujte",
@@ -10892,7 +10867,6 @@
     "readAloudTake": "Zobrať {number}",
     "videoWontPlayHere": "Toto video sa tu neprehrá.",
     "watchOnYoutube": "Pozrieť na YouTube",
-    "xpTowardMission": "{xp} XP k tejto misii",
     "practiceStartWordCount": "{count, plural, =1{slovo na precvičenie} other{slov na precvičenie}}",
     "practiceStartGrammarCount": "{count, plural, =1{gramatický bod na precvičenie} other{gramatické body na precvičenie}}",
     "practiceStartExerciseTypes": "Typy cvičení",
@@ -10930,5 +10904,30 @@
     "requireAnalyticsAccessSummary": "Študenti s vami zdieľajú svoj pokrok v učení, keď sa pripoja.",
     "courseAccessPrivateDesc": "Kurz sa nezobrazuje vo vyhľadávaní. Ľudia sa pripoja pomocou vašej pozvánky alebo kódu kurzu.",
     "courseAccessProtected": "Chránené",
-    "courseAccessProtectedDesc": "Pre vlastných študentov pedagóga. Kurz spravuje ich účty. Nastavte z panela pedagóga."
+    "courseAccessProtectedDesc": "Pre vlastných študentov pedagóga. Kurz spravuje ich účty. Nastavte z panela pedagóga.",
+    "discussionLabel": "Diskusia",
+    "discussionCardSemantics": "Diskusia: {title}",
+    "discussionJoined": "Pripojené",
+    "discussionAnswered": "Zodpovedané",
+    "joinTheDiscussion": "Zapojte sa do diskusie",
+    "discussionClassmatesInRoom": "{count, plural, =1{1 spolužiak je v tejto diskusii} other{{count} spolužiaci sú v tejto diskusii}}",
+    "discussionStartIt": "Buďte prvý, kto začne túto diskusiu",
+    "discussionRemoved": "Nemôžete sa zapojiť do tejto diskusie.",
+    "discussionJoinArriving": "Ste dnu! Diskusia sa otvorí hneď, ako dorazí.",
+    "roleplayLabel": "Hranie rolí",
+    "canDoAnalyticsTooltipBody": "Každé {canDo} sa naplní XP z jeho aktivít a cvičenia. Plné {canDo} získa hviezdu.",
+    "canDoStarListLabel": "{canDos} a uložené aktivity",
+    "canDoNofM": "{canDo} {index} z {count}",
+    "xpOfThresholdTowardCanDo": "{xp} z {threshold} XP k tomuto {canDo}",
+    "courseCompleteCanDosDesc": "Dokončili ste všetky {count} {canDos} v tomto kurze. Pokračujte v cvičení, aby ste si udržali to, čo ste sa naučili.",
+    "practiceCanDo": "Precvičte si toto {canDo}",
+    "canDoCircleComplete": "{canDo} {index}: dokončené",
+    "canDoCircleUpNext": "{canDo} {index}: ďalšie v poradí",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "Toto {canDo} je z kurzu v jazyku {language}. Váš pokrok sa počíta iba vtedy, keď sa učíte {language}.",
+    "canDoLanguageMismatchDesc": "Toto {canDo} je z kurzu v jazyku {language}. Prepnúť cieľový jazyk na {language}?",
+    "noCanDoActivitiesYet": "Zatiaľ ste nedokončili žiadnu aktivitu pre toto {canDo}. Spustite ju z vášho kurzu.",
+    "canDoNotInYourCourses": "Toto {canDo} nie je v žiadnom z vašich kurzov.",
+    "currentCanDo": "Aktuálne {canDo}",
+    "xpGainedTowardCanDo": "{xp} XP k tomuto {canDo}"
 }

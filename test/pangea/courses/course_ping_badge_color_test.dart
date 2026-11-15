@@ -102,6 +102,7 @@ void main() {
         SizedBox(
           width: 400.0,
           child: ObjectiveSection(
+            courseId: null,
             index: 1,
             missionCount: 1,
             group: QuestObjectiveGroup(

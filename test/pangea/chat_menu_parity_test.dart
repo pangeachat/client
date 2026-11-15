@@ -301,4 +301,16 @@ void main() {
     expect(header, isNot(contains(ChatContextAction.favorite)));
     expect(header, isNot(contains(ChatContextAction.markUnread)));
   });
+
+  testWidgets('a discussion room offers no Invite', (tester) async {
+    // Join is the only way into a discussion: it seats the student and keeps
+    // the room's count, which an invited join would skip.
+    final room = discussionRoom(client, creator: '@bot:example.org');
+    final context = await pumpContext(tester);
+
+    expect(
+      actionsFor(context, room, ChatMenuSource.chatHeader),
+      isNot(contains(ChatContextAction.invite)),
+    );
+  });
 }

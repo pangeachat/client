@@ -52,4 +52,40 @@ void main() {
     expect(single, const Size.square(30.0));
     expect(repeated.width, greaterThan(single.width));
   });
+
+  group('without the coin (a discussion\'s XP badge, #9647)', () {
+    Future<void> pumpBadge(WidgetTester tester, int xp) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          locale: const Locale('en'),
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+          home: Scaffold(
+            body: Center(
+              child: CompletedStamp(size: 16.0, xp: xp, showCoin: false),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+    }
+
+    testWidgets('shows the XP in the same form as the stamp, short from five '
+        'digits', (tester) async {
+      final semantics = tester.ensureSemantics();
+      await pumpBadge(tester, 12000);
+
+      expect(find.text('12K XP'), findsOneWidget);
+      expect(find.bySemanticsLabel('12,000 XP'), findsOneWidget);
+      expect(find.byIcon(Icons.auto_awesome), findsOneWidget);
+      semantics.dispose();
+    });
+
+    testWidgets('below five digits, the locale-formatted number', (
+      tester,
+    ) async {
+      await pumpBadge(tester, 1250);
+      expect(find.text('1,250 XP'), findsOneWidget);
+    });
+  });
 }

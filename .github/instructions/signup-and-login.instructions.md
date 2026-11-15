@@ -90,7 +90,7 @@ Spacing below is in logical pixels and applies to both layouts. The three stacke
 
 ### Slide text
 
-Each headline is localized text drawn over the carousel image rather than baked into it, so it translates and scales independently of the image, and a copy change never means re-exporting six files.
+Each headline is localized text the app draws rather than baked into the carousel image, so it translates and scales independently of the image, and a copy change never means re-exporting six files.
 
 **The headline sits above the carousel image in both layouts**, at the top of the slide, so it is read before the image and stays clear of the buttons. Nothing about the headline changes with window shape — the tables above give the measurements, and only the spacing around it differs.
 
@@ -106,7 +106,7 @@ Size and weight are the same in both layouts — a headline that changes weight 
 
 Colour and outline come from the scheme roles under Buttons, dots and colour. In the narrow layout the outline does the separating work over the map: taking the surface colour makes it near-white in light and near-dark in dark, so one rule holds in both themes.
 
-**A headline wraps to a second line rather than shrinking or clipping**, because the size is doing legibility work over the carousel image. The strip is sized for two lines: one line at 24 measures 29, so two with the same breathing room is 64. Where the operating system's text-size setting needs more, the strip grows and the carousel image gives up the height — which is what makes it safe to leave scaling enabled. The current build disables it instead, recorded in [issue #6294](https://github.com/pangeachat/client/issues/6294).
+**A headline wraps to a second line rather than shrinking or clipping**, because the size is doing the legibility work. The strip is sized for two lines: one line at 24 measures 29, so two with the same breathing room is 64. Where the operating system's text-size setting needs more, the strip grows and the carousel image gives up the height — which is what makes it safe to leave scaling enabled. The current build disables it instead, recorded in [issue #6294](https://github.com/pangeachat/client/issues/6294).
 
 Two lines is headroom for translation, not a target. **A headline should still read as one line at 24 in English** so longer languages have somewhere to go; several run twenty to thirty per cent longer. A third line means the copy is too long.
 

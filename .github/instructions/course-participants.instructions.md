@@ -5,7 +5,7 @@ description: "The course page's Participants section — who is listed and in wh
 
 # Course Participants
 
-The course page's people section is a plain **Participants** list: who is in the course, so a learner can find a teacher or a classmate and start a conversation. It replaced a ranked Leaderboard ([client#9776](https://github.com/pangeachat/client/issues/9776)). Mission progress is personal now, and teachers see each student's progress on their own dashboard, so a student's progress does not need to be public to the class. A regular chat's participants page is a different surface.
+The course page's people section is a plain **Participants** list: who is in the course, so a learner can find a teacher or a classmate and start a conversation. It replaced a ranked Leaderboard ([client#9776](https://github.com/pangeachat/client/issues/9776)). Can-Do progress is personal now, and teachers see each student's progress on their own dashboard, so a student's progress does not need to be public to the class. A regular chat's participants page is a different surface.
 
 ## What a card shows
 

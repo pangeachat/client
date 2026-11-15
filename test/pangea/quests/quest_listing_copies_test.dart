@@ -15,9 +15,9 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
 
-/// The course listing with the course's own copies (Content Studio v2): a
-/// member's read asks for them (`include_course_copies`, `extra_lo_ids`), the
-/// per-activity `family_ids` come back into the outline, and a Can-Do the
+/// The course listing with the course's activity copies (Content Studio v2): a
+/// member's read asks for them (`include_activity_copies`, `extra_lo_ids`),
+/// the per-activity `family_ids` come back into the outline, and a Can-Do the
 /// record added beyond the quest is shown from the listing's own missions.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -151,7 +151,7 @@ void main() {
     expect(requests, hasLength(1));
     final query = requests.single.queryParametersAll;
     expect(query['course_room_id'], ['!room:test']);
-    expect(query['include_course_copies'], ['1']);
+    expect(query['include_activity_copies'], ['1']);
     expect(query['extra_lo_ids'], ['lo-added', 'lo-gone']);
   });
 
@@ -210,7 +210,7 @@ void main() {
       await QuestRepo.outline('q1');
     });
     final query = requests.single.queryParametersAll;
-    expect(query.containsKey('include_course_copies'), isFalse);
+    expect(query.containsKey('include_activity_copies'), isFalse);
     expect(query.containsKey('extra_lo_ids'), isFalse);
     expect(query.containsKey('course_room_id'), isFalse);
   });
@@ -221,7 +221,7 @@ void main() {
       await QuestRepo.outline('q1', courseRoomId: '!room:test');
     });
     final query = requests.single.queryParametersAll;
-    expect(query['include_course_copies'], ['1']);
+    expect(query['include_activity_copies'], ['1']);
     expect(query.containsKey('extra_lo_ids'), isFalse);
   });
 

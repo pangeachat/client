@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -118,7 +119,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.morphAnalyticsList:
         return l10n.morphAnalyticsListBody;
       case InstructionsEnum.activityAnalyticsList:
-        return l10n.activityAnalyticsTooltipBody;
+        return l10n.canDoAnalyticsTooltipBody(CanDoTerm.singular);
       case InstructionsEnum.emptyChatWarning:
         return l10n.emptyChatWarningDesc;
       case InstructionsEnum.activityStatsMenu:

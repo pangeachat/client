@@ -59,6 +59,20 @@ class QuestPlan {
   List<String> get learningObjectiveIds =>
       sequence.map((step) => step.objective.id).toList();
 
+  /// The plan's selected activities by Can-Do, for the entries that select
+  /// any: what a course without its own copy or pins shows of that Can-Do
+  /// (org quests doc, "Each entry in the Can-Do sequence").
+  Map<String, List<String>> get activitySelections {
+    final selections = <String, List<String>>{};
+    for (final step in sequence) {
+      final ids = step.activityIds;
+      if (ids != null && ids.isNotEmpty) {
+        selections.putIfAbsent(step.objective.id, () => ids);
+      }
+    }
+    return selections;
+  }
+
   /// Display forms of the quest's two header fields, mirroring
   /// `CoursePlanModel.targetLanguageDisplay` and `CoursePlanModel.cefrLevel` —
   /// the same chips render off either model, so they must read identically.
@@ -96,12 +110,26 @@ class QuestPlan {
 }
 
 /// One step in a quest: a Learning Objective plus whether it was newly minted
-/// for this quest (vs recycled from the catalog).
+/// for this quest (vs recycled from the catalog), and the plan's selected
+/// activities and note for it.
 class QuestObjectiveStep {
   final LearningObjective objective;
   final bool wasMinted;
 
-  const QuestObjectiveStep({required this.objective, required this.wasMinted});
+  /// The activity content ids the plan selects for this Can-Do, as stored:
+  /// null when it selects none. An empty list also selects none; it is kept
+  /// apart from null only so nothing fills it with defaults.
+  final List<String>? activityIds;
+
+  /// The plan's note for this Can-Do; null when it has none or a blank one.
+  final String? note;
+
+  const QuestObjectiveStep({
+    required this.objective,
+    required this.wasMinted,
+    this.activityIds,
+    this.note,
+  });
 
   factory QuestObjectiveStep.fromJson(Map<String, dynamic> json) {
     // `learning_objective` is a populated object at depth>=1, or a bare id
@@ -110,9 +138,13 @@ class QuestObjectiveStep {
     final objective = lo is Map
         ? LearningObjective.fromJson(lo.cast<String, dynamic>())
         : LearningObjective(id: lo as String, objective: '');
+    final ids = json['activity_ids'];
+    final note = json['note'];
     return QuestObjectiveStep(
       objective: objective,
       wasMinted: json['was_minted'] == true,
+      activityIds: ids is List ? ids.whereType<String>().toList() : null,
+      note: note is String && note.trim().isNotEmpty ? note : null,
     );
   }
 }

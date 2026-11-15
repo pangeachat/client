@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-11 14:11:17.483497",
+    "@@last_modified": "2026-11-12 09:04:04.795899",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -7118,7 +7118,6 @@
         "placeholders": {}
     },
     "emptyChatSearch": "לא נמצאו הודעות ישירות או צ'אטים. ודא שהחיפוש שלך כתוב נכון.",
-    "activityAnalyticsTooltipBody": "אלה הפעילויות ששמרת לצורך סקירה ותרגול.",
     "numSavedActivities": "מספר הפעילויות השמורות",
     "saveActivityTitle": "שמור פעילות",
     "saveActivityDesc": "עבודה טובה! שמור את הפעילות הזו לסקירה ותרגול מאוחר יותר",
@@ -7353,10 +7352,6 @@
     "zhTWDisplayName": "סינית (מסורתית)",
     "zuDisplayName": "זולו",
     "@emptyChatSearch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityAnalyticsTooltipBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -10119,7 +10114,6 @@
     },
     "pageLabel": "{title} עמוד",
     "closeHint": "סגור רמז",
-    "starListLabel": "פעילויות ושמות כוכבים שנשמרו",
     "@pageLabel": {
         "type": "String",
         "placeholders": {
@@ -10129,10 +10123,6 @@
         }
     },
     "@closeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@starListLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10449,7 +10439,6 @@
     "selectImageLabel": "בחר תמונה",
     "userSearchTagsLabel": "חפש ב...",
     "courseDetails": "פרטי הקורס",
-    "objective": "מטרה",
     "pingedLabel": "תויג",
     "mapFilterPlayerCount": "{count} שחקנים",
     "practiceFeedbackButtonTooltip": "דווח על בעיה בתרגיל זה",
@@ -10750,17 +10739,9 @@
     "reportSent": "הדיווח נשלח",
     "reportNotSent": "הדיווח שלך לא נשלח. בדוק את החיבור שלך ונסה שוב.",
     "reportPointerMessage": "הודעה דווחה ב{courseName} — ראה בטיחות",
-    "learningObjective": "מטרת למידה",
-    "learningObjectives": "מטרות למידה",
-    "missionNofM": "משימה {index} מתוך {count}",
-    "xpTowardObjective": "{xp} מתוך {threshold} נקודות ניסיון למטרה זו",
     "xpOfThreshold": "{xp} / {threshold} נקודות ניסיון",
     "courseComplete": "הקורס הושלם!",
-    "courseCompleteDesc": "השלמת את כל {count} המטרות בקורס זה. המשך לתרגל כדי לשמר את מה שלמדת.",
-    "practiceObjective": "תרגל מטרה זו",
     "otherActivities": "פעילויות אחרות",
-    "objectiveCircleComplete": "משימה {index}: הושלמה",
-    "objectiveCircleUpNext": "משימה {index}: הבאה בתור",
     "useActivityImageAsChatBackground": "השתמש בתמונת הפעילות כרקע לצ'אט",
     "andCertifyIMeetTheMinimumAge": "ומאשר/ת שאני בן/בת 13 לפחות, או בגיל המינימלי הנדרש במדינתי אם הוא גבוה יותר.",
     "filteredNetworkBlockedTitle": "רשת זו חוסמת את Pangea Chat",
@@ -10810,7 +10791,6 @@
     "offlinePracticeNote": "לא מקוון. התשובות שלך יעלו כשתחזור.",
     "offlinePracticeSavedNote": "נשמר במכשיר זה. ה-XP שלך יעלה כשתחזור למצב מקוון.",
     "offlinePracticeNothingSaved": "לא נשמר מספיק ביישום זה כדי לתרגל במצב לא מקוון. נסה שוב כשתהיה מחובר.",
-    "missionNumber": "משימה {index}",
     "xpToYourStar": "{xp} נקודות ניסיון לכוכב שלך",
     "missionStarEarned": "הכוכב הושג!",
     "xpFromChats": "צ׳אטים {xp}",
@@ -10819,8 +10799,6 @@
     "playMission": "שחק",
     "wordCount": "{count, plural, =1{מילה אחת} other{{count} מילים}}",
     "continueActivity": "המשך",
-    "noObjectiveActivitiesYet": "עוד לא השלמת פעילות עבור יעד זה. התחל אחת מהקורס שלך.",
-    "objectiveNotInYourCourses": "יעד זה אינו נמצא באף אחד מהקורסים שלך.",
     "objectiveActivityCount": "{count, plural, =0{אין עדיין פעילויות} =1{פעילות אחת ששוחקה} other{{count} פעילויות ששוחקו}}",
     "activityCompleted": "הושלם",
     "completedTimes": "הושלם {count} פעמים",
@@ -10828,8 +10806,6 @@
     "xpThresholdSuffix": "/ {threshold} נקודות ניסיון",
     "xpFromConversation": "שיחה {xp}",
     "xpIncludingGoals": "כולל {xp} מיעדים",
-    "missionOtherLanguageNotice": "המשימה הזו היא מקורס ב{language}. ההתקדמות שלך בה נספרת רק כשאתה לומד {language}.",
-    "missionLanguageMismatchDesc": "המשימה הזו היא מקורס ב{language}. לשנות את שפת היעד שלך ל{language}?",
     "xpBySkillTitle": "לפי מיומנות",
     "missionNextActivity": "הפעילות הבאה",
     "missionContinueActivity": "המשך פעילות",
@@ -10839,7 +10815,6 @@
     "otherCoursesSessions": "קורסים אחרים ({num})",
     "activityXpStamp": "{xp} XP",
     "activityCompletedWithXp": "{completed}, {xp} XP נצברו",
-    "currentMission": "המשימה הנוכחית",
     "constructUseCorRADesc": "נקרא בקול ונשמע",
     "constructUseIncRADesc": "נקרא בקול, לא נשמע",
     "hearItFirstToolName": "שמע קודם",
@@ -10861,7 +10836,6 @@
     "readAloudTake": "טייק {number}",
     "videoWontPlayHere": "הסרטון הזה לא יופעל כאן.",
     "watchOnYoutube": "צפה ב-YouTube",
-    "xpTowardMission": "{xp} XP בדרך למשימה זו",
     "practiceStartWordCount": "{count, plural, =1{מילה לתרגול} other{מילים לתרגול}}",
     "practiceStartGrammarCount": "{count, plural, =1{נקודת דקדוק לתרגול} other{נקודות דקדוק לתרגול}}",
     "practiceStartExerciseTypes": "סוגי תרגילים",
@@ -10899,5 +10873,30 @@
     "requireAnalyticsAccessSummary": "סטודנטים משתפים איתך את התקדמות הלמידה שלהם כשהם מצטרפים.",
     "courseAccessPrivateDesc": "הקורס לא מופיע בחיפוש. אנשים מצטרפים עם ההזמנה או קוד הקורס שלך.",
     "courseAccessProtected": "מוגן",
-    "courseAccessProtectedDesc": "לתלמידים של מחנך. הקורס מנהל את החשבונות שלהם. הגדרה מלוח המחוונים של המחנך."
+    "courseAccessProtectedDesc": "לתלמידים של מחנך. הקורס מנהל את החשבונות שלהם. הגדרה מלוח המחוונים של המחנך.",
+    "discussionLabel": "דיון",
+    "discussionCardSemantics": "דיון: {title}",
+    "discussionJoined": "הצטרפת",
+    "discussionAnswered": "נענה",
+    "joinTheDiscussion": "הצטרף לדיון",
+    "discussionClassmatesInRoom": "{count, plural, =1{חבר לכיתה אחד נמצא בדיון הזה} other{{count} חברים לכיתה נמצאים בדיון הזה}}",
+    "discussionStartIt": "היה הראשון להתחיל את הדיון הזה",
+    "discussionRemoved": "אינך יכול/ה להצטרף לדיון זה.",
+    "discussionJoinArriving": "אתה בפנים! הדיון ייפתח ברגע שהוא יגיע.",
+    "roleplayLabel": "משחק תפקידים",
+    "canDoAnalyticsTooltipBody": "כל {canDo} מתמלא בנקודות XP מהפעילויות והתרגול שלו. {canDo} מלא מזכה בכוכב.",
+    "canDoStarListLabel": "{canDos} ופעילויות שמורות",
+    "canDoNofM": "{canDo} {index} מתוך {count}",
+    "xpOfThresholdTowardCanDo": "{xp} מתוך {threshold} נקודות XP לקראת {canDo} זה",
+    "courseCompleteCanDosDesc": "השלמת את כל {count} ה-{canDos} בקורס זה. המשך לתרגל כדי לשמר את מה שלמדת.",
+    "practiceCanDo": "תרגל {canDo} זה",
+    "canDoCircleComplete": "{canDo} {index}: הושלם",
+    "canDoCircleUpNext": "{canDo} {index}: הבא בתור",
+    "canDoNumber": "{canDo} {index}",
+    "canDoOtherLanguageNotice": "{canDo} זה הוא מקורס ב-{language}. ההתקדמות שלך בו נספרת רק כשאתה לומד {language}.",
+    "canDoLanguageMismatchDesc": "{canDo} זה הוא מקורס ב-{language}. לשנות את שפת היעד שלך ל-{language}?",
+    "noCanDoActivitiesYet": "עדיין לא השלמת פעילות עבור {canDo} זה. התחל אחת מהקורס שלך.",
+    "canDoNotInYourCourses": "{canDo} זה אינו נמצא באף אחד מהקורסים שלך.",
+    "currentCanDo": "{canDo} נוכחי",
+    "xpGainedTowardCanDo": "{xp} נקודות XP לקראת {canDo} זה"
 }

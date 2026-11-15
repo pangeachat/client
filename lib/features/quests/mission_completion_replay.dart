@@ -69,7 +69,7 @@ class MissionCompletionReplay {
 
   /// The saved sessions [missionId] is credited with, crediting as the
   /// resolver does (activity_family.dart): each session's activity counts
-  /// through its family's canonical id, and with a course copy only an
+  /// through its family's canonical id, and with a course Can-Do list only an
   /// activity in a family counts at all.
   List<SavedSessionXp> _sessionsOf(CourseLoOutline outline, String missionId) {
     final credit = outline.credit;

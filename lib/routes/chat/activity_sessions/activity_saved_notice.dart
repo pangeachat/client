@@ -7,6 +7,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/can_do_term.dart';
 import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -62,7 +63,7 @@ class ActivitySavedNotice extends StatelessWidget {
       if (!room.hasArchivedActivity) return const SizedBox.shrink();
 
       final l10n = L10n.of(context);
-      final page = l10n.learningObjectives;
+      final page = CanDoTerm.plural;
       // The whole line is the one control; the page's name in it is drawn as
       // the link.
       final parts = l10n.activitySavedTo(page).split(page);

@@ -8,16 +8,27 @@ import { test as base, expect } from "@playwright/test";
  */
 export const test = base.extend({
   page: async ({ page }, use) => {
-    // Inject mock: true into all sent choreo requests
-    // And redirect to local choreo server
-    await page.route('**/choreo/*', (route, request) => {
-      const headers = {
-        ...request.headers(),
-        'mock': 'true',
-        'mock_llm_latency_override_s': '0',
-      };
-      route.continue({
-        headers: headers
+    // Choreo reads `mock` and `mock_llm_latency_override_s` from the JSON
+    // request body, so set them there on every choreo POST. A GET has no body
+    // to carry them and goes through unchanged.
+    await page.route("**/choreo/**", async (route, request) => {
+      const raw = request.postData();
+      if (request.method() !== "POST" || !raw) return route.continue();
+      let body: unknown;
+      try {
+        body = JSON.parse(raw);
+      } catch {
+        return route.continue();
+      }
+      if (body === null || typeof body !== "object" || Array.isArray(body)) {
+        return route.continue();
+      }
+      return route.continue({
+        postData: JSON.stringify({
+          ...body,
+          mock: true,
+          mock_llm_latency_override_s: 0,
+        }),
       });
     });
 
