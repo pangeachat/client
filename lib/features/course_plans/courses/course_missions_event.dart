@@ -421,10 +421,16 @@ extension QuestOutlineForCourse on QuestOutline {
 /// show. With a copy, a card stays when a listed Can-Do it satisfies lists it;
 /// without one, the fail-open rule over the pins and then the plan's
 /// [selections] ([QuestPlan.activitySelections], [effectivePinnedActivityIds]).
+/// Without a copy, only the quest's Can-Dos ([listedLoIds]) decide, as on the
+/// course page: a card stays when one of them shows it, and a Can-Do the
+/// quest does not list never lets an unselected card in (client#9839). With
+/// [listedLoIds] unknown (the outline read failed), every Can-Do of a card
+/// counts.
 List<QuestActivityCard> restrictCardsForCourse(
   List<QuestActivityCard> cards,
   CourseListRules rules, {
   Map<String, List<String>> selections = const {},
+  Set<String>? listedLoIds,
 }) {
   final copy = rules.missions;
   if (copy != null) {
@@ -441,9 +447,10 @@ List<QuestActivityCard> restrictCardsForCourse(
   }
   final pinnedByObjective = rules.pins ?? const <String, List<String>>{};
   if (pinnedByObjective.isEmpty && selections.isEmpty) return cards;
+  bool counts(String loId) => listedLoIds?.contains(loId) ?? true;
   final availableByLo = <String, Set<String>>{};
   for (final card in cards) {
-    for (final loId in card.learningObjectiveRefs) {
+    for (final loId in card.learningObjectiveRefs.where(counts)) {
       (availableByLo[loId] ??= <String>{}).add(card.activityId);
     }
   }
@@ -457,9 +464,9 @@ List<QuestActivityCard> restrictCardsForCourse(
   };
   return cards
       .where(
-        (card) => card.learningObjectiveRefs.any(
-          (loId) => allowedByLo[loId]?.contains(card.activityId) ?? true,
-        ),
+        (card) => card.learningObjectiveRefs
+            .where(counts)
+            .any((loId) => allowedByLo[loId]!.contains(card.activityId)),
       )
       .toList();
 }
