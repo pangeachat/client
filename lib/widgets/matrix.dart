@@ -1158,6 +1158,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       }
       // Pangea#
       final loggedInWithMultipleClients = widget.clients.length > 1;
+      // Tells the teacher dashboard whether any account here is still signed
+      // in, whichever branch below runs (a hand-off sign-in can leave two
+      // clients, which takes the multiple-clients branch on logout).
+      SharedSignIn.markSignedIn(widget.clients.any((x) => x.isLogged()));
       if (state == LoginState.loggedOut) {
         // #Pangea
         // In a `finally`, because the mark is what makes `getLoginClient`
@@ -1231,8 +1235,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // FluffyChatApp.router.go(
         //   state == LoginState.loggedIn ? '/backup' : '/home',
         // );
-        // Tells the teacher dashboard whether there is a session to share.
-        SharedSignIn.markSignedIn(state == LoginState.loggedIn);
         if (state == LoginState.loggedIn) {
           // Push, and the VoIP pusher that lets a call ring this phone, is
           // set up as soon as the account is signed in. The chat list also
