@@ -1,94 +1,17 @@
-import 'dart:math';
+import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/shared_signin/shared_signin.dart';
 
 const _state = '0123456789abcdef0123456789abcdef';
+final _dash = Uri.parse('https://admin.example.test');
+const _bff = 'https://api.example.test';
+final _dashFlag = '$dashboardSignedInFlag=${Uri.encodeComponent(_dash.origin)}';
 
 void main() {
-  group('state', () {
-    test('is 128 random bits as 32 hex characters', () {
-      final state = newHandoffState(Random(1));
-      expect(state, matches(RegExp(r'^[0-9a-f]{32}$')));
-      expect(newHandoffState(), isNot(newHandoffState()));
-    });
-
-    test('matches only the same well-formed value', () {
-      expect(statesMatch(_state, _state), isTrue);
-      expect(statesMatch(_state, _state.replaceFirst('0', '1')), isFalse);
-      expect(statesMatch(null, _state), isFalse);
-      expect(statesMatch(_state, null), isFalse);
-      expect(statesMatch('short', 'short'), isFalse);
-    });
-  });
-
-  group('an arrival fragment', () {
-    test('from the dashboard: a hint, nothing more', () {
-      expect(parseHandoffArrival('from=dashboard'), isA<HandoffHint>());
-    });
-
-    test("the dashboard's request carries its state", () {
-      final arrival = parseHandoffArrival('state=$_state');
-      expect(arrival, isA<HandoffRequest>());
-      expect((arrival as HandoffRequest).state, _state);
-    });
-
-    test('an answer carries a token, or none', () {
-      final token = parseHandoffArrival('loginToken=t%2B1&state=$_state');
-      expect(token, isA<HandoffAnswer>());
-      expect((token as HandoffAnswer).loginToken, 't+1');
-      final none = parseHandoffArrival('handoff=none&state=$_state');
-      expect((none as HandoffAnswer).loginToken, isNull);
-    });
-
-    test('anything else is refused, not guessed at', () {
-      for (final bad in [
-        null,
-        '',
-        '/rooms',
-        'from=elsewhere',
-        'state=short',
-        'loginToken=t',
-        'loginToken=t&state=$_state&extra=1',
-        'loginToken=&state=$_state',
-        'handoff=maybe&state=$_state',
-        'loginToken=t&handoff=none&state=$_state',
-        'loginToken=t&loginToken=u&state=$_state',
-        'state=%ZZ',
-      ]) {
-        expect(parseHandoffArrival(bad), isNull, reason: bad);
-      }
-    });
-  });
-
-  group('accepting a token', () {
-    final answer = parseHandoffArrival('loginToken=tok&state=$_state');
-
-    test("only with the state this tab saved", () {
-      expect(acceptedHandoffToken(answer, _state), 'tok');
-      expect(acceptedHandoffToken(answer, null), isNull);
-      expect(
-        acceptedHandoffToken(answer, _state.replaceFirst('0', 'f')),
-        isNull,
-      );
-    });
-
-    test('never from a hint, a request or a none', () {
-      expect(acceptedHandoffToken(HandoffHint(), _state), isNull);
-      expect(acceptedHandoffToken(HandoffRequest(_state), _state), isNull);
-      expect(
-        acceptedHandoffToken(
-          parseHandoffArrival('handoff=none&state=$_state'),
-          _state,
-        ),
-        isNull,
-      );
-    });
-  });
-
-  group('urls', () {
-    test('the dashboard must be https, or http on this machine', () {
+  group('the dashboard', () {
+    test('must be https, or http on this machine', () {
       expect(
         dashboardBase('https://admin.example.test/').toString(),
         'https://admin.example.test',
@@ -110,61 +33,173 @@ void main() {
       }
     });
 
-    test(
-      "the answer goes only to the dashboard's fixed page, in the fragment",
-      () {
-        final dash = dashboardBase('https://admin.example.test')!;
-        expect(
-          dashboardAnswerUrl(dash, _state, loginToken: 'a+b&c'),
-          'https://admin.example.test/auth/handoff/#loginToken=a%2Bb%26c&state=$_state',
-        );
-        expect(
-          dashboardAnswerUrl(dash, _state),
-          'https://admin.example.test/auth/handoff/#handoff=none&state=$_state',
-        );
-      },
-    );
-
-    test("the request to the dashboard's API names this app's origin", () {
+    test("is answered only at its fixed page, in the fragment", () {
       expect(
-        dashboardSignInRequestUrl(
-          'https://api.example.test',
-          _state,
-          'https://app.example.test',
-        ),
-        'https://api.example.test/api/auth/handoff/app'
-        '?state=$_state&origin=https%3A%2F%2Fapp.example.test',
+        dashboardAnswerUrl(_dash, _state, loginToken: 'a+b&c'),
+        'https://admin.example.test/auth/handoff/#loginToken=a%2Bb%26c&state=$_state',
       );
+      expect(
+        dashboardAnswerUrl(_dash, _state),
+        'https://admin.example.test/auth/handoff/#handoff=none&state=$_state',
+      );
+    });
+
+    test("asks with exactly a well-formed state", () {
+      expect(dashboardRequestState('state=$_state'), _state);
+      for (final bad in [
+        null,
+        '',
+        'state=short',
+        'state=$_state&loginToken=x',
+        'loginToken=x&state=$_state',
+      ]) {
+        expect(dashboardRequestState(bad), isNull, reason: bad);
+      }
     });
   });
 
-  test('a signed-out visitor from the dashboard asks it once', () {
-    bool should({
-      bool hinted = true,
-      bool tried = false,
-      bool session = false,
-      String bff = 'https://api.example.test',
-    }) => shouldAskDashboard(
-      isWeb: true,
-      hinted: hinted,
-      alreadyTried: tried,
-      hasSession: session,
+  group('the signed-in flags', () {
+    test('share the parent domain two hosts have in common', () {
+      expect(
+        sharedCookieDomain(
+          'app.staging.pangea.chat',
+          'admin.staging.pangea.chat',
+        ),
+        'staging.pangea.chat',
+      );
+      expect(sharedCookieDomain('localhost', 'localhost'), '');
+      expect(sharedCookieDomain('app.a.com', 'admin.b.com'), isNull);
+      expect(sharedCookieDomain('a.com', 'b.com'), isNull);
+    });
+
+    test("the app's flag names its origin and is cleared on sign-out", () {
+      final app = Uri.parse('https://app.example.test/some/page');
+      expect(
+        appFlagCookie(signedIn: true, app: app, dashboard: _dash),
+        '$appSignedInFlag=${Uri.encodeComponent('https://app.example.test')}; '
+        'Path=/; SameSite=Lax; Max-Age=2592000; Domain=example.test; Secure',
+      );
+      expect(
+        appFlagCookie(signedIn: false, app: app, dashboard: _dash),
+        contains('Expires=Thu, 01 Jan 1970 00:00:00 GMT'),
+      );
+      expect(
+        appFlagCookie(
+          signedIn: true,
+          app: Uri.parse('http://localhost:8090/'),
+          dashboard: Uri.parse('http://localhost:3000'),
+        ),
+        '$appSignedInFlag=${Uri.encodeComponent('http://localhost:8090')}; '
+        'Path=/; SameSite=Lax; Max-Age=2592000',
+      );
+      expect(
+        appFlagCookie(
+          signedIn: true,
+          app: Uri.parse('https://app.other.com'),
+          dashboard: _dash,
+        ),
+        isNull,
+      );
+    });
+
+    test('are read by exact name', () {
+      expect(
+        readCookie('a=1; $_dashFlag', dashboardSignedInFlag),
+        _dash.origin,
+      );
+      expect(readCookie('x$_dashFlag', dashboardSignedInFlag), isNull);
+      expect(readCookie(null, dashboardSignedInFlag), isNull);
+    });
+  });
+
+  group("asking the dashboard's API for a sign-in", () {
+    Future<String?> ask({
+      bool hasSession = false,
+      String? cookies,
+      Uri? dashboard,
+      String bff = _bff,
+      Future<String?> Function(Uri)? post,
+      List<Object>? errors,
+    }) => askDashboardForLoginToken(
+      hasSession: hasSession,
+      cookies: cookies ?? _dashFlag,
+      dashboard: dashboard ?? _dash,
       teacherBffApi: bff,
+      post: post ?? (_) async => '{"login_token":"tok"}',
+      onError: (e, _) => errors?.add(e),
     );
-    expect(should(), isTrue);
-    expect(should(hinted: false), isFalse);
-    expect(should(tried: true), isFalse);
-    expect(should(session: true), isFalse);
-    expect(should(bff: ''), isFalse);
-    expect(
-      shouldAskDashboard(
-        isWeb: false,
-        hinted: true,
-        alreadyTried: false,
+
+    test('a signed-out app with the dashboard flag gets the token', () async {
+      Uri? asked;
+      final token = await ask(
+        post: (url) async {
+          asked = url;
+          return '{"login_token":"tok"}';
+        },
+      );
+      expect(token, 'tok');
+      expect(asked.toString(), '$_bff/api/auth/handoff/app');
+    });
+
+    test(
+      'never asks with a session, without the flag, or unconfigured',
+      () async {
+        var calls = 0;
+        Future<String?> counted(Uri _) async {
+          calls++;
+          return '{"login_token":"tok"}';
+        }
+
+        expect(await ask(hasSession: true, post: counted), isNull);
+        expect(await ask(cookies: 'other=1', post: counted), isNull);
+        expect(
+          await ask(
+            cookies:
+                '$dashboardSignedInFlag=${Uri.encodeComponent('https://elsewhere.test')}',
+            post: counted,
+          ),
+          isNull,
+        );
+        expect(await ask(bff: '', post: counted), isNull);
+        expect(calls, 0);
+      },
+    );
+
+    test('no session there: the normal sign-in', () async {
+      expect(await ask(post: (_) async => '{"login_token":null}'), isNull);
+    });
+
+    test(
+      'an API that is down, slow or confused: the normal sign-in, and it is told',
+      () async {
+        final errors = <Object>[];
+        expect(
+          await ask(post: (_) async => throw Exception('down'), errors: errors),
+          isNull,
+        );
+        expect(
+          await ask(post: (_) async => 'not json', errors: errors),
+          isNull,
+        );
+        expect(await ask(post: (_) async => '[]', errors: errors), isNull);
+        expect(errors, hasLength(3));
+      },
+    );
+
+    test('a slow API gives up after the timeout: the normal sign-in', () async {
+      final errors = <Object>[];
+      final token = await askDashboardForLoginToken(
         hasSession: false,
-        teacherBffApi: 'https://api.example.test',
-      ),
-      isFalse,
-    );
+        cookies: _dashFlag,
+        dashboard: _dash,
+        teacherBffApi: _bff,
+        post: (_) => Completer<String?>().future,
+        onError: (e, _) => errors.add(e),
+        timeout: const Duration(milliseconds: 20),
+      );
+      expect(token, isNull);
+      expect(errors.single, isA<TimeoutException>());
+      expect(dashboardAskTimeout, const Duration(seconds: 5));
+    });
   });
 }

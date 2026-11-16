@@ -7,104 +7,93 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/shared_signin/shared_signin.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/routes/home/store_login_method_repo.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Shared sign-in with the teacher dashboard (admin-dash#235), the browser
-/// half: it reads and writes this tab's storage and navigates; every decision
-/// is a pure function in shared_signin.dart.
+/// half: it reads and writes cookies, asks over the network and navigates;
+/// every decision is a pure function in shared_signin.dart.
+///
+/// Types from universal_html are read into nullable locals: off the web (the
+/// test VM) the same getters are nullable, and a non-null use compiles on the
+/// web only.
 abstract class SharedSignIn {
-  static HandoffArrival? _arrival;
+  /// The dashboard's state when this page load is its `/handoff/dashboard`
+  /// request, read at boot before the router rewrites the address.
+  static String? _requestState;
 
-  /// A token this tab asked for and the state check accepted, waiting for the
-  /// stored session to settle ([completePendingLogin]).
-  static String? _pendingToken;
+  /// Called first thing at boot: keeps the dashboard's request, if any.
+  static void readRequest() {
+    if (!kIsWeb || Uri.base.path != '/handoff/dashboard') return;
+    _requestState = dashboardRequestState(Uri.base.fragment);
+  }
 
-  static html.Storage get _tab => html.window.sessionStorage;
+  /// Marks (or unmarks) this browser as signed in to the app, for the
+  /// dashboard. Nothing is written without a dashboard sharing this site.
+  static void markSignedIn(bool signedIn) {
+    final dashboard = Environment.dashboardUrl;
+    if (!kIsWeb || dashboard == null) return;
+    final cookie = appFlagCookie(
+      signedIn: signedIn,
+      app: Uri.base,
+      dashboard: dashboard,
+    );
+    if (cookie != null) html.document.cookie = cookie;
+  }
 
-  /// Reads the fragment `web/index.html` moved out of the address bar, before
-  /// analytics, Sentry or the router start. An answer ends this tab's
-  /// hand-offs whatever it says, and its saved state is consumed before it is
-  /// compared, so a token is tried once at most.
-  static void readArrival() {
+  /// Once the stored session has settled: publishes whether this browser is
+  /// signed in, and, signed out with the dashboard's flag present, asks the
+  /// dashboard's API for this browser's sign-in. A token signs in as the same
+  /// teacher, then `/` opens the kept link (or onboarding). Anything else
+  /// leaves the normal sign-in where it is.
+  static Future<void> signInFromDashboard(MatrixState matrix) async {
     if (!kIsWeb) return;
-    try {
-      _arrival = parseHandoffArrival(_tab.remove(handoffArrivalStorageKey));
-      if (_arrival is! HandoffAnswer) return;
-      _tab[handoffTriedStorageKey] = '1';
-      _pendingToken = acceptedHandoffToken(
-        _arrival,
-        _tab.remove(handoffStateStorageKey),
-      );
-      if ((_arrival as HandoffAnswer).loginToken != null &&
-          _pendingToken == null) {
-        Logs().w('[handoff] dropped a login token this tab did not ask for');
-      }
-    } catch (e, s) {
-      // No tab storage: nothing can be checked, so nothing is used.
-      ErrorHandler.logError(e: e, s: s, data: {'flow': 'dashboard-handoff'});
-    }
-  }
-
-  /// A signed-out visitor who opened a link from the dashboard: ask the
-  /// dashboard's API, once per tab, whether this browser is signed in there.
-  /// The link is already kept as the destination, so it opens after either
-  /// sign-in. Returns whether the page is leaving.
-  static bool maybeAskDashboard({required bool hasSession}) {
-    if (!kIsWeb) return false;
-    final bff = Environment.teacherBffApi;
-    try {
-      if (!shouldAskDashboard(
-        isWeb: kIsWeb,
-        hinted: _arrival is HandoffHint,
-        alreadyTried: _tab[handoffTriedStorageKey] != null,
-        hasSession: hasSession,
-        teacherBffApi: bff,
-      )) {
-        return false;
-      }
-      final state = newHandoffState();
-      _tab[handoffStateStorageKey] = state;
-      _tab[handoffTriedStorageKey] = '1';
-      _arrival = null;
-      html.window.location.replace(
-        dashboardSignInRequestUrl(bff, state, html.window.location.origin),
-      );
-      return true;
-    } catch (e, s) {
-      // Without tab storage the answer could never be checked.
-      ErrorHandler.logError(e: e, s: s, data: {'flow': 'dashboard-handoff'});
-      return false;
-    }
-  }
-
-  /// Signs in with an accepted token once the stored session has settled. A
-  /// session that exists by then (another tab signed in) is kept and the token
-  /// dropped, so an account is never swapped. Then it goes to `/`, whose guard
-  /// opens the kept destination (or onboarding): the sign-in can land before
-  /// the boot's own redirect to the sign-in page does, and the login listener
-  /// only moves a visitor who is already on it.
-  static Future<void> completePendingLogin(MatrixState matrix) async {
-    final token = _pendingToken;
-    _pendingToken = null;
-    if (token == null) return;
     await _restoreSettled(matrix.client);
-    if (matrix.widget.clients.any((c) => c.isLogged())) return;
+    bool hasSession() => matrix.widget.clients.any((c) => c.isLogged());
+    markSignedIn(hasSession());
+    final String? cookies = html.document.cookie;
+    final token = await askDashboardForLoginToken(
+      hasSession: hasSession(),
+      cookies: cookies,
+      dashboard: Environment.dashboardUrl,
+      teacherBffApi: Environment.teacherBffApi,
+      post: _credentialedPost,
+      onError: (e, s) =>
+          Logs().w('[handoff] the dashboard could not be asked', e, s),
+    );
+    if (token == null || hasSession()) return;
+    GoogleAnalytics.prepareLogin('dashboard');
     try {
       final loginClient = await matrix.getLoginClient();
-      if (loginClient.isLogged()) return;
+      // The method of the dashboard's own sign-in is unknown here, so the
+      // previous hint is cleared rather than replaced with a guess.
+      await LoginMethodRepo.clearStoredLoginMethod();
       await loginClient.login(
         LoginType.mLoginToken,
         token: token,
         initialDeviceDisplayName: PlatformInfos.clientName,
       );
+      // The sign-in can land before the boot's own redirect to the sign-in
+      // page does, and the login listener only moves a visitor already on it.
       FluffyChatApp.router.go(PRoutes.world);
     } catch (e, s) {
-      // An expired or used token: the visitor is on the normal sign-in with
-      // the destination kept. The token is never reported.
+      GoogleAnalytics.cancelPendingLogin();
+      // An expired or used token: the normal sign-in, with the link kept.
       ErrorHandler.logError(e: e, s: s, data: {'flow': 'dashboard-handoff'});
     }
+  }
+
+  static Future<String?> _credentialedPost(Uri url) async {
+    final request = await html.HttpRequest.request(
+      url.toString(),
+      method: 'POST',
+      withCredentials: true,
+    );
+    final String? body = request.responseText;
+    return body;
   }
 
   /// `/handoff/dashboard`: answers the dashboard's request with a token when
@@ -112,10 +101,10 @@ abstract class SharedSignIn {
   /// False when there is nothing to answer, so the page moves into the app.
   static Future<bool> answerDashboard(MatrixState matrix) async {
     if (!kIsWeb) return false;
-    final request = _arrival;
-    _arrival = null;
+    final state = _requestState;
+    _requestState = null;
     final dashboard = Environment.dashboardUrl;
-    if (request is! HandoffRequest || dashboard == null) return false;
+    if (state == null || dashboard == null) return false;
     await _restoreSettled(matrix.client);
     final client = matrix.client;
     String? token;
@@ -129,7 +118,7 @@ abstract class SharedSignIn {
       }
     }
     html.window.location.replace(
-      dashboardAnswerUrl(dashboard, request.state, loginToken: token),
+      dashboardAnswerUrl(dashboard, state, loginToken: token),
     );
     return true;
   }

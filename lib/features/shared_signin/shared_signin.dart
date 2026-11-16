@@ -1,112 +1,29 @@
-import 'dart:math';
+import 'dart:async';
+import 'dart:convert';
 
 /// Shared sign-in with the teacher dashboard (admin-dash#235), the pure half;
 /// routing.instructions.md § Signing in from the dashboard.
 ///
-/// The side that signs in starts the hand-off: it saves a random state in its
-/// tab, asks the other side, and accepts the single-use Matrix login token that
-/// comes back only with that state. A token pushed in a link (login CSRF) is
-/// therefore refused. Everything travels in URL fragments, which no server
-/// sees. The browser side effects live in shared_signin_web.dart.
+/// The side that signs in asks, and uses a single-use Matrix login token only
+/// from an answer to its own request, so a token pushed at it (login CSRF)
+/// signs nobody in. Each side keeps a "signed in here" flag cookie on the
+/// parent domain the two share, naming its own origin (never a credential),
+/// and the other side asks only when it sees one. The browser side effects
+/// live in shared_signin_web.dart.
 
-/// sessionStorage: the fragment `web/index.html` moved out of the address bar.
-const String handoffArrivalStorageKey = 'pangea-handoff-arrival';
+/// Set by this app while signed in; its value is this app's origin.
+const String appSignedInFlag = 'pangea_app_signed_in';
 
-/// sessionStorage: the state this tab sent to the dashboard.
-const String handoffStateStorageKey = 'pangea-handoff-state';
+/// Set by the dashboard while signed in; its value is the dashboard's origin.
+const String dashboardSignedInFlag = 'pangea_dashboard_signed_in';
 
-/// sessionStorage: this tab asked once already, so it never asks again.
-const String handoffTriedStorageKey = 'pangea-handoff-tried';
+/// How long the dashboard's API may take before the normal sign-in stays.
+const Duration dashboardAskTimeout = Duration(seconds: 5);
 
-final RegExp _stateFormat = RegExp(r'^[0-9a-f]{32}$');
+final RegExp _requestFormat = RegExp(r'^state=([0-9a-f]{32})$');
 
-/// A fresh 128-bit state, as 32 hex characters.
-String newHandoffState([Random? random]) {
-  final r = random ?? Random.secure();
-  return List.generate(
-    16,
-    (_) => r.nextInt(256).toRadixString(16).padLeft(2, '0'),
-  ).join();
-}
-
-/// Whether a returned state is the one this tab saved, compared in time
-/// independent of where they differ.
-bool statesMatch(String? saved, String? returned) {
-  if (saved == null || returned == null) return false;
-  if (!_stateFormat.hasMatch(saved) || !_stateFormat.hasMatch(returned)) {
-    return false;
-  }
-  var diff = 0;
-  for (var i = 0; i < saved.length; i++) {
-    diff |= saved.codeUnitAt(i) ^ returned.codeUnitAt(i);
-  }
-  return diff == 0;
-}
-
-/// What a page load arrived with in its fragment.
-sealed class HandoffArrival {
-  const HandoffArrival();
-}
-
-/// A link the teacher opened from the dashboard (`#from=dashboard`): a hint,
-/// never a credential.
-class HandoffHint extends HandoffArrival {
-  const HandoffHint();
-}
-
-/// The dashboard asking this app for its sign-in (`/handoff/dashboard`).
-class HandoffRequest extends HandoffArrival {
-  final String state;
-  const HandoffRequest(this.state);
-}
-
-/// The dashboard's answer to this tab's request: a login token, or none.
-class HandoffAnswer extends HandoffArrival {
-  final String state;
-  final String? loginToken;
-  const HandoffAnswer(this.state, this.loginToken);
-}
-
-/// Reads an arrival fragment, or null when it is not exactly one of the known
-/// shapes: an unknown, repeated or malformed field is refused, not guessed at.
-HandoffArrival? parseHandoffArrival(String? fragment) {
-  if (fragment == null || fragment.isEmpty) return null;
-  final fields = <String, String>{};
-  for (final part in fragment.split('&')) {
-    final eq = part.indexOf('=');
-    if (eq <= 0) return null;
-    final key = part.substring(0, eq);
-    final String value;
-    try {
-      value = Uri.decodeQueryComponent(part.substring(eq + 1));
-    } on ArgumentError {
-      return null;
-    }
-    if (value.isEmpty || fields.containsKey(key)) return null;
-    fields[key] = value;
-  }
-  if (fields.length == 1 && fields['from'] == 'dashboard') {
-    return const HandoffHint();
-  }
-  final state = fields.remove('state');
-  if (state == null || !_stateFormat.hasMatch(state)) return null;
-  if (fields.isEmpty) return HandoffRequest(state);
-  if (fields.length != 1) return null;
-  final token = fields['loginToken'];
-  if (token != null) return HandoffAnswer(state, token);
-  return fields['handoff'] == 'none' ? HandoffAnswer(state, null) : null;
-}
-
-/// The login token of an answer whose state is the one this tab saved
-/// (consumed by the caller before this check), else null.
-String? acceptedHandoffToken(HandoffArrival? arrival, String? savedState) {
-  if (arrival is! HandoffAnswer) return null;
-  if (!statesMatch(savedState, arrival.state)) return null;
-  return arrival.loginToken;
-}
-
-/// The configured dashboard (`DASHBOARD_URL`) as a base URL, or null when it
-/// is unset or not a plain https origin (plain http only on this machine). The
+/// The configured dashboard (`DASHBOARD_URL`) as an origin, or null when it is
+/// unset or not a plain https origin (plain http only on this machine). The
 /// app only ever sends a token here.
 Uri? dashboardBase(String? raw) {
   final uri = Uri.tryParse(raw?.trim() ?? '');
@@ -123,6 +40,55 @@ Uri? dashboardBase(String? raw) {
   );
 }
 
+/// The cookie Domain two hosts share: '' for one host (a host-only cookie, as
+/// on localhost, where ports share cookies), their common parent of two or
+/// more labels, or null when they share no site (no flag can be seen).
+String? sharedCookieDomain(String a, String b) {
+  if (a == b) return '';
+  final x = a.split('.').reversed.toList();
+  final y = b.split('.').reversed.toList();
+  var n = 0;
+  while (n < x.length && n < y.length && x[n] == y[n]) {
+    n++;
+  }
+  return n >= 2 ? x.take(n).toList().reversed.join('.') : null;
+}
+
+/// The `document.cookie` assignment that marks (or unmarks) this browser as
+/// signed in to [app], for [dashboard]; null when the two share no site.
+String? appFlagCookie({
+  required bool signedIn,
+  required Uri app,
+  required Uri dashboard,
+}) {
+  final domain = sharedCookieDomain(app.host, dashboard.host);
+  if (domain == null) return null;
+  return [
+    '$appSignedInFlag=${Uri.encodeComponent(app.origin)}',
+    'Path=/',
+    'SameSite=Lax',
+    // An expiry in the past removes it.
+    signedIn ? 'Max-Age=2592000' : 'Expires=Thu, 01 Jan 1970 00:00:00 GMT',
+    if (domain.isNotEmpty) 'Domain=$domain',
+    if (app.scheme == 'https') 'Secure',
+  ].join('; ');
+}
+
+/// The value of cookie [name] in a `document.cookie` string, else null.
+String? readCookie(String? cookies, String name) {
+  for (final part in (cookies ?? '').split('; ')) {
+    final eq = part.indexOf('=');
+    if (eq > 0 && part.substring(0, eq) == name) {
+      return Uri.decodeComponent(part.substring(eq + 1));
+    }
+  }
+  return null;
+}
+
+/// The dashboard's state in a `/handoff/dashboard#state=…` request, else null.
+String? dashboardRequestState(String? fragment) =>
+    _requestFormat.firstMatch(fragment ?? '')?.group(1);
+
 /// Where the app answers the dashboard: a token when signed in, else none.
 String dashboardAnswerUrl(Uri dashboard, String state, {String? loginToken}) {
   final answer = loginToken == null
@@ -131,24 +97,33 @@ String dashboardAnswerUrl(Uri dashboard, String state, {String? loginToken}) {
   return '$dashboard/auth/handoff/#$answer&state=$state';
 }
 
-/// Where a signed-out app asks the dashboard's API for this browser's sign-in.
-/// The API answers only to an app origin it already trusts.
-String dashboardSignInRequestUrl(
-  String teacherBffApi,
-  String state,
-  String appOrigin,
-) => Uri.parse(
-  '$teacherBffApi/api/auth/handoff/app',
-).replace(queryParameters: {'state': state, 'origin': appOrigin}).toString();
-
-/// Whether a signed-out visit asks the dashboard: on web, for a link opened
-/// from the dashboard, once per tab, with the dashboard's API configured, and
-/// never over a session already here.
-bool shouldAskDashboard({
-  required bool isWeb,
-  required bool hinted,
-  required bool alreadyTried,
+/// A signed-out app asks the dashboard's API for this browser's sign-in, with
+/// [post] (a credentialed POST that returns the response body). The login
+/// token, or null when there is nothing to ask for, the dashboard has no
+/// session to share, or the API fails or is slow ([onError] is told): the
+/// normal sign-in stays.
+Future<String?> askDashboardForLoginToken({
   required bool hasSession,
+  required String? cookies,
+  required Uri? dashboard,
   required String teacherBffApi,
-}) =>
-    isWeb && hinted && !alreadyTried && !hasSession && teacherBffApi.isNotEmpty;
+  required Future<String?> Function(Uri url) post,
+  required void Function(Object error, StackTrace stackTrace) onError,
+  Duration timeout = dashboardAskTimeout,
+}) async {
+  if (hasSession || dashboard == null || teacherBffApi.isEmpty) return null;
+  if (readCookie(cookies, dashboardSignedInFlag) != dashboard.origin) {
+    return null;
+  }
+  try {
+    final body = await post(
+      Uri.parse('$teacherBffApi/api/auth/handoff/app'),
+    ).timeout(timeout);
+    final token = (jsonDecode(body ?? '') as Map)['login_token'];
+    return token is String && token.isNotEmpty ? token : null;
+  } catch (e, s) {
+    // A down, slow or confused API is no worse than no hand-off.
+    onError(e, s);
+    return null;
+  }
+}

@@ -994,8 +994,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // bypassing the canvas login form. No-op without the param. See
       // dev_login.dart / matrix-auth.instructions.md.
       maybeDevLogin(this);
-      // A sign-in this tab asked the dashboard for and accepted (admin-dash#235).
-      SharedSignIn.completePendingLogin(this);
+      // Shared sign-in with the teacher dashboard (admin-dash#235).
+      SharedSignIn.signInFromDashboard(this);
     });
     _uriListener = AppLinks().uriLinkStream.listen(_processIncomingUris);
     // Pangea#
@@ -1231,6 +1231,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // FluffyChatApp.router.go(
         //   state == LoginState.loggedIn ? '/backup' : '/home',
         // );
+        // Tells the teacher dashboard whether there is a session to share.
+        SharedSignIn.markSignedIn(state == LoginState.loggedIn);
         if (state == LoginState.loggedIn) {
           // Push, and the VoIP pusher that lets a call ring this phone, is
           // set up as soon as the account is signed in. The chat list also

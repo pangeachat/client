@@ -55,10 +55,9 @@ Future<void> _main() async {
   // No-op off web.
   usePathUrlStrategy();
 
-  // Shared sign-in with the dashboard (admin-dash#235): what the page arrived
-  // with is read and checked before anything that reports or routes starts.
-  // web/index.html has already taken it out of the address bar. No-op off web.
-  SharedSignIn.readArrival();
+  // The teacher dashboard's request for this app's sign-in (admin-dash#235),
+  // read before the router rewrites the address. No-op off web.
+  SharedSignIn.readRequest();
 
   // #Pangea
   try {
