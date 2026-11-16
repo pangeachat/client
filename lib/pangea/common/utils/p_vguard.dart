@@ -8,6 +8,7 @@ import 'package:fluffychat/features/dm_invite/dm_invite_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/user_id_url.dart';
+import 'package:fluffychat/features/shared_signin/shared_signin_web.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../controllers/pangea_controller.dart';
 
@@ -117,11 +118,17 @@ class PAuthGaurd {
   /// never asked to go. The DM invite link is cached by its own route's
   /// redirect ([dmInviteRedirect]) before it delegates here, and is not a
   /// destination.
+  ///
+  /// A link opened from the teacher dashboard first asks it, once per tab,
+  /// whether this browser is signed in there; the kept destination opens
+  /// after that sign-in too (routing.instructions.md § Signing in from the
+  /// dashboard).
   static Future<String> _loginBounce(GoRouterState state) async {
     final destination = bounceDestinationFor(state.uri);
     if (destination != null) {
       await SpaceCodeRepo.setDestination(destination);
     }
+    SharedSignIn.maybeAskDashboard(hasSession: false);
     return '/home';
   }
 

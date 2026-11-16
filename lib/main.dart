@@ -19,6 +19,7 @@ import 'package:fluffychat/features/connection_status/network_help_repo.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/workspace_screen_tracker.dart';
+import 'package:fluffychat/features/shared_signin/shared_signin_web.dart';
 import 'package:fluffychat/pangea/common/config/env_loader.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -53,6 +54,11 @@ Future<void> _main() async {
   // every path (the SPA index fallback), so a direct path load always boots.
   // No-op off web.
   usePathUrlStrategy();
+
+  // Shared sign-in with the dashboard (admin-dash#235): what the page arrived
+  // with is read and checked before anything that reports or routes starts.
+  // web/index.html has already taken it out of the address bar. No-op off web.
+  SharedSignIn.readArrival();
 
   // #Pangea
   try {

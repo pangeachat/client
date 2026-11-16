@@ -34,6 +34,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/notifications/nse_session.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
+import 'package:fluffychat/features/shared_signin/shared_signin_web.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -993,6 +994,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // bypassing the canvas login form. No-op without the param. See
       // dev_login.dart / matrix-auth.instructions.md.
       maybeDevLogin(this);
+      // A sign-in this tab asked the dashboard for and accepted (admin-dash#235).
+      SharedSignIn.completePendingLogin(this);
     });
     _uriListener = AppLinks().uriLinkStream.listen(_processIncomingUris);
     // Pangea#

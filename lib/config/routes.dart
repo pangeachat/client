@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
+import 'package:fluffychat/routes/handoff/dashboard_handoff_page.dart';
 import 'package:fluffychat/routes/home/login/login.dart';
 import 'package:fluffychat/routes/home/login_or_signup_view.dart';
 import 'package:fluffychat/routes/home/signup/signup.dart';
@@ -117,6 +118,13 @@ abstract class AppRoutes {
     // redirect caches the invited user in its own ferry entry and lands on
     // the world map with the chat list open (or bounces to login), and the
     // shell opens the DM from there — DmInviteFerryConsumer (#8436).
+    // The teacher dashboard's sign-in request (admin-dash#235): answered
+    // whether or not this browser is signed in, so it has no auth guard.
+    GoRoute(
+      path: '/handoff/dashboard',
+      pageBuilder: (context, state) =>
+          defaultPageBuilder(context, state, const DashboardHandoffPage()),
+    ),
     GoRoute(
       path: '${PRoutes.dmInvite}/:userID',
       redirect: PAuthGaurd.dmInviteRedirect,

@@ -3,6 +3,24 @@
 
 <head>
   <meta charset="UTF-8">
+  <!-- Shared sign-in with the teacher dashboard (admin-dash#235): a hand-off
+       fragment (`#from=dashboard`, `#state=...`, `#loginToken=...&state=...`
+       or `#handoff=none&state=...`) leaves the address bar here, before any
+       script, analytics or error report can read the URL, and is kept in this
+       tab for the app to read and check once at boot (SharedSignIn). -->
+  <script>
+    (function () {
+      var h = window.location.hash;
+      if (!/^#(.*&)?(from|state|loginToken|handoff)=/.test(h)) return;
+      try {
+        sessionStorage.setItem('pangea-handoff-arrival', h.substring(1));
+      } catch (e) {
+        // No tab storage: the fragment is dropped anyway; normal sign-in.
+      }
+      history.replaceState(history.state, '',
+        window.location.pathname + window.location.search);
+    })();
+  </script>
   <!-- #Pangea -->
   <!-- iOS Smart App Banner: Safari renders a native "Open in app" strip.
        The tag is static because Safari evaluates it at page load and a

@@ -80,6 +80,14 @@ Learners use panels that open over one world map, on any screen size. Outside li
 
 - A signed-out visitor's last link is kept on the device and opens once after sign-in; it expires an hour after it was opened, so a shared browser cannot pass it on, and is never logged or reported. Will.
 
+### Signing in from the dashboard
+
+- Signed in on the app or the teacher dashboard, a teacher opens the other already signed in, landing where the link pointed, both ways. Will (admin-dash#235).
+- The side that signs in starts the hand-off: it saves a random state in its tab and accepts the single-use Matrix login token that comes back only with that state, consumed first, so a token pushed in a link signs nobody in. ggurdin.
+- Dashboard to app: a signed-out app asks the dashboard's API only for a link the dashboard marked `#from=dashboard`, so a student's links never wait on it. The API answers with a token or "none", in the fragment, only to this app.
+- App to dashboard: `/handoff/dashboard` answers the dashboard's request with a token when signed in, else "none", and only to `DASHBOARD_URL`.
+- Hand-off fragments leave the address bar before anything reads the URL. A tab asks once, so "none", a mismatch or a failure ends in the normal sign-in with the link kept; a session already here stays and the token is dropped.
+
 ## Open questions
 
 - Does a pushed page show X or back arrow (this doc) or both (the code)?
