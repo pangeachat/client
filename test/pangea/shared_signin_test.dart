@@ -10,6 +10,7 @@ const _bff = 'https://api.example.test';
 final _dashFlag = '$dashboardSignedInFlag=${Uri.encodeComponent(_dash.origin)}';
 
 void main() {
+  signOutTests();
   group('the dashboard', () {
     test('must be https, or http on this machine', () {
       expect(
@@ -200,6 +201,61 @@ void main() {
       expect(token, isNull);
       expect(errors.single, isA<TimeoutException>());
       expect(dashboardAskTimeout, const Duration(seconds: 5));
+    });
+  });
+}
+
+void signOutTests() {
+  group('signing out of both (owner, 2026-11-16)', () {
+    const nonce = '0123456789abcdef0123456789abcdef';
+
+    test("the dashboard's sign-out page, with the nonce in the fragment", () {
+      expect(
+        dashboardSignOutUrl(_dash, nonce),
+        'https://admin.example.test/auth/signout/#nonce=$nonce',
+      );
+      expect(newNonce(), matches(RegExp(r'^[0-9a-f]{32}$')));
+    });
+
+    test('the nonce also sits in a short-lived shared-domain cookie', () {
+      expect(
+        sharedCookie(
+          name: signOutCookie,
+          value: nonce,
+          maxAge: 120,
+          app: Uri.parse('https://app.example.test/'),
+          dashboard: _dash,
+        ),
+        '$signOutCookie=$nonce; Path=/; SameSite=Lax; Max-Age=120; '
+        'Domain=example.test; Secure',
+      );
+      expect(
+        sharedCookie(
+          name: signOutCookie,
+          value: null,
+          maxAge: 120,
+          app: Uri.parse('https://app.example.test/'),
+          dashboard: _dash,
+        ),
+        contains('Expires=Thu, 01 Jan 1970 00:00:00 GMT'),
+      );
+    });
+
+    test("the dashboard's request is honoured only with the nonce it set", () {
+      expect(signOutRequested('nonce=$nonce', '$signOutCookie=$nonce'), isTrue);
+      expect(signOutRequested('nonce=$nonce', 'other=1'), isFalse);
+      expect(
+        signOutRequested('nonce=$nonce', '$signOutCookie=${'f' * 32}'),
+        isFalse,
+      );
+      expect(signOutRequested('nonce=short', '$signOutCookie=short'), isFalse);
+      expect(signOutRequested(null, '$signOutCookie=$nonce'), isFalse);
+    });
+
+    test('the dashboard is signed out too only when it is signed in here', () {
+      expect(dashboardSignedIn(_dashFlag, _dash), isTrue);
+      expect(dashboardSignedIn('', _dash), isFalse);
+      expect(dashboardSignedIn(_dashFlag, null), isFalse);
     });
   });
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
@@ -25,10 +27,17 @@ abstract class SharedSignIn {
   /// request, read at boot before the router rewrites the address.
   static String? _requestState;
 
+  /// The fragment of a `/handoff/signout` page load, read at boot.
+  static String? _signOutFragment;
+
   /// Called first thing at boot: keeps the dashboard's request, if any.
   static void readRequest() {
-    if (!kIsWeb || Uri.base.path != '/handoff/dashboard') return;
-    _requestState = dashboardRequestState(Uri.base.fragment);
+    if (!kIsWeb) return;
+    if (Uri.base.path == '/handoff/dashboard') {
+      _requestState = dashboardRequestState(Uri.base.fragment);
+    } else if (Uri.base.path == '/handoff/signout') {
+      _signOutFragment = Uri.base.fragment;
+    }
   }
 
   /// Marks (or unmarks) this browser as signed in to the app, for the
@@ -129,4 +138,82 @@ abstract class SharedSignIn {
     client.accountDataLoading?.then<void>((_) {}, onError: (_) {}) ??
         Future<void>.value(),
   ]);
+
+  /// After this app's own sign-out by hand: through the dashboard's sign-out
+  /// page when the dashboard is signed in here and answering (it returns to
+  /// this app's sign-in), so this browser is signed out of both. Otherwise
+  /// the visitor stays on this app's sign-in.
+  static Future<void> leaveAfterSignOut() async {
+    if (!kIsWeb) return;
+    final dashboard = Environment.dashboardUrl;
+    final String? cookies = html.document.cookie;
+    if (!dashboardSignedIn(cookies, dashboard)) return;
+    if (!await _reachable(dashboard!)) return;
+    final nonce = newNonce();
+    final cookie = sharedCookie(
+      name: signOutCookie,
+      value: nonce,
+      maxAge: 120,
+      app: Uri.base,
+      dashboard: dashboard,
+    );
+    if (cookie == null) return;
+    html.document.cookie = cookie;
+    html.window.location.assign(dashboardSignOutUrl(dashboard, nonce));
+  }
+
+  /// `/handoff/signout`: the dashboard signed out and asks this app to sign
+  /// this browser out too. Only a request carrying the nonce the dashboard put
+  /// in the shared cookie is honoured; the cookie is cleared either way. Then
+  /// back to the dashboard's sign-in. False when there was no such request, so
+  /// the page moves into the app.
+  static Future<bool> answerSignOut(MatrixState matrix) async {
+    if (!kIsWeb) return false;
+    final fragment = _signOutFragment;
+    _signOutFragment = null;
+    final dashboard = Environment.dashboardUrl;
+    final String? cookies = html.document.cookie;
+    final requested = signOutRequested(fragment, cookies);
+    if (dashboard != null) {
+      final clear = sharedCookie(
+        name: signOutCookie,
+        value: null,
+        maxAge: 0,
+        app: Uri.base,
+        dashboard: dashboard,
+      );
+      if (clear != null) html.document.cookie = clear;
+    }
+    if (!requested || dashboard == null) return false;
+    await _restoreSettled(matrix.client);
+    for (final client in matrix.widget.clients.where((c) => c.isLogged())) {
+      try {
+        // This device only: never the account's other sessions.
+        await client.logout();
+      } catch (e, s) {
+        ErrorHandler.logError(e: e, s: s, data: {'flow': 'shared-signout'});
+      }
+    }
+    html.window.location.replace('$dashboard/login/');
+    return true;
+  }
+
+  /// Whether [site] answers at all, by loading its icon: an image loads from
+  /// any origin without CORS. A failure or a slow answer is no.
+  static Future<bool> _reachable(Uri site) async {
+    final done = Completer<bool>();
+    final probe = html.ImageElement();
+    probe.onLoad.first.then((_) {
+      if (!done.isCompleted) done.complete(true);
+    });
+    probe.onError.first.then((_) {
+      if (!done.isCompleted) done.complete(false);
+    });
+    probe.src =
+        '$site/favicon.ico?probe=${DateTime.now().millisecondsSinceEpoch}';
+    return done.future.timeout(
+      const Duration(seconds: 3),
+      onTimeout: () => false,
+    );
+  }
 }

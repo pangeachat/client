@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math';
 
 /// Shared sign-in with the teacher dashboard (admin-dash#235), the pure half;
 /// routing.instructions.md § Signing in from the dashboard.
@@ -54,25 +55,41 @@ String? sharedCookieDomain(String a, String b) {
   return n >= 2 ? x.take(n).toList().reversed.join('.') : null;
 }
 
-/// The `document.cookie` assignment that marks (or unmarks) this browser as
-/// signed in to [app], for [dashboard]; null when the two share no site.
-String? appFlagCookie({
-  required bool signedIn,
+/// The `document.cookie` assignment for a cookie on the domain [app] and
+/// [dashboard] share ([value] null removes it); null when they share no site.
+String? sharedCookie({
+  required String name,
+  required String? value,
+  required int maxAge,
   required Uri app,
   required Uri dashboard,
 }) {
   final domain = sharedCookieDomain(app.host, dashboard.host);
   if (domain == null) return null;
   return [
-    '$appSignedInFlag=${Uri.encodeComponent(app.origin)}',
+    '$name=${value ?? ''}',
     'Path=/',
     'SameSite=Lax',
     // An expiry in the past removes it.
-    signedIn ? 'Max-Age=2592000' : 'Expires=Thu, 01 Jan 1970 00:00:00 GMT',
+    value != null ? 'Max-Age=$maxAge' : 'Expires=Thu, 01 Jan 1970 00:00:00 GMT',
     if (domain.isNotEmpty) 'Domain=$domain',
     if (app.scheme == 'https') 'Secure',
   ].join('; ');
 }
+
+/// The `document.cookie` assignment that marks (or unmarks) this browser as
+/// signed in to [app], for [dashboard]; null when the two share no site.
+String? appFlagCookie({
+  required bool signedIn,
+  required Uri app,
+  required Uri dashboard,
+}) => sharedCookie(
+  name: appSignedInFlag,
+  value: signedIn ? Uri.encodeComponent(app.origin) : null,
+  maxAge: 2592000,
+  app: app,
+  dashboard: dashboard,
+);
 
 /// The value of cookie [name] in a `document.cookie` string, else null.
 String? readCookie(String? cookies, String name) {
@@ -112,9 +129,7 @@ Future<String?> askDashboardForLoginToken({
   Duration timeout = dashboardAskTimeout,
 }) async {
   if (hasSession || dashboard == null || teacherBffApi.isEmpty) return null;
-  if (readCookie(cookies, dashboardSignedInFlag) != dashboard.origin) {
-    return null;
-  }
+  if (!dashboardSignedIn(cookies, dashboard)) return null;
   try {
     final body = await post(
       Uri.parse('$teacherBffApi/api/auth/handoff/app'),
@@ -127,3 +142,39 @@ Future<String?> askDashboardForLoginToken({
     return null;
   }
 }
+
+// --- Signing out of both (owner, 2026-11-16) --------------------------------
+// A sign-out on either side signs this browser out of the other too, through
+// the other side's sign-out page. That page signs out only for a request whose
+// nonce also sits in a short-lived cookie on the shared domain, which no other
+// site can set, so a link from anywhere else signs nobody out.
+
+/// The shared-domain cookie holding a sign-out request's nonce.
+const String signOutCookie = 'pangea_signout';
+
+final RegExp _nonceFormat = RegExp(r'^nonce=([0-9a-f]{32})$');
+
+/// A fresh 128-bit nonce, as 32 hex characters.
+String newNonce([Random? random]) {
+  final r = random ?? Random.secure();
+  return List.generate(
+    16,
+    (_) => r.nextInt(256).toRadixString(16).padLeft(2, '0'),
+  ).join();
+}
+
+/// The dashboard's sign-out page, asked to sign this browser out too.
+String dashboardSignOutUrl(Uri dashboard, String nonce) =>
+    '$dashboard/auth/signout/#nonce=$nonce';
+
+/// Whether `/handoff/signout`'s request is the dashboard's: its nonce is the
+/// one in the shared cookie.
+bool signOutRequested(String? fragment, String? cookies) {
+  final nonce = _nonceFormat.firstMatch(fragment ?? '')?.group(1);
+  return nonce != null && nonce == readCookie(cookies, signOutCookie);
+}
+
+/// Whether the dashboard marked this browser as signed in to it.
+bool dashboardSignedIn(String? cookies, Uri? dashboard) =>
+    dashboard != null &&
+    readCookie(cookies, dashboardSignedInFlag) == dashboard.origin;

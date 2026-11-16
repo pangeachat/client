@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/shared_signin/shared_signin_web.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
@@ -64,6 +65,9 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
   );
 
   await redirect;
+  // Signs this browser out of the teacher dashboard too, when it is signed in
+  // there (owner, 2026-11-16); it returns to this app's sign-in.
+  await SharedSignIn.leaveAfterSignOut();
 }
 
 /// The logout ordering: save cached analytics, then NON-DESTRUCTIVELY flush this

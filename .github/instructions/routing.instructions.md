@@ -87,6 +87,7 @@ Learners use panels that open over one world map, on any screen size. Outside li
 - Each side keeps a "signed in here" flag cookie on the parent domain the two share, naming its origin and never a credential, and the other side asks only when it sees one, so nobody signed out of both ever waits on the other side.
 - Dashboard to app: a signed-out app with the dashboard's flag asks the dashboard's API itself, once per page load; a token signs it in and the kept link opens. If the API is down, slow or has no session, the normal sign-in stays.
 - App to dashboard: `/handoff/dashboard` answers the dashboard's request with a token when signed in, else "none", in the fragment and only to `DASHBOARD_URL`. A session already here stays; a hand-off never switches accounts.
+- Signing out on either side signs this browser out of both, and only this browser: after its own sign-out the app goes through the dashboard's sign-out page when the dashboard is signed in and answering, and `/handoff/signout` answers the dashboard's. Each honours only a request whose nonce also sits in a short-lived cookie on the shared domain, so a link from elsewhere signs nobody out; with the other side down, the sign-out ends on this side's sign-in. Owner, 2026-11-16.
 
 ## Open questions
 
