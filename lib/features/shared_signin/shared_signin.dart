@@ -91,16 +91,14 @@ String? appFlagCookie({
   dashboard: dashboard,
 );
 
-/// The value of cookie [name] in a `document.cookie` string, else null.
-String? readCookie(String? cookies, String name) {
-  for (final part in (cookies ?? '').split('; ')) {
-    final eq = part.indexOf('=');
-    if (eq > 0 && part.substring(0, eq) == name) {
-      return Uri.decodeComponent(part.substring(eq + 1));
-    }
-  }
-  return null;
-}
+/// Every value of cookie [name] in a `document.cookie` string. A parent
+/// domain's cookie (prod's `Domain=pangea.chat`) reaches staging hosts too,
+/// under the same name, so a check looks for its own value among all of them.
+List<String> cookieValues(String? cookies, String name) => [
+  for (final part in (cookies ?? '').split('; '))
+    if (part.indexOf('=') > 0 && part.substring(0, part.indexOf('=')) == name)
+      Uri.decodeComponent(part.substring(part.indexOf('=') + 1)),
+];
 
 /// The dashboard's state in a `/handoff/dashboard#state=…` request, else null.
 String? dashboardRequestState(String? fragment) =>
@@ -144,10 +142,11 @@ Future<String?> askDashboardForLoginToken({
 }
 
 // --- Signing out of both (owner, 2026-11-16) --------------------------------
-// A sign-out on either side signs this browser out of the other too, through
-// the other side's sign-out page. That page signs out only for a request whose
-// nonce also sits in a short-lived cookie on the shared domain, which no other
-// site can set, so a link from anywhere else signs nobody out.
+// A sign-out on either side signs this browser out of the other too. The
+// dashboard's comes through `/handoff/signout`, which signs out only for a
+// request whose nonce also sits in a short-lived cookie on the shared parent
+// domain, so a link from a site outside it signs nobody out. The app's ends
+// the dashboard session through admin-dash-api directly.
 
 /// The shared-domain cookie holding a sign-out request's nonce.
 const String signOutCookie = 'pangea_signout';
@@ -171,10 +170,161 @@ String dashboardSignOutUrl(Uri dashboard, String nonce) =>
 /// one in the shared cookie.
 bool signOutRequested(String? fragment, String? cookies) {
   final nonce = _nonceFormat.firstMatch(fragment ?? '')?.group(1);
-  return nonce != null && nonce == readCookie(cookies, signOutCookie);
+  return nonce != null && cookieValues(cookies, signOutCookie).contains(nonce);
 }
 
 /// Whether the dashboard marked this browser as signed in to it.
 bool dashboardSignedIn(String? cookies, Uri? dashboard) =>
     dashboard != null &&
-    readCookie(cookies, dashboardSignedInFlag) == dashboard.origin;
+    cookieValues(cookies, dashboardSignedInFlag).contains(dashboard.origin);
+
+// --- The flows, behind a host the browser half implements -------------------
+
+/// What the flows need from the browser and the Matrix session; the web half
+/// implements it, tests fake it.
+abstract class SharedSignInHost {
+  /// This app's own address.
+  Uri get app;
+
+  /// The configured dashboard (`DASHBOARD_URL`), or null.
+  Uri? get dashboard;
+
+  /// The dashboard's API (`TEACHER_BFF_API`), or empty.
+  String get teacherBffApi;
+
+  String? readCookies();
+  void writeCookie(String cookie);
+
+  /// Whether any account is signed in on this device.
+  bool hasSession();
+
+  /// Completes once the stored session has been restored.
+  Future<void> settled();
+
+  /// A POST with this browser's cookies; the response body. Throws on a
+  /// failure or a non-2xx answer.
+  Future<String?> credentialedPost(Uri url);
+
+  Future<void> loginWithToken(String loginToken);
+  Future<String> mintLoginToken();
+
+  /// Signs every signed-in account out of this device, the app's normal way.
+  Future<void> signOutHere();
+
+  void goToWorld();
+  void leaveFor(String url);
+  void onError(Object error, StackTrace stackTrace);
+}
+
+/// Marks (or unmarks) this browser as signed in to the app, for the dashboard.
+void markAppSignedIn(SharedSignInHost host, bool signedIn) {
+  final dashboard = host.dashboard;
+  if (dashboard == null) return;
+  final cookie = appFlagCookie(
+    signedIn: signedIn,
+    app: host.app,
+    dashboard: dashboard,
+  );
+  if (cookie != null) host.writeCookie(cookie);
+}
+
+/// At boot: publishes whether this browser is signed in, and, signed out with
+/// the dashboard's flag present, asks the dashboard's API for a sign-in. True
+/// when it signed in (then `/` opens the kept link, or onboarding).
+Future<bool> signInFromDashboard(SharedSignInHost host) async {
+  await host.settled();
+  markAppSignedIn(host, host.hasSession());
+  final token = await askDashboardForLoginToken(
+    hasSession: host.hasSession(),
+    cookies: host.readCookies(),
+    dashboard: host.dashboard,
+    teacherBffApi: host.teacherBffApi,
+    post: host.credentialedPost,
+    onError: host.onError,
+  );
+  if (token == null || host.hasSession()) return false;
+  try {
+    await host.loginWithToken(token);
+  } catch (e, s) {
+    // An expired or used token: the normal sign-in, with the link kept.
+    host.onError(e, s);
+    return false;
+  }
+  // The sign-in can land before the boot's own redirect to the sign-in page
+  // does, and the login listener only moves a visitor already on it.
+  host.goToWorld();
+  return true;
+}
+
+/// `/handoff/dashboard`: answers the dashboard's request ([state]) with a
+/// token when signed in, else none, only ever to `DASHBOARD_URL`. False when
+/// there is nothing to answer.
+Future<bool> answerDashboard(SharedSignInHost host, String? state) async {
+  final dashboard = host.dashboard;
+  if (state == null || dashboard == null) return false;
+  await host.settled();
+  String? token;
+  if (host.hasSession()) {
+    try {
+      token = await host.mintLoginToken();
+    } catch (e, s) {
+      // Signed in but no token (Synapse allows one a minute): the dashboard
+      // shows its own sign-in.
+      host.onError(e, s);
+    }
+  }
+  host.leaveFor(dashboardAnswerUrl(dashboard, state, loginToken: token));
+  return true;
+}
+
+/// After this app's own sign-out: ends this browser's dashboard session
+/// through the dashboard's API, never depending on the dashboard's pages, and
+/// removes its signed-in flag so no later visit here signs back in from it.
+Future<void> signOutDashboardToo(SharedSignInHost host) async {
+  final dashboard = host.dashboard;
+  if (!dashboardSignedIn(host.readCookies(), dashboard)) return;
+  final flag = sharedCookie(
+    name: dashboardSignedInFlag,
+    value: null,
+    maxAge: 0,
+    app: host.app,
+    dashboard: dashboard!,
+  );
+  if (flag != null) host.writeCookie(flag);
+  if (host.teacherBffApi.isEmpty) return;
+  try {
+    await host
+        .credentialedPost(Uri.parse('${host.teacherBffApi}/api/auth/logout'))
+        .timeout(dashboardAskTimeout);
+  } catch (e, s) {
+    host.onError(e, s);
+  }
+}
+
+/// `/handoff/signout`: the dashboard signed out and asks this app to sign
+/// this browser out too ([fragment] carries its nonce). Honoured only when the
+/// nonce is in the shared cookie, which is cleared either way; then back to
+/// the dashboard's sign-in. False when there was no such request.
+Future<bool> answerSignOut(SharedSignInHost host, String? fragment) async {
+  final dashboard = host.dashboard;
+  if (dashboard == null) return false;
+  final requested = signOutRequested(fragment, host.readCookies());
+  final clear = sharedCookie(
+    name: signOutCookie,
+    value: null,
+    maxAge: 0,
+    app: host.app,
+    dashboard: dashboard,
+  );
+  if (clear != null) host.writeCookie(clear);
+  if (!requested) return false;
+  await host.settled();
+  try {
+    await host.signOutHere();
+  } catch (e, s) {
+    host.onError(e, s);
+  }
+  markAppSignedIn(host, false);
+  host.leaveFor('$dashboard/login/');
+  return true;
+}

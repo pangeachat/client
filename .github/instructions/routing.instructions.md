@@ -84,10 +84,10 @@ Learners use panels that open over one world map, on any screen size. Outside li
 
 - Signed in on the app or the teacher dashboard, a teacher opens the other already signed in, landing where the link pointed, both ways. Will (admin-dash#235).
 - The side that signs in asks, and uses a single-use Matrix login token only from an answer to its own request, so a token pushed at it signs nobody in. ggurdin.
-- Each side keeps a "signed in here" flag cookie on the parent domain the two share, naming its origin and never a credential, and the other side asks only when it sees one, so nobody signed out of both ever waits on the other side.
+- Each side keeps a "signed in here" flag cookie on the parent domain the two share, naming its origin and never a credential, and the other side asks only when it sees one carrying its partner's origin (prod's parent-domain cookies reach staging hosts under the same names), so nobody signed out of both ever waits on the other side.
 - Dashboard to app: a signed-out app with the dashboard's flag asks the dashboard's API itself, once per page load; a token signs it in and the kept link opens. If the API is down, slow or has no session, the normal sign-in stays.
 - App to dashboard: `/handoff/dashboard` answers the dashboard's request with a token when signed in, else "none", in the fragment and only to `DASHBOARD_URL`. A session already here stays; a hand-off never switches accounts.
-- Signing out on either side signs this browser out of both, and only this browser: after its own sign-out the app goes through the dashboard's sign-out page when the dashboard is signed in and answering, and `/handoff/signout` answers the dashboard's. Each honours only a request whose nonce also sits in a short-lived cookie on the shared domain, so a link from elsewhere signs nobody out; with the other side down, the sign-out ends on this side's sign-in. Owner, 2026-11-16.
+- Signing out on either side signs this browser out of both, and only this browser. The app's sign-out ends the dashboard session through the dashboard's API and removes its flag, so it never depends on the dashboard's pages. The dashboard's comes through `/handoff/signout`, which signs out the app's normal way only for a request whose nonce also sits in a short-lived cookie on the shared parent domain, so a link from a site outside it signs nobody out. With the other side down, the sign-out ends on this side's sign-in. Owner, 2026-11-16.
 
 ## Open questions
 

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/shared_signin/shared_signin_web.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -33,7 +34,6 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
     return;
   }
 
-  await matrix.backgroundPush?.cancelAllNotifications();
   final redirect = client.onLoginStateChanged.stream
       .where((state) => state != LoginState.loggedIn)
       .first
@@ -47,27 +47,41 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
 
   await showFutureLoadingDialog(
     context: context,
-    future: () => saveFlushAndLogout(
-      // before wiping out locally cached construct data, save it to the server —
-      // the CAPTURED account's service, not the active-client getter.
-      // No course progress check: it reads outlines over the network, and
-      // the save is time-boxed ahead of the logout.
-      saveAnalytics: () =>
-          analytics?.updateService.sendLocalAnalyticsToAnalyticsRoom(
-            checkCourseProgress: false,
-          ) ??
-          Future.value(),
-      // NON-destructive flush of the final dosage span while the bearer is still
-      // valid; the loggedOut listener disposes the services once logout lands.
-      flushTelemetry: () => matrix.flushAccountTelemetry(client.clientName),
-      logout: () => client.logout(),
-    ),
+    future: () => logoutAccount(matrix, client, analytics: analytics),
   );
-
+  // Signs this browser out of the teacher dashboard too (owner, 2026-11-16),
+  // through its API, before anything here can time out.
+  await SharedSignIn.signOutDashboardToo();
   await redirect;
-  // Signs this browser out of the teacher dashboard too, when it is signed in
-  // there (owner, 2026-11-16); it returns to this app's sign-in.
-  await SharedSignIn.leaveAfterSignOut();
+}
+
+/// Signs [client] out of this device the app's normal way: notifications
+/// cleared, cached analytics saved and the final dosage span flushed while the
+/// bearer is still valid, then the logout ([saveFlushAndLogout]). Used by the
+/// Logout button and by the teacher dashboard's sign-out (admin-dash#235).
+/// [analytics] is captured by a caller that must pin it before any await.
+Future<void> logoutAccount(
+  MatrixState matrix,
+  Client client, {
+  AnalyticsDataService? analytics,
+}) async {
+  final service = analytics ?? matrix.analyticsServiceFor(client.clientName);
+  await matrix.backgroundPush?.cancelAllNotifications();
+  await saveFlushAndLogout(
+    // before wiping out locally cached construct data, save it to the server —
+    // the CAPTURED account's service, not the active-client getter.
+    // No course progress check: it reads outlines over the network, and
+    // the save is time-boxed ahead of the logout.
+    saveAnalytics: () =>
+        service?.updateService.sendLocalAnalyticsToAnalyticsRoom(
+          checkCourseProgress: false,
+        ) ??
+        Future.value(),
+    // NON-destructive flush of the final dosage span while the bearer is still
+    // valid; the loggedOut listener disposes the services once logout lands.
+    flushTelemetry: () => matrix.flushAccountTelemetry(client.clientName),
+    logout: () => client.logout(),
+  );
 }
 
 /// The logout ordering: save cached analytics, then NON-DESTRUCTIVELY flush this

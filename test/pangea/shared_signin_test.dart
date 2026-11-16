@@ -11,6 +11,7 @@ final _dashFlag = '$dashboardSignedInFlag=${Uri.encodeComponent(_dash.origin)}';
 
 void main() {
   signOutTests();
+  flowTests();
   group('the dashboard', () {
     test('must be https, or http on this machine', () {
       expect(
@@ -103,14 +104,31 @@ void main() {
       );
     });
 
-    test('are read by exact name', () {
-      expect(
-        readCookie('a=1; $_dashFlag', dashboardSignedInFlag),
+    test('are read by exact name, every value of it', () {
+      expect(cookieValues('a=1; $_dashFlag', dashboardSignedInFlag), [
         _dash.origin,
-      );
-      expect(readCookie('x$_dashFlag', dashboardSignedInFlag), isNull);
-      expect(readCookie(null, dashboardSignedInFlag), isNull);
+      ]);
+      expect(cookieValues('x$_dashFlag', dashboardSignedInFlag), isEmpty);
+      expect(cookieValues(null, dashboardSignedInFlag), isEmpty);
     });
+
+    test(
+      "another environment's flag under the same name never hides this one's",
+      () {
+        // Prod's parent-domain cookie reaches staging hosts too.
+        final prod =
+            '$dashboardSignedInFlag=${Uri.encodeComponent('https://admin.pangea.chat')}';
+        expect(dashboardSignedIn('$prod; $_dashFlag', _dash), isTrue);
+        expect(dashboardSignedIn(prod, _dash), isFalse);
+        expect(
+          signOutRequested(
+            'nonce=${'a' * 32}',
+            '$signOutCookie=${'b' * 32}; $signOutCookie=${'a' * 32}',
+          ),
+          isTrue,
+        );
+      },
+    );
   });
 
   group("asking the dashboard's API for a sign-in", () {
@@ -256,6 +274,226 @@ void signOutTests() {
       expect(dashboardSignedIn(_dashFlag, _dash), isTrue);
       expect(dashboardSignedIn('', _dash), isFalse);
       expect(dashboardSignedIn(_dashFlag, null), isFalse);
+    });
+  });
+}
+
+class FakeHost implements SharedSignInHost {
+  @override
+  Uri app = Uri.parse('https://app.example.test/');
+  @override
+  Uri? dashboard = _dash;
+  @override
+  String teacherBffApi = _bff;
+  String cookies = '';
+  final List<String> written = [];
+  bool session = false;
+  final List<Uri> posts = [];
+  Future<String?> Function(Uri url) postAnswer = (_) async =>
+      '{"login_token":"tok"}';
+  final List<String> logins = [];
+  Object? loginError;
+  Object? mintError;
+  Object? signOutError;
+  int signOuts = 0;
+  int worlds = 0;
+  final List<String> left = [];
+  final List<Object> errors = [];
+
+  @override
+  String? readCookies() => cookies;
+  @override
+  void writeCookie(String cookie) => written.add(cookie);
+  @override
+  bool hasSession() => session;
+  @override
+  Future<void> settled() async {}
+  @override
+  Future<String?> credentialedPost(Uri url) {
+    posts.add(url);
+    return postAnswer(url);
+  }
+
+  @override
+  Future<void> loginWithToken(String loginToken) async {
+    if (loginError != null) throw loginError!;
+    logins.add(loginToken);
+    session = true;
+  }
+
+  @override
+  Future<String> mintLoginToken() async {
+    if (mintError != null) throw mintError!;
+    return 'minted';
+  }
+
+  @override
+  Future<void> signOutHere() async {
+    signOuts++;
+    if (signOutError != null) throw signOutError!;
+    session = false;
+  }
+
+  @override
+  void goToWorld() => worlds++;
+  @override
+  void leaveFor(String url) => left.add(url);
+  @override
+  void onError(Object error, StackTrace stackTrace) => errors.add(error);
+}
+
+void flowTests() {
+  const nonce = '0123456789abcdef0123456789abcdef';
+
+  group('signing in from the dashboard at boot', () {
+    test(
+      'signed out with the dashboard flag: signs in, then opens /',
+      () async {
+        final host = FakeHost()..cookies = _dashFlag;
+        expect(await signInFromDashboard(host), isTrue);
+        expect(host.logins, ['tok']);
+        expect(host.worlds, 1);
+        expect(host.posts.single.toString(), '$_bff/api/auth/handoff/app');
+        expect(host.written.first, startsWith('$appSignedInFlag=;'));
+      },
+    );
+
+    test('already signed in: publishes the flag and asks nothing', () async {
+      final host = FakeHost()
+        ..cookies = _dashFlag
+        ..session = true;
+      expect(await signInFromDashboard(host), isFalse);
+      expect(host.posts, isEmpty);
+      expect(host.written.single, contains('Max-Age=2592000'));
+    });
+
+    test('a refused token: the normal sign-in, and it is reported', () async {
+      final host = FakeHost()
+        ..cookies = _dashFlag
+        ..loginError = Exception('M_FORBIDDEN');
+      expect(await signInFromDashboard(host), isFalse);
+      expect(host.worlds, 0);
+      expect(host.errors, hasLength(1));
+    });
+
+    test('the API down: the normal sign-in, reported', () async {
+      final host = FakeHost()
+        ..cookies = _dashFlag
+        ..postAnswer = (_) async => throw Exception('down');
+      expect(await signInFromDashboard(host), isFalse);
+      expect(host.logins, isEmpty);
+      expect(host.errors, hasLength(1));
+    });
+  });
+
+  group("answering the dashboard's request", () {
+    test('signed in: a token, only to the dashboard\'s fixed page', () async {
+      final host = FakeHost()..session = true;
+      expect(await answerDashboard(host, nonce), isTrue);
+      expect(
+        host.left.single,
+        dashboardAnswerUrl(_dash, nonce, loginToken: 'minted'),
+      );
+    });
+
+    test('signed out, or no token to mint: none', () async {
+      final out = FakeHost();
+      await answerDashboard(out, nonce);
+      expect(out.left.single, dashboardAnswerUrl(_dash, nonce));
+      final limited = FakeHost()
+        ..session = true
+        ..mintError = Exception('429');
+      await answerDashboard(limited, nonce);
+      expect(limited.left.single, dashboardAnswerUrl(_dash, nonce));
+      expect(limited.errors, hasLength(1));
+    });
+
+    test('no request or no dashboard: nothing to answer', () async {
+      expect(await answerDashboard(FakeHost(), null), isFalse);
+      expect(
+        await answerDashboard(FakeHost()..dashboard = null, nonce),
+        isFalse,
+      );
+    });
+  });
+
+  group("the app's sign-out signs this browser out of the dashboard", () {
+    test("through the dashboard's API, whatever its pages are doing", () async {
+      final host = FakeHost()..cookies = _dashFlag;
+      await signOutDashboardToo(host);
+      expect(host.posts.single.toString(), '$_bff/api/auth/logout');
+      expect(host.written.single, startsWith('$dashboardSignedInFlag=;'));
+      expect(host.written.single, contains('1970'));
+    });
+
+    test(
+      'the API down: the flag is still gone, so nothing signs back in',
+      () async {
+        final host = FakeHost()
+          ..cookies = _dashFlag
+          ..postAnswer = (_) async => throw Exception('down');
+        await signOutDashboardToo(host);
+        expect(host.written.single, startsWith('$dashboardSignedInFlag=;'));
+        expect(host.errors, hasLength(1));
+        // Reopened: no flag, so no hand-off.
+        final reopened = FakeHost();
+        expect(await signInFromDashboard(reopened), isFalse);
+        expect(reopened.posts, isEmpty);
+      },
+    );
+
+    test('the dashboard not signed in here: nothing to do', () async {
+      final host = FakeHost();
+      await signOutDashboardToo(host);
+      expect(host.posts, isEmpty);
+      expect(host.written, isEmpty);
+    });
+  });
+
+  group("answering the dashboard's sign-out", () {
+    test(
+      'with its nonce: signs out the normal way, clears the flag, then back',
+      () async {
+        final host = FakeHost()
+          ..session = true
+          ..cookies = '$signOutCookie=$nonce';
+        expect(await answerSignOut(host, 'nonce=$nonce'), isTrue);
+        expect(host.signOuts, 1);
+        expect(host.written.first, startsWith('$signOutCookie=;'));
+        expect(host.written.last, startsWith('$appSignedInFlag=;'));
+        expect(host.left.single, '$_dash/login/');
+      },
+    );
+
+    test(
+      'a link from elsewhere (no matching nonce) signs nobody out',
+      () async {
+        final host = FakeHost()..session = true;
+        expect(await answerSignOut(host, 'nonce=$nonce'), isFalse);
+        expect(host.signOuts, 0);
+        expect(host.left, isEmpty);
+        expect(host.written.single, startsWith('$signOutCookie=;'));
+      },
+    );
+
+    test(
+      'a failed sign-out still returns to the dashboard, reported',
+      () async {
+        final host = FakeHost()
+          ..session = true
+          ..cookies = '$signOutCookie=$nonce'
+          ..signOutError = Exception('network');
+        expect(await answerSignOut(host, 'nonce=$nonce'), isTrue);
+        expect(host.errors, hasLength(1));
+        expect(host.left.single, '$_dash/login/');
+      },
+    );
+
+    test('no dashboard configured: nothing', () async {
+      expect(
+        await answerSignOut(FakeHost()..dashboard = null, 'nonce=$nonce'),
+        isFalse,
+      );
     });
   });
 }
