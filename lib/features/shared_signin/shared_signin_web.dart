@@ -3,10 +3,12 @@ import 'package:flutter/foundation.dart';
 import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/shared_signin/shared_signin.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Shared sign-in with the teacher dashboard (admin-dash#235), the browser
@@ -79,8 +81,10 @@ abstract class SharedSignIn {
 
   /// Signs in with an accepted token once the stored session has settled. A
   /// session that exists by then (another tab signed in) is kept and the token
-  /// dropped, so an account is never swapped. The `/` guard then opens the
-  /// kept destination.
+  /// dropped, so an account is never swapped. Then it goes to `/`, whose guard
+  /// opens the kept destination (or onboarding): the sign-in can land before
+  /// the boot's own redirect to the sign-in page does, and the login listener
+  /// only moves a visitor who is already on it.
   static Future<void> completePendingLogin(MatrixState matrix) async {
     final token = _pendingToken;
     _pendingToken = null;
@@ -95,6 +99,7 @@ abstract class SharedSignIn {
         token: token,
         initialDeviceDisplayName: PlatformInfos.clientName,
       );
+      FluffyChatApp.router.go(PRoutes.world);
     } catch (e, s) {
       // An expired or used token: the visitor is on the normal sign-in with
       // the destination kept. The token is never reported.
