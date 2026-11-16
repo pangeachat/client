@@ -792,13 +792,15 @@ class WorldMapPinsManager {
 
     // The course's own list: its copy's per-Mission activities, else the
     // fail-open per-Mission pins (client#7748), else the plan's selections
-    // (not joined: the selections alone). The WORLD-scoped map is deliberately
-    // never filtered.
+    // (not joined: the selections alone), decided by the quest's own Can-Dos
+    // only, as on the course page. The WORLD-scoped map is deliberately never
+    // filtered.
+    final quest = (await questRead).result?.quest;
     _pins = restrictCardsForCourse(
       activityCards,
       rules,
-      selections:
-          (await questRead).result?.quest.activitySelections ?? const {},
+      selections: quest?.activitySelections ?? const {},
+      listedLoIds: quest?.learningObjectiveIds.toSet(),
     );
   }
 
