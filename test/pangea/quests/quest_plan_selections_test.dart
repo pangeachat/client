@@ -352,5 +352,92 @@ void main() {
         ['a1', 'b1'],
       );
     });
+
+    // An activity that also satisfies a Can-Do the quest does not list
+    // (client#9839): only the quest's Can-Dos decide, as on the course page.
+    QuestActivityCard multi(String id, List<String> loIds) =>
+        QuestActivityCard.fromJson({
+          'res': {
+            'plan': {'activity_id': id},
+          },
+          'learningObjectiveRefs': loIds,
+        });
+
+    test('a Can-Do outside the quest does not let an unselected one in', () {
+      expect(
+        ids(
+          restrictCardsForCourse(
+            [
+              ...cards,
+              multi('x1', ['lo1', 'outside']),
+            ],
+            CourseListRules.none,
+            selections: {
+              'lo1': ['a2'],
+            },
+            listedLoIds: {'lo1', 'lo2'},
+          ),
+        ),
+        ['a2', 'b1'],
+      );
+    });
+
+    test('a pin outside the quest does not let an unpinned one in', () {
+      expect(
+        ids(
+          restrictCardsForCourse(
+            [
+              ...cards,
+              multi('x1', ['lo1', 'outside']),
+            ],
+            const CourseListRules(
+              pins: {
+                'lo1': ['a1'],
+                'outside': ['x1'],
+              },
+            ),
+            listedLoIds: {'lo1', 'lo2'},
+          ),
+        ),
+        ['a1', 'b1'],
+      );
+    });
+
+    test('an activity shows when any listed Can-Do shows it', () {
+      expect(
+        ids(
+          restrictCardsForCourse(
+            [
+              ...cards,
+              multi('x1', ['lo1', 'lo2']),
+            ],
+            CourseListRules.none,
+            selections: {
+              'lo1': ['a2'],
+            },
+            listedLoIds: {'lo1', 'lo2'},
+          ),
+        ),
+        ['a2', 'b1', 'x1'],
+      );
+    });
+
+    test('with the quest unknown, every Can-Do of a card counts', () {
+      expect(
+        ids(
+          restrictCardsForCourse(
+            [
+              ...cards,
+              multi('x1', ['lo1', 'outside']),
+            ],
+            CourseListRules.none,
+            selections: {
+              'lo1': ['a2'],
+            },
+          ),
+        ),
+        ['a2', 'b1', 'x1'],
+      );
+    });
   });
 }
