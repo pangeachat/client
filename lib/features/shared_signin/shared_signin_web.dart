@@ -24,17 +24,16 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// only.
 abstract class SharedSignIn {
   static String? _requestState;
-  static String? _signOutFragment;
+
+  /// Set once the boot's own sign-in step is over: a sign-in after that is
+  /// one by hand (or a hand-off, which the marker would have stopped).
+  static bool _bootDone = false;
 
   /// Called first thing at boot: keeps the dashboard's request, if any,
   /// before the router rewrites the address.
   static void readRequest() {
-    if (!kIsWeb) return;
-    if (Uri.base.path == '/handoff/dashboard') {
-      _requestState = flows.dashboardRequestState(Uri.base.fragment);
-    } else if (Uri.base.path == '/handoff/signout') {
-      _signOutFragment = Uri.base.fragment;
-    }
+    if (!kIsWeb || Uri.base.path != '/handoff/dashboard') return;
+    _requestState = flows.dashboardRequestState(Uri.base.fragment);
   }
 
   /// Tells the dashboard whether this browser is signed in to the app.
@@ -43,10 +42,29 @@ abstract class SharedSignIn {
     flows.markAppSignedIn(_BrowserHost(null), signedIn);
   }
 
-  /// Boot: a signed-out app signs in from the dashboard when it can.
+  /// The app's own sign-out: this browser signs out of the dashboard too, at
+  /// the dashboard's next visit (the signed-out marker).
+  static void markSignedOutOfBoth() {
+    if (!kIsWeb) return;
+    flows.markSignedOutOfBoth(_BrowserHost(null), true);
+  }
+
+  /// A sign-in on this device after boot is one by hand: hand-offs are on
+  /// again in this browser.
+  static void onSignedIn() {
+    if (!kIsWeb || !_bootDone) return;
+    flows.markSignedOutOfBoth(_BrowserHost(null), false);
+  }
+
+  /// Boot: honours the signed-out marker, else signs in from the dashboard
+  /// when it can.
   static Future<void> signInFromDashboard(MatrixState matrix) async {
     if (!kIsWeb) return;
-    await flows.signInFromDashboard(_BrowserHost(matrix));
+    try {
+      await flows.signInFromDashboard(_BrowserHost(matrix));
+    } finally {
+      _bootDone = true;
+    }
   }
 
   /// `/handoff/dashboard`.
@@ -55,20 +73,6 @@ abstract class SharedSignIn {
     final state = _requestState;
     _requestState = null;
     return flows.answerDashboard(_BrowserHost(matrix), state);
-  }
-
-  /// `/handoff/signout`.
-  static Future<bool> answerSignOut(MatrixState matrix) async {
-    if (!kIsWeb) return false;
-    final fragment = _signOutFragment;
-    _signOutFragment = null;
-    return flows.answerSignOut(_BrowserHost(matrix), fragment);
-  }
-
-  /// After the app's own sign-out: the dashboard's too.
-  static Future<void> signOutDashboardToo() async {
-    if (!kIsWeb) return;
-    await flows.signOutDashboardToo(_BrowserHost(null));
   }
 }
 
@@ -147,7 +151,8 @@ class _BrowserHost implements flows.SharedSignInHost {
   @override
   Future<void> signOutHere() async {
     final m = matrix!;
-    for (final client in m.widget.clients.where((c) => c.isLogged())) {
+    // A snapshot: each logout removes its client from the live list.
+    for (final client in m.widget.clients.where((c) => c.isLogged()).toList()) {
       // The app's normal logout for this device: never other sessions.
       await logoutAccount(m, client);
     }
@@ -165,4 +170,8 @@ class _BrowserHost implements flows.SharedSignInHost {
     s: stackTrace,
     data: {'flow': 'dashboard-handoff'},
   );
+
+  @override
+  void onRoutine(String message, Object? error) =>
+      Logs().i('[handoff] $message', error);
 }

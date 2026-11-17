@@ -118,20 +118,12 @@ abstract class AppRoutes {
     // redirect caches the invited user in its own ferry entry and lands on
     // the world map with the chat list open (or bounces to login), and the
     // shell opens the DM from there — DmInviteFerryConsumer (#8436).
-    // The teacher dashboard's sign-in and sign-out requests (admin-dash#235):
-    // answered whether or not this browser is signed in, so no auth guard.
+    // The teacher dashboard's sign-in request (admin-dash#235): answered
+    // whether or not this browser is signed in, so it has no auth guard.
     GoRoute(
       path: '/handoff/dashboard',
       pageBuilder: (context, state) =>
           defaultPageBuilder(context, state, const DashboardHandoffPage()),
-    ),
-    GoRoute(
-      path: '/handoff/signout',
-      pageBuilder: (context, state) => defaultPageBuilder(
-        context,
-        state,
-        const DashboardHandoffPage(signOut: true),
-      ),
     ),
     GoRoute(
       path: '${PRoutes.dmInvite}/:userID',

@@ -45,13 +45,13 @@ void pLogoutAction(BuildContext context, {bool? isDestructiveAction}) async {
       })
       .timeout(const Duration(seconds: 30));
 
+  // Signs this browser out of the teacher dashboard too, at its next visit
+  // (owner, 2026-11-16): set before anything here can fail or time out.
+  SharedSignIn.markSignedOutOfBoth();
   await showFutureLoadingDialog(
     context: context,
     future: () => logoutAccount(matrix, client, analytics: analytics),
   );
-  // Signs this browser out of the teacher dashboard too (owner, 2026-11-16),
-  // through its API, before anything here can time out.
-  await SharedSignIn.signOutDashboardToo();
   await redirect;
 }
 

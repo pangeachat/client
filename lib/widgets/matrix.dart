@@ -1162,6 +1162,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // in, whichever branch below runs (a hand-off sign-in can leave two
       // clients, which takes the multiple-clients branch on logout).
       SharedSignIn.markSignedIn(widget.clients.any((x) => x.isLogged()));
+      if (state == LoginState.loggedIn) SharedSignIn.onSignedIn();
       if (state == LoginState.loggedOut) {
         // #Pangea
         // In a `finally`, because the mark is what makes `getLoginClient`

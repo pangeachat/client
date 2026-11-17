@@ -2,15 +2,17 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/features/shared_signin/shared_signin.dart';
 
 const _state = '0123456789abcdef0123456789abcdef';
+
 final _dash = Uri.parse('https://admin.example.test');
 const _bff = 'https://api.example.test';
 final _dashFlag = '$dashboardSignedInFlag=${Uri.encodeComponent(_dash.origin)}';
 
 void main() {
-  signOutTests();
   flowTests();
   group('the dashboard', () {
     test('must be https, or http on this machine', () {
@@ -120,13 +122,6 @@ void main() {
             '$dashboardSignedInFlag=${Uri.encodeComponent('https://admin.pangea.chat')}';
         expect(dashboardSignedIn('$prod; $_dashFlag', _dash), isTrue);
         expect(dashboardSignedIn(prod, _dash), isFalse);
-        expect(
-          signOutRequested(
-            'nonce=${'a' * 32}',
-            '$signOutCookie=${'b' * 32}; $signOutCookie=${'a' * 32}',
-          ),
-          isTrue,
-        );
       },
     );
   });
@@ -139,6 +134,7 @@ void main() {
       String bff = _bff,
       Future<String?> Function(Uri)? post,
       List<Object>? errors,
+      List<Object>? routine,
     }) => askDashboardForLoginToken(
       hasSession: hasSession,
       cookies: cookies ?? _dashFlag,
@@ -146,6 +142,7 @@ void main() {
       teacherBffApi: bff,
       post: post ?? (_) async => '{"login_token":"tok"}',
       onError: (e, _) => errors?.add(e),
+      onRoutine: (_, e) => routine?.add(e ?? 'none'),
     );
 
     test('a signed-out app with the dashboard flag gets the token', () async {
@@ -189,19 +186,33 @@ void main() {
     });
 
     test(
-      'an API that is down, slow or confused: the normal sign-in, and it is told',
+      'an API that is down is routine (info); a confused answer is an error',
       () async {
         final errors = <Object>[];
+        final routine = <Object>[];
         expect(
-          await ask(post: (_) async => throw Exception('down'), errors: errors),
+          await ask(
+            post: (_) async => throw Exception('down'),
+            errors: errors,
+            routine: routine,
+          ),
+          isNull,
+        );
+        expect(routine, hasLength(1));
+        expect(errors, isEmpty);
+        expect(
+          await ask(
+            post: (_) async => 'not json',
+            errors: errors,
+            routine: routine,
+          ),
           isNull,
         );
         expect(
-          await ask(post: (_) async => 'not json', errors: errors),
+          await ask(post: (_) async => '[]', errors: errors, routine: routine),
           isNull,
         );
-        expect(await ask(post: (_) async => '[]', errors: errors), isNull);
-        expect(errors, hasLength(3));
+        expect(errors, hasLength(2));
       },
     );
 
@@ -214,66 +225,12 @@ void main() {
         teacherBffApi: _bff,
         post: (_) => Completer<String?>().future,
         onError: (e, _) => errors.add(e),
+        onRoutine: (_, e) => errors.add(e ?? 'none'),
         timeout: const Duration(milliseconds: 20),
       );
       expect(token, isNull);
       expect(errors.single, isA<TimeoutException>());
       expect(dashboardAskTimeout, const Duration(seconds: 5));
-    });
-  });
-}
-
-void signOutTests() {
-  group('signing out of both (owner, 2026-11-16)', () {
-    const nonce = '0123456789abcdef0123456789abcdef';
-
-    test("the dashboard's sign-out page, with the nonce in the fragment", () {
-      expect(
-        dashboardSignOutUrl(_dash, nonce),
-        'https://admin.example.test/auth/signout/#nonce=$nonce',
-      );
-      expect(newNonce(), matches(RegExp(r'^[0-9a-f]{32}$')));
-    });
-
-    test('the nonce also sits in a short-lived shared-domain cookie', () {
-      expect(
-        sharedCookie(
-          name: signOutCookie,
-          value: nonce,
-          maxAge: 120,
-          app: Uri.parse('https://app.example.test/'),
-          dashboard: _dash,
-        ),
-        '$signOutCookie=$nonce; Path=/; SameSite=Lax; Max-Age=120; '
-        'Domain=example.test; Secure',
-      );
-      expect(
-        sharedCookie(
-          name: signOutCookie,
-          value: null,
-          maxAge: 120,
-          app: Uri.parse('https://app.example.test/'),
-          dashboard: _dash,
-        ),
-        contains('Expires=Thu, 01 Jan 1970 00:00:00 GMT'),
-      );
-    });
-
-    test("the dashboard's request is honoured only with the nonce it set", () {
-      expect(signOutRequested('nonce=$nonce', '$signOutCookie=$nonce'), isTrue);
-      expect(signOutRequested('nonce=$nonce', 'other=1'), isFalse);
-      expect(
-        signOutRequested('nonce=$nonce', '$signOutCookie=${'f' * 32}'),
-        isFalse,
-      );
-      expect(signOutRequested('nonce=short', '$signOutCookie=short'), isFalse);
-      expect(signOutRequested(null, '$signOutCookie=$nonce'), isFalse);
-    });
-
-    test('the dashboard is signed out too only when it is signed in here', () {
-      expect(dashboardSignedIn(_dashFlag, _dash), isTrue);
-      expect(dashboardSignedIn('', _dash), isFalse);
-      expect(dashboardSignedIn(_dashFlag, null), isFalse);
     });
   });
 }
@@ -340,6 +297,9 @@ class FakeHost implements SharedSignInHost {
   void leaveFor(String url) => left.add(url);
   @override
   void onError(Object error, StackTrace stackTrace) => errors.add(error);
+  final List<String> routine = [];
+  @override
+  void onRoutine(String message, Object? error) => routine.add(message);
 }
 
 void flowTests() {
@@ -376,13 +336,14 @@ void flowTests() {
       expect(host.errors, hasLength(1));
     });
 
-    test('the API down: the normal sign-in, reported', () async {
+    test('the API down: the normal sign-in, logged as routine', () async {
       final host = FakeHost()
         ..cookies = _dashFlag
         ..postAnswer = (_) async => throw Exception('down');
       expect(await signInFromDashboard(host), isFalse);
       expect(host.logins, isEmpty);
-      expect(host.errors, hasLength(1));
+      expect(host.errors, isEmpty);
+      expect(host.routine, hasLength(1));
     });
   });
 
@@ -417,83 +378,115 @@ void flowTests() {
     });
   });
 
-  group("the app's sign-out signs this browser out of the dashboard", () {
-    test("through the dashboard's API, whatever its pages are doing", () async {
-      final host = FakeHost()..cookies = _dashFlag;
-      await signOutDashboardToo(host);
-      expect(host.posts.single.toString(), '$_bff/api/auth/logout');
-      expect(host.written.single, startsWith('$dashboardSignedInFlag=;'));
-      expect(host.written.single, contains('1970'));
-    });
+  group('signing out of both: the signed-out marker', () {
+    final marker = '$signedOutMarker=${Uri.encodeComponent(_dash.origin)}';
 
     test(
-      'the API down: the flag is still gone, so nothing signs back in',
-      () async {
-        final host = FakeHost()
-          ..cookies = _dashFlag
-          ..postAnswer = (_) async => throw Exception('down');
-        await signOutDashboardToo(host);
-        expect(host.written.single, startsWith('$dashboardSignedInFlag=;'));
-        expect(host.errors, hasLength(1));
-        // Reopened: no flag, so no hand-off.
-        final reopened = FakeHost();
-        expect(await signInFromDashboard(reopened), isFalse);
-        expect(reopened.posts, isEmpty);
+      'the app\'s sign-out sets it on the shared domain, naming the dashboard',
+      () {
+        final host = FakeHost();
+        markSignedOutOfBoth(host, true);
+        expect(
+          host.written.single,
+          '$marker; Path=/; SameSite=Lax; Max-Age=31536000; Domain=example.test; Secure',
+        );
+        markSignedOutOfBoth(host, false);
+        expect(host.written.last, startsWith('$signedOutMarker=;'));
+        expect(host.written.last, contains('1970'));
       },
     );
 
-    test('the dashboard not signed in here: nothing to do', () async {
-      final host = FakeHost();
-      await signOutDashboardToo(host);
-      expect(host.posts, isEmpty);
-      expect(host.written, isEmpty);
-    });
+    test(
+      'another environment\'s marker neither counts nor hides this one\'s',
+      () {
+        final prod =
+            '$signedOutMarker=${Uri.encodeComponent('https://admin.pangea.chat')}';
+        expect(signedOutOfBoth(prod, _dash), isFalse);
+        expect(signedOutOfBoth('$prod; $marker', _dash), isTrue);
+        expect(signedOutOfBoth(marker, null), isFalse);
+      },
+    );
+
+    test(
+      'at boot, a session found while it is set is signed out here, the normal way',
+      () async {
+        final host = FakeHost()
+          ..session = true
+          ..cookies = '$_dashFlag; $marker';
+        expect(await signInFromDashboard(host), isFalse);
+        expect(host.signOuts, 1);
+        expect(host.session, isFalse);
+        expect(host.posts, isEmpty);
+        expect(host.written.last, startsWith('$appSignedInFlag=;'));
+      },
+    );
+
+    test(
+      'while it is set, a signed-out app never asks the dashboard',
+      () async {
+        final host = FakeHost()..cookies = '$_dashFlag; $marker';
+        expect(await signInFromDashboard(host), isFalse);
+        expect(host.posts, isEmpty);
+        expect(host.signOuts, 0);
+      },
+    );
+
+    test(
+      'while it is set, the dashboard\'s request is answered none',
+      () async {
+        final host = FakeHost()
+          ..session = true
+          ..cookies = marker;
+        expect(await answerDashboard(host, _state), isTrue);
+        expect(host.left.single, dashboardAnswerUrl(_dash, _state));
+      },
+    );
+
+    test(
+      'a failed sign-out here is reported and the flag still cleared',
+      () async {
+        final host = FakeHost()
+          ..session = true
+          ..cookies = marker
+          ..signOutError = Exception('network');
+        await signInFromDashboard(host);
+        expect(host.errors, hasLength(1));
+        expect(host.written.last, startsWith('$appSignedInFlag=;'));
+      },
+    );
   });
 
-  group("answering the dashboard's sign-out", () {
-    test(
-      'with its nonce: signs out the normal way, clears the flag, then back',
-      () async {
-        final host = FakeHost()
-          ..session = true
-          ..cookies = '$signOutCookie=$nonce';
-        expect(await answerSignOut(host, 'nonce=$nonce'), isTrue);
-        expect(host.signOuts, 1);
-        expect(host.written.first, startsWith('$signOutCookie=;'));
-        expect(host.written.last, startsWith('$appSignedInFlag=;'));
-        expect(host.left.single, '$_dash/login/');
-      },
-    );
-
-    test(
-      'a link from elsewhere (no matching nonce) signs nobody out',
-      () async {
-        final host = FakeHost()..session = true;
-        expect(await answerSignOut(host, 'nonce=$nonce'), isFalse);
-        expect(host.signOuts, 0);
-        expect(host.left, isEmpty);
-        expect(host.written.single, startsWith('$signOutCookie=;'));
-      },
-    );
-
-    test(
-      'a failed sign-out still returns to the dashboard, reported',
-      () async {
-        final host = FakeHost()
-          ..session = true
-          ..cookies = '$signOutCookie=$nonce'
-          ..signOutError = Exception('network');
-        expect(await answerSignOut(host, 'nonce=$nonce'), isTrue);
-        expect(host.errors, hasLength(1));
-        expect(host.left.single, '$_dash/login/');
-      },
-    );
-
-    test('no dashboard configured: nothing', () async {
-      expect(
-        await answerSignOut(FakeHost()..dashboard = null, 'nonce=$nonce'),
-        isFalse,
-      );
+  group('routine outcomes are not errors', () {
+    test("Synapse's one-a-minute limit on a mint is routine", () async {
+      final host = FakeHost()
+        ..session = true
+        ..mintError = MatrixException.fromJson({
+          'errcode': 'M_LIMIT_EXCEEDED',
+          'error': 'Too Many Requests',
+        });
+      await answerDashboard(host, _state);
+      expect(host.errors, isEmpty);
+      expect(host.routine, hasLength(1));
     });
+
+    test(
+      'a used or expired token is routine; anything else an error',
+      () async {
+        final used = FakeHost()
+          ..cookies = _dashFlag
+          ..loginError = MatrixException.fromJson({
+            'errcode': 'M_FORBIDDEN',
+            'error': 'Invalid login token',
+          });
+        await signInFromDashboard(used);
+        expect(used.errors, isEmpty);
+        expect(used.routine, hasLength(1));
+        final broken = FakeHost()
+          ..cookies = _dashFlag
+          ..loginError = StateError('bug');
+        await signInFromDashboard(broken);
+        expect(broken.errors, hasLength(1));
+      },
+    );
   });
 }
