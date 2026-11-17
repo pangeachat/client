@@ -103,6 +103,7 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_resp
 import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/streamed_stt_embed.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_provenance.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/wav_writer.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/message_read_aloud_controller.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
@@ -1972,6 +1973,11 @@ class ChatController extends State<ChatPageWithRoom>
     );
     final bytes = bytesResult.result;
     if (bytes == null) return;
+    // #Pangea
+    // Every voice message carries its length, so speaking minutes can count it:
+    // when the recorder reported none, it is read from the recorded WAV itself.
+    final lengthMs = voiceMessageDurationMs(reported: duration, bytes: bytes);
+    // Pangea#
 
     final file = MatrixAudioFile(
       bytes: bytes,
@@ -2046,10 +2052,10 @@ class ChatController extends State<ChatPageWithRoom>
           // Pangea#
           threadRootEventId: activeThreadId,
           extraContent: {
-            'info': {...file.info, 'duration': duration},
+            'info': {...file.info, 'duration': lengthMs},
             'org.matrix.msc3245.voice': {},
             'org.matrix.msc1767.audio': {
-              'duration': duration,
+              'duration': lengthMs,
               'waveform': waveform,
             },
             // #Pangea
@@ -2140,7 +2146,7 @@ class ChatController extends State<ChatPageWithRoom>
     // The DURATION half of speaking (admin-dash-api#150 / #104). For a DM / 1:1 /
     // bot room the server's OTHER populate path — a teacher-token read of the
     // course session room's `m.audio` — cannot see this message, so the
-    // `content.info.duration` the client holds right here (`duration`, the same
+    // `content.info.duration` the client holds right here (`lengthMs`, the same
     // value embedded in `info` above) is the ONLY place that magnitude exists.
     // Reported on the SAME audio-signals lane as a `voice_messages` row keyed by
     // the SAME `m.audio` event id ([eventId]) the envelope above and the `pvm`
@@ -2153,7 +2159,7 @@ class ChatController extends State<ChatPageWithRoom>
     DosageAudioSignals.recordVoiceMessage(
       msgId: eventId,
       roomId: capturedRoomId,
-      durationMs: duration,
+      durationMs: lengthMs,
       userId: capturedClientUserId,
       accessToken: capturedRoom.client.accessToken,
     );

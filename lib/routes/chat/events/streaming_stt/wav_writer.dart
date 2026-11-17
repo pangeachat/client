@@ -58,3 +58,42 @@ Uint8List pcm16ToWav(
   out.setRange(44, 44 + dataLen, pcm);
   return out;
 }
+
+/// The length of a PCM WAV in milliseconds, read from its own header, or null
+/// when [bytes] are not a WAV this can read.
+///
+/// Walks the RIFF chunks for `fmt ` (byte rate) and `data` (sample bytes). A
+/// recorder stopped before it finalised its header leaves the data size 0 or
+/// larger than the file; then the bytes actually held after the header are the
+/// sample data.
+int? wavDurationMs(Uint8List bytes) {
+  String tag(int offset) => String.fromCharCodes(bytes, offset, offset + 4);
+  if (bytes.length < 12 || tag(0) != 'RIFF' || tag(8) != 'WAVE') return null;
+  final view = ByteData.sublistView(bytes);
+  int? byteRate;
+  var offset = 12;
+  while (offset + 8 <= bytes.length) {
+    final id = tag(offset);
+    final size = view.getUint32(offset + 4, Endian.little);
+    final body = offset + 8;
+    if (id == 'fmt ' && body + 16 <= bytes.length) {
+      byteRate = view.getUint32(body + 8, Endian.little);
+    } else if (id == 'data') {
+      if (byteRate == null || byteRate <= 0) return null;
+      final held = bytes.length - body;
+      final dataLen = size == 0 || size > held ? held : size;
+      return dataLen * 1000 ~/ byteRate;
+    }
+    // Chunks are word-aligned: an odd size carries one pad byte.
+    offset = body + size + (size.isOdd ? 1 : 0);
+  }
+  return null;
+}
+
+/// The length a voice message is sent and reported with: the recorder's own
+/// [reported] milliseconds when it gave one, else the length of the recorded
+/// [bytes] (every recorder path sends a WAV). 0 only when neither gives one.
+int voiceMessageDurationMs({required int reported, required Uint8List bytes}) {
+  if (reported > 0) return reported;
+  return wavDurationMs(bytes) ?? 0;
+}

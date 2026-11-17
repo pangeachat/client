@@ -119,8 +119,48 @@ class FilteredNetworkController {
       _note(() => onRequestFailed(url));
       rethrow;
     }
-    _note(() => onRequestSucceeded(url));
+    // A server error is an answer from the host, so no filter, but not a
+    // working chat server.
+    final serverError =
+        response is http.BaseResponse && response.statusCode >= 500;
+    // Streamed, the headers alone are not an answer: a body that then fails
+    // is a request that got no usable response.
+    if (response is http.StreamedResponse && !serverError) {
+      return _answeredOnceRead(url, response) as T;
+    }
+    _note(() => onRequestSucceeded(url, serverError: serverError));
     return response;
+  }
+
+  /// [response] with a body that notes the request succeeded once it has
+  /// been read to the end, and not if it fails or is abandoned first.
+  http.StreamedResponse _answeredOnceRead(
+    Uri url,
+    http.StreamedResponse response,
+  ) {
+    var failed = false;
+    final body = response.stream.transform(
+      StreamTransformer<List<int>, List<int>>.fromHandlers(
+        handleError: (error, stackTrace, sink) {
+          failed = true;
+          sink.addError(error, stackTrace);
+        },
+        handleDone: (sink) {
+          if (!failed) _note(() => onRequestSucceeded(url));
+          sink.close();
+        },
+      ),
+    );
+    return http.StreamedResponse(
+      http.ByteStream(body),
+      response.statusCode,
+      contentLength: response.contentLength,
+      request: response.request,
+      headers: response.headers,
+      isRedirect: response.isRedirect,
+      persistentConnection: response.persistentConnection,
+      reasonPhrase: response.reasonPhrase,
+    );
   }
 
   /// Runs [noting] so that a failure in the bookkeeping is reported, once,
@@ -167,10 +207,13 @@ class FilteredNetworkController {
     if (category != null) unawaited(checkIfStale(category));
   }
 
-  void onRequestSucceeded(Uri url) {
+  void onRequestSucceeded(Uri url, {bool serverError = false}) {
     // Every request lands here; on a healthy network there is nothing to do.
+    // Even while connected, an answer cancels failed syncs counted toward a
+    // loss that the check of the device's network has yet to confirm.
     final connection = ConnectionStatusController.instance;
-    if (connection.status.value.isLost &&
+    if (!serverError &&
+        (connection.status.value.isLost || connection.hasFailedSyncs) &&
         NetworkHostCategory.ofRequest(url) == NetworkHostCategory.chatServer) {
       connection.onChatServerAnswered();
     }

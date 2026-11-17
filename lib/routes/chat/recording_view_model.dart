@@ -4,11 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:cross_file/cross_file.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:matrix/matrix.dart';
 import 'package:path/path.dart' as path_lib;
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
+import 'package:universal_html/html.dart' as html;
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
@@ -19,6 +21,7 @@ import 'package:fluffychat/routes/chat/events/streaming_stt/editable_transcript.
 import 'package:fluffychat/routes/chat/events/streaming_stt/streaming_stt_session.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_partial_model.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_provenance.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/wav_writer.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -29,6 +32,14 @@ class PermissionException implements Exception {}
 
 class EmptyAudioException implements Exception {}
 // Pangea#
+
+/// The encoder a voice message records with. Web records raw PCM: the record
+/// package's web WAV encoder copies the whole recording again on every audio
+/// chunk, so the work grows with the square of the length and froze the tab
+/// near a minute (#9852). The WAV header is added once, at stop.
+@visibleForTesting
+AudioEncoder voiceRecordingEncoder({required bool isWeb}) =>
+    isWeb ? AudioEncoder.pcm16bits : AudioEncoder.wav;
 
 // #Pangea
 /// Outcome of a flag-gated streaming start attempt (see `_startStreaming`).
@@ -95,6 +106,10 @@ class RecordingViewModel extends StatefulWidget {
 class RecordingViewModelState extends State<RecordingViewModel> {
   Timer? _recorderSubscription;
   Duration duration = Duration.zero;
+
+  /// The batch recorder's config, kept so stop can write the WAV header for
+  /// the rate and channels the PCM was recorded at.
+  RecordConfig? _recordConfig;
 
   bool isSending = false;
 
@@ -339,10 +354,10 @@ class RecordingViewModelState extends State<RecordingViewModel> {
       //           await audioRecorder.isEncoderSupported(AudioEncoder.opus)
       //     ? AudioEncoder.opus
       //     : AudioEncoder.aacLc;
-      const codec = AudioEncoder.wav;
+      final codec = voiceRecordingEncoder(isWeb: kIsWeb);
       // Pangea#
-      fileName =
-          'recording${DateTime.now().microsecondsSinceEpoch}.${codec.fileExtension}';
+      // Always a .wav: on web the PCM is wrapped in a WAV header at stop.
+      fileName = 'recording${DateTime.now().microsecondsSinceEpoch}.wav';
       String? path;
       if (!kIsWeb) {
         final tempDir = await getTemporaryDirectory();
@@ -360,18 +375,17 @@ class RecordingViewModelState extends State<RecordingViewModel> {
       }
       await WakelockPlus.enable();
 
-      await audioRecorder.start(
-        RecordConfig(
-          bitRate: AppSettings.audioRecordingBitRate.value,
-          sampleRate: AppSettings.audioRecordingSamplingRate.value,
-          numChannels: AppSettings.audioRecordingNumChannels.value,
-          autoGain: AppSettings.audioRecordingAutoGain.value,
-          echoCancel: AppSettings.audioRecordingEchoCancel.value,
-          noiseSuppress: AppSettings.audioRecordingNoiseSuppress.value,
-          encoder: codec,
-        ),
-        path: path ?? '',
+      final config = RecordConfig(
+        bitRate: AppSettings.audioRecordingBitRate.value,
+        sampleRate: AppSettings.audioRecordingSamplingRate.value,
+        numChannels: AppSettings.audioRecordingNumChannels.value,
+        autoGain: AppSettings.audioRecordingAutoGain.value,
+        echoCancel: AppSettings.audioRecordingEchoCancel.value,
+        noiseSuppress: AppSettings.audioRecordingNoiseSuppress.value,
+        encoder: codec,
       );
+      _recordConfig = config;
+      await audioRecorder.start(config, path: path ?? '');
       setState(() => duration = Duration.zero);
       _subscribe();
     } catch (e, s) {
@@ -933,8 +947,24 @@ class RecordingViewModelState extends State<RecordingViewModel> {
     }
     // Pangea#
     _recorderSubscription?.cancel();
-    final path = await _audioRecorder?.stop();
+    final recorded = await _audioRecorder?.stop();
+    final config = _recordConfig;
+    if (recorded != null &&
+        config != null &&
+        config.encoder == AudioEncoder.pcm16bits) {
+      final wavUrl = await _pcmToWavUrl(recorded, config);
+      try {
+        await _sendRecording(wavUrl, onSend);
+      } finally {
+        // The send has read the bytes, or the recording was dropped.
+        html.Url.revokeObjectUrl(wavUrl);
+      }
+      return;
+    }
+    await _sendRecording(recorded, onSend);
+  }
 
+  Future<void> _sendRecording(String? path, VoiceMessageSend onSend) async {
     if (path == null) throw ('Recording failed!');
     const waveCount = AudioPlayerWidget.wavesCount;
     final step = amplitudeTimeline.length < waveCount
@@ -975,26 +1005,21 @@ class RecordingViewModelState extends State<RecordingViewModel> {
     cancel();
   }
 
+  /// Wraps the web recorder's raw PCM ([voiceRecordingEncoder]) in a WAV
+  /// header and returns a URL to the WAV. One copy, at stop.
+  static Future<String> _pcmToWavUrl(String pcmUrl, RecordConfig config) async {
+    final pcm = await XFile(pcmUrl).readAsBytes();
+    // The PCM blob is not needed once read; free it rather than hold a second
+    // copy of the recording for the life of the tab.
+    html.Url.revokeObjectUrl(pcmUrl);
+    final wav = pcm16ToWav(
+      pcm,
+      sampleRate: config.sampleRate,
+      channels: config.numChannels,
+    );
+    return XFile.fromData(wav, mimeType: 'audio/wav').path;
+  }
+
   @override
   Widget build(BuildContext context) => widget.builder(context, this);
-}
-
-extension on AudioEncoder {
-  String get fileExtension {
-    switch (this) {
-      case AudioEncoder.aacLc:
-      case AudioEncoder.aacEld:
-      case AudioEncoder.aacHe:
-        return 'm4a';
-      case AudioEncoder.opus:
-        return 'ogg';
-      case AudioEncoder.wav:
-        return 'wav';
-      case AudioEncoder.amrNb:
-      case AudioEncoder.amrWb:
-      case AudioEncoder.flac:
-      case AudioEncoder.pcm16bits:
-        throw UnsupportedError('Not yet used');
-    }
-  }
 }
