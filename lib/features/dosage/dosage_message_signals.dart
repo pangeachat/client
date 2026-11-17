@@ -1,14 +1,17 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/dosage/dosage_audio_signals.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/dosage/dosage_message_event.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/wav_writer.dart';
 
 /// The single place the "a learner sent a chat message" dosage signals are
 /// emitted: the message envelope (for EVERY sent message) plus a tick of
@@ -161,11 +164,18 @@ class DosageMessageSignals {
   /// RESOLVED (post-resend) event id, counts only the learner's own text (reply
   /// fallback stripped), and skips a file/media resend and an edit replacement —
   /// neither is a new learner turn.
+  ///
+  /// A resent voice message is the exception among media: it records its
+  /// `voice_send` row (duration) under the RESOLVED id, exactly as a first-time
+  /// send does in chat.dart, so it counts toward speaking minutes (#9857).
   static Future<void> emitForResend(
     Event event, {
     http.Client? client,
     DosageEngagementTracker? tracker,
   }) async {
+    // Read before the resend: a successful sendFileEvent drops the cached file.
+    final cachedBytes =
+        event.room.sendingFilePlaceholders[event.eventId]?.bytes;
     final String? resolvedId;
     try {
       resolvedId = await event.sendAgain();
@@ -179,6 +189,21 @@ class DosageMessageSignals {
     // must never disturb it, so the whole emit (argument reads included) is
     // guarded and swallowed.
     try {
+      if (event.messageType == MessageTypes.Audio) {
+        final info = event.content['info'];
+        final reported = info is Map ? info['duration'] : null;
+        DosageAudioSignals.recordVoiceMessage(
+          msgId: resolvedId,
+          roomId: event.room.id,
+          durationMs: voiceMessageDurationMs(
+            reported: reported is num ? reported.toInt() : 0,
+            bytes: cachedBytes ?? Uint8List(0),
+          ),
+          userId: event.room.client.userID,
+          accessToken: event.room.client.accessToken,
+        );
+        return;
+      }
       if (!isResendableLearnerText(event.messageType)) return;
       emitForSentMessage(
         roomId: event.room.id,

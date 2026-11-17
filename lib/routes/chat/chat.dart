@@ -2523,7 +2523,8 @@ class ChatController extends State<ChatPageWithRoom>
       // Resend the failed send AND emit the dosage envelope for it once it
       // lands: emitForResend resends, then counts the learner's own text (reply
       // fallback stripped) under the RESOLVED event id — skipping file/media
-      // resends and edit replacements. Fire-and-forget, never blocks the retry.
+      // resends and edit replacements, except a voice message, which records its
+      // speaking duration. Fire-and-forget, never blocks the retry.
       unawaited(DosageMessageSignals.emitForResend(event).catchError((_) {}));
     }
     final allEditEvents = event
