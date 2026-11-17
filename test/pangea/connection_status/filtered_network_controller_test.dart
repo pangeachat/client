@@ -648,6 +648,42 @@ void main() {
     },
   );
 
+  // #9851 — signed in, a chat server answer clears a lost connection; a
+  // server error is no answer, even though the request completed.
+  group('signed in, a chat-server response', () {
+    final connection = ConnectionStatusController.instance;
+    final url = Uri.https(chatHost, '/_matrix/client/v3/sync');
+
+    setUp(() {
+      connection.onNetworkChanged = () => networkChanges.stream;
+      connection.probe = controller.probe;
+      connection.onSyncStatus(const SyncStatusUpdate(SyncStatus.finished));
+      networkChanges.add([ConnectivityResult.none]);
+    });
+
+    tearDown(connection.resetForTest);
+
+    test('says back online', () async {
+      networkChanges.add([ConnectivityResult.wifi]);
+      await settle();
+      expect(connection.status.value, ConnectionStatus.offline);
+
+      await controller.observe(url, Future.value(http.Response('{}', 200)));
+
+      expect(connection.status.value, ConnectionStatus.backOnline);
+    });
+
+    test('that is a server error does not', () async {
+      networkChanges.add([ConnectivityResult.wifi]);
+      await settle();
+      expect(connection.status.value, ConnectionStatus.offline);
+
+      await controller.observe(url, Future.value(http.Response('', 502)));
+
+      expect(connection.status.value, ConnectionStatus.offline);
+    });
+  });
+
   test('any other error passes through without a check', () async {
     final url = Uri.https(apiHost, '/choreo/tokenize');
 

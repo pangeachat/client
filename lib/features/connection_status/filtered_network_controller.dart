@@ -119,7 +119,11 @@ class FilteredNetworkController {
       _note(() => onRequestFailed(url));
       rethrow;
     }
-    _note(() => onRequestSucceeded(url));
+    // A server error is an answer from the host, so no filter, but not a
+    // working chat server.
+    final serverError =
+        response is http.BaseResponse && response.statusCode >= 500;
+    _note(() => onRequestSucceeded(url, serverError: serverError));
     return response;
   }
 
@@ -167,10 +171,11 @@ class FilteredNetworkController {
     if (category != null) unawaited(checkIfStale(category));
   }
 
-  void onRequestSucceeded(Uri url) {
+  void onRequestSucceeded(Uri url, {bool serverError = false}) {
     // Every request lands here; on a healthy network there is nothing to do.
     final connection = ConnectionStatusController.instance;
-    if (connection.status.value.isLost &&
+    if (!serverError &&
+        connection.status.value.isLost &&
         NetworkHostCategory.ofRequest(url) == NetworkHostCategory.chatServer) {
       connection.onChatServerAnswered();
     }

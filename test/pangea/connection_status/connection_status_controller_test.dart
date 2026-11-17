@@ -298,6 +298,41 @@ void main() {
     },
   );
 
+  // #9851 — a sync that stops reporting left the banner up, and analytics
+  // uploads paused, for the rest of the session.
+  group('with an account signed in, a chat server answer says back online', () {
+    test('after the sync lost the connection', () async {
+      await fail(2);
+      expect(controller.status.value, ConnectionStatus.unreachable);
+
+      controller.onChatServerAnswered();
+
+      expect(controller.status.value, ConnectionStatus.backOnline);
+    });
+
+    test('after the device was offline', () async {
+      controller.onSyncStatus(const SyncStatusUpdate(SyncStatus.finished));
+      networkChanges.add([ConnectivityResult.none]);
+      await settle();
+      networkChanges.add([ConnectivityResult.wifi]);
+      await settle();
+      expect(controller.status.value, ConnectionStatus.offline);
+
+      controller.onChatServerAnswered();
+
+      expect(controller.status.value, ConnectionStatus.backOnline);
+    });
+
+    test('and the sync must fail twice again to lose it', () async {
+      await fail(2);
+      controller.onChatServerAnswered();
+
+      await fail(1);
+
+      expect(controller.status.value, ConnectionStatus.backOnline);
+    });
+  });
+
   test(
     'a new network while lost asks again whether the device is online',
     () async {
