@@ -130,6 +130,23 @@ void main() {
       await Environment.setAppConfigOverride(
         AppConfigOverride.fromEnvFile(Environment.staging, noDashboard),
       );
+      // Without DASHBOARD_URL the switched homeserver names its dashboard;
+      // the build's own DASHBOARD_URL is still never used.
+      expect(
+        Environment.dashboardUrl.toString(),
+        'https://admin.staging.pangea.chat',
+      );
+    });
+
+    test('without DASHBOARD_URL, a known homeserver names its dashboard', () {
+      dotenv.testLoad(mergeWith: {'SYNAPSE_URL': 'matrix.staging.pangea.chat'});
+      expect(
+        Environment.dashboardUrl.toString(),
+        'https://admin.staging.pangea.chat',
+      );
+      dotenv.testLoad(mergeWith: {'SYNAPSE_URL': 'matrix.pangea.chat'});
+      expect(Environment.dashboardUrl.toString(), 'https://admin.pangea.chat');
+      dotenv.testLoad(mergeWith: {'SYNAPSE_URL': 'localhost:8008'});
       expect(Environment.dashboardUrl, isNull);
     });
 

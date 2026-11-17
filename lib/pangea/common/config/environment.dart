@@ -173,16 +173,28 @@ class Environment {
 
   static String? get testPassword => dotenv.env["TEST_MATRIX_PASSWORD"];
 
-  /// The teacher dashboard this app shares sign-in with (`DASHBOARD_URL`,
-  /// admin-dash#235), or null when unset or not a usable URL — the hand-off
-  /// then never runs. A switched build takes the switched environment's value
-  /// only, so the two environments never mix.
+  /// The teacher dashboard this app shares sign-in with (admin-dash#235):
+  /// `DASHBOARD_URL` when set, else the dashboard of a known homeserver, else
+  /// null — the hand-off then never runs. A switched build takes the switched
+  /// environment's values only, so the two environments never mix.
   static Uri? get dashboardUrl {
     final override = appConfigOverride;
-    if (override != null) return dashboardBase(override.dashboardUrl);
+    if (override != null) {
+      return dashboardBase(
+        override.dashboardUrl ?? _knownDashboards[override.synapseURL],
+      );
+    }
     if (!dotenv.isInitialized) return null;
-    return dashboardBase(dotenv.env['DASHBOARD_URL']);
+    return dashboardBase(
+      dotenv.env['DASHBOARD_URL'] ??
+          _knownDashboards[dotenv.env['SYNAPSE_URL']],
+    );
   }
+
+  static const _knownDashboards = {
+    'matrix.staging.pangea.chat': 'https://admin.staging.pangea.chat',
+    'matrix.pangea.chat': 'https://admin.pangea.chat',
+  };
 
   static String get synapseURL {
     return appConfigOverride?.synapseURL ??
