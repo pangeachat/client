@@ -947,14 +947,24 @@ class RecordingViewModelState extends State<RecordingViewModel> {
     }
     // Pangea#
     _recorderSubscription?.cancel();
-    var path = await _audioRecorder?.stop();
+    final recorded = await _audioRecorder?.stop();
     final config = _recordConfig;
-    if (path != null &&
+    if (recorded != null &&
         config != null &&
         config.encoder == AudioEncoder.pcm16bits) {
-      path = await _pcmToWavUrl(path, config);
+      final wavUrl = await _pcmToWavUrl(recorded, config);
+      try {
+        await _sendRecording(wavUrl, onSend);
+      } finally {
+        // The send has read the bytes, or the recording was dropped.
+        html.Url.revokeObjectUrl(wavUrl);
+      }
+      return;
     }
+    await _sendRecording(recorded, onSend);
+  }
 
+  Future<void> _sendRecording(String? path, VoiceMessageSend onSend) async {
     if (path == null) throw ('Recording failed!');
     const waveCount = AudioPlayerWidget.wavesCount;
     final step = amplitudeTimeline.length < waveCount
