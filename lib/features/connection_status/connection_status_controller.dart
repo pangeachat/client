@@ -76,6 +76,10 @@ class ConnectionStatusController {
   ]);
 
   int _consecutiveFailures = 0;
+
+  /// Whether failed syncs are counted toward a loss, which an answer from
+  /// the chat server cancels.
+  bool get hasFailedSyncs => _consecutiveFailures > 0;
   bool _deviceReportsNoNetwork = false;
 
   /// Whether an account's sync loop is reporting in. Before sign-in none is,
@@ -153,10 +157,11 @@ class ConnectionStatusController {
     }
   }
 
-  /// A request to the chat server got an answer before sign-in: the
-  /// connection is back.
+  /// A request to the chat server got an answer: the connection is back.
+  /// Signed in, this is not left to the next sync alone, which may be stuck
+  /// and never report again (#9851).
   void onChatServerAnswered() {
-    if (_syncReporting) return;
+    _consecutiveFailures = 0;
     _onConnected();
   }
 

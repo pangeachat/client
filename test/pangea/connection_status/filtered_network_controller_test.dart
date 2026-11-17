@@ -648,6 +648,113 @@ void main() {
     },
   );
 
+  // #9851 — signed in, a chat server answer clears a lost connection; a
+  // server error is no answer, even though the request completed.
+  group('signed in, a chat-server response', () {
+    final connection = ConnectionStatusController.instance;
+    final url = Uri.https(chatHost, '/_matrix/client/v3/sync');
+
+    setUp(() {
+      connection.onNetworkChanged = () => networkChanges.stream;
+      connection.probe = controller.probe;
+      connection.onSyncStatus(const SyncStatusUpdate(SyncStatus.finished));
+      networkChanges.add([ConnectivityResult.none]);
+    });
+
+    tearDown(connection.resetForTest);
+
+    test('says back online', () async {
+      networkChanges.add([ConnectivityResult.wifi]);
+      await settle();
+      expect(connection.status.value, ConnectionStatus.offline);
+
+      await controller.observe(url, Future.value(http.Response('{}', 200)));
+
+      expect(connection.status.value, ConnectionStatus.backOnline);
+    });
+
+    test('that is a server error does not', () async {
+      networkChanges.add([ConnectivityResult.wifi]);
+      await settle();
+      expect(connection.status.value, ConnectionStatus.offline);
+
+      await controller.observe(url, Future.value(http.Response('', 502)));
+
+      expect(connection.status.value, ConnectionStatus.offline);
+    });
+
+    test(
+      'during the check after two failed syncs keeps it connected',
+      () async {
+        networkChanges.add([ConnectivityResult.wifi]);
+        await settle();
+        await controller.observe(url, Future.value(http.Response('{}', 200)));
+        final probed = Completer<NetworkProbeResult>();
+        connection.probe = (_) => probed.future;
+        final failure = SyncStatusUpdate(
+          SyncStatus.error,
+          error: SdkError(
+            exception: SyncConnectionException(http.ClientException('failed')),
+          ),
+        );
+        connection.onSyncStatus(failure);
+        connection.onSyncStatus(failure);
+        final before = connection.status.value;
+
+        await controller.observe(url, Future.value(http.Response('{}', 200)));
+        probed.complete(NetworkProbeResult.answered);
+        await settle();
+
+        expect(connection.status.value, before);
+        expect(connection.status.value.isLost, isFalse);
+      },
+    );
+
+    // What the Matrix client sends through: the headers arrive before the
+    // body, which can still fail.
+    group('streamed', () {
+      late StreamController<List<int>> body;
+
+      setUp(() => body = StreamController<List<int>>());
+
+      Future<http.StreamedResponse> observeStreamed() async {
+        networkChanges.add([ConnectivityResult.wifi]);
+        await settle();
+        expect(connection.status.value, ConnectionStatus.offline);
+        return controller.observe(
+          url,
+          Future.value(http.StreamedResponse(body.stream, 200)),
+        );
+      }
+
+      test('says back online once the body is read', () async {
+        final response = await observeStreamed();
+        final read = response.stream.toBytes();
+        body.add([1, 2]);
+        await settle();
+        expect(connection.status.value, ConnectionStatus.offline);
+
+        await body.close();
+        expect(await read, [1, 2]);
+
+        expect(connection.status.value, ConnectionStatus.backOnline);
+      });
+
+      test('whose body fails does not', () async {
+        final response = await observeStreamed();
+        final read = response.stream.toBytes();
+        body.add([1]);
+        body.addError(http.ClientException('Connection closed'));
+        unawaited(body.close());
+
+        await expectLater(read, throwsA(isA<http.ClientException>()));
+        await settle();
+
+        expect(connection.status.value, ConnectionStatus.offline);
+      });
+    });
+  });
+
   test('any other error passes through without a check', () async {
     final url = Uri.https(apiHost, '/choreo/tokenize');
 
