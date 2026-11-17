@@ -27,6 +27,7 @@ FRONTEND_URL='https://app.staging.pangea.chat'
 SYNAPSE_URL = 'matrix.staging.pangea.chat'
 TEACHER_BFF_API=https://admin-dash-api.staging.pangea.chat
 BOT_NAME=@bot:staging.pangea.chat
+DASHBOARD_URL=https://dash.staging.example.test
 ANALYTICS_DUAL_WRITE_ENABLED=true
 DOSAGE_SIGNALS_ENABLED=true
 ENABLE_SEMANTICS=true
@@ -109,6 +110,49 @@ void main() {
           ),
         ),
       );
+    });
+
+    test("the dashboard follows the switch, never the build's", () async {
+      dotenv.testLoad(
+        mergeWith: {'DASHBOARD_URL': 'https://dash.example.test'},
+      );
+      expect(Environment.dashboardUrl.toString(), 'https://dash.example.test');
+      await Environment.setAppConfigOverride(_staging);
+      expect(
+        Environment.dashboardUrl.toString(),
+        'https://dash.staging.example.test',
+      );
+      expect(
+        AppConfigOverride.fromJson(_staging.toJson()).dashboardUrl,
+        'https://dash.staging.example.test',
+      );
+      final noDashboard = _parse(_stagingEnvFile)..remove('DASHBOARD_URL');
+      await Environment.setAppConfigOverride(
+        AppConfigOverride.fromEnvFile(Environment.staging, noDashboard),
+      );
+      // Without DASHBOARD_URL the switched homeserver names its dashboard;
+      // the build's own DASHBOARD_URL is still never used.
+      expect(
+        Environment.dashboardUrl.toString(),
+        'https://admin.staging.pangea.chat',
+      );
+    });
+
+    test('without DASHBOARD_URL, a known homeserver names its dashboard', () {
+      dotenv.testLoad(mergeWith: {'SYNAPSE_URL': 'matrix.staging.pangea.chat'});
+      expect(
+        Environment.dashboardUrl.toString(),
+        'https://admin.staging.pangea.chat',
+      );
+      dotenv.testLoad(mergeWith: {'SYNAPSE_URL': 'matrix.pangea.chat'});
+      expect(Environment.dashboardUrl.toString(), 'https://admin.pangea.chat');
+      dotenv.testLoad(mergeWith: {'SYNAPSE_URL': 'localhost:8008'});
+      expect(Environment.dashboardUrl, isNull);
+    });
+
+    test('an unusable DASHBOARD_URL is no dashboard', () {
+      dotenv.testLoad(mergeWith: {'DASHBOARD_URL': 'http://dash.example.test'});
+      expect(Environment.dashboardUrl, isNull);
     });
 
     test('points Sentry at the switched environment', () async {

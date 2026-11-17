@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'package:fluffychat/features/shared_signin/shared_signin.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
@@ -171,6 +172,29 @@ class Environment {
   static String? get testUsername => dotenv.env["TEST_MATRIX_USERNAME"];
 
   static String? get testPassword => dotenv.env["TEST_MATRIX_PASSWORD"];
+
+  /// The teacher dashboard this app shares sign-in with (admin-dash#235):
+  /// `DASHBOARD_URL` when set, else the dashboard of a known homeserver, else
+  /// null — the hand-off then never runs. A switched build takes the switched
+  /// environment's values only, so the two environments never mix.
+  static Uri? get dashboardUrl {
+    final override = appConfigOverride;
+    if (override != null) {
+      return dashboardBase(
+        override.dashboardUrl ?? _knownDashboards[override.synapseURL],
+      );
+    }
+    if (!dotenv.isInitialized) return null;
+    return dashboardBase(
+      dotenv.env['DASHBOARD_URL'] ??
+          _knownDashboards[dotenv.env['SYNAPSE_URL']],
+    );
+  }
+
+  static const _knownDashboards = {
+    'matrix.staging.pangea.chat': 'https://admin.staging.pangea.chat',
+    'matrix.pangea.chat': 'https://admin.pangea.chat',
+  };
 
   static String get synapseURL {
     return appConfigOverride?.synapseURL ??
@@ -392,6 +416,7 @@ class AppConfigOverride {
   final bool? voiceTranscriptDecoupleEnabled;
   final bool? liveStreamingSttEnabled;
   final String? botName;
+  final String? dashboardUrl;
 
   const AppConfigOverride({
     this.environment,
@@ -406,6 +431,7 @@ class AppConfigOverride {
     this.voiceTranscriptDecoupleEnabled,
     this.liveStreamingSttEnabled,
     this.botName,
+    this.dashboardUrl,
   });
 
   /// What an environment's `.env` must set for a switch to it: a value left
@@ -447,6 +473,7 @@ class AppConfigOverride {
       voiceTranscriptDecoupleEnabled: flag('VOICE_TRANSCRIPT_DECOUPLE_ENABLED'),
       liveStreamingSttEnabled: flag('LIVE_STREAMING_STT_ENABLED'),
       botName: envFile['BOT_NAME'],
+      dashboardUrl: envFile['DASHBOARD_URL'],
     );
   }
 
@@ -465,6 +492,7 @@ class AppConfigOverride {
           json['voiceTranscriptDecoupleEnabled'] as bool?,
       liveStreamingSttEnabled: json['liveStreamingSttEnabled'] as bool?,
       botName: json['botName'] as String?,
+      dashboardUrl: json['dashboardUrl'] as String?,
     );
   }
 
@@ -482,6 +510,7 @@ class AppConfigOverride {
       'voiceTranscriptDecoupleEnabled': voiceTranscriptDecoupleEnabled,
       'liveStreamingSttEnabled': liveStreamingSttEnabled,
       'botName': botName,
+      'dashboardUrl': dashboardUrl,
     };
   }
 
@@ -498,7 +527,8 @@ class AppConfigOverride {
         dosageVoiceMessagesEnabled.hashCode ^
         voiceTranscriptDecoupleEnabled.hashCode ^
         liveStreamingSttEnabled.hashCode ^
-        botName.hashCode;
+        botName.hashCode ^
+        dashboardUrl.hashCode;
   }
 
   @override
@@ -517,7 +547,8 @@ class AppConfigOverride {
         voiceTranscriptDecoupleEnabled ==
             other.voiceTranscriptDecoupleEnabled &&
         liveStreamingSttEnabled == other.liveStreamingSttEnabled &&
-        botName == other.botName;
+        botName == other.botName &&
+        dashboardUrl == other.dashboardUrl;
   }
 }
 

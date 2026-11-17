@@ -34,6 +34,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/notifications/nse_session.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
 import 'package:fluffychat/features/quests/mission_xp_cache.dart';
+import 'package:fluffychat/features/shared_signin/shared_signin_web.dart';
 import 'package:fluffychat/features/tutorials/tutorial_overlay_controller.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -874,6 +875,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                   widget.clients.add(_loginClientCandidate!);
                   _accountsChanged();
                 }
+                // The listener that tells the teacher dashboard about a
+                // sign-in is registered below, after this one: a sign-in on a
+                // fresh client (the old one still tearing down) reports here.
+                SharedSignIn.onSessionChange(widget.clients, signedIn: true);
                 setActiveClient(_loginClientCandidate);
                 await MatrixState.pangeaController.handleLoginStateChange(
                   LoginState.loggedIn,
@@ -993,6 +998,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // bypassing the canvas login form. No-op without the param. See
       // dev_login.dart / matrix-auth.instructions.md.
       maybeDevLogin(this);
+      // Shared sign-in with the teacher dashboard (admin-dash#235).
+      SharedSignIn.start(this);
     });
     _uriListener = AppLinks().uriLinkStream.listen(_processIncomingUris);
     // Pangea#
@@ -1155,6 +1162,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       }
       // Pangea#
       final loggedInWithMultipleClients = widget.clients.length > 1;
+      // Tells the teacher dashboard whether any account here is still signed
+      // in, whichever branch below runs (a hand-off sign-in can leave two
+      // clients, which takes the multiple-clients branch on logout).
+      SharedSignIn.onSessionChange(
+        widget.clients,
+        signedIn: state == LoginState.loggedIn,
+      );
       if (state == LoginState.loggedOut) {
         // #Pangea
         // In a `finally`, because the mark is what makes `getLoginClient`

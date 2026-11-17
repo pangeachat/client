@@ -19,6 +19,7 @@ import 'package:fluffychat/features/connection_status/network_help_repo.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/workspace_screen_tracker.dart';
+import 'package:fluffychat/features/shared_signin/shared_signin_web.dart';
 import 'package:fluffychat/pangea/common/config/env_loader.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -53,6 +54,10 @@ Future<void> _main() async {
   // every path (the SPA index fallback), so a direct path load always boots.
   // No-op off web.
   usePathUrlStrategy();
+
+  // The teacher dashboard's request for this app's sign-in (admin-dash#235),
+  // read before the router rewrites the address. No-op off web.
+  SharedSignIn.readRequest();
 
   // #Pangea
   try {
@@ -116,6 +121,10 @@ Future<void> _main() async {
 
   Logs().nativeColors = !PlatformInfos.isIOS;
   final clients = await ClientManager.getClients(store: store);
+  // Shared sign-out with the teacher dashboard (admin-dash#235): sessions that
+  // began before this browser's latest sign-out are marked now, before
+  // anything shows, so the first screen is the sign-in. No-op off web.
+  SharedSignIn.checkAtStart(clients);
 
   // If the app starts in detached mode, we assume that it is in
   // background fetch mode for processing push notifications. This is
