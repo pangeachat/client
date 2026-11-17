@@ -80,13 +80,6 @@ Learners use panels that open over one world map, on any screen size. Outside li
 
 - A signed-out visitor's last link is kept on the device and opens once after sign-in; it expires an hour after it was opened, so a shared browser cannot pass it on, and is never logged or reported. Will.
 
-### Signing in from the dashboard
-
-- Signed in on the app or the teacher dashboard, a teacher opens the other already signed in, landing where the link pointed, both ways. Will (admin-dash#235).
-- A sign-in link sent by someone else never signs anyone in; each side accepts only the answer to its own request. ggurdin.
-- If the other side is down or signed out, the normal sign-in shows; nothing waits or loops.
-- Signing out on either side signs this browser out of both, open tabs included, and never other devices. Signing in again by hand afterwards stays. Owner, 2026-11-16.
-
 ## Open questions
 
 - Does a pushed page show X or back arrow (this doc) or both (the code)?
