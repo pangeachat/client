@@ -51,10 +51,10 @@ abstract class SharedSignIn {
     _signingOut.addAll(flows.accountsToSignOut(_BrowserHost(null, clients)));
   }
 
-  /// After any sign-in or sign-out on this device.
-  static void onSessionChange(List<Client> clients) {
+  /// After any sign-in ([signedIn]) or sign-out on this device.
+  static void onSessionChange(List<Client> clients, {bool signedIn = false}) {
     if (!kIsWeb) return;
-    flows.onSessionChange(_BrowserHost(null, clients));
+    flows.onSessionChange(_BrowserHost(null, clients), signedIn: signedIn);
   }
 
   /// The app's own sign-out: this browser signs out of the dashboard too, at

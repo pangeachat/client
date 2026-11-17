@@ -875,6 +875,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                   widget.clients.add(_loginClientCandidate!);
                   _accountsChanged();
                 }
+                // The listener that tells the teacher dashboard about a
+                // sign-in is registered below, after this one: a sign-in on a
+                // fresh client (the old one still tearing down) reports here.
+                SharedSignIn.onSessionChange(widget.clients, signedIn: true);
                 setActiveClient(_loginClientCandidate);
                 await MatrixState.pangeaController.handleLoginStateChange(
                   LoginState.loggedIn,
@@ -1161,7 +1165,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // Tells the teacher dashboard whether any account here is still signed
       // in, whichever branch below runs (a hand-off sign-in can leave two
       // clients, which takes the multiple-clients branch on logout).
-      SharedSignIn.onSessionChange(widget.clients);
+      SharedSignIn.onSessionChange(
+        widget.clients,
+        signedIn: state == LoginState.loggedIn,
+      );
       if (state == LoginState.loggedOut) {
         // #Pangea
         // In a `finally`, because the mark is what makes `getLoginClient`

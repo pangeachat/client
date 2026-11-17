@@ -152,14 +152,13 @@ Future<String?> askDashboardForLoginToken({
 }
 
 /// The latest time stamped under [name] for [origin] (`<origin>|<ms>`),
-/// among every cookie of that name; an older value with no time reads as 0.
-/// Null when none names [origin].
+/// among every cookie of that name. Null when none names [origin].
 int? latestStamp(String? cookies, String name, String origin) {
   int? latest;
   for (final value in cookieValues(cookies, name)) {
     final bar = value.lastIndexOf('|');
-    if ((bar < 0 ? value : value.substring(0, bar)) != origin) continue;
-    final ms = bar < 0 ? 0 : int.tryParse(value.substring(bar + 1));
+    if (bar < 0 || value.substring(0, bar) != origin) continue;
+    final ms = int.tryParse(value.substring(bar + 1));
     if (ms != null && (latest == null || ms > latest)) latest = ms;
   }
   return latest;
@@ -259,10 +258,20 @@ void markAppSignedIn(SharedSignInHost host, bool signedIn) {
 
 /// After any sign-in or sign-out here: a session that has just appeared is
 /// stamped with when it began (a restored one keeps its stamp); none left
-/// forgets it. Then publishes the result.
-void onSessionChange(SharedSignInHost host) {
+/// forgets it. Then publishes the result. A sign-in ([signedIn]) is stamped
+/// now over a stamp from before this browser's sign-out too: that stamp
+/// belongs to a session still being signed out (another tab can hold its
+/// storage), and keeping it would end the new one at the next check.
+void onSessionChange(SharedSignInHost host, {bool signedIn = false}) {
   final live = host.liveAccounts().isNotEmpty;
-  if (live && host.readSessionStart() == null) {
+  final began = host.readSessionStart();
+  if (live &&
+      (began == null ||
+          (signedIn &&
+              sessionCondemned(
+                began,
+                signedOutAt(host.readCookies(), host.dashboard),
+              )))) {
     host.writeSessionStart(host.now());
   }
   if (!live) host.writeSessionStart(null);

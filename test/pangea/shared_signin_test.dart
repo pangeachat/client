@@ -9,7 +9,8 @@ const _state = '0123456789abcdef0123456789abcdef';
 
 final _dash = Uri.parse('https://admin.example.test');
 const _bff = 'https://api.example.test';
-final _dashFlag = '$dashboardSignedInFlag=${Uri.encodeComponent(_dash.origin)}';
+final _dashFlag =
+    '$dashboardSignedInFlag=${Uri.encodeComponent('${_dash.origin}|1')}';
 
 void main() {
   flowTests();
@@ -107,7 +108,7 @@ void main() {
 
     test('are read by exact name, every value of it', () {
       expect(cookieValues('a=1; $_dashFlag', dashboardSignedInFlag), [
-        _dash.origin,
+        '${_dash.origin}|1',
       ]);
       expect(cookieValues('x$_dashFlag', dashboardSignedInFlag), isEmpty);
       expect(cookieValues(null, dashboardSignedInFlag), isEmpty);
@@ -234,6 +235,18 @@ void main() {
   });
 }
 
+/// A host whose sign-out finishes only when [done] does.
+class _SlowSignOutHost extends FakeHost {
+  final Future<void> done;
+  _SlowSignOutHost(this.done);
+
+  @override
+  Future<void> signOut(Set<String> names) async {
+    signOuts.add(names);
+    await done;
+  }
+}
+
 class FakeHost implements SharedSignInHost {
   @override
   Uri app = Uri.parse('https://app.example.test/');
@@ -338,6 +351,20 @@ void flowTests() {
       },
     );
 
+    test(
+      'a sign-in by hand while the dashboard was being asked keeps it, unused',
+      () async {
+        final host = FakeHost()..cookies = dashAt(100);
+        host.postAnswer = (_) async {
+          host.accounts.add('by-hand');
+          return '{"login_token":"tok"}';
+        };
+        expect(await signInFromDashboard(host), isFalse);
+        expect(host.logins, isEmpty);
+        expect(host.wentTo, isEmpty);
+      },
+    );
+
     test('with no kept link, opens the map', () async {
       final host = FakeHost()..cookies = dashAt(100);
       await signInFromDashboard(host);
@@ -434,12 +461,13 @@ void flowTests() {
         final prod = _stamp(signedOutMarker, 'https://admin.pangea.chat', 900);
         expect(signedOutAt(prod, _dash), isNull);
         expect(signedOutAt('$prod; ${outAt(200)}; ${outAt(100)}', _dash), 200);
+        // Every value carries a time; one without is no sign-out.
         expect(
           signedOutAt(
             '$signedOutMarker=${Uri.encodeComponent(_dash.origin)}',
             _dash,
           ),
-          0,
+          isNull,
         );
       },
     );
@@ -479,15 +507,47 @@ void flowTests() {
       },
     );
 
-    test('a sign-in by hand while it ran is left alone', () async {
-      final host = FakeHost()
-        ..accounts = {'a', 'new'}
-        ..sessionStart = 900;
-      await honourSignOut(host, {'a'});
-      expect(host.accounts, {'new'});
-      expect(host.sessionStart, 900);
-      expect(host.signIns, 0);
-    });
+    test(
+      'a sign-in by hand while the ended session is still signing out is stamped and kept',
+      () async {
+        // What the browser does when another app tab holds the ended
+        // session's storage: its sign-out has not finished, so the sign-in
+        // lands on a fresh client while the old stamp is still the stored one.
+        final pending = Completer<void>();
+        final host = _SlowSignOutHost(pending.future)
+          ..cookies = outAt(200)
+          ..accounts = {'a'}
+          ..sessionStart = 100
+          ..clock = 300;
+        final ending = honourSignOut(host, accountsToSignOut(host));
+        host.accounts = {'new'};
+        onSessionChange(host, signedIn: true);
+        pending.complete();
+        await ending;
+        expect(host.sessionStart, 300);
+        expect(accountsToSignOut(host), isEmpty);
+        expect(host.signIns, 0);
+        expect(
+          host.written.last,
+          '$appSignedInFlag=${Uri.encodeComponent('${host.app.origin}|300')}; '
+          'Path=/; SameSite=Lax; Max-Age=2592000; Domain=example.test; Secure',
+        );
+      },
+    );
+
+    test(
+      'only a sign-in replaces a stamp from before the sign-out; other changes keep it',
+      () {
+        final host = FakeHost()
+          ..cookies = outAt(200)
+          ..accounts = {'a'}
+          ..sessionStart = 100
+          ..clock = 300;
+        onSessionChange(host);
+        expect(host.sessionStart, 100);
+        expect(accountsToSignOut(host), {'a'});
+      },
+    );
 
     test('a failed sign-out is reported', () async {
       final host = FakeHost()
