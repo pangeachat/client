@@ -79,14 +79,16 @@ String? sharedCookie({
 }
 
 /// The `document.cookie` assignment that marks (or unmarks) this browser as
-/// signed in to [app], for [dashboard]; null when the two share no site.
+/// signed in to [app], for [dashboard], with when its session [began] (epoch
+/// ms); null when the two share no site.
 String? appFlagCookie({
   required bool signedIn,
   required Uri app,
   required Uri dashboard,
+  int began = 0,
 }) => sharedCookie(
   name: appSignedInFlag,
-  value: signedIn ? Uri.encodeComponent(app.origin) : null,
+  value: signedIn ? Uri.encodeComponent('${app.origin}|$began') : null,
   maxAge: 2592000,
   app: app,
   dashboard: dashboard,
@@ -149,25 +151,49 @@ Future<String?> askDashboardForLoginToken({
   }
 }
 
-/// Whether the dashboard marked this browser as signed in to it.
-bool dashboardSignedIn(String? cookies, Uri? dashboard) =>
-    dashboard != null &&
-    cookieValues(cookies, dashboardSignedInFlag).contains(dashboard.origin);
+/// The latest time stamped under [name] for [origin] (`<origin>|<ms>`),
+/// among every cookie of that name; an older value with no time reads as 0.
+/// Null when none names [origin].
+int? latestStamp(String? cookies, String name, String origin) {
+  int? latest;
+  for (final value in cookieValues(cookies, name)) {
+    final bar = value.lastIndexOf('|');
+    if ((bar < 0 ? value : value.substring(0, bar)) != origin) continue;
+    final ms = bar < 0 ? 0 : int.tryParse(value.substring(bar + 1));
+    if (ms != null && (latest == null || ms > latest)) latest = ms;
+  }
+  return latest;
+}
+
+/// Whether a session that [began] (epoch ms, null when unknown) must end
+/// because this browser signed out at [signedOutAt] after it began.
+bool sessionCondemned(int? began, int? signedOutAt) =>
+    signedOutAt != null && (began ?? 0) <= signedOutAt;
+
+/// Whether the dashboard has a session here that began after this browser's
+/// latest sign-out, so asking it for a sign-in is wanted.
+bool dashboardSignedIn(String? cookies, Uri? dashboard) {
+  if (dashboard == null) return false;
+  final began = latestStamp(cookies, dashboardSignedInFlag, dashboard.origin);
+  return began != null &&
+      !sessionCondemned(began, signedOutAt(cookies, dashboard));
+}
 
 // --- Signing out of both (owner, 2026-11-16) --------------------------------
-// One "signed out" marker on the shared parent domain, naming the dashboard
-// (so environments never read each other's). Either side sets it on its own
-// sign-out; while it is set neither side hands off, and each side that still
-// finds a session of its own ends it at its next visit. A sign-in by hand
-// clears it. Neither side needs the other to be up at the moment of sign-out.
+// One "signed out" cookie on the shared parent domain: "<dashboard
+// origin>|<when>" (so environments never read each other's). Either side
+// writes it on its own sign-out. Each side ends any session of its own that
+// began before that time, at its next start or when an open tab comes back
+// into view, and never hands off to one; a session begun after it (a sign-in
+// by hand) is untouched. Nothing clears it. Neither side needs the other up.
 
-/// The shared-domain cookie a sign-out on either side sets.
+/// The shared-domain cookie a sign-out on either side writes.
 const String signedOutMarker = 'pangea_signed_out';
 
-/// Whether this browser signed out of this app and dashboard (either side).
-bool signedOutOfBoth(String? cookies, Uri? dashboard) =>
-    dashboard != null &&
-    cookieValues(cookies, signedOutMarker).contains(dashboard.origin);
+/// When this browser last signed out of this app or its dashboard, or null.
+int? signedOutAt(String? cookies, Uri? dashboard) => dashboard == null
+    ? null
+    : latestStamp(cookies, signedOutMarker, dashboard.origin);
 
 // --- The flows, behind a host the browser half implements -------------------
 
@@ -186,11 +212,16 @@ abstract class SharedSignInHost {
   String? readCookies();
   void writeCookie(String cookie);
 
-  /// Whether any account is signed in on this device.
-  bool hasSession();
+  /// When this device's app session began (epoch ms), or null.
+  int? readSessionStart();
+  void writeSessionStart(int? ms);
+  int now();
 
-  /// Completes once the stored session has been restored.
-  Future<void> settled();
+  /// The signed-in accounts here that are not already being signed out.
+  List<String> liveAccounts();
+
+  /// Signs these accounts out of this device, the app's normal way.
+  Future<void> signOut(Set<String> accounts);
 
   /// A POST with this browser's cookies; the response body. Throws on a
   /// failure or a non-2xx answer.
@@ -199,10 +230,10 @@ abstract class SharedSignInHost {
   Future<void> loginWithToken(String loginToken);
   Future<String> mintLoginToken();
 
-  /// Signs every signed-in account out of this device, the app's normal way.
-  Future<void> signOutHere();
-
-  void goToWorld();
+  /// The link a signed-out visitor opened, kept for after the sign-in.
+  String? keptDestination();
+  void goTo(String location);
+  void goToSignIn();
   void leaveFor(String url);
 
   /// A real failure (reported).
@@ -212,7 +243,8 @@ abstract class SharedSignInHost {
   void onRoutine(String message, Object? error);
 }
 
-/// Marks (or unmarks) this browser as signed in to the app, for the dashboard.
+/// Publishes whether this browser is signed in to the app, and when that
+/// session began, for the dashboard.
 void markAppSignedIn(SharedSignInHost host, bool signedIn) {
   final dashboard = host.dashboard;
   if (dashboard == null) return;
@@ -220,23 +252,61 @@ void markAppSignedIn(SharedSignInHost host, bool signedIn) {
     signedIn: signedIn,
     app: host.app,
     dashboard: dashboard,
+    began: host.readSessionStart() ?? 0,
   );
   if (cookie != null) host.writeCookie(cookie);
 }
 
-/// Sets (the app's own sign-out) or clears (a sign-in by hand) the
-/// signed-out marker.
-void markSignedOutOfBoth(SharedSignInHost host, bool signedOut) {
+/// After any sign-in or sign-out here: a session that has just appeared is
+/// stamped with when it began (a restored one keeps its stamp); none left
+/// forgets it. Then publishes the result.
+void onSessionChange(SharedSignInHost host) {
+  final live = host.liveAccounts().isNotEmpty;
+  if (live && host.readSessionStart() == null) {
+    host.writeSessionStart(host.now());
+  }
+  if (!live) host.writeSessionStart(null);
+  markAppSignedIn(host, live);
+}
+
+/// The app's own sign-out: records when, for the dashboard (and this app's
+/// other tabs), which end their sessions begun before it.
+void markSignedOutOfBoth(SharedSignInHost host) {
   final dashboard = host.dashboard;
   if (dashboard == null) return;
   final cookie = sharedCookie(
     name: signedOutMarker,
-    value: signedOut ? Uri.encodeComponent(dashboard.origin) : null,
+    value: Uri.encodeComponent('${dashboard.origin}|${host.now()}'),
     maxAge: 31536000,
     app: host.app,
     dashboard: dashboard,
   );
   if (cookie != null) host.writeCookie(cookie);
+}
+
+/// The accounts here to sign out because this browser signed out (on either
+/// side) after the app's session began; empty otherwise.
+Set<String> accountsToSignOut(SharedSignInHost host) =>
+    sessionCondemned(
+      host.readSessionStart(),
+      signedOutAt(host.readCookies(), host.dashboard),
+    )
+    ? host.liveAccounts().toSet()
+    : const {};
+
+/// Signs [accounts] out the normal way; with no session left, forgets when it
+/// began, unpublishes it and opens the sign-in.
+Future<void> honourSignOut(SharedSignInHost host, Set<String> accounts) async {
+  if (accounts.isEmpty) return;
+  try {
+    await host.signOut(accounts);
+  } catch (e, s) {
+    host.onError(e, s);
+  }
+  if (host.liveAccounts().isNotEmpty) return;
+  host.writeSessionStart(null);
+  markAppSignedIn(host, false);
+  host.goToSignIn();
 }
 
 /// Synapse's one-token-a-minute limit, or a login token already used or
@@ -246,28 +316,15 @@ bool _routine(Object e) =>
     (e.error == MatrixError.M_LIMIT_EXCEEDED ||
         e.error == MatrixError.M_FORBIDDEN);
 
-/// At boot, once the stored session settled. With the signed-out marker set
-/// (this browser signed out of the dashboard since), a session still here is
-/// signed out the normal way and nothing is asked. Otherwise publishes whether
-/// this browser is signed in and, signed out with the dashboard's flag
-/// present, asks the dashboard's API for a sign-in. True when it signed in
-/// (then `/` opens the kept link, or onboarding).
+/// At start, after [honourSignOut]: publishes whether this browser is signed
+/// in and, signed out with the dashboard's flag present (a dashboard session
+/// begun after any sign-out), asks the dashboard's API for a sign-in. True
+/// when it signed in, then opens the link the visitor came with.
 Future<bool> signInFromDashboard(SharedSignInHost host) async {
-  await host.settled();
-  if (signedOutOfBoth(host.readCookies(), host.dashboard)) {
-    if (host.hasSession()) {
-      try {
-        await host.signOutHere();
-      } catch (e, s) {
-        host.onError(e, s);
-      }
-    }
-    markAppSignedIn(host, false);
-    return false;
-  }
-  markAppSignedIn(host, host.hasSession());
+  final live = host.liveAccounts().isNotEmpty;
+  markAppSignedIn(host, live);
   final token = await askDashboardForLoginToken(
-    hasSession: host.hasSession(),
+    hasSession: live,
     cookies: host.readCookies(),
     dashboard: host.dashboard,
     teacherBffApi: host.teacherBffApi,
@@ -275,7 +332,10 @@ Future<bool> signInFromDashboard(SharedSignInHost host) async {
     onError: host.onError,
     onRoutine: host.onRoutine,
   );
-  if (token == null || host.hasSession()) return false;
+  if (token == null || host.liveAccounts().isNotEmpty) return false;
+  // Read before the sign-in: the `/` guard consumes it as soon as the
+  // sign-in lands, and a later read would find it gone.
+  final destination = host.keptDestination();
   try {
     await host.loginWithToken(token);
   } catch (e, s) {
@@ -285,21 +345,18 @@ Future<bool> signInFromDashboard(SharedSignInHost host) async {
         : host.onError(e, s);
     return false;
   }
-  // The sign-in can land before the boot's own redirect to the sign-in page
-  // does, and the login listener only moves a visitor already on it.
-  host.goToWorld();
+  host.goTo(destination ?? '/');
   return true;
 }
 
 /// `/handoff/dashboard`: answers the dashboard's request ([state]) with a
-/// token when signed in (and not signed out of both since), else none, only
-/// ever to `DASHBOARD_URL`. False when there is nothing to answer.
+/// token when signed in, else none, only ever to `DASHBOARD_URL`. False when
+/// there is nothing to answer.
 Future<bool> answerDashboard(SharedSignInHost host, String? state) async {
   final dashboard = host.dashboard;
   if (state == null || dashboard == null) return false;
-  await host.settled();
   String? token;
-  if (host.hasSession() && !signedOutOfBoth(host.readCookies(), dashboard)) {
+  if (host.liveAccounts().isNotEmpty) {
     try {
       token = await host.mintLoginToken();
     } catch (e, s) {

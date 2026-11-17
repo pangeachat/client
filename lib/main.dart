@@ -121,6 +121,10 @@ Future<void> _main() async {
 
   Logs().nativeColors = !PlatformInfos.isIOS;
   final clients = await ClientManager.getClients(store: store);
+  // Shared sign-out with the teacher dashboard (admin-dash#235): sessions that
+  // began before this browser's latest sign-out are marked now, before
+  // anything shows, so the first screen is the sign-in. No-op off web.
+  SharedSignIn.checkAtStart(clients);
 
   // If the app starts in detached mode, we assume that it is in
   // background fetch mode for processing push notifications. This is

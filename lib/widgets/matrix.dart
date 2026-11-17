@@ -995,7 +995,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // dev_login.dart / matrix-auth.instructions.md.
       maybeDevLogin(this);
       // Shared sign-in with the teacher dashboard (admin-dash#235).
-      SharedSignIn.signInFromDashboard(this);
+      SharedSignIn.start(this);
     });
     _uriListener = AppLinks().uriLinkStream.listen(_processIncomingUris);
     // Pangea#
@@ -1161,8 +1161,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       // Tells the teacher dashboard whether any account here is still signed
       // in, whichever branch below runs (a hand-off sign-in can leave two
       // clients, which takes the multiple-clients branch on logout).
-      SharedSignIn.markSignedIn(widget.clients.any((x) => x.isLogged()));
-      if (state == LoginState.loggedIn) SharedSignIn.onSignedIn();
+      SharedSignIn.onSessionChange(widget.clients);
       if (state == LoginState.loggedOut) {
         // #Pangea
         // In a `finally`, because the mark is what makes `getLoginClient`

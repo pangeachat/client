@@ -8,6 +8,7 @@ import 'package:fluffychat/features/dm_invite/dm_invite_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/user_id_url.dart';
+import 'package:fluffychat/features/shared_signin/shared_signin_web.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../controllers/pangea_controller.dart';
 
@@ -21,12 +22,12 @@ class PAuthGaurd {
     GoRouterState state,
   ) async {
     if (pController == null) {
-      return Matrix.of(context).client.isLogged() ? PRoutes.world : null;
+      return SharedSignIn.isLive(Matrix.of(context).client)
+          ? PRoutes.world
+          : null;
     }
 
-    final isLogged = Matrix.of(
-      context,
-    ).widget.clients.any((client) => client.isLogged());
+    final isLogged = Matrix.of(context).widget.clients.any(SharedSignIn.isLive);
     if (!isLogged) return null;
 
     final finished = await pController!.userController.finishedOnboarding;
@@ -41,13 +42,11 @@ class PAuthGaurd {
     GoRouterState state,
   ) async {
     if (pController == null) {
-      if (Matrix.of(context).client.isLogged()) return null;
+      if (SharedSignIn.isLive(Matrix.of(context).client)) return null;
       return _loginBounce(state);
     }
 
-    final isLogged = Matrix.of(
-      context,
-    ).widget.clients.any((client) => client.isLogged());
+    final isLogged = Matrix.of(context).widget.clients.any(SharedSignIn.isLive);
     if (!isLogged) {
       return _loginBounce(state);
     }
@@ -202,12 +201,10 @@ class PAuthGaurd {
     GoRouterState state,
   ) async {
     if (pController == null) {
-      return Matrix.of(context).client.isLogged() ? null : '/home';
+      return SharedSignIn.isLive(Matrix.of(context).client) ? null : '/home';
     }
 
-    final isLogged = Matrix.of(
-      context,
-    ).widget.clients.any((client) => client.isLogged());
+    final isLogged = Matrix.of(context).widget.clients.any(SharedSignIn.isLive);
     if (!isLogged) {
       return '/home';
     }
