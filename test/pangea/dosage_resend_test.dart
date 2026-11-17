@@ -10,8 +10,12 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics/listening_exposure_buffer.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_entry.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/wav_writer.dart';
 import 'get_test_client.dart';
 
 /// [DosageMessageSignals.emitForResend] is the real sendAgain() wiring for the
@@ -49,7 +53,8 @@ void main() {
         'TEACHER_BFF_API': 'https://bff.test.example',
       },
     );
-    client = await getTestClient();
+    client = await getTestClient(httpClient: _BinaryUploads());
+    ListeningExposureBuffer.debugResetAccounts();
     posts = [];
     mock = MockClient((req) async {
       posts.add(req);
@@ -58,6 +63,7 @@ void main() {
   });
 
   tearDown(() async {
+    ListeningExposureBuffer.debugResetAccounts();
     await client.dispose();
   });
 
@@ -181,4 +187,115 @@ void main() {
       reason: 'a forwarded image is not learner text',
     );
   });
+
+  group('a resent voice message counts toward speaking (#9857)', () {
+    const failedId = '\$failed:fakeServer.notExisting';
+
+    // The voice_send rows held for the account, drained once.
+    List<OneConstructUse> voiceRows() =>
+        (ListeningExposureBuffer.forAccount(userId)?.drainAudioEntries() ??
+                const <OneConstructUse>[])
+            .where((r) => r.category == DosageAudioEntry.voiceCategory)
+            .toList();
+
+    // A failed m.audio whose file is still cached for the retry, exactly as
+    // Room.sendFileEvent leaves it after a send that never landed.
+    Event failedVoice({int? infoDuration, Uint8List? bytes}) {
+      final event = failedEvent(
+        content: {
+          'msgtype': 'm.audio',
+          'body': 'voice.wav',
+          'info': {'mimetype': 'audio/wav', 'duration': ?infoDuration},
+        },
+      );
+      event.room.sendingFilePlaceholders[failedId] = MatrixAudioFile(
+        bytes: bytes ?? pcm16ToWav(Uint8List(32000)),
+        name: 'voice.wav',
+      );
+      return event;
+    }
+
+    test(
+      'records exactly one row, under the NEW id, with info.duration',
+      () async {
+        await DosageMessageSignals.emitForResend(
+          failedVoice(infoDuration: 21100),
+          client: mock,
+        );
+
+        final rows = voiceRows();
+        expect(rows, hasLength(1), reason: 'one resend, one voice_send row');
+        expect(rows.single.id, isNotEmpty);
+        expect(
+          rows.single.id,
+          isNot(failedId),
+          reason: 'keyed by the resolved m.audio id, never the failed one',
+        );
+        expect(rows.single.durMs, 21100);
+      },
+    );
+
+    test('with no info.duration, the length is read from the WAV', () async {
+      // 1.5 s of 16 kHz mono PCM16.
+      await DosageMessageSignals.emitForResend(
+        failedVoice(bytes: pcm16ToWav(Uint8List(48000))),
+        client: mock,
+      );
+
+      expect(voiceRows().single.durMs, 1500);
+    });
+
+    test('a resend that cannot send records nothing', () async {
+      // The file is no longer cached, so sendAgain throws: nothing landed.
+      final event = failedVoice(infoDuration: 21100);
+      event.room.sendingFilePlaceholders.clear();
+
+      await DosageMessageSignals.emitForResend(event, client: mock);
+
+      expect(voiceRows(), isEmpty);
+    });
+
+    test('a voice message that already sent is not counted again', () async {
+      // A first-time send records its own row in chat.dart; the resend path
+      // must add nothing for an event that is not in the error state.
+      final event = Event(
+        type: EventTypes.Message,
+        content: {
+          'msgtype': 'm.audio',
+          'body': 'voice.wav',
+          'info': {'duration': 21100},
+        },
+        status: EventStatus.synced,
+        eventId: '\$sent:fakeServer.notExisting',
+        senderId: userId,
+        originServerTs: DateTime.utc(2026, 1, 1, 12),
+        room: Room(id: roomId, client: client),
+      );
+
+      await DosageMessageSignals.emitForResend(event, client: mock);
+
+      expect(voiceRows(), isEmpty);
+    });
+  });
+}
+
+/// [FakeMatrixApi] reads every request body as UTF-8, which a WAV upload is not,
+/// so a voice resend could never upload against it. Answer the upload here and
+/// hand everything else to the fake homeserver.
+class _BinaryUploads extends http.BaseClient {
+  final FakeMatrixApi _api = FakeMatrixApi();
+
+  @override
+  Future<http.StreamedResponse> send(http.BaseRequest request) {
+    if (request.url.path.endsWith('/media/v3/upload')) {
+      return Future.value(
+        http.StreamedResponse(
+          Stream.value(utf8.encode('{"content_uri":"mxc://fake/voice"}')),
+          200,
+          headers: {'content-type': 'application/json'},
+        ),
+      );
+    }
+    return _api.send(request);
+  }
 }
