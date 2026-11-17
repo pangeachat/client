@@ -683,6 +683,33 @@ void main() {
       expect(connection.status.value, ConnectionStatus.offline);
     });
 
+    test(
+      'during the check after two failed syncs keeps it connected',
+      () async {
+        networkChanges.add([ConnectivityResult.wifi]);
+        await settle();
+        await controller.observe(url, Future.value(http.Response('{}', 200)));
+        final probed = Completer<NetworkProbeResult>();
+        connection.probe = (_) => probed.future;
+        final failure = SyncStatusUpdate(
+          SyncStatus.error,
+          error: SdkError(
+            exception: SyncConnectionException(http.ClientException('failed')),
+          ),
+        );
+        connection.onSyncStatus(failure);
+        connection.onSyncStatus(failure);
+        final before = connection.status.value;
+
+        await controller.observe(url, Future.value(http.Response('{}', 200)));
+        probed.complete(NetworkProbeResult.answered);
+        await settle();
+
+        expect(connection.status.value, before);
+        expect(connection.status.value.isLost, isFalse);
+      },
+    );
+
     // What the Matrix client sends through: the headers arrive before the
     // body, which can still fail.
     group('streamed', () {

@@ -209,9 +209,11 @@ class FilteredNetworkController {
 
   void onRequestSucceeded(Uri url, {bool serverError = false}) {
     // Every request lands here; on a healthy network there is nothing to do.
+    // Even while connected, an answer cancels failed syncs counted toward a
+    // loss that the check of the device's network has yet to confirm.
     final connection = ConnectionStatusController.instance;
     if (!serverError &&
-        connection.status.value.isLost &&
+        (connection.status.value.isLost || connection.hasFailedSyncs) &&
         NetworkHostCategory.ofRequest(url) == NetworkHostCategory.chatServer) {
       connection.onChatServerAnswered();
     }

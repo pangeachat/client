@@ -76,6 +76,10 @@ class ConnectionStatusController {
   ]);
 
   int _consecutiveFailures = 0;
+
+  /// Whether failed syncs are counted toward a loss, which an answer from
+  /// the chat server cancels.
+  bool get hasFailedSyncs => _consecutiveFailures > 0;
   bool _deviceReportsNoNetwork = false;
 
   /// Whether an account's sync loop is reporting in. Before sign-in none is,
