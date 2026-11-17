@@ -83,11 +83,9 @@ Learners use panels that open over one world map, on any screen size. Outside li
 ### Signing in from the dashboard
 
 - Signed in on the app or the teacher dashboard, a teacher opens the other already signed in, landing where the link pointed, both ways. Will (admin-dash#235).
-- The side that signs in asks, and uses a single-use Matrix login token only from an answer to its own request, so a token pushed at it signs nobody in. ggurdin.
-- Each side keeps a "signed in here" flag cookie on the parent domain the two share, naming its origin and never a credential, and the other side asks only when it sees one carrying its partner's origin (prod's parent-domain cookies reach staging hosts under the same names), so nobody signed out of both ever waits on the other side.
-- Dashboard to app: a signed-out app with the dashboard's flag asks the dashboard's API itself, once per page load; a token signs it in and the kept link opens. If the API is down, slow or has no session, the normal sign-in stays.
-- App to dashboard: `/handoff/dashboard` answers the dashboard's request with a token when signed in, else "none", in the fragment and only to `DASHBOARD_URL`. A session already here stays; a hand-off never switches accounts.
-- Signing out on either side signs this browser out of both, and only this browser. The side signing out writes when it happened into one cookie on the shared parent domain, naming the dashboard. The app ends a session that began before that time at its next start, before it shows anything, or when an open tab comes back into view, the normal way; a session begun after it (a sign-in by hand) is untouched, and nothing clears the time. Neither side has to be up at the moment of sign-out. Owner, 2026-11-16.
+- A sign-in link sent by someone else never signs anyone in; each side accepts only the answer to its own request. ggurdin.
+- If the other side is down or signed out, the normal sign-in shows; nothing waits or loops.
+- Signing out on either side signs this browser out of both, open tabs included, and never other devices. Signing in again by hand afterwards stays. Owner, 2026-11-16.
 
 ## Open questions
 

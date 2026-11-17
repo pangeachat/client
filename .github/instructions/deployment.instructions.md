@@ -74,7 +74,7 @@ The root `.env` is the **single config source** on every platform. There is no t
 - **Native**: `.env` is a bundled asset, but the pubspec declaration stays commented on `main` because a declared-but-missing asset fails the build and `.env` is gitignored. CI writes the file and applies [`enable_mobile_env.patch`](../../scripts/enable_mobile_env.patch) to uncomment it. If the pubspec asset block changes, regenerate the patch or mobile builds break at `git apply`.
 - **Environment switcher**: the switched-to environment (`appConfigOverride`) overlays whatever dotenv loaded, independent of where the file came from. See [Environment switcher](#environment-switcher).
 
-The GitHub Actions environment variable `WEB_APP_ENV` is the source for generated `.env` files in deploy workflows. For shared sign-in (admin-dash#235) the app needs the dashboard's API as `TEACHER_BFF_API`; the dashboard itself follows from `SYNAPSE_URL` for staging and production, and `DASHBOARD_URL` overrides it (needed only elsewhere, e.g. local). It should include the runtime web Firebase analytics config as `GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64`, with a base64-encoded Firebase options JSON value for the target environment.
+The GitHub Actions environment variable `WEB_APP_ENV` is the source for generated `.env` files in deploy workflows. It should include the runtime web Firebase analytics config as `GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64`, with a base64-encoded Firebase options JSON value for the target environment.
 
 ## Environment switcher
 
@@ -90,7 +90,7 @@ What follows the switch:
 
 | Part | Follows | Why |
 |---|---|---|
-| Synapse, choreographer, CMS, teacher dashboard and its API, bot, and the feature flags `AppConfigOverride` carries | The switch | Read from the chosen environment's `.env`. Each environment's `WEB_APP_ENV` must name all of them, including `BOT_NAME`, because a missing value would fall back to the build's own environment and mix the two. |
+| Synapse, choreographer, CMS, teacher dashboard API, bot, and the feature flags `AppConfigOverride` carries | The switch | Read from the chosen environment's `.env`. Each environment's `WEB_APP_ENV` must name all of them, including `BOT_NAME`, because a missing value would fall back to the build's own environment and mix the two. |
 | Push | The build | The phone's push token belongs to the Firebase project built into the app, so the app always registers its own build's Sygnal. Staging reaches a switched production build through production Sygnal, notices included ([notice delivery](../../../synapse-pangea-chat/.github/instructions/notice-delivery.instructions.md#direct-push-send_push)). |
 | Sentry | The switch | `sentryEnvironment` follows the Synapse address, and the `config_override` tag marks a switched build. |
 | Google Analytics | Off | A mobile build can only report into its own build's Firebase project, so a switched build stops collecting. This keeps staging use out of production reports. |
