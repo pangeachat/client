@@ -682,6 +682,50 @@ void main() {
 
       expect(connection.status.value, ConnectionStatus.offline);
     });
+
+    // What the Matrix client sends through: the headers arrive before the
+    // body, which can still fail.
+    group('streamed', () {
+      late StreamController<List<int>> body;
+
+      setUp(() => body = StreamController<List<int>>());
+
+      Future<http.StreamedResponse> observeStreamed() async {
+        networkChanges.add([ConnectivityResult.wifi]);
+        await settle();
+        expect(connection.status.value, ConnectionStatus.offline);
+        return controller.observe(
+          url,
+          Future.value(http.StreamedResponse(body.stream, 200)),
+        );
+      }
+
+      test('says back online once the body is read', () async {
+        final response = await observeStreamed();
+        final read = response.stream.toBytes();
+        body.add([1, 2]);
+        await settle();
+        expect(connection.status.value, ConnectionStatus.offline);
+
+        await body.close();
+        expect(await read, [1, 2]);
+
+        expect(connection.status.value, ConnectionStatus.backOnline);
+      });
+
+      test('whose body fails does not', () async {
+        final response = await observeStreamed();
+        final read = response.stream.toBytes();
+        body.add([1]);
+        body.addError(http.ClientException('Connection closed'));
+        unawaited(body.close());
+
+        await expectLater(read, throwsA(isA<http.ClientException>()));
+        await settle();
+
+        expect(connection.status.value, ConnectionStatus.offline);
+      });
+    });
   });
 
   test('any other error passes through without a check', () async {
