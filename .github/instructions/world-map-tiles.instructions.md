@@ -17,7 +17,7 @@ The same kind of raster tiles, from a provider licensed for commercial use: **St
 
 - **Styles.** Alidade Bright in light theme, Alidade Smooth Dark in dark theme. The map background, which shows wherever a tile hasn't loaded, matches the tiles' land colour, so a gap reads as unfilled map rather than a flash.
 - **Credits.** Stadia Maps, OpenMapTiles and OpenStreetMap, each linked to its attribution page.
-- **Web authenticates by domain.** Stadia checks the page's domain: `app.pangea.chat` for production, `*.staging.pangea.chat` for staging and PR previews, and localhost needs nothing. Web builds never carry the key, because the web `.env` is served publicly.
+- **Web authenticates by domain.** Stadia checks the domain of the page that requests tiles, so every web address that shows a map must be allowed on the Stadia account; localhost needs nothing. Web builds never carry the key, because the web `.env` is served publicly.
 - **Native builds carry an API key.** The Android and iOS builds get it from AWS Secrets Manager at build time, one key per environment. It is sent in a request header rather than the tile URL, so it never appears in error reports.
 - **Rotating a key breaks installed apps that still carry it** — their maps go blank until the user updates. Add the new key and ship builds with it before revoking the old one.
 
