@@ -14,6 +14,7 @@ import 'package:fluffychat/features/activity_sessions/activity_session_preview_r
 import 'package:fluffychat/features/activity_sessions/play_with_bot_intent.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/discussions/discussion_extensions.dart';
+import 'package:fluffychat/features/discussions/discussion_standing.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
@@ -148,8 +149,17 @@ class NotStartedSessionController extends State<NotStartedSession>
     widget.controller.onTutorialSurfaceChanged();
   }
 
-  String? get joinedActivityRoomId =>
-      widget.course?.activeActivityRoomId(widget.activityId);
+  /// The learner's room for this activity in the course: their discussion
+  /// seat, ended or not, else a roleplay session with an unfinished role.
+  String? get joinedActivityRoomId {
+    final course = widget.course;
+    if (course == null) return null;
+    return course.client
+            .discussionStandingFor(widget.activityId, courseId: course.id)
+            .room
+            ?.id ??
+        course.activeActivityRoomId(widget.activityId);
+  }
 
   Room? get course => widget.course;
 
