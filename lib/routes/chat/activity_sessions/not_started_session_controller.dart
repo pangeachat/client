@@ -149,16 +149,15 @@ class NotStartedSessionController extends State<NotStartedSession>
     widget.controller.onTutorialSurfaceChanged();
   }
 
-  /// The learner's room for this activity in the course: their discussion
-  /// seat, ended or not, else a roleplay session with an unfinished role.
+  /// The learner's room for this activity: their discussion seat, ended or
+  /// not, in the course (in any course, with none), else a live roleplay.
   String? get joinedActivityRoomId {
     final course = widget.course;
-    if (course == null) return null;
-    return course.client
-            .discussionStandingFor(widget.activityId, courseId: course.id)
-            .room
-            ?.id ??
-        course.activeActivityRoomId(widget.activityId);
+    final client = Matrix.of(context).client;
+    final standing = course == null
+        ? client.discussionStandingInAnyCourse(widget.activityId)
+        : client.discussionStandingFor(widget.activityId, courseId: course.id);
+    return standing.room?.id ?? course?.activeActivityRoomId(widget.activityId);
   }
 
   Room? get course => widget.course;

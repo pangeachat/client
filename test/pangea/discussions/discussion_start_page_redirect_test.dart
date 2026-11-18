@@ -205,6 +205,16 @@ void main() {
     expectStartPage(await openStartPage(tester));
   });
 
+  testWidgets('opened outside a course, a learner with a seat goes straight '
+      'to the chat', (tester) async {
+    seedRooms(
+      seats: [
+        discussionSeat(testSessionUserId, finishedAt: ended, archivedAt: ended),
+      ],
+    );
+    expectChat(await openStartPage(tester, inCourse: false));
+  });
+
   testWidgets('opened outside a course, a learner with no seat gets the '
       'start page', (tester) async {
     seedRooms(seats: [discussionSeat('@classmate:fakeServer.notExisting')]);
