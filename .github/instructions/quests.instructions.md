@@ -51,7 +51,7 @@ How a learner's progress through a course's Can-Dos is counted and shown. Org do
 
 ## Which activities a Can-Do shows
 
-- A course with its own Can-Do list shows that list's activities ([content lifecycle](../../../.github/.github/instructions/content-lifecycle.instructions.md#course-spaces)). A course never shows the quest in place of its own list. Not built yet ([pangeachat/client#9828](https://github.com/pangeachat/client/issues/9828)): a course with no list of its own, or one that cannot be read, still shows for each Can-Do the course's pins, else the plan's [selected activities](../../../.github/.github/instructions/quests.instructions.md#each-entry-in-the-can-do-sequence), else every activity. A course preview shows the plan's selection.
+- A course with its own Can-Do list shows that list's activities ([content lifecycle](../../../.github/.github/instructions/content-lifecycle.instructions.md#course-spaces)). A course never shows the quest in place of its own list. Not built yet ([pangeachat/client#9828](https://github.com/pangeachat/client/issues/9828)): a course with no list of its own, or one that cannot be read, still shows for each Can-Do the course's pins, else what [its quest entry shows](../../../.github/.github/instructions/quests.instructions.md#each-entry-in-the-can-do-sequence). A course preview shows the plan's selection.
 - Pins or a selection naming none of the Can-Do's activities are ignored, so a Can-Do can always be completed.
 - A Can-Do's note is the course list's, or the plan's while the course has no list.
 - The course's map shows the same activities. The world map is never filtered by a course's choices.
