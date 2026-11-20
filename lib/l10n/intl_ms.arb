@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Anda belum melengkapkan aktiviti untuk {canDo} ini. Mulakan satu daripada kursus anda.",
     "canDoNotInYourCourses": "{canDo} ini tiada dalam mana-mana kursus anda.",
     "currentCanDo": "{canDo} semasa",
-    "xpGainedTowardCanDo": "{xp} XP ke arah {canDo} ini"
+    "xpGainedTowardCanDo": "{xp} XP ke arah {canDo} ini",
+    "sessionFinished": "Terlambat! Aktiviti ini telah tamat."
 }

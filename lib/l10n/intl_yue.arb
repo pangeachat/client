@@ -11002,5 +11002,6 @@
     "noCanDoActivitiesYet": "你仲未完成呢個 {canDo} 嘅任何活動。喺你嘅課程入面開始一個啦。",
     "canDoNotInYourCourses": "呢個 {canDo} 唔喺你任何一個課程入面。",
     "currentCanDo": "目前嘅 {canDo}",
-    "xpGainedTowardCanDo": "呢個 {canDo} 獲得咗 {xp} 經驗值"
+    "xpGainedTowardCanDo": "呢個 {canDo} 獲得咗 {xp} 經驗值",
+    "sessionFinished": "太遲喇！呢個活動已經完咗。"
 }

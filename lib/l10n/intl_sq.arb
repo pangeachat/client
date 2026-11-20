@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Nuk ke përfunduar ende asnjë aktivitet për këtë {canDo}. Fillo një nga kursi yt.",
     "canDoNotInYourCourses": "Ky {canDo} nuk është në asnjë nga kurset e tua.",
     "currentCanDo": "{canDo} aktual",
-    "xpGainedTowardCanDo": "{xp} XP drejt këtij {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP drejt këtij {canDo}",
+    "sessionFinished": "Shumë vonë! Ky aktivitet ka përfunduar."
 }

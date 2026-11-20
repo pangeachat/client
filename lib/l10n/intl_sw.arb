@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Bado hujakamilisha shughuli yoyote kwa {canDo} hii. Anza moja kutoka kwenye kozi yako.",
     "canDoNotInYourCourses": "{canDo} hii haipo katika kozi zako zozote.",
     "currentCanDo": "{canDo} ya sasa",
-    "xpGainedTowardCanDo": "{xp} XP kuelekea {canDo} hii"
+    "xpGainedTowardCanDo": "{xp} XP kuelekea {canDo} hii",
+    "sessionFinished": "Umechelewa! Shughuli hii imekwisha."
 }

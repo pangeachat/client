@@ -11020,5 +11020,6 @@
     "noCanDoActivitiesYet": "Вы еще не выполнили ни одного действия для этого {canDo}. Начните одно из вашего курса.",
     "canDoNotInYourCourses": "Этот {canDo} не входит ни в один из ваших курсов.",
     "currentCanDo": "Текущий {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP для этого {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP для этого {canDo}",
+    "sessionFinished": "Слишком поздно! Это занятие завершено."
 }

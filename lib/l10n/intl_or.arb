@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "ଆପଣ ଏହି {canDo} ପାଇଁ ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି କାର୍ଯ୍ୟକଳାପ ସମାପ୍ତ କରିନାହାଁନ୍ତି। ଆପଣଙ୍କ କୋର୍ସରୁ ଗୋଟିଏ ଆରମ୍ଭ କରନ୍ତୁ।",
     "canDoNotInYourCourses": "ଏହି {canDo} ଆପଣଙ୍କର କୌଣସି କୋର୍ସରେ ନାହିଁ।",
     "currentCanDo": "ବର୍ତ୍ତମାନର {canDo}",
-    "xpGainedTowardCanDo": "ଏହି {canDo} ପାଇଁ {xp} XP"
+    "xpGainedTowardCanDo": "ଏହି {canDo} ପାଇଁ {xp} XP",
+    "sessionFinished": "ବହୁତ ଡେରି ହୋଇଗଲା! ଏହି କାର୍ଯ୍ୟକଳାପ ଶେଷ ହୋଇଛି।"
 }

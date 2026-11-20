@@ -29,6 +29,7 @@ What a learner sees on tapping an activity, in every state. Its job is to start 
 ## The CTA row
 
 - **In a session**: once full, opening goes straight to the chat; until then Continue, to its waiting room, and nothing to start or join.
+- **Invited to a session that is full or has finished**: the page says which, even on the minimized sheet. Dismiss declines the invite and leads; a quieter Open Chat accepts it, for someone invited on purpose to see the session.
 - **Two players**: equal tiles, Play with Pangea Bot (always the learner's own session) and Play with others, on the right for a right thumb.
 - **Three or more**: Join open session when one waits, else Start.
 - A loading bar shows until sessions are known, so the choice never changes meaning.

@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Hauna kupedza chiitiko che {canDo} iyi. Tanga chimwe kubva muchikamu chako.",
     "canDoNotInYourCourses": "Iyi {canDo} haisi mune chero zvikamu zvako.",
     "currentCanDo": "{canDo} yazvino",
-    "xpGainedTowardCanDo": "{xp} XP kuenda ku {canDo} iyi"
+    "xpGainedTowardCanDo": "{xp} XP kuenda ku {canDo} iyi",
+    "sessionFinished": "Kunonoka! Chiitiko ichi chapera."
 }

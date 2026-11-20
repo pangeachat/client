@@ -10140,5 +10140,6 @@
     "noCanDoActivitiesYet": "இந்த {canDo}க்கான எந்தச் செயலையும் நீங்கள் இன்னும் முடிக்கவில்லை. உங்கள் பாடத்திட்டத்திலிருந்து ஒன்றைத் தொடங்குங்கள்.",
     "canDoNotInYourCourses": "இந்த {canDo} உங்கள் பாடத்திட்டங்களில் இல்லை.",
     "currentCanDo": "தற்போதைய {canDo}",
-    "xpGainedTowardCanDo": "இந்த {canDo}க்கு {xp} XP"
+    "xpGainedTowardCanDo": "இந்த {canDo}க்கு {xp} XP",
+    "sessionFinished": "மிகவும் தாமதம்! இந்தச் செயல்பாடு முடிந்துவிட்டது."
 }

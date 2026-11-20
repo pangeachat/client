@@ -10136,5 +10136,6 @@
     "noCanDoActivitiesYet": "شما هنوز فعالیتی برای این {canDo} تکمیل نکرده‌اید. یکی را از دوره خود شروع کنید.",
     "canDoNotInYourCourses": "این {canDo} در هیچ یک از دوره‌های شما نیست.",
     "currentCanDo": "{canDo} فعلی",
-    "xpGainedTowardCanDo": "{xp} XP برای این {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP برای این {canDo}",
+    "sessionFinished": "دیر شد! این فعالیت به پایان رسیده است."
 }

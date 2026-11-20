@@ -10045,5 +10045,6 @@
     "noCanDoActivitiesYet": "Te pole selle {canDo} jaoks veel ühtegi tegevust lõpetanud. Alustage ühte oma kursuselt.",
     "canDoNotInYourCourses": "See {canDo} ei kuulu ühtegi teie kursusesse.",
     "currentCanDo": "Praegune {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP selle {canDo} suunas"
+    "xpGainedTowardCanDo": "{xp} XP selle {canDo} suunas",
+    "sessionFinished": "Liiga hilja! See tegevus on lõppenud."
 }

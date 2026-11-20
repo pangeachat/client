@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "توهان اڃا تائين هن {canDo} لاءِ ڪا به سرگرمي مڪمل نه ڪئي آهي. پنهنجي ڪورس مان هڪ شروع ڪريو.",
     "canDoNotInYourCourses": "هي {canDo} توهان جي ڪنهن به ڪورس ۾ ناهي.",
     "currentCanDo": "موجوده {canDo}",
-    "xpGainedTowardCanDo": "هن {canDo} لاءِ {xp} XP"
+    "xpGainedTowardCanDo": "هن {canDo} لاءِ {xp} XP",
+    "sessionFinished": "گهڻو دير ٿي وئي! هي سرگرمي ختم ٿي چڪي آهي."
 }

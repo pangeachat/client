@@ -10351,5 +10351,6 @@
     "noCanDoActivitiesYet": "لم تكمل أي نشاط لهذا {canDo} بعد. ابدأ واحدًا من دورتك.",
     "canDoNotInYourCourses": "هذا {canDo} ليس في أي من دوراتك.",
     "currentCanDo": "{canDo} الحالي",
-    "xpGainedTowardCanDo": "{xp} نقطة خبرة نحو هذا {canDo}"
+    "xpGainedTowardCanDo": "{xp} نقطة خبرة نحو هذا {canDo}",
+    "sessionFinished": "فات الأوان! انتهى هذا النشاط."
 }

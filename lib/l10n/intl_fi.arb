@@ -10085,5 +10085,6 @@
     "noCanDoActivitiesYet": "Et ole vielä suorittanut aktiviteettia tälle {canDo}lle. Aloita sellainen kurssiltasi.",
     "canDoNotInYourCourses": "Tämä {canDo} ei ole millään kursseistasi.",
     "currentCanDo": "Nykyinen {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP kohti tätä {canDo}ta"
+    "xpGainedTowardCanDo": "{xp} XP kohti tätä {canDo}ta",
+    "sessionFinished": "Liian myöhäistä! Tämä aktiviteetti on päättynyt."
 }

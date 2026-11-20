@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "নখোইনা অসিগুম্বা {canDo} অসিগীদমক থবক অমা ফাওবা লোইশিনদ্রি। নখোইগী কোর্সতগী অমা হৌগদবনি।",
     "canDoNotInYourCourses": "অসিগুম্বা {canDo} অসি নখোইগী কোর্স অমদসু লৈতে।",
     "currentCanDo": "হৌজিক্কী {canDo}",
-    "xpGainedTowardCanDo": "অসিগুম্বা {canDo} অসিগীদমক {xp} XP ফংখ্রে"
+    "xpGainedTowardCanDo": "অসিগুম্বা {canDo} অসিগীদমক {xp} XP ফংখ্রে",
+    "sessionFinished": "হাওবা থোকখ্রে! হায়রিবা থবক অসি লোইখ্রে।"
 }

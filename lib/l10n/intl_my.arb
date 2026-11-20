@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "ဤ {canDo} အတွက် လှုပ်ရှားမှုတစ်ခုမျှ မပြီးသေးပါ။ သင်၏သင်တန်းမှ စတင်လိုက်ပါ။",
     "canDoNotInYourCourses": "ဤ {canDo} သည် သင်၏သင်တန်းများတွင် မပါဝင်ပါ။",
     "currentCanDo": "လက်ရှိ {canDo}",
-    "xpGainedTowardCanDo": "ဤ {canDo} အတွက် {xp} XP ရရှိခဲ့သည်"
+    "xpGainedTowardCanDo": "ဤ {canDo} အတွက် {xp} XP ရရှိခဲ့သည်",
+    "sessionFinished": "နောက်ကျသွားပြီ! ဒီလှုပ်ရှားမှု ပြီးဆုံးသွားပါပြီ။"
 }

@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "ທ່ານຍັງບໍ່ໄດ້ເຮັດກິດຈະກຳສໍາລັບ {canDo} ນີ້ເທື່ອ. ເລີ່ມຕົ້ນຈາກຫຼັກສູດຂອງທ່ານ.",
     "canDoNotInYourCourses": "{canDo} ນີ້ບໍ່ມີຢູ່ໃນຫຼັກສູດໃດໆຂອງທ່ານ.",
     "currentCanDo": "{canDo} ປັດຈຸບັນ",
-    "xpGainedTowardCanDo": "{xp} XP ສໍາລັບ {canDo} ນີ້"
+    "xpGainedTowardCanDo": "{xp} XP ສໍາລັບ {canDo} ນີ້",
+    "sessionFinished": "ຊ້າ​ເກີນ​ໄປ! ກິດຈະກຳ​ນີ້​ສິ້ນ​ສຸດ​ລົງ​ແລ້ວ."
 }

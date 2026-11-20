@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Kāore anō kia oti i a koe he mahi mō tēnei {canDo}. Me tīmata tētahi mai i tō akoranga.",
     "canDoNotInYourCourses": "Kāore tēnei {canDo} i roto i ō akoranga.",
     "currentCanDo": "Te {canDo} o nāianei",
-    "xpGainedTowardCanDo": "{xp} XP ki tēnei {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP ki tēnei {canDo}",
+    "sessionFinished": "Kua roa rawa! Kua mutu tēnei mahi."
 }

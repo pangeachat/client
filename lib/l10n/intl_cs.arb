@@ -10539,5 +10539,6 @@
     "noCanDoActivitiesYet": "Zatím jste pro toto {canDo} nedokončili žádnou aktivitu. Spusťte ji z vašeho kurzu.",
     "canDoNotInYourCourses": "Toto {canDo} není v žádném z vašich kurzů.",
     "currentCanDo": "Aktuální {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP k tomuto {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP k tomuto {canDo}",
+    "sessionFinished": "Příliš pozdě! Tato aktivita skončila."
 }

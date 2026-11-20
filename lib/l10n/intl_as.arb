@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "আপুনি এতিয়ালৈকে এই {canDo} ৰ বাবে কোনো কাৰ্য্যকলাপ সম্পূৰ্ণ কৰা নাই। আপোনাৰ পাঠ্যক্ৰমৰ পৰা এটা আৰম্ভ কৰক।",
     "canDoNotInYourCourses": "এই {canDo} আপোনাৰ কোনো পাঠ্যক্ৰমত নাই।",
     "currentCanDo": "বৰ্তমানৰ {canDo}",
-    "xpGainedTowardCanDo": "এই {canDo} ৰ বাবে {xp} XP"
+    "xpGainedTowardCanDo": "এই {canDo} ৰ বাবে {xp} XP",
+    "sessionFinished": "বহুত পলম হ'ল! এই কাৰ্য্যকলাপটো শেষ হৈ গৈছে।"
 }

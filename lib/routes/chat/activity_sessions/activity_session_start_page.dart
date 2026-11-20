@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_feedback_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_feedback_request.dart';
+import 'package:fluffychat/features/activity_sessions/activity_mode.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
@@ -17,6 +18,7 @@ import 'package:fluffychat/features/activity_sessions/activity_session_discovery
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_repo.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
+import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
@@ -311,6 +313,29 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
       ? Matrix.of(context).client.getRoomById(widget.parentId!)
       : null;
 
+  /// The session room, while the learner has not answered an invite to it.
+  /// Only a roleplay's: a discussion is entered through Join, never an invite.
+  Room? get invitedRoom {
+    final room = activityRoom;
+    return room != null &&
+            room.isPendingInvite &&
+            room.activityMode == ActivityMode.roleplay
+        ? room
+        : null;
+  }
+
+  /// The preview hasn't said yet whether this learner's invite still has a
+  /// seat, so the page can't offer one.
+  bool get awaitingInvitedSession => invitedRoom != null && _summariesLoading;
+
+  /// The session this learner is invited to has finished. Only the preview
+  /// can say, because an invite's local state carries no roles. Finished is
+  /// asked apart from full, since a finished session can still have a seat
+  /// open on paper when a player left.
+  bool get invitedSessionFinished =>
+      invitedRoom != null &&
+      _roomSummariesModel.getRoomSummary(widget.roomId!)?.isFinished == true;
+
   /// The course whose listing filters the sessions this page offers, or null
   /// for every joined course's — so a pin the map showed joinable always finds
   /// its session here, never a green pin that dead-ends at Start (#9026).
@@ -386,7 +411,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
         s: s,
         data: {"activityId": widget.activityId},
       );
-      if (mounted) setState(() => _summariesLoading = false);
+      if (mounted) {
+        setState(() => _summariesLoading = false);
+        _maybeStartStartPageTutorials();
+      }
     }
   }
 
@@ -755,7 +783,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
       final total = activity?.roles.length ?? 0;
       final canSelectRole = assigned < total;
 
-      if (!canSelectRole) {
+      if (!canSelectRole || invitedSessionFinished) {
         return SessionState.selectedSessionFull;
       }
 
@@ -908,6 +936,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     // empty or still-loading surface.
     final state = _sessionState;
     if (state == SessionState.selectRole &&
+        !awaitingInvitedSession &&
         _tutorials.isPending(TutorialEnum.activityRoles) &&
         _targetOnScreen(TutorialTargetIds.activityRolesList)) {
       _requestOrResume(TutorialSequences.activityRolesSequence);

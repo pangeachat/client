@@ -98,9 +98,13 @@ When an invite arrives via `/sync`, the sync listener routes it by room type:
 
 The tap never opens the invited room itself, because the chat view joins an invited room as soon as it builds, which would accept the invite without asking. Where it lands depends on what the invite is to:
 
-- **An activity session:** the activity page with that session bound, the same place its code join lands, with no course context forced open.
+- **An activity session:** the activity page with that session bound, the same place its code join lands, with no course context forced open. A link to the session in an invite email lands here too, so it never accepts the invite unasked.
 - **A chat in a course the learner has joined:** that course's page, where the chat is listed.
 - **A course, a DM or any other chat:** the learner stays where they are and gets the same accept/decline prompt as tapping that invite in the app. A chat's prompt also offers Block. Accepting opens the course or chat; declining or dismissing leaves them where they were. An invite the client accepts without asking (the priority rules below) is joined straight away and opens.
+
+### An invite to a session that is over
+
+An invite to an activity session stays open after the session fills or finishes. It is never withdrawn, which could have unexpected side effects, especially for teachers. So opening one checks the session as it is now, since the invite itself is a snapshot from when it was sent. If every role is taken or the session has finished, the learner is told so and offered one Dismiss, which declines the invite, and a quieter Open Chat, which accepts it. If the session can't be read, the normal prompt shows, because the invite still works.
 
 ### Space invite priority
 
@@ -125,7 +129,7 @@ Every case where the user is joined to a room without confirming it. The client 
 
 | Condition                                                | Trigger                           |
 | -------------------------------------------------------- | --------------------------------- |
-| Navigating to an invited room's chat view                | Building the widget               |
+| Navigating to an invited room's chat view, unless it is an activity session | Building the widget |
 | Invited space is a child of a joined parent              | Space invite via sync             |
 | Tapping a left space in the list                         | User tap                          |
 | Analytics room invite                                    | Always auto-joined                |

@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Jy het nog nie 'n aktiwiteit vir hierdie {canDo} voltooi nie. Begin een vanuit jou kursus.",
     "canDoNotInYourCourses": "Hierdie {canDo} is nie in enige van jou kursusse nie.",
     "currentCanDo": "Huidige {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP vir hierdie {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP vir hierdie {canDo}",
+    "sessionFinished": "Te laat! Hierdie aktiwiteit is verby."
 }

@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Chan eil thu air gnìomh sam bith a chrìochnachadh airson an {canDo} seo fhathast. Tòisich fear bhon chùrsa agad.",
     "canDoNotInYourCourses": "Chan eil an {canDo} seo ann an gin de na cùrsaichean agad.",
     "currentCanDo": "{canDo} làithreach",
-    "xpGainedTowardCanDo": "{xp} XP a dh'ionnsaigh an {canDo} seo"
+    "xpGainedTowardCanDo": "{xp} XP a dh'ionnsaigh an {canDo} seo",
+    "sessionFinished": "Rò fhadalach! Tha an gnìomhachd seo deiseil."
 }

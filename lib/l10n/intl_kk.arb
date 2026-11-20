@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Сіз бұл {canDo} үшін әлі ешқандай әрекетті аяқтаған жоқсыз. Курсыңыздан бастаңыз.",
     "canDoNotInYourCourses": "Бұл {canDo} сіздің курстарыңыздың ешқайсысында жоқ.",
     "currentCanDo": "Ағымдағы {canDo}",
-    "xpGainedTowardCanDo": "Осы {canDo} үшін {xp} XP"
+    "xpGainedTowardCanDo": "Осы {canDo} үшін {xp} XP",
+    "sessionFinished": "Кеш қалдыңыз! Бұл әрекет аяқталды."
 }

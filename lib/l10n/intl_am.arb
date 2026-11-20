@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "ለዚህ {canDo} እስካሁን ምንም እንቅስቃሴ አላጠናቀቁም። ከኮርስዎ ውስጥ አንዱን ይጀምሩ።",
     "canDoNotInYourCourses": "ይህ {canDo} በማናቸውም ኮርሶችዎ ውስጥ የለም።",
     "currentCanDo": "የአሁኑ {canDo}",
-    "xpGainedTowardCanDo": "ለዚህ {canDo} {xp} XP"
+    "xpGainedTowardCanDo": "ለዚህ {canDo} {xp} XP",
+    "sessionFinished": "በጣም ዘግይቷል! ይህ እንቅስቃሴ ተጠናቋል።"
 }

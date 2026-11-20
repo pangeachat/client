@@ -10677,5 +10677,6 @@
     "noCanDoActivitiesYet": "คุณยังไม่ได้ทำกิจกรรมสำหรับ {canDo} นี้เลย เริ่มต้นจากหลักสูตรของคุณ",
     "canDoNotInYourCourses": "{canDo} นี้ไม่ได้อยู่ในหลักสูตรใดๆ ของคุณ",
     "currentCanDo": "{canDo} ปัจจุบัน",
-    "xpGainedTowardCanDo": "{xp} XP สำหรับ {canDo} นี้"
+    "xpGainedTowardCanDo": "{xp} XP สำหรับ {canDo} นี้",
+    "sessionFinished": "สายเกินไป! กิจกรรมนี้สิ้นสุดลงแล้ว"
 }

@@ -10990,5 +10990,6 @@
     "noCanDoActivitiesYet": "Za ta {canDo} še niste dokončali nobene dejavnosti. Začnite eno iz svojega tečaja.",
     "canDoNotInYourCourses": "Ta {canDo} ni v nobenem od vaših tečajev.",
     "currentCanDo": "Trenutni {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP-jev za ta {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP-jev za ta {canDo}",
+    "sessionFinished": "Prepozno! Ta dejavnost je končana."
 }

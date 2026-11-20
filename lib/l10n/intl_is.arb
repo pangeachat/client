@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Þú hefur ekki lokið verkefni fyrir þetta {canDo} ennþá. Byrjaðu eitt af námskeiðinu þínu.",
     "canDoNotInYourCourses": "Þetta {canDo} er ekki á neinu af námskeiðunum þínum.",
     "currentCanDo": "Núverandi {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP í átt að þessu {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP í átt að þessu {canDo}",
+    "sessionFinished": "Of seint! Þessari virkni er lokið."
 }
