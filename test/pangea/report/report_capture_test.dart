@@ -30,7 +30,6 @@ void main() {
   const messageText = 'MESSAGE-SENTINEL you are an idiot';
   const subjectId = '@subject:example.invalid';
   const reporterId = '@reporter:example.invalid';
-  const botId = '@bot:example.invalid';
 
   const report = ReportSubmission(
     reportId: '3f1c6a52-1f0e-4d43-9a43-7c0c6f6fbb0e',
@@ -387,82 +386,73 @@ void main() {
   });
 
   group('reportCourseIds', () {
-    CourseRoster course(String id, Map<String, int> joined) =>
-        CourseRoster(courseId: id, joinedPowerLevels: joined);
+    const chat = '!chat';
 
-    test('a report about a student goes only to that student\'s courses', () {
+    test('a course chat goes only to the course that owns it', () {
       expect(
         reportCourseIds(
-          subjectId: subjectId,
-          botId: botId,
-          courses: [
-            course('!a', {subjectId: 0, reporterId: 0}),
-            course('!b', {reporterId: 0}),
-            course('!c', {subjectId: 50}),
-          ],
+          chatId: chat,
+          chatIsCourse: false,
+          chatParentIds: {'!a'},
+          courseChildIds: {
+            '!a': {chat},
+            '!b': {'!other'},
+          },
         ),
-        ['!a', '!c'],
+        ['!a'],
       );
     });
 
-    test('a teacher\'s report never reaches the teacher\'s other courses', () {
+    test('a course space is its own course', () {
       expect(
         reportCourseIds(
-          subjectId: subjectId,
-          botId: botId,
-          courses: [
-            course('!mine', {subjectId: 0, reporterId: 100}),
-            course('!other', {reporterId: 100}),
-          ],
+          chatId: chat,
+          chatIsCourse: true,
+          chatParentIds: const {},
+          courseChildIds: {
+            '!b': {'!other'},
+          },
         ),
-        ['!mine'],
+        [chat],
       );
     });
 
-    test(
-      'a course admin, or a member who has left, is not a student there',
-      () {
-        expect(
-          reportCourseIds(
-            subjectId: subjectId,
-            botId: botId,
-            courses: [
-              course('!admin', {subjectId: 100, reporterId: 0}),
-              course('!left', {reporterId: 0}),
-            ],
-          ),
-          isEmpty,
-        );
-      },
-    );
-
-    test('a reported user who is a student in none of the visible courses '
-        'is never placed in the reporter\'s courses', () {
-      // The module may file this report under a course of the reported
-      // user's that the reporter cannot see; pointing the reporter's own
-      // admins at their Safety page would send them to a report that is not
-      // there.
+    test('a direct message reaches no course', () {
       expect(
         reportCourseIds(
-          subjectId: subjectId,
-          botId: botId,
-          courses: [
-            course('!a', {reporterId: 0}),
-            course('!b', {subjectId: 100, reporterId: 0}),
-          ],
+          chatId: chat,
+          chatIsCourse: false,
+          chatParentIds: const {},
+          courseChildIds: {
+            '!a': {'!other'},
+          },
         ),
         isEmpty,
       );
     });
 
-    test('the bot is never a student', () {
+    test('a parent that does not list the chat back is not its course', () {
       expect(
         reportCourseIds(
-          subjectId: botId,
-          botId: botId,
-          courses: [
-            course('!a', {botId: 50, reporterId: 0}),
-          ],
+          chatId: chat,
+          chatIsCourse: false,
+          chatParentIds: {'!a'},
+          courseChildIds: {'!a': const {}},
+        ),
+        isEmpty,
+      );
+    });
+
+    test('a course listing the chat that the chat does not name is not its '
+        'course', () {
+      expect(
+        reportCourseIds(
+          chatId: chat,
+          chatIsCourse: false,
+          chatParentIds: const {},
+          courseChildIds: {
+            '!a': {chat},
+          },
         ),
         isEmpty,
       );

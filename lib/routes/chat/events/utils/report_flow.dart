@@ -21,38 +21,31 @@ class CourseRoster {
   final Map<String, int> joinedPowerLevels;
 
   const CourseRoster({required this.courseId, required this.joinedPowerLevels});
-
-  bool hasStudent(String userId, {required String botId}) {
-    if (userId == botId) return false;
-    final powerLevel = joinedPowerLevels[userId];
-    return powerLevel != null && powerLevel < 100;
-  }
 }
 
-/// The courses whose admins may be pointed to a report: the courses this
-/// client can see in which the reported user is a student.
+/// The courses whose admins may be pointed to a report: the course that owns
+/// the reported chat, the same course the module files the report under
+/// (synapse-pangea-chat moderation.instructions.md, pangeachat/.github#874).
 ///
-/// The module files a report under the reported user's student courses, or,
-/// only when the reported user is a student nowhere, under the reporter's
-/// (trust-and-safety.instructions.md, "Course ownership"). This client sees
-/// only the courses the reporter has joined, so it can confirm the first case
-/// but never the second: a reported user who is a student in none of the
-/// reporter's courses may still be one in a course the reporter is not in,
-/// where the module files the report instead. Falling back to the reporter's
-/// courses here would then point admins at a Safety page the report is not
-/// on. So the client never falls back; a report it cannot place still
-/// reaches the Safety page, only without a DM.
-///
-/// A teacher reporting their own student therefore notifies that student's
-/// course and none of the teacher's other courses.
+/// The chat is its own course when it is a course space. Otherwise its course
+/// is a parent it names in a live `m.space.parent` that is a course space and
+/// lists it back in a live `m.space.child` ([courseChildIds]: each course the
+/// reporter can see, with its child ids). A chat no course owns, such as a
+/// direct message, gets no pointer; the report still reaches the Safety page
+/// only where a course owns the chat.
 List<String> reportCourseIds({
-  required String subjectId,
-  required String botId,
-  required List<CourseRoster> courses,
-}) => courses
-    .where((c) => c.hasStudent(subjectId, botId: botId))
-    .map((c) => c.courseId)
-    .toList();
+  required String chatId,
+  required bool chatIsCourse,
+  required Set<String> chatParentIds,
+  required Map<String, Set<String>> courseChildIds,
+}) {
+  if (chatIsCourse) return [chatId];
+  return [
+    for (final course in courseChildIds.entries)
+      if (chatParentIds.contains(course.key) && course.value.contains(chatId))
+        course.key,
+  ];
+}
 
 /// The DM a course admin receives about a report: a pointer to the Safety
 /// page and nothing else. It never carries the message, the reason or the
