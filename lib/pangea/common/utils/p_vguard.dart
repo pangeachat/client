@@ -52,7 +52,10 @@ class PAuthGaurd {
     }
 
     final finished = await pController!.userController.finishedOnboarding;
-    if (!finished) return '/registration';
+    if (!finished) {
+      await preserveDestination(state.uri);
+      return '/registration';
+    }
     return consumeCachedDestination(state.uri);
   }
 
@@ -117,11 +120,17 @@ class PAuthGaurd {
   /// redirect ([dmInviteRedirect]) before it delegates here, and is not a
   /// destination.
   static Future<String> _loginBounce(GoRouterState state) async {
-    final destination = bounceDestinationFor(state.uri);
+    await preserveDestination(state.uri);
+    return '/home';
+  }
+
+  /// Keep an incoming workspace link before login or onboarding replaces it.
+  /// A plain root landing must not overwrite a previously saved class link.
+  static Future<void> preserveDestination(Uri uri) async {
+    final destination = bounceDestinationFor(uri);
     if (destination != null) {
       await SpaceCodeRepo.setDestination(destination);
     }
-    return '/home';
   }
 
   /// The location the bounce keeps for [uri], or null when there is nothing
