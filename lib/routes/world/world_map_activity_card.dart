@@ -79,7 +79,9 @@ class WorldMapActivityCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // The pointer continues the card's frame (#9559): the live state's hue,
     // else the not-started pin's colour a resting map card is outlined in —
-    // the same colour as the mid pin or dot it stands for.
+    // the same colour as the mid pin or dot it stands for. A resting card
+    // keeps a frame at all because a card floating over the tiles would
+    // otherwise melt into them.
     final frameColor = _live
         ? state.bodyColor(context)
         : ActivityPinState.available.bodyColor(context);

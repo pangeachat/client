@@ -238,7 +238,7 @@ class RoomSummaryResponse {
 
   /// Someone is actually present: at least one non-bot member currently
   /// joined. Filters stale, abandoned rooms (started, then left, never
-  /// finished) — see world-map.instructions.md "Discovering joinable sessions".
+  /// finished) — see world-map.instructions.md "Open sessions".
   bool get hasPresentNonBotMember => membershipSummary.entries.any(
     (e) => e.value == Membership.join.name && e.key != BotName.byEnvironment,
   );

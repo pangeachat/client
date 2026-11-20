@@ -12,8 +12,10 @@
 ///
 /// Everything here is a **tunable starting point** — adjust the breakpoints,
 /// counts, and sizes freely; this file is the single source of truth. See
-/// `world-map.instructions.md` ("Pin display" / "Priority matrix" / "Scale
-/// boundary").
+/// `world-map.instructions.md` ("Pins" / "Priority matrix" / "Scale
+/// boundary"). The tiers' visual treatment is the pin-tier frame:
+/// https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=12912-348899
+/// (pin states are the `Activity pin v3` component in the same file).
 library;
 
 import 'package:flutter/material.dart'
@@ -98,7 +100,8 @@ PinBudget budgetForWidth(double width) {
 
 /// The map's large tier as **activity cards**: the course plan's own card,
 /// squared up, standing on the completed stamp at the real location. False
-/// draws the classic large callout cards instead.
+/// draws the classic large callout cards instead ([WorldMapLargeCard]), kept
+/// so the change to activity cards can be reverted with this one line.
 const bool kMapActivityCards = true;
 
 /// Whether a completed stamp webs out the words the learner used in that
@@ -159,7 +162,7 @@ abstract class PinSize {
 
   /// Extra height below the mid pin's circular head for the teardrop's
   /// pointed tip, which sits at the pin's geographic anchor (Figma
-  /// `Activity pin v3`; world-map.instructions.md, "Pin display"). Small pins
+  /// `Activity pin v3`; world-map.instructions.md, "Pins"). Small pins
   /// stay a plain circle and don't use this. A mid pin's "num/num" participant
   /// count (joinable / ongoing-pending only) stacks inside the circular head
   /// under its icon glyph, so the marker box is just head + point — no reserved

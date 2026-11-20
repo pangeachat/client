@@ -89,7 +89,9 @@ bool shouldRebuildObjectiveCacheNow({
 /// thin v3 ref's seat count through plan hydration, which lands AFTER the pass
 /// that fetched the preview; a fact frozen then kept a full session's pin green
 /// while its card row and its start page — both reading the same gate live —
-/// showed no seats and no Join. Rooms the learner [isJoined] carry their own
+/// showed no seats and no Join. While hydration is pending the seats are
+/// unknown and the gate is presence-only, so it only ever tightens as data
+/// arrives, never loosens. Rooms the learner [isJoined] carry their own
 /// local facts, so they are skipped. One fact per open session, all stamped
 /// [nowMs] — the recompute that derived it; a discovered session carries no
 /// recency of its own. Under a course scope, [listedRoomIds] — the sessions
@@ -466,7 +468,7 @@ class WorldMapPinsManager {
   }
 
   /// Discover open sessions the learner is not yet in — BOTH reads of
-  /// world-map.instructions.md ("Discovering joinable sessions"):
+  /// world-map.instructions.md ("Open sessions"):
   ///
   ///  * **coursemate sessions** — one batched read of the joined course spaces
   ///    against the space-scoped activity_session_previews module, which

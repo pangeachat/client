@@ -24,7 +24,7 @@ import 'package:fluffychat/routes/settings/settings_learning/language_level_type
 /// dead-ends at "Start"): the world map's coursemate discovery skips
 /// `isStarted` sessions, and the start page's open-session list keeps only
 /// `isActivityOpenToJoin` (= `!isStarted`, given members + an activity id). See
-/// world-map.instructions.md ("Discovering joinable sessions").
+/// world-map.instructions.md ("Open sessions").
 ///
 /// Thin v3 refs resolve their plan through hydration (#7645), injected here
 /// via [RoomSummaryResponse.referencePlanResolver]; only while hydration is

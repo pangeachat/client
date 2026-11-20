@@ -237,7 +237,7 @@ class WorldMapFilterState {
 
   /// A new target language starts the map over: the query and every pill were
   /// chosen against the old language's activities, so they go back to their
-  /// defaults (world-map.instructions.md, "The personalized default"). A
+  /// defaults (world-map.instructions.md, "Filters"). A
   /// settings level change never reaches here.
   void setL2(LanguageModel? l2) {
     resetFilters();

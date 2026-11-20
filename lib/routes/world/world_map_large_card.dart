@@ -113,7 +113,7 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
 }
 
 /// The large featured map card. Eligible for four colour-states
-/// (world-map.instructions.md, "Pin display"): only the completed trail star
+/// (world-map.instructions.md, "Pins"): only the completed trail star
 /// (`inProgress`) never renders here — it is drawn as its played stamp,
 /// excluded by the ranking/placement gate before this widget is ever built.
 ///
@@ -467,7 +467,7 @@ class _LeadingGutter extends StatelessWidget {
 }
 
 /// The large-card title row: the bold, [titleColor]ed activity name
-/// (world-map.instructions.md, "Pin display", world-map Figma). The dismiss X
+/// (world-map.instructions.md, "Pins", world-map Figma). The dismiss X
 /// used to sit inline ahead of it (#7207); it now rides the card's top-left
 /// corner as a badge, where it neither crowds the title nor splits the
 /// thumbnail off from the text beside it (#8278).
@@ -508,7 +508,7 @@ class _CardTitleRow extends StatelessWidget {
 /// Dispatches to the one content layout that's real for this card's state.
 /// `inProgress` never reaches here in production (the completed trail star is a
 /// played stamp, excluded by the ranking/placement gate before this widget is
-/// ever built — world-map.instructions.md, "Pin display"), so it renders a
+/// ever built — world-map.instructions.md, "Pins"), so it renders a
 /// defensive empty body if a test constructs it directly.
 class _CardBody extends StatelessWidget {
   final QuestActivityCard card;
@@ -556,7 +556,7 @@ class _CardBody extends StatelessWidget {
   };
 }
 
-/// The Available body (world-map.instructions.md, "Pin display"): the activity's
+/// The Available body (world-map.instructions.md, "Pins"): the activity's
 /// L2 language flag, its CEFR level, and its designed party size — a people
 /// glyph and the role count. No session exists yet, so there is no participant
 /// row, rating, or star row; the [card]'s thin metadata (`l2`, `cefr`,

@@ -10,7 +10,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 /// walk that missed sessions in courses with more rooms than one hierarchy
 /// page (#7982). What stays client-side is knowing WHICH spaces to ask about,
 /// and which invited rooms need their own preview. See
-/// world-map.instructions.md ("Discovering joinable sessions").
+/// world-map.instructions.md ("Open sessions").
 extension ActivitySessionDiscovery on Client {
   /// The learner's joined course spaces (a joined space carrying a course plan)
   /// — the spaces input to the activity_session_previews read.

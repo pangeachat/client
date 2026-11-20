@@ -171,7 +171,7 @@ void main() {
     });
   });
 
-  group('state-dispatched body (world-map.instructions.md, "Pin display")', () {
+  group('state-dispatched body (world-map.instructions.md, "Pins")', () {
     testWidgets('joinable shows a door icon + the participant row', (
       tester,
     ) async {

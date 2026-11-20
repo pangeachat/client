@@ -36,7 +36,7 @@ class WorldMapDot extends StatefulWidget {
 
   /// Participants filled / total roles, for the mid-pin "num/num" label
   /// (joinable / ongoing-pending only — world-map.instructions.md,
-  /// "Pin display"). Null hides the label (e.g. counts not yet resolved).
+  /// "Pins"). Null hides the label (e.g. counts not yet resolved).
   final int? participantsFilled;
   final int? participantsTotal;
 
@@ -266,7 +266,7 @@ class _SmallDotContent extends StatelessWidget {
   );
 }
 
-/// The mid-pin glyph (world-map.instructions.md, "Pin display"): each state's
+/// The mid-pin glyph (world-map.instructions.md, "Pins"): each state's
 /// shared [ActivityPinState.icon], except `inProgress` (Completed) whose pin
 /// body is a gold star rather than a coloured pin, so it shows no mid-glyph.
 IconData? _mediumGlyph(ActivityPinState state) =>
@@ -274,7 +274,7 @@ IconData? _mediumGlyph(ActivityPinState state) =>
 
 /// The mid-pin "num/num" participant-count label — `joinable`/`ongoingPending`
 /// only (never `ongoingActive`, which shows no count — world-map.instructions.md,
-/// "Pin display"). Null when the counts aren't available.
+/// "Pins"). Null when the counts aren't available.
 String? _participantLabel(ActivityPinState state, int? filled, int? total) {
   if (state != ActivityPinState.joinable &&
       state != ActivityPinState.ongoingPending) {
@@ -400,7 +400,7 @@ class _MediumDotContent extends StatelessWidget {
 ///    and an optional [glyph] centered on its circular head. When
 ///    [pointHeight] is 0 the body is a plain circle (small tier); otherwise a
 ///    teardrop/map-marker silhouette whose point extends [pointHeight] below
-///    the head (mid tier — world-map.instructions.md, "Pin display", the
+///    the head (mid tier — world-map.instructions.md, "Pins", the
 ///    Figma `Activity pin v3` reference).
 ///
 /// When [isFocused], a primary-coloured focus ring (a halo with a gap) wraps
