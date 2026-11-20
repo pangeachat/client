@@ -1256,6 +1256,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           // session finished restoring", which on a cold start lands AFTER the
           // app has resolved the URL the user opened — and going to the map
           // then throws that URL away. See [PAuthGaurd.loggedInLanding].
+          final current =
+              FluffyChatApp.router.routeInformationProvider.value.uri;
+          if (!finished) await PAuthGaurd.preserveDestination(current);
+          if (!mounted) return;
           final landing = PAuthGaurd.loggedInLanding(
             current: FluffyChatApp.router.routeInformationProvider.value.uri,
             finishedOnboarding: finished,
