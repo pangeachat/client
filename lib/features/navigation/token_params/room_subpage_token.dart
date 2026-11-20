@@ -8,7 +8,6 @@ import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_sel
 enum RoomSubpageEnum {
   edit,
   invite,
-  access,
   permissions,
   emotes,
   addcourse;
@@ -49,7 +48,6 @@ class RoomSubpageTokenParam extends TokenParam {
     final encodedSubpage = TokenFields.encode(subpage.name);
     switch (subpage) {
       case RoomSubpageEnum.edit:
-      case RoomSubpageEnum.access:
       case RoomSubpageEnum.permissions:
       case RoomSubpageEnum.emotes:
         return encodedSubpage;
@@ -94,7 +92,6 @@ class RoomSubpageTokenParam extends TokenParam {
 
     switch (subpage) {
       case RoomSubpageEnum.edit:
-      case RoomSubpageEnum.access:
       case RoomSubpageEnum.permissions:
       case RoomSubpageEnum.emotes:
         return RoomSubpageTokenParam(subpage: subpage);
