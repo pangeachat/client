@@ -169,7 +169,7 @@ extension WorldMapClientExtension on Client {
         // pangea.activity_roles, so a locally-derived fact would report every
         // seat free — a phantom joinable that skips the finished/full/presence
         // gates. Invited sessions flow through the discovery preview instead
-        // (world-map.instructions.md, "Discovering joinable sessions"; #7488).
+        // (world-map.instructions.md, "Open sessions"; #7488).
         if (r.membership != Membership.join) return null;
 
         final role = r.ownRole;

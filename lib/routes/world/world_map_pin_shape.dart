@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// Paints a Google-Maps-style teardrop/map-marker silhouette: a circular head
 /// (diameter [headDiameter]) with a point extending [pointHeight] below it,
 /// converging to a tip at the pin's geographic anchor. Used for mid-tier pins
-/// (world-map.instructions.md, "Pin display" — the Figma `Activity pin v3`
+/// (world-map.instructions.md, "Pins" — the Figma `Activity pin v3`
 /// reference); small-tier pins stay a plain circle.
 class TeardropPainter extends CustomPainter {
   final Color color;

@@ -21,7 +21,8 @@ extension ActivitySessionFilledRoomExtension on Room {
   /// that filled it reaches them only through the world map's discovery pass —
   /// and this event is the sync tick that makes that pass run now, instead of
   /// whenever some unrelated room next updates. Nothing reads the content; it
-  /// is there for debugging.
+  /// is there for debugging. It is a custom event type so that it matches no
+  /// push rule: it must never notify anyone or badge the course.
   ///
   /// Best-effort by design: the seat claim that triggers this has already
   /// succeeded, so a course that rejects the send is reported and skipped, and

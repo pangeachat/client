@@ -413,7 +413,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage>
     // activity_session_previews module: one batched read of the joined course
     // spaces returns previews for only this activity's session rooms, complete
     // regardless of how many rooms a course holds (#7982). See
-    // world-map.instructions.md ("Discovering joinable sessions").
+    // world-map.instructions.md ("Open sessions").
     final courseSpaceIds = client.joinedCourseSpaces.map((r) => r.id).toList();
 
     // Rooms the module can't see: the deep-linked room itself, and sessions the

@@ -328,6 +328,10 @@ const double kMultiPersonFirstMapPenalty = 2.0;
 /// cannot keep a competition-free top scorer out of the large tier, so
 /// dismissal is *also* a large-tier eligibility rule in the placement pass
 /// ([placeLargeCards]'s `dismissedIds`), like the live-session heavy-tier gate.
+/// The eligibility rule alone would not do either: it keeps the pin out of the
+/// large tier but would not sink it within the mid/small ordering. With no
+/// memory of the X at all, the next re-rank would promote the card straight
+/// back and the X would do nothing.
 const double kDismissedPenalty = 0.5;
 
 /// Rating-count threshold below which an activity counts as NEW (#7993): it
@@ -371,7 +375,11 @@ const double kOngoingPendingWeight = 1.6;
 /// activity needs **3+ roles** (unstartable solo — the bot fills exactly one),
 /// and it is **not** itself a live session (a joinable/ongoing 3+ session has
 /// humans present, so the rationale does not apply). See
-/// world-map.instructions.md (#7435).
+/// world-map.instructions.md (#7435). Separate from the understaffed dimming
+/// (world-map.instructions.md#understaffed-pins): this term only demotes a
+/// first-timer's ranking on the world map and clears after their first
+/// finished activity, while the dimming is course-scoped and lasts for as long
+/// as the course is short-handed.
 bool isMultiPersonFirstMap({
   required int? roleCount,
   required bool isNewLearner,

@@ -20,7 +20,7 @@
 /// dropped outright — there is nothing on screen to animate — while one that
 /// leaves for a *ranking* reason (demoted past the width budget's cap, promoted
 /// to a large card, filtered out) is still visible and earns its shrink-out.
-/// See world-map.instructions.md ("Pin display").
+/// See world-map.instructions.md ("Pins").
 class MapExitTracker<T> {
   final Map<String, T> _exiting = {};
   Map<String, T> _lastActive = const {};

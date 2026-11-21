@@ -48,7 +48,7 @@ class DotMarkersLayer {
   });
 
   /// The mid-pin "num/num" participant counts for `joinable`/`ongoingPending`
-  /// (world-map.instructions.md, "Pin display") — derived from the shared
+  /// (world-map.instructions.md, "Pins") — derived from the shared
   /// [_sessionParticipants] resolver so they match the large card's row.
   /// Null/null for every other state, or when the counts aren't resolvable yet.
   ({int? filled, int? total}) _participantCounts(
@@ -75,7 +75,7 @@ class DotMarkersLayer {
   /// Tapping any pin opens/focuses the activity in one step (no tap-to-peek).
   /// Small dots are emitted before mid pins so mid always paints on top —
   /// markers later in the list draw over earlier ones, and "small pins should
-  /// never show on top of mid pins" (world-map.instructions.md, "Pin display").
+  /// never show on top of mid pins" (world-map.instructions.md, "Pins").
   MarkerLayer layer() {
     // Small dots first, then mid pins, each tier keeping its score order — a
     // stable partition (Dart's List.sort is not guaranteed stable) so mid

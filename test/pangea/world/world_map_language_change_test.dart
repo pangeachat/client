@@ -8,7 +8,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// A new target language starts the map over: the search text and every pill
 /// were chosen against the old language's activities, so they go back to their
-/// defaults (#9406, world-map.instructions.md "The personalized default").
+/// defaults (#9406, world-map.instructions.md "Filters").
 void main() {
   final spanish = LanguageModel(langCode: 'es', displayName: 'Spanish');
   final french = LanguageModel(langCode: 'fr', displayName: 'French');

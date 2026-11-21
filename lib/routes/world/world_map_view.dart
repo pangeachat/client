@@ -514,7 +514,7 @@ class _WorldMapViewState extends State<WorldMapView>
 
     // The available visible-map width (viewport minus open panels) picks the
     // budget row: a total cap `N` split into large/mid/small caps + a trail
-    // reservation (world-map.instructions.md, "Pin display").
+    // reservation (world-map.instructions.md, "Pins").
     final budget = budgetForWidth(
       widget.controller.widget.availableVisibleMapWidth,
     );

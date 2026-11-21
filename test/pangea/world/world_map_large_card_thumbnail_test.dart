@@ -17,7 +17,7 @@ import '../get_test_client.dart';
 /// #8278 / #8684 — both ongoing sub-states lead with the activity's thumbnail
 /// so a card reads as the same thing as that session's Chats-list tile;
 /// joinable gives that width to its seat circles and never shows an image
-/// (world-map.instructions.md, "Pin display"). The dismiss X moved off the
+/// (world-map.instructions.md, "Pins"). The dismiss X moved off the
 /// title line to the card's top-left corner, inside the border.
 void main() {
   late Client client;
