@@ -226,54 +226,66 @@ class _PowerupsPill extends StatelessWidget {
                             borderRadius: BorderRadius.circular(_innerRadius),
                           ),
                           clipBehavior: Clip.antiAlias,
-                          padding: EdgeInsets.all(4.0),
+                          padding: EdgeInsets.all(0),
                           child: Material(
                             type: MaterialType.transparency,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                StreamBuilder(
-                                  stream: viewModel.starsUpdateStream,
-                                  builder: (context, _) {
-                                    final stars = viewModel.starsEarned;
-                                    return ClusterTrackerButton(
-                                      indicator: ProgressIndicatorEnum.stars,
-                                      count: stars,
-                                      selected:
-                                          selectedTab ==
-                                          ProgressIndicatorEnum.stars,
-                                      onTap: () => viewModel.openAnalytics(
-                                        context,
-                                        AnalyticsPanelTab.sessions,
-                                      ),
-                                    );
-                                  },
-                                ),
-                                ClusterTrackerButton(
-                                  indicator: ProgressIndicatorEnum.morphsUsed,
-                                  count: grammar,
-                                  selected:
-                                      selectedTab ==
-                                      ProgressIndicatorEnum.morphsUsed,
-                                  onTap: () => viewModel.openAnalytics(
-                                    context,
-                                    AnalyticsPanelTab.grammar,
+                            // One width for all three keys, so the column reads
+                            // as one segmented strip rather than three
+                            // count-sized lozenges.
+                            child: IntrinsicWidth(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  StreamBuilder(
+                                    stream: viewModel.starsUpdateStream,
+                                    builder: (context, _) {
+                                      final stars = viewModel.starsEarned;
+                                      return ClusterTrackerButton(
+                                        indicator: ProgressIndicatorEnum.stars,
+                                        segment: TrackerSegment.first,
+                                        axis: Axis.vertical,
+                                        count: stars,
+                                        selected:
+                                            selectedTab ==
+                                            ProgressIndicatorEnum.stars,
+                                        onTap: () => viewModel.openAnalytics(
+                                          context,
+                                          AnalyticsPanelTab.sessions,
+                                        ),
+                                      );
+                                    },
                                   ),
-                                ),
-                                ClusterTrackerButton(
-                                  indicator: ProgressIndicatorEnum.wordsUsed,
-                                  tutorialTargetId:
-                                      TutorialTargetIds.analyticsVocabTracker,
-                                  count: vocab,
-                                  selected:
-                                      selectedTab ==
-                                      ProgressIndicatorEnum.wordsUsed,
-                                  onTap: () => viewModel.openAnalytics(
-                                    context,
-                                    AnalyticsPanelTab.vocab,
+                                  ClusterTrackerButton(
+                                    indicator: ProgressIndicatorEnum.morphsUsed,
+                                    segment: TrackerSegment.middle,
+                                    axis: Axis.vertical,
+                                    count: grammar,
+                                    selected:
+                                        selectedTab ==
+                                        ProgressIndicatorEnum.morphsUsed,
+                                    onTap: () => viewModel.openAnalytics(
+                                      context,
+                                      AnalyticsPanelTab.grammar,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  ClusterTrackerButton(
+                                    indicator: ProgressIndicatorEnum.wordsUsed,
+                                    segment: TrackerSegment.last,
+                                    axis: Axis.vertical,
+                                    tutorialTargetId:
+                                        TutorialTargetIds.analyticsVocabTracker,
+                                    count: vocab,
+                                    selected:
+                                        selectedTab ==
+                                        ProgressIndicatorEnum.wordsUsed,
+                                    onTap: () => viewModel.openAnalytics(
+                                      context,
+                                      AnalyticsPanelTab.vocab,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -315,27 +327,48 @@ class _PowerupsPill extends StatelessWidget {
   }
 }
 
-/// One tracker in the powerups pill: a dark icon over its count, on the white
-/// inner field. Tapping opens that metric's analytics tab. Public so
+/// Where a tracker sits in its pill's segmented strip: the outer corners
+/// follow the pill's rounding, the corners it shares with a neighbour stay
+/// tight, so the three keys read as one segmented control.
+enum TrackerSegment { first, middle, last }
+
+/// One tracker in the powerups pill: a physical key, flush with the XP ring
+/// at rest (a raised lip would read as standing above it), icon over count.
+/// Tapping opens that metric's analytics tab. The key sinks below the ring
+/// while held down and STAYS sunk while its panel is open,
+/// so the open panel reads as a pressed-in key (#7977). Public so
 /// [WorldAnalyticsBar] can lay the same three trackers out horizontally.
 /// The displayed count abbreviates above 999 ([compactCount]) so the pill
 /// never outgrows the allocator's fixed cluster gutter; the semantics label
 /// carries the exact count.
 class ClusterTrackerButton extends StatefulWidget {
+  /// How far a key sinks below the pill's ring when pressed — the same depth
+  /// as the toolbar's [PressableButton]s.
+  static const double keyDepth = 4.0;
+
   final ProgressIndicatorEnum indicator;
   final int count;
   final VoidCallback onTap;
 
-  /// Whether this tracker's analytics panel is the one currently open — then it
-  /// wears a persistent highlight (a sticky version of its hover wash) so the
-  /// pill shows what is on screen (#7977). Ignored while a live practice badge
-  /// occupies the tracker.
+  /// Whether this tracker's analytics panel is the one currently open — then
+  /// the key stays pressed in, so the pill shows what is on screen (#7977).
+  /// Ignored while a live practice badge occupies the tracker.
   final bool selected;
+
+  /// Position in the strip and the strip's direction, which together pick the
+  /// key's corner rounding.
+  final TrackerSegment segment;
+  final Axis axis;
 
   /// Sizing knobs so the narrow analytics bar can render the compact variant
   /// (the Figma mobile pill); web keeps these defaults.
   final double horizontalPadding;
   final double iconSize;
+
+  /// Extra room on the key's leading side, inside the key — the narrow bar's
+  /// first key runs under the overhanging level badge, so its content shifts
+  /// clear of it while the key still reaches the pill's edge.
+  final double leadingInset;
   final double fontSize;
 
   /// Registers this tracker as a tutorial spotlight target. Shares its id
@@ -348,7 +381,10 @@ class ClusterTrackerButton extends StatefulWidget {
     required this.count,
     required this.onTap,
     this.selected = false,
+    this.segment = TrackerSegment.middle,
+    this.axis = Axis.vertical,
     this.horizontalPadding = 16,
+    this.leadingInset = 0,
     this.iconSize = 24,
     this.fontSize = 16,
     this.tutorialTargetId,
@@ -360,9 +396,11 @@ class ClusterTrackerButton extends StatefulWidget {
 }
 
 class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
-  /// The tap target, the hover and open-panel fills, and the focus ring all
-  /// share this geometry.
-  static const OutlinedBorder _shape = StadiumBorder();
+  /// The keys tile the pill's whole interior with no gap: outer corners take
+  /// the pill's inner radius, shared edges are square.
+  static const Radius _outer = Radius.circular(20);
+  static const Radius _inner = Radius.zero;
+  static const Duration _sinkDuration = Duration(milliseconds: 90);
 
   ProgressIndicatorEnum get indicator => widget.indicator;
   int get count => widget.count;
@@ -372,10 +410,23 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
   double get iconSize => widget.iconSize;
   double get fontSize => widget.fontSize;
 
-  /// Hover feedback for the live-practice badge: the fill brightens to full
-  /// opacity (the gold ink highlight is suppressed there — a translucent gold
-  /// wash over solid primary read as no feedback at all).
   bool _hovered = false;
+
+  /// A pointer is down on the key: it sinks for the press, like a real key.
+  bool _pressed = false;
+
+  BorderRadius get _radius {
+    final vertical = widget.axis == Axis.vertical;
+    final leading = widget.segment == TrackerSegment.first ? _outer : _inner;
+    final trailing = widget.segment == TrackerSegment.last ? _outer : _inner;
+    return vertical
+        ? BorderRadius.vertical(top: leading, bottom: trailing)
+        : BorderRadius.horizontal(left: leading, right: trailing);
+  }
+
+  void _setPressed(bool pressed) {
+    if (_pressed != pressed) setState(() => _pressed = pressed);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -388,6 +439,7 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
       child: ListenableBuilder(
         listenable: PracticeSessionHolder.instance,
         builder: (context, _) {
+          final theme = Theme.of(context);
           final holder = PracticeSessionHolder.instance;
           final tracksPractice =
               indicator == ProgressIndicatorEnum.wordsUsed ||
@@ -396,82 +448,152 @@ class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
               tracksPractice && holder.liveType == indicator.constructType
               ? holder.current?.sessionController.session?.startedAt
               : null;
+          final live = liveSessionStart != null;
 
-          final semanticsLabel = liveSessionStart != null
+          final semanticsLabel = live
               ? '${indicator.tooltip(context)}: $count — '
                     '${L10n.of(context).practice}'
               : '${indicator.tooltip(context)}: $count';
 
+          final radius = _radius;
+          final shape = RoundedRectangleBorder(borderRadius: radius);
+          final sunk = _pressed || (selected && !live);
+
+          // The key's face: brighter than the pill field so it stands up off
+          // it in both themes. A live practice session paints the face in
+          // primary instead — the badge takes the key's place.
+          final restFace = live
+              ? theme.colorScheme.primary.withValues(
+                  alpha: _hovered ? 1.0 : 0.85,
+                )
+              : _hovered
+              ? Color.alphaBlend(
+                  theme.colorScheme.onSurface.withAlpha(14),
+                  theme.colorScheme.surfaceBright,
+                )
+              : theme.colorScheme.surfaceBright;
+          // Pressed in: below the pill field, so it reads as sitting lower
+          // than its neighbours, with the gold of the open panel washed over
+          // it and shaded along the top edge where the bezel would cast.
+          final sunkFace = live
+              ? Color.alphaBlend(Colors.black.withAlpha(50), restFace)
+              : Color.alphaBlend(
+                  theme.pangea.goldFixedDim.withAlpha(80),
+                  Color.alphaBlend(
+                    Colors.black.withAlpha(60),
+                    theme.colorScheme.surfaceContainer,
+                  ),
+                );
+          final face = sunk ? sunkFace : restFace;
+          final well = Color.alphaBlend(
+            Colors.black.withAlpha(140),
+            theme.colorScheme.surfaceContainer,
+          );
+          // The open panel's key also lights its icon gold — a graphic, so
+          // the 3:1 graphic bar applies, not the text bar the count needs.
+          final iconColor = selected && !live ? theme.pangea.goldGraphic : null;
+
           return Tooltip(
-            message: liveSessionStart != null
+            message: live
                 ? L10n.of(context).practice
                 : indicator.tooltip(context),
             // The target below carries the full "<stat>: <count>" name;
             // exclude the Tooltip so it isn't announced twice ("Stars Stars: 0").
             excludeFromSemantics: true,
-            child: FocusRingTapTarget(
-              onTap: onTap,
-              shape: _shape,
-              // The exact count — assistive tech is never given the
-              // abbreviation.
-              label: semanticsLabel,
-              // Outside the stadium: the live badge's primary fill is within
-              // 1.6:1 of the gold ring, the surface around it is not (#8880).
-              ringStrokeAlign: BorderSide.strokeAlignOutside,
-              onHover: (h) => setState(() => _hovered = h),
-              hoverColor: liveSessionStart != null
-                  ? Colors.transparent
-                  : Theme.of(context).pangea.goldFixedDim.withAlpha(50),
-              // While a session is live the badge takes the button's place:
-              // ONE stadium fill on exactly the hover-highlight geometry
-              // (same shape, same padded bounds), practice icon over the
-              // running timer inside it. Painted as INK (not a Container) so
-              // Material's press splash renders on top of the fill — the same
-              // white flash the sibling trackers give.
-              child: Ink(
-                decoration: liveSessionStart != null
-                    ? ShapeDecoration(
-                        color: Theme.of(context).colorScheme.primary.withValues(
-                          alpha: _hovered ? 1.0 : 0.75,
-                        ),
-                        shape: _shape,
-                      )
-                    // Open-panel highlight: a persistent version of the hover
-                    // wash on the same padded geometry, so the tracker whose
-                    // analytics is showing stays lit (#7977).
-                    : selected
-                    ? ShapeDecoration(
-                        color: Theme.of(
-                          context,
-                        ).pangea.goldFixedDim.withAlpha(50),
-                        shape: _shape,
-                      )
-                    : null,
-                padding: EdgeInsets.symmetric(
-                  horizontal: horizontalPadding,
-                  vertical: 9,
-                ),
-                child: liveSessionStart != null
-                    ? PracticeSessionBadge(
-                        startedAt: liveSessionStart,
-                        iconSize: iconSize,
-                        fontSize: fontSize,
-                      )
-                    : Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(indicator.icon, size: iconSize),
-                          const SizedBox(height: 3),
-                          Text(
-                            compactCount(count),
-                            style: TextStyle(
-                              fontSize: fontSize,
-                              height: 1.1,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
+            child: Listener(
+              // Pointer-level, so the sink tracks the finger without taking
+              // the tap away from the InkWell inside.
+              onPointerDown: (_) => _setPressed(true),
+              onPointerUp: (_) => _setPressed(false),
+              onPointerCancel: (_) => _setPressed(false),
+              child: FocusRingTapTarget(
+                onTap: onTap,
+                shape: shape,
+                // The exact count — assistive tech is never given the
+                // abbreviation.
+                label: semanticsLabel,
+                // Inside the key: the keys tile the pill, so outside the
+                // edge is a neighbour or the pill's clip.
+                ringStrokeAlign: BorderSide.strokeAlignInside,
+                onHover: (h) => setState(() => _hovered = h),
+                // Hover lightens the face itself; an ink wash would paint
+                // under the opaque key and never show.
+                hoverColor: Colors.transparent,
+                // Fixed outer size so a sinking key never shifts its
+                // neighbours: the face drops inside its own well.
+                // The key's fixed base: its well, and a hairline all round.
+                // Both stay put while the key sinks.
+                child: Container(
+                  color: well,
+                  // Foreground, or the key painted over it would hide it.
+                  foregroundDecoration: BoxDecoration(
+                    border: Border.all(color: well, width: 1),
+                    borderRadius: radius,
+                  ),
+                  child: AnimatedPadding(
+                    duration: _sinkDuration,
+                    curve: Curves.easeOut,
+                    padding: EdgeInsets.only(
+                      top: sunk ? ClusterTrackerButton.keyDepth : 0,
+                    ),
+                    child: AnimatedContainer(
+                      duration: _sinkDuration,
+                      curve: Curves.easeOut,
+                      decoration: BoxDecoration(
+                        borderRadius: radius,
+                        color: face,
+
+                        // The inset shadow of a pressed key, as a gradient:
+                        // BoxShadow cannot paint inside a box.
+                        gradient: sunk
+                            ? LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                stops: const [0.0, 0.25],
+                                colors: [
+                                  Color.alphaBlend(
+                                    Colors.black.withAlpha(100),
+                                    face,
+                                  ),
+                                  face,
+                                ],
+                              )
+                            : null,
                       ),
+                      padding: EdgeInsets.fromLTRB(
+                        horizontalPadding + widget.leadingInset,
+                        8,
+                        horizontalPadding,
+                        8,
+                      ),
+                      child: live
+                          ? PracticeSessionBadge(
+                              startedAt: liveSessionStart,
+                              iconSize: iconSize,
+                              fontSize: fontSize,
+                            )
+                          : Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  indicator.icon,
+                                  size: iconSize,
+                                  color: iconColor,
+                                ),
+                                const SizedBox(height: 3),
+                                Text(
+                                  compactCount(count),
+                                  style: TextStyle(
+                                    fontSize: fontSize,
+                                    height: 1.1,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                    ),
+                  ),
+                ),
               ),
             ),
           );

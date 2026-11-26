@@ -181,11 +181,19 @@ class _PowerupsRow extends StatelessWidget {
   static const double _xpStroke = 5.0;
   static const double _innerRadius = 20.0;
 
-  // Pill interior: extra left inset so the trackers clear the hex badge's
-  // inner half, tight vertical padding for the compact bar-height pill.
-  static const double _pillTrackerClearance = 10.0;
-  static const double _pillVerticalPadding = 2.0;
-  static const double _pillRightPadding = 14.0;
+  /// How far the hex badge reaches into the pill's interior, past the XP
+  /// ring: the first key runs under it, so its content starts this much
+  /// further in, and the key is this much wider so its visible part matches
+  /// the other two.
+  static final double _badgeCover =
+      _badgeWidth -
+      (_hexBadgeOverhang + _xpStroke + XpBorderPainter.trackExtra);
+
+  /// One width for every key's visible face, so the three read as equal
+  /// segments whatever their counts ([compactCount] caps them at four
+  /// characters).
+  static const double _keyWidth = 60.0;
+  static const double _keyPadding = 8.0;
 
   /// Half the hex badge's width — how far it sticks out past the pill's
   /// left edge (the Figma overhang). No ring is reserved around it: the badge
@@ -257,59 +265,82 @@ class _PowerupsRow extends StatelessWidget {
                               borderRadius: BorderRadius.circular(_innerRadius),
                             ),
                             clipBehavior: Clip.antiAlias,
-                            padding: EdgeInsets.fromLTRB(
-                              _hexBadgeOverhang + _pillTrackerClearance,
-                              _pillVerticalPadding,
-                              _pillRightPadding,
-                              _pillVerticalPadding,
-                            ),
                             child: Material(
                               type: MaterialType.transparency,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  StreamBuilder(
-                                    stream: viewModel.starsUpdateStream,
-                                    builder: (context, _) {
-                                      final stars = viewModel.starsEarned;
-                                      return ClusterTrackerButton(
-                                        indicator: ProgressIndicatorEnum.stars,
-                                        count: stars,
+                              // One height for all three keys, so the row reads
+                              // as one segmented strip.
+                              child: IntrinsicHeight(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    StreamBuilder(
+                                      stream: viewModel.starsUpdateStream,
+                                      builder: (context, _) {
+                                        final stars = viewModel.starsEarned;
+                                        return SizedBox(
+                                          width: _keyWidth + _badgeCover,
+                                          child: ClusterTrackerButton(
+                                            horizontalPadding: _keyPadding,
+                                            indicator:
+                                                ProgressIndicatorEnum.stars,
+                                            segment: TrackerSegment.first,
+                                            leadingInset: _badgeCover,
+                                            axis: Axis.horizontal,
+                                            count: stars,
+                                            selected:
+                                                selectedTab ==
+                                                ProgressIndicatorEnum.stars,
+                                            onTap: () =>
+                                                viewModel.openAnalytics(
+                                                  context,
+                                                  AnalyticsPanelTab.sessions,
+                                                ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    SizedBox(
+                                      width: _keyWidth,
+                                      child: ClusterTrackerButton(
+                                        horizontalPadding: _keyPadding,
+                                        indicator:
+                                            ProgressIndicatorEnum.morphsUsed,
+                                        segment: TrackerSegment.middle,
+                                        axis: Axis.horizontal,
+                                        count: grammar,
                                         selected:
                                             selectedTab ==
-                                            ProgressIndicatorEnum.stars,
+                                            ProgressIndicatorEnum.morphsUsed,
                                         onTap: () => viewModel.openAnalytics(
                                           context,
-                                          AnalyticsPanelTab.sessions,
+                                          AnalyticsPanelTab.grammar,
                                         ),
-                                      );
-                                    },
-                                  ),
-                                  ClusterTrackerButton(
-                                    indicator: ProgressIndicatorEnum.morphsUsed,
-                                    count: grammar,
-                                    selected:
-                                        selectedTab ==
-                                        ProgressIndicatorEnum.morphsUsed,
-                                    onTap: () => viewModel.openAnalytics(
-                                      context,
-                                      AnalyticsPanelTab.grammar,
+                                      ),
                                     ),
-                                  ),
-                                  ClusterTrackerButton(
-                                    indicator: ProgressIndicatorEnum.wordsUsed,
-                                    tutorialTargetId:
-                                        TutorialTargetIds.analyticsVocabTracker,
-                                    count: vocab,
-                                    selected:
-                                        selectedTab ==
-                                        ProgressIndicatorEnum.wordsUsed,
-                                    onTap: () => viewModel.openAnalytics(
-                                      context,
-                                      AnalyticsPanelTab.vocab,
+                                    SizedBox(
+                                      width: _keyWidth,
+                                      child: ClusterTrackerButton(
+                                        horizontalPadding: _keyPadding,
+                                        indicator:
+                                            ProgressIndicatorEnum.wordsUsed,
+                                        segment: TrackerSegment.last,
+                                        axis: Axis.horizontal,
+                                        tutorialTargetId: TutorialTargetIds
+                                            .analyticsVocabTracker,
+                                        count: vocab,
+                                        selected:
+                                            selectedTab ==
+                                            ProgressIndicatorEnum.wordsUsed,
+                                        onTap: () => viewModel.openAnalytics(
+                                          context,
+                                          AnalyticsPanelTab.vocab,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
