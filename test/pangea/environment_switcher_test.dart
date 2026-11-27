@@ -303,15 +303,11 @@ void main() {
       expect(find.text(Environment.staging), findsNothing);
     }, variant: onAndroid);
 
-    testWidgets(
-      'not offered on web or desktop',
-      (tester) async {
-        await pumpLoginHeading(tester);
-        await tapHeading(tester, EnvironmentSwitcherTapTarget.tapsToOpen);
-        expect(find.text('Team code'), findsNothing);
-      },
-      variant: TargetPlatformVariant.only(TargetPlatform.macOS),
-    );
+    testWidgets('not offered on web or desktop', (tester) async {
+      await pumpLoginHeading(tester);
+      await tapHeading(tester, EnvironmentSwitcherTapTarget.tapsToOpen);
+      expect(find.text('Team code'), findsNothing);
+    }, variant: TargetPlatformVariant.only(TargetPlatform.macOS));
 
     testWidgets('not offered when the .env names no other environment', (
       tester,

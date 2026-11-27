@@ -61,7 +61,14 @@ void main() {
     var done = false;
     service
         .getAggregatedConstructs(ConstructTypeEnum.vocab, 'es')
-        .then((_) => done = true, onError: (Object e) => error = e);
+        .then<void>(
+          (_) {
+            done = true;
+          },
+          onError: (Object e) {
+            error = e;
+          },
+        );
     await Future<void>.delayed(const Duration(milliseconds: 100));
 
     expect(error, isNull);

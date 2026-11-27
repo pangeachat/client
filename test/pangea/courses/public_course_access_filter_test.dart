@@ -239,11 +239,11 @@ void main() {
           await settled(controller);
 
           expect(shown(controller), ['!french']);
-          expect(
-            cursors,
-            [null, null, 'french-page-2'],
-            reason: "the Spanish page's cursor replaced the French load's",
-          );
+          expect(cursors, [
+            null,
+            null,
+            'french-page-2',
+          ], reason: "the Spanish page's cursor replaced the French load's");
           controller.disposeCourseSearch();
         },
         () => cms(

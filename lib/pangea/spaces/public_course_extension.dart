@@ -74,7 +74,6 @@ class PublicCoursesResponse extends GetPublicRoomsResponse {
   /// broken cards. The catalog should never send one — a room with no plan id
   /// is not a course — but during a rollout an older homeserver still can, and
   /// one bad entry must not fail the whole page.
-  @override
   PublicCoursesResponse.fromJson(super.json)
     : courses = (json['chunk'] as List)
           .map((e) => PublicCoursesChunk.tryParse(e))

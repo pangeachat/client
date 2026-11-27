@@ -231,11 +231,11 @@ void main() {
       expect(sound.log, ['start']);
       p.busy();
       await pumpEventQueue();
-      expect(
-        sound.log,
-        ['start', 'stop', 'busy'],
-        reason: 'the stop finishes before the busy tone, never under it',
-      );
+      expect(sound.log, [
+        'start',
+        'stop',
+        'busy',
+      ], reason: 'the stop finishes before the busy tone, never under it');
     },
   );
 
@@ -494,11 +494,10 @@ void main() {
     final newer = sound.start('sounds/call.ogg');
     await Future.wait([older, newer]);
 
-    expect(
-      handle.log,
-      ['configure', 'play:sounds/call.ogg'],
-      reason: 'only the newer cue reaches the player; no stale play, no stop',
-    );
+    expect(handle.log, [
+      'configure',
+      'play:sounds/call.ogg',
+    ], reason: 'only the newer cue reaches the player; no stale play, no stop');
   });
 
   test(

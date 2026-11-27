@@ -667,11 +667,10 @@ void main() {
             'the full transcription payload (tokens included — what the TTS '
             'push rule and read-aloud key off) must survive the media send',
       );
-      expect(
-        event.content['m.relates_to'],
-        {'rel_type': PangeaEventTypes.textToSpeech, 'event_id': parentId},
-        reason: 'the non-spec rel_type on a FILE event must survive',
-      );
+      expect(event.content['m.relates_to'], {
+        'rel_type': PangeaEventTypes.textToSpeech,
+        'event_id': parentId,
+      }, reason: 'the non-spec rel_type on a FILE event must survive');
       expect((event.content['org.matrix.msc1767.audio'] as Map?)?['waveform'], [
         0,
         12,

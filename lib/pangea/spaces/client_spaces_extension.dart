@@ -26,7 +26,7 @@ extension SpacesClientExtension on Client {
         await generateCustomJoinRules(joinRules),
         if (avatarUrl != null)
           StateEvent(type: EventTypes.RoomAvatar, content: {'url': avatarUrl}),
-        if (initialState != null) ...initialState,
+        ...?initialState,
       ],
       powerLevelContentOverride: RoomDefaults.defaultSpacePowerLevelsContent(
         spaceChild: spaceChild,

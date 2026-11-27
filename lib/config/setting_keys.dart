@@ -79,6 +79,7 @@ enum AppSettings<T> {
   // #Pangea
   // enableSoftLogout<bool>('chat.fluffy.enable_soft_logout', false);
   enableSoftLogout<bool>('chat.fluffy.enable_soft_logout', true);
+
   // Pangea#
 
   final String key;

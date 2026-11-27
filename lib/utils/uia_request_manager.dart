@@ -47,7 +47,7 @@ extension UiaRequestManager on MatrixState {
           if (input == null || input.isEmpty) {
             return uiaRequest.cancel();
           }
-          return uiaRequest.completeStage(
+          return await uiaRequest.completeStage(
             AuthenticationPassword(
               session: uiaRequest.session,
               password: input,
@@ -116,11 +116,11 @@ extension UiaRequestManager on MatrixState {
               ),
             );
             // Pangea#
-            return uiaRequest.completeStage(auth);
+            return await uiaRequest.completeStage(auth);
           }
           return uiaRequest.cancel();
         case AuthenticationTypes.dummy:
-          return uiaRequest.completeStage(
+          return await uiaRequest.completeStage(
             AuthenticationData(
               type: AuthenticationTypes.dummy,
               session: uiaRequest.session,
@@ -155,7 +155,7 @@ extension UiaRequestManager on MatrixState {
           await completer.future;
           listener.dispose();
 
-          return uiaRequest.completeStage(
+          return await uiaRequest.completeStage(
             AuthenticationData(session: uiaRequest.session),
           );
       }

@@ -975,11 +975,10 @@ void main() {
           ),
         ]);
 
-        expect(
-          media.sfuJoinStampsFor(sib),
-          (secondsMs: sfuSecondsMs + 3000, ms: sfuSecondsMs + 3100),
-          reason: 'a departed session must not overwrite the live rejoin',
-        );
+        expect(media.sfuJoinStampsFor(sib), (
+          secondsMs: sfuSecondsMs + 3000,
+          ms: sfuSecondsMs + 3100,
+        ), reason: 'a departed session must not overwrite the live rejoin');
       });
 
       test('a departed statement is refused even when its join is LATER', () {
@@ -1015,11 +1014,10 @@ void main() {
           ),
         ]);
 
-        expect(
-          media.sfuJoinStampsFor(sib),
-          (secondsMs: sfuSecondsMs + 3000, ms: sfuSecondsMs + 3100),
-          reason: 'a device that has left never moves the live join',
-        );
+        expect(media.sfuJoinStampsFor(sib), (
+          secondsMs: sfuSecondsMs + 3000,
+          ms: sfuSecondsMs + 3100,
+        ), reason: 'a device that has left never moves the live join');
       });
 
       test('an out-of-order frame for the SAME session is ignored', () {
@@ -1314,11 +1312,10 @@ void main() {
       // land on their own publish call and are the ones under test's
       // control, rather than still queued behind that first await.
       await pumpEventQueue();
-      expect(
-        media.requestedMic,
-        [false, true],
-        reason: 'both transitions reach the SDK -- nothing blocks either',
-      );
+      expect(media.requestedMic, [
+        false,
+        true,
+      ], reason: 'both transitions reach the SDK -- nothing blocks either');
 
       // The LATER transition's own SDK call is free to resolve FIRST.
       media.resolveMic(1, published: true);

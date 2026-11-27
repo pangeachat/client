@@ -1006,11 +1006,9 @@ void main() {
       // rather than fetch the session out from under it.
       final redial = calls.join(room);
       await pumpEventQueue();
-      expect(
-        calls.steps,
-        ['session'],
-        reason: 'the second join must not reach the session mid-leave',
-      );
+      expect(calls.steps, [
+        'session',
+      ], reason: 'the second join must not reach the session mid-leave');
 
       held.complete();
       await expectLater(redial, completion(isA<CallToken>()));

@@ -298,11 +298,9 @@ void main() {
     registerSavedSession();
     expect(client.savedSessionActivitiesAwaitingPlan, {activityId});
     analyticsRoomWithRecord(0, filesSession: true);
-    expect(
-      client.savedSessionActivitiesAwaitingPlan,
-      {activityId},
-      reason: 'a filed session still has its goals in its plan',
-    );
+    expect(client.savedSessionActivitiesAwaitingPlan, {
+      activityId,
+    }, reason: 'a filed session still has its goals in its plan');
   });
 
   test('a lower figure is not written while the plan loads', () async {

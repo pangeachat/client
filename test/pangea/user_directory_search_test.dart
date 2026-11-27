@@ -57,11 +57,9 @@ void main() {
 
       h.search.search('ava');
       await settle();
-      expect(
-        h.calls,
-        ['ava'],
-        reason: 'the directory is rate-limited; repeats are not worth a call',
-      );
+      expect(h.calls, [
+        'ava',
+      ], reason: 'the directory is rate-limited; repeats are not worth a call');
     });
 
     test('an empty term clears results without a request', () async {

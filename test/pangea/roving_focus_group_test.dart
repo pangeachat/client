@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -273,7 +274,7 @@ void main() {
             child: ListView.builder(
               // Build only what is visible, so the row below the viewport
               // does not exist yet.
-              cacheExtent: 0,
+              scrollCacheExtent: const ScrollCacheExtent.pixels(0),
               itemCount: ids.length,
               itemExtent: 40,
               itemBuilder: (context, i) => _Item(ids[i], onTap: (_) {}),

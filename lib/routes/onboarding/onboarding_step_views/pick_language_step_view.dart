@@ -38,7 +38,6 @@ class PickLanguageStepView extends StatefulWidget {
   final bool hasNextStep;
   final VoidCallback forward;
 
-  @override
   const PickLanguageStepView({
     super.key,
     required this.step,

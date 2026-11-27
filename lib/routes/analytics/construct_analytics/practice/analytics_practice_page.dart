@@ -446,7 +446,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
           if (meaning == null) {
             await skipExercise(next.practiceTarget);
             _clearExerciseState();
-            return _continueSession();
+            return await _continueSession();
           }
           next = meaning;
         }

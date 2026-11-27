@@ -411,11 +411,10 @@ void main() {
         await _pump();
 
         expect(h.sendCalls, hasLength(1));
-        expect(
-          h.sendCalls.single.content['source_event_ids'],
-          [_aliceEvent, _bobEvent],
-          reason: 'coverage is the two sorted half ids',
-        );
+        expect(h.sendCalls.single.content['source_event_ids'], [
+          _aliceEvent,
+          _bobEvent,
+        ], reason: 'coverage is the two sorted half ids');
         expect(
           h.sendCalls.single.roomId,
           _room,

@@ -409,11 +409,10 @@ void main() {
           expectedSenders: [alice],
         );
 
-        expect(
-          _halfFor(transcript, alice).segments.map((s) => s.atMs),
-          [null, null],
-          reason: 'the earlier event keeps the slot',
-        );
+        expect(_halfFor(transcript, alice).segments.map((s) => s.atMs), [
+          null,
+          null,
+        ], reason: 'the earlier event keeps the slot');
       });
     });
 
@@ -471,11 +470,10 @@ void main() {
         );
 
         expect(transcript.timelineEligible, isFalse);
-        expect(
-          _halfFor(transcript, alice).segments.map((s) => s.text),
-          ['luego', 'primero'],
-          reason: 'and the words are untouched either way',
-        );
+        expect(_halfFor(transcript, alice).segments.map((s) => s.text), [
+          'luego',
+          'primero',
+        ], reason: 'and the words are untouched either way');
       });
 
       test('positions that run forwards but whose BOUNDS do not are refused', () {
@@ -499,11 +497,10 @@ void main() {
         );
 
         expect(transcript.timelineEligible, isFalse);
-        expect(
-          _halfFor(transcript, alice).segments.map((s) => s.text),
-          ['luego', 'primero'],
-          reason: 'and the words are untouched either way',
-        );
+        expect(_halfFor(transcript, alice).segments.map((s) => s.text), [
+          'luego',
+          'primero',
+        ], reason: 'and the words are untouched either way');
       });
 
       test('bounds that run forwards are accepted', () {
@@ -836,11 +833,9 @@ void main() {
         participantsKnown: false,
       );
 
-      expect(
-        transcript.readLimits,
-        {TranscriptReadLimit.participantsUnknown},
-        reason: 'not knowing who was on the call is itself a reason to hedge',
-      );
+      expect(transcript.readLimits, {
+        TranscriptReadLimit.participantsUnknown,
+      }, reason: 'not knowing who was on the call is itself a reason to hedge');
       expect(_halfFor(transcript, alice).state, HalfState.incomplete);
     });
 
@@ -1773,11 +1768,10 @@ void main() {
         expectedSenders: [alice],
       );
 
-      expect(
-        _halfFor(trueTimes, alice).segments.map((s) => s.text),
-        ['hello', 'bye'],
-        reason: 'the late turn keeps its true position and sorts last',
-      );
+      expect(_halfFor(trueTimes, alice).segments.map((s) => s.text), [
+        'hello',
+        'bye',
+      ], reason: 'the late turn keeps its true position and sorts last');
 
       // The control, and the mutation that proves the assertion above turns on
       // the segment's own interval and nothing else the merge does: had the
@@ -1802,11 +1796,10 @@ void main() {
         expectedSenders: [alice],
       );
 
-      expect(
-        _halfFor(staleAnchor, alice).segments.map((s) => s.text),
-        ['bye', 'hello'],
-        reason: 'a turn stamped at a stale-early anchor is what sorted first',
-      );
+      expect(_halfFor(staleAnchor, alice).segments.map((s) => s.text), [
+        'bye',
+        'hello',
+      ], reason: 'a turn stamped at a stale-early anchor is what sorted first');
     });
   });
 

@@ -54,61 +54,58 @@ void main() {
     return controller;
   }
 
-  testWidgets(
-    'iOS shows its own menu, with the markdown actions added to it',
-    (tester) async {
-      final shownItems = <Map<String, dynamic>>[];
-      final messenger =
-          TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
-      messenger.setMockMethodCallHandler(SystemChannels.platform, (call) async {
-        if (call.method == 'ContextMenu.showSystemContextMenu') {
-          final arguments = call.arguments as Map<String, dynamic>;
-          shownItems
-            ..clear()
-            ..addAll(
-              (arguments['items'] as List<dynamic>)
-                  .cast<Map<String, dynamic>>(),
-            );
-        }
-        return null;
-      });
-      addTearDown(
-        () => messenger.setMockMethodCallHandler(SystemChannels.platform, null),
-      );
+  testWidgets('iOS shows its own menu, with the markdown actions added to it', (
+    tester,
+  ) async {
+    final shownItems = <Map<String, dynamic>>[];
+    final messenger =
+        TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+    messenger.setMockMethodCallHandler(SystemChannels.platform, (call) async {
+      if (call.method == 'ContextMenu.showSystemContextMenu') {
+        final arguments = call.arguments as Map<String, dynamic>;
+        shownItems
+          ..clear()
+          ..addAll(
+            (arguments['items'] as List<dynamic>).cast<Map<String, dynamic>>(),
+          );
+      }
+      return null;
+    });
+    addTearDown(
+      () => messenger.setMockMethodCallHandler(SystemChannels.platform, null),
+    );
 
-      final controller = await showMenuWithWordSelected(
-        tester,
-        systemMenuSupported: true,
-      );
+    final controller = await showMenuWithWordSelected(
+      tester,
+      systemMenuSupported: true,
+    );
 
-      expect(find.byType(SystemContextMenu), findsOneWidget);
-      expect(find.byType(AdaptiveTextSelectionToolbar), findsNothing);
-      expect(shownItems.map((item) => item['type']), contains('copy'));
-      final customItems = shownItems.where((item) => item['type'] == 'custom');
-      expect(customItems.map((item) => item['title']), [
-        l10n.link,
-        l10n.checkList,
-        l10n.boldText,
-        l10n.italicText,
-        l10n.strikeThrough,
-      ]);
+    expect(find.byType(SystemContextMenu), findsOneWidget);
+    expect(find.byType(AdaptiveTextSelectionToolbar), findsNothing);
+    expect(shownItems.map((item) => item['type']), contains('copy'));
+    final customItems = shownItems.where((item) => item['type'] == 'custom');
+    expect(customItems.map((item) => item['title']), [
+      l10n.link,
+      l10n.checkList,
+      l10n.boldText,
+      l10n.italicText,
+      l10n.strikeThrough,
+    ]);
 
-      final bold = customItems.firstWhere(
-        (item) => item['title'] == l10n.boldText,
-      );
-      await messenger.handlePlatformMessage(
-        SystemChannels.platform.name,
-        const JSONMethodCodec().encodeMethodCall(
-          MethodCall('ContextMenu.onPerformCustomAction', [0, bold['id']]),
-        ),
-        (_) {},
-      );
-      await tester.pumpAndSettle();
+    final bold = customItems.firstWhere(
+      (item) => item['title'] == l10n.boldText,
+    );
+    await messenger.handlePlatformMessage(
+      SystemChannels.platform.name,
+      const JSONMethodCodec().encodeMethodCall(
+        MethodCall('ContextMenu.onPerformCustomAction', [0, bold['id']]),
+      ),
+      (_) {},
+    );
+    await tester.pumpAndSettle();
 
-      expect(controller.text, '**hello** world');
-    },
-    variant: TargetPlatformVariant.only(TargetPlatform.iOS),
-  );
+    expect(controller.text, '**hello** world');
+  }, variant: TargetPlatformVariant.only(TargetPlatform.iOS));
 
   testWidgets(
     'without the system menu, the Flutter-drawn menu keeps the markdown actions',
