@@ -258,6 +258,20 @@ class GoogleAnalytics {
     );
   }
 
+  /// The version dimension on activity-session events, here and on
+  /// [completeActivity]: how often a session ran on the activity version it
+  /// pinned. `version_pin_honored` is false when a fallback version was
+  /// served, and `fallback_cause` says why, in the conversation orchestrator's
+  /// fallback vocabulary. Two rules, moved here from the engagement analytics
+  /// doc (they may deserve a line in google-analytics.instructions.md once it
+  /// is trimmed):
+  /// - These params ship before pin resolution is turned on in production,
+  ///   because GA4 cannot backfill a param onto past events.
+  /// - A raw version token (pinned or served) is a row-level param only and
+  ///   is not registered as a custom dimension: each activity version has its
+  ///   own, so the cardinality is unbounded. That doc also named
+  ///   `used_fallback_version`, `fallback_behavior` and the two token params;
+  ///   none of them is sent today.
   static void startActivity(
     String activityId,
     String roomId, {
