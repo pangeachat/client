@@ -203,6 +203,10 @@ flutter_native_splash:
   image: "assets/info-logo.png"
 
 flutter:
+  # Preserve CocoaPods integration: app_settings 6.1.1 is not Swift 6 compatible
+  # through SwiftPM, which newer Flutter versions enable automatically.
+  config:
+    enable-swift-package-manager: false
   generate: true
   uses-material-design: true
   assets:
