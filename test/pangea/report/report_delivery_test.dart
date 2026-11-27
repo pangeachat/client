@@ -703,11 +703,9 @@ void main() {
       expect(received.single['event_id'], r'$reported:example.invalid');
       expect(received.single['reason'], 'he is rude');
       expect(received.single['report_id'], isA<String>());
-      expect(
-        storedWhenSent.single,
-        {received.single['report_id']},
-        reason: 'the copy is written before the request leaves',
-      );
+      expect(storedWhenSent.single, {
+        received.single['report_id'],
+      }, reason: 'the copy is written before the request leaves');
       expect(store.pending(client.userID!), isEmpty);
       expect(find.text(l10n.reportSent), findsOneWidget);
     });

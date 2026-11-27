@@ -162,11 +162,9 @@ void main() {
 
       expect(sent, ['txn-a'], reason: 'B\'s half is not A\'s to publish');
       final pending = await store.readAll();
-      expect(
-        pending.map((r) => r['txn_id']),
-        ['txn-b'],
-        reason: 'B\'s half is left for B, never deleted by A',
-      );
+      expect(pending.map((r) => r['txn_id']), [
+        'txn-b',
+      ], reason: 'B\'s half is left for B, never deleted by A');
     });
 
     test('an ownerless record is never replayed, whoever flushes', () async {
@@ -252,11 +250,9 @@ void main() {
 
       expect(landed, ['txn-b']);
       final pending = await store.readAll();
-      expect(
-        pending.map((r) => r['txn_id']),
-        ['txn-a'],
-        reason: 'the one that threw is kept, the one that landed is drained',
-      );
+      expect(pending.map((r) => r['txn_id']), [
+        'txn-a',
+      ], reason: 'the one that threw is kept, the one that landed is drained');
     });
 
     test(
@@ -332,11 +328,9 @@ void main() {
       const store = SharedPreferencesPendingCallTranscriptStore();
 
       final all = await store.readAll();
-      expect(
-        all.map((r) => r['txn_id']),
-        ['txn-ok'],
-        reason: 'only well-formed pending halves of ours are returned',
-      );
+      expect(all.map((r) => r['txn_id']), [
+        'txn-ok',
+      ], reason: 'only well-formed pending halves of ours are returned');
     });
 
     test('a non-string prefixed value does not strand valid records', () async {
@@ -352,11 +346,9 @@ void main() {
       const store = SharedPreferencesPendingCallTranscriptStore();
 
       final all = await store.readAll();
-      expect(
-        all.map((r) => r['txn_id']),
-        ['txn-ok'],
-        reason: 'the non-string value is skipped, the valid record survives',
-      );
+      expect(all.map((r) => r['txn_id']), [
+        'txn-ok',
+      ], reason: 'the non-string value is skipped, the valid record survives');
     });
 
     test('a record whose txn id does not match its key cannot delete another '

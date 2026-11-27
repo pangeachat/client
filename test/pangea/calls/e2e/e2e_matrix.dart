@@ -158,7 +158,7 @@ class E2eMatrix {
       if (token != null) request.headers.set('authorization', 'Bearer $token');
       request.headers.contentType = ContentType.json;
       request.write(jsonEncode(body));
-      return _read(await request.close(), path);
+      return await _read(await request.close(), path);
     } finally {
       http.close();
     }

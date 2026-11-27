@@ -694,11 +694,9 @@ void main() {
 
         await controller.seekToTurn(0);
 
-        expect(
-          spies.seeks,
-          [const Duration(milliseconds: 3000)],
-          reason: 'the seek itself already committed before ownership left',
-        );
+        expect(spies.seeks, [
+          const Duration(milliseconds: 3000),
+        ], reason: 'the seek itself already committed before ownership left');
         expect(
           spies.playCallCount,
           0,

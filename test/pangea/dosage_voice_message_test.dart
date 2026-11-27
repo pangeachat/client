@@ -24,11 +24,12 @@ void main() {
   group('toJson wire shape', () {
     test('carries EXACTLY the four contract keys, no sender', () {
       final json = message().toJson();
-      expect(
-        json.keys.toSet(),
-        {'msg_id', 'room_id', 'duration_ms', 'ts'},
-        reason: 'the ingest is extra="forbid"; a fifth key 422s the batch',
-      );
+      expect(json.keys.toSet(), {
+        'msg_id',
+        'room_id',
+        'duration_ms',
+        'ts',
+      }, reason: 'the ingest is extra="forbid"; a fifth key 422s the batch');
       expect(json.containsKey('sender'), isFalse);
     });
 

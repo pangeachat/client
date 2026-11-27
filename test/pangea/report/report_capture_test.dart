@@ -259,11 +259,9 @@ void main() {
 
       expect(outcome, ReportOutcome.captured);
       expect(captured, hasLength(3));
-      expect(
-        captured.map((s) => s.reportId).toSet(),
-        {report.reportId},
-        reason: 'a fresh id per attempt could record one report twice',
-      );
+      expect(captured.map((s) => s.reportId).toSet(), {
+        report.reportId,
+      }, reason: 'a fresh id per attempt could record one report twice');
       expect(captured.map((s) => jsonEncode(s.toJson())).toSet(), {
         jsonEncode(report.toJson()),
       });

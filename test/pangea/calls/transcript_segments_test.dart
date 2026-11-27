@@ -946,11 +946,10 @@ void main() {
       ]);
 
       expect(segments.map((s) => s.text), ['hola que', 'tal']);
-      expect(
-        segments.map((s) => s.atMs),
-        [_chunkStart, _chunkStart + 2000],
-        reason: 'jitter must not collapse the chunk onto one moment',
-      );
+      expect(segments.map((s) => s.atMs), [
+        _chunkStart,
+        _chunkStart + 2000,
+      ], reason: 'jitter must not collapse the chunk onto one moment');
     });
 
     test('a tolerated overlap does not move where the next gap starts', () {

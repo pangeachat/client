@@ -767,124 +767,120 @@ void main() {
       );
     });
 
-    test(
-      'finish() cancels a delivery still backing off; nothing sends after close',
-      () {
-        // The production wiring, end to end. finish() bounds its settle wait with
-        // Future.timeout, which gives up on the in-flight deliveries WITHOUT
-        // cancelling them -- so finish() must raise the cancellation itself, or a
-        // loop still backing off keeps firing against the sink it just closed.
-        //
-        // Fully DETERMINISTIC, with no real wall-clock wait anywhere. fakeAsync
-        // makes every timer virtual, so finish's settle window is advanced by
-        // `async.elapse` rather than slept through; the retry is pinned mid-
-        // backoff through an explicit barrier the test controls; and the check is
-        // the LITERAL number of deliver attempts a correctly cancelled retry
-        // produces -- exactly one -- so any extra deliver after teardown fails it.
-        fakeAsync((async) {
-          final dead = RecordingSink(failIndices: const [0]);
-          // The barrier. `enteredBackoff` fires the instant the retry loop parks
-          // in its FIRST backoff, proving it is genuinely mid-retry before finish
-          // runs. `releaseBackoff` is held by the test, so the loop cannot wake
-          // until we choose -- and we choose AFTER teardown, which is the point.
-          final enteredBackoff = Completer<void>();
-          final releaseBackoff = Completer<void>();
-          var delays = 0;
-          final s = service(
-            withSink: dead,
-            timeout: const Duration(milliseconds: 100),
-            // Short only so that a mutant which IGNORES cancellation still
-            // terminates on the budget instead of spinning; the window is elapsed
-            // virtually, never waited in real time.
-            finishSettle: const Duration(milliseconds: 50),
-            delay: (d) {
-              delays++;
-              if (delays == 1) {
-                // First backoff: announce entry, then park until the test releases
-                // it. Only chunk 0 ever fails, so only chunk 0 ever backs off --
-                // this is unambiguously its first retry wait.
-                enteredBackoff.complete();
-                return releaseBackoff.future;
-              }
-              // Reached ONLY if cancellation is broken and the loop keeps going.
-              // Advance the budget clock so the mutant ends finitely rather than
-              // spinning; the literal-count assertion still catches the extra
-              // attempts.
-              clock.elapsed += d.inMilliseconds;
-              return Future<void>.value();
-            },
-          );
+    test('finish() cancels a delivery still backing off; nothing sends after close', () {
+      // The production wiring, end to end. finish() bounds its settle wait with
+      // Future.timeout, which gives up on the in-flight deliveries WITHOUT
+      // cancelling them -- so finish() must raise the cancellation itself, or a
+      // loop still backing off keeps firing against the sink it just closed.
+      //
+      // Fully DETERMINISTIC, with no real wall-clock wait anywhere. fakeAsync
+      // makes every timer virtual, so finish's settle window is advanced by
+      // `async.elapse` rather than slept through; the retry is pinned mid-
+      // backoff through an explicit barrier the test controls; and the check is
+      // the LITERAL number of deliver attempts a correctly cancelled retry
+      // produces -- exactly one -- so any extra deliver after teardown fails it.
+      fakeAsync((async) {
+        final dead = RecordingSink(failIndices: const [0]);
+        // The barrier. `enteredBackoff` fires the instant the retry loop parks
+        // in its FIRST backoff, proving it is genuinely mid-retry before finish
+        // runs. `releaseBackoff` is held by the test, so the loop cannot wake
+        // until we choose -- and we choose AFTER teardown, which is the point.
+        final enteredBackoff = Completer<void>();
+        final releaseBackoff = Completer<void>();
+        var delays = 0;
+        final s = service(
+          withSink: dead,
+          timeout: const Duration(milliseconds: 100),
+          // Short only so that a mutant which IGNORES cancellation still
+          // terminates on the budget instead of spinning; the window is elapsed
+          // virtually, never waited in real time.
+          finishSettle: const Duration(milliseconds: 50),
+          delay: (d) {
+            delays++;
+            if (delays == 1) {
+              // First backoff: announce entry, then park until the test releases
+              // it. Only chunk 0 ever fails, so only chunk 0 ever backs off --
+              // this is unambiguously its first retry wait.
+              enteredBackoff.complete();
+              return releaseBackoff.future;
+            }
+            // Reached ONLY if cancellation is broken and the loop keeps going.
+            // Advance the budget clock so the mutant ends finitely rather than
+            // spinning; the literal-count assertion still catches the extra
+            // attempts.
+            clock.elapsed += d.inMilliseconds;
+            return Future<void>.value();
+          },
+        );
 
-          unawaited(s.start(track));
-          async.flushMicrotasks();
-          for (var i = 0; i < 30; i++) {
-            track.emit(20);
-          }
-          async.flushMicrotasks();
+        unawaited(s.start(track));
+        async.flushMicrotasks();
+        for (var i = 0; i < 30; i++) {
+          track.emit(20);
+        }
+        async.flushMicrotasks();
 
-          // BARRIER: the retry is provably parked in its first backoff, and
-          // exactly one deliver attempt for chunk 0 has happened, BEFORE finish is
-          // even called. Without this it is not provable that finish fires while
-          // the retry is mid-backoff.
-          expect(
-            enteredBackoff.isCompleted,
-            isTrue,
-            reason: 'the retry must be parked IN a backoff before finish runs',
-          );
-          expect(
-            dead.attempts.where((i) => i == 0).length,
-            1,
-            reason: 'exactly one attempt so far -- the parked first try',
-          );
+        // BARRIER: the retry is provably parked in its first backoff, and
+        // exactly one deliver attempt for chunk 0 has happened, BEFORE finish is
+        // even called. Without this it is not provable that finish fires while
+        // the retry is mid-backoff.
+        expect(
+          enteredBackoff.isCompleted,
+          isTrue,
+          reason: 'the retry must be parked IN a backoff before finish runs',
+        );
+        expect(
+          dead.attempts.where((i) => i == 0).length,
+          1,
+          reason: 'exactly one attempt so far -- the parked first try',
+        );
 
-          // finish() runs while the retry is parked. stop() needs no timer; the
-          // settle wait is a real Future.timeout that fakeAsync advances virtually
-          // -- the 50ms is elapsed, never waited in wall time -- then teardown
-          // cancels the outstanding retry, then the sink closes.
-          var finished = false;
-          unawaited(s.finish().then((_) => finished = true));
-          async.flushMicrotasks();
-          async.elapse(const Duration(milliseconds: 50));
-          async.flushMicrotasks();
+        // finish() runs while the retry is parked. stop() needs no timer; the
+        // settle wait is a real Future.timeout that fakeAsync advances virtually
+        // -- the 50ms is elapsed, never waited in wall time -- then teardown
+        // cancels the outstanding retry, then the sink closes.
+        var finished = false;
+        unawaited(s.finish().then((_) => finished = true));
+        async.flushMicrotasks();
+        async.elapse(const Duration(milliseconds: 50));
+        async.flushMicrotasks();
 
-          expect(
-            finished,
-            isTrue,
-            reason: 'finish completed via virtual time, without a real wait',
-          );
-          expect(
-            dead.closes,
-            1,
-            reason: 'the call tore down and closed the sink',
-          );
-          expect(
-            dead.attempts.where((i) => i == 0).length,
-            1,
-            reason:
-                'finish itself delivers nothing; the parked try is still one',
-          );
+        expect(
+          finished,
+          isTrue,
+          reason: 'finish completed via virtual time, without a real wait',
+        );
+        expect(
+          dead.closes,
+          1,
+          reason: 'the call tore down and closed the sink',
+        );
+        expect(
+          dead.attempts.where((i) => i == 0).length,
+          1,
+          reason: 'finish itself delivers nothing; the parked try is still one',
+        );
 
-          // Release the parked backoff. The loop wakes AFTER teardown: it must
-          // read the cancellation finish() raised and stop, delivering nothing
-          // more. The literal count stays at one.
-          releaseBackoff.complete();
-          async.flushMicrotasks();
+        // Release the parked backoff. The loop wakes AFTER teardown: it must
+        // read the cancellation finish() raised and stop, delivering nothing
+        // more. The literal count stays at one.
+        releaseBackoff.complete();
+        async.flushMicrotasks();
 
-          expect(
-            dead.attempts.where((i) => i == 0).length,
-            1,
-            reason:
-                'no delivery fires after finish() closed the sink -- finish() '
-                'must cancel the outstanding retry, since its timeout does not',
-          );
-          expect(
-            dead.delivered.map((c) => c.index),
-            isNot(contains(0)),
-            reason: 'the cancelled chunk is never delivered',
-          );
-        });
-      },
-    );
+        expect(
+          dead.attempts.where((i) => i == 0).length,
+          1,
+          reason:
+              'no delivery fires after finish() closed the sink -- finish() '
+              'must cancel the outstanding retry, since its timeout does not',
+        );
+        expect(
+          dead.delivered.map((c) => c.index),
+          isNot(contains(0)),
+          reason: 'the cancelled chunk is never delivered',
+        );
+      });
+    });
   });
   group('a device with no tap', () {
     test('records nothing and leaves the call alone', () async {
@@ -998,28 +994,24 @@ void main() {
   });
 
   group('a delivery that hangs', () {
-    test(
-      'does not hold the end of the call open',
-      () async {
-        // A request that fails says so; one that hangs says nothing, and the
-        // hangup waits for every chunk still in flight.
-        final stuck = RecordingSink()..block = Completer<void>();
-        final s = service(
-          withSink: stuck,
-          timeout: const Duration(milliseconds: 20),
-        );
-        await s.start(track);
-        for (var i = 0; i < 30; i++) {
-          track.emit(20);
-        }
+    test('does not hold the end of the call open', () async {
+      // A request that fails says so; one that hangs says nothing, and the
+      // hangup waits for every chunk still in flight.
+      final stuck = RecordingSink()..block = Completer<void>();
+      final s = service(
+        withSink: stuck,
+        timeout: const Duration(milliseconds: 20),
+      );
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
 
-        await expectLater(
-          s.finish().timeout(const Duration(seconds: 5)),
-          completes,
-        );
-      },
-      timeout: const Timeout(Duration(seconds: 20)),
-    );
+      await expectLater(
+        s.finish().timeout(const Duration(seconds: 5)),
+        completes,
+      );
+    }, timeout: const Timeout(Duration(seconds: 20)));
   });
 
   group('a muted recorder', () {
@@ -1919,11 +1911,9 @@ void main() {
       tap.onFrames!(speech(100), captureSampleRate, 2);
       await pumpEventQueue();
 
-      expect(
-        sink.delivered.map((c) => c.index),
-        [0],
-        reason: 'the mono run was cut when the format changed under it',
-      );
+      expect(sink.delivered.map((c) => c.index), [
+        0,
+      ], reason: 'the mono run was cut when the format changed under it');
       expect(sink.delivered.single.channels, 1);
       expect(
         runStarts[1],
@@ -2345,11 +2335,10 @@ void main() {
       await pumpEventQueue();
 
       expect(sink.delivered.map((c) => c.index), [0, 1]);
-      expect(
-        sink.delivered.map((c) => c.pcm.lengthInBytes ~/ 2),
-        [1600, 1600],
-        reason: 'two runs of 100ms each, never one chunk holding both',
-      );
+      expect(sink.delivered.map((c) => c.pcm.lengthInBytes ~/ 2), [
+        1600,
+        1600,
+      ], reason: 'two runs of 100ms each, never one chunk holding both');
     });
   });
 
@@ -2668,11 +2657,9 @@ void main() {
       track.emit(100);
       await capture.stop();
 
-      expect(
-        sink.delivered.map((c) => c.index),
-        [1],
-        reason: 'the discarded stretch still happened, so numbering moved on',
-      );
+      expect(sink.delivered.map((c) => c.index), [
+        1,
+      ], reason: 'the discarded stretch still happened, so numbering moved on');
     });
 
     test('survives a stop that does not settle its deliveries', () async {
@@ -3060,11 +3047,10 @@ void main() {
       await s.stop();
       await pumpEventQueue();
 
-      expect(
-        sink.delivered.map((c) => c.duration.inMilliseconds),
-        [100, 100],
-        reason: 'glued, this would be one 200ms chunk',
-      );
+      expect(sink.delivered.map((c) => c.duration.inMilliseconds), [
+        100,
+        100,
+      ], reason: 'glued, this would be one 200ms chunk');
     });
 
     test(
@@ -3255,11 +3241,9 @@ void main() {
       await capture.stop();
 
       expect(sink.delivered, isEmpty);
-      expect(
-        sink.discardedChunks.map((c) => c.index),
-        [0],
-        reason: 'the sibling half should show a chunk 0 against this',
-      );
+      expect(sink.discardedChunks.map((c) => c.index), [
+        0,
+      ], reason: 'the sibling half should show a chunk 0 against this');
     });
 
     test('a delivered tail is not reported as discarded', () async {

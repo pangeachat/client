@@ -249,7 +249,7 @@ class InlineTooltipState extends State<InlineTooltip>
     return widget.animate
         ? SizeTransition(
             sizeFactor: _animation!,
-            axisAlignment: -1.0,
+            alignment: AlignmentDirectional.topStart,
             child: content,
           )
         : (_isClosed ? const SizedBox.shrink() : content);

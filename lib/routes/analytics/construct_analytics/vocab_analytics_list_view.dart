@@ -132,7 +132,7 @@ class VocabAnalyticsListView extends StatelessWidget {
           child: SizeTransition(
             sizeFactor: animation,
             axis: Axis.horizontal,
-            axisAlignment: -1.0,
+            alignment: AlignmentDirectional.topStart,
             child: child,
           ),
         ),

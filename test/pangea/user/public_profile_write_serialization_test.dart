@@ -170,11 +170,11 @@ void main() {
       await Future.wait([first, second, third]);
 
       expect(levels(api.puts.first), {'es': 2});
-      expect(
-        levels(api.puts.last),
-        {'es': 2, 'fr': 3, 'nl': 4},
-        reason: 'the last publish must carry every change made before it',
-      );
+      expect(levels(api.puts.last), {
+        'es': 2,
+        'fr': 3,
+        'nl': 4,
+      }, reason: 'the last publish must carry every change made before it');
       // Three callers, but the two that queued together share one publish.
       expect(api.puts.length, 2);
     },

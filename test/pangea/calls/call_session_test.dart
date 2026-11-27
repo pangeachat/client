@@ -2122,11 +2122,9 @@ void main() {
         isTrue,
         reason: 'the button must not say a learner nobody can hear is heard',
       );
-      expect(
-        capture.gate,
-        [true],
-        reason: 'an unmute that did not take leaves the recorder gate up',
-      );
+      expect(capture.gate, [
+        true,
+      ], reason: 'an unmute that did not take leaves the recorder gate up');
     });
 
     test('a mute still mutes when there was nothing left to stop', () async {
@@ -2444,11 +2442,10 @@ void main() {
       expect(halves, hasLength(1), reason: 'its stretch is nobody else\'s');
       expect(halves.single['handed_over_to'], 'SIBLINGDEV');
       expect(halves.single.containsKey('continued_from'), isFalse);
-      expect(
-        session.audioHalfLinksForTest,
-        (continuedFrom: null, handedOverTo: 'SIBLINGDEV'),
-        reason: 'the audio half carries the same links',
-      );
+      expect(session.audioHalfLinksForTest, (
+        continuedFrom: null,
+        handedOverTo: 'SIBLINGDEV',
+      ), reason: 'the audio half carries the same links');
       expect(room.cards, isEmpty, reason: 'the call is not over');
       // Credit is written by the same finish as the half; with no words
       // transcribed here there are no uses to credit, so the half is what
@@ -2624,11 +2621,10 @@ void main() {
         expect(halves, hasLength(1));
         expect(halves.single['continued_from'], 'SIBLINGDEV');
         expect(halves.single.containsKey('handed_over_to'), isFalse);
-        expect(
-          session.audioHalfLinksForTest,
-          (continuedFrom: 'SIBLINGDEV', handedOverTo: null),
-          reason: 'the audio half carries the same links',
-        );
+        expect(session.audioHalfLinksForTest, (
+          continuedFrom: 'SIBLINGDEV',
+          handedOverTo: null,
+        ), reason: 'the audio half carries the same links');
         expect(asked, isNotEmpty);
         session.dispose();
         await pumpEventQueue();

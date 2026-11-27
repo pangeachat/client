@@ -280,40 +280,36 @@ void main() {
     timeout: const Timeout(Duration(seconds: 120)),
   );
 
-  test(
-    'idle releases an emote that is holding',
-    () async {
-      final artboard = file.artboard('BotIconArtboard')!;
-      final machine = artboard.stateMachine(_stateMachineName)!;
-      final viewModel = file
-          .viewModelByName(_viewModelName)!
-          .createDefaultInstance()!;
-      machine.bindViewModelInstance(viewModel);
-      for (var i = 0; i < _settleFrames; i++) {
-        machine.advanceAndApply(1 / 60);
-      }
+  test('idle releases an emote that is holding', () async {
+    final artboard = file.artboard('BotIconArtboard')!;
+    final machine = artboard.stateMachine(_stateMachineName)!;
+    final viewModel = file
+        .viewModelByName(_viewModelName)!
+        .createDefaultInstance()!;
+    machine.bindViewModelInstance(viewModel);
+    for (var i = 0; i < _settleFrames; i++) {
+      machine.advanceAndApply(1 / 60);
+    }
 
-      viewModel.trigger(BotExpression.addled.trigger)!.trigger();
-      for (var i = 0; i < 90; i++) {
-        machine.advanceAndApply(1 / 60);
-      }
-      final holding = await _pixels(await _render(artboard));
+    viewModel.trigger(BotExpression.addled.trigger)!.trigger();
+    for (var i = 0; i < 90; i++) {
+      machine.advanceAndApply(1 / 60);
+    }
+    final holding = await _pixels(await _render(artboard));
 
-      // Emotes carry no exit of their own; idle is the only way back. If that
-      // stops working the bot sticks on whichever face it last showed.
-      viewModel.trigger(BotExpression.idle.trigger)!.trigger();
-      for (var i = 0; i < 90; i++) {
-        machine.advanceAndApply(1 / 60);
-      }
-      final released = await _pixels(await _render(artboard));
+    // Emotes carry no exit of their own; idle is the only way back. If that
+    // stops working the bot sticks on whichever face it last showed.
+    viewModel.trigger(BotExpression.idle.trigger)!.trigger();
+    for (var i = 0; i < 90; i++) {
+      machine.advanceAndApply(1 / 60);
+    }
+    final released = await _pixels(await _render(artboard));
 
-      expect(
-        _changedChannels(released, holding),
-        greaterThan(_visibleChange),
-        reason: 'firing idle must move the artboard off the held emote',
-      );
-      machine.dispose();
-    },
-    timeout: const Timeout(Duration(seconds: 120)),
-  );
+    expect(
+      _changedChannels(released, holding),
+      greaterThan(_visibleChange),
+      reason: 'firing idle must move the artboard off the held emote',
+    );
+    machine.dispose();
+  }, timeout: const Timeout(Duration(seconds: 120)));
 }

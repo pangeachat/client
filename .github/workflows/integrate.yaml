@@ -46,6 +46,10 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
       - run: flutter pub get
+      - name: CanvasKit native memory regression
+        run: |
+          flutter precache --web
+          node test/web/canvaskit_memory_test.cjs "$FLUTTER_ROOT"
       - run: flutter gen-l10n
       - name: Check formatting
         run: dart format lib/ test/ --set-exit-if-changed

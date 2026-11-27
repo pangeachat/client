@@ -47,11 +47,10 @@ void main() {
         },
       ]);
 
-      expect(
-        morphs.getTags("Mood").map((t) => t.value),
-        ["Ind", "Sub"],
-        reason: 'display:false typological labels must be filtered out',
-      );
+      expect(morphs.getTags("Mood").map((t) => t.value), [
+        "Ind",
+        "Sub",
+      ], reason: 'display:false typological labels must be filtered out');
     });
 
     test('does not mutate the unfiltered inventory on getFeature', () {

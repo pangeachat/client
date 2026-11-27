@@ -211,11 +211,10 @@ void main() {
       membership: Membership.invite,
     );
 
-    expect(
-      names(client.sortedCourses(l10n)),
-      ['Arabic Alphabet', 'Korean Basics'],
-      reason: 'no joined activity on either course, so name order',
-    );
+    expect(names(client.sortedCourses(l10n)), [
+      'Arabic Alphabet',
+      'Korean Basics',
+    ], reason: 'no joined activity on either course, so name order');
   });
 
   test('an analytics room child is not course activity', () {
@@ -228,11 +227,10 @@ void main() {
       roomType: PangeaRoomTypes.analytics,
     );
 
-    expect(
-      names(client.sortedCourses(l10n)),
-      ['Arabic Alphabet', 'Korean Basics'],
-      reason: 'a shared analytics room would move every course it sits in',
-    );
+    expect(names(client.sortedCourses(l10n)), [
+      'Arabic Alphabet',
+      'Korean Basics',
+    ], reason: 'a shared analytics room would move every course it sits in');
   });
 
   test('invites carry no activity and stay ordered by name', () {
