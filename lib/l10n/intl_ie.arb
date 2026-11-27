@@ -10677,5 +10677,6 @@
     "noCanDoActivitiesYet": "Níl gníomhaíocht críochnaithe agat don {canDo} seo fós. Tosaigh ceann ó do chúrsa.",
     "canDoNotInYourCourses": "Níl an {canDo} seo in aon cheann de do chúrsaí.",
     "currentCanDo": "{canDo} reatha",
-    "xpGainedTowardCanDo": "{xp} XP i dtreo an {canDo} seo"
+    "xpGainedTowardCanDo": "{xp} XP i dtreo an {canDo} seo",
+    "sessionFinished": "Ró-dhéanach! Tá an ghníomhaíocht seo críochnaithe."
 }

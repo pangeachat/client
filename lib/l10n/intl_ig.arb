@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Ịmebeghị mmemme maka {canDo} a. Bido otu site na nkuzi gị.",
     "canDoNotInYourCourses": "{canDo} a adịghị na nkuzi gị ọ bụla.",
     "currentCanDo": "Ugbu a {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP maka {canDo} a"
+    "xpGainedTowardCanDo": "{xp} XP maka {canDo} a",
+    "sessionFinished": "Oge agafeela! Ihe omume a agwụla."
 }

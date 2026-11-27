@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Mbola tsy nahavita asa ho an'ity {canDo} ity ianao. Atombohy amin'ny taranjao ny iray.",
     "canDoNotInYourCourses": "Tsy ao anatin'ny taranjao ity {canDo} ity.",
     "currentCanDo": "{canDo} ankehitriny",
-    "xpGainedTowardCanDo": "{xp} XP mankany amin'ity {canDo} ity"
+    "xpGainedTowardCanDo": "{xp} XP mankany amin'ity {canDo} ity",
+    "sessionFinished": "Tara loatra! Tapitra ity hetsika ity."
 }

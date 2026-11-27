@@ -10062,5 +10062,6 @@
     "noCanDoActivitiesYet": "Вы яшчэ не выканалі заданне для гэтага {canDo}. Пачніце адно са свайго курса.",
     "canDoNotInYourCourses": "Гэтага {canDo} няма ні ў адным з вашых курсаў.",
     "currentCanDo": "Бягучы {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP да гэтага {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP да гэтага {canDo}",
+    "sessionFinished": "Занадта позна! Гэтае заданне скончылася."
 }

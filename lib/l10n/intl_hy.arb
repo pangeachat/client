@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Դուք դեռ չեք ավարտել որևէ գործունեություն այս {canDo}-ի համար։ Սկսեք մեկը ձեր դասընթացից։",
     "canDoNotInYourCourses": "Այս {canDo}-ն ձեր դասընթացներից ոչ մեկում չկա։",
     "currentCanDo": "Ընթացիկ {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP դեպի այս {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP դեպի այս {canDo}",
+    "sessionFinished": "Ուշ է։ Այս ակտիվությունն ավարտվել է։"
 }

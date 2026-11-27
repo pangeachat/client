@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Все още не сте завършили дейност за това {canDo}. Започнете такава от курса си.",
     "canDoNotInYourCourses": "Това {canDo} не е в никой от курсовете ви.",
     "currentCanDo": "Текущо {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP за това {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP за това {canDo}",
+    "sessionFinished": "Твърде късно! Тази дейност приключи."
 }

@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Ba ku kammala wani aiki don wannan {canDo} ba tukuna. Fara ɗaya daga kwas ɗinku.",
     "canDoNotInYourCourses": "Wannan {canDo} baya cikin kowane kwas ɗinku.",
     "currentCanDo": "{canDo} na yanzu",
-    "xpGainedTowardCanDo": "{xp} XP zuwa wannan {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP zuwa wannan {canDo}",
+    "sessionFinished": "Ya yi latti! Wannan aikin ya ƙare."
 }

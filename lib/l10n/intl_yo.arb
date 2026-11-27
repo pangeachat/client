@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Iwọ ko ti pari iṣẹ kan fun {canDo} yii sibẹsibẹ. Bẹrẹ ọkan lati inu ẹkọ rẹ.",
     "canDoNotInYourCourses": "{canDo} yii ko si ninu eyikeyi ninu awọn ẹkọ rẹ.",
     "currentCanDo": "{canDo} lọwọlọwọ",
-    "xpGainedTowardCanDo": "{xp} XP si {canDo} yii"
+    "xpGainedTowardCanDo": "{xp} XP si {canDo} yii",
+    "sessionFinished": "Pẹ́ ju! Iṣẹ́ yìí ti parí."
 }

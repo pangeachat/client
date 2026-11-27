@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "તમે હજી સુધી આ {canDo} માટે કોઈ પ્રવૃત્તિ પૂર્ણ કરી નથી. તમારા કોર્સમાંથી એક શરૂ કરો.",
     "canDoNotInYourCourses": "આ {canDo} તમારા કોઈપણ કોર્સમાં નથી.",
     "currentCanDo": "વર્તમાન {canDo}",
-    "xpGainedTowardCanDo": "આ {canDo} માટે {xp} XP મેળવ્યા"
+    "xpGainedTowardCanDo": "આ {canDo} માટે {xp} XP મેળવ્યા",
+    "sessionFinished": "ઘણું મોડું! આ પ્રવૃત્તિ સમાપ્ત થઈ ગઈ છે."
 }

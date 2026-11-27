@@ -10995,5 +10995,6 @@
     "noCanDoActivitiesYet": "మీరు ఇంకా ఈ {canDo} కోసం ఒక కార్యాచరణను పూర్తి చేయలేదు. మీ కోర్సు నుండి ఒకదాన్ని ప్రారంభించండి.",
     "canDoNotInYourCourses": "ఈ {canDo} మీ కోర్సులలో దేనిలోనూ లేదు.",
     "currentCanDo": "ప్రస్తుత {canDo}",
-    "xpGainedTowardCanDo": "ఈ {canDo} కోసం {xp} XP"
+    "xpGainedTowardCanDo": "ఈ {canDo} కోసం {xp} XP",
+    "sessionFinished": "చాలా ఆలస్యం! ఈ కార్యాచరణ ముగిసింది."
 }

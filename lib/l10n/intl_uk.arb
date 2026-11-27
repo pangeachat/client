@@ -10048,5 +10048,6 @@
     "noCanDoActivitiesYet": "Ви ще не виконали жодної дії для цього {canDo}. Почніть одну зі свого курсу.",
     "canDoNotInYourCourses": "Цього {canDo} немає в жодному з ваших курсів.",
     "currentCanDo": "Поточний {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP для цього {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP для цього {canDo}",
+    "sessionFinished": "Запізно! Ця вправа завершена."
 }

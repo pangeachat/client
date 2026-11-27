@@ -10048,5 +10048,6 @@
     "noCanDoActivitiesYet": "Oraindik ez duzu jarduerarik osatu {canDo} honetarako. Hasi bat zure ikastarotik.",
     "canDoNotInYourCourses": "{canDo} hau ez dago zure ikastaroetako batean ere.",
     "currentCanDo": "Uneko {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP «{canDo}» honetarako"
+    "xpGainedTowardCanDo": "{xp} XP «{canDo}» honetarako",
+    "sessionFinished": "Beranduegi! Jarduera hau amaitu da."
 }

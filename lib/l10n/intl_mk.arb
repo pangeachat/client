@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Сè уште немате завршено активност за овој {canDo}. Започнете една од вашиот курс.",
     "canDoNotInYourCourses": "Овој {canDo} не е во ниту еден од вашите курсеви.",
     "currentCanDo": "Тековен {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP кон овој {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP кон овој {canDo}",
+    "sessionFinished": "Предоцна! Оваа активност е завршена."
 }

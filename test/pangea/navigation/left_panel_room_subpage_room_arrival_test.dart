@@ -13,6 +13,8 @@ import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_constants.dart';
+import 'package:fluffychat/routes/chat/chat.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_subpage.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
@@ -213,5 +215,38 @@ void main() {
     final param = (left.single as ActivityPanelToken).param!;
     expect(param.activityId, 'activity-9401');
     expect(param.roomId, '!session:example.org');
+  });
+
+  testWidgets('an invite email\'s link to a session opens its activity page, '
+      'so the invite is not accepted unasked (#9798)', (tester) async {
+    const roomId = '!invitedsession:example.org';
+    final room = Room(
+      id: roomId,
+      client: client,
+      membership: Membership.invite,
+    );
+    room.setState(
+      Event(
+        type: EventTypes.RoomCreate,
+        content: {'type': '${PangeaRoomTypes.activitySession}:activity-9798'},
+        stateKey: '',
+        senderId: '@teacher:example.org',
+        eventId: r'$create-invited',
+        originServerTs: DateTime.now(),
+        room: room,
+      ),
+    );
+    client.rooms.add(room);
+    addTearDown(() => client.rooms.remove(room));
+
+    final router = await pumpRoutedPanel(tester, roomId);
+
+    expect(find.byType(ChatPage), findsNothing);
+    final uri = router.routerDelegate.currentConfiguration.uri;
+    final left = parseOpenPanels(uri).left;
+    expect(left, hasLength(1));
+    final param = (left.single as ActivityPanelToken).param!;
+    expect(param.activityId, 'activity-9798');
+    expect(param.roomId, roomId);
   });
 }

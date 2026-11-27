@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Sampeyan durung ngrampungake aktivitas kanggo {canDo} iki. Wiwiti siji saka kursus sampeyan.",
     "canDoNotInYourCourses": "{canDo} iki ora ana ing kursus sampeyan.",
     "currentCanDo": "{canDo} saiki",
-    "xpGainedTowardCanDo": "{xp} XP menyang {canDo} iki"
+    "xpGainedTowardCanDo": "{xp} XP menyang {canDo} iki",
+    "sessionFinished": "Kasep! Kagiyatan iki wis rampung."
 }

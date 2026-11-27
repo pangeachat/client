@@ -7355,5 +7355,6 @@
     "noCanDoActivitiesYet": "Bạn chưa hoàn thành hoạt động nào cho {canDo} này. Hãy bắt đầu một hoạt động từ khóa học của bạn.",
     "canDoNotInYourCourses": "{canDo} này không có trong bất kỳ khóa học nào của bạn.",
     "currentCanDo": "{canDo} hiện tại",
-    "xpGainedTowardCanDo": "{xp} XP cho {canDo} này"
+    "xpGainedTowardCanDo": "{xp} XP cho {canDo} này",
+    "sessionFinished": "Quá muộn! Hoạt động này đã kết thúc."
 }

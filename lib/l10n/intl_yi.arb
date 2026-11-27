@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "איר האָט נאָך נישט פֿאַרענדיקט קיין אַקטיוויטעט פֿאַר דעם {canDo}. הויבט אָן איינעם פֿון אײַער קורס.",
     "canDoNotInYourCourses": "דער {canDo} איז נישט אין קיין איינעם פֿון אײַערע קורסן.",
     "currentCanDo": "איצטיקער {canDo}",
-    "xpGainedTowardCanDo": "{xp} עקס-פּי צו דעם {canDo}"
+    "xpGainedTowardCanDo": "{xp} עקס-פּי צו דעם {canDo}",
+    "sessionFinished": "צו שפּעט! די אַקטיוויטעט איז פאַרטיק."
 }

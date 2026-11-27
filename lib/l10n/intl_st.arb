@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Ha o so qete mosebetsi bakeng sa {canDo} ena. Qala o mong ho tsoa thupelong ea hau.",
     "canDoNotInYourCourses": "{canDo} ena ha e eo ho e 'ngoe ea lithupelo tsa hau.",
     "currentCanDo": "{canDo} ea hajoale",
-    "xpGainedTowardCanDo": "{xp} XP ho ea ho {canDo} ena"
+    "xpGainedTowardCanDo": "{xp} XP ho ea ho {canDo} ena",
+    "sessionFinished": "Ho se ho le morao! Mosebetsi ona o felile."
 }

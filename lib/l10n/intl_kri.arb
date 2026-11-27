@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Yu nɔ dɔn du ɛni aktiviti fɔ dis {canDo} yet. Bigin wan frɔm yu kos.",
     "canDoNotInYourCourses": "Dis {canDo} nɔ de insay ɛni pan yu kos dɛn.",
     "currentCanDo": "Dis {canDo} we yu de du naw",
-    "xpGainedTowardCanDo": "{xp} XP fɔ dis {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP fɔ dis {canDo}",
+    "sessionFinished": "I don late! Dis aktiviti don finish."
 }

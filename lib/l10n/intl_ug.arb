@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "بۇ {canDo} ئۈچۈن تېخى پائالىيەت تاماملىمىدىڭىز. دەرسلىكىڭىزدىن بىرنى باشلاڭ.",
     "canDoNotInYourCourses": "بۇ {canDo} دەرسلىكلىرىڭىزنىڭ ھېچقايسىسىدا يوق.",
     "currentCanDo": "نۆۋەتتىكى {canDo}",
-    "xpGainedTowardCanDo": "بۇ {canDo} غا قاراپ {xp} XP"
+    "xpGainedTowardCanDo": "بۇ {canDo} غا قاراپ {xp} XP",
+    "sessionFinished": "كېچىكىپ قالدىڭىز! بۇ پائالىيەت ئاخىرلاشتى."
 }

@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "E te leʻi faʻamaeʻaina se gaioiga mo lenei {canDo} i le taimi nei. Amata se tasi mai lau kosi.",
     "canDoNotInYourCourses": "O lenei {canDo} e le o iai i au kosi.",
     "currentCanDo": "{canDo} o loʻo iai nei",
-    "xpGainedTowardCanDo": "{xp} XP agai i lenei {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP agai i lenei {canDo}",
+    "sessionFinished": "Ua tuai tele! Ua uma lenei gaioiga."
 }

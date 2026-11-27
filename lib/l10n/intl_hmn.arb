@@ -2526,5 +2526,6 @@
     "noCanDoActivitiesYet": "Koj tseem tsis tau ua tiav ib qho haujlwm rau tus {canDo} no. Pib ib qho los ntawm koj zaj kawm.",
     "canDoNotInYourCourses": "Tus {canDo} no tsis nyob hauv ib qho ntawm koj cov zaj kawm.",
     "currentCanDo": "Tus {canDo} tam sim no",
-    "xpGainedTowardCanDo": "{xp} XP rau tus {canDo} no"
+    "xpGainedTowardCanDo": "{xp} XP rau tus {canDo} no",
+    "sessionFinished": "Lig dhau lawm! Qhov kev ua si no tau xaus lawm."
 }

@@ -10048,5 +10048,6 @@
     "noCanDoActivitiesYet": "你尚未完成此{canDo}的任何活动。从你的课程中开始一个吧。",
     "canDoNotInYourCourses": "此{canDo}不在你的任何课程中。",
     "currentCanDo": "当前{canDo}",
-    "xpGainedTowardCanDo": "此{canDo}已获得{xp}经验值"
+    "xpGainedTowardCanDo": "此{canDo}已获得{xp}经验值",
+    "sessionFinished": "太晚了！此活动已结束。"
 }
