@@ -42,6 +42,25 @@ void main() {
       },
     );
 
+    test('only the start-my-own preview carries the access row (#9359)', () {
+      const browse = AddCoursePageTokenParam(
+        subpage: AddCourseSubpageEnum.browse,
+        previewRoomId: '!abc',
+      );
+      const own = AddCoursePageTokenParam(
+        subpage: AddCourseSubpageEnum.own,
+        createCourseId: 'plan-uuid',
+      );
+      const invite = AddCoursePageTokenParam(
+        subpage: AddCourseSubpageEnum.own,
+        createCourseId: 'plan-uuid',
+        showNewCourseInvitePage: true,
+      );
+      expect(browse.isCreateCoursePreview, isFalse);
+      expect(own.isCreateCoursePreview, isTrue);
+      expect(invite.isCreateCoursePreview, isFalse);
+    });
+
     test('the enter-a-code page is never a preview', () {
       const code = AddCoursePageTokenParam(
         subpage: AddCourseSubpageEnum.private,

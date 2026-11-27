@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/features/course_plans/new_course_page.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
-import 'package:fluffychat/routes/chat/chat_details/access/chat_access_settings_controller.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/edit_course/edit_course.dart';
 import 'package:fluffychat/routes/chat/chat_details/emotes/settings_emotes.dart';
@@ -46,11 +45,6 @@ class LeftPanelRoomDetailsSubpage extends StatelessWidget {
         return PangeaInvitationSelection(
           roomId: roomId,
           initialFilter: param.inviteFilter,
-          embeddedCloseButton: closeButton,
-        );
-      case RoomSubpageEnum.access:
-        return ChatAccessSettings(
-          roomId: roomId,
           embeddedCloseButton: closeButton,
         );
       case RoomSubpageEnum.permissions:
