@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-11-12 09:04:02.830006",
+    "@@last_modified": "2026-11-27 17:51:32.816118",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Jo hawwe noch gjin aktiviteit foltôge foar dizze {canDo}. Begjin ien fan jo kursus.",
     "canDoNotInYourCourses": "Dizze {canDo} sit net yn ien fan jo kursussen.",
     "currentCanDo": "Hjoeddeistige {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP foar dizze {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP foar dizze {canDo}",
+    "endActivityGoalsLeftTitle": "De aktiviteit beëinigje?",
+    "endActivityGoalsLeftMessage": "Guon fan dyn doelen binne net as foltôge markearre.",
+    "endActivityFinishedAllGoals": "Ik haw al myn doelen foltôge",
+    "endActivityJustEnd": "Gewoan beëinigje",
+    "endActivityClaimFailed": "Wy koene net ferstjoere datst dyn doelen foltôge hast."
 }

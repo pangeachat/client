@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-12 09:03:59.264331",
+    "@@last_modified": "2026-11-27 17:51:30.576033",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -10175,5 +10175,10 @@
     "noCanDoActivitiesYet": "Encara no has completat cap activitat per a aquest {canDo}. Comença'n una des del teu curs.",
     "canDoNotInYourCourses": "Aquest {canDo} no es troba en cap dels teus cursos.",
     "currentCanDo": "{canDo} actual",
-    "xpGainedTowardCanDo": "{xp} XP per a aquest {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP per a aquest {canDo}",
+    "endActivityGoalsLeftTitle": "Vols acabar l'activitat?",
+    "endActivityGoalsLeftMessage": "Alguns dels teus objectius no estan marcats com a fets.",
+    "endActivityFinishedAllGoals": "He acabat tots els meus objectius",
+    "endActivityJustEnd": "Acabar i prou",
+    "endActivityClaimFailed": "No hem pogut enviar que has acabat els teus objectius."
 }

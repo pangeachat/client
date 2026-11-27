@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-12 09:04:00.949951",
+    "@@last_modified": "2026-11-27 17:51:31.810324",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10990,5 +10990,10 @@
     "noCanDoActivitiesYet": "Vi ankoraŭ ne kompletigis agadon por ĉi tiu {canDo}. Komencu unu el via kurso.",
     "canDoNotInYourCourses": "Ĉi tiu {canDo} ne estas en iu ajn el viaj kursoj.",
     "currentCanDo": "Nuna {canDo}",
-    "xpGainedTowardCanDo": "{xp} SP al ĉi tiu {canDo}"
+    "xpGainedTowardCanDo": "{xp} SP al ĉi tiu {canDo}",
+    "endActivityGoalsLeftTitle": "Ĉu fini la agadon?",
+    "endActivityGoalsLeftMessage": "Kelkaj el viaj celoj ne estas markitaj kiel faritaj.",
+    "endActivityFinishedAllGoals": "Mi finis ĉiujn miajn celojn",
+    "endActivityJustEnd": "Nur finu ĝin",
+    "endActivityClaimFailed": "Ni ne povis sendi, ke vi finis viajn celojn."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-11-12 09:04:02.754172",
+    "@@last_modified": "2026-11-27 17:51:32.369280",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -10048,5 +10048,10 @@
     "noCanDoActivitiesYet": "Oraindik ez duzu jarduerarik osatu {canDo} honetarako. Hasi bat zure ikastarotik.",
     "canDoNotInYourCourses": "{canDo} hau ez dago zure ikastaroetako batean ere.",
     "currentCanDo": "Uneko {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP «{canDo}» honetarako"
+    "xpGainedTowardCanDo": "{xp} XP «{canDo}» honetarako",
+    "endActivityGoalsLeftTitle": "Jarduera amaitu?",
+    "endActivityGoalsLeftMessage": "Zure helburu batzuk ez daude egindakotzat markatuta.",
+    "endActivityFinishedAllGoals": "Nire helburu guztiak amaitu ditut",
+    "endActivityJustEnd": "Amaitu besterik ez",
+    "endActivityClaimFailed": "Ezin izan dugu bidali zure helburuak amaitu dituzula."
 }

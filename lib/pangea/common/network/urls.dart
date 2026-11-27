@@ -146,6 +146,12 @@ class PApiUrls {
   static String orchestratorGoalReport =
       "${PApiUrls._choreoRoute}/orchestrate/goal_report";
 
+  /// `POST /choreo/orchestrate/goal_claim` — a learner ending an activity
+  /// with goals unmarked says they finished them all. Recorded for the team;
+  /// no diamond or XP changes (pangeachat/client#9881).
+  static String orchestratorGoalClaim =
+      "${PApiUrls._choreoRoute}/orchestrate/goal_claim";
+
   static String tokenFeedback = "${PApiUrls._choreoRoute}/token/feedback";
   static String tokenFeedbackV2 = "${PApiUrls._choreoRoute}/token/feedback_v2";
 

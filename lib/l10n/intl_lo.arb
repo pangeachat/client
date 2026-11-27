@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-11-12 09:04:14.208334",
+    "@@last_modified": "2026-11-27 17:51:36.922096",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "ທ່ານຍັງບໍ່ໄດ້ເຮັດກິດຈະກຳສໍາລັບ {canDo} ນີ້ເທື່ອ. ເລີ່ມຕົ້ນຈາກຫຼັກສູດຂອງທ່ານ.",
     "canDoNotInYourCourses": "{canDo} ນີ້ບໍ່ມີຢູ່ໃນຫຼັກສູດໃດໆຂອງທ່ານ.",
     "currentCanDo": "{canDo} ປັດຈຸບັນ",
-    "xpGainedTowardCanDo": "{xp} XP ສໍາລັບ {canDo} ນີ້"
+    "xpGainedTowardCanDo": "{xp} XP ສໍາລັບ {canDo} ນີ້",
+    "endActivityGoalsLeftTitle": "ສິ້ນສຸດກິດຈະກຳ?",
+    "endActivityGoalsLeftMessage": "ບາງເປົ້າໝາຍຂອງທ່ານຍັງບໍ່ໄດ້ຖືກໝາຍວ່າສຳເລັດ.",
+    "endActivityFinishedAllGoals": "ຂ້ອຍສຳເລັດທຸກເປົ້າໝາຍຂອງຂ້ອຍແລ້ວ",
+    "endActivityJustEnd": "ພຽງແຕ່ສິ້ນສຸດມັນ",
+    "endActivityClaimFailed": "ພວກເຮົາບໍ່ສາມາດສົ່ງໄດ້ວ່າທ່ານສຳເລັດເປົ້າໝາຍຂອງທ່ານແລ້ວ."
 }

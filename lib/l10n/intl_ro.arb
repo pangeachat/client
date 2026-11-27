@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-12 09:04:21.888248",
+    "@@last_modified": "2026-11-27 17:51:40.433619",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10777,5 +10777,10 @@
     "noCanDoActivitiesYet": "Nu ai finalizat încă nicio activitate pentru acest {canDo}. Începe una din cursul tău.",
     "canDoNotInYourCourses": "Acest {canDo} nu se află în niciunul dintre cursurile tale.",
     "currentCanDo": "{canDo} curent",
-    "xpGainedTowardCanDo": "{xp} XP pentru acest {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP pentru acest {canDo}",
+    "endActivityGoalsLeftTitle": "Terminați activitatea?",
+    "endActivityGoalsLeftMessage": "Unele dintre obiectivele tale nu sunt marcate ca fiind finalizate.",
+    "endActivityFinishedAllGoals": "Am terminat toate obiectivele mele",
+    "endActivityJustEnd": "Doar termină",
+    "endActivityClaimFailed": "Nu am putut trimite că ți-ai terminat obiectivele."
 }

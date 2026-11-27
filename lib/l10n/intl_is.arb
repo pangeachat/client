@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-11-12 09:04:07.856086",
+    "@@last_modified": "2026-11-27 17:51:35.422550",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Þú hefur ekki lokið verkefni fyrir þetta {canDo} ennþá. Byrjaðu eitt af námskeiðinu þínu.",
     "canDoNotInYourCourses": "Þetta {canDo} er ekki á neinu af námskeiðunum þínum.",
     "currentCanDo": "Núverandi {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP í átt að þessu {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP í átt að þessu {canDo}",
+    "endActivityGoalsLeftTitle": "Ljúka æfingunni?",
+    "endActivityGoalsLeftMessage": "Sum markmiða þinna eru ekki merkt sem búin.",
+    "endActivityFinishedAllGoals": "Ég kláraði öll markmiðin mín",
+    "endActivityJustEnd": "Bara klára",
+    "endActivityClaimFailed": "Við gátum ekki sent að þú hafir klárað markmiðin þín."
 }

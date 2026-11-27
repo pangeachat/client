@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-12 09:04:25.894897",
+    "@@last_modified": "2026-11-27 17:51:42.628724",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -10140,5 +10140,10 @@
     "noCanDoActivitiesYet": "இந்த {canDo}க்கான எந்தச் செயலையும் நீங்கள் இன்னும் முடிக்கவில்லை. உங்கள் பாடத்திட்டத்திலிருந்து ஒன்றைத் தொடங்குங்கள்.",
     "canDoNotInYourCourses": "இந்த {canDo} உங்கள் பாடத்திட்டங்களில் இல்லை.",
     "currentCanDo": "தற்போதைய {canDo}",
-    "xpGainedTowardCanDo": "இந்த {canDo}க்கு {xp} XP"
+    "xpGainedTowardCanDo": "இந்த {canDo}க்கு {xp} XP",
+    "endActivityGoalsLeftTitle": "செயல்பாட்டை முடிக்கவா?",
+    "endActivityGoalsLeftMessage": "உங்கள் இலக்குகளில் சில முடிக்கப்பட்டதாகக் குறிக்கப்படவில்லை.",
+    "endActivityFinishedAllGoals": "எனது இலக்குகள் அனைத்தையும் முடித்துவிட்டேன்",
+    "endActivityJustEnd": "முடித்துவிடு",
+    "endActivityClaimFailed": "உங்கள் இலக்குகளை முடித்துவிட்டீர்கள் என்பதை எங்களால் அனுப்ப முடியவில்லை."
 }

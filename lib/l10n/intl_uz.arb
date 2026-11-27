@@ -2857,7 +2857,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-11-12 09:04:29.052895",
+    "@@last_modified": "2026-11-27 17:51:42.728030",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -10052,5 +10052,10 @@
     "noCanDoActivitiesYet": "Siz hali ushbu {canDo} uchun hech qanday mashgʻulotni yakunlamadingiz. Kursingizdan birini boshlang.",
     "canDoNotInYourCourses": "Ushbu {canDo} kurslaringizning hech birida yoʻq.",
     "currentCanDo": "Joriy {canDo}",
-    "xpGainedTowardCanDo": "Ushbu {canDo} uchun {xp} XP"
+    "xpGainedTowardCanDo": "Ushbu {canDo} uchun {xp} XP",
+    "endActivityGoalsLeftTitle": "Mashg'ulotni tugatish kerakmi?",
+    "endActivityGoalsLeftMessage": "Ba'zi maqsadlaringiz bajarilgan deb belgilanmagan.",
+    "endActivityFinishedAllGoals": "Men barcha maqsadlarimni tugatdim",
+    "endActivityJustEnd": "Shunchaki tugatish",
+    "endActivityClaimFailed": "Maqsadlaringizni tugatganingizni yubora olmadik."
 }

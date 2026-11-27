@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-11-12 09:04:11.894913",
+    "@@last_modified": "2026-11-27 17:51:36.535212",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Nondum actionem pro hac {canDo} perfecisti. Incipe unam ex cursu tuo.",
     "canDoNotInYourCourses": "Haec {canDo} in nullo cursu tuo est.",
     "currentCanDo": "{canDo} praesens",
-    "xpGainedTowardCanDo": "{xp} XP ad hanc {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP ad hanc {canDo}",
+    "endActivityGoalsLeftTitle": "Finire actionem?",
+    "endActivityGoalsLeftMessage": "Nonnulla proposita tua non perfecta sunt.",
+    "endActivityFinishedAllGoals": "Omnia proposita mea perfeci",
+    "endActivityJustEnd": "Modo finire",
+    "endActivityClaimFailed": "Non potuimus nuntiare te proposita tua perfecisse."
 }

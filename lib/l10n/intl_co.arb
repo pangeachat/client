@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-11-12 09:03:59.125155",
+    "@@last_modified": "2026-11-27 17:51:30.931503",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Ùn avete ancu cumplettatu una attività per stu {canDo}. Cuminciate una da u vostru corsu.",
     "canDoNotInYourCourses": "Stu {canDo} ùn hè micca in alcunu di i vostri corsi.",
     "currentCanDo": "{canDo} attuale",
-    "xpGainedTowardCanDo": "{xp} XP versu stu {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP versu stu {canDo}",
+    "endActivityGoalsLeftTitle": "Finisce l'attività?",
+    "endActivityGoalsLeftMessage": "Certi di i to scopi ùn sò micca marcati cum'è fatti.",
+    "endActivityFinishedAllGoals": "Aghju finitu tutti i mo scopi",
+    "endActivityJustEnd": "Finiscila solu",
+    "endActivityClaimFailed": "Ùn pudemu micca mandà chì avete finitu i vostri scopi."
 }

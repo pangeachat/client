@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-11-12 09:04:20.178343",
+    "@@last_modified": "2026-11-27 17:51:40.534823",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "ਤੁਸੀਂ ਅਜੇ ਇਸ {canDo} ਲਈ ਕੋਈ ਗਤੀਵਿਧੀ ਪੂਰੀ ਨਹੀਂ ਕੀਤੀ ਹੈ। ਆਪਣੇ ਕੋਰਸ ਤੋਂ ਇੱਕ ਸ਼ੁਰੂ ਕਰੋ।",
     "canDoNotInYourCourses": "ਇਹ {canDo} ਤੁਹਾਡੇ ਕਿਸੇ ਵੀ ਕੋਰਸ ਵਿੱਚ ਨਹੀਂ ਹੈ।",
     "currentCanDo": "ਮੌਜੂਦਾ {canDo}",
-    "xpGainedTowardCanDo": "ਇਸ {canDo} ਲਈ {xp} XP ਪ੍ਰਾਪਤ ਹੋਇਆ"
+    "xpGainedTowardCanDo": "ਇਸ {canDo} ਲਈ {xp} XP ਪ੍ਰਾਪਤ ਹੋਇਆ",
+    "endActivityGoalsLeftTitle": "ਗਤੀਵਿਧੀ ਖਤਮ ਕਰੀਏ?",
+    "endActivityGoalsLeftMessage": "ਤੁਹਾਡੇ ਕੁਝ ਟੀਚਿਆਂ ਨੂੰ ਪੂਰਾ ਹੋਇਆ ਵਜੋਂ ਚਿੰਨ੍ਹਿਤ ਨਹੀਂ ਕੀਤਾ ਗਿਆ ਹੈ।",
+    "endActivityFinishedAllGoals": "ਮੈਂ ਆਪਣੇ ਸਾਰੇ ਟੀਚੇ ਪੂਰੇ ਕਰ ਲਏ ਹਨ",
+    "endActivityJustEnd": "ਬੱਸ ਖਤਮ ਕਰੋ",
+    "endActivityClaimFailed": "ਅਸੀਂ ਇਹ ਨਹੀਂ ਭੇਜ ਸਕੇ ਕਿ ਤੁਸੀਂ ਆਪਣੇ ਟੀਚੇ ਪੂਰੇ ਕਰ ਲਏ ਹਨ।"
 }

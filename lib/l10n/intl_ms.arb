@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-11-12 09:04:16.101050",
+    "@@last_modified": "2026-11-27 17:51:37.753874",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Anda belum melengkapkan aktiviti untuk {canDo} ini. Mulakan satu daripada kursus anda.",
     "canDoNotInYourCourses": "{canDo} ini tiada dalam mana-mana kursus anda.",
     "currentCanDo": "{canDo} semasa",
-    "xpGainedTowardCanDo": "{xp} XP ke arah {canDo} ini"
+    "xpGainedTowardCanDo": "{xp} XP ke arah {canDo} ini",
+    "endActivityGoalsLeftTitle": "Tamatkan aktiviti?",
+    "endActivityGoalsLeftMessage": "Beberapa matlamat anda belum ditandakan sebagai selesai.",
+    "endActivityFinishedAllGoals": "Saya telah menyelesaikan semua matlamat saya",
+    "endActivityJustEnd": "Tamatkan sahaja",
+    "endActivityClaimFailed": "Kami tidak dapat menghantar bahawa anda telah menyelesaikan matlamat anda."
 }

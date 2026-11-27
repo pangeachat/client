@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-11-12 09:04:30.748824",
+    "@@last_modified": "2026-11-27 17:51:43.717299",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -10048,5 +10048,10 @@
     "noCanDoActivitiesYet": "你尚未完成此{canDo}的任何活动。从你的课程中开始一个吧。",
     "canDoNotInYourCourses": "此{canDo}不在你的任何课程中。",
     "currentCanDo": "当前{canDo}",
-    "xpGainedTowardCanDo": "此{canDo}已获得{xp}经验值"
+    "xpGainedTowardCanDo": "此{canDo}已获得{xp}经验值",
+    "endActivityGoalsLeftTitle": "结束活动？",
+    "endActivityGoalsLeftMessage": "您的一些目标尚未标记为完成。",
+    "endActivityFinishedAllGoals": "我已完成所有目标",
+    "endActivityJustEnd": "直接结束",
+    "endActivityClaimFailed": "我们无法发送您已完成目标的消息。"
 }

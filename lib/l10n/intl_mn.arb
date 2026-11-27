@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-11-12 09:04:17.629734",
+    "@@last_modified": "2026-11-27 17:51:38.137322",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Та энэ {canDo}-д зориулсан үйл ажиллагааг хараахан дуусгаагүй байна. Хичээлээсээ эхлүүлээрэй.",
     "canDoNotInYourCourses": "Энэ {canDo} таны хичээлүүдийн алинд ч байхгүй байна.",
     "currentCanDo": "Одоогийн {canDo}",
-    "xpGainedTowardCanDo": "Энэ {canDo}-д хүрэхэд олсон {xp} XP"
+    "xpGainedTowardCanDo": "Энэ {canDo}-д хүрэхэд олсон {xp} XP",
+    "endActivityGoalsLeftTitle": "Үйл ажиллагааг дуусгах уу?",
+    "endActivityGoalsLeftMessage": "Таны зарим зорилго хийгдсэн гэж тэмдэглэгдээгүй байна.",
+    "endActivityFinishedAllGoals": "Би бүх зорилгоо биелүүлсэн",
+    "endActivityJustEnd": "Зүгээр л дуусгах",
+    "endActivityClaimFailed": "Таны зорилгоо биелүүлсэн гэдгийг бид илгээж чадсангүй."
 }

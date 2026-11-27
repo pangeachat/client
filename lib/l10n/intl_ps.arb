@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-11-12 09:04:20.750713",
+    "@@last_modified": "2026-11-27 17:51:39.791055",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "تاسو تر اوسه د دې {canDo} لپاره کوم فعالیت نه دی بشپړ کړی. له خپل کورس څخه یو پیل کړئ.",
     "canDoNotInYourCourses": "دا {canDo} ستاسو په هیڅ کورس کې نشته.",
     "currentCanDo": "اوسنی {canDo}",
-    "xpGainedTowardCanDo": "د دې {canDo} لپاره {xp} XP"
+    "xpGainedTowardCanDo": "د دې {canDo} لپاره {xp} XP",
+    "endActivityGoalsLeftTitle": "فعالیت پای ته رسوم؟",
+    "endActivityGoalsLeftMessage": "ستاسو ځینې موخې د بشپړ شوي په توګه نښه شوي ندي.",
+    "endActivityFinishedAllGoals": "ما خپلې ټولې موخې بشپړې کړې",
+    "endActivityJustEnd": "یوازې پای ته ورسوه",
+    "endActivityClaimFailed": "موږ نشو کولی چې تاسو خپلې موخې بشپړې کړې وي."
 }

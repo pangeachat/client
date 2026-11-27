@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-11-12 09:03:59.370695",
+    "@@last_modified": "2026-11-27 17:51:30.995006",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10539,5 +10539,10 @@
     "noCanDoActivitiesYet": "Zatím jste pro toto {canDo} nedokončili žádnou aktivitu. Spusťte ji z vašeho kurzu.",
     "canDoNotInYourCourses": "Toto {canDo} není v žádném z vašich kurzů.",
     "currentCanDo": "Aktuální {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP k tomuto {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP k tomuto {canDo}",
+    "endActivityGoalsLeftTitle": "Ukončit aktivitu?",
+    "endActivityGoalsLeftMessage": "Některé z vašich cílů nejsou označeny jako splněné.",
+    "endActivityFinishedAllGoals": "Splnil(a) jsem všechny své cíle",
+    "endActivityJustEnd": "Prostě to ukončit",
+    "endActivityClaimFailed": "Nepodařilo se odeslat, že jste splnil(a) své cíle."
 }

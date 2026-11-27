@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-11-12 09:04:21.918396",
+    "@@last_modified": "2026-11-27 17:51:39.637757",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "ଆପଣ ଏହି {canDo} ପାଇଁ ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି କାର୍ଯ୍ୟକଳାପ ସମାପ୍ତ କରିନାହାଁନ୍ତି। ଆପଣଙ୍କ କୋର୍ସରୁ ଗୋଟିଏ ଆରମ୍ଭ କରନ୍ତୁ।",
     "canDoNotInYourCourses": "ଏହି {canDo} ଆପଣଙ୍କର କୌଣସି କୋର୍ସରେ ନାହିଁ।",
     "currentCanDo": "ବର୍ତ୍ତମାନର {canDo}",
-    "xpGainedTowardCanDo": "ଏହି {canDo} ପାଇଁ {xp} XP"
+    "xpGainedTowardCanDo": "ଏହି {canDo} ପାଇଁ {xp} XP",
+    "endActivityGoalsLeftTitle": "କାର୍ଯ୍ୟକଳାପ ଶେଷ କରିବେ କି?",
+    "endActivityGoalsLeftMessage": "ଆପଣଙ୍କର କିଛି ଲକ୍ଷ୍ୟ ସମାପ୍ତ ହୋଇନାହିଁ।",
+    "endActivityFinishedAllGoals": "ମୁଁ ମୋର ସମସ୍ତ ଲକ୍ଷ୍ୟ ସମାପ୍ତ କରିଛି",
+    "endActivityJustEnd": "କେବଳ ଶେଷ କରନ୍ତୁ",
+    "endActivityClaimFailed": "ଆପଣ ଆପଣଙ୍କର ଲକ୍ଷ୍ୟ ସମାପ୍ତ କରିଛନ୍ତି ବୋଲି ଆମେ ପଠାଇ ପାରିଲୁ ନାହିଁ।"
 }

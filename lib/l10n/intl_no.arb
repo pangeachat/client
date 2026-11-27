@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-11-12 09:04:17.945635",
+    "@@last_modified": "2026-11-27 17:51:39.535941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Du har ikke fullført en aktivitet for denne {canDo} ennå. Start en fra kurset ditt.",
     "canDoNotInYourCourses": "Denne {canDo} er ikke i noen av kursene dine.",
     "currentCanDo": "Gjeldende {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP mot denne {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP mot denne {canDo}",
+    "endActivityGoalsLeftTitle": "Avslutt aktiviteten?",
+    "endActivityGoalsLeftMessage": "Noen av målene dine er ikke markert som fullført.",
+    "endActivityFinishedAllGoals": "Jeg fullførte alle målene mine",
+    "endActivityJustEnd": "Bare avslutt",
+    "endActivityClaimFailed": "Vi kunne ikke sende at du fullførte målene dine."
 }

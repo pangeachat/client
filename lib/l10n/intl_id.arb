@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-12 09:04:07.101730",
+    "@@last_modified": "2026-11-27 17:51:34.396979",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -10121,5 +10121,10 @@
     "noCanDoActivitiesYet": "Kamu belum menyelesaikan aktivitas untuk {canDo} ini. Mulai satu dari kursusmu.",
     "canDoNotInYourCourses": "{canDo} ini tidak ada di kursusmu.",
     "currentCanDo": "{canDo} saat ini",
-    "xpGainedTowardCanDo": "{xp} XP untuk {canDo} ini"
+    "xpGainedTowardCanDo": "{xp} XP untuk {canDo} ini",
+    "endActivityGoalsLeftTitle": "Akhiri aktivitas?",
+    "endActivityGoalsLeftMessage": "Beberapa tujuan Anda belum ditandai selesai.",
+    "endActivityFinishedAllGoals": "Saya sudah menyelesaikan semua tujuan saya",
+    "endActivityJustEnd": "Akhiri saja",
+    "endActivityClaimFailed": "Kami tidak dapat mengirimkan bahwa Anda telah menyelesaikan tujuan Anda."
 }

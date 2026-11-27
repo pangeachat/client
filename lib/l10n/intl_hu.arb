@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-11-12 09:04:06.978220",
+    "@@last_modified": "2026-11-27 17:51:34.794689",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -10151,5 +10151,10 @@
     "noCanDoActivitiesYet": "Még nem végeztél el tevékenységet ehhez a {canDo}-hoz. Kezdj egyet a kurzusodból.",
     "canDoNotInYourCourses": "Ez a {canDo} nincs egyik kurzusodban sem.",
     "currentCanDo": "Jelenlegi {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP ehhez a {canDo}-hoz"
+    "xpGainedTowardCanDo": "{xp} XP ehhez a {canDo}-hoz",
+    "endActivityGoalsLeftTitle": "Befejezed a tevékenységet?",
+    "endActivityGoalsLeftMessage": "Néhány célod nincs késznek jelölve.",
+    "endActivityFinishedAllGoals": "Minden célom kész",
+    "endActivityJustEnd": "Csak fejezd be",
+    "endActivityClaimFailed": "Nem tudtuk elküldeni, hogy befejezted a céljaidat."
 }

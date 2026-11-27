@@ -2954,7 +2954,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-11-12 09:04:12.712021",
+    "@@last_modified": "2026-11-27 17:51:37.122351",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10826,5 +10826,10 @@
     "noCanDoActivitiesYet": "Dar neatlikote veiklos šiam {canDo}. Pradėkite vieną iš savo kurso.",
     "canDoNotInYourCourses": "Šio {canDo} nėra nė viename iš jūsų kursų.",
     "currentCanDo": "Dabartinis {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP link šio {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP link šio {canDo}",
+    "endActivityGoalsLeftTitle": "Baigti veiklą?",
+    "endActivityGoalsLeftMessage": "Kai kurie jūsų tikslai nepažymėti kaip atlikti.",
+    "endActivityFinishedAllGoals": "Įvykdžiau visus savo tikslus",
+    "endActivityJustEnd": "Tiesiog baigti",
+    "endActivityClaimFailed": "Nepavyko išsiųsti informacijos, kad įvykdėte savo tikslus."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-12 09:04:01.692625",
+    "@@last_modified": "2026-11-27 17:51:32.405352",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -10136,5 +10136,10 @@
     "noCanDoActivitiesYet": "شما هنوز فعالیتی برای این {canDo} تکمیل نکرده‌اید. یکی را از دوره خود شروع کنید.",
     "canDoNotInYourCourses": "این {canDo} در هیچ یک از دوره‌های شما نیست.",
     "currentCanDo": "{canDo} فعلی",
-    "xpGainedTowardCanDo": "{xp} XP برای این {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP برای این {canDo}",
+    "endActivityGoalsLeftTitle": "فعالیت را تمام می‌کنی؟",
+    "endActivityGoalsLeftMessage": "بعضی از اهدافت هنوز انجام نشده‌اند.",
+    "endActivityFinishedAllGoals": "همه اهدافم را انجام دادم",
+    "endActivityJustEnd": "فقط تمامش کن",
+    "endActivityClaimFailed": "نتوانستیم ارسال کنیم که اهدافت را انجام دادی."
 }

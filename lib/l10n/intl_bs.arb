@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-11-12 09:03:57.149037",
+    "@@last_modified": "2026-11-27 17:51:29.385514",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Još niste završili aktivnost za ovaj {canDo}. Započnite jednu iz svog kursa.",
     "canDoNotInYourCourses": "Ovaj {canDo} nije ni u jednom od vaših kurseva.",
     "currentCanDo": "Trenutni {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP-a za ovaj {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP-a za ovaj {canDo}",
+    "endActivityGoalsLeftTitle": "Završiti aktivnost?",
+    "endActivityGoalsLeftMessage": "Neki od vaših ciljeva nisu označeni kao završeni.",
+    "endActivityFinishedAllGoals": "Završio/la sam sve svoje ciljeve",
+    "endActivityJustEnd": "Samo završi",
+    "endActivityClaimFailed": "Nismo mogli poslati informaciju da ste završili svoje ciljeve."
 }

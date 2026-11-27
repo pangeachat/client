@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-11-12 09:04:20.720701",
+    "@@last_modified": "2026-11-27 17:51:36.887334",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "تۆ هێشتا هیچ چالاکییەکت بۆ ئەم {canDo}یە تەواو نەکردووە. یەکێک لە خولەکەتەوە دەست پێ بکە.",
     "canDoNotInYourCourses": "ئەم {canDo}یە لە هیچ کام لە خولەکانتدا نییە.",
     "currentCanDo": "{canDo}ی ئێستا",
-    "xpGainedTowardCanDo": "{xp} XP بەرەو ئەم {canDo}یە"
+    "xpGainedTowardCanDo": "{xp} XP بەرەو ئەم {canDo}یە",
+    "endActivityGoalsLeftTitle": "کۆتایی بە چالاکییەکە بهێنیت؟",
+    "endActivityGoalsLeftMessage": "هەندێک لە ئامانجەکانت وەک تەواوکراو دیاری نەکراون.",
+    "endActivityFinishedAllGoals": "هەموو ئامانجەکانم تەواو کرد",
+    "endActivityJustEnd": "تەنها کۆتایی پێ بهێنە",
+    "endActivityClaimFailed": "نەمانتوانی بنێرین کە تۆ ئامانجەکانت تەواو کردووە."
 }

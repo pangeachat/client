@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-11-12 09:04:19.723582",
+    "@@last_modified": "2026-11-27 17:51:39.310698",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -10133,5 +10133,10 @@
     "noCanDoActivitiesYet": "Nie ukończono jeszcze żadnej aktywności dla tego {canDo}. Rozpocznij jedną z kursu.",
     "canDoNotInYourCourses": "To {canDo} nie znajduje się w żadnym z Twoich kursów.",
     "currentCanDo": "Aktualne {canDo}",
-    "xpGainedTowardCanDo": "{xp} PD do tego {canDo}"
+    "xpGainedTowardCanDo": "{xp} PD do tego {canDo}",
+    "endActivityGoalsLeftTitle": "Zakończyć aktywność?",
+    "endActivityGoalsLeftMessage": "Niektóre z Twoich celów nie są oznaczone jako ukończone.",
+    "endActivityFinishedAllGoals": "Ukończyłem wszystkie cele",
+    "endActivityJustEnd": "Po prostu zakończ",
+    "endActivityClaimFailed": "Nie udało nam się wysłać informacji o ukończeniu Twoich celów."
 }

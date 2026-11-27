@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-11-12 09:04:24.722112",
+    "@@last_modified": "2026-11-27 17:51:40.796636",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Hauna kupedza chiitiko che {canDo} iyi. Tanga chimwe kubva muchikamu chako.",
     "canDoNotInYourCourses": "Iyi {canDo} haisi mune chero zvikamu zvako.",
     "currentCanDo": "{canDo} yazvino",
-    "xpGainedTowardCanDo": "{xp} XP kuenda ku {canDo} iyi"
+    "xpGainedTowardCanDo": "{xp} XP kuenda ku {canDo} iyi",
+    "endActivityGoalsLeftTitle": "Pedza chiitiko?",
+    "endActivityGoalsLeftMessage": "Zvimwe zvezvinangwa zvako hazvina kumakwa se zvapera.",
+    "endActivityFinishedAllGoals": "Ndapedza zvinangwa zvangu zvese",
+    "endActivityJustEnd": "Ingopedza",
+    "endActivityClaimFailed": "Hatina kukwanisa kutumira kuti wapedza zvinangwa zvako."
 }

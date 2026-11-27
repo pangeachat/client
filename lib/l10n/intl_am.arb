@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-11-12 09:03:57.363073",
+    "@@last_modified": "2026-11-27 17:51:30.366342",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "ለዚህ {canDo} እስካሁን ምንም እንቅስቃሴ አላጠናቀቁም። ከኮርስዎ ውስጥ አንዱን ይጀምሩ።",
     "canDoNotInYourCourses": "ይህ {canDo} በማናቸውም ኮርሶችዎ ውስጥ የለም።",
     "currentCanDo": "የአሁኑ {canDo}",
-    "xpGainedTowardCanDo": "ለዚህ {canDo} {xp} XP"
+    "xpGainedTowardCanDo": "ለዚህ {canDo} {xp} XP",
+    "endActivityGoalsLeftTitle": "እንቅስቃሴውን ይጨርሱ?",
+    "endActivityGoalsLeftMessage": "አንዳንድ ግቦችዎ እንደተጠናቀቁ ምልክት አልተደረገባቸውም።",
+    "endActivityFinishedAllGoals": "ሁሉንም ግቦቼን ጨርሻለሁ",
+    "endActivityJustEnd": "ዝም ብለህ ጨርሰው",
+    "endActivityClaimFailed": "ግቦችዎን እንደጨረሱ መላክ አልቻልንም።"
 }

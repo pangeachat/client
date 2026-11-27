@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-11-12 09:04:16.828486",
+    "@@last_modified": "2026-11-27 17:51:38.406790",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "নখোইনা অসিগুম্বা {canDo} অসিগীদমক থবক অমা ফাওবা লোইশিনদ্রি। নখোইগী কোর্সতগী অমা হৌগদবনি।",
     "canDoNotInYourCourses": "অসিগুম্বা {canDo} অসি নখোইগী কোর্স অমদসু লৈতে।",
     "currentCanDo": "হৌজিক্কী {canDo}",
-    "xpGainedTowardCanDo": "অসিগুম্বা {canDo} অসিগীদমক {xp} XP ফংখ্রে"
+    "xpGainedTowardCanDo": "অসিগুম্বা {canDo} অসিগীদমক {xp} XP ফংখ্রে",
+    "endActivityGoalsLeftTitle": "থবক লোইশিনবীরা?",
+    "endActivityGoalsLeftMessage": "নখোয়গী পান্থুং খরদি লোইশিনখিদ্রি হায়না থমদ্রি.",
+    "endActivityFinishedAllGoals": "ঐহাক্কী পান্থুং পুম্নমক লোইশিনখ্রে",
+    "endActivityJustEnd": "লোইশিনবীয়ু",
+    "endActivityClaimFailed": "নখোয়গী পান্থুং পুম্নমক লোইশিনখ্রে হায়বা থারকপা ঙমখিদ্রে."
 }

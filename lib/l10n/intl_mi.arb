@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-11-12 09:04:14.693000",
+    "@@last_modified": "2026-11-27 17:51:38.098299",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Kāore anō kia oti i a koe he mahi mō tēnei {canDo}. Me tīmata tētahi mai i tō akoranga.",
     "canDoNotInYourCourses": "Kāore tēnei {canDo} i roto i ō akoranga.",
     "currentCanDo": "Te {canDo} o nāianei",
-    "xpGainedTowardCanDo": "{xp} XP ki tēnei {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP ki tēnei {canDo}",
+    "endActivityGoalsLeftTitle": "Whakamutua te mahi?",
+    "endActivityGoalsLeftMessage": "Kāore anō ētahi o ō whāinga kia tohua kua oti.",
+    "endActivityFinishedAllGoals": "Kua oti katoa aku whāinga",
+    "endActivityJustEnd": "Whakamutua noa",
+    "endActivityClaimFailed": "Kāore i taea te tuku i tō otinga i ō whāinga."
 }

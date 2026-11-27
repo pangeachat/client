@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-11-12 09:04:15.385816",
+    "@@last_modified": "2026-11-27 17:51:38.546481",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "तुम्ही या {canDo} साठी अद्याप कोणताही क्रियाकलाप पूर्ण केलेला नाही. तुमच्या कोर्समधून एक सुरू करा.",
     "canDoNotInYourCourses": "हे {canDo} तुमच्या कोणत्याही कोर्समध्ये नाही.",
     "currentCanDo": "सध्याचे {canDo}",
-    "xpGainedTowardCanDo": "या {canDo} साठी {xp} XP"
+    "xpGainedTowardCanDo": "या {canDo} साठी {xp} XP",
+    "endActivityGoalsLeftTitle": "क्रियाकलाप संपवायचा?",
+    "endActivityGoalsLeftMessage": "तुमची काही उद्दिष्ट्ये पूर्ण झाली म्हणून चिन्हांकित केलेली नाहीत.",
+    "endActivityFinishedAllGoals": "मी माझी सर्व उद्दिष्ट्ये पूर्ण केली",
+    "endActivityJustEnd": "फक्त संपवा",
+    "endActivityClaimFailed": "तुम्ही तुमची उद्दिष्ट्ये पूर्ण केली हे आम्ही पाठवू शकलो नाही."
 }

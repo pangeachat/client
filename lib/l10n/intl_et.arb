@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-11-12 09:04:02.649389",
+    "@@last_modified": "2026-11-27 17:51:32.341210",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -10045,5 +10045,10 @@
     "noCanDoActivitiesYet": "Te pole selle {canDo} jaoks veel ühtegi tegevust lõpetanud. Alustage ühte oma kursuselt.",
     "canDoNotInYourCourses": "See {canDo} ei kuulu ühtegi teie kursusesse.",
     "currentCanDo": "Praegune {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP selle {canDo} suunas"
+    "xpGainedTowardCanDo": "{xp} XP selle {canDo} suunas",
+    "endActivityGoalsLeftTitle": "Lõpeta tegevus?",
+    "endActivityGoalsLeftMessage": "Mõned sinu eesmärgid pole märgitud tehtuks.",
+    "endActivityFinishedAllGoals": "Lõpetasin kõik oma eesmärgid",
+    "endActivityJustEnd": "Lihtsalt lõpeta",
+    "endActivityClaimFailed": "Me ei saanud saata teadet, et oled oma eesmärgid täitnud."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-11-12 09:04:04.541121",
+    "@@last_modified": "2026-11-27 17:51:33.561439",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "ʻAʻole ʻoe i hoʻopau i kahi hana no kēia {canDo}. E hoʻomaka i kekahi mai kāu papa.",
     "canDoNotInYourCourses": "ʻAʻole kēia {canDo} i kekahi o kāu mau papa.",
     "currentCanDo": "ʻO {canDo} o kēia manawa",
-    "xpGainedTowardCanDo": "{xp} XP no kēia {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP no kēia {canDo}",
+    "endActivityGoalsLeftTitle": "E hoʻopau i ka hana?",
+    "endActivityGoalsLeftMessage": "ʻAʻole i hoʻopaʻa ʻia kekahi o kāu mau pahuhopu ma ke ʻano he pau.",
+    "endActivityFinishedAllGoals": "Ua hoʻopau au i kaʻu mau pahuhopu a pau",
+    "endActivityJustEnd": "E hoʻopau wale",
+    "endActivityClaimFailed": "ʻAʻole hiki iā mākou ke hoʻouna ua hoʻopau ʻoe i kāu mau pahuhopu."
 }

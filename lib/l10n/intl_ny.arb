@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-11-12 09:04:20.207161",
+    "@@last_modified": "2026-11-27 17:51:39.806743",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Simunachitepo chilichonse pa {canDo} iyi. Yambani imodzi kuchokera ku kosi yanu.",
     "canDoNotInYourCourses": "Izi {canDo} sizili mu kosi iliyonse mwa zanu.",
     "currentCanDo": "{canDo} yamakono",
-    "xpGainedTowardCanDo": "{xp} XP kupita ku {canDo} iyi"
+    "xpGainedTowardCanDo": "{xp} XP kupita ku {canDo} iyi",
+    "endActivityGoalsLeftTitle": "Muthetse ntchitoyi?",
+    "endActivityGoalsLeftMessage": "Zina mwa zolinga zanu sizinayikidwe ngati zatha.",
+    "endActivityFinishedAllGoals": "Ndamaliza zolinga zanga zonse",
+    "endActivityJustEnd": "Ingothetserani",
+    "endActivityClaimFailed": "Talephera kutumiza kuti mwamaliza zolinga zanu."
 }

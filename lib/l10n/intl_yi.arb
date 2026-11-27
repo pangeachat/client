@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-11-12 09:04:31.558449",
+    "@@last_modified": "2026-11-27 17:51:43.392788",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "איר האָט נאָך נישט פֿאַרענדיקט קיין אַקטיוויטעט פֿאַר דעם {canDo}. הויבט אָן איינעם פֿון אײַער קורס.",
     "canDoNotInYourCourses": "דער {canDo} איז נישט אין קיין איינעם פֿון אײַערע קורסן.",
     "currentCanDo": "איצטיקער {canDo}",
-    "xpGainedTowardCanDo": "{xp} עקס-פּי צו דעם {canDo}"
+    "xpGainedTowardCanDo": "{xp} עקס-פּי צו דעם {canDo}",
+    "endActivityGoalsLeftTitle": "ענדיקן די אַקטיוויטעט?",
+    "endActivityGoalsLeftMessage": "טייל פון דיינע צילן זענען נישט אָנגעצייכנט ווי געענדיקט.",
+    "endActivityFinishedAllGoals": "איך האָב געענדיקט אַלע מיינע צילן",
+    "endActivityJustEnd": "ענדיקן סתּם",
+    "endActivityClaimFailed": "מיר האָבן נישט געקענט שיקן אַז דו האָסט געענדיקט דיינע צילן."
 }

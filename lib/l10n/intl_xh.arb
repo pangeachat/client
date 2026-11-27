@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-11-12 09:04:30.381235",
+    "@@last_modified": "2026-11-27 17:51:43.429307",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Akukagqitywa msebenzi wale {canDo} okwangoku. Qala omnye kwikhosi yakho.",
     "canDoNotInYourCourses": "Le {canDo} ayikho nakweyiphi na ikhosi yakho.",
     "currentCanDo": "I- {canDo} yangoku",
-    "xpGainedTowardCanDo": "{xp} XP kule {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP kule {canDo}",
+    "endActivityGoalsLeftTitle": "Uyiphelisa umsebenzi?",
+    "endActivityGoalsLeftMessage": "Ezinye zeenjongo zakho aziphawulwanga njengezigqityiweyo.",
+    "endActivityFinishedAllGoals": "Ndizigqibile zonke iinjongo zam",
+    "endActivityJustEnd": "Yiphelise nje",
+    "endActivityClaimFailed": "Asikwazanga ukuthumela ukuba uzigqibile iinjongo zakho."
 }

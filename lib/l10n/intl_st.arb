@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-11-12 09:04:25.327214",
+    "@@last_modified": "2026-11-27 17:51:41.860572",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Ha o so qete mosebetsi bakeng sa {canDo} ena. Qala o mong ho tsoa thupelong ea hau.",
     "canDoNotInYourCourses": "{canDo} ena ha e eo ho e 'ngoe ea lithupelo tsa hau.",
     "currentCanDo": "{canDo} ea hajoale",
-    "xpGainedTowardCanDo": "{xp} XP ho ea ho {canDo} ena"
+    "xpGainedTowardCanDo": "{xp} XP ho ea ho {canDo} ena",
+    "endActivityGoalsLeftTitle": "Na o batla ho emisa mosebetsi?",
+    "endActivityGoalsLeftMessage": "Tse ding tsa ditaelo tsa hao ha di a tlatswa.",
+    "endActivityFinishedAllGoals": "Ke qetile ditaelo tsohle tsa ka",
+    "endActivityJustEnd": "E emise feela",
+    "endActivityClaimFailed": "Re sitilwe ho romela hore o qetile ditaelo tsa hao."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-11-12 09:04:25.697285",
+    "@@last_modified": "2026-11-27 17:51:41.376931",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Nuk ke përfunduar ende asnjë aktivitet për këtë {canDo}. Fillo një nga kursi yt.",
     "canDoNotInYourCourses": "Ky {canDo} nuk është në asnjë nga kurset e tua.",
     "currentCanDo": "{canDo} aktual",
-    "xpGainedTowardCanDo": "{xp} XP drejt këtij {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP drejt këtij {canDo}",
+    "endActivityGoalsLeftTitle": "Ta përfundojmë aktivitetin?",
+    "endActivityGoalsLeftMessage": "Disa nga qëllimet e tua nuk janë shënuar si të kryera.",
+    "endActivityFinishedAllGoals": "I përfundova të gjitha qëllimet e mia",
+    "endActivityJustEnd": "Thjesht përfundoje",
+    "endActivityClaimFailed": "Nuk mundëm të dërgonim që i përfundove qëllimet e tua."
 }
