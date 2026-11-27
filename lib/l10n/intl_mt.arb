@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-11-12 09:04:17.096501",
+    "@@last_modified": "2026-11-27 17:51:38.399960",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Għadek ma lestejtx attività għal dan il-{canDo}. Ibda waħda mill-kors tiegħek.",
     "canDoNotInYourCourses": "Dan il-{canDo} mhuwiex f'xi wieħed mill-korsijiet tiegħek.",
     "currentCanDo": "{canDo} kurrenti",
-    "xpGainedTowardCanDo": "{xp} XP lejn dan il-{canDo}"
+    "xpGainedTowardCanDo": "{xp} XP lejn dan il-{canDo}",
+    "endActivityGoalsLeftTitle": "Ttemm l-attività?",
+    "endActivityGoalsLeftMessage": "Uħud mill-miri tiegħek mhumiex immarkati bħala lesti.",
+    "endActivityFinishedAllGoals": "Lestejt il-miri kollha tiegħi",
+    "endActivityJustEnd": "Temmha biss",
+    "endActivityClaimFailed": "Ma stajniex nibagħtu li lestejt il-miri tiegħek."
 }

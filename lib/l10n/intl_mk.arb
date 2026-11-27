@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-11-12 09:04:19.446284",
+    "@@last_modified": "2026-11-27 17:51:37.612675",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Сè уште немате завршено активност за овој {canDo}. Започнете една од вашиот курс.",
     "canDoNotInYourCourses": "Овој {canDo} не е во ниту еден од вашите курсеви.",
     "currentCanDo": "Тековен {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP кон овој {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP кон овој {canDo}",
+    "endActivityGoalsLeftTitle": "Да се заврши активноста?",
+    "endActivityGoalsLeftMessage": "Некои од вашите цели не се означени како завршени.",
+    "endActivityFinishedAllGoals": "Ги завршив сите мои цели",
+    "endActivityJustEnd": "Само заврши ја",
+    "endActivityClaimFailed": "Не можевме да испратиме дека сте ги завршиле целите."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-11-12 09:03:56.606775",
+    "@@last_modified": "2026-11-27 17:51:30.626337",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Jy het nog nie 'n aktiwiteit vir hierdie {canDo} voltooi nie. Begin een vanuit jou kursus.",
     "canDoNotInYourCourses": "Hierdie {canDo} is nie in enige van jou kursusse nie.",
     "currentCanDo": "Huidige {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP vir hierdie {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP vir hierdie {canDo}",
+    "endActivityGoalsLeftTitle": "Beëindig die aktiwiteit?",
+    "endActivityGoalsLeftMessage": "Sommige van jou doelwitte is nie as voltooi gemerk nie.",
+    "endActivityFinishedAllGoals": "Ek het al my doelwitte voltooi",
+    "endActivityJustEnd": "Beëindig dit net",
+    "endActivityClaimFailed": "Ons kon nie stuur dat jy jou doelwitte voltooi het nie."
 }

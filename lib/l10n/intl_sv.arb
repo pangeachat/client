@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-12 09:04:25.281743",
+    "@@last_modified": "2026-11-27 17:51:41.353366",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10563,5 +10563,10 @@
     "noCanDoActivitiesYet": "Du har inte slutfört någon aktivitet för detta {canDo} än. Starta en från din kurs.",
     "canDoNotInYourCourses": "Detta {canDo} finns inte i någon av dina kurser.",
     "currentCanDo": "Aktuellt {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP mot detta {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP mot detta {canDo}",
+    "endActivityGoalsLeftTitle": "Avsluta aktiviteten?",
+    "endActivityGoalsLeftMessage": "Vissa av dina mål är inte markerade som klara.",
+    "endActivityFinishedAllGoals": "Jag klarade alla mina mål",
+    "endActivityJustEnd": "Avsluta bara",
+    "endActivityClaimFailed": "Vi kunde inte skicka att du klarade dina mål."
 }

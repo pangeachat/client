@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-11-12 09:04:07.718812",
+    "@@last_modified": "2026-11-27 17:51:35.097064",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Ịmebeghị mmemme maka {canDo} a. Bido otu site na nkuzi gị.",
     "canDoNotInYourCourses": "{canDo} a adịghị na nkuzi gị ọ bụla.",
     "currentCanDo": "Ugbu a {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP maka {canDo} a"
+    "xpGainedTowardCanDo": "{xp} XP maka {canDo} a",
+    "endActivityGoalsLeftTitle": "Kwụsị ọrụ a?",
+    "endActivityGoalsLeftMessage": "Ụfọdụ n'ime ihe mgbaru ọsọ gị akara akara dị ka emechara.",
+    "endActivityFinishedAllGoals": "Emechara m ihe mgbaru ọsọ m niile",
+    "endActivityJustEnd": "Naanị kwụsị ya",
+    "endActivityClaimFailed": "Anyị enweghị ike izipu na ị mechara ihe mgbaru ọsọ gị."
 }

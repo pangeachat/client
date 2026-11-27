@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-11-12 09:04:24.943374",
+    "@@last_modified": "2026-11-27 17:51:41.875639",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Anjeun teu acan ngarengsekeun kagiatan pikeun {canDo} ieu. Mimitian hiji tina kursus anjeun.",
     "canDoNotInYourCourses": "{canDo} ieu henteu aya dina kursus anjeun.",
     "currentCanDo": "{canDo} ayeuna",
-    "xpGainedTowardCanDo": "{xp} XP pikeun {canDo} ieu"
+    "xpGainedTowardCanDo": "{xp} XP pikeun {canDo} ieu",
+    "endActivityGoalsLeftTitle": "Réngsékeun kagiatanana?",
+    "endActivityGoalsLeftMessage": "Sababaraha tujuan anjeun teu acan ditandaan réngsé.",
+    "endActivityFinishedAllGoals": "Kuring geus ngaréngsékeun sakabéh tujuan kuring",
+    "endActivityJustEnd": "Réngsékeun waé",
+    "endActivityClaimFailed": "Kami teu tiasa ngirim yén anjeun parantos ngaréngsékeun tujuan anjeun."
 }

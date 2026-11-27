@@ -2071,7 +2071,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-11-12 09:04:02.115830",
+    "@@last_modified": "2026-11-27 17:51:32.295633",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10905,5 +10905,10 @@
     "noCanDoActivitiesYet": "Hindi mo pa nakumpleto ang isang aktibidad para sa {canDo} na ito. Magsimula ng isa mula sa iyong kurso.",
     "canDoNotInYourCourses": "Ang {canDo} na ito ay wala sa alinman sa iyong mga kurso.",
     "currentCanDo": "Kasalukuyang {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP patungo sa {canDo} na ito"
+    "xpGainedTowardCanDo": "{xp} XP patungo sa {canDo} na ito",
+    "endActivityGoalsLeftTitle": "Tapusin ang aktibidad?",
+    "endActivityGoalsLeftMessage": "Ang ilan sa iyong mga layunin ay hindi pa namarkahang tapos.",
+    "endActivityFinishedAllGoals": "Natapos ko na ang lahat ng aking layunin",
+    "endActivityJustEnd": "Tapusin na lang",
+    "endActivityClaimFailed": "Hindi namin maipadala na natapos mo ang iyong mga layunin."
 }

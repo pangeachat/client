@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-11-12 09:04:05.192820",
+    "@@last_modified": "2026-11-27 17:51:33.699373",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10481,5 +10481,10 @@
     "noCanDoActivitiesYet": "Još niste dovršili aktivnost za ovaj {canDo}. Pokrenite je iz svog tečaja.",
     "canDoNotInYourCourses": "Ovaj {canDo} nije ni u jednom od vaših tečajeva.",
     "currentCanDo": "Trenutni {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP-a za ovaj {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP-a za ovaj {canDo}",
+    "endActivityGoalsLeftTitle": "Završiti aktivnost?",
+    "endActivityGoalsLeftMessage": "Neki od vaših ciljeva nisu označeni kao dovršeni.",
+    "endActivityFinishedAllGoals": "Dovršio/la sam sve svoje ciljeve",
+    "endActivityJustEnd": "Samo završi",
+    "endActivityClaimFailed": "Nismo mogli poslati da ste dovršili svoje ciljeve."
 }

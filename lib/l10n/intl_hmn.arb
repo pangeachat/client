@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-11-12 09:04:06.522510",
+    "@@last_modified": "2026-11-27 17:51:34.427744",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Koj tseem tsis tau ua tiav ib qho haujlwm rau tus {canDo} no. Pib ib qho los ntawm koj zaj kawm.",
     "canDoNotInYourCourses": "Tus {canDo} no tsis nyob hauv ib qho ntawm koj cov zaj kawm.",
     "currentCanDo": "Tus {canDo} tam sim no",
-    "xpGainedTowardCanDo": "{xp} XP rau tus {canDo} no"
+    "xpGainedTowardCanDo": "{xp} XP rau tus {canDo} no",
+    "endActivityGoalsLeftTitle": "Xav xaus qhov kev ua si no?",
+    "endActivityGoalsLeftMessage": "Qee yam ntawm koj lub hom phiaj tseem tsis tau cim tias ua tiav.",
+    "endActivityFinishedAllGoals": "Kuv ua tiav tag nrho kuv lub hom phiaj lawm",
+    "endActivityJustEnd": "Cia li xaus nws",
+    "endActivityClaimFailed": "Peb tsis tuaj yeem xa tias koj ua tiav koj lub hom phiaj."
 }

@@ -1254,7 +1254,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-11-12 09:04:31.236500",
+    "@@last_modified": "2026-11-27 17:51:43.523644",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -11002,5 +11002,10 @@
     "noCanDoActivitiesYet": "你仲未完成呢個 {canDo} 嘅任何活動。喺你嘅課程入面開始一個啦。",
     "canDoNotInYourCourses": "呢個 {canDo} 唔喺你任何一個課程入面。",
     "currentCanDo": "目前嘅 {canDo}",
-    "xpGainedTowardCanDo": "呢個 {canDo} 獲得咗 {xp} 經驗值"
+    "xpGainedTowardCanDo": "呢個 {canDo} 獲得咗 {xp} 經驗值",
+    "endActivityGoalsLeftTitle": "結束活動？",
+    "endActivityGoalsLeftMessage": "你仲有啲目標未完成㗎。",
+    "endActivityFinishedAllGoals": "我已經完成晒所有目標",
+    "endActivityJustEnd": "就咁結束啦",
+    "endActivityClaimFailed": "我哋未能發送你已完成目標嘅訊息。"
 }

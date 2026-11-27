@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-11-12 09:04:12.798857",
+    "@@last_modified": "2026-11-27 17:51:36.853957",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Dir hutt nach keng Aktivitéit fir dësen {canDo} ofgeschloss. Start eng aus Ärem Cours.",
     "canDoNotInYourCourses": "Dësen {canDo} ass an kengem vun Äre Coursen.",
     "currentCanDo": "Aktuellen {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP fir dësen {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP fir dësen {canDo}",
+    "endActivityGoalsLeftTitle": "D'Aktivitéit ofschléissen?",
+    "endActivityGoalsLeftMessage": "Verschidde vun dengen Ziler sinn net als erfëllt markéiert.",
+    "endActivityFinishedAllGoals": "Ech hunn all meng Ziler erreecht",
+    "endActivityJustEnd": "Einfach ofschléissen",
+    "endActivityClaimFailed": "Mir konnten net schécken, datt Dir Är Ziler ofgeschloss hutt."
 }

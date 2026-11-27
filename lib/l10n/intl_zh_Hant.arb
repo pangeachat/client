@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-12 09:04:30.567738",
+    "@@last_modified": "2026-11-27 17:51:43.363384",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -10154,5 +10154,10 @@
     "noCanDoActivitiesYet": "您尚未完成此{canDo}的活動。請從您的課程中開始一個。",
     "canDoNotInYourCourses": "此{canDo}不在您的任何課程中。",
     "currentCanDo": "目前的{canDo}",
-    "xpGainedTowardCanDo": "此{canDo}已獲得{xp}經驗值"
+    "xpGainedTowardCanDo": "此{canDo}已獲得{xp}經驗值",
+    "endActivityGoalsLeftTitle": "結束活動？",
+    "endActivityGoalsLeftMessage": "您有些目標尚未標記為完成。",
+    "endActivityFinishedAllGoals": "我已完成所有目標",
+    "endActivityJustEnd": "就這樣結束",
+    "endActivityClaimFailed": "我們無法傳送您已完成目標的資訊。"
 }

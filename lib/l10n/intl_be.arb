@@ -3526,7 +3526,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-11-12 09:03:57.392189",
+    "@@last_modified": "2026-11-27 17:51:30.068947",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -10062,5 +10062,10 @@
     "noCanDoActivitiesYet": "Вы яшчэ не выканалі заданне для гэтага {canDo}. Пачніце адно са свайго курса.",
     "canDoNotInYourCourses": "Гэтага {canDo} няма ні ў адным з вашых курсаў.",
     "currentCanDo": "Бягучы {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP да гэтага {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP да гэтага {canDo}",
+    "endActivityGoalsLeftTitle": "Завяршыць занятак?",
+    "endActivityGoalsLeftMessage": "Некаторыя з вашых мэтаў не пазначаны як выкананыя.",
+    "endActivityFinishedAllGoals": "Я выканаў усе свае мэты",
+    "endActivityJustEnd": "Проста завяршыць",
+    "endActivityClaimFailed": "Не атрымалася адправіць інфармацыю аб выкананні вашых мэтаў."
 }

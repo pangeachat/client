@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-11-12 09:03:56.518054",
+    "@@last_modified": "2026-11-27 17:51:29.789573",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10351,5 +10351,10 @@
     "noCanDoActivitiesYet": "لم تكمل أي نشاط لهذا {canDo} بعد. ابدأ واحدًا من دورتك.",
     "canDoNotInYourCourses": "هذا {canDo} ليس في أي من دوراتك.",
     "currentCanDo": "{canDo} الحالي",
-    "xpGainedTowardCanDo": "{xp} نقطة خبرة نحو هذا {canDo}"
+    "xpGainedTowardCanDo": "{xp} نقطة خبرة نحو هذا {canDo}",
+    "endActivityGoalsLeftTitle": "إنهاء النشاط؟",
+    "endActivityGoalsLeftMessage": "لم يتم وضع علامة تم على بعض أهدافك.",
+    "endActivityFinishedAllGoals": "لقد أنجزت جميع أهدافي",
+    "endActivityJustEnd": "انهِه فحسب",
+    "endActivityClaimFailed": "تعذر علينا إرسال أنك أنجزت أهدافك."
 }

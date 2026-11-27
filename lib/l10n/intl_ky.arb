@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-11-12 09:04:11.844508",
+    "@@last_modified": "2026-11-27 17:51:36.679155",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Сиз бул {canDo} үчүн иш-аракетти азырынча бүтүрө элексиз. Курсуңуздан баштаңыз.",
     "canDoNotInYourCourses": "Бул {canDo} сиздин курстарыңызда жок.",
     "currentCanDo": "Учурдагы {canDo}",
-    "xpGainedTowardCanDo": "Бул {canDo} үчүн {xp} XP"
+    "xpGainedTowardCanDo": "Бул {canDo} үчүн {xp} XP",
+    "endActivityGoalsLeftTitle": "Ишти бүтүрөсүзбү?",
+    "endActivityGoalsLeftMessage": "Кээ бир максаттарыңыз аткарылган жок.",
+    "endActivityFinishedAllGoals": "Мен бардык максаттарымды аткардым",
+    "endActivityJustEnd": "Жөн эле бүтүрүү",
+    "endActivityClaimFailed": "Максаттарыңызды аткарганыңызды жөнөтө алган жокпуз."
 }

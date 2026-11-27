@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-12 09:04:17.863976",
+    "@@last_modified": "2026-11-27 17:51:38.794412",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -10048,5 +10048,10 @@
     "noCanDoActivitiesYet": "Je hebt nog geen activiteit voor deze {canDo} voltooid. Start er een vanuit je cursus.",
     "canDoNotInYourCourses": "Deze {canDo} zit niet in een van je cursussen.",
     "currentCanDo": "Huidige {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP voor deze {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP voor deze {canDo}",
+    "endActivityGoalsLeftTitle": "Activiteit beëindigen?",
+    "endActivityGoalsLeftMessage": "Sommige van je doelen zijn niet gemarkeerd als voltooid.",
+    "endActivityFinishedAllGoals": "Ik heb al mijn doelen voltooid",
+    "endActivityJustEnd": "Gewoon beëindigen",
+    "endActivityClaimFailed": "We konden niet versturen dat je je doelen hebt voltooid."
 }

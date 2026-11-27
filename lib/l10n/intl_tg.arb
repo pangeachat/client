@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-11-12 09:04:28.016785",
+    "@@last_modified": "2026-11-27 17:51:42.658419",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Шумо ҳанӯз барои ин {canDo} ягон фаъолиятро анҷом надодаед. Якеро аз курси худ оғоз кунед.",
     "canDoNotInYourCourses": "Ин {canDo} дар ягон курси шумо нест.",
     "currentCanDo": "{canDo}-и ҷорӣ",
-    "xpGainedTowardCanDo": "{xp} XP ба ин {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP ба ин {canDo}",
+    "endActivityGoalsLeftTitle": "Фаъолиятро ба охир расонам?",
+    "endActivityGoalsLeftMessage": "Баъзе аз ҳадафҳои шумо ҳамчун иҷрошуда қайд нашудаанд.",
+    "endActivityFinishedAllGoals": "Ман ҳамаи ҳадафҳоямро иҷро кардам",
+    "endActivityJustEnd": "Танҳо ба охир расонед",
+    "endActivityClaimFailed": "Мо натавонистем, ки шумо ҳадафҳои худро иҷро кардед, ирсол кунем."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-11-12 09:04:12.957135",
+    "@@last_modified": "2026-11-27 17:51:35.402703",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Դուք դեռ չեք ավարտել որևէ գործունեություն այս {canDo}-ի համար։ Սկսեք մեկը ձեր դասընթացից։",
     "canDoNotInYourCourses": "Այս {canDo}-ն ձեր դասընթացներից ոչ մեկում չկա։",
     "currentCanDo": "Ընթացիկ {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP դեպի այս {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP դեպի այս {canDo}",
+    "endActivityGoalsLeftTitle": "Ավարտե՞լ ակտիվությունը",
+    "endActivityGoalsLeftMessage": "Ձեր նպատակներից մի քանիսը նշված չեն որպես կատարված։",
+    "endActivityFinishedAllGoals": "Ես ավարտեցի իմ բոլոր նպատակները",
+    "endActivityJustEnd": "Պարզապես ավարտել",
+    "endActivityClaimFailed": "Մենք չկարողացանք ուղարկել, որ դուք ավարտել եք ձեր նպատակները։"
 }

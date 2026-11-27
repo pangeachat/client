@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-11-12 09:04:04.403414",
+    "@@last_modified": "2026-11-27 17:51:33.624946",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Ba ku kammala wani aiki don wannan {canDo} ba tukuna. Fara ɗaya daga kwas ɗinku.",
     "canDoNotInYourCourses": "Wannan {canDo} baya cikin kowane kwas ɗinku.",
     "currentCanDo": "{canDo} na yanzu",
-    "xpGainedTowardCanDo": "{xp} XP zuwa wannan {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP zuwa wannan {canDo}",
+    "endActivityGoalsLeftTitle": "Ka dakatar da aikin?",
+    "endActivityGoalsLeftMessage": "Wasu daga cikin burin ka ba a yi musu alamar an gama ba.",
+    "endActivityFinishedAllGoals": "Na gama dukkan burina",
+    "endActivityJustEnd": "Ka dakatar da shi kawai",
+    "endActivityClaimFailed": "Ba mu iya aika cewa ka gama burin ka ba."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-11-12 09:03:57.336530",
+    "@@last_modified": "2026-11-27 17:51:29.536950",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Все още не сте завършили дейност за това {canDo}. Започнете такава от курса си.",
     "canDoNotInYourCourses": "Това {canDo} не е в никой от курсовете ви.",
     "currentCanDo": "Текущо {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP за това {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP за това {canDo}",
+    "endActivityGoalsLeftTitle": "Да прекратя дейността?",
+    "endActivityGoalsLeftMessage": "Някои от целите ви не са отбелязани като изпълнени.",
+    "endActivityFinishedAllGoals": "Изпълних всичките си цели",
+    "endActivityJustEnd": "Просто прекрати",
+    "endActivityClaimFailed": "Не успяхме да изпратим, че сте изпълнили целите си."
 }

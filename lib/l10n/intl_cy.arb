@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-11-12 09:04:00.342679",
+    "@@last_modified": "2026-11-27 17:51:31.071025",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Nid ydych wedi cwblhau gweithgaredd ar gyfer y {canDo} hwn eto. Dechreuwch un o'ch cwrs.",
     "canDoNotInYourCourses": "Nid yw'r {canDo} hwn yn unrhyw un o'ch cyrsiau.",
     "currentCanDo": "Y {canDo} presennol",
-    "xpGainedTowardCanDo": "{xp} XP tuag at y {canDo} hwn"
+    "xpGainedTowardCanDo": "{xp} XP tuag at y {canDo} hwn",
+    "endActivityGoalsLeftTitle": "Gorffen y gweithgaredd?",
+    "endActivityGoalsLeftMessage": "Nid yw rhai o'ch nodau wedi'u marcio fel rhai sydd wedi'u cwblhau.",
+    "endActivityFinishedAllGoals": "Rwyf wedi cwblhau fy holl nodau",
+    "endActivityJustEnd": "Gorffen nawr",
+    "endActivityClaimFailed": "Ni allem anfon eich bod wedi cwblhau eich nodau."
 }

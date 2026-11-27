@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-11-12 09:04:08.913840",
+    "@@last_modified": "2026-11-27 17:51:33.837260",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Ou poko fin fè yon aktivite pou {canDo} sa a. Kòmanse youn nan kou ou a.",
     "canDoNotInYourCourses": "{canDo} sa a pa nan okenn nan kou ou yo.",
     "currentCanDo": "{canDo} aktyèl",
-    "xpGainedTowardCanDo": "{xp} XP pou {canDo} sa a"
+    "xpGainedTowardCanDo": "{xp} XP pou {canDo} sa a",
+    "endActivityGoalsLeftTitle": "Fini aktivite a?",
+    "endActivityGoalsLeftMessage": "Kèk nan objektif ou yo pa make kòm fini.",
+    "endActivityFinishedAllGoals": "Mwen fini tout objektif mwen yo",
+    "endActivityJustEnd": "Jis fini li",
+    "endActivityClaimFailed": "Nou pa t' kapab voye ke ou te fini objektif ou yo."
 }

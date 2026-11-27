@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-11-12 09:04:10.266904",
+    "@@last_modified": "2026-11-27 17:51:35.681091",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10814,5 +10814,10 @@
     "noCanDoActivitiesYet": "この{canDo}のアクティビティをまだ完了していません。コースから始めてください。",
     "canDoNotInYourCourses": "この{canDo}はあなたのコースにはありません。",
     "currentCanDo": "現在の{canDo}",
-    "xpGainedTowardCanDo": "この{canDo}に向けて{xp}XPを獲得"
+    "xpGainedTowardCanDo": "この{canDo}に向けて{xp}XPを獲得",
+    "endActivityGoalsLeftTitle": "アクティビティを終了しますか？",
+    "endActivityGoalsLeftMessage": "まだ達成していない目標があります。",
+    "endActivityFinishedAllGoals": "目標をすべて達成しました",
+    "endActivityJustEnd": "終了する",
+    "endActivityClaimFailed": "目標達成の情報を送信できませんでした。"
 }

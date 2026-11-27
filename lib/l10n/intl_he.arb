@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-12 09:04:04.795899",
+    "@@last_modified": "2026-11-27 17:51:33.496599",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10959,5 +10959,10 @@
     "noCanDoActivitiesYet": "עדיין לא השלמת פעילות עבור {canDo} זה. התחל אחת מהקורס שלך.",
     "canDoNotInYourCourses": "{canDo} זה אינו נמצא באף אחד מהקורסים שלך.",
     "currentCanDo": "{canDo} נוכחי",
-    "xpGainedTowardCanDo": "{xp} נקודות XP לקראת {canDo} זה"
+    "xpGainedTowardCanDo": "{xp} נקודות XP לקראת {canDo} זה",
+    "endActivityGoalsLeftTitle": "לסיים את הפעילות?",
+    "endActivityGoalsLeftMessage": "חלק מהיעדים שלך לא סומנו כהושלמו.",
+    "endActivityFinishedAllGoals": "סיימתי את כל היעדים שלי",
+    "endActivityJustEnd": "פשוט סיים",
+    "endActivityClaimFailed": "לא הצלחנו לשלוח שסיימת את היעדים שלך."
 }

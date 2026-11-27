@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-11-12 09:04:10.469173",
+    "@@last_modified": "2026-11-27 17:51:35.986416",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "អ្នកមិនទាន់បានបញ្ចប់សកម្មភាពសម្រាប់ {canDo} នេះនៅឡើយទេ។ ចាប់ផ្ដើមមួយពីវគ្គសិក្សារបស់អ្នក។",
     "canDoNotInYourCourses": "{canDo} នេះមិនមាននៅក្នុងវគ្គសិក្សាណាមួយរបស់អ្នកទេ។",
     "currentCanDo": "{canDo} បច្ចុប្បន្ន",
-    "xpGainedTowardCanDo": "{xp} XP ឆ្ពោះទៅរក {canDo} នេះ"
+    "xpGainedTowardCanDo": "{xp} XP ឆ្ពោះទៅរក {canDo} នេះ",
+    "endActivityGoalsLeftTitle": "បញ្ចប់សកម្មភាព?",
+    "endActivityGoalsLeftMessage": "គោលដៅមួយចំនួនរបស់អ្នកមិនទាន់ត្រូវបានសម្គាល់ថាបានបញ្ចប់ទេ។",
+    "endActivityFinishedAllGoals": "ខ្ញុំបានបញ្ចប់គោលដៅទាំងអស់របស់ខ្ញុំហើយ",
+    "endActivityJustEnd": "គ្រាន់តែបញ្ចប់វា",
+    "endActivityClaimFailed": "យើងមិនអាចផ្ញើថាអ្នកបានបញ្ចប់គោលដៅរបស់អ្នកបានទេ។"
 }

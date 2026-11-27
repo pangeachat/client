@@ -3080,7 +3080,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-11-12 09:04:28.038378",
+    "@@last_modified": "2026-11-27 17:51:43.048451",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10677,5 +10677,10 @@
     "noCanDoActivitiesYet": "คุณยังไม่ได้ทำกิจกรรมสำหรับ {canDo} นี้เลย เริ่มต้นจากหลักสูตรของคุณ",
     "canDoNotInYourCourses": "{canDo} นี้ไม่ได้อยู่ในหลักสูตรใดๆ ของคุณ",
     "currentCanDo": "{canDo} ปัจจุบัน",
-    "xpGainedTowardCanDo": "{xp} XP สำหรับ {canDo} นี้"
+    "xpGainedTowardCanDo": "{xp} XP สำหรับ {canDo} นี้",
+    "endActivityGoalsLeftTitle": "จบกิจกรรมหรือไม่",
+    "endActivityGoalsLeftMessage": "เป้าหมายบางส่วนของคุณยังไม่ได้ทำเครื่องหมายว่าเสร็จสิ้น",
+    "endActivityFinishedAllGoals": "ฉันทำเป้าหมายทั้งหมดเสร็จแล้ว",
+    "endActivityJustEnd": "แค่จบกิจกรรม",
+    "endActivityClaimFailed": "เราไม่สามารถส่งข้อมูลว่าคุณทำเป้าหมายเสร็จสิ้นได้"
 }

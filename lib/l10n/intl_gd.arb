@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-11-12 09:04:05.106337",
+    "@@last_modified": "2026-11-27 17:51:33.973626",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Chan eil thu air gnìomh sam bith a chrìochnachadh airson an {canDo} seo fhathast. Tòisich fear bhon chùrsa agad.",
     "canDoNotInYourCourses": "Chan eil an {canDo} seo ann an gin de na cùrsaichean agad.",
     "currentCanDo": "{canDo} làithreach",
-    "xpGainedTowardCanDo": "{xp} XP a dh'ionnsaigh an {canDo} seo"
+    "xpGainedTowardCanDo": "{xp} XP a dh'ionnsaigh an {canDo} seo",
+    "endActivityGoalsLeftTitle": "Cuir crìoch air a’ ghnìomhachd?",
+    "endActivityGoalsLeftMessage": "Chan eil cuid de na h-amasan agad air an comharrachadh mar a chaidh a dhèanamh.",
+    "endActivityFinishedAllGoals": "Chrìochnaich mi na h-amasan agam uile",
+    "endActivityJustEnd": "Dìreach cuir crìoch air",
+    "endActivityClaimFailed": "Cha b’ urrainn dhuinn innse gun do chrìochnaich thu na h-amasan agad."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-11-12 09:04:31.534383",
+    "@@last_modified": "2026-11-27 17:51:44.055333",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Iwọ ko ti pari iṣẹ kan fun {canDo} yii sibẹsibẹ. Bẹrẹ ọkan lati inu ẹkọ rẹ.",
     "canDoNotInYourCourses": "{canDo} yii ko si ninu eyikeyi ninu awọn ẹkọ rẹ.",
     "currentCanDo": "{canDo} lọwọlọwọ",
-    "xpGainedTowardCanDo": "{xp} XP si {canDo} yii"
+    "xpGainedTowardCanDo": "{xp} XP si {canDo} yii",
+    "endActivityGoalsLeftTitle": "Ṣe o fẹ́ fòpin sí ìgbòkègbodò náà?",
+    "endActivityGoalsLeftMessage": "Àwọn kan nínú àwọn àfojúsùn rẹ kò tíì jẹ́ kí wọ́n sàmì sí i pé ó ti parí.",
+    "endActivityFinishedAllGoals": "Mo ti parí gbogbo àwọn àfojúsùn mi",
+    "endActivityJustEnd": "Kòkàn fòpin sí i",
+    "endActivityClaimFailed": "A kò lè fi ìsọfúnni ránṣẹ́ pé o ti parí àwọn àfojúsùn rẹ."
 }

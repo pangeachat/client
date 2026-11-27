@@ -3387,7 +3387,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-11-12 09:03:59.851210",
+    "@@last_modified": "2026-11-27 17:51:31.973870",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10920,5 +10920,10 @@
     "noCanDoActivitiesYet": "Δεν έχεις ολοκληρώσει ακόμα κάποια δραστηριότητα για αυτό το {canDo}. Ξεκίνησε μία από το μάθημά σου.",
     "canDoNotInYourCourses": "Αυτό το {canDo} δεν περιλαμβάνεται σε κανένα από τα μαθήματά σου.",
     "currentCanDo": "Τρέχον {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP για αυτό το {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP για αυτό το {canDo}",
+    "endActivityGoalsLeftTitle": "Να τερματιστεί η δραστηριότητα;",
+    "endActivityGoalsLeftMessage": "Μερικοί από τους στόχους σας δεν έχουν επισημανθεί ως ολοκληρωμένοι.",
+    "endActivityFinishedAllGoals": "Ολοκλήρωσα όλους τους στόχους μου",
+    "endActivityJustEnd": "Απλώς τερματισμός",
+    "endActivityClaimFailed": "Δεν ήταν δυνατή η αποστολή ότι ολοκληρώσατε τους στόχους σας."
 }

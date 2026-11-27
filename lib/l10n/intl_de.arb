@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-11-12 09:03:59.611540",
+    "@@last_modified": "2026-11-27 17:51:31.278989",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -10035,5 +10035,10 @@
     "noCanDoActivitiesYet": "Du hast noch keine Aktivität für dieses {canDo} abgeschlossen. Starte eine aus deinem Kurs.",
     "canDoNotInYourCourses": "Dieses {canDo} ist in keinem deiner Kurse enthalten.",
     "currentCanDo": "Aktuelles {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP für dieses {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP für dieses {canDo}",
+    "endActivityGoalsLeftTitle": "Aktivität beenden?",
+    "endActivityGoalsLeftMessage": "Einige deiner Ziele sind noch nicht als erledigt markiert.",
+    "endActivityFinishedAllGoals": "Ich habe alle meine Ziele erreicht",
+    "endActivityJustEnd": "Einfach beenden",
+    "endActivityClaimFailed": "Wir konnten nicht übermitteln, dass du deine Ziele erreicht hast."
 }

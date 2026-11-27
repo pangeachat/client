@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-12 09:03:57.121089",
+    "@@last_modified": "2026-11-27 17:51:30.087814",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10673,5 +10673,10 @@
     "noCanDoActivitiesYet": "আপনি এখনও এই {canDo} এর জন্য কোনো কার্যকলাপ সম্পন্ন করেননি। আপনার কোর্স থেকে একটি শুরু করুন।",
     "canDoNotInYourCourses": "এই {canDo} আপনার কোনো কোর্সে নেই।",
     "currentCanDo": "বর্তমান {canDo}",
-    "xpGainedTowardCanDo": "এই {canDo} এর জন্য {xp} XP"
+    "xpGainedTowardCanDo": "এই {canDo} এর জন্য {xp} XP",
+    "endActivityGoalsLeftTitle": "ক্রিয়াকলাপ শেষ করবেন?",
+    "endActivityGoalsLeftMessage": "আপনার কিছু লক্ষ্য সম্পন্ন হিসাবে চিহ্নিত করা হয়নি।",
+    "endActivityFinishedAllGoals": "আমি আমার সমস্ত লক্ষ্য শেষ করেছি",
+    "endActivityJustEnd": "শুধু শেষ করুন",
+    "endActivityClaimFailed": "আমরা আপনার লক্ষ্যগুলি শেষ করার তথ্য পাঠাতে পারিনি।"
 }

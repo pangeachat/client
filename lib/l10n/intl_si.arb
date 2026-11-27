@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-11-12 09:04:23.398071",
+    "@@last_modified": "2026-11-27 17:51:40.782635",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "ඔබ තවමත් මෙම {canDo} සඳහා ක්‍රියාකාරකමක් සම්පූර්ණ කර නැත. ඔබේ පාඨමාලාවෙන් එකක් ආරම්භ කරන්න.",
     "canDoNotInYourCourses": "මෙම {canDo} ඔබේ කිසිදු පාඨමාලාවක නොමැත.",
     "currentCanDo": "වත්මන් {canDo}",
-    "xpGainedTowardCanDo": "මෙම {canDo} සඳහා {xp} XP"
+    "xpGainedTowardCanDo": "මෙම {canDo} සඳහා {xp} XP",
+    "endActivityGoalsLeftTitle": "ක්‍රියාකාරකම අවසන් කරනවාද?",
+    "endActivityGoalsLeftMessage": "ඔබේ ඉලක්ක කිහිපයක් සම්පූර්ණ කළ බවට සලකුණු කර නැත.",
+    "endActivityFinishedAllGoals": "මම මගේ සියලු ඉලක්ක සම්පූර්ණ කළා",
+    "endActivityJustEnd": "නිකම්ම අවසන් කරන්න",
+    "endActivityClaimFailed": "ඔබ ඔබේ ඉලක්ක සම්පූර්ණ කළ බව අපට යැවීමට නොහැකි විය."
 }

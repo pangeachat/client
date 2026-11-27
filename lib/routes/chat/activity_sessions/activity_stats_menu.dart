@@ -21,13 +21,23 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_header.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_goal_header_overlay.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/end_activity_dialog.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_label.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_header_session_xp.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/goal_progress_mixin.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_claim_repo.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_dialog.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_report_repo.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+
+/// Sends a learner's end-of-activity claim that they finished [goalIds].
+typedef ClaimGoals =
+    Future<void> Function({
+      required String roomId,
+      required String roleId,
+      required List<String> goalIds,
+    });
 
 /// The live session's goal header. Holds no vocab list: ActivityVocabWidget
 /// was taken out of this menu on purpose (#7283), so do not add it back.
@@ -37,11 +47,16 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
   final ValueNotifier<ActivityRoleGoal?> activeGoalNotifier;
   final Room room;
 
+  /// Sends the claim behind "I finished all my goals". Defaults to
+  /// [GoalClaimRepo]; tests pass their own.
+  final ClaimGoals? claimGoals;
+
   const ActivityStatsMenu({
     required this.visibilityNotifier,
     required this.setShowDropdown,
     required this.room,
     required this.activeGoalNotifier,
+    this.claimGoals,
     super.key,
   });
   LanguageModel? get _sessionLanguage {
@@ -75,16 +90,48 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
 
   void _toggleShowDropdown() => setShowDropdown(!visibilityNotifier.value);
 
-  /// Finishes only this learner's own role, early if they like, with no
-  /// confirmation step (activity-session.instructions.md, "The goal header").
+  /// Finishes only this learner's own role, early if they like. With goals
+  /// not yet marked done it asks first: they finished them all (end, and send
+  /// the team a claim for the unmarked ones), just end, or cancel
+  /// (activity-session.instructions.md, "The goal header"; #9881).
   Future<void> _finishActivityForMe(BuildContext context) async {
+    final unmarked = _goals.where((g) => !_isGoalCompleted(g)).toList();
+    EndActivityChoice? choice;
+    if (unmarked.isNotEmpty) {
+      choice = await showEndActivityDialog(context);
+      if (choice == null || !context.mounted) return;
+    }
+
+    // Captured before the role ends: the summary replaces this header, so
+    // [context] may be gone by the time the claim answers, and the role
+    // state it reads is rewritten by the ending.
+    final roleId = room.ownAwardKey;
+    final messenger = ScaffoldMessenger.maybeOf(context);
+    final failedText = L10n.of(context).endActivityClaimFailed;
+
     final resp = await showFutureLoadingDialog(
       context: context,
       future: room.finishActivity,
     );
+    if (resp.isError) return;
+    setShowDropdown(false);
 
-    if (!resp.isError) {
-      setShowDropdown(false);
+    if (choice != EndActivityChoice.finishedAllGoals || roleId == null) return;
+    final goalIds = [for (final g in unmarked) g.goalSlug ?? g.id];
+    final claim = claimGoals;
+    if (claim != null) {
+      await claim(roomId: room.id, roleId: roleId, goalIds: goalIds);
+      return;
+    }
+    final result = await GoalClaimRepo.submit(
+      roomId: room.id,
+      roleId: roleId,
+      goalIds: goalIds,
+    );
+    // The repo has already reported it; a lost claim is a lost complaint, so
+    // the learner is told rather than left thinking it was sent.
+    if (result.isError) {
+      messenger?.showSnackBar(SnackBar(content: Text(failedText)));
     }
   }
 

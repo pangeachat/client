@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-11-12 09:04:22.940769",
+    "@@last_modified": "2026-11-27 17:51:40.648934",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "توهان اڃا تائين هن {canDo} لاءِ ڪا به سرگرمي مڪمل نه ڪئي آهي. پنهنجي ڪورس مان هڪ شروع ڪريو.",
     "canDoNotInYourCourses": "هي {canDo} توهان جي ڪنهن به ڪورس ۾ ناهي.",
     "currentCanDo": "موجوده {canDo}",
-    "xpGainedTowardCanDo": "هن {canDo} لاءِ {xp} XP"
+    "xpGainedTowardCanDo": "هن {canDo} لاءِ {xp} XP",
+    "endActivityGoalsLeftTitle": "سرگرمي ختم ڪجي؟",
+    "endActivityGoalsLeftMessage": "توهان جا ڪجهه مقصد مڪمل ٿيل طور نشان لڳل نه آهن.",
+    "endActivityFinishedAllGoals": "مون پنهنجا سڀ مقصد پورا ڪيا",
+    "endActivityJustEnd": "بس ختم ڪريو",
+    "endActivityClaimFailed": "اسان اهو موڪلي نه سگهياسين ته توهان پنهنجا مقصد پورا ڪيا."
 }

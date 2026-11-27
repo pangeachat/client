@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-11-12 09:04:25.158464",
+    "@@last_modified": "2026-11-27 17:51:41.594411",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "E te leʻi faʻamaeʻaina se gaioiga mo lenei {canDo} i le taimi nei. Amata se tasi mai lau kosi.",
     "canDoNotInYourCourses": "O lenei {canDo} e le o iai i au kosi.",
     "currentCanDo": "{canDo} o loʻo iai nei",
-    "xpGainedTowardCanDo": "{xp} XP agai i lenei {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP agai i lenei {canDo}",
+    "endActivityGoalsLeftTitle": "Fa'amuta le gaioiga?",
+    "endActivityGoalsLeftMessage": "O nisi o au sini e le'i fa'ailogaina ua mae'a.",
+    "endActivityFinishedAllGoals": "Ua ou fa'amae'aina uma a'u sini",
+    "endActivityJustEnd": "Fa'amuta lava",
+    "endActivityClaimFailed": "E le'i mafai ona matou auina atu ua e fa'amae'aina au sini."
 }

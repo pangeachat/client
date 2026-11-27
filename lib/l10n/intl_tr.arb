@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-11-12 09:04:27.569271",
+    "@@last_modified": "2026-11-27 17:51:42.368809",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10346,5 +10346,10 @@
     "noCanDoActivitiesYet": "Bu {canDo} için henüz bir etkinlik tamamlamadınız. Kursunuzdan bir tane başlatın.",
     "canDoNotInYourCourses": "Bu {canDo} kurslarınızın hiçbirinde değil.",
     "currentCanDo": "Mevcut {canDo}",
-    "xpGainedTowardCanDo": "Bu {canDo} için {xp} DP kazanıldı"
+    "xpGainedTowardCanDo": "Bu {canDo} için {xp} DP kazanıldı",
+    "endActivityGoalsLeftTitle": "Etkinliği bitir mi?",
+    "endActivityGoalsLeftMessage": "Hedeflerinden bazıları tamamlandı olarak işaretlenmemiş.",
+    "endActivityFinishedAllGoals": "Tüm hedeflerimi bitirdim",
+    "endActivityJustEnd": "Sadece bitir",
+    "endActivityClaimFailed": "Hedeflerini bitirdiğini gönderemedik."
 }

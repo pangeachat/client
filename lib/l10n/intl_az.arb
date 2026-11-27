@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-11-12 09:03:58.019333",
+    "@@last_modified": "2026-11-27 17:51:29.263040",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Bu {canDo} üçün hələ heç bir fəaliyyəti tamamlamamısınız. Kursunuzdan birinə başlayın.",
     "canDoNotInYourCourses": "Bu {canDo} kurslarınızın heç birində yoxdur.",
     "currentCanDo": "Cari {canDo}",
-    "xpGainedTowardCanDo": "Bu {canDo} üçün {xp} XP qazanıldı"
+    "xpGainedTowardCanDo": "Bu {canDo} üçün {xp} XP qazanıldı",
+    "endActivityGoalsLeftTitle": "Fəaliyyəti bitirək?",
+    "endActivityGoalsLeftMessage": "Bəzi məqsədləriniz tamamlanmayıb.",
+    "endActivityFinishedAllGoals": "Bütün məqsədlərimi bitirdim",
+    "endActivityJustEnd": "Sadəcə bitir",
+    "endActivityClaimFailed": "Məqsədlərinizi bitirdiyinizi göndərə bilmədik."
 }

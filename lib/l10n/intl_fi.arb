@@ -3514,7 +3514,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-11-12 09:04:01.871687",
+    "@@last_modified": "2026-11-27 17:51:32.217649",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -10085,5 +10085,10 @@
     "noCanDoActivitiesYet": "Et ole vielä suorittanut aktiviteettia tälle {canDo}lle. Aloita sellainen kurssiltasi.",
     "canDoNotInYourCourses": "Tämä {canDo} ei ole millään kursseistasi.",
     "currentCanDo": "Nykyinen {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP kohti tätä {canDo}ta"
+    "xpGainedTowardCanDo": "{xp} XP kohti tätä {canDo}ta",
+    "endActivityGoalsLeftTitle": "Lopetetaanko harjoitus?",
+    "endActivityGoalsLeftMessage": "Kaikkia tavoitteita ei ole merkitty tehdyiksi.",
+    "endActivityFinishedAllGoals": "Sain kaikki tavoitteet valmiiksi",
+    "endActivityJustEnd": "Lopeta vain",
+    "endActivityClaimFailed": "Emme voineet lähettää tietoa tavoitteiden suorittamisesta."
 }

@@ -1315,7 +1315,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-11-12 09:04:27.241095",
+    "@@last_modified": "2026-11-27 17:51:42.275746",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10995,5 +10995,10 @@
     "noCanDoActivitiesYet": "మీరు ఇంకా ఈ {canDo} కోసం ఒక కార్యాచరణను పూర్తి చేయలేదు. మీ కోర్సు నుండి ఒకదాన్ని ప్రారంభించండి.",
     "canDoNotInYourCourses": "ఈ {canDo} మీ కోర్సులలో దేనిలోనూ లేదు.",
     "currentCanDo": "ప్రస్తుత {canDo}",
-    "xpGainedTowardCanDo": "ఈ {canDo} కోసం {xp} XP"
+    "xpGainedTowardCanDo": "ఈ {canDo} కోసం {xp} XP",
+    "endActivityGoalsLeftTitle": "కార్యకలాపాన్ని ముగించాలా?",
+    "endActivityGoalsLeftMessage": "మీ లక్ష్యాలలో కొన్ని పూర్తయ్యాయని గుర్తించబడలేదు.",
+    "endActivityFinishedAllGoals": "నేను నా లక్ష్యాలన్నింటినీ పూర్తి చేశాను",
+    "endActivityJustEnd": "ముగించండి",
+    "endActivityClaimFailed": "మీరు మీ లక్ష్యాలను పూర్తి చేశారని మేము పంపలేకపోయాము."
 }

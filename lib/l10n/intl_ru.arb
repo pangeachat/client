@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-11-12 09:04:22.102416",
+    "@@last_modified": "2026-11-27 17:51:40.581624",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -11020,5 +11020,10 @@
     "noCanDoActivitiesYet": "Вы еще не выполнили ни одного действия для этого {canDo}. Начните одно из вашего курса.",
     "canDoNotInYourCourses": "Этот {canDo} не входит ни в один из ваших курсов.",
     "currentCanDo": "Текущий {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP для этого {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP для этого {canDo}",
+    "endActivityGoalsLeftTitle": "Завершить занятие?",
+    "endActivityGoalsLeftMessage": "Некоторые из ваших целей не отмечены как выполненные.",
+    "endActivityFinishedAllGoals": "Я выполнил все свои цели",
+    "endActivityJustEnd": "Просто завершить",
+    "endActivityClaimFailed": "Не удалось отправить информацию о выполнении ваших целей."
 }

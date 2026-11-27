@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-11-12 09:04:10.245709",
+    "@@last_modified": "2026-11-27 17:51:35.616946",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "ನೀವು ಈ {canDo} ಗಾಗಿ ಇನ್ನೂ ಯಾವುದೇ ಚಟುವಟಿಕೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಿಲ್ಲ. ನಿಮ್ಮ ಕೋರ್ಸ್‌ನಿಂದ ಒಂದನ್ನು ಪ್ರಾರಂಭಿಸಿ.",
     "canDoNotInYourCourses": "ಈ {canDo} ನಿಮ್ಮ ಯಾವುದೇ ಕೋರ್ಸ್‌ಗಳಲ್ಲಿಲ್ಲ.",
     "currentCanDo": "ಪ್ರಸ್ತುತ {canDo}",
-    "xpGainedTowardCanDo": "ಈ {canDo} ಕಡೆಗೆ {xp} XP"
+    "xpGainedTowardCanDo": "ಈ {canDo} ಕಡೆಗೆ {xp} XP",
+    "endActivityGoalsLeftTitle": "ಚಟುವಟಿಕೆಯನ್ನು ಕೊನೆಗೊಳಿಸುವುದೇ?",
+    "endActivityGoalsLeftMessage": "ನಿಮ್ಮ ಕೆಲವು ಗುರಿಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸಲಾಗಿದೆ ಎಂದು ಗುರುತಿಸಲಾಗಿಲ್ಲ.",
+    "endActivityFinishedAllGoals": "ನಾನು ನನ್ನ ಎಲ್ಲಾ ಗುರಿಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದ್ದೇನೆ",
+    "endActivityJustEnd": "ಕೇವಲ ಕೊನೆಗೊಳಿಸಿ",
+    "endActivityClaimFailed": "ನಿಮ್ಮ ಗುರಿಗಳನ್ನು ನೀವು ಪೂರ್ಣಗೊಳಿಸಿದ್ದೀರಿ ಎಂದು ನಾವು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ."
 }

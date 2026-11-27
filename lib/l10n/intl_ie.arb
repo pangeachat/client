@@ -3080,7 +3080,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-11-12 09:04:08.660407",
+    "@@last_modified": "2026-11-27 17:51:35.457828",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10677,5 +10677,10 @@
     "noCanDoActivitiesYet": "Níl gníomhaíocht críochnaithe agat don {canDo} seo fós. Tosaigh ceann ó do chúrsa.",
     "canDoNotInYourCourses": "Níl an {canDo} seo in aon cheann de do chúrsaí.",
     "currentCanDo": "{canDo} reatha",
-    "xpGainedTowardCanDo": "{xp} XP i dtreo an {canDo} seo"
+    "xpGainedTowardCanDo": "{xp} XP i dtreo an {canDo} seo",
+    "endActivityGoalsLeftTitle": "Críochnaigh an ghníomhaíocht?",
+    "endActivityGoalsLeftMessage": "Níl cuid de do spriocanna marcáilte mar atá déanta.",
+    "endActivityFinishedAllGoals": "Chríochnaigh mé mo spriocanna go léir",
+    "endActivityJustEnd": "Críochnaigh é",
+    "endActivityClaimFailed": "Níorbh fhéidir linn a sheoladh gur chríochnaigh tú do spriocanna."
 }

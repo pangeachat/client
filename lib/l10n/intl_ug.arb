@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-11-12 09:04:28.923963",
+    "@@last_modified": "2026-11-27 17:51:43.518566",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "بۇ {canDo} ئۈچۈن تېخى پائالىيەت تاماملىمىدىڭىز. دەرسلىكىڭىزدىن بىرنى باشلاڭ.",
     "canDoNotInYourCourses": "بۇ {canDo} دەرسلىكلىرىڭىزنىڭ ھېچقايسىسىدا يوق.",
     "currentCanDo": "نۆۋەتتىكى {canDo}",
-    "xpGainedTowardCanDo": "بۇ {canDo} غا قاراپ {xp} XP"
+    "xpGainedTowardCanDo": "بۇ {canDo} غا قاراپ {xp} XP",
+    "endActivityGoalsLeftTitle": "پائالىيەتنى ئاخىرلاشتۇرامسىز؟",
+    "endActivityGoalsLeftMessage": "بەزى نىشانلىرىڭىز تاماملاڭمىدى.",
+    "endActivityFinishedAllGoals": "مەن بارلىق نىشانلىرىمنى تاماملىدىم",
+    "endActivityJustEnd": "شۇنداق ئاخىرلاشتۇرۇڭ",
+    "endActivityClaimFailed": "نىشانلىرىڭىزنى تاماملىغانلىقىڭىزنى ئەۋەتەلمىدۇق."
 }

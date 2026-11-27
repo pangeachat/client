@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-11-12 09:04:00.163097",
+    "@@last_modified": "2026-11-27 17:51:30.914894",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Wala pa nimo nahuman ang usa ka kalihokan alang niining {canDo}. Sugdi ang usa gikan sa imong kurso.",
     "canDoNotInYourCourses": "Kini nga {canDo} wala sa bisan asa sa imong mga kurso.",
     "currentCanDo": "Karon nga {canDo}",
-    "xpGainedTowardCanDo": "{xp} XP padulong niining {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP padulong niining {canDo}",
+    "endActivityGoalsLeftTitle": "Tapuson ang kalihokan?",
+    "endActivityGoalsLeftMessage": "Ang ubang mga tumong wala pa mamarkahi nga nahuman.",
+    "endActivityFinishedAllGoals": "Nahuman nako tanan nakong mga tumong",
+    "endActivityJustEnd": "Tapuson na lang",
+    "endActivityClaimFailed": "Dili namo mapadala nga nahuman nimo ang imong mga tumong."
 }

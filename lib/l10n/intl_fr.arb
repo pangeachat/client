@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-11-12 09:04:01.767267",
+    "@@last_modified": "2026-11-27 17:51:32.567407",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10400,5 +10400,10 @@
     "noCanDoActivitiesYet": "Vous n'avez pas encore terminé d'activité pour ce {canDo}. Commencez-en une depuis votre cours.",
     "canDoNotInYourCourses": "Ce {canDo} ne fait partie d'aucun de vos cours.",
     "currentCanDo": "{canDo} actuel",
-    "xpGainedTowardCanDo": "{xp} XP pour ce {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP pour ce {canDo}",
+    "endActivityGoalsLeftTitle": "Terminer l'activité ?",
+    "endActivityGoalsLeftMessage": "Certains de vos objectifs ne sont pas marqués comme terminés.",
+    "endActivityFinishedAllGoals": "J'ai terminé tous mes objectifs",
+    "endActivityJustEnd": "Juste terminer",
+    "endActivityClaimFailed": "Nous n'avons pas pu envoyer que vous avez terminé vos objectifs."
 }

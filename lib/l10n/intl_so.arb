@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-11-12 09:04:23.959347",
+    "@@last_modified": "2026-11-27 17:51:41.330755",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Weli ma aadan dhammaystirin wax hawl ah oo ku saabsan {canDo}kan. Mid ka bilow koorsadaada.",
     "canDoNotInYourCourses": "{canDo}kan kuma jiro mid ka mid ah koorsooyinkaaga.",
     "currentCanDo": "{canDo}ka hadda jira",
-    "xpGainedTowardCanDo": "{xp} XP oo ku socda {canDo}kan"
+    "xpGainedTowardCanDo": "{xp} XP oo ku socda {canDo}kan",
+    "endActivityGoalsLeftTitle": "Hawsha jooji?",
+    "endActivityGoalsLeftMessage": "Qaar ka mid ah yoolalkaaga lama calaamadin inay dhammaadeen.",
+    "endActivityFinishedAllGoals": "Dhammaan yoolalkayga waan dhammeeyay",
+    "endActivityJustEnd": "Kaliya jooji",
+    "endActivityClaimFailed": "Ma awoodin inaan dirno inaad dhammaysay yoolalkaaga."
 }

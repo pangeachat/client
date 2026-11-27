@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-11-12 09:04:18.705640",
+    "@@last_modified": "2026-11-27 17:51:39.492526",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "ဤ {canDo} အတွက် လှုပ်ရှားမှုတစ်ခုမျှ မပြီးသေးပါ။ သင်၏သင်တန်းမှ စတင်လိုက်ပါ။",
     "canDoNotInYourCourses": "ဤ {canDo} သည် သင်၏သင်တန်းများတွင် မပါဝင်ပါ။",
     "currentCanDo": "လက်ရှိ {canDo}",
-    "xpGainedTowardCanDo": "ဤ {canDo} အတွက် {xp} XP ရရှိခဲ့သည်"
+    "xpGainedTowardCanDo": "ဤ {canDo} အတွက် {xp} XP ရရှိခဲ့သည်",
+    "endActivityGoalsLeftTitle": "လှုပ်ရှားမှုကို အဆုံးသတ်မလား။",
+    "endActivityGoalsLeftMessage": "သင့်ပန်းတိုင်အချို့ကို ပြီးစီးပြီဟု မှတ်သားထားခြင်း မရှိသေးပါ။",
+    "endActivityFinishedAllGoals": "ကျွန်တော့်ပန်းတိုင်အားလုံး ပြီးစီးပါပြီ",
+    "endActivityJustEnd": "အဆုံးသတ်လိုက်ပါ",
+    "endActivityClaimFailed": "သင့်ပန်းတိုင်များ ပြီးစီးကြောင်း ကျွန်ုပ်တို့ ပေးပို့နိုင်ခြင်း မရှိပါ။"
 }

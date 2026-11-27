@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-11-12 09:04:09.393286",
+    "@@last_modified": "2026-11-27 17:51:35.427075",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2526,5 +2526,10 @@
     "noCanDoActivitiesYet": "Sampeyan durung ngrampungake aktivitas kanggo {canDo} iki. Wiwiti siji saka kursus sampeyan.",
     "canDoNotInYourCourses": "{canDo} iki ora ana ing kursus sampeyan.",
     "currentCanDo": "{canDo} saiki",
-    "xpGainedTowardCanDo": "{xp} XP menyang {canDo} iki"
+    "xpGainedTowardCanDo": "{xp} XP menyang {canDo} iki",
+    "endActivityGoalsLeftTitle": "Pungkasi aktivitas?",
+    "endActivityGoalsLeftMessage": "Sawetara tujuanmu durung ditandhani rampung.",
+    "endActivityFinishedAllGoals": "Aku wis ngrampungake kabeh tujuanku",
+    "endActivityJustEnd": "Pungkasi wae",
+    "endActivityClaimFailed": "Kita ora bisa ngirim yen sampeyan wis ngrampungake tujuanmu."
 }

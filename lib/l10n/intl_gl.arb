@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-11-12 09:04:03.499834",
+    "@@last_modified": "2026-11-27 17:51:32.730588",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -10048,5 +10048,10 @@
     "noCanDoActivitiesYet": "Aínda non completaches ningunha actividade para este {canDo}. Comeza unha desde o teu curso.",
     "canDoNotInYourCourses": "Este {canDo} non está en ningún dos teus cursos.",
     "currentCanDo": "{canDo} actual",
-    "xpGainedTowardCanDo": "{xp} XP para este {canDo}"
+    "xpGainedTowardCanDo": "{xp} XP para este {canDo}",
+    "endActivityGoalsLeftTitle": "Rematar a actividade?",
+    "endActivityGoalsLeftMessage": "Algúns dos teus obxectivos non están marcados como feitos.",
+    "endActivityFinishedAllGoals": "Rematei todos os meus obxectivos",
+    "endActivityJustEnd": "Rematar sen máis",
+    "endActivityClaimFailed": "Non puidemos enviar que remataches os teus obxectivos."
 }

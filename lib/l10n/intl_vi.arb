@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-11-12 09:04:28.421906",
+    "@@last_modified": "2026-11-27 17:51:43.164620",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7355,5 +7355,10 @@
     "noCanDoActivitiesYet": "Bạn chưa hoàn thành hoạt động nào cho {canDo} này. Hãy bắt đầu một hoạt động từ khóa học của bạn.",
     "canDoNotInYourCourses": "{canDo} này không có trong bất kỳ khóa học nào của bạn.",
     "currentCanDo": "{canDo} hiện tại",
-    "xpGainedTowardCanDo": "{xp} XP cho {canDo} này"
+    "xpGainedTowardCanDo": "{xp} XP cho {canDo} này",
+    "endActivityGoalsLeftTitle": "Kết thúc hoạt động?",
+    "endActivityGoalsLeftMessage": "Một số mục tiêu của bạn chưa được đánh dấu là hoàn thành.",
+    "endActivityFinishedAllGoals": "Tôi đã hoàn thành tất cả mục tiêu của mình",
+    "endActivityJustEnd": "Chỉ cần kết thúc",
+    "endActivityClaimFailed": "Chúng tôi không thể gửi thông báo bạn đã hoàn thành mục tiêu của mình."
 }
